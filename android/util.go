@@ -24,6 +24,15 @@ import (
 	"strings"
 )
 
+// Transform array of T to array of U by applying function f to each T element.
+func Map[T, U any](ts []T, f func(T) U) []U {
+	us := make([]U, len(ts))
+	for i := range ts {
+		us[i] = f(ts[i])
+	}
+	return us
+}
+
 // CopyOf returns a new slice that has the same contents as s.
 func CopyOf[T any](s []T) []T {
 	// If the input is nil, return nil and not an empty list

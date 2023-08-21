@@ -17,6 +17,8 @@
 package provenance
 
 import (
+	"strings"
+
 	"android/soong/android"
 	"github.com/google/blueprint"
 )
@@ -38,8 +40,9 @@ var (
 			Command: `rm -rf $out && ` +
 				`echo "# proto-file: build/soong/provenance/proto/provenance_metadata.proto" > $out && ` +
 				`echo "# proto-message: ProvenanceMetaDataList" >> $out && ` +
-				`for file in $in; do echo '' >> $out; echo 'metadata {' | cat - $$file | grep -Ev "^#.*|^$$" >> $out; echo '}' >> $out; done`,
-		})
+				`cat $inputfile | while read -r file; do echo '' >> $out; echo 'metadata {' | cat - $$file | grep -Ev "^#.*|^$$" >> $out; echo '}' >> $out; done`,
+		},
+		"inputfile")
 )
 
 type ProvenanceMetadata interface {
@@ -71,12 +74,21 @@ func (p *provenanceInfoSingleton) GenerateBuildActions(context android.Singleton
 			allMetaDataFiles = append(allMetaDataFiles, p.ProvenanceMetaDataFile())
 		}
 	})
+
+	mergeProvenanceMetaDataInput := android.PathForIntermediates(context, "provenance_metadata.textproto.input")
+	android.WriteFileRule(context, mergeProvenanceMetaDataInput,
+		strings.Join(android.Map(allMetaDataFiles, android.Path.String), "\n"),
+	)
+
 	p.mergedMetaDataFile = android.PathForOutput(context, "provenance_metadata.textproto")
 	context.Build(pctx, android.BuildParams{
 		Rule:        mergeProvenanceMetaData,
 		Description: "merge provenance metadata",
-		Inputs:      allMetaDataFiles,
+		Inputs:      append(allMetaDataFiles, mergeProvenanceMetaDataInput),
 		Output:      p.mergedMetaDataFile,
+		Args:        map[string]string{
+			"inputfile": mergeProvenanceMetaDataInput.String(),
+		},
 	})
 
 	context.Build(pctx, android.BuildParams{

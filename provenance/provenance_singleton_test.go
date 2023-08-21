@@ -32,11 +32,17 @@ func TestProvenanceSingleton(t *testing.T) {
 	for _, output := range outputs {
 		testingBuildParam := result.SingletonForTests("provenance_metadata_singleton").Output(output)
 		switch {
+		case strings.Contains(output, "soong/.intermediates/provenance_metadata.textproto.input"):
+			android.AssertStringEquals(t, "Invalid build rule", "android/soong/android.writeFile", testingBuildParam.Rule.String())
+			android.AssertIntEquals(t, "Invalid input", len(testingBuildParam.Inputs), 0)
+			android.AssertStringDoesContain(t, "Invalid output path", output, "soong/.intermediates/provenance_metadata.textproto.input")
+			android.AssertIntEquals(t, "Invalid args", len(testingBuildParam.Args), 1)
+
 		case strings.Contains(output, "soong/provenance_metadata.textproto"):
 			android.AssertStringEquals(t, "Invalid build rule", "android/soong/provenance.mergeProvenanceMetaData", testingBuildParam.Rule.String())
-			android.AssertIntEquals(t, "Invalid input", len(testingBuildParam.Inputs), 0)
+			android.AssertIntEquals(t, "Invalid input", len(testingBuildParam.Inputs), 1)
 			android.AssertStringDoesContain(t, "Invalid output path", output, "soong/provenance_metadata.textproto")
-			android.AssertIntEquals(t, "Invalid args", len(testingBuildParam.Args), 0)
+			android.AssertIntEquals(t, "Invalid args", len(testingBuildParam.Args), 1)
 
 		case strings.HasSuffix(output, "provenance_metadata"):
 			android.AssertStringEquals(t, "Invalid build rule", "<builtin>:phony", testingBuildParam.Rule.String())
