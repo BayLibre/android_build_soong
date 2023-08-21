@@ -96,9 +96,6 @@ var (
 		// Many old files still have GNU designator syntax.
 		"-Wno-gnu-designator",
 
-		// Warnings from clang-12
-		"-Wno-gnu-folding-constant",
-
 		// http://b/145210666
 		"-Wno-error=reorder-init-list",
 
