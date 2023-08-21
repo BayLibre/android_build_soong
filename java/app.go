@@ -1652,6 +1652,21 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		Updatable:        a.appProperties.Updatable,
 	}
 
+	if ctx.ModuleName() == "framework-res" {
+		aapt.Resource_zips = bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, a.aaptProperties.Resource_zips))
+		appAttrs.bazelAapt = aapt
+
+		ctx.CreateBazelTargetModule(
+			bazel.BazelTargetModuleProperties{
+				Rule_class:        "framework_resources",
+				Bzl_load_location: "//build/bazel/rules/android:framework_resources.bzl",
+			},
+			android.CommonAttributes{Name: a.Name(), SkipData: proptools.BoolPtr(true)},
+			appAttrs,
+		)
+		return
+	}
+
 	if !BoolDefault(a.dexProperties.Optimize.Enabled, true) {
 		appAttrs.Optimize = proptools.BoolPtr(false)
 	} else {

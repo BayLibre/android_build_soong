@@ -226,6 +226,7 @@ var (
 		"frameworks/av/services/minijail":                    Bp2BuildDefaultTrueRecursively,
 		"frameworks/base/apex/jobscheduler/service/jni":      Bp2BuildDefaultTrueRecursively,
 		"frameworks/base/core/java":                          Bp2BuildDefaultTrue,
+		"frameworks/base/core/res":                           Bp2BuildDefaultTrueRecursively,
 		"frameworks/base/libs/androidfw":                     Bp2BuildDefaultTrue,
 		"frameworks/base/libs/services":                      Bp2BuildDefaultTrue,
 		"frameworks/base/media/tests/MediaDump":              Bp2BuildDefaultTrue,
@@ -551,10 +552,6 @@ var (
 		// ext
 		"tagsoup",
 
-		// framework-res
-		"remote-color-resources-compile-public",
-		"remote-color-resources-compile-colors",
-
 		// framework-minus-apex
 		"ImmutabilityAnnotationProcessor",
 		"android.mime.types.minimized",
@@ -566,7 +563,6 @@ var (
 		"apache-commons-math",
 		"cbor-java",
 		"icu4j_calendar_astronomer",
-		"remote-color-resources-compile-public",
 		"statslog-art-java-gen",
 
 		"AndroidCommonLint",
