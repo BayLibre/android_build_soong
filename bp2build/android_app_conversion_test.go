@@ -478,3 +478,39 @@ android_app {
 			}),
 		}})
 }
+
+func TestFrameworkResConversion(t *testing.T) {
+	runAndroidAppTestCase(t, Bp2buildTestCase{
+		Description:                "Framework Res custom conversion",
+		ModuleTypeUnderTest:        "android_app",
+		ModuleTypeUnderTestFactory: java.AndroidAppFactory,
+		Filesystem: map[string]string{
+			"res/values/attrs.xml": "",
+			"resource_zip.zip":     "",
+		},
+		Blueprint: `
+android_app {
+	name: "framework-res",
+	resource_zips: [
+		"resource_zip.zip",
+	],
+	certificate: "platform",
+	sdk_version: "30",
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("framework_resources", "framework-res", AttrNameToString{
+				"certificate_name": `"platform"`,
+				"manifest":         `"AndroidManifest.xml"`,
+
+				"manifest_values": `{
+        "minSdkVersion": "30",
+        "targetSdkVersion": "30",
+    }`,
+				"resource_files":         `["res/values/attrs.xml"]`,
+				"resource_zips":          `["resource_zip.zip"]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			}),
+		}})
+
+}
