@@ -1642,7 +1642,7 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	// TODO(b/274474008 ): Directly convert deviceProperties.Min_sdk_version in bp2build
 	// MinSdkVersion(ctx) calls SdkVersion(ctx) if no value for min_sdk_version is set
 	minSdkVersion := a.MinSdkVersion(ctx)
-	if !minSdkVersion.IsPreview() && !minSdkVersion.IsInvalid() {
+	if !minSdkVersion.IsInvalid() {
 		if minSdkStr, err := minSdkVersion.EffectiveVersionString(ctx); err == nil {
 			manifestValues.MinSdkVersion = &minSdkStr
 		}
@@ -1656,7 +1656,7 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	}
 
 	targetSdkVersion := a.TargetSdkVersion(ctx)
-	if !targetSdkVersion.IsPreview() && !targetSdkVersion.IsInvalid() {
+	if !targetSdkVersion.IsInvalid() {
 		if targetSdkStr, err := targetSdkVersion.EffectiveVersionString(ctx); err == nil {
 			manifestValues.TargetSdkVersion = &targetSdkStr
 		}
@@ -1668,6 +1668,21 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		Certificate:      certificate,
 		Certificate_name: certificateName,
 		Manifest_values:  manifestValues,
+	}
+
+	if ctx.ModuleName() == "framework-res" {
+		aapt.Resource_zips = bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, a.aaptProperties.Resource_zips))
+		appAttrs.bazelAapt = aapt
+		appAttrs.Proguard_specs.Value.Includes = nil
+		ctx.CreateBazelTargetModule(
+			bazel.BazelTargetModuleProperties{
+				Rule_class:        "framework_resources",
+				Bzl_load_location: "//build/bazel/rules/android:framework_resources.bzl",
+			},
+			android.CommonAttributes{Name: a.Name(), SkipData: proptools.BoolPtr(true)},
+			appAttrs,
+		)
+		return
 	}
 
 	if !BoolDefault(a.dexProperties.Optimize.Enabled, true) {

@@ -222,6 +222,7 @@ var (
 		"frameworks/av/media/module/foundation":              Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/media/module/minijail":                Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/services/minijail":                    Bp2BuildDefaultTrueRecursively,
+		"frameworks/base/core/res":                           Bp2BuildDefaultTrueRecursively,
 		"frameworks/base/libs/androidfw":                     Bp2BuildDefaultTrue,
 		"frameworks/base/libs/services":                      Bp2BuildDefaultTrue,
 		"frameworks/base/media/tests/MediaDump":              Bp2BuildDefaultTrue,
@@ -540,10 +541,6 @@ var (
 		// ext
 		"tagsoup",
 
-		// framework-res
-		"remote-color-resources-compile-public",
-		"remote-color-resources-compile-colors",
-
 		// framework-minus-apex
 		"android.mime.types.minimized",
 		"debian.mime.types.minimized",
@@ -555,7 +552,6 @@ var (
 		"cbor-java",
 		"icu4j_calendar_astronomer",
 		"json",
-		"remote-color-resources-compile-public",
 		"statslog-art-java-gen",
 		"statslog-framework-java-gen",
 
