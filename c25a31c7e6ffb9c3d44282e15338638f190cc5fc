@@ -16,6 +16,24 @@
       "message": "jeongik@google.com I updated this CL to use product name based glob dir only with soongBuildTag build action. Otherwise globs will be overwritten between soongBuildTag and bp2buildFilesTag. PTAL.",
       "revId": "c25a31c7e6ffb9c3d44282e15338638f190cc5fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eaf7371_e5a93032",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-08-21T00:56:20Z",
+      "side": 1,
+      "message": "LGTM, thanks!!",
+      "parentUuid": "a4fd4c96_9f55bac2",
+      "revId": "c25a31c7e6ffb9c3d44282e15338638f190cc5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
