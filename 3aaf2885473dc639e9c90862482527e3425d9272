@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91b6318_6f626698",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-08-21T16:44:55Z",
+      "side": 1,
+      "message": "I find this difficult to read. Suggestion.\n\n```\nif vndkVersion \u003d\u003d \"current\" {\n  latestVndkSnapshotted :\u003d ctx.OtherModuleExists(... PlatformVndkVersion())\n  if latestVndkSnapshotted {\n      // If the latest VNDK is already snapshotted (which can happen with the\n      // `next` config, use the prebuilt txt files in the snapshot. This is because\n      // the txt files built from source are probably be for the in-development\n      // version.\n      vndkVersion \u003d ...PlatformVndkVersion()\n  } else {\n      // construct result\n      return result\n  }\n}\n\n```",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "3aaf2885473dc639e9c90862482527e3425d9272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
