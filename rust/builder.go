@@ -380,14 +380,42 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 		Flags(rustcFlags).
 		ImplicitOutputs(rustcImplicitOutputs)
 
+	// TODO: b/296916040 - remove the depfile once we are sandboxing all compilations
 	depfileCreationCmd := rustcRule.Command()
 	depfileCreationCmd.
-		Flag(fmt.Sprintf(
+		Text(fmt.Sprintf(
 			`grep "^%s:" %s >`,
 			depfileCreationCmd.PathForOutput(rustSboxOutputFile),
 			depfileCreationCmd.PathForOutput(depInfoFile),
 		)).
 		DepFile(depFile)
+
+	enforceSandboxInputs := ctx.Config().IsEnvTrue("RUSTC_ENFORCE_SANDBOXED_INPUTS")
+	if enforceSandboxInputs {
+		sandboxInputs := android.SortedUniquePaths(android.Concat(inputs, implicits, toolImplicits, linkImplicits))
+		sandboxInputsRspPath := android.PathForModuleOut(ctx, "sandboxInputs.rsp")
+		depfileVerificationCmd := rustcRule.Command()
+		depfileVerificationCmd.
+			Text(fmt.Sprintf(
+				`newlineSeparatedDeps=$$(for word in $$(cat %s); do realpath $$word; done) &&
+				newlineSeparatedRsp=$$(for word in $$(cat %s); do realpath $$word; done) &&
+				diff=$$(comm -23
+					<(echo "$$newlineSeparatedDeps" | tail -n +2 | sort -u)
+					<(echo "$$newlineSeparatedRsp" | sort -u)) &&
+				if [[ -n "$$diff" ]]; then
+					echo "ERROR: Detected files in the depfile that were not added to the sandbox:";
+					echo "$$diff";
+					exit 1;
+				fi`,
+				depfileVerificationCmd.PathForInput(depFile),
+				depfileVerificationCmd.PathForInput(sandboxInputsRspPath),
+			)).
+			Implicit(depFile).
+			ImplicitRspFileInputList(
+				sandboxInputsRspPath,
+				sandboxInputs,
+			)
+	}
 
 	if !usesLinker {
 		ctx.Build(pctx, android.BuildParams{
