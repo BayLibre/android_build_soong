@@ -1315,6 +1315,16 @@ func (c *RuleBuilderCommand) FlagWithDepFile(flag string, path WritablePath) *Ru
 // RuleBuilderCommand of a RuleBuilder will use Ninja's rsp file support for the rule, additional
 // uses will result in an auxiliary rules to write the rspFile contents.
 func (c *RuleBuilderCommand) FlagWithRspFileInputList(flag string, rspFile WritablePath, paths Paths) *RuleBuilderCommand {
+	c.ImplicitRspFileInputList(rspFile, paths)
+	c.FlagWithArg(flag, c.PathForInput(rspFile))
+	return c
+}
+
+// ImplicitRspFileInputList writes the paths to the rspfile. If sbox is enabled, the
+// rspfile must be outside the sbox directory.  The first use of FlagWithRspFileInputList in any
+// RuleBuilderCommand of a RuleBuilder will use Ninja's rsp file support for the rule, additional
+// uses will result in an auxiliary rules to write the rspFile contents.
+func (c *RuleBuilderCommand) ImplicitRspFileInputList(rspFile WritablePath, paths Paths) *RuleBuilderCommand {
 	// Use an empty slice if paths is nil, the non-nil slice is used as an indicator that the rsp file must be
 	// generated.
 	if paths == nil {
@@ -1330,7 +1340,6 @@ func (c *RuleBuilderCommand) FlagWithRspFileInputList(flag string, rspFile Writa
 		}
 	}
 
-	c.FlagWithArg(flag, c.PathForInput(rspFile))
 	return c
 }
 
