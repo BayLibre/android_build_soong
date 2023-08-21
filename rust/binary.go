@@ -144,7 +144,6 @@ func (binary *binaryDecorator) compile(ctx ModuleContext, flags Flags, deps Path
 
 	flags.RustFlags = append(flags.RustFlags, deps.depFlags...)
 	flags.LinkFlags = append(flags.LinkFlags, deps.depLinkFlags...)
-	flags.LinkFlags = append(flags.LinkFlags, deps.linkObjects.Strings()...)
 
 	if binary.stripper.NeedsStrip(ctx) {
 		strippedOutputFile := outputFile

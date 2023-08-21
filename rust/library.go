@@ -537,7 +537,6 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 
 	flags.RustFlags = append(flags.RustFlags, deps.depFlags...)
 	flags.LinkFlags = append(flags.LinkFlags, deps.depLinkFlags...)
-	flags.LinkFlags = append(flags.LinkFlags, deps.linkObjects.Strings()...)
 
 	if library.dylib() {
 		// We need prefer-dynamic for now to avoid linking in the static stdlib. See:

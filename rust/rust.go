@@ -447,7 +447,7 @@ type PathDeps struct {
 
 	// linkDirs are link paths passed via -L to rustc. linkObjects are objects passed directly to the linker.
 	// Both of these are exported and propagate to dependencies.
-	linkDirs    []string
+	linkDirs    android.Paths
 	linkObjects android.Paths
 
 	// Used by bindgen modules which call clang
@@ -462,6 +462,14 @@ type PathDeps struct {
 	// Paths to generated source files
 	SrcDeps          android.Paths
 	srcProviderFiles android.Paths
+
+	// Paths to specific build tools
+	Rustc          android.Path
+	Clang          android.Path
+	Llvm_ar        android.Path
+	Rust_extractor android.Path
+	Clippy_driver  android.Path
+	Rustdoc        android.Path
 }
 
 type RustLibraries []RustLibrary
@@ -512,7 +520,7 @@ type compiler interface {
 }
 
 type exportedFlagsProducer interface {
-	exportLinkDirs(...string)
+	exportLinkDirs(...android.Path)
 	exportLinkObjects(...android.Path)
 }
 
@@ -521,13 +529,13 @@ type xref interface {
 }
 
 type flagExporter struct {
-	linkDirs    []string
+	linkDirs    android.Paths
 	linkObjects android.Paths
 	libDeps     android.Paths
 }
 
-func (flagExporter *flagExporter) exportLinkDirs(dirs ...string) {
-	flagExporter.linkDirs = android.FirstUniqueStrings(append(flagExporter.linkDirs, dirs...))
+func (flagExporter *flagExporter) exportLinkDirs(dirs ...android.Path) {
+	flagExporter.linkDirs = android.FirstUniquePaths(append(flagExporter.linkDirs, dirs...))
 }
 
 func (flagExporter *flagExporter) exportLinkObjects(flags ...android.Path) {
@@ -554,7 +562,7 @@ func NewFlagExporter() *flagExporter {
 
 type FlagExporterInfo struct {
 	Flags       []string
-	LinkDirs    []string // TODO: this should be android.Paths
+	LinkDirs    android.Paths
 	LinkObjects android.Paths
 	LibDeps     android.Paths
 }
@@ -1343,9 +1351,8 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 			if depTag == dylibDepTag || depTag == rlibDepTag || depTag == procMacroDepTag {
 				linkFile := rustDep.UnstrippedOutputFile()
-				linkDir := linkPathFromFilePath(linkFile)
 				if lib, ok := mod.compiler.(exportedFlagsProducer); ok {
-					lib.exportLinkDirs(linkDir)
+					lib.exportLinkDirs(linkFile.Dir())
 				}
 			}
 
@@ -1372,7 +1379,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				return
 			}
 
-			linkPath := linkPathFromFilePath(linkObject.Path())
+			linkPath := linkObject.Path().Dir()
 
 			exportDep := false
 			switch {
@@ -1426,7 +1433,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					}
 					return
 				}
-				linkPath = linkPathFromFilePath(linkObject.Path())
+				linkPath = linkObject.Path().Dir()
 
 				depPaths.linkDirs = append(depPaths.linkDirs, linkPath)
 				depPaths.linkObjects = append(depPaths.linkObjects, linkObject.AsPaths()...)
@@ -1465,6 +1472,20 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				buildTool := ctx.OtherModuleProvider(dep, android.PrebuiltBuildToolInfoProvider).(android.PrebuiltBuildToolInfo)
 				depPaths.BuildToolDeps = append(depPaths.BuildToolDeps, buildTool.Src)
 				depPaths.BuildToolDeps = append(depPaths.BuildToolDeps, buildTool.Deps...)
+				switch android.RemoveOptionalPrebuiltPrefix(dep.Name()) {
+				case "rustc":
+					depPaths.Rustc = buildTool.Src
+				case "clang++":
+					depPaths.Clang = buildTool.Src
+				case "llvm-ar":
+					depPaths.Llvm_ar = buildTool.Src
+				case "rust_extractor":
+					depPaths.Rust_extractor = buildTool.Src
+				case "clippy-driver":
+					depPaths.Clippy_driver = buildTool.Src
+				case "rustdoc":
+					depPaths.Rustdoc = buildTool.Src
+				}
 			case depTag == cc.CrtBeginDepTag:
 				depPaths.CrtBegin = append(depPaths.CrtBegin, android.OutputFileForModule(ctx, dep, ""))
 			case depTag == cc.CrtEndDepTag:
@@ -1522,7 +1543,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	depPaths.SrcDeps = append(depPaths.SrcDeps, srcProviderDepFiles...)
 
 	// Dedup exported flags from dependencies
-	depPaths.linkDirs = android.FirstUniqueStrings(depPaths.linkDirs)
+	depPaths.linkDirs = android.FirstUniquePaths(depPaths.linkDirs)
 	depPaths.linkObjects = android.FirstUniquePaths(depPaths.linkObjects)
 	depPaths.depFlags = android.FirstUniqueStrings(depPaths.depFlags)
 	depPaths.depClangFlags = android.FirstUniqueStrings(depPaths.depClangFlags)
@@ -1553,10 +1574,6 @@ func (mod *Module) InstallInVendorRamdisk() bool {
 
 func (mod *Module) InstallInRecovery() bool {
 	return mod.InRecovery()
-}
-
-func linkPathFromFilePath(filepath android.Path) string {
-	return strings.Split(filepath.String(), filepath.Base())[0]
 }
 
 // usePublicApi returns true if the rust variant should link against NDK (publicapi)
@@ -1602,7 +1619,14 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	}
 
 	ctx.AddFarVariationDependencies([]blueprint.Variation{}, buildToolDepTag, "rustc")
+	ctx.AddFarVariationDependencies([]blueprint.Variation{}, buildToolDepTag, "rust_extractor")
+	ctx.AddFarVariationDependencies([]blueprint.Variation{}, buildToolDepTag, "clippy-driver")
+	ctx.AddFarVariationDependencies([]blueprint.Variation{}, buildToolDepTag, "rustdoc")
 	ctx.AddFarVariationDependencies([]blueprint.Variation{}, buildToolDepTag, "clang++")
+	ctx.AddFarVariationDependencies([]blueprint.Variation{}, buildToolDepTag, "clang++.real")
+	ctx.AddFarVariationDependencies([]blueprint.Variation{}, buildToolDepTag, "lld")
+	ctx.AddFarVariationDependencies([]blueprint.Variation{}, buildToolDepTag, "ld.lld")
+	ctx.AddFarVariationDependencies([]blueprint.Variation{}, buildToolDepTag, "llvm-ar")
 
 	// rlibs
 	rlibDepVariations = append(rlibDepVariations, blueprint.Variation{Mutator: "rust_libraries", Variation: rlibVariation})

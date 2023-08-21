@@ -208,11 +208,11 @@ func skipTestIfOsNotSupported(t *testing.T) {
 // Test that we can extract the link path from a lib path.
 func TestLinkPathFromFilePath(t *testing.T) {
 	barPath := android.PathForTesting("out/soong/.intermediates/external/libbar/libbar/linux_glibc_x86_64_shared/libbar.so")
-	libName := linkPathFromFilePath(barPath)
-	expectedResult := "out/soong/.intermediates/external/libbar/libbar/linux_glibc_x86_64_shared/"
+	libName := barPath.Dir()
+	expectedResult := "out/soong/.intermediates/external/libbar/libbar/linux_glibc_x86_64_shared"
 
-	if libName != expectedResult {
-		t.Errorf("libNameFromFilePath returned the wrong name; expected '%#v', got '%#v'", expectedResult, libName)
+	if libName.String() != expectedResult {
+		t.Errorf("libNameFromFilePath returned the wrong name; expected '%#v', got '%#v'", expectedResult, libName.String())
 	}
 }
 
@@ -642,6 +642,12 @@ func TestSandboxCompilation(t *testing.T) {
 				"out/soong/.intermediates/libfizz_buzz/android_arm64_armv8-a_dylib/out/src_filegroup1.rs",
 				"out/soong/.intermediates/libfizz_buzz/android_arm64_armv8-a_dylib/out/src_filegroup2.rs",
 
+				"out/soong/.intermediates/defaults/cc/common/libc/android_arm64_armv8-a_shared/libc.so",
+				"out/soong/.intermediates/defaults/cc/common/libc/android_arm64_armv8-a_shared/libc.so.toc",
+				"out/soong/.intermediates/defaults/cc/common/libm/android_arm64_armv8-a_shared/libm.so",
+				"out/soong/.intermediates/defaults/cc/common/libm/android_arm64_armv8-a_shared/libm.so.toc",
+				"out/soong/.intermediates/defaults/cc/common/libdl/android_arm64_armv8-a_shared/libdl.so",
+				"out/soong/.intermediates/defaults/cc/common/libdl/android_arm64_armv8-a_shared/libdl.so.toc",
 				"out/soong/.intermediates/defaults/rust/libstd/android_arm64_armv8-a_dylib/unstripped/libstd.dylib.so",
 				"out/soong/.intermediates/defaults/cc/common/crtbegin_so/android_arm64_armv8-a/crtbegin_so.o",
 				"out/soong/.intermediates/defaults/cc/common/crtend_so/android_arm64_armv8-a/crtend_so.o",
@@ -650,8 +656,8 @@ func TestSandboxCompilation(t *testing.T) {
 			expectedFlags: []string{
 				"-C linker=build/soong/scripts/mkcratersp.py",
 				"--emit link",
-				"-o __SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.dylib.so.rsp",
-				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.dylib.so.d.raw",
+				"-o __SBOX_SANDBOX_DIR__/out/libfizz_buzz.dylib.so.rsp",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/libfizz_buzz.dylib.so.d.raw",
 				"foo.rs", // this is the entry point
 			},
 		},
@@ -674,8 +680,8 @@ func TestSandboxCompilation(t *testing.T) {
 			}),
 			expectedFlags: []string{
 				"--emit link",
-				"-o __SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.rlib",
-				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.rlib.d.raw",
+				"-o __SBOX_SANDBOX_DIR__/out/libfizz_buzz.rlib",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/libfizz_buzz.rlib.d.raw",
 				"foo.rs", // this is the entry point
 			},
 		},
@@ -699,8 +705,8 @@ func TestSandboxCompilation(t *testing.T) {
 			}),
 			expectedFlags: []string{
 				"--emit link",
-				"-o __SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.rlib",
-				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.rlib.d.raw",
+				"-o __SBOX_SANDBOX_DIR__/out/libfizz_buzz.rlib",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/libfizz_buzz.rlib.d.raw",
 				"foo.rs", // this is the entry point
 			},
 		},
@@ -726,8 +732,8 @@ func TestSandboxCompilation(t *testing.T) {
 			}),
 			expectedFlags: []string{
 				"--emit link",
-				"-o __SBOX_SANDBOX_DIR__/out/soong/fizz_buzz",
-				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/soong/fizz_buzz.d.raw",
+				"-o __SBOX_SANDBOX_DIR__/out/fizz_buzz",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/fizz_buzz.d.raw",
 				"foo.rs", // this is the entry point
 			},
 		},
@@ -744,8 +750,8 @@ func TestSandboxCompilation(t *testing.T) {
 			}),
 			expectedFlags: []string{
 				"--emit link",
-				"-o __SBOX_SANDBOX_DIR__/out/soong/librust_ffi.a",
-				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/soong/librust_ffi.a.d.raw",
+				"-o __SBOX_SANDBOX_DIR__/out/librust_ffi.a",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/librust_ffi.a.d.raw",
 				"foo.rs", // this is the entry point
 			},
 		},
@@ -765,8 +771,8 @@ func TestSandboxCompilation(t *testing.T) {
 			}),
 			expectedFlags: []string{
 				"--emit link",
-				"-o __SBOX_SANDBOX_DIR__/out/soong/librust_ffi.so",
-				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/soong/librust_ffi.so.d.raw",
+				"-o __SBOX_SANDBOX_DIR__/out/librust_ffi.so",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/librust_ffi.so.d.raw",
 				"foo.rs", // this is the entry point
 			},
 		},
@@ -840,10 +846,12 @@ func TestSandboxCompilation(t *testing.T) {
 			err := prototext.Unmarshal([]byte(contents), &manifestProto)
 			if err != nil {
 				t.Errorf("expected no errors unmarshaling manifest proto; got %v", err)
+				return
 			}
 
 			if len(manifestProto.Commands) != 1 {
 				t.Errorf("expected 1 command; got %v", len(manifestProto.Commands))
+				return
 			}
 
 			// check that sandbox contains correct files
@@ -870,6 +878,113 @@ func TestSandboxCompilation(t *testing.T) {
 					flag,
 				)
 			}
+		})
+	}
+}
+
+func TestSandboxDepfileComparison(t *testing.T) {
+	ctx := testRust(t, `
+		rust_library {
+			name: "libfizz_buzz",
+			crate_name:"fizz_buzz",
+			crate_root: "foo.rs",
+			srcs: [
+				"src_lib*.rs",
+			],
+			compile_data: [
+				"compile_data1.txt",
+				"compile_data2.txt",
+			],
+			dylib: {
+				srcs: ["dylib_only.rs"],
+			},
+			rlib: {
+				srcs: ["rlib_only.rs"],
+			},
+		}
+	`,
+		android.FixtureMergeMockFs(android.MockFS{
+			"src_lib1.rs": nil,
+			"src_lib2.rs": nil,
+			"src_lib3.rs": nil,
+			"src_lib4.rs": nil,
+		}),
+	)
+
+	testcases := []struct {
+		name                           string
+		moduleName                     string
+		variant                        string
+		expectedDepfileComparisonFiles []string
+	}{
+		{
+			name:       "rust_library (dylib)",
+			moduleName: "libfizz_buzz",
+			variant:    "android_arm64_armv8-a_dylib",
+			expectedDepfileComparisonFiles: []string{
+				"foo.rs",
+				"src_lib1.rs",
+				"src_lib2.rs",
+				"src_lib3.rs",
+				"src_lib4.rs",
+				"compile_data1.txt",
+				"compile_data2.txt",
+				"dylib_only.rs",
+			},
+		},
+		{
+			name:       "rust_library (rlib dylib-std)",
+			moduleName: "libfizz_buzz",
+			variant:    "android_arm64_armv8-a_rlib_dylib-std",
+			expectedDepfileComparisonFiles: []string{
+				"foo.rs",
+				"src_lib1.rs",
+				"src_lib2.rs",
+				"src_lib3.rs",
+				"src_lib4.rs",
+				"compile_data1.txt",
+				"compile_data2.txt",
+				"dylib_only.rs",
+			},
+		},
+		{
+			name:       "rust_library (rlib rlib-std)",
+			moduleName: "libfizz_buzz",
+			variant:    "android_arm64_armv8-a_rlib_rlib-std",
+			expectedDepfileComparisonFiles: []string{
+				"foo.rs",
+				"src_lib1.rs",
+				"src_lib2.rs",
+				"src_lib3.rs",
+				"src_lib4.rs",
+				"compile_data1.txt",
+				"compile_data2.txt",
+				"rlib_only.rs",
+			},
+		},
+	}
+
+	for _, tc := range testcases {
+		t.Run(tc.name, func(t *testing.T) {
+			writeFile := ctx.ModuleForTests(tc.moduleName, tc.variant).Rule("writeExpandedFileRule")
+			contents := writeFile.BuildParams.Args["contents"]
+			manifestProto := sbox_proto.Manifest{}
+			err := prototext.Unmarshal([]byte(contents), &manifestProto)
+			if err != nil {
+				t.Errorf("expected no errors unmarshaling manifest proto; got %v", err)
+				return
+			}
+
+			if len(manifestProto.Commands) != 1 {
+				t.Errorf("expected 1 command; got %v", len(manifestProto.Commands))
+				return
+			}
+
+			// check that sandbox contains correct files
+			rustc := manifestProto.Commands[0]
+			fmt.Println(rustc)
+
+			// TODO finish this test: figure out where the RSP file is written
 		})
 	}
 }

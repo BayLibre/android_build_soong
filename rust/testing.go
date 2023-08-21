@@ -60,6 +60,18 @@ func GatherRequiredDepsForTest() string {
 				"linux-x86/1.69.0/lib64/libc++.so.1",
 			],
 		}
+		prebuilt_build_tool {
+			name: "rust_extractor",
+			src: "prebuilts/build-tools/rust_extractor",
+		}
+		prebuilt_build_tool {
+			name: "clippy-driver",
+			src: "linux-x86/1.69.0/bin/clippy-driver",
+		}
+		prebuilt_build_tool {
+			name: "rustdoc",
+			src: "linux-x86/1.69.0/bin/rustdoc",
+		}
 		rust_prebuilt_library {
 				name: "libstd",
 				crate_name: "std",

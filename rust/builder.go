@@ -22,7 +22,6 @@ import (
 	"github.com/google/blueprint"
 
 	"android/soong/android"
-	cc_config "android/soong/cc/config"
 	"android/soong/rust/config"
 )
 
@@ -56,23 +55,6 @@ var (
 		func(ctx android.PackageVarContext) string { return ctx.Config().XrefCorpusName() })
 	_ = pctx.VariableFunc("kytheCuEncoding",
 		func(ctx android.PackageVarContext) string { return ctx.Config().XrefCuEncoding() })
-	_            = pctx.SourcePathVariable("kytheVnames", "build/soong/vnames.json")
-	kytheExtract = pctx.AndroidStaticRule("kythe",
-		blueprint.RuleParams{
-			Command: `KYTHE_CORPUS=${kytheCorpus} ` +
-				`KYTHE_OUTPUT_FILE=$out ` +
-				`KYTHE_VNAMES=$kytheVnames ` +
-				`KYTHE_KZIP_ENCODING=${kytheCuEncoding} ` +
-				`KYTHE_CANONICALIZE_VNAME_PATHS=prefer-relative ` +
-				`$rustExtractor $envVars ` +
-				`$rustcCmd ` +
-				`-C linker=true ` +
-				`$in ${libFlags} $rustcFlags`,
-			CommandDeps:    []string{"$rustExtractor", "$kytheVnames"},
-			Rspfile:        "${out}.rsp",
-			RspfileContent: "$in",
-		},
-		"rustcFlags", "libFlags", "envVars")
 )
 
 type buildOutput struct {
@@ -146,7 +128,7 @@ func makeLibFlags(deps PathDeps, ruleCmd *android.RuleBuilderCommand) []string {
 	}
 
 	for _, path := range deps.linkDirs {
-		libFlags = append(libFlags, "-L "+path)
+		libFlags = append(libFlags, "-L "+ruleCmd.PathForInput(path))
 	}
 
 	return libFlags
@@ -163,11 +145,10 @@ func collectImplicits(deps PathDeps) android.Paths {
 	depPaths = append(depPaths, deps.srcProviderFiles...)
 	depPaths = append(depPaths, deps.LibDeps...)
 	depPaths = append(depPaths, deps.linkObjects...)
-	depPaths = append(depPaths, deps.BuildToolDeps...)
 	return depPaths
 }
 
-func rustEnvVars(ctx ModuleContext, deps PathDeps) []string {
+func rustEnvVars(ctx ModuleContext, deps PathDeps, cmd *android.RuleBuilderCommand) []string {
 	var envVars []string
 
 	// libstd requires a specific environment variable to be set. This is
@@ -220,7 +201,7 @@ func rustEnvVars(ctx ModuleContext, deps PathDeps) []string {
 		}
 	}
 
-	envVars = append(envVars, "AR=${cc_config.ClangBin}/llvm-ar")
+	envVars = append(envVars, "AR="+cmd.PathForTool(deps.Llvm_ar))
 
 	if ctx.Darwin() {
 		envVars = append(envVars, "ANDROID_RUST_DARWIN=true")
@@ -240,8 +221,6 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 	output.outputFile = outputFile
 	crateName := ctx.RustModule().CrateName()
 	targetTriple := ctx.toolchain().RustTriple()
-
-	envVars := rustEnvVars(ctx, deps)
 
 	inputs = append(inputs, main)
 
@@ -277,21 +256,10 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 		earlyLinkFlags = append(earlyLinkFlags, "-Wl,--as-needed")
 	}
 
-	linkFlags = append(linkFlags, flags.GlobalLinkFlags...)
-	linkFlags = append(linkFlags, flags.LinkFlags...)
-
-	// Check if this module needs to use the bootstrap linker
-	if ctx.RustModule().Bootstrap() && !ctx.RustModule().InRecovery() && !ctx.RustModule().InRamdisk() && !ctx.RustModule().InVendorRamdisk() {
-		dynamicLinker := "-Wl,-dynamic-linker,/system/bin/bootstrap/linker"
-		if ctx.toolchain().Is64Bit() {
-			dynamicLinker += "64"
-		}
-		linkFlags = append(linkFlags, dynamicLinker)
-	}
-
 	// Collect dependencies
 	var linkImplicits android.Paths
 	implicits := collectImplicits(deps)
+	toolImplicits := deps.BuildToolDeps
 	linkImplicits = append(linkImplicits, deps.CrtBegin...)
 	linkImplicits = append(linkImplicits, deps.CrtEnd...)
 	implicits = append(implicits, comp.compilationSourcesAndData(ctx)...)
@@ -323,21 +291,21 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 	if flags.Clippy {
 		clippyRule := android.NewRuleBuilder(pctx, ctx)
 		clippyCmd := clippyRule.Command()
-		libFlags := makeLibFlags(deps, clippyCmd)
 		clippyFile := android.PathForModuleOut(ctx, outputFile.Base()+".clippy")
 		clippyDepInfoFile := android.PathForModuleOut(ctx, outputFile.Base()+".clippy.d.raw")
 		clippyDepFile := android.PathForModuleOut(ctx, outputFile.Base()+".clippy.d")
 
 		clippyCmd.
-			Flags(envVars).
-			Flag("${config.RustBin}/clippy-driver").
+			Flags(rustEnvVars(ctx, deps, clippyCmd)).
+			Tool(deps.Clippy_driver).
 			Flag("--emit metadata").
 			FlagWithOutput("-o ", clippyFile).
 			FlagWithOutput("--emit dep-info=", clippyDepInfoFile).
 			Inputs(inputs).
-			Flags(libFlags).
+			Flags(makeLibFlags(deps, clippyCmd)).
 			Flags(rustcFlags).
 			Flags(flags.ClippyFlags).
+			ImplicitTools(toolImplicits).
 			Implicits(implicits)
 
 		depfileCreationCmd := clippyRule.Command()
@@ -355,21 +323,11 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 		implicits = append(implicits, clippyFile)
 	}
 
-	clangBinPath := cc_config.ClangPath(ctx, "bin")
 	sboxDirectory := "rustc"
 	rustSboxOutputFile := android.PathForModuleOut(ctx, sboxDirectory, outputFile.Base())
 	depFile := android.PathForModuleOut(ctx, sboxDirectory, rustSboxOutputFile.Base()+".d")
 	depInfoFile := android.PathForModuleOut(ctx, sboxDirectory, rustSboxOutputFile.Base()+".d.raw")
 	var rustcImplicitOutputs android.WritablePaths
-
-	usesLinker := crateType == "bin" || crateType == "dylib" || crateType == "cdylib" || crateType == "proc-macro"
-	if usesLinker {
-		rustSboxOutputFile = android.PathForModuleOut(ctx, sboxDirectory, rustSboxOutputFile.Base()+".rsp")
-		rustcImplicitOutputs = android.WritablePaths{
-			android.PathForModuleOut(ctx, sboxDirectory, rustSboxOutputFile.Base()+".whole.a"),
-			android.PathForModuleOut(ctx, sboxDirectory, rustSboxOutputFile.Base()+".a"),
-		}
-	}
 
 	rustcRule := android.NewRuleBuilder(pctx, ctx)
 	sandboxedCompilation := comp.crateRoot(ctx) != nil
@@ -381,14 +339,35 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 			).
 			SandboxInputs()
 	}
-
 	rustcCmd := rustcRule.Command()
+
+	linkFlags = append(linkFlags, flags.GlobalLinkFlags...)
+	linkFlags = append(linkFlags, flags.LinkFlags...)
+	linkFlags = append(linkFlags, rustcCmd.PathsForInputs(deps.linkObjects)...)
+
+	// Check if this module needs to use the bootstrap linker
+	if ctx.RustModule().Bootstrap() && !ctx.RustModule().InRecovery() && !ctx.RustModule().InRamdisk() && !ctx.RustModule().InVendorRamdisk() {
+		dynamicLinker := "-Wl,-dynamic-linker,/system/bin/bootstrap/linker"
+		if ctx.toolchain().Is64Bit() {
+			dynamicLinker += "64"
+		}
+		linkFlags = append(linkFlags, dynamicLinker)
+	}
+
 	libFlags := makeLibFlags(deps, rustcCmd)
 
+	usesLinker := crateType == "bin" || crateType == "dylib" || crateType == "cdylib" || crateType == "proc-macro"
+	if usesLinker {
+		rustSboxOutputFile = android.PathForModuleOut(ctx, sboxDirectory, rustSboxOutputFile.Base()+".rsp")
+		rustcImplicitOutputs = android.WritablePaths{
+			android.PathForModuleOut(ctx, sboxDirectory, rustSboxOutputFile.Base()+".whole.a"),
+			android.PathForModuleOut(ctx, sboxDirectory, rustSboxOutputFile.Base()+".a"),
+		}
+	}
+
 	rustcCmd.
-		Flags(envVars).
-		Flag("${config.RustBin}/rustc").
-		ImplicitTool(clangBinPath.Join(ctx, "llvm-ar")).
+		Flags(rustEnvVars(ctx, deps, rustcCmd)).
+		Tool(deps.Rustc).
 		FlagWithInput("-C linker=", android.PathForSource(ctx, "build", "soong", "scripts", "mkcratersp.py")).
 		Flag("--emit link").
 		Flag("-o").
@@ -396,18 +375,47 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 		FlagWithOutput("--emit dep-info=", depInfoFile).
 		Inputs(inputs).
 		Flags(libFlags).
+		ImplicitTools(toolImplicits).
 		Implicits(implicits).
 		Flags(rustcFlags).
 		ImplicitOutputs(rustcImplicitOutputs)
 
+	// TODO: b/296916040 - remove the depfile once we are sandboxing all compilations
 	depfileCreationCmd := rustcRule.Command()
 	depfileCreationCmd.
-		Flag(fmt.Sprintf(
+		Text(fmt.Sprintf(
 			`grep "^%s:" %s >`,
 			depfileCreationCmd.PathForOutput(rustSboxOutputFile),
 			depfileCreationCmd.PathForOutput(depInfoFile),
 		)).
 		DepFile(depFile)
+
+	enforceSandboxInputs := ctx.Config().IsEnvTrue("RUSTC_ENFORCE_SANDBOXED_INPUTS")
+	if enforceSandboxInputs {
+		sandboxInputs := android.SortedUniquePaths(android.Concat(inputs, implicits, toolImplicits, linkImplicits))
+		sandboxInputsRspPath := android.PathForModuleOut(ctx, "sandboxInputs.rsp")
+		depfileVerificationCmd := rustcRule.Command()
+		depfileVerificationCmd.
+			Text(fmt.Sprintf(
+				`newlineSeparatedDeps=$$(for word in $$(cat %s); do realpath $$word; done) &&
+				newlineSeparatedRsp=$$(for word in $$(cat %s); do realpath $$word; done) &&
+				diff=$$(comm -23
+					<(echo "$$newlineSeparatedDeps" | tail -n +2 | sort -u)
+					<(echo "$$newlineSeparatedRsp" | sort -u)) &&
+				if [[ -n "$$diff" ]]; then
+					echo "ERROR: Detected files in the depfile that were not added to the sandbox:";
+					echo "$$diff";
+					exit 1;
+				fi`,
+				depfileVerificationCmd.PathForInput(depFile),
+				depfileVerificationCmd.PathForInput(sandboxInputsRspPath),
+			)).
+			Implicit(depFile).
+			ImplicitRspFileInputList(
+				sandboxInputsRspPath,
+				sandboxInputs,
+			)
+	}
 
 	if !usesLinker {
 		ctx.Build(pctx, android.BuildParams{
@@ -423,12 +431,7 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 		linkerSboxOutputFile := android.PathForModuleOut(ctx, sboxDirectory, outputFile.Base())
 		rustLinkCmd := rustcRule.Command()
 		rustLinkCmd.
-			Tool(clangBinPath.Join(ctx, "clang++")).
-			ImplicitTools(android.Paths{
-				clangBinPath.Join(ctx, "clang++.real"),
-				clangBinPath.Join(ctx, "lld"),
-				clangBinPath.Join(ctx, "ld.lld"),
-			}).
+			Tool(deps.Clang).
 			Flag("-o").
 			Output(linkerSboxOutputFile).
 			Inputs(deps.CrtBegin).
@@ -436,6 +439,7 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 			FlagWithInput("@", rustSboxOutputFile).
 			Flags(linkFlags).
 			Inputs(deps.CrtEnd).
+			ImplicitTools(toolImplicits).
 			Implicits(rustcImplicitOutputs.Paths()).
 			Implicits(implicits).
 			Implicits(linkImplicits)
@@ -449,19 +453,25 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 	rustcRule.BuildWithNinjaVars("rustc", "rustc "+main.Rel(), pctx)
 
 	if flags.EmitXrefs {
+		kytheRule := android.NewRuleBuilder(pctx, ctx)
+		kytheCmd := kytheRule.Command()
 		kytheFile := android.PathForModuleOut(ctx, outputFile.Base()+".kzip")
-		ctx.Build(pctx, android.BuildParams{
-			Rule:        kytheExtract,
-			Description: "Xref Rust extractor " + main.Rel(),
-			Output:      kytheFile,
-			Inputs:      inputs,
-			Implicits:   implicits,
-			Args: map[string]string{
-				"rustcFlags": strings.Join(rustcFlags, " "),
-				"libFlags":   strings.Join(libFlags, " "),
-				"envVars":    strings.Join(envVars, " "),
-			},
-		})
+		kytheCmd.
+			Flag("KYTHE_CORPUS=${kytheCorpus}").
+			FlagWithOutput("KYTHE_OUTPUT_FILE=", kytheFile).
+			FlagWithInput("KYTHE_VNAMES=", android.PathForSource(ctx, "build", "soong", "vnames.json")).
+			Flag("KYTHE_KZIP_ENCODING=${kytheCuEncoding}").
+			Flag("KYTHE_CANONICALIZE_VNAME_PATHS=prefer-relative").
+			Tool(deps.Rust_extractor).
+			Flags(rustEnvVars(ctx, deps, kytheCmd)).
+			Tool(deps.Rustc).
+			Flag("-C linker=true").
+			Inputs(inputs).
+			Flags(makeLibFlags(deps, kytheCmd)).
+			Flags(rustcFlags).
+			ImplicitTools(toolImplicits).
+			Implicits(implicits)
+		kytheRule.BuildWithNinjaVars("kythe", "Xref Rust extractor "+main.Rel(), pctx)
 		output.kytheFile = kytheFile
 	}
 	return output
@@ -505,8 +515,8 @@ func Rustdoc(ctx ModuleContext, main android.Path, deps PathDeps, flags Flags) a
 	docDir := android.PathForOutput(ctx, "rustdoc")
 
 	rustdocCmd.
-		Flags(rustEnvVars(ctx, deps)).
-		Flag("${config.RustBin}/rustdoc").
+		Flags(rustEnvVars(ctx, deps, rustdocCmd)).
+		Tool(deps.Rustdoc).
 		Flags(rustdocFlags).
 		Input(main).
 		Flag("-o "+docDir.String()).
