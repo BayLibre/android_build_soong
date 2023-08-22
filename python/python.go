@@ -169,7 +169,7 @@ type pythonDependency interface {
 	getDataPathMappings() []pathMapping
 	getSrcsZip() android.Path
 	getPrecompiledSrcsZip() android.Path
-	getPkgPath() string
+	GetPkgPath() *string
 }
 
 // getSrcsPathMappings gets this module's path mapping of src source path : runfiles destination
@@ -192,9 +192,9 @@ func (p *PythonLibraryModule) getPrecompiledSrcsZip() android.Path {
 	return p.precompiledSrcsZip
 }
 
-// getPkgPath returns the pkg_path value
-func (p *PythonLibraryModule) getPkgPath() string {
-	return String(p.properties.Pkg_path)
+// GetPkgPath returns the pkg_path value
+func (p *PythonLibraryModule) GetPkgPath() *string {
+	return p.properties.Pkg_path
 }
 
 func (p *PythonLibraryModule) getBaseProperties() *BaseProperties {
@@ -619,12 +619,12 @@ func (p *PythonLibraryModule) precompileSrcs(ctx android.ModuleContext) android.
 	var launcher android.Path
 	if proptools.BoolDefault(p.properties.Is_internal, false) {
 		stdLib = p.srcsZip
-		stdLibPkg = p.getPkgPath()
+		stdLibPkg = proptools.String(p.GetPkgPath())
 	} else {
 		ctx.VisitDirectDepsWithTag(hostStdLibTag, func(module android.Module) {
 			if dep, ok := module.(pythonDependency); ok {
 				stdLib = dep.getPrecompiledSrcsZip()
-				stdLibPkg = dep.getPkgPath()
+				stdLibPkg = proptools.String(dep.GetPkgPath())
 			}
 		})
 	}
