@@ -266,3 +266,11 @@ func NewRustProtobuf(hod android.HostOrDeviceSupported) (*Module, *protobufDecor
 
 	return module, protobuf
 }
+
+// type procMacroAttributes struct {
+// 	Srcs           bazel.LabelListAttribute
+// 	Crate_name     bazel.StringAttribute
+// 	Edition        bazel.StringAttribute
+// 	Crate_features bazel.StringListAttribute
+// 	Deps           bazel.LabelListAttribute
+// }
