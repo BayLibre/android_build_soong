@@ -15,7 +15,9 @@
 package rust
 
 import (
+	"android/soong/bazel"
 	"android/soong/bloaty"
+	"android/soong/ui/metrics/bp2build_metrics_proto"
 	"fmt"
 	"strings"
 
@@ -168,6 +170,9 @@ type Module struct {
 
 	// For apex variants, this is set as apex.min_sdk_version
 	apexSdkVersion android.ApiLevel
+
+	android.BazelModuleBase
+	bazelable bool
 }
 
 func (mod *Module) Header() bool {
@@ -1839,3 +1844,54 @@ var String = proptools.String
 var StringPtr = proptools.StringPtr
 
 var _ android.OutputFileProducer = (*Module)(nil)
+
+func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	if ctx.ModuleType() == "rust_library_host" || ctx.ModuleType() == "rust_library" {
+		libraryBp2build(ctx, m)
+	} else if ctx.ModuleType() == "rust_proc_macro" {
+		procMacroBp2build(ctx, m)
+	} else {
+		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED, "")
+	}
+}
+
+type cargoBuildScriptAttributes struct {
+	Srcs    bazel.LabelListAttribute
+	Edition bazel.StringAttribute
+	Version bazel.StringAttribute
+}
+
+func cargoBuildScriptBp2build(ctx android.TopDownMutatorContext, m *Module) *string {
+	script := android.ExistentPathForSource(ctx, ctx.ModuleDir(), "build.rs")
+	if !script.Valid() {
+		return nil
+	}
+
+	lib := m.compiler.(*libraryDecorator)
+
+	name := m.Name() + "_build_script"
+	attrs := &cargoBuildScriptAttributes{
+		Srcs: bazel.MakeLabelListAttribute(
+			android.BazelLabelForModuleSrc(ctx, []string{"build.rs"}),
+		),
+		Edition: bazel.StringAttribute{
+			Value: lib.baseCompiler.Properties.Edition,
+		},
+		Version: bazel.StringAttribute{
+			Value: lib.baseCompiler.Properties.Cargo_pkg_version,
+		},
+	}
+
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "cargo_build_script",
+			Bzl_load_location: "@rules_rust//cargo:cargo_build_script.bzl",
+		},
+		android.CommonAttributes{
+			Name: name,
+		},
+		attrs,
+	)
+
+	return &name
+}
