@@ -486,6 +486,22 @@ var (
 	}
 
 	Bp2buildModuleAlwaysConvertList = []string{
+		// aconfig's dependencies
+		// rust_library(_host) with out proc_macro deps
+		"libitoa",
+		"libryu",
+		"libbitflags-1.3.2",
+		"libunicode_ident",
+		"libmemchr",
+		"libunicode_segmentation",
+		"libheck",
+		"libos_str_bytes",
+		"libclap_lex",
+		"libunicode_ident",
+		"libproc_macro2",
+		"libquote",
+		"libsyn",
+
 		// ext
 		"tagsoup",
 

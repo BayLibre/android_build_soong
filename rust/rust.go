@@ -168,6 +168,9 @@ type Module struct {
 
 	// For apex variants, this is set as apex.min_sdk_version
 	apexSdkVersion android.ApiLevel
+
+	android.BazelModuleBase
+	bazelable bool
 }
 
 func (mod *Module) Header() bool {

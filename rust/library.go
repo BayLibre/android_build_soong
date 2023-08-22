@@ -20,7 +20,9 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/bazel"
 	"android/soong/cc"
+	"android/soong/ui/metrics/bp2build_metrics_proto"
 )
 
 var (
@@ -397,6 +399,8 @@ func (library *libraryDecorator) BuildOnlyShared() {
 
 func NewRustLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) {
 	module := newModule(hod, android.MultilibBoth)
+
+	android.InitBazelModule(module)
 
 	library := &libraryDecorator{
 		MutatedProperties: LibraryMutatedProperties{
@@ -792,4 +796,67 @@ func (l *libraryDecorator) collectHeadersForSnapshot(ctx android.ModuleContext, 
 
 	// TODO(185577950): If support for generated headers is added, they need to be collected here as well.
 	l.collectedSnapshotHeaders = ret
+}
+
+func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	if ctx.ModuleType() == "rust_library_host" || ctx.ModuleType() == "rust_library" {
+		libraryBp2build(ctx, m)
+	} else {
+		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED, "")
+	}
+}
+
+type rustLibraryAttributes struct {
+	Srcs           bazel.LabelListAttribute
+	Crate_name     bazel.StringAttribute
+	Edition        bazel.StringAttribute
+	Crate_features bazel.StringListAttribute
+	Deps           bazel.LabelListAttribute
+}
+
+func libraryBp2build(ctx android.TopDownMutatorContext, m *Module) {
+	lib := m.compiler.(*libraryDecorator)
+
+	var srcs bazel.LabelList
+
+	// DO NOT SUBMIT
+	// TODO: Remove hardcoded glob after inputs are fully sandboxed
+	if lib.baseCompiler.Properties.Srcs[0] == "src/lib.rs" {
+		srcs = android.BazelLabelForModuleSrc(ctx, []string{"src/**/*.rs"})
+	} else {
+		srcs = android.BazelLabelForModuleSrc(ctx, append(
+			lib.baseCompiler.Properties.Srcs,
+		))
+	}
+
+	deps := android.BazelLabelForModuleDeps(ctx, lib.baseCompiler.Properties.Rustlibs)
+
+	libraryAttrs := &rustLibraryAttributes{
+		Srcs: bazel.MakeLabelListAttribute(
+			srcs,
+		),
+		Crate_name: bazel.StringAttribute{
+			Value: &lib.baseCompiler.Properties.Crate_name,
+		},
+		Edition: bazel.StringAttribute{
+			Value: lib.baseCompiler.Properties.Edition,
+		},
+		Crate_features: bazel.StringListAttribute{
+			Value: lib.baseCompiler.Properties.Features,
+		},
+		Deps: bazel.MakeLabelListAttribute(
+			deps,
+		),
+	}
+	// m.IsConvertedByBp2build()
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "rust_library",
+			Bzl_load_location: "@rules_rust//rust:defs.bzl",
+		},
+		android.CommonAttributes{
+			Name: m.Name(),
+		},
+		libraryAttrs,
+	)
 }
