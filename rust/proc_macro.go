@@ -16,6 +16,7 @@ package rust
 
 import (
 	"android/soong/android"
+	"android/soong/bazel"
 )
 
 func init() {
@@ -46,6 +47,8 @@ func ProcMacroFactory() android.Module {
 
 func NewProcMacro(hod android.HostOrDeviceSupported) (*Module, *procMacroDecorator) {
 	module := newModule(hod, android.MultilibFirst)
+
+	android.InitBazelModule(module)
 
 	procMacro := &procMacroDecorator{
 		baseCompiler: NewBaseCompiler("lib", "lib64", InstallInSystem),
@@ -98,4 +101,72 @@ func (procMacro *procMacroDecorator) ProcMacro() bool {
 func (procMacro *procMacroDecorator) everInstallable() bool {
 	// Proc_macros are never installed
 	return false
+}
+
+type procMacroAttributes struct {
+	Srcs           bazel.LabelListAttribute
+	Compile_data   bazel.LabelListAttribute
+	Crate_name     bazel.StringAttribute
+	Edition        bazel.StringAttribute
+	Crate_features bazel.StringListAttribute
+	Deps           bazel.LabelListAttribute
+}
+
+func procMacroBp2build(ctx android.TopDownMutatorContext, m *Module) {
+	procMacro := m.compiler.(*procMacroDecorator)
+
+	var compileData bazel.LabelList
+	var srcs bazel.LabelList
+
+	// DO NOT SUBMIT
+	// TODO: Remove hardcoded glob after inputs are fully sandboxed
+	if procMacro.baseCompiler.Properties.Srcs[0] == "src/lib.rs" {
+		srcs = android.BazelLabelForModuleSrc(ctx, []string{"src/**/*.rs"})
+		compileData = android.BazelLabelForModuleSrc(
+			ctx,
+			[]string{
+				"src/**/*.proto",
+				// used by libclap_derive
+				"**/*.md",
+			},
+		)
+	} else {
+		srcs = android.BazelLabelForModuleSrc(ctx, append(
+			procMacro.baseCompiler.Properties.Srcs,
+		))
+	}
+
+	deps := android.BazelLabelForModuleDeps(ctx, procMacro.baseCompiler.Properties.Rustlibs)
+
+	procMacroAttrs := &procMacroAttributes{
+		Srcs: bazel.MakeLabelListAttribute(
+			srcs,
+		),
+		Compile_data: bazel.MakeLabelListAttribute(
+			compileData,
+		),
+		Crate_name: bazel.StringAttribute{
+			Value: &procMacro.baseCompiler.Properties.Crate_name,
+		},
+		Edition: bazel.StringAttribute{
+			Value: procMacro.baseCompiler.Properties.Edition,
+		},
+		Crate_features: bazel.StringListAttribute{
+			Value: procMacro.baseCompiler.Properties.Features,
+		},
+		Deps: bazel.MakeLabelListAttribute(
+			deps,
+		),
+	}
+	// m.IsConvertedByBp2build()
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "rust_proc_macro",
+			Bzl_load_location: "@rules_rust//rust:defs.bzl",
+		},
+		android.CommonAttributes{
+			Name: m.Name(),
+		},
+		procMacroAttrs,
+	)
 }

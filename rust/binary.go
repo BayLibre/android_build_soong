@@ -16,6 +16,7 @@ package rust
 
 import (
 	"android/soong/android"
+	"android/soong/bazel"
 )
 
 func init() {
@@ -54,6 +55,7 @@ func RustBinaryFactory() android.Module {
 
 func RustBinaryHostFactory() android.Module {
 	module, _ := NewRustBinary(android.HostSupported)
+	android.InitBazelModule(module)
 	return module.Init()
 }
 
@@ -182,4 +184,76 @@ func (binary *binaryDecorator) staticallyLinked() bool {
 
 func (binary *binaryDecorator) testBinary() bool {
 	return false
+}
+
+type rustBinaryLibraryAttributes struct {
+	Srcs            bazel.LabelListAttribute
+	Compile_data    bazel.LabelListAttribute
+	Crate_name      bazel.StringAttribute
+	Edition         bazel.StringAttribute
+	Crate_features  bazel.StringListAttribute
+	Deps            bazel.LabelListAttribute
+	Proc_macro_deps bazel.LabelListAttribute
+}
+
+func binaryBp2build(ctx android.TopDownMutatorContext, m *Module) {
+	binary := m.compiler.(*binaryDecorator)
+
+	var srcs bazel.LabelList
+	var compileData bazel.LabelList
+
+	if binary.baseCompiler.Properties.Srcs[0] == "src/main.rs" {
+		srcs = android.BazelLabelForModuleSrc(ctx, []string{"src/**/*.rs"})
+		compileData = android.BazelLabelForModuleSrc(
+			ctx,
+			[]string{
+				"templates/**/*.template",
+			},
+		)
+	} else {
+		srcs = android.BazelLabelForModuleSrc(ctx, append(
+			binary.baseCompiler.Properties.Srcs,
+		))
+	}
+
+	deps := android.BazelLabelForModuleDeps(ctx, append(
+		binary.baseCompiler.Properties.Rustlibs,
+	))
+
+	procMacroDeps := android.BazelLabelForModuleDeps(ctx, binary.baseCompiler.Properties.Proc_macros)
+
+	attrs := &rustBinaryLibraryAttributes{
+		Srcs: bazel.MakeLabelListAttribute(
+			srcs,
+		),
+		Compile_data: bazel.MakeLabelListAttribute(
+			compileData,
+		),
+		Crate_name: bazel.StringAttribute{
+			Value: &binary.baseCompiler.Properties.Crate_name,
+		},
+		Edition: bazel.StringAttribute{
+			Value: binary.baseCompiler.Properties.Edition,
+		},
+		Crate_features: bazel.StringListAttribute{
+			Value: binary.baseCompiler.Properties.Features,
+		},
+		Deps: bazel.MakeLabelListAttribute(
+			deps,
+		),
+		Proc_macro_deps: bazel.MakeLabelListAttribute(
+			procMacroDeps,
+		),
+	}
+
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "rust_binary",
+			Bzl_load_location: "@rules_rust//rust:defs.bzl",
+		},
+		android.CommonAttributes{
+			Name: m.Name(),
+		},
+		attrs,
+	)
 }
