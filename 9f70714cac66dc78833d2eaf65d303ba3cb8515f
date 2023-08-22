@@ -16,6 +16,24 @@
       "message": "[ABTD run](https://android-build.googleplex.com/builds/abtd/run/L82500000962696002) on FKBB",
       "revId": "9f70714cac66dc78833d2eaf65d303ba3cb8515f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9750d2e_c8557f36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-22T18:23:56Z",
+      "side": 1,
+      "message": "Triggering [another run](https://android-build.googleplex.com/builds/abtd/run/L65200000962699093) with the latest patchset.",
+      "parentUuid": "73e83504_7160e844",
+      "revId": "9f70714cac66dc78833d2eaf65d303ba3cb8515f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
