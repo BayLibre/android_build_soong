@@ -411,6 +411,7 @@ type ccLibraryProperties struct {
 	Min_sdk_version    *string
 	Bazel_module       struct {
 		Bp2build_available *bool
+		Label              *string
 	}
 }
 
@@ -492,11 +493,9 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 	ccProps.Host_supported = m.properties.Host_supported
 	ccProps.Apex_available = m.ApexProperties.Apex_available
 	ccProps.Min_sdk_version = m.properties.Cpp.Min_sdk_version
-	// A Bazel macro handles this, so this module does not need to be handled
-	// in bp2build
-	// TODO(b/237810289) perhaps do something different here so that we aren't
-	//                   also disabling these modules in mixed builds
-	ccProps.Bazel_module.Bp2build_available = proptools.BoolPtr(false)
+
+	bazelLabel := "//" + ctx.ModuleDir() + ":" + m.CcImplementationModuleName()
+	ccProps.Bazel_module.Label = &bazelLabel
 	ctx.CreateModule(cc.LibraryFactory, &ccProps)
 
 	scope := "internal"
