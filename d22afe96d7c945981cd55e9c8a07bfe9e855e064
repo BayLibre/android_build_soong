@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d1d1c00_5c7297bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-22T21:07:35Z",
+      "side": 1,
+      "message": "I ran the test that failed last time through abtd, and it passes: https://android-build.googleplex.com/builds/abtd/run/L73000000962683611?referrer\u003demail",
+      "revId": "d22afe96d7c945981cd55e9c8a07bfe9e855e064",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
