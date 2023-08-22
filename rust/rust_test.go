@@ -405,6 +405,91 @@ func TestSourceProviderTargetMismatch(t *testing.T) {
 	`)
 }
 
+func TestDoubleLoadableLib(t *testing.T) {
+	t.Parallel()
+	testRust(t, `
+		cc_library {
+			name: "libllndk",
+			shared_libs: ["libshared_rs"],
+			llndk: { symbol_file: "libfoo.map.txt" },
+
+		}
+
+		rust_ffi_shared {
+			name: "libshared_rs",
+			crate_name: "shared",
+			srcs: ["foo.rs"],
+			vendor_available: true,
+			double_loadable: true,
+		}
+	`)
+
+	// Imitates a library made from a static Rust lib like in b/285794967
+	testRust(t, `
+		cc_library {
+			name: "libllndk",
+			whole_static_libs: ["libstatic_rs"],
+			llndk: { symbol_file: "libfoo.map.txt" },
+		}
+
+		rust_ffi_static {
+			name: "libstatic_rs",
+			crate_name: "static",
+			srcs: ["foo.rs"],
+			rustlibs: ["libshared_rs"]
+		}
+
+		rust_library {
+			name: "libshared_rs",
+			crate_name: "shared_rs",
+			srcs: ["foo.rs"],
+			vendor_available: true,
+			double_loadable: true,
+		}
+	`)
+}
+
+func TestNonDoubleLoadableLibError(t *testing.T) {
+	t.Parallel()
+	testRustError(t, "double_loadable", `
+		cc_library {
+			name: "libllndk",
+			shared_libs: ["libshared_rs"],
+			llndk: { symbol_file: "libfoo.map.txt" },
+		}
+
+		rust_ffi_shared {
+			name: "libshared_rs",
+			crate_name: "shared",
+			srcs: ["foo.rs"],
+			vendor_available: true,
+		}
+	`)
+
+	// Imitates a library made from a static Rust lib like in b/285794967
+	testRustError(t, "double_loadable", `
+		cc_library {
+			name: "libllndk",
+			whole_static_libs: ["libstatic_rs"],
+			llndk: { symbol_file: "libfoo.map.txt" },
+		}
+
+		rust_ffi_static {
+			name: "libstatic_rs",
+			crate_name: "static",
+			srcs: ["foo.rs"],
+			rustlibs: ["libshared_rs"]
+		}
+
+		rust_library {
+			name: "libshared_rs",
+			crate_name: "shared_rs",
+			srcs: ["foo.rs"],
+			vendor_available: true,
+		}
+	`)
+}
+
 // Test to make sure proc_macros use host variants when building device modules.
 func TestProcMacroDeviceDeps(t *testing.T) {
 	ctx := testRust(t, `
