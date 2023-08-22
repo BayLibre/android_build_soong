@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07368933_0243c27d",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-08-22T21:22:20Z",
+      "side": 1,
+      "message": "Updated. Thanks.",
+      "parentUuid": "c8d1bbc8_d92728d2",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 47
+      },
+      "revId": "eeb8f781baf576d391e3c2aa9d9fe875f44322b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c486f9e8_3d36d3e2",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5e6b334_b08649d3",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-08-22T21:22:20Z",
+      "side": 1,
+      "message": "Added. Thanks",
+      "parentUuid": "c486f9e8_3d36d3e2",
+      "range": {
+        "startLine": 555,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 27
+      },
+      "revId": "eeb8f781baf576d391e3c2aa9d9fe875f44322b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21fbfb0e_f6b2293f",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-08-22T13:50:54Z",
       "side": 1,
       "message": "optional: given that we\u0027re setting a pointer with a pointer, can skip the nil checks here and below",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 604,
+        "endChar": 2
+      },
+      "revId": "eeb8f781baf576d391e3c2aa9d9fe875f44322b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b54f524c_ae771c38",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-08-22T21:22:20Z",
+      "side": 1,
+      "message": "Updated. Thanks.",
+      "parentUuid": "21fbfb0e_f6b2293f",
       "range": {
         "startLine": 601,
         "startChar": 0,
