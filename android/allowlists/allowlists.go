@@ -602,6 +602,9 @@ var (
 		// prebuilts
 		"prebuilt_stats-log-api-gen",
 
+		// platform_testing/libraries/annotations
+		"platform-test-annotations",
+
 		// fastboot
 		"fastboot",
 		"libfastboot",
