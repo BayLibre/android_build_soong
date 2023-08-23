@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f558d26f_259606db",
+        "filename": "python/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-23T00:27:30Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 37,
+        "startChar": 36,
+        "endLine": 37,
+        "endChar": 45
+      },
+      "revId": "4b45cc7eaf2660e957aa0af12623f4308bf33f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
