@@ -1560,6 +1560,9 @@ var (
 
 		// depends on libart-unstripped and new module type llvm_prebuilt_build_tool
 		"check_cfi",
+
+		// depends on unconverted module tradefed
+		"HelloWorldPerformanceTest",
 	}
 
 	// Bazel prod-mode allowlist. Modules in this list are built by Bazel
