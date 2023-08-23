@@ -55,7 +55,7 @@ func TestVndkApexForVndkLite(t *testing.T) {
 		}),
 	)
 	// VNDK-Lite contains only core variants of VNDK-Sp libraries
-	ensureExactContents(t, ctx, "com.android.vndk.current", "android_common_image", []string{
+	ensureExactContents(t, ctx, "com.android.vndk.current", "android_common", []string{
 		"lib/libvndksp.so",
 		"lib/libc++.so",
 		"lib64/libvndksp.so",
@@ -137,7 +137,7 @@ func TestVndkApexUsesVendorVariant(t *testing.T) {
 		files := getFiles(t, ctx, "com.android.vndk.current", "android_common_image")
 		ensureFileSrc(t, files, "lib/libfoo.so", "libfoo/android_vendor.29_arm_armv7-a-neon_shared/libfoo.so")
 
-		files = getFiles(t, ctx, "com.android.vndk.current", "android_common_cov_image")
+		files = getFiles(t, ctx, "com.android.vndk.current", "android_common_cov")
 		ensureFileSrc(t, files, "lib/libfoo.so", "libfoo/android_vendor.29_arm_armv7-a-neon_shared_cov/libfoo.so")
 	})
 }
