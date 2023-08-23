@@ -45,9 +45,9 @@ var (
 
 	stg = pctx.AndroidStaticRule("stg",
 		blueprint.RuleParams{
-			Command:     "$stg -S :$symbolList --elf $in -o $out",
+			Command:     "$stg -S :$symbolList --file-filter :$headersList --elf $in -o $out",
 			CommandDeps: []string{"$stg"},
-		}, "symbolList")
+		}, "symbolList", "headersList")
 
 	stgdiff = pctx.AndroidStaticRule("stgdiff",
 		blueprint.RuleParams{
@@ -347,14 +347,19 @@ func (this *stubDecorator) dumpAbi(ctx ModuleContext, symbolList android.Path) {
 	this.abiDumpPath = getNdkAbiDumpInstallBase(ctx).Join(ctx,
 		this.apiLevel.String(), ctx.Arch().ArchType.String(),
 		this.libraryName(ctx), "abi.stg")
+	headersList := getNdkABIHeadersFile(ctx)
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        stg,
 		Description: fmt.Sprintf("stg %s", implementationLibrary),
 		Input:       implementationLibrary,
-		Implicit:    symbolList,
-		Output:      this.abiDumpPath,
+		Implicits: []android.Path{
+			symbolList,
+			headersList,
+		},
+		Output: this.abiDumpPath,
 		Args: map[string]string{
-			"symbolList": symbolList.String(),
+			"symbolList":  symbolList.String(),
+			"headersList": headersList.String(),
 		},
 	})
 }
