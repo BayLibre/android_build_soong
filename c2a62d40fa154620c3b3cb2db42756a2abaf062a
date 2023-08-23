@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "395512cc_0a1c2259",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-08-23T19:06:21Z",
+      "side": 1,
+      "message": "Someone should look to see if we can un-fork this zip implementation and just use the upstream version, but this seems like a simple enough bug fix.",
+      "revId": "c2a62d40fa154620c3b3cb2db42756a2abaf062a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
