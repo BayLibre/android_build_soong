@@ -266,7 +266,6 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			moduleNames := []string{}
-			apexType := a.properties.ApexType
 			if a.installable() {
 				moduleNames = a.androidMkForFiles(w, name, moduleDir, data)
 			}
@@ -278,7 +277,7 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 			fmt.Fprintln(w, "LOCAL_MODULE_CLASS := ETC") // do we need a new class?
 			fmt.Fprintln(w, "LOCAL_PREBUILT_MODULE_FILE :=", a.outputFile.String())
 			fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", a.installDir.String())
-			stemSuffix := apexType.suffix()
+			stemSuffix := imageApexSuffix
 			if a.isCompressed {
 				stemSuffix = imageCapexSuffix
 			}
@@ -306,10 +305,7 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 			a.writeRequiredModules(w, moduleNames)
 
 			fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
-
-			if apexType == imageApex {
-				fmt.Fprintln(w, "ALL_MODULES.$(my_register_name).BUNDLE :=", a.bundleModuleFile.String())
-			}
+			fmt.Fprintln(w, "ALL_MODULES.$(my_register_name).BUNDLE :=", a.bundleModuleFile.String())
 			android.AndroidMkEmitAssignList(w, "ALL_MODULES.$(my_register_name).LINT_REPORTS", a.lintReports.Strings())
 
 			if a.installedFilesFile != nil {
