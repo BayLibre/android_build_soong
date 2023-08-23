@@ -54,6 +54,7 @@ package cc
 
 import (
 	"android/soong/android"
+	"strings"
 )
 
 func init() {
@@ -96,15 +97,40 @@ func getNdkFullTimestampFile(ctx android.PathContext) android.WritablePath {
 	return android.PathForOutput(ctx, "ndk.timestamp")
 }
 
+// The list of all NDK headers as they are located in the repo.
+// Used for ABI monitoring to track only structures defined in NDK headers.
+func getNdkABIHeadersFile(ctx android.PathContext) android.WritablePath {
+	return android.PathForOutput(ctx, "ndk_abi_headers.txt")
+}
+
 func NdkSingleton() android.Singleton {
 	return &ndkSingleton{}
+}
+
+func writeNdkAbiSrcFilter(ctx android.BuilderContext,
+	headerSrcPaths android.Paths, outputFile android.WritablePath) {
+	// ABI tool allows to track source of every definition in the DWARF,
+	// however it doesn't know, which header file is exported to public
+	// distribution and which are only available for library implementation.
+	// So we need a rule to build a list of public headers, so STG can
+	// distinguish private types from public and do not monitor private types
+	// that are not accessible to NDK users.
+	var filterBuilder strings.Builder
+	filterBuilder.WriteString("[decl_file_allowlist]\n")
+	for _, headerSrcPath := range headerSrcPaths {
+		filterBuilder.WriteString(headerSrcPath.String())
+		filterBuilder.WriteString("\n")
+	}
+
+	android.WriteFileRule(ctx, outputFile, filterBuilder.String())
 }
 
 type ndkSingleton struct{}
 
 func (n *ndkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	var staticLibInstallPaths android.Paths
-	var headerPaths android.Paths
+	var headerSrcPaths android.Paths
+	var headerInstallPaths android.Paths
 	var installPaths android.Paths
 	var licensePaths android.Paths
 	ctx.VisitAllModules(func(module android.Module) {
@@ -113,19 +139,22 @@ func (n *ndkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 		}
 
 		if m, ok := module.(*headerModule); ok {
-			headerPaths = append(headerPaths, m.installPaths...)
+			headerSrcPaths = append(headerSrcPaths, m.srcPaths...)
+			headerInstallPaths = append(headerInstallPaths, m.installPaths...)
 			installPaths = append(installPaths, m.installPaths...)
 			licensePaths = append(licensePaths, m.licensePath)
 		}
 
 		if m, ok := module.(*versionedHeaderModule); ok {
-			headerPaths = append(headerPaths, m.installPaths...)
+			headerSrcPaths = append(headerSrcPaths, m.srcPaths...)
+			headerInstallPaths = append(headerInstallPaths, m.installPaths...)
 			installPaths = append(installPaths, m.installPaths...)
 			licensePaths = append(licensePaths, m.licensePath)
 		}
 
 		if m, ok := module.(*preprocessedHeadersModule); ok {
-			headerPaths = append(headerPaths, m.installPaths...)
+			headerSrcPaths = append(headerSrcPaths, m.srcPaths...)
+			headerInstallPaths = append(headerInstallPaths, m.installPaths...)
 			installPaths = append(installPaths, m.installPaths...)
 			licensePaths = append(licensePaths, m.licensePath)
 		}
@@ -175,8 +204,10 @@ func (n *ndkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	ctx.Build(pctx, android.BuildParams{
 		Rule:      android.Touch,
 		Output:    getNdkHeadersTimestampFile(ctx),
-		Implicits: headerPaths,
+		Implicits: headerInstallPaths,
 	})
+
+	writeNdkAbiSrcFilter(ctx, headerSrcPaths, getNdkABIHeadersFile(ctx))
 
 	fullDepPaths := append(staticLibInstallPaths, getNdkBaseTimestampFile(ctx))
 
