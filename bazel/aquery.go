@@ -19,6 +19,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	osmod "os"
 	"path/filepath"
 	analysis_v2_proto "prebuilts/bazel/common/proto/analysis_v2"
 	"reflect"
@@ -762,6 +763,8 @@ func (a *aqueryArtifactHandler) actionToBuildStatement(actionEntry *analysis_v2_
 		return a.symlinkTreeActionBuildStatement(actionEntry)
 	case "UnresolvedSymlink":
 		return a.unresolvedSymlinkActionBuildStatement(actionEntry)
+	case "TestRunner":
+		fmt.Fprintf(osmod.Stderr, "Found a TestRunner action\n")
 	}
 
 	if len(actionEntry.Arguments) < 1 {
