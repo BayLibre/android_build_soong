@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "903df4c4_b02c037a",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-08-23T04:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efdd31bb_1123c352",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 1
+      },
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d734d60_001d706c",
