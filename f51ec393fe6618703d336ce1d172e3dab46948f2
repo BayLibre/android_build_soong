@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd5d86cf_71bbe8cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-23T05:27:21Z",
+      "side": 1,
+      "message": "[ABTD run](https://android-build.googleplex.com/builds/abtd/run/L54200000962712443) on LKBB of `bp2build-incremental` on `aosp-main-bazel`",
+      "revId": "f51ec393fe6618703d336ce1d172e3dab46948f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
