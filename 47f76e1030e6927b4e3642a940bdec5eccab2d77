@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5228595e_c7cb3a59",
+        "filename": "rust/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-08-23T20:15:45Z",
+      "side": 1,
+      "message": "Did you forget to finish this comment?",
+      "revId": "47f76e1030e6927b4e3642a940bdec5eccab2d77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
