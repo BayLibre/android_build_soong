@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efdd31bb_1123c352",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-08-23T04:41:04Z",
+      "side": 1,
+      "message": "With the new patchset we no longer generate java_resource targets with the same name when resource_dirs/filegroups have the same prefix. \n\nadded tests for \n - non-filegroup `java_resources` alongside `java_resource_dirs`\n -  non-filegroup `java_resources` alongside filegroup `java_resources`",
+      "parentUuid": "24170e0e_94bee54c",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 1
+      },
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d734d60_001d706c",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -87,6 +111,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2013eaa_ea8f4688",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2728,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-08-23T04:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d734d60_001d706c",
+      "range": {
+        "startLine": 2728,
+        "startChar": 18,
+        "endLine": 2728,
+        "endChar": 60
+      },
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2039923_6c2a5fd0",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2728,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-08-23T04:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a14372_9da7530e",
+      "range": {
+        "startLine": 2728,
+        "startChar": 96,
+        "endLine": 2728,
+        "endChar": 104
+      },
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bbc81e4_cebc311a",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-08-14T14:44:40Z",
       "side": 1,
       "message": "We can declare this closer to where it\u0027s used, before the final loop",
+      "range": {
+        "startLine": 2741,
+        "startChar": 1,
+        "endLine": 2741,
+        "endChar": 40
+      },
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4ccd111_e2b77d68",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2741,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-08-23T04:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bbc81e4_cebc311a",
       "range": {
         "startLine": 2741,
         "startChar": 1,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d2df647_b728184a",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2746,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-08-23T04:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dff36968_bd108947",
+      "range": {
+        "startLine": 2744,
+        "startChar": 0,
+        "endLine": 2746,
+        "endChar": 2
+      },
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ce37a35_e12a2db2",
@@ -146,6 +266,30 @@
       "writtenOn": "2023-08-14T14:44:40Z",
       "side": 1,
       "message": "```suggestion\n\t\tif _, ok :\u003d additionalJavaResourcesMap[prefix]; ok {\n```\n\nTo be consistent with above",
+      "range": {
+        "startLine": 2782,
+        "startChar": 0,
+        "endLine": 2783,
+        "endChar": 9
+      },
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac15080_1f0c2428",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2783,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-08-23T04:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ce37a35_e12a2db2",
       "range": {
         "startLine": 2782,
         "startChar": 0,
