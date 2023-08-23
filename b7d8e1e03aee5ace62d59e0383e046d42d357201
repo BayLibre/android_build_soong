@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea9fd7ca_ff86d1d0",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-08-23T14:30:34Z",
+      "side": 1,
+      "message": "Thanks for the suggestions. Removed.",
+      "parentUuid": "c3e9e5ca_e32059b6",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "b7d8e1e03aee5ace62d59e0383e046d42d357201",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a04086c_1516660e",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-22T21:45:00Z",
       "side": 1,
       "message": "it\u0027d be nice to also have test cases where these are unset as well so we don\u0027t end up with these always set if they get changed from pointer types",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "b7d8e1e03aee5ace62d59e0383e046d42d357201",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c201b52b_0e0316bc",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-08-23T14:30:34Z",
+      "side": 1,
+      "message": "Added the test cases as suggested. Thanks!",
+      "parentUuid": "1a04086c_1516660e",
       "range": {
         "startLine": 72,
         "startChar": 0,
