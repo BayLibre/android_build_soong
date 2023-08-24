@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e06bb69_63613a27",
+        "filename": "bp2build/rust_library_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T17:30:22Z",
+      "side": 1,
+      "message": "indentation",
+      "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0025b71f_d2fb406a",
+        "filename": "bp2build/rust_library_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T17:30:22Z",
+      "side": 1,
+      "message": "indentation",
+      "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee1f1db_add045cb",
+        "filename": "rust/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T17:30:22Z",
+      "side": 1,
+      "message": "Should `compileData` be added in both cases of this `if` block?",
+      "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "377b5d3a_16d63552",
+        "filename": "rust/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T17:30:22Z",
+      "side": 1,
+      "message": "I think this could cross package boundaries. Should we limit it to `src/**/*.md`?",
+      "range": {
+        "startLine": 829,
+        "startChar": 4,
+        "endLine": 829,
+        "endChar": 14
+      },
+      "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63dc3cf0_2cd50a71",
+        "filename": "rust/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T17:30:22Z",
+      "side": 1,
+      "message": "nit: we may need to add `src/**/*.rs` here as well since the entrypoint might refer to other files. We can follow up on this once sandboxed inputs are merged since there\u0027s really no way to know for sure what the directory structure is / what source files are needed.",
+      "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5be5aa13_709d24e1",
+        "filename": "rust/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T17:30:22Z",
+      "side": 1,
+      "message": "do we need dylibs, static, and shared libs here too?",
+      "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a05075_02f7e7f5",
+        "filename": "rust/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T17:30:22Z",
+      "side": 1,
+      "message": "there\u0027s a few more properties to do for this [from the compilerProperties](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/rust/compiler.go;l\u003d68;drc\u003db0e1035417e745f38938ce138784267003c22953), and maybe some more for libraryProperties (depending on how we implement them), but we can follow up in future CLs when they\u0027re needed",
+      "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f8e4acf_c67f46de",
+        "filename": "rust/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T17:30:22Z",
+      "side": 1,
+      "message": "should we append `lib.baseCompiler.Properties.Flags` here too?",
+      "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
