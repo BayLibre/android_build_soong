@@ -488,6 +488,32 @@ var (
 	}
 
 	Bp2buildModuleAlwaysConvertList = []string{
+		// aconfig
+		"libonce_cell",
+		"libanyhow",
+		"libunicode_segmentation",
+		"libmemchr",
+		"libbitflags-1.3.2",
+		"libryu",
+		"libitoa",
+		"libos_str_bytes",
+		"libheck",
+		"libclap_lex",
+		"libsyn",
+		"libquote",
+		"libunicode_ident",
+		"libproc_macro2",
+		"libthiserror_impl",
+		"libserde_derive",
+		"libclap_derive",
+		"libthiserror",
+		"libserde",
+		"libclap",
+		"libbytes",
+		"libprotobuf_support",
+		"libtinytemplate",
+		"libserde_json",
+
 		// ext
 		"tagsoup",
 
