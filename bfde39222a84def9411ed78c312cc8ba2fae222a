@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb21abbf_bff6f240",
+        "filename": "rust/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-08-24T18:23:33Z",
+      "side": 1,
+      "message": "Yeah this is a temporary workaround until inputs are sandboxedI wanted to only generate `compile_data` only if it fixes a particular error that I run into.\n\nThis if else block will be removed after inputs are sandboxed.",
+      "parentUuid": "0ee1f1db_add045cb",
+      "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "377b5d3a_16d63552",
@@ -65,6 +83,30 @@
       "writtenOn": "2023-08-24T17:30:22Z",
       "side": 1,
       "message": "I think this could cross package boundaries. Should we limit it to `src/**/*.md`?",
+      "range": {
+        "startLine": 829,
+        "startChar": 4,
+        "endLine": 829,
+        "endChar": 14
+      },
+      "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea30edb5_73635fdb",
+        "filename": "rust/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-08-24T18:23:33Z",
+      "side": 1,
+      "message": "[This crate](https://cs.android.com/android/platform/superproject/main/+/main:external/rust/crates/clap_derive/src/lib.rs;l\u003d16) includes on README.md outside of `srcs`.",
+      "parentUuid": "377b5d3a_16d63552",
       "range": {
         "startLine": 829,
         "startChar": 4,
@@ -92,6 +134,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebff048b_ab01e9d3",
+        "filename": "rust/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-08-24T18:23:33Z",
+      "side": 1,
+      "message": "Yes. This will be removed once inputs are sandboxed.",
+      "parentUuid": "63dc3cf0_2cd50a71",
+      "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5be5aa13_709d24e1",
@@ -109,6 +169,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a07d1800_609d91c2",
+        "filename": "rust/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-08-24T18:23:33Z",
+      "side": 1,
+      "message": "dylibs prop was removed in aosp/2706816.\n\ncc deps will be followed up in a separate scope. I\u0027m aiming to make these CLs small enough to just build aconfig eventually.",
+      "parentUuid": "5be5aa13_709d24e1",
+      "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8a05075_02f7e7f5",
@@ -122,6 +200,24 @@
       "writtenOn": "2023-08-24T17:30:22Z",
       "side": 1,
       "message": "there\u0027s a few more properties to do for this [from the compilerProperties](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/rust/compiler.go;l\u003d68;drc\u003db0e1035417e745f38938ce138784267003c22953), and maybe some more for libraryProperties (depending on how we implement them), but we can follow up in future CLs when they\u0027re needed",
+      "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4140ee0f_dd13730d",
+        "filename": "rust/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-08-24T18:23:33Z",
+      "side": 1,
+      "message": "Yes, I plan to convert the other relevant props in future CLs as needed.",
+      "parentUuid": "a8a05075_02f7e7f5",
       "revId": "bfde39222a84def9411ed78c312cc8ba2fae222a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
