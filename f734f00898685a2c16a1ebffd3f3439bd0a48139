@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1909c9bc_b505b24c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-24T16:52:27Z",
+      "side": 1,
+      "message": "Trevor, does this match the CFI exclude path behavior?",
+      "revId": "f734f00898685a2c16a1ebffd3f3439bd0a48139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
