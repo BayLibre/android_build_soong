@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6143b4ca_8d5761c3",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-24T17:28:04Z",
+      "side": 1,
+      "message": "Ninja can do this for you using `RspFile` and `RspFileContent`, see https://cs.android.com/android/platform/superproject/main/+/main:build/soong/sdk/update.go;l\u003d69-70;drc\u003d35881365b49235b2311f48bfcbaff8f873f19b88 for an example.",
+      "revId": "b6c43d46a19566c913dbd9271d1ca61080dafaa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f08495b_027d8641",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-24T17:28:04Z",
+      "side": 1,
+      "message": "This is equivalent to `allMetaDataFiles.Strings()` if you change `[]android.Path` to `android.Paths` on line 71.",
+      "range": {
+        "startLine": 80,
+        "startChar": 15,
+        "endLine": 80,
+        "endChar": 65
+      },
+      "revId": "b6c43d46a19566c913dbd9271d1ca61080dafaa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
