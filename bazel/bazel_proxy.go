@@ -143,6 +143,7 @@ func ExecBazel(bazelPath string, workspaceDir string, request CmdRequest) (stdou
 	stderrBuffer := &bytes.Buffer{}
 	bazelCmd.Stderr = stderrBuffer
 
+	fmt.Println(time.Now(), "TIMINGDEBUG: About to execute bazel command:\n", request)
 	if output, err := bazelCmd.Output(); err != nil {
 		cmdErr = fmt.Errorf("bazel command failed: %s\n---command---\n%s\n---env---\n%s\n---stderr---\n%s---",
 			err, bazelCmd, strings.Join(bazelCmd.Env, "\n"), stderrBuffer)
@@ -150,6 +151,7 @@ func ExecBazel(bazelPath string, workspaceDir string, request CmdRequest) (stdou
 		stdout = output
 	}
 	stderr = stderrBuffer.Bytes()
+	fmt.Println(time.Now(), "TIMINGDEBUG: Command returned.")
 	return
 }
 
