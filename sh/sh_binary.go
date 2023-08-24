@@ -549,12 +549,15 @@ type bazelShBinaryAttributes struct {
 }
 
 type bazelShTestAttributes struct {
-	Srcs                 bazel.LabelListAttribute
-	Data                 bazel.LabelListAttribute
-	Tags                 bazel.StringListAttribute
-	Test_config          *string
-	Test_config_template *string
-	Auto_gen_config      *bool
+	Srcs                  bazel.LabelListAttribute
+	Data                  bazel.LabelListAttribute
+	Tags                  bazel.StringListAttribute
+	Test_suites           bazel.StringListAttribute
+	Test_config           *bazel.Label
+	Test_config_template  *bazel.Label
+	Auto_gen_config       *bool
+	Template_configs      bazel.StringListAttribute
+	Template_install_base *string
 }
 
 func (m *ShBinary) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
@@ -598,19 +601,29 @@ func (m *ShTest) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	tags := bazel.MakeStringListAttribute(
 		m.testProperties.Test_options.Tags)
 
-	test_config := m.testProperties.Test_config
+	testSuites := bazel.MakeStringListAttribute(m.testProperties.Test_suites)
 
-	test_config_template := m.testProperties.Test_config_template
-
-	auto_gen_config := m.testProperties.Auto_gen_config
+	testConfigAttributes := tradefed.GetTestConfigAttributes(
+		ctx,
+		m.testProperties.Test_config,
+		[]string{},
+		m.testProperties.Auto_gen_config,
+		m.testProperties.Test_suites,
+		m.testProperties.Test_config_template,
+		nil,
+		nil,
+	)
 
 	attrs := &bazelShTestAttributes{
-		Srcs:                 srcs,
-		Data:                 data,
-		Tags:                 tags,
-		Test_config:          test_config,
-		Test_config_template: test_config_template,
-		Auto_gen_config:      auto_gen_config,
+		Srcs:                  srcs,
+		Data:                  data,
+		Tags:                  tags,
+		Test_suites:           testSuites,
+		Test_config:           testConfigAttributes.Test_config,
+		Test_config_template:  testConfigAttributes.Template_test_config,
+		Auto_gen_config:       testConfigAttributes.Auto_generate_test_config,
+		Template_configs:      bazel.MakeStringListAttribute(testConfigAttributes.Template_configs),
+		Template_install_base: testConfigAttributes.Template_install_base,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
