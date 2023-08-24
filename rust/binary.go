@@ -16,6 +16,7 @@ package rust
 
 import (
 	"android/soong/android"
+	"android/soong/bazel"
 )
 
 func init() {
@@ -59,6 +60,8 @@ func RustBinaryHostFactory() android.Module {
 
 func NewRustBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 	module := newModule(hod, android.MultilibFirst)
+
+	android.InitBazelModule(module)
 
 	binary := &binaryDecorator{
 		baseCompiler: NewBaseCompiler("bin", "", InstallInSystem),
@@ -182,4 +185,60 @@ func (binary *binaryDecorator) staticallyLinked() bool {
 
 func (binary *binaryDecorator) testBinary() bool {
 	return false
+}
+
+type rustBinaryLibraryAttributes struct {
+	Srcs            bazel.LabelListAttribute
+	Compile_data    bazel.LabelListAttribute
+	Crate_name      bazel.StringAttribute
+	Edition         bazel.StringAttribute
+	Crate_features  bazel.StringListAttribute
+	Deps            bazel.LabelListAttribute
+	Proc_macro_deps bazel.LabelListAttribute
+}
+
+func binaryBp2build(ctx android.TopDownMutatorContext, m *Module) {
+	binary := m.compiler.(*binaryDecorator)
+
+	srcs, compileData := srcsAndCompileDataAttrs(ctx, *binary.baseCompiler)
+	deps := android.BazelLabelForModuleDeps(ctx, append(
+		binary.baseCompiler.Properties.Rustlibs,
+	))
+
+	procMacroDeps := android.BazelLabelForModuleDeps(ctx, binary.baseCompiler.Properties.Proc_macros)
+
+	attrs := &rustBinaryLibraryAttributes{
+		Srcs: bazel.MakeLabelListAttribute(
+			srcs,
+		),
+		Compile_data: bazel.MakeLabelListAttribute(
+			compileData,
+		),
+		Crate_name: bazel.StringAttribute{
+			Value: &binary.baseCompiler.Properties.Crate_name,
+		},
+		Edition: bazel.StringAttribute{
+			Value: binary.baseCompiler.Properties.Edition,
+		},
+		Crate_features: bazel.StringListAttribute{
+			Value: binary.baseCompiler.Properties.Features,
+		},
+		Deps: bazel.MakeLabelListAttribute(
+			deps,
+		),
+		Proc_macro_deps: bazel.MakeLabelListAttribute(
+			procMacroDeps,
+		),
+	}
+
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "rust_binary",
+			Bzl_load_location: "@rules_rust//rust:defs.bzl",
+		},
+		android.CommonAttributes{
+			Name: m.Name(),
+		},
+		attrs,
+	)
 }
