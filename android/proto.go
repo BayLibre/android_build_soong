@@ -369,8 +369,8 @@ type protoIncludeDirKey struct {
 func createProtoLibraryTargetsForIncludeDirs(ctx Bp2buildMutatorContext, includeDirs []string) bazel.LabelList {
 	var ret bazel.LabelList
 	for _, dir := range includeDirs {
-		if exists, _, _ := ctx.Config().fs.Exists(filepath.Join(dir, "Android.bp")); !exists {
-			ctx.ModuleErrorf("TODO: Add support for proto.include_dir: %v. This directory does not contain an Android.bp file", dir)
+		if !isPackageBoundary(ctx.Config(), dir, []string{} /*path components*/, -1 /*index*/) {
+			ctx.ModuleErrorf("TODO: Add support for proto.include_dir: %v. This directory does not contain an Android.bp/BUILD.bazel file", dir)
 		}
 		dirMap := getProtoIncludeDirsBp2build(ctx.Config())
 		// Find all proto file targets in this dir

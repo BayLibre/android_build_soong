@@ -1988,7 +1988,7 @@ func TestCreateBazelTargetInDifferentDir(t *testing.T) {
 		Description: "foo cannot be created in `subdir` because it does not contain an Android.bp file",
 		Blueprint:   bp,
 		Dir:         "subdir",
-		ExpectedErr: fmt.Errorf("Cannot use ca.Dir to create a BazelTarget in dir: subdir since it does not contain an Android.bp file"),
+		ExpectedErr: fmt.Errorf("Cannot use ca.Dir to create a BazelTarget in dir: subdir since it does not contain an Android.bp/BUILD.bazel file"),
 	})
 
 }
