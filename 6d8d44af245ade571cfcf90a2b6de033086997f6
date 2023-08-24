@@ -22,6 +22,30 @@
       },
       "revId": "6d8d44af245ade571cfcf90a2b6de033086997f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "382a94d7_5caf1cf2",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-08-24T15:12:32Z",
+      "side": 1,
+      "message": "Sure, will take a look and make it do some of the work on auto_gen_config but also handles things like DynamicConfig.xml and AndroidTest.xml.",
+      "parentUuid": "b6d95b6e_21c00aa9",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 606,
+        "endChar": 0
+      },
+      "revId": "6d8d44af245ade571cfcf90a2b6de033086997f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
