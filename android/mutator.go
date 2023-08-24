@@ -17,7 +17,6 @@ package android
 import (
 	"android/soong/bazel"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
-	"path/filepath"
 
 	"github.com/google/blueprint"
 )
@@ -765,12 +764,12 @@ func dirForBazelTargetGeneration(t *topDownMutatorContext, ca *CommonAttributes)
 	dir := t.OtherModuleDir(t.Module())
 	if ca.Dir != nil {
 		dir = *ca.Dir
-		// Restrict its use to dirs that contain an Android.bp file.
+		// Restrict its use to dirs that contain an Android.bp/BUILD.bazel file.
 		// There are several places in bp2build where we use the existence of Android.bp/BUILD on the filesystem
 		// to curate a compatible label for src files (e.g. headers for cc).
 		// If we arbritrarily create BUILD files, then it might render those curated labels incompatible.
-		if exists, _, _ := t.Config().fs.Exists(filepath.Join(dir, "Android.bp")); !exists {
-			t.ModuleErrorf("Cannot use ca.Dir to create a BazelTarget in dir: %v since it does not contain an Android.bp file", dir)
+		if !isPackageBoundary(t.Config(), dir, []string{} /*path components*/, -1 /*index*/) {
+			t.ModuleErrorf("Cannot use ca.Dir to create a BazelTarget in dir: %v since it does not contain an Android.bp/BUILD.bazel file", dir)
 		}
 
 		// Set ca.Dir to nil so that it does not get emitted to the BUILD files
