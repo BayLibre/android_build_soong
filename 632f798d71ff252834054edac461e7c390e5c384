@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47ed0fcb_c8f24d34",
+        "filename": "rust/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-24T21:31:19Z",
+      "side": 1,
+      "message": "rust_fuzz",
+      "range": {
+        "startLine": 64,
+        "startChar": 84,
+        "endLine": 64,
+        "endChar": 91
+      },
+      "revId": "632f798d71ff252834054edac461e7c390e5c384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
