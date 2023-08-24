@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2323463_957b6935",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-08-24T14:08:20Z",
+      "side": 1,
+      "message": "Mind filing a TODO to update this when the next update is in?",
+      "range": {
+        "startLine": 1386,
+        "startChar": 3,
+        "endLine": 1386,
+        "endChar": 86
+      },
+      "revId": "5aa2dcb77525cb42f98411815149377426215cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
