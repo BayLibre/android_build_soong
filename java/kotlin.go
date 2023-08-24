@@ -142,6 +142,7 @@ var kaptStubs = pctx.AndroidRemoteStaticRule("kaptStubs", android.RemoteRuleSupp
 			`-P plugin:org.jetbrains.kotlin.kapt3:correctErrorTypes=true ` +
 			`-P plugin:org.jetbrains.kotlin.kapt3:aptMode=stubs ` +
 			`-P plugin:org.jetbrains.kotlin.kapt3:javacArguments=$encodedJavacFlags ` +
+			`-P plugin:org.jetbrains.kotlin.kapt3:useJvmIr=false ` +
 			`$kaptProcessorPath ` +
 			`$kaptProcessor ` +
 			`-Xbuild-file=$kotlinBuildFile && ` +
