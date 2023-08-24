@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41ed7d44_7ddbd240",
+        "filename": "android/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-24T19:09:15Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/main/+/main:build/soong/python/bp2build.go;l\u003d94-113;drc\u003d98dbaf240603001e3aa1607766a97845ef6f7592\n\nWas wondering if there would be possible improvements in readability by doing some of the comparisons there to e.g. determine whether it makes more sense to set strip_import_prefix from the root of the source rather than set both `import_prefix` and `strip_import_prefix`. I think it\u0027s mostly a potential concern for readability once the build files are going to be checked in than a correctness issue.",
+      "parentUuid": "782a3430_9d51229b",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 55
+      },
+      "revId": "a4750979047a749275ae96c7a498bed365770292",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19691962_1bc133f5",
         "filename": "python/python.go",
         "patchSetId": 2
