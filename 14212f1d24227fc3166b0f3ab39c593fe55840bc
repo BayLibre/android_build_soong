@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ba978fe_58ab8646",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2780,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-24T19:06:37Z",
+      "side": 1,
+      "message": "From your tests it looks like this may have \u0027:\u0027 characters in it, and that would make it an invalid bazel target name ([valid names](https://bazel.build/concepts/labels#target-names)), maybe replace them with, e.g., \u0027_\u0027",
+      "range": {
+        "startLine": 2780,
+        "startChar": 72,
+        "endLine": 2780,
+        "endChar": 75
+      },
+      "revId": "14212f1d24227fc3166b0f3ab39c593fe55840bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d08de00_7c592835",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2823,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-24T19:06:37Z",
+      "side": 1,
+      "message": "I think we\u0027re missing a test to exercise this branch. Also, wdyt of removing the `len(additionalJavaResourcesMap) \u003d\u003d 1` condition, and instead just doing this for the first \"additional resource\" you encounter (if resourceStripPrefix is nil), even if there\u0027s more than one additional resources? Otherwise it gets us in a case like in your first test where we have additional resources but we don\u0027t have \"resources\", which looks a little off (but it\u0027s still correct so I don\u0027t feel strongly about this)",
+      "range": {
+        "startLine": 2820,
+        "startChar": 0,
+        "endLine": 2823,
+        "endChar": 5
+      },
+      "revId": "14212f1d24227fc3166b0f3ab39c593fe55840bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
