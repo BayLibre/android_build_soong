@@ -324,6 +324,38 @@ var (
 
 		"libnativehelper": Bp2BuildDefaultTrueRecursively,
 
+<<<<<<< PATCH SET (bed732 Update sh_test conversion to handle data_bins and test_confi)
+		"packages/apps/DevCamera":                                    Bp2BuildDefaultTrue,
+		"packages/apps/HTMLViewer":                                   Bp2BuildDefaultTrue,
+		"packages/apps/Protips":                                      Bp2BuildDefaultTrue,
+		"packages/apps/SafetyRegulatoryInfo":                         Bp2BuildDefaultTrue,
+		"packages/apps/WallpaperPicker":                              Bp2BuildDefaultTrue,
+		"packages/modules/NeuralNetworks/driver/cache":               Bp2BuildDefaultTrueRecursively,
+		"packages/modules/StatsD/lib/libstatssocket":                 Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb":                                       Bp2BuildDefaultTrue,
+		"packages/modules/adb/apex":                                  Bp2BuildDefaultTrue,
+		"packages/modules/adb/fastdeploy":                            Bp2BuildDefaultTrue,
+		"packages/modules/adb/crypto":                                Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/libs":                                  Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/pairing_auth":                          Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/pairing_connection":                    Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/proto":                                 Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/tls":                                   Bp2BuildDefaultTrueRecursively,
+		"packages/modules/Connectivity/bpf_progs":                    Bp2BuildDefaultTrueRecursively,
+		"packages/modules/Connectivity/service-t":                    Bp2BuildDefaultTrueRecursively,
+		"packages/modules/Connectivity/staticlibs/native":            Bp2BuildDefaultTrueRecursively,
+		"packages/modules/Connectivity/staticlibs/netd/libnetdutils": Bp2BuildDefaultTrueRecursively,
+		"packages/modules/Connectivity/tests/unit/jni":               Bp2BuildDefaultTrueRecursively,
+		"packages/modules/Gki/libkver":                               Bp2BuildDefaultTrue,
+		"packages/modules/NetworkStack/common/captiveportal":         Bp2BuildDefaultTrue,
+		"packages/modules/NeuralNetworks/apex":                       Bp2BuildDefaultTrue,
+		"packages/modules/NeuralNetworks/apex/testing":               Bp2BuildDefaultTrue,
+		"packages/modules/SdkExtensions/gen_sdk":                     Bp2BuildDefaultTrue,
+		"packages/modules/common/proto":                              Bp2BuildDefaultTrue,
+		"packages/providers/MediaProvider/tools/dialogs":             Bp2BuildDefaultFalse, // TODO(b/242834374)
+		"packages/screensavers/Basic":                                Bp2BuildDefaultTrue,
+		"packages/services/Car/tests/SampleRearViewCamera":           Bp2BuildDefaultFalse, // TODO(b/242834321)
+=======
 		"packages/apps/DevCamera":                            Bp2BuildDefaultTrue,
 		"packages/apps/HTMLViewer":                           Bp2BuildDefaultTrue,
 		"packages/apps/Protips":                              Bp2BuildDefaultTrue,
@@ -353,6 +385,7 @@ var (
 		"packages/providers/MediaProvider/tools/dialogs":     Bp2BuildDefaultFalse, // TODO(b/242834374)
 		"packages/screensavers/Basic":                        Bp2BuildDefaultTrue,
 		"packages/services/Car/tests/SampleRearViewCamera":   Bp2BuildDefaultFalse, // TODO(b/242834321)
+>>>>>>> BASE      (57e60b Merge "Use correct module name for java_import in shouldConv)
 
 		"platform_testing/libraries/annotations":              Bp2BuildDefaultTrueRecursively,
 		"platform_testing/libraries/flag-helpers/libflagtest": Bp2BuildDefaultTrueRecursively,
