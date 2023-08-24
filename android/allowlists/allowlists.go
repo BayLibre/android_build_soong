@@ -450,6 +450,8 @@ var (
 		"external/bazelbuild-kotlin-rules":/* recursive = */ true,
 		"external/bazel-skylib":/* recursive = */ true,
 		"external/protobuf":/* recursive = */ false,
+		// external/protobuf/java is used in proto.include_dirs. Use its BUILD.file as a sentinel to generate proto_library targets.
+		"external/protobuf/java":/* recursive = */ false,
 		"external/python/absl-py":/* recursive = */ true,
 
 		"external/compiler-rt/lib/cfi":/* recursive = */ false,

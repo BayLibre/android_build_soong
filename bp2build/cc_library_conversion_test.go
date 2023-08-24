@@ -2394,7 +2394,7 @@ func TestCcLibraryProtoIncludeDirsUnknown(t *testing.T) {
 	},
 	include_build_directory: false,
 }`,
-		ExpectedErr: fmt.Errorf("module \"foo\": TODO: Add support for proto.include_dir: external/protobuf/abc. This directory does not contain an Android.bp file"),
+		ExpectedErr: fmt.Errorf("module \"foo\": TODO: Add support for proto.include_dir: external/protobuf/abc. This directory does not contain an Android.bp/BUILD.bazel file"),
 	})
 }
 
