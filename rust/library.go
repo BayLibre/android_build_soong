@@ -810,11 +810,21 @@ type rustLibraryAttributes struct {
 
 func libraryBp2build(ctx android.TopDownMutatorContext, m *Module) {
 	lib := m.compiler.(*libraryDecorator)
+
 	srcs, compileData := srcsAndCompileDataAttrs(ctx, *lib.baseCompiler)
+
 	deps := android.BazelLabelForModuleDeps(ctx, append(
 		lib.baseCompiler.Properties.Rustlibs,
 		lib.baseCompiler.Properties.Rlibs...,
 	))
+
+	cargoBuildScript := cargoBuildScriptBp2build(ctx, m)
+	if cargoBuildScript != nil {
+		deps.Add(&bazel.Label{
+			Label: *cargoBuildScript,
+		})
+	}
+
 	procMacroDeps := android.BazelLabelForModuleDeps(ctx, lib.baseCompiler.Properties.Proc_macros)
 
 	var rustcFLags []string
@@ -859,4 +869,57 @@ func libraryBp2build(ctx android.TopDownMutatorContext, m *Module) {
 		},
 		attrs,
 	)
+}
+
+type cargoBuildScriptAttributes struct {
+	Srcs    bazel.LabelListAttribute
+	Edition bazel.StringAttribute
+	Version bazel.StringAttribute
+}
+
+func cargoBuildScriptBp2build(ctx android.TopDownMutatorContext, m *Module) *string {
+	// Soong treats some crates like libprotobuf as special in that they have
+	// cargo build script ran to produce an out folder and check it into AOSP
+	// For example, https://cs.android.com/android/platform/superproject/main/+/main:external/rust/crates/protobuf/out/
+	// is produced by cargo build script https://cs.android.com/android/platform/superproject/main/+/main:external/rust/crates/protobuf/build.rs
+	// The out folder is then fed into `rust_library` by a genrule
+	// https://cs.android.com/android/platform/superproject/main/+/main:external/rust/crates/protobuf/Android.bp;l=22
+	// This allows Soong to decouple from cargo completely.
+
+	// rules_rust provides a ruleset to run the cargo build script and feed the output
+	// into a rust_library target. http://bazelbuild.github.io/rules_rust/cargo.html
+
+	// There are not many cases like this in AOSP and we're handling `libprotobuf` as one-off for now.
+	// FIX-ME(b/297364081): We shoudl consider reusing the out folder instead of rerunning the script again in Bazel
+	if m.Name() != "libprotobuf" {
+		return nil
+	}
+
+	lib := m.compiler.(*libraryDecorator)
+
+	name := m.Name() + "_build_script"
+	attrs := &cargoBuildScriptAttributes{
+		Srcs: bazel.MakeLabelListAttribute(
+			android.BazelLabelForModuleSrc(ctx, []string{"build.rs"}),
+		),
+		Edition: bazel.StringAttribute{
+			Value: lib.baseCompiler.Properties.Edition,
+		},
+		Version: bazel.StringAttribute{
+			Value: lib.baseCompiler.Properties.Cargo_pkg_version,
+		},
+	}
+
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "cargo_build_script",
+			Bzl_load_location: "@rules_rust//cargo:cargo_build_script.bzl",
+		},
+		android.CommonAttributes{
+			Name: name,
+		},
+		attrs,
+	)
+
+	return &name
 }
