@@ -47,7 +47,8 @@ func TestShTestSimple(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("sh_test", "sts-rootcanal-sidebins", AttrNameToString{
-				"srcs": `["empty.sh"]`,
+				"srcs":    `["empty.sh"]`,
+				"runs_on": `["device"]`,
 				"data": `[
         "android.hardware.bluetooth@1.1-service.sim.rc",
         "android.hardware.bluetooth@1.1-service.sim",
@@ -55,10 +56,7 @@ func TestShTestSimple(t *testing.T) {
         "libc++",
         "libcrypto",
     ]`,
-				"test_config":          `"art-gtests-target-install-apex.xml"`,
-				"test_config_template": `":art-run-test-target-template"`,
-				"auto_gen_config":      "False",
-				"tags":                 `["no-remote"]`,
+				"tags": `["no-remote"]`,
 			})},
 	})
 }
@@ -89,7 +87,8 @@ func TestShTestHostSimple(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("sh_test", "sts-rootcanal-sidebins", AttrNameToString{
-				"srcs": `["empty.sh"]`,
+				"srcs":    `["empty.sh"]`,
+				"runs_on": `["host_without_device"]`,
 				"data": `[
         "android.hardware.bluetooth@1.1-service.sim.rc",
         "android.hardware.bluetooth@1.1-service.sim",
@@ -97,10 +96,7 @@ func TestShTestHostSimple(t *testing.T) {
         "libc++",
         "libcrypto",
     ]`,
-				"tags":                 `["no-remote"]`,
-				"test_config":          `"art-gtests-target-install-apex.xml"`,
-				"test_config_template": `":art-run-test-target-template"`,
-				"auto_gen_config":      "False",
+				"tags": `["no-remote"]`,
 				"target_compatible_with": `select({
         "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
         "//conditions:default": [],
@@ -109,6 +105,94 @@ func TestShTestHostSimple(t *testing.T) {
 	})
 }
 
+func TestShTestAutogen(t *testing.T) {
+	RunBp2BuildTestCase(t, func(ctx android.RegistrationContext) {}, Bp2buildTestCase{
+		Description:                "sh_test test",
+		ModuleTypeUnderTest:        "sh_test",
+		ModuleTypeUnderTestFactory: sh.ShTestFactory,
+		Blueprint: `sh_test{
+    name: "sts-rootcanal-sidebins",
+    src: "empty.sh",
+    test_suites: [
+        "sts",
+        "sts-lite",
+    ],
+    data_bins: [
+        "android.hardware.bluetooth@1.1-service.sim",
+        "android.hardware.bluetooth@1.1-impl-sim"
+    ],
+    data: ["android.hardware.bluetooth@1.1-service.sim.rc"],
+    data_libs: ["libc++","libcrypto"],
+		test_config: "art-gtests-target-install-apex.xml",
+		test_config_template: ":art-run-test-target-template",
+		auto_gen_config: true,
+    test_options:{tags: ["no-remote"],
+	},
+}`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("sh_test", "sts-rootcanal-sidebins", AttrNameToString{
+				"srcs":                      `["empty.sh"]`,
+				"runs_on":                   `["device"]`,
+				"auto_generate_test_config": "True",
+				"target_compatible_with":    `["//build/bazel/platforms/os:android"]`,
+				"template_test_config":      `":art-run-test-target-template__BP2BUILD__MISSING__DEP"`,
+				"data": `[
+        "android.hardware.bluetooth@1.1-service.sim.rc",
+        "android.hardware.bluetooth@1.1-service.sim",
+        "android.hardware.bluetooth@1.1-impl-sim",
+        "libc++",
+        "libcrypto",
+    ]`,
+				"tags": `["no-remote"]`,
+			})},
+	})
+}
+
+func TestShTestHostAutogen(t *testing.T) {
+	RunBp2BuildTestCase(t, func(ctx android.RegistrationContext) {}, Bp2buildTestCase{
+		Description:                "sh_test_host test",
+		ModuleTypeUnderTest:        "sh_test_host",
+		ModuleTypeUnderTestFactory: sh.ShTestHostFactory,
+		Blueprint: `sh_test_host{
+    name: "sts-rootcanal-sidebins",
+    src: "empty.sh",
+    test_suites: [
+        "sts",
+        "sts-lite",
+    ],
+    data_bins: [
+        "android.hardware.bluetooth@1.1-service.sim",
+        "android.hardware.bluetooth@1.1-impl-sim"
+    ],
+    data: ["android.hardware.bluetooth@1.1-service.sim.rc"],
+    data_libs: ["libc++","libcrypto"],
+		test_config: "art-gtests-target-install-apex.xml",
+		test_config_template: ":art-run-test-target-template",
+		auto_gen_config: true,
+    test_options:{tags: ["no-remote"],
+	},
+}`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("sh_test", "sts-rootcanal-sidebins", AttrNameToString{
+				"srcs":                      `["empty.sh"]`,
+				"runs_on":                   `["host_without_device"]`,
+				"auto_generate_test_config": "True",
+				"target_compatible_with": `select({
+        "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    })`,
+				"template_test_config": `":art-run-test-target-template__BP2BUILD__MISSING__DEP"`,
+				"data": `[
+        "android.hardware.bluetooth@1.1-service.sim.rc",
+        "android.hardware.bluetooth@1.1-service.sim",
+        "android.hardware.bluetooth@1.1-impl-sim",
+        "libc++",
+        "libcrypto",
+    ]`,
+				"tags": `["no-remote"]`,
+			})},
+	})
+}
 func TestShTestSimpleUnset(t *testing.T) {
 	RunBp2BuildTestCase(t, func(ctx android.RegistrationContext) {}, Bp2buildTestCase{
 		Description:                "sh_test test",
@@ -132,7 +216,8 @@ func TestShTestSimpleUnset(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("sh_test", "sts-rootcanal-sidebins", AttrNameToString{
-				"srcs": `["empty.sh"]`,
+				"srcs":    `["empty.sh"]`,
+				"runs_on": `["device"]`,
 				"data": `[
         "android.hardware.bluetooth@1.1-service.sim.rc",
         "android.hardware.bluetooth@1.1-service.sim",
@@ -168,7 +253,8 @@ func TestShTestHostSimpleUnset(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("sh_test", "sts-rootcanal-sidebins", AttrNameToString{
-				"srcs": `["empty.sh"]`,
+				"srcs":    `["empty.sh"]`,
+				"runs_on": `["host_without_device"]`,
 				"data": `[
         "android.hardware.bluetooth@1.1-service.sim.rc",
         "android.hardware.bluetooth@1.1-service.sim",
