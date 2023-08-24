@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "551f06b0_b135fc4e",
+        "filename": "android/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-24T18:49:20Z",
+      "side": 1,
+      "message": "do we need to do any of the relative-izing of pkg path that we do in the python code? perhaps not now but closer to when we check in build files?",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 55
+      },
+      "revId": "a4750979047a749275ae96c7a498bed365770292",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19691962_1bc133f5",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-24T18:49:20Z",
+      "side": 1,
+      "message": "can we limit access to this API to when we\u0027re in bp2build mode or perhaps instead modify bp2buildprotoproperties to have an optional arg for this functionality?\n\nIn general I\u0027d prefer to limit access to APIs in Soong where possible as there\u0027s no restriction on them being used in plugins.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 1
+      },
+      "revId": "a4750979047a749275ae96c7a498bed365770292",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
