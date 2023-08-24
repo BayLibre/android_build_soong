@@ -515,6 +515,25 @@ var (
 		"libserde_json",
 		"libprotobuf",
 
+		"protoc-gen-rust",
+		"libprotobuf_codegen",
+		"libprotobuf_parse",
+		"libregex",
+		"libtempfile",
+		"libwhich",
+		"libregex_syntax",
+		"libfastrand",
+		"libeither",
+		"libaho_corasick",
+		"liblibc",
+		"libcfg_if",
+		"liblog_rust",
+		"libgetrandom",
+		"libremove_dir_all",
+		"libahash",
+		"libhashbrown",
+		"libindexmap",
+
 		// ext
 		"tagsoup",
 
