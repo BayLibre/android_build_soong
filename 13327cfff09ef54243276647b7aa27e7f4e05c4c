@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e3d60f7_654618b9",
+        "filename": "rust/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T19:33:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "313a50a4_6c54e718",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 12
+      },
+      "revId": "13327cfff09ef54243276647b7aa27e7f4e05c4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8d64ffb_3fdbf15e",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-08-19T00:45:30Z",
       "side": 1,
       "message": "If crate_root is intended to be required in the future, it might be worth adding a TODO reminder here to remove this once that\u0027s true. (Similarly below in library.go)",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 140,
+        "endChar": 78
+      },
+      "revId": "13327cfff09ef54243276647b7aa27e7f4e05c4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dd27d20_d1208c76",
+        "filename": "rust/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T19:33:13Z",
+      "side": 1,
+      "message": "Done. I put the comment in `srcPathFromModuleSrcs` since it is reused in other places\n\nIt won\u0027t have to be required necessarily. The Bazel rules allow you to omit the `crate_root` property if you have a `main.rs` or `lib.rs` in your `srcs`, so we can do the same thing when the time comes.",
+      "parentUuid": "c8d64ffb_3fdbf15e",
       "range": {
         "startLine": 140,
         "startChar": 2,
@@ -81,6 +129,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24949460_cf9db5c9",
+        "filename": "rust/compiler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T19:33:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ed1dfb3_b7fc23a3",
+      "revId": "13327cfff09ef54243276647b7aa27e7f4e05c4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b650ebc_8349c3a7",
@@ -94,6 +160,30 @@
       "writtenOn": "2023-08-19T00:45:30Z",
       "side": 1,
       "message": "nit: rename crateRootPath or entrySrcPath",
+      "range": {
+        "startLine": 575,
+        "startChar": 33,
+        "endLine": 575,
+        "endChar": 40
+      },
+      "revId": "13327cfff09ef54243276647b7aa27e7f4e05c4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9364e7ef_31e70dda",
+        "filename": "rust/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T19:33:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b650ebc_8349c3a7",
       "range": {
         "startLine": 575,
         "startChar": 33,
@@ -127,6 +217,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ded232_ed2ee1f4",
+        "filename": "rust/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T19:33:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5d91713_6f53e5e2",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 13
+      },
+      "revId": "13327cfff09ef54243276647b7aa27e7f4e05c4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48c46fd0_076a1bd2",
@@ -140,6 +254,24 @@
       "writtenOn": "2023-08-15T22:58:03Z",
       "side": 1,
       "message": "Why is this relative to the crate root? That doesn\u0027t match what e.g. cc does.",
+      "revId": "13327cfff09ef54243276647b7aa27e7f4e05c4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31582e98_41d59e46",
+        "filename": "rust/toolchain_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-24T19:33:13Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean here by relative to the crate root.\n\nThis property is a path relative to the top of the toolchain source, which is the same as the documentation before this change, and the behavior is also the same.",
+      "parentUuid": "48c46fd0_076a1bd2",
       "revId": "13327cfff09ef54243276647b7aa27e7f4e05c4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
