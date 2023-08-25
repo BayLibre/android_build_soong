@@ -16,6 +16,24 @@
       "message": "While testing this locally it did not solve the problem for us. Something seems to be amiss with the while-statement and it will miss the last entry in the list.\n\n\n  while read -r -d\u0027 \u0027 i; do echo $i; done \u003c\u003c\u003c \"a b c\"\n  a\n  b\n\nand c will be missing.\n\nAlso the file only contains:\n\n  proto-file: build/soong/provenance/proto/provenance_metadata.proto\n  proto-message: ProvenanceMetaDataList",
       "revId": "a56614698b434baf7f0caf99f981dc3d9094d93d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4681bcdb_6e2c1c76",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1897843
+      },
+      "writtenOn": "2023-08-25T10:21:54Z",
+      "side": 1,
+      "message": "/bin/sh in Ubuntu (at least the versions we have) are dash and dash does not support -d which explains part of the problem.",
+      "parentUuid": "c07aaa64_caffb462",
+      "revId": "a56614698b434baf7f0caf99f981dc3d9094d93d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
