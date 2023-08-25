@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9274916d_36f342e8",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-25T14:10:40Z",
+      "side": 1,
+      "message": "optional: rather than explicitly listing each of these, you could embed [`tradefed.TestConfigAttributes`](https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/test.go;l\u003d688;drc\u003dfdca7fe03b59a7c99ef61e3176b742a223dcf26c)",
+      "range": {
+        "startLine": 555,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 30
+      },
+      "revId": "4dcc2890b6c3967ad5aae4483e30026e932b9762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a88791a3_19be0441",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-25T14:10:40Z",
+      "side": 1,
+      "message": "We don\u0027t need to migrate `test_suites` at this time -- I expect they\u0027ll get a redesign before migrating to Bazel",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 36
+      },
+      "revId": "4dcc2890b6c3967ad5aae4483e30026e932b9762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cd45b4b_a48b0f06",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-25T14:10:40Z",
+      "side": 1,
+      "message": "this may be simpler with the embedding of the tradefed attrs e.g. https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/test.go;l\u003d751;drc\u003dfdca7fe03b59a7c99ef61e3176b742a223dcf26c",
+      "range": {
+        "startLine": 622,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 68
+      },
+      "revId": "4dcc2890b6c3967ad5aae4483e30026e932b9762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
