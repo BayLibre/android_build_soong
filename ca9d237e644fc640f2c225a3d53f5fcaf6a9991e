@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6503bd5d_4ce7c3d9",
+        "filename": "rust/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-25T22:00:14Z",
+      "side": 1,
+      "message": "What happens when this is uninitialized and accessed? Is it guaranteed that this does not lead to a NPE?",
+      "revId": "ca9d237e644fc640f2c225a3d53f5fcaf6a9991e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
