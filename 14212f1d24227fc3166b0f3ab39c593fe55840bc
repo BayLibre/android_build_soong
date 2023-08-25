@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1e306c1_7ded567f",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2780,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-08-25T18:35:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ba978fe_58ab8646",
+      "range": {
+        "startLine": 2780,
+        "startChar": 72,
+        "endLine": 2780,
+        "endChar": 75
+      },
+      "revId": "14212f1d24227fc3166b0f3ab39c593fe55840bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d08de00_7c592835",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-24T19:06:37Z",
       "side": 1,
       "message": "I think we\u0027re missing a test to exercise this branch. Also, wdyt of removing the `len(additionalJavaResourcesMap) \u003d\u003d 1` condition, and instead just doing this for the first \"additional resource\" you encounter (if resourceStripPrefix is nil), even if there\u0027s more than one additional resources? Otherwise it gets us in a case like in your first test where we have additional resources but we don\u0027t have \"resources\", which looks a little off (but it\u0027s still correct so I don\u0027t feel strongly about this)",
+      "range": {
+        "startLine": 2820,
+        "startChar": 0,
+        "endLine": 2823,
+        "endChar": 5
+      },
+      "revId": "14212f1d24227fc3166b0f3ab39c593fe55840bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c7af98_b7b66b99",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2823,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-08-25T18:35:52Z",
+      "side": 1,
+      "message": "Changed it to put the first \"additional resource\" as a resource (when resourceStripPrefix is nil). These test case for when theres one filegroup or one resource dirs sand no resource are  already exist https://cs.android.com/android/platform/superproject/main/+/main:build/soong/bp2build/java_library_conversion_test.go;l\u003d842;drc\u003db1e5c6a69a3e06819e26c6d669c3a18e4ec5db1a  \nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/bp2build/java_library_conversion_test.go;l\u003d323;drc\u003db1e5c6a69a3e06819e26c6d669c3a18e4ec5db1a",
+      "parentUuid": "6d08de00_7c592835",
       "range": {
         "startLine": 2820,
         "startChar": 0,
