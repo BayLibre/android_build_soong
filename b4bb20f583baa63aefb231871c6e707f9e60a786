@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12a364bc_995bd800",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-25T22:19:18Z",
+      "side": 1,
+      "message": "Could we utilize this for `binaryBp2build`? We could use `ctx.ModuleType()` to determine what file patterns are added to `compileData`. I don\u0027t feel too strongly about it though",
+      "revId": "b4bb20f583baa63aefb231871c6e707f9e60a786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
