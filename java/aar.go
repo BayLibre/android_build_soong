@@ -1339,9 +1339,10 @@ func (a *AndroidLibrary) ConvertWithBp2build(ctx android.TopDownMutatorContext) 
 	deps := depLabels.Deps
 	if !commonAttrs.Srcs.IsEmpty() {
 		deps.Append(depLabels.StaticDeps) // we should only append these if there are sources to use them
-	} else if !depLabels.Deps.IsEmpty() {
-		ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
 	}
+	// else if !depLabels.Deps.IsEmpty() {
+	// 	ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
+	// }
 	name := a.Name()
 	props := AndroidLibraryBazelTargetModuleProperties()
 
