@@ -1115,6 +1115,8 @@ type AndroidTest struct {
 	testConfig       android.Path
 	extraTestConfigs android.Paths
 	data             android.Paths
+
+	android.BazelModuleBase
 }
 
 func (a *AndroidTest) InstallInTestcases() bool {
@@ -1232,6 +1234,8 @@ func AndroidTestFactory() android.Module {
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	android.InitOverridableModule(module, &module.overridableAppProperties.Overrides)
+
+	android.InitBazelModule(module)
 	return module
 }
 
@@ -1630,11 +1634,10 @@ type bazelAndroidAppAttributes struct {
 	Proguard_specs   bazel.LabelListAttribute
 }
 
-// ConvertWithBp2build is used to convert android_app to Bazel.
-func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+func convertWithBp2build(ctx android.TopDownMutatorContext, a *AndroidApp) (bool, android.CommonAttributes, *bazelAndroidAppAttributes) {
 	commonAttrs, bp2BuildInfo, supported := a.convertLibraryAttrsBp2Build(ctx)
 	if !supported {
-		return
+		return false, android.CommonAttributes{}, &bazelAndroidAppAttributes{}
 	}
 	depLabels := bp2BuildInfo.DepLabels
 
@@ -1643,7 +1646,7 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 
 	aapt, supported := a.convertAaptAttrsWithBp2Build(ctx)
 	if !supported {
-		return
+		return false, android.CommonAttributes{}, &bazelAndroidAppAttributes{}
 	}
 	certificate, certificateName := android.BazelStringOrLabelFromProp(ctx, a.overridableAppProperties.Certificate)
 
@@ -1651,11 +1654,11 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	// TODO(b/274474008 ): Directly convert deviceProperties.Min_sdk_version in bp2build
 	// MinSdkVersion(ctx) calls SdkVersion(ctx) if no value for min_sdk_version is set
 	minSdkVersion := a.MinSdkVersion(ctx)
-	if !minSdkVersion.IsPreview() && !minSdkVersion.IsInvalid() {
-		if minSdkStr, err := minSdkVersion.EffectiveVersionString(ctx); err == nil {
-			manifestValues.MinSdkVersion = &minSdkStr
-		}
+	// if !minSdkVersion.IsPreview() && !minSdkVersion.IsInvalid() {
+	if minSdkStr, err := minSdkVersion.EffectiveVersionString(ctx); err == nil {
+		manifestValues.MinSdkVersion = &minSdkStr
 	}
+	// }
 
 	maxSdkVersion := a.MaxSdkVersion(ctx)
 	if !maxSdkVersion.IsPreview() && !maxSdkVersion.IsInvalid() {
@@ -1665,11 +1668,11 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	}
 
 	targetSdkVersion := a.TargetSdkVersion(ctx)
-	if !targetSdkVersion.IsPreview() && !targetSdkVersion.IsInvalid() {
-		if targetSdkStr, err := targetSdkVersion.EffectiveVersionString(ctx); err == nil {
-			manifestValues.TargetSdkVersion = &targetSdkStr
-		}
+	// if !targetSdkVersion.IsPreview() && !targetSdkVersion.IsInvalid() {
+	if targetSdkStr, err := targetSdkVersion.EffectiveVersionString(ctx); err == nil {
+		manifestValues.TargetSdkVersion = &targetSdkStr
 	}
+	// }
 
 	appAttrs := &bazelAndroidAppAttributes{
 		// TODO(b/209576404): handle package name override by product variable PRODUCT_MANIFEST_PACKAGE_NAME_OVERRIDES
@@ -1714,11 +1717,6 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 
 	}
 
-	props := bazel.BazelTargetModuleProperties{
-		Rule_class:        "android_binary",
-		Bzl_load_location: "//build/bazel/rules/android:android_binary.bzl",
-	}
-
 	if !bp2BuildInfo.hasKotlin {
 		appAttrs.javaCommonAttributes = commonAttrs
 		appAttrs.bazelAapt = aapt
@@ -1744,10 +1742,30 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		}
 	}
 
-	ctx.CreateBazelTargetModule(
-		props,
-		android.CommonAttributes{Name: a.Name(), SkipData: proptools.BoolPtr(true)},
-		appAttrs,
-	)
+	return true, android.CommonAttributes{Name: a.Name(), SkipData: proptools.BoolPtr(true)}, appAttrs
+}
+
+// ConvertWithBp2build is used to convert android_app to Bazel.
+func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	if ok, commonAttrs, appAttrs := convertWithBp2build(ctx, a); ok {
+		props := bazel.BazelTargetModuleProperties{
+			Rule_class:        "android_binary",
+			Bzl_load_location: "//build/bazel/rules/android:android_binary.bzl",
+		}
+
+		ctx.CreateBazelTargetModule(props, commonAttrs, appAttrs)
+	}
+
+}
+
+func (at *AndroidTest) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	if ok, commonAttrs, appAttrs := convertWithBp2build(ctx, &at.AndroidApp); ok {
+		props := bazel.BazelTargetModuleProperties{
+			Rule_class:        "android_test",
+			Bzl_load_location: "//build/bazel/rules/android:android_test.bzl",
+		}
+
+		ctx.CreateBazelTargetModule(props, commonAttrs, appAttrs)
+	}
 
 }
