@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0417e664_70fcd855",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1398,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-08-25T04:03:24Z",
+      "side": 1,
+      "message": "Do any other non-snapshotPrebuilt modules define the SnapshotSanitizer interface?",
+      "range": {
+        "startLine": 1398,
+        "startChar": 5,
+        "endLine": 1398,
+        "endChar": 27
+      },
+      "revId": "1218c43d7a88cafaf32c5a6d7ad7dc3e95a6af2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
