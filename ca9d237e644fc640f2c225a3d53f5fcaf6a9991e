@@ -16,6 +16,24 @@
       "message": "What happens when this is uninitialized and accessed? Is it guaranteed that this does not lead to a NPE?",
       "revId": "ca9d237e644fc640f2c225a3d53f5fcaf6a9991e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bbc717e_9f25afbb",
+        "filename": "rust/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-08-25T22:02:40Z",
+      "side": 1,
+      "message": "From what I understand, when we write\n\n```\nvar compileData bazel.LabeList\n```\n\nit initializes `compileData` to an instance of the struct. So it\u0027s never `nil`.",
+      "parentUuid": "6503bd5d_4ce7c3d9",
+      "revId": "ca9d237e644fc640f2c225a3d53f5fcaf6a9991e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
