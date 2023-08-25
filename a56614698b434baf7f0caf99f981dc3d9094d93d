@@ -34,6 +34,24 @@
       "parentUuid": "c07aaa64_caffb462",
       "revId": "a56614698b434baf7f0caf99f981dc3d9094d93d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd24ed1d_3c84d19d",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-08-25T21:59:25Z",
+      "side": 1,
+      "message": "Changed the command line to not use \"read -d\" which might not be available in dash, thanks for point out it.\n\nThe last line should be already handled by \"|| [ -n \"$$file\" ]\", and I have tested it locally. Let me know if there is any issue in your env.",
+      "parentUuid": "4681bcdb_6e2c1c76",
+      "revId": "a56614698b434baf7f0caf99f981dc3d9094d93d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
