@@ -79,7 +79,9 @@ var (
 		"build/soong/scripts":                Bp2BuildDefaultTrueRecursively,
 
 		"cts/common/device-side/nativetesthelper/jni": Bp2BuildDefaultTrueRecursively,
-		"cts/libs/json": Bp2BuildDefaultTrueRecursively,
+		"cts/libs/json":                          Bp2BuildDefaultTrueRecursively,
+		"cts/tests/tests/gesture":                Bp2BuildDefaultTrueRecursively,
+		"platform_testing/libraries/annotations": Bp2BuildDefaultTrueRecursively,
 
 		"dalvik/tools/dexdeps": Bp2BuildDefaultTrueRecursively,
 
@@ -338,6 +340,7 @@ var (
 		"prebuilts/gradle-plugin":                          Bp2BuildDefaultTrueRecursively,
 		"prebuilts/runtime/mainline/platform/sdk":          Bp2BuildDefaultTrueRecursively,
 		"prebuilts/sdk":                                    Bp2BuildDefaultTrue,
+		"prebuilts/misc/common/androidx-test":              Bp2BuildDefaultTrue,
 		"prebuilts/sdk/current/androidx":                   Bp2BuildDefaultTrue,
 		"prebuilts/sdk/current/androidx-legacy":            Bp2BuildDefaultTrue,
 		"prebuilts/sdk/current/extras/constraint-layout-x": Bp2BuildDefaultTrue,
@@ -891,9 +894,6 @@ var (
 		"hal_unit_tests",
 
 		"merge_annotation_zips_test",
-
-		// bouncycastle dep
-		"platform-test-annotations",
 
 		// java_resources with multiple resource_dirs
 		"emma",
