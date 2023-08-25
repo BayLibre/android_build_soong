@@ -16,6 +16,24 @@
       "message": "Was this a typo? Seems like I cannot find `libclap_ex`.",
       "revId": "0bad95e48b32a4b6eacb48d8d6b1a8c173e7dfbc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d3d96ca_515a90b8",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-08-25T17:20:27Z",
+      "side": 0,
+      "message": "Yes it was indeed a typo.",
+      "parentUuid": "32924ce3_24533200",
+      "revId": "0bad95e48b32a4b6eacb48d8d6b1a8c173e7dfbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
