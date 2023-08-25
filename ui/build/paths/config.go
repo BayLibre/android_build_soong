@@ -106,6 +106,7 @@ var Configuration = map[string]PathConfig{
 	"sh":             Allowed,
 	"stubby":         Allowed,
 	"tr":             Allowed,
+	"aapt2":          Allowed,
 	"unzip":          Allowed,
 	"zip":            Allowed,
 
