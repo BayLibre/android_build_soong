@@ -46,6 +46,30 @@
       },
       "revId": "d0a5edb18dbd8b8a74370a84e94478f7d7ab991e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82adcba5_c27e03dc",
+        "filename": "aconfig/java_aconfig_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-08-26T22:32:38Z",
+      "side": 1,
+      "message": "My original hope before was to not need this and move the annotation into the android.flags library. But that didn\u0027t work out, so I think just adding this library like you originally suggested like this is probably the easiest thing.",
+      "parentUuid": "cd1e0e1e_c9249684",
+      "range": {
+        "startLine": 56,
+        "startChar": 20,
+        "endLine": 56,
+        "endChar": 43
+      },
+      "revId": "d0a5edb18dbd8b8a74370a84e94478f7d7ab991e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
