@@ -16,6 +16,24 @@
       "message": "Thanks for implementing this and adding unit tests.\n\ncc @jobredeaux@google.com who is working on roboleaf. I believe this new feature should be a noop for platform builds.",
       "revId": "2ec7e1c55c327f72f963df88c5a36e85885b1f67",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f7d8d98_39ce0597",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137303
+      },
+      "writtenOn": "2023-08-28T18:42:01Z",
+      "side": 1,
+      "message": "Thanks very much for the timely review! And yes, for any prebuilt_apis that do not specify `allow_incremental_platform_api: true` this is a noop. The only client that implements this at the start will be the wear-sdk, which is built as a java_sdk_library target and includes a prebuilt_apis module.",
+      "parentUuid": "0643a1b0_65a5dc8c",
+      "revId": "2ec7e1c55c327f72f963df88c5a36e85885b1f67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
