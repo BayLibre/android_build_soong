@@ -16,6 +16,24 @@
       "message": "Trevor, does this match the CFI exclude path behavior?",
       "revId": "f734f00898685a2c16a1ebffd3f3439bd0a48139",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebb9d05e_2bc5b3e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-08-28T16:16:52Z",
+      "side": 1,
+      "message": "It does seem to mimic the behavior closely, but I have some questions:\n\n1. Why does it work now if this change is needed? Or, alternatively, what is necessitating this change at this time?\n2. I looked at the make CL, but I don\u0027t see the variable actually being set anywhere. If I understand the need, all modules that require CFI should be in this list, right?\n3. Are there any cases where we would want to disable HWASan outside the context of it being incompatible with other sanitizers? If not, would it be possible to handle this generically? Is there anything we can check for in Soong to handle this disablement instead of creating a list of modules?",
+      "parentUuid": "1909c9bc_b505b24c",
+      "revId": "f734f00898685a2c16a1ebffd3f3439bd0a48139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
