@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0643a1b0_65a5dc8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-28T18:31:19Z",
+      "side": 1,
+      "message": "Thanks for implementing this and adding unit tests.\n\ncc @jobredeaux@google.com who is working on roboleaf. I believe this new feature should be a noop for platform builds.",
+      "revId": "2ec7e1c55c327f72f963df88c5a36e85885b1f67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
