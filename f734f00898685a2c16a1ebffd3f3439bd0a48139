@@ -34,6 +34,24 @@
       "parentUuid": "1909c9bc_b505b24c",
       "revId": "f734f00898685a2c16a1ebffd3f3439bd0a48139",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf0440e_9b0b742b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2005646
+      },
+      "writtenOn": "2023-08-28T17:30:13Z",
+      "side": 1,
+      "message": "Thanks for taking a look, @tradical@google.com! Let me provide some more context.\n\n\u003e I don\u0027t see the variable actually being set anywhere. If I understand the need, all modules that require CFI should be in this list, right?\n\nYup. To keep things simple, this patchset only introduces a new variable (to be set in product makefiles as needed) -- it doesn\u0027t try to determine which targets should be built with HWASan disabled. It\u0027s similar to e.g. aosp/530206 for CFI.\n\nThis is the setup that motivated the CL:\n\n- Vendor BSP drop includes shared libraries built with CFI. These are listed in `Android.mk` as `BUILD_PREBUILT` targets, but the makefiles don\u0027t otherwise indicate that the prebuilts are CFI-enabled.\n- Several other modules (not from the same BSP) depending on those prebuilt libraries had to be added to `PRODUCT_CFI_INCLUDE_PATHS` to avoid crashes at runtime due to CFI violations (aborts in `__cfi_check_fail`)\n\nBuilding the product with `SANITIZE_TARGET\u003dhwaddress` brings back those crashes, since CFI is implicitly disabled for targets that use HWASan. As a workaround, this patch allows adding problematic modules to `PRODUCT_HWSAN_EXCLUDE_PATHS` without having to manually specify `LOCAL_NOSANITIZE :\u003d hwaddress` in a few dozen vendor makefiles.\n\n(I considered reusing `PRODUCT_CFI_INCLUDE_PATHS` for this instead of adding a new variable, but figured the latter is cleaner; reusing 1) would add unnecessary coupling -- based on `config_sanitizers.mk`, it\u0027s not just CFI that\u0027s incompatible with HWASan; 2) wouldn\u0027t work for modules that use `LOCAL_SANITIZE :\u003d cfi` instead of `PRODUCT_CFI_INCLUDE_PATHS`)\n\nIdeally the build system would be able to figure this out automatically (maybe also warning when incompatible sanitizers are enabled). However, that\u0027s likely a more involved change, and may still require vendors to modify their makefiles. The approach here require requires manually excluding relevant modules, but has the advantage of being simple and in line with other inclusion/exclusion rules.",
+      "parentUuid": "ebb9d05e_2bc5b3e6",
+      "revId": "f734f00898685a2c16a1ebffd3f3439bd0a48139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
