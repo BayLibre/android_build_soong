@@ -897,6 +897,17 @@ var (
 
 		// java_resources with multiple resource_dirs
 		"emma",
+
+		"modules-utils-preconditions-srcs",
+
+		"libphonenumber",
+		//android_app
+		"CarServiceUpdatable",
+		"OfflineLocationTimeZoneProviderService",
+		// android_libarary
+		"car-service-test-static-lib",
+		// java_binary_host
+		"CarrierConfigConverterV2",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
