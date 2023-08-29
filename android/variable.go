@@ -486,8 +486,6 @@ type ProductVariables struct {
 	ReleaseAconfigFlagDefaultPermission string `json:",omitempty"`
 
 	KeepVndk *bool `json:",omitempty"`
-
-	CheckVendorSeappViolations *bool `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
