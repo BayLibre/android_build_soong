@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39b09e18_11cb01ff",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1969,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-08-29T13:57:05Z",
+      "side": 1,
+      "message": "I\u0027m a little confused about the purpose of `memtagFeature`. I never see it get set to something different from `\"\"` before this line, and I never see it get accessed after this line. Can you explain why this is necessary?",
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58b5a0dc_c938bb56",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-08-29T13:57:05Z",
+      "side": 1,
+      "message": "If it ends up being the case that we don\u0027t need `memtagFeature`, how would you feel about returning the `StringListAttribute` from this function and directly setting `memtagFeatures` above to the result?",
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85508c09_44e13c5c",
         "filename": "cc/bp2build.go",
         "patchSetId": 2
@@ -173,6 +207,23 @@
         "endLine": 723,
         "endChar": 177
       },
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a99fd5e_95a0e751",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-08-29T13:57:05Z",
+      "side": 1,
+      "message": "I feel like this relates back to the discussion we keep having about the tradeoffs between encapsulating relevant logic in our rules/macros and keeping it visible to the user. I personally feel like I would prefer to have this logic be encapsulated in Bazel so that no one ever makes the mistake of not including it, but if you disagree I will defer to you. I just wanted to make sure this solution was considered before approving.",
       "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
