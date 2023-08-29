@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4a65bb_1c3cd72c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-08-29T17:06:45Z",
+      "side": 1,
+      "message": "Woops, this was the wrong revert, will close and reopen separately.",
+      "revId": "aef9da9d13f814893f4153e27e62b1f121a1b23d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
