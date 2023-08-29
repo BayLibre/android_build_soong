@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6490698f_6313286d",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-29T17:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "655af11c_28a54a45",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "9c40479790fb0da01bb36fec7a4f5b7b78da2b4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdc6b1a4_7472f315",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-08-09T14:03:41Z",
       "side": 1,
       "message": "does this need to be added for every package context? would it make sense to instead add this only when needed e.g. in a Once if the rule does not exist yet?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "9c40479790fb0da01bb36fec7a4f5b7b78da2b4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae440b08_3655d3ae",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-29T17:06:15Z",
+      "side": 1,
+      "message": "Good point. I was able to define the rule inline when it\u0027s used instead of having to keep it on the PackageContext",
+      "parentUuid": "fdc6b1a4_7472f315",
       "range": {
         "startLine": 39,
         "startChar": 0,
