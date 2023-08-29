@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f7c7594_3a3a752c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1989,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-08-29T00:15:35Z",
+      "side": 1,
+      "message": "it has the nil check at line 1966",
+      "parentUuid": "85508c09_44e13c5c",
+      "range": {
+        "startLine": 1989,
+        "startChar": 2,
+        "endLine": 1989,
+        "endChar": 45
+      },
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94a22f48_bba171f7",
         "filename": "cc/bp2build.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-28T22:12:25Z",
       "side": 1,
       "message": "Can we make this a public link: https://cs.android.com/android/platform/superproject/main/+/32ea1afbd1148b0b78553f24fa61116c999eb968:build/soong/cc/sanitize.go;l\u003d910",
+      "range": {
+        "startLine": 1991,
+        "startChar": 22,
+        "endLine": 1991,
+        "endChar": 251
+      },
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b519a90_c942ae61",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1991,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-08-29T00:15:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94a22f48_bba171f7",
       "range": {
         "startLine": 1991,
         "startChar": 22,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4130396_ea79bcb8",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-08-29T00:15:35Z",
+      "side": 1,
+      "message": "it has the nil check as well.",
+      "parentUuid": "f93b51c4_8705a3fe",
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5153e6ee_18b393bb",
         "filename": "cc/test.go",
         "patchSetId": 2
@@ -77,6 +143,30 @@
       "writtenOn": "2023-08-28T22:12:25Z",
       "side": 1,
       "message": "public link: https://cs.android.com/android/platform/superproject/main/+/0df8153267f96da877febc5332240fa06ceb8533:build/soong/cc/sanitize.go;l\u003d488",
+      "range": {
+        "startLine": 723,
+        "startChar": 25,
+        "endLine": 723,
+        "endChar": 177
+      },
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a36f4328_b5b4a0cf",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-08-29T00:15:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5153e6ee_18b393bb",
       "range": {
         "startLine": 723,
         "startChar": 25,
