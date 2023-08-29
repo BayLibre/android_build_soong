@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7d21a17_a49d0cff",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1969,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-08-29T17:28:38Z",
+      "side": 1,
+      "message": "it is to make sure NoConfigAxis won\u0027t override the one set in arm64, I am not sure if the order is guaranteed, so arm64 value might come before the NoConfig one, and I don\u0027t want it to override the arm64 one.",
+      "parentUuid": "39b09e18_11cb01ff",
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58b5a0dc_c938bb56",
         "filename": "cc/bp2build.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2023-08-29T13:57:05Z",
       "side": 1,
       "message": "If it ends up being the case that we don\u0027t need `memtagFeature`, how would you feel about returning the `StringListAttribute` from this function and directly setting `memtagFeatures` above to the result?",
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f66d49fa_ffd7a9d0",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-08-29T17:28:38Z",
+      "side": 1,
+      "message": "see above",
+      "parentUuid": "58b5a0dc_c938bb56",
       "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -224,6 +260,24 @@
       "writtenOn": "2023-08-29T13:57:05Z",
       "side": 1,
       "message": "I feel like this relates back to the discussion we keep having about the tradeoffs between encapsulating relevant logic in our rules/macros and keeping it visible to the user. I personally feel like I would prefer to have this logic be encapsulated in Bazel so that no one ever makes the mistake of not including it, but if you disagree I will defer to you. I just wanted to make sure this solution was considered before approving.",
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c6d450f_5936ca30",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-08-29T17:28:38Z",
+      "side": 1,
+      "message": "I thought about this and ultimately decided to make the build file more explicit, if a user has to set the flags for a binary to enable memtag I don\u0027t see why a test binary has to be special. We had quite some discussions on similar topic before and my impression is that we prefer to more explicit in the build file rather than bury logic in the bazel code, there might exceptions but I think this is the general idea, but feel free to raise this to the group for further discussion and maybe we can have some clearer guidance for people to follow.",
+      "parentUuid": "6a99fd5e_95a0e751",
       "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
