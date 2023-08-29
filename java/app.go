@@ -22,6 +22,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"android/soong/ui/metrics/bp2build_metrics_proto"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -1634,6 +1635,14 @@ type bazelAndroidAppAttributes struct {
 	Proguard_specs   bazel.LabelListAttribute
 }
 
+func (b bazelAapt) ConvertJavaResources(ctx android.Bp2buildMutatorContext, javaAttrs *javaCommonAttributes) {
+	// TODO (b/300470246) bp2build support for java_resources & java_resource_dirs in android rules
+	if !javaAttrs.javaResourcesAttributes.Resources.IsEmpty() {
+		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_UNSUPPORTED, "java resources in android_* module")
+	}
+
+}
+
 func convertWithBp2build(ctx android.Bp2buildMutatorContext, a *AndroidApp) (bool, android.CommonAttributes, *bazelAndroidAppAttributes) {
 	aapt, supported := a.convertAaptAttrsWithBp2Build(ctx)
 	if !supported {
@@ -1711,6 +1720,7 @@ func convertWithBp2build(ctx android.Bp2buildMutatorContext, a *AndroidApp) (boo
 	if !supported {
 		return false, android.CommonAttributes{}, &bazelAndroidAppAttributes{}
 	}
+	aapt.ConvertJavaResources(ctx, commonAttrs)
 	depLabels := bp2BuildInfo.DepLabels
 
 	deps := depLabels.Deps
