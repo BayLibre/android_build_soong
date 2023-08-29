@@ -15,10 +15,11 @@
 package bp2build
 
 import (
+	"fmt"
+	"testing"
+
 	"android/soong/android"
 	"android/soong/java"
-
-	"testing"
 )
 
 func runAndroidAppTestCase(t *testing.T, tc Bp2buildTestCase) {
@@ -472,4 +473,58 @@ android_app {
 				"optimize":    `False`,
 			}),
 		}})
+}
+
+func TestAndroidAppJavaResources(t *testing.T) {
+	runAndroidAppTestCase(t, Bp2buildTestCase{
+		Description:                "Android app - java resources",
+		ModuleTypeUnderTest:        "android_app",
+		ModuleTypeUnderTestFactory: java.AndroidAppFactory,
+		Filesystem: map[string]string{
+			"app.java":            "",
+			"res/res.png":         "",
+			"AndroidManifest.xml": "",
+			"assets/asset.png":    "",
+		},
+		Blueprint: `
+android_app {
+		name: "TestApp",
+		srcs: ["app.java"],
+		sdk_version: "current",
+    java_resources: ["res1"],
+		optimize: {
+			enabled: false,
+		},
+}
+`,
+		ExpectedErr:          fmt.Errorf("marked unconvertible and also is converted"),
+		ExpectedBazelTargets: []string{},
+	})
+}
+
+func TestAndroidAppJavaResourceDirs(t *testing.T) {
+	runAndroidAppTestCase(t, Bp2buildTestCase{
+		Description:                "Android app - java resource dirs",
+		ModuleTypeUnderTest:        "android_app",
+		ModuleTypeUnderTestFactory: java.AndroidAppFactory,
+		Filesystem: map[string]string{
+			"app.java":            "",
+			"res/res.png":         "",
+			"AndroidManifest.xml": "",
+			"assets/asset.png":    "",
+		},
+		Blueprint: `
+android_app {
+		name: "TestApp",
+		srcs: ["app.java"],
+		sdk_version: "current",
+    java_resources: ["res1"],
+		optimize: {
+			enabled: false,
+		},
+}
+`,
+		ExpectedErr:          fmt.Errorf("marked unconvertible and also is converted"),
+		ExpectedBazelTargets: []string{},
+	})
 }

@@ -1349,6 +1349,7 @@ func (a *AndroidLibrary) ConvertWithBp2build(ctx android.TopDownMutatorContext) 
 	if !supported {
 		return
 	}
+	aaptAttrs.ConvertJavaResources(ctx, commonAttrs)
 	ctx.CreateBazelTargetModule(
 		props,
 		android.CommonAttributes{Name: name},
