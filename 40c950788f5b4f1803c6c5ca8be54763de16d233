@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "064550e6_345e1bfd",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1969,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-08-30T14:20:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e7d21a17_a49d0cff",
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58b5a0dc_c938bb56",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "see above",
       "parentUuid": "58b5a0dc_c938bb56",
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e39f82e7_e59903ac",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-08-30T14:20:16Z",
+      "side": 1,
+      "message": "How do you feel about returning both?",
+      "parentUuid": "f66d49fa_ffd7a9d0",
       "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -278,6 +314,24 @@
       "side": 1,
       "message": "I thought about this and ultimately decided to make the build file more explicit, if a user has to set the flags for a binary to enable memtag I don\u0027t see why a test binary has to be special. We had quite some discussions on similar topic before and my impression is that we prefer to more explicit in the build file rather than bury logic in the bazel code, there might exceptions but I think this is the general idea, but feel free to raise this to the group for further discussion and maybe we can have some clearer guidance for people to follow.",
       "parentUuid": "6a99fd5e_95a0e751",
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37e09239_6fe43a9d",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-08-30T14:20:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0c6d450f_5936ca30",
       "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
