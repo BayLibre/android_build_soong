@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6591a856_6668ebc7",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-08-30T15:44:51Z",
+      "side": 1,
+      "message": "nit: would it be more consistent to exit on error?\nalso have you tested if you originally had absolute links in the symlink forest and bp2build needed to rerun, would it successfully rewrite all previous absolute links with relative ones?",
+      "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7438eb85_d593aef8",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 3
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "Do you have a better way?",
       "parentUuid": "7438eb85_d593aef8",
+      "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33635c19_8a538390",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-08-30T15:44:51Z",
+      "side": 1,
+      "message": "well you could probably establish a common prefix based on `os.Gwd()` v `topdir`\nsuch that os.Symlink calls would use that prefix instead of relying on `os.ChDir()`",
+      "parentUuid": "b2afaaaf_32a50197",
       "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
