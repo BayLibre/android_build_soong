@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee696ee6_6986cc99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-30T00:01:29Z",
+      "side": 1,
+      "message": "+2 to fix the build, but a `sync.Map` is likely to be more efficient",
+      "revId": "fc6e64564557b91fd89f58738d0a1669436bb978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
