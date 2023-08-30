@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a54a405e_669551b1",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-08-30T17:22:12Z",
+      "side": 1,
+      "message": "let me think about this in my next cl to add include/exclude paths for memtag, I don\u0027t want another presubmit run on this cl.",
+      "parentUuid": "e39f82e7_e59903ac",
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85508c09_44e13c5c",
         "filename": "cc/bp2build.go",
         "patchSetId": 2
