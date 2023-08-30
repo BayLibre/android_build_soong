@@ -27,6 +27,7 @@ var (
 		"-Werror=implicit-function-declaration",
 		"-fno-emulated-tls",
 		"-march=rv64gcv_zba_zbb_zbs",
+		"-munaligned-access",
 	}
 
 	riscv64ArchVariantCflags = map[string][]string{}
@@ -34,6 +35,7 @@ var (
 	riscv64Ldflags = []string{
 		"-Wl,--hash-style=gnu",
 		"-march=rv64gcv_zba_zbb_zbs",
+		"-munaligned-access",
 	}
 
 	riscv64Lldflags = append(riscv64Ldflags,
