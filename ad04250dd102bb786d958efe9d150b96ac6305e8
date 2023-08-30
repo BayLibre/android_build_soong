@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa1b47f6_337216ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-08-30T23:07:42Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "ad04250dd102bb786d958efe9d150b96ac6305e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8a85570_3bead29a",
@@ -96,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "687f346f_0e672d3e",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-08-30T23:07:42Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a5c82823_5b3f5ce9",
+      "range": {
+        "startLine": 438,
+        "startChar": 30,
+        "endLine": 438,
+        "endChar": 33
+      },
+      "revId": "ad04250dd102bb786d958efe9d150b96ac6305e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1129caca_eb7e3361",
@@ -109,6 +150,30 @@
       "writtenOn": "2023-08-04T09:43:02Z",
       "side": 1,
       "message": "This could be `m.DeviceSupported()`, but it still has the same issue where a `cc_test_host` that needs `RootTargetPreparer` would not get the auto-generated configs.",
+      "range": {
+        "startLine": 746,
+        "startChar": 52,
+        "endLine": 746,
+        "endChar": 56
+      },
+      "revId": "ad04250dd102bb786d958efe9d150b96ac6305e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f62396d_24ed3842",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-08-30T23:07:42Z",
+      "side": 1,
+      "message": "yeah, I don\u0027t want to change the existing behavior.",
+      "parentUuid": "1129caca_eb7e3361",
       "range": {
         "startLine": 746,
         "startChar": 52,
