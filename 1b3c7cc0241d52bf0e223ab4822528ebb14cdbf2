@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb13c3a_23e816c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-08-30T16:48:37Z",
+      "side": 1,
+      "message": "we don\u0027t yet have a clang with the relevant change (it only went in a couple of weeks ago), but our next clang update should let us enable this...\n\n(i don\u0027t actually know whether we should pass this argument to the linker too, but i\u0027ve left it in as a reminder to check that when we have a newer toolchain!)",
+      "revId": "1b3c7cc0241d52bf0e223ab4822528ebb14cdbf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
