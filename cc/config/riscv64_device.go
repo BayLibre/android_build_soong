@@ -26,14 +26,24 @@ var (
 		// Help catch common 32/64-bit errors.
 		"-Werror=implicit-function-declaration",
 		"-fno-emulated-tls",
+<<<<<<< PATCH SET (1b3c7c riscv64: assume fast unaligned access.)
+		"-march=rv64gc_zba_zbb_zbs",
+		"-munaligned-access",
+=======
 		"-march=rv64gcv_zba_zbb_zbs",
+>>>>>>> BASE      (ce12ea Merge "Generate product variants by default" into main)
 	}
 
 	riscv64ArchVariantCflags = map[string][]string{}
 
 	riscv64Ldflags = []string{
 		"-Wl,--hash-style=gnu",
+<<<<<<< PATCH SET (1b3c7c riscv64: assume fast unaligned access.)
+		"-march=rv64gc_zba_zbb_zbs",
+		"-munaligned-access",
+=======
 		"-march=rv64gcv_zba_zbb_zbs",
+>>>>>>> BASE      (ce12ea Merge "Generate product variants by default" into main)
 	}
 
 	riscv64Lldflags = append(riscv64Ldflags,
