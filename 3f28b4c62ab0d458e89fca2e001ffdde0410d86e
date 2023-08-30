@@ -16,6 +16,24 @@
       "message": "nit: Doing a `Chdir()` within a go routine, wouldn\u0027t it potentially interfere with any other concurrent operation?\n(Although, there indeed doesn\u0027t seem to be any such operation).",
       "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2afaaaf_32a50197",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-08-30T05:48:58Z",
+      "side": 1,
+      "message": "Do you have a better way?",
+      "parentUuid": "7438eb85_d593aef8",
+      "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
