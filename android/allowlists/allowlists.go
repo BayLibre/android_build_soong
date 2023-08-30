@@ -1644,6 +1644,9 @@ var (
 
 		// Depends on the module defined in the directory not bp2build default allowed
 		"ota_from_raw_img",
+
+		// Depends on unconverted //platform_testing/libraries/annotations:platform-test-annotations
+		"bouncycastle-host-tests",
 	}
 
 	// Bazel prod-mode allowlist. Modules in this list are built by Bazel
