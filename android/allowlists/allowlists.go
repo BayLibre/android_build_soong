@@ -674,6 +674,10 @@ var (
 		//external/fec
 		"libfec_rs",
 
+		//frameworks/base/core/java
+		"IDropBoxManagerService_aidl",
+		"HardwareBuffer_aidl",
+
 		//system/extras/ext4_utils
 		"libext4_utils",
 		"mke2fs_conf",
