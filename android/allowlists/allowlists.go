@@ -683,6 +683,7 @@ var (
 
 		//frameworks/base/core/java
 		"IDropBoxManagerService_aidl",
+		"HardwareBuffer_aidl",
 
 		//system/extras/ext4_utils
 		"libext4_utils",
