@@ -904,6 +904,7 @@ var (
 		"aidl_interface_headers",
 		"bpf",
 		"combined_apis",
+		"droiddoc_exported_dir",
 		"license",
 		"linker_config",
 		"java_import",
