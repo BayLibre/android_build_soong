@@ -308,6 +308,10 @@ func (a *AndroidApp) OverridablePropertiesDepsMutator(ctx android.BottomUpMutato
 }
 
 func (a *AndroidTestHelperApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	applicationId := a.appTestHelperAppProperties.Manifest_values.ApplicationId
+	if applicationId != nil {
+		a.aapt.manifestValues.applicationId = *applicationId
+	}
 	a.generateAndroidBuildActions(ctx)
 }
 
@@ -1102,6 +1106,11 @@ func AndroidAppFactory() android.Module {
 	return module
 }
 
+type Manifest_values struct {
+	//
+	ApplicationId *string
+}
+
 type appTestProperties struct {
 	// The name of the android_app module that the tests will run against.
 	Instrumentation_for *string
@@ -1111,6 +1120,9 @@ type appTestProperties struct {
 
 	// If specified, the mainline module package name in the test config is overwritten by it.
 	Mainline_package_name *string
+
+	// A dictionary of values to be overridden in the manifest.
+	Manifest_values Manifest_values
 }
 
 type AndroidTest struct {
@@ -1155,6 +1167,10 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			a.additionalAaptFlags = append(a.additionalAaptFlags, "--rename-instrumentation-target-package "+manifestPackageName)
 		}
 	}
+	applicationId := a.appTestProperties.Manifest_values.ApplicationId
+	if applicationId != nil {
+		a.aapt.manifestValues.applicationId = *applicationId
+	}
 	a.generateAndroidBuildActions(ctx)
 
 	for _, module := range a.testProperties.Test_mainline_modules {
@@ -1182,6 +1198,10 @@ func (a *AndroidTest) FixTestConfig(ctx android.ModuleContext, testConfig androi
 	if ctx.ModuleName() != a.installApkName {
 		fixNeeded = true
 		command.FlagWithArg("--test-file-name ", a.installApkName+".apk")
+	}
+
+	if a.overridableAppProperties.Package_name != nil && a.appTestProperties.Manifest_values.ApplicationId != nil {
+		// TODO Alix throw an error
 	}
 
 	if a.overridableAppProperties.Package_name != nil {
@@ -1259,6 +1279,7 @@ type appTestHelperAppProperties struct {
 
 	// Install the test into a folder named for the module in all test suites.
 	Per_testcase_directory *bool
+	Manifest_values        Manifest_values
 }
 
 type AndroidTestHelperApp struct {
