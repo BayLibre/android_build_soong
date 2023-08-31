@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f4a08ea_1874f30e",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-31T21:44:54Z",
+      "side": 1,
+      "message": "I believe you should already be able to do this by setting `ExpectedErr` in a `Bp2buildTestCase`",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 33
+      },
+      "revId": "d9040b795cf6bfc264f8119f9414cb58a5d195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
