@@ -73,7 +73,7 @@ func TestAndroidAppAllSupportedFields(t *testing.T) {
 			"manifest/AndroidManifest.xml": "",
 			"assets_/asset.png":            "",
 		},
-		Blueprint: simpleModuleDoNotConvertBp2build("android_app", "static_lib_dep") + `
+		Blueprint: SimpleModuleDoNotConvertBp2build("android_app", "static_lib_dep") + `
 android_app {
 		name: "TestApp",
 		srcs: ["app.java"],
@@ -152,7 +152,7 @@ func TestAndroidAppCertIsModule(t *testing.T) {
 		ModuleTypeUnderTest:        "android_app",
 		ModuleTypeUnderTestFactory: java.AndroidAppFactory,
 		Filesystem:                 map[string]string{},
-		Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "foocert") + `
+		Blueprint: SimpleModuleDoNotConvertBp2build("filegroup", "foocert") + `
 android_app {
 	name: "TestApp",
 	certificate: ":foocert",
@@ -225,8 +225,8 @@ func TestAndroidAppLibs(t *testing.T) {
 		ModuleTypeUnderTest:        "android_app",
 		ModuleTypeUnderTestFactory: java.AndroidAppFactory,
 		Filesystem:                 map[string]string{},
-		Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "foocert") +
-			simpleModuleDoNotConvertBp2build("java_library", "barLib") + `
+		Blueprint: SimpleModuleDoNotConvertBp2build("filegroup", "foocert") +
+			SimpleModuleDoNotConvertBp2build("java_library", "barLib") + `
 android_app {
 	name: "foo",
 	libs: ["barLib"],
@@ -251,8 +251,8 @@ func TestAndroidAppKotlinSrcs(t *testing.T) {
 		Filesystem: map[string]string{
 			"res/res.png": "",
 		},
-		Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "foocert") +
-			simpleModuleDoNotConvertBp2build("java_library", "barLib") + `
+		Blueprint: SimpleModuleDoNotConvertBp2build("filegroup", "foocert") +
+			SimpleModuleDoNotConvertBp2build("java_library", "barLib") + `
 android_app {
 	name: "foo",
 	srcs: ["a.java", "b.kt"],
@@ -290,7 +290,7 @@ func TestAndroidAppCommonSrcs(t *testing.T) {
 		Filesystem: map[string]string{
 			"res/res.png": "",
 		},
-		Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "foocert") + `
+		Blueprint: SimpleModuleDoNotConvertBp2build("filegroup", "foocert") + `
 android_app {
 	name: "foo",
 	srcs: ["a.java"],
@@ -331,7 +331,7 @@ func TestAndroidAppKotlinCflags(t *testing.T) {
 		Filesystem: map[string]string{
 			"res/res.png": "",
 		},
-		Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "foocert") + `
+		Blueprint: SimpleModuleDoNotConvertBp2build("filegroup", "foocert") + `
 android_app {
 	name: "foo",
 	srcs: ["a.java", "b.kt"],
@@ -370,7 +370,7 @@ func TestAndroidAppManifestSdkVersionsProvided(t *testing.T) {
 		ModuleTypeUnderTest:        "android_app",
 		ModuleTypeUnderTestFactory: java.AndroidAppFactory,
 		Filesystem:                 map[string]string{},
-		Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "foocert") + `
+		Blueprint: SimpleModuleDoNotConvertBp2build("filegroup", "foocert") + `
 android_app {
 	name: "foo",
 	sdk_version: "current",
@@ -399,7 +399,7 @@ func TestAndroidAppMinAndTargetSdkDefaultToSdkVersion(t *testing.T) {
 		ModuleTypeUnderTest:        "android_app",
 		ModuleTypeUnderTestFactory: java.AndroidAppFactory,
 		Filesystem:                 map[string]string{},
-		Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "foocert") + `
+		Blueprint: SimpleModuleDoNotConvertBp2build("filegroup", "foocert") + `
 android_app {
 	name: "foo",
 	sdk_version: "30",
