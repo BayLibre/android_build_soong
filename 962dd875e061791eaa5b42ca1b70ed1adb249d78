@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c6ad39_a63a703d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-08-31T23:24:57Z",
+      "side": 1,
+      "message": "darwin abtd: https://android-build.googleplex.com/builds/abtd/run/L46800000962873593",
+      "revId": "962dd875e061791eaa5b42ca1b70ed1adb249d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
