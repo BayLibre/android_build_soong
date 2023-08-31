@@ -16,6 +16,24 @@
       "message": "Use LoadOrStore. As is, I think this still has race conditions.",
       "revId": "556796d1d9b1ec81f45d1cfe75ab2977bb4ea0e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8838f25f_c2d26d0f",
+        "filename": "android/proto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-31T00:31:20Z",
+      "side": 1,
+      "message": "Thanks for catching this. I have updated the usage.",
+      "parentUuid": "3ffac103_36f6af89",
+      "revId": "556796d1d9b1ec81f45d1cfe75ab2977bb4ea0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
