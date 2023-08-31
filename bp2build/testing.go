@@ -108,6 +108,15 @@ func RunBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.Regi
 	runBp2BuildTestCaseWithSetup(t, bp2buildSetup, tc)
 }
 
+func RunBp2BuildTestCaseWithError(t *testing.T, registerModuleTypes func(ctx android.RegistrationContext), tc Bp2buildTestCase, errorHandler android.FixtureErrorHandler) {
+	t.Helper()
+	bp2buildSetup := android.GroupFixturePreparers(
+		android.FixtureRegisterWithContext(registerModuleTypes),
+		SetBp2BuildTestRunner,
+	).ExtendWithErrorHandler(errorHandler)
+	runBp2BuildTestCaseWithSetup(t, bp2buildSetup, tc)
+}
+
 func RunApiBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.RegistrationContext), tc Bp2buildTestCase) {
 	t.Helper()
 	apiBp2BuildSetup := android.GroupFixturePreparers(
