@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3732c1_88a43141",
+        "filename": "etc/install_symlink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-01T23:37:56Z",
+      "side": 1,
+      "message": "Add license header.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "41796d98d31b010d04239a6e8012d8e91e86ed2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ccbf0cf_9cf536cd",
+        "filename": "etc/install_symlink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-01T23:37:56Z",
+      "side": 1,
+      "message": "update",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "41796d98d31b010d04239a6e8012d8e91e86ed2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "948d881b_5ffbdc54",
+        "filename": "etc/install_symlink_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-01T23:37:56Z",
+      "side": 1,
+      "message": "Could you also add error checking tests for un-clean and other bad values?",
+      "range": {
+        "startLine": 49,
+        "startChar": 20,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "41796d98d31b010d04239a6e8012d8e91e86ed2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

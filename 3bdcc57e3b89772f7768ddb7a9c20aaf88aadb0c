@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b842f919_fee53899",
+        "filename": "etc/install_symlink.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-01T23:37:56Z",
+      "side": 1,
+      "message": "nice, I was going to comment that this shouldn\u0027t be Optional, even though AndroidMkEntries does.",
+      "range": {
+        "startLine": 39,
+        "startChar": 23,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "3bdcc57e3b89772f7768ddb7a9c20aaf88aadb0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
