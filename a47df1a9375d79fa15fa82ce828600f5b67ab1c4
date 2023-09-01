@@ -87,6 +87,24 @@
       "parentUuid": "2825adc5_dbdf2cad",
       "revId": "a47df1a9375d79fa15fa82ce828600f5b67ab1c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08c6fcfb_29bb507b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1890456
+      },
+      "writtenOn": "2023-09-01T18:49:30Z",
+      "side": 1,
+      "message": "\u003e the riscv build went fine. anything else we want to test before landing?\n\nyes, lots of bugs in vendor/qcom/sm7250/ on udc branch and tm-qpr branch: https://android-build.googleplex.com/builds/abtd/run/L48400000962854017 and\nhttps://android-build.googleplex.com/builds/abtd/run/L10200000962854015",
+      "parentUuid": "c762d2ed_70f09e24",
+      "revId": "a47df1a9375d79fa15fa82ce828600f5b67ab1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
