@@ -87,7 +87,8 @@ func (p *Plugin) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	}
 
 	props := bazel.BazelTargetModuleProperties{
-		Rule_class: "java_plugin",
+		Rule_class:        "java_plugin",
+		Bzl_load_location: "//build/bazel/rules/java:java_plugin.bzl",
 	}
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: pluginName}, attrs)
 }

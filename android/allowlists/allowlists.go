@@ -187,6 +187,7 @@ var (
 		"external/mdnsresponder":                 Bp2BuildDefaultTrueRecursively,
 		"external/minijail":                      Bp2BuildDefaultTrueRecursively,
 		"external/musl":                          Bp2BuildDefaultTrueRecursively,
+		"external/nullaway":                      Bp2BuildDefaultTrueRecursively,
 		"external/objenesis":                     Bp2BuildDefaultTrueRecursively,
 		"external/openscreen":                    Bp2BuildDefaultTrueRecursively,
 		"external/ow2-asm":                       Bp2BuildDefaultTrueRecursively,
@@ -846,11 +847,6 @@ var (
 		// aidl
 		"aidl",
 		"libaidl-common",
-
-		// java_resources containing only a single filegroup
-		"libauto_value_plugin",
-		"auto_value_plugin_resources",
-		"auto_value_extension",
 
 		// Used by xsd_config
 		"xsdc",
