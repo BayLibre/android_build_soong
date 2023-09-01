@@ -124,6 +124,7 @@ var (
 		"external/abseil-cpp":                    Bp2BuildDefaultTrueRecursively,
 		"external/arm-optimized-routines":        Bp2BuildDefaultTrueRecursively,
 		"external/auto":                          Bp2BuildDefaultTrue,
+		"external/auto/value":                    Bp2BuildDefaultTrue,
 		"external/auto/android-annotation-stubs": Bp2BuildDefaultTrueRecursively,
 		"external/auto/common":                   Bp2BuildDefaultTrueRecursively,
 		"external/auto/service":                  Bp2BuildDefaultTrueRecursively,
@@ -187,6 +188,7 @@ var (
 		"external/mdnsresponder":                 Bp2BuildDefaultTrueRecursively,
 		"external/minijail":                      Bp2BuildDefaultTrueRecursively,
 		"external/musl":                          Bp2BuildDefaultTrueRecursively,
+		"external/nullaway":                      Bp2BuildDefaultTrueRecursively,
 		"external/objenesis":                     Bp2BuildDefaultTrueRecursively,
 		"external/openscreen":                    Bp2BuildDefaultTrueRecursively,
 		"external/ow2-asm":                       Bp2BuildDefaultTrueRecursively,
@@ -846,11 +848,6 @@ var (
 		// aidl
 		"aidl",
 		"libaidl-common",
-
-		// java_resources containing only a single filegroup
-		"libauto_value_plugin",
-		"auto_value_plugin_resources",
-		"auto_value_extension",
 
 		// Used by xsd_config
 		"xsdc",
