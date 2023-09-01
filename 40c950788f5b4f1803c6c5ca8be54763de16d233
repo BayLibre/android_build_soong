@@ -190,6 +190,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1dad079_5c82201f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1989,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-09-01T00:21:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0f7c7594_3a3a752c",
+      "range": {
+        "startLine": 1989,
+        "startChar": 2,
+        "endLine": 1989,
+        "endChar": 45
+      },
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94a22f48_bba171f7",
@@ -268,6 +292,24 @@
       "side": 1,
       "message": "it has the nil check as well.",
       "parentUuid": "f93b51c4_8705a3fe",
+      "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6ca1dc_d4a13a39",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-09-01T00:21:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c4130396_ea79bcb8",
       "revId": "40c950788f5b4f1803c6c5ca8be54763de16d233",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
