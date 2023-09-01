@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3393650d_37aea435",
+        "filename": "android/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-01T21:22:47Z",
+      "side": 1,
+      "message": "Can you add a comment about these as well ... e.g. thinking about once we\u0027re working on mac or windows, would we need to update these?",
+      "range": {
+        "startLine": 411,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 98
+      },
+      "revId": "c00c73ccac7a46ad706b2a7c94129008d4de713b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
