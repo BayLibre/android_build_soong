@@ -16,6 +16,23 @@
       "message": "darwin abtd: https://android-build.googleplex.com/builds/abtd/run/L46800000962873593",
       "revId": "962dd875e061791eaa5b42ca1b70ed1adb249d78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8167ed4_8a0378e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-09-01T03:56:50Z",
+      "side": 1,
+      "message": "I want to enable it for a few days and then disable to see if there are any *regressions*",
+      "revId": "962dd875e061791eaa5b42ca1b70ed1adb249d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
