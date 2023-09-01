@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae0a930_1dc2219f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-01T20:19:36Z",
+      "side": 1,
+      "message": "Thanks! I\u0027m working on fixing that `/system/bin/hwservicemanager` symlink as well.",
+      "revId": "6c550d45d2398bfa5845589f5f8032446e38109d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
