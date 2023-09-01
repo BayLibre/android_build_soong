@@ -2855,6 +2855,7 @@ type javaCommonAttributes struct {
 	Plugins                 bazel.LabelListAttribute
 	Javacopts               bazel.StringListAttribute
 	Sdk_version             bazel.StringAttribute
+	Jarjar_rules            bazel.LabelAttribute
 	Java_version            bazel.StringAttribute
 	Errorprone_force_enable bazel.BoolAttribute
 }
@@ -2902,6 +2903,7 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	var srcs bazel.LabelListAttribute
 	var deps bazel.LabelListAttribute
 	var staticDeps bazel.LabelListAttribute
+	var jarjarRules bazel.LabelAttribute
 
 	if proptools.String(m.deviceProperties.Sdk_version) == "" && m.DeviceSupported() {
 		// TODO(b/297356704): handle platform apis in bp2build
@@ -2920,8 +2922,8 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 				archSrcs := android.BazelLabelForModuleSrcExcludes(ctx, archProps.Srcs, archProps.Exclude_srcs)
 				srcs.SetSelectValue(axis, config, archSrcs)
 				if archProps.Jarjar_rules != nil {
-					ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "jarjar_rules")
-					return &javaCommonAttributes{}, &bp2BuildJavaInfo{}, false
+					jarjarSrcs := android.BazelLabelForModuleSrc(ctx, []string{*archProps.Jarjar_rules})
+					jarjarRules.SetSelectValue(axis, config, jarjarSrcs.Includes[0])
 				}
 			}
 		}
@@ -3030,6 +3032,7 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		Srcs:                    javaSrcs,
 		javaResourcesAttributes: m.convertJavaResourcesAttributes(ctx),
 		Plugins:                 plugins,
+		Jarjar_rules:            jarjarRules,
 		Javacopts:               javacopts,
 		Java_version:            bazel.StringAttribute{Value: m.properties.Java_version},
 		Sdk_version:             bazel.StringAttribute{Value: m.deviceProperties.Sdk_version},
