@@ -198,6 +198,7 @@ var (
 		"external/minijail":                        Bp2BuildDefaultTrueRecursively,
 		"external/mockito":                         Bp2BuildDefaultTrueRecursively,
 		"external/musl":                            Bp2BuildDefaultTrueRecursively,
+		"external/nullaway":                        Bp2BuildDefaultTrueRecursively,
 		"external/objenesis":                       Bp2BuildDefaultTrueRecursively,
 		"external/openscreen":                      Bp2BuildDefaultTrueRecursively,
 		"external/ow2-asm":                         Bp2BuildDefaultTrueRecursively,
