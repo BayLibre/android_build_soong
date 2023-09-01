@@ -69,6 +69,24 @@
       "message": "i\u0027ve started riscv builds: https://android-build.googleplex.com/builds/abtd/run/L90000000962609261\n\nlet\u0027s wait for this to come clean.",
       "revId": "a47df1a9375d79fa15fa82ce828600f5b67ab1c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c762d2ed_70f09e24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-09-01T18:19:43Z",
+      "side": 1,
+      "message": "the riscv build went fine. anything else we want to test before landing?",
+      "parentUuid": "2825adc5_dbdf2cad",
+      "revId": "a47df1a9375d79fa15fa82ce828600f5b67ab1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
