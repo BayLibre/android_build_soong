@@ -408,6 +408,9 @@ func createProtoLibraryTargetsForIncludeDirs(ctx Bp2buildMutatorContext, include
 			// As a workarounds, delete `target_compatible_with`
 			alwaysEnabled := bazel.BoolAttribute{}
 			alwaysEnabled.Value = proptools.BoolPtr(true)
+			alwaysEnabled.SetSelectValue(bazel.OsConfigurationAxis, bazel.OsAndroid, proptools.BoolPtr(true))
+			alwaysEnabled.SetSelectValue(bazel.OsConfigurationAxis, bazel.OsLinux, proptools.BoolPtr(true))
+
 			ctx.CreateBazelTargetModuleWithRestrictions(
 				bazel.BazelTargetModuleProperties{Rule_class: "proto_library"},
 				CommonAttributes{
