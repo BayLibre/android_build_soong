@@ -33,6 +33,23 @@
       "message": "I want to enable it for a few days and then disable to see if there are any *regressions*",
       "revId": "962dd875e061791eaa5b42ca1b70ed1adb249d78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bbce260_8f4ba9da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-09-01T17:34:39Z",
+      "side": 1,
+      "message": "We\u0027re re-landing the Global ThinLTO change today, so maybe we should hold off on this for a week or two.",
+      "revId": "962dd875e061791eaa5b42ca1b70ed1adb249d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
