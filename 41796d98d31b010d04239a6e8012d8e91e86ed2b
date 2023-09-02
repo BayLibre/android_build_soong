@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b3c9c5_7ca239a6",
+        "filename": "etc/install_symlink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-02T00:19:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e3732c1_88a43141",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "41796d98d31b010d04239a6e8012d8e91e86ed2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ccbf0cf_9cf536cd",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7847427c_99968b6d",
+        "filename": "etc/install_symlink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-02T00:19:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ccbf0cf_9cf536cd",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "41796d98d31b010d04239a6e8012d8e91e86ed2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "948d881b_5ffbdc54",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-09-01T23:37:56Z",
       "side": 1,
       "message": "Could you also add error checking tests for un-clean and other bad values?",
+      "range": {
+        "startLine": 49,
+        "startChar": 20,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "41796d98d31b010d04239a6e8012d8e91e86ed2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a79bb12_50e07675",
+        "filename": "etc/install_symlink_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-02T00:19:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "948d881b_5ffbdc54",
       "range": {
         "startLine": 49,
         "startChar": 20,
