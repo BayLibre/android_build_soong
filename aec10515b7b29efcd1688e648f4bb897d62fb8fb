@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd32f60_e25de0fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-09-04T01:13:41Z",
+      "side": 1,
+      "message": "+joeo as this is currently missing the bazel part. Not sure if that\u0027s mandatory though.",
+      "revId": "aec10515b7b29efcd1688e648f4bb897d62fb8fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
