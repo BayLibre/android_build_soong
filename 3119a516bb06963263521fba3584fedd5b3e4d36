@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc0cff6_2cdda5f3",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5291,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-09-05T23:51:37Z",
+      "side": 1,
+      "message": "cover 32 as well?",
+      "range": {
+        "startLine": 5291,
+        "startChar": 20,
+        "endLine": 5291,
+        "endChar": 22
+      },
+      "revId": "3119a516bb06963263521fba3584fedd5b3e4d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a043d959_f6e93b6c",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5297,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-09-05T23:51:37Z",
+      "side": 1,
+      "message": "Just curious: how does this evaluate? only compatible if it is android and not arm or x86?",
+      "revId": "3119a516bb06963263521fba3584fedd5b3e4d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
