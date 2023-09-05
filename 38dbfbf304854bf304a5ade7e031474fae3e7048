@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "176171c2_93745f00",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-09-05T19:12:38Z",
+      "side": 1,
+      "message": "nit: Is there a reason why you\u0027re wrapping the module name with parentheses? Based on the [error message from presubmits](https://android-build.corp.google.com/artifact/pending/P62172760/aosp_bramble_hwasan-userdebug/latest/view/logs%2Fbuild_error.log) it seems like the module name is already wrapped with double quotes.",
+      "range": {
+        "startLine": 536,
+        "startChar": 29,
+        "endLine": 536,
+        "endChar": 33
+      },
+      "revId": "38dbfbf304854bf304a5ade7e031474fae3e7048",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
