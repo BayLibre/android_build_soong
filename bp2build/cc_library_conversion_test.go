@@ -5279,3 +5279,36 @@ cc_library {
 	}
 	runCcLibraryTestCase(t, tc)
 }
+
+func TestCcCompileMultilibConversion(t *testing.T) {
+	tc := Bp2buildTestCase{
+		Description:                "cc_library with compile_multilib",
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Blueprint: `
+cc_library {
+	name: "libfoo",
+	compile_multilib: "64",
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTargetNoRestrictions("cc_library_shared", "libfoo", AttrNameToString{
+				"local_includes": `["."]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"] + select({
+        "//build/bazel/platforms/arch:arm": ["@platforms//:incompatible"],
+        "//build/bazel/platforms/arch:x86": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    })`,
+			}),
+			MakeBazelTargetNoRestrictions("cc_library_static", "libfoo_bp2build_cc_library_static", AttrNameToString{
+				"local_includes": `["."]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"] + select({
+        "//build/bazel/platforms/arch:arm": ["@platforms//:incompatible"],
+        "//build/bazel/platforms/arch:x86": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    })`,
+			}),
+		},
+	}
+	runCcLibraryTestCase(t, tc)
+}
