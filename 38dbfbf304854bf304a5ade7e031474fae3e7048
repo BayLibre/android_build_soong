@@ -22,6 +22,30 @@
       },
       "revId": "38dbfbf304854bf304a5ade7e031474fae3e7048",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c376eb_c014aaa6",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-09-05T19:19:53Z",
+      "side": 1,
+      "message": "True removed the parens and fixed tests",
+      "parentUuid": "176171c2_93745f00",
+      "range": {
+        "startLine": 536,
+        "startChar": 29,
+        "endLine": 536,
+        "endChar": 33
+      },
+      "revId": "38dbfbf304854bf304a5ade7e031474fae3e7048",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
