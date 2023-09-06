@@ -15,16 +15,18 @@
 package aconfig
 
 import (
-	"android/soong/android"
 	"fmt"
 	"strings"
 
+	"android/soong/android"
+	"android/soong/bazel"
 	"github.com/google/blueprint"
 )
 
 type DeclarationsModule struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
+	android.BazelModuleBase
 
 	// Properties for "aconfig_declarations"
 	properties struct {
@@ -47,8 +49,7 @@ func DeclarationsFactory() android.Module {
 	android.InitAndroidModule(module)
 	android.InitDefaultableModule(module)
 	module.AddProperties(&module.properties)
-	// TODO: bp2build
-	//android.InitBazelModule(module)
+	android.InitBazelModule(module)
 
 	return module
 }
@@ -122,6 +123,7 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 			// Other modules get injected as dependencies too, for example the license modules
 			return
 		}
+		fmt.Println("AAAAAAAAA: ", dep.Name(), module.Name())
 		depData := ctx.OtherModuleProvider(dep, valueSetProviderKey).(valueSetProviderData)
 		paths, ok := depData.AvailablePackages[module.properties.Package]
 		if ok {
@@ -158,4 +160,28 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 		IntermediatePath: intermediatePath,
 	})
 
+}
+
+type bazelAconfigDeclarationsAttributes struct {
+	Srcs    bazel.LabelListAttribute
+	Package string
+}
+
+func (module *DeclarationsModule) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	if ctx.ModuleType() != "aconfig_declarations" {
+		return
+	}
+
+	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, module.properties.Srcs))
+
+	attrs := bazelAconfigDeclarationsAttributes{
+		Srcs:    srcs,
+		Package: module.properties.Package,
+	}
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "aconfig_declarations",
+		Bzl_load_location: "//build/bazel/rules/aconfig:aconfig_declarations.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: module.Name()}, &attrs)
 }
