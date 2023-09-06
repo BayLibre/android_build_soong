@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9b4877a_4e0978f2",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-06T18:04:46Z",
+      "side": 1,
+      "message": "Improve this comment, e.g. \"Make all symlinks relative.\"",
+      "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e280c4d7_95b72c99",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-06T18:04:46Z",
+      "side": 1,
+      "message": "Printing an error message without exiting isn\u0027t really appropriate here -- this is catastrophic and should probably halt the build, no?",
+      "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6591a856_6668ebc7",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 3
@@ -67,6 +101,40 @@
       "side": 1,
       "message": "well you could probably establish a common prefix based on `os.Gwd()` v `topdir`\nsuch that os.Symlink calls would use that prefix instead of relying on `os.ChDir()`",
       "parentUuid": "b2afaaaf_32a50197",
+      "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46d3be8c_20565d5f",
+        "filename": "scripts/remove-bazel-output-base.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-06T18:04:46Z",
+      "side": 1,
+      "message": "Do we want to ensure this is being run from the appropriate directory? This would only operate if run from source top, right?",
+      "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5dc2453_685faa59",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-06T18:04:46Z",
+      "side": 1,
+      "message": "This only checks that a specific file is a relative symlink -- wouldn\u0027t it be more complete to verify that *all* symlinks are relative?",
       "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
