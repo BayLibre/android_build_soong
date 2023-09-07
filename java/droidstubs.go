@@ -531,7 +531,9 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 		FlagWithArg("--hide ", "UnresolvedImport").
 		FlagWithArg("--hide ", "InvalidNullabilityOverride").
 		// b/223382732
-		FlagWithArg("--hide ", "ChangedDefault")
+		FlagWithArg("--hide ", "ChangedDefault").
+		FlagWithArg("--hide ", "MissingNullability").
+		FlagWithArg("--hide ", "NoClone")
 
 	// Force metalava to ignore classes on the classpath when an API file contains missing classes.
 	// See b/285140653 for more information.
@@ -540,6 +542,8 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 	// Force metalava to sort overloaded methods by their order in the source code.
 	// See b/285312164 for more information.
 	cmd.FlagWithArg("--api-overloaded-method-order ", "source")
+
+	cmd.FlagWithList("--add-nonessential-overrides-classes ", []string{"android.app.Activity", "android.os.IpcDataCache.QueryHandler"}, ":")
 
 	return cmd
 }
