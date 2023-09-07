@@ -34,6 +34,23 @@
       "parentUuid": "cf3728f0_3af30785",
       "revId": "cbe2ba04b771fb22f6d58a29bf43bc7ba55e7012",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4bf58d9_20e8f15b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-09-07T07:55:30Z",
+      "side": 1,
+      "message": "Adding owners for their approval. This behavior doesn\u0027t have to be ported to Bazel as this shall eventually be reverted back.",
+      "revId": "cbe2ba04b771fb22f6d58a29bf43bc7ba55e7012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
