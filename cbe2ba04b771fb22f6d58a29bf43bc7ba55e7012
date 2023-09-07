@@ -16,6 +16,24 @@
       "message": "I thought that the temp solution was to allow libbinder for vendor apex and think it\u0027s simpler to embed libbinder in vendor apex. Then we don\u0027t need to change build system or linkerconfig.",
       "revId": "cbe2ba04b771fb22f6d58a29bf43bc7ba55e7012",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4dcff3e_0f3d4a90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-09-07T07:41:32Z",
+      "side": 1,
+      "message": "libbinder itself does not allow APEX variation (https://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/libs/binder/Stability.cpp;l\u003d78?q\u003dframeworks%2Fnative%2Flibs%2Fbinder%2FStability.cpp), and I thought this way is more simple than let libbinder generate APEX variation. This way we can also limit its usage as vendor APEX, and also we can list up violated modules / vendor APEXes at build time.",
+      "parentUuid": "cf3728f0_3af30785",
+      "revId": "cbe2ba04b771fb22f6d58a29bf43bc7ba55e7012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
