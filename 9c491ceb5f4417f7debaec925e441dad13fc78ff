@@ -16,6 +16,24 @@
       "message": "Can you adding some unit testing?",
       "revId": "9c491ceb5f4417f7debaec925e441dad13fc78ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b99a8f1_12031f9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-07T17:12:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4385298f_90a9d1fb",
+      "revId": "9c491ceb5f4417f7debaec925e441dad13fc78ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
