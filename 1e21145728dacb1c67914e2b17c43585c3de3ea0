@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "435e0226_2b149818",
+        "filename": "scripts/remove-bazel-output-base.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-07T21:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17afa442_282788df",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23a87a0f_a2888669",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-07T18:52:24Z",
       "side": 1,
       "message": "I\u0027m not sure how this suggestion to run lunch is relevant if they decide not to confirm removal... Did you mean not to put this in an `else` statement?",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17eb5890_1d77aecc",
+        "filename": "scripts/remove-bazel-output-base.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-07T21:42:36Z",
+      "side": 1,
+      "message": "My apologies - the point was that they may have been pointing to the old outdir. I refactored.",
+      "parentUuid": "23a87a0f_a2888669",
       "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2699658a_2b8b05d5",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-07T21:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87efe2a9_da1c3788",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e815583a_15c834a4",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-09-07T18:52:24Z",
       "side": 1,
       "message": "Isn\u0027t the original bug to verify moving the source directory, not the output directory?",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e3d50c_8ace0342",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-07T21:42:36Z",
+      "side": 1,
+      "message": "Changed. PTAL",
+      "parentUuid": "e815583a_15c834a4",
       "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -92,6 +164,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1dc2e2c_3e172943",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-07T21:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3031ded_d0098b6a",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7dbf18f_bbfea4b3",
@@ -105,6 +201,24 @@
       "writtenOn": "2023-09-07T18:52:24Z",
       "side": 1,
       "message": "Aren\u0027t you only testing a bazel build here, where the original bug cared about soong builds?",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20875379_91103ac0",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-07T21:42:36Z",
+      "side": 1,
+      "message": "I think this is functionally the same - all the errors pertained to bazel. Feel free to disagree",
+      "parentUuid": "a7dbf18f_bbfea4b3",
       "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
