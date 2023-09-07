@@ -39,6 +39,40 @@
       },
       "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b30d033_3f8956ac",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-09-07T20:44:20Z",
+      "side": 1,
+      "message": "Is the tool going to read the files listed in `headersList`?  If so, they should be listed as inputs to this rule.",
+      "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6aa178c_19489586",
+        "filename": "cc/ndk_sysroot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-09-07T20:44:20Z",
+      "side": 1,
+      "message": "You could also use `android.WriteFileRule`, which would also have the advantage of not having to rerun this rule anytime one of the input files is modified.",
+      "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
