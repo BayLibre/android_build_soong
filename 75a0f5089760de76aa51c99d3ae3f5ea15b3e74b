@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd460cc9_009c3993",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-07T18:10:34Z",
+      "side": 1,
+      "message": "ah, interesting use of rsp files here",
+      "range": {
+        "startLine": 650,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 34
+      },
+      "revId": "75a0f5089760de76aa51c99d3ae3f5ea15b3e74b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8536027c_175b3157",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-07T18:10:34Z",
+      "side": 1,
+      "message": "Why does this need to be unescaped as well? My expectation is that this would just be running the sbox command.",
+      "range": {
+        "startLine": 759,
+        "startChar": 0,
+        "endLine": 761,
+        "endChar": 2
+      },
+      "revId": "75a0f5089760de76aa51c99d3ae3f5ea15b3e74b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
