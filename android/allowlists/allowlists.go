@@ -546,6 +546,7 @@ var (
 		"remote-color-resources-compile-colors",
 
 		// framework-minus-apex
+		"AndroidFrameworkLintChecker",
 		"ImmutabilityAnnotationProcessor",
 		"android.mime.types.minimized",
 		"debian.mime.types.minimized",
