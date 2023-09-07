@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17afa442_282788df",
+        "filename": "scripts/remove-bazel-output-base.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-07T18:52:24Z",
+      "side": 1,
+      "message": "What if ANDROID_BUILD_TOP is not set? Then this resovles to `/out/bazel/output`, which seems pretty bad, no?\n\nCan you please add `set -u` to the top of this, or maybe `set -eu` to prevent this kind of bug?\n\nAdditionally, you should elegantly detect that TOP is not present and error out that the user needs to run lunch.",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a87a0f_a2888669",
+        "filename": "scripts/remove-bazel-output-base.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-07T18:52:24Z",
+      "side": 1,
+      "message": "I\u0027m not sure how this suggestion to run lunch is relevant if they decide not to confirm removal... Did you mean not to put this in an `else` statement?",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87efe2a9_da1c3788",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-07T18:52:24Z",
+      "side": 1,
+      "message": "This bug ID isn\u0027t visible externally. It\u0027s a useful thing to link here for us, but maybe go into a little more description about what this is actually doing.\n\n\"Test that relative symlinks work\" is not fully evident in this test without a lot of context, consider instead the alternatives:\n\n- \"Test that all symlinks created as part of a build are relative, except those under Bazel directories\"\n- \"Test that the build directory may be moved in between builds, as long as the bazel root is removed.\"",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e815583a_15c834a4",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-07T18:52:24Z",
+      "side": 1,
+      "message": "Isn\u0027t the original bug to verify moving the source directory, not the output directory?",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3031ded_d0098b6a",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-07T18:52:24Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nPlease remove the trailing whitespace.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7dbf18f_bbfea4b3",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-07T18:52:24Z",
+      "side": 1,
+      "message": "Aren\u0027t you only testing a bazel build here, where the original bug cared about soong builds?",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
