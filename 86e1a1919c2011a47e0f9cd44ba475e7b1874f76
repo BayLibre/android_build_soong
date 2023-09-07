@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82bbe6d0_c5d47c3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1261281
+      },
+      "writtenOn": "2023-09-07T16:52:38Z",
+      "side": 1,
+      "message": "Hi sgjesse@,\n\nObserved this change(patch set 4) is causing perf boottime and uibench jank regressions\n\nhttps://screenshot.googleplex.com/4Xq69ARJPFqqzi7\n\nBoottime - https://crystalball-presubmit.corp.google.com/dashboard/I30200010195257137?change_number\u003d2238838\u0026host\u003dandroid-review.googlesource.com\u0026patchset\u003d4\n\nUibench - https://crystalball-presubmit.corp.google.com/dashboard/I81600010195234750?change_number\u003d2238838\u0026host\u003dandroid-review.googlesource.com\u0026patchset\u003d4\n\nPlease fix these regressions before merging this change",
+      "revId": "86e1a1919c2011a47e0f9cd44ba475e7b1874f76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
