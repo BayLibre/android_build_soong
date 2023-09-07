@@ -562,6 +562,7 @@ var (
 		"remote-color-resources-compile-colors",
 
 		// framework-minus-apex
+		"AndroidFrameworkLintChecker",
 		"ImmutabilityAnnotationProcessor",
 		"debian.mime.types.minimized",
 		"framework-javastream-protos",
