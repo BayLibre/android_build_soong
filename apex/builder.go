@@ -222,6 +222,12 @@ var (
 		CommandDeps: []string{"${apex_sepolicy_tests}", "${deapexer}", "${debugfs_static}"},
 		Description: "run apex_sepolicy_tests",
 	})
+
+	apexValidationRule = pctx.StaticRule("apexValidationRule", blueprint.RuleParams{
+		Command:     `${deapexer} --debugfs_path ${debugfs_static} validate ${in} && touch ${out}`,
+		CommandDeps: []string{"${deapexer}", "${debugfs_static}"},
+		Description: "run apex_validation",
+	})
 )
 
 // buildManifest creates buile rules to modify the input apex_manifest.json to add information
@@ -843,6 +849,7 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 		args["outCommaList"] = signedOutputFile.String()
 	}
 	var validations android.Paths
+	validations = append(validations, runApexValidation(ctx, unsignedOutputFile.OutputPath))
 	// TODO(b/279688635) deapexer supports [ext4]
 	if suffix == imageApexSuffix && ext4 == a.payloadFsType {
 		validations = append(validations, runApexSepolicyTests(ctx, unsignedOutputFile.OutputPath))
@@ -1105,6 +1112,16 @@ func runApexSepolicyTests(ctx android.ModuleContext, apexFile android.OutputPath
 	timestamp := android.PathForModuleOut(ctx, "sepolicy_tests.timestamp")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:   apexSepolicyTestsRule,
+		Input:  apexFile,
+		Output: timestamp,
+	})
+	return timestamp
+}
+
+func runApexValidation(ctx android.ModuleContext, apexFile android.OutputPath) android.Path {
+	timestamp := android.PathForModuleOut(ctx, "apex_validation.timestamp")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   apexValidationRule,
 		Input:  apexFile,
 		Output: timestamp,
 	})
