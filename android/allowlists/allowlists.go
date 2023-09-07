@@ -546,6 +546,7 @@ var (
 		"remote-color-resources-compile-colors",
 
 		// framework-minus-apex
+		"ImmutabilityAnnotationProcessor",
 		"android.mime.types.minimized",
 		"debian.mime.types.minimized",
 		"framework-javastream-protos",
