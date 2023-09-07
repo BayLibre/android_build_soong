@@ -16,6 +16,29 @@
       "message": "This cl is dependent on aosp/2745817",
       "revId": "bdee8f91f3afcc8a6b2afb600a9c48cb4bd7651c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8780e865_466af956",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-07T23:08:32Z",
+      "side": 1,
+      "message": "... because ninja cannot accurately track certain types of directory changes.",
+      "range": {
+        "startLine": 193,
+        "startChar": 27,
+        "endLine": 193,
+        "endChar": 85
+      },
+      "revId": "bdee8f91f3afcc8a6b2afb600a9c48cb4bd7651c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
