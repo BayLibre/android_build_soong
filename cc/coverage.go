@@ -68,7 +68,7 @@ func getClangProfileLibraryName(ctx ModuleContextIntf) string {
 }
 
 func (cov *coverage) deps(ctx DepsContext, deps Deps) Deps {
-	if cov.Properties.NeedCoverageVariant {
+	if cov.Properties.NeedCoverageVariant && ctx.Device() {
 		ctx.AddVariationDependencies([]blueprint.Variation{
 			{Mutator: "link", Variation: "static"},
 		}, CoverageDepTag, getGcovProfileLibraryName(ctx))
@@ -161,19 +161,22 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 		if gcovCoverage {
 			flags.Local.LdFlags = append(flags.Local.LdFlags, "--coverage")
 
-			coverage := ctx.GetDirectDepWithTag(getGcovProfileLibraryName(ctx), CoverageDepTag).(*Module)
-			deps.WholeStaticLibs = append(deps.WholeStaticLibs, coverage.OutputFile().Path())
-
-			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--wrap,getenv")
+			if ctx.Device() {
+				coverage := ctx.GetDirectDepWithTag(getGcovProfileLibraryName(ctx), CoverageDepTag).(*Module)
+				deps.WholeStaticLibs = append(deps.WholeStaticLibs, coverage.OutputFile().Path())
+				flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--wrap,getenv")
+			}
 		} else if clangCoverage {
 			flags.Local.LdFlags = append(flags.Local.LdFlags, profileInstrFlag)
 			if EnableContinuousCoverage(ctx) {
 				flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,-mllvm=-runtime-counter-relocation")
 			}
 
-			coverage := ctx.GetDirectDepWithTag(getClangProfileLibraryName(ctx), CoverageDepTag).(*Module)
-			deps.WholeStaticLibs = append(deps.WholeStaticLibs, coverage.OutputFile().Path())
-			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--wrap,open")
+			if ctx.Device() {
+				coverage := ctx.GetDirectDepWithTag(getClangProfileLibraryName(ctx), CoverageDepTag).(*Module)
+				deps.WholeStaticLibs = append(deps.WholeStaticLibs, coverage.OutputFile().Path())
+				flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--wrap,open")
+			}
 		}
 	}
 
