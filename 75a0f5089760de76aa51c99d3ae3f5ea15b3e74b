@@ -45,6 +45,30 @@
       },
       "revId": "75a0f5089760de76aa51c99d3ae3f5ea15b3e74b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9fa5479_2f4ba265",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-09-07T20:57:19Z",
+      "side": 1,
+      "message": "Done. Looks like I added this back in patchset 20 for some reason. Might have just been a bad rebase, but thanks for calling it out!",
+      "parentUuid": "8536027c_175b3157",
+      "range": {
+        "startLine": 759,
+        "startChar": 0,
+        "endLine": 761,
+        "endChar": 2
+      },
+      "revId": "75a0f5089760de76aa51c99d3ae3f5ea15b3e74b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
