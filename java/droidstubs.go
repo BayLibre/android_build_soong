@@ -541,6 +541,8 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 	// See b/285312164 for more information.
 	cmd.FlagWithArg("--api-overloaded-method-order ", "source")
 
+	cmd.FlagWithList("--add-nonessential-overrides-classes ", []string{"android.app.Activity", "android.os.IpcDataCache.QueryHandler"}, ":")
+
 	return cmd
 }
 
