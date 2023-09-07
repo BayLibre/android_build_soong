@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1df992a3_416108c0",
+        "filename": "scripts/remove-bazel-output-base.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-07T21:47:26Z",
+      "side": 1,
+      "message": "x might be a little too verbose (it typically is for most of our scripts)",
+      "revId": "7df5b5f43b0cb9f61a4b3f87c281837008076767",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a8c2453_215fda8f",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-07T21:47:26Z",
+      "side": 1,
+      "message": "what\u0027s the reason for this level of indirection?",
+      "revId": "7df5b5f43b0cb9f61a4b3f87c281837008076767",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

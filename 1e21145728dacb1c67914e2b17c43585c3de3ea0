@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89da047c_47dd96c7",
+        "filename": "scripts/remove-bazel-output-base.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-07T21:47:26Z",
+      "side": 1,
+      "message": "This still seems present. If the user selects `N` when asking for confirmation, this suggestion will be output. Why?",
+      "parentUuid": "17eb5890_1d77aecc",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87efe2a9_da1c3788",
         "filename": "tests/relative_symlinks_test.sh",
         "patchSetId": 9
@@ -219,6 +237,24 @@
       "side": 1,
       "message": "I think this is functionally the same - all the errors pertained to bazel. Feel free to disagree",
       "parentUuid": "a7dbf18f_bbfea4b3",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4aa248f_f410ac5d",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-07T21:47:26Z",
+      "side": 1,
+      "message": "Prove it. test both soong and bazel (you could have two different test functions)",
+      "parentUuid": "20875379_91103ac0",
       "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
