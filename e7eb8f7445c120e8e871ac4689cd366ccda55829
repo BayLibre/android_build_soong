@@ -33,6 +33,24 @@
       "message": "Consider removing this if it\u0027s not used.",
       "revId": "e7eb8f7445c120e8e871ac4689cd366ccda55829",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8626141_859fbd15",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-09-07T18:41:02Z",
+      "side": 1,
+      "message": "This is kept for later use. I will have some new tests for pixel device.",
+      "parentUuid": "f5ca561d_cbf15e8e",
+      "revId": "e7eb8f7445c120e8e871ac4689cd366ccda55829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
