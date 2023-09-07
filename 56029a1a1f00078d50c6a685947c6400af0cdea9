@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d515e8cc_5c6457ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-09-07T19:29:39Z",
+      "side": 1,
+      "message": "+ccross to review the soong details. He usually spots a build performance issue whenever I send a CL, so they\u0027re clearly non-obvious to me 😊",
+      "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a139d8_5ffae956",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-09-07T19:29:39Z",
+      "side": 1,
+      "message": "How do these two interact?\n\nThe desired behavior is to capture any ABI impact to the functions/globals named in the symbol list. For example, if the function accepts/returns an enum, the ABI of that enum should also be tracked.\n\nThere are a lot of legacy cases where a function accepts an enum in practice, but is only written to accept an integer type (that was back before we could define the backing type of an enum, so it was needed for ABI stability reasons). We should probably clean up those headers so they use the enum directly.\n\nThere may also be cases where there are private portions of public headers (which we should probably also clean up).\n\nWill passing the list of headers here cause those two types of enums to be tracked as ABI? If not, what does this do?",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 65
+      },
+      "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
