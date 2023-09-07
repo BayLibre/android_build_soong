@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "736edce3_d85b18ed",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-07T14:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9b4877a_4e0978f2",
+      "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e280c4d7_95b72c99",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec372b02_d60d2736",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-07T14:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e280c4d7_95b72c99",
+      "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6591a856_6668ebc7",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-08-30T15:44:51Z",
       "side": 1,
       "message": "nit: would it be more consistent to exit on error?\nalso have you tested if you originally had absolute links in the symlink forest and bp2build needed to rerun, would it successfully rewrite all previous absolute links with relative ones?",
+      "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9f58c4f_512bb33c",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-07T14:57:49Z",
+      "side": 1,
+      "message": "IME this needs a clean to function the way we want. I\u0027m okay with that one-time lag.",
+      "parentUuid": "6591a856_6668ebc7",
       "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -122,6 +176,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e65c71_769a6dc5",
+        "filename": "scripts/remove-bazel-output-base.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-07T14:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46d3be8c_20565d5f",
+      "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5dc2453_685faa59",
@@ -135,6 +207,24 @@
       "writtenOn": "2023-09-06T18:04:46Z",
       "side": 1,
       "message": "This only checks that a specific file is a relative symlink -- wouldn\u0027t it be more complete to verify that *all* symlinks are relative?",
+      "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "665536a4_8451459b",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-07T14:57:49Z",
+      "side": 1,
+      "message": "Many absolute symlinks are emitted by Bazel and would thus invalidate this. \n\nI\u0027d be okay checking more than one (perhaps also some critical bazel rules?), or something like `find out/ -type l | xargs ls -altr | grep \"\\-\u003e ../\" | wc -l` to verify that there are many.\n\nFWIW the original bug is that the bazel script under out/soong/workspace (the one we\u0027re testing here) couldn\u0027t be found as it was symlinked to the old build top.\n\nEither way, I added the integration test.",
+      "parentUuid": "f5dc2453_685faa59",
       "revId": "3f28b4c62ab0d458e89fca2e001ffdde0410d86e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
