@@ -165,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ce5d73_4ef4533c",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-09-08T19:03:19Z",
+      "side": 1,
+      "message": "SGTM, thanks!\n\n(copying the info in the commit message into the code comment would make it much easier for posterity to find the info, but I won\u0027t block the CL on it)",
+      "parentUuid": "bfbc0c23_1e171479",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 65
+      },
+      "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6aa178c_19489586",
