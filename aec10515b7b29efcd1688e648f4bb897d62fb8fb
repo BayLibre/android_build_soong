@@ -16,6 +16,24 @@
       "message": "+joeo as this is currently missing the bazel part. Not sure if that\u0027s mandatory though.",
       "revId": "aec10515b7b29efcd1688e648f4bb897d62fb8fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97abd0c0_757a3be9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2029430
+      },
+      "writtenOn": "2023-09-08T15:45:42Z",
+      "side": 1,
+      "message": "It seems that it became mandatory, because I lost the ability to build generated module locally.",
+      "parentUuid": "cbd32f60_e25de0fa",
+      "revId": "aec10515b7b29efcd1688e648f4bb897d62fb8fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
