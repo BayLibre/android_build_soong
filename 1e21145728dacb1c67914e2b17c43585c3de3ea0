@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "084b73eb_140e7a2e",
+        "filename": "scripts/remove-bazel-output-base.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-08T01:10:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89da047c_47dd96c7",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87efe2a9_da1c3788",
@@ -255,6 +273,24 @@
       "side": 1,
       "message": "Prove it. test both soong and bazel (you could have two different test functions)",
       "parentUuid": "20875379_91103ac0",
+      "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f3a9ef_6485bcc5",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-08T01:10:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4aa248f_f410ac5d",
       "revId": "1e21145728dacb1c67914e2b17c43585c3de3ea0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
