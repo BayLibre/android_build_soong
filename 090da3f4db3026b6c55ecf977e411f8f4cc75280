@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bcfd88a_2c05f5ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-08T03:33:19Z",
+      "side": 1,
+      "message": "Preferably we\u0027d submit the real fix: pa/2612738",
+      "revId": "090da3f4db3026b6c55ecf977e411f8f4cc75280",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
