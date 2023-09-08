@@ -16,6 +16,24 @@
       "message": "Preferably we\u0027d submit the real fix: pa/2612738",
       "revId": "090da3f4db3026b6c55ecf977e411f8f4cc75280",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d845ef4a_aed27e49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2023-09-08T03:41:02Z",
+      "side": 1,
+      "message": "Looks great. I have +2ed on it.",
+      "parentUuid": "2bcfd88a_2c05f5ec",
+      "revId": "090da3f4db3026b6c55ecf977e411f8f4cc75280",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
