@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0791bf54_6fbd9ca4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2023-09-08T09:57:55Z",
+      "side": 1,
+      "message": "the purpose of the header collection could be explained with more detail. In particular that the header file names are taken into account when deciding what type information to keep.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d515e8cc_5c6457ba",
