@@ -75,6 +75,7 @@ func init() {
 	pctx.HostBinToolVariable("deapexer", "deapexer")
 	pctx.HostBinToolVariable("debugfs_static", "debugfs_static")
 	pctx.SourcePathVariable("genNdkUsedbyApexPath", "build/soong/scripts/gen_ndk_usedby_apex.sh")
+	pctx.HostBinToolVariable("conv_linker_config", "conv_linker_config")
 }
 
 var (
@@ -221,6 +222,12 @@ var (
 			` && ${apex_sepolicy_tests} -f ${out}.fc && touch ${out}`,
 		CommandDeps: []string{"${apex_sepolicy_tests}", "${deapexer}", "${debugfs_static}"},
 		Description: "run apex_sepolicy_tests",
+	})
+
+	apexLinkerconfigValidationRule = pctx.StaticRule("apexLinkerconfigValidationRule", blueprint.RuleParams{
+		Command:     `${conv_linker_config} validate --type apex ${in} && touch ${out}`,
+		CommandDeps: []string{"${conv_linker_config}"},
+		Description: "run apex_validation",
 	})
 )
 
@@ -843,6 +850,7 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 		args["outCommaList"] = signedOutputFile.String()
 	}
 	var validations android.Paths
+	validations = append(validations, runApexLinkerconfigValidation(ctx, unsignedOutputFile.OutputPath, imageDir.OutputPath))
 	// TODO(b/279688635) deapexer supports [ext4]
 	if suffix == imageApexSuffix && ext4 == a.payloadFsType {
 		validations = append(validations, runApexSepolicyTests(ctx, unsignedOutputFile.OutputPath))
@@ -1095,6 +1103,17 @@ func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext) android.Outp
 	builder.Build("generateFsConfig", fmt.Sprintf("Generating canned fs config for %s", a.BaseModuleName()))
 
 	return cannedFsConfig.OutputPath
+}
+
+func runApexLinkerconfigValidation(ctx android.ModuleContext, apexFile android.OutputPath, imageDir android.OutputPath) android.Path {
+	timestamp := android.PathForModuleOut(ctx, "apex_linkerconfig_validation.timestamp")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:     apexLinkerconfigValidationRule,
+		Input:    imageDir,
+		Implicit: apexFile,
+		Output:   timestamp,
+	})
+	return timestamp
 }
 
 // Runs apex_sepolicy_tests
