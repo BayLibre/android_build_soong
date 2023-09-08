@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b94cf40f_82a4a844",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1956160
+      },
+      "writtenOn": "2023-09-08T17:53:58Z",
+      "side": 1,
+      "message": "I put most of the information in commit message and some information in the code comments.",
+      "parentUuid": "0791bf54_6fbd9ca4",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d515e8cc_5c6457ba",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -83,6 +107,66 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c19a696_4ebafbe9",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1956160
+      },
+      "writtenOn": "2023-09-08T17:53:58Z",
+      "side": 1,
+      "message": "No, it is not going to read them.",
+      "parentUuid": "6b30d033_3f8956ac",
+      "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "356a5978_a328cede",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1956160
+      },
+      "writtenOn": "2023-09-08T17:53:58Z",
+      "side": 1,
+      "message": "No, it is not going to read them. Added a comment to the code.",
+      "parentUuid": "6b30d033_3f8956ac",
+      "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfbc0c23_1e171479",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1956160
+      },
+      "writtenOn": "2023-09-08T17:53:58Z",
+      "side": 1,
+      "message": "\u003e There may also be cases where there are private portions of public headers (which we should probably also clean up).\n\nExpected clean up would be to move this portion to implementation headers and it will disappear from ABI surface.\n\n\u003e There are a lot of legacy cases where a function accepts an enum in practice, but is only written to accept an integer type.\n\nThese are probably not monitored, because there is no way to detect this relation between symbol with integer argument and enum.\n\n\u003e Will passing the list of headers here cause those two types of enums to be tracked as ABI?\n\nIf I understand you correctly, only direct use of enum will be tracked, with or without this change.\n\n\u003e If not, what does this do?\n\u003e How do these two interact?\n\nI have updated change\u0027s description, does it answers your questions?",
+      "parentUuid": "04a139d8_5ffae956",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 65
+      },
+      "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6aa178c_19489586",
         "filename": "cc/ndk_sysroot.go",
         "patchSetId": 1
@@ -94,6 +178,24 @@
       "writtenOn": "2023-09-07T20:44:20Z",
       "side": 1,
       "message": "You could also use `android.WriteFileRule`, which would also have the advantage of not having to rerun this rule anytime one of the input files is modified.",
+      "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71ebc185_6d845b37",
+        "filename": "cc/ndk_sysroot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1956160
+      },
+      "writtenOn": "2023-09-08T17:53:58Z",
+      "side": 1,
+      "message": "Good idea! Done.",
+      "parentUuid": "b6aa178c_19489586",
       "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
