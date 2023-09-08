@@ -39,6 +39,30 @@
       },
       "revId": "bdee8f91f3afcc8a6b2afb600a9c48cb4bd7651c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89749c67_1017836a",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-08T06:31:58Z",
+      "side": 1,
+      "message": "I think I prefer no explanation to a small, incomplete explanation, because then they\u0027ll have to search for this error message and see the detailed comment. But let me know if you feel strongly otherwise, and I\u0027ll change it.",
+      "parentUuid": "8780e865_466af956",
+      "range": {
+        "startLine": 193,
+        "startChar": 27,
+        "endLine": 193,
+        "endChar": 85
+      },
+      "revId": "bdee8f91f3afcc8a6b2afb600a9c48cb4bd7651c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
