@@ -51,6 +51,24 @@
       "message": "Adding owners for their approval. This behavior doesn\u0027t have to be ported to Bazel as this shall eventually be reverted back.",
       "revId": "cbe2ba04b771fb22f6d58a29bf43bc7ba55e7012",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1092fb3e_c865d42b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-09-08T01:20:12Z",
+      "side": 1,
+      "message": "Mark as resolved for now. Feel free to ping me if you have any other concerns.",
+      "parentUuid": "f4dcff3e_0f3d4a90",
+      "revId": "cbe2ba04b771fb22f6d58a29bf43bc7ba55e7012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
