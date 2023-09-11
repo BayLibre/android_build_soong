@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59aa4320_28ea59d2",
+        "filename": "scripts/remove-bazel-output-base-and-ninja-file.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-11T20:42:26Z",
+      "side": 1,
+      "message": "I\u0027m a little concerned the filename here is a little long and implementation-specific here. Do users really care that this is removing bazel-output-base-and-ninja-file, or that this is \"the magic bullet script that they run so they can move their source tree\" ?",
+      "revId": "16bbd0a8a95676385299636a5082f73d3b2d923a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60571a36_848d618b",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-11T20:42:26Z",
+      "side": 1,
+      "message": "nit: extra trailing spaces, here and two lines down",
+      "revId": "16bbd0a8a95676385299636a5082f73d3b2d923a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6dff4b_b9bc33cf",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-11T20:42:26Z",
+      "side": 1,
+      "message": "I admit I\u0027m a little confused -- we\u0027re not actually removing the ninja file in this repro step, but it\u0027s required by our manual script. Why aren\u0027t these test builds failing if we don\u0027t remove the ninja files?\n\n(This worries me that these aren\u0027t effective regression tests for this approach)",
+      "revId": "16bbd0a8a95676385299636a5082f73d3b2d923a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
