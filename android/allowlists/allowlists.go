@@ -239,10 +239,12 @@ var (
 		"frameworks/native":                                  Bp2BuildDefaultTrue,
 		"frameworks/native/libs/adbd_auth":                   Bp2BuildDefaultTrueRecursively,
 		"frameworks/native/libs/arect":                       Bp2BuildDefaultTrueRecursively,
+		"frameworks/native/libs/binder":                      Bp2BuildDefaultTrue,
 		"frameworks/native/libs/gui":                         Bp2BuildDefaultTrue,
 		"frameworks/native/libs/math":                        Bp2BuildDefaultTrueRecursively,
 		"frameworks/native/libs/nativebase":                  Bp2BuildDefaultTrueRecursively,
 		"frameworks/native/libs/permission":                  Bp2BuildDefaultTrueRecursively,
+		"frameworks/native/libs/ui":                          Bp2BuildDefaultTrue,
 		"frameworks/native/libs/vr":                          Bp2BuildDefaultTrueRecursively,
 		"frameworks/native/opengl/tests/gl2_cameraeye":       Bp2BuildDefaultTrue,
 		"frameworks/native/opengl/tests/gl2_java":            Bp2BuildDefaultTrue,
@@ -377,6 +379,7 @@ var (
 		"system/libartpalette":                                   Bp2BuildDefaultTrueRecursively,
 		"system/libbase":                                         Bp2BuildDefaultTrueRecursively,
 		"system/libfmq":                                          Bp2BuildDefaultTrue,
+		"system/libhidl":                                         Bp2BuildDefaultTrue,
 		"system/libhidl/libhidlmemory":                           Bp2BuildDefaultTrue,
 		"system/libhidl/transport":                               Bp2BuildDefaultTrue,
 		"system/libhidl/transport/allocator/1.0":                 Bp2BuildDefaultTrue,
@@ -590,10 +593,6 @@ var (
 		"libandroid_runtime_lazy",
 		"libandroid_runtime_vm_headers",
 		"libaudioclient_aidl_conversion_util",
-		"libbinder",
-		"libbinder_device_interface_sources",
-		"libbinder_aidl",
-		"libbinder_headers",
 		"libbinder_headers_platform_shared",
 		"libbinderthreadstateutils",
 		"libbluetooth-types-header",
@@ -626,9 +625,6 @@ var (
 		"libtextclassifier_hash_static",
 		"libtflite_kernel_utils",
 		"libtinyxml2",
-		"libui",
-		"libui-types",
-		"libui_headers",
 		"libvorbisidec",
 		"media_ndk_headers",
 		"media_plugin_headers",
@@ -636,8 +632,6 @@ var (
 		"mediaswcodec.xml",
 		"neuralnetworks_types",
 		"libneuralnetworks_common",
-		// packagemanager_aidl_interface is created implicitly in packagemanager_aidl module
-		"packagemanager_aidl_interface",
 		"philox_random",
 		"philox_random_headers",
 		"server_configurable_flags",
@@ -701,10 +695,6 @@ var (
 		"car-ui-androidx-core-common-nodeps",
 		"car-ui-androidx-lifecycle-common-nodeps",
 		"car-ui-androidx-constraintlayout-solver-nodeps",
-
-		//system/libhidl
-		"libhidlbase", // needed by cc_hidl_library
-		"libhidl_gtest_helper",
 
 		//frameworks/native/libs/input
 		"inputconstants_aidl",
