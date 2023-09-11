@@ -68,6 +68,9 @@ type avbAddHashFooterProperties struct {
 	// List of properties to add to the footer
 	Props []avbProp
 
+	// The index used to prevent rollback of the image on device.
+	Rollback_index *int64
+
 	// Include descriptors from images
 	Include_descriptors_from_images []string `android:"path,arch_variant"`
 }
@@ -126,6 +129,11 @@ func (a *avbAddHashFooter) GenerateAndroidBuildActions(ctx android.ModuleContext
 
 	for _, prop := range a.properties.Props {
 		addAvbProp(ctx, cmd, prop)
+	}
+
+	rollbackIndex := proptools.IntDefault(a.properties.Rollback_index, -1)
+	if rollbackIndex >= 0 {
+		cmd.Flag(fmt.Sprintf(" --rollback_index %x", rollbackIndex))
 	}
 
 	cmd.FlagWithOutput("--image ", a.output)
