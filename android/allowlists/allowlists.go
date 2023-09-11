@@ -1670,10 +1670,11 @@ var (
 		"libneuralnetworks",
 		"libneuralnetworks_static",
 		// M13: media.swcodec launch
-		"com.android.media.swcodec",
-		"test_com.android.media.swcodec",
-		"libstagefright_foundation",
-		"libcodec2_hidl@1.0",
+		// TODO: b/ - re-enable swcodec
+		//"com.android.media.swcodec",
+		//"test_com.android.media.swcodec",
+		//"libstagefright_foundation",
+		//"libcodec2_hidl@1.0",
 	}
 
 	// Staging-mode allowlist. Modules in this list are only built
