@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09b80404_2fc38af8",
+        "filename": "scripts/remove-bazel-output-base.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-11T19:43:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4c85315_274e69df",
+      "revId": "eb58da2027419705bacb1c5abe217e5a1b8b50f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a028b85_fd319751",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-11T15:08:41Z",
       "side": 1,
       "message": "Do we fully understand why this is necessary? Is this indeed because we need to force soong_build to rerun? (Can you leave a comment as such?) IIRC you also investigated deleting an alternative file that would retrigger soong_build, and that didn\u0027t work. Why not?\n\nAlso, you\u0027ve expanded the scope of this script to delete this ninja file but haven\u0027t updated the documentation (or name) of this script.",
+      "revId": "eb58da2027419705bacb1c5abe217e5a1b8b50f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76bcc623_39772675",
+        "filename": "scripts/remove-bazel-output-base.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-11T19:43:05Z",
+      "side": 1,
+      "message": "I tried removing both the symlink forest and bp2build markers - it reran those phases and then still emitted \"no need to rebuild ninja file\". I think removing this is best. It also showed time savings.\n\nI updated the documentation and renamed the file. PTAL",
+      "parentUuid": "9a028b85_fd319751",
       "revId": "eb58da2027419705bacb1c5abe217e5a1b8b50f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b072b83_878b9037",
+        "filename": "tests/lib.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-11T19:43:05Z",
+      "side": 1,
+      "message": "I moved this inside of the mock top. There\u0027s a trap command to remove it at the end and I verified with ECHOs that this executes.",
+      "parentUuid": "55c1479c_6eb1d336",
+      "revId": "eb58da2027419705bacb1c5abe217e5a1b8b50f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a4c2ea0_9c1eba01",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-09-11T15:08:41Z",
       "side": 1,
       "message": "what\u0027s the purpose of this `find` ?",
+      "revId": "eb58da2027419705bacb1c5abe217e5a1b8b50f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61c21c23_314d41ff",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-11T19:43:05Z",
+      "side": 1,
+      "message": "leftover from debugging, thanks for flagging.",
+      "parentUuid": "1a4c2ea0_9c1eba01",
       "revId": "eb58da2027419705bacb1c5abe217e5a1b8b50f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
