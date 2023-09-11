@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b343f7c2_0c55fed1",
+        "filename": "apex/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-11T08:56:19Z",
+      "side": 1,
+      "message": "Why `SocSpecific` and not any apex with a non-empty `vintf_fragments` property?",
+      "range": {
+        "startLine": 861,
+        "startChar": 19,
+        "endLine": 861,
+        "endChar": 34
+      },
+      "revId": "e6154418326a9fa67abeb320053d67d36daa2d7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
