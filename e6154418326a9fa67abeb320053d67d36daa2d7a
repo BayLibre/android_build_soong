@@ -22,6 +22,30 @@
       },
       "revId": "e6154418326a9fa67abeb320053d67d36daa2d7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14fb37fb_6b765dde",
+        "filename": "apex/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-09-11T12:58:15Z",
+      "side": 1,
+      "message": "It\u0027s to avoid processing unnecessary apexes. It\u0027s libvintf that reads vintf fragments from apexes and for now it only scans vendor apexes.\n\nIt could be \n- all apexes (including non-vendor apexes): it just passes when an apex has no vintf fragments.\n- all apexes with vintf fragments: since we have the list of entries, we can filter the list for vintf fragments (xml files under etc/vintf).\n- vendor apexes: this is what this CL is implementing.\n- vendor apexes with vintf fragments: runs the test for apexes which have vintf fragments which are actually processed by libvintf.\n\nI think scanning etc/vintf/*.xml is too tightly-coupled with how libvintf works while SocSpecific() is rather simple but efficient (e.g. discarding half of apexes).\n\nDo you think we\u0027d better drop SocSpecific()? I\u0027m fine with both.\n\nNote: `vintf_fragments` is not the target of validation here. Yeah, it\u0027s a bit confusing. `vintf_fragments` property is used to list vintf fragments that are supposed to be installed together with apex. The CL is to check vintf fragments **embedded** in apex. Files listed in `vintf_fragments` property are already **checked** in Makefile.",
+      "parentUuid": "b343f7c2_0c55fed1",
+      "range": {
+        "startLine": 861,
+        "startChar": 19,
+        "endLine": 861,
+        "endChar": 34
+      },
+      "revId": "e6154418326a9fa67abeb320053d67d36daa2d7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
