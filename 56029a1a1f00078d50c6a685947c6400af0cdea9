@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6297fef0_706e11cb",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2023-09-11T10:07:50Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "08ce5d73_4ef4533c",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 65
+      },
+      "revId": "56029a1a1f00078d50c6a685947c6400af0cdea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6aa178c_19489586",
         "filename": "cc/ndk_sysroot.go",
         "patchSetId": 1
