@@ -16,6 +16,23 @@
       "message": "Thanks Sam!",
       "revId": "694348a54ebc44e7a494f5b9e6c03220dcd1d057",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8a96e0c_cc3acee4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-09-12T19:20:17Z",
+      "side": 1,
+      "message": "this change has a merge conflict",
+      "revId": "694348a54ebc44e7a494f5b9e6c03220dcd1d057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
