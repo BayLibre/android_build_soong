@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e597a593_b28e92c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-09-12T20:52:19Z",
+      "side": 1,
+      "message": "If you update the baseline files then you don\u0027t need to do anything, you don\u0027t need to change the source code and don\u0027t need to add `--hide`. Instead the baseline delta will show reviewers what effect the signature file changes has on the issues that are reported.\n\nThat then gives them the information to decide how to address it, which may be a combination of code changes, API changes or nothing.",
+      "parentUuid": "8d7ade6b_770a4154",
+      "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "aff2f1a4_d4fad9ac",
