@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0492ee2_4889ee07",
+        "filename": "scripts/remove-bazel-output-base-and-ninja-file.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-12T05:08:30Z",
+      "side": 1,
+      "message": "sure.",
+      "parentUuid": "50f7d24a_2885e031",
+      "revId": "16bbd0a8a95676385299636a5082f73d3b2d923a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60571a36_848d618b",
         "filename": "tests/relative_symlinks_test.sh",
         "patchSetId": 20
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "this is for a moved top. In this case, it doesn\u0027t need the ninja file to be removed because it will regenerate as is.\n\nThe case you\u0027re referring to is \"run_soong g; rm -rf out/bazel/output out/soong/build*ninja; run_soong g\". I\u0027ll add a case",
       "parentUuid": "2e6dff4b_b9bc33cf",
+      "revId": "16bbd0a8a95676385299636a5082f73d3b2d923a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac2406da_fc7d0271",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-12T05:08:30Z",
+      "side": 1,
+      "message": "Ah -- do we only need to remove out/soong/build*ninja if the user doesn\u0027t move their top, but runs `prepare_moved_top.sh` ? \n\nIf so: yes, please add a test case for this. Thanks!",
+      "parentUuid": "5582be00_baefc614",
       "revId": "16bbd0a8a95676385299636a5082f73d3b2d923a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
