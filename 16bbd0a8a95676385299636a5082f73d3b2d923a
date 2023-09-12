@@ -176,6 +176,24 @@
       "parentUuid": "ac2406da_fc7d0271",
       "revId": "16bbd0a8a95676385299636a5082f73d3b2d923a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "206c29e2_66b614e7",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-12T15:24:45Z",
+      "side": 1,
+      "message": "OK, so the situations are:\n\n1. removing out/bazel/output and then moving your build top - okay!\n2. removing out/bazel/output without moving your build top - broken build.\n3. removing out/bazel/output and ninja file without moving your build top - okay!\n4. removing out/bazel/output and ninja file then moving your build top - faster than (1)\n\n\nIs that correct?\n\nI find that (4) is faster than (1) very surprising, but I don\u0027t think it\u0027s worth blocking on investigation.",
+      "parentUuid": "91ed8223_699c3c6f",
+      "revId": "16bbd0a8a95676385299636a5082f73d3b2d923a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
