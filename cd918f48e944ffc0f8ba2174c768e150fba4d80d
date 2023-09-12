@@ -16,6 +16,24 @@
       "message": "There are some methods where nullability is not specified, causing Api Lint failures. One example is [BluetoothA2dpSink.getDevicesMatchingConnectionStates(int [])](https://android-review.git.corp.google.com/c/platform/packages/modules/Bluetooth/+/2744916/1/framework/api/system-current.txt).",
       "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d6ad58_3c9a8dbb",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-09-12T00:59:48Z",
+      "side": 1,
+      "message": "Marking it unresolved for visibility.",
+      "parentUuid": "aff2f1a4_d4fad9ac",
+      "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

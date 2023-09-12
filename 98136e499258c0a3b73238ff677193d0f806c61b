@@ -33,6 +33,24 @@
       "message": "Without the flag, Api Lint fails with the following error:\n```\nProvide an explicit copy constructor instead of implementing `clone()`\n```\nHowever, `clone()` is part of the API, as seen [here](https://android-review.git.corp.google.com/c/platform/packages/modules/Bluetooth/+/2744916/1/framework/api/system-current.txt).",
       "revId": "98136e499258c0a3b73238ff677193d0f806c61b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fc38c78_085f9b78",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-09-12T00:59:48Z",
+      "side": 1,
+      "message": "Marking it unresolved for visibility.",
+      "parentUuid": "89bbcf35_d28ec623",
+      "revId": "98136e499258c0a3b73238ff677193d0f806c61b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
