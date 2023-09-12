@@ -21,7 +21,6 @@ import (
 	"strings"
 
 	"android/soong/ui/metrics/bp2build_metrics_proto"
-
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/proptools"
@@ -162,7 +161,7 @@ type Bazelable interface {
 	// Modules must implement this function to be bp2build convertible. The function
 	// must either create at least one Bazel target module (using ctx.CreateBazelTargetModule or
 	// its related functions), or declare itself unconvertible using ctx.MarkBp2buildUnconvertible.
-	ConvertWithBp2build(ctx TopDownMutatorContext)
+	ConvertWithBp2build(ctx Bp2buildMutatorContext)
 
 	// namespacedVariableProps is a map from a soong config variable namespace
 	// (e.g. acme, android) to a map of interfaces{}, which are really
@@ -181,7 +180,7 @@ type Bazelable interface {
 
 // ApiProvider is implemented by modules that contribute to an API surface
 type ApiProvider interface {
-	ConvertWithApiBp2build(ctx TopDownMutatorContext)
+	ConvertWithApiBp2build(ctx BottomUpMutatorContext)
 }
 
 // MixedBuildBuildable is an interface that module types should implement in order
@@ -600,10 +599,38 @@ func bp2buildDefaultTrueRecursively(packagePath string, config allowlists.Bp2Bui
 }
 
 func registerBp2buildConversionMutator(ctx RegisterMutatorsContext) {
-	ctx.TopDown("bp2build_conversion", bp2buildConversionMutator).Parallel()
+	ctx.BottomUp("bp2build_conversion", bp2buildConversionMutator).Parallel()
+	ctx.BottomUp("bp2build_deps", bp2buildDepsMutator).Parallel()
 }
 
-func bp2buildConversionMutator(ctx TopDownMutatorContext) {
+func bp2buildDepsMutator(ctx BottomUpMutatorContext) {
+	if !ctx.Module().IsConvertedByBp2build() {
+		fmt.Println(ctx.ModuleName(), "not converted:", ctx.Module().GetUnconvertedReason())
+		return
+	}
+	ctx.VisitDirectDeps(func(dep Module) {
+		if b, ok := dep.(Bazelable); ok && b.HasHandcraftedLabel() {
+			// This module is defined in a handcrafted BUILD file.
+		} else if ctx.OtherModuleDependencyTag(dep) == DefaultsDepTag {
+			// Defaults are handled elsewhere.
+		} else if !dep.IsConvertedByBp2build() {
+			if dep.GetUnconvertedReason() != nil {
+				if dep.GetUnconvertedReason().ReasonType == int(bp2build_metrics_proto.UnconvertedReasonType_DEFINED_IN_BUILD_FILE) {
+					// TODO: Find a cleaner way of finding that this dep was predefined.
+					return
+				}
+			}
+			fmt.Println("INFO:", ctx.ModuleName(), "disabled because of dep on", dep.Name())
+			ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_UNCONVERTED_DEP, dep.Name())
+		}
+	})
+	if ctx.Module().IsConvertedByBp2build() {
+		fmt.Println(ctx.ModuleName(), "converted fine!")
+		return
+	}
+}
+
+func bp2buildConversionMutator(ctx BottomUpMutatorContext) {
 	if ctx.Config().HasBazelBuildTargetInSource(ctx) {
 		// Defer to the BUILD target. Generating an additional target would
 		// cause a BUILD file conflict.
@@ -642,11 +669,11 @@ func bp2buildConversionMutator(ctx TopDownMutatorContext) {
 }
 
 func registerApiBp2buildConversionMutator(ctx RegisterMutatorsContext) {
-	ctx.TopDown("apiBp2build_conversion", convertWithApiBp2build).Parallel()
+	ctx.BottomUp("apiBp2build_conversion", convertWithApiBp2build).Parallel()
 }
 
 // Generate API contribution targets if the Soong module provides APIs
-func convertWithApiBp2build(ctx TopDownMutatorContext) {
+func convertWithApiBp2build(ctx BottomUpMutatorContext) {
 	if m, ok := ctx.Module().(ApiProvider); ok {
 		m.ConvertWithApiBp2build(ctx)
 	}

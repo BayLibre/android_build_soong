@@ -1272,7 +1272,7 @@ func InitCommonOSAndroidMultiTargetsArchModule(m Module, hod HostOrDeviceSupport
 	m.base().commonProperties.CreateCommonOSVariant = true
 }
 
-func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutatorContext,
+func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *bottomUpMutatorContext,
 	enabledPropertyOverrides bazel.BoolAttribute) constraintAttributes {
 
 	mod := ctx.Module().base()
@@ -1430,7 +1430,7 @@ var (
 // If compile_mulitilib is set to
 // 1. 32: Add an incompatibility constraint for non-32 arches
 // 1. 64: Add an incompatibility constraint for non-64 arches
-func addCompatibilityConstraintForCompileMultilib(ctx *topDownMutatorContext, enabled *bazel.LabelListAttribute) {
+func addCompatibilityConstraintForCompileMultilib(ctx *bottomUpMutatorContext, enabled *bazel.LabelListAttribute) {
 	mod := ctx.Module().base()
 	multilib, _ := decodeMultilib(mod, mod.commonProperties.CompileOS, ctx.Config().IgnorePrefer32OnDevice())
 
@@ -1456,7 +1456,7 @@ func addCompatibilityConstraintForCompileMultilib(ctx *topDownMutatorContext, en
 
 // Check product variables for `enabled: true` flag override.
 // Returns a list of the constraint_value targets who enable this override.
-func productVariableConfigEnableAttribute(ctx *topDownMutatorContext) bazel.LabelListAttribute {
+func productVariableConfigEnableAttribute(ctx *bottomUpMutatorContext) bazel.LabelListAttribute {
 	result := bazel.LabelListAttribute{}
 	productVariableProps := ProductVariableProperties(ctx, ctx.Module())
 	if productConfigProps, exists := productVariableProps["Enabled"]; exists {
@@ -1637,15 +1637,15 @@ func (b bp2buildInfo) BazelAttributes() []interface{} {
 
 func (m *ModuleBase) addBp2buildInfo(info bp2buildInfo) {
 	if m.commonProperties.BazelConversionStatus.UnconvertedReason != nil {
-		panic(fmt.Errorf("bp2build: module '%s' marked unconvertible and also is converted", m.Name()))
+		panic(fmt.Errorf("bp2build: module '%s' already marked unconvertible", m.Name()))
 	}
 	m.commonProperties.BazelConversionStatus.Bp2buildInfo = append(m.commonProperties.BazelConversionStatus.Bp2buildInfo, info)
 }
 
 func (m *ModuleBase) setBp2buildUnconvertible(reasonType bp2build_metrics_proto.UnconvertedReasonType, detail string) {
-	if len(m.commonProperties.BazelConversionStatus.Bp2buildInfo) > 0 {
-		panic(fmt.Errorf("bp2build: module '%s' marked unconvertible and also is converted", m.Name()))
-	}
+	// It's possible this module had some conversion-related info set before it
+	// was identified as unconvertible, so clear this info.
+	m.commonProperties.BazelConversionStatus.Bp2buildInfo = []bp2buildInfo{}
 	m.commonProperties.BazelConversionStatus.UnconvertedReason = &UnconvertedReason{
 		ReasonType: int(reasonType),
 		Detail:     detail,

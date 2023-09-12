@@ -2013,6 +2013,7 @@ func (c *config) HasBazelBuildTargetInSource(ctx BaseModuleContext) bool {
 	moduleName := ctx.Module().Name()
 	for _, buildTarget := range c.bazelTargetsByDir[ctx.ModuleDir()] {
 		if moduleName == buildTarget {
+			fmt.Println("HasBazelBuildTargetInSource:", moduleName)
 			return true
 		}
 	}

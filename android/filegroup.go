@@ -88,12 +88,12 @@ type bazelAidlLibraryAttributes struct {
 
 // api srcs can be contained in filegroups.
 // this should be generated in api_bp2build workspace as well.
-func (fg *fileGroup) ConvertWithApiBp2build(ctx TopDownMutatorContext) {
+func (fg *fileGroup) ConvertWithApiBp2build(ctx BottomUpMutatorContext) {
 	fg.ConvertWithBp2build(ctx)
 }
 
 // ConvertWithBp2build performs bp2build conversion of filegroup
-func (fg *fileGroup) ConvertWithBp2build(ctx TopDownMutatorContext) {
+func (fg *fileGroup) ConvertWithBp2build(ctx Bp2buildMutatorContext) {
 	srcs := bazel.MakeLabelListAttribute(
 		BazelLabelForModuleSrcExcludes(ctx, fg.properties.Srcs, fg.properties.Exclude_srcs))
 
@@ -209,10 +209,10 @@ func (fg *fileGroup) ConvertWithBp2build(ctx TopDownMutatorContext) {
 }
 
 type FileGroupPath interface {
-	GetPath(ctx TopDownMutatorContext) string
+	GetPath() string
 }
 
-func (fg *fileGroup) GetPath(ctx TopDownMutatorContext) string {
+func (fg *fileGroup) GetPath() string {
 	if fg.properties.Path != nil {
 		return *fg.properties.Path
 	}

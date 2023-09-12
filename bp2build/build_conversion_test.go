@@ -1743,7 +1743,8 @@ func TestCommonBp2BuildModuleAttrs(t *testing.T) {
 			Description:                "Required into data test",
 			ModuleTypeUnderTest:        "filegroup",
 			ModuleTypeUnderTestFactory: android.FileGroupFactory,
-			Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "reqd") + `
+			StubbedBuildDefinitions:    []string{"reqd"},
+			Blueprint: simpleModule("filegroup", "reqd") + `
 filegroup {
     name: "fg_foo",
     required: ["reqd"],
@@ -1759,7 +1760,8 @@ filegroup {
 			Description:                "Required into data test, cyclic self reference is filtered out",
 			ModuleTypeUnderTest:        "filegroup",
 			ModuleTypeUnderTestFactory: android.FileGroupFactory,
-			Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "reqd") + `
+			StubbedBuildDefinitions:    []string{"reqd"},
+			Blueprint: simpleModule("filegroup", "reqd") + `
 filegroup {
     name: "fg_foo",
     required: ["reqd", "fg_foo"],
@@ -1775,8 +1777,9 @@ filegroup {
 			Description:                "Required via arch into data test",
 			ModuleTypeUnderTest:        "python_library",
 			ModuleTypeUnderTestFactory: python.PythonLibraryFactory,
-			Blueprint: simpleModuleDoNotConvertBp2build("python_library", "reqdx86") +
-				simpleModuleDoNotConvertBp2build("python_library", "reqdarm") + `
+			StubbedBuildDefinitions:    []string{"reqdx86", "reqdarm"},
+			Blueprint: simpleModule("python_library", "reqdx86") +
+				simpleModule("python_library", "reqdarm") + `
 python_library {
     name: "fg_foo",
     arch: {
@@ -1809,7 +1812,8 @@ python_library {
 				"data.bin": "",
 				"src.py":   "",
 			},
-			Blueprint: simpleModuleDoNotConvertBp2build("python_library", "reqd") + `
+			StubbedBuildDefinitions: []string{"reqd"},
+			Blueprint: simpleModule("python_library", "reqd") + `
 python_library {
     name: "fg_foo",
     data: ["data.bin"],
@@ -1831,7 +1835,8 @@ python_library {
 			Description:                "All props-to-attrs at once together test",
 			ModuleTypeUnderTest:        "filegroup",
 			ModuleTypeUnderTestFactory: android.FileGroupFactory,
-			Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "reqd") + `
+			StubbedBuildDefinitions:    []string{"reqd"},
+			Blueprint: simpleModule("filegroup", "reqd") + `
 filegroup {
     name: "fg_foo",
     required: ["reqd"],
@@ -1924,6 +1929,39 @@ func TestPrettyPrintSelectMapEqualValues(t *testing.T) {
 	lla.SetSelectValue(bazel.OsAndInApexAxis, bazel.ConditionsDefaultConfigKey, bazel.MakeLabelList([]bazel.Label{libFooImplLabel}))
 	actual, _ := prettyPrintAttribute(lla, 0)
 	android.AssertStringEquals(t, "Print the common value if all keys in an axis have the same value", `[":libfoo.impl"]`, actual)
+}
+
+func TestAlreadyPresentBuildTarget(t *testing.T) {
+	bp := `
+	custom {
+		name: "foo",
+	}
+	custom {
+		name: "bar",
+	}
+	`
+	alreadyPresentBuildFile :=
+		MakeBazelTarget(
+			"custom",
+			"foo",
+			AttrNameToString{},
+		)
+	expectedBazelTargets := []string{
+		MakeBazelTarget(
+			"custom",
+			"bar",
+			AttrNameToString{},
+		),
+	}
+	registerCustomModule := func(ctx android.RegistrationContext) {
+		ctx.RegisterModuleType("custom", customModuleFactoryHostAndDevice)
+	}
+	RunBp2BuildTestCase(t, registerCustomModule, Bp2buildTestCase{
+		AlreadyExistingBuildContents: alreadyPresentBuildFile,
+		Blueprint:                    bp,
+		ExpectedBazelTargets:         expectedBazelTargets,
+		Description:                  "Not duplicating work for an already-present BUILD target.",
+	})
 }
 
 // If CommonAttributes.Dir is set, the bazel target should be created in that dir

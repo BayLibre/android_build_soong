@@ -1590,11 +1590,11 @@ type bazelAndroidAppCertificateAttributes struct {
 	Certificate string
 }
 
-func (m *AndroidAppCertificate) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+func (m *AndroidAppCertificate) ConvertWithBp2build(ctx android.Bp2buildMutatorContext) {
 	androidAppCertificateBp2Build(ctx, m)
 }
 
-func androidAppCertificateBp2Build(ctx android.TopDownMutatorContext, module *AndroidAppCertificate) {
+func androidAppCertificateBp2Build(ctx android.Bp2buildMutatorContext, module *AndroidAppCertificate) {
 	var certificate string
 	if module.properties.Certificate != nil {
 		certificate = *module.properties.Certificate
@@ -1631,7 +1631,7 @@ type bazelAndroidAppAttributes struct {
 }
 
 // ConvertWithBp2build is used to convert android_app to Bazel.
-func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+func (a *AndroidApp) ConvertWithBp2build(ctx android.Bp2buildMutatorContext) {
 	commonAttrs, bp2BuildInfo, supported := a.convertLibraryAttrsBp2Build(ctx)
 	if !supported {
 		return

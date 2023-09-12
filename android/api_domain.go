@@ -99,12 +99,12 @@ func ApiContributionTargetName(moduleName string) string {
 }
 
 // For each contributing cc_library, format the name to its corresponding contribution bazel target in the bp2build workspace
-func contributionBazelAttributes(ctx TopDownMutatorContext, contributions []string) bazel.LabelListAttribute {
+func contributionBazelAttributes(ctx BottomUpMutatorContext, contributions []string) bazel.LabelListAttribute {
 	addSuffix := func(ctx BazelConversionPathContext, module blueprint.Module) string {
 		baseLabel := BazelModuleLabel(ctx, module)
 		return ApiContributionTargetName(baseLabel)
 	}
-	bazelLabels := BazelLabelForModuleDepsWithFn(ctx, contributions, addSuffix)
+	bazelLabels := BazelLabelForModuleDepsWithFn(ctx, contributions, true, addSuffix)
 	return bazel.MakeLabelListAttribute(bazelLabels)
 }
 
@@ -115,7 +115,7 @@ type bazelApiDomainAttributes struct {
 
 var _ ApiProvider = (*apiDomain)(nil)
 
-func (a *apiDomain) ConvertWithApiBp2build(ctx TopDownMutatorContext) {
+func (a *apiDomain) ConvertWithApiBp2build(ctx BottomUpMutatorContext) {
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        "api_domain",
 		Bzl_load_location: "//build/bazel/rules/apis:api_domain.bzl",

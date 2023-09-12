@@ -879,16 +879,16 @@ type Module struct {
 	installer    installer
 	bazelHandler BazelHandler
 
-	features []feature
-	stl      *stl
-	sanitize *sanitize
-	coverage *coverage
-	fuzzer   *fuzzer
-	sabi     *sabi
-	vndkdep  *vndkdep
-	lto      *lto
-	afdo     *afdo
-	pgo      *pgo
+	features  []feature
+	stl       *stl
+	sanitize  *sanitize
+	coverage  *coverage
+	fuzzer    *fuzzer
+	sabi      *sabi
+	vndkdep   *vndkdep
+	lto       *lto
+	afdo      *afdo
+	pgo       *pgo
 	orderfile *orderfile
 
 	library libraryInterface
@@ -4201,7 +4201,7 @@ func (c *Module) typ() moduleType {
 }
 
 // ConvertWithBp2build converts Module to Bazel for bp2build.
-func (c *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+func (c *Module) ConvertWithBp2build(ctx android.Bp2buildMutatorContext) {
 	prebuilt := c.IsPrebuilt()
 	switch c.typ() {
 	case binary:
@@ -4247,7 +4247,7 @@ func (c *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 
 var _ android.ApiProvider = (*Module)(nil)
 
-func (c *Module) ConvertWithApiBp2build(ctx android.TopDownMutatorContext) {
+func (c *Module) ConvertWithApiBp2build(ctx android.BottomUpMutatorContext) {
 	if c.IsPrebuilt() {
 		return
 	}

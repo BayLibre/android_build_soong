@@ -862,7 +862,7 @@ type bazelJavaApiContributionAttributes struct {
 	Api_surface *string
 }
 
-func (d *Droidstubs) ConvertWithApiBp2build(ctx android.TopDownMutatorContext) {
+func (d *Droidstubs) ConvertWithApiBp2build(ctx android.BottomUpMutatorContext) {
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        "java_api_contribution",
 		Bzl_load_location: "//build/bazel/rules/apis:java_api_contribution.bzl",
