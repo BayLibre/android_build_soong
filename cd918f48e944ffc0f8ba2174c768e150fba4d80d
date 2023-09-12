@@ -152,6 +152,30 @@
       },
       "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e38a9889_6e24a9da",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-09-12T20:35:40Z",
+      "side": 1,
+      "message": "How would we determine when a new class needs to be added here? Or are we confident somehow that there won\u0027t be any new ones? What kind of error message would someone whose change requires adding a class to this list experience? I was hoping the changes to the txt files would avoid this type of singling out specific classes because of the potential maintenance burden this implies",
+      "parentUuid": "8ceb755d_610a3d75",
+      "range": {
+        "startLine": 546,
+        "startChar": 1,
+        "endLine": 546,
+        "endChar": 137
+      },
+      "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
