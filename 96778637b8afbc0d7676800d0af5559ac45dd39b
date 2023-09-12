@@ -16,6 +16,24 @@
       "message": "The linked test doesn\u0027t seem related to this change. Can you expand why you think this is an issue?",
       "revId": "96778637b8afbc0d7676800d0af5559ac45dd39b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7869d283_7bdd4368",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1981320
+      },
+      "writtenOn": "2023-09-12T18:12:21Z",
+      "side": 1,
+      "message": "Hi Mark! the device did not boot up from that point on and this topic was the only one that changed bettween LKBG and FKBB \nandroid-build/10796958/branches/git_aosp-main-future/targets/aosp_tangorpro-trunk_staging-userdebug/cls?end\u003d10796953\n\nI started an abtd run to check if this revert fixes the issue. go/abtd-run/L36000000963001181",
+      "parentUuid": "357c1b16_b6a25713",
+      "revId": "96778637b8afbc0d7676800d0af5559ac45dd39b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
