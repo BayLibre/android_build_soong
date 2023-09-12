@@ -194,6 +194,24 @@
       "parentUuid": "91ed8223_699c3c6f",
       "revId": "16bbd0a8a95676385299636a5082f73d3b2d923a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4799f742_52a101c5",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-12T15:34:06Z",
+      "side": 1,
+      "message": "yes. (4) being faster than (1) is observable on my machine only so not canonical. But at the very least, we shouldn\u0027t see a performance hit.",
+      "parentUuid": "206c29e2_66b614e7",
+      "revId": "16bbd0a8a95676385299636a5082f73d3b2d923a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
