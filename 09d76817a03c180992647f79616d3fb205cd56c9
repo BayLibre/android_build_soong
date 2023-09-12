@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c36fe238_38bfab9c",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-09-12T22:18:42Z",
+      "side": 1,
+      "message": "This doesn\u0027t look like a related change and can be moved to antoher CL.",
+      "range": {
+        "startLine": 39,
+        "startChar": 17,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "09d76817a03c180992647f79616d3fb205cd56c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
