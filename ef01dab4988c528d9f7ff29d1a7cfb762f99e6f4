@@ -34,6 +34,24 @@
       "parentUuid": "522ef9a6_dc2a7687",
       "revId": "ef01dab4988c528d9f7ff29d1a7cfb762f99e6f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "781f3ea7_adabbda9",
+        "filename": "rust/config/arm64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-09-12T17:08:04Z",
+      "side": 1,
+      "message": "Sure, enable on all 64-bit targets sgtm with that additional context.",
+      "parentUuid": "1fc33dfa_cbd11989",
+      "revId": "ef01dab4988c528d9f7ff29d1a7cfb762f99e6f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
