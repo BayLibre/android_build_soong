@@ -92,6 +92,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "14f9248e_c407dd27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-09-12T23:29:21Z",
+      "side": 1,
+      "message": "Resolved with discussion: the suppression flags will be added in module level instead of adding global flags.",
+      "parentUuid": "e597a593_b28e92c5",
+      "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "aff2f1a4_d4fad9ac",
         "filename": "java/droidstubs.go",
         "patchSetId": 4
