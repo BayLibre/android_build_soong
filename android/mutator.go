@@ -15,9 +15,10 @@
 package android
 
 import (
+	"path/filepath"
+
 	"android/soong/bazel"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
-	"path/filepath"
 
 	"github.com/google/blueprint"
 )
@@ -229,9 +230,17 @@ var bp2buildPreArchMutators = []RegisterMutatorFunc{}
 // A minimal context for Bp2build conversion
 type Bp2buildMutatorContext interface {
 	BazelConversionPathContext
+	BaseModuleContext
+	BaseMutatorContext
 
 	CreateBazelTargetModule(bazel.BazelTargetModuleProperties, CommonAttributes, interface{})
 	CreateBazelTargetModuleWithRestrictions(bazel.BazelTargetModuleProperties, CommonAttributes, interface{}, bazel.BoolAttribute)
+	AddUnconvertedBp2buildDep(string)
+	AddMissingBp2buildDep(dep string)
+	AddDependency(module blueprint.Module, tag blueprint.DependencyTag, name ...string) []blueprint.Module
+	MarkBp2buildUnconvertible(reasonType bp2build_metrics_proto.UnconvertedReasonType, detail string)
+	CreateBazelConfigSetting(csa bazel.ConfigSettingAttributes, ca CommonAttributes, dir string)
+	CreateBazelTargetAliasInDir(dir string, name string, actual bazel.Label)
 }
 
 // PreArchBp2BuildMutators adds mutators to be register for converting Android Blueprint modules
@@ -259,35 +268,6 @@ type TopDownMutatorContext interface {
 	// CreateModule creates a new module by calling the factory method for the specified moduleType, and applies
 	// the specified property structs to it as if the properties were set in a blueprint file.
 	CreateModule(ModuleFactory, ...interface{}) Module
-
-	// CreateBazelTargetModule creates a BazelTargetModule by calling the
-	// factory method, just like in CreateModule, but also requires
-	// BazelTargetModuleProperties containing additional metadata for the
-	// bp2build codegenerator.
-	CreateBazelTargetModule(bazel.BazelTargetModuleProperties, CommonAttributes, interface{})
-
-	// CreateBazelTargetModuleWithRestrictions creates a BazelTargetModule by calling the
-	// factory method, just like in CreateModule, but also requires
-	// BazelTargetModuleProperties containing additional metadata for the
-	// bp2build codegenerator. The generated target is restricted to only be buildable for certain
-	// platforms, as dictated by a given bool attribute: the target will not be buildable in
-	// any platform for which this bool attribute is false.
-	CreateBazelTargetModuleWithRestrictions(bazel.BazelTargetModuleProperties, CommonAttributes, interface{}, bazel.BoolAttribute)
-
-	// MarkBp2buildUnconvertible registers the current module as "unconvertible to bp2build" for the
-	// given reason.
-	MarkBp2buildUnconvertible(reasonType bp2build_metrics_proto.UnconvertedReasonType, detail string)
-
-	// CreateBazelTargetAliasInDir creates an alias definition in `dir` directory.
-	// This function can be used to create alias definitions in a directory that is different
-	// from the directory of the visited Soong module.
-	CreateBazelTargetAliasInDir(dir string, name string, actual bazel.Label)
-
-	// CreateBazelConfigSetting creates a config_setting in <dir>/BUILD.bazel
-	// build/bazel has several static config_setting(s) that are used in Bazel builds.
-	// This function can be used to createa additional config_setting(s) based on the build graph
-	// (e.g. a config_setting specific to an apex variant)
-	CreateBazelConfigSetting(csa bazel.ConfigSettingAttributes, ca CommonAttributes, dir string)
 }
 
 type topDownMutatorContext struct {
@@ -296,6 +276,8 @@ type topDownMutatorContext struct {
 }
 
 type BottomUpMutator func(BottomUpMutatorContext)
+
+var _ Bp2buildMutatorContext = (BottomUpMutatorContext)(nil)
 
 type BottomUpMutatorContext interface {
 	BaseMutatorContext
@@ -413,6 +395,35 @@ type BottomUpMutatorContext interface {
 	// variant of the current module.  The value should not be modified after being passed to
 	// SetVariationProvider.
 	SetVariationProvider(module blueprint.Module, provider blueprint.ProviderKey, value interface{})
+
+	// CreateBazelTargetModule creates a BazelTargetModule by calling the
+	// factory method, just like in CreateModule, but also requires
+	// BazelTargetModuleProperties containing additional metadata for the
+	// bp2build codegenerator.
+	CreateBazelTargetModule(bazel.BazelTargetModuleProperties, CommonAttributes, interface{})
+
+	// CreateBazelTargetModuleWithRestrictions creates a BazelTargetModule by calling the
+	// factory method, just like in CreateModule, but also requires
+	// BazelTargetModuleProperties containing additional metadata for the
+	// bp2build codegenerator. The generated target is restricted to only be buildable for certain
+	// platforms, as dictated by a given bool attribute: the target will not be buildable in
+	// any platform for which this bool attribute is false.
+	CreateBazelTargetModuleWithRestrictions(bazel.BazelTargetModuleProperties, CommonAttributes, interface{}, bazel.BoolAttribute)
+
+	// MarkBp2buildUnconvertible registers the current module as "unconvertible to bp2build" for the
+	// given reason.
+	MarkBp2buildUnconvertible(reasonType bp2build_metrics_proto.UnconvertedReasonType, detail string)
+
+	// CreateBazelTargetAliasInDir creates an alias definition in `dir` directory.
+	// This function can be used to create alias definitions in a directory that is different
+	// from the directory of the visited Soong module.
+	CreateBazelTargetAliasInDir(dir string, name string, actual bazel.Label)
+
+	// CreateBazelConfigSetting creates a config_setting in <dir>/BUILD.bazel
+	// build/bazel has several static config_setting(s) that are used in Bazel builds.
+	// This function can be used to createa additional config_setting(s) based on the build graph
+	// (e.g. a config_setting specific to an apex variant)
+	CreateBazelConfigSetting(csa bazel.ConfigSettingAttributes, ca CommonAttributes, dir string)
 }
 
 type bottomUpMutatorContext struct {
@@ -710,14 +721,14 @@ func registerDepsMutatorBp2Build(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("deps", depsMutator).Parallel()
 }
 
-func (t *topDownMutatorContext) CreateBazelTargetModule(
+func (t *bottomUpMutatorContext) CreateBazelTargetModule(
 	bazelProps bazel.BazelTargetModuleProperties,
 	commonAttrs CommonAttributes,
 	attrs interface{}) {
 	t.createBazelTargetModule(bazelProps, commonAttrs, attrs, bazel.BoolAttribute{})
 }
 
-func (t *topDownMutatorContext) CreateBazelTargetModuleWithRestrictions(
+func (t *bottomUpMutatorContext) CreateBazelTargetModuleWithRestrictions(
 	bazelProps bazel.BazelTargetModuleProperties,
 	commonAttrs CommonAttributes,
 	attrs interface{},
@@ -725,7 +736,7 @@ func (t *topDownMutatorContext) CreateBazelTargetModuleWithRestrictions(
 	t.createBazelTargetModule(bazelProps, commonAttrs, attrs, enabledProperty)
 }
 
-func (t *topDownMutatorContext) MarkBp2buildUnconvertible(
+func (t *bottomUpMutatorContext) MarkBp2buildUnconvertible(
 	reasonType bp2build_metrics_proto.UnconvertedReasonType, detail string) {
 	mod := t.Module()
 	mod.base().setBp2buildUnconvertible(reasonType, detail)
@@ -741,7 +752,7 @@ type bazelAliasAttributes struct {
 	Actual *bazel.LabelAttribute
 }
 
-func (t *topDownMutatorContext) CreateBazelTargetAliasInDir(
+func (t *bottomUpMutatorContext) CreateBazelTargetAliasInDir(
 	dir string,
 	name string,
 	actual bazel.Label) {
@@ -762,7 +773,7 @@ func (t *topDownMutatorContext) CreateBazelTargetAliasInDir(
 // Returns the directory in which the bazel target will be generated
 // If ca.Dir is not nil, use that
 // Otherwise default to the directory of the soong module
-func dirForBazelTargetGeneration(t *topDownMutatorContext, ca *CommonAttributes) string {
+func dirForBazelTargetGeneration(t *bottomUpMutatorContext, ca *CommonAttributes) string {
 	dir := t.OtherModuleDir(t.Module())
 	if ca.Dir != nil {
 		dir = *ca.Dir
@@ -780,7 +791,7 @@ func dirForBazelTargetGeneration(t *topDownMutatorContext, ca *CommonAttributes)
 	return dir
 }
 
-func (t *topDownMutatorContext) CreateBazelConfigSetting(
+func (t *bottomUpMutatorContext) CreateBazelConfigSetting(
 	csa bazel.ConfigSettingAttributes,
 	ca CommonAttributes,
 	dir string) {
@@ -866,7 +877,7 @@ func ConvertApexAvailableToTagsWithoutTestApexes(ctx BaseModuleContext, apexAvai
 	return ConvertApexAvailableToTags(noTestApexes)
 }
 
-func (t *topDownMutatorContext) createBazelTargetModule(
+func (t *bottomUpMutatorContext) createBazelTargetModule(
 	bazelProps bazel.BazelTargetModuleProperties,
 	commonAttrs CommonAttributes,
 	attrs interface{},

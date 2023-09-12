@@ -129,7 +129,7 @@ type bazelCcLibraryHeadersAttributes struct {
 	sdkAttributes
 }
 
-func libraryHeadersBp2Build(ctx android.TopDownMutatorContext, module *Module) {
+func libraryHeadersBp2Build(ctx android.Bp2buildMutatorContext, module *Module) {
 	baseAttributes := bp2BuildParseBaseProps(ctx, module)
 	exportedIncludes := bp2BuildParseExportedIncludes(ctx, module, &baseAttributes.includes)
 	linkerAttrs := baseAttributes.linkerAttributes
@@ -170,7 +170,7 @@ func apiBazelTargets(ll bazel.LabelList) bazel.LabelList {
 	return bazel.MakeLabelList(labels)
 }
 
-func apiLibraryHeadersBp2Build(ctx android.TopDownMutatorContext, module *Module) {
+func apiLibraryHeadersBp2Build(ctx android.BottomUpMutatorContext, module *Module) {
 	// cc_api_library_headers have a 1:1 mapping to arch/no-arch
 	// For API export, create a top-level arch-agnostic target and list the arch-specific targets as its deps
 
@@ -198,7 +198,7 @@ func apiLibraryHeadersBp2Build(ctx android.TopDownMutatorContext, module *Module
 	}
 }
 
-func createApiHeaderTarget(ctx android.TopDownMutatorContext, includes apiIncludes) {
+func createApiHeaderTarget(ctx android.BottomUpMutatorContext, includes apiIncludes) {
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        "cc_api_library_headers",
 		Bzl_load_location: "//build/bazel/rules/apis:cc_api_contribution.bzl",
@@ -219,7 +219,7 @@ var (
 
 type archApiIncludes map[string]apiIncludes
 
-func archOsSpecificApiIncludes(ctx android.TopDownMutatorContext, module *Module) (archApiIncludes, apiIncludes) {
+func archOsSpecificApiIncludes(ctx android.BottomUpMutatorContext, module *Module) (archApiIncludes, apiIncludes) {
 	baseProps := bp2BuildParseBaseProps(ctx, module)
 	i := bp2BuildParseExportedIncludes(ctx, module, &baseProps.includes)
 	archRet := archApiIncludes{}

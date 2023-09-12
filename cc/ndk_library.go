@@ -563,7 +563,7 @@ type bazelCcApiContributionAttributes struct {
 }
 
 // Names of the cc_api_header targets in the bp2build workspace
-func apiHeaderLabels(ctx android.TopDownMutatorContext, hdrLibs []string) bazel.LabelList {
+func apiHeaderLabels(ctx android.Bp2buildMutatorContext, hdrLibs []string) bazel.LabelList {
 	addSuffix := func(ctx android.BazelConversionPathContext, module blueprint.Module) string {
 		label := android.BazelModuleLabel(ctx, module)
 		return android.ApiContributionTargetName(label)

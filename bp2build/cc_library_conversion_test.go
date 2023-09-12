@@ -3005,18 +3005,18 @@ func TestCCLibraryRuntimeDeps(t *testing.T) {
 
 cc_library {
   name: "foo",
-  runtime_libs: ["foo"],
+  runtime_libs: ["bar"],
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "bar", AttrNameToString{
 				"local_includes": `["."]`,
 			}),
 			MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
-				"runtime_deps":   `[":foo"]`,
+				"runtime_deps":   `[":bar"]`,
 				"local_includes": `["."]`,
 			}),
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
-				"runtime_deps":   `[":foo"]`,
+				"runtime_deps":   `[":bar"]`,
 				"local_includes": `["."]`,
 			}),
 		},

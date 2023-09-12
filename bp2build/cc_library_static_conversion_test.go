@@ -1767,14 +1767,14 @@ func TestCCLibraryStaticRuntimeDeps(t *testing.T) {
 
 cc_library_static {
   name: "foo",
-  runtime_libs: ["foo"],
+  runtime_libs: ["bar"],
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "bar", AttrNameToString{
 				"local_includes": `["."]`,
 			}),
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
-				"runtime_deps":   `[":foo"]`,
+				"runtime_deps":   `[":bar"]`,
 				"local_includes": `["."]`,
 			}),
 		},
