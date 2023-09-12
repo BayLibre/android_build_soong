@@ -64,6 +64,7 @@ func registerJavaBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("dex_import", DexImportFactory)
 	ctx.RegisterModuleType("java_api_library", ApiLibraryFactory)
 	ctx.RegisterModuleType("java_api_contribution", ApiContributionFactory)
+	ctx.RegisterModuleType("java_api_contribution_import", ApiContributionImportFactory)
 
 	// This mutator registers dependencies on dex2oat for modules that should be
 	// dexpreopted. This is done late when the final variants have been
@@ -1601,17 +1602,19 @@ func BinaryHostFactory() android.Module {
 	return module
 }
 
+type JavaApiContributionProperties struct {
+	// name of the API surface
+	Api_surface *string
+
+	// relative path to the API signature text file
+	Api_file *string `android:"path"`
+}
+
 type JavaApiContribution struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
 
-	properties struct {
-		// name of the API surface
-		Api_surface *string
-
-		// relative path to the API signature text file
-		Api_file *string `android:"path"`
-	}
+	properties JavaApiContributionProperties
 }
 
 func ApiContributionFactory() android.Module {
@@ -3420,4 +3423,40 @@ func (i *Import) QueueBazelCall(ctx android.BaseModuleContext) {
 
 func (i *Import) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
 	return true
+}
+
+type JavaApiContributionImport struct {
+	android.ModuleBase
+	android.DefaultableModuleBase
+	prebuilt android.Prebuilt
+
+	properties JavaApiContributionProperties
+}
+
+func ApiContributionImportFactory() android.Module {
+	module := &JavaApiContributionImport{}
+	android.InitAndroidModule(module)
+	android.InitDefaultableModule(module)
+	android.InitPrebuiltModule(module, &[]string{""})
+	module.AddProperties(&module.properties)
+	return module
+}
+
+func (module *JavaApiContributionImport) Prebuilt() *android.Prebuilt {
+	return &module.prebuilt
+}
+
+func (module *JavaApiContributionImport) Name() string {
+	return module.prebuilt.Name(module.ModuleBase.Name())
+}
+
+func (ap *JavaApiContributionImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	var apiFile android.Path = nil
+	if apiFileString := ap.properties.Api_file; apiFileString != nil {
+		apiFile = android.PathForModuleSrc(ctx, String(apiFileString))
+	}
+
+	ctx.SetProvider(JavaApiImportProvider, JavaApiImportInfo{
+		ApiFile: apiFile,
+	})
 }
