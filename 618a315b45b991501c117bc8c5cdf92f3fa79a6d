@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "689987df_2dd9f9fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-12T07:07:38Z",
+      "side": 1,
+      "message": "As commented in the bug, this doesn\u0027t appear to be the culprit. Please verify.",
+      "revId": "618a315b45b991501c117bc8c5cdf92f3fa79a6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
