@@ -69,6 +69,29 @@
       "parentUuid": "aff2f1a4_d4fad9ac",
       "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99321df5_cc765d66",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-09-12T13:55:01Z",
+      "side": 1,
+      "message": "Can you explain what\u0027s special about these classes that is causing them to need explicit mention here?",
+      "range": {
+        "startLine": 546,
+        "startChar": 1,
+        "endLine": 546,
+        "endChar": 137
+      },
+      "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
