@@ -22,6 +22,30 @@
       },
       "revId": "09d76817a03c180992647f79616d3fb205cd56c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "876f95a2_eddd81d4",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-12T22:21:38Z",
+      "side": 1,
+      "message": "This is just a refactor, this code used to be in bp2build_product_config.go. I\u0027d prefer to keep it in this cl unless you feel strongly otherwise.",
+      "parentUuid": "c36fe238_38bfab9c",
+      "range": {
+        "startLine": 39,
+        "startChar": 17,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "09d76817a03c180992647f79616d3fb205cd56c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
