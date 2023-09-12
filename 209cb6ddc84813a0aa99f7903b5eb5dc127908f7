@@ -16,6 +16,24 @@
       "message": "I would recommend checking if `Rollback_index` is non-null rather than \u003e\u003d 0. If you want to disallow negative values, do that with an explicit error message.",
       "revId": "209cb6ddc84813a0aa99f7903b5eb5dc127908f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21ee5b06_143cdefb",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1897307
+      },
+      "writtenOn": "2023-09-12T11:48:01Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! I have changed in to throw explicit error message in case of non-negative rollback-index.",
+      "parentUuid": "83f3c1e1_7c4464ad",
+      "revId": "209cb6ddc84813a0aa99f7903b5eb5dc127908f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
