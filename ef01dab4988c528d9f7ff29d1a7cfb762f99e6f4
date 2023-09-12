@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t we only turn this on if sanitizers are on? Otherwise we\u0027re potentially degrading non-sanitized performance.\n\nAlso, why is is this arm64 only?",
       "revId": "ef01dab4988c528d9f7ff29d1a7cfb762f99e6f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fc33dfa_cbd11989",
+        "filename": "rust/config/arm64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2023-09-12T16:59:32Z",
+      "side": 1,
+      "message": "This is needed for gwp-asan (among other things), which is always on.\nAs for arm64 only - we should shoot for parity with C++ codegen, since this matters mostly for mixed C++/Rust code. Arm32 does not emit frame pointers, so it\u0027s ok to skip. Maybe enable them on all 64-bit targets?",
+      "parentUuid": "522ef9a6_dc2a7687",
+      "revId": "ef01dab4988c528d9f7ff29d1a7cfb762f99e6f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
