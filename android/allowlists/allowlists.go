@@ -898,6 +898,13 @@ var (
 		"emma",
 
 		"modules-utils-preconditions-srcs",
+
+		// NDK STL
+		"ndk_libc++abi",
+		"ndk_libunwind",
+		"ndk_libc++_static",
+		"ndk_libc++_shared",
+		"ndk_system",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
