@@ -194,6 +194,30 @@
       },
       "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f3f1ae_08bc3e8d",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-09-12T22:26:56Z",
+      "side": 1,
+      "message": "The changes to the txt files would have resolved this type of writing out classes if it were to include all overriding methods (i.e. do not remove any methods when writing signature files), which the api council explicitly disapproved. The methods that are being added are sufficient enough to compile the stubs and its reverse dependencies, but are not enough to comply with all the build time checks, as mentioned above.\n\n\u003e Are we confident somehow that there won\u0027t be any new ones? \n\nWe cannot guarantee that no new ones will be added in the future. I believe the fundamental fixes are outside of metalava or signature files --\nRegarding `\"android.os.IpcDataCache.QueryHandler\"`, the fundamental fix is b/191644675 so that correct `--dependency-stub-dex` is passed during hiddenapi check. CCing @paulduffin@google.com.\n\nRegarding `\"android.app.Activity\"`, we could modify Bedstead to use the test api stub jar instead of the test apis in the `Nene` package, which is created using the annotation processor.\n\n\u003e What kind of error message would someone whose change requires adding a class to this list experience? \n\nThe user will observe presubmit errors either in hiddenapi or `checkbuild`.",
+      "parentUuid": "e38a9889_6e24a9da",
+      "range": {
+        "startLine": 546,
+        "startChar": 1,
+        "endLine": 546,
+        "endChar": 137
+      },
+      "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
