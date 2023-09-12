@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6312db04_c9358d8f",
+        "filename": "scripts/remove-bazel-output-base-and-ninja-file.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-12T15:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0492ee2_4889ee07",
+      "revId": "16bbd0a8a95676385299636a5082f73d3b2d923a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60571a36_848d618b",
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "Ah -- do we only need to remove out/soong/build*ninja if the user doesn\u0027t move their top, but runs `prepare_moved_top.sh` ? \n\nIf so: yes, please add a test case for this. Thanks!",
       "parentUuid": "5582be00_baefc614",
+      "revId": "16bbd0a8a95676385299636a5082f73d3b2d923a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ed8223_699c3c6f",
+        "filename": "tests/relative_symlinks_test.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-12T15:21:01Z",
+      "side": 1,
+      "message": "Added. \nCurrently, `prepare_moved_top.sh` does both to avoid leaving users in a bad state. \n\nTo clarify:\n\nremoving out/bazel/output and then moving your build top - okay!\nremoving out/bazel/output without moving your build top - broken build.\n\nRemoving the ninja file solves this and doesn\u0027t hurt performance (it actually seems to speed it up somehow)",
+      "parentUuid": "ac2406da_fc7d0271",
       "revId": "16bbd0a8a95676385299636a5082f73d3b2d923a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
