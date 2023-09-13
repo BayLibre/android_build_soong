@@ -16,6 +16,24 @@
       "message": "Why? This will make e.g. adbd_test not converted. This seems like a very broad stroke, many non-unit tests can successfully pass today.",
       "revId": "b28e2770475a44a0eb117106ba35a2d4bd944304",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75fe9f6a_4a6fa6c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-13T13:02:57Z",
+      "side": 1,
+      "message": "This doesn\u0027t impact `adbd_test`, which only those that are explicitly marked as non-unit tests. On host for cc, `test_options.unit_test` defaults to true, this is only excluding those that explicitly set false, which is ~40 modules. At a quick glance, many of the comments are about missing files, not being able to run on tradefed, being very long running, etc. I was thinking that this would be a good shorthand for these being unlikely to be compatible with running with Bazel without some work.",
+      "parentUuid": "f3811756_2941bf9e",
+      "revId": "b28e2770475a44a0eb117106ba35a2d4bd944304",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
