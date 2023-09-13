@@ -1926,6 +1926,39 @@ func TestPrettyPrintSelectMapEqualValues(t *testing.T) {
 	android.AssertStringEquals(t, "Print the common value if all keys in an axis have the same value", `[":libfoo.impl"]`, actual)
 }
 
+func TestAlreadyPresentBuildTarget(t *testing.T) {
+	bp := `
+	custom {
+		name: "foo",
+	}
+	custom {
+		name: "bar",
+	}
+	`
+	alreadyPresentBuildFile :=
+		MakeBazelTarget(
+			"custom",
+			"foo",
+			AttrNameToString{},
+		)
+	expectedBazelTargets := []string{
+		MakeBazelTarget(
+			"custom",
+			"bar",
+			AttrNameToString{},
+		),
+	}
+	registerCustomModule := func(ctx android.RegistrationContext) {
+		ctx.RegisterModuleType("custom", customModuleFactoryHostAndDevice)
+	}
+	RunBp2BuildTestCase(t, registerCustomModule, Bp2buildTestCase{
+		AlreadyExistingBuildContents: alreadyPresentBuildFile,
+		Blueprint:                    bp,
+		ExpectedBazelTargets:         expectedBazelTargets,
+		Description:                  "Not duplicating work for an already-present BUILD target.",
+	})
+}
+
 // If CommonAttributes.Dir is set, the bazel target should be created in that dir
 func TestCreateBazelTargetInDifferentDir(t *testing.T) {
 	t.Parallel()
