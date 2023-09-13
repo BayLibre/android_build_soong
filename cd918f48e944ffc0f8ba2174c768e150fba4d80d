@@ -254,6 +254,30 @@
       },
       "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ae74cf9_0f4a9ae7",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-13T14:43:30Z",
+      "side": 1,
+      "message": "I don\u0027t see any discussion of this type of failure or manual change in the build in your doc, have you discussed it with the api council or is it addressed in your doc as a tradeoff with the option to include all overriding methods?\n\nThis seems potentially confusing as a developer of an API to get a hiddenapi build error or `checkbuild` error that is difficult to connect back to needing to make this type of change. How would a user know to make this type of change?\n\nGiven that we don\u0027t have access to downstream trees, could there be similar cases of classes we need to add to this list for downstream trees?",
+      "parentUuid": "67f3f1ae_08bc3e8d",
+      "range": {
+        "startLine": 546,
+        "startChar": 1,
+        "endLine": 546,
+        "endChar": 137
+      },
+      "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
