@@ -2412,6 +2412,7 @@ func TestJavaApiContributionImport(t *testing.T) {
 		java_api_contribution_import {
 			name: "bar",
 			api_file: "current.txt",
+			api_surface: "public",
 		}
 	`)
 	m := ctx.ModuleForTests("foo", "android_common")
