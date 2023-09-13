@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dbdca01_c17856bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-13T16:38:25Z",
+      "side": 1,
+      "message": "Can you allowlist any/all modules of this type?",
+      "revId": "7dd6e3e90f44e4dbba08ee514a64dd92108872f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
