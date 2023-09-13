@@ -70,6 +70,30 @@
       },
       "revId": "774c6eaf103c3ffd4db54470bd044b621d5a3904",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "381519bb_b546dc6d",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3148,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-09-13T15:25:58Z",
+      "side": 1,
+      "message": "Indeed, thanks Liz, I didn\u0027t realize the only thing in deps and not in exports should be `libs` deps, and since we don\u0027t want them, there\u0027s really no reason to append deps here",
+      "parentUuid": "34ddb9ac_3d50c194",
+      "range": {
+        "startLine": 3139,
+        "startChar": 0,
+        "endLine": 3148,
+        "endChar": 36
+      },
+      "revId": "774c6eaf103c3ffd4db54470bd044b621d5a3904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
