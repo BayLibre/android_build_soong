@@ -46,6 +46,30 @@
       },
       "revId": "774c6eaf103c3ffd4db54470bd044b621d5a3904",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34ddb9ac_3d50c194",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3148,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-13T13:10:31Z",
+      "side": 1,
+      "message": "Why are we appending `deps` to `exports` rather than simply setting deps to an empty list? This seems to be introducing a change in behavior from Soong where rdeps wouldn\u0027t have access to `deps`.",
+      "parentUuid": "94ffed92_a725e9f1",
+      "range": {
+        "startLine": 3139,
+        "startChar": 0,
+        "endLine": 3148,
+        "endChar": 36
+      },
+      "revId": "774c6eaf103c3ffd4db54470bd044b621d5a3904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
