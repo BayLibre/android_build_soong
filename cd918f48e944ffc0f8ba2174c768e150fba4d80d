@@ -278,6 +278,30 @@
       },
       "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d2e7f42_b96c8340",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-09-13T18:08:36Z",
+      "side": 1,
+      "message": "I did not forsee this becoming a problem for \"adding only essential overrides to signature files\"  option until implementing the option, so have not discussed it in the doc. FWIW, the original success criteria mentioned in the doc, which is the successful compilation of the stubs and its reverse dependencies, is completely met even without these manual entries. These are what I view as temporary workarounds until b/191644675 is fixed and we have better understanding about [Bedstead](https://g3doc.corp.google.com/experimental/users/scottjonathan/bedstead/g3doc/index.md?cl\u003dhead) and its usage of the [test apis](https://g3doc.corp.google.com/experimental/users/scottjonathan/bedstead/g3doc/components/testapis/index.md?cl\u003dhead) in Nene package.\n\n\u003e How would a user know to make this type of change?\n\nIn a case where another handing like this is expected, the user will see failures in presubmits. We could communicate about such vulnerability prior to the launch of the feature so that the users are knowledgeable about the POC when they observe such kind of failure.\n\n\u003e Given that we don\u0027t have access to downstream trees, could there be similar cases of classes we need to add to this list for downstream trees?\n\nI did not observe the need for additional handling for downstream branches that I have tested (`git_main`, `udc-dev-plus-aosp`, `tm-qpr-dev-plus-aosp`). However, I do not have clear understanding about if other special handling would be needed for other non-aosp branches (e.g. parter branch).",
+      "parentUuid": "2ae74cf9_0f4a9ae7",
+      "range": {
+        "startLine": 546,
+        "startChar": 1,
+        "endLine": 546,
+        "endChar": 137
+      },
+      "revId": "cd918f48e944ffc0f8ba2174c768e150fba4d80d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
