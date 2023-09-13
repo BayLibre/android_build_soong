@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4dac9dd_a3f16245",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-09-13T08:06:08Z",
+      "side": 1,
+      "message": "It looks like this has (moderate?) impact on binary size. See b/300204203 which is for Microdroid, but I don\u0027t think the increase is exclusively to Microdroid.",
+      "revId": "085efff2134ebdc967e32fb99f5f310f105ebb8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
