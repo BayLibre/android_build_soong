@@ -16,6 +16,24 @@
       "message": "Can you allowlist any/all modules of this type?",
       "revId": "7dd6e3e90f44e4dbba08ee514a64dd92108872f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "268278b1_4a18c8d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-09-13T17:50:17Z",
+      "side": 1,
+      "message": "sure. I kinda avoided doing that because this module type isn\u0027t \"buildable\" and I thought allowlist-v2 might land before we allowlilst droidoc etc that use this module type.",
+      "parentUuid": "3dbdca01_c17856bb",
+      "revId": "7dd6e3e90f44e4dbba08ee514a64dd92108872f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
