@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d761c45d_6b5185d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-09-14T21:39:37Z",
+      "side": 1,
+      "message": "Follow-up for https://android-review.git.corp.google.com/c/platform/build/soong/+/2605644/comment/8536027c_175b3157/.\n\nThis line was actually neeeded for non-sandboxed commands.",
+      "revId": "58d922c98c35c2cd1756db3e9bdb0cdb93a55d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
