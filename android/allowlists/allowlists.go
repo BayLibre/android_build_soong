@@ -916,6 +916,7 @@ var (
 		"java_import",
 		"java_import_host",
 		"java_sdk_library",
+		"ndk_library",
 		"sysprop_library",
 		"xsd_config",
 		"aconfig_declarations",
