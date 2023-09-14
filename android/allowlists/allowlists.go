@@ -926,6 +926,7 @@ var (
 		"cc_prebuilt_library_headers",
 		"cc_prebuilt_library_shared",
 		"cc_prebuilt_library_static",
+		"cc_aconfig_library",
 		"combined_apis",
 		"droiddoc_exported_dir",
 		"java_import",
