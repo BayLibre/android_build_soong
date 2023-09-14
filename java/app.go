@@ -1645,11 +1645,11 @@ func convertWithBp2build(ctx android.TopDownMutatorContext, a *AndroidApp) (bool
 	// TODO(b/274474008 ): Directly convert deviceProperties.Min_sdk_version in bp2build
 	// MinSdkVersion(ctx) calls SdkVersion(ctx) if no value for min_sdk_version is set
 	minSdkVersion := a.MinSdkVersion(ctx)
-	if !minSdkVersion.IsPreview() && !minSdkVersion.IsInvalid() {
-		if minSdkStr, err := minSdkVersion.EffectiveVersionString(ctx); err == nil {
-			manifestValues.MinSdkVersion = &minSdkStr
-		}
+	// if !minSdkVersion.IsPreview() && !minSdkVersion.IsInvalid() {
+	if minSdkStr, err := minSdkVersion.EffectiveVersionString(ctx); err == nil {
+		manifestValues.MinSdkVersion = &minSdkStr
 	}
+	// }
 
 	maxSdkVersion := a.MaxSdkVersion(ctx)
 	if !maxSdkVersion.IsPreview() && !maxSdkVersion.IsInvalid() {
@@ -1659,11 +1659,11 @@ func convertWithBp2build(ctx android.TopDownMutatorContext, a *AndroidApp) (bool
 	}
 
 	targetSdkVersion := a.TargetSdkVersion(ctx)
-	if !targetSdkVersion.IsPreview() && !targetSdkVersion.IsInvalid() {
-		if targetSdkStr, err := targetSdkVersion.EffectiveVersionString(ctx); err == nil {
-			manifestValues.TargetSdkVersion = &targetSdkStr
-		}
+	// if !targetSdkVersion.IsPreview() && !targetSdkVersion.IsInvalid() {
+	if targetSdkStr, err := targetSdkVersion.EffectiveVersionString(ctx); err == nil {
+		manifestValues.TargetSdkVersion = &targetSdkStr
 	}
+	// }
 
 	appAttrs := &bazelAndroidAppAttributes{
 		// TODO(b/209576404): handle package name override by product variable PRODUCT_MANIFEST_PACKAGE_NAME_OVERRIDES
