@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33d05464_7fc26bf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-09-14T01:12:20Z",
+      "side": 1,
+      "message": "i\u0027m fine reverting the patch if it is causing too much trouble.",
+      "revId": "2583523144c9d952eed99f789511c6a4674a37e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
