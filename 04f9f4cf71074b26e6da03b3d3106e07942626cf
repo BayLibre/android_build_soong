@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1deaced0_701a9d7c",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-09-14T18:46:12Z",
+      "side": 1,
+      "message": "Can you explain why the api_surface is defaulted to module lib api surface?",
+      "revId": "04f9f4cf71074b26e6da03b3d3106e07942626cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
