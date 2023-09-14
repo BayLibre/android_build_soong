@@ -16,6 +16,24 @@
       "message": "note for `//prebuilts/sdk:sdk-dir` this gets pretty large because it has numerous subpackages and even a maven repository, `//prebuilts/sdk/current/androidx:m2repository`",
       "revId": "8fe392facf5f9ddb1f1ee9e5289e86add3c1f2dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "898aa01f_7cee32f6",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-14T17:17:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "692c20a8_db056318",
+      "revId": "8fe392facf5f9ddb1f1ee9e5289e86add3c1f2dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
