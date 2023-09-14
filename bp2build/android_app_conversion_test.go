@@ -56,8 +56,12 @@ android_app {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("android_binary", "TestApp", AttrNameToString{
-				"srcs":           `["app.java"]`,
-				"manifest":       `"AndroidManifest.xml"`,
+				"srcs":     `["app.java"]`,
+				"manifest": `"AndroidManifest.xml"`,
+				"manifest_values": `{
+        "minSdkVersion": "S",
+        "targetSdkVersion": "S",
+    }`,
 				"resource_files": `["res/res.png"]`,
 				"sdk_version":    `"current"`,
 				"assets":         `["assets/asset.png"]`,
@@ -105,6 +109,10 @@ android_app {
 			MakeBazelTarget("android_binary", "TestApp", AttrNameToString{
 				"srcs":     `["app.java"]`,
 				"manifest": `"manifest/AndroidManifest.xml"`,
+				"manifest_values": `{
+        "minSdkVersion": "S",
+        "targetSdkVersion": "S",
+    }`,
 				"resource_files": `[
         "resa/res.png",
         "resb/res.png",
@@ -163,7 +171,11 @@ android_app {
         "//build/bazel/platforms/arch:x86": ["x86.java"],
         "//conditions:default": [],
     })`,
-				"manifest":       `"AndroidManifest.xml"`,
+				"manifest": `"AndroidManifest.xml"`,
+				"manifest_values": `{
+        "minSdkVersion": "S",
+        "targetSdkVersion": "S",
+    }`,
 				"resource_files": `["res/res.png"]`,
 				"sdk_version":    `"current"`,
 				"optimize":       `False`,
@@ -189,8 +201,12 @@ android_app {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("android_binary", "TestApp", AttrNameToString{
-				"certificate":    `":foocert"`,
-				"manifest":       `"AndroidManifest.xml"`,
+				"certificate": `":foocert"`,
+				"manifest":    `"AndroidManifest.xml"`,
+				"manifest_values": `{
+        "minSdkVersion": "S",
+        "targetSdkVersion": "S",
+    }`,
 				"resource_files": `[]`,
 				"sdk_version":    `"current"`, // use as default
 				"optimize":       `False`,
@@ -218,8 +234,12 @@ android_app {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("android_binary", "TestApp", AttrNameToString{
-				"certificate":    `"foocert"`,
-				"manifest":       `"AndroidManifest.xml"`,
+				"certificate": `"foocert"`,
+				"manifest":    `"AndroidManifest.xml"`,
+				"manifest_values": `{
+        "minSdkVersion": "S",
+        "targetSdkVersion": "S",
+    }`,
 				"resource_files": `[]`,
 				"sdk_version":    `"current"`, // use as default
 				"optimize":       `False`,
@@ -249,9 +269,13 @@ android_app {
 			MakeBazelTarget("android_binary", "TestApp", AttrNameToString{
 				"certificate_name": `"foocert"`,
 				"manifest":         `"AndroidManifest.xml"`,
-				"resource_files":   `[]`,
-				"sdk_version":      `"current"`, // use as default
-				"optimize":         `False`,
+				"manifest_values": `{
+        "minSdkVersion": "S",
+        "targetSdkVersion": "S",
+    }`,
+				"resource_files": `[]`,
+				"sdk_version":    `"current"`, // use as default
+				"optimize":       `False`,
 			}),
 		}})
 }
@@ -274,7 +298,11 @@ android_app {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("android_binary", "foo", AttrNameToString{
-				"manifest":       `"AndroidManifest.xml"`,
+				"manifest": `"AndroidManifest.xml"`,
+				"manifest_values": `{
+        "minSdkVersion": "S",
+        "targetSdkVersion": "S",
+    }`,
 				"resource_files": `[]`,
 				"deps":           `[":barLib-neverlink"]`,
 				"sdk_version":    `"current"`, // use as default
@@ -320,6 +348,10 @@ android_app {
 				"deps":        `[":foo_kt"]`,
 				"certificate": `":foocert"`,
 				"manifest":    `"fooManifest.xml"`,
+				"manifest_values": `{
+        "minSdkVersion": "S",
+        "targetSdkVersion": "S",
+    }`,
 				"sdk_version": `"current"`, // use as default
 				"optimize":    `False`,
 			}),
@@ -361,8 +393,12 @@ java_library{
 				"sdk_version":    `"current"`, // use as default
 			}),
 			MakeBazelTarget("android_binary", "foo", AttrNameToString{
-				"deps":        `[":foo_kt"]`,
-				"manifest":    `"fooManifest.xml"`,
+				"deps":     `[":foo_kt"]`,
+				"manifest": `"fooManifest.xml"`,
+				"manifest_values": `{
+        "minSdkVersion": "S",
+        "targetSdkVersion": "S",
+    }`,
 				"sdk_version": `"current"`, // use as default
 				"optimize":    `False`,
 			}),
@@ -404,8 +440,12 @@ android_app {
 				"sdk_version": `"current"`, // use as default
 			}),
 			MakeBazelTarget("android_binary", "foo", AttrNameToString{
-				"deps":        `[":foo_kt"]`,
-				"manifest":    `"fooManifest.xml"`,
+				"deps":     `[":foo_kt"]`,
+				"manifest": `"fooManifest.xml"`,
+				"manifest_values": `{
+        "minSdkVersion": "S",
+        "targetSdkVersion": "S",
+    }`,
 				"sdk_version": `"current"`,
 				"optimize":    `False`,
 			}),
