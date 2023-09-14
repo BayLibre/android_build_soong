@@ -193,16 +193,13 @@ func symlinkIntoForest(topdir, dst, src string) uint64 {
 	srcPath := shared.JoinPath(topdir, src)
 	dstPath := shared.JoinPath(topdir, dst)
 
-	// Check if a symlink already exists.
-	if dstInfo, err := os.Lstat(dstPath); err != nil {
-		if !os.IsNotExist(err) {
-			fmt.Fprintf(os.Stderr, "Failed to lstat '%s': %s", dst, err)
-			os.Exit(1)
-		}
+	// Check whether a symlink already exists.
+	if symlinkedTarget, err := filepath.EvalSymlinks(dstPath); err != nil && !os.IsNotExist(err) {
+		fmt.Fprintf(os.Stderr, "Failed to lstat '%s': %s", dst, err)
+		os.Exit(1)
 	} else {
-		if dstInfo.Mode()&os.ModeSymlink != 0 {
-			// Assume that the link's target is correct, i.e. no manual tampering.
-			// E.g. OUT_DIR could have been previously used with a different source tree check-out!
+		if symlinkedTarget == srcPath {
+			// The symlink exists and is already pointing to the srcPath.
 			return 0
 		} else {
 			if err := os.RemoveAll(dstPath); err != nil {
