@@ -16,6 +16,24 @@
       "message": "Can you explain why the api_surface is defaulted to module lib api surface?",
       "revId": "04f9f4cf71074b26e6da03b3d3106e07942626cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcfa4d51_990ff94d",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-09-14T18:51:32Z",
+      "side": 1,
+      "message": "On the native side, the only existing use case of stubs today is to build apex libraries. The API surface available to apex libraries is the module-lib api surface.",
+      "parentUuid": "1deaced0_701a9d7c",
+      "revId": "04f9f4cf71074b26e6da03b3d3106e07942626cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
