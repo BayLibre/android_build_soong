@@ -16,6 +16,7 @@ package aconfig
 
 import (
 	"android/soong/android"
+	"android/soong/bazel"
 	"android/soong/cc"
 	"github.com/google/blueprint"
 
@@ -28,6 +29,7 @@ type ccDeclarationsTagType struct {
 }
 
 var ccDeclarationsTag = ccDeclarationsTagType{}
+var baseLibDep = "server_configurable_flags"
 
 type CcAconfigLibraryProperties struct {
 	// name of the aconfig_declarations module to generate a library for
@@ -67,7 +69,7 @@ func (this *CcAconfigLibraryCallbacks) GeneratorDeps(ctx cc.DepsContext, deps cc
 	}
 
 	// Add a dependency for the aconfig flags base library
-	deps.SharedLibs = append(deps.SharedLibs, "server_configurable_flags")
+	deps.SharedLibs = append(deps.SharedLibs, baseLibDep)
 	// TODO: It'd be really nice if we could reexport this library and not make everyone do it.
 
 	return deps
@@ -125,4 +127,27 @@ func (this *CcAconfigLibraryCallbacks) GeneratorBuildActions(ctx cc.ModuleContex
 			"gendir": this.generatedDir.String(),
 		},
 	})
+}
+
+type bazelCcAconfigLibraryAttributes struct {
+	Deps         bazel.LabelListAttribute
+	Dynamic_deps bazel.LabelListAttribute
+}
+
+func (this *CcAconfigLibraryCallbacks) GeneratorBp2build(ctx android.TopDownMutatorContext) bool {
+	if ctx.ModuleType() != "cc_aconfig_library" {
+		return false
+	}
+
+	attrs := bazelCcAconfigLibraryAttributes{
+		Deps:         bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, []string{this.properties.Aconfig_declarations})),
+		Dynamic_deps: bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, []string{baseLibDep})),
+	}
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "cc_aconfig_library",
+		Bzl_load_location: "//build/bazel/rules/cc:cc_aconfig_library.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: ctx.ModuleName()}, &attrs)
+	return true
 }
