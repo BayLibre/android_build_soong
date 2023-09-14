@@ -90,3 +90,41 @@ func TestAconfigValues(t *testing.T) {
 		ExpectedBazelTargets: expectedBazelTargets,
 	})
 }
+
+func TestCcAconfigLibrary(t *testing.T) {
+	bp := `
+	aconfig_declarations {
+		name: "foo_aconfig_declarations",
+		srcs: [
+			"foo1.aconfig",
+		],
+		package: "com.android.foo",
+	}
+	cc_aconfig_library {
+			name: "foo",
+			aconfig_declarations: "foo_aconfig_declarations",
+	}
+	`
+	expectedBazelTargets := []string{
+		MakeBazelTargetNoRestrictions(
+			"aconfig_declarations",
+			"foo_aconfig_declarations",
+			AttrNameToString{
+				"srcs":    `["foo1.aconfig"]`,
+				"package": `"com.android.foo"`,
+			},
+		),
+		MakeBazelTargetNoRestrictions(
+			"cc_aconfig_library",
+			"foo",
+			AttrNameToString{
+				"deps":                   `[":foo_aconfig_declarations"]`,
+				"dynamic_deps":           `[":server_configurable_flags__BP2BUILD__MISSING__DEP"]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			},
+		)}
+	RunBp2BuildTestCase(t, registerAconfigModuleTypes, Bp2buildTestCase{
+		Blueprint:            bp,
+		ExpectedBazelTargets: expectedBazelTargets,
+	})
+}
