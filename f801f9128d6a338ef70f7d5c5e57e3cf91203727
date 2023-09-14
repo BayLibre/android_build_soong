@@ -68,6 +68,42 @@
       "parentUuid": "6b2817e4_ce14fcda",
       "revId": "f801f9128d6a338ef70f7d5c5e57e3cf91203727",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1647f19b_0a26eb4b",
+        "filename": "android/register.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-14T19:22:41Z",
+      "side": 1,
+      "message": "Would you not call applying a regular expression to a file \"parsing the file\" ? \n\nRegardless, I\u0027m fine with renaming it. How about RegisterExistingBazelTargets ?",
+      "parentUuid": "a2a7b1d0_1227792b",
+      "revId": "f801f9128d6a338ef70f7d5c5e57e3cf91203727",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c121f8d7_61772df0",
+        "filename": "android/register.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-14T19:22:41Z",
+      "side": 1,
+      "message": "It does not pose a problem, no.\n\nWe label a module as pre-existing-in-BUILD if and only if it has a BUILD target in the BUILD file *adjacent* to the Android.bp for which the module is defined.\n\nThis has inspired me to add an additional test.",
+      "parentUuid": "dd9fa492_a9a40d0a",
+      "revId": "f801f9128d6a338ef70f7d5c5e57e3cf91203727",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
