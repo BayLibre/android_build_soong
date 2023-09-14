@@ -581,3 +581,30 @@ func apiHeaderLabels(ctx android.TopDownMutatorContext, hdrLibs []string) bazel.
 	}
 	return android.BazelLabelForModuleDepsWithFn(ctx, hdrLibs, addSuffix)
 }
+
+func ndkLibraryBp2build(ctx android.TopDownMutatorContext, c *Module) {
+	ndk, _ := c.linker.(*stubDecorator)
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "cc_stub_suite",
+		Bzl_load_location: "//build/bazel/rules/cc:cc_stub_library.bzl",
+	}
+	sourceLibraryName := strings.TrimSuffix(c.Name(), ".ndk")
+	sourceLibrary, _ := ctx.ModuleFromName(sourceLibraryName)
+	fromApiLevel, err := android.ApiLevelFromUser(ctx, proptools.String(ndk.properties.First_version))
+	if err != nil {
+		ctx.PropertyErrorf("first_version", "error converting first_version %v", proptools.String(ndk.properties.First_version))
+	}
+	attrs := &bazelCcStubSuiteAttributes{
+		// TODO - b/300504837 Add ndk headers
+		Symbol_file:          ndk.properties.Symbol_file,
+		Versions:             bazel.MakeStringListAttribute(ndkLibraryVersions(ctx, fromApiLevel)),
+		Soname:               proptools.StringPtr(sourceLibraryName + ".so"),
+		Source_library_label: proptools.StringPtr(c.GetBazelLabel(ctx, sourceLibrary)),
+		Api_surface:          proptools.StringPtr(android.PublicApi.String()),
+	}
+	ctx.CreateBazelTargetModule(
+		props,
+		android.CommonAttributes{Name: c.Name() + "_stub_libs"},
+		attrs,
+	)
+}
