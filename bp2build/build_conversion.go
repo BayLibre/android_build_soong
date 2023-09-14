@@ -39,18 +39,24 @@ type BazelAttributes struct {
 	Attrs map[string]string
 }
 
-type BazelTarget struct {
-	name            string
-	packageName     string
-	content         string
-	ruleClass       string
-	bzlLoadLocation string
+type BazelLoadSymbol struct {
+	// The name of the symbol in the file being loaded
+	src string
+	// The name the symbol wil have in this file. Can be left blank to use the same name as src.
+	dst string
 }
 
-// IsLoadedFromStarlark determines if the BazelTarget's rule class is loaded from a .bzl file,
-// as opposed to a native rule built into Bazel.
-func (t BazelTarget) IsLoadedFromStarlark() bool {
-	return t.bzlLoadLocation != ""
+type BazelLoad struct {
+	file    string
+	symbols []BazelLoadSymbol
+}
+
+type BazelTarget struct {
+	name        string
+	packageName string
+	content     string
+	ruleClass   string
+	loads       []BazelLoad
 }
 
 // Label is the fully qualified Bazel label constructed from the BazelTarget's
@@ -110,30 +116,62 @@ func (targets BazelTargets) String() string {
 // LoadStatements return the string representation of the sorted and deduplicated
 // Starlark rule load statements needed by a group of BazelTargets.
 func (targets BazelTargets) LoadStatements() string {
-	bzlToLoadedSymbols := map[string][]string{}
+	// First, merge all the load statements from all the targets onto one list
+	bzlToLoadedSymbols := map[string][]BazelLoadSymbol{}
 	for _, target := range targets {
-		if target.IsLoadedFromStarlark() {
-			bzlToLoadedSymbols[target.bzlLoadLocation] =
-				append(bzlToLoadedSymbols[target.bzlLoadLocation], target.ruleClass)
+		for _, load := range target.loads {
+		outer:
+			for _, symbol := range load.symbols {
+				dst := symbol.dst
+				if dst == "" {
+					dst = symbol.src
+				}
+				for _, otherSymbol := range bzlToLoadedSymbols[load.file] {
+					otherDst := otherSymbol.dst
+					if otherDst == "" {
+						otherDst = otherSymbol.src
+					}
+					if symbol.src == otherSymbol.src && dst == otherDst {
+						continue outer
+					} else if dst == otherDst {
+						panic(fmt.Sprintf("Conflicting destination (%s) for loads of %s and %s", dst, symbol.src, otherSymbol.src))
+					}
+				}
+				bzlToLoadedSymbols[load.file] = append(bzlToLoadedSymbols[load.file], symbol)
+			}
 		}
 	}
 
-	var loadStatements []string
-	for bzl, ruleClasses := range bzlToLoadedSymbols {
-		loadStatement := "load(\""
-		loadStatement += bzl
-		loadStatement += "\", "
-		ruleClasses = android.SortedUniqueStrings(ruleClasses)
-		for i, ruleClass := range ruleClasses {
-			loadStatement += "\"" + ruleClass + "\""
-			if i != len(ruleClasses)-1 {
-				loadStatement += ", "
+	var loadStatements strings.Builder
+	for i, bzl := range android.SortedKeys(bzlToLoadedSymbols) {
+		symbols := bzlToLoadedSymbols[bzl]
+		loadStatements.WriteString("load(\"")
+		loadStatements.WriteString(bzl)
+		loadStatements.WriteString("\", ")
+		sort.Slice(symbols, func(i, j int) bool {
+			if symbols[i].src < symbols[j].src {
+				return true
+			}
+			return symbols[i].dst < symbols[j].dst
+		})
+		for j, symbol := range symbols {
+			if symbol.dst != "" && symbol.dst != symbol.src {
+				loadStatements.WriteString(symbol.dst)
+				loadStatements.WriteString(" = ")
+			}
+			loadStatements.WriteString("\"")
+			loadStatements.WriteString(symbol.src)
+			loadStatements.WriteString("\"")
+			if j != len(symbols)-1 {
+				loadStatements.WriteString(", ")
 			}
 		}
-		loadStatement += ")"
-		loadStatements = append(loadStatements, loadStatement)
+		loadStatements.WriteString(")")
+		if i != len(bzlToLoadedSymbols)-1 {
+			loadStatements.WriteString("\n")
+		}
 	}
-	return strings.Join(android.SortedUniqueStrings(loadStatements), "\n")
+	return loadStatements.String()
 }
 
 type bpToBuildContext interface {
@@ -857,12 +895,19 @@ func generateBazelTarget(ctx bpToBuildContext, m bp2buildModule) (BazelTarget, e
 	} else {
 		content = fmt.Sprintf(unnamedRuleTargetTemplate, ruleClass, attributes)
 	}
+	var loads []BazelLoad
+	if bzlLoadLocation != "" {
+		loads = append(loads, BazelLoad{
+			file:    bzlLoadLocation,
+			symbols: []BazelLoadSymbol{{src: ruleClass}},
+		})
+	}
 	return BazelTarget{
-		name:            targetName,
-		packageName:     m.TargetPackage(),
-		ruleClass:       ruleClass,
-		bzlLoadLocation: bzlLoadLocation,
-		content:         content,
+		name:        targetName,
+		packageName: m.TargetPackage(),
+		ruleClass:   ruleClass,
+		loads:       loads,
+		content:     content,
 	}, nil
 }
 
