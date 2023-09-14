@@ -16,6 +16,24 @@
       "message": "Can we have another test case where `len(aconfig_value_set) \u003e 2`? Would that test the error condition for `Config.ReleaseAconfigValueSets()`?",
       "revId": "2cc802a4421313db16a054674a4dc567f400844b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6fb650b_aded4861",
+        "filename": "bp2build/aconfig_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-09-14T21:57:08Z",
+      "side": 1,
+      "message": "the error condition in config.go is to abort the build when Config.ReleaseAconfigValueSets() is not in the format of \"package:target\", it would be hard to test in this conversion test.",
+      "parentUuid": "2c4dc5f6_1a86b031",
+      "revId": "2cc802a4421313db16a054674a4dc567f400844b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
