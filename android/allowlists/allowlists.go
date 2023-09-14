@@ -929,6 +929,7 @@ var (
 		"java_sdk_library",
 		"license",
 		"linker_config",
+		"ndk_library",
 		"sysprop_library",
 		"xsd_config",
 	}
