@@ -931,6 +931,10 @@ var (
 		"linker_config",
 		"sysprop_library",
 		"xsd_config",
+		"aconfig_declarations",
+		"aconfig_values",
+		"aconfig_value_set",
+		"cc_aconfig_library",
 	}
 
 	// Add the names of modules that bp2build should never convert, if it is
