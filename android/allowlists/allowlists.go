@@ -904,6 +904,7 @@ var (
 		"bpf",
 		"combined_apis",
 		"droiddoc_exported_dir",
+		"ndk_library",
 		"license",
 		"linker_config",
 		"java_import",
