@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e89909b6_a52df77c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-14T18:26:00Z",
+      "side": 1,
+      "message": "that are _not_ kept, right?",
+      "revId": "f801f9128d6a338ef70f7d5c5e57e3cf91203727",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd9fa492_a9a40d0a",
         "filename": "android/register.go",
         "patchSetId": 1
@@ -31,6 +48,24 @@
       "writtenOn": "2023-09-14T18:16:28Z",
       "side": 1,
       "message": "nit: I don\u0027t actually see any parsing happening? So maybe a misnomer? `FindBazelTargets()`?",
+      "revId": "f801f9128d6a338ef70f7d5c5e57e3cf91203727",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2a7b1d0_1227792b",
+        "filename": "android/register.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-14T18:26:00Z",
+      "side": 1,
+      "message": "+1. Also could you add a comment like `buildTargetsByPackage` used to have?",
+      "parentUuid": "6b2817e4_ce14fcda",
       "revId": "f801f9128d6a338ef70f7d5c5e57e3cf91203727",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
