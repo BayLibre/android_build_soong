@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ddbfff4_c2d4d290",
+        "filename": "aconfig/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-15T14:42:51Z",
+      "side": 1,
+      "message": "are there protections against using the test version in production or do we need checks in the build?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "90d0d5c21e885fefe09e6bd50092c41920f4e5b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96a1dab9_bd2ca3c5",
+        "filename": "aconfig/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-15T14:42:51Z",
+      "side": 1,
+      "message": "can you make this a pointer to a bool instead, so its possible to distinguish between intentionally set to false and unset?\n\n`proptools.Bool` e.g. https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/proto.go;l\u003d260;drc\u003dec39d516af50f2173128688ad57a5d1570175cd2 is helpful for handling it later on.",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "90d0d5c21e885fefe09e6bd50092c41920f4e5b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e43165_153c4772",
+        "filename": "aconfig/cc_aconfig_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-15T14:42:51Z",
+      "side": 1,
+      "message": "this test file also needs to be referenced from the Android.bp file in this dir e.g. https://cs.android.com/android/platform/superproject/+/master:build/soong/aconfig/Android.bp;l\u003d31;drc\u003d457ddef28eafeb79765c058a7f710d0e60567f94",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 50
+      },
+      "revId": "90d0d5c21e885fefe09e6bd50092c41920f4e5b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "934126b3_93be33f6",
+        "filename": "aconfig/cc_aconfig_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-15T14:42:51Z",
+      "side": 1,
+      "message": "add t.Helper() to the top of the function to ensure line numbers for tests are correct:\n\nhttps://google.github.io/styleguide/go/decisions#test-helpers",
+      "range": {
+        "startLine": 25,
+        "startChar": 67,
+        "endLine": 25,
+        "endChar": 68
+      },
+      "revId": "90d0d5c21e885fefe09e6bd50092c41920f4e5b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9b2bd43_9da30174",
+        "filename": "aconfig/cc_aconfig_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-15T14:42:51Z",
+      "side": 1,
+      "message": "this would be more commonly written as table driven tests in go: https://google.github.io/styleguide/go/decisions#table-driven-tests",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "90d0d5c21e885fefe09e6bd50092c41920f4e5b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
