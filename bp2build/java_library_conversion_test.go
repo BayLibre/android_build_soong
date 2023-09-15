@@ -869,6 +869,30 @@ func TestJavaLibraryKotlinCommonSrcs(t *testing.T) {
 	})
 }
 
+func TestJavaLibraryLibsWithNoSrcs(t *testing.T) {
+	runJavaLibraryTestCase(t, Bp2buildTestCase{
+		Description: "java_library that has libs but no srcs",
+		Blueprint: `java_library {
+    name: "java-lib-1",
+    libs: ["java-lib-2"],
+    sdk_version: "current",
+    bazel_module: { bp2build_available: true },
+}
+
+java_library{
+    name: "java-lib-2",
+    bazel_module: { bp2build_available: false },
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("java_library", "java-lib-1", AttrNameToString{
+				"sdk_version": `"current"`,
+			}),
+			MakeNeverlinkDuplicateTarget("java_library", "java-lib-1"),
+		},
+	})
+}
+
 func TestJavaLibraryArchVariantDeps(t *testing.T) {
 	runJavaLibraryTestCase(t, Bp2buildTestCase{
 		Description: "java_library with arch variant libs",
