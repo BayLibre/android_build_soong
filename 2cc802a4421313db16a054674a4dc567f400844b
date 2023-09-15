@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "628ee394_db55b6a7",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-09-15T14:12:56Z",
+      "side": 1,
+      "message": "aosp/2745809 changes the product var from a list of string to just a string. Why should we do so?\n\nIf that\u0027s intended, could we rename `ReleaseAconfigValueSets` to `ReleaseAconfigValueSet` here and other places?",
+      "range": {
+        "startLine": 201,
+        "startChar": 16,
+        "endLine": 201,
+        "endChar": 39
+      },
+      "revId": "2cc802a4421313db16a054674a4dc567f400844b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba66625_3e9e5452",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-09-15T14:12:56Z",
+      "side": 1,
+      "message": "Can we replace `vendor/google` with `internal` to not expose `vendor/google` to AOSP?",
+      "range": {
+        "startLine": 203,
+        "startChar": 50,
+        "endLine": 203,
+        "endChar": 63
+      },
+      "revId": "2cc802a4421313db16a054674a4dc567f400844b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c4dc5f6_1a86b031",
         "filename": "bp2build/aconfig_conversion_test.go",
         "patchSetId": 3
@@ -50,6 +96,24 @@
       "side": 1,
       "message": "Acknowledged",
       "parentUuid": "d6fb650b_aded4861",
+      "revId": "2cc802a4421313db16a054674a4dc567f400844b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a2767f5_909db70f",
+        "filename": "bp2build/aconfig_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-09-15T14:12:56Z",
+      "side": 1,
+      "message": "Yeah. I\u0027ve learned that bp2build should be independent from product variables. Bazel analysis test should be able to capture any error with product vars.",
+      "parentUuid": "2f7d21bd_952e32c5",
       "revId": "2cc802a4421313db16a054674a4dc567f400844b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
