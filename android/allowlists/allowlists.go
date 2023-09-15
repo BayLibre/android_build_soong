@@ -605,16 +605,11 @@ var (
 		// com.android.media.swcodec
 		"com.android.media.swcodec",
 		"com.android.media.swcodec-androidManifest",
-		"com.android.media.swcodec-ld.config.txt",
-		"com.android.media.swcodec-mediaswcodec.32rc",
-		"com.android.media.swcodec-mediaswcodec.rc",
 		"com.android.media.swcodec.certificate",
 		"com.android.media.swcodec.key",
 		"test_com.android.media.swcodec",
 
 		// deps
-		"code_coverage.policy",
-		"code_coverage.policy.other",
 		"codec2_soft_exports",
 		"compatibility_matrix_schema",
 		"framework-connectivity-protos",
@@ -659,8 +654,6 @@ var (
 		"libvorbisidec",
 		"media_ndk_headers",
 		"media_plugin_headers",
-		"mediaswcodec.policy",
-		"mediaswcodec.xml",
 		"neuralnetworks_types",
 		"libneuralnetworks_common",
 		"philox_random",
@@ -1009,6 +1002,10 @@ var (
 		"linker_config",
 		"ndk_headers",
 		"ndk_library",
+		"prebuilt_etc",
+		"prebuilt_etc_host",
+		"prebuilt_usr_share",
+		"prebuilt_usr_share_host",
 		"sysprop_library",
 		"xsd_config",
 		// go/keep-sorted end
