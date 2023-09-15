@@ -145,7 +145,7 @@ var kaptStubs = pctx.AndroidRemoteStaticRule("kaptStubs", android.RemoteRuleSupp
 			`$kaptProcessorPath ` +
 			`$kaptProcessor ` +
 			`-Xbuild-file=$kotlinBuildFile && ` +
-			`${config.SoongZipCmd} -jar -o $out -C $kaptDir/stubs -D $kaptDir/stubs && ` +
+			`${config.SoongZipCmd} -jar -write_if_changed -o $out -C $kaptDir/stubs -D $kaptDir/stubs && ` +
 			`rm -rf "$srcJarDir"`,
 		CommandDeps: []string{
 			"${config.KotlincCmd}",
@@ -157,6 +157,7 @@ var kaptStubs = pctx.AndroidRemoteStaticRule("kaptStubs", android.RemoteRuleSupp
 		},
 		Rspfile:        "$out.rsp",
 		RspfileContent: `$in`,
+		Restat:         true,
 	},
 	"kotlincFlags", "encodedJavacFlags", "kaptProcessorPath", "kaptProcessor",
 	"classpath", "srcJars", "commonSrcFilesArg", "srcJarDir", "kaptDir", "kotlinJvmTarget",
@@ -186,7 +187,7 @@ func kotlinKapt(ctx android.ModuleContext, srcJarOutputFile, resJarOutputFile an
 		commonSrcFilesArg = "--common_srcs " + commonSrcsList.String()
 	}
 
-	kaptProcessorPath := flags.processorPath.FormRepeatedClassPath("-P plugin:org.jetbrains.kotlin.kapt3:apclasspath=")
+	/*kaptProcessorPath := flags.processorPath.FormRepeatedClassPath("-P plugin:org.jetbrains.kotlin.kapt3:apclasspath=")
 
 	kaptProcessor := ""
 	for i, p := range flags.processors {
@@ -194,7 +195,7 @@ func kotlinKapt(ctx android.ModuleContext, srcJarOutputFile, resJarOutputFile an
 			kaptProcessor += " "
 		}
 		kaptProcessor += "-P plugin:org.jetbrains.kotlin.kapt3:processors=" + p
-	}
+	}*/
 
 	encodedJavacFlags := kaptEncodeFlags([][2]string{
 		{"-source", flags.javaVersion.String()},
@@ -219,8 +220,8 @@ func kotlinKapt(ctx android.ModuleContext, srcJarOutputFile, resJarOutputFile an
 			"srcJars":           strings.Join(srcJars.Strings(), " "),
 			"srcJarDir":         android.PathForModuleOut(ctx, "kapt", "srcJars").String(),
 			"kotlinBuildFile":   android.PathForModuleOut(ctx, "kapt", "build.xml").String(),
-			"kaptProcessorPath": strings.Join(kaptProcessorPath, " "),
-			"kaptProcessor":     kaptProcessor,
+			//"kaptProcessorPath": strings.Join(kaptProcessorPath, " "),
+			//"kaptProcessor":     kaptProcessor,
 			"kaptDir":           android.PathForModuleOut(ctx, "kapt/gen").String(),
 			"encodedJavacFlags": encodedJavacFlags,
 			"name":              kotlinName,
