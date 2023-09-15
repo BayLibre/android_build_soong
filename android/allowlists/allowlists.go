@@ -230,6 +230,7 @@ var (
 		"frameworks/av/services/minijail":                    Bp2BuildDefaultTrueRecursively,
 		"frameworks/base/apex/jobscheduler/service/jni":      Bp2BuildDefaultTrueRecursively,
 		"frameworks/base/core/java":                          Bp2BuildDefaultTrue,
+		"frameworks/base/errorprone":                         Bp2BuildDefaultTrueRecursively,
 		"frameworks/base/libs/androidfw":                     Bp2BuildDefaultTrue,
 		"frameworks/base/libs/services":                      Bp2BuildDefaultTrue,
 		"frameworks/base/media/tests/MediaDump":              Bp2BuildDefaultTrue,
@@ -244,7 +245,7 @@ var (
 		"frameworks/base/tools/streaming_proto":              Bp2BuildDefaultTrueRecursively,
 		"frameworks/hardware/interfaces/stats/aidl":          Bp2BuildDefaultTrue,
 		"frameworks/libs/modules-utils/build":                Bp2BuildDefaultTrueRecursively,
-		"frameworks/libs/modules-utils/java":                 Bp2BuildDefaultTrue,
+		"frameworks/libs/modules-utils/java":                 Bp2BuildDefaultTrueRecursively,
 		"frameworks/native":                                  Bp2BuildDefaultTrue,
 		"frameworks/native/libs/adbd_auth":                   Bp2BuildDefaultTrueRecursively,
 		"frameworks/native/libs/arect":                       Bp2BuildDefaultTrueRecursively,
@@ -315,22 +316,22 @@ var (
 		"packages/apps/Protips":                              Bp2BuildDefaultTrue,
 		"packages/apps/SafetyRegulatoryInfo":                 Bp2BuildDefaultTrue,
 		"packages/apps/WallpaperPicker":                      Bp2BuildDefaultTrue,
-		"packages/modules/NeuralNetworks/driver/cache":       Bp2BuildDefaultTrueRecursively,
-		"packages/modules/StatsD/lib/libstatssocket":         Bp2BuildDefaultTrueRecursively,
-		"packages/modules/adb":                               Bp2BuildDefaultTrue,
-		"packages/modules/adb/apex":                          Bp2BuildDefaultTrue,
-		"packages/modules/adb/fastdeploy":                    Bp2BuildDefaultTrue,
-		"packages/modules/adb/crypto":                        Bp2BuildDefaultTrueRecursively,
-		"packages/modules/adb/libs":                          Bp2BuildDefaultTrueRecursively,
-		"packages/modules/adb/pairing_auth":                  Bp2BuildDefaultTrueRecursively,
-		"packages/modules/adb/pairing_connection":            Bp2BuildDefaultTrueRecursively,
-		"packages/modules/adb/proto":                         Bp2BuildDefaultTrueRecursively,
-		"packages/modules/adb/tls":                           Bp2BuildDefaultTrueRecursively,
 		"packages/modules/Connectivity/staticlibs/native":    Bp2BuildDefaultTrueRecursively,
 		"packages/modules/Gki/libkver":                       Bp2BuildDefaultTrue,
 		"packages/modules/NetworkStack/common/captiveportal": Bp2BuildDefaultTrue,
 		"packages/modules/NeuralNetworks/apex":               Bp2BuildDefaultTrue,
 		"packages/modules/NeuralNetworks/apex/testing":       Bp2BuildDefaultTrue,
+		"packages/modules/NeuralNetworks/driver/cache":       Bp2BuildDefaultTrueRecursively,
+		"packages/modules/StatsD/lib/libstatssocket":         Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb":                               Bp2BuildDefaultTrue,
+		"packages/modules/adb/apex":                          Bp2BuildDefaultTrue,
+		"packages/modules/adb/crypto":                        Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/fastdeploy":                    Bp2BuildDefaultTrue,
+		"packages/modules/adb/libs":                          Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/pairing_auth":                  Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/pairing_connection":            Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/proto":                         Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/tls":                           Bp2BuildDefaultTrueRecursively,
 		"packages/providers/MediaProvider/tools/dialogs":     Bp2BuildDefaultFalse, // TODO(b/242834374)
 		"packages/screensavers/Basic":                        Bp2BuildDefaultTrue,
 		"packages/services/Car/tests/SampleRearViewCamera":   Bp2BuildDefaultFalse, // TODO(b/242834321)
@@ -595,6 +596,7 @@ var (
 		"codec2_soft_exports",
 		"compatibility_matrix_schema",
 		"framework-connectivity-protos",
+		"framework-connectivity-javastream-protos",
 		"gemmlowp_headers",
 		"gl_headers",
 		"libandroid_runtime_lazy",
@@ -1071,7 +1073,6 @@ var (
 		"dex2oat-script",                                             // depends on unconverted modules: dex2oat
 		"generated_android_icu4j_resources",                          // depends on unconverted modules: android_icu4j_srcgen_binary
 		"generated_android_icu4j_test_resources",                     // depends on unconverted modules: android_icu4j_srcgen_binary
-		"host-libprotobuf-java-nano",                                 // b/220869005, depends on libprotobuf-java-nano
 		"jacoco-stubs",                                               // b/245767077, depends on droidstubs
 		"libapexutil",                                                // depends on unconverted modules: apex-info-list-tinyxml
 		"libart",                                                     // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
@@ -1592,13 +1593,7 @@ var (
 		"libtest_with_dependency_loop_c",
 		"libtestshared",
 
-		// depends on unconverted libprotobuf-java-nano
-		"dnsresolverprotosnano",
-		"launcherprotosnano",
-		"datastallprotosnano",
-		"devicepolicyprotosnano",
-		"ota_metadata_proto_java",
-		"merge_ota",
+		"merge_ota", // depends on ota_metadata_proto_javak
 
 		// releasetools
 		"verity_utils",
