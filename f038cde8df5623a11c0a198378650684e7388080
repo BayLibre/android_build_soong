@@ -22,6 +22,30 @@
       },
       "revId": "f038cde8df5623a11c0a198378650684e7388080",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfa812de_7c886d30",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3147,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-09-15T17:03:02Z",
+      "side": 1,
+      "message": "Sure, the follow-up is aosp/2752995.",
+      "parentUuid": "b9b7c3e4_6f7106a7",
+      "range": {
+        "startLine": 3147,
+        "startChar": 3,
+        "endLine": 3147,
+        "endChar": 36
+      },
+      "revId": "f038cde8df5623a11c0a198378650684e7388080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
