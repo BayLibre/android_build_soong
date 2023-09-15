@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e87b74fe_e63ed058",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3461,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-09-15T13:33:04Z",
+      "side": 1,
+      "message": "Can you cast ap to JavaApiContribution and call its generateAndroidBuildActions since they\u0027re the same?",
+      "range": {
+        "startLine": 3454,
+        "startChar": 0,
+        "endLine": 3461,
+        "endChar": 3
+      },
+      "revId": "adf2a7bd30ef97a9bd8b63ba335263968871cfaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
