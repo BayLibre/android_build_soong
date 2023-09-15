@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21bf616d_8668558a",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-09-15T22:07:06Z",
+      "side": 1,
+      "message": "`java_api_contribution` modules are indeed dependencies of `java_api_library`, but they only provide the api files (e.g. `*-current.txt` files), and all of them are being created in the `DroidstubsFactory`. Therefore, `checkCurrentApiTimestamp` is not defined at the phase of creation of `java_api_contribution` modules as they are [initialized during `GenerateAndroidBuildAction` of droidstubs](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/droidstubs.go;drc\u003d504d3565790b0dc5220f9c9c7ae230fad758fed7;l\u003d757). Thus I thought that it is infeasible to inject `checkCurrentApiTimestamp` to `java_api_contribution`, and added the phony target as the validation instead. Please let me know if there is a way to do so, and I will make modifications.",
+      "parentUuid": "3bbf43f4_c19005a8",
+      "revId": "2a757193d82f3a0df6311eedf7d03989e0dcf119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9e600d4_d0dfcae7",
         "filename": "ui/build/config.go",
         "patchSetId": 5
