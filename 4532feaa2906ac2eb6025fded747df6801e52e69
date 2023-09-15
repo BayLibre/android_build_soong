@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5483cc3e_cd083161",
+        "filename": "cc/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-09-15T15:31:50Z",
+      "side": 1,
+      "message": "I think this utility should be in https://cs.android.com/android/platform/superproject/main/+/main:build/soong/bazel/properties.go.",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 34
+      },
+      "revId": "4532feaa2906ac2eb6025fded747df6801e52e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
