@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40ce2265_890c3c32",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-09-15T16:45:43Z",
+      "side": 1,
+      "message": "this is because we can\u0027t export list of labels from soong to bazel, and currently we only have single value set so far, joeo will figure out if/how to support multiple sets later and we will make changes accordingly.",
+      "parentUuid": "628ee394_db55b6a7",
+      "range": {
+        "startLine": 201,
+        "startChar": 16,
+        "endLine": 201,
+        "endChar": 39
+      },
+      "revId": "2cc802a4421313db16a054674a4dc567f400844b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aba66625_3e9e5452",
         "filename": "android/config.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-15T14:12:56Z",
       "side": 1,
       "message": "Can we replace `vendor/google` with `internal` to not expose `vendor/google` to AOSP?",
+      "range": {
+        "startLine": 203,
+        "startChar": 50,
+        "endLine": 203,
+        "endChar": 63
+      },
+      "revId": "2cc802a4421313db16a054674a4dc567f400844b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cdafff6_83f589ce",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-09-15T16:45:43Z",
+      "side": 1,
+      "message": "good catch, will do in my next cl to avoid another presubmit.",
+      "parentUuid": "aba66625_3e9e5452",
       "range": {
         "startLine": 203,
         "startChar": 50,
