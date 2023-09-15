@@ -22,6 +22,30 @@
       },
       "revId": "4359613534257597b8d068b7bf8f39e58bdfcc53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5183988b_b2d6eee2",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5138,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-09-15T20:21:58Z",
+      "side": 1,
+      "message": "Good catch, the description is incorrect. I have fixed it in the latest patchset.",
+      "parentUuid": "2696402b_2aa67840",
+      "range": {
+        "startLine": 5138,
+        "startChar": 47,
+        "endLine": 5138,
+        "endChar": 63
+      },
+      "revId": "4359613534257597b8d068b7bf8f39e58bdfcc53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
