@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ab86dd4_2928297a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-09-15T14:53:53Z",
+      "side": 1,
+      "message": "@yikong@google.com After this CL is submitted, AFDO profiles can be released to AOSP without checking in a BUILD file.",
+      "revId": "ce40b92c84215537e8aa317f8b8a8d3a82d20bbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
