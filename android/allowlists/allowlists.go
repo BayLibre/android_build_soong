@@ -174,6 +174,7 @@ var (
 		"external/jsr330":                        Bp2BuildDefaultTrueRecursively,
 		"external/junit":                         Bp2BuildDefaultTrueRecursively,
 		"external/kotlinc":                       Bp2BuildDefaultTrueRecursively,
+		"external/kotlinx.coroutines":            Bp2BuildDefaultTrueRecursively,
 		"external/libaom":                        Bp2BuildDefaultTrueRecursively,
 		"external/libavc":                        Bp2BuildDefaultTrueRecursively,
 		"external/libcap":                        Bp2BuildDefaultTrueRecursively,
@@ -186,8 +187,8 @@ var (
 		"external/libhevc":                       Bp2BuildDefaultTrueRecursively,
 		"external/libjpeg-turbo":                 Bp2BuildDefaultTrueRecursively,
 		"external/libmpeg2":                      Bp2BuildDefaultTrueRecursively,
-		"external/libpng":                        Bp2BuildDefaultTrueRecursively,
 		"external/libphonenumber":                Bp2BuildDefaultTrueRecursively,
+		"external/libpng":                        Bp2BuildDefaultTrueRecursively,
 		"external/libvpx":                        Bp2BuildDefaultTrueRecursively,
 		"external/libyuv":                        Bp2BuildDefaultTrueRecursively,
 		"external/lz4/lib":                       Bp2BuildDefaultTrue,
@@ -203,11 +204,11 @@ var (
 		"external/pcre":                          Bp2BuildDefaultTrueRecursively,
 		"external/perfmark/api":                  Bp2BuildDefaultTrueRecursively,
 		"external/protobuf":                      Bp2BuildDefaultTrueRecursively,
-		"external/python/pyyaml/lib/yaml":        Bp2BuildDefaultTrueRecursively,
-		"external/python/six":                    Bp2BuildDefaultTrueRecursively,
 		"external/python/jinja/src":              Bp2BuildDefaultTrueRecursively,
 		"external/python/markupsafe/src":         Bp2BuildDefaultTrueRecursively,
+		"external/python/pyyaml/lib/yaml":        Bp2BuildDefaultTrueRecursively,
 		"external/python/setuptools":             Bp2BuildDefaultTrueRecursively,
+		"external/python/six":                    Bp2BuildDefaultTrueRecursively,
 		"external/rappor":                        Bp2BuildDefaultTrueRecursively,
 		"external/scudo":                         Bp2BuildDefaultTrueRecursively,
 		"external/selinux/checkpolicy":           Bp2BuildDefaultTrueRecursively,
@@ -218,60 +219,63 @@ var (
 		"external/tinyalsa":                      Bp2BuildDefaultTrueRecursively,
 		"external/tinyalsa_new":                  Bp2BuildDefaultTrueRecursively,
 		"external/toybox":                        Bp2BuildDefaultTrueRecursively,
+		"external/truth":                         Bp2BuildDefaultTrueRecursively,
 		"external/xz-java":                       Bp2BuildDefaultTrueRecursively,
 		"external/zlib":                          Bp2BuildDefaultTrueRecursively,
 		"external/zopfli":                        Bp2BuildDefaultTrueRecursively,
 		"external/zstd":                          Bp2BuildDefaultTrueRecursively,
 
 		"frameworks/av": Bp2BuildDefaultTrue,
-		"frameworks/av/media/audioaidlconversion":            Bp2BuildDefaultTrueRecursively,
-		"frameworks/av/media/codec2/components/aom":          Bp2BuildDefaultTrueRecursively,
-		"frameworks/av/media/codecs":                         Bp2BuildDefaultTrueRecursively,
-		"frameworks/av/media/liberror":                       Bp2BuildDefaultTrueRecursively,
-		"frameworks/av/media/libmediahelper":                 Bp2BuildDefaultTrue,
-		"frameworks/av/media/libshmem":                       Bp2BuildDefaultTrueRecursively,
-		"frameworks/av/media/module/codecs":                  Bp2BuildDefaultTrueRecursively,
-		"frameworks/av/media/module/foundation":              Bp2BuildDefaultTrueRecursively,
-		"frameworks/av/media/module/minijail":                Bp2BuildDefaultTrueRecursively,
-		"frameworks/av/services/minijail":                    Bp2BuildDefaultTrueRecursively,
-		"frameworks/base/apex/jobscheduler/service/jni":      Bp2BuildDefaultTrueRecursively,
-		"frameworks/base/core/java":                          Bp2BuildDefaultTrue,
-		"frameworks/base/core/res":                           Bp2BuildDefaultTrueRecursively,
-		"frameworks/base/libs/androidfw":                     Bp2BuildDefaultTrue,
-		"frameworks/base/libs/services":                      Bp2BuildDefaultTrue,
-		"frameworks/base/media/tests/MediaDump":              Bp2BuildDefaultTrue,
-		"frameworks/base/mime":                               Bp2BuildDefaultTrueRecursively,
-		"frameworks/base/proto":                              Bp2BuildDefaultTrue,
-		"frameworks/base/services/tests/servicestests/aidl":  Bp2BuildDefaultTrue,
-		"frameworks/base/startop/apps/test":                  Bp2BuildDefaultTrue,
-		"frameworks/base/tests/appwidgets/AppWidgetHostTest": Bp2BuildDefaultTrueRecursively,
-		"frameworks/base/tools/aapt":                         Bp2BuildDefaultTrue,
-		"frameworks/base/tools/aapt2":                        Bp2BuildDefaultTrue,
-		"frameworks/base/tools/codegen":                      Bp2BuildDefaultTrueRecursively,
-		"frameworks/base/tools/locked_region_code_injection": Bp2BuildDefaultTrueRecursively,
-		"frameworks/base/tools/streaming_proto":              Bp2BuildDefaultTrueRecursively,
-		"frameworks/hardware/interfaces":                     Bp2BuildDefaultTrue,
-		"frameworks/hardware/interfaces/displayservice":      Bp2BuildDefaultTrueRecursively,
-		"frameworks/hardware/interfaces/stats/aidl":          Bp2BuildDefaultTrue,
-		"frameworks/libs/modules-utils/build":                Bp2BuildDefaultTrueRecursively,
-		"frameworks/libs/modules-utils/java":                 Bp2BuildDefaultTrue,
-		"frameworks/native":                                  Bp2BuildDefaultTrue,
-		"frameworks/native/libs/adbd_auth":                   Bp2BuildDefaultTrueRecursively,
-		"frameworks/native/libs/arect":                       Bp2BuildDefaultTrueRecursively,
-		"frameworks/native/libs/binder":                      Bp2BuildDefaultTrue,
-		"frameworks/native/libs/gui":                         Bp2BuildDefaultTrue,
-		"frameworks/native/libs/math":                        Bp2BuildDefaultTrueRecursively,
-		"frameworks/native/libs/nativebase":                  Bp2BuildDefaultTrueRecursively,
-		"frameworks/native/libs/permission":                  Bp2BuildDefaultTrueRecursively,
-		"frameworks/native/libs/ui":                          Bp2BuildDefaultTrue,
-		"frameworks/native/libs/vr":                          Bp2BuildDefaultTrueRecursively,
-		"frameworks/native/opengl/tests/gl2_cameraeye":       Bp2BuildDefaultTrue,
-		"frameworks/native/opengl/tests/gl2_java":            Bp2BuildDefaultTrue,
-		"frameworks/native/opengl/tests/testLatency":         Bp2BuildDefaultTrue,
-		"frameworks/native/opengl/tests/testPauseResume":     Bp2BuildDefaultTrue,
-		"frameworks/native/opengl/tests/testViewport":        Bp2BuildDefaultTrue,
-		"frameworks/native/services/batteryservice":          Bp2BuildDefaultTrue,
-		"frameworks/proto_logging/stats":                     Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/media/audioaidlconversion":                              Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/media/codec2/components/aom":                            Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/media/codecs":                                           Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/media/liberror":                                         Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/media/libmediahelper":                                   Bp2BuildDefaultTrue,
+		"frameworks/av/media/libshmem":                                         Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/media/module/codecs":                                    Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/media/module/foundation":                                Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/media/module/minijail":                                  Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/services/minijail":                                      Bp2BuildDefaultTrueRecursively,
+		"frameworks/base/apex/jobscheduler/service/jni":                        Bp2BuildDefaultTrueRecursively,
+		"frameworks/base/core/java":                                            Bp2BuildDefaultTrue,
+		"frameworks/base/core/res":                                             Bp2BuildDefaultTrueRecursively,
+		"frameworks/base/errorprone":                                           Bp2BuildDefaultTrueRecursively,
+		"frameworks/base/libs/androidfw":                                       Bp2BuildDefaultTrue,
+		"frameworks/base/libs/services":                                        Bp2BuildDefaultTrue,
+		"frameworks/base/media/tests/MediaDump":                                Bp2BuildDefaultTrue,
+		"frameworks/base/mime":                                                 Bp2BuildDefaultTrueRecursively,
+		"frameworks/base/proto":                                                Bp2BuildDefaultTrue,
+		"frameworks/base/services/tests/servicestests/aidl":                    Bp2BuildDefaultTrue,
+		"frameworks/base/startop/apps/test":                                    Bp2BuildDefaultTrue,
+		"frameworks/base/tests/appwidgets/AppWidgetHostTest":                   Bp2BuildDefaultTrueRecursively,
+		"frameworks/base/tools/aapt":                                           Bp2BuildDefaultTrue,
+		"frameworks/base/tools/aapt2":                                          Bp2BuildDefaultTrue,
+		"frameworks/base/tools/codegen":                                        Bp2BuildDefaultTrueRecursively,
+		"frameworks/base/tools/locked_region_code_injection":                   Bp2BuildDefaultTrueRecursively,
+		"frameworks/base/tools/streaming_proto":                                Bp2BuildDefaultTrueRecursively,
+		"frameworks/hardware/interfaces":                                       Bp2BuildDefaultTrue,
+		"frameworks/hardware/interfaces/displayservice":                        Bp2BuildDefaultTrueRecursively,
+		"frameworks/hardware/interfaces/stats/aidl":                            Bp2BuildDefaultTrue,
+		"frameworks/libs/modules-utils/build":                                  Bp2BuildDefaultTrueRecursively,
+		"frameworks/libs/modules-utils/java":                                   Bp2BuildDefaultTrueRecursively,
+		"frameworks/libs/modules-utils/java/com/android/modules/utils/testing": Bp2BuildDefaultFalseRecursively,
+		"frameworks/native":                                                    Bp2BuildDefaultTrue,
+		"frameworks/native/libs/adbd_auth":                                     Bp2BuildDefaultTrueRecursively,
+		"frameworks/native/libs/arect":                                         Bp2BuildDefaultTrueRecursively,
+		"frameworks/native/libs/binder":                                        Bp2BuildDefaultTrue,
+		"frameworks/native/libs/gui":                                           Bp2BuildDefaultTrue,
+		"frameworks/native/libs/math":                                          Bp2BuildDefaultTrueRecursively,
+		"frameworks/native/libs/nativebase":                                    Bp2BuildDefaultTrueRecursively,
+		"frameworks/native/libs/permission":                                    Bp2BuildDefaultTrueRecursively,
+		"frameworks/native/libs/ui":                                            Bp2BuildDefaultTrue,
+		"frameworks/native/libs/vr":                                            Bp2BuildDefaultTrueRecursively,
+		"frameworks/native/opengl/tests/gl2_cameraeye":                         Bp2BuildDefaultTrue,
+		"frameworks/native/opengl/tests/gl2_java":                              Bp2BuildDefaultTrue,
+		"frameworks/native/opengl/tests/testLatency":                           Bp2BuildDefaultTrue,
+		"frameworks/native/opengl/tests/testPauseResume":                       Bp2BuildDefaultTrue,
+		"frameworks/native/opengl/tests/testViewport":                          Bp2BuildDefaultTrue,
+		"frameworks/native/services/batteryservice":                            Bp2BuildDefaultTrue,
+		"frameworks/proto_logging/stats":                                       Bp2BuildDefaultTrueRecursively,
 
 		"hardware/interfaces":                                     Bp2BuildDefaultTrue,
 		"hardware/interfaces/audio/aidl":                          Bp2BuildDefaultTrue,
@@ -329,22 +333,22 @@ var (
 		"packages/apps/Protips":                              Bp2BuildDefaultTrue,
 		"packages/apps/SafetyRegulatoryInfo":                 Bp2BuildDefaultTrue,
 		"packages/apps/WallpaperPicker":                      Bp2BuildDefaultTrue,
-		"packages/modules/NeuralNetworks/driver/cache":       Bp2BuildDefaultTrueRecursively,
-		"packages/modules/StatsD/lib/libstatssocket":         Bp2BuildDefaultTrueRecursively,
-		"packages/modules/adb":                               Bp2BuildDefaultTrue,
-		"packages/modules/adb/apex":                          Bp2BuildDefaultTrue,
-		"packages/modules/adb/fastdeploy":                    Bp2BuildDefaultTrue,
-		"packages/modules/adb/crypto":                        Bp2BuildDefaultTrueRecursively,
-		"packages/modules/adb/libs":                          Bp2BuildDefaultTrueRecursively,
-		"packages/modules/adb/pairing_auth":                  Bp2BuildDefaultTrueRecursively,
-		"packages/modules/adb/pairing_connection":            Bp2BuildDefaultTrueRecursively,
-		"packages/modules/adb/proto":                         Bp2BuildDefaultTrueRecursively,
-		"packages/modules/adb/tls":                           Bp2BuildDefaultTrueRecursively,
 		"packages/modules/Connectivity/staticlibs/native":    Bp2BuildDefaultTrueRecursively,
 		"packages/modules/Gki/libkver":                       Bp2BuildDefaultTrue,
 		"packages/modules/NetworkStack/common/captiveportal": Bp2BuildDefaultTrue,
 		"packages/modules/NeuralNetworks/apex":               Bp2BuildDefaultTrue,
 		"packages/modules/NeuralNetworks/apex/testing":       Bp2BuildDefaultTrue,
+		"packages/modules/NeuralNetworks/driver/cache":       Bp2BuildDefaultTrueRecursively,
+		"packages/modules/StatsD/lib/libstatssocket":         Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb":                               Bp2BuildDefaultTrue,
+		"packages/modules/adb/apex":                          Bp2BuildDefaultTrue,
+		"packages/modules/adb/crypto":                        Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/fastdeploy":                    Bp2BuildDefaultTrue,
+		"packages/modules/adb/libs":                          Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/pairing_auth":                  Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/pairing_connection":            Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/proto":                         Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb/tls":                           Bp2BuildDefaultTrueRecursively,
 		"packages/providers/MediaProvider/tools/dialogs":     Bp2BuildDefaultFalse, // TODO(b/242834374)
 		"packages/screensavers/Basic":                        Bp2BuildDefaultTrue,
 		"packages/services/Car/tests/SampleRearViewCamera":   Bp2BuildDefaultFalse, // TODO(b/242834321)
@@ -355,19 +359,20 @@ var (
 
 		"prebuilts/clang/host/linux-x86":                   Bp2BuildDefaultTrueRecursively,
 		"prebuilts/gradle-plugin":                          Bp2BuildDefaultTrueRecursively,
-		"prebuilts/runtime/mainline/platform/sdk":          Bp2BuildDefaultTrueRecursively,
 		"prebuilts/module_sdk":                             Bp2BuildDefaultTrueRecursively,
+		"prebuilts/runtime/mainline/platform/sdk":          Bp2BuildDefaultTrueRecursively,
 		"prebuilts/sdk":                                    Bp2BuildDefaultTrue,
 		"prebuilts/sdk/current/androidx":                   Bp2BuildDefaultTrue,
 		"prebuilts/sdk/current/androidx-legacy":            Bp2BuildDefaultTrue,
+		"prebuilts/sdk/current/extras/app-toolkit":         Bp2BuildDefaultTrue,
 		"prebuilts/sdk/current/extras/constraint-layout-x": Bp2BuildDefaultTrue,
 		"prebuilts/sdk/current/extras/material-design-x":   Bp2BuildDefaultTrue,
-		"prebuilts/sdk/current/extras/app-toolkit":         Bp2BuildDefaultTrue,
 		"prebuilts/sdk/current/support":                    Bp2BuildDefaultTrue,
 		"prebuilts/tools":                                  Bp2BuildDefaultTrue,
 		"prebuilts/tools/common/m2":                        Bp2BuildDefaultTrue,
 		"prebuilts/r8":                                     Bp2BuildDefaultTrueRecursively,
 
+		"sdk/annotations":   Bp2BuildDefaultTrueRecursively,
 		"sdk/dumpeventlog":  Bp2BuildDefaultTrue,
 		"sdk/eventanalyzer": Bp2BuildDefaultTrue,
 
@@ -613,6 +618,7 @@ var (
 		"codec2_soft_exports",
 		"compatibility_matrix_schema",
 		"framework-connectivity-protos",
+		"framework-connectivity-javastream-protos",
 		"gemmlowp_headers",
 		"gl_headers",
 		"libandroid_runtime_lazy",
@@ -846,12 +852,6 @@ var (
 		"api_fingerprint",
 
 		// allowlisting for kotlinx_coroutines
-		"annotations",
-		"kotlinx-coroutines-android-annotation-stubs",
-		"kotlinx-coroutines-core",
-		"kotlinx_coroutines",
-		"kotlinx_coroutines-device",
-		"kotlinx_coroutines-host",
 
 		// for building com.android.neuralnetworks
 		"libimapper_stablec",
@@ -963,7 +963,6 @@ var (
 		"protoc-gen-grpc-java-plugin",
 		"perfetto_trace-full",
 		"tf-remote-client",
-		"truth",
 		"tradefed-lite",
 		"tradefed-isolation-protos",
 		"snakeyaml_patched_src_files",
@@ -1098,128 +1097,36 @@ var (
 		// rust support
 		"libtombstoned_client_rust_bridge_code", "libtombstoned_client_wrapper", // rust conversions are not supported
 
+		// aidl rules do not support parcelables
+		"modules-utils-list-slice",
+		"modules-utils-os",
+		"modules-utils-synchronous-result-receiver",
+
 		// unconverted deps
-		"CarHTMLViewer",                          // depends on unconverted modules android.car-stubs, car-ui-lib
-		"adb",                                    // depends on unconverted modules: AdbWinApi, libandroidfw, libopenscreen-discovery, libopenscreen-platform-impl, libusb, bin2c_fastdeployagent, AdbWinUsbApi
-		"android_icu4j_srcgen",                   // depends on unconverted modules: currysrc
-		"android_icu4j_srcgen_binary",            // depends on unconverted modules: android_icu4j_srcgen, currysrc
-		"apex_compression_test",                  // depends on unconverted modules: soong_zip, com.android.example.apex
-		"apex_manifest_proto_java",               // b/210751803, depends on libprotobuf-java-full
-		"apexer_with_DCLA_preprocessing_test",    // depends on unconverted modules: apexer_test_host_tools, com.android.example.apex
-		"art-script",                             // depends on unconverted modules: dalvikvm, dex2oat
-		"bin2c_fastdeployagent",                  // depends on unconverted modules: deployagent
-		"com.android.runtime",                    // depends on unconverted modules: bionic-linker-config, linkerconfig
-		"currysrc",                               // depends on unconverted modules: currysrc_org.eclipse, guavalib, jopt-simple-4.9
-		"dex2oat-script",                         // depends on unconverted modules: dex2oat
-		"generated_android_icu4j_resources",      // depends on unconverted modules: android_icu4j_srcgen_binary
-		"generated_android_icu4j_test_resources", // depends on unconverted modules: android_icu4j_srcgen_binary
-		"hidl_system_api_test",
-		"hidl_test_java",
-		"host-libprotobuf-java-nano",                                 // b/220869005, depends on libprotobuf-java-nano
-		"jacoco-stubs",                                               // b/245767077, depends on droidstubs
-		"libapexutil",                                                // depends on unconverted modules: apex-info-list-tinyxml
-		"libart",                                                     // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
-		"libart-runtime",                                             // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
-		"libart-runtime-for-test",                                    // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
-		"libart-runtime-gtest",                                       // depends on unconverted modules: libgtest_isolated, libart-compiler, libdexfile, libprofile, libartbase, libartbase-art-gtest
-		"libart_headers",                                             // depends on unconverted modules: art_libartbase_headers
-		"libartbase-art-gtest",                                       // depends on unconverted modules: libgtest_isolated, libart, libart-compiler, libdexfile, libprofile
-		"libartbased-art-gtest",                                      // depends on unconverted modules: libgtest_isolated, libartd, libartd-compiler, libdexfiled, libprofiled
-		"libartd",                                                    // depends on unconverted modules: art_operator_srcs, libcpu_features, libodrstatslog, libelffiled, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfiled, libnativebridge, libnativeloader, libsigchain, libartbased, libprofiled, cpp-define-generator-asm-support, apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api
-		"libartd-runtime",                                            // depends on unconverted modules: art_operator_srcs, libcpu_features, libodrstatslog, libelffiled, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfiled, libnativebridge, libnativeloader, libsigchain, libartbased, libprofiled, cpp-define-generator-asm-support, apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api
-		"libartd-runtime-gtest",                                      // depends on unconverted modules: libgtest_isolated, libartd-compiler, libdexfiled, libprofiled, libartbased, libartbased-art-gtest
-		"libdebuggerd",                                               // depends on unconverted module: libdexfile
-		"libdebuggerd_handler",                                       // depends on unconverted module libdebuggerd_handler_core
-		"libdebuggerd_handler_core", "libdebuggerd_handler_fallback", // depends on unconverted module libdebuggerd
-		"libdexfiled",                                             // depends on unconverted modules: dexfile_operator_srcs, libartbased, libartpalette
-		"libgmock_main_ndk",                                       // depends on unconverted modules: libgtest_ndk_c++
-		"libgmock_ndk",                                            // depends on unconverted modules: libgtest_ndk_c++
-		"libnativehelper_lazy_mts_jni", "libnativehelper_mts_jni", // depends on unconverted modules: libnativetesthelper_jni, libgmock_ndk
-		"libnativetesthelper_jni",   // depends on unconverted modules: libgtest_ndk_c++
-		"libphonenumber_test",       // depends on android.test.mock
-		"libstatslog",               // depends on unconverted modules: libstatspull, statsd-aidl-ndk
-		"libstatslog_art",           // depends on unconverted modules: statslog_art.cpp, statslog_art.h
-		"linker_reloc_bench_main",   // depends on unconverted modules: liblinker_reloc_bench_*
-		"malloc-rss-benchmark",      // depends on unconverted modules: libmeminfo
-		"pbtombstone", "crash_dump", // depends on libdebuggerd, libunwindstack
-		"releasetools_test",             // depends on unconverted modules: com.android.apex.compressed.v1
-		"robolectric-sqlite4java-0.282", // depends on unconverted modules: robolectric-sqlite4java-import, robolectric-sqlite4java-native
-		"static_crasher",                // depends on unconverted modules: libdebuggerd_handler
-		"test_fips",                     // depends on unconverted modules: adb
-		"timezone-host",                 // depends on unconverted modules: art.module.api.annotations
-
-		// aidl files not created
-		"overlayable_policy_aidl_interface",
-
-		//prebuilts/tools/common/m2
-		// depends on //external/okio:okio-lib, which uses kotlin
-		"wire-runtime",
-
-		// depends on adbd_system_api_recovery, which is a unconverted `phony` module type
-		"minadbd",
-
-		// depends on android.hardware.health-V2.0-java
-		"android.hardware.health-translate-java",
-
-		//system/libvintf
-		// depends on apex-info-list-tinyxml, unconverted xsd_config Soong module type.
-		"libassemblevintf",
-		"assemble_vintf",
-		"checkvintf",
-
-		// depends on audio_policy_configuration_aidl_default, xsd_config module.
-		"libaudioserviceexampleimpl",
-		"android.hardware.audio.service-aidl.example",
-
-		// depends on //system/tools/aidl/build:aidl_metadata_json, which is an aidl_interfaces_metadata custom Soong type.
-		"aidl_metadata_in_cpp",
-		"libaidlmetadata",
-		"libaidlmetadata_test",
-
-		// depends on //system/tools/hidl/build:hidl_metadata_json, which is an hidl_interfaces_metadata custom Soong type.
-		"hidl_metadata_in_cpp",
-		"libhidlmetadata",
-		"hidl_metadata_test",
-
-		// cc_test related.
-		// b/274164834 "Could not open Configuration file test.cfg"
-		"svcenc", "svcdec",
-
-		// Failing host cc_tests
-		"gtest_isolated_tests",
-		"libunwindstack_unit_test",
-		"power_tests", // failing test on server, but not on host
-
-		// reflect: call of reflect.Value.NumField on interface Value
-		// affects all cc_tests that depend on art_defaults
-		"libnativebridge-tests",
-		"libnativeloader_test",
-		"art_libnativebridge_cts_tests",
-		"art_standalone_libdexfile_external_tests",
-		"art_standalone_libdexfile_support_tests",
-		"libnativebridge-lazy-tests",
-		"libnativebridge-test-case",
-		"libnativebridge2-test-case",
-		"libnativebridge3-test-case",
-		"libnativebridge6-test-case",
-		"libnativebridge6prezygotefork",
-
-		"libandroidfw_tests", // failing due to data path issues
-
-		// error: overriding commands for target
-		// `out/host/linux-x86/nativetest64/gmock_tests/gmock_tests__cc_runner_test',
-		// previously defined at out/soong/installs-aosp_arm.mk:64919`
-		"gmock_tests",
-
-		// cc_test with unconverted deps, or are device-only (and not verified to pass yet)
 		"AMRWBEncTest",
 		"AmrnbDecoderTest", // depends on unconverted modules: libaudioutils, libsndfile
 		"AmrnbEncoderTest", // depends on unconverted modules: libaudioutils, libsndfile
 		"AmrwbDecoderTest", // depends on unconverted modules: libsndfile, libaudioutils
 		"AmrwbEncoderTest", // depends on unconverted modules: libaudioutils, libsndfile
+		"CarHTMLViewer",    // depends on unconverted modules android.car-stubs, car-ui-lib
 		"Mp3DecoderTest",   // depends on unconverted modules: libsndfile, libaudioutils
+		"adb",              // depends on unconverted modules: AdbWinApi, libandroidfw, libopenscreen-discovery, libopenscreen-platform-impl, libusb, bin2c_fastdeployagent, AdbWinUsbApi
+		"aidl_metadata_in_cpp",
+		"android.hardware.audio.service-aidl.example",
+		"android.hardware.health-translate-java",
+		"android_icu4j_srcgen",                // depends on unconverted modules: currysrc
+		"android_icu4j_srcgen_binary",         // depends on unconverted modules: android_icu4j_srcgen, currysrc
+		"apex_compression_test",               // depends on unconverted modules: soong_zip, com.android.example.apex
+		"apex_manifest_proto_java",            // b/210751803, depends on libprotobuf-java-full
+		"apexer_with_DCLA_preprocessing_test", // depends on unconverted modules: apexer_test_host_tools, com.android.example.apex
+		"art-script",                          // depends on unconverted modules: dalvikvm, dex2oat
+		"art_libnativebridge_cts_tests",
+		"art_standalone_libdexfile_external_tests",
+		"art_standalone_libdexfile_support_tests",
+		"assemble_vintf",
 		"avcdec",
 		"avcenc",
+		"bin2c_fastdeployagent", // depends on unconverted modules: deployagent
 		"bionic-benchmarks-tests",
 		"bionic-fortify-runtime-asan-test",
 		"bionic-stress-tests",
@@ -1231,22 +1138,33 @@ var (
 		"boringssl_test_support", //b/244431896
 		"cfi_test_helper",
 		"cfi_test_helper2",
+		"checkvintf",
 		"cintltst32",
 		"cintltst64",
+		"clang_diagnostic_tests",
+		"com.android.runtime", // depends on unconverted modules: bionic-linker-config, linkerconfig
 		"compare",
 		"cpuid",
+		"currysrc",       // depends on unconverted modules: currysrc_org.eclipse, guavalib, jopt-simple-4.9
 		"debuggerd_test", // depends on unconverted modules: libdebuggerd
+		"dex2oat-script", // depends on unconverted modules: dex2oat
 		"elftls_dlopen_ie_error_helper",
 		"exec_linker_helper",
+		"exec_linker_helper_lib",
 		"fastdeploy_test", // depends on unconverted modules: AdbWinApi, libadb_host, libandroidfw, libfastdeploy_host, libopenscreen-discovery, libopenscreen-platform-impl, libusb
 		"fdtrack_test",
+		"fortify_disabled_for_tidy",
+		"generated_android_icu4j_resources",      // depends on unconverted modules: android_icu4j_srcgen_binary
+		"generated_android_icu4j_test_resources", // depends on unconverted modules: android_icu4j_srcgen_binary
+		"gmock_tests",
 		"google-benchmark-test",
 		"googletest-param-test-test_ndk", // depends on unconverted modules: libgtest_ndk_c++
 		"gtest-typed-test_test",
 		"gtest-typed-test_test_ndk", // depends on unconverted modules: libgtest_ndk_c++, libgtest_main_ndk_c++
-		"gtest_ndk_tests",           // depends on unconverted modules: libgtest_ndk_c++, libgtest_main_ndk_c++
-		"gtest_ndk_tests_no_main",   // depends on unconverted modules: libgtest_ndk_c++
-		"gtest_prod_test_ndk",       // depends on unconverted modules: libgtest_ndk_c++, libgtest_main_ndk_c++
+		"gtest_isolated_tests",
+		"gtest_ndk_tests",         // depends on unconverted modules: libgtest_ndk_c++, libgtest_main_ndk_c++
+		"gtest_ndk_tests_no_main", // depends on unconverted modules: libgtest_ndk_c++
+		"gtest_prod_test_ndk",     // depends on unconverted modules: libgtest_ndk_c++, libgtest_main_ndk_c++
 		"gtest_tests",
 		"gtest_tests_no_main",
 		"gwp_asan_unittest",
@@ -1254,85 +1172,63 @@ var (
 		"hashcombine_test",
 		"hevcdec",
 		"hevcenc",
-		"hwbinderThroughputTest", // depends on unconverted modules: android.hardware.tests.libhwbinder@1.0-impl.test, android.hardware.tests.libhwbinder@1.0
+		"hidl_metadata_in_cpp",
+		"hidl_metadata_test",
+		"hidl_system_api_test",
+		"hidl_test_java",
+		"host-libprotobuf-java-nano", // b/220869005, depends on libprotobuf-java-nano
+		"hwbinderThroughputTest",     // depends on unconverted modules: android.hardware.tests.libhwbinder@1.0-impl.test, android.hardware.tests.libhwbinder@1.0
 		"i444tonv12_eg",
 		"icu4c_sample_break",
 		"intltest32",
 		"intltest64",
 		"ion-unit-tests",
+		"jacoco-stubs", // b/245767077, depends on droidstubs
 		"jemalloc5_integrationtests",
-		"jemalloc5_unittests",
 		"jemalloc5_stresstests", // run by run_jemalloc_tests.sh and will be deleted after V
+		"jemalloc5_unittests",
 		"ld_config_test_helper",
-		"ld_preload_test_helper",
-		"libBionicCtsGtestMain", // depends on unconverted modules: libgtest_isolated
-		"libBionicLoaderTests",  // depends on unconverted modules: libmeminfo
-		"libapexutil_tests",     // depends on unconverted modules: apex-info-list-tinyxml, libapexutil
-		"libcutils_sockets_test",
-		"libhwbinder_latency",
-		"liblog-host-test", // failing tests
-		"libminijail_test",
-		"libminijail_unittest_gtest",
-		"libpackagelistparser_test",
-		"libprotobuf_vendor_suffix_test",
-		"libstagefright_amrnbdec_test", // depends on unconverted modules: libsndfile, libaudioutils
-		"libstagefright_amrnbenc_test",
-		"libstagefright_amrwbdec_test", // depends on unconverted modules: libsndfile, libaudioutils
-		"libstagefright_m4vh263enc_test",
-		"libstagefright_mp3dec_test", // depends on unconverted modules: libsndfile, libaudioutils
-		"libstatssocket_test",
-		"libvndksupport-tests",
-		"libyuv_unittest",
-		"linker-unit-tests",
-		"malloc_debug_system_tests",
-		"malloc_debug_unit_tests",
-		"malloc_hooks_system_tests",
-		"mat_test",
-		"mathtest",
-		"memunreachable_binder_test", // depends on unconverted modules: libbinder
-		"memunreachable_test",
-		"metadata_tests",
-		"mpeg2dec",
-		"mvcdec",
-		"ns_hidden_child_helper",
-		"pngtest",
-		"preinit_getauxval_test_helper",
-		"preinit_syscall_test_helper",
-		"psnr",
-		"quat_test",
-		"rappor-tests", // depends on unconverted modules: jsr305, guava
-		"scudo_unit_tests",
-		"stats-log-api-gen-test", // depends on unconverted modules: libstats_proto_host
-		"thread_exit_cb_helper",
-		"tls_properties_helper",
-		"ulp",
-		"vec_test",
-		"yuvconstants",
-		"yuvconvert",
-
-		// cc_test_library
-		"clang_diagnostic_tests",
-		"exec_linker_helper_lib",
-		"fortify_disabled_for_tidy",
 		"ld_config_test_helper_lib1",
 		"ld_config_test_helper_lib2",
 		"ld_config_test_helper_lib3",
+		"ld_preload_test_helper",
 		"ld_preload_test_helper_lib1",
 		"ld_preload_test_helper_lib2",
+		"libBionicCtsGtestMain", // depends on unconverted modules: libgtest_isolated
 		"libBionicElfTlsLoaderTests",
 		"libBionicElfTlsTests",
-		"libBionicElfTlsTests",
 		"libBionicFramePointerTests",
-		"libBionicFramePointerTests",
-		"libBionicStandardTests",
+		"libBionicLoaderTests", // depends on unconverted modules: libmeminfo
 		"libBionicStandardTests",
 		"libBionicTests",
+		"libaidlmetadata",
+		"libaidlmetadata_test",
+		"libandroidfw_tests", // failing due to data path issues
+		"libapexutil",        // depends on unconverted modules: apex-info-list-tinyxml
+		"libapexutil_tests",  // depends on unconverted modules: apex-info-list-tinyxml, libapexutil
+		"libart",             // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
 		"libart-broken",
+		"libart-runtime",          // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
+		"libart-runtime-for-test", // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
+		"libart-runtime-gtest",    // depends on unconverted modules: libgtest_isolated, libart-compiler, libdexfile, libprofile, libartbase, libartbase-art-gtest
+		"libart_headers",          // depends on unconverted modules: art_libartbase_headers
+		"libartbase-art-gtest",    // depends on unconverted modules: libgtest_isolated, libart, libart-compiler, libdexfile, libprofile
+		"libartbased-art-gtest",   // depends on unconverted modules: libgtest_isolated, libartd, libartd-compiler, libdexfiled, libprofiled
+		"libartd",                 // depends on unconverted modules: art_operator_srcs, libcpu_features, libodrstatslog, libelffiled, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfiled, libnativebridge, libnativeloader, libsigchain, libartbased, libprofiled, cpp-define-generator-asm-support, apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api
+		"libartd-runtime",         // depends on unconverted modules: art_operator_srcs, libcpu_features, libodrstatslog, libelffiled, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfiled, libnativebridge, libnativeloader, libsigchain, libartbased, libprofiled, cpp-define-generator-asm-support, apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api
+		"libartd-runtime-gtest",   // depends on unconverted modules: libgtest_isolated, libartd-compiler, libdexfiled, libprofiled, libartbased, libartbased-art-gtest
+		"libassemblevintf",
 		"libatest_simple_zip",
+		"libaudioserviceexampleimpl",
 		"libcfi-test",
 		"libcfi-test-bad",
 		"libcrash_test",
 		"libcrypto_fuzz_unsafe",
+		"libcutils_sockets_test",
+		"libdebuggerd",                                               // depends on unconverted module: libdexfile
+		"libdebuggerd_handler",                                       // depends on unconverted module libdebuggerd_handler_core
+		"libdebuggerd_handler_core", "libdebuggerd_handler_fallback", // depends on unconverted module libdebuggerd
+		"libdexfiled", // depends on unconverted modules: dexfile_operator_srcs, libartbased, libartpalette
 		"libdl_preempt_test_1",
 		"libdl_preempt_test_2",
 		"libdl_test_df_1_global",
@@ -1344,14 +1240,14 @@ var (
 		"libdlext_test_zip",
 		"libdvrcommon_test",
 		"libfortify1-new-tests-clang",
-		"libfortify1-new-tests-clang",
-		"libfortify1-tests-clang",
 		"libfortify1-tests-clang",
 		"libfortify2-new-tests-clang",
-		"libfortify2-new-tests-clang",
 		"libfortify2-tests-clang",
-		"libfortify2-tests-clang",
+		"libgmock_main_ndk", // depends on unconverted modules: libgtest_ndk_c++
+		"libgmock_ndk",      // depends on unconverted modules: libgtest_ndk_c++
 		"libgnu-hash-table-library",
+		"libhidlmetadata",
+		"libhwbinder_latency",
 		"libicutest_static",
 		"liblinker_reloc_bench_000",
 		"liblinker_reloc_bench_001",
@@ -1522,6 +1418,19 @@ var (
 		"liblinker_reloc_bench_166",
 		"liblinker_reloc_bench_167",
 		"liblinker_reloc_bench_168",
+		"liblog-host-test", // failing tests
+		"libminijail_test",
+		"libminijail_unittest_gtest",
+		"libnativebridge-lazy-tests",
+		"libnativebridge-test-case",
+		"libnativebridge-tests",
+		"libnativebridge2-test-case",
+		"libnativebridge3-test-case",
+		"libnativebridge6-test-case",
+		"libnativebridge6prezygotefork",
+		"libnativehelper_lazy_mts_jni", "libnativehelper_mts_jni", // depends on unconverted modules: libnativetesthelper_jni, libgmock_ndk
+		"libnativeloader_test",
+		"libnativetesthelper_jni", // depends on unconverted modules: libgtest_ndk_c++
 		"libns_hidden_child_app",
 		"libns_hidden_child_global",
 		"libns_hidden_child_internal",
@@ -1537,6 +1446,9 @@ var (
 		"libnstest_public_internal",
 		"libnstest_root",
 		"libnstest_root_not_isolated",
+		"libpackagelistparser_test",
+		"libphonenumber_test", // depends on android.test.mock
+		"libprotobuf_vendor_suffix_test",
 		"librelocations-ANDROID_REL",
 		"librelocations-ANDROID_RELR",
 		"librelocations-RELR",
@@ -1544,7 +1456,15 @@ var (
 		"libsegment_gap_inner",
 		"libsegment_gap_outer",
 		"libssl_fuzz_unsafe",
+		"libstagefright_amrnbdec_test", // depends on unconverted modules: libsndfile, libaudioutils
+		"libstagefright_amrnbenc_test",
+		"libstagefright_amrwbdec_test", // depends on unconverted modules: libsndfile, libaudioutils
+		"libstagefright_m4vh263enc_test",
+		"libstagefright_mp3dec_test", // depends on unconverted modules: libsndfile, libaudioutils
+		"libstatslog",                // depends on unconverted modules: libstatspull, statsd-aidl-ndk
+		"libstatslog_art",            // depends on unconverted modules: statslog_art.cpp, statslog_art.h
 		"libstatssocket_private",
+		"libstatssocket_test",
 		"libsysv-hash-table-library",
 		"libtest_atexit",
 		"libtest_check_order_dlsym",
@@ -1635,14 +1555,73 @@ var (
 		"libtest_with_dependency_loop_b_tmp",
 		"libtest_with_dependency_loop_c",
 		"libtestshared",
+		"libunwindstack_unit_test",
+		"libvndksupport-tests",
+		"libyuv_unittest",
+		"linker-unit-tests",
+		"linker_reloc_bench_main", // depends on unconverted modules: liblinker_reloc_bench_*
+		"malloc-rss-benchmark",    // depends on unconverted modules: libmeminfo
+		"malloc_debug_system_tests",
+		"malloc_debug_unit_tests",
+		"malloc_hooks_system_tests",
+		"mat_test",
+		"mathtest",
+		"memunreachable_binder_test", // depends on unconverted modules: libbinder
+		"memunreachable_test",
+		"metadata_tests",
+		"minadbd",
+		"modules-utils-build-testing",
+		"modules-utils-expresslog",
+		"modules-utils-testable-device-config",
+		"mpeg2dec",
+		"mvcdec",
+		"ns_hidden_child_helper",
+		"overlayable_policy_aidl_interface",
+		"pbtombstone", "crash_dump", // depends on libdebuggerd, libunwindstack
+		"pngtest",
+		"power_tests", // failing test on server, but not on host
+		"preinit_getauxval_test_helper",
+		"preinit_syscall_test_helper",
+		"psnr",
+		"quat_test",
+		"rappor-tests",                  // depends on unconverted modules: jsr305, guava
+		"releasetools_test",             // depends on unconverted modules: com.android.apex.compressed.v1
+		"robolectric-sqlite4java-0.282", // depends on unconverted modules: robolectric-sqlite4java-import, robolectric-sqlite4java-native
+		"scudo_unit_tests",
+		"static_crasher",         // depends on unconverted modules: libdebuggerd_handler
+		"stats-log-api-gen-test", // depends on unconverted modules: libstats_proto_host
+		"svcenc", "svcdec",
+		"test_fips", // depends on unconverted modules: adb
+		"thread_exit_cb_helper",
+		"timezone-host", // depends on unconverted modules: art.module.api.annotations
+		"tls_properties_helper",
+		"ulp",
+		"vec_test",
+		"wire-runtime",
+		"yuvconstants",
+		"yuvconvert",
+		// Failing host cc_tests
+		// `out/host/linux-x86/nativetest64/gmock_tests/gmock_tests__cc_runner_test',
+		// affects all cc_tests that depend on art_defaults
+		// aidl files not created
+		// b/274164834 "Could not open Configuration file test.cfg"
+		// cc_test related.
+		// cc_test with unconverted deps, or are device-only (and not verified to pass yet)
+		// cc_test_library
+		// depends on //external/okio:okio-lib, which uses kotlin
+		// depends on //system/tools/aidl/build:aidl_metadata_json, which is an aidl_interfaces_metadata custom Soong type.
+		// depends on //system/tools/hidl/build:hidl_metadata_json, which is an hidl_interfaces_metadata custom Soong type.
+		// depends on adbd_system_api_recovery, which is a unconverted `phony` module type
+		// depends on android.hardware.health-V2.0-java
+		// depends on apex-info-list-tinyxml, unconverted xsd_config Soong module type.
+		// depends on audio_policy_configuration_aidl_default, xsd_config module.
+		// error: overriding commands for target
+		// previously defined at out/soong/installs-aosp_arm.mk:64919`
+		// reflect: call of reflect.Value.NumField on interface Value
+		//prebuilts/tools/common/m2
+		//system/libvintf
 
-		// depends on unconverted libprotobuf-java-nano
-		"dnsresolverprotosnano",
-		"launcherprotosnano",
-		"datastallprotosnano",
-		"devicepolicyprotosnano",
-		"ota_metadata_proto_java",
-		"merge_ota",
+		"merge_ota", // depends on ota_metadata_proto_java
 
 		// releasetools
 		"verity_utils",
