@@ -46,8 +46,8 @@ unzipJarAndApk() {
   local dir="$1"; shift
   local tmpUnzippedDir="$1"; shift
   mkdir -p "${tmpUnzippedDir}"
-  find "$dir" -name "*.jar" -exec unzip -o {} -d "${tmpUnzippedDir}" \;
-  find "$dir" -name "*.apk" -exec unzip -o {} -d "${tmpUnzippedDir}" \;
+  find "$dir" -name "*.jar" -exec unzip -q -o {} -d "${tmpUnzippedDir}" \;
+  find "$dir" -name "*.apk" -exec unzip -q -o {} -d "${tmpUnzippedDir}" \;
   find "${tmpUnzippedDir}" -name "*.MF" -exec rm {} \;
 }
 
