@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9b7c3e4_6f7106a7",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3147,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-15T15:33:09Z",
+      "side": 1,
+      "message": "Zi, I was reflecting on this change and considering that nothing should prevent us from using this behavior regardless of whether are proto srcs or no srcs period. Can you create a follow-up that drops the error below and always drops deps when there are no srcs?",
+      "range": {
+        "startLine": 3147,
+        "startChar": 3,
+        "endLine": 3147,
+        "endChar": 36
+      },
+      "revId": "f038cde8df5623a11c0a198378650684e7388080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
