@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d80c34f_dc44c304",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-09-16T01:12:25Z",
+      "side": 1,
+      "message": "Under what circumstances does `os.Remove(f)` error?\nWould it be worth printing something out so you can tell if it did anything, or didn\u0027t do anything as the case may be?",
+      "range": {
+        "startLine": 313,
+        "startChar": 3,
+        "endLine": 316,
+        "endChar": 4
+      },
+      "revId": "91e796afc524489127f2f5463f2b00b1ee9df33b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
