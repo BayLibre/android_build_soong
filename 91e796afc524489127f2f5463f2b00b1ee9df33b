@@ -22,6 +22,30 @@
       },
       "revId": "91e796afc524489127f2f5463f2b00b1ee9df33b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd3aa963_6cbe837a",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-16T01:23:54Z",
+      "side": 1,
+      "message": "I ran it a few times locally to verify. It would error if it tried to remove a non-empty directory, hence the stat/isdir check. Changed to log.",
+      "parentUuid": "5d80c34f_dc44c304",
+      "range": {
+        "startLine": 313,
+        "startChar": 3,
+        "endLine": 316,
+        "endChar": 4
+      },
+      "revId": "91e796afc524489127f2f5463f2b00b1ee9df33b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
