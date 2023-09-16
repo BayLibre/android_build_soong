@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d3c6048_6957e1d2",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-09-16T00:51:33Z",
+      "side": 1,
+      "message": "should the name include \".ndk\"?",
+      "range": {
+        "startLine": 1630,
+        "startChar": 8,
+        "endLine": 1630,
+        "endChar": 29
+      },
+      "revId": "f8f93cb9794cd96fbde3b921d831c306e20e4944",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c955303_3763509d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-09-16T00:51:33Z",
+      "side": 1,
+      "message": "nit:extra space",
+      "range": {
+        "startLine": 1586,
+        "startChar": 27,
+        "endLine": 1586,
+        "endChar": 29
+      },
+      "revId": "f8f93cb9794cd96fbde3b921d831c306e20e4944",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35bf16e7_8c2f7415",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1669,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-09-16T00:51:33Z",
+      "side": 1,
+      "message": "I am not a go expert but do you have to do this?",
+      "range": {
+        "startLine": 1669,
+        "startChar": 4,
+        "endLine": 1669,
+        "endChar": 5
+      },
+      "revId": "f8f93cb9794cd96fbde3b921d831c306e20e4944",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
