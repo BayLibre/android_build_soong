@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4df0031_c8a2d924",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-09-16T00:52:59Z",
+      "side": 1,
+      "message": "the ci failure seems to be related",
+      "revId": "dff283b2cd776ad1ede596b113d9c6628ea7970d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
