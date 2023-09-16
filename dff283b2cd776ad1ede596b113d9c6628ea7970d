@@ -16,6 +16,24 @@
       "message": "the ci failure seems to be related",
       "revId": "dff283b2cd776ad1ede596b113d9c6628ea7970d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c83687e_9123bb59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-09-16T01:25:18Z",
+      "side": 1,
+      "message": "You are right, it does look related. I think the error is happening on the kernel-build-tools branch because that branch does not set a `platform_sdk_version`. I have created a hack for such branches.",
+      "parentUuid": "d4df0031_c8a2d924",
+      "revId": "dff283b2cd776ad1ede596b113d9c6628ea7970d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
