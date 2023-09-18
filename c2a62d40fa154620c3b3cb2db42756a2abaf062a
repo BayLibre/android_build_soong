@@ -34,6 +34,23 @@
       "parentUuid": "395512cc_0a1c2259",
       "revId": "c2a62d40fa154620c3b3cb2db42756a2abaf062a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21f4f1df_af06c7c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2029054
+      },
+      "writtenOn": "2023-09-18T03:19:35Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/main/+/main:;drc\u003d5d4f7db217ce4e3d6db006327169cca58fc070c4",
+      "revId": "c2a62d40fa154620c3b3cb2db42756a2abaf062a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
