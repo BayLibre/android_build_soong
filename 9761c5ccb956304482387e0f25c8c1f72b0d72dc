@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea8a779d_8ee506af",
+        "filename": "bp2build/android_app_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-09-18T23:58:10Z",
+      "side": 1,
+      "message": "Can you explain what this test case is trying to test? It seems like the behavior is identical to that of the one above.",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 1
+      },
+      "revId": "9761c5ccb956304482387e0f25c8c1f72b0d72dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
