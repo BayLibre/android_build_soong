@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87558720_02faa2eb",
+        "filename": "aconfig/cc_aconfig_library_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-18T15:21:51Z",
+      "side": 1,
+      "message": "nit: can you add a `t.Run()`  (e.g. https://google.github.io/styleguide/go/decisions#subtests and [example](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/soongconfig/modules_test.go;l\u003d62;drc\u003d8103dc428e0969cb2882182d296aa4049cd76a90))",
+      "range": {
+        "startLine": 34,
+        "startChar": 46,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "ed3fe480a7e292c84956740dc20712ab9d3027e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

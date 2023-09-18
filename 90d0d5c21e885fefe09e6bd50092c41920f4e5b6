@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "373024e1_8b04332c",
+        "filename": "aconfig/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-18T15:21:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2ef1d2da_f0e0651e",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "90d0d5c21e885fefe09e6bd50092c41920f4e5b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74e43165_153c4772",
