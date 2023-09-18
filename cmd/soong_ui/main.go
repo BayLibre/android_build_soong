@@ -15,6 +15,7 @@
 package main
 
 import (
+	"sync/atomic"
 	"context"
 	"flag"
 	"fmt"
@@ -23,6 +24,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"sync"
 	"syscall"
 	"time"
 
@@ -289,10 +291,117 @@ func logAndSymlinkSetup(buildCtx build.Context, config build.Config) {
 		}
 	}
 
+	start := time.Now()
+	fixOutDirSymlinks(buildCtx, config)
+	elapsed := time.Since(start)
+	fmt.Fprintf(os.Stderr, fmt.Sprintf("Time taken to fix symlinks: %v\n", elapsed))
+
 	// Create a source finder.
 	f := build.NewSourceFinder(buildCtx, config)
 	defer f.Shutdown()
 	build.FindSources(buildCtx, config, f)
+}
+
+var wg sync.WaitGroup
+var numFound uint32
+var numUpdated uint32
+var numFailedToRemove uint32
+var numFailedToUpdate uint32
+
+func updateSymlinks(ctx build.Context, dir, prevCWD, cwd string) error {
+	defer wg.Done()
+
+	// fmt.Fprintf(os.Stderr, fmt.Sprintf("Iterating through path=%v, prevCWD=%v, CWD=%v\n", dir, prevCWD, cwd))
+	visit := func(path string, f os.FileInfo, err error) error {
+		if f.IsDir() && path != dir {
+				wg.Add(1)
+				go updateSymlinks(ctx, path, prevCWD, cwd)
+				return filepath.SkipDir
+		}
+		if f.Mode()&os.ModeSymlink == os.ModeSymlink {
+			atomic.AddUint32(&numFound, 1)
+			target, err := os.Readlink(path)
+			if err != nil {
+				return err
+			}
+			// if strings.Contains(path, "soong/workspace/bionic/") {
+			// 	fmt.Fprintf(os.Stderr, fmt.Sprintf("Path=%v, target=%v, prevCWD=%v, contains=%v\n", path, target, prevCWD, strings.Contains(target, prevCWD)))
+			// }
+			if strings.HasPrefix(target, prevCWD) {
+				target = strings.ReplaceAll(target, prevCWD, cwd)
+				if err := os.Remove(path); err != nil {
+					atomic.AddUint32(&numFailedToRemove, 1)
+					// fmt.Fprintf(os.Stderr, "Unable to remove path: %v\n", err)
+					return err
+				}
+				if err := os.Symlink(target, path); err != nil {
+					atomic.AddUint32(&numFailedToUpdate, 1)
+					// fmt.Fprintf(os.Stderr, "Unable to create symlink: %v\n", err)
+					return err
+				}
+				atomic.AddUint32(&numUpdated, 1)
+			}
+		}
+		return nil
+	}
+
+	if err := filepath.Walk(dir, visit); err != nil {
+		return err
+	}
+	return nil
+}
+
+func fixOutDirSymlinks(ctx build.Context, config build.Config) error {
+	// Figure out the out directory first.
+	outDir := config.OutDir()
+	s, err := os.Lstat(outDir)
+	if err != nil {
+		return err
+	}
+	if s.Mode()&os.ModeSymlink == os.ModeSymlink {
+		target, err := filepath.EvalSymlinks(outDir)
+		if err != nil {
+			return err
+		}
+		outDir = target
+	}
+
+	cwd, err := os.Getwd()
+	if err != nil {
+		return err
+	}
+	
+	// Record the .top as the very last thing in the function.
+	tf := filepath.Join(outDir, ".top")
+	defer func() {
+		if err := os.WriteFile(tf, []byte(cwd), 0644); err != nil {
+			fmt.Fprintf(os.Stderr, fmt.Sprintf("Unable to log CWD: %v", err))
+		}
+	}()
+	
+	// Find the previous working directory if it was recorded.
+	var prevCWD string
+	pcwd, err := os.ReadFile(tf)
+	if err != nil {
+		// No previous working directory recorded, nothing to do.
+		return nil
+	}
+	prevCWD = strings.Trim(string(pcwd), "\n")
+
+	if prevCWD == cwd {
+		// We are in the same source dir, nothing to update.
+		fmt.Fprintf(os.Stderr, "Not updating symlinks since TOP_DIR is same\n")
+		return nil
+	}
+
+	wg.Add(1)
+	if err := updateSymlinks(ctx, outDir, prevCWD, cwd); err != nil {
+		ctx.Fatalln(err)
+	}
+	wg.Wait()
+	fmt.Fprint(os.Stderr, fmt.Sprintf("Updated %d/%d symlinks\n", numUpdated, numFound))
+	fmt.Fprint(os.Stderr, fmt.Sprintf("FailedToRemove=%v, FailedToUpdate=%v\n", numFailedToRemove, numFailedToUpdate))
+	return nil
 }
 
 func dumpVar(ctx build.Context, config build.Config, args []string) {
