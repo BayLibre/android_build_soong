@@ -57,6 +57,7 @@ func TestCcLibraryHeadersLoadStatement(t *testing.T) {
 
 func registerCcLibraryHeadersModuleTypes(ctx android.RegistrationContext) {
 	cc.RegisterCCBuildComponents(ctx)
+	cc.RegisterLibraryHeadersBuildComponents(ctx)
 }
 
 func runCcLibraryHeadersTestCase(t *testing.T, tc Bp2buildTestCase) {
@@ -66,9 +67,7 @@ func runCcLibraryHeadersTestCase(t *testing.T, tc Bp2buildTestCase) {
 
 func TestCcLibraryHeadersSimple(t *testing.T) {
 	runCcLibraryHeadersTestCase(t, Bp2buildTestCase{
-		Description:                "cc_library_headers test",
-		ModuleTypeUnderTest:        "cc_library_headers",
-		ModuleTypeUnderTestFactory: cc.LibraryHeaderFactory,
+		Description: "cc_library_headers test",
 		Filesystem: map[string]string{
 			"lib-1/lib1a.h":                        "",
 			"lib-1/lib1b.h":                        "",
@@ -127,10 +126,8 @@ cc_library_headers {
 // variant info(select) should go before general info.
 func TestCcLibraryHeadersOsSpecificHeader(t *testing.T) {
 	runCcLibraryHeadersTestCase(t, Bp2buildTestCase{
-		Description:                "cc_library_headers test with os-specific header_libs props",
-		ModuleTypeUnderTest:        "cc_library_headers",
-		ModuleTypeUnderTestFactory: cc.LibraryHeaderFactory,
-		Filesystem:                 map[string]string{},
+		Description: "cc_library_headers test with os-specific header_libs props",
+		Filesystem:  map[string]string{},
 		Blueprint: soongCcLibraryPreamble + `
 cc_library_headers {
     name: "android-lib",
@@ -201,10 +198,8 @@ cc_library_headers {
 
 func TestCcLibraryHeadersOsSpecficHeaderLibsExportHeaderLibHeaders(t *testing.T) {
 	runCcLibraryHeadersTestCase(t, Bp2buildTestCase{
-		Description:                "cc_library_headers test with os-specific header_libs and export_header_lib_headers props",
-		ModuleTypeUnderTest:        "cc_library_headers",
-		ModuleTypeUnderTestFactory: cc.LibraryHeaderFactory,
-		Filesystem:                 map[string]string{},
+		Description: "cc_library_headers test with os-specific header_libs and export_header_lib_headers props",
+		Filesystem:  map[string]string{},
 		Blueprint: soongCcLibraryPreamble + `
 cc_library_headers {
     name: "android-lib",
@@ -237,10 +232,8 @@ cc_library_headers {
 
 func TestCcLibraryHeadersArchAndTargetExportSystemIncludes(t *testing.T) {
 	runCcLibraryHeadersTestCase(t, Bp2buildTestCase{
-		Description:                "cc_library_headers test with arch-specific and target-specific export_system_include_dirs props",
-		ModuleTypeUnderTest:        "cc_library_headers",
-		ModuleTypeUnderTestFactory: cc.LibraryHeaderFactory,
-		Filesystem:                 map[string]string{},
+		Description: "cc_library_headers test with arch-specific and target-specific export_system_include_dirs props",
+		Filesystem:  map[string]string{},
 		Blueprint: soongCcLibraryPreamble + `cc_library_headers {
     name: "foo_headers",
     export_system_include_dirs: [
@@ -296,9 +289,7 @@ func TestCcLibraryHeadersArchAndTargetExportSystemIncludes(t *testing.T) {
 
 func TestCcLibraryHeadersNoCrtIgnored(t *testing.T) {
 	runCcLibraryHeadersTestCase(t, Bp2buildTestCase{
-		Description:                "cc_library_headers test",
-		ModuleTypeUnderTest:        "cc_library_headers",
-		ModuleTypeUnderTestFactory: cc.LibraryHeaderFactory,
+		Description: "cc_library_headers test",
 		Filesystem: map[string]string{
 			"lib-1/lib1a.h":                        "",
 			"lib-1/lib1b.h":                        "",
@@ -329,10 +320,8 @@ cc_library_headers {
 
 func TestCcLibraryHeadersExportedStaticLibHeadersReexported(t *testing.T) {
 	runCcLibraryHeadersTestCase(t, Bp2buildTestCase{
-		Description:                "cc_library_headers exported_static_lib_headers is reexported",
-		ModuleTypeUnderTest:        "cc_library_headers",
-		ModuleTypeUnderTestFactory: cc.LibraryHeaderFactory,
-		Filesystem:                 map[string]string{},
+		Description: "cc_library_headers exported_static_lib_headers is reexported",
+		Filesystem:  map[string]string{},
 		Blueprint: soongCcLibraryHeadersPreamble + `
 cc_library_headers {
 		name: "foo_headers",
@@ -351,10 +340,8 @@ cc_library_headers {
 
 func TestCcLibraryHeadersExportedSharedLibHeadersReexported(t *testing.T) {
 	runCcLibraryHeadersTestCase(t, Bp2buildTestCase{
-		Description:                "cc_library_headers exported_shared_lib_headers is reexported",
-		ModuleTypeUnderTest:        "cc_library_headers",
-		ModuleTypeUnderTestFactory: cc.LibraryHeaderFactory,
-		Filesystem:                 map[string]string{},
+		Description: "cc_library_headers exported_shared_lib_headers is reexported",
+		Filesystem:  map[string]string{},
 		Blueprint: soongCcLibraryHeadersPreamble + `
 cc_library_headers {
 		name: "foo_headers",
@@ -373,10 +360,8 @@ cc_library_headers {
 
 func TestCcLibraryHeadersExportedHeaderLibHeadersReexported(t *testing.T) {
 	runCcLibraryHeadersTestCase(t, Bp2buildTestCase{
-		Description:                "cc_library_headers exported_header_lib_headers is reexported",
-		ModuleTypeUnderTest:        "cc_library_headers",
-		ModuleTypeUnderTestFactory: cc.LibraryHeaderFactory,
-		Filesystem:                 map[string]string{},
+		Description: "cc_library_headers exported_header_lib_headers is reexported",
+		Filesystem:  map[string]string{},
 		Blueprint: soongCcLibraryHeadersPreamble + `
 cc_library_headers {
 		name: "foo_headers",
@@ -395,12 +380,31 @@ cc_library_headers {
 
 func TestCcLibraryHeadersWholeStaticLibsReexported(t *testing.T) {
 	runCcLibraryHeadersTestCase(t, Bp2buildTestCase{
-		Description:                "cc_library_headers whole_static_libs is reexported",
-		ModuleTypeUnderTest:        "cc_library_headers",
-		ModuleTypeUnderTestFactory: cc.LibraryHeaderFactory,
-		Filesystem:                 map[string]string{},
+		Description: "cc_library_headers whole_static_libs is reexported",
+		Filesystem:  map[string]string{},
 		Blueprint: soongCcLibraryHeadersPreamble + `
 cc_library_headers {
+		name: "foo_headers",
+		whole_static_libs: ["foo_export"],
+    bazel_module: { bp2build_available: true },
+}
+` + SimpleModuleDoNotConvertBp2build("cc_library_headers", "foo_export"),
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("cc_library_headers", "foo_headers", AttrNameToString{
+				"deps": `[":foo_export"]`,
+			}),
+		},
+	})
+}
+
+func TestPrebuiltCcLibraryHeadersWholeStaticLibsReexported(t *testing.T) {
+	runCcLibraryHeadersTestCase(t, Bp2buildTestCase{
+		Description: "cc_library_headers whole_static_libs is reexported",
+		Filesystem: map[string]string{
+			"foo/bar/Android.bp": SimpleModuleDoNotConvertBp2build("cc_library_headers", "foo_headers"),
+		},
+		Blueprint: soongCcLibraryHeadersPreamble + `
+cc_prebuilt_library_headers {
 		name: "foo_headers",
 		whole_static_libs: ["foo_export"],
     bazel_module: { bp2build_available: true },
