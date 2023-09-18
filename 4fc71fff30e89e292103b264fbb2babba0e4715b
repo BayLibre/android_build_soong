@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc24026d_c35e0093",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-09-18T17:14:24Z",
+      "side": 1,
+      "message": "Not sure if it works in go but I noticed Cole used `# keep-sorted` tags e.g. [here](https://source.corp.google.com/h/android/platform/superproject/main/+/main:build/bazel/product_config/BUILD;l\u003d20;drc\u003df6de111484b46b03d26f45685249614d9a59c0da)",
+      "range": {
+        "startLine": 903,
+        "startChar": 0,
+        "endLine": 916,
+        "endChar": 15
+      },
+      "revId": "4fc71fff30e89e292103b264fbb2babba0e4715b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
