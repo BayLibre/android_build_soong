@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "504aaff9_ff3384e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2019272
+      },
+      "writtenOn": "2023-09-18T14:18:15Z",
+      "side": 1,
+      "message": "Thanks for this prototype, unfortunately it didn\u0027t work for me:\n```\nUpdated 0/3777 symlinks\nFailedToRemove\u003d0, FailedToUpdate\u003d0\nTime taken to fix symlinks: 227.723977ms\n```\n\n```\n```\n\n\nBut I only tested it with small target (hence only 4k symlinks)",
+      "revId": "22b2ea8d289f16f6a564482159ca541d5551db56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b81a1f_17b84e9d",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 2019272
+      },
+      "writtenOn": "2023-09-18T14:18:15Z",
+      "side": 1,
+      "message": "I don\u0027t know how this is called in go, but shouldn\u0027t this be \"StartsWith\"? StartsWith is faster than Contains and also more correct in our case",
+      "revId": "22b2ea8d289f16f6a564482159ca541d5551db56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
