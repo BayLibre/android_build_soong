@@ -483,20 +483,48 @@ func PrebuiltPostDepsMutator(ctx BottomUpMutatorContext) {
 // usePrebuilt returns true if a prebuilt should be used instead of the source module.  The prebuilt
 // will be used if it is marked "prefer" or if the source module is disabled.
 func (p *Prebuilt) usePrebuilt(ctx TopDownMutatorContext, source Module, prebuilt Module) bool {
-	if p.srcsSupplier != nil && len(p.srcsSupplier(ctx, prebuilt)) == 0 {
-		return false
-	}
+	if !ctx.Config().Bp2buildMode() {
+		if p.srcsSupplier != nil && len(p.srcsSupplier(ctx, prebuilt)) == 0 {
+			return false
+		}
 
-	// Skip prebuilt modules under unexported namespaces so that we won't
-	// end up shadowing non-prebuilt module when prebuilt module under same
-	// name happens to have a `Prefer` property set to true.
-	if ctx.Config().KatiEnabled() && !prebuilt.ExportedToMake() {
-		return false
+		// Skip prebuilt modules under unexported namespaces so that we won't
+		// end up shadowing non-prebuilt module when prebuilt module under same
+		// name happens to have a `Prefer` property set to true.
+		if ctx.Config().KatiEnabled() && !prebuilt.ExportedToMake() {
+			return false
+		}
 	}
 
 	// If source is not available or is disabled then always use the prebuilt.
 	if source == nil || !source.Enabled() {
-		return true
+		// If in bp2build mode, check the product vars
+		if ctx.Config().Bp2buildMode() && source != nil {
+			productVariableProps := ProductVariableProperties(ctx, source)
+			if productConfigProps, exists := productVariableProps["Enabled"]; exists && len(productConfigProps) == 1 {
+				var prop ProductConfigOrSoongConfigProperty
+				var value bool
+				for p, v := range productConfigProps {
+					prop = p
+					actual, ok := v.(*bool)
+					if ok {
+						value = proptools.Bool(actual)
+					}
+				}
+				if scv, ok := prop.(SoongConfigProperty); ok {
+					if ctx.Config().VendorConfig(scv.namespace).Bool(strings.ToLower(scv.name)) && !value {
+						return true
+					}
+				} else {
+					// TODO: b/300998219 - handle product vars
+					return true
+				}
+			} else {
+				return true
+			}
+		} else {
+			return true
+		}
 	}
 
 	// If the use_source_config_var property is set then it overrides the prefer property setting.
