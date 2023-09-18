@@ -483,15 +483,17 @@ func PrebuiltPostDepsMutator(ctx BottomUpMutatorContext) {
 // usePrebuilt returns true if a prebuilt should be used instead of the source module.  The prebuilt
 // will be used if it is marked "prefer" or if the source module is disabled.
 func (p *Prebuilt) usePrebuilt(ctx TopDownMutatorContext, source Module, prebuilt Module) bool {
-	if p.srcsSupplier != nil && len(p.srcsSupplier(ctx, prebuilt)) == 0 {
-		return false
-	}
+	if !ctx.Config().Bp2buildMode() {
+		if p.srcsSupplier != nil && len(p.srcsSupplier(ctx, prebuilt)) == 0 {
+			return false
+		}
 
-	// Skip prebuilt modules under unexported namespaces so that we won't
-	// end up shadowing non-prebuilt module when prebuilt module under same
-	// name happens to have a `Prefer` property set to true.
-	if ctx.Config().KatiEnabled() && !prebuilt.ExportedToMake() {
-		return false
+		// Skip prebuilt modules under unexported namespaces so that we won't
+		// end up shadowing non-prebuilt module when prebuilt module under same
+		// name happens to have a `Prefer` property set to true.
+		if ctx.Config().KatiEnabled() && !prebuilt.ExportedToMake() {
+			return false
+		}
 	}
 
 	// If source is not available or is disabled then always use the prebuilt.
