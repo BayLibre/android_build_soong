@@ -914,6 +914,8 @@ var (
 		"androidx.test.monitor-nodeps",
 		"androidx.test.annotation",
 		"androidx.test.annotation-nodeps",
+
+		"grpc-java-annotation-stubs-srcjar",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
