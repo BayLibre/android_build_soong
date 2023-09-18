@@ -193,6 +193,7 @@ var (
 		"external/openscreen":                    Bp2BuildDefaultTrueRecursively,
 		"external/ow2-asm":                       Bp2BuildDefaultTrueRecursively,
 		"external/pcre":                          Bp2BuildDefaultTrueRecursively,
+		"external/perfmark/api":                  Bp2BuildDefaultTrueRecursively,
 		"external/protobuf":                      Bp2BuildDefaultTrueRecursively,
 		"external/python/pyyaml/lib/yaml":        Bp2BuildDefaultTrueRecursively,
 		"external/python/six":                    Bp2BuildDefaultTrueRecursively,
@@ -904,6 +905,27 @@ var (
 		"ndk_libc++_static",
 		"ndk_libc++_shared",
 		"ndk_system",
+
+		// tradefed deps
+		"tradefed_proto",
+		"grpc-java",
+		"grpc-java-api",
+		"grpc-java-auth",
+		"grpc-java-context",
+		"grpc-java-core",
+		"grpc-java-core-inprocess",
+		"grpc-java-core-internal",
+		"grpc-java-core-util",
+		"grpc-java-protobuf",
+		"grpc-java-protobuf-lite",
+		"grpc-java-stub",
+		"grpc-java-annotation-stubs",
+		"grpc-java-annotation-stubs-srcjar",
+		"opencensus-java-contrib-grpc-metrics",
+		"opencensus-java-api",
+		"gson",
+		"GsonBuildConfig.java",
+		"gson_version_generator",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
@@ -996,7 +1018,6 @@ var (
 		"conscrypt-for-host",               // TODO(b/210751803), we don't handle path property for filegroups
 		"host-libprotobuf-java-full",       // TODO(b/210751803), we don't handle path property for filegroups
 		"libprotobuf-internal-python-srcs", // TODO(b/210751803), we don't handle path property for filegroups
-		"libprotobuf-java-util-full",       // TODO(b/210751803), we don't handle path property for filegroups
 
 		// go deps:
 		"analyze_bcpf",              // depends on bpmodify a blueprint_go_binary.
