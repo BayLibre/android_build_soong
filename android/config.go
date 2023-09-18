@@ -2069,8 +2069,13 @@ func (c *config) SetApiLibraries(libs []string) {
 	}
 }
 
+// Bp2buildMode indicates whether the config is for bp2build mode of Soong
 func (c *config) GetApiLibraries() map[string]struct{} {
 	return c.apiLibraries
+}
+
+func (c *config) Bp2buildMode() bool {
+	return c.BuildMode == Bp2build
 }
 
 func (c *deviceConfig) CheckVendorSeappViolations() bool {
