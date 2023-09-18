@@ -904,6 +904,8 @@ var (
 		"ndk_libc++_static",
 		"ndk_libc++_shared",
 		"ndk_system",
+
+		"grpc-java-annotation-stubs-srcjar",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
