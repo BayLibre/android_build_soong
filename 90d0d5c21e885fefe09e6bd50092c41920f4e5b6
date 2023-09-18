@@ -47,6 +47,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79aafab2_cf4184e2",
+        "filename": "aconfig/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-09-18T15:17:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96a1dab9_bd2ca3c5",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "90d0d5c21e885fefe09e6bd50092c41920f4e5b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef1d2da_f0e0651e",
+        "filename": "aconfig/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-09-18T15:17:29Z",
+      "side": 1,
+      "message": "I don\u0027t think there is one. Java and rust has similar build system implementations. I tested on a java_aconfig_library target, it allowed me to add `test: true` against a non test target.\n\nWe probably should have some build system protection that prevents test version being used by non test targets. But that is probably for another cl.",
+      "parentUuid": "5ddbfff4_c2d4d290",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "90d0d5c21e885fefe09e6bd50092c41920f4e5b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74e43165_153c4772",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-09-15T14:42:51Z",
       "side": 1,
       "message": "this test file also needs to be referenced from the Android.bp file in this dir e.g. https://cs.android.com/android/platform/superproject/+/master:build/soong/aconfig/Android.bp;l\u003d31;drc\u003d457ddef28eafeb79765c058a7f710d0e60567f94",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 50
+      },
+      "revId": "90d0d5c21e885fefe09e6bd50092c41920f4e5b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca9c1d51_cecca833",
+        "filename": "aconfig/cc_aconfig_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-09-18T15:17:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74e43165_153c4772",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66e47362_a96dfc9d",
+        "filename": "aconfig/cc_aconfig_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-09-18T15:17:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "934126b3_93be33f6",
+      "range": {
+        "startLine": 25,
+        "startChar": 67,
+        "endLine": 25,
+        "endChar": 68
+      },
+      "revId": "90d0d5c21e885fefe09e6bd50092c41920f4e5b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9b2bd43_9da30174",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-09-15T14:42:51Z",
       "side": 1,
       "message": "this would be more commonly written as table driven tests in go: https://google.github.io/styleguide/go/decisions#table-driven-tests",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "90d0d5c21e885fefe09e6bd50092c41920f4e5b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b3894d_18b6aa27",
+        "filename": "aconfig/cc_aconfig_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-09-18T15:17:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9b2bd43_9da30174",
       "range": {
         "startLine": 49,
         "startChar": 0,
