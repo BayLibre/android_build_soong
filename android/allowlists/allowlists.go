@@ -914,6 +914,8 @@ var (
 		"androidx.test.monitor-nodeps",
 		"androidx.test.annotation",
 		"androidx.test.annotation-nodeps",
+
+		"grpc-java-annotation-stubs-srcjar",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
@@ -1659,17 +1661,6 @@ var (
 
 		// TODO(b/299974637) Fix linking error
 		"libbinder_rpc_unstable",
-
-		// TODO(b/297356704) sdk_version is unset.
-		"VendorAtomCodeGenJavaTest",
-
-		// android_test from allowlisted packages, but with unconverted deps
-		"MtsLibnativehelperLazyTestCases",
-		"ObjenesisTck",
-		"DevCodelabTest",
-		"MtsTimeZoneDataTestCases",
-		"NanoAndroidTest",
-		"MtsLibnativehelperTestCases",
 	}
 
 	// Bazel prod-mode allowlist. Modules in this list are built by Bazel
