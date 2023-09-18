@@ -16,6 +16,52 @@
       "message": "Gentle ping :)",
       "revId": "13bd0971414072051793440a5114645be51447c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1cee99e_31bc3d52",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1839,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-18T19:02:58Z",
+      "side": 1,
+      "message": "should it be an error to have both for a single scope?",
+      "range": {
+        "startLine": 1830,
+        "startChar": 0,
+        "endLine": 1839,
+        "endChar": 3
+      },
+      "revId": "13bd0971414072051793440a5114645be51447c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1380f1b_c221da08",
+        "filename": "java/java_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2002,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-18T19:02:58Z",
+      "side": 1,
+      "message": "can you add a comment about this?",
+      "range": {
+        "startLine": 2002,
+        "startChar": 3,
+        "endLine": 2002,
+        "endChar": 154
+      },
+      "revId": "13bd0971414072051793440a5114645be51447c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
