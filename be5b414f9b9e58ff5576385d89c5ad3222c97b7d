@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d16f074_99f5d897",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2072,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-19T12:38:51Z",
+      "side": 1,
+      "message": "Move to line 2076.",
+      "range": {
+        "startLine": 2072,
+        "startChar": 3,
+        "endLine": 2072,
+        "endChar": 15
+      },
+      "revId": "be5b414f9b9e58ff5576385d89c5ad3222c97b7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec1065a_8512c41c",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2072,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-19T12:38:51Z",
+      "side": 1,
+      "message": "This is on the wrong line",
+      "range": {
+        "startLine": 2072,
+        "startChar": 3,
+        "endLine": 2072,
+        "endChar": 15
+      },
+      "revId": "be5b414f9b9e58ff5576385d89c5ad3222c97b7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8ce3054_938023ac",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-19T12:38:51Z",
+      "side": 1,
+      "message": "Check the product vars.. for what? Mind elaborating?",
+      "range": {
+        "startLine": 501,
+        "startChar": 26,
+        "endLine": 501,
+        "endChar": 48
+      },
+      "revId": "be5b414f9b9e58ff5576385d89c5ad3222c97b7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9b14b40_6e1ecfbe",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-19T12:38:51Z",
+      "side": 1,
+      "message": "might want to be more explicit here given the deep nesting that at this point control flow will jump to line 531.",
+      "range": {
+        "startLine": 517,
+        "startChar": 5,
+        "endLine": 517,
+        "endChar": 6
+      },
+      "revId": "be5b414f9b9e58ff5576385d89c5ad3222c97b7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50cd09cd_a4ffc250",
+        "filename": "bp2build/cc_library_headers_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-19T12:38:51Z",
+      "side": 1,
+      "message": "fix indent",
+      "range": {
+        "startLine": 432,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 4
+      },
+      "revId": "be5b414f9b9e58ff5576385d89c5ad3222c97b7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c26259_2747c705",
+        "filename": "bp2build/cc_library_headers_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-19T12:38:51Z",
+      "side": 1,
+      "message": "not reexported",
+      "range": {
+        "startLine": 455,
+        "startChar": 56,
+        "endLine": 455,
+        "endChar": 66
+      },
+      "revId": "be5b414f9b9e58ff5576385d89c5ad3222c97b7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
