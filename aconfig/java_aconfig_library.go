@@ -15,10 +15,13 @@
 package aconfig
 
 import (
-	"android/soong/android"
-	"android/soong/java"
 	"fmt"
+
+	"android/soong/android"
+	"android/soong/bazel"
+	"android/soong/java"
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 type declarationsTagType struct {
@@ -27,12 +30,14 @@ type declarationsTagType struct {
 
 var declarationsTag = declarationsTagType{}
 
+const annotationLibDep = "aconfig-annotations-lib"
+
 type JavaAconfigDeclarationsLibraryProperties struct {
 	// name of the aconfig_declarations module to generate a library for
 	Aconfig_declarations string
 
 	// whether to generate test mode version of the library
-	Test bool
+	Test *bool
 }
 
 type JavaAconfigDeclarationsLibraryCallbacks struct {
@@ -54,7 +59,7 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) DepsMutator(module *ja
 	}
 
 	// Add aconfig-annotations-lib as a dependency for the optimization / code stripping annotations
-	module.AddSharedLibrary("aconfig-annotations-lib")
+	module.AddSharedLibrary(annotationLibDep)
 }
 
 func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuildActions(module *java.GeneratedJavaLibraryModule, ctx android.ModuleContext) android.Path {
@@ -68,7 +73,7 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 	// Generate the action to build the srcjar
 	srcJarPath := android.PathForModuleGen(ctx, ctx.ModuleName()+".srcjar")
 	var mode string
-	if callbacks.properties.Test {
+	if proptools.Bool(callbacks.properties.Test) {
 		mode = "test"
 	} else {
 		mode = "production"
@@ -88,4 +93,36 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 	module.AddAconfigIntermediate(declarations.IntermediatePath)
 
 	return srcJarPath
+}
+
+type bazelJavaAconfigLibraryAttributes struct {
+	Aconfig_declarations bazel.LabelListAttribute
+	Deps                 bazel.LabelListAttribute
+	Test                 *bool
+	Min_sdk_version      *string
+	Sdk_version          *string
+}
+
+func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) Bp2build(ctx android.TopDownMutatorContext, module *java.GeneratedJavaLibraryModule) {
+	if ctx.ModuleType() != "java_aconfig_library" {
+		return
+	}
+
+	sdkVersion := "system_current"
+	if module.Library.GetDeviceProperties().Sdk_version != nil {
+		sdkVersion = module.Library.SdkVersion(ctx).String()
+	}
+	attrs := bazelJavaAconfigLibraryAttributes{
+		Aconfig_declarations: bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, []string{callbacks.properties.Aconfig_declarations})),
+		Deps:                 bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, []string{annotationLibDep})),
+		Test:                 callbacks.properties.Test,
+		Min_sdk_version:      module.Module.GetDeviceProperties().Min_sdk_version,
+		Sdk_version:          &sdkVersion,
+	}
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "java_aconfig_library",
+		Bzl_load_location: "//build/bazel/rules/java:java_aconfig_library.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: ctx.ModuleName()}, &attrs)
 }
