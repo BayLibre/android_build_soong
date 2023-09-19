@@ -15,10 +15,13 @@
 package aconfig
 
 import (
-	"android/soong/android"
-	"android/soong/java"
 	"fmt"
+
+	"android/soong/android"
+	"android/soong/bazel"
+	"android/soong/java"
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 type declarationsTagType struct {
@@ -27,12 +30,14 @@ type declarationsTagType struct {
 
 var declarationsTag = declarationsTagType{}
 
+const annotationLibDep = "aconfig-annotations-lib"
+
 type JavaAconfigDeclarationsLibraryProperties struct {
 	// name of the aconfig_declarations module to generate a library for
 	Aconfig_declarations string
 
 	// whether to generate test mode version of the library
-	Test bool
+	Test *bool
 }
 
 type JavaAconfigDeclarationsLibraryCallbacks struct {
@@ -54,7 +59,7 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) DepsMutator(module *ja
 	}
 
 	// Add aconfig-annotations-lib as a dependency for the optimization / code stripping annotations
-	module.AddSharedLibrary("aconfig-annotations-lib")
+	module.AddSharedLibrary(annotationLibDep)
 }
 
 func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuildActions(module *java.GeneratedJavaLibraryModule, ctx android.ModuleContext) android.Path {
@@ -68,7 +73,7 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 	// Generate the action to build the srcjar
 	srcJarPath := android.PathForModuleGen(ctx, ctx.ModuleName()+".srcjar")
 	var mode string
-	if callbacks.properties.Test {
+	if proptools.Bool(callbacks.properties.Test) {
 		mode = "test"
 	} else {
 		mode = "production"
@@ -88,4 +93,41 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 	module.AddAconfigIntermediate(declarations.IntermediatePath)
 
 	return srcJarPath
+}
+
+type bazelJavaAconfigLibraryAttributes struct {
+	Aconfig_declarations bazel.LabelAttribute
+	Deps                 bazel.LabelListAttribute
+	Test                 *bool
+	Sdk_version          *string
+}
+
+func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) Bp2build(ctx android.Bp2buildMutatorContext, module *java.GeneratedJavaLibraryModule) {
+	if ctx.ModuleType() != "java_aconfig_library" {
+		return
+	}
+
+	// By default, soong builds the aconfig java library with private_current, however
+	// bazel currently doesn't support it so we default it to system_current. One reason
+	// is that the dependency of all java_aconfig_library aconfig-annotations-lib is
+	// built with system_current. For the java aconfig library itself it doesn't really
+	// matter whether it uses private API or system API because the only module it uses
+	// is DeviceConfig which is in system, and the rdeps of the java aconfig library
+	// won't change its sdk version either, so this should be fine.
+	sdkVersion := "system_current"
+	if module.Library.GetDeviceProperties().Sdk_version != nil {
+		sdkVersion = module.Library.SdkVersion(ctx).String()
+	}
+	attrs := bazelJavaAconfigLibraryAttributes{
+		Aconfig_declarations: *bazel.MakeLabelAttribute(android.BazelLabelForModuleDepSingle(ctx, callbacks.properties.Aconfig_declarations).Label),
+		Deps:                 bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, []string{annotationLibDep})),
+		Test:                 callbacks.properties.Test,
+		Sdk_version:          &sdkVersion,
+	}
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "java_aconfig_library",
+		Bzl_load_location: "//build/bazel/rules/java:java_aconfig_library.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: ctx.ModuleName()}, &attrs)
 }
