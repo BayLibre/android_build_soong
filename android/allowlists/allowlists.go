@@ -929,6 +929,7 @@ var (
 		"cc_aconfig_library",
 		"combined_apis",
 		"droiddoc_exported_dir",
+		"java_aconfig_library",
 		"java_import",
 		"java_import_host",
 		"java_sdk_library",

@@ -20,11 +20,13 @@ import (
 	"android/soong/aconfig"
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/java"
 )
 
 func registerAconfigModuleTypes(ctx android.RegistrationContext) {
 	aconfig.RegisterBuildComponents(ctx)
 	ctx.RegisterModuleType("cc_library", cc.LibraryFactory)
+	ctx.RegisterModuleType("java_library", java.LibraryFactory)
 }
 
 func TestAconfigDeclarations(t *testing.T) {
@@ -127,6 +129,52 @@ func TestCcAconfigLibrary(t *testing.T) {
 			AttrNameToString{
 				"aconfig_declarations":   `":foo_aconfig_declarations"`,
 				"dynamic_deps":           `[":server_configurable_flags"]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			},
+		)}
+	RunBp2BuildTestCase(t, registerAconfigModuleTypes, Bp2buildTestCase{
+		Blueprint:            bp,
+		ExpectedBazelTargets: expectedBazelTargets,
+	})
+}
+
+func TestJavaAconfigLibrary(t *testing.T) {
+	bp := `
+	aconfig_declarations {
+		name: "foo_aconfig_declarations",
+		srcs: [
+			"foo1.aconfig",
+		],
+		package: "com.android.foo",
+	}
+	java_library {
+			name: "aconfig-annotations-lib",
+			srcs: ["bar.java"],
+			bazel_module: { bp2build_available: false },
+	}
+	java_aconfig_library {
+			name: "foo",
+			aconfig_declarations: "foo_aconfig_declarations",
+			test: true,
+	}
+	`
+	expectedBazelTargets := []string{
+		MakeBazelTargetNoRestrictions(
+			"aconfig_declarations",
+			"foo_aconfig_declarations",
+			AttrNameToString{
+				"srcs":    `["foo1.aconfig"]`,
+				"package": `"com.android.foo"`,
+			},
+		),
+		MakeBazelTargetNoRestrictions(
+			"java_aconfig_library",
+			"foo",
+			AttrNameToString{
+				"aconfig_declarations":   `[":foo_aconfig_declarations"]`,
+				"deps":                   `[":aconfig-annotations-lib"]`,
+				"test":                   `True`,
+				"sdk_version":            `"system_current"`,
 				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
 			},
 		)}
