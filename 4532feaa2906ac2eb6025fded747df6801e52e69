@@ -22,6 +22,30 @@
       },
       "revId": "4532feaa2906ac2eb6025fded747df6801e52e69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "441aec97_11c7adeb",
+        "filename": "cc/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-09-19T20:03:23Z",
+      "side": 1,
+      "message": "This creates a dependency cycle.",
+      "parentUuid": "5483cc3e_cd083161",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 34
+      },
+      "revId": "4532feaa2906ac2eb6025fded747df6801e52e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
