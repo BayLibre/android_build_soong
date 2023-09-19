@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a6c7b23_ad768968",
+        "filename": "aconfig/cc_aconfig_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-09-19T21:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b5a6abd_c2f2f7c6",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 3
+      },
+      "revId": "e7c85bb59cd3680951b39ef8490dcc0a1c0836da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b35ec487_db28c3e9",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-15T20:39:36Z",
       "side": 1,
       "message": "nit: Can you please add godocs?",
+      "range": {
+        "startLine": 137,
+        "startChar": 39,
+        "endLine": 137,
+        "endChar": 56
+      },
+      "revId": "e7c85bb59cd3680951b39ef8490dcc0a1c0836da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c3adbf_e3569f01",
+        "filename": "aconfig/cc_aconfig_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-09-19T21:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b35ec487_db28c3e9",
       "range": {
         "startLine": 137,
         "startChar": 39,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06e63500_a934f891",
+        "filename": "bp2build/aconfig_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-09-19T21:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c9cbf04_4f513f9d",
+      "range": {
+        "startLine": 122,
+        "startChar": 34,
+        "endLine": 122,
+        "endChar": 83
+      },
+      "revId": "e7c85bb59cd3680951b39ef8490dcc0a1c0836da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3fcdd8c_68e15a9f",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-09-15T20:39:36Z",
       "side": 1,
       "message": "In the `TestCcAconfigLibrary` example from above, does this mean\n- `foo_aconfig_declarations` (type `aconfig_declarations`) is the module\n- `foo` (type `cc_aconfig_library`) is one of this generators\n\nIf so, does this mean if we allowlist `foo_aconfig_declarations`, we will automatically convert `foo` even if the latter has not been added to the allowlist?\n\nIOW, do we need `GeneratorBp2build` rather than the typical way of handling the dep via its own `ConvertWithBp2build`?",
+      "range": {
+        "startLine": 4221,
+        "startChar": 2,
+        "endLine": 4226,
+        "endChar": 3
+      },
+      "revId": "e7c85bb59cd3680951b39ef8490dcc0a1c0836da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8624652d_d4d4668b",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 4226,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-09-19T21:25:24Z",
+      "side": 1,
+      "message": "the GeneratorBp2build is used to convert cc_aconfig_library, I added some docs to explain the logic. The factory method of cc_aconfig_library returns a cc library instance, so this ConvertWithBp2build will be called instead, and the logic above is to then call the conversion method on the generator to actually do the conversion, otherwise it will be converted to a cc_library.",
+      "parentUuid": "f3fcdd8c_68e15a9f",
       "range": {
         "startLine": 4221,
         "startChar": 2,
