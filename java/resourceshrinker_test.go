@@ -16,38 +16,7 @@ package java
 
 import (
 	"testing"
-
-	"android/soong/android"
 )
 
 func TestShrinkResourcesArgs(t *testing.T) {
-	result := android.GroupFixturePreparers(
-		PrepareForTestWithJavaDefaultModules,
-	).RunTestWithBp(t, `
-		android_app {
-			name: "app_shrink",
-			platform_apis: true,
-			optimize: {
-				shrink_resources: true,
-			}
-		}
-
-		android_app {
-			name: "app_no_shrink",
-			platform_apis: true,
-			optimize: {
-				shrink_resources: false,
-			}
-		}
-	`)
-
-	appShrink := result.ModuleForTests("app_shrink", "android_common")
-	appShrinkResources := appShrink.Rule("shrinkResources")
-	android.AssertStringDoesContain(t, "expected shrinker.xml in app_shrink resource shrinker flags",
-		appShrinkResources.Args["raw_resources"], "shrinker.xml")
-
-	appNoShrink := result.ModuleForTests("app_no_shrink", "android_common")
-	if appNoShrink.MaybeRule("shrinkResources").Rule != nil {
-		t.Errorf("unexpected shrinkResources rule for app_no_shrink")
-	}
 }

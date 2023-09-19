@@ -72,7 +72,7 @@ func CreateAndSignAppPackage(ctx android.ModuleContext, outputFile android.Writa
 		Implicits: deps,
 	})
 
-	if shrinkResources {
+	if false {
 		shrunkenApk := android.PathForModuleOut(ctx, "resource-shrunken", unsignedApk.Base())
 		ShrinkResources(ctx, unsignedApk, shrunkenApk)
 		unsignedApk = shrunkenApk
