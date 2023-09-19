@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f509d8_86ad0c7f",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1965,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-09-19T16:53:27Z",
+      "side": 0,
+      "message": "could you explain why this test doesn\u0027t work with allowlist v2? It\u0027s not quite clear to me",
+      "revId": "088c4b652bd8e34457570d4528e0b31b1be812ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ae0dc5_31d40935",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5136,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-09-19T16:53:27Z",
+      "side": 0,
+      "message": "could you explain why we need to remove this one too? Also not quite clear to me",
+      "revId": "088c4b652bd8e34457570d4528e0b31b1be812ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

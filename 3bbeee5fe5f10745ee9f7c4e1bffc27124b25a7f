@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aaa72d40_1be05ce6",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-09-19T16:53:27Z",
+      "side": 1,
+      "message": "do we need to remove this here too?\n\nare there cases in the tests where this property is still needed? Should we grep and remove all instances in these files?",
+      "range": {
+        "startLine": 1039,
+        "startChar": 44,
+        "endLine": 1039,
+        "endChar": 69
+      },
+      "revId": "3bbeee5fe5f10745ee9f7c4e1bffc27124b25a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ece571da_ea1b2d08",
         "filename": "bp2build/testing.go",
         "patchSetId": 3
