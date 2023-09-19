@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75887c50_81b941b0",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-19T17:06:03Z",
+      "side": 1,
+      "message": "Yes, I missed this. Thanks! \nI did these all by hand, so I occasionally missed some cases 😞",
+      "parentUuid": "aaa72d40_1be05ce6",
+      "range": {
+        "startLine": 1039,
+        "startChar": 44,
+        "endLine": 1039,
+        "endChar": 69
+      },
+      "revId": "3bbeee5fe5f10745ee9f7c4e1bffc27124b25a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ece571da_ea1b2d08",
