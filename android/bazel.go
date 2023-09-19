@@ -18,6 +18,7 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
+	"reflect"
 	"strings"
 
 	"android/soong/ui/metrics/bp2build_metrics_proto"
@@ -157,6 +158,9 @@ type Bazelable interface {
 	ShouldConvertWithBp2build(ctx ShouldConvertWithBazelContext) bool
 	shouldConvertWithBp2build(shouldConvertModuleContext, shouldConvertParams) bool
 
+	// GetConvertedProperties
+	GetConvertedProperties() []string
+
 	// ConvertWithBp2build either converts the module to a Bazel build target or
 	// declares the module as unconvertible (for logging and metrics).
 	// Modules must implement this function to be bp2build convertible. The function
@@ -258,6 +262,10 @@ func (b *BazelModuleBase) GetBazelLabel(ctx BazelConversionPathContext, module b
 		return bp2buildModuleLabel(ctx, module)
 	}
 	panic(fmt.Errorf("requested non-existent label for module %s", module.Name()))
+}
+
+func (b *BazelModuleBase) GetConvertedProperties() []string {
+	return []string{}
 }
 
 type Bp2BuildConversionAllowlist struct {
@@ -634,6 +642,22 @@ func bp2buildConversionMutator(ctx TopDownMutatorContext) {
 		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_UNSUPPORTED, "")
 		return
 	}
+
+	for _, propStruct := range ctx.Module().GetProperties() {
+		propNames := bModule.GetConvertedProperties()
+		propStructValue := reflect.ValueOf(propStruct).Elem()
+		propStructType := propStructValue.Type()
+		numFields := propStructValue.NumField()
+		for i := 0; i < numFields; i++ {
+			prop := propStructValue.Field(i)
+			if prop.Kind() != reflect.Pointer {
+				// error
+			} else if !prop.IsNil() {
+				InList(propStructType.Field(i).Name, propNames)
+			}
+		}
+	}
+
 	bModule.ConvertWithBp2build(ctx)
 
 	if !ctx.Module().base().IsConvertedByBp2build() && ctx.Module().base().GetUnconvertedReason() == nil {
