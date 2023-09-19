@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "daacb83c_6395c076",
+        "filename": "bp2build/android_app_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-19T20:00:50Z",
+      "side": 1,
+      "message": "rather than creating errors, please don\u0027t convert the module if it is known to be unconvertable -- this will allow us to address these issues based on the priority of the module being converted or in post-submit",
+      "range": {
+        "startLine": 527,
+        "startChar": 2,
+        "endLine": 527,
+        "endChar": 81
+      },
+      "revId": "9761c5ccb956304482387e0f25c8c1f72b0d72dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea8a779d_8ee506af",
         "filename": "bp2build/android_app_conversion_test.go",
         "patchSetId": 2
