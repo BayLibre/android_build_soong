@@ -1641,6 +1641,7 @@ ndk_library {
         "//build/bazel/rules/apex:unbundled_app": [
             ":libHasApexStubs",
             "//.:libHasApexAndNdkStubs.ndk_stub_libs-current",
+            "//build/bazel/rules/cc:ndk_sysroot",
         ],
         "//conditions:default": [
             ":libHasApexStubs",

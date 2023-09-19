@@ -1650,20 +1650,28 @@ func SetStubsForDynamicDeps(ctx android.BazelConversionPathContext, axis bazel.C
 	if c, ok := ctx.Module().(*Module); ok && c.Properties.Sdk_version != nil {
 		for _, l := range dynamicLibs.Includes {
 			dep, _ := ctx.ModuleFromName(l.OriginalModuleName)
-			label := l // use the implementation by default
+			depLabels := []bazel.Label{l} // use the implementation by default
 			if depC, ok := dep.(*Module); ok && hasNdkStubs(ctx, depC) {
 				// If the dependency has ndk stubs, build against the ndk stubs
 				// https://cs.android.com/android/_/android/platform/build/soong/+/main:cc/cc.go;l=2642-2643;drc=e12d252e22dd8afa654325790d3298a0d67bd9d6;bpv=1;bpt=0
 				ver := proptools.String(c.Properties.Sdk_version)
 				// TODO - b/298085502: Add bp2build support for sdk_version: "minimum"
 				ndkLibModule, _ := ctx.ModuleFromName(dep.Name() + ndkLibrarySuffix)
-				label = bazel.Label{
+				label := bazel.Label{
 					Label: "//" + ctx.OtherModuleDir(ndkLibModule) + ":" + ndkLibModule.Name() + "_stub_libs-" + ver,
+				}
+				depLabels = []bazel.Label{
+					label,
+					// Add ndk_sysroot to deps.
+					// ndk_sysroot has a dependency edge on all ndk_headers, and will provide the .h files of _every_ ndk library
+					bazel.Label{
+						Label: "//build/bazel/rules/cc:ndk_sysroot",
+					},
 				}
 			}
 			// add the ndk lib label to this axis
 			existingValue := dynamicDeps.SelectValue(bazel.OsAndInApexAxis, "unbundled_app")
-			existingValue.Append(bazel.MakeLabelList([]bazel.Label{label}))
+			existingValue.Append(bazel.MakeLabelList(depLabels))
 			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, "unbundled_app", bazel.FirstUniqueBazelLabelList(existingValue))
 		}
 	}
