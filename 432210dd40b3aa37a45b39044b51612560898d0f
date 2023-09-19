@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0df55f_22324870",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-19T12:26:56Z",
+      "side": 1,
+      "message": "Please fix the BUILD syntax for srcs and visibility.",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 42
+      },
+      "revId": "432210dd40b3aa37a45b39044b51612560898d0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7bce45_1b36f431",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-19T12:26:56Z",
+      "side": 1,
+      "message": "Call this `symbol` and `dst` `alias` to be consistent with the docs.\n\nhttps://bazel.build/concepts/build-files#load",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 4
+      },
+      "revId": "432210dd40b3aa37a45b39044b51612560898d0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
