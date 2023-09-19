@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36819c0e_a3c6e4d2",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-19T16:56:21Z",
+      "side": 1,
+      "message": "oops, sorry, done.",
+      "parentUuid": "2b0df55f_22324870",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 42
+      },
+      "revId": "432210dd40b3aa37a45b39044b51612560898d0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef7bce45_1b36f431",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-19T12:26:56Z",
       "side": 1,
       "message": "Call this `symbol` and `dst` `alias` to be consistent with the docs.\n\nhttps://bazel.build/concepts/build-files#load",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 4
+      },
+      "revId": "432210dd40b3aa37a45b39044b51612560898d0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b69eb37_88af0e32",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-19T16:56:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef7bce45_1b36f431",
       "range": {
         "startLine": 44,
         "startChar": 1,
