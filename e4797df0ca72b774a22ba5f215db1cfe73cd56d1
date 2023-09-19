@@ -33,6 +33,23 @@
       "message": "It is flaky.",
       "revId": "e4797df0ca72b774a22ba5f215db1cfe73cd56d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "161f4256_3226ba2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-09-19T07:18:15Z",
+      "side": 1,
+      "message": "I think this patch can be abandoned at this point. It\u0027s been several days, and there don\u0027t seem to be further regressions.",
+      "revId": "e4797df0ca72b774a22ba5f215db1cfe73cd56d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
