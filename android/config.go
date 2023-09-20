@@ -2130,3 +2130,7 @@ func (c *config) IsStagingRelease() bool {
 func (c *deviceConfig) NextReleaseHideFlaggedApi() bool {
 	return Bool(c.config.productVariables.NextReleaseHideFlaggedApi)
 }
+
+func (c *deviceConfig) HideFlaggedApis() bool {
+	return c.NextReleaseHideFlaggedApi() && c.config.IsNextRelease()
+}
