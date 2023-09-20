@@ -292,11 +292,6 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 	}
 
 	if flags.Clippy {
-		// TODO(b/298461712) remove this hack to let slim manifest branches build
-		if deps.Clippy_driver == nil {
-			deps.Clippy_driver = config.RustPath(ctx, "bin/clippy-driver")
-		}
-
 		clippyRule := getRuleBuilder(ctx, pctx, false, "clippy")
 		clippyCmd := clippyRule.Command()
 		clippyFile := android.PathForModuleOut(ctx, outputFile.Base()+".clippy")
@@ -363,11 +358,6 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 			android.PathForModuleOut(ctx, sboxDirectory, rustSboxOutputFile.Base()+".whole.a"),
 			android.PathForModuleOut(ctx, sboxDirectory, rustSboxOutputFile.Base()+".a"),
 		}
-	}
-
-	// TODO(b/298461712) remove this hack to let slim manifest branches build
-	if deps.Rustc == nil {
-		deps.Rustc = config.RustPath(ctx, "bin/rustc")
 	}
 
 	rustcCmd.
@@ -455,11 +445,6 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 }
 
 func Rustdoc(ctx ModuleContext, main android.Path, deps PathDeps, flags Flags) android.ModuleOutPath {
-	// TODO(b/298461712) remove this hack to let slim manifest branches build
-	if deps.Rustdoc == nil {
-		deps.Rustdoc = config.RustPath(ctx, "bin/rustdoc")
-	}
-
 	rustdocRule := getRuleBuilder(ctx, pctx, false, "rustdoc")
 	rustdocCmd := rustdocRule.Command()
 
