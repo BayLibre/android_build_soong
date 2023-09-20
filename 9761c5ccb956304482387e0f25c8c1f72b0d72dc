@@ -45,6 +45,53 @@
       },
       "revId": "9761c5ccb956304482387e0f25c8c1f72b0d72dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4bd21bc_a5d1db1a",
+        "filename": "bp2build/android_app_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-09-20T13:35:44Z",
+      "side": 1,
+      "message": "I think this second test is meant to have a java_resource_dirs set instead of java_resources",
+      "parentUuid": "ea8a779d_8ee506af",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 1
+      },
+      "revId": "9761c5ccb956304482387e0f25c8c1f72b0d72dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cda97062_02745098",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1720,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-09-20T13:35:44Z",
+      "side": 1,
+      "message": "To add to Liz\u0027s comment you can use the model from l.1716-1719 above to return early and ensure we don\u0027t convert the module if it uses an unsupported property",
+      "range": {
+        "startLine": 1720,
+        "startChar": 1,
+        "endLine": 1720,
+        "endChar": 44
+      },
+      "revId": "9761c5ccb956304482387e0f25c8c1f72b0d72dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
