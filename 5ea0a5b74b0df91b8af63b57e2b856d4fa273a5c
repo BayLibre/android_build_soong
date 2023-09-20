@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eabe38ca_ad5cbe26",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-09-20T17:45:49Z",
+      "side": 1,
+      "message": "The output of this rule isn\u0027t used anywhere except for the test.  Can you skip generating this rule, and assert on the JavaInfo contents instead?",
+      "range": {
+        "startLine": 1694,
+        "startChar": 1,
+        "endLine": 1696,
+        "endChar": 18
+      },
+      "revId": "5ea0a5b74b0df91b8af63b57e2b856d4fa273a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
