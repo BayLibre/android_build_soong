@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9719d05_61610076",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-09-20T17:35:05Z",
+      "side": 1,
+      "message": "nit: I think Liz submitted a CL recently to sort this list (aosp/2754805). Can we sort the new additions as well?",
+      "range": {
+        "startLine": 934,
+        "startChar": 2,
+        "endLine": 937,
+        "endChar": 23
+      },
+      "revId": "d17be0cc0cfb3e11f68fb36f607178e23c300b42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

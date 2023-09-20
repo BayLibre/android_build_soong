@@ -187,6 +187,30 @@
       },
       "revId": "e7c85bb59cd3680951b39ef8490dcc0a1c0836da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3068b8c6_1069dd8c",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 4226,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-09-20T17:35:05Z",
+      "side": 1,
+      "message": "I think that makes sense now, thanks!",
+      "parentUuid": "8624652d_d4d4668b",
+      "range": {
+        "startLine": 4221,
+        "startChar": 2,
+        "endLine": 4226,
+        "endChar": 3
+      },
+      "revId": "e7c85bb59cd3680951b39ef8490dcc0a1c0836da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
