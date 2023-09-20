@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5ca98a6_6e63160b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-09-20T00:35:32Z",
+      "side": 1,
+      "message": "This is missing [common_libc](https://source.corp.google.com/h/googleplex-android/platform/bionic/+/main:libc/Android.bp;l\u003d2408;bpv\u003d1;bpt\u003d0;drc\u003d1de7a480bcdaab439fcd6b5386d4773b708ee1d9) which is of type `versioned_ndk_headers`. I will add it in a followup CL",
+      "revId": "835e9fd58b418ddb0e16cecdaafab5e91a87c01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
