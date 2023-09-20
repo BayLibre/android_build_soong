@@ -490,6 +490,8 @@ type ProductVariables struct {
 	PartitionVars struct {
 		ProductDirectory string `json:",omitempty"`
 	} `json:",omitempty"`
+
+	NextReleaseHideFlaggedApi *bool `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
