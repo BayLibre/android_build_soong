@@ -407,6 +407,9 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 				entries.SetBoolIfTrue("LOCAL_EXPORT_PACKAGE_RESOURCES", Bool(app.appProperties.Export_package_resources))
 
 				entries.SetPath("LOCAL_FULL_MANIFEST_FILE", app.manifestPath)
+				if len(app.OverriddenManifestPackageName()) > 0 {
+					entries.SetString("LOCAL_SOONG_OVERRIDEN_MANIFEST_PACKAGE_NAME", app.OverriddenManifestPackageName())
+				}
 
 				entries.SetBoolIfTrue("LOCAL_PRIVILEGED_MODULE", app.Privileged())
 
