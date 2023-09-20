@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e53bd02_0763a263",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-09-20T16:12:46Z",
+      "side": 1,
+      "message": "You\u0027re creating `error` but then not doing anything with it, i.e. ignoring the return value of `fmt.Errorf` calls.\nDid you mean to `panic(fmt.Errorf(...` instead?",
+      "revId": "6fd62fa9ef5256e5c8b6280680e575859611225f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "317beeb7_1dd458d8",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-09-20T16:12:46Z",
+      "side": 1,
+      "message": "`forest`\u0027s first part must equal `outDir`, nope?",
+      "revId": "6fd62fa9ef5256e5c8b6280680e575859611225f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed01f063_1566fb4a",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-09-20T16:12:46Z",
+      "side": 1,
+      "message": "in a follow-up or even this CL, would you retire symlink_forest_version?",
+      "revId": "6fd62fa9ef5256e5c8b6280680e575859611225f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
