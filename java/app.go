@@ -1762,6 +1762,10 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 
 // ConvertWithBp2build is used to convert android_test to Bazel.
 func (at *AndroidTest) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	if at.AndroidApp.dexProperties.Optimize.Enabled == nil {
+		// optimization is disabled by default for android_test_helper_app
+		at.AndroidApp.dexProperties.Optimize.Enabled = proptools.BoolPtr(false)
+	}
 	if ok, commonAttrs, appAttrs := convertWithBp2build(ctx, &at.AndroidApp); ok {
 		props := bazel.BazelTargetModuleProperties{
 			Rule_class:        "android_test",
@@ -1778,13 +1782,18 @@ func (atha *AndroidTestHelperApp) ConvertWithBp2build(ctx android.TopDownMutator
 		// an android_test_helper_app is an android_binary with testonly = True
 		commonAttrs.Testonly = proptools.BoolPtr(true)
 
+		if atha.AndroidApp.dexProperties.Optimize.Enabled == nil {
+			// optimization is enabled by default for android_test_helper_app
+			// TODO(b/192032291): Disable by default after auditing downstream usage.
+			atha.AndroidApp.dexProperties.Optimize.Enabled = proptools.BoolPtr(true)
+		}
+
 		// additionally, it sets default values differently to android_app,
 		// https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/app.go;l=1273-1279;drc=e12c083198403ec694af6c625aed11327eb2bf7f
 		//
 		// installable: true (settable prop)
 		// use_embedded_native_libs: true (settable prop)
 		// lint.test: true (settable prop)
-		// optimize EnabledByDefault: true (blueprint mutated prop)
 		// AlwaysPackageNativeLibs: true (blueprint mutated prop)
 		// dexpreopt isTest: true (not prop)
 
