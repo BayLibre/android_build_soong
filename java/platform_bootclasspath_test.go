@@ -81,6 +81,14 @@ func TestPlatformBootclasspath(t *testing.T) {
 			RunTest(t)
 	})
 
+	fooSrcJar := "out/soong/.intermediates/source/foo/android_common/srcjar/foo.srcjar"
+	barSrcJar := "out/soong/.intermediates/bar/android_common/srcjar/bar.srcjar"
+
+	checkSrcJarInputs := func(t *testing.T, result *android.TestResult, name string, expected []string) {
+		t.Helper()
+		srcjar := result.ModuleForTests(name, "android_common").Output(name + "-transitive.srcjar")
+		android.AssertArrayString(t, "srcjar inputs", expected, srcjar.Inputs.Strings())
+	}
 	t.Run("source", func(t *testing.T) {
 		result := android.GroupFixturePreparers(
 			preparer,
@@ -90,6 +98,10 @@ func TestPlatformBootclasspath(t *testing.T) {
 		CheckPlatformBootclasspathModules(t, result, "platform-bootclasspath", []string{
 			"platform:foo",
 			"platform:bar",
+		})
+		checkSrcJarInputs(t, result, "platform-bootclasspath", []string{
+			fooSrcJar,
+			barSrcJar,
 		})
 	})
 
@@ -102,6 +114,10 @@ func TestPlatformBootclasspath(t *testing.T) {
 		CheckPlatformBootclasspathModules(t, result, "platform-bootclasspath", []string{
 			"platform:prebuilt_foo",
 			"platform:bar",
+		})
+		checkSrcJarInputs(t, result, "platform-bootclasspath", []string{
+			// TODO(b/151360309): This should also have the srcs for prebuilt_foo
+			barSrcJar,
 		})
 	})
 
@@ -116,6 +132,10 @@ func TestPlatformBootclasspath(t *testing.T) {
 			"platform:foo",
 			"platform:bar",
 		})
+		checkSrcJarInputs(t, result, "platform-bootclasspath", []string{
+			fooSrcJar,
+			barSrcJar,
+		})
 	})
 
 	t.Run("source+prebuilt - prebuilt preferred", func(t *testing.T) {
@@ -128,6 +148,10 @@ func TestPlatformBootclasspath(t *testing.T) {
 		CheckPlatformBootclasspathModules(t, result, "platform-bootclasspath", []string{
 			"platform:prebuilt_foo",
 			"platform:bar",
+		})
+		checkSrcJarInputs(t, result, "platform-bootclasspath", []string{
+			// TODO(b/151360309): This should also have the srcs for prebuilt_foo
+			barSrcJar,
 		})
 	})
 
@@ -145,6 +169,10 @@ func TestPlatformBootclasspath(t *testing.T) {
 		CheckPlatformBootclasspathModules(t, result, "platform-bootclasspath", []string{
 			"platform:prebuilt_foo",
 			"platform:bar",
+		})
+		checkSrcJarInputs(t, result, "platform-bootclasspath", []string{
+			// TODO(b/151360309): This should also have the srcs for prebuilt_foo
+			barSrcJar,
 		})
 	})
 }
