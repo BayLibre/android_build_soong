@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dd8b0b9_d639d36e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-20T14:26:29Z",
+      "side": 1,
+      "message": "Can you add test coverage?",
+      "revId": "df5201a32327eb9094637389dc52fcaf5c5077d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0811ba60_3739f804",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1767,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-20T14:26:29Z",
+      "side": 1,
+      "message": "does it make sense to base this on [`dexProperties.Optimize.EnabledByDefault`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/app.go;l\u003d1273;drc\u003d2b1e32b3823387a678c35870176c2fddb33f6c45) so it can\u0027t get out of sync?",
+      "range": {
+        "startLine": 1767,
+        "startChar": 49,
+        "endLine": 1767,
+        "endChar": 73
+      },
+      "revId": "df5201a32327eb9094637389dc52fcaf5c5077d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
