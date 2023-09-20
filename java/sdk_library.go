@@ -286,6 +286,14 @@ func (scopes apiScopes) Strings(accessor func(*apiScope) string) []string {
 	return list
 }
 
+func (scopes apiScopes) Map(accessor func(*apiScope) string) map[string]int {
+	ret := make(map[string]int)
+	for i, scope := range scopes {
+		ret[accessor(scope)] = i
+	}
+	return ret
+}
+
 var (
 	scopeByName    = make(map[string]*apiScope)
 	allScopeNames  []string
