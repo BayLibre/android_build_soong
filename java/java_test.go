@@ -2423,3 +2423,29 @@ func TestJavaApiContributionImport(t *testing.T) {
 	sourceFilesFlag := "--source-files current.txt"
 	android.AssertStringDoesContain(t, "source text files not present", manifestCommand, sourceFilesFlag)
 }
+
+func TestTransitiveSrcJar(t *testing.T) {
+	ctx, _ := testJava(t, `
+		java_library {
+			name: "a",
+			srcs: ["a.java"],
+		}
+		java_library {
+			name: "b",
+			srcs: ["b.java"],
+		}
+		java_library {
+			name: "c",
+			srcs: ["c.java"],
+			libs: ["a"],
+			static_libs: ["b"],
+		}
+	`)
+	b_dir := "out/soong/.intermediates/b/android_common/srcjar/"
+	c_dir := "out/soong/.intermediates/c/android_common/srcjar/"
+	c := ctx.ModuleForTests("c", "android_common").Output(c_dir + "c-transitive.srcjar")
+
+	android.AssertIntEquals(t, "Number of inputs is not 2", 2, len(c.Inputs))
+	android.AssertStringListContains(t, "b not in c-transtive inputs", c.Inputs.Strings(), b_dir+"b.srcjar")
+	android.AssertStringListContains(t, "c not in c-transtive inputs", c.Inputs.Strings(), c_dir+"c.srcjar")
+}
