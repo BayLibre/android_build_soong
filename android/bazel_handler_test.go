@@ -179,8 +179,12 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
 			t.Fatalf("expected %d registered build statements, but got %#v", want, got)
 		}
 
-		cmd := RuleBuilderCommand{}
 		ctx := builderContextForTests{PathContextForTesting(TestConfig("out", nil, "", nil))}
+		cmd := RuleBuilderCommand{
+			rule: &RuleBuilder{
+				ctx: ctx,
+			},
+		}
 		createCommand(&cmd, got[0], "test/exec_root", "test/bazel_out", ctx, map[string]bazel.AqueryDepset{}, "")
 		if actual, expected := cmd.buf.String(), testCase.command; expected != actual {
 			t.Errorf("expected: [%s], actual: [%s]", expected, actual)
