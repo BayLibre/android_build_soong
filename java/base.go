@@ -519,6 +519,9 @@ type Module struct {
 
 	// Aconfig files for all transitive deps.  Also exposed via JavaInfo
 	transitiveAconfigFiles *android.DepSet[android.Path]
+
+	// SrcJars for all transitive static deps.  Also exposed via JavaInfo
+	transitiveSrcJars *android.DepSet[android.Path]
 }
 
 func (j *Module) CheckStableSdkVersion(ctx android.BaseModuleContext) error {
@@ -1686,10 +1689,17 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 
 	ctx.CheckbuildFile(outputFile)
 
+	j.collectTransitiveSrcJars(ctx, includeSrcJar)
+
+	transitiveSrcJar := android.PathForModuleOut(ctx, "srcjar", ctx.ModuleName()+"-transitive.srcjar")
+	TransformJarsToJar(ctx, transitiveSrcJar, "transitive srcjar", j.getTransitiveSrcJars().ToList(), android.OptionalPath{},
+		false, nil, nil)
+
 	j.collectTransitiveAconfigFiles(ctx)
 
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(j.headerJarFile),
+		TransitiveSrcJars:              j.transitiveSrcJars,
 		TransitiveLibsHeaderJars:       j.transitiveLibsHeaderJars,
 		TransitiveStaticLibsHeaderJars: j.transitiveStaticLibsHeaderJars,
 		ImplementationAndResourcesJars: android.PathsIfNonNil(j.implementationAndResourcesJar),
@@ -2024,6 +2034,30 @@ func (j *Module) JacocoReportClassesFile() android.Path {
 
 func (j *Module) IsInstallable() bool {
 	return Bool(j.properties.Installable)
+}
+
+func (j *Module) collectTransitiveSrcJars(ctx android.ModuleContext, mine android.Path) {
+	// Srcjars from static dependencies
+	fromDeps := []*android.DepSet[android.Path]{}
+
+	ctx.VisitDirectDeps(func(module android.Module) {
+		tag := ctx.OtherModuleDependencyTag(module)
+		depInfo := ctx.OtherModuleProvider(module, JavaInfoProvider).(JavaInfo)
+
+		if tag == staticLibTag && depInfo.TransitiveSrcJars != nil {
+			fromDeps = append(fromDeps, depInfo.TransitiveSrcJars)
+		}
+	})
+
+	// DepSet containing aconfig files myself and from dependencies
+	j.transitiveSrcJars = android.NewDepSet(android.POSTORDER, android.Paths{mine}, fromDeps)
+}
+
+func (j *Module) getTransitiveSrcJars() *android.DepSet[android.Path] {
+	if j.transitiveSrcJars == nil {
+		panic(fmt.Errorf("java.Moduile: getTransitiveSrcJars called before collectTransitiveSrcJars module=%s", j.Name()))
+	}
+	return j.transitiveSrcJars
 }
 
 func (j *Module) collectTransitiveAconfigFiles(ctx android.ModuleContext) {
