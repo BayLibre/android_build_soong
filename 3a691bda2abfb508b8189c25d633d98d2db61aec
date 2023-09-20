@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91e38a77_d4003e0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-09-20T17:43:58Z",
+      "side": 1,
+      "message": "As a measure of the impact what does this do to the size of the `out/soong/build.ninja` file?",
+      "revId": "3a691bda2abfb508b8189c25d633d98d2db61aec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
