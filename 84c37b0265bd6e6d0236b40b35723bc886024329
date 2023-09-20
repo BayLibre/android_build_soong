@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1118d1a_ddce3e57",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-20T12:55:32Z",
+      "side": 1,
+      "message": "It looks like there are some other default settings: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/app.go;l\u003d1273-1279;drc\u003de12c083198403ec694af6c625aed11327eb2bf7f\n\nSome of these we haven\u0027t migrated yet, but leaving a comment would be good.",
+      "range": {
+        "startLine": 1778,
+        "startChar": 2,
+        "endLine": 1778,
+        "endChar": 5
+      },
+      "revId": "84c37b0265bd6e6d0236b40b35723bc886024329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
