@@ -483,6 +483,8 @@ type ProductVariables struct {
 	KeepVndk *bool `json:",omitempty"`
 
 	CheckVendorSeappViolations *bool `json:",omitempty"`
+
+	NextReleaseHideFlaggedApi *bool `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
