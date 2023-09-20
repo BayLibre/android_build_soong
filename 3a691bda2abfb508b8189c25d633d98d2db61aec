@@ -16,6 +16,24 @@
       "message": "As a measure of the impact what does this do to the size of the `out/soong/build.ninja` file?",
       "revId": "3a691bda2abfb508b8189c25d633d98d2db61aec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d3527bd_f21ae709",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-09-20T17:50:11Z",
+      "side": 1,
+      "message": "The alternative to avoid creating all the individual srcjar rules would be to export a depset of srcJarArgs and srcJarDeps, which the final platform_bootclasspath module could collect and create a single rule to create a single final srcjar.",
+      "parentUuid": "91e38a77_d4003e0f",
+      "revId": "3a691bda2abfb508b8189c25d633d98d2db61aec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
