@@ -418,12 +418,17 @@ func (this *stubDecorator) diffAbi(ctx ModuleContext) {
 		nextAbiDiffPath := android.PathForModuleOut(ctx,
 			"abidiff_next.timestamp")
 		nextAbiDump := this.findPrebuiltAbiDump(ctx, *nextApiLevel)
+		missingNextPrebuiltError := fmt.Sprintf(
+			"Did not find prebuilt ABI dump for next API level of %q (%q)."+
+				"Generate with //development/tools/ndk/update_ndk_abi.sh.",
+			this.libraryName(ctx),
+			nextAbiDump.InvalidReason())
 		if !nextAbiDump.Valid() {
 			ctx.Build(pctx, android.BuildParams{
 				Rule:   android.ErrorRule,
 				Output: nextAbiDiffPath,
 				Args: map[string]string{
-					"error": missingPrebuiltError,
+					"error": missingNextPrebuiltError,
 				},
 			})
 		} else {
