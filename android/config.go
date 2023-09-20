@@ -2080,3 +2080,7 @@ func (c *deviceConfig) CheckVendorSeappViolations() bool {
 func (c *deviceConfig) NextReleaseHideFlaggedApi() bool {
 	return Bool(c.config.productVariables.NextReleaseHideFlaggedApi)
 }
+
+func (c *deviceConfig) HideFlaggedApis() bool {
+	return c.NextReleaseHideFlaggedApi() && c.config.Getenv("TARGET_RELEASE") == "next"
+}
