@@ -60,6 +60,7 @@ android_test {
 				"manifest":       `"AndroidManifest.xml"`,
 				"resource_files": `["res/res.png"]`,
 				"sdk_version":    `"current"`,
+				"optimize":       `False`,
 				"assets":         `["assets/asset.png"]`,
 				"assets_dir":     `"assets"`,
 			}),
