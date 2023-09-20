@@ -173,6 +173,19 @@ func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 	allModules = append(allModules, apexModules...)
 	b.configuredModules = allModules
 
+	var allSrcJars []android.Path
+	for _, module := range allModules {
+		depInfo := ctx.OtherModuleProvider(module, JavaInfoProvider).(JavaInfo)
+		if depInfo.TransitiveSrcJars != nil {
+			for _, jar := range depInfo.TransitiveSrcJars.ToList() {
+				allSrcJars = append(allSrcJars, jar)
+			}
+		}
+	}
+	transitiveSrcJar := android.PathForModuleOut(ctx, ctx.ModuleName()+"-transitive.srcjar")
+	TransformJarsToJar(ctx, transitiveSrcJar, "transitive srcjar", allSrcJars, android.OptionalPath{},
+		false, nil, nil)
+
 	// Gather all the fragments dependencies.
 	b.fragments = gatherApexModulePairDepsWithTag(ctx, bootclasspathFragmentDepTag)
 
