@@ -404,6 +404,9 @@ func (r *RuleBuilder) toolsSet() map[string]Path {
 	tools := make(map[string]Path)
 	for _, c := range r.commands {
 		for _, tool := range c.tools {
+			if tool == nil && c.rule.ctx.Config().AllowMissingDependencies() {
+				continue
+			}
 			tools[tool.String()] = tool
 		}
 	}
@@ -807,25 +810,25 @@ type rspFileAndPaths struct {
 	paths Paths
 }
 
-func checkPathNotNil(path Path) {
-	if path == nil {
+func checkPathNotNil(path Path, allowMissingDependencies bool) {
+	if path == nil && !allowMissingDependencies {
 		panic("rule_builder paths cannot be nil")
 	}
 }
 
 func (c *RuleBuilderCommand) addInput(path Path) string {
-	checkPathNotNil(path)
+	checkPathNotNil(path, c.rule.ctx.Config().AllowMissingDependencies())
 	c.inputs = append(c.inputs, path)
 	return c.PathForInput(path)
 }
 
 func (c *RuleBuilderCommand) addImplicit(path Path) {
-	checkPathNotNil(path)
+	checkPathNotNil(path, c.rule.ctx.Config().AllowMissingDependencies())
 	c.implicits = append(c.implicits, path)
 }
 
 func (c *RuleBuilderCommand) addOrderOnly(path Path) {
-	checkPathNotNil(path)
+	checkPathNotNil(path, c.rule.ctx.Config().AllowMissingDependencies())
 	c.orderOnlys = append(c.orderOnlys, path)
 }
 
@@ -834,6 +837,10 @@ func (c *RuleBuilderCommand) addOrderOnly(path Path) {
 // path with the placeholder prefix used for outputs in sbox.  If sbox is not enabled it returns the
 // original path.
 func (c *RuleBuilderCommand) PathForInput(path Path) string {
+	if path == nil && c.rule.ctx.Config().AllowMissingDependencies() {
+		return ""
+	}
+
 	if c.rule.sbox {
 		rel, inSandbox := c.rule._sboxPathForInputRel(path)
 		if inSandbox {
@@ -861,6 +868,10 @@ func (c *RuleBuilderCommand) PathsForInputs(paths Paths) []string {
 // placeholder prefix used for outputs in sbox.  If sbox is not enabled it returns the
 // original path.
 func (c *RuleBuilderCommand) PathForOutput(path WritablePath) string {
+	if path == nil && c.rule.ctx.Config().AllowMissingDependencies() {
+		return ""
+	}
+
 	if c.rule.sbox {
 		// Errors will be handled in RuleBuilder.Build where we have a context to report them
 		rel, _, _ := maybeRelErr(c.rule.outDir.String(), path.String())
@@ -931,6 +942,9 @@ func (c *RuleBuilderCommand) PathForPackagedTool(spec PackagingSpec) string {
 // the corresponding path for the tool in the sbox sandbox if sbox is enabled, or the original path
 // if it is not.  This can be used  on the RuleBuilder command line to reference the tool.
 func (c *RuleBuilderCommand) PathForTool(path Path) string {
+	if path == nil && c.rule.ctx.Config().AllowMissingDependencies() {
+		return ""
+	}
 	if c.rule.sbox && c.rule.sboxTools {
 		return filepath.Join(sboxSandboxBaseDir, sboxPathForToolRel(c.rule.ctx, path))
 	}
@@ -1052,14 +1066,14 @@ func (c *RuleBuilderCommand) FlagWithList(flag string, list []string, sep string
 // Tool adds the specified tool path to the command line.  The path will be also added to the dependencies returned by
 // RuleBuilder.Tools.
 func (c *RuleBuilderCommand) Tool(path Path) *RuleBuilderCommand {
-	checkPathNotNil(path)
+	checkPathNotNil(path, c.rule.ctx.Config().AllowMissingDependencies())
 	c.tools = append(c.tools, path)
 	return c.Text(c.PathForTool(path))
 }
 
 // Tool adds the specified tool path to the dependencies returned by RuleBuilder.Tools.
 func (c *RuleBuilderCommand) ImplicitTool(path Path) *RuleBuilderCommand {
-	checkPathNotNil(path)
+	checkPathNotNil(path, c.rule.ctx.Config().AllowMissingDependencies())
 	c.tools = append(c.tools, path)
 	return c
 }
@@ -1160,7 +1174,7 @@ func (c *RuleBuilderCommand) OrderOnlys(paths Paths) *RuleBuilderCommand {
 // Validation adds the specified input path to the validation dependencies by
 // RuleBuilder.Validations without modifying the command line.
 func (c *RuleBuilderCommand) Validation(path Path) *RuleBuilderCommand {
-	checkPathNotNil(path)
+	checkPathNotNil(path, c.rule.ctx.Config().AllowMissingDependencies())
 	c.validations = append(c.validations, path)
 	return c
 }
@@ -1177,7 +1191,7 @@ func (c *RuleBuilderCommand) Validations(paths Paths) *RuleBuilderCommand {
 // Output adds the specified output path to the command line.  The path will also be added to the outputs returned by
 // RuleBuilder.Outputs.
 func (c *RuleBuilderCommand) Output(path WritablePath) *RuleBuilderCommand {
-	checkPathNotNil(path)
+	checkPathNotNil(path, c.rule.ctx.Config().AllowMissingDependencies())
 	c.outputs = append(c.outputs, path)
 	return c.Text(c.PathForOutput(path))
 }
@@ -1204,7 +1218,7 @@ func (c *RuleBuilderCommand) OutputDir() *RuleBuilderCommand {
 // line, and causes RuleBuilder.Build file to set the depfile flag for ninja.  If multiple depfiles are added to
 // commands in a single RuleBuilder then RuleBuilder.Build will add an extra command to merge the depfiles together.
 func (c *RuleBuilderCommand) DepFile(path WritablePath) *RuleBuilderCommand {
-	checkPathNotNil(path)
+	checkPathNotNil(path, c.rule.ctx.Config().AllowMissingDependencies())
 	c.depFiles = append(c.depFiles, path)
 	return c.Text(c.PathForOutput(path))
 }
@@ -1227,7 +1241,7 @@ func (c *RuleBuilderCommand) ImplicitOutputs(paths WritablePaths) *RuleBuilderCo
 // will be a symlink instead of a regular file. Does not modify the command
 // line.
 func (c *RuleBuilderCommand) ImplicitSymlinkOutput(path WritablePath) *RuleBuilderCommand {
-	checkPathNotNil(path)
+	checkPathNotNil(path, c.rule.ctx.Config().AllowMissingDependencies())
 	c.symlinkOutputs = append(c.symlinkOutputs, path)
 	return c.ImplicitOutput(path)
 }
@@ -1245,7 +1259,7 @@ func (c *RuleBuilderCommand) ImplicitSymlinkOutputs(paths WritablePaths) *RuleBu
 // SymlinkOutput declares the specified path as an output that will be a symlink
 // instead of a regular file. Modifies the command line.
 func (c *RuleBuilderCommand) SymlinkOutput(path WritablePath) *RuleBuilderCommand {
-	checkPathNotNil(path)
+	checkPathNotNil(path, c.rule.ctx.Config().AllowMissingDependencies())
 	c.symlinkOutputs = append(c.symlinkOutputs, path)
 	return c.Output(path)
 }

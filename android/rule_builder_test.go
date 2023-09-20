@@ -856,3 +856,26 @@ func TestRuleBuilderWithNinjaVarEscaping(t *testing.T) {
 		"$${cmdFlags}",
 	)
 }
+
+//func TestRuleBuilderWithAllowMissingDependencies(t *testing.T) {
+//	bp := `
+//		rule_builder_test {
+//			name: "foo_missing_src",
+//			srcs: ["missing_src"],
+//		}
+//	`
+//	GroupFixturePreparers(
+//		prepareForRuleBuilderTest,
+//		FixtureWithRootAndroidBp(bp),
+//	).
+//		ExtendWithErrorHandler(FixtureExpectsOneErrorPattern("")).
+//		RunTest(t)
+//
+//	GroupFixturePreparers(
+//		prepareForRuleBuilderTest,
+//		FixtureWithRootAndroidBp(bp),
+//		FixtureModifyContext(func(ctx *TestContext) {
+//			ctx.SetAllowMissingDependencies(true)
+//		}),
+//	).RunTest(t)
+//}
