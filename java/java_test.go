@@ -869,7 +869,7 @@ func TestIncludeSrcs(t *testing.T) {
 
 	// Test a library with include_srcs: true
 	foo := ctx.ModuleForTests("foo", "android_common").Output("withres/foo.jar")
-	fooSrcJar := ctx.ModuleForTests("foo", "android_common").Output("foo.srcjar")
+	fooSrcJar := ctx.ModuleForTests("foo", "android_common").Output("srcjar/foo.srcjar")
 
 	if g, w := fooSrcJar.Output.String(), foo.Inputs.Strings(); !inList(g, w) {
 		t.Errorf("foo combined jars %v does not contain %q", w, g)
@@ -883,7 +883,7 @@ func TestIncludeSrcs(t *testing.T) {
 	bar := ctx.ModuleForTests("bar", "android_common").Output("withres/bar.jar")
 	barResCombined := ctx.ModuleForTests("bar", "android_common").Output("res-combined/bar.jar")
 	barRes := ctx.ModuleForTests("bar", "android_common").Output("res/bar.jar")
-	barSrcJar := ctx.ModuleForTests("bar", "android_common").Output("bar.srcjar")
+	barSrcJar := ctx.ModuleForTests("bar", "android_common").Output("srcjar/bar.srcjar")
 
 	if g, w := barSrcJar.Output.String(), barResCombined.Inputs.Strings(); !inList(g, w) {
 		t.Errorf("bar combined resource jars %v does not contain %q", w, g)
