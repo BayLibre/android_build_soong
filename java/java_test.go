@@ -2425,3 +2425,25 @@ func TestJavaApiLibraryApiFilesSorting(t *testing.T) {
 		"default/java/api/module-lib-current.txt default/java/api/system-server-current.txt"
 	android.AssertStringDoesContain(t, "source text files not in api scope order", manifestCommand, sourceFilesFlag)
 }
+
+func TestTransitiveSrcJarArgsAndDeps(t *testing.T) {
+	ctx, _ := testJava(t, `
+		java_library {
+			name: "a",
+			srcs: ["a.java"],
+		}
+		java_library {
+			name: "b",
+			srcs: ["b.java"],
+		}
+		java_library {
+			name: "c",
+			srcs: ["c.java"],
+			libs: ["a"],
+			static_libs: ["b"],
+		}
+	`)
+	c := ctx.ModuleForTests("c", "android_common").Module()
+	transitiveSrcFiles := android.Paths(ctx.ModuleProvider(c, JavaInfoProvider).(JavaInfo).TransitiveSrcFiles.ToList())
+	android.AssertArrayString(t, "unexpected jar deps", []string{"b.java", "c.java"}, transitiveSrcFiles.Strings())
+}
