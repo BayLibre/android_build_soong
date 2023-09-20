@@ -834,6 +834,10 @@ func (c *RuleBuilderCommand) addOrderOnly(path Path) {
 // path with the placeholder prefix used for outputs in sbox.  If sbox is not enabled it returns the
 // original path.
 func (c *RuleBuilderCommand) PathForInput(path Path) string {
+	if path == nil && c.rule.ctx.Config().AllowMissingDependencies() {
+		return ""
+	}
+
 	if c.rule.sbox {
 		rel, inSandbox := c.rule._sboxPathForInputRel(path)
 		if inSandbox {
@@ -861,6 +865,10 @@ func (c *RuleBuilderCommand) PathsForInputs(paths Paths) []string {
 // placeholder prefix used for outputs in sbox.  If sbox is not enabled it returns the
 // original path.
 func (c *RuleBuilderCommand) PathForOutput(path WritablePath) string {
+	if path == nil && c.rule.ctx.Config().AllowMissingDependencies() {
+		return ""
+	}
+
 	if c.rule.sbox {
 		// Errors will be handled in RuleBuilder.Build where we have a context to report them
 		rel, _, _ := maybeRelErr(c.rule.outDir.String(), path.String())
@@ -931,6 +939,9 @@ func (c *RuleBuilderCommand) PathForPackagedTool(spec PackagingSpec) string {
 // the corresponding path for the tool in the sbox sandbox if sbox is enabled, or the original path
 // if it is not.  This can be used  on the RuleBuilder command line to reference the tool.
 func (c *RuleBuilderCommand) PathForTool(path Path) string {
+	if path == nil && c.rule.ctx.Config().AllowMissingDependencies() {
+		return ""
+	}
 	if c.rule.sbox && c.rule.sboxTools {
 		return filepath.Join(sboxSandboxBaseDir, sboxPathForToolRel(c.rule.ctx, path))
 	}
