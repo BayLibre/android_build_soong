@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a135c024_f3fa9472",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-21T20:42:34Z",
+      "side": 1,
+      "message": "Note for reviewers: I needed to add this to work around b/301481393",
+      "revId": "28a32f6623abe81ea2bbebb8022b71da7e23cddd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
