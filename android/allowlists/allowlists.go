@@ -948,6 +948,7 @@ var (
 		"gson",
 		"GsonBuildConfig.java",
 		"gson_version_generator",
+		"lab-resource-grpc",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{

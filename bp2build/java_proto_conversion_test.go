@@ -144,13 +144,19 @@ func TestJavaLibsAndOnlyProtoSrcs(t *testing.T) {
 		Blueprint: `java_library_static {
     name: "java-protos",
     srcs: ["a.proto"],
-    libs: ["java-lib"],
+    libs: ["java-lib-1"],
+    static_libs: ["java-lib-2"],
     java_version: "7",
     sdk_version: "current",
 }
 
 java_library_static {
-    name: "java-lib",
+    name: "java-lib-1",
+    bazel_module: { bp2build_available: false },
+}
+
+java_library_static {
+    name: "java-lib-2",
     bazel_module: { bp2build_available: false },
 }
 `,
@@ -162,12 +168,19 @@ java_library_static {
 				"java_lite_proto_library",
 				"java-protos_java_proto_lite",
 				AttrNameToString{
-					"deps":         `[":java-protos_proto"]`,
+					"deps": `[":java-protos_proto"]`,
+					"additional_proto_deps": `[
+        ":java-lib-1-neverlink",
+        ":java-lib-2",
+    ]`,
 					"java_version": `"7"`,
 					"sdk_version":  `"current"`,
 				}),
 			MakeBazelTarget("java_library", "java-protos", AttrNameToString{
-				"exports":      `[":java-protos_java_proto_lite"]`,
+				"exports": `[
+        ":java-lib-2",
+        ":java-protos_java_proto_lite",
+    ]`,
 				"java_version": `"7"`,
 				"sdk_version":  `"current"`,
 			}),
