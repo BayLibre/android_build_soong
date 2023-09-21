@@ -15,7 +15,9 @@
 package bp2build
 
 import (
+	"crypto/sha256"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -32,7 +34,7 @@ import (
 )
 
 // A tree structure that describes what to do at each directory in the created
-// symlink tree. Currently it is used to enumerate which files/directories
+// symlink tree. Currently, it is used to enumerate which files/directories
 // should be excluded from symlinking. Each instance of "node" represents a file
 // or a directory. If excluded is true, then that file/directory should be
 // excluded from symlinking. Otherwise, the node is not excluded, but one of its
@@ -193,7 +195,7 @@ func symlinkIntoForest(topdir, dst, src string) uint64 {
 	srcPath := shared.JoinPath(topdir, src)
 	dstPath := shared.JoinPath(topdir, dst)
 
-	// Check if a symlink already exists.
+	// Check whether a symlink already exists.
 	if dstInfo, err := os.Lstat(dstPath); err != nil {
 		if !os.IsNotExist(err) {
 			fmt.Fprintf(os.Stderr, "Failed to lstat '%s': %s", dst, err)
@@ -240,9 +242,49 @@ func isDir(path string, fi os.FileInfo) bool {
 	return false
 }
 
+// Returns the hash of the soong_build binary to determine whether we should
+// force symlink_forest to re-execute
+// This is similar to a version number increment - but that shouldn't be required
+// for every update to this file
+func getSoongBuildHash() []byte {
+	binaryPath, err := os.Executable()
+	if err != nil {
+		fmt.Printf("error finding executable path %s\n", err)
+		os.Exit(1)
+	}
+
+	file, err := os.Open(binaryPath)
+
+	if err != nil {
+		fmt.Printf("Error opening soong build binary %s\n", err)
+		os.Exit(1)
+	}
+
+	hash := sha256.New()
+	if _, err := io.Copy(hash, file); err != nil {
+		fmt.Printf("Error computing soong build hash %s\n", err)
+		os.Exit(1)
+	}
+
+	return hash.Sum(nil)
+}
+
+func byteArrayEquals(a, b []byte) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i, v := range a {
+		if v != b[i] {
+			return false
+		}
+	}
+	return true
+}
+
 // maybeCleanSymlinkForest will remove the whole symlink forest directory if the version recorded
-// in the symlink_forest_version file is not equal to symlinkForestVersion.
-func maybeCleanSymlinkForest(topdir, forest string, verbose bool) error {
+// in the symlink_forest_version file is not equal to symlinkForestVersion, or if the soong_build
+// binary hash has changed since the last execution.
+func maybeCleanSymlinkForest(topdir, forest string, verbose bool, outDir string) error {
 	versionFilePath := shared.JoinPath(topdir, forest, "symlink_forest_version")
 	versionFileContents, err := os.ReadFile(versionFilePath)
 	if err != nil && !os.IsNotExist(err) {
@@ -259,6 +301,25 @@ func maybeCleanSymlinkForest(topdir, forest string, verbose bool) error {
 			return err
 		}
 	}
+
+	hashFilePath := shared.JoinPath(topdir, forest, "soong_build_hash")
+	hashFileContents, err := os.ReadFile(hashFilePath)
+	if err != nil && !os.IsNotExist(err) {
+		return err
+	} else if os.IsNotExist(err) {
+		// no file written - return
+		return nil
+	}
+
+	soongBuildHash := getSoongBuildHash()
+	if !byteArrayEquals(soongBuildHash, hashFileContents) {
+		fmt.Printf("new hash!\n")
+		err = os.RemoveAll(shared.JoinPath(topdir, forest))
+		if err != nil {
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -277,6 +338,19 @@ func maybeWriteVersionFile(topdir, forest string) error {
 			return err
 		}
 	}
+	return nil
+}
+
+func writeSoongBuildHashFile(topdir, forest string, contents []byte) error {
+	hashFilePath := shared.JoinPath(topdir, forest, "soong_build_hash")
+
+	err := os.WriteFile(hashFilePath, contents, 0666)
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("wrote soong build hash file\n")
+
 	return nil
 }
 
@@ -464,7 +538,7 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 // "srcDir" while excluding paths listed in "exclude". Returns the set of paths
 // under srcDir on which readdir() had to be called to produce the symlink
 // forest.
-func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles string, exclude []string) (deps []string, mkdirCount, symlinkCount uint64) {
+func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles string, exclude []string, outDir string) (deps []string, mkdirCount, symlinkCount uint64) {
 	context := &symlinkForestContext{
 		verbose:      verbose,
 		topdir:       topdir,
@@ -473,7 +547,10 @@ func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles s
 		symlinkCount: atomic.Uint64{},
 	}
 
-	err := maybeCleanSymlinkForest(topdir, forest, verbose)
+	executable, _ := os.Executable()
+	fmt.Printf("executable %s\n", executable)
+
+	err := maybeCleanSymlinkForest(topdir, forest, verbose, outDir)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
@@ -497,5 +574,12 @@ func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles s
 		os.Exit(1)
 	}
 
+	hash := getSoongBuildHash()
+
+	err = writeSoongBuildHashFile(topdir, forest, hash)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
 	return deps, context.mkdirCount.Load(), context.symlinkCount.Load()
 }
