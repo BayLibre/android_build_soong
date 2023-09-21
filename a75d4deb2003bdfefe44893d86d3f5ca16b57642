@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "576e83a8_198590e5",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1817,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-09-21T21:33:08Z",
+      "side": 1,
+      "message": "Just added a test case. Thanks for pointing this out.",
+      "parentUuid": "859860a7_418288b0",
+      "range": {
+        "startLine": 1817,
+        "startChar": 22,
+        "endLine": 1817,
+        "endChar": 44
+      },
+      "revId": "a75d4deb2003bdfefe44893d86d3f5ca16b57642",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d784f4cc_74af3c86",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-21T20:44:07Z",
       "side": 1,
       "message": "could we sort srcFilesInfo rather than iterating  over all files for all scopes (check out golang sort package: https://pkg.go.dev/sort)",
+      "range": {
+        "startLine": 1820,
+        "startChar": 0,
+        "endLine": 1822,
+        "endChar": 47
+      },
+      "revId": "a75d4deb2003bdfefe44893d86d3f5ca16b57642",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83a0564_2c5dc168",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1822,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-09-21T21:33:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d784f4cc_74af3c86",
       "range": {
         "startLine": 1820,
         "startChar": 0,
