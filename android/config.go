@@ -2077,6 +2077,52 @@ func (c *deviceConfig) CheckVendorSeappViolations() bool {
 	return Bool(c.config.productVariables.CheckVendorSeappViolations)
 }
 
+type TargetRelease int
+
+const (
+	// Order aligns with that defined in build/release/release_config_map.mk
+	Unspecified TargetRelease = iota
+	Next
+	Trunk
+	TrunkFood
+	TrunkStaging
+	Staging
+)
+
+func (c *config) TargetRelease() TargetRelease {
+	switch c.Getenv("TARGET_RELEASE") {
+	case "next":
+		return Next
+	case "trunk":
+		return Trunk
+	case "trunk_food":
+		return TrunkFood
+	case "trunk_staging":
+		return TrunkStaging
+	case "staging":
+		return Staging
+	default:
+		return Unspecified
+	}
+}
+
+func (c *config) IsNextRelease() bool {
+	return c.TargetRelease() == Next
+}
+
+func (c *config) IsTrunkRelease() bool {
+	targetRelease := c.TargetRelease()
+	return targetRelease == Trunk ||
+		targetRelease == TrunkFood ||
+		targetRelease == TrunkStaging
+}
+
+func (c *config) IsStagingRelease() bool {
+	targetRelease := c.TargetRelease()
+	return targetRelease == TrunkStaging ||
+		targetRelease == Staging
+}
+
 func (c *deviceConfig) NextReleaseHideFlaggedApi() bool {
 	return Bool(c.config.productVariables.NextReleaseHideFlaggedApi)
 }
