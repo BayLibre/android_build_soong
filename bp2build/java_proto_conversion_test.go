@@ -162,9 +162,10 @@ java_library_static {
 				"java_lite_proto_library",
 				"java-protos_java_proto_lite",
 				AttrNameToString{
-					"deps":         `[":java-protos_proto"]`,
-					"java_version": `"7"`,
-					"sdk_version":  `"current"`,
+					"deps":                  `[":java-protos_proto"]`,
+					"additional_proto_deps": `[":java-lib-neverlink"]`,
+					"java_version":          `"7"`,
+					"sdk_version":           `"current"`,
 				}),
 			MakeBazelTarget("java_library", "java-protos", AttrNameToString{
 				"exports":      `[":java-protos_java_proto_lite"]`,

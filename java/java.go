@@ -3067,7 +3067,7 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.Bp2buildMutatorContext
 		}
 	}
 
-	protoDepLabel := bp2buildProto(ctx, &m.Module, srcPartitions[protoSrcPartition])
+	protoDepLabel := bp2buildProto(ctx, &m.Module, srcPartitions[protoSrcPartition], deps)
 	// Soong does not differentiate between a java_library and the Bazel equivalent of
 	// a java_proto_library + proto_library pair. Instead, in Soong proto sources are
 	// listed directly in the srcs of a java_library, and the classes produced
