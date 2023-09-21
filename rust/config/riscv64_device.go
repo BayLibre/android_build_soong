@@ -26,7 +26,7 @@ var (
 	}
 	Riscv64ArchFeatureRustFlags = map[string][]string{
 		"riscv64": {
-			"-C target-feature=+V,+Zba,+Zbb,+Zbs",
+			"-Ctarget-feature=+V,+Zba,+Zbb,+Zbs",
 		},
 	}
 	Riscv64LinkFlags = []string{}

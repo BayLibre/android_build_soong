@@ -27,20 +27,20 @@ var (
 
 	x86ArchVariantRustFlags = map[string][]string{
 		"":              []string{},
-		"atom":          []string{"-C target-cpu=atom"},
-		"broadwell":     []string{"-C target-cpu=broadwell"},
-		"goldmont":      []string{"-C target-cpu=goldmont"},
-		"goldmont-plus": []string{"-C target-cpu=goldmont-plus"},
-		"haswell":       []string{"-C target-cpu=haswell"},
-		"ivybridge":     []string{"-C target-cpu=ivybridge"},
-		"sandybridge":   []string{"-C target-cpu=sandybridge"},
-		"silvermont":    []string{"-C target-cpu=silvermont"},
-		"skylake":       []string{"-C target-cpu=skylake"},
+		"atom":          []string{"-Ctarget-cpu=atom"},
+		"broadwell":     []string{"-Ctarget-cpu=broadwell"},
+		"goldmont":      []string{"-Ctarget-cpu=goldmont"},
+		"goldmont-plus": []string{"-Ctarget-cpu=goldmont-plus"},
+		"haswell":       []string{"-Ctarget-cpu=haswell"},
+		"ivybridge":     []string{"-Ctarget-cpu=ivybridge"},
+		"sandybridge":   []string{"-Ctarget-cpu=sandybridge"},
+		"silvermont":    []string{"-Ctarget-cpu=silvermont"},
+		"skylake":       []string{"-Ctarget-cpu=skylake"},
 		//TODO: Add target-cpu=stoneyridge when rustc supports it.
 		"stoneyridge": []string{""},
-		"tremont":     []string{"-C target-cpu=tremont"},
+		"tremont":     []string{"-Ctarget-cpu=tremont"},
 		// use prescott for x86_64, like cc/config/x86_device.go
-		"x86_64": []string{"-C target-cpu=prescott"},
+		"x86_64": []string{"-Ctarget-cpu=prescott"},
 	}
 )
 

@@ -172,11 +172,11 @@ func TestStaticBinaryFlags(t *testing.T) {
 
 	flags := fizzOut.Args["rustcFlags"]
 	linkFlags := fizzOutLink.Args["linkFlags"]
-	if !strings.Contains(flags, "-C relocation-model=static") {
-		t.Errorf("static binary missing '-C relocation-model=static' in rustcFlags, found: %#v", flags)
+	if !strings.Contains(flags, "-Crelocation-model=static") {
+		t.Errorf("static binary missing '-Crelocation-model=static' in rustcFlags, found: %#v", flags)
 	}
-	if !strings.Contains(flags, "-C panic=abort") {
-		t.Errorf("static binary missing '-C panic=abort' in rustcFlags, found: %#v", flags)
+	if !strings.Contains(flags, "-Cpanic=abort") {
+		t.Errorf("static binary missing '-Cpanic=abort' in rustcFlags, found: %#v", flags)
 	}
 	if !strings.Contains(linkFlags, "-static") {
 		t.Errorf("static binary missing '-static' in linkFlags, found: %#v", flags)

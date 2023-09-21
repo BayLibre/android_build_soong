@@ -22,7 +22,7 @@ import (
 
 var (
 	Arm64RustFlags = []string{
-		"-C force-frame-pointers=y",
+		"-Cforce-frame-pointers=y",
 	}
 	Arm64ArchFeatureRustFlags = map[string][]string{}
 	Arm64LinkFlags            = []string{}
@@ -31,14 +31,14 @@ var (
 		"armv8-a": []string{},
 		"armv8-a-branchprot": []string{
 			// branch-protection=bti,pac-ret is equivalent to Clang's mbranch-protection=standard
-			"-Z branch-protection=bti,pac-ret",
+			"-Zbranch-protection=bti,pac-ret",
 		},
 		"armv8-2a":         []string{},
 		"armv8-2a-dotprod": []string{},
 		"armv9-a": []string{
 			// branch-protection=bti,pac-ret is equivalent to Clang's mbranch-protection=standard
-			"-Z branch-protection=bti,pac-ret",
-			"-Z stack-protector=none",
+			"-Zbranch-protection=bti,pac-ret",
+			"-Zstack-protector=none",
 		},
 	}
 )
@@ -54,6 +54,7 @@ func init() {
 			strings.Join(rustFlags, " "))
 	}
 
+	ExportedVars.ExportStringListStaticVariable("DEVICE_ARM64_RUSTC_FLAGS", Arm64RustFlags)
 }
 
 type toolchainArm64 struct {

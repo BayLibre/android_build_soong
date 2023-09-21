@@ -24,10 +24,10 @@ var (
 	LinuxRustFlags     = []string{}
 	LinuxMuslRustFlags = []string{
 		// disable rustc's builtin fallbacks for crt objects
-		"-C link_self_contained=no",
+		"-Clink_self_contained=no",
 		// force rustc to use a dynamic musl libc
-		"-C target-feature=-crt-static",
-		"-Z link-native-libraries=no",
+		"-Ctarget-feature=-crt-static",
+		"-Zlink-native-libraries=no",
 	}
 	LinuxRustLinkFlags = []string{
 		"-B${cc_config.ClangBin}",

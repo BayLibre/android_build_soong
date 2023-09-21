@@ -90,7 +90,7 @@ func (binary *binaryDecorator) compilerFlags(ctx ModuleContext, flags Flags) Fla
 
 		if Bool(binary.Properties.Static_executable) {
 			flags.LinkFlags = append(flags.LinkFlags, "-static")
-			flags.RustFlags = append(flags.RustFlags, "-C relocation-model=static")
+			flags.RustFlags = append(flags.RustFlags, "-Crelocation-model=static")
 		}
 	}
 
