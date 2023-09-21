@@ -543,7 +543,7 @@ func runSymlinkForestCreation(ctx *android.Context, extraNinjaDeps []string, met
 		var symlinkForestDeps []string
 		ctx.EventHandler.Do("plant", func() {
 			symlinkForestDeps, mkdirCount, symlinkCount = bp2build.PlantSymlinkForest(
-				verbose, topDir, workspaceRoot, generatedRoot, excludedFromSymlinkForest(ctx, verbose))
+				verbose, topDir, workspaceRoot, generatedRoot, excludedFromSymlinkForest(ctx, verbose), ctx.Config().OutDir())
 		})
 		ninjaDeps = append(ninjaDeps, symlinkForestDeps...)
 	})
