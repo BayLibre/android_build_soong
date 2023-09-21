@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a5893e_26b474e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1947190
+      },
+      "writtenOn": "2023-09-21T12:35:32Z",
+      "side": 1,
+      "message": "The rc.Read([]byte) do not necessary read the whole file all at once.",
+      "revId": "66cc6b68ccd7b8137e8bd8a4a32217c6193418d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
