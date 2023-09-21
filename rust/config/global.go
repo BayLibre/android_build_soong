@@ -23,7 +23,7 @@ import (
 
 var (
 	pctx         = android.NewPackageContext("android/soong/rust/config")
-	exportedVars = android.NewExportedVariables(pctx)
+	ExportedVars = android.NewExportedVariables(pctx)
 
 	RustDefaultVersion = "1.72.0"
 	RustDefaultBase    = "prebuilts/rust/"
@@ -42,25 +42,25 @@ var (
 	}
 
 	GlobalRustFlags = []string{
-		"-Z stack-protector=strong",
-		"-Z remap-cwd-prefix=.",
-		"-C codegen-units=1",
-		"-C debuginfo=2",
-		"-C opt-level=3",
-		"-C relocation-model=pic",
-		"-C overflow-checks=on",
-		"-C force-unwind-tables=yes",
+		"-Zstack-protector=strong",
+		"-Zremap-cwd-prefix=.",
+		"-Ccodegen-units=1",
+		"-Cdebuginfo=2",
+		"-Copt-level=3",
+		"-Crelocation-model=pic",
+		"-Coverflow-checks=on",
+		"-Cforce-unwind-tables=yes",
 		// Use v0 mangling to distinguish from C++ symbols
-		"-C symbol-mangling-version=v0",
-		"--color always",
+		"-Csymbol-mangling-version=v0",
+		"--color=always",
 		"-Zdylib-lto",
-		"-Z link-native-libraries=no",
+		"-Zlink-native-libraries=no",
 	}
 
 	deviceGlobalRustFlags = []string{
-		"-C panic=abort",
+		"-Cpanic=abort",
 		// Generate additional debug info for AutoFDO
-		"-Z debug-info-for-profiling",
+		"-Zdebug-info-for-profiling",
 	}
 
 	deviceGlobalLinkFlags = []string{
@@ -106,7 +106,15 @@ func init() {
 
 	pctx.StaticVariable("DeviceGlobalLinkFlags", strings.Join(deviceGlobalLinkFlags, " "))
 
-	exportedVars.ExportStringStaticVariable("RUST_DEFAULT_VERSION", RustDefaultVersion)
+	ExportedVars.ExportStringStaticVariable("RUST_DEFAULT_VERSION", RustDefaultVersion)
+	ExportedVars.ExportStringListStaticVariable("GLOBAL_RUSTC_FLAGS", GlobalRustFlags)
+	ExportedVars.ExportStringListStaticVariable("DEVICE_GLOBAL_RUSTC_FLAGS", deviceGlobalRustFlags)
+	ExportedVars.ExportStringListStaticVariable(
+		"DEVICE_GLOBAL_RUSTC_LINK_FLAGS",
+		android.RemoveListFromList(deviceGlobalLinkFlags, []string{
+			"${cc_config.DeviceGlobalLldflags}",
+			"-B${cc_config.ClangBin}",
+		}))
 }
 
 func getRustVersionPctx(ctx android.PackageVarContext) string {
@@ -122,5 +130,5 @@ func GetRustVersion(ctx android.PathContext) string {
 
 // BazelRustToolchainVars returns a string with
 func BazelRustToolchainVars(config android.Config) string {
-	return android.BazelToolchainVars(config, exportedVars)
+	return android.BazelToolchainVars(config, ExportedVars)
 }
