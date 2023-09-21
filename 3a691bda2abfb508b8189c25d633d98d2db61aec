@@ -34,6 +34,24 @@
       "parentUuid": "91e38a77_d4003e0f",
       "revId": "3a691bda2abfb508b8189c25d633d98d2db61aec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "157d1f0e_227e05cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-09-21T09:33:01Z",
+      "side": 1,
+      "message": "- Size change: 4,339 MB -\u003e 4,371 MB (.7% increase)\n\n- re depset of jarArgs: I was hoping I would be able to make `platform_bootclasspath` also be able to deal with prebuilt `java_sdk_library`, by simply exporting a depset of srcjars from it like `java_library`. That probably would not work as well for `srcJarArgs`? OTOH `platform_bootclasspath` could be special cased to deal with both scenarios rather than be agnostic. No strong opinion from me, LMK what you think",
+      "parentUuid": "4d3527bd_f21ae709",
+      "revId": "3a691bda2abfb508b8189c25d633d98d2db61aec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
