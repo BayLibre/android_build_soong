@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e333f2df_e936408c",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-22T22:02:09Z",
+      "side": 1,
+      "message": "\u003e It will happen on any change to soong, which is extremely frequently for soong developers\n\nSHouldn\u0027t any such change require a re-analysis anyway? If you\u0027re changing soong code, you definitely need to rerun soong_build.\n\n\u003e The build system is already correct 100% of the time when there are no changes made by developers\n\nWhat does this mean? I\u0027m not sure how build system correctness is relevant if there are no changes between builds, so I\u0027m not sure what point this is trying to make.\n\n\u003e Asking developers to bump the version number on the relevant changes seems in line with asking developers to not write bugs, which is reasonable.\n\nI disagree these are the same thing. Correctness issues are worse than most bugs, because they lead to difficult-to-verify behavior.\n\nImagine someone changes a dependency of symlink_forest.go that they don\u0027t think will break symlink forest planting. It does. They run `m nothing` and everything works fine. They run presubmits, which run incremental builds, and everything seems fine. But it turns out that running `m clean \u0026\u0026 m nothing` would result in broken behavior. That\u0027s a completely plausible scenario if we rely on version number.",
+      "parentUuid": "6d68c5df_3c9d7ddb",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b014145f_3f952a1a",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 10
