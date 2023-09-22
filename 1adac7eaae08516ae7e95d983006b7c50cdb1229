@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d68c5df_3c9d7ddb",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-09-22T21:55:25Z",
+      "side": 1,
+      "message": "I think there was an attempt to move symlink forest into a separate executable as opposed to one of the modes soong_build runs in; I think that may not be trivial but in case it is trivial then hashing such a binary would be attractive.",
+      "parentUuid": "d21c3e2f_08ee7033",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b014145f_3f952a1a",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 10
