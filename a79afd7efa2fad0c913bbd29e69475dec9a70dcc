@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c7b49b_33642b8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-09-22T21:34:03Z",
+      "side": 1,
+      "message": "example error previously:  \n`received action with no command: [TranslateBuildInfo]`\nNow:  \n`received action with no command: [TranslateBuildInfo] [@bazel_tools//tools/build_defs/build_info:cc_build_info]`",
+      "revId": "a79afd7efa2fad0c913bbd29e69475dec9a70dcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
