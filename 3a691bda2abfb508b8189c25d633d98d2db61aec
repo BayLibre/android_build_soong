@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9df6ab37_f098fde9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-09-22T11:06:28Z",
+      "side": 1,
+      "message": "It\u0027s slightly more complicated as it\u0027s not just the srcs of the libraries that are included directly on the bootclasspath but also any libraries that are statically included in them.",
+      "parentUuid": "c28daede_90c8a39b",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 7
+      },
+      "revId": "3a691bda2abfb508b8189c25d633d98d2db61aec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91e38a77_d4003e0f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
