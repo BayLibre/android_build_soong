@@ -22,6 +22,30 @@
       },
       "revId": "190b6449f01ac74f811800041eacc59020d1dc6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c13907_4a388f2d",
+        "filename": "jar/jar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-09-22T10:47:16Z",
+      "side": 1,
+      "message": "Yes, error. I did make a local check for this actually, but didn\u0027t commit it. Added it back now.",
+      "parentUuid": "4aac3f11_2e2b44c4",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 176,
+        "endChar": 91
+      },
+      "revId": "190b6449f01ac74f811800041eacc59020d1dc6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
