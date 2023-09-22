@@ -1362,7 +1362,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 	var includeSrcJar android.WritablePath
 	if Bool(j.properties.Include_srcs) {
 		includeSrcJar = android.PathForModuleOut(ctx, ctx.ModuleName()+".srcjar")
-		TransformResourcesToJar(ctx, includeSrcJar, j.srcJarArgs, j.srcJarDeps)
+		TransformResourcesToJar(ctx, includeSrcJar, append(j.srcJarArgs, "-srcjar"), j.srcJarDeps)
 	}
 
 	dirArgs, dirDeps := ResourceDirsToJarArgs(ctx, j.properties.Java_resource_dirs,

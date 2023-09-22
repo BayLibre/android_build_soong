@@ -875,7 +875,7 @@ func TestIncludeSrcs(t *testing.T) {
 		t.Errorf("foo combined jars %v does not contain %q", w, g)
 	}
 
-	if g, w := fooSrcJar.Args["jarArgs"], "-C . -f a.java -f b.java -f c.java"; g != w {
+	if g, w := fooSrcJar.Args["jarArgs"], "-C . -f a.java -f b.java -f c.java -srcjar"; g != w {
 		t.Errorf("foo source jar args %q is not %q", w, g)
 	}
 
@@ -897,7 +897,7 @@ func TestIncludeSrcs(t *testing.T) {
 		t.Errorf("bar combined jars %v does not contain %q", w, g)
 	}
 
-	if g, w := barSrcJar.Args["jarArgs"], "-C . -f a.java -f b.java -f c.java"; g != w {
+	if g, w := barSrcJar.Args["jarArgs"], "-C . -f a.java -f b.java -f c.java -srcjar"; g != w {
 		t.Errorf("bar source jar args %q is not %q", w, g)
 	}
 
