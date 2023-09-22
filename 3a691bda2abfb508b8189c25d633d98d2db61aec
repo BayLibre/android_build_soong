@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91f30b41_6850601d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-09-22T11:50:16Z",
+      "side": 1,
+      "message": "`include_srcs` is not what we want. That includes the sources in the \"resource jar\". I doubt zipping up some text files is going to meaningfully slow down `checkbuild`, compared to all the other stuff it\u0027s doing. What I think matters more is perhaps space use, but I think sources compress fairly well.",
+      "parentUuid": "9df6ab37_f098fde9",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 7
+      },
+      "revId": "3a691bda2abfb508b8189c25d633d98d2db61aec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91e38a77_d4003e0f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
