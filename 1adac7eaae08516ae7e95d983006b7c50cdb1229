@@ -69,6 +69,23 @@
       "parentUuid": "b014145f_3f952a1a",
       "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "389e580b_40658cbb",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-09-22T17:53:34Z",
+      "side": 1,
+      "message": "Version checking is redundant now and should be removed.",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
