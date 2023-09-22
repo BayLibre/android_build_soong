@@ -61,6 +61,11 @@ func TestGetJavaPackage(t *testing.T) {
 			in:      "package 0foo.bar;",
 			wantErr: true,
 		},
+		{
+			name: "annotations",
+			in:   "@NonNullApi\n@X\npackage foo.bar;",
+			want: "foo.bar",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
