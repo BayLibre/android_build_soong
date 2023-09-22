@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c28daede_90c8a39b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-09-22T10:42:17Z",
+      "side": 1,
+      "message": "This is not strictly true. It doesn\u0027t *always* generate them. What it does is *always* generate a ninja rule that can be used to generate them.\n\nIt seems to me that this will make `checkbuild` take longer as we\u0027re going to be generate src jars for every library, not just the handful on the bootclasspath.\n\nThere is logic to detect whether a module is on the bootclasspath so you could use that to make this better. However, I doubt that the build team would like yet more magic in Soong. AIUI Roboleaf/Bazel prefer being explicit to magic.\n\nWhy not just add `include_srcs\u003dtrue` to every library that is part of the bootclasspath? A lot more tedious but longer term probably the best way to handle it.",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 7
+      },
+      "revId": "3a691bda2abfb508b8189c25d633d98d2db61aec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91e38a77_d4003e0f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
