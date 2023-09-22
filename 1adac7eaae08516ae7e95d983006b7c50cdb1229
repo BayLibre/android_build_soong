@@ -126,6 +126,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1793bdc_9ef72bc0",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-22T22:40:41Z",
+      "side": 1,
+      "message": "\u003e What does this mean? I\u0027m not sure how build system correctness is relevant if there are no changes between builds, so I\u0027m not sure what point this is trying to make.\n\nSoong developers.\n\n\nI tested out this change locally, and I actually didn\u0027t see any slowdown at all when changing soong / deleting and recreating the symlink forest. It seems bazel is not actually reanalyzing. So it should be fine to submit this, sorry about the confusion.",
+      "parentUuid": "e333f2df_e936408c",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b014145f_3f952a1a",
