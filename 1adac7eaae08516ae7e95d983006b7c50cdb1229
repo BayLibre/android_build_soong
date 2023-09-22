@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7b69ab_b40a9ce2",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-22T01:14:38Z",
+      "side": 1,
+      "message": "Does bazel reanalyze stuff / slow down in general when the symlink forest is deleted and recreated? I could see that being annoying for soong developers.",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b014145f_3f952a1a",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-22T01:14:38Z",
+      "side": 1,
+      "message": "If we go with this solution, you can remove all the `symlinkForestVersion` stuff.",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
