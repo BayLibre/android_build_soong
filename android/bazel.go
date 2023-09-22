@@ -600,10 +600,10 @@ func bp2buildDefaultTrueRecursively(packagePath string, config allowlists.Bp2Bui
 }
 
 func registerBp2buildConversionMutator(ctx RegisterMutatorsContext) {
-	ctx.TopDown("bp2build_conversion", bp2buildConversionMutator).Parallel()
+	ctx.BottomUp("bp2build_conversion", bp2buildConversionMutator).Parallel()
 }
 
-func bp2buildConversionMutator(ctx TopDownMutatorContext) {
+func bp2buildConversionMutator(ctx BottomUpMutatorContext) {
 	if ctx.Config().HasBazelBuildTargetInSource(ctx) {
 		// Defer to the BUILD target. Generating an additional target would
 		// cause a BUILD file conflict.
@@ -638,17 +638,6 @@ func bp2buildConversionMutator(ctx TopDownMutatorContext) {
 
 	if !ctx.Module().base().IsConvertedByBp2build() && ctx.Module().base().GetUnconvertedReason() == nil {
 		panic(fmt.Errorf("illegal bp2build invariant: module '%s' was neither converted nor marked unconvertible", ctx.ModuleName()))
-	}
-}
-
-func registerApiBp2buildConversionMutator(ctx RegisterMutatorsContext) {
-	ctx.TopDown("apiBp2build_conversion", convertWithApiBp2build).Parallel()
-}
-
-// Generate API contribution targets if the Soong module provides APIs
-func convertWithApiBp2build(ctx TopDownMutatorContext) {
-	if m, ok := ctx.Module().(ApiProvider); ok {
-		m.ConvertWithApiBp2build(ctx)
 	}
 }
 
