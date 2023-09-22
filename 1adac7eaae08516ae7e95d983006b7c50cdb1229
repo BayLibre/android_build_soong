@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d21c3e2f_08ee7033",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-22T20:48:05Z",
+      "side": 1,
+      "message": "\u003e How frequently do you think this will happen?\n\nIt will happen on any change to soong, which is extremely frequently for soong developers. Though yes, regular users won\u0027t experience this much.\n\n\u003e LINT.ifChange would have to be applied on the entirety of build/soong\n\nWhile technically any soong change could affect the symlink forest, I was thinking you\u0027d just apply that to `symlink_forest.go`, which is the only file that\u0027s likely to cause issues.\n\n\u003e It would be better for the build system to behave with correctness when possible\n\nThe build system is already correct 100% of the time when there are no changes made by developers. Asking developers to bump the version number on the relevant changes seems in line with asking developers to not write bugs, which is reasonable.",
+      "parentUuid": "436efc0d_d8c3fb94",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b014145f_3f952a1a",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 10
