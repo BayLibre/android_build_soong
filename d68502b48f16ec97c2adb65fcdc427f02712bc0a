@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54cfcb5f_aae89dfb",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2051,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-09-22T17:47:51Z",
+      "side": 1,
+      "message": "This is unused now",
+      "revId": "d68502b48f16ec97c2adb65fcdc427f02712bc0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
