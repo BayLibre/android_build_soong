@@ -147,6 +147,24 @@
       "parentUuid": "4d3527bd_f21ae709",
       "revId": "3a691bda2abfb508b8189c25d633d98d2db61aec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd1efaf9_824933a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-09-22T17:46:34Z",
+      "side": 1,
+      "message": ".7% is pretty high for rules that will never be executed 99% of the time.  It seems worth using depsets of `srcJarArgs`, and then combine it with a `merge_zips` of srcjars from `java_sdk_library` dependencies?",
+      "parentUuid": "157d1f0e_227e05cb",
+      "revId": "3a691bda2abfb508b8189c25d633d98d2db61aec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
