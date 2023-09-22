@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e7eea89_1a1baa7d",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-22T18:22:15Z",
+      "side": 1,
+      "message": "If it causes bazel reanalysis I don\u0027t think it\u0027s worth doing this change.\n\nYou can just use symlinkForestVersion instead, maybe doing the LINT.ifChange thing.\n\nOr if you could somehow limit the hash to only hash symlink_forest.go and not all of soong that would also be good. But difficult to implement.",
+      "parentUuid": "3ccd33aa_5cbfea3f",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b014145f_3f952a1a",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 10
