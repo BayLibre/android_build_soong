@@ -1186,6 +1186,11 @@ func rustMakeLibName(ctx android.ModuleContext, c cc.LinkableInterface, dep cc.L
 	return cc.MakeLibName(ctx, c, dep, depName)
 }
 
+func collectIncludedProtos(mod *Module, dep *Module) {
+	if protoMod, ok := mod.sourceProvider.(*protobufDecorator); ok {
+		protoMod.includedProtos = append(protoMod.includedProtos, includedProto{dep.CrateName()})
+	}
+}
 func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	var depPaths PathDeps
 
@@ -1301,6 +1306,8 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					CrateName: rustDep.CrateName(),
 				})
 
+				collectIncludedProtos(mod, rustDep)
+
 			case rlibDepTag:
 				rlib, ok := rustDep.compiler.(libraryInterface)
 				if !ok || !rlib.rlib() {
@@ -1314,6 +1321,8 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					Path:      rustDep.UnstrippedOutputFile(),
 					CrateName: rustDep.CrateName(),
 				})
+
+				collectIncludedProtos(mod, rustDep)
 
 			case procMacroDepTag:
 				directProcMacroDeps = append(directProcMacroDeps, rustDep)
@@ -1636,7 +1645,7 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	}
 
 	// rustlibs
-	if deps.Rustlibs != nil && !mod.compiler.Disabled() {
+	if deps.Rustlibs != nil && (!mod.compiler.Disabled() || mod.sourceProvider != nil) {
 		autoDep := mod.compiler.(autoDeppable).autoDep(ctx)
 		for _, lib := range deps.Rustlibs {
 			if autoDep.depTag == rlibDepTag {
