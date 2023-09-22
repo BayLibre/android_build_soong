@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c27fdf30_b4cd0b8b",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-22T22:05:32Z",
+      "side": 1,
+      "message": "ideally we would use `errors.Join` instead of returning a list of errors: https://pkg.go.dev/errors#Join",
+      "revId": "9e2a5a7d6d311902803997582b67b8dc1495b865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
