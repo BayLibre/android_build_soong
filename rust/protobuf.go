@@ -64,12 +64,17 @@ type ProtobufProperties struct {
 type protobufDecorator struct {
 	*BaseSourceProvider
 
-	Properties ProtobufProperties
-	protoNames []string
-	grpcNames  []string
+	Properties     ProtobufProperties
+	protoNames     []string
+	includedProtos []includedProto
+	grpcNames      []string
 
 	grpcProtoFlags android.ProtoFlags
 	protoFlags     android.ProtoFlags
+}
+
+type includedProto struct {
+	crateName string
 }
 
 func (proto *protobufDecorator) useProtobuf3() bool {
@@ -192,8 +197,14 @@ func (proto *protobufDecorator) genModFileContents() string {
 	lines := []string{
 		"// @Soong generated Source",
 	}
+
 	for _, protoName := range proto.protoNames {
 		lines = append(lines, fmt.Sprintf("pub mod %s;", protoName))
+	}
+
+	for _, additionalProtos := range proto.includedProtos {
+		lines = append(lines, fmt.Sprintf("pub use %s::*;", additionalProtos.crateName))
+
 	}
 
 	for _, grpcName := range proto.grpcNames {

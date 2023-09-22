@@ -242,7 +242,9 @@ func (library *libraryDecorator) autoDep(ctx android.BottomUpMutatorContext) aut
 		return rlibAutoDep
 	} else if library.rlib() || library.static() {
 		return rlibAutoDep
-	} else if library.dylib() || library.shared() {
+	} else if library.dylib() || library.shared() || library.source() {
+		// Default source provider variants to dylibAutoDep -- they don't link against these,
+		// this is just to provide a dep to pull additional proto sources from.
 		return dylibAutoDep
 	} else {
 		panic(fmt.Errorf("autoDep called on library %q that has no enabled variants.", ctx.ModuleName()))
