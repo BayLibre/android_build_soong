@@ -15,11 +15,15 @@
 package build
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
+	"sync"
+	"sync/atomic"
 
 	"android/soong/bazel"
 	"android/soong/ui/metrics"
@@ -48,6 +52,13 @@ const (
 	// incompatible changes, for example when moving the location of the bpglob binary that is
 	// executed during bootstrap before the primary builder has had a chance to update the path.
 	bootstrapEpoch = 1
+)
+
+var (
+	// Used during parallel update of symlinks in out directory to reflect new
+	// TOP dir.
+	symlinkWg sync.WaitGroup
+	numFound, numUpdated uint32
 )
 
 func writeEnvironmentFile(_ Context, envFile string, envDeps map[string]string) error {
@@ -465,9 +476,111 @@ func checkEnvironmentFile(ctx Context, currentEnv *Environment, envFile string) 
 	}
 }
 
+func updateSymlinks(ctx Context, dir, prevCWD, cwd string) error {
+	defer symlinkWg.Done()
+
+	visit := func(path string, f os.FileInfo, err error) error {
+		if f.IsDir() && path != dir {
+			symlinkWg.Add(1)
+			go updateSymlinks(ctx, path, prevCWD, cwd)
+			return filepath.SkipDir
+		}
+		if f.Mode()&os.ModeSymlink == os.ModeSymlink {
+			atomic.AddUint32(&numFound, 1)
+			target, err := os.Readlink(path)
+			if err != nil {
+				return err
+			}
+			if strings.HasPrefix(target, prevCWD) {
+				target = strings.ReplaceAll(target, prevCWD, cwd)
+				if err := os.Remove(path); err != nil {
+					return err
+				}
+				if err := os.Symlink(target, path); err != nil {
+					return err
+				}
+				atomic.AddUint32(&numUpdated, 1)
+			}
+		}
+		return nil
+	}
+
+	if err := filepath.Walk(dir, visit); err != nil {
+		return err
+	}
+	return nil
+}
+
+type soongEnv struct {
+	Key   string `json:"Key"`
+	Value string `json:"Value"`
+}
+
+func fixOutDirSymlinks(ctx Context, config Config, outDir string) error {
+	cwd, err := os.Getwd()
+	if err != nil {
+		return err
+	}
+
+	// Read prev PWD from out/soong/soong.environment.used JSON file.
+	var prevCWD string
+	var envVars []soongEnv
+	envVarsFilePath := filepath.Join(config.OutDir(), "soong/soong.environment.available")
+	envVarsContents, err := ioutil.ReadFile(envVarsFilePath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return nil
+		}
+		return err
+	}
+	if err := json.Unmarshal(envVarsContents, &envVars); err != nil {
+		return err
+	}
+	for _, ev := range envVars {
+		if ev.Key == "PWD" {
+			prevCWD = ev.Value
+			break
+		}
+	}
+
+	if prevCWD == "" || prevCWD == cwd {
+		// We are in the same source dir, nothing to update.
+		return nil
+	}
+
+	symlinkWg.Add(1)
+	if err := updateSymlinks(ctx, outDir, prevCWD, cwd); err != nil {
+		ctx.Fatalln(err)
+	}
+	symlinkWg.Wait()
+	ctx.Println(fmt.Sprintf("Updated %d/%d symlinks in dir %v", numUpdated, numFound, outDir))
+	return nil
+}
+
+func migrateOutputSymlinks(ctx Context, config Config) error {
+	// Figure out the real out directory ("out" could be a symlink).
+	outDir := config.OutDir()
+	s, err := os.Lstat(outDir)
+	if err != nil {
+		return err
+	}
+	if s.Mode()&os.ModeSymlink == os.ModeSymlink {
+		target, err := filepath.EvalSymlinks(outDir)
+		if err != nil {
+			return err
+		}
+		outDir = target
+	}
+	return fixOutDirSymlinks(ctx, config, outDir)
+}
+
 func runSoong(ctx Context, config Config) {
 	ctx.BeginTrace(metrics.RunSoong, "soong")
 	defer ctx.EndTrace()
+
+	if err := migrateOutputSymlinks(ctx, config); err != nil {
+		ctx.Fatalf("failed to migrate output directory to current TOP dir: %v", err)
+	}
 
 	// We have two environment files: .available is the one with every variable,
 	// .used with the ones that were actually used. The latter is used to
