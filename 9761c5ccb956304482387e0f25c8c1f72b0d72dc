@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b3a75b_db2ded26",
+        "filename": "bp2build/android_app_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-09-22T14:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daacb83c_6395c076",
+      "range": {
+        "startLine": 527,
+        "startChar": 2,
+        "endLine": 527,
+        "endChar": 81
+      },
+      "revId": "9761c5ccb956304482387e0f25c8c1f72b0d72dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea8a779d_8ee506af",
@@ -71,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "781e8b45_723239e2",
+        "filename": "bp2build/android_app_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-09-22T14:28:15Z",
+      "side": 1,
+      "message": "yes but ended up removing the test cases since I\u0027m no longer creating an error in response to Liz\u0027s comment.",
+      "parentUuid": "b4bd21bc_a5d1db1a",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 1
+      },
+      "revId": "9761c5ccb956304482387e0f25c8c1f72b0d72dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cda97062_02745098",
@@ -84,6 +132,30 @@
       "writtenOn": "2023-09-20T13:35:44Z",
       "side": 1,
       "message": "To add to Liz\u0027s comment you can use the model from l.1716-1719 above to return early and ensure we don\u0027t convert the module if it uses an unsupported property",
+      "range": {
+        "startLine": 1720,
+        "startChar": 1,
+        "endLine": 1720,
+        "endChar": 44
+      },
+      "revId": "9761c5ccb956304482387e0f25c8c1f72b0d72dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e395f39_0729cf34",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1720,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-09-22T14:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cda97062_02745098",
       "range": {
         "startLine": 1720,
         "startChar": 1,
