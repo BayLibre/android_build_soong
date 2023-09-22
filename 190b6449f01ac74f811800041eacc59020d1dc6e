@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aac3f11_2e2b44c4",
+        "filename": "jar/jar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-09-22T10:35:34Z",
+      "side": 1,
+      "message": "What does it do with such an annotation? Presumably error?\n\nCould you add a test to verify that?",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 176,
+        "endChar": 91
+      },
+      "revId": "190b6449f01ac74f811800041eacc59020d1dc6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
