@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "436efc0d_d8c3fb94",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-22T19:16:09Z",
+      "side": 1,
+      "message": "\u003e Does bazel reanalyze stuff / slow down in general when the symlink forest is deleted and recreated?\n\nCan we avoid having bazel reanalyze, and just have symlink forest rerun? (We run the symlink forest regenerator on a code change, but only touch each output if it has changed). \n\n\u003e If it causes bazel reanalysis I don\u0027t think it\u0027s worth doing this change.\n\nWhy? How frequently do you think this will happen? I anticipate that users will only experience such a reanalysis on a sync (with a build system change), which almost always results in a reanalysis anyway.\n\n\u003e You can just use symlinkForestVersion instead, maybe doing the LINT.ifChange thing.\n\nThis is a very manual option that I don\u0027t think is sufficient. symlink_forest.go is not a standalone binary -- it has a whole tree of dependencies, and if any of those dependencies change, it might cause a change in symlink forest regeneration. Enforcing LINT.ifChange is not sufficient to work around a correctness bug.\n\n1. LINT.ifChange would have to be applied on the entirety of build/soong and its dependencies to truly \n2. This does not prevent *local* changes causing correctness bugs, a potential source of confusion for local build system development.\n\nIt would be better for the build system to behave with correctness when possible, without such manual hacks. The approach of bumping a version manually with the build system changes is a decent hack for an expedient solution, or to cut corners in the name of efficiency, but we should investigate other approaches.",
+      "parentUuid": "1e7eea89_1a1baa7d",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b014145f_3f952a1a",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 10
