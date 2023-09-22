@@ -463,6 +463,7 @@ var (
 		"external/bazelbuild-rules_go":/* recursive = */ true,
 		"external/bazelbuild-rules_python":/* recursive = */ true,
 		"external/bazelbuild-rules_rust":/* recursive = */ true,
+		"external/bazelbuild-rules_testing":/* recursive = */ true,
 		"external/bazelbuild-kotlin-rules":/* recursive = */ true,
 		"external/bazel-skylib":/* recursive = */ true,
 		"external/protobuf":/* recursive = */ false,
@@ -969,8 +970,8 @@ var (
 		"java_sdk_library_import",
 		"license",
 		"linker_config",
-		"ndk_library",
 		"ndk_headers",
+		"ndk_library",
 		"sysprop_library",
 		"xsd_config",
 		// go/keep-sorted end
