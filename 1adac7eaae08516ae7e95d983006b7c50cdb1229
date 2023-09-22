@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ccd33aa_5cbfea3f",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-22T14:32:08Z",
+      "side": 1,
+      "message": "Yes. I mimicked what was used for symlink_forest_version.\n\nI\u0027m not sure what a better option is. I suppose we could add a flag to disable (or just let developers toggle it themselves)",
+      "parentUuid": "ca7b69ab_b40a9ce2",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b014145f_3f952a1a",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 10
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-22T01:14:38Z",
       "side": 1,
       "message": "If we go with this solution, you can remove all the `symlinkForestVersion` stuff.",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "852c47d3_e08e334e",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-22T14:32:08Z",
+      "side": 1,
+      "message": "I plan on doing this in a future CL. Sound ok?",
+      "parentUuid": "b014145f_3f952a1a",
       "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
