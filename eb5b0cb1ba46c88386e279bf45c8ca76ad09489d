@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "356e11db_e29beec2",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-22T13:01:20Z",
+      "side": 1,
+      "message": "nit: godocs for exported functions please 😊\n\nThe name seems to be a map to the index or ordering, clarifying the name a bit beyond Map would be helpful",
+      "range": {
+        "startLine": 289,
+        "startChar": 24,
+        "endLine": 289,
+        "endChar": 28
+      },
+      "revId": "eb5b0cb1ba46c88386e279bf45c8ca76ad09489d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
