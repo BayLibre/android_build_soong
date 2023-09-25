@@ -218,6 +218,18 @@ func InitBazelModule(module BazelModule) {
 	module.bazelProps().Bazel_module.CanConvertToBazel = true
 }
 
+// InitBazelModuleWithLabel is a wrapper function that decorates a BazelModule with Bazel-conversion
+// properties, and registers that the module should be treated like it has a handcrafted bazel
+// target in its package with the given target name.
+func InitBazelModuleAsHandcrafted(module BazelModule, targetName string) {
+	module.AddProperties(module.bazelProps())
+	module.bazelProps().Bazel_module.CanConvertToBazel = true
+	AddLoadHook(module, func(ctx LoadHookContext) {
+		label := fmt.Sprintf("//%s:%s", ctx.ModuleDir(), targetName)
+		module.bazelProps().Bazel_module.Label = &label
+	})
+}
+
 // bazelProps returns the Bazel properties for the given BazelModuleBase.
 func (b *BazelModuleBase) bazelProps() *properties {
 	return &b.bazelProperties
