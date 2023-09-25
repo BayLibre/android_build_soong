@@ -34,6 +34,24 @@
       "parentUuid": "e5b602f4_9c030d7f",
       "revId": "b2d9b12f9568b8d73ad0201ee0efddf4dd687b5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f93ace17_55c9b996",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-09-25T14:15:20Z",
+      "side": 1,
+      "message": "Uploaded the actual fix for this: aosp/2761547",
+      "parentUuid": "2f16b203_4c5cbe13",
+      "revId": "b2d9b12f9568b8d73ad0201ee0efddf4dd687b5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
