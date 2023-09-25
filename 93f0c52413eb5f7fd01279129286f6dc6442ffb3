@@ -33,6 +33,24 @@
       "message": "Should no longer be needed after https://android-review.git.corp.google.com/q/topic:%22bazel_min_target_sdk%22",
       "revId": "93f0c52413eb5f7fd01279129286f6dc6442ffb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d87343c_46fec959",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-25T12:29:24Z",
+      "side": 1,
+      "message": "Yup, works great now. Thanks!",
+      "parentUuid": "194c4be9_dfb2a709",
+      "revId": "93f0c52413eb5f7fd01279129286f6dc6442ffb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
