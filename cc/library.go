@@ -1907,7 +1907,8 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 		library.sAbiOutputFile = transformDumpToLinkedDump(ctx, objs.sAbiDumpFiles, soFile, fileName, exportedHeaderFlags,
 			android.OptionalPathForModuleSrc(ctx, library.symbolFileForAbiCheck(ctx)),
 			headerAbiChecker.Exclude_symbol_versions,
-			headerAbiChecker.Exclude_symbol_tags)
+			headerAbiChecker.Exclude_symbol_tags,
+			currVersion)
 
 		addLsdumpPath(classifySourceAbiDump(ctx) + ":" + library.sAbiOutputFile.String())
 
@@ -1930,7 +1931,6 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 			}
 		}
 		// Check against the current version.
-		currVersion := currRefAbiDumpVersion(ctx, isVndk)
 		currDumpDir := filepath.Join(dumpDir, currVersion, binderBitness)
 		currDumpFile := getRefAbiDumpFile(ctx, currDumpDir, fileName)
 		if currDumpFile.Valid() {
