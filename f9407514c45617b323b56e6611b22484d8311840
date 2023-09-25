@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dca4243_5a04110d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-09-25T17:16:08Z",
+      "side": 1,
+      "message": "The failure is legit but easy to fix. Wonder if there\u0027s a lot of those .. possibly anything that uses `include_srcs:true` could need updating.",
+      "revId": "f9407514c45617b323b56e6611b22484d8311840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
