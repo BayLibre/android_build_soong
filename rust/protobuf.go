@@ -305,7 +305,12 @@ func protoLibraryBp2build(ctx android.Bp2buildMutatorContext, m *Module) {
 		},
 	}
 
-	ctx.CreateBazelTargetModule(
+	// TODO(b/295918553): Remove androidRestriction after rust toolchain for android
+	// is checked in.
+	var androidRestriction bazel.BoolAttribute
+	androidRestriction.SetSelectValue(bazel.OsConfigurationAxis, "android", proptools.BoolPtr(false))
+
+	ctx.CreateBazelTargetModuleWithRestrictions(
 		bazel.BazelTargetModuleProperties{
 			Rule_class: "proto_library",
 		},
@@ -317,9 +322,10 @@ func protoLibraryBp2build(ctx android.Bp2buildMutatorContext, m *Module) {
 				android.BazelLabelForModuleSrc(ctx, protoFiles),
 			),
 		},
+		androidRestriction,
 	)
 
-	ctx.CreateBazelTargetModule(
+	ctx.CreateBazelTargetModuleWithRestrictions(
 		bazel.BazelTargetModuleProperties{
 			Rule_class:        "rust_proto_library",
 			Bzl_load_location: "@rules_rust//proto/protobuf:defs.bzl",
@@ -333,5 +339,6 @@ func protoLibraryBp2build(ctx android.Bp2buildMutatorContext, m *Module) {
 			},
 			Deps: protoDeps,
 		},
+		androidRestriction,
 	)
 }
