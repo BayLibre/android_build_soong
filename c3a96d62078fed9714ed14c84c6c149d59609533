@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "437210d2_b6460222",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1698,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-25T15:10:15Z",
+      "side": 1,
+      "message": "optional compare to `a.dexProperties.Optimize.EnabledByDefault` instead of hard-coding module types here and below?",
+      "range": {
+        "startLine": 1698,
+        "startChar": 5,
+        "endLine": 1698,
+        "endChar": 26
+      },
+      "revId": "c3a96d62078fed9714ed14c84c6c149d59609533",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
