@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdcf5795_943a04d5",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1700,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-09-25T15:53:13Z",
+      "side": 1,
+      "message": "Could this all (and the below else) just be\n```\nif a.dexProperties.Optimize.Enabled !\u003d nil \u0026\u0026\na.dexProperties.Optimize.Enabled !\u003d a.dexer.effectiveOptimizeEnabled() {\nappAttrs.Optimize \u003d a.dexProperties.Optimize.Enabled\n}\n```\n\nmodulo making `effectiveOptimizeEnabled` visible and making sure that the defaults are also correct on the bazel side? I may not have thought this through thoroughly enough, either way lgtm ^^",
+      "range": {
+        "startLine": 1690,
+        "startChar": 0,
+        "endLine": 1700,
+        "endChar": 3
+      },
+      "revId": "65229207d1d7a0185eec1bb293f129f77d7c1ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
