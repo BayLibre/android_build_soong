@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b9f167_c09bf49b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-09-25T14:16:06Z",
+      "side": 1,
+      "message": "Uploaded this fix instead of aosp/2628769",
+      "revId": "a05a4f6f87956454a712bd0f7001b9349ef20903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
