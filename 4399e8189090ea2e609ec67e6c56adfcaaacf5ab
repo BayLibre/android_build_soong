@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de99fdb2_03256998",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 2019272
+      },
+      "writtenOn": "2023-09-25T09:12:54Z",
+      "side": 1,
+      "message": "I think there might be an issue with this check. Imagine target is `/some/directory` and prevCwd is `/some/dir`, while it has the prefix - it is incorrect to update such symlink.\n\nWe usually do such check as:\n1. Ensure that prevCWD does not end with slash\n2. strings.HasPrefix(target, prevCWD) \u0026\u0026 (len(target) \u003d\u003d len(prevCWD) || target[len(prevCWD)] \u003d\u003d \u0027/\u0027)",
+      "revId": "4399e8189090ea2e609ec67e6c56adfcaaacf5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aee4b91_4a2f0ffc",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 2019272
+      },
+      "writtenOn": "2023-09-25T09:12:54Z",
+      "side": 1,
+      "message": "I think we should do the replacement in the same way as prefix check.\nImagine target is \"/android/some/path/android\" and prevCWD is \"/android\", so ReplaceAll will do the wrong thing here, but\n\n`filepath.Join(cwd, target[len(prevCWD):])` - will be correct and even a bit faster\n\n(I am not a go-expert)",
+      "revId": "4399e8189090ea2e609ec67e6c56adfcaaacf5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d696695_abe94f7a",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 2019272
+      },
+      "writtenOn": "2023-09-25T09:12:54Z",
+      "side": 1,
+      "message": "Comment mentions `soong.environment.used` but code seems to read `soong.environment.available`",
+      "revId": "4399e8189090ea2e609ec67e6c56adfcaaacf5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
