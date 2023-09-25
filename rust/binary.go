@@ -146,7 +146,6 @@ func (binary *binaryDecorator) compile(ctx ModuleContext, flags Flags, deps Path
 
 	flags.RustFlags = append(flags.RustFlags, deps.depFlags...)
 	flags.LinkFlags = append(flags.LinkFlags, deps.depLinkFlags...)
-	flags.LinkFlags = append(flags.LinkFlags, deps.linkObjects...)
 
 	if binary.stripper.NeedsStrip(ctx) {
 		strippedOutputFile := outputFile
@@ -157,7 +156,7 @@ func (binary *binaryDecorator) compile(ctx ModuleContext, flags Flags, deps Path
 	}
 	binary.baseCompiler.unstrippedOutputFile = outputFile
 
-	ret.kytheFile = TransformSrcToBinary(ctx, crateRootPath, deps, flags, outputFile).kytheFile
+	ret.kytheFile = TransformSrcToBinary(ctx, binary, crateRootPath, deps, flags, outputFile).kytheFile
 	return ret
 }
 
