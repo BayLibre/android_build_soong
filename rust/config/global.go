@@ -92,23 +92,14 @@ var (
 )
 
 func init() {
-	pctx.SourcePathVariable("RustDefaultBase", RustDefaultBase)
-	pctx.VariableConfigMethod("HostPrebuiltTag", HostPrebuiltTag)
-
-	pctx.VariableFunc("RustBase", func(ctx android.PackageVarContext) string {
-		if override := ctx.Config().Getenv("RUST_PREBUILTS_BASE"); override != "" {
-			return override
-		}
-		return "${RustDefaultBase}"
-	})
-
-	pctx.VariableFunc("RustVersion", getRustVersionPctx)
-
-	pctx.StaticVariable("RustPath", "${RustBase}/${HostPrebuiltTag}/${RustVersion}")
-	pctx.StaticVariable("RustBin", "${RustPath}/bin")
-
 	pctx.ImportAs("cc_config", "android/soong/cc/config")
-	pctx.StaticVariable("RustLinker", "${cc_config.ClangBin}/clang++")
+
+	pctx.VariableConfigMethod("HostPrebuiltTag", HostPrebuiltTag)
+	pctx.VariableConfigMethod("RustBase", rustBase)
+	pctx.VariableFunc("RustPath", func(ctx android.PackageVarContext) string {
+		return rustPath(ctx).String()
+	})
+	pctx.StaticVariable("RustBin", "${RustPath}/bin")
 
 	pctx.StaticVariable("DeviceGlobalLinkFlags", strings.Join(deviceGlobalLinkFlags, " "))
 
@@ -147,4 +138,27 @@ func GetRustVersion(ctx android.PathContext) string {
 // BazelRustToolchainVars returns a string with
 func BazelRustToolchainVars(config android.Config) string {
 	return android.BazelToolchainVars(config, ExportedVars)
+}
+
+func RustPath(ctx android.PathContext, file string) android.SourcePath {
+	type rustToolKey string
+	key := android.NewCustomOnceKey(rustToolKey(file))
+	return ctx.Config().OnceSourcePath(key, func() android.SourcePath {
+		return rustPath(ctx).Join(ctx, file)
+	})
+}
+
+var rustPathKey = android.NewOnceKey("clangPath")
+
+func rustBase(config android.Config) string {
+	if override := config.Getenv("RUST_PREBUILTS_BASE"); override != "" {
+		return override
+	}
+	return RustDefaultBase
+}
+
+func rustPath(ctx android.PathContext) android.SourcePath {
+	return ctx.Config().OnceSourcePath(rustPathKey, func() android.SourcePath {
+		return android.PathForSource(ctx, rustBase(ctx.Config()), HostPrebuiltTag(ctx.Config()), GetRustVersion(ctx))
+	})
 }
