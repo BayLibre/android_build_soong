@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "640c0394_129e276c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-09-25T16:14:54Z",
+      "side": 1,
+      "message": "To avoid a reoccurence of b/301463284 when relanding this you\u0027ll need to avoid leaving the old files around.  That could either mean making the new files use the same names as the old files, or using a CleanSpec.mk entry (which may be difficult to target accurately).",
+      "revId": "32f48c98f7705996118d6f48d5f05a17a08a8837",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
