@@ -63,11 +63,14 @@ var rustMockedFiles = android.MockFS{
 
 // testRust returns a TestContext in which a basic environment has been setup.
 // This environment contains a few mocked files. See rustMockedFiles for the list of these files.
-func testRust(t *testing.T, bp string) *android.TestContext {
+func testRust(t *testing.T, bp string, preparers ...android.FixturePreparer) *android.TestContext {
 	skipTestIfOsNotSupported(t)
 	result := android.GroupFixturePreparers(
 		prepareForRustTest,
 		rustMockedFiles.AddToFixture(),
+		android.GroupFixturePreparers(
+			preparers...,
+		),
 	).
 		RunTestWithBp(t, bp)
 	return result.TestContext
@@ -199,11 +202,11 @@ func skipTestIfOsNotSupported(t *testing.T) {
 // Test that we can extract the link path from a lib path.
 func TestLinkPathFromFilePath(t *testing.T) {
 	barPath := android.PathForTesting("out/soong/.intermediates/external/libbar/libbar/linux_glibc_x86_64_shared/libbar.so")
-	libName := linkPathFromFilePath(barPath)
-	expectedResult := "out/soong/.intermediates/external/libbar/libbar/linux_glibc_x86_64_shared/"
+	libName := barPath.Dir()
+	expectedResult := "out/soong/.intermediates/external/libbar/libbar/linux_glibc_x86_64_shared"
 
-	if libName != expectedResult {
-		t.Errorf("libNameFromFilePath returned the wrong name; expected '%#v', got '%#v'", expectedResult, libName)
+	if libName.String() != expectedResult {
+		t.Errorf("libNameFromFilePath returned the wrong name; expected '%#v', got '%#v'", expectedResult, libName.String())
 	}
 }
 
@@ -253,6 +256,7 @@ func TestDepsTracking(t *testing.T) {
 	`)
 	module := ctx.ModuleForTests("fizz-buzz", "linux_glibc_x86_64").Module().(*Module)
 	rustc := ctx.ModuleForTests("librlib", "linux_glibc_x86_64_rlib_rlib-std").Rule("rustc")
+	rustLink := ctx.ModuleForTests("fizz-buzz", "linux_glibc_x86_64").Rule("rustc")
 
 	// Since dependencies are added to AndroidMk* properties, we can check these to see if they've been picked up.
 	if !android.InList("librlib.rlib-std", module.Properties.AndroidMkRlibs) {
@@ -271,16 +275,16 @@ func TestDepsTracking(t *testing.T) {
 		t.Errorf("Static library dependency not detected (dependency missing from AndroidMkStaticLibs)")
 	}
 
-	if !strings.Contains(rustc.Args["rustcFlags"], "-lstatic=wholestatic") {
-		t.Errorf("-lstatic flag not being passed to rustc for static library %#v", rustc.Args["rustcFlags"])
+	if !strings.Contains(rustc.RuleParams.Command, "-lstatic=wholestatic") {
+		t.Errorf("-lstatic flag not being passed to rustc for static library %#v", rustc.RuleParams.Command)
 	}
 
-	if !strings.Contains(rustc.Args["linkFlags"], "cc_stubs_dep.so") {
-		t.Errorf("shared cc_library not being passed to rustc linkFlags %#v", rustc.Args["linkFlags"])
+	if !strings.Contains(rustLink.RuleParams.Command, "cc_stubs_dep.so") {
+		t.Errorf("shared cc_library not being passed to rustc linkFlags %#v", rustLink.RuleParams.Command)
 	}
 
-	if !android.SuffixInList(rustc.OrderOnly.Strings(), "cc_stubs_dep.so") {
-		t.Errorf("shared cc dep not being passed as order-only to rustc %#v", rustc.OrderOnly.Strings())
+	if !android.SuffixInList(rustLink.Implicits.Strings(), "cc_stubs_dep.so") {
+		t.Errorf("shared cc dep not being passed as implicit to rustc %#v", rustLink.OrderOnly.Strings())
 	}
 
 	if !android.SuffixInList(rustc.Implicits.Strings(), "cc_stubs_dep.so.toc") {
@@ -423,7 +427,7 @@ func TestProcMacroDeviceDeps(t *testing.T) {
 	`)
 	rustc := ctx.ModuleForTests("libpm", "linux_glibc_x86_64").Rule("rustc")
 
-	if !strings.Contains(rustc.Args["libFlags"], "libbar/linux_glibc_x86_64") {
+	if !strings.Contains(rustc.RuleParams.Command, "libbar/linux_glibc_x86_64") {
 		t.Errorf("Proc_macro is not using host variant of dependent modules.")
 	}
 }
