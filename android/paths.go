@@ -213,6 +213,9 @@ type Path interface {
 	// Base returns the last element of the path
 	Base() string
 
+	// Dir returns a path pointing the directory containing the path
+	Dir() Path
+
 	// Rel returns the portion of the path relative to the directory it was created from.  For
 	// example, Rel on a PathsForModuleSrc would return the path relative to the module source
 	// directory, and OutputPath.Join("foo").Rel() would return "foo".
@@ -1054,6 +1057,12 @@ func (p basePath) Base() string {
 	return filepath.Base(p.path)
 }
 
+func (p basePath) Dir() Path {
+	p.path = filepath.Dir(p.path)
+	p.rel = filepath.Dir(p.rel)
+	return p
+}
+
 func (p basePath) Rel() string {
 	if p.rel != "" {
 		return p.rel
@@ -1085,6 +1094,11 @@ var _ Path = SourcePath{}
 
 func (p SourcePath) withRel(rel string) SourcePath {
 	p.basePath = p.basePath.withRel(rel)
+	return p
+}
+
+func (p SourcePath) Dir() Path {
+	p.basePath = p.basePath.Dir().(basePath)
 	return p
 }
 
@@ -1290,6 +1304,12 @@ func (p OutputPath) withRel(rel string) OutputPath {
 	return p
 }
 
+func (p OutputPath) Dir() Path {
+	p.basePath = p.basePath.Dir().(basePath)
+	p.fullPath = filepath.Dir(p.fullPath)
+	return p
+}
+
 func (p OutputPath) WithoutRel() OutputPath {
 	p.basePath.rel = filepath.Base(p.basePath.path)
 	return p
@@ -1320,6 +1340,11 @@ var _ objPathProvider = OutputPath{}
 // toolDepPath is a Path representing a dependency of the build tool.
 type toolDepPath struct {
 	basePath
+}
+
+func (p toolDepPath) Dir() Path {
+	p.basePath = p.basePath.Dir().(basePath)
+	return p
 }
 
 func (t toolDepPath) RelativeToTop() Path {
@@ -1505,6 +1530,11 @@ type ModuleOutPath struct {
 	OutputPath
 }
 
+func (p ModuleOutPath) Dir() Path {
+	p.OutputPath = p.OutputPath.Dir().(OutputPath)
+	return p
+}
+
 func (p ModuleOutPath) RelativeToTop() Path {
 	p.OutputPath = p.outputPathRelativeToTop()
 	return p
@@ -1549,6 +1579,11 @@ type ModuleGenPath struct {
 	ModuleOutPath
 }
 
+func (p ModuleGenPath) Dir() Path {
+	p.ModuleOutPath = p.ModuleOutPath.Dir().(ModuleOutPath)
+	return p
+}
+
 func (p ModuleGenPath) RelativeToTop() Path {
 	p.OutputPath = p.outputPathRelativeToTop()
 	return p
@@ -1588,6 +1623,11 @@ type ModuleObjPath struct {
 	ModuleOutPath
 }
 
+func (p ModuleObjPath) Dir() Path {
+	p.ModuleOutPath = p.ModuleOutPath.Dir().(ModuleOutPath)
+	return p
+}
+
 func (p ModuleObjPath) RelativeToTop() Path {
 	p.OutputPath = p.outputPathRelativeToTop()
 	return p
@@ -1610,6 +1650,11 @@ func PathForModuleObj(ctx ModuleOutPathContext, pathComponents ...string) Module
 // output directory.
 type ModuleResPath struct {
 	ModuleOutPath
+}
+
+func (p ModuleResPath) Dir() Path {
+	p.ModuleOutPath = p.ModuleOutPath.Dir().(ModuleOutPath)
+	return p
 }
 
 func (p ModuleResPath) RelativeToTop() Path {
@@ -1646,6 +1691,11 @@ type InstallPath struct {
 
 	// makePath indicates whether this path is for Soong (false) or Make (true).
 	makePath bool
+}
+
+func (p InstallPath) Dir() Path {
+	p.basePath = p.basePath.Dir().(basePath)
+	return p
 }
 
 // Will panic if called from outside a test environment.
@@ -1956,6 +2006,11 @@ type PhonyPath struct {
 	basePath
 }
 
+func (p PhonyPath) Dir() Path {
+	p.basePath = p.basePath.Dir().(basePath)
+	return p
+}
+
 func (p PhonyPath) writablePath() {}
 
 func (p PhonyPath) getSoongOutDir() string {
@@ -1979,6 +2034,11 @@ var _ WritablePath = PhonyPath{}
 
 type testPath struct {
 	basePath
+}
+
+func (p testPath) Dir() Path {
+	p.basePath = p.basePath.Dir().(basePath)
+	return p
 }
 
 func (p testPath) RelativeToTop() Path {
