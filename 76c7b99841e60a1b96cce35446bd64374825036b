@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c606c50_e8c6886e",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-25T13:53:57Z",
+      "side": 1,
+      "message": "should we have allowlisting of which modules can support this for now?",
+      "range": {
+        "startLine": 445,
+        "startChar": 4,
+        "endLine": 445,
+        "endChar": 7
+      },
+      "revId": "76c7b99841e60a1b96cce35446bd64374825036b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8371d8b6_2671825b",
+        "filename": "bp2build/android_app_conversion_test.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-25T13:53:57Z",
+      "side": 1,
+      "message": "Can you also add some test of depending on framework-res with tags?",
+      "range": {
+        "startLine": 482,
+        "startChar": 5,
+        "endLine": 482,
+        "endChar": 31
+      },
+      "revId": "76c7b99841e60a1b96cce35446bd64374825036b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bf9675b_96d1e86b",
+        "filename": "java/app.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1686,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-25T13:53:57Z",
+      "side": 1,
+      "message": "can you leave a comment about why we return early for framework-res?",
+      "range": {
+        "startLine": 1686,
+        "startChar": 1,
+        "endLine": 1686,
+        "endChar": 41
+      },
+      "revId": "76c7b99841e60a1b96cce35446bd64374825036b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
