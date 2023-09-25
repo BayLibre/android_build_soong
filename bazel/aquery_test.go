@@ -178,8 +178,8 @@ func TestInvalidOutputId(t *testing.T) {
    { "id": 2, "path_fragment_id": 2 }],
  "actions": [{
    "target_id": 1,
-   "action_key": "x",
-   "mnemonic": "x",
+   "action_key": "action_x",
+   "mnemonic": "X",
    "arguments": ["touch", "foo"],
    "input_dep_set_ids": [1],
    "output_ids": [3],
@@ -198,7 +198,7 @@ func TestInvalidOutputId(t *testing.T) {
 		return
 	}
 	_, _, err = AqueryBuildStatements(data, &metrics.EventHandler{})
-	assertError(t, err, "undefined outputId 3")
+	assertError(t, err, "undefined outputId 3: [X] []")
 }
 
 func TestInvalidInputDepsetIdFromAction(t *testing.T) {
@@ -209,12 +209,16 @@ func TestInvalidInputDepsetIdFromAction(t *testing.T) {
    { "id": 2, "path_fragment_id": 2 }],
  "actions": [{
    "target_id": 1,
-   "action_key": "x",
-   "mnemonic": "x",
+   "action_key": "action_x",
+   "mnemonic": "X",
    "arguments": ["touch", "foo"],
    "input_dep_set_ids": [2],
    "output_ids": [1],
    "primary_output_id": 1
+ }],
+ "targets": [{
+   "id": 1,
+   "label": "target_x"
  }],
  "dep_set_of_files": [
    { "id": 1, "direct_artifact_ids": [1, 2] }],
@@ -229,7 +233,7 @@ func TestInvalidInputDepsetIdFromAction(t *testing.T) {
 		return
 	}
 	_, _, err = AqueryBuildStatements(data, &metrics.EventHandler{})
-	assertError(t, err, "undefined (not even empty) input depsetId 2")
+	assertError(t, err, "undefined (not even empty) input depsetId 2: [X] [target_x]")
 }
 
 func TestInvalidInputDepsetIdFromDepset(t *testing.T) {
@@ -383,8 +387,8 @@ func TestMultipleDepfiles(t *testing.T) {
    { "id": 4, "path_fragment_id": 4 }],
  "actions": [{
    "target_id": 1,
-   "action_key": "x",
-   "mnemonic": "x",
+   "action_key": "action_x",
+   "mnemonic": "X",
    "arguments": ["touch", "foo"],
    "input_dep_set_ids": [1],
    "output_ids": [2,3,4],
@@ -407,7 +411,7 @@ func TestMultipleDepfiles(t *testing.T) {
 		return
 	}
 	_, _, err = AqueryBuildStatements(data, &metrics.EventHandler{})
-	assertError(t, err, `found multiple potential depfiles "two.d", "other.d"`)
+	assertError(t, err, `found multiple potential depfiles "two.d", "other.d": [X] []`)
 }
 
 func TestTransitiveInputDepsets(t *testing.T) {
@@ -939,7 +943,7 @@ func TestSymlinkMultipleInputs(t *testing.T) {
    { "id": 3, "path_fragment_id": 3 }],
  "actions": [{
    "target_id": 1,
-   "action_key": "x",
+   "action_key": "action_x",
    "mnemonic": "Symlink",
    "input_dep_set_ids": [1],
    "output_ids": [3],
@@ -958,7 +962,7 @@ func TestSymlinkMultipleInputs(t *testing.T) {
 		return
 	}
 	_, _, err = AqueryBuildStatements(data, &metrics.EventHandler{})
-	assertError(t, err, `Expect 1 input and 1 output to symlink action, got: input ["file" "other_file"], output ["symlink"]`)
+	assertError(t, err, `Expect 1 input and 1 output to symlink action, got: input ["file" "other_file"], output ["symlink"]: [Symlink] []`)
 }
 
 func TestSymlinkMultipleOutputs(t *testing.T) {
@@ -989,7 +993,7 @@ func TestSymlinkMultipleOutputs(t *testing.T) {
 		return
 	}
 	_, _, err = AqueryBuildStatements(data, &metrics.EventHandler{})
-	assertError(t, err, "undefined outputId 2")
+	assertError(t, err, "undefined outputId 2: [Symlink] []")
 }
 
 func TestTemplateExpandActionSubstitutions(t *testing.T) {
@@ -1066,7 +1070,7 @@ func TestTemplateExpandActionNoOutput(t *testing.T) {
 		return
 	}
 	_, _, err = AqueryBuildStatements(data, &metrics.EventHandler{})
-	assertError(t, err, `Expect 1 output to template expand action, got: output []`)
+	assertError(t, err, `Expect 1 output to template expand action, got: output []: [TemplateExpand] []`)
 }
 
 func TestFileWrite(t *testing.T) {
