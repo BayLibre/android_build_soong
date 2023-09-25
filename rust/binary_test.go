@@ -135,7 +135,7 @@ func TestBinaryFlags(t *testing.T) {
 
 	fizzBuzz := ctx.ModuleForTests("fizz-buzz", "linux_glibc_x86_64").Rule("rustc")
 
-	flags := fizzBuzz.Args["rustcFlags"]
+	flags := fizzBuzz.RuleParams.Command
 	if strings.Contains(flags, "--test") {
 		t.Errorf("extra --test flag, rustcFlags: %#v", flags)
 	}
@@ -153,8 +153,8 @@ func TestBootstrap(t *testing.T) {
 	foo := ctx.ModuleForTests("foo", "android_arm64_armv8-a").Rule("rustc")
 
 	flag := "-Wl,-dynamic-linker,/system/bin/bootstrap/linker64"
-	if !strings.Contains(foo.Args["linkFlags"], flag) {
-		t.Errorf("missing link flag to use bootstrap linker, expecting %#v, linkFlags: %#v", flag, foo.Args["linkFlags"])
+	if !strings.Contains(foo.RuleParams.Command, flag) {
+		t.Errorf("missing link flag to use bootstrap linker, expecting %#v, command: %#v", flag, foo.RuleParams.Command)
 	}
 }
 
@@ -169,16 +169,15 @@ func TestStaticBinaryFlags(t *testing.T) {
 	fizzOut := ctx.ModuleForTests("fizz", "android_arm64_armv8-a").Rule("rustc")
 	fizzMod := ctx.ModuleForTests("fizz", "android_arm64_armv8-a").Module().(*Module)
 
-	flags := fizzOut.Args["rustcFlags"]
-	linkFlags := fizzOut.Args["linkFlags"]
+	flags := fizzOut.RuleParams.Command
 	if !strings.Contains(flags, "-C relocation-model=static") {
-		t.Errorf("static binary missing '-C relocation-model=static' in rustcFlags, found: %#v", flags)
+		t.Errorf("static binary missing '-C relocation-model=static' in command, found: %#v", flags)
 	}
 	if !strings.Contains(flags, "-C panic=abort") {
-		t.Errorf("static binary missing '-C panic=abort' in rustcFlags, found: %#v", flags)
+		t.Errorf("static binary missing '-C panic=abort' in command, found: %#v", flags)
 	}
-	if !strings.Contains(linkFlags, "-static") {
-		t.Errorf("static binary missing '-static' in linkFlags, found: %#v", flags)
+	if !strings.Contains(flags, "-static") {
+		t.Errorf("static binary missing '-static' in command, found: %#v", flags)
 	}
 
 	if !android.InList("libc", fizzMod.Properties.AndroidMkStaticLibs) {
@@ -201,9 +200,8 @@ func TestLinkObjects(t *testing.T) {
 		}`)
 
 	fizzBuzz := ctx.ModuleForTests("fizz-buzz", "android_arm64_armv8-a").Rule("rustc")
-	linkFlags := fizzBuzz.Args["linkFlags"]
-	if !strings.Contains(linkFlags, "/libfoo.so") {
-		t.Errorf("missing shared dependency 'libfoo.so' in linkFlags: %#v", linkFlags)
+	if !strings.Contains(fizzBuzz.RuleParams.Command, "/libfoo.so") {
+		t.Errorf("missing shared dependency 'libfoo.so' in command: %#v", fizzBuzz.RuleParams.Command)
 	}
 }
 
