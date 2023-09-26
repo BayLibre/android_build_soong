@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea9fdc10_24c7ab71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-26T15:25:19Z",
+      "side": 1,
+      "message": "PTAL, I had to expand the scope of this CL",
+      "revId": "a7f9d8cec5ba797f092d434c7f64dad9e0a94df2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
