@@ -113,7 +113,11 @@ func (fg *fileGroup) ConvertWithBp2build(ctx Bp2buildMutatorContext) {
 			if len(srcs.Value.Includes) > 1 {
 				ctx.ModuleErrorf("filegroup '%s' cannot contain a file with the same name", fg.Name())
 			}
-			ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_SRC_NAME_COLLISION, "")
+			// Mark this as already defined in a BUILD file, because each package currently ensures
+			// a catch-all glob of all files (thus the file target will definitely be available.
+			// This ensures that modules that depend on this filegroup don't appear to have missing
+			// deps.
+			ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_DEFINED_IN_BUILD_FILE, "")
 			return
 		}
 	}
