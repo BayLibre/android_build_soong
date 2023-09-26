@@ -194,6 +194,23 @@
       "message": "Version checking is redundant now and should be removed.",
       "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc98f960_7a5bfd1b",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-09-26T14:58:09Z",
+      "side": 1,
+      "message": "nit: using mtime instead of hash should be fine and save us ~100ms.\nContent hash cannot change unless soong_build has been re-written.\nIf soong_build has been rewritten, it\u0027s very unlikely that its hash would not change (counter example: adding comments to a file that are simply discarded by the compiler).",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
