@@ -2867,14 +2867,14 @@ func (m *Library) convertJavaResourcesAttributes(ctx android.Bp2buildMutatorCont
 type javaCommonAttributes struct {
 	*javaResourcesAttributes
 	*kotlinAttributes
-	Srcs                    bazel.LabelListAttribute
-	Plugins                 bazel.LabelListAttribute
-	Javacopts               bazel.StringListAttribute
-	Sdk_version             bazel.StringAttribute
-	Java_version            bazel.StringAttribute
-	Errorprone_force_enable bazel.BoolAttribute
+	Srcs                          bazel.LabelListAttribute
+	Plugins                       bazel.LabelListAttribute
+	Javacopts                     bazel.StringListAttribute
+	Sdk_version                   bazel.StringAttribute
+	Java_version                  bazel.StringAttribute
+	Errorprone_force_enable       bazel.BoolAttribute
+	Experimental_javac_shard_size *int64
 }
-
 type javaDependencyLabels struct {
 	// Dependencies which DO NOT contribute to the API visible to upstream dependencies.
 	Deps bazel.LabelListAttribute
@@ -3043,13 +3043,14 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.Bp2buildMutatorContext
 	}
 
 	commonAttrs := &javaCommonAttributes{
-		Srcs:                    javaSrcs,
-		javaResourcesAttributes: m.convertJavaResourcesAttributes(ctx),
-		Plugins:                 plugins,
-		Javacopts:               javacopts,
-		Java_version:            bazel.StringAttribute{Value: m.properties.Java_version},
-		Sdk_version:             bazel.StringAttribute{Value: m.deviceProperties.Sdk_version},
-		Errorprone_force_enable: errorproneForceEnable,
+		Srcs:                          javaSrcs,
+		javaResourcesAttributes:       m.convertJavaResourcesAttributes(ctx),
+		Plugins:                       plugins,
+		Javacopts:                     javacopts,
+		Java_version:                  bazel.StringAttribute{Value: m.properties.Java_version},
+		Sdk_version:                   bazel.StringAttribute{Value: m.deviceProperties.Sdk_version},
+		Errorprone_force_enable:       errorproneForceEnable,
+		Experimental_javac_shard_size: m.properties.Javac_shard_size,
 	}
 
 	for axis, configToProps := range archVariantProps {
