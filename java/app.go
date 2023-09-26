@@ -1690,15 +1690,14 @@ func convertWithBp2build(ctx android.Bp2buildMutatorContext, a *AndroidApp) (boo
 	// TODO(b/192032291): Disable android_test_helper_app optimization by
 	// default after auditing downstream usage.
 	if a.dexProperties.Optimize.Enabled == nil {
-		// Property was not explicitly defined.
-		a.dexProperties.Optimize.Enabled = &a.dexProperties.Optimize.EnabledByDefault
+		// Property was not explicitly defined, set the default.
+		a.dexProperties.Optimize.Enabled = proptools.BoolPtr(a.dexer.effectiveOptimizeEnabled())
+	} else if a.dexProperties.Optimize.EnabledByDefault != a.dexer.effectiveOptimizeEnabled() {
+		// Property is explicitly defined, emit the Bazel attribute if different from default.
+		appAttrs.Optimize = a.dexProperties.Optimize.Enabled
 	}
-	if Bool(a.dexProperties.Optimize.Enabled) {
-		if !a.dexProperties.Optimize.EnabledByDefault {
-			// explicitly enable optimize for module types that disable it by default
-			appAttrs.Optimize = proptools.BoolPtr(true)
-		}
 
+	if Bool(a.dexProperties.Optimize.Enabled) {
 		handCraftedFlags := ""
 		if Bool(a.dexProperties.Optimize.Ignore_warnings) {
 			handCraftedFlags += "-ignorewarning "
@@ -1728,9 +1727,6 @@ func convertWithBp2build(ctx android.Bp2buildMutatorContext, a *AndroidApp) (boo
 			})
 			appAttrs.Proguard_specs.Add(bazel.MakeLabelAttribute(":" + generatedFlagFileRuleName))
 		}
-	} else if a.dexProperties.Optimize.EnabledByDefault {
-		// explicitly disable optimize for module types that enable it by default
-		appAttrs.Optimize = proptools.BoolPtr(false)
 	}
 
 	commonAttrs, bp2BuildInfo, supported := a.convertLibraryAttrsBp2Build(ctx)
