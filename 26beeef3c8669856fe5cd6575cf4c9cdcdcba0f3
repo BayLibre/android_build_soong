@@ -16,6 +16,24 @@
       "message": "Can we instead modify the aquery expression to omit targets under `@bazel_tools` ? This would be more efficient than receiving these actions, and checking for a prefix in each one.",
       "revId": "26beeef3c8669856fe5cd6575cf4c9cdcdcba0f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "588590dc_8c7a6497",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-09-26T22:58:34Z",
+      "side": 1,
+      "message": "Changing `aqueryCmd` to `deps($buildroot) except @bazel_tools//...:all` gave:\n```\nSkipping \u0027@bazel_tools//...:all\u0027: error loading package under directory \u0027\u0027: error loading package \u0027@bazel_tools//src/main/protobuf\u0027: at /usr/local/google/home/usta/aosp-main-with-phones/out/bazel/output/external/rules_python/python/proto.bzl:19:6: initialization of module \u0027python/private/proto/py_proto_library.bzl\u0027 failed\n```",
+      "parentUuid": "faf61d37_856940cf",
+      "revId": "26beeef3c8669856fe5cd6575cf4c9cdcdcba0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
