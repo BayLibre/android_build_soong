@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5be0d7_bdbf9d0c",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2109,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-09-26T17:03:48Z",
+      "side": 1,
+      "message": "Do we have plans to treat \"Unspecified\" as anything other than \"Other\"?  There is nothing to stop someone from having an arbitrarily named TARGET_RELEASE.",
+      "revId": "a3230153ab3c313a66b724bc66f5403f6bc854c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
