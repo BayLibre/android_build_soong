@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "264a7d0d_af7b1063",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-09-26T01:35:48Z",
+      "side": 1,
+      "message": "FYI - I went back to using a separate file for recording `.top` because it seems like out/soong/soong.environment.available is written out of band (and during testing, I got flaky results where sometimes prevCWD would be the same as current dir).",
+      "revId": "4399e8189090ea2e609ec67e6c56adfcaaacf5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de99fdb2_03256998",
@@ -14,6 +31,24 @@
       "writtenOn": "2023-09-25T09:12:54Z",
       "side": 1,
       "message": "I think there might be an issue with this check. Imagine target is `/some/directory` and prevCwd is `/some/dir`, while it has the prefix - it is incorrect to update such symlink.\n\nWe usually do such check as:\n1. Ensure that prevCWD does not end with slash\n2. strings.HasPrefix(target, prevCWD) \u0026\u0026 (len(target) \u003d\u003d len(prevCWD) || target[len(prevCWD)] \u003d\u003d \u0027/\u0027)",
+      "revId": "4399e8189090ea2e609ec67e6c56adfcaaacf5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d41f8f1_17832a91",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-09-26T01:35:48Z",
+      "side": 1,
+      "message": "Really good point, but I just had to add in a `target \u003d strings.Trim(target, \"/\")`, because the above check wouldn\u0027t match",
+      "parentUuid": "de99fdb2_03256998",
       "revId": "4399e8189090ea2e609ec67e6c56adfcaaacf5ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -35,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33c2c01_80c27eac",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-09-26T01:35:48Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "9aee4b91_4a2f0ffc",
+      "revId": "4399e8189090ea2e609ec67e6c56adfcaaacf5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d696695_abe94f7a",
@@ -48,6 +101,24 @@
       "writtenOn": "2023-09-25T09:12:54Z",
       "side": 1,
       "message": "Comment mentions `soong.environment.used` but code seems to read `soong.environment.available`",
+      "revId": "4399e8189090ea2e609ec67e6c56adfcaaacf5ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9fd8dc3_6d86c65e",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-09-26T01:35:48Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "0d696695_abe94f7a",
       "revId": "4399e8189090ea2e609ec67e6c56adfcaaacf5ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
