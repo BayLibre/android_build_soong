@@ -52,6 +52,41 @@
       "parentUuid": "588590dc_8c7a6497",
       "revId": "26beeef3c8669856fe5cd6575cf4c9cdcdcba0f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f1ebe3_f54b3606",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-26T23:17:50Z",
+      "side": 1,
+      "message": "This is broken, but not for the reason you describe.\n\nExcluding @bazel_tools from the query itself doesn\u0027t mean that all rdeps of @bazel_tools are unqueryable. That would make query syntax incredibly broken.\n\n(In fact, for any `A -\u003e B`,the query `deps(A) except B` would necessarily fail. That\u0027d be pretty useless...)\n\nThe reason is that `@bazel_tools//...` seems unqueryable, so bazel can\u0027t actually expand that string in a meaningful fashion.\n\n\nSince this is a bit nontrivial to solve this way, I\u0027ll approve this CL and we can continue as-is.",
+      "parentUuid": "588590dc_8c7a6497",
+      "revId": "26beeef3c8669856fe5cd6575cf4c9cdcdcba0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bf90d6f_4a64556b",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-26T23:17:50Z",
+      "side": 1,
+      "message": "Care to write some test coverage for this?",
+      "revId": "26beeef3c8669856fe5cd6575cf4c9cdcdcba0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
