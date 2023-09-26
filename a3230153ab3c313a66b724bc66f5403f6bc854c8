@@ -16,6 +16,24 @@
       "message": "Do we have plans to treat \"Unspecified\" as anything other than \"Other\"?  There is nothing to stop someone from having an arbitrarily named TARGET_RELEASE.",
       "revId": "a3230153ab3c313a66b724bc66f5403f6bc854c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f2e61bc_4cc2172f",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2109,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-09-26T17:34:28Z",
+      "side": 1,
+      "message": "AFAIK, an arbitrarily value for `TARGET_RELEASE` will be caught earlier [here](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/release_config.mk;drc\u003d6c1723254e794ee49d2bc60f046eeb3564b36208;l\u003d77), thus by the time `TargetRelease()` is called any value that is not specified in [`release_config_map.mk`](https://cs.android.com/android/platform/superproject/main/+/main:build/release/release_config_map.mk) would have already been handled.",
+      "parentUuid": "bb5be0d7_bdbf9d0c",
+      "revId": "a3230153ab3c313a66b724bc66f5403f6bc854c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
