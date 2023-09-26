@@ -22,6 +22,30 @@
       },
       "revId": "65229207d1d7a0185eec1bb293f129f77d7c1ce4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1131bb30_098c37b4",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1700,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-26T05:58:11Z",
+      "side": 1,
+      "message": "That doesn\u0027t quite work, because if there\u0027s an android_app that explicitly sets `optimized.enabled: false`, `effectiveOptimizeEnabled()` returns `false` (without reading `EnabledByDefault`), making `a.dexProperties.Optimize.Enabled !\u003d a.dexer.effectiveOptimizeEnabled()` be `false !\u003d false`, thus failing the condition, and not setting `optimize \u003d False` on the Bazel side.\n\n\n.. but this works, and is cleaner: https://android-review.git.corp.google.com/c/platform/build/soong/+/2762806",
+      "parentUuid": "fdcf5795_943a04d5",
+      "range": {
+        "startLine": 1690,
+        "startChar": 0,
+        "endLine": 1700,
+        "endChar": 3
+      },
+      "revId": "65229207d1d7a0185eec1bb293f129f77d7c1ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
