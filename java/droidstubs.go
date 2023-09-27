@@ -171,6 +171,10 @@ type ApiStubsProvider interface {
 	ApiStubsSrcProvider
 }
 
+type ApiCheckTimestampProvider interface {
+	CurrentApiTimestamp() android.Path
+}
+
 // droidstubs passes sources files through Metalava to generate stub .java files that only contain the API to be
 // documented, filtering out hidden classes and methods.  The resulting .java files are intended to be passed to
 // a droiddoc module to generate documentation.
@@ -236,6 +240,10 @@ func (d *Droidstubs) RemovedApiFilePath() android.Path {
 
 func (d *Droidstubs) StubsSrcJar() android.Path {
 	return d.stubsSrcJar
+}
+
+func (d *Droidstubs) CurrentApiTimestamp() android.Path {
+	return d.checkCurrentApiTimestamp
 }
 
 var metalavaMergeAnnotationsDirTag = dependencyTag{name: "metalava-merge-annotations-dir"}

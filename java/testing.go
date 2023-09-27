@@ -73,10 +73,15 @@ var prepareForTestWithFrameworkDeps = android.GroupFixturePreparers(
 		// Needed for various deps defined in GatherRequiredDepsForTest()
 		defaultJavaDir + "/a.java":                        nil,
 		defaultJavaDir + "/api/current.txt":               nil,
+		defaultJavaDir + "/api/removed.txt":               nil,
 		defaultJavaDir + "/api/system-current.txt":        nil,
+		defaultJavaDir + "/api/system-removed.txt":        nil,
 		defaultJavaDir + "/api/test-current.txt":          nil,
+		defaultJavaDir + "/api/test-removed.txt":          nil,
 		defaultJavaDir + "/api/module-lib-current.txt":    nil,
+		defaultJavaDir + "/api/module-lib-removed.txt":    nil,
 		defaultJavaDir + "/api/system-server-current.txt": nil,
+		defaultJavaDir + "/api/system-server-removed.txt": nil,
 
 		// Needed for R8 rules on apps
 		"build/make/core/proguard.flags":             nil,
@@ -425,36 +430,42 @@ func gatherRequiredDepsForTest() string {
 	}
 
 	type apiContributionStruct struct {
-		name       string
-		apiSurface string
-		apiFile    string
+		name        string
+		apiSurface  string
+		apiFile     string
+		removedFile string
 	}
 
 	var publicApiContribution = apiContributionStruct{
-		name:       "api-stubs-docs-non-updatable.api.contribution",
-		apiSurface: "public",
-		apiFile:    "api/current.txt",
+		name:        "api-stubs-docs-non-updatable.api.contribution",
+		apiSurface:  "public",
+		apiFile:     "api/current.txt",
+		removedFile: "api/removed.txt",
 	}
 	var systemApiContribution = apiContributionStruct{
-		name:       "system-api-stubs-docs-non-updatable.api.contribution",
-		apiSurface: "system",
-		apiFile:    "api/system-current.txt",
+		name:        "system-api-stubs-docs-non-updatable.api.contribution",
+		apiSurface:  "system",
+		apiFile:     "api/system-current.txt",
+		removedFile: "api/system-removed.txt",
 	}
 	var testApiContribution = apiContributionStruct{
-		name:       "test-api-stubs-docs-non-updatable.api.contribution",
-		apiSurface: "test",
-		apiFile:    "api/test-current.txt",
+		name:        "test-api-stubs-docs-non-updatable.api.contribution",
+		apiSurface:  "test",
+		apiFile:     "api/test-current.txt",
+		removedFile: "api/test-removed.txt",
 	}
 	var moduleLibApiContribution = apiContributionStruct{
-		name:       "module-lib-api-stubs-docs-non-updatable.api.contribution",
-		apiSurface: "module-lib",
-		apiFile:    "api/module-lib-current.txt",
+		name:        "module-lib-api-stubs-docs-non-updatable.api.contribution",
+		apiSurface:  "module-lib",
+		apiFile:     "api/module-lib-current.txt",
+		removedFile: "api/module-lib-removed.txt",
 	}
 	var systemServerApiContribution = apiContributionStruct{
 		// This module does not exist but is named this way for consistency
-		name:       "system-server-api-stubs-docs-non-updatable.api.contribution",
-		apiSurface: "system-server",
-		apiFile:    "api/system-server-current.txt",
+		name:        "system-server-api-stubs-docs-non-updatable.api.contribution",
+		apiSurface:  "system-server",
+		apiFile:     "api/system-server-current.txt",
+		removedFile: "api/system-server-removed.txt",
 	}
 	var apiContributionStructs = []apiContributionStruct{
 		publicApiContribution,
@@ -483,12 +494,22 @@ func gatherRequiredDepsForTest() string {
 
 	for _, apiContribution := range apiContributionStructs {
 		bp += fmt.Sprintf(`
-			java_api_contribution {
+			droidstubs {
 				name: "%s",
 				api_surface: "%s",
-				api_file: "%s",
+				check_api: {
+					current: {
+						api_file: "%s",
+						removed_api_file: "%s",
+					}
+				}
 			}
-		`, apiContribution.name, apiContribution.apiSurface, apiContribution.apiFile)
+		`,
+			strings.TrimSuffix(apiContribution.name, ".api.contribution"),
+			apiContribution.apiSurface,
+			apiContribution.apiFile,
+			apiContribution.removedFile,
+		)
 	}
 
 	for libName, apiContribution := range extraApiLibraryModules {

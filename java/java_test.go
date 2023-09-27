@@ -2425,3 +2425,30 @@ func TestJavaApiLibraryApiFilesSorting(t *testing.T) {
 		"default/java/api/module-lib-current.txt default/java/api/system-server-current.txt"
 	android.AssertStringDoesContain(t, "source text files not in api scope order", manifestCommand, sourceFilesFlag)
 }
+
+func TestJavaApiContributionDroidstubsDependency(t *testing.T) {
+	ctx, _ := testJavaWithFS(t, `
+			droidstubs {
+				name: "foo",
+				srcs: ["A/a.java"],
+				api_surface: "public",
+				check_api: {
+					current: {
+						api_file: "A/current.txt",
+						removed_api_file: "A/removed.txt",
+					}
+				},
+				visibility: ["//a"],
+			}
+		`,
+		map[string][]byte{
+			"a/a.java":      nil,
+			"a/current.txt": nil,
+			"a/removed.txt": nil,
+		},
+	)
+
+	CheckModuleDependencies(t, ctx, "foo.api.contribution", "android_common", []string{
+		`foo`,
+	})
+}
