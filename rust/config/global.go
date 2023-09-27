@@ -25,6 +25,7 @@ var (
 	pctx         = android.NewPackageContext("android/soong/rust/config")
 	exportedVars = android.NewExportedVariables(pctx)
 
+	//RustDefaultVersion = "1.72.0"
 	RustDefaultVersion = "1.72.0"
 	RustDefaultBase    = "prebuilts/rust/"
 	DefaultEdition     = "2021"
