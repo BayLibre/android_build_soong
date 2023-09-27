@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72f1f09_ccb0413a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-09-27T07:55:27Z",
+      "side": 1,
+      "message": "As discussed, I guess we can remove any vndk version as variant suffix in the future once UDC-QPR is fully branched out.",
+      "revId": "af1fde43f96196a191db326048cf04d64346877e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

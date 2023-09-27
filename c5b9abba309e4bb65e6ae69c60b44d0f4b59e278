@@ -22,6 +22,30 @@
       },
       "revId": "c5b9abba309e4bb65e6ae69c60b44d0f4b59e278",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b848912_807c574c",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3054,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-09-27T07:55:27Z",
+      "side": 0,
+      "message": "I guess because No VNDK no longer means not treblelized (use core variant only)?",
+      "parentUuid": "245f7688_2fea4dce",
+      "range": {
+        "startLine": 3037,
+        "startChar": 0,
+        "endLine": 3054,
+        "endChar": 0
+      },
+      "revId": "c5b9abba309e4bb65e6ae69c60b44d0f4b59e278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
