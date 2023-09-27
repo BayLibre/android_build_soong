@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2bdcdf77_1b53693e",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-09-27T15:09:19Z",
+      "side": 1,
+      "message": "I am not sure what you meant by \"necessarily fail\", i.e. I tried the following:\n```\n$ tree\n.\n├── BUILD\n└── WORKSPACE\n$ cat BUILD\nfilegroup(name \u003d \"B\")\nfilegroup(name \u003d \"A\", data \u003d [\":B\"])\nusta4:~/scratch$ bazel query \"deps(A)\"\n//:A\n//:B\nusta4:~/scratch$ bazel query \"deps(A) except B\"\n//:A\n```\nI do see that query involving \"@bazel_tools/...\" fails by reporting `Error: file \u0027@rules_proto//proto:defs.bzl\u0027 does not contain symbol \u0027proto_lang_toolchain\u0027`\nI can get past that with `--keep-going` but that would ignore all missing targets indiscriminately and hinder early discovery of bugs.\n\nNote ` bazel query \"deps(@bazel_tools//tools/cpp:current_cc_toolchain)\"` works fine for instance. Maybe `rules_proto` needs to be updated.",
+      "parentUuid": "23f1ebe3_f54b3606",
+      "revId": "26beeef3c8669856fe5cd6575cf4c9cdcdcba0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bf90d6f_4a64556b",
         "filename": "bazel/aquery.go",
         "patchSetId": 3
@@ -85,6 +103,24 @@
       "writtenOn": "2023-09-26T23:17:50Z",
       "side": 1,
       "message": "Care to write some test coverage for this?",
+      "revId": "26beeef3c8669856fe5cd6575cf4c9cdcdcba0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d9bc290_0e50066a",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-09-27T15:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bf90d6f_4a64556b",
       "revId": "26beeef3c8669856fe5cd6575cf4c9cdcdcba0f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
