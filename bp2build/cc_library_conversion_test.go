@@ -3698,13 +3698,26 @@ cc_library {
 			},
 		},
 		{
-			description: "cc_library with afdo enabled and existing profile but BUILD file doesn't exist",
+			description: "cc_library with afdo enabled and existing profile but Android.bp file doesn't exist",
 			filesystem: map[string]string{
 				"vendor/google_data/pgo_profile/sampling/foo.afdo": "",
 			},
 			expectedBazelTargets: []string{
 				MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{}),
 				MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{}),
+			},
+		},
+		{
+			description: "cc_library with afdo enabled and existing arch-specifc profile in AOSP",
+			filesystem: map[string]string{
+				"toolchain/pgo-profiles/sampling/Android.bp":   "",
+				"toolchain/pgo-profiles/sampling/foo_arm.afdo": "",
+			},
+			expectedBazelTargets: []string{
+				MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{}),
+				MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+					"fdo_profile": `"//toolchain/pgo-profiles/sampling:foo"`,
+				}),
 			},
 		},
 	}

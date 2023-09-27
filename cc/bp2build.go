@@ -1114,6 +1114,14 @@ func bp2buildFdoProfile(
 	ctx android.Bp2buildMutatorContext,
 	m *Module,
 ) *bazel.Label {
+	archSuffixes := []string{
+		"",
+		"_arm",
+		"_arm64",
+		"_x86",
+		"_x86_64",
+	}
+
 	// TODO(b/267229066): Convert to afdo boolean attribute and let Bazel handles finding
 	// fdo_profile target from AfdoProfiles product var
 	for _, project := range globalAfdoProfileProjects {
@@ -1121,11 +1129,13 @@ func bp2buildFdoProfile(
 		bpPath := android.ExistentPathForSource(ctx, project, "Android.bp")
 		if bpPath.Valid() {
 			// TODO(b/260714900): Handle arch-specific afdo profiles (e.g. `<module-name>-arm<64>.afdo`)
-			path := android.ExistentPathForSource(ctx, project, m.Name()+".afdo")
-			if path.Valid() {
-				fdoProfileLabel := "//" + strings.TrimSuffix(project, "/") + ":" + m.Name()
-				return &bazel.Label{
-					Label: fdoProfileLabel,
+			for _, archSuffix := range archSuffixes {
+				path := android.ExistentPathForSource(ctx, project, m.Name()+archSuffix+".afdo")
+				if path.Valid() {
+					fdoProfileLabel := "//" + strings.TrimSuffix(project, "/") + ":" + m.Name()
+					return &bazel.Label{
+						Label: fdoProfileLabel,
+					}
 				}
 			}
 		}
