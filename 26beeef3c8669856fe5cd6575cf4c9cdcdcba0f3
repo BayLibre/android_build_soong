@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "391fddbe_79b7f22d",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-09-27T15:37:52Z",
+      "side": 1,
+      "message": "Yep that assertion of mine was incorrect.\n\nBut I then got confused with \"for any A -\u003e B,the query deps(A) except B would necessarily fail.\"\n\nAnd yes the unresolvability of \"@bazel_tools/...\" I think comes from issues in `rules_proto`.",
+      "parentUuid": "23640623_b8ab794c",
+      "revId": "26beeef3c8669856fe5cd6575cf4c9cdcdcba0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bf90d6f_4a64556b",
         "filename": "bazel/aquery.go",
         "patchSetId": 3
