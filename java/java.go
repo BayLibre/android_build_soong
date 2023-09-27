@@ -1613,33 +1613,68 @@ type JavaApiContribution struct {
 		// relative path to the API signature text file
 		Api_file *string `android:"path"`
 	}
+
+	checkCurrentApiTimestamp android.Path
 }
 
 func ApiContributionFactory() android.Module {
 	module := &JavaApiContribution{}
-	android.InitAndroidModule(module)
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	module.AddProperties(&module.properties)
 	return module
 }
 
 type JavaApiImportInfo struct {
-	ApiFile    android.Path
-	ApiSurface string
+	ApiFile           android.Path
+	ApiSurface        string
+	ApiCheckTimestamp android.Path
 }
 
 var JavaApiImportProvider = blueprint.NewProvider(JavaApiImportInfo{})
 
-func (ap *JavaApiContribution) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+func (ap *JavaApiContribution) DepsMutator(ctx android.BottomUpMutatorContext) {
+	// If the module is a java_api_contribution_import module type,
+	// there is no guarantee that the module has an associated droidstubs
+	// module, thus do not add it as a dependency.
+	if _, ok := ctx.Module().(*JavaApiContributionImport); ok {
+		return
+	}
+
+	// All java_api_contribution modules are created from droidstubs with the ".api.contribution" suffix.
+	// The droidstubs module name can be found by removing this suffix.
+	// The droidstubs module is added as dependency so that the timestamp file can be provided.
+	// If the java_api_contribution module does not possess ".api.contribution" suffix,
+	// it does not have a corresponding droidstubs module or is for tests.
+	// In such case, do not add the droidstubs dependency.
+	if strings.HasSuffix(ap.Name(), ".api.contribution") {
+		ctx.AddVariationDependencies(nil, nil, strings.TrimSuffix(ap.Name(), ".api.contribution"))
+	}
+}
+
+func (ap *JavaApiContribution) generateCommonAndroidBuildActions(ctx android.ModuleContext) JavaApiImportInfo {
 	var apiFile android.Path = nil
 	if apiFileString := ap.properties.Api_file; apiFileString != nil {
 		apiFile = android.PathForModuleSrc(ctx, String(apiFileString))
 	}
 
-	ctx.SetProvider(JavaApiImportProvider, JavaApiImportInfo{
+	return JavaApiImportInfo{
 		ApiFile:    apiFile,
 		ApiSurface: proptools.String(ap.properties.Api_surface),
+	}
+}
+
+func (ap *JavaApiContribution) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	provider := ap.generateCommonAndroidBuildActions(ctx)
+
+	ctx.VisitDirectDeps(func(dep android.Module) {
+		if apiCheckTimestampProvider, ok := dep.(ApiCheckTimestampProvider); ok {
+			ap.checkCurrentApiTimestamp = apiCheckTimestampProvider.CurrentApiTimestamp()
+		}
 	})
+
+	provider.ApiCheckTimestamp = ap.checkCurrentApiTimestamp
+	ctx.SetProvider(JavaApiImportProvider, provider)
 }
 
 type ApiLibrary struct {
@@ -3447,5 +3482,7 @@ func (module *JavaApiContributionImport) Name() string {
 }
 
 func (ap *JavaApiContributionImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	ap.JavaApiContribution.GenerateAndroidBuildActions(ctx)
+	provider := ap.JavaApiContribution.generateCommonAndroidBuildActions(ctx)
+
+	ctx.SetProvider(JavaApiImportProvider, provider)
 }

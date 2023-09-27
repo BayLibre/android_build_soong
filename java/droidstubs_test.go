@@ -368,7 +368,7 @@ func TestDroidStubsApiContributionGeneration(t *testing.T) {
 		},
 	)
 
-	ctx.ModuleForTests("foo.api.contribution", "")
+	ctx.ModuleForTests("foo.api.contribution", "android_common")
 }
 
 func TestGeneratedApiContributionVisibilityTest(t *testing.T) {

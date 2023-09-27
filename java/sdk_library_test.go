@@ -125,7 +125,7 @@ func TestJavaSdkLibrary(t *testing.T) {
 	result.ModuleForTests(apiScopePublic.stubsSourceModuleName("foo"), "android_common")
 	result.ModuleForTests(apiScopeSystem.stubsSourceModuleName("foo"), "android_common")
 	result.ModuleForTests(apiScopeTest.stubsSourceModuleName("foo"), "android_common")
-	result.ModuleForTests(apiScopePublic.stubsSourceModuleName("foo")+".api.contribution", "")
+	result.ModuleForTests(apiScopePublic.stubsSourceModuleName("foo")+".api.contribution", "android_common")
 	result.ModuleForTests(apiScopePublic.apiLibraryModuleName("foo"), "android_common")
 	result.ModuleForTests("foo"+sdkXmlFileSuffix, "android_common")
 	result.ModuleForTests("foo.api.public.28", "")
