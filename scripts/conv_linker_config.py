@@ -62,8 +62,8 @@ def Proto(args):
     if args.source:
         for input in args.source.split(':'):
             pb.MergeFrom(LoadJsonMessage(input))
-    with open(args.output, 'wb') as f:
-        f.write(pb.SerializeToString())
+
+    WriteResult(pb, args.output)
 
 
 def Print(args):
@@ -90,8 +90,8 @@ def SystemProvide(args):
     for item in installed_libraries:
         if item not in getattr(pb, 'provideLibs'):
             getattr(pb, 'provideLibs').append(item)
-    with open(args.output, 'wb') as f:
-        f.write(pb.SerializeToString())
+
+    WriteResult(pb, args.output)
 
 
 def Append(args):
@@ -106,8 +106,8 @@ def Append(args):
     else:
         setattr(pb, args.key, args.value)
 
-    with open(args.output, 'wb') as f:
-        f.write(pb.SerializeToString())
+    WriteResult(pb, args.output)
+
 
 
 def Merge(args):
@@ -116,8 +116,7 @@ def Merge(args):
         with open(other, 'rb') as f:
             pb.MergeFromString(f.read())
 
-    with open(args.out, 'wb') as f:
-        f.write(pb.SerializeToString())
+    WriteResult(pb, args.output)
 
 
 def Validate(args):
@@ -149,6 +148,22 @@ def Validate(args):
             sys.exit(f'{args.input}: do not use permittedPaths, which is for APEX')
     else:
         sys.exit(f'Unknown type: {args.type}')
+
+
+def WriteResult(pb, output_path):
+    ValidateOutput(pb)
+    with open(output_path, 'wb') as f:
+        f.write(pb.SerializeToString())
+
+
+def ValidateOutput(pb):
+    # Validate if provideLibs and requireLibs have common module
+    provideLibs = set(getattr(pb, 'provideLibs'))
+    requireLibs = getattr(pb, 'requireLibs')
+
+    for lib in requireLibs:
+        if lib in provideLibs:
+            sys.exit(f'{lib} exists both in requireLibs and provideLibs')
 
 
 def GetArgParser():
