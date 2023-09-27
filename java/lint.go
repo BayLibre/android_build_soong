@@ -62,6 +62,11 @@ type LintProperties struct {
 		// If true, baselining updatability lint checks (e.g. NewApi) is prohibited. Defaults to false.
 		Strict_updatability_linting *bool
 
+		// The exit code expected when running the lint. This can be used to
+		// confirm that a lint will trigger on a particular piece of code. Defaults
+		// to 0.
+		Expected_exit_code *int64
+
 		// Treat the code in this module as test code for @VisibleForTesting enforcement.
 		// This will be true by default for test module types, false otherwise.
 		// If soong gets support for testonly, this flag should be replaced with that.
@@ -214,6 +219,10 @@ func (l *linter) GetStrictUpdatabilityLinting() bool {
 
 func (l *linter) SetStrictUpdatabilityLinting(strictLinting bool) {
 	l.properties.Lint.Strict_updatability_linting = &strictLinting
+}
+
+func (l *linter) GetExpectedExitCode() int {
+	return proptools.IntDefault(l.properties.Lint.Expected_exit_code, 0)
 }
 
 var _ LintDepSetsIntf = (*linter)(nil)
@@ -529,7 +538,7 @@ func (l *linter) lint(ctx android.ModuleContext) {
 		FlagWithArg("-C ", cmd.PathForInput(android.PathForSource(ctx))).
 		FlagWithInput("-r ", srcsList)
 
-	cmd.Text("; if [ $EXITCODE != 0 ]; then if [ -e").Input(text).Text("]; then cat").Input(text).Text("; fi; exit $EXITCODE; fi")
+	cmd.Text("; if [ $EXITCODE != " + strconv.Itoa(l.GetExpectedExitCode()) + " ]; then if [ -e").Input(text).Text("]; then cat").Input(text).Text("; fi; exit 1; fi")
 
 	rule.Command().Text("rm -rf").Flag(lintPaths.cacheDir.String()).Flag(lintPaths.homeDir.String())
 
