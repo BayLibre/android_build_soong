@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23640623_b8ab794c",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-09-27T15:21:14Z",
+      "side": 1,
+      "message": "My point is that the problem is that `@bazel_tools//...` does not analyze correctly. \n\nYou stated:\n\n\u003e but if we exclude @bazel_tools from the query itself then it will fail because they are dependencies of other targets.\n\nThis fails, but not for the reason you imply: It is fine to, in the general case, exclude targets from a query that other targets depend on. The problem here is `@bazel_tools//...` is not resolvable.\n\nIf you were to attempt your scratch above (`bazel query \"deps(A) except B\"`) in a non-Android repository, such as a fresh Bazel checkout, it should succeed.\n\nDoes that explain things?",
+      "parentUuid": "2bdcdf77_1b53693e",
+      "revId": "26beeef3c8669856fe5cd6575cf4c9cdcdcba0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bf90d6f_4a64556b",
         "filename": "bazel/aquery.go",
         "patchSetId": 3
