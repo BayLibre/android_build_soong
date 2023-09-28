@@ -16,6 +16,52 @@
       "message": "I rearranged the code a little bit to make it not conflict with udc beta3, since I think we want to CP it there.",
       "revId": "ed8ccec47ef3881ab543b9f3795f27dc9d2229ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d7413be_768b0dfa",
+        "filename": "java/base.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2035,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-28T13:12:01Z",
+      "side": 1,
+      "message": "nit: using `var fromDeps []*android.DepSet[android.Path]` instead won\u0027t allocate memory for the slice",
+      "range": {
+        "startLine": 2035,
+        "startChar": 1,
+        "endLine": 2035,
+        "endChar": 46
+      },
+      "revId": "ed8ccec47ef3881ab543b9f3795f27dc9d2229ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6158400_7dbf71f6",
+        "filename": "java/base.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-28T13:12:01Z",
+      "side": 1,
+      "message": "nit: may make sense to check the tag and only do the provider lookup if it\u0027ll be needed.",
+      "range": {
+        "startLine": 2037,
+        "startChar": 44,
+        "endLine": 2037,
+        "endChar": 45
+      },
+      "revId": "ed8ccec47ef3881ab543b9f3795f27dc9d2229ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
