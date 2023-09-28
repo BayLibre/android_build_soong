@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16e78c3_605a4fb9",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-09-28T16:20:02Z",
+      "side": 1,
+      "message": "Wdyt of making `RunBp2BuildTestCase` call `RunBp2BuildTestCaseExtraContext` with an empty/nil modify/extra context (handwave handwave)?",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 1
+      },
+      "revId": "2173b5f578f95cc9b6ca05b4a0f481ca1df745b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
