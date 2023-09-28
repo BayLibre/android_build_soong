@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e1ab24_706c22ee",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-28T13:15:14Z",
+      "side": 1,
+      "message": "does this need to be accessible as an output or a dependency of something to ensure it builds?",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 17
+      },
+      "revId": "2918d7fc78272e4115b440f113dfb06e41b0e263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
