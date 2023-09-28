@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7172dba_7ba7487d",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2023-09-28T00:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be387325_6200c02b",
+      "revId": "edae326f95775cf93e9160ec1e8b5a6e61f471e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e6d90bb_f3a86a6f",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-27T19:40:27Z",
       "side": 1,
       "message": "I\u0027m a little worried about this with the lack of support for proto namespacing in Rust - it would be very easy for one module to clobber another\u0027s definitions here. I don\u0027t have a good solution, but it\u0027s a bit unsettling.",
+      "revId": "edae326f95775cf93e9160ec1e8b5a6e61f471e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25bf22df_23fdd1b6",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2023-09-28T00:54:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9e6d90bb_f3a86a6f",
       "revId": "edae326f95775cf93e9160ec1e8b5a6e61f471e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
