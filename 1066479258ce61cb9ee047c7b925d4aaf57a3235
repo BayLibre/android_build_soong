@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac8fcee4_2cd240cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-09-28T04:52:07Z",
+      "side": 1,
+      "message": "Makes sense to me, but Liz/Romain to confirm.",
+      "revId": "1066479258ce61cb9ee047c7b925d4aaf57a3235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
