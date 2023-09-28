@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23d224c_9a4b23b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-28T14:18:30Z",
+      "side": 1,
+      "message": "Will this be potentially resolved by our discussion last night of removing ART\u0027s dependency on the full API surface?",
+      "revId": "15da3cb17cf5aca85243bd9b89fe49fb256c7b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
