@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c52d9dc4_19165885",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-09-28T17:32:48Z",
+      "side": 1,
+      "message": "I think the CL standalone makes sense to me, but can you add some additional context on how this is related to b/301463284?",
+      "revId": "fbef0db39433dcadad381344ef5832862496b5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
