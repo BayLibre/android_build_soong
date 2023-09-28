@@ -34,6 +34,93 @@
       "parentUuid": "e23d224c_9a4b23b7",
       "revId": "15da3cb17cf5aca85243bd9b89fe49fb256c7b84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0fc156_b04784c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-28T14:27:09Z",
+      "side": 1,
+      "message": "typically ART branch is resilient to missing dependencies unless they\u0027re actually built. It should be fine for the `java_api_library` modules to depend on a missing module unless they\u0027re built.",
+      "parentUuid": "0453579c_cb103092",
+      "revId": "15da3cb17cf5aca85243bd9b89fe49fb256c7b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb284468_f4700f5b",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2057,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-28T14:27:09Z",
+      "side": 1,
+      "message": "can we just add the check for frameworks base above? having both functions seems errorprone and introduces potential for different decisions to build from text/not across the code base.",
+      "range": {
+        "startLine": 2057,
+        "startChar": 17,
+        "endLine": 2057,
+        "endChar": 48
+      },
+      "revId": "15da3cb17cf5aca85243bd9b89fe49fb256c7b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1faf2f8_95085a8d",
+        "filename": "java/base.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-28T14:27:09Z",
+      "side": 1,
+      "message": "Can you add a reference in the comment to the fact that exclude_static_libs is _only_ used within build/soong?",
+      "range": {
+        "startLine": 772,
+        "startChar": 95,
+        "endLine": 772,
+        "endChar": 114
+      },
+      "revId": "15da3cb17cf5aca85243bd9b89fe49fb256c7b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "524f7a69_946ded70",
+        "filename": "java/java_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2314,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-09-28T14:27:09Z",
+      "side": 1,
+      "message": "can you add testing coverage of setting build stub from text + frameworks/base absent?",
+      "range": {
+        "startLine": 2314,
+        "startChar": 5,
+        "endLine": 2314,
+        "endChar": 29
+      },
+      "revId": "15da3cb17cf5aca85243bd9b89fe49fb256c7b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
