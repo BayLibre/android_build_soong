@@ -22,6 +22,30 @@
       },
       "revId": "2918d7fc78272e4115b440f113dfb06e41b0e263",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a2d149_9fb1b22f",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-09-28T13:22:34Z",
+      "side": 1,
+      "message": "yeah, done in follow up. Should perhaps have done it as one change.",
+      "parentUuid": "c7e1ab24_706c22ee",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 17
+      },
+      "revId": "2918d7fc78272e4115b440f113dfb06e41b0e263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
