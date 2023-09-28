@@ -16,6 +16,24 @@
       "message": "Will this be potentially resolved by our discussion last night of removing ART\u0027s dependency on the full API surface?",
       "revId": "15da3cb17cf5aca85243bd9b89fe49fb256c7b84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0453579c_cb103092",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-09-28T14:21:16Z",
+      "side": 1,
+      "message": "I believe that this change is necessary regardless of the previous discussion unless `full_api_surface_libs` is completely removed for all individual `java_api_library`, as they transitively depend on `android_*_stubs_current.from-text`, which are defined in `frameworks/base`.",
+      "parentUuid": "e23d224c_9a4b23b7",
+      "revId": "15da3cb17cf5aca85243bd9b89fe49fb256c7b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
