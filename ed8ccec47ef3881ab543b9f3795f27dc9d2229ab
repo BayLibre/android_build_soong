@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5888eac6_40114b96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-09-28T11:39:17Z",
+      "side": 1,
+      "message": "I rearranged the code a little bit to make it not conflict with udc beta3, since I think we want to CP it there.",
+      "revId": "ed8ccec47ef3881ab543b9f3795f27dc9d2229ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
