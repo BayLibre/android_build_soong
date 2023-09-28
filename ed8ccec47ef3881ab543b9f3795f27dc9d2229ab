@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5acd3e09_fd63587d",
+        "filename": "java/base.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2035,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-09-28T13:21:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d7413be_768b0dfa",
+      "range": {
+        "startLine": 2035,
+        "startChar": 1,
+        "endLine": 2035,
+        "endChar": 46
+      },
+      "revId": "ed8ccec47ef3881ab543b9f3795f27dc9d2229ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6158400_7dbf71f6",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-09-28T13:12:01Z",
       "side": 1,
       "message": "nit: may make sense to check the tag and only do the provider lookup if it\u0027ll be needed.",
+      "range": {
+        "startLine": 2037,
+        "startChar": 44,
+        "endLine": 2037,
+        "endChar": 45
+      },
+      "revId": "ed8ccec47ef3881ab543b9f3795f27dc9d2229ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6079fe80_0a965cf0",
+        "filename": "java/base.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-09-28T13:21:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6158400_7dbf71f6",
       "range": {
         "startLine": 2037,
         "startChar": 44,
