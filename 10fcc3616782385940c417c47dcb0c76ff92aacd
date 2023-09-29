@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d213f5_c4f7960c",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-09-29T01:50:54Z",
+      "side": 1,
+      "message": "FYI: This is only exposing the .txt version of the report (and not .html or .xml).",
+      "revId": "10fcc3616782385940c417c47dcb0c76ff92aacd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
