@@ -16,6 +16,24 @@
       "message": "FYI: This is only exposing the .txt version of the report (and not .html or .xml).",
       "revId": "10fcc3616782385940c417c47dcb0c76ff92aacd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab911d11_dbeea374",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-29T17:37:00Z",
+      "side": 1,
+      "message": "Please use the xml version instead, because you\u0027re going to be reading it programmatically.",
+      "parentUuid": "c2d213f5_c4f7960c",
+      "revId": "10fcc3616782385940c417c47dcb0c76ff92aacd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
