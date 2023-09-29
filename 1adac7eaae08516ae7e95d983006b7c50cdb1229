@@ -179,6 +179,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3220b8d_b74c920d",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-29T22:55:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "852c47d3_e08e334e",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "389e580b_40658cbb",
@@ -196,6 +214,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1081e572_31664a25",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-29T22:55:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "389e580b_40658cbb",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc98f960_7a5bfd1b",
@@ -209,6 +245,24 @@
       "writtenOn": "2023-09-26T14:58:09Z",
       "side": 1,
       "message": "nit: using mtime instead of hash should be fine and save us ~100ms.\nContent hash cannot change unless soong_build has been re-written.\nIf soong_build has been rewritten, it\u0027s very unlikely that its hash would not change (counter example: adding comments to a file that are simply discarded by the compiler).",
+      "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce33346f_1613277d",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-29T22:55:10Z",
+      "side": 1,
+      "message": "In a previous test draft, I added two functions to symlink_forest.go to force a rebuild. Even that didn\u0027t change the hash!",
+      "parentUuid": "bc98f960_7a5bfd1b",
       "revId": "1adac7eaae08516ae7e95d983006b7c50cdb1229",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
