@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8213f163_6326bb07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1826738
+      },
+      "writtenOn": "2023-09-29T11:24:42Z",
+      "side": 1,
+      "message": "Previous presubmit passed with the same changes. Failing test is not related and flaky.",
+      "revId": "a1c9bb08b52ef467d1352cda1eeebb4caa748608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
