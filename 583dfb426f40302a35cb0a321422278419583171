@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c684cca3_92269998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-09-29T01:00:03Z",
+      "side": 1,
+      "message": "ABTD run of the build that failed the first time: https://android-build.corp.google.com/builds/abtd/run/L66400000963241951",
+      "revId": "583dfb426f40302a35cb0a321422278419583171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
