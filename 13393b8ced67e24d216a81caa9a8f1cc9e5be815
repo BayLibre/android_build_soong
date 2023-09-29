@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f988f52f_1893e5f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-29T17:39:53Z",
+      "side": 1,
+      "message": "I think this needs some kind of formal testing. I can assist if need be. aosp/2674136 has some examples",
+      "revId": "13393b8ced67e24d216a81caa9a8f1cc9e5be815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33bc2607_882c05a6",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-29T17:39:53Z",
+      "side": 1,
+      "message": "please remove trailing whitespace. `gofmt -w` should work here",
+      "revId": "13393b8ced67e24d216a81caa9a8f1cc9e5be815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b63b9f1_57b4ceaf",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-29T17:39:53Z",
+      "side": 1,
+      "message": "IIUC, in this case `len(target) \u003d\u003d len(prevCWD)` is equivalent to `target \u003d\u003d prevCWD`. Why not use that?",
+      "revId": "13393b8ced67e24d216a81caa9a8f1cc9e5be815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eed5e2f4_2972087c",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-29T17:39:53Z",
+      "side": 1,
+      "message": "is it worth differentiating between the file not existing and a read error?",
+      "revId": "13393b8ced67e24d216a81caa9a8f1cc9e5be815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e977711_3247693b",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-09-29T17:39:53Z",
+      "side": 1,
+      "message": "when would it be \"\"?",
+      "revId": "13393b8ced67e24d216a81caa9a8f1cc9e5be815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
