@@ -209,6 +209,7 @@ var (
 		"external/python/markupsafe/src":         Bp2BuildDefaultTrueRecursively,
 		"external/python/setuptools":             Bp2BuildDefaultTrueRecursively,
 		"external/rappor":                        Bp2BuildDefaultTrueRecursively,
+		"external/rust/crates/rustc-demangle":    Bp2BuildDefaultTrueRecursively,
 		"external/scudo":                         Bp2BuildDefaultTrueRecursively,
 		"external/selinux/checkpolicy":           Bp2BuildDefaultTrueRecursively,
 		"external/selinux/libselinux":            Bp2BuildDefaultTrueRecursively,
