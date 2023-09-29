@@ -46,6 +46,30 @@
       },
       "revId": "c5b9abba309e4bb65e6ae69c60b44d0f4b59e278",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cd75037_029f327f",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3054,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-09-29T22:59:29Z",
+      "side": 0,
+      "message": "We don\u0027t have the cases for `testCcNoVndk` configuration.\nInstead of make this work correctly, we must not allow this configuration which will be done by removing the configuration.",
+      "parentUuid": "0b848912_807c574c",
+      "range": {
+        "startLine": 3037,
+        "startChar": 0,
+        "endLine": 3054,
+        "endChar": 0
+      },
+      "revId": "c5b9abba309e4bb65e6ae69c60b44d0f4b59e278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
