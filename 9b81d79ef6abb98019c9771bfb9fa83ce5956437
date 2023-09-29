@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a3c2806_d89941e4",
+        "filename": "cc/sysprop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-09-29T21:17:50Z",
+      "side": 1,
+      "message": "(for next time) It makes it easier to review if you move the file in a separate (parent) commit, so that only your actual changes to the file appear as diffs as opposed to the whole file looking new.",
+      "revId": "9b81d79ef6abb98019c9771bfb9fa83ce5956437",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
