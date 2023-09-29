@@ -16,6 +16,24 @@
       "message": "keep disabled",
       "revId": "477248503051a782e0acce64d8bde606200c1b6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21d876a3_522bfb6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2023-09-29T15:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd1d533b_8d921b31",
+      "revId": "477248503051a782e0acce64d8bde606200c1b6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
