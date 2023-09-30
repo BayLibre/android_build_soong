@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e5be75_daedacb1",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2023-09-30T02:21:24Z",
+      "side": 0,
+      "message": "This is a synonym for -Wextra, replaced with the canonical flag.",
+      "revId": "fc5ff341e85a8db63b2aa4f7f38541d549fc2a9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "289c825d_fbbf64f6",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2023-09-30T02:21:24Z",
+      "side": 0,
+      "message": "We already set -Werror\u003d for the same warning, so this is redundant.",
+      "revId": "fc5ff341e85a8db63b2aa4f7f38541d549fc2a9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
