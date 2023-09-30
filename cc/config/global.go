@@ -251,8 +251,6 @@ var (
 	noOverrideExternalGlobalCflags = []string{
 		// http://b/151457797
 		"-fcommon",
-		// http://b/191699019
-		"-Wno-format-insufficient-args",
 		// http://b/296321145
 		// Indicates potential memory or stack corruption, so should be changed
 		// to a hard error. Currently triggered by some vendor code.
