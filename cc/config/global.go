@@ -274,7 +274,8 @@ var (
 		"-Wno-error=unused-but-set-parameter", // http://b/197240255
 		// New warnings to be fixed after clang-r468909
 		"-Wno-error=deprecated-builtins", // http://b/241601211
-		"-Wno-error=deprecated",          // in external/googletest/googletest
+		"-Wno-error=deprecated-enum-compare-conditional",
+		"-Wno-error=deprecated-this-capture",
 		// New warnings to be fixed after clang-r475365
 		"-Wno-error=single-bit-bitfield-constant-conversion", // http://b/243965903
 		"-Wno-error=enum-constexpr-conversion",               // http://b/243964282
