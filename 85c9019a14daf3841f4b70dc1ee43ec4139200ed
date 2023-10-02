@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1542d9e7_79c8b9dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-10-02T17:42:42Z",
+      "side": 1,
+      "message": "LGTM, but I think Romain should review this CL as well.",
+      "revId": "85c9019a14daf3841f4b70dc1ee43ec4139200ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
