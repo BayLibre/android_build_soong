@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f48a0e_9695d199",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-10-02T22:18:23Z",
+      "side": 1,
+      "message": "Looks great! Thank you for helping to explain these flags in detail.",
+      "revId": "1a4572ec9c9dc2e80c2e7f629741e4e001dfc2e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e502d04f_9814685e",
+        "filename": "cc/config/global.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-10-02T22:18:23Z",
+      "side": 1,
+      "message": "This is a functional change AIUI, so maybe should be split out (mostly to prevent churn of adding/removing the docs).",
+      "revId": "1a4572ec9c9dc2e80c2e7f629741e4e001dfc2e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
