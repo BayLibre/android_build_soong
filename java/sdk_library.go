@@ -1869,6 +1869,13 @@ func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, 
 		props.Full_api_surface_stub = proptools.StringPtr(alternativeFullApiSurfaceStub)
 	}
 
+	// java_sdk_library modules that set sdk_version as none does not depend on other api domains.
+	// Therefore, java_api_library created from such modules should not depend on
+	// full_api_surface_stubs but create and compile stubs by the java_api_library module itself.
+	if module.sdkVersion.Kind == android.SdkNone {
+		props.Full_api_surface_stub = nil
+	}
+
 	// android_module_lib_stubs_current.from-text only comprises api contributions from art, conscrypt and i18n.
 	// Thus, replace with android_module_lib_stubs_current_full.from-text, which comprises every api domains.
 	if apiScope.kind == android.SdkModule {
