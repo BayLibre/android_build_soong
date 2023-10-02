@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d059e542_5e436eaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-10-02T23:37:17Z",
+      "side": 1,
+      "message": "Say,\n`$TOP/a` is a symlink to `$TOP/b`.  \nAnd there is a `$TOP/b/BUILD`.  \nFurthermore, say `keepExistingBuildFile($TOP/b)` is False while `keepExistingBuildFile($TOP/a)` is True.  What should the expected behavior be?",
+      "revId": "dc7d7f755707f063de7bc789bface069bbc1fa56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2eae4b18_3f4e04ca",
         "filename": "android/bazel_paths.go",
         "patchSetId": 2
