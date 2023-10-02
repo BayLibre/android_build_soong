@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83c66db6_82b3c90c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-10-02T23:59:17Z",
+      "side": 1,
+      "message": "In the context of \"Should the BUILD file appear in the workspace\", I dont have a strong opinion, but perhaps +cparsons has an opinion?\n\nThe current implementation does have a side effect on `TransformSubpackagePaths`. In the above example at ToT, if we have a target in $TOP/BUILD that depends on a .cpp file in b/b.cpp, then its bp2build generated target will be\n\n```\n# ToT\ncc_library (\n  srcs \u003d [\":b/b.cpp\"], # does not build\n)\n```\n\nAnd after this CL\n```\ncc_library (\n  srcs \u003d [\"//b:b.cpp\"], # builds successfully\n)\n```\n\nI would like to propose that we submit this fix for `TransformSubpackagePaths`. Once we have clarity on what the expected behavior for symlink is, we can drop this special handling.",
+      "parentUuid": "d059e542_5e436eaf",
+      "revId": "dc7d7f755707f063de7bc789bface069bbc1fa56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2eae4b18_3f4e04ca",
         "filename": "android/bazel_paths.go",
         "patchSetId": 2
