@@ -16,6 +16,29 @@
       "message": "LGTM, but I think Romain should review this CL as well.",
       "revId": "85c9019a14daf3841f4b70dc1ee43ec4139200ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f54215_db7e4cee",
+        "filename": "aconfig/java_aconfig_library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-10-02T18:03:39Z",
+      "side": 1,
+      "message": "Should we make this one an implicit dep of the starlark rule? That way we don\u0027t even need a `deps` attribute on the `java_aconfig_library` module type, which matches Soong better?",
+      "range": {
+        "startLine": 124,
+        "startChar": 53,
+        "endLine": 124,
+        "endChar": 116
+      },
+      "revId": "85c9019a14daf3841f4b70dc1ee43ec4139200ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
