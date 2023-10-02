@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eae4b18_3f4e04ca",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-10-02T18:11:34Z",
+      "side": 1,
+      "message": "I am not sure the answer, but if a symlink is copied to a dir that is not allowed for keeping build files, should it abide that rule?",
+      "range": {
+        "startLine": 243,
+        "startChar": 85,
+        "endLine": 243,
+        "endChar": 94
+      },
+      "revId": "dc7d7f755707f063de7bc789bface069bbc1fa56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
