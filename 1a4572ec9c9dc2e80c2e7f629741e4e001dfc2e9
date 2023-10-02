@@ -33,6 +33,24 @@
       "message": "This is a functional change AIUI, so maybe should be split out (mostly to prevent churn of adding/removing the docs).",
       "revId": "1a4572ec9c9dc2e80c2e7f629741e4e001dfc2e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c32781f9_97f77fbe",
+        "filename": "cc/config/global.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2023-10-02T22:20:35Z",
+      "side": 1,
+      "message": "-W is the same as -Wextra according to clang docs, so we should be setting the same set of warnings as before.",
+      "parentUuid": "e502d04f_9814685e",
+      "revId": "1a4572ec9c9dc2e80c2e7f629741e4e001dfc2e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
