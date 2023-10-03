@@ -408,8 +408,6 @@ func gatherRequiredDepsForTest() string {
 		"kotlin-stdlib-jdk8",
 		"kotlin-annotations",
 		"stub-annotations",
-
-		"aconfig-annotations-lib",
 	}
 
 	for _, extra := range extraModules {
@@ -548,6 +546,16 @@ func gatherRequiredDepsForTest() string {
 			name: "dex_bootjars",
 		}
 `
+
+	// Since we default the sdk version of java_aconfig_library to system_current,
+	// we need to set aconfig-annotations-lib to lower than it to pass the dependency
+	// sdk check.
+	bp += `
+		java_library {
+			name: "aconfig-annotations-lib",
+			sdk_version: "core_current",
+			host_supported: true,
+		}`
 
 	return bp
 }
