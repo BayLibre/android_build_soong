@@ -442,8 +442,7 @@ func getOtherModuleLabel(ctx BazelConversionPathContext, dep, tag string,
 	otherLabel := labelFromModule(ctx, m)
 
 	// TODO(b/165114590): Convert tag (":name{.tag}") to corresponding Bazel implicit output targets.
-	if (tag != "" && m.Name() == "framework-res") ||
-		(tag == ".generated_srcjars" && ctx.OtherModuleType(m) == "java_aconfig_library") {
+	if tag != "" && m.Name() == "framework-res" {
 		otherLabel += tag
 	}
 
