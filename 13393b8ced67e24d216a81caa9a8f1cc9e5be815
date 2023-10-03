@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc54c87_f6d9fc7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-10-03T03:04:32Z",
+      "side": 1,
+      "message": "Thanks for the pointer! Is it ok if I add the tests in a followup CL? (since this is blocking the Cog launch, I have a preference to do it in a followup).",
+      "parentUuid": "f988f52f_1893e5f7",
+      "revId": "13393b8ced67e24d216a81caa9a8f1cc9e5be815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33bc2607_882c05a6",
