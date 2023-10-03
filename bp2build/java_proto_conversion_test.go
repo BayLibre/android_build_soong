@@ -193,3 +193,41 @@ java_library_static {
 		},
 	})
 }
+
+func TestJavaProtoPlugin(t *testing.T) {
+	runJavaProtoTestCase(t, Bp2buildTestCase{
+		Description: "java_library proto plugin",
+		Blueprint: `java_library_static {
+    name: "java-protos",
+    srcs: ["a.proto"],
+    proto: {
+        plugin: "grpc-java-plugin",
+    },
+    sdk_version: "current",
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("proto_library", "java-protos_proto", AttrNameToString{
+				"srcs": `["a.proto"]`,
+			}),
+			MakeBazelTarget(
+				"java_lite_proto_library",
+				"java-protos_java_proto_lite",
+				AttrNameToString{
+					"deps":        `[":java-protos_proto"]`,
+					"plugin":      `"//external/grpc-grpc-java/compiler:protoc-gen-grpc-java-plugin"`,
+					"sdk_version": `"current"`,
+				}),
+			MakeBazelTarget("java_library", "java-protos", AttrNameToString{
+				"exports":     `[":java-protos_java_proto_lite"]`,
+				"sdk_version": `"current"`,
+			}),
+			MakeNeverlinkDuplicateTargetWithAttrs(
+				"java_library",
+				"java-protos",
+				AttrNameToString{
+					"sdk_version": `"current"`,
+				}),
+		},
+	})
+}
