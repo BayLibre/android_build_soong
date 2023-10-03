@@ -159,6 +159,12 @@ type protoAttributes struct {
 
 	Sdk_version  bazel.StringAttribute
 	Java_version bazel.StringAttribute
+
+	Plugin bazel.LabelAttribute
+}
+
+var pluginToBazelLabel = map[string]bazel.Label{
+	"grpc-java-plugin": {Label: "//external/grpc-grpc-java/compiler:protoc-gen-grpc-java-plugin"},
 }
 
 func bp2buildProto(ctx android.Bp2buildMutatorContext, m *Module, protoSrcs bazel.LabelListAttribute, AdditionalProtoDeps bazel.LabelListAttribute) *bazel.Label {
@@ -189,12 +195,22 @@ func bp2buildProto(ctx android.Bp2buildMutatorContext, m *Module, protoSrcs baze
 		ctx.PropertyErrorf("proto.type", "cannot handle conversion at this time: %q", typ)
 	}
 
+	plugin := bazel.LabelAttribute{}
+	if m.protoProperties.Proto.Plugin != nil {
+		if label, ok := pluginToBazelLabel[*m.protoProperties.Proto.Plugin]; ok {
+			plugin.SetValue(label)
+		} else {
+			ctx.PropertyErrorf("proto.plugin", "plugin is not added in the pluginToBazelLabel map")
+		}
+	}
+
 	protoAttrs := &protoAttributes{
 		Deps:                  bazel.MakeLabelListAttribute(protoInfo.Proto_libs),
 		Transitive_deps:       bazel.MakeLabelListAttribute(protoInfo.Transitive_proto_libs),
 		Additional_proto_deps: AdditionalProtoDeps,
 		Java_version:          bazel.StringAttribute{Value: m.properties.Java_version},
 		Sdk_version:           bazel.StringAttribute{Value: m.deviceProperties.Sdk_version},
+		Plugin:                plugin,
 	}
 
 	name := m.Name() + suffix
