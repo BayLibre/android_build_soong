@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c3c4ebb_86e573d9",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-03T15:38:04Z",
+      "side": 1,
+      "message": "According to go docs, it looks like WalkDir is more efficient?",
+      "revId": "fdf1511ac8551ebe503a44608653dc35d7e15e75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81bd1f43_640abd1b",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-03T15:38:04Z",
+      "side": 1,
+      "message": "This could (in rare cases) be a different error, other than that the file doesn\u0027t exist.",
+      "revId": "fdf1511ac8551ebe503a44608653dc35d7e15e75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08aa335b_cb454d41",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-03T15:38:04Z",
+      "side": 1,
+      "message": "Might it be better to return err instead and handle this by the caller?",
+      "revId": "fdf1511ac8551ebe503a44608653dc35d7e15e75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
