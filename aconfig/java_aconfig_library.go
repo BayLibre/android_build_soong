@@ -30,6 +30,8 @@ type declarationsTagType struct {
 
 var declarationsTag = declarationsTagType{}
 
+var systemCurrentSdk = "system_current"
+
 type JavaAconfigDeclarationsLibraryProperties struct {
 	// name of the aconfig_declarations module to generate a library for
 	Aconfig_declarations string
@@ -58,6 +60,11 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) DepsMutator(module *ja
 
 	// Add aconfig-annotations-lib as a dependency for the optimization / code stripping annotations
 	module.AddSharedLibrary("aconfig-annotations-lib")
+
+	// Default the sdk version to system_current if not set.
+	if module.GetSdkVersion() == nil {
+		module.SetSdkVersion(&systemCurrentSdk)
+	}
 }
 
 func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuildActions(module *java.GeneratedJavaLibraryModule, ctx android.ModuleContext) android.Path {
@@ -114,12 +121,11 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) Bp2build(ctx android.B
 	// Ideally we should only use the default value if it is not set by the user, but
 	// bazel only supports a limited sdk versions, for example, the java_aconfig_library
 	// modules in framework/base use core_platform which is not supported by bazel yet.
-	// TODO(b/302148527): change soong to default to system_current as well.
-	sdkVersion := "system_current"
+	// TODO(b/303318233): default the sdk version to system_current only if it is not set.
 	attrs := bazelJavaAconfigLibraryAttributes{
 		Aconfig_declarations: *bazel.MakeLabelAttribute(android.BazelLabelForModuleDepSingle(ctx, callbacks.properties.Aconfig_declarations).Label),
 		Test:                 callbacks.properties.Test,
-		Sdk_version:          &sdkVersion,
+		Sdk_version:          &systemCurrentSdk,
 	}
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        "java_aconfig_library",
