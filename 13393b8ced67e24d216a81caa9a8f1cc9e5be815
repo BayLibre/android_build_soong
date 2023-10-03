@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "163e7220_cece7b88",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-10-03T03:03:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33bc2607_882c05a6",
+      "revId": "13393b8ced67e24d216a81caa9a8f1cc9e5be815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b63b9f1_57b4ceaf",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-09-29T17:39:53Z",
       "side": 1,
       "message": "IIUC, in this case `len(target) \u003d\u003d len(prevCWD)` is equivalent to `target \u003d\u003d prevCWD`. Why not use that?",
+      "revId": "13393b8ced67e24d216a81caa9a8f1cc9e5be815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "492c07af_145be15f",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-10-03T03:03:23Z",
+      "side": 1,
+      "message": "Oh len() check should be more efficient than comparing each string. Moreover, we should\u0027ve verified string equivalency in the `strings.HasPrefix(target, prevCWD)` check in that case.",
+      "parentUuid": "0b63b9f1_57b4ceaf",
       "revId": "13393b8ced67e24d216a81caa9a8f1cc9e5be815",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -69,6 +105,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a626762_8a5cb3b2",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-10-03T03:03:23Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to. If we can\u0027t get info about the previous CWD (either because the file didn\u0027t exist or because we weren\u0027t able to read from it), I think it should be ok to do nothing. Failing the build for example if we aren\u0027t able to read the file seems a bit extreme.",
+      "parentUuid": "eed5e2f4_2972087c",
+      "revId": "13393b8ced67e24d216a81caa9a8f1cc9e5be815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e977711_3247693b",
@@ -82,6 +136,24 @@
       "writtenOn": "2023-09-29T17:39:53Z",
       "side": 1,
       "message": "when would it be \"\"?",
+      "revId": "13393b8ced67e24d216a81caa9a8f1cc9e5be815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e18dd22_7e9dc000",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-10-03T03:03:23Z",
+      "side": 1,
+      "message": "I can\u0027t really think of a proper scenario where this can happen. Removed 😊",
+      "parentUuid": "8e977711_3247693b",
       "revId": "13393b8ced67e24d216a81caa9a8f1cc9e5be815",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
