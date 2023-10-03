@@ -84,10 +84,9 @@ type linter struct {
 	classes                 android.Path
 	extraLintCheckJars      android.Paths
 	library                 bool
-	minSdkVersion           int
-	targetSdkVersion        int
-	compileSdkVersion       int
-	compileSdkKind          android.SdkKind
+	minSdkVersion           android.ApiLevel
+	targetSdkVersion        android.ApiLevel
+	sdkVersion              android.SdkSpec
 	javaLanguageLevel       string
 	kotlinLanguageLevel     string
 	outputs                 lintOutputs
@@ -318,7 +317,7 @@ func (l *linter) writeLintProjectXML(ctx android.ModuleContext, rule *android.Ru
 	cmd.FlagWithInput("@",
 		android.PathForSource(ctx, "build/soong/java/lint_defaults.txt"))
 
-	if l.compileSdkKind == android.SdkPublic {
+	if l.sdkVersion.Kind == android.SdkPublic {
 		cmd.FlagForEachArg("--error_check ", l.extraMainlineLintErrors)
 	} else {
 		// TODO(b/268261262): Remove this branch. We're demoting NewApi to a warning due to pre-existing issues that need to be fixed.
@@ -357,7 +356,7 @@ func (l *linter) generateManifest(ctx android.ModuleContext, rule *android.RuleB
 		Text(`echo "<manifest xmlns:android='http://schemas.android.com/apk/res/android'" &&`).
 		Text(`echo "    android:versionCode='1' android:versionName='1' >" &&`).
 		Textf(`echo "  <uses-sdk android:minSdkVersion='%d' android:targetSdkVersion='%d'/>" &&`,
-			l.minSdkVersion, l.targetSdkVersion).
+			lintSDKVersion(ctx, l.minSdkVersion), lintSDKVersion(ctx, l.targetSdkVersion)).
 		Text(`echo "</manifest>"`).
 		Text(") >").Output(manifestPath)
 
@@ -377,12 +376,39 @@ func (l *linter) getBaselineFilepath(ctx android.ModuleContext) android.Optional
 	return lintBaseline
 }
 
+func lintSDKVersion(ctx android.ModuleContext, apiLevel android.ApiLevel) int {
+	if !apiLevel.IsPreview() {
+		return apiLevel.FinalInt()
+	} else {
+		// When running metalava, we pass --version-codename. When that value
+		// is not REL, metalava will add 1 to the --current-version argument.
+		// On old branches, PLATFORM_SDK_VERSION is the latest version (for that
+		// branch) and the codename is REL, except potentially on the most
+		// recent non-master branch. On that branch, it goes through two other
+		// phases before it gets to the phase previously described:
+		//  - PLATFORM_SDK_VERSION has not been updated yet, and the codename
+		//    is not rel. This happens for most of the internal branch's life
+		//    while the branch has been cut but is still under active development.
+		//  - PLATFORM_SDK_VERSION has been set, but the codename is still not
+		//    REL. This happens briefly during the release process. During this
+		//    state the code to add --current-version is commented out, and then
+		//    that commenting out is reverted after the codename is set to REL.
+		// On the master branch, the PLATFORM_SDK_VERSION always represents a
+		// prior version and the codename is always non-REL.
+		//
+		// We need to add one here to match metalava adding 1. Technically
+		// this means that in the state described in the second bullet point
+		// above, this number is 1 higher than it should be.
+		return ctx.Config().PlatformSdkVersion().FinalInt() + 1
+	}
+}
+
 func (l *linter) lint(ctx android.ModuleContext) {
 	if !l.enabled() {
 		return
 	}
 
-	if l.minSdkVersion != l.compileSdkVersion {
+	if lintSDKVersion(ctx, l.minSdkVersion) != lintSDKVersion(ctx, l.sdkVersion.ApiLevel) {
 		l.extraMainlineLintErrors = append(l.extraMainlineLintErrors, updatabilityChecks...)
 		// Skip lint warning checks for NewApi warnings for libcore where they come from source
 		// files that reference the API they are adding (b/208656169).
@@ -469,7 +495,7 @@ func (l *linter) lint(ctx android.ModuleContext) {
 	rule.Command().Text("mkdir -p").Flag(lintPaths.cacheDir.String()).Flag(lintPaths.homeDir.String())
 	rule.Command().Text("rm -f").Output(html).Output(text).Output(xml)
 
-	files, ok := allLintDatabasefiles[l.compileSdkKind]
+	files, ok := allLintDatabasefiles[l.sdkVersion.Kind]
 	if !ok {
 		files = allLintDatabasefiles[android.SdkPublic]
 	}
@@ -496,7 +522,7 @@ func (l *linter) lint(ctx android.ModuleContext) {
 		FlagWithOutput("--html ", html).
 		FlagWithOutput("--text ", text).
 		FlagWithOutput("--xml ", xml).
-		FlagWithArg("--compile-sdk-version ", strconv.Itoa(l.compileSdkVersion)).
+		FlagWithArg("--compile-sdk-version ", strconv.Itoa(lintSDKVersion(ctx, l.sdkVersion.ApiLevel))).
 		FlagWithArg("--java-language-level ", l.javaLanguageLevel).
 		FlagWithArg("--kotlin-language-level ", l.kotlinLanguageLevel).
 		FlagWithArg("--url ", fmt.Sprintf(".=.,%s=out", android.PathForOutput(ctx).String())).
@@ -507,6 +533,15 @@ func (l *linter) lint(ctx android.ModuleContext) {
 
 	rule.Temporary(lintPaths.projectXML)
 	rule.Temporary(lintPaths.configXML)
+
+	effectiveMinSdkVersion, err := l.minSdkVersion.EffectiveVersion(ctx)
+	if err != nil {
+		ctx.PropertyErrorf("min_sdk_version", "%s", err)
+	}
+	if useR8PlatformFlag(ctx, l.sdkVersion, effectiveMinSdkVersion) {
+		// If R8 is configured in platform mode then desugaring is disabled, configure lint to match.
+		cmd.FlagWithArg("--Xdesugared-methods ", "none")
+	}
 
 	suppressExitCode := BoolDefault(l.properties.Lint.Suppress_exit_code, false)
 	if exitCode := ctx.Config().Getenv("ANDROID_LINT_SUPPRESS_EXIT_CODE"); exitCode == "" && !suppressExitCode {

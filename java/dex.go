@@ -213,35 +213,47 @@ func (d *dexer) dexCommonFlags(ctx android.ModuleContext,
 			"--verbose")
 	}
 
-	// Supplying the platform build flag disables various features like API modeling and desugaring.
-	// For targets with a stable min SDK version (i.e., when the min SDK is both explicitly specified
-	// and managed+versioned), we suppress this flag to ensure portability.
-	// Note: Targets with a min SDK kind of core_platform (e.g., framework.jar) or unspecified (e.g.,
-	// services.jar), are not classified as stable, which is WAI.
-	// TODO(b/232073181): Expand to additional min SDK cases after validation.
-	var addAndroidPlatformBuildFlag = false
-	if !dexParams.sdkVersion.Stable() {
-		addAndroidPlatformBuildFlag = true
-	}
-
 	effectiveVersion, err := dexParams.minSdkVersion.EffectiveVersion(ctx)
 	if err != nil {
 		ctx.PropertyErrorf("min_sdk_version", "%s", err)
 	}
-
-	// If the specified SDK level is 10000, then configure the compiler to use the
-	// current platform SDK level and to compile the build as a platform build.
-	var minApiFlagValue = effectiveVersion.FinalOrFutureInt()
+	minApiFlagValue := effectiveVersion.FinalOrFutureInt()
 	if minApiFlagValue == 10000 {
+		// If the specified SDK level is 10000, then configure the compiler to use the
+		// current platform SDK level.  useR8PlatformFlag will also set the flag to compile
+		// as a platform build.
 		minApiFlagValue = ctx.Config().PlatformSdkVersion().FinalInt()
-		addAndroidPlatformBuildFlag = true
 	}
 	flags = append(flags, "--min-api "+strconv.Itoa(minApiFlagValue))
 
+	// Supplying the platform build flag disables various features like API modeling and desugaring.
+	addAndroidPlatformBuildFlag := useR8PlatformFlag(ctx, dexParams.sdkVersion, effectiveVersion)
 	if addAndroidPlatformBuildFlag {
 		flags = append(flags, "--android-platform-build")
 	}
 	return flags, deps
+}
+
+// Supplying the platform build flag disables various features like API modeling and desugaring.
+// For targets with a stable min SDK version (i.e., when the min SDK is both explicitly specified
+// and managed+versioned), we suppress this flag to ensure portability.
+// Note: Targets with a min SDK kind of core_platform (e.g., framework.jar) or unspecified (e.g.,
+// services.jar), are not classified as stable, which is WAI.
+// TODO(b/232073181): Expand to additional min SDK cases after validation.
+func useR8PlatformFlag(ctx android.ModuleContext,
+	sdkVersion android.SdkSpec, effectiveMinSdkVersion android.ApiLevel) bool {
+
+	if !sdkVersion.Stable() {
+		return true
+	}
+
+	// If the specified SDK level is 10000, then compile the build as a platform build.
+	minApiFlagValue := effectiveMinSdkVersion.FinalOrFutureInt()
+	if minApiFlagValue == 10000 {
+		return true
+	}
+
+	return false
 }
 
 func d8Flags(flags javaBuilderFlags) (d8Flags []string, d8Deps android.Paths) {
