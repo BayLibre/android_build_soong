@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c701f93b_cace835f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-03T16:49:54Z",
+      "side": 1,
+      "message": "Fixing forward at aosp/2769925 to avoid the risk of another CI outage by increasing disk usage past the trident limit.",
+      "revId": "0055a9ad95c1cd3a926f0ea8a454c8a5d565ca42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
