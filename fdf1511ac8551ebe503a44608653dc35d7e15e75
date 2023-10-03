@@ -50,6 +50,23 @@
       "message": "Might it be better to return err instead and handle this by the caller?",
       "revId": "fdf1511ac8551ebe503a44608653dc35d7e15e75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f9f636_a38a09fe",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-10-03T19:21:14Z",
+      "side": 1,
+      "message": "One more thing - is it guaranteed that `out` will exist this early in the flow? I would probably add `!os.IsNotExist(er)` here.",
+      "revId": "fdf1511ac8551ebe503a44608653dc35d7e15e75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
