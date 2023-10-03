@@ -347,8 +347,6 @@ var (
 	// enables -Werror and some group of warnings explicitly triggers newly
 	// added warnings.
 	noOverrideExternalGlobalCflags = []string{
-		// http://b/151457797
-		"-fcommon",
 		// http://b/191699019
 		"-Wno-format-insufficient-args",
 		// http://b/296321508
