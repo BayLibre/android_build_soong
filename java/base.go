@@ -704,6 +704,14 @@ func (j *Module) setInstrument(value bool) {
 	j.properties.Instrument = value
 }
 
+func (j *Module) SetSdkVersion(value *string) {
+	j.deviceProperties.Sdk_version = value
+}
+
+func (j *Module) GetSdkVersion() *string {
+	return j.deviceProperties.Sdk_version
+}
+
 func (j *Module) SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
 	return android.SdkSpecFrom(ctx, String(j.deviceProperties.Sdk_version))
 }
@@ -717,10 +725,6 @@ func (j *Module) MinSdkVersion(ctx android.EarlyModuleContext) android.ApiLevel 
 		return android.ApiLevelFrom(ctx, *j.deviceProperties.Min_sdk_version)
 	}
 	return j.SdkVersion(ctx).ApiLevel
-}
-
-func (j *Module) GetDeviceProperties() *DeviceProperties {
-	return &j.deviceProperties
 }
 
 func (j *Module) MaxSdkVersion(ctx android.EarlyModuleContext) android.ApiLevel {
