@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98abfd0f_ad471f1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-10-04T14:09:45Z",
+      "side": 1,
+      "message": "IIUC we\u0027re using calls to `getOtherModuleLabel` to define what a dependency is in the allowlist v2 sense, are we confident that we catch 100% of dependencies that way? Or we think it\u0027ll cover, say 99% of cases and that\u0027s already a much better place to be in? Have you observed any exception that would/will require some kind of manual allowlisting?",
+      "revId": "5f1b3c7ad860a53a7c70559b7ee2eb5527b2d9fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e5ed684_fde0a4f1",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-10-04T14:09:45Z",
+      "side": 1,
+      "message": "How do you feel about preceding this with a `/*markAsDeps\u003d*/` here and elsewhere?",
+      "range": {
+        "startLine": 156,
+        "startChar": 108,
+        "endLine": 156,
+        "endChar": 112
+      },
+      "revId": "5f1b3c7ad860a53a7c70559b7ee2eb5527b2d9fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
