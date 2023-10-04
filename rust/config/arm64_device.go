@@ -55,6 +55,7 @@ func init() {
 			strings.Join(rustFlags, " "))
 	}
 
+	ExportedVars.ExportStringListStaticVariable("DEVICE_ARM64_RUSTC_FLAGS", Arm64RustFlags)
 }
 
 type toolchainArm64 struct {
