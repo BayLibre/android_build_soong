@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f49dc13_f4b11bcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-10-04T22:09:50Z",
+      "side": 1,
+      "message": "This is unnecessary. It is already in the global flags:\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/rust/config/global.go;l\u003d72?q\u003dpanic%3Dabort%20build%2Fsoong",
+      "revId": "0134351d0885907b9109876216ee92d3525bc21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
