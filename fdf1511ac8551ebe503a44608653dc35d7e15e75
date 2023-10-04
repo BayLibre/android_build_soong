@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b865650c_451635db",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-10-04T02:36:29Z",
+      "side": 1,
+      "message": "Good point, WalkDir issues fewer Lstat calls apparently. Changed.",
+      "parentUuid": "1c3c4ebb_86e573d9",
+      "revId": "fdf1511ac8551ebe503a44608653dc35d7e15e75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81bd1f43_640abd1b",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-03T15:38:04Z",
       "side": 1,
       "message": "This could (in rare cases) be a different error, other than that the file doesn\u0027t exist.",
+      "revId": "fdf1511ac8551ebe503a44608653dc35d7e15e75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccbd43f8_8fa2cf6d",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-10-04T02:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81bd1f43_640abd1b",
       "revId": "fdf1511ac8551ebe503a44608653dc35d7e15e75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ad933b_6d0ed24f",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-10-04T02:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08aa335b_cb454d41",
+      "revId": "fdf1511ac8551ebe503a44608653dc35d7e15e75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6f9f636_a38a09fe",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-10-03T19:21:14Z",
       "side": 1,
       "message": "One more thing - is it guaranteed that `out` will exist this early in the flow? I would probably add `!os.IsNotExist(er)` here.",
+      "revId": "fdf1511ac8551ebe503a44608653dc35d7e15e75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e7874e8_04984fb4",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-10-04T02:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6f9f636_a38a09fe",
       "revId": "fdf1511ac8551ebe503a44608653dc35d7e15e75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
