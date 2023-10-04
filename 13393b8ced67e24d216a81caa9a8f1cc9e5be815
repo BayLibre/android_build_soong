@@ -90,6 +90,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb7c07e_e14f2bf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-10-04T16:37:01Z",
+      "side": 1,
+      "message": "Mentioned this over chat, but mentioning here too:\n\nI think the abtd run won\u0027t catch any issues because CI builds don\u0027t move the TOP directory (and this change only applies to when the TOP dir is moved). In anycase, here\u0027s a successful abtd run with tihs change - https://android-build.corp.google.com/abtd/runs/.",
+      "parentUuid": "000dc57c_2e41eeeb",
+      "revId": "13393b8ced67e24d216a81caa9a8f1cc9e5be815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33bc2607_882c05a6",
