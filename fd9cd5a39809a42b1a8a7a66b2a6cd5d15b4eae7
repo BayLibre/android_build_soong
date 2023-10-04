@@ -52,6 +52,24 @@
       "parentUuid": "4daef4dc_62926aad",
       "revId": "fd9cd5a39809a42b1a8a7a66b2a6cd5d15b4eae7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1f0da7e_4e86c393",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-10-04T18:33:12Z",
+      "side": 1,
+      "message": "ah, that\u0027s handy... builds fine locally (and boots no worse than it was booting before!).",
+      "parentUuid": "6fe6c4b8_42c0f317",
+      "revId": "fd9cd5a39809a42b1a8a7a66b2a6cd5d15b4eae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
