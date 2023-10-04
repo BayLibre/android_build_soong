@@ -2851,6 +2851,7 @@ type javaCommonAttributes struct {
 	Plugins                 bazel.LabelListAttribute
 	Javacopts               bazel.StringListAttribute
 	Sdk_version             bazel.StringAttribute
+	Min_sdk_version         bazel.StringAttribute
 	Java_version            bazel.StringAttribute
 	Errorprone_force_enable bazel.BoolAttribute
 }
@@ -2903,11 +2904,11 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.Bp2buildMutatorContext
 		// TODO(b/297356704): handle platform apis in bp2build
 		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "sdk_version unset")
 		return &javaCommonAttributes{}, &bp2BuildJavaInfo{}, false
-	} else if proptools.String(m.deviceProperties.Sdk_version) == "core_platform" {
-		// TODO(b/297356582): handle core_platform in bp2build
-		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "sdk_version core_platform")
-		return &javaCommonAttributes{}, &bp2BuildJavaInfo{}, false
-	}
+	} // else if proptools.String(m.deviceProperties.Sdk_version) == "core_platform" {
+	// 	// TODO(b/297356582): handle core_platform in bp2build
+	// 	ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "sdk_version core_platform")
+	// 	return &javaCommonAttributes{}, &bp2BuildJavaInfo{}, false
+	// }
 
 	archVariantProps := m.GetArchVariantProperties(ctx, &CommonProperties{})
 	for axis, configToProps := range archVariantProps {
@@ -3118,6 +3119,13 @@ func javaLibraryBazelTargetModuleProperties() bazel.BazelTargetModuleProperties 
 	}
 }
 
+func javaSingleDexedJarBazelTargetModuleProperties() bazel.BazelTargetModuleProperties {
+	return bazel.BazelTargetModuleProperties{
+		Rule_class:        "java_single_dexed_jar",
+		Bzl_load_location: "//build/bazel/rules/java:java_single_dexed_jar.bzl",
+	}
+}
+
 func javaLibraryBp2Build(ctx android.Bp2buildMutatorContext, m *Library) {
 	commonAttrs, bp2BuildInfo, supported := m.convertLibraryAttrsBp2Build(ctx)
 	if !supported {
@@ -3149,6 +3157,19 @@ func javaLibraryBp2Build(ctx android.Bp2buildMutatorContext, m *Library) {
 		props = javaLibraryBazelTargetModuleProperties()
 	} else {
 		props = ktJvmLibraryBazelTargetModuleProperties()
+	}
+	if Bool(m.dexProperties.Compile_dex) {
+		ctx.CreateBazelTargetModule(
+			javaSingleDexedJarBazelTargetModuleProperties(),
+			android.CommonAttributes{Name: name + "_dex"},
+			&javaLibraryAttributes{
+				javaCommonAttributes: &javaCommonAttributes{
+					Sdk_version:     bazel.StringAttribute{Value: m.deviceProperties.Sdk_version},
+					Min_sdk_version: bazel.StringAttribute{Value: m.deviceProperties.Min_sdk_version},
+				},
+				Deps: bazel.MakeSingleLabelListAttribute(bazel.Label{Label: m.Name()}),
+			},
+		)
 	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: name}, attrs)
