@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9af07f07_cb09e72f",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-10-04T21:49:41Z",
+      "side": 1,
+      "message": "I intended this. This _is_ a soong_build change and it should be rerun the first time the user has this functionality present. I added a comment to explain.",
+      "parentUuid": "1eb28ccf_7c2797e0",
+      "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbda23e6_1d687396",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-04T19:03:56Z",
       "side": 1,
       "message": "How about just `Itoa` instead of `FormatInt(,10)` ?",
+      "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00703061_b4b6a173",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-10-04T21:49:41Z",
+      "side": 1,
+      "message": "mtime is an int64. Itoa is int only",
+      "parentUuid": "dbda23e6_1d687396",
       "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2953051_a2fa34e9",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-10-04T21:49:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49515558_3a612667",
+      "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3b7f5e3_0efb831a",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-10-04T19:03:56Z",
       "side": 1,
       "message": "What is \"symlink_Forest\" ? :)",
+      "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec657cc_fefa5ef0",
+        "filename": "tests/symlink_forest_rerun_test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-10-04T21:49:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3b7f5e3_0efb831a",
       "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
