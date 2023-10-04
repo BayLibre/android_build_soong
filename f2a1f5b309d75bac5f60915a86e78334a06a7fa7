@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32bbf282_da02792b",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-10-04T16:21:57Z",
+      "side": 1,
+      "message": "This message is missing a newline. (you can also use `print()` with `file\u003dsys.stderr`, which would implicitly add a newline)",
+      "revId": "f2a1f5b309d75bac5f60915a86e78334a06a7fa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
