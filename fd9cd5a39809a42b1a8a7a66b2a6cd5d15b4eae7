@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd684837_6159dec8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-10-04T16:26:07Z",
+      "side": 1,
+      "message": "risc builds on git-main\n\nhttps://android-build.corp.google.com/builds/abtd/run/L90100000963312343",
+      "revId": "fd9cd5a39809a42b1a8a7a66b2a6cd5d15b4eae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
