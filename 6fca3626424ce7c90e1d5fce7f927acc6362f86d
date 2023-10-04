@@ -16,6 +16,24 @@
       "message": "can you:\n- post a bug ID, so we understand the original breakage at a galnce\n- describe what has changed since the original CL briefly?",
       "revId": "6fca3626424ce7c90e1d5fce7f927acc6362f86d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed26aab8_cb8a78e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-10-04T18:10:27Z",
+      "side": 1,
+      "message": "I created a revert for ease of editing the original change. I didn\u0027t mean to request review that quickly, sorry.\n\ndone.",
+      "parentUuid": "0a8854f0_2f1ef902",
+      "revId": "6fca3626424ce7c90e1d5fce7f927acc6362f86d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
