@@ -1109,3 +1109,91 @@ func TestJavaLibrarySameNameAsPrebuilt(t *testing.T) {
 		ctx.RegisterModuleType("java_import", java.ImportFactory)
 	})
 }
+
+func TestDexedJavaLibrary(t *testing.T) {
+	runJavaLibraryTestCase(t, Bp2buildTestCase{
+		Description: "java_library that is dexed",
+		Blueprint: `java_library {
+    name: "test_lib",
+    srcs: ["a.java"],
+    sdk_version: "current",
+    compile_dex: true,
+    installable: false,
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("java_single_dexed_jar", "test_lib", AttrNameToString{
+				"srcs":        `["a.java"]`,
+				"sdk_version": `"current"`,
+			}),
+			MakeNeverlinkDuplicateTarget("java_single_dexed_jar", "test_lib"),
+		},
+	})
+}
+
+func TestDexedBecauseInstallable(t *testing.T) {
+	runJavaLibraryTestCase(t, Bp2buildTestCase{
+		Description: "java_library that is dexed",
+		Blueprint: `java_library {
+    name: "test_lib",
+    srcs: ["a.java"],
+    sdk_version: "current",
+    compile_dex: false,
+    installable: true,
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("java_single_dexed_jar", "test_lib", AttrNameToString{
+				"srcs":        `["a.java"]`,
+				"sdk_version": `"current"`,
+			}),
+			MakeNeverlinkDuplicateTarget("java_single_dexed_jar", "test_lib"),
+		},
+	})
+}
+
+func TestOptimizedDexedJavaLibrary(t *testing.T) {
+	runJavaLibraryTestCase(t, Bp2buildTestCase{
+		Description: "java_library that is dexed",
+		Blueprint: `java_library {
+    name: "test_lib",
+    srcs: ["a.java"],
+    sdk_version: "current",
+    compile_dex: true,
+    optimize: {
+      enabled: true,
+      shrink: true,
+      optimize: true,
+      obfuscate: true,
+    },
+    min_sdk_version: "Tiramisu",
+    stem: "test_stem",
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("java_single_dexed_jar", "test_lib", AttrNameToString{
+				"srcs":            `["a.java"]`,
+				"sdk_version":     `"current"`,
+				"optimize":        `True`,
+				"stem":            `"test_stem"`,
+				"min_sdk_version": `"Tiramisu"`,
+			}),
+			MakeNeverlinkDuplicateTarget("java_single_dexed_jar", "test_lib"),
+		},
+	})
+}
+
+// Expect nothing to convert as we don't support dexing modules with kotlin sources at the moment (b/305939400)
+func TestKtJavaLibraryNotDexed(t *testing.T) {
+	runJavaLibraryTestCase(t, Bp2buildTestCase{
+		Description: "java_library that is dexed",
+		Blueprint: `java_library {
+    name: "test_lib",
+    srcs: ["a.kt"],
+    sdk_version: "current",
+    compile_dex: true
+}
+`,
+		ExpectedBazelTargets: []string{},
+	})
+}
