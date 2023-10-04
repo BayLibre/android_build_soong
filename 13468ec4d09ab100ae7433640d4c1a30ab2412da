@@ -16,6 +16,24 @@
       "message": "Why does Bazel require the spaces be removed? If it\u0027s because it\u0027s deduping the -Z flags, that concerns me, because other flags (e.g. --begin-group/--end-group) may need to be specified multiply in a load-bearing way in the future.\n\nIf you end up deciding the spaces truly do need to remove, please vet that you\u0027ve removed all of them (I spotted at least one un-transformed `-C force-unwind-tables\u003dyes` in riscv, so there may be others)",
       "revId": "13468ec4d09ab100ae7433640d4c1a30ab2412da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d53e08c_dc9d1801",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-10-04T01:27:18Z",
+      "side": 1,
+      "message": "Thanks for catching this. I initially thought the flags were dedup by `args.add_all` in Starlark. Turned out it was because I used a set https://android.googlesource.com/platform/build/bazel/+/refs/changes/39/2768339/8/toolchains/rust/flags.bzl#29. I reverted using the set data structure and these spaces don\u0027t need to be removed anymore except for [`--color always`](https://android.googlesource.com/platform/build/soong/+/refs/changes/07/2758107/5/rust/config/global.go#55) because in Bazel, we need to remove it to avoid flag duplication in rustc command.",
+      "parentUuid": "d2391ed2_d5ccd0d8",
+      "revId": "13468ec4d09ab100ae7433640d4c1a30ab2412da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
