@@ -886,6 +886,8 @@ var (
 		"aidl",
 		"libaidl-common",
 
+		"filesystemstest",
+
 		// Used by xsd_config
 		"xsdc",
 
