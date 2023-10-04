@@ -26,6 +26,7 @@ import (
 
 	"android/soong/bazel"
 	"android/soong/bazel/cquery"
+	"android/soong/genrule"
 	"android/soong/remoteexec"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
 
@@ -2875,8 +2876,12 @@ type javaCommonAttributes struct {
 	Plugins                 bazel.LabelListAttribute
 	Javacopts               bazel.StringListAttribute
 	Sdk_version             bazel.StringAttribute
+	Min_sdk_version         bazel.StringAttribute
 	Java_version            bazel.StringAttribute
 	Errorprone_force_enable bazel.BoolAttribute
+	Proguard_specs          bazel.LabelListAttribute
+	Optimize                *bool
+	Proguard_compatibility  *bool
 }
 
 type javaDependencyLabels struct {
@@ -2905,8 +2910,9 @@ type javaAidlLibraryAttributes struct {
 // depending on the module type.
 type bp2BuildJavaInfo struct {
 	// separates dependencies into dynamic dependencies and static dependencies.
-	DepLabels *javaDependencyLabels
-	hasKotlin bool
+	DepLabels  *javaDependencyLabels
+	hasKotlin  bool
+	compileDex bool
 }
 
 func javaXsdTargetName(xsd android.XsdConfigBp2buildTargets) string {
@@ -3117,9 +3123,43 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.Bp2buildMutatorContext
 		commonAttrs.kotlinAttributes.Common_srcs = bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, m.properties.Common_srcs))
 	}
 
+	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+	compileDex := m.DeviceSupported() && (Bool(m.properties.Installable) || proptools.BoolDefault(
+		m.dexProperties.Compile_dex,
+		m.DirectlyInAnyApex() && !apexInfo.IsForPlatform(),
+	))
+	if compileDex {
+		// Optimization is..
+		// - enabled by default for android_app, android_test_helper_app
+		// - disabled by default for android_test, java_* modules
+		//
+		// TODO(b/192032291): Disable android_test_helper_app optimization by
+		// default after auditing downstream usage.
+		if m.dexProperties.Optimize.EnabledByDefault != m.dexer.effectiveOptimizeEnabled() {
+			// Property is explicitly defined by default from default, so emit the Bazel attribute.
+			commonAttrs.Optimize = proptools.BoolPtr(m.dexer.effectiveOptimizeEnabled())
+		}
+
+		if m.dexer.effectiveOptimizeEnabled() {
+			switch ctx.ModuleType() {
+			// TODO: b/305920704 - Suport proguard compatibility for apps or phase out usage.
+			// We're not marking the modules as unconvertible because in most cases, not passing
+			// --force-proguard-compatibility flag does not break anything, and in fact lets
+			// r8 produce better results.
+			case "android_app", "android_test_helper_app", "android_test":
+			default:
+				if !BoolDefault(m.dexProperties.Optimize.Proguard_compatibility, true) {
+					commonAttrs.Proguard_compatibility = proptools.BoolPtr(false)
+				}
+			}
+			commonAttrs.Proguard_specs = m.FormBazelProguardSpecs(ctx)
+		}
+	}
+
 	bp2BuildInfo := &bp2BuildJavaInfo{
-		DepLabels: depLabels,
-		hasKotlin: hasKotlin,
+		DepLabels:  depLabels,
+		hasKotlin:  hasKotlin,
+		compileDex: compileDex,
 	}
 
 	return commonAttrs, bp2BuildInfo, true
@@ -3151,6 +3191,47 @@ func javaLibraryBazelTargetModuleProperties() bazel.BazelTargetModuleProperties 
 	}
 }
 
+func javaSingleDexedJarBazelTargetModuleProperties() bazel.BazelTargetModuleProperties {
+	return bazel.BazelTargetModuleProperties{
+		Rule_class:        "java_single_dexed_jar",
+		Bzl_load_location: "//build/bazel/rules/java:java_single_dexed_jar.bzl",
+	}
+}
+
+func (m *Library) FormBazelProguardSpecs(ctx android.Bp2buildMutatorContext) bazel.LabelListAttribute {
+	ret := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, m.dexProperties.Optimize.Proguard_flags_files))
+	handCraftedFlags := ""
+	if Bool(m.dexProperties.Optimize.Ignore_warnings) {
+		handCraftedFlags += "-ignorewarning "
+	}
+	if !Bool(m.dexProperties.Optimize.Shrink) {
+		handCraftedFlags += "-dontshrink "
+	}
+	if !Bool(m.dexProperties.Optimize.Optimize) {
+		handCraftedFlags += "-dontoptimize "
+	}
+	if !Bool(m.dexProperties.Optimize.Obfuscate) {
+		handCraftedFlags += "-dontobfuscate "
+	}
+	if handCraftedFlags != "" {
+		generatedFlagFileRuleName := m.Name() + "_proguard_flags"
+		ctx.CreateBazelTargetModule(
+			bazel.BazelTargetModuleProperties{Rule_class: "genrule"},
+			android.CommonAttributes{
+				Name:     generatedFlagFileRuleName,
+				SkipData: proptools.BoolPtr(true)},
+			&genrule.BazelGenruleAttributes{
+				Outs: []string{m.Name() + "_proguard.flags"},
+				Cmd: bazel.StringAttribute{
+					Value: proptools.StringPtr("echo " + handCraftedFlags + "> $(OUTS)"),
+				},
+			},
+		)
+		ret.Add(bazel.MakeLabelAttribute(":" + generatedFlagFileRuleName))
+	}
+	return ret
+}
+
 func javaLibraryBp2Build(ctx android.Bp2buildMutatorContext, m *Library) {
 	commonAttrs, bp2BuildInfo, supported := m.convertLibraryAttrsBp2Build(ctx)
 	if !supported {
@@ -3178,10 +3259,16 @@ func javaLibraryBp2Build(ctx android.Bp2buildMutatorContext, m *Library) {
 	}
 	name := m.Name()
 
-	if !bp2BuildInfo.hasKotlin {
-		props = javaLibraryBazelTargetModuleProperties()
-	} else {
+	if bp2BuildInfo.hasKotlin {
 		props = ktJvmLibraryBazelTargetModuleProperties()
+		// TODO: b/ - This assumes we don't dex libraries with kotlin code
+	} else if bp2BuildInfo.compileDex {
+		props = javaSingleDexedJarBazelTargetModuleProperties()
+		attrs.javaCommonAttributes.Min_sdk_version = bazel.StringAttribute{
+			Value: m.deviceProperties.Min_sdk_version,
+		}
+	} else {
+		props = javaLibraryBazelTargetModuleProperties()
 	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: name}, attrs)
