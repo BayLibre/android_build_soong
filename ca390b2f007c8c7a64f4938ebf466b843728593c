@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd0479e7_d00161fc",
+        "filename": "tests/lib.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-10-04T21:17:30Z",
+      "side": 1,
+      "message": "nit - call `make_mock_top` here",
+      "revId": "ca390b2f007c8c7a64f4938ebf466b843728593c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
