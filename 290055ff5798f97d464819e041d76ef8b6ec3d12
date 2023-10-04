@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72c522f_a1f38a6c",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-10-04T02:12:18Z",
+      "side": 1,
+      "message": "nit: \"result\" sounds too generic.",
+      "range": {
+        "startLine": 119,
+        "startChar": 9,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "290055ff5798f97d464819e041d76ef8b6ec3d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5288a3bb_30c39c68",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-10-04T02:12:18Z",
+      "side": 1,
+      "message": "nit: \"output\" sounds too generic either. ;-)",
+      "range": {
+        "startLine": 159,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 18
+      },
+      "revId": "290055ff5798f97d464819e041d76ef8b6ec3d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f8e7df_0543bcd8",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-10-04T02:12:18Z",
+      "side": 1,
+      "message": "nit: make this a python-style docstring?",
+      "range": {
+        "startLine": 160,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 6
+      },
+      "revId": "290055ff5798f97d464819e041d76ef8b6ec3d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86f4249c_e554c28f",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-10-04T02:12:18Z",
+      "side": 1,
+      "message": "nit: how about using `\u0026` or `intersection` of `set` type? We can print all duplicate entries.",
+      "range": {
+        "startLine": 164,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 30
+      },
+      "revId": "290055ff5798f97d464819e041d76ef8b6ec3d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
