@@ -21,7 +21,9 @@ import (
 )
 
 var (
-	ArmRustFlags            = []string{}
+	ArmRustFlags = []string{
+		"-C panic=abort",
+	}
 	ArmArchFeatureRustFlags = map[string][]string{}
 	ArmLinkFlags            = []string{}
 

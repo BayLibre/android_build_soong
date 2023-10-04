@@ -23,6 +23,7 @@ import (
 var (
 	Arm64RustFlags = []string{
 		"-C force-frame-pointers=y",
+		"-C panic=abort",
 	}
 	Arm64ArchFeatureRustFlags = map[string][]string{}
 	Arm64LinkFlags            = []string{}

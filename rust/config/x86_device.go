@@ -21,7 +21,9 @@ import (
 )
 
 var (
-	x86RustFlags            = []string{}
+	x86RustFlags = []string{
+		"-C panic=abort",
+	}
 	x86ArchFeatureRustFlags = map[string][]string{}
 	x86LinkFlags            = []string{}
 

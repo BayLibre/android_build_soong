@@ -23,6 +23,7 @@ import (
 var (
 	x86_64RustFlags = []string{
 		"-C force-frame-pointers=y",
+		"-C panic=abort",
 	}
 	x86_64ArchFeatureRustFlags = map[string][]string{}
 	x86_64LinkFlags            = []string{}

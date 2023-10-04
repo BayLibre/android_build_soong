@@ -23,6 +23,7 @@ import (
 var (
 	Riscv64RustFlags = []string{
 		"-C force-frame-pointers=y",
+		"-C panic=abort",
 	}
 	Riscv64ArchFeatureRustFlags = map[string][]string{
 		"riscv64": {
