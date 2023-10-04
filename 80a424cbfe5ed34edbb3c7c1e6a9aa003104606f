@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb28ccf_7c2797e0",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-04T19:03:56Z",
+      "side": 1,
+      "message": "This is a little fishy. What happens if os.IsNotExist(err)? We continue the check...\n\n..and this probably only happens to work because we\u0027d be checking against the empty string for `mtimeFileContents`, but this seems like an unintentional code path.",
+      "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbda23e6_1d687396",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-04T19:03:56Z",
+      "side": 1,
+      "message": "How about just `Itoa` instead of `FormatInt(,10)` ?",
+      "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49515558_3a612667",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-04T19:03:56Z",
+      "side": 1,
+      "message": "In general, it\u0027s a \"code smell\" to have:\n\n```\nmaybeDoAThing(..., doTheThing bool) {\n   if doTheThing { doThing()}\n}\n```\n\nAnd this is pretty close to that.\n\nInstead, consider having:\n\n```\nsoongBuildMTime :\u003d getSoongBuildMTime()\nif shouldCleanSymlinkForest(..., soongBuildMTime) {\n  cleanSymlinkForest(...)\n}\n```",
+      "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3b7f5e3_0efb831a",
+        "filename": "tests/symlink_forest_rerun_test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-04T19:03:56Z",
+      "side": 1,
+      "message": "What is \"symlink_Forest\" ? :)",
+      "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
