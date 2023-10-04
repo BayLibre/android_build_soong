@@ -34,6 +34,24 @@
       "parentUuid": "cd684837_6159dec8",
       "revId": "fd9cd5a39809a42b1a8a7a66b2a6cd5d15b4eae7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fe6c4b8_42c0f317",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-10-04T16:59:02Z",
+      "side": 1,
+      "message": "the next update should have it. for now we can replace `-munaligned-access` with\n`-Xclang -target-feature -Xclang +unaligned-scalar-mem -Xclang -target-feature -Xclang +unaligned-vector-mem` to the same effect.",
+      "parentUuid": "4daef4dc_62926aad",
+      "revId": "fd9cd5a39809a42b1a8a7a66b2a6cd5d15b4eae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
