@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7dd3643_90ac17a0",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-04T22:38:45Z",
+      "side": 1,
+      "message": "This is easier to understand, without such an explanation:\n\n```\nif err !\u003d nil {\n  if os.IsNotExist(err) {\n    // No previous build, nothing to clean.\n    return false, nil\n  } else {\n    return false, err\n  }\n}\nreturn strconv.FormatInt(soongBuildMTime, 10) !\u003d string(mtimeFileContents), nil\n```\n\nPlease don\u0027t rely on variables not being returned in the case of an error occurring. For example,`ReadFile` might return garbage in the first return value if a strange error occurred. This is probably \"fine\" in this practical case, but it\u0027s a dangerous pattern, and it\u0027s harder to understand.",
+      "parentUuid": "9af07f07_cb09e72f",
+      "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbda23e6_1d687396",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 3
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "mtime is an int64. Itoa is int only",
       "parentUuid": "dbda23e6_1d687396",
+      "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bcba6a1_62c3e6cf",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-04T22:38:45Z",
+      "side": 1,
+      "message": "TIL! Whoops 😊",
+      "parentUuid": "00703061_b4b6a173",
       "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
