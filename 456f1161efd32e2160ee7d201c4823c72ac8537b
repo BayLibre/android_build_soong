@@ -34,6 +34,29 @@
       "parentUuid": "ba52f1ec_fc13904b",
       "revId": "456f1161efd32e2160ee7d201c4823c72ac8537b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faac1264_5830b8a2",
+        "filename": "cc/config/riscv64_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-04T21:42:20Z",
+      "side": 1,
+      "message": "Might as well break this into two strings.\n\nDoes the `\"-Xclang -target-feature,+unaligned-scalar-mem\"` syntax work here?",
+      "range": {
+        "startLine": 31,
+        "startChar": 56,
+        "endLine": 31,
+        "endChar": 57
+      },
+      "revId": "456f1161efd32e2160ee7d201c4823c72ac8537b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
