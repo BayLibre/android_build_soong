@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba52f1ec_fc13904b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-10-04T18:44:55Z",
+      "side": 1,
+      "message": "Restarted the build with new flags: https://android-build.corp.google.com/builds/abtd/run/L82600000963314708",
+      "revId": "456f1161efd32e2160ee7d201c4823c72ac8537b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
