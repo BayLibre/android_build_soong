@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc27bf8_cff4fad7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-10-04T13:35:41Z",
+      "side": 1,
+      "message": "sd",
+      "revId": "b51d61e6c18d3235dee4ed2447d037ead9ae2a4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "484e7642_c3d90eeb",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1881,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-10-04T13:35:41Z",
+      "side": 1,
+      "message": "nit: can use module.SdkVersion().Kind \u003d\u003d android.SdkNone",
+      "range": {
+        "startLine": 1881,
+        "startChar": 4,
+        "endLine": 1881,
+        "endChar": 67
+      },
+      "revId": "b51d61e6c18d3235dee4ed2447d037ead9ae2a4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
