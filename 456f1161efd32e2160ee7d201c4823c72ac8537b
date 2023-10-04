@@ -16,6 +16,24 @@
       "message": "Restarted the build with new flags: https://android-build.corp.google.com/builds/abtd/run/L82600000963314708",
       "revId": "456f1161efd32e2160ee7d201c4823c72ac8537b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43db7be5_38685b7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-10-04T21:20:39Z",
+      "side": 1,
+      "message": "Out of 4 builds, 3 passed. The failing one has an unrelated error:\n```\nexternal/cronet/third_party/libevent/buffer.c:29:10: fatal error: \u0027config.h\u0027 file not found\n#include \"config.h\"\n^~~~~~~~~~\n1 error generated.\n```\n\nhttps://android-build.googleplex.com/builds/abtd/run/L82600000963314708?referrer\u003demail",
+      "parentUuid": "ba52f1ec_fc13904b",
+      "revId": "456f1161efd32e2160ee7d201c4823c72ac8537b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
