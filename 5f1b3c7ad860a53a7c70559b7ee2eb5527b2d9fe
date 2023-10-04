@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0771fc2c_1769d503",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-04T21:38:43Z",
+      "side": 1,
+      "message": "Fair question -- I *hope* that we catch 100% of dependencies this way. I think we should treat any other cases as bugs that we should fix. If you\u0027re aware of any such places we don\u0027t use this function, please let me know :) (I\u0027m not aware any of any such cases myself)",
+      "parentUuid": "98abfd0f_ad471f1e",
+      "revId": "5f1b3c7ad860a53a7c70559b7ee2eb5527b2d9fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e5ed684_fde0a4f1",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-10-04T14:09:45Z",
       "side": 1,
       "message": "How do you feel about preceding this with a `/*markAsDeps\u003d*/` here and elsewhere?",
+      "range": {
+        "startLine": 156,
+        "startChar": 108,
+        "endLine": 156,
+        "endChar": 112
+      },
+      "revId": "5f1b3c7ad860a53a7c70559b7ee2eb5527b2d9fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "303cde8a_9dd7de8d",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-04T21:38:43Z",
+      "side": 1,
+      "message": "My IDE provides these hints inline, and frustratingly it\u0027s not playing nicely with writing the hint in myself (it seems to keep frustratingly grouping t with the previous param during autoformatting). Since you left this optional, I\u0027m going to avoid this issue for now and submit as-is. Please feel free to follow up with me if you feel strongly about this.",
+      "parentUuid": "5e5ed684_fde0a4f1",
       "range": {
         "startLine": 156,
         "startChar": 108,
