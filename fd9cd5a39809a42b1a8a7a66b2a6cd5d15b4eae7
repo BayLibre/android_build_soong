@@ -16,6 +16,24 @@
       "message": "risc builds on git-main\n\nhttps://android-build.corp.google.com/builds/abtd/run/L90100000963312343",
       "revId": "fd9cd5a39809a42b1a8a7a66b2a6cd5d15b4eae7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4daef4dc_62926aad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-10-04T16:42:31Z",
+      "side": 1,
+      "message": "thanks! that answers my question of \"is this in our clang yet?\": https://android-build.corp.google.com/artifact/pending/P63506937/aosp_cf_riscv64_phone-trunk_staging-userdebug/latest/view/logs%2Fbuild_error.log\n\n\"nope\".\n\nany idea whether this will naturally be in our _next_ clang?",
+      "parentUuid": "cd684837_6159dec8",
+      "revId": "fd9cd5a39809a42b1a8a7a66b2a6cd5d15b4eae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
