@@ -70,6 +70,24 @@
       "parentUuid": "4e9aeeaf_b9020a67",
       "revId": "c2c3282883b6ca3297458c1d8750028f22c86268",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83ee69c0_d91b2e47",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-05T20:39:30Z",
+      "side": 1,
+      "message": "no problem :) sorry I wasn\u0027t clear.",
+      "parentUuid": "f5852760_3f13305f",
+      "revId": "c2c3282883b6ca3297458c1d8750028f22c86268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
