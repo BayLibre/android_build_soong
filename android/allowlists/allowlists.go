@@ -527,6 +527,7 @@ var (
 		// aconfig
 		"libonce_cell",
 		"libanyhow",
+        "libapexsupport",
 		"libunicode_segmentation",
 		"libmemchr",
 		"libbitflags-1.3.2",
