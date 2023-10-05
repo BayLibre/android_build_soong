@@ -34,6 +34,24 @@
       "parentUuid": "36aa147c_81439f6e",
       "revId": "c2c3282883b6ca3297458c1d8750028f22c86268",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e9aeeaf_b9020a67",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-05T20:24:10Z",
+      "side": 1,
+      "message": "And now we have to wait for another presubmit :( This is why I was suggesting a followup, so that we could let presubmits run and then submit.\n\nAs the current build breakage has stopped our team from being able to submit code all day: If you\u0027ve locally tested bp2build.sh to ensure that it succeeds, I think we should bypass presubmit and submit this.",
+      "parentUuid": "c75bbab1_c3b4e852",
+      "revId": "c2c3282883b6ca3297458c1d8750028f22c86268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
