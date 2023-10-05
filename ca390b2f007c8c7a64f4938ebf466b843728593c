@@ -16,6 +16,24 @@
       "message": "nit - call `make_mock_top` here",
       "revId": "ca390b2f007c8c7a64f4938ebf466b843728593c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f2172b8_74472c65",
+        "filename": "tests/lib.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-10-05T13:07:13Z",
+      "side": 1,
+      "message": "Fixed in a followup CL - https://android-review.git.corp.google.com/c/platform/build/soong/+/2775287/1",
+      "parentUuid": "dd0479e7_d00161fc",
+      "revId": "ca390b2f007c8c7a64f4938ebf466b843728593c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
