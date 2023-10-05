@@ -2447,3 +2447,30 @@ func TestJavaApiLibraryApiFilesSorting(t *testing.T) {
 		"default/java/api/module-lib-current.txt default/java/api/system-server-current.txt"
 	android.AssertStringDoesContain(t, "source text files not in api scope order", manifestCommand, sourceFilesFlag)
 }
+
+func TestSdkLibraryProvidesSystemModulesToApiLibrary(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		PrepareForTestWithJavaSdkLibraryFiles,
+		FixtureWithLastReleaseApis("foo"),
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.SetApiLibraries([]string{"foo"})
+		}),
+		android.FixtureMergeMockFs(
+			map[string][]byte{
+				"A.java": nil,
+			},
+		),
+	).RunTestWithBp(t, `
+		java_system_modules {
+			name: "baz",
+		}
+		java_sdk_library {
+			name: "foo",
+			srcs: ["A.java"],
+			system_modules: "baz",
+		}
+	`)
+	m := result.ModuleForTests(apiScopePublic.apiLibraryModuleName("foo"), "android_common").Module().(*ApiLibrary)
+	android.AssertStringEquals(t, "Module expected to contain a system module", "baz", *m.properties.System_modules)
+}
