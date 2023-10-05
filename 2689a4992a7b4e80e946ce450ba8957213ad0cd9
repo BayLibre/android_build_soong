@@ -52,6 +52,24 @@
       "parentUuid": "efd43df4_d9ec61b9",
       "revId": "2689a4992a7b4e80e946ce450ba8957213ad0cd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c867df8_bd18a933",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-10-05T21:59:23Z",
+      "side": 1,
+      "message": "ah, with [the corrected version of] this build change, `__builtin_trap()` now gets me `brk #1`. confusingly that _still_ gets me SIGABRT ... because i\u0027m running a hwasan build, which catches the SIGTRAP (which is what i was looking for --- it is there, in strace) and turns it into an abort().",
+      "parentUuid": "41209069_995babc5",
+      "revId": "2689a4992a7b4e80e946ce450ba8957213ad0cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
