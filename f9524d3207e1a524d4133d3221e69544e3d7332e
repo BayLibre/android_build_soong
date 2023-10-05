@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bed479b_73467d5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-10-05T19:57:34Z",
+      "side": 1,
+      "message": "This seems to work in my use case where the cov variant of a test app is installed as the data dependency of a java_test_host.",
+      "revId": "f9524d3207e1a524d4133d3221e69544e3d7332e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
