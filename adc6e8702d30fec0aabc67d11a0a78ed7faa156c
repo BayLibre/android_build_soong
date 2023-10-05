@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fde317b2_134181c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-05T13:59:52Z",
+      "side": 1,
+      "message": "I haven\u0027t investigated other rules yet, do you think we should drop for all rules? (I figure some test rules are actually using this attribute..)",
+      "parentUuid": "0895a07a_02cf1883",
+      "range": {
+        "startLine": 9,
+        "startChar": 24,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "adc6e8702d30fec0aabc67d11a0a78ed7faa156c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ee31e7a_8782d259",
