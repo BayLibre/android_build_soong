@@ -59,6 +59,9 @@ var (
 		"-Werror=sizeof-array-div",
 		// Detects a typo that cuts off a prefix from a string literal.
 		"-Werror=string-plus-int",
+		// Detects violations of invariants expressed with thread safety
+		// annotation macros.
+		"-Werror=thread-safety",
 		// Detects for loops that will never execute more than once (for example
 		// due to unconditional break), but have a non-empty loop increment
 		// clause. Often a mistake/bug.
