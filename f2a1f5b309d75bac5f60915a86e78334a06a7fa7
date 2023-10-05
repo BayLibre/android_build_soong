@@ -16,6 +16,24 @@
       "message": "This message is missing a newline. (you can also use `print()` with `file\u003dsys.stderr`, which would implicitly add a newline)",
       "revId": "f2a1f5b309d75bac5f60915a86e78334a06a7fa7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a49514_e6ef6486",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-10-05T01:29:42Z",
+      "side": 1,
+      "message": "Updated as suggested. Thanks!",
+      "parentUuid": "32bbf282_da02792b",
+      "revId": "f2a1f5b309d75bac5f60915a86e78334a06a7fa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
