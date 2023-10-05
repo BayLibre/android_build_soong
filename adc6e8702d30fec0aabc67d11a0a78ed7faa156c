@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba2c96ff_20713f53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-05T14:27:01Z",
+      "side": 1,
+      "message": "*oh* now I understand your comment -- I thought you were implying \"cc rules\" was too strict a subset :)\nsorry about that! done.",
+      "parentUuid": "6ef37a4f_8a08ebf1",
+      "range": {
+        "startLine": 9,
+        "startChar": 24,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "adc6e8702d30fec0aabc67d11a0a78ed7faa156c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ee31e7a_8782d259",
@@ -85,6 +109,30 @@
       "writtenOn": "2023-10-05T09:52:00Z",
       "side": 1,
       "message": "nit: fix indent",
+      "range": {
+        "startLine": 5233,
+        "startChar": 0,
+        "endLine": 5233,
+        "endChar": 2
+      },
+      "revId": "adc6e8702d30fec0aabc67d11a0a78ed7faa156c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "235e94e1_56e61753",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5233,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-05T14:27:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee31e7a_8782d259",
       "range": {
         "startLine": 5233,
         "startChar": 0,
