@@ -34,6 +34,24 @@
       "parentUuid": "5529e7f4_355576a2",
       "revId": "2689a4992a7b4e80e946ce450ba8957213ad0cd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41209069_995babc5",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-10-05T21:49:50Z",
+      "side": 1,
+      "message": "(but, yes, you\u0027re right: `ld.lld: error: undefined symbol: trap`)",
+      "parentUuid": "efd43df4_d9ec61b9",
+      "revId": "2689a4992a7b4e80e946ce450ba8957213ad0cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
