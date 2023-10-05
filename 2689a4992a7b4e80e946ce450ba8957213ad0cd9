@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5529e7f4_355576a2",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2023-10-05T21:44:54Z",
+      "side": 1,
+      "message": "does that actually work? I think it would call a function named \"trap\". I\u0027d rather remove the flag completely.",
+      "revId": "2689a4992a7b4e80e946ce450ba8957213ad0cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
