@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44c812c6_2affafec",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-10-05T07:38:27Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right? Do we expect to check in these suffixes?",
+      "range": {
+        "startLine": 54,
+        "startChar": 52,
+        "endLine": 54,
+        "endChar": 76
+      },
+      "revId": "ec3fd36fa1a91cb69c3f373fe4db064083ac1807",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6330807f_4efa85fe",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-10-05T07:38:27Z",
+      "side": 1,
+      "message": "as discussed offline, we should be clear on the semantics of data vs data_bins vs data_libs - data_bins will now be handled separately by installing right beside the test entry point, so perhaps there\u0027s no more need to combine it into data?",
+      "range": {
+        "startLine": 618,
+        "startChar": 1,
+        "endLine": 622,
+        "endChar": 86
+      },
+      "revId": "ec3fd36fa1a91cb69c3f373fe4db064083ac1807",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
