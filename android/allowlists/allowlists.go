@@ -203,6 +203,7 @@ var (
 		"external/ow2-asm":                       Bp2BuildDefaultTrueRecursively,
 		"external/pcre":                          Bp2BuildDefaultTrueRecursively,
 		"external/perfmark/api":                  Bp2BuildDefaultTrueRecursively,
+		"external/perfetto":                      Bp2BuildDefaultTrue,
 		"external/protobuf":                      Bp2BuildDefaultTrueRecursively,
 		"external/python/jinja/src":              Bp2BuildDefaultTrueRecursively,
 		"external/python/markupsafe/src":         Bp2BuildDefaultTrueRecursively,
@@ -437,7 +438,7 @@ var (
 		"system/libprocinfo":                                     Bp2BuildDefaultTrue,
 		"system/libvintf":                                        Bp2BuildDefaultTrue,
 		"system/libziparchive":                                   Bp2BuildDefaultTrueRecursively,
-		"system/linkerconfig":                                   Bp2BuildDefaultTrueRecursively,
+		"system/linkerconfig":                                    Bp2BuildDefaultTrueRecursively,
 		"system/logging":                                         Bp2BuildDefaultTrueRecursively,
 		"system/media":                                           Bp2BuildDefaultTrue,
 		"system/media/alsa_utils":                                Bp2BuildDefaultTrueRecursively,
@@ -446,6 +447,7 @@ var (
 		"system/media/camera":                                    Bp2BuildDefaultTrueRecursively,
 		"system/memory/libion":                                   Bp2BuildDefaultTrueRecursively,
 		"system/memory/libmemunreachable":                        Bp2BuildDefaultTrueRecursively,
+		"system/netd":                                            Bp2BuildDefaultTrue,
 		"system/security/fsverity":                               Bp2BuildDefaultTrueRecursively,
 		"system/sepolicy/apex":                                   Bp2BuildDefaultTrueRecursively,
 		"system/testing/gtest_extras":                            Bp2BuildDefaultTrueRecursively,
@@ -975,7 +977,6 @@ var (
 		"lab-resource-grpc",
 		"blueprint-deptools",
 		"protoc-gen-grpc-java-plugin",
-		"perfetto_trace-full",
 		"tf-remote-client",
 		"tradefed-lite",
 		"tradefed-isolation-protos",
@@ -997,7 +998,6 @@ var (
 		"test-composers",
 		"py3-stdlib-prebuilt-srcs",
 		"platformprotos",
-		"perfetto_metrics-full",
 		"test-services-normalized.apk",
 		"tradefed-common-util",
 		"tradefed-clearcut-client",
@@ -1051,6 +1051,7 @@ var (
 	// the "prebuilt_" prefix to the name, so that it's differentiable from
 	// the source versions within Soong's module graph.
 	Bp2buildModuleDoNotConvertList = []string{
+
 		// rust modules that have cc deps
 		"liblogger",
 		"libbssl_ffi",
@@ -1793,6 +1794,16 @@ var (
 
 		// android_test_helper_app from allowlisted packages, but with unconverted deps
 		"SharedLibraryInfoTestApp",
+
+		// Sets different STL for host and device variants
+		"trace_processor_shell",
+
+		// b/303713102 duplicate deps added by cc_lite_proto_library
+		"perfetto_unittests",
+		"perfetto_integrationtests",
+
+		// Depends on an empty filegroup
+		"libperfetto_c",
 	}
 
 	// Bazel prod-mode allowlist. Modules in this list are built by Bazel
