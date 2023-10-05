@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31668c10_36d755a7",
+        "filename": "bp2build/java_proto_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-05T20:53:07Z",
+      "side": 1,
+      "message": "Thanks for pointing it out. Removed.",
+      "parentUuid": "3b9f122b_446a4de6",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 22
+      },
+      "revId": "8009975ca2af72ed3576671327703c35ac5488bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "436d527a_13307051",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-10-04T16:14:19Z",
       "side": 1,
       "message": "we should be using [`BazelLabelForModuleDepSingle`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/bazel_paths.go;drc\u003d29af2a470dd8679f66aa8c357dd54153163fd4c0) rather than manually crafting a mapping",
+      "range": {
+        "startLine": 200,
+        "startChar": 18,
+        "endLine": 200,
+        "endChar": 36
+      },
+      "revId": "8009975ca2af72ed3576671327703c35ac5488bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe9fa6ca_06714738",
+        "filename": "java/proto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-05T20:53:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "436d527a_13307051",
       "range": {
         "startLine": 200,
         "startChar": 18,
