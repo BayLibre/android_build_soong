@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf95ce7_f20b651f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-10-05T15:14:08Z",
+      "side": 1,
+      "message": "Will this grow into an \"allowlist\" of sorts? And would similar circumventions needed for other branches?",
+      "revId": "7784409cb3a79767d691d50d9c60e288fbc50d2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58ae13e3_62565dce",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-10-05T15:14:08Z",
+      "side": 1,
+      "message": "typo: \"there there\"",
+      "revId": "7784409cb3a79767d691d50d9c60e288fbc50d2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
