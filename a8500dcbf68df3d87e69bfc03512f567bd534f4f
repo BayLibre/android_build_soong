@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d3b7aeb_c07fa7e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-05T16:53:26Z",
+      "side": 1,
+      "message": "Hi Chris, just curious, the deleted test cases(e.g. `TestVersionedNdkHeadersConversion` in cc_library_conversion_test.go), or deleted scenarios(e.g. the `aidls_files` part in java_library_conversion_test.go), are they going to be back after allowlist v2? If no, are we losing test coverage?",
+      "revId": "a8500dcbf68df3d87e69bfc03512f567bd534f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
