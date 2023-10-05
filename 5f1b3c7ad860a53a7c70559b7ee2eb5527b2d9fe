@@ -81,6 +81,30 @@
       },
       "revId": "5f1b3c7ad860a53a7c70559b7ee2eb5527b2d9fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ba83cc_defc6fa0",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-10-05T10:13:53Z",
+      "side": 1,
+      "message": "I too had the same thought even before reading Romain\u0027s comment :-) Mailed a cl.",
+      "parentUuid": "303cde8a_9dd7de8d",
+      "range": {
+        "startLine": 156,
+        "startChar": 108,
+        "endLine": 156,
+        "endChar": 112
+      },
+      "revId": "5f1b3c7ad860a53a7c70559b7ee2eb5527b2d9fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
