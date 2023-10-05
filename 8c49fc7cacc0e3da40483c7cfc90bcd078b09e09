@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e37a75a_7776e71b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-05T18:11:45Z",
+      "side": 1,
+      "message": "Thanks Jin, really appreciate this and other changes :)",
+      "revId": "8c49fc7cacc0e3da40483c7cfc90bcd078b09e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
