@@ -1689,6 +1689,11 @@ type JavaApiLibraryProperties struct {
 
 	// Version of previously released API file for compatibility check.
 	Previous_api *string `android:"path"`
+
+	// Module providing the jar to be added to the bootclasspath when
+	// compiling the stubs. The jar will also be passed to metalava as a
+	// classpath to generate compilable stubs.
+	System_modules *string
 }
 
 func ApiLibraryFactory() android.Module {
@@ -1708,7 +1713,8 @@ func (al *ApiLibrary) StubsJar() android.Path {
 }
 
 func metalavaStubCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
-	srcs android.Paths, homeDir android.WritablePath) *android.RuleBuilderCommand {
+	srcs android.Paths, homeDir android.WritablePath,
+	classpath android.Paths) *android.RuleBuilderCommand {
 	rule.Command().Text("rm -rf").Flag(homeDir.String())
 	rule.Command().Text("mkdir -p").Flag(homeDir.String())
 
@@ -1753,6 +1759,10 @@ func metalavaStubCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 	// signal to the special metalava code for generating stubs from text files that it needs to add
 	// some additional items into the API (e.g. default constructors).
 	cmd.FlagWithArg("--api-class-resolution ", "api")
+
+	if len(classpath) > 0 {
+		cmd.FlagWithInputList("--classpath ", classpath, ":")
+	}
 
 	return cmd
 }
@@ -1815,6 +1825,9 @@ func (al *ApiLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if al.properties.Full_api_surface_stub != nil {
 		ctx.AddVariationDependencies(nil, depApiSrcsTag, String(al.properties.Full_api_surface_stub))
 	}
+	if al.properties.System_modules != nil {
+		ctx.AddVariationDependencies(nil, systemModulesTag, String(al.properties.System_modules))
+	}
 }
 
 // Map where key is the api scope name and value is the int value
@@ -1854,6 +1867,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var classPaths android.Paths
 	var staticLibs android.Paths
 	var depApiSrcsStubsJar android.Path
+	var systemModulesPaths android.Paths
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		tag := ctx.OtherModuleDependencyTag(dep)
 		switch tag {
@@ -1872,6 +1886,9 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		case depApiSrcsTag:
 			provider := ctx.OtherModuleProvider(dep, JavaInfoProvider).(JavaInfo)
 			depApiSrcsStubsJar = provider.HeaderJars[0]
+		case systemModulesTag:
+			module := dep.(SystemModulesProvider)
+			systemModulesPaths = append(systemModulesPaths, module.HeaderJars()...)
 		}
 	})
 
@@ -1885,7 +1902,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		ctx.ModuleErrorf("Error: %s has an empty api file.", ctx.ModuleName())
 	}
 
-	cmd := metalavaStubCmd(ctx, rule, srcFiles, homeDir)
+	cmd := metalavaStubCmd(ctx, rule, srcFiles, homeDir, systemModulesPaths)
 
 	al.stubsFlags(ctx, cmd, stubsDir)
 
@@ -1917,6 +1934,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		flags.javaVersion = getStubsJavaVersion()
 		flags.javacFlags = strings.Join(al.properties.Javacflags, " ")
 		flags.classpath = classpath(classPaths)
+		flags.bootClasspath = classpath(systemModulesPaths)
 
 		annoSrcJar := android.PathForModuleOut(ctx, ctx.ModuleName(), "anno.srcjar")
 
