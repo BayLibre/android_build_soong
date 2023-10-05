@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2e1f96b_c1c596ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-05T20:27:51Z",
+      "side": 1,
+      "message": "The CL is blocked by b/288624417 at the moment although this change stack is ready for review. I will trigger the presubmit once the bug is fixed.",
+      "revId": "5301d70f63d19e5496f6092aeeef45563dcd9e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
