@@ -1046,6 +1046,7 @@ var (
 		"libminijail_sys",
 		"libfsverity_rs",
 		"libtombstoned_client_rust",
+        "libapexsupport"
 
 		// TODO(b/263326760): Failed already.
 		"minijail_compiler_unittest",
