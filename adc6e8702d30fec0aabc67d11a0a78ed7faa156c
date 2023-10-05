@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a9cd7a0_84ecf194",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-10-05T14:38:19Z",
+      "side": 1,
+      "message": "np should have made myself clearer!",
+      "parentUuid": "ba2c96ff_20713f53",
+      "range": {
+        "startLine": 9,
+        "startChar": 24,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "adc6e8702d30fec0aabc67d11a0a78ed7faa156c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ee31e7a_8782d259",
