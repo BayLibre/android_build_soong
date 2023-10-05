@@ -16,6 +16,24 @@
       "message": "nit: you override `shouldCleanSymlinkForest` in the local namespace, call this `shouldClean :\u003d ...` instead",
       "revId": "17567cf0de6d3f79baae589581c14f32b72d30fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe1247fa_e5b004a3",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-10-05T02:29:23Z",
+      "side": 1,
+      "message": "oh wow, good catch.",
+      "parentUuid": "dc3406a2_f5e1bd23",
+      "revId": "17567cf0de6d3f79baae589581c14f32b72d30fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

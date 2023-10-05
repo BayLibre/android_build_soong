@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d80d9d0f_1be2c99b",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-10-05T02:29:23Z",
+      "side": 1,
+      "message": "Thanks for the suggestion.\nOne nit - if isNotExist, we _should_ remove. That implies that this is the first time they\u0027ve run with this version of soon build. So, let\u0027s do it.",
+      "parentUuid": "c7dd3643_90ac17a0",
+      "revId": "80a424cbfe5ed34edbb3c7c1e6a9aa003104606f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbda23e6_1d687396",
