@@ -16,6 +16,24 @@
       "message": "Can you please add a comment describing why its disabled accurately? This is not a rust module with cc deps, like the ones above it.\n\nPlease feel free to add this as an immediate followup, as I\u0027d prefer this not delay the submission of this CL (and the fixing of our builds).",
       "revId": "c2c3282883b6ca3297458c1d8750028f22c86268",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75bbab1_c3b4e852",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-10-05T20:19:51Z",
+      "side": 1,
+      "message": "Sure, comments added. Thanks.",
+      "parentUuid": "36aa147c_81439f6e",
+      "revId": "c2c3282883b6ca3297458c1d8750028f22c86268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
