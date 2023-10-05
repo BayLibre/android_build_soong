@@ -16,6 +16,24 @@
       "message": "does that actually work? I think it would call a function named \"trap\". I\u0027d rather remove the flag completely.",
       "revId": "2689a4992a7b4e80e946ce450ba8957213ad0cd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd43df4_d9ec61b9",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-10-05T21:49:24Z",
+      "side": 1,
+      "message": "i don\u0027t know because i haven\u0027t tested locally yet --- i got distracted by a quick test of `__builtin_trap()` not behaving how i expected... a function that just calls `__builtin_trap()` ends up as:\n```\n  c054d0: f800865e      str     x30, [x18], #0x8\n  c054d4: a9bf7bfd      stp     x29, x30, [sp, #-0x10]!\n  c054d8: 910003fd      mov     x29, sp\n  c054dc: 94064c3d      bl      0xd985d0 \u003cabort@plt\u003e\n```",
+      "parentUuid": "5529e7f4_355576a2",
+      "revId": "2689a4992a7b4e80e946ce450ba8957213ad0cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
