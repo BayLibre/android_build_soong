@@ -71,6 +71,7 @@ bootstrap_go_package {
         "java_binary_host_conversion_test.go",
         "java_host_for_device_conversion_test.go",
         "java_import_conversion_test.go",
+        "java_core_library_conversion_test.go",
         "java_library_conversion_test.go",
         "java_library_host_conversion_test.go",
         "java_plugin_conversion_test.go",
