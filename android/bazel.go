@@ -475,7 +475,7 @@ func convertedToBazel(ctx BazelConversionContext, module blueprint.Module) bool 
 	return b.HasHandcraftedLabel() || b.shouldConvertWithBp2build(ctx, shouldConvertParams{
 		module:     module,
 		moduleDir:  ctx.OtherModuleDir(module),
-		moduleName: ctx.OtherModuleName(module),
+		moduleName: module.Name(),
 		moduleType: ctx.OtherModuleType(module),
 	})
 }
@@ -494,7 +494,7 @@ func (b *BazelModuleBase) ShouldConvertWithBp2build(ctx ShouldConvertWithBazelCo
 	return b.shouldConvertWithBp2build(ctx, shouldConvertParams{
 		module:     ctx.Module(),
 		moduleDir:  ctx.ModuleDir(),
-		moduleName: ctx.ModuleName(),
+		moduleName: ctx.Module().Name(),
 		moduleType: ctx.ModuleType(),
 	})
 }
@@ -654,7 +654,7 @@ func bp2buildConversionMutator(ctx BottomUpMutatorContext) {
 	if !bModule.shouldConvertWithBp2build(ctx, shouldConvertParams{
 		module:     ctx.Module(),
 		moduleDir:  ctx.ModuleDir(),
-		moduleName: ctx.ModuleName(),
+		moduleName: ctx.Module().Name(),
 		moduleType: ctx.ModuleType(),
 	}) {
 		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_UNSUPPORTED, "")
