@@ -545,7 +545,7 @@ func (b *BazelModuleBase) shouldConvertWithBp2build(ctx shouldConvertModuleConte
 
 	moduleName := moduleNameWithPossibleOverride(ctx, module, p.moduleName)
 	allowlist := ctx.Config().Bp2buildPackageConfig
-	moduleNameAllowed := allowlist.moduleAlwaysConvert[moduleName]
+	moduleNameAllowed := allowlist.moduleAlwaysConvert[module.Name()]
 	moduleTypeAllowed := allowlist.moduleTypeAlwaysConvert[p.moduleType]
 	allowlistConvert := moduleNameAllowed || moduleTypeAllowed
 	if moduleNameAllowed && moduleTypeAllowed {
