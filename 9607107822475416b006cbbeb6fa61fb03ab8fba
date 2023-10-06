@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5b0ce6cd_3f3d7e40",
+        "filename": "aconfig/java_aconfig_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-10-06T18:15:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93380a48_ae1d8504",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 14
+      },
+      "revId": "9607107822475416b006cbbeb6fa61fb03ab8fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b6234da3_265276fa",
         "filename": "java/testing.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-06T17:15:03Z",
       "side": 1,
       "message": "Out of curiosity: why do we need a host variant?",
+      "range": {
+        "startLine": 557,
+        "startChar": 3,
+        "endLine": 557,
+        "endChar": 24
+      },
+      "revId": "9607107822475416b006cbbeb6fa61fb03ab8fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5eefd00_0cdeab3f",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-10-06T18:15:38Z",
+      "side": 1,
+      "message": "it probably doesn\u0027t matter, I copied from the actual bp file",
+      "parentUuid": "b6234da3_265276fa",
       "range": {
         "startLine": 557,
         "startChar": 3,
