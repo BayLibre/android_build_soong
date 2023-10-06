@@ -861,6 +861,9 @@ func (ctx *parseContext) handleSubConfig(
 		if len(pathPattern) == 1 {
 			pathPattern = append(pathPattern, "")
 		}
+		if pathPattern[0] == "device/google_car/" {
+			fmt.Fprintf(os.Stderr, "pathPattern: %v\n", pathPattern)
+		}
 		matchingPaths = ctx.findMatchingPaths(pathPattern)
 		needsWarning = pathPattern[0] == "" && len(ctx.includeTops) == 0
 	} else if len(ctx.includeTops) > 0 {
@@ -941,6 +944,8 @@ func (p *inheritProductCallParser) parse(ctx *parseContext, v mkparser.Node, arg
 
 func (ctx *parseContext) handleInclude(v *mkparser.Directive) []starlarkNode {
 	loadAlways := v.Name[0] != '-'
+	v.Args.TrimRightSpaces()
+	v.Args.TrimLeftSpaces()
 	return ctx.handleSubConfig(v, ctx.parseMakeString(v, v.Args), loadAlways, func(im inheritedModule) starlarkNode {
 		return &includeNode{im, loadAlways}
 	})
