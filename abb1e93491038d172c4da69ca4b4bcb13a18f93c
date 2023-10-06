@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d91e89f_be477230",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-06T12:45:15Z",
+      "side": 1,
+      "message": "The other important aspect is that these validations are where there is a 1:1 mapping between a java_api_library and a droidstubs module that currently has validation actions.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "abb1e93491038d172c4da69ca4b4bcb13a18f93c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3968e55_f3572b5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-06T12:45:15Z",
+      "side": 1,
+      "message": "I don\u0027t think it makes sense to characterize this as a regression. Perhaps instead, something to the extent:\n\nWhen building stubs from text, the metalava invocation to build stubs from source was on the critical path, blocking many downstream actions from beginning. When building from text, these run as a validation action which must complete before builds are able to complete, but metalava building stubs from source is no longer on the critical path. Note: this is still a performance improvement over building stubs from source, but this is slower than disabling validation (which moves critical validation to only run on CI).",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "abb1e93491038d172c4da69ca4b4bcb13a18f93c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7720389_2160df11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-06T12:45:15Z",
+      "side": 1,
+      "message": "Can you add some testing coverage of the validation actions?",
+      "revId": "abb1e93491038d172c4da69ca4b4bcb13a18f93c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e63977ec_f43dbfa7",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-06T12:45:15Z",
+      "side": 1,
+      "message": "nit: does this need to be exported?",
+      "range": {
+        "startLine": 174,
+        "startChar": 5,
+        "endLine": 174,
+        "endChar": 32
+      },
+      "revId": "abb1e93491038d172c4da69ca4b4bcb13a18f93c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6772689_433caa3a",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1842,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-06T12:45:15Z",
+      "side": 1,
+      "message": "should we add error handling for the cases where this isn\u0027t true?",
+      "range": {
+        "startLine": 1842,
+        "startChar": 2,
+        "endLine": 1842,
+        "endChar": 84
+      },
+      "revId": "abb1e93491038d172c4da69ca4b4bcb13a18f93c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
