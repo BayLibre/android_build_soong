@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f81e991_c8f0c694",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-06T18:58:31Z",
+      "side": 1,
+      "message": "What a weird bug! Thanks for looking into this :)",
+      "revId": "b89249fab3f50ebdec85cb9189260042c3c87850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
