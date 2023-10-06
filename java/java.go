@@ -2931,10 +2931,6 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.Bp2buildMutatorContext
 		// TODO(b/297356582): handle core_platform in bp2build
 		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "sdk_version core_platform")
 		return &javaCommonAttributes{}, &bp2BuildJavaInfo{}, false
-	} else if proptools.String(m.deviceProperties.Sdk_version) == "none" {
-		// TODO(b/297356582): handle core_platform in bp2build
-		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "sdk_version none")
-		return &javaCommonAttributes{}, &bp2BuildJavaInfo{}, false
 	}
 
 	archVariantProps := m.GetArchVariantProperties(ctx, &CommonProperties{})
@@ -3155,6 +3151,16 @@ func javaLibraryBazelTargetModuleProperties() bazel.BazelTargetModuleProperties 
 	}
 }
 
+type coreAttributes struct {
+	System_modules *bazel.Label
+	Patch_module   *string
+}
+
+type coreLibraryAttributes struct {
+	coreAttributes
+	javaLibraryAttributes
+}
+
 func javaLibraryBp2Build(ctx android.Bp2buildMutatorContext, m *Library) {
 	commonAttrs, bp2BuildInfo, supported := m.convertLibraryAttrsBp2Build(ctx)
 	if !supported {
@@ -3175,7 +3181,7 @@ func javaLibraryBp2Build(ctx android.Bp2buildMutatorContext, m *Library) {
 		deps = bazel.LabelListAttribute{}
 	}
 	var props bazel.BazelTargetModuleProperties
-	attrs := &javaLibraryAttributes{
+	attrs := javaLibraryAttributes{
 		javaCommonAttributes: commonAttrs,
 		Deps:                 deps,
 		Exports:              exports,
@@ -3188,7 +3194,27 @@ func javaLibraryBp2Build(ctx android.Bp2buildMutatorContext, m *Library) {
 		props = ktJvmLibraryBazelTargetModuleProperties()
 	}
 
-	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: name}, attrs)
+	var coreAttrs coreAttributes
+	if m.properties.Patch_module != nil {
+		coreAttrs.Patch_module = m.properties.Patch_module
+	}
+	if m.deviceProperties.System_modules != nil {
+		s := proptools.String(m.deviceProperties.System_modules)
+		if bp2BuildInfo.hasKotlin {
+			ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED, "Kotlin in core library unsupported")
+		}
+		if s != "none" {
+			l := android.BazelLabelForModuleDepSingle(ctx, s)
+			coreAttrs.System_modules = &l
+		}
+		m.createCoreLibrary(ctx, name, &coreLibraryAttributes{
+			coreAttributes:        coreAttrs,
+			javaLibraryAttributes: attrs,
+		})
+		return
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: name}, &attrs)
 	neverlinkProp := true
 	neverLinkAttrs := &javaLibraryAttributes{
 		Exports:   bazel.MakeSingleLabelListAttribute(bazel.Label{Label: ":" + name}),
@@ -3198,8 +3224,34 @@ func javaLibraryBp2Build(ctx android.Bp2buildMutatorContext, m *Library) {
 			Java_version: bazel.StringAttribute{Value: m.properties.Java_version},
 		},
 	}
-	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: name + "-neverlink"}, neverLinkAttrs)
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: addNeverlinkSuffix(name)}, neverLinkAttrs)
+}
 
+func (m *Library) createCoreLibrary(ctx android.Bp2buildMutatorContext, name string, attrs *coreLibraryAttributes) {
+	// all core libraries have sdk_version: none
+	attrs.javaLibraryAttributes.javaCommonAttributes.Sdk_version = bazel.StringAttribute{}
+
+	neverlinkAttrs := coreLibraryAttributes{
+		javaLibraryAttributes: javaLibraryAttributes{
+			Exports:   bazel.MakeSingleLabelListAttribute(bazel.Label{Label: ":" + name}),
+			Neverlink: bazel.BoolAttribute{Value: proptools.BoolPtr(true)},
+			javaCommonAttributes: &javaCommonAttributes{
+				Java_version: attrs.javaLibraryAttributes.javaCommonAttributes.Java_version,
+			},
+		},
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "java_core_library",
+		Bzl_load_location: "//build/bazel/rules/java:core_library.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: name}, attrs)
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: addNeverlinkSuffix(name)}, &neverlinkAttrs)
+}
+
+func addNeverlinkSuffix(s string) string {
+	return s + "-neverlink"
 }
 
 type javaBinaryHostAttributes struct {
