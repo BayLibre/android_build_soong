@@ -1022,8 +1022,9 @@ func (j *Module) collectJavacFlags(
 	}
 	javacFlags = append(javacFlags, "-Xlint:-dep-ann")
 
+	// java version defaults to 17
+	javacFlags = append(javacFlags, j.properties.Openjdk9.Javacflags...)
 	if flags.javaVersion.usesJavaModules() {
-		javacFlags = append(javacFlags, j.properties.Openjdk9.Javacflags...)
 
 		if j.properties.Patch_module != nil {
 			// Manually specify build directory in case it is not under the repo root.
@@ -1099,9 +1100,8 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 	deps := j.collectDeps(ctx)
 	flags := j.collectBuilderFlags(ctx, deps)
 
-	if flags.javaVersion.usesJavaModules() {
-		j.properties.Srcs = append(j.properties.Srcs, j.properties.Openjdk9.Srcs...)
-	}
+	// java version now defaults to 17
+	j.properties.Srcs = append(j.properties.Srcs, j.properties.Openjdk9.Srcs...)
 
 	srcFiles := android.PathsForModuleSrcExcludes(ctx, j.properties.Srcs, j.properties.Exclude_srcs)
 	j.sourceExtensions = []string{}
