@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94542d2e_ac1109ce",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-10-07T02:12:00Z",
+      "side": 1,
+      "message": "Yes, please see\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_paths.go;l\u003d452?q\u003d%22__BP2BUILD__MISSING__DEP%22",
+      "parentUuid": "44c812c6_2affafec",
+      "range": {
+        "startLine": 54,
+        "startChar": 52,
+        "endLine": 54,
+        "endChar": 76
+      },
+      "revId": "ec3fd36fa1a91cb69c3f373fe4db064083ac1807",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6330807f_4efa85fe",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-05T07:38:27Z",
       "side": 1,
       "message": "as discussed offline, we should be clear on the semantics of data vs data_bins vs data_libs - data_bins will now be handled separately by installing right beside the test entry point, so perhaps there\u0027s no more need to combine it into data?",
+      "range": {
+        "startLine": 618,
+        "startChar": 1,
+        "endLine": 622,
+        "endChar": 86
+      },
+      "revId": "ec3fd36fa1a91cb69c3f373fe4db064083ac1807",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78473e97_36072e8c",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-10-07T02:12:00Z",
+      "side": 1,
+      "message": "This would still be necessary or we will receive the error below.\n\n`\n  File \"/usr/local/google/home/juu/another_aosp/aosp-main-with-phones/out/bazel/output_user_root/539654c7f4ee2cbdf6934f679f752d03/sandbox/linux-sandbox/1611/execroot/__main__/bazel-out/aosp_arm64_linux_x86_64-opt/bin/packages/modules/SdkExtensions/gen_sdk/gen_sdk_test__tf_deviceless_test.sh.runfiles/__main__/packages/modules/SdkExtensions/gen_sdk/gen_sdk_test__tf_deviceless_test/testcases/./gen_sdk\", line 559, in \u003cmodule\u003e\n    Main()\n  File \"/usr/local/google/home/juu/another_aosp/aosp-main-with-phones/out/bazel/output_user_root/539654c7f4ee2cbdf6934f679f752d03/sandbox/linux-sandbox/1611/execroot/__main__/bazel-out/aosp_arm64_linux_x86_64-opt/bin/packages/modules/SdkExtensions/gen_sdk/gen_sdk_test__tf_deviceless_test.sh.runfiles/__main__/packages/modules/SdkExtensions/gen_sdk/gen_sdk_test__tf_deviceless_test/testcases/./gen_sdk\", line 490, in Main\n    assert os.path.exists(main_filename), \\\nAssertionError: Cannot exec() \u0027/usr/local/google/home/juu/another_aosp/aosp-main-with-phones/out/bazel/output_user_root/539654c7f4ee2cbdf6934f679f752d03/sandbox/linux-sandbox/1611/execroot/__main__/bazel-out/aosp_arm64_linux_x86_64-opt/bin/packages/modules/SdkExtensions/gen_sdk/gen_sdk_test__tf_deviceless_test.sh.runfiles/__main__/packages/modules/SdkExtensions/gen_sdk/gen_sdk.py\u0027: file not found.\n`",
+      "parentUuid": "6330807f_4efa85fe",
       "range": {
         "startLine": 618,
         "startChar": 1,
