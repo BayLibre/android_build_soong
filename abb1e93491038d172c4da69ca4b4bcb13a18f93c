@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a14e198f_fd7bc1c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-07T04:53:45Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. However, \"1:1 mapping between a java_api_library and a droidstubs\" may be a bit misleading because a java_api_library that contributes to non-public api surfaces will depend on multiple java_api_contributions and thus there will be a 1:N mapping between a java_api_library and droidstubs (e.g. system api surface java_api_library will map to droidstubs of the corresponding public and system java_api_contributions).\n\nI believe that the more accurate phrasing would be a 1:1 mapping between a java_api_library and an api domain. I\u0027ve updated the commit message accordingly.",
+      "parentUuid": "7d91e89f_be477230",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "abb1e93491038d172c4da69ca4b4bcb13a18f93c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3968e55_f3572b5d",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-06T12:45:15Z",
       "side": 1,
       "message": "I don\u0027t think it makes sense to characterize this as a regression. Perhaps instead, something to the extent:\n\nWhen building stubs from text, the metalava invocation to build stubs from source was on the critical path, blocking many downstream actions from beginning. When building from text, these run as a validation action which must complete before builds are able to complete, but metalava building stubs from source is no longer on the critical path. Note: this is still a performance improvement over building stubs from source, but this is slower than disabling validation (which moves critical validation to only run on CI).",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "abb1e93491038d172c4da69ca4b4bcb13a18f93c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f267892d_491fc4fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-07T04:53:45Z",
+      "side": 1,
+      "message": "Acknowledged. Thanks for sharing your thoughts.",
+      "parentUuid": "a3968e55_f3572b5d",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ddab8f_900559cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-07T04:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7720389_2160df11",
+      "revId": "abb1e93491038d172c4da69ca4b4bcb13a18f93c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e63977ec_f43dbfa7",
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58b7e9d8_67739021",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-07T04:53:45Z",
+      "side": 1,
+      "message": "The interface does not need to be exported as it is used within the same package, but since [the other provider interfaces defined above](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/droidstubs.go;drc\u003d2e4e80c235dcd37fefbeea6e622dbd1f17703dce;l\u003d161) are exported despite being used within the package, I have also implemented it similarly for consistency.",
+      "parentUuid": "e63977ec_f43dbfa7",
+      "range": {
+        "startLine": 174,
+        "startChar": 5,
+        "endLine": 174,
+        "endChar": 32
+      },
+      "revId": "abb1e93491038d172c4da69ca4b4bcb13a18f93c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6772689_433caa3a",
@@ -100,6 +190,30 @@
       "writtenOn": "2023-10-06T12:45:15Z",
       "side": 1,
       "message": "should we add error handling for the cases where this isn\u0027t true?",
+      "range": {
+        "startLine": 1842,
+        "startChar": 2,
+        "endLine": 1842,
+        "endChar": 84
+      },
+      "revId": "abb1e93491038d172c4da69ca4b4bcb13a18f93c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d00ebae_a05ebe51",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1842,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-07T04:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6772689_433caa3a",
       "range": {
         "startLine": 1842,
         "startChar": 2,
