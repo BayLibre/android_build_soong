@@ -16,6 +16,24 @@
       "message": "This seems to have broken aosp-clang-tools linux build:\n\nhttps://android-build.corp.google.com/artifact/submitted/10866847/linux/latest/view/logs%2Fbuild_error.log",
       "revId": "aa516c562e7f77b1e0365883f2f20d3b82a45cb8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "017a5eb8_0c92171d",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-07T00:40:16Z",
+      "side": 1,
+      "message": "There is a bug for this b/303376793. The fix is on the way(aosp/2777928).",
+      "parentUuid": "32fb9269_384edc6a",
+      "revId": "aa516c562e7f77b1e0365883f2f20d3b82a45cb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
