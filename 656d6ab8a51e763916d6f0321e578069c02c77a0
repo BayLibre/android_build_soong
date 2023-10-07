@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60fdec19_c0eae59b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-07T04:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb514f49_53c4c145",
+      "revId": "656d6ab8a51e763916d6f0321e578069c02c77a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a9787a1_81e45d31",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-10-06T12:50:07Z",
       "side": 1,
       "message": "to make sure I understand correctly, are we expecting: java_system_modules module type, java_api_contribution, or java_api_library as inputs here?",
+      "range": {
+        "startLine": 1693,
+        "startChar": 0,
+        "endLine": 1695,
+        "endChar": 43
+      },
+      "revId": "656d6ab8a51e763916d6f0321e578069c02c77a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e9fe868_c6d7ee9e",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1695,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-07T04:53:06Z",
+      "side": 1,
+      "message": "At the moment, only `java_system_modules` can be an input for this property as `java_api_contribution` or `java_api_library` are not `SystemModulesProvider`. I\u0027ve clarified this in the comment.",
+      "parentUuid": "0a9787a1_81e45d31",
       "range": {
         "startLine": 1693,
         "startChar": 0,
