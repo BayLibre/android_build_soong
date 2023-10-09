@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c92fe9_2ba2e14d",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-10-09T23:21:10Z",
+      "side": 1,
+      "message": "it\u0027s somewhat weird to have these deps also as sh_test - perhaps use filegroup for all of them?",
+      "range": {
+        "startLine": 32,
+        "startChar": 17,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "21d4e741499f16f34419379589e52d8ec70402b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
