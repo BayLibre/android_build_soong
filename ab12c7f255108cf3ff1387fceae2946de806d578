@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dddbabd_7ba82895",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-10-09T15:42:03Z",
+      "side": 1,
+      "message": "I\u0027m intrigued that the test here is !\u003d \"\" while the test below is !\u003d nil.\n\nThe documentation of cpp_std says \n\u003e cpp_std string, C++ standard version to use. Can be a specific version (such as \"gnu++11\"), \"experimental\" (which will use draft versions like C++1z when available), or the empty string (which will use the default). If this is set, the file extension will be ignored and this will be used as the std version value. Setting this to \"default\" will use the build system default version. This cannot be set at the same time as c_std.\n\nThat seems to me to be saying that `cpp_std \u003d \"\"` should be equivalent to `cpp_std \u003d \"default\"`. But it isn\u0027t; it\u0027s actually a no-op and causes C++-ness to be deduced from the extension.",
+      "range": {
+        "startLine": 127,
+        "startChar": 37,
+        "endLine": 127,
+        "endChar": 43
+      },
+      "revId": "ab12c7f255108cf3ff1387fceae2946de806d578",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
