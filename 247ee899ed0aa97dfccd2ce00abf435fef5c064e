@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3a7e50_9feafc7e",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2475,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-09T12:43:21Z",
+      "side": 1,
+      "message": "can we instead assert on e.g. the api-class-resolution or --classpath arg?",
+      "range": {
+        "startLine": 2474,
+        "startChar": 112,
+        "endLine": 2475,
+        "endChar": 113
+      },
+      "revId": "247ee899ed0aa97dfccd2ce00abf435fef5c064e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
