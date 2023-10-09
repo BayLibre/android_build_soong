@@ -16,6 +16,24 @@
       "message": "How is this going to be used by soong? I\u0027d like to see that before approving this.",
       "revId": "db1e21db55d83970a3f21cada184c0209c60bb91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ff81f31_6d2533cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-10-09T19:17:37Z",
+      "side": 1,
+      "message": "ATOS requires the test run metadata protostructure to be published asap. Ref: https://docs.google.com/document/d/1MzVUFpugV_SCpzu868YYei5i3PpfRJX0MZQfMlBUwFM/edit\nWe will use this structure to output the protobuf files.",
+      "parentUuid": "a14b7aef_f55733b7",
+      "revId": "db1e21db55d83970a3f21cada184c0209c60bb91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
