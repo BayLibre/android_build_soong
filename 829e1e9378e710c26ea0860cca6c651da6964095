@@ -52,6 +52,23 @@
       "parentUuid": "24e63a6b_b9114aba",
       "revId": "829e1e9378e710c26ea0860cca6c651da6964095",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc553ce5_a350e021",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2023-10-09T19:04:09Z",
+      "side": 1,
+      "message": "Presubmit failures are unrelated, the failures are pre-existing.",
+      "revId": "829e1e9378e710c26ea0860cca6c651da6964095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
