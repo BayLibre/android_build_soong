@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfe15846_4e670b1f",
+        "filename": "tests/b_args_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-09T21:26:29Z",
+      "side": 1,
+      "message": "file-level description of the test, please",
+      "revId": "792722223e91132a88a03a0d968d27b55f2f3814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e785386_6704014d",
+        "filename": "tests/b_args_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-09T21:26:29Z",
+      "side": 1,
+      "message": "remove extra newlines",
+      "revId": "792722223e91132a88a03a0d968d27b55f2f3814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
