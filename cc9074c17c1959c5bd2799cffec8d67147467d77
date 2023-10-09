@@ -33,6 +33,24 @@
       "message": "Are there any tests we need to denylist now because of this?",
       "revId": "cc9074c17c1959c5bd2799cffec8d67147467d77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67175b7d_b0d598f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-10-09T15:09:26Z",
+      "side": 1,
+      "message": "hidl-lint_test is failing with `b test`, and I filed b/304262679 for that. However instead of denylisting it from bp2build.sh, I think that it\u0027s better for bp2build.sh to _not_ run b test on tradefed tests, since that unnecessarily expands the scope of bp2build.sh, and we have atest_integration_test for that anyway. We also don\u0027t really care about making every test pass right now, other than the ones in roboleaf_launched.txt.\n\nSee the other CL in this topic.",
+      "parentUuid": "6a911547_40efdd1b",
+      "revId": "cc9074c17c1959c5bd2799cffec8d67147467d77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
