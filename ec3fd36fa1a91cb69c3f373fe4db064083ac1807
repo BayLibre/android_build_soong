@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2330afee_d0490f15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-10-09T13:14:54Z",
+      "side": 1,
+      "message": "Like the other CL, this commit description should be more descriptive and contextual.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "ec3fd36fa1a91cb69c3f373fe4db064083ac1807",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44c812c6_2affafec",
         "filename": "bp2build/sh_test_conversion_test.go",
         "patchSetId": 8
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "Yes, please see\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_paths.go;l\u003d452?q\u003d%22__BP2BUILD__MISSING__DEP%22",
       "parentUuid": "44c812c6_2affafec",
+      "range": {
+        "startLine": 54,
+        "startChar": 52,
+        "endLine": 54,
+        "endChar": 76
+      },
+      "revId": "ec3fd36fa1a91cb69c3f373fe4db064083ac1807",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3edc9298_2917beed",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-10-09T13:14:54Z",
+      "side": 1,
+      "message": "That\u0027s not really what I meant, are we sure we\u0027re not missing `simpleModule` definitions or `StubbedBuildDefinitions` for these deps? Try searching for other bp2build tests, there are only a few that has this suffix.",
+      "parentUuid": "94542d2e_ac1109ce",
       "range": {
         "startLine": 54,
         "startChar": 52,
