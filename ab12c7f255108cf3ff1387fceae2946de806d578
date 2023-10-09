@@ -22,6 +22,30 @@
       },
       "revId": "ab12c7f255108cf3ff1387fceae2946de806d578",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abfb8307_b8eae3a3",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2023-10-09T15:53:09Z",
+      "side": 1,
+      "message": "Ah yes you\u0027re right, thank you for the close review!",
+      "parentUuid": "2dddbabd_7ba82895",
+      "range": {
+        "startLine": 127,
+        "startChar": 37,
+        "endLine": 127,
+        "endChar": 43
+      },
+      "revId": "ab12c7f255108cf3ff1387fceae2946de806d578",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
