@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1c56c3a_ee45f732",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-10-10T13:45:34Z",
+      "side": 1,
+      "message": "why not make this one a build action option as well?",
+      "range": {
+        "startLine": 311,
+        "startChar": 84,
+        "endLine": 311,
+        "endChar": 108
+      },
+      "revId": "fd54a1e4aa2e9c6922a641f4741109c06726b9c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
