@@ -64,6 +64,10 @@ var archVariants = map[ArchType][]string{
 		"tremont",
 		"whiskeylake",
 	},
+	Riscv64: {
+		"riscv64",
+		"fuchsia",
+	},
 }
 
 var cpuVariants = map[ArchType][]string{

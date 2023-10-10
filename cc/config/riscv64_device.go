@@ -26,20 +26,40 @@ var (
 		// Help catch common 32/64-bit errors.
 		"-Werror=implicit-function-declaration",
 		"-fno-emulated-tls",
-		"-march=rv64gcv_zba_zbb_zbs",
 		// Equivalent to "-munaligned-access", but our clang doesn't have that yet.
 		"-Xclang -target-feature -Xclang +unaligned-scalar-mem",
 		"-Xclang -target-feature -Xclang +unaligned-vector-mem",
 	}
 
-	riscv64ArchVariantCflags = map[string][]string{}
+	riscv64ArchVariantCflags = map[string][]string{
+		"": []string{
+			"-march=rv64gcv_zba_zbb_zbs",
+		},
+		"riscv64": []string{
+			"-march=rv64gcv_zba_zbb_zbs",
+		},
+		"fuchsia": []string{
+			"-march=rv64gc_zba_zbb_zbs",
+		},
+	}
 
 	riscv64Ldflags = []string{
 		"-Wl,--hash-style=gnu",
-		"-march=rv64gcv_zba_zbb_zbs",
 		// Equivalent to "-munaligned-access", but our clang doesn't have that yet.
 		"-Xclang -target-feature -Xclang +unaligned-scalar-mem",
 		"-Xclang -target-feature -Xclang +unaligned-vector-mem",
+	}
+
+	riscv64ArchVariantLdflags = map[string][]string{
+		"": []string{
+			"-march=rv64gcv_zba_zbb_zbs",
+		},
+		"riscv64": []string{
+			"-march=rv64gcv_zba_zbb_zbs",
+		},
+		"fuchsia": []string{
+			"-march=rv64gc_zba_zbb_zbs",
+		},
 	}
 
 	riscv64Lldflags = append(riscv64Ldflags,
@@ -55,7 +75,6 @@ var (
 const ()
 
 func init() {
-
 	exportedVars.ExportStringListStaticVariable("Riscv64Ldflags", riscv64Ldflags)
 	exportedVars.ExportStringListStaticVariable("Riscv64Lldflags", riscv64Lldflags)
 
@@ -64,7 +83,8 @@ func init() {
 
 	exportedVars.ExportVariableReferenceDict("Riscv64ArchVariantCflags", riscv64ArchVariantCflagsVar)
 	exportedVars.ExportVariableReferenceDict("Riscv64CpuVariantCflags", riscv64CpuVariantCflagsVar)
-	exportedVars.ExportVariableReferenceDict("Riscv64CpuVariantLdflags", riscv64CpuVariantLdflags)
+	exportedVars.ExportVariableReferenceDict("Riscv64ArchVariantLdflags", riscv64ArchVariantLdflagsVar)
+	exportedVars.ExportVariableReferenceDict("Riscv64CpuVariantLdflags", riscv64CpuVariantLdflagsVar)
 }
 
 var (
@@ -72,7 +92,9 @@ var (
 
 	riscv64CpuVariantCflagsVar = map[string]string{}
 
-	riscv64CpuVariantLdflags = map[string]string{}
+	riscv64ArchVariantLdflagsVar = map[string]string{}
+
+	riscv64CpuVariantLdflagsVar = map[string]string{}
 )
 
 type toolchainRiscv64 struct {
@@ -123,6 +145,8 @@ func (toolchainRiscv64) LibclangRuntimeLibraryArch() string {
 func riscv64ToolchainFactory(arch android.Arch) Toolchain {
 	switch arch.ArchVariant {
 	case "":
+	case "riscv64":
+	case "fuchsia":
 	default:
 		panic(fmt.Sprintf("Unknown Riscv64 architecture version: %q", arch.ArchVariant))
 	}
@@ -131,16 +155,15 @@ func riscv64ToolchainFactory(arch android.Arch) Toolchain {
 	toolchainCflags = append(toolchainCflags,
 		variantOrDefault(riscv64CpuVariantCflagsVar, arch.CpuVariant))
 
-	extraLdflags := variantOrDefault(riscv64CpuVariantLdflags, arch.CpuVariant)
+	extraLdflags := strings.Join(
+		[]string{variantOrDefault(riscv64ArchVariantLdflagsVar, arch.ArchVariant),
+			variantOrDefault(riscv64CpuVariantLdflagsVar, arch.CpuVariant)}, " ")
+
 	return &toolchainRiscv64{
-		ldflags: strings.Join([]string{
-			"${config.Riscv64Ldflags}",
-			extraLdflags,
-		}, " "),
-		lldflags: strings.Join([]string{
-			"${config.Riscv64Lldflags}",
-			extraLdflags,
-		}, " "),
+		ldflags: strings.Join([]string{"${config.Riscv64Ldflags}",
+			extraLdflags}, " "),
+		lldflags: strings.Join([]string{"${config.Riscv64Lldflags}",
+			extraLdflags}, " "),
 		toolchainCflags: strings.Join(toolchainCflags, " "),
 	}
 }
