@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2efddfb_ff12ba83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-10T15:04:45Z",
+      "side": 1,
+      "message": "FYI, Please ignore build failures for this review -- this CL should be ready for review in actuality.\n\nThe build failures should be fixed with aosp/2779668, but CI hasn\u0027t caught up yet.",
+      "revId": "d43be7c704a469a57ab9c533ff0f4f3e1c0632dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
