@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ef6768c_42a8cfc4",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2023-10-10T07:43:36Z",
+      "side": 1,
+      "message": "DBC: Clement is adding support so that the file generation for lint can take the same android platform flag configuration. That way, if the compiler ends up with additions for the platform flag it will still work (rather than assuming it is empty).\n\nOnce that lands, can we amend to use that? I can\u0027t see in this CL exactly where lint is getting the list. Is it using a default list when `--Xdesugared-methods` is not passed?\n\nCL adding the flag is here:\nhttps://r8-review.git.corp.google.com/c/r8/+/84782",
+      "revId": "a5840124b2e5a802aadd3857c3b8cc37ae28045f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
