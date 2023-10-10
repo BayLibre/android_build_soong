@@ -16,6 +16,29 @@
       "message": "This seems to work in my use case where the cov variant of a test app is installed as the data dependency of a java_test_host.",
       "revId": "f9524d3207e1a524d4133d3221e69544e3d7332e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f67377a_73d6e155",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-10T22:49:40Z",
+      "side": 1,
+      "message": "This is already covered by `NativeCoverageEnabled()`",
+      "range": {
+        "startLine": 1091,
+        "startChar": 51,
+        "endLine": 1091,
+        "endChar": 95
+      },
+      "revId": "f9524d3207e1a524d4133d3221e69544e3d7332e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
