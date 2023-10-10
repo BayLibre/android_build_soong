@@ -45,6 +45,54 @@
       },
       "revId": "e2503dd4cd73aad0e518bedd2b19694e097e1f20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41269913_f5b7269d",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-10T05:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89da66dd_7d297426",
+      "range": {
+        "startLine": 552,
+        "startChar": 1,
+        "endLine": 552,
+        "endChar": 52
+      },
+      "revId": "e2503dd4cd73aad0e518bedd2b19694e097e1f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d3dc99b_21a3f537",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-10T05:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13046eed_cdc9533a",
+      "range": {
+        "startLine": 552,
+        "startChar": 1,
+        "endLine": 552,
+        "endChar": 52
+      },
+      "revId": "e2503dd4cd73aad0e518bedd2b19694e097e1f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
