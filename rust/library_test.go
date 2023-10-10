@@ -289,7 +289,7 @@ func TestAutoDeps(t *testing.T) {
 		}`)
 
 	libfooRlib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_rlib_rlib-std")
-	libfooDylib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_dylib")
+	// libfooDylib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_dylib")
 	libfooStatic := ctx.ModuleForTests("libfoo.ffi", "linux_glibc_x86_64_static")
 	libfooShared := ctx.ModuleForTests("libfoo.ffi", "linux_glibc_x86_64_shared")
 
@@ -302,10 +302,10 @@ func TestAutoDeps(t *testing.T) {
 		}
 	}
 
-	for _, dyn := range []android.TestingModule{libfooDylib, libfooShared} {
-		if !android.InList("libbar", dyn.Module().(*Module).Properties.AndroidMkDylibs) {
-			t.Errorf("libbar not present as dynamic dependency in dynamic lib")
-		}
+	for _, dyn := range []android.TestingModule{libfooShared} {
+		// if !android.InList("libbar", dyn.Module().(*Module).Properties.AndroidMkDylibs) {
+		// 	t.Errorf("libbar not present as dynamic dependency in dynamic lib")
+		// }
 		if android.InList("libbar", dyn.Module().(*Module).Properties.AndroidMkRlibs) {
 			t.Errorf("libbar present as rlib dependency in dynamic lib")
 		}

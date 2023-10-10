@@ -35,7 +35,7 @@ func init() {
 	android.RegisterModuleType("rust_library_dylib", RustLibraryDylibFactory)
 	android.RegisterModuleType("rust_library_rlib", RustLibraryRlibFactory)
 	android.RegisterModuleType("rust_library_host", RustLibraryHostFactory)
-	android.RegisterModuleType("rust_library_host_dylib", RustLibraryDylibHostFactory)
+	// android.RegisterModuleType("rust_library_host_dylib", RustLibraryDylibHostFactory)
 	android.RegisterModuleType("rust_library_host_rlib", RustLibraryRlibHostFactory)
 	android.RegisterModuleType("rust_ffi", RustFFIFactory)
 	android.RegisterModuleType("rust_ffi_shared", RustFFISharedFactory)
@@ -312,7 +312,7 @@ func RustFFIStaticFactory() android.Module {
 // (rust_library_dylib_host and rust_library_rlib_host).
 func RustLibraryHostFactory() android.Module {
 	module, library := NewRustLibrary(android.HostSupported)
-	library.BuildOnlyRust()
+	library.BuildOnlyRlib()
 	return module.Init()
 }
 
