@@ -22,6 +22,30 @@
       },
       "revId": "21d4e741499f16f34419379589e52d8ec70402b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "184ecbff_c996cac4",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-10-10T06:18:56Z",
+      "side": 1,
+      "message": "Updated as suggested. Thanks.",
+      "parentUuid": "86c92fe9_2ba2e14d",
+      "range": {
+        "startLine": 32,
+        "startChar": 17,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "21d4e741499f16f34419379589e52d8ec70402b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
