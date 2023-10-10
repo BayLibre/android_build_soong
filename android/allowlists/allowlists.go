@@ -204,6 +204,7 @@ var (
 		"external/perfmark/api":                  Bp2BuildDefaultTrueRecursively,
 		"external/protobuf":                      Bp2BuildDefaultTrueRecursively,
 		"external/python/pyyaml/lib/yaml":        Bp2BuildDefaultTrueRecursively,
+		"external/python/pyfakefs":               Bp2BuildDefaultTrueRecursively,
 		"external/python/six":                    Bp2BuildDefaultTrueRecursively,
 		"external/python/jinja/src":              Bp2BuildDefaultTrueRecursively,
 		"external/python/markupsafe/src":         Bp2BuildDefaultTrueRecursively,
@@ -601,6 +602,11 @@ var (
 		"libidmap2_policies",
 		"libSurfaceFlingerProp",
 		"toolbox_input_labels",
+
+		// atest_unittests deps
+		"asuite_proto",
+		"atest_unittests",
+		"tradefed-protos-py",
 
 		// cc mainline modules
 
@@ -1106,10 +1112,10 @@ var (
 		"prebuilt_robolectric-monitor-1.0.2-alpha1",
 
 		// path property for filegroups
-		"conscrypt",                        // TODO(b/210751803), we don't handle path property for filegroups
-		"conscrypt-for-host",               // TODO(b/210751803), we don't handle path property for filegroups
-		"host-libprotobuf-java-full",       // TODO(b/210751803), we don't handle path property for filegroups
-		"libprotobuf-internal-python-srcs", // TODO(b/210751803), we don't handle path property for filegroups
+		"conscrypt",                  // TODO(b/210751803), we don't handle path property for filegroups
+		"conscrypt-for-host",         // TODO(b/210751803), we don't handle path property for filegroups
+		"host-libprotobuf-java-full", // TODO(b/210751803), we don't handle path property for filegroups
+		// "libprotobuf-internal-python-srcs", // TODO(b/210751803), we don't handle path property for filegroups
 
 		// go deps:
 		"analyze_bcpf",              // depends on bpmodify a blueprint_go_binary.
