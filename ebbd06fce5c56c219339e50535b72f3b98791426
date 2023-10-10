@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b9115d_7ade8775",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-10-10T15:51:22Z",
+      "side": 1,
+      "message": "nit: New lines at the end of each file",
+      "revId": "ebbd06fce5c56c219339e50535b72f3b98791426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85179934_e56abc7b",
+        "filename": "android/test_run.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-10-10T15:51:22Z",
+      "side": 1,
+      "message": "should we also add a check to make sure it is int?",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "ebbd06fce5c56c219339e50535b72f3b98791426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfcdcc7a_4af9b882",
+        "filename": "android/test_run.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-10-10T15:51:22Z",
+      "side": 1,
+      "message": "nit: rename to bpFilePath?",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 9
+      },
+      "revId": "ebbd06fce5c56c219339e50535b72f3b98791426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faeafae3_23e952b0",
+        "filename": "android/test_run.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-10-10T15:51:22Z",
+      "side": 1,
+      "message": "this can be filepath.Join(ctx.ModuleDir(), \"/Android.bp\")",
+      "range": {
+        "startLine": 111,
+        "startChar": 13,
+        "endLine": 111,
+        "endChar": 44
+      },
+      "revId": "ebbd06fce5c56c219339e50535b72f3b98791426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37a44d24_8f02a2aa",
+        "filename": "android/test_run.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-10-10T15:51:22Z",
+      "side": 1,
+      "message": "nit: To be a bit more efficient we can intialize this with the actual size and then use index to populate the slice",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 17
+      },
+      "revId": "ebbd06fce5c56c219339e50535b72f3b98791426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
