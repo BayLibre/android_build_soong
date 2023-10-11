@@ -84,6 +84,24 @@ func dumpMakeVars(ctx Context, config Config, goals, vars []string, write_soong_
 	ctx.BeginTrace(metrics.RunKati, "dumpvars")
 	defer ctx.EndTrace()
 
+	releaseConfigVars := []string{
+		"PRODUCT_RELEASE_CONFIG_MAPS",
+	}
+
+	// Get the PRODUCT_RELEASE_CONFIG_MAPS for this product, to avoid polluting the environment
+	// when we run product config to get the rest of the make vars.
+	releaseMapVars, err := _dumpMakeVars(ctx, config, goals, releaseConfigVars, false, "")
+	if err != nil {
+		ctx.Fatalln("Error getting PRODUCT_RELEASE_CONFIG_MAPS:", err)
+	}
+	config.productReleaseConfigMaps = releaseMapVars["PRODUCT_RELEASE_CONFIG_MAPS"]
+	return _dumpMakeVars(ctx, config, goals, vars, write_soong_vars, tmpDir)
+}
+
+func _dumpMakeVars(ctx Context, config Config, goals, vars []string, write_soong_vars bool, tmpDir string) (map[string]string, error) {
+	ctx.BeginTrace(metrics.RunKati, "_dumpvars")
+	defer ctx.EndTrace()
+
 	tool := ctx.Status.StartTool()
 	if write_soong_vars {
 		// only print this when write_soong_vars is true so that it's not printed when using
@@ -190,6 +208,9 @@ func runMakeProductConfig(ctx Context, config Config) {
 		"TARGET_BUILD_VARIANT",
 		"TARGET_BUILD_APPS",
 		"TARGET_BUILD_UNBUNDLED",
+
+		// Additional release config maps
+		"PRODUCT_RELEASE_CONFIG_MAPS",
 
 		// compiler wrappers set up by make
 		"CC_WRAPPER",
