@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bc907bd_4b2488a7",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-11T19:42:51Z",
+      "side": 1,
+      "message": "Given that now an error is emitted when the `java_api_contribution` module does not follow `\".api.contribution\"`-suffix naming convention, I have set this to default to false to prevent modifications in all test cases where the `java_api_contribution` modules do not follow this naming convention. Since the modules that require validation are generated from `java_sdk_library` with `enable_validation` set to `true`, I do not believe that this would cause any issues.",
+      "parentUuid": "b493732f_56fe218f",
+      "range": {
+        "startLine": 1835,
+        "startChar": 57,
+        "endLine": 1835,
+        "endChar": 62
+      },
+      "revId": "efd76e525bc194f2a97ce9240b4bca9175dc4d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "977f98f6_9a379b08",
         "filename": "java/java.go",
         "patchSetId": 11
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98804c05_ea27b047",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-11T19:42:51Z",
+      "side": 1,
+      "message": "I understood your argument in that we should run validations only on the widest api scope (e.g. system api stub module should run validations only on the system api, not system + public). Please correct me if I\u0027m wrong.\n\nI agree with you in that this is the current behavior in `droidstubs`. However, I believe that we cannot keep this behavior in from-text stub build, given that the source of truth in generating the stubs shifts from source Java files to the API .txt files, and that all API .txt files that are not `current.txt` files (e.g. `system-current.txt`, `test-current.txt`, ...) only contain the delta between the api surfaces and do not represent the api surface in entirety. \n\nAssume a developer makes a public API change in the source file: since both public and system `droidstubs` modules take the identical source Java files as inputs (although the annotation flags will differ), the API change will be correctly reflected in both the public and system from-source stub files, thus a system droidstubs do not need to run validations on the public api (i.e. check if the public API .txt file is up to date).\n\nThere is no such guarantee in from-text stubs. If a public api validation is not run on building system from-text stubs, the stubs will be generated on top of a stale public API .txt file. Therefore the output will differ between the from-source stubs and from-text stubs (since the public API .txt file passed as input to generating a system stub will not contain the public API change). Therefore I believe that a validation should run on all api contributions passed as inputs to verify that the new source of truth matches the \"actual source of truth\".",
+      "parentUuid": "977f98f6_9a379b08",
+      "range": {
+        "startLine": 1836,
+        "startChar": 1,
+        "endLine": 1836,
+        "endChar": 55
+      },
+      "revId": "efd76e525bc194f2a97ce9240b4bca9175dc4d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ddabe78_a5f1d4c7",
         "filename": "java/java_test.go",
         "patchSetId": 11
@@ -60,6 +108,30 @@
       "writtenOn": "2023-10-11T14:29:56Z",
       "side": 1,
       "message": "can we check that the validation action is present/not in addition/rather than the dependency?",
+      "range": {
+        "startLine": 2516,
+        "startChar": 0,
+        "endLine": 2527,
+        "endChar": 2
+      },
+      "revId": "efd76e525bc194f2a97ce9240b4bca9175dc4d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b46daba4_28b4b0d1",
+        "filename": "java/java_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 2527,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-11T19:42:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ddabe78_a5f1d4c7",
       "range": {
         "startLine": 2516,
         "startChar": 0,
