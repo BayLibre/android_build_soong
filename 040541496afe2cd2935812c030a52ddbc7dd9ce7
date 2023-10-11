@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "532d7305_958c627b",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-10-11T21:54:31Z",
+      "side": 1,
+      "message": "Please provide a detail string.",
+      "revId": "040541496afe2cd2935812c030a52ddbc7dd9ce7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
