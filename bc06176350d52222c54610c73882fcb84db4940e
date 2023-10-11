@@ -46,6 +46,30 @@
       },
       "revId": "bc06176350d52222c54610c73882fcb84db4940e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c2e405_6794ca2d",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-10-11T13:50:20Z",
+      "side": 1,
+      "message": "Yeah sg.",
+      "parentUuid": "aceab6e6_b06caf3f",
+      "range": {
+        "startLine": 1356,
+        "startChar": 56,
+        "endLine": 1356,
+        "endChar": 77
+      },
+      "revId": "bc06176350d52222c54610c73882fcb84db4940e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
