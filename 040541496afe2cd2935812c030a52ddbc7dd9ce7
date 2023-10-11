@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80284f2d_e5463076",
+        "filename": "bp2build/prebuilt_etc_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-11T22:13:12Z",
+      "side": 1,
+      "message": "Can you add a test case where there are multiple `.dat` files in a filesystem?",
+      "revId": "040541496afe2cd2935812c030a52ddbc7dd9ce7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7a15798_ce2e9f76",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-11T22:13:12Z",
+      "side": 1,
+      "message": "I am not sure about whether if we should take this into consideration, but how can we deal with this for Windows where the file separator is `\\`, not `/`?",
+      "revId": "040541496afe2cd2935812c030a52ddbc7dd9ce7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "532d7305_958c627b",
         "filename": "etc/prebuilt_etc.go",
         "patchSetId": 2
