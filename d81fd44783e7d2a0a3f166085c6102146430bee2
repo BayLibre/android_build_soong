@@ -16,6 +16,24 @@
       "message": "Would it make sense to mark the module unconvertible in this case?",
       "revId": "d81fd44783e7d2a0a3f166085c6102146430bee2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dde3110_ad596be5",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-11T19:41:06Z",
+      "side": 1,
+      "message": "Thanks for pointing it out. Done",
+      "parentUuid": "82654b95_b2522a9e",
+      "revId": "d81fd44783e7d2a0a3f166085c6102146430bee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
