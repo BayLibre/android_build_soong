@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b8741a_a6722991",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-11T14:31:50Z",
+      "side": 1,
+      "message": "Can you add test coverage?",
+      "revId": "33a85e26a28d4177e78cf5972183b9c35aef0d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f16460_18d87c06",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-11T14:31:50Z",
+      "side": 1,
+      "message": "is this not also needed for the TestHiddenAPIScope?",
+      "range": {
+        "startLine": 124,
+        "startChar": 46,
+        "endLine": 125,
+        "endChar": 3
+      },
+      "revId": "33a85e26a28d4177e78cf5972183b9c35aef0d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
