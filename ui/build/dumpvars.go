@@ -63,6 +63,9 @@ func DumpMakeVars(ctx Context, config Config, goals, vars []string) (map[string]
 
 		SetupLitePath(ctx, config, tmpDir)
 
+		// 1. Make sure that we know PRODUCT_RELEASE_CONFIG_MAPS.
+		prepareProductReleaseConfigMaps(ctx, config)
+		// 2. Now we can run kati and get the variables that we need.
 		ret, err = dumpMakeVars(ctx, config, goals, makeVars, false, tmpDir)
 		if err != nil {
 			return ret, err
@@ -78,6 +81,34 @@ func DumpMakeVars(ctx Context, config Config, goals, vars []string) (map[string]
 	}
 
 	return ret, nil
+}
+
+// Prepare for getting make variables.  For them to be accurate, we need to have
+// obtained PRODUCT_RELEASE_CONFIG_MAPS.
+// TODO: when converting product config to a declarative language, make sure
+// that PRODUCT_RELEASE_CONFIG_MAPS is properly handled as a separate step in
+// that process.
+func prepareProductReleaseConfigMaps(ctx Context, config Config) {
+	ctx.BeginTrace(metrics.RunKati, "prepareProductReleaseConfigMaps")
+	defer ctx.EndTrace()
+
+	if config.SkipConfig() {
+		// This duplicates the logic from Build to skip product config
+		// if the user has explicitly said to.
+		return
+	}
+
+	releaseConfigVars := []string{
+		"PRODUCT_RELEASE_CONFIG_MAPS",
+	}
+
+	// Get the PRODUCT_RELEASE_CONFIG_MAPS for this product, to avoid polluting the environment
+	// when we run product config to get the rest of the make vars.
+	releaseMapVars, err := dumpMakeVars(ctx, config, nil, releaseConfigVars, false, "")
+	if err != nil {
+		ctx.Fatalln("Error getting PRODUCT_RELEASE_CONFIG_MAPS:", err)
+	}
+	config.productReleaseConfigMaps = releaseMapVars["PRODUCT_RELEASE_CONFIG_MAPS"]
 }
 
 func dumpMakeVars(ctx Context, config Config, goals, vars []string, write_soong_vars bool, tmpDir string) (map[string]string, error) {
@@ -191,6 +222,9 @@ func runMakeProductConfig(ctx Context, config Config) {
 		"TARGET_BUILD_APPS",
 		"TARGET_BUILD_UNBUNDLED",
 
+		// Additional release config maps
+		"PRODUCT_RELEASE_CONFIG_MAPS",
+
 		// compiler wrappers set up by make
 		"CC_WRAPPER",
 		"CXX_WRAPPER",
@@ -269,6 +303,7 @@ func runMakeProductConfig(ctx Context, config Config) {
 		"BUILD_BROKEN_USES_BUILD_STATIC_LIBRARY",
 	}, exportEnvVars...), BannerVars...)
 
+	prepareProductReleaseConfigMaps(ctx, config)
 	makeVars, err := dumpMakeVars(ctx, config, config.Arguments(), allVars, true, "")
 	if err != nil {
 		ctx.Fatalln("Error dumping make vars:", err)
