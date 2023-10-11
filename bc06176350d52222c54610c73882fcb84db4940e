@@ -22,6 +22,30 @@
       },
       "revId": "bc06176350d52222c54610c73882fcb84db4940e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aceab6e6_b06caf3f",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2023-10-11T13:49:49Z",
+      "side": 1,
+      "message": "Can I do that in a separate CL? There\u0027s multiples here and don\u0027t want to invalidate presubmit if that is the only comment.",
+      "parentUuid": "9b77dc4d_a4fa6e36",
+      "range": {
+        "startLine": 1356,
+        "startChar": 56,
+        "endLine": 1356,
+        "endChar": 77
+      },
+      "revId": "bc06176350d52222c54610c73882fcb84db4940e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
