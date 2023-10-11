@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b493732f_56fe218f",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-11T14:29:56Z",
+      "side": 1,
+      "message": "Shouldn\u0027t validation default to enabled?",
+      "range": {
+        "startLine": 1835,
+        "startChar": 57,
+        "endLine": 1835,
+        "endChar": 62
+      },
+      "revId": "efd76e525bc194f2a97ce9240b4bca9175dc4d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "977f98f6_9a379b08",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-11T14:29:56Z",
+      "side": 1,
+      "message": "It\u0027s still not clear to me that this needs to be added for all `apiContributions`\n\nIt seems like these should only be added for the `droidstubs` module that is used in the `static_libs`/`exclude_static_libs` cases, otherwise, we\u0027re likely overtriggering the validation.\n\ne.g. prior to building from .txt files, if the sources change such that public API changes, today that would be id-ed by building the public API droidstubs, not public + system.\n\nhistorically, you\u0027d fail the checkapi validation when building the public stubs, not the system -- in fact the system module won\u0027t run the validation for public stubs unless it depends on it.\n\nI won\u0027t block on this, but its worth thinking through what\u0027s actually needed here.",
+      "range": {
+        "startLine": 1836,
+        "startChar": 1,
+        "endLine": 1836,
+        "endChar": 55
+      },
+      "revId": "efd76e525bc194f2a97ce9240b4bca9175dc4d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ddabe78_a5f1d4c7",
+        "filename": "java/java_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 2527,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-11T14:29:56Z",
+      "side": 1,
+      "message": "can we check that the validation action is present/not in addition/rather than the dependency?",
+      "range": {
+        "startLine": 2516,
+        "startChar": 0,
+        "endLine": 2527,
+        "endChar": 2
+      },
+      "revId": "efd76e525bc194f2a97ce9240b4bca9175dc4d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

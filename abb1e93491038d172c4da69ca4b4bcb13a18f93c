@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b60b839_e9cd2283",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-11T14:29:56Z",
+      "side": 1,
+      "message": "In general, we should err on the side of not exporting anything that is not needed as it becomes part of the Soong API.",
+      "parentUuid": "58b7e9d8_67739021",
+      "range": {
+        "startLine": 174,
+        "startChar": 5,
+        "endLine": 174,
+        "endChar": 32
+      },
+      "revId": "abb1e93491038d172c4da69ca4b4bcb13a18f93c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6772689_433caa3a",
         "filename": "java/java.go",
         "patchSetId": 9
