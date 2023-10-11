@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a283293_46404c75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-11T16:23:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3b8741a_a6722991",
+      "revId": "33a85e26a28d4177e78cf5972183b9c35aef0d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73f16460_18d87c06",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-10-11T14:31:50Z",
       "side": 1,
       "message": "is this not also needed for the TestHiddenAPIScope?",
+      "range": {
+        "startLine": 124,
+        "startChar": 46,
+        "endLine": 125,
+        "endChar": 3
+      },
+      "revId": "33a85e26a28d4177e78cf5972183b9c35aef0d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef9f8ced_b38ce77d",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-11T16:23:52Z",
+      "side": 1,
+      "message": "The root cause of the issue is that the [`hiddenAPIScopes`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/hiddenapi_modular.go;drc\u003dbd2624442b587b1b1e0ea36aa6c0623710bb00fe;l\u003d144) lists the API surfaces from the narrowest to the widest, and module lib is not a superset of test. Since `hiddenAPIScopes` does not define test to be a superset of module lib, I do not believe that this requires to be added to `TestHiddenAPIScope`.",
+      "parentUuid": "73f16460_18d87c06",
       "range": {
         "startLine": 124,
         "startChar": 46,
