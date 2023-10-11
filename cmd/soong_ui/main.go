@@ -183,6 +183,9 @@ func main() {
 	}}
 
 	config := c.config(buildCtx, args...)
+	if build.SetProductReleaseConfigMaps(buildCtx, config) {
+		config = c.config(buildCtx, args...)
+	}
 	config.SetLogsPrefix(c.logsPrefix)
 	logsDir := config.LogsDir()
 	buildStarted = config.BuildStartedTimeOrDefault(buildStarted)
