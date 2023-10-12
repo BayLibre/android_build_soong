@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7cae32b_12c7aa96",
+        "filename": "bp2build/prebuilt_etc_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-12T17:09:24Z",
+      "side": 1,
+      "message": "The module types in prebuilt_etc.go only allow single file as `src` (https://cs.android.com/android/platform/superproject/main/+/main:build/soong/etc/prebuilt_etc.go;l\u003d76-77?q\u003dprebuilt_etc.go\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain)",
+      "parentUuid": "80284f2d_e5463076",
+      "revId": "040541496afe2cd2935812c030a52ddbc7dd9ce7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7a15798_ce2e9f76",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb31b8b0_fb43316b",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-12T17:09:24Z",
+      "side": 1,
+      "message": "I feel it negative at least for prebuilt_* module types in this file, because none of them consider this when they are initialized. e.g. https://cs.android.com/android/platform/superproject/main/+/main:build/soong/etc/prebuilt_etc.go;l\u003d530",
+      "parentUuid": "f7a15798_ce2e9f76",
+      "revId": "040541496afe2cd2935812c030a52ddbc7dd9ce7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "532d7305_958c627b",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-10-11T21:54:31Z",
       "side": 1,
       "message": "Please provide a detail string.",
+      "revId": "040541496afe2cd2935812c030a52ddbc7dd9ce7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee05095_a30a848d",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-12T17:09:24Z",
+      "side": 1,
+      "message": "Added in a follow up CL: aosp/2786921",
+      "parentUuid": "532d7305_958c627b",
       "revId": "040541496afe2cd2935812c030a52ddbc7dd9ce7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
