@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc4be973_c87b7188",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-12T19:45:59Z",
+      "side": 1,
+      "message": "aside from the defaulting of enable_validation, lgtm",
+      "revId": "d746990661f4081e96a1b024b2198fcbaa8f55d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

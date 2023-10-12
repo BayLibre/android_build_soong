@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a9db078_6ac23612",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-12T19:45:59Z",
+      "side": 1,
+      "message": "Given that you were setting `enable_validation: false` on only a subset of the handcrafted `java_api_library` modules, I\u0027d expect there are some cases that now need to be set to `enable_validation: true` e.g. the non-updatable `java_api_library` modules.\n\nI think we\u0027re losing coverage of needed validations by changing this to default to false. If this is about test cases, can we just set `DISABLE_STUB_VALIDATION` to true in the relevant test cases and continue to have `Enable_validation` default to `true`?",
+      "parentUuid": "5bc907bd_4b2488a7",
+      "range": {
+        "startLine": 1835,
+        "startChar": 57,
+        "endLine": 1835,
+        "endChar": 62
+      },
+      "revId": "efd76e525bc194f2a97ce9240b4bca9175dc4d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "977f98f6_9a379b08",
         "filename": "java/java.go",
         "patchSetId": 11
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I understood your argument in that we should run validations only on the widest api scope (e.g. system api stub module should run validations only on the system api, not system + public). Please correct me if I\u0027m wrong.\n\nI agree with you in that this is the current behavior in `droidstubs`. However, I believe that we cannot keep this behavior in from-text stub build, given that the source of truth in generating the stubs shifts from source Java files to the API .txt files, and that all API .txt files that are not `current.txt` files (e.g. `system-current.txt`, `test-current.txt`, ...) only contain the delta between the api surfaces and do not represent the api surface in entirety. \n\nAssume a developer makes a public API change in the source file: since both public and system `droidstubs` modules take the identical source Java files as inputs (although the annotation flags will differ), the API change will be correctly reflected in both the public and system from-source stub files, thus a system droidstubs do not need to run validations on the public api (i.e. check if the public API .txt file is up to date).\n\nThere is no such guarantee in from-text stubs. If a public api validation is not run on building system from-text stubs, the stubs will be generated on top of a stale public API .txt file. Therefore the output will differ between the from-source stubs and from-text stubs (since the public API .txt file passed as input to generating a system stub will not contain the public API change). Therefore I believe that a validation should run on all api contributions passed as inputs to verify that the new source of truth matches the \"actual source of truth\".",
       "parentUuid": "977f98f6_9a379b08",
+      "range": {
+        "startLine": 1836,
+        "startChar": 1,
+        "endLine": 1836,
+        "endChar": 55
+      },
+      "revId": "efd76e525bc194f2a97ce9240b4bca9175dc4d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb29603_cbafd307",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-12T19:45:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "98804c05_ea27b047",
       "range": {
         "startLine": 1836,
         "startChar": 1,
