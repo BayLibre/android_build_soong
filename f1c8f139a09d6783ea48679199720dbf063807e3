@@ -16,6 +16,24 @@
       "message": "This is fine, but given that we\u0027ve uncapped codegen units when incremental is turned on, do we have a use case for this?\n\nDo we have a case where we want incremental *off* and codegen units set to non-one?\n\nDo we have a case where we want to set incremental units to something other than 255?",
       "revId": "f1c8f139a09d6783ea48679199720dbf063807e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df1a431_f08c4203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2023-10-12T19:41:27Z",
+      "side": 1,
+      "message": "No, there is no immediate use case.  This is very much a \"completeness\" CL.  I\u0027m fine with either landing this or not; I just wanted to put it up as a point of discussion.",
+      "parentUuid": "956f6b15_2ac1d4e8",
+      "revId": "f1c8f139a09d6783ea48679199720dbf063807e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
