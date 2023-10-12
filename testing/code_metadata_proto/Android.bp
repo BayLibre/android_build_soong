@@ -4,7 +4,7 @@
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//	http://www.apache.org/licenses/LICENSE-2.0
+//     http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,23 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package testing
-
-import (
-	"android/soong/android"
-)
-
-var (
-	pctx = android.NewPackageContext("android/soong/testing")
-)
-
-func init() {
-	RegisterBuildComponents(android.InitRegistrationContext)
-	pctx.HostBinToolVariable("metadata", "metadata")
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-func RegisterBuildComponents(ctx android.RegistrationContext) {
-	ctx.RegisterModuleType("code_metadata", CodeMetadataFactory)
-	ctx.RegisterModuleType("test_spec", TestSpecFactory)
-	ctx.RegisterParallelSingletonType("all_test_specs", AllTestSpecsFactory)
+bootstrap_go_package {
+    name: "soong-testing-code_metadata_proto",
+    pkgPath: "android/soong/testing/code_metadata_proto",
+    deps: [
+            "golang-protobuf-reflect-protoreflect",
+            "golang-protobuf-runtime-protoimpl",
+        ],
+    srcs: [
+        "code_metadata.pb.go",
+    ],
 }

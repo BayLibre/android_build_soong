@@ -24,6 +24,7 @@ import (
 	"strings"
 	"sync"
 
+	"android/soong/testing"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
 
 	"github.com/google/blueprint"
@@ -1477,6 +1478,7 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		}
 	}
 	ctx.SetProvider(android.AdditionalSdkInfoProvider, android.AdditionalSdkInfo{additionalSdkInfo})
+	ctx.SetProvider(testing.SrcsFileProviderKey, testing.SrcsFileProviderData{SrcPaths: module.uniqueSrcFiles})
 }
 
 func (module *SdkLibrary) AndroidMkEntries() []android.AndroidMkEntries {
