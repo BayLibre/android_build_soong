@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59d24ed5_356e6e25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-12T00:45:52Z",
+      "side": 1,
+      "message": "This change basically modifies two things, which are essential to ensure that from-text stub build is compatible with ART branches:\n- Properly handle `static_libs` and `exclude_static_libs` properties in ART branches so that some `java_library` modules that get built in ART branches (e.g. [`core-lambda-stubs`](https://cs.android.com/android/platform/superproject/main/+/main:libcore/JavaLibrary.bp;drc\u003d59ea0c3b486545395970cc1cc5ab92d524266a3c;l\u003d465)) do not link against from-text stub modules.\n- stub `java_library` modules generated per api scope in `java_sdk_library` to link against the from-source stub `java_library` modules instead of from-text stub `java_api_library`.",
+      "parentUuid": "2e0fc156_b04784c2",
+      "revId": "15da3cb17cf5aca85243bd9b89fe49fb256c7b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb284468_f4700f5b",
         "filename": "android/config.go",
         "patchSetId": 4
@@ -67,6 +85,30 @@
       "writtenOn": "2023-09-28T14:27:09Z",
       "side": 1,
       "message": "can we just add the check for frameworks base above? having both functions seems errorprone and introduces potential for different decisions to build from text/not across the code base.",
+      "range": {
+        "startLine": 2057,
+        "startChar": 17,
+        "endLine": 2057,
+        "endChar": 48
+      },
+      "revId": "15da3cb17cf5aca85243bd9b89fe49fb256c7b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22f6fae5_22a258ad",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2057,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-12T00:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb284468_f4700f5b",
       "range": {
         "startLine": 2057,
         "startChar": 17,
@@ -100,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "135853b6_5e7cbf2f",
+        "filename": "java/base.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-12T00:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1faf2f8_95085a8d",
+      "range": {
+        "startLine": 772,
+        "startChar": 95,
+        "endLine": 772,
+        "endChar": 114
+      },
+      "revId": "15da3cb17cf5aca85243bd9b89fe49fb256c7b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "524f7a69_946ded70",
@@ -113,6 +179,30 @@
       "writtenOn": "2023-09-28T14:27:09Z",
       "side": 1,
       "message": "can you add testing coverage of setting build stub from text + frameworks/base absent?",
+      "range": {
+        "startLine": 2314,
+        "startChar": 5,
+        "endLine": 2314,
+        "endChar": 29
+      },
+      "revId": "15da3cb17cf5aca85243bd9b89fe49fb256c7b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be0866ad_0a3b481a",
+        "filename": "java/java_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2314,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-12T00:45:52Z",
+      "side": 1,
+      "message": "On second thought, I believe that `exclude_static_libs` activation should not depend on whether we are building from text or not, but rather be determined based on whether `frameworks/base` directory exists or not. Therefore, I\u0027ve added a test case demonstrating how `static_libs` and `exclude_static_libs` are handled when `framework/base` is absent.",
+      "parentUuid": "524f7a69_946ded70",
       "range": {
         "startLine": 2314,
         "startChar": 5,
