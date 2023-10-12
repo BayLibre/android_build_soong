@@ -16,6 +16,24 @@
       "message": "These files are embedded in `out/soong/build*.ninja`, so the increase could add up.  What is the total size change in the ninja file?",
       "revId": "c4648f6fda4c8d099e0fcb236ca137691fed16a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2af6745_6a3b372d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-10-12T21:50:15Z",
+      "side": 1,
+      "message": "In `aosp/main` using `lunch aosp_cf_x86_64_phone` then `m nothing` without this change produces a `out/soong/build.aosp_cf_x86_64_phone.ninja` file that is \n4888171066 bytes long.\n\nWith this change it is 4908089124 bytes long, or just under 20MB or .4% bigger.\n\nWith a slightly modified change that just uses a single space for the indent (the minimum as an empty string would default to \"  \") then it is 4902378187 bytes long, or ~14MB or .3% bigger.",
+      "parentUuid": "4f0b0ac3_3777621c",
+      "revId": "c4648f6fda4c8d099e0fcb236ca137691fed16a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
