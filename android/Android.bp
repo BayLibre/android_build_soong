@@ -45,6 +45,7 @@ bootstrap_go_package {
         "config.go",
         "test_config.go",
         "config_bp2build.go",
+        "code_metadata.go",
         "configured_jars.go",
         "csuite_config.go",
         "deapexer.go",
