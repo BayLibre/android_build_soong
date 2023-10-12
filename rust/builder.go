@@ -281,6 +281,10 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 		rustcFlags = append(rustcFlags, "-Cincremental="+incrementalPath)
 	}
 
+	// Get number of codegen-units. Default = 1.
+	codegenNum := ctx.Config().GetenvWithDefault("SOONG_RUSTC_CODEGEN_UNITS", "1")
+	rustcFlags = append(rustcFlags, "-Ccodegen-units="+codegenNum)
+
 	// Disallow experimental features
 	modulePath := android.PathForModuleSrc(ctx).String()
 	if !(android.IsThirdPartyPath(modulePath) || strings.HasPrefix(modulePath, "prebuilts")) {
