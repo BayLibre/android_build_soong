@@ -27,7 +27,7 @@ func TestTestSpec(t *testing.T) {
 	java_test {
 		name: "java-test-module-name-two",
 	}`
-	result := runTest(t, android.FixtureExpectsNoErrors, bp)
+	result := runTestSpecTest(t, android.FixtureExpectsNoErrors, bp)
 
 	module := result.ModuleForTests(
 		"module-name", "",
@@ -121,11 +121,11 @@ func TestTestSpec(t *testing.T) {
 	}
 }
 
-func runTest(
+func runTestSpecTest(
 	t *testing.T, errorHandler android.FixtureErrorHandler, bp string,
 ) *android.TestResult {
 	return android.GroupFixturePreparers(
-		soongTesting.PrepareForTestWithTestSpecBuildComponents,
+		soongTesting.PrepareForTestWithTestingBuildComponents,
 		PrepareForIntegrationTestWithJava,
 	).
 		ExtendWithErrorHandler(errorHandler).
