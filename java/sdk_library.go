@@ -1462,7 +1462,9 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 			scopeInfo["latest_removed_api"] = p.Path().String()
 		}
 	}
+
 	ctx.SetProvider(android.AdditionalSdkInfoProvider, android.AdditionalSdkInfo{additionalSdkInfo})
+	ctx.SetProvider(android.SrcsFileProviderKey, android.SrcsFileProviderData{SrcPaths: module.uniqueSrcFiles})
 }
 
 func (module *SdkLibrary) AndroidMkEntries() []android.AndroidMkEntries {
@@ -1879,7 +1881,7 @@ func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, 
 }
 
 func (module *SdkLibrary) createTopLevelStubsLibrary(
-	mctx android.DefaultableHookContext, apiScope *apiScope, contributesToApiSurface bool) {
+		mctx android.DefaultableHookContext, apiScope *apiScope, contributesToApiSurface bool) {
 	props := struct {
 		Name           *string
 		Visibility     []string
@@ -2109,8 +2111,8 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 		}
 
 		mctx.ModuleErrorf("One or more current api files are missing. "+
-			"You can update them by:\n"+
-			"%s %q %s && m update-api",
+				"You can update them by:\n"+
+				"%s %q %s && m update-api",
 			script, filepath.Join(mctx.ModuleDir(), apiDir),
 			strings.Join(generatedScopes.Strings(func(s *apiScope) string { return s.apiFilePrefix }), " "))
 		return
@@ -2652,7 +2654,7 @@ func (module *SdkLibraryImport) DepIsInSameApex(mctx android.BaseModuleContext, 
 
 // Implements android.ApexModule
 func (module *SdkLibraryImport) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
-	sdkVersion android.ApiLevel) error {
+		sdkVersion android.ApiLevel) error {
 	// we don't check prebuilt modules for sdk_version
 	return nil
 }
@@ -2983,7 +2985,7 @@ var _ android.ApexModule = (*sdkLibraryXml)(nil)
 
 // Implements android.ApexModule
 func (module *sdkLibraryXml) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
-	sdkVersion android.ApiLevel) error {
+		sdkVersion android.ApiLevel) error {
 	// sdkLibraryXml doesn't need to be checked separately because java_sdk_library is checked
 	return nil
 }
