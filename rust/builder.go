@@ -279,7 +279,13 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 		incrementalPath := android.PathForOutput(ctx, "rustc").String()
 
 		rustcFlags = append(rustcFlags, "-C incremental="+incrementalPath)
-	} else {
+	}
+
+	if ctx.Config().IsEnvTrue("SOOGN_RUSTC_CODEGEN_UNITS") {
+		codegenNum := ctx.Config().Getenv("SOONG_RUSTC_CODEGEN_UNITS")
+		rustcFlags = append(rustcFlags, "-C codegen-units="+codegenNum)
+
+	} else if !ctx.Config().IsEnvTrue(("SOONG_RUSTC_INCREMENTAL")) {
 		rustcFlags = append(rustcFlags, "-C codegen-units=1")
 	}
 
