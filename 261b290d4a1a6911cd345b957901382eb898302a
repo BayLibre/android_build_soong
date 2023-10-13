@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c6bb28_6c0c52a5",
+        "filename": "rust/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-13T22:26:23Z",
+      "side": 1,
+      "message": "should this really be an environment setting?",
+      "range": {
+        "startLine": 284,
+        "startChar": 39,
+        "endLine": 284,
+        "endChar": 64
+      },
+      "revId": "261b290d4a1a6911cd345b957901382eb898302a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
