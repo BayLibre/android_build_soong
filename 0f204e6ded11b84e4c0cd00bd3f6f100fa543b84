@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39bb1bbf_e0ab11b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-13T20:27:48Z",
+      "side": 1,
+      "message": "+2 to not block",
+      "revId": "0f204e6ded11b84e4c0cd00bd3f6f100fa543b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c6bc1d4_55091d99",
+        "filename": "aconfig/java_aconfig_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-13T20:27:48Z",
+      "side": 1,
+      "message": "Libs should be treated as neverlink deps\n\nit\u0027s currently handled like https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/java.go;l\u003d3067-3079;drc\u003d93b7e9545ee6c1df68ac1195cc54dd22f0b64214\n\nwould probably be easier to handle like:\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/bp2build.go;l\u003d1874-1884;drc\u003d9c2e3ee54a6e467e86d49172058dca927a9a5681\n\ncc @jobredeaux@google.com",
+      "range": {
+        "startLine": 128,
+        "startChar": 86,
+        "endLine": 128,
+        "endChar": 90
+      },
+      "revId": "0f204e6ded11b84e4c0cd00bd3f6f100fa543b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
