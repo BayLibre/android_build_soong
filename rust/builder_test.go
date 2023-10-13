@@ -339,8 +339,8 @@ func TestSandboxCompilation(t *testing.T) {
 			}),
 			expectedFlags: []string{
 				"--emit link",
-				"-o __SBOX_SANDBOX_DIR__/out/libfizz_buzz.dylib.so",
-				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/libfizz_buzz.dylib.so.d.raw",
+				"-o __SBOX_SANDBOX_DIR__/out/unstripped/libfizz_buzz.dylib.so",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/unstripped/libfizz_buzz.dylib.so.d.raw",
 				"foo.rs", // this is the entry point
 			},
 		},
@@ -415,8 +415,8 @@ func TestSandboxCompilation(t *testing.T) {
 			}),
 			expectedFlags: []string{
 				"--emit link",
-				"-o __SBOX_SANDBOX_DIR__/out/fizz_buzz",
-				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/fizz_buzz.d.raw",
+				"-o __SBOX_SANDBOX_DIR__/out/unstripped/fizz_buzz",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/unstripped/fizz_buzz.d.raw",
 				"foo.rs", // this is the entry point
 			},
 		},
@@ -454,8 +454,8 @@ func TestSandboxCompilation(t *testing.T) {
 			}),
 			expectedFlags: []string{
 				"--emit link",
-				"-o __SBOX_SANDBOX_DIR__/out/librust_ffi.so",
-				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/librust_ffi.so.d.raw",
+				"-o __SBOX_SANDBOX_DIR__/out/unstripped/librust_ffi.so",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/unstripped/librust_ffi.so.d.raw",
 				"foo.rs", // this is the entry point
 			},
 		},
@@ -561,4 +561,7 @@ func TestSandboxCompilation(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestRustPrebuiltsVersionOverride(t *testing.T) {
 }
