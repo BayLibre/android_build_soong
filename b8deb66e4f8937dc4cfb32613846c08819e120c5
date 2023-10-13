@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4257b27c_1576bf7c",
+        "filename": "android/bazel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-13T13:58:24Z",
+      "side": 1,
+      "message": "What is the size of our metrics file with these long strings being emitted for each module that it applies to?\n\nI would prefer we introduce additional enums to UnconvertedReasonType and decipher them there -- these detail strings should be short.",
+      "revId": "b8deb66e4f8937dc4cfb32613846c08819e120c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
