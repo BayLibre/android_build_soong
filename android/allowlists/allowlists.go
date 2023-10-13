@@ -1049,18 +1049,8 @@ var (
 	// the source versions within Soong's module graph.
 	Bp2buildModuleDoNotConvertList = []string{
 		// rust modules that have cc deps
-		"liblogger",
-		"libbssl_ffi",
-		"libbssl_ffi_nostd",
-		"pull_rust",
-		"libstatslog_rust",
-		"libstatslog_rust_header",
-		"libflatbuffers",
-		"liblog_event_list",
 		"libminijail_rust",
 		"libminijail_sys",
-		"libfsverity_rs",
-		"libtombstoned_client_rust",
 
 		"libhardware", //Depends on unconverted libapexsupport
 
@@ -1089,11 +1079,7 @@ var (
 		"libcutils_test_static",
 		"KernelLibcutilsTest",
 
-		"linker",    // TODO(b/228316882): cc_binary uses link_crt
-		"versioner", // TODO(b/228313961):  depends on prebuilt shared library libclang-cpp_host as a shared library, which does not supply expected providers for a shared library
-
-		// requires host tools for apexer
-		"apexer_test", "apexer_test_host_tools", "host_apex_verifier", "host-apex-verifier",
+		"linker", // TODO(b/228316882): cc_binary uses link_crt
 
 		// java bugs
 		"libbase_ndk",           // TODO(b/186826477): fails to link libctscamera2_jni for device (required for CtsCameraTestCases)
@@ -1121,59 +1107,6 @@ var (
 		"analyze_bcpf_test",         // depends on bpmodify a blueprint_go_binary.
 		"host_bionic_linker_asm",    // depends on extract_linker, a go binary.
 		"host_bionic_linker_script", // depends on extract_linker, a go binary.
-
-		// rust support
-		"libtombstoned_client_rust_bridge_code", "libtombstoned_client_wrapper", // rust conversions are not supported
-
-		// unconverted deps
-		"CarHTMLViewer",                          // depends on unconverted modules android.car-stubs, car-ui-lib
-		"adb",                                    // depends on unconverted modules: AdbWinApi, libandroidfw, libopenscreen-discovery, libopenscreen-platform-impl, libusb, bin2c_fastdeployagent, AdbWinUsbApi
-		"android_icu4j_srcgen",                   // depends on unconverted modules: currysrc
-		"android_icu4j_srcgen_binary",            // depends on unconverted modules: android_icu4j_srcgen, currysrc
-		"apex_compression_test",                  // depends on unconverted modules: soong_zip, com.android.example.apex
-		"apex_manifest_proto_java",               // b/210751803, depends on libprotobuf-java-full
-		"apexer_with_DCLA_preprocessing_test",    // depends on unconverted modules: apexer_test_host_tools, com.android.example.apex
-		"art-script",                             // depends on unconverted modules: dalvikvm, dex2oat
-		"bin2c_fastdeployagent",                  // depends on unconverted modules: deployagent
-		"com.android.runtime",                    // depends on unconverted modules: bionic-linker-config, linkerconfig
-		"currysrc",                               // depends on unconverted modules: currysrc_org.eclipse, guavalib, jopt-simple-4.9
-		"dex2oat-script",                         // depends on unconverted modules: dex2oat
-		"generated_android_icu4j_resources",      // depends on unconverted modules: android_icu4j_srcgen_binary
-		"generated_android_icu4j_test_resources", // depends on unconverted modules: android_icu4j_srcgen_binary
-		"hidl_system_api_test",
-		"hidl_test_java",
-		"host-libprotobuf-java-nano",                                 // b/220869005, depends on libprotobuf-java-nano
-		"jacoco-stubs",                                               // b/245767077, depends on droidstubs
-		"libapexutil",                                                // depends on unconverted modules: apex-info-list-tinyxml
-		"libart",                                                     // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
-		"libart-runtime",                                             // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
-		"libart-runtime-for-test",                                    // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
-		"libart-runtime-gtest",                                       // depends on unconverted modules: libgtest_isolated, libart-compiler, libdexfile, libprofile, libartbase, libartbase-art-gtest
-		"libart_headers",                                             // depends on unconverted modules: art_libartbase_headers
-		"libartbase-art-gtest",                                       // depends on unconverted modules: libgtest_isolated, libart, libart-compiler, libdexfile, libprofile
-		"libartbased-art-gtest",                                      // depends on unconverted modules: libgtest_isolated, libartd, libartd-compiler, libdexfiled, libprofiled
-		"libartd",                                                    // depends on unconverted modules: art_operator_srcs, libcpu_features, libodrstatslog, libelffiled, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfiled, libnativebridge, libnativeloader, libsigchain, libartbased, libprofiled, cpp-define-generator-asm-support, apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api
-		"libartd-runtime",                                            // depends on unconverted modules: art_operator_srcs, libcpu_features, libodrstatslog, libelffiled, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfiled, libnativebridge, libnativeloader, libsigchain, libartbased, libprofiled, cpp-define-generator-asm-support, apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api
-		"libartd-runtime-gtest",                                      // depends on unconverted modules: libgtest_isolated, libartd-compiler, libdexfiled, libprofiled, libartbased, libartbased-art-gtest
-		"libdebuggerd",                                               // depends on unconverted module: libdexfile
-		"libdebuggerd_handler",                                       // depends on unconverted module libdebuggerd_handler_core
-		"libdebuggerd_handler_core", "libdebuggerd_handler_fallback", // depends on unconverted module libdebuggerd
-		"libdexfiled",                                             // depends on unconverted modules: dexfile_operator_srcs, libartbased, libartpalette
-		"libgmock_main_ndk",                                       // depends on unconverted modules: libgtest_ndk_c++
-		"libgmock_ndk",                                            // depends on unconverted modules: libgtest_ndk_c++
-		"libnativehelper_lazy_mts_jni", "libnativehelper_mts_jni", // depends on unconverted modules: libnativetesthelper_jni, libgmock_ndk
-		"libnativetesthelper_jni",   // depends on unconverted modules: libgtest_ndk_c++
-		"libphonenumber_test",       // depends on android.test.mock
-		"libstatslog",               // depends on unconverted modules: libstatspull, statsd-aidl-ndk
-		"libstatslog_art",           // depends on unconverted modules: statslog_art.cpp, statslog_art.h
-		"linker_reloc_bench_main",   // depends on unconverted modules: liblinker_reloc_bench_*
-		"malloc-rss-benchmark",      // depends on unconverted modules: libmeminfo
-		"pbtombstone", "crash_dump", // depends on libdebuggerd, libunwindstack
-		"releasetools_test",             // depends on unconverted modules: com.android.apex.compressed.v1
-		"robolectric-sqlite4java-0.282", // depends on unconverted modules: robolectric-sqlite4java-import, robolectric-sqlite4java-native
-		"static_crasher",                // depends on unconverted modules: libdebuggerd_handler
-		"test_fips",                     // depends on unconverted modules: adb
-		"timezone-host",                 // depends on unconverted modules: art.module.api.annotations
 
 		// aidl files not created
 		"overlayable_policy_aidl_interface",
@@ -1354,7 +1287,6 @@ var (
 		"libBionicStandardTests",
 		"libBionicStandardTests",
 		"libBionicTests",
-		"libart-broken",
 		"libatest_simple_zip",
 		"libcfi-test",
 		"libcfi-test-bad",
@@ -1369,7 +1301,6 @@ var (
 		"libdlext_test_norelro",
 		"libdlext_test_recursive",
 		"libdlext_test_zip",
-		"libdvrcommon_test",
 		"libfortify1-new-tests-clang",
 		"libfortify1-new-tests-clang",
 		"libfortify1-tests-clang",
@@ -1380,175 +1311,6 @@ var (
 		"libfortify2-tests-clang",
 		"libgnu-hash-table-library",
 		"libicutest_static",
-		"liblinker_reloc_bench_000",
-		"liblinker_reloc_bench_001",
-		"liblinker_reloc_bench_002",
-		"liblinker_reloc_bench_003",
-		"liblinker_reloc_bench_004",
-		"liblinker_reloc_bench_005",
-		"liblinker_reloc_bench_006",
-		"liblinker_reloc_bench_007",
-		"liblinker_reloc_bench_008",
-		"liblinker_reloc_bench_009",
-		"liblinker_reloc_bench_010",
-		"liblinker_reloc_bench_011",
-		"liblinker_reloc_bench_012",
-		"liblinker_reloc_bench_013",
-		"liblinker_reloc_bench_014",
-		"liblinker_reloc_bench_015",
-		"liblinker_reloc_bench_016",
-		"liblinker_reloc_bench_017",
-		"liblinker_reloc_bench_018",
-		"liblinker_reloc_bench_019",
-		"liblinker_reloc_bench_020",
-		"liblinker_reloc_bench_021",
-		"liblinker_reloc_bench_022",
-		"liblinker_reloc_bench_023",
-		"liblinker_reloc_bench_024",
-		"liblinker_reloc_bench_025",
-		"liblinker_reloc_bench_026",
-		"liblinker_reloc_bench_027",
-		"liblinker_reloc_bench_028",
-		"liblinker_reloc_bench_029",
-		"liblinker_reloc_bench_030",
-		"liblinker_reloc_bench_031",
-		"liblinker_reloc_bench_032",
-		"liblinker_reloc_bench_033",
-		"liblinker_reloc_bench_034",
-		"liblinker_reloc_bench_035",
-		"liblinker_reloc_bench_036",
-		"liblinker_reloc_bench_037",
-		"liblinker_reloc_bench_038",
-		"liblinker_reloc_bench_039",
-		"liblinker_reloc_bench_040",
-		"liblinker_reloc_bench_041",
-		"liblinker_reloc_bench_042",
-		"liblinker_reloc_bench_043",
-		"liblinker_reloc_bench_044",
-		"liblinker_reloc_bench_045",
-		"liblinker_reloc_bench_046",
-		"liblinker_reloc_bench_047",
-		"liblinker_reloc_bench_048",
-		"liblinker_reloc_bench_049",
-		"liblinker_reloc_bench_050",
-		"liblinker_reloc_bench_051",
-		"liblinker_reloc_bench_052",
-		"liblinker_reloc_bench_053",
-		"liblinker_reloc_bench_054",
-		"liblinker_reloc_bench_055",
-		"liblinker_reloc_bench_056",
-		"liblinker_reloc_bench_057",
-		"liblinker_reloc_bench_058",
-		"liblinker_reloc_bench_059",
-		"liblinker_reloc_bench_060",
-		"liblinker_reloc_bench_061",
-		"liblinker_reloc_bench_062",
-		"liblinker_reloc_bench_063",
-		"liblinker_reloc_bench_064",
-		"liblinker_reloc_bench_065",
-		"liblinker_reloc_bench_066",
-		"liblinker_reloc_bench_067",
-		"liblinker_reloc_bench_068",
-		"liblinker_reloc_bench_069",
-		"liblinker_reloc_bench_070",
-		"liblinker_reloc_bench_071",
-		"liblinker_reloc_bench_072",
-		"liblinker_reloc_bench_073",
-		"liblinker_reloc_bench_074",
-		"liblinker_reloc_bench_075",
-		"liblinker_reloc_bench_076",
-		"liblinker_reloc_bench_077",
-		"liblinker_reloc_bench_078",
-		"liblinker_reloc_bench_079",
-		"liblinker_reloc_bench_080",
-		"liblinker_reloc_bench_081",
-		"liblinker_reloc_bench_082",
-		"liblinker_reloc_bench_083",
-		"liblinker_reloc_bench_084",
-		"liblinker_reloc_bench_085",
-		"liblinker_reloc_bench_086",
-		"liblinker_reloc_bench_087",
-		"liblinker_reloc_bench_088",
-		"liblinker_reloc_bench_089",
-		"liblinker_reloc_bench_090",
-		"liblinker_reloc_bench_091",
-		"liblinker_reloc_bench_092",
-		"liblinker_reloc_bench_093",
-		"liblinker_reloc_bench_094",
-		"liblinker_reloc_bench_095",
-		"liblinker_reloc_bench_096",
-		"liblinker_reloc_bench_097",
-		"liblinker_reloc_bench_098",
-		"liblinker_reloc_bench_099",
-		"liblinker_reloc_bench_100",
-		"liblinker_reloc_bench_101",
-		"liblinker_reloc_bench_102",
-		"liblinker_reloc_bench_103",
-		"liblinker_reloc_bench_104",
-		"liblinker_reloc_bench_105",
-		"liblinker_reloc_bench_106",
-		"liblinker_reloc_bench_107",
-		"liblinker_reloc_bench_108",
-		"liblinker_reloc_bench_109",
-		"liblinker_reloc_bench_110",
-		"liblinker_reloc_bench_111",
-		"liblinker_reloc_bench_112",
-		"liblinker_reloc_bench_113",
-		"liblinker_reloc_bench_114",
-		"liblinker_reloc_bench_115",
-		"liblinker_reloc_bench_116",
-		"liblinker_reloc_bench_117",
-		"liblinker_reloc_bench_118",
-		"liblinker_reloc_bench_119",
-		"liblinker_reloc_bench_120",
-		"liblinker_reloc_bench_121",
-		"liblinker_reloc_bench_122",
-		"liblinker_reloc_bench_123",
-		"liblinker_reloc_bench_124",
-		"liblinker_reloc_bench_125",
-		"liblinker_reloc_bench_126",
-		"liblinker_reloc_bench_127",
-		"liblinker_reloc_bench_128",
-		"liblinker_reloc_bench_129",
-		"liblinker_reloc_bench_130",
-		"liblinker_reloc_bench_131",
-		"liblinker_reloc_bench_132",
-		"liblinker_reloc_bench_133",
-		"liblinker_reloc_bench_134",
-		"liblinker_reloc_bench_135",
-		"liblinker_reloc_bench_136",
-		"liblinker_reloc_bench_137",
-		"liblinker_reloc_bench_138",
-		"liblinker_reloc_bench_139",
-		"liblinker_reloc_bench_140",
-		"liblinker_reloc_bench_141",
-		"liblinker_reloc_bench_142",
-		"liblinker_reloc_bench_143",
-		"liblinker_reloc_bench_144",
-		"liblinker_reloc_bench_145",
-		"liblinker_reloc_bench_146",
-		"liblinker_reloc_bench_147",
-		"liblinker_reloc_bench_148",
-		"liblinker_reloc_bench_149",
-		"liblinker_reloc_bench_150",
-		"liblinker_reloc_bench_151",
-		"liblinker_reloc_bench_152",
-		"liblinker_reloc_bench_153",
-		"liblinker_reloc_bench_154",
-		"liblinker_reloc_bench_155",
-		"liblinker_reloc_bench_156",
-		"liblinker_reloc_bench_157",
-		"liblinker_reloc_bench_158",
-		"liblinker_reloc_bench_159",
-		"liblinker_reloc_bench_160",
-		"liblinker_reloc_bench_161",
-		"liblinker_reloc_bench_162",
-		"liblinker_reloc_bench_163",
-		"liblinker_reloc_bench_164",
-		"liblinker_reloc_bench_165",
-		"liblinker_reloc_bench_166",
-		"liblinker_reloc_bench_167",
-		"liblinker_reloc_bench_168",
 		"libns_hidden_child_app",
 		"libns_hidden_child_global",
 		"libns_hidden_child_internal",
@@ -1673,20 +1435,7 @@ var (
 
 		// releasetools
 		"verity_utils",
-		"check_ota_package_signature",
-		"check_target_files_vintf",
-		"releasetools_check_target_files_vintf",
-		"ota_from_target_files",
-		"releasetools_ota_from_target_files",
-		"add_img_to_target_files",
-		"releasetools_add_img_to_target_files",
 		"fsverity_metadata_generator",
-		"sign_target_files_apks",
-
-		// depends on the support of yacc file
-		"libapplypatch",
-		"libapplypatch_modes",
-		"applypatch",
 
 		// TODO(b/254476335): disable the following due to this bug
 		"libapexinfo",
@@ -1712,7 +1461,6 @@ var (
 		"fake-framework",
 
 		// TODO(b/277616982): These modules depend on private java APIs, but maybe they don't need to.
-		"StreamingProtoTest",
 		"textclassifierprotoslite",
 		"styleprotoslite",
 		"CtsPkgInstallerConstants",
@@ -1771,26 +1519,8 @@ var (
 		// TODO(b/299974637) Fix linking error
 		"libbinder_rpc_unstable",
 
-		// TODO(b/297356704) sdk_version is unset.
-		"VendorAtomCodeGenJavaTest",
-
-		// android_test from allowlisted packages, but with unconverted deps
-		"MtsLibnativehelperLazyTestCases",
+		// TODO: b/305223367 - Missing dep on android.test.base-neverlink
 		"ObjenesisTck",
-		"DevCodelabTest",
-		"MtsTimeZoneDataTestCases",
-		"NanoAndroidTest",
-		"MtsLibnativehelperTestCases",
-
-		// Depends on androidx.test.rules
-		"DexmakerTests",
-		"dexmaker-tests-lib",
-		"dexmaker-mockmaker-tests",
-		"dexmaker-inline-mockmaker-tests",
-		"dexmaker-extended-mockmaker-tests",
-
-		// android_test_helper_app from allowlisted packages, but with unconverted deps
-		"SharedLibraryInfoTestApp",
 	}
 
 	// Bazel prod-mode allowlist. Modules in this list are built by Bazel
