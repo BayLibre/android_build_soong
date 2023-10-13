@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9ea4313_84946642",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2935,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-10-13T14:34:59Z",
+      "side": 1,
+      "message": "nit: none?\n\nI think we\u0027d technically be able to handle sdk_version none if system_modules is also none, but I guess it\u0027s somewhat pointless because there\u0027s no such library that we can build until we support not-none system_modules",
+      "range": {
+        "startLine": 2935,
+        "startChar": 31,
+        "endLine": 2935,
+        "endChar": 44
+      },
+      "revId": "0e8f6ebc261c75c7d51b493523c7674102f1f613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
