@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6eb7a5b_9004cf39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-10-13T22:25:27Z",
+      "side": 1,
+      "message": "Chris Wailes has a similar change:\nhttps://android-review.git.corp.google.com/c/platform/build/soong/+/2786980\n\nOur conclusion over there was that with the modification to INCREMENTAL to default to 256 cgu, we didn\u0027t have a use for this.\n\nDo you?",
+      "revId": "75458cbe1ad05d3c8fc7831cdfbc452762f0b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
