@@ -170,6 +170,7 @@ var (
 
 		// Emit additional debug info for AutoFDO
 		"-fdebug-info-for-profiling",
+		"-mllvm -enable-gvn-hoist",
 	}
 
 	commonGlobalLldflags = []string{
