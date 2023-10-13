@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db61a99_af978e22",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-13T18:18:08Z",
+      "side": 1,
+      "message": "Can you call this `Asset_files` to ensure people don\u0027t try to use directories here, and for consistency with `Resource_files`?  Also include a comment for it that will become the user-visible documentation at go/Android.bp.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "80ed8e14745a3b78dc6704dd95d13534e0893d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
