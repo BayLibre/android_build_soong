@@ -54,6 +54,7 @@ type RuleBuilder struct {
 	rbeParams        *remoteexec.REParams
 	outDir           WritablePath
 	sboxOutSubDir    string
+	sboxClearOutDir  bool
 	sboxTools        bool
 	sboxInputs       bool
 	sboxManifestPath WritablePath
@@ -156,6 +157,14 @@ func (r *RuleBuilder) Sbox(outputDir WritablePath, manifestPath WritablePath) *R
 	r.sbox = true
 	r.outDir = outputDir
 	r.sboxManifestPath = manifestPath
+	return r
+}
+
+func (r *RuleBuilder) SboxClearOutDirectory(clearDirectory bool) *RuleBuilder {
+	if !r.sbox {
+		panic("SandboxClearOutDirectory() must be called after Sbox()")
+	}
+	r.sboxClearOutDir = clearDirectory
 	return r
 }
 
@@ -621,12 +630,14 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscapeCommandString b
 		// depends on it to rerun.
 		command.InputHash = proto.String(hashSrcFiles(inputs))
 
-		// Verify that the manifest textproto is not inside the sbox output directory, otherwise
-		// it will get deleted when the sbox rule clears its output directory.
-		_, manifestInOutDir := MaybeRel(r.ctx, r.outDir.String(), r.sboxManifestPath.String())
-		if manifestInOutDir {
-			ReportPathErrorf(r.ctx, "sbox rule %q manifestPath %q must not be in outputDir %q",
-				name, r.sboxManifestPath.String(), r.outDir.String())
+		if r.sboxClearOutDir {
+			// Verify that the manifest textproto is not inside the sbox output directory, otherwise
+			// it will get deleted when the sbox rule clears its output directory.
+			_, manifestInOutDir := MaybeRel(r.ctx, r.outDir.String(), r.sboxManifestPath.String())
+			if manifestInOutDir {
+				ReportPathErrorf(r.ctx, "sbox rule %q manifestPath %q must not be in outputDir %q",
+					name, r.sboxManifestPath.String(), r.outDir.String())
+			}
 		}
 
 		// Create a rule to write the manifest as textproto.
@@ -674,6 +685,10 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscapeCommandString b
 
 		if r.restat {
 			sboxCmd.Flag("--write-if-changed")
+		}
+
+		if !r.sboxClearOutDir {
+			sboxCmd.Flag("--clear-output-directory=false")
 		}
 
 		// Replace the command string, and add the sbox tool and manifest textproto to the

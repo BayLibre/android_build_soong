@@ -38,11 +38,12 @@ import (
 )
 
 var (
-	sandboxesRoot  string
-	outputDir      string
-	manifestFile   string
-	keepOutDir     bool
-	writeIfChanged bool
+	sandboxesRoot              string
+	outputDir                  string
+	manifestFile               string
+	keepOutDir                 bool
+	writeIfChanged             bool
+	shouldClearOutputDirectory bool
 )
 
 const (
@@ -60,6 +61,8 @@ func init() {
 	flag.BoolVar(&keepOutDir, "keep-out-dir", false,
 		"whether to keep the sandbox directory when done")
 	flag.BoolVar(&writeIfChanged, "write-if-changed", false,
+		"only write the output files if they have changed")
+	flag.BoolVar(&shouldClearOutputDirectory, "clear-output-directory", true,
 		"only write the output files if they have changed")
 }
 
@@ -246,7 +249,7 @@ func runCommand(command *sbox_proto.Command, tempDir string, commandIndex int) (
 	}
 
 	// Remove files from the output directory
-	err = clearOutputDirectory(command.CopyAfter, outputDir, writeType(writeIfChanged))
+	err = clearOutputDirectory(command.CopyAfter, outputDir, writeType(writeIfChanged), shouldClearOutputDirectory)
 	if err != nil {
 		return "", err
 	}
@@ -456,7 +459,7 @@ type writeType bool
 
 const (
 	alwaysWrite        writeType = false
-	onlyWriteIfChanged           = true
+	onlyWriteIfChanged writeType = true
 )
 
 // copyFiles copies files in or out of the sandbox.  If exists is allowFromNotExists then errors
@@ -657,12 +660,12 @@ func moveFiles(copies []*sbox_proto.Copy, fromDir, toDir string, write writeType
 
 // clearOutputDirectory removes all files in the output directory if write is alwaysWrite, or
 // any files not listed in copies if write is onlyWriteIfChanged
-func clearOutputDirectory(copies []*sbox_proto.Copy, outputDir string, write writeType) error {
+func clearOutputDirectory(copies []*sbox_proto.Copy, outputDir string, write writeType, shouldClearOutputDirectory bool) error {
 	if outputDir == "" {
 		return fmt.Errorf("output directory must be set")
 	}
 
-	if write == alwaysWrite {
+	if shouldClearOutputDirectory && write == alwaysWrite {
 		// When writing all the output files remove the whole output directory
 		return os.RemoveAll(outputDir)
 	}
@@ -675,7 +678,10 @@ func clearOutputDirectory(copies []*sbox_proto.Copy, outputDir string, write wri
 	existingFiles := findAllFilesUnder(outputDir)
 	for _, existingFile := range existingFiles {
 		fullExistingFile := filepath.Join(outputDir, existingFile)
-		if !outputFiles[fullExistingFile] {
+		existingFileIsOutput := outputFiles[fullExistingFile]
+		shouldClearObsoleteOutput := !existingFileIsOutput && shouldClearOutputDirectory
+		shouldClearExistingOutput := existingFileIsOutput && write != onlyWriteIfChanged && !shouldClearOutputDirectory
+		if shouldClearExistingOutput || shouldClearObsoleteOutput {
 			err := os.Remove(fullExistingFile)
 			if err != nil {
 				return fmt.Errorf("failed to remove obsolete output file %s: %w", fullExistingFile, err)
