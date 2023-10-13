@@ -1006,6 +1006,9 @@ var (
 
 		"libandroid_net_connectivity_com_android_net_module_util_jni",
 		"libservice-connectivity",
+
+		"linkerconfig_modules_unittest",
+		"linkerconfig_modules",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
@@ -1141,7 +1144,6 @@ var (
 		"hidl_test_java",
 		"host-libprotobuf-java-nano",                                 // b/220869005, depends on libprotobuf-java-nano
 		"jacoco-stubs",                                               // b/245767077, depends on droidstubs
-		"libapexutil",                                                // depends on unconverted modules: apex-info-list-tinyxml
 		"libart",                                                     // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
 		"libart-runtime",                                             // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
 		"libart-runtime-for-test",                                    // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
