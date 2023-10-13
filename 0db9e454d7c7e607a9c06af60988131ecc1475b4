@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9efcdb4_c88e6917",
+        "filename": "aconfig/aconfig_declarations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-10-13T23:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "518f5818_2cc32c82",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 27
+      },
+      "revId": "0db9e454d7c7e607a9c06af60988131ecc1475b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f69c64e_466a07c2",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "379b1f5f_be3680b7",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-10-13T23:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f69c64e_466a07c2",
+      "revId": "0db9e454d7c7e607a9c06af60988131ecc1475b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02357cb6_8fddaec5",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-10-13T17:37:41Z",
       "side": 1,
       "message": "Could you skip creating the `aconfig_value_sets` if the product has only 1 aconfig value set in it\u0027s product config?",
+      "revId": "0db9e454d7c7e607a9c06af60988131ecc1475b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb29be10_8956e0e0",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-10-13T23:46:24Z",
+      "side": 1,
+      "message": "we talked offline but can\u0027t agree with each other, will leave it as is and Cole will follow up on it.",
+      "parentUuid": "02357cb6_8fddaec5",
       "revId": "0db9e454d7c7e607a9c06af60988131ecc1475b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -81,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25412349_8f40dbdb",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-10-13T23:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2acf2ba_19345312",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 3
+      },
+      "revId": "0db9e454d7c7e607a9c06af60988131ecc1475b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74c2d26d_6ce1e3ce",
@@ -98,6 +182,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff654212_f0a60ad1",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-10-13T23:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74c2d26d_6ce1e3ce",
+      "revId": "0db9e454d7c7e607a9c06af60988131ecc1475b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4784990c_12c9cc18",
@@ -111,6 +213,24 @@
       "writtenOn": "2023-10-13T17:37:41Z",
       "side": 1,
       "message": "Could you put these in the same folder as the platform? Like how the system image does it below.",
+      "revId": "0db9e454d7c7e607a9c06af60988131ecc1475b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce6a4a9_e3c35651",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-10-13T23:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4784990c_12c9cc18",
       "revId": "0db9e454d7c7e607a9c06af60988131ecc1475b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
