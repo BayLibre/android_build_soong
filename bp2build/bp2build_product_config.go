@@ -1,6 +1,7 @@
 package bp2build
 
 import (
+	"android/soong/android/allowlists"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -53,7 +54,8 @@ func (l *bazelLabel) String() string {
 
 func createProductConfigFiles(
 	ctx *CodegenContext,
-	metrics CodegenMetrics) (createProductConfigFilesResult, error) {
+	moduleNameToPartition map[string]string,
+	convertedModulePathMap map[string]string) (createProductConfigFilesResult, error) {
 	cfg := &ctx.config
 	targetProduct := "unknown"
 	if cfg.HasDeviceProduct() {
@@ -142,12 +144,12 @@ func createProductConfigFiles(
 			},
 		},
 	})
-	createTargets(productLabelsToVariables, res.bp2buildTargets)
+	createTargets(productLabelsToVariables, moduleNameToPartition, convertedModulePathMap, res.bp2buildTargets)
 
 	platformMappingContent, err := platformMappingContent(
 		productLabelsToVariables,
 		ctx.Config().Bp2buildSoongConfigDefinitions,
-		metrics.convertedModulePathMap)
+		convertedModulePathMap)
 	if err != nil {
 		return res, err
 	}
@@ -481,12 +483,16 @@ func starlarkMapToProductVariables(in map[string]starlark.Value) (android.Produc
 	return result, nil
 }
 
-func createTargets(productLabelsToVariables map[bazelLabel]*android.ProductVariables, res map[string]BazelTargets) {
+func createTargets(
+	productLabelsToVariables map[bazelLabel]*android.ProductVariables,
+	moduleNameToPartition map[string]string,
+	convertedModulePathMap map[string]string,
+	res map[string]BazelTargets) {
 	createGeneratedAndroidCertificateDirectories(productLabelsToVariables, res)
 	createAvbKeyFilegroups(productLabelsToVariables, res)
 	createReleaseAconfigValueSetsFilegroup(productLabelsToVariables, res)
 	for label, variables := range productLabelsToVariables {
-		createSystemPartition(label, &variables.PartitionVarsForBazelMigrationOnlyDoNotUse, res)
+		createSystemPartition(label, &variables.PartitionVarsForBazelMigrationOnlyDoNotUse, moduleNameToPartition, convertedModulePathMap, res)
 	}
 }
 
@@ -581,7 +587,12 @@ func createAvbKeyFilegroups(productLabelsToVariables map[bazelLabel]*android.Pro
 	}
 }
 
-func createSystemPartition(platformLabel bazelLabel, variables *android.PartitionVariables, targets map[string]BazelTargets) {
+func createSystemPartition(
+	platformLabel bazelLabel,
+	variables *android.PartitionVariables,
+	moduleNameToPartition map[string]string,
+	convertedModulePathMap map[string]string,
+	targets map[string]BazelTargets) {
 	if !variables.PartitionQualifiedVariables["system"].BuildingImage {
 		return
 	}
@@ -609,6 +620,22 @@ func createSystemPartition(platformLabel bazelLabel, variables *android.Partitio
 			extraProperties.WriteString(fmt.Sprintf("    avb_rollback_index = %s,\n", qualifiedVariables.BoardAvbRollbackIndex))
 			extraProperties.WriteString(fmt.Sprintf("    avb_rollback_index_location = %s,\n", qualifiedVariables.BoardAvbRollbackIndexLocation))
 		}
+	}
+
+	var deps []string
+	for _, mod := range variables.ProductPackages {
+		if path, ok := convertedModulePathMap[mod]; ok && android.InList(mod, allowlists.ProdMixedBuildsEnabledList) {
+			if partition, ok := moduleNameToPartition[mod]; ok && partition == "system" {
+				deps = append(deps, fmt.Sprintf("        \"%s:%s\",\n", path, mod))
+			}
+		}
+	}
+	if len(deps) > 0 {
+		extraProperties.WriteString("    deps = [\n")
+		for _, dep := range deps {
+			extraProperties.WriteString(dep)
+		}
+		extraProperties.WriteString("    ],\n")
 	}
 
 	targets[platformLabel.pkg] = append(targets[platformLabel.pkg], BazelTarget{

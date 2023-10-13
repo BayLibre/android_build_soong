@@ -546,6 +546,8 @@ type PartitionVariables struct {
 	CopyImagesForTargetFilesZip          bool   `json:",omitempty"`
 
 	BoardAvbEnable bool `json:",omitempty"`
+
+	ProductPackages []string `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
