@@ -44,20 +44,21 @@ type RuleBuilder struct {
 	pctx PackageContext
 	ctx  BuilderContext
 
-	commands         []*RuleBuilderCommand
-	installs         RuleBuilderInstalls
-	temporariesSet   map[WritablePath]bool
-	restat           bool
-	sbox             bool
-	highmem          bool
-	remoteable       RemoteRuleSupports
-	rbeParams        *remoteexec.REParams
-	outDir           WritablePath
-	sboxOutSubDir    string
-	sboxTools        bool
-	sboxInputs       bool
-	sboxManifestPath WritablePath
-	missingDeps      []string
+	commands             []*RuleBuilderCommand
+	installs             RuleBuilderInstalls
+	temporariesSet       map[WritablePath]bool
+	restat               bool
+	sbox                 bool
+	highmem              bool
+	remoteable           RemoteRuleSupports
+	rbeParams            *remoteexec.REParams
+	outDir               WritablePath
+	sboxOutSubDir        string
+	onlyClearRuleOutputs bool
+	sboxTools            bool
+	sboxInputs           bool
+	sboxManifestPath     WritablePath
+	missingDeps          []string
 }
 
 // NewRuleBuilder returns a newly created RuleBuilder.
@@ -156,6 +157,19 @@ func (r *RuleBuilder) Sbox(outputDir WritablePath, manifestPath WritablePath) *R
 	r.sbox = true
 	r.outDir = outputDir
 	r.sboxManifestPath = manifestPath
+	return r
+}
+
+// SboxOnlyClearRuleOutputs prevents sbox from clearing non-rule outputs the output directory
+// before executing the sbox command. The outputs of the rule will still be cleared. This allows
+// re-using the same output directory for multiple sbox commands, but note that obsolete files
+// will accumulate on incremental builds. When using this flag, the sbox manifest no longer has to
+// be outside the sbox directory because it will not be deleted during sbox execution.
+func (r *RuleBuilder) SboxOnlyClearRuleOutputs(onlyClearRuleOutputs bool) *RuleBuilder {
+	if !r.sbox {
+		panic("SboxOnlyClearRuleOutputs() must be called after Sbox()")
+	}
+	r.onlyClearRuleOutputs = onlyClearRuleOutputs
 	return r
 }
 
@@ -621,12 +635,14 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscapeCommandString b
 		// depends on it to rerun.
 		command.InputHash = proto.String(hashSrcFiles(inputs))
 
-		// Verify that the manifest textproto is not inside the sbox output directory, otherwise
-		// it will get deleted when the sbox rule clears its output directory.
-		_, manifestInOutDir := MaybeRel(r.ctx, r.outDir.String(), r.sboxManifestPath.String())
-		if manifestInOutDir {
-			ReportPathErrorf(r.ctx, "sbox rule %q manifestPath %q must not be in outputDir %q",
-				name, r.sboxManifestPath.String(), r.outDir.String())
+		if !r.onlyClearRuleOutputs {
+			// Verify that the manifest textproto is not inside the sbox output directory, otherwise
+			// it will get deleted when the sbox rule clears its output directory.
+			_, manifestInOutDir := MaybeRel(r.ctx, r.outDir.String(), r.sboxManifestPath.String())
+			if manifestInOutDir {
+				ReportPathErrorf(r.ctx, "sbox rule %q manifestPath %q must not be in outputDir %q",
+					name, r.sboxManifestPath.String(), r.outDir.String())
+			}
 		}
 
 		// Create a rule to write the manifest as textproto.
@@ -674,6 +690,10 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscapeCommandString b
 
 		if r.restat {
 			sboxCmd.Flag("--write-if-changed")
+		}
+
+		if r.onlyClearRuleOutputs {
+			sboxCmd.Flag("--only-clear-rule-outputs")
 		}
 
 		// Replace the command string, and add the sbox tool and manifest textproto to the

@@ -38,11 +38,12 @@ import (
 )
 
 var (
-	sandboxesRoot  string
-	outputDir      string
-	manifestFile   string
-	keepOutDir     bool
-	writeIfChanged bool
+	sandboxesRoot        string
+	outputDir            string
+	manifestFile         string
+	keepOutDir           bool
+	writeIfChanged       bool
+	onlyClearRuleOutputs bool
 )
 
 const (
@@ -61,6 +62,8 @@ func init() {
 		"whether to keep the sandbox directory when done")
 	flag.BoolVar(&writeIfChanged, "write-if-changed", false,
 		"only write the output files if they have changed")
+	flag.BoolVar(&onlyClearRuleOutputs, "only-clear-rule-outputs", false,
+		"only attempt to clear outputs of the rule, but leave other files untouched")
 }
 
 func usageViolation(violation string) {
@@ -92,6 +95,9 @@ func main() {
 func findAllFilesUnder(root string) (paths []string) {
 	paths = []string{}
 	filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
 		if !info.IsDir() {
 			relPath, err := filepath.Rel(root, path)
 			if err != nil {
@@ -246,7 +252,7 @@ func runCommand(command *sbox_proto.Command, tempDir string, commandIndex int) (
 	}
 
 	// Remove files from the output directory
-	err = clearOutputDirectory(command.CopyAfter, outputDir, writeType(writeIfChanged))
+	err = clearOutputDirectory(command.CopyAfter, outputDir, writeType(writeIfChanged), onlyClearRuleOutputs)
 	if err != nil {
 		return "", err
 	}
@@ -657,12 +663,12 @@ func moveFiles(copies []*sbox_proto.Copy, fromDir, toDir string, write writeType
 
 // clearOutputDirectory removes all files in the output directory if write is alwaysWrite, or
 // any files not listed in copies if write is onlyWriteIfChanged
-func clearOutputDirectory(copies []*sbox_proto.Copy, outputDir string, write writeType) error {
+func clearOutputDirectory(copies []*sbox_proto.Copy, outputDir string, write writeType, onlyClearRuleOutputs bool) error {
 	if outputDir == "" {
 		return fmt.Errorf("output directory must be set")
 	}
 
-	if write == alwaysWrite {
+	if write == alwaysWrite && !onlyClearRuleOutputs {
 		// When writing all the output files remove the whole output directory
 		return os.RemoveAll(outputDir)
 	}
@@ -673,12 +679,31 @@ func clearOutputDirectory(copies []*sbox_proto.Copy, outputDir string, write wri
 	}
 
 	existingFiles := findAllFilesUnder(outputDir)
+	existingNonOutputFiles := []string{}
+	existingOutputFiles := []string{}
 	for _, existingFile := range existingFiles {
 		fullExistingFile := filepath.Join(outputDir, existingFile)
-		if !outputFiles[fullExistingFile] {
-			err := os.Remove(fullExistingFile)
+		if outputFiles[fullExistingFile] {
+			existingOutputFiles = append(existingOutputFiles, fullExistingFile)
+		} else {
+			existingNonOutputFiles = append(existingNonOutputFiles, fullExistingFile)
+		}
+	}
+
+	if write != onlyWriteIfChanged {
+		for _, file := range existingOutputFiles {
+			err := os.Remove(file)
 			if err != nil {
-				return fmt.Errorf("failed to remove obsolete output file %s: %w", fullExistingFile, err)
+				return fmt.Errorf("failed to remove existing rule output file %s: %w", file, err)
+			}
+		}
+	}
+
+	if !onlyClearRuleOutputs {
+		for _, file := range existingNonOutputFiles {
+			err := os.Remove(file)
+			if err != nil {
+				return fmt.Errorf("failed to remove obsolete output file %s: %w", file, err)
 			}
 		}
 	}
