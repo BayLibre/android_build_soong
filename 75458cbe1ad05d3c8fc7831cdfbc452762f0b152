@@ -56,6 +56,30 @@
       },
       "revId": "75458cbe1ad05d3c8fc7831cdfbc452762f0b152",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83b2b7c1_d010c6ac",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2023-10-13T22:29:49Z",
+      "side": 1,
+      "message": "You weren\u0027t CC\u0027d on the other CL.\n\nhttps://android-review.git.corp.google.com/c/platform/build/soong/+/2786923\n\nWith this change however, you wouldn\u0027t have had to sepcify SOONG_RUSTC_CODEGEN_UNITS. It would have defaulted to `1` if you don\u0027t specify anything, which was the previous behavior. At least that\u0027s my understanding from GetenvWithDefault, and that\u0027s what I observed running `m`.\n\nUltimately, I abandoned this change as the fix was merged.",
+      "parentUuid": "f18a97ed_a898c69d",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 63
+      },
+      "revId": "75458cbe1ad05d3c8fc7831cdfbc452762f0b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
