@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ad23d7_3e276580",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-13T09:35:10Z",
+      "side": 1,
+      "message": "Thanks for pointing out that there are some hardcoded `java_api_library` modules where `enable_validation` is not set. I\u0027ve switched the default to `true` and modified the test cases accordingly.",
+      "parentUuid": "8a9db078_6ac23612",
+      "range": {
+        "startLine": 1835,
+        "startChar": 57,
+        "endLine": 1835,
+        "endChar": 62
+      },
+      "revId": "efd76e525bc194f2a97ce9240b4bca9175dc4d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "977f98f6_9a379b08",
