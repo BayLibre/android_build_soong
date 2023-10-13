@@ -621,14 +621,6 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscapeCommandString b
 		// depends on it to rerun.
 		command.InputHash = proto.String(hashSrcFiles(inputs))
 
-		// Verify that the manifest textproto is not inside the sbox output directory, otherwise
-		// it will get deleted when the sbox rule clears its output directory.
-		_, manifestInOutDir := MaybeRel(r.ctx, r.outDir.String(), r.sboxManifestPath.String())
-		if manifestInOutDir {
-			ReportPathErrorf(r.ctx, "sbox rule %q manifestPath %q must not be in outputDir %q",
-				name, r.sboxManifestPath.String(), r.outDir.String())
-		}
-
 		// Create a rule to write the manifest as textproto.
 		pbText, err := prototext.Marshal(&manifest)
 		if err != nil {
