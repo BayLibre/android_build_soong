@@ -81,6 +81,9 @@ type BazelConversionStatus struct {
 	// If non-nil, indicates that the module could not be converted successfully
 	// with bp2build. This will describe the reason the module could not be converted.
 	UnconvertedReason *UnconvertedReason
+
+	// The Partition this module will be installed on
+	Partition string `blueprint:"mutated"`
 }
 
 // The reason a module could not be converted to a BUILD target via bp2build.
@@ -673,6 +676,9 @@ func bp2buildConversionMutator(ctx BottomUpMutatorContext) {
 	}
 
 	bModule.ConvertWithBp2build(ctx)
+
+	installCtx := &baseModuleContextToModuleInstallPathContext{ctx}
+	ctx.Module().base().setPartitionForBp2build(modulePartition(installCtx, true))
 
 	if len(ctx.Module().base().Bp2buildTargets()) == 0 && ctx.Module().base().GetUnconvertedReason() == nil {
 		panic(fmt.Errorf("illegal bp2build invariant: module '%s' was neither converted nor marked unconvertible", ctx.ModuleName()))
