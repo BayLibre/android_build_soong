@@ -173,6 +173,7 @@ var (
 
 		// Enable Hot Cold splitting optimization.
 		"-mllvm -hot-cold-split=true",
+		"-mllvm -enable-gvn-hoist",
 	}
 
 	commonGlobalLldflags = []string{
