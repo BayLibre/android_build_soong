@@ -317,21 +317,9 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 		implicits = append(implicits, clippyFile)
 	}
 
-	useSandboxedCompilation := comp.crateRoot(ctx) != nil
-	sboxDirectory := ""
 	rustcOutputFile := outputFile
-	if useSandboxedCompilation {
-		sboxDirectory = "rustc"
-		rustcOutputFile = android.PathForModuleOut(ctx, sboxDirectory, outputFile.Base())
-		// move output file out of sandbox after building
-		ctx.Build(pctx, android.BuildParams{
-			Rule:   mv,
-			Input:  rustcOutputFile,
-			Output: outputFile,
-		})
-	}
-
-	rustcRule := getRuleBuilder(ctx, pctx, useSandboxedCompilation, sboxDirectory)
+	useSandboxedCompilation := comp.crateRoot(ctx) != nil
+	rustcRule := getRuleBuilder(ctx, pctx, useSandboxedCompilation, "rustc")
 	rustcCmd := rustcRule.Command()
 
 	linkFlags = append(linkFlags, flags.GlobalLinkFlags...)
@@ -467,9 +455,11 @@ func getRuleBuilder(ctx android.ModuleContext, pctx android.PackageContext, sbox
 	r := android.NewRuleBuilder(pctx, ctx)
 	if sbox {
 		r = r.Sbox(
-			android.PathForModuleOut(ctx, sboxDirectory),
+			android.PathForModuleOut(ctx),
 			android.PathForModuleOut(ctx, sboxDirectory+".sbox.textproto"),
-		).SandboxInputs()
+		).
+			SboxClearOutDirectory(false).
+			SandboxInputs()
 	}
 	return r
 }

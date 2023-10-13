@@ -327,7 +327,7 @@ func TestSandboxCompilation(t *testing.T) {
 			}),
 			expectedFlags: []string{
 				"--emit link",
-				"-o __SBOX_SANDBOX_DIR__/out/libfizz_buzz.dylib.so",
+				"-o __SBOX_SANDBOX_DIR__/out/unstripped/libfizz_buzz.dylib.so",
 				"foo.rs", // this is the entry point
 			},
 		},
@@ -400,7 +400,7 @@ func TestSandboxCompilation(t *testing.T) {
 			}),
 			expectedFlags: []string{
 				"--emit link",
-				"-o __SBOX_SANDBOX_DIR__/out/fizz_buzz",
+				"-o __SBOX_SANDBOX_DIR__/out/unstripped/fizz_buzz",
 				"foo.rs", // this is the entry point
 			},
 		},
@@ -437,7 +437,7 @@ func TestSandboxCompilation(t *testing.T) {
 			}),
 			expectedFlags: []string{
 				"--emit link",
-				"-o __SBOX_SANDBOX_DIR__/out/librust_ffi.so",
+				"-o __SBOX_SANDBOX_DIR__/out/unstripped/librust_ffi.so",
 				"foo.rs", // this is the entry point
 			},
 		},
