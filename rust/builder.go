@@ -326,13 +326,7 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 		implicits = append(implicits, clippyFile)
 	}
 
-	useSandboxedCompilation := comp.crateRoot(ctx) != nil
-	sboxDirectory := ""
 	rustcOutputFile := outputFile
-	if useSandboxedCompilation {
-		sboxDirectory = "rustc"
-		rustcOutputFile = android.PathForModuleOut(ctx, sboxDirectory, outputFile.Base())
-	}
 
 	var depFile, depInfoFile android.WritablePath
 	outputFileExtension := filepath.Ext(rustcOutputFile.String())
@@ -346,7 +340,8 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 		depInfoFile = rustcOutputFile.ReplaceExtension(ctx, "d.raw")
 	}
 
-	rustcRule := getRuleBuilder(ctx, pctx, useSandboxedCompilation, sboxDirectory)
+	useSandboxedCompilation := comp.crateRoot(ctx) != nil
+	rustcRule := getRuleBuilder(ctx, pctx, useSandboxedCompilation, "rustc")
 	rustcCmd := rustcRule.Command()
 
 	linkFlags = append(linkFlags, flags.GlobalLinkFlags...)
@@ -412,14 +407,6 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 		DepFile(depFile)
 
 	rustcRule.BuildWithUnescapedNinjaVars("rustc", "rustc "+main.Rel())
-
-	if useSandboxedCompilation {
-		ctx.Build(pctx, android.BuildParams{
-			Rule:   mv,
-			Input:  rustcOutputFile,
-			Output: outputFile,
-		})
-	}
 
 	if flags.EmitXrefs {
 		kytheRule := getRuleBuilder(ctx, pctx, false, "kythe")
@@ -500,7 +487,7 @@ func getRuleBuilder(ctx android.ModuleContext, pctx android.PackageContext, sbox
 	r := android.NewRuleBuilder(pctx, ctx)
 	if sbox {
 		r = r.Sbox(
-			android.PathForModuleOut(ctx, sboxDirectory),
+			android.PathForModuleOut(ctx),
 			android.PathForModuleOut(ctx, sboxDirectory+".sbox.textproto"),
 		).SandboxInputs()
 	}
