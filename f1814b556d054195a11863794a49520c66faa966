@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "261ffe0c_30c92347",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-13T22:43:58Z",
+      "side": 1,
+      "message": "Hey Colin, I was thinking about making this change after b/293349612 so that it\u0027s no longer required to have a separate subdirectory for sandboxed outputs.\n\nWith the requirement that the sbox directory gets cleared before each sbox action, I don\u0027t see a way to avoid having the path for output files change when rules are migrated to be sandboxed. \n\nLMKWYT and happy to discuss other options.",
+      "revId": "f1814b556d054195a11863794a49520c66faa966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
