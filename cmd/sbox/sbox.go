@@ -246,7 +246,7 @@ func runCommand(command *sbox_proto.Command, tempDir string, commandIndex int) (
 	}
 
 	// Remove files from the output directory
-	err = clearOutputDirectory(command.CopyAfter, outputDir, writeType(writeIfChanged))
+	err = clearOutputDirectory(command.CopyAfter, outputDir)
 	if err != nil {
 		return "", err
 	}
@@ -657,14 +657,9 @@ func moveFiles(copies []*sbox_proto.Copy, fromDir, toDir string, write writeType
 
 // clearOutputDirectory removes all files in the output directory if write is alwaysWrite, or
 // any files not listed in copies if write is onlyWriteIfChanged
-func clearOutputDirectory(copies []*sbox_proto.Copy, outputDir string, write writeType) error {
+func clearOutputDirectory(copies []*sbox_proto.Copy, outputDir string) error {
 	if outputDir == "" {
 		return fmt.Errorf("output directory must be set")
-	}
-
-	if write == alwaysWrite {
-		// When writing all the output files remove the whole output directory
-		return os.RemoveAll(outputDir)
 	}
 
 	outputFiles := make(map[string]bool, len(copies))
@@ -675,7 +670,7 @@ func clearOutputDirectory(copies []*sbox_proto.Copy, outputDir string, write wri
 	existingFiles := findAllFilesUnder(outputDir)
 	for _, existingFile := range existingFiles {
 		fullExistingFile := filepath.Join(outputDir, existingFile)
-		if !outputFiles[fullExistingFile] {
+		if outputFiles[fullExistingFile] {
 			err := os.Remove(fullExistingFile)
 			if err != nil {
 				return fmt.Errorf("failed to remove obsolete output file %s: %w", fullExistingFile, err)
