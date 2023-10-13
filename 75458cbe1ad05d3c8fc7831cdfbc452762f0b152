@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "050285a8_8a858cfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-13T22:25:53Z",
+      "side": 1,
+      "message": "why?",
+      "revId": "75458cbe1ad05d3c8fc7831cdfbc452762f0b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d6eb7a5b_9004cf39",
@@ -14,6 +31,29 @@
       "writtenOn": "2023-10-13T22:25:27Z",
       "side": 1,
       "message": "Chris Wailes has a similar change:\nhttps://android-review.git.corp.google.com/c/platform/build/soong/+/2786980\n\nOur conclusion over there was that with the modification to INCREMENTAL to default to 256 cgu, we didn\u0027t have a use for this.\n\nDo you?",
+      "revId": "75458cbe1ad05d3c8fc7831cdfbc452762f0b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f18a97ed_a898c69d",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-13T22:25:53Z",
+      "side": 1,
+      "message": "btw, I wonder if we should make this an option on specific modules?\n\nGenerally in Android, assuming this is about thread count, we actually leave this unrestricted, so many different modules use threads at the same time, and are unbounded.\n\nOr can we make it select a result intelligently?\n\nI really don\u0027t want to hvae to specify SOONG_RUSTC_CODEGEN_UNITS in my environment. Env variables interact poorly with atest and other tools, and it seems like we could get a compilation speed boost in general. Matthew/Chris, can you help provide a recommendation?",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 63
+      },
       "revId": "75458cbe1ad05d3c8fc7831cdfbc452762f0b152",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
