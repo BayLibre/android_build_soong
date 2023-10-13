@@ -99,6 +99,7 @@ type bazelJavaAconfigLibraryAttributes struct {
 	Aconfig_declarations bazel.LabelAttribute
 	Test                 *bool
 	Sdk_version          *string
+	Libs                 bazel.LabelListAttribute
 }
 
 func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) Bp2build(ctx android.Bp2buildMutatorContext, module *java.GeneratedJavaLibraryModule) {
@@ -118,10 +119,22 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) Bp2build(ctx android.B
 	// modules in framework/base use core_platform which is not supported by bazel yet.
 	// TODO(b/302148527): change soong to default to system_current as well.
 	sdkVersion := "system_current"
+
+	var libs bazel.LabelListAttribute
+	archVariantProps := module.GetArchVariantProperties(ctx, &java.CommonProperties{})
+	for axis, configToProps := range archVariantProps {
+		for config, p := range configToProps {
+			if archProps, ok := p.(*java.CommonProperties); ok {
+				libs.SetSelectValue(axis, config, (android.BazelLabelForModuleDeps(ctx, archProps.Libs)))
+			}
+		}
+	}
+
 	attrs := bazelJavaAconfigLibraryAttributes{
 		Aconfig_declarations: *bazel.MakeLabelAttribute(android.BazelLabelForModuleDepSingle(ctx, callbacks.properties.Aconfig_declarations).Label),
 		Test:                 callbacks.properties.Test,
 		Sdk_version:          &sdkVersion,
+		Libs:                 libs,
 	}
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        "java_aconfig_library",
