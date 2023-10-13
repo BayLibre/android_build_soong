@@ -373,7 +373,7 @@ func TestBp2BuildAllowlist(t *testing.T) {
 				allowlist: test.allowlist,
 			}
 
-			shouldConvert := test.module.shouldConvertWithBp2build(bcc,
+			shouldConvert, _ := test.module.shouldConvertWithBp2build(bcc,
 				shouldConvertParams{
 					module:     test.module.TestModuleInfo,
 					moduleDir:  test.module.TestModuleInfo.Dir,
