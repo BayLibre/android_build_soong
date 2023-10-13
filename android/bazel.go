@@ -155,7 +155,7 @@ type Bazelable interface {
 	HandcraftedLabel() string
 	GetBazelLabel(ctx BazelConversionPathContext, module blueprint.Module) string
 	ShouldConvertWithBp2build(ctx ShouldConvertWithBazelContext) bool
-	shouldConvertWithBp2build(shouldConvertModuleContext, shouldConvertParams) bool
+	shouldConvertWithBp2build(shouldConvertModuleContext, shouldConvertParams) (bool, string)
 
 	// ConvertWithBp2build either converts the module to a Bazel build target or
 	// declares the module as unconvertible (for logging and metrics).
@@ -472,12 +472,13 @@ func convertedToBazel(ctx BazelConversionContext, module blueprint.Module) bool 
 		return false
 	}
 
-	return b.HasHandcraftedLabel() || b.shouldConvertWithBp2build(ctx, shouldConvertParams{
+	ok, _ = b.shouldConvertWithBp2build(ctx, shouldConvertParams{
 		module:     module,
 		moduleDir:  ctx.OtherModuleDir(module),
 		moduleName: ctx.OtherModuleName(module),
 		moduleType: ctx.OtherModuleType(module),
 	})
+	return b.HasHandcraftedLabel() || ok
 }
 
 type ShouldConvertWithBazelContext interface {
@@ -491,12 +492,13 @@ type ShouldConvertWithBazelContext interface {
 
 // ShouldConvertWithBp2build returns whether the given BazelModuleBase should be converted with bp2build
 func (b *BazelModuleBase) ShouldConvertWithBp2build(ctx ShouldConvertWithBazelContext) bool {
-	return b.shouldConvertWithBp2build(ctx, shouldConvertParams{
+	ok, _ := b.shouldConvertWithBp2build(ctx, shouldConvertParams{
 		module:     ctx.Module(),
 		moduleDir:  ctx.ModuleDir(),
 		moduleName: ctx.ModuleName(),
 		moduleType: ctx.ModuleType(),
 	})
+	return ok
 }
 
 type bazelOtherModuleContext interface {
@@ -526,9 +528,9 @@ type shouldConvertParams struct {
 	moduleName string
 }
 
-func (b *BazelModuleBase) shouldConvertWithBp2build(ctx shouldConvertModuleContext, p shouldConvertParams) bool {
+func (b *BazelModuleBase) shouldConvertWithBp2build(ctx shouldConvertModuleContext, p shouldConvertParams) (bool, string) {
 	if !b.bazelProps().Bazel_module.CanConvertToBazel {
-		return false
+		return false, "Bazel_module.CanConvertToBazel is disabled"
 	}
 
 	module := p.module
@@ -540,7 +542,7 @@ func (b *BazelModuleBase) shouldConvertWithBp2build(ctx shouldConvertModuleConte
 	// trigger this conditional because unit tests run under the "." package path
 	isTestModule := packagePath == Bp2BuildTopLevel && proptools.BoolDefault(propValue, false)
 	if isTestModule {
-		return true
+		return true, ""
 	}
 
 	moduleName := moduleNameWithPossibleOverride(ctx, module, p.moduleName)
@@ -558,34 +560,44 @@ func (b *BazelModuleBase) shouldConvertWithBp2build(ctx shouldConvertModuleConte
 
 	moduleNameAllowed := allowlist.moduleAlwaysConvert[moduleName]
 	moduleTypeAllowed := allowlist.moduleTypeAlwaysConvert[p.moduleType]
-	allowlistConvert := moduleNameAllowed || moduleTypeAllowed
 	if moduleNameAllowed && moduleTypeAllowed {
-		ctx.ModuleErrorf("A module %q of type %q cannot be in moduleAlwaysConvert and also be in moduleTypeAlwaysConvert", moduleName, p.moduleType)
-		return false
+		msg := fmt.Sprintf(
+			"A module %q of type %q cannot be in moduleAlwaysConvert and also be in moduleTypeAlwaysConvert",
+			moduleName,
+			p.moduleType)
+		ctx.ModuleErrorf(msg)
+		return false, msg
 	}
 
 	if allowlist.moduleDoNotConvert[moduleName] {
 		if moduleNameAllowed {
 			ctx.ModuleErrorf("a module %q cannot be in moduleDoNotConvert and also be in moduleAlwaysConvert", moduleName)
 		}
-		return false
+		return false, "module is explicitly denylisted by name in allowlists.go"
 	}
 
 	// This is a tristate value: true, false, or unset.
 	if ok, directoryPath := bp2buildDefaultTrueRecursively(packagePath, allowlist.defaultConfig); ok {
 		if moduleNameAllowed {
-			ctx.ModuleErrorf("A module cannot be in a directory marked Bp2BuildDefaultTrue"+
+			msg := fmt.Sprintf(
+				"A module cannot be in a directory marked Bp2BuildDefaultTrue"+
 				" or Bp2BuildDefaultTrueRecursively and also be in moduleAlwaysConvert. Directory: '%s'"+
-				" Module: '%s'", directoryPath, moduleName)
-			return false
+				" Module: '%s'",
+				directoryPath,
+				moduleName)
+			ctx.ModuleErrorf(msg)
+			return false, msg
 		}
 
+		propBool := proptools.BoolDefault(propValue, true)
 		// Allow modules to explicitly opt-out.
-		return proptools.BoolDefault(propValue, true)
+		return propBool, fmt.Sprintf("bp2build_available value: %t", propBool)
 	}
 
+
+	propBool := proptools.BoolDefault(propValue, moduleNameAllowed || moduleTypeAllowed)
 	// Allow modules to explicitly opt-in.
-	return proptools.BoolDefault(propValue, allowlistConvert)
+	return propBool, fmt.Sprintf("moduleNameAllowed: %t, moduleTypeAllowed: %t", moduleNameAllowed, moduleTypeAllowed)
 }
 
 // bp2buildDefaultTrueRecursively checks that the package contains a prefix from the
@@ -647,7 +659,9 @@ func bp2buildConversionMutator(ctx BottomUpMutatorContext) {
 	}
 	bModule, ok := ctx.Module().(Bazelable)
 	if !ok {
-		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED, "")
+		ctx.MarkBp2buildUnconvertible(
+			bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED,
+			"bp2build conversion mutator: Soong module does not implement the Bazelable interface")
 		return
 	}
 	// There may be cases where the target is created by a macro rather than in a BUILD file, those
@@ -655,17 +669,24 @@ func bp2buildConversionMutator(ctx BottomUpMutatorContext) {
 	if bModule.HasHandcraftedLabel() {
 		// Defer to the BUILD target. Generating an additional target would
 		// cause a BUILD file conflict.
-		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_DEFINED_IN_BUILD_FILE, "")
+		ctx.MarkBp2buildUnconvertible(
+			bp2build_metrics_proto.UnconvertedReasonType_DEFINED_IN_BUILD_FILE,
+			"bp2build conversion mutator: Module is already defined in a handcrafted BUILD file")
 		return
 	}
 	// TODO: b/285631638 - Differentiate between denylisted modules and missing bp2build capabilities.
-	if !bModule.shouldConvertWithBp2build(ctx, shouldConvertParams{
+	if ok, msg := bModule.shouldConvertWithBp2build(ctx, shouldConvertParams{
 		module:     ctx.Module(),
 		moduleDir:  ctx.ModuleDir(),
 		moduleName: ctx.ModuleName(),
 		moduleType: ctx.ModuleType(),
-	}) {
-		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_UNSUPPORTED, "")
+	}); !ok {
+		ctx.MarkBp2buildUnconvertible(
+			bp2build_metrics_proto.UnconvertedReasonType_UNSUPPORTED,
+			fmt.Sprintf(
+				"bp2build conversion mutator: module is unsupported according to allowlists.go checks. Reason: %s. Module dir: %s, Name: %s, Type: %s.",
+				msg, ctx.ModuleDir(), ctx.ModuleName(), ctx.ModuleType(),
+			))
 		return
 	}
 	if ctx.Module().base().GetUnconvertedReason() != nil {
@@ -675,7 +696,8 @@ func bp2buildConversionMutator(ctx BottomUpMutatorContext) {
 	bModule.ConvertWithBp2build(ctx)
 
 	if len(ctx.Module().base().Bp2buildTargets()) == 0 && ctx.Module().base().GetUnconvertedReason() == nil {
-		panic(fmt.Errorf("illegal bp2build invariant: module '%s' was neither converted nor marked unconvertible", ctx.ModuleName()))
+		panic(fmt.Errorf(
+			"illegal bp2build invariant: module '%s' was neither converted nor marked unconvertible", ctx.ModuleName()))
 	}
 
 	// If an existing BUILD file in the module directory has a target defined
@@ -686,7 +708,8 @@ func bp2buildConversionMutator(ctx BottomUpMutatorContext) {
 		if ctx.Config().HasBazelBuildTargetInSource(targetInfo.TargetPackage(), targetInfo.TargetName()) {
 			// Defer to the BUILD target. Generating an additional target would
 			// cause a BUILD file conflict.
-			ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_DEFINED_IN_BUILD_FILE, targetInfo.TargetName())
+			ctx.MarkBp2buildUnconvertible(
+				bp2build_metrics_proto.UnconvertedReasonType_DEFINED_IN_BUILD_FILE, targetInfo.TargetName())
 			return
 		}
 	}

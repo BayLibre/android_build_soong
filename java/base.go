@@ -2411,6 +2411,6 @@ func (j *Module) ConvertWithBp2build(ctx android.Bp2buildMutatorContext) {
 			javaTestHostBp2Build(ctx, testHost)
 		}
 	default:
-		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED, "")
+		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED, ctx.ModuleType())
 	}
 }
