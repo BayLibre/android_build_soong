@@ -70,6 +70,24 @@
       "parentUuid": "7c026857_dcb48bca",
       "revId": "c4648f6fda4c8d099e0fcb236ca137691fed16a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e0b7d3_82ebac51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-10-16T22:52:49Z",
+      "side": 1,
+      "message": "Is there a reason why they are written into the ninja file which then writes them into the separate `*.textproto` files? It seems as though it would be faster to write them directly to the `*.textproto` files. Ditto with other files whose contents are essentially created in Soong and then encoded into the ninja file.\n\nWriting the files could be done in parallel in Soong as soon as the content has been created instead of serializing the work in the output. It would also reduce Soong memory usage.\n\nThe ninja rule could just check to see if that file is different from the one it used the last time it ran and if it is then rerun the task. e.g. one way to do that would be to check the hash or create a copy of the file that was run last time.\n\nIf reducing the size of the ninja file would improve performance of parsing then surely extracting the contents of all those files would be worth doing.",
+      "parentUuid": "b83372f8_3930daa5",
+      "revId": "c4648f6fda4c8d099e0fcb236ca137691fed16a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
