@@ -1104,12 +1104,6 @@ var (
 		// 1.bazel-out/android_target-fastbuild/bin/prebuilts/tools/common/m2/_aar/robolectric-monitor-1.0.2-alpha1/classes_and_libs_merged.jar
 		"prebuilt_robolectric-monitor-1.0.2-alpha1",
 
-		// path property for filegroups
-		"conscrypt",                        // TODO(b/210751803), we don't handle path property for filegroups
-		"conscrypt-for-host",               // TODO(b/210751803), we don't handle path property for filegroups
-		"host-libprotobuf-java-full",       // TODO(b/210751803), we don't handle path property for filegroups
-		"libprotobuf-internal-python-srcs", // TODO(b/210751803), we don't handle path property for filegroups
-
 		// go deps.
 		// TODO: b/305091740 - Rely on bp2build_deps to remove these dependencies.
 		"analyze_bcpf",              // depends on bpmodify a blueprint_go_binary.
