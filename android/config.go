@@ -1496,6 +1496,10 @@ func (c *deviceConfig) DeviceKernelHeaderDirs() []string {
 	return c.config.productVariables.DeviceKernelHeaders
 }
 
+func (c *deviceConfig) JavaCoverageEnabled() bool {
+	return Bool(c.config.productVariables.JavaCoverage)
+}
+
 // JavaCoverageEnabledForPath returns whether Java code coverage is enabled for
 // path. Coverage is enabled by default when the product variable
 // JavaCoveragePaths is empty. If JavaCoveragePaths is not empty, coverage is
@@ -2060,7 +2064,10 @@ func (c *config) ApiSurfacesDir(s ApiSurface, version string) string {
 }
 
 func (c *config) BuildFromTextStub() bool {
-	return c.buildFromTextStub
+	// TODO: b/302320354 - Remove the coverage build specific logic once the
+	// robust solution for handling native properties in from-text stub build
+	// is implemented.
+	return c.buildFromTextStub && !c.deviceConfig.JavaCoverageEnabled()
 }
 
 func (c *config) SetBuildFromTextStub(b bool) {
