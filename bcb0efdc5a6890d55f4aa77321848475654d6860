@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9699c959_faea56f1",
+        "filename": "java/aar.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-10-16T17:54:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aea6d718_05e8e1be",
+      "range": {
+        "startLine": 201,
+        "startChar": 16,
+        "endLine": 201,
+        "endChar": 26
+      },
+      "revId": "bcb0efdc5a6890d55f4aa77321848475654d6860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ca26675_5872c0d5",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-16T17:47:05Z",
       "side": 1,
       "message": "```suggestion\n\tif len(assets) \u003e 0 {\n```",
+      "range": {
+        "startLine": 238,
+        "startChar": 4,
+        "endLine": 238,
+        "endChar": 17
+      },
+      "revId": "bcb0efdc5a6890d55f4aa77321848475654d6860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b8bc2b3_4a0f6422",
+        "filename": "java/aar.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-10-16T17:54:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ca26675_5872c0d5",
       "range": {
         "startLine": 238,
         "startChar": 4,
