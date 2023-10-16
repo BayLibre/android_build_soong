@@ -325,6 +325,7 @@ type ProductVariables struct {
 	ClangTidy  *bool   `json:",omitempty"`
 	TidyChecks *string `json:",omitempty"`
 
+	JavaCoverage             *bool    `json:",omitempty"`
 	JavaCoveragePaths        []string `json:",omitempty"`
 	JavaCoverageExcludePaths []string `json:",omitempty"`
 
