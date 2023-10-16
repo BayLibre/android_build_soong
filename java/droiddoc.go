@@ -62,7 +62,7 @@ type JavadocProperties struct {
 
 	// if not blank, set to the version of the sdk to compile against.
 	// Defaults to compiling against the current platform.
-	Sdk_version *string `android:"arch_variant"`
+	Sdk_version *string
 
 	// When targeting 1.9 and above, override the modules to use with --system,
 	// otherwise provides defaults libraries to add to the bootclasspath.
