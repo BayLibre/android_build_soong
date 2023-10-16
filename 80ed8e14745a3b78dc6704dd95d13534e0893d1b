@@ -70,6 +70,30 @@
       },
       "revId": "80ed8e14745a3b78dc6704dd95d13534e0893d1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d82875_4f94840f",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-10-16T16:13:37Z",
+      "side": 1,
+      "message": "Okay, I see your concern. I changed the path expansion to using `PathsRelativeToModuleSourceDir` with `IncludeDirs: false`. If someone passes a directory to `assets`, they will get something like:\n\n```\nerror: cts/hostsidetests/compilation/app/Android.bp:42:1: module \"CtsCompilationApp\" variant \"android_common\": module source path \"cts/hostsidetests/compilation/app/assets\" is a directory\n```",
+      "parentUuid": "5e19f197_4d25b830",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "80ed8e14745a3b78dc6704dd95d13534e0893d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
