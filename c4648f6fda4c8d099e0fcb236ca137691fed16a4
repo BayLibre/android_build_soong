@@ -52,6 +52,24 @@
       "parentUuid": "b2af6745_6a3b372d",
       "revId": "c4648f6fda4c8d099e0fcb236ca137691fed16a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83372f8_3930daa5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-16T22:31:14Z",
+      "side": 1,
+      "message": "I don\u0027t think even the reduced cost is worth it, the size of the build.ninja file is likely directly proportional to the parsing time.  Couldn\u0027t you just reformat the file locally with something like https://github.com/protocolbuffers/txtpbfmt if you wanted to read it?",
+      "parentUuid": "7c026857_dcb48bca",
+      "revId": "c4648f6fda4c8d099e0fcb236ca137691fed16a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
