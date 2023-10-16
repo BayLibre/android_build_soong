@@ -46,6 +46,7 @@ bootstrap_go_package {
         "dexpreopt_config_testing.go",
         "droiddoc.go",
         "droidstubs.go",
+        "droidstubs_bp2build.go",
         "fuzz.go",
         "gen.go",
         "generated_java_library.go",
