@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a14d75d_1d554ced",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-16T17:49:11Z",
+      "side": 1,
+      "message": "can you use a less verbose string so we don\u0027t expand the size of our metrics extensively?",
+      "range": {
+        "startLine": 802,
+        "startChar": 94,
+        "endLine": 802,
+        "endChar": 167
+      },
+      "revId": "465843fae16bc637dd3cc98fd6c39bf25d9a06b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
