@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71814a00_0e774301",
+        "filename": "android/code_metadata.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-10-16T17:50:11Z",
+      "side": 1,
+      "message": "nit: teamid? (Assuming this is how it is going to look like in Android.bp file)",
+      "range": {
+        "startLine": 70,
+        "startChar": 95,
+        "endLine": 70,
+        "endChar": 101
+      },
+      "revId": "31421ecb13f7faa016d0a25a5d5d06d3e4b38da5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d3e9f0e_a1f35591",
+        "filename": "android/code_metadata.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-10-16T17:50:11Z",
+      "side": 1,
+      "message": "nit: code? (same as above)",
+      "range": {
+        "startLine": 76,
+        "startChar": 94,
+        "endLine": 76,
+        "endChar": 98
+      },
+      "revId": "31421ecb13f7faa016d0a25a5d5d06d3e4b38da5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b366fa1_0818d646",
+        "filename": "android/code_metadata.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-10-16T17:50:11Z",
+      "side": 1,
+      "message": "nit: Targets to be attributed cannot be empty",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 77
+      },
+      "revId": "31421ecb13f7faa016d0a25a5d5d06d3e4b38da5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
