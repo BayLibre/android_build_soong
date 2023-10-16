@@ -437,7 +437,7 @@ var (
 		"system/libprocinfo":                                     Bp2BuildDefaultTrue,
 		"system/libvintf":                                        Bp2BuildDefaultTrue,
 		"system/libziparchive":                                   Bp2BuildDefaultTrueRecursively,
-		"system/linkerconfig":                                   Bp2BuildDefaultTrueRecursively,
+		"system/linkerconfig":                                    Bp2BuildDefaultTrueRecursively,
 		"system/logging":                                         Bp2BuildDefaultTrueRecursively,
 		"system/media":                                           Bp2BuildDefaultTrue,
 		"system/media/alsa_utils":                                Bp2BuildDefaultTrueRecursively,
@@ -1112,12 +1112,6 @@ var (
 		// ERROR: The dependencies for the following 1 jar(s) are not complete.
 		// 1.bazel-out/android_target-fastbuild/bin/prebuilts/tools/common/m2/_aar/robolectric-monitor-1.0.2-alpha1/classes_and_libs_merged.jar
 		"prebuilt_robolectric-monitor-1.0.2-alpha1",
-
-		// path property for filegroups
-		"conscrypt",                        // TODO(b/210751803), we don't handle path property for filegroups
-		"conscrypt-for-host",               // TODO(b/210751803), we don't handle path property for filegroups
-		"host-libprotobuf-java-full",       // TODO(b/210751803), we don't handle path property for filegroups
-		"libprotobuf-internal-python-srcs", // TODO(b/210751803), we don't handle path property for filegroups
 
 		// go deps:
 		"analyze_bcpf",              // depends on bpmodify a blueprint_go_binary.
