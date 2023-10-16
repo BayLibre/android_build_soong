@@ -22,6 +22,30 @@
       },
       "revId": "bc98b4151d924b142f270f476dfbba326993d6ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "456781b3_d90d4044",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1715,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-10-16T20:30:43Z",
+      "side": 0,
+      "message": "yeah, as far as I can tell",
+      "parentUuid": "8c868fcd_a124ec71",
+      "range": {
+        "startLine": 1715,
+        "startChar": 5,
+        "endLine": 1715,
+        "endChar": 23
+      },
+      "revId": "bc98b4151d924b142f270f476dfbba326993d6ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
