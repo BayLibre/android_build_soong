@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c868fcd_a124ec71",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1715,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-10-16T20:29:19Z",
+      "side": 0,
+      "message": "IIUC, is this function a clone of `pathForInstall`?",
+      "range": {
+        "startLine": 1715,
+        "startChar": 5,
+        "endLine": 1715,
+        "endChar": 23
+      },
+      "revId": "bc98b4151d924b142f270f476dfbba326993d6ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
