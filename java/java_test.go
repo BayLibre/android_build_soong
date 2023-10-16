@@ -2483,3 +2483,33 @@ func TestSdkLibraryProvidesSystemModulesToApiLibrary(t *testing.T) {
 	classPathFlag := "--classpath __SBOX_SANDBOX_DIR__/out/.intermediates/bar/android_common/turbine-combined/bar.jar"
 	android.AssertStringDoesContain(t, "command expected to contain classpath flag", manifestCommand, classPathFlag)
 }
+
+func TestDisableFromTextStubForCoverageBuild(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		PrepareForTestWithJavaSdkLibraryFiles,
+		PrepareForTestWithJacocoInstrumentation,
+		FixtureWithLastReleaseApis("foo"),
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.SetApiLibraries([]string{"foo"})
+			config.SetBuildFromTextStub(true)
+		}),
+		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+			variables.JavaCoverage = proptools.BoolPtr(true)
+		}),
+	).RunTestWithBp(t, `
+		java_sdk_library {
+			name: "foo",
+			srcs: ["A.java"],
+		}
+	`)
+	android.AssertBoolEquals(t, "stub module expected to depend on from-source stub",
+		true, CheckModuleHasDependency(t, result.TestContext,
+			apiScopePublic.stubsLibraryModuleName("foo"), "android_common",
+			apiScopePublic.sourceStubLibraryModuleName("foo")))
+
+	android.AssertBoolEquals(t, "stub module expected to not depend on from-text stub",
+		false, CheckModuleHasDependency(t, result.TestContext,
+			apiScopePublic.stubsLibraryModuleName("foo"), "android_common",
+			apiScopePublic.apiLibraryModuleName("foo")))
+}
