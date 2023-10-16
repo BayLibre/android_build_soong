@@ -46,6 +46,30 @@
       },
       "revId": "80ed8e14745a3b78dc6704dd95d13534e0893d1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e19f197_4d25b830",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-16T15:19:58Z",
+      "side": 1,
+      "message": "I forgot we only support `resource_zips`, and not `resource_files`.  My concern is that someone might pass a directory to `assets` instead of `asset_dirs`, which is likely to cause an obscure error.  `asset_files` would make it clearer that it shouldn\u0027t be a directory.  A check at the beginning of the rule that the input is not a directory would also help.",
+      "parentUuid": "09abf5dc_c49b848e",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "80ed8e14745a3b78dc6704dd95d13534e0893d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
