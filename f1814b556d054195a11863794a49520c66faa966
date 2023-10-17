@@ -34,6 +34,24 @@
       "parentUuid": "261ffe0c_30c92347",
       "revId": "f1814b556d054195a11863794a49520c66faa966",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75a683e7_410cf5db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-17T21:23:49Z",
+      "side": 1,
+      "message": "Okay yeah makes sense. I just made a change to my CL that should do the trick. Just having a single output now and `mv`-ing it from the sbox directory. So the only artifact is just the empty sbox dir.",
+      "parentUuid": "b50c3469_ff4787cb",
+      "revId": "f1814b556d054195a11863794a49520c66faa966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
