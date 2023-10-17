@@ -203,7 +203,10 @@ var (
 		"-Wl,-mllvm,-regalloc-enable-advisor=release",
 	}
 
-	deviceGlobalLldflags = append(deviceGlobalLdflags, commonGlobalLldflags...)
+	deviceGlobalLldflags = append(deviceGlobalLdflags,
+		"-Wl,--compress-debug-sections=zstd",
+		commonGlobalLldflags...,
+	)
 
 	hostGlobalCflags = []string{}
 
