@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2c935d0_5d5932c4",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-10-17T16:45:05Z",
+      "side": 1,
+      "message": "Wouldn\u0027t some modules be installable on multiple partitions?",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 10
+      },
+      "revId": "87476f216f7adf2c95c0bc70baa872e0ea31904c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe206ea_7239f5eb",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-10-17T16:45:05Z",
+      "side": 1,
+      "message": "Unit tests please?",
+      "range": {
+        "startLine": 625,
+        "startChar": 1,
+        "endLine": 640,
+        "endChar": 0
+      },
+      "revId": "87476f216f7adf2c95c0bc70baa872e0ea31904c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
