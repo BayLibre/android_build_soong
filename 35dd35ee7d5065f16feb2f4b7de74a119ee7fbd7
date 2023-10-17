@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0452040_ef6fc859",
+        "filename": "rust/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-17T22:10:05Z",
+      "side": 1,
+      "message": "You can\u0027t move the input file, it\u0027s the output file of another rule.  That would cause the other rule to think its output file is missing and rerun on every build.",
+      "revId": "35dd35ee7d5065f16feb2f4b7de74a119ee7fbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
