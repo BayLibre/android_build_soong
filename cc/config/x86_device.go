@@ -37,6 +37,10 @@ var (
 		"-Wl,--hash-style=gnu",
 	}
 
+	x86Lldflags = append(x86Ldflags,
+		"-Wl,--compress-debug-sections=zstd",
+	)
+
 	x86ArchVariantCflags = map[string][]string{
 		"": []string{
 			"-march=prescott",
@@ -102,7 +106,7 @@ func init() {
 	exportedVars.ExportStringListStaticVariable("X86ToolchainLdflags", []string{"-m32"})
 
 	exportedVars.ExportStringListStaticVariable("X86Ldflags", x86Ldflags)
-	exportedVars.ExportStringListStaticVariable("X86Lldflags", x86Ldflags)
+	exportedVars.ExportStringListStaticVariable("X86Lldflags", x86Lldflags)
 
 	// Clang cflags
 	exportedVars.ExportStringListStaticVariable("X86Cflags", x86Cflags)

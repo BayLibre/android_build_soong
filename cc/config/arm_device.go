@@ -37,7 +37,9 @@ var (
 		"-Wl,-m,armelf",
 	}
 
-	armLldflags = armLdflags
+	armLldflags = append(armLdflags,
+		"-Wl,--compress-debug-sections=zstd",
+	)
 
 	armFixCortexA8LdFlags = []string{"-Wl,--fix-cortex-a8"}
 

@@ -33,6 +33,10 @@ var (
 		"-Wl,--hash-style=gnu",
 	}
 
+	x86_64Lldflags = append(x86_64Ldflags,
+		"-Wl,--compress-debug-sections=zstd",
+	)
+
 	x86_64ArchVariantCflags = map[string][]string{
 		"": []string{
 			"-march=x86-64",
@@ -94,7 +98,7 @@ func init() {
 	exportedVars.ExportStringListStaticVariable("X86_64ToolchainLdflags", []string{"-m64"})
 
 	exportedVars.ExportStringListStaticVariable("X86_64Ldflags", x86_64Ldflags)
-	exportedVars.ExportStringListStaticVariable("X86_64Lldflags", x86_64Ldflags)
+	exportedVars.ExportStringListStaticVariable("X86_64Lldflags", x86_64Lldflags)
 
 	// Clang cflags
 	exportedVars.ExportStringListStaticVariable("X86_64Cflags", x86_64Cflags)

@@ -53,7 +53,9 @@ var (
 		"-Wl,-z,separate-code",
 	}
 
-	arm64Lldflags = arm64Ldflags
+	arm64Lldflags = append(arm64Ldflags,
+		"-Wl,--compress-debug-sections=zstd",
+	)
 
 	arm64Cppflags = []string{}
 
