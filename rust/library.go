@@ -946,3 +946,77 @@ func cargoBuildScriptBp2build(ctx android.Bp2buildMutatorContext, m *Module) *st
 
 	return &name
 }
+
+type ffiStaticAttributes struct {
+	Srcs            bazel.LabelListAttribute
+	Compile_data    bazel.LabelListAttribute
+	Crate_features  bazel.StringListAttribute
+	Crate_name      bazel.StringAttribute
+	Deps            bazel.LabelListAttribute
+	Edition         bazel.StringAttribute
+	Export_includes bazel.StringListAttribute
+	Proc_macro_deps bazel.LabelListAttribute
+	Rustc_flags     bazel.StringListAttribute
+}
+
+func ffiStaticBp2build(ctx android.Bp2buildMutatorContext, m *Module) {
+	lib := m.compiler.(*libraryDecorator)
+
+	srcs, compileData := srcsAndCompileDataAttrs(ctx, *lib.baseCompiler)
+
+	deps := android.BazelLabelForModuleDeps(ctx, append(
+		lib.baseCompiler.Properties.Rustlibs,
+		lib.baseCompiler.Properties.Rlibs...,
+	))
+
+	procMacroDeps := android.BazelLabelForModuleDeps(ctx, lib.baseCompiler.Properties.Proc_macros)
+
+	var rustcFLags []string
+	for _, cfg := range lib.baseCompiler.Properties.Cfgs {
+		rustcFLags = append(rustcFLags, fmt.Sprintf("--cfg=%s", cfg))
+	}
+
+	attrs := &ffiStaticAttributes{
+		Srcs: bazel.MakeLabelListAttribute(
+			srcs,
+		),
+		Compile_data: bazel.MakeLabelListAttribute(
+			compileData,
+		),
+		Crate_features: bazel.StringListAttribute{
+			Value: lib.baseCompiler.Properties.Features,
+		},
+		Crate_name: bazel.StringAttribute{
+			Value: &lib.baseCompiler.Properties.Crate_name,
+		},
+		Deps: bazel.MakeLabelListAttribute(
+			deps,
+		),
+		Edition: bazel.StringAttribute{
+			Value: lib.baseCompiler.Properties.Edition,
+		},
+		Export_includes: bazel.StringListAttribute{
+			Value: lib.Properties.Include_dirs,
+		},
+		Proc_macro_deps: bazel.MakeLabelListAttribute(
+			procMacroDeps,
+		),
+		Rustc_flags: bazel.StringListAttribute{
+			Value: append(
+				rustcFLags,
+				lib.baseCompiler.Properties.Flags...,
+			),
+		},
+	}
+
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "rust_ffi_static",
+			Bzl_load_location: "//build/bazel/rules/rust:rust_ffi_static.bzl",
+		},
+		android.CommonAttributes{
+			Name: m.Name(),
+		},
+		attrs,
+	)
+}
