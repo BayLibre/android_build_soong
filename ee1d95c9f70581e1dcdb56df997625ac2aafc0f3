@@ -34,6 +34,24 @@
       "parentUuid": "317368a3_47018f66",
       "revId": "ee1d95c9f70581e1dcdb56df997625ac2aafc0f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7110c9c7_a6e6e3b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-10-17T02:16:49Z",
+      "side": 1,
+      "message": "I have verified that `libperfetto_client_experimental` is bit identical. This is a cc static library that depends on generated sources previously failing when sandboxing was turned on.",
+      "parentUuid": "6bda280a_0bd27173",
+      "revId": "ee1d95c9f70581e1dcdb56df997625ac2aafc0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
