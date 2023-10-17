@@ -724,7 +724,7 @@ func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (convers
 
 		var targets []BazelTarget
 		var targetErrs []error
-
+		fmt.Println("mode", ctx.Mode())
 		switch ctx.Mode() {
 		case Bp2Build:
 			if aModule, ok := m.(android.Module); ok {
