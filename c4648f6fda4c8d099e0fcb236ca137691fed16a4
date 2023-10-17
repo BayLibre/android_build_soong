@@ -88,6 +88,24 @@
       "parentUuid": "b83372f8_3930daa5",
       "revId": "c4648f6fda4c8d099e0fcb236ca137691fed16a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d42eee7_e09fdd35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-17T18:07:52Z",
+      "side": 1,
+      "message": "I think there will be some tricky design questions on where to write the files and whether to do something so we don\u0027t accumulate old files, but I think this is a good idea and worth tracking at go/build-optimizations.",
+      "parentUuid": "00e0b7d3_82ebac51",
+      "revId": "c4648f6fda4c8d099e0fcb236ca137691fed16a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
