@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7084037_51d58779",
+        "filename": "bp2build/rust_ffi_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-18T21:53:01Z",
+      "side": 1,
+      "message": "nit indentation",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a69a315_d054a324",
+        "filename": "bp2build/rust_ffi_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-18T21:53:01Z",
+      "side": 1,
+      "message": "nit indentation",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30bcfcb6_88900ff2",
+        "filename": "bp2build/rust_ffi_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-18T21:53:01Z",
+      "side": 1,
+      "message": "nit indentation",
+      "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "301db0ce_0b32726f",
+        "filename": "bp2build/rust_ffi_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-18T21:53:01Z",
+      "side": 1,
+      "message": "nit indentation",
+      "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef9e949_67ca5a1c",
+        "filename": "rust/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-18T21:53:01Z",
+      "side": 1,
+      "message": "do we need this for `rust_ffi` as well?",
+      "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ffc060a_188bbe2c",
+        "filename": "rust/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-18T21:53:01Z",
+      "side": 1,
+      "message": "It looks like this is almost identical to the library bp2build converter. Would it make sense to have a `commonLibraryAttrs` function to share the implementation?",
+      "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
