@@ -497,6 +497,7 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 	if metalavaUseRbe(ctx) {
 		rule.Remoteable(android.RemoteRuleSupports{RBE: true})
 		execStrategy := ctx.Config().GetenvWithDefault("RBE_METALAVA_EXEC_STRATEGY", remoteexec.LocalExecStrategy)
+        compare := ctx.Config().GetenvWithDefault("RBE_METALAVA_COMPARE", false)
 		labels := map[string]string{"type": "tool", "name": "metalava"}
 		// TODO: metalava pool rejects these jobs
 		pool := ctx.Config().GetenvWithDefault("RBE_METALAVA_POOL", "java16")
@@ -505,6 +506,7 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 			ExecStrategy:    execStrategy,
 			ToolchainInputs: []string{config.JavaCmd(ctx).String()},
 			Platform:        map[string]string{remoteexec.PoolKey: pool},
+            Compare:         compare,
 		})
 	}
 
