@@ -84,6 +84,8 @@ type REParams struct {
 	// EnvironmentVariables is a list of environment variables whose values should be passed through
 	// to the remote execution.
 	EnvironmentVariables []string
+    // Boolean indicating whether to compare chosen exec strategy with local execution.
+    Compare bool
 }
 
 func init() {
@@ -134,6 +136,10 @@ func (r *REParams) wrapperArgs() string {
 		strategy = defaultExecStrategy
 	}
 	args += " --exec_strategy=" + strategy
+
+    if r.Compare {
+        args += " --compare=true"
+    }
 
 	if len(r.Inputs) > 0 {
 		args += " --inputs=" + strings.Join(r.Inputs, ",")
