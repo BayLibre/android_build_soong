@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bfe4f2a_943b0474",
+        "filename": "bp2build/bp2build_product_config_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-10-18T08:08:12Z",
+      "side": 1,
+      "message": "Where\u0027s `deps \u003d [\"foo\"]`?",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 14
+      },
+      "revId": "88db5c730f5140a770d02cd6c44d1bb6ce9ede73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
