@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5915d0b9_6808fb6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-10-18T10:36:17Z",
+      "side": 1,
+      "message": "It might be worth having two tests, one for sources and one for text.",
+      "revId": "04c6d9958652749937a4b5722c125edd0ba5f11a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
