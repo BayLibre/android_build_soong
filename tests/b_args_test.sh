@@ -8,9 +8,9 @@ BES_UUID="blank"
 OUT_DIR="arbitrary_out"
 b_args=$(formulate_b_args "build --config=nonsense foo:bar")
 
-if [[ $b_args != "build --profile=$OUT_DIR/bazel_metrics-profile --config=bp2build --invocation_id=$BES_UUID --config=metrics_data --config=nonsense foo:bar" ]]; then
+if [[ $b_args != "build --profile=$OUT_DIR/bazel_metrics-profile --config=bp2build --invocation_id=$BES_UUID --config=metrics_data --bes-keywords=android-b-builds --config=nonsense foo:bar" ]]; then
    echo "b args are malformed"
-   echo "Expected : build --profile=$OUT_DIR/bazel_metrics-profile --config=bp2build  --invocation_id=$BES_UUID --config=metrics_data --config=nonsense foo:bar"
+   echo "Expected : build --profile=$OUT_DIR/bazel_metrics-profile --config=bp2build  --invocation_id=$BES_UUID --config=metrics_data --bes-keywords=android-b-builds --config=nonsense foo:bar"
    echo "Actual: $b_args"
    exit 1
 fi
