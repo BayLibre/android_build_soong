@@ -1013,7 +1013,7 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 func (j *Module) collectJavacFlags(
 	ctx android.ModuleContext, flags javaBuilderFlags, srcFiles android.Paths) javaBuilderFlags {
 	// javac flags.
-	javacFlags := j.properties.Javacflags
+	var javacFlags []string
 
 	if ctx.Config().MinimizeJavaDebugInfo() && !ctx.Host() {
 		// For non-host binaries, override the -g flag passed globally to remove
@@ -1076,6 +1076,8 @@ func (j *Module) collectJavacFlags(
 				"--patch-module="+String(j.properties.Patch_module)+"="+strings.Join(patchPaths, ":"))
 		}
 	}
+
+	javacFlags = append(javacFlags, j.properties.Javacflags...)
 
 	if len(javacFlags) > 0 {
 		// optimization.
