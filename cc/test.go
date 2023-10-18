@@ -685,6 +685,7 @@ type testBinaryAttributes struct {
 	binaryAttributes
 
 	Gtest *bool
+	Require_root *bool
 
 	tidyAttributes
 	tradefed.TestConfigAttributes
@@ -746,6 +747,8 @@ func testBinaryBp2build(ctx android.Bp2buildMutatorContext, m *Module) {
 	// This ensures that if this property is not set in Android.bp file, it will not be set in BUILD file either
 	// cc_test macro will default gtest to True
 	testBinaryAttrs.Gtest = testBinary.LinkerProperties.Gtest
+
+	testBinaryAttrs.Require_root = testBinary.Properties.Require_root
 
 	addImplicitGtestDeps(ctx, &testBinaryAttrs, gtest, gtestIsolated)
 

@@ -631,3 +631,84 @@ cc_test {
 		},
 	})
 }
+
+
+func TestCcTest_RequireRootEnabled(t *testing.T) {
+	runCcTestTestCase(t, ccTestBp2buildTestCase{
+		description: "cc_test with require_root enabled",
+		stubbedBuildDefinitions: []string{"libgtest_main", "libgtest"},
+		blueprint: `
+cc_test {
+    name: "mytest",
+    host_supported: true,
+    srcs: ["test.cpp"],
+    require_root: true,
+}
+
+` + simpleModule("cc_library_static", "libgtest_main") +
+			simpleModule("cc_library_static", "libgtest"),
+		targets: []testBazelTarget{
+			{"cc_test", "mytest", AttrNameToString{
+				"deps": `[
+        ":libgtest_main",
+        ":libgtest",
+    ]`,
+				"local_includes": `["."]`,
+				"srcs": `["test.cpp"]`,
+				"require_root": `True`,
+				"runs_on": `[
+        "host_without_device",
+        "device",
+    ]`,
+				"features": `select({
+        "//build/bazel_common_rules/platforms/os_arch:android_arm64": [
+            "memtag_heap",
+            "diag_memtag_heap",
+        ],
+        "//conditions:default": [],
+    })`,
+			},
+			},
+		},
+	})
+}
+
+func TestCcTest_RequireRootDisabled(t *testing.T) {
+	runCcTestTestCase(t, ccTestBp2buildTestCase{
+		description: "cc_test with require_root enabled",
+		stubbedBuildDefinitions: []string{"libgtest_main", "libgtest"},
+		blueprint: `
+cc_test {
+    name: "mytest",
+    host_supported: true,
+    srcs: ["test.cpp"],
+    require_root: false,
+}
+
+` + simpleModule("cc_library_static", "libgtest_main") +
+			simpleModule("cc_library_static", "libgtest"),
+		targets: []testBazelTarget{
+			{"cc_test", "mytest", AttrNameToString{
+				"deps": `[
+        ":libgtest_main",
+        ":libgtest",
+    ]`,
+				"local_includes": `["."]`,
+				"srcs": `["test.cpp"]`,
+				"require_root": `False`,
+				"runs_on": `[
+        "host_without_device",
+        "device",
+    ]`,
+				"features": `select({
+        "//build/bazel_common_rules/platforms/os_arch:android_arm64": [
+            "memtag_heap",
+            "diag_memtag_heap",
+        ],
+        "//conditions:default": [],
+    })`,
+			},
+			},
+		},
+	})
+}
