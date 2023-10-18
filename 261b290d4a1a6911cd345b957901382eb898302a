@@ -22,6 +22,30 @@
       },
       "revId": "261b290d4a1a6911cd345b957901382eb898302a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eec0ebf_b9ce897c",
+        "filename": "rust/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2023-10-18T20:46:30Z",
+      "side": 1,
+      "message": "This CL was here more as a proof of concept or conversation topic.  I\u0027m going to abandon it.  That being said, I don\u0027t see anything wrong with this being an environment variable as long as we trust our coworkers not to go setting the value in the build rules.",
+      "parentUuid": "75c6bb28_6c0c52a5",
+      "range": {
+        "startLine": 284,
+        "startChar": 39,
+        "endLine": 284,
+        "endChar": 64
+      },
+      "revId": "261b290d4a1a6911cd345b957901382eb898302a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
