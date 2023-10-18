@@ -18,6 +18,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"android/soong/ui/metrics/bp2build_metrics_proto"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -109,7 +110,9 @@ func (m *PythonLibraryModule) makeArchVariantBaseAttributes(ctx android.Bp2build
 		}
 
 		if !strings.HasSuffix(ctx.ModuleDir(), "/"+pkg_path) && ctx.ModuleDir() != pkg_path {
-			ctx.ModuleErrorf("Currently, bp2build only supports pkg_paths that are the same as the folders the Android.bp file is in. pkg_path: %s, module directory: %s", pkg_path, ctx.ModuleDir())
+			// TODO: Make another enum.
+			ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "pkg_path")
+			//ctx.ModuleErrorf("Currently, bp2build only supports pkg_paths that are the same as the folders the Android.bp file is in. pkg_path: %s, module directory: %s", pkg_path, ctx.ModuleDir())
 		}
 		numFolders := strings.Count(pkg_path, "/") + 1
 		dots := make([]string, numFolders)

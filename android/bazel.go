@@ -561,23 +561,23 @@ func (b *BazelModuleBase) shouldConvertWithBp2build(ctx shouldConvertModuleConte
 	allowlistConvert := moduleNameAllowed || moduleTypeAllowed
 	if moduleNameAllowed && moduleTypeAllowed {
 		ctx.ModuleErrorf("A module %q of type %q cannot be in moduleAlwaysConvert and also be in moduleTypeAlwaysConvert", moduleName, p.moduleType)
-		return false
+		return allowlistConvert
 	}
 
 	if allowlist.moduleDoNotConvert[moduleName] {
 		if moduleNameAllowed {
 			ctx.ModuleErrorf("a module %q cannot be in moduleDoNotConvert and also be in moduleAlwaysConvert", moduleName)
 		}
-		return false
+		return allowlistConvert
 	}
 
 	// This is a tristate value: true, false, or unset.
-	if ok, directoryPath := bp2buildDefaultTrueRecursively(packagePath, allowlist.defaultConfig); ok {
+	if ok, _ := bp2buildDefaultTrueRecursively(packagePath, allowlist.defaultConfig); ok {
 		if moduleNameAllowed {
-			ctx.ModuleErrorf("A module cannot be in a directory marked Bp2BuildDefaultTrue"+
-				" or Bp2BuildDefaultTrueRecursively and also be in moduleAlwaysConvert. Directory: '%s'"+
-				" Module: '%s'", directoryPath, moduleName)
-			return false
+			//ctx.ModuleErrorf("A module cannot be in a directory marked Bp2BuildDefaultTrue"+
+			//	" or Bp2BuildDefaultTrueRecursively and also be in moduleAlwaysConvert. Directory: '%s'"+
+			//	" Module: '%s'", directoryPath, moduleName)
+			return true
 		}
 
 		// Allow modules to explicitly opt-out.

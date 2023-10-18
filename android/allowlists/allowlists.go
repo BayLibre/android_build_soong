@@ -49,14 +49,22 @@ const (
 
 var (
 	Bp2buildDefaultConfig = Bp2BuildConfig{
-		"art":                                   Bp2BuildDefaultTrue,
+		"art":         Bp2BuildDefaultTrueRecursively,
+		"bionic":      Bp2BuildDefaultTrueRecursively,
+		"bootable":    Bp2BuildDefaultTrueRecursively,
+		"build":       Bp2BuildDefaultTrueRecursively,
+		"cts":         Bp2BuildDefaultTrueRecursively,
+		"dalvik":      Bp2BuildDefaultTrueRecursively,
+		"developers":  Bp2BuildDefaultTrueRecursively,
+		"development": Bp2BuildDefaultTrueRecursively,
+		"device":      Bp2BuildDefaultTrueRecursively,
+
 		"art/libartbase":                        Bp2BuildDefaultTrueRecursively,
 		"art/libartpalette":                     Bp2BuildDefaultTrueRecursively,
 		"art/libdexfile":                        Bp2BuildDefaultTrueRecursively,
 		"art/libnativebridge":                   Bp2BuildDefaultTrueRecursively,
 		"art/runtime":                           Bp2BuildDefaultTrueRecursively,
 		"art/tools":                             Bp2BuildDefaultTrue,
-		"bionic":                                Bp2BuildDefaultTrueRecursively,
 		"bootable/recovery/applypatch":          Bp2BuildDefaultTrue,
 		"bootable/recovery/minadbd":             Bp2BuildDefaultTrue,
 		"bootable/recovery/minui":               Bp2BuildDefaultTrue,

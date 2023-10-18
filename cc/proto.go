@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"android/soong/ui/metrics/bp2build_metrics_proto"
 	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
@@ -206,7 +207,8 @@ func bp2buildProto(ctx android.Bp2buildMutatorContext, m *Module, protoSrcs baze
 		rule_class = "cc_proto_library"
 		depName = "libprotobuf-cpp-full"
 	default:
-		ctx.PropertyErrorf("proto.type", "cannot handle conversion at this time: %q", typ)
+		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "type")
+		//ctx.PropertyErrorf("proto.type", "cannot handle conversion at this time: %q", typ)
 	}
 
 	dep := android.BazelLabelForModuleDepSingle(ctx, depName)
