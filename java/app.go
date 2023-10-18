@@ -1648,6 +1648,7 @@ type bazelAndroidAppAttributes struct {
 	Optimize         *bool
 	Proguard_specs   bazel.LabelListAttribute
 	Updatable        *bool
+	Compile_multilib *string
 }
 
 func (b bazelAapt) ConvertJavaResources(ctx android.Bp2buildMutatorContext, javaAttrs *javaCommonAttributes) bool {
@@ -1658,6 +1659,10 @@ func (b bazelAapt) ConvertJavaResources(ctx android.Bp2buildMutatorContext, java
 	}
 	return hasJavaResources
 }
+
+var (
+	bp2buildSupportedCompileMultilib = []string{"both", "64", "32"}
+)
 
 func convertWithBp2build(ctx android.Bp2buildMutatorContext, a *AndroidApp) (bool, android.CommonAttributes, *bazelAndroidAppAttributes) {
 	aapt, supported := a.convertAaptAttrsWithBp2Build(ctx)
@@ -1678,6 +1683,13 @@ func convertWithBp2build(ctx android.Bp2buildMutatorContext, a *AndroidApp) (boo
 		)
 		return false, android.CommonAttributes{}, &bazelAndroidAppAttributes{}
 	}
+	if a.CompileMultilib() != nil && !android.InList(proptools.String(a.CompileMultilib()), bp2buildSupportedCompileMultilib) {
+		ctx.MarkBp2buildUnconvertible(
+			bp2build_metrics_proto.UnconvertedReasonType_UNSUPPORTED,
+			"TODO - b/295362498: Add bp2build support for compile_mulitilib: "+proptools.String(a.CompileMultilib()),
+		)
+		return false, android.CommonAttributes{}, &bazelAndroidAppAttributes{}
+	}
 
 	certificate, certificateName := android.BazelStringOrLabelFromProp(ctx, a.overridableAppProperties.Certificate)
 
@@ -1691,6 +1703,7 @@ func convertWithBp2build(ctx android.Bp2buildMutatorContext, a *AndroidApp) (boo
 		Custom_package:   a.overridableAppProperties.Package_name,
 		Certificate:      certificate,
 		Certificate_name: certificateName,
+		Compile_multilib: a.CompileMultilib(),
 		Manifest_values:  manifestValues,
 		Updatable:        a.appProperties.Updatable,
 	}
