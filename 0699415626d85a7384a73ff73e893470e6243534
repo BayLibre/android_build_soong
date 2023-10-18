@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad6a2fcb_19bb55cb",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-10-18T17:20:40Z",
+      "side": 1,
+      "message": "Can you make this \"dir\" instead? This shortens the detail string (thus shortening the metrics size). The \"not supported\" part of the string is implied.",
+      "revId": "0699415626d85a7384a73ff73e893470e6243534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
