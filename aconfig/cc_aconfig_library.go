@@ -167,7 +167,15 @@ func (this *CcAconfigLibraryCallbacks) GeneratorBp2build(ctx android.Bp2buildMut
 		Rule_class:        "cc_aconfig_library",
 		Bzl_load_location: "//build/bazel/rules/cc:cc_aconfig_library.bzl",
 	}
+	tags := []string{"apex_available=//apex_available:anyapex"}
 
-	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: ctx.ModuleName()}, &attrs)
+	ctx.CreateBazelTargetModule(
+		props,
+		android.CommonAttributes{
+			Name: ctx.ModuleName(),
+			Tags: bazel.MakeStringListAttribute(tags),
+		},
+		&attrs)
+
 	return true
 }

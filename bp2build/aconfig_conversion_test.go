@@ -128,6 +128,7 @@ func TestCcAconfigLibrary(t *testing.T) {
 			AttrNameToString{
 				"aconfig_declarations":   `":foo_aconfig_declarations"`,
 				"dynamic_deps":           `[":server_configurable_flags"]`,
+				"tags":                   `["apex_available=//apex_available:anyapex"]`,
 				"target_compatible_with": `["//build/bazel_common_rules/platforms/os:android"]`,
 			},
 		)}
