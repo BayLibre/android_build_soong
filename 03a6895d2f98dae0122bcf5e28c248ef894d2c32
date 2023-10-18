@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51509422_5cabf0c4",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1799,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-10-18T18:07:22Z",
+      "side": 1,
+      "message": "It wasnt showing up in my search, so I have created a new one b/306197073 for potential deduping later.",
+      "parentUuid": "e457b791_5d87f3e2",
+      "range": {
+        "startLine": 1799,
+        "startChar": 5,
+        "endLine": 1799,
+        "endChar": 9
+      },
+      "revId": "03a6895d2f98dae0122bcf5e28c248ef894d2c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6000149_c50e238f",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-18T17:08:31Z",
       "side": 1,
       "message": "can you file a tracking bug for this?",
+      "range": {
+        "startLine": 1806,
+        "startChar": 2,
+        "endLine": 1806,
+        "endChar": 34
+      },
+      "revId": "03a6895d2f98dae0122bcf5e28c248ef894d2c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "238a42e8_754a4f41",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-10-18T18:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6000149_c50e238f",
       "range": {
         "startLine": 1806,
         "startChar": 2,
