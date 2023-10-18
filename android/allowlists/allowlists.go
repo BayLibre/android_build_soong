@@ -1013,6 +1013,7 @@ var (
 		"mainline_modules_sdks_test",
 
 		"fake_device_config",
+		"TestPartitionOpener_group",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
