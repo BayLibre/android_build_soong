@@ -318,6 +318,7 @@ func platformMappingSingleProduct(
 		result.WriteString(fmt.Sprintf("    --//build/bazel/product_config:default_app_certificate=%s\n", proptools.String(productVariables.DefaultAppCertificate)))
 		result.WriteString(fmt.Sprintf("    --//build/bazel/product_config:default_app_certificate_filegroup=%s\n", defaultAppCertificateFilegroup))
 		result.WriteString(fmt.Sprintf("    --//build/bazel/product_config:device_abi=%s\n", strings.Join(productVariables.DeviceAbi, ",")))
+		result.WriteString(fmt.Sprintf("    --//build/bazel/product_config:device_secondary_abi=%s\n", strings.Join(productVariables.DeviceSecondaryAbi, ",")))
 		result.WriteString(fmt.Sprintf("    --//build/bazel/product_config:device_max_page_size_supported=%s\n", proptools.String(productVariables.DeviceMaxPageSizeSupported)))
 		result.WriteString(fmt.Sprintf("    --//build/bazel/product_config:device_name=%s\n", proptools.String(productVariables.DeviceName)))
 		result.WriteString(fmt.Sprintf("    --//build/bazel/product_config:device_page_size_agnostic=%t\n", proptools.Bool(productVariables.DevicePageSizeAgnostic)))
