@@ -1359,6 +1359,9 @@ func (c *configImpl) rbeCacheDir() string {
 			return v
 		}
 	}
+	if v, ok := c.environ.Get("HOME"); ok {
+		return shared.JoinPath(v, ".config", "rbe")
+	}
 	return shared.JoinPath(c.SoongOutDir(), "rbe")
 }
 
