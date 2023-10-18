@@ -16,6 +16,23 @@
       "message": "@colefaust@google.com would you mind taking a look?",
       "revId": "3ba9e6f23cd243c6b9f090c66df2d9e06cc44b46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ae537e_64e047c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-10-18T22:47:15Z",
+      "side": 1,
+      "message": "Deferring to Colin on this one",
+      "revId": "3ba9e6f23cd243c6b9f090c66df2d9e06cc44b46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
