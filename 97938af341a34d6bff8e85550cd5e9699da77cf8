@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710ca6ed_f49c66b4",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-18T23:07:59Z",
+      "side": 1,
+      "message": "Can you explain what the expected outcome is when `compile_dex` and `installable` have conflicting values?",
+      "revId": "97938af341a34d6bff8e85550cd5e9699da77cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c655c98_dafdf7b5",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-18T23:07:59Z",
+      "side": 1,
+      "message": "nit: do you mind adding a comment here that this module is not converted as it contains kotlin sources?",
+      "revId": "97938af341a34d6bff8e85550cd5e9699da77cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b789f14_11711db2",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 3312,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-18T23:07:59Z",
+      "side": 1,
+      "message": "nit: can we combine the two conditionals into the top level `if bp2BuildInfo.compileDex`?",
+      "range": {
+        "startLine": 3299,
+        "startChar": 0,
+        "endLine": 3312,
+        "endChar": 70
+      },
+      "revId": "97938af341a34d6bff8e85550cd5e9699da77cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
