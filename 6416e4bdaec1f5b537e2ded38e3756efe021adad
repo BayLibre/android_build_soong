@@ -113,6 +113,24 @@
       "message": "It looks like this is almost identical to the library bp2build converter. Would it make sense to have a `commonLibraryAttrs` function to share the implementation?",
       "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a757717b_8c8a4784",
+        "filename": "rust/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-10-18T22:05:03Z",
+      "side": 1,
+      "message": "This function is already reusing `srcsAndCompileDataAttrs`. The rest is mostly straightforward 1-to-1 mapping from the props to attributes. I could also move the `cfgs` conversion to a function and reuse it as well.\n\nRust ffi looks almost identical to library except for\n\n1. It doesn\u0027t have cargo build script\n2. It has export_includes\n\nBut I like the idea of moving common attributes conversion to a function. I\u0027ll address your comment.",
+      "parentUuid": "6ffc060a_188bbe2c",
+      "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
