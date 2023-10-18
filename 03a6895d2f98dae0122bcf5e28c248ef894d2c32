@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e457b791_5d87f3e2",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1799,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-18T17:08:31Z",
+      "side": 1,
+      "message": "i think there\u0027s a tracking bug for this, if so, mind adding it here?",
+      "range": {
+        "startLine": 1799,
+        "startChar": 5,
+        "endLine": 1799,
+        "endChar": 9
+      },
+      "revId": "03a6895d2f98dae0122bcf5e28c248ef894d2c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6000149_c50e238f",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-18T17:08:31Z",
+      "side": 1,
+      "message": "can you file a tracking bug for this?",
+      "range": {
+        "startLine": 1806,
+        "startChar": 2,
+        "endLine": 1806,
+        "endChar": 34
+      },
+      "revId": "03a6895d2f98dae0122bcf5e28c248ef894d2c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
