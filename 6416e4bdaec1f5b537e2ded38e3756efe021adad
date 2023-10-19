@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5434776_51610027",
+        "filename": "bp2build/rust_ffi_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-10-19T15:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7084037_51d58779",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a69a315_d054a324",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-18T21:53:01Z",
       "side": 1,
       "message": "nit indentation",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd4973e_88021631",
+        "filename": "bp2build/rust_ffi_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-10-19T15:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a69a315_d054a324",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba4a3e35_85089c1c",
+        "filename": "bp2build/rust_ffi_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-10-19T15:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30bcfcb6_88900ff2",
+      "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "301db0ce_0b32726f",
@@ -81,6 +147,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb4b3beb_7c1ed12e",
+        "filename": "bp2build/rust_ffi_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-10-19T15:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "301db0ce_0b32726f",
+      "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cef9e949_67ca5a1c",
@@ -94,6 +178,24 @@
       "writtenOn": "2023-10-18T21:53:01Z",
       "side": 1,
       "message": "do we need this for `rust_ffi` as well?",
+      "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a10497_674f578d",
+        "filename": "rust/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-10-19T15:33:02Z",
+      "side": 1,
+      "message": "`cargoBuildScriptBp2build` is currently scoped to just a single module `libprotobuf` until we figure out a more generic solution b/297364081. However, we can still move it to `commonLibraryAttrsBp2build`.",
+      "parentUuid": "cef9e949_67ca5a1c",
       "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -129,6 +231,24 @@
       "side": 1,
       "message": "This function is already reusing `srcsAndCompileDataAttrs`. The rest is mostly straightforward 1-to-1 mapping from the props to attributes. I could also move the `cfgs` conversion to a function and reuse it as well.\n\nRust ffi looks almost identical to library except for\n\n1. It doesn\u0027t have cargo build script\n2. It has export_includes\n\nBut I like the idea of moving common attributes conversion to a function. I\u0027ll address your comment.",
       "parentUuid": "6ffc060a_188bbe2c",
+      "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56365c90_b8860abe",
+        "filename": "rust/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-10-19T15:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a757717b_8c8a4784",
       "revId": "6416e4bdaec1f5b537e2ded38e3756efe021adad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
