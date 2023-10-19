@@ -33,6 +33,23 @@
       "message": "Deferring to Colin on this one",
       "revId": "3ba9e6f23cd243c6b9f090c66df2d9e06cc44b46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f7b1f51_bfb0ca58",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-19T20:30:00Z",
+      "side": 1,
+      "message": "This should go in `deviceGlobalLdFlags`, and then you can remove it from `*_device.go`",
+      "revId": "3ba9e6f23cd243c6b9f090c66df2d9e06cc44b46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
