@@ -50,6 +50,24 @@
       "message": "This should go in `deviceGlobalLdFlags`, and then you can remove it from `*_device.go`",
       "revId": "3ba9e6f23cd243c6b9f090c66df2d9e06cc44b46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad61f5b_555272c2",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1998815
+      },
+      "writtenOn": "2023-10-19T22:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f7b1f51_bfb0ca58",
+      "revId": "3ba9e6f23cd243c6b9f090c66df2d9e06cc44b46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
