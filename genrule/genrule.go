@@ -161,6 +161,7 @@ type Module struct {
 	android.DefaultableModuleBase
 	android.BazelModuleBase
 	android.ApexModuleBase
+	android.RawOutput
 
 	// For other packages to make their own genrules with extra
 	// properties
@@ -944,6 +945,10 @@ func (m *Module) ConvertWithBp2build(ctx android.Bp2buildMutatorContext) {
 		srcs_labels = android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs)
 		srcs = bazel.MakeLabelListAttribute(srcs_labels)
 	}
+
+	//if m.Name() == "conscrypt_generated_constants" {
+	//	fmt.Println("22222222222", m.RawOutputFiles(ctx))
+	//}
 
 	var allReplacements bazel.LabelList
 	allReplacements.Append(tools.Value)
