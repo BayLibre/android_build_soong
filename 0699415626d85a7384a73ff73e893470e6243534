@@ -16,6 +16,24 @@
       "message": "Can you make this \"dir\" instead? This shortens the detail string (thus shortening the metrics size). The \"not supported\" part of the string is implied.",
       "revId": "0699415626d85a7384a73ff73e893470e6243534",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7042ab00_e926fcda",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-19T16:57:54Z",
+      "side": 1,
+      "message": "Thanks Chris. Done.",
+      "parentUuid": "ad6a2fcb_19bb55cb",
+      "revId": "0699415626d85a7384a73ff73e893470e6243534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
