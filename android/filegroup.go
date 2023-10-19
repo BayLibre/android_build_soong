@@ -15,6 +15,7 @@
 package android
 
 import (
+	"fmt"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -375,6 +376,123 @@ func (fg *fileGroup) getFileGroupAsLibraryLabel(ctx BazelConversionPathContext) 
 	} else {
 		return fg.GetBazelLabel(ctx, fg)
 	}
+}
+
+type srcsCategory struct {
+	javaRelated bazel.LabelList
+	logtags     bazel.LabelList
+	aidl        bazel.LabelList
+	proto       bazel.LabelList
+	other       bazel.LabelList
+	hasKt       bool
+}
+
+func categorizeSrcs(ctx Bp2buildMutatorContext, srcs bazel.LabelListAttribute) srcsCategory {
+	category := srcsCategory{}
+	// TODO: include +, exclude -
+	for _, src := range srcs.Value.Includes {
+		category = updateSrcsCategoryFromSingleSource(ctx, category, src, true)
+	}
+	for _, excludedSrc := range srcs.Value.Excludes {
+		category = updateSrcsCategoryFromSingleSource(ctx, category, excludedSrc, false)
+	}
+	// todo: add has Kt here
+	return category
+}
+
+func updateSrcsCategoryFromSingleSource(ctx Bp2buildMutatorContext, category srcsCategory, src bazel.Label, include bool) srcsCategory {
+	// The reason memoization is not used here:
+	// 1. to avoid the potential issue that modules have the same name
+	//    but in different packages.
+	// 2. the max recursion dep is not large(less than 5).
+
+	// src refers to a file
+	if !strings.HasPrefix(src.OriginalModuleName, ":") {
+		category = updateSrcCategroyFromFile(category, src, include)
+		return category
+	}
+
+	// src refers to a module
+	// Currently only handles filegroup, genrule, since these are the only types
+	// that can propagate/produce .java, .kt, .srcjar, .aidl, .proto, .logtags files.
+	// If there is new module type here in the future, just expanding
+	// the conditions will do the work.
+	rawModule, _ := ctx.ModuleFromName(src.OriginalModuleName)
+	rawModuleType := ctx.OtherModuleType(rawModule)
+	if rawModuleType == "file_group" {
+		m := rawModule.(*fileGroup)
+
+		if !include && len(m.properties.Exclude_srcs) != 0 {
+			// prohibit the case that a filegroup in another filegroup's Exclude_srcs still has Exclude_srcs property.
+			ctx.PropertyErrorf("Exclude_srcs", "A filegroup in another filegroup's Exclude_srcs still has Exclude_srcs property. "+m.Name())
+		}
+
+		fgSrcs := bazel.MakeLabelListAttribute(
+			BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs))
+
+		for _, s := range fgSrcs.Value.Includes {
+			category = updateSrcsCategoryFromSingleSource(ctx, category, s, include)
+		}
+		for _, s := range fgSrcs.Value.Excludes {
+			// There is no existing instance that a filegroup in Exclude_srcs still has Exclude_srcs prop.
+			category = updateSrcsCategoryFromSingleSource(ctx, category, s, false)
+		}
+	} else if rawModuleType == "genrule" {
+		// a := ctx.Module().(*gen)
+		fmt.Println(outputFilesForModule(ctx, rawModule, ""))
+		//	for _, f := range m.GeneratedSourceFiles() {
+		//		l := BazelLabelForModuleSrcSingle(ctx, f.String())
+		//		updateSrcCategroyFromFile(category, l, include)
+	} else {
+		if include {
+			category.other.Add(&src)
+		} else {
+			category.other.AddExclude(&src)
+		}
+	}
+	return category
+}
+
+func updateSrcCategroyFromFile(category srcsCategory, file bazel.Label, include bool) srcsCategory {
+	ext := filepath.Ext(file.OriginalModuleName)
+	switch ext {
+	case ".java", ".kt", ".srcjar":
+		if include {
+			category.javaRelated.Add(&file)
+		} else {
+			category.javaRelated.AddExclude(&file)
+		}
+		// category.javaRelated.Add(&file)
+	case ".logtags":
+		if include {
+			category.logtags.Add(&file)
+		} else {
+			category.logtags.AddExclude(&file)
+		}
+		// category.logtags.Add(&file)
+	case ".aidl":
+		if include {
+			category.aidl.Add(&file)
+		} else {
+			category.aidl.AddExclude(&file)
+		}
+		// category.aidl.Add(&file)
+	case ".proto":
+		if include {
+			category.proto.Add(&file)
+		} else {
+			category.proto.AddExclude(&file)
+		}
+		// category.proto.Add(&file)
+	default:
+		if include {
+			category.other.Add(&file)
+		} else {
+			category.other.AddExclude(&file)
+		}
+		// category.other.Add(&file)
+	}
+	return category
 }
 
 // Given a name in srcs prop, check to see if the name references a filegroup

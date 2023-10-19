@@ -437,7 +437,7 @@ var (
 		"system/libprocinfo":                                     Bp2BuildDefaultTrue,
 		"system/libvintf":                                        Bp2BuildDefaultTrue,
 		"system/libziparchive":                                   Bp2BuildDefaultTrueRecursively,
-		"system/linkerconfig":                                   Bp2BuildDefaultTrueRecursively,
+		"system/linkerconfig":                                    Bp2BuildDefaultTrueRecursively,
 		"system/logging":                                         Bp2BuildDefaultTrueRecursively,
 		"system/media":                                           Bp2BuildDefaultTrue,
 		"system/media/alsa_utils":                                Bp2BuildDefaultTrueRecursively,
@@ -1005,6 +1005,7 @@ var (
 		"tradefed-device-build-interfaces",
 		"tradefed-invocation-interfaces",
 		"tradefed-lib-core",
+		"framework-appsearch-internal-sources",
 
 		"libandroid_net_connectivity_com_android_net_module_util_jni",
 		"libservice-connectivity",
