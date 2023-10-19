@@ -16,6 +16,57 @@
       "message": "You can\u0027t move the input file, it\u0027s the output file of another rule.  That would cause the other rule to think its output file is missing and rerun on every build.",
       "revId": "35dd35ee7d5065f16feb2f4b7de74a119ee7fbd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4432771_ba6b4ecc",
+        "filename": "rust/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-10-19T15:47:37Z",
+      "side": 1,
+      "message": "Was `AR\u003d` env var set somewhere else before?",
+      "revId": "35dd35ee7d5065f16feb2f4b7de74a119ee7fbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "542f25da_7f9848e5",
+        "filename": "rust/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-10-19T15:47:37Z",
+      "side": 1,
+      "message": "I filed b/305953538. We might also need to sandbox cc headers for ffi modules. We can address this in a separate CL.",
+      "revId": "35dd35ee7d5065f16feb2f4b7de74a119ee7fbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "855130e4_54d77fd1",
+        "filename": "rust/rust_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-10-19T15:47:37Z",
+      "side": 1,
+      "message": "fizzBuzzRustc might be a more accurate name? It would be even better if we can confirm that the linker flags are in `--link-args` flag passed to `rustc`.",
+      "revId": "35dd35ee7d5065f16feb2f4b7de74a119ee7fbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
