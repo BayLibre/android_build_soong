@@ -116,6 +116,30 @@
       },
       "revId": "97938af341a34d6bff8e85550cd5e9699da77cf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c9f76ef_b28ed029",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 3312,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-19T03:03:41Z",
+      "side": 1,
+      "message": "Looking at this more closely, I agree with you that this cannot be handled with a single `kotlin` and `compileDex` calls. I don\u0027t have strong opinions regarding this. Thanks for the explanation!",
+      "parentUuid": "de057468_9edaecf6",
+      "range": {
+        "startLine": 3299,
+        "startChar": 0,
+        "endLine": 3312,
+        "endChar": 70
+      },
+      "revId": "97938af341a34d6bff8e85550cd5e9699da77cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
