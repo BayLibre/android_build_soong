@@ -125,6 +125,10 @@ filegroup {
         "aidl/foo.aidl",
         "buf.proto",
     ]`}),
+			MakeBazelTargetNoRestrictions("filegroup", "foo_aidl_filegroup", AttrNameToString{
+				"srcs": `["aidl/foo.aidl"]`}),
+			MakeBazelTargetNoRestrictions("filegroup", "foo_proto_filegroup", AttrNameToString{
+				"srcs": `["buf.proto"]`}),
 		}})
 }
 
@@ -177,6 +181,8 @@ filegroup {
         "foo.proto",
         "buf.cpp",
     ]`}),
+			MakeBazelTargetNoRestrictions("filegroup", "foo_proto_filegroup", AttrNameToString{
+				"srcs": `["foo.proto"]`}),
 		}})
 }
 
@@ -201,5 +207,168 @@ filegroup {
         "apex_available=//apex_available:anyapex",
         "manual",
     ]`}),
+		}})
+}
+
+func TestFilegroupWithVariousSrcs(t *testing.T) {
+	runFilegroupTestCase(t, Bp2buildTestCase{
+		Description:             "filegroup that has modules and files with various extensions(including .kt) as srcs",
+		StubbedBuildDefinitions: []string{"a1_java", "b1_kt", "c1_srcjar", "d1_logtags", "e1_aidl", "f1_proto", "g1_txt"},
+		Filesystem:              map[string]string{},
+		Blueprint: `
+filegroup {
+    name: "foo",
+    srcs: [
+        ":a1_java",
+        ":b1_kt",
+        ":c1_srcjar",
+        ":d1_logtags",
+        ":e1_aidl",
+        ":f1_proto",
+        ":g1_txt",
+        "a2.java",
+        "b2.kt",
+        "c2.srcjar",
+        "d2.logtags",
+        "e2.aidl",
+        "f2.proto",
+        "g2.txt",
+    ],
+}
+
+filegroup {
+    name: "a1_java",
+    srcs: ["a1.java"],
+}
+
+filegroup {
+    name: "b1_kt",
+    srcs: ["b1.kt"],
+}
+
+filegroup {
+    name: "c1_srcjar",
+    srcs: ["c1.srcjar"],
+}
+
+filegroup {
+    name: "d1_logtags",
+    srcs: ["d1.logtags"],
+}
+
+filegroup {
+    name: "e1_aidl",
+    srcs: ["e1.aidl"],
+}
+
+filegroup {
+    name: "f1_proto",
+    srcs: ["f1.proto"],
+}
+
+filegroup {
+    name: "g1_txt",
+    srcs: ["g1.txt"],
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTargetNoRestrictions("filegroup", "foo", AttrNameToString{
+				"srcs": `[
+        ":a1_java",
+        ":b1_kt",
+        ":c1_srcjar",
+        ":d1_logtags",
+        ":e1_aidl",
+        ":f1_proto",
+        ":g1_txt",
+        "a2.java",
+        "b2.kt",
+        "c2.srcjar",
+        "d2.logtags",
+        "e2.aidl",
+        "f2.proto",
+        "g2.txt",
+    ]`}),
+			MakeBazelTargetNoRestrictions("filegroup", "foo_kt_jvm_library_filegroup", AttrNameToString{
+				"srcs": `[
+        "a1.java",
+        "a2.java",
+        "b1.kt",
+        "b2.kt",
+        "c1.srcjar",
+        "c2.srcjar",
+    ]`}),
+			MakeBazelTargetNoRestrictions("filegroup", "foo_logtags_filegroup", AttrNameToString{
+				"srcs": `[
+        "d1.logtags",
+        "d2.logtags",
+    ]`}),
+			MakeBazelTargetNoRestrictions("filegroup", "foo_aidl_filegroup", AttrNameToString{
+				"srcs": `[
+        "e1.aidl",
+        "e2.aidl",
+    ]`}),
+			MakeBazelTargetNoRestrictions("filegroup", "foo_proto_filegroup", AttrNameToString{
+				"srcs": `[
+        "f1.proto",
+        "f2.proto",
+    ]`}),
+		}})
+}
+
+func TestFilegroupWithoutKtSrcs(t *testing.T) {
+	runFilegroupTestCase(t, Bp2buildTestCase{
+		Description:             "filegroup that has no .kt in srcs(module or file)",
+		StubbedBuildDefinitions: []string{"a1_java"},
+		Filesystem:              map[string]string{},
+		Blueprint: `
+filegroup {
+    name: "foo",
+    srcs: [
+        ":a1_java",
+        "a2.java",
+    ],
+}
+
+filegroup {
+    name: "a1_java",
+    srcs: ["a1.java"],
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTargetNoRestrictions("filegroup", "foo", AttrNameToString{
+				"srcs": `[
+        ":a1_java",
+        "a2.java",
+    ]`}),
+			MakeBazelTargetNoRestrictions("filegroup", "foo_java_library_filegroup", AttrNameToString{
+				"srcs": `[
+        "a1.java",
+        "a2.java",
+    ]`}),
+		}})
+}
+
+func TestFilegroupWithFileExcludeSrcs(t *testing.T) {
+	runFilegroupTestCase(t, Bp2buildTestCase{
+		Description: "filegroup that has a file as exclude_srcs",
+		Filesystem:  map[string]string{},
+		Blueprint: `
+filegroup {
+    name: "foo",
+    srcs: [
+        "a1.java",
+        "a2.java",
+    ],
+    exclude_srcs: [
+        "a1.java",
+    ],
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTargetNoRestrictions("filegroup", "foo", AttrNameToString{
+				"srcs": `["a2.java"]`}),
+			MakeBazelTargetNoRestrictions("filegroup", "foo_java_library_filegroup", AttrNameToString{
+				"srcs": `["a2.java"]`}),
 		}})
 }

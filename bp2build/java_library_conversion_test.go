@@ -661,6 +661,12 @@ java_library {
 				"sdk_version": `"current"`,
 			}),
 			MakeNeverlinkDuplicateTarget("java_library", "example_lib"),
+			MakeBazelTargetNoRestrictions("filegroup", "random_other_files_java_library_filegroup", AttrNameToString{
+				"srcs": `[
+        "a.java",
+        "b.java",
+    ]`,
+			}),
 			MakeBazelTargetNoRestrictions("filegroup", "random_other_files", AttrNameToString{
 				"srcs": `[
         "a.java",
