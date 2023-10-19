@@ -161,6 +161,7 @@ type Module struct {
 	android.DefaultableModuleBase
 	android.BazelModuleBase
 	android.ApexModuleBase
+	android.RawOutput
 
 	// For other packages to make their own genrules with extra
 	// properties
