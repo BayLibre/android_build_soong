@@ -34,6 +34,24 @@
       "parentUuid": "ba7dfb34_92fe4c88",
       "revId": "ef64312e8a9e3e0178742dc92a50934506dde20f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "169c88f1_53903fb3",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-19T22:45:49Z",
+      "side": 1,
+      "message": "The `commonGlobalLldflags...` take the whole varargs, you can\u0027t also have an extra `string`: https://go.dev/play/p/GRlmssmxXWH",
+      "parentUuid": "e84b9848_07bdc461",
+      "revId": "ef64312e8a9e3e0178742dc92a50934506dde20f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
