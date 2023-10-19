@@ -33,6 +33,24 @@
       "message": "Can you file a bug to handle this directly in create_minidebuginfo and list it as a TODO here?",
       "revId": "9a69ba877e1fb64deadad70e0c4d1c720e254ac1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b10d44_736a2781",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1998815
+      },
+      "writtenOn": "2023-10-19T20:32:06Z",
+      "side": 1,
+      "message": "Bug is filed already, they\u0027re not interested in adding support so I\u0027m not sure it\u0027s worth a TODO.",
+      "parentUuid": "0c4f659c_9dc3341c",
+      "revId": "9a69ba877e1fb64deadad70e0c4d1c720e254ac1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
