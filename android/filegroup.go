@@ -136,7 +136,9 @@ func (fg *fileGroup) ConvertWithBp2build(ctx Bp2buildMutatorContext) {
 			},
 			attrs)
 	} else {
+		protoOnly := false
 		if fg.ShouldConvertToProtoLibrary(ctx) {
+			protoOnly = true
 			pkgToSrcs := partitionSrcsByPackage(ctx.ModuleDir(), bazel.MakeLabelList(srcs.Value.Includes))
 			if len(pkgToSrcs) > 1 {
 				ctx.ModuleErrorf("TODO: Add bp2build support for multiple package .protosrcs in filegroup")
@@ -188,18 +190,30 @@ func (fg *fileGroup) ConvertWithBp2build(ctx Bp2buildMutatorContext) {
 			)
 		}
 
+		// If files with the following extension exist, Create separate filegroup targets.
+		// 1) .java, .kt and .src
+		// 2) .logtags
+		// 3) .aidl
+		// 4) .proto
+		category := categorizeSrcs(ctx, srcs)
+		createSeparateFileGroupTargetsFromCategory(ctx, category, fg.Name(), protoOnly)
+
 		// TODO(b/242847534): Still convert to a filegroup because other unconverted
 		// modules may depend on the filegroup
 		attrs := &bazelFilegroupAttributes{
 			Srcs: srcs,
 		}
 
-		props := bazel.BazelTargetModuleProperties{
-			Rule_class:        "filegroup",
-			Bzl_load_location: "//build/bazel/rules:filegroup.bzl",
-		}
+		props := fileGroupBazelTargetModuleProperties()
 
 		ctx.CreateBazelTargetModule(props, CommonAttributes{Name: fg.Name()}, attrs)
+	}
+}
+
+func fileGroupBazelTargetModuleProperties() bazel.BazelTargetModuleProperties {
+	return bazel.BazelTargetModuleProperties{
+		Rule_class:        "filegroup",
+		Bzl_load_location: "//build/bazel/rules:filegroup.bzl",
 	}
 }
 
@@ -212,6 +226,11 @@ func (fg *fileGroup) GetPath(ctx Bp2buildMutatorContext) string {
 		return *fg.properties.Path
 	}
 	return ""
+}
+
+// Used for getting raw output of genrule module
+type RawOutput interface {
+	RawOutputFiles(ctx BazelConversionContext) []string
 }
 
 type fileGroupProperties struct {
@@ -375,6 +394,197 @@ func (fg *fileGroup) getFileGroupAsLibraryLabel(ctx BazelConversionPathContext) 
 	} else {
 		return fg.GetBazelLabel(ctx, fg)
 	}
+}
+
+type srcsCategory struct {
+	javaKtSrcjar bazel.LabelList
+	logtags      bazel.LabelList
+	aidl         bazel.LabelList
+	proto        bazel.LabelList
+	other        bazel.LabelList
+	hasKt        bool
+}
+
+func categorizeSrcs(ctx Bp2buildMutatorContext, srcs bazel.LabelListAttribute) srcsCategory {
+	category := srcsCategory{}
+	for _, src := range srcs.Value.Includes {
+		category = updateSrcsCategoryFromSingleSource(ctx, category, src, true)
+	}
+	for _, excludedSrc := range srcs.Value.Excludes {
+		category = updateSrcsCategoryFromSingleSource(ctx, category, excludedSrc, false)
+	}
+	category.hasKt = hasExtensionInCategory(category, ".kt")
+	return category
+}
+
+func updateSrcsCategoryFromSingleSource(ctx Bp2buildMutatorContext, category srcsCategory, src bazel.Label, include bool) srcsCategory {
+	// The reason memoization is not used here:
+	// 1. to avoid the potential issue that modules have the same name
+	//    but in different packages.
+	// 2. the max recursion dep is not large(less than 5).
+
+	// src refers to a file
+	if !strings.HasPrefix(src.OriginalModuleName, ":") {
+		category = updateSrcCategroyFromFileOrGenrule(category, src, include, "")
+		return category
+	}
+
+	// src refers to a module
+	// Currently only handles filegroup, genrule, since these are the only types
+	// that can propagate/produce .java, .kt, .srcjar, .aidl, .proto, .logtags files.
+	// If there is new module type here in the future, just expanding
+	// the conditions will do the work.
+	rawModule, _ := ctx.ModuleFromName(src.OriginalModuleName)
+	switch m := rawModule.(type) {
+	case *fileGroup:
+		if !include && len(m.properties.Exclude_srcs) != 0 {
+			// prohibit the case that a filegroup in another filegroup's Exclude_srcs still has Exclude_srcs property.
+			ctx.PropertyErrorf("Exclude_srcs", "A filegroup in another filegroup's Exclude_srcs still has Exclude_srcs property. "+m.Name())
+		}
+
+		fgSrcs := bazel.MakeLabelListAttribute(
+			BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs))
+		for _, s := range fgSrcs.Value.Includes {
+			category = updateSrcsCategoryFromSingleSource(ctx, category, s, include)
+		}
+		for _, s := range fgSrcs.Value.Excludes {
+			// There is no existing instance that a filegroup in Exclude_srcs still has Exclude_srcs prop.
+			category = updateSrcsCategoryFromSingleSource(ctx, category, s, false)
+		}
+	case RawOutput:
+		ext := checkExtFromRawOutputFiles(m.RawOutputFiles(ctx))
+		category = updateSrcCategroyFromFileOrGenrule(category, src, include, ext)
+	default:
+		if include {
+			category.other.Add(&src)
+		} else {
+			category.other.AddExclude(&src)
+		}
+	}
+	return category
+}
+
+func updateSrcCategroyFromFileOrGenrule(category srcsCategory, src bazel.Label, include bool, ext string) srcsCategory {
+	if ext == "" {
+		ext = filepath.Ext(src.OriginalModuleName)
+	}
+	switch ext {
+	case ".java", ".kt", ".srcjar":
+		if include {
+			category.javaKtSrcjar.Add(&src)
+		} else {
+			category.javaKtSrcjar.AddExclude(&src)
+		}
+	case ".logtags":
+		if include {
+			category.logtags.Add(&src)
+		} else {
+			category.logtags.AddExclude(&src)
+		}
+	case ".aidl":
+		if include {
+			category.aidl.Add(&src)
+		} else {
+			category.aidl.AddExclude(&src)
+		}
+	case ".proto":
+		if include {
+			category.proto.Add(&src)
+		} else {
+			category.proto.AddExclude(&src)
+		}
+	default:
+		if include {
+			category.other.Add(&src)
+		} else {
+			category.other.AddExclude(&src)
+		}
+	}
+	return category
+}
+
+func checkExtFromRawOutputFiles(files []string) string {
+	for _, f := range files {
+		switch ext := filepath.Ext(f); ext {
+		case ".java":
+			return ".java"
+		case ".kt":
+			return ".kt"
+		case ".srcjar":
+			return ".srcjar"
+		case ".logtags":
+			return "logtags"
+		case ".aidl":
+			return ".aidl"
+		case ".proto":
+			return ".proto"
+		default:
+			continue
+		}
+	}
+	return "other"
+}
+
+func hasExtensionInCategory(category srcsCategory, ext string) bool {
+	var src bazel.LabelList
+	switch ext {
+	case ".java", ".kt", ".srcjar":
+		src = category.javaKtSrcjar
+	case ".logtags":
+		src = category.logtags
+	case ".aidl":
+		src = category.aidl
+	case ".proto":
+		src = category.proto
+	default:
+		src = category.other
+	}
+	excludeMap := make(map[bazel.Label]bool, len(category.javaKtSrcjar.Excludes))
+	for _, f := range src.Excludes {
+		excludeMap[f] = true
+	}
+	for _, f := range src.Includes {
+		if !strings.HasPrefix(f.OriginalModuleName, ":") && filepath.Ext(f.OriginalModuleName) == ext {
+			if _, ok := excludeMap[f]; !ok {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func createSeparateFileGroupTargetsFromCategory(ctx Bp2buildMutatorContext, category srcsCategory, baseName string, protoOnly bool) {
+	if len(category.javaKtSrcjar.Includes) != 0 {
+		nameJavaKtSrcjar := baseName + "_java_library_filegroup"
+		if category.hasKt {
+			nameJavaKtSrcjar = baseName + "_kt_jvm_library_filegroup"
+		}
+		createFileGroupTargetFromSingleCategory(ctx, category.javaKtSrcjar, nameJavaKtSrcjar)
+	}
+
+	if len(category.logtags.Includes) != 0 {
+		nameLogtags := baseName + "_logtags_filegroup"
+		createFileGroupTargetFromSingleCategory(ctx, category.logtags, nameLogtags)
+	}
+
+	if len(category.aidl.Includes) != 0 {
+		nameAidl := baseName + "_aidl_filegroup"
+		createFileGroupTargetFromSingleCategory(ctx, category.aidl, nameAidl)
+	}
+
+	if !protoOnly && len(category.proto.Includes) != 0 {
+		nameProto := baseName + "_proto_filegroup"
+		createFileGroupTargetFromSingleCategory(ctx, category.proto, nameProto)
+	}
+}
+
+func createFileGroupTargetFromSingleCategory(ctx Bp2buildMutatorContext, src bazel.LabelList, name string) {
+	attrs := &bazelFilegroupAttributes{
+		Srcs: bazel.MakeLabelListAttribute(src),
+	}
+	props := fileGroupBazelTargetModuleProperties()
+	ctx.CreateBazelTargetModule(props, CommonAttributes{Name: name}, attrs)
+
 }
 
 // Given a name in srcs prop, check to see if the name references a filegroup

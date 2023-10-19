@@ -125,6 +125,10 @@ filegroup {
         "aidl/foo.aidl",
         "buf.proto",
     ]`}),
+			MakeBazelTargetNoRestrictions("filegroup", "foo_aidl_filegroup", AttrNameToString{
+				"srcs": `["aidl/foo.aidl"]`}),
+			MakeBazelTargetNoRestrictions("filegroup", "foo_proto_filegroup", AttrNameToString{
+				"srcs": `["buf.proto"]`}),
 		}})
 }
 
@@ -177,6 +181,8 @@ filegroup {
         "foo.proto",
         "buf.cpp",
     ]`}),
+			MakeBazelTargetNoRestrictions("filegroup", "foo_proto_filegroup", AttrNameToString{
+				"srcs": `["foo.proto"]`}),
 		}})
 }
 
