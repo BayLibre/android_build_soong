@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd5bc3e_ab79164f",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-10-19T01:48:27Z",
+      "side": 1,
+      "message": "It\u0027s an \"or\", I\u0027ve made it clearer by setting the other field in both tests",
+      "parentUuid": "710ca6ed_f49c66b4",
+      "revId": "97938af341a34d6bff8e85550cd5e9699da77cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c655c98_dafdf7b5",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "401eb16a_07eec20e",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-10-19T01:48:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c655c98_dafdf7b5",
+      "revId": "97938af341a34d6bff8e85550cd5e9699da77cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b789f14_11711db2",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-10-18T23:07:59Z",
       "side": 1,
       "message": "nit: can we combine the two conditionals into the top level `if bp2BuildInfo.compileDex`?",
+      "range": {
+        "startLine": 3299,
+        "startChar": 0,
+        "endLine": 3312,
+        "endChar": 70
+      },
+      "revId": "97938af341a34d6bff8e85550cd5e9699da77cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de057468_9edaecf6",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 3312,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-10-19T01:48:27Z",
+      "side": 1,
+      "message": "I feel like bringing compileDex to the top doesn\u0027t solve the double nesting of ifs, right now we have\n```\nif kotlin {\n  if compileDex {\n    # fail\n  }\n  # handle kotlin\n} else if compileDex {\n  # handle compile dex\n} else ...\n```\n\nif I bring compileDex to the top it would be instead\n```\nif compileDex {\n  if kotlin {\n    # fail\n  } else {\n    # handle compile dex\n  }\n} else if kotlin {\n  # handle kotlin\n} else { ...\n```\nI don\u0027t know if it\u0027s any better... I went with the following, let me know what you think: \n```\nif kotlin \u0026\u0026 !compileDex {\n  # handle kotlin\n} else if kotlin \u0026\u0026 compileDex {\n  # fail\n} else if compileDex { // guaranteed that !kotlin\n  # handle compile dex\n} else {\n```",
+      "parentUuid": "3b789f14_11711db2",
       "range": {
         "startLine": 3299,
         "startChar": 0,
