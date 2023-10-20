@@ -18,13 +18,17 @@ import (
 	"fmt"
 	"io"
 	"path/filepath"
+	"reflect"
 	"strconv"
 	"strings"
 
 	"android/soong/android"
+	"android/soong/bazel"
+	prebuilt_etc "android/soong/etc"
 	"android/soong/java"
 	"android/soong/provenance"
 
+	"android/soong/ui/metrics/bp2build_metrics_proto"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
@@ -157,6 +161,10 @@ func (p *prebuiltCommon) InstallFilename() string {
 
 func (p *prebuiltCommon) Name() string {
 	return p.prebuilt.Name(p.ModuleBase.Name())
+}
+
+func (p *prebuiltCommon) BazelModuleName() string {
+	return p.ModuleBase.Name()
 }
 
 func (p *prebuiltCommon) Overrides() []string {
@@ -474,6 +482,7 @@ func (p *prebuiltApexSelectorModule) GenerateAndroidBuildActions(ctx android.Mod
 
 type Prebuilt struct {
 	prebuiltCommon
+	android.BazelModuleBase
 
 	properties PrebuiltProperties
 
@@ -578,8 +587,117 @@ func PrebuiltFactory() android.Module {
 	module := &Prebuilt{}
 	module.AddProperties(&module.properties)
 	module.initPrebuiltCommon(module, &module.properties.PrebuiltCommonProperties)
+	android.InitBazelModule(module)
 
 	return module
+}
+
+// ConvertWithBp2build converts a Soong module -> Bazel target.
+func (module *Prebuilt) ConvertWithBp2build(ctx android.Bp2buildMutatorContext) {
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "prebuilt_file",
+		Bzl_load_location: "//build/bazel/rules:prebuilt_file.bzl",
+	}
+
+	attrs, convertible := module.Bp2BuildHelper(ctx)
+	if !convertible {
+		return
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: module.BazelModuleName()}, attrs)
+}
+
+// Bp2buildHelper returns a bazelPrebuiltFileAttributes used for converting
+// prebuilt_apex  modules.
+// Lovingly borrowed from prebuilt_etc.go
+func (module *Prebuilt) Bp2BuildHelper(ctx android.Bp2buildMutatorContext) (*prebuilt_etc.BazelPrebuiltFileAttributes, bool) {
+	var src bazel.LabelAttribute
+	props := module.properties
+	if props.ApexFileProperties.Src != nil {
+		srcStr := proptools.String(props.ApexFileProperties.Src)
+		if srcStr == ctx.ModuleName() {
+			fmt.Printf("prebuilt apex unsupported because src==name \n")
+			ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "src == name")
+			return &prebuilt_etc.BazelPrebuiltFileAttributes{}, false
+		}
+		label := android.BazelLabelForModuleSrcSingle(ctx, srcStr)
+		src.SetSelectValue(bazel.NoConfigAxis, "", label)
+	}
+	// one for each arch
+	if props.ApexFileProperties.Arch.Arm64.Src != nil {
+		srcStr := proptools.String(props.ApexFileProperties.Arch.Arm64.Src)
+		label := android.BazelLabelForModuleSrcSingle(ctx, srcStr)
+		src.SetSelectValue(bazel.ArchConfigurationAxis, "arm64", label)
+	}
+	if props.ApexFileProperties.Arch.Arm.Src != nil {
+		srcStr := proptools.String(props.ApexFileProperties.Arch.Arm.Src)
+		label := android.BazelLabelForModuleSrcSingle(ctx, srcStr)
+		src.SetSelectValue(bazel.ArchConfigurationAxis, "arm", label)
+	}
+	if props.ApexFileProperties.Arch.X86.Src != nil {
+		srcStr := proptools.String(props.ApexFileProperties.Arch.X86.Src)
+		label := android.BazelLabelForModuleSrcSingle(ctx, srcStr)
+		src.SetSelectValue(bazel.ArchConfigurationAxis, "x86", label)
+	}
+	if props.ApexFileProperties.Arch.X86_64.Src != nil {
+		srcStr := proptools.String(props.ApexFileProperties.Arch.X86_64.Src)
+		label := android.BazelLabelForModuleSrcSingle(ctx, srcStr)
+		src.SetSelectValue(bazel.ArchConfigurationAxis, "x86_64", label)
+	}
+	if props.ApexFileProperties.Arch.Riscv64.Src != nil {
+		srcStr := proptools.String(props.ApexFileProperties.Arch.Riscv64.Src)
+		label := android.BazelLabelForModuleSrcSingle(ctx, srcStr)
+		src.SetSelectValue(bazel.ArchConfigurationAxis, "riscv64", label)
+	}
+
+	productVarProperties, errs := android.ProductVariableProperties(ctx, ctx.Module())
+	for _, err := range errs {
+		ctx.ModuleErrorf("ProductVariableProperties error: %s", err)
+	}
+	for propName, productConfigProps := range productVarProperties {
+		for configProp, propVal := range productConfigProps {
+			if propName == "Src" {
+				props, ok := propVal.(*string)
+				if !ok {
+					ctx.PropertyErrorf(" Expected Property to have type string, but was %s\n", reflect.TypeOf(propVal).String())
+					continue
+				}
+				if props != nil {
+					label := android.BazelLabelForModuleSrcSingle(ctx, *props)
+					src.SetSelectValue(configProp.ConfigurationAxis(), configProp.SelectKey(), label)
+				}
+			}
+		}
+	}
+
+	var filename string
+	moduleProps := module.properties
+	if moduleProps.Filename != nil && *moduleProps.Filename != "" {
+		filename = *moduleProps.Filename
+	} else if module.InstallFilename() != "" && moduleProps.Src != nil {
+		filename = android.BazelLabelForModuleSrcSingle(ctx, *moduleProps.Src).Label
+	} else {
+		filename = module.BazelModuleName()
+	}
+
+	var dir = module.installDir.String()
+
+	var installable bazel.BoolAttribute
+	if install := module.properties.Installable; install != nil {
+		installable.Value = install
+	}
+
+	attrs := &prebuilt_etc.BazelPrebuiltFileAttributes{
+		Src:         src,
+		Dir:         dir,
+		Installable: installable,
+	}
+
+	if filename != "" {
+		attrs.Filename = bazel.LabelAttribute{Value: &bazel.Label{Label: filename}}
+	}
+
+	return attrs, true
 }
 
 func createApexSelectorModule(ctx android.TopDownMutatorContext, name string, apexFileProperties *ApexFileProperties) {
@@ -1015,4 +1133,39 @@ type systemExtContext struct {
 
 func (*systemExtContext) SystemExtSpecific() bool {
 	return true
+}
+
+type prebuiltProperties struct {
+	// Source file of this prebuilt.
+	Src *string `android:"path,arch_variant"`
+
+	// Optional name for the installed file. If unspecified, name of the module is used as the file
+	// name.
+	Filename *string `android:"arch_variant"`
+
+	// Make this module available when building for ramdisk.
+	// On device without a dedicated recovery partition, the module is only
+	// available after switching root into
+	// /first_stage_ramdisk. To expose the module before switching root, install
+	// the recovery variant instead.
+	Ramdisk_available *bool
+
+	// Make this module available when building for vendor ramdisk.
+	// On device without a dedicated recovery partition, the module is only
+	// available after switching root into
+	// /first_stage_ramdisk. To expose the module before switching root, install
+	// the recovery variant instead.
+	Vendor_ramdisk_available *bool
+
+	// Make this module available when building for debug ramdisk.
+	Debug_ramdisk_available *bool
+
+	// Make this module available when building for recovery.
+	Recovery_available *bool
+
+	// Whether this module is directly installable to one of the partitions. Default: true.
+	Installable *bool
+
+	// Install symlinks to the installed file.
+	Symlinks []string `android:"arch_variant"`
 }
