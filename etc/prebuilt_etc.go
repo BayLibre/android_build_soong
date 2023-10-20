@@ -702,7 +702,7 @@ func generatePrebuiltSnapshot(s snapshot.SnapshotSingleton, ctx android.Singleto
 
 // For Bazel / bp2build
 
-type bazelPrebuiltFileAttributes struct {
+type BazelPrebuiltFileAttributes struct {
 	Src               bazel.LabelAttribute
 	Filename          bazel.LabelAttribute
 	Dir               string
@@ -710,10 +710,10 @@ type bazelPrebuiltFileAttributes struct {
 	Filename_from_src bazel.BoolAttribute
 }
 
-// Bp2buildHelper returns a bazelPrebuiltFileAttributes used for the conversion
-// of prebuilt_*  modules. bazelPrebuiltFileAttributes has the common attributes
-// used by both prebuilt_etc_xml and other prebuilt_* moodules
-func (module *PrebuiltEtc) Bp2buildHelper(ctx android.Bp2buildMutatorContext) (*bazelPrebuiltFileAttributes, bool) {
+// Bp2buildHelper returns a BazelPrebuiltFileAttributes used for the conversion
+// of prebuilt_*  modules. BazelPrebuiltFileAttributes has the common attributes
+// used by both prebuilt_etc_xml and other prebuilt_* modules
+func (module *PrebuiltEtc) Bp2buildHelper(ctx android.Bp2buildMutatorContext) (*BazelPrebuiltFileAttributes, bool) {
 	var src bazel.LabelAttribute
 	for axis, configToProps := range module.GetArchVariantProperties(ctx, &prebuiltEtcProperties{}) {
 		for config, p := range configToProps {
@@ -725,7 +725,7 @@ func (module *PrebuiltEtc) Bp2buildHelper(ctx android.Bp2buildMutatorContext) (*
 				srcStr := proptools.String(props.Src)
 				if srcStr == ctx.ModuleName() {
 					ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "src == name")
-					return &bazelPrebuiltFileAttributes{}, false
+					return &BazelPrebuiltFileAttributes{}, false
 				}
 				label := android.BazelLabelForModuleSrcSingle(ctx, srcStr)
 				src.SetSelectValue(axis, config, label)
@@ -777,7 +777,7 @@ func (module *PrebuiltEtc) Bp2buildHelper(ctx android.Bp2buildMutatorContext) (*
 		installable.Value = install
 	}
 
-	attrs := &bazelPrebuiltFileAttributes{
+	attrs := &BazelPrebuiltFileAttributes{
 		Src:         src,
 		Dir:         dir,
 		Installable: installable,
