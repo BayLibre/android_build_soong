@@ -641,14 +641,21 @@ func bp2buildConversionMutator(ctx BottomUpMutatorContext) {
 	// If an existing BUILD file in the module directory has a target defined
 	// with this same name as this module, assume that this is an existing
 	// definition for this target.
+	isPrebuilt := ctx.Module().Name() == "com.android.apex.cts.shim.v2_additional_folder_prebuilt"
 	if ctx.Config().HasBazelBuildTargetInSource(ctx.ModuleDir(), ctx.ModuleName()) {
 		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_DEFINED_IN_BUILD_FILE, ctx.ModuleName())
 		return
 	}
 	bModule, ok := ctx.Module().(Bazelable)
+	if isPrebuilt {
+		fmt.Printf("prebuilt converting\n")
+	}
 	if !ok {
 		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED, "")
 		return
+	}
+	if isPrebuilt {
+		fmt.Printf("it is ok\n")
 	}
 	// There may be cases where the target is created by a macro rather than in a BUILD file, those
 	// should be captured as well.
