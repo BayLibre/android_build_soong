@@ -1,0 +1,31 @@
+<<if .Srcs ->>
+<<setList .M.Name "_SRC" "${ANDROID_BUILD_TOP}/" (toStrings .Srcs)>>
+
+add_library(<<.M.Name>> ${<<.M.Name>>_SRC})
+<<else ->>
+add_library(<<.M.Name>> INTERFACE)
+<<end>>
+<<setList .M.Name "_EXPINC" "${ANDROID_BUILD_TOP}/" (toStrings .ExpInc)>>
+
+<<setList .M.Name "_INC" "${ANDROID_BUILD_TOP}/" .Inc>>
+
+<<if .Srcs ->>
+target_include_directories(<<.M.Name>> PUBLIC <<"${">><<.M.Name>><<"_EXPINC}">> PRIVATE <<"${">><<.M.Name>><<"_INC}">>)
+target_compile_options(<<.M.Name>> PRIVATE <<"${">><<.MT.Name>><<"_CFLAGS}">>)
+target_link_options(<<.M.Name>> PRIVATE <<"${">><<.MT.Name>><<"_LINKFLAGS}">>)
+<<else ->>
+target_include_directories(<<.M.Name>> INTERFACE <<"${">><<.M.Name>><<"_EXPINC}">> <<"${">><<.M.Name>><<"_INC}">>)
+<<end>>
+<<setList .M.Name "_WSDEP" "" .Wsdep>>
+
+<<setList .M.Name "_SDEP" "" .Sdep>>
+
+<<setList .M.Name "_DDEP" "" .Ddep>>
+
+<<setList .M.Name "_HDEP" "" .Hdep>>
+
+<< if .Srcs ->>
+target_link_libraries(<<.M.Name>> <<"${">><<.M.Name>><<"_WSDEP}">> <<"${">><<.M.Name>><<"_SDEP}">> <<"${">><<.M.Name>><<"_DDEP}">> <<"${">><<.M.Name>><<"_HDEP}">>)
+<<else ->>
+target_link_libraries(<<.M.Name>> INTERFACE <<"${">><<.M.Name>><<"_WSDEP}">> <<"${">><<.M.Name>><<"_SDEP}">> <<"${">><<.M.Name>><<"_DDEP}">> <<"${">><<.M.Name>><<"_HDEP}">>)
+<<end ->>
