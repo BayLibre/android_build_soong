@@ -16,6 +16,40 @@
       "message": "Okay round 2: a little more specific so that it won\u0027t break existing uses. LMKWYT",
       "revId": "9fb348b62ad75ff089d8d5614de740ecc2db7b0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "076ea876_18ee29e1",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-20T17:39:53Z",
+      "side": 1,
+      "message": "The effects of calling this are subtle, can you add godoc for this method that explains what it does and the ramifications of using it?",
+      "revId": "9fb348b62ad75ff089d8d5614de740ecc2db7b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "950533a6_9fc7b107",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-20T17:39:53Z",
+      "side": 1,
+      "message": "This error message isn\u0027t accurate any more.  I wonder it would be simpler to split the \"remove obsolete\" case and the \"remove existing outputs\" cases into separate loops or functions.",
+      "revId": "9fb348b62ad75ff089d8d5614de740ecc2db7b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
