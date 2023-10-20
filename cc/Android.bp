@@ -62,6 +62,7 @@ bootstrap_go_package {
         "fuzz.go",
         "image_sdk_traits.go",
         "library.go",
+        "library_cmake.go",
         "library_headers.go",
         "library_sdk_member.go",
         "library_stub.go",
@@ -109,6 +110,11 @@ bootstrap_go_package {
         "test_data_test.go",
         "tidy_test.go",
         "vendor_public_library_test.go",
+    ],
+    embedSrcs: [
+        "library_cmake_main.txt",
+        "library_cmake_module_aidl.txt",
+        "library_cmake_module_cc.txt",
     ],
     pluginFor: ["soong_build"],
 }
