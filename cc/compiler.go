@@ -141,6 +141,17 @@ type BaseCompilerProperties struct {
 		Flags []string
 	}
 
+	AidlInterface struct {
+		// list of aidl_interface sources
+		Sources []string
+
+		// AIDL backend language (e.g. "cpp", "ndk")
+		Lang string
+
+		// list of flags passed to AIDL generator
+		Flags []string
+	}
+
 	Renderscript struct {
 		// list of directories that will be added to the llvm-rs-cc include paths
 		Include_dirs []string
