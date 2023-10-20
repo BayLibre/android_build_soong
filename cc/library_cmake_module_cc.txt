@@ -1,0 +1,33 @@
+<<$srcs := getSources .M>>
+<<if $srcs ->>
+<<setList .M.Name "_SRC" "${ANDROID_BUILD_TOP}/" (toStrings $srcs)>>
+
+add_<<getModuleType .M>>(<<.M.Name>> ${<<.M.Name>>_SRC})
+<<else ->>
+add_<<getModuleType .M>>(<<.M.Name>> INTERFACE)
+<<end>>
+<<setList .M.Name "_EXPINC" "${ANDROID_BUILD_TOP}/" (toStrings (getExporterInfo .Ctx .M).IncludeDirs)>>
+
+<<if $srcs ->>
+target_include_directories(<<.M.Name>> PUBLIC ${<<.M.Name>>_EXPINC})
+
+<<cflagsList .M.Name "_CFLAGS" (getCompilerProperties .M).Cflags .MT.Properties.UnportableFlags>>
+
+target_compile_options(<<.M.Name>> PRIVATE ${<<.M.Name>>_CFLAGS})
+
+<<else ->>
+target_include_directories(<<.M.Name>> INTERFACE ${<<.M.Name>>_EXPINC})
+<<end>>
+<<setList .M.Name "_WSDEP" "" .Wsdep>>
+
+<<setList .M.Name "_SDEP" "" .Sdep>>
+
+<<setList .M.Name "_DDEP" "" .Ddep>>
+
+<<setList .M.Name "_HDEP" "" .Hdep>>
+
+<< if $srcs ->>
+target_link_libraries(<<.M.Name>> ${<<.M.Name>>_WSDEP} ${<<.M.Name>>_SDEP} ${<<.M.Name>>_DDEP} ${<<.M.Name>>_HDEP})
+<<else ->>
+target_link_libraries(<<.M.Name>> INTERFACE ${<<.M.Name>>_WSDEP} ${<<.M.Name>>_SDEP} ${<<.M.Name>>_DDEP} ${<<.M.Name>>_HDEP})
+<<end ->>
