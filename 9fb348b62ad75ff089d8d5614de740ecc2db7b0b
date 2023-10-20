@@ -50,6 +50,24 @@
       "message": "This error message isn\u0027t accurate any more.  I wonder it would be simpler to split the \"remove obsolete\" case and the \"remove existing outputs\" cases into separate loops or functions.",
       "revId": "9fb348b62ad75ff089d8d5614de740ecc2db7b0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adcea08a_b60018bf",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-20T17:40:39Z",
+      "side": 1,
+      "message": "The logic here is also getting complicated enough that it is should have a test for the various behaviors.",
+      "parentUuid": "950533a6_9fc7b107",
+      "revId": "9fb348b62ad75ff089d8d5614de740ecc2db7b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
