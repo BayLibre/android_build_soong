@@ -1,0 +1,33 @@
+<<$srcs := getSources .M>>
+<<if $srcs ->>
+<<setList .M.Name "_SRCS" "${ANDROID_BUILD_TOP}/" (toStrings $srcs)>>
+
+add_<<getModuleType .M>>(<<.M.Name>> ${<<.M.Name>>_SRCS})
+<<else ->>
+add_<<getModuleType .M>>(<<.M.Name>> INTERFACE)
+<<end>>
+<<setList .M.Name "_EXPINC" "${ANDROID_BUILD_TOP}/" (toStrings (getExporterInfo .Ctx .M).IncludeDirs)>>
+
+<<if $srcs ->>
+target_include_directories(<<.M.Name>> PUBLIC ${<<.M.Name>>_EXPINC})
+
+<<cflagsList .M.Name "_CFLAGS" (getCompilerProperties .M).Cflags .Snapshot.Properties.UnportableFlags>>
+
+target_compile_options(<<.M.Name>> PRIVATE ${<<.M.Name>>_CFLAGS})
+
+<<else ->>
+target_include_directories(<<.M.Name>> INTERFACE ${<<.M.Name>>_EXPINC})
+<<end>>
+
+<<setList .M.Name "_DEPS" "" (mapLibraries (concat4
+(getLinkerProperties .M).Whole_static_libs
+(getLinkerProperties .M).Static_libs
+(getLinkerProperties .M).Shared_libs
+(getLinkerProperties .M).Header_libs
+) .Snapshot.LibraryMapping)>>
+
+<< if $srcs ->>
+target_link_libraries(<<.M.Name>> ${<<.M.Name>>_DEPS})
+<<else ->>
+target_link_libraries(<<.M.Name>> INTERFACE ${<<.M.Name>>_DEPS})
+<<end ->>
