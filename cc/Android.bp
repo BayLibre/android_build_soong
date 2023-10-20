@@ -65,6 +65,7 @@ bootstrap_go_package {
         "fuzz.go",
         "image_sdk_traits.go",
         "library.go",
+        "library_cmake.go",
         "library_headers.go",
         "library_sdk_member.go",
         "library_stub.go",
