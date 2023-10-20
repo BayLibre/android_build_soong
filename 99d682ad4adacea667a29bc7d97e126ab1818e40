@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "413ee565_bc6f6683",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1998815
+      },
+      "writtenOn": "2023-10-20T15:44:52Z",
+      "side": 1,
+      "message": "We\u0027re going to revert and reland with an extra fix.",
+      "revId": "99d682ad4adacea667a29bc7d97e126ab1818e40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
