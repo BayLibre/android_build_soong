@@ -487,6 +487,8 @@ func GetBazelEnabledAndDisabledModules(buildMode SoongBuildMode, forceEnabled ma
 	enabledModules := map[string]bool{}
 
 	switch buildMode {
+	case Bp2build:
+		fallthrough
 	case BazelProdMode:
 		AddToStringSet(enabledModules, allowlists.ProdMixedBuildsEnabledList)
 		for enabledAdHocModule := range forceEnabled {
@@ -500,7 +502,7 @@ func GetBazelEnabledAndDisabledModules(buildMode SoongBuildMode, forceEnabled ma
 			enabledModules[enabledAdHocModule] = true
 		}
 	default:
-		panic("Expected BazelProdMode or BazelStagingMode")
+		panic("Expected BazelProdMode, BazelStagingMode, or Bp2build")
 	}
 	return enabledModules, disabledModules
 }
@@ -518,7 +520,7 @@ func GetBazelEnabledModules(buildMode SoongBuildMode) []string {
 }
 
 func NewBazelContext(c *config) (BazelContext, error) {
-	if c.BuildMode != BazelProdMode && c.BuildMode != BazelStagingMode {
+	if c.BuildMode != BazelProdMode && c.BuildMode != BazelStagingMode && c.BuildMode != Bp2build {
 		return noopBazelContext{}, nil
 	}
 
