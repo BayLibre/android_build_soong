@@ -66,7 +66,7 @@ type pluginAttributes struct {
 // ConvertWithBp2build is used to convert android_app to Bazel.
 func (p *Plugin) ConvertWithBp2build(ctx android.Bp2buildMutatorContext) {
 	pluginName := p.Name()
-	commonAttrs, bp2BuildInfo, supported := p.convertLibraryAttrsBp2Build(ctx)
+	commonAttrs, bp2BuildInfo, supported := p.convertLibraryAttrsBp2Build(ctx, true)
 	if !supported {
 		return
 	}
