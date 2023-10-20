@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "676cfd8d_d147c54b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-10-20T02:19:25Z",
+      "side": 1,
+      "message": "This is a good start. A handful of comments.",
+      "revId": "a0db9ba6b2e5d311974c7920d2e90cf441d55387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a6e988_6983104c",
+        "filename": "android/all_test_run.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-10-20T02:19:25Z",
+      "side": 1,
+      "message": "Can you try moving these new things into their own package. It might not be possible because of layering, but give it a shot. I recommend \"testing\" but I\u0027m open to other names.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "a0db9ba6b2e5d311974c7920d2e90cf441d55387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a152c0_58fafd13",
+        "filename": "android/all_test_run.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-10-20T02:19:25Z",
+      "side": 1,
+      "message": "Please add a test for this. See https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/provenance/provenance_singleton_test.go",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "a0db9ba6b2e5d311974c7920d2e90cf441d55387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2466c39b_d3ba3293",
+        "filename": "android/test_run.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-10-20T02:19:25Z",
+      "side": 1,
+      "message": "Please add tests for this module type. See the tests in this directory for examples.  https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/aconfig/",
+      "revId": "a0db9ba6b2e5d311974c7920d2e90cf441d55387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9c78391_c1b56124",
+        "filename": "android/test_run.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-10-20T02:19:25Z",
+      "side": 1,
+      "message": "It might be helpful to print the elements in validTestTypes. I think what will happen is that someone will forget to allowlist a new test type they add and someone will file a bug saying, \"Why can\u0027t I set the owner of my new test?\" And then that\u0027ll help us triage the bug.",
+      "revId": "a0db9ba6b2e5d311974c7920d2e90cf441d55387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d3cc37_eb6868a3",
+        "filename": "android/test_run.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-10-20T02:19:25Z",
+      "side": 1,
+      "message": "What is this going to be used for? Not all blueprint files are called Android.bp, so this is a red flag.",
+      "revId": "a0db9ba6b2e5d311974c7920d2e90cf441d55387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
