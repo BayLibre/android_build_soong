@@ -1,0 +1,55 @@
+if (NOT AIDL_BIN)
+    find_program(AIDL_BIN aidl REQUIRED)
+endif()
+<<setList .M.Name "_SRC" "${ANDROID_BUILD_TOP}/" (toStrings .Srcs)>>
+
+set(<<.M.Name>>_GENDIR "${PROJECT_BINARY_DIR}/gen-<<.AidlFlavor>>")
+set(<<.M.Name>>_GEN_SRC)
+foreach(AIDL_FILE ${<<.M.Name>>_SRC})
+    get_filename_component(ABS_AIDL_FILEPATH ${AIDL_FILE} ABSOLUTE)
+    get_filename_component(ABS_AIDL_DIR ${ABS_AIDL_FILEPATH} DIRECTORY)
+    get_filename_component(AIDL_FILENAME ${AIDL_FILE} NAME)
+    get_filename_component(AIDL_FILENAME_WE ${AIDL_FILE} NAME_WE)
+    set(AIDL_CPP_FILE "${<<.M.Name>>_GENDIR}/${AIDL_FILENAME_WE}.cpp")
+    add_custom_command(
+        OUTPUT "${AIDL_CPP_FILE}"
+        COMMAND "${AIDL_BIN}"
+        ARGS
+        --lang=<<.AidlFlavor>>
+        -Weverything
+        -Wno-missing-permission-annotation
+        -Wno-mixed-oneway
+        --min_sdk_version current
+        --structured
+        --ninja
+        -d "${<<.M.Name>>_GENDIR}/${AIDL_FILENAME_WE}.cpp.d"
+        -h "${<<.M.Name>>_GENDIR}/include"
+        -o "${<<.M.Name>>_GENDIR}"
+        -I "${ABS_AIDL_DIR}"
+        "${ABS_AIDL_FILEPATH}"
+    )
+list(APPEND <<.M.Name>>_GEN_SRC "${AIDL_CPP_FILE}")
+endforeach()
+
+add_library(<<.M.Name>> ${<<.M.Name>>_GEN_SRC})
+target_compile_options(<<.M.Name>>
+    PRIVATE
+    ${<<.MT.Name>>_CFLAGS}
+)
+target_include_directories(<<.M.Name>>
+    PUBLIC
+    "${<<.M.Name>>_GENDIR}/include"
+    "${ANDROID_BUILD_TOP}/system/libbase/include"
+    "${ANDROID_BUILD_TOP}/external/fmtlib/include"
+    "${ANDROID_BUILD_TOP}/frameworks/native/libs/binder/include"
+    "${ANDROID_BUILD_TOP}/frameworks/native/libs/binder/ndk/include_<<.AidlFlavor>>"
+    "${ANDROID_BUILD_TOP}/system/core/libcutils/include"
+    "${ANDROID_BUILD_TOP}/system/core/libutils/include"
+    "${ANDROID_BUILD_TOP}/system/core/libprocessgroup/include"
+    "${ANDROID_BUILD_TOP}/system/core/libsystem/include"
+    "${ANDROID_BUILD_TOP}/system/core/libutils/binder/include"
+)
+target_link_options(<<.M.Name>> PRIVATE ${<<.MT.Name>>_LINKFLAGS})
+target_link_libraries(<<.M.Name>>
+    libbinder_sdk
+)

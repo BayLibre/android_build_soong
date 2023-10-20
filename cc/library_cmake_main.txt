@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.18)
+project(<<.M.Name>> CXX)
+set(CMAKE_CXX_STANDARD 20)
+
+# TODO: only when any module depends on it
+find_package(GTest REQUIRED)
+
+<<range .M.Properties.Subdirectories ->>
+add_subdirectory("${ANDROID_BUILD_TOP}/<<.Path>>" <<.Name>> EXCLUDE_FROM_ALL)
+<<end>>
+<<setList .M.Name "_CFLAGS" "" .M.Properties.Cflags>>
+
+<<setList .M.Name "_LINKFLAGS" "" .M.Properties.Linkflags>>
+
+<<range $moduleDir, $value := .ModuleDirs ->>
+add_subdirectory(<<$moduleDir>>)
+<<end>>
