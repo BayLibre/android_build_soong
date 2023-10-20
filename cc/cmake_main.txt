@@ -1,0 +1,24 @@
+cmake_minimum_required(VERSION 3.18)
+project(<<.M.Name>> CXX)
+set(CMAKE_CXX_STANDARD 20)
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+include(AddAidlLibrary)
+include(AppendCxxFlagsIfSupported)
+
+if (NOT AIDL_BIN)
+    find_program(AIDL_BIN aidl REQUIRED)
+endif()
+
+<<cflagsList .M.Name "_CFLAGS" .M.Properties.Cflags .M.Properties.UnportableFlags>>
+
+<<range .M.SystemPackages ->>
+find_package(<<.>> REQUIRED)
+<<end >>
+<<range .M.PregeneratedPackages ->>
+add_subdirectory("${ANDROID_BUILD_TOP}/<<.>>" "<<.>>/build" EXCLUDE_FROM_ALL)
+<<end>>
+add_compile_options(${<<.M.Name>>_CFLAGS})
+<<range $moduleDir, $value := .ModuleDirs ->>
+add_subdirectory(<<$moduleDir>>)
+<<end>>

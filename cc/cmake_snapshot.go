@@ -1,0 +1,370 @@
+// Copyright 2024 Google Inc. All rights reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package cc
+
+import (
+	"android/soong/android"
+	"bytes"
+	_ "embed"
+	"fmt"
+	"github.com/google/blueprint"
+	"slices"
+	"strings"
+	"text/template"
+)
+
+//go:embed cmake_main.txt
+var templateCmakeMainRaw string
+var templateCmakeMain *template.Template = parseTemplate(templateCmakeMainRaw)
+
+//go:embed cmake_module_cc.txt
+var templateCmakeModuleCcRaw string
+var templateCmakeModuleCc *template.Template = parseTemplate(templateCmakeModuleCcRaw)
+
+//go:embed cmake_module_aidl.txt
+var templateCmakeModuleAidlRaw string
+var templateCmakeModuleAidl *template.Template = parseTemplate(templateCmakeModuleAidlRaw)
+
+//go:embed cmake_ext_add_aidl_library.txt
+var cmakeExtAddAidlLibrary string
+
+//go:embed cmake_ext_append_flags.txt
+var cmakeExtAppendFlags string
+
+var defaultUnportableFlags []string = []string{
+	"-Wno-class-memaccess",
+	"-Wno-exit-time-destructors",
+	"-Wno-inconsistent-missing-override",
+	"-Wreorder-init-list",
+	"-Wno-reorder-init-list",
+	"-Wno-restrict",
+	"-Wno-stringop-overread",
+	"-Wno-subobject-linkage",
+}
+
+var ignoredSystemLibs []string = []string{
+	"libc++",
+	"libc++_static",
+	"prebuilt_libclang_rt.builtins",
+	"prebuilt_libclang_rt.ubsan_minimal",
+}
+
+func RegisterCmakeSnapshotComponents(ctx android.RegistrationContext) {
+	ctx.RegisterModuleType("cc_cmake_snapshot", CmakeSnapshotFactory)
+}
+
+// TODO(now): necessary?
+var _ android.OutputFileProducer = (*CmakeSnapshot)(nil)
+
+func RegisterPreDepsMutators(ctx android.RegisterMutatorsContext) {
+	ctx.BottomUp("addCMakeLibs", addCMakeLibs).Parallel()
+}
+
+type LibraryMappingProperty struct {
+	Android_name         string
+	Mapped_name          string
+	Package_pregenerated string
+	Package_system       string
+}
+
+type CmakeSnapshotProperties struct {
+	Modules         []string
+	Cflags          []string
+	Library_mapping []LibraryMappingProperty
+	UnportableFlags []string
+}
+
+type CmakeSnapshot struct {
+	android.ModuleBase
+
+	Properties CmakeSnapshotProperties
+
+	LibraryMapping       map[string]LibraryMappingProperty
+	PregeneratedPackages []string
+	SystemPackages       []string
+
+	zipPath android.WritablePath
+}
+
+func parseTemplate(templateContents string) *template.Template {
+	funcMap := template.FuncMap{
+		"setList": func(name string, nameSuffix string, itemPrefix string, items []string) string {
+			var list strings.Builder
+			list.WriteString("set(" + name + nameSuffix)
+			templateListBuilder(&list, itemPrefix, items)
+			return list.String()
+		},
+		"toStrings": func(files []android.Path) []string {
+			strings := make([]string, len(files))
+			for idx, file := range files {
+				strings[idx] = file.String()
+			}
+			return strings
+		},
+		"cflagsList": func(name string, nameSuffix string, flags []string,
+			unportableFlags []string) string {
+			if len(unportableFlags) == 0 {
+				unportableFlags = defaultUnportableFlags
+			}
+
+			filteredPortable := []string{}
+			filteredUnportable := []string{}
+			for _, flag := range flags {
+				if slices.Contains(unportableFlags, flag) {
+					filteredUnportable = append(filteredUnportable, flag)
+				} else {
+					filteredPortable = append(filteredPortable, flag)
+				}
+			}
+
+			var list strings.Builder
+
+			list.WriteString("set(" + name + nameSuffix)
+			templateListBuilder(&list, "", filteredPortable)
+
+			list.WriteString("\nappend_cxx_flags_if_supported(" + name + nameSuffix)
+			templateListBuilder(&list, "", filteredUnportable)
+
+			return list.String()
+		},
+		"getSources": func(m *Module) []android.Path {
+			return m.compiler.(CompiledInterface).Srcs()
+		},
+		"getCompilerProperties": getCompilerProperties,
+		"getLinkerProperties":   getLinkerProperties,
+		"getModuleType":         getModuleType,
+		"getExporterInfo": func(ctx android.ModuleContext, m *Module) FlagExporterInfo {
+			info, _ := android.OtherModuleProvider(ctx, m, FlagExporterInfoProvider)
+			return info
+		},
+		"concat4": func(list1 []string, list2 []string, list3 []string, list4 []string) []string {
+			return append(append(append(list1, list2...), list3...), list4...)
+		},
+		"mapLibraries": func(libs []string, mapping map[string]LibraryMappingProperty) []string {
+			mappedLibs := make([]string, len(libs))
+			for i, lib := range libs {
+				mappedLib, exists := mapping[lib]
+				if exists {
+					lib = mappedLib.Mapped_name
+				}
+				mappedLibs[i] = lib
+			}
+			return mappedLibs
+		},
+	}
+
+	return template.Must(template.New("").Delims("<<", ">>").Funcs(funcMap).Parse(templateContents))
+}
+
+func templateListBuilder(builder *strings.Builder, itemPrefix string, items []string) {
+	if len(items) > 0 {
+		builder.WriteString("\n")
+		for _, item := range items {
+			builder.WriteString("    " + itemPrefix + item + "\n")
+		}
+	}
+	builder.WriteString(")")
+}
+
+func executeTemplate(templ *template.Template, buffer *bytes.Buffer, data any) string {
+	buffer.Reset()
+	if err := templ.Execute(buffer, data); err != nil {
+		panic(err)
+	}
+	output := strings.TrimSpace(buffer.String())
+	buffer.Reset()
+	return output
+}
+
+func (m *CmakeSnapshot) OutputFiles(tag string) (android.Paths, error) {
+	if tag == "" {
+		return android.Paths{m.zipPath}, nil
+	}
+	return nil, fmt.Errorf("unrecognized tag %q", tag)
+}
+
+func init() {
+	RegisterCmakeSnapshotComponents(android.InitRegistrationContext)
+	android.PreDepsMutators(RegisterPreDepsMutators)
+}
+
+// TODO(now): necessary?
+type CmakeSnapshotDepTag struct {
+	blueprint.BaseDependencyTag
+}
+
+func addCMakeLibs(mctx android.BottomUpMutatorContext) {
+	if m, ok := mctx.Module().(*CmakeSnapshot); ok {
+		mctx.AddDependency(mctx.Module(), CmakeSnapshotDepTag{}, m.Properties.Modules...)
+	}
+}
+
+func (m *CmakeSnapshot) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	zipList := android.Paths{}
+	var templateBuffer bytes.Buffer
+
+	// Properties pre-processing
+
+	m.LibraryMapping = make(map[string]LibraryMappingProperty)
+	m.PregeneratedPackages = []string{}
+	m.SystemPackages = []string{}
+	for _, elem := range m.Properties.Library_mapping {
+		m.LibraryMapping[elem.Android_name] = elem
+
+		if elem.Package_pregenerated != "" && !slices.Contains(m.PregeneratedPackages,
+			elem.Package_pregenerated) {
+			m.PregeneratedPackages = append(m.PregeneratedPackages, elem.Package_pregenerated)
+		}
+		if elem.Package_system != "" && !slices.Contains(m.SystemPackages, elem.Package_system) {
+			m.SystemPackages = append(m.SystemPackages, elem.Package_system)
+		}
+	}
+
+	// Generating CMakeLists.txt for all modules in dependency tree
+
+	visitedModules := make(map[string]bool)
+	moduleDirs := make(map[string][]string)
+	ctx.WalkDeps(func(amod android.Module, parent android.Module) bool {
+		if ccmod, ok := amod.(*Module); ok {
+			if _, ok := visitedModules[ccmod.Name()]; ok {
+				return false
+			}
+			if _, ok := m.LibraryMapping[ccmod.Name()]; ok {
+				return false
+			}
+			if slices.Contains(ignoredSystemLibs, ccmod.Name()) {
+				return false
+			}
+			visitedModules[ccmod.Name()] = true
+
+			// TODO(now): remove before merging (also drop parent argument)
+			fmt.Println("WalkDeps " + parent.Name() + " -> " + amod.Name())
+
+			isAidl := getCompilerProperties(ccmod).AidlInterface.Lang != ""
+
+			templateToUse := templateCmakeModuleCc
+			if isAidl {
+				templateToUse = templateCmakeModuleAidl
+			}
+			moduleFragment := executeTemplate(templateToUse, &templateBuffer, struct {
+				Ctx      *android.ModuleContext
+				M        *Module
+				Snapshot *CmakeSnapshot
+			}{
+				&ctx,
+				ccmod,
+				m,
+			})
+
+			moduleDir := ctx.OtherModuleDir(amod)
+			moduleDirs[moduleDir] = append(moduleDirs[moduleDir], moduleFragment)
+
+			return !isAidl
+		}
+		return false
+	})
+
+	for moduleDir, fragments := range moduleDirs {
+		moduleCmakePath := android.PathForModuleOut(ctx, moduleDir, "CMakeLists.txt")
+		zipList = append(zipList, moduleCmakePath)
+		android.WriteFileRule(ctx, moduleCmakePath, strings.Join(fragments, "\n\n"))
+	}
+
+	// Generating main CMakeLists.txt
+
+	mainCmakePath := android.PathForModuleOut(ctx, "CMakeLists.txt")
+	zipList = append(zipList, mainCmakePath)
+	mainContents := executeTemplate(templateCmakeMain, &templateBuffer, struct {
+		M          *CmakeSnapshot
+		ModuleDirs map[string][]string
+	}{
+		m,
+		moduleDirs,
+	})
+	android.WriteFileRule(ctx, mainCmakePath, mainContents)
+
+	// Generating CMake extensions
+
+	extPath := android.PathForModuleOut(ctx, "cmake", "AppendCxxFlagsIfSupported.cmake")
+	zipList = append(zipList, extPath)
+	android.WriteFileRule(ctx, extPath, cmakeExtAppendFlags)
+	extPath = android.PathForModuleOut(ctx, "cmake", "AddAidlLibrary.cmake")
+	zipList = append(zipList, extPath)
+	android.WriteFileRule(ctx, extPath, cmakeExtAddAidlLibrary)
+
+	// Packaging all CMakeLists.txt into a single zip file
+
+	m.zipPath = android.PathForModuleOut(ctx, m.Name()+".zip")
+	zipRule := android.NewRuleBuilder(pctx, ctx)
+	rspFile := android.PathForModuleOut(ctx, m.Name()+"_list.rsp")
+	zipRule.Command().
+		BuiltTool("soong_zip").
+		FlagWithOutput("-o ", m.zipPath).
+		FlagWithArg("-C ", android.PathForModuleOut(ctx).OutputPath.String()).
+		FlagWithRspFileInputList("-r ", rspFile, zipList)
+	zipRule.Build(m.zipPath.String(), "archiving "+m.Name())
+}
+
+// TODO(now): review
+func (m *CmakeSnapshot) AndroidMkEntries() []android.AndroidMkEntries {
+	return []android.AndroidMkEntries{{
+		Class:      "ETC",
+		OutputFile: android.OptionalPathForPath(m.zipPath),
+		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
+			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+				entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", true)
+			},
+		},
+	}}
+}
+
+func getModuleType(m *Module) string {
+	switch m.compiler.(type) {
+	case *libraryDecorator:
+		return "library"
+	case *testBinary:
+		return "executable"
+	case nil: // e.g. builtins
+		return ""
+	}
+	panic(fmt.Sprintf("Unexpected module type: %T", m.compiler))
+}
+
+func getCompilerProperties(m *Module) BaseCompilerProperties {
+	switch decorator := m.compiler.(type) {
+	case *libraryDecorator:
+		return decorator.baseCompiler.Properties
+	case *testBinary:
+		return decorator.baseCompiler.Properties
+	}
+	panic(fmt.Sprintf("Unexpected module type: %T", m.compiler))
+}
+
+func getLinkerProperties(m *Module) BaseLinkerProperties {
+	switch decorator := m.linker.(type) {
+	case *libraryDecorator:
+		return decorator.baseLinker.Properties
+	case *testBinary:
+		return decorator.baseLinker.Properties
+	}
+	panic(fmt.Sprintf("Unexpected module type: %T", m.linker))
+}
+
+func CmakeSnapshotFactory() android.Module {
+	module := &CmakeSnapshot{}
+	module.AddProperties(&module.Properties)
+	android.InitAndroidArchModule(module, android.HostSupported, android.MultilibFirst)
+	return module
+}
