@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a33fc7_b8a38f24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-10-20T02:19:21Z",
+      "side": 1,
+      "message": "This is basically fine, but a couple things.\n- Please try moving it to a new \"testing\" go package/directory.\n- Needs unit tests\n- Can you hold off on this until the test coverage is done and we\u0027re confident that that is working with ATOS.",
+      "revId": "4784f3375aa616968061c22fab5635d5f8038141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
