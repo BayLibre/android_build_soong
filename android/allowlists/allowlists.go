@@ -372,6 +372,7 @@ var (
 		"prebuilts/clang/host/linux-x86":                   Bp2BuildDefaultTrueRecursively,
 		"prebuilts/gradle-plugin":                          Bp2BuildDefaultTrueRecursively,
 		"prebuilts/module_sdk":                             Bp2BuildDefaultTrueRecursively,
+		"prebuilts/runtime/mainline/i18n/apex":             Bp2BuildDefaultTrueRecursively,
 		"prebuilts/runtime/mainline/platform/sdk":          Bp2BuildDefaultTrueRecursively,
 		"prebuilts/sdk":                                    Bp2BuildDefaultTrue,
 		"prebuilts/sdk/current/androidx":                   Bp2BuildDefaultTrue,
@@ -393,6 +394,7 @@ var (
 		"system/apex/libs":                                       Bp2BuildDefaultTrueRecursively,
 		"system/apex/libs/libapexsupport":                        Bp2BuildDefaultFalseRecursively, // TODO(b/267572288): depends on rust
 		"system/apex/proto":                                      Bp2BuildDefaultTrueRecursively,
+		"system/apex/shim":                                       Bp2BuildDefaultTrue,
 		"system/apex/tools":                                      Bp2BuildDefaultTrueRecursively,
 		"system/core/debuggerd":                                  Bp2BuildDefaultTrueRecursively,
 		"system/core/diagnose_usb":                               Bp2BuildDefaultTrueRecursively,
@@ -692,6 +694,7 @@ var (
 		"libSurfaceFlingerProp",
 
 		// prebuilts
+		"prebuilt_apex",
 		"prebuilt_stats-log-api-gen",
 		"prebuilt_aapt2",
 
