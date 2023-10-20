@@ -1402,7 +1402,7 @@ func AndroidLibraryBazelTargetModuleProperties() bazel.BazelTargetModuleProperti
 }
 
 func (a *AndroidLibrary) ConvertWithBp2build(ctx android.Bp2buildMutatorContext) {
-	commonAttrs, bp2buildInfo, supported := a.convertLibraryAttrsBp2Build(ctx)
+	commonAttrs, bp2buildInfo, supported := a.convertLibraryAttrsBp2Build(ctx, true)
 	if !supported {
 		return
 	}

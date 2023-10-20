@@ -2916,6 +2916,7 @@ type javaCommonAttributes struct {
 	Sdk_version             bazel.StringAttribute
 	Java_version            bazel.StringAttribute
 	Errorprone_force_enable bazel.BoolAttribute
+	Instrument              *bool
 }
 
 type javaDependencyLabels struct {
@@ -2957,18 +2958,22 @@ func javaXsdTargetName(xsd android.XsdConfigBp2buildTargets) string {
 // which has other non-attribute information needed for bp2build conversion
 // that needs different handling depending on the module types, and thus needs
 // to be returned to the calling function.
-func (m *Library) convertLibraryAttrsBp2Build(ctx android.Bp2buildMutatorContext) (*javaCommonAttributes, *bp2BuildJavaInfo, bool) {
+func (m *Library) convertLibraryAttrsBp2Build(ctx android.Bp2buildMutatorContext, markUnconvertible bool) (*javaCommonAttributes, *bp2BuildJavaInfo, bool) {
 	var srcs bazel.LabelListAttribute
 	var deps bazel.LabelListAttribute
 	var staticDeps bazel.LabelListAttribute
 
 	if proptools.String(m.deviceProperties.Sdk_version) == "" && m.DeviceSupported() {
 		// TODO(b/297356704): handle platform apis in bp2build
-		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "sdk_version unset")
+		if markUnconvertible {
+			ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "sdk_version unset")
+		}
 		return &javaCommonAttributes{}, &bp2BuildJavaInfo{}, false
 	} else if proptools.String(m.deviceProperties.Sdk_version) == "core_platform" {
 		// TODO(b/297356582): handle core_platform in bp2build
-		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "sdk_version core_platform")
+		if markUnconvertible {
+			ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "sdk_version core_platform")
+		}
 		return &javaCommonAttributes{}, &bp2BuildJavaInfo{}, false
 	}
 
@@ -2979,7 +2984,9 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.Bp2buildMutatorContext
 				archSrcs := android.BazelLabelForModuleSrcExcludes(ctx, archProps.Srcs, archProps.Exclude_srcs)
 				srcs.SetSelectValue(axis, config, archSrcs)
 				if archProps.Jarjar_rules != nil {
-					ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "jarjar_rules")
+					if markUnconvertible {
+						ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "jarjar_rules")
+					}
 					return &javaCommonAttributes{}, &bp2BuildJavaInfo{}, false
 				}
 			}
@@ -3190,11 +3197,8 @@ func javaLibraryBazelTargetModuleProperties() bazel.BazelTargetModuleProperties 
 	}
 }
 
-func javaLibraryBp2Build(ctx android.Bp2buildMutatorContext, m *Library) {
-	commonAttrs, bp2BuildInfo, supported := m.convertLibraryAttrsBp2Build(ctx)
-	if !supported {
-		return
-	}
+func buildJavaLibraryAttrs(ctx android.Bp2buildMutatorContext, m *Library, commonAttrs *javaCommonAttributes,
+	bp2BuildInfo *bp2BuildJavaInfo) *javaLibraryAttributes {
 	depLabels := bp2BuildInfo.DepLabels
 
 	deps := depLabels.Deps
@@ -3209,12 +3213,23 @@ func javaLibraryBp2Build(ctx android.Bp2buildMutatorContext, m *Library) {
 		// So we can drop deps here.
 		deps = bazel.LabelListAttribute{}
 	}
-	var props bazel.BazelTargetModuleProperties
 	attrs := &javaLibraryAttributes{
 		javaCommonAttributes: commonAttrs,
 		Deps:                 deps,
 		Exports:              exports,
 	}
+
+	return attrs
+}
+
+func javaLibraryBp2Build(ctx android.Bp2buildMutatorContext, m *Library) {
+	commonAttrs, bp2BuildInfo, supported := m.convertLibraryAttrsBp2Build(ctx, true)
+	if !supported {
+		return
+	}
+
+	attrs := buildJavaLibraryAttrs(ctx, m, commonAttrs, bp2BuildInfo)
+	var props bazel.BazelTargetModuleProperties
 	name := m.Name()
 
 	if !bp2BuildInfo.hasKotlin {
@@ -3247,7 +3262,7 @@ type javaBinaryHostAttributes struct {
 
 // JavaBinaryHostBp2Build is for java_binary_host bp2build.
 func javaBinaryHostBp2Build(ctx android.Bp2buildMutatorContext, m *Binary) {
-	commonAttrs, bp2BuildInfo, supported := m.convertLibraryAttrsBp2Build(ctx)
+	commonAttrs, bp2BuildInfo, supported := m.convertLibraryAttrsBp2Build(ctx, true)
 	if !supported {
 		return
 	}
@@ -3334,7 +3349,7 @@ type javaTestHostAttributes struct {
 
 // javaTestHostBp2Build is for java_test_host bp2build.
 func javaTestHostBp2Build(ctx android.Bp2buildMutatorContext, m *TestHost) {
-	commonAttrs, bp2BuildInfo, supported := m.convertLibraryAttrsBp2Build(ctx)
+	commonAttrs, bp2BuildInfo, supported := m.convertLibraryAttrsBp2Build(ctx, true)
 	if !supported {
 		return
 	}

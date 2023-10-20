@@ -2300,6 +2300,13 @@ func SdkLibraryFactory() android.Module {
 }
 
 type bazelSdkLibraryAttributes struct {
+	*bazelJavaApiContributionAttributes
+	*javaLibraryAttributes
+	Impl_library_visibility []string
+	Tags                    []string
+}
+
+type bazelJavaApiContributionAttributes struct {
 	Public        *bazel.Label
 	System        *bazel.Label
 	Test          *bazel.Label
@@ -2307,13 +2314,25 @@ type bazelSdkLibraryAttributes struct {
 	System_server *bazel.Label
 }
 
-// java_sdk_library bp2build converter
 func (module *SdkLibrary) ConvertWithBp2build(ctx android.Bp2buildMutatorContext) {
 	if ctx.ModuleType() != "java_sdk_library" {
 		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED, "")
 		return
 	}
 
+	var attrs bazelSdkLibraryAttributes
+	module.convertApiContribution(ctx, &attrs)
+	module.convertSdkImplLibrary(ctx, &attrs)
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "java_sdk_library",
+		Bzl_load_location: "//build/bazel/rules/java:sdk_library.bzl",
+	}
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: module.Name()}, &attrs)
+}
+
+// java_sdk_library bp2build converter
+func (module *SdkLibrary) convertApiContribution(ctx android.Bp2buildMutatorContext, attrs *bazelSdkLibraryAttributes) {
 	nameToAttr := make(map[string]*bazel.Label)
 
 	for _, scope := range module.getGeneratedApiScopes(ctx) {
@@ -2321,19 +2340,48 @@ func (module *SdkLibrary) ConvertWithBp2build(ctx android.Bp2buildMutatorContext
 		nameToAttr[scope.name] = &apiSurfaceFile
 	}
 
-	attrs := bazelSdkLibraryAttributes{
+	attrs.bazelJavaApiContributionAttributes = &bazelJavaApiContributionAttributes{
 		Public:        nameToAttr["public"],
 		System:        nameToAttr["system"],
 		Test:          nameToAttr["test"],
 		Module_lib:    nameToAttr["module-lib"],
 		System_server: nameToAttr["system-server"],
 	}
-	props := bazel.BazelTargetModuleProperties{
-		Rule_class:        "java_sdk_library",
-		Bzl_load_location: "//build/bazel/rules/java:sdk_library.bzl",
+}
+
+func (module *SdkLibrary) convertSdkImplLibrary(ctx android.Bp2buildMutatorContext, attrs *bazelSdkLibraryAttributes) {
+	libraryAttrs, bp2BuildInfo, supported := module.convertLibraryAttrsBp2Build(ctx, false)
+	if !supported {
+		return
 	}
 
-	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: module.Name()}, &attrs)
+	var staticDeps bazel.LabelListAttribute
+	var deps bazel.LabelListAttribute
+
+	for axis, configToProps := range module.GetArchVariantProperties(ctx, &sdkLibraryProperties{}) {
+		for config, _props := range configToProps {
+			if archProps, ok := _props.(*sdkLibraryProperties); ok {
+				var libLabels []bazel.Label
+				for _, d := range archProps.Impl_only_libs {
+					neverlinkLabel := android.BazelLabelForModuleDepSingle(ctx, d)
+					neverlinkLabel.Label = neverlinkLabel.Label + "-neverlink"
+					libLabels = append(libLabels, neverlinkLabel)
+				}
+				deps.SetSelectValue(axis, config, bazel.MakeLabelList(libLabels))
+				archStaticLibs := android.BazelLabelForModuleDeps(ctx, archProps.Impl_only_static_libs)
+				staticDeps.SetSelectValue(axis, config, archStaticLibs)
+			}
+		}
+	}
+	bp2BuildInfo.DepLabels.Deps.Append(deps)
+	bp2BuildInfo.DepLabels.StaticDeps.Append(staticDeps)
+
+	commonAttrs := buildJavaLibraryAttrs(ctx, &module.Library, libraryAttrs, bp2BuildInfo)
+	commonAttrs.Instrument = proptools.BoolPtr(true)
+
+	attrs.javaLibraryAttributes = commonAttrs
+	attrs.Impl_library_visibility = module.sdkLibraryProperties.Impl_library_visibility
+	attrs.Tags = android.ConvertApexAvailableToTagsWithoutTestApexes(ctx, module.ApexAvailable())
 }
 
 //
@@ -2483,7 +2531,7 @@ func (i *SdkLibraryImport) ConvertWithBp2build(ctx android.Bp2buildMutatorContex
 		}
 	}
 
-	attrs := bazelSdkLibraryAttributes{
+	attrs := bazelJavaApiContributionAttributes{
 		Public:        nameToAttr["public"],
 		System:        nameToAttr["system"],
 		Test:          nameToAttr["test"],

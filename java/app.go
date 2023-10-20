@@ -1740,7 +1740,7 @@ func convertWithBp2build(ctx android.Bp2buildMutatorContext, a *AndroidApp) (boo
 		}
 	}
 
-	commonAttrs, bp2BuildInfo, supported := a.convertLibraryAttrsBp2Build(ctx)
+	commonAttrs, bp2BuildInfo, supported := a.convertLibraryAttrsBp2Build(ctx, true)
 	if !supported {
 		return false, android.CommonAttributes{}, &bazelAndroidAppAttributes{}
 	}
