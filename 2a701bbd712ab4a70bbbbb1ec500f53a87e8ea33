@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48723dd2_decace96",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-20T17:37:19Z",
+      "side": 1,
+      "message": "This method will be used in bp2build method to split srcs and create filegroup targets.",
+      "range": {
+        "startLine": 406,
+        "startChar": 5,
+        "endLine": 406,
+        "endChar": 19
+      },
+      "revId": "2a701bbd712ab4a70bbbbb1ec500f53a87e8ea33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
