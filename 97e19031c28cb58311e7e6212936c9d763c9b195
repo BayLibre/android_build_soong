@@ -22,6 +22,30 @@
       },
       "revId": "97e19031c28cb58311e7e6212936c9d763c9b195",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "629b7995_cff06f23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1206743
+      },
+      "writtenOn": "2023-10-20T21:45:54Z",
+      "side": 1,
+      "message": "Wear partners do not have vendor/google/build but they do have vendor/google_clockwork FWIW, that\u0027s why I asked to use that directory.\n\nWe actually also have a vendor/google_shared/wear/release which is planned to map more directly to vendor/google/build if that would be preferred.",
+      "parentUuid": "5a1a3e43_522198da",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "97e19031c28cb58311e7e6212936c9d763c9b195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
