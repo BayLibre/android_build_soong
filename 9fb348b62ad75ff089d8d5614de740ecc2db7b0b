@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7082598_0e9a3a19",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-23T21:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "076ea876_18ee29e1",
+      "revId": "9fb348b62ad75ff089d8d5614de740ecc2db7b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "950533a6_9fc7b107",
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "The logic here is also getting complicated enough that it is should have a test for the various behaviors.",
       "parentUuid": "950533a6_9fc7b107",
+      "revId": "9fb348b62ad75ff089d8d5614de740ecc2db7b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "393835fd_b6c893af",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-23T21:04:43Z",
+      "side": 1,
+      "message": "True, test added. And thanks for pointing out that we should split up the logic here. I think it reads a little better in the latest patchset.",
+      "parentUuid": "adcea08a_b60018bf",
       "revId": "9fb348b62ad75ff089d8d5614de740ecc2db7b0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
