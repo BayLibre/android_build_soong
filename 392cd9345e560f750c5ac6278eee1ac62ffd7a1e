@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f1a6f0_c84d07a2",
+        "filename": "rust/builder.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-23T21:48:23Z",
+      "side": 1,
+      "message": "I\u0027ll add this back in a separate CL with https://android-review.git.corp.google.com/c/platform/build/soong/+/2761809/comment/27dab44d_29b033cd/ since I think it was the same thing",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 0
+      },
+      "revId": "392cd9345e560f750c5ac6278eee1ac62ffd7a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

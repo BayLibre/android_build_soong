@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f231169d_569d5c0b",
+        "filename": "rust/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-23T21:48:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f0452040_ef6fc859",
+      "revId": "35dd35ee7d5065f16feb2f4b7de74a119ee7fbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4432771_ba6b4ecc",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-19T15:47:37Z",
       "side": 1,
       "message": "Was `AR\u003d` env var set somewhere else before?",
+      "revId": "35dd35ee7d5065f16feb2f4b7de74a119ee7fbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ac8e6e3_d11f2ed3",
+        "filename": "rust/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-23T21:48:23Z",
+      "side": 1,
+      "message": "Hmm yeah it was but looks like it was removed: https://android-review.git.corp.google.com/c/platform/build/soong/+/2768553/2/rust/builder.go#b245.\n\nThanks for pointing that out.",
+      "parentUuid": "c4432771_ba6b4ecc",
       "revId": "35dd35ee7d5065f16feb2f4b7de74a119ee7fbd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b1f6e2_b445bd4a",
+        "filename": "rust/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-23T21:48:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "542f25da_7f9848e5",
+      "revId": "35dd35ee7d5065f16feb2f4b7de74a119ee7fbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "855130e4_54d77fd1",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-10-19T15:47:37Z",
       "side": 1,
       "message": "fizzBuzzRustc might be a more accurate name? It would be even better if we can confirm that the linker flags are in `--link-args` flag passed to `rustc`.",
+      "revId": "35dd35ee7d5065f16feb2f4b7de74a119ee7fbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "279c4957_94e29862",
+        "filename": "rust/rust_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-23T21:48:23Z",
+      "side": 1,
+      "message": "Yeah, I didn\u0027t love this. There isn\u0027t really good API support for breaking down the flags that we pass to the RuleBuilder API, so I would have to parse out the `link-flags\u003d\"...\"` string from the cmd. I can do this in a follow-up if we want. I filed b/307379143 to think about providing an API this usecase for the RuleBuilder API.",
+      "parentUuid": "855130e4_54d77fd1",
       "revId": "35dd35ee7d5065f16feb2f4b7de74a119ee7fbd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

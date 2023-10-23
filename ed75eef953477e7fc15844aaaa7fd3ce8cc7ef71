@@ -16,6 +16,24 @@
       "message": "Is it intended that we\u0027re removing `ANDROID_RUST_VERSION` env var here?",
       "revId": "ed75eef953477e7fc15844aaaa7fd3ce8cc7ef71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cd2a57c_231c05af",
+        "filename": "rust/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-23T21:48:23Z",
+      "side": 0,
+      "message": "Yes, as of aosp/2638675, this code now exists here between [line 182](https://android-review.git.corp.google.com/c/platform/build/soong/+/2761809/10/rust/builder.go#182) and [line 205](https://android-review.git.corp.google.com/c/platform/build/soong/+/2761809/10/rust/builder.go#205). I think this got re-added here by mistake in the revert aosp/2768553. \n\nI will separate this out into a different CL though and have Colin verify.\n\nUploaded as aosp/2799557.",
+      "parentUuid": "27dab44d_29b033cd",
+      "revId": "ed75eef953477e7fc15844aaaa7fd3ce8cc7ef71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
