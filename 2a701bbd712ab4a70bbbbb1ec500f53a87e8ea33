@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cc72307_54212cac",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-23T23:55:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48723dd2_decace96",
+      "range": {
+        "startLine": 406,
+        "startChar": 5,
+        "endLine": 406,
+        "endChar": 19
+      },
+      "revId": "2a701bbd712ab4a70bbbbb1ec500f53a87e8ea33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96b6bbd1_ed2efb92",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-10-20T17:43:26Z",
       "side": 1,
       "message": "The implementation looks clumsy. I tried to use something like `something :\u003d category.javaRelated` and decouple it from the \"include\" condition but seems golang does not allow modifying category in this way. I have to update category.javaRelated directly.",
+      "revId": "2a701bbd712ab4a70bbbbb1ec500f53a87e8ea33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a7e284b_3a652948",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-10-23T23:55:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96b6bbd1_ed2efb92",
       "revId": "2a701bbd712ab4a70bbbbb1ec500f53a87e8ea33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
