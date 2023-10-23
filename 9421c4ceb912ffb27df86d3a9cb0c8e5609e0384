@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66d8cc4f_0691a9dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-10-23T16:46:42Z",
+      "side": 1,
+      "message": "This is just a CP from internal, it\u0027s already been reviewed",
+      "revId": "9421c4ceb912ffb27df86d3a9cb0c8e5609e0384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
