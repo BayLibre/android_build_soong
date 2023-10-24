@@ -341,8 +341,10 @@ func platformMappingSingleProduct(
 		result.WriteString(fmt.Sprintf("    --//build/bazel/product_config:product_manufacturer=%s\n", productVariables.ProductManufacturer))
 		result.WriteString(fmt.Sprintf("    --//build/bazel/product_config:release_aconfig_flag_default_permission=%s\n", productVariables.ReleaseAconfigFlagDefaultPermission))
 		releaseAconfigValueSets := "//build/bazel/product_config:empty_aconfig_value_sets"
-		if len(productVariables.ReleaseAconfigValueSets) > 0 {
+		if len(productVariables.ReleaseAconfigValueSets) > 1 {
 			releaseAconfigValueSets = "@//" + label.pkg + ":" + releaseAconfigValueSetsName + "_" + label.target
+		} else if len(productVariables.ReleaseAconfigValueSets) == 1 {
+			releaseAconfigValueSets = productVariables.ReleaseAconfigValueSets[0]
 		}
 		result.WriteString(fmt.Sprintf("    --//build/bazel/product_config:release_aconfig_value_sets=%s\n", releaseAconfigValueSets))
 		result.WriteString(fmt.Sprintf("    --//build/bazel/product_config:release_version=%s\n", productVariables.ReleaseVersion))
@@ -521,7 +523,7 @@ func createGeneratedAndroidCertificateDirectories(productLabelsToVariables map[b
 
 func createReleaseAconfigValueSetsFilegroup(productLabelsToVariables map[bazelLabel]*android.ProductVariables, targets map[string]BazelTargets) {
 	for label, productVariables := range productLabelsToVariables {
-		if len(productVariables.ReleaseAconfigValueSets) > 0 {
+		if len(productVariables.ReleaseAconfigValueSets) > 1 {
 			key := label.target
 			dir := label.pkg
 			var value_sets strings.Builder
