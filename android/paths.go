@@ -1915,7 +1915,21 @@ func (p InstallPaths) Strings() []string {
 // validatePathInternal ensures that a path does not leave its component, and
 // optionally doesn't contain Ninja variables.
 func validatePathInternal(allowNinjaVariables bool, pathComponents ...string) (string, error) {
+	// Avoid heap allocations if possible by allocating a small backing array on the stack.  If
+	// there are more path elements than the size of the array then fall back to a heap allocated
+	// slice.
+	array := [4]string{}
+	var nonEmptyPathComponents []string
+	if len(pathComponents) <= len(array) {
+		nonEmptyPathComponents = array[:len(pathComponents)]
+	} else {
+		nonEmptyPathComponents = make([]string, 0, len(pathComponents))
+	}
+
 	for _, path := range pathComponents {
+		if path == "" {
+			continue
+		}
 		if !allowNinjaVariables && strings.Contains(path, "$") {
 			return "", fmt.Errorf("Path contains invalid character($): %s", path)
 		}
@@ -1924,11 +1938,16 @@ func validatePathInternal(allowNinjaVariables bool, pathComponents ...string) (s
 		if path == ".." || strings.HasPrefix(path, "../") || strings.HasPrefix(path, "/") {
 			return "", fmt.Errorf("Path is outside directory: %s", path)
 		}
+
+		// Optimization: filepath.Join("foo", "") returns a newly allocated copy
+		// of "foo", while filepath.Join("foo") does not.  Strip out any empty
+		// path components.
+		nonEmptyPathComponents = append(nonEmptyPathComponents, path)
 	}
 	// TODO: filepath.Join isn't necessarily correct with embedded ninja
 	// variables. '..' may remove the entire ninja variable, even if it
 	// will be expanded to multiple nested directories.
-	return filepath.Join(pathComponents...), nil
+	return filepath.Join(nonEmptyPathComponents...), nil
 }
 
 // validateSafePath validates a path that we trust (may contain ninja
