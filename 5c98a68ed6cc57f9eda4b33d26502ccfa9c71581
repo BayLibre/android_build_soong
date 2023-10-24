@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dda42075_135b0a8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-24T21:51:47Z",
+      "side": 1,
+      "message": "Fyodor,\nOnce this is merged, we can enable c2 dav1d decoder plugin.",
+      "revId": "5c98a68ed6cc57f9eda4b33d26502ccfa9c71581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
