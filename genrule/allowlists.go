@@ -51,8 +51,6 @@ var (
 
 	SandboxingDenyModuleList = []string{
 		// go/keep-sorted start
-		"AudioFocusControlProtoStub_cc",
-		"AudioFocusControlProtoStub_h",
 		"BlueberryFacadeAndCertGeneratedStub_py",
 		"BlueberryFacadeGeneratedStub_cc",
 		"BlueberryFacadeGeneratedStub_h",
