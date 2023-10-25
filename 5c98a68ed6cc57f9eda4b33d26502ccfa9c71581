@@ -67,6 +67,24 @@
       "message": "Could you elaborate on your use case? Are you using the Bazel-built `libcodec2_soft_av1dec_dav1d`?",
       "revId": "5c98a68ed6cc57f9eda4b33d26502ccfa9c71581",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1734e3a_0b9b4c76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-25T17:27:58Z",
+      "side": 1,
+      "message": "libcodec2_soft_av1dec_dav1d will be built by\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/codec2/components/dav1d/Android.bp\n\nThis change was necessary to enable building libcodec2_soft_av1dec_dav1d.\n\nI referred to how libcodec2_soft_av1dec_gav1 and external/libgav1 were included in this file and did the same for the new library being added.\n\nPlease let me know if there is any other way that is preferred over this change and I will try that.\nThanks.",
+      "parentUuid": "c87f97f1_add4579a",
+      "revId": "5c98a68ed6cc57f9eda4b33d26502ccfa9c71581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
