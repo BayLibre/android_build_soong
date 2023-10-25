@@ -16,6 +16,24 @@
       "message": "hey, I tried to add a test like the one for min_sdk_version in sysprop_test, but it seems like linker.linkProps() is not exported from cc.Module. Is there any other way to read back the cflag/ldflags properties from a cc.Module here?\n\nOtherwise, I suppose I could add an example of this for a test?",
       "revId": "c43a4acc8becb3bdc4f5283640c783e9f3c1a018",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef4a599_4590a822",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-25T22:55:12Z",
+      "side": 1,
+      "message": "We don\u0027t export the flags anywhere.  You could examine the command line of the link rule, but that is reaching deep into implementation details.",
+      "parentUuid": "cd2b16c6_c78f90b2",
+      "revId": "c43a4acc8becb3bdc4f5283640c783e9f3c1a018",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
