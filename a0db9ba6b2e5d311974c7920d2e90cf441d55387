@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5067ec9c_f6fc9dd8",
+        "filename": "android/all_test_run.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-10-25T14:11:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "36a6e988_6983104c",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "a0db9ba6b2e5d311974c7920d2e90cf441d55387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6a152c0_58fafd13",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-10-20T02:19:25Z",
       "side": 1,
       "message": "Please add a test for this. See https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/provenance/provenance_singleton_test.go",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "a0db9ba6b2e5d311974c7920d2e90cf441d55387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b8dc07f_466a1f40",
+        "filename": "android/all_test_run.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-10-25T14:11:02Z",
+      "side": 1,
+      "message": "Removed singleton class for now from this Cl.",
+      "parentUuid": "a6a152c0_58fafd13",
       "range": {
         "startLine": 25,
         "startChar": 5,
@@ -81,6 +129,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9b44db4_091bbb43",
+        "filename": "android/test_run.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-10-25T14:11:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2466c39b_d3ba3293",
+      "revId": "a0db9ba6b2e5d311974c7920d2e90cf441d55387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9c78391_c1b56124",
@@ -98,6 +164,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c4001d6_4929d91b",
+        "filename": "android/test_run.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-10-25T14:11:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b9c78391_c1b56124",
+      "revId": "a0db9ba6b2e5d311974c7920d2e90cf441d55387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78d3cc37_eb6868a3",
@@ -111,6 +195,24 @@
       "writtenOn": "2023-10-20T02:19:25Z",
       "side": 1,
       "message": "What is this going to be used for? Not all blueprint files are called Android.bp, so this is a red flag.",
+      "revId": "a0db9ba6b2e5d311974c7920d2e90cf441d55387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8049cd7_fe667d89",
+        "filename": "android/test_run.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-10-25T14:11:02Z",
+      "side": 1,
+      "message": "Switched to ctx.BlueprintsFile() to fetch the file name.",
+      "parentUuid": "78d3cc37_eb6868a3",
       "revId": "a0db9ba6b2e5d311974c7920d2e90cf441d55387",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
