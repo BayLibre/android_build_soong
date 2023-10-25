@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1961f4a_ba277251",
+        "filename": "cc/library_cmake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-25T23:23:17Z",
+      "side": 1,
+      "message": "add:\n\n    var _ android.OutputFileProducer \u003d (*LibraryCmakeSnapshot)(nil)\n\nThen, it should prompt you to add the methods so the build system knows this creates something",
+      "revId": "f917a5c10329d09a775ad7f8f898ce148391cd08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
