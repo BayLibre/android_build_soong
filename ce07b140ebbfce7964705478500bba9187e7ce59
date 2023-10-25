@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b82ed34b_653b9ae3",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-25T16:33:22Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tif strings.HasPrefix(flag, \"-g\") {\n```",
+      "range": {
+        "startLine": 1021,
+        "startChar": 13,
+        "endLine": 1021,
+        "endChar": 21
+      },
+      "revId": "ce07b140ebbfce7964705478500bba9187e7ce59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
