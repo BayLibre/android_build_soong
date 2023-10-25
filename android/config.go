@@ -2129,3 +2129,7 @@ func (c *config) GetBuildFlag(name string) (string, bool) {
 	val, ok := c.productVariables.BuildFlags[name]
 	return val, ok
 }
+
+func (c *config) GetBuildFlags() map[string]string {
+	return c.productVariables.BuildFlags
+}
