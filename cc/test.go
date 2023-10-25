@@ -133,6 +133,7 @@ func init() {
 	android.RegisterModuleType("cc_benchmark", BenchmarkFactory)
 	android.RegisterModuleType("cc_test_host", TestHostFactory)
 	android.RegisterModuleType("cc_benchmark_host", BenchmarkHostFactory)
+	android.RegisterModuleType("ditto_benchmark", DittoBenchmarkFactory)
 }
 
 // cc_test generates a test config file and an executable binary file to test
@@ -158,6 +159,68 @@ func TestLibraryFactory() android.Module {
 // binary.
 func BenchmarkFactory() android.Module {
 	module := NewBenchmark(android.HostAndDeviceSupported)
+	return module.Init()
+}
+
+type dittoBenchmarkDecorator struct {
+	*binaryDecorator
+	testConfig android.Path
+	Properties BenchmarkProperties
+}
+
+func (benchmark *dittoBenchmarkDecorator) benchmarkBinary() bool {
+	return true
+}
+
+func (benchmark *dittoBenchmarkDecorator) linkerProps() []interface{} {
+	props := benchmark.binaryDecorator.linkerProps()
+	props = append(props, &benchmark.Properties)
+	return props
+}
+
+func (benchmark *dittoBenchmarkDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
+	deps = benchmark.binaryDecorator.linkerDeps(ctx, deps)
+	deps.StaticLibs = append(deps.StaticLibs, "libgoogle-benchmark")
+	return deps
+}
+
+func (benchmark *dittoBenchmarkDecorator) install(ctx ModuleContext, file android.Path) {
+	//benchmark.data = android.PathsForModuleSrc(ctx, benchmark.Properties.Data)
+
+	var configs []tradefed.Config
+	if Bool(benchmark.Properties.Require_root) {
+		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", nil})
+	}
+	benchmark.testConfig = tradefed.AutoGenTestConfig(ctx, tradefed.AutoGenTestConfigOptions{
+		TestConfigProp:         benchmark.Properties.Test_config,
+		TestConfigTemplateProp: benchmark.Properties.Test_config_template,
+		TestSuites:             benchmark.Properties.Test_suites,
+		Config:                 configs,
+		AutoGenConfig:          benchmark.Properties.Auto_gen_config,
+		DeviceTemplate:         "${NativeBenchmarkTestConfigTemplate}",
+		HostTemplate:           "${NativeBenchmarkTestConfigTemplate}",
+	})
+
+	benchmark.binaryDecorator.baseInstaller.dir = filepath.Join("benchmarktest", ctx.ModuleName())
+	benchmark.binaryDecorator.baseInstaller.dir64 = filepath.Join("benchmarktest64", ctx.ModuleName())
+	benchmark.binaryDecorator.baseInstaller.install(ctx, file)
+}
+
+// ditto_benchmark compiles an executable binary that performs benchmark
+// testing of a specific system component. The binary embeds the .ditto file(s)
+// specified in the sources of the target and executes all of them
+// sequentially.
+func DittoBenchmarkFactory() android.Module {
+	module, binary := newBinary(android.DeviceSupported, false)
+	module.multilib = android.MultilibBoth
+	binary.baseInstaller = NewBaseInstaller("dittobenchmarktest", "dittobenchmarktest64", InstallInData)
+
+	//benchmark := &dittoBenchmarkDecorator{
+	//	binaryDecorator: binary,
+	//}
+	//module.linker = benchmark
+	//module.installer = benchmark
+
 	return module.Init()
 }
 
