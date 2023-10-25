@@ -1642,9 +1642,7 @@ var (
 		"test_com.android.neuralnetworks",
 		"libneuralnetworks",
 		"libneuralnetworks_static",
-		// M13: media.swcodec launch
-		"com.android.media.swcodec",
-		"test_com.android.media.swcodec",
+		// M13: media.swcodec launch|
 		"libstagefright_foundation",
 		"libcodec2_hidl@1.0",
 	}
