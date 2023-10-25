@@ -1782,6 +1782,24 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 	props.Check_api.Current.Api_file = proptools.StringPtr(currentApiFileName)
 	props.Check_api.Current.Removed_api_file = proptools.StringPtr(removedApiFileName)
 
+	if proptools.Bool(module.sdkLibraryProperties.Api_lint.Enabled) {
+		// Enable api lint.
+		props.Check_api.Api_lint.Enabled = proptools.BoolPtr(true)
+
+		// If it exists then pass a lint-baseline.txt through to droidstubs.
+		baselinePath := path.Join(apiDir, apiScope.apiFilePrefix+"lint-baseline.txt")
+		baselinePathRelativeToRoot := path.Join(mctx.ModuleDir(), baselinePath)
+		paths, err := mctx.GlobWithDeps(baselinePathRelativeToRoot, nil)
+		if err != nil {
+			mctx.ModuleErrorf("error checking for presence of %s: %s", baselinePathRelativeToRoot, err)
+		}
+		if len(paths) == 1 {
+			props.Check_api.Api_lint.Baseline_file = proptools.StringPtr(baselinePath)
+		} else if len(paths) != 0 {
+			mctx.ModuleErrorf("error checking for presence of %s: expected one path, found: %v", baselinePathRelativeToRoot, paths)
+		}
+	}
+
 	if module.compareAgainstLatestApi(apiScope) {
 		// check against the latest released API
 		latestApiFilegroupName := proptools.StringPtr(module.latestApiFilegroupName(apiScope))
@@ -1793,22 +1811,8 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 			module.latestIncompatibilitiesFilegroupName(apiScope))
 
 		if proptools.Bool(module.sdkLibraryProperties.Api_lint.Enabled) {
-			// Enable api lint.
-			props.Check_api.Api_lint.Enabled = proptools.BoolPtr(true)
+			// Limit ApiLint checks to those introduced since the last finalized API.
 			props.Check_api.Api_lint.New_since = latestApiFilegroupName
-
-			// If it exists then pass a lint-baseline.txt through to droidstubs.
-			baselinePath := path.Join(apiDir, apiScope.apiFilePrefix+"lint-baseline.txt")
-			baselinePathRelativeToRoot := path.Join(mctx.ModuleDir(), baselinePath)
-			paths, err := mctx.GlobWithDeps(baselinePathRelativeToRoot, nil)
-			if err != nil {
-				mctx.ModuleErrorf("error checking for presence of %s: %s", baselinePathRelativeToRoot, err)
-			}
-			if len(paths) == 1 {
-				props.Check_api.Api_lint.Baseline_file = proptools.StringPtr(baselinePath)
-			} else if len(paths) != 0 {
-				mctx.ModuleErrorf("error checking for presence of %s: expected one path, found: %v", baselinePathRelativeToRoot, paths)
-			}
 		}
 	}
 
