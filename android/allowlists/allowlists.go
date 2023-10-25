@@ -791,6 +791,7 @@ var (
 		"mediaswcodec",
 		"libmedia_headers",
 		"libmedia_codecserviceregistrant",
+		"libmediaflags",
 		"libsfplugin_ccodec_utils",
 		"libcodec2_soft_aacenc",
 		"libcodec2_soft_amrnbdec",
