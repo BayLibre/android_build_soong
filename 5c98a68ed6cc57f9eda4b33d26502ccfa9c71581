@@ -50,6 +50,23 @@
       "message": "And I am not an OWNER in this repo",
       "revId": "5c98a68ed6cc57f9eda4b33d26502ccfa9c71581",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87f97f1_add4579a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-10-25T17:18:39Z",
+      "side": 1,
+      "message": "Could you elaborate on your use case? Are you using the Bazel-built `libcodec2_soft_av1dec_dav1d`?",
+      "revId": "5c98a68ed6cc57f9eda4b33d26502ccfa9c71581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
