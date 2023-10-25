@@ -33,6 +33,23 @@
       "message": "Not sure why pre-sub is failing though.",
       "revId": "5c98a68ed6cc57f9eda4b33d26502ccfa9c71581",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f3de45_66eb3cf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1939986
+      },
+      "writtenOn": "2023-10-25T00:22:29Z",
+      "side": 1,
+      "message": "And I am not an OWNER in this repo",
+      "revId": "5c98a68ed6cc57f9eda4b33d26502ccfa9c71581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
