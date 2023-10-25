@@ -22,6 +22,30 @@
       },
       "revId": "b3f74b0289f14300e254439439c5e9343331ae25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6605deaa_18ddc71a",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-10-25T05:37:21Z",
+      "side": 1,
+      "message": "That looks better. Done",
+      "parentUuid": "0e29f8e2_5427c329",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "b3f74b0289f14300e254439439c5e9343331ae25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
