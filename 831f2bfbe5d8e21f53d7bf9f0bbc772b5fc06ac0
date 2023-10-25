@@ -22,6 +22,30 @@
       },
       "revId": "831f2bfbe5d8e21f53d7bf9f0bbc772b5fc06ac0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f78418c8_964b7c70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-10-25T22:20:06Z",
+      "side": 1,
+      "message": "It\u0027s certainly not _good_ design. It will probably have to be fixed eventually. Here\u0027s an example, they generate an openssl certificate in the genrule, and that certificate is different every time: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/tests/RollbackTest/Android.bp;l\u003d89;drc\u003ddd08e5d55a42e3f6cde44d453919059affa62b50",
+      "parentUuid": "3139aea5_b04539f6",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "831f2bfbe5d8e21f53d7bf9f0bbc772b5fc06ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
