@@ -46,6 +46,30 @@
       },
       "revId": "831f2bfbe5d8e21f53d7bf9f0bbc772b5fc06ac0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "578913c8_7be39364",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-10-25T22:27:35Z",
+      "side": 1,
+      "message": "I see, maybe we should add constraints on what tools are available in genrules\n\nGiving +2 since I think this issue is orthogonal to sandboxing",
+      "parentUuid": "f78418c8_964b7c70",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "831f2bfbe5d8e21f53d7bf9f0bbc772b5fc06ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
