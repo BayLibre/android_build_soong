@@ -69,6 +69,19 @@ var (
 		// Making deprecated usages an error causes extreme pain when trying to
 		// deprecate anything.
 		"-Wno-error=deprecated-declarations",
+		// This rarely indicates a bug. http://b/145210666
+		"-Wno-error=reorder-init-list",
+		// Probably a new compiler thing. 1000s of error.
+		"-Wno-error=missing-field-initializers",
+		"-Wno-error=format", // Disable only the one that is bothering.
+		"-Wno-error=integer-overflow",
+		"-Wno-error=packed-non-pod",
+		"-Wno-error=shadow",
+		"-Wno-error=tautological-negation-compare",
+		"-Wno-error=tautological-undefined-compare",
+		"-Wno-error=unused-variable",
+		"-Wno-error=fortify-source",
+		"-Wno-error=unknown-warning-option",
 
 		// Warnings disabled by default.
 
@@ -175,7 +188,7 @@ var (
 		"-nostdlibinc",
 
 		// Enable MLGO for register allocation.
-		"-mllvm -regalloc-enable-advisor=release",
+		//"-mllvm -regalloc-enable-advisor=release",
 
 		// Emit additional debug info for AutoFDO
 		"-fdebug-info-for-profiling",
@@ -206,7 +219,7 @@ var (
 		"-Wl,--exclude-libs,libunwind_llvm.a",
 		"-Wl,--exclude-libs,libunwind.a",
 		// Enable MLGO for register allocation.
-		"-Wl,-mllvm,-regalloc-enable-advisor=release",
+		//"-Wl,-mllvm,-regalloc-enable-advisor=release",
 	}
 
 	deviceGlobalLldflags = append(append(deviceGlobalLdflags, commonGlobalLldflags...),
@@ -357,11 +370,12 @@ var (
 	llvmNextExtraCommonGlobalCflags = []string{
 		// Do not report warnings when testing with the top of trunk LLVM.
 		"-Wno-error",
+		"-w",
 	}
 
 	// Flags that must not appear in any command line.
 	IllegalFlags = []string{
-		"-w",
+		//"-w",
 	}
 
 	CStdVersion               = "gnu17"
@@ -373,6 +387,8 @@ var (
 	ClangDefaultBase         = "prebuilts/clang/host"
 	ClangDefaultVersion      = "clang-r498229b"
 	ClangDefaultShortVersion = "17"
+	//ClangDefaultVersion      = "clang-dev"
+	//ClangDefaultShortVersion = "18"
 
 	// Directories with warnings from Android.bp files.
 	WarningAllowedProjects = []string{
