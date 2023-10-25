@@ -16,6 +16,24 @@
       "message": "add:\n\n    var _ android.OutputFileProducer \u003d (*LibraryCmakeSnapshot)(nil)\n\nThen, it should prompt you to add the methods so the build system knows this creates something",
       "revId": "f917a5c10329d09a775ad7f8f898ce148391cd08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51cac957_cc3b1eb7",
+        "filename": "cc/library_cmake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-10-25T23:25:45Z",
+      "side": 1,
+      "message": "Who uses this value? Or what is the side effect of creating it?",
+      "parentUuid": "f1961f4a_ba277251",
+      "revId": "f917a5c10329d09a775ad7f8f898ce148391cd08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
