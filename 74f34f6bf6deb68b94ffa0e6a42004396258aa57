@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da0c5ea0_4540d2f2",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-10-25T14:50:26Z",
+      "side": 1,
+      "message": "should this also be disabled for now?",
+      "range": {
+        "startLine": 1649,
+        "startChar": 0,
+        "endLine": 1650,
+        "endChar": 23
+      },
+      "revId": "74f34f6bf6deb68b94ffa0e6a42004396258aa57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
