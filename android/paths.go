@@ -60,6 +60,7 @@ type EarlyModulePathContext interface {
 
 	ModuleDir() string
 	ModuleErrorf(fmt string, args ...interface{})
+	directoryCache() *directoryCache
 }
 
 var _ EarlyModulePathContext = ModuleContext(nil)
@@ -1239,12 +1240,27 @@ func (p SourcePath) Join(ctx PathContext, paths ...string) SourcePath {
 }
 
 // join is like Join but does less path validation.
-func (p SourcePath) join(ctx PathContext, paths ...string) SourcePath {
+func (p SourcePath) join(ctx EarlyModulePathContext, paths ...string) SourcePath {
 	path, err := validateSafePath(paths...)
 	if err != nil {
 		reportPathError(ctx, err)
 	}
-	return p.withRel(path)
+
+	// First try to load the path out of the cache
+	cacheKey := [2]string{p.path, path}
+	joinedModuleSrcPathCache := ctx.directoryCache().joinedModuleSrcPathCache
+	if joined, ok := joinedModuleSrcPathCache.Load(cacheKey); ok {
+		return joined
+	}
+
+	// If it is not cached then construct it
+	joined := p.withRel(path)
+
+	// Store it back to the cache, taking the cached value if another goroutine raced
+	// and added it to the cache first.
+	joined, _ = joinedModuleSrcPathCache.LoadOrStore(cacheKey, joined)
+
+	return joined
 }
 
 // OverlayPath returns the overlay for `path' if it exists. This assumes that the
@@ -1447,12 +1463,23 @@ func pathForModuleSrc(ctx EarlyModulePathContext, paths ...string) SourcePath {
 		reportPathError(ctx, err)
 	}
 
+	// First try to load the path out of the cache
+	moduleSrcPathCache := ctx.directoryCache().moduleSrcPathCache
+	if path, ok := moduleSrcPathCache.Load(p); ok {
+		return path
+	}
+
+	// If it is not cached then construct it
 	path, err := pathForSource(ctx, ctx.ModuleDir(), p)
 	if err != nil {
 		reportPathError(ctx, err)
 	}
 
 	path.basePath.rel = p
+
+	// Store it back to the cache, taking the cached value if another goroutine raced
+	// and added it to the cache first.
+	path, _ = moduleSrcPathCache.LoadOrStore(p, path)
 
 	return path
 }

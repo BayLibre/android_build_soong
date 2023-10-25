@@ -171,6 +171,10 @@ func (ctx *TestBazelConversionPathContext) ModuleType() string {
 	panic("Unimplemented")
 }
 
+func (ctx *TestBazelConversionPathContext) directoryCache() *directoryCache {
+	panic("Unimplemented")
+}
+
 func TestTransformSubpackagePath(t *testing.T) {
 	cfg := NullConfig("out", "out/soong")
 	cfg.fs = pathtools.MockFs(map[string][]byte{

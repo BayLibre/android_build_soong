@@ -172,6 +172,10 @@ type EarlyModuleContext interface {
 	// Namespace returns the Namespace object provided by the NameInterface set by Context.SetNameInterface, or the
 	// default SimpleNameInterface if Context.SetNameInterface was not called.
 	Namespace() *Namespace
+
+	// directoryCache returns a cache object that is shared across all modules (and variants of modules) that have
+	// the same ModuleDir().
+	directoryCache() *directoryCache
 }
 
 // BaseModuleContext is the same as blueprint.BaseModuleContext except that Config() returns
@@ -1611,6 +1615,17 @@ type ModuleBase struct {
 
 	// The path to the generated license metadata file for the module.
 	licenseMetadataFile WritablePath
+
+	directoryCache *directoryCache
+}
+
+// A struct containing data for reuse between modules in the same directory.  All contents must
+// be threadsafe, and all stored data must be immutable.
+type directoryCache struct {
+	// A cache of paths relative to the module's directory to a reusable SourcePath
+	moduleSrcPathCache *SyncMap[string, SourcePath]
+	// A cache of pairs of joined path to a reusable SourcePath
+	joinedModuleSrcPathCache *SyncMap[[2]string, SourcePath]
 }
 
 // A struct containing all relevant information about a Bazel target converted via bp2build.
@@ -2675,6 +2690,16 @@ func (e *earlyModuleContext) SystemExtSpecific() bool {
 
 func (e *earlyModuleContext) Namespace() *Namespace {
 	return e.EarlyModuleContext.Namespace().(*Namespace)
+}
+
+func (e *earlyModuleContext) directoryCache() *directoryCache {
+	key := NewCustomOnceKey(e.ModuleDir())
+	return e.Config().Once(key, func() any {
+		return &directoryCache{
+			moduleSrcPathCache:       &SyncMap[string, SourcePath]{},
+			joinedModuleSrcPathCache: &SyncMap[[2]string, SourcePath]{},
+		}
+	}).(*directoryCache)
 }
 
 type baseModuleContext struct {
