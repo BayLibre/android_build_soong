@@ -16,6 +16,29 @@
       "message": "Here is the test case: https://android-review.git.corp.google.com/c/platform/frameworks/native/+/2803466",
       "revId": "3f28eb5dbb7fdb6e596cb85682903d2ab33e3fb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dbec2a4_246a819c",
+        "filename": "cc/library_cmake.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-26T00:14:43Z",
+      "side": 1,
+      "message": "so, you should be able to say something like:\n\n    m out/soong/.intermediates/frameworks/native/libs/binder/binder_cmake_tstlib/???/CMakeLists.txt\n\nI think? At this point?\n\nOne thing you can also do is check `soong/late-aosp_cf_x86_64_phone.mk` to see if there is anything generated related to this module that would tell you what to build. Though, it might need some androidmk code setup to export that target.\n\n\nIn order to be unblocked, you could do what I did with aidl_metadata_singleton:\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/tools/aidl/metadata/Android.bp;l\u003d43;drc\u003d01cffa3ef18a637b28956231c16bd9ff4a737fd1\n\nBasically, a cc_genrule could take \":binder_cmake_tstlib\" as an input, and then print out a C++ file. That is one way to hook a target into this build file, but it\u0027s probably not the easiest.",
+      "range": {
+        "startLine": 49,
+        "startChar": 50,
+        "endLine": 49,
+        "endChar": 64
+      },
+      "revId": "3f28eb5dbb7fdb6e596cb85682903d2ab33e3fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

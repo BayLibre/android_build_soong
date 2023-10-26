@@ -34,6 +34,24 @@
       "parentUuid": "f1961f4a_ba277251",
       "revId": "f917a5c10329d09a775ad7f8f898ce148391cd08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd621bf_3819402f",
+        "filename": "cc/library_cmake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-26T00:14:43Z",
+      "side": 1,
+      "message": "It would normally be added as a global, with no real side effects.",
+      "parentUuid": "51cac957_cc3b1eb7",
+      "revId": "f917a5c10329d09a775ad7f8f898ce148391cd08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
