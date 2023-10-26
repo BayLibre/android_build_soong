@@ -218,21 +218,6 @@ func defaultBazelProdMode(cfg *configImpl) bool {
 	return true
 }
 
-func UploadOnlyConfig(ctx Context, args ...string) Config {
-	ret := &configImpl{
-		environ:       OsEnvironment(),
-		sandboxConfig: &SandboxConfig{},
-	}
-	ret.parseArgs(ctx, args)
-	srcDir := absPath(ctx, ".")
-	bc := os.Getenv("ANDROID_BUILD_ENVIRONMENT_CONFIG")
-	if err := loadEnvConfig(ctx, ret, bc); err != nil {
-		ctx.Fatalln("Failed to parse env config files: %v", err)
-	}
-	ret.metricsUploader = GetMetricsUploader(srcDir, ret.environ)
-	return Config{ret}
-}
-
 func NewConfig(ctx Context, args ...string) Config {
 	ret := &configImpl{
 		environ:               OsEnvironment(),
