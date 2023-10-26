@@ -1239,13 +1239,30 @@ func buildRuleToGenerateRemovedDexSignatures(ctx android.ModuleContext, suffix s
 		return android.OptionalPath{}
 	}
 
+	// If more than one API signature file was provided then merge them into a single signature file
+	// first.
+	var input android.Path
+	if len(removedTxtFiles) == 1 {
+		input = removedTxtFiles[0]
+	} else {
+		combined := android.PathForModuleOut(ctx, "module-hiddenapi"+suffix, "combined-api.txt")
+		rule := android.NewRuleBuilder(pctx, ctx)
+		rule.Command().
+			BuiltTool("metalava").
+			Text("merge-signatures").
+			Inputs(removedTxtFiles).
+			FlagWithOutput("-out ", combined)
+		input = combined
+	}
+
 	output := android.PathForModuleOut(ctx, "module-hiddenapi"+suffix, "removed-dex-signatures.txt")
 
 	rule := android.NewRuleBuilder(pctx, ctx)
 	rule.Command().
 		BuiltTool("metalava").
-		Inputs(removedTxtFiles).
-		FlagWithOutput("--dex-api ", output)
+		Text("signature-to-dex").
+		Input(input).
+		Output(output)
 	rule.Build("modular-hiddenapi-removed-dex-signatures"+suffix, "modular hiddenapi removed dex signatures"+suffix)
 	return android.OptionalPathForPath(output)
 }
