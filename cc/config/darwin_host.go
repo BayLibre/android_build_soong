@@ -146,7 +146,7 @@ func getMacTools(ctx android.PathContext) *macPlatformTools {
 			}
 		}
 		if !sdkVersionSupported {
-			macTools.err = fmt.Errorf("Unsupported macOS SDK version %q not in %v", sdkVersion, darwinSupportedSdkVersions)
+			macTools.err = fmt.Errorf("Unsupported Xcode version %q not in %v", sdkVersion, darwinSupportedSdkVersions)
 			return
 		}
 
