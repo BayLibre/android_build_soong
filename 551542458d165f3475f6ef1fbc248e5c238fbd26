@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb228c31_851ca8ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-10-26T21:42:10Z",
+      "side": 1,
+      "message": "(given that macOS 14 is now out, it\u0027s .)",
+      "revId": "551542458d165f3475f6ef1fbc248e5c238fbd26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
