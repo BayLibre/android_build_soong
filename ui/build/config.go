@@ -205,19 +205,17 @@ func loadEnvConfig(ctx Context, config *configImpl, bc string) error {
 	return nil
 }
 
-func UploadOnlyConfig(ctx Context, args ...string) Config {
-	ret := &configImpl{
-		environ:       OsEnvironment(),
-		sandboxConfig: &SandboxConfig{},
+func defaultBazelProdMode(cfg *configImpl) bool {
+	// Environment flag to disable Bazel for users which experience
+	// broken bazel-handled builds, or significant performance regressions.
+	if cfg.IsBazelMixedBuildForceDisabled() {
+		return false
 	}
-	ret.parseArgs(ctx, args)
-	srcDir := absPath(ctx, ".")
-	bc := os.Getenv("ANDROID_BUILD_ENVIRONMENT_CONFIG")
-	if err := loadEnvConfig(ctx, ret, bc); err != nil {
-		ctx.Fatalln("Failed to parse env config files: %v", err)
+	// Darwin-host builds are currently untested with Bazel.
+	if runtime.GOOS == "darwin" {
+		return false
 	}
-	ret.metricsUploader = GetMetricsUploader(srcDir, ret.environ)
-	return Config{ret}
+	return true
 }
 
 func NewConfig(ctx Context, args ...string) Config {
@@ -822,16 +820,6 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			}
 		} else if arg == "--ensure-allowlist-integrity" {
 			c.ensureAllowlistIntegrity = true
-		} else if strings.HasPrefix(arg, "--bazel-exit-code=") {
-			bazelExitCodeStr := strings.TrimPrefix(arg, "--bazel-exit-code=")
-			val, err := strconv.Atoi(bazelExitCodeStr)
-			if err == nil {
-				c.bazelExitCode = int32(val)
-			} else {
-				ctx.Fatalf("Error parsing bazel-exit-code", err)
-			}
-		} else if strings.HasPrefix(arg, "--bes-id=") {
-			c.besId = strings.TrimPrefix(arg, "--bes-id=")
 		} else if len(arg) > 0 && arg[0] == '-' {
 			parseArgNum := func(def int) int {
 				if len(arg) > 2 {
