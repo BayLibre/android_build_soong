@@ -1284,8 +1284,7 @@ func (a *AndroidTestHelperApp) InstallInTestcases() bool {
 func AndroidTestHelperAppFactory() android.Module {
 	module := &AndroidTestHelperApp{}
 
-	// TODO(b/192032291): Disable by default after auditing downstream usage.
-	module.Module.dexProperties.Optimize.EnabledByDefault = true
+	module.Module.dexProperties.Optimize.EnabledByDefault = false
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 	module.appProperties.Use_embedded_native_libs = proptools.BoolPtr(true)
@@ -1703,11 +1702,8 @@ func convertWithBp2build(ctx android.Bp2buildMutatorContext, a *AndroidApp) (boo
 	}
 
 	// Optimization is..
-	// - enabled by default for android_app, android_test_helper_app
-	// - disabled by default for android_test
-	//
-	// TODO(b/192032291): Disable android_test_helper_app optimization by
-	// default after auditing downstream usage.
+	// - enabled by default for android_app
+	// - disabled by default for android_test, android_test_helper_app
 	if a.dexProperties.Optimize.EnabledByDefault != a.dexer.effectiveOptimizeEnabled() {
 		// Property is explicitly defined by default from default, so emit the Bazel attribute.
 		appAttrs.Optimize = proptools.BoolPtr(a.dexer.effectiveOptimizeEnabled())
