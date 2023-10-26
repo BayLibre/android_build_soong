@@ -134,13 +134,13 @@ android_test_helper_app {
 				"assets":         `["assets/asset.png"]`,
 				"assets_dir":     `"assets"`,
 				"testonly":       `True`,
-				// no need for optimize = True because it's true for
+				// no need for optimize = False because it's true for
 				// android_test_helper_app by default
 			}),
 		}})
 }
 
-func TestAndroidTestHelperApp_OptimizationDisabled(t *testing.T) {
+func TestAndroidTestHelperApp_OptimizationEnabled(t *testing.T) {
 	runAndroidAppTestCase(t, Bp2buildTestCase{
 		Description:                "Android test helper app - simple example",
 		ModuleTypeUnderTest:        "android_test_helper_app",
@@ -157,7 +157,10 @@ android_test_helper_app {
 		srcs: ["app.java"],
 		sdk_version: "current",
 		optimize: {
-			enabled: false,
+			enabled: true,
+			shrink: true,
+			optimize: true,
+			obfuscate: true,
 		},
 }
 `,
@@ -170,9 +173,9 @@ android_test_helper_app {
 				"assets":         `["assets/asset.png"]`,
 				"assets_dir":     `"assets"`,
 				"testonly":       `True`,
-				// optimize = False because it's true for
+				// optimize = True because it's false for
 				// android_test_helper_app by default
-				"optimize": `False`,
+				"optimize": `True`,
 			}),
 		}})
 }
