@@ -16,6 +16,24 @@
       "message": "I\u0027m working through a design to export all of the build flags (from build/release/build_flags.bzl, et al), which plans to use the name \"BuildFlags\" to hold that in product variables.  Can we use a more specific term for this (sepolicy?) map?",
       "revId": "7a2c75e91973e3be69b13536c561176b2df3b4a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e36773a5_6b9c3ce7",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-10-26T00:22:03Z",
+      "side": 1,
+      "message": "Actually this is based on your change (aosp/2795632). This change is temporary (as you can see WIP) and will be abandoned once you finish b/302514918.",
+      "parentUuid": "d14751b5_26ede913",
+      "revId": "7a2c75e91973e3be69b13536c561176b2df3b4a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
