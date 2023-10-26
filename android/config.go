@@ -2117,3 +2117,9 @@ func (c *deviceConfig) ReleaseExposeFlaggedApi() bool {
 func (c *deviceConfig) HideFlaggedApis() bool {
 	return c.NextReleaseHideFlaggedApi() && !c.ReleaseExposeFlaggedApi()
 }
+
+// Returns the list of _selected_ apex_contributions
+// Each apex will have one entry in the list
+func (c *config) AllApexContributions() []string {
+	return c.productVariables.AllApexContributions
+}
