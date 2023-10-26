@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a136421f_04d1b85f",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-10-26T16:34:17Z",
+      "side": 1,
+      "message": "This makes this code more stateful. Is there a way to refactor the control flow so we can just do this once and then don\u0027t worry about it again, rather than treat it as a cache?",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "1254732d91c43eb0a1d6a19a2abd65bfe884a6e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
