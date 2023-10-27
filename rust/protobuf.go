@@ -248,9 +248,10 @@ func (proto *protobufDecorator) SourceProviderDeps(ctx DepsContext, deps Deps) D
 
 	if len(proto.Properties.Grpc_protos) > 0 {
 		if useProtobuf3 == true {
-			ctx.PropertyErrorf("protos", "rust_protobuf with grpc_protos defined must currently use "+
+			/*ctx.PropertyErrorf("protos", "rust_protobuf with grpc_protos defined must currently use "+
 				"`use_protobuf3: false,` in the Android.bp file. This is temporary until the "+
-				"grpcio crate is updated to use the current version of the protobuf crate.")
+				"grpcio crate is updated to use the current version of the protobuf crate.")*/
+			// ludovicb@ disable this check
 		}
 		deps.Rustlibs = append(deps.Rustlibs, "libgrpcio", "libfutures")
 		deps.HeaderLibs = append(deps.HeaderLibs, "libprotobuf-cpp-full")
