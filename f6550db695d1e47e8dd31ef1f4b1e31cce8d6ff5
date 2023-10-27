@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4796abb_b9d5a29f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-27T21:56:06Z",
+      "side": 1,
+      "message": "Do you mind sharing a bug that provides more background information for this change?",
+      "revId": "f6550db695d1e47e8dd31ef1f4b1e31cce8d6ff5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
