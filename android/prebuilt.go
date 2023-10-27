@@ -510,6 +510,19 @@ func PrebuiltPostDepsMutator(ctx BottomUpMutatorContext) {
 	}
 }
 
+// Returns the base module name (with `prebuilt_` removed if it is a prebuilt)
+// e.g. prebuilt_libstatspull --> libstatspull
+//
+// For java_sdk_library that have a 1:N mapping, it returns the root sdk library name
+// e.g. conscrypt.module.public.api.stubs.system --> conscrypt.module.public.api
+// e.g. prebuilt_conscrypt.module.public.api.stubs.system --> conscrypt.module.public.api
+func baseModuleName(m Module) string {
+	if sdkLibrary, ok := m.(interface{ SdkLibraryName() *string }); ok {
+		return proptools.String(sdkLibrary.SdkLibraryName())
+	}
+	return m.base().BaseModuleName()
+}
+
 // usePrebuilt returns true if a prebuilt should be used instead of the source module.  The prebuilt
 // will be used if it is marked "prefer" or if the source module is disabled.
 func (p *Prebuilt) usePrebuilt(ctx BaseMutatorContext, source Module, prebuilt Module) bool {
@@ -520,14 +533,16 @@ func (p *Prebuilt) usePrebuilt(ctx BaseMutatorContext, source Module, prebuilt M
 			psi = ctx.OtherModuleProvider(am, PrebuiltSelectionInfoProvider).(PrebuiltSelectionInfoMap)
 		}
 	})
+
 	// If the source module is explicitly listed in the metadata module, use that
-	if source != nil && psi.IsSelected(source.base().BaseModuleName(), source.Name()) {
+	if source != nil && psi.IsSelected(baseModuleName(source), baseModuleName(source)) {
 		return false
 	}
 	// If the prebuilt module is explicitly listed in the metadata module, use that
-	if psi.IsSelected(prebuilt.base().BaseModuleName(), prebuilt.Name()) {
+	if psi.IsSelected(baseModuleName(prebuilt), p.Name(baseModuleName(prebuilt))) {
 		return true
 	}
+
 	// If the baseModuleName could not be found in the metadata module,
 	// fall back to the existing source vs prebuilt selection.
 	// TODO: Drop the fallback mechanisms
