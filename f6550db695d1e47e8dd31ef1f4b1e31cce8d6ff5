@@ -34,6 +34,24 @@
       "parentUuid": "e4796abb_b9d5a29f",
       "revId": "f6550db695d1e47e8dd31ef1f4b1e31cce8d6ff5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f67b61f1_7091a0cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-10-27T22:41:44Z",
+      "side": 1,
+      "message": "Understood, is there any reason why the implementation library is not created with `module.sdkComponentPropertiesForChildLibrary()`? Will `apex_contributions` list every modules dynamically created from `java_sdk_library`, or only the ones that contribute to stubs generation?",
+      "parentUuid": "71a5d563_c561171a",
+      "revId": "f6550db695d1e47e8dd31ef1f4b1e31cce8d6ff5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
