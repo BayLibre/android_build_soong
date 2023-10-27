@@ -44,6 +44,7 @@ java\.util\.function
 java\.util\.jar
 java\.util\.logging
 java\.util\.prefs
+java\.util\.random
 java\.util\.regex
 java\.util\.spi
 java\.util\.stream
@@ -79,6 +80,7 @@ jdk\.internal\.ref
 jdk\.internal\.reflect
 jdk\.internal\.util
 jdk\.internal\.util\.jar
+jdk\.internal\.util\.random
 jdk\.internal\.vm\.annotation
 jdk\.net
 org\.w3c\.dom
