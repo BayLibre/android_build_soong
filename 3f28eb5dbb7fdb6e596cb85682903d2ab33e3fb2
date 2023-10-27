@@ -39,6 +39,30 @@
       },
       "revId": "3f28eb5dbb7fdb6e596cb85682903d2ab33e3fb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e14ecde_8156e592",
+        "filename": "cc/library_cmake.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-10-27T19:48:08Z",
+      "side": 1,
+      "message": "`m out/soong.intermediates/.../CMakeLists.txt` works, I can use that for testing for now.",
+      "parentUuid": "6dbec2a4_246a819c",
+      "range": {
+        "startLine": 49,
+        "startChar": 50,
+        "endLine": 49,
+        "endChar": 64
+      },
+      "revId": "3f28eb5dbb7fdb6e596cb85682903d2ab33e3fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
