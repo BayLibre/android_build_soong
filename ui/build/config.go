@@ -1555,6 +1555,10 @@ func (c *configImpl) SoongMakeVarsMk() string {
 	return filepath.Join(c.SoongOutDir(), "make_vars-"+c.TargetProduct()+".mk")
 }
 
+func (c *configImpl) SoongBuildMetrics() string {
+	return filepath.Join(c.OutDir(), "soong_build_metrics.pb")
+}
+
 func (c *configImpl) ProductOut() string {
 	return filepath.Join(c.OutDir(), "target", "product", c.TargetDevice())
 }
