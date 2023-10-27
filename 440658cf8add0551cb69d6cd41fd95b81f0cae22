@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183446e9_7bc0c3b5",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-10-27T18:32:46Z",
+      "side": 1,
+      "message": "Do we need both for `LLVM_NEXT\u003dtrue`?  I think just one (maybe `-Wno-everything`) should suffice.",
+      "range": {
+        "startLine": 349,
+        "startChar": 2,
+        "endLine": 349,
+        "endChar": 20
+      },
+      "revId": "440658cf8add0551cb69d6cd41fd95b81f0cae22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
