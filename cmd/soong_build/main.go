@@ -21,6 +21,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"time"
 
@@ -422,6 +423,7 @@ func main() {
 	metricsDir := availableEnv["LOG_DIR"]
 
 	ctx := newContext(configuration)
+	android.StartBackgroundMetrics(configuration)
 
 	var finalOutputFile string
 
@@ -456,6 +458,10 @@ func main() {
 	configuration.Getenv("USE_BAZEL_VERSION")
 
 	writeUsedEnvironmentFile(configuration)
+
+	memStats := runtime.MemStats{}
+	runtime.ReadMemStats(&memStats)
+	fmt.Printf("%+v\n", memStats)
 
 	// Touch the output file so that it's the newest file created by soong_build.
 	// This is necessary because, if soong_build generated any files which
