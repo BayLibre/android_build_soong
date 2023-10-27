@@ -52,6 +52,24 @@
       "parentUuid": "71a5d563_c561171a",
       "revId": "f6550db695d1e47e8dd31ef1f4b1e31cce8d6ff5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "890d0697_664cbfba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-10-27T23:14:46Z",
+      "side": 1,
+      "message": "\u003e Understood, is there any reason why the implementation library is not created with module.sdkComponentPropertiesForChildLibrary()\n\nI think for the use case of source vs prebuilts selection using `SdkLibraryName`, it is not necessary on the impl since impl of sdk libary is not available as a prebuilt. Do you have a use case in mind that requires adding `SdkLibraryName` to the implementation library as well?\n\n\u003e  Will apex_contributions list every modules dynamically created from java_sdk_library, or only the ones that contribute to stubs generation?\n\nIt will list the \"root\" sdk library\n```\napex_contributions {\n  name: \"conscrypt.source.contributions\",\n  contents: [\n    \"conscrypt.module.public.api\",\n    \"conscrypt.module.intra.core.api\",\n    \"conscrypt.module.platform.api\",\n    ...\n  ],\n}\n```\n\nand not\n```\napex_contributions {\n  name: \"conscrypt.source.contributions\",\n  contents: [\n    \"conscrypt.module.public.api\",\n    \"conscrypt.module.public.api.stubs\",\n    \"conscrypt.module.public.api.stubs.system\",\n    ...\n    \n    \"conscrypt.module.intra.core.api\",\n    \"conscrypt.module.intra.core.api.stubs\",\n    ...\n    \"conscrypt.module.platform.api\",\n    \"conscrypt.module.platform.api.stubs\",\n    ...\n  ],\n}\n```\n\nI think aosp/2808754 has more details on how `SdkLibraryName` is being used. I have cc\u0027d you there.",
+      "parentUuid": "f67b61f1_7091a0cd",
+      "revId": "f6550db695d1e47e8dd31ef1f4b1e31cce8d6ff5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
