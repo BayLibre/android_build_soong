@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b34af34e_ab5f9e9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-10-27T19:31:53Z",
+      "side": 1,
+      "message": "Thoughts? There\u0027s probably a cleaner fix, but this takes care of some of the lower-hanging lint fruit. Were there any of the original transitive scenarios/targets I should verify?",
+      "revId": "ee27f9e6d7caae0a283f7062b8d54e5897e59793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
