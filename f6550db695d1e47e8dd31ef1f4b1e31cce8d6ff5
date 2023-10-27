@@ -16,6 +16,24 @@
       "message": "Do you mind sharing a bug that provides more background information for this change?",
       "revId": "f6550db695d1e47e8dd31ef1f4b1e31cce8d6ff5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a5d563_c561171a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-10-27T22:26:45Z",
+      "side": 1,
+      "message": "Done. The bug is sparse on details, but the idea is that I want to add the name of the java_sdk_library to the state of these dynamically generated modules.\n\nA new metadata module (`apex_contributions`) will list which variation of the java sdk library to use (framework.foo|prebuilt_framework.foo). If `prebuilt_foo` is selected, the stubs should come the prebuilt and not source",
+      "parentUuid": "e4796abb_b9d5a29f",
+      "revId": "f6550db695d1e47e8dd31ef1f4b1e31cce8d6ff5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
