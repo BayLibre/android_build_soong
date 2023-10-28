@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e13a86b0_db4cafba",
+        "filename": "android/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-28T03:01:30Z",
+      "side": 1,
+      "message": "The reference stored in `soongMetrics.perfCollector` is a read-only channel, the `stop` variable here (and captured by the lambda) is writable.",
+      "parentUuid": "d196b65a_d10bdb93",
+      "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7edacbed_a524d6c4",
         "filename": "android/metrics.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-28T01:47:40Z",
       "side": 1,
       "message": "Add a comment about how this is an assumption, and the correct thing would be to call `sysconf(_SC_CLK_TCK)`",
+      "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d05d1d_c2465f34",
+        "filename": "android/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-28T03:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7edacbed_a524d6c4",
       "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "446e2b8e_53a40fca",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-28T03:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3baa97d9_163698f7",
+      "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd18baa4_3867226b",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-10-28T01:47:40Z",
       "side": 1,
       "message": "Is this just for performance reasons, to avoid copying []Counter into a map? Consider having CountersAtTime accept a map instead of a list, because you\u0027re already allocating a new list at the usage of CountersAtTime",
+      "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa84fbf_44b378ad",
+        "filename": "ui/tracer/tracer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-28T03:01:30Z",
+      "side": 1,
+      "message": "I used this instead of a map to keep the counters in order.  When loaded in chrome://tracing the counters show as a stacked graph where the order would matter.",
+      "parentUuid": "bd18baa4_3867226b",
       "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
