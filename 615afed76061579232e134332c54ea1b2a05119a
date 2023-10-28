@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4b7d90_b969b441",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-10-28T01:24:50Z",
+      "side": 1,
+      "message": "These are all duplicated above",
+      "range": {
+        "startLine": 774,
+        "startChar": 0,
+        "endLine": 784,
+        "endChar": 2
+      },
+      "revId": "615afed76061579232e134332c54ea1b2a05119a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
