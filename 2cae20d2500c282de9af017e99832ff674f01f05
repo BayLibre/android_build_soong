@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d196b65a_d10bdb93",
+        "filename": "android/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-10-28T01:47:40Z",
+      "side": 1,
+      "message": "Move the creation of the channel into `getSoongMetrics`",
+      "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7edacbed_a524d6c4",
+        "filename": "android/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-10-28T01:47:40Z",
+      "side": 1,
+      "message": "Add a comment about how this is an assumption, and the correct thing would be to call `sysconf(_SC_CLK_TCK)`",
+      "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3baa97d9_163698f7",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-10-28T01:47:40Z",
+      "side": 1,
+      "message": "I assume this isn\u0027t intended to be leftover",
+      "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd18baa4_3867226b",
+        "filename": "ui/tracer/tracer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-10-28T01:47:40Z",
+      "side": 1,
+      "message": "Is this just for performance reasons, to avoid copying []Counter into a map? Consider having CountersAtTime accept a map instead of a list, because you\u0027re already allocating a new list at the usage of CountersAtTime",
+      "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
