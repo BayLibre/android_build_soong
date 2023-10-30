@@ -2828,7 +2828,50 @@ func (a *apexBundle) checkUpdatable(ctx android.ModuleContext) {
 		}
 		a.checkJavaStableSdkVersion(ctx)
 		a.checkClasspathFragments(ctx)
+		a.checkPermittedPackages(ctx)
 	}
+}
+
+func (a *apexBundle) checkPermittedPackages(ctx android.ModuleContext) {
+	if a.testApex || a.vndkApex {
+		return
+	}
+
+	a.WalkPayloadDeps(ctx, func(ctx android.ModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
+		if !android.IsDepInSameApex(ctx, a, to) {
+			return false
+		}
+
+		parentType := ctx.OtherModuleType(from)
+		if parentType == "apex_test" || parentType == "bootclasspath_fragment_test" {
+			return false
+		}
+
+		var permittedPackages []string
+		switch ctx.OtherModuleType(to) {
+		case "java_library":
+			jm := to.(*java.Library)
+			permittedPackages = jm.PermittedPackagesForUpdatableBootJars()
+		case "java_sdk_library":
+			jm := to.(*java.SdkLibrary)
+			permittedPackages = jm.PermittedPackagesForUpdatableBootJars()
+		case "java_import":
+			jm := to.(*java.Import)
+			permittedPackages = jm.PermittedPackagesForUpdatableBootJars()
+		case "java_sdk_library_import":
+			jm := to.(*java.SdkLibraryImport)
+			permittedPackages = jm.PermittedPackagesForUpdatableBootJars()
+		default:
+			permittedPackages = []string{"ignore"}
+		}
+
+		if len(permittedPackages) == 0 && ctx.ModuleName() != "myapex" {
+			fmt.Println(ctx.OtherModuleName(to), "*****", ctx.OtherModuleType(to), "*****", ctx.ModuleName(), "*****", ctx.ModuleType())
+			return false
+		} else {
+			return true
+		}
+	})
 }
 
 // checkClasspathFragments enforces that all classpath fragments in deps generate classpaths.proto config.
