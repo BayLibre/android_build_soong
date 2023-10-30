@@ -46,6 +46,30 @@
       },
       "revId": "81527898ac37ab5c88abd1d4b5e9593902edb36e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc28777b_9fc45b13",
+        "filename": "ui/tracer/tracer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-30T22:21:00Z",
+      "side": 1,
+      "message": "Resolving",
+      "parentUuid": "c2b5fceb_01a73665",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 18
+      },
+      "revId": "81527898ac37ab5c88abd1d4b5e9593902edb36e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
