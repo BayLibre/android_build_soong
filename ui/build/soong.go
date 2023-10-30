@@ -631,6 +631,8 @@ func runSoong(ctx Context, config Config) {
 
 		if config.BazelBuildEnabled() || config.Bp2Build() {
 			checkEnvironmentFile(ctx, soongBuildEnv, config.UsedEnvFile(bp2buildFilesTag))
+		} else {
+			cleanBazelFiles(config)
 		}
 
 		if config.JsonModuleGraph() {
@@ -773,6 +775,18 @@ func loadSoongBuildMetrics(ctx Context, config Config, oldTimestamp time.Time) {
 		}
 		ctx.Tracer.Complete(desc, ctx.Thread,
 			event.GetStartTime(), event.GetStartTime()+event.GetRealTime())
+	}
+}
+
+func cleanBazelFiles(config Config) {
+	files := []string{
+		shared.JoinPath(config.SoongOutDir(), "bp2build"),
+		shared.JoinPath(config.SoongOutDir(), "workspace"),
+		shared.JoinPath(config.SoongOutDir(), bazel.SoongInjectionDirName),
+		shared.JoinPath(config.OutDir(), "bazel")}
+
+	for _, f := range files {
+		os.RemoveAll(f)
 	}
 }
 
