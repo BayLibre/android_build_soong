@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25abf46e_2f6997d1",
+        "filename": "ui/tracer/tracer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-10-30T17:23:34Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tbuf.WriteString(fmt.Sprintf(\"%q: %d\", counter.Name, counter.Value))\n```",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 18
+      },
+      "revId": "81527898ac37ab5c88abd1d4b5e9593902edb36e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

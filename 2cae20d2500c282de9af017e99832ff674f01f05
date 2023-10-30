@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "042e72bc_3e047123",
+        "filename": "android/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-10-30T17:23:34Z",
+      "side": 1,
+      "message": "ah, didn\u0027t know go had read-only channels",
+      "parentUuid": "e13a86b0_db4cafba",
+      "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7edacbed_a524d6c4",
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "I used this instead of a map to keep the counters in order.  When loaded in chrome://tracing the counters show as a stacked graph where the order would matter.",
       "parentUuid": "bd18baa4_3867226b",
+      "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2e9ab31_fce07a41",
+        "filename": "ui/tracer/tracer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-10-30T17:23:34Z",
+      "side": 1,
+      "message": "ah, consider adding a comment about that.",
+      "parentUuid": "efa84fbf_44b378ad",
       "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
