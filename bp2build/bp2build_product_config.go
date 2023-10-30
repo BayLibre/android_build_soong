@@ -247,9 +247,6 @@ func platformMappingContent(
 	for k := range productLabelToVariables {
 		productLabels = append(productLabels, k)
 	}
-	sort.Slice(productLabels, func(i, j int) bool {
-		return productLabels[i].Less(&productLabels[j])
-	})
 	result.WriteString("platforms:\n")
 	for _, productLabel := range productLabels {
 		platformMappingSingleProduct(productLabel, productLabelToVariables[productLabel], soongConfigDefinitions, mergedConvertedModulePathMap, &result)
