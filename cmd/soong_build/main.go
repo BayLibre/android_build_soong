@@ -26,6 +26,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/android/allowlists"
+	"android/soong/bazel"
 	"android/soong/bp2build"
 	"android/soong/shared"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
@@ -445,6 +446,9 @@ func main() {
 				}
 			}
 		} else {
+			// Explicitly clean bazel files if they exist from preivous runs
+			// (otherwise these directories would persist, polluting the workspace).
+			cleanBazelFiles(ctx)
 			finalOutputFile = runSoongOnlyBuild(ctx, extraNinjaDeps)
 		}
 		writeMetrics(configuration, ctx.EventHandler, metricsDir)
@@ -462,6 +466,19 @@ func main() {
 	// are ninja inputs to the main output file, then ninja would superfluously
 	// rebuild this output file on the next build invocation.
 	touch(shared.JoinPath(topDir, finalOutputFile))
+}
+
+func cleanBazelFiles(ctx *android.Context) {
+	files := []string{
+		shared.JoinPath(ctx.Config().SoongOutDir(), "bp2build"),
+		shared.JoinPath(ctx.Config().SoongOutDir(), "workspace"),
+		shared.JoinPath(ctx.Config().SoongOutDir(), bazel.SoongInjectionDirName),
+		shared.JoinPath(ctx.Config().OutDir(), "bazel"),
+		shared.JoinPath(ctx.Config().OutDir(), "bazelsocket.sock")}
+
+	for _, f := range files {
+		os.Remove(f)
+	}
 }
 
 func writeUsedEnvironmentFile(configuration android.Config) {
