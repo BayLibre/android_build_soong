@@ -380,6 +380,10 @@ func IsJniDepTag(depTag blueprint.DependencyTag) bool {
 	return depTag == jniLibTag
 }
 
+func IsStaticLibTag(depTag blueprint.DependencyTag) bool {
+	return depTag == staticLibTag
+}
+
 var (
 	dataNativeBinsTag       = dependencyTag{name: "dataNativeBins"}
 	dataDeviceBinsTag       = dependencyTag{name: "dataDeviceBins"}
