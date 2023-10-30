@@ -175,6 +175,24 @@
       "parentUuid": "efa84fbf_44b378ad",
       "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "370cc2fe_1915a1c9",
+        "filename": "ui/tracer/tracer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-10-30T19:39:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2e9ab31_fce07a41",
+      "revId": "2cae20d2500c282de9af017e99832ff674f01f05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
