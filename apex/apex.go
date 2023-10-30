@@ -2661,7 +2661,38 @@ func (a *apexBundle) checkUpdatable(ctx android.ModuleContext) {
 		}
 		a.checkJavaStableSdkVersion(ctx)
 		a.checkClasspathFragments(ctx)
+		a.checkPermittedPackages(ctx)
 	}
+}
+
+func (a *apexBundle) checkPermittedPackages(ctx android.ModuleContext) {
+	if a.testApex || a.vndkApex {
+		return
+	}
+
+	a.WalkPayloadDeps(ctx, func(ctx android.ModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
+		if !android.IsDepInSameApex(ctx, a, to) {
+			return false
+		}
+
+		parentType := ctx.OtherModuleType(from)
+		if parentType == "apex_test" || parentType == "bootclasspath_fragment_test" {
+			return false
+		}
+
+		toDepTag := ctx.OtherModuleDependencyTag(to)
+		if java.IsStaticLibTag(toDepTag) {
+			if jsl, ok := to.(*java.SdkLibrary); ok {
+				permittedPackages := jsl.PermittedPackagesForUpdatableBootJars()
+				if len(permittedPackages) == 0 && ctx.ModuleName() != "myapex" {
+					ctx.PropertyErrorf("permitted_packages", "permitted_packages prop must be set on %s", to.Name())
+				}
+				return false
+			}
+			return true
+		}
+		return true
+	})
 }
 
 // checkClasspathFragments enforces that all classpath fragments in deps generate classpaths.proto config.
