@@ -454,6 +454,9 @@ type apexBundle struct {
 	// Path where this APEX was installed.
 	installedFile android.InstallPath
 
+	// fragment for this apex for apexkeys.txt
+	apexKeysPath android.WritablePath
+
 	// Installed locations of symlinks for backward compatibility.
 	compatSymlinks android.InstallPaths
 
