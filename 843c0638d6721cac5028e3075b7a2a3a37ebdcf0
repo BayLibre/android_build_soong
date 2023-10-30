@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53339c12_a2b39c4e",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2023-10-30T16:39:08Z",
+      "side": 1,
+      "message": "NOTE: api-level \u003d \"current\" is a special case handled by aosp/2758697",
+      "revId": "843c0638d6721cac5028e3075b7a2a3a37ebdcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
