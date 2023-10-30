@@ -26,6 +26,8 @@ import (
 	"syscall"
 	"time"
 
+	"android/soong/android"
+	"android/soong/bazel"
 	"android/soong/shared"
 	"android/soong/ui/build"
 	"android/soong/ui/logger"
@@ -552,6 +554,19 @@ func buildActionConfig(ctx build.Context, args ...string) build.Config {
 	// Remove the build action flags from the args as they are not recognized by the config.
 	args = args[numBuildActionFlags:]
 	return build.NewBuildActionConfig(buildAction, *dir, ctx, args...)
+}
+
+func cleanBazelFiles(ctx *android.Context) {
+	files := []string{
+		shared.JoinPath(ctx.Config().SoongOutDir(), "bp2build"),
+		shared.JoinPath(ctx.Config().SoongOutDir(), "workspace"),
+		shared.JoinPath(ctx.Config().SoongOutDir(), bazel.SoongInjectionDirName),
+		shared.JoinPath(ctx.Config().OutDir(), "bazel"),
+		shared.JoinPath(ctx.Config().OutDir(), "bazelsocket.sock")}
+
+	for _, f := range files {
+		os.Remove(f)
+	}
 }
 
 func runMake(ctx build.Context, config build.Config, _ []string) {

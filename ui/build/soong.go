@@ -627,6 +627,8 @@ func runSoong(ctx Context, config Config) {
 
 		if config.BazelBuildEnabled() || config.Bp2Build() {
 			checkEnvironmentFile(ctx, soongBuildEnv, config.UsedEnvFile(bp2buildFilesTag))
+		} else {
+			cleanBazelFiles(config)
 		}
 
 		if config.JsonModuleGraph() {
@@ -729,6 +731,23 @@ func runSoong(ctx Context, config Config) {
 
 	if config.JsonModuleGraph() {
 		distGzipFile(ctx, config, config.ModuleGraphFile(), "soong")
+	}
+}
+
+func cleanBazelFiles(config Config) {
+	files := []string{
+		shared.JoinPath(config.SoongOutDir(), "bp2build"),
+		shared.JoinPath(config.SoongOutDir(), "workspace"),
+		shared.JoinPath(config.SoongOutDir(), bazel.SoongInjectionDirName),
+		shared.JoinPath(config.OutDir(), "bazel"),
+		shared.JoinPath(config.OutDir(), "bazelsocket.sock")}
+
+	for _, f := range files {
+		fmt.Println("Removing", f)
+		err := os.Remove(f)
+		if err != nil {
+			fmt.Println("error: ", err)
+		}
 	}
 }
 
