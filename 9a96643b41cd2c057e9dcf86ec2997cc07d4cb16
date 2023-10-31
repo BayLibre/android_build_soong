@@ -34,6 +34,24 @@
       "parentUuid": "a159b528_46584895",
       "revId": "9a96643b41cd2c057e9dcf86ec2997cc07d4cb16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3faf05e_a202879a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-31T18:19:43Z",
+      "side": 1,
+      "message": "Looks like for `telephony-common` before it was:\n```\n-include build/make/core/proguard.flags\n-include frameworks/opt/telephony/proguard.flags\n```\nafter it was \n```\n-include build/make/core/proguard.flags\n-include frameworks/libs/modules-utils/java/aconfig_proguard.flags\n-include frameworks/opt/telephony/proguard.flags\n-include frameworks/opt/telephony/proguard.flags\n```\n\nFor `services` before it was\n```\n-include build/make/core/proguard.flags\n-include frameworks/base/services/proguard.flags\n-include out/soong/.intermediates/frameworks/base/core/res/framework-res/android_common/gen/proguard.options\n```\nafter it was \n```\n-include build/make/core/proguard.flags\n-include frameworks/libs/modules-utils/java/aconfig_proguard.flags\n-include frameworks/base/services/proguard.flags\n-include out/soong/.intermediates/frameworks/base/core/res/framework-res/android_common/gen/proguard.options\n-include frameworks/base/services/proguard.flags\n-include out/soong/.intermediates/frameworks/base/core/res/framework-res/android_common/gen/proguard.options\n```\n\n(I\u0027ll upload a new patchset to remove the redundant paths)",
+      "parentUuid": "4d4a81ac_3d295efc",
+      "revId": "9a96643b41cd2c057e9dcf86ec2997cc07d4cb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
