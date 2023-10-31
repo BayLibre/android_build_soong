@@ -36,7 +36,8 @@ var SoongConfigProperty = proptools.FieldNameForProperty("soong_config_variables
 // result so each file is only parsed once.
 func Parse(r io.Reader, from string) (*SoongConfigDefinition, []error) {
 	scope := parser.NewScope(nil)
-	file, errs := parser.ParseAndEval(from, r, scope)
+	// TODO: Get the parser.EvalEnvironment (nil) from the Context
+	file, errs := parser.ParseAndEval(from, r, nil, scope)
 
 	if len(errs) > 0 {
 		return nil, errs
@@ -128,7 +129,8 @@ func processModuleTypeDef(v *SoongConfigDefinition, def *parser.Module) (errs []
 
 	props := &ModuleTypeProperties{}
 
-	_, errs = proptools.UnpackProperties(def.Properties, props)
+	// TODO: This should get the blueprint.Context's realms
+	_, errs = proptools.UnpackProperties(nil, def.Properties, props)
 	if len(errs) > 0 {
 		return errs
 	}
@@ -216,7 +218,8 @@ func processVariableDef(def *parser.Module,
 
 	allProps := append([]interface{}{props}, extraProps...)
 
-	_, errs = proptools.UnpackProperties(def.Properties, allProps...)
+	// TODO: This should get the blueprint.Context's realms
+	_, errs = proptools.UnpackProperties(nil, def.Properties, allProps...)
 	if len(errs) > 0 {
 		return baseVariable{}, errs
 	}

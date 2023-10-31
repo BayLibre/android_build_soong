@@ -178,6 +178,9 @@ func NewContext(config Config) *Context {
 	ctx.SetSrcDir(absSrcDir)
 	ctx.AddIncludeTags(config.IncludeTags()...)
 	ctx.AddSourceRootDirs(config.SourceRootDirs()...)
+	ctx.AddSelectRealm("flag", newFlagSelectRealm())
+	// TODO: Connect soong_config variables here too
+	// ctx.AddSelectRealm("soong_config", blahblahblah)
 	return ctx
 }
 

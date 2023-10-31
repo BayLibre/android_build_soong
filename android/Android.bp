@@ -52,6 +52,7 @@ bootstrap_go_package {
         "deptag.go",
         "expand.go",
         "filegroup.go",
+        "flag_realm.go",
         "fixture.go",
         "gen_notice.go",
         "hooks.go",
