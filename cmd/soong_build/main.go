@@ -225,6 +225,7 @@ func writeMetrics(configuration android.Config, eventHandler *metrics.EventHandl
 	}
 	metricsFile := filepath.Join(metricsDir, "soong_build_metrics.pb")
 	err := android.WriteMetrics(configuration, eventHandler, metricsFile)
+	fmt.Println("wrote", metricsFile)
 	maybeQuit(err, "error writing soong_build metrics %s", metricsFile)
 }
 
