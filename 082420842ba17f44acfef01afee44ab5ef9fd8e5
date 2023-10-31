@@ -22,6 +22,30 @@
       },
       "revId": "082420842ba17f44acfef01afee44ab5ef9fd8e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "934e573d_2d6023e3",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-31T18:55:32Z",
+      "side": 1,
+      "message": "I don\u0027t think so, we only include [`dexProperties.Proguard_flags_files`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/base.go;l\u003d1776;drc\u003defb6d602104fa70fef3aa3badde1ac33e7553f1b), but this comes from the `aapt` [link](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/aar.go;l\u003d113;drc\u003d96ea8845c56518e0f8d39c254464cc690b00e0c5) [rule](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/aapt2.go;l\u003d245;drc\u003d51804e92e8897a81f2cee4c6fe4bda0b20c3949a)\n\n(I\u0027ll move the other proguard lines up there though to keep them grouped)",
+      "parentUuid": "b3d78826_80adac6e",
+      "range": {
+        "startLine": 808,
+        "startChar": 0,
+        "endLine": 809,
+        "endChar": 24
+      },
+      "revId": "082420842ba17f44acfef01afee44ab5ef9fd8e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
