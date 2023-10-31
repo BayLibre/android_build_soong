@@ -16,6 +16,24 @@
       "message": "Thanks Sam! I\u0027d be curious what the resulting diff is for the R8 input proguard file list for R8 invocations of, say, `telephony-common ` and `services`? I can also patch this in to check.",
       "revId": "9a96643b41cd2c057e9dcf86ec2997cc07d4cb16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d4a81ac_3d295efc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-10-31T18:13:31Z",
+      "side": 1,
+      "message": "Sure I\u0027ll check real quick",
+      "parentUuid": "a159b528_46584895",
+      "revId": "9a96643b41cd2c057e9dcf86ec2997cc07d4cb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
