@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3d78826_80adac6e",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-10-31T18:30:47Z",
+      "side": 1,
+      "message": "Is this already included in exportedProguardFlagFiles? If so we can delete this line",
+      "range": {
+        "startLine": 808,
+        "startChar": 0,
+        "endLine": 809,
+        "endChar": 24
+      },
+      "revId": "082420842ba17f44acfef01afee44ab5ef9fd8e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
