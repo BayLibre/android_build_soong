@@ -50,7 +50,7 @@ type ZipEntryContents interface {
 	IsDir() bool
 	CRC32() uint32
 	Size() uint64
-	WriteToZip(dest string, zw *zip.Writer) error
+	WriteToZip(dest string, oz *OutputZip) error
 }
 
 // a ZipEntryFromZip is a ZipEntryContents that pulls its content from another zip
@@ -92,11 +92,15 @@ func (ze ZipEntryFromZip) Size() uint64 {
 	return ze.size
 }
 
-func (ze ZipEntryFromZip) WriteToZip(dest string, zw *zip.Writer) error {
+func (ze ZipEntryFromZip) WriteToZip(dest string, oz *OutputZip) error {
 	if err := ze.inputZip.Open(); err != nil {
 		return err
 	}
-	return zw.CopyFrom(ze.inputZip.Entries()[ze.index], dest)
+	entry := ze.inputZip.Entries()[ze.index]
+	if oz.resetModTime {
+		entry.SetModTime(jar.DefaultTime)
+	}
+	return oz.outputWriter.CopyFrom(entry, dest)
 }
 
 // a ZipEntryFromBuffer is a ZipEntryContents that pulls its content from a []byte
@@ -121,8 +125,8 @@ func (be ZipEntryFromBuffer) Size() uint64 {
 	return uint64(len(be.content))
 }
 
-func (be ZipEntryFromBuffer) WriteToZip(dest string, zw *zip.Writer) error {
-	w, err := zw.CreateHeaderAndroid(be.fh)
+func (be ZipEntryFromBuffer) WriteToZip(dest string, oz *OutputZip) error {
+	w, err := oz.outputWriter.CreateHeaderAndroid(be.fh)
 	if err != nil {
 		return err
 	}
@@ -144,17 +148,19 @@ type OutputZip struct {
 	emulateJar       bool
 	sortEntries      bool
 	ignoreDuplicates bool
+	resetModTime     bool
 	excludeDirs      []string
 	excludeFiles     []string
 	sourceByDest     map[string]ZipEntryContents
 }
 
-func NewOutputZip(outputWriter *zip.Writer, sortEntries, emulateJar, stripDirEntries, ignoreDuplicates bool) *OutputZip {
+func NewOutputZip(outputWriter *zip.Writer, sortEntries, emulateJar, stripDirEntries, ignoreDuplicates, setTime bool) *OutputZip {
 	return &OutputZip{
 		outputWriter:     outputWriter,
 		stripDirEntries:  stripDirEntries,
 		emulateJar:       emulateJar,
 		sortEntries:      sortEntries,
+		resetModTime:     setTime,
 		sourceByDest:     make(map[string]ZipEntryContents, 0),
 		ignoreDuplicates: ignoreDuplicates,
 	}
@@ -182,7 +188,7 @@ func (oz *OutputZip) addZipEntry(name string, source ZipEntryContents) (ZipEntry
 	if oz.emulateJar || oz.sortEntries {
 		return nil, nil
 	}
-	return nil, source.WriteToZip(name, oz.outputWriter)
+	return nil, source.WriteToZip(name, oz)
 }
 
 // Adds an entry for the manifest (META-INF/MANIFEST.MF from the given file
@@ -330,7 +336,7 @@ func (oz *OutputZip) alphanumericSorted() []string {
 func (oz *OutputZip) writeEntries(entries []string) error {
 	for _, entry := range entries {
 		source, _ := oz.sourceByDest[entry]
-		if err := source.WriteToZip(entry, oz.outputWriter); err != nil {
+		if err := source.WriteToZip(entry, oz); err != nil {
 			return err
 		}
 	}
@@ -533,10 +539,10 @@ func (miz *ManagedInputZip) Entries() []*zip.File {
 
 // Actual processing.
 func mergeZips(inputZips []InputZip, writer *zip.Writer, manifest, pyMain string,
-	sortEntries, emulateJar, emulatePar, stripDirEntries, ignoreDuplicates bool,
+	sortEntries, emulateJar, emulatePar, stripDirEntries, ignoreDuplicates, setTime bool,
 	excludeFiles, excludeDirs []string, zipsToNotStrip map[string]bool) error {
 
-	out := NewOutputZip(writer, sortEntries, emulateJar, stripDirEntries, ignoreDuplicates)
+	out := NewOutputZip(writer, sortEntries, emulateJar, stripDirEntries, ignoreDuplicates, setTime)
 	out.setExcludeFiles(excludeFiles)
 	out.setExcludeDirs(excludeDirs)
 	if manifest != "" {
@@ -637,13 +643,15 @@ func (s zipsToNotStripSet) Set(path string) error {
 }
 
 var (
-	sortEntries      = flag.Bool("s", false, "sort entries (defaults to the order from the input zip files)")
-	emulateJar       = flag.Bool("j", false, "sort zip entries using jar ordering (META-INF first)")
-	emulatePar       = flag.Bool("p", false, "merge zip entries based on par format")
-	excludeDirs      fileList
-	excludeFiles     fileList
-	zipsToNotStrip   = make(zipsToNotStripSet)
-	stripDirEntries  = flag.Bool("D", false, "strip directory entries from the output zip file")
+	sortEntries     = flag.Bool("s", false, "sort entries (defaults to the order from the input zip files)")
+	emulateJar      = flag.Bool("j", false, "sort zip entries using jar ordering (META-INF first)")
+	emulatePar      = flag.Bool("p", false, "merge zip entries based on par format")
+	excludeDirs     fileList
+	excludeFiles    fileList
+	zipsToNotStrip  = make(zipsToNotStripSet)
+	stripDirEntries = flag.Bool("D", false, "strip directory entries from the output zip file")
+	setTime         = flag.Bool("t", false, "set timestamps to 2009-01-01 00:00:00")
+
 	manifest         = flag.String("m", "", "manifest file to insert in jar")
 	pyMain           = flag.String("pm", "", "__main__.py file to insert in par")
 	prefix           = flag.String("prefix", "", "A file to prefix to the zip file")
@@ -774,7 +782,7 @@ func main() {
 		inputZips[i] = inputZipsManager.Manage(&FileInputZip{name: input})
 	}
 	err = mergeZips(inputZips, writer, *manifest, *pyMain, *sortEntries, *emulateJar, *emulatePar,
-		*stripDirEntries, *ignoreDuplicates, []string(excludeFiles), []string(excludeDirs),
+		*stripDirEntries, *ignoreDuplicates, *setTime, []string(excludeFiles), []string(excludeDirs),
 		map[string]bool(zipsToNotStrip))
 	if err != nil {
 		log.Fatal(err)
