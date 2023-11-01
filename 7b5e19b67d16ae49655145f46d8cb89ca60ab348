@@ -16,6 +16,24 @@
       "message": "soong_zip always resets the time, I think having merge_zips do that as well or at least default to resetting the time would be clearer: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/zip/zip.go;l\u003d301;drc\u003d6dd439cfd52b7080aef8e4e579a3b4c07b05622f",
       "revId": "7b5e19b67d16ae49655145f46d8cb89ca60ab348",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b32f6f6_9e24b1fe",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-01T21:43:27Z",
+      "side": 1,
+      "message": "I was worried that",
+      "parentUuid": "1d485c19_9b268383",
+      "revId": "7b5e19b67d16ae49655145f46d8cb89ca60ab348",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
