@@ -16,6 +16,24 @@
       "message": "nit: maybe the name of the output dir can be a little more descriptive e.g., indexes_and_imports",
       "revId": "b8eaee68b66ee1b56ec03d42a49dddebefc86389",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ba293d5_da6791d6",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2023-11-01T05:10:10Z",
+      "side": 1,
+      "message": "These are the flags suggested by the MLGO docs. I would prefer to keep it as the docs to reduce confusion (future readers might wonder why we have different flags from the docs).",
+      "parentUuid": "13fff209_981f5776",
+      "revId": "b8eaee68b66ee1b56ec03d42a49dddebefc86389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
