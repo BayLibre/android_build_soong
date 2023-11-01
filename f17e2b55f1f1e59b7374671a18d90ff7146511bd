@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67632288_2d134a98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-11-01T10:26:15Z",
+      "side": 1,
+      "message": "Thank you so much for implementing this quickly (and for your help debugging my build rules on Tuesday).",
+      "revId": "f17e2b55f1f1e59b7374671a18d90ff7146511bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
