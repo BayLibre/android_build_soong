@@ -58,6 +58,11 @@ type moduleType struct {
 	factory ModuleFactory
 }
 
+type blueprintV2ModuleType struct {
+	file string
+	name string
+}
+
 func (t moduleType) register(ctx *Context) {
 	ctx.RegisterModuleType(t.name, ModuleFactoryAdaptor(t.factory))
 }
@@ -65,6 +70,7 @@ func (t moduleType) register(ctx *Context) {
 var moduleTypes []moduleType
 var moduleTypesForDocs = map[string]reflect.Value{}
 var moduleTypeByFactory = map[reflect.Value]string{}
+var blueprintV2ModuleTypes []blueprintV2ModuleType
 
 type singleton struct {
 	// True if this should be registered as a parallel singleton.
@@ -129,6 +135,10 @@ func SingletonFactoryAdaptor(ctx *Context, factory SingletonFactory) blueprint.S
 func RegisterModuleType(name string, factory ModuleFactory) {
 	moduleTypes = append(moduleTypes, moduleType{name, factory})
 	RegisterModuleTypeForDocs(name, reflect.ValueOf(factory))
+}
+
+func RegisterBlueprintV2ModuleType(file string, name string) {
+	blueprintV2ModuleTypes = append(blueprintV2ModuleTypes, blueprintV2ModuleType{file, name})
 }
 
 // RegisterModuleTypeForDocs associates a module type name with a reflect.Value of the factory
@@ -240,6 +250,10 @@ func (c *Context) RegisterExistingBazelTargets(topDir string, existingBazelFiles
 func (ctx *Context) Register() {
 	for _, t := range moduleTypes {
 		t.register(ctx)
+	}
+
+	for _, t := range blueprintV2ModuleTypes {
+		ctx.RegisterBlueprintV2ModuleType(t.file, t.name)
 	}
 
 	mutators := collateGloballyRegisteredMutators()

@@ -1,0 +1,7 @@
+
+def _impl(ctx):
+    pass
+
+blueprint_v2_demo = module_type(
+    generate_build_actions = _impl,
+)

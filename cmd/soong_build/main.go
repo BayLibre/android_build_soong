@@ -107,6 +107,7 @@ func newContext(configuration android.Config) *android.Context {
 	ctx.SetAllowMissingDependencies(configuration.AllowMissingDependencies())
 	ctx.AddIncludeTags(configuration.IncludeTags()...)
 	ctx.AddSourceRootDirs(configuration.SourceRootDirs()...)
+	ctx.SetTopDir(topDir)
 	return ctx
 }
 
