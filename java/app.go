@@ -690,6 +690,13 @@ func (a *AndroidApp) createPrivappAllowlist(ctx android.ModuleContext) android.P
 	return &outPath
 }
 
+var addToZip = pctx.AndroidStaticRule("addToZip",
+	blueprint.RuleParams{
+		Command: `${config.SoongZipCmd} -o $zip_temp_name -e $name_in_zip -f $file_to_add && ` +
+			`${config.MergeZipsCmd} $out $zip_temp_name $in `,
+		CommandDeps: []string{"${config.SoongZipCmd}", "${config.MergeZipsCmd}"},
+	}, "file_to_add", "name_in_zip", "zip_temp_name")
+
 func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	var apkDeps android.Paths
 
@@ -743,7 +750,6 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 
 	// Process all building blocks, from AAPT to certificates.
 	a.aaptBuildActions(ctx)
-
 	// The decision to enforce <uses-library> checks is made before adding implicit SDK libraries.
 	a.usesLibrary.freezeEnforceUsesLibraries()
 
@@ -769,7 +775,33 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	a.linter.resources = a.aapt.resourceFiles
 	a.linter.buildModuleReportZip = ctx.Config().UnbundledBuildApps()
 
+	var packageResources = a.exportPackage
+	if Bool(a.dexProperties.Optimize.Shrink_resources) {
+		protoFile := android.PathForModuleOut(ctx, packageResources.Base()+".proto.apk")
+		aapt2Convert(ctx, protoFile, packageResources, "proto")
+		strictModeFile := android.PathForSource(ctx, "prebuilts/cmdline-tools/shrinker.xml")
+		tempStrictModeZip := android.PathForModuleOut(ctx, "strict_mode.zip")
+		withStrictModeZip := android.PathForModuleOut(ctx, packageResources.Base()+".with_strict.proto.apk")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   addToZip,
+			Input:  protoFile,
+			Output: withStrictModeZip,
+			Args: map[string]string{
+				"file_to_add":   strictModeFile.String(),
+				"zip_temp_name": tempStrictModeZip.String(),
+				"name_in_zip":   "res/raw/shrinker_defaults.xml",
+			},
+		})
+
+		a.dexer.resourcesInput = android.OptionalPathForPath(withStrictModeZip)
+	}
+
 	dexJarFile := a.dexBuildActions(ctx)
+	if Bool(a.dexProperties.Optimize.Shrink_resources) {
+		binaryResources := android.PathForModuleOut(ctx, packageResources.Base()+".binary.out.apk")
+		aapt2Convert(ctx, binaryResources, a.dexer.resourcesOutput.Path(), "binary")
+		packageResources = binaryResources
+	}
 
 	jniLibs, prebuiltJniPackages, certificates := collectAppDeps(ctx, a, a.shouldEmbedJnis(ctx), !Bool(a.appProperties.Jni_uses_platform_apis))
 	jniJarFile := a.jniBuildActions(jniLibs, prebuiltJniPackages, ctx)
@@ -793,7 +825,7 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	rotationMinSdkVersion := String(a.overridableAppProperties.RotationMinSdkVersion)
 
-	CreateAndSignAppPackage(ctx, packageFile, a.exportPackage, jniJarFile, dexJarFile, certificates, apkDeps, v4SignatureFile, lineageFile, rotationMinSdkVersion, Bool(a.dexProperties.Optimize.Shrink_resources))
+	CreateAndSignAppPackage(ctx, packageFile, packageResources, jniJarFile, dexJarFile, certificates, apkDeps, v4SignatureFile, lineageFile, rotationMinSdkVersion)
 	a.outputFile = packageFile
 	if v4SigningRequested {
 		a.extraOutputFiles = append(a.extraOutputFiles, v4SignatureFile)
@@ -822,7 +854,7 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 		if v4SigningRequested {
 			v4SignatureFile = android.PathForModuleOut(ctx, a.installApkName+"_"+split.suffix+".apk.idsig")
 		}
-		CreateAndSignAppPackage(ctx, packageFile, split.path, nil, nil, certificates, apkDeps, v4SignatureFile, lineageFile, rotationMinSdkVersion, false)
+		CreateAndSignAppPackage(ctx, packageFile, split.path, nil, nil, certificates, apkDeps, v4SignatureFile, lineageFile, rotationMinSdkVersion)
 		a.extraOutputFiles = append(a.extraOutputFiles, packageFile)
 		if v4SigningRequested {
 			a.extraOutputFiles = append(a.extraOutputFiles, v4SignatureFile)

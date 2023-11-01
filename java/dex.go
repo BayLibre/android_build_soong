@@ -95,6 +95,8 @@ type dexer struct {
 	proguardDictionary     android.OptionalPath
 	proguardConfiguration  android.OptionalPath
 	proguardUsageZip       android.OptionalPath
+	resourcesInput         android.OptionalPath
+	resourcesOutput        android.OptionalPath
 
 	providesTransitiveHeaderJars
 }
@@ -348,6 +350,12 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 		r8Flags = append(r8Flags, "-ignorewarnings")
 	}
 
+	if d.resourcesInput.Valid() {
+		r8Flags = append(r8Flags, "--resource-input", d.resourcesInput.Path().String())
+		r8Deps = append(r8Deps, d.resourcesInput.Path())
+		r8Flags = append(r8Flags, "--resource-output", d.resourcesOutput.Path().String())
+	}
+
 	return r8Flags, r8Deps
 }
 
@@ -389,6 +397,8 @@ func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParam
 			android.ModuleNameWithPossibleOverride(ctx), "unused.txt")
 		proguardUsageZip := android.PathForModuleOut(ctx, "proguard_usage.zip")
 		d.proguardUsageZip = android.OptionalPathForPath(proguardUsageZip)
+		resourcesOutput := android.PathForModuleOut(ctx, "package-res-shrunken.apk")
+		d.resourcesOutput = android.OptionalPathForPath(resourcesOutput)
 		r8Flags, r8Deps := d.r8Flags(ctx, dexParams.flags)
 		r8Deps = append(r8Deps, commonDeps...)
 		rule := r8
@@ -407,17 +417,21 @@ func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParam
 			rule = r8RE
 			args["implicits"] = strings.Join(r8Deps.Strings(), ",")
 		}
+		var implicitOutput = android.WritablePaths{
+			proguardDictionary,
+			proguardUsageZip,
+			proguardConfiguration}
+		if d.resourcesInput.Valid() {
+			implicitOutput = append(implicitOutput, resourcesOutput)
+		}
 		ctx.Build(pctx, android.BuildParams{
-			Rule:        rule,
-			Description: "r8",
-			Output:      javalibJar,
-			ImplicitOutputs: android.WritablePaths{
-				proguardDictionary,
-				proguardUsageZip,
-				proguardConfiguration},
-			Input:     dexParams.classesJar,
-			Implicits: r8Deps,
-			Args:      args,
+			Rule:            rule,
+			Description:     "r8",
+			Output:          javalibJar,
+			ImplicitOutputs: implicitOutput,
+			Input:           dexParams.classesJar,
+			Implicits:       r8Deps,
+			Args:            args,
 		})
 	} else {
 		d8Flags, d8Deps := d8Flags(dexParams.flags)
