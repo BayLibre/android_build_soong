@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5810a597_915fab92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-11-02T14:22:46Z",
+      "side": 1,
+      "message": "I suggest to add a note to b/282678719 in case we forget about it next year.",
+      "revId": "773ec2744a17008d30373835ac2b5d7ffa1cb1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
