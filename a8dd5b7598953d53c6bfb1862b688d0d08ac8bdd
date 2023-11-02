@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a20cca54_80e4eb89",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1935,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-02T16:46:29Z",
+      "side": 1,
+      "message": "allocating this array every time likely reduces some of the benefit here. Could we instead do either of:\n - Error out when given empty path components and fix whatever issues arise\n - only strip out empty path components at the end of the array, so that we don\u0027t need to allocate a new array",
+      "revId": "a8dd5b7598953d53c6bfb1862b688d0d08ac8bdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
