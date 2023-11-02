@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fea46121_5971118c",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1702,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-02T17:21:07Z",
+      "side": 1,
+      "message": "it may be simpler to just always set `strippedAllOutputFile` regardless of the dist tags. Because since it\u0027s now an output file, other soong modules can depend on it, but only if this module is diffed under the stripped_all tag, which is confusing behavior.",
+      "revId": "4b86c05b4cebc67d5d96604d792fbff1a12cc485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
