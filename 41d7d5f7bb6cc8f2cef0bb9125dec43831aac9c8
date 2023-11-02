@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e30b071_902daf54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2023-11-02T19:30:18Z",
+      "side": 1,
+      "message": "Yes, that should be comparable, the code is the same, nothing really changed yet :-) Initially this is just moving the code into r8, we do the same thing for now, first generate dex, then do resource shrinking.",
+      "parentUuid": "505425cb_ab8a1be2",
+      "revId": "41d7d5f7bb6cc8f2cef0bb9125dec43831aac9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6cc59b9d_6dcc9c7c",
         "filename": "java/app.go",
         "patchSetId": 7
@@ -72,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "595b5a7f_0fc84c1f",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2023-11-02T19:30:18Z",
+      "side": 1,
+      "message": "I can do a cl to simple embed this in the R8Wrapper (the xml, and then pass it in the resource provider). Half of the xml file will go next week anyway (the resource shrinker will start defaulting to keep ids, we have seen issues in the wild after defaulting to precise shrinking similar to what we saw in platform). WDYT?",
+      "parentUuid": "f130534e_f70625d9",
+      "revId": "41d7d5f7bb6cc8f2cef0bb9125dec43831aac9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a377dd0f_12f38fb9",
         "filename": "java/dex.go",
         "patchSetId": 7
@@ -83,6 +119,30 @@
       "writtenOn": "2023-11-02T16:24:37Z",
       "side": 1,
       "message": "Does `--debug` have any impact on resource shrinking?",
+      "range": {
+        "startLine": 353,
+        "startChar": 6,
+        "endLine": 353,
+        "endChar": 20
+      },
+      "revId": "41d7d5f7bb6cc8f2cef0bb9125dec43831aac9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee34c09_4d06f601",
+        "filename": "java/dex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2023-11-02T19:30:18Z",
+      "side": 1,
+      "message": "no not really, we will still remove resources with the debug flag (and we might still remove a lot, since we do code treeshaking, so a lot of resource pointers will be gone).",
+      "parentUuid": "a377dd0f_12f38fb9",
       "range": {
         "startLine": 353,
         "startChar": 6,

@@ -22,6 +22,30 @@
       },
       "revId": "4efd3365cc263f3ee38a9bcdd9afd97c4875562b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8307b44f_8d558394",
+        "filename": "java/resourceshrinker_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2023-11-02T19:30:18Z",
+      "side": 0,
+      "message": "This is just a xml file like any other in res/raw, I will do a cl to embed this in r8 (as described in the other comment). And there are tests covering how to threat the strict mode part (running without that means that we basically do no shrinking on e.g., SystemUI (less than 1%, compared to 30something with strict mode)",
+      "parentUuid": "1862fcf5_544f9558",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 45
+      },
+      "revId": "4efd3365cc263f3ee38a9bcdd9afd97c4875562b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
