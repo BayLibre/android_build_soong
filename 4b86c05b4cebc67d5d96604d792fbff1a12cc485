@@ -52,6 +52,24 @@
       "parentUuid": "c455b936_2d4d27ad",
       "revId": "4b86c05b4cebc67d5d96604d792fbff1a12cc485",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "090c8a12_44ec9f29",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1702,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-11-02T20:01:50Z",
+      "side": 1,
+      "message": "The tagged output files are usually for different purposes, and that\u0027s why they are tagged instead of default output files. In this case the dist tag is a must-have since this is not for the built/installed file but for distributed file, if people want to depend on it without dist tag, that means it is an invalid use case and the build system should error out, which is kind of a good preventive action.",
+      "parentUuid": "20227136_86d841e2",
+      "revId": "4b86c05b4cebc67d5d96604d792fbff1a12cc485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
