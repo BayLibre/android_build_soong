@@ -34,6 +34,24 @@
       "parentUuid": "fea46121_5971118c",
       "revId": "4b86c05b4cebc67d5d96604d792fbff1a12cc485",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20227136_86d841e2",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1702,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-02T18:30:12Z",
+      "side": 1,
+      "message": "Other modules can depend on it from their bp file by saying `srcs: [\":mymodule{stripped-all}\"]`. You aren\u0027t preventing that. But as is, that will error out unless people add the dist tag with `stripped-all`. I think we should allow people to depend on the stripped output without adding the dist tag so that we don\u0027t have people adding unnecessary dist tags.",
+      "parentUuid": "c455b936_2d4d27ad",
+      "revId": "4b86c05b4cebc67d5d96604d792fbff1a12cc485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
