@@ -127,6 +127,10 @@ func deleteStaleMetrics(metricsFilePathSlice []string) error {
 // execution is specified. The args are specific to the command.
 func main() {
 	shared.ReexecWithDelveMaybe(os.Getenv("SOONG_UI_DELVE"), shared.ResolveDelveBinary())
+    unsetFlags := []string{"FLAG_cpp_dependency_scanner_plugin","FLAG_exec_root","FLAG_instance","FLAG_invocation_id","FLAG_log_dir","FLAG_output_dir","FLAG_platform","FLAG_re_proxy","FLAG_reproxy_wait_seconds","FLAG_server_address","FLAG_service","FLAG_shutdown_proxy","FLAG_use_gce_credentials"}
+	for _, f := range unsetFlags{
+		os.Unsetenv(f)
+	}
 
 	buildStarted := time.Now()
 
