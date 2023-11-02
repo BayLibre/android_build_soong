@@ -16,6 +16,24 @@
       "message": "actually doesn\u0027t this make a slice of `len(pathComponents)` of empty strings, and then append more strings onto the end of that?",
       "revId": "4fa92f0a075f53edab01512a2a8736c23ad6a9eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ecf4a39_5f437db6",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-02T21:37:42Z",
+      "side": 1,
+      "message": "Yeah, it should have been `[0:0:len(pathComponents)]`, but I\u0027ll switch to your suggestion instead.",
+      "parentUuid": "dfc6be7a_7b379dea",
+      "revId": "4fa92f0a075f53edab01512a2a8736c23ad6a9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
