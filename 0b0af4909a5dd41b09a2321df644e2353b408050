@@ -33,6 +33,24 @@
       "message": "This isn\u0027t read anywhere, is that coming later?",
       "revId": "0b0af4909a5dd41b09a2321df644e2353b408050",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd70e07_c36e03b3",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-11-02T21:56:07Z",
+      "side": 1,
+      "message": "It is passed back into kati by setting the environment variable (line 503), and is consumed there, to allow product-specific build flags to be added or have their value overridden.)\n\nIt\u0027s also exported in product config, so it\u0027s in the build artifacts.",
+      "parentUuid": "a2c0e2b2_ef80bf01",
+      "revId": "0b0af4909a5dd41b09a2321df644e2353b408050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
