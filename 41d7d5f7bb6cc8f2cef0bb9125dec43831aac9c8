@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "243a8158_11630acd",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2023-11-02T19:42:36Z",
+      "side": 1,
+      "message": "removed the rule",
+      "parentUuid": "6cc59b9d_6dcc9c7c",
+      "revId": "41d7d5f7bb6cc8f2cef0bb9125dec43831aac9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64b15a06_161a85f3",
@@ -166,6 +184,30 @@
       "writtenOn": "2023-11-02T16:27:00Z",
       "side": 1,
       "message": "nit: `implicitOutputs`\n\nAlso it\u0027s more idomatic to use `implicitOutputs :\u003d android.WritablePaths{`",
+      "range": {
+        "startLine": 420,
+        "startChar": 6,
+        "endLine": 420,
+        "endChar": 20
+      },
+      "revId": "41d7d5f7bb6cc8f2cef0bb9125dec43831aac9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7452d446_b516234e",
+        "filename": "java/dex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2023-11-02T19:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14f107e9_56cc9aac",
       "range": {
         "startLine": 420,
         "startChar": 6,
