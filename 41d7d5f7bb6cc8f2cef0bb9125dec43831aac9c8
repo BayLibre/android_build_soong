@@ -20,6 +20,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cc59b9d_6dcc9c7c",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-02T16:27:00Z",
+      "side": 1,
+      "message": "Add `rm $zip_temp_name`",
+      "revId": "41d7d5f7bb6cc8f2cef0bb9125dec43831aac9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b15a06_161a85f3",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-02T16:27:00Z",
+      "side": 1,
+      "message": "Would it be possible to pass `shrinker_defaults.xml` directly to r8 to avoid having to make an extra copy of the resources apk?",
+      "revId": "41d7d5f7bb6cc8f2cef0bb9125dec43831aac9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a377dd0f_12f38fb9",
         "filename": "java/dex.go",
         "patchSetId": 7
@@ -35,6 +69,29 @@
         "startLine": 353,
         "startChar": 6,
         "endLine": 353,
+        "endChar": 20
+      },
+      "revId": "41d7d5f7bb6cc8f2cef0bb9125dec43831aac9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14f107e9_56cc9aac",
+        "filename": "java/dex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-02T16:27:00Z",
+      "side": 1,
+      "message": "nit: `implicitOutputs`\n\nAlso it\u0027s more idomatic to use `implicitOutputs :\u003d android.WritablePaths{`",
+      "range": {
+        "startLine": 420,
+        "startChar": 6,
+        "endLine": 420,
         "endChar": 20
       },
       "revId": "41d7d5f7bb6cc8f2cef0bb9125dec43831aac9c8",
