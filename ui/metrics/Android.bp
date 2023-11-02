@@ -96,3 +96,15 @@ bootstrap_go_package {
         "mk_metrics_proto/mk_metrics.pb.go",
     ],
 }
+
+python_library_host {
+    name: "metrics-py-proto",
+    srcs: [
+        "bazel_metrics_proto/bazel_metrics.proto",
+        "bp2build_metrics_proto/bp2build_metrics.proto",
+        "metrics_proto/metrics.proto",
+    ],
+    proto: {
+        canonical_path_from_root: false,
+    },
+}
