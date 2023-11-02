@@ -16,6 +16,23 @@
       "message": "This is a rework of aosp/2786983 to remove the data race, and also re-incorporate some changes that were lost when ps7 of that change was uploaded.",
       "revId": "0b0af4909a5dd41b09a2321df644e2353b408050",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c0e2b2_ef80bf01",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-02T20:59:06Z",
+      "side": 1,
+      "message": "This isn\u0027t read anywhere, is that coming later?",
+      "revId": "0b0af4909a5dd41b09a2321df644e2353b408050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
