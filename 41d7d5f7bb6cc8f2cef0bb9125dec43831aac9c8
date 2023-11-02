@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc6f94d3_2a04797f",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2023-11-02T19:45:46Z",
+      "side": 1,
+      "message": "took a stab at this, and embedded in the wrapper here:\nhttps://android-review.git.corp.google.com/c/platform/prebuilts/r8/+/2816534/1/src/com/android/tools/r8wrappers/R8Wrapper.java\nupdated this to not include the shrinker.xml anymore",
+      "parentUuid": "595b5a7f_0fc84c1f",
+      "revId": "41d7d5f7bb6cc8f2cef0bb9125dec43831aac9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a377dd0f_12f38fb9",
         "filename": "java/dex.go",
         "patchSetId": 7
