@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c9e882c_b8a22653",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-11-02T20:35:32Z",
+      "side": 1,
+      "message": "This is a rework of aosp/2786983 to remove the data race, and also re-incorporate some changes that were lost when ps7 of that change was uploaded.",
+      "revId": "0b0af4909a5dd41b09a2321df644e2353b408050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
