@@ -16,6 +16,24 @@
       "message": "it may be simpler to just always set `strippedAllOutputFile` regardless of the dist tags. Because since it\u0027s now an output file, other soong modules can depend on it, but only if this module is diffed under the stripped_all tag, which is confusing behavior.",
       "revId": "4b86c05b4cebc67d5d96604d792fbff1a12cc485",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c455b936_2d4d27ad",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1702,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-11-02T17:49:05Z",
+      "side": 1,
+      "message": "No, we don\u0027t want other modules to depend on it because it is not the default output file of the module. This stripped version is provided because layoutlib needs it, so if other modules need it, they should explicitly declare that somewhere in their .bp files.",
+      "parentUuid": "fea46121_5971118c",
+      "revId": "4b86c05b4cebc67d5d96604d792fbff1a12cc485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
