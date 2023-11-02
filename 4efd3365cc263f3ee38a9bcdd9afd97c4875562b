@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1862fcf5_544f9558",
+        "filename": "java/resourceshrinker_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-11-02T16:24:37Z",
+      "side": 0,
+      "message": "Is there a test case we can add with the new approach (unless it\u0027s already covered)?",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 45
+      },
+      "revId": "4efd3365cc263f3ee38a9bcdd9afd97c4875562b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

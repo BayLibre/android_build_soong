@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "505425cb_ab8a1be2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-11-02T16:24:37Z",
+      "side": 1,
+      "message": "I\u0027m assuming the performance of the R8-based shrinker is similar, and build-time duration should be comparable with the new pipeline? Worth confirming?",
+      "revId": "41d7d5f7bb6cc8f2cef0bb9125dec43831aac9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a377dd0f_12f38fb9",
+        "filename": "java/dex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-11-02T16:24:37Z",
+      "side": 1,
+      "message": "Does `--debug` have any impact on resource shrinking?",
+      "range": {
+        "startLine": 353,
+        "startChar": 6,
+        "endLine": 353,
+        "endChar": 20
+      },
+      "revId": "41d7d5f7bb6cc8f2cef0bb9125dec43831aac9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
