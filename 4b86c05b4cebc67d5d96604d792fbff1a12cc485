@@ -70,6 +70,24 @@
       "parentUuid": "20227136_86d841e2",
       "revId": "4b86c05b4cebc67d5d96604d792fbff1a12cc485",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df81b3da_8ac9c474",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1702,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-02T20:17:12Z",
+      "side": 1,
+      "message": "If you want the build to error out when depending on it, that\u0027s fine. But you should add an explicit check and error for that. Otherwise, people will just add the dist tag.",
+      "parentUuid": "090c8a12_44ec9f29",
+      "revId": "4b86c05b4cebc67d5d96604d792fbff1a12cc485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
