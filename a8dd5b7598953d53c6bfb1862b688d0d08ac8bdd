@@ -16,6 +16,24 @@
       "message": "allocating this array every time likely reduces some of the benefit here. Could we instead do either of:\n - Error out when given empty path components and fix whatever issues arise\n - only strip out empty path components at the end of the array, so that we don\u0027t need to allocate a new array",
       "revId": "a8dd5b7598953d53c6bfb1862b688d0d08ac8bdd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e892f71_c07ec48a",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1935,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-02T19:05:59Z",
+      "side": 1,
+      "message": "I was hoping the slice would be allocated on the stack, but it isn\u0027t.  I manually allocated a small backing array on the stack, what do you think?",
+      "parentUuid": "a20cca54_80e4eb89",
+      "revId": "a8dd5b7598953d53c6bfb1862b688d0d08ac8bdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
