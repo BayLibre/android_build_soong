@@ -16,6 +16,24 @@
       "message": "I suggest to add a note to b/282678719 in case we forget about it next year.",
       "revId": "773ec2744a17008d30373835ac2b5d7ffa1cb1d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a21326d4_c79832c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2023-11-02T14:25:43Z",
+      "side": 1,
+      "message": "Done - added it to bugs description. This CL will also be in the `CLs merged` section.",
+      "parentUuid": "5810a597_915fab92",
+      "revId": "773ec2744a17008d30373835ac2b5d7ffa1cb1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
