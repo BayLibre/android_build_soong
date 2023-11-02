@@ -32,9 +32,17 @@ export ORIGINAL_PWD=${PWD}
 export TOP=$(gettop)
 source ${TOP}/build/soong/scripts/microfactory.bash
 
-soong_build_go soong_ui android/soong/cmd/soong_ui
+if [[ -n ${USE_GO_RACE:-} ]]; then
+  cd $(dirname $0)
+  ../../prebuilts/go/linux-x86/bin/go build -race android/soong/cmd/soong_ui
+  UI_PATH="$(pwd)"
+else
+  soong_build_go soong_ui android/soong/cmd/soong_ui
+  UI_PATH="$(getoutdir)"
+fi
 soong_build_go mk2rbc android/soong/mk2rbc/mk2rbc
 soong_build_go rbcrun rbcrun/rbcrun
 
+
 cd ${TOP}
-exec "$(getoutdir)/soong_ui" "$@"
+exec "${UI_PATH}/soong_ui" "$@"
