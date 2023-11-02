@@ -16,47 +16,90 @@ package cc
 
 import (
 	"android/soong/android"
-
+	"fmt"
 	"github.com/google/blueprint"
 )
 
 func init() {
 	RegisterLibraryCmakeComponents(android.InitRegistrationContext)
+	android.PreArchMutators(RegisterPreArchMutators)
 }
 
 func RegisterLibraryCmakeComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_library_cmake_snapshot", LibraryCmakeSnapshotFactory)
 }
 
+func RegisterPreArchMutators(ctx android.RegisterMutatorsContext) {
+	ctx.BottomUp("addCMakeLibs", addCMakeLibs).Parallel()
+}
+
+type LibraryCmakeSnapshotProperties struct {
+	Cc_libs []string
+}
+
 type LibraryCmakeSnapshot struct {
 	android.ModuleBase
 
 	cmakeFilePath android.WritablePath
+	properties    LibraryCmakeSnapshotProperties
 }
 
-var (
-	ccLibCmakeRule = pctx.StaticRule("ccLibCmakeRule", blueprint.RuleParams{
-		Command: `rm -f ${out} && { set -e; ` +
-			`echo 'cmake_minimum_required(VERSION 3.18)';` +
-			`echo "project(\"${name}\" CXX)";` +
-			`} >> ${out}`,
-		Description: ": ${out}",
-	}, "name")
-)
+type LibraryCmakeSnapshotDepTag struct {
+	blueprint.BaseDependencyTag
+}
+
+func addCMakeLibs(mctx android.BottomUpMutatorContext) {
+	if m, ok := mctx.Module().(*LibraryCmakeSnapshot); ok {
+		mctx.AddDependency(mctx.Module(), LibraryCmakeSnapshotDepTag{}, m.properties.Cc_libs...)
+	}
+}
 
 func (m *LibraryCmakeSnapshot) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	m.cmakeFilePath = android.PathForModuleOut(ctx, "CMakeLists.txt")
-	ctx.Build(pctx, android.BuildParams{
-		Rule:   ccLibCmakeRule,
-		Output: m.cmakeFilePath,
-		Args: map[string]string{
-			"name": m.Name(),
-		},
+
+	rule := android.NewRuleBuilder(pctx, ctx)
+	rule.Command().Text("rm").Flag("-f").Output(m.cmakeFilePath)
+	rule.Command().Text("echo 'cmake_minimum_required(VERSION 3.18)' >> ").Output(m.cmakeFilePath)
+	rule.Command().Text(fmt.Sprintf("echo 'project(%s CXX)' >> ", m.Name())).Output(m.cmakeFilePath)
+	rule.Command().Text("echo 'set(CMAKE_CXX_STANDARD 20)' >>").Output(m.cmakeFilePath)
+	rule.Command().Text("echo '' >> ").Output(m.cmakeFilePath)
+
+	ctx.VisitDirectDeps(func(dep android.Module) {
+		if mdep, ok := dep.(*Module); ok {
+			var srcs_str []string
+			for _, src := range mdep.compiler.(CompiledInterface).Srcs() {
+				srcs_str = append(srcs_str, src.String())
+			}
+			CmakeCreateList(rule, m.cmakeFilePath, fmt.Sprintf("%s_SRC", mdep.Name()), srcs_str)
+			rule.Command().Text(fmt.Sprintf("echo 'add_library(%s ${%s_SRC})' >> ", mdep.Name(), mdep.Name())).Output(m.cmakeFilePath)
+			rule.Command().Text("echo '' >> ").Output(m.cmakeFilePath)
+
+			CmakeCreateList(rule, m.cmakeFilePath, fmt.Sprintf("%s_GLOBAL_COMMON_FLAGS", mdep.Name()), mdep.flags.Global.CommonFlags)
+			CmakeCreateList(rule, m.cmakeFilePath, fmt.Sprintf("%s_LOCAL_COMMON_FLAGS", mdep.Name()), mdep.flags.Local.CommonFlags)
+			CmakeCreateList(rule, m.cmakeFilePath, fmt.Sprintf("%s_GLOBAL_CFLAGS", mdep.Name()), mdep.flags.Global.CFlags)
+			CmakeCreateList(rule, m.cmakeFilePath, fmt.Sprintf("%s_LOCAL_CFLAGS", mdep.Name()), mdep.flags.Local.CFlags)
+			CmakeCreateList(rule, m.cmakeFilePath, fmt.Sprintf("%s_GLOBAL_CXXFLAGS", mdep.Name()), mdep.flags.Global.CppFlags)
+			CmakeCreateList(rule, m.cmakeFilePath, fmt.Sprintf("%s_LOCAL_CXXFLAGS", mdep.Name()), mdep.flags.Local.CppFlags)
+			CmakeCreateList(rule, m.cmakeFilePath, fmt.Sprintf("%s_GLOBAL_CONLY_FLAGS", mdep.Name()), mdep.flags.Global.ConlyFlags)
+			CmakeCreateList(rule, m.cmakeFilePath, fmt.Sprintf("%s_LOCAL_CONLY_FLAGS", mdep.Name()), mdep.flags.Local.ConlyFlags)
+		}
 	})
+
+	rule.Build(m.Name(), "CMake snapshot "+m.Name())
+}
+
+func CmakeCreateList(rule *android.RuleBuilder, out android.WritablePath, name string, items []string) {
+	rule.Command().Text(fmt.Sprintf("echo 'set(%s' >> ", name)).Output(out)
+	for _, item := range items {
+		rule.Command().Text(fmt.Sprintf("echo '    %s' >> ", item)).Output(out)
+	}
+	rule.Command().Text("echo ')' >> ").Output(out)
+	rule.Command().Text("echo '' >> ").Output(out)
 }
 
 func LibraryCmakeSnapshotFactory() android.Module {
 	module := &LibraryCmakeSnapshot{}
+	module.AddProperties(&module.properties)
 	android.InitAndroidModule(module)
 	return module
 }
