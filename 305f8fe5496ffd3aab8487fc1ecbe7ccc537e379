@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f532f13_cddc1e4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1942356
+      },
+      "writtenOn": "2023-11-02T20:04:55Z",
+      "side": 1,
+      "message": "Need it in android14-release too.",
+      "revId": "305f8fe5496ffd3aab8487fc1ecbe7ccc537e379",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
