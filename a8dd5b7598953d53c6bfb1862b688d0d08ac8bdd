@@ -34,6 +34,24 @@
       "parentUuid": "a20cca54_80e4eb89",
       "revId": "a8dd5b7598953d53c6bfb1862b688d0d08ac8bdd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d2c6a4d_c92fe61c",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1935,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-02T19:12:30Z",
+      "side": 1,
+      "message": "Yeah only allocations whose size is known at compile time can be on the stack.\n\nThis works, but what\u0027s wrong with just stripping out empty strings from the beginning/end of the slice? The only benefit of the stack based array is that you can strip out empty strings from the middle of 2 nonempty strings. But if there are empty strings in the middle, that means `filepath.Join` will already have to do a new allocation, and thus the empty string in the middle is not really a problem.",
+      "parentUuid": "1e892f71_c07ec48a",
+      "revId": "a8dd5b7598953d53c6bfb1862b688d0d08ac8bdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
