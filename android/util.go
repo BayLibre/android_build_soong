@@ -76,6 +76,24 @@ func JoinWithPrefixAndSeparator(strs []string, prefix string, sep string) string
 	return buf.String()
 }
 
+// JoinWithSuffixAndSeparator appends the suffix to each string in the list and
+// returns them joined together with the given separator.
+func JoinWithSuffixAndSeparator(strs []string, suffix string, sep string) string {
+	if len(strs) == 0 {
+		return ""
+	}
+
+	var buf strings.Builder
+	buf.WriteString(strs[0])
+	buf.WriteString(suffix)
+	for i := 1; i < len(strs); i++ {
+		buf.WriteString(sep)
+		buf.WriteString(strs[i])
+		buf.WriteString(suffix)
+	}
+	return buf.String()
+}
+
 // SortedStringKeys returns the keys of the given map in the ascending order.
 //
 // Deprecated: Use SortedKeys instead.
