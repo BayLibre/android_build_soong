@@ -302,6 +302,24 @@
       "parentUuid": "a848e4ad_40f44ecc",
       "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4474a328_f80bb895",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2023-11-03T00:27:37Z",
+      "side": 1,
+      "message": "OS built with armv9-a without SVE (since none of Qualcomm\u0027s current chips support SVE).  Like I said, I agree Geekbench is probably not a meaningful measurement.  What do you all use when comparing mcpu and march flags?",
+      "parentUuid": "3c9bf380_fec6f3bb",
+      "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
