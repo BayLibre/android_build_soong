@@ -284,6 +284,24 @@
       "parentUuid": "7ddccf24_4d454a75",
       "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c9bf380_fec6f3bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-11-03T00:09:30Z",
+      "side": 1,
+      "message": "\u003e We found a roughly 5% Geekbench improvement with armv9-a+nosve compared to armv8-2a+dotprod on SM8475.\n\nfor the _OS_ rebuilt with SVE, or for _geekbench_ rebuilt with SVE? (i wasn\u0027t aware that geekbench actually measures anything meaningful at all.)",
+      "parentUuid": "a848e4ad_40f44ecc",
+      "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
