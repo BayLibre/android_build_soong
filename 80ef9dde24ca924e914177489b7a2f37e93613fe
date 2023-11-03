@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ddeec23_0a5806d0",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-11-03T20:20:30Z",
+      "side": 1,
+      "message": "Can you leave a TODO with the tracking bug for re-enabling this check in `next` builds?",
+      "range": {
+        "startLine": 187,
+        "startChar": 50,
+        "endLine": 187,
+        "endChar": 90
+      },
+      "revId": "80ef9dde24ca924e914177489b7a2f37e93613fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
