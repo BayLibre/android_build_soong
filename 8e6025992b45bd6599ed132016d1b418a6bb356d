@@ -266,6 +266,24 @@
       "parentUuid": "b38dd956_7e266168",
       "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a848e4ad_40f44ecc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2023-11-03T00:04:22Z",
+      "side": 1,
+      "message": "Hi Elliott,\n\nI\u0027ve been meaning to reply to this for a while.  I did not realize that Snapdragon chips thus far do not enable SVE until recently. My understanding was that SVE is required in armv9-a and an Arm contact agreed but said Qualcomm worked with them to disable it in firmware for undisclosed reasons. \nI have not been able to determine what those reasons are. With that in mind, we should probably have two arch variants: armv9-a-nosve and armv9-a for platforms like Tensor that do support SVE.  We found a roughly 5% Geekbench improvement with armv9-a+nosve compared to armv8-2a+dotprod on SM8475.  I don\u0027t put much stock in synthetic benchmarks, but I am not sure what test would be more representative.  Please let me know your thoughts here and if there\u0027s any testing or additional commits you would like me to do.",
+      "parentUuid": "7ddccf24_4d454a75",
+      "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
