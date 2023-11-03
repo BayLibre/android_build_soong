@@ -230,6 +230,10 @@ func HWAddressSanitizerRuntimeLibrary(t Toolchain) string {
 	return LibclangRuntimeLibrary(t, "hwasan")
 }
 
+func HWAddressSanitizerPreinitLibrary(t Toolchain) string {
+	return LibclangRuntimeLibrary(t, "hwasan-preinit")
+}
+
 func HWAddressSanitizerStaticLibrary(t Toolchain) string {
 	return LibclangRuntimeLibrary(t, "hwasan_static")
 }

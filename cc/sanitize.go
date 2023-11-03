@@ -1658,6 +1658,7 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 				runtimeSharedLibrary = config.AddressSanitizerRuntimeLibrary(toolchain)
 			}
 		} else if Bool(sanProps.Hwaddress) {
+			addStaticDeps(config.HWAddressSanitizerPreinitLibrary(toolchain), true)
 			if c.staticBinary() {
 				addStaticDeps(config.HWAddressSanitizerStaticLibrary(toolchain), true)
 				addStaticDeps("libdl", false)
