@@ -52,6 +52,24 @@
       "parentUuid": "51cac957_cc3b1eb7",
       "revId": "f917a5c10329d09a775ad7f8f898ce148391cd08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2645d691_ab876dd1",
+        "filename": "cc/library_cmake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-03T17:57:53Z",
+      "side": 1,
+      "message": "This is a build time type assertion.  Interfaces in Go are duck-typed, so this verifies at build time that `LibraryCmakeSnapshot` satisfies the `OutputFileProducer` interface.",
+      "parentUuid": "bfd621bf_3819402f",
+      "revId": "f917a5c10329d09a775ad7f8f898ce148391cd08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

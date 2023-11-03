@@ -87,6 +87,30 @@
       },
       "revId": "3f28eb5dbb7fdb6e596cb85682903d2ab33e3fb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff013483_b1670632",
+        "filename": "cc/library_cmake.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-03T17:57:53Z",
+      "side": 1,
+      "message": "The per-module phony rules are currently handled by the Make integration.  To expose the module to Make you can add:\n```\nfunc (m *LibraryCmakeSnapshot) AndroidMkEntries() []AndroidMkEntries {\n\treturn []AndroidMkEntries{AndroidMkEntries{\n\t\tClass:      \"ETC\",\n\t\tOutputFile: OptionalPathForPath(m.cmakeFilePath),\n\t\tExtraEntries: []android.AndroidMkExtraEntriesFunc{\n\t\t\tfunc(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {\n\t\t\t\tentries.SetBool(\"LOCAL_UNINSTALLABLE_MODULE\", true)\n\t\t\t},\n\t\t},\n\t}}\n}\n```",
+      "parentUuid": "6100051e_acac0e31",
+      "range": {
+        "startLine": 49,
+        "startChar": 50,
+        "endLine": 49,
+        "endChar": 64
+      },
+      "revId": "3f28eb5dbb7fdb6e596cb85682903d2ab33e3fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
