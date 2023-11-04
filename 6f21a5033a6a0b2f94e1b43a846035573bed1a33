@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "615b28eb_f12b36c8",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-11-04T00:19:46Z",
+      "side": 1,
+      "message": "This isn\u0027t accurate but I think it\u0027s enough in most cases. If we need more accurate file names, we could collect filenames when skipping files using this list.",
+      "range": {
+        "startLine": 1187,
+        "startChar": 16,
+        "endLine": 1187,
+        "endChar": 73
+      },
+      "revId": "6f21a5033a6a0b2f94e1b43a846035573bed1a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
