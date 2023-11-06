@@ -45,26 +45,26 @@ var (
 		blueprint.RuleParams{
 			Depfile:     "${out}.d",
 			Deps:        blueprint.DepsGCC,
-			Command:     "$relPwd ${config.CcWrapper}$ccCmd -c $cFlags -MD -MF ${out}.d -o $out $in",
-			CommandDeps: []string{"$ccCmd"},
+			Command:     "$relPwd ${config.CcWrapper}${config.ClangBin}/clang -c $cFlags -MD -MF ${out}.d -o $out $in",
+			CommandDeps: []string{"${config.ClangBin}/clang"},
 		},
-		"ccCmd", "cFlags")
+		"cFlags")
 
 	// Rule to invoke gcc with given command and flags, but no dependencies.
 	ccNoDeps = pctx.AndroidStaticRule("ccNoDeps",
 		blueprint.RuleParams{
-			Command:     "$relPwd $ccCmd -c $cFlags -o $out $in",
-			CommandDeps: []string{"$ccCmd"},
+			Command:     "$relPwd ${config.ClangBin}/clang -c $cFlags -o $out $in",
+			CommandDeps: []string{"${config.ClangBin}/clang"},
 		},
-		"ccCmd", "cFlags")
+		"cFlags")
 
 	// Rules to invoke ld to link binaries. Uses a .rsp file to list dependencies, as there may
 	// be many.
 	ld, ldRE = pctx.RemoteStaticRules("ld",
 		blueprint.RuleParams{
-			Command: "$reTemplate$ldCmd ${crtBegin} @${out}.rsp " +
+			Command: "$reTemplate${config.ClangBin}/clang++ ${crtBegin} @${out}.rsp " +
 				"${crtEnd} -o ${out} ${ldFlags} ${extraLibFlags}",
-			CommandDeps:    []string{"$ldCmd"},
+			CommandDeps:    []string{"${config.ClangBin}/clang++"},
 			Rspfile:        "${out}.rsp",
 			RspfileContent: "${in} ${libFlags}",
 			// clang -Wl,--out-implib doesn't update its output file if it hasn't changed.
@@ -76,62 +76,61 @@ var (
 			Inputs:          []string{"${out}.rsp", "$implicitInputs"},
 			RSPFiles:        []string{"${out}.rsp"},
 			OutputFiles:     []string{"${out}", "$implicitOutputs"},
-			ToolchainInputs: []string{"$ldCmd"},
+			ToolchainInputs: []string{"${config.ClangBin}/clang++"},
 			Platform:        map[string]string{remoteexec.PoolKey: "${config.RECXXLinksPool}"},
-		}, []string{"ldCmd", "crtBegin", "libFlags", "crtEnd", "ldFlags", "extraLibFlags"}, []string{"implicitInputs", "implicitOutputs"})
+		}, []string{"crtBegin", "libFlags", "crtEnd", "ldFlags", "extraLibFlags"}, []string{"implicitInputs", "implicitOutputs"})
 
 	// Rules for .o files to combine to other .o files, using ld partial linking.
 	partialLd, partialLdRE = pctx.RemoteStaticRules("partialLd",
 		blueprint.RuleParams{
 			// Without -no-pie, clang 7.0 adds -pie to link Android files,
 			// but -r and -pie cannot be used together.
-			Command:     "$reTemplate$ldCmd -fuse-ld=lld -nostdlib -no-pie -Wl,-r ${in} -o ${out} ${ldFlags}",
-			CommandDeps: []string{"$ldCmd"},
+			Command:     "$reTemplate${config.ClangBin}/clang++ -fuse-ld=lld -nostdlib -no-pie -Wl,-r ${in} -o ${out} ${ldFlags}",
+			CommandDeps: []string{"${config.ClangBin}/clang++"},
 		}, &remoteexec.REParams{
 			Labels:          map[string]string{"type": "link", "tool": "clang"},
 			ExecStrategy:    "${config.RECXXLinksExecStrategy}",
 			Inputs:          []string{"$inCommaList", "$implicitInputs"},
 			OutputFiles:     []string{"${out}", "$implicitOutputs"},
-			ToolchainInputs: []string{"$ldCmd"},
+			ToolchainInputs: []string{"${config.ClangBin}/clang++"},
 			Platform:        map[string]string{remoteexec.PoolKey: "${config.RECXXLinksPool}"},
-		}, []string{"ldCmd", "ldFlags"}, []string{"implicitInputs", "inCommaList", "implicitOutputs"})
+		}, []string{"ldFlags"}, []string{"implicitInputs", "inCommaList", "implicitOutputs"})
 
 	// Rule to invoke `ar` with given cmd and flags, but no static library depenencies.
 	ar = pctx.AndroidStaticRule("ar",
 		blueprint.RuleParams{
-			Command:        "rm -f ${out} && $arCmd $arFlags $out @${out}.rsp",
-			CommandDeps:    []string{"$arCmd"},
+			Command:        "rm -f ${out} && ${config.ClangBin}/llvm-ar $arFlags $out @${out}.rsp",
+			CommandDeps:    []string{"${config.ClangBin}/llvm-ar"},
 			Rspfile:        "${out}.rsp",
 			RspfileContent: "${in}",
 		},
-		"arCmd", "arFlags")
+		"arFlags")
 
 	// Rule to invoke `ar` with given cmd, flags, and library dependencies. Generates a .a
 	// (archive) file from .o files.
 	arWithLibs = pctx.AndroidStaticRule("arWithLibs",
 		blueprint.RuleParams{
-			Command:        "rm -f ${out} && $arCmd $arObjFlags $out @${out}.rsp && $arCmd $arLibFlags $out $arLibs",
-			CommandDeps:    []string{"$arCmd"},
+			Command:        "rm -f ${out} && ${config.ClangBin}/llvm-ar $arObjFlags $out @${out}.rsp && ${config.ClangBin}/llvm-ar $arLibFlags $out $arLibs",
+			CommandDeps:    []string{"${config.ClangBin}/llvm-ar"},
 			Rspfile:        "${out}.rsp",
 			RspfileContent: "${arObjs}",
 		},
-		"arCmd", "arObjFlags", "arObjs", "arLibFlags", "arLibs")
+		"arObjFlags", "arObjs", "arLibFlags", "arLibs")
 
 	// Rule to run objcopy --prefix-symbols (to prefix all symbols in a file with a given string).
 	prefixSymbols = pctx.AndroidStaticRule("prefixSymbols",
 		blueprint.RuleParams{
-			Command:     "$objcopyCmd --prefix-symbols=${prefix} ${in} ${out}",
-			CommandDeps: []string{"$objcopyCmd"},
+			Command:     "${config.ClangBin}/llvm-objcopy --prefix-symbols=${prefix} ${in} ${out}",
+			CommandDeps: []string{"${config.ClangBin}/llvm-objcopy"},
 		},
-		"objcopyCmd", "prefix")
+		"prefix")
 
 	// Rule to run objcopy --remove-section=.llvm_addrsig on a partially linked object
 	noAddrSig = pctx.AndroidStaticRule("noAddrSig",
 		blueprint.RuleParams{
-			Command:     "rm -f ${out} && $objcopyCmd --remove-section=.llvm_addrsig ${in} ${out}",
-			CommandDeps: []string{"$objcopyCmd"},
-		},
-		"objcopyCmd")
+			Command:     "rm -f ${out} && ${config.ClangBin}/llvm-objcopy --remove-section=.llvm_addrsig ${in} ${out}",
+			CommandDeps: []string{"${config.ClangBin}/llvm-objcopy"},
+		})
 
 	_ = pctx.SourcePathVariable("stripPath", "build/soong/scripts/strip.sh")
 	_ = pctx.SourcePathVariable("xzCmd", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/xz")
@@ -204,27 +203,27 @@ var (
 		blueprint.RuleParams{
 			Depfile:     "${out}.d",
 			Deps:        blueprint.DepsGCC,
-			Command:     "CLANG_BIN=$clangBin $tocPath $format -i ${in} -o ${out} -d ${out}.d",
+			Command:     "CLANG_BIN=${config.ClangBin} $tocPath $format -i ${in} -o ${out} -d ${out}.d",
 			CommandDeps: []string{"$tocPath"},
 			Restat:      true,
 		},
-		"clangBin", "format")
+		"format")
 
 	// Rules for invoking clang-tidy (a clang-based linter).
 	clangTidy, clangTidyRE = pctx.RemoteStaticRules("clangTidy",
 		blueprint.RuleParams{
 			Depfile: "${out}.d",
 			Deps:    blueprint.DepsGCC,
-			Command: "CLANG_CMD=$clangCmd TIDY_FILE=$out " +
+			Command: "CLANG_CMD=clang TIDY_FILE=$out " +
 				"$tidyVars$reTemplate${config.ClangBin}/clang-tidy.sh $in $tidyFlags -- $cFlags",
-			CommandDeps: []string{"${config.ClangBin}/clang-tidy.sh", "$ccCmd", "$tidyCmd"},
+			CommandDeps: []string{"${config.ClangBin}/clang-tidy.sh", "${config.ClangBin}/clang-tidy"},
 		},
 		&remoteexec.REParams{
 			Labels:               map[string]string{"type": "lint", "tool": "clang-tidy", "lang": "cpp"},
 			ExecStrategy:         "${config.REClangTidyExecStrategy}",
 			Inputs:               []string{"$in"},
 			OutputFiles:          []string{"${out}", "${out}.d"},
-			ToolchainInputs:      []string{"$ccCmd", "$tidyCmd"},
+			ToolchainInputs:      []string{"${config.ClangBin}/clang", "${config.ClangBin}/clang-tidy"},
 			EnvironmentVariables: []string{"CLANG_CMD", "TIDY_FILE", "TIDY_TIMEOUT"},
 			// Although clang-tidy has an option to "fix" source files, that feature is hardly useable
 			// under parallel compilation and RBE. So we assume no OutputFiles here.
@@ -233,7 +232,7 @@ var (
 			// (1) New timestamps trigger clang and clang-tidy compilations again.
 			// (2) Changing source files caused concurrent clang or clang-tidy jobs to crash.
 			Platform: map[string]string{remoteexec.PoolKey: "${config.REClangTidyPool}"},
-		}, []string{"cFlags", "ccCmd", "clangCmd", "tidyCmd", "tidyFlags", "tidyVars"}, []string{})
+		}, []string{"cFlags", "tidyFlags", "tidyVars"}, []string{})
 
 	_ = pctx.SourcePathVariable("yasmCmd", "prebuilts/misc/${config.HostPrebuiltTag}/yasm/yasm")
 
@@ -596,7 +595,6 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		var moduleFlags string
 		var moduleToolingFlags string
 
-		ccCmd := "clang"
 		tidy := flags.tidy
 		coverage := flags.gcovCoverage
 		dump := flags.sAbiDump
@@ -629,11 +627,6 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 			continue
 		}
 
-		// ccCmd is "clang" or "clang++"
-		ccDesc := ccCmd
-
-		ccCmd = "${config.ClangBin}/" + ccCmd
-
 		var implicitOutputs android.WritablePaths
 		if coverage {
 			gcnoFile := android.ObjPathWithExt(ctx, subdir, srcFile, "gcno")
@@ -643,7 +636,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 
 		ctx.Build(pctx, android.BuildParams{
 			Rule:            rule,
-			Description:     ccDesc + " " + srcFile.Rel(),
+			Description:     "clang " + srcFile.Rel(),
 			Output:          objFile,
 			ImplicitOutputs: implicitOutputs,
 			Input:           srcFile,
@@ -651,7 +644,6 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 			OrderOnly:       pathDeps,
 			Args: map[string]string{
 				"cFlags": shareFlags("cFlags", moduleFlags),
-				"ccCmd":  ccCmd, // short and not shared
 			},
 		})
 
@@ -676,7 +668,6 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		if tidy && !noTidySrcsMap[srcFile.String()] {
 			tidyFile := android.ObjPathWithExt(ctx, subdir, srcFile, "tidy")
 			tidyFiles = append(tidyFiles, tidyFile)
-			tidyCmd := "${config.ClangBin}/clang-tidy"
 
 			rule := clangTidy
 			reducedCFlags := moduleFlags
@@ -701,9 +692,6 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 				OrderOnly:   pathDeps,
 				Args: map[string]string{
 					"cFlags":    sharedCFlags,
-					"ccCmd":     ccCmd,
-					"clangCmd":  ccDesc,
-					"tidyCmd":   tidyCmd,
 					"tidyFlags": shareFlags("tidyFlags", config.TidyFlagsForSrcFile(srcFile, flags.tidyFlags)),
 					"tidyVars":  tidyVars, // short and not shared
 				},
@@ -754,7 +742,6 @@ func transformObjToStaticLib(ctx android.ModuleContext,
 	objFiles android.Paths, wholeStaticLibs android.Paths,
 	flags builderFlags, outputFile android.ModuleOutPath, deps android.Paths, validations android.Paths) {
 
-	arCmd := "${config.ClangBin}/llvm-ar"
 	arFlags := ""
 	if !ctx.Darwin() {
 		arFlags += " --format=gnu"
@@ -770,7 +757,6 @@ func transformObjToStaticLib(ctx android.ModuleContext,
 			Validations: validations,
 			Args: map[string]string{
 				"arFlags": "crsPD" + arFlags,
-				"arCmd":   arCmd,
 			},
 		})
 
@@ -782,7 +768,6 @@ func transformObjToStaticLib(ctx android.ModuleContext,
 			Inputs:      append(objFiles, wholeStaticLibs...),
 			Implicits:   deps,
 			Args: map[string]string{
-				"arCmd":      arCmd,
 				"arObjFlags": "crsPD" + arFlags,
 				"arObjs":     strings.Join(objFiles.Strings(), " "),
 				"arLibFlags": "cqsL" + arFlags,
@@ -798,8 +783,6 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 	objFiles, sharedLibs, staticLibs, lateStaticLibs, wholeStaticLibs, deps, crtBegin, crtEnd android.Paths,
 	groupLate bool, flags builderFlags, outputFile android.WritablePath,
 	implicitOutputs android.WritablePaths, validations android.Paths) {
-
-	ldCmd := "${config.ClangBin}/clang++"
 
 	var libFlagsList []string
 
@@ -843,7 +826,6 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 
 	rule := ld
 	args := map[string]string{
-		"ldCmd":         ldCmd,
 		"crtBegin":      strings.Join(crtBegin.Strings(), " "),
 		"libFlags":      strings.Join(libFlagsList, " "),
 		"extraLibFlags": flags.extraLibFlags,
@@ -970,8 +952,7 @@ func TransformSharedObjectToToc(ctx android.ModuleContext, inputFile android.Pat
 		Output:      outputFile,
 		Input:       inputFile,
 		Args: map[string]string{
-			"clangBin": "${config.ClangBin}",
-			"format":   format,
+			"format": format,
 		},
 	})
 }
@@ -980,11 +961,8 @@ func TransformSharedObjectToToc(ctx android.ModuleContext, inputFile android.Pat
 func transformObjsToObj(ctx android.ModuleContext, objFiles android.Paths,
 	flags builderFlags, outputFile android.WritablePath, deps android.Paths) {
 
-	ldCmd := "${config.ClangBin}/clang++"
-
 	rule := partialLd
 	args := map[string]string{
-		"ldCmd":   ldCmd,
 		"ldFlags": flags.globalLdFlags + " " + flags.localLdFlags,
 	}
 	if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_CXX_LINKS") {
@@ -1006,32 +984,24 @@ func transformObjsToObj(ctx android.ModuleContext, objFiles android.Paths,
 func transformBinaryPrefixSymbols(ctx android.ModuleContext, prefix string, inputFile android.Path,
 	flags builderFlags, outputFile android.WritablePath) {
 
-	objcopyCmd := "${config.ClangBin}/llvm-objcopy"
-
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        prefixSymbols,
 		Description: "prefix symbols " + outputFile.Base(),
 		Output:      outputFile,
 		Input:       inputFile,
 		Args: map[string]string{
-			"objcopyCmd": objcopyCmd,
-			"prefix":     prefix,
+			"prefix": prefix,
 		},
 	})
 }
 
 // Generate a rule for running objcopy --remove-section=.llvm_addrsig on a partially linked object
 func transformObjectNoAddrSig(ctx android.ModuleContext, inputFile android.Path, outputFile android.WritablePath) {
-	objcopyCmd := "${config.ClangBin}/llvm-objcopy"
-
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        noAddrSig,
 		Description: "remove addrsig " + outputFile.Base(),
 		Output:      outputFile,
 		Input:       inputFile,
-		Args: map[string]string{
-			"objcopyCmd": objcopyCmd,
-		},
 	})
 }
 

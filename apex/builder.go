@@ -214,10 +214,10 @@ var (
 	}, "image_content_file", "allowed_files_file", "apex_module_name")
 
 	generateAPIsUsedbyApexRule = pctx.StaticRule("generateAPIsUsedbyApexRule", blueprint.RuleParams{
-		Command:     "$genNdkUsedbyApexPath ${image_dir} ${readelf} ${out}",
+		Command:     "$genNdkUsedbyApexPath ${image_dir} ${config.ClangBin}/llvm-readelf ${out}",
 		CommandDeps: []string{"${genNdkUsedbyApexPath}"},
 		Description: "Generate symbol list used by Apex",
-	}, "image_dir", "readelf")
+	}, "image_dir")
 
 	apexSepolicyTestsRule = pctx.StaticRule("apexSepolicyTestsRule", blueprint.RuleParams{
 		Command: `${deapexer} --debugfs_path ${debugfs_static} list -Z ${in} > ${out}.fc` +
@@ -805,7 +805,6 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 		Output:      apisUsedbyOutputFile,
 		Args: map[string]string{
 			"image_dir": imageDir.String(),
-			"readelf":   "${config.ClangBin}/llvm-readelf",
 		},
 	})
 	a.nativeApisUsedByModuleFile = apisUsedbyOutputFile

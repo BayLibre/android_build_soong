@@ -95,9 +95,9 @@ var (
 
 	stripRule = pctx.AndroidStaticRule("strip",
 		blueprint.RuleParams{
-			Command:     "$stripCmd -o $out --strip-debug $in",
-			CommandDeps: []string{"$stripCmd"},
-		}, "stripCmd")
+			Command:     "${config.ClangBin}/llvm-strip -o $out --strip-debug $in",
+			CommandDeps: []string{"${config.ClangBin}/llvm-strip"},
+		})
 )
 
 func stripDebugSymbols(ctx android.ModuleContext, modules android.Paths) android.OutputPaths {
@@ -110,9 +110,6 @@ func stripDebugSymbols(ctx android.ModuleContext, modules android.Paths) android
 			Rule:   stripRule,
 			Input:  m,
 			Output: stripped,
-			Args: map[string]string{
-				"stripCmd": "${config.ClangBin}/llvm-strip",
-			},
 		})
 		outputs = append(outputs, stripped)
 	}
