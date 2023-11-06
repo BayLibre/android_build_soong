@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aefd6f03_e6e6aa4f",
+        "filename": "OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-11-06T19:04:49Z",
+      "side": 1,
+      "message": "This is most definitely the wrong component, but -\u003e joeo@ for the right one. (I suspect either 144942 or 99142)",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 22
+      },
+      "revId": "c4a34e887e9ce65a21beeefe76897ab58d8ffc17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
