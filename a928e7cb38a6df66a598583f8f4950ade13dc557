@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c20b0ee0_708fa265",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-11-06T23:18:40Z",
+      "side": 1,
+      "message": "This needs to be done unconditionally.  It was not apparent that `--build-mode` was ultimately causing it to be called as a side effect of dumpVar(s) or runMake.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "a928e7cb38a6df66a598583f8f4950ade13dc557",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
