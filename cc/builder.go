@@ -503,7 +503,8 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		flags.localToolingCppFlags + " " +
 		flags.systemIncludeFlags
 
-	cppflags := flags.globalCommonFlags + " " +
+	cppflags := "--driver-mode=g++ " +
+		flags.globalCommonFlags + " " +
 		flags.globalCFlags + " " +
 		flags.globalCppFlags + " " +
 		flags.localCommonFlags + " " +
@@ -595,7 +596,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		var moduleFlags string
 		var moduleToolingFlags string
 
-		var ccCmd string
+		ccCmd := "clang"
 		tidy := flags.tidy
 		coverage := flags.gcovCoverage
 		dump := flags.sAbiDump
@@ -609,18 +610,15 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 			}
 			fallthrough
 		case ".S":
-			ccCmd = "clang"
 			moduleFlags = asflags
 			tidy = false
 			coverage = false
 			dump = false
 			emitXref = false
 		case ".c":
-			ccCmd = "clang"
 			moduleFlags = cflags
 			moduleToolingFlags = toolingCflags
 		case ".cpp", ".cc", ".cxx", ".mm":
-			ccCmd = "clang++"
 			moduleFlags = cppflags
 			moduleToolingFlags = toolingCppflags
 		case ".h", ".hpp":
