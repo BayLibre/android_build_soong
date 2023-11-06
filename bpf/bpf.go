@@ -43,18 +43,17 @@ var (
 		blueprint.RuleParams{
 			Depfile:     "${out}.d",
 			Deps:        blueprint.DepsGCC,
-			Command:     "$relPwd $ccCmd --target=bpf -c $cFlags -MD -MF ${out}.d -o $out $in",
-			CommandDeps: []string{"$ccCmd"},
+			Command:     "$relPwd ${config.ClangBin}/clang --target=bpf -c $cFlags -MD -MF ${out}.d -o $out $in",
+			CommandDeps: []string{"${config.ClangBin}/clang"},
 		},
-		"ccCmd", "cFlags")
+		"cFlags")
 
 	stripRule = pctx.AndroidStaticRule("stripRule",
 		blueprint.RuleParams{
-			Command: `$stripCmd --strip-unneeded --remove-section=.rel.BTF ` +
+			Command: `${config.ClangBin}/llvm-strip --strip-unneeded --remove-section=.rel.BTF ` +
 				`--remove-section=.rel.BTF.ext --remove-section=.BTF.ext $in -o $out`,
-			CommandDeps: []string{"$stripCmd"},
-		},
-		"stripCmd")
+			CommandDeps: []string{"${config.ClangBin}/llvm-strip"},
+		})
 )
 
 func registerBpfBuildComponents(ctx android.RegistrationContext) {
@@ -186,7 +185,6 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			Output: obj,
 			Args: map[string]string{
 				"cFlags": strings.Join(cflags, " "),
-				"ccCmd":  "${config.ClangBin}/clang",
 			},
 		})
 
@@ -196,9 +194,6 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				Rule:   stripRule,
 				Input:  obj,
 				Output: objStripped,
-				Args: map[string]string{
-					"stripCmd": "${config.ClangBin}/llvm-strip",
-				},
 			})
 			bpf.objs = append(bpf.objs, objStripped.WithoutRel())
 		} else {
