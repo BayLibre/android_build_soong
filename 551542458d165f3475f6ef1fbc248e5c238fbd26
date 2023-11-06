@@ -51,6 +51,29 @@
       "message": "dwillemsen ptal...",
       "revId": "551542458d165f3475f6ef1fbc248e5c238fbd26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85e030e5_c6dec21a",
+        "filename": "cc/config/darwin_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-11-06T20:26:33Z",
+      "side": 1,
+      "message": "These are not Xcode versions. This is the table I use as a decoder: https://en.wikipedia.org/wiki/Xcode#Version_comparison_table",
+      "range": {
+        "startLine": 149,
+        "startChar": 71,
+        "endLine": 149,
+        "endChar": 109
+      },
+      "revId": "551542458d165f3475f6ef1fbc248e5c238fbd26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
