@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad7c21f0_2ce660f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-06T20:36:50Z",
+      "side": 1,
+      "message": "Could you diff the lint reports before/after this cl so we can check what changed?",
+      "revId": "e3970731f2d32960f1a5f2bfa20cf2e4eb3b15d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
