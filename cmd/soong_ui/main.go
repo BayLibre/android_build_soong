@@ -182,8 +182,12 @@ func main() {
 		CriticalPath: criticalPath,
 	}}
 
-	config := c.config(buildCtx, args...)
-	config.SetLogsPrefix(c.logsPrefix)
+	freshConfig := func() build.Config {
+		config := c.config(buildCtx, args...)
+		config.SetLogsPrefix(c.logsPrefix)
+		return config
+	}
+	config := freshConfig()
 	logsDir := config.LogsDir()
 	buildStarted = config.BuildStartedTimeOrDefault(buildStarted)
 
@@ -211,6 +215,18 @@ func main() {
 	log.Verbose("Command Line: ")
 	for i, arg := range os.Args {
 		log.Verbosef("  [%d] %s", i, arg)
+	}
+
+	// We need to call logAndSymlinkSetup before we can do product
+	// config, which is how we get PRODUCT_CONFIG_RELEASE_MAPS set
+	// for the final product config for the build.
+	logAndSymlinkSetup(buildCtx, config)
+	if build.SetProductReleaseConfigMaps(buildCtx, config) {
+		log.Verbose("Product release config maps found\n")
+		config = freshConfig()
+		// Rerun logAndSymlinkSetup to capture any side effects on config
+		// that were discarded.
+		logAndSymlinkSetup(buildCtx, config)
 	}
 
 	defer func() {
@@ -311,7 +327,6 @@ func removeBadTargetRename(ctx build.Context, config build.Config) {
 }
 
 func dumpVar(ctx build.Context, config build.Config, args []string) {
-	logAndSymlinkSetup(ctx, config)
 	flags := flag.NewFlagSet("dumpvar", flag.ExitOnError)
 	flags.SetOutput(ctx.Writer)
 
@@ -364,7 +379,6 @@ func dumpVar(ctx build.Context, config build.Config, args []string) {
 }
 
 func dumpVars(ctx build.Context, config build.Config, args []string) {
-	logAndSymlinkSetup(ctx, config)
 
 	flags := flag.NewFlagSet("dumpvars", flag.ExitOnError)
 	flags.SetOutput(ctx.Writer)
@@ -544,7 +558,6 @@ func buildActionConfig(ctx build.Context, args ...string) build.Config {
 }
 
 func runMake(ctx build.Context, config build.Config, _ []string) {
-	logAndSymlinkSetup(ctx, config)
 	logsDir := config.LogsDir()
 	if config.IsVerbose() {
 		writer := ctx.Writer
