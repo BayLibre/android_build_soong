@@ -18,6 +18,40 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f6ada7_d1a8e5f7",
+        "filename": "android/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-07T01:50:37Z",
+      "side": 1,
+      "message": "Use `.grow()` to allocate the final size in advance. Also consider making a `JoinWithPrefixSuffixAndSeparator` and making `JoinWithPrefixAndSeparator` and `JoinWithSuffixAndSeparator` implemented in terms of it.",
+      "revId": "6f21a5033a6a0b2f94e1b43a846035573bed1a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c137b21f_df0d4709",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-07T01:50:37Z",
+      "side": 1,
+      "message": "Instead of adding these deps here and adding tool_path, could you add the tools to the `data` property of `apex_elf_checker` instead of `required`? This will bundle them into the `apex_elf_checker` tool, and you can extract them at runtime with python\u0027s `importlib.resources`.",
+      "revId": "6f21a5033a6a0b2f94e1b43a846035573bed1a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "615b28eb_f12b36c8",
