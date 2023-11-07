@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80cfb183_ae93c561",
+        "filename": "android/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-11-07T02:05:09Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "66f6ada7_d1a8e5f7",
+      "revId": "6f21a5033a6a0b2f94e1b43a846035573bed1a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c137b21f_df0d4709",
         "filename": "apex/builder.go",
         "patchSetId": 4
@@ -48,6 +66,24 @@
       "writtenOn": "2023-11-07T01:50:37Z",
       "side": 1,
       "message": "Instead of adding these deps here and adding tool_path, could you add the tools to the `data` property of `apex_elf_checker` instead of `required`? This will bundle them into the `apex_elf_checker` tool, and you can extract them at runtime with python\u0027s `importlib.resources`.",
+      "revId": "6f21a5033a6a0b2f94e1b43a846035573bed1a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5ff228_c8cde3c0",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-11-07T02:05:09Z",
+      "side": 1,
+      "message": "Hmm, as a build time checker, I thought relying on external tools would be more efficient. (save cpu cycles, storage, etc).\n\nBtw, I see that bundling them in a python binary makes sense. I have a few questions:\n- what about other tools like deapexer? apex_elf_checker relies on deapexer which, in turn, relies on debugfs and others. would it make sense if deapexer bundles its dependencies?\n- what about shared libraries of other tools? For example, llvm-readelf uses libc++, libpthread, etc. Should apex_elf_checker bundle them as well?",
+      "parentUuid": "c137b21f_df0d4709",
       "revId": "6f21a5033a6a0b2f94e1b43a846035573bed1a33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
