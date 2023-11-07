@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd21628_0de351c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-11-07T18:15:24Z",
+      "side": 1,
+      "message": "Inseob, I think one of my CLs would benefit from this change. If the sibling `system/sepolicy` change is WIP, would you have any objections to submitting the Soong change atomically?",
+      "revId": "54aa1893a54713c97b9976755d88adc7a1b73178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
