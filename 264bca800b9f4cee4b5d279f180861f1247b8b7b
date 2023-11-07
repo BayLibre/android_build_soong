@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2b94e45_46bb04e0",
+        "filename": "testing/test_spec.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-11-07T19:35:22Z",
+      "side": 1,
+      "message": "Rather than this module having a hard coded list of acceptable types, each of the supported module types should have a provider that they set that exports testing related data.  That might actually be an empty struct that serves as a marker right now, but if we ever wanted to put more data in it we could.",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 47
+      },
+      "revId": "264bca800b9f4cee4b5d279f180861f1247b8b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d3e1b7_16d7b31b",
+        "filename": "testing/test_spec_proto/test_spec.proto",
+        "patchSetId": 15
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-11-07T19:35:22Z",
+      "side": 1,
+      "message": "Can you add comments.",
+      "revId": "264bca800b9f4cee4b5d279f180861f1247b8b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
