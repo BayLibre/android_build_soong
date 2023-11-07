@@ -102,6 +102,9 @@ type aaptProperties struct {
 
 	// true if RRO is enforced for any of the dependent modules
 	RROEnforcedForDependent bool `blueprint:"mutated"`
+
+	// Filter only specified product and ignore other products
+	Filter_product_for_rro *string `blueprint:"mutated"`
 }
 
 type aapt struct {

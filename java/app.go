@@ -130,6 +130,13 @@ type appProperties struct {
 
 	// Specifies the file that contains the allowlist for this app.
 	Privapp_allowlist *string `android:"path"`
+
+	// If set, create an RRO package which contains only resources having PRODUCT_CHARACTERISTICS
+	// and install the RRO package to /product partition, instead of passing --product argument
+	// to aapt2. Default is false.
+	// Setting this will make this APK identical to all targets, regardless of
+	// PRODUCT_CHARACTERISTICS.
+	Use_rro_for_product *bool
 }
 
 // android_app properties that can be overridden by override_android_app
@@ -454,8 +461,9 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 	aaptLinkFlags := []string{}
 
 	// Add TARGET_AAPT_CHARACTERISTICS values to AAPT link flags if they exist and --product flags were not provided.
+	autogenerateRRO := proptools.Bool(a.appProperties.Use_rro_for_product)
 	hasProduct := android.PrefixInList(a.aaptProperties.Aaptflags, "--product")
-	if !hasProduct && len(ctx.Config().ProductAAPTCharacteristics()) > 0 {
+	if !autogenerateRRO && !hasProduct && len(ctx.Config().ProductAAPTCharacteristics()) > 0 {
 		aaptLinkFlags = append(aaptLinkFlags, "--product", ctx.Config().ProductAAPTCharacteristics())
 	}
 
@@ -1056,6 +1064,8 @@ func (a *AndroidApp) OutputFiles(tag string) (android.Paths, error) {
 		}
 	case ".export-package.apk":
 		return []android.Path{a.exportPackage}, nil
+	case ".manifest.xml":
+		return []android.Path{a.aapt.manifestPath}, nil
 	}
 	return a.Library.OutputFiles(tag)
 }
@@ -1085,6 +1095,14 @@ func (a *AndroidApp) IDEInfo(dpInfo *android.IdeInfo) {
 	a.aapt.IDEInfo(dpInfo)
 }
 
+func (a *AndroidApp) productRROPackageName() string {
+	return a.Name() + "__auto_generated_characteristics_rro"
+}
+
+func (a *AndroidApp) productRROManifestModuleName() string {
+	return a.Name() + "__auto_generated_characteristics_rro_manifest"
+}
+
 // android_app compiles sources and Android resources into an Android application package `.apk` file.
 func AndroidAppFactory() android.Module {
 	module := &AndroidApp{}
@@ -1110,6 +1128,50 @@ func AndroidAppFactory() android.Module {
 	android.InitOverridableModule(module, &module.overridableAppProperties.Overrides)
 	android.InitApexModule(module)
 	android.InitBazelModule(module)
+
+	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
+		a := ctx.Module().(*AndroidApp)
+
+		if !proptools.Bool(module.appProperties.Use_rro_for_product) {
+			return
+		}
+
+		characteristics := ctx.Config().ProductAAPTCharacteristics()
+		if characteristics == "default" || characteristics == "" {
+			// no need to create RRO
+			return
+		}
+
+		rroManifestProperties := struct {
+			Name  *string
+			Tools []string
+			Out   []string
+			Srcs  []string
+			Cmd   *string
+		}{
+			Name:  proptools.StringPtr(a.productRROManifestModuleName()),
+			Tools: []string{"characteristics_rro_generator"},
+			Out:   []string{"AndroidManifest.xml"},
+			Srcs:  []string{":" + a.Name() + "{.manifest.xml}"},
+			Cmd:   proptools.StringPtr("$(location characteristics_rro_generator) $(in) $(out)"),
+		}
+		ctx.CreateModule(genrule.GenRuleFactory, &rroManifestProperties)
+
+		rroProperties := struct {
+			Name                   *string
+			Filter_product_for_rro *string
+			Aaptflags              []string
+			Manifest               *string
+			Resource_dirs          []string
+		}{
+			Name:                   proptools.StringPtr(a.productRROPackageName()),
+			Filter_product_for_rro: proptools.StringPtr(characteristics),
+			Aaptflags:              []string{"--auto-add-overlay"},
+			Manifest:               proptools.StringPtr(":" + a.productRROManifestModuleName()),
+			Resource_dirs:          a.aaptProperties.Resource_dirs,
+		}
+		ctx.CreateModule(RuntimeResourceOverlayFactory, &rroProperties)
+	})
 
 	return module
 }
