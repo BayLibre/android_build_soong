@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d6b53cb8_7fd5288e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-11-07T01:29:54Z",
+      "side": 1,
+      "message": "A gentle ping.",
+      "revId": "6f21a5033a6a0b2f94e1b43a846035573bed1a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "615b28eb_f12b36c8",
         "filename": "apex/builder.go",
         "patchSetId": 4
