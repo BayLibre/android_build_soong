@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f53b0d3_832f798b",
+        "filename": "android/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-11-07T04:16:41Z",
+      "side": 1,
+      "message": "Done. aosp/2818462",
+      "parentUuid": "80cfb183_ae93c561",
+      "revId": "6f21a5033a6a0b2f94e1b43a846035573bed1a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c137b21f_df0d4709",
