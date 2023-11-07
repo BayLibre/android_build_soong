@@ -106,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf15426a_4743d6f3",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-11-07T02:25:49Z",
+      "side": 1,
+      "message": "Thank you Cole for the idea. But I\u0027d like to keep this way for now. This is a safety checker for the workaround of the bug. Wdyt?",
+      "parentUuid": "91a9733b_c9c2e7cd",
+      "revId": "6f21a5033a6a0b2f94e1b43a846035573bed1a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "615b28eb_f12b36c8",
