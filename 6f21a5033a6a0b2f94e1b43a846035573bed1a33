@@ -88,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "91a9733b_c9c2e7cd",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-07T02:15:45Z",
+      "side": 1,
+      "message": "yeah it is a tradeoff of some performance for a simpler build. Bazel has a \"runfiles\" feature that makes runtime dependencies clearer, we should probably have something like that in soong eventually too. Performance is not critical in this case because it\u0027s a validation action, but it may be worth checking and seeing if this change makes it drastically worse.\n\nIt would certainly make deapexer easier to use if it also bundled its tools.\n\nYeah shared libraries are annoying in soong. Using statically compiled tools simplifies this. But this current solution also doesn\u0027t handle shared libraries, so not bundling them into the python tool wouldn\u0027t be any different.",
+      "parentUuid": "4c5ff228_c8cde3c0",
+      "revId": "6f21a5033a6a0b2f94e1b43a846035573bed1a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "615b28eb_f12b36c8",
