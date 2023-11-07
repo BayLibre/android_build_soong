@@ -39,6 +39,24 @@
       "message": "Most of this looks like it doesn\u0027t make sense to run twice.  The logs directory isn\u0027t going to change, the metrics aren\u0027t going to get any staler, the parallelism and startup times should only get logged once, etc.  It\u0027s not immediately obvious to me if anything in here needs to be rerun.\n\nWould it make sense to split this into separate functions, one containing the setup that should only happen once, and one containing whatever needs to be redone after product config?\n\nBonus points for splitting the config object into two, one that contains values that are never based on product config and one that is.  Then you can initialize the non-product-config and pass it into functions that run before the product config is fully initialized without worrying that anything could be accessing data that is not yet valid.",
       "revId": "a928e7cb38a6df66a598583f8f4950ade13dc557",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "225b2ed0_a44c2b97",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-11-07T18:48:53Z",
+      "side": 1,
+      "message": "After walking through it, there isn\u0027t actually anything in (or beneath) logAndSymlinkSetup that changes config.  I added comments, and gave the function a better name, with a comment about it not getting called a second time.",
+      "parentUuid": "3791c005_ade125c8",
+      "revId": "a928e7cb38a6df66a598583f8f4950ade13dc557",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
