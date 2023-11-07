@@ -65,33 +65,8 @@ func clean(ctx Context, config Config) {
 	ctx.Println("Entire build directory removed.")
 }
 
-// Remove everything in the data directory.
-func dataClean(ctx Context, config Config) {
-	removeGlobs(ctx, filepath.Join(config.ProductOut(), "data", "*"))
-	ctx.Println("Entire data directory removed.")
-}
-
-// installClean deletes all of the installed files -- the intent is to remove
-// files that may no longer be installed, either because the user previously
-// installed them, or they were previously installed by default but no longer
-// are.
-//
-// This is faster than a full clean, since we're not deleting the
-// intermediates.  Instead of recompiling, we can just copy the results.
-func installClean(ctx Context, config Config) {
-	dataClean(ctx, config)
-
-	if hostCrossOutPath := config.hostCrossOut(); hostCrossOutPath != "" {
-		hostCrossOut := func(path string) string {
-			return filepath.Join(hostCrossOutPath, path)
-		}
-		removeGlobs(ctx,
-			hostCrossOut("bin"),
-			hostCrossOut("coverage"),
-			hostCrossOut("lib*"),
-			hostCrossOut("nativetest*"))
-	}
-
+// Returns all the globs that should be deleted when running installclean
+func installCleanGlobs(config Config) []string {
 	hostOutPath := config.HostOut()
 	hostOut := func(path string) string {
 		return filepath.Join(hostOutPath, path)
@@ -109,7 +84,7 @@ func installClean(ctx Context, config Config) {
 	// Host bin, frameworks, and lib* are intentionally omitted, since
 	// otherwise we'd have to rebuild any generated files created with
 	// those tools.
-	removeGlobs(ctx,
+	result := []string{
 		hostOut("apex"),
 		hostOut("obj/NOTICE_FILES"),
 		hostOut("obj/PACKAGING"),
@@ -123,6 +98,7 @@ func installClean(ctx Context, config Config) {
 		hostOut("vts10"),
 		hostOut("vts-core"),
 		hostCommonOut("obj/PACKAGING"),
+		productOut("data"),
 		productOut("*.img"),
 		productOut("*.zip"),
 		productOut("android-info.txt"),
@@ -160,7 +136,54 @@ func installClean(ctx Context, config Config) {
 		productOut("odm_dlkm"),
 		productOut("sysloader"),
 		productOut("testcases"),
-		productOut("symbols"))
+		productOut("symbols"),
+	}
+
+	if hostCrossOutPath := config.hostCrossOut(); hostCrossOutPath != "" {
+		hostCrossOut := func(path string) string {
+			return filepath.Join(hostCrossOutPath, path)
+		}
+		result = append(result,
+			hostCrossOut("bin"),
+			hostCrossOut("coverage"),
+			hostCrossOut("lib*"),
+			hostCrossOut("nativetest*"))
+	}
+	return result
+}
+
+// installClean deletes all of the installed files -- the intent is to remove
+// files that may no longer be installed, either because the user previously
+// installed them, or they were previously installed by default but no longer
+// are.
+//
+// This is faster than a full clean, since we're not deleting the
+// intermediates.  Instead of recompiling, we can just copy the results.
+func installClean(ctx Context, config Config) {
+	removeGlobs(ctx, installCleanGlobs(config)...)
+}
+
+// Writes out/just_ran_installclean.txt.
+// This file will contain "true" if there were no files that installclean would delete at the
+// start of the build (most likely from having just run `m installclean`) and "false" otherwise.
+// It can be used to add a test that a build doesn't include extra files that would be cleared
+// by an installclean.
+func checkForInstallclean(ctx Context, config Config) {
+	justRanInstallClean := true
+	for _, glob := range installCleanGlobs(config) {
+		files, err := filepath.Glob(glob)
+		if err != nil {
+			// Only possible error is ErrBadPattern
+			panic(fmt.Errorf("%q: %s", glob, err))
+		}
+
+		if len(files) > 0 {
+			justRanInstallClean = false
+			break
+		}
+	}
+
+	writeValueIfChanged(ctx, config, config.OutDir(), "just_ran_installclean.txt", fmt.Sprintf("%t\n", justRanInstallClean))
 }
 
 // Since products and build variants (unfortunately) shared the same
