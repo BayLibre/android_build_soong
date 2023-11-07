@@ -22,6 +22,30 @@
       },
       "revId": "98e555c842a8dfc93269f078451afb47a268502d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3e59ef_0f4e8cbb",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-11-07T11:13:05Z",
+      "side": 0,
+      "message": "I don\u0027t think so. I think the problem is that the old code takes jars through [`extractEncodedDexJarsFromModules`](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/java/platform_bootclasspath.go;l\u003d422;drc\u003db3738ed1f40eea3f5f628193cd8109cd49aea64c), which might be wrong, while the new code takes jars through [`extractEncodedDexJarsFromModulesOrBootclasspathFragments`](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/java/dexpreopt_bootjars.go;l\u003d605;drc\u003d06ea531ab30026dcddbe609ed71f951d4f7ffd5b)",
+      "parentUuid": "2f1af3c1_452ae033",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 65
+      },
+      "revId": "98e555c842a8dfc93269f078451afb47a268502d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
