@@ -22,6 +22,30 @@
       },
       "revId": "a329505b59de1d092276719987a880f6bc038a85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71584646_c229fb13",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2131,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-11-08T03:57:11Z",
+      "side": 1,
+      "message": "cc lamontjones@google.com\n\nI think we can add a `GetBuildFlags` function here, but does `m4` need all the build flags? Some of the flags in `build/release/build_flags.scl` and the internal google equivalent do not seem very relevant for `m4`",
+      "parentUuid": "bccf305d_0ed22c4e",
+      "range": {
+        "startLine": 2128,
+        "startChar": 0,
+        "endLine": 2131,
+        "endChar": 1
+      },
+      "revId": "a329505b59de1d092276719987a880f6bc038a85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
