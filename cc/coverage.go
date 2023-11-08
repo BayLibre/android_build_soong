@@ -115,6 +115,7 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 			// instrumentation together causes duplicate-symbol errors for __llvm_profile_filename.
 			if c, ok := ctx.Module().(*Module); ok && c.sanitize.isSanitizerEnabled(Hwasan) {
 				flags.Local.CommonFlags = append(flags.Local.CommonFlags, "-mllvm", "-hwasan-globals=0")
+				flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--no-as-needed")
 			}
 		}
 	}
