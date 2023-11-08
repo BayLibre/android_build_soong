@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bccf305d_0ed22c4e",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2131,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-11-08T01:44:54Z",
+      "side": 1,
+      "message": "Do you have any suggestions for aosp/2803658 ? I need to access `BuildFlags` map to list all flags.",
+      "range": {
+        "startLine": 2128,
+        "startChar": 0,
+        "endLine": 2131,
+        "endChar": 1
+      },
+      "revId": "a329505b59de1d092276719987a880f6bc038a85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
