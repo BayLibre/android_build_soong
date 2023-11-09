@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e930a3_811af1d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2023-11-09T19:50:39Z",
+      "side": 1,
+      "message": "From chatting with Dan, this seems like the most reasonable approach to take, rather than change every individual config that invokes this script.\n\n+jham to confirm this seems to make reasonable (or to add someone else to make that judgement).",
+      "revId": "a0b356f6b0053864bc2db7b9c569e4bf1e05a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
