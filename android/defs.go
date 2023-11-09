@@ -220,6 +220,44 @@ func WriteExecutableFileRuleVerbatim(ctx BuilderContext, outputFile WritablePath
 	})
 }
 
+// WriteFileRuleWithInput creates a ninja rule to write contents to a file.  The contents will be
+// escaped so that the file contains exactly the contents passed to the function.
+func WriteFileRuleWithInput(ctx BuilderContext, inputFile Paths, outputFile WritablePath, content string) {
+	const maxArgLength = 131072
+	// This is maxArgLength subtracted with some safety to account for shell escapes.
+	const shardSize = maxArgLength - 10000
+	if len(content) > shardSize {
+		var chunks WritablePaths
+		for i, c := range ShardString(content, shardSize) {
+			tempPath := outputFile.ReplaceExtension(ctx, fmt.Sprintf("%s.%d", outputFile.Ext(), i))
+			buildWriteFileRuleWithInput(ctx, inputFile, tempPath, c)
+			chunks = append(chunks, tempPath)
+		}
+		ctx.Build(pctx, BuildParams{
+			Rule:        Cat,
+			Inputs:      chunks.Paths(),
+			Output:      outputFile,
+			Description: "Merging to " + outputFile.Base(),
+		})
+		return
+	}
+	buildWriteFileRuleWithInput(ctx, inputFile, outputFile, content)
+}
+
+func buildWriteFileRuleWithInput(ctx BuilderContext, inputFile Paths, outputFile WritablePath, content string) {
+	content = echoEscaper.Replace(content)
+	content = proptools.NinjaEscape(proptools.ShellEscapeIncludingSpaces(content))
+	ctx.Build(pctx, BuildParams{
+		Rule:        writeFile,
+		Inputs:      inputFile,
+		Output:      outputFile,
+		Description: "write " + outputFile.Base(),
+		Args: map[string]string{
+			"content": content,
+		},
+	})
+}
+
 // shellUnescape reverses proptools.ShellEscape
 func shellUnescape(s string) string {
 	// Remove leading and trailing quotes if present
