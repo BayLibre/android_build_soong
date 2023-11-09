@@ -30,12 +30,21 @@ type declarationsTagType struct {
 
 var declarationsTag = declarationsTagType{}
 
+var supportedModes = []string{"production", "test", "exported"}
+
 type JavaAconfigDeclarationsLibraryProperties struct {
 	// name of the aconfig_declarations module to generate a library for
 	Aconfig_declarations string
 
 	// whether to generate test mode version of the library
+	// TODO: remove "Test" property when "Mode" can be used in all the branches
 	Test *bool
+
+	// default mode is "production", the other accepted modes are:
+	// "test": to generate test mode version of the library
+	// "exported": to generate exported mode version of the library
+	// an error will be thrown if the mode is not supported
+	Mode *string
 }
 
 type JavaAconfigDeclarationsLibraryCallbacks struct {
@@ -72,11 +81,13 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 
 	// Generate the action to build the srcjar
 	srcJarPath := android.PathForModuleGen(ctx, ctx.ModuleName()+".srcjar")
-	var mode string
+	mode := proptools.StringDefault(callbacks.properties.Mode, "production")
+	if !isModeSupported(mode) {
+		ctx.PropertyErrorf("mode", "%q is not a supported mode", mode)
+	}
+	// TODO: remove "Test" property
 	if proptools.Bool(callbacks.properties.Test) {
 		mode = "test"
-	} else {
-		mode = "production"
 	}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        javaRule,
@@ -95,9 +106,17 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 	return srcJarPath
 }
 
+func isModeSupported(mode string) bool {
+	for _, supportedMode := range supportedModes {
+		if mode == supportedMode {
+			return true
+		}
+	}
+	return false
+}
+
 type bazelJavaAconfigLibraryAttributes struct {
 	Aconfig_declarations bazel.LabelAttribute
-	Test                 *bool
 	Sdk_version          *string
 	Libs                 bazel.LabelListAttribute
 }
@@ -138,7 +157,6 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) Bp2build(ctx android.B
 
 	attrs := bazelJavaAconfigLibraryAttributes{
 		Aconfig_declarations: *bazel.MakeLabelAttribute(android.BazelLabelForModuleDepSingle(ctx, callbacks.properties.Aconfig_declarations).Label),
-		Test:                 callbacks.properties.Test,
 		Sdk_version:          &sdkVersion,
 		Libs:                 libs,
 	}
