@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "237dee2e_49895090",
+        "filename": "genrule/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-11-09T02:37:45Z",
+      "side": 1,
+      "message": "nit: Can we remove these entries instead of commenting them out?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "7d596d49caaa1924f1da51b3b0ef3aedb5c327aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
