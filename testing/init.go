@@ -16,12 +16,28 @@ package testing
 
 import (
 	"android/soong/android"
+	"github.com/google/blueprint"
+)
+
+var (
+	pctx = android.NewPackageContext("android/soong/testing")
+	// For all_test_specs
+
+	allTestSpecsRule = pctx.AndroidStaticRule("all_test_specs",
+		blueprint.RuleParams{
+			Command: `${metadata} -inputFile ${input_file} -outputFile ${out}`,
+			CommandDeps: []string{
+				"${metadata}",
+			},
+		}, "input_file")
 )
 
 func init() {
 	RegisterBuildComponents(android.InitRegistrationContext)
+	pctx.HostBinToolVariable("metadata", "metadata")
 }
 
 func RegisterBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("test_spec", TestSpecFactory)
+	ctx.RegisterParallelSingletonType("all_test_specs", AllTestSpecsFactory)
 }
