@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b15d224_4cd66cc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-11-09T06:28:44Z",
+      "side": 1,
+      "message": "LGTM. Over to the owners for the final vote.",
+      "revId": "a30e450ba08c0ecbd0c559618dc57e26d479e4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
