@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e65ca9b_283b9650",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-10T17:38:47Z",
+      "side": 1,
+      "message": "Consider making a `skip_apex_validations` property that can only be set on test apexes, so that they get the validations by default stil.",
+      "revId": "d4935e6aa7701c0af5766c37a6e2442dff9c0cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
