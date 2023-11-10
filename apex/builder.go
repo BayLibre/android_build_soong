@@ -889,14 +889,17 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 		args["outCommaList"] = signedOutputFile.String()
 	}
 	var validations android.Paths
-	validations = append(validations, runApexLinkerconfigValidation(ctx, unsignedOutputFile.OutputPath, imageDir.OutputPath))
-	// TODO(b/279688635) deapexer supports [ext4]
-	if suffix == imageApexSuffix && ext4 == a.payloadFsType {
-		validations = append(validations, runApexSepolicyTests(ctx, unsignedOutputFile.OutputPath))
-	}
-	if !a.testApex && len(a.properties.Unwanted_transitive_deps) > 0 {
-		validations = append(validations,
-			runApexElfCheckerUnwanted(ctx, unsignedOutputFile.OutputPath, a.properties.Unwanted_transitive_deps))
+	// Skip validations for test apexes so that they can be configured that way intentionally.
+	if !a.testApex {
+		validations = append(validations, runApexLinkerconfigValidation(ctx, unsignedOutputFile.OutputPath, imageDir.OutputPath))
+		// TODO(b/279688635) deapexer supports [ext4]
+		if suffix == imageApexSuffix && ext4 == a.payloadFsType {
+			validations = append(validations, runApexSepolicyTests(ctx, unsignedOutputFile.OutputPath))
+		}
+		if len(a.properties.Unwanted_transitive_deps) > 0 {
+			validations = append(validations,
+				runApexElfCheckerUnwanted(ctx, unsignedOutputFile.OutputPath, a.properties.Unwanted_transitive_deps))
+		}
 	}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        rule,
