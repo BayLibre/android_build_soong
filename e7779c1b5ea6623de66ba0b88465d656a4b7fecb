@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b070837b_c1aaf96f",
+        "filename": "testing/test_spec_proto/test_spec.proto",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1442286
+      },
+      "writtenOn": "2023-11-10T00:00:15Z",
+      "side": 1,
+      "message": "Since we are generating .pb (binary proto) files, we\u0027d need to have this referenced in google3, at least by ATOS (no other services should see this actually, if they talk to ATOS).\n\nI see two ways this can happen..\n\n1. go/copybara-git-sot which copies changes from git to piper\n2. a simple comment, saying change to proto need to be reflected in proto in google3 \n\nIMO [1] feels better as relying on human is errorprone... but more overhead.\n\nwdyt? @ronish@google.com also",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "e7779c1b5ea6623de66ba0b88465d656a4b7fecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
