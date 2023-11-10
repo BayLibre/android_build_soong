@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f31d9f_9be7a4ba",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-10T15:55:04Z",
+      "side": 1,
+      "message": "update?",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 74
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4e13f7_cc8ee1a9",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-10T15:55:04Z",
+      "side": 1,
+      "message": "here and below, needs formatting",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 107
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4772002_f1343144",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-10T15:55:04Z",
+      "side": 1,
+      "message": "why do you need this twice? This is also happening in android.WriteFileRuleWithInput(ctx, intermediateMetadataPaths, this.intermediateFileContainingFilePaths, strings.Join(intermediateMetadataPathStrings, \"\\n\"))",
+      "range": {
+        "startLine": 225,
+        "startChar": 60,
+        "endLine": 225,
+        "endChar": 72
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "145c0d99_2b111ed4",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-10T15:55:04Z",
+      "side": 1,
+      "message": "can be private?",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 35
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b7e8210_49fc889a",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-10T15:55:04Z",
+      "side": 1,
+      "message": "const in golang are supposed to camelcase I think",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 34
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98ff86bf_462ee047",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-10T15:55:04Z",
+      "side": 1,
+      "message": "nit: create a const for this?",
+      "range": {
+        "startLine": 232,
+        "startChar": 20,
+        "endLine": 232,
+        "endChar": 26
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "526486c8_7f4fa973",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-10T15:55:04Z",
+      "side": 1,
+      "message": "I think we discussed this but I don\u0027t remember, can you please remind me why do we want to create temp path instead of directly appending chunks to the output file?",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 3
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a954c81_d085a2e0",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-10T15:55:04Z",
+      "side": 1,
+      "message": "If you just do this and skip the if check - should be equivalent, right?",
+      "range": {
+        "startLine": 235,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 8
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6889afb0_8aca1453",
+        "filename": "testing/all_test_specs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-10T15:55:04Z",
+      "side": 1,
+      "message": "needs documentation",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d391cbe6_f711e40d",
+        "filename": "testing/all_test_specs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-10T15:55:04Z",
+      "side": 1,
+      "message": "nit: here and below please use const for strings",
+      "range": {
+        "startLine": 32,
+        "startChar": 71,
+        "endLine": 32,
+        "endChar": 109
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
