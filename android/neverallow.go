@@ -170,6 +170,8 @@ func createJavaDeviceForHostRules() []Rule {
 		"external/robolectric-shadows",
 		"external/robolectric",
 		"frameworks/layoutlib",
+		"frameworks/base/ravenwood",
+		"frameworks/base/tools/hoststubgen",
 	}
 
 	return []Rule{
