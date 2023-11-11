@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa35cacb_7664f908",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-11-11T00:52:11Z",
+      "side": 1,
+      "message": "Is the command written as a comment so that it is a no-op?",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "a215c8bdb9d2212bd57dbffa2e0c31c5d4a9ef2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
