@@ -16,6 +16,23 @@
       "message": "PTAL?",
       "revId": "b66bba3a3c990d9315d3f500e1344c823ec0aaa3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f554174_c340eac7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2023-11-13T16:31:07Z",
+      "side": 1,
+      "message": "@Colin,  PTAL? (the internal one has been merged.)",
+      "revId": "b66bba3a3c990d9315d3f500e1344c823ec0aaa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
