@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8c2716f_ac516c67",
+        "filename": "aconfig/cc_aconfig_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-11-13T19:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce89af34_25c71df6",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "875b8bafe5dcaee3d2e9a9561b1bb26a4a4a423b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bf320da_087a4450",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbca75ad_8680e1fd",
+        "filename": "aconfig/java_aconfig_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-11-13T19:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bf320da_087a4450",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "875b8bafe5dcaee3d2e9a9561b1bb26a4a4a423b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e449bb1_a0d72427",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-11-13T17:57:56Z",
       "side": 1,
       "message": "nit: replace with\n```\nreturn InList(mode, supportedModes)\n```",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 13
+      },
+      "revId": "875b8bafe5dcaee3d2e9a9561b1bb26a4a4a423b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "488396dc_29cbe971",
+        "filename": "aconfig/java_aconfig_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-11-13T19:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e449bb1_a0d72427",
       "range": {
         "startLine": 110,
         "startChar": 1,
