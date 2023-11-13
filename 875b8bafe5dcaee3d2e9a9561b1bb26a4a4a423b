@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce89af34_25c71df6",
+        "filename": "aconfig/cc_aconfig_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-11-13T17:57:56Z",
+      "side": 1,
+      "message": "While the cleanup is in progress, I think we should raise an error if both `mode` and `test` are specified. Otherwise, it will be confusing for users to know which of these properties \"wins\"",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "875b8bafe5dcaee3d2e9a9561b1bb26a4a4a423b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf320da_087a4450",
+        "filename": "aconfig/java_aconfig_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-11-13T17:57:56Z",
+      "side": 1,
+      "message": "nit: rename this to `aconfigSupportedModes` to clarify that this is used for aconfig.",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "875b8bafe5dcaee3d2e9a9561b1bb26a4a4a423b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e449bb1_a0d72427",
+        "filename": "aconfig/java_aconfig_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-11-13T17:57:56Z",
+      "side": 1,
+      "message": "nit: replace with\n```\nreturn InList(mode, supportedModes)\n```",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 13
+      },
+      "revId": "875b8bafe5dcaee3d2e9a9561b1bb26a4a4a423b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
