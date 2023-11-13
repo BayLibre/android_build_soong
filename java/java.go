@@ -1783,6 +1783,10 @@ func metalavaStubCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 		cmd.FlagWithInputList("--classpath ", classpath, ":")
 	}
 
+	if ctx.DeviceConfig().HideFlaggedApis() {
+		cmd.FlagWithArg("--hide-annotation ", "android.annotation.FlaggedApi")
+	}
+
 	return cmd
 }
 
