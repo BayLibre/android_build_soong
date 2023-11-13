@@ -2113,8 +2113,8 @@ func (c *deviceConfig) CheckVendorSeappViolations() bool {
 	return Bool(c.config.productVariables.CheckVendorSeappViolations)
 }
 
-func (c *deviceConfig) NextReleaseHideFlaggedApi() bool {
-	return Bool(c.config.productVariables.NextReleaseHideFlaggedApi)
+func (c *deviceConfig) IsSdkVariant() bool {
+	return Bool(c.config.productVariables.IsSdkVariant)
 }
 
 func (c *deviceConfig) ReleaseExposeFlaggedApi() bool {
@@ -2122,7 +2122,7 @@ func (c *deviceConfig) ReleaseExposeFlaggedApi() bool {
 }
 
 func (c *deviceConfig) HideFlaggedApis() bool {
-	return c.NextReleaseHideFlaggedApi() && !c.ReleaseExposeFlaggedApi()
+	return c.IsSdkVariant() && !c.ReleaseExposeFlaggedApi()
 }
 
 func (c *config) GetBuildFlag(name string) (string, bool) {

@@ -410,7 +410,7 @@ func TestDroidstubsHideFlaggedApi(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForJavaTest,
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.NextReleaseHideFlaggedApi = proptools.BoolPtr(true)
+			variables.IsSdkVariant = proptools.BoolPtr(true)
 			variables.Release_expose_flagged_api = proptools.BoolPtr(false)
 		}),
 		android.FixtureMergeMockFs(map[string][]byte{

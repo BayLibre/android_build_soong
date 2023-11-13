@@ -489,7 +489,7 @@ type ProductVariables struct {
 	// partition images. They should not be read from soong modules.
 	PartitionVarsForBazelMigrationOnlyDoNotUse PartitionVariables `json:",omitempty"`
 
-	NextReleaseHideFlaggedApi *bool `json:",omitempty"`
+	IsSdkVariant *bool `json:",omitempty"`
 
 	Release_expose_flagged_api *bool `json:",omitempty"`
 
