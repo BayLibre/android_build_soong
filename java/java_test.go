@@ -2518,9 +2518,6 @@ func TestSdkLibraryProvidesSystemModulesToApiLibrary(t *testing.T) {
 		prepareForJavaTest,
 		PrepareForTestWithJavaSdkLibraryFiles,
 		FixtureWithLastReleaseApis("foo"),
-		android.FixtureModifyConfig(func(config android.Config) {
-			config.SetApiLibraries([]string{"foo"})
-		}),
 		android.FixtureMergeMockFs(
 			map[string][]byte{
 				"A.java": nil,
@@ -2539,6 +2536,7 @@ func TestSdkLibraryProvidesSystemModulesToApiLibrary(t *testing.T) {
 			name: "foo",
 			srcs: ["A.java"],
 			system_modules: "baz",
+			contribute_to_api: true,
 		}
 	`)
 	m := result.ModuleForTests(apiScopePublic.apiLibraryModuleName("foo"), "android_common")
@@ -2554,9 +2552,6 @@ func TestApiLibraryDroidstubsDependency(t *testing.T) {
 		prepareForJavaTest,
 		PrepareForTestWithJavaSdkLibraryFiles,
 		FixtureWithLastReleaseApis("foo"),
-		android.FixtureModifyConfig(func(config android.Config) {
-			config.SetApiLibraries([]string{"foo"})
-		}),
 		android.FixtureMergeMockFs(
 			map[string][]byte{
 				"A.java": nil,
@@ -2603,7 +2598,6 @@ func TestDisableFromTextStubForCoverageBuild(t *testing.T) {
 		PrepareForTestWithJacocoInstrumentation,
 		FixtureWithLastReleaseApis("foo"),
 		android.FixtureModifyConfig(func(config android.Config) {
-			config.SetApiLibraries([]string{"foo"})
 			config.SetBuildFromTextStub(true)
 		}),
 		android.FixtureModifyEnv(func(env map[string]string) {
@@ -2613,6 +2607,7 @@ func TestDisableFromTextStubForCoverageBuild(t *testing.T) {
 		java_sdk_library {
 			name: "foo",
 			srcs: ["A.java"],
+			contribute_to_api: true,
 		}
 	`)
 	android.AssertBoolEquals(t, "stub module expected to depend on from-source stub",

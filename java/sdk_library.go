@@ -624,6 +624,12 @@ type sdkLibraryProperties struct {
 		Legacy_errors_allowed *bool
 	}
 
+	// Determines if the module contributes to any api surfaces.
+	// This property should be set to tru if the module is listed under
+	// frameworks-base-api.bootclasspath in frameworks/base/api/Android.bp.
+	// Defaults to false.
+	Contribute_to_api *bool
+
 	// TODO: determines whether to create HTML doc or not
 	// Html_doc *bool
 }
@@ -1543,11 +1549,6 @@ func (module *SdkLibrary) latestIncompatibilitiesModuleName(apiScope *apiScope) 
 	return latestPrebuiltApiModuleName(module.distStem()+"-incompatibilities", apiScope)
 }
 
-func (module *SdkLibrary) contributesToApiSurface(c android.Config) bool {
-	_, exists := c.GetApiLibraries()[module.Name()]
-	return exists
-}
-
 // The listed modules are the special java_sdk_libraries where apiScope.kind do not match the
 // api surface that the module contribute to. For example, the public droidstubs and java_library
 // do not contribute to the public api surface, but contributes to the core platform api surface.
@@ -1966,6 +1967,10 @@ func (module *SdkLibrary) UniqueApexVariations() bool {
 	return module.uniqueApexVariations()
 }
 
+func (module *SdkLibrary) ContributeToApi() bool {
+	return proptools.BoolDefault(module.sdkLibraryProperties.Contribute_to_api, false)
+}
+
 // Creates the xml file that publicizes the runtime library
 func (module *SdkLibrary) createXmlFile(mctx android.DefaultableHookContext) {
 	moduleMinApiLevel := module.Library.MinSdkVersion(mctx)
@@ -2149,7 +2154,7 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 		if scope == apiScopePublic {
 			alternativeFullApiSurfaceStubLib = module.alternativeFullApiSurfaceStubLib()
 		}
-		contributesToApiSurface := module.contributesToApiSurface(mctx.Config()) || alternativeFullApiSurfaceStubLib != ""
+		contributesToApiSurface := module.ContributeToApi() || alternativeFullApiSurfaceStubLib != ""
 		if contributesToApiSurface {
 			module.createApiLibrary(mctx, scope, alternativeFullApiSurfaceStubLib)
 		}
