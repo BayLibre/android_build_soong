@@ -21,6 +21,41 @@ import (
 	"testing"
 )
 
+
+func TestSetAndroidMkEntriesWithAtpTestOptions(t *testing.T) {
+       tests := []struct {
+               name        string
+               testOptions CommonTestOptions
+               expected    map[string]string
+       }{
+               {
+                       name: "atp build groups",
+                       testOptions: CommonTestOptions{
+                               Build_groups: []buildGroup{
+                                       {Name: "presubmit"},
+                                       {Name: "presubmit-mainline"},
+                               },
+                       },
+                       expected: map[string]string{
+                               "LOCAL_ATP_OPTIONS": "mypresub",
+                       },
+               },
+       }
+       for _, tt := range tests {
+               t.Run(tt.name, func(t *testing.T) {
+                       actualEntries := AndroidMkEntries{
+                               EntryMap: map[string][]string{},
+                       }
+                       tt.testOptions.SetAndroidMkEntries(&actualEntries)
+                       actual := actualEntries.EntryMap
+                       t.Logf("actual: %v", actual)
+                       t.Logf("expected: %v", tt.expected)
+                       //AssertDeepEquals(t, "TestProcessCommonTestOptions ", tt.expected, actual)
+               })
+       }
+}
+
+
 func TestSrcIsModule(t *testing.T) {
 	type args struct {
 		s string

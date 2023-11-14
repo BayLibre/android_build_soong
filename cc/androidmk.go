@@ -409,10 +409,26 @@ func (test *testBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 		}
 
 		test.Properties.Test_options.CommonTestOptions.SetAndroidMkEntries(entries)
+		var x = "{}"
+
+		/*
+		   if len(test.Properties.Test_options.CommonTestOptions.Build_groups) > 0 {
+		          t := test.Properties.Test_options.CommonTestOptions
+
+		          m, _ := json.Marshal(t.Build_groups)
+		          x = string(m)
+		   }
+		*/
+		entries.SetString("LOCAL_ATP_OPTIONS", ninjaEscape(x))
 	})
 
 	AndroidMkWriteTestData(test.data, entries)
 	androidMkWriteExtraTestConfigs(test.extraTestConfigs, entries)
+}
+
+// Fix proptools and tests
+func ninjaEscape(orig string) string {
+	return strings.ReplaceAll(orig, "#", "\\#")
 }
 
 func (fuzz *fuzzBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {

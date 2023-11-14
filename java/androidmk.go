@@ -183,10 +183,64 @@ func (j *Test) AndroidMkEntries() []android.AndroidMkEntries {
 		}
 		entries.AddStrings("LOCAL_TEST_MAINLINE_MODULES", j.testProperties.Test_mainline_modules...)
 
+		// TODO(ron): why is this here and not on (AndroidTest) as well.
+		// Can we merge these two funcs?
 		j.testProperties.Test_options.CommonTestOptions.SetAndroidMkEntries(entries)
+
+		var x = "{}"
+
+		/*
+				if len(j.testProperties.Test_options.CommonTestOptions.Build_groups) > 0 {
+					// Hmm, not sure if this is really the right place for it.
+					// Do we just name the file here and fill it in later?
+
+					//outputFile := android.PathForModuleOut(j.ctx, j.ctx.ModuleName()+".tm.json")
+					//entries.SetString("LOCAL_ATP_OPTIONS", outputFile)
+					t := j.testProperties.Test_options.CommonTestOptions
+
+					// RON better names dude
+					m, _ := json.Marshal(t.Build_groups)
+					x = string(m)
+					// Encoding as json seems to mess with .mk file syntax ", \, [
+					// so do a custom text mapping.
+					// Hmm, somehow tradefed seems to encode. Actually it doesn't write
+					// out tradefed_options to module_info. See SystemUILintCheckerTest
+					// also we can't have an unbounded set of names.  We have to
+					// know all the names so we can clear in clear.mk
+
+					//  presubmit,adservices.apex+other.apex,T1,T2
+					//   T1: name,key,value
+					// Value can be anything,b64 encode?
+					// Maybe I should be writing out .json files here rather than output
+					// to .mk files. I.e. list the path to the .json file in the .mk file
+					// or just store for the real test_mapping file, but hard to know
+					// where the test_mappfile file should live.
+					//   (unless we put a "test_mapping_root" in module-info.json)
+
+				   // COMMENT_OUT_ON
+						s := "["
+						for i, bg := range t.Build_groups {
+							if i > 0 {
+								s += ","
+							}
+							s += fmt.Sprintf(` {'%s': '%s'}`, bg.Name, "SOME_BUG2")
+						}
+						s += "]"
+				   // COMMENT_OUT_OFF
+
+					// entries.SetString("LOCAL_ATP_OPTIONS", proptools.NinjaAndShellEscape(string(x)))
+					//entries.SetString("LOCAL_ATP_OPTIONS", string(x))
+			}
+		*/
+		entries.SetString("LOCAL_ATP_OPTIONS", ninjaEscape(x)) // Fix proptools.NinjaEscape
+
 	})
 
 	return entriesList
+}
+
+func ninjaEscape(orig string) string {
+	return strings.ReplaceAll(orig, "#", "\\#")
 }
 
 func androidMkWriteExtraTestConfigs(extraTestConfigs android.Paths, entries *android.AndroidMkEntries) {

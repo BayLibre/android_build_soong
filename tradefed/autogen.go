@@ -63,8 +63,8 @@ type Config interface {
 }
 
 type Option struct {
-	Name  string
-	Key   string
+	Name  string `json:"name,omitempty"`
+	Key   string `json:"key,omitempty"`
 	Value string
 }
 
