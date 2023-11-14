@@ -1549,11 +1549,6 @@ func (module *SdkLibrary) latestIncompatibilitiesModuleName(apiScope *apiScope) 
 	return latestPrebuiltApiModuleName(module.distStem()+"-incompatibilities", apiScope)
 }
 
-func (module *SdkLibrary) contributesToApiSurface(c android.Config) bool {
-	_, exists := c.GetApiLibraries()[module.Name()]
-	return exists
-}
-
 // The listed modules are the special java_sdk_libraries where apiScope.kind do not match the
 // api surface that the module contribute to. For example, the public droidstubs and java_library
 // do not contribute to the public api surface, but contributes to the core platform api surface.
@@ -2159,7 +2154,7 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 		if scope == apiScopePublic {
 			alternativeFullApiSurfaceStubLib = module.alternativeFullApiSurfaceStubLib()
 		}
-		contributesToApiSurface := module.contributesToApiSurface(mctx.Config()) || alternativeFullApiSurfaceStubLib != ""
+		contributesToApiSurface := module.ContributeToApi() || alternativeFullApiSurfaceStubLib != ""
 		if contributesToApiSurface {
 			module.createApiLibrary(mctx, scope, alternativeFullApiSurfaceStubLib)
 		}
