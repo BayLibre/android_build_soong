@@ -352,9 +352,6 @@ type config struct {
 	// modules that aren't mixed-built for at least one variant will cause a build
 	// failure
 	ensureAllowlistIntegrity bool
-
-	// List of Api libraries that contribute to Api surfaces.
-	apiLibraries map[string]struct{}
 }
 
 type deviceConfig struct {
@@ -678,34 +675,6 @@ func NewConfig(cmdArgs CmdArgs, availableEnv map[string]string) (Config, error) 
 	}
 	config.BazelContext, err = NewBazelContext(config)
 	config.Bp2buildPackageConfig = GetBp2BuildAllowList()
-
-	// TODO(b/276958307): Replace the hardcoded list to a sdk_library local prop.
-	config.apiLibraries = map[string]struct{}{
-		"android.net.ipsec.ike":             {},
-		"art.module.public.api":             {},
-		"conscrypt.module.public.api":       {},
-		"framework-adservices":              {},
-		"framework-appsearch":               {},
-		"framework-bluetooth":               {},
-		"framework-connectivity":            {},
-		"framework-connectivity-t":          {},
-		"framework-graphics":                {},
-		"framework-location":                {},
-		"framework-media":                   {},
-		"framework-mediaprovider":           {},
-		"framework-ondevicepersonalization": {},
-		"framework-permission":              {},
-		"framework-permission-s":            {},
-		"framework-scheduling":              {},
-		"framework-sdkextensions":           {},
-		"framework-statsd":                  {},
-		"framework-sdksandbox":              {},
-		"framework-tethering":               {},
-		"framework-uwb":                     {},
-		"framework-virtualization":          {},
-		"framework-wifi":                    {},
-		"i18n.module.public.api":            {},
-	}
 
 	return Config{config}, err
 }
@@ -2091,17 +2060,6 @@ func (c *config) AddForceEnabledModules(forceEnabled []string) {
 	for _, forceEnabledModule := range forceEnabled {
 		c.bazelForceEnabledModules[forceEnabledModule] = struct{}{}
 	}
-}
-
-func (c *config) SetApiLibraries(libs []string) {
-	c.apiLibraries = make(map[string]struct{})
-	for _, lib := range libs {
-		c.apiLibraries[lib] = struct{}{}
-	}
-}
-
-func (c *config) GetApiLibraries() map[string]struct{} {
-	return c.apiLibraries
 }
 
 // Bp2buildMode indicates whether the config is for bp2build mode of Soong
