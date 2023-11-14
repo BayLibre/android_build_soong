@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce575410_32d3bb1c",
+        "filename": "aconfig/java_aconfig_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-11-14T10:17:26Z",
+      "side": 1,
+      "message": "hey, sorry for the drive by, but I read these docs and don\u0027t understand what they mean\n\nwhat is test mode? and what is exported mode? Could you please expand the docs a little bit to explain these two concepts?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 64
+      },
+      "revId": "275f654a2e21577bbe743e14ec873cae609631f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
