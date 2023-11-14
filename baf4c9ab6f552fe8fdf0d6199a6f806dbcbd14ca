@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d113503_7941ef16",
+        "filename": "testing/test_spec.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-14T07:32:20Z",
+      "side": 1,
+      "message": "nit: let use a string const here",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 207
+      },
+      "revId": "baf4c9ab6f552fe8fdf0d6199a6f806dbcbd14ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
