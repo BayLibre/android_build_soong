@@ -35,9 +35,6 @@ func TestJavaSdkLibrary(t *testing.T) {
 			"29": {"foo"},
 			"30": {"bar", "barney", "baz", "betty", "foo", "fred", "quuz", "wilma"},
 		}),
-		android.FixtureModifyConfig(func(config android.Config) {
-			config.SetApiLibraries([]string{"foo"})
-		}),
 	).RunTestWithBp(t, `
 		droiddoc_exported_dir {
 			name: "droiddoc-templates-sdk",
@@ -47,6 +44,7 @@ func TestJavaSdkLibrary(t *testing.T) {
 			name: "foo",
 			srcs: ["a.java", "b.java"],
 			api_packages: ["foo"],
+			contribute_to_api: true,
 		}
 		java_sdk_library {
 			name: "bar",
@@ -1583,9 +1581,6 @@ func TestJavaSdkLibrary_ApiLibrary(t *testing.T) {
 		prepareForJavaTest,
 		PrepareForTestWithJavaSdkLibraryFiles,
 		FixtureWithLastReleaseApis("foo"),
-		android.FixtureModifyConfig(func(config android.Config) {
-			config.SetApiLibraries([]string{"foo"})
-		}),
 	).RunTestWithBp(t, `
 		java_sdk_library {
 			name: "foo",
@@ -1600,6 +1595,7 @@ func TestJavaSdkLibrary_ApiLibrary(t *testing.T) {
 			test: {
 				enabled: true,
 			},
+			contribute_to_api: true,
 		}
 	`)
 
