@@ -16,6 +16,29 @@
       "message": "Ping.",
       "revId": "a328774a80ad8f9d65566e6c2acbb93231ab7555",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96d9bdf1_53be2f83",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-11-15T20:50:06Z",
+      "side": 1,
+      "message": "If you are concerned about having an extra call to metalava then I can modify the `signature-to-dex` to do the merging inline.",
+      "range": {
+        "startLine": 1251,
+        "startChar": 3,
+        "endLine": 1251,
+        "endChar": 24
+      },
+      "revId": "a328774a80ad8f9d65566e6c2acbb93231ab7555",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
