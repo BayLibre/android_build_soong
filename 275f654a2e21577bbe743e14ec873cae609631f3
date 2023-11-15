@@ -22,6 +22,30 @@
       },
       "revId": "275f654a2e21577bbe743e14ec873cae609631f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0df4bd86_64b81eef",
+        "filename": "aconfig/java_aconfig_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-11-15T03:51:30Z",
+      "side": 1,
+      "message": "Aconfig test mode is used for hermetic tests, it allows getter and setter methods being used. \nExported mode is a mode to be added. To my understanding, it controls the visibility of some apis to google3 and mainline modules.",
+      "parentUuid": "ce575410_32d3bb1c",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 64
+      },
+      "revId": "275f654a2e21577bbe743e14ec873cae609631f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
