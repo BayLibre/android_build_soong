@@ -16,6 +16,40 @@
       "message": "ping?",
       "revId": "726ff034b2f109244348b9fca3e7f321b58d1084",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cbc832f_f4c84e84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-15T22:38:34Z",
+      "side": 1,
+      "message": "LGTM, but preferably someone with more context would review.",
+      "revId": "726ff034b2f109244348b9fca3e7f321b58d1084",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9649352b_0ca4bcb9",
+        "filename": "java/aapt2.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-15T22:38:34Z",
+      "side": 1,
+      "message": "Could you add a comment why we\u0027re filtering the paths to just the values paths?",
+      "revId": "726ff034b2f109244348b9fca3e7f321b58d1084",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
