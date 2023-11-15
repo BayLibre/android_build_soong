@@ -624,6 +624,12 @@ type sdkLibraryProperties struct {
 		Legacy_errors_allowed *bool
 	}
 
+	// Determines if the module contributes to any api surfaces.
+	// This property should be set to true if the module is listed under
+	// frameworks-base-api.bootclasspath in frameworks/base/api/Android.bp.
+	// Defaults to false.
+	Contribute_to_api *bool
+
 	// TODO: determines whether to create HTML doc or not
 	// Html_doc *bool
 }
@@ -1964,6 +1970,10 @@ func (module *SdkLibrary) DepIsInSameApex(mctx android.BaseModuleContext, dep an
 // Implements android.ApexModule
 func (module *SdkLibrary) UniqueApexVariations() bool {
 	return module.uniqueApexVariations()
+}
+
+func (module *SdkLibrary) ContributeToApi() bool {
+	return proptools.BoolDefault(module.sdkLibraryProperties.Contribute_to_api, false)
 }
 
 // Creates the xml file that publicizes the runtime library
