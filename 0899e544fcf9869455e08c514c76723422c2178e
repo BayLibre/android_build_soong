@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a4ddc9_b7d76745",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-11-15T20:05:44Z",
+      "side": 1,
+      "message": "How would you enforce that users set `Contribute_to_api` correctly? If I were to create a mock java_sdk_library `framework-foo` that is not a boot dex jar, can I still set `contribute_to_api` to true?",
+      "range": {
+        "startLine": 11,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "0899e544fcf9869455e08c514c76723422c2178e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
