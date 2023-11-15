@@ -640,7 +640,7 @@ type Library struct {
 
 	exportedProguardFlagFiles android.Paths
 
-	InstallMixin func(ctx android.ModuleContext, installPath android.Path) (extraInstallDeps android.Paths)
+	InstallMixin func(ctx android.ModuleContext, installPath android.Path) (extraInstallDeps android.InstallPaths)
 }
 
 var _ android.ApexModule = (*Library)(nil)
@@ -721,7 +721,7 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	exclusivelyForApex := !apexInfo.IsForPlatform()
 	if (Bool(j.properties.Installable) || ctx.Host()) && !exclusivelyForApex {
-		var extraInstallDeps android.Paths
+		var extraInstallDeps android.InstallPaths
 		if j.InstallMixin != nil {
 			extraInstallDeps = j.InstallMixin(ctx, j.outputFile)
 		}
