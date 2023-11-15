@@ -70,6 +70,30 @@
       },
       "revId": "0899e544fcf9869455e08c514c76723422c2178e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9533eec2_d1f1bfa9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-11-15T20:24:57Z",
+      "side": 1,
+      "message": "It unfortunately is latter, but I also cannot think of a way to catch this in analysis time. `frameworks-base-api` is adding the `bootclasspath` sdk_library modules as dependencies to check that the modules set `contribute_to_api` as true, thus adding `combined_apis` as dependency to the sdk_library to ensure that the module not added to `frameworks-base-api.bootclasspath` do not set `contribute_to_api` to true will lead to circular dependency.\n\nTo prevent this as much as possible, I\u0027ve set this property to default to false, and added documentation that this should only be set to true when the module is listed in `frameworks-base-api.bootclasspath`.",
+      "parentUuid": "a739e6ec_7208aa02",
+      "range": {
+        "startLine": 11,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "0899e544fcf9869455e08c514c76723422c2178e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
