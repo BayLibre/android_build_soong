@@ -423,6 +423,8 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	if ctx.Host() && test.gtest() && test.Properties.Test_options.Unit_test == nil {
 		test.Properties.Test_options.Unit_test = proptools.BoolPtr(true)
 	}
+
+	test.binaryDecorator.baseInstaller.installTestData(ctx, test.data)
 	test.binaryDecorator.baseInstaller.install(ctx, file)
 }
 
@@ -582,7 +584,7 @@ type BenchmarkProperties struct {
 type benchmarkDecorator struct {
 	*binaryDecorator
 	Properties BenchmarkProperties
-	data       android.Paths
+	data       []android.DataPath
 	testConfig android.Path
 }
 
@@ -603,7 +605,9 @@ func (benchmark *benchmarkDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps
 }
 
 func (benchmark *benchmarkDecorator) install(ctx ModuleContext, file android.Path) {
-	benchmark.data = android.PathsForModuleSrc(ctx, benchmark.Properties.Data)
+	for _, d := range android.PathsForModuleSrc(ctx, benchmark.Properties.Data) {
+		benchmark.data = append(benchmark.data, android.DataPath{SrcPath: d})
+	}
 
 	var configs []tradefed.Config
 	if Bool(benchmark.Properties.Require_root) {
@@ -621,6 +625,7 @@ func (benchmark *benchmarkDecorator) install(ctx ModuleContext, file android.Pat
 
 	benchmark.binaryDecorator.baseInstaller.dir = filepath.Join("benchmarktest", ctx.ModuleName())
 	benchmark.binaryDecorator.baseInstaller.dir64 = filepath.Join("benchmarktest64", ctx.ModuleName())
+	benchmark.binaryDecorator.baseInstaller.installTestData(ctx, benchmark.data)
 	benchmark.binaryDecorator.baseInstaller.install(ctx, file)
 }
 
