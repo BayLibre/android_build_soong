@@ -46,6 +46,30 @@
       },
       "revId": "e7779c1b5ea6623de66ba0b88465d656a4b7fecb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4c6f4de_e24aa167",
+        "filename": "testing/test_spec_proto/test_spec.proto",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-11-15T03:31:38Z",
+      "side": 1,
+      "message": "How often is this going to be updated? It might not be worth the time to set up copybara if this is only going to be update a couple times.",
+      "parentUuid": "d1d86aff_70023c83",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "e7779c1b5ea6623de66ba0b88465d656a4b7fecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
