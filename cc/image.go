@@ -524,7 +524,7 @@ func MutateImage(mctx android.BaseModuleContext, m ImageMutatableModule) {
 		coreVariantNeeded = true
 	}
 
-	if coreVariantNeeded && productSpecific && m.SdkVersion() == "" {
+	if coreVariantNeeded && productSpecific {
 		// The module has "product_specific: true" that does not create core variant.
 		coreVariantNeeded = false
 		productVariants = append(productVariants, platformVndkVersion)
