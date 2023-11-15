@@ -46,6 +46,30 @@
       },
       "revId": "0899e544fcf9869455e08c514c76723422c2178e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a739e6ec_7208aa02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-11-15T20:13:18Z",
+      "side": 1,
+      "message": "\u003e If the user sets contribute_to_api to true without adding the module to frameworks-base-api.bootclasspath, the user will observe build failures.\n\nBy this, do you mean an error during Soong analysis or Ninja execution? If it is the latter, it can be cryptic to debug.",
+      "parentUuid": "85577416_f6c72495",
+      "range": {
+        "startLine": 11,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "0899e544fcf9869455e08c514c76723422c2178e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
