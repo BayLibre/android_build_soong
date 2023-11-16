@@ -94,6 +94,30 @@
       },
       "revId": "e7779c1b5ea6623de66ba0b88465d656a4b7fecb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4462dfd3_fdd7eb42",
+        "filename": "testing/test_spec_proto/test_spec.proto",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-16T20:55:28Z",
+      "side": 1,
+      "message": "We already have a copybara setup at `google3/third_party/android/soong_protos/copy.bara.sky` that this could be added to",
+      "parentUuid": "87567a15_d5c51180",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "e7779c1b5ea6623de66ba0b88465d656a4b7fecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
