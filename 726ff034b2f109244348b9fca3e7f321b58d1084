@@ -91,6 +91,29 @@
       "parentUuid": "9649352b_0ca4bcb9",
       "revId": "726ff034b2f109244348b9fca3e7f321b58d1084",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56a82c5_2153f963",
+        "filename": "java/app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-11-16T07:42:57Z",
+      "side": 1,
+      "message": "do we want to encode the product characteristics in these names? ex: `MyApk_tablet_rro`?",
+      "range": {
+        "startLine": 1098,
+        "startChar": 0,
+        "endLine": 1104,
+        "endChar": 1
+      },
+      "revId": "726ff034b2f109244348b9fca3e7f321b58d1084",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
