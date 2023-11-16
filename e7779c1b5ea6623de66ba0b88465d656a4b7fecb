@@ -70,6 +70,30 @@
       },
       "revId": "e7779c1b5ea6623de66ba0b88465d656a4b7fecb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87567a15_d5c51180",
+        "filename": "testing/test_spec_proto/test_spec.proto",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1442286
+      },
+      "writtenOn": "2023-11-16T14:31:16Z",
+      "side": 1,
+      "message": "good point. @caditya@google.com wdyh?",
+      "parentUuid": "e4c6f4de_e24aa167",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "e7779c1b5ea6623de66ba0b88465d656a4b7fecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
