@@ -2079,7 +2079,10 @@ func (c *config) BuildFromTextStub() bool {
 	// TODO: b/302320354 - Remove the coverage build specific logic once the
 	// robust solution for handling native properties in from-text stub build
 	// is implemented.
-	return !c.buildFromSourceStub && !c.JavaCoverageEnabled() && !c.IsEnvTrue("BUILD_FROM_SOURCE_STUB")
+	return !c.buildFromSourceStub &&
+		!c.JavaCoverageEnabled() &&
+		!c.IsEnvTrue("BUILD_FROM_SOURCE_STUB") &&
+		!c.deviceConfig.BuildFromSourceStub()
 }
 
 func (c *config) SetBuildFromTextStub(b bool) {
@@ -2123,6 +2126,10 @@ func (c *deviceConfig) ReleaseExposeFlaggedApi() bool {
 
 func (c *deviceConfig) HideFlaggedApis() bool {
 	return c.NextReleaseHideFlaggedApi() && !c.ReleaseExposeFlaggedApi()
+}
+
+func (c *deviceConfig) BuildFromSourceStub() bool {
+	return Bool(c.config.productVariables.BuildFromSourceStub)
 }
 
 func (c *config) GetBuildFlag(name string) (string, bool) {
