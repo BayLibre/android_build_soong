@@ -28,7 +28,6 @@ bootstrap_go_package {
         "rust_aconfig_library.go",
     ],
     testSrcs: [
-        "aconfig_declarations_test.go",
         "aconfig_values_test.go",
         "aconfig_value_set_test.go",
         "java_aconfig_library_test.go",
