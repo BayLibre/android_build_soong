@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd0fc113_ee53c810",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2084,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-11-16T21:42:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00c047ef_d94cfca2",
+      "range": {
+        "startLine": 2084,
+        "startChar": 2,
+        "endLine": 2084,
+        "endChar": 40
+      },
+      "revId": "b93cbae0d23667ad3c71d3783556a77b6303b7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21d7c6e1_24b3e7e0",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-16T19:46:41Z",
       "side": 1,
       "message": "Could this be moved to be next to `BuildFromTextStub`?",
+      "range": {
+        "startLine": 2131,
+        "startChar": 23,
+        "endLine": 2131,
+        "endChar": 42
+      },
+      "revId": "b93cbae0d23667ad3c71d3783556a77b6303b7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0043355c_70124057",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2131,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-11-16T21:42:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21d7c6e1_24b3e7e0",
       "range": {
         "startLine": 2131,
         "startChar": 23,
