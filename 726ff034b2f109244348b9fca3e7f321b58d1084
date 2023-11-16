@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68886bbc_a3bd61af",
+        "filename": "java/aapt2.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-11-16T07:40:39Z",
+      "side": 1,
+      "message": "Move these to L45.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "726ff034b2f109244348b9fca3e7f321b58d1084",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9649352b_0ca4bcb9",
         "filename": "java/aapt2.go",
         "patchSetId": 4
@@ -48,6 +71,24 @@
       "writtenOn": "2023-11-15T22:38:34Z",
       "side": 1,
       "message": "Could you add a comment why we\u0027re filtering the paths to just the values paths?",
+      "revId": "726ff034b2f109244348b9fca3e7f321b58d1084",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "440c3040_3d315172",
+        "filename": "java/aapt2.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-11-16T07:40:39Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "9649352b_0ca4bcb9",
       "revId": "726ff034b2f109244348b9fca3e7f321b58d1084",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
