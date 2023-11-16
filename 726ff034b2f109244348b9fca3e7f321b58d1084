@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af6d5416_4b45a18f",
+        "filename": "java/aapt2.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-11-16T13:14:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68886bbc_a3bd61af",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "726ff034b2f109244348b9fca3e7f321b58d1084",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9649352b_0ca4bcb9",
@@ -93,6 +117,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f773dca_e0cf7361",
+        "filename": "java/aapt2.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-11-16T13:14:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "440c3040_3d315172",
+      "revId": "726ff034b2f109244348b9fca3e7f321b58d1084",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f56a82c5_2153f963",
@@ -106,6 +148,30 @@
       "writtenOn": "2023-11-16T07:42:57Z",
       "side": 1,
       "message": "do we want to encode the product characteristics in these names? ex: `MyApk_tablet_rro`?",
+      "range": {
+        "startLine": 1098,
+        "startChar": 0,
+        "endLine": 1104,
+        "endChar": 1
+      },
+      "revId": "726ff034b2f109244348b9fca3e7f321b58d1084",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef6aca4_7fceb357",
+        "filename": "java/app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-11-16T13:14:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f56a82c5_2153f963",
       "range": {
         "startLine": 1098,
         "startChar": 0,
