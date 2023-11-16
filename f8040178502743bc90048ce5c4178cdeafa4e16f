@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab72c15e_21b00b4d",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-11-16T17:41:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a6f31d9f_9be7a4ba",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 74
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b4e13f7_cc8ee1a9",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-10T15:55:04Z",
       "side": 1,
       "message": "here and below, needs formatting",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 107
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e317aa5_d6e73f5c",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-11-16T17:41:09Z",
+      "side": 1,
+      "message": "Discussed offline.",
+      "parentUuid": "6b4e13f7_cc8ee1a9",
       "range": {
         "startLine": 224,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2650f09_512e1733",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-11-16T17:41:09Z",
+      "side": 1,
+      "message": "We are joining the file path using \u0027\\n\\ there. Here we are adding a new \u0027\\n\u0027 to the end of the content.",
+      "parentUuid": "f4772002_f1343144",
+      "range": {
+        "startLine": 225,
+        "startChar": 60,
+        "endLine": 225,
+        "endChar": 72
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "145c0d99_2b111ed4",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-10T15:55:04Z",
       "side": 1,
       "message": "can be private?",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 35
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b2d1e37_80133c75",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-11-16T17:41:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "145c0d99_2b111ed4",
       "range": {
         "startLine": 230,
         "startChar": 5,
@@ -139,6 +235,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "337f94c4_410ebdb1",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-11-16T17:41:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6b7e8210_49fc889a",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 34
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a5f261_4996c4e6",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-11-16T17:41:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "98ff86bf_462ee047",
+      "range": {
+        "startLine": 232,
+        "startChar": 20,
+        "endLine": 232,
+        "endChar": 26
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "526486c8_7f4fa973",
@@ -152,6 +296,30 @@
       "writtenOn": "2023-11-10T15:55:04Z",
       "side": 1,
       "message": "I think we discussed this but I don\u0027t remember, can you please remind me why do we want to create temp path instead of directly appending chunks to the output file?",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 3
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e196f4b3_19387f68",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-11-16T17:41:09Z",
+      "side": 1,
+      "message": "WriteFileRule uses echo to write content. This has a maximum command limit. Thus, we are breaking the content into multiple files.\nAlso, we can\u0027t directly append content to an output file, as output files must be unique across Ninja rules.",
+      "parentUuid": "526486c8_7f4fa973",
       "range": {
         "startLine": 236,
         "startChar": 2,
@@ -185,6 +353,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "434ed835_336a6775",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-11-16T17:41:09Z",
+      "side": 1,
+      "message": "No, From what I understand the above logic writes 2 new rules, one to write smaller chunks and one to concatenate all to our base file. Please correct me if I am wrong.",
+      "parentUuid": "1a954c81_d085a2e0",
+      "range": {
+        "startLine": 235,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 8
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6889afb0_8aca1453",
@@ -208,6 +400,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fad7e1b_d4237932",
+        "filename": "testing/all_test_specs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-11-16T17:41:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6889afb0_8aca1453",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d391cbe6_f711e40d",
@@ -221,6 +437,30 @@
       "writtenOn": "2023-11-10T15:55:04Z",
       "side": 1,
       "message": "nit: here and below please use const for strings",
+      "range": {
+        "startLine": 32,
+        "startChar": 71,
+        "endLine": 32,
+        "endChar": 109
+      },
+      "revId": "f8040178502743bc90048ce5c4178cdeafa4e16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c74986_3cffc8ec",
+        "filename": "testing/all_test_specs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-11-16T17:41:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d391cbe6_f711e40d",
       "range": {
         "startLine": 32,
         "startChar": 71,
