@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41757246_7482eff7",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2084,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-11-16T22:15:15Z",
+      "side": 1,
+      "message": "Sorry, I meant move the environment variable check out of Soong completely and into the `soong_config.mk` file? It seems unnecessary to have two inputs to Soong, one coming via the config and one from an environment variable.\n\nKeep it if there\u0027s a good reason or you want to fix the bug quickly.",
+      "parentUuid": "fd0fc113_ee53c810",
+      "range": {
+        "startLine": 2084,
+        "startChar": 2,
+        "endLine": 2084,
+        "endChar": 40
+      },
+      "revId": "b93cbae0d23667ad3c71d3783556a77b6303b7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21d7c6e1_24b3e7e0",
         "filename": "android/config.go",
         "patchSetId": 1
