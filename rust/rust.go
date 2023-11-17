@@ -20,6 +20,7 @@ import (
 
 	"android/soong/bazel"
 	"android/soong/bloaty"
+	"android/soong/testing"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
 
 	"github.com/google/blueprint"
@@ -929,6 +930,16 @@ func (mod *Module) ccToolchain(ctx android.BaseModuleContext) cc_config.Toolchai
 func (d *Defaults) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 }
 
+var validTestTypes = map[string]bool{
+	"rust_test":      true,
+	"rust_test_host": true,
+}
+
+func isValidTestType(testType string) bool {
+	_, ok := validTestTypes[testType]
+	return ok
+}
+
 func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	ctx := &moduleContext{
 		ModuleContext: actx,
@@ -1037,6 +1048,9 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		}
 
 		ctx.Phony("rust", ctx.RustModule().OutputFile().Path())
+	}
+	if isValidTestType(ctx.ModuleType()) {
+		ctx.SetProvider(testing.TestModuleProviderKey, testing.TestModuleProviderData{})
 	}
 }
 
