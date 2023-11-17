@@ -50,9 +50,6 @@ type prebuiltKernelModulesProperties struct {
 	// Kernel version that these modules are for. Kernel modules are installed to
 	// /lib/modules/<kernel_version> directory in the corresponding partition. Default is "".
 	Kernel_version *string
-
-	// Whether this module is directly installable to one of the partitions. Default is true
-	Installable *bool
 }
 
 // prebuilt_kernel_modules installs a set of prebuilt kernel module files to the correct directory.
@@ -65,10 +62,6 @@ func prebuiltKernelModulesFactory() android.Module {
 	return module
 }
 
-func (pkm *prebuiltKernelModules) installable() bool {
-	return proptools.BoolDefault(pkm.properties.Installable, true)
-}
-
 func (pkm *prebuiltKernelModules) KernelVersion() string {
 	return proptools.StringDefault(pkm.properties.Kernel_version, "")
 }
@@ -78,9 +71,6 @@ func (pkm *prebuiltKernelModules) DepsMutator(ctx android.BottomUpMutatorContext
 }
 
 func (pkm *prebuiltKernelModules) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	if !pkm.installable() {
-		pkm.SkipInstall()
-	}
 	modules := android.PathsForModuleSrc(ctx, pkm.properties.Srcs)
 
 	depmodOut := runDepmod(ctx, modules)
