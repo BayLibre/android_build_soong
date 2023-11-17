@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5645fb_74033119",
+        "filename": "aconfig/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-17T21:26:57Z",
+      "side": 0,
+      "message": "Why are we removing this test file?",
+      "revId": "9915e03018b8befd78ba315d0a6607cad192b685",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
