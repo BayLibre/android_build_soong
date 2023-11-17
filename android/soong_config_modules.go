@@ -389,7 +389,7 @@ func loadSoongConfigModuleTypeDefinition(ctx LoadHookContext, from string) map[s
 		}
 		defer r.Close()
 
-		mtDef, errs := soongconfig.Parse(r, from)
+		mtDef, errs := soongconfig.Parse(r, from, ctx.Config().newSelectResolver())
 		if len(errs) > 0 {
 			reportErrors(ctx, from, errs...)
 			return (map[string]blueprint.ModuleFactory)(nil)

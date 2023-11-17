@@ -30,6 +30,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
+	"github.com/google/blueprint/parser"
 	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
@@ -2173,4 +2174,19 @@ func (c *config) AllApexContributions() []string {
 		}
 	}
 	return ret
+}
+
+type selectResolver struct {
+	values *map[string]string
+}
+
+func (this *selectResolver) GetSelectCondition(condition string) (string, bool) {
+	val, ok := (*this.values)[condition]
+	return val, ok
+}
+
+func (this *config) newSelectResolver() parser.SelectResolver {
+	return &selectResolver{
+		values: &this.productVariables.BuildFlags,
+	}
 }

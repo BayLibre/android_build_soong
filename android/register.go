@@ -163,6 +163,7 @@ func NewContext(config Config) *Context {
 	ctx.SetSrcDir(absSrcDir)
 	ctx.AddIncludeTags(config.IncludeTags()...)
 	ctx.AddSourceRootDirs(config.SourceRootDirs()...)
+	ctx.SetSelectResolver(config.newSelectResolver())
 	return ctx
 }
 

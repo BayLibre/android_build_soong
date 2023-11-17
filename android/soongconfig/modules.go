@@ -34,9 +34,9 @@ var SoongConfigProperty = proptools.FieldNameForProperty("soong_config_variables
 
 // loadSoongConfigModuleTypeDefinition loads module types from an Android.bp file.  It caches the
 // result so each file is only parsed once.
-func Parse(r io.Reader, from string) (*SoongConfigDefinition, []error) {
+func Parse(r io.Reader, from string, resolver parser.SelectResolver) (*SoongConfigDefinition, []error) {
 	scope := parser.NewScope(nil)
-	file, errs := parser.ParseAndEval(from, r, scope)
+	file, errs := parser.ParseAndEval(from, r, resolver, scope)
 
 	if len(errs) > 0 {
 		return nil, errs
@@ -50,7 +50,7 @@ func Parse(r io.Reader, from string) (*SoongConfigDefinition, []error) {
 	for _, def := range file.Defs {
 		switch def := def.(type) {
 		case *parser.Module:
-			newErrs := processImportModuleDef(mtDef, def)
+			newErrs := processImportModuleDef(resolver, mtDef, def)
 
 			if len(newErrs) > 0 {
 				errs = append(errs, newErrs...)
@@ -82,14 +82,14 @@ func Parse(r io.Reader, from string) (*SoongConfigDefinition, []error) {
 	return mtDef, nil
 }
 
-func processImportModuleDef(v *SoongConfigDefinition, def *parser.Module) (errs []error) {
+func processImportModuleDef(resolver parser.SelectResolver, v *SoongConfigDefinition, def *parser.Module) (errs []error) {
 	switch def.Type {
 	case "soong_config_module_type":
-		return processModuleTypeDef(v, def)
+		return processModuleTypeDef(resolver, v, def)
 	case "soong_config_string_variable":
-		return processStringVariableDef(v, def)
+		return processStringVariableDef(resolver, v, def)
 	case "soong_config_bool_variable":
-		return processBoolVariableDef(v, def)
+		return processBoolVariableDef(resolver, v, def)
 	default:
 		// Unknown module types will be handled when the file is parsed as a normal
 		// Android.bp file.
@@ -124,11 +124,11 @@ type ModuleTypeProperties struct {
 	Properties []string
 }
 
-func processModuleTypeDef(v *SoongConfigDefinition, def *parser.Module) (errs []error) {
+func processModuleTypeDef(resolver parser.SelectResolver, v *SoongConfigDefinition, def *parser.Module) (errs []error) {
 
 	props := &ModuleTypeProperties{}
 
-	_, errs = proptools.UnpackProperties(def.Properties, props)
+	_, errs = proptools.UnpackProperties(resolver, def.Properties, props)
 	if len(errs) > 0 {
 		return errs
 	}
@@ -166,10 +166,10 @@ type StringVariableProperties struct {
 	Values []string
 }
 
-func processStringVariableDef(v *SoongConfigDefinition, def *parser.Module) (errs []error) {
+func processStringVariableDef(resolver parser.SelectResolver, v *SoongConfigDefinition, def *parser.Module) (errs []error) {
 	stringProps := &StringVariableProperties{}
 
-	base, errs := processVariableDef(def, stringProps)
+	base, errs := processVariableDef(resolver, def, stringProps)
 	if len(errs) > 0 {
 		return errs
 	}
@@ -196,8 +196,8 @@ func processStringVariableDef(v *SoongConfigDefinition, def *parser.Module) (err
 	return nil
 }
 
-func processBoolVariableDef(v *SoongConfigDefinition, def *parser.Module) (errs []error) {
-	base, errs := processVariableDef(def)
+func processBoolVariableDef(resolver parser.SelectResolver, v *SoongConfigDefinition, def *parser.Module) (errs []error) {
+	base, errs := processVariableDef(resolver, def)
 	if len(errs) > 0 {
 		return errs
 	}
@@ -209,14 +209,14 @@ func processBoolVariableDef(v *SoongConfigDefinition, def *parser.Module) (errs 
 	return nil
 }
 
-func processVariableDef(def *parser.Module,
+func processVariableDef(resolver parser.SelectResolver, def *parser.Module,
 	extraProps ...interface{}) (cond baseVariable, errs []error) {
 
 	props := &VariableProperties{}
 
 	allProps := append([]interface{}{props}, extraProps...)
 
-	_, errs = proptools.UnpackProperties(def.Properties, allProps...)
+	_, errs = proptools.UnpackProperties(resolver, def.Properties, allProps...)
 	if len(errs) > 0 {
 		return baseVariable{}, errs
 	}
