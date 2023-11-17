@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b175450a_3f66992c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-11-17T01:50:22Z",
+      "side": 1,
+      "message": "I think I can +2 if the build systems team feels okay with the change itself but doesn\u0027t have a confidence about its purpose, need, etc. This is to not build APKs (especially the big ones like framework-res.apk) in a way that is specific to the selected product. With this change, if opt-ed in, product-specific resources are packaged separately as an RRO.",
+      "revId": "dd51201830c8fc49a3be921be8814eba02a47cd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
