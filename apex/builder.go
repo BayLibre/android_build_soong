@@ -80,6 +80,7 @@ func init() {
 	pctx.HostBinToolVariable("conv_linker_config", "conv_linker_config")
 	pctx.HostBinToolVariable("assemble_vintf", "assemble_vintf")
 	pctx.HostBinToolVariable("apex_elf_checker", "apex_elf_checker")
+	pctx.HostBinToolVariable("aconfig", "aconfig")
 }
 
 var (
@@ -245,6 +246,17 @@ var (
 		CommandDeps: []string{"${apex_elf_checker}", "${deapexer}", "${debugfs_static}", "${fsck_erofs}", "${config.ClangBin}/llvm-readelf"},
 		Description: "run apex_elf_checker --unwanted",
 	}, "tool_path", "unwanted")
+
+	// Combine all parsed_flags proto files into one to be packaged with the apex image.
+	// Temporarily copied from soong/aconfig/init.go before figuring out the rule out of
+	// scope issue when reusing it.
+	combineDeclarationsRule = pctx.AndroidStaticRule("combine_aconfig_declarations",
+		blueprint.RuleParams{
+			Command: `${aconfig} dump --format protobuf --out ${out} ${cache_files}`,
+			CommandDeps: []string{
+				"${aconfig}",
+			},
+		}, "cache_files")
 )
 
 // buildManifest creates buile rules to modify the input apex_manifest.json to add information
@@ -572,6 +584,7 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 
 		installMapSet[installMapPath.String()+":"+fi.installDir+"/"+fi.builtFile.Base()] = true
 	}
+
 	implicitInputs = append(implicitInputs, a.manifestPbOut)
 
 	if len(installMapSet) > 0 {
@@ -626,10 +639,28 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 	outHostBinDir := ctx.Config().HostToolPath(ctx, "").String()
 	prebuiltSdkToolsBinDir := filepath.Join("prebuilts", "sdk", "tools", runtime.GOOS, "bin")
 
+	defaultReadOnlyFiles := []string{"apex_manifest.json", "apex_manifest.pb"}
+	if len(a.aconfigFiles) > 0 {
+		apexAconfigFile := android.PathForModuleOut(ctx, "aconfig_flags.pb")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        combineDeclarationsRule,
+			Inputs:      a.aconfigFiles,
+			Output:      apexAconfigFile,
+			Description: "combine_aconfig_declarations",
+			Args: map[string]string{
+				"cache_files": android.JoinPathsWithPrefix(a.aconfigFiles, "--cache "),
+			},
+		})
+
+		copyCommands = append(copyCommands, "cp -f "+apexAconfigFile.String()+" "+imageDir.String())
+		implicitInputs = append(implicitInputs, apexAconfigFile)
+		defaultReadOnlyFiles = append(defaultReadOnlyFiles, apexAconfigFile.Base())
+	}
+
 	////////////////////////////////////////////////////////////////////////////////////
 	// Step 2: create canned_fs_config which encodes filemode,uid,gid of each files
 	// in this APEX. The file will be used by apexer in later steps.
-	cannedFsConfig := a.buildCannedFsConfig(ctx)
+	cannedFsConfig := a.buildCannedFsConfig(ctx, defaultReadOnlyFiles)
 	implicitInputs = append(implicitInputs, cannedFsConfig)
 
 	////////////////////////////////////////////////////////////////////////////////////
@@ -1080,8 +1111,8 @@ func (a *apexBundle) buildLintReports(ctx android.ModuleContext) {
 	a.lintReports = java.BuildModuleLintReportZips(ctx, depSetsBuilder.Build())
 }
 
-func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext) android.OutputPath {
-	var readOnlyPaths = []string{"apex_manifest.json", "apex_manifest.pb"}
+func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext, defaultReadOnlyFiles []string) android.OutputPath {
+	var readOnlyPaths = defaultReadOnlyFiles
 	var executablePaths []string // this also includes dirs
 	var appSetDirs []string
 	appSetFiles := make(map[string]android.Path)

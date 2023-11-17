@@ -24,6 +24,7 @@ import (
 	"sort"
 	"strings"
 
+	"android/soong/aconfig"
 	"android/soong/bazel/cquery"
 
 	"github.com/google/blueprint"
@@ -482,6 +483,8 @@ type apexBundle struct {
 	nativeApisUsedByModuleFile   android.ModuleOutPath
 	nativeApisBackedByModuleFile android.ModuleOutPath
 	javaApisUsedByModuleFile     android.ModuleOutPath
+
+	aconfigFiles []android.Path
 }
 
 // apexFileClass represents a type of file that can be included in APEX.
@@ -2008,6 +2011,8 @@ type visitorContext struct {
 
 	// visitor skips these from this list of module names
 	unwantedTransitiveDeps []string
+
+	aconfigFiles []android.Path
 }
 
 func (vctx *visitorContext) normalizeFileInfo(mctx android.ModuleContext) {
@@ -2132,6 +2137,7 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 					return false
 				}
 				vctx.filesInfo = append(vctx.filesInfo, af)
+				addAconfigFiles(vctx, ctx, child)
 				return true // track transitive dependencies
 			default:
 				ctx.PropertyErrorf("java_libs", "%q of type %q is not supported", depName, ctx.OtherModuleType(child))
@@ -2140,6 +2146,7 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 			switch ap := child.(type) {
 			case *java.AndroidApp:
 				vctx.filesInfo = append(vctx.filesInfo, apexFilesForAndroidApp(ctx, ap)...)
+				addAconfigFiles(vctx, ctx, child)
 				return true // track transitive dependencies
 			case *java.AndroidAppImport:
 				vctx.filesInfo = append(vctx.filesInfo, apexFilesForAndroidApp(ctx, ap)...)
@@ -2378,6 +2385,13 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 	return false
 }
 
+func addAconfigFiles(vctx *visitorContext, ctx android.ModuleContext, module blueprint.Module) {
+	dep := ctx.OtherModuleProvider(module, aconfig.TransitiveDeclarationsInfoProvider).(aconfig.TransitiveDeclarationsInfo)
+	if len(dep.AconfigFiles) > 0 && dep.AconfigFiles[ctx.ModuleName()] != nil {
+		vctx.aconfigFiles = append(vctx.aconfigFiles, dep.AconfigFiles[ctx.ModuleName()].ToList()...)
+	}
+}
+
 func (a *apexBundle) shouldCheckDuplicate(ctx android.ModuleContext) bool {
 	// TODO(b/263308293) remove this
 	if a.properties.IsCoverageVariant {
@@ -2459,6 +2473,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// 3) some fields in apexBundle struct are configured
 	a.installDir = android.PathForModuleInstall(ctx, "apex")
 	a.filesInfo = vctx.filesInfo
+	a.aconfigFiles = vctx.aconfigFiles
 
 	a.setPayloadFsType(ctx)
 	a.setSystemLibLink(ctx)
