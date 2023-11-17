@@ -16,6 +16,24 @@
       "message": "[ABTD run](https://android-build.corp.google.com/builds/abtd/run/L75700030000354053) on the previously failing target built successfully.",
       "revId": "c1b04d6bc11160bd95cdc2156cce25b04beb6f6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74a4b560_0f1d65d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-11-17T02:53:11Z",
+      "side": 1,
+      "message": "Would you know why it failed previously? Were other CLs submitted since then that combined to fix it?",
+      "parentUuid": "1f972219_498b6809",
+      "revId": "c1b04d6bc11160bd95cdc2156cce25b04beb6f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
