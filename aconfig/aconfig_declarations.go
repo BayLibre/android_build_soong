@@ -38,6 +38,9 @@ type DeclarationsModule struct {
 
 		// Values from TARGET_RELEASE / RELEASE_ACONFIG_VALUE_SETS
 		Values []string `blueprint:"mutated"`
+
+		// Container(system/vendor/apex) that this module belongs to
+		Container string
 	}
 
 	intermediatePath android.WritablePath
@@ -112,6 +115,7 @@ func optionalVariable(prefix string, value string) string {
 // Provider published by aconfig_value_set
 type declarationsProviderData struct {
 	Package          string
+	Container        string
 	IntermediatePath android.WritablePath
 }
 
@@ -158,6 +162,7 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 
 	ctx.SetProvider(declarationsProviderKey, declarationsProviderData{
 		Package:          module.properties.Package,
+		Container:        module.properties.Container,
 		IntermediatePath: intermediatePath,
 	})
 
