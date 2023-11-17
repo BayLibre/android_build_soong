@@ -76,8 +76,6 @@ var (
 		"libchrome-crypto-include",
 		"libchrome-include",
 		"libcore-non-cts-tests-txt",
-		"libxml2_schema_fuzz_corpus",
-		"libxml2_xml_fuzz_corpus",
 		"pixelatoms_defs.h",
 		"pixelstatsatoms.cpp",
 		"pixelstatsatoms.h",
