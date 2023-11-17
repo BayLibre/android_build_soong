@@ -24,6 +24,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/aconfig"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
 
 	"github.com/google/blueprint"
@@ -921,6 +922,9 @@ type Module struct {
 	apexSdkVersion android.ApiLevel
 
 	hideApexVariantFromMake bool
+
+	// Aconfig files for all transitive deps.  Also exposed via TransitiveDeclarationsInfo
+	transitiveAconfigFiles map[string]*android.DepSet[android.Path]
 }
 
 func (c *Module) AddJSONData(d *map[string]interface{}) {
@@ -2329,6 +2333,8 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 			}
 		}
 	}
+
+	aconfig.CollectTransitiveAconfigFiles(ctx, &c.transitiveAconfigFiles)
 
 	c.maybeInstall(ctx, apexInfo)
 }
