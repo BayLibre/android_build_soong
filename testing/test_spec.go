@@ -27,6 +27,10 @@ import (
 // ErrTestModuleDataNotFound is the error message for missing test module provider data.
 const ErrTestModuleDataNotFound = "The module '%s' does not provide test specification data. Hint: This issue could arise if either the module is not a valid testing module or if it lacks the required 'TestModuleProviderKey' provider.\n"
 
+func IsTestModule(testType string, testModules map[string]bool) bool {
+	_, ok := testModules[testType]
+	return ok
+}
 func TestSpecFactory() android.Module {
 	module := &TestSpecModule{}
 
