@@ -37,10 +37,10 @@ func (this *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx android.Si
 	// Find all of the aconfig_declarations modules
 	var cacheFiles android.Paths
 	ctx.VisitAllModules(func(module android.Module) {
-		if !ctx.ModuleHasProvider(module, declarationsProviderKey) {
+		if !ctx.ModuleHasProvider(module, DeclarationsProviderKey) {
 			return
 		}
-		decl := ctx.ModuleProvider(module, declarationsProviderKey).(declarationsProviderData)
+		decl := ctx.ModuleProvider(module, DeclarationsProviderKey).(DeclarationsProviderData)
 		cacheFiles = append(cacheFiles, decl.IntermediatePath)
 	})
 

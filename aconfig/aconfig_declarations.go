@@ -38,6 +38,9 @@ type DeclarationsModule struct {
 
 		// Values from TARGET_RELEASE / RELEASE_ACONFIG_VALUE_SETS
 		Values []string `blueprint:"mutated"`
+
+		// Container(system/vendor/apex) that this module belongs to
+		Container string
 	}
 
 	intermediatePath android.WritablePath
@@ -69,6 +72,8 @@ func (module *DeclarationsModule) DepsMutator(ctx android.BottomUpMutatorContext
 	if len(module.properties.Package) == 0 {
 		ctx.PropertyErrorf("package", "missing package property")
 	}
+	// TODO(b/311155208): Add mandatory check for container after all pre-existing
+	// ones are changed.
 
 	// Add a dependency on the aconfig_value_sets defined in
 	// RELEASE_ACONFIG_VALUE_SETS, and add any aconfig_values that
@@ -110,12 +115,13 @@ func optionalVariable(prefix string, value string) string {
 }
 
 // Provider published by aconfig_value_set
-type declarationsProviderData struct {
+type DeclarationsProviderData struct {
 	Package          string
+	Container        string
 	IntermediatePath android.WritablePath
 }
 
-var declarationsProviderKey = blueprint.NewProvider(declarationsProviderData{})
+var DeclarationsProviderKey = blueprint.NewProvider(DeclarationsProviderData{})
 
 func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// Get the values that came from the global RELEASE_ACONFIG_VALUE_SETS flag
@@ -156,8 +162,9 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 		},
 	})
 
-	ctx.SetProvider(declarationsProviderKey, declarationsProviderData{
+	ctx.SetProvider(DeclarationsProviderKey, DeclarationsProviderData{
 		Package:          module.properties.Package,
+		Container:        module.properties.Container,
 		IntermediatePath: intermediatePath,
 	})
 
