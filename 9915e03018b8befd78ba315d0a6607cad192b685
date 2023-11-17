@@ -16,6 +16,24 @@
       "message": "Why are we removing this test file?",
       "revId": "9915e03018b8befd78ba315d0a6607cad192b685",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caad15f2_bc8e2169",
+        "filename": "aconfig/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-17T21:29:08Z",
+      "side": 0,
+      "message": "Oops, that was an accident while trying to fix `aconfig_conversion_test.go`.",
+      "parentUuid": "2e5645fb_74033119",
+      "revId": "9915e03018b8befd78ba315d0a6607cad192b685",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
