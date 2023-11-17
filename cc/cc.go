@@ -24,6 +24,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/testing"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
 
 	"github.com/google/blueprint"
@@ -2175,6 +2176,18 @@ func (c *Module) stubLibraryMultipleApexViolation(ctx android.ModuleContext) boo
 	return false
 }
 
+var validTestTypes = map[string]bool{
+	"cc_benchmark": true,
+	"cc_fuzz":      true,
+	"cc_test":      true,
+	"cc_test_host": true,
+}
+
+func isValidTestType(testType string) bool {
+	_, ok := validTestTypes[testType]
+	return ok
+}
+
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	// Handle the case of a test module split by `test_per_src` mutator.
 	//
@@ -2328,6 +2341,9 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 				i.collectHeadersForSnapshot(ctx)
 			}
 		}
+	}
+	if isValidTestType(ctx.ModuleType()) {
+		ctx.SetProvider(testing.TestModuleProviderKey, testing.TestModuleProviderData{})
 	}
 
 	c.maybeInstall(ctx, apexInfo)
