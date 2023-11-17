@@ -34,6 +34,24 @@
       "parentUuid": "1f972219_498b6809",
       "revId": "c1b04d6bc11160bd95cdc2156cce25b04beb6f6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "367b8a75_d25a04cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-11-17T03:03:13Z",
+      "side": 1,
+      "message": "`config.productVariables.Build_from_text_stub` was being set to values different from `config.BuildFromTextStub()`, which I believe was being caused because product variables are being read after `config.productVariables.Build_from_text_stub` was set, presumably in `decodeTargetProductVariables()`. I\u0027ve resolved the problem in this CL by setting the value in the later stage of NewConfig().",
+      "parentUuid": "74a4b560_0f1d65d7",
+      "revId": "c1b04d6bc11160bd95cdc2156cce25b04beb6f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
