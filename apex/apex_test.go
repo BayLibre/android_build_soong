@@ -25,6 +25,7 @@ import (
 	"strings"
 	"testing"
 
+	"android/soong/aconfig/codegen"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -151,6 +152,7 @@ var prepareForApexTest = android.GroupFixturePreparers(
 	prebuilt_etc.PrepareForTestWithPrebuiltEtc,
 	rust.PrepareForTestWithRustDefaultModules,
 	sh.PrepareForTestWithShBuildComponents,
+	codegen.PrepareForTestWithAconfigBuildComponents,
 
 	PrepareForTestWithApexBuildComponents,
 
@@ -10755,4 +10757,115 @@ func TestFileSystemShouldSkipApexLibraries(t *testing.T) {
 	android.AssertStringListDoesNotContain(t, "filesystem should not have libbar",
 		inputs.Strings(),
 		"out/soong/.intermediates/libbar/android_arm64_armv8-a_shared/libbar.so")
+}
+
+func TestAconfigFiles(t *testing.T) {
+	ctx := testApex(t, `
+		apex_defaults {
+			name: "myapex-defaults",
+			manifest: ":myapex.manifest",
+			androidManifest: ":myapex.androidmanifest",
+			key: "myapex.key",
+			java_libs: [
+				"my_java_library_foo",
+				"my_java_library_bar",
+			],
+			updatable: false,
+		}
+
+		apex {
+			name: "myapex",
+			defaults: ["myapex-defaults"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		filegroup {
+			name: "myapex.manifest",
+			srcs: ["apex_manifest.json"],
+		}
+
+		filegroup {
+			name: "myapex.androidmanifest",
+			srcs: ["AndroidManifest.xml"],
+		}
+
+		java_library {
+			name: "my_java_library_foo",
+			srcs: ["foo/bar/MyClass.java"],
+			sdk_version: "none",
+			system_modules: "none",
+			static_libs: ["my_java_aconfig_library_foo"],
+			// TODO: remove //apex_available:platform
+			apex_available: [
+				"//apex_available:platform",
+				"myapex",
+			],
+		}
+
+		java_library {
+			name: "my_java_library_bar",
+			srcs: ["foo/bar/MyClass.java"],
+			sdk_version: "none",
+			system_modules: "none",
+			static_libs: ["my_java_aconfig_library_bar"],
+			// TODO: remove //apex_available:platform
+			apex_available: [
+				"//apex_available:platform",
+				"myapex",
+			],
+		}
+
+		aconfig_declarations {
+			name: "my_aconfig_declarations_foo",
+			package: "com.example.package",
+			container: "myapex",
+			srcs: ["foo.aconfig"],
+		}
+
+		java_aconfig_library {
+			name: "my_java_aconfig_library_foo",
+			aconfig_declarations: "my_aconfig_declarations_foo",
+			// TODO: remove //apex_available:platform
+			apex_available: [
+				"//apex_available:platform",
+				"myapex",
+			],
+		}
+
+		aconfig_declarations {
+			name: "my_aconfig_declarations_bar",
+			package: "com.example.package",
+			container: "myapex",
+			srcs: ["bar.aconfig"],
+		}
+
+		java_aconfig_library {
+			name: "my_java_aconfig_library_bar",
+			aconfig_declarations: "my_aconfig_declarations_bar",
+			// TODO: remove //apex_available:platform
+			apex_available: [
+				"//apex_available:platform",
+				"myapex",
+			],
+		}
+	`)
+
+	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
+
+	// Make sure that Android.mk is created
+	ab := ctx.ModuleForTests("myapex", "android_common_myapex").Module().(*apexBundle)
+	data := android.AndroidMkDataForTest(t, ctx, ab)
+	var builder strings.Builder
+	data.Custom(&builder, ab.BaseModuleName(), "TARGET_", "", data)
+
+	optFlags := apexRule.Args["opt_flags"]
+	ensureContains(t, optFlags, "--pubkey vendor/foo/devkeys/testkey.avbpubkey")
+
+	copyCmds := apexRule.Args["copy_commands"]
+	fmt.Println("CCCCCCCCC:", copyCmds)
 }

@@ -572,6 +572,16 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 
 		installMapSet[installMapPath.String()+":"+fi.installDir+"/"+fi.builtFile.Base()] = true
 	}
+
+	for _, d := range a.aconfigFiles {
+		relPath := d.RelativeToTop()
+		fmt.Println(relPath)
+		dataDest := imageDir.Join(ctx, "aconfig").String()
+
+		copyCommands = append(copyCommands, "cp -f "+d.String()+" "+dataDest)
+		implicitInputs = append(implicitInputs, d)
+	}
+
 	implicitInputs = append(implicitInputs, a.manifestPbOut)
 
 	if len(installMapSet) > 0 {

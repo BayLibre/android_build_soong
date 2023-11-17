@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package aconfig
+package codegen
 
 import (
 	"fmt"
@@ -34,14 +34,25 @@ func runJavaAndroidMkTest(t *testing.T, bp string) {
 		ExtendWithErrorHandler(android.FixtureExpectsNoErrors).
 		RunTestWithBp(t, bp+`
 			aconfig_declarations {
-				name: "my_aconfig_declarations",
+				name: "my_aconfig_declarations_foo",
 				package: "com.example.package",
 				srcs: ["foo.aconfig"],
 			}
 
 			java_aconfig_library {
-				name: "my_java_aconfig_library",
-				aconfig_declarations: "my_aconfig_declarations",
+				name: "my_java_aconfig_library_foo",
+				aconfig_declarations: "my_aconfig_declarations_foo",
+			}
+
+			aconfig_declarations {
+				name: "my_aconfig_declarations_bar",
+				package: "com.example.package",
+				srcs: ["bar.aconfig"],
+			}
+
+			java_aconfig_library {
+				name: "my_java_aconfig_library_bar",
+				aconfig_declarations: "my_aconfig_declarations_bar",
 			}
 		`)
 
@@ -50,9 +61,15 @@ func runJavaAndroidMkTest(t *testing.T, bp string) {
 	entry := android.AndroidMkEntriesForTest(t, result.TestContext, module)[0]
 
 	makeVar := entry.EntryMap["LOCAL_ACONFIG_FILES"]
-	android.AssertIntEquals(t, "len(LOCAL_ACONFIG_FILES)", 1, len(makeVar))
-	if !strings.HasSuffix(makeVar[0], "intermediate.pb") {
-		t.Errorf("LOCAL_ACONFIG_FILES should end with /intermediates.pb, instead it is: %s", makeVar[0])
+	android.AssertIntEquals(t, "len(LOCAL_ACONFIG_FILES)", 2, len(makeVar))
+outer:
+	for _, expected := range []string{"my_aconfig_declarations_bar/intermediate.pb", "my_aconfig_declarations_foo/intermediate.pb"} {
+		for _, file := range makeVar {
+			if strings.HasSuffix(file, expected) {
+				continue outer
+			}
+		}
+		t.Errorf("LOCAL_ACONFIG_FILES doesn't contain %s", expected)
 	}
 }
 
@@ -64,7 +81,8 @@ func TestAndroidMkJavaLibrary(t *testing.T) {
 				"src/foo.java",
 			],
 			static_libs: [
-				"my_java_aconfig_library",
+				"my_java_aconfig_library_foo",
+				"my_java_aconfig_library_bar",
 			],
 			platform_apis: true,
 		}
@@ -81,7 +99,8 @@ func TestAndroidMkAndroidApp(t *testing.T) {
 				"src/foo.java",
 			],
 			static_libs: [
-				"my_java_aconfig_library",
+				"my_java_aconfig_library_foo",
+				"my_java_aconfig_library_bar",
 			],
 			platform_apis: true,
 		}
@@ -98,7 +117,8 @@ func TestAndroidMkBinary(t *testing.T) {
 				"src/foo.java",
 			],
 			static_libs: [
-				"my_java_aconfig_library",
+				"my_java_aconfig_library_foo",
+				"my_java_aconfig_library_bar",
 			],
 			platform_apis: true,
 			main_class: "foo",
@@ -116,7 +136,8 @@ func TestAndroidMkAndroidLibrary(t *testing.T) {
 				"src/foo.java",
 			],
 			static_libs: [
-				"my_java_aconfig_library",
+				"my_java_aconfig_library_foo",
+				"my_java_aconfig_library_bar",
 			],
 			platform_apis: true,
 		}
@@ -134,7 +155,8 @@ func TestAndroidMkBinaryThatLinksAgainstAar(t *testing.T) {
 				"src/foo.java",
 			],
 			static_libs: [
-				"my_java_aconfig_library",
+				"my_java_aconfig_library_foo",
+				"my_java_aconfig_library_bar",
 			],
 			platform_apis: true,
 		}
