@@ -16,9 +16,11 @@ package android
 
 import (
 	"bytes"
+	"cmp"
 	"fmt"
 	"path/filepath"
 	"runtime"
+	"slices"
 	"sort"
 	"strings"
 
@@ -242,6 +244,7 @@ func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 	var dists []dist
 	var phonies []phony
 	var katiInstalls []katiInstall
+	var katiDedupedInstalls []katiInstall
 	var katiSymlinks []katiInstall
 
 	providers := append([]makeVarsProvider(nil), makeVarsInitProviders...)
@@ -275,9 +278,24 @@ func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 
 		if m.ExportedToMake() {
 			katiInstalls = append(katiInstalls, m.base().katiInstalls...)
+			katiDedupedInstalls = append(katiDedupedInstalls, m.base().katiDedupedInstalls...)
 			katiSymlinks = append(katiSymlinks, m.base().katiSymlinks...)
 		}
 	})
+
+	compareKatiInstalls := func(a, b katiInstall) int {
+		aTo, bTo := a.to.String(), b.to.String()
+		if aTo == bTo {
+			aFrom, bFrom := a.from.String(), b.from.String()
+			return cmp.Compare(aFrom, bFrom)
+		}
+		return cmp.Compare(aTo, bTo)
+	}
+	slices.SortFunc(katiDedupedInstalls, compareKatiInstalls)
+	katiDedupedInstalls = slices.CompactFunc(katiDedupedInstalls, func(a, b katiInstall) bool {
+		return compareKatiInstalls(a, b) == 0
+	})
+	katiInstalls = append(katiInstalls, katiDedupedInstalls...)
 
 	if ctx.Failed() {
 		return
