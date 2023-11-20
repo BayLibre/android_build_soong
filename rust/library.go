@@ -489,7 +489,7 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 	var outputFile android.ModuleOutPath
 	var ret buildOutput
 	var fileName string
-	crateRootPath := library.crateRootPath(ctx)
+	crateRootPath := library.crateRootPath()
 
 	if library.sourceProvider != nil {
 		deps.srcProviderFiles = append(deps.srcProviderFiles, library.sourceProvider.Srcs()...)
@@ -584,12 +584,12 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 	return ret
 }
 
-func (library *libraryDecorator) crateRootPath(ctx ModuleContext) android.Path {
+func (library *libraryDecorator) crateRootPath() android.Path {
 	if library.sourceProvider != nil {
 		// Assume the first source from the source provider is the library entry point.
 		return library.sourceProvider.Srcs()[0]
 	} else {
-		return library.baseCompiler.crateRootPath(ctx)
+		return library.baseCompiler.crateRootPath()
 	}
 }
 
@@ -604,7 +604,7 @@ func (library *libraryDecorator) rustdoc(ctx ModuleContext, flags Flags,
 		return android.OptionalPath{}
 	}
 
-	return android.OptionalPathForPath(Rustdoc(ctx, library.crateRootPath(ctx),
+	return android.OptionalPathForPath(Rustdoc(ctx, library.crateRootPath(),
 		deps, flags))
 }
 

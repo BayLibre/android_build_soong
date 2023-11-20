@@ -71,7 +71,7 @@ type compiler interface {
 	unstrippedOutputFilePath() android.Path
 	strippedOutputFilePath() android.OptionalPath
 
-	crateRootPath(ctx ModuleContext) android.Path
+	crateRootPath() android.Path
 }
 
 func (compiler *baseCompiler) edition() string {
@@ -248,6 +248,9 @@ type baseCompiler struct {
 	// singleton-generation passes like rustdoc/rust_project.json, but should
 	// be stashed during initial generation.
 	cachedCargoOutDir android.ModuleOutPath
+	// Calculated crate root cached internally because ModuleContext is not
+	// available to singleton targets like rustdoc/rust_project.json
+	cachedCrateRootPath android.Path
 }
 
 func (compiler *baseCompiler) Disabled() bool {
@@ -399,6 +402,11 @@ func (compiler *baseCompiler) rustdoc(ctx ModuleContext, flags Flags,
 
 func (compiler *baseCompiler) initialize(ctx ModuleContext) {
 	compiler.cachedCargoOutDir = android.PathForModuleOut(ctx, genSubDir)
+	if compiler.Properties.Crate_root == nil {
+		compiler.cachedCrateRootPath = srcPathFromModuleSrcs(ctx, compiler.Properties.Srcs)
+	} else {
+		compiler.cachedCrateRootPath = android.PathForModuleSrc(ctx, *compiler.Properties.Crate_root)
+	}
 }
 
 func (compiler *baseCompiler) cargoOutDir() android.OptionalPath {
@@ -539,21 +547,12 @@ func (compiler *baseCompiler) relativeInstallPath() string {
 	return String(compiler.Properties.Relative_install_path)
 }
 
-func (compiler *baseCompiler) crateRootPath(ctx ModuleContext) android.Path {
-	if compiler.Properties.Crate_root == nil {
-		path := srcPathFromModuleSrcs(ctx, compiler.Properties.Srcs)
-		return path
-	} else {
-		return android.PathForModuleSrc(ctx, *compiler.Properties.Crate_root)
-	}
+func (compiler *baseCompiler) crateRootPath() android.Path {
+	return compiler.cachedCrateRootPath
 }
 
 // Returns the Path for the main source file along with Paths for generated source files from modules listed in srcs.
 func srcPathFromModuleSrcs(ctx ModuleContext, srcs []string) android.Path {
-	if len(srcs) == 0 {
-		ctx.PropertyErrorf("srcs", "srcs must not be empty")
-	}
-
 	// The srcs can contain strings with prefix ":".
 	// They are dependent modules of this module, with android.SourceDepTag.
 	// They are not the main source file compiled by rustc.
@@ -580,5 +579,8 @@ func srcPathFromModuleSrcs(ctx ModuleContext, srcs []string) android.Path {
 	// TODO: b/297264540 - once all modules are sandboxed, we need to select the proper
 	// entry point file from Srcs rather than taking the first one
 	paths := android.PathsForModuleSrc(ctx, srcs)
+	if len(paths) == 0 {
+		return nil
+	}
 	return paths[srcIndex]
 }
