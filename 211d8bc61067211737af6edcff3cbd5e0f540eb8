@@ -16,6 +16,24 @@
       "message": "Mixed tabs and spaces. (It\u0027s in the string literal which is why gofmt didn\u0027t catch it). Also please make sure you run this file through gofmt.",
       "revId": "211d8bc61067211737af6edcff3cbd5e0f540eb8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4862e720_67be20b9",
+        "filename": "java/test_spec_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-11-20T21:33:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f2a538c3_4e51dd4d",
+      "revId": "211d8bc61067211737af6edcff3cbd5e0f540eb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
