@@ -33,6 +33,24 @@
       "message": "Can we just move this `ExistentPathForSource` to just after line 349 instead of adding the boolean?",
       "revId": "28d06d2eacef769b66d2d49a0d2bee73a4f4692f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5659d69_7fa654f3",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-20T18:51:14Z",
+      "side": 1,
+      "message": "Nevermind, it also applies when specifying it as not a module.",
+      "parentUuid": "6af593d7_715a41f0",
+      "revId": "28d06d2eacef769b66d2d49a0d2bee73a4f4692f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
