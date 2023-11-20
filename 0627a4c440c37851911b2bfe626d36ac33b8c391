@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03b6ad73_9516547c",
+        "filename": "android/defs.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-11-20T20:23:42Z",
+      "side": 1,
+      "message": "What\u0027s the difference between this and WriteFileRuleVerbatim above? I can\u0027t tell from the comment.",
+      "revId": "0627a4c440c37851911b2bfe626d36ac33b8c391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
