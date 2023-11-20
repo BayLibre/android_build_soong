@@ -501,6 +501,12 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 		rule.Remoteable(android.RemoteRuleSupports{RBE: true})
 		execStrategy := ctx.Config().GetenvWithDefault("RBE_METALAVA_EXEC_STRATEGY", remoteexec.LocalExecStrategy)
 		compare, _ := strconv.ParseBool(ctx.Config().GetenvWithDefault("RBE_METALAVA_COMPARE", "false"))
+		// The default for rewrapper is true. Let's make sure that is the case here as well.
+		remoteUpdateCacheStr := ctx.Config().GetenvWithDefault("RBE_METALAVA_REMOTE_UPDATE_CACHE", "true")
+		remoteUpdateCache, err := strconv.ParseBool(remoteUpdateCacheStr)
+		if err != nil {
+			remoteUpdateCache = true
+		}
 		labels := map[string]string{"type": "tool", "name": "metalava"}
 		// TODO: metalava pool rejects these jobs
 		pool := ctx.Config().GetenvWithDefault("RBE_METALAVA_POOL", "java16")
@@ -512,6 +518,7 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 			Compare:         compare,
 			NumLocalRuns:    1,
 			NumRemoteRuns:   1,
+			RemoteUpdateCache: remoteUpdateCache,
 		})
 	}
 
