@@ -94,6 +94,21 @@ var (
 				"${aconfig}",
 			},
 		}, "cache_files")
+
+	// For exported_java_aconfig_library: Generate a JAR from all
+	// java_aconfig_libraries to be consumed by apps built outside the
+	// platform
+	exportedJavaRule = pctx.AndroidStaticRule("exported_java_aconfig_library",
+		blueprint.RuleParams{
+			Command: `rm -rf ${out}.tmp` +
+				`&& for cache in ${cache_files}; do ${aconfig} create-java-lib --cache $$cache --out ${out}.tmp; done` +
+				`&& $soong_zip -write_if_changed -jar -o ${out} -C ${out}.tmp -D ${out}.tmp` +
+				`&& rm -rf ${out}.tmp`,
+			CommandDeps: []string{
+				"$aconfig",
+				"$soong_zip",
+			},
+		}, "cache_files")
 )
 
 func init() {
@@ -110,4 +125,5 @@ func RegisterBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("java_aconfig_library", JavaDeclarationsLibraryFactory)
 	ctx.RegisterModuleType("rust_aconfig_library", RustAconfigLibraryFactory)
 	ctx.RegisterParallelSingletonType("all_aconfig_declarations", AllAconfigDeclarationsFactory)
+	ctx.RegisterParallelSingletonType("exported_java_aconfig_library", ExportedJavaDeclarationsLibraryFactory)
 }
