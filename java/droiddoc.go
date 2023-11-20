@@ -414,15 +414,6 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 		}
 		filtered := []android.Path{}
 		for _, src := range srcs {
-			if src.Ext() != ".java" {
-				// Don't filter-out non-Java (=generated sources) by package names. This is not ideal,
-				// but otherwise metalava emits stub sources having references to the generated AIDL classes
-				// in filtered-out pacages (e.g. com.android.internal.*).
-				// TODO(b/141149570) We need to fix this by introducing default private constructors or
-				// fixing metalava to not emit constructors having references to unknown classes.
-				filtered = append(filtered, src)
-				continue
-			}
 			packageName := strings.ReplaceAll(filepath.Dir(src.Rel()), "/", ".")
 			if android.HasAnyPrefix(packageName, filterPackages) {
 				filtered = append(filtered, src)
