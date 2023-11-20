@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f493bd4e_a485078d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-11-20T01:58:10Z",
+      "side": 1,
+      "message": "LGTM.\n\nBtw, it seems to be fine even if we don\u0027t preprocess file_contexts for apex, at least for your specific case. File_contexts with an additional entry doesn\u0027t cause any problem.",
+      "revId": "28d06d2eacef769b66d2d49a0d2bee73a4f4692f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
