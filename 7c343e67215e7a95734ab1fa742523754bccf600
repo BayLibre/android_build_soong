@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65140106_bc0a05fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-11-20T20:26:22Z",
+      "side": 1,
+      "message": "Ditto for",
+      "revId": "7c343e67215e7a95734ab1fa742523754bccf600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb6879e4_184acea4",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2179,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-11-20T20:26:22Z",
+      "side": 1,
+      "message": "Please add a bool to cc.Module that the factories can set, instead of having this lookup table.",
+      "revId": "7c343e67215e7a95734ab1fa742523754bccf600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dd86371_55377f58",
+        "filename": "rust/rust.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-11-20T20:26:22Z",
+      "side": 1,
+      "message": "Ditto for rust.Module",
+      "revId": "7c343e67215e7a95734ab1fa742523754bccf600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8774d483_d6d4d641",
+        "filename": "testing/test_spec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-11-20T20:26:22Z",
+      "side": 1,
+      "message": "Shouldn\u0027t need this.",
+      "revId": "7c343e67215e7a95734ab1fa742523754bccf600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
