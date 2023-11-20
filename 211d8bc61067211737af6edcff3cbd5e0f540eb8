@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a538c3_4e51dd4d",
+        "filename": "java/test_spec_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-11-20T20:29:42Z",
+      "side": 1,
+      "message": "Mixed tabs and spaces. (It\u0027s in the string literal which is why gofmt didn\u0027t catch it). Also please make sure you run this file through gofmt.",
+      "revId": "211d8bc61067211737af6edcff3cbd5e0f540eb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
