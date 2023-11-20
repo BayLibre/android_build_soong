@@ -39,6 +39,30 @@
       },
       "revId": "ca9858a3c46ca0fb8d3325c36265358dbf56d650",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80b5d209_962e2b0b",
+        "filename": "android/code_metadata.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-11-20T14:43:13Z",
+      "side": 1,
+      "message": "Soong is using this format everywhere else too. Using the same convention here.",
+      "parentUuid": "ea9fa9f3_dd57e245",
+      "range": {
+        "startLine": 70,
+        "startChar": 32,
+        "endLine": 70,
+        "endChar": 143
+      },
+      "revId": "ca9858a3c46ca0fb8d3325c36265358dbf56d650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

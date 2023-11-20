@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cdefbfa_5f64cca4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-11-20T14:43:13Z",
+      "side": 1,
+      "message": "Migrated the code to soong/testing. And added test for Code metadata.",
+      "revId": "d21dab13110e4f129420319bdd5f2794422cdd3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
