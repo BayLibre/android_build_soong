@@ -149,10 +149,12 @@ func (prebuilt *prebuiltLibraryDecorator) compile(ctx ModuleContext, flags Flags
 	prebuilt.flagExporter.exportLinkDirs(android.PathsForModuleSrc(ctx, prebuilt.Properties.Link_dirs).Strings()...)
 	prebuilt.flagExporter.setProvider(ctx)
 
-	srcPath, paths := srcPathFromModuleSrcs(ctx, prebuilt.prebuiltSrcs())
-	if len(paths) > 0 {
+	srcs := android.PathsForModuleSrc(ctx, prebuilt.prebuiltSrcs())
+	if len(srcs) != 1 {
 		ctx.PropertyErrorf("srcs", "prebuilt libraries can only have one entry in srcs (the prebuilt path)")
 	}
+	srcPath := srcs[0]
+
 	prebuilt.baseCompiler.unstrippedOutputFile = srcPath
 	return buildOutput{outputFile: srcPath}
 }
@@ -206,10 +208,12 @@ func (prebuilt *prebuiltProcMacroDecorator) compile(ctx ModuleContext, flags Fla
 	prebuilt.flagExporter.exportLinkDirs(android.PathsForModuleSrc(ctx, prebuilt.Properties.Link_dirs).Strings()...)
 	prebuilt.flagExporter.setProvider(ctx)
 
-	srcPath, paths := srcPathFromModuleSrcs(ctx, prebuilt.prebuiltSrcs())
-	if len(paths) > 0 {
+	srcs := android.PathsForModuleSrc(ctx, prebuilt.prebuiltSrcs())
+	if len(srcs) != 1 {
 		ctx.PropertyErrorf("srcs", "prebuilt libraries can only have one entry in srcs (the prebuilt path)")
 	}
+	srcPath := srcs[0]
+
 	prebuilt.baseCompiler.unstrippedOutputFile = srcPath
 	return buildOutput{outputFile: srcPath}
 }
