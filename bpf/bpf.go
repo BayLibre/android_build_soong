@@ -58,6 +58,7 @@ var (
 )
 
 func registerBpfBuildComponents(ctx android.RegistrationContext) {
+	ctx.RegisterModuleType("bpf_defaults", defaultsFactory)
 	ctx.RegisterModuleType("bpf", BpfFactory)
 }
 
@@ -79,11 +80,18 @@ type BpfProperties struct {
 
 	// additional cflags that should be used to build the bpf variant of
 	// the C/C++ module.
-	Cflags []string
+	Cflags []string `android:"arch_variant"`
 
-	// directories (relative to the root of the source tree) that will
+	// list of directories relative to the root of the source tree that will
 	// be added to the include paths using -I.
-	Include_dirs []string
+	// If possible, don't use this. If adding paths from the current directory use
+	// local_include_dirs. If adding paths from other modules use export_include_dirs in
+	// that module.
+	Include_dirs []string `android:"arch_variant"`
+
+	// list of directories relative to the Blueprint file that will
+	// be added to the include path using -I.
+	Local_include_dirs []string `android:"arch_variant"`
 
 	// optional subdirectory under which this module is installed into.
 	Sub_dir string
@@ -98,6 +106,7 @@ type BpfProperties struct {
 
 type bpf struct {
 	android.ModuleBase
+	android.DefaultableModuleBase
 	android.BazelModuleBase
 
 	properties BpfProperties
@@ -159,6 +168,9 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		"-I " + ctx.ModuleDir(),
 	}
 
+	for _, dir := range android.PathsForModuleSrc(ctx, bpf.properties.Local_include_dirs) {
+		cflags = append(cflags, "-I " +dir.String())
+	}
 	for _, dir := range android.PathsForSource(ctx, bpf.properties.Include_dirs) {
 		cflags = append(cflags, "-I "+dir.String())
 	}
@@ -286,6 +298,26 @@ func (bpf *bpf) OutputFiles(tag string) (android.Paths, error) {
 	}
 }
 
+type Defaults struct {
+	android.ModuleBase
+	android.DefaultsModuleBase
+}
+
+func defaultsFactory() android.Module {
+	return DefaultsFactory()
+}
+
+func DefaultsFactory(props ...interface{}) android.Module {
+	module := &Defaults{}
+
+	module.AddProperties(props...)
+	module.AddProperties(&BpfProperties{})
+	
+	android.InitDefaultsModule(module)
+
+	return module
+}
+
 func (bpf *bpf) SubDir() string {
 	return bpf.properties.Sub_dir
 }
@@ -297,7 +329,8 @@ func BpfFactory() android.Module {
 
 	module.AddProperties(&module.properties)
 
-	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
+	android.InitDefaultableModule(module)
 	android.InitBazelModule(module)
 	return module
 }
