@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f5c0f12_5a7f8669",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-11-21T22:04:00Z",
+      "side": 1,
+      "message": "The constants seem to be unused, but it may be worth reaching out to the owners if they are okay with the diffs being introduced.",
+      "revId": "babb750cdf0e811ee7dda2e1e23d028d533b95dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
