@@ -117,6 +117,17 @@ func inList(s string, list []string) bool {
 // Command is the type of soong_ui execution. Only one type of
 // execution is specified. The args are specific to the command.
 func main() {
+        // Didn't set 1) FLAG_invocation_id, 2) FLAG_log_dir, 3) FLAG_output_dir, 4) FLAG_platform
+        // as these 4 env variables need build_id as input.
+        os.Setenv("FLAG_cpp_dependency_scanner_plugin", "prebuilts/remoteexecution-client/live/dependency_scanner_go_plugin.so")
+        // os.Setenv("FLAG_exec_root", "$PWD")
+        os.Setenv("FLAG_instance", "projects/android-build-farm/instances/default_instance")
+        os.Setenv("FLAG_re_proxy", "prebuilts/remoteexecution-client/live/reproxy")
+        os.Setenv("FLAG_reproxy_wait_seconds", "20")
+        os.Setenv("FLAG_server_address", "unix:///tmp/reproxy_$RANDOM.sock")
+        os.Setenv("FLAG_service", "remotebuildexecution.googleapis.com:443")
+        os.Setenv("FLAG_shutdown_proxy", "true")
+        os.Setenv("FLAG_use_gce_credentials", "true")
 	c, args := getCommand(os.Args)
 	if c == nil {
 		fmt.Fprintf(os.Stderr, "The `soong` native UI is not yet available.\n")
