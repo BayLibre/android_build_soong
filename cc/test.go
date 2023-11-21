@@ -608,6 +608,10 @@ func (benchmark *benchmarkDecorator) install(ctx ModuleContext, file android.Pat
 	var configs []tradefed.Config
 	if Bool(benchmark.Properties.Require_root) {
 		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", nil})
+	} else {
+		var options []tradefed.Option
+		options = append(options, tradefed.Option{Name: "force-root", Value: "false"})
+		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", options})
 	}
 	benchmark.testConfig = tradefed.AutoGenTestConfig(ctx, tradefed.AutoGenTestConfigOptions{
 		TestConfigProp:         benchmark.Properties.Test_config,
