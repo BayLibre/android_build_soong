@@ -20,6 +20,7 @@ import (
 	"io"
 	"os"
 	"regexp"
+	"runtime"
 	"strings"
 	"syscall"
 	"time"
@@ -128,6 +129,8 @@ func (n *NinjaReader) run() {
 
 	msgChan := make(chan *ninja_frontend.Status)
 
+	parallelism := uint32(runtime.NumCPU())
+
 	// Read from the ninja fifo and decode the protobuf in a goroutine so the main NinjaReader.run goroutine
 	// can listen
 	go func() {
@@ -178,9 +181,21 @@ func (n *NinjaReader) run() {
 			// msgChan is closed
 			break
 		}
-		// Ignore msg.BuildStarted
+
+		if msg.BuildStarted != nil {
+			if msg.BuildStarted.GetParallelism() > 0 {
+				parallelism = min(parallelism, msg.BuildStarted.GetParallelism())
+			}
+		}
 		if msg.TotalEdges != nil {
 			n.status.SetTotalActions(int(msg.TotalEdges.GetTotalEdges()))
+			estimatedTotalTime := msg.TotalEdges.GetEstimatedTime()
+			if estimatedTotalTime > 0 {
+				// These numbers come from linear regression from historical build result.
+				ratio := min(1.0, 0.125+0.00000000691*float64(estimatedTotalTime))
+				remainingTime := time.Duration(float64(max(0, uint32(estimatedTotalTime))/parallelism)/ratio) * time.Millisecond
+				n.status.SetEstimatedEndTime(time.Now().Add(remainingTime))
+			}
 		}
 		if msg.EdgeStarted != nil {
 			action := &Action{

@@ -23,9 +23,10 @@ import (
 )
 
 type formatter struct {
-	format string
-	quiet  bool
-	start  time.Time
+	format           string
+	quiet            bool
+	start            time.Time
+	esitmatedEndTime time.Time
 }
 
 // newFormatter returns a formatter for formatting output to
@@ -33,10 +34,12 @@ type formatter struct {
 // format takes nearly all the same options as NINJA_STATUS.
 // %c is currently unsupported.
 func newFormatter(format string, quiet bool) formatter {
+	start := time.Now()
 	return formatter{
-		format: format,
-		quiet:  quiet,
-		start:  time.Now(),
+		format:           format,
+		quiet:            quiet,
+		start:            start,
+		esitmatedEndTime: start,
 	}
 }
 
@@ -52,8 +55,22 @@ func (s formatter) message(level status.MsgLevel, message string) string {
 }
 
 func (s formatter) progress(counts status.Counts) string {
+	if !counts.EsitmatedEndTime.IsZero() {
+		s.esitmatedEndTime = counts.EsitmatedEndTime
+
+		if s.esitmatedEndTime.Before(time.Now()) {
+			s.esitmatedEndTime = time.Now()
+		}
+	}
+
 	if s.format == "" {
-		return fmt.Sprintf("[%3d%% %d/%d] ", 100*counts.FinishedActions/counts.TotalActions, counts.FinishedActions, counts.TotalActions)
+		output := fmt.Sprintf("[%3d%% %d/%d", 100*counts.FinishedActions/counts.TotalActions, counts.FinishedActions, counts.TotalActions)
+
+		if s.esitmatedEndTime != s.start {
+			output += fmt.Sprintf(" %s remaining", time.Until(s.esitmatedEndTime).Round(time.Duration(time.Second)))
+		}
+		output += "] "
+		return output
 	}
 
 	buf := &strings.Builder{}
@@ -93,6 +110,13 @@ func (s formatter) progress(counts status.Counts) string {
 			fmt.Fprintf(buf, "%3d%%", 100*counts.FinishedActions/counts.TotalActions)
 		case 'e':
 			fmt.Fprintf(buf, "%.3f", time.Since(s.start).Seconds())
+		case 'l':
+			if s.esitmatedEndTime.IsZero() {
+				// No esitimated data
+				buf.WriteRune('?')
+			} else {
+				fmt.Fprintf(buf, "%s", time.Until(s.esitmatedEndTime).Round(time.Duration(time.Second)))
+			}
 		default:
 			buf.WriteString("unknown placeholder '")
 			buf.WriteByte(c)

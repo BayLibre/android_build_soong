@@ -23,6 +23,7 @@ message Status {
   message TotalEdges {
     // New value for total edges in the build.
     optional uint32 total_edges = 1;
+    optional uint32 estimated_time = 2;
   }
 
   message BuildStarted {
