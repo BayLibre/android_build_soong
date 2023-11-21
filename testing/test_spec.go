@@ -30,7 +30,10 @@ const ErrTestModuleDataNotFound = "The module '%s' does not provide test specifi
 func TestSpecFactory() android.Module {
 	module := &TestSpecModule{}
 
-	android.InitAndroidModule(module)
+	android.InitAndroidMultiTargetsArchModule(
+		module,
+		android.NeitherHostNorDeviceSupported,
+		android.MultilibFirst)
 	android.InitDefaultableModule(module)
 	module.AddProperties(&module.properties)
 
