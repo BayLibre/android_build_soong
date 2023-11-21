@@ -167,7 +167,7 @@ func (singleton *projectGeneratorSingleton) mergeDependencies(ctx android.Single
 			return
 		}
 		// Skip unsupported modules.
-		rChild, compChild, ok := isModuleSupported(ctx, child)
+		rChild, ok := isModuleSupported(ctx, child)
 		if !ok {
 			return
 		}
@@ -175,7 +175,7 @@ func (singleton *projectGeneratorSingleton) mergeDependencies(ctx android.Single
 		var childId int
 		cInfo, known := singleton.knownCrates[rChild.Name()]
 		if !known {
-			childId, ok = singleton.addCrate(ctx, rChild, compChild)
+			childId, ok = singleton.addCrate(ctx, rChild)
 			if !ok {
 				return
 			}
@@ -193,39 +193,20 @@ func (singleton *projectGeneratorSingleton) mergeDependencies(ctx android.Single
 
 // isModuleSupported returns the RustModule and baseCompiler if the module
 // should be considered for inclusion in rust-project.json.
-func isModuleSupported(ctx android.SingletonContext, module android.Module) (*Module, *baseCompiler, bool) {
+func isModuleSupported(ctx android.SingletonContext, module android.Module) (*Module, bool) {
 	rModule, ok := module.(*Module)
 	if !ok {
-		return nil, nil, false
+		return nil, false
 	}
-	if rModule.compiler == nil {
-		return nil, nil, false
-	}
-	var comp *baseCompiler
-	switch c := rModule.compiler.(type) {
-	case *libraryDecorator:
-		comp = c.baseCompiler
-	case *binaryDecorator:
-		comp = c.baseCompiler
-	case *testDecorator:
-		comp = c.binaryDecorator.baseCompiler
-	case *procMacroDecorator:
-		comp = c.baseCompiler
-	case *toolchainLibraryDecorator:
-		comp = c.baseCompiler
-	default:
-		return nil, nil, false
-	}
-	return rModule, comp, true
+	return rModule, true
 }
 
 // addCrate adds a crate to singleton.project.Crates ensuring that required
 // dependencies are also added. It returns the index of the new crate in
 // singleton.project.Crates
-func (singleton *projectGeneratorSingleton) addCrate(ctx android.SingletonContext, rModule *Module, comp *baseCompiler) (int, bool) {
-	rootModule, ok := crateSource(ctx, rModule, comp)
-	if !ok {
-		ctx.Errorf("Unable to find source for valid module: %v", rModule)
+func (singleton *projectGeneratorSingleton) addCrate(ctx android.SingletonContext, rModule *Module) (int, bool) {
+	rootModule := rModule.compiler.crateRootPath()
+	if rootModule == nil {
 		return 0, false
 	}
 
@@ -233,19 +214,19 @@ func (singleton *projectGeneratorSingleton) addCrate(ctx android.SingletonContex
 
 	crate := rustProjectCrate{
 		DisplayName: rModule.Name(),
-		RootModule:  rootModule,
-		Edition:     comp.edition(),
+		RootModule:  rootModule.String(),
+		Edition:     rModule.compiler.edition(),
 		Deps:        make([]rustProjectDep, 0),
 		Cfg:         make([]string, 0),
 		Env:         make(map[string]string),
 		ProcMacro:   procMacro,
 	}
 
-	if comp.cargoOutDir().Valid() {
-		crate.Env["OUT_DIR"] = comp.cargoOutDir().String()
+	if rModule.compiler.cargoOutDir().Valid() {
+		crate.Env["OUT_DIR"] = rModule.compiler.cargoOutDir().String()
 	}
 
-	for _, feature := range comp.Properties.Features {
+	for _, feature := range rModule.compiler.features() {
 		crate.Cfg = append(crate.Cfg, "feature=\""+feature+"\"")
 	}
 
@@ -262,7 +243,7 @@ func (singleton *projectGeneratorSingleton) addCrate(ctx android.SingletonContex
 // It visits the dependencies of the module depth-first so the dependency ID can be added to the current module. If the
 // current module is already in singleton.knownCrates, its dependencies are merged.
 func (singleton *projectGeneratorSingleton) appendCrateAndDependencies(ctx android.SingletonContext, module android.Module) {
-	rModule, comp, ok := isModuleSupported(ctx, module)
+	rModule, ok := isModuleSupported(ctx, module)
 	if !ok {
 		return
 	}
@@ -273,7 +254,7 @@ func (singleton *projectGeneratorSingleton) appendCrateAndDependencies(ctx andro
 		singleton.project.Crates[cInfo.Idx] = crate
 		return
 	}
-	singleton.addCrate(ctx, rModule, comp)
+	singleton.addCrate(ctx, rModule)
 }
 
 func (singleton *projectGeneratorSingleton) GenerateBuildActions(ctx android.SingletonContext) {
