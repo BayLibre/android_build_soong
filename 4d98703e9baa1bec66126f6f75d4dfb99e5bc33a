@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e008d7a9_b20a892c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-11-21T08:36:08Z",
+      "side": 1,
+      "message": "it requires https://android-review.git.corp.google.com/c/platform/external/ninja/+/2837976",
+      "revId": "4d98703e9baa1bec66126f6f75d4dfb99e5bc33a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
