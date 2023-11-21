@@ -117,6 +117,8 @@ func inList(s string, list []string) bool {
 // Command is the type of soong_ui execution. Only one type of
 // execution is specified. The args are specific to the command.
 func main() {
+    os.Setenv("FLAG_re_proxy", "prebuilts/remoteexecution-client/live/reproxy")
+	os.Setenv("FLAG_server_address", "unix:///tmp/reproxy_$RANDOM.sock")
 	c, args := getCommand(os.Args)
 	if c == nil {
 		fmt.Fprintf(os.Stderr, "The `soong` native UI is not yet available.\n")
