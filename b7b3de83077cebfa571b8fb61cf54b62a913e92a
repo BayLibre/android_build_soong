@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1bbb1ef_e894548a",
+        "filename": "java/test_spec_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-21T21:18:30Z",
+      "side": 1,
+      "message": "This broke the mac builds on ab/aosp-build-tools, use `result.Config.PrebuiltOS()` to compute the right path to use that will work on mac or linux.",
+      "range": {
+        "startLine": 89,
+        "startChar": 32,
+        "endLine": 89,
+        "endChar": 41
+      },
+      "revId": "b7b3de83077cebfa571b8fb61cf54b62a913e92a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
