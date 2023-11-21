@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59c73279_41c8e8c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-11-21T00:27:58Z",
+      "side": 1,
+      "message": "Assuming you\u0027ll deal with the merge conflicts in [both](https://android-build.corp.google.com/automerger_graph/project/googleplex-android/platform%2Fbuild%2Fsoong) `aosp-main-future` and `udc-dev-plus-aosp`.",
+      "revId": "4a36b9e529550a8da7fdf7b8aeaa98c3a6091325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
