@@ -15,12 +15,13 @@
 package build
 
 import (
-	"compress/gzip"
 	"fmt"
 	"io"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"pgzip"
 )
 
 func absPath(ctx Context, p string) string {
@@ -160,7 +161,7 @@ func gzipFileToDir(src, destDir string) error {
 		return fmt.Errorf("failed to open %s: %s", dest, err.Error())
 	}
 	defer out.Close()
-	gz := gzip.NewWriter(out)
+	gz := pgzip.NewWriter(out)
 	defer gz.Close()
 
 	_, err = io.Copy(gz, in)
