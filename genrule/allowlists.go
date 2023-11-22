@@ -40,7 +40,6 @@ var (
 		"aidl-golden-test-build-hook-gen",
 		"aidl_camera_build_version",
 		"android-cts-verifier",
-		"atest_integration_fake_src",
 		"camera-its",
 		"checkIn-service-stub-lite",
 		"chre_atoms_log.h",
