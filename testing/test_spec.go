@@ -78,11 +78,11 @@ func isInt(s string) bool {
 }
 
 // Provider published by TestSpec
-type TestSpecProviderData struct {
+type testSpecProviderData struct {
 	IntermediatePath android.WritablePath
 }
 
-var TestSpecProviderKey = blueprint.NewProvider(TestSpecProviderData{})
+var testSpecProviderKey = blueprint.NewProvider(testSpecProviderData{})
 
 type TestModuleProviderData struct {
 }
@@ -120,7 +120,7 @@ func (module *TestSpecModule) GenerateAndroidBuildActions(ctx android.ModuleCont
 	android.WriteFileRule(ctx, intermediatePath, string(protoData))
 
 	ctx.SetProvider(
-		TestSpecProviderKey, TestSpecProviderData{
+		testSpecProviderKey, testSpecProviderData{
 			IntermediatePath: intermediatePath,
 		},
 	)
