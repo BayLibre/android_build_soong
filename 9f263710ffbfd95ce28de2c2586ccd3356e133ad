@@ -46,6 +46,30 @@
       },
       "revId": "9f263710ffbfd95ce28de2c2586ccd3356e133ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04507f58_63054ed1",
+        "filename": "filesystem/vbmeta.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-23T05:55:04Z",
+      "side": 1,
+      "message": "Ah, nevermind then. Maybe we should consider adding support for it.",
+      "parentUuid": "83002931_17023174",
+      "range": {
+        "startLine": 68,
+        "startChar": 16,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "9f263710ffbfd95ce28de2c2586ccd3356e133ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
