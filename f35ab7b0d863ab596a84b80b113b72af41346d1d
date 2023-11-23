@@ -16,6 +16,24 @@
       "message": "I think David should +2 this.",
       "revId": "f35ab7b0d863ab596a84b80b113b72af41346d1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adf711b0_e4d661ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-23T16:25:46Z",
+      "side": 1,
+      "message": "Actually, David is the uploader (but not the owner), so he should not +2 this. I\u0027ll +2 then.",
+      "parentUuid": "f3370e91_47d7cb06",
+      "revId": "f35ab7b0d863ab596a84b80b113b72af41346d1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
