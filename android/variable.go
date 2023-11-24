@@ -481,6 +481,8 @@ type ProductVariables struct {
 
 	ReleaseDefaultModuleBuildFromSource *bool `json:",omitempty"`
 
+	ReleaseNdkAbiMonitored *bool `json:",omitempty"`
+
 	KeepVndk *bool `json:",omitempty"`
 
 	CheckVendorSeappViolations *bool `json:",omitempty"`
