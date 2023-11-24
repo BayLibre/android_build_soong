@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13ee9d9b_980a451b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2023-11-24T16:00:34Z",
+      "side": 1,
+      "message": "It is kind of odd.  I will follow up with the R8 team.\n\nIn any case, I suppose it is reasonable change as-is regardless.",
+      "revId": "5ee8adfbd4c116be86644378616362bd71f03fd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
