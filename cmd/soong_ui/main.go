@@ -112,11 +112,20 @@ func inList(s string, list []string) bool {
 
 // Main execution of soong_ui. The command format is as follows:
 //
-//    soong_ui <command> [<arg 1> <arg 2> ... <arg n>]
+//	soong_ui <command> [<arg 1> <arg 2> ... <arg n>]
 //
 // Command is the type of soong_ui execution. Only one type of
 // execution is specified. The args are specific to the command.
 func main() {
+	unsetFlags := []string{"USE_RBE"}
+	for _, f := range unsetFlags {
+		os.Unsetenv(f)
+	}
+	errEnv := os.Setenv("USE_RBE", "false")
+	if errEnv != nil {
+		fmt.Println("Error setting environment variable:", errEnv)
+		return
+	}
 	c, args := getCommand(os.Args)
 	if c == nil {
 		fmt.Fprintf(os.Stderr, "The `soong` native UI is not yet available.\n")
