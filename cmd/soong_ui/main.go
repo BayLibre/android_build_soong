@@ -112,11 +112,47 @@ func inList(s string, list []string) bool {
 
 // Main execution of soong_ui. The command format is as follows:
 //
-//    soong_ui <command> [<arg 1> <arg 2> ... <arg n>]
+//	soong_ui <command> [<arg 1> <arg 2> ... <arg n>]
 //
 // Command is the type of soong_ui execution. Only one type of
 // execution is specified. The args are specific to the command.
 func main() {
+	unsetFlags := []string{
+		"USE_RBE",
+		"NINJA_REMOTE_NUM_JOBS",
+		"RBE_ABI_DUMPER",
+		"RBE_CXX_EXEC_STRATEGY",
+		"RBE_CXX_LINKS",
+		"RBE_CXX_LINKS_EXEC_STRATEGY",
+		"RBE_CXX_LINKS_POOL",
+		"RBE_D8",
+		"RBE_D8_EXEC_STRATEGY",
+		"RBE_DIR",
+		"RBE_JAR",
+		"RBE_JAR_EXEC_STRATEGY",
+		"RBE_JAVAC",
+		"RBE_JAVAC_EXEC_STRATEGY",
+		"RBE_METALAVA",
+		"RBE_R8",
+		"RBE_R8_EXEC_STRATEGY",
+		"RBE_SIGNAPK",
+		"RBE_TURBINE",
+		"RBE_TURBINE_EXEC_STRATEGY",
+		"RBE_ZIP",
+		"RBE_ZIP_EXEC_STRATEGY",
+		"RBE_grpc_keepalive_permit_without_stream",
+		"RBE_grpc_keepalive_time",
+		"RBE_instance",
+		"RBE_invocation_id",
+		"RBE_proxy_log_dir",
+		"RBE_reproxy_wait_seconds",
+		"RBE_service",
+		"RBE_shutdown_proxy",
+		"RBE_use_gce_credentials",
+	}
+	for _, f := range unsetFlags {
+		os.Unsetenv(f)
+	}
 	c, args := getCommand(os.Args)
 	if c == nil {
 		fmt.Fprintf(os.Stderr, "The `soong` native UI is not yet available.\n")
