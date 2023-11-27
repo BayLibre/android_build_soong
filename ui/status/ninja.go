@@ -20,6 +20,7 @@ import (
 	"io"
 	"os"
 	"regexp"
+	"runtime"
 	"strings"
 	"syscall"
 	"time"
@@ -178,7 +179,23 @@ func (n *NinjaReader) run() {
 			// msgChan is closed
 			break
 		}
-		// Ignore msg.BuildStarted
+
+		if msg.BuildStarted != nil {
+			parallelism := uint32(runtime.NumCPU())
+			if msg.BuildStarted.GetParallelism() > 0 {
+				parallelism = msg.BuildStarted.GetParallelism()
+			}
+			estimatedDuration := time.Duration(max(msg.BuildStarted.GetEstimatedTotalTime()/parallelism, msg.BuildStarted.GetCriticalPathTime())) * time.Millisecond
+
+			if estimatedDuration > 0 {
+				n.status.SetEstimatedTime(time.Now().Add(estimatedDuration))
+				n.status.Verbose(fmt.Sprintf("parallelism: %d, esitmiated from total time: %s, critical path time: %s",
+					parallelism,
+					time.Duration(msg.BuildStarted.GetEstimatedTotalTime()/parallelism)*time.Millisecond,
+					time.Duration(msg.BuildStarted.GetCriticalPathTime())*time.Millisecond))
+
+			}
+		}
 		if msg.TotalEdges != nil {
 			n.status.SetTotalActions(int(msg.TotalEdges.GetTotalEdges()))
 		}
