@@ -794,7 +794,11 @@ func (h *prebuiltBinaryBazelHandler) ProcessBazelQueryResponse(ctx android.Modul
 
 type bazelPrebuiltBinaryAttributes struct {
 	Src   bazel.LabelAttribute
-	Strip stripAttributes
+	Keep_symbols                 bazel.BoolAttribute
+	Keep_symbols_and_debug_frame bazel.BoolAttribute
+	Keep_symbols_list            bazel.StringListAttribute
+	All                          bazel.BoolAttribute
+	None                         bazel.BoolAttribute
 }
 
 func prebuiltBinaryBp2Build(ctx android.Bp2buildMutatorContext, module *Module) {
@@ -804,7 +808,11 @@ func prebuiltBinaryBp2Build(ctx android.Bp2buildMutatorContext, module *Module) 
 	la.convertStripProps(ctx, module)
 	attrs := &bazelPrebuiltBinaryAttributes{
 		Src:   prebuiltAttrs.Src,
-		Strip: stripAttrsFromLinkerAttrs(&la),
+		Keep_symbols:                 la.stripKeepSymbols,
+		Keep_symbols_and_debug_frame: la.stripKeepSymbolsAndDebugFrame,
+		Keep_symbols_list:            la.stripKeepSymbolsList,
+		All:                          la.stripAll,
+		None:                         la.stripNone,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
