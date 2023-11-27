@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4fb6bd_9c241167",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2023-11-27T11:22:24Z",
+      "side": 1,
+      "message": "corresponding cl on internal:\nhttps://googleplex-android-review.git.corp.google.com/c/platform/build/soong/+/25453316",
+      "revId": "ac34e0042c5d9219b5f34ca9fd9074cec6d9c631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
