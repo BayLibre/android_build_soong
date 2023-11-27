@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ce170cf_91170c13",
+        "filename": "genrule/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-11-27T21:22:17Z",
+      "side": 0,
+      "message": "Looks like this is used in `libc_musl_sysroot`, which itself is unused.\nCan we delete these soong modules altogether?",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "4e788f24562df080eba438aada52771a45fdce3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
