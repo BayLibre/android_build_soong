@@ -2090,6 +2090,7 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 		// input one that contains the data specific to that arch.
 		propertyStructs := make([]reflect.Value, 0)
 		archFeaturePropertyStructs := make(map[string][]reflect.Value, 0)
+		cpuVariantPropertyStructs := make(map[string][]reflect.Value, 0)
 		for _, archProperty := range archProperties {
 			archTypeStruct, ok := getArchTypeStruct(ctx, archProperty, arch)
 			if ok {
@@ -2100,6 +2101,14 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 					prefix := "arch." + arch.Name + "." + feature
 					if featureProperties, ok := getChildPropertyStruct(ctx, archTypeStruct, feature, prefix); ok {
 						archFeaturePropertyStructs[feature] = append(archFeaturePropertyStructs[feature], featureProperties)
+					}
+				}
+				// For each CPU variant this arch supports (arm: cortex_a53, arm64: cortex-a55, ...)
+				for _, variant := range cpuVariants[arch] {
+					cpuVariant := variantReplacer.Replace(variant)
+					prefix := "arch." + arch.Name + "." + cpuVariant
+					if variantProperties, ok := getChildPropertyStruct(ctx, archTypeStruct, cpuVariant, prefix); ok {
+						cpuVariantPropertyStructs[variant] = append(cpuVariantPropertyStructs[variant], variantProperties)
 					}
 				}
 			}
@@ -2133,6 +2142,13 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 			}
 			archToProp[arch.Name+"-"+strings.Join(features, "-")] =
 				mergeStructs(ctx, propsForCurrentFeatureSet, propertySet)
+		}
+		for variant, variantProperties := range cpuVariantPropertyStructs {
+			propsForCurrentVariantSet := make([]reflect.Value, 0)
+			propsForCurrentVariantSet = append(propsForCurrentVariantSet, propertyStructs...)
+			propsForCurrentVariantSet = append(propsForCurrentVariantSet, variantProperties...)
+			archToProp[variant+"-"+arch.Name] =
+				mergeStructs(ctx, propsForCurrentVariantSet, propertySet)
 		}
 	}
 	axisToProps[bazel.ArchConfigurationAxis] = archToProp
