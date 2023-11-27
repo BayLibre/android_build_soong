@@ -33,6 +33,23 @@
       "message": "Add `Merged-In: Ib8a6fb128084e994325b975c46a036cb41494654` and land the downstream change first.",
       "revId": "ac34e0042c5d9219b5f34ca9fd9074cec6d9c631",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04e63a49_986353e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-11-27T21:09:39Z",
+      "side": 1,
+      "message": "I see some very small changes in artifact sizes: https://screenshot.googleplex.com/726R7SfR5kQdowm, are any of those meaningful? Or benign?",
+      "revId": "ac34e0042c5d9219b5f34ca9fd9074cec6d9c631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
