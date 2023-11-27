@@ -22,6 +22,30 @@
       },
       "revId": "4e788f24562df080eba438aada52771a45fdce3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a362f6b0_3d84378a",
+        "filename": "genrule/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-27T21:29:55Z",
+      "side": 0,
+      "message": "Colin still wants to do a full migration to musl for host tools, but it\u0027s unfinished, which is probably why they\u0027re unused.",
+      "parentUuid": "8ce170cf_91170c13",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "4e788f24562df080eba438aada52771a45fdce3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
