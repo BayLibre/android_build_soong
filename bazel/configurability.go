@@ -131,6 +131,41 @@ func createPlatformArchMap() map[string]string {
 			"popcnt",
 		},
 	}
+	// Copy of cpuVariants from android/arch_list.go because the bazel
+	// package can't access the android package
+	cpuVariants := map[string][]string{
+		"arm": {
+			"cortex-a7",
+			"cortex-a8",
+			"cortex-a9",
+			"cortex-a15",
+			"cortex-a32",
+			"cortex-a53",
+			"cortex-a53.a57",
+			"cortex-a55",
+			"cortex-a72",
+			"cortex-a73",
+			"cortex-a75",
+			"cortex-a76",
+			"krait",
+			"kryo",
+			"kryo385",
+			"exynos-m1",
+			"exynos-m2",
+		},
+		"arm64": {
+			"cortex-a53",
+			"cortex-a55",
+			"cortex-a72",
+			"cortex-a73",
+			"cortex-a75",
+			"cortex-a76",
+			"kryo",
+			"kryo385",
+			"exynos-m1",
+			"exynos-m2",
+		},
+	}
 	result := make(map[string]string)
 	for arch, allFeatures := range archFeatures {
 		result[arch] = "//build/bazel_common_rules/platforms/arch:" + arch
@@ -141,6 +176,12 @@ func createPlatformArchMap() map[string]string {
 			sort.Strings(features)
 			archFeaturesName := arch + "-" + strings.Join(features, "-")
 			result[archFeaturesName] = "//build/bazel/platforms/arch/variants:" + archFeaturesName
+		}
+	}
+	for arch, allVariants := range cpuVariants {
+		for _, variant := range allVariants {
+			cpuVariantsName := variant + "-" + arch
+			result[cpuVariantsName] = "//build/bazel/platforms/arch/variants:" + cpuVariantsName
 		}
 	}
 	result[ConditionsDefaultConfigKey] = ConditionsDefaultSelectKey
