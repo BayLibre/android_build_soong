@@ -513,8 +513,8 @@ type Module struct {
 	// or the module should override Stem().
 	stem string
 
-	// Aconfig files for all transitive deps.  Also exposed via TransitiveDeclarationsInfo
-	transitiveAconfigFiles map[string]*android.DepSet[android.Path]
+	// Single aconfig "cache file" merged from this module and all dependencies.
+	mergedAconfigFiles map[string]android.Paths
 }
 
 func (j *Module) CheckStableSdkVersion(ctx android.BaseModuleContext) error {
@@ -1719,7 +1719,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 
 	ctx.CheckbuildFile(outputFile)
 
-	aconfig.CollectTransitiveAconfigFiles(ctx, &j.transitiveAconfigFiles)
+	aconfig.CollectDependencyAconfigFiles(ctx, &j.mergedAconfigFiles)
 
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(j.headerJarFile),
@@ -2074,10 +2074,6 @@ func (j *Module) collectTransitiveSrcFiles(ctx android.ModuleContext, mine andro
 
 func (j *Module) IsInstallable() bool {
 	return Bool(j.properties.Installable)
-}
-
-func (j *Module) getTransitiveAconfigFiles(container string) []android.Path {
-	return j.transitiveAconfigFiles[container].ToList()
 }
 
 type sdkLinkType int
