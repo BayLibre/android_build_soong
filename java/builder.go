@@ -274,6 +274,12 @@ var (
 				` cat $$f; ` +
 				`done > $out`,
 		})
+
+	mergeAconfigFilesRule = pctx.AndroidStaticRule("mergeAconfigFilesRule",
+		blueprint.RuleParams{
+			Command:     `${config.Aconfig} dump --dedup --format protobuf --out $out $flags`,
+			CommandDeps: []string{"${config.Aconfig}"},
+		}, "flags")
 )
 
 func init() {
@@ -703,6 +709,29 @@ func writeCombinedProguardFlagsFile(ctx android.ModuleContext, outputFile androi
 		Inputs:      files,
 		Output:      outputFile,
 	})
+}
+
+func mergeAconfigFiles(ctx android.ModuleContext, inputs android.Paths) android.OptionalPath {
+	if len(inputs) == 0 {
+		return android.OptionalPath{}
+	}
+	if len(inputs) == 1 {
+		return android.OptionalPathForPath(inputs[0])
+	}
+
+	output := android.PathForModuleOut(ctx, "aconfig_merged.pb")
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        mergeAconfigFilesRule,
+		Description: "merge aconfig files",
+		Inputs:      inputs,
+		Output:      output,
+		Args: map[string]string{
+			"flags": android.JoinWithPrefix(inputs.Strings(), "--cache "),
+		},
+	})
+
+	return android.OptionalPathForPath(output)
 }
 
 type classpath android.Paths

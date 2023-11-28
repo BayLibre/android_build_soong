@@ -214,6 +214,9 @@ func init() {
 	// TODO(ccross): this should come from the signapk dependencies, but we don't have any way
 	// to express host JNI dependencies yet.
 	hostJNIToolVariableWithSdkToolsPrebuilt("SignapkJniLibrary", "libconscrypt_openjdk_jni")
+
+	pctx.HostBinToolVariable("Aconfig", "aconfig")
+
 }
 
 func BazelJavaToolchainVars(config android.Config) string {

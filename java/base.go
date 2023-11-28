@@ -512,13 +512,12 @@ type Module struct {
 	// or the module should override Stem().
 	stem string
 
-	// Aconfig "cache files" that went directly into this module.  Transitive ones are
-	// tracked via JavaInfo.TransitiveAconfigFiles
+	// Aconfig "cache files" that went directly into this module.
 	// TODO: Extract to something standalone to propagate tags via GeneratedJavaLibraryModule
 	aconfigIntermediates android.Paths
 
-	// Aconfig files for all transitive deps.  Also exposed via JavaInfo
-	transitiveAconfigFiles *android.DepSet[android.Path]
+	// Single aconfig "cache file" merged from this module and all dependencies.
+	mergedAconfigFile android.OptionalPath
 }
 
 func (j *Module) CheckStableSdkVersion(ctx android.BaseModuleContext) error {
@@ -1723,7 +1722,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 
 	ctx.CheckbuildFile(outputFile)
 
-	j.collectTransitiveAconfigFiles(ctx)
+	j.collectDependencyAconfigFiles(ctx)
 
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(j.headerJarFile),
@@ -1740,7 +1739,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		ExportedPluginClasses:          j.exportedPluginClasses,
 		ExportedPluginDisableTurbine:   j.exportedDisableTurbine,
 		JacocoReportClassesFile:        j.jacocoReportClassesFile,
-		TransitiveAconfigFiles:         j.transitiveAconfigFiles,
+		MergedAconfigFile:              j.mergedAconfigFile,
 	})
 
 	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource
@@ -2081,32 +2080,26 @@ func (j *Module) IsInstallable() bool {
 	return Bool(j.properties.Installable)
 }
 
-func (j *Module) collectTransitiveAconfigFiles(ctx android.ModuleContext) {
+func (j *Module) collectDependencyAconfigFiles(ctx android.ModuleContext) {
 	// Aconfig files from this module
 	mine := j.aconfigIntermediates
 
-	// Aconfig files from transitive dependencies
-	fromDeps := []*android.DepSet[android.Path]{}
+	// Aconfig files from direct dependencies
+	var merged android.Paths
 	ctx.VisitDirectDeps(func(module android.Module) {
 		dep := ctx.OtherModuleProvider(module, JavaInfoProvider).(JavaInfo)
-		if dep.TransitiveAconfigFiles != nil {
-			fromDeps = append(fromDeps, dep.TransitiveAconfigFiles)
+		if dep.MergedAconfigFile.Valid() {
+			merged = append(merged, dep.MergedAconfigFile.Path())
 		}
 	})
 
-	// DepSet containing aconfig files myself and from dependencies
-	j.transitiveAconfigFiles = android.NewDepSet(android.POSTORDER, mine, fromDeps)
+	merged = append(merged, mine...)
+	merged = android.FirstUniquePaths(merged)
+	j.mergedAconfigFile = mergeAconfigFiles(ctx, merged)
 }
 
 func (j *Module) AddAconfigIntermediate(path android.Path) {
 	j.aconfigIntermediates = append(j.aconfigIntermediates, path)
-}
-
-func (j *Module) getTransitiveAconfigFiles() *android.DepSet[android.Path] {
-	if j.transitiveAconfigFiles == nil {
-		panic(fmt.Errorf("java.Moduile: getTransitiveAconfigFiles called before collectTransitiveAconfigFiles module=%s", j.Name()))
-	}
-	return j.transitiveAconfigFiles
 }
 
 type sdkLinkType int
