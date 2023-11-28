@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85437fb7_7105de3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-28T22:35:56Z",
+      "side": 1,
+      "message": "This fixes the terminal issue when gcert has not been run, but doesn\u0027t fix the old warning text.",
+      "revId": "e7151f971e1a633917ded8f7a12048b3273fd35c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
