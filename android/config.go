@@ -1199,6 +1199,16 @@ func (c *config) DevicePrimaryArchType() ArchType {
 	return Common
 }
 
+// AllArchTypesString returns a comma-separated string of all the configured Android
+// architectures.
+func (c *config) AllArchTypesString() string {
+	var str []string
+	for _, t := range c.Targets[Android] {
+		str = append(str, t.Arch.ArchType.String())
+	}
+	return strings.Join(str, ",")
+}
+
 func (c *config) SanitizeHost() []string {
 	return append([]string(nil), c.productVariables.SanitizeHost...)
 }

@@ -133,7 +133,7 @@ func (tfg *tradefedBinaryGen) GenerateAndroidBuildActions(ctx android.ModuleCont
 		OrderOnly: android.Paths{buildNumberFile},
 		Args: map[string]string{
 			"buildNumberFile": buildNumberFile.String(),
-			"arch":            ctx.Config().DevicePrimaryArchType().String(),
+			"arch":            ctx.Config().AllArchTypesString(),
 			"name":            tfg.properties.Short_name,
 			"fullname":        tfg.properties.Full_name,
 			"version":         tfg.properties.Version,
