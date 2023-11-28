@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db3ece1a_f957d238",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2023-11-28T09:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5a01654_b8f722a5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "523a6305a9a16ae3bfa8d5b565141bade4dbab7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28dde3e5_fcd14126",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-28T06:15:43Z",
       "side": 1,
       "message": "Update androidmk to enable parsing of \u0027LOCAL_TARGET_SDK_VERSION\u0027 from an Android.mk  and translating it to `target_sdk_version` in an Android.bp.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "523a6305a9a16ae3bfa8d5b565141bade4dbab7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ed9001_17623836",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2023-11-28T09:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28dde3e5_fcd14126",
       "range": {
         "startLine": 9,
         "startChar": 0,
