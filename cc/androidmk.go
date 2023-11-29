@@ -409,6 +409,9 @@ func (test *testBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 		}
 
 		test.Properties.Test_options.CommonTestOptions.SetAndroidMkEntries(entries)
+		if test.Properties.Owner_team != nil {
+			entries.SetString("LOCAL_TEAM", *test.Properties.Owner_team)
+		}
 	})
 
 	AndroidMkWriteTestData(test.data, entries)

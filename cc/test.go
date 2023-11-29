@@ -125,6 +125,9 @@ type TestBinaryProperties struct {
 
 	// Install the test into a folder named for the module in all test suites.
 	Per_testcase_directory *bool
+
+	// Team that owns the test and should be notified about problems.
+	Owner_team *string `android:"path"`
 }
 
 func init() {

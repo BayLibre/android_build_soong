@@ -184,6 +184,10 @@ func (j *Test) AndroidMkEntries() []android.AndroidMkEntries {
 		entries.AddStrings("LOCAL_TEST_MAINLINE_MODULES", j.testProperties.Test_mainline_modules...)
 
 		j.testProperties.Test_options.CommonTestOptions.SetAndroidMkEntries(entries)
+		if j.testProperties.Owner_team != nil {
+			entries.SetString("LOCAL_TEAM", *j.testProperties.Owner_team)
+		}
+
 	})
 
 	return entriesList
