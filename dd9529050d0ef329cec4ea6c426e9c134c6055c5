@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab03bc52_8a92380b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-11-29T02:01:07Z",
+      "side": 1,
+      "message": "Neither this logic, nor the previous logic really matches how our ninja handles symlinks in dependencies. Our ninja fork assumes that generated symlinks are read as symlinks (so we use lstat), while non-generated (src tree) files are read through the symlink (stat). It\u0027s not perfect, but it has mostly worked.\n\nIt looks like the camera-its logic wants to read the symlinks themselves from the source tree, which may not produce correct incremental builds.",
+      "revId": "dd9529050d0ef329cec4ea6c426e9c134c6055c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
