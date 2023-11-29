@@ -16,6 +16,7 @@ package android
 
 import (
 	"android/soong/bazel"
+	// "android/soong/testing/test_spec_proto"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
 	"crypto/md5"
 	"encoding/hex"
@@ -575,6 +576,107 @@ type distProperties struct {
 	// a list of configurations to distribute output files from this module to the
 	// distribution directory (default: $OUT/dist, configurable with $DIST_DIR)
 	Dists []Dist `android:"arch_variant"`
+}
+
+// OwnerTeamOptions represents the common `owner_team` properties in Android.bp.
+type OwnerTeamProperties struct {
+	// TODO(ron): need variant?
+	Owner_team *string `android:"path"`
+}
+
+type OwnerTeamDepTagType struct {
+	blueprint.BaseDependencyTag
+}
+
+var ownerTeamDepTag = OwnerTeamDepTagType{}
+var OwnerTeamProviderKey = blueprint.NewProvider(OwnerTeamProviderData{})
+
+// Provider published by OwnerTeam
+type OwnerTeamProviderData struct {
+	IntermediatePath WritablePath
+}
+
+/*
+type TestModuleProviderData struct {
+}
+
+   var TestModuleProviderKey = blueprint.NewProvider(TestModuleProviderData{})
+*/
+
+// Add the team module as a dependency to the _test module to validate the team
+// name and allow us to find it in GeneratedAndroidBuildActions.
+func (module *OwnerTeamProperties) DepsMutator(ctx BottomUpMutatorContext) {
+	// ctx.PropertyInfo("Visit", "%q (%q)", ctx.ModuleName(), module.String())
+	if module.Owner_team != nil {
+		// ctx.PropertyErrorf("found owner", "%q  %q", module.Name(), ctx.OtherModuleType(module))
+		ctx.PropertyErrorf("found owner", "%q ", ctx.ModuleName())
+
+		ctx.AddDependency(ctx.Module(), ownerTeamDepTag, *module.Owner_team)
+	}
+}
+
+// Write an intermediate .proto file with team information for each _test module
+// that has a populated Owner_team field.
+func (module *OwnerTeamProperties) GenerateAndroidBuildActions(ctx ModuleContext) {
+	// Or Visit DirectDepsWithTag?
+	// Should only be one ...
+	trendy_team_id := "n/a"
+	if module.Owner_team != nil {
+		trendy_team_id = "DEREF: " + *module.Owner_team
+	}
+	for _, m := range ctx.GetDirectDepsWithTag(ownerTeamDepTag) {
+		// TODO(ron): Is "ctx" the right arg here?
+		trendy_team_id = m.(*teamModule).TrendyTeamId(ctx)
+		// j.data = append(j.data, android.OutputFileForModule(ctx, dep, ""))
+	}
+
+	/*
+		for _, m := range ctx.GetDirectDepsWithTag(ownerTeamDepTag) {
+			if !ctx.OtherModuleHasProvider(m, TestModuleProviderKey) {
+				ctx.ModuleErrorf(ErrTestModuleDataNotFound, m.Name())
+			}
+		}
+	*/
+	bpFilePath := filepath.Join(ctx.ModuleDir(), ctx.BlueprintsFile())
+	/*
+		metadataList := make(
+			[]*test_spec_proto.TestSpec_OwnershipMetadata, 0,
+			1,
+		)
+	*/
+
+	// TODO(ron): visit direct deps to get trendy team id
+	// module.properties.TeamId,
+	// TODO(ron): add to outs for module? are intermediates not listed as deps
+	intermediatePath := PathForModuleOut(
+		ctx, "intermediateTestSpecMetadata.pb",
+	)
+
+	/*
+			metadata := test_spec_proto.TestSpec_OwnershipMetadata{
+				TrendyTeamId: &trendy_team_id,
+				TargetName:   ctx.ModuleName(),
+				Path:         &bpFilePath,
+			}
+			// TODO(ron): change to be just one of these.
+			metadataList = append(metadataList, &metadata)
+
+		testSpecMetadata := test_spec_proto.TestSpec{OwnershipMetadataList: metadataList}
+		protoData, err := proto.Marshal(&testSpecMetadata)
+		if err != nil {
+			ctx.ModuleErrorf("Error: %s", err.Error())
+		}
+	*/
+	protoData := "trendy_team_id: " + trendy_team_id + "\nPath: " + bpFilePath + "\n"
+
+	WriteFileRule(ctx, intermediatePath, string(protoData))
+
+	// TODO(ron); all_test_specs will look for this, somehow.
+	ctx.SetProvider(
+		OwnerTeamProviderKey, OwnerTeamProviderData{
+			IntermediatePath: intermediatePath,
+		},
+	)
 }
 
 // CommonTestOptions represents the common `test_options` properties in
