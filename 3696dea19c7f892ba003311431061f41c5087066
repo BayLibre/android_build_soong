@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f20fb37c_1e2603ea",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-29T18:52:01Z",
+      "side": 1,
+      "message": "Will this reinstall the same files multiple times as this `install()` function is called repeatedly?",
+      "revId": "3696dea19c7f892ba003311431061f41c5087066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8deeee6_2b3772b2",
+        "filename": "cc/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-29T18:52:01Z",
+      "side": 1,
+      "message": "Consider adding a `data` argument to `install()` instead of making this function. Because there\u0027s an implicit dependency that you call `installTestData` before `install`, which can be confusing.\n\nSame comment for the rust version.",
+      "revId": "3696dea19c7f892ba003311431061f41c5087066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
