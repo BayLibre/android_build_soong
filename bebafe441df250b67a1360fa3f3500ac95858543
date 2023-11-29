@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30112245_d3900547",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-29T18:24:26Z",
+      "side": 1,
+      "message": "few nite otherwise, LGTM!",
+      "revId": "bebafe441df250b67a1360fa3f3500ac95858543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb6f854_0bcb9426",
+        "filename": "java/code_metadata_test.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-29T18:24:26Z",
+      "side": 1,
+      "message": "nit: If you split this it will easier to run this test and do the verification\n\n(If you prefer it this way, this is fine as well - up to you)",
+      "range": {
+        "startLine": 13,
+        "startChar": 36,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "bebafe441df250b67a1360fa3f3500ac95858543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de20e5be_92b6b214",
+        "filename": "testing/code_metadata.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-29T18:24:26Z",
+      "side": 1,
+      "message": "nit: CodeMetadata?",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 33
+      },
+      "revId": "bebafe441df250b67a1360fa3f3500ac95858543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e19c00_353ddafb",
+        "filename": "testing/code_metadata.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-11-29T18:24:26Z",
+      "side": 1,
+      "message": "nit (readability): refactor simply use null for MultiOwnership if not present?",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 3
+      },
+      "revId": "bebafe441df250b67a1360fa3f3500ac95858543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
