@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "715ff738_a5161e0a",
+        "filename": "ui/status/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-11-29T00:58:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1e4fe14_a896f8b2",
+      "revId": "79348887c1a04e82aa6a421acd47b5a5f1504404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a90bc409_b0aef653",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-11-29T00:30:53Z",
       "side": 1,
       "message": "```suggestion\n\t\t\t\tn.status.Verbose(fmt.Sprintf(\"parallelism: %d, estimated from total time: %s, critical path time: %s\",\n```",
+      "range": {
+        "startLine": 192,
+        "startChar": 51,
+        "endLine": 192,
+        "endChar": 61
+      },
+      "revId": "79348887c1a04e82aa6a421acd47b5a5f1504404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b1a0e2e_785c4768",
+        "filename": "ui/status/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-11-29T00:58:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a90bc409_b0aef653",
       "range": {
         "startLine": 192,
         "startChar": 51,
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f8c0d27_11e5943b",
+        "filename": "ui/status/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-11-29T00:58:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ba836c5_92f281dd",
+      "range": {
+        "startLine": 194,
+        "startChar": 19,
+        "endLine": 194,
+        "endChar": 89
+      },
+      "revId": "79348887c1a04e82aa6a421acd47b5a5f1504404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd1fa8f9_88452ff3",
@@ -98,6 +164,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5a14e7_5088afbf",
+        "filename": "ui/status/ninja_frontend/frontend.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-11-29T00:58:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd1fa8f9_88452ff3",
+      "revId": "79348887c1a04e82aa6a421acd47b5a5f1504404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fe8cdcb_1b212739",
@@ -111,6 +195,30 @@
       "writtenOn": "2023-11-29T00:30:53Z",
       "side": 1,
       "message": "Maybe unlikely, but you\u0027re reading the current time twice, once in `Now()` and again in `Until`.  That could invalidate the `t.After` check above.   Suggest:\n\n```suggestion\n\t\treturn t.Sub(now).Round(time.Duration(time.Second)).String()\n```",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "79348887c1a04e82aa6a421acd47b5a5f1504404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35e598bf_8303624f",
+        "filename": "ui/terminal/format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-11-29T00:58:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fe8cdcb_1b212739",
       "range": {
         "startLine": 57,
         "startChar": 14,
