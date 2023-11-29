@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b214f01a_cea3a072",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-11-29T09:21:11Z",
+      "side": 1,
+      "message": "I don\u0027t understand the reason for this fallback to PlatformSdkVersion. It looks like two versions have different schemes: eg. 35 and 202404.",
+      "range": {
+        "startLine": 407,
+        "startChar": 2,
+        "endLine": 407,
+        "endChar": 61
+      },
+      "revId": "ebea5870bfc4419313e0b89aaedf3dac124b6723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
