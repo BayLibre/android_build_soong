@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b649ba_afebd2b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-29T21:35:23Z",
+      "side": 1,
+      "message": "ABTD looks green:\n- aosp-main-with-phones: http://android-build/abtd/run/L78800030000565225/\n- udc-dev-plus-aosp: http://android-build/abtd/run/L32000030000530133/\n- internal main: http://android-build/abtd/run/L11500030000562816/",
+      "revId": "c79d9e30532514560e0f7cadc4395a14aaa229e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
