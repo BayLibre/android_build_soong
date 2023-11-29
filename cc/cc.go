@@ -2334,6 +2334,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	if c.testModule {
 		ctx.SetProvider(testing.TestModuleProviderKey, testing.TestModuleProviderData{})
 	}
+	ctx.SetProvider(android.SrcsFileProviderKey, android.SrcsFileProviderData{SrcPaths: deps.GeneratedSources})
 
 	c.maybeInstall(ctx, apexInfo)
 }
