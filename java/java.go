@@ -409,6 +409,7 @@ var (
 	syspropPublicStubDepTag = dependencyTag{name: "sysprop public stub"}
 	javaApiContributionTag  = dependencyTag{name: "java-api-contribution"}
 	depApiSrcsTag           = dependencyTag{name: "dep-api-srcs"}
+	ownerTeamTag            = dependencyTag{name: "ownerTeam"}
 	jniInstallTag           = installDependencyTag{name: "jni install"}
 	binaryInstallTag        = installDependencyTag{name: "binary install"}
 	usesLibReqTag           = makeUsesLibraryDependencyTag(dexpreopt.AnySdkVersion, false)
@@ -1039,7 +1040,8 @@ type prebuiltTestProperties struct {
 type Test struct {
 	Library
 
-	testProperties testProperties
+	testProperties      testProperties
+	ownerTeamProperties android.OwnerTeamProperties
 
 	testConfig       android.Path
 	extraTestConfigs android.Paths
@@ -1224,6 +1226,17 @@ func (j *TestHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.SetProvider(testing.TestModuleProviderKey, testing.TestModuleProviderData{})
 }
 
+func (j *Test) DepsMutator(ctx android.BottomUpMutatorContext) {
+	if j.ownerTeamProperties.Owner_team != nil {
+		ctx.PropertyErrorf("Found one:", "%q", ctx.ModuleName())
+	}
+	j.Library.DepsMutator(ctx)
+	j.ownerTeamProperties.DepsMutator(ctx)
+
+	// ctx.AddDependency(ctx.Module(), ownerTeamTag, *j.testProperties.Owner_team)
+	//}
+}
+
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.generateAndroidBuildActionsWithConfig(ctx, nil)
 	ctx.SetProvider(testing.TestModuleProviderKey, testing.TestModuleProviderData{})
@@ -1283,6 +1296,7 @@ func (j *Test) generateAndroidBuildActionsWithConfig(ctx android.ModuleContext, 
 			ctx.PropertyErrorf("jni_libs", "%q of type %q is not supported", dep.Name(), ctx.OtherModuleType(dep))
 		}
 	})
+	j.ownerTeamProperties.GenerateAndroidBuildActions(ctx)
 
 	j.Library.GenerateAndroidBuildActions(ctx)
 }
@@ -1375,6 +1389,7 @@ func TestFactory() android.Module {
 
 	module.addHostAndDeviceProperties()
 	module.AddProperties(&module.testProperties)
+	module.AddProperties(&module.ownerTeamProperties)
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 	module.Module.dexpreopter.isTest = true
@@ -1433,6 +1448,7 @@ func TestHostFactory() android.Module {
 	module.addHostProperties()
 	module.AddProperties(&module.testProperties)
 	module.AddProperties(&module.testHostProperties)
+	module.AddProperties(&module.ownerTeamProperties)
 
 	InitTestHost(
 		module,
