@@ -16,6 +16,23 @@
       "message": "c",
       "revId": "0f3c23cb3751cb4d23fb16156451d2b501ed6a34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3336a6f4_86e70341",
+        "filename": "java/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-29T18:23:18Z",
+      "side": 1,
+      "message": "Move the description to the RuleParams.",
+      "revId": "0f3c23cb3751cb4d23fb16156451d2b501ed6a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
