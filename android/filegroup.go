@@ -290,6 +290,7 @@ func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
 	if fg.properties.Path != nil {
 		fg.srcs = PathsWithModuleSrcSubDir(ctx, fg.srcs, String(fg.properties.Path))
 	}
+	ctx.SetProvider(SrcsFileProviderKey, SrcsFileProviderData{SrcPaths: fg.srcs})
 }
 
 func (fg *fileGroup) Srcs() Paths {
