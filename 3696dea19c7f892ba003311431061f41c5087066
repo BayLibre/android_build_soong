@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f6cbcac_c8f4f636",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-29T19:40:37Z",
+      "side": 1,
+      "message": "This is an interface method, it\u0027s only called once from `maybeInstall` which is called from `GenerateAndroidBuildActions`.  In this case that call is to `fuzzBinary.install`, which then forwards to `baseInstaller.install`.",
+      "parentUuid": "f20fb37c_1e2603ea",
+      "revId": "3696dea19c7f892ba003311431061f41c5087066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8deeee6_2b3772b2",
         "filename": "cc/installer.go",
         "patchSetId": 10
@@ -31,6 +49,24 @@
       "writtenOn": "2023-11-29T18:52:01Z",
       "side": 1,
       "message": "Consider adding a `data` argument to `install()` instead of making this function. Because there\u0027s an implicit dependency that you call `installTestData` before `install`, which can be confusing.\n\nSame comment for the rust version.",
+      "revId": "3696dea19c7f892ba003311431061f41c5087066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc5ce6ef_1183039f",
+        "filename": "cc/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-29T19:40:37Z",
+      "side": 1,
+      "message": "`install` is an interface method implemented by all the different cc module types, including the non-test cc_binary, etc.  I\u0027d have to change the interface definition, and then pass `nil` for all the non-test modules.",
+      "parentUuid": "f8deeee6_2b3772b2",
       "revId": "3696dea19c7f892ba003311431061f41c5087066",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
