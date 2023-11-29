@@ -33,6 +33,24 @@
       "message": "nice! +pirama for OWNERS...",
       "revId": "c79d9e30532514560e0f7cadc4395a14aaa229e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba50d6a2_6c023153",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-11-29T21:47:39Z",
+      "side": 1,
+      "message": "+ccross for OWNERS of cc_test.go.",
+      "parentUuid": "53b9bac2_6ef5b6b0",
+      "revId": "c79d9e30532514560e0f7cadc4395a14aaa229e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
