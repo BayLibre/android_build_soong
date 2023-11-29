@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb56038c_10f5e470",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-29T00:13:22Z",
+      "side": 1,
+      "message": "I think you want:\n\n```suggestion\n\t\tremoteUpdateCache :\u003d !ctx.Config().IsEnvFalse(\"RBE_METALAVA_REMOTE_UPDATE_CACHE\")\n```",
+      "range": {
+        "startLine": 503,
+        "startChar": 2,
+        "endLine": 508,
+        "endChar": 3
+      },
+      "revId": "579374188bd8077a56dbb2e2dc9dcc4109ed8720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
