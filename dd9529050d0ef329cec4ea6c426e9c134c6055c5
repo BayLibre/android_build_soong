@@ -34,6 +34,24 @@
       "parentUuid": "ab03bc52_8a92380b",
       "revId": "dd9529050d0ef329cec4ea6c426e9c134c6055c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ba651d2_7471a97e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-11-29T02:34:25Z",
+      "side": 1,
+      "message": "Yeah, but it also matches what the vast majority of tools are going to do -- read through the symlink. And most actions shouldn\u0027t/won\u0027t be creating symlinks unless their users are expecting them, so we decided that those would be treated as symlinks (that also effectively added support for symlinks in the build graph, which previously were always described as side-effects).\n\nSo unless we added a whole bunch more ways to specify \"not directly used\" dependencies, forcing you to specify both would effectively forbid symlinking source files. Which may be a good idea, maybe not 🤷‍♂️. And all of this is ignoring symlinks to directories in the parents of the path, which makes everything more complicated.\n\nIs there a plan on how to add full action sandboxing? (Other than by remoting everything with RBE, which I\u0027m interested in :)\n\nAnd to be clear, I think it\u0027s completely reasonable to define that genrule inputs work like this. We just need to understand that it won\u0027t work quite right with incremental builds currently. If it becomes an issue, we may need to propagate that setting to ninja so that incremental builds are using the right checks. Though that may get tricky if both a genrule and other rule both depend on the same source file, as currently that would only trigger a single `stat`.",
+      "parentUuid": "5a65f1bc_8810574c",
+      "revId": "dd9529050d0ef329cec4ea6c426e9c134c6055c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
