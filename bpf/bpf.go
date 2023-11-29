@@ -206,6 +206,7 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 
 	}
+	ctx.SetProvider(android.SrcsFileProviderKey, android.SrcsFileProviderData{SrcPaths: srcs})
 }
 
 func (bpf *bpf) AndroidMk() android.AndroidMkData {

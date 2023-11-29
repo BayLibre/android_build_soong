@@ -1174,6 +1174,8 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 	uniqueSrcFiles = append(uniqueSrcFiles, uniqueJavaFiles...)
 	uniqueSrcFiles = append(uniqueSrcFiles, uniqueKtFiles...)
 	j.uniqueSrcFiles = uniqueSrcFiles
+	fmt.Println("-----", ctx.ModuleType())
+	ctx.SetProvider(android.SrcsFileProviderKey, android.SrcsFileProviderData{SrcPaths: uniqueSrcFiles})
 
 	// We don't currently run annotation processors in turbine, which means we can't use turbine
 	// generated header jars when an annotation processor that generates API is enabled.  One
