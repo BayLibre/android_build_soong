@@ -70,6 +70,30 @@
       },
       "revId": "579374188bd8077a56dbb2e2dc9dcc4109ed8720",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57830b32_3a1fffed",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1959868
+      },
+      "writtenOn": "2023-11-29T00:22:03Z",
+      "side": 1,
+      "message": "Huh, still spinning.\n\n1. If it was set to `false`, I want `false`.\n2. If it was not set, I want `true`.\n3. If it was set to `true`, I want `true`.\n\nYour suggestion works for 2 and 3, but not 1.",
+      "parentUuid": "e6606302_084365d3",
+      "range": {
+        "startLine": 503,
+        "startChar": 2,
+        "endLine": 508,
+        "endChar": 3
+      },
+      "revId": "579374188bd8077a56dbb2e2dc9dcc4109ed8720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
