@@ -22,6 +22,30 @@
       },
       "revId": "ebea5870bfc4419313e0b89aaedf3dac124b6723",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8302b6c_d25cc0a9",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-11-29T09:41:37Z",
+      "side": 1,
+      "message": "This is only for 24Q1 that does not have any vendor versions defined yet. It was 34 for `PLATFORM_VNDK_VERSION`.\nWe can remove this fallback code once 24Q1 is not built with this source.",
+      "parentUuid": "b214f01a_cea3a072",
+      "range": {
+        "startLine": 407,
+        "startChar": 2,
+        "endLine": 407,
+        "endChar": 61
+      },
+      "revId": "ebea5870bfc4419313e0b89aaedf3dac124b6723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
