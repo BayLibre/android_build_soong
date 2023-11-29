@@ -182,6 +182,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00cf418d_1979713c",
+        "filename": "ui/status/ninja_frontend/frontend.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-29T00:58:57Z",
+      "side": 1,
+      "message": "You\u0027ll also have to copy these comments back to external/ninja so they don\u0027t get lost on the next proto update.",
+      "parentUuid": "1f5a14e7_5088afbf",
+      "revId": "79348887c1a04e82aa6a421acd47b5a5f1504404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fe8cdcb_1b212739",
