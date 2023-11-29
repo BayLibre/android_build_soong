@@ -33,6 +33,24 @@
       "message": "Move the description to the RuleParams.",
       "revId": "0f3c23cb3751cb4d23fb16156451d2b501ed6a34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec759b7_92e8fb14",
+        "filename": "java/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-29T18:33:18Z",
+      "side": 1,
+      "message": "Description in RuleParams has different semantics, that results in the same description for all invocations of the rule, while a per-Build Description gets prepended with which module is building it: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/module_context.go;l\u003d345-347;drc\u003d09ad3a6505b6345cc793acc68280069b37f816c0",
+      "parentUuid": "3336a6f4_86e70341",
+      "revId": "0f3c23cb3751cb4d23fb16156451d2b501ed6a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
