@@ -94,6 +94,30 @@
       },
       "revId": "579374188bd8077a56dbb2e2dc9dcc4109ed8720",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c46ace40_472370e7",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-29T00:38:35Z",
+      "side": 1,
+      "message": "I think it works:\n\n|    | input | `IsEnvFalse` | `!IsEnvFalse` |\n|----|-------|------------|-------------|\n| 1. | `\"false\"` | `true` | `false` |\n| 2. | `\"\"`  | `false` | `true` |\n| 3. |`\"true\"` | `false` | `true` |",
+      "parentUuid": "57830b32_3a1fffed",
+      "range": {
+        "startLine": 503,
+        "startChar": 2,
+        "endLine": 508,
+        "endChar": 3
+      },
+      "revId": "579374188bd8077a56dbb2e2dc9dcc4109ed8720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
