@@ -402,6 +402,12 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 			"-isystem "+getCurrentIncludePath(ctx).Join(ctx, config.NDKTriple(tc)).String())
 	}
 
+	vendorApiLevel := ctx.Config().VendorApiLevel()
+	if vendorApiLevel == "" {
+		vendorApiLevel = ctx.Config().PlatformSdkVersion().String()
+	}
+	flags.Global.CommonFlags = append(flags.Global.CommonFlags, "-D__ANDROID_VENDOR_API__="+vendorApiLevel)
+
 	if ctx.useVndk() {
 		flags.Global.CommonFlags = append(flags.Global.CommonFlags, "-D__ANDROID_VNDK__")
 		if ctx.inVendor() {
