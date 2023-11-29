@@ -424,6 +424,7 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 		return srcFiles
 	}
 	srcFiles := addLabelsForInputs("srcs", g.properties.Srcs, g.properties.Exclude_srcs)
+	ctx.SetProvider(android.SrcsFileProviderKey, android.SrcsFileProviderData{SrcPaths: srcFiles})
 
 	var copyFrom android.Paths
 	var outputFiles android.WritablePaths

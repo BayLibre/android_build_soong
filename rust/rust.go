@@ -989,6 +989,7 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 			sourceLib := sourceMod.(*Module).compiler.(*libraryDecorator)
 			mod.sourceProvider.setOutputFiles(sourceLib.sourceProvider.Srcs())
 		}
+		ctx.SetProvider(android.SrcsFileProviderKey, android.SrcsFileProviderData{SrcPaths: mod.sourceProvider.Srcs()})
 	}
 
 	if mod.compiler != nil && !mod.compiler.Disabled() {
