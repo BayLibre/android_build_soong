@@ -68,6 +68,24 @@
       "parentUuid": "04e63a49_986353e9",
       "revId": "ac34e0042c5d9219b5f34ca9fd9074cec6d9c631",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ab72b5_d328fd98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2023-11-29T08:31:58Z",
+      "side": 1,
+      "message": "Validated that the difference now is only rw-r-r vs rw----- on the zip attributes (the shrinker working on the full apk before would strip the r-r part when writing out again)",
+      "parentUuid": "316199d1_e59643a6",
+      "revId": "ac34e0042c5d9219b5f34ca9fd9074cec6d9c631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
