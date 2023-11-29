@@ -70,6 +70,24 @@
       "parentUuid": "1ba651d2_7471a97e",
       "revId": "dd9529050d0ef329cec4ea6c426e9c134c6055c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecb21a71_39b42653",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-11-29T23:49:11Z",
+      "side": 1,
+      "message": "\u003e Yeah, I\u0027m thinking it\u0027s a good idea. Like what you said about parents of the path, if you implicitly include the targets of symlinks, then you can bypass any visibility checks by adding symlinks to arbitrary files.\n\nThere are far easier, and more inventive ways to bypass visibility already 😊 (just use Make, `#include` `.c` files, etc). We do symlink directories around, especially in external/... to handle third party code that expects certain include directory layouts (either because they\u0027re usually installed with a prefix, or for chrome/etc that have `third_party` in the include paths, so that the name of the repo is included)\n\n\u003e I would like to do this eventually by making ninja sandbox each action, either with sbox or potentially bazel\u0027s sandbox_fs. But for now I\u0027m just doing genrules. It would probably require a bunch of work to make sure all actions fully specify their sandbox inputs via direct deps, or add some ninja syntax to add certain transitive deps to the sandbox.\n\nYeah, I\u0027ve been looking at integrating reclient more directly with ninja, and extending the ninja information with any deps necessary for remote exec/sandboxing is interesting.\n\n\u003e Why wouldn\u0027t it work with incremental builds? If I understand it correctly, the only issue is that ninja will over-specify deps a little. (the target of the symlink will be added as a dep when it isn\u0027t needed in very rare cases)\n\nIt\u0027s under-specified, as the symlink itself won\u0027t be included, only the dependency. And if you change the symlink to point to a file with an older timestamp than the output (even if it\u0027s newer than the original file), ninja will consider the output up to date without rebuilding it.\n\nn2, which is what I\u0027ve been looking at as part of playing around with ninja, deals with that a little differently, and records the exact timestamp as part of the hashed manifest, instead of just looking at the latest timestamp. So it\u0027s far more likely to be \"correct\" in that case and just act as if it was over-specified.\n\nLooking at all the combinations and behaviors:\n* sbox follow, ninja stat (src files before your change): normal, everything is fine.\n* sbox follow, ninja lstat (generated files before your change): incremental build problem, as ninja won\u0027t notice the updates to the file contents. We also have intentionally broken symlinks in the build graph that couldn\u0027t be used (these are usually absolute symlinks that are valid on the device, but not the host during the build).\n* sbox symlink, ninja stat (src files after this change): incremental build problem, as ninja won\u0027t necessarily notice the updates to the symlink (unless it points to a sufficiently newer source file). At the same time, we invalidate the genrule if the pointed to source changes, which may be more often than necessary.\n* sbox symlink, ninja lstat (generated files after your change): these work correctly now.\n\nSo yeah, after writing that out, this is probably a net improvement, even if it still has problems.",
+      "parentUuid": "367dd1cd_0abde0f9",
+      "revId": "dd9529050d0ef329cec4ea6c426e9c134c6055c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
