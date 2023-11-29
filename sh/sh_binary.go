@@ -273,6 +273,7 @@ func (s *ShBinary) generateAndroidBuildActions(ctx android.ModuleContext) {
 		Output: s.outputFilePath,
 		Input:  s.sourceFilePath,
 	})
+	ctx.SetProvider(android.SrcsFileProviderKey, android.SrcsFileProviderData{SrcPaths: []android.Path{s.sourceFilePath}})
 }
 
 func (s *ShBinary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
