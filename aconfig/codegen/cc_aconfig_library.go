@@ -132,7 +132,7 @@ func (this *CcAconfigLibraryCallbacks) GeneratorBuildActions(ctx cc.ModuleContex
 
 	ctx.Build(pctx, android.BuildParams{
 		Rule:  cppRule,
-		Input: declarations.IntermediatePath,
+		Input: declarations.IntermediateProtoPath,
 		Outputs: []android.WritablePath{
 			this.generatedCpp,
 			this.generatedH,
