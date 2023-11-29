@@ -40,6 +40,19 @@ var (
 			Restat: true,
 		}, "release_version", "package", "declarations", "values", "default-permission")
 
+	// For create-device-config-sysprops: Generate aconfig flag value map text file
+	aconfigTextRule = pctx.AndroidStaticRule("aconfig_text",
+		blueprint.RuleParams{
+			Command: `${aconfig} create-device-config-sysprops` +
+				` --cache ${in}` +
+				` --out ${out}.tmp` +
+				` && ( if cmp -s ${out}.tmp ${out} ; then rm ${out}.tmp ; else mv ${out}.tmp ${out} ; fi )`,
+			CommandDeps: []string{
+				"${aconfig}",
+			},
+			Restat: true,
+		})
+
 	// For java_aconfig_library: Generate java library
 	javaRule = pctx.AndroidStaticRule("java_aconfig_library",
 		blueprint.RuleParams{

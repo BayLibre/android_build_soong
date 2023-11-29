@@ -20,6 +20,7 @@ import (
 	"android/soong/android"
 	"android/soong/bazel"
 	"android/soong/java"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
@@ -85,7 +86,7 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        javaRule,
-		Input:       declarations.IntermediatePath,
+		Input:       declarations.IntermediateProtoPath,
 		Output:      srcJarPath,
 		Description: "aconfig.srcjar",
 		Args: map[string]string{
@@ -95,7 +96,7 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 
 	// Tell the java module about the .aconfig files, so they can be propagated up the dependency chain.
 	// TODO: It would be nice to have that propagation code here instead of on java.Module and java.JavaInfo.
-	module.AddAconfigIntermediate(declarations.IntermediatePath)
+	module.AddAconfigIntermediate(declarations.IntermediateProtoPath)
 
 	return srcJarPath
 }

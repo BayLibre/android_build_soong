@@ -20,6 +20,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/bazel"
+
 	"github.com/google/blueprint"
 )
 
@@ -111,8 +112,9 @@ func optionalVariable(prefix string, value string) string {
 
 // Provider published by aconfig_value_set
 type declarationsProviderData struct {
-	Package          string
-	IntermediatePath android.WritablePath
+	Package               string
+	IntermediateProtoPath android.WritablePath
+	IntermediateTextPath  android.WritablePath
 }
 
 var declarationsProviderKey = blueprint.NewProvider(declarationsProviderData{})
@@ -137,14 +139,14 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 
 	// Intermediate format
 	declarationFiles := android.PathsForModuleSrc(ctx, module.properties.Srcs)
-	intermediatePath := android.PathForModuleOut(ctx, "intermediate.pb")
+	intermediateProtoFilePath := android.PathForModuleOut(ctx, "intermediate.pb")
 	defaultPermission := ctx.Config().ReleaseAconfigFlagDefaultPermission()
 	inputFiles := make([]android.Path, len(declarationFiles))
 	copy(inputFiles, declarationFiles)
 	inputFiles = append(inputFiles, valuesFiles...)
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        aconfigRule,
-		Output:      intermediatePath,
+		Output:      intermediateProtoFilePath,
 		Inputs:      inputFiles,
 		Description: "aconfig_declarations",
 		Args: map[string]string{
@@ -156,9 +158,18 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 		},
 	})
 
+	intermediateTextFilePath := android.PathForModuleOut(ctx, "intermediate.txt")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        aconfigTextRule,
+		Output:      intermediateTextFilePath,
+		Inputs:      android.Paths{intermediateProtoFilePath},
+		Description: "aconfig_text",
+	})
+
 	ctx.SetProvider(declarationsProviderKey, declarationsProviderData{
-		Package:          module.properties.Package,
-		IntermediatePath: intermediatePath,
+		Package:               module.properties.Package,
+		IntermediateProtoPath: intermediateProtoFilePath,
+		IntermediateTextPath:  intermediateTextFilePath,
 	})
 
 }

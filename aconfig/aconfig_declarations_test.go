@@ -39,7 +39,7 @@ func TestAconfigDeclarations(t *testing.T) {
 	// Check that the provider has the right contents
 	depData := result.ModuleProvider(module, declarationsProviderKey).(declarationsProviderData)
 	android.AssertStringEquals(t, "package", depData.Package, "com.example.package")
-	if !strings.HasSuffix(depData.IntermediatePath.String(), "/intermediate.pb") {
-		t.Errorf("Missing intermediates path in provider: %s", depData.IntermediatePath.String())
+	if !strings.HasSuffix(depData.IntermediateProtoPath.String(), "/intermediate.pb") {
+		t.Errorf("Missing intermediates path in provider: %s", depData.IntermediateProtoPath.String())
 	}
 }
