@@ -20,6 +20,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/bazel"
+
 	"github.com/google/blueprint"
 )
 
@@ -116,9 +117,10 @@ func optionalVariable(prefix string, value string) string {
 
 // Provider published by aconfig_value_set
 type DeclarationsProviderData struct {
-	Package          string
-	Container        string
-	IntermediatePath android.WritablePath
+	Package               string
+	Container             string
+	IntermediateProtoPath android.WritablePath
+	IntermediateTextPath  android.WritablePath
 }
 
 var DeclarationsProviderKey = blueprint.NewProvider(DeclarationsProviderData{})
@@ -151,14 +153,14 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 
 	// Intermediate format
 	declarationFiles := android.PathsForModuleSrc(ctx, module.properties.Srcs)
-	intermediatePath := android.PathForModuleOut(ctx, "intermediate.pb")
+	intermediateProtoFilePath := android.PathForModuleOut(ctx, "intermediate.pb")
 	defaultPermission := ctx.Config().ReleaseAconfigFlagDefaultPermission()
 	inputFiles := make([]android.Path, len(declarationFiles))
 	copy(inputFiles, declarationFiles)
 	inputFiles = append(inputFiles, valuesFiles...)
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        aconfigRule,
-		Output:      intermediatePath,
+		Output:      intermediateProtoFilePath,
 		Inputs:      inputFiles,
 		Description: "aconfig_declarations",
 		Args: map[string]string{
@@ -170,10 +172,19 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 		},
 	})
 
+	intermediateTextFilePath := android.PathForModuleOut(ctx, "intermediate.txt")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        aconfigTextRule,
+		Output:      intermediateTextFilePath,
+		Inputs:      android.Paths{intermediateProtoFilePath},
+		Description: "aconfig_text",
+	})
+
 	ctx.SetProvider(DeclarationsProviderKey, DeclarationsProviderData{
-		Package:          module.properties.Package,
-		Container:        module.properties.Container,
-		IntermediatePath: intermediatePath,
+		Package:               module.properties.Package,
+		Container:             module.properties.Container,
+		IntermediateProtoPath: intermediateProtoFilePath,
+		IntermediateTextPath:  intermediateTextFilePath,
 	})
 
 }
@@ -183,9 +194,9 @@ func CollectTransitiveAconfigFiles(ctx android.ModuleContext, transitiveAconfigF
 		*transitiveAconfigFiles = make(map[string]*android.DepSet[android.Path])
 	}
 	ctx.VisitDirectDeps(func(module android.Module) {
-		if dep := ctx.OtherModuleProvider(module, DeclarationsProviderKey).(DeclarationsProviderData); dep.IntermediatePath != nil {
+		if dep := ctx.OtherModuleProvider(module, DeclarationsProviderKey).(DeclarationsProviderData); dep.IntermediateProtoPath != nil {
 			aconfigMap := make(map[string]*android.DepSet[android.Path])
-			aconfigMap[dep.Container] = android.NewDepSet(android.POSTORDER, []android.Path{dep.IntermediatePath}, nil)
+			aconfigMap[dep.Container] = android.NewDepSet(android.POSTORDER, []android.Path{dep.IntermediateProtoPath}, nil)
 			mergeTransitiveAconfigFiles(aconfigMap, *transitiveAconfigFiles)
 			return
 		}
