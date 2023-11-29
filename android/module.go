@@ -587,6 +587,9 @@ type CommonTestOptions struct {
 	// Tags provide additional metadata to customize test execution by downstream
 	// test runners. The tags have no special meaning to Soong.
 	Tags []string
+
+	// Indicator of who to notify about this test.
+	Team *string
 }
 
 // SetAndroidMkEntries sets AndroidMkEntries according to the value of base
@@ -595,6 +598,9 @@ func (t *CommonTestOptions) SetAndroidMkEntries(entries *AndroidMkEntries) {
 	entries.SetBoolIfTrue("LOCAL_IS_UNIT_TEST", Bool(t.Unit_test))
 	if len(t.Tags) > 0 {
 		entries.AddStrings("LOCAL_TEST_OPTIONS_TAGS", t.Tags...)
+	}
+	if t.Team != nil {
+		entries.SetString("LOCAL_TEAM", *t.Team)
 	}
 }
 
