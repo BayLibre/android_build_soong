@@ -52,6 +52,24 @@
       "parentUuid": "5a65f1bc_8810574c",
       "revId": "dd9529050d0ef329cec4ea6c426e9c134c6055c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "367dd1cd_0abde0f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-11-29T22:50:41Z",
+      "side": 1,
+      "message": "\u003e forcing you to specify both would effectively forbid symlinking source files. Which may be a good idea, maybe not 🤷‍♂️. And all of this is ignoring symlinks to directories in the parents of the path, which makes everything more complicated.\n\nYeah, I\u0027m thinking it\u0027s a good idea. Like what you said about parents of the path, if you implicitly include the targets of symlinks, then you can bypass any visibility checks by adding symlinks to arbitrary files. \n\n\u003e Is there a plan on how to add full action sandboxing? (Other than by remoting everything with RBE, which I\u0027m interested in :)\n\nI would like to do this eventually by making ninja sandbox each action, either with sbox or potentially bazel\u0027s sandbox_fs. But for now I\u0027m just doing genrules. It would probably require a bunch of work to make sure all actions fully specify their sandbox inputs via direct deps, or add some ninja syntax to add certain transitive deps to the sandbox.\n\n\u003e We just need to understand that it won\u0027t work quite right with incremental builds currently.\n\nWhy wouldn\u0027t it work with incremental builds? If I understand it correctly, the only issue is that ninja will over-specify deps a little. (the target of the symlink will be added as a dep when it isn\u0027t needed in very rare cases)\n\nI didn\u0027t realize initially the issues that this would cause, but I\u0027ve now fixed all the problems in aosp at least: aosp/2850374, aosp/2853250, aosp/2853249, aosp/2853447, aosp/2853507, aosp/2853029",
+      "parentUuid": "1ba651d2_7471a97e",
+      "revId": "dd9529050d0ef329cec4ea6c426e9c134c6055c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
