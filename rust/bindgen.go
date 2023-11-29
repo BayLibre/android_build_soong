@@ -174,6 +174,12 @@ func (b *bindgenDecorator) GenerateSource(ctx ModuleContext, deps PathDeps) andr
 		cflags = append(cflags, "-D__ANDROID_VNDK__")
 		if ctx.RustModule().InVendor() {
 			cflags = append(cflags, "-D__ANDROID_VENDOR__")
+
+			vendorApiLevel := ctx.Config().VendorApiLevel()
+			if vendorApiLevel == "" {
+				vendorApiLevel = ctx.Config().PlatformSdkVersion().String()
+			}
+			cflags = append(cflags, "-D__ANDROID_VENDOR_API__="+vendorApiLevel)
 		} else if ctx.RustModule().InProduct() {
 			cflags = append(cflags, "-D__ANDROID_PRODUCT__")
 		}
