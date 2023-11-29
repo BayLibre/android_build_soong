@@ -1283,6 +1283,11 @@ func (c *Module) Init() android.Module {
 	if c.orderfile != nil {
 		c.AddProperties(c.orderfile.props()...)
 	}
+	/*
+		if c.testModule != nil {
+			c.AddProper
+		}
+	*/
 	for _, feature := range c.features {
 		c.AddProperties(feature.props()...)
 	}

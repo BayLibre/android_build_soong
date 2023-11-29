@@ -336,6 +336,7 @@ type testBinary struct {
 	data             []android.DataPath
 	testConfig       android.Path
 	extraTestConfigs android.Paths
+	ownerTeam        android.OwnerTeamProperties
 }
 
 func (test *testBinary) linkerProps() []interface{} {

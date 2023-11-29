@@ -487,6 +487,48 @@ func TestTest(t *testing.T) {
 	}
 }
 
+func TestTestOwner(t *testing.T) {
+
+	// https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/java/ravenwood_test.go;l=59?q=CheckModuleHasDependency&sq=git:googleplex-android%2Fplatform%2Fsuperproject%2Fmain@main
+	ctx, _ := testJava(t, `
+		java_test_host {
+			name: "foo",
+			srcs: ["a.java"],
+                        owner_team: "someteam",
+		}
+
+		team {
+			name: "someteam",
+		 	trendy_team_id: "cool_team",
+		}
+	`)
+
+	buildOS := ctx.Config().BuildOS.String()
+
+	// TODO(ron): fix variant in both commands.
+	foo := ctx.ModuleForTests("foo", buildOS+"_common").Module().(*TestHost)
+	trendy_team_id := ""
+
+	/*
+		    blueprint.Module vs Module
+			ctx.VisitDirectDeps(foo, func(dep Module) {
+				trendy_team_id = trendy_team_id + " | " + dep.Name()
+			})
+	*/
+
+	// TODO(ron): rename CheckModuleHasDependency -> DoesModuleHaveDependency() or force
+	// using return value.
+	android.AssertBoolEquals(t, "Expected team dependency someteam, "+trendy_team_id,
+		true, CheckModuleHasDependency(t, ctx, "foo", "linux_glibc_common", "someteam"))
+
+	expected := "someteam"
+	fooTestOwner := foo.ownerTeamProperties
+	if *fooTestOwner.Owner_team != expected {
+		t.Errorf(`expected foo test owner [%q], got %q`,
+			expected, *foo.ownerTeamProperties.Owner_team)
+	}
+}
+
 func TestHostBinaryNoJavaDebugInfoOverride(t *testing.T) {
 	bp := `
 		java_library {
