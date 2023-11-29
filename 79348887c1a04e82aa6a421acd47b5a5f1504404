@@ -16,6 +16,109 @@
       "message": "@ccross@android.com, can you review this CL?",
       "revId": "79348887c1a04e82aa6a421acd47b5a5f1504404",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1e4fe14_a896f8b2",
+        "filename": "ui/status/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-29T00:30:53Z",
+      "side": 1,
+      "message": "This is pretty complicated, maybe break it up into multiple lines and add some comments on the differences between the two methods of computing the time?",
+      "revId": "79348887c1a04e82aa6a421acd47b5a5f1504404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90bc409_b0aef653",
+        "filename": "ui/status/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-29T00:30:53Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\tn.status.Verbose(fmt.Sprintf(\"parallelism: %d, estimated from total time: %s, critical path time: %s\",\n```",
+      "range": {
+        "startLine": 192,
+        "startChar": 51,
+        "endLine": 192,
+        "endChar": 61
+      },
+      "revId": "79348887c1a04e82aa6a421acd47b5a5f1504404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ba836c5_92f281dd",
+        "filename": "ui/status/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-29T00:30:53Z",
+      "side": 1,
+      "message": "Compute the value once above and reuse it here",
+      "range": {
+        "startLine": 194,
+        "startChar": 19,
+        "endLine": 194,
+        "endChar": 89
+      },
+      "revId": "79348887c1a04e82aa6a421acd47b5a5f1504404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd1fa8f9_88452ff3",
+        "filename": "ui/status/ninja_frontend/frontend.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-29T00:30:53Z",
+      "side": 1,
+      "message": "These should have comments describing what they are, and include the units.",
+      "revId": "79348887c1a04e82aa6a421acd47b5a5f1504404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe8cdcb_1b212739",
+        "filename": "ui/terminal/format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-29T00:30:53Z",
+      "side": 1,
+      "message": "Maybe unlikely, but you\u0027re reading the current time twice, once in `Now()` and again in `Until`.  That could invalidate the `t.After` check above.   Suggest:\n\n```suggestion\n\t\treturn t.Sub(now).Round(time.Duration(time.Second)).String()\n```",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "79348887c1a04e82aa6a421acd47b5a5f1504404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
