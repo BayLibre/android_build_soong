@@ -22,6 +22,30 @@
       },
       "revId": "579374188bd8077a56dbb2e2dc9dcc4109ed8720",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0579bdf7_deeeebb1",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1959868
+      },
+      "writtenOn": "2023-11-29T00:15:07Z",
+      "side": 1,
+      "message": "Wouldn\u0027t that return `true` if the variable is not set?",
+      "parentUuid": "cb56038c_10f5e470",
+      "range": {
+        "startLine": 503,
+        "startChar": 2,
+        "endLine": 508,
+        "endChar": 3
+      },
+      "revId": "579374188bd8077a56dbb2e2dc9dcc4109ed8720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
