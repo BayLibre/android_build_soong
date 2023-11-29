@@ -46,6 +46,30 @@
       },
       "revId": "579374188bd8077a56dbb2e2dc9dcc4109ed8720",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6606302_084365d3",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1959868
+      },
+      "writtenOn": "2023-11-29T00:18:45Z",
+      "side": 1,
+      "message": "My head was spinning when I was considering the truth table then, but I see it now.",
+      "parentUuid": "0579bdf7_deeeebb1",
+      "range": {
+        "startLine": 503,
+        "startChar": 2,
+        "endLine": 508,
+        "endChar": 3
+      },
+      "revId": "579374188bd8077a56dbb2e2dc9dcc4109ed8720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
