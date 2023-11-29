@@ -39,7 +39,8 @@ var kotlinc = pctx.AndroidRemoteStaticRule("kotlinc", android.RemoteRuleSupports
 			` $kotlincFlags -jvm-target $kotlinJvmTarget -Xbuild-file=$kotlinBuildFile ` +
 			` -kotlin-home $emptyDir ` +
 			` -Xplugin=${config.KotlinAbiGenPluginJar} ` +
-			` -P plugin:org.jetbrains.kotlin.jvm.abi:outputDir=$headerClassesDir && ` +
+			` -P plugin:org.jetbrains.kotlin.jvm.abi:outputDir=$headerClassesDir ` +
+			` -Xuse-k2 -Xbackend-threads=8 && ` +
 			`${config.SoongZipCmd} -jar -o $out -C $classesDir -D $classesDir -write_if_changed && ` +
 			`${config.SoongZipCmd} -jar -o $headerJar -C $headerClassesDir -D $headerClassesDir -write_if_changed && ` +
 			`rm -rf "$srcJarDir" "$classesDir" "$headerClassesDir"`,
