@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e62c2f1a_530e7375",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-11-30T05:05:05Z",
+      "side": 1,
+      "message": "note that this change caused some test harness issue as well (b/313922898). Test harness uses an apk built on master branch to enable virtwifi on cuttlefish instances. Please make sure relanding this change won\u0027t cause that issue again.",
+      "revId": "1e2861252086a19cf6096cead36323141969e360",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
