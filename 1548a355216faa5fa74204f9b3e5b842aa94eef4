@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7ff0c3_e0589337",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-11-30T23:11:02Z",
+      "side": 1,
+      "message": "All of the release config variables are already in the BuildFlags map below, so you should be able to skip the extra effort of declaring and setting this.\n\nThat said, looking at this now, I realize that there\u0027s no easy accessor for that as a bool. Would you mind adding this below and using that:\n\nfunc (this *ProductVariables) GetBuildFlagBool(flag string) bool {                                   \n    val, ok :\u003d this.BuildFlags[flag]                                                                 \n    if !ok {                                                                                         \n        return false                                                                                 \n    }                                                                                                \n    return val \u003d\u003d \"true\"                                                                             \n}",
+      "revId": "1548a355216faa5fa74204f9b3e5b842aa94eef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
