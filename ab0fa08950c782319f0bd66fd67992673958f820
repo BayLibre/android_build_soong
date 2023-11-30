@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "524f48ec_61bdd334",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1933736
+      },
+      "writtenOn": "2023-11-30T18:22:09Z",
+      "side": 1,
+      "message": "Did you mean to abandon this Sam?",
+      "revId": "ab0fa08950c782319f0bd66fd67992673958f820",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
