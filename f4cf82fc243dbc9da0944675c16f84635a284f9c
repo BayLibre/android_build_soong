@@ -22,6 +22,30 @@
       },
       "revId": "f4cf82fc243dbc9da0944675c16f84635a284f9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d15b3f53_c1754152",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-11-30T04:14:09Z",
+      "side": 1,
+      "message": "Only before 2024Q2, the first vFRC release. (next build of tot for now)\nIn that case vendor API level follows the platform sdk version.\nWhen those targets are branched out, we can make this case failure.",
+      "parentUuid": "cb14cbfa_a0721989",
+      "range": {
+        "startLine": 411,
+        "startChar": 3,
+        "endLine": 411,
+        "endChar": 28
+      },
+      "revId": "f4cf82fc243dbc9da0944675c16f84635a284f9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
