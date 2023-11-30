@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb9ab07_20bbd02f",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-30T21:56:17Z",
+      "side": 1,
+      "message": "Does this one cover what you need?  It\u0027s a pre-dex jar, and should include all the transitive static jars.",
+      "revId": "f91275363c2e2f9d21eaa1ab29feb63a75fedb3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
