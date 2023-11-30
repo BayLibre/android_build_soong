@@ -16,6 +16,23 @@
       "message": "note that this change caused some test harness issue as well (b/313922898). Test harness uses an apk built on master branch to enable virtwifi on cuttlefish instances. Please make sure relanding this change won\u0027t cause that issue again.",
       "revId": "1e2861252086a19cf6096cead36323141969e360",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a52cb023_befaf75d",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-11-30T05:22:10Z",
+      "side": 1,
+      "message": "This is checking the global `PlatformSdkVersion()`, but it needs to be checking the per-module `dexParams.minSdkVersion` to ensure apps like [WifiUtil](https://cs.android.com/android/platform/superproject/main/+/main:tools/tradefederation/core/util_apps/WifiUtil/Android.bp;l\u003d22;drc\u003d6e95559f87b9a82b2dc55c08fe508389eb0794c6) that set a low `min_sdk_version` don\u0027t use the new dex version.",
+      "revId": "1e2861252086a19cf6096cead36323141969e360",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
