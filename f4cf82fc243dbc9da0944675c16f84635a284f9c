@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb14cbfa_a0721989",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-11-30T04:06:00Z",
+      "side": 1,
+      "message": "When can this condition be true? Can\u0027t we fail hard in this case?",
+      "range": {
+        "startLine": 411,
+        "startChar": 3,
+        "endLine": 411,
+        "endChar": 28
+      },
+      "revId": "f4cf82fc243dbc9da0944675c16f84635a284f9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
