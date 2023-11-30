@@ -449,6 +449,9 @@ type Module struct {
 	outputFile       android.Path
 	extraOutputFiles android.Paths
 
+	// The combined jar before any dexing happens
+	combinedJar android.OptionalPath
+
 	exportAidlIncludeDirs     android.Paths
 	ignoredAidlPermissionList android.Paths
 
@@ -641,6 +644,11 @@ func (j *Module) OutputFiles(tag string) (android.Paths, error) {
 	case ".lint":
 		if j.linter.outputs.xml != nil {
 			return android.Paths{j.linter.outputs.xml}, nil
+		}
+		return nil, fmt.Errorf("%q was requested, but no output file was found.", tag)
+	case ".combined":
+		if j.combinedJar.Valid() {
+			return android.Paths{j.combinedJar.Path()}, nil
 		}
 		return nil, fmt.Errorf("%q was requested, but no output file was found.", tag)
 	default:
@@ -1512,12 +1520,14 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 				Input:  jars[0],
 				Output: combinedJar,
 			})
+			j.combinedJar = android.OptionalPathForPath(combinedJar)
 			outputFile = combinedJar.OutputPath
 		}
 	} else {
 		combinedJar := android.PathForModuleOut(ctx, "combined", jarName)
 		TransformJarsToJar(ctx, combinedJar, "for javac", jars, manifest,
 			false, nil, nil)
+		j.combinedJar = android.OptionalPathForPath(combinedJar)
 		outputFile = combinedJar.OutputPath
 	}
 
