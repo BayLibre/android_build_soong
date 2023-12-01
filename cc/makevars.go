@@ -123,6 +123,14 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("SOONG_MODULES_USING_WNO_ERROR", makeStringOfKeys(ctx, modulesUsingWnoErrorKey))
 	ctx.Strict("SOONG_MODULES_MISSING_PGO_PROFILE_FILE", makeStringOfKeys(ctx, modulesMissingProfileFileKey))
 
+    ctx.Strict("CLANG_COVERAGE_CONFIG_CFLAGS", strings.Join(clangCovCflags, " "))
+    ctx.Strict("CLANG_COVERAGE_CONFIG_LDFLAGS", strings.Join(clangCovLDflags, " "))
+    ctx.Strict("CLANG_COVERAGE_HOST_LDFLAGS", strings.Join(clangCovHostLDflags, " "))
+    ctx.Strict("CLANG_COVERAGE_INSTR_PROFILE", strings.Join(clangInstrProf, " "))
+    ctx.Strict("CLANG_COVERAGE_CONTINUOUS_INSTR_PROFILE", strings.Join(clangInstrProfCont, " "))
+    ctx.Strict("CLANG_COVERAGE_CONTINUOUS_FLAGS", strings.Join(clangCovContflags, " "))
+    ctx.Strict("CLANG_COVERAGE_HWASAN_FLAGS", strings.Join(clangHWASANflags, " "))
+
 	ctx.Strict("ADDRESS_SANITIZER_CONFIG_EXTRA_CFLAGS", strings.Join(asanCflags, " "))
 	ctx.Strict("ADDRESS_SANITIZER_CONFIG_EXTRA_LDFLAGS", strings.Join(asanLdflags, " "))
 
