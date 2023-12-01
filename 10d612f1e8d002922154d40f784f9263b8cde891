@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7abe7c5_9df971a2",
+        "filename": "rust/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-12-01T00:51:23Z",
+      "side": 1,
+      "message": "This change still sets codegen-units\u003d1 when SOONG_RUSTC_INCREMENTAL is set, which we changed to avoid previously.\n\nTo make the code less complex, perhaps we should just remove SOONG_RUSTC_INCREMENTAL altogether and just make it eng vs non-eng?",
+      "revId": "10d612f1e8d002922154d40f784f9263b8cde891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
