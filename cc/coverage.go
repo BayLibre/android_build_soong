@@ -17,9 +17,34 @@ package cc
 import (
 	"strconv"
 
+        "strings"
+
 	"github.com/google/blueprint"
 
 	"android/soong/android"
+)
+
+var (
+        clangCovHostLDflags = []string{
+            "-Wl,--no-as-needed",
+            "-Wl,--wrap,open",
+        }
+        clangCovContflags = []string{
+            "-mllvm",
+            "-runtime-counter-relocation",
+        }
+        clangCovCflags = []string{
+            "-Wno-frame-larger-than=",
+        }
+        clangCovCommflags = []string{
+            "-fcoverage-mapping",
+            "-Wno-pass-failed",
+            "-D__ANDROID_CLANG_COVERAGE__",
+        }
+        clangHWASANflags = []string{
+            "-mllvm",
+            "-hwasan-globals=0",
+        }
 )
 
 const profileInstrFlag = "-fprofile-instr-generate=/data/misc/trace/clang-%p-%m.profraw"
@@ -103,18 +128,18 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 			flags.Local.CFlags = append(flags.Local.CFlags, "-Wno-frame-larger-than=", "-O0")
 		} else if clangCoverage {
 			flags.Local.CommonFlags = append(flags.Local.CommonFlags, profileInstrFlag,
-				"-fcoverage-mapping", "-Wno-pass-failed", "-D__ANDROID_CLANG_COVERAGE__")
+				 strings.Join(clangCovCommflags, " "))
 			// Override -Wframe-larger-than.  We can expect frame size increase after
 			// coverage instrumentation.
-			flags.Local.CFlags = append(flags.Local.CFlags, "-Wno-frame-larger-than=")
+			flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(clangCovCflags, " "))
 			if EnableContinuousCoverage(ctx) {
-				flags.Local.CommonFlags = append(flags.Local.CommonFlags, "-mllvm", "-runtime-counter-relocation")
+				flags.Local.CommonFlags = append(flags.Local.CommonFlags, strings.Join(clangCovContflags, " "))
 			}
 
 			// http://b/248022906, http://b/247941801  enabling coverage and hwasan-globals
 			// instrumentation together causes duplicate-symbol errors for __llvm_profile_filename.
 			if c, ok := ctx.Module().(*Module); ok && c.sanitize.isSanitizerEnabled(Hwasan) {
-				flags.Local.CommonFlags = append(flags.Local.CommonFlags, "-mllvm", "-hwasan-globals=0")
+				flags.Local.CommonFlags = append(flags.Local.CommonFlags, strings.Join(clangHWASANflags, " "))
 			}
 		}
 	}
