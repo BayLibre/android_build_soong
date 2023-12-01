@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c28e6d00_5b0afc99",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-12-01T21:03:33Z",
+      "side": 0,
+      "message": "We don\u0027t actually need to remove this functionality, right? Because there\u0027s this non-WriteFileRule implementation for unescaped commands. So even if WriteFileRule is incompatible with unescaped variables, rule_builder wouldn\u0027t be affected.\n\nI\u0027ll still +2 because it seems like the rust sandboxing effort may need to be improved to not use rulebuilder anyways. (for build.ninja size savings)",
+      "revId": "5c1d5fb21b19d6bcc8b0f83bc68124c21b31fabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5123df4a_ad543d20",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-12-01T21:03:33Z",
+      "side": 0,
+      "message": "I assume this removal is a mistake?",
+      "revId": "5c1d5fb21b19d6bcc8b0f83bc68124c21b31fabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
