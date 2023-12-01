@@ -18,12 +18,12 @@ import (
 	"fmt"
 	"strings"
 
+	"android/soong/aconfig"
 	"android/soong/bloaty"
 	"android/soong/testing"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
-	"android/soong/aconfig"
 	"android/soong/android"
 	"android/soong/cc"
 	cc_config "android/soong/cc/config"
