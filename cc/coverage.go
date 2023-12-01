@@ -22,6 +22,38 @@ import (
 	"android/soong/android"
 )
 
+var (
+	clangCovHostLDflags = []string{
+        "-Wl,--no-as-needed",
+        "-Wl,--wrap,open",
+	}
+    clangInstrProf = []string{
+        "-fprofile-instr-generate=/data/misc/trace/clang-%p-%m.profraw",
+    }
+    clangInstrProfCont = []string{
+        "-fprofile-instr-generate=/data/misc/trace/clang%c-%p-%m.profraw",
+    }
+    clangCovContflags = []string{
+        "-mllvm",
+        "-runtime-counter-relocation",
+    }
+    clangCovCflags = []string{
+        "-fcoverage-mapping",
+        "-Wno-pass-failed",
+        "-D__ANDROID_CLANG_COVERAGE__",
+        "-Wno-frame-larger-than=",
+    }
+    clangCovLDflags = []string{
+        "-fcoverage-mapping",
+        "-Wno-pass-failed",
+        "-D__ANDROID_CLANG_COVERAGE__",
+    }
+    clangHWASANflags = []string{
+        "-mllvm",
+        "-hwasan-globals=0",
+    }
+)
+
 const profileInstrFlag = "-fprofile-instr-generate=/data/misc/trace/clang-%p-%m.profraw"
 
 type CoverageProperties struct {
