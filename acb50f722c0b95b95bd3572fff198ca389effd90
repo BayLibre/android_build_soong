@@ -16,6 +16,24 @@
       "message": "This uses the same directory for all incremental data, is that useful to share cached objects between modules or variants?  Can rustc handle multiple processes using the same cache directory?  Would it make sense to use a per-variant directory instead (`android.PathForModuleOut(ctx, \"rustc-incremental\")`)",
       "revId": "acb50f722c0b95b95bd3572fff198ca389effd90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3290a902_73af6b6b",
+        "filename": "rust/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2023-12-01T18:55:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5cb24da_36842249",
+      "revId": "acb50f722c0b95b95bd3572fff198ca389effd90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
