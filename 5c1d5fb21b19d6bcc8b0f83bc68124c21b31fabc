@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bfa253c_bc7fd024",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-01T03:04:03Z",
+      "side": 1,
+      "message": "This needs another +2, I had to add a change to `license_metadata.go`.",
+      "revId": "5c1d5fb21b19d6bcc8b0f83bc68124c21b31fabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
