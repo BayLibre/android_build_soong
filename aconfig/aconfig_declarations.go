@@ -110,15 +110,6 @@ func optionalVariable(prefix string, value string) string {
 	return sb.String()
 }
 
-// Provider published by aconfig_value_set
-type declarationsProviderData struct {
-	Package               string
-	IntermediateProtoPath android.WritablePath
-	IntermediateTextPath  android.WritablePath
-}
-
-var declarationsProviderKey = blueprint.NewProvider(declarationsProviderData{})
-
 func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// Get the values that came from the global RELEASE_ACONFIG_VALUE_SETS flag
 	valuesFiles := make([]android.Path, 0)
@@ -166,7 +157,7 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 		Description: "aconfig_text",
 	})
 
-	ctx.SetProvider(declarationsProviderKey, declarationsProviderData{
+	ctx.SetProvider(android.DeclarationsProviderKey, android.DeclarationsProviderData{
 		Package:               module.properties.Package,
 		IntermediateProtoPath: intermediateProtoFilePath,
 		IntermediateTextPath:  intermediateTextFilePath,

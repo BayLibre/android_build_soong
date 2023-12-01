@@ -92,7 +92,7 @@ func (this *CcAconfigLibraryCallbacks) GeneratorSources(ctx cc.ModuleContext) cc
 	if len(declarationsModules) != 1 {
 		panic(fmt.Errorf("Exactly one aconfig_declarations property required"))
 	}
-	declarations := ctx.OtherModuleProvider(declarationsModules[0], declarationsProviderKey).(declarationsProviderData)
+	declarations := ctx.OtherModuleProvider(declarationsModules[0], android.DeclarationsProviderKey).(android.DeclarationsProviderData)
 
 	// Figure out the generated file paths.  This has to match aconfig's codegen_cpp.rs.
 	this.generatedDir = android.PathForModuleGen(ctx)
@@ -122,7 +122,7 @@ func (this *CcAconfigLibraryCallbacks) GeneratorBuildActions(ctx cc.ModuleContex
 	if len(declarationsModules) != 1 {
 		panic(fmt.Errorf("Exactly one aconfig_declarations property required"))
 	}
-	declarations := ctx.OtherModuleProvider(declarationsModules[0], declarationsProviderKey).(declarationsProviderData)
+	declarations := ctx.OtherModuleProvider(declarationsModules[0], android.DeclarationsProviderKey).(android.DeclarationsProviderData)
 
 	mode := proptools.StringDefault(this.properties.Mode, "production")
 	if !isModeSupported(mode) {
