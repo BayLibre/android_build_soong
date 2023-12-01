@@ -157,6 +157,30 @@
       },
       "revId": "bebafe441df250b67a1360fa3f3500ac95858543",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1193a95_7b8c8fd7",
+        "filename": "testing/code_metadata.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1835071
+      },
+      "writtenOn": "2023-12-01T12:17:26Z",
+      "side": 1,
+      "message": "How about false int that case?",
+      "parentUuid": "a01f0103_938091ae",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 3
+      },
+      "revId": "bebafe441df250b67a1360fa3f3500ac95858543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
