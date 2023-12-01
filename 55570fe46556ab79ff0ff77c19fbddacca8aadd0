@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ea5c5e9_58615bca",
+        "filename": "android/raw_files.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-12-01T21:41:39Z",
+      "side": 1,
+      "message": "rawFileCopy or rawFileCopyExecutable",
+      "revId": "55570fe46556ab79ff0ff77c19fbddacca8aadd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b02ac278_f46c5590",
+        "filename": "android/raw_files.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-12-01T21:41:39Z",
+      "side": 1,
+      "message": "How is that possible? The path the files are written to is completely determined by their hash. I don\u0027t think we need to check relPath here.",
+      "range": {
+        "startLine": 267,
+        "startChar": 8,
+        "endLine": 267,
+        "endChar": 93
+      },
+      "revId": "55570fe46556ab79ff0ff77c19fbddacca8aadd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
