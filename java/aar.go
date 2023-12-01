@@ -348,6 +348,7 @@ type aaptBuildActionOptions struct {
 	excludedLibs                   []string
 	enforceDefaultTargetSdkVersion bool
 	extraLinkFlags                 []string
+	aconfigTextFile                android.Path
 }
 
 func (a *aapt) buildActions(ctx android.ModuleContext, opts aaptBuildActionOptions) {
@@ -519,6 +520,10 @@ func (a *aapt) buildActions(ctx android.ModuleContext, opts aaptBuildActionOptio
 	if !a.useResourceProcessorBusyBox() {
 		// the subdir "android" is required to be filtered by package names
 		srcJar = android.PathForModuleGen(ctx, "android", "R.srcjar")
+	}
+
+	if opts.aconfigTextFile != nil {
+		linkFlags = append(linkFlags, "--feature-flags ", "@"+opts.aconfigTextFile.String())
 	}
 
 	// No need to specify assets from dependencies to aapt2Link for libraries, all transitive assets will be
