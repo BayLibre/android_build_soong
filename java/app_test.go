@@ -4333,3 +4333,44 @@ func TestApexGlobalMinSdkVersionOverride(t *testing.T) {
 	)
 
 }
+
+func TestAppFlagsPackages(t *testing.T) {
+	ctx := testApp(t, `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			sdk_version: "current",
+			flags_packages: [
+				"bar",
+				"baz",
+			],
+		}
+		aconfig_declarations {
+			name: "bar",
+			package: "com.example.package",
+			srcs: [
+				"bar.aconfig",
+			],
+		}
+		aconfig_declarations {
+			name: "baz",
+			package: "com.example.package",
+			srcs: [
+				"baz.aconfig",
+			],
+		}
+	`)
+
+	foo := ctx.ModuleForTests("foo", "android_common")
+
+	// android_app module depends on aconfig_declarations listed in flags_packages
+	android.AssertBoolEquals(t, "foo expected to depend on bar", true,
+		CheckModuleHasDependency(t, ctx, "foo", "android_common", "bar"))
+
+	android.AssertBoolEquals(t, "foo expected to depend on baz", true,
+		CheckModuleHasDependency(t, ctx, "foo", "android_common", "baz"))
+
+	// android_app module generates combined aconfig values text file
+	android.AssertStringDoesContain(t, "foo expected to generate combined aconfig text file",
+		strings.Join(foo.AllOutputs(), " "), "aconfig_values.txt")
+}
