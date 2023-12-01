@@ -107,6 +107,9 @@ type LibraryProperties struct {
 			Suffix *string `android:"arch_variant"`
 
 			Header_abi_checker headerAbiCheckerProperties
+
+			// Disable stubs for vendor/product variants
+			No_stubs bool
 		}
 
 		Platform struct {
