@@ -109,6 +109,10 @@ type LibraryProperties struct {
 			Header_abi_checker headerAbiCheckerProperties
 
 			// Disable stubs for vendor/product variants
+			// This is a workaround to keep `stubs` only for "core" variant (not product/vendor).
+			// It would be nice if we could put `stubs` into a `target: { core: {} }`
+			// block but it's not supported in soong yet. This could be removed/simplified once we have
+			// a better syntax.
 			No_stubs bool
 		}
 
