@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"strings"
 
+	"android/soong/aconfig"
 	"android/soong/bazel"
 	"android/soong/bloaty"
 	"android/soong/testing"
@@ -174,6 +175,9 @@ type Module struct {
 	apexSdkVersion android.ApiLevel
 
 	transitiveAndroidMkSharedLibs *android.DepSet[string]
+
+	// Aconfig files for all transitive deps.  Also exposed via TransitiveDeclarationsInfo
+	transitiveAconfigFiles map[string]*android.DepSet[android.Path]
 
 	android.BazelModuleBase
 }
@@ -1005,6 +1009,8 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	if mod.testModule {
 		ctx.SetProvider(testing.TestModuleProviderKey, testing.TestModuleProviderData{})
 	}
+
+	aconfig.CollectTransitiveAconfigFiles(ctx, &mod.transitiveAconfigFiles)
 }
 
 func (mod *Module) deps(ctx DepsContext) Deps {
