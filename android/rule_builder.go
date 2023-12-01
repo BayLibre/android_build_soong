@@ -582,7 +582,7 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscapeCommandString b
 			// the appropriate path mappings.
 			for _, rspFile := range rspFiles {
 				command.RspFiles = append(command.RspFiles, &sbox_proto.RspFile{
-					File: proto.String(rspFile.file.String()),
+					File: proto.String(r.sboxPathForInputRel(rspFile.file)),
 					// These have to match the logic in sboxPathForInputRel
 					PathMappings: []*sbox_proto.PathMapping{
 						{
@@ -590,7 +590,7 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscapeCommandString b
 							To:   proto.String(sboxOutSubDir),
 						},
 						{
-							From: proto.String(PathForOutput(r.ctx).String()),
+							From: proto.String(r.ctx.Config().OutDir()),
 							To:   proto.String(sboxOutSubDir),
 						},
 					},
@@ -891,7 +891,7 @@ func (r *RuleBuilder) _sboxPathForInputRel(path Path) (rel string, inSandbox boo
 		// When sandboxing inputs all inputs have to be copied into the sandbox.  Input files that
 		// are outputs of other rules could be an arbitrary absolute path if OUT_DIR is set, so they
 		// will be copied to relative paths under __SBOX_OUT_DIR__/out.
-		rel, isRelOut, _ := maybeRelErr(PathForOutput(r.ctx).String(), path.String())
+		rel, isRelOut, _ := maybeRelErr(r.ctx.Config().OutDir(), path.String())
 		if isRelOut {
 			return filepath.Join(sboxOutSubDir, rel), true
 		}
