@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef1f33ee_e1db6ed6",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-04T23:43:28Z",
+      "side": 1,
+      "message": "could the code be changed to avoid generating this instead?",
+      "range": {
+        "startLine": 262,
+        "startChar": 27,
+        "endLine": 262,
+        "endChar": 43
+      },
+      "revId": "6ae190c480b893be36dc55c6aabd38ab9e40dbc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
