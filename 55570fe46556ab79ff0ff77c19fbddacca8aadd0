@@ -81,6 +81,30 @@
       },
       "revId": "55570fe46556ab79ff0ff77c19fbddacca8aadd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34cca506_a5a154aa",
+        "filename": "android/raw_files.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-12-04T20:18:10Z",
+      "side": 1,
+      "message": "oh, I see. I didn\u0027t read it closely enough the first time.",
+      "parentUuid": "e5a48763_286a5499",
+      "range": {
+        "startLine": 267,
+        "startChar": 8,
+        "endLine": 267,
+        "endChar": 93
+      },
+      "revId": "55570fe46556ab79ff0ff77c19fbddacca8aadd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
