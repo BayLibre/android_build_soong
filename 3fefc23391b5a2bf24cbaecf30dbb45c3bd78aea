@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23c9e76a_85cb7bc8",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1956160
+      },
+      "writtenOn": "2023-12-04T17:50:04Z",
+      "side": 1,
+      "message": "What if you try to call GetBuildFlagBool on non-boolean flag? There should be some checks in place, like:\n\n```suggestion\n\tif !ok {\n\t\treturn false\n\t} else if val \u003d\u003d \"true\" {\n\t\treturn true\n\t} else if val \u003d\u003d \"false\" {\n\t\treturn false\n\t} else {\n\t\tpanic(fmt.Errorf(\"build flag %s is not a boolean: %s\", name, val))\n\t}\n```",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 21
+      },
+      "revId": "3fefc23391b5a2bf24cbaecf30dbb45c3bd78aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
