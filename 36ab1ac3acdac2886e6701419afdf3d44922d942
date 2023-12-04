@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "964adda5_20a8a4d1",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2023-12-04T11:49:19Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a new warning. turning it off seems too dangerous, as it is a common error pattern.",
+      "range": {
+        "startLine": 82,
+        "startChar": 14,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "36ab1ac3acdac2886e6701419afdf3d44922d942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
