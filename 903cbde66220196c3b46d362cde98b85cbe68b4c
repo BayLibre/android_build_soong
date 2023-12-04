@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t this be stubVendorLibraryMap?",
       "revId": "903cbde66220196c3b46d362cde98b85cbe68b4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07d367f9_aa90bc98",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-12-04T23:26:20Z",
+      "side": 1,
+      "message": "Oh Thanks Cole.",
+      "parentUuid": "808b59b2_4fe6bc43",
+      "revId": "903cbde66220196c3b46d362cde98b85cbe68b4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
