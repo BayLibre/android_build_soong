@@ -195,10 +195,10 @@ func (c Config) MaxPageSizeSupported() string {
 	return String(c.config.productVariables.DeviceMaxPageSizeSupported)
 }
 
-// PageSizeAgnostic returns true when AOSP is page size agnostic,
-// othersise it returns false.
-func (c Config) PageSizeAgnostic() bool {
-	return Bool(c.config.productVariables.DevicePageSizeAgnostic)
+// NoBionicPageSizeMacro returns true when __BIONIC_NO_PAGE_SIZE_MACRO is not set,
+// i.e, when AOSP works with 4k/16k/64k page sizes. Otherwise, it returns false.
+func (c Config) NoBionicPageSizeMacro() bool {
+	return Bool(c.config.productVariables.DeviceNoBionicPageSizeMacro)
 }
 
 // The release version passed to aconfig, derived from RELEASE_VERSION
