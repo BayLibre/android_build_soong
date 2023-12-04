@@ -16,6 +16,24 @@
       "message": "I think the correct solution here would be to move zlib\u0027s `stubs` properties into a `target: { everything_except_product_and_vendor: {} }` block. However that\u0027s difficult to do in soong. We\u0027ve been discussing adding better syntax for conditional properties. Could you expand this comment to say that it\u0027s equivalent to excluding the `stubs` properties, and could be removed/simplified if we had better conditional syntax?",
       "revId": "e915963ac25d8318aae96b122dd86e43dc66485c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9984d77_893ae083",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-12-04T02:07:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3750cdf_038f0c77",
+      "revId": "e915963ac25d8318aae96b122dd86e43dc66485c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
