@@ -259,6 +259,8 @@ func (b *bindgenDecorator) GenerateSource(ctx ModuleContext, deps PathDeps) andr
 		cflags = append(cflags, "-Wno-unknown-warning-option")
 	}
 
+	cflags = append(cflags, "-Wno-pragma-once-outside-header")
+
 	outputFile := android.PathForModuleOut(ctx, b.BaseSourceProvider.getStem(ctx)+".rs")
 
 	var cmd, cmdDesc string
