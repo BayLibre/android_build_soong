@@ -106,6 +106,24 @@
       "parentUuid": "ecb21a71_39b42653",
       "revId": "dd9529050d0ef329cec4ea6c426e9c134c6055c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05fb7f62_724a265c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-12-04T20:27:19Z",
+      "side": 1,
+      "message": "Largely, with ninja\u0027s current limitations, yes. n2 could do it better, by looking at more of the file attributes for determining \"dirty\", but at that point we can also clarify the semantics to also include the information about the symlink(s) when determining that.",
+      "parentUuid": "bcfeaedb_4c142bd3",
+      "revId": "dd9529050d0ef329cec4ea6c426e9c134c6055c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
