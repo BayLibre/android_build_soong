@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3578773_1bc6ac36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-12-04T19:32:15Z",
+      "side": 1,
+      "message": "+2, but I\u0027m questioning why it\u0027s in blueprint in aosp/2854653",
+      "revId": "9e1fe070555d8fb96add114ec83e1c3c3fe15957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
