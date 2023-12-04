@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "394e99d9_7dc4a0f8",
+        "filename": "android/raw_files.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-04T20:14:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ea5c5e9_58615bca",
+      "revId": "55570fe46556ab79ff0ff77c19fbddacca8aadd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b02ac278_f46c5590",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-12-01T21:41:39Z",
       "side": 1,
       "message": "How is that possible? The path the files are written to is completely determined by their hash. I don\u0027t think we need to check relPath here.",
+      "range": {
+        "startLine": 267,
+        "startChar": 8,
+        "endLine": 267,
+        "endChar": 93
+      },
+      "revId": "55570fe46556ab79ff0ff77c19fbddacca8aadd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5a48763_286a5499",
+        "filename": "android/raw_files.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-04T20:14:32Z",
+      "side": 1,
+      "message": "That\u0027s what I attempted to describe in the next line.  This cleans up old files when rerunning Soong after changing the way the path is computed from the hash.",
+      "parentUuid": "b02ac278_f46c5590",
       "range": {
         "startLine": 267,
         "startChar": 8,
