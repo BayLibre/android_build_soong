@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1895784_098b0054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2023-12-04T19:25:13Z",
+      "side": 1,
+      "message": "The CL needed to be rebased but a mechanical `git rebase` wasn\u0027t enough because of some changes to soong. Will do a proper rebase later this week.\n\nIn the meantime, do not submit this.",
+      "revId": "e692a7ff9856f80b45b91108651310f81a2f4885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
