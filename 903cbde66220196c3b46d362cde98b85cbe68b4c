@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808b59b2_4fe6bc43",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-12-04T19:01:03Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be stubVendorLibraryMap?",
+      "revId": "903cbde66220196c3b46d362cde98b85cbe68b4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
