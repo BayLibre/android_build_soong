@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1fa155e_3ce42be7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-12-05T20:58:06Z",
+      "side": 1,
+      "message": "To verify that the soong changes work, we can use the commands below:\n```\nsource build/envsetup.sh\n      lunch aosp_cf_arm64_phone_pgagnostic-trunk-userdebug\n      m\n      # Verify that there is at least one output.\n      cat out/soong/build.aosp_cf_arm64_phone_pgagnostic.ninja | grep TARGET_NO_BIONIC_PAGE_SIZE_MACRO\n ```",
+      "revId": "2d5840d725da7951af468c947e54eda0cbda25ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02f1fa59_f7c0116d",
