@@ -22,6 +22,30 @@
       },
       "revId": "6ae190c480b893be36dc55c6aabd38ab9e40dbc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a4e574f_4f93d6b8",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-12-05T00:20:46Z",
+      "side": 1,
+      "message": "Is it possible? The header files are supposed to have `#pragma once` and bindgen is compiling these header files as sources (why?).",
+      "parentUuid": "ef1f33ee_e1db6ed6",
+      "range": {
+        "startLine": 262,
+        "startChar": 27,
+        "endLine": 262,
+        "endChar": 43
+      },
+      "revId": "6ae190c480b893be36dc55c6aabd38ab9e40dbc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
