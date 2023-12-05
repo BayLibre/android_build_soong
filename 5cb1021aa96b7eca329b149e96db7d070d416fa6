@@ -16,6 +16,24 @@
       "message": "dup of line 57.\nAlso, I think these flags need to be used in below flags function.",
       "revId": "5cb1021aa96b7eca329b149e96db7d070d416fa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "388f87e9_7a60b616",
+        "filename": "cc/coverage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3160636
+      },
+      "writtenOn": "2023-12-05T17:58:03Z",
+      "side": 1,
+      "message": "Question for Colin:\nDoes Google need these flags also attached in the flags function or only exporting through makevars to the makefile system?",
+      "parentUuid": "f41791e6_c81330f7",
+      "revId": "5cb1021aa96b7eca329b149e96db7d070d416fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
