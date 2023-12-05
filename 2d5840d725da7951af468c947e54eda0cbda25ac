@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f1fa59_f7c0116d",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-12-05T20:51:16Z",
+      "side": 1,
+      "message": "```\nNoBionicPageSizeMacro returns true when AOSP is page size agnostic. This means that the bionic\u0027s macro PAGE_SIZE won\u0027t be defined. Returns false when AOSP is NOT page size agnostic. This means that bionic\u0027s macro PAGE_SIZE is defined.\n```\n\nNote: This C/C++ flag __BIONIC_NO_PAGE_SIZE_MACRO will be defined based on the value in `DeviceNoBionicPageSizeMacro`.",
+      "range": {
+        "startLine": 198,
+        "startChar": 3,
+        "endLine": 198,
+        "endChar": 82
+      },
+      "revId": "2d5840d725da7951af468c947e54eda0cbda25ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
