@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82da7a12_9493745c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-12-05T01:06:18Z",
+      "side": 1,
+      "message": "https://meta.wikimedia.org/wiki/Cunningham%27s_Law",
+      "parentUuid": "bb76251e_48d09f16",
+      "revId": "6ae190c480b893be36dc55c6aabd38ab9e40dbc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef1f33ee_e1db6ed6",
