@@ -70,6 +70,30 @@
       },
       "revId": "6ae190c480b893be36dc55c6aabd38ab9e40dbc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff3a7791_a38fa604",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-12-05T00:26:13Z",
+      "side": 1,
+      "message": "If Matthew is keen to do it the right way, I\u0027m happy to watch. But since this is just a random module for me that got in the way, I\u0027d just disable the warning :P.",
+      "parentUuid": "5fa52216_bb6a1aa4",
+      "range": {
+        "startLine": 262,
+        "startChar": 27,
+        "endLine": 262,
+        "endChar": 43
+      },
+      "revId": "6ae190c480b893be36dc55c6aabd38ab9e40dbc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
