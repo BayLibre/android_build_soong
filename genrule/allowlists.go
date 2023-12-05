@@ -26,6 +26,15 @@ var (
 		"CtsApkVerityTestDebugFiles",
 		"aidl_camera_build_version",
 		"camera-its",
+<<<<<<< PATCH SET (add1fd Revert "Sandbox chre_atoms_log.h and deqp_spvtools_update_bu)
+		"chre_atoms_log.h",
+		"deqp_spvtools_update_build_version",
+		"libcore-non-cts-tests-txt",
+		"seller-frontend-service-stub-lite",
+		"swiftshader_spvtools_update_build_version",
+		"vm-tests-tf-lib",
+=======
+>>>>>>> BASE      (fedbb5 Merge changes from topics "libz-no-stubs-for-vendor", "vendo)
 		// go/keep-sorted end
 	}
 
