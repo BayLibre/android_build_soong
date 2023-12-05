@@ -22,6 +22,30 @@
       },
       "revId": "3fefc23391b5a2bf24cbaecf30dbb45c3bd78aea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d67feb0_5a228573",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-12-05T00:51:59Z",
+      "side": 1,
+      "message": "The logic all over the build already is just comparing to true, so I\u0027d rather keep it consistent.",
+      "parentUuid": "23c9e76a_85cb7bc8",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 21
+      },
+      "revId": "3fefc23391b5a2bf24cbaecf30dbb45c3bd78aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
