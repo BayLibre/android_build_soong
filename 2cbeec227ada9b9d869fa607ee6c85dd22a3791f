@@ -16,6 +16,24 @@
       "message": "Please keep `deqp_spvtools_update_build_version` removed.",
       "revId": "2cbeec227ada9b9d869fa607ee6c85dd22a3791f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355d9bb6_338658e2",
+        "filename": "genrule/allowlists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-12-05T17:50:40Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d037d1e9_5553d8d9",
+      "revId": "2cbeec227ada9b9d869fa607ee6c85dd22a3791f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
