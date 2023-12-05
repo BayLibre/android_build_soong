@@ -16,6 +16,24 @@
       "message": "+2, but I\u0027m questioning why it\u0027s in blueprint in aosp/2854653",
       "revId": "9e1fe070555d8fb96add114ec83e1c3c3fe15957",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "489a2856_276f74be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2023-12-05T07:41:03Z",
+      "side": 1,
+      "message": "I initially migrated the provider to build/soong/android only. But for the source files of GoPackage and GoBinary, I migrated the provider to the blueprint.",
+      "parentUuid": "c3578773_1bc6ac36",
+      "revId": "9e1fe070555d8fb96add114ec83e1c3c3fe15957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
