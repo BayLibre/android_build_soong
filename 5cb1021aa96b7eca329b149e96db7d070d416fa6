@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f41791e6_c81330f7",
+        "filename": "cc/coverage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1905021
+      },
+      "writtenOn": "2023-12-05T00:41:33Z",
+      "side": 1,
+      "message": "dup of line 57.\nAlso, I think these flags need to be used in below flags function.",
+      "revId": "5cb1021aa96b7eca329b149e96db7d070d416fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
