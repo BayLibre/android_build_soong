@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9484b7d_b529372f",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2023-12-05T19:25:52Z",
+      "side": 1,
+      "message": "I\u0027m never getting here, even though I have an android_test with test_owner and I can see the Owner__team in GenerateAndroidBuildActions",
+      "revId": "2bd16ac449838e01bed3c0fb1937d9a4ce935838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88aa19c6_49535ac8",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2023-12-05T19:25:52Z",
+      "side": 1,
+      "message": "This gets hit for my one android_test",
+      "revId": "2bd16ac449838e01bed3c0fb1937d9a4ce935838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
