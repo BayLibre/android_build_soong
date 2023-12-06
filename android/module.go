@@ -15,8 +15,8 @@
 package android
 
 import (
+	"android/soong/android/owner_team_proto"
 	"android/soong/bazel"
-	// "android/soong/testing/test_spec_proto"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
 	"crypto/md5"
 	"encoding/hex"
@@ -30,6 +30,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
+	"google.golang.org/protobuf/proto"
 )
 
 var (
@@ -632,21 +633,7 @@ func (module *OwnerTeamProperties) GenerateAndroidBuildActions(ctx ModuleContext
 		ctx.PropertyErrorf("trendy_team_id", "on `owner_team=%s` module not set.", *module.Owner_team)
 	}
 
-	/*
-		for _, m := range ctx.GetDirectDepsWithTag(ownerTeamDepTag) {
-			if !ctx.OtherModuleHasProvider(m, TestModuleProviderKey) {
-				ctx.ModuleErrorf(ErrTestModuleDataNotFound, m.Name())
-			}
-		}
-	*/
 	bpFilePath := filepath.Join(ctx.ModuleDir(), ctx.BlueprintsFile())
-	/*
-		metadataList := make(
-			[]*test_spec_proto.TestSpec_OwnershipMetadata, 0,
-			1,
-		)
-	*/
-
 	// TODO(ron): visit direct deps to get trendy team id
 	// module.properties.TeamId,
 	// TODO(ron): add to outs for module? are intermediates not listed as deps
@@ -654,22 +641,17 @@ func (module *OwnerTeamProperties) GenerateAndroidBuildActions(ctx ModuleContext
 		ctx, "intermediateTestSpecMetadata.pb",
 	)
 
-	/*
-			metadata := test_spec_proto.TestSpec_OwnershipMetadata{
-				TrendyTeamId: &trendy_team_id,
-				TargetName:   ctx.ModuleName(),
-				Path:         &bpFilePath,
-			}
-			// TODO(ron): change to be just one of these.
-			metadataList = append(metadataList, &metadata)
-
-		testSpecMetadata := test_spec_proto.TestSpec{OwnershipMetadataList: metadataList}
-		protoData, err := proto.Marshal(&testSpecMetadata)
-		if err != nil {
-			ctx.ModuleErrorf("Error: %s", err.Error())
-		}
-	*/
-	protoData := "trendy_team_id: " + trendy_team_id + "\nPath: " + bpFilePath + "\n"
+	moduleName := ctx.ModuleName()
+	metadata := owner_team_proto.OwnerTeam{
+		TrendyTeamId: &trendy_team_id,
+		TargetName:   &moduleName,
+		Path:         &bpFilePath,
+	}
+	protoData, err := proto.Marshal(&metadata)
+	if err != nil {
+		ctx.ModuleErrorf("Error: %s", err.Error())
+	}
+	// protoData := "trendy_team_id: " + trendy_team_id + "\nPath: " + bpFilePath + "\n"
 
 	WriteFileRule(ctx, intermediatePath, string(protoData))
 

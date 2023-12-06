@@ -11,6 +11,7 @@ bootstrap_go_package {
         "blueprint-metrics",
         "sbox_proto",
         "soong",
+	"soong-android-owner_team_proto",
         "soong-android-soongconfig",
         "soong-bazel",
         "soong-cquery",
