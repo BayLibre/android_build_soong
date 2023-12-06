@@ -641,6 +641,7 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 			Output:      apexAconfigFile,
 			Description: "combine_aconfig_declarations",
 			Args: map[string]string{
+				"format":      "protobuf",
 				"cache_files": android.JoinPathsWithPrefix(a.aconfigFiles, "--cache "),
 			},
 		})
