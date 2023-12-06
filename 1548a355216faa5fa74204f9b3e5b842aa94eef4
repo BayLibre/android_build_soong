@@ -52,6 +52,24 @@
       "parentUuid": "52310e42_cd871a59",
       "revId": "1548a355216faa5fa74204f9b3e5b842aa94eef4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7f11d64_b301b163",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-12-06T00:52:10Z",
+      "side": 1,
+      "message": "There is a convention in the build that \"true\" is the value for true. I don\u0027t want to require CLs in two projeccts for every releaes config flag.  Please do it the way I asked.",
+      "parentUuid": "52310e42_cd871a59",
+      "revId": "1548a355216faa5fa74204f9b3e5b842aa94eef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
