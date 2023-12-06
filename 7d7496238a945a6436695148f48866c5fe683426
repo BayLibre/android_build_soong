@@ -16,6 +16,24 @@
       "message": "looks good to me, but when I try to verify the output, I run into bootstrapping errors (due to my aosp/2860706 being incompatible with the cc.go changes here) that need to be addressed.",
       "revId": "7d7496238a945a6436695148f48866c5fe683426",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae4a561_c2aab0ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-12-06T23:17:41Z",
+      "side": 1,
+      "message": "did not mean for that to be marked resolved. :/",
+      "parentUuid": "47ea1997_63b67751",
+      "revId": "7d7496238a945a6436695148f48866c5fe683426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
