@@ -30,10 +30,11 @@ func AllAconfigDeclarationsFactory() android.Singleton {
 }
 
 type allAconfigDeclarationsSingleton struct {
-	intermediatePath android.OutputPath
+	intermediateProtoPath android.OutputPath
+	intermediateTextPath  android.OutputPath
 }
 
-func (this *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+func (aconfigDef *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	// Find all of the aconfig_declarations modules
 	var cacheFiles android.Paths
 	ctx.VisitAllModules(func(module android.Module) {
@@ -45,19 +46,33 @@ func (this *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx android.Si
 	})
 
 	// Generate build action for aconfig
-	this.intermediatePath = android.PathForIntermediates(ctx, "all_aconfig_declarations.pb")
+	aconfigDef.intermediateProtoPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.pb")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        AllDeclarationsRule,
 		Inputs:      cacheFiles,
-		Output:      this.intermediatePath,
-		Description: "all_aconfig_declarations",
+		Output:      aconfigDef.intermediateProtoPath,
+		Description: "all_aconfig_declarations_proto",
 		Args: map[string]string{
+			"format":      "protobuf",
 			"cache_files": android.JoinPathsWithPrefix(cacheFiles, "--cache "),
 		},
 	})
-	ctx.Phony("all_aconfig_declarations", this.intermediatePath)
+
+	aconfigDef.intermediateTextPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.txt")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        AllDeclarationsRule,
+		Inputs:      cacheFiles,
+		Output:      aconfigDef.intermediateTextPath,
+		Description: "all_aconfig_declarations_text",
+		Args: map[string]string{
+			"format":      "map",
+			"cache_files": android.JoinPathsWithPrefix(cacheFiles, "--cache "),
+		},
+	})
+
+	ctx.Phony("all_aconfig_declarations", aconfigDef.intermediateProtoPath, aconfigDef.intermediateTextPath)
 }
 
-func (this *allAconfigDeclarationsSingleton) MakeVars(ctx android.MakeVarsContext) {
-	ctx.DistForGoal("droid", this.intermediatePath)
+func (aconfigDef *allAconfigDeclarationsSingleton) MakeVars(ctx android.MakeVarsContext) {
+	ctx.DistForGoal("droid", aconfigDef.intermediateProtoPath, aconfigDef.intermediateTextPath)
 }
