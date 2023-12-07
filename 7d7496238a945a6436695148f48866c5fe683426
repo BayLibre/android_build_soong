@@ -34,6 +34,24 @@
       "parentUuid": "47ea1997_63b67751",
       "revId": "7d7496238a945a6436695148f48866c5fe683426",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f799f63_c33d1603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-07T02:38:53Z",
+      "side": 1,
+      "message": "Rebased on top of aosp/2860706.",
+      "parentUuid": "aae4a561_c2aab0ba",
+      "revId": "7d7496238a945a6436695148f48866c5fe683426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
