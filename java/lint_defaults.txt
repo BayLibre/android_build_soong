@@ -122,6 +122,7 @@
 --warning_check RemoteViewLayout
 --warning_check SupportAnnotationUsage
 --warning_check UniqueConstants
+--warning_check UseSdkSuppress
 
 # TODO(b/294098365): these checks fail in AOSP, but pass downstream
 --warning_check ForegroundServiceType
