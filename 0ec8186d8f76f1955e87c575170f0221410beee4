@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c01ca216_211f86ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-07T01:41:25Z",
+      "side": 1,
+      "message": "I think aapt2 can accept this as a list instead of a single merged file https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/tools/aapt2/cmd/Link.h;l\u003d333?q\u003d%22--add-javadoc-annotation%22\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain\n\nCan we skip the cat altogether?",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "0ec8186d8f76f1955e87c575170f0221410beee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07fa6ca2_519a380e",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-07T01:41:25Z",
+      "side": 1,
+      "message": "nit: Replace this with `ctx.VisitDirectDepsWithTag`",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 65
+      },
+      "revId": "0ec8186d8f76f1955e87c575170f0221410beee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d59ef6c9_c88d69f7",
+        "filename": "java/app_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 4337,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-07T01:41:25Z",
+      "side": 1,
+      "message": "Can we also add a check that we are passing the correct args to `--feature-flags`?",
+      "range": {
+        "startLine": 4337,
+        "startChar": 5,
+        "endLine": 4337,
+        "endChar": 25
+      },
+      "revId": "0ec8186d8f76f1955e87c575170f0221410beee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
