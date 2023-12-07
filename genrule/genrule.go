@@ -536,10 +536,11 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 					label := strings.TrimSpace(strings.TrimPrefix(name, "locations "))
 					if loc, ok := locationLabels[label]; ok {
 						paths := loc.Paths(cmd)
-						if len(paths) == 0 {
+						if len(paths) == 0 && !strings.Contains(label, "*") {
+							// Allow empty wildcards, but require non-wildcards to have results
 							return reportError("label %q has no files", label)
 						}
-						return proptools.ShellEscape(strings.Join(paths, " ")), nil
+						return strings.Join(proptools.ShellEscapeListIncludingSpaces(paths), " "), nil
 					} else {
 						return reportError("unknown locations label %q is not in srcs, out, tools or tool_files.", label)
 					}
