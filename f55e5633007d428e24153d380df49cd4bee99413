@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e3fc81_6f8a72c5",
+        "filename": "java/aapt2.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-07T22:56:02Z",
+      "side": 1,
+      "message": "nit: This might be adding a redundant whitespace",
+      "range": {
+        "startLine": 261,
+        "startChar": 44,
+        "endLine": 261,
+        "endChar": 45
+      },
+      "revId": "f55e5633007d428e24153d380df49cd4bee99413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
