@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65365d85_5faeab20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-07T22:39:49Z",
+      "side": 1,
+      "message": "I was thinking about the latter of the two options. Seems simpler",
+      "parentUuid": "648cd6ed_7804dada",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "0ec8186d8f76f1955e87c575170f0221410beee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07fa6ca2_519a380e",
