@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e2aa8d0_eb4fb736",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-07T01:59:12Z",
+      "side": 1,
+      "message": "nit: Since these files are created by two separate aconfig subcommands, can we rename the variables to convey the meaning of those operations rather than a variable based on file extension? (I think `aconfig dump` can also generate a .pb file)",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "521bbce8d52b3f499a82ff8693f0d4f1dfa28995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
