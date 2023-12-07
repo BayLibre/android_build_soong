@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "068be123_cecb3c0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-07T22:47:33Z",
+      "side": 1,
+      "message": "Agreed. The latest patchset follows the latter option. PTAL at the expected flag arguments test added in `app_test.go`.",
+      "parentUuid": "65365d85_5faeab20",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "0ec8186d8f76f1955e87c575170f0221410beee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07fa6ca2_519a380e",
