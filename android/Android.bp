@@ -31,6 +31,7 @@ bootstrap_go_package {
         "androidmk-parser",
     ],
     srcs: [
+        "all_owner_teams.go",
         "androidmk.go",
         "apex.go",
         "apex_contributions.go",

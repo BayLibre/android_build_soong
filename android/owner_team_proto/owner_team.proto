@@ -25,3 +25,7 @@ message OwnerTeam {
   // REQUIRED: Team ID of the team that owns this target.
   optional string trendy_team_id = 3;
 }
+
+message AllOwnerTeams {
+  repeated OwnerTeam owner_teams = 1;
+}

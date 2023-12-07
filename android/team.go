@@ -18,7 +18,7 @@ func init() {
 	RegisterTeamBuildComponents(InitRegistrationContext)
 }
 
-// Register the license_kind module type.
+// TODO(ron): make private again or need in java tests.
 func RegisterTeamBuildComponents(ctx RegistrationContext) {
 	ctx.RegisterModuleType("team", TeamFactory)
 }

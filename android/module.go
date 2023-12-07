@@ -30,7 +30,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
-	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/encoding/prototext"
 )
 
 var (
@@ -638,22 +638,21 @@ func (module *OwnerTeamProperties) GenerateAndroidBuildActions(ctx ModuleContext
 	// module.properties.TeamId,
 	// TODO(ron): add to outs for module? are intermediates not listed as deps
 	intermediatePath := PathForModuleOut(
-		ctx, "intermediateTestSpecMetadata.pb",
+		ctx, "intermediateOwnerData.asciiproto",
 	)
 
 	moduleName := ctx.ModuleName()
-	metadata := owner_team_proto.OwnerTeam{
+	ownerData := owner_team_proto.OwnerTeam{
 		TrendyTeamId: &trendy_team_id,
 		TargetName:   &moduleName,
 		Path:         &bpFilePath,
 	}
-	protoData, err := proto.Marshal(&metadata)
-	if err != nil {
-		ctx.ModuleErrorf("Error: %s", err.Error())
-	}
-	// protoData := "trendy_team_id: " + trendy_team_id + "\nPath: " + bpFilePath + "\n"
 
-	WriteFileRule(ctx, intermediatePath, string(protoData))
+	fileBytes, err := prototext.Marshal(&ownerData)
+	if err != nil {
+		// todo err
+	}
+	WriteFileRule(ctx, intermediatePath, string(fileBytes))
 
 	// TODO(ron); all_test_specs will look for this, somehow.
 	ctx.SetProvider(
