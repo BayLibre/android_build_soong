@@ -90,7 +90,6 @@ var (
 		// In practice, this warning has extremely poor signal to noise ratio,
 		// because it is triggered even for initializers with no side effects.
 		// Individual modules can still opt into it via cflags.
-		"-Wno-error=reorder-init-list",
 		"-Wno-reorder-init-list",
 		// Incompatible with the Google C++ style guidance to use 'int' for loop
 		// indices; poor signal to noise ratio.
