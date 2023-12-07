@@ -277,6 +277,7 @@ func (l *linter) writeLintProjectXML(ctx android.ModuleContext, rule *android.Ru
 		FlagWithOutput("--config_out ", configXMLPath).
 		FlagWithArg("--name ", ctx.ModuleName())
 
+	cmd.Flag("--include-aosp-issues")
 	if l.library {
 		cmd.Flag("--library")
 	}
