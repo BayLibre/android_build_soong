@@ -22,6 +22,30 @@
       },
       "revId": "521bbce8d52b3f499a82ff8693f0d4f1dfa28995",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c9488ca_8c6ff086",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-07T22:38:25Z",
+      "side": 1,
+      "message": "Understood. Renamed as `intermediateCacheOutputPath` and `intermediateDumpOutputPath`, respectively.",
+      "parentUuid": "8e2aa8d0_eb4fb736",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "521bbce8d52b3f499a82ff8693f0d4f1dfa28995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
