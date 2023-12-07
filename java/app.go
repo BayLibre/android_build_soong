@@ -23,6 +23,7 @@ import (
 	"strings"
 
 	"android/soong/testing"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -1135,7 +1136,8 @@ func AndroidAppFactory() android.Module {
 	module.AddProperties(
 		&module.aaptProperties,
 		&module.appProperties,
-		&module.overridableAppProperties)
+		&module.overridableAppProperties,
+	)
 
 	module.usesLibrary.enforce = true
 
@@ -1223,7 +1225,8 @@ type AndroidTest struct {
 
 	appTestProperties appTestProperties
 
-	testProperties testProperties
+	testProperties      testProperties
+	ownerTeamProperties android.OwnerTeamProperties
 
 	testConfig       android.Path
 	extraTestConfigs android.Paths
@@ -1279,6 +1282,7 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.extraTestConfigs = android.PathsForModuleSrc(ctx, a.testProperties.Test_options.Extra_test_configs)
 	a.data = android.PathsForModuleSrc(ctx, a.testProperties.Data)
 	ctx.SetProvider(testing.TestModuleProviderKey, testing.TestModuleProviderData{})
+	a.ownerTeamProperties.GenerateAndroidBuildActions(ctx)
 }
 
 func (a *AndroidTest) FixTestConfig(ctx android.ModuleContext, testConfig android.Path) android.Path {
@@ -1317,6 +1321,7 @@ func (a *AndroidTest) FixTestConfig(ctx android.ModuleContext, testConfig androi
 
 func (a *AndroidTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 	a.AndroidApp.DepsMutator(ctx)
+	a.ownerTeamProperties.DepsMutator(ctx)
 }
 
 func (a *AndroidTest) OverridablePropertiesDepsMutator(ctx android.BottomUpMutatorContext) {
@@ -1350,6 +1355,8 @@ func AndroidTestFactory() android.Module {
 		&module.appProperties,
 		&module.appTestProperties,
 		&module.overridableAppProperties,
+		// TODO(ron); more places too?
+		&module.ownerTeamProperties,
 		&module.testProperties)
 
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)

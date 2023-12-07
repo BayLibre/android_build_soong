@@ -20,9 +20,9 @@ bootstrap_go_package {
     name: "soong-android-owner_team_proto",
     pkgPath: "android/soong/android/owner_team_proto",
     deps: [
-            "golang-protobuf-reflect-protoreflect",
-            "golang-protobuf-runtime-protoimpl",
-        ],
+        "golang-protobuf-reflect-protoreflect",
+        "golang-protobuf-runtime-protoimpl",
+    ],
     srcs: [
         "owner_team.pb.go",
     ],
