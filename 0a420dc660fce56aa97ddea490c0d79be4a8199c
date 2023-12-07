@@ -16,6 +16,24 @@
       "message": "`proptools.ShellEscapeList` or `proptools.ShellEscapeListIncludingSpaces`",
       "revId": "0a420dc660fce56aa97ddea490c0d79be4a8199c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9812e432_bb289d7d",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-12-07T23:19:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e42f51d0_41dadf7a",
+      "revId": "0a420dc660fce56aa97ddea490c0d79be4a8199c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
