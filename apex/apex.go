@@ -2431,6 +2431,78 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		checkDuplicate:         a.shouldCheckDuplicate(ctx),
 		unwantedTransitiveDeps: a.properties.Unwanted_transitive_deps,
 	}
+
+	var java_aconfig_libs []string
+	var cc_aconfig_libs []string
+	var aconfig_declarations []string
+	platform_minus_apex_java_libs := map[string]bool {
+		"android.content.pm.flags-aconfig-java": true,
+		"android.hardware.biometrics.flags-aconfig-java": true,
+		"android.net.vcn.flags-aconfig-java": true,
+		"android.nfc.flags-aconfig-java": true,
+		"android.os.flags-aconfig-java": true,
+		"android.security.flags-aconfig-java": true,
+		"com.android.hardware.camera2-aconfig-java": true,
+		"com.android.window.flags.window-aconfig-java": true,
+		"com.android.hardware.input-aconfig-java": true,
+		"com.android.text.flags-aconfig-java": true,
+		"com.android.net.flags-aconfig-java": true,
+	}
+
+	platform_minus_apex_aconfigs := map[string]bool {
+		"android.content.pm.flags-aconfig": true,
+		"android.hardware.biometrics.flags-aconfig": true,
+		"android.net.vcn.flags-aconfig": true,
+		"android.nfc.flags-aconfig": true,
+		"android.os.flags-aconfig": true,
+		"android.security.flags-aconfig": true,
+		"com.android.hardware.camera2-aconfig": true,
+		"com.android.window.flags.window-aconfig": true,
+		"com.android.hardware.input.input-aconfig": true,
+		"com.android.text.flags-aconfig": true,
+		"com.android.net.flags-aconfig": true,
+	}
+
+	ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool {
+		depTag := ctx.OtherModuleDependencyTag(child)
+		if _, ok := depTag.(android.ExcludeFromApexContentsTag); ok {
+			return false
+		}
+		if mod, ok := child.(android.Module); ok && !mod.Enabled() {
+			return false
+		}
+		depName := ctx.OtherModuleName(child)
+
+		if ctx.OtherModuleType(child) == "java_aconfig_library" {
+			if !platform_minus_apex_java_libs[depName] {
+				java_aconfig_libs = append(java_aconfig_libs, depName)
+			} else {
+				java_aconfig_libs = append(java_aconfig_libs, "FRAMEWORK-MINUS-APEX-ACONFIG-JAVA_LIBRARIES")
+			}
+		} else if ctx.OtherModuleType(child) == "cc_aconfig_library" {
+			cc_aconfig_libs = append(cc_aconfig_libs, depName)
+		} else if ctx.OtherModuleType(child) == "aconfig_declarations" {
+			if !platform_minus_apex_aconfigs[depName] {
+				aconfig_declarations = append(aconfig_declarations, depName)
+			} else {
+				aconfig_declarations = append(aconfig_declarations, "FRAMEWORK-MINUS-APEX-ACONFIGS")
+			}
+		}
+		return true
+	})
+	if len(java_aconfig_libs) + len(cc_aconfig_libs) + len(aconfig_declarations) > 0 {
+		fmt.Println("\nApex: ", ctx.ModuleName())
+		if len(java_aconfig_libs) > 0 {
+			fmt.Println("java_aconfig_library: ", android.FirstUniqueStrings(java_aconfig_libs))
+		}
+		if len(cc_aconfig_libs) > 0 {
+			fmt.Println("cc_aconfig_library: ", android.FirstUniqueStrings(cc_aconfig_libs))
+		}
+		if len(aconfig_declarations) > 0 {
+			fmt.Println("aconfig_declarations: ", android.FirstUniqueStrings(aconfig_declarations))
+		}
+	}
+
 	ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool { return a.depVisitor(&vctx, ctx, child, parent) })
 	vctx.normalizeFileInfo(ctx)
 	if a.privateKeyFile == nil {
