@@ -52,6 +52,24 @@
       "parentUuid": "f484dafa_1e0c584b",
       "revId": "813bba11736299bfb992de5bd988c4fd7114c039",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ff50614_2fcde7fc",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-12-08T19:31:25Z",
+      "side": 1,
+      "message": "David, how is the numbering for art tests determined? Why were 1018 and 2018 skipped?",
+      "parentUuid": "7dc34876_5f03e28b",
+      "revId": "813bba11736299bfb992de5bd988c4fd7114c039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
