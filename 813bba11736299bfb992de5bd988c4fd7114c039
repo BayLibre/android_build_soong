@@ -88,6 +88,24 @@
       "parentUuid": "3ff50614_2fcde7fc",
       "revId": "813bba11736299bfb992de5bd988c4fd7114c039",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22231ca0_dfa50f14",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2023-12-08T19:34:19Z",
+      "side": 1,
+      "message": "It is not... people just pick a free number (usually something close to related test) as tests are added/removed.\n\nI don\u0027t think that the globing feature of the build system should necessarily force ART to have test numbers strictly consecutive and without gaps.",
+      "parentUuid": "3ff50614_2fcde7fc",
+      "revId": "813bba11736299bfb992de5bd988c4fd7114c039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
