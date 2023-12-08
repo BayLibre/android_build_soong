@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ddcfe9_399e6d39",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-08T17:47:45Z",
+      "side": 1,
+      "message": "I don\u0027t feel particularly strongly about this, but rejecting empty locations was copied from bazel: https://bazel.build/reference/be/make-variables#predefined_label_variables\n\n\u003e execpaths, rootpaths, rlocationpaths, and locations are the plural variations of execpath, rootpath, rlocationpath, andlocation, respectively. They support labels producing multiple outputs, in which case each output is listed separated by a space. Zero-output rules and malformed labels produce build errors.",
+      "revId": "813bba11736299bfb992de5bd988c4fd7114c039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
