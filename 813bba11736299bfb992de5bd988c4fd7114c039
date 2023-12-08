@@ -16,6 +16,24 @@
       "message": "I don\u0027t feel particularly strongly about this, but rejecting empty locations was copied from bazel: https://bazel.build/reference/be/make-variables#predefined_label_variables\n\n\u003e execpaths, rootpaths, rlocationpaths, and locations are the plural variations of execpath, rootpath, rlocationpath, andlocation, respectively. They support labels producing multiple outputs, in which case each output is listed separated by a space. Zero-output rules and malformed labels produce build errors.",
       "revId": "813bba11736299bfb992de5bd988c4fd7114c039",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f484dafa_1e0c584b",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-12-08T19:01:23Z",
+      "side": 1,
+      "message": "I don\u0027t think bazel has the ability to do a `locations` of a wildcard in the first place.\n\n```\ngenrule(\n    name \u003d \"foo\",\n    srcs \u003d glob([\"src/**/*.cpp\"]),\n    cmd \u003d \"cat $(locations src/**/*.cpp) \u003e $(out)\",\n    outs \u003d [\"foo.txt\"],\n)\n```\n\n`ERROR: /ssd/test/BUILD.bazel:1:8: in cmd attribute of genrule rule //:foo: label \u0027//:src/**/*.cpp\u0027 in $(locations) expression is not a declared prerequisite of this rule`\n\nHowever I think I agree that it would be better to keep it locked down. I removed this and instead added something to art to fill out their glob.",
+      "parentUuid": "d3ddcfe9_399e6d39",
+      "revId": "813bba11736299bfb992de5bd988c4fd7114c039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
