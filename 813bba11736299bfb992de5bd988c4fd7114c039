@@ -106,6 +106,24 @@
       "parentUuid": "3ff50614_2fcde7fc",
       "revId": "813bba11736299bfb992de5bd988c4fd7114c039",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d6ad33_db9dd0d1",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2023-12-08T19:36:12Z",
+      "side": 1,
+      "message": "I think the correct solution is to permit wildcard expression to match no files.\n\nFailing that, I think your hack of creating placeholder tests to fill out the number space is the least evil.",
+      "parentUuid": "22231ca0_dfa50f14",
+      "revId": "813bba11736299bfb992de5bd988c4fd7114c039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
