@@ -19,7 +19,6 @@ package status
 
 import (
 	"sync"
-	"time"
 )
 
 // Action describes an action taken (or as Ninja calls them, Edges).
@@ -108,8 +107,6 @@ type Counts struct {
 	// FinishedActions are the number of actions that have been finished
 	// with FinishAction.
 	FinishedActions int
-
-	EstimatedTime time.Time
 }
 
 // ToolStatus is the interface used by tools to report on their Actions, and to
@@ -121,7 +118,6 @@ type ToolStatus interface {
 	// This call be will ignored if it sets a number that is less than the
 	// current number of started actions.
 	SetTotalActions(total int)
-	SetEstimatedTime(estimatedTime time.Time)
 
 	// StartAction specifies that the associated action has been started by
 	// the tool.
@@ -271,13 +267,6 @@ func (s *Status) updateTotalActions(diff int) {
 	s.counts.TotalActions += diff
 }
 
-func (s *Status) SetEstimatedTime(estimatedTime time.Time) {
-	s.lock.Lock()
-	defer s.lock.Unlock()
-
-	s.counts.EstimatedTime = estimatedTime
-}
-
 func (s *Status) startAction(action *Action) {
 	s.lock.Lock()
 	defer s.lock.Unlock()
@@ -338,10 +327,6 @@ func (d *toolStatus) SetTotalActions(total int) {
 	if diff != 0 {
 		d.status.updateTotalActions(diff)
 	}
-}
-
-func (d *toolStatus) SetEstimatedTime(estimatedTime time.Time) {
-	d.status.SetEstimatedTime(estimatedTime)
 }
 
 func (d *toolStatus) StartAction(action *Action) {
