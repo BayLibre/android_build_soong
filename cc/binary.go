@@ -452,6 +452,10 @@ func (binary *binaryDecorator) unstrippedOutputFilePath() android.Path {
 	return binary.unstrippedOutputFile
 }
 
+func (library *binaryDecorator) strippedAllOutputFilePath() android.Path {
+	panic("Not implemented.")
+}
+
 func (binary *binaryDecorator) setSymlinkList(ctx ModuleContext) {
 	for _, symlink := range binary.Properties.Symlinks {
 		binary.symlinks = append(binary.symlinks,

@@ -621,6 +621,7 @@ type linker interface {
 	link(ctx ModuleContext, flags Flags, deps PathDeps, objs Objects) android.Path
 	appendLdflags([]string)
 	unstrippedOutputFilePath() android.Path
+	strippedAllOutputFilePath() android.Path
 
 	nativeCoverage() bool
 	coverageOutputFilePath() android.OptionalPath
@@ -3829,6 +3830,11 @@ func (c *Module) OutputFiles(tag string) (android.Paths, error) {
 	case "unstripped":
 		if c.linker != nil {
 			return android.PathsIfNonNil(c.linker.unstrippedOutputFilePath()), nil
+		}
+		return nil, nil
+	case "stripped_all":
+		if c.linker != nil {
+			return android.PathsIfNonNil(c.linker.strippedAllOutputFilePath()), nil
 		}
 		return nil, nil
 	default:
