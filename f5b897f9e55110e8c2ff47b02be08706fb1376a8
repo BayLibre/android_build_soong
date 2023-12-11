@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b21211_e4d6a182",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-11T17:39:46Z",
+      "side": 1,
+      "message": "This particular error was fixed by aosp/2855212.  The latest error is different:\n```\n2023/12/11 16:50:47 Error locating \"./...\": testing/code_metadata.go:21:2: package android/soong/testing/code_metadata_internal_proto is not in std (/mnt/disks/build-disk/src/googleplex-android/main/prebuilts/go/linux-x86/src/android/soong/testing/code_metadata_internal_proto)\n```",
+      "revId": "f5b897f9e55110e8c2ff47b02be08706fb1376a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
