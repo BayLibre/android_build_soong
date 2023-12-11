@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f2b381e_a2c21315",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2023-12-11T09:08:35Z",
+      "side": 1,
+      "message": "Spandan, can you look at this CL from a Code-Owners point of view? Thanks.",
+      "revId": "cabafdeee05e5d5a84e65f05470235287859451e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
