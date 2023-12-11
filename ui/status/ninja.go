@@ -190,7 +190,10 @@ func (n *NinjaReader) run() {
 			// It is estimated from critical path time which is useful for small size build.
 			estimatedDurationFromCriticalPath := time.Duration(msg.BuildStarted.GetCriticalPathTime()) * time.Millisecond
 			// Select the longer one.
-			estimatedDuration := max(estimatedDurationFromTotal, estimatedDurationFromCriticalPath)
+			estimatedDuration := estimatedDurationFromTotal
+			if estimatedDurationFromTotal < estimatedDurationFromCriticalPath {
+				estimatedDuration = estimatedDurationFromCriticalPath
+			}
 
 			if estimatedDuration > 0 {
 				n.status.SetEstimatedTime(time.Now().Add(estimatedDuration))
