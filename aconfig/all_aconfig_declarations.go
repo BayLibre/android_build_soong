@@ -16,6 +16,7 @@ package aconfig
 
 import (
 	"android/soong/android"
+	"fmt"
 )
 
 // A singleton module that collects all of the aconfig flags declared in the
@@ -31,7 +32,14 @@ func AllAconfigDeclarationsFactory() android.Singleton {
 
 type allAconfigDeclarationsSingleton struct {
 	intermediateCacheOutputPath android.OutputPath
-	intermediateDumpOutputPath  android.OutputPath
+
+	// Path to the text file containing all flags defined in the tree and their corresponding
+	// boolean values that represents whether the flag is enabled or not.
+	intermediateDumpOutputPath android.OutputPath
+
+	// Similar to intermediateDumpOutputPath, but contains only the flags that are essential
+	// to generate exportable stubs
+	intermediateDumpExportableOutputPath android.OutputPath
 }
 
 func (aconfigDef *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx android.SingletonContext) {
@@ -70,9 +78,48 @@ func (aconfigDef *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx andr
 		},
 	})
 
-	ctx.Phony("all_aconfig_declarations", aconfigDef.intermediateCacheOutputPath, aconfigDef.intermediateDumpOutputPath)
+	// TODO(b/315487153): Apply correct build rules when aconfig supports `--filter` argument
+	aconfigDef.intermediateDumpExportableOutputPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.exportable.txt")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        AllDeclarationsRule,
+		Input:       aconfigDef.intermediateCacheOutputPath,
+		Output:      aconfigDef.intermediateDumpExportableOutputPath,
+		Description: "all_aconfig_declarations_text",
+		Args: map[string]string{
+			"format":      "bool",
+			"cache_files": "--cache " + aconfigDef.intermediateCacheOutputPath.String(),
+		},
+	})
+
+	ctx.Phony("all_aconfig_declarations",
+		aconfigDef.intermediateCacheOutputPath,
+		aconfigDef.intermediateDumpOutputPath,
+		aconfigDef.intermediateDumpExportableOutputPath,
+	)
 }
 
 func (aconfigDef *allAconfigDeclarationsSingleton) MakeVars(ctx android.MakeVarsContext) {
-	ctx.DistForGoal("droid", aconfigDef.intermediateCacheOutputPath, aconfigDef.intermediateDumpOutputPath)
+	ctx.DistForGoal("droid",
+		aconfigDef.intermediateCacheOutputPath,
+		aconfigDef.intermediateDumpOutputPath,
+		aconfigDef.intermediateDumpExportableOutputPath,
+	)
+}
+
+var _ android.OutputFileProducer = (*allAconfigDeclarationsSingleton)(nil)
+
+func (aconfigDef *allAconfigDeclarationsSingleton) OutputFiles(tag string) (android.Paths, error) {
+	switch tag {
+	case "", ".pb":
+		return android.Paths{aconfigDef.intermediateCacheOutputPath}, nil
+	case ".txt":
+		return android.Paths{
+			aconfigDef.intermediateDumpOutputPath,
+			aconfigDef.intermediateDumpExportableOutputPath,
+		}, nil
+	case ".exportable.txt":
+		return android.Paths{aconfigDef.intermediateDumpExportableOutputPath}, nil
+	default:
+		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
+	}
 }
