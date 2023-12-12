@@ -16,6 +16,24 @@
       "message": "Jihoon, I have added a new option `--revert-annotation` to Metalava to be used with `@FlaggedApi`. This change updates the build and I have a separate change to update the script. I have just change the option, I have not bothered to rename the related fields. I will leave it up to you to decide what to do with them as I expect that you are changing things.\n\nI would like to get this submitted ASAP so I can clean up Metalava and remove the hacks around using `--hide-annotation android.annotation.FlaggedApi`.",
       "revId": "78cac5885ccde5e62d010db8508ab87948316e08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c0f6b57_15cb3672",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-12T23:29:16Z",
+      "side": 1,
+      "message": "Thanks for working on the metalava to support this. A few questions: \n\n- As of now, is `--revert-annotation` just an alias to `--hide-annotation`?\n\n- After when all metalava works are complete, would both `--hide-annotations` and `--revert-annotations` need to be passed to metalava arguments via `metalava-keep-flagged-apis.txt`? e.g. Should \"new flagged apis\" and \"modified existing flagged apis\" both use `--revert-annotations`, or should they be distinguished in the build level?",
+      "parentUuid": "9b59c079_72f3d355",
+      "revId": "78cac5885ccde5e62d010db8508ab87948316e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
