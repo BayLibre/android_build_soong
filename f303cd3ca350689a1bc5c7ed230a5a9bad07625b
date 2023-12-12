@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6414cf95_fd98cd69",
+        "filename": "cc/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-12-12T00:48:09Z",
+      "side": 1,
+      "message": "binary?",
+      "range": {
+        "startLine": 448,
+        "startChar": 6,
+        "endLine": 448,
+        "endChar": 13
+      },
+      "revId": "f303cd3ca350689a1bc5c7ed230a5a9bad07625b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
