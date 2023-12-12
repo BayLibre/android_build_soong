@@ -56,11 +56,11 @@ var (
 	// For all_aconfig_declarations: Combine all parsed_flags proto files
 	AllDeclarationsRule = pctx.AndroidStaticRule("All_aconfig_declarations_dump",
 		blueprint.RuleParams{
-			Command: `${aconfig} dump --format ${format} --out ${out} ${cache_files}`,
+			Command: `${aconfig} dump --format ${format} --out ${out} ${additional_args} ${cache_files}`,
 			CommandDeps: []string{
 				"${aconfig}",
 			},
-		}, "format", "cache_files")
+		}, "format", "cache_files", "additional_args")
 
 	mergeAconfigFilesRule = pctx.AndroidStaticRule("mergeAconfigFilesRule",
 		blueprint.RuleParams{
