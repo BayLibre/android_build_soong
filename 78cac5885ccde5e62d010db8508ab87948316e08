@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b59c079_72f3d355",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-12-12T23:18:17Z",
+      "side": 1,
+      "message": "Jihoon, I have added a new option `--revert-annotation` to Metalava to be used with `@FlaggedApi`. This change updates the build and I have a separate change to update the script. I have just change the option, I have not bothered to rename the related fields. I will leave it up to you to decide what to do with them as I expect that you are changing things.\n\nI would like to get this submitted ASAP so I can clean up Metalava and remove the hacks around using `--hide-annotation android.annotation.FlaggedApi`.",
+      "revId": "78cac5885ccde5e62d010db8508ab87948316e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
