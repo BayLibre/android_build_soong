@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9326d566_0a9634ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-12-12T01:27:11Z",
+      "side": 1,
+      "message": "One of my teammates mentioned that this CL might get caught in a broken presubmit for master-plus-rust. https://android-review.git.corp.google.com/c/platform/manifest/+/2868430 should resolve the skipped automerger problem, but it still needs a review.",
+      "revId": "87c08be783ec8ae1d6cab3441330115e850a5f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14c0baa7_c7597a50",
