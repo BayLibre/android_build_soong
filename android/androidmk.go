@@ -159,7 +159,7 @@ type AndroidMkEntriesContext interface {
 }
 
 type AndroidMkExtraEntriesContext interface {
-	Provider(provider blueprint.ProviderKey) interface{}
+	Provider(provider blueprint.AnyProviderKey) interface{}
 }
 
 type androidMkExtraEntriesContext struct {
@@ -167,7 +167,7 @@ type androidMkExtraEntriesContext struct {
 	mod blueprint.Module
 }
 
-func (a *androidMkExtraEntriesContext) Provider(provider blueprint.ProviderKey) interface{} {
+func (a *androidMkExtraEntriesContext) Provider(provider blueprint.AnyProviderKey) interface{} {
 	return a.ctx.ModuleProvider(a.mod, provider)
 }
 
@@ -492,8 +492,8 @@ type fillInEntriesContext interface {
 	ModuleDir(module blueprint.Module) string
 	ModuleSubDir(module blueprint.Module) string
 	Config() Config
-	ModuleProvider(module blueprint.Module, provider blueprint.ProviderKey) interface{}
-	ModuleHasProvider(module blueprint.Module, provider blueprint.ProviderKey) bool
+	ModuleProvider(module blueprint.Module, provider blueprint.AnyProviderKey) interface{}
+	ModuleHasProvider(module blueprint.Module, provider blueprint.AnyProviderKey) bool
 	ModuleType(module blueprint.Module) string
 }
 
