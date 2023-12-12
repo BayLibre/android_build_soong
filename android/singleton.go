@@ -38,10 +38,10 @@ type SingletonContext interface {
 	// return value can always be type-asserted to the type of the provider.  The return value should
 	// always be considered read-only.  It panics if called before the appropriate mutator or
 	// GenerateBuildActions pass for the provider on the module.
-	ModuleProvider(module blueprint.Module, provider blueprint.ProviderKey) interface{}
+	ModuleProvider(module blueprint.Module, provider blueprint.AnyProviderKey) interface{}
 
 	// ModuleHasProvider returns true if the provider for the given module has been set.
-	ModuleHasProvider(module blueprint.Module, provider blueprint.ProviderKey) bool
+	ModuleHasProvider(module blueprint.Module, provider blueprint.AnyProviderKey) bool
 
 	ModuleErrorf(module blueprint.Module, format string, args ...interface{})
 	Errorf(format string, args ...interface{})
