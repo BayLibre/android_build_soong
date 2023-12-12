@@ -66,8 +66,9 @@ var (
 	//See https://github.com/rust-lang/rust-bindgen/issues/2508.
 	bindgen = pctx.AndroidStaticRule("bindgen",
 		blueprint.RuleParams{
-			Command: "CLANG_PATH=$bindgenClang LIBCLANG_PATH=$bindgenLibClang RUSTFMT=${config.RustBin}/rustfmt " +
-				"$cmd $flags $$(cat $flagfiles) $in -o $out -- -MD -MF $out.d $cflags",
+			Command: "cat $flagfiles | (mapfile -t FLAGS_FROM_FILES && " +
+				"CLANG_PATH=$bindgenClang LIBCLANG_PATH=$bindgenLibClang RUSTFMT=${config.RustBin}/rustfmt " +
+				"$cmd $flags \"$${FLAGS_FROM_FILES[@]}\" $in -o $out -- -MD -MF $out.d $cflags)",
 			CommandDeps: []string{"$cmd"},
 			Deps:        blueprint.DepsGCC,
 			Depfile:     "$out.d",
