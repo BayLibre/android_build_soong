@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "514c76ad_11ee43fa",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-12-12T20:03:34Z",
+      "side": 1,
+      "message": "you can remove this too",
+      "revId": "b63d7b3af71b13d94f30f1d973d375a5fadfdd48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
