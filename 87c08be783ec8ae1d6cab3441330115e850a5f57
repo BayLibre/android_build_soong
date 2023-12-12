@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c0baa7_c7597a50",
+        "filename": "aconfig/aconfig_declarations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-12-12T00:55:26Z",
+      "side": 1,
+      "message": "Do we want first or last of the paths? Looking at the function in aconfig, I think it\u0027s last-one-wins.\n\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/make/tools/aconfig/src/commands.rs;l\u003d68",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 42
+      },
+      "revId": "87c08be783ec8ae1d6cab3441330115e850a5f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
