@@ -377,10 +377,7 @@ type BootclasspathFragmentApexContentInfo struct {
 // DexBootJarPathForContentModule returns the path to the dex boot jar for specified module.
 //
 // The dex boot jar is one which has had hidden API encoding performed on it.
-func (i BootclasspathFragmentApexContentInfo) DexBootJarPathForContentModule(module android.Module) (android.Path, error) {
-	// A bootclasspath_fragment cannot use a prebuilt library so Name() will return the base name
-	// without a prebuilt_ prefix so is safe to use as the key for the contentModuleDexJarPaths.
-	name := module.Name()
+func (i BootclasspathFragmentApexContentInfo) DexBootJarPathForContentModule(name string) (android.Path, error) {
 	if dexJar, ok := i.contentModuleDexJarPaths[name]; ok {
 		return dexJar, nil
 	} else {
@@ -395,6 +392,10 @@ func (i BootclasspathFragmentApexContentInfo) ProfilePathOnHost() android.Path {
 
 func (i *BootclasspathFragmentApexContentInfo) SetProfilePathOnHost(p android.Path) {
 	i.profilePathOnHost = p
+}
+
+func (i *BootclasspathFragmentApexContentInfo) SetContentModuleDexJarPaths(m map[string]android.Path) {
+	i.contentModuleDexJarPaths = m
 }
 
 func (i BootclasspathFragmentApexContentInfo) ProfileInstallPathInApex() string {
@@ -1045,10 +1046,6 @@ func (module *PrebuiltBootclasspathFragmentModule) produceHiddenAPIOutput(ctx an
 		return android.PathForModuleSrc(ctx, *src)
 	}
 
-	// Retrieve the dex files directly from the content modules. They in turn should retrieve the
-	// encoded dex jars from the prebuilt .apex files.
-	encodedBootDexJarsByModule := extractEncodedDexJarsFromModules(ctx, contents)
-
 	output := HiddenAPIOutput{
 		HiddenAPIFlagOutput: HiddenAPIFlagOutput{
 			AnnotationFlagsPath:   pathForSrc("hidden_api.annotation_flags", module.prebuiltProperties.Hidden_api.Annotation_flags),
@@ -1059,8 +1056,6 @@ func (module *PrebuiltBootclasspathFragmentModule) produceHiddenAPIOutput(ctx an
 			StubFlagsPath: pathForOptionalSrc(module.prebuiltProperties.Hidden_api.Stub_flags, nil),
 			AllFlagsPath:  pathForOptionalSrc(module.prebuiltProperties.Hidden_api.All_flags, nil),
 		},
-
-		EncodedBootDexFilesByModule: encodedBootDexJarsByModule,
 	}
 
 	// TODO: Temporarily fallback to stub_flags/all_flags properties until prebuilts have been updated.
