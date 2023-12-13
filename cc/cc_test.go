@@ -114,6 +114,7 @@ func testCcError(t *testing.T, pattern string, bp string) {
 	config := TestConfig(t.TempDir(), android.Android, nil, bp, nil)
 	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
 	config.TestProductVariables.Platform_vndk_version = StringPtr("29")
+	config.TestProductVariables.KeepVndk = BoolPtr(true)
 	testCcErrorWithConfig(t, pattern, config)
 	return
 }
@@ -128,6 +129,7 @@ func testCcErrorProductVndk(t *testing.T, pattern string, bp string) {
 	config := TestConfig(t.TempDir(), android.Android, nil, bp, nil)
 	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
 	config.TestProductVariables.Platform_vndk_version = StringPtr("29")
+	config.TestProductVariables.KeepVndk = BoolPtr(true)
 	testCcErrorWithConfig(t, pattern, config)
 	return
 }

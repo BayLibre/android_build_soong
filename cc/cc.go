@@ -25,6 +25,7 @@ import (
 	"strings"
 
 	"android/soong/testing"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -2767,20 +2768,23 @@ func checkLinkType(ctx android.BaseModuleContext, from LinkableInterface, to Lin
 		return
 	}
 
-	// VNDK is cc.Module supported only for now.
-	if ccFrom, ok := from.(*Module); ok && from.UseVndk() {
-		// Though allowed dependency is limited by the image mutator,
-		// each vendor and product module needs to check link-type
-		// for VNDK.
-		if ccTo, ok := to.(*Module); ok {
-			if ccFrom.vndkdep != nil {
-				ccFrom.vndkdep.vndkCheckLinkType(ctx, ccTo, tag)
+	if !ctx.Config().IsVndkDeprecated() {
+		// VNDK is cc.Module supported only for now.
+		if ccFrom, ok := from.(*Module); ok && from.UseVndk() {
+			// Though allowed dependency is limited by the image mutator,
+			// each vendor and product module needs to check link-type
+			// for VNDK.
+			if ccTo, ok := to.(*Module); ok {
+				if ccFrom.vndkdep != nil {
+					ccFrom.vndkdep.vndkCheckLinkType(ctx, ccTo, tag)
+				}
+			} else if _, ok := to.(LinkableInterface); !ok {
+				ctx.ModuleErrorf("Attempting to link VNDK cc.Module with unsupported module type")
 			}
-		} else if _, ok := to.(LinkableInterface); !ok {
-			ctx.ModuleErrorf("Attempting to link VNDK cc.Module with unsupported module type")
+			return
 		}
-		return
 	}
+
 	// TODO(b/244244438) : Remove this once all variants are implemented
 	if ccFrom, ok := from.(*Module); ok && ccFrom.isImportedApiLibrary() {
 		return
