@@ -661,7 +661,7 @@ func TestBootclasspathFragmentContentsNoName(t *testing.T) {
 
 	checkFragmentExportedDexJar := func(name string, expectedDexJar string) {
 		module := result.Module(name, "android_common_apex10000")
-		dexJar, err := info.DexBootJarPathForContentModule(module)
+		dexJar, err := info.DexBootJarPathForContentModule(module.Name())
 		if err != nil {
 			t.Error(err)
 		}
