@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/dexpreopt"
 	"android/soong/java"
 )
 
@@ -229,4 +230,42 @@ func TestExportedMode(t *testing.T) {
 
 func TestUnsupportedMode(t *testing.T) {
 	testCodegenModeWithError(t, "mode: `unsupported`,", "mode: \"unsupported\" is not a supported mode")
+}
+
+func TestRepackage(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		PrepareForTestWithAconfigBuildComponents,
+		dexpreopt.PrepareForTestByEnablingDexpreopt,
+		java.PrepareForTestWithJavaDefaultModules).
+		ExtendWithErrorHandler(android.FixtureExpectsNoErrors).
+		RunTestWithBp(t, fmt.Sprintf(`
+			bootclasspath_fragment {
+				name: "bcpf",
+				contents: ["mylibrary"],
+				hidden_api: {
+					split_packages: [],
+				},
+			}
+
+			java_library {
+				name: "mylibrary",
+				static_libs: ["my_java_aconfig_library"],
+				installable: true,
+				jarjar_rules: "abc.txt",
+			}
+
+			java_aconfig_library {
+				name: "my_java_aconfig_library",
+				aconfig_declarations: "my_aconfig_declarations",
+			}
+
+			aconfig_declarations {
+				name: "my_aconfig_declarations",
+				package: "com.example.package",
+				srcs: ["foo.aconfig"],
+			}
+		`))
+
+	module, _ := result.Module("mylibrary", "android_common").(*java.Library)
+	android.AssertStringDoesContain(t, "expandJarjarRules", module.GetExpandJarjarRules(), "repackaging.txt")
 }
