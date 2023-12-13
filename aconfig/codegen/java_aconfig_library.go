@@ -68,7 +68,7 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) DepsMutator(module *ja
 	module.AddSharedLibrary("unsupportedappusage")
 }
 
-func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuildActions(module *java.GeneratedJavaLibraryModule, ctx android.ModuleContext) android.Path {
+func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuildActions(module *java.GeneratedJavaLibraryModule, ctx android.ModuleContext) (android.Path, string) {
 	// Get the values that came from the global RELEASE_ACONFIG_VALUE_SETS flag
 	declarationsModules := ctx.GetDirectDepsWithTag(declarationsTag)
 	if len(declarationsModules) != 1 {
@@ -94,7 +94,7 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 		},
 	})
 
-	return srcJarPath
+	return srcJarPath, declarations.Package
 }
 
 func isModeSupported(mode string) bool {

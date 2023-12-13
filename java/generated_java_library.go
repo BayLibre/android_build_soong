@@ -16,6 +16,7 @@ package java
 
 import (
 	"android/soong/android"
+	"github.com/google/blueprint"
 )
 
 type GeneratedJavaLibraryModule struct {
@@ -34,8 +35,15 @@ type GeneratedJavaLibraryCallbacks interface {
 
 	// Called from inside GenerateAndroidBuildActions. Add the build rules to
 	// make the srcjar, and return the path to it.
-	GenerateSourceJarBuildActions(module *GeneratedJavaLibraryModule, ctx android.ModuleContext) android.Path
+	GenerateSourceJarBuildActions(module *GeneratedJavaLibraryModule, ctx android.ModuleContext) (android.Path, string)
 }
+
+// Provider for jarjar repackaging
+type JarjarRepackageProviderData struct {
+	FromPackage string
+}
+
+var JarjarRepackageProviderKey = blueprint.NewProvider(JarjarRepackageProviderData{})
 
 // GeneratedJavaLibraryModuleFactory provides a utility for modules that are generated
 // source code, including ones outside the java package to build jar files
@@ -103,7 +111,10 @@ func (module *GeneratedJavaLibraryModule) GenerateAndroidBuildActions(ctx androi
 	checkPropertyEmpty(ctx, module, "plugins", module.Library.properties.Plugins)
 	checkPropertyEmpty(ctx, module, "exported_plugins", module.Library.properties.Exported_plugins)
 
-	srcJarPath := module.callbacks.GenerateSourceJarBuildActions(module, ctx)
+	srcJarPath, packageName := module.callbacks.GenerateSourceJarBuildActions(module, ctx)
 	module.Library.properties.Generated_srcjars = append(module.Library.properties.Generated_srcjars, srcJarPath)
 	module.Library.GenerateAndroidBuildActions(ctx)
+	ctx.SetProvider(JarjarRepackageProviderKey, JarjarRepackageProviderData{
+		FromPackage: packageName + "\n",
+	})
 }
