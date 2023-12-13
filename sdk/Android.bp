@@ -18,6 +18,7 @@ bootstrap_go_package {
         "bp.go",
         "build_release.go",
         "exports.go",
+        "genrule.go",
         "member_trait.go",
         "member_type.go",
         "sdk.go",
