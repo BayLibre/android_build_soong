@@ -18,9 +18,10 @@ package java
 
 import (
 	"fmt"
+	"strings"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
-	"strings"
 
 	"android/soong/android"
 )
@@ -235,4 +236,40 @@ type ClasspathFragmentProtoContentInfo struct {
 	// This is only relevant for APEX modules as they perform their own installation; while regular
 	// system files are installed via ClasspathFragmentBase#androidMkEntries().
 	ClasspathFragmentProtoInstallDir android.InstallPath
+}
+
+func RepackageContents(ctx android.ModuleContext, contents []android.Module, base string) {
+	jarjarRuleText := getJarjarRuleText(ctx, base)
+	for _, content := range contents {
+		if jl, ok := content.(*Library); ok {
+			jl.repackage(ctx, jarjarRuleText)
+		} else if jsl, ok := content.(*SdkLibrary); ok {
+			jsl.Library.repackage(ctx, jarjarRuleText)
+		}
+	}
+}
+
+var flagsExtension = []string{".Flags", ".FeatureFlags", ".FeatureFlagsImpl", ".FakeFeatureFlagsImpl"}
+
+func getJarjarRuleText(ctx android.ModuleContext, base string) string {
+	var originalPackages []string
+	ctx.WalkDeps(func(child android.Module, parent android.Module) bool {
+		if _, ok := child.(*GeneratedJavaLibraryModule); ok {
+			if ctx.OtherModuleHasProvider(child, JarjarRepackageProviderKey) {
+				fmt.Println("\n", parent.Name(), ctx.OtherModuleType(parent), child.Name(), ctx.OtherModuleType(child), "\n")
+				originalPackages = append(originalPackages, ctx.OtherModuleProvider(child, JarjarRepackageProviderKey).(JarjarRepackageProviderData).FromPackage)
+			}
+			return false
+		}
+		return true
+	})
+	originalPackages = android.FirstUniqueStrings(originalPackages)
+
+	jarjarRuleText := ""
+	for _, original := range originalPackages {
+		for _, ext := range flagsExtension {
+			jarjarRuleText += "rule " + original + ext + " " + original + "." + base + ext + "\n"
+		}
+	}
+	return jarjarRuleText
 }

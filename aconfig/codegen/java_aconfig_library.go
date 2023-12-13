@@ -69,12 +69,7 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) DepsMutator(module *ja
 }
 
 func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuildActions(module *java.GeneratedJavaLibraryModule, ctx android.ModuleContext) android.Path {
-	// Get the values that came from the global RELEASE_ACONFIG_VALUE_SETS flag
-	declarationsModules := ctx.GetDirectDepsWithTag(declarationsTag)
-	if len(declarationsModules) != 1 {
-		panic(fmt.Errorf("Exactly one aconfig_declarations property required"))
-	}
-	declarations := ctx.OtherModuleProvider(declarationsModules[0], aconfig.DeclarationsProviderKey).(aconfig.DeclarationsProviderData)
+	declarations := getDeclarations(ctx)
 
 	// Generate the action to build the srcjar
 	srcJarPath := android.PathForModuleGen(ctx, ctx.ModuleName()+".srcjar")
@@ -95,6 +90,21 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 	})
 
 	return srcJarPath
+}
+
+func getDeclarations(ctx android.ModuleContext) aconfig.DeclarationsProviderData {
+	// Get the values that came from the global RELEASE_ACONFIG_VALUE_SETS flag
+	declarationsModules := ctx.GetDirectDepsWithTag(declarationsTag)
+	if len(declarationsModules) != 1 {
+		panic(fmt.Errorf("Exactly one aconfig_declarations property required"))
+	}
+	declarations, _ := android.OtherModuleProvider(ctx, declarationsModules[0], aconfig.DeclarationsProviderKey)
+	return declarations
+}
+
+func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GetPackage(ctx android.ModuleContext) string {
+	declarations := getDeclarations(ctx)
+	return declarations.Package
 }
 
 func isModeSupported(mode string) bool {

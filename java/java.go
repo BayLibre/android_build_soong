@@ -738,6 +738,20 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 }
 
+// repackge generates a txt file and update java_library expandJarjarRules with
+// this file. The actual repackaging is handled in compile().
+func (j *Library) repackage(ctx android.ModuleContext, ruleText string) {
+	if ruleText == "" {
+		return
+	}
+
+	if j.repackageJarjarRules == nil {
+		ruleTextFile := android.PathForModuleOut(ctx, j.Name(), "repackaging.txt")
+		android.WriteFileRule(ctx, ruleTextFile, ruleText)
+		j.repackageJarjarRules = ruleTextFile
+	}
+}
+
 func (j *Library) DepsMutator(ctx android.BottomUpMutatorContext) {
 	j.deps(ctx)
 	j.usesLibrary.deps(ctx, false)
