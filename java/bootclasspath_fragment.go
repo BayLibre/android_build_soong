@@ -368,6 +368,10 @@ type BootclasspathFragmentApexContentInfo struct {
 	// Install path of the boot image profile if it needs to be installed in the APEX, or empty if not
 	// needed.
 	profileInstallPathInApex string
+
+	// Canonical name of this APEX. Used to determine the path to the activated APEX on
+	// device (/apex/<apex_name>)
+	Apex_name string
 }
 
 // DexBootJarPathForContentModule returns the path to the dex boot jar for specified module.
@@ -387,6 +391,10 @@ func (i BootclasspathFragmentApexContentInfo) DexBootJarPathForContentModule(mod
 
 func (i BootclasspathFragmentApexContentInfo) ProfilePathOnHost() android.Path {
 	return i.profilePathOnHost
+}
+
+func (i *BootclasspathFragmentApexContentInfo) SetProfilePathOnHost(p android.Path) {
+	i.profilePathOnHost = p
 }
 
 func (i BootclasspathFragmentApexContentInfo) ProfileInstallPathInApex() string {
@@ -792,6 +800,9 @@ func (b *BootclasspathFragmentModule) AndroidMkEntries() []android.AndroidMkEntr
 }
 
 func (b *BootclasspathFragmentModule) getProfilePath() android.Path {
+	if b.profilePathErr != nil {
+		panic(b.profilePathErr.Error())
+	}
 	return b.profilePath
 }
 
