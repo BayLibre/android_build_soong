@@ -2456,7 +2456,7 @@ func apexFileForBootclasspathFragmentContentModule(ctx android.ModuleContext, fr
 
 	// Get the dexBootJar from the bootclasspath_fragment as that is responsible for performing the
 	// hidden API encpding.
-	dexBootJar, err := bootclasspathFragmentInfo.DexBootJarPathForContentModule(javaModule)
+	dexBootJar, err := bootclasspathFragmentInfo.DexBootJarPathForContentModule(javaModule.Name())
 	if err != nil {
 		ctx.ModuleErrorf("%s", err)
 	}
