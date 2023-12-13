@@ -18,9 +18,10 @@ package java
 
 import (
 	"fmt"
+	"strings"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
-	"strings"
 
 	"android/soong/android"
 )
@@ -235,4 +236,17 @@ type ClasspathFragmentProtoContentInfo struct {
 	// This is only relevant for APEX modules as they perform their own installation; while regular
 	// system files are installed via ClasspathFragmentBase#androidMkEntries().
 	ClasspathFragmentProtoInstallDir android.InstallPath
+}
+
+func RepackageContents(ctx android.ModuleContext, contents []android.Module, base string) {
+	for _, content := range contents {
+		if jl, ok := content.(*Library); ok {
+			if jl.Name() != "framework-minus-apex" {
+				fmt.Println("1111111111111111")
+			}
+			jl.repackage(ctx, base)
+		} else if jsl, ok := content.(*SdkLibrary); ok {
+			jsl.Library.repackage(ctx, base)
+		}
+	}
 }

@@ -68,7 +68,7 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) DepsMutator(module *ja
 	module.AddSharedLibrary("unsupportedappusage")
 }
 
-func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuildActions(module *java.GeneratedJavaLibraryModule, ctx android.ModuleContext) android.Path {
+func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuildActions(module *java.GeneratedJavaLibraryModule, ctx android.ModuleContext) (android.Path, string) {
 	// Get the values that came from the global RELEASE_ACONFIG_VALUE_SETS flag
 	declarationsModules := ctx.GetDirectDepsWithTag(declarationsTag)
 	if len(declarationsModules) != 1 {
@@ -79,7 +79,7 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 	// Generate the action to build the srcjar
 	srcJarPath := android.PathForModuleGen(ctx, ctx.ModuleName()+".srcjar")
 
-	mode := proptools.StringDefault(callbacks.properties.Mode, "production")
+	mode := callbacks.GetMode()
 	if !isModeSupported(mode) {
 		ctx.PropertyErrorf("mode", "%q is not a supported mode", mode)
 	}
@@ -94,11 +94,15 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 		},
 	})
 
-	return srcJarPath
+	return srcJarPath, declarations.Package
 }
 
 func isModeSupported(mode string) bool {
 	return android.InList(mode, aconfigSupportedModes)
+}
+
+func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GetMode() string {
+	return proptools.StringDefault(callbacks.properties.Mode, "production")
 }
 
 type bazelJavaAconfigLibraryAttributes struct {
