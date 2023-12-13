@@ -28,3 +28,7 @@ bootstrap_go_package {
     ],
     pluginFor: ["soong_build"],
 }
+
+all_aconfig_declarations {
+    name: "all_aconfig_declarations",
+}
