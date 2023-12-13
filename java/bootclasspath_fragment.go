@@ -368,6 +368,10 @@ type BootclasspathFragmentApexContentInfo struct {
 	// Install path of the boot image profile if it needs to be installed in the APEX, or empty if not
 	// needed.
 	profileInstallPathInApex string
+
+	// Canonical name of this APEX. Used to determine the path to the activated APEX on
+	// device (/apex/<apex_name>)
+	apexName string
 }
 
 // DexBootJarPathForContentModule returns the path to the dex boot jar for specified module.
@@ -391,6 +395,21 @@ func (i BootclasspathFragmentApexContentInfo) ProfilePathOnHost() android.Path {
 
 func (i BootclasspathFragmentApexContentInfo) ProfileInstallPathInApex() string {
 	return i.profileInstallPathInApex
+}
+
+func (i BootclasspathFragmentApexContentInfo) ApexName() string {
+	return i.apexName
+}
+
+func (i *BootclasspathFragmentApexContentInfo) SetApexName(apexName string) {
+	i.apexName = apexName
+}
+
+func NewBootclasspathFragmentApexContentInfo(profilePathOnHost android.Path, apexName string) *BootclasspathFragmentApexContentInfo {
+	return &BootclasspathFragmentApexContentInfo{
+		profilePathOnHost: profilePathOnHost,
+		apexName:          apexName,
+	}
 }
 
 func (b *BootclasspathFragmentModule) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
@@ -534,7 +553,7 @@ func (b *BootclasspathFragmentModule) provideApexContentInfo(ctx android.ModuleC
 
 	if profile != nil {
 		info.profilePathOnHost = profile
-		info.profileInstallPathInApex = profileInstallPathInApex
+		info.profileInstallPathInApex = ProfileInstallPathInApex
 	}
 
 	// Make the apex content info available for other modules.
@@ -1074,7 +1093,7 @@ func (module *PrebuiltBootclasspathFragmentModule) produceBootImageProfile(ctx a
 		return nil // An error has been reported by FindDeapexerProviderForModule.
 	}
 
-	return di.PrebuiltExportPath(profileInstallPathInApex)
+	return di.PrebuiltExportPath(ProfileInstallPathInApex)
 }
 
 func (b *PrebuiltBootclasspathFragmentModule) getProfilePath() android.Path {
@@ -1094,7 +1113,7 @@ var _ commonBootclasspathFragment = (*PrebuiltBootclasspathFragmentModule)(nil)
 func (module *PrebuiltBootclasspathFragmentModule) RequiredFilesFromPrebuiltApex(ctx android.BaseModuleContext) []string {
 	for _, apex := range module.ApexProperties.Apex_available {
 		if isProfileProviderApex(ctx, apex) {
-			return []string{profileInstallPathInApex}
+			return []string{ProfileInstallPathInApex}
 		}
 	}
 	return nil

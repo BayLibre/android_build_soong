@@ -2371,6 +2371,21 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.buildApex(ctx)
 	a.buildApexDependencyInfo(ctx)
 	a.buildLintReports(ctx)
+
+	// Set a provider for dexpreopt of bootjars
+	a.provideBootclasspathFragmentApexContentInfoProvider(ctx)
+}
+
+// Set a provider containing information about the jars provided by the apex to the boot classpath
+// Used by dex_bootjars to generate the boot image
+func (a *apexBundle) provideBootclasspathFragmentApexContentInfoProvider(ctx android.ModuleContext) {
+	ctx.VisitDirectDepsWithTag(bcpfTag, func(child android.Module) {
+		if info, ok := android.OtherModuleProvider(ctx, child, java.BootclasspathFragmentApexContentInfoProvider); ok {
+			info.SetApexName(a.ApexVariationName())
+			// bubble up the provider from bootclasspath_fragment to rdeps like dex_bootjars
+			ctx.SetProvider(java.BootclasspathFragmentApexContentInfoProvider, info)
+		}
+	})
 }
 
 // apexBootclasspathFragmentFiles returns the list of apexFile structures defining the files that
