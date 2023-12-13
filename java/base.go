@@ -1112,7 +1112,16 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 	srcFiles = srcFiles.FilterOutByExt(".srcjar")
 
 	if j.properties.Jarjar_rules != nil {
-		j.expandJarjarRules = android.PathForModuleSrc(ctx, *j.properties.Jarjar_rules)
+		if j.expandJarjarRules == nil {
+			j.expandJarjarRules = android.PathForModuleSrc(ctx, *j.properties.Jarjar_rules)
+		} else {
+			jarjarFileFromPrp := android.PathForModuleSrc(ctx, *j.properties.Jarjar_rules)
+			combinedRuleFile := android.PathForModuleOut(ctx, "combined-jarjar-rules.txt")
+			catRule := android.NewRuleBuilder(pctx, ctx)
+			catRule.Command().Text("cat").Input(jarjarFileFromPrp).Input(j.expandJarjarRules).Text(">").Output(combinedRuleFile)
+			catRule.Build(j.Name()+"combine jarjar rule", "combine jarjar rule")
+			j.expandJarjarRules = combinedRuleFile
+		}
 	}
 
 	jarName := j.Stem() + ".jar"
