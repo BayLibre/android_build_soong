@@ -230,3 +230,39 @@ func TestExportedMode(t *testing.T) {
 func TestUnsupportedMode(t *testing.T) {
 	testCodegenModeWithError(t, "mode: `unsupported`,", "mode: \"unsupported\" is not a supported mode")
 }
+
+//func TestRepackage(t *testing.T) {
+//	result := android.GroupFixturePreparers(
+//		PrepareForTestWithAconfigBuildComponents,
+//		java.PrepareForTestWithJavaDefaultModules).
+//		ExtendWithErrorHandler(android.FixtureExpectsNoErrors).
+//		RunTestWithBp(t, fmt.Sprintf(`
+//			bootclasspath_fragment {
+//				name: "bcpf",
+//				contents: ["mylibrary"],
+//				hidden_api: {
+//					split_packages: [],
+//				},
+//			}
+//
+//			java_library {
+//				name: "mylibrary",
+//				static_libs: ["my_java_aconfig_library"],
+//			}
+//
+//			java_aconfig_library {
+//				name: "my_java_aconfig_library",
+//				aconfig_declarations: "my_aconfig_declarations",
+//			}
+//
+//			aconfig_declarations {
+//				name: "my_aconfig_declarations",
+//				package: "com.example.package",
+//				srcs: ["foo.aconfig"],
+//			}
+//		`))
+//
+//	module, _ := result.Module("mylibrary", "android_common").(*java.Library)
+//	android.AssertStringDoesContain(t, "expandJarjarRules", module.Name(), "jarjar-rules.txt")
+//	// android.AssertStringEquals(t, "rule must contain test mode", rule.Args["mode"], ruleMode)
+//}
