@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/dexpreopt"
 	"android/soong/java"
 )
 
@@ -229,4 +230,125 @@ func TestExportedMode(t *testing.T) {
 
 func TestUnsupportedMode(t *testing.T) {
 	testCodegenModeWithError(t, "mode: `unsupported`,", "mode: \"unsupported\" is not a supported mode")
+}
+
+func TestRepackageBootclasspathfragment(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		PrepareForTestWithAconfigBuildComponents,
+		dexpreopt.PrepareForTestByEnablingDexpreopt,
+		java.PrepareForTestWithJavaDefaultModules).
+		ExtendWithErrorHandler(android.FixtureExpectsNoErrors).
+		RunTestWithBp(t, fmt.Sprintf(`
+			bootclasspath_fragment {
+				name: "bcpf",
+				contents: ["mylibrary1", "mylibrary2", "mylibrary4"],
+				hidden_api: {
+					split_packages: [],
+				},
+			}
+
+			java_library {
+				name: "mylibrary1",
+				static_libs: ["my_java_aconfig_library"],
+				installable: true,
+			}
+
+			java_library {
+				name: "mylibrary2",
+				static_libs: ["my_java_aconfig_library"],
+				installable: true,
+				jarjar_rules: "abc.txt",
+			}
+
+			java_library {
+				name: "mylibrary3",
+				static_libs: ["my_java_aconfig_library"],
+				installable: true,
+			}
+
+			java_library {
+				name: "mylibrary4",
+				srcs: [":my_java_aconfig_library{.generated_srcjars}"],
+				installable: true,
+			}
+
+			java_aconfig_library {
+				name: "my_java_aconfig_library",
+				aconfig_declarations: "my_aconfig_declarations",
+			}
+
+			aconfig_declarations {
+				name: "my_aconfig_declarations",
+				package: "com.example.package",
+				srcs: ["foo.aconfig"],
+			}
+		`))
+
+	libraryOne, _ := result.Module("mylibrary1", "android_common").(*java.Library)
+	android.AssertStringDoesContain(t, "repackageJarjarRules", libraryOne.GetRepackageJarjarRules(), "repackaging.txt")
+	libraryTwo, _ := result.Module("mylibrary2", "android_common").(*java.Library)
+	android.AssertStringDoesContain(t, "repackageJarjarRules", libraryTwo.GetRepackageJarjarRules(), "repackaging.txt")
+	libraryThree, _ := result.Module("mylibrary3", "android_common").(*java.Library)
+	android.AssertStringEquals(t, "repackageJarjarRules", libraryThree.GetRepackageJarjarRules(), "")
+	libraryFour, _ := result.Module("mylibrary4", "android_common").(*java.Library)
+	android.AssertStringDoesContain(t, "repackageJarjarRules", libraryFour.GetRepackageJarjarRules(), "repackaging.txt")
+}
+
+func TestRepackageSystemserverclasspathfragment(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		PrepareForTestWithAconfigBuildComponents,
+		dexpreopt.PrepareForTestByEnablingDexpreopt,
+		java.PrepareForTestWithJavaDefaultModules).
+		ExtendWithErrorHandler(android.FixtureExpectsNoErrors).
+		RunTestWithBp(t, fmt.Sprintf(`
+			systemserverclasspath_fragment {
+				name: "sscpf",
+				contents: ["mylibrary1", "mylibrary2", "mylibrary4"],
+			}
+
+			java_library {
+				name: "mylibrary1",
+				static_libs: ["my_java_aconfig_library"],
+				installable: true,
+			}
+
+			java_library {
+				name: "mylibrary2",
+				static_libs: ["my_java_aconfig_library"],
+				installable: true,
+				jarjar_rules: "abc.txt",
+			}
+
+			java_library {
+				name: "mylibrary3",
+				static_libs: ["my_java_aconfig_library"],
+				installable: true,
+			}
+
+			java_library {
+				name: "mylibrary4",
+				srcs: [":my_java_aconfig_library{.generated_srcjars}"],
+				installable: true,
+			}
+
+			java_aconfig_library {
+				name: "my_java_aconfig_library",
+				aconfig_declarations: "my_aconfig_declarations",
+			}
+
+			aconfig_declarations {
+				name: "my_aconfig_declarations",
+				package: "com.example.package",
+				srcs: ["foo.aconfig"],
+			}
+		`))
+
+	libraryOne, _ := result.Module("mylibrary1", "android_common").(*java.Library)
+	android.AssertStringDoesContain(t, "repackageJarjarRules", libraryOne.GetRepackageJarjarRules(), "repackaging.txt")
+	libraryTwo, _ := result.Module("mylibrary2", "android_common").(*java.Library)
+	android.AssertStringDoesContain(t, "repackageJarjarRules", libraryTwo.GetRepackageJarjarRules(), "repackaging.txt")
+	libraryThree, _ := result.Module("mylibrary3", "android_common").(*java.Library)
+	android.AssertStringEquals(t, "repackageJarjarRules", libraryThree.GetRepackageJarjarRules(), "")
+	libraryFour, _ := result.Module("mylibrary4", "android_common").(*java.Library)
+	android.AssertStringDoesContain(t, "repackageJarjarRules", libraryFour.GetRepackageJarjarRules(), "repackaging.txt")
 }
