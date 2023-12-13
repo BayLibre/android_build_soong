@@ -34,6 +34,24 @@
       "parentUuid": "9b59c079_72f3d355",
       "revId": "78cac5885ccde5e62d010db8508ab87948316e08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f660b6_afd4c430",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-12-13T00:33:51Z",
+      "side": 1,
+      "message": "`--revert-annotation` will handle new and modified.\n\n`--hide-annotation android.annotation.FlaggedApi` is currently an alias for `--revert-annotation android.annotation.FlaggedApi`\n\nI\u0027ve fixed the test failures.",
+      "parentUuid": "0c0f6b57_15cb3672",
+      "revId": "78cac5885ccde5e62d010db8508ab87948316e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
