@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdeb67a6_5c2aa772",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-13T07:42:41Z",
+      "side": 1,
+      "message": "@paulduffin@google.com The exportable aconfig flags txt file will be generated in this singleton and provided to [`sdkext-released-flagged-apis`](https://cs.android.com/android/platform/superproject/main/+/main:packages/modules/SdkExtensions/Android.bp;drc\u003dec17dc40c3c692b30f3e3f442a384fadc9b07c3f;l\u003d122)",
+      "revId": "2e479134ea7b508130ebbb04a85b568b0a832254",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
