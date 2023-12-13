@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0d8af8f_9f76978c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-12-13T11:24:38Z",
+      "side": 1,
+      "message": "FTR Metalava will not be changed to consume this directly. You will need to transform it into an options file, similar to how [sdkext-released-flagged-apis](https://cs.android.com/android/platform/superproject/main/+/main:packages/modules/SdkExtensions/Android.bp;l\u003d122;drc\u003dec17dc40c3c692b30f3e3f442a384fadc9b07c3f) transforms a file containing a list of features to a file containing Metalava options.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 72
+      },
+      "revId": "892f740fa3b9953f7efb1b442f44e493ed379a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
