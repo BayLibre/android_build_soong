@@ -164,6 +164,17 @@ func (p *PrebuiltSelectionInfoMap) IsSelected(baseModuleName, name string) bool 
 	}
 }
 
+// Return the list of soong modules selected for this api domain
+func (p *PrebuiltSelectionInfoMap) GetSelectedModulesForApiDomain(apiDomain string) []string {
+	selected := []string{}
+	for _, entry := range *p {
+		if entry.apiDomain == apiDomain {
+			selected = append(selected, entry.selectedModuleName)
+		}
+	}
+	return selected
+}
+
 // This module type does not have any build actions.
 func (a *allApexContributions) GenerateAndroidBuildActions(ctx ModuleContext) {
 }
