@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -443,6 +444,10 @@ func (s *ccRustFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) 
 
 		// The executable.
 		files = append(files, fuzz.FileToZip{SourceFilePath: android.OutputFileForModule(ctx, ccModule, "unstripped")})
+
+		for _, v := range files {
+			fmt.Printf("asdf %v %v %v\n", v.SourceFilePath, v.DestinationPathPrefix, v.DestinationPath)
+		}
 
 		if s.onlyIncludePresubmits == true {
 			if fpm.FuzzProperties.Fuzz_config == nil {
