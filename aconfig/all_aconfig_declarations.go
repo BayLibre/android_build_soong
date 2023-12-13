@@ -26,11 +26,15 @@ import (
 // Note that this is ALL aconfig_declarations modules present in the tree, not just
 // ones that are relevant to the product currently being built, so that that infra
 // doesn't need to pull from multiple builds and merge them.
-func AllAconfigDeclarationsFactory() android.Singleton {
-	return &allAconfigDeclarationsSingleton{}
+func AllAconfigDeclarationsFactory() android.SingletonModule {
+	module := &allAconfigDeclarationsSingleton{}
+	android.InitAndroidModule(module)
+	return module
 }
 
 type allAconfigDeclarationsSingleton struct {
+	android.SingletonModuleBase
+
 	intermediateCacheOutputPath android.OutputPath
 
 	// Path to the text file containing all flags defined in the tree and their corresponding
@@ -42,7 +46,17 @@ type allAconfigDeclarationsSingleton struct {
 	intermediateDumpExportableOutputPath android.OutputPath
 }
 
-func (aconfigDef *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+func (aconfigDef *allAconfigDeclarationsSingleton) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	aconfigDef.intermediateDumpOutputPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.txt")
+	aconfigDef.intermediateDumpExportableOutputPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.exportable.txt")
+
+	ctx.Phony("all_aconfig_declarations",
+		aconfigDef.intermediateDumpOutputPath,
+		aconfigDef.intermediateDumpExportableOutputPath,
+	)
+}
+
+func (aconfigDef *allAconfigDeclarationsSingleton) GenerateSingletonBuildActions(ctx android.SingletonContext) {
 	// Find all of the aconfig_declarations modules
 	var cacheFiles android.Paths
 	ctx.VisitAllModules(func(module android.Module) {
@@ -66,7 +80,6 @@ func (aconfigDef *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx andr
 		},
 	})
 
-	aconfigDef.intermediateDumpOutputPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.txt")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        AllDeclarationsRule,
 		Input:       aconfigDef.intermediateCacheOutputPath,
@@ -78,7 +91,6 @@ func (aconfigDef *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx andr
 		},
 	})
 
-	aconfigDef.intermediateDumpExportableOutputPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.exportable.txt")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        AllDeclarationsRule,
 		Input:       aconfigDef.intermediateCacheOutputPath,
@@ -93,8 +105,6 @@ func (aconfigDef *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx andr
 
 	ctx.Phony("all_aconfig_declarations",
 		aconfigDef.intermediateCacheOutputPath,
-		aconfigDef.intermediateDumpOutputPath,
-		aconfigDef.intermediateDumpExportableOutputPath,
 	)
 }
 
