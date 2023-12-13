@@ -15,6 +15,8 @@
 package java
 
 import (
+	"strings"
+
 	"android/soong/android"
 	"android/soong/dexpreopt"
 
@@ -118,6 +120,17 @@ func (s *SystemServerClasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 	if len(s.properties.Contents) == 0 && len(s.properties.Standalone_contents) == 0 {
 		ctx.PropertyErrorf("contents", "Either contents or standalone_contents needs to be non-empty")
 	}
+
+	// Gather the systemserverclasspath fragment's contents.
+	var contents []android.Module
+	ctx.VisitDirectDeps(func(module android.Module) {
+		tag := ctx.OtherModuleDependencyTag(module)
+		if IsSystemServerClasspathFragmentContentDepTag(tag) {
+			contents = append(contents, module)
+		}
+	})
+
+	RepackageContents(ctx, contents, strings.TrimSuffix(s.Name(), "-systemserverclasspath-fragment"))
 
 	configuredJars := s.configuredJars(ctx)
 	classpathJars := configuredJarListToClasspathJars(ctx, configuredJars, s.classpathType)
