@@ -777,9 +777,17 @@ func (p *prebuiltCommon) provideBootclasspathFragmentApexContentInfoProvider(ctx
 		return
 	}
 	if di, err := android.FindDeapexerProviderForModule(ctx); di != nil {
+		javaModuleToDexPath := map[string]android.Path{}
+		for _, commonModule := range di.GetExportedModuleNames() {
+			if dex := di.PrebuiltExportPath("javalib/" + commonModule + ".jar"); dex != nil {
+				javaModuleToDexPath[commonModule] = dex
+			}
+		}
+
 		info := java.BootclasspathFragmentApexContentInfo{
 			Apex_name: p.ApexVariationName(),
 		}
+		info.SetContentModuleDexJarPaths(javaModuleToDexPath)
 		info.SetProfilePathOnHost(di.PrebuiltExportPath("etc/boot-image.prof"))
 		ctx.SetProvider(java.BootclasspathFragmentApexContentInfoProvider, info)
 	} else {
