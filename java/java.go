@@ -738,6 +738,46 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 }
 
+func (j *Library) getJarjarRuleText(ctx android.ModuleContext, base string) string {
+	var originalPackages []string
+	ctx.WalkDeps(func(child android.Module, parent android.Module) bool {
+		// TODO: add logic for framework-minus-apex
+		if _, ok := child.(*GeneratedJavaLibraryModule); ok {
+			if ctx.OtherModuleHasProvider(child, JarjarRepackageProviderKey) {
+				originalPackages = append(originalPackages, ctx.OtherModuleProvider(child, JarjarRepackageProviderKey).(JarjarRepackageProviderData).FromPackage)
+			}
+			return false
+		}
+		return true
+	})
+	originalPackages = android.FirstUniqueStrings(originalPackages)
+
+	jarjarRuleText := ""
+	for _, original := range originalPackages {
+		for _, ext := range flagsExtension {
+			jarjarRuleText += "rule " + original + ext + " " + original + "." + base + ext + "\n"
+		}
+	}
+	return jarjarRuleText
+}
+
+var flagsExtension = []string{".Flags", ".FeatureFlags", ".FeatureFlagsImpl", ".FakeFeatureFlagsImpl"}
+
+// repackge generates a txt file and update java_library expandJarjarRules with
+// this file. The actual repackaging is handled in compile().
+func (j *Library) repackage(ctx android.ModuleContext, base string) {
+	jarjarRuleText := j.getJarjarRuleText(ctx, base)
+	if jarjarRuleText == "" {
+		return
+	}
+
+	if j.repackageJarjarRules == nil {
+		ruleTextFile := android.PathForModuleOut(ctx, j.Name(), "repackaging.txt")
+		android.WriteFileRule(ctx, ruleTextFile, jarjarRuleText)
+		j.repackageJarjarRules = ruleTextFile
+	}
+}
+
 func (j *Library) DepsMutator(ctx android.BottomUpMutatorContext) {
 	j.deps(ctx)
 	j.usesLibrary.deps(ctx, false)
