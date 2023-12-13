@@ -738,6 +738,76 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 }
 
+func (j *Library) getJarjarRuleStrings(ctx android.ModuleContext) []string {
+	var jarjarRuleStrings []string
+	ctx.WalkDeps(func(child android.Module, parent android.Module) bool {
+		// TODO: add logic for framework-minus-apex
+		if _, ok := child.(*GeneratedJavaLibraryModule); ok {
+			if ctx.OtherModuleHasProvider(child, JarjarRepackageProviderKey) {
+				jarjarRuleStrings = append(jarjarRuleStrings, ctx.OtherModuleProvider(child, JarjarRepackageProviderKey).(JarjarRepackageProviderData).FromPackage)
+			}
+			return false
+		}
+		return true
+	})
+	return android.FirstUniqueStrings(jarjarRuleStrings)
+}
+
+// repackge generates a txt file and update java_library expandJarjarRules with
+// this file. The actual repackaging is handled in compile().
+func (j *Library) repackage(ctx android.ModuleContext, base string) {
+	jarjarRuleStrings := j.getJarjarRuleStrings(ctx)
+	if len(jarjarRuleStrings) == 0 {
+		return
+	}
+
+	jarjarRuleText := "\n"
+	for _, original := range jarjarRuleStrings {
+		original = strings.TrimSuffix(original, "\n")
+		ruleLine := "rule " + original + ".Flags " + original + "." + base + ".Flags\n"
+		jarjarRuleText += ruleLine
+	}
+
+	// rule := android.NewRuleBuilder(pctx, ctx)
+	// ruleTextFile := android.PathForOutput(ctx, ctx.ModuleDir(), "jarjar-rules.txt")
+	if j.properties.Jarjar_rules != nil {
+		fmt.Println("!!!!!!!", j.Name(), j.properties.Jarjar_rules)
+		fmt.Println("!!!!!!!!!!!!!!!!", android.PathForModuleSrc(ctx, *j.properties.Jarjar_rules))
+		// j.expandJarjarRules = android.PathForModuleSrc(ctx, *j.properties.Jarjar_rules)
+	} else {
+		// fmt.Println("???????", j.Name(), j.expandJarjarRules.String())
+	}
+	//if j.expandJarjarRules != nil {
+	//	catRule := android.NewRuleBuilder(pctx, ctx)
+	//	fmt.Println("1111")
+	//	existingJarjarTextFile := android.PathForModuleSrc(ctx, *j.properties.Jarjar_rules)
+	//	fmt.Println("2222")
+	//	catRule.Command().Text("cat").Input(existingJarjarTextFile).Text(">").Output(ruleTextFile)
+	//	catRule.Build(j.Name()+"existing jarjar rule", "Move existing jarjar rule txt file")
+	//	fmt.Println("CCCC", catRule.Commands())
+	//}
+	//rule.Command().Text("echo").Text(jarjarRuleText).Text(">>").Output(ruleTextFile)
+	//rule.Build(j.Name()+"jarjar rule creation", "Generate jarjar rule txt file")
+	//fmt.Println(rule.Commands())
+	//j.expandJarjarRules = ruleTextFile
+
+	//if j.properties.Jarjar_rules == nil {
+	//	// generate a new txt if java_library doen't have empty Jarjar_rules prop
+	//	rule.Command().Text("rm").FlagWithOutput("-f ", ruleTextFile)
+	//	rule.Command().Text("echo").Text(jarjarRuleText).Text(">").Output(ruleTextFile)
+	//	rule.Build(j.Name()+"jarjar rule creation", "Generate jarjar rule txt file")
+	//	fmt.Println(rule.Commands())
+	//	j.expandJarjarRules = ruleTextFile
+	//} else {
+	//	// append to existing java_library Jarjar_rules
+	//	existingRuleTextFile := android.PathForModuleSrc(ctx, *j.properties.Jarjar_rules)
+	//	rule.Command().Text("echo").Text(jarjarRuleText).Text(">>").Output(existingRuleTextFile)
+	//	rule.Build(j.Name()+"jarjar rule expansion", "Expand jarjar rule txt file")
+	//	fmt.Println(rule.Commands())
+	//	j.expandJarjarRules = existingRuleTextFile
+	//}
+}
+
 func (j *Library) DepsMutator(ctx android.BottomUpMutatorContext) {
 	j.deps(ctx)
 	j.usesLibrary.deps(ctx, false)
