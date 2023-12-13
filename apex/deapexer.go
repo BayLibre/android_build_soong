@@ -126,7 +126,7 @@ func (p *Deapexer) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// apex relative path to extracted file path available for other modules.
 	if len(exports) > 0 {
 		// Make the information available for other modules.
-		di := android.NewDeapexerInfo(apexModuleName(ctx.ModuleName()), exports)
+		di := android.NewDeapexerInfo(apexModuleName(ctx.ModuleName()), exports, p.properties.CommonModules)
 		android.SetProvider(ctx, android.DeapexerProvider, di)
 
 		// Create a sorted list of the files that this exports.

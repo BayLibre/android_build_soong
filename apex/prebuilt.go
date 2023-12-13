@@ -781,6 +781,14 @@ func (p *prebuiltCommon) provideBootclasspathFragmentApexContentInfoProvider(ctx
 			di.PrebuiltExportPath(java.ProfileInstallPathInApex),
 			p.ApexVariationName(),
 		)
+		javaModuleToDexPath := map[string]android.Path{}
+		for _, commonModule := range di.GetExportedModuleNames() {
+			if dex := di.PrebuiltExportPath("javalib/" + commonModule + ".jar"); dex != nil {
+				javaModuleToDexPath[commonModule] = dex
+			}
+		}
+		info.SetContentModuleDexJarPaths(javaModuleToDexPath)
+
 		ctx.SetProvider(java.BootclasspathFragmentApexContentInfoProvider, *info)
 	} else {
 		ctx.ModuleErrorf(err.Error())
