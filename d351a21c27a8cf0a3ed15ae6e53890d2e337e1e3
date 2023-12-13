@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b30ebe87_0050e33a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-13T18:00:16Z",
+      "side": 1,
+      "message": "Probably worth adding some tests that ensure the variants work out the way you need them to, e.g. that a genrule can depend on an sdk_genrule.",
+      "revId": "d351a21c27a8cf0a3ed15ae6e53890d2e337e1e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
