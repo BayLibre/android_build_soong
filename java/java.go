@@ -1040,8 +1040,7 @@ type prebuiltTestProperties struct {
 type Test struct {
 	Library
 
-	testProperties testProperties
-	// TODO(ron): embed this instead?
+	testProperties      testProperties
 	ownerTeamProperties android.OwnerTeamProperties
 
 	testConfig       android.Path
