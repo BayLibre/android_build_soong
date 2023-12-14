@@ -289,7 +289,8 @@ func checkRules(ctx BaseModuleContext, currentPkg, property string, visibility [
 
 		// If the current directory is not in the vendor tree then there are some additional
 		// restrictions on the rules.
-		if !isAncestor("vendor", currentPkg) {
+		exemptedFromVendorCheck := currentPkg == "build/soong" && ctx.ModuleName() == "build_number_file"
+		if !isAncestor("vendor", currentPkg) && !exemptedFromVendorCheck {
 			if !isAllowedFromOutsideVendor(pkg, name) {
 				ctx.PropertyErrorf(property,
 					"%q is not allowed. Packages outside //vendor cannot make themselves visible to specific"+

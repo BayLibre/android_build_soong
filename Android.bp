@@ -135,3 +135,11 @@ buildinfo_prop {
 all_apex_contributions {
     name: "all_apex_contributions",
 }
+
+build_number_filegroup {
+    name: "build_number_file",
+    visibility: [
+        "//hardware/google/camera/common/hal/aidl_service",
+        "//vendor/google/services/LyricCameraHAL/src/apex",
+    ],
+}
