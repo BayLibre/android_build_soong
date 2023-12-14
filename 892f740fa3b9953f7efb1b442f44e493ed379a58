@@ -22,6 +22,30 @@
       },
       "revId": "892f740fa3b9953f7efb1b442f44e493ed379a58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a35b7a8e_b6637201",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-14T17:57:10Z",
+      "side": 1,
+      "message": "Agreed. Please take a look at https://r.android.com/2870809 where `sdkext-released-flagged-apis` is modified to support this.",
+      "parentUuid": "c0d8af8f_9f76978c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 72
+      },
+      "revId": "892f740fa3b9953f7efb1b442f44e493ed379a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
