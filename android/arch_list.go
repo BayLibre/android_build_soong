@@ -34,6 +34,9 @@ var archVariants = map[ArchType][]string{
 		"broadwell",
 		"goldmont",
 		"goldmont-plus",
+		// Target arch is goldmont, but without xsaves support. It can build images
+		// that run on old Intel/AMD CPUs as well as new CPUs.
+		"goldmont-without-xsaves",
 		"haswell",
 		"icelake",
 		"ivybridge",
@@ -52,6 +55,7 @@ var archVariants = map[ArchType][]string{
 		"broadwell",
 		"goldmont",
 		"goldmont-plus",
+		"goldmont-without-xsaves",
 		"haswell",
 		"icelake",
 		"ivybridge",
@@ -189,6 +193,15 @@ var androidArchFeatureMap = map[ArchType]map[string][]string{
 			"movbe",
 		},
 		"goldmont-plus": {
+			"ssse3",
+			"sse4",
+			"sse4_1",
+			"sse4_2",
+			"aes_ni",
+			"popcnt",
+			"movbe",
+		},
+		"goldmont-without-xsaves": {
 			"ssse3",
 			"sse4",
 			"sse4_1",
@@ -351,6 +364,14 @@ var androidArchFeatureMap = map[ArchType]map[string][]string{
 			"popcnt",
 		},
 		"goldmont-plus": {
+			"ssse3",
+			"sse4",
+			"sse4_1",
+			"sse4_2",
+			"aes_ni",
+			"popcnt",
+		},
+		"goldmont-without-xsaves": {
 			"ssse3",
 			"sse4",
 			"sse4_1",
