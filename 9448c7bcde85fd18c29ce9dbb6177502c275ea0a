@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95859dfa_61913372",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2023-12-14T02:41:29Z",
+      "side": 1,
+      "message": "What is the motivation behind this change?\n\nIt is intended that the training option is outside of the ARM64 block, since we might need to train for different architectures in the future.",
+      "revId": "9448c7bcde85fd18c29ce9dbb6177502c275ea0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
