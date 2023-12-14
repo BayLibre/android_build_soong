@@ -254,3 +254,20 @@ python_test_host {
         "modify_permissions_allowlist.py",
     ],
 }
+
+// The options passed to Metalava when generating exportable
+// API signature files and stubs.
+genrule {
+    name: "released-flagged-apis-exportable",
+    visibility: [
+        "//visibility:public",
+    ],
+    tool_files: [
+        "keep-flagged-apis.sh",
+    ],
+    srcs: [
+        ":all_aconfig_declarations{.exportable.txt}",
+    ],
+    out: ["metalava-keep-flagged-apis-exportable.txt"],
+    cmd: "$(location keep-flagged-apis.sh) $(location :all_aconfig_declarations{.exportable.txt}) > \"$(out)\"",
+}
