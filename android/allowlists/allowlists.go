@@ -142,6 +142,7 @@ var (
 		"external/bzip2":                           Bp2BuildDefaultTrueRecursively,
 		"external/clang/lib":                       Bp2BuildDefaultTrue,
 		"external/conscrypt":                       Bp2BuildDefaultTrue,
+		"external/cpu_features":                    Bp2BuildDefaultTrueRecursively,
 		"external/dexmaker":                        Bp2BuildDefaultTrueRecursively,
 		"external/e2fsprogs":                       Bp2BuildDefaultTrueRecursively,
 		"external/eigen":                           Bp2BuildDefaultTrueRecursively,
