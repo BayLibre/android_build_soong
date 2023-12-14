@@ -487,46 +487,38 @@ func TestTest(t *testing.T) {
 	}
 }
 
-func TestTestOwner(t *testing.T) {
+func TestOwnerJavaTest(t *testing.T) {
+	testOwner(t, "java_test")
+}
 
-	// https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/java/ravenwood_test.go;l=59?q=CheckModuleHasDependency&sq=git:googleplex-android%2Fplatform%2Fsuperproject%2Fmain@main
-	ctx, _ := testJava(t, `
-		java_test_host {
-			name: "foo",
+func TestOwnerJavaTestHost(t *testing.T) {
+	testOwner(t, "java_test_host")
+}
+
+func testOwner(t *testing.T, moduleType string) {
+	ctx, _ := testJava(t, fmt.Sprintf(`
+		%s {
+			name: "my_module",
 			srcs: ["a.java"],
                         owner_team: "someteam",
 		}
-
 		team {
 			name: "someteam",
 		 	trendy_team_id: "cool_team",
 		}
-	`)
+	`, moduleType))
+	teamModuleName := "someteam"
 
-	buildOS := ctx.Config().BuildOS.String()
-
-	// TODO(ron): fix variant in both commands.
-	foo := ctx.ModuleForTests("foo", buildOS+"_common").Module().(*TestHost)
-	trendy_team_id := ""
-
-	/*
-		    blueprint.Module vs Module
-			ctx.VisitDirectDeps(foo, func(dep Module) {
-				trendy_team_id = trendy_team_id + " | " + dep.Name()
-			})
-	*/
-
-	// TODO(ron): rename CheckModuleHasDependency -> DoesModuleHaveDependency() or force
-	// using return value.
-	android.AssertBoolEquals(t, "Expected team dependency someteam, "+trendy_team_id,
-		true, CheckModuleHasDependency(t, ctx, "foo", "linux_glibc_common", "someteam"))
-
-	expected := "someteam"
-	fooTestOwner := foo.ownerTeamProperties
-	if *fooTestOwner.Owner_team != expected {
-		t.Errorf(`expected foo test owner [%q], got %q`,
-			expected, *foo.ownerTeamProperties.Owner_team)
+	hostVariant := ctx.Config().BuildOS.String() + "_common"
+	variant := "android_common"
+	if strings.HasSuffix(moduleType, "_host") {
+		variant = hostVariant
 	}
+
+	moduleName := "my_module"
+	android.AssertBoolEquals(t, fmt.Sprintf("Expected team dependency %q for %q ", teamModuleName, moduleName),
+		true, CheckModuleHasDependency(t, ctx, moduleName, variant, teamModuleName))
+
 }
 
 func TestHostBinaryNoJavaDebugInfoOverride(t *testing.T) {

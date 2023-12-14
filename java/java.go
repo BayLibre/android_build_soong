@@ -630,6 +630,7 @@ func normalizeJavaVersion(ctx android.BaseModuleContext, javaVersion string) jav
 
 type Library struct {
 	Module
+	ownerTeamProperties android.OwnerTeamProperties
 
 	combinedExportedProguardFlagsFile android.Path
 
@@ -905,7 +906,6 @@ func LibraryFactory() android.Module {
 	module := &Library{}
 
 	module.addHostAndDeviceProperties()
-
 	module.initModuleAndImport(module)
 
 	android.InitApexModule(module)
@@ -1040,10 +1040,7 @@ type prebuiltTestProperties struct {
 type Test struct {
 	Library
 
-	testProperties testProperties
-	// TODO(ron): embed this instead?
-	ownerTeamProperties android.OwnerTeamProperties
-
+	testProperties   testProperties
 	testConfig       android.Path
 	extraTestConfigs android.Paths
 	data             android.Paths
