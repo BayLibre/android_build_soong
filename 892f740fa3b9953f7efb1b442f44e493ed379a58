@@ -46,6 +46,30 @@
       },
       "revId": "892f740fa3b9953f7efb1b442f44e493ed379a58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85cdf720_45f57049",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-14T22:37:08Z",
+      "side": 1,
+      "message": "Given that https://r.android.com/2870809 is abandoned, the corresponding changes are now made in `build/soong/scripts/keep-flagged-apis.sh` and `released-flagged-apis-exportable` with https://r.android.com/2876495.",
+      "parentUuid": "a35b7a8e_b6637201",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 72
+      },
+      "revId": "892f740fa3b9953f7efb1b442f44e493ed379a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
