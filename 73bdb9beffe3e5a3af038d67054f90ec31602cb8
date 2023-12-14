@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8017e952_503f472b",
+        "filename": "android/arch_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-14T21:47:09Z",
+      "side": 1,
+      "message": "This isn\u0027t very clear.  Everything here can run on new CPUs, and \"old\" is relative - \"goldmont\" isn\u0027t the oldest CPU here.  Can you be more specific as to which set of microarchitectures you\u0027re trying to target here, and why?",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 56
+      },
+      "revId": "73bdb9beffe3e5a3af038d67054f90ec31602cb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
