@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4d818e_6ee62381",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-14T18:44:39Z",
+      "side": 1,
+      "message": "This is so that we can pass \"exportable\" or \"runtime\" (in the long run) aconfig flag values text file to `keep-flagged-apis.sh` via a genrule module, based on the tag.",
+      "parentUuid": "6e1d1dd6_6e76c387",
+      "range": {
+        "startLine": 10,
+        "startChar": 25,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "2e479134ea7b508130ebbb04a85b568b0a832254",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fdeb67a6_5c2aa772",
