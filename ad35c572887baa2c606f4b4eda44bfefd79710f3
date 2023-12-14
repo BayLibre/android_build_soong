@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f3c2e8e_2c033f81",
+        "filename": "rust/config/arm_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 2054360
+      },
+      "writtenOn": "2023-12-14T11:59:42Z",
+      "side": 0,
+      "message": "```suggestion\n\t\t\tstrings.Join(rust/config, \" \"))\n```arm_device.go",
+      "revId": "ad35c572887baa2c606f4b4eda44bfefd79710f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
