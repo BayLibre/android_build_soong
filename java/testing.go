@@ -383,6 +383,7 @@ func registerRequiredBuildComponentsForTest(ctx android.RegistrationContext) {
 	RegisterSystemModulesBuildComponents(ctx)
 	registerSystemserverClasspathBuildComponents(ctx)
 	registerLintBuildComponents(ctx)
+	android.RegisterTeamBuildComponents(ctx)
 }
 
 // gatherRequiredDepsForTest gathers the module definitions used by

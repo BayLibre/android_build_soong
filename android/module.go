@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/android/owner_team_proto"
 	"android/soong/bazel"
 	"crypto/md5"
 	"encoding/hex"
@@ -28,6 +29,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
+	"google.golang.org/protobuf/encoding/prototext"
 )
 
 var (
@@ -526,6 +528,76 @@ type distProperties struct {
 	// a list of configurations to distribute output files from this module to the
 	// distribution directory (default: $OUT/dist, configurable with $DIST_DIR)
 	Dists []Dist `android:"arch_variant"`
+}
+
+type OwnerTeamProperties struct {
+	// `team` module that represents the owner.
+	Owner_team *string `android:"path"`
+}
+
+type OwnerTeamDepTagType struct {
+	blueprint.BaseDependencyTag
+}
+
+var ownerTeamDepTag = OwnerTeamDepTagType{}
+var OwnerTeamProviderKey = blueprint.NewProvider(OwnerTeamProviderData{})
+
+// Provider published by OwnerTeam
+type OwnerTeamProviderData struct {
+	IntermediatePath WritablePath
+}
+
+// Add the team module as a dependency to the _test module to validate the team
+// name and allow us to find it in GeneratedAndroidBuildActions.
+func (module *OwnerTeamProperties) DepsMutator(ctx BottomUpMutatorContext) {
+	if module.Owner_team != nil {
+		ctx.AddDependency(ctx.Module(), ownerTeamDepTag, *module.Owner_team)
+	}
+}
+
+// Write an intermediate .asciiproto file with team information for each _test module
+// that has a populated Owner_team field.
+// The `_test` module is responsible for writing out the details of team it depends on.
+func (module *OwnerTeamProperties) GenerateAndroidBuildActions(ctx ModuleContext) {
+	if module.Owner_team == nil {
+		return
+	}
+
+	trendy_team_id := ""
+	for c, m := range ctx.GetDirectDepsWithTag(ownerTeamDepTag) {
+		if c > 0 {
+			ctx.ModuleErrorf("Only one `owner_team` should be found.")
+		}
+		trendy_team_id = m.(*teamModule).TrendyTeamId(ctx)
+	}
+
+	if trendy_team_id == "" {
+		ctx.PropertyErrorf("trendy_team_id", "on `owner_team=%s` module not set.", *module.Owner_team)
+	}
+
+	bpFilePath := filepath.Join(ctx.ModuleDir(), ctx.BlueprintsFile())
+	intermediatePath := PathForModuleOut(
+		ctx, "intermediateOwnerData.asciiproto",
+	)
+
+	moduleName := ctx.ModuleName()
+	ownerData := owner_team_proto.OwnerTeam{
+		TrendyTeamId: &trendy_team_id,
+		TargetName:   &moduleName,
+		Path:         &bpFilePath,
+	}
+
+	fileBytes, err := prototext.Marshal(&ownerData)
+	if err != nil {
+		ctx.ModuleErrorf("Unable to marshal owner data.")
+	}
+	WriteFileRule(ctx, intermediatePath, string(fileBytes))
+
+	ctx.SetProvider(
+		OwnerTeamProviderKey, OwnerTeamProviderData{
+			IntermediatePath: intermediatePath,
+		},
+	)
 }
 
 // CommonTestOptions represents the common `test_options` properties in

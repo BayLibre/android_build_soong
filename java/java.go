@@ -26,6 +26,7 @@ import (
 
 	"android/soong/remoteexec"
 	"android/soong/testing"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -1034,7 +1035,8 @@ type prebuiltTestProperties struct {
 type Test struct {
 	Library
 
-	testProperties testProperties
+	testProperties      testProperties
+	ownerTeamProperties android.OwnerTeamProperties
 
 	testConfig       android.Path
 	extraTestConfigs android.Paths
@@ -1173,6 +1175,7 @@ func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	j.addDataDeviceBinsDeps(ctx)
 	j.deps(ctx)
+	j.Test.DepsMutator(ctx)
 }
 
 func (j *TestHost) AddExtraResource(p android.Path) {
@@ -1217,6 +1220,11 @@ func (j *TestHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	j.Test.generateAndroidBuildActionsWithConfig(ctx, configs)
 	ctx.SetProvider(testing.TestModuleProviderKey, testing.TestModuleProviderData{})
+}
+
+func (j *Test) DepsMutator(ctx android.BottomUpMutatorContext) {
+	j.Library.DepsMutator(ctx)
+	j.ownerTeamProperties.DepsMutator(ctx)
 }
 
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -1278,7 +1286,7 @@ func (j *Test) generateAndroidBuildActionsWithConfig(ctx android.ModuleContext, 
 			ctx.PropertyErrorf("jni_libs", "%q of type %q is not supported", dep.Name(), ctx.OtherModuleType(dep))
 		}
 	})
-
+	j.ownerTeamProperties.GenerateAndroidBuildActions(ctx)
 	j.Library.GenerateAndroidBuildActions(ctx)
 }
 
@@ -1370,6 +1378,7 @@ func TestFactory() android.Module {
 
 	module.addHostAndDeviceProperties()
 	module.AddProperties(&module.testProperties)
+	module.AddProperties(&module.ownerTeamProperties)
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 	module.Module.dexpreopter.isTest = true
@@ -1428,6 +1437,7 @@ func TestHostFactory() android.Module {
 	module.addHostProperties()
 	module.AddProperties(&module.testProperties)
 	module.AddProperties(&module.testHostProperties)
+	module.AddProperties(&module.ownerTeamProperties)
 
 	InitTestHost(
 		module,

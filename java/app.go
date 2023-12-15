@@ -1242,7 +1242,8 @@ type AndroidTest struct {
 
 	appTestProperties appTestProperties
 
-	testProperties testProperties
+	testProperties      testProperties
+	ownerTeamProperties android.OwnerTeamProperties
 
 	testConfig       android.Path
 	extraTestConfigs android.Paths
@@ -1296,6 +1297,7 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.extraTestConfigs = android.PathsForModuleSrc(ctx, a.testProperties.Test_options.Extra_test_configs)
 	a.data = android.PathsForModuleSrc(ctx, a.testProperties.Data)
 	ctx.SetProvider(testing.TestModuleProviderKey, testing.TestModuleProviderData{})
+	a.ownerTeamProperties.GenerateAndroidBuildActions(ctx)
 }
 
 func (a *AndroidTest) FixTestConfig(ctx android.ModuleContext, testConfig android.Path) android.Path {
@@ -1334,6 +1336,7 @@ func (a *AndroidTest) FixTestConfig(ctx android.ModuleContext, testConfig androi
 
 func (a *AndroidTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 	a.AndroidApp.DepsMutator(ctx)
+	a.ownerTeamProperties.DepsMutator(ctx)
 }
 
 func (a *AndroidTest) OverridablePropertiesDepsMutator(ctx android.BottomUpMutatorContext) {
@@ -1367,6 +1370,7 @@ func AndroidTestFactory() android.Module {
 		&module.appProperties,
 		&module.appTestProperties,
 		&module.overridableAppProperties,
+		&module.ownerTeamProperties,
 		&module.testProperties)
 
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
@@ -1486,11 +1490,17 @@ func OverrideAndroidAppModuleFactory() android.Module {
 type OverrideAndroidTest struct {
 	android.ModuleBase
 	android.OverrideModuleBase
+	ownerTeamProperties android.OwnerTeamProperties
 }
 
-func (i *OverrideAndroidTest) GenerateAndroidBuildActions(_ android.ModuleContext) {
+func (a *OverrideAndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// All the overrides happen in the base module.
 	// TODO(jungjw): Check the base module type.
+	a.ownerTeamProperties.GenerateAndroidBuildActions(ctx)
+}
+
+func (a *OverrideAndroidTest) DepsMutator(ctx android.BottomUpMutatorContext) {
+	a.ownerTeamProperties.DepsMutator(ctx)
 }
 
 // override_android_test is used to create an android_app module based on another android_test by overriding
@@ -1499,6 +1509,7 @@ func OverrideAndroidTestModuleFactory() android.Module {
 	m := &OverrideAndroidTest{}
 	m.AddProperties(&overridableAppProperties{})
 	m.AddProperties(&appTestProperties{})
+	m.AddProperties(&m.ownerTeamProperties)
 
 	android.InitAndroidMultiTargetsArchModule(m, android.DeviceSupported, android.MultilibCommon)
 	android.InitOverrideModule(m)

@@ -4378,3 +4378,54 @@ func TestAppFlagsPackages(t *testing.T) {
 		"--feature-flags @out/soong/.intermediates/bar/intermediate.txt --feature-flags @out/soong/.intermediates/baz/intermediate.txt",
 	)
 }
+
+func TestOwnerAndroidTest(t *testing.T) {
+	testOwner(t, "android_test")
+}
+
+func TestOwnerOverrideAndroidTest(t *testing.T) {
+	bp := `
+		android_test {
+			name: "foo_test",
+			srcs: ["b.java"],
+			instrumentation_for: "foo",
+                        owner_team: "someteam_base",
+		}
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			package_name: "com.android.foo",
+			sdk_version: "current",
+		}
+		override_android_app {
+			name: "bar",
+			base: "foo",
+			package_name: "com.android.bar",
+		}
+
+		override_android_test {
+			name: "my_module",
+			base: "foo_test",
+			package_name: "com.android.bar.test",
+			instrumentation_for: "bar",
+			instrumentation_target_package: "com.android.bar",
+                        owner_team: "someteam",
+		}
+		team {
+			name: "someteam_base",
+			trendy_team_id: "hot_team",
+		}
+		team {
+			name: "someteam",
+			trendy_team_id: "cool_team",
+		} `
+
+	ctx, _ := testJava(t, bp)
+	teamModuleName := "someteam"
+
+	variant := "android_common_my_module"
+
+	moduleName := "my_module"
+	android.AssertBoolEquals(t, fmt.Sprintf("Expected team dependency %q for %q ", teamModuleName, moduleName),
+		true, CheckModuleHasDependency(t, ctx, moduleName, variant, teamModuleName))
+}
