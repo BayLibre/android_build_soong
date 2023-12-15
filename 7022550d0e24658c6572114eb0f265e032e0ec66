@@ -34,6 +34,24 @@
       "tag": "mailMessageId\u003d\u003cCAGPRgkUQh+keGbEV\u003dkhWQbF6O7tqo3YN+DbJCnCm9PJEQW396A@mail.gmail.com\u003e",
       "revId": "7022550d0e24658c6572114eb0f265e032e0ec66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62b3f47_9c27e0f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-12-15T21:45:40Z",
+      "side": 1,
+      "message": "b/316609623 shows that the revert^5 CL is the only one. reland or not, guess we have to revert the culprit first?",
+      "parentUuid": "49b4fb4a_a488861a",
+      "revId": "7022550d0e24658c6572114eb0f265e032e0ec66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
