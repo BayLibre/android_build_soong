@@ -189,6 +189,9 @@ type Module struct {
 
 	subName string
 	subDir  string
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	modulePaths []string
 }
 
 var _ android.MixedBuildBuildable = (*Module)(nil)
@@ -285,6 +288,9 @@ func (g *Module) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 // by Soong logic in the mixed-build case.
 func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 	g.subName = ctx.ModuleSubDir()
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	g.modulePaths = append(g.modulePaths, ctx.ModuleDir())
 
 	if len(g.properties.Export_include_dirs) > 0 {
 		for _, dir := range g.properties.Export_include_dirs {
@@ -662,6 +668,7 @@ func (g *Module) IDEInfo(dpInfo *android.IdeInfo) {
 			dpInfo.Deps = append(dpInfo.Deps, src)
 		}
 	}
+	dpInfo.Paths = append(dpInfo.Paths, g.modulePaths...)
 }
 
 func (g *Module) AndroidMk() android.AndroidMkData {
