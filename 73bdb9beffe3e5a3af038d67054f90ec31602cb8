@@ -22,6 +22,30 @@
       },
       "revId": "73bdb9beffe3e5a3af038d67054f90ec31602cb8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a130370_237fcaa6",
+        "filename": "android/arch_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1358804
+      },
+      "writtenOn": "2023-12-15T05:29:39Z",
+      "side": 1,
+      "message": "Updated comment with specific set of microarchitectures. Thanks!",
+      "parentUuid": "8017e952_503f472b",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 56
+      },
+      "revId": "73bdb9beffe3e5a3af038d67054f90ec31602cb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
