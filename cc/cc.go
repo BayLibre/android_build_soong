@@ -25,6 +25,7 @@ import (
 	"strings"
 
 	"android/soong/testing"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -847,6 +848,9 @@ type Module struct {
 
 	VendorProperties VendorProperties
 	Properties       BaseProperties
+	// TODO(ron): Does this belong here or in test.go?
+	// If if test.go, how to implement DepsMutator et al.
+	ownerTeamProperties android.OwnerTeamProperties
 
 	// initialize before calling Init
 	hod        android.HostOrDeviceSupported
@@ -1262,6 +1266,9 @@ func (c *Module) Init() android.Module {
 	}
 	if c.orderfile != nil {
 		c.AddProperties(c.orderfile.props()...)
+	}
+	if c.testModule {
+		c.AddProperties(&c.ownerTeamProperties)
 	}
 	for _, feature := range c.features {
 		c.AddProperties(feature.props()...)
@@ -2132,11 +2139,11 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 	if c.testModule {
 		ctx.SetProvider(testing.TestModuleProviderKey, testing.TestModuleProviderData{})
+		c.ownerTeamProperties.GenerateAndroidBuildActions(ctx)
 	}
 	ctx.SetProvider(blueprint.SrcsFileProviderKey, blueprint.SrcsFileProviderData{SrcPaths: deps.GeneratedSources.Strings()})
 
 	aconfig.CollectDependencyAconfigFiles(ctx, &c.mergedAconfigFiles)
-
 	c.maybeInstall(ctx, apexInfo)
 }
 
@@ -2739,6 +2746,10 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	}
 
 	updateImportedLibraryDependency(ctx)
+
+	if c.testModule {
+		c.ownerTeamProperties.DepsMutator(ctx)
+	}
 }
 
 func BeginMutator(ctx android.BottomUpMutatorContext) {

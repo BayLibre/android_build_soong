@@ -4784,3 +4784,36 @@ func TestStrippedAllOutputFile(t *testing.T) {
 		return
 	}
 }
+
+func TestCCTestOwner(t *testing.T) {
+	t.Parallel()
+	ctx := android.GroupFixturePreparers(
+		prepareForCcTest,
+	).RunTestWithBp(t, `
+		cc_test_library {
+			name: "test_lib",
+			srcs: ["test_lib.cpp"],
+			gtest: false,
+		}
+
+		cc_test {
+			name: "main_test",
+			data_libs: ["test_lib"],
+			gtest: false,
+			owner_team: "someteam",
+		}
+		team {
+			name: "someteam",
+			trendy_team_id: "cool_team",
+		}
+	`)
+
+	/*test := */
+	ctx.ModuleForTests("main_test", "android_arm64_armv8-a_static")
+	// TODO(ron): check dependency test depends on name "someteam"
+	/*
+		if !strings.Contains(aidlCommand, expectedAidlFlag) {
+			t.Errorf("aidl command %q does not contain %q", aidlCommand, expectedAidlFlag)
+		}
+	*/
+}
