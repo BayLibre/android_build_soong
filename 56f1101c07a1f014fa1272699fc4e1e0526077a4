@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2127b9e9_c2d39ef5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1772825
+      },
+      "writtenOn": "2023-12-15T16:31:50Z",
+      "side": 1,
+      "message": "For extra context, the CL that requires this change is ag/25260075.",
+      "revId": "56f1101c07a1f014fa1272699fc4e1e0526077a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
