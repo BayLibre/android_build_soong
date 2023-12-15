@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a40331a_5cbfd106",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-15T23:02:48Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I used forrest to verify that this change is compatible with this test suite. https://android-build.corp.google.com/builds/abtd/run/L80900030000787943",
+      "parentUuid": "8357e5c5_63584f92",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "f486313f18dc4bd2946fcb661ed9c2a6b6c49958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b329a4d7_dd8a80dd",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67355f07_de253ffd",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-15T23:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b329a4d7_dd8a80dd",
+      "revId": "f486313f18dc4bd2946fcb661ed9c2a6b6c49958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2b08b0b_c8974f9a",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-12-15T02:15:49Z",
       "side": 1,
       "message": "Can this comment be updated accordingly? `prebuiltCommon.apexFilesForAndroidMk` does not seem to be set in this method anymore.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 34
+      },
+      "revId": "f486313f18dc4bd2946fcb661ed9c2a6b6c49958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c0b314_4b66827f",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-15T23:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2b08b0b_c8974f9a",
       "range": {
         "startLine": 179,
         "startChar": 0,
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7de78f16_2a59b692",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-15T23:02:48Z",
+      "side": 1,
+      "message": "There should be no impact, both become `LOCAL_REQUIRED_MODULES` in the generated .mk files https://cs.android.com/android/_/android/platform/build/soong/+/db0eeb5bddbe4578cb5d7bab1014ea2bb7e0b548:apex/prebuilt.go;l\u003d221,225;drc\u003d09ad3a6505b6345cc793acc68280069b37f816c0;bpv\u003d1;bpt\u003d0",
+      "parentUuid": "613ea478_3a2d3707",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "f486313f18dc4bd2946fcb661ed9c2a6b6c49958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3085e274_ce8ba2cf",
@@ -100,6 +190,24 @@
       "writtenOn": "2023-12-15T02:15:49Z",
       "side": 1,
       "message": "Does this has to be done for `ApexSet`\u0027s `DepsMutator` as well?",
+      "revId": "f486313f18dc4bd2946fcb661ed9c2a6b6c49958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f44e92_e55a8d7e",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-15T23:02:48Z",
+      "side": 1,
+      "message": "Since both `ApexSet` and `Prebuilt` embed the `prebuiltCommon` struct, we do not need to add it separately to `ApexSet`",
+      "parentUuid": "3085e274_ce8ba2cf",
       "revId": "f486313f18dc4bd2946fcb661ed9c2a6b6c49958",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
