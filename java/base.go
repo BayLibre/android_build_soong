@@ -502,6 +502,9 @@ type Module struct {
 	// list of the xref extraction files
 	kytheFiles android.Paths
 
+	// Collect the module directory for IDE info in java/jdeps.go.
+	modulePaths []string
+
 	hideApexVariantFromMake bool
 
 	sdkVersion    android.SdkSpec
@@ -1982,6 +1985,7 @@ func (j *Module) IDEInfo(dpInfo *android.IdeInfo) {
 	if j.expandJarjarRules != nil {
 		dpInfo.Jarjar_rules = append(dpInfo.Jarjar_rules, j.expandJarjarRules.String())
 	}
+	dpInfo.Paths = append(dpInfo.Paths, j.modulePaths...)
 	dpInfo.Static_libs = append(dpInfo.Static_libs, j.properties.Static_libs...)
 	dpInfo.Libs = append(dpInfo.Libs, j.properties.Libs...)
 	dpInfo.SrcJars = append(dpInfo.SrcJars, j.annoSrcJars.Strings()...)

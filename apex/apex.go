@@ -480,6 +480,9 @@ type apexBundle struct {
 	nativeApisBackedByModuleFile android.ModuleOutPath
 	javaApisUsedByModuleFile     android.ModuleOutPath
 
+	// Collect the module directory for IDE info in java/jdeps.go.
+	modulePaths []string
+
 	aconfigFiles []android.Path
 }
 
@@ -2303,6 +2306,8 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	////////////////////////////////////////////////////////////////////////////////////////////
 	// 2) traverse the dependency tree to collect apexFile structs from them.
+	// Collect the module directory for IDE info in java/jdeps.go.
+	a.modulePaths = append(a.modulePaths, ctx.ModuleDir())
 
 	// TODO(jiyong): do this using WalkPayloadDeps
 	// TODO(jiyong): make this clean!!!
@@ -2771,6 +2776,7 @@ func (a *apexBundle) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Deps = append(dpInfo.Deps, a.properties.Java_libs...)
 	dpInfo.Deps = append(dpInfo.Deps, a.properties.Bootclasspath_fragments...)
 	dpInfo.Deps = append(dpInfo.Deps, a.properties.Systemserverclasspath_fragments...)
+	dpInfo.Paths = append(dpInfo.Paths, a.modulePaths...)
 }
 
 var (

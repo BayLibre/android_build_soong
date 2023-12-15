@@ -239,6 +239,9 @@ type BootclasspathFragmentModule struct {
 
 	sourceOnlyProperties SourceOnlyBootclasspathProperties
 
+	// Collect the module directory for IDE info in java/jdeps.go.
+	modulePaths []string
+
 	// Path to the boot image profile.
 	profilePath android.WritablePath
 }
@@ -468,6 +471,9 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 
 	// Generate classpaths.proto config
 	b.generateClasspathProtoBuildActions(ctx)
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	b.modulePaths = append(b.modulePaths, ctx.ModuleDir())
 
 	// Gather the bootclasspath fragment's contents.
 	var contents []android.Module
@@ -797,6 +803,7 @@ func (b *BootclasspathFragmentModule) getProfilePath() android.Path {
 // Collect information for opening IDE project files in java/jdeps.go.
 func (b *BootclasspathFragmentModule) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Deps = append(dpInfo.Deps, b.properties.Contents...)
+	dpInfo.Paths = append(dpInfo.Paths, b.modulePaths...)
 }
 
 type bootclasspathFragmentMemberType struct {
