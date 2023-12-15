@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "589483ba_4f93028b",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-12-15T12:07:59Z",
+      "side": 1,
+      "message": "I would recommend that you remove this. In my experience adding in stuff like this because you will \"definitely need it in future\" is more often a waste of time. Commented out code will also get out of date and even the parts which did work will stop working.",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 4
+      },
+      "revId": "148cda1e776aec8794f8d0abef5d1206baef3bd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
