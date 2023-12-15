@@ -70,6 +70,23 @@
       "parentUuid": "b62b3f47_9c27e0f2",
       "revId": "7022550d0e24658c6572114eb0f265e032e0ec66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "576477a9_8912f348",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1986461
+      },
+      "writtenOn": "2023-12-15T21:53:05Z",
+      "side": 1,
+      "message": "Re-applying this change will cause b/316624775 and b/314212435 (and possibly others) to start failing again",
+      "revId": "7022550d0e24658c6572114eb0f265e032e0ec66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
