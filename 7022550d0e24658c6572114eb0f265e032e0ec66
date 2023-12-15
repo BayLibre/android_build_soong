@@ -52,6 +52,24 @@
       "parentUuid": "49b4fb4a_a488861a",
       "revId": "7022550d0e24658c6572114eb0f265e032e0ec66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb28d7a3_ad68f2af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-12-15T21:47:11Z",
+      "side": 1,
+      "message": "well, that revert^5 appears to break other tests.\n\nI will leave the decision to the CL owner or reviewers.",
+      "parentUuid": "b62b3f47_9c27e0f2",
+      "revId": "7022550d0e24658c6572114eb0f265e032e0ec66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
