@@ -285,6 +285,62 @@ func TestR8Flags(t *testing.T) {
 		appR8.Args["r8Flags"], "-ignorewarnings")
 	android.AssertStringDoesContain(t, "expected --android-platform-build in app r8 flags",
 		appR8.Args["r8Flags"], "--android-platform-build")
+	android.AssertStringDoesNotContain(t, "expected no --map-id-template in app r8 flags",
+		appR8.Args["r8Flags"], "--map-id-template")
+	android.AssertStringDoesNotContain(t, "expected no --source-file-template in app r8 flags",
+		appR8.Args["r8Flags"], "--source-file-template")
+}
+
+func TestR8MapId(t *testing.T) {
+	testcases := []struct {
+		name                   string
+		prefix                 *string
+		expectedSourceTemplate string
+	}{
+		{
+			name:                   "Prefixed map ID",
+			prefix:                 proptools.StringPtr("testprefix"),
+			expectedSourceTemplate: "\"testprefix %MAP_ID\"",
+		},
+		{
+			name:                   "Unprefixed map ID",
+			prefix:                 nil,
+			expectedSourceTemplate: "\"%MAP_ID\"",
+		},
+	}
+
+	for _, tc := range testcases {
+		t.Run(tc.name, func(t *testing.T) {
+			result := android.GroupFixturePreparers(
+				PrepareForTestWithJavaDefaultModules,
+				android.FixtureModifyProductVariables(
+					func(variables android.FixtureProductVariables) {
+						variables.ProguardMapIdsEnabled = proptools.BoolPtr(true)
+						variables.ProguardMapIdsPrefix = tc.prefix
+					},
+				),
+			).RunTestWithBp(t, `
+				android_app {
+					name: "app",
+					srcs: ["foo.java"],
+					platform_apis: true,
+					optimize: {
+						enabled: true,
+						optimize: true,
+					},
+				}
+			`)
+
+			app := result.ModuleForTests("app", "android_common")
+			appR8 := app.Rule("r8")
+			android.AssertStringDoesNotContain(t, "expected no -dontoptimize in app r8 flags",
+				appR8.Args["r8Flags"], "-dontoptimize")
+			android.AssertStringDoesContain(t, "expected --map-id-template in app r8 flags",
+				appR8.Args["r8Flags"], "--map-id-template %MAP_HASH")
+			android.AssertStringDoesContain(t, "expected --source-file-template in app r8 flags",
+				appR8.Args["r8Flags"], "--source-file-template "+tc.expectedSourceTemplate)
+		})
+	}
 }
 
 func TestD8(t *testing.T) {

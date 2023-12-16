@@ -303,6 +303,9 @@ type ProductVariables struct {
 	BootJars     ConfiguredJarList `json:",omitempty"`
 	ApexBootJars ConfiguredJarList `json:",omitempty"`
 
+	ProguardMapIdsEnabled *bool   `json:",omitempty"`
+	ProguardMapIdsPrefix  *string `json:",omitempty"`
+
 	IntegerOverflowExcludePaths []string `json:",omitempty"`
 
 	EnableCFI       *bool    `json:",omitempty"`

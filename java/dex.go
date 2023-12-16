@@ -316,10 +316,9 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 		r8Flags = append(r8Flags, "--force-proguard-compatibility")
 	}
 
-	if Bool(opt.Optimize) || Bool(opt.Obfuscate) {
-		// TODO(b/213833843): Allow configuration of the prefix via a build variable.
-		var sourceFilePrefix = "go/retraceme "
-		var sourceFileTemplate = "\"" + sourceFilePrefix + "%MAP_ID\""
+	if (Bool(opt.Optimize) || Bool(opt.Obfuscate)) && ctx.Config().ProguardMapIdsEnabled() {
+		sourceFileTemplate := ctx.Config().ProguardMapIdsPrefix() + " " + "%MAP_ID"
+		sourceFileTemplate = "\"" + strings.TrimSpace(sourceFileTemplate) + "\""
 		r8Flags = append(r8Flags, "--map-id-template", "%MAP_HASH")
 		r8Flags = append(r8Flags, "--source-file-template", sourceFileTemplate)
 	}
