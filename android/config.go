@@ -1904,6 +1904,14 @@ func (c *config) RBEWrapper() string {
 	return c.GetenvWithDefault("RBE_WRAPPER", remoteexec.DefaultWrapperPath)
 }
 
+func (c *config) ProguardMapIdsEnabled() bool {
+	return Bool(c.productVariables.ProguardMapIdsEnabled)
+}
+
+func (c *config) ProguardMapIdsPrefix() string {
+	return String(c.productVariables.ProguardMapIdsPrefix)
+}
+
 // UseHostMusl returns true if the host target has been configured to build against musl libc.
 func (c *config) UseHostMusl() bool {
 	return Bool(c.productVariables.HostMusl)
