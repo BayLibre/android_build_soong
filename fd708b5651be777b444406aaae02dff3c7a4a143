@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ce8065_3f792e5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2016690
+      },
+      "writtenOn": "2023-12-17T22:09:35Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/main/+/main:build/soong/root.bp",
+      "revId": "fd708b5651be777b444406aaae02dff3c7a4a143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
