@@ -50,6 +50,23 @@
       "message": "Ping for owner review.",
       "revId": "df09d173cad6bf652dc949698e48824248d59373",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8139e8c4_85733bf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894591
+      },
+      "writtenOn": "2023-12-17T09:50:03Z",
+      "side": 1,
+      "message": "t",
+      "revId": "df09d173cad6bf652dc949698e48824248d59373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
