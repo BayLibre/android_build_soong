@@ -43,6 +43,9 @@ type CcAconfigLibraryProperties struct {
 	// "exported": to generate exported mode version of the library
 	// an error will be thrown if the mode is not supported
 	Mode *string
+
+	// if all flags in current package is read only, default is false
+	All_flags_read_only *bool
 }
 
 type CcAconfigLibraryCallbacks struct {
@@ -78,7 +81,9 @@ func (this *CcAconfigLibraryCallbacks) GeneratorDeps(ctx cc.DepsContext, deps cc
 	}
 
 	// Add a dependency for the aconfig flags base library
-	deps.SharedLibs = append(deps.SharedLibs, baseLibDep)
+	if !proptools.BoolDefault(this.properties.All_flags_read_only, false) {
+		deps.SharedLibs = append(deps.SharedLibs, baseLibDep)
+	}
 	// TODO: It'd be really nice if we could reexport this library and not make everyone do it.
 
 	return deps
