@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0afe7e25_77925c2f",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 8463,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T14:12:56Z",
+      "side": 1,
+      "message": "This looks weird to me. The import refers to a dexjar that is already compiled. Why does it need \"compile_dex: true\"?\n\nI looked at [a typical java_sdk_library_import in a prebuilt module SDK](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:prebuilts/module_sdk/AdServices/current/Android.bp;l\u003d45;drc\u003d955dced2b42ef9cbfc5728a453daca523f9b25ce). It doesn\u0027t have \"compile_dex: true\". Does it still work after this change?",
+      "range": {
+        "startLine": 8463,
+        "startChar": 4,
+        "endLine": 8463,
+        "endChar": 22
+      },
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb91c4ad_0b95e100",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T14:12:56Z",
+      "side": 1,
+      "message": "getProfilePath?",
+      "range": {
+        "startLine": 1072,
+        "startChar": 49,
+        "endLine": 1072,
+        "endChar": 64
+      },
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e530b26_a07e4b5b",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T14:12:56Z",
+      "side": 1,
+      "message": "I prefer `ctx.ModuleErrorf` over `panic` for this kind of errors. Could you pass the module context to this function and use `ctx.ModuleErrorf`?",
+      "range": {
+        "startLine": 1082,
+        "startChar": 2,
+        "endLine": 1082,
+        "endChar": 7
+      },
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96d510ba_95ad9010",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2383,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T14:12:56Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 2383,
+        "startChar": 2,
+        "endLine": 2383,
+        "endChar": 7
+      },
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e72351_999bab38",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2760,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T14:12:56Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 2760,
+        "startChar": 2,
+        "endLine": 2760,
+        "endChar": 7
+      },
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
