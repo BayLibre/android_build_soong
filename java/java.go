@@ -712,6 +712,7 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		j.classLoaderContexts = j.usesLibrary.classLoaderContextForUsesLibDeps(ctx)
 	}
 	j.compile(ctx, nil, nil, nil)
+	j.OwnerTeamProperties.GenerateAndroidBuildActions(ctx)
 
 	exclusivelyForApex := !apexInfo.IsForPlatform()
 	if (Bool(j.properties.Installable) || ctx.Host()) && !exclusivelyForApex {
@@ -742,6 +743,7 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 func (j *Library) DepsMutator(ctx android.BottomUpMutatorContext) {
 	j.deps(ctx)
 	j.usesLibrary.deps(ctx, false)
+	j.OwnerTeamProperties.DepsMutator(ctx)
 }
 
 const (
@@ -1035,8 +1037,7 @@ type prebuiltTestProperties struct {
 type Test struct {
 	Library
 
-	testProperties      testProperties
-	ownerTeamProperties android.OwnerTeamProperties
+	testProperties testProperties
 
 	testConfig       android.Path
 	extraTestConfigs android.Paths
@@ -1224,7 +1225,6 @@ func (j *TestHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 func (j *Test) DepsMutator(ctx android.BottomUpMutatorContext) {
 	j.Library.DepsMutator(ctx)
-	j.ownerTeamProperties.DepsMutator(ctx)
 }
 
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -1286,7 +1286,6 @@ func (j *Test) generateAndroidBuildActionsWithConfig(ctx android.ModuleContext, 
 			ctx.PropertyErrorf("jni_libs", "%q of type %q is not supported", dep.Name(), ctx.OtherModuleType(dep))
 		}
 	})
-	j.ownerTeamProperties.GenerateAndroidBuildActions(ctx)
 	j.Library.GenerateAndroidBuildActions(ctx)
 }
 
@@ -1378,7 +1377,6 @@ func TestFactory() android.Module {
 
 	module.addHostAndDeviceProperties()
 	module.AddProperties(&module.testProperties)
-	module.AddProperties(&module.ownerTeamProperties)
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 	module.Module.dexpreopter.isTest = true
@@ -1437,7 +1435,6 @@ func TestHostFactory() android.Module {
 	module.addHostProperties()
 	module.AddProperties(&module.testProperties)
 	module.AddProperties(&module.testHostProperties)
-	module.AddProperties(&module.ownerTeamProperties)
 
 	InitTestHost(
 		module,

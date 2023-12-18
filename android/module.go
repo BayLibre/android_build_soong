@@ -71,6 +71,7 @@ type Module interface {
 	ImageVariation() blueprint.Variation
 
 	Owner() string
+	OwnerTeam() string
 	InstallInData() bool
 	InstallInTestcases() bool
 	InstallInSanitizerDir() bool
@@ -531,7 +532,7 @@ type distProperties struct {
 }
 
 type OwnerTeamProperties struct {
-	// `team` module that represents the owner.
+	// `team` module that owns the module, as interpreted by "owner".
 	Owner_team *string `android:"path"`
 }
 
@@ -762,7 +763,9 @@ func InitAndroidModule(m Module) {
 	m.AddProperties(
 		&base.nameProperties,
 		&base.commonProperties,
-		&base.distProperties)
+		&base.distProperties,
+		&base.OwnerTeamProperties,
+	)
 
 	initProductVariableModule(m)
 
@@ -899,6 +902,14 @@ type ModuleBase struct {
 
 	// The primary licenses property, may be nil, records license metadata for the module.
 	primaryLicensesProperty applicableLicensesProperty
+
+	// The team (defined by the owner/vendor) who owns the property.
+	// TODO(rbraunstein): Public so java's GenerateAndroidBuildActions can
+	// call ours like:
+	// 	j.OwnerTeamProperties.GenerateAndroidBuildActions(ctx)
+	// Is there a better way? make a method for it or force each module to define their
+	// copy of this instead?
+	OwnerTeamProperties OwnerTeamProperties
 
 	noAddressSanitizer   bool
 	installFiles         InstallPaths
@@ -1048,7 +1059,11 @@ func sliceReflectionValue(value reflect.Value) []string {
 
 func (m *ModuleBase) ComponentDepsMutator(BottomUpMutatorContext) {}
 
-func (m *ModuleBase) DepsMutator(BottomUpMutatorContext) {}
+func (m *ModuleBase) DepsMutator(BottomUpMutatorContext) {
+	// TODO(rbraunstein): Do we want to:
+	// m.ownerTeamProperties.DepsMutator(ctx)
+	// We still need to fix modules to call (ModuleBase).DepsMutator()
+}
 
 // AddProperties "registers" the provided props
 // each value in props MUST be a pointer to a struct
@@ -1485,6 +1500,10 @@ func (m *ModuleBase) InstallForceOS() (*OsType, *ArchType) {
 
 func (m *ModuleBase) Owner() string {
 	return String(m.commonProperties.Owner)
+}
+
+func (m *ModuleBase) OwnerTeam() string {
+	return String(m.OwnerTeamProperties.Owner_team)
 }
 
 func (m *ModuleBase) setImageVariation(variant string) {

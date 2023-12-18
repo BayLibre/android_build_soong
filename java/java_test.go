@@ -490,6 +490,10 @@ func TestTest(t *testing.T) {
 	}
 }
 
+func TestOwnerJavaLibrary(t *testing.T) {
+	testOwner(t, "java_library")
+}
+
 func TestOwnerJavaTest(t *testing.T) {
 	testOwner(t, "java_test")
 }
