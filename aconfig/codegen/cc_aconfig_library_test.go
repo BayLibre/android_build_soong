@@ -20,6 +20,8 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+
+	"github.com/google/blueprint"
 )
 
 var ccCodegenModeTestData = []struct {
@@ -103,4 +105,34 @@ func testIncorrectCCCodegenModeHelper(t *testing.T, bpMode string, err string) {
 				%s
 			}
 		`, bpMode))
+}
+
+func testAllFlagsReadOnly(t *testing.T) {
+	t.Helper()
+	result := android.GroupFixturePreparers(
+		PrepareForTestWithAconfigBuildComponents,
+		cc.PrepareForTestWithCcDefaultModules).
+		ExtendWithErrorHandler(android.FixtureExpectsNoErrors).
+		RunTestWithBp(t, fmt.Sprintf(`
+			aconfig_declarations {
+				name: "my_aconfig_declarations",
+				package: "com.example.package",
+				srcs: ["foo.aconfig"],
+			}
+
+			cc_aconfig_library {
+				name: "my_cc_aconfig_library",
+				aconfig_declarations: "my_aconfig_declarations",
+				all_flags_read_only: true,
+			}
+		`))
+
+	dependOnBaseLib := false
+	result.VisitDirectDeps(m, func(dep blueprint.Module) {
+		if dep == baseLibDep {
+			dependOnBaseLib = true
+		}
+	})
+	android.AssertBoolEquals(t, "should not have dependency on server_configuriable_flags",
+		dependOnBaseLib, false)
 }
