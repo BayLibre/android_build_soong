@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09b0d5e_1233d919",
+        "filename": "android/deapexer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-18T23:30:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d84e912f_fff543b1",
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11532c88_14766837",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-12-18T18:26:37Z",
       "side": 1,
       "message": "One concern regarding this is that a non-null `*DeapexerInfo` and a non-null error can be returned at the same time. In such case, how can we ensure that the caller properly raises an error? WDYT about returning a non-null `*DeapexerInfo` iff error is null (and `di` is non null), and return null `*DeapexerInfo` when multiple of them is found in order to prevent the users wrongly consuming it and enforce to raise an error?",
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f09876a_dc091374",
+        "filename": "android/deapexer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-18T23:30:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11532c88_14766837",
       "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -82,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e015e2f8_6652e201",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 8463,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-18T23:30:29Z",
+      "side": 1,
+      "message": "You are correct, we do not do any dexing during ninja execution when building with prebuilts.\n\nHowever, we do use `compile_dex` and `shared_library` during [Soong analysis](https://cs.android.com/android/_/android/platform/build/soong/+/8070c4b457d890455bd7c8437ab84d02d9e7f3bc:java/sdk_library.go;l\u003d1141-1146;drc\u003d8ff105860d20f2ccbb8d8044bf562f94100b7f6a;bpv\u003d1;bpt\u003d0) to determine whether a prebuilt apex contains a dex jar. In the example you provided, `framework-adservices` uses `shared_library`. I have updated this test to use `shared_library` as well\n\n(In the long run, neither of this properties of java_sdk_library_import should matter. Whether a prebuilt apex contains dex code or not should be defined by the `prebuilt_apex` and not by `java_sdk_library_import`)",
+      "parentUuid": "5356c56c_1f8f1744",
+      "range": {
+        "startLine": 8463,
+        "startChar": 4,
+        "endLine": 8463,
+        "endChar": 22
+      },
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb91c4ad_0b95e100",
@@ -95,6 +155,30 @@
       "writtenOn": "2023-12-18T14:12:56Z",
       "side": 1,
       "message": "getProfilePath?",
+      "range": {
+        "startLine": 1072,
+        "startChar": 49,
+        "endLine": 1072,
+        "endChar": 64
+      },
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd5b596a_7ddd81d9",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-18T23:30:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb91c4ad_0b95e100",
       "range": {
         "startLine": 1072,
         "startChar": 49,
@@ -128,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c2aa8e_d60d1d9d",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-18T23:30:29Z",
+      "side": 1,
+      "message": "Agreed, this was my preference as well. The reason why I chose not to do that is because some tests call `DexJarBuildPath` [directly](https://cs.android.com/search?q\u003d%5C.DexJarBuildPath%5C(%20f:build%2Fsoong%2Fapex%20f:test\u0026sq\u003d\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain). TestContext does not implement EarlyModuleContext, so we would have to do some refactor of the test structs.\n\nI will do that in a followup CL.",
+      "parentUuid": "2e530b26_a07e4b5b",
+      "range": {
+        "startLine": 1082,
+        "startChar": 2,
+        "endLine": 1082,
+        "endChar": 7
+      },
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96d510ba_95ad9010",
@@ -151,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de10bc40_8c8d8684",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2383,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-18T23:30:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96d510ba_95ad9010",
+      "range": {
+        "startLine": 2383,
+        "startChar": 2,
+        "endLine": 2383,
+        "endChar": 7
+      },
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09e72351_999bab38",
@@ -164,6 +296,30 @@
       "writtenOn": "2023-12-18T14:12:56Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 2760,
+        "startChar": 2,
+        "endLine": 2760,
+        "endChar": 7
+      },
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d8848a2_a5267e3a",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2760,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-18T23:30:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e72351_999bab38",
       "range": {
         "startLine": 2760,
         "startChar": 2,
