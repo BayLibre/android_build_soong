@@ -83,6 +83,74 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a65c07d5_fd84c765",
+        "filename": "apex/dexpreopt_bootjars_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-18T19:21:25Z",
+      "side": 1,
+      "message": "Is `*.v\u003cN\u003e` the new naming convention for multiple apexes? Or is this just for testing?",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee7ee97_54313448",
+        "filename": "apex/dexpreopt_bootjars_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-18T19:21:25Z",
+      "side": 1,
+      "message": "Is this supposed to be `com.android.art.v2` or `com.android.art`?",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "505fa6d3_c6928c6e",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-18T19:21:25Z",
+      "side": 1,
+      "message": "Should this be checking for the nullness of `err` instead? Per the [previous implementation of `FindDeapexerProviderForModule`](https://android-review.git.corp.google.com/c/platform/build/soong/+/2876754/4/android/deapexer.go), `err` can be non null when `di` is non null.",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f38f40_af615595",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-18T19:21:25Z",
+      "side": 1,
+      "message": "Is there anyway to prevent the hardcoding of the `.prof` file path? Do you mind explaining how this is currently determined?",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59d4b79c_195461bb",
         "filename": "java/bootclasspath_fragment.go",
         "patchSetId": 4
