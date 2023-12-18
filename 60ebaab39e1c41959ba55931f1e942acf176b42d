@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d84e912f_fff543b1",
+        "filename": "android/deapexer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-18T18:26:37Z",
+      "side": 1,
+      "message": "nit: can we return early at the beginning of the function when `err !\u003d nil`?",
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11532c88_14766837",
+        "filename": "android/deapexer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-18T18:26:37Z",
+      "side": 1,
+      "message": "One concern regarding this is that a non-null `*DeapexerInfo` and a non-null error can be returned at the same time. In such case, how can we ensure that the caller properly raises an error? WDYT about returning a non-null `*DeapexerInfo` iff error is null (and `di` is non null), and return null `*DeapexerInfo` when multiple of them is found in order to prevent the users wrongly consuming it and enforce to raise an error?",
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0afe7e25_77925c2f",
         "filename": "apex/apex_test.go",
         "patchSetId": 4
@@ -14,6 +48,30 @@
       "writtenOn": "2023-12-18T14:12:56Z",
       "side": 1,
       "message": "This looks weird to me. The import refers to a dexjar that is already compiled. Why does it need \"compile_dex: true\"?\n\nI looked at [a typical java_sdk_library_import in a prebuilt module SDK](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:prebuilts/module_sdk/AdServices/current/Android.bp;l\u003d45;drc\u003d955dced2b42ef9cbfc5728a453daca523f9b25ce). It doesn\u0027t have \"compile_dex: true\". Does it still work after this change?",
+      "range": {
+        "startLine": 8463,
+        "startChar": 4,
+        "endLine": 8463,
+        "endChar": 22
+      },
+      "revId": "60ebaab39e1c41959ba55931f1e942acf176b42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5356c56c_1f8f1744",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 8463,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-18T18:26:37Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "0afe7e25_77925c2f",
       "range": {
         "startLine": 8463,
         "startChar": 4,
