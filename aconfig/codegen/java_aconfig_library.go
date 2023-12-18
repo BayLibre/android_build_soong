@@ -62,10 +62,17 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) DepsMutator(module *ja
 		ctx.AddDependency(ctx.Module(), declarationsTag, declarations)
 	}
 
-	// Add aconfig-annotations-lib as a dependency for the optimization / code stripping annotations
-	module.AddSharedLibrary("aconfig-annotations-lib")
-	// TODO(b/303773055): Remove the annotation after access issue is resolved.
-	module.AddSharedLibrary("unsupportedappusage")
+	// "libcore_aconfig_flags_lib" module has a circular dependency because the shared libraries are
+	// built on core_current and the module is used to flag the APIs in the core_current.
+	// http://b/316554963#comment2 has the details of the circular dependency chain.
+	// libcore includes the sources of annotations directly to break the circular dependency.
+	var addLibraries bool = module.Library.Module.ModuleBase.BaseModuleName() != "libcore_aconfig_flags_lib"
+	if addLibraries {
+		// Add aconfig-annotations-lib as a dependency for the optimization / code stripping annotations
+		module.AddSharedLibrary("aconfig-annotations-lib")
+		// TODO(b/303773055): Remove the annotation after access issue is resolved.
+		module.AddSharedLibrary("unsupportedappusage")
+	}
 }
 
 func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuildActions(module *java.GeneratedJavaLibraryModule, ctx android.ModuleContext) android.Path {
