@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03a21b88_304bb0fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-12-18T21:58:56Z",
+      "side": 1,
+      "message": "aconfig-annotations-lib had been tweaked before to address similar circular dependency issue by changing the sdk_version to core_current, can you try change it to none in the bp file instead, something like this and see if it works:\n\ndiff --git a/java/Android.bp b/java/Android.bp\nindex e31f878..5318be2 100644\n--- a/java/Android.bp\n+++ b/java/Android.bp\n@@ -66,7 +66,8 @@ java_library {\n     srcs: [\n         \"com/android/aconfig/annotations/*.java\",\n     ],\n-    sdk_version: \"core_current\",\n+    system_modules: \"none\",\n+    sdk_version: \"none\",\n     host_supported: true,\n     optimize: {\n         proguard_flags_files: [\"aconfig_proguard.flags\"],",
+      "revId": "c4c733dbadb1d630efa98a65aaf08d3e66533975",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
