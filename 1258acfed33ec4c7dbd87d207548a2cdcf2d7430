@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eac3f48_fd825fbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-12-18T16:25:14Z",
+      "side": 1,
+      "message": "LGTM but Yu can you take a look too please.",
+      "revId": "1258acfed33ec4c7dbd87d207548a2cdcf2d7430",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
