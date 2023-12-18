@@ -72,7 +72,8 @@ var (
 
 func init() {
 	RegisterBuildComponents(android.InitRegistrationContext)
-	pctx.HostBinToolVariable("aconfig", "aconfig")
+	// pctx.HostBinToolVariable("aconfig", "aconfig")
+	pctx.SourcePathVariable("aconfig", "prebuilts/build-tools/linux-x86/bin/aconfig")
 	pctx.HostBinToolVariable("soong_zip", "soong_zip")
 }
 

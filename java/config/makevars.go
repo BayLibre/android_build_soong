@@ -80,6 +80,7 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 
 	ctx.Strict("AIDL", "${AidlCmd}")
 	ctx.Strict("AAPT2", "${Aapt2Cmd}")
+	// ctx.Strict("ACONFIG", "${AconfigCmd}")
 	ctx.Strict("ZIPALIGN", "${ZipAlign}")
 	ctx.Strict("SIGNAPK_JAR", "${SignapkCmd}")
 	ctx.Strict("SIGNAPK_JNI_LIBRARY_PATH", "${SignapkJniLibrary}")

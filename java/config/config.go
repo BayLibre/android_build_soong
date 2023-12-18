@@ -212,6 +212,7 @@ func init() {
 	pctx.HostBinToolVariable("HiddenAPI", "hiddenapi")
 
 	hostBinToolVariableWithSdkToolsPrebuilt("Aapt2Cmd", "aapt2")
+	hostBinToolVariableWithBuildToolsPrebuilt("AconfigCmd", "aconfig")
 	hostBinToolVariableWithBuildToolsPrebuilt("AidlCmd", "aidl")
 	hostBinToolVariableWithBuildToolsPrebuilt("ZipAlign", "zipalign")
 
