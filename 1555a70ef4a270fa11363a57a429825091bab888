@@ -1,0 +1,239 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ffc5bb_83ce71d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T15:32:14Z",
+      "side": 1,
+      "message": "Please check if ab/git_master-art and ab/aosp-master-art still build after the change. You can pick the `mainline_modules` build target for testing.",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caa26a04_d222dd17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T15:32:14Z",
+      "side": 1,
+      "message": "Sorry, this CL is too large, so I haven\u0027t reviewed it completely. I\u0027ll review it again once you addressed my current comments.",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae074907_e55c33ee",
+        "filename": "android/apex_contributions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T15:32:14Z",
+      "side": 1,
+      "message": "Could you add more comments to explain what an \"api domain\" is?",
+      "range": {
+        "startLine": 167,
+        "startChar": 54,
+        "endLine": 167,
+        "endChar": 64
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d459f398_e3866e91",
+        "filename": "android/apex_contributions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T15:32:14Z",
+      "side": 1,
+      "message": "Consider changing `android.FilterListPred` to a generic function and use it here.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 16
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d4b79c_195461bb",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T15:32:14Z",
+      "side": 1,
+      "message": "We don\u0027t use snake_case unless for Soong module properties. Please use camelCase.\n\nAlso, a leading upper-case letter means this field is public, making the access look inconsistent to me. Consider making this private and add a setter for it, or making both `profilePathOnHost` and this public if you want to assign values directly to them in the `apex` package.",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 374,
+        "endChar": 10
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f656efb8_58f91a9a",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T15:32:14Z",
+      "side": 1,
+      "message": "Does this change belong to aosp/2876754?",
+      "range": {
+        "startLine": 803,
+        "startChar": 1,
+        "endLine": 805,
+        "endChar": 2
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0f94b2_f9b6412b",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T15:32:14Z",
+      "side": 1,
+      "message": "Better to dedup the entries?",
+      "range": {
+        "startLine": 537,
+        "startChar": 50,
+        "endLine": 537,
+        "endChar": 56
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a13825_95c643ec",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T15:32:14Z",
+      "side": 1,
+      "message": "Is this for dex jars rather than boot image profiles? If so, could you please move it to aosp/2876756?",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 60
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa82fd9d_cde77a7a",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T15:32:14Z",
+      "side": 1,
+      "message": "The dependency on `platform-bootclasspath` or `art-bootclasspath-fragment` is only for the boot image profiles, not for dex jars. Since you now get the profiles from a provider, you can drop this line.",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212690ff_17b5c6a0",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T15:32:14Z",
+      "side": 1,
+      "message": "Is this for dex jars rather than boot image profiles? If so, could you please move it to aosp/2876756?",
+      "range": {
+        "startLine": 555,
+        "startChar": 5,
+        "endLine": 555,
+        "endChar": 47
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b55c81e_b8ce1225",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-18T15:32:14Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t// We need to add a dep on only the dex jars listed in `contents` of `bootclasspath_fragment`s\n```",
+      "range": {
+        "startLine": 564,
+        "startChar": 30,
+        "endLine": 564,
+        "endChar": 64
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
