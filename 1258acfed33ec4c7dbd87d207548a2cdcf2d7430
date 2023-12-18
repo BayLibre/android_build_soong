@@ -16,6 +16,23 @@
       "message": "LGTM but Yu can you take a look too please.",
       "revId": "1258acfed33ec4c7dbd87d207548a2cdcf2d7430",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03594006_38302bfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-12-18T18:45:47Z",
+      "side": 1,
+      "message": "Just curious: if you don\u0027t do the check and just specify --mode\u003dexported, does aconfig also generates something even if there is no exported flags in the file or it just ignores that file, if it is latter you can save one call to the aconfig binary?",
+      "revId": "1258acfed33ec4c7dbd87d207548a2cdcf2d7430",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
