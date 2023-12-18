@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56cfb2ed_6307ac5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-12-18T21:33:38Z",
+      "side": 1,
+      "message": "(Just marking as -1 so the discussion doesn\u0027t get lost). As we discussed last week, this shouldn\u0027t be done on all_aconfig_declarations. Metalava should only get the aconfig flags that are referenced by the code that\u0027s going into it.  Using all flags means that ~all java code gets rebuilt whenever any flag changes values.",
+      "revId": "f25879e7301076cf6b6a430b0285ebd3a56e537e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
