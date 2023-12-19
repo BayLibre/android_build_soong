@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "db2b1c50_96fa3525",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T13:27:50Z",
+      "side": 1,
+      "message": "The build seems to be done on `git_main`. We have some special branches that use our own thin manifest. `git_master-art` is one of them. Please verify that our thin manifest still works after the change. Actually, after thinking about it, I realized that it\u0027s better to verify it on `git_master-art-host` instead of `git_master-art`.\n\nPlease test a build on branch `git_master-art-host` on target `art-gtest`.",
+      "parentUuid": "d192bd8c_64de2823",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "caa26a04_d222dd17",
@@ -137,6 +155,30 @@
       "side": 1,
       "message": "I think that would require filtering on the properties of a struct (`PrebuiltSelectionInfo` in this example).\n\nMy understanding of golang generics is limited, but I dont think golang generics supports that",
       "parentUuid": "d459f398_e3866e91",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 16
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81565f9_7d67675a",
+        "filename": "android/apex_contributions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T13:27:50Z",
+      "side": 1,
+      "message": "`android.FilterListPred` takes a predicate. I think you can access the field in the predicate?",
+      "parentUuid": "d2a6f1f3_90b70f07",
       "range": {
         "startLine": 169,
         "startChar": 0,
@@ -451,6 +493,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce0405e1_0f340398",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T13:27:50Z",
+      "side": 1,
+      "message": "Ah, you are right. We need the dependency to access the provider. I missed that.",
+      "parentUuid": "f028d460_60e9b6f6",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 60
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa82fd9d_cde77a7a",
@@ -482,6 +548,24 @@
       "side": 1,
       "message": "Jiakai, is this comment still valid after the discussion in the other thread? https://android-review.git.corp.google.com/c/platform/build/soong/+/2876755/comment/99a13825_95c643ec/",
       "parentUuid": "aa82fd9d_cde77a7a",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21f16fa_a4a560e3",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T13:27:50Z",
+      "side": 1,
+      "message": "Yes. An apex that provides a boot image profile must also be one that provides boot dex jars. Since the apexes have been added as dependencies by the code above, you don\u0027t need this line.\n\nWe added `art-bootclasspath-fragment` in addition to java modules because we used to take boot image profiles from bootclasspath_fragment modules and take dex jars from java modules. Since you now take both boot image profiles and dex jars from the apex module, there is no need to special-case com.android.art.",
+      "parentUuid": "493d7e7d_72471aef",
       "revId": "1555a70ef4a270fa11363a57a429825091bab888",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -523,6 +607,30 @@
       "side": 1,
       "message": "I think we need this to access the profile using a provider. Deduping this into the other discussion thread in https://android-review.git.corp.google.com/c/platform/build/soong/+/2876755/comment/99a13825_95c643ec/",
       "parentUuid": "212690ff_17b5c6a0",
+      "range": {
+        "startLine": 555,
+        "startChar": 5,
+        "endLine": 555,
+        "endChar": 47
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afe69d4_97b85422",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T13:27:50Z",
+      "side": 1,
+      "message": "OK, please add a comment that this is for both dex jars and boot image profiles.",
+      "parentUuid": "8c75a8ec_8f185ffc",
       "range": {
         "startLine": 555,
         "startChar": 5,
