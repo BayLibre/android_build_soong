@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/android/team_proto"
 	"android/soong/bazel"
 	"crypto/md5"
 	"encoding/hex"
@@ -29,6 +30,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
+	"google.golang.org/protobuf/encoding/prototext"
 )
 
 var (
@@ -70,6 +72,7 @@ type Module interface {
 	ImageVariation() blueprint.Variation
 
 	Owner() string
+	Team() string
 	InstallInData() bool
 	InstallInTestcases() bool
 	InstallInSanitizerDir() bool
@@ -531,6 +534,82 @@ type distProperties struct {
 	Dists []Dist `android:"arch_variant"`
 }
 
+type TeamProperties struct {
+	// `team` module that owns the module, as interpreted by "owner".
+	Team *string `android:"path"`
+}
+
+type TeamDepTagType struct {
+	blueprint.BaseDependencyTag
+}
+
+var teamDepTag = TeamDepTagType{}
+var TeamProviderKey = blueprint.NewProvider[TeamProviderData]()
+
+// Provider published by Team
+type TeamProviderData struct {
+	IntermediatePath WritablePath
+}
+
+// Add the team module as a dependency to the _test module to validate the team
+// name and allow us to find it in GeneratedAndroidBuildActions.
+func (module *TeamProperties) DepsMutator(ctx BottomUpMutatorContext) {
+	// TODO(rbraunstein): Only add dependency if it doesn't already have one
+	if module.Team != nil {
+		mod, tag := ctx.GetDirectDep(*module.Team)
+		if mod == nil { // Doesn't seem to prevent multiple adds
+			ctx.AddDependency(ctx.Module(), teamDepTag, *module.Team)
+		} else if tag != teamDepTag {
+			// error, non team dep tag added.
+		}
+	}
+}
+
+// Write an intermediate .textproto file with team information for each _test module
+// that has a populated Team field.
+// The `_test` module is responsible for writing out the details of team it depends on.
+func (module *TeamProperties) GenerateAndroidBuildActions(ctx ModuleContext) {
+	if module.Team == nil {
+		return
+	}
+
+	trendy_team_id := ""
+	for c, m := range ctx.GetDirectDepsWithTag(teamDepTag) {
+		if c > 0 && trendy_team_id != m.(*teamModule).TrendyTeamId(ctx) {
+			ctx.ModuleErrorf("Only one `team` should be found.")
+		}
+		trendy_team_id = m.(*teamModule).TrendyTeamId(ctx)
+	}
+
+	if trendy_team_id == "" {
+		ctx.PropertyErrorf("trendy_team_id", "on `team=%s` module not set.", *module.Team)
+	}
+
+	bpFilePath := filepath.Join(ctx.ModuleDir(), ctx.BlueprintsFile())
+	intermediatePath := PathForModuleOut(
+		ctx, "intermediateOwnerData.textproto",
+	)
+
+	moduleName := ctx.ModuleName()
+	ownerData := team_proto.Team{
+		TrendyTeamId: &trendy_team_id,
+		TargetName:   &moduleName,
+		Path:         &bpFilePath,
+	}
+
+	fileBytes, err := prototext.Marshal(&ownerData)
+	if err != nil {
+		ctx.ModuleErrorf("Unable to marshal owner data.")
+	}
+	WriteFileRule(ctx, intermediatePath, string(fileBytes))
+
+	ctx.setProvider(
+		TeamProviderKey, TeamProviderData{
+			IntermediatePath: intermediatePath,
+		},
+	)
+}
+
 // CommonTestOptions represents the common `test_options` properties in
 // Android.bp.
 type CommonTestOptions struct {
@@ -693,7 +772,9 @@ func InitAndroidModule(m Module) {
 	m.AddProperties(
 		&base.nameProperties,
 		&base.commonProperties,
-		&base.distProperties)
+		&base.distProperties,
+		&base.teamProperties,
+	)
 
 	initProductVariableModule(m)
 
@@ -830,6 +911,14 @@ type ModuleBase struct {
 
 	// The primary licenses property, may be nil, records license metadata for the module.
 	primaryLicensesProperty applicableLicensesProperty
+
+	// The team (defined by the owner/vendor) who owns the property.
+	// TODO(rbraunstein): Public so java's GenerateAndroidBuildActions can
+	// call ours like:
+	// 	j.TeamProperties.GenerateAndroidBuildActions(ctx)
+	// Is there a better way? make a method for it or force each module to define their
+	// copy of this instead?
+	teamProperties TeamProperties
 
 	noAddressSanitizer   bool
 	installFiles         InstallPaths
@@ -990,7 +1079,13 @@ func sliceReflectionValue(value reflect.Value) []string {
 
 func (m *ModuleBase) ComponentDepsMutator(BottomUpMutatorContext) {}
 
-func (m *ModuleBase) DepsMutator(BottomUpMutatorContext) {}
+func (m *ModuleBase) DepsMutator(ctx BottomUpMutatorContext) {
+	m.teamProperties.DepsMutator(ctx)
+}
+
+func (m *ModuleBase) GenerateAndroidBuildActions(ctx ModuleContext) {
+	m.teamProperties.GenerateAndroidBuildActions(ctx)
+}
 
 // AddProperties "registers" the provided props
 // each value in props MUST be a pointer to a struct
@@ -1435,6 +1530,10 @@ func (m *ModuleBase) InstallForceOS() (*OsType, *ArchType) {
 
 func (m *ModuleBase) Owner() string {
 	return String(m.commonProperties.Owner)
+}
+
+func (m *ModuleBase) Team() string {
+	return String(m.teamProperties.Team)
 }
 
 func (m *ModuleBase) setImageVariation(variant string) {

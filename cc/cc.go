@@ -2147,6 +2147,9 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 
 	android.CollectDependencyAconfigFiles(ctx, &c.mergedAconfigFiles)
 
+	// TODO(ron): needed?
+	c.ModuleBase.GenerateAndroidBuildActions(ctx)
+
 	c.maybeInstall(ctx, apexInfo)
 
 	if c.linker != nil {
@@ -2782,6 +2785,9 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	}
 
 	updateImportedLibraryDependency(ctx)
+
+	// TODO(ron): needed?
+	c.ModuleBase.DepsMutator(ctx)
 }
 
 func BeginMutator(ctx android.BottomUpMutatorContext) {
