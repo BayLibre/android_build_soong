@@ -33,6 +33,24 @@
       "message": "Still seeing the warning, so rethinking this.",
       "revId": "9448c7bcde85fd18c29ce9dbb6177502c275ea0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac25359_2423360f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1579231
+      },
+      "writtenOn": "2023-12-19T05:41:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "95859dfa_61913372",
+      "revId": "9448c7bcde85fd18c29ce9dbb6177502c275ea0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
