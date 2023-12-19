@@ -16,6 +16,24 @@
       "message": "(-2 just while I ask the question so this doesn\u0027t go in by accident)\n\nShould this be derived from the mode property instead?",
       "revId": "84afdf1bc8d13c7a876082c7e3fb5489023fcc26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f5b3cc_cdd1a467",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-12-19T15:58:46Z",
+      "side": 1,
+      "message": "Let\u0027s discuss this. My take is that this is orthogonal to the mode. The mode is in which scenarios the flag lib is used, be it production/test/exported. This boolean is to indicate that all flags are read only, does not really call out which scenario it is. For instance, we could have all flags read only in test mode, then we don\u0027t need server_configurable_flags in this mode.",
+      "parentUuid": "bb762930_beeaa102",
+      "revId": "84afdf1bc8d13c7a876082c7e3fb5489023fcc26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
