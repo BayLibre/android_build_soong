@@ -97,6 +97,7 @@ func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
 	}
 	SetProvider(ctx, blueprint.SrcsFileProviderKey, blueprint.SrcsFileProviderData{SrcPaths: fg.srcs.Strings()})
 	CollectDependencyAconfigFiles(ctx, &fg.mergedAconfigFiles)
+	fg.ModuleBase.GenerateAndroidBuildActions(ctx)
 }
 
 func (fg *fileGroup) Srcs() Paths {

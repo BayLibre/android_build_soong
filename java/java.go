@@ -714,6 +714,8 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	j.compile(ctx, nil, nil, nil)
 
+	j.ModuleBase.GenerateAndroidBuildActions(ctx)
+
 	exclusivelyForApex := !apexInfo.IsForPlatform()
 	if (Bool(j.properties.Installable) || ctx.Host()) && !exclusivelyForApex {
 		var extraInstallDeps android.InstallPaths
@@ -1175,6 +1177,7 @@ func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	j.addDataDeviceBinsDeps(ctx)
 	j.deps(ctx)
+	j.Test.DepsMutator(ctx)
 }
 
 func (j *TestHost) AddExtraResource(p android.Path) {
@@ -1280,7 +1283,6 @@ func (j *Test) generateAndroidBuildActionsWithConfig(ctx android.ModuleContext, 
 			ctx.PropertyErrorf("jni_libs", "%q of type %q is not supported", dep.Name(), ctx.OtherModuleType(dep))
 		}
 	})
-
 	j.Library.GenerateAndroidBuildActions(ctx)
 }
 
