@@ -18,9 +18,10 @@ package java
 
 import (
 	"fmt"
+	"strings"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
-	"strings"
 
 	"android/soong/android"
 )
@@ -235,4 +236,51 @@ type ClasspathFragmentProtoContentInfo struct {
 	// This is only relevant for APEX modules as they perform their own installation; while regular
 	// system files are installed via ClasspathFragmentBase#androidMkEntries().
 	ClasspathFragmentProtoInstallDir android.InstallPath
+}
+
+func Repackage(ctx android.ModuleContext, base string) {
+	// jarjarRuleText := getRepackageJarjarRuleText(ctx, base)
+	ctx.VisitDirectDepsBlueprint(func(m blueprint.Module) {
+		if jl, ok := m.(*Module); ok {
+			fmt.Println(ctx.ModuleName(), "     |||||     ", jl.Name(), ctx.OtherModuleType(jl))
+		}
+	})
+	ctx.VisitDirectDeps(func(m android.Module) {
+		fmt.Println(ctx.ModuleName(), "     00000     ", m.Name(), ctx.OtherModuleType(m))
+	})
+	//TODO: find java module from direct deps, use repackage() on them
+}
+
+var flagsExtension = []string{".Flags", ".FeatureFlags", ".FeatureFlagsImpl", ".FakeFeatureFlagsImpl"}
+
+func getRepackageJarjarRuleText(ctx android.ModuleContext, base string) string {
+	repackageJarjarRuleText := ""
+
+	combiniedPackageToPrefix := make(map[string]string)
+	ctx.VisitDirectDeps(func(m android.Module) {
+		if depRepackageInfo, ok := android.OtherModuleProvider(ctx, m, RepackageProvider); ok {
+			for p, b := range depRepackageInfo.PackageToPrefix {
+				if existingPrefix, existed := combiniedPackageToPrefix[p]; !existed || existingPrefix == "" {
+					combiniedPackageToPrefix[p] = b
+				} else if b != "" && b != existingPrefix {
+					ctx.ModuleErrorf("Different prefix for package %s: %s, %s", p, b, existingPrefix)
+				}
+			}
+		}
+	})
+
+	for p, prefix := range combiniedPackageToPrefix {
+		if prefix == "" {
+			for _, ext := range flagsExtension {
+				repackageJarjarRuleText += "rule " + p + ext + " " + p + "." + base + ext + "\n"
+			}
+		} else {
+			for _, ext := range flagsExtension {
+				repackageJarjarRuleText += "rule" + p + ext + " " + p + "." + prefix + ext + "\n"
+			}
+		}
+	}
+
+	// fmt.Println(repackageJarjarRuleText)
+	return repackageJarjarRuleText
 }
