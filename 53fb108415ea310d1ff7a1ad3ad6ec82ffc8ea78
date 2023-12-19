@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa792064_9368d372",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T20:20:03Z",
+      "side": 1,
+      "message": "LGTM, but I\u0027d like Jihoon to take another look",
+      "revId": "53fb108415ea310d1ff7a1ad3ad6ec82ffc8ea78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
