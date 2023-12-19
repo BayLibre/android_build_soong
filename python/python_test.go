@@ -360,6 +360,56 @@ cc_binary {
 	}
 }
 
+func TestPythonOwnerTeam(t *testing.T) {
+	bp := `
+python_test_host {
+  name: "simple-test",
+  owner_team: "snake-charmers",
+  srcs: ["simple-test.py"],
+}
+python_library {
+  name: "simple-library",
+  host_supported: true,
+  owner_team: "snake-charmers",
+}
+team {
+  name: "snake-charmers",
+  trendy_team_id: "666",
+}
+
+python_test_host {
+    name: "mobly-hello-world-test",
+    main: "hello_world_test.py",
+    srcs: ["hello_world_test.py",],
+    libs: ["mobly",],
+    test_suites: ["general-tests"],
+    test_options: {
+        unit_test: false, // as Mobly tests require device(s)
+    },
+    data: ["mobly-hello-world-test_config.yaml"],
+    owner_team: "bitrot_team",
+}
+
+team {
+  name: "bitrot_team",
+  trendy_team_id: "000",
+}`
+	ctx := android.GroupFixturePreparers(
+		android.PrepareForTestWithDefaults,
+		android.PrepareForTestWithArchMutator,
+		android.PrepareForTestWithAllowMissingDependencies,
+		PrepareForTestWithPythonBuildComponents,
+		android.PrepareForTestWithTeamBuildComponents,
+	).RunTestWithBp(t, bp)
+
+	variant := "linux_glibc_x86_64_PY3"
+	expectedDescription := "write intermediateOwnerData.textproto"
+	ctx.ModuleForTests("simple-library", variant).Description(expectedDescription)
+	ctx.ModuleForTests("simple-test", variant).Description(expectedDescription)
+	ctx.ModuleForTests("mobly-hello-world-test", variant).Description(expectedDescription)
+
+}
+
 func expectModule(t *testing.T, ctx *android.TestContext, name, variant, expectedSrcsZip string, expectedPyRunfiles []string) {
 	module := ctx.ModuleForTests(name, variant)
 
