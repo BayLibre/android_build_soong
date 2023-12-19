@@ -4784,3 +4784,44 @@ func TestStrippedAllOutputFile(t *testing.T) {
 		return
 	}
 }
+
+func TestCCTestOwner(t *testing.T) {
+	t.Parallel()
+	ctx := android.GroupFixturePreparers(
+		prepareForCcTest,
+		android.PrepareForTestWithTeamBuildComponents,
+	).RunTestWithBp(t, `
+		cc_test_library {
+			name: "test_lib",
+			srcs: ["test_lib.cpp"],
+			gtest: false,
+		}
+
+		cc_test {
+			name: "main_test",
+			data_libs: ["test_lib"],
+			gtest: false,
+			owner_team: "someteam",
+		}
+		team {
+			name: "someteam",
+			trendy_team_id: "cool_team",
+		}
+
+		team {
+			name: "team2",
+			trendy_team_id: "22222",
+		}
+
+		cc_binary_host {
+			name: "tool",
+			srcs: ["foo.cpp"],
+			owner_team: "team",
+		}
+	`)
+
+	variant := "android_arm64_armv8-a"
+	// Assert the rule from GenerateAndroidBuildActions exists.
+	expectedDescription := "write intermediateOwnerData.asciiproto"
+	ctx.ModuleForTests("main_test", variant).Description(expectedDescription)
+}

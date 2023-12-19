@@ -490,6 +490,61 @@ func TestTest(t *testing.T) {
 	}
 }
 
+func TestOwnerJavaLibrary(t *testing.T) {
+	testOwner(t, "java_library")
+}
+
+func TestOwnerJavaTest(t *testing.T) {
+	testOwner(t, "java_test")
+}
+
+func TestOwnerJavaTestHost(t *testing.T) {
+	testOwner(t, "java_test_host")
+}
+
+func testOwner(t *testing.T, moduleType string) {
+	bp := fmt.Sprintf(`
+		%s {
+			name: "my_module",
+			srcs: ["a.java", ":foo-srcs"],
+                        owner_team: "someteam",
+		}
+		team {
+			name: "someteam",
+			trendy_team_id: "cool_team",
+		}
+		team {
+			name: "lazy-team",
+			trendy_team_id: "we_use_your_tests",
+		}
+
+		filegroup {
+			name: "foo-srcs",
+			srcs: ["java-fg/a.java", "java-fg/b.java", "java-fg/c.java"],
+                        owner_team: "lazy-team",
+		}
+
+
+	`, moduleType)
+
+	ctx, _ := testJava(t, bp)
+	teamModuleName := "someteam"
+
+	hostVariant := ctx.Config().BuildOS.String() + "_common"
+	variant := "android_common"
+	if strings.HasSuffix(moduleType, "_host") {
+		variant = hostVariant
+	}
+
+	moduleName := "my_module"
+	android.AssertBoolEquals(t, fmt.Sprintf("Expected team dependency %q for %q ", teamModuleName, moduleName),
+		true, CheckModuleHasDependency(t, ctx, moduleName, variant, teamModuleName))
+
+	// Assert the rule from GenerateAndroidBuildActions exists.
+	expectedDescription := "write intermediateOwnerData.asciiproto"
+	ctx.ModuleForTests(moduleName, variant).Description(expectedDescription)
+}
+
 func TestHostBinaryNoJavaDebugInfoOverride(t *testing.T) {
 	bp := `
 		java_library {
