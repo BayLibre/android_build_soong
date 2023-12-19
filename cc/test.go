@@ -340,6 +340,8 @@ type testBinary struct {
 	data             []android.DataPath
 	testConfig       android.Path
 	extraTestConfigs android.Paths
+	// TODO(ron): here or cc.go
+	// team        android.TeamProperties
 }
 
 func (test *testBinary) linkerProps() []interface{} {

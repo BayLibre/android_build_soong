@@ -20,6 +20,7 @@ import (
 
 	"android/soong/bloaty"
 	"android/soong/testing"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -893,6 +894,7 @@ func (d *Defaults) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 }
 
 func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
+	mod.ModuleBase.GenerateAndroidBuildActions(actx)
 	ctx := &moduleContext{
 		ModuleContext: actx,
 	}
@@ -1682,6 +1684,9 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	actx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), procMacroDepTag, deps.ProcMacros...)
 
 	mod.afdo.addDep(ctx, actx)
+	// TODO(ron): owner_team isn't set, not sure why, so this doesn't work.
+	// Hmm, works on real bp files, but not it test.
+	mod.ModuleBase.DepsMutator(ctx)
 }
 
 // addRlibDependency will add an rlib dependency, rewriting to the snapshot library if available.
