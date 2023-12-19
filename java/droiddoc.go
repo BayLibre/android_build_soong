@@ -397,6 +397,16 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 			sm := module.(SystemModulesProvider)
 			outputDir, outputDeps := sm.OutputDirAndDeps()
 			deps.systemModules = &systemModules{outputDir, outputDeps}
+		case aconfigDeclarationTag:
+			if ctx.OtherModuleHasProvider(module, android.AconfigDeclarationsProviderKey) {
+				dep := ctx.OtherModuleProvider(module, android.AconfigDeclarationsProviderKey).(android.AconfigDeclarationsProviderData)
+				deps.aconfigProtoFiles = append(deps.aconfigProtoFiles, dep.IntermediateCacheOutputPath)
+			} else {
+				ctx.ModuleErrorf("Only aconfig_declarations module type is allowed for "+
+					"flags_packages property, but %s is not aconfig_declarations module type",
+					module.Name(),
+				)
+			}
 		}
 	})
 	// do not pass exclude_srcs directly when expanding srcFiles since exclude_srcs
