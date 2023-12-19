@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "81837fab_72842dd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T18:50:33Z",
+      "side": 1,
+      "message": "I have done some additional testing\n- git_master-art:mainline_modules https://android-build.corp.google.com/builds/abtd/run/L88200030000862973\n- aosp-master-art:mainline_modules_sdks,mainline_modules_x86_64 https://android-build.corp.google.com/builds/abtd/run/L31800030000896707\n\nI ran into some infra setup errors while trying to run `git_master-art-host:art-gtest`. forrest does not let me run this test https://screenshot.googleplex.com/7GAPgrg76EexEad",
+      "parentUuid": "db2b1c50_96fa3525",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "caa26a04_d222dd17",
@@ -179,6 +197,30 @@
       "side": 1,
       "message": "`android.FilterListPred` takes a predicate. I think you can access the field in the predicate?",
       "parentUuid": "d2a6f1f3_90b70f07",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 16
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07a6110d_71b2f60e",
+        "filename": "android/apex_contributions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T18:50:33Z",
+      "side": 1,
+      "message": "Ohh I see what you mean. \n\nI think that approach will make the code more verbose\n- We will need to get the values of `PrebuiltSelectionInfoMap` as a list first for use in `FilterListPred`, which would be one for loop\n- call `FilterListPred` (uses another for loop internally)\n- We will need to postprocess the returned values of `FilterListPred` to convert a list of `PrebuiltSelectionInfo` to a list of string (another for loop)\n\nIt is still all O(N), but since it makes the code more verbose, I would prefer not to use `FilterListPred` here",
+      "parentUuid": "f81565f9_7d67675a",
       "range": {
         "startLine": 169,
         "startChar": 0,
@@ -517,6 +559,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d16871_55e50e3b",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T18:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc0f94b2_f9b6412b",
+      "range": {
+        "startLine": 537,
+        "startChar": 50,
+        "endLine": 537,
+        "endChar": 56
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa82fd9d_cde77a7a",
@@ -566,6 +632,24 @@
       "side": 1,
       "message": "Yes. An apex that provides a boot image profile must also be one that provides boot dex jars. Since the apexes have been added as dependencies by the code above, you don\u0027t need this line.\n\nWe added `art-bootclasspath-fragment` in addition to java modules because we used to take boot image profiles from bootclasspath_fragment modules and take dex jars from java modules. Since you now take both boot image profiles and dex jars from the apex module, there is no need to special-case com.android.art.",
       "parentUuid": "493d7e7d_72471aef",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7627a22_06e656a6",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T18:50:33Z",
+      "side": 1,
+      "message": "This makes sense now, thanks.\nI have removed this code path.",
+      "parentUuid": "c21f16fa_a4a560e3",
       "revId": "1555a70ef4a270fa11363a57a429825091bab888",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -641,6 +725,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35855834_2d961c40",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T18:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9afe69d4_97b85422",
+      "range": {
+        "startLine": 555,
+        "startChar": 5,
+        "endLine": 555,
+        "endChar": 47
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b55c81e_b8ce1225",
@@ -654,6 +762,30 @@
       "writtenOn": "2023-12-18T15:32:14Z",
       "side": 1,
       "message": "```suggestion\n\t\t\t// We need to add a dep on only the dex jars listed in `contents` of `bootclasspath_fragment`s\n```",
+      "range": {
+        "startLine": 564,
+        "startChar": 30,
+        "endLine": 564,
+        "endChar": 64
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84590fe8_b853a05f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T18:50:33Z",
+      "side": 1,
+      "message": "I think the suggested edit is not accurate here. This newly introduced soong dependency edge will be on the apex and not on the java_sdk_library_import/java_import",
+      "parentUuid": "3b55c81e_b8ce1225",
       "range": {
         "startLine": 564,
         "startChar": 30,
