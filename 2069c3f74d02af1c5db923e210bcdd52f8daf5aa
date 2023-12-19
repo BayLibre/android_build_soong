@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6525bf5_470cc382",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T01:39:32Z",
+      "side": 1,
+      "message": "the presubmit errors look unrelated. It seems to fail without the CL as well https://android-build.corp.google.com/builds/abtd/run/L90800030000878146\n\nReattempting presubmit",
+      "revId": "2069c3f74d02af1c5db923e210bcdd52f8daf5aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
