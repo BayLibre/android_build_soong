@@ -314,6 +314,7 @@ func (p *PythonLibraryModule) anySrcHasExt(ctx android.BottomUpMutatorContext, e
 //   - if required, specifies launcher and adds launcher dependencies,
 //   - applies python version mutations to Python dependencies
 func (p *PythonLibraryModule) DepsMutator(ctx android.BottomUpMutatorContext) {
+	p.ModuleBase.DepsMutator(ctx)
 	android.ProtoDeps(ctx, &p.protoProperties)
 
 	versionVariation := []blueprint.Variation{
@@ -419,6 +420,8 @@ func (p *PythonLibraryModule) AddDepsOnPythonLauncherAndStdlib(ctx android.Botto
 
 // GenerateAndroidBuildActions performs build actions common to all Python modules
 func (p *PythonLibraryModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	p.ModuleBase.GenerateAndroidBuildActions(ctx)
+
 	expandedSrcs := android.PathsForModuleSrcExcludes(ctx, p.properties.Srcs, p.properties.Exclude_srcs)
 	ctx.SetProvider(blueprint.SrcsFileProviderKey, blueprint.SrcsFileProviderData{SrcPaths: expandedSrcs.Strings()})
 

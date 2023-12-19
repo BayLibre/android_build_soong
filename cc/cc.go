@@ -25,6 +25,7 @@ import (
 	"strings"
 
 	"android/soong/testing"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -2134,9 +2135,10 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		ctx.SetProvider(testing.TestModuleProviderKey, testing.TestModuleProviderData{})
 	}
 	ctx.SetProvider(blueprint.SrcsFileProviderKey, blueprint.SrcsFileProviderData{SrcPaths: deps.GeneratedSources.Strings()})
+	// TODO(ron): needed?
+	c.ModuleBase.GenerateAndroidBuildActions(ctx)
 
 	aconfig.CollectDependencyAconfigFiles(ctx, &c.mergedAconfigFiles)
-
 	c.maybeInstall(ctx, apexInfo)
 }
 
@@ -2739,6 +2741,9 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	}
 
 	updateImportedLibraryDependency(ctx)
+
+	// TODO(ron): needed?
+	c.ModuleBase.DepsMutator(ctx)
 }
 
 func BeginMutator(ctx android.BottomUpMutatorContext) {
