@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/android/team_proto"
 	"android/soong/bazel"
 	"crypto/md5"
 	"encoding/hex"
@@ -29,6 +30,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
+	"google.golang.org/protobuf/encoding/prototext"
 )
 
 var (
@@ -531,6 +533,23 @@ type distProperties struct {
 	Dists []Dist `android:"arch_variant"`
 }
 
+type TeamProperties struct {
+	// `team` module that owns the module, as interpreted by "owner".
+	Team *string `android:"path"`
+}
+
+type TeamDepTagType struct {
+	blueprint.BaseDependencyTag
+}
+
+var teamDepTag = TeamDepTagType{}
+var TeamProviderKey = blueprint.NewProvider[TeamProviderData]()
+
+// Provider published by Team
+type TeamProviderData struct {
+	IntermediatePath WritablePath
+}
+
 // CommonTestOptions represents the common `test_options` properties in
 // Android.bp.
 type CommonTestOptions struct {
@@ -693,7 +712,9 @@ func InitAndroidModule(m Module) {
 	m.AddProperties(
 		&base.nameProperties,
 		&base.commonProperties,
-		&base.distProperties)
+		&base.distProperties,
+		&base.teamProperties,
+	)
 
 	initProductVariableModule(m)
 
@@ -830,6 +851,9 @@ type ModuleBase struct {
 
 	// The primary licenses property, may be nil, records license metadata for the module.
 	primaryLicensesProperty applicableLicensesProperty
+
+	// The team (defined by the owner/vendor) who owns the property.
+	teamProperties TeamProperties
 
 	noAddressSanitizer   bool
 	installFiles         InstallPaths
@@ -989,8 +1013,67 @@ func sliceReflectionValue(value reflect.Value) []string {
 }
 
 func (m *ModuleBase) ComponentDepsMutator(BottomUpMutatorContext) {}
+func (m *ModuleBase) DepsMutator(BottomUpMutatorContext)          {}
 
-func (m *ModuleBase) DepsMutator(BottomUpMutatorContext) {}
+func (m *ModuleBase) baseDepsMutator(ctx BottomUpMutatorContext) {
+	if m.Team() != "" {
+		// TODO(rbraunstein): Only add dependency if it doesn't already have one?
+		// Where should I deal with variants?
+		ctx.AddDependency(ctx.Module(), teamDepTag, m.Team())
+	}
+}
+
+func (m *ModuleBase) GenerateAndroidBuildActions(ctx ModuleContext) {
+	m.generateActionsForTeamProto(ctx)
+}
+
+// Write an intermediate .textproto file with team information for each _test module
+// that has a populated Team field.
+// The `_test` module is responsible for writing out the details of team it depends on.
+func (m *ModuleBase) generateActionsForTeamProto(ctx ModuleContext) {
+	if m.Team() == "" {
+		return
+	}
+
+	trendy_team_id := ""
+	for c, dep := range ctx.GetDirectDepsWithTag(teamDepTag) {
+		if c > 0 && trendy_team_id != dep.(*teamModule).TrendyTeamId(ctx) {
+			ctx.ModuleErrorf("Only one `team` should be found.")
+		}
+		trendy_team_id = dep.(*teamModule).TrendyTeamId(ctx)
+	}
+
+	if trendy_team_id == "" {
+		ctx.PropertyErrorf("trendy_team_id", "on `team=%s` module not set.", m.Team())
+	}
+
+	bpFilePath := filepath.Join(ctx.ModuleDir(), ctx.BlueprintsFile())
+	intermediatePath := PathForModuleOut(
+		ctx, "intermediateOwnerData.textproto",
+	)
+
+	// We're going to have to find a way in soong to make it so this doesn't
+	// get done on every analysis run.  It's a substantial amount of time for files
+	// that most builds, especially local builds, aren't going to need.
+	moduleName := ctx.ModuleName()
+	ownerData := team_proto.Team{
+		TrendyTeamId: &trendy_team_id,
+		TargetName:   &moduleName,
+		Path:         &bpFilePath,
+	}
+
+	fileBytes, err := prototext.Marshal(&ownerData)
+	if err != nil {
+		ctx.ModuleErrorf("Unable to marshal owner data.")
+	}
+	WriteFileRule(ctx, intermediatePath, string(fileBytes))
+
+	ctx.setProvider(
+		TeamProviderKey, TeamProviderData{
+			IntermediatePath: intermediatePath,
+		},
+	)
+}
 
 // AddProperties "registers" the provided props
 // each value in props MUST be a pointer to a struct
@@ -1435,6 +1518,10 @@ func (m *ModuleBase) InstallForceOS() (*OsType, *ArchType) {
 
 func (m *ModuleBase) Owner() string {
 	return String(m.commonProperties.Owner)
+}
+
+func (m *ModuleBase) Team() string {
+	return String(m.teamProperties.Team)
 }
 
 func (m *ModuleBase) setImageVariation(variant string) {

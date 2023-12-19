@@ -169,7 +169,7 @@ func (d *DefaultsModuleBase) productVariableProperties() interface{} {
 	return d.defaultableVariableProperties
 }
 
-func (d *DefaultsModuleBase) GenerateAndroidBuildActions(ctx ModuleContext) {}
+// func (d *DefaultsModuleBase) GenerateAndroidBuildActions(ctx ModuleContext) {}
 
 func InitDefaultsModule(module DefaultsModule) {
 	commonProperties := &commonProperties{}

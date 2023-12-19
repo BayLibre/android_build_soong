@@ -1294,6 +1294,7 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.extraTestConfigs = android.PathsForModuleSrc(ctx, a.testProperties.Test_options.Extra_test_configs)
 	a.data = android.PathsForModuleSrc(ctx, a.testProperties.Data)
 	android.SetProvider(ctx, testing.TestModuleProviderKey, testing.TestModuleProviderData{})
+	a.ModuleBase.GenerateAndroidBuildActions(ctx)
 }
 
 func (a *AndroidTest) FixTestConfig(ctx android.ModuleContext, testConfig android.Path) android.Path {
@@ -1486,9 +1487,10 @@ type OverrideAndroidTest struct {
 	android.OverrideModuleBase
 }
 
-func (i *OverrideAndroidTest) GenerateAndroidBuildActions(_ android.ModuleContext) {
+func (a *OverrideAndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// All the overrides happen in the base module.
 	// TODO(jungjw): Check the base module type.
+	a.ModuleBase.GenerateAndroidBuildActions(ctx)
 }
 
 // override_android_test is used to create an android_app module based on another android_test by overriding

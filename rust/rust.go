@@ -894,6 +894,7 @@ func (d *Defaults) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 }
 
 func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
+	mod.ModuleBase.GenerateAndroidBuildActions(actx)
 	ctx := &moduleContext{
 		ModuleContext: actx,
 	}
@@ -1683,6 +1684,7 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	actx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), procMacroDepTag, deps.ProcMacros...)
 
 	mod.afdo.addDep(ctx, actx)
+	mod.ModuleBase.DepsMutator(ctx)
 }
 
 // addRlibDependency will add an rlib dependency, rewriting to the snapshot library if available.
