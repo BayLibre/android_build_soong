@@ -119,6 +119,7 @@ func (s *SystemServerClasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 		ctx.PropertyErrorf("contents", "Either contents or standalone_contents needs to be non-empty")
 	}
 
+	Repackage(ctx, s.Name())
 	configuredJars := s.configuredJars(ctx)
 	classpathJars := configuredJarListToClasspathJars(ctx, configuredJars, s.classpathType)
 	standaloneConfiguredJars := s.standaloneConfiguredJars(ctx)
