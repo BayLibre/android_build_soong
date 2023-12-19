@@ -34,6 +34,24 @@
       "parentUuid": "03a21b88_304bb0fb",
       "revId": "c4c733dbadb1d630efa98a65aaf08d3e66533975",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff20f5b6_ef2f28b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2023-12-19T01:06:38Z",
+      "side": 1,
+      "message": "I have tried none sdk_version myself too, but I don\u0027t think it works.\n\nWith none sdk_version and none system_modules, the java.lang is missing.\n\n```\nFAILED: out/soong/.intermediates/frameworks/libs/modules-utils/java/aconfig-annotations-lib/android_common/turbine/aconfig-ann\notations-lib.jar                                                                                                              \nprebuilts/jdk/jdk17/linux-x86/bin/java -XX:OnError\u003d\"cat hs_err_pid%p.log\" -XX:CICompilerCount\u003d6 -XX:+UseDynamicNumberOfGCThrea\nds -jar out/host/linux-x86/framework/turbine.jar --output out/soong/.intermediates/frameworks/libs/modules-utils/java/aconfig-\nannotations-lib/android_common/turbine/aconfig-annotations-lib.jar.tmp --sources @out/soong/.intermediates/frameworks/libs/mod\nules-utils/java/aconfig-annotations-lib/android_common/turbine/aconfig-annotations-lib.jar.rsp  --source_jars  --javacopts -Xm\naxerrs 9999999 -encoding UTF-8 -sourcepath \"\" -g -XDskipDuplicateBridges\u003dtrue -XDstringConcat\u003dinline -Xlint:-dep-ann -source 17 -target 17 -- --bootclasspath \"\"  \u0026\u0026 (for o in out/soong/.intermediates/frameworks/libs/modules-utils/java/aconfig-annotations-lib/android_common/turbine/aconfig-annotations-lib.jar; do if cmp -s ${o}.tmp ${o} ; then rm ${o}.tmp ; else mv ${o}.tmp ${o} ; fi; done )\njava.lang.IllegalArgumentException: Could not find java.lang on bootclasspath\n        at com.google.turbine.binder.Binder.bindPackages(Binder.java:240)\n        at com.google.turbine.binder.Binder.bind(Binder.java:148)\n        at com.google.turbine.binder.Binder.bind(Binder.java:97)\n        at com.google.turbine.main.Main.bind(Main.java:270)\n        at com.google.turbine.main.Main.compile(Main.java:158)\n        at com.google.turbine.main.Main.compile(Main.java:133)\n        at com.google.turbine.main.Main.main(Main.java:89)\n```\n\nWith \"core-all-system-modules\" and none sdk_version, the build system enforces the consistency for `unsupportedappusage` sdk_version. (Changing \"aconfig-annotations-lib\" alone, the build seems to succeed in AOSP, but I haven\u0027t tried in git_main.)\n\n```\n[100% 2/2] analyzing Android.bp files and generating ninja file at out/soong/build.aosp_cf_x86_64_phone.ninja\nFAILED: out/soong/build.aosp_cf_x86_64_phone.ninja\ncd \"$(dirname \"out/host/linux-x86/bin/soong_build\")\" \u0026\u0026 BUILDER\u003d\"$PWD/$(basename \"out/host/linux-x86/bin/soong_build\")\" \u0026\u0026 cd / \u0026\u0026 env -i  \"$BUILDER\"     --top \"$TOP\"     --soong_out \"out/soong\"     --out \"out\"     --soong_variables out/soong/soong.aosp_cf_x86_64_phone.variables -o out/soong/build.aosp_cf_x86_64_phone.ninja --globListDir aosp_cf_x86_64_phone --globFile out/soong/globs-aosp_cf_x86_64_phone.ninja -l out/.module_paths/Android.bp.list --available_env out/soong/soong.environment.available --used_env out/soong/soong.environment.used.aosp_cf_x86_64_phone.build Android.bp\nerror: external/libphonenumber/Android.bp:35:1: module \"libphonenumber-platform\" variant \"android_common\": compiles against core Java API, but dependency \"unsupportedappusage\" is compiling against private API. In order to fix this, consider adjusting sdk_version: OR platform_apis: property of the source or target module so that target module is built with the same or smaller API set when compared to the source.\n```",
+      "parentUuid": "f65a95a5_9f15c3c3",
+      "revId": "c4c733dbadb1d630efa98a65aaf08d3e66533975",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
