@@ -46,6 +46,30 @@
       },
       "revId": "71c06c0a4945aab37c448a6c4aa75d577ff3f87c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4848cc31_b497d443",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T21:44:10Z",
+      "side": 1,
+      "message": "I see. Thanks for the explanation. So we are now overloading BootclasspathFragmentApexContentInfo for two very different purposes. On one hand, when it\u0027s a provider of bootclasspath_fragment, we use it to determine bootclasspath_fragment\u0027s contribution when building the source apex. On the other hand, when it\u0027s a provider of the (source/prebuilt) apex module, we use it to retrieve files from the apex.\n\nMaybe it\u0027s better to use two separate providers for these two different purposes. Or, please at least update the comment on BootclasspathFragmentApexContentInfo to clarify what exactly it\u0027s used for in different cases.",
+      "parentUuid": "302ac165_71f653e1",
+      "range": {
+        "startLine": 780,
+        "startChar": 2,
+        "endLine": 784,
+        "endChar": 75
+      },
+      "revId": "71c06c0a4945aab37c448a6c4aa75d577ff3f87c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
