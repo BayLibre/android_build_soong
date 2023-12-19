@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "244810be_c0d5d7e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-19T23:10:02Z",
+      "side": 1,
+      "message": "Late drive by review, but since we\u0027d like to reduce the size of the android package, does it make sense to move the offending module types out of the android package?  Is it just `filegroup`, or are there more?",
+      "revId": "aa005ae080b4837c42ff8174ee8300f0dff9628e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
