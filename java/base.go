@@ -2331,6 +2331,28 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 	return deps
 }
 
+func (j *Module) collectRepackageInfo(ctx android.ModuleContext) RepackageProviderData {
+	// TODO: add the new prop jarjar prefix
+
+	combinedRepackageInfo := make(map[string]string)
+
+	ctx.VisitDirectDeps(func(m android.Module) {
+		depRepackageInfo, _ := android.OtherModuleProvider(ctx, m, RepackageProvider)
+		if len(depRepackageInfo.PackageToPrefix) > 0 {
+			for p, b := range depRepackageInfo.PackageToPrefix {
+				if existingbase, existed := combinedRepackageInfo[p]; !existed || existingbase == "" {
+					combinedRepackageInfo[p] = b
+				} else if b != "" && b != existingbase {
+					ctx.ModuleErrorf("Different base for package %s: %s, %s", p, b, existingbase)
+				}
+			}
+		}
+	})
+	return RepackageProviderData{
+		PackageToPrefix: combinedRepackageInfo,
+	}
+}
+
 func addPlugins(deps *deps, pluginJars android.Paths, pluginClasses ...string) {
 	deps.processorPath = append(deps.processorPath, pluginJars...)
 	deps.processorClasses = append(deps.processorClasses, pluginClasses...)
