@@ -16,6 +16,57 @@
       "message": "LGTM, but I\u0027d like Jihoon to take another look",
       "revId": "53fb108415ea310d1ff7a1ad3ad6ec82ffc8ea78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99608ffb_037c580c",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-19T20:37:29Z",
+      "side": 1,
+      "message": "nit: can you update this to satisfy go/todo-style?",
+      "revId": "53fb108415ea310d1ff7a1ad3ad6ec82ffc8ea78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f873e2e_4fca79a7",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-19T20:37:29Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "53fb108415ea310d1ff7a1ad3ad6ec82ffc8ea78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "638499af_985faf01",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-19T20:37:29Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "53fb108415ea310d1ff7a1ad3ad6ec82ffc8ea78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
