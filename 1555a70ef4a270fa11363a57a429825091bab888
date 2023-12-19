@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d192bd8c_64de2823",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T01:44:36Z",
+      "side": 1,
+      "message": "I have verified that this CL works with `mainline_modules` target https://android-build.corp.google.com/builds/abtd/run/L24300030000864678.",
+      "parentUuid": "55ffc5bb_83ce71d3",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "caa26a04_d222dd17",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -58,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0470049c_b1713766",
+        "filename": "android/apex_contributions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T01:44:36Z",
+      "side": 1,
+      "message": "In the case of apexes, it is the canonical name of the apex on device (`/apex/\u003capex_name\u003e`). As a more concrete example, the following soong modules have the same api domain `com.android.foo`\n- aosp apex `com.android.foo`\n- google source apex `com.google.android.foo`\n- google prebuilt apex `prebuilt_com.google.android.foo`\n- google other prebuilt apex `prebuilt_com.google.android.foo.v2`\n\nThe genesis of this terminology is in go/android-build-api-domains",
+      "parentUuid": "ae074907_e55c33ee",
+      "range": {
+        "startLine": 167,
+        "startChar": 54,
+        "endLine": 167,
+        "endChar": 64
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d459f398_e3866e91",
@@ -71,6 +113,30 @@
       "writtenOn": "2023-12-18T15:32:14Z",
       "side": 1,
       "message": "Consider changing `android.FilterListPred` to a generic function and use it here.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 16
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2a6f1f3_90b70f07",
+        "filename": "android/apex_contributions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T01:44:36Z",
+      "side": 1,
+      "message": "I think that would require filtering on the properties of a struct (`PrebuiltSelectionInfo` in this example).\n\nMy understanding of golang generics is limited, but I dont think golang generics supports that",
+      "parentUuid": "d459f398_e3866e91",
       "range": {
         "startLine": 169,
         "startChar": 0,
@@ -98,6 +164,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26c4f862_f9e686eb",
+        "filename": "apex/dexpreopt_bootjars_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T01:44:36Z",
+      "side": 1,
+      "message": "This is just for testing, a naming convention has not been settled on yet.",
+      "parentUuid": "a65c07d5_fd84c765",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cee7ee97_54313448",
@@ -111,6 +195,24 @@
       "writtenOn": "2023-12-18T19:21:25Z",
       "side": 1,
       "message": "Is this supposed to be `com.android.art.v2` or `com.android.art`?",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58b238e4_e1ee7b74",
+        "filename": "apex/dexpreopt_bootjars_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T01:44:36Z",
+      "side": 1,
+      "message": "The latter. This other thread in this CL has some additional details https://android-review.git.corp.google.com/c/platform/build/soong/+/2876755/comment/cee7ee97_54313448/",
+      "parentUuid": "cee7ee97_54313448",
       "revId": "1555a70ef4a270fa11363a57a429825091bab888",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -132,6 +234,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4710839a_54a8b467",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T01:44:36Z",
+      "side": 1,
+      "message": "Good catch, thanks",
+      "parentUuid": "505fa6d3_c6928c6e",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51f38f40_af615595",
@@ -145,6 +265,24 @@
       "writtenOn": "2023-12-18T19:21:25Z",
       "side": 1,
       "message": "Is there anyway to prevent the hardcoding of the `.prof` file path? Do you mind explaining how this is currently determined?",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "873e3da1_d16920b1",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T01:44:36Z",
+      "side": 1,
+      "message": "I think it is hardcoded in [java](https://cs.android.com/android/_/android/platform/build/soong/+/51428c451a73d9d246ccecd045b0b8c76a417df1:java/dexpreopt_config.go;l\u003d48;bpv\u003d1;bpt\u003d0;drc\u003dc6879f3ddd445fa88a4db3493af39147a95afb53)\n\nI have updated the CL to export this from `build/soong/java` to `build/soong/apex`",
+      "parentUuid": "51f38f40_af615595",
       "revId": "1555a70ef4a270fa11363a57a429825091bab888",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -172,6 +310,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64fc2d38_ab6cd4fe",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T01:44:36Z",
+      "side": 1,
+      "message": "I have made both these props private and have created setters and a constructor for use in `apex` package",
+      "parentUuid": "59d4b79c_195461bb",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 374,
+        "endChar": 10
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f656efb8_58f91a9a",
@@ -185,6 +347,30 @@
       "writtenOn": "2023-12-18T15:32:14Z",
       "side": 1,
       "message": "Does this change belong to aosp/2876754?",
+      "range": {
+        "startLine": 803,
+        "startChar": 1,
+        "endLine": 805,
+        "endChar": 2
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "224d905a_a0a89e54",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T01:44:36Z",
+      "side": 1,
+      "message": "I think this is not required. `profilePathErr` will never be non null when building from source. I have removed this.",
+      "parentUuid": "f656efb8_58f91a9a",
       "range": {
         "startLine": 803,
         "startChar": 1,
@@ -241,6 +427,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f028d460_60e9b6f6",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T01:44:36Z",
+      "side": 1,
+      "message": "I think we need this for accessing the boot image profile as well? In this [unit test](https://android-review.git.corp.google.com/c/platform/build/soong/+/2876755/5/apex/dexpreopt_bootjars_test.go) added in this CL, each of these ART apexes will provide the information using a provider\n- com.android.foo\n- prebuilt.com.android.foo\n- com.android.foo.v2 (a prebuilt)\n\nTo access the provider, we need to create a dependency on the ART apex which is active in a specific release configuration\n\nThere is some duplication though in line 550, which also adds a dependency on `com.android.foo`. I think line 550 never gets invoked in manifests that contain `platform-bootclasspath`, including this particular unit test",
+      "parentUuid": "99a13825_95c643ec",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 60
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa82fd9d_cde77a7a",
@@ -260,6 +470,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "493d7e7d_72471aef",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T01:44:36Z",
+      "side": 1,
+      "message": "Jiakai, is this comment still valid after the discussion in the other thread? https://android-review.git.corp.google.com/c/platform/build/soong/+/2876755/comment/99a13825_95c643ec/",
+      "parentUuid": "aa82fd9d_cde77a7a",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "212690ff_17b5c6a0",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 4
@@ -271,6 +499,30 @@
       "writtenOn": "2023-12-18T15:32:14Z",
       "side": 1,
       "message": "Is this for dex jars rather than boot image profiles? If so, could you please move it to aosp/2876756?",
+      "range": {
+        "startLine": 555,
+        "startChar": 5,
+        "endLine": 555,
+        "endChar": 47
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c75a8ec_8f185ffc",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T01:44:36Z",
+      "side": 1,
+      "message": "I think we need this to access the profile using a provider. Deduping this into the other discussion thread in https://android-review.git.corp.google.com/c/platform/build/soong/+/2876755/comment/99a13825_95c643ec/",
+      "parentUuid": "212690ff_17b5c6a0",
       "range": {
         "startLine": 555,
         "startChar": 5,
