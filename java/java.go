@@ -26,6 +26,7 @@ import (
 
 	"android/soong/remoteexec"
 	"android/soong/testing"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -712,6 +713,9 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	j.compile(ctx, nil, nil, nil)
 
+	// Needed?
+	j.ModuleBase.GenerateAndroidBuildActions(ctx)
+
 	exclusivelyForApex := !apexInfo.IsForPlatform()
 	if (Bool(j.properties.Installable) || ctx.Host()) && !exclusivelyForApex {
 		var extraInstallDeps android.InstallPaths
@@ -1173,6 +1177,7 @@ func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	j.addDataDeviceBinsDeps(ctx)
 	j.deps(ctx)
+	j.Test.DepsMutator(ctx)
 }
 
 func (j *TestHost) AddExtraResource(p android.Path) {
@@ -1218,6 +1223,12 @@ func (j *TestHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.Test.generateAndroidBuildActionsWithConfig(ctx, configs)
 	ctx.SetProvider(testing.TestModuleProviderKey, testing.TestModuleProviderData{})
 }
+
+/*
+func (j *Test) DepsMutator(ctx android.BottomUpMutatorContext) {
+	j.Library.DepsMutator(ctx)
+        }
+*/
 
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.generateAndroidBuildActionsWithConfig(ctx, nil)
@@ -1278,7 +1289,6 @@ func (j *Test) generateAndroidBuildActionsWithConfig(ctx android.ModuleContext, 
 			ctx.PropertyErrorf("jni_libs", "%q of type %q is not supported", dep.Name(), ctx.OtherModuleType(dep))
 		}
 	})
-
 	j.Library.GenerateAndroidBuildActions(ctx)
 }
 

@@ -93,6 +93,7 @@ func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
 		fg.srcs = PathsWithModuleSrcSubDir(ctx, fg.srcs, String(fg.properties.Path))
 	}
 	ctx.SetProvider(blueprint.SrcsFileProviderKey, blueprint.SrcsFileProviderData{SrcPaths: fg.srcs.Strings()})
+	fg.ModuleBase.GenerateAndroidBuildActions(ctx)
 }
 
 func (fg *fileGroup) Srcs() Paths {
