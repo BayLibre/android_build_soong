@@ -855,6 +855,9 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 		ctx.AddVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(), kotlinPluginTag,
 			"androidx.compose.compiler_compiler-hosted")
 	}
+
+	// needed, kinda
+	j.ModuleBase.DepsMutator(ctx)
 }
 
 func hasSrcExt(srcs []string, ext string) bool {

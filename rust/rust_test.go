@@ -42,6 +42,7 @@ var prepareForRustTest = android.GroupFixturePreparers(
 		variables.DeviceVndkVersion = StringPtr("current")
 		variables.Platform_vndk_version = StringPtr("29")
 	}),
+	android.PrepareForTestWithTeamBuildComponents,
 )
 
 var rustMockedFiles = android.MockFS{
@@ -468,6 +469,39 @@ func TestLibrarySizes(t *testing.T) {
 	m := ctx.SingletonForTests("file_metrics")
 	m.Output("unstripped/libwaldo.dylib.so.bloaty.csv")
 	m.Output("libwaldo.dylib.so.bloaty.csv")
+}
+
+func TestOwners(t *testing.T) {
+	ctx := testRust(t, `
+		rust_test {
+			name: "simple-test",
+			srcs: [
+				"main.rs",
+			],
+			no_stdlibs: true,
+			host_supported: false,
+                        owner: "test-team",
+		}
+		team {
+			name: "test-team",
+			trendy_team_id: "xxx123",
+		}
+
+        `)
+	/*
+		   		rust_library {
+				name: "libfoo",
+				srcs: [
+					"foo.rs",
+				],
+				prefer_rlib: true,
+				host_supported: false,
+				no_stdlibs: true,
+			}
+	*/
+	expectedDescription := "write intermediateOwnerData.textproto"
+	ctx.ModuleForTests("simple-test", "android_arm64_armv8-a").Description(expectedDescription)
+
 }
 
 func assertString(t *testing.T, got, expected string) {
