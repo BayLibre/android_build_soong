@@ -52,6 +52,29 @@
       "parentUuid": "f65a95a5_9f15c3c3",
       "revId": "c4c733dbadb1d630efa98a65aaf08d3e66533975",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "432d69ab_5874e98b",
+        "filename": "aconfig/codegen/java_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2023-12-19T01:12:47Z",
+      "side": 1,
+      "message": "I know that hard-coding the lib name is a bad practice. What about checking if the module compiles with `sdk_version: none`?",
+      "range": {
+        "startLine": 69,
+        "startChar": 78,
+        "endLine": 69,
+        "endChar": 105
+      },
+      "revId": "c4c733dbadb1d630efa98a65aaf08d3e66533975",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
