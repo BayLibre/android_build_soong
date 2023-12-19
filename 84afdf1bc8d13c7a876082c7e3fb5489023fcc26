@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb762930_beeaa102",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-12-19T00:13:20Z",
+      "side": 1,
+      "message": "(-2 just while I ask the question so this doesn\u0027t go in by accident)\n\nShould this be derived from the mode property instead?",
+      "revId": "84afdf1bc8d13c7a876082c7e3fb5489023fcc26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
