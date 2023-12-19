@@ -478,6 +478,8 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 		}
 	})
 
+	Repackage(ctx, strings.TrimSuffix(b.Name(), "-bootclasspath-fragment"))
+
 	fragments := gatherApexModulePairDepsWithTag(ctx, bootclasspathFragmentDepTag)
 
 	// Perform hidden API processing.
