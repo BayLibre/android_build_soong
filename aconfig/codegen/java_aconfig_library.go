@@ -107,3 +107,12 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 func isModeSupported(mode string) bool {
 	return android.InList(mode, aconfigSupportedModes)
 }
+
+func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GetPackage(ctx android.ModuleContext) string {
+	declarationsModules := ctx.GetDirectDepsWithTag(declarationsTag)
+	if len(declarationsModules) != 1 {
+		panic(fmt.Errorf("Exactly one aconfig_declarations property required"))
+	}
+	declarations, _ := android.OtherModuleProvider(ctx, declarationsModules[0], android.AconfigDeclarationsProviderKey)
+	return declarations.Package
+}

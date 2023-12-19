@@ -15,6 +15,8 @@
 package java
 
 import (
+	"strings"
+
 	"android/soong/android"
 	"android/soong/dexpreopt"
 
@@ -119,6 +121,7 @@ func (s *SystemServerClasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 		ctx.PropertyErrorf("contents", "Either contents or standalone_contents needs to be non-empty")
 	}
 
+	Repackage(ctx, strings.TrimSuffix(s.Name(), "-systemserverclasspath-fragment"))
 	configuredJars := s.configuredJars(ctx)
 	classpathJars := configuredJarListToClasspathJars(ctx, configuredJars, s.classpathType)
 	standaloneConfiguredJars := s.standaloneConfiguredJars(ctx)
