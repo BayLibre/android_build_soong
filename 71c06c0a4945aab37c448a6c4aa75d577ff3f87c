@@ -22,6 +22,30 @@
       },
       "revId": "71c06c0a4945aab37c448a6c4aa75d577ff3f87c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "302ac165_71f653e1",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T21:34:29Z",
+      "side": 1,
+      "message": "I think prebuilt_bootclasspath_fragment might not be the right place for constructing the provider. This module type is part of module sdk in the current separation between module sdk and prebuilt apex drops. When we have multiple prebuilt apexes, this module will also run into a similar 1:many relationship.\n\nI think none of the reverse deps outside the apex should try to access the provider from bootclasspath_fragment directly. In this CL, `dex_bootjars` accesses this information from the source apex in source builds and not from the soruce bootclasspath_fragment module https://android-review.git.corp.google.com/c/platform/build/soong/+/2876755/9/apex/apex.go\n\nI am also in the process of migrating other rdeps (e.g. hiddenapi) to not depend on bootclasspath_fragment directly(b/308790777)",
+      "parentUuid": "5b9a65c7_68abd68c",
+      "range": {
+        "startLine": 780,
+        "startChar": 2,
+        "endLine": 784,
+        "endChar": 75
+      },
+      "revId": "71c06c0a4945aab37c448a6c4aa75d577ff3f87c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
