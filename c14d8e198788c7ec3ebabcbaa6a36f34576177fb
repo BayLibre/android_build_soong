@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1847dccb_d387def5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2023-12-19T18:29:19Z",
+      "side": 1,
+      "message": "David this should let you modify .bp files to add owner.\nI might need to create a topic and add a \"make\" repo change too.",
+      "revId": "c14d8e198788c7ec3ebabcbaa6a36f34576177fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
