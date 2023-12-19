@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87176cd8_369ef023",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T21:50:52Z",
+      "side": 0,
+      "message": "Please update the comment in hiddenapi_modular.go that this field is not available for prebuilt apexes.",
+      "range": {
+        "startLine": 1071,
+        "startChar": 2,
+        "endLine": 1071,
+        "endChar": 29
+      },
+      "revId": "53fb108415ea310d1ff7a1ad3ad6ec82ffc8ea78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

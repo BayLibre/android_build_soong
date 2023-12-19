@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b3cd72e_e89a7686",
+        "filename": "apex/deapexer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T21:50:52Z",
+      "side": 1,
+      "message": "Add a TODO here to remove this?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "e60172bc752048a17ebed4a7eeec45fdfbbe6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb15960_3934a841",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T21:50:52Z",
+      "side": 1,
+      "message": "The apex module has references to bootclasspath_fragment modules (or in practice, only one module), and bootclasspath_fragment modules have `contents`. Could you read the module names from there instead of introducing a field?\n\nMy concern is that introducing a field may cause the code to be more and more complicated in the future when there are multiple producer of the struct that fill this field in different ways.",
+      "range": {
+        "startLine": 785,
+        "startChar": 34,
+        "endLine": 785,
+        "endChar": 56
+      },
+      "revId": "e60172bc752048a17ebed4a7eeec45fdfbbe6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce3fe03_44046734",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T21:50:52Z",
+      "side": 1,
+      "message": "Make `java.apexRootRelativePathToJavaLib` public and call it here?",
+      "range": {
+        "startLine": 786,
+        "startChar": 35,
+        "endLine": 786,
+        "endChar": 69
+      },
+      "revId": "e60172bc752048a17ebed4a7eeec45fdfbbe6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fecd1588_42335cb1",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T21:50:52Z",
+      "side": 1,
+      "message": "Nit: Easier to set this field in the NewBootclasspathFragmentApexContentInfo factory instead of adding a setter?",
+      "range": {
+        "startLine": 393,
+        "startChar": 47,
+        "endLine": 393,
+        "endChar": 74
+      },
+      "revId": "e60172bc752048a17ebed4a7eeec45fdfbbe6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
