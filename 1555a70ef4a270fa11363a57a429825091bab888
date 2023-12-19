@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d56694bc_c5545b7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T19:39:22Z",
+      "side": 1,
+      "message": "art-gtest is not a test. It\u0027s a build target. Sorry for the weird setup. Just kick off a build with this build target.",
+      "parentUuid": "81837fab_72842dd8",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "caa26a04_d222dd17",
@@ -221,6 +239,30 @@
       "side": 1,
       "message": "Ohh I see what you mean. \n\nI think that approach will make the code more verbose\n- We will need to get the values of `PrebuiltSelectionInfoMap` as a list first for use in `FilterListPred`, which would be one for loop\n- call `FilterListPred` (uses another for loop internally)\n- We will need to postprocess the returned values of `FilterListPred` to convert a list of `PrebuiltSelectionInfo` to a list of string (another for loop)\n\nIt is still all O(N), but since it makes the code more verbose, I would prefer not to use `FilterListPred` here",
       "parentUuid": "f81565f9_7d67675a",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 16
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f61cd2f_57632571",
+        "filename": "android/apex_contributions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T19:39:22Z",
+      "side": 1,
+      "message": "Oh, sorry, I didn\u0027t realize that you are reading a field after filtering. It\u0027s shame that Go doesn\u0027t provide util functions to do filtering and transformation easily. Fine to keep the code as is.",
+      "parentUuid": "07a6110d_71b2f60e",
       "range": {
         "startLine": 169,
         "startChar": 0,
@@ -786,6 +828,30 @@
       "side": 1,
       "message": "I think the suggested edit is not accurate here. This newly introduced soong dependency edge will be on the apex and not on the java_sdk_library_import/java_import",
       "parentUuid": "3b55c81e_b8ce1225",
+      "range": {
+        "startLine": 564,
+        "startChar": 30,
+        "endLine": 564,
+        "endChar": 64
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75bed699_9a7d89a2",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T19:39:22Z",
+      "side": 1,
+      "message": "So, `contents` here means `contents` of the `apex_contribution`? If so, it\u0027s also worth updating the comment. It\u0027s not clear to me what `contents` means.",
+      "parentUuid": "84590fe8_b853a05f",
       "range": {
         "startLine": 564,
         "startChar": 30,
