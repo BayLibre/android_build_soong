@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/android/team_proto"
 	"android/soong/bazel"
 	"crypto/md5"
 	"encoding/hex"
@@ -29,6 +30,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
+	"google.golang.org/protobuf/encoding/prototext"
 )
 
 var (
@@ -519,6 +521,9 @@ type commonProperties struct {
 	// trace, but influence modules among products.
 	SoongConfigTrace     soongConfigTrace `blueprint:"mutated"`
 	SoongConfigTraceHash string           `blueprint:"mutated"`
+
+	// The team (defined by the owner/vendor) who owns the property.
+	Team *string `android:"path"`
 }
 
 type distProperties struct {
@@ -529,6 +534,18 @@ type distProperties struct {
 	// a list of configurations to distribute output files from this module to the
 	// distribution directory (default: $OUT/dist, configurable with $DIST_DIR)
 	Dists []Dist `android:"arch_variant"`
+}
+
+type TeamDepTagType struct {
+	blueprint.BaseDependencyTag
+}
+
+var teamDepTag = TeamDepTagType{}
+var TeamProviderKey = blueprint.NewProvider[TeamProviderData]()
+
+// Provider published by Team
+type TeamProviderData struct {
+	IntermediatePath WritablePath
 }
 
 // CommonTestOptions represents the common `test_options` properties in
@@ -992,6 +1009,65 @@ func (m *ModuleBase) ComponentDepsMutator(BottomUpMutatorContext) {}
 
 func (m *ModuleBase) DepsMutator(BottomUpMutatorContext) {}
 
+func (m *ModuleBase) baseDepsMutator(ctx BottomUpMutatorContext) {
+	if m.Team() != "" {
+		// TODO(rbraunstein): Only add dependency if it doesn't already have one?
+		// Where should I deal with variants?
+		ctx.AddDependency(ctx.Module(), teamDepTag, m.Team())
+	}
+}
+
+// Write an intermediate .textproto file with team information for every module
+// with a populated Team field.
+// i.e.
+// java_test {name: "TheTestModule", team: "SomeTeam"}
+// We write out the relationship of TestTestModule -> "SomeTeam" when visiting "TheTestModule"
+// and the details of "SomeTeam" in a .textproto
+func (m *ModuleBase) generateActionsForTeamProto(ctx ModuleContext) {
+	if m.Team() == "" {
+		return
+	}
+
+	trendy_team_id := ""
+	for c, dep := range ctx.GetDirectDepsWithTag(teamDepTag) {
+		if c > 0 && trendy_team_id != dep.(*teamModule).TrendyTeamId(ctx) {
+			ctx.ModuleErrorf("Only one `team` should be found.")
+		}
+		trendy_team_id = dep.(*teamModule).TrendyTeamId(ctx)
+	}
+
+	if trendy_team_id == "" {
+		ctx.PropertyErrorf("trendy_team_id", "on `team=%s` module not set.", m.Team())
+	}
+
+	bpFilePath := filepath.Join(ctx.ModuleDir(), ctx.BlueprintsFile())
+	intermediatePath := PathForModuleOut(
+		ctx, "intermediateOwnerData.textproto",
+	)
+
+	// We're going to have to find a way in soong to make it so this doesn't
+	// get done on every analysis run.  It's a substantial amount of time for files
+	// that most builds, especially local builds, aren't going to need.
+	moduleName := ctx.ModuleName()
+	teamData := team_proto.Team{
+		TrendyTeamId: &trendy_team_id,
+		TargetName:   &moduleName,
+		Path:         &bpFilePath,
+	}
+
+	fileBytes, err := prototext.Marshal(&teamData)
+	if err != nil {
+		ctx.ModuleErrorf("Unable to marshal team data.")
+	}
+	WriteFileRule(ctx, intermediatePath, string(fileBytes))
+
+	ctx.setProvider(
+		TeamProviderKey, TeamProviderData{
+			IntermediatePath: intermediatePath,
+		},
+	)
+}
+
 // AddProperties "registers" the provided props
 // each value in props MUST be a pointer to a struct
 func (m *ModuleBase) AddProperties(props ...interface{}) {
@@ -1437,6 +1513,10 @@ func (m *ModuleBase) Owner() string {
 	return String(m.commonProperties.Owner)
 }
 
+func (m *ModuleBase) Team() string {
+	return String(m.commonProperties.Team)
+}
+
 func (m *ModuleBase) setImageVariation(variant string) {
 	m.commonProperties.ImageVariation = variant
 }
@@ -1737,6 +1817,11 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		}
 
 		m.module.GenerateAndroidBuildActions(ctx)
+		if ctx.Failed() {
+			return
+		}
+
+		m.generateActionsForTeamProto(ctx)
 		if ctx.Failed() {
 			return
 		}
