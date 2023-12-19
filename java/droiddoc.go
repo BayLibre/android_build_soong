@@ -209,12 +209,16 @@ type Javadoc struct {
 
 	docZip      android.WritablePath
 	stubsSrcJar android.WritablePath
+
+	exportableStubsSrcJar android.WritablePath
 }
 
 func (j *Javadoc) OutputFiles(tag string) (android.Paths, error) {
 	switch tag {
 	case "":
 		return android.Paths{j.stubsSrcJar}, nil
+	case ".exportable":
+		return android.Paths{j.exportableStubsSrcJar}, nil
 	case ".docs.zip":
 		return android.Paths{j.docZip}, nil
 	default:
