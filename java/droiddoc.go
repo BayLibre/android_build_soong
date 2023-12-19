@@ -208,12 +208,16 @@ type Javadoc struct {
 
 	docZip      android.WritablePath
 	stubsSrcJar android.WritablePath
+
+	exportableStubsSrcJar android.WritablePath
 }
 
 func (j *Javadoc) OutputFiles(tag string) (android.Paths, error) {
 	switch tag {
 	case "":
 		return android.Paths{j.stubsSrcJar}, nil
+	case ".exportable":
+		return android.Paths{j.exportableStubsSrcJar}, nil
 	case ".docs.zip":
 		return android.Paths{j.docZip}, nil
 	default:
@@ -398,8 +402,7 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 			outputDir, outputDeps := sm.OutputDirAndDeps()
 			deps.systemModules = &systemModules{outputDir, outputDeps}
 		case aconfigDeclarationTag:
-			if ctx.OtherModuleHasProvider(module, android.AconfigDeclarationsProviderKey) {
-				dep := ctx.OtherModuleProvider(module, android.AconfigDeclarationsProviderKey).(android.AconfigDeclarationsProviderData)
+			if dep, ok := android.OtherModuleProvider(ctx, module, android.AconfigDeclarationsProviderKey); ok {
 				deps.aconfigProtoFiles = append(deps.aconfigProtoFiles, dep.IntermediateCacheOutputPath)
 			} else {
 				ctx.ModuleErrorf("Only aconfig_declarations module type is allowed for "+
