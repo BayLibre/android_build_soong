@@ -92,6 +92,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bc8cf842_ec06e7bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T20:17:26Z",
+      "side": 1,
+      "message": "Done. https://android-build.corp.google.com/builds/abtd/run/L82400030000920194",
+      "parentUuid": "d56694bc_c5545b7f",
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "caa26a04_d222dd17",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -852,6 +870,30 @@
       "side": 1,
       "message": "So, `contents` here means `contents` of the `apex_contribution`? If so, it\u0027s also worth updating the comment. It\u0027s not clear to me what `contents` means.",
       "parentUuid": "84590fe8_b853a05f",
+      "range": {
+        "startLine": 564,
+        "startChar": 30,
+        "endLine": 564,
+        "endChar": 64
+      },
+      "revId": "1555a70ef4a270fa11363a57a429825091bab888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f2a80f_3550cc7d",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-19T20:17:26Z",
+      "side": 1,
+      "message": "Done, sorry for the confusion.",
+      "parentUuid": "75bed699_9a7d89a2",
       "range": {
         "startLine": 564,
         "startChar": 30,
