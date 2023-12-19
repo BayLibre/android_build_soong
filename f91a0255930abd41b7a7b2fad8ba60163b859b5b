@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "141accd5_178c8134",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-19T18:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dbac2be_bdf4a5f2",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "f91a0255930abd41b7a7b2fad8ba60163b859b5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a7d46ae_988be710",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-19T18:00:30Z",
       "side": 1,
       "message": "Nit: Multiple Change-Id. The second one wins.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 52
+      },
+      "revId": "f91a0255930abd41b7a7b2fad8ba60163b859b5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc5c3aee_f9b2c6f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-19T18:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a7d46ae_988be710",
       "range": {
         "startLine": 34,
         "startChar": 0,
