@@ -90,6 +90,9 @@ type CommonProperties struct {
 	// if not blank, run jarjar using the specified rules file
 	Jarjar_rules *string `android:"path,arch_variant"`
 
+	// if not blank, used as prefix to generate repackage rule
+	Jarjar_prefix *string
+
 	// If not blank, set the java version passed to javac as -source and -target
 	Java_version *string
 
@@ -2329,6 +2332,47 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 	})
 
 	return deps
+}
+
+func (j *Module) collectRepackageInfo(ctx android.ModuleContext) RepackageProviderData {
+	combinedRepackageInfo := make(map[string]string)
+
+	// gather repackage information from direct deps
+	ctx.VisitDirectDeps(func(m android.Module) {
+		if depRepackageInfo, ok := android.OtherModuleProvider(ctx, m, RepackageProvider); ok {
+			for p, b := range depRepackageInfo.PackageToPrefix {
+				if existingPrefix, existed := combinedRepackageInfo[p]; !existed || existingPrefix == "" {
+					combinedRepackageInfo[p] = b
+				} else if b != "" && b != existingPrefix {
+					ctx.ModuleErrorf("Different prefix for package %s: %s, %s", p, b, existingPrefix)
+				}
+			}
+		}
+	})
+
+	// update repackage information if jarjar_prefix is explicitly given
+	prefix := proptools.StringDefault(j.properties.Jarjar_prefix, "")
+	if prefix != "" {
+		for p, b := range combinedRepackageInfo {
+			if b == "" {
+				combinedRepackageInfo[p] = prefix
+			}
+		}
+	}
+
+	return RepackageProviderData{
+		PackageToPrefix: combinedRepackageInfo,
+	}
+}
+
+func hasAconfigDeclarationAsDirectDep(ctx android.ModuleContext) bool {
+	result := false
+	ctx.VisitDirectDeps(func(m android.Module) {
+		if _, isAconfigDeclaration := m.(*aconfig.DeclarationsModule); isAconfigDeclaration {
+			result = true
+		}
+	})
+	return result
 }
 
 func addPlugins(deps *deps, pluginJars android.Paths, pluginClasses ...string) {
