@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b9a65c7_68abd68c",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-19T21:09:13Z",
+      "side": 1,
+      "message": "Sorry, one more thing. It might be surprising to users that this provider is not taken from the bootclasspath fragment but constructed here. They may try to get the provider from the bootclasspath fragment and fail.\n\nIs is possible to construct this provider in the bootclasspath fragment, and then take it here, just like how it\u0027s done for the source build?",
+      "range": {
+        "startLine": 780,
+        "startChar": 2,
+        "endLine": 784,
+        "endChar": 75
+      },
+      "revId": "71c06c0a4945aab37c448a6c4aa75d577ff3f87c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
