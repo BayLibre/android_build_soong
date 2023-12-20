@@ -699,7 +699,7 @@ func getModulesForImage(ctx android.ModuleContext, imageConfig *bootImageConfig)
 // extractEncodedDexJarsFromModulesOrBootclasspathFragments gets the hidden API encoded dex jars for
 // the given modules.
 func extractEncodedDexJarsFromModulesOrBootclasspathFragments(ctx android.ModuleContext, apexJarModulePairs []apexJarModulePair) bootDexJarByModule {
-	apexNameToBcpInfoMap := getApexNameToBcpInfoMap(ctx)
+	apexNameToBcpInfoMap := getApexNameToApexExportsInfoMap(ctx)
 	encodedDexJarsByModuleName := bootDexJarByModule{}
 	for _, pair := range apexJarModulePairs {
 		dexJarPath := getDexJarForApex(ctx, pair, apexNameToBcpInfoMap)
@@ -708,19 +708,31 @@ func extractEncodedDexJarsFromModulesOrBootclasspathFragments(ctx android.Module
 	return encodedDexJarsByModuleName
 }
 
+type apexNameToApexExportsInfoMap map[string]android.ApexExportsInfo
+
+// javaLibraryPathOnHost returns the path to the java library which is exported by the apex for hiddenapi and dexpreopt
+// For prebuilt apexes, this is created by deapexing the prebuilt apex
+func (m *apexNameToApexExportsInfoMap) javaLibraryDexPathOnHost(ctx android.ModuleContext, apex string, javalib string) (android.Path, bool) {
+	if info, exists := (*m)[apex]; exists {
+		if dex, exists := info.LibraryNameToDexJarPathOnHost[javalib]; exists {
+			return dex, true
+		} else {
+			ctx.ModuleErrorf("Apex %s does not provide a dex boot jar for library %s\n", apex, javalib)
+		}
+	}
+	// An apex entry could not be found. Return false.
+	// TODO: b/308174306 - When all the mainline modules have been flagged, make this a hard error
+	return nil, false
+}
+
 // Returns the java libraries exported by the apex for hiddenapi and dexpreopt
 // This information can come from two mechanisms
 // 1. New: Direct deps to _selected_ apexes. The apexes return a ApexExportsInfo
 // 2. Legacy: An edge to java_library or java_import (java_sdk_library) module. For prebuilt apexes, this serves as a hook and is populated by deapexers of prebuilt apxes
 // TODO: b/308174306 - Once all mainline modules have been flagged, drop (2)
-func getDexJarForApex(ctx android.ModuleContext, pair apexJarModulePair, apexNameToBcpInfoMap map[string]android.ApexExportsInfo) android.Path {
-	if info, exists := apexNameToBcpInfoMap[pair.apex]; exists {
-		libraryName := android.RemoveOptionalPrebuiltPrefix(pair.jarModule.Name())
-		if dex, exists := info.LibraryNameToDexJarPathOnHost[libraryName]; exists {
-			return dex
-		} else {
-			ctx.ModuleErrorf("Apex %s does not provide a dex boot jar for library %s\n", pair.apex, libraryName)
-		}
+func getDexJarForApex(ctx android.ModuleContext, pair apexJarModulePair, apexNameToApexExportsInfoMap apexNameToApexExportsInfoMap) android.Path {
+	if dex, found := apexNameToApexExportsInfoMap.javaLibraryDexPathOnHost(ctx, pair.apex, android.RemoveOptionalPrebuiltPrefix(pair.jarModule.Name())); found {
+		return dex
 	}
 	// TODO: b/308174306 - Remove the legacy mechanism
 	if android.IsConfiguredJarForPlatform(pair.apex) || android.IsModulePrebuilt(pair.jarModule) {
@@ -900,8 +912,8 @@ func getProfilePathForApex(ctx android.ModuleContext, apexName string, apexNameT
 	return fragment.(commonBootclasspathFragment).getProfilePath()
 }
 
-func getApexNameToBcpInfoMap(ctx android.ModuleContext) map[string]android.ApexExportsInfo {
-	apexNameToBcpInfoMap := map[string]android.ApexExportsInfo{}
+func getApexNameToApexExportsInfoMap(ctx android.ModuleContext) apexNameToApexExportsInfoMap {
+	apexNameToBcpInfoMap := apexNameToApexExportsInfoMap{}
 	ctx.VisitDirectDepsWithTag(dexpreoptBootJarDepTag, func(am android.Module) {
 		if info, exists := android.OtherModuleProvider(ctx, am, android.ApexExportsInfoProvider); exists {
 			apexNameToBcpInfoMap[info.ApexName] = info
@@ -952,7 +964,7 @@ func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, p
 
 	invocationPath := outputPath.ReplaceExtension(ctx, "invocation")
 
-	apexNameToBcpInfoMap := getApexNameToBcpInfoMap(ctx)
+	apexNameToBcpInfoMap := getApexNameToApexExportsInfoMap(ctx)
 
 	cmd.Tool(globalSoong.Dex2oat).
 		Flag("--avoid-storing-invocation").
