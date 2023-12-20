@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dbf6de2_80ffb50f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-20T18:11:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec463290_61eb61d8",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "09fe70c3fae5f4a3f91299df7b9f54ac28c85c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2e03dd7_90f90f60",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-20T16:18:45Z",
       "side": 1,
       "message": "Nit: Spelling.",
+      "range": {
+        "startLine": 35,
+        "startChar": 43,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "09fe70c3fae5f4a3f91299df7b9f54ac28c85c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f3ed83_57a28bbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-12-20T18:11:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2e03dd7_90f90f60",
       "range": {
         "startLine": 35,
         "startChar": 43,
