@@ -22,6 +22,30 @@
       },
       "revId": "a4bb83502fa9e5e41829668d7c40cef6464d316a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3335caa_e28d9609",
+        "filename": "phony/phony.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2023-12-20T08:31:47Z",
+      "side": 1,
+      "message": "As I mentioned in b/309730110,\n\n`include $(BUILD_PHONY_PACKAGE)` has no practical effect; it cannot even correctly add dependencies to the phony target.\n\n`LOCAL_REQUIRED_MODULES` should not be directly used as a dependency for phony targets, and in many cases, it may not function properly.\n\nMoreover, setting `Add_deps_only \u003d True` already indicates that the phony target is intended to only increase its dependencies. The correct behavior is to define the phony target and its dependencies as follows:\n```\n.PHONY: \u003cphony_target\u003e\n\u003cphony_target\u003e : \u003cdeps...\u003e\n```",
+      "parentUuid": "f9cc1d97_e6923610",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "a4bb83502fa9e5e41829668d7c40cef6464d316a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
