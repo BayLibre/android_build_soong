@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b78d0c03_64dad6bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-20T12:09:53Z",
+      "side": 1,
+      "message": "Thanks for being patient during all these code reviews! As you can see, the dexpreopt code has a long history and is not in a very maintainable state. I want to avoid making the code even less maintainable, so the reviews took some time and a few rounds.",
+      "revId": "0c2d7726bdb3d4547fb780e4350d6450253fa7d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f854687_b3cc3205",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-20T12:09:53Z",
+      "side": 1,
+      "message": "Nit: Extra \"R\".",
+      "range": {
+        "startLine": 725,
+        "startChar": 10,
+        "endLine": 725,
+        "endChar": 11
+      },
+      "revId": "0c2d7726bdb3d4547fb780e4350d6450253fa7d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
