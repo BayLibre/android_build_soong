@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "640bbe98_e11a288b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-20T17:12:46Z",
+      "side": 1,
+      "message": "Need Joe or Jihoon to take another look, as I know little about the build system except for dexpreopt.",
+      "revId": "5be6333692b6881b223b672c2251efaf4605bb33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

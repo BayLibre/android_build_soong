@@ -232,6 +232,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9e6824d_f20416d5",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-20T17:12:46Z",
+      "side": 1,
+      "message": "OK, I didn\u0027t realize that the deapexer is a separate module. Don\u0027t bother then. Thanks for the explanation.",
+      "parentUuid": "463d578f_29ec196b",
+      "range": {
+        "startLine": 785,
+        "startChar": 34,
+        "endLine": 785,
+        "endChar": 56
+      },
+      "revId": "e60172bc752048a17ebed4a7eeec45fdfbbe6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ce3fe03_44046734",
