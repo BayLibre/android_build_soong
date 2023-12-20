@@ -31,12 +31,21 @@ type phony struct {
 	requiredModuleNames       []string
 	hostRequiredModuleNames   []string
 	targetRequiredModuleNames []string
+
+	properties PhonyProperties
+}
+
+type PhonyProperties struct {
+	// The Phony_deps only include its dependencies, not include $(BUILD_PHONY_PACKAGE).
+	// It serves as dependencies for this phony target, and can even be the target name of a genrule.
+	Phony_deps []string
 }
 
 func PhonyFactory() android.Module {
 	module := &phony{}
 
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
+	module.AddProperties(&module.properties)
 	return module
 }
 
@@ -68,6 +77,26 @@ func (p *phony) AndroidMk() android.AndroidMkData {
 					strings.Join(p.targetRequiredModuleNames, " "))
 			}
 			fmt.Fprintln(w, "include $(BUILD_PHONY_PACKAGE)")
+
+			if len(p.properties.Phony_deps) > 0 {
+				generatePhonyDeps(w, name, p.properties.Phony_deps)
+			}
 		},
 	}
+}
+
+func generatePhonyDeps(w io.Writer, name string, module_names ...[]string) {
+	var depModules []string
+	for _, moduleList := range module_names {
+		if len(moduleList) > 0 {
+			depModules = append(depModules, moduleList...)
+		}
+	}
+	depModulesStr := strings.Join(depModules, " ")
+	printPhonyRule(w, name, depModulesStr)
+}
+
+func printPhonyRule(w io.Writer, name string, depModules string) {
+	fmt.Fprintln(w, ".PHONY:", name)
+	fmt.Fprintln(w, name, ":", depModules)
 }
