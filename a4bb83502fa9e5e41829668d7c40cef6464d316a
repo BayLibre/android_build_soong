@@ -46,6 +46,30 @@
       },
       "revId": "a4bb83502fa9e5e41829668d7c40cef6464d316a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fa85c1c_76a99209",
+        "filename": "phony/phony.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2023-12-20T08:38:54Z",
+      "side": 1,
+      "message": "I am also OK for the original design, just think about keeping the original logic may be more safer.",
+      "parentUuid": "e3335caa_e28d9609",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "a4bb83502fa9e5e41829668d7c40cef6464d316a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
