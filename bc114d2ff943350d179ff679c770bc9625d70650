@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4263389c_f0d0f8ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-20T01:30:18Z",
+      "side": 1,
+      "message": "Hey Colin, I noticed that aosp/2876755 is incompatible with aosp/2876768 so I have updated the usage to the new provider API",
+      "revId": "bc114d2ff943350d179ff679c770bc9625d70650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
