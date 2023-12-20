@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec463290_61eb61d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-12-20T16:18:45Z",
+      "side": 1,
+      "message": "Nit: Spelling",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "09fe70c3fae5f4a3f91299df7b9f54ac28c85c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e03dd7_90f90f60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-12-20T16:18:45Z",
+      "side": 1,
+      "message": "Nit: Spelling.",
+      "range": {
+        "startLine": 35,
+        "startChar": 43,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "09fe70c3fae5f4a3f91299df7b9f54ac28c85c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6938274f_86495670",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-12-20T16:18:45Z",
+      "side": 1,
+      "message": "+1 for the approach, I will leave it up to someone else on the build team to review it properly for +2.",
+      "revId": "09fe70c3fae5f4a3f91299df7b9f54ac28c85c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
