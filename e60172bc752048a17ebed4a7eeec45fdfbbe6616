@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7093fc4b_5f719aa1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-20T00:10:09Z",
+      "side": 1,
+      "message": "Ack, once the ancestors in this CL stack automerges to git_main, I will launch the forrest runs",
+      "parentUuid": "6b2ae900_57108308",
+      "revId": "e60172bc752048a17ebed4a7eeec45fdfbbe6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b3cd72e_e89a7686",
         "filename": "apex/deapexer.go",
         "patchSetId": 8
@@ -31,6 +49,30 @@
       "writtenOn": "2023-12-19T21:50:52Z",
       "side": 1,
       "message": "Add a TODO here to remove this?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "e60172bc752048a17ebed4a7eeec45fdfbbe6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7531b337_d440dfe3",
+        "filename": "apex/deapexer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-20T00:10:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b3cd72e_e89a7686",
       "range": {
         "startLine": 101,
         "startChar": 0,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82f74420_dabb1d04",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-20T00:10:09Z",
+      "side": 1,
+      "message": "I think in addition to `exported_bootclasspath_fragments`, we will also need to read the contents of `exported_systemserverclasspath_fragments` and maybe `exported_java_libs`. So I thought abstracting this into the deapexer module would be the simpler solution.\n\nWould some of the complexity concerns be mitigated now that we are using a new provider following the discussion thread in the parent CL https://android-review.git.corp.google.com/c/platform/build/soong/+/2876755/comment/5b9a65c7_68abd68c/ ?",
+      "parentUuid": "dbb15960_3934a841",
+      "range": {
+        "startLine": 785,
+        "startChar": 34,
+        "endLine": 785,
+        "endChar": 56
+      },
+      "revId": "e60172bc752048a17ebed4a7eeec45fdfbbe6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ce3fe03_44046734",
         "filename": "apex/prebuilt.go",
         "patchSetId": 8
@@ -77,6 +143,30 @@
       "writtenOn": "2023-12-19T21:50:52Z",
       "side": 1,
       "message": "Make `java.apexRootRelativePathToJavaLib` public and call it here?",
+      "range": {
+        "startLine": 786,
+        "startChar": 35,
+        "endLine": 786,
+        "endChar": 69
+      },
+      "revId": "e60172bc752048a17ebed4a7eeec45fdfbbe6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7e0c61e_372ef867",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-20T00:10:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ce3fe03_44046734",
       "range": {
         "startLine": 786,
         "startChar": 35,
@@ -100,6 +190,30 @@
       "writtenOn": "2023-12-19T21:50:52Z",
       "side": 1,
       "message": "Nit: Easier to set this field in the NewBootclasspathFragmentApexContentInfo factory instead of adding a setter?",
+      "range": {
+        "startLine": 393,
+        "startChar": 47,
+        "endLine": 393,
+        "endChar": 74
+      },
+      "revId": "e60172bc752048a17ebed4a7eeec45fdfbbe6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3cc832d_b6f29c8a",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-20T00:10:09Z",
+      "side": 1,
+      "message": "Since we are using a different provider, this is obsolete now",
+      "parentUuid": "fecd1588_42335cb1",
       "range": {
         "startLine": 393,
         "startChar": 47,
