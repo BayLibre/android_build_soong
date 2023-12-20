@@ -31,12 +31,23 @@ type phony struct {
 	requiredModuleNames       []string
 	hostRequiredModuleNames   []string
 	targetRequiredModuleNames []string
+
+	properties PhonyProperties
+}
+
+type PhonyProperties struct {
+	// Make Phony only include its dependencies, not include $(BUILD_PHONY_PACKAGE)
+	Add_deps_only bool
+	// The Dep_targets only takes effect when Add_deps_only is set to true. It serves
+	// as dependencies for this phony target, and can even be the target name of a genrule.
+	Dep_targets []string
 }
 
 func PhonyFactory() android.Module {
 	module := &phony{}
 
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
+	module.AddProperties(&module.properties)
 	return module
 }
 
@@ -49,6 +60,22 @@ func (p *phony) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 func (p *phony) AndroidMk() android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
+			if p.properties.Add_deps_only &&
+				(len(p.requiredModuleNames) > 0 ||
+					len(p.hostRequiredModuleNames) > 0 ||
+					len(p.targetRequiredModuleNames) > 0 ||
+					len(p.properties.Dep_targets) > 0) {
+				generatePhonyRule(
+					w,
+					name,
+					p.requiredModuleNames,
+					p.hostRequiredModuleNames,
+					p.targetRequiredModuleNames,
+					p.properties.Dep_targets,
+				)
+				return
+			}
+
 			fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)", " # phony.phony")
 			fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
 			fmt.Fprintln(w, "LOCAL_MODULE :=", name)
@@ -70,4 +97,20 @@ func (p *phony) AndroidMk() android.AndroidMkData {
 			fmt.Fprintln(w, "include $(BUILD_PHONY_PACKAGE)")
 		},
 	}
+}
+
+func generatePhonyRule(w io.Writer, name string, module_names ...[]string) {
+	var depModules []string
+	for _, moduleList := range module_names {
+		if len(moduleList) > 0 {
+			depModules = append(depModules, moduleList...)
+		}
+	}
+	depModulesStr := strings.Join(depModules, " ")
+	printPhonyRule(w, name, depModulesStr)
+}
+
+func printPhonyRule(w io.Writer, name string, depModules string) {
+	fmt.Fprintln(w, ".PHONY:", name)
+	fmt.Fprintln(w, name, ":", depModules)
 }
