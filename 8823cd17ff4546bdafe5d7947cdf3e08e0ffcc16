@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef0376f_d0e833aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-12-20T16:20:11Z",
+      "side": 1,
+      "message": "+1 for the approach, I will leave it up to someone else on the build team to review it properly for +2.",
+      "revId": "8823cd17ff4546bdafe5d7947cdf3e08e0ffcc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
