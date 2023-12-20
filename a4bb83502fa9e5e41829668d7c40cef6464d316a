@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9cc1d97_e6923610",
+        "filename": "phony/phony.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2023-12-20T08:17:41Z",
+      "side": 1,
+      "message": "I am not sure which one is better, but from my point of view that I may prefer to make this feature not change the original logic actually.\n\nSo, I can move this to line#98 \n\nAnd change the logic to below and only care about dep_targets\n```\nif len(p.properties.Dep_targets) \u003e 0 {\n    generatePhonyRule(w, name, p.properties.Dep_targets,)\n}\n```\n\nWhich will make it looks like below if I set below Android.bp\nsystem/core/shell_and_utilities/Android.bp\n\n```\nphony {\n    name: \"shell_and_utilities\",\n    required: [\n        \"shell_and_utilities_system\",\n        \"shell_and_utilities_recovery\",\n        \"shell_and_utilities_vendor\",\n    ],\n    //add_deps_only: true,\n    dep_targets: [\n        \"shell_and_utilities_system\",\n    ],\n}\n```\n\nAnd the output will looks like blow, which still keep the old one but add new phony line.\n\n\ninclude $(CLEAR_VARS)  # phony.phony\nLOCAL_PATH :\u003d system/core/shell_and_utilities\nLOCAL_MODULE :\u003d shell_and_utilities\nLOCAL_REQUIRED_MODULES :\u003d shell_and_utilities_system shell_and_utilities_recovery shell_and_utilities_vendor\ninclude $(BUILD_PHONY_PACKAGE)\n.PHONY: shell_and_utilities\nshell_and_utilities : shell_and_utilities_system",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "a4bb83502fa9e5e41829668d7c40cef6464d316a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
