@@ -231,6 +231,10 @@ func (scope *apiScope) stubsLibraryModuleNameSuffix() string {
 	return ".stubs" + scope.moduleSuffix
 }
 
+func (scope *apiScope) exportableStubsLibraryModuleNameSuffix() string {
+	return ".stubs.exportable" + scope.moduleSuffix
+}
+
 func (scope *apiScope) apiLibraryModuleName(baseName string) string {
 	return scope.stubsLibraryModuleName(baseName) + ".from-text"
 }
@@ -239,8 +243,16 @@ func (scope *apiScope) sourceStubLibraryModuleName(baseName string) string {
 	return scope.stubsLibraryModuleName(baseName) + ".from-source"
 }
 
+func (scope *apiScope) exportableSourceStubsLibraryModuleName(baseName string) string {
+	return scope.exportableStubsLibraryModuleName(baseName) + ".from-source"
+}
+
 func (scope *apiScope) stubsLibraryModuleName(baseName string) string {
 	return baseName + scope.stubsLibraryModuleNameSuffix()
+}
+
+func (scope *apiScope) exportableStubsLibraryModuleName(baseName string) string {
+	return baseName + scope.exportableStubsLibraryModuleNameSuffix()
 }
 
 func (scope *apiScope) stubsSourceModuleName(baseName string) string {
@@ -895,6 +907,12 @@ func (c *commonToSdkLibraryAndImport) stubsLibraryModuleName(apiScope *apiScope)
 	return c.namingScheme.stubsLibraryModuleName(apiScope, baseName)
 }
 
+// Name of the java_library module that compiles the exportable stubs source.
+func (c *commonToSdkLibraryAndImport) exportableStubsLibraryModuleName(apiScope *apiScope) string {
+	baseName := c.module.BaseModuleName()
+	return c.namingScheme.exportableStubsLibraryModuleName(apiScope, baseName)
+}
+
 // Name of the droidstubs module that generates the stubs source and may also
 // generate/check the API.
 func (c *commonToSdkLibraryAndImport) stubsSourceModuleName(apiScope *apiScope) string {
@@ -911,9 +929,16 @@ func (c *commonToSdkLibraryAndImport) apiLibraryModuleName(apiScope *apiScope) s
 
 // Name of the java_library module that compiles the stubs
 // generated from source Java files.
-func (c *commonToSdkLibraryAndImport) sourceStubLibraryModuleName(apiScope *apiScope) string {
+func (c *commonToSdkLibraryAndImport) sourceStubsLibraryModuleName(apiScope *apiScope) string {
 	baseName := c.module.BaseModuleName()
-	return c.namingScheme.sourceStubLibraryModuleName(apiScope, baseName)
+	return c.namingScheme.sourceStubsLibraryModuleName(apiScope, baseName)
+}
+
+// Name of the java_library module that compiles the exportable stubs
+// generated from source Java files.
+func (c *commonToSdkLibraryAndImport) exportableSourceStubsLibraryModuleName(apiScope *apiScope) string {
+	baseName := c.module.BaseModuleName()
+	return c.namingScheme.exportableSourceStubsLibraryModuleName(apiScope, baseName)
 }
 
 // The component names for different outputs of the java_sdk_library.
@@ -1629,36 +1654,34 @@ func (module *SdkLibrary) createImplLibrary(mctx android.DefaultableHookContext)
 	mctx.CreateModule(LibraryFactory, properties...)
 }
 
-// Creates a static java library that has API stubs
-func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext, apiScope *apiScope) {
-	props := struct {
-		Name           *string
-		Visibility     []string
-		Srcs           []string
-		Installable    *bool
-		Sdk_version    *string
-		System_modules *string
-		Patch_module   *string
-		Libs           []string
-		Static_libs    []string
-		Compile_dex    *bool
-		Java_version   *string
-		Openjdk9       struct {
-			Srcs       []string
-			Javacflags []string
-		}
-		Dist struct {
-			Targets []string
-			Dest    *string
-			Dir     *string
-			Tag     *string
-		}
-	}{}
+type libraryProperties struct {
+	Name           *string
+	Visibility     []string
+	Srcs           []string
+	Installable    *bool
+	Sdk_version    *string
+	System_modules *string
+	Patch_module   *string
+	Libs           []string
+	Static_libs    []string
+	Compile_dex    *bool
+	Java_version   *string
+	Openjdk9       struct {
+		Srcs       []string
+		Javacflags []string
+	}
+	Dist struct {
+		Targets []string
+		Dest    *string
+		Dir     *string
+		Tag     *string
+	}
+}
 
-	props.Name = proptools.StringPtr(module.sourceStubLibraryModuleName(apiScope))
+func (module *SdkLibrary) stubsLibraryProps(mctx android.DefaultableHookContext, apiScope *apiScope) libraryProperties {
+	props := libraryProperties{}
 	props.Visibility = []string{"//visibility:override", "//visibility:private"}
 	// sources are generated from the droiddoc
-	props.Srcs = []string{":" + module.stubsSourceModuleName(apiScope)}
 	sdkVersion := module.sdkVersionForStubsLibrary(mctx, apiScope)
 	props.Sdk_version = proptools.StringPtr(sdkVersion)
 	props.System_modules = module.deviceProperties.System_modules
@@ -1677,6 +1700,25 @@ func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext
 	// We compile the stubs for 1.8 in line with the main android.jar stubs, and potential
 	// interop with older developer tools that don't support 1.9.
 	props.Java_version = proptools.StringPtr("1.8")
+
+	return props
+}
+
+// Creates a static java library that has API stubs
+func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext, apiScope *apiScope) {
+
+	props := module.stubsLibraryProps(mctx, apiScope)
+	props.Name = proptools.StringPtr(module.sourceStubsLibraryModuleName(apiScope))
+	props.Srcs = []string{":" + module.stubsSourceModuleName(apiScope)}
+
+	mctx.CreateModule(LibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
+}
+
+// Create a static java library that compiles the "exportable" stubs
+func (module *SdkLibrary) createExportableStubsLibrary(mctx android.DefaultableHookContext, apiScope *apiScope) {
+	props := module.stubsLibraryProps(mctx, apiScope)
+	props.Name = proptools.StringPtr(module.exportableSourceStubsLibraryModuleName(apiScope))
+	props.Srcs = []string{":" + module.stubsSourceModuleName(apiScope) + "{.exportable}"}
 
 	mctx.CreateModule(LibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
 }
@@ -1908,33 +1950,13 @@ func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, 
 	mctx.CreateModule(ApiLibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
 }
 
-func (module *SdkLibrary) createTopLevelStubsLibrary(
-	mctx android.DefaultableHookContext, apiScope *apiScope, contributesToApiSurface bool) {
-	props := struct {
-		Name           *string
-		Visibility     []string
-		Sdk_version    *string
-		Static_libs    []string
-		System_modules *string
-		Dist           struct {
-			Targets []string
-			Dest    *string
-			Dir     *string
-			Tag     *string
-		}
-		Compile_dex *bool
-	}{}
-	props.Name = proptools.StringPtr(module.stubsLibraryModuleName(apiScope))
+func (module *SdkLibrary) topLevelStubsLibraryProps(mctx android.DefaultableHookContext, apiScope *apiScope) libraryProperties {
+	props := libraryProperties{}
+
 	props.Visibility = childModuleVisibility(module.sdkLibraryProperties.Stubs_library_visibility)
 	sdkVersion := module.sdkVersionForStubsLibrary(mctx, apiScope)
 	props.Sdk_version = proptools.StringPtr(sdkVersion)
 
-	// Add the stub compiling java_library/java_api_library as static lib based on build config
-	staticLib := module.sourceStubLibraryModuleName(apiScope)
-	if mctx.Config().BuildFromTextStub() && contributesToApiSurface {
-		staticLib = module.apiLibraryModuleName(apiScope)
-	}
-	props.Static_libs = append(props.Static_libs, staticLib)
 	props.System_modules = module.deviceProperties.System_modules
 
 	// Dist the class jar artifact for sdk builds.
@@ -1951,6 +1973,34 @@ func (module *SdkLibrary) createTopLevelStubsLibrary(
 		compileDex = proptools.BoolPtr(true)
 	}
 	props.Compile_dex = compileDex
+
+	return props
+}
+
+func (module *SdkLibrary) createTopLevelStubsLibrary(
+	mctx android.DefaultableHookContext, apiScope *apiScope, contributesToApiSurface bool) {
+
+	props := module.topLevelStubsLibraryProps(mctx, apiScope)
+	props.Name = proptools.StringPtr(module.stubsLibraryModuleName(apiScope))
+
+	// Add the stub compiling java_library/java_api_library as static lib based on build config
+	staticLib := module.sourceStubsLibraryModuleName(apiScope)
+	if mctx.Config().BuildFromTextStub() && contributesToApiSurface {
+		staticLib = module.apiLibraryModuleName(apiScope)
+	}
+	props.Static_libs = append(props.Static_libs, staticLib)
+
+	mctx.CreateModule(LibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
+}
+
+func (module *SdkLibrary) createTopLevelExportableStubsLibrary(
+	mctx android.DefaultableHookContext, apiScope *apiScope) {
+
+	props := module.topLevelStubsLibraryProps(mctx, apiScope)
+	props.Name = proptools.StringPtr(module.exportableStubsLibraryModuleName(apiScope))
+
+	staticLib := module.exportableSourceStubsLibraryModuleName(apiScope)
+	props.Static_libs = append(props.Static_libs, staticLib)
 
 	mctx.CreateModule(LibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
 }
@@ -2152,11 +2202,20 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 		return
 	}
 
+	// If aconfig_declarations property is defined,
+	// create exportrable stub java_library modules per api scope
+	createExportableStubsLibrary := len(module.sdkLibraryProperties.Aconfig_declarations) != 0
+
 	for _, scope := range generatedScopes {
 		// Use the stubs source name for legacy reasons.
 		module.createStubsSourcesAndApi(mctx, scope, module.stubsSourceModuleName(scope), scope.droidstubsArgs)
 
 		module.createStubsLibrary(mctx, scope)
+
+		if createExportableStubsLibrary {
+			module.createExportableStubsLibrary(mctx, scope)
+			module.createTopLevelExportableStubsLibrary(mctx, scope)
+		}
 
 		alternativeFullApiSurfaceStubLib := ""
 		if scope == apiScopePublic {
@@ -2223,7 +2282,11 @@ type sdkLibraryComponentNamingScheme interface {
 
 	apiLibraryModuleName(scope *apiScope, baseName string) string
 
-	sourceStubLibraryModuleName(scope *apiScope, baseName string) string
+	sourceStubsLibraryModuleName(scope *apiScope, baseName string) string
+
+	exportableStubsLibraryModuleName(scope *apiScope, baseName string) string
+
+	exportableSourceStubsLibraryModuleName(scope *apiScope, baseName string) string
 }
 
 type defaultNamingScheme struct {
@@ -2241,8 +2304,16 @@ func (s *defaultNamingScheme) apiLibraryModuleName(scope *apiScope, baseName str
 	return scope.apiLibraryModuleName(baseName)
 }
 
-func (s *defaultNamingScheme) sourceStubLibraryModuleName(scope *apiScope, baseName string) string {
+func (s *defaultNamingScheme) sourceStubsLibraryModuleName(scope *apiScope, baseName string) string {
 	return scope.sourceStubLibraryModuleName(baseName)
+}
+
+func (s *defaultNamingScheme) exportableStubsLibraryModuleName(scope *apiScope, baseName string) string {
+	return scope.exportableStubsLibraryModuleName(baseName)
+}
+
+func (s *defaultNamingScheme) exportableSourceStubsLibraryModuleName(scope *apiScope, baseName string) string {
+	return scope.exportableSourceStubsLibraryModuleName(baseName)
 }
 
 var _ sdkLibraryComponentNamingScheme = (*defaultNamingScheme)(nil)
