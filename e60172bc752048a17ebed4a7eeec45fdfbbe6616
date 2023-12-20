@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6819b0d_091cdf2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-20T01:39:13Z",
+      "side": 1,
+      "message": "This change is compatible with these two targets\n- git_master-art-host:art-gtest https://android-build.corp.google.com/builds/abtd/run/L21500030000926533\n- git_main:art_standalone_dexpreopt_tests https://android-build.corp.google.com/builds/abtd/run/L99000030000891212",
+      "parentUuid": "7093fc4b_5f719aa1",
+      "revId": "e60172bc752048a17ebed4a7eeec45fdfbbe6616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b3cd72e_e89a7686",
