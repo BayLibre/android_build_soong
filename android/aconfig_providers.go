@@ -21,7 +21,7 @@ import (
 var (
 	mergeAconfigFilesRule = pctx.AndroidStaticRule("mergeAconfigFilesRule",
 		blueprint.RuleParams{
-			Command:     `${aconfig} dump --dedup --format protobuf --out $out $flags`,
+			Command:     `${aconfig} export-flags --dedup --out $out $flags`,
 			CommandDeps: []string{"${aconfig}"},
 		}, "flags")
 	_ = pctx.HostBinToolVariable("aconfig", "aconfig")
