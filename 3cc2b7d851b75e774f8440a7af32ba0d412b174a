@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e57cdbd2_35ce08fd",
+        "filename": "android/defs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-21T17:37:51Z",
+      "side": 1,
+      "message": "Why is this necessary?",
+      "revId": "3cc2b7d851b75e774f8440a7af32ba0d412b174a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e7335cc_ec96b027",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-21T17:37:51Z",
+      "side": 1,
+      "message": "Don\u0027t write to stdout from rules unless there is an error.",
+      "revId": "3cc2b7d851b75e774f8440a7af32ba0d412b174a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b183321_f46a1bc1",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-21T17:37:51Z",
+      "side": 1,
+      "message": "This should be able to handle an arbitrarily long file, I don\u0027t  think you need to shard if you\u0027re writing the commands to a file.",
+      "revId": "3cc2b7d851b75e774f8440a7af32ba0d412b174a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4effdd95_2d6623a3",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-21T17:37:51Z",
+      "side": 1,
+      "message": "What is this for?  You didn\u0027t add any commands to cmdBuilder.",
+      "revId": "3cc2b7d851b75e774f8440a7af32ba0d412b174a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
