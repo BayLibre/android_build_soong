@@ -211,7 +211,7 @@ func WriteFileRuleVerbatim(ctx BuilderContext, outputFile WritablePath, content 
 
 // WriteExecutableFileRuleVerbatim is the same as WriteFileRuleVerbatim, but runs chmod +x on the result
 func WriteExecutableFileRuleVerbatim(ctx BuilderContext, outputFile WritablePath, content string) {
-	intermediate := PathForIntermediates(ctx, "write_executable_file_intermediates").Join(ctx, outputFile.String())
+	intermediate := PathForIntermediates(ctx, "write_executable_file_intermediates").Join(ctx, strings.ReplaceAll(outputFile.String(), "/", "_"))
 	WriteFileRuleVerbatim(ctx, intermediate, content)
 	ctx.Build(pctx, BuildParams{
 		Rule:   CpExecutable,
