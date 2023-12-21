@@ -336,6 +336,7 @@ func (a *AndroidTestHelperApp) GenerateAndroidBuildActions(ctx android.ModuleCon
 
 func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.checkAppSdkVersions(ctx)
+	Repackage(ctx, "")
 	a.generateAndroidBuildActions(ctx)
 	a.generateJavaUsedByApex(ctx)
 }
