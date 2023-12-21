@@ -226,7 +226,7 @@ func shellUnescape(s string) string {
 	if len(s) >= 2 && s[0] == '\'' {
 		s = s[1 : len(s)-1]
 	}
-	s = shellUnescaper.Replace(s)
+	s = shellUnescaper.Replace(s)_
 	return s
 }
 
