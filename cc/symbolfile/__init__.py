@@ -46,6 +46,17 @@ ALL_ARCHITECTURES = (
     Arch('x86_64'),
 )
 
+# TODO: dedupe this list with 'has_*_tag' property methods
+SUPPORTED_TAGS = ALL_ARCHITECTURES + (
+    Tag('apex'),
+    Tag('llndk'),
+    Tag('systemapi'),
+
+    # TODO: are these real things?
+    Tag('var'),
+    Tag('platform-only'),
+    Tag('introduced'),
+)
 
 # Arbitrary magic number. We use the same one in api-level.h for this purpose.
 FUTURE_API_LEVEL = 10000
@@ -170,6 +181,9 @@ def decode_api_level_tag(tag: Tag, api_map: ApiMap) -> Tag:
         ParseError: An unknown version name was found in a tag.
     """
     if not is_api_level_tag(tag):
+        if tag != "#" and tag not in SUPPORTED_TAGS:
+            raise ParseError(f'Unsupported tag: {tag}')
+
         return tag
 
     name, value = split_tag(tag)
