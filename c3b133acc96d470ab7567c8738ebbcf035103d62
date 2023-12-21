@@ -79,6 +79,30 @@
       },
       "revId": "c3b133acc96d470ab7567c8738ebbcf035103d62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba27b5b0_86001b70",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-21T23:02:48Z",
+      "side": 1,
+      "message": "Maybe from these:\nhttps://cs.android.com/search?q\u003df:.map.txt%20%23.*%23\u0026sq\u003d\n\nIf you don\u0027t like it, I can go fix the other cases. I don\u0027t really mind either way, might as well go all the way since I\u0027m messing in other codebases I don\u0027t normally touch :P :) might do a few other \"improvements\" here, such as implement b/302113279#comment16",
+      "parentUuid": "26321bbe_ca558b9f",
+      "range": {
+        "startLine": 192,
+        "startChar": 11,
+        "endLine": 192,
+        "endChar": 22
+      },
+      "revId": "c3b133acc96d470ab7567c8738ebbcf035103d62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
