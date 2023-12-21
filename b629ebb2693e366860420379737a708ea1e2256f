@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a798f27d_629e6e68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-12-21T20:06:41Z",
+      "side": 1,
+      "message": "I think making the Soong `phony` module try to handle both the Make `BUILD_PHONY_PACKAGE` (which is its current behavior) and the Make `.PHONY` rule is overcomplicating it.  I\u0027d suggest adding a new `phony_rule` module type to Soong that acts like `.PHONY` instead of `BUILD_PHONY_PACKAGE`.",
+      "revId": "b629ebb2693e366860420379737a708ea1e2256f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23392528_3a497c58",
         "filename": "phony/phony.go",
         "patchSetId": 3
