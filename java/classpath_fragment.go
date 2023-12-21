@@ -271,8 +271,10 @@ func getRepackageJarjarRuleText(ctx android.ModuleContext, base string) string {
 
 	for p, prefix := range combinedPackageToPrefix {
 		if prefix == "" {
-			for _, ext := range flagsExtension {
-				repackageJarjarRuleText += "rule " + p + ext + " " + p + "." + base + ext + "\n"
+			if base != "" {
+				for _, ext := range flagsExtension {
+					repackageJarjarRuleText += "rule " + p + ext + " " + p + "." + base + ext + "\n"
+				}
 			}
 		} else {
 			for _, ext := range flagsExtension {
