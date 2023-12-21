@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aade6a6_9f93858d",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2023-12-21T21:45:45Z",
+      "side": 1,
+      "message": "yes, see https://android.googlesource.com/platform/build/soong/+/main/docs/map_files.md",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 16
+      },
+      "revId": "c3b133acc96d470ab7567c8738ebbcf035103d62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
