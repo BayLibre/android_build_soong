@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23392528_3a497c58",
+        "filename": "phony/phony.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-12-21T08:54:51Z",
+      "side": 1,
+      "message": "I think I prefer your initial implementation as below, so phony_deps and the other three properties are exclusive to each other. Not sure if we have a case in android.mk that we need both required modules and phony_deps. \n\nif len(p.properties.Phony_deps) \u003e 0) {\n  generatePhonyDeps(.....)\n} else {\n  lines 61 ~ 79\n}",
+      "range": {
+        "startLine": 81,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 4
+      },
+      "revId": "b629ebb2693e366860420379737a708ea1e2256f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f419aba_6f5efe9a",
+        "filename": "phony/phony.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-12-21T08:54:51Z",
+      "side": 1,
+      "message": "phonyDeps",
+      "range": {
+        "startLine": 88,
+        "startChar": 49,
+        "endLine": 88,
+        "endChar": 61
+      },
+      "revId": "b629ebb2693e366860420379737a708ea1e2256f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa45f92_b2942431",
+        "filename": "phony/phony.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-12-21T08:54:51Z",
+      "side": 1,
+      "message": "dep or phonyDep",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "b629ebb2693e366860420379737a708ea1e2256f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98ed9800_27e4b550",
+        "filename": "phony/phony.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-12-21T08:54:51Z",
+      "side": 1,
+      "message": "this can be merged with the upper function.",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 19
+      },
+      "revId": "b629ebb2693e366860420379737a708ea1e2256f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
