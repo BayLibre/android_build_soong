@@ -240,23 +240,37 @@ func (p *PackagingBase) GatherPackagingSpecs(ctx ModuleContext) map[string]Packa
 // entries into the specified directory.
 func (p *PackagingBase) CopySpecsToDir(ctx ModuleContext, builder *RuleBuilder, specs map[string]PackagingSpec, dir WritablePath) (entries []string) {
 	seenDir := make(map[string]bool)
-	for _, k := range SortedKeys(specs) {
-		ps := specs[k]
-		destPath := filepath.Join(dir.String(), ps.relPathInPackage)
-		destDir := filepath.Dir(destPath)
-		entries = append(entries, ps.relPathInPackage)
-		if _, ok := seenDir[destDir]; !ok {
-			seenDir[destDir] = true
-			builder.Command().Text("mkdir").Flag("-p").Text(destDir)
+	perShard := 100
+	shardSize := len(specs)/perShard + 1
+	cmd := builder.Command().Text("echo").Text(`"generate preparer"`)
+	for i, ks := range ShardStrings(SortedKeys(specs), shardSize) {
+		prepareCmds := ""
+		for _, k := range ks {
+			ps := specs[k]
+			destPath := filepath.Join(dir.String(), ps.relPathInPackage)
+			destDir := filepath.Dir(destPath)
+			entries = append(entries, ps.relPathInPackage)
+			if _, ok := seenDir[destDir]; !ok {
+				seenDir[destDir] = true
+				prepareCmds += fmt.Sprintf(`mkdir -p %s\n`, destDir)
+			}
+			if ps.symlinkTarget == "" {
+				cmd.Implicit(ps.srcPath)
+				prepareCmds += fmt.Sprintf(`cp %s %s\n`, ps.srcPath, destPath)
+			} else {
+				prepareCmds += fmt.Sprintf(`ln -sf %s %s\n`, ps.symlinkTarget, destPath)
+			}
+			if ps.executable {
+				prepareCmds += fmt.Sprintf(`chmod a+x %s\n`, destPath)
+			}
 		}
-		if ps.symlinkTarget == "" {
-			builder.Command().Text("cp").Input(ps.srcPath).Text(destPath)
-		} else {
-			builder.Command().Text("ln").Flag("-sf").Text(ps.symlinkTarget).Text(destPath)
-		}
-		if ps.executable {
-			builder.Command().Text("chmod").Flag("a+x").Text(destPath)
-		}
+
+		cmdBuilder := NewRuleBuilder(pctx, ctx)
+		preparerPath := PathForModuleOut(ctx, fmt.Sprintf("preparer%d.sh", i))
+		cmdBuilder.Command().Text("echo").Flag("-e").Flag(`"` + prepareCmds + `"`).Flag(" >> ").Output(preparerPath)
+		cmdBuilder.Command().Text("chmod").Flag("a+x").Output(preparerPath)
+		cmdBuilder.Build(fmt.Sprintf("zip_preparer_%d", i), fmt.Sprintf("Generate the script to prepare zipping %s", ctx.ModuleName()))
+		builder.Command().Tool(preparerPath)
 	}
 
 	return entries
