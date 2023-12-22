@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cbd27c6_df76c84d",
+        "filename": "android/defs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-12-22T01:30:16Z",
+      "side": 1,
+      "message": "outputFile is sometimes absolute path(in test as well), so it fails in validatePath because it wants to join with absolute path. I added comment about that.",
+      "parentUuid": "e57cdbd2_35ce08fd",
+      "revId": "3cc2b7d851b75e774f8440a7af32ba0d412b174a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e7335cc_ec96b027",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-12-21T17:37:51Z",
       "side": 1,
       "message": "Don\u0027t write to stdout from rules unless there is an error.",
+      "revId": "3cc2b7d851b75e774f8440a7af32ba0d412b174a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04bdacf3_a3b4a0f4",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-12-22T01:30:16Z",
+      "side": 1,
+      "message": "yeah, it was a placeholder to add implicit deps, but the latest patchset doesn\u0027t need it. removed.",
+      "parentUuid": "8e7335cc_ec96b027",
       "revId": "3cc2b7d851b75e774f8440a7af32ba0d412b174a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc928f5c_fb6c0e04",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-12-22T01:30:16Z",
+      "side": 1,
+      "message": "you\u0027re right. the method already handles that, so I don\u0027t need sharding externally",
+      "parentUuid": "4b183321_f46a1bc1",
+      "revId": "3cc2b7d851b75e774f8440a7af32ba0d412b174a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4effdd95_2d6623a3",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-12-21T17:37:51Z",
       "side": 1,
       "message": "What is this for?  You didn\u0027t add any commands to cmdBuilder.",
+      "revId": "3cc2b7d851b75e774f8440a7af32ba0d412b174a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2100e26f_8062d8c4",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-12-22T01:30:16Z",
+      "side": 1,
+      "message": "thanks for catching that, yeah, it is unnecessary with WriteExecutableFileRuleVerbatim",
+      "parentUuid": "4effdd95_2d6623a3",
       "revId": "3cc2b7d851b75e774f8440a7af32ba0d412b174a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
