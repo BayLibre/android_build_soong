@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4263ba_50ff75e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-22T00:07:08Z",
+      "side": 1,
+      "message": "I think I missed cleaning up `SetProvider`. I have rebased this change on top of that.",
+      "revId": "24c1cbe63e19e6c5145fe8c0391e6334bcdd17b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
