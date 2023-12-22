@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54c0ea14_6a4ca89f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-12-22T00:01:03Z",
+      "side": 1,
+      "message": "I think it\u0027s pretty unlikely this cl caused the linked bug, is there anything that\u0027s making you think otherwise?",
+      "revId": "80d224c029532f75122ddcef6db6d52593cf4aa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
