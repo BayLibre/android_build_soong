@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9994391_21179585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-12-22T00:14:40Z",
+      "side": 1,
+      "message": "This is the hiddenapi equivalent of the dexpreopt refactor I did recently (aosp/2876756).",
+      "revId": "aa2143ed5b9cfb4e788cc901a6897674fb0e9d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
