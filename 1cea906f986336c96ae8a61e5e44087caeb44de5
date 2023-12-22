@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "368474e3_035ec005",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-22T01:40:45Z",
+      "side": 1,
+      "message": "presubmit failures pending fixes in topic and internal gerrit",
+      "revId": "1cea906f986336c96ae8a61e5e44087caeb44de5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
