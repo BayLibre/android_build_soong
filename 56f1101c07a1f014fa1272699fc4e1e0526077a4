@@ -33,6 +33,24 @@
       "message": "Jiakai \u0026 Paul, do you know about this script?",
       "revId": "56f1101c07a1f014fa1272699fc4e1e0526077a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5214850e_27562822",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-22T14:33:13Z",
+      "side": 1,
+      "message": "I do. This script check that there is no unexpected package names on the bootclasspath. Because bootclasspath always takes precedence during class resolving, an unexpected package there can cause surprising behaviors in apps. For example, when an app adds perffeto as a library, and imports a class from `perfetto.protos`, normally the class name should be resolved to the class in the library, but if bootclasspath also has a class with the same class name, the class name will be resolved to class in bootclasspath instead, not the one that the app adds as its library.\n\nDoes `perfetto.protos` expose public APIs? If not, could you try using jarjar to rename the package?",
+      "parentUuid": "e7a78a15_111bd3e5",
+      "revId": "56f1101c07a1f014fa1272699fc4e1e0526077a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
