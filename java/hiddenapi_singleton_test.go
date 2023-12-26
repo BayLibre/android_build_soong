@@ -177,9 +177,9 @@ func TestHiddenAPISingletonSdks(t *testing.T) {
 		{
 			name:             "testBundled",
 			unbundledBuild:   false,
-			publicStub:       "android_stubs_current",
-			systemStub:       "android_system_stubs_current",
-			testStub:         "android_test_stubs_current",
+			publicStub:       "android_stubs_current_exportable",
+			systemStub:       "android_system_stubs_current_exportable",
+			testStub:         "android_test_stubs_current_exportable",
 			corePlatformStub: "legacy.core.platform.api.stubs",
 			preparer:         android.GroupFixturePreparers(),
 		}, {

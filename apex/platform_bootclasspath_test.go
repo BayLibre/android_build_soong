@@ -386,9 +386,9 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 		`platform:all_apex_contributions`,
 
 		// The following are stubs.
-		`platform:android_stubs_current`,
-		`platform:android_system_stubs_current`,
-		`platform:android_test_stubs_current`,
+		`platform:android_stubs_current_exportable`,
+		`platform:android_system_stubs_current_exportable`,
+		`platform:android_test_stubs_current_exportable`,
 		`platform:legacy.core.platform.api.stubs`,
 
 		// Needed for generating the boot image.
