@@ -139,6 +139,9 @@ func TestJavaSdkLibrary(t *testing.T) {
 		"foo.api.public.latest",
 		"foo.api.system.latest",
 		"foo.stubs",
+		"foo.stubs.exportable",
+		"foo.stubs.exportable.system",
+		"foo.stubs.exportable.test",
 		"foo.stubs.source",
 		"foo.stubs.source.system",
 		"foo.stubs.source.test",
@@ -547,6 +550,7 @@ func TestJavaSdkLibrary_Deps(t *testing.T) {
 		`sdklib.api.public.latest`,
 		`sdklib.impl`,
 		`sdklib.stubs`,
+		`sdklib.stubs.exportable`,
 		`sdklib.stubs.source`,
 		`sdklib.xml`,
 	})
@@ -945,6 +949,7 @@ func TestJavaSdkLibraryImport_WithSource(t *testing.T) {
 		`sdklib.api.public.latest`,
 		`sdklib.impl`,
 		`sdklib.stubs`,
+		`sdklib.stubs.exportable`,
 		`sdklib.stubs.source`,
 		`sdklib.xml`,
 	})
@@ -1018,6 +1023,7 @@ func testJavaSdkLibraryImport_Preferred(t *testing.T, prefer string, preparer an
 		`sdklib.api.public.latest`,
 		`sdklib.impl`,
 		`sdklib.stubs`,
+		`sdklib.stubs.exportable`,
 		`sdklib.stubs.source`,
 		`sdklib.xml`,
 	})
