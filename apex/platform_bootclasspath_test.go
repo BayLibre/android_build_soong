@@ -383,9 +383,9 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 	// Make sure that the myplatform-bootclasspath has the correct dependencies.
 	CheckModuleDependencies(t, result.TestContext, "myplatform-bootclasspath", "android_common", []string{
 		// The following are stubs.
-		`platform:android_stubs_current`,
-		`platform:android_system_stubs_current`,
-		`platform:android_test_stubs_current`,
+		`platform:android_stubs_current_exportable`,
+		`platform:android_system_stubs_current_exportable`,
+		`platform:android_test_stubs_current_exportable`,
 		`platform:legacy.core.platform.api.stubs`,
 
 		// Needed for generating the boot image.

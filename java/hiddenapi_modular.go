@@ -244,9 +244,9 @@ func hiddenAPIComputeMonolithicStubLibModules(config android.Config) map[*Hidden
 		testStubModules = append(testStubModules, "sdk_test_current_android")
 	} else {
 		// Use stub modules built from source
-		publicStubModules = append(publicStubModules, android.SdkPublic.DefaultJavaLibraryName())
-		systemStubModules = append(systemStubModules, android.SdkSystem.DefaultJavaLibraryName())
-		testStubModules = append(testStubModules, android.SdkTest.DefaultJavaLibraryName())
+		publicStubModules = append(publicStubModules, android.SdkPublic.DefaultExportableJavaLibraryName())
+		systemStubModules = append(systemStubModules, android.SdkSystem.DefaultExportableJavaLibraryName())
+		testStubModules = append(testStubModules, android.SdkTest.DefaultExportableJavaLibraryName())
 	}
 	// We do not have prebuilts of the core platform api yet
 	corePlatformStubModules = append(corePlatformStubModules, "legacy.core.platform.api.stubs")
@@ -288,7 +288,7 @@ func hiddenAPIAddStubLibDependencies(ctx android.BottomUpMutatorContext, apiScop
 func hiddenAPIRetrieveDexJarBuildPath(ctx android.ModuleContext, module android.Module, kind android.SdkKind) android.Path {
 	var dexJar OptionalDexJarPath
 	if sdkLibrary, ok := module.(SdkLibraryDependency); ok {
-		dexJar = sdkLibrary.SdkApiStubDexJar(ctx, kind)
+		dexJar = sdkLibrary.SdkApiExportableStubDexJar(ctx, kind)
 	} else if j, ok := module.(UsesLibraryDependency); ok {
 		dexJar = j.DexJarBuildPath()
 	} else {

@@ -89,6 +89,28 @@ java_library {
     },
 }
 
+java_library {
+    name: "core.current.stubs.exportable.from-source",
+    defaults: [
+        "core.current.stubs.defaults",
+    ],
+    static_libs: [
+        "art.module.public.api.stubs.exportable",
+        "conscrypt.module.public.api.stubs.exportable",
+        "i18n.module.public.api.stubs.exportable",
+    ],
+}
+
+java_library {
+    name: "core.current.stubs.exportable",
+    defaults: [
+        "core.current.stubs.defaults",
+    ],
+    static_libs: [
+        "core.current.stubs.exportable.from-source",
+    ],
+}
+
 // Distributed with the SDK for turning into system modules to compile apps
 // against.
 //
