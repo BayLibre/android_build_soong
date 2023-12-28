@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6bec323_e9527cf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-12-28T22:17:31Z",
+      "side": 1,
+      "message": "I did get the patch locally and ran \u0027make haiku`. The job completed successfully. I checked some of the vendor true fuzzers and I see the vendor subfolders under lib with some libraries that used to be packaged there but not all. For example, libsrtp2-fuzzer.zip used to include libc++.so and libclang_rt.ubsan_standalone-aarch64-android.so. But with the patch applied, libclang_rt.ubsan_standalone-aarch64-android.so is not include under lib nor lib/vendor. I also checked other cases such as `keystoreGetWifiHidl_fuzzer` and it is missing `libclang_rt.ubsan_standalone-aarch64-android.so`.",
+      "revId": "d86fec5495b8b43199985f88d8bf134a293ca598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
