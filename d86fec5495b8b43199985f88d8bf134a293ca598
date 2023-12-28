@@ -16,6 +16,24 @@
       "message": "I did get the patch locally and ran \u0027make haiku`. The job completed successfully. I checked some of the vendor true fuzzers and I see the vendor subfolders under lib with some libraries that used to be packaged there but not all. For example, libsrtp2-fuzzer.zip used to include libc++.so and libclang_rt.ubsan_standalone-aarch64-android.so. But with the patch applied, libclang_rt.ubsan_standalone-aarch64-android.so is not include under lib nor lib/vendor. I also checked other cases such as `keystoreGetWifiHidl_fuzzer` and it is missing `libclang_rt.ubsan_standalone-aarch64-android.so`.",
       "revId": "d86fec5495b8b43199985f88d8bf134a293ca598",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05379642_a0bf040b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-28T22:26:53Z",
+      "side": 1,
+      "message": "This is the type of issue I\u0027d expect b/317924926 would automatically catch. If we\u0027re checking these things manually, they probably have changed a lot and we know they do, as the fuzzers have been broken for a while. However, this patch is only changing paths, I don\u0027t understand how it could change whether libc++ is included or not. I\u0027d still like to fix this.\n\nFrom the commit message, you can see /data/fuzz/x86_64/lib/vendor/libclang_rt.ubsan_standalone-x86_64-android.so does show up when I \u0027adb sync data\u0027. It\u0027s built and loaded correctly at least for some fuzzers.\n\nHowever, I\u0027m not familiar with the packaging logic. Is there some other codebase that is controlling how things are zipped up? Or can you share the exact repro steps (which exact paths you are using/viewing?)\n\nAlso - is there a way to validate this patch with the haiku infrastructure? Like, I know this patch will fix 5+ fuzzers that are currently broken if not more, but it\u0027s possible more work is needed in the packaging.",
+      "parentUuid": "b6bec323_e9527cf9",
+      "revId": "d86fec5495b8b43199985f88d8bf134a293ca598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
