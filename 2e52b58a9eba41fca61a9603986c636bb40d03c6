@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcdbf4c3_388d3da2",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-28T01:32:20Z",
+      "side": 1,
+      "message": "this needs fixed",
+      "range": {
+        "startLine": 165,
+        "startChar": 77,
+        "endLine": 165,
+        "endChar": 80
+      },
+      "revId": "2e52b58a9eba41fca61a9603986c636bb40d03c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
