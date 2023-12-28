@@ -52,6 +52,24 @@
       "parentUuid": "05379642_a0bf040b",
       "revId": "d86fec5495b8b43199985f88d8bf134a293ca598",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae571906_e6ad1180",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-28T23:17:48Z",
+      "side": 1,
+      "message": "Which exact files are you looking at? When I reproduce and look at `out/soong/.intermediates/fuzz/target/x86_64/libsrtp2-fuzzer.zip` I see the following:\n\n```\nArchive:  libsrtp2-fuzzer.zip\n  inflating: libsrtp2-fuzzer_seed_corpus.zip  \n extracting: config.json             \n  inflating: lib/vendor/libc++.so    \n  inflating: lib/vendor/libclang_rt.ubsan_standalone-x86_64-android.so  \n  inflating: libsrtp2-fuzzer\n```\n\nand for Wi-Fi:\n\n```\nArchive:  ./keystoreGetWifiHidl_fuzzer.zip\n  inflating: config.json             \n  inflating: lib/vendor/android.system.wifi.keystore@1.0.so  \n  inflating: lib/vendor/libhidlbase.so  \n  inflating: lib/vendor/libutils.so  \n  inflating: lib/vendor/libc++.so    \n  inflating: lib/vendor/libclang_rt.ubsan_standalone-x86_64-android.so  \n  inflating: lib/vendor/libbase.so   \n  inflating: lib/vendor/libcutils.so  \n  inflating: keystoreGetWifiHidl_fuzzer\n```\n\nAre you looking at ./soong/.intermediates/fuzz/host/x86_64/libsrtp2-fuzzer.zip instead?",
+      "parentUuid": "0966192c_360c3c8c",
+      "revId": "d86fec5495b8b43199985f88d8bf134a293ca598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
