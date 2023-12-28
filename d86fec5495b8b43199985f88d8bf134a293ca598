@@ -34,6 +34,24 @@
       "parentUuid": "b6bec323_e9527cf9",
       "revId": "d86fec5495b8b43199985f88d8bf134a293ca598",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0966192c_360c3c8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-12-28T22:58:48Z",
+      "side": 1,
+      "message": "The repro step is to make haiku: `SANITIZE_TARGET\u003dhwaddress SANITIZE_HOST\u003daddress make haiku` and examine the zip files under out/soong. In terms of packaging: build/soong/fuzz/fuzz_common.go. The next step is to test running the fuzzer on clusterfuzz locally, but I can do that once we verify the packaging part.",
+      "parentUuid": "05379642_a0bf040b",
+      "revId": "d86fec5495b8b43199985f88d8bf134a293ca598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
