@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad868874_c812101d",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2023-12-28T15:24:26Z",
+      "side": 1,
+      "message": "I can see that the `Contains` function is used throughout this file, but I wonder if there it may be better to check if the string is equal to host",
+      "range": {
+        "startLine": 531,
+        "startChar": 21,
+        "endLine": 531,
+        "endChar": 29
+      },
+      "revId": "65dd2c379d135766eaaea065774f9d2efa9d7dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
