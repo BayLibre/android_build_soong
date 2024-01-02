@@ -15,6 +15,9 @@
 package android
 
 import (
+	"fmt"
+	"strings"
+
 	"github.com/google/blueprint"
 )
 
@@ -52,6 +55,16 @@ func CollectDependencyAconfigFiles(ctx ModuleContext, mergedAconfigFiles *map[st
 	ctx.VisitDirectDeps(func(module Module) {
 		if dep, _ := OtherModuleProvider(ctx, module, AconfigDeclarationsProviderKey); dep.IntermediateCacheOutputPath != nil {
 			(*mergedAconfigFiles)[dep.Container] = append((*mergedAconfigFiles)[dep.Container], dep.IntermediateCacheOutputPath)
+			if !ctx.Module().base().SocSpecific() && !ctx.Module().base().ProductSpecific() && !ctx.Module().base().SystemExtSpecific() {
+				print := true
+				if am, ok := ctx.Module().(ApexModule); ok {
+					apex_available := am.apexModuleBase().ApexProperties.Apex_available
+					print = len(apex_available) == 0 || strings.Contains(strings.Join(apex_available, " "), "//apex_available:platform")
+				}
+				if print {
+					fmt.Println(module.Name())
+				}
+			}
 			return
 		}
 		if dep, _ := OtherModuleProvider(ctx, module, AconfigTransitiveDeclarationsInfoProvider); len(dep.AconfigFiles) > 0 {
