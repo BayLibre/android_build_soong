@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a24842_87ee2481",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-02T23:06:44Z",
+      "side": 1,
+      "message": "This if statement can be removed, as `library.buildStubs()` must be true for this to have any effect.",
+      "revId": "ec911a5b6433427508c823c52379cb82299235d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
