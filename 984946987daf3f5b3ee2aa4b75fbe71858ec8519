@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b861d90_8bd04f53",
+        "filename": "android/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-02T22:17:09Z",
+      "side": 1,
+      "message": "nit: you could save a string comparison if you run `cmp.Compare` first and check if it\u0027s result is \u003d\u003d 0.",
+      "revId": "984946987daf3f5b3ee2aa4b75fbe71858ec8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56c88d68_f2fe34ee",
+        "filename": "android/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-02T22:17:09Z",
+      "side": 1,
+      "message": "this is a misleading comment, `copy-vintf-manifest-checked` does more than just a copy.",
+      "revId": "984946987daf3f5b3ee2aa4b75fbe71858ec8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc070fe_44c001e6",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-02T22:17:09Z",
+      "side": 1,
+      "message": "Are these used anywhere?",
+      "range": {
+        "startLine": 870,
+        "startChar": 0,
+        "endLine": 871,
+        "endChar": 42
+      },
+      "revId": "984946987daf3f5b3ee2aa4b75fbe71858ec8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
