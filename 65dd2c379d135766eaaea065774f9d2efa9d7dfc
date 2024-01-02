@@ -46,6 +46,30 @@
       },
       "revId": "65dd2c379d135766eaaea065774f9d2efa9d7dfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "038fdb11_11b12cbb",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2024-01-02T19:20:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f47fa1a_f12237a7",
+      "range": {
+        "startLine": 531,
+        "startChar": 21,
+        "endLine": 531,
+        "endChar": 29
+      },
+      "revId": "65dd2c379d135766eaaea065774f9d2efa9d7dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
