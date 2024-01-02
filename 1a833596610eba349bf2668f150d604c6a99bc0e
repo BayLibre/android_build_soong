@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d82d60f0_dfe643c0",
+        "filename": "phony/phony.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-02T22:08:53Z",
+      "side": 1,
+      "message": "Can you add a comment to this function that will serve as the user-facing documentation for this module type at go/Android.bp.",
+      "revId": "1a833596610eba349bf2668f150d604c6a99bc0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
