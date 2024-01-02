@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "433c7475_66a94129",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-02T17:57:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99c7f64a_661cb1d4",
+      "revId": "aa2143ed5b9cfb4e788cc901a6897674fb0e9d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "245c8a80_1ed931f5",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-12-22T01:29:04Z",
       "side": 1,
       "message": "```suggestion\n// javaLibraryPathOnHost returns the path to the java library which is exported by the apex for hiddenapi and dexpreopt and whether the path exists.\n```",
+      "revId": "aa2143ed5b9cfb4e788cc901a6897674fb0e9d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ccb084_cc5a30bc",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-02T17:57:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "245c8a80_1ed931f5",
       "revId": "aa2143ed5b9cfb4e788cc901a6897674fb0e9d2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -75,6 +111,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96207cd4_0c1abc0b",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-02T17:57:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d3acb7e_68c41cb3",
+      "range": {
+        "startLine": 916,
+        "startChar": 1,
+        "endLine": 916,
+        "endChar": 21
+      },
+      "revId": "aa2143ed5b9cfb4e788cc901a6897674fb0e9d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35e42876_2efd87c7",
@@ -88,6 +148,24 @@
       "writtenOn": "2023-12-22T01:29:04Z",
       "side": 1,
       "message": "```suggestion\n\tapexNameToApexExportsInfoMap :\u003d getApexNameToApexExportsInfoMap(ctx)\n```",
+      "revId": "aa2143ed5b9cfb4e788cc901a6897674fb0e9d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e591208_257c2848",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-02T17:57:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35e42876_2efd87c7",
       "revId": "aa2143ed5b9cfb4e788cc901a6897674fb0e9d2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
