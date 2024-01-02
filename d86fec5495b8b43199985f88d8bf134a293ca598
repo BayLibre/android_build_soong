@@ -88,6 +88,29 @@
       "parentUuid": "ae571906_e6ad1180",
       "revId": "d86fec5495b8b43199985f88d8bf134a293ca598",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0bb8099_1ae9d687",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-01-02T01:33:21Z",
+      "side": 1,
+      "message": "Can we install system fuzz libs under `lib/system` to make it more clear? I.e. having `/data/fuzz/x86_64/lib` as permitted path (or search path with non-isolated namespace) would also check `/data/fuzz/x86_64/lib/vendor` as it is sub-directory.",
+      "range": {
+        "startLine": 147,
+        "startChar": 12,
+        "endLine": 147,
+        "endChar": 15
+      },
+      "revId": "d86fec5495b8b43199985f88d8bf134a293ca598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
