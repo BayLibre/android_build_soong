@@ -16,6 +16,23 @@
       "message": "thanks!",
       "revId": "0d5934eed4c8dc0e10f784f8337ffa73ddf4eb8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0e79213_7847f8a2",
+        "filename": "android/defs.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-02T19:45:52Z",
+      "side": 1,
+      "message": "I submitted aosp/2817721 which changes the way these rules work and makes this part of the CL unnecesary.",
+      "revId": "0d5934eed4c8dc0e10f784f8337ffa73ddf4eb8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
