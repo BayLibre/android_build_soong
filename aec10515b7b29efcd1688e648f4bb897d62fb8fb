@@ -34,6 +34,24 @@
       "parentUuid": "cbd32f60_e25de0fa",
       "revId": "aec10515b7b29efcd1688e648f4bb897d62fb8fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4494e356_48028745",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-01-03T13:57:59Z",
+      "side": 1,
+      "message": "Since Roboleaf is gone, the missing Bazel part shouldn\u0027t be an issue.",
+      "parentUuid": "97abd0c0_757a3be9",
+      "revId": "aec10515b7b29efcd1688e648f4bb897d62fb8fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
