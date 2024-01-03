@@ -244,6 +244,7 @@ func (p *PackagingBase) CopySpecsToDir(ctx ModuleContext, builder *RuleBuilder, 
 	preparerPath := PathForModuleOut(ctx, "preparer.sh")
 	cmd := builder.Command().Tool(preparerPath)
 	var sb strings.Builder
+	sb.WriteString("set -e\n")
 	for _, k := range SortedKeys(specs) {
 		ps := specs[k]
 		destPath := filepath.Join(dir.String(), ps.relPathInPackage)
