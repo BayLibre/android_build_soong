@@ -623,15 +623,16 @@ func runSoong(ctx Context, config Config) {
 		defer nr.Close()
 
 		ninjaArgs := []string{
-			"-d", "keepdepfile",
-			"-d", "stats",
-			"-o", "usesphonyoutputs=yes",
-			"-o", "preremoveoutputs=yes",
-			"-w", "dupbuild=err",
-			"-w", "outputdir=err",
-			"-w", "missingoutfile=err",
+			//"-d", "keepdepfile",
+			//"-d", "stats",
+			//"-o", "usesphonyoutputs=yes",
+			//"-o", "preremoveoutputs=yes",
+			//"-w", "dupbuild=err",
+			//"-w", "outputdir=err",
+			//"-w", "missingoutfile=err",
+			"-v",
 			"-j", strconv.Itoa(config.Parallel()),
-			"--frontend_file", fifo,
+			"--frontend-file", fifo,
 			"-f", filepath.Join(config.SoongOutDir(), "bootstrap.ninja"),
 		}
 
@@ -642,7 +643,7 @@ func runSoong(ctx Context, config Config) {
 
 		ninjaArgs = append(ninjaArgs, targets...)
 		cmd := Command(ctx, config, "soong bootstrap",
-			config.PrebuiltBuildTool("ninja"), ninjaArgs...)
+			config.PrebuiltBuildTool("n2"), ninjaArgs...)
 
 		var ninjaEnv Environment
 

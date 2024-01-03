@@ -49,12 +49,13 @@ func runNinjaForBuild(ctx Context, config Config) {
 	nr := status.NewNinjaReader(ctx, ctx.Status.StartTool(), fifo)
 	defer nr.Close()
 
-	executable := config.PrebuiltBuildTool("ninja")
+	executable := config.PrebuiltBuildTool("n2")
 	args := []string{
-		"-d", "keepdepfile",
-		"-d", "keeprsp",
-		"-d", "stats",
-		"--frontend_file", fifo,
+		"-d", "trace",
+		//"-d", "keepdepfile",
+		//"-d", "keeprsp",
+		//"-d", "stats",
+		"--frontend-file", fifo,
 	}
 
 	args = append(args, config.NinjaArgs()...)
@@ -72,10 +73,10 @@ func runNinjaForBuild(ctx Context, config Config) {
 
 	args = append(args, "-f", config.CombinedNinjaFile())
 
-	args = append(args,
-		"-o", "usesphonyoutputs=yes",
-		"-w", "dupbuild=err",
-		"-w", "missingdepfile=err")
+	// args = append(args,
+	// 	"-o", "usesphonyoutputs=yes",
+	// 	"-w", "dupbuild=err",
+	// 	"-w", "missingdepfile=err")
 
 	cmd := Command(ctx, config, "ninja", executable, args...)
 
@@ -89,16 +90,16 @@ func runNinjaForBuild(ctx Context, config Config) {
 
 	switch config.NinjaWeightListSource() {
 	case NINJA_LOG:
-		cmd.Args = append(cmd.Args, "-o", "usesninjalogasweightlist=yes")
+		//cmd.Args = append(cmd.Args, "-o", "usesninjalogasweightlist=yes")
 	case EVENLY_DISTRIBUTED:
 		// pass empty weight list means ninja considers every tasks's weight as 1(default value).
-		cmd.Args = append(cmd.Args, "-o", "usesweightlist=/dev/null")
+		//cmd.Args = append(cmd.Args, "-o", "usesweightlist=/dev/null")
 	case EXTERNAL_FILE:
 		fallthrough
 	case HINT_FROM_SOONG:
 		// The weight list is already copied/generated.
-		ninjaWeightListPath := filepath.Join(config.OutDir(), ninjaWeightListFileName)
-		cmd.Args = append(cmd.Args, "-o", "usesweightlist="+ninjaWeightListPath)
+		//ninjaWeightListPath := filepath.Join(config.OutDir(), ninjaWeightListFileName)
+		//cmd.Args = append(cmd.Args, "-o", "usesweightlist="+ninjaWeightListPath)
 	}
 
 	// Allow both NINJA_ARGS and NINJA_EXTRA_ARGS, since both have been
@@ -198,11 +199,13 @@ func runNinjaForBuild(ctx Context, config Config) {
 			// We don't want this build broken flag to cause reanalysis, so allow it through to the
 			// actions.
 			"BUILD_BROKEN_INCORRECT_PARTITION_IMAGES",
+			"RUST_BACKTRACE",
 		}, config.BuildBrokenNinjaUsesEnvVars()...)...)
 	}
 
 	cmd.Environment.Set("DIST_DIR", config.DistDir())
 	cmd.Environment.Set("SHELL", "/bin/bash")
+	cmd.Environment.Set("RUST_BACKTRACE", "1")
 
 	// Print the environment variables that Ninja is operating in.
 	ctx.Verboseln("Ninja environment: ")
