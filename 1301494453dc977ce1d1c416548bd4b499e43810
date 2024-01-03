@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef442a31_c48282d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-03T01:45:41Z",
+      "side": 1,
+      "message": "Wear OS related build failures seen in the presubmits are being tracked separately in b/318428982. It will be resolved once [ag/25779669](https://googleplex-android-review.git.corp.google.com/c/platform/vendor/google_clockwork/+/25779669) is merged.",
+      "revId": "1301494453dc977ce1d1c416548bd4b499e43810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
