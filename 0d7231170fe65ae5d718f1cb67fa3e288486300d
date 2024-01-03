@@ -33,6 +33,24 @@
       "message": "maybe also verbose log (into soong.log, i forget how to do that) for ones we skip. I think it\u0027s going to be very difficult to debug without this.",
       "revId": "0d7231170fe65ae5d718f1cb67fa3e288486300d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c78fe6d_4c1e9696",
+        "filename": "ui/build/androidmk_denylist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-01-03T23:01:44Z",
+      "side": 1,
+      "message": "Created a bug for this b/318567881.",
+      "parentUuid": "5d93c4e9_56457c39",
+      "revId": "0d7231170fe65ae5d718f1cb67fa3e288486300d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
