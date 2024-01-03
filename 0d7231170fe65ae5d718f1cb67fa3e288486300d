@@ -16,6 +16,23 @@
       "message": "git_main test result: go/abtd/run/L92000030001096729",
       "revId": "0d7231170fe65ae5d718f1cb67fa3e288486300d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d93c4e9_56457c39",
+        "filename": "ui/build/androidmk_denylist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-01-03T22:27:25Z",
+      "side": 1,
+      "message": "maybe also verbose log (into soong.log, i forget how to do that) for ones we skip. I think it\u0027s going to be very difficult to debug without this.",
+      "revId": "0d7231170fe65ae5d718f1cb67fa3e288486300d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
