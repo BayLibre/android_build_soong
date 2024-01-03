@@ -34,6 +34,24 @@
       "parentUuid": "f41791e6_c81330f7",
       "revId": "5cb1021aa96b7eca329b149e96db7d070d416fa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d1432ca_9760a374",
+        "filename": "cc/coverage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-03T18:06:31Z",
+      "side": 1,
+      "message": "These should be used in the flags function so that they are only defined in one place.",
+      "parentUuid": "388f87e9_7a60b616",
+      "revId": "5cb1021aa96b7eca329b149e96db7d070d416fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
