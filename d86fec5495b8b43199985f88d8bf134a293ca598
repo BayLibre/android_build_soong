@@ -135,6 +135,30 @@
       },
       "revId": "d86fec5495b8b43199985f88d8bf134a293ca598",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "748cff15_18b9804c",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-01-03T01:35:09Z",
+      "side": 1,
+      "message": "I just worried if we may need to have some detailed namespace configurations in the future. Based on the information from b/317924926 I\u0027m OK with this 😊",
+      "parentUuid": "689452d8_e5886460",
+      "range": {
+        "startLine": 147,
+        "startChar": 12,
+        "endLine": 147,
+        "endChar": 15
+      },
+      "revId": "d86fec5495b8b43199985f88d8bf134a293ca598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
