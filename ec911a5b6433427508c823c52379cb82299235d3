@@ -16,6 +16,24 @@
       "message": "This if statement can be removed, as `library.buildStubs()` must be true for this to have any effect.",
       "revId": "ec911a5b6433427508c823c52379cb82299235d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c956976_7b86adba",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-03T00:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1a24842_87ee2481",
+      "revId": "ec911a5b6433427508c823c52379cb82299235d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
