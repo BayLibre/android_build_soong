@@ -25,6 +25,7 @@ import (
 	"strings"
 
 	"android/soong/aconfig"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -728,8 +729,8 @@ func (a *apexBundle) getImageVariationPair(deviceConfig android.DeviceConfig) (s
 		return cc.VendorVariationPrefix, a.vndkVersion(deviceConfig)
 	}
 
-	var prefix string
-	var vndkVersion string
+	var prefix string = android.CoreVariation
+	var vndkVersion string = ""
 	if deviceConfig.VndkVersion() != "" {
 		if a.SocSpecific() || a.DeviceSpecific() {
 			prefix = cc.VendorVariationPrefix
@@ -738,15 +739,18 @@ func (a *apexBundle) getImageVariationPair(deviceConfig android.DeviceConfig) (s
 			prefix = cc.ProductVariationPrefix
 			vndkVersion = deviceConfig.PlatformVndkVersion()
 		}
+	} else {
+		if a.SocSpecific() || a.DeviceSpecific() {
+			prefix = cc.VendorVariation
+		} else if a.ProductSpecific() {
+			prefix = cc.ProductVariation
+		}
 	}
 	if vndkVersion == "current" {
 		vndkVersion = deviceConfig.PlatformVndkVersion()
 	}
-	if vndkVersion != "" {
-		return prefix, vndkVersion
-	}
 
-	return android.CoreVariation, "" // The usual case
+	return prefix, vndkVersion
 }
 
 // getImageVariation returns the image variant name for this apexBundle. In most cases, it's simply
