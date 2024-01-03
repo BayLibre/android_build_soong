@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eeb5140_cf0cd16d",
+        "filename": "android/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-03T00:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b861d90_8bd04f53",
+      "revId": "984946987daf3f5b3ee2aa4b75fbe71858ec8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56c88d68_f2fe34ee",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "378ff844_92d1b8b7",
+        "filename": "android/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-03T00:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56c88d68_f2fe34ee",
+      "revId": "984946987daf3f5b3ee2aa4b75fbe71858ec8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dc070fe_44c001e6",
@@ -48,6 +84,30 @@
       "writtenOn": "2024-01-02T22:17:09Z",
       "side": 1,
       "message": "Are these used anywhere?",
+      "range": {
+        "startLine": 870,
+        "startChar": 0,
+        "endLine": 871,
+        "endChar": 42
+      },
+      "revId": "984946987daf3f5b3ee2aa4b75fbe71858ec8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a67f7e_42c5d552",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-03T00:26:31Z",
+      "side": 1,
+      "message": "They are used in the next patch: https://android-review.git.corp.google.com/c/platform/build/soong/+/2880496/4/android/module.go#1783",
+      "parentUuid": "4dc070fe_44c001e6",
       "range": {
         "startLine": 870,
         "startChar": 0,
