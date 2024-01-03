@@ -93,6 +93,8 @@ type BpfProperties struct {
 	// be added to the include path using -I.
 	Local_include_dirs []string `android:"arch_variant"`
 
+	HeaderLibs []string `android:"arch_variant"`
+
 	// optional subdirectory under which this module is installed into.
 	Sub_dir string
 
@@ -228,6 +230,8 @@ func (bpf *bpf) AndroidMk() android.AndroidMkData {
 			fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
 			fmt.Fprintln(w)
 			var localModulePath string
+			var localHeaderLibs string
+
 			if bpf.properties.VendorInternal {
 				localModulePath = "LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/bpf"
 			} else {
@@ -235,6 +239,11 @@ func (bpf *bpf) AndroidMk() android.AndroidMkData {
 			}
 			if len(bpf.properties.Sub_dir) > 0 {
 				localModulePath += "/" + bpf.properties.Sub_dir
+			}
+			if len(bpf.properties.HeaderLibs) > 0 {
+				for _, headerlib := range bpf.properties.HeaderLibs {
+					localHeaderLibs += " " + headerlib
+				}
 			}
 			for _, obj := range bpf.objs {
 				objName := name + "_" + obj.Base()
@@ -247,6 +256,7 @@ func (bpf *bpf) AndroidMk() android.AndroidMkData {
 				fmt.Fprintln(w, "LOCAL_MODULE_CLASS := ETC")
 				fmt.Fprintln(w, localModulePath)
 				fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
+				fmt.Fprintln(w, "LOCAL_HEADER_LIBS :=", localHeaderLibs)
 				fmt.Fprintln(w)
 			}
 			fmt.Fprintln(w, "include $(CLEAR_VARS)", " # bpf.bpf")
