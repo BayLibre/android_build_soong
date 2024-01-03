@@ -11593,3 +11593,142 @@ func TestBootDexJarsMultipleApexPrebuilts(t *testing.T) {
 		checkBootJarsForMonolithicHiddenapi(t, ctx, tc.expectedBootJar)
 	}
 }
+
+// Test that product packaging installs the selected mainline module (either source or a specific prebuilt)
+// RELEASE_APEX_CONTIRBUTIONS_* build flags will be used to select the correct prebuilt for a specific release config
+func TestInstallationRulesForMultipleApexPrebuilts(t *testing.T) {
+	// check that the LOCAL_MODULE in the generated mk file matches the name used in PRODUCT_PACAKGES
+	// Since the name used in PRODUCT_PACAKGES does not contain prebuilt_ prefix, LOCAL_MODULE should not contain any prefix either
+	checkLocalModuleName := func(t *testing.T, ctx *android.TestContext, soongApexModuleName string, expectedLocalModuleName string) {
+		// Variations are created based on apex_name
+		entries := android.AndroidMkEntriesForTest(t, ctx, ctx.ModuleForTests(soongApexModuleName, "android_common_com.android.foo").Module())
+		android.AssertStringEquals(t, "LOCAL_MODULE of the prebuilt apex must match the name listed in PRODUCT_PACKAGES", expectedLocalModuleName, entries[0].EntryMap["LOCAL_MODULE"][0])
+	}
+
+	checkHideFromMake := func(t *testing.T, ctx *android.TestContext, visibleModuleName string, hiddenModuleNames []string) {
+		// TODO: Add desc
+		variation := func(moduleName string) string {
+			ret := "android_common_com.android.foo"
+			if moduleName == "com.google.android.foo" {
+				ret = "android_common_com.google.android.foo_com.android.foo"
+			}
+			return ret
+		}
+
+		visibleModule := ctx.ModuleForTests(visibleModuleName, variation(visibleModuleName)).Module()
+		android.AssertBoolEquals(t, "Apex "+visibleModuleName+" selected using apex_contributions should be visible to make", false, visibleModule.IsHideFromMake())
+
+		for _, hiddenModuleName := range hiddenModuleNames {
+			hiddenModule := ctx.ModuleForTests(hiddenModuleName, variation(hiddenModuleName)).Module()
+			android.AssertBoolEquals(t, "Apex "+hiddenModuleName+" not selected using apex_contributions should be hidden from make", true, hiddenModule.IsHideFromMake())
+
+		}
+	}
+
+	bp := `
+		apex_key {
+			name: "com.android.foo.key",
+			public_key: "com.android.foo.avbpubkey",
+			private_key: "com.android.foo.pem",
+		}
+
+		// AOSP source apex
+		apex {
+			name: "com.android.foo",
+			key: "com.android.foo.key",
+			updatable: false,
+		}
+
+		// Google source apex
+		override_apex {
+			name: "com.google.android.foo",
+			base: "com.android.foo",
+			key: "com.android.foo.key",
+		}
+
+		// Prebuilt Google APEX.
+
+		prebuilt_apex {
+			name: "com.google.android.foo",
+			apex_name: "com.android.foo",
+			src: "com.android.foo-arm.apex",
+		}
+
+		// Another Prebuilt Google APEX
+		prebuilt_apex {
+			name: "com.google.android.foo.v2",
+			apex_name: "com.android.foo",
+			source_apex_name: "com.google.android.foo", // source_apex_name becomes LOCAL_MODULE in the generated mk file
+			src: "com.android.foo-arm.apex",
+		}
+
+		// APEX contribution modules
+
+		apex_contributions {
+			name: "foo.source.contributions",
+			api_domain: "com.android.foo",
+			contents: ["com.google.android.foo"],
+		}
+
+		apex_contributions {
+			name: "foo.prebuilt.contributions",
+			api_domain: "com.android.foo",
+			contents: ["prebuilt_com.google.android.foo"],
+		}
+
+		apex_contributions {
+			name: "foo.prebuilt.v2.contributions",
+			api_domain: "com.android.foo",
+			contents: ["prebuilt_com.google.android.foo.v2"], // prebuilt_ prefix is missing because of prebuilt_rename mutator
+		}
+	`
+
+	testCases := []struct {
+		desc                      string
+		selectedApexContributions string
+		expectedVisibleModuleName string
+		expectedHiddenModuleNames []string
+	}{
+		{
+			desc:                      "Source apex is selected, prebuilts should be hidden from make",
+			selectedApexContributions: "foo.source.contributions",
+			expectedVisibleModuleName: "com.google.android.foo",
+			expectedHiddenModuleNames: []string{"prebuilt_com.google.android.foo", "prebuilt_com.google.android.foo.v2"},
+		},
+		{
+			desc:                      "Prebuilt apex prebuilt_com.android.foo is selected, source and the other prebuilt should be hidden from make",
+			selectedApexContributions: "foo.prebuilt.contributions",
+			expectedVisibleModuleName: "prebuilt_com.google.android.foo",
+			expectedHiddenModuleNames: []string{"com.google.android.foo", "prebuilt_com.google.android.foo.v2"},
+		},
+		{
+			desc:                      "Prebuilt apex prebuilt_com.android.fooi.v2 is selected, source and the other prebuilt should be hidden from make",
+			selectedApexContributions: "foo.prebuilt.v2.contributions",
+			expectedVisibleModuleName: "prebuilt_com.google.android.foo.v2",
+			expectedHiddenModuleNames: []string{"com.google.android.foo", "prebuilt_com.google.android.foo"},
+		},
+	}
+
+	for _, tc := range testCases {
+		preparer := android.GroupFixturePreparers(
+			//java.FixtureConfigureApexBootJars("com.android.foo:framework-foo"),
+			android.FixtureMergeMockFs(map[string][]byte{
+				"system/sepolicy/apex/com.android.foo-file_contexts": nil,
+			}),
+			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+				variables.BuildFlags = map[string]string{
+					"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": tc.selectedApexContributions,
+				}
+			}),
+		)
+		ctx := testApex(t, bp, preparer)
+
+		// Check that the LOCAL_MODULE of the the two prebuilts is com.android.foo
+		// This ensures that product packaging can pick them for installation if it has been flagged by apex_contributions
+		checkLocalModuleName(t, ctx, "prebuilt_com.google.android.foo", "com.google.android.foo")
+		checkLocalModuleName(t, ctx, "prebuilt_com.google.android.foo.v2", "com.google.android.foo")
+
+		// TODO: Add desc
+		checkHideFromMake(t, ctx, tc.expectedVisibleModuleName, tc.expectedHiddenModuleNames)
+	}
+}
