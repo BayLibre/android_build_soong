@@ -22,6 +22,30 @@
       },
       "revId": "b765d6bd460dba905ada40be8e89db699232d569",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da60e107_c831c450",
+        "filename": "java/lint_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-04T18:56:41Z",
+      "side": 1,
+      "message": "`TestJavaLintUsesCorrectBpConfig` below checks that already.",
+      "parentUuid": "036ba26d_af84561e",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 3
+      },
+      "revId": "b765d6bd460dba905ada40be8e89db699232d569",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
