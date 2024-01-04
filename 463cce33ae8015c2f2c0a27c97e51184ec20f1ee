@@ -22,6 +22,30 @@
       },
       "revId": "463cce33ae8015c2f2c0a27c97e51184ec20f1ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47918a4_6b29690a",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2001,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-01-04T14:39:29Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "6043e9eb_920eaf67",
+      "range": {
+        "startLine": 1994,
+        "startChar": 1,
+        "endLine": 2001,
+        "endChar": 2
+      },
+      "revId": "463cce33ae8015c2f2c0a27c97e51184ec20f1ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
