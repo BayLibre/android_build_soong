@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3746554_d465d863",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-01-04T04:17:25Z",
+      "side": 1,
+      "message": "Let\u0027s add `\u0026\u0026 !inVendor` to exclude vendor apexes. (vendor apexes will be covered above with `if inVendor`)",
+      "range": {
+        "startLine": 346,
+        "startChar": 4,
+        "endLine": 346,
+        "endChar": 10
+      },
+      "revId": "f9f390fbee82f2ba2e101c052b73e776ff89dd43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
