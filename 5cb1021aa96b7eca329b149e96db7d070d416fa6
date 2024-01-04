@@ -52,6 +52,24 @@
       "parentUuid": "388f87e9_7a60b616",
       "revId": "5cb1021aa96b7eca329b149e96db7d070d416fa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebddb2ef_4ee55866",
+        "filename": "cc/coverage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3160636
+      },
+      "writtenOn": "2024-01-04T21:52:03Z",
+      "side": 1,
+      "message": "Thanks for confirming. Please find the newest patch with with flags function modified along with updated 2754247.",
+      "parentUuid": "5d1432ca_9760a374",
+      "revId": "5cb1021aa96b7eca329b149e96db7d070d416fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
