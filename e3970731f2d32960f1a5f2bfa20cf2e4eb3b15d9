@@ -16,6 +16,24 @@
       "message": "Could you diff the lint reports before/after this cl so we can check what changed?",
       "revId": "e3970731f2d32960f1a5f2bfa20cf2e4eb3b15d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77fbefff_e93c0bfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-04T21:54:02Z",
+      "side": 1,
+      "message": "I looked through the lint reports, and they\u0027re actually surprisingly similar.\n\nThere\u0027s a nondeterminism issue, I made ag/25805523 to fix it.\n\nThe only other difference I see is that on some `UnusedAttribute` warnings, the targetSdkVersion from the generated manifest changes from 35 to VanillaIceCream.\n\nEven `framework-minus-apex` doesn\u0027t have a diff, despite the cl that this is reverting originally being for b/215567981. I\u0027m wondering if maybe the tree is in a different stage of finalization now, and that\u0027s why it\u0027s not needed?\n\nAnyways, given how there\u0027s virtually no differences, this should be ok to submit.",
+      "parentUuid": "ad7c21f0_2ce660f5",
+      "revId": "e3970731f2d32960f1a5f2bfa20cf2e4eb3b15d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
