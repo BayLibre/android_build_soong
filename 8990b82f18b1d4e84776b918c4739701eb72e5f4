@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5d2c8e2_7b4270c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-01-04T21:18:23Z",
+      "side": 1,
+      "message": "riscv tests passed in abtd: https://android-build.corp.google.com/builds/abtd/run/L04000030001109092",
+      "revId": "8990b82f18b1d4e84776b918c4739701eb72e5f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a0810fb_8bd48af7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-01-04T21:18:23Z",
+      "side": 1,
+      "message": "riscv build passed in abtd: https://android-build.corp.google.com/builds/abtd/run/L04000030001109092",
+      "revId": "8990b82f18b1d4e84776b918c4739701eb72e5f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
