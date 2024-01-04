@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "036ba26d_af84561e",
+        "filename": "java/lint_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-04T18:55:32Z",
+      "side": 1,
+      "message": "Can you also add another test when a baseline file is set? It could assert that the file gets passed as `--baseline`",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 3
+      },
+      "revId": "b765d6bd460dba905ada40be8e89db699232d569",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
