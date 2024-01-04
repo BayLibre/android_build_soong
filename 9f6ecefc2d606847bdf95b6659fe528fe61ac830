@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7467ca2_4989aa0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-04T00:48:02Z",
+      "side": 1,
+      "message": "The hiddenapi failures seem to be caused from aosp/2893181. I\u0027ll take a closer look if this is a blocker or if additional build changes are required.",
+      "revId": "9f6ecefc2d606847bdf95b6659fe528fe61ac830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
