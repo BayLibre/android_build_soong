@@ -16,9 +16,9 @@ subdirs = [
 
 bootstrap_go_package {
     name: "soong",
-    pkgPath: "android/soong",
+      pkgPath: "android/soong",
     deps: [
-        "blueprint",
+        "blueprint"
     ],
     srcs: [
         "doc.go",
@@ -103,22 +103,22 @@ cc_genrule {
 
 // Instantiate the dex_bootjars singleton module.
 dex_bootjars {
-    name: "dex_bootjars",
-}
+    name: "dex_bootjars",}
 
 // Pseudo-test that's run on checkbuilds to ensure that get_clang_version can
 // parse cc/config/global.go.
 genrule {
     name: "get_clang_version_test",
     cmd: "$(location get_clang_version) > $(out)",
-    tools: ["get_clang_version"],
+      tools: ["get_clang_version"],
     srcs: ["cc/config/global.go"],
-    out: ["clang-prebuilts-version.txt"],
+    out: [ "clang-prebuilts-version.txt"],
 }
 
 dexpreopt_systemserver_check {
     name: "dexpreopt_systemserver_check",
 }
+
 
 // buildinfo.prop contains common properties for system/build.prop, like ro.build.version.*
 buildinfo_prop {
