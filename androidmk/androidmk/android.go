@@ -86,6 +86,7 @@ var rewriteProperties = map[string](func(variableAssignmentContext) error){
 
 	"LOCAL_ANNOTATION_PROCESSOR_CLASSES": skip, // Soong gets the processor classes from the plugin
 	"LOCAL_CTS_TEST_PACKAGE":             skip, // Obsolete
+	"LOCAL_XTS_TEST_PACKAGE":             skip, // Obsolete
 	"LOCAL_JACK_ENABLED":                 skip, // Obselete
 	"LOCAL_JACK_FLAGS":                   skip, // Obselete
 }
@@ -981,6 +982,8 @@ var moduleTypes = map[string]string{
 	"BUILD_CTS_PACKAGE":             "cts_package",             // will be rewritten to android_test by bpfix
 	"BUILD_CTS_TARGET_JAVA_LIBRARY": "cts_target_java_library", // will be rewritten to java_library by bpfix
 	"BUILD_CTS_HOST_JAVA_LIBRARY":   "cts_host_java_library",   // will be rewritten to java_library_host by bpfix
+
+	"BUILD_XTS_PACKAGE": "android_test_helper_app",
 }
 
 var prebuiltTypes = map[string]string{
