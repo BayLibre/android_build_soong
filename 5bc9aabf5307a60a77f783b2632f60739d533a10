@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5620eba_d21f8f78",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-01-04T03:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31110e3c_02452412",
+      "range": {
+        "startLine": 338,
+        "startChar": 2,
+        "endLine": 338,
+        "endChar": 9
+      },
+      "revId": "5bc9aabf5307a60a77f783b2632f60739d533a10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b3a7432_a7660710",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d89d97ad_77282657",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-01-04T03:50:26Z",
+      "side": 1,
+      "message": "Yes, but I think it\u0027s better to not allow APK in vendor APEXes since the beginning. I will file a bug.",
+      "parentUuid": "6b3a7432_a7660710",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 66
+      },
+      "revId": "5bc9aabf5307a60a77f783b2632f60739d533a10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6108e0f_e96ddbe3",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-04T01:28:06Z",
       "side": 1,
       "message": "is there not a better way to do this?",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 1
+      },
+      "revId": "5bc9aabf5307a60a77f783b2632f60739d533a10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7476e6e_1c79a10e",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-01-04T03:50:26Z",
+      "side": 1,
+      "message": "That\u0027s a question I too had. I hope Joe can teach me a better way.",
+      "parentUuid": "a6108e0f_e96ddbe3",
       "range": {
         "startLine": 369,
         "startChar": 0,
