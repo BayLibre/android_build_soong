@@ -164,6 +164,30 @@
       },
       "revId": "5bc9aabf5307a60a77f783b2632f60739d533a10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7125467_c9334fa9",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-01-04T09:18:11Z",
+      "side": 1,
+      "message": "\u003e This is my least favorite feature of go. Just because a thing happens to have a function with a particular signature should not me the signifier that that method adheres to a particular contract.\n\n+1. I could have accidently created the same method name without knowing that it is defined in some alien interface. It feels like signing a contract without actually  reading the terms.",
+      "parentUuid": "4d9a6c2d_d45b1209",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 1
+      },
+      "revId": "5bc9aabf5307a60a77f783b2632f60739d533a10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

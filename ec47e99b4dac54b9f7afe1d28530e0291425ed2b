@@ -22,6 +22,30 @@
       },
       "revId": "ec47e99b4dac54b9f7afe1d28530e0291425ed2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d030be47_b5d63b41",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-01-04T09:18:11Z",
+      "side": 1,
+      "message": "They are included here, but excluded just below when determining the supported SDK sets.",
+      "parentUuid": "67ca5ee0_9cb79e5c",
+      "range": {
+        "startLine": 318,
+        "startChar": 2,
+        "endLine": 318,
+        "endChar": 25
+      },
+      "revId": "ec47e99b4dac54b9f7afe1d28530e0291425ed2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
