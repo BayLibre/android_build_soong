@@ -140,6 +140,30 @@
       },
       "revId": "5bc9aabf5307a60a77f783b2632f60739d533a10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9a6c2d_d45b1209",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-01-04T06:37:14Z",
+      "side": 1,
+      "message": "The other option I can think of is adding an method isJava or something that returns true on the java modules, and adding an interface here (interfaces in go being caller defined), and calling it.  TBH.  This is my least favorite feature of go. Just because a thing happens to have a function with a particular signature should not me the signifier that that method adheres to a particular contract.  But that\u0027s what the golang wizards chose. \u003c/rant\u003e\n\nSo whatever. I\u0027m find with this reflection hack because the idiomatic golang way is just as bad IMHO.",
+      "parentUuid": "e7476e6e_1c79a10e",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 1
+      },
+      "revId": "5bc9aabf5307a60a77f783b2632f60739d533a10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
