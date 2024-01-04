@@ -23,7 +23,6 @@ var (
 
 	SandboxingDenyModuleList = []string{
 		// go/keep-sorted start
-		"aidl_camera_build_version",
 		// go/keep-sorted end
 	}
 
