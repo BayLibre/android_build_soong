@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83ee3b07_1fe00eef",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-04T10:17:50Z",
+      "side": 1,
+      "message": "It will be better to add more details of not adding the vndk version. Or we can simply remove this.",
+      "range": {
+        "startLine": 721,
+        "startChar": 76,
+        "endLine": 722,
+        "endChar": 65
+      },
+      "revId": "6164a395183ca1b66591d8ca62673f9922eb275a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2ce436c_aa411c1a",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-04T10:17:50Z",
+      "side": 1,
+      "message": "This is no longer true.",
+      "range": {
+        "startLine": 304,
+        "startChar": 50,
+        "endLine": 304,
+        "endChar": 71
+      },
+      "revId": "6164a395183ca1b66591d8ca62673f9922eb275a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17aefef5_088f43e9",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2112,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-04T10:17:50Z",
+      "side": 1,
+      "message": "Why is this required? Is it because the change generated vendor variant by default?",
+      "range": {
+        "startLine": 2112,
+        "startChar": 58,
+        "endLine": 2112,
+        "endChar": 65
+      },
+      "revId": "6164a395183ca1b66591d8ca62673f9922eb275a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
