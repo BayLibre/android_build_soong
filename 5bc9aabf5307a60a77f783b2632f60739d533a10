@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31110e3c_02452412",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-01-04T01:28:06Z",
+      "side": 1,
+      "message": "nit: I\u0027d recommend calling this \u0027supportedVersions\u0027",
+      "range": {
+        "startLine": 338,
+        "startChar": 2,
+        "endLine": 338,
+        "endChar": 9
+      },
+      "revId": "5bc9aabf5307a60a77f783b2632f60739d533a10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b3a7432_a7660710",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-01-04T01:28:06Z",
+      "side": 1,
+      "message": "this allows VAPEX to override the above restriction?",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 66
+      },
+      "revId": "5bc9aabf5307a60a77f783b2632f60739d533a10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6108e0f_e96ddbe3",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-01-04T01:28:06Z",
+      "side": 1,
+      "message": "is there not a better way to do this?",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 1
+      },
+      "revId": "5bc9aabf5307a60a77f783b2632f60739d533a10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
