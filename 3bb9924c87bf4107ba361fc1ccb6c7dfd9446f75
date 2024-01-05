@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b7839c_48e530a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-01-05T01:42:11Z",
+      "side": 1,
+      "message": "Joe, could you review these again? These are clean reland of the original changes; no additional fixes applied.\n\nI\u0027ve confirmed that the once broken targets are green with these patchset. See\n\n* https://android-build.corp.google.com/builds/abtd/run/L88400030001099314\n*  https://android-build.corp.google.com/builds/abtd/run/L19900030001093136",
+      "revId": "3bb9924c87bf4107ba361fc1ccb6c7dfd9446f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
