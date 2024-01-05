@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfff8384_300a309d",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-05T02:41:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "959cca1d_ddc94bc3",
+      "range": {
+        "startLine": 721,
+        "startChar": 76,
+        "endLine": 722,
+        "endChar": 65
+      },
+      "revId": "6164a395183ca1b66591d8ca62673f9922eb275a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2ce436c_aa411c1a",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Yes, as you mentioned, from this change all devices will have vendor variant by default.",
       "parentUuid": "17aefef5_088f43e9",
+      "range": {
+        "startLine": 2112,
+        "startChar": 58,
+        "endLine": 2112,
+        "endChar": 65
+      },
+      "revId": "6164a395183ca1b66591d8ca62673f9922eb275a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e239f0f1_ddd8b30c",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2112,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-05T02:41:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "17481b16_a87ec05c",
       "range": {
         "startLine": 2112,
         "startChar": 58,
