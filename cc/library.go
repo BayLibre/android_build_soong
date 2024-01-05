@@ -1475,8 +1475,10 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 			headerAbiChecker.Exclude_symbol_versions,
 			headerAbiChecker.Exclude_symbol_tags,
 			currVersion)
-
-		addLsdumpPath(classifySourceAbiDump(ctx) + ":" + library.sAbiOutputFile.String())
+		// TODO(b/314010764): Differentiate LLNDK, NDK and APEX dumps.
+		for _, tag := range classifySourceAbiDump(ctx) {
+			addLsdumpPath(tag + ":" + library.sAbiOutputFile.String())
+		}
 
 		dumpDir := getRefAbiDumpDir(isNdk, isLlndk)
 		binderBitness := ctx.DeviceConfig().BinderBitness()
