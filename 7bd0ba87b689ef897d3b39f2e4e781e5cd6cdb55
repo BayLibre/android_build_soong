@@ -16,6 +16,24 @@
       "message": "There\u0027s a `.lint` output group that uses the xml output, could we use either the xml output or name the `-lint-txt` or something for consistency?\n\nAlso I think a better long term solution to Dennis\u0027 issue specifically would be to add aliases to soong, so that `arc-lint-check` could be a soong alias to the already existing `.lint` output group. But that\u0027s more work.",
       "revId": "7bd0ba87b689ef897d3b39f2e4e781e5cd6cdb55",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a65608_f2b6d2e7",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-05T21:09:27Z",
+      "side": 1,
+      "message": "I can use the xml output, but it doesn\u0027t really matter which it uses, it will cause the lint rule to run and that will cause all of its output files to be generated.",
+      "parentUuid": "69007a69_d4585407",
+      "revId": "7bd0ba87b689ef897d3b39f2e4e781e5cd6cdb55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
