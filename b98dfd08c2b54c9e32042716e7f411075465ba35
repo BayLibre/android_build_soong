@@ -16,6 +16,24 @@
       "message": "Hi Yanning,\n\nObserved this change(patch set 1) is causing pinner regression\n\nhttps://screenshot.googleplex.com/95wLpHynMqpWSvM\n\nhttps://crystalball-presubmit.corp.google.com/dashboard/I16500010233120874?host\u003dandroid-review.googlesource.com\u0026change_number\u003d2898928\u0026patchset\u003d1\n\nPlease fix this regression before merging.",
       "revId": "b98dfd08c2b54c9e32042716e7f411075465ba35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad19fc2d_9ca7ef9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121678
+      },
+      "writtenOn": "2024-01-05T08:09:03Z",
+      "side": 1,
+      "message": "Isn\u0027t the regression caused exactly by the revert, and therefore expected? The dex container format (DEX v41) results in smaller DEX files by less duplication in DEX files.\n\nI tried to get data from December 2023 in \n\nhttps://data.corp.google.com/sites/sovxarifgsq9/perfcop_single_metric/?f\u003dbuild_target:in:oriole-trunk_staging-userdebug\u0026f\u003datp_test_name:eq:v2%2Fandroid-crystalball-eng%2Fhealth%2Fmicrobench%2Fbootup%2Fidle%2Fsystem-processes-memory-direct\u0026f\u003dmetric_key:eq:pinner_system_%2Fsystem%2Fframework%2Fframework.jar_bytes\u0026f\u003dbuild_branch:in:git_main\u0026f\u003dbuild_creation_timestamp:bt:1703800543035000,1705010143035000\u0026f\u003dtest_name:eq:android.platform.test.scenario.sleep.Idle%23testDoingNothing\n\nto see the effect of landing this, but could not get it to show data from 2023.",
+      "parentUuid": "97974cf7_885abd79",
+      "revId": "b98dfd08c2b54c9e32042716e7f411075465ba35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
