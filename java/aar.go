@@ -160,7 +160,7 @@ func propagateRROEnforcementMutator(ctx android.TopDownMutatorContext) {
 }
 
 func (a *aapt) useResourceProcessorBusyBox() bool {
-	return BoolDefault(a.aaptProperties.Use_resource_processor, false)
+	return BoolDefault(a.aaptProperties.Use_resource_processor, true)
 }
 
 func (a *aapt) filterProduct() string {
