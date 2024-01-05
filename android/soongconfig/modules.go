@@ -793,9 +793,10 @@ func (s *valueVariable) PropertiesToApply(config SoongConfig, values reflect.Val
 		kind := field.Kind()
 		if kind == reflect.Ptr {
 			if field.IsNil() {
-				continue
+				field.Set(reflect.New(field.Type().Elem()))
 			}
 			field = field.Elem()
+			kind = field.Kind()
 		}
 		switch kind {
 		case reflect.String:
