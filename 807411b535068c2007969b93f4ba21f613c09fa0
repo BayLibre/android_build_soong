@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa55ef7_27b00d8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-01-05T16:01:16Z",
+      "side": 1,
+      "message": "Passed: git_main-throttled-monitored: aosp_cf_riscv64_phone-trunk_staging-userdebug\n\nhttps://android-build.corp.google.com/abtd/run/L34300030001095516/?referrer\u003demail",
+      "revId": "807411b535068c2007969b93f4ba21f613c09fa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
