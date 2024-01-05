@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e97dd1cc_21357211",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-05T23:13:44Z",
+      "side": 1,
+      "message": "This change will publish this API to end users - users can access it in their Android.bp modules. Can this remain internal to Soong? If java_sdk_library needs access to it, we can consider using a provider instead.",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "35813a2cedca96dce8d4da97719fed4ebdedef26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
