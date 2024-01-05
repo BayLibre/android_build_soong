@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f7e3e2_1effca48",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-05T23:08:55Z",
+      "side": 1,
+      "message": "nit: Can you please add some documentation about this function?",
+      "range": {
+        "startLine": 572,
+        "startChar": 21,
+        "endLine": 572,
+        "endChar": 46
+      },
+      "revId": "4ab0b2911a04c1f69bfe5082a1511d771091ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5225181b_5389c213",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-05T23:08:55Z",
+      "side": 1,
+      "message": "Can this be a [static rule](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/40db91ff2e942beaf60f628688823123ba7c84d4:android/package_ctx.go;l\u003d243;bpv\u003d1;bpt\u003d0;drc\u003d662d61430f51412fca8d304b8b4d30cf89524dad)? Having a static rule instead of a rule per droidstubs will reduce the size of the ninja file",
+      "range": {
+        "startLine": 588,
+        "startChar": 1,
+        "endLine": 589,
+        "endChar": 19
+      },
+      "revId": "4ab0b2911a04c1f69bfe5082a1511d771091ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50f530ac_e3540abf",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-05T23:08:55Z",
+      "side": 1,
+      "message": "nit: Can you please add some documentation about this function?",
+      "range": {
+        "startLine": 600,
+        "startChar": 21,
+        "endLine": 600,
+        "endChar": 49
+      },
+      "revId": "4ab0b2911a04c1f69bfe5082a1511d771091ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
