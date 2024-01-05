@@ -68,6 +68,30 @@
       },
       "revId": "6164a395183ca1b66591d8ca62673f9922eb275a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17481b16_a87ec05c",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2112,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-01-05T01:04:02Z",
+      "side": 1,
+      "message": "Yes, as you mentioned, from this change all devices will have vendor variant by default.",
+      "parentUuid": "17aefef5_088f43e9",
+      "range": {
+        "startLine": 2112,
+        "startChar": 58,
+        "endLine": 2112,
+        "endChar": 65
+      },
+      "revId": "6164a395183ca1b66591d8ca62673f9922eb275a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
