@@ -34,6 +34,24 @@
       "parentUuid": "97974cf7_885abd79",
       "revId": "b98dfd08c2b54c9e32042716e7f411075465ba35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab10b598_05672ee8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1954150
+      },
+      "writtenOn": "2024-01-05T18:01:33Z",
+      "side": 1,
+      "message": "Acknowledged. TL/DR I think it\u0027s safe to assume the pinner metric regression is expected.\n\nMore info: by tweaking the above dashboard link one can see the trend of this metric steadily increasing overtime:\n- https://screenshot.googleplex.com/QVGxwdgaAbb6H4M\n- https://data.corp.google.com/sites/sovxarifgsq9/perfcop_single_metric/?f\u003dbuild_target:in:oriole-trunk_staging-userdebug\u0026f\u003datp_test_name:eq:v2%2Fandroid-crystalball-eng%2Fhealth%2Fmicrobench%2Fbootup%2Fidle%2Fsystem-processes-memory-direct\u0026f\u003dmetric_key:eq:pinner_system_%2Fsystem%2Fframework%2Fframework.jar_bytes\u0026f\u003dbuild_branch:in:git_main\u0026f\u003dbuild_creation_timestamp:pd:120\n\nThe dashboard is missing metrics from 11/28/2023 to 1/1/2024 due to a migration issue https://googleplex-android-review.git.corp.google.com/c/platform/platform_testing/+/25760499/2 so I was not able to see what exactly happened when the revert^6 commit is merged. Looking at the historical data the metric picks up a few hundred kilobytes per month. And I think number in https://screenshot.googleplex.com/95wLpHynMqpWSvM is inline if comparing to a November baseline: 40.5 MB then and 41.3 MB now.\n\nI\u0027ve confirmed that by applying this revert it fixes b/317153319 and b/317182392. Please let me know if we have other concerns. Otherwise I\u0027ll submit the change on 1/8/2024 when people gets back.",
+      "parentUuid": "ad19fc2d_9ca7ef9f",
+      "revId": "b98dfd08c2b54c9e32042716e7f411075465ba35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
