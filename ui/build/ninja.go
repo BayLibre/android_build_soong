@@ -271,11 +271,12 @@ func (c *ninjaStucknessChecker) check(ctx Context, config Config) {
 		// The Ninja file hasn't been modified since the last time it was
 		// checked, so Ninja could be stuck. Output some diagnostics.
 		ctx.Verbosef("ninja may be stuck; last update to %v was %v. dumping process tree...", c.logPath, newModTime)
+		ctx.Printf("ninja may be stuck, check soong.log for list of running processes.")
 
 		// The "pstree" command doesn't exist on Mac, but "pstree" on Linux
 		// gives more convenient output than "ps" So, we try pstree first, and
 		// ps second
-		commandText := fmt.Sprintf("pstree -pal %v || ps -ef", os.Getpid())
+		commandText := fmt.Sprintf("pstree -palT %v || ps -ef", os.Getpid())
 
 		cmd := Command(ctx, config, "dump process tree", "bash", "-c", commandText)
 		output := cmd.CombinedOutputOrFatal()
