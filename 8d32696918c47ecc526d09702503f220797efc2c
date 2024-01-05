@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cdd618d_c05d7c88",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-05T23:08:47Z",
+      "side": 1,
+      "message": "Does this need to become part of the API? If we add, users can access it in their Android.bp modules. If it is meant for usage internally in Soong, can we use providers instead?",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 52
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ee9ba3_7fe5386f",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-05T23:08:47Z",
+      "side": 1,
+      "message": "nit: Since all three flavors of stubs are generated using metalava, I would just call this everything and not metalava",
+      "range": {
+        "startLine": 44,
+        "startChar": 10,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382dcc61_0f6264e3",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-05T23:08:47Z",
+      "side": 1,
+      "message": "nit: Can you please encapsulate these parameters into a struct? go/java-practices/methods#parameter_lists (taken from java, but the principle still applies)\n\nCreating a struct also enables adding documentation about the parameters",
+      "range": {
+        "startLine": 371,
+        "startChar": 98,
+        "endLine": 371,
+        "endChar": 229
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e893f7b_f5ac61ee",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-05T23:08:47Z",
+      "side": 1,
+      "message": "nit: Can you please add documentation about this function?",
+      "range": {
+        "startLine": 669,
+        "startChar": 21,
+        "endLine": 669,
+        "endChar": 38
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a979fbc_712d212b",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-05T23:08:47Z",
+      "side": 1,
+      "message": "nit: Can you please add documentation about this function?",
+      "range": {
+        "startLine": 744,
+        "startChar": 21,
+        "endLine": 744,
+        "endChar": 42
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94a04776_7c43030e",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-05T23:08:47Z",
+      "side": 1,
+      "message": "nit: Can you please add documentation about this function?",
+      "range": {
+        "startLine": 844,
+        "startChar": 21,
+        "endLine": 844,
+        "endChar": 38
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331b279e_747c17bc",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-05T23:08:47Z",
+      "side": 1,
+      "message": "Similar to a previous comment regarding go/java-practices/methods#parameter_lists",
+      "range": {
+        "startLine": 869,
+        "startChar": 37,
+        "endLine": 872,
+        "endChar": 52
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
