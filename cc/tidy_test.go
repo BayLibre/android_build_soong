@@ -244,3 +244,39 @@ func TestWithTidy(t *testing.T) {
 		})
 	}
 }
+
+func TestWithGeneratedCode(t *testing.T) {
+	bp := `
+		cc_library_shared {
+			name: "libfoo",
+			srcs: ["foo.ll"],
+			tidy: true,
+		}
+
+		cc_library_shared {
+			name: "libbar",
+			srcs: ["bar.ll"],
+			tidy: true,
+			tidy_disabled_srcs: ["bar.ll"],
+		}`
+	variant := "android_arm64_armv8-a_shared"
+
+	testEnv := map[string]string{}
+	testEnv["ALLOW_LOCAL_TIDY_TRUE"] = "1"
+
+	ctx := android.GroupFixturePreparers(prepareForCcTest, android.FixtureMergeEnv(testEnv)).RunTestWithBp(t, bp)
+
+	t.Run("tidy should be run for generated code", func(t *testing.T) {
+		depFiles := ctx.ModuleForTests("libfoo", variant).Rule("ld").Validations.Strings()
+
+		tidyFile := "out/soong/.intermediates/libfoo/" + variant + "/obj/.intermediates/libfoo/" + variant + "/gen/lex/foo.tidy"
+		android.AssertStringListContains(t, "libfoo needs .tidy file", depFiles, tidyFile)
+	})
+
+	t.Run("tidy should not be run for generated code that is listed at tidy_disabled_srcs", func(t *testing.T) {
+		depFiles := ctx.ModuleForTests("libbar", variant).Rule("ld").Validations.Strings()
+
+		tidyFile := "out/soong/.intermediates/libbar/" + variant + "/obj/.intermediates/libbar/" + variant + "/gen/lex/bar.tidy"
+		android.AssertStringListDoesNotContain(t, "libbar does not needs .tidy file", depFiles, tidyFile)
+	})
+}

@@ -225,6 +225,10 @@ type generatedSourceInfo struct {
 	// The files that can be used as order only dependencies in order to ensure that the sysprop
 	// header files are up to date.
 	syspropOrderOnlyDeps android.Paths
+
+	// Map for finding generated code path by source path.
+	//   ex) '*.ll / *.yy' files to generated '*.cpp' files.
+	generatedSourceMap map[android.Path]android.Path
 }
 
 func genSources(
@@ -254,30 +258,37 @@ func genSources(
 		return yaccRule_
 	}
 
+	info.generatedSourceMap = make(map[android.Path]android.Path)
+
 	for i, srcFile := range srcFiles {
 		switch srcFile.Ext() {
 		case ".y":
 			cFile := android.GenPathWithExt(ctx, "yacc", srcFile, "c")
 			srcFiles[i] = cFile
 			deps = append(deps, genYacc(ctx, yaccRule(), srcFile, cFile, buildFlags.yacc)...)
+			info.generatedSourceMap[srcFile] = cFile
 		case ".yy":
 			cppFile := android.GenPathWithExt(ctx, "yacc", srcFile, "cpp")
 			srcFiles[i] = cppFile
 			deps = append(deps, genYacc(ctx, yaccRule(), srcFile, cppFile, buildFlags.yacc)...)
+			info.generatedSourceMap[srcFile] = cppFile
 		case ".l":
 			cFile := android.GenPathWithExt(ctx, "lex", srcFile, "c")
 			srcFiles[i] = cFile
 			genLex(ctx, srcFile, cFile, buildFlags.lex)
+			info.generatedSourceMap[srcFile] = cFile
 		case ".ll":
 			cppFile := android.GenPathWithExt(ctx, "lex", srcFile, "cpp")
 			srcFiles[i] = cppFile
 			genLex(ctx, srcFile, cppFile, buildFlags.lex)
+			info.generatedSourceMap[srcFile] = cppFile
 		case ".proto":
 			ccFile, headerFile := genProto(ctx, srcFile, buildFlags)
 			srcFiles[i] = ccFile
 			info.protoHeaders = append(info.protoHeaders, headerFile)
 			// Use the generated header as an order only dep to ensure that it is up to date when needed.
 			info.protoOrderOnlyDeps = append(info.protoOrderOnlyDeps, headerFile)
+			info.generatedSourceMap[srcFile] = ccFile
 		case ".aidl":
 			if aidlRule == nil {
 				aidlRule = android.NewRuleBuilder(pctx, ctx).Sbox(android.PathForModuleGen(ctx, "aidl"),
@@ -299,10 +310,12 @@ func genSources(
 			// needed.
 			// TODO: Reduce the size of the ninja file by using one order only dep for the whole rule
 			info.aidlOrderOnlyDeps = append(info.aidlOrderOnlyDeps, aidlHeaders...)
+			info.generatedSourceMap[srcFile] = cppFile
 		case ".rscript", ".fs":
 			cppFile := rsGeneratedCppFile(ctx, srcFile)
 			rsFiles = append(rsFiles, srcFiles[i])
 			srcFiles[i] = cppFile
+			info.generatedSourceMap[srcFile] = cppFile
 		case ".sysprop":
 			cppFile, headerFiles := genSysprop(ctx, srcFile)
 			srcFiles[i] = cppFile
@@ -310,6 +323,7 @@ func genSources(
 			// Use the generated headers as order only deps to ensure that they are up to date when
 			// needed.
 			info.syspropOrderOnlyDeps = append(info.syspropOrderOnlyDeps, headerFiles...)
+			info.generatedSourceMap[srcFile] = cppFile
 		}
 	}
 
