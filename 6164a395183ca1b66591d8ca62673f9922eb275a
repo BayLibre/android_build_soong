@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "959cca1d_ddc94bc3",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-01-05T02:16:14Z",
+      "side": 1,
+      "message": "I added the condition `if vndk is enabled` to the comment. PTAL.",
+      "parentUuid": "83ee3b07_1fe00eef",
+      "range": {
+        "startLine": 721,
+        "startChar": 76,
+        "endLine": 722,
+        "endChar": 65
+      },
+      "revId": "6164a395183ca1b66591d8ca62673f9922eb275a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2ce436c_aa411c1a",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-04T10:17:50Z",
       "side": 1,
       "message": "This is no longer true.",
+      "range": {
+        "startLine": 304,
+        "startChar": 50,
+        "endLine": 304,
+        "endChar": 71
+      },
+      "revId": "6164a395183ca1b66591d8ca62673f9922eb275a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73d8eb02_e7e37273",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-01-05T02:16:14Z",
+      "side": 1,
+      "message": "Thanks. Updated.",
+      "parentUuid": "f2ce436c_aa411c1a",
       "range": {
         "startLine": 304,
         "startChar": 50,
