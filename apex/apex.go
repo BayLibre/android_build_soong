@@ -2848,35 +2848,7 @@ func BaselineApexAvailable(moduleName string) []string {
 // particular module to make it available for the apex regardless of its setting.
 // TODO(b/147364041): remove this
 func makeApexAvailableBaseline() map[string][]string {
-	// The "Module separator"s below are employed to minimize merge conflicts.
-	m := make(map[string][]string)
-	//
-	// Module separator
-	//
-	m["com.android.wifi"] = []string{
-		"PlatformProperties",
-		"android.hardware.wifi-V1.0-java",
-		"android.hardware.wifi-V1.0-java-constants",
-		"android.hardware.wifi-V1.1-java",
-		"android.hardware.wifi-V1.2-java",
-		"android.hardware.wifi-V1.3-java",
-		"android.hardware.wifi-V1.4-java",
-		"android.hardware.wifi.hostapd-V1.0-java",
-		"android.hardware.wifi.hostapd-V1.1-java",
-		"android.hardware.wifi.hostapd-V1.2-java",
-		"android.hardware.wifi.supplicant-V1.0-java",
-		"android.hardware.wifi.supplicant-V1.1-java",
-		"android.hardware.wifi.supplicant-V1.2-java",
-		"android.hardware.wifi.supplicant-V1.3-java",
-		"bouncycastle-unbundled",
-		"framework-wifi-util-lib",
-		"ksoap2",
-		"libnanohttpd",
-		"wifi-lite-protos",
-		"wifi-nano-protos",
-		"wifi-service-pre-jarjar",
-	}
-	return m
+	return make(map[string][]string)
 }
 
 func init() {
