@@ -22,7 +22,6 @@ import (
 	"sort"
 	"strings"
 
-	"android/soong/apex"
 	"android/soong/cc"
 
 	"github.com/google/blueprint"
@@ -1155,9 +1154,6 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 			// //apex_available:platform is the default.
 			apexAvailable = []string{android.AvailableToPlatform}
 		}
-
-		// Add in any baseline apex available settings.
-		apexAvailable = append(apexAvailable, apex.BaselineApexAvailable(member.Name())...)
 
 		// Remove duplicates and sort.
 		apexAvailable = android.FirstUniqueStrings(apexAvailable)
