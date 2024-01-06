@@ -2745,7 +2745,7 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 			return false
 		}
 
-		if to.AvailableFor(apexName) || baselineApexAvailable(apexName, toName) {
+		if to.AvailableFor(apexName) {
 			return true
 		}
 		ctx.ModuleErrorf("%q requires %q that doesn't list the APEX under 'apex_available'."+
@@ -2794,27 +2794,6 @@ func (a *apexBundle) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Deps = append(dpInfo.Deps, a.properties.Systemserverclasspath_fragments...)
 }
 
-var (
-	apexAvailBaseline        = makeApexAvailableBaseline()
-	inverseApexAvailBaseline = invertApexBaseline(apexAvailBaseline)
-)
-
-func baselineApexAvailable(apex, moduleName string) bool {
-	key := apex
-	moduleName = normalizeModuleName(moduleName)
-
-	if val, ok := apexAvailBaseline[key]; ok && android.InList(moduleName, val) {
-		return true
-	}
-
-	key = android.AvailableToAnyApex
-	if val, ok := apexAvailBaseline[key]; ok && android.InList(moduleName, val) {
-		return true
-	}
-
-	return false
-}
-
 func normalizeModuleName(moduleName string) string {
 	// Prebuilt modules (e.g. java_import, etc.) have "prebuilt_" prefix added by the build
 	// system. Trim the prefix for the check since they are confusing
@@ -2829,30 +2808,6 @@ func normalizeModuleName(moduleName string) string {
 		moduleName = "androidx"
 	}
 	return moduleName
-}
-
-// Transform the map of apex -> modules to module -> apexes.
-func invertApexBaseline(m map[string][]string) map[string][]string {
-	r := make(map[string][]string)
-	for apex, modules := range m {
-		for _, module := range modules {
-			r[module] = append(r[module], apex)
-		}
-	}
-	return r
-}
-
-// Retrieve the baseline of apexes to which the supplied module belongs.
-func BaselineApexAvailable(moduleName string) []string {
-	return inverseApexAvailBaseline[normalizeModuleName(moduleName)]
-}
-
-// This is a map from apex to modules, which overrides the apex_available setting for that
-// particular module to make it available for the apex regardless of its setting.
-// TODO(b/147364041): remove this
-func makeApexAvailableBaseline() map[string][]string {
-	// The "Module separator"s below are employed to minimize merge conflicts.
-	return make(map[string][]string)
 }
 
 func init() {
