@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5895e0c_a2de6833",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-08T10:02:46Z",
+      "side": 1,
+      "message": "Merged with `generateRevertAnnotationArgs` and added documentation there.",
+      "parentUuid": "d1f7e3e2_1effca48",
+      "range": {
+        "startLine": 572,
+        "startChar": 21,
+        "endLine": 572,
+        "endChar": 46
+      },
+      "revId": "4ab0b2911a04c1f69bfe5082a1511d771091ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5225181b_5389c213",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d11d76_11119ce6",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-08T10:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5225181b_5389c213",
+      "range": {
+        "startLine": 588,
+        "startChar": 1,
+        "endLine": 589,
+        "endChar": 19
+      },
+      "revId": "4ab0b2911a04c1f69bfe5082a1511d771091ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50f530ac_e3540abf",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-05T23:08:55Z",
       "side": 1,
       "message": "nit: Can you please add some documentation about this function?",
+      "range": {
+        "startLine": 600,
+        "startChar": 21,
+        "endLine": 600,
+        "endChar": 49
+      },
+      "revId": "4ab0b2911a04c1f69bfe5082a1511d771091ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c70e838f_072e9aa2",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-08T10:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50f530ac_e3540abf",
       "range": {
         "startLine": 600,
         "startChar": 21,
