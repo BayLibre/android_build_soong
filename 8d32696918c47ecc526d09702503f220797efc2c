@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3578e87_bfe24ff1",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-08T10:03:01Z",
+      "side": 1,
+      "message": "The tag defined here in the `droiddoc` module is not currently utilized. I\u0027ve removed it for now, and we can discuss later if we can use the tag or use the provider.",
+      "parentUuid": "6cdd618d_c05d7c88",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 52
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63ee9ba3_7fe5386f",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-05T23:08:47Z",
       "side": 1,
       "message": "nit: Since all three flavors of stubs are generated using metalava, I would just call this everything and not metalava",
+      "range": {
+        "startLine": 44,
+        "startChar": 10,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc2e959_ba411f34",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-08T10:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63ee9ba3_7fe5386f",
       "range": {
         "startLine": 44,
         "startChar": 10,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ea0c56_4b05f1bc",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-08T10:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "382dcc61_0f6264e3",
+      "range": {
+        "startLine": 371,
+        "startChar": 98,
+        "endLine": 371,
+        "endChar": 229
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e893f7b_f5ac61ee",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-01-05T23:08:47Z",
       "side": 1,
       "message": "nit: Can you please add documentation about this function?",
+      "range": {
+        "startLine": 669,
+        "startChar": 21,
+        "endLine": 669,
+        "endChar": 38
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "509acae0_8336a57e",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-08T10:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e893f7b_f5ac61ee",
       "range": {
         "startLine": 669,
         "startChar": 21,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9065c01_714a1abf",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-08T10:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a979fbc_712d212b",
+      "range": {
+        "startLine": 744,
+        "startChar": 21,
+        "endLine": 744,
+        "endChar": 42
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94a04776_7c43030e",
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d90dba7_b6213671",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-08T10:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94a04776_7c43030e",
+      "range": {
+        "startLine": 844,
+        "startChar": 21,
+        "endLine": 844,
+        "endChar": 38
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "331b279e_747c17bc",
@@ -152,6 +296,30 @@
       "writtenOn": "2024-01-05T23:08:47Z",
       "side": 1,
       "message": "Similar to a previous comment regarding go/java-practices/methods#parameter_lists",
+      "range": {
+        "startLine": 869,
+        "startChar": 37,
+        "endLine": 872,
+        "endChar": 52
+      },
+      "revId": "8d32696918c47ecc526d09702503f220797efc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4c20df8_956447b1",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-08T10:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "331b279e_747c17bc",
       "range": {
         "startLine": 869,
         "startChar": 37,
