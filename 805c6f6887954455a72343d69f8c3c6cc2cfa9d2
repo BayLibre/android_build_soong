@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3b24aca_f006dd6b",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2673,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-01-08T19:04:52Z",
+      "side": 1,
+      "message": "this will check not only the top level deps but also the transitive deps, is this intentional?",
+      "range": {
+        "startLine": 2673,
+        "startChar": 3,
+        "endLine": 2673,
+        "endChar": 18
+      },
+      "revId": "805c6f6887954455a72343d69f8c3c6cc2cfa9d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453b4afe_8d4748c3",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2688,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-01-08T19:04:52Z",
+      "side": 1,
+      "message": "nit: maybe mention this is due to the apex updateable request.",
+      "range": {
+        "startLine": 2688,
+        "startChar": 47,
+        "endLine": 2688,
+        "endChar": 88
+      },
+      "revId": "805c6f6887954455a72343d69f8c3c6cc2cfa9d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
