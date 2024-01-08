@@ -727,7 +727,6 @@ func (paths *scopePaths) extractStubsLibraryInfoFromDependency(ctx android.Modul
 func (paths *scopePaths) extractEverythingStubsLibraryInfoFromDependency(ctx android.ModuleContext, dep android.Module) error {
 	if lib, ok := android.OtherModuleProvider(ctx, dep, JavaInfoProvider); ok {
 		paths.stubsHeaderPath = lib.HeaderJars
-		paths.stubsImplPath = lib.ImplementationJars
 
 		libDep := dep.(UsesLibraryDependency)
 		paths.stubsDexJarPath = libDep.DexJarBuildPath(ctx)
@@ -738,7 +737,9 @@ func (paths *scopePaths) extractEverythingStubsLibraryInfoFromDependency(ctx and
 }
 
 func (paths *scopePaths) extractExportableStubsLibraryInfoFromDependency(ctx android.ModuleContext, dep android.Module) error {
-	if _, ok := android.OtherModuleProvider(ctx, dep, JavaInfoProvider); ok {
+	if lib, ok := android.OtherModuleProvider(ctx, dep, JavaInfoProvider); ok {
+		paths.stubsImplPath = lib.ImplementationJars
+
 		libDep := dep.(UsesLibraryDependency)
 		paths.exportableStubsDexJarPath = libDep.DexJarBuildPath(ctx)
 		return nil
@@ -753,6 +754,15 @@ func (paths *scopePaths) treatDepAsApiStubsProvider(dep android.Module, action f
 		return nil
 	} else {
 		return fmt.Errorf("expected module that implements ApiStubsProvider, e.g. droidstubs")
+	}
+}
+
+func (paths *scopePaths) treatDepAsExportableApiStubsProvider(dep android.Module, action func(provider ExportableApiStubsProvider)) error {
+	if exportableApiStubsProvider, ok := dep.(ExportableApiStubsProvider); ok {
+		action(exportableApiStubsProvider)
+		return nil
+	} else {
+		return fmt.Errorf("expected module that implements ExportableApiStubsSrcProvider, e.g. droidstubs")
 	}
 }
 
@@ -771,6 +781,12 @@ func (paths *scopePaths) extractApiInfoFromApiStubsProvider(provider ApiStubsPro
 	paths.removedApiFilePath = android.OptionalPathForPath(provider.RemovedApiFilePath())
 }
 
+func (paths *scopePaths) extractApiInfoFromExportableApiStubsProvider(provider ExportableApiStubsProvider) {
+	paths.annotationsZip = android.OptionalPathForPath(provider.ExportableAnnotationsZip())
+	paths.currentApiFilePath = android.OptionalPathForPath(provider.ExportableApiFilePath())
+	paths.removedApiFilePath = android.OptionalPathForPath(provider.ExportableRemovedApiFilePath())
+}
+
 func (paths *scopePaths) extractApiInfoFromDep(ctx android.ModuleContext, dep android.Module) error {
 	return paths.treatDepAsApiStubsProvider(dep, func(provider ApiStubsProvider) {
 		paths.extractApiInfoFromApiStubsProvider(provider)
@@ -781,6 +797,10 @@ func (paths *scopePaths) extractStubsSourceInfoFromApiStubsProviders(provider Ap
 	paths.stubsSrcJar = android.OptionalPathForPath(provider.StubsSrcJar())
 }
 
+func (paths *scopePaths) extractStubsSourceInfoFromExportableApiStubsProviders(provider ExportableApiStubsSrcProvider) {
+	paths.stubsSrcJar = android.OptionalPathForPath(provider.ExportableStubsSrcJar())
+}
+
 func (paths *scopePaths) extractStubsSourceInfoFromDep(ctx android.ModuleContext, dep android.Module) error {
 	return paths.treatDepAsApiStubsSrcProvider(dep, func(provider ApiStubsSrcProvider) {
 		paths.extractStubsSourceInfoFromApiStubsProviders(provider)
@@ -788,9 +808,9 @@ func (paths *scopePaths) extractStubsSourceInfoFromDep(ctx android.ModuleContext
 }
 
 func (paths *scopePaths) extractStubsSourceAndApiInfoFromApiStubsProvider(ctx android.ModuleContext, dep android.Module) error {
-	return paths.treatDepAsApiStubsProvider(dep, func(provider ApiStubsProvider) {
-		paths.extractApiInfoFromApiStubsProvider(provider)
-		paths.extractStubsSourceInfoFromApiStubsProviders(provider)
+	return paths.treatDepAsExportableApiStubsProvider(dep, func(provider ExportableApiStubsProvider) {
+		paths.extractApiInfoFromExportableApiStubsProvider(provider)
+		paths.extractStubsSourceInfoFromExportableApiStubsProviders(provider)
 	})
 }
 
