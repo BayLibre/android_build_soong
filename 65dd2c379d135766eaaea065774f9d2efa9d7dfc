@@ -94,6 +94,30 @@
       },
       "revId": "65dd2c379d135766eaaea065774f9d2efa9d7dfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e448d775_226fadf2",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2024-01-08T23:10:16Z",
+      "side": 1,
+      "message": "Added b/319150036 to address comments.",
+      "parentUuid": "864307e1_c6be21ff",
+      "range": {
+        "startLine": 531,
+        "startChar": 21,
+        "endLine": 531,
+        "endChar": 29
+      },
+      "revId": "65dd2c379d135766eaaea065774f9d2efa9d7dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
