@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da6d5a0a_b93db191",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2673,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-08T22:23:33Z",
+      "side": 1,
+      "message": "From comment #17 in b/199501665 my understanding is\nif the dependency chain is like:\n```\napex -\u003e non_java_sdk_library_dep -\u003e java_sdk_library_1 -\u003e other_deps -\u003e java_sdk_library_2 -\u003e other_deps\n```\n\n`java_sdk_library_1`(the first java_sdk_library in this chain from apex) should enforce the permitted_packages.\n\n@hansson@google.com could you confirm, or only the *direct* java_sdk_library dep of an apex should have the enforcement?",
+      "parentUuid": "d3b24aca_f006dd6b",
+      "range": {
+        "startLine": 2673,
+        "startChar": 3,
+        "endLine": 2673,
+        "endChar": 18
+      },
+      "revId": "805c6f6887954455a72343d69f8c3c6cc2cfa9d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "453b4afe_8d4748c3",
         "filename": "apex/apex.go",
         "patchSetId": 6
