@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df56807_7e9acff4",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-01-08T10:35:27Z",
+      "side": 1,
+      "message": "Instead of having separate interfaces would it not be better to have the methods on `ApiStubsProvider` take an enum parameter that differentiates between exportable and everything. That will make it easier to add runtime in future.\n\nGiven the upcoming deadline maybe that could be done as a follow up refactoring after the deadline.",
+      "range": {
+        "startLine": 212,
+        "startChar": 5,
+        "endLine": 212,
+        "endChar": 31
+      },
+      "revId": "d1ceb8ea5c6a9de70c80005a4229a35546d92dc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
