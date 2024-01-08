@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e2c9626_1ff9209e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-08T20:56:53Z",
+      "side": 1,
+      "message": "Please fix the failing test:\n\n```\n--- FAIL: TestAppFlagsPackages (0.08s)\n    app_test.go:4338: panic in GenerateBuildActions for singleton all_aconfig_declarations\n        Only one aconfig_declarations allowed for each package.\n        goroutine 261798 [running]:\n        github.com/google/blueprint.newPanicErrorf({0xd70880, 0xc002cfbc80}, {0xc0030be4c0, 0x3b}, {0x0, 0x0, 0x0})\n            /mnt/disks/build-disk/src/googleplex-android/aosp-main-future/build/blueprint/context.go:4849 +0x72\n        github.com/google/blueprint.(*Context).generateOneSingletonBuildActions.func1.1()\n            /mnt/disks/build-disk/src/googleplex-android/aosp-main-future/build/blueprint/context.go:3433 +0x265\n        panic({0xd70880?, 0xc002cfbc80?})\n            prebuilts/go/linux-x86/src/runtime/panic.go:914 +0x21f\n        android/soong/aconfig.(*allAconfigDeclarationsSingleton).GenerateBuildActions(0xc00069b7c0, {0x107f000?, 0xc001a557d0})\n            /mnt/disks/build-disk/src/googleplex-android/aosp-main-future/build/soong/aconfig/all_aconfig_declarations.go:59 +0x573\n        android/soong/android.(*singletonAdaptor).GenerateBuildActions(0xc00231e6f0, {0x107ede0?, 0xc00080e580})\n            /mnt/disks/build-disk/src/googleplex-android/aosp-main-future/build/soong/android/singleton.go:107 +0xd5\n        github.com/google/blueprint.(*Context).generateOneSingletonBuildActions.func1(0xc000684e28?, 0xeb1b35?)\n            /mnt/disks/build-disk/src/googleplex-android/aosp-main-future/build/blueprint/context.go:3437 +0x6a\n        github.com/google/blueprint.(*Context).generateOneSingletonBuildActions(0xc000aa6540, {0xe9f480?, 0xc0002fd900}, 0xc001c4d700, 0xc000d14180)\n            /mnt/disks/build-disk/src/googleplex-android/aosp-main-future/build/blueprint/context.go:3438 +0x251\n        github.com/google/blueprint.(*Context).generateParallelSingletonBuildActions.func2(0xc001d2def0?)\n            /mnt/disks/build-disk/src/googleplex-android/aosp-main-future/build/blueprint/context.go:3491 +0x85\n        created by github.com/google/blueprint.(*Context).generateParallelSingletonBuildActions in goroutine 257354\n            /mnt/disks/build-disk/src/googleplex-android/aosp-main-future/build/blueprint/context.go:3489 +0x329\n```",
+      "revId": "91525ba39d63d09d6e884a82859bbfa0c5151a63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
