@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "554a85bd_2f2651f8",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-08T18:56:56Z",
+      "side": 1,
+      "message": "Will this approach for prebuilts need reconciliation when we support `runtime`? If we use prebuilts\u0027s everything for generating the hiddenapi flags, the flags will be different when we use source vs when we use prebuilts",
+      "range": {
+        "startLine": 1332,
+        "startChar": 1,
+        "endLine": 1334,
+        "endChar": 24
+      },
+      "revId": "fa4a90d4341c5f54a03022e626b817acbee8bf78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
