@@ -192,6 +192,10 @@ func (mod *Module) InVendor() bool {
 	return mod.Properties.ImageVariation == cc.VendorVariation
 }
 
+func (mod *Module) InVendorOrProduct() bool {
+	return mod.InVendor() || mod.InProduct()
+}
+
 func (mod *Module) SetImageVariation(ctx android.BaseModuleContext, variant string, module android.Module) {
 	m := module.(*Module)
 	if variant == android.VendorRamdiskVariation {
