@@ -112,21 +112,6 @@ func classifySourceAbiDump(ctx android.BaseModuleContext) string {
 	if m.isImplementationForLLNDKPublic() {
 		return "LLNDK"
 	}
-	if m.UseVndk() && m.IsVndk() && !m.IsVndkPrivate() {
-		if m.IsVndkSp() {
-			if m.IsVndkExt() {
-				return "VNDK-SP-ext"
-			} else {
-				return "VNDK-SP"
-			}
-		} else {
-			if m.IsVndkExt() {
-				return "VNDK-ext"
-			} else {
-				return "VNDK-core"
-			}
-		}
-	}
 	if m.library.hasStubsVariants() && !m.InProduct() && !m.InVendor() {
 		return "PLATFORM"
 	}
