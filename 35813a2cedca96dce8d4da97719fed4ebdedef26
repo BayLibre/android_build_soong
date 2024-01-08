@@ -22,6 +22,30 @@
       },
       "revId": "35813a2cedca96dce8d4da97719fed4ebdedef26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c501d4a8_021085b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-08T10:03:23Z",
+      "side": 1,
+      "message": "As seen [here](https://android-review.git.corp.google.com/c/platform/frameworks/base/+/2890554/1/api/StubLibraries.bp#372), this functionality is required in the bp modules definition and cannot be solely internal to Soong.",
+      "parentUuid": "e97dd1cc_21357211",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "35813a2cedca96dce8d4da97719fed4ebdedef26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
