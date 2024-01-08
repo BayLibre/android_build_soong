@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd04e40_9ba8b5af",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-08T18:47:25Z",
+      "side": 1,
+      "message": "nit for a followup CL: can we encapsulate them with a struct? And have one struct per everything, exportable and runtime? In the current flattened implementation, we have a lot of properties on the top-level `Droidstubs` struct, and since they are not grouped, it requires more effort to manage their state.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 55
+      },
+      "revId": "3c89f047778863e2701cc7de7562f99acb253152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
