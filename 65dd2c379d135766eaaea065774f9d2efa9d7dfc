@@ -70,6 +70,30 @@
       },
       "revId": "65dd2c379d135766eaaea065774f9d2efa9d7dfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "864307e1_c6be21ff",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-08T19:20:21Z",
+      "side": 1,
+      "message": "+2 to unblock, but I\u0027d recommend some cleanup here to avoid string parsing to reconstruct whether or not the module is a host/host-cross module.  If you pass in the `Target` object from the caller you can just use `target.Os.Class \u003d\u003d android.Host`.\n\nThere\u0027s already a lot of arguments to this function, but at least `archString` and `hostOrTargetString` are unnecessary, as they are already available via `archOs`.  `archDirs` is also a little odd, as this function is both modifying it and returning the modified value for the caller to then overwrite the map value with.  This function should either just return the `[]FileToZip` and let the caller append it to `archDirs`, or modify `archDirs` and not return the `[]FileToZip`.",
+      "parentUuid": "038fdb11_11b12cbb",
+      "range": {
+        "startLine": 531,
+        "startChar": 21,
+        "endLine": 531,
+        "endChar": 29
+      },
+      "revId": "65dd2c379d135766eaaea065774f9d2efa9d7dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
