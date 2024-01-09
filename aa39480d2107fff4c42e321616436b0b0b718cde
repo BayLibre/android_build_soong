@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "430a2218_0392713a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-09T04:15:06Z",
+      "side": 1,
+      "message": "As explained `UseVndk` was to say the module can use VNDK rather than to show the installed partition. Can we rename this to show the module is unbundled from the system partition? ex. `IsSystemUnbundled`.",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 14,
+        "endChar": 62
+      },
+      "revId": "aa39480d2107fff4c42e321616436b0b0b718cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
