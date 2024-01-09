@@ -34,6 +34,24 @@
       "parentUuid": "af1335d4_84cfca48",
       "revId": "b84192436a0e8ff067e2f32fb06a76bc318037bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78017053_340aad34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-09T23:08:30Z",
+      "side": 1,
+      "message": "That\u0027s what I was thinking of, and that `DexjarBuildPath()` returns a nullable path and defer the error emitting to the consumer. It seems bit unintuitive that a test should define an additional context other than the one provided by `TestResult`, but I do not have any other solutions at the moment as well.",
+      "parentUuid": "fb12121c_d1b9733a",
+      "revId": "b84192436a0e8ff067e2f32fb06a76bc318037bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
