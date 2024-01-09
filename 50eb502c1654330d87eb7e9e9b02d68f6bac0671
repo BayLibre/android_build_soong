@@ -22,6 +22,30 @@
       },
       "revId": "50eb502c1654330d87eb7e9e9b02d68f6bac0671",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "402096e0_379bf38b",
+        "filename": "cc/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-01-09T04:42:37Z",
+      "side": 1,
+      "message": "VNDK is not deprecated from next build yet, so we should keep this for now, otherwise any link with product available cc module would fail due to image variant mismatching",
+      "parentUuid": "3fa2bee7_993ed6b2",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 51
+      },
+      "revId": "50eb502c1654330d87eb7e9e9b02d68f6bac0671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
