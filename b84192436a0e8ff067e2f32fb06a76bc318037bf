@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1335d4_84cfca48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-09T22:30:24Z",
+      "side": 1,
+      "message": "So if I understood this correctly, this change turns the `android.moduleErrorf` into a Soong api and utilizes it for `DexJarBuildPath()`. The fact that `ModuleErrorf` is a context is bit confusing for me, as most other contexts in Soong follows the naming convention with a `Context` suffix. Given that this is an Soong API now, can we rename `moduleErrorf` similarly?\n\nOr, would it be possible to implement `ModuleErrorf(fmt string, args ...interface{})` in `TestContext` and would that resolve this problem?",
+      "revId": "b84192436a0e8ff067e2f32fb06a76bc318037bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
