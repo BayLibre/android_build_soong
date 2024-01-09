@@ -16,6 +16,24 @@
       "message": "How was this set of modules chosen?  Are there specific modules that should not get this?  Should this just happen in `ModuleBase.GenerateBuildActions`, where it would affect all modules?",
       "revId": "6f86fe0b1adadedafe1ea71a485513a3b6638b68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e96fbf71_ecd91192",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-09T23:30:02Z",
+      "side": 1,
+      "message": "The set of modules was specifically chosen by iteration to discover the aconfig flags that were not propagated to the on-device protobuf files, and to give us some time to implement a solution that will allow a Provider to indicate that it should propagate upward (in `ModuleBase.GenerateBuildActions`), and providing a way for the Provider to exclude certain module types from that activity.\n\nThe plan is to submit this, and focus on the actual design, after which we\u0027ll clean out all of the non-ModuleBase variations of `mergedAconfigFiles` and calls surrounding them.",
+      "parentUuid": "2dd6ecdf_f93c4552",
+      "revId": "6f86fe0b1adadedafe1ea71a485513a3b6638b68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
