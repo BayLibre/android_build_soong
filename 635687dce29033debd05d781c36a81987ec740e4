@@ -16,6 +16,75 @@
       "message": "@spandandas@google.com the test failures seen in the presubmits are due to lack of flagged apis support in some scenarios in metalava, and no further build changes are required to resolve this. Can you take a look at this change?",
       "revId": "635687dce29033debd05d781c36a81987ec740e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7fa9dd_53ec7b28",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-09T00:47:25Z",
+      "side": 1,
+      "message": "nit: can we have a consistent naming scheme?",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 51
+      },
+      "revId": "635687dce29033debd05d781c36a81987ec740e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee7679a3_ee6ea30f",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-09T00:47:25Z",
+      "side": 1,
+      "message": "what is the difference between `stubsTag` and `everythingStubsTag`?",
+      "range": {
+        "startLine": 182,
+        "startChar": 7,
+        "endLine": 182,
+        "endChar": 25
+      },
+      "revId": "635687dce29033debd05d781c36a81987ec740e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55b99094_16751a0f",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-09T00:47:25Z",
+      "side": 1,
+      "message": "nit: Can you please documentation about this function?",
+      "range": {
+        "startLine": 1312,
+        "startChar": 1,
+        "endLine": 1312,
+        "endChar": 27
+      },
+      "revId": "635687dce29033debd05d781c36a81987ec740e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
