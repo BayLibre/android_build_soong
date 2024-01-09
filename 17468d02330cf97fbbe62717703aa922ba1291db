@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1eb72c8_19fec21f",
+        "filename": "aconfig/codegen/java_aconfig_library.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-09T06:08:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab529ff7_3cfa143a",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 7
+      },
+      "revId": "17468d02330cf97fbbe62717703aa922ba1291db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "158b2c35_cb398738",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-08T23:28:27Z",
       "side": 1,
       "message": "Do we need to trim the suffix here?",
+      "range": {
+        "startLine": 486,
+        "startChar": 1,
+        "endLine": 486,
+        "endChar": 72
+      },
+      "revId": "17468d02330cf97fbbe62717703aa922ba1291db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82986954_2dca2a57",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-09T06:08:07Z",
+      "side": 1,
+      "message": "Not necessarily. It\u0027s just I noticed every bootclasspath-fragment has a suffix \"-bootclasspath-fragment\" in its name and wanted to have a short prefix during repackaging. I\u0027ve removed the suffix trim.",
+      "parentUuid": "158b2c35_cb398738",
       "range": {
         "startLine": 486,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ad7b0d3_673e0959",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-09T06:08:07Z",
+      "side": 1,
+      "message": "I kept `Repackage` as the method name, but renamed `repackage` method name to `setRepackageJarjarRules` to make it more precise. Also moved `Repackage` method to base.go so that it doesn\u0027t seem classpath_fragment only.",
+      "parentUuid": "6eb1e3af_4d83488d",
+      "range": {
+        "startLine": 241,
+        "startChar": 5,
+        "endLine": 241,
+        "endChar": 14
+      },
+      "revId": "17468d02330cf97fbbe62717703aa922ba1291db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c282b843_cfaa295c",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-01-08T23:28:27Z",
       "side": 1,
       "message": "nit: Instead of asserting on the type, can we cast to an interface? This can be implemented by java library and java sdk library now, and other module types in the future if needed",
+      "range": {
+        "startLine": 244,
+        "startChar": 2,
+        "endLine": 250,
+        "endChar": 3
+      },
+      "revId": "17468d02330cf97fbbe62717703aa922ba1291db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "451c7adb_f23b71d3",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-09T06:08:07Z",
+      "side": 1,
+      "message": "I\u0027ve kept this noted. It will be implemented along with future improvements",
+      "parentUuid": "c282b843_cfaa295c",
       "range": {
         "startLine": 244,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f9899f8_4aa52ed7",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-09T06:08:07Z",
+      "side": 1,
+      "message": "Good point! Done.",
+      "parentUuid": "f9c476e8_5fb95d10",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 3
+      },
+      "revId": "17468d02330cf97fbbe62717703aa922ba1291db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fb111dc_de89604a",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-01-08T23:28:27Z",
       "side": 1,
       "message": "nit: Can you add documentation for `GetPackage`?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "17468d02330cf97fbbe62717703aa922ba1291db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf7fad05_8877e2b9",
+        "filename": "java/generated_java_library.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-09T06:08:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fb111dc_de89604a",
       "range": {
         "startLine": 39,
         "startChar": 1,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d918d975_d1398c08",
+        "filename": "java/java.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-09T06:08:07Z",
+      "side": 1,
+      "message": "I rephrased the comment to make it clear.",
+      "parentUuid": "99a80640_f7f4ef82",
+      "range": {
+        "startLine": 710,
+        "startChar": 7,
+        "endLine": 711,
+        "endChar": 27
+      },
+      "revId": "17468d02330cf97fbbe62717703aa922ba1291db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9baa46cf_5328cd93",
@@ -175,6 +343,30 @@
       "writtenOn": "2024-01-08T23:28:27Z",
       "side": 1,
       "message": "It it necessary to trim the suffix here? Are we implicitly depending on any naming convention?",
+      "range": {
+        "startLine": 124,
+        "startChar": 16,
+        "endLine": 124,
+        "endChar": 79
+      },
+      "revId": "17468d02330cf97fbbe62717703aa922ba1291db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec31f214_9006ded6",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-09T06:08:07Z",
+      "side": 1,
+      "message": "Not depending on name convention. I\u0027ve removed the suffix trim.",
+      "parentUuid": "9baa46cf_5328cd93",
       "range": {
         "startLine": 124,
         "startChar": 16,
