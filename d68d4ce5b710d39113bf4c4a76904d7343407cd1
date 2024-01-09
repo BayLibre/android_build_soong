@@ -22,6 +22,30 @@
       },
       "revId": "d68d4ce5b710d39113bf4c4a76904d7343407cd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ba1a8b_c271d360",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-09T19:55:39Z",
+      "side": 1,
+      "message": "I think this is an RBE thing, to instruct reclient to download the file before continuing to the next command in the action. I don\u0027t think it\u0027s related to the ninja outputs for this build edge.",
+      "parentUuid": "9a639131_2b1e775b",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 35
+      },
+      "revId": "d68d4ce5b710d39113bf4c4a76904d7343407cd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
