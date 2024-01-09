@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4057e4d_366b572c",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-09T22:02:08Z",
+      "side": 1,
+      "message": "While the full api surface libraries for public, system, test, module lib and system server api surfaces follow the naming scheme `android_\u003cAPI_SURFACE\u003e_stubs_current` (i.e. the separator is `_`), the full api surface library for the core api surface is named `core.current.stubs` (i.e. the separator is `.`), and this is the reason for the differentiation.",
+      "parentUuid": "7b7fa9dd_53ec7b28",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 51
+      },
+      "revId": "635687dce29033debd05d781c36a81987ec740e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee7679a3_ee6ea30f",
         "filename": "java/sdk_library.go",
         "patchSetId": 6
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad83865e_3f4bcb40",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-09T22:02:08Z",
+      "side": 1,
+      "message": "`stubsTag` is used for `java_sdk_library_import` (which does not differentiate everything and exportable stubs), and `everythingStubsTag` is used for the everything stubs library of `java_sdk_library`. The differentiation of `everythingStubsTag` and `exportableStubsTag` is due to the separation of the roles of the everything stubs and the exportable stubs in the platform build. For example, the exportable stubs would be copied to the module sdk snapshot and (for now) used for hiddenapi generation. The everything stubs would continue to be used when the `java_sdk_library` module is depended as `libs`. (e.g. when a `java_library` module sets a `java_sdk_library` `foo` as `libs` and set `sdk_version: \"test\"`, the everything test stubs jar must be provided instead of the exportable test stubs jar). However, since the `java_sdk_library_import` module does not differentiate the two, the prebuilt modules continues to use the `stubsTag`.",
+      "parentUuid": "ee7679a3_ee6ea30f",
+      "range": {
+        "startLine": 182,
+        "startChar": 7,
+        "endLine": 182,
+        "endChar": 25
+      },
+      "revId": "635687dce29033debd05d781c36a81987ec740e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55b99094_16751a0f",
         "filename": "java/sdk_library.go",
         "patchSetId": 6
@@ -77,6 +125,30 @@
       "writtenOn": "2024-01-09T00:47:25Z",
       "side": 1,
       "message": "nit: Can you please documentation about this function?",
+      "range": {
+        "startLine": 1312,
+        "startChar": 1,
+        "endLine": 1312,
+        "endChar": 27
+      },
+      "revId": "635687dce29033debd05d781c36a81987ec740e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8be8dc07_58a3eb60",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-09T22:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55b99094_16751a0f",
       "range": {
         "startLine": 1312,
         "startChar": 1,
