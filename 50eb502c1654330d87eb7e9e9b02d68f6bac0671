@@ -94,6 +94,30 @@
       },
       "revId": "50eb502c1654330d87eb7e9e9b02d68f6bac0671",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2846a227_edd38eb0",
+        "filename": "cc/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-09T08:10:09Z",
+      "side": 1,
+      "message": "\u0027Product\u0027 read `PRODUCT_PRODCT_VNDK_VERSION` which is removed and assumed to be `current` now. As the value is assumed to be current, it reads `PLATFORM_VNDK_VERSION`, which is the same as the vendor case of `BOARD_VNDK_VERSION \u003d\u003d current`. (please refer to this change: https://android-review.git.corp.google.com/c/platform/build/soong/+/2762829/1/cc/genrule.go).\n\nNow, the `BOARD_VNDK_VERSION`, although it is for vendor, is the only switch to turn on/off the vndk definition, I think it is reasonable to use the same switch for both cases.",
+      "parentUuid": "0406b5a6_fda7e271",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 51
+      },
+      "revId": "50eb502c1654330d87eb7e9e9b02d68f6bac0671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
