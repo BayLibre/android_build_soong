@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8cac634_56e6561a",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-09T23:17:36Z",
+      "side": 1,
+      "message": "How is this different from what `ctx.VisitDirectDeps` does?",
+      "revId": "e0e1965e7fbc820fa9a7cc4dbc154360d49d61d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
