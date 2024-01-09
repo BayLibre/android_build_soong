@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b6c7217_9904fc95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-01-09T02:22:50Z",
+      "side": 1,
+      "message": "I am quite sure that  this is a bug to be fixed, but I am not sure if this is the right way. So, over to the build system owners.",
+      "revId": "fd1a32f32396df5466338a13f6d539a0ff9e4297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
