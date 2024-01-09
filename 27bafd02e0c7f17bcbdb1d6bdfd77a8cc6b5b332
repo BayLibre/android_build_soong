@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6524a0b_9fc396eb",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-01-09T05:06:17Z",
+      "side": 1,
+      "message": "This fixes the presubmit error in Patchset 2. libz was VNDK and NDK. Patchset 2 unintentionally compared the dumps for vendor variant and core variant.",
+      "range": {
+        "startLine": 108,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "27bafd02e0c7f17bcbdb1d6bdfd77a8cc6b5b332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
