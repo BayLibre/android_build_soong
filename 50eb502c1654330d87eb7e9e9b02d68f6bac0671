@@ -46,6 +46,30 @@
       },
       "revId": "50eb502c1654330d87eb7e9e9b02d68f6bac0671",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "013fcadd_56f1c695",
+        "filename": "cc/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-09T05:06:00Z",
+      "side": 1,
+      "message": "But we are using a different variable from above vendor variant check, although they must have the same condition to be removed, I think. I think removing `BOARD_VNDK_VERSION` is the trigger to clean up the image version suffix. Can we use the same switch to the product variants as well? PLATFORM_VNDK_VERSION must not be a switch to remove the version suffix for the product variant, I think.",
+      "parentUuid": "402096e0_379bf38b",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 51
+      },
+      "revId": "50eb502c1654330d87eb7e9e9b02d68f6bac0671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
