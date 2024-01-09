@@ -56,6 +56,30 @@
       },
       "revId": "f7d4df26f5c3fcc028487f5118ad0f09b40bad99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7445452_6d0b4306",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2024-01-09T09:51:37Z",
+      "side": 1,
+      "message": "The `Prebuilts` here covers the `prebuilts` field that\u0027s directly included in `apex`, but what we need for this cl is the property \"arch.arm64.prebuilts\", which is not available without this cl",
+      "parentUuid": "e010639b_a595d262",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 19
+      },
+      "revId": "f7d4df26f5c3fcc028487f5118ad0f09b40bad99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
