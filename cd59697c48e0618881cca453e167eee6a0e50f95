@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71494b07_1e83dacf",
+        "filename": "android/defaults.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-01-09T23:50:41Z",
+      "side": 1,
+      "message": "Why commented out?",
+      "revId": "cd59697c48e0618881cca453e167eee6a0e50f95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1979781_f3e2ba13",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-01-09T23:50:41Z",
+      "side": 1,
+      "message": "similar to GenerateAndroidBuildActions, but not quite the same:\n\nDepsMutator is introduced in the android package, not in blueprint. So I think since this really is for all modules, this should go on ModuleBase directly.  In mutator.go, you\u0027ll want this:\n\n```\n  func depsMutator(ctx BottomUpMutatorContext) {\n  \tif m :\u003d ctx.Module(); m.Enabled() {\n+ \t\tm.base().baseDepsMutator()\n  \t\tm.DepsMutator(ctx)\n\t}\n}\n```",
+      "revId": "cd59697c48e0618881cca453e167eee6a0e50f95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd2ad1f4_75078ff1",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-01-09T23:50:41Z",
+      "side": 1,
+      "message": "Properties don\u0027t typically have GenerateAndroidBuildActions methods on them.  Modules do.  So this should just go in ModuleBase.GenerateBuildActions.\n\nThe way this works is that android.ModuleBase implements blueprint\u0027s GenerateBuildActions, and does the default stuff, and then calls android.GenerateAndroidBuildActions. That way all of the built-in features of android.ModuleBase don\u0027t need to have the actual module types call all the \"superclass\" methods.\n\nIf you put this logic there, you don\u0027t have to touch every single module type and make sure it calls this method.",
+      "revId": "cd59697c48e0618881cca453e167eee6a0e50f95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f9edf6c_43a10d19",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-01-09T23:50:41Z",
+      "side": 1,
+      "message": "What is this logic for?",
+      "revId": "cd59697c48e0618881cca453e167eee6a0e50f95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4da5644_ca3dd081",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-01-09T23:50:41Z",
+      "side": 1,
+      "message": "Can you put a comment to this effect: We\u0027re going to have to find a way in soong to make it so this doesn\u0027t get done on every analysis run. It\u0027s a substantial amount of time for files that most builds, especially local builds, aren\u0027t going to need.",
+      "revId": "cd59697c48e0618881cca453e167eee6a0e50f95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
