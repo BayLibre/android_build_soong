@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7377f1a_387e88dc",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-09T19:40:37Z",
+      "side": 1,
+      "message": "could you add test(s) that actually hits the errors?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "8a8757b9ef4917225323307c4f700a499e6b710d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
