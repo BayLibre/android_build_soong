@@ -70,6 +70,30 @@
       },
       "revId": "50eb502c1654330d87eb7e9e9b02d68f6bac0671",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0406b5a6_fda7e271",
+        "filename": "cc/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-01-09T06:44:46Z",
+      "side": 1,
+      "message": "I guess it is different just because vendor should follow device vndk version, while product follows platform vndk version (although we do not set device vndk version to previous one). Platform VNDK version will be removed along with Device VNDK version, so I think it should be safe, but please let me know if I missed anything.",
+      "parentUuid": "013fcadd_56f1c695",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 51
+      },
+      "revId": "50eb502c1654330d87eb7e9e9b02d68f6bac0671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
