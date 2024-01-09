@@ -46,6 +46,30 @@
       },
       "revId": "fa4a90d4341c5f54a03022e626b817acbee8bf78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f6fbc5_5758f066",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-09T00:08:55Z",
+      "side": 1,
+      "message": "Have there been any recent modifications to the proposal in go/flagged-api-in-trunk-stable? That doc seems to suggest that we should use `runtime` for generating hiddenapi flags and not `exportable`",
+      "parentUuid": "e009cf6a_1b724328",
+      "range": {
+        "startLine": 1332,
+        "startChar": 1,
+        "endLine": 1334,
+        "endChar": 24
+      },
+      "revId": "fa4a90d4341c5f54a03022e626b817acbee8bf78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
