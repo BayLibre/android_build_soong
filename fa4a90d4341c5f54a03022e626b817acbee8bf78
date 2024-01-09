@@ -94,6 +94,30 @@
       },
       "revId": "fa4a90d4341c5f54a03022e626b817acbee8bf78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c0d6335_6f5b13a6",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-09T00:18:12Z",
+      "side": 1,
+      "message": "The workaround seems reasonable for now. Can you please file a tracking bug for this?",
+      "parentUuid": "6190f8bb_e5b4831b",
+      "range": {
+        "startLine": 1332,
+        "startChar": 1,
+        "endLine": 1334,
+        "endChar": 24
+      },
+      "revId": "fa4a90d4341c5f54a03022e626b817acbee8bf78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
