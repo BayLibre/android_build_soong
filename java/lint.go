@@ -15,10 +15,12 @@
 package java
 
 import (
+	"encoding/json"
 	"fmt"
 	"sort"
 	"strings"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -105,13 +107,12 @@ type lintOutputs struct {
 	text              android.Path
 	xml               android.Path
 	referenceBaseline android.Path
+	inputBaseline     android.Path
 
 	depSets LintDepSets
 }
 
-type lintOutputsIntf interface {
-	lintOutputs() *lintOutputs
-}
+var lintOutputsProviderKey = blueprint.NewProvider[*lintOutputs]()
 
 type LintDepSetsIntf interface {
 	LintDepSets() LintDepSets
@@ -222,12 +223,6 @@ func (l *linter) SetStrictUpdatabilityLinting(strictLinting bool) {
 }
 
 var _ LintDepSetsIntf = (*linter)(nil)
-
-var _ lintOutputsIntf = (*linter)(nil)
-
-func (l *linter) lintOutputs() *lintOutputs {
-	return &l.outputs
-}
 
 func (l *linter) enabled() bool {
 	return BoolDefault(l.properties.Lint.Enabled, true)
@@ -538,6 +533,11 @@ func (l *linter) lint(ctx android.ModuleContext) {
 
 		depSets: depSetsBuilder.Build(),
 	}
+	if l.properties.Lint.Baseline_filename != nil {
+		l.outputs.inputBaseline = android.PathForModuleSrc(ctx, *l.properties.Lint.Baseline_filename)
+	}
+
+	android.SetProvider(ctx, lintOutputsProviderKey, &l.outputs)
 
 	if l.buildModuleReportZip {
 		l.reports = BuildModuleLintReportZips(ctx, l.LintDepSets())
@@ -574,6 +574,7 @@ type lintSingleton struct {
 	textZip              android.WritablePath
 	xmlZip               android.WritablePath
 	referenceBaselineZip android.WritablePath
+	inputBaselinesFile   android.WritablePath
 }
 
 func (l *lintSingleton) GenerateBuildActions(ctx android.SingletonContext) {
@@ -643,6 +644,7 @@ func (l *lintSingleton) generateLintReportZips(ctx android.SingletonContext) {
 	}
 
 	var outputs []*lintOutputs
+	inputBaselines := make(map[string]map[string]string)
 	var dirs []string
 	ctx.VisitAllModules(func(m android.Module) {
 		if ctx.Config().KatiEnabled() && !m.ExportedToMake() {
@@ -658,8 +660,14 @@ func (l *lintSingleton) generateLintReportZips(ctx android.SingletonContext) {
 			}
 		}
 
-		if l, ok := m.(lintOutputsIntf); ok {
-			outputs = append(outputs, l.lintOutputs())
+		if lintOutputs, ok := android.SingletonModuleProvider(ctx, m, lintOutputsProviderKey); ok {
+			outputs = append(outputs, lintOutputs)
+			if lintOutputs.inputBaseline != nil {
+				if _, ok := inputBaselines[ctx.ModuleDir(m)]; !ok {
+					inputBaselines[ctx.ModuleDir(m)] = make(map[string]string)
+				}
+				inputBaselines[ctx.ModuleDir(m)][ctx.ModuleName(m)] = lintOutputs.inputBaseline.String()
+			}
 		}
 	})
 
@@ -689,12 +697,19 @@ func (l *lintSingleton) generateLintReportZips(ctx android.SingletonContext) {
 	l.referenceBaselineZip = android.PathForOutput(ctx, "lint-report-reference-baselines.zip")
 	zip(l.referenceBaselineZip, func(l *lintOutputs) android.Path { return l.referenceBaseline })
 
-	ctx.Phony("lint-check", l.htmlZip, l.textZip, l.xmlZip, l.referenceBaselineZip)
+	l.inputBaselinesFile = android.PathForOutput(ctx, "lint-report-input-baselines.json")
+	bytes, err := json.Marshal(inputBaselines)
+	if err != nil {
+		ctx.Errorf("%s", err.Error())
+	}
+	android.WriteFileRule(ctx, l.inputBaselinesFile, string(bytes))
+
+	ctx.Phony("lint-check", l.htmlZip, l.textZip, l.xmlZip, l.referenceBaselineZip, l.inputBaselinesFile)
 }
 
 func (l *lintSingleton) MakeVars(ctx android.MakeVarsContext) {
 	if !ctx.Config().UnbundledBuild() {
-		ctx.DistForGoal("lint-check", l.htmlZip, l.textZip, l.xmlZip, l.referenceBaselineZip)
+		ctx.DistForGoal("lint-check", l.htmlZip, l.textZip, l.xmlZip, l.referenceBaselineZip, l.inputBaselinesFile)
 	}
 }
 

@@ -42,7 +42,7 @@ var (
 	// TODO(b/143658984): goma can't handle the --system argument to javac.
 	javac, javacRE = pctx.MultiCommandRemoteStaticRules("javac",
 		blueprint.RuleParams{
-			Command: `rm -rf "$outDir" "$annoDir" "$annoSrcJar.tmp" "$srcJarDir" "$out.tmp" && ` +
+			Command: `rm -rf "$outDir" "$annoDir" "$srcJarDir" && ` +
 				`mkdir -p "$outDir" "$annoDir" "$srcJarDir" && ` +
 				`${config.ZipSyncCmd} -d $srcJarDir -l $srcJarDir/list -f "*.java" $srcJars && ` +
 				`(if [ -s $srcJarDir/list ] || [ -s $out.rsp ] ; then ` +
@@ -51,10 +51,8 @@ var (
 				`$processorpath $processor $javacFlags $bootClasspath $classpath ` +
 				`-source $javaVersion -target $javaVersion ` +
 				`-d $outDir -s $annoDir @$out.rsp @$srcJarDir/list ; fi ) && ` +
-				`$annoSrcJarTemplate${config.SoongZipCmd} -jar -o $annoSrcJar.tmp -C $annoDir -D $annoDir && ` +
-				`$zipTemplate${config.SoongZipCmd} -jar -o $out.tmp -C $outDir -D $outDir && ` +
-				`if ! cmp -s "$out.tmp" "$out"; then mv "$out.tmp" "$out"; fi && ` +
-				`if ! cmp -s "$annoSrcJar.tmp" "$annoSrcJar"; then mv "$annoSrcJar.tmp" "$annoSrcJar"; fi && ` +
+				`$annoSrcJarTemplate${config.SoongZipCmd} -write_if_changed -jar -o $annoSrcJar -C $annoDir -D $annoDir && ` +
+				`$zipTemplate${config.SoongZipCmd} -write_if_changed -jar -o $out -C $outDir -D $outDir && ` +
 				`rm -rf "$srcJarDir" "$outDir"`,
 			CommandDeps: []string{
 				"${config.JavacCmd}",
@@ -74,14 +72,14 @@ var (
 			"$zipTemplate": &remoteexec.REParams{
 				Labels:       map[string]string{"type": "tool", "name": "soong_zip"},
 				Inputs:       []string{"${config.SoongZipCmd}", "$outDir"},
-				OutputFiles:  []string{"$out.tmp"},
+				OutputFiles:  []string{"$out"},
 				ExecStrategy: "${config.REJavacExecStrategy}",
 				Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
 			},
 			"$annoSrcJarTemplate": &remoteexec.REParams{
 				Labels:       map[string]string{"type": "tool", "name": "soong_zip"},
 				Inputs:       []string{"${config.SoongZipCmd}", "$annoDir"},
-				OutputFiles:  []string{"$annoSrcJar.tmp"},
+				OutputFiles:  []string{"$annoSrcJar"},
 				ExecStrategy: "${config.REJavacExecStrategy}",
 				Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
 			},
