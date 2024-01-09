@@ -33,6 +33,24 @@
       "message": "I think we can remove this field now, because `overrideableProperties` and `apexBundleProperties` (which `ApexNativeDependencies` is embedded in) are both regular property structs as far as I can tell.",
       "revId": "4fab2dc673c1468eea5e4eac4d70c538ad3bfcda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b2222fb_0ec4d8da",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-09T18:41:08Z",
+      "side": 1,
+      "message": "well, it may need to be added as a separate property struct in `OverrideApexFactory` as well.",
+      "parentUuid": "11fb63fc_5b14d64d",
+      "revId": "4fab2dc673c1468eea5e4eac4d70c538ad3bfcda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
