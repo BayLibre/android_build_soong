@@ -104,6 +104,30 @@
       },
       "revId": "f7d4df26f5c3fcc028487f5118ad0f09b40bad99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fa5ad4e_d281df15",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2024-01-09T10:42:08Z",
+      "side": 1,
+      "message": "Yes, I just added Exclude_prebuilts for completeness, making it coherent with all the other fields in this struct.\n\n\u003e Ah, that\u0027s because you don\u0027t have anything for x86_64?\n\nExactly. The rialto image is only available in arm64, so currently an empty rialto image is added in x86_64. It\u0027s cleaner if we just stop including rialto when it\u0027s not supported, which also facilitates the resigning.",
+      "parentUuid": "2ea46f75_75f7b2e5",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 19
+      },
+      "revId": "f7d4df26f5c3fcc028487f5118ad0f09b40bad99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
