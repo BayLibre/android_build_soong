@@ -22,6 +22,30 @@
       },
       "revId": "fa4a90d4341c5f54a03022e626b817acbee8bf78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e009cf6a_1b724328",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-09T00:04:33Z",
+      "side": 1,
+      "message": "exportable stubs are copied to the module sdk snapshots (i.e. everything stubs in the prebuilts are the exportable stub), and since the exportable stubs are used for the hiddenapi flags generation, I do not believe that this will become a problem.",
+      "parentUuid": "554a85bd_2f2651f8",
+      "range": {
+        "startLine": 1332,
+        "startChar": 1,
+        "endLine": 1334,
+        "endChar": 24
+      },
+      "revId": "fa4a90d4341c5f54a03022e626b817acbee8bf78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
