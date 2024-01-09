@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd6ecdf_f93c4552",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-09T23:19:37Z",
+      "side": 1,
+      "message": "How was this set of modules chosen?  Are there specific modules that should not get this?  Should this just happen in `ModuleBase.GenerateBuildActions`, where it would affect all modules?",
+      "revId": "6f86fe0b1adadedafe1ea71a485513a3b6638b68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
