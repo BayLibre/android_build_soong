@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a639131_2b1e775b",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-09T19:48:24Z",
+      "side": 1,
+      "message": "Is this needed? Does it mean that before this CL, the build graph did not fully declare `out` in its outputs?",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 35
+      },
+      "revId": "d68d4ce5b710d39113bf4c4a76904d7343407cd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
