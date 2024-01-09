@@ -79,15 +79,7 @@ var _ android.ImageInterface = (*GenruleExtraProperties)(nil)
 func (g *GenruleExtraProperties) ImageMutatorBegin(ctx android.BaseModuleContext) {}
 
 func (g *GenruleExtraProperties) CoreVariantNeeded(ctx android.BaseModuleContext) bool {
-	if ctx.DeviceConfig().VndkVersion() == "" {
-		return true
-	}
-
-	if ctx.ProductSpecific() {
-		return false
-	}
-
-	return !(ctx.SocSpecific() || ctx.DeviceSpecific())
+	return !(ctx.SocSpecific() || ctx.DeviceSpecific() || ctx.ProductSpecific())
 }
 
 func (g *GenruleExtraProperties) RamdiskVariantNeeded(ctx android.BaseModuleContext) bool {
@@ -115,10 +107,6 @@ func (g *GenruleExtraProperties) RecoveryVariantNeeded(ctx android.BaseModuleCon
 }
 
 func (g *GenruleExtraProperties) ExtraImageVariations(ctx android.BaseModuleContext) []string {
-	if ctx.DeviceConfig().VndkVersion() == "" {
-		return nil
-	}
-
 	var variants []string
 	if Bool(g.Vendor_available) || Bool(g.Odm_available) || ctx.SocSpecific() || ctx.DeviceSpecific() {
 		vndkVersion := ctx.DeviceConfig().VndkVersion()
@@ -126,7 +114,9 @@ func (g *GenruleExtraProperties) ExtraImageVariations(ctx android.BaseModuleCont
 		// If not, we assume modules under proprietary paths are compatible for
 		// BOARD_VNDK_VERSION. The other modules are regarded as AOSP, that is
 		// PLATFORM_VNDK_VERSION.
-		if vndkVersion == "current" || !snapshot.IsVendorProprietaryModule(ctx) {
+		if vndkVersion == "" {
+			variants = append(variants, VendorVariation)
+		} else if vndkVersion == "current" || !snapshot.IsVendorProprietaryModule(ctx) {
 			variants = append(variants, VendorVariationPrefix+ctx.DeviceConfig().PlatformVndkVersion())
 		} else {
 			variants = append(variants, VendorVariationPrefix+vndkVersion)
@@ -134,7 +124,11 @@ func (g *GenruleExtraProperties) ExtraImageVariations(ctx android.BaseModuleCont
 	}
 
 	if Bool(g.Product_available) || ctx.ProductSpecific() {
-		variants = append(variants, ProductVariationPrefix+ctx.DeviceConfig().PlatformVndkVersion())
+		if ctx.DeviceConfig().PlatformVndkVersion() != "" {
+			variants = append(variants, ProductVariationPrefix+ctx.DeviceConfig().PlatformVndkVersion())
+		} else {
+			variants = append(variants, ProductVariation)
+		}
 	}
 
 	return variants
