@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61dc7c37_3e849cc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-09T00:29:14Z",
+      "side": 1,
+      "message": "@spandandas@google.com the test failures seen in the presubmits are due to lack of flagged apis support in some scenarios in metalava, and no further build changes are required to resolve this. Can you take a look at this change?",
+      "revId": "635687dce29033debd05d781c36a81987ec740e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
