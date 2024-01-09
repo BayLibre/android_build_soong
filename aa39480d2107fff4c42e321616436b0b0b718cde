@@ -22,6 +22,30 @@
       },
       "revId": "aa39480d2107fff4c42e321616436b0b0b718cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "925e303b_65b8074f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-01-09T04:41:20Z",
+      "side": 1,
+      "message": "I also thought about some other name, but such as `not in system` can be confused if it would be true if the module targets vendor ramdisk or any other partition. `InTreblelizedPartition` can be another solution, but it is somewhat longer 😞",
+      "parentUuid": "430a2218_0392713a",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 14,
+        "endChar": 62
+      },
+      "revId": "aa39480d2107fff4c42e321616436b0b0b718cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
