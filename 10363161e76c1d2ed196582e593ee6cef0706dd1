@@ -16,6 +16,24 @@
       "message": "heh, funnily enough, you\u0027re still the only person who has all the OWNERS bits i need. (not even ccross!)\n\ni\u0027ve been fairly conservative here --- there are plenty more \"master\"s here, but i\u0027ve touched all the ones that are android.googlesource.com and the ones that appear in error messages (which was why i\u0027m here).",
       "revId": "10363161e76c1d2ed196582e593ee6cef0706dd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28051793_930ee84c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2024-01-09T22:47:21Z",
+      "side": 1,
+      "message": "If I expand the suggestions in the suggest owners dialog it does show ccross@ everywhere... it would be weird if that wasn\u0027t the case.",
+      "parentUuid": "7f9c3985_129da168",
+      "revId": "10363161e76c1d2ed196582e593ee6cef0706dd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
