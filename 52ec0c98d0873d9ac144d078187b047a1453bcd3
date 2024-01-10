@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82eb61e4_1d3b13b4",
+        "filename": "java/base.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 2379,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-10T01:26:16Z",
+      "side": 1,
+      "message": "Can we raise an error if `j.repackageJarjarRules` is not nil and we try to overwrite `ruleText`? It should catch errors if a java_sdk_library / java_library is a part of multiple bcp_fragments",
+      "range": {
+        "startLine": 2379,
+        "startChar": 4,
+        "endLine": 2379,
+        "endChar": 33
+      },
+      "revId": "52ec0c98d0873d9ac144d078187b047a1453bcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9992a4b_80bda5a6",
+        "filename": "java/base.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 2393,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-10T01:26:16Z",
+      "side": 1,
+      "message": "nit: Since base is always ctx.ModuleName(), you can consider dropping this parameter from the function signature.",
+      "range": {
+        "startLine": 2393,
+        "startChar": 42,
+        "endLine": 2393,
+        "endChar": 53
+      },
+      "revId": "52ec0c98d0873d9ac144d078187b047a1453bcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f31bdb8_adc02366",
+        "filename": "java/base.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 2407,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-10T01:26:16Z",
+      "side": 1,
+      "message": "nit: This seems to be unused and can be dropped.",
+      "range": {
+        "startLine": 2407,
+        "startChar": 44,
+        "endLine": 2407,
+        "endChar": 70
+      },
+      "revId": "52ec0c98d0873d9ac144d078187b047a1453bcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
