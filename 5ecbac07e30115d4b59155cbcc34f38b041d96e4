@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "913982ff_c81b3fc1",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-10T19:13:53Z",
+      "side": 1,
+      "message": "isn\u0027t this going to overwrite psi with every dep it visits? If this is intended behavior, could you leave a comment explaining why we\u0027re only using the psi provider from the last dep?",
+      "revId": "5ecbac07e30115d4b59155cbcc34f38b041d96e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8125374d_82a338b7",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-10T19:13:53Z",
+      "side": 1,
+      "message": "It seems we\u0027re doing the two pass approach because we don\u0027t necessarily know if something will be selected initially.\n\nCould we do it in one pass if for every module (both the source and all the prebuilts), if their source module exists in a key in the PSI map, then we assume that something will be selected later, and thus we can decide to HideFromMake based off of isSelected immediately?",
+      "revId": "5ecbac07e30115d4b59155cbcc34f38b041d96e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
