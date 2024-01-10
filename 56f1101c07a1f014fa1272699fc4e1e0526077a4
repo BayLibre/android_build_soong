@@ -51,6 +51,24 @@
       "parentUuid": "e7a78a15_111bd3e5",
       "revId": "56f1101c07a1f014fa1272699fc4e1e0526077a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b45c72e2_788bc9d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1772825
+      },
+      "writtenOn": "2024-01-10T16:56:45Z",
+      "side": 1,
+      "message": "For future reference, example of renaming with jarjar: https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/Android.bp;l\u003d137;drc\u003da0f462e59f31c38690bc0e73465611d25ef24037",
+      "parentUuid": "5214850e_27562822",
+      "revId": "56f1101c07a1f014fa1272699fc4e1e0526077a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
