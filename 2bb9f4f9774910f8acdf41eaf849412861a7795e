@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "753eb055_ce86e62e",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-01-10T15:01:56Z",
+      "side": 1,
+      "message": "Maybe:\n```\nctx.Printf(\"ninja may be stuck, check %s/soong.log for list of running processes.\", config.OutDir())\n```",
+      "range": {
+        "startLine": 274,
+        "startChar": 2,
+        "endLine": 274,
+        "endChar": 82
+      },
+      "revId": "2bb9f4f9774910f8acdf41eaf849412861a7795e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
