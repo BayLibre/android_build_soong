@@ -881,6 +881,14 @@ type ModuleBase struct {
 	// moduleInfoJSON can be filled out by GenerateAndroidBuildActions to write a JSON file that will
 	// be included in the final module-info.json produced by Make.
 	moduleInfoJSON *ModuleInfoJSON
+
+	// hack to handle AndroidMkData with custom writer
+	SavedAconfigFiles    Paths
+	savedAconfigMergedPb ModuleOutPath
+}
+
+func (m *ModuleBase) SavedAconfigMergedPb() ModuleOutPath {
+	return m.savedAconfigMergedPb
 }
 
 func (m *ModuleBase) AddJSONData(d *map[string]interface{}) {
@@ -1692,7 +1700,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		// ensure all direct android.Module deps are enabled
 		ctx.VisitDirectDepsBlueprint(func(bm blueprint.Module) {
 			if m, ok := bm.(Module); ok {
-				ctx.validateAndroidModule(bm, ctx.OtherModuleDependencyTag(m), ctx.baseModuleContext.strictVisitDeps)
+				ctx.validateAndroidModule(bm, ctx.OtherModuleDependencyTag(m), ctx.baseModuleContext.strictVisitDeps, false)
 			}
 		})
 
@@ -1739,6 +1747,13 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		m.module.GenerateAndroidBuildActions(ctx)
 		if ctx.Failed() {
 			return
+		}
+
+		for _, providerInfo := range promotingProviderRegistry {
+			providerInfo.ctx.(PropagatingProviderContext).Propagate(ctx)
+			if ctx.Failed() {
+				return
+			}
 		}
 
 		// Create the set of tagged dist files after calling GenerateAndroidBuildActions

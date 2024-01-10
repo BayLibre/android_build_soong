@@ -118,6 +118,15 @@ type BaseModuleContext interface {
 	// function, it may be invalidated by future mutators.
 	VisitDirectDepsBlueprint(visit func(blueprint.Module))
 
+	// VisitDirectDepsIgnoreBlueprint calls visit for each direct dependency.  If there are multiple
+	// direct dependencies on the same module visit will be called multiple times on that module
+	// and OtherModuleDependencyTag will return a different tag for each.  It silently ignores any
+	// dependencies that  are not an android.Module.
+	//
+	// The Module passed to the visit function should not be retained outside of the visit
+	// function, it may be invalidated by future mutators.
+	VisitDirectDepsIgnoreBlueprint(visit func(Module))
+
 	// VisitDirectDeps calls visit for each direct dependency.  If there are multiple
 	// direct dependencies on the same module visit will be called multiple times on that module
 	// and OtherModuleDependencyTag will return a different tag for each.  It raises an error if any of the
@@ -306,7 +315,7 @@ type AllowDisabledModuleDependency interface {
 	AllowDisabledModuleDependency(target Module) bool
 }
 
-func (b *baseModuleContext) validateAndroidModule(module blueprint.Module, tag blueprint.DependencyTag, strict bool) Module {
+func (b *baseModuleContext) validateAndroidModule(module blueprint.Module, tag blueprint.DependencyTag, strict bool, ignoreBlueprint bool) Module {
 	aModule, _ := module.(Module)
 
 	if !strict {
@@ -314,7 +323,9 @@ func (b *baseModuleContext) validateAndroidModule(module blueprint.Module, tag b
 	}
 
 	if aModule == nil {
-		b.ModuleErrorf("module %q (%#v) not an android module", b.OtherModuleName(module), tag)
+		if !ignoreBlueprint {
+			b.ModuleErrorf("module %q (%#v) not an android module", b.OtherModuleName(module), tag)
+		}
 		return nil
 	}
 
@@ -411,8 +422,16 @@ func (b *baseModuleContext) VisitDirectDepsBlueprint(visit func(blueprint.Module
 }
 
 func (b *baseModuleContext) VisitDirectDeps(visit func(Module)) {
+	b.visitDirectDeps(visit, false)
+}
+
+func (b *baseModuleContext) VisitDirectDepsIgnoreBlueprint(visit func(Module)) {
+	b.visitDirectDeps(visit, true)
+}
+
+func (b *baseModuleContext) visitDirectDeps(visit func(Module), ignoreBlueprint bool) {
 	b.bp.VisitDirectDeps(func(module blueprint.Module) {
-		if aModule := b.validateAndroidModule(module, b.bp.OtherModuleDependencyTag(module), b.strictVisitDeps); aModule != nil {
+		if aModule := b.validateAndroidModule(module, b.bp.OtherModuleDependencyTag(module), b.strictVisitDeps, ignoreBlueprint); aModule != nil {
 			visit(aModule)
 		}
 	})
@@ -421,7 +440,7 @@ func (b *baseModuleContext) VisitDirectDeps(visit func(Module)) {
 func (b *baseModuleContext) VisitDirectDepsWithTag(tag blueprint.DependencyTag, visit func(Module)) {
 	b.bp.VisitDirectDeps(func(module blueprint.Module) {
 		if b.bp.OtherModuleDependencyTag(module) == tag {
-			if aModule := b.validateAndroidModule(module, b.bp.OtherModuleDependencyTag(module), b.strictVisitDeps); aModule != nil {
+			if aModule := b.validateAndroidModule(module, b.bp.OtherModuleDependencyTag(module), b.strictVisitDeps, false); aModule != nil {
 				visit(aModule)
 			}
 		}
@@ -432,7 +451,7 @@ func (b *baseModuleContext) VisitDirectDepsIf(pred func(Module) bool, visit func
 	b.bp.VisitDirectDepsIf(
 		// pred
 		func(module blueprint.Module) bool {
-			if aModule := b.validateAndroidModule(module, b.bp.OtherModuleDependencyTag(module), b.strictVisitDeps); aModule != nil {
+			if aModule := b.validateAndroidModule(module, b.bp.OtherModuleDependencyTag(module), b.strictVisitDeps, false); aModule != nil {
 				return pred(aModule)
 			} else {
 				return false
@@ -446,7 +465,7 @@ func (b *baseModuleContext) VisitDirectDepsIf(pred func(Module) bool, visit func
 
 func (b *baseModuleContext) VisitDepsDepthFirst(visit func(Module)) {
 	b.bp.VisitDepsDepthFirst(func(module blueprint.Module) {
-		if aModule := b.validateAndroidModule(module, b.bp.OtherModuleDependencyTag(module), b.strictVisitDeps); aModule != nil {
+		if aModule := b.validateAndroidModule(module, b.bp.OtherModuleDependencyTag(module), b.strictVisitDeps, false); aModule != nil {
 			visit(aModule)
 		}
 	})
@@ -456,7 +475,7 @@ func (b *baseModuleContext) VisitDepsDepthFirstIf(pred func(Module) bool, visit 
 	b.bp.VisitDepsDepthFirstIf(
 		// pred
 		func(module blueprint.Module) bool {
-			if aModule := b.validateAndroidModule(module, b.bp.OtherModuleDependencyTag(module), b.strictVisitDeps); aModule != nil {
+			if aModule := b.validateAndroidModule(module, b.bp.OtherModuleDependencyTag(module), b.strictVisitDeps, false); aModule != nil {
 				return pred(aModule)
 			} else {
 				return false

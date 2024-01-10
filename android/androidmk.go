@@ -153,6 +153,8 @@ type AndroidMkEntries struct {
 	// Provides data typically stored by Context objects that are commonly needed by
 	//AndroidMkEntries objects.
 	entryContext AndroidMkEntriesContext
+
+	Module *ModuleBase
 }
 
 type AndroidMkEntriesContext interface {
@@ -666,6 +668,9 @@ func (a *AndroidMkEntries) write(w io.Writer) {
 	for _, name := range a.entryOrder {
 		AndroidMkEmitAssignList(w, name, a.EntryMap[name])
 	}
+	if a.Module != nil && len(a.Module.SavedAconfigFiles) > 0 {
+		AndroidMkEmitAssignList(w, "LOCAL_ACONFIG_FILES", a.Module.SavedAconfigFiles.Strings())
+	}
 	w.Write(a.footer.Bytes())
 }
 
@@ -822,9 +827,9 @@ func translateGoBinaryModule(ctx SingletonContext, w io.Writer, mod blueprint.Mo
 	return nil
 }
 
-func (data *AndroidMkData) fillInData(ctx fillInEntriesContext, mod blueprint.Module) {
+func (data *AndroidMkData) fillInData(ctx fillInEntriesContext, mod blueprint.Module, sctx SingletonContext) {
 	// Get the preamble content through AndroidMkEntries logic.
-	data.Entries = AndroidMkEntries{
+	entries := AndroidMkEntries{
 		Class:           data.Class,
 		SubName:         data.SubName,
 		DistFiles:       data.DistFiles,
@@ -835,6 +840,13 @@ func (data *AndroidMkData) fillInData(ctx fillInEntriesContext, mod blueprint.Mo
 		Host_required:   data.Host_required,
 		Target_required: data.Target_required,
 	}
+	entriesList := []AndroidMkEntries{entries}
+	if aModule, ok := mod.(Module); ok && sctx != nil {
+		for _, providerInfo := range promotingProviderRegistry {
+			providerInfo.ctx.UpdateAndroidMkEntries(sctx, &aModule, &entriesList)
+		}
+	}
+	data.Entries = entriesList[0]
 	data.Entries.fillInEntries(ctx, mod)
 
 	// copy entries back to data since it is used in Custom
@@ -858,7 +870,7 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, moduleInfoJSONs *
 		data.Include = "$(BUILD_PREBUILT)"
 	}
 
-	data.fillInData(ctx, mod)
+	data.fillInData(ctx, mod, ctx)
 
 	prefix := ""
 	if amod.ArchSpecific() {
@@ -883,6 +895,16 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, moduleInfoJSONs *
 	blueprintDir := filepath.Dir(ctx.BlueprintFile(mod))
 
 	if data.Custom != nil {
+		data.Entries.Module = amod
+		if len(amod.SavedAconfigFiles) > 0 {
+			switch reflect.TypeOf(mod).String() {
+			case "*apex.apexBundle": // aconfig_file properties written
+			case "*genrule.Module": // writes non-custom before adding .phony
+			case "*java.SystemModules": // doesn't go through base_rules
+			default:
+				return fmt.Errorf("custom make rules do not handle aconfig files for %q (%q) module %q", ctx.ModuleType(mod), reflect.TypeOf(mod), ctx.ModuleName(mod))
+			}
+		}
 		// List of module types allowed to use .Custom(...)
 		// Additions to the list require careful review for proper license handling.
 		switch reflect.TypeOf(mod).String() { // ctx.ModuleType(mod) doesn't work: aidl_interface creates phony without type
@@ -943,6 +965,11 @@ func translateAndroidMkEntriesModule(ctx SingletonContext, w io.Writer, moduleIn
 	}
 
 	entriesList := provider.AndroidMkEntries()
+	if aModule, ok := mod.(Module); ok {
+		for _, providerInfo := range promotingProviderRegistry {
+			providerInfo.ctx.UpdateAndroidMkEntries(ctx, &aModule, &entriesList)
+		}
+	}
 
 	// Any new or special cases here need review to verify correct propagation of license information.
 	for _, entries := range entriesList {

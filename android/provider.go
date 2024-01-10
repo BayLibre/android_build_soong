@@ -118,3 +118,26 @@ func (p *otherModuleProviderAdaptor) otherModuleProvider(module blueprint.Module
 func NewOtherModuleProviderAdaptor(otherModuleProviderFunc OtherModuleProviderFunc) OtherModuleProviderContext {
 	return &otherModuleProviderAdaptor{otherModuleProviderFunc}
 }
+
+type PropagatingProviderPropagateFunc func(ctx ModuleContext)
+type PropagatingProviderUpdateAndroidMkEntriesFunc func(ctx SingletonContext, mod *Module, entries *[]AndroidMkEntries)
+
+type PropagatingProviderContext interface {
+	Propagate(ctx ModuleContext)
+	UpdateAndroidMkEntries(ctx SingletonContext, mod *Module, entries *[]AndroidMkEntries)
+}
+
+type promotingProviderInfo struct {
+	providerKey blueprint.AnyProviderKey
+	ctx         PropagatingProviderContext
+	mutator     string
+}
+
+var promotingProviderRegistry []*promotingProviderInfo
+
+func RegisterPropagatingProvider(key blueprint.AnyProviderKey, providerContext PropagatingProviderContext, mutator string) {
+	promotingProviderRegistry = append(promotingProviderRegistry, &promotingProviderInfo{
+		providerKey: key,
+		ctx:         providerContext,
+	})
+}

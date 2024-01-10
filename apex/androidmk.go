@@ -124,6 +124,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, moduleDir st
 		pathForSymbol := filepath.Join("$(PRODUCT_OUT)", "apex", apexBundleName, fi.installDir)
 		modulePath := pathForSymbol
 		fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", modulePath)
+		android.AndroidMkEmitAssignList(w, "LOCAL_ACONFIG_FILES", a.SavedAconfigFiles.Strings())
 
 		// For non-flattend APEXes, the merged notice file is attached to the APEX itself.
 		// We don't need to have notice file for the individual modules in it. Otherwise,
@@ -253,6 +254,7 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 				fmt.Fprintln(w, "LOCAL_SOONG_INSTALL_SYMLINKS := ", strings.Join(a.compatSymlinks.Strings(), " "))
 			}
 			fmt.Fprintln(w, "LOCAL_APEX_KEY_PATH := ", a.apexKeysPath.String())
+			android.AndroidMkEmitAssignList(w, "LOCAL_ACONFIG_FILES", a.SavedAconfigFiles.Strings())
 
 			// Because apex writes .mk with Custom(), we need to write manually some common properties
 			// which are available via data.Entries
