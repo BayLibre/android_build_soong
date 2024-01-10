@@ -346,9 +346,6 @@ type overridableProperties struct {
 	// List of APKs that are embedded inside this APEX.
 	Apps []string
 
-	// List of prebuilt files that are embedded inside this APEX bundle.
-	Prebuilts []string
-
 	// List of BPF programs inside this APEX bundle.
 	Bpfs []string
 
@@ -864,7 +861,7 @@ func (a *apexBundle) OverridablePropertiesDepsMutator(ctx android.BottomUpMutato
 	commonVariation := ctx.Config().AndroidCommonTarget.Variations()
 	ctx.AddFarVariationDependencies(commonVariation, androidAppTag, a.overridableProperties.Apps...)
 	ctx.AddFarVariationDependencies(commonVariation, bpfTag, a.overridableProperties.Bpfs...)
-	if prebuilts := a.overridableProperties.Prebuilts; len(prebuilts) > 0 {
+	if prebuilts := a.properties.Prebuilts; len(prebuilts) > 0 {
 		// For prebuilt_etc, use the first variant (64 on 64/32bit device, 32 on 32bit device)
 		// regardless of the TARGET_PREFER_* setting. See b/144532908
 		arches := ctx.DeviceConfig().Arches()
