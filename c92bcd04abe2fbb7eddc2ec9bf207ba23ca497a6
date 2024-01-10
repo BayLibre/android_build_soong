@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bb38290_58e9819c",
+        "filename": "android/apex_contributions.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-10T23:39:39Z",
+      "side": 1,
+      "message": "I don\u0027t think you need `selectedModuleName`, because it\u0027s now the key of the map, or `metadataModuleName`, because you removed its only usage.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 33
+      },
+      "revId": "c92bcd04abe2fbb7eddc2ec9bf207ba23ca497a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
