@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56bb35f8_051c0ff8",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-10T20:03:42Z",
+      "side": 1,
+      "message": "nit: Since `stubsTag` is only used by `java_sdk_library_import`, can we rename it to convey intent. Something `stubsTagForPrebuilt...`. Alternatively, can you leave a comment in the code?",
+      "parentUuid": "ad83865e_3f4bcb40",
+      "range": {
+        "startLine": 182,
+        "startChar": 7,
+        "endLine": 182,
+        "endChar": 25
+      },
+      "revId": "635687dce29033debd05d781c36a81987ec740e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55b99094_16751a0f",
         "filename": "java/sdk_library.go",
         "patchSetId": 6
