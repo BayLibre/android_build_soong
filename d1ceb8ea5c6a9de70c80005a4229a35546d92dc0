@@ -22,6 +22,30 @@
       },
       "revId": "d1ceb8ea5c6a9de70c80005a4229a35546d92dc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8cd9dd7_356776b0",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-10T19:32:47Z",
+      "side": 1,
+      "message": "Acknowledged. I have filed b/319162970 to track the cleanup when adding rules for the \"runtime\" stubs.",
+      "parentUuid": "8df56807_7e9acff4",
+      "range": {
+        "startLine": 212,
+        "startChar": 5,
+        "endLine": 212,
+        "endChar": 31
+      },
+      "revId": "d1ceb8ea5c6a9de70c80005a4229a35546d92dc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
