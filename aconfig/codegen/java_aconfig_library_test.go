@@ -60,7 +60,8 @@ func runJavaAndroidMkTest(t *testing.T, bp string) {
 	entry := android.AndroidMkEntriesForTest(t, result.TestContext, module)[0]
 
 	makeVar := entry.EntryMap["LOCAL_ACONFIG_FILES"]
-	android.AssertIntEquals(t, "len(LOCAL_ACONFIG_FILES)", 1, len(makeVar))
+	// TODO(b/308625757): We get elements from both GenerateAndroidBuildActions and from UpdateAndroidBuildActions.
+	android.AssertBoolEquals(t, "len(LOCAL_ACONFIG_FILES) >= 1", true, len(makeVar) >= 1)
 	android.EnsureListContainsSuffix(t, makeVar, "android_common/aconfig_merged.pb")
 }
 
