@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea110b4_5a60965b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2024-01-10T10:01:12Z",
+      "side": 1,
+      "message": "Changed to not to run clang-tidy for generated sources.",
+      "parentUuid": "13c094c3_1f163a9e",
+      "revId": "fd1a32f32396df5466338a13f6d539a0ff9e4297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fcc4849_6f451fec",
@@ -59,6 +77,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e55f318b_772d9c06",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2024-01-10T10:01:12Z",
+      "side": 1,
+      "message": "The code for this comment was removed while changing logic to not to run clang-tidy for generated sources.",
+      "parentUuid": "1fcc4849_6f451fec",
+      "range": {
+        "startLine": 723,
+        "startChar": 37,
+        "endLine": 723,
+        "endChar": 107
+      },
+      "revId": "fd1a32f32396df5466338a13f6d539a0ff9e4297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eeeb7dfc_eabc3af0",
@@ -72,6 +114,24 @@
       "writtenOn": "2024-01-09T18:17:13Z",
       "side": 1,
       "message": "The mapping from src -\u003e generated should probably also apply for `tidy_timeout_srcs`.",
+      "revId": "fd1a32f32396df5466338a13f6d539a0ff9e4297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "239b9d60_cf7db49a",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2024-01-10T10:01:12Z",
+      "side": 1,
+      "message": "Since code was changed to not using tidy_disabled_srcs, I think it would be enough to just add generated sources here.",
+      "parentUuid": "eeeb7dfc_eabc3af0",
       "revId": "fd1a32f32396df5466338a13f6d539a0ff9e4297",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
