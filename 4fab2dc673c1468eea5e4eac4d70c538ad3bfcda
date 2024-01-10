@@ -51,6 +51,24 @@
       "parentUuid": "11fb63fc_5b14d64d",
       "revId": "4fab2dc673c1468eea5e4eac4d70c538ad3bfcda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc34c5df_cf3031ef",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2024-01-10T15:20:44Z",
+      "side": 1,
+      "message": "Done. Thank you for the suggestion. Since the usage of this field seems a bit brittle[1], I have removed the field in a separate commit in case we need to revert it later \u003d\u003e https://r.android.com/c/2904068\n[1] https://cs.android.com/android/platform/superproject/main/+/main:build/soong/apex/apex.go;l\u003d857;drc\u003d4c41458f9c4f4b50435b01786fb1423f4cccc63f",
+      "parentUuid": "1b2222fb_0ec4d8da",
+      "revId": "4fab2dc673c1468eea5e4eac4d70c538ad3bfcda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
