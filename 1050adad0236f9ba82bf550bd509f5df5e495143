@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45eebbcd_564650f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-10T20:49:03Z",
+      "side": 1,
+      "message": "Removing the baseline apex_available map for com.android.runtime is running into some issues for `libz`. Till we figure that out, I would like to remove wifi\u0027s baseline map.",
+      "revId": "1050adad0236f9ba82bf550bd509f5df5e495143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
