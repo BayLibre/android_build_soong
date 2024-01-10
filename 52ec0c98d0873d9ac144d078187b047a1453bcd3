@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed8da118_975e45f0",
+        "filename": "java/base.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 2379,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-10T05:05:41Z",
+      "side": 1,
+      "message": "I will keep it as is for now. There are two reasons:\n1. If a java_sdk_library / java_library is part of multiple bcp_f / sscp_f, the error should be somewhere else to decouple from repackaging feature.\n2. Repackaging feature will be used on other module types other than bcp_f and sscp_f in the future, and for other modules this may not be an error.",
+      "parentUuid": "82eb61e4_1d3b13b4",
+      "range": {
+        "startLine": 2379,
+        "startChar": 4,
+        "endLine": 2379,
+        "endChar": 33
+      },
+      "revId": "52ec0c98d0873d9ac144d078187b047a1453bcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9992a4b_80bda5a6",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46933616_dca2abad",
+        "filename": "java/base.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 2393,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-10T05:05:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9992a4b_80bda5a6",
+      "range": {
+        "startLine": 2393,
+        "startChar": 42,
+        "endLine": 2393,
+        "endChar": 53
+      },
+      "revId": "52ec0c98d0873d9ac144d078187b047a1453bcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f31bdb8_adc02366",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-01-10T01:26:16Z",
       "side": 1,
       "message": "nit: This seems to be unused and can be dropped.",
+      "range": {
+        "startLine": 2407,
+        "startChar": 44,
+        "endLine": 2407,
+        "endChar": 70
+      },
+      "revId": "52ec0c98d0873d9ac144d078187b047a1453bcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b47b1b7c_65459c99",
+        "filename": "java/base.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 2407,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-10T05:05:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f31bdb8_adc02366",
       "range": {
         "startLine": 2407,
         "startChar": 44,
