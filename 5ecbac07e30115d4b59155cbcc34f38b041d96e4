@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62e32efe_8348d69b",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-10T23:20:15Z",
+      "side": 1,
+      "message": "This should be an idempotent action. I have left a comment here.",
+      "parentUuid": "913982ff_c81b3fc1",
+      "revId": "5ecbac07e30115d4b59155cbcc34f38b041d96e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8125374d_82a338b7",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-01-10T19:13:53Z",
       "side": 1,
       "message": "It seems we\u0027re doing the two pass approach because we don\u0027t necessarily know if something will be selected initially.\n\nCould we do it in one pass if for every module (both the source and all the prebuilts), if their source module exists in a key in the PSI map, then we assume that something will be selected later, and thus we can decide to HideFromMake based off of isSelected immediately?",
+      "revId": "5ecbac07e30115d4b59155cbcc34f38b041d96e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f6a770c_7ca0683b",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-10T23:20:15Z",
+      "side": 1,
+      "message": "This sounded very reasonable to me. But as I started implementing it, it revealed an issue in my ToT implementation of `apex_contributions`. The ToT implementation uses a `sourceModuleName -\u003e selectedModuleName` mapping, and this inherently depends on a [naming convention](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/606dc4ff5518654a118d9222ca5e405519723a4c:android/apex_contributions.go;l\u003d105;bpv\u003d1;bpt\u003d0;drc\u003dda739a30a6575ae0345e6694da6ff65b1eceabba). When we have multiple prebuilts, we cannot rely on this naming convention to construct the key of this map.\n\nGetting the key will require us to get a handle to the module. Since `all_apex_contributions` are at the bottom of the graph, it is not possible to do so.\n\nSo I think we do need a two pass approach, but for this different reason. I have also updated the apex_contributions and drop baseModuleName entirely from the provider.",
+      "parentUuid": "8125374d_82a338b7",
       "revId": "5ecbac07e30115d4b59155cbcc34f38b041d96e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
