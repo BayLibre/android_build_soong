@@ -142,6 +142,30 @@
       },
       "revId": "50eb502c1654330d87eb7e9e9b02d68f6bac0671",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d35b179d_4efea6a2",
+        "filename": "cc/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-10T02:12:16Z",
+      "side": 1,
+      "message": "LGTM. Thanks!",
+      "parentUuid": "4e0c3e9c_70601cc5",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 51
+      },
+      "revId": "50eb502c1654330d87eb7e9e9b02d68f6bac0671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
