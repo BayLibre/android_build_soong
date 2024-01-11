@@ -871,7 +871,8 @@ func (library *libraryDecorator) getLibNameHelper(baseModuleName string, inVendo
 func (library *libraryDecorator) getLibName(ctx BaseModuleContext) string {
 	name := library.getLibNameHelper(ctx.baseModuleName(), ctx.inVendor(), ctx.inProduct())
 
-	if ctx.IsVndkExt() {
+	// Replace name with VNDK ext as original lib only when VNDK is enabled
+	if ctx.DeviceConfig().VndkVersion() != "" && ctx.IsVndkExt() {
 		// vndk-ext lib should have the same name with original lib
 		ctx.VisitDirectDepsWithTag(vndkExtDepTag, func(module android.Module) {
 			originalName := module.(*Module).outputFile.Path()
