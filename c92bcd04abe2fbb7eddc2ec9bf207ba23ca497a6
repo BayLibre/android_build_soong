@@ -22,6 +22,30 @@
       },
       "revId": "c92bcd04abe2fbb7eddc2ec9bf207ba23ca497a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15515c72_a9e085a2",
+        "filename": "android/apex_contributions.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-11T18:46:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0bb38290_58e9819c",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 33
+      },
+      "revId": "c92bcd04abe2fbb7eddc2ec9bf207ba23ca497a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
