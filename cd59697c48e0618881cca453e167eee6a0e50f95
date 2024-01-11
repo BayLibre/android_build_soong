@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c75f0824_8dacef0f",
+        "filename": "android/defaults.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-01-11T00:34:20Z",
+      "side": 1,
+      "message": "If I don\u0027t comment it out, I get these error messages after adding a GenerateAndroidBuildActions to ModuleBase: \n\n      /usr/local/google/home/rbraunstein/aosp-main-with-phones/build/soong/android/filegroup.go:118:21: cannot use module (variable of type *FileGroupDefaults) as DefaultsModule value in argument to InitDefaultsModule: *FileGroupDefaults does not implement DefaultsModule (ambiguous selector *FileGroupDefaults.GenerateAndroidBuildActions)\n\n     /usr/local/google/home/rbraunstein/aosp-main-with-phones/build/soong/android/filegroup.go:120:9: cannot use module (variable of type *FileGroupDefaults) as Module value in return statement: *FileGroupDefaults does not implement Module (ambiguous selector *FileGroupDefaults.GenerateAndroidBuildActions)\n     \nCommenting the GenerateAndroidBuildAction in filegroup resolved the problem, but I\u0027m not sure it now InitDefaultsModule is still doing the right thing or calling methods on the wrong base class (all tests still pass and build still work ...)\n\nI\u0027d love to hear alternatives or know the right golang way to help.\nI think that this:\n```\n type DefaultsModule interface {\n\tModule\n\tDefaults\n}\n```\nis creating a new interface by composing those two interfaces.\nThis is ensuring that DefaultModuleBase (which declares GenerateAndroidBuildAction) fulfills the Defaults interface:\n`   var _ Defaults \u003d (*DefaultsModuleBase)(nil)`\n\nSo now our composed interface declases the same method twice (GeneratedAndroidBuildActions).  I removed the one from the implementation that doesn\u0027t do anything.  I\u0027m not sure why it was there to begin with.\n\nAnd I made a change in filegroup to call ModuleBase.GenerateAndroidBuildActions\nhttps://android-review.git.corp.google.com/c/platform/build/soong/+/2883106/10/android/filegroup.go#96",
+      "parentUuid": "71494b07_1e83dacf",
+      "revId": "cd59697c48e0618881cca453e167eee6a0e50f95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1979781_f3e2ba13",
         "filename": "android/module.go",
         "patchSetId": 10
@@ -31,6 +49,24 @@
       "writtenOn": "2024-01-09T23:50:41Z",
       "side": 1,
       "message": "similar to GenerateAndroidBuildActions, but not quite the same:\n\nDepsMutator is introduced in the android package, not in blueprint. So I think since this really is for all modules, this should go on ModuleBase directly.  In mutator.go, you\u0027ll want this:\n\n```\n  func depsMutator(ctx BottomUpMutatorContext) {\n  \tif m :\u003d ctx.Module(); m.Enabled() {\n+ \t\tm.base().baseDepsMutator()\n  \t\tm.DepsMutator(ctx)\n\t}\n}\n```",
+      "revId": "cd59697c48e0618881cca453e167eee6a0e50f95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46040fd7_d65fc667",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-01-11T00:34:20Z",
+      "side": 1,
+      "message": "Done renamed this to baseDepsMutator and added explicit call.\nCleaned up to just call AddDependency() since my code wasn\u0027t preventing adding duplicates in the face of variants.\n\nBut I still need to leave this or things don\u0027t compile.\nSo I\u0027m not sure the change helps.\n```\nfunc (m *ModuleBase) DepsMutator(BottomUpMutatorContext)          {}\n```",
+      "parentUuid": "a1979781_f3e2ba13",
       "revId": "cd59697c48e0618881cca453e167eee6a0e50f95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3118e86e_1de1eb94",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-01-11T00:34:20Z",
+      "side": 1,
+      "message": "I was _only_ having ModuleBase.GenerateAndroidBuildActions calls this code.  All the \"subclasses\" were just calling their super for GenerateAndroidBuildActions.\nI moved it out to the property as well to make the code a little cleaner, but I\u0027m fine putting it in Base GenerateAndroidBuildActions directly.\n\ni.e. it looked like this:\n```\nfunc (m *ModuleBase) GenerateAndroidBuildActions(ctx ModuleContext) {\n\tm.teamProperties.GenerateAndroidBuildActions(ctx)\n}\n```\nand now it looks like:\n```\nfunc (m *ModuleBase) GenerateAndroidBuildActions(ctx ModuleContext) {\n\tm.generateActionsForTeamProto(ctx)\n}\n```\nbut the callers are exactly the same.\n\n\nFYI, I could be wrong, but I think I still do have to change every module to call super, like here in java: https://android-review.git.corp.google.com/c/platform/build/soong/+/2883106/10/java/java.go#717\n\nI tried it without making these change and it didn\u0027t work.  I had assumed I wouldn\u0027t need to and I spent a lot of time figuring out what the problem was.\n\ni.e  java or cc already GenerateAndroidBuildActions receivers.  There is no existing explicit calls to \"superclass\" one because it doesn\u0027t exist, doesn\u0027t do anything.  So in addition to adding it the superclass, I had to add the explicit calls.",
+      "parentUuid": "bd2ad1f4_75078ff1",
+      "revId": "cd59697c48e0618881cca453e167eee6a0e50f95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f9edf6c_43a10d19",
         "filename": "android/module.go",
         "patchSetId": 10
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00e76abd_d6b44983",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-01-11T00:34:20Z",
+      "side": 1,
+      "message": "dealings with variants contributing multiple times.",
+      "parentUuid": "6f9edf6c_43a10d19",
+      "revId": "cd59697c48e0618881cca453e167eee6a0e50f95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4da5644_ca3dd081",
         "filename": "android/module.go",
         "patchSetId": 10
@@ -82,6 +154,24 @@
       "writtenOn": "2024-01-09T23:50:41Z",
       "side": 1,
       "message": "Can you put a comment to this effect: We\u0027re going to have to find a way in soong to make it so this doesn\u0027t get done on every analysis run. It\u0027s a substantial amount of time for files that most builds, especially local builds, aren\u0027t going to need.",
+      "revId": "cd59697c48e0618881cca453e167eee6a0e50f95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d18b45fc_75ee77e9",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-01-11T00:34:20Z",
+      "side": 1,
+      "message": "Done, it still takes me a while to wrap my head around the fact that soong doesn\u0027t generate any output files and we are just generating makefiles/ninja files.\nOtherwise, I would say we don\u0027t need to write any files here.  Instead when the all_teams rule is called, we could visit all modules then and write the output file.  Also we could do this by writing all the text to the .ninja file (like module_info.json).",
+      "parentUuid": "b4da5644_ca3dd081",
       "revId": "cd59697c48e0618881cca453e167eee6a0e50f95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

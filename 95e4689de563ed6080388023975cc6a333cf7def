@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a3d517_79a08f6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-01-11T00:34:20Z",
+      "side": 1,
+      "message": "Thanks for the preview.\nI\u0027ve responded to the comments inline and made all the suggested changes.\nThere is still an open question about Default interface and removing GenerateAndroidBuildActions there.\nThere is another open question w.r.t performance impacts that I added your suggested comment about.  I can add a bug and reference it at the comment if you like.\n\nPlease let me know if you want me to break this up more for a code review, otherwise if you agree if the \u0027gist of the current implementation, I\u0027ll add some more tests.",
+      "revId": "95e4689de563ed6080388023975cc6a333cf7def",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
