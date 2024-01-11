@@ -212,6 +212,14 @@ var (
 			CommandDeps: []string{"${config.MergeZipsCmd}"},
 		},
 		"jarArgs")
+	combineJarRsp = pctx.AndroidStaticRule("combineJarRsp",
+		blueprint.RuleParams{
+			Command:        `${config.MergeZipsCmd} --ignore-duplicates -j $jarArgs $out @$out.rsp`,
+			CommandDeps:    []string{"${config.MergeZipsCmd}"},
+			Rspfile:        "$out.rsp",
+			RspfileContent: "$in",
+		},
+		"jarArgs")
 
 	jarjar = pctx.AndroidStaticRule("jarjar",
 		blueprint.RuleParams{
@@ -534,14 +542,14 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 
 	deps = append(deps, srcJars...)
 
-	classpath := flags.classpath
+	javacClasspath := flags.classpath
 
 	var bootClasspath string
 	if flags.javaVersion.usesJavaModules() {
 		var systemModuleDeps android.Paths
 		bootClasspath, systemModuleDeps = flags.systemModules.FormJavaSystemModulesPath(ctx.Device())
 		deps = append(deps, systemModuleDeps...)
-		classpath = append(flags.java9Classpath, classpath...)
+		javacClasspath = append(flags.java9Classpath, javacClasspath...)
 	} else {
 		deps = append(deps, flags.bootClasspath...)
 		if len(flags.bootClasspath) == 0 && ctx.Device() {
@@ -553,7 +561,21 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 		}
 	}
 
-	deps = append(deps, classpath...)
+	classpathArg := javacClasspath.FormJavaClassPath("-classpath")
+
+	// Keep the command line under the MAX_ARG_STRLEN limit by combining the classpath into a single jar if it
+	// is too long.
+	// TODO(b/323030375): keep the classpath separate and put it in a .rsp file instead when rewrapper supports it.
+	const classpathLimit = 64 * 1024
+	if len(classpathArg) > classpathLimit {
+		mergedClasspathFile := outputFile.ReplaceExtension(ctx, "classpath.jar")
+		TransformJarsToJar(ctx, mergedClasspathFile, "combine classpath", javacClasspath.Paths(),
+			android.OptionalPath{}, false, nil, nil)
+		javacClasspath = classpath{mergedClasspathFile}
+		classpathArg = javacClasspath.FormJavaClassPath("-classpath")
+	}
+
+	deps = append(deps, javacClasspath...)
 	deps = append(deps, flags.processorPath...)
 
 	processor := "-proc:none"
@@ -584,7 +606,7 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 		Args: map[string]string{
 			"javacFlags":    flags.javacFlags,
 			"bootClasspath": bootClasspath,
-			"classpath":     classpath.FormJavaClassPath("-classpath"),
+			"classpath":     classpathArg,
 			"processorpath": flags.processorPath.FormJavaClassPath("-processorpath"),
 			"processor":     processor,
 			"srcJars":       strings.Join(srcJars.Strings(), " "),
@@ -643,8 +665,17 @@ func TransformJarsToJar(ctx android.ModuleContext, outputFile android.WritablePa
 		jarArgs = append(jarArgs, "-D")
 	}
 
+	rule := combineJar
+	jarsString := strings.Join(jars.Strings(), " ")
+	// Keep the command line under the MAX_ARG_STRLEN limit by putting the list of jars into an rsp file
+	// if it is too long.
+	const jarsLengthLimit = 64 * 1024
+	if len(jarsString) > jarsLengthLimit {
+		rule = combineJarRsp
+	}
+
 	ctx.Build(pctx, android.BuildParams{
-		Rule:        combineJar,
+		Rule:        rule,
 		Description: desc,
 		Output:      outputFile,
 		Inputs:      jars,
