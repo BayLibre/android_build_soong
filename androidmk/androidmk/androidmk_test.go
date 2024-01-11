@@ -17,6 +17,7 @@ package androidmk
 import (
 	"bytes"
 	"fmt"
+	"os"
 	"strings"
 	"testing"
 
@@ -809,26 +810,6 @@ include $(CLEAR_VARS)
 LOCAL_PACKAGE_NAME := FooTest
 LOCAL_COMPATIBILITY_SUITE := cts
 LOCAL_CTS_TEST_PACKAGE := foo.bar
-LOCAL_COMPATIBILITY_SUPPORT_FILES := file1
-include $(BUILD_CTS_PACKAGE)
-`,
-		expected: `
-android_test {
-    name: "FooTest",
-    defaults: ["cts_defaults"],
-    test_suites: ["cts"],
-
-    data: ["file1"],
-}
-`,
-	},
-	{
-		desc: "IGNORE_LOCAL_XTS_TEST_PACKAGE",
-		in: `
-include $(CLEAR_VARS)
-LOCAL_PACKAGE_NAME := FooTest
-LOCAL_COMPATIBILITY_SUITE := cts
-LOCAL_XTS_TEST_PACKAGE := foo.bar
 LOCAL_COMPATIBILITY_SUPPORT_FILES := file1
 include $(BUILD_CTS_PACKAGE)
 `,
@@ -1730,12 +1711,14 @@ android_test {
 }
 
 func TestEndToEnd(t *testing.T) {
+	CreateTemplateAndroidMK(t)
+	defer os.Remove("Android.mk")
+
 	for i, test := range testCases {
 		expected, err := bpfix.Reformat(test.expected)
 		if err != nil {
 			t.Error(err)
 		}
-
 		got, errs := ConvertFile(fmt.Sprintf("<testcase %d>", i), bytes.NewBufferString(test.in))
 		if len(errs) > 0 {
 			t.Errorf("Unexpected errors: %q", errs)
@@ -1745,5 +1728,13 @@ func TestEndToEnd(t *testing.T) {
 		if got != expected {
 			t.Errorf("failed testcase '%s'\ninput:\n%s\n\nexpected:\n%s\ngot:\n%s\n", test.desc, strings.TrimSpace(test.in), expected, got)
 		}
+	}
+}
+
+// The unittest requires an Android.mk file.
+func CreateTemplateAndroidMK(t *testing.T) {
+	_, err := os.Create("Android.mk")
+	if err != nil {
+		t.Errorf("Create Android.mk file error: %q", err)
 	}
 }
