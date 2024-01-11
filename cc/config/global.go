@@ -385,6 +385,7 @@ func ExportStringList(name string, value []string) {
 func init() {
 	if runtime.GOOS == "linux" {
 		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
+		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=$$OUT_DIR=out")
 	}
 
 	exportedVars.ExportStringListStaticVariable("CommonGlobalConlyflags", commonGlobalConlyflags)
