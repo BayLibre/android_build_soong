@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3314b333_041696f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-11T00:14:10Z",
+      "side": 1,
+      "message": "Nvm, we still need this hack till we actually add the apexes to the contents of `apex_contributions` metadata modules in `next`",
+      "revId": "69f481829f995cf254955e6c160e6ed92f4349ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
