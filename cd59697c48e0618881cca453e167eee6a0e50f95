@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0030bef7_02f5e221",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-01-11T03:25:50Z",
+      "side": 1,
+      "message": "Ack, thanks, trying to move it commonProperties now.\nI see now what you are saying about just having the base deal with it directly and remove the need for the subclasses to call super.",
+      "parentUuid": "29496ea7_718cd97d",
+      "revId": "cd59697c48e0618881cca453e167eee6a0e50f95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f9edf6c_43a10d19",
         "filename": "android/module.go",
         "patchSetId": 10
