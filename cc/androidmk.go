@@ -115,6 +115,10 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 							entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", true)
 						}
 					}
+				} else if c.InVendor() {
+					entries.SetBool("LOCAL_VENDOR_MODULE", true)
+				} else if c.InProduct() {
+					entries.SetBool("LOCAL_PRODUCT_MODULE", true)
 				}
 				if c.Properties.IsSdkVariant && c.Properties.SdkAndPlatformVariantVisibleToMake {
 					// Make the SDK variant uninstallable so that there are not two rules to install
@@ -234,7 +238,7 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 			if !library.buildStubs() && library.unstrippedOutputFile != nil {
 				entries.SetString("LOCAL_SOONG_UNSTRIPPED_BINARY", library.unstrippedOutputFile.String())
 			}
-			if len(library.Properties.Overrides) > 0 {
+			if !ctx.Host() && len(library.Properties.Overrides) > 0 {
 				entries.SetString("LOCAL_OVERRIDES_MODULES", strings.Join(makeOverrideModuleNames(ctx, library.Properties.Overrides), " "))
 			}
 			if len(library.postInstallCmds) > 0 {
