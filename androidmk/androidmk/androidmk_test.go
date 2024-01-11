@@ -17,6 +17,7 @@ package androidmk
 import (
 	"bytes"
 	"fmt"
+	"os"
 	"strings"
 	"testing"
 
@@ -1730,6 +1731,9 @@ android_test {
 }
 
 func TestEndToEnd(t *testing.T) {
+	CreateTemplateAndroidMK(t)
+	defer os.Remove("Android.mk")
+
 	for i, test := range testCases {
 		expected, err := bpfix.Reformat(test.expected)
 		if err != nil {
@@ -1745,5 +1749,13 @@ func TestEndToEnd(t *testing.T) {
 		if got != expected {
 			t.Errorf("failed testcase '%s'\ninput:\n%s\n\nexpected:\n%s\ngot:\n%s\n", test.desc, strings.TrimSpace(test.in), expected, got)
 		}
+	}
+}
+
+// The unittest requires an Android.mk file.
+func CreateTemplateAndroidMK(t *testing.T) {
+	_, err := os.Create("Android.mk")
+	if err != nil {
+		t.Errorf("Create Android.mk file error: %q", err)
 	}
 }
