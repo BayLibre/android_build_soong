@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ef05175_c1fec0a0",
+        "filename": "cc/coverage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-11T23:58:13Z",
+      "side": 1,
+      "message": "Run this through `gofmt`, which will replace all the indents with tabs.",
+      "revId": "29f5420348e72b4b179a03bff6168942d3af5c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820ae814_75e7ffa6",
+        "filename": "cc/coverage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-11T23:58:13Z",
+      "side": 1,
+      "message": "Can you use longer names here?\n```suggestion\n        clangCoverageHostLdFlags \u003d []string{\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "29f5420348e72b4b179a03bff6168942d3af5c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14a83a6a_732caefe",
+        "filename": "cc/coverage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-11T23:58:13Z",
+      "side": 1,
+      "message": "```suggestion\n        clangContinuousCoverageCFlags \u003d []string{\n```",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "29f5420348e72b4b179a03bff6168942d3af5c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c787095_d0d4e307",
+        "filename": "cc/coverage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-11T23:58:13Z",
+      "side": 1,
+      "message": "```suggestion\n        clangCoverageCFlags \u003d []string{\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "29f5420348e72b4b179a03bff6168942d3af5c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c0f80e_1e743277",
+        "filename": "cc/coverage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-11T23:58:13Z",
+      "side": 1,
+      "message": "```suggestion\n        clangCoverageCommonFlags \u003d []string{\n```",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "29f5420348e72b4b179a03bff6168942d3af5c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d2ecc8_dbf5c64f",
+        "filename": "cc/coverage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-11T23:58:13Z",
+      "side": 1,
+      "message": "```suggestion\n        clangCoverageHWASanFlags \u003d []string{\n```",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 24
+      },
+      "revId": "29f5420348e72b4b179a03bff6168942d3af5c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2873d709_94f01eea",
+        "filename": "cc/coverage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-11T23:58:13Z",
+      "side": 1,
+      "message": "These are already lists of flags, you don\u0027t need to join the flags in to a single string here.  You will need to split it out to a separate append for this case that is already appending `profileInstrFlag`:\n```\nflags.Local.CommonFlags \u003d append(flags.Local.CommonFlags, profileInstrFlag)\nflags.Local.CommonFlags \u003d append(flags.Local.CommonFlags, clangCovCommflags...)\n```",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 17
+      },
+      "revId": "29f5420348e72b4b179a03bff6168942d3af5c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
