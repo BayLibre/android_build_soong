@@ -563,16 +563,14 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 
 	classpathArg := javacClasspath.FormJavaClassPath("-classpath")
 
-	// Keep the command line under the MAX_ARG_STRLEN limit by combining the classpath into a single jar if it
-	// is too long.
-	// TODO(b/323030375): keep the classpath separate and put it in a .rsp file instead when rewrapper supports it.
+	// Keep the command line under the MAX_ARG_STRLEN limit by putting the classpath argument into an rsp file
+	// if it is too long.
 	const classpathLimit = 64 * 1024
 	if len(classpathArg) > classpathLimit {
-		mergedClasspathFile := outputFile.ReplaceExtension(ctx, "classpath.jar")
-		TransformJarsToJar(ctx, mergedClasspathFile, "combine classpath", javacClasspath.Paths(),
-			android.OptionalPath{}, false, nil, nil)
-		javacClasspath = classpath{mergedClasspathFile}
-		classpathArg = javacClasspath.FormJavaClassPath("-classpath")
+		classpathRspFile := outputFile.ReplaceExtension(ctx, "classpath")
+		android.WriteFileRule(ctx, classpathRspFile, classpathArg)
+		deps = append(deps, classpathRspFile)
+		classpathArg = "@" + classpathRspFile.String()
 	}
 
 	deps = append(deps, javacClasspath...)
