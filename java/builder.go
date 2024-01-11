@@ -561,6 +561,15 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 		processor = "-processor " + strings.Join(flags.processors, ",")
 	}
 
+	classpathArg := classpath.FormJavaClassPath("-classpath")
+	const classpathLimit = 16 * 1024 // Arbitrary limit, if the classpath is longer write it to a .rsp file
+	if len(classpathArg) > classpathLimit {
+		classpathRspFile := outputFile.ReplaceExtension(ctx, "classpath")
+		android.WriteFileRule(ctx, classpathRspFile, classpathArg)
+		deps = append(deps, classpathRspFile)
+		classpathArg = "@" + classpathRspFile.String()
+	}
+
 	srcJarDir := "srcjars"
 	outDir := "classes"
 	annoDir := "anno"
@@ -584,7 +593,7 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 		Args: map[string]string{
 			"javacFlags":    flags.javacFlags,
 			"bootClasspath": bootClasspath,
-			"classpath":     classpath.FormJavaClassPath("-classpath"),
+			"classpath":     classpathArg,
 			"processorpath": flags.processorPath.FormJavaClassPath("-processorpath"),
 			"processor":     processor,
 			"srcJars":       strings.Join(srcJars.Strings(), " "),
