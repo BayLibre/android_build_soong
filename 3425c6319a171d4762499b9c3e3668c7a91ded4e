@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5750fc3_97df9189",
+        "filename": "docs/map_files.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2024-01-11T00:03:15Z",
+      "side": 1,
+      "message": "Add \"This does not alter the behavior, but indicates in which release the API was first deprecated so it can be removed safely in a future release\" or something like that?",
+      "revId": "3425c6319a171d4762499b9c3e3668c7a91ded4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
