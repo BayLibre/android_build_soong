@@ -115,6 +115,10 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 							entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", true)
 						}
 					}
+				} else if c.InVendor() {
+					entries.SetBool("LOCAL_VENDOR_MODULE", true)
+				} else if c.InProduct() {
+					entries.SetBool("LOCAL_PRODUCT_MODULE", true)
 				}
 				if c.Properties.IsSdkVariant && c.Properties.SdkAndPlatformVariantVisibleToMake {
 					// Make the SDK variant uninstallable so that there are not two rules to install
