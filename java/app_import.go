@@ -31,7 +31,6 @@ import (
 
 func init() {
 	RegisterAppImportBuildComponents(android.InitRegistrationContext)
-
 	initAndroidAppImportVariantGroupTypes()
 }
 
@@ -62,6 +61,9 @@ var (
 func RegisterAppImportBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("android_app_import", AndroidAppImportFactory)
 	ctx.RegisterModuleType("android_test_import", AndroidTestImportFactory)
+	android.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("disableAppImportsWithoutApk", disableAppImportsWithoutApkMutator).Parallel()
+	})
 }
 
 type AndroidAppImport struct {
@@ -70,9 +72,8 @@ type AndroidAppImport struct {
 	android.ApexModuleBase
 	prebuilt android.Prebuilt
 
-	properties   AndroidAppImportProperties
-	dpiVariants  interface{}
-	archVariants interface{}
+	properties  AndroidAppImportProperties
+	dpiVariants interface{}
 
 	outputFile  android.Path
 	certificate Certificate
@@ -93,7 +94,7 @@ type AndroidAppImport struct {
 
 type AndroidAppImportProperties struct {
 	// A prebuilt apk to import
-	Apk *string `android:"path"`
+	Apk *string `android:"path,arch_variant"`
 
 	// The name of a certificate in the default certificate directory or an android_app_certificate
 	// module name in the form ":module". Should be empty if presigned or default_dev_cert is set.
@@ -143,7 +144,7 @@ type AndroidAppImportProperties struct {
 
 	// Whether or not to skip checking the preprocessed apk for proper alignment and uncompressed
 	// JNI libs and dex files. Default is false
-	Skip_preprocessed_apk_checks *bool
+	Skip_preprocessed_apk_checks *bool `android:"arch_variant"`
 }
 
 func (a *AndroidAppImport) IsInstallable() bool {
@@ -164,16 +165,22 @@ func (a *AndroidAppImport) processVariants(ctx android.LoadHookContext) {
 	if config.ProductAAPTPreferredConfig() != "" {
 		MergePropertiesFromVariant(ctx, &a.properties, dpiProps, config.ProductAAPTPreferredConfig())
 	}
+}
 
-	archProps := reflect.ValueOf(a.archVariants).Elem().FieldByName("Arch")
-	archType := ctx.Config().AndroidFirstDeviceTarget.Arch.ArchType
-	MergePropertiesFromVariant(ctx, &a.properties, archProps, archType.Name)
-
-	if String(a.properties.Apk) == "" {
-		// Disable this module since the apk property is still empty after processing all matching
-		// variants. This likely means there is no matching variant, and the default variant doesn't
-		// have an apk property value either.
-		a.Disable()
+// disableAppImportsWithoutApkMutator disables android_app/test_import modules that don't have
+// the `apk` property set. It's done as a pre-deps mutator to ensure it happens after
+// soong config variables and the arch/os/image mutators, all of which could set the apk
+// property under certain conditions. It would likely be better / less confusing for this
+// functionality to not exist, and just error out if the apk property is not set.
+func disableAppImportsWithoutApkMutator(ctx android.BottomUpMutatorContext) {
+	if a, ok := ctx.Module().(*AndroidAppImport); ok {
+		if String(a.properties.Apk) == "" {
+			a.Disable()
+		}
+	} else if a, ok := ctx.Module().(*AndroidTestImport); ok {
+		if String(a.properties.Apk) == "" {
+			a.Disable()
+		}
 	}
 }
 
@@ -447,26 +454,16 @@ func (a *AndroidAppImport) PrivAppAllowlist() android.OptionalPath {
 }
 
 var dpiVariantGroupType reflect.Type
-var archVariantGroupType reflect.Type
 var supportedDpis = []string{"ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"}
 
 func initAndroidAppImportVariantGroupTypes() {
 	dpiVariantGroupType = createVariantGroupType(supportedDpis, "Dpi_variants")
-
-	archNames := make([]string, len(android.ArchTypeList()))
-	for i, archType := range android.ArchTypeList() {
-		archNames[i] = archType.Name
-	}
-	archVariantGroupType = createVariantGroupType(archNames, "Arch")
 }
 
 // Populates all variant struct properties at creation time.
 func (a *AndroidAppImport) populateAllVariantStructs() {
 	a.dpiVariants = reflect.New(dpiVariantGroupType).Interface()
 	a.AddProperties(a.dpiVariants)
-
-	a.archVariants = reflect.New(archVariantGroupType).Interface()
-	a.AddProperties(a.archVariants)
 }
 
 func (a *AndroidAppImport) Privileged() bool {
