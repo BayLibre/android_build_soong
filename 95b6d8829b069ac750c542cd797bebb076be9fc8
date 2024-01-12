@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fbbd0d6_90579fce",
+        "filename": "apex/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-01-12T08:29:51Z",
+      "side": 1,
+      "message": "`com.android.vndk.current` can be removed once VNDK is deprecated from next build. This is best way to prepare before we remove it.",
+      "parentUuid": "7ccf6cd5_dbfec796",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 24
+      },
+      "revId": "95b6d8829b069ac750c542cd797bebb076be9fc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f59ca3e_1b01d21b",
         "filename": "apex/vndk.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-12T05:51:09Z",
       "side": 1,
       "message": "I think, this is always true if `vndkVersion !\u003d \"\"`.",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 54
+      },
+      "revId": "95b6d8829b069ac750c542cd797bebb076be9fc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9612220_17c47180",
+        "filename": "apex/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-01-12T08:29:51Z",
+      "side": 1,
+      "message": "Not true for non-current VNDK APEXes.",
+      "parentUuid": "8f59ca3e_1b01d21b",
       "range": {
         "startLine": 85,
         "startChar": 4,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "005af684_852268c5",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-01-12T08:29:51Z",
+      "side": 1,
+      "message": "Many vendor_available / product_available modules failed to link from kati.",
+      "parentUuid": "721bab33_afeab33a",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 50
+      },
+      "revId": "95b6d8829b069ac750c542cd797bebb076be9fc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1798bcbc_13fef84b",
         "filename": "cc/library.go",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2024-01-12T05:51:09Z",
       "side": 1,
       "message": "I don\u0027t think so.\nIf the file name is not changed, other files cannot find this ext file.\nThis is to override the exiting VNDK file from the same-named file in `vendor/lib/vndk`.\nWith the VNDK deprecation, the vndk library can be updated directly without overriding. But still vndk-ext itself is defined to override the original file.",
+      "range": {
+        "startLine": 874,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 45
+      },
+      "revId": "95b6d8829b069ac750c542cd797bebb076be9fc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a942db8_b81cf0b3",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-01-12T08:29:51Z",
+      "side": 1,
+      "message": "I also agonized a lot for this, but this won\u0027t be available once we remove all `vndk` properties from Android.bps anyway. I think the best way we can do is share a guideline to partners how to override former-vndk modules with vndk-ext. Probably we should try with `overrides: []` property, but need to test if this works as expected.",
+      "parentUuid": "1798bcbc_13fef84b",
       "range": {
         "startLine": 874,
         "startChar": 1,
