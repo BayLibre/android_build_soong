@@ -411,6 +411,27 @@ func TestAndroidAppImport_ArchVariants(t *testing.T) {
 			installPath:  "/system/app/foo/foo.apk",
 		},
 		{
+			name: "matching arch without default",
+			bp: `
+				android_app_import {
+					name: "foo",
+					apk: "prebuilts/apk/app.apk",
+					arch: {
+						arm64: {
+							apk: "prebuilts/apk/app_arm64.apk",
+						},
+					},
+					presigned: true,
+					dex_preopt: {
+						enabled: true,
+					},
+				}
+			`,
+			expected:     "verify_uses_libraries/apk/app_arm64.apk",
+			artifactPath: "prebuilts/apk/app_arm64.apk",
+			installPath:  "/system/app/foo/foo.apk",
+		},
+		{
 			name: "no matching arch",
 			bp: `
 				android_app_import {
