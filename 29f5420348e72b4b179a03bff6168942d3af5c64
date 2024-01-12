@@ -316,6 +316,30 @@
       },
       "revId": "29f5420348e72b4b179a03bff6168942d3af5c64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5174c378_944c92d0",
+        "filename": "cc/coverage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3160636
+      },
+      "writtenOn": "2024-01-12T19:20:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2d55505_c213b360",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 17
+      },
+      "revId": "29f5420348e72b4b179a03bff6168942d3af5c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
