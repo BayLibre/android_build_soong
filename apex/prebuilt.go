@@ -51,6 +51,7 @@ type prebuilt interface {
 
 type prebuiltCommon struct {
 	android.ModuleBase
+	android.DefaultableModuleBase
 	java.Dexpreopter
 	prebuilt android.Prebuilt
 
@@ -129,6 +130,7 @@ func (p *prebuiltCommon) initPrebuiltCommon(module android.Module, properties *P
 	p.prebuiltCommonProperties = properties
 	android.InitSingleSourcePrebuiltModule(module.(android.PrebuiltInterface), properties, "Selected_apex")
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	android.InitDefaultableModule(module.(android.DefaultableModule))
 }
 
 func (p *prebuiltCommon) ApexVariationName() string {

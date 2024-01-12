@@ -2543,6 +2543,8 @@ func DefaultsFactory() android.Module {
 		&apexTargetBundleProperties{},
 		&apexArchBundleProperties{},
 		&overridableProperties{},
+		&ApexFileProperties{},
+		&PrebuiltProperties{},
 	)
 
 	android.InitDefaultsModule(module)

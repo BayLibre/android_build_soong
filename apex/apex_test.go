@@ -681,6 +681,22 @@ func TestDefaults(t *testing.T) {
 			srcs: ["netdTest.c"],
 			sub_dir: "netd",
 		}
+		apex_defaults {
+			name: "my_prebuilt_apex_defaults",
+			filename: "prebuilt.apex",
+		}
+		prebuilt_apex {
+			name: "myapex",
+			defaults: ["my_prebuilt_apex_defaults"],
+			arch: {
+				arm64: {
+					src: "myapex-arm64.apex",
+				},
+				arm: {
+					src: "myapex-arm.apex",
+				},
+			},
+		}
 
 	`)
 	ensureExactContents(t, ctx, "myapex", "android_common_myapex", []string{
@@ -693,6 +709,9 @@ func TestDefaults(t *testing.T) {
 		"etc/bpf/bpf2.o",
 		"etc/bpf/netd/netdTest.o",
 	})
+	// check prebuilt apex modules are correctly inheriting values from a defaults modules
+	p, _ := ctx.ModuleForTests("prebuilt_myapex", "android_common_myapex").Module().(*Prebuilt)
+	android.AssertStringEquals(t, "Filename inherited from defaults", "prebuilt.apex", p.InstallFilename())
 }
 
 func TestApexManifest(t *testing.T) {
