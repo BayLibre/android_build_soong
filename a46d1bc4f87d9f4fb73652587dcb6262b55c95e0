@@ -16,6 +16,24 @@
       "message": "Can you add a test to `Test_PropertiesToApply` for this?",
       "revId": "a46d1bc4f87d9f4fb73652587dcb6262b55c95e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68abceef_d40b0387",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-12T22:29:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48d169df_51d2d041",
+      "revId": "a46d1bc4f87d9f4fb73652587dcb6262b55c95e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
