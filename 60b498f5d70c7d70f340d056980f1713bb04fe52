@@ -33,6 +33,24 @@
       "message": "I still want to find a way to generate one intermediate proto (per module, not per module variant)\n\nRight now I have 3)\nout/soong/.intermediates/platform_testing/tests/example/native/hello_world_test/linux_glibc_x86_64/intermediateOwnerData.textproto\nout/soong/.intermediates/platform_testing/tests/example/native/hello_world_test/linux_glibc_x86/intermediateOwnerData.textproto out/soong/.intermediates/platform_testing/tests/example/native/hello_world_test/android_arm64_armv8-2a_cortex-a55/intermediateOwnerData.textproto",
       "revId": "60b498f5d70c7d70f340d056980f1713bb04fe52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9ad5313_f632bae8",
+        "filename": "android/module.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-01-14T16:23:40Z",
+      "side": 1,
+      "message": "For module ownership, you probably do only want one. For the coverage configuration, I think you want all of the variants, because they\u0027re different, and can have different source files and dependencies. For code coverage configuration, variant definitely matters.",
+      "parentUuid": "af83bee5_b9cc8fbf",
+      "revId": "60b498f5d70c7d70f340d056980f1713bb04fe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
