@@ -379,6 +379,30 @@
       },
       "revId": "95b6d8829b069ac750c542cd797bebb076be9fc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2772f3b8_21a6ffd2",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-15T06:41:23Z",
+      "side": 1,
+      "message": "I prefer reporting correct error message on using vndk-ext with VNDK deprecation as there\u0027s no vndk libs to override.\nLess preferred option is to install the vndk-ext in `/vendor/lib/vndk` as before and search this path before searching `/vendor/lib` from the vendor namespace to override the existing pre-vndk lib in `/vendor/lib`.\n\nCurrent change is just hiding the errors from the build system.",
+      "parentUuid": "0f1bf974_4bb342c4",
+      "range": {
+        "startLine": 874,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 45
+      },
+      "revId": "95b6d8829b069ac750c542cd797bebb076be9fc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
