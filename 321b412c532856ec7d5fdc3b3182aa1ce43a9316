@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b5b807f_ba00d53d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-01-15T21:19:04Z",
+      "side": 1,
+      "message": "Thanks, I think this CLD and team_collector (on the same topic) are ready now and then figure out \"package\" next.",
+      "revId": "321b412c532856ec7d5fdc3b3182aa1ce43a9316",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -51,6 +51,24 @@
       "parentUuid": "af83bee5_b9cc8fbf",
       "revId": "60b498f5d70c7d70f340d056980f1713bb04fe52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b9df243_ea90b88d",
+        "filename": "android/module.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-01-15T21:19:04Z",
+      "side": 1,
+      "message": "Okay, then it is probably good as it is and we can add \"variant\" to the proto when needed.",
+      "parentUuid": "a9ad5313_f632bae8",
+      "revId": "60b498f5d70c7d70f340d056980f1713bb04fe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
