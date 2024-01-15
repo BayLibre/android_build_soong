@@ -331,6 +331,30 @@
       },
       "revId": "95b6d8829b069ac750c542cd797bebb076be9fc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5d5d0eb_7d5294f7",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-15T04:57:29Z",
+      "side": 1,
+      "message": "This is the same with disabling the VNDK-ext libs because they may not be loaded after the VNDK deprecation. Any modules that has dependency on the VNDK-ext will fail on runtime without any build time detection.\n\nIf it is a temporary change until VNDK deprecation before 24Q2, it must include a TODO and must be fixed soon.",
+      "parentUuid": "68af8eba_ee9afe62",
+      "range": {
+        "startLine": 874,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 45
+      },
+      "revId": "95b6d8829b069ac750c542cd797bebb076be9fc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
