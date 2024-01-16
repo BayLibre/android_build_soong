@@ -234,3 +234,130 @@ func TestForceReadOnlyMode(t *testing.T) {
 func TestUnsupportedMode(t *testing.T) {
 	testCodegenModeWithError(t, "mode: `unsupported`,", "mode: \"unsupported\" is not a supported mode")
 }
+
+func TestRepackageProviderAndJarjarPrefix(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		PrepareForTestWithAconfigBuildComponents,
+		java.PrepareForTestWithJavaDefaultModules).
+		ExtendWithErrorHandler(android.FixtureExpectsNoErrors).
+		RunTestWithBp(t, fmt.Sprintf(`
+			java_library {
+				name: "mylibrary0",
+				static_libs: ["mylibrary1", "mylibrary2", "mylibrary4"],
+			}
+
+			java_library {
+				name: "mylibrary1",
+				static_libs: ["my_java_aconfig_library_1"],
+				sdk_version: "core_platform",
+			}
+
+			java_library {
+				name: "mylibrary2",
+				libs: ["mylibrary3"],
+				static_libs: ["my_java_aconfig_library_2"],
+				sdk_version: "core_platform",
+				jarjar_prefix: "two",
+			}
+
+			java_library {
+				name: "mylibrary3",
+				static_libs: ["my_java_aconfig_library_3"],
+				sdk_version: "core_platform",
+			}
+
+			java_library {
+				name: "mylibrary4",
+				static_libs: ["my_java_aconfig_library_4"],
+				sdk_version: "current",
+			}
+
+			java_aconfig_library {
+				name: "my_java_aconfig_library_1",
+				aconfig_declarations: "my_aconfig_declarations_1",
+				sdk_version: "core_platform",
+			}
+
+			aconfig_declarations {
+				name: "my_aconfig_declarations_1",
+				package: "com.example.packageone",
+				srcs: ["one.aconfig"],
+			}
+
+			java_aconfig_library {
+				name: "my_java_aconfig_library_2",
+				aconfig_declarations: "my_aconfig_declarations_2",
+				sdk_version: "core_platform",
+			}
+
+			aconfig_declarations {
+				name: "my_aconfig_declarations_2",
+				package: "com.example.packagetwo",
+				srcs: ["two.aconfig"],
+			}
+
+			java_aconfig_library {
+				name: "my_java_aconfig_library_3",
+				aconfig_declarations: "my_aconfig_declarations_3",
+				sdk_version: "core_platform",
+			}
+
+			aconfig_declarations {
+				name: "my_aconfig_declarations_3",
+				package: "com.example.packagethree",
+				srcs: ["three.aconfig"],
+			}
+
+			java_aconfig_library {
+				name: "my_java_aconfig_library_4",
+				aconfig_declarations: "my_aconfig_declarations_4",
+				sdk_version: "core_platform",
+			}
+
+			aconfig_declarations {
+				name: "my_aconfig_declarations_4",
+				package: "com.example.packagefour",
+				srcs: ["four.aconfig"],
+			}
+		`))
+
+	context := result.TestContext.OtherModuleProviderAdaptor()
+
+	libraryZero := result.Module("mylibrary0", "android_common")
+	libraryZeroProvider, _ := android.OtherModuleProvider(context, libraryZero, java.RepackageProvider)
+	android.AssertBoolEquals(t, "mylibrary0 needs repackaging", true, libraryZeroProvider.RepackageNeeded)
+	android.AssertDeepEquals(t, "repackage provider", map[string]string{
+		"com.example.packageone":   "",
+		"com.example.packagetwo":   "two",
+		"com.example.packagethree": "two",
+	}, libraryZeroProvider.PackageToPrefix)
+
+	libraryOne := result.Module("mylibrary1", "android_common")
+	libraryOneProvider, _ := android.OtherModuleProvider(context, libraryOne, java.RepackageProvider)
+	android.AssertBoolEquals(t, "mylibrary1 needs repackaging", false, libraryOneProvider.RepackageNeeded)
+	android.AssertDeepEquals(t, "repackage provider", map[string]string{
+		"com.example.packageone": "",
+	}, libraryOneProvider.PackageToPrefix)
+
+	libraryTwo := result.Module("mylibrary2", "android_common")
+	libraryTwoProvider, _ := android.OtherModuleProvider(context, libraryTwo, java.RepackageProvider)
+	android.AssertBoolEquals(t, "mylibrary2 needs repackaging", true, libraryTwoProvider.RepackageNeeded)
+	android.AssertDeepEquals(t, "repackage provider", map[string]string{
+		"com.example.packagetwo":   "two",
+		"com.example.packagethree": "two",
+	}, libraryTwoProvider.PackageToPrefix)
+
+	libraryThree := result.Module("mylibrary3", "android_common")
+	libraryThreeProvider, _ := android.OtherModuleProvider(context, libraryThree, java.RepackageProvider)
+	android.AssertBoolEquals(t, "mylibrary3 needs repackaging", false, libraryThreeProvider.RepackageNeeded)
+	android.AssertDeepEquals(t, "repackage provider", map[string]string{
+		"com.example.packagethree": "",
+	}, libraryThreeProvider.PackageToPrefix)
+
+	libraryFour := result.Module("mylibrary4", "android_common")
+	libraryFourProvider, _ := android.OtherModuleProvider(context, libraryFour, java.RepackageProvider)
+	android.AssertBoolEquals(t, "mylibrary4 needs repackaging", false, libraryFourProvider.RepackageNeeded)
+	android.AssertDeepEquals(t, "repackage provider", map[string]string{
+		"com.example.packagefour": "",
+	}, libraryFourProvider.PackageToPrefix)
+}
