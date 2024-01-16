@@ -40,6 +40,8 @@ type GeneratedJavaLibraryCallbacks interface {
 	GetPackage(ctx android.ModuleContext) string
 }
 
+var aconfigRepackagePrefix = "aconfigrepackage"
+
 // GeneratedJavaLibraryModuleFactory provides a utility for modules that are generated
 // source code, including ones outside the java package to build jar files
 // from that generated source.
@@ -114,7 +116,8 @@ func (module *GeneratedJavaLibraryModule) GenerateAndroidBuildActions(ctx androi
 	// repackage provider propagation
 	if hasAconfigDeclarationAsDirectDep(ctx) {
 		packageToPrefix := make(map[string]string)
-		packageToPrefix[module.callbacks.GetPackage(ctx)] = ""
+		// packageToPrefix[module.callbacks.GetPackage(ctx)] = ""
+		packageToPrefix[module.callbacks.GetPackage(ctx)] = aconfigRepackagePrefix
 		android.SetProvider(ctx, RepackageProvider, RepackageProviderData{
 			PackageToPrefix: packageToPrefix,
 		})

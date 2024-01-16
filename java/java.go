@@ -713,6 +713,14 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// the repackage info from its deps and use it to set its own repackage provider
 	if !hasAconfigDeclarationAsDirectDep(ctx) {
 		repackageInfo := j.collectRepackageInfo(ctx)
+		needRepackage := proptools.BoolDefault(j.properties.Jarjar_repackage, false)
+		if needRepackage {
+			repackageJarjarRuleText := getRepackageJarjarRuleText("", repackageInfo.PackageToPrefix)
+			if j.Name() == "framework-minus-apex" {
+				fmt.Println("11111", j.Name(), repackageJarjarRuleText)
+			}
+			j.setRepackageJarjarRules(ctx, repackageJarjarRuleText)
+		}
 		android.SetProvider(ctx, RepackageProvider, repackageInfo)
 	}
 

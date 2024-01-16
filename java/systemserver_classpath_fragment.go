@@ -62,6 +62,7 @@ func (p *platformSystemServerClasspathModule) AndroidMkEntries() (entries []andr
 }
 
 func (p *platformSystemServerClasspathModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// Repackage(ctx)
 	configuredJars := p.configuredJars(ctx)
 	classpathJars := configuredJarListToClasspathJars(ctx, configuredJars, p.classpathType)
 	standaloneConfiguredJars := p.standaloneConfiguredJars(ctx)
@@ -119,7 +120,7 @@ func (s *SystemServerClasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 		ctx.PropertyErrorf("contents", "Either contents or standalone_contents needs to be non-empty")
 	}
 
-	Repackage(ctx)
+	// Repackage(ctx)
 	configuredJars := s.configuredJars(ctx)
 	classpathJars := configuredJarListToClasspathJars(ctx, configuredJars, s.classpathType)
 	standaloneConfiguredJars := s.standaloneConfiguredJars(ctx)

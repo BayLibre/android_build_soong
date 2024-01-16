@@ -93,6 +93,9 @@ type CommonProperties struct {
 	// if not blank, used as prefix to generate repackage rule
 	Jarjar_prefix *string
 
+	// if true, if true, repackage the jar based on the info collected from RepackageProvider
+	Jarjar_repackage *bool
+
 	// If not blank, set the java version passed to javac as -source and -target
 	Java_version *string
 
