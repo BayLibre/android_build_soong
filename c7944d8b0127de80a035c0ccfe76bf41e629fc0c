@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b18d14_37eec9c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-16T18:30:30Z",
+      "side": 1,
+      "message": "+2, but it has (very minor) downsides so I\u0027d suggest not submitting this if you\u0027re not going to continue down this path to make everything OUT_DIR agnostic.",
+      "revId": "c7944d8b0127de80a035c0ccfe76bf41e629fc0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
