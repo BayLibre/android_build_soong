@@ -308,6 +308,21 @@ type SyspropPublicStubInfo struct {
 
 var SyspropPublicStubInfoProvider = blueprint.NewProvider[SyspropPublicStubInfo]()
 
+// Provider for repackaging
+type RepackageProviderData struct {
+	// the key represents original package_name
+	// the value represents the repackage "prefix" before ext like ".Flags"
+	// e.g., if PackageToPrefix is ["com.example.android": "system"],
+	// a flag "com.example.android.Flags" will be renamed to
+	// "com.example.android.system.Flags".
+	PackageToPrefix map[string]string
+
+	// indicates whether a module has RepackageProvider needs repackaging
+	NeedRepackage bool
+}
+
+var RepackageProvider = blueprint.NewProvider[RepackageProviderData]()
+
 // Methods that need to be implemented for a module that is added to apex java_libs property.
 type ApexDependency interface {
 	HeaderJars() android.Paths
@@ -702,6 +717,19 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	combinedExportedProguardFlagFile := android.PathForModuleOut(ctx, "export_proguard_flags")
 	writeCombinedProguardFlagsFile(ctx, combinedExportedProguardFlagFile, exportedProguardFlagsFiles)
 	j.combinedExportedProguardFlagsFile = combinedExportedProguardFlagFile
+
+	// If j does not have aconfig_declaration in its direct deps, it should combine
+	// the repackage info from its deps and use it to set its own repackage provider
+	if !hasAconfigDeclarationAsDirectDep(ctx) {
+		repackageInfo := j.collectRepackageInfo(ctx)
+		if repackageInfo.NeedRepackage {
+			if j.Name() == "framework-minus-apex" {
+				fmt.Println("here here here", "\n", repackageInfo.NeedRepackage)
+			}
+			j.repackage(ctx, repackageInfo.PackageToPrefix)
+		}
+		android.SetProvider(ctx, RepackageProvider, repackageInfo)
+	}
 
 	apexInfo, _ := android.ModuleProvider(ctx, android.ApexInfoProvider)
 	if !apexInfo.IsForPlatform() {
