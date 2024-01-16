@@ -51,6 +51,10 @@ func testGenLib(t *testing.T, errorHandler android.FixtureErrorHandler, bp strin
 		RunTestWithBp(t, bp)
 }
 
+func (callbacks *JavaGenLibTestCallbacks) GetPackage(ctx android.ModuleContext) string {
+	return "foo.bar.baz"
+}
+
 func TestGenLib(t *testing.T) {
 	bp := `
 				test_java_gen_lib {
