@@ -2873,14 +2873,7 @@ func BaselineApexAvailable(moduleName string) []string {
 // TODO(b/147364041): remove this
 func makeApexAvailableBaseline() map[string][]string {
 	// The "Module separator"s below are employed to minimize merge conflicts.
-	m := make(map[string][]string)
-	//
-	// Module separator
-	//
-	m["com.android.runtime"] = []string{
-		"libz",
-	}
-	return m
+	return make(map[string][]string)
 }
 
 func init() {
