@@ -51,6 +51,24 @@
       "parentUuid": "96779805_c5024817",
       "revId": "666e1109a549eb8aab9e39a5c89b12e6b50bc8c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c029d34_6618a2be",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2556,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-16T18:02:50Z",
+      "side": 1,
+      "message": "I was thinking a struct with just the prebuilts property, like `m.AddProperties(\u0026struct{Prebuilts []string}{})`. (with a comment explaining how `Prebuilts` is now in `ApexNativeDependencies` instead of `overridableProperties`)\n\nI think it\u0027s confusing to have multiple different prebuilts properties that end up being the same (`a.properties.Prebuilts` and `a.overrideableProperties.Prebuilts`) which is why I\u0027m suggesting this.",
+      "parentUuid": "3767b88d_a35633bf",
+      "revId": "666e1109a549eb8aab9e39a5c89b12e6b50bc8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
