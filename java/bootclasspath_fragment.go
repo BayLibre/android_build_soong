@@ -483,7 +483,7 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 		}
 	})
 
-	Repackage(ctx)
+	// Repackage(ctx)
 
 	fragments := gatherApexModulePairDepsWithTag(ctx, bootclasspathFragmentDepTag)
 

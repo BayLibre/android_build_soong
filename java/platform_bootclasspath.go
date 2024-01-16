@@ -177,6 +177,7 @@ func (d *platformBootclasspathModule) MakeVars(ctx android.MakeVarsContext) {
 }
 
 func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// Repackage(ctx)
 	// Gather all the dependencies from the art, platform, and apex boot jars.
 	artModules := gatherApexModulePairDepsWithTag(ctx, platformBootclasspathArtBootJarDepTag)
 	platformModules := gatherApexModulePairDepsWithTag(ctx, platformBootclasspathBootJarDepTag)
