@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f2539e0_b21771d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-16T19:33:04Z",
+      "side": 1,
+      "message": "Removing `libz` has some subtle implications on stub/impl selection which breaks coverage builds. I would like to remove from the baseline map while we figure out a solution for `libz`",
+      "revId": "1d15969595a86febfa2e4fe30261e6fd876fb50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
