@@ -33,6 +33,24 @@
       "message": "I think you\u0027ll need to add a new property struct here that just has the prebuilts property. Potentially also with the arch sub-structs if you want to be able to override arch-specific prebuilts.",
       "revId": "666e1109a549eb8aab9e39a5c89b12e6b50bc8c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3767b88d_a35633bf",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2556,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2024-01-16T09:48:22Z",
+      "side": 1,
+      "message": "Something like in the latest PS?\n\nTBH, I don\u0027t see any specific use case for `override_apex`. Would it be simpler to leave the original field `Prebuilts` as is, without adding complexity to the code?",
+      "parentUuid": "96779805_c5024817",
+      "revId": "666e1109a549eb8aab9e39a5c89b12e6b50bc8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
