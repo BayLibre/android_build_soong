@@ -16,6 +16,24 @@
       "message": "+2, but it has (very minor) downsides so I\u0027d suggest not submitting this if you\u0027re not going to continue down this path to make everything OUT_DIR agnostic.",
       "revId": "c7944d8b0127de80a035c0ccfe76bf41e629fc0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa21e198_e5bff568",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-01-17T03:58:20Z",
+      "side": 1,
+      "message": "We (NextGen) are not going to do that, but it\u0027s simply because we don\u0027t own the build system and our work is not immediately blocked by this. I still think this is good thing to have. It would be great if you or and build system team can fix this.\n\n\u003e it has (very minor) downsides\n\nWhat is that?",
+      "parentUuid": "67b18d14_37eec9c3",
+      "revId": "c7944d8b0127de80a035c0ccfe76bf41e629fc0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
