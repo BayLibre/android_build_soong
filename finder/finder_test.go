@@ -1506,6 +1506,7 @@ func TestDirectoryNotPermitted(t *testing.T) {
 			IncludeFiles: []string{"hi.txt"},
 		},
 	)
+	finder.WaitForDbDump()
 	filesystem.Clock.Tick()
 	foundPaths := finder.FindAll()
 	finder.Shutdown()
@@ -1552,6 +1553,7 @@ func TestFileNotPermitted(t *testing.T) {
 			IncludeFiles: []string{"hi.txt"},
 		},
 	)
+	finder.WaitForDbDump()
 	filesystem.Clock.Tick()
 	foundPaths := finder.FindAll()
 	finder.Shutdown()
