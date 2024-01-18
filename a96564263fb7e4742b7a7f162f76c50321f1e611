@@ -68,6 +68,24 @@
       "parentUuid": "b2775638_a9acf122",
       "revId": "a96564263fb7e4742b7a7f162f76c50321f1e611",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60680956_bea61161",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1560,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-01-18T08:51:36Z",
+      "side": 1,
+      "message": "I checked all the `proguardRaiseDeps` of dexer during `m`. The jars are either `turbine-combined` or `repackaged-turbine-jarjar`. No `javac-header` is seen.\n\nThere are 6 modules that has `j.headerJarFile \u003d\u003d nil` and has a non-nil `repackageJarjarRules`. 5 of them are java tests(java_test_host or android_robolectric_test) and the other is a java_library, which is a direct static_lib dep of a test. I tried adding repacking \u0026 not adding repackaging logic. Building is successful for both cases. I suggest not adding repackaging logic here.",
+      "parentUuid": "ad21b89a_ab03d6c0",
+      "revId": "a96564263fb7e4742b7a7f162f76c50321f1e611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
