@@ -505,8 +505,8 @@ func (d *dexpreoptBootJars) GenerateSingletonBuildActions(ctx android.SingletonC
 		// No module has enabled dexpreopting, so we assume there will be no boot image to make.
 		return
 	}
-	archType := ctx.Config().Targets[android.Android][0].Arch.ArchType
-	d.dexpreoptConfigForMake = android.PathForOutput(ctx, toDexpreoptDirName(archType), "dexpreopt.config")
+	d.dexpreoptConfigForMake =
+		android.PathForOutput(ctx, dexpreopt.GetDexpreoptDirName(ctx), "dexpreopt.config")
 	writeGlobalConfigForMake(ctx, d.dexpreoptConfigForMake)
 
 	global := dexpreopt.GetGlobalConfig(ctx)
@@ -816,8 +816,8 @@ func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, p
 		cmd.FlagWithArg("--instruction-set-features=", global.InstructionSetFeatures[arch])
 	}
 
-	if global.EnableUffdGc {
-		cmd.Flag("--runtime-arg").Flag("-Xgc:CMC")
+	if image.target.Os == android.Android {
+		cmd.Text("$(cat").Input(globalSoong.UffdGcFlag).Text(")")
 	}
 
 	if global.BootFlags != "" {
@@ -972,6 +972,7 @@ func bootFrameworkProfileRule(ctx android.ModuleContext, image *bootImageConfig)
 
 func dumpOatRules(ctx android.ModuleContext, image *bootImageConfig) {
 	var allPhonies android.Paths
+	globalSoong := dexpreopt.GetGlobalSoongConfig(ctx)
 	for _, image := range image.variants {
 		arch := image.target.Arch.ArchType
 		suffix := arch.String()
@@ -983,13 +984,17 @@ func dumpOatRules(ctx android.ModuleContext, image *bootImageConfig) {
 		output := android.PathForOutput(ctx, "boot."+suffix+".oatdump.txt")
 		rule := android.NewRuleBuilder(pctx, ctx)
 		imageLocationsOnHost, _ := image.imageLocations()
-		rule.Command().
+
+		cmd := rule.Command().
 			BuiltTool("oatdump").
 			FlagWithInputList("--runtime-arg -Xbootclasspath:", image.dexPathsDeps.Paths(), ":").
 			FlagWithList("--runtime-arg -Xbootclasspath-locations:", image.dexLocationsDeps, ":").
 			FlagWithArg("--image=", strings.Join(imageLocationsOnHost, ":")).Implicits(image.imagesDeps.Paths()).
 			FlagWithOutput("--output=", output).
 			FlagWithArg("--instruction-set=", arch.String())
+		if image.target.Os == android.Android {
+			cmd.Text("$(cat").Input(globalSoong.UffdGcFlag).Text(")")
+		}
 		rule.Build("dump-oat-boot-"+suffix, "dump oat boot "+arch.String())
 
 		// Create a phony rule that depends on the output file and prints the path.
