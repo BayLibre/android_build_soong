@@ -96,7 +96,7 @@ func createTestModuleConfig(name, dexLocation string, buildPath, dexPath, enforc
 func TestDexPreopt(t *testing.T) {
 	config := android.TestConfig("out", nil, "", nil)
 	ctx := android.BuilderContextForTesting(config)
-	globalSoong := globalSoongConfigForTests()
+	globalSoong := globalSoongConfigForTests(ctx)
 	global := GlobalConfigForTests(ctx)
 	module := testSystemModuleConfig(ctx, "test")
 	productPackages := android.PathForTesting("product_packages.txt")
@@ -114,12 +114,15 @@ func TestDexPreopt(t *testing.T) {
 	if rule.Installs().String() != wantInstalls.String() {
 		t.Errorf("\nwant installs:\n   %v\ngot:\n   %v", wantInstalls, rule.Installs())
 	}
+
+	android.AssertStringListContains(t, "", rule.Inputs().RelativeToTop().Strings(),
+		"out/soong/dexpreopt_test/uffd_gc_flag.txt")
 }
 
 func TestDexPreoptSystemOther(t *testing.T) {
 	config := android.TestConfig("out", nil, "", nil)
 	ctx := android.BuilderContextForTesting(config)
-	globalSoong := globalSoongConfigForTests()
+	globalSoong := globalSoongConfigForTests(ctx)
 	global := GlobalConfigForTests(ctx)
 	systemModule := testSystemModuleConfig(ctx, "Stest")
 	systemProductModule := testSystemProductModuleConfig(ctx, "SPtest")
@@ -180,7 +183,7 @@ func TestDexPreoptSystemOther(t *testing.T) {
 func TestDexPreoptApexSystemServerJars(t *testing.T) {
 	config := android.TestConfig("out", nil, "", nil)
 	ctx := android.BuilderContextForTesting(config)
-	globalSoong := globalSoongConfigForTests()
+	globalSoong := globalSoongConfigForTests(ctx)
 	global := GlobalConfigForTests(ctx)
 	module := testApexModuleConfig(ctx, "service-A", "com.android.apex1")
 	productPackages := android.PathForTesting("product_packages.txt")
@@ -204,7 +207,7 @@ func TestDexPreoptApexSystemServerJars(t *testing.T) {
 func TestDexPreoptStandaloneSystemServerJars(t *testing.T) {
 	config := android.TestConfig("out", nil, "", nil)
 	ctx := android.BuilderContextForTesting(config)
-	globalSoong := globalSoongConfigForTests()
+	globalSoong := globalSoongConfigForTests(ctx)
 	global := GlobalConfigForTests(ctx)
 	module := testPlatformSystemServerModuleConfig(ctx, "service-A")
 	productPackages := android.PathForTesting("product_packages.txt")
@@ -228,7 +231,7 @@ func TestDexPreoptStandaloneSystemServerJars(t *testing.T) {
 func TestDexPreoptSystemExtSystemServerJars(t *testing.T) {
 	config := android.TestConfig("out", nil, "", nil)
 	ctx := android.BuilderContextForTesting(config)
-	globalSoong := globalSoongConfigForTests()
+	globalSoong := globalSoongConfigForTests(ctx)
 	global := GlobalConfigForTests(ctx)
 	module := testSystemExtSystemServerModuleConfig(ctx, "service-A")
 	productPackages := android.PathForTesting("product_packages.txt")
@@ -252,7 +255,7 @@ func TestDexPreoptSystemExtSystemServerJars(t *testing.T) {
 func TestDexPreoptApexStandaloneSystemServerJars(t *testing.T) {
 	config := android.TestConfig("out", nil, "", nil)
 	ctx := android.BuilderContextForTesting(config)
-	globalSoong := globalSoongConfigForTests()
+	globalSoong := globalSoongConfigForTests(ctx)
 	global := GlobalConfigForTests(ctx)
 	module := testApexModuleConfig(ctx, "service-A", "com.android.apex1")
 	productPackages := android.PathForTesting("product_packages.txt")
@@ -276,7 +279,7 @@ func TestDexPreoptApexStandaloneSystemServerJars(t *testing.T) {
 func TestDexPreoptProfile(t *testing.T) {
 	config := android.TestConfig("out", nil, "", nil)
 	ctx := android.BuilderContextForTesting(config)
-	globalSoong := globalSoongConfigForTests()
+	globalSoong := globalSoongConfigForTests(ctx)
 	global := GlobalConfigForTests(ctx)
 	module := testSystemModuleConfig(ctx, "test")
 	productPackages := android.PathForTesting("product_packages.txt")
@@ -315,4 +318,104 @@ func TestDexPreoptConfigToJson(t *testing.T) {
 	before := fmt.Sprintf("%v", module)
 	after := fmt.Sprintf("%v", parsed)
 	android.AssertStringEquals(t, "The result must be the same as the original after marshalling and unmarshalling it.", before, after)
+}
+
+func TestUffdGcFlagForceTrue(t *testing.T) {
+	preparers := android.GroupFixturePreparers(
+		PrepareForTestWithFakeDex2oatd,
+		PrepareForTestWithDexpreoptConfig,
+		FixtureSetEnableUffdGc("true"),
+		FixtureSetHasKernelVersionFile(false),
+	)
+
+	result := preparers.RunTest(t)
+	ctx := result.TestContext
+	config := ctx.Config()
+
+	rule := ctx.ModuleForTests("dexpreopt_config", "android_common").Rule("dexpreopt_uffd_gc_flag")
+
+	android.AssertStringDoesContain(t, "", rule.RuleParams.Command, `echo "--runtime-arg -Xgc:CMC"`)
+	android.AssertStringPathsRelativeToTopEquals(t, "", config, []string{
+		"out/soong/dexpreopt_arm64/uffd_gc_flag.txt.tmp",
+		"out/soong/dexpreopt_arm64/uffd_gc_flag.txt",
+	}, rule.AllOutputs())
+}
+
+func TestUffdGcFlagForceFalse(t *testing.T) {
+	preparers := android.GroupFixturePreparers(
+		PrepareForTestWithFakeDex2oatd,
+		PrepareForTestWithDexpreoptConfig,
+		FixtureSetEnableUffdGc("false"),
+		FixtureSetHasKernelVersionFile(false),
+	)
+
+	result := preparers.RunTest(t)
+	ctx := result.TestContext
+	config := ctx.Config()
+
+	rule := ctx.ModuleForTests("dexpreopt_config", "android_common").Rule("dexpreopt_uffd_gc_flag")
+
+	android.AssertStringDoesContain(t, "", rule.RuleParams.Command, `echo ""`)
+	android.AssertStringPathsRelativeToTopEquals(t, "", config, []string{
+		"out/soong/dexpreopt_arm64/uffd_gc_flag.txt.tmp",
+		"out/soong/dexpreopt_arm64/uffd_gc_flag.txt",
+	}, rule.AllOutputs())
+}
+
+func TestUffdGcFlagDefault(t *testing.T) {
+	preparers := android.GroupFixturePreparers(
+		PrepareForTestWithFakeDex2oatd,
+		PrepareForTestWithDexpreoptConfig,
+		FixtureSetEnableUffdGc("default"),
+		FixtureSetHasKernelVersionFile(true),
+	)
+
+	result := preparers.RunTest(t)
+	ctx := result.TestContext
+	config := ctx.Config()
+
+	rule := ctx.ModuleForTests("dexpreopt_config", "android_common").Rule("dexpreopt_uffd_gc_flag")
+
+	android.AssertStringDoesContain(t, "", rule.RuleParams.Command, "construct_uffd_gc_flag")
+	android.AssertStringPathsRelativeToTopEquals(t, "", config, []string{
+		"out/soong/dexpreopt_arm64/uffd_gc_flag.txt.tmp",
+		"out/soong/dexpreopt_arm64/uffd_gc_flag.txt",
+	}, rule.AllOutputs())
+	android.AssertPathsRelativeToTopEquals(t, "", []string{
+		"out/soong/target/product/test_device/obj/PACKAGING/check_vintf_all_intermediates/kernel_version.txt",
+	}, rule.Implicits)
+}
+
+func TestUffdGcFlagDefaultNoKernelVersionFile(t *testing.T) {
+	preparers := android.GroupFixturePreparers(
+		PrepareForTestWithFakeDex2oatd,
+		PrepareForTestWithDexpreoptConfig,
+		FixtureSetEnableUffdGc("default"),
+		FixtureSetHasKernelVersionFile(false),
+	)
+
+	result := preparers.RunTest(t)
+	ctx := result.TestContext
+	config := ctx.Config()
+
+	rule := ctx.ModuleForTests("dexpreopt_config", "android_common").Rule("Error")
+
+	android.AssertStringDoesContain(t, "", rule.Args["error"], "Unable to determine UFFD GC flag")
+	android.AssertStringPathsRelativeToTopEquals(t, "", config, []string{
+		"out/soong/dexpreopt_arm64/uffd_gc_flag.txt",
+	}, rule.AllOutputs())
+}
+
+func TestUffdGcFlagBogus(t *testing.T) {
+	preparers := android.GroupFixturePreparers(
+		PrepareForTestWithFakeDex2oatd,
+		PrepareForTestWithDexpreoptConfig,
+		FixtureSetEnableUffdGc("bogus"),
+		FixtureSetHasKernelVersionFile(false),
+	)
+
+	preparers.
+		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+			"Unknown value of PRODUCT_ENABLE_UFFD_GC: bogus")).
+		RunTest(t)
 }
