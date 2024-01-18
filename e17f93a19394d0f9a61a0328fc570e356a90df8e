@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4feb950_9d5a2afb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-18T21:53:55Z",
+      "side": 1,
+      "message": "Since the new entries do not have `strict_updatability_linting` in their Android.bp files, do we need to add them to the allowlist at all?",
+      "revId": "e17f93a19394d0f9a61a0328fc570e356a90df8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
