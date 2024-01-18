@@ -16,6 +16,23 @@
       "message": "This change is not for submission",
       "revId": "a96564263fb7e4742b7a7f162f76c50321f1e611",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2775638_a9acf122",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1560,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-01-18T00:53:41Z",
+      "side": 1,
+      "message": "Do we need to do something here too?  Zi, can you look for other uses of the header jar and decide if they should be the repackaged one or the original one?",
+      "revId": "a96564263fb7e4742b7a7f162f76c50321f1e611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
