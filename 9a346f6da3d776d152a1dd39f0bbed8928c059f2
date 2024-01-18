@@ -16,6 +16,24 @@
       "message": "Does [install_symlink_test](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/etc/install_symlink_test.go) need to be removed, or is [BinaryLinkerProperties.Symlinks](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/binary.go;drc\u003d4a9e6ec9033f09221940cab33ab41c21f03ee8f0;l\u003d42) affected by this?",
       "revId": "9a346f6da3d776d152a1dd39f0bbed8928c059f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a82bfa_5c081a1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-18T21:46:04Z",
+      "side": 1,
+      "message": "No. You can still create symlinks in the build, this is specifically about removing the `symlink_outputs` ninja special variable. That variable does nothing currently.\n\nOther things like `install_symlink` create symlinks, but don\u0027t (necessarily) use `symlink_outputs`.",
+      "parentUuid": "639bdb35_825276fd",
+      "revId": "9a346f6da3d776d152a1dd39f0bbed8928c059f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
