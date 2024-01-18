@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fbca915c_e34ff723",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-18T01:07:22Z",
+      "side": 1,
+      "message": "Running `m` with `jarjar_prefix` set in `frameworks-minus-apex` also built successfully without any issues.",
+      "revId": "a96564263fb7e4742b7a7f162f76c50321f1e611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b68a95ee_8b57d4e8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -31,6 +48,24 @@
       "writtenOn": "2024-01-18T00:53:41Z",
       "side": 1,
       "message": "Do we need to do something here too?  Zi, can you look for other uses of the header jar and decide if they should be the repackaged one or the original one?",
+      "revId": "a96564263fb7e4742b7a7f162f76c50321f1e611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad21b89a_ab03d6c0",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1560,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-18T01:07:22Z",
+      "side": 1,
+      "message": "Given that (as of now) we are using the repackaged header jar only for r8, if we could verify that only the turbine jars are passed as arguments to r8 and not the implementation jar compiled by javac, nothing has to be done here.\n\nAlternatively, we could raise an error here if `repackageJarjarRules` is non-null.",
+      "parentUuid": "b2775638_a9acf122",
       "revId": "a96564263fb7e4742b7a7f162f76c50321f1e611",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
