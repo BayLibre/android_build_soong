@@ -391,7 +391,8 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 		Flag("--generate-build-id").
 		Flag("--abort-on-hard-verifier-error").
 		Flag("--force-determinism").
-		FlagWithArg("--no-inline-from=", "core-oj.jar")
+		FlagWithArg("--no-inline-from=", "core-oj.jar").
+		Text("$(cat").Input(globalSoong.UffdGcFlag).Text(")")
 
 	var preoptFlags []string
 	if len(module.PreoptFlags) > 0 {
@@ -505,10 +506,6 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 
 	if profile != nil {
 		cmd.FlagWithInput("--profile-file=", profile)
-	}
-
-	if global.EnableUffdGc {
-		cmd.Flag("--runtime-arg").Flag("-Xgc:CMC")
 	}
 
 	rule.Install(odexPath, odexInstallPath)

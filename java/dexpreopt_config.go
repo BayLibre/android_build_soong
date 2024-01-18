@@ -105,8 +105,7 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 	return ctx.Config().Once(bootImageConfigKey, func() interface{} {
 		targets := dexpreoptTargets(ctx)
-		archType := ctx.Config().Targets[android.Android][0].Arch.ArchType
-		deviceDir := android.PathForOutput(ctx, toDexpreoptDirName(archType))
+		deviceDir := android.PathForOutput(ctx, dexpreopt.GetDexpreoptDirName(ctx))
 
 		configs := genBootImageConfigRaw(ctx)
 
@@ -258,8 +257,4 @@ func init() {
 
 func dexpreoptConfigMakevars(ctx android.MakeVarsContext) {
 	ctx.Strict("DEXPREOPT_BOOT_JARS_MODULES", strings.Join(defaultBootImageConfig(ctx).modules.CopyOfApexJarPairs(), ":"))
-}
-
-func toDexpreoptDirName(arch android.ArchType) string {
-	return "dexpreopt_" + arch.String()
 }
