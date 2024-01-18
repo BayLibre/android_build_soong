@@ -16,6 +16,24 @@
       "message": "Since the new entries do not have `strict_updatability_linting` in their Android.bp files, do we need to add them to the allowlist at all?",
       "revId": "e17f93a19394d0f9a61a0328fc570e356a90df8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6ff51f1_588cc202",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-18T22:01:07Z",
+      "side": 1,
+      "message": "apex modules are different, they always have strict_updatability_linting, they don\u0027t have a property for it in bp files. Only apexes in this allowlist do not set strict_updatability_linting.",
+      "parentUuid": "e4feb950_9d5a2afb",
+      "revId": "e17f93a19394d0f9a61a0328fc570e356a90df8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
