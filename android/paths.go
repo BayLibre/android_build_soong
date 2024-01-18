@@ -2148,7 +2148,7 @@ func (m testModuleInstallPathContext) InstallForceOS() (*OsType, *ArchType) {
 func ModuleInstallPathContextForTesting(config Config) ModuleInstallPathContext {
 	ctx := &testModuleInstallPathContext{}
 	ctx.config = config
-	ctx.os = Android
+	ctx.target = Target{Os: Android}
 	return ctx
 }
 
