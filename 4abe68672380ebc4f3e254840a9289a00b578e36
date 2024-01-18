@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0664de11_b20a1c01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-18T01:07:31Z",
+      "side": 1,
+      "message": "This is still the prototype implementation, and takes shortcuts that do not belong in production.",
+      "revId": "4abe68672380ebc4f3e254840a9289a00b578e36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
