@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "639bdb35_825276fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-18T21:42:19Z",
+      "side": 1,
+      "message": "Does [install_symlink_test](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/etc/install_symlink_test.go) need to be removed, or is [BinaryLinkerProperties.Symlinks](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/binary.go;drc\u003d4a9e6ec9033f09221940cab33ab41c21f03ee8f0;l\u003d42) affected by this?",
+      "revId": "9a346f6da3d776d152a1dd39f0bbed8928c059f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
