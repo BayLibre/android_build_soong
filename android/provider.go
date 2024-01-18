@@ -118,3 +118,41 @@ func (p *otherModuleProviderAdaptor) otherModuleProvider(module blueprint.Module
 func NewOtherModuleProviderAdaptor(otherModuleProviderFunc OtherModuleProviderFunc) OtherModuleProviderContext {
 	return &otherModuleProviderAdaptor{otherModuleProviderFunc}
 }
+
+type PropagatingProvider interface {
+	// UpdateAndroidBuildActions is called immediately after GenerateAndroidBuildActions is called
+	// for the module.  It can be used to propagate provider data from dependencies to this module.
+	UpdateAndroidBuildActions(ctx ModuleContext)
+
+	// UpdateAndroidMkEntries is called immediately after AndroidMkEntries is called for the module.
+	// It can be used to include the provider's information.  Only called for modules that provide
+	// AndroidMkEntries.
+	UpdateAndroidMkEntries(ctx SingletonContext, mod Module, entries *[]AndroidMkEntries)
+
+	// UpdateAndroidMkData is called immediately after the return from AndroidMk is copied into
+	// AndroidMkData.Entries.  If it needs to include information, it should append to AndroidMkData.Extra.
+	// Only called for modules that provide AndroidMk.
+	UpdateAndroidMkData(ctx SingletonContext, mod Module, data *AndroidMkData)
+}
+type PropagatingProviderFactory func() PropagatingProvider
+
+type propagatingProviderInfo struct {
+	// providerKey is the key from blueprint.NewProvider.
+	providerKey blueprint.AnyProviderKey
+
+	// providerFactory is called to create an instance of the provider.
+	providerFactory PropagatingProviderFactory
+}
+
+var propagatingProviderRegistry []*propagatingProviderInfo
+
+func RegisterPropagatingProvider(key blueprint.AnyProviderKey, providerFactory PropagatingProviderFactory) {
+	propagatingProviderRegistry = append(propagatingProviderRegistry, &propagatingProviderInfo{
+		providerKey:     key,
+		providerFactory: providerFactory,
+	})
+}
+
+func (p propagatingProviderInfo) Context() PropagatingProvider {
+	return p.providerFactory()
+}
