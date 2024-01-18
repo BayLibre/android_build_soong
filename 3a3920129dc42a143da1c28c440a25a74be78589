@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09d9c49f_c6122d3a",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-18T20:34:45Z",
+      "side": 1,
+      "message": "Out of curiosity, is it possible to embed the error in `OptionalDexJarPath` struct?",
+      "revId": "3a3920129dc42a143da1c28c440a25a74be78589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
