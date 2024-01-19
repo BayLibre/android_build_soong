@@ -46,6 +46,30 @@
       },
       "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b3345e_476df7b2",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-01-19T07:38:53Z",
+      "side": 1,
+      "message": "\"current\" translates into 10000 regardless of next/trunk. See https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/compiler.go;drc\u003ded8649e3ec919d06a4f188df70d67113804749e2;l\u003d479\n\nPerhaps you want to pass this through https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/api_levels.go;drc\u003d10363161e76c1d2ed196582e593ee6cef0706dd1;l\u003d138 ?",
+      "parentUuid": "4288c9d8_a0b93818",
+      "range": {
+        "startLine": 1609,
+        "startChar": 31,
+        "endLine": 1609,
+        "endChar": 49
+      },
+      "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
