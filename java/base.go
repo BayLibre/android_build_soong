@@ -123,6 +123,9 @@ type CommonProperties struct {
 	// Add host jdk tools.jar to bootclasspath
 	Use_tools_jar *bool
 
+	// True is this library is a direct dep of bootclasspath/systemserverclasspath
+	OnBCPOrSSCP bool `blueprint:"mutated"`
+
 	Openjdk9 struct {
 		// List of source files that should only be used when passing -source 1.9 or higher
 		Srcs []string `android:"path"`
@@ -2365,6 +2368,9 @@ func (j *Module) collectRepackageInfo(ctx android.ModuleContext) RepackageProvid
 
 	// update repackage information if jarjar_prefix is explicitly given
 	prefix := proptools.StringDefault(j.properties.Jarjar_prefix, "")
+	if j.properties.OnBCPOrSSCP && prefix == "" {
+		prefix = "aconfigrepackage"
+	}
 	if prefix != "" {
 		needRepackage = true
 		for p, b := range combinedRepackageInfo {
