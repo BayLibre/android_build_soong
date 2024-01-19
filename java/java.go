@@ -564,11 +564,9 @@ const (
 func (v javaVersion) String() string {
 	switch v {
 	case JAVA_VERSION_6:
-		// Java version 1.6 no longer supported, bumping to 1.8
-		return "1.8"
+		return "1.6"
 	case JAVA_VERSION_7:
-		// Java version 1.7 no longer supported, bumping to 1.8
-		return "1.8"
+		return "1.7"
 	case JAVA_VERSION_8:
 		return "1.8"
 	case JAVA_VERSION_9:
@@ -585,12 +583,10 @@ func (v javaVersion) String() string {
 func (v javaVersion) StringForKotlinc() string {
 	// $ ./external/kotlinc/bin/kotlinc -jvm-target foo
 	// error: unknown JVM target version: foo
-	// Supported versions: 1.8, 9, 10, 11, 12, 13, 14, 15, 16, 17
+	// Supported versions: 1.6, 1.8, 9, 10, 11, 12, 13, 14, 15, 16, 17
 	switch v {
-	case JAVA_VERSION_6:
-		return "1.8"
 	case JAVA_VERSION_7:
-		return "1.8"
+		return "1.6"
 	case JAVA_VERSION_9:
 		return "9"
 	default:
@@ -606,11 +602,9 @@ func (v javaVersion) usesJavaModules() bool {
 func normalizeJavaVersion(ctx android.BaseModuleContext, javaVersion string) javaVersion {
 	switch javaVersion {
 	case "1.6", "6":
-		// Java version 1.6 no longer supported, bumping to 1.8
-		return JAVA_VERSION_8
+		return JAVA_VERSION_6
 	case "1.7", "7":
-		// Java version 1.7 no longer supported, bumping to 1.8
-		return JAVA_VERSION_8
+		return JAVA_VERSION_7
 	case "1.8", "8":
 		return JAVA_VERSION_8
 	case "1.9", "9":
