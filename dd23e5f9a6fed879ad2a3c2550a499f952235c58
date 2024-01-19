@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3cff48a_de68f71c",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-19T22:55:16Z",
+      "side": 1,
+      "message": "I stopped short of actually removing these functions, to avoid merge conflicts due to the size of the change that would be required to delete them all now.",
+      "revId": "dd23e5f9a6fed879ad2a3c2550a499f952235c58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
