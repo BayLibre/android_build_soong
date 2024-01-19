@@ -70,6 +70,30 @@
       },
       "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d0121b0_e0897581",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-01-19T07:42:51Z",
+      "side": 1,
+      "message": "yeah probably need to look at codename\u003d\u003dREL or BOARD_API_LEVEL_FROZEN\n\nwhich means we need to plumb BOARD_API_LEVEL_FROZEN to soong too... @justinyun@google.com",
+      "parentUuid": "22b3345e_476df7b2",
+      "range": {
+        "startLine": 1609,
+        "startChar": 31,
+        "endLine": 1609,
+        "endChar": 49
+      },
+      "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
