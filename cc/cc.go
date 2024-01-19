@@ -1608,14 +1608,22 @@ func (ctx *moduleContextImpl) useSdk() bool {
 
 func (ctx *moduleContextImpl) sdkVersion() string {
 	if ctx.ctx.Device() {
-		if ctx.useVndk() {
+		config := ctx.ctx.Config()
+		if !config.IsVndkDeprecated() && ctx.useVndk() {
 			vndkVer := ctx.mod.VndkVersion()
-			if inList(vndkVer, ctx.ctx.Config().PlatformVersionActiveCodenames()) {
+			if inList(vndkVer, config.PlatformVersionActiveCodenames()) {
 				return "current"
 			}
 			return vndkVer
 		}
-		return String(ctx.mod.Properties.Sdk_version)
+		version := String(ctx.mod.Properties.Sdk_version)
+		if ctx.inVendor() {
+			// If building for vendor with final API, then use the latest stable API.
+			if (version == "" || version == "current") && (config.VendorApiLevelFrozen() || config.PlatformSdkFinal()) {
+				version = config.PlatformSdkVersion().String()
+			}
+		}
+		return version
 	}
 	return ""
 }

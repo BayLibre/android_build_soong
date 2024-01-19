@@ -43,6 +43,7 @@ var prepareForCcTest = android.GroupFixturePreparers(
 	android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 		variables.VendorApiLevel = StringPtr("202404")
 		variables.DeviceVndkVersion = StringPtr("current")
+		variables.KeepVndk = BoolPtr(true)
 		variables.Platform_vndk_version = StringPtr("29")
 	}),
 )
@@ -4842,4 +4843,43 @@ func TestImageVariantsWithoutVndk(t *testing.T) {
 	testDepWithVariant("core")
 	testDepWithVariant("vendor")
 	testDepWithVariant("product")
+}
+
+func TestVendorSdkVersionWithoutVndk(t *testing.T) {
+	t.Parallel()
+
+	bp := `
+	cc_library {
+		name: "libfoo",
+		srcs: ["libfoo.cc"],
+		vendor_available: true,
+	}
+
+	cc_library {
+		name: "libbar",
+		srcs: ["libfoo.cc"],
+		vendor_available: true,
+		sdk_version: "34",
+	}
+	`
+
+	ctx := prepareForCcTestWithoutVndk.RunTestWithBp(t, bp)
+	testSdkVersionFlag := func(module, version string) {
+		flags := ctx.ModuleForTests(module, "android_vendor_arm64_armv8-a_shared").Rule("cc").Args["cFlags"]
+		android.AssertStringDoesContain(t, "min sdk version", flags, "-target aarch64-linux-android"+version)
+	}
+
+	testSdkVersionFlag("libfoo", "10000")
+	testSdkVersionFlag("libbar", "34")
+
+	platformSdkVersion := 35
+	ctx = android.GroupFixturePreparers(
+		prepareForCcTestWithoutVndk,
+		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+			variables.BuildFlags["RELEASE_BOARD_API_LEVEL_FROZEN"] = "true"
+			variables.Platform_sdk_version = &platformSdkVersion
+		}),
+	).RunTestWithBp(t, bp)
+	testSdkVersionFlag("libfoo", "35")
+	testSdkVersionFlag("libbar", "34")
 }
