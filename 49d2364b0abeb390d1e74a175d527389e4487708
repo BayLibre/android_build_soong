@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c1b791b_74bf2d73",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-19T23:58:29Z",
+      "side": 1,
+      "message": "There were a couple of reasons that I split things out:\n\n - AndroidMkData has `Entries AndroidMkEntries` while AndroidMkEntriesProvider.AndroidMkEntries returns `[]AndroidMkEntries`\n - In both cases, UpdateAndroidMk{Entries,Data} need to have SingletonContext, but only have the subset in `fillIn{Entries,Data}Context`.  I suppose I could add `ModuleName(Module)` and whatever `SingletonModuleProvider` needs.\n \nThoughts?",
+      "parentUuid": "c9af6875_df508e74",
+      "range": {
+        "startLine": 951,
+        "startChar": 0,
+        "endLine": 954,
+        "endChar": 0
+      },
+      "revId": "49d2364b0abeb390d1e74a175d527389e4487708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91f3134c_fb804e9c",
         "filename": "android/module.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-19T23:06:17Z",
       "side": 1,
       "message": "You don\u0027t need the type assertion here, `providerInfo.ctx` is already a `PropagatingProviderContext`.",
+      "range": {
+        "startLine": 1745,
+        "startChar": 20,
+        "endLine": 1745,
+        "endChar": 48
+      },
+      "revId": "49d2364b0abeb390d1e74a175d527389e4487708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6ac0950_e98a7c29",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-19T23:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91f3134c_fb804e9c",
       "range": {
         "startLine": 1745,
         "startChar": 20,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8d53575_a98ae1e1",
+        "filename": "android/provider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-19T23:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fddd6db8_82c2310b",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 108
+      },
+      "revId": "49d2364b0abeb390d1e74a175d527389e4487708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73b8648f_d90980f5",
@@ -83,6 +155,24 @@
       "writtenOn": "2024-01-19T23:06:17Z",
       "side": 1,
       "message": "Can you add godoc for all of these?",
+      "revId": "49d2364b0abeb390d1e74a175d527389e4487708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41a98d74_9a4785d0",
+        "filename": "android/provider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-19T23:58:29Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "73b8648f_d90980f5",
       "revId": "49d2364b0abeb390d1e74a175d527389e4487708",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "491e9665_8f87eab9",
+        "filename": "android/provider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-19T23:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21bcbfd6_650e82fc",
+      "range": {
+        "startLine": 128,
+        "startChar": 46,
+        "endLine": 128,
+        "endChar": 57
+      },
+      "revId": "49d2364b0abeb390d1e74a175d527389e4487708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e40ac51_7399a8e7",
@@ -127,6 +241,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc1d22de_a6744c15",
+        "filename": "android/provider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-19T23:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e40ac51_7399a8e7",
+      "revId": "49d2364b0abeb390d1e74a175d527389e4487708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "018bd82e_e1ac0d1a",
@@ -140,6 +272,30 @@
       "writtenOn": "2024-01-19T23:06:17Z",
       "side": 1,
       "message": "This isn\u0027t what we would normally call a `*Context`, maybe just `PropagatingProvider`?\n\nThis is going to cause a problem for tests running in parallel if the object passed here has any state.  Should this take a factory method instead, which can create a `PropagatingProvider` that is unique to the `blueprint.Context`?",
+      "range": {
+        "startLine": 140,
+        "startChar": 63,
+        "endLine": 140,
+        "endChar": 105
+      },
+      "revId": "49d2364b0abeb390d1e74a175d527389e4487708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc36faf_fa88e199",
+        "filename": "android/provider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-19T23:58:29Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "018bd82e_e1ac0d1a",
       "range": {
         "startLine": 140,
         "startChar": 63,
