@@ -124,6 +124,24 @@
       "parentUuid": "4d42eee7_e09fdd35",
       "revId": "c4648f6fda4c8d099e0fcb236ca137691fed16a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a6da5c8_b5b0525d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-01-19T00:30:06Z",
+      "side": 1,
+      "message": "Now that b/306029038 has been implemented (nice solution BTW). I took another look at this and the effect on the raw directory in AOSP.\n\nWithout this it is about 383808K.\nWith 1 space it is about 393012K, or 10MB, or about 2.3% bigger.\nWith 2 spaces it is about 396960K, or 13MB, or about  3.4% bigger.\n\nBuild time is broadly similar between all of them.\n\nReadability is MUCH better when pretty printed, but 2 is no more readable than 1.\n\nI certainly think this is worth it. It makes it much easier to see how metalava is being invoked. What do you think?",
+      "parentUuid": "6102bc5b_487eaec1",
+      "revId": "c4648f6fda4c8d099e0fcb236ca137691fed16a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
