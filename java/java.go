@@ -21,6 +21,7 @@ package java
 import (
 	"fmt"
 	"path/filepath"
+	"slices"
 	"sort"
 	"strings"
 
@@ -72,6 +73,10 @@ func registerJavaBuildComponents(ctx android.RegistrationContext) {
 		ctx.BottomUp("dexpreopt_tool_deps", dexpreoptToolDepsMutator).Parallel()
 		// needs access to ApexInfoProvider which is available after variant creation
 		ctx.BottomUp("jacoco_deps", jacocoDepsMutator).Parallel()
+	})
+
+	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.TopDown("jarjar_repackage", jarjarRepackageMutator).Parallel()
 	})
 
 	ctx.RegisterParallelSingletonType("logtags", LogtagsSingleton)
@@ -724,6 +729,7 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// the repackage info from its deps and use it to set its own repackage provider
 	if !hasAconfigDeclarationAsDirectDep(ctx) {
 		repackageInfo := j.collectRepackageInfo(ctx)
+		repackageInfo.RepackageNeeded = repackageInfo.RepackageNeeded || j.properties.OnBCPOrSSCP
 		if repackageInfo.RepackageNeeded {
 			j.repackage(ctx, repackageInfo.PackageToPrefix)
 		}
@@ -2840,6 +2846,22 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 			dep.DexJarBuildPath(ctx).PathOrNil(), dep.DexJarInstallPath(), dep.ClassLoaderContexts())
 	} else {
 		clcMap.AddContextMap(dep.ClassLoaderContexts(), depName)
+	}
+}
+
+func jarjarRepackageMutator(ctx android.TopDownMutatorContext) {
+	bcpOrSscpTypes := []string{"bootclasspath_fragment", "platform_bootclasspath", "systemserverclasspath_fragment", "platform_systemserverclasspath"}
+	if slices.Contains(bcpOrSscpTypes, ctx.ModuleType()) {
+		ctx.VisitDirectDeps(func(m android.Module) {
+			if jl, isJavaLibrary := m.(*Library); isJavaLibrary {
+				jl.properties.OnBCPOrSSCP = true
+				fmt.Println(jl.Name(), "Java_library from:", ctx.ModuleName(), ctx.ModuleType())
+			}
+			if jsl, isJavaSdkLibrary := m.(*SdkLibrary); isJavaSdkLibrary {
+				jsl.properties.OnBCPOrSSCP = true
+				fmt.Println(jsl.Name(), "Java_sdk_library from:", ctx.ModuleName(), ctx.ModuleType())
+			}
+		})
 	}
 }
 
