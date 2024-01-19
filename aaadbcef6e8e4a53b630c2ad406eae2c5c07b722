@@ -142,6 +142,30 @@
       },
       "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13a20c28_e6f10eca",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-01-19T16:48:44Z",
+      "side": 1,
+      "message": "\u003e This is 34 even on trunk, right? Shouldn\u0027t it be 35 on trunk, so that vendors can use the new NDK APIs there?\n\nIs 34 here meant to be used as a clang-triple like android34? Then, I think, even when it is 34, vendors still can use the new NDK symbols, right? Calls need to be guarded though.",
+      "parentUuid": "e683fdcd_4da97409",
+      "range": {
+        "startLine": 1609,
+        "startChar": 31,
+        "endLine": 1609,
+        "endChar": 49
+      },
+      "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
