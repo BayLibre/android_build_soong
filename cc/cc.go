@@ -1603,14 +1603,13 @@ func (ctx *moduleContextImpl) useSdk() bool {
 
 func (ctx *moduleContextImpl) sdkVersion() string {
 	if ctx.ctx.Device() {
-		if ctx.useVndk() {
-			vndkVer := ctx.mod.VndkVersion()
-			if inList(vndkVer, ctx.ctx.Config().PlatformVersionActiveCodenames()) {
-				return "current"
+		version := String(ctx.mod.Properties.Sdk_version)
+		if ctx.inVendor() {
+			if version == "" || version == "current" {
+				version = ctx.ctx.Config().PlatformSdkVersion().String()
 			}
-			return vndkVer
 		}
-		return String(ctx.mod.Properties.Sdk_version)
+		return version
 	}
 	return ""
 }
