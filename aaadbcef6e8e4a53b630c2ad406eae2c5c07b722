@@ -118,6 +118,30 @@
       },
       "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e683fdcd_4da97409",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-19T09:12:45Z",
+      "side": 1,
+      "message": "Uploaded `VendorApiLevelFrozen()` (https://android-review.git.corp.google.com/q/topic:%22vendor_api_level%22)",
+      "parentUuid": "ad0041a5_9352c15c",
+      "range": {
+        "startLine": 1609,
+        "startChar": 31,
+        "endLine": 1609,
+        "endChar": 49
+      },
+      "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
