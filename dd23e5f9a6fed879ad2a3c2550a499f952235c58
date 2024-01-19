@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bc84e48_21731550",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-19T23:11:28Z",
+      "side": 1,
+      "message": "This is oddly structured, you\u0027re implementing the methods on an `aconfigPropagatingDeclarationsInfo`, but when the methods are called they can\u0027t access the fields on that `aconfigPropagatingDeclarationsInfo`, they have to call `SingletonModuleProvider` to get a different `aconfigPropagatingDeclarationsInfo` that has the actual data in it.  Either the provider info and the propagator should be separate types, or the methods should be called on the actual provider info for the module.",
+      "range": {
+        "startLine": 51,
+        "startChar": 57,
+        "endLine": 51,
+        "endChar": 94
+      },
+      "revId": "dd23e5f9a6fed879ad2a3c2550a499f952235c58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b3cff48a_de68f71c",
@@ -14,6 +37,23 @@
       "writtenOn": "2024-01-19T22:55:16Z",
       "side": 1,
       "message": "I stopped short of actually removing these functions, to avoid merge conflicts due to the size of the change that would be required to delete them all now.",
+      "revId": "dd23e5f9a6fed879ad2a3c2550a499f952235c58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "085fda29_2fee12c3",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-19T23:11:28Z",
+      "side": 1,
+      "message": "How are these changes related?",
       "revId": "dd23e5f9a6fed879ad2a3c2550a499f952235c58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
