@@ -104,7 +104,7 @@ func gatherPossibleApexModuleNamesAndStems(ctx android.ModuleContext, contents [
 	set := map[string]struct{}{}
 	for _, name := range contents {
 		dep := ctx.GetDirectDepWithTag(name, tag)
-		set[name] = struct{}{}
+		set[moduleStemForDeapexing(dep)] = struct{}{}
 		if m, ok := dep.(ModuleWithStem); ok {
 			set[m.Stem()] = struct{}{}
 		} else {
