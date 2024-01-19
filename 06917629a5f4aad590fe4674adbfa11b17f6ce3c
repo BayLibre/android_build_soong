@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1934f87_9cf9a1ed",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1313,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-19T18:52:16Z",
+      "side": 1,
+      "message": "We already have soong code that checks it via the release flag: https://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/build/soong/sepolicy_freeze.go;l\u003d49;drc\u003d3e34b72f9c51efa5c7bc964527d4f63b98955845\n\nCan\u0027t we keep using that?",
+      "revId": "06917629a5f4aad590fe4674adbfa11b17f6ce3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
