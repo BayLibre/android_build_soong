@@ -205,12 +205,12 @@ func (stl *stl) flags(ctx ModuleContext, flags Flags) Flags {
 			flags.extraLibFlags = append(flags.extraLibFlags, "-nostdlib++")
 			if ctx.Windows() {
 				flags.Local.CppFlags = append(flags.Local.CppFlags,
-					// Disable visiblity annotations since we're using static
-					// libc++.
-					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
-					"-D_LIBCXXABI_DISABLE_VISIBILITY_ANNOTATIONS",
-					// Use Win32 threads in libc++.
-					"-D_LIBCPP_HAS_THREAD_API_WIN32")
+					// Disable visibility annotations since we're using static
+					// libc++. The _LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS macro
+					// can also be defined by __config_site so define it the
+					// same way (i.e. to nothing).
+					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS=",
+					"-D_LIBCXXABI_DISABLE_VISIBILITY_ANNOTATIONS=")
 			}
 		}
 	case "libstdc++":
