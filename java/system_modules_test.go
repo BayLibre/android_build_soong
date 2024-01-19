@@ -15,9 +15,11 @@
 package java
 
 import (
+	"fmt"
 	"testing"
 
 	"android/soong/android"
+	"github.com/google/blueprint"
 )
 
 func getModuleHeaderJarsAsRelativeToTopPaths(result *android.TestResult, moduleNames ...string) []string {
@@ -110,4 +112,102 @@ func TestJavaSystemModulesMixSourceAndPrebuilt(t *testing.T) {
 	// The expected paths are the header jars from the renamed prebuilt input modules.
 	expectedPrebuiltPaths := getModuleHeaderJarsAsRelativeToTopPaths(result, "prebuilt_system-module1", "prebuilt_system-module2")
 	android.AssertArrayString(t, "prebuilt system modules inputs", expectedPrebuiltPaths, prebuiltInputs.RelativeToTop().Strings())
+}
+
+func TestMultipleSystemModulesPrebuilts(t *testing.T) {
+	bp := `
+		// an rdep
+		java_library {
+			name: "foo",
+			sdk_version: "none",
+			system_modules: "my_system_modules",
+		}
+
+		// mutliple variations of java_system_modules
+		// source
+		java_system_modules {
+			name: "my_system_modules",
+			libs: ["bar"],
+		}
+		java_library {
+			name: "bar",
+			srcs: ["bar.java"],
+		}
+		// prebuilt "v1"
+		java_system_modules_import {
+			name: "my_system_modules.v1",
+			source_module_name: "my_system_modules",
+			libs: ["bar.v1"],
+		}
+		java_import {
+			name: "bar.v1",
+			source_module_name: "bar",
+			jars: ["bar.v1.jar"],
+		}
+		// prebuilt "v2"
+		java_system_modules_import {
+			name: "my_system_modules.v2",
+			source_module_name: "my_system_modules",
+			libs: ["bar.v2"],
+		}
+		java_import {
+			name: "bar.v2",
+			source_module_name: "bar",
+			jars: ["bar.v2.jar"],
+		}
+
+		// selectors
+		apex_contributions {
+			name: "myapex_contributions",
+			contents: ["%v"],
+		}
+	`
+	hasDep := func(ctx *android.TestResult, m android.Module, wantDep android.Module) bool {
+		t.Helper()
+		var found bool
+		ctx.VisitDirectDeps(m, func(dep blueprint.Module) {
+			if dep == wantDep {
+				found = true
+			}
+		})
+		return found
+	}
+
+	testCases := []struct {
+		desc                   string
+		selectedDependencyName string
+		expectedDependencyName string
+	}{
+		{
+			desc:                   "Source system_modules is selected using apex_contributions",
+			selectedDependencyName: "my_system_modules",
+			expectedDependencyName: "my_system_modules",
+		},
+		{
+			desc:                   "Prebuilt system_modules v1 is selected using apex_contributions",
+			selectedDependencyName: "prebuilt_my_system_modules.v1",
+			expectedDependencyName: "prebuilt_my_system_modules.v1",
+		},
+		{
+			desc:                   "Prebuilt system_modules v2 is selected using apex_contributions",
+			selectedDependencyName: "prebuilt_my_system_modules.v2",
+			expectedDependencyName: "prebuilt_my_system_modules.v2",
+		},
+	}
+
+	for _, tc := range testCases {
+		ctx := android.GroupFixturePreparers(
+			prepareForJavaTest,
+			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+				variables.BuildFlags = map[string]string{
+					"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "myapex_contributions",
+				}
+			}),
+		).RunTestWithBp(t, fmt.Sprintf(bp, tc.selectedDependencyName))
+
+		// check that rdep gets the correct variation of system_modules
+		foo := ctx.ModuleForTests("foo", "android_common")
+		expectedDependency := ctx.ModuleForTests(tc.expectedDependencyName, "android_common")
+		android.AssertBoolEquals(t, fmt.Sprintf("expected dependency from %s to %s\n", foo.Module().Name(), tc.expectedDependencyName), true, hasDep(ctx, foo.Module(), expectedDependency.Module()))
+	}
 }
