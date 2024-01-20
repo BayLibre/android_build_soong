@@ -725,6 +725,7 @@ type TestingBuildParams struct {
 //   - Depfile
 //   - Rspfile
 //   - RspfileContent
+//   - SymlinkOutputs
 //   - CommandDeps
 //   - CommandOrderOnly
 //
@@ -746,6 +747,8 @@ func (p TestingBuildParams) RelativeToTop() TestingBuildParams {
 	bparams.Depfile = normalizeWritablePathRelativeToTop(bparams.Depfile)
 	bparams.Output = normalizeWritablePathRelativeToTop(bparams.Output)
 	bparams.Outputs = bparams.Outputs.RelativeToTop()
+	bparams.SymlinkOutput = normalizeWritablePathRelativeToTop(bparams.SymlinkOutput)
+	bparams.SymlinkOutputs = bparams.SymlinkOutputs.RelativeToTop()
 	bparams.ImplicitOutput = normalizeWritablePathRelativeToTop(bparams.ImplicitOutput)
 	bparams.ImplicitOutputs = bparams.ImplicitOutputs.RelativeToTop()
 	bparams.Input = normalizePathRelativeToTop(bparams.Input)
@@ -763,6 +766,7 @@ func (p TestingBuildParams) RelativeToTop() TestingBuildParams {
 	rparams.Depfile = normalizeStringRelativeToTop(p.config, rparams.Depfile)
 	rparams.Rspfile = normalizeStringRelativeToTop(p.config, rparams.Rspfile)
 	rparams.RspfileContent = normalizeStringRelativeToTop(p.config, rparams.RspfileContent)
+	rparams.SymlinkOutputs = normalizeStringArrayRelativeToTop(p.config, rparams.SymlinkOutputs)
 	rparams.CommandDeps = normalizeStringArrayRelativeToTop(p.config, rparams.CommandDeps)
 	rparams.CommandOrderOnly = normalizeStringArrayRelativeToTop(p.config, rparams.CommandOrderOnly)
 
