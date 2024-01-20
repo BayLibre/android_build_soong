@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35347dba_0c97658d",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-20T00:14:36Z",
+      "side": 1,
+      "message": "The `[]AndroidMkEntries` is unfortunate, it is only used for the modules with `hostdex: true` that fake a second output to Make.  I think it should be correct to apply the aconfig flags to both sets of properties.\n\nI don\u0027t think the PropagationProvider should need `SingletonModuleProvider`, see https://android-review.git.corp.google.com/c/platform/build/soong/+/2915905/comment/7bc84e48_21731550/",
+      "parentUuid": "6c1b791b_74bf2d73",
+      "range": {
+        "startLine": 951,
+        "startChar": 0,
+        "endLine": 954,
+        "endChar": 0
+      },
+      "revId": "49d2364b0abeb390d1e74a175d527389e4487708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91f3134c_fb804e9c",
         "filename": "android/module.go",
         "patchSetId": 1
