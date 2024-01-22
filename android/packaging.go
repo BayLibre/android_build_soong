@@ -204,6 +204,8 @@ type PackagingItem interface {
 type PackagingItemAlwaysDepTag struct {
 }
 
+func (b PackagingItemAlwaysDepTag) ExcludeFromVisibilityEnforcement() {}
+
 // IsPackagingItem returns true if the dep is to be packaged
 func (PackagingItemAlwaysDepTag) IsPackagingItem() bool {
 	return true
