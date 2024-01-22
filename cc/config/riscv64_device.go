@@ -30,7 +30,7 @@ var (
 		"-Xclang -target-feature -Xclang +unaligned-scalar-mem",
 		"-Xclang -target-feature -Xclang +unaligned-vector-mem",
 		// Until https://gitlab.com/qemu-project/qemu/-/issues/1976 is fixed...
-		"-fno-vectorize",
+		"-mno-implicit-float",
 		// (https://github.com/google/android-riscv64/issues/124)
 		"-mllvm -jump-is-expensive=false",
 	}
