@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "449165c7_edec7fc3",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-22T22:14:35Z",
+      "side": 1,
+      "message": "Looking at it, I was overloading the type.  I\u0027ve split them apart.",
+      "parentUuid": "7bc84e48_21731550",
+      "range": {
+        "startLine": 51,
+        "startChar": 57,
+        "endLine": 51,
+        "endChar": 94
+      },
+      "revId": "dd23e5f9a6fed879ad2a3c2550a499f952235c58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b3cff48a_de68f71c",
         "filename": "android/aconfig_providers.go",
         "patchSetId": 2
@@ -54,6 +78,24 @@
       "writtenOn": "2024-01-19T23:11:28Z",
       "side": 1,
       "message": "How are these changes related?",
+      "revId": "dd23e5f9a6fed879ad2a3c2550a499f952235c58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3405e7dd_640a4122",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-22T22:14:35Z",
+      "side": 1,
+      "message": "apex\u0027s AndroidMkData never had `Extra` elements before this change, which causes them to be added for LOCAL_ACONFIG_FILES definition.  As such, it now needs to process that field, even though it doesn\u0027t define it.  Fortunately, Custom AndroidMkData handlers are infrequent, and new module types that use them would result in a build error until UpdateAndroidMkData is told that it\u0027s ok to let that module proceed in the presence of aconfig files.\n\nComment added.",
+      "parentUuid": "085fda29_2fee12c3",
       "revId": "dd23e5f9a6fed879ad2a3c2550a499f952235c58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
