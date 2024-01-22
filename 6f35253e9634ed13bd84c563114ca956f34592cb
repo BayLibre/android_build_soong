@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d6e43d_f2faa173",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-01-22T22:21:33Z",
+      "side": 1,
+      "message": "I\u0027d prefer to have this new module type separated into a CL of its own, partly since it seems to have more longevity than the kernel version file parsing stuff.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 1
+      },
+      "revId": "6f35253e9634ed13bd84c563114ca956f34592cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
