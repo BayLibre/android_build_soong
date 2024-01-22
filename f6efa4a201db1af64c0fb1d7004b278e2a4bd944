@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc5a1f1_18d1656a",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1313,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-01-22T05:15:29Z",
+      "side": 1,
+      "message": "the definition of RELEASE_BOARD_API_LEVEL_FROZEN and BOARD_API_LEVEL_FROZEN are not exactly the same \n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/make/core/board_config.mk;l\u003d998\n\nthe latter could be unset if RELEASE_BOARD_API_LEVEL is not also set.\n\nHow about we just replace all BOARD_API_LEVEL_FROZEN with RELEASE_BOARD_API_LEVEL_FROZEN in .mk files, so the .bp and .mk sementics don\u0027t diverge.",
+      "revId": "f6efa4a201db1af64c0fb1d7004b278e2a4bd944",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
