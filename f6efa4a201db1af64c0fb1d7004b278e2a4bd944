@@ -16,6 +16,24 @@
       "message": "the definition of RELEASE_BOARD_API_LEVEL_FROZEN and BOARD_API_LEVEL_FROZEN are not exactly the same \n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/make/core/board_config.mk;l\u003d998\n\nthe latter could be unset if RELEASE_BOARD_API_LEVEL is not also set.\n\nHow about we just replace all BOARD_API_LEVEL_FROZEN with RELEASE_BOARD_API_LEVEL_FROZEN in .mk files, so the .bp and .mk sementics don\u0027t diverge.",
       "revId": "f6efa4a201db1af64c0fb1d7004b278e2a4bd944",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ff3119_05a92253",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1313,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-22T12:01:46Z",
+      "side": 1,
+      "message": "I already uploaded aosp/2919149 for that.\nLet me abandon this CL to include it with aosp/2919525.",
+      "parentUuid": "efc5a1f1_18d1656a",
+      "revId": "f6efa4a201db1af64c0fb1d7004b278e2a4bd944",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
