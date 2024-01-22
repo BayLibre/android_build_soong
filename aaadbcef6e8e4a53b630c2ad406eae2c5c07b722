@@ -190,6 +190,30 @@
       },
       "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f8a282_c5356eec",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-22T07:57:02Z",
+      "side": 1,
+      "message": "\u003e Is 34 here meant to be used as a clang-triple like android34? Then, I think, even when it is 34, vendors still can use the new NDK symbols, right? Calls need to be guarded though.\n\nThis is required only if older GSI can be used for a vendor image. But this is no longer supported in V, is it? In that case, build time guard with future level must be enough.",
+      "parentUuid": "0eb2c2f6_8d63f74c",
+      "range": {
+        "startLine": 1609,
+        "startChar": 31,
+        "endLine": 1609,
+        "endChar": 49
+      },
+      "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
