@@ -22,6 +22,30 @@
       },
       "revId": "6f35253e9634ed13bd84c563114ca956f34592cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "781d92d6_c17f4f11",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-22T22:27:13Z",
+      "side": 1,
+      "message": "I\u0027m hesitant about adding more CLs. Partners may need to cherrypick this fix. It\u0027s easier for them to cherrypick if the fix consists of only 2 CLs, or they\u0027ll be scared.",
+      "parentUuid": "52d6e43d_f2faa173",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 1
+      },
+      "revId": "6f35253e9634ed13bd84c563114ca956f34592cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
