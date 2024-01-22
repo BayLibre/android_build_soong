@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1781d84_c1157fa0",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-22T12:10:08Z",
+      "side": 1,
+      "message": "Is there a case that `ctx.useVndk() \u003d\u003d true` when `IsVndkDeprecated() \u003d\u003d true`?\n@kiyoungkim@google.com Could you answer to this?",
+      "range": {
+        "startLine": 1612,
+        "startChar": 5,
+        "endLine": 1612,
+        "endChar": 48
+      },
+      "revId": "a81ad935aa587af874ad2363354df3a59245e87c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b9049f_25da139f",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-22T12:10:08Z",
+      "side": 1,
+      "message": "Why should we check if `PLATFORM_VERSION_CODENAME` is `REL` for vendor modules?",
+      "range": {
+        "startLine": 1637,
+        "startChar": 72,
+        "endLine": 1637,
+        "endChar": 100
+      },
+      "revId": "a81ad935aa587af874ad2363354df3a59245e87c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
