@@ -16,6 +16,24 @@
       "message": "We already have soong code that checks it via the release flag: https://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/build/soong/sepolicy_freeze.go;l\u003d49;drc\u003d3e34b72f9c51efa5c7bc964527d4f63b98955845\n\nCan\u0027t we keep using that?",
       "revId": "06917629a5f4aad590fe4674adbfa11b17f6ce3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ba10f3d_4bae066a",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1313,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-22T00:42:22Z",
+      "side": 1,
+      "message": "Thanks! I didn\u0027t know soong has `GetBuildFlag` for the RELEASE flags. Let me update the code with it.",
+      "parentUuid": "e1934f87_9cf9a1ed",
+      "revId": "06917629a5f4aad590fe4674adbfa11b17f6ce3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
