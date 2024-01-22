@@ -214,6 +214,30 @@
       },
       "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93fd5941_e135b8a6",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-01-22T09:33:16Z",
+      "side": 1,
+      "message": "okay facing some problems here. \n\n1. Reading the vendor modules sdk_version didn\u0027t work at all, I think it is due to this line (https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/sdk.go;l\u003d95) keeps clearing that field\n\n2. cc_object modules have some weird semantics for splitting vendor modules. Not sure how to handle those properly.",
+      "parentUuid": "f9f8a282_c5356eec",
+      "range": {
+        "startLine": 1609,
+        "startChar": 31,
+        "endLine": 1609,
+        "endChar": 49
+      },
+      "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
