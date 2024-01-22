@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "801be81e_4c6d405e",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-22T22:20:13Z",
+      "side": 1,
+      "message": "The need here is to look at any (direct) dependencies, and propagate their provider to this module if and only if there is one.\n\nSee https://android.googlesource.com/platform/build/soong/+/4ebab14f2ee6d6257494e739b4780f41c4adc7e6/android/aconfig_providers.go#48 for the previous implementation (it\u0027s less than clear from the diff in this change.)",
+      "parentUuid": "449165c7_edec7fc3",
+      "range": {
+        "startLine": 51,
+        "startChar": 57,
+        "endLine": 51,
+        "endChar": 94
+      },
+      "revId": "dd23e5f9a6fed879ad2a3c2550a499f952235c58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b3cff48a_de68f71c",
         "filename": "android/aconfig_providers.go",
         "patchSetId": 2
