@@ -22,6 +22,30 @@
       },
       "revId": "817b263891ec67a9492d86d3eb060cabf089aa24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ec3ec0b_9d80cbe7",
+        "filename": "cc/config/riscv64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-01-22T23:00:52Z",
+      "side": 1,
+      "message": "yeah, testing agrees that that\u0027s not needed.",
+      "parentUuid": "10283755_e69d1a01",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "817b263891ec67a9492d86d3eb060cabf089aa24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
