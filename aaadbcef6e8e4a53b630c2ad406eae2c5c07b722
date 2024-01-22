@@ -238,6 +238,30 @@
       },
       "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3002e6bf_99822b75",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-01-22T11:08:52Z",
+      "side": 1,
+      "message": "okay figured that it doesn\u0027t make sense for vendor modules to set sdk_version in the first place, changed the implementation to modify min_sdk_level instead.\n\nI\u0027m not 100% sure if this is the right way to do this... though the test case looks good!",
+      "parentUuid": "93fd5941_e135b8a6",
+      "range": {
+        "startLine": 1609,
+        "startChar": 31,
+        "endLine": 1609,
+        "endChar": 49
+      },
+      "revId": "aaadbcef6e8e4a53b630c2ad406eae2c5c07b722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
