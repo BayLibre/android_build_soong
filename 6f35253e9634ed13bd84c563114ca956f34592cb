@@ -46,6 +46,30 @@
       },
       "revId": "6f35253e9634ed13bd84c563114ca956f34592cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e82f5a6f_20d8dbc4",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-22T22:37:42Z",
+      "side": 1,
+      "message": "Also, I don\u0027t think we can get rid of the kernel parsing stuff in the near future. Devices are allowed to update to new platforms without updating the kernel.",
+      "parentUuid": "781d92d6_c17f4f11",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 1
+      },
+      "revId": "6f35253e9634ed13bd84c563114ca956f34592cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
