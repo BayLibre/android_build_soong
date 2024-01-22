@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d0c5a92_c67c0556",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-22T22:16:53Z",
+      "side": 1,
+      "message": "Let\u0027s take the discussion there, since there\u0027s better context on that change.",
+      "parentUuid": "35347dba_0c97658d",
+      "range": {
+        "startLine": 951,
+        "startChar": 0,
+        "endLine": 954,
+        "endChar": 0
+      },
+      "revId": "49d2364b0abeb390d1e74a175d527389e4487708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91f3134c_fb804e9c",
@@ -201,6 +225,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ec83f5_26cc14aa",
+        "filename": "android/provider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-22T22:16:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41a98d74_9a4785d0",
+      "revId": "49d2364b0abeb390d1e74a175d527389e4487708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21bcbfd6_650e82fc",
@@ -320,6 +362,30 @@
       "side": 1,
       "message": "Agreed.",
       "parentUuid": "018bd82e_e1ac0d1a",
+      "range": {
+        "startLine": 140,
+        "startChar": 63,
+        "endLine": 140,
+        "endChar": 105
+      },
+      "revId": "49d2364b0abeb390d1e74a175d527389e4487708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48f63fba_0e01bc1f",
+        "filename": "android/provider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-22T22:16:53Z",
+      "side": 1,
+      "message": "I don\u0027t know if the change I made addresses your concerns for tests - let\u0027s chat offline if we need to dig deeper.",
+      "parentUuid": "3bc36faf_fa88e199",
       "range": {
         "startLine": 140,
         "startChar": 63,
