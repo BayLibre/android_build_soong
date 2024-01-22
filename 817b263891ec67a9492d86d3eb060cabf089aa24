@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10283755_e69d1a01",
+        "filename": "cc/config/riscv64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-22T19:14:30Z",
+      "side": 1,
+      "message": "Should we also remove this?\n\n(We don\u0027t need to pass a variant of -mno-impilcit-float to the linker as this option passed through the IR to the backend (as the noimplicitfloat function attribute).)",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "817b263891ec67a9492d86d3eb060cabf089aa24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
