@@ -335,6 +335,13 @@ func parseCStd(cStdPtr *string) string {
 	}
 }
 
+// Transform '-Wno-error=foo' to '-Wno-foo', modifies the slice in-place.
+func replaceNoErrorWithWarning(flags []string) {
+	for index, flag := range flags {
+		flags[index] = strings.ReplaceAll(flag, "-Wno-error=", "-Wno-")
+	}
+}
+
 // Create a Flags struct that collects the compile flags from global values,
 // per-target values, module type values, and per-module Blueprints properties
 func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags {
@@ -365,6 +372,12 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 
 	flags.Yacc = compiler.Properties.Yacc
 	flags.Lex = compiler.Properties.Lex
+
+	// If a third-party path, replace all "-Wno-error=foo" flags with "-Wno-foo". The '-Wno-error=foo'
+	// flag should be reserved for very select warnings in Soong.
+	if android.IsThirdPartyPath(modulePath) {
+		replaceNoErrorWithWarning(flags.Local.CFlags)
+	}
 
 	// Include dir cflags
 	localIncludeDirs := android.PathsForModuleSrc(ctx, compiler.Properties.Local_include_dirs)
