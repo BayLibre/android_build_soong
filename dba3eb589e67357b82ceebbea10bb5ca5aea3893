@@ -142,6 +142,30 @@
       },
       "revId": "dba3eb589e67357b82ceebbea10bb5ca5aea3893",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e97d6b77_6bcc5c51",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-01-23T17:18:47Z",
+      "side": 1,
+      "message": "I\u0027d rather not alter `eng` vs. `userdebug` for build spam, because I don\u0027t think we have the bandwidth to actually do anything about these kinds of warnings in `external/` at the present time (or any reasonable future date, tbh).\n\nOne thing that we might not be getting captured here in the conversation is that any changes to `build/soong/` will also cause extra work for our partners and downstream folks. They might have even more problematic interactions (assuming we add/remove/adjust flag orderings) with projects that we can\u0027t see ourselves (i.e. they might have additional 3p libraries). I\u0027d like to err on the side of minimizing downstream pain if at all possible. So the way I see it, we should probably be doing something like the following:\n\n1) Add `-Wno-unused` to the `noOverrideExternalGlobalCflags` (so slightly more aggressive as @enh@google.com suggested above).\n2) In `build/soong`, remove all of the `-Wno-error\u003d` from any `external/` project flags.\n3) (Optionally, because it is cleanup) Remove all `-Wno-error\u003d` explicitly from `Android.bp` files in `external/`.\n4) (Very optional and at least a year from now) Remove the Soong `-Wno-error` stripping from part 2, and make it a hard error to pass those flags in `external/`.",
+      "parentUuid": "c0c1aedd_abde8da1",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 26
+      },
+      "revId": "dba3eb589e67357b82ceebbea10bb5ca5aea3893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
