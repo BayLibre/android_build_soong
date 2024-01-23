@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49204612_6d89e7e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-23T19:47:51Z",
+      "side": 1,
+      "message": "\u003e Then since the next build is not failing, why do we need this change?\n\nI think we will need these once we have multiple prebuilt apexes in the tree. \n\n\u003e The test error usually means dexpreopt artifacts for system server are generated with the wrong jars.\n\nAck, thanks for the instructions. I will repro using these instructions.",
+      "parentUuid": "9133535f_2398aa77",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 74
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "124fb591_6345a3ec",
         "filename": "apex/apex_test.go",
         "patchSetId": 2
@@ -185,6 +209,30 @@
       "side": 1,
       "message": "I see. Just checking, does `apex/prebuilt.go` handle all prebuilt cases, including those that haven\u0027t migrated to `apex_contributions`?",
       "parentUuid": "09c0e99d_a8e2c96c",
+      "range": {
+        "startLine": 1631,
+        "startChar": 4,
+        "endLine": 1631,
+        "endChar": 85
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33934e33_2fb5138e",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1631,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-23T19:47:51Z",
+      "side": 1,
+      "message": "Yes, it should handle all prebuilt cases.",
+      "parentUuid": "02ebca66_f057b43b",
       "range": {
         "startLine": 1631,
         "startChar": 4,
