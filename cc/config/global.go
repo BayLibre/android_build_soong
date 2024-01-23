@@ -351,6 +351,7 @@ var (
 		// enabling since it's a cosmetic issue.
 		"-Wno-bitwise-instead-of-logical",
 
+		"-Wno-unused-parameter",
 		"-Wno-unused-but-set-variable",
 		"-Wno-unused-but-set-parameter",
 		"-Wno-unqualified-std-cast-call",
