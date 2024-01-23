@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a29ed77_bf7d4f8c",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11635,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-23T19:21:41Z",
+      "side": 0,
+      "message": "Would you be able to provide some explanation about why the multiple `apex_contributions` selection testing is removed here?",
+      "range": {
+        "startLine": 11625,
+        "startChar": 0,
+        "endLine": 11635,
+        "endChar": 3
+      },
+      "revId": "fbe572b06459d7d391a9a9c1dcf9051d531c8118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

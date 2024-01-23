@@ -50,6 +50,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "124fb591_6345a3ec",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11574,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-23T19:21:41Z",
+      "side": 1,
+      "message": "Should this be `java_sdk_library` instead, or was this module intentionally defined as a library for simplicity? I can see that its prebuilt counterpart is `java_sdk_library_import` module type.",
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd2c7b02_a7969be3",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-23T19:21:41Z",
+      "side": 1,
+      "message": "```suggestion\n\tif !allSystemServerJars.ContainsJar(libName) {\n```",
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b1daf67_83fdb08c",
         "filename": "java/base.go",
         "patchSetId": 2
