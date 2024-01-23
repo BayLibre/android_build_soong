@@ -70,6 +70,76 @@
       },
       "revId": "6f35253e9634ed13bd84c563114ca956f34592cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39cf9c38_b6b70959",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-01-23T17:12:57Z",
+      "side": 1,
+      "message": "\u003e It\u0027s easier for them to cherrypick if the fix consists of only 2 CLs, or they\u0027ll be scared.\n\nThey may get scared by the size of this as well, but fair enough.",
+      "parentUuid": "e82f5a6f_20d8dbc4",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 1
+      },
+      "revId": "6f35253e9634ed13bd84c563114ca956f34592cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6c5ec88_d47afde7",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-01-23T17:12:57Z",
+      "side": 1,
+      "message": "One thing I\u0027m not able to verify is that the sequencing is guaranteed correct here and in `buildBootImageVariant`, so that the file has been written when `cat` runs. It\u0027s worth a comment here (and in `buildBootImageVariant`) to explain that.",
+      "range": {
+        "startLine": 394,
+        "startChar": 2,
+        "endLine": 394,
+        "endChar": 55
+      },
+      "revId": "6f35253e9634ed13bd84c563114ca956f34592cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06264e2_cb8b60ef",
+        "filename": "scripts/uffd_gc_utils.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-01-23T17:12:57Z",
+      "side": 1,
+      "message": "This will be adjusted later when Lokesh\u0027s new kernel patches land?",
+      "range": {
+        "startLine": 35,
+        "startChar": 13,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "6f35253e9634ed13bd84c563114ca956f34592cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
