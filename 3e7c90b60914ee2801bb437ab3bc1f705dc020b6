@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e56bde61_d2b92ef2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-23T12:51:17Z",
+      "side": 1,
+      "message": "This test was run on trunk-staging, where modules are built from source. Please also run it on next, where modules are built form prebuilts. Looks like the test is currently failing on CI on next (https://android-build.corp.google.com/test_investigate/?testResultId\u003dTR66629130554295315\u0026invocationId\u003dI44600010236866351). Is it because of this issue?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 74
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1daf67_83fdb08c",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1631,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-23T12:51:17Z",
+      "side": 1,
+      "message": "I guess you also need the same in `build/soong/java/sdk_library.go` and `build/soong/java/java.go`?",
+      "range": {
+        "startLine": 1631,
+        "startChar": 4,
+        "endLine": 1631,
+        "endChar": 85
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
