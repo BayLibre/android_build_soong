@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "061efbd8_eb29d794",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-23T22:55:56Z",
+      "side": 1,
+      "message": "There are usages of `moduleName(ctx)` elsewhere. I think you need to remove that function and change all the usages if the function is no longer reliable.",
+      "range": {
+        "startLine": 308,
+        "startChar": 66,
+        "endLine": 308,
+        "endChar": 81
+      },
+      "revId": "797188cb11d007e81b01f6fa63b29ee4e3084a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
