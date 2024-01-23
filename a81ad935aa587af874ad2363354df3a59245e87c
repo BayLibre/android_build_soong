@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2cfeefb9_be9dcb38",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-01-23T04:27:09Z",
+      "side": 1,
+      "message": "As Justin mentioned, useVndk will be false once BOARD_VNDK_VERSION is unset. While BOARD_VNDK_VERSION exists, all targets with KEEP_VNDK\u003dfalse will be in the case that `IsVndkDeprecated() \u003d\u003d true` and `useVndk() \u003d\u003d true`. \n\nHowever, I expect this case to be removed in Feb.\n\nFYI, I created a new function `InVendorOrProduct()` which replaces former `UseVndk()` usage.",
+      "parentUuid": "2087d0a4_d922495c",
+      "range": {
+        "startLine": 1612,
+        "startChar": 5,
+        "endLine": 1612,
+        "endChar": 48
+      },
+      "revId": "a81ad935aa587af874ad2363354df3a59245e87c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2b9049f_25da139f",
         "filename": "cc/cc.go",
         "patchSetId": 6
