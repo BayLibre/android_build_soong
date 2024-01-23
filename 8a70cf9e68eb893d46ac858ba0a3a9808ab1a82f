@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3112ade9_bfa42d86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-01-23T19:56:35Z",
+      "side": 1,
+      "message": "(+sadafebrahimi as fyi since she often deals with new warnings/errors when upgrading external projects...)",
+      "revId": "8a70cf9e68eb893d46ac858ba0a3a9808ab1a82f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
