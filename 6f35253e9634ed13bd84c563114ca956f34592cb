@@ -121,6 +121,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "756a7e5b_5a70b074",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-23T17:59:29Z",
+      "side": 1,
+      "message": "The sequencing is guaranteed by `Input()`. It creates a dependency edge from the dex2oat command to the `UffdGcFlag` file. Ninja respects dependencies and orders the actions accordingly. Therefore, the `UffdGcFlag` must be built before `cat` runs.\n\nI\u0027m not sure it\u0027s worth a comment because the build dependency is the same as all the other build dependencies (e.g., the dex jar must be built before `dex2oat` runs).",
+      "parentUuid": "c6c5ec88_d47afde7",
+      "range": {
+        "startLine": 394,
+        "startChar": 2,
+        "endLine": 394,
+        "endChar": 55
+      },
+      "revId": "6f35253e9634ed13bd84c563114ca956f34592cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b06264e2_cb8b60ef",
         "filename": "scripts/uffd_gc_utils.py",
         "patchSetId": 4
@@ -132,6 +156,30 @@
       "writtenOn": "2024-01-23T17:12:57Z",
       "side": 1,
       "message": "This will be adjusted later when Lokesh\u0027s new kernel patches land?",
+      "range": {
+        "startLine": 35,
+        "startChar": 13,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "6f35253e9634ed13bd84c563114ca956f34592cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "836d7806_49670b2c",
+        "filename": "scripts/uffd_gc_utils.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-23T17:59:29Z",
+      "side": 1,
+      "message": "Confirmed with Lokesh offline. We still want to enable UFFD GC on all kernels that are android12-5.4 or above, and assume that devices will eventually get Lokesh\u0027s patch.",
+      "parentUuid": "b06264e2_cb8b60ef",
       "range": {
         "startLine": 35,
         "startChar": 13,
