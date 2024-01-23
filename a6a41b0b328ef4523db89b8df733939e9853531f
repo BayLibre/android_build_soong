@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21b65e75_aeb1f56f",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-23T23:48:26Z",
+      "side": 1,
+      "message": "nit: These can all be unexported",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 37
+      },
+      "revId": "a6a41b0b328ef4523db89b8df733939e9853531f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5fc0965_d5d166b0",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-23T23:48:26Z",
+      "side": 1,
+      "message": "nit: `mergedAconfigFiles :\u003d make(map[string]Paths)`",
+      "revId": "a6a41b0b328ef4523db89b8df733939e9853531f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d11e627b_27e4c959",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-23T23:48:26Z",
+      "side": 1,
+      "message": "Do you expect providers to be set but with a nil `IntermediateCacheOutputPath`?  If not, I\u0027d suggest using the \u0027dep, ok :\u003d OtherModuleProvider(...); ok {` form.",
+      "range": {
+        "startLine": 54,
+        "startChar": 81,
+        "endLine": 54,
+        "endChar": 119
+      },
+      "revId": "a6a41b0b328ef4523db89b8df733939e9853531f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23163f6a_4f74bce3",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-23T23:48:26Z",
+      "side": 1,
+      "message": "Probably not part of this change, but a `DepSet` would be a much more efficient way to store these transitive dependencies.",
+      "revId": "a6a41b0b328ef4523db89b8df733939e9853531f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
