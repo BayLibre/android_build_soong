@@ -22,6 +22,30 @@
       },
       "revId": "dba3eb589e67357b82ceebbea10bb5ca5aea3893",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e613df80_edebc042",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2024-01-23T05:37:14Z",
+      "side": 1,
+      "message": "This is thrown by external/libdav1d several time (~100). What appears to be happening in this case is that the projects Android.bp file has \"-Wall, -Werror, -Wextra\", followed by a \"-Wno-error\u003dunused-parameter\".\n\nThis maybe goes to the meta question of whether projects should be allowed to add \"-Wall, -Wextra\", given how frequently this adds noise to the build output.",
+      "parentUuid": "c69159c8_1b7cf113",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 26
+      },
+      "revId": "dba3eb589e67357b82ceebbea10bb5ca5aea3893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
