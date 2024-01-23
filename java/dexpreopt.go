@@ -274,6 +274,8 @@ func (d *Dexpreopter) DexpreoptPrebuiltApexSystemServerJars(ctx android.ModuleCo
 	// generate the rules for creating the .odex and .vdex files for this system server jar
 	dexJarFile := di.PrebuiltExportPath(ApexRootRelativePathToJavaLib(libraryName))
 	d.dexpreopt(ctx, dexJarFile)
+
+	dexpreopt.CopySystemServerJarsToPredefinedLocations(ctx, libraryName, dexJarFile)
 }
 
 func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.WritablePath) {
