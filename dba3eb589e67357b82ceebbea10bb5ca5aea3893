@@ -46,6 +46,30 @@
       },
       "revId": "dba3eb589e67357b82ceebbea10bb5ca5aea3893",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5be1616_83581c96",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-23T05:52:55Z",
+      "side": 1,
+      "message": "`-Wall -Wextra` is not the problem - they get turned into errors because of `-Werror`.  It\u0027s the `-Wno-error` that\u0027s the problem.  But it doesn\u0027t feel right to disable/override a warning flag without notice.  Maybe remove the `-Wno-error\u003d` in external/libdav1d/Android.bp?\n\nUnfortunately I don\u0027t have a scalable solution for this.  Given enough SWE hours, the right thing to do is remove and ban `-Wno-error\u003d` in Android.bp (not just in external).  It should be reserved for very select warnings in soong.\n\n(The `-Wextra` is a harder problem for the toolchain team.  Whenever a new warning gets added to `-Wextra`, we end up disabling them in soong - the very thing I am discouraging you from doing here 😞.  go/android-warnings-policy is something we _should_ prioritize in the near term.  But that\u0027ll prevent new mistakes, not fix ones already committed).\n\nOne reasonable thing we _could_ do is to hitch on the `eng` vs `userdebug` wagon and remove `-Wno-error\u003d` flags from `userdebug` builds and send a notice that they are now restricted to `eng` builds.  +srhines for comments.",
+      "parentUuid": "e613df80_edebc042",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 26
+      },
+      "revId": "dba3eb589e67357b82ceebbea10bb5ca5aea3893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
