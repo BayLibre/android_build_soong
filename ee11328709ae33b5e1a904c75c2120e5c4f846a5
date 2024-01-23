@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92e6ff97_e98ef773",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-23T03:20:14Z",
+      "side": 1,
+      "message": "Probably outside the scope of this refactor, but will we need to export all three flavors of artifacts to make in the future?",
+      "range": {
+        "startLine": 601,
+        "startChar": 4,
+        "endLine": 609,
+        "endChar": 5
+      },
+      "revId": "ee11328709ae33b5e1a904c75c2120e5c4f846a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1abb927_f7cab174",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-23T03:20:14Z",
+      "side": 1,
+      "message": "Is there a reason to change add an error to the return type?",
+      "range": {
+        "startLine": 194,
+        "startChar": 25,
+        "endLine": 194,
+        "endChar": 45
+      },
+      "revId": "ee11328709ae33b5e1a904c75c2120e5c4f846a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
