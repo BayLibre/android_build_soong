@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c69159c8_1b7cf113",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-23T05:26:15Z",
+      "side": 1,
+      "message": "Can you give an example file/project where this warning is generated?  Is it numerous?  This warning is not controlled by `-Wall`: https://godbolt.org/z/7Pjco7ncW.  And not explicitly enabled in global.go.  Is it explicitly opted for in an Android.bp?  But that\u0027s a small set: https://source.corp.google.com/search?q\u003d(wunused-parameter%20OR%20weverything)%20lang:soong%20(file:external%20OR%20file:vendor%20OR%20file:hardware)\u0026sq\u003drepo:android%2Fplatform%2Fsuperproject%2Fmain%20b:main",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 26
+      },
+      "revId": "dba3eb589e67357b82ceebbea10bb5ca5aea3893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
