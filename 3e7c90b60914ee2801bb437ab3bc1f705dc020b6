@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5213ea3_0ab406f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-23T18:54:39Z",
+      "side": 1,
+      "message": "The error looks unrelated at first glance. I would expect this specific error to be during ninja execution, something like\n\n```\nninja: no known rule to build `out/soong/system_server_dexjars/service-foo.jar\n```\n\nI did try to run this CL against a LKGB. But go/abtd cannot pick a LKGB since it is older than 30 days https://screenshot.googleplex.com/99fsFmgu4BLHNq9\n\nBtw, would you know if the error means that the dexpreopt\u0027d system server jars are not getting installed on the device? I am not too familiar with the failing test, but I can try to debug it at ninja\u0027s build graph level.",
+      "parentUuid": "e56bde61_d2b92ef2",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 74
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b1daf67_83fdb08c",
         "filename": "java/base.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-23T12:51:17Z",
       "side": 1,
       "message": "I guess you also need the same in `build/soong/java/sdk_library.go` and `build/soong/java/java.go`?",
+      "range": {
+        "startLine": 1631,
+        "startChar": 4,
+        "endLine": 1631,
+        "endChar": 85
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09c0e99d_a8e2c96c",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1631,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-23T18:54:39Z",
+      "side": 1,
+      "message": "I think the refs in those two files are on the prebuilt *Import module types\n- build/soong/java/sdk_library.go: `sdk_library_import`. This will now come from `apex/prebuilt.go` \n- build/soong/java/java.go: `java_import` and `dex_import`. The former will now come from `apex/prebuilt.go`, and the latter module type seems to be an [unused module type](https://source.corp.google.com/search?q\u003ddex_import%5C%22%20f:%5C.bp\u0026ct\u003dos\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main)",
+      "parentUuid": "0b1daf67_83fdb08c",
       "range": {
         "startLine": 1631,
         "startChar": 4,
