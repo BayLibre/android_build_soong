@@ -65,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d87b8f_87db9c80",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11574,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-23T19:35:49Z",
+      "side": 1,
+      "message": "I have changed both of them `java(_import)` for consistency. In this context, both module types should be the same functionally, but I prefer the core java_library module type for unit tests because it requires less boilerplate.",
+      "parentUuid": "124fb591_6345a3ec",
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd2c7b02_a7969be3",
