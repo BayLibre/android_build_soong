@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ef3ce3d_d38140e2",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-23T04:37:45Z",
+      "side": 1,
+      "message": "Thanks,\nThen, we still need both conditions until `BOARD_VNDK_VERSION` is fully removed.",
+      "parentUuid": "2cfeefb9_be9dcb38",
+      "range": {
+        "startLine": 1612,
+        "startChar": 5,
+        "endLine": 1612,
+        "endChar": 48
+      },
+      "revId": "a81ad935aa587af874ad2363354df3a59245e87c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2b9049f_25da139f",
