@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4377271f_0885ce1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-23T22:07:06Z",
+      "side": 1,
+      "message": "Oh, you mean, `moduleName(ctx)` for (1) is the apex name rather than the java library name? So the [`if jarIndex :\u003d systemServerJars.IndexOfJar(module.Name); jarIndex \u003e\u003d 0 {`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/dexpreopt/dexpreopt.go;l\u003d263;drc\u003ddb93553b0252def7889bcca3133aeb7dc14b6777) branch is not taken? This is concerning. Then we should fix it rather than changing the copying logic.\n\nMaybe that\u0027s also why art_standalone_dexpreopt_tests fails on next?",
+      "parentUuid": "d979f965_2847ad6c",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 74
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "124fb591_6345a3ec",
         "filename": "apex/apex_test.go",
         "patchSetId": 2
