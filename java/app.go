@@ -55,6 +55,8 @@ func RegisterAppBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("android_app_certificate", AndroidAppCertificateFactory)
 	ctx.RegisterModuleType("override_android_app", OverrideAndroidAppModuleFactory)
 	ctx.RegisterModuleType("override_android_test", OverrideAndroidTestModuleFactory)
+	// TODO(ron): Does this belong here (java/app) or testing/ dir or tradefed/ dir?
+	ctx.RegisterModuleType("test_module_config", TestModuleConfigFactory)
 }
 
 // AndroidManifest.xml merging
@@ -1512,6 +1514,27 @@ func OverrideAndroidTestModuleFactory() android.Module {
 	m := &OverrideAndroidTest{}
 	m.AddProperties(&overridableAppProperties{})
 	m.AddProperties(&appTestProperties{})
+	m.AddProperties(&testProperties{})
+
+	android.InitAndroidMultiTargetsArchModule(m, android.DeviceSupported, android.MultilibCommon)
+	android.InitOverrideModule(m)
+	return m
+}
+
+type TestModuleConfig struct {
+	android.ModuleBase
+	android.OverrideModuleBase
+}
+
+func (a *TestModuleConfig) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// All the overrides happen in the base module.
+	// TODO(jungjw/ron): Check the base module type.
+	// It doesn't work with cc bases.
+}
+
+// test_run is used to create an android_test module based on another android_test but appends tradefed test run props
+func TestModuleConfig() android.Module {
+	m := &TestModuleConfig{}
 	m.AddProperties(&testProperties{})
 
 	android.InitAndroidMultiTargetsArchModule(m, android.DeviceSupported, android.MultilibCommon)
