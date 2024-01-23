@@ -94,6 +94,30 @@
       },
       "revId": "dba3eb589e67357b82ceebbea10bb5ca5aea3893",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dbc9457_21359aff",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-01-23T15:59:11Z",
+      "side": 1,
+      "message": "heh, yeah, \"look at why libdav1d is still so noisy\" was on my to-do list :-)\n\nif someone can write the golang code to disallow -Wno-error\u003d in external/, i volunteer myself, sadafebrahimi, and prashanthsw (who started all this :-) ) to remove the current ones so that can land. it\u0027s not that many: https://source.corp.google.com/search?q\u003d%5C-Wno-error%3D%20case:yes%20file:external%20file:bp$\u0026sq\u003drepo:android%2Fplatform%2Fsuperproject%2Fmain%20b:main%20-file:prebuilts%2Fvndk%2F%20-file:prebuilts%2Fruntime%2F\n\n(i\u0027m not really comfortable with -Werror in external/ at all, because it accidentally encourages local forking that makes future updates harder. so my only concern here would be accidentally adding another perverse incentive to fork things up.)\n\nfor the broader system, there aren\u0027t _that_ many -Wno-error\u003ds globally: https://source.corp.google.com/search?q\u003d%5C-Wno-error%3D%20case:yes%20file:bp$\u0026sq\u003drepo:android%2Fplatform%2Fsuperproject%2Fmain%20b:main%20-file:prebuilts%2Fvndk%2F%20-file:prebuilts%2Fruntime%2F\n\nif we had a way to ensure they don\u0027t come back, that seems both worthwhile and doable if we shard them out...\n\n*but* to answer pirama\u0027s specific question, `-Wno-unused-parameter` is the most popular -Wno- in external _by far_. it\u0027s almost as popular as the next two put together. i was actually going to come along later today with a change very like this, but promoting the top N most disabled warnings in external to here. (the interesting question is where to stop!)",
+      "parentUuid": "8d72867d_9ab10b00",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 26
+      },
+      "revId": "dba3eb589e67357b82ceebbea10bb5ca5aea3893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
