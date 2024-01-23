@@ -15,6 +15,8 @@
 package cc
 
 import (
+	"slices"
+	"strings"
 	"testing"
 
 	"android/soong/android"
@@ -44,3 +46,82 @@ func TestIsThirdParty(t *testing.T) {
 		}
 	}
 }
+
+func TestReplaceNoErrorWithWarning(t *testing.T) {
+	flags := []string {
+		"-fPIC",
+		"-Wno-error=warn1",
+		"-Wno-warn2",
+	}
+	expectedFlags := []string {
+		"-fPIC",
+		"-Wno-warn1",
+		"-Wno-warn2",
+	}
+	if res := replaceNoErrorWithWarning(flags); !slices.Equal(res, expectedFlags) {
+		t.Errorf("Expected flags: %v but got: %v", expectedFlags, res)
+	}
+}
+
+func TestReplaceNoErrorForThirdPartyPaths(t *testing.T) {
+	t.Parallel()
+	device_bp := `
+	cc_library_shared {
+		name: "libDeviceTest",
+		srcs: ["test.c"],
+		cflags: [
+			"-fPIC",
+			"-Wno-error=warn1",
+			"-Wno-warn2",
+		],
+	}
+	`
+	external_bp := `
+	cc_library_shared {
+		name: "libExternalTest",
+		srcs: ["test.c"],
+		cflags: [
+			"-fPIC",
+			"-Wno-error=warn3",
+			"-Wno-warn4",
+		],
+	}
+	`
+
+	result := android.GroupFixturePreparers(
+		prepareForCcTest,
+		android.FixtureAddTextFile("device/libnoerror/Android.bp", device_bp),
+		android.FixtureAddTextFile("external/libnoerror/Android.bp", external_bp),
+	).RunTest(t)
+
+	expectedDeviceCFlags := []string{
+		"-fPIC",
+		"-Wno-error=warn1",
+		"-Wno-warn2",
+	}
+	expectedExternalCFlags := []string{
+		"-fPIC",
+		"-Wno-warn3",
+		"-Wno-warn4",
+	}
+
+	libDeviceTest := result.ModuleForTests("libDeviceTest", coreVariant)
+	libExternalTest := result.ModuleForTests("libExternalTest", coreVariant)
+
+	// Verify that modules not under //external preserve -Wno-error=foo.
+	deviceCFlags := libDeviceTest.Rule("cc").Args["cFlags"]
+	for _, flag := range expectedDeviceCFlags {
+		if !strings.Contains(deviceCFlags, flag) {
+			t.Errorf("Expected flag %q but did not find in cflags %q", flag, deviceCFlags)
+		}
+	}
+
+	// Verify that modules under //external replace -Wno-error=foo with -Wno-foo.
+	externalCFlags := libExternalTest.Rule("cc").Args["cFlags"]
+	for _, flag := range expectedExternalCFlags {
+		if !strings.Contains(externalCFlags, flag) {
+			t.Errorf("Expected flag %q but did not find in cflags %q", flag, externalCFlags)
+		}
+	}
+}
+
