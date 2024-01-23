@@ -45,6 +45,30 @@
       },
       "revId": "a81ad935aa587af874ad2363354df3a59245e87c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc998544_d85f762a",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-01-23T03:38:50Z",
+      "side": 1,
+      "message": "not yet for main branch, so look at both flags for now. we can look at vendorApiLe elFrozen alone after Q2 (or after 2024) when we transitioned fully to build config development",
+      "parentUuid": "f2b9049f_25da139f",
+      "range": {
+        "startLine": 1637,
+        "startChar": 72,
+        "endLine": 1637,
+        "endChar": 100
+      },
+      "revId": "a81ad935aa587af874ad2363354df3a59245e87c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
