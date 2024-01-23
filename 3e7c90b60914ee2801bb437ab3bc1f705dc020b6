@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d979f965_2847ad6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-23T21:43:59Z",
+      "side": 1,
+      "message": "I think I see what you mean. I think at ToT, `dexpreoptCommand` is called by\n1. prebuilt apexes (when prebuilts are active)\n2. by the java_import shims (when prebuilts are active)\n\n`dexpreoptCommnand` contains the rules to [copy the system server jars](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/be4412f2ba99326cab407b875bd86da6070aeb80:dexpreopt/dexpreopt.go;l\u003d280-292;drc\u003ddb93553b0252def7889bcca3133aeb7dc14b6777;bpv\u003d0;bpt\u003d0). So at ToT, both (1) and (2) will try to copy the the system server jar to `out/soong/system_server_dexjars/`. We do not run into any duplicate issues today because ModuleConfig uses [moduleName(ctx)](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/be4412f2ba99326cab407b875bd86da6070aeb80:java/dexpreopt.go;l\u003d373;drc\u003d5be6333692b6881b223b672c2251efaf4605bb33;bpv\u003d1;bpt\u003d0) to determine if the current context is that of an apex system server. This will be false for (1), but true for (2). So the copy operation was always done by (2).\n\nIf there are multiple prebuilt apexes in the tree, (2) can no longer do the copy operation, because it does not know which deapexed dex jar to use.\n\nThis CL creates a new copy function that can be used by (1). It removes it from (2) completely.",
+      "parentUuid": "98485883_91d2530a",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 74
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "124fb591_6345a3ec",
         "filename": "apex/apex_test.go",
         "patchSetId": 2
