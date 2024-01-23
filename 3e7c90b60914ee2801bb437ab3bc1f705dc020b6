@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98485883_91d2530a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-23T20:35:50Z",
+      "side": 1,
+      "message": "\u003e I think we will need these once we have multiple prebuilt apexes in the tree.\n\nI\u0027m still missing something.\n\nIn `apex/prebuilt.go`, you added an early return:\n\n```\n// If this prebuilt apex has not been selected, return\nif p.IsHideFromMake() {\n  return\n}\n```\n\nWith that early return, `dexpreoptSystemServerJars` is only called for the selected apexes. Then the call goes through `dexpreoptSystemServerJars` -\u003e `DexpreoptPrebuiltApexSystemServerJars` -\u003e `dexpreopt` -\u003e `GenerateDexpreoptRule` -\u003e `dexpreoptCommand`, so `dexpreoptCommand` is only called for the sscp jars of the selected apexes.\n\nWithout your other changes in this CL, only the right sscp jars are copied by `dexpreoptCommand`.\n\nTherefore, do you still need other changes in this CL? Or will it work if you only keep the early return and revert other changes?",
+      "parentUuid": "49204612_6d89e7e6",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 74
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "124fb591_6345a3ec",
         "filename": "apex/apex_test.go",
         "patchSetId": 2
