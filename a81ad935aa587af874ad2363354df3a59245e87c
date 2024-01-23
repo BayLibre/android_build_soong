@@ -168,6 +168,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b726639e_11424f72",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-01-23T04:47:28Z",
+      "side": 1,
+      "message": "oh nvm it\u0027s alwasy set by build/make/core/config.mk\nyeah so we would need this extra guard like Justin said",
+      "parentUuid": "e4ab259e_0ac5c66e",
+      "range": {
+        "startLine": 1612,
+        "startChar": 5,
+        "endLine": 1612,
+        "endChar": 48
+      },
+      "revId": "a81ad935aa587af874ad2363354df3a59245e87c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2b9049f_25da139f",
