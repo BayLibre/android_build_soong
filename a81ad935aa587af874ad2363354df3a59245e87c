@@ -194,6 +194,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71e7d5ad_b870a10c",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-23T05:13:42Z",
+      "side": 1,
+      "message": "As `BOARD_VNDK_VERSION` is not fully removed yet, I think the PS6 change is still required. Otherwise, `sdk_version` field will be ignored and set to unexpected vndk version, e.g. 35.",
+      "parentUuid": "6d44efce_68a3b1f2",
+      "range": {
+        "startLine": 1612,
+        "startChar": 5,
+        "endLine": 1612,
+        "endChar": 48
+      },
+      "revId": "a81ad935aa587af874ad2363354df3a59245e87c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2b9049f_25da139f",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -300,6 +324,30 @@
       "writtenOn": "2024-01-23T04:42:12Z",
       "side": 1,
       "message": "Done",
+      "parentUuid": "caa153d5_72ae58da",
+      "range": {
+        "startLine": 1637,
+        "startChar": 72,
+        "endLine": 1637,
+        "endChar": 100
+      },
+      "revId": "a81ad935aa587af874ad2363354df3a59245e87c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "851e2965_3ded1c36",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-23T05:13:42Z",
+      "side": 1,
+      "message": "Thanks!",
       "parentUuid": "caa153d5_72ae58da",
       "range": {
         "startLine": 1637,
