@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9133535f_2398aa77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-23T19:40:11Z",
+      "side": 1,
+      "message": "You are right. If the file can\u0027t be found, it should be a build error rather than a test error. Then since the next build is not failing, why do we need this change? It seems to me that the logic is simpler without this change.\n\nThe test error usually means dexpreopt artifacts for system server are generated with the wrong jars. It\u0027s might be caused by your previous changes, so it\u0027s worth taking a look. To investigate it:\n\n1. Flash a next build to a device.\n1. `adb shell setprop dalvik.vm.extra-opts \u0027-verbose:oat\u0027`\n1. `adb shell stop \u0026\u0026 adb shell start`\n1. Look for logs that contain \"Checksum does not match\", \"ClassLoaderContext check failed\". or other logs printed by [art/runtime/oat/oat_file_assistant.cc](https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/class_loader_context.cc).",
+      "parentUuid": "c5213ea3_0ab406f7",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 74
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "124fb591_6345a3ec",
         "filename": "apex/apex_test.go",
         "patchSetId": 2
@@ -137,6 +161,30 @@
       "side": 1,
       "message": "I think the refs in those two files are on the prebuilt *Import module types\n- build/soong/java/sdk_library.go: `sdk_library_import`. This will now come from `apex/prebuilt.go` \n- build/soong/java/java.go: `java_import` and `dex_import`. The former will now come from `apex/prebuilt.go`, and the latter module type seems to be an [unused module type](https://source.corp.google.com/search?q\u003ddex_import%5C%22%20f:%5C.bp\u0026ct\u003dos\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main)",
       "parentUuid": "0b1daf67_83fdb08c",
+      "range": {
+        "startLine": 1631,
+        "startChar": 4,
+        "endLine": 1631,
+        "endChar": 85
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ebca66_f057b43b",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1631,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-23T19:40:11Z",
+      "side": 1,
+      "message": "I see. Just checking, does `apex/prebuilt.go` handle all prebuilt cases, including those that haven\u0027t migrated to `apex_contributions`?",
+      "parentUuid": "09c0e99d_a8e2c96c",
       "range": {
         "startLine": 1631,
         "startChar": 4,
