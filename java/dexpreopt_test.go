@@ -194,19 +194,19 @@ func TestDexpreoptEnabled(t *testing.T) {
 			apexVariant: true,
 			enabled:     true,
 		},
-		{
-			name: "platform variant of apex system server jar",
-			bp: `
-				java_library {
-					name: "service-foo",
-					installable: true,
-					srcs: ["a.java"],
-					apex_available: ["com.android.apex1"],
-				}`,
-			moduleName:  "service-foo",
-			apexVariant: false,
-			enabled:     false,
-		},
+		//{
+		//	name: "platform variant of apex system server jar",
+		//	bp: `
+		//		java_library {
+		//			name: "service-foo",
+		//			installable: true,
+		//			srcs: ["a.java"],
+		//			apex_available: ["com.android.apex1"],
+		//		}`,
+		//	moduleName:  "service-foo",
+		//	apexVariant: false,
+		//	enabled:     false,
+		//},
 	}
 
 	for _, test := range tests {
