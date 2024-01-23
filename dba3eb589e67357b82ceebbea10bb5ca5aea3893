@@ -70,6 +70,30 @@
       },
       "revId": "dba3eb589e67357b82ceebbea10bb5ca5aea3893",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d72867d_9ab10b00",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2024-01-23T06:01:05Z",
+      "side": 1,
+      "message": "Ack, will wait for further comments - the detail that \"-Wno-error\u003dfoo\" disables the error but then begins to emit \"-Wfoo\" was something I missed!",
+      "parentUuid": "f5be1616_83581c96",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 26
+      },
+      "revId": "dba3eb589e67357b82ceebbea10bb5ca5aea3893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
