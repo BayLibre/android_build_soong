@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb7fda5_dade8725",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-01-23T22:10:51Z",
+      "side": 1,
+      "message": "I think that this kind of thing probably wants an explicit test in Soong as well.",
+      "revId": "17f17d4ea90e34b5168821fe6feac7c9a5db8773",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23afb987_24961066",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-01-23T22:10:51Z",
+      "side": 1,
+      "message": "Based on the code, we\u0027re only applying this to the `Local.CFlags`, but is that because we\u0027re going to eliminate/swap all our other `-Wno-error\u003d` logic in the global rules? Are there places where we think we\u0027d want `-Wno-error\u003d` in external at all, or should we be doing the replacement on the entire complete `CFlags`?",
+      "revId": "17f17d4ea90e34b5168821fe6feac7c9a5db8773",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
