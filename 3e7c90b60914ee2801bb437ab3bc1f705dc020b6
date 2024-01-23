@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1ccd2cf_b00a37c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-23T22:13:50Z",
+      "side": 1,
+      "message": "That branch contains special logic for constructing the class loader context for system server. If the class loader context is not constructed in that way, the runtime won\u0027t be able to pick up the generated dexpreopt artifacts.",
+      "parentUuid": "4377271f_0885ce1c",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 74
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "124fb591_6345a3ec",
         "filename": "apex/apex_test.go",
         "patchSetId": 2
