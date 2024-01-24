@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d97fe5a_05df5259",
+        "filename": "cc/library_cmake.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-24T22:14:22Z",
+      "side": 1,
+      "message": "This is called \"PreArch\", but registering as \"PreDeps\".\n\nAlso suggest adding \"Cmake\" to the name.",
+      "range": {
+        "startLine": 59,
+        "startChar": 25,
+        "endLine": 59,
+        "endChar": 48
+      },
+      "revId": "5872a52fa48d798e425434afbc1a865a54f3d191",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97df83ed_de040a7e",
+        "filename": "cc/library_cmake.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-24T22:14:22Z",
+      "side": 1,
+      "message": "It would be simpler to construct a string in a `strings.Builder` or using the  `text/template` package, then use `android.WriteFileRule` to write it.",
+      "revId": "5872a52fa48d798e425434afbc1a865a54f3d191",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331fe2a5_5b156395",
+        "filename": "cc/library_cmake.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-24T22:14:22Z",
+      "side": 1,
+      "message": "You can probably fix your missing variant problems without having to add your own mutator by making this `android.InitAndroidArchModule(android.HostSupported, android.MultilibFirst)`.  That will make this a `linux-glibc_x86_64` variant, which will match up better with the libraries you\u0027re depending on.  You may also have to add the \"static\" or \"shared\" variant when depending on libraries.",
+      "range": {
+        "startLine": 193,
+        "startChar": 9,
+        "endLine": 193,
+        "endChar": 26
+      },
+      "revId": "5872a52fa48d798e425434afbc1a865a54f3d191",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
