@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9d6af5c_c9d89c56",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-24T16:26:50Z",
+      "side": 1,
+      "message": "What about moving this condition to line 219 with an `||`?",
+      "range": {
+        "startLine": 213,
+        "startChar": 29,
+        "endLine": 213,
+        "endChar": 100
+      },
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c87cfd_0599e986",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-24T16:26:50Z",
+      "side": 1,
+      "message": "Sorry for making so many comments. After seeing this, I realized that we heavily rely on the assumption that both `ctx` and `d` (`dexpreopter`) are about a single library, and your previous changes actually broke that assumption. Here are my suggestions:\n\n1. [`dexpreopter`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/dexpreopt.go;l\u003d101;drc\u003d5be6333692b6881b223b672c2251efaf4605bb33) has too many fields about a single library, so it\u0027s very hard to change it. You need to create one `dexpreopter` per library in `dexpreoptSystemServerJars`, or things won\u0027t work on an apex that provides multiple libraries ([`example`](https://cs.android.com/android/platform/superproject/main/+/main:packages/modules/AdServices/apex/Android.bp;l\u003d55-56;drc\u003d614f36a36c1dbce49118f7113a7c075a4de29663)).\n\n2. You need to check all the usages of `ctx` in this file to see if they still makes sense when `ctx` represents an apex.",
+      "range": {
+        "startLine": 219,
+        "startChar": 18,
+        "endLine": 219,
+        "endChar": 21
+      },
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8a2553d_682e637b",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-24T16:26:50Z",
+      "side": 1,
+      "message": "I think you are probably missing this field when dexpreopt is initiated by `dexpreoptSystemServerJars`. No need to fix it in this CL, but PTAL. You can test with `com.google.android.art` on next, which has a library called [`service-art`](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:prebuilts/module_sdk/art/current/sdk/Android.bp;l\u003d346;drc\u003dd1f7cfa51a2fabcd6faa981ce9732458b5079f3c) that needs this field to be set.",
+      "range": {
+        "startLine": 350,
+        "startChar": 6,
+        "endLine": 350,
+        "endChar": 28
+      },
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
