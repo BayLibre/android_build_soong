@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2af53e3e_3449d885",
+        "filename": "android/mutator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-24T00:44:33Z",
+      "side": 1,
+      "message": "This seems like a flaw in soong\u0027s transition design. Why is arch special here, couldn\u0027t we have other mutators whose variant we need to know from later mutators?\n\nIt seems like maybe this should be a collection of Providers that were derived from the variants of the parent module. The incoming transition should be able to see the whole configuration of the parent, not just arch.",
+      "revId": "1d382fdd592f70dd9d4a797c8273f2d97723c7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
