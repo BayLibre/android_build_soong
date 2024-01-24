@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86014483_ddf675e7",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-24T18:54:08Z",
+      "side": 1,
+      "message": "Why is staticVariantTag checked here? I don\u0027t see it in the old code.",
+      "range": {
+        "startLine": 185,
+        "startChar": 47,
+        "endLine": 185,
+        "endChar": 70
+      },
+      "revId": "a70f45132c30875022652693f723cea4bdacdc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb395a13_97b78b17",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-24T18:54:08Z",
+      "side": 1,
+      "message": "I was under the impression that the return values of `OutgoingTransition`/`IncomingTransition` had to be elements of the result of `Split`. But I guess that\u0027s not actually the case? Do `OutgoingTransition`/`IncomingTransition` cause more variants to be created?\n\nCould we explain this on the comments of TransitionMutator in a followup cl?",
+      "revId": "a70f45132c30875022652693f723cea4bdacdc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faf0b3ae_9fc37448",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-24T18:54:08Z",
+      "side": 1,
+      "message": "Is it possible to get rid of the LtoDefault property by including parts of `func (lto *lto) begin(ctx BaseModuleContext) {` in this mutator?",
+      "revId": "a70f45132c30875022652693f723cea4bdacdc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbc50249_758553a2",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-24T18:54:08Z",
+      "side": 1,
+      "message": "Do we need to have a default variation? It seems like we could just use LTO_THIN_VARIATION and LTO_NONE_VARIATION, and only set HideFromMake on the one that isn\u0027t the \"default\".",
+      "revId": "a70f45132c30875022652693f723cea4bdacdc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
