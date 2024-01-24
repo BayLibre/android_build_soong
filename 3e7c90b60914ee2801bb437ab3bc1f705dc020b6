@@ -218,6 +218,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33fd34bd_42bdffb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-24T04:33:49Z",
+      "side": 1,
+      "message": "I think my changes were indeed the cause of these errors. With moduleName(ctx) replaced with `dexJarStem` [here](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/be4412f2ba99326cab407b875bd86da6070aeb80:java/dexpreopt.go;l\u003d373;drc\u003d5be6333692b6881b223b672c2251efaf4605bb33;bpv\u003d1;bpt\u003d0), the tests seem to pass \n\nhttps://android-build.corp.google.com/abtd/run/L68200030001519183/\n\n(There are some unrelated errors, but if you scroll to `art_standalone_dexpreopt_tests`, they look green https://screenshot.googleplex.com/5ozcosF3Z2PiPr9)\n\nI do think we should remove `moduleName(ctx)` function like you suggested in this [thread](https://android-review.git.corp.google.com/c/platform/build/soong/+/2923733/comment/061efbd8_eb29d794/) and not rely on dexJarStem. I will work on this refactor tonight or early tomorrow PST. \n\nThanks for helping me root cause this.",
+      "parentUuid": "d7b6425f_ee40479c",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 74
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "124fb591_6345a3ec",
         "filename": "apex/apex_test.go",
         "patchSetId": 2
