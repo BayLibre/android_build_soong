@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2bcab33_d77c496b",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-24T01:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21b65e75_aeb1f56f",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 37
+      },
+      "revId": "a6a41b0b328ef4523db89b8df733939e9853531f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5fc0965_d5d166b0",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-01-23T23:48:26Z",
       "side": 1,
       "message": "nit: `mergedAconfigFiles :\u003d make(map[string]Paths)`",
+      "revId": "a6a41b0b328ef4523db89b8df733939e9853531f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "600866a9_05af728b",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-24T01:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5fc0965_d5d166b0",
       "revId": "a6a41b0b328ef4523db89b8df733939e9853531f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72c2899d_5a01a143",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-24T01:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d11e627b_27e4c959",
+      "range": {
+        "startLine": 54,
+        "startChar": 81,
+        "endLine": 54,
+        "endChar": 119
+      },
+      "revId": "a6a41b0b328ef4523db89b8df733939e9853531f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23163f6a_4f74bce3",
@@ -77,6 +143,24 @@
       "writtenOn": "2024-01-23T23:48:26Z",
       "side": 1,
       "message": "Probably not part of this change, but a `DepSet` would be a much more efficient way to store these transitive dependencies.",
+      "revId": "a6a41b0b328ef4523db89b8df733939e9853531f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86208b41_9456e5f6",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-24T01:26:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "23163f6a_4f74bce3",
       "revId": "a6a41b0b328ef4523db89b8df733939e9853531f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
