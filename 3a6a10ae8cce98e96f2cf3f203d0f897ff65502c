@@ -16,6 +16,24 @@
       "message": "I\u0027d expect vendors to blindly follow this  and set `BUILD_FROM_SOURCE_STUB\u003dtrue`, since that\u0027s the only resolution suggested here.  Maybe suggest that the preferred solution is to stop using `WITHOUT_CHECK_API\u003dtrue` and update the api signature files to get faster builds?",
       "revId": "3a6a10ae8cce98e96f2cf3f203d0f897ff65502c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f420b4b2_0390f73e",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-24T01:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46b22e1f_e1022815",
+      "revId": "3a6a10ae8cce98e96f2cf3f203d0f897ff65502c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
