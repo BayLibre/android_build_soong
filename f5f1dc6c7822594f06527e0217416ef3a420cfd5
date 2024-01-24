@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4afa5842_c99bc839",
+        "filename": "aconfig/codegen/cc_aconfig_library_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-24T23:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "116b831f_368d9425",
+      "revId": "f5f1dc6c7822594f06527e0217416ef3a420cfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22706202_53aa78c4",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b6b51e7_260268fc",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-24T23:39:56Z",
+      "side": 1,
+      "message": "The tests in aconfig/codegen that are changed here are examples of the blueprint spec that would create this condition.\n\nTBF, this change adds a dependency to some of the Entries for the module that are not properly correct.  We\u0027d rather have a small amount of extra triggering than lose track of the aconfig files.  This entire area needs a more thorough walkthrough and cleanup, soon.",
+      "parentUuid": "22706202_53aa78c4",
+      "revId": "f5f1dc6c7822594f06527e0217416ef3a420cfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78345be1_5646b8e4",
@@ -48,6 +84,30 @@
       "writtenOn": "2024-01-24T21:54:42Z",
       "side": 1,
       "message": "This might be easier as two separate functions, `mergedAconfigFilesPath` that generates the path, and `mergeAconfigFiles` that calls `mergedAconfigFilesPath` and then generates the rule.",
+      "range": {
+        "startLine": 173,
+        "startChar": 74,
+        "endLine": 173,
+        "endChar": 91
+      },
+      "revId": "f5f1dc6c7822594f06527e0217416ef3a420cfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fdf6516_2625334c",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-01-24T23:39:56Z",
+      "side": 1,
+      "message": "Would it be OK to do this in a follow-on change?",
+      "parentUuid": "78345be1_5646b8e4",
       "range": {
         "startLine": 173,
         "startChar": 74,
