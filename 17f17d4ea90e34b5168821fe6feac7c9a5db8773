@@ -33,6 +33,24 @@
       "message": "Based on the code, we\u0027re only applying this to the `Local.CFlags`, but is that because we\u0027re going to eliminate/swap all our other `-Wno-error\u003d` logic in the global rules? Are there places where we think we\u0027d want `-Wno-error\u003d` in external at all, or should we be doing the replacement on the entire complete `CFlags`?",
       "revId": "17f17d4ea90e34b5168821fe6feac7c9a5db8773",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c173e58_6d4aa872",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2024-01-24T17:29:11Z",
+      "side": 1,
+      "message": "This was intentional - I figured it only made sense to clear flags that the module provides, as we may want to honor whatever flags are provided by the override set in cc/config/global.go. Indeed, we\u0027d eliminate or swap our other no-error logic in the global rules, because we ideally want to use that sparingly in general (or escalate to errors if we care about it). Either way, this is just to allow build/soong owners to always have the escape hatch of applying no-error should the need arise.",
+      "parentUuid": "23afb987_24961066",
+      "revId": "17f17d4ea90e34b5168821fe6feac7c9a5db8773",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
