@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd897399_e6db682d",
+        "filename": "cc/coverage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-24T18:26:03Z",
+      "side": 1,
+      "message": "Maybe we could pass the result of `Split()` to `IncomingTransition`, so that we don\u0027t need to replicate the logic here. Or even not call `IncomingTransition` at all if `Split` only returned 1 value.",
+      "revId": "ccaa9ed734a6a9f8895edd35786a247102c7cf0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
