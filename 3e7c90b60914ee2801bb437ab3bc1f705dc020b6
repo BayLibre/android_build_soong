@@ -242,6 +242,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c90d2d7_8431c002",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-24T06:02:10Z",
+      "side": 1,
+      "message": "I have created aosp/2925197 for this. I think with that CL, we can likely subsume `CopySystemServerJarsToPredefinedLocations` back into `java.dexpreopt`, so please lmk if you would prefer the copy operation to remain inside `java.dexpreopt`.",
+      "parentUuid": "33fd34bd_42bdffb3",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 74
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "124fb591_6345a3ec",
         "filename": "apex/apex_test.go",
         "patchSetId": 2

@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b888f0_80245b4c",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-24T06:02:10Z",
+      "side": 1,
+      "message": "I have removed this function in aosp/2925197",
+      "parentUuid": "061efbd8_eb29d794",
+      "range": {
+        "startLine": 308,
+        "startChar": 66,
+        "endLine": 308,
+        "endChar": 81
+      },
+      "revId": "797188cb11d007e81b01f6fa63b29ee4e3084a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d389f491_666b4e03",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "I think you are right, I am now leaning towards adding an explicit `libraryName` to the [dexpreopt](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/be4412f2ba99326cab407b875bd86da6070aeb80:java/dexpreopt.go;l\u003d279;bpv\u003d1;bpt\u003d0;drc\u003d5be6333692b6881b223b672c2251efaf4605bb33) function",
       "parentUuid": "d389f491_666b4e03",
+      "range": {
+        "startLine": 375,
+        "startChar": 19,
+        "endLine": 375,
+        "endChar": 29
+      },
+      "revId": "797188cb11d007e81b01f6fa63b29ee4e3084a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec77c7e2_18141ac1",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-24T06:02:10Z",
+      "side": 1,
+      "message": "I have created aosp/2925197 to pass library name as an argument",
+      "parentUuid": "c3ff8d8a_42eb9687",
       "range": {
         "startLine": 375,
         "startChar": 19,
