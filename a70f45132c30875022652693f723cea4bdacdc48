@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "08bfc182_faec3efb",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-24T22:16:18Z",
+      "side": 1,
+      "message": "The old code was resolving existing dependencies after creating variants using the logic in Blueprint that made a new variant depend on the matching variant of its dependencies if the matching variant existed.  TransitionMutators have to do that up front by setting the OutgoingTransition correctly.  If this doesn\u0027t set the transition for `staticVariantTag` then you end up with a dependency on the `\"\"` configuration of the static variant.",
+      "parentUuid": "86014483_ddf675e7",
+      "range": {
+        "startLine": 185,
+        "startChar": 47,
+        "endLine": 185,
+        "endChar": 70
+      },
+      "revId": "a70f45132c30875022652693f723cea4bdacdc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cb395a13_97b78b17",
         "filename": "cc/lto.go",
         "patchSetId": 1
@@ -60,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88eb4779_0007ea50",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-24T22:16:18Z",
+      "side": 1,
+      "message": "It is, but I\u0027m not sure how much value it adds.  `begin` still needs the result of the `LtoDefault` property to compute `LtoEnabled`.  I could separate it out and recompute it, but I don\u0027t think that helps much as long as `LtoEnabled` exists.",
+      "parentUuid": "faf0b3ae_9fc37448",
+      "revId": "a70f45132c30875022652693f723cea4bdacdc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbc50249_758553a2",
         "filename": "cc/lto.go",
         "patchSetId": 1
@@ -71,6 +113,24 @@
       "writtenOn": "2024-01-24T18:54:08Z",
       "side": 1,
       "message": "Do we need to have a default variation? It seems like we could just use LTO_THIN_VARIATION and LTO_NONE_VARIATION, and only set HideFromMake on the one that isn\u0027t the \"default\".",
+      "revId": "a70f45132c30875022652693f723cea4bdacdc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fd35a3a_4b890f1c",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-24T22:16:18Z",
+      "side": 1,
+      "message": "I think the default variation is necessary, at lest for now, so that other modules can depend on this one without knowing which LTO variation to use.",
+      "parentUuid": "cbc50249_758553a2",
       "revId": "a70f45132c30875022652693f723cea4bdacdc48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
