@@ -51,6 +51,24 @@
       "parentUuid": "23afb987_24961066",
       "revId": "17f17d4ea90e34b5168821fe6feac7c9a5db8773",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65bf0aa8_236b131f",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-01-24T17:36:54Z",
+      "side": 1,
+      "message": "Sounds good to me.",
+      "parentUuid": "9c173e58_6d4aa872",
+      "revId": "17f17d4ea90e34b5168821fe6feac7c9a5db8773",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
