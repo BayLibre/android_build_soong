@@ -100,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f652c4c_517cd136",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-25T18:01:42Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "88eb4779_0007ea50",
+      "revId": "a70f45132c30875022652693f723cea4bdacdc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbc50249_758553a2",
