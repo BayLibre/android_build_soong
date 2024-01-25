@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff14b860_84ef9e48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-25T01:29:40Z",
+      "side": 1,
+      "message": "I need to do some further refactor. Marking this CL as WIP till then.",
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9d6af5c_c9d89c56",
@@ -60,6 +77,30 @@
       "writtenOn": "2024-01-24T16:26:50Z",
       "side": 1,
       "message": "I think you are probably missing this field when dexpreopt is initiated by `dexpreoptSystemServerJars`. No need to fix it in this CL, but PTAL. You can test with `com.google.android.art` on next, which has a library called [`service-art`](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:prebuilts/module_sdk/art/current/sdk/Android.bp;l\u003d346;drc\u003dd1f7cfa51a2fabcd6faa981ce9732458b5079f3c) that needs this field to be set.",
+      "range": {
+        "startLine": 350,
+        "startChar": 6,
+        "endLine": 350,
+        "endChar": 28
+      },
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0d9dc1c_318b7bdf",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-25T01:29:40Z",
+      "side": 1,
+      "message": "I think you are right, this likely does not get set if we do this operation at the apex level. Would you know if there is a test I can run to verify the correct behavior? (something like `art_standalone_dexpreopt_tests`?)",
+      "parentUuid": "c8a2553d_682e637b",
       "range": {
         "startLine": 350,
         "startChar": 6,
