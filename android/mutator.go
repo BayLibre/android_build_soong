@@ -16,6 +16,7 @@ package android
 
 import (
 	"github.com/google/blueprint"
+	"text/scanner"
 )
 
 // Phases:
@@ -375,6 +376,15 @@ type IncomingTransitionContext interface {
 	Config() Config
 
 	DeviceConfig() DeviceConfig
+
+	// Errorf reports an error at the specified position of the module definition file.
+	Errorf(pos scanner.Position, fmt string, args ...interface{})
+
+	// ModuleErrorf reports an error at the line number of the module type in the module definition.
+	ModuleErrorf(fmt string, args ...interface{})
+
+	// PropertyErrorf reports an error at the line number of a property in the module definition.
+	PropertyErrorf(property, fmt string, args ...interface{})
 }
 
 type OutgoingTransitionContext interface {
@@ -493,30 +503,30 @@ func (a *androidTransitionMutator) Split(ctx blueprint.BaseModuleContext) []stri
 
 type outgoingTransitionContextImpl struct {
 	archModuleContext
-	bp blueprint.OutgoingTransitionContext
+	blueprint.OutgoingTransitionContext
 }
 
 func (c *outgoingTransitionContextImpl) Module() Module {
-	return c.bp.Module().(Module)
+	return c.OutgoingTransitionContext.Module().(Module)
 }
 
 func (c *outgoingTransitionContextImpl) DepTag() blueprint.DependencyTag {
-	return c.bp.DepTag()
+	return c.OutgoingTransitionContext.DepTag()
 }
 
 func (c *outgoingTransitionContextImpl) Config() Config {
-	return c.bp.Config().(Config)
+	return c.OutgoingTransitionContext.Config().(Config)
 }
 
 func (c *outgoingTransitionContextImpl) DeviceConfig() DeviceConfig {
-	return DeviceConfig{c.bp.Config().(Config).deviceConfig}
+	return DeviceConfig{c.OutgoingTransitionContext.Config().(Config).deviceConfig}
 }
 
 func (a *androidTransitionMutator) OutgoingTransition(bpctx blueprint.OutgoingTransitionContext, sourceVariation string) string {
 	if m, ok := bpctx.Module().(Module); ok {
 		ctx := &outgoingTransitionContextImpl{
-			archModuleContext: m.base().archModuleContextFactory(bpctx),
-			bp:                bpctx,
+			archModuleContext:         m.base().archModuleContextFactory(bpctx),
+			OutgoingTransitionContext: bpctx,
 		}
 		return a.mutator.OutgoingTransition(ctx, sourceVariation)
 	} else {
@@ -526,26 +536,26 @@ func (a *androidTransitionMutator) OutgoingTransition(bpctx blueprint.OutgoingTr
 
 type incomingTransitionContextImpl struct {
 	archModuleContext
-	bp blueprint.IncomingTransitionContext
+	blueprint.IncomingTransitionContext
 }
 
 func (c *incomingTransitionContextImpl) Module() Module {
-	return c.bp.Module().(Module)
+	return c.IncomingTransitionContext.Module().(Module)
 }
 
 func (c *incomingTransitionContextImpl) Config() Config {
-	return c.bp.Config().(Config)
+	return c.IncomingTransitionContext.Config().(Config)
 }
 
 func (c *incomingTransitionContextImpl) DeviceConfig() DeviceConfig {
-	return DeviceConfig{c.bp.Config().(Config).deviceConfig}
+	return DeviceConfig{c.IncomingTransitionContext.Config().(Config).deviceConfig}
 }
 
 func (a *androidTransitionMutator) IncomingTransition(bpctx blueprint.IncomingTransitionContext, incomingVariation string) string {
 	if m, ok := bpctx.Module().(Module); ok {
 		ctx := &incomingTransitionContextImpl{
-			archModuleContext: m.base().archModuleContextFactory(bpctx),
-			bp:                bpctx,
+			archModuleContext:         m.base().archModuleContextFactory(bpctx),
+			IncomingTransitionContext: bpctx,
 		}
 		return a.mutator.IncomingTransition(ctx, incomingVariation)
 	} else {
