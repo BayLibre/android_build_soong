@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39508114_c6845c34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-25T23:00:23Z",
+      "side": 1,
+      "message": "For an offline discussion, Jiakai I would also like your thoughts on if we could consider defining them at the top-level prebuilt apex or prebuilt sccp_fragment. We would eventually like to remove these shim java_imports out of the module sdk b/320711431. Something like\n```\nprebuilt_apex {\n   name: \"com.android.foo\",\n   exported_sscp_fragments: [\"foo-sscp-fragment\"],\n}\nprebuilt_sscp_fragment {\n   name: \"foo-sscp-fragment\",\n   contents: [\"service-foo\"], # unguided\n   dexpreopt_profile_guided_contents: [\"service-bar\"], # use service-bar.jar.prof to guide optimization\n}\n```",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 62
+      },
+      "revId": "89c5b4a288d5b93f6e46f0c63ffe63befb101c29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
