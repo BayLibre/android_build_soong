@@ -275,6 +275,13 @@ func (d *Dexpreopter) DexpreoptPrebuiltApexSystemServerJars(ctx android.ModuleCo
 	d.installPath = android.PathForModuleInPartitionInstall(ctx, "", strings.TrimPrefix(dexpreopt.GetSystemServerDexLocation(ctx, dc, libraryName), "/"))
 	// generate the rules for creating the .odex and .vdex files for this system server jar
 	dexJarFile := di.PrebuiltExportPath(ApexRootRelativePathToJavaLib(libraryName))
+
+	d.inputProfilePathOnHost = nil // reset: TODO(spandandas): Make dexpreopter stateless
+	if android.InList(libraryName, di.GetDexpreoptProfileGuidedExportedModuleNames()) {
+		// Set the profile path to guide optimization
+		d.inputProfilePathOnHost = di.PrebuiltExportPath(ApexRootRelativePathToJavaLib(libraryName) + ".prof")
+	}
+
 	d.dexpreopt(ctx, libraryName, dexJarFile)
 }
 
@@ -347,6 +354,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, libName string, dexJa
 	var profileClassListing android.OptionalPath
 	var profileBootListing android.OptionalPath
 	profileIsTextListing := false
+
 	if d.inputProfilePathOnHost != nil {
 		profileClassListing = android.OptionalPathForPath(d.inputProfilePathOnHost)
 	} else if BoolDefault(d.dexpreoptProperties.Dex_preopt.Profile_guided, true) && !forPrebuiltApex(ctx) {
