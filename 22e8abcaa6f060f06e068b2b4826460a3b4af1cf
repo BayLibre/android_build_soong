@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04eebbc_f75462a5",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-25T22:03:04Z",
+      "side": 1,
+      "message": "This is not currently included in `HiddenAPIFlagFileCategories` -- https://r.android.com/1711994 includes some details about why it\u0027s explicitly excluded. Can you verify if this is safe to be included here?",
+      "revId": "22e8abcaa6f060f06e068b2b4826460a3b4af1cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
