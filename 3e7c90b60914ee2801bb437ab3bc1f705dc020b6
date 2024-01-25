@@ -290,6 +290,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c45d4be_160eb027",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-25T01:25:30Z",
+      "side": 1,
+      "message": "Agreed, I think it makes sense for this to be within `java.dexpreopt` and not have a two-step statement where we call dexpreopt and then call the copy function. But I also think that `java.dexpreopt` has a _lot_ of responsibilities, and it might be nice to break it into smaller pieces.\n\nI am working my way through the refactor pieces you mentioned in the [next CL of this stack](https://android-review.git.corp.google.com/c/platform/build/soong/+/2925197/comment/f4c87cfd_0599e986/). In the meantime, since this CL fixes `art_standalone_dexpreopt_tests` for next, I would like to submit it as-is. I will subsume the copy operation back into `java.dexpreopt` when I do the refactor in the next CL",
+      "parentUuid": "bc97758e_45769564",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 74
+      },
+      "revId": "3e7c90b60914ee2801bb437ab3bc1f705dc020b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "124fb591_6345a3ec",
         "filename": "apex/apex_test.go",
         "patchSetId": 2
