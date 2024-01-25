@@ -1970,6 +1970,17 @@ func (c *config) GetBuildFlag(name string) (string, bool) {
 	return val, ok
 }
 
+func (c *config) IsBuildFlagTrue(name string) bool {
+	if value, ok := c.GetBuildFlag("RELEASE_USE_RESOURCE_PROCESSOR_BY_DEFAULT"); ok {
+		return value == "1" || value == "y" || value == "yes" || value == "on" || value == "true"
+	}
+	return false
+}
+
+func (c *config) UseResourceProcessorByDefault() bool {
+	return c.IsBuildFlagTrue("RELEASE_USE_RESOURCE_PROCESSOR_BY_DEFAULT")
+}
+
 var (
 	mainlineApexContributionBuildFlags = []string{
 		"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES",
