@@ -219,8 +219,6 @@ func TestSystemServerClasspathFragmentWithContentNotInMake(t *testing.T) {
 }
 
 func TestPrebuiltSystemserverclasspathFragmentContents(t *testing.T) {
-	// TODO(spandandas): Fix the rules for profile guided dexpreopt of deapexed prebuilt jars
-	t.Skip()
 	result := android.GroupFixturePreparers(
 		prepareForTestWithSystemserverclasspathFragment,
 		prepareForTestWithMyapex,
@@ -292,8 +290,8 @@ func TestPrebuiltSystemserverclasspathFragmentContents(t *testing.T) {
 		"javalib/bar.jar.prof",
 	})
 
-	assertProfileGuided(t, ctx, "foo", "android_common_myapex", false)
-	assertProfileGuided(t, ctx, "bar", "android_common_myapex", true)
+	assertProfileGuidedPrebuilt(t, ctx, "myapex", "foo", false)
+	assertProfileGuidedPrebuilt(t, ctx, "myapex", "bar", true)
 }
 
 func TestSystemserverclasspathFragmentStandaloneContents(t *testing.T) {
@@ -379,8 +377,6 @@ func TestSystemserverclasspathFragmentStandaloneContents(t *testing.T) {
 }
 
 func TestPrebuiltStandaloneSystemserverclasspathFragmentContents(t *testing.T) {
-	// TODO(spandandas): Fix the rules for profile guided dexpreopt of deapexed prebuilt jars
-	t.Skip()
 	result := android.GroupFixturePreparers(
 		prepareForTestWithSystemserverclasspathFragment,
 		prepareForTestWithMyapex,
@@ -445,12 +441,20 @@ func TestPrebuiltStandaloneSystemserverclasspathFragmentContents(t *testing.T) {
 		"javalib/bar.jar.prof",
 	})
 
-	assertProfileGuided(t, ctx, "foo", "android_common_myapex", false)
-	assertProfileGuided(t, ctx, "bar", "android_common_myapex", true)
+	assertProfileGuidedPrebuilt(t, ctx, "myapex", "foo", false)
+	assertProfileGuidedPrebuilt(t, ctx, "myapex", "bar", true)
 }
 
 func assertProfileGuided(t *testing.T, ctx *android.TestContext, moduleName string, variant string, expected bool) {
 	dexpreopt := ctx.ModuleForTests(moduleName, variant).Rule("dexpreopt")
+	actual := strings.Contains(dexpreopt.RuleParams.Command, "--profile-file=")
+	if expected != actual {
+		t.Fatalf("Expected profile-guided to be %v, got %v", expected, actual)
+	}
+}
+
+func assertProfileGuidedPrebuilt(t *testing.T, ctx *android.TestContext, apexName string, moduleName string, expected bool) {
+	dexpreopt := ctx.ModuleForTests(apexName, "android_common_"+apexName).Rule("dexpreopt." + moduleName)
 	actual := strings.Contains(dexpreopt.RuleParams.Command, "--profile-file=")
 	if expected != actual {
 		t.Fatalf("Expected profile-guided to be %v, got %v", expected, actual)
