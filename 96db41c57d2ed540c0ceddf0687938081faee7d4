@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68464427_5a82a4f8",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-25T22:49:20Z",
+      "side": 1,
+      "message": "I think this might be redundant now. I am aggressively adding dex2oat dependency on all apexes.",
+      "parentUuid": "b9d6af5c_c9d89c56",
+      "range": {
+        "startLine": 213,
+        "startChar": 29,
+        "endLine": 213,
+        "endChar": 100
+      },
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4c87cfd_0599e986",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-01-24T16:26:50Z",
       "side": 1,
       "message": "Sorry for making so many comments. After seeing this, I realized that we heavily rely on the assumption that both `ctx` and `d` (`dexpreopter`) are about a single library, and your previous changes actually broke that assumption. Here are my suggestions:\n\n1. [`dexpreopter`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/dexpreopt.go;l\u003d101;drc\u003d5be6333692b6881b223b672c2251efaf4605bb33) has too many fields about a single library, so it\u0027s very hard to change it. You need to create one `dexpreopter` per library in `dexpreoptSystemServerJars`, or things won\u0027t work on an apex that provides multiple libraries ([`example`](https://cs.android.com/android/platform/superproject/main/+/main:packages/modules/AdServices/apex/Android.bp;l\u003d55-56;drc\u003d614f36a36c1dbce49118f7113a7c075a4de29663)).\n\n2. You need to check all the usages of `ctx` in this file to see if they still makes sense when `ctx` represents an apex.",
+      "range": {
+        "startLine": 219,
+        "startChar": 18,
+        "endLine": 219,
+        "endChar": 21
+      },
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c447e085_8e25241d",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-25T22:49:20Z",
+      "side": 1,
+      "message": "I think you are right. One of the ones which immediately sticks out is `inputProfilePathOnHost` which has a 1:1 mapping to java library. One of the hacks I have for now is to reset these values to nil before every `dexpreopt` invocation to nil. https://android-review.git.corp.google.com/c/platform/build/soong/+/2929189/1/java/dexpreopt.go#276\n\nI would like to make this operation stateless. I will be doing this cleanup in a followup CL.",
+      "parentUuid": "f4c87cfd_0599e986",
       "range": {
         "startLine": 219,
         "startChar": 18,
@@ -125,6 +173,30 @@
       "side": 1,
       "message": "Unfortunately, we don\u0027t have a test for that. You need to manually check the size of `$ANDROID_PRODUCT_OUT/system/framework/oat/x86_64/apex@com.android.art@javalib@service-art.jar@classes.odex`. If the profile is used, the size will be very small (\u003c100KB).",
       "parentUuid": "f0d9dc1c_318b7bdf",
+      "range": {
+        "startLine": 350,
+        "startChar": 6,
+        "endLine": 350,
+        "endChar": 28
+      },
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f0d9cfe_c530aa7a",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-25T22:49:20Z",
+      "side": 1,
+      "message": "My CLs indeed broke the profile guided optimizations of `service-art` when building with prebuilts. I have made a fix for this in aosp/2929189 (the next CL in the stack).\n```\ndu -sh\n$ANDROID_PRODUCT_OUT/system/framework/oat/x86_64/apex@com.android.art@javalib@service-art.jar@classes.odex\n24K\n```\n\nThanks for catching this. Btw, I would like to temporarily turn off the profile guided tests in `apex/systemserver_classpath_fragment_test.go` to make the review easier. I have turned them back on in https://android-review.git.corp.google.com/c/platform/build/soong/+/2929189/1/apex/systemserver_classpath_fragment_test.go#b221",
+      "parentUuid": "86d52313_b940a117",
       "range": {
         "startLine": 350,
         "startChar": 6,
