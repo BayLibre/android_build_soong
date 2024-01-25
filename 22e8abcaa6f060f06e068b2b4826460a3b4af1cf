@@ -34,6 +34,24 @@
       "parentUuid": "f04eebbc_f75462a5",
       "revId": "22e8abcaa6f060f06e068b2b4826460a3b4af1cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "133114df_06f971ed",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-25T22:41:37Z",
+      "side": 1,
+      "message": "Oops, yeah I missed that it\u0027s included here. I was only focused on the fact that it is separately defined outside of the list.",
+      "parentUuid": "63bf9ce2_2c947a80",
+      "revId": "22e8abcaa6f060f06e068b2b4826460a3b4af1cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
