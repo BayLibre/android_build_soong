@@ -219,8 +219,6 @@ func TestSystemServerClasspathFragmentWithContentNotInMake(t *testing.T) {
 }
 
 func TestPrebuiltSystemserverclasspathFragmentContents(t *testing.T) {
-	// TODO(spandandas): Fix the rules for profile guided dexpreopt of deapexed prebuilt jars
-	t.Skip()
 	result := android.GroupFixturePreparers(
 		prepareForTestWithSystemserverclasspathFragment,
 		prepareForTestWithMyapex,
@@ -379,8 +377,6 @@ func TestSystemserverclasspathFragmentStandaloneContents(t *testing.T) {
 }
 
 func TestPrebuiltStandaloneSystemserverclasspathFragmentContents(t *testing.T) {
-	// TODO(spandandas): Fix the rules for profile guided dexpreopt of deapexed prebuilt jars
-	t.Skip()
 	result := android.GroupFixturePreparers(
 		prepareForTestWithSystemserverclasspathFragment,
 		prepareForTestWithMyapex,
@@ -450,7 +446,7 @@ func TestPrebuiltStandaloneSystemserverclasspathFragmentContents(t *testing.T) {
 }
 
 func assertProfileGuided(t *testing.T, ctx *android.TestContext, moduleName string, variant string, expected bool) {
-	dexpreopt := ctx.ModuleForTests(moduleName, variant).Rule("dexpreopt")
+	dexpreopt := ctx.ModuleForTests("myapex", variant).Rule("dexpreopt." + moduleName)
 	actual := strings.Contains(dexpreopt.RuleParams.Command, "--profile-file=")
 	if expected != actual {
 		t.Fatalf("Expected profile-guided to be %v, got %v", expected, actual)
