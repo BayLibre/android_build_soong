@@ -109,6 +109,30 @@
       },
       "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86d52313_b940a117",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-25T11:21:39Z",
+      "side": 1,
+      "message": "Unfortunately, we don\u0027t have a test for that. You need to manually check the size of `$ANDROID_PRODUCT_OUT/system/framework/oat/x86_64/apex@com.android.art@javalib@service-art.jar@classes.odex`. If the profile is used, the size will be very small (\u003c100KB).",
+      "parentUuid": "f0d9dc1c_318b7bdf",
+      "range": {
+        "startLine": 350,
+        "startChar": 6,
+        "endLine": 350,
+        "endChar": 28
+      },
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
