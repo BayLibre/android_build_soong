@@ -16,6 +16,24 @@
       "message": "This is not currently included in `HiddenAPIFlagFileCategories` -- https://r.android.com/1711994 includes some details about why it\u0027s explicitly excluded. Can you verify if this is safe to be included here?",
       "revId": "22e8abcaa6f060f06e068b2b4826460a3b4af1cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63bf9ce2_2c947a80",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-25T22:39:28Z",
+      "side": 1,
+      "message": "It is already in the list from before this cl, right? It\u0027s just also extracted to a separate variable for other usages.",
+      "parentUuid": "f04eebbc_f75462a5",
+      "revId": "22e8abcaa6f060f06e068b2b4826460a3b4af1cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
