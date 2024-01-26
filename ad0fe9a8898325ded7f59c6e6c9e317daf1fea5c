@@ -16,6 +16,24 @@
       "message": "I think this change is not compatible with `art_standalone_dexpreopt_tests`. Marking it as WIP till I do some additional debugging.",
       "revId": "ad0fe9a8898325ded7f59c6e6c9e317daf1fea5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb64dc88_70c65180",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-26T16:28:55Z",
+      "side": 1,
+      "message": "Don\u0027t worry about the test failure if the only missing file is for `service-art.jar`. I realized that the test is taken from the mainline train (https://screenshot.googleplex.com/DKMahLsBMCUoSws), which is missing a test fix (aosp/2611829).\n\nI\u0027ll cherry-pick the test fix to the April train. Meanwhile, if you get tickets about `art_standalone_dexpreopt_tests` test failures on next, you can send them to me and I\u0027ll talk to the Mainline EngProd team for a solution.",
+      "parentUuid": "ded1b496_59d87838",
+      "revId": "ad0fe9a8898325ded7f59c6e6c9e317daf1fea5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
