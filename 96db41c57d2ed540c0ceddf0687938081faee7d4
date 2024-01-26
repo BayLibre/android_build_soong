@@ -234,6 +234,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67899dab_5901dab0",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-26T15:46:49Z",
+      "side": 1,
+      "message": "\u003e But I think it has adverse side effect that dex2oat will no longer get added as a dependency during Final Deps phase. \n\nSee my comment in another thread, I prefer adding a dedicated final deps mutator for apexes to add the dep more aggressively, rather than relying on `dexpreoptToolDepsMutator` and patching it.\n\n\u003e re: libName\n\nI\u0027m glad you brought up `dexJarFile`. There are many fields in `dexpreopter` that look like inputs to me, such as `manifestFile` and `classLoaderContexts`. I don\u0027t know why `dexJarFile` has to be special. I think dexpreopt is \"grown\" over time, not designed. However, because there is such a precedent, I can\u0027t argue more on this. I\u0027m okay with either way, though I still think keeping things in the struct looks cleaner. Your call.",
+      "parentUuid": "2c6c2b87_7c35c7b2",
+      "range": {
+        "startLine": 219,
+        "startChar": 18,
+        "endLine": 219,
+        "endChar": 21
+      },
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8a2553d_682e637b",
         "filename": "java/dexpreopt.go",
         "patchSetId": 3

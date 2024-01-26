@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43df6776_8c3c7771",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2285,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-26T15:46:49Z",
+      "side": 0,
+      "message": "Okay to remove this to avoid duplicates in the predefined system server jar location.\n\nHowever, please don\u0027t forget to do cleanups later:\n\n1. Can we remove `dexpreopter` completely from struct `Import`?\n2. Can we also remove the deapexer stuff from here?",
+      "range": {
+        "startLine": 2285,
+        "startChar": 4,
+        "endLine": 2285,
+        "endChar": 35
+      },
+      "revId": "f5e03f1c1a524a7d9e49417b846f5e2c8d4027a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e3cf9c4_a55ed11b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2891,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-26T15:46:49Z",
+      "side": 0,
+      "message": "Ditto. Please don\u0027t forget to do the cleanups later.",
+      "range": {
+        "startLine": 2889,
+        "startChar": 0,
+        "endLine": 2891,
+        "endChar": 40
+      },
+      "revId": "f5e03f1c1a524a7d9e49417b846f5e2c8d4027a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
