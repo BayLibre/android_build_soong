@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab8264af_535d3077",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-26T23:27:00Z",
+      "side": 1,
+      "message": "```suggestion\n\tctx.SetVerifyProvidersAreUnchanged(configuration.IsEnvTrue(\"SOONG_VERIFY_PROVIDERS_ARE_UNCHANGED\"))\n```",
+      "range": {
+        "startLine": 321,
+        "startChar": 36,
+        "endLine": 321,
+        "endChar": 106
+      },
+      "revId": "315f1a5e8b7b850d9ffdf7849cf3a36ef8adb191",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
