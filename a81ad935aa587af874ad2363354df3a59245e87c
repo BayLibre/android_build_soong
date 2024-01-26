@@ -216,6 +216,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d064d8_1ed456a7",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-26T11:39:13Z",
+      "side": 1,
+      "message": "I didn\u0027t noticed PS8 is uploaded. Resolving the comment.",
+      "parentUuid": "71e7d5ad_b870a10c",
+      "range": {
+        "startLine": 1612,
+        "startChar": 5,
+        "endLine": 1612,
+        "endChar": 48
+      },
+      "revId": "a81ad935aa587af874ad2363354df3a59245e87c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2b9049f_25da139f",
