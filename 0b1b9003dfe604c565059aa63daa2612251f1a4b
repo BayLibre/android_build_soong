@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ddb4e1e_81040174",
+        "filename": "cc/afdo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-26T01:41:34Z",
+      "side": 1,
+      "message": "Can\u0027t we pass fdoProfileName without the intermediate string list? Same below.",
+      "revId": "0b1b9003dfe604c565059aa63daa2612251f1a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ae09744_ca045efb",
+        "filename": "cc/afdo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-26T01:41:34Z",
+      "side": 1,
+      "message": "Again, might be better as:\n```\nif isLibTag {\n    return libTag.static()\n} else {\n    return tag \u003d\u003d objDepTag || tag \u003d\u003d reuseObjTag || tag \u003d\u003d staticVariantTag\n}\n```",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 12
+      },
+      "revId": "0b1b9003dfe604c565059aa63daa2612251f1a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
