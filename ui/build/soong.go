@@ -583,6 +583,9 @@ func runSoong(ctx Context, config Config) {
 	if os.Getenv("ALLOW_MISSING_DEPENDENCIES") == "true" {
 		soongBuildEnv.Set("ALLOW_MISSING_DEPENDENCIES", "true")
 	}
+	if config.Checkbuild() {
+		soongBuildEnv.Set("SOONG_VERIFY_PROVIDERS_ARE_UNCHANGED", "true")
+	}
 
 	err := writeEnvironmentFile(ctx, envFile, soongBuildEnv.AsMap())
 	if err != nil {

@@ -318,6 +318,7 @@ func main() {
 	metricsDir := availableEnv["LOG_DIR"]
 
 	ctx := newContext(configuration)
+	ctx.SetVerifyProvidersAreUnchanged(configuration.IsEnvTrue("SOONG_VERIFY_PROVIDERS_ARE_UNCHANGED"))
 	android.StartBackgroundMetrics(configuration)
 
 	ctx.Register()
