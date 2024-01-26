@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f42c505f_29340221",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-26T17:16:40Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s essentially the same as a dedicated mutator, so it\u0027s a good idea. Don\u0027t forget to check `dexpreopt.IsDex2oatNeeded(ctx)` though, even for apexes.\n\nAlso, I wonder if you can move the mutator to a location that is common to dexpreopt, instead of keeping it in `java/java.go`, to make it more discoverable. I had a hard time finding the mutator when you talked about it, and I was surprised that it\u0027s in `java/java.go`.",
+      "parentUuid": "cb1ea98f_4f2b02d6",
+      "range": {
+        "startLine": 210,
+        "startChar": 78,
+        "endLine": 210,
+        "endChar": 84
+      },
+      "revId": "1c3a4afa8710032bec47a847af6a7728a5e30e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42358621_17df0a8c",
         "filename": "java/dexpreopt.go",
         "patchSetId": 5
