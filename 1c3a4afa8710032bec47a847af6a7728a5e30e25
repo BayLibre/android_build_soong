@@ -191,6 +191,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3183eff7_fb289105",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-26T18:07:35Z",
+      "side": 1,
+      "message": "I have moved this into into `dexpreoptToolDepsMutator` and turned line 219 into a `||`\n\nAfter I did this, I also realized that previously `dex2oatd` was not getting added as a dep to the source apex as I initially thought because it does not embed the `dexpreopter` struct and does not implement `DexpreopterInterface`. This is a superflous dep for source apex, so I think it should be fine either for way for now.\n\n\u003e Also, I wonder if you can move the mutator to a location that is common to dexpreopt, instead of keeping it in java/java.go, to make it more discoverable. I\n\nI think this is a good idea. I would like to create a single final deps mutator that will be responsible for adding dex2oat dependency on relevant modules. I will do this in a followup CL",
+      "parentUuid": "cb1ea98f_4f2b02d6",
+      "range": {
+        "startLine": 210,
+        "startChar": 78,
+        "endLine": 210,
+        "endChar": 84
+      },
+      "revId": "1c3a4afa8710032bec47a847af6a7728a5e30e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42358621_17df0a8c",
