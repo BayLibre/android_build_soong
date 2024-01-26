@@ -390,6 +390,8 @@ func (d *Droidstubs) StubsSrcJar(stubsType StubsType) (android.Path, error) {
 	switch stubsType {
 	case Everything:
 		return d.stubsSrcJar, nil
+	case Runtime:
+		return d.runtimeStubsSrcJar, nil
 	case Exportable:
 		return d.exportableStubsSrcJar, nil
 	default:
@@ -1019,6 +1021,41 @@ func (d *Droidstubs) exportableStubCmd(ctx android.ModuleContext, params stubsCo
 	d.optionalStubCmd(ctx, optionalCmdParams)
 }
 
+// Sandbox rule for generating runtime stubs
+func (d *Droidstubs) runtimeStubCmd(ctx android.ModuleContext, params stubsCommandConfigParams) {
+
+	// We are only interested in generating the stubs srcjar,
+	// not other artifacts for the runtime stubs
+	params.checkApi = false
+	params.writeSdkValues = false
+	params.validatingNullability = false
+	params.annotationsEnabled = false
+	params.apiLevelsAnnotationsEnabled = false
+
+	optionalCmdParams := stubsCommandParams{
+		stubConfig: params,
+	}
+
+	d.Javadoc.runtimeStubsSrcJar = android.PathForModuleOut(ctx, params.stubsType.String(), ctx.ModuleName()+"-"+"stubs.srcjar")
+	optionalCmdParams.stubsSrcJar = d.Javadoc.runtimeStubsSrcJar
+
+	// If aconfig_declarations property is not defined, all flagged apis symbols are stripped
+	// as no aconfig flags are enabled. In such case, the runtime stubs are identical to the
+	// exportable stubs, thus no additional metalava invocation is needed.
+	if len(d.properties.Aconfig_declarations) == 0 {
+		rule := android.NewRuleBuilder(pctx, ctx)
+		rule.Sbox(android.PathForModuleOut(ctx, params.stubsType.String()),
+			android.PathForModuleOut(ctx, fmt.Sprintf("metalava_%s.sbox.textproto", params.stubsType.String()))).
+			SandboxInputs()
+		rule.Command().
+			Text("cp").Flag("-f").
+			Input(d.exportableStubsSrcJar).Output(d.runtimeStubsSrcJar)
+		rule.Build(fmt.Sprintf("metalava_%s", params.stubsType.String()), "metalava merged")
+	} else {
+		d.optionalStubCmd(ctx, optionalCmdParams)
+	}
+}
+
 func (d *Droidstubs) optionalStubCmd(ctx android.ModuleContext, params stubsCommandParams) {
 
 	params.srcJarDir = android.PathForModuleOut(ctx, params.stubConfig.stubsType.String(), "srcjars")
@@ -1116,11 +1153,19 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// Create default (i.e. "everything" stubs) rule for metalava
 	d.everythingStubCmd(ctx, stubCmdParams)
 
-	// The module generates "exportable" (and "runtime" eventually) stubs regardless of whether
+	// The module generates "exportable" stubs regardless of whether
 	// aconfig_declarations property is defined or not. If the property is not defined, the module simply
 	// strips all flagged apis to generate the "exportable" stubs
 	stubCmdParams.stubsType = Exportable
 	d.exportableStubCmd(ctx, stubCmdParams)
+
+	// "runtime" stubs do not generate any other artifacts than the stubs.
+	// Therefore, metalava does not have to run for "runtime" configuration
+	// when the module does not generate stubs.
+	if stubCmdParams.generateStubs {
+		stubCmdParams.stubsType = Runtime
+		d.runtimeStubCmd(ctx, stubCmdParams)
+	}
 
 	if apiCheckEnabled(ctx, d.properties.Check_api.Current, "current") {
 
