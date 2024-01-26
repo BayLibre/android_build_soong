@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1ac2b0_ef1887c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-26T17:08:44Z",
+      "side": 1,
+      "message": "I believe the service-art.jar on `art_standalone_dexpreopt_tests` is unrelated and should be resolved with this cp https://googleplex-android-review.git.corp.google.com/c/platform/art/+/26027559",
+      "revId": "6cc757a178fcf4683f7013df7cf1a51b383e2a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
