@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42358621_17df0a8c",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-26T00:21:41Z",
+      "side": 1,
+      "message": "Do you mind adding a comment about why `ctx.ModuleName()` cannot be used?\n\nnit: Also, this change now expects the caller of `dexpreoptDisabled` to have removed the optional prebuilt prefix, unlike how this is currently handled in `moduleName(ctx)`. Is there a reason why you are not removing the prebuilt prefix here but removing it when calling this method? Ditto for `dexpreopt(...)`.",
+      "revId": "1c3a4afa8710032bec47a847af6a7728a5e30e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad27c4a3_0ee3dac6",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-26T00:21:41Z",
+      "side": 1,
+      "message": "Should this be `android.RemoveOptionalPrebuiltPrefix(libraryName)`?",
+      "range": {
+        "startLine": 275,
+        "startChar": 18,
+        "endLine": 275,
+        "endChar": 29
+      },
+      "revId": "1c3a4afa8710032bec47a847af6a7728a5e30e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
