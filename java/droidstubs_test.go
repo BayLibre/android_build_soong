@@ -394,21 +394,67 @@ func TestAconfigDeclarations(t *testing.T) {
 			"bar",
 		],
 	}
+	droidstubs {
+		name: "baz",
+		srcs: ["a/A.java"],
+		api_surface: "public",
+		check_api: {
+			current: {
+				api_file: "a/current.txt",
+				removed_api_file: "a/removed.txt",
+			}
+		},
+	}
 	`)
 
 	// Check that droidstubs depend on aconfig_declarations
 	android.AssertBoolEquals(t, "foo expected to depend on bar",
 		CheckModuleHasDependency(t, result.TestContext, "foo", "android_common", "bar"), true)
 
-	m := result.ModuleForTests("foo", "android_common")
-	android.AssertStringDoesContain(t, "foo generates revert annotations file",
-		strings.Join(m.AllOutputs(), ""), "revert-annotations-exportable.txt")
+	testcases := []struct {
+		moduleName    string
+		stubsType     string
+		copiesStub    bool
+		copyInputStub string
+		copyOut       string
+	}{
+		{
+			moduleName: "foo",
+			stubsType:  "exportable",
+			copiesStub: false,
+		},
+		{
+			moduleName: "foo",
+			stubsType:  "runtime",
+			copiesStub: false,
+		},
+		{
+			moduleName:    "baz",
+			stubsType:     "runtime",
+			copiesStub:    true,
+			copyInputStub: "exportable/baz-stubs.srcjar",
+		},
+	}
 
-	// revert-annotations.txt passed to exportable stubs generation metalava command
-	manifest := m.Output("metalava_exportable.sbox.textproto")
-	cmdline := String(android.RuleBuilderSboxProtoForTests(t, result.TestContext, manifest).Commands[0].Command)
-	android.AssertStringDoesContain(t, "flagged api hide command not included", cmdline, "revert-annotations-exportable.txt")
+	for _, testcase := range testcases {
+		m := result.ModuleForTests(testcase.moduleName, "android_common")
+		manifest := m.Output(fmt.Sprintf("metalava_%s.sbox.textproto", testcase.stubsType))
+		cmdline := String(android.RuleBuilderSboxProtoForTests(t, result.TestContext, manifest).Commands[0].Command)
 
-	android.AssertStringDoesContain(t, "foo generates exportable stubs jar",
-		strings.Join(m.AllOutputs(), ""), "exportable/foo-stubs.srcjar")
+		if testcase.copiesStub {
+			android.AssertStringDoesContain(t, "copy command should include the input stub", cmdline, testcase.copyInputStub)
+		} else {
+			// check if revert-annotations.txt file is generated
+			revertAnnotationsFileName := fmt.Sprintf("revert-annotations-%s.txt", testcase.stubsType)
+			android.AssertStringDoesContain(t, fmt.Sprintf("%s generates %s revert annotations file", testcase.moduleName, testcase.stubsType),
+				strings.Join(m.AllOutputs(), " "), revertAnnotationsFileName)
+
+			// revert-annotations.txt passed to exportable stubs generation metalava command
+			android.AssertStringDoesContain(t, "flagged api hide command not included", cmdline, revertAnnotationsFileName)
+		}
+
+		// check if the stubs srcjar file is generated
+		android.AssertStringDoesContain(t, fmt.Sprintf("%s generates %s stubs jar", testcase.moduleName, testcase.stubsType),
+			strings.Join(m.AllOutputs(), ""), fmt.Sprintf("%s/%s-stubs.srcjar", testcase.stubsType, testcase.moduleName))
+	}
 }
