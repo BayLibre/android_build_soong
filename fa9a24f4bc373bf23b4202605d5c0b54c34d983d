@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbed346_37ab8cd8",
+        "filename": "cc/orderfile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-26T01:09:41Z",
+      "side": 1,
+      "message": "This might be simpler as:\n```\nif isLibTag {\n    return libTag.static()\n} else {\n    return tag \u003d\u003d objDepTag || tag \u003d\u003d reuseObjTag || tag \u003d\u003d staticVariantTag\n}\n```",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 12
+      },
+      "revId": "fa9a24f4bc373bf23b4202605d5c0b54c34d983d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
