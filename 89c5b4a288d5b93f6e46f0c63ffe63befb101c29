@@ -22,6 +22,30 @@
       },
       "revId": "89c5b4a288d5b93f6e46f0c63ffe63befb101c29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4a01f82_c6e5ff60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-26T01:36:43Z",
+      "side": 1,
+      "message": "I\u0027m inclined to keep the dex_preopt properties in `java_import`. A few reasons:\n\n1. `java_import` is generally a mirror of `java_library`, so it looks cleaner and is easier to understand if properties of `java_library` are reflected in `java_import` rather than somewhere else.\n\n2. We may add more dex_preopt properties in the future, in addition to `profile_guided`. The data structure of `prebuilt_sscp_fragment` won\u0027t look great if it\u0027s packed with all those properties taken from multiple `java_import`s.\n\n3. You may be able to get rid of `java_import`s because they do look like hooks for dexpreopt and hiddenapi, but you won\u0027t be able to get rid of `java_sdk_library_import`s because they serve the stubs that are used for building the framework. Therefore, the value of removing `java_import` looks low to me since all the complexity for prebuilt java libraries has to be kept anyway for the sake of `java_sdk_library_import`.",
+      "parentUuid": "39508114_c6845c34",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 62
+      },
+      "revId": "89c5b4a288d5b93f6e46f0c63ffe63befb101c29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
