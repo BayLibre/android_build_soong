@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66aa4678_303d112f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-26T21:50:55Z",
+      "side": 1,
+      "message": "Also \"Bug: b/322359235\"",
+      "revId": "5de77a7c22cd00e7b462a8839a028726816750b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2babf247_a250b0de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-26T21:50:55Z",
+      "side": 1,
+      "message": "A few last-minute nits.",
+      "revId": "5de77a7c22cd00e7b462a8839a028726816750b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1bc20ae_ef336d6f",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-26T21:50:55Z",
+      "side": 1,
+      "message": "Use b/322359235 as that\u0027s where we\u0027re tracking the upstream fix?\n```suggestion\n\t\t// Revert this after b/322359235 is fixed\n```",
+      "range": {
+        "startLine": 31,
+        "startChar": 25,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "5de77a7c22cd00e7b462a8839a028726816750b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd2e9816_f6646d68",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-26T21:50:55Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t// Revert this after b/322359235 is fixed\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 25,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "5de77a7c22cd00e7b462a8839a028726816750b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd772f9f_bfa7bb97",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-26T21:50:55Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t// Revert this after b/322359235 is fixed\n```",
+      "range": {
+        "startLine": 43,
+        "startChar": 25,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "5de77a7c22cd00e7b462a8839a028726816750b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
