@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccceb9a9_afcc8a64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-26T01:24:05Z",
+      "side": 1,
+      "message": "Please also build `git_master-art-host`:`art-gtest`",
+      "revId": "1c3a4afa8710032bec47a847af6a7728a5e30e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7473cd51_677e6afe",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-26T01:24:05Z",
+      "side": 1,
+      "message": "Could you move this condition to line 219 with an `||`? Early returning \"false\" in this function is generally error-prone because it potentially skips all the checks that we will add below.",
+      "range": {
+        "startLine": 210,
+        "startChar": 78,
+        "endLine": 210,
+        "endChar": 84
+      },
+      "revId": "1c3a4afa8710032bec47a847af6a7728a5e30e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42358621_17df0a8c",
         "filename": "java/dexpreopt.go",
         "patchSetId": 5

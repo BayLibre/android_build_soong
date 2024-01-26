@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "695a8d50_2533b297",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-26T01:24:05Z",
+      "side": 1,
+      "message": "\u003e I am aggressively adding dex2oat dependency on all apexes.\n\nIs this change in this CL? This looks like a slightly risky change, so please run more builds on ABTD to make sure it doesn\u0027t break things. I would run all builds on `git_main` (this can only be done by manually adding all the build targets one by one in the ABTD UI, sigh...).",
+      "parentUuid": "68464427_5a82a4f8",
+      "range": {
+        "startLine": 213,
+        "startChar": 29,
+        "endLine": 213,
+        "endChar": 100
+      },
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4c87cfd_0599e986",
         "filename": "java/dexpreopt.go",
         "patchSetId": 3
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I think you are right. One of the ones which immediately sticks out is `inputProfilePathOnHost` which has a 1:1 mapping to java library. One of the hacks I have for now is to reset these values to nil before every `dexpreopt` invocation to nil. https://android-review.git.corp.google.com/c/platform/build/soong/+/2929189/1/java/dexpreopt.go#276\n\nI would like to make this operation stateless. I will be doing this cleanup in a followup CL.",
       "parentUuid": "f4c87cfd_0599e986",
+      "range": {
+        "startLine": 219,
+        "startChar": 18,
+        "endLine": 219,
+        "endChar": 21
+      },
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e761510_2a110d60",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-26T01:24:05Z",
+      "side": 1,
+      "message": "Looks like you are adding the `libName` parameter to too many functions. In this case, I think it makes more sense to add `libName` as a field in `dexpreopter` rather than a parameter. You can also add a check at the beginning of `dexpreopter.dexpreopt()` to make sure the `libName` field is set, and panic if it isn\u0027t.\n\nIn order to do so, you need to refactor the code **before this CL** to have 1:1 mapping between `dexpreopter` and java library, rather than doing it in a followup CL. You probably need to remove `dexpreopter` from struct `prebuiltCommon`, and instead, create a `dexpreopter` for each library in the loop in `dexpreoptSystemServerJars`. This will make `prebuiltCommon` no longer satisfy `DexpreopterInterface`, but that\u0027s okay because `DexpreopterInterface` doesn\u0027t make sense for `prebuiltCommon` anyway.",
+      "parentUuid": "c447e085_8e25241d",
       "range": {
         "startLine": 219,
         "startChar": 18,
