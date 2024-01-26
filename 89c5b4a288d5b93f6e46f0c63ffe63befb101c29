@@ -70,6 +70,30 @@
       },
       "revId": "89c5b4a288d5b93f6e46f0c63ffe63befb101c29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fbdbbc1_c3f746f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-26T16:09:44Z",
+      "side": 1,
+      "message": "I\u0027m for removing `dexpreopter` and `hiddenAPI` from struct `Import`, but you can still keep `ImportDexpreoptProperties`. I think you can do the same to `SdkLibraryImport` as well.\n\nI\u0027m sorry that I brought up `java_sdk_library_import` and it confused you. I thought `java_import` and `java_sdk_library_import` shared the same code, but they actually don\u0027t.\n\nAnyway, I was just saying that it\u0027s not worthwhile to remove `java_import`s from the module SDK. It\u0027s better to keep them there, for (1) and (2), and for older platforms (note that we generate module SDKs for older platforms).\n\nThe general approach in this CL, which reads the `profile_guided` property from the child, looks good to me, though I haven\u0027t carefully read the code because this CL is WIP.",
+      "parentUuid": "b8273d26_a9857af2",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 62
+      },
+      "revId": "89c5b4a288d5b93f6e46f0c63ffe63befb101c29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
