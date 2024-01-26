@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "112b103c_6a7cd1d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-26T06:56:23Z",
+      "side": 1,
+      "message": "I re-ran this test on this CL instead of the top of the stack, and it looks like this test does pass https://android-build.corp.google.com/builds/abtd/run/L48000030001600081\n\nI will do some additional testing on why the profile guided optimization fails as part of aosp/2929189",
+      "parentUuid": "bb66c3d0_3665338a",
+      "revId": "1c3a4afa8710032bec47a847af6a7728a5e30e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7473cd51_677e6afe",
@@ -49,6 +67,30 @@
       "writtenOn": "2024-01-26T01:24:05Z",
       "side": 1,
       "message": "Could you move this condition to line 219 with an `||`? Early returning \"false\" in this function is generally error-prone because it potentially skips all the checks that we will add below.",
+      "range": {
+        "startLine": 210,
+        "startChar": 78,
+        "endLine": 210,
+        "endChar": 84
+      },
+      "revId": "1c3a4afa8710032bec47a847af6a7728a5e30e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "417e2f7c_9ea85300",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-26T06:56:23Z",
+      "side": 1,
+      "message": "I tried this with `cf_x86_64_only_phone-next-userdebug`, but this causes an error\n```\ncd \"$(dirname \"out/host/linux-x86/bin/soong_build\")\" \u0026\u0026 BUILDER\u003d\"$PWD/$(basename \"out/host/linux-x86/bin/soong_build\")\" \u0026\u0026 cd / \u0026\u0026 env -i  \"$BUILDER\"     --top \"$TOP\"     --soong_out \"out/soong\"     --out \"out\"     --soong_variables out/soong/soong.cf_x86_64_only_phone.variables -o out/soong/build.cf_x86_64_only_phone.ninja --globListDir cf_x86_64_only_phone --globFile out/soong/globs-cf_x86_64_only_phone.ninja -l out/.module_paths/Android.bp.list --available_env out/soong/soong.environment.available --used_env out/soong/soong.environment.used.cf_x86_64_only_phone.build Android.bp                                                                                                                                            \ninternal error: panic in GenerateBuildActions for module \"prebuilt_com.google.android.scheduling\" variant \"android_common_com.android.scheduling\"\nFailed to lookup dex2oatd dependency\ngoroutine 15277335 [running]:                                                                                                                    \ngithub.com/google/blueprint.newPanicErrorf({0x107e1e0, 0xc14f5e5cd0}, {0xc29f4d2700, 0x78}, {0x0, 0x0, 0x0})                                     \n        /usr/local/google/home/spandandas/main/build/blueprint/context.go:4858 +0x72                                                             \ngithub.com/google/blueprint.(*Context).generateModuleBuildActions.func2.1.1()                                                                    \n        /usr/local/google/home/spandandas/main/build/blueprint/context.go:3382 +0x25e                                                            \npanic({0x107e1e0?, 0xc14f5e5cd0?})                                                                                                               \n        prebuilts/go/linux-x86/src/runtime/panic.go:914 +0x21f                                                                                   \nandroid/soong/dexpreopt.dex2oatPathFromDep({0x14cd1b8?, 0xc29ef79400})                                                                           \n        /usr/local/google/home/spandandas/main/build/soong/dexpreopt/config.go:518 +0x2ac                                                        \nandroid/soong/dexpreopt.GetGlobalSoongConfig({0x14cd1b8, 0xc29ef79400})                                                                          \n        /usr/local/google/home/spandandas/main/build/soong/dexpreopt/config.go:563 +0xb4                                                         \nandroid/soong/java.(*dexpreopter).dexpreopt(0xc142d37138, {0x14cd1b8?, 0xc29ef79400}, {0xc0389355d7, 0x12}, {0x148fdf8?, 0xc25285d540})          \n        /usr/local/google/home/spandandas/main/build/soong/java/dexpreopt.go:406 +0x1ce5                                                         \nandroid/soong/java.(*Dexpreopter).DexpreoptPrebuiltApexSystemServerJars(0xc142d37138, {0x14cd1b8?, 0xc29ef79400}, {0xc0389355d7, 0x12}, 0xc13b9f5b30)\n        /usr/local/google/home/spandandas/main/build/soong/java/dexpreopt.go:270 +0x34d                                                          \nandroid/soong/apex.(*prebuiltCommon).dexpreoptSystemServerJars(0xc142d36a80, {0x14cd1b8, 0xc29ef79400})                                          \n        /usr/local/google/home/spandandas/main/build/soong/apex/prebuilt.go:223 +0x265                                                           \nandroid/soong/apex.(*ApexSet).GenerateAndroidBuildActions(0xc142d36a80, {0x14cd1b8, 0xc29ef79400})                                               \n        /usr/local/google/home/spandandas/main/build/soong/apex/prebuilt.go:1059 +0x466                                                          \nandroid/soong/android.(*ModuleBase).GenerateBuildActions(0xc142d36a80, {0x14a2990?, 0xc29ed6fa00})                                               \n        /usr/local/google/home/spandandas/main/build/soong/android/module.go:1775 +0x247b                                                        \ngithub.com/google/blueprint.(*Context).generateModuleBuildActions.func2.1(0xc08f301890?, 0x125fe4e?)                                             \n        /usr/local/google/home/spandandas/main/build/blueprint/context.go:3386 +0x74                                                             \ngithub.com/google/blueprint.(*Context).generateModuleBuildActions.func2(0xc172451600, 0x0?)                                                      \n        /usr/local/google/home/spandandas/main/build/blueprint/context.go:3387 +0x338                                                            \ngithub.com/google/blueprint.parallelVisit.func1.1()                                                                                              \n        /usr/local/google/home/spandandas/main/build/blueprint/context.go:2379 +0x39                                                             \ncreated by github.com/google/blueprint.parallelVisit.func1 in goroutine 1                                                                        \n        /usr/local/google/home/spandandas/main/build/blueprint/context.go:2378 +0x165                                                            \n\n\nfatal errors encountered\n05:35:03 soong bootstrap failed with: exit status 1                                                                                              \n\nRBE Stats: down 0 B, up 0 B\n\n```\n\nI think this is because `dexpreoptDisabled` is called twice for apexes\n1. In final deps mutator to add dex2oatd dep\n2. In GenerateAndroidBuildActions to do the actual dexpreopt\n\nDuring (1), apexes do not have information about which system server jars it contains. That is propagated via sscp_fragment in generateAndroidBuildActions. \n\nWould the errorprone concern be mitigated if we run builds on all postsubmit targets as suggested in this other [comment thread](https://android-review.git.corp.google.com/c/platform/build/soong/+/2925197/comment/b9d6af5c_c9d89c56/)?",
+      "parentUuid": "7473cd51_677e6afe",
       "range": {
         "startLine": 210,
         "startChar": 78,

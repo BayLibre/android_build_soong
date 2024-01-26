@@ -113,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b2545e6_93b8ef6d",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-26T06:56:23Z",
+      "side": 1,
+      "message": "I have done additional testing on postsubmit targets\n- https://android-build.corp.google.com/builds/abtd/run/L56100030001551621\n- https://android-build.corp.google.com/builds/abtd/run/L23200030001553478 (unrelated failure)\n- https://android-build.corp.google.com/builds/abtd/run/L06500030001559691",
+      "parentUuid": "af41a9a5_e7200685",
+      "range": {
+        "startLine": 213,
+        "startChar": 29,
+        "endLine": 213,
+        "endChar": 100
+      },
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4c87cfd_0599e986",
@@ -174,6 +198,30 @@
       "side": 1,
       "message": "Looks like you are adding the `libName` parameter to too many functions. In this case, I think it makes more sense to add `libName` as a field in `dexpreopter` rather than a parameter. You can also add a check at the beginning of `dexpreopter.dexpreopt()` to make sure the `libName` field is set, and panic if it isn\u0027t.\n\nIn order to do so, you need to refactor the code **before this CL** to have 1:1 mapping between `dexpreopter` and java library, rather than doing it in a followup CL. You probably need to remove `dexpreopter` from struct `prebuiltCommon`, and instead, create a `dexpreopter` for each library in the loop in `dexpreoptSystemServerJars`. This will make `prebuiltCommon` no longer satisfy `DexpreopterInterface`, but that\u0027s okay because `DexpreopterInterface` doesn\u0027t make sense for `prebuiltCommon` anyway.",
       "parentUuid": "c447e085_8e25241d",
+      "range": {
+        "startLine": 219,
+        "startChar": 18,
+        "endLine": 219,
+        "endChar": 21
+      },
+      "revId": "96db41c57d2ed540c0ceddf0687938081faee7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c6c2b87_7c35c7b2",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-26T06:56:23Z",
+      "side": 1,
+      "message": "re: dexpreopter embedding\nI like the suggestion of not embedding `dexpreopter` inside `prebuiltCommon`. But I think it has adverse side effect that `dex2oat` will no longer get added as a dependency during [Final Deps phase](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/7e835d4d3d0604b6ad351f1e22c1de5833b07837:java/dexpreopt.go;l\u003d236;bpv\u003d1;bpt\u003d0;drc\u003db2fd4ff43fbb569d591ab48accc4e8765e46a529). Would you prefer having a check there that looks at ApexBundleInfoProvider and adds `dex2oat` as a dependency if it is set?\n\nre: libName\nI am somewhat partial to passing `libName` as a new parameter to `dexpreopt` function instead of making it a property of `dexpreopter`, even though it touches a bunch of files. My thought process is that it similar to `dexJarFile`, it is an input to the dexpreopt operation rather than an internal state of this operation. Albeit it is somewhat blurry because `dexpreopter` contains other properties like `isSdkLibrary` which could also be termed as inputs.",
+      "parentUuid": "4e761510_2a110d60",
       "range": {
         "startLine": 219,
         "startChar": 18,
