@@ -370,7 +370,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 
 	// Full dexpreopt config, used to create dexpreopt build rules.
 	dexpreoptConfig := &dexpreopt.ModuleConfig{
-		Name:            moduleName(ctx),
+		Name:            dexJarStem, //moduleName(ctx),
 		DexLocation:     dexLocation,
 		BuildPath:       android.PathForModuleOut(ctx, "dexpreopt", dexJarStem, moduleName(ctx)+".jar").OutputPath,
 		DexPath:         dexJarFile,

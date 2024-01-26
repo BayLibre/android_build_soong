@@ -2282,7 +2282,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					j.dexpreopter.inputProfilePathOnHost = profilePath
 				}
 
-				j.dexpreopt(ctx, dexOutputPath)
+				//j.dexpreopt(ctx, dexOutputPath)
 
 				// Initialize the hiddenapi structure.
 				j.initHiddenAPI(ctx, dexJarFile, outputFile, j.dexProperties.Uncompress_dex)
