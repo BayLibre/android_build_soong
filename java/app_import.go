@@ -70,9 +70,10 @@ type AndroidAppImport struct {
 	android.ApexModuleBase
 	prebuilt android.Prebuilt
 
-	properties   AndroidAppImportProperties
-	dpiVariants  interface{}
-	archVariants interface{}
+	properties       AndroidAppImportProperties
+	dpiVariants      interface{}
+	archVariants     interface{}
+	arch_dpiVariants interface{}
 
 	outputFile  android.Path
 	certificate Certificate
@@ -89,6 +90,16 @@ type AndroidAppImport struct {
 
 	// Single aconfig "cache file" merged from this module and all dependencies.
 	mergedAconfigFiles map[string]android.Paths
+}
+
+type AndroidAppImportArch struct {
+	android.ModuleBase
+	android.DefaultableModuleBase
+	android.ApexModuleBase
+	prebuilt android.Prebuilt
+
+	properties AndroidAppImportProperties
+	// dpiVariants interface{}
 }
 
 type AndroidAppImportProperties struct {
@@ -151,9 +162,7 @@ func (a *AndroidAppImport) IsInstallable() bool {
 }
 
 // Updates properties with variant-specific values.
-// This happens as a DefaultableHook instead of a LoadHook because we want to run it after
-// soong config variables are applied.
-func (a *AndroidAppImport) processVariants(ctx android.DefaultableHookContext) {
+func (a *AndroidAppImport) processVariants(ctx android.LoadHookContext) {
 	config := ctx.Config()
 
 	dpiProps := reflect.ValueOf(a.dpiVariants).Elem().FieldByName("Dpi_variants")
@@ -450,16 +459,19 @@ func (a *AndroidAppImport) PrivAppAllowlist() android.OptionalPath {
 
 var dpiVariantGroupType reflect.Type
 var archVariantGroupType reflect.Type
+var archdpiVariantGroupType reflect.Type
 var supportedDpis = []string{"ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"}
 
 func initAndroidAppImportVariantGroupTypes() {
-	dpiVariantGroupType = createVariantGroupType(supportedDpis, "Dpi_variants")
+	dpiVariantGroupType = createDpiVariantGroupType(supportedDpis, "Dpi_variants")
 
 	archNames := make([]string, len(android.ArchTypeList()))
 	for i, archType := range android.ArchTypeList() {
 		archNames[i] = archType.Name
+		fmt.Println(archNames[i])
 	}
-	archVariantGroupType = createVariantGroupType(archNames, "Arch")
+	archVariantGroupType = createArchVariantGroupType(archNames, "Arch")
+	archdpiVariantGroupType = createArchDpiVariantGroupType(archNames, supportedDpis)
 }
 
 // Populates all variant struct properties at creation time.
@@ -469,6 +481,9 @@ func (a *AndroidAppImport) populateAllVariantStructs() {
 
 	a.archVariants = reflect.New(archVariantGroupType).Interface()
 	a.AddProperties(a.archVariants)
+
+	a.arch_dpiVariants = reflect.New(archdpiVariantGroupType).Interface()
+	a.AddProperties(a.arch_dpiVariants)
 }
 
 func (a *AndroidAppImport) Privileged() bool {
@@ -512,8 +527,8 @@ func createVariantGroupType(variants []string, variantGroupName string) reflect.
 			Name: proptools.FieldNameForProperty(variant),
 			Type: props,
 		}
+		fmt.Println("create variant groupt:", variantFields[i], variant)
 	}
-
 	variantGroupStruct := reflect.StructOf(variantFields)
 	return reflect.StructOf([]reflect.StructField{
 		{
@@ -521,6 +536,88 @@ func createVariantGroupType(variants []string, variantGroupName string) reflect.
 			Type: variantGroupStruct,
 		},
 	})
+}
+
+func createDpiVariantGroupType(variants []string, variantGroupName string) reflect.Type {
+	props := reflect.TypeOf((*AndroidAppImportProperties)(nil))
+
+	variantFields := make([]reflect.StructField, len(variants))
+	for i, variant := range variants {
+		variantFields[i] = reflect.StructField{
+			Name: proptools.FieldNameForProperty(variant),
+			Type: props,
+		}
+		fmt.Println("create variant group DPI:", variantFields[i], variant)
+	}
+	variantGroupStruct := reflect.StructOf(variantFields)
+	return reflect.StructOf([]reflect.StructField{
+		{
+			Name: variantGroupName,
+			Type: variantGroupStruct,
+		},
+	})
+}
+
+func createArchVariantGroupType(variants []string, variantGroupName string) reflect.Type {
+	props := reflect.TypeOf((*AndroidAppImportProperties)(nil))
+
+	variantFields := make([]reflect.StructField, len(variants))
+	// props.dpiVariants = reflect.New(dpiVariantGroupType).Interface()
+	for i, variant := range variants {
+		variantFields[i] = reflect.StructField{
+			Name: proptools.FieldNameForProperty(variant),
+			Type: props,
+		}
+	}
+	variantGroupStruct := reflect.StructOf(variantFields)
+	return_struct := reflect.StructOf([]reflect.StructField{
+		{
+			Name: variantGroupName,
+			Type: variantGroupStruct,
+		},
+	})
+	fmt.Println(return_struct)
+	return return_struct
+}
+
+func createArchDpiVariantGroupType(archNames []string, dpiNames []string) reflect.Type {
+	archDpiGroupName := "Arch_dpi"
+	dpiGroupName := "Dpi_variants"
+	props := reflect.TypeOf((*AndroidAppImportProperties)(nil))
+
+	dpiVariantFields := make([]reflect.StructField, len(dpiNames))
+	for i, variant_dpi := range dpiNames {
+		dpiVariantFields[i] = reflect.StructField{
+			Name: proptools.FieldNameForProperty(variant_dpi),
+			Type: props,
+		}
+	}
+	dpiVariantGroupStruct := reflect.StructOf(dpiVariantFields)
+	// Add dpi_variants
+	dpi_struct := reflect.StructOf([]reflect.StructField{
+		{
+			Name: dpiGroupName,
+			Type: dpiVariantGroupStruct,
+		},
+	})
+	archVariantFields := make([]reflect.StructField, len(archNames))
+	for i, variant_arch := range archNames {
+		archVariantFields[i] = reflect.StructField{
+			Name: proptools.FieldNameForProperty(variant_arch),
+			Type: dpi_struct,
+		}
+		// fmt.Println("create variant group ARCH_DPI:", archVariantFields[i], variant_arch)
+	}
+	archVariantGroupStruct := reflect.StructOf(archVariantFields)
+
+	return_struct := reflect.StructOf([]reflect.StructField{
+		{
+			Name: archDpiGroupName,
+			Type: archVariantGroupStruct,
+		},
+	})
+	fmt.Println(return_struct)
+	return return_struct
 }
 
 // android_app_import imports a prebuilt apk with additional processing specified in the module.
@@ -545,7 +642,7 @@ func AndroidAppImportFactory() android.Module {
 	module.AddProperties(&module.dexpreoptProperties)
 	module.AddProperties(&module.usesLibrary.usesLibraryProperties)
 	module.populateAllVariantStructs()
-	module.SetDefaultableHook(func(ctx android.DefaultableHookContext) {
+	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
 		module.processVariants(ctx)
 	})
 
@@ -596,7 +693,7 @@ func AndroidTestImportFactory() android.Module {
 	module.AddProperties(&module.dexpreoptProperties)
 	module.AddProperties(&module.testProperties)
 	module.populateAllVariantStructs()
-	module.SetDefaultableHook(func(ctx android.DefaultableHookContext) {
+	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
 		module.processVariants(ctx)
 	})
 
