@@ -46,6 +46,30 @@
       },
       "revId": "89c5b4a288d5b93f6e46f0c63ffe63befb101c29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8273d26_a9857af2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-26T02:05:16Z",
+      "side": 1,
+      "message": "For (3), I think you are right that we cannot drop `java_sdk_libray_import` from module_sdk because they provide stubs. \n\nIs your concern that we need dexpreopt and hiddenapi for `java_sdk_library_import` anyways, so it might not be worthwhile to remove the dexpreopt and hiddenapi components from `java_import`?",
+      "parentUuid": "e4a01f82_c6e5ff60",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 62
+      },
+      "revId": "89c5b4a288d5b93f6e46f0c63ffe63befb101c29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
