@@ -16,6 +16,24 @@
       "message": "There\u0027s already GetBuildFlagBool. https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/android/variable.go;l\u003d620\n\nI think we can standardize this to just \"true\". Boolean builds flags are hopefully actually booleans which are formatted here. https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/make/core/release_config.scl;l\u003d144\n\nAnd I think gantry will have an easier workflow for booleans so people will actually use the proper type.",
       "revId": "355c589af817efaf77d65600c654b8ea849d6362",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf4aff19_a399b3dd",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-26T17:10:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "940344e8_5a196190",
+      "revId": "355c589af817efaf77d65600c654b8ea849d6362",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
