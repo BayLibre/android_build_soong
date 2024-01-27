@@ -22,7 +22,6 @@ import (
 
 	"android/soong/android"
 	"android/soong/java/config"
-	"android/soong/testing"
 	"android/soong/tradefed"
 
 	"github.com/google/blueprint/proptools"
@@ -254,7 +253,6 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	}
 
 	r.installFile = ctx.InstallFile(installPath, ctx.ModuleName()+".jar", r.combinedJar, installDeps...)
-	android.SetProvider(ctx, testing.TestModuleProviderKey, testing.TestModuleProviderData{})
 }
 
 func generateRoboTestConfig(ctx android.ModuleContext, outputFile android.WritablePath,
