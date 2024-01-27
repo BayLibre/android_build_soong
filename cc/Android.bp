@@ -18,7 +18,6 @@ bootstrap_go_package {
         "soong-genrule",
         "soong-multitree",
         "soong-snapshot",
-        "soong-testing",
         "soong-tradefed",
     ],
     srcs: [
