@@ -16,18 +16,6 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-bootstrap_go_package {
-    name: "soong-testing-test_spec_proto",
-    pkgPath: "android/soong/testing/test_spec_proto",
-    deps: [
-        "golang-protobuf-reflect-protoreflect",
-        "golang-protobuf-runtime-protoimpl",
-    ],
-    srcs: [
-        "test_spec.pb.go",
-    ],
-}
-
 python_library_host {
     name: "test-spec-proto-py",
     pkg_path: "test_spec",
