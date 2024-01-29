@@ -500,6 +500,69 @@ func TestAndroidAppImport_ArchVariants(t *testing.T) {
 	}
 }
 
+func TestAndroidAppImport_Arch_DpiVariants(t *testing.T) {
+	// The test config's target arch is ARM64.
+	testCases := []struct {
+		name         string
+		bp           string
+		expected     string
+		artifactPath string
+		metaDataPath string
+		installPath  string
+	}{
+		{
+			name: "matching arch",
+			bp: `
+				android_app_import {
+					name: "foo",
+					apk: "prebuilts/apk/app.apk",
+					arch: {
+						arm64: {
+							apk: "prebuilts/apk/app_arm64.apk",
+						},
+					},
+					arch_dpi: {
+						arm64: {
+							dpi_variants: {
+								mdpi: {
+									apk: "prebuilts/apk/app_arm64_mdpi.apk",
+								},
+								xhdpi: {
+									apk: "prebuilts/apk/app_arm64_xhdpi.apk",
+								},
+							},
+						},
+					},
+					presigned: true,
+					dex_preopt: {
+						enabled: true,
+					},
+				}
+			`,
+			expected:     "verify_uses_libraries/apk/app_arm64_xhdpi.apk",
+			artifactPath: "prebuilts/apk/app_arm64_xhdpi.apk",
+			installPath:  "/system/app/foo/foo.apk",
+		},
+	}
+
+	for _, test := range testCases {
+		t.Run(test.name, func(t *testing.T) {
+			ctx, _ := testJava(t, test.bp)
+
+			variant := ctx.ModuleForTests("foo", "android_common")
+			input := variant.Output("jnis-uncompressed/foo.apk").Input.String()
+			if strings.HasSuffix(input, test.expected) {
+				t.Errorf("wrong src apk, expected: %q got: %q", test.expected, input)
+			}
+			rule := variant.Rule("genProvenanceMetaData")
+			android.AssertStringEquals(t, "Invalid input", test.artifactPath, rule.Inputs[0].String())
+			android.AssertStringEquals(t, "Invalid output", "out/soong/.intermediates/provenance_metadata/foo/provenance_metadata.textproto", rule.Output.String())
+			android.AssertStringEquals(t, "Invalid args", "foo", rule.Args["module_name"])
+			android.AssertStringEquals(t, "Invalid args", test.installPath, rule.Args["install_path"])
+		})
+	}
+}
+
 func TestAndroidAppImport_SoongConfigVariables(t *testing.T) {
 	testCases := []struct {
 		name         string
