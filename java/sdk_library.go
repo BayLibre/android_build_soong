@@ -252,6 +252,10 @@ func (scope *apiScope) exportableStubsLibraryModuleNameSuffix() string {
 	return ".stubs.exportable" + scope.moduleSuffix
 }
 
+func (scope *apiScope) runtimeStubsLibraryModuleNameSuffix() string {
+	return ".stubs.runtime" + scope.moduleSuffix
+}
+
 func (scope *apiScope) apiLibraryModuleName(baseName string) string {
 	return scope.stubsLibraryModuleName(baseName) + ".from-text"
 }
@@ -264,12 +268,20 @@ func (scope *apiScope) exportableSourceStubsLibraryModuleName(baseName string) s
 	return scope.exportableStubsLibraryModuleName(baseName) + ".from-source"
 }
 
+func (scope *apiScope) runtimeSourceStubsLibraryModuleName(baseName string) string {
+	return scope.runtimeStubsLibraryModuleName(baseName) + ".from-source"
+}
+
 func (scope *apiScope) stubsLibraryModuleName(baseName string) string {
 	return baseName + scope.stubsLibraryModuleNameSuffix()
 }
 
 func (scope *apiScope) exportableStubsLibraryModuleName(baseName string) string {
 	return baseName + scope.exportableStubsLibraryModuleNameSuffix()
+}
+
+func (scope *apiScope) runtimeStubsLibraryModuleName(baseName string) string {
+	return baseName + scope.runtimeStubsLibraryModuleNameSuffix()
 }
 
 func (scope *apiScope) stubsSourceModuleName(baseName string) string {
@@ -1016,6 +1028,12 @@ func (c *commonToSdkLibraryAndImport) exportableStubsLibraryModuleName(apiScope 
 	return c.namingScheme.exportableStubsLibraryModuleName(apiScope, baseName)
 }
 
+// Name of the java_library module that compiles the exportable stubs source.
+func (c *commonToSdkLibraryAndImport) runtimeStubsLibraryModuleName(apiScope *apiScope) string {
+	baseName := c.module.RootLibraryName()
+	return c.namingScheme.runtimeStubsLibraryModuleName(apiScope, baseName)
+}
+
 // Name of the droidstubs module that generates the stubs source and may also
 // generate/check the API.
 func (c *commonToSdkLibraryAndImport) stubsSourceModuleName(apiScope *apiScope) string {
@@ -1042,6 +1060,13 @@ func (c *commonToSdkLibraryAndImport) sourceStubsLibraryModuleName(apiScope *api
 func (c *commonToSdkLibraryAndImport) exportableSourceStubsLibraryModuleName(apiScope *apiScope) string {
 	baseName := c.module.RootLibraryName()
 	return c.namingScheme.exportableSourceStubsLibraryModuleName(apiScope, baseName)
+}
+
+// Name of the java_library module that compiles the exportable stubs
+// generated from source Java files.
+func (c *commonToSdkLibraryAndImport) runtimeSourceStubsLibraryModuleName(apiScope *apiScope) string {
+	baseName := c.module.RootLibraryName()
+	return c.namingScheme.runtimeSourceStubsLibraryModuleName(apiScope, baseName)
 }
 
 // The component names for different outputs of the java_sdk_library.
@@ -1848,6 +1873,15 @@ func (module *SdkLibrary) createExportableStubsLibrary(mctx android.DefaultableH
 	mctx.CreateModule(LibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
 }
 
+// Create a static java library that compiles the "runtime" stubs
+func (module *SdkLibrary) createRuntimeStubsLibrary(mctx android.DefaultableHookContext, apiScope *apiScope) {
+	props := module.stubsLibraryProps(mctx, apiScope)
+	props.Name = proptools.StringPtr(module.runtimeSourceStubsLibraryModuleName(apiScope))
+	props.Srcs = []string{":" + module.stubsSourceModuleName(apiScope) + "{.runtime}"}
+
+	mctx.CreateModule(LibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
+}
+
 // Creates a droidstubs module that creates stubs source files from the given full source
 // files and also updates and checks the API specification files.
 func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookContext, apiScope *apiScope, name string, scopeSpecificDroidstubsArgs []string) {
@@ -2133,6 +2167,18 @@ func (module *SdkLibrary) createTopLevelExportableStubsLibrary(
 	mctx.CreateModule(LibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
 }
 
+func (module *SdkLibrary) createTopLevelRuntimeStubsLibrary(
+	mctx android.DefaultableHookContext, apiScope *apiScope) {
+
+	props := module.topLevelStubsLibraryProps(mctx, apiScope)
+	props.Name = proptools.StringPtr(module.runtimeStubsLibraryModuleName(apiScope))
+
+	staticLib := module.runtimeSourceStubsLibraryModuleName(apiScope)
+	props.Static_libs = append(props.Static_libs, staticLib)
+
+	mctx.CreateModule(LibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
+}
+
 func (module *SdkLibrary) compareAgainstLatestApi(apiScope *apiScope) bool {
 	return !(apiScope.unstable || module.sdkLibraryProperties.Unsafe_ignore_missing_latest_api)
 }
@@ -2336,6 +2382,7 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 
 		module.createStubsLibrary(mctx, scope)
 		module.createExportableStubsLibrary(mctx, scope)
+		module.createRuntimeStubsLibrary(mctx, scope)
 
 		alternativeFullApiSurfaceStubLib := ""
 		if scope == apiScopePublic {
@@ -2348,6 +2395,7 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 
 		module.createTopLevelStubsLibrary(mctx, scope, contributesToApiSurface)
 		module.createTopLevelExportableStubsLibrary(mctx, scope)
+		module.createTopLevelRuntimeStubsLibrary(mctx, scope)
 	}
 
 	if module.requiresRuntimeImplementationLibrary() {
@@ -2408,6 +2456,10 @@ type sdkLibraryComponentNamingScheme interface {
 	exportableStubsLibraryModuleName(scope *apiScope, baseName string) string
 
 	exportableSourceStubsLibraryModuleName(scope *apiScope, baseName string) string
+
+	runtimeStubsLibraryModuleName(scope *apiScope, baseName string) string
+
+	runtimeSourceStubsLibraryModuleName(scope *apiScope, baseName string) string
 }
 
 type defaultNamingScheme struct {
@@ -2437,11 +2489,20 @@ func (s *defaultNamingScheme) exportableSourceStubsLibraryModuleName(scope *apiS
 	return scope.exportableSourceStubsLibraryModuleName(baseName)
 }
 
+func (s *defaultNamingScheme) runtimeStubsLibraryModuleName(scope *apiScope, baseName string) string {
+	return scope.runtimeStubsLibraryModuleName(baseName)
+}
+
+func (s *defaultNamingScheme) runtimeSourceStubsLibraryModuleName(scope *apiScope, baseName string) string {
+	return scope.runtimeSourceStubsLibraryModuleName(baseName)
+}
+
 var _ sdkLibraryComponentNamingScheme = (*defaultNamingScheme)(nil)
 
 func hasStubsLibrarySuffix(name string, apiScope *apiScope) bool {
 	return strings.HasSuffix(name, apiScope.stubsLibraryModuleNameSuffix()) ||
-		strings.HasSuffix(name, apiScope.exportableStubsLibraryModuleNameSuffix())
+		strings.HasSuffix(name, apiScope.exportableStubsLibraryModuleNameSuffix()) ||
+		strings.HasSuffix(name, apiScope.runtimeStubsLibraryModuleNameSuffix())
 }
 
 func moduleStubLinkType(name string) (stub bool, ret sdkLinkType) {
