@@ -91,6 +91,8 @@ type BaseLinkerProperties struct {
 	// compiling crt or libc.
 	Nocrt *bool `android:"arch_variant"`
 
+	Nocrtpadsegment *bool `android:"arch_variant"`
+
 	// deprecated and ignored because lld makes it unnecessary. See b/189475744.
 	Group_static_libs *bool `android:"arch_variant"`
 
@@ -251,6 +253,10 @@ func (blp *BaseLinkerProperties) crt() bool {
 
 func (blp *BaseLinkerProperties) libCrt() bool {
 	return blp.No_libcrt == nil || !*blp.No_libcrt
+}
+
+func (blp *BaseLinkerProperties) crtPadSegment() bool {
+	return blp.Nocrtpadsegment == nil || !*blp.Nocrtpadsegment
 }
 
 func NewBaseLinker(sanitize *sanitize) *baseLinker {
