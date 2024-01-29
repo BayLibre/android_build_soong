@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dcee01c_b26702c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-01-29T08:35:06Z",
+      "side": 1,
+      "message": "Sorry for back and forth. Let\u0027s work on AOSP for sepolicy stuff.",
+      "revId": "e9aa063b8210fe0d612cbaaa98167d5f2b86b127",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
