@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ef6192_1d2af6a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-01-29T14:50:52Z",
+      "side": 1,
+      "message": "I don\u0027t understand this. I thought we removed VNDK. So what\u0027s this remnant of it?",
+      "revId": "704c12d0bb1a819764c5101878e481a9c7b13554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
