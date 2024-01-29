@@ -34,6 +34,24 @@
       "parentUuid": "73716e5d_70ce025c",
       "revId": "2b6dfb554d3332b26ef293b7c9618bbe4e47f20d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10deafc_88945d34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-29T19:42:19Z",
+      "side": 1,
+      "message": "That\u0027s a good point. Maybe we could add special functionality to select + alias to automatically `HideFromMake` all the modules that weren\u0027t picked by the select...",
+      "parentUuid": "be385840_d9a6f3d8",
+      "revId": "2b6dfb554d3332b26ef293b7c9618bbe4e47f20d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
