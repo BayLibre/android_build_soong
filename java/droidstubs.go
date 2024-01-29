@@ -413,6 +413,8 @@ func (d *Droidstubs) StubsSrcJar(stubsType StubsType) (ret android.Path, err err
 		ret, err = d.stubsSrcJar, nil
 	case Exportable:
 		ret, err = d.exportableStubsSrcJar, nil
+	case Runtime:
+		ret, err = d.runtimeStubsSrcJar, nil
 	default:
 		ret, err = nil, fmt.Errorf("stubs srcjar not supported for the stub type %s", stubsType.String())
 	}
@@ -1420,7 +1422,7 @@ func (p *PrebuiltStubsSources) OutputFiles(tag string) (android.Paths, error) {
 	switch tag {
 	// prebuilt droidstubs does not output "exportable" stubs.
 	// Output the "everything" stubs srcjar file if the tag is ".exportable".
-	case "", ".exportable":
+	case "", ".exportable", ".runtime":
 		return android.Paths{p.stubsSrcJar}, nil
 	default:
 		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
