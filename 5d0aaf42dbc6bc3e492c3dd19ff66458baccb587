@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00862486_7e056acc",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-29T23:09:14Z",
+      "side": 1,
+      "message": "With the current CL, we will disallow disabling of every api type. Should this be limited to NewApi?\n\ne.g. something like\n```\nif flag[i] \u003d\u003d \"--disable\" \u0026\u0026 flag[i+1] \u003d\u003d \"NewApi\" {\n    ctx.ModuleErrorf()\n}\n```",
+      "range": {
+        "startLine": 373,
+        "startChar": 44,
+        "endLine": 373,
+        "endChar": 46
+      },
+      "revId": "5d0aaf42dbc6bc3e492c3dd19ff66458baccb587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8089ff55_ea64f1da",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-29T23:09:14Z",
+      "side": 1,
+      "message": "Should this be \u003d\u003d instead of `Contains`?",
+      "range": {
+        "startLine": 374,
+        "startChar": 5,
+        "endLine": 374,
+        "endChar": 21
+      },
+      "revId": "5d0aaf42dbc6bc3e492c3dd19ff66458baccb587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
