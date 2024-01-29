@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73716e5d_70ce025c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-29T19:00:23Z",
+      "side": 1,
+      "message": "I still think this would be better with selects + aliases, but +2 because we don\u0027t have those yet.",
+      "revId": "2b6dfb554d3332b26ef293b7c9618bbe4e47f20d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
