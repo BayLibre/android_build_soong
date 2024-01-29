@@ -385,6 +385,11 @@ func commonDefaultModules() string {
 		}
 
 		cc_object {
+			name: "crt_pad_segment",
+			defaults: ["crt_defaults"],
+		}
+
+		cc_object {
 			name: "crtbrand",
 			defaults: ["crt_defaults"],
 			srcs: ["crtbrand.c"],
