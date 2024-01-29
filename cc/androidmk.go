@@ -106,7 +106,7 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 				}
 				entries.SetString("LOCAL_SOONG_LINK_TYPE", c.makeLinkType)
 				if c.InVendorOrProduct() {
-					entries.SetBool("LOCAL_USE_VNDK", true)
+					entries.SetBool("LOCAL_IN_VENDOR_OR_PRODUCT", true)
 					if c.IsVndk() && !c.static() {
 						entries.SetString("LOCAL_SOONG_VNDK_VERSION", c.VndkVersion())
 						// VNDK libraries available to vendor are not installed because

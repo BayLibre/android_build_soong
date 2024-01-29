@@ -63,8 +63,8 @@ func (mod *Module) AndroidMkEntries() []android.AndroidMkEntries {
 				entries.AddStrings("LOCAL_SHARED_LIBRARIES", mod.transitiveAndroidMkSharedLibs.ToList()...)
 				entries.AddStrings("LOCAL_STATIC_LIBRARIES", mod.Properties.AndroidMkStaticLibs...)
 				entries.AddStrings("LOCAL_SOONG_LINK_TYPE", mod.makeLinkType)
-				if mod.UseVndk() {
-					entries.SetBool("LOCAL_USE_VNDK", true)
+				if mod.InVendorOrProduct() {
+					entries.SetBool("LOCAL_IN_VENDOR_OR_PRODUCT", true)
 				}
 				android.SetAconfigFileMkEntries(mod.AndroidModuleBase(), entries, mod.mergedAconfigFiles)
 			},
