@@ -16,6 +16,24 @@
       "message": "I still think this would be better with selects + aliases, but +2 because we don\u0027t have those yet.",
       "revId": "2b6dfb554d3332b26ef293b7c9618bbe4e47f20d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be385840_d9a6f3d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-29T19:22:14Z",
+      "side": 1,
+      "message": "Ack, I think I prefer the alias approach as well. Although I think even in this approach, we might need to do some `HideFromMake` handling for the different prebuilts till product packaging moves to soong.",
+      "parentUuid": "73716e5d_70ce025c",
+      "revId": "2b6dfb554d3332b26ef293b7c9618bbe4e47f20d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
