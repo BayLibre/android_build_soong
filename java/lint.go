@@ -370,6 +370,12 @@ func (l *linter) lint(ctx android.ModuleContext) {
 		return
 	}
 
+	for _, flag := range l.properties.Lint.Flags {
+		if strings.Contains(flag, "--disable") || strings.Contains(flag, "--enable") || strings.Contains(flag, "--check") {
+			ctx.PropertyErrorf("lint.flags", "Don't use --disable, --enable, or --check in the flags field, instead use the dedicated disabled_checks, warning_checks, error_checks, or fatal_checks fields")
+		}
+	}
+
 	if l.minSdkVersion.CompareTo(l.compileSdkVersion) == -1 {
 		l.extraMainlineLintErrors = append(l.extraMainlineLintErrors, updatabilityChecks...)
 		// Skip lint warning checks for NewApi warnings for libcore where they come from source
@@ -388,7 +394,6 @@ func (l *linter) lint(ctx android.ModuleContext) {
 			ctx.PropertyErrorf("lint.disabled_checks",
 				"Can't disable %v checks if min_sdk_version is different from sdk_version.", filtered)
 		}
-
 		// TODO(b/238784089): Remove this workaround when the NewApi issues have been addressed in PermissionController
 		if ctx.ModuleName() == "PermissionController" {
 			l.extraMainlineLintErrors = android.FilterListPred(l.extraMainlineLintErrors, func(s string) bool {
