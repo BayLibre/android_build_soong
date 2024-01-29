@@ -1772,3 +1772,56 @@ func TestSdkLibraryExportableStubsLibrary(t *testing.T) {
 		"top level exportable stubs library", []string{exportableSourceStubsLibraryModuleName},
 		topLevelModule.Module().(*Library).properties.Static_libs)
 }
+
+func TestSdkLibraryRuntimeStubsLibrary(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		PrepareForTestWithJavaSdkLibraryFiles,
+		FixtureWithLastReleaseApis("foo"),
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.SetApiLibraries([]string{"foo"})
+		}),
+	).RunTestWithBp(t, `
+		aconfig_declarations {
+			name: "bar",
+			package: "com.example.package",
+			srcs: [
+				"bar.aconfig",
+			],
+		}
+		java_sdk_library {
+			name: "foo",
+			srcs: ["a.java", "b.java"],
+			api_packages: ["foo"],
+			system: {
+				enabled: true,
+			},
+			module_lib: {
+				enabled: true,
+			},
+			test: {
+				enabled: true,
+			},
+			aconfig_declarations: [
+				"bar",
+			],
+		}
+	`)
+
+	runtimeStubsLibraryModuleName := apiScopePublic.runtimeStubsLibraryModuleName("foo")
+	runtimeSourceStubsLibraryModuleName := apiScopePublic.runtimeSourceStubsLibraryModuleName("foo")
+
+	// Check modules generation
+	topLevelModule := result.ModuleForTests(runtimeStubsLibraryModuleName, "android_common")
+	result.ModuleForTests(runtimeSourceStubsLibraryModuleName, "android_common")
+
+	// Check static lib dependency
+	android.AssertBoolEquals(t, "runtime top level stubs library module depends on the"+
+		"runtime source stubs library module", true,
+		CheckModuleHasDependency(t, result.TestContext, runtimeStubsLibraryModuleName,
+			"android_common", runtimeSourceStubsLibraryModuleName),
+	)
+	android.AssertArrayString(t, "runtime source stub library is a static lib of the"+
+		"top level runtime stubs library", []string{runtimeSourceStubsLibraryModuleName},
+		topLevelModule.Module().(*Library).properties.Static_libs)
+}
