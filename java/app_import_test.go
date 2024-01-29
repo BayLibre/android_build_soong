@@ -400,14 +400,26 @@ func TestAndroidAppImport_ArchVariants(t *testing.T) {
 							apk: "prebuilts/apk/app_arm64.apk",
 						},
 					},
+					arch_dpi: {
+						arm64: {
+							dpi_variants: {
+								mdpi: {
+									apk: "prebuilts/apk/app_arm64_mdpi.apk",
+								},
+								xhdpi: {
+									apk: "prebuilts/apk/app_arm64_xhdpi.apk",
+								},
+							},
+						},
+					},
 					presigned: true,
 					dex_preopt: {
 						enabled: true,
 					},
 				}
 			`,
-			expected:     "verify_uses_libraries/apk/app_arm64.apk",
-			artifactPath: "prebuilts/apk/app_arm64.apk",
+			expected:     "verify_uses_libraries/apk/app_arm64_xhdpi.apk",
+			artifactPath: "prebuilts/apk/app_arm64_xhdpi.apk",
 			installPath:  "/system/app/foo/foo.apk",
 		},
 		{

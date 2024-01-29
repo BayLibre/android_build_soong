@@ -70,9 +70,10 @@ type AndroidAppImport struct {
 	android.ApexModuleBase
 	prebuilt android.Prebuilt
 
-	properties   AndroidAppImportProperties
-	dpiVariants  interface{}
-	archVariants interface{}
+	properties       AndroidAppImportProperties
+	dpiVariants      interface{}
+	archVariants     interface{}
+	arch_dpiVariants interface{}
 
 	outputFile  android.Path
 	certificate Certificate
@@ -170,6 +171,19 @@ func (a *AndroidAppImport) processVariants(ctx android.DefaultableHookContext) {
 	archProps := reflect.ValueOf(a.archVariants).Elem().FieldByName("Arch")
 	archType := ctx.Config().AndroidFirstDeviceTarget.Arch.ArchType
 	MergePropertiesFromVariant(ctx, &a.properties, archProps, archType.Name)
+
+	// Process arch_dpi
+	archDpiProps := reflect.ValueOf(a.arch_dpiVariants).Elem().FieldByName("Arch_dpi").FieldByName(proptools.FieldNameForProperty(archType.Name)).FieldByName("Dpi_variants")
+	//archDpiVariants := archDpiStruct.FieldByName(proptools.FieldNameForProperty(archType.Name))
+	//archDpiProps := archDpiVariants.FieldByName(proptools.FieldNameForProperty("Dpi_variants"))
+	if archDpiProps.IsValid() {
+		for i := len(config.ProductAAPTPrebuiltDPI()) - 1; i >= 0; i-- {
+			MergePropertiesFromVariant(ctx, &a.properties, archDpiProps, config.ProductAAPTPrebuiltDPI()[i])
+		}
+		if config.ProductAAPTPreferredConfig() != "" {
+			MergePropertiesFromVariant(ctx, &a.properties, archDpiProps, config.ProductAAPTPreferredConfig())
+		}
+	}
 
 	if String(a.properties.Apk) == "" {
 		// Disable this module since the apk property is still empty after processing all matching
@@ -450,6 +464,7 @@ func (a *AndroidAppImport) PrivAppAllowlist() android.OptionalPath {
 
 var dpiVariantGroupType reflect.Type
 var archVariantGroupType reflect.Type
+var archdpiVariantGroupType reflect.Type
 var supportedDpis = []string{"ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"}
 
 func initAndroidAppImportVariantGroupTypes() {
@@ -460,6 +475,7 @@ func initAndroidAppImportVariantGroupTypes() {
 		archNames[i] = archType.Name
 	}
 	archVariantGroupType = createVariantGroupType(archNames, "Arch")
+	archdpiVariantGroupType = createArchDpiVariantGroupType(archNames, supportedDpis)
 }
 
 // Populates all variant struct properties at creation time.
@@ -469,6 +485,9 @@ func (a *AndroidAppImport) populateAllVariantStructs() {
 
 	a.archVariants = reflect.New(archVariantGroupType).Interface()
 	a.AddProperties(a.archVariants)
+
+	a.arch_dpiVariants = reflect.New(archdpiVariantGroupType).Interface()
+	a.AddProperties(a.arch_dpiVariants)
 }
 
 func (a *AndroidAppImport) Privileged() bool {
@@ -521,6 +540,46 @@ func createVariantGroupType(variants []string, variantGroupName string) reflect.
 			Type: variantGroupStruct,
 		},
 	})
+}
+
+func createArchDpiVariantGroupType(archNames []string, dpiNames []string) reflect.Type {
+	archDpiGroupName := "Arch_dpi"
+	dpiGroupName := "Dpi_variants"
+	props := reflect.TypeOf((*AndroidAppImportProperties)(nil))
+
+	dpiVariantFields := make([]reflect.StructField, len(dpiNames))
+	for i, variant_dpi := range dpiNames {
+		dpiVariantFields[i] = reflect.StructField{
+			Name: proptools.FieldNameForProperty(variant_dpi),
+			Type: props,
+		}
+	}
+	dpiVariantGroupStruct := reflect.StructOf(dpiVariantFields)
+	// Add dpi_variants
+	dpi_struct := reflect.StructOf([]reflect.StructField{
+		{
+			Name: dpiGroupName,
+			Type: dpiVariantGroupStruct,
+		},
+	})
+	archVariantFields := make([]reflect.StructField, len(archNames))
+	for i, variant_arch := range archNames {
+		archVariantFields[i] = reflect.StructField{
+			Name: proptools.FieldNameForProperty(variant_arch),
+			Type: dpi_struct,
+		}
+		// fmt.Println("create variant group ARCH_DPI:", archVariantFields[i], variant_arch)
+	}
+	archVariantGroupStruct := reflect.StructOf(archVariantFields)
+
+	return_struct := reflect.StructOf([]reflect.StructField{
+		{
+			Name: archDpiGroupName,
+			Type: archVariantGroupStruct,
+		},
+	})
+	fmt.Println(return_struct)
+	return return_struct
 }
 
 // android_app_import imports a prebuilt apk with additional processing specified in the module.
