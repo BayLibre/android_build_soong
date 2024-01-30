@@ -706,7 +706,7 @@ java_system_modules_import {
 		checkAllCopyRules(`
 .intermediates/exported-system-module/android_common/turbine-combined/exported-system-module.jar -> java/exported-system-module.jar
 .intermediates/system-module/android_common/turbine-combined/system-module.jar -> java/system-module.jar
-.intermediates/myjavalib.stubs.exportable/android_common/combined/myjavalib.stubs.exportable.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime/android_common/combined/myjavalib.stubs.runtime.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 `),
@@ -951,13 +951,13 @@ java_sdk_library_import {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs.exportable/android_common/combined/myjavalib.stubs.exportable.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime/android_common/combined/myjavalib.stubs.runtime.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
-.intermediates/myjavalib.stubs.exportable.system/android_common/combined/myjavalib.stubs.exportable.system.jar -> sdk_library/system/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime.system/android_common/combined/myjavalib.stubs.runtime.system.jar -> sdk_library/system/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.system/android_common/exportable/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib.txt
 .intermediates/myjavalib.stubs.source.system/android_common/exportable/myjavalib.stubs.source.system_removed.txt -> sdk_library/system/myjavalib-removed.txt
-.intermediates/myjavalib.stubs.exportable.test/android_common/combined/myjavalib.stubs.exportable.test.jar -> sdk_library/test/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime.test/android_common/combined/myjavalib.stubs.runtime.test.jar -> sdk_library/test/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.test/android_common/exportable/myjavalib.stubs.source.test_api.txt -> sdk_library/test/myjavalib.txt
 .intermediates/myjavalib.stubs.source.test/android_common/exportable/myjavalib.stubs.source.test_removed.txt -> sdk_library/test/myjavalib-removed.txt
 `),
@@ -1009,7 +1009,7 @@ java_sdk_library_import {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib-foo.stubs.exportable/android_common/combined/myjavalib-foo.stubs.exportable.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/myjavalib-foo.stubs.runtime/android_common/combined/myjavalib-foo.stubs.runtime.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib-foo.stubs.source/android_common/exportable/myjavalib-foo.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib-foo.stubs.source/android_common/exportable/myjavalib-foo.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 `),
@@ -1062,7 +1062,7 @@ java_sdk_library_import {
 }
 		`),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs.exportable/android_common/combined/myjavalib.stubs.exportable.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime/android_common/combined/myjavalib.stubs.runtime.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source-stubs.srcjar -> sdk_library/public/myjavalib.srcjar
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
@@ -1110,7 +1110,7 @@ java_sdk_library_import {
 }
 		`),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs.exportable/android_common/combined/myjavalib.stubs.exportable.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime/android_common/combined/myjavalib.stubs.runtime.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_annotations.zip -> sdk_library/public/myjavalib_annotations.zip
@@ -1163,7 +1163,7 @@ java_sdk_library_import {
 }
 		`),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs.exportable/android_common/combined/myjavalib.stubs.exportable.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime/android_common/combined/myjavalib.stubs.runtime.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 		`),
@@ -1231,15 +1231,15 @@ java_sdk_library_import {
 			ctx := android.ModuleInstallPathContextForTesting(result.Config)
 			dexJarBuildPath := func(name string, kind android.SdkKind) string {
 				dep := result.Module(name, "android_common").(java.SdkLibraryDependency)
-				path := dep.SdkApiExportableStubDexJar(ctx, kind).Path()
+				path := dep.SdkApiRuntimeStubDexJar(ctx, kind).Path()
 				return path.RelativeToTop().String()
 			}
 
 			dexJarPath := dexJarBuildPath("myjavalib", android.SdkPublic)
-			android.AssertStringEquals(t, "source dex public stubs jar build path", "out/soong/.intermediates/myjavalib.stubs.exportable/android_common/dex/myjavalib.stubs.exportable.jar", dexJarPath)
+			android.AssertStringEquals(t, "source dex public stubs jar build path", "out/soong/.intermediates/myjavalib.stubs.runtime/android_common/dex/myjavalib.stubs.runtime.jar", dexJarPath)
 
 			dexJarPath = dexJarBuildPath("myjavalib", android.SdkSystem)
-			systemDexJar := "out/soong/.intermediates/myjavalib.stubs.exportable.system/android_common/dex/myjavalib.stubs.exportable.system.jar"
+			systemDexJar := "out/soong/.intermediates/myjavalib.stubs.runtime.system/android_common/dex/myjavalib.stubs.runtime.system.jar"
 			android.AssertStringEquals(t, "source dex system stubs jar build path", systemDexJar, dexJarPath)
 
 			// This should fall back to system as module is not available.
@@ -1288,7 +1288,7 @@ java_sdk_library_import {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs.exportable/android_common/combined/myjavalib.stubs.exportable.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime/android_common/combined/myjavalib.stubs.runtime.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 `),
@@ -1336,7 +1336,7 @@ java_sdk_library_import {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs.exportable/android_common/combined/myjavalib.stubs.exportable.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime/android_common/combined/myjavalib.stubs.runtime.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 `),
@@ -1394,10 +1394,10 @@ java_sdk_library_import {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs.exportable/android_common/combined/myjavalib.stubs.exportable.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime/android_common/combined/myjavalib.stubs.runtime.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
-.intermediates/myjavalib.stubs.exportable.system/android_common/combined/myjavalib.stubs.exportable.system.jar -> sdk_library/system/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime.system/android_common/combined/myjavalib.stubs.runtime.system.jar -> sdk_library/system/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.system/android_common/exportable/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib.txt
 .intermediates/myjavalib.stubs.source.system/android_common/exportable/myjavalib.stubs.source.system_removed.txt -> sdk_library/system/myjavalib-removed.txt
 `),
@@ -1466,13 +1466,13 @@ java_sdk_library_import {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs.exportable/android_common/combined/myjavalib.stubs.exportable.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime/android_common/combined/myjavalib.stubs.runtime.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
-.intermediates/myjavalib.stubs.exportable.system/android_common/combined/myjavalib.stubs.exportable.system.jar -> sdk_library/system/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime.system/android_common/combined/myjavalib.stubs.runtime.system.jar -> sdk_library/system/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.system/android_common/exportable/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib.txt
 .intermediates/myjavalib.stubs.source.system/android_common/exportable/myjavalib.stubs.source.system_removed.txt -> sdk_library/system/myjavalib-removed.txt
-.intermediates/myjavalib.stubs.exportable.module_lib/android_common/combined/myjavalib.stubs.exportable.module_lib.jar -> sdk_library/module-lib/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime.module_lib/android_common/combined/myjavalib.stubs.runtime.module_lib.jar -> sdk_library/module-lib/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.module_lib/android_common/exportable/myjavalib.stubs.source.module_lib_api.txt -> sdk_library/module-lib/myjavalib.txt
 .intermediates/myjavalib.stubs.source.module_lib/android_common/exportable/myjavalib.stubs.source.module_lib_removed.txt -> sdk_library/module-lib/myjavalib-removed.txt
 `),
@@ -1532,10 +1532,10 @@ java_sdk_library_import {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs.exportable/android_common/combined/myjavalib.stubs.exportable.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime/android_common/combined/myjavalib.stubs.runtime.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
-.intermediates/myjavalib.stubs.exportable.system_server/android_common/combined/myjavalib.stubs.exportable.system_server.jar -> sdk_library/system-server/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime.system_server/android_common/combined/myjavalib.stubs.runtime.system_server.jar -> sdk_library/system-server/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.system_server/android_common/exportable/myjavalib.stubs.source.system_server_api.txt -> sdk_library/system-server/myjavalib.txt
 .intermediates/myjavalib.stubs.source.system_server/android_common/exportable/myjavalib.stubs.source.system_server_removed.txt -> sdk_library/system-server/myjavalib-removed.txt
 `),
@@ -1586,7 +1586,7 @@ java_sdk_library_import {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs.exportable/android_common/combined/myjavalib.stubs.exportable.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime/android_common/combined/myjavalib.stubs.runtime.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 `),
@@ -1643,7 +1643,7 @@ java_sdk_library_import {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs.exportable/android_common/combined/myjavalib.stubs.exportable.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.runtime/android_common/combined/myjavalib.stubs.runtime.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/exportable/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 docs/known_doctags -> doctags/docs/known_doctags

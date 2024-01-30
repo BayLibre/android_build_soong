@@ -282,11 +282,11 @@ func TestBootclasspathFragment_StubLibs(t *testing.T) {
 	stubsJar := "out/soong/.intermediates/mystublib/android_common/dex/mystublib.jar"
 
 	// Stubs jars for mysdklibrary
-	publicStubsJar := "out/soong/.intermediates/mysdklibrary.stubs.exportable/android_common/dex/mysdklibrary.stubs.exportable.jar"
-	systemStubsJar := "out/soong/.intermediates/mysdklibrary.stubs.exportable.system/android_common/dex/mysdklibrary.stubs.exportable.system.jar"
+	publicStubsJar := "out/soong/.intermediates/mysdklibrary.stubs.runtime/android_common/dex/mysdklibrary.stubs.runtime.jar"
+	systemStubsJar := "out/soong/.intermediates/mysdklibrary.stubs.runtime.system/android_common/dex/mysdklibrary.stubs.runtime.system.jar"
 
 	// Stubs jars for myothersdklibrary
-	otherPublicStubsJar := "out/soong/.intermediates/myothersdklibrary.stubs.exportable/android_common/dex/myothersdklibrary.stubs.exportable.jar"
+	otherPublicStubsJar := "out/soong/.intermediates/myothersdklibrary.stubs.runtime/android_common/dex/myothersdklibrary.stubs.runtime.jar"
 
 	// Check that SdkPublic uses public stubs for all sdk libraries.
 	android.AssertPathsRelativeToTopEquals(t, "public dex stubs jar", []string{otherPublicStubsJar, publicStubsJar, stubsJar}, info.TransitiveStubDexJarsByScope.StubDexJarsForScope(PublicHiddenAPIScope))

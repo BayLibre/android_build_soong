@@ -120,6 +120,17 @@ func (k SdkKind) DefaultExportableJavaLibraryName() string {
 	}
 }
 
+func (k SdkKind) DefaultRuntimeJavaLibraryName() string {
+	switch k {
+	case SdkPublic, SdkSystem, SdkTest, SdkModule, SdkSystemServer:
+		return k.DefaultJavaLibraryName() + "_runtime"
+	case SdkCore:
+		return k.DefaultJavaLibraryName() + ".runtime"
+	default:
+		panic(fmt.Errorf("API surface %v does not provide runtime stubs", k))
+	}
+}
+
 // SdkSpec represents the kind and the version of an SDK for a module to build against
 type SdkSpec struct {
 	Kind     SdkKind
