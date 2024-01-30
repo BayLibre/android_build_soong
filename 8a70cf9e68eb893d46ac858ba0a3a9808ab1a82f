@@ -51,6 +51,24 @@
       "parentUuid": "d5c5ba62_aa6114ed",
       "revId": "8a70cf9e68eb893d46ac858ba0a3a9808ab1a82f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a68471_1f48bbaf",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-01-30T21:04:45Z",
+      "side": 1,
+      "message": "probably only in `vendor/google*`, right? there\u0027s little to nothing we can/should do about vendor/qcom or whatever. (but, yes, i also think it\u0027s weird that `vendor/google*` counts as \"external\" here.)",
+      "parentUuid": "f2f553ce_5d4ad29c",
+      "revId": "8a70cf9e68eb893d46ac858ba0a3a9808ab1a82f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
