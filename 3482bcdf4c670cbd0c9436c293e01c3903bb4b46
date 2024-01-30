@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea40d350_2850993f",
+        "filename": "cc/config/global.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-01-30T22:45:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6fc727e_1dcfbd1c",
+      "range": {
+        "startLine": 263,
+        "startChar": 5,
+        "endLine": 263,
+        "endChar": 8
+      },
+      "revId": "3482bcdf4c670cbd0c9436c293e01c3903bb4b46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30cd9592_ddded189",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d21a1b_099b1a90",
+        "filename": "cc/config/global.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-01-30T22:45:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30cd9592_ddded189",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 30
+      },
+      "revId": "3482bcdf4c670cbd0c9436c293e01c3903bb4b46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "863aaa4c_1d271e0f",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-30T21:30:52Z",
       "side": 1,
       "message": "Do we still need this?  If so, again prefer `-Wno-fortify-source`.",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 30
+      },
+      "revId": "3482bcdf4c670cbd0c9436c293e01c3903bb4b46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b97f895_646029df",
+        "filename": "cc/config/global.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-01-30T22:45:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "863aaa4c_1d271e0f",
       "range": {
         "startLine": 372,
         "startChar": 0,
