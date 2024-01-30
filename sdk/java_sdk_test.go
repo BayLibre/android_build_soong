@@ -1231,15 +1231,15 @@ java_sdk_library_import {
 			ctx := android.ModuleInstallPathContextForTesting(result.Config)
 			dexJarBuildPath := func(name string, kind android.SdkKind) string {
 				dep := result.Module(name, "android_common").(java.SdkLibraryDependency)
-				path := dep.SdkApiExportableStubDexJar(ctx, kind).Path()
+				path := dep.SdkApiRuntimeStubDexJar(ctx, kind).Path()
 				return path.RelativeToTop().String()
 			}
 
 			dexJarPath := dexJarBuildPath("myjavalib", android.SdkPublic)
-			android.AssertStringEquals(t, "source dex public stubs jar build path", "out/soong/.intermediates/myjavalib.stubs.exportable/android_common/dex/myjavalib.stubs.exportable.jar", dexJarPath)
+			android.AssertStringEquals(t, "source dex public stubs jar build path", "out/soong/.intermediates/myjavalib.stubs.runtime/android_common/dex/myjavalib.stubs.exportable.jar", dexJarPath)
 
 			dexJarPath = dexJarBuildPath("myjavalib", android.SdkSystem)
-			systemDexJar := "out/soong/.intermediates/myjavalib.stubs.exportable.system/android_common/dex/myjavalib.stubs.exportable.system.jar"
+			systemDexJar := "out/soong/.intermediates/myjavalib.stubs.runtime.system/android_common/dex/myjavalib.stubs.runtime.system.jar"
 			android.AssertStringEquals(t, "source dex system stubs jar build path", systemDexJar, dexJarPath)
 
 			// This should fall back to system as module is not available.

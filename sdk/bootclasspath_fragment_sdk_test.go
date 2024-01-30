@@ -495,15 +495,15 @@ func TestSnapshotWithBootClasspathFragment_Contents(t *testing.T) {
 .intermediates/mybootclasspathfragment/android_common/modular-hiddenapi/filtered-stub-flags.csv -> hiddenapi/filtered-stub-flags.csv
 .intermediates/mybootclasspathfragment/android_common/modular-hiddenapi/filtered-flags.csv -> hiddenapi/filtered-flags.csv
 .intermediates/mysdk/common_os/empty -> java_boot_libs/snapshot/jars/are/invalid/mybootlib.jar
-.intermediates/myothersdklibrary.stubs.exportable/android_common/combined/myothersdklibrary.stubs.exportable.jar -> sdk_library/public/myothersdklibrary-stubs.jar
-.intermediates/myothersdklibrary.stubs.source/android_common/exportable/myothersdklibrary.stubs.source_api.txt -> sdk_library/public/myothersdklibrary.txt
-.intermediates/myothersdklibrary.stubs.source/android_common/exportable/myothersdklibrary.stubs.source_removed.txt -> sdk_library/public/myothersdklibrary-removed.txt
-.intermediates/mysdklibrary.stubs.exportable/android_common/combined/mysdklibrary.stubs.exportable.jar -> sdk_library/public/mysdklibrary-stubs.jar
-.intermediates/mysdklibrary.stubs.source/android_common/exportable/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
-.intermediates/mysdklibrary.stubs.source/android_common/exportable/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
-.intermediates/mycoreplatform.stubs.exportable/android_common/combined/mycoreplatform.stubs.exportable.jar -> sdk_library/public/mycoreplatform-stubs.jar
-.intermediates/mycoreplatform.stubs.source/android_common/exportable/mycoreplatform.stubs.source_api.txt -> sdk_library/public/mycoreplatform.txt
-.intermediates/mycoreplatform.stubs.source/android_common/exportable/mycoreplatform.stubs.source_removed.txt -> sdk_library/public/mycoreplatform-removed.txt
+.intermediates/myothersdklibrary.stubs.runtime/android_common/combined/myothersdklibrary.stubs.runtime.jar -> sdk_library/public/myothersdklibrary-stubs.jar
+.intermediates/myothersdklibrary.stubs.source/android_common/runtime/myothersdklibrary.stubs.source_api.txt -> sdk_library/public/myothersdklibrary.txt
+.intermediates/myothersdklibrary.stubs.source/android_common/runtime/myothersdklibrary.stubs.source_removed.txt -> sdk_library/public/myothersdklibrary-removed.txt
+.intermediates/mysdklibrary.stubs.runtime/android_common/combined/mysdklibrary.stubs.runtime.jar -> sdk_library/public/mysdklibrary-stubs.jar
+.intermediates/mysdklibrary.stubs.source/android_common/runtime/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
+.intermediates/mysdklibrary.stubs.source/android_common/runtime/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
+.intermediates/mycoreplatform.stubs.runtime/android_common/combined/mycoreplatform.stubs.runtime.jar -> sdk_library/public/mycoreplatform-stubs.jar
+.intermediates/mycoreplatform.stubs.source/android_common/runtime/mycoreplatform.stubs.source_api.txt -> sdk_library/public/mycoreplatform.txt
+.intermediates/mycoreplatform.stubs.source/android_common/runtime/mycoreplatform.stubs.source_removed.txt -> sdk_library/public/mycoreplatform-removed.txt
 `)
 	})
 
@@ -1113,15 +1113,15 @@ java_sdk_library_import {
 .intermediates/mybootclasspathfragment/android_common_myapex/modular-hiddenapi-for-sdk-snapshot/index.csv -> hiddenapi/index.csv
 .intermediates/mybootclasspathfragment/android_common_myapex/modular-hiddenapi-for-sdk-snapshot/stub-flags.csv -> hiddenapi/stub-flags.csv
 .intermediates/mybootclasspathfragment/android_common_myapex/modular-hiddenapi-for-sdk-snapshot/all-flags.csv -> hiddenapi/all-flags.csv
-.intermediates/mysdklibrary.stubs.exportable/android_common/combined/mysdklibrary.stubs.exportable.jar -> sdk_library/public/mysdklibrary-stubs.jar
-.intermediates/mysdklibrary.stubs.source/android_common/exportable/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
-.intermediates/mysdklibrary.stubs.source/android_common/exportable/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
+.intermediates/mysdklibrary.stubs.runtime/android_common/combined/mysdklibrary.stubs.runtime.jar -> sdk_library/public/mysdklibrary-stubs.jar
+.intermediates/mysdklibrary.stubs.source/android_common/runtime/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
+.intermediates/mysdklibrary.stubs.source/android_common/runtime/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
 `
 
 		// On S the stub flags should only be generated from mysdklibrary as mynewsdklibrary is not part
 		// of the snapshot.
 		expectedStubFlagsInputs := []string{
-			"out/soong/.intermediates/mysdklibrary.stubs.exportable/android_common/dex/mysdklibrary.stubs.exportable.jar",
+			"out/soong/.intermediates/mysdklibrary.stubs.runtime/android_common/dex/mysdklibrary.stubs.runtime.jar",
 			"out/soong/.intermediates/mysdklibrary/android_common/aligned/mysdklibrary.jar",
 		}
 
@@ -1191,20 +1191,20 @@ java_sdk_library_import {
 .intermediates/mybootclasspathfragment/android_common_myapex/modular-hiddenapi/signature-patterns.csv -> hiddenapi/signature-patterns.csv
 .intermediates/mybootclasspathfragment/android_common_myapex/modular-hiddenapi/filtered-stub-flags.csv -> hiddenapi/filtered-stub-flags.csv
 .intermediates/mybootclasspathfragment/android_common_myapex/modular-hiddenapi/filtered-flags.csv -> hiddenapi/filtered-flags.csv
-.intermediates/mysdklibrary.stubs.exportable/android_common/combined/mysdklibrary.stubs.exportable.jar -> sdk_library/public/mysdklibrary-stubs.jar
-.intermediates/mysdklibrary.stubs.source/android_common/exportable/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
-.intermediates/mysdklibrary.stubs.source/android_common/exportable/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
-.intermediates/mynewsdklibrary.stubs.exportable/android_common/combined/mynewsdklibrary.stubs.exportable.jar -> sdk_library/public/mynewsdklibrary-stubs.jar
-.intermediates/mynewsdklibrary.stubs.source/android_common/exportable/mynewsdklibrary.stubs.source_api.txt -> sdk_library/public/mynewsdklibrary.txt
-.intermediates/mynewsdklibrary.stubs.source/android_common/exportable/mynewsdklibrary.stubs.source_removed.txt -> sdk_library/public/mynewsdklibrary-removed.txt
+.intermediates/mysdklibrary.stubs.runtime/android_common/combined/mysdklibrary.stubs.runtime.jar -> sdk_library/public/mysdklibrary-stubs.jar
+.intermediates/mysdklibrary.stubs.source/android_common/runtime/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
+.intermediates/mysdklibrary.stubs.source/android_common/runtime/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
+.intermediates/mynewsdklibrary.stubs.runtime/android_common/combined/mynewsdklibrary.stubs.runtime.jar -> sdk_library/public/mynewsdklibrary-stubs.jar
+.intermediates/mynewsdklibrary.stubs.source/android_common/runtime/mynewsdklibrary.stubs.source_api.txt -> sdk_library/public/mynewsdklibrary.txt
+.intermediates/mynewsdklibrary.stubs.source/android_common/runtime/mynewsdklibrary.stubs.source_removed.txt -> sdk_library/public/mynewsdklibrary-removed.txt
 `
 
 		// On tiramisu the stub flags should be generated from both mynewsdklibrary and mysdklibrary as
 		// they are both part of the snapshot.
 		expectedStubFlagsInputs := []string{
-			"out/soong/.intermediates/mynewsdklibrary.stubs.exportable/android_common/dex/mynewsdklibrary.stubs.exportable.jar",
+			"out/soong/.intermediates/mynewsdklibrary.stubs.runtime/android_common/dex/mynewsdklibrary.stubs.runtime.jar",
 			"out/soong/.intermediates/mynewsdklibrary/android_common/aligned/mynewsdklibrary.jar",
-			"out/soong/.intermediates/mysdklibrary.stubs.exportable/android_common/dex/mysdklibrary.stubs.exportable.jar",
+			"out/soong/.intermediates/mysdklibrary.stubs.runtime/android_common/dex/mysdklibrary.stubs.runtime.jar",
 			"out/soong/.intermediates/mysdklibrary/android_common/aligned/mysdklibrary.jar",
 		}
 

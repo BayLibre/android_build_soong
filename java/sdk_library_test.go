@@ -144,9 +144,9 @@ func TestJavaSdkLibrary(t *testing.T) {
 		"foo.api.public.latest",
 		"foo.api.system.latest",
 		"foo.stubs",
-		"foo.stubs.exportable",
-		"foo.stubs.exportable.system",
-		"foo.stubs.exportable.test",
+		"foo.stubs.runtime",
+		"foo.stubs.runtime.system",
+		"foo.stubs.runtime.test",
 		"foo.stubs.source",
 		"foo.stubs.source.system",
 		"foo.stubs.source.test",
@@ -560,7 +560,7 @@ func TestJavaSdkLibrary_Deps(t *testing.T) {
 		`sdklib.api.public.latest`,
 		`sdklib.impl`,
 		`sdklib.stubs`,
-		`sdklib.stubs.exportable`,
+		`sdklib.stubs.runtime`,
 		`sdklib.stubs.source`,
 		`sdklib.xml`,
 	})
@@ -964,7 +964,7 @@ func TestJavaSdkLibraryImport_WithSource(t *testing.T) {
 		`sdklib.api.public.latest`,
 		`sdklib.impl`,
 		`sdklib.stubs`,
-		`sdklib.stubs.exportable`,
+		`sdklib.stubs.runtime`,
 		`sdklib.stubs.source`,
 		`sdklib.xml`,
 	})
@@ -1043,7 +1043,7 @@ func testJavaSdkLibraryImport_Preferred(t *testing.T, prefer string, preparer an
 		`sdklib.api.public.latest`,
 		`sdklib.impl`,
 		`sdklib.stubs`,
-		`sdklib.stubs.exportable`,
+		`sdklib.stubs.runtime`,
 		`sdklib.stubs.source`,
 		`sdklib.xml`,
 	})
@@ -1755,21 +1755,21 @@ func TestSdkLibraryExportableStubsLibrary(t *testing.T) {
 		}
 	`)
 
-	exportableStubsLibraryModuleName := apiScopePublic.exportableStubsLibraryModuleName("foo")
-	exportableSourceStubsLibraryModuleName := apiScopePublic.exportableSourceStubsLibraryModuleName("foo")
+	runtimeStubsLibraryModuleName := apiScopePublic.runtimeStubsLibraryModuleName("foo")
+	runtimeSourceStubsLibraryModuleName := apiScopePublic.runtimeSourceStubsLibraryModuleName("foo")
 
 	// Check modules generation
-	topLevelModule := result.ModuleForTests(exportableStubsLibraryModuleName, "android_common")
-	result.ModuleForTests(exportableSourceStubsLibraryModuleName, "android_common")
+	topLevelModule := result.ModuleForTests(runtimeStubsLibraryModuleName, "android_common")
+	result.ModuleForTests(runtimeSourceStubsLibraryModuleName, "android_common")
 
 	// Check static lib dependency
-	android.AssertBoolEquals(t, "exportable top level stubs library module depends on the"+
-		"exportable source stubs library module", true,
-		CheckModuleHasDependency(t, result.TestContext, exportableStubsLibraryModuleName,
-			"android_common", exportableSourceStubsLibraryModuleName),
+	android.AssertBoolEquals(t, "runtime top level stubs library module depends on the"+
+		"runtime source stubs library module", true,
+		CheckModuleHasDependency(t, result.TestContext, runtimeStubsLibraryModuleName,
+			"android_common", runtimeSourceStubsLibraryModuleName),
 	)
-	android.AssertArrayString(t, "exportable source stub library is a static lib of the"+
-		"top level exportable stubs library", []string{exportableSourceStubsLibraryModuleName},
+	android.AssertArrayString(t, "runtime source stub library is a static lib of the"+
+		"top level runtime stubs library", []string{runtimeSourceStubsLibraryModuleName},
 		topLevelModule.Module().(*Library).properties.Static_libs)
 }
 
