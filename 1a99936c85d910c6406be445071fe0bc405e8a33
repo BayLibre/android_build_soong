@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4337bfc4_b4eba2b4",
+        "filename": "android/deapexer.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-30T04:01:39Z",
+      "side": 1,
+      "message": "My understanding is that the deapexer is for general purpose. I\u0027m not sure it\u0027s a good idea to put such a dexpreopt-specific field here. An alternative is to put it at the place where dexpreopt is invoked, such as struct `prebuiltCommon`. However, if the build system is fine with this change, then I\u0027m also fine with it.",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "1a99936c85d910c6406be445071fe0bc405e8a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa3fad1_2855e674",
+        "filename": "android/deapexer.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-30T04:01:39Z",
+      "side": 1,
+      "message": "Ditto. Not sure it\u0027s a good idea to put such a dexpreopt-specific field here.",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 26
+      },
+      "revId": "1a99936c85d910c6406be445071fe0bc405e8a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3220965f_f6ed640a",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-30T04:01:39Z",
+      "side": 1,
+      "message": "Panic if this returns nil.",
+      "range": {
+        "startLine": 289,
+        "startChar": 32,
+        "endLine": 289,
+        "endChar": 50
+      },
+      "revId": "1a99936c85d910c6406be445071fe0bc405e8a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
