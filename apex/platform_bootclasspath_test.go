@@ -393,10 +393,10 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 		`platform:all_apex_contributions`,
 
 		// The following are stubs.
-		`platform:android_stubs_current_exportable`,
-		`platform:android_system_stubs_current_exportable`,
-		`platform:android_test_stubs_current_exportable`,
-		`platform:legacy.core.platform.api.stubs.exportable`,
+		`platform:android_stubs_current_runtime`,
+		`platform:android_system_stubs_current_runtime`,
+		`platform:android_test_stubs_current_runtime`,
+		`platform:legacy.core.platform.api.stubs.runtime`,
 
 		// Needed for generating the boot image.
 		`platform:dex2oatd`,
@@ -556,7 +556,7 @@ func TestPlatformBootclasspath_AlwaysUsePrebuiltSdks(t *testing.T) {
 		"platform:prebuilt_sdk_test_current_android",
 
 		// Not a prebuilt as no prebuilt existed when it was added.
-		"platform:legacy.core.platform.api.stubs.exportable",
+		"platform:legacy.core.platform.api.stubs.runtime",
 
 		// The platform_bootclasspath intentionally adds dependencies on both source and prebuilt
 		// modules when available as it does not know which one will be preferred.

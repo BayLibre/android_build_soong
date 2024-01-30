@@ -112,6 +112,28 @@ java_library {
     ],
 }
 
+java_library {
+    name: "core.current.stubs.runtime.from-source",
+    defaults: [
+        "core.current.stubs.defaults",
+    ],
+    static_libs: [
+        "art.module.public.api.stubs.runtime",
+        "conscrypt.module.public.api.stubs.runtime",
+        "i18n.module.public.api.stubs.runtime",
+    ],
+}
+
+java_library {
+    name: "core.current.stubs.runtime",
+    defaults: [
+        "core.current.stubs.defaults",
+    ],
+    static_libs: [
+        "core.current.stubs.runtime.from-source",
+    ],
+}
+
 // Distributed with the SDK for turning into system modules to compile apps
 // against.
 //
@@ -334,6 +356,19 @@ java_library {
     ],
 }
 
+java_library {
+    name: "legacy.core.platform.api.stubs.runtime.from-source",
+    visibility: core_platform_visibility,
+    defaults: [
+        "core.platform.api.stubs.defaults",
+    ],
+    static_libs: [
+        "art.module.public.api.stubs.runtime.module_lib",
+        "conscrypt.module.platform.api.stubs.runtime",
+        "legacy.i18n.module.platform.api.stubs.runtime",
+    ],
+}
+
 java_defaults {
     name: "android_core_platform_stubs_current_contributions",
     api_surface: "core_platform",
@@ -389,6 +424,17 @@ java_library {
     ],
     static_libs: [
         "legacy.core.platform.api.stubs.exportable.from-source",
+    ],
+}
+
+java_library {
+    name: "legacy.core.platform.api.stubs.runtime",
+    visibility: core_platform_visibility,
+    defaults: [
+        "core.platform.api.stubs.defaults",
+    ],
+    static_libs: [
+        "legacy.core.platform.api.stubs.runtime.from-source",
     ],
 }
 

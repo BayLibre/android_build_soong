@@ -492,7 +492,7 @@ java_sdk_library_import {
 .intermediates/mybootclasspathfragment/android_common/modular-hiddenapi/index.csv -> hiddenapi/index.csv
 .intermediates/mybootclasspathfragment/android_common/modular-hiddenapi/stub-flags.csv -> hiddenapi/stub-flags.csv
 .intermediates/mybootclasspathfragment/android_common/modular-hiddenapi/all-flags.csv -> hiddenapi/all-flags.csv
-.intermediates/mysdklibrary.stubs.exportable/android_common/combined/mysdklibrary.stubs.exportable.jar -> sdk_library/public/mysdklibrary-stubs.jar
+.intermediates/mysdklibrary.stubs.runtime/android_common/combined/mysdklibrary.stubs.runtime.jar -> sdk_library/public/mysdklibrary-stubs.jar
 .intermediates/mysdklibrary.stubs.source/android_common/exportable/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
 .intermediates/mysdklibrary.stubs.source/android_common/exportable/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
 `),

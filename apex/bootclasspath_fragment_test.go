@@ -158,9 +158,9 @@ func TestBootclasspathFragments_FragmentDependency(t *testing.T) {
 	artFragment := result.Module("art-bootclasspath-fragment", "android_common")
 	artInfo, _ := android.SingletonModuleProvider(result, artFragment, java.HiddenAPIInfoProvider)
 
-	bazPublicStubs := "out/soong/.intermediates/baz.stubs.exportable/android_common/dex/baz.stubs.exportable.jar"
-	bazSystemStubs := "out/soong/.intermediates/baz.stubs.exportable.system/android_common/dex/baz.stubs.exportable.system.jar"
-	bazTestStubs := "out/soong/.intermediates/baz.stubs.exportable.test/android_common/dex/baz.stubs.exportable.test.jar"
+	bazPublicStubs := "out/soong/.intermediates/baz.stubs.runtime/android_common/dex/baz.stubs.runtime.jar"
+	bazSystemStubs := "out/soong/.intermediates/baz.stubs.runtime.system/android_common/dex/baz.stubs.runtime.system.jar"
+	bazTestStubs := "out/soong/.intermediates/baz.stubs.runtime.test/android_common/dex/baz.stubs.runtime.test.jar"
 
 	checkAPIScopeStubs("art", artInfo, java.PublicHiddenAPIScope, bazPublicStubs)
 	checkAPIScopeStubs("art", artInfo, java.SystemHiddenAPIScope, bazSystemStubs)
@@ -171,8 +171,8 @@ func TestBootclasspathFragments_FragmentDependency(t *testing.T) {
 	otherFragment := result.Module("other-bootclasspath-fragment", "android_common")
 	otherInfo, _ := android.SingletonModuleProvider(result, otherFragment, java.HiddenAPIInfoProvider)
 
-	fooPublicStubs := "out/soong/.intermediates/foo.stubs.exportable/android_common/dex/foo.stubs.exportable.jar"
-	fooSystemStubs := "out/soong/.intermediates/foo.stubs.exportable.system/android_common/dex/foo.stubs.exportable.system.jar"
+	fooPublicStubs := "out/soong/.intermediates/foo.stubs.runtime/android_common/dex/foo.stubs.runtime.jar"
+	fooSystemStubs := "out/soong/.intermediates/foo.stubs.runtime.system/android_common/dex/foo.stubs.runtime.system.jar"
 
 	checkAPIScopeStubs("other", otherInfo, java.PublicHiddenAPIScope, bazPublicStubs, fooPublicStubs)
 	checkAPIScopeStubs("other", otherInfo, java.SystemHiddenAPIScope, bazSystemStubs, fooSystemStubs)
@@ -819,11 +819,11 @@ func TestBootclasspathFragment_HiddenAPIList(t *testing.T) {
 		"foo",
 	})
 
-	fooStubs := getDexJarPath(result, "foo.stubs.exportable")
-	quuzPublicStubs := getDexJarPath(result, "quuz.stubs.exportable")
-	quuzSystemStubs := getDexJarPath(result, "quuz.stubs.exportable.system")
-	quuzTestStubs := getDexJarPath(result, "quuz.stubs.exportable.test")
-	quuzModuleLibStubs := getDexJarPath(result, "quuz.stubs.exportable.module_lib")
+	fooStubs := getDexJarPath(result, "foo.stubs.runtime")
+	quuzPublicStubs := getDexJarPath(result, "quuz.stubs.runtime")
+	quuzSystemStubs := getDexJarPath(result, "quuz.stubs.runtime.system")
+	quuzTestStubs := getDexJarPath(result, "quuz.stubs.runtime.test")
+	quuzModuleLibStubs := getDexJarPath(result, "quuz.stubs.runtime.module_lib")
 
 	// Make sure that the fragment uses the quuz stub dex jars when generating the hidden API flags.
 	fragment := result.ModuleForTests("mybootclasspathfragment", "android_common_apex10000")
