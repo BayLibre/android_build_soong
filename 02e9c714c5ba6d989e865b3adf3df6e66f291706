@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9540a33_71f67cc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-30T22:23:08Z",
+      "side": 1,
+      "message": "Couldn\u0027t we add a `#define __ANDROID_API_V__ __ANDROID_API_FUTURE__` early on in the finalization process, so that people could start using `__ANDROID_API_V__` from the very beginning, and then change it to the finalized value when that\u0027s decided? Then we wouldn\u0027t have to pass in `__ANDROID_PLATFORM_API__`.\n\nAs is, wouldn\u0027t this cause issues for prebuilts or other apps with unique distribution methods? If you built an app before the V sdk was finalized, it would bake in the comparison against `__ANDROID_API_FUTURE__`, so then if you installed that old prebuilt on a newer phone it would start checking against a newer version than it should.",
+      "revId": "02e9c714c5ba6d989e865b3adf3df6e66f291706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
