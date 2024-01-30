@@ -16,6 +16,24 @@
       "message": "I don\u0027t understand this. I thought we removed VNDK. So what\u0027s this remnant of it?",
       "revId": "704c12d0bb1a819764c5101878e481a9c7b13554",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f65b4957_61eb1399",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-01-30T01:48:54Z",
+      "side": 1,
+      "message": "We still have the backward compatible LLNDK libraries from system to provide the shared libraries to vendor partition. LLNDK is a sort of VNDK.\nLLNDK will not be removed even with the VNDK deprecation.",
+      "parentUuid": "c8ef6192_1d2af6a6",
+      "revId": "704c12d0bb1a819764c5101878e481a9c7b13554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
