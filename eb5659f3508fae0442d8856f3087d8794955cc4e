@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5defa2c0_9b60ec9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-01-30T03:45:19Z",
+      "side": 1,
+      "message": "you don\u0027t want to revert this. It will remove it from branches that previously had it, and cause other builds to fail in more branches",
+      "revId": "eb5659f3508fae0442d8856f3087d8794955cc4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
