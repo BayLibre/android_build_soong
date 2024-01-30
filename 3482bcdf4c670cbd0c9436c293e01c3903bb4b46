@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6fc727e_1dcfbd1c",
+        "filename": "cc/config/global.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-30T21:30:52Z",
+      "side": 1,
+      "message": "can you file a bug? We can evaluate and keep this if it is not useful.",
+      "range": {
+        "startLine": 263,
+        "startChar": 5,
+        "endLine": 263,
+        "endChar": 8
+      },
+      "revId": "3482bcdf4c670cbd0c9436c293e01c3903bb4b46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30cd9592_ddded189",
+        "filename": "cc/config/global.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-30T21:30:52Z",
+      "side": 1,
+      "message": "Prefer `-Wno-foo` instead.\n```suggestion\n\t\t\"-Wno-missing-field-initializers\",\n\t\t\"-Wno-packed-non-pod\",\n```",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 30
+      },
+      "revId": "3482bcdf4c670cbd0c9436c293e01c3903bb4b46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "863aaa4c_1d271e0f",
+        "filename": "cc/config/global.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-30T21:30:52Z",
+      "side": 1,
+      "message": "Do we still need this?  If so, again prefer `-Wno-fortify-source`.",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 30
+      },
+      "revId": "3482bcdf4c670cbd0c9436c293e01c3903bb4b46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

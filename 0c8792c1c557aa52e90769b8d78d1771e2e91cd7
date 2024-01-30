@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9434e1_08e89b21",
+        "filename": "cc/config/global.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-30T21:30:52Z",
+      "side": 1,
+      "message": "Can be removed.\n```suggestion\n```",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 44
+      },
+      "revId": "0c8792c1c557aa52e90769b8d78d1771e2e91cd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
