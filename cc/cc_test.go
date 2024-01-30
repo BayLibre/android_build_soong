@@ -4394,6 +4394,7 @@ func TestIncludeDirsExporting(t *testing.T) {
 func TestIncludeDirectoryOrdering(t *testing.T) {
 	t.Parallel()
 	baseExpectedFlags := []string{
+		"-D__ANDROID_PLATFORM_API__=30",
 		"${config.ArmThumbCflags}",
 		"${config.ArmCflags}",
 		"${config.CommonGlobalCflags}",
