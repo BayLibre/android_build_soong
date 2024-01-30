@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1043dd6d_81e90114",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-30T02:02:14Z",
+      "side": 1,
+      "message": "`java_sdk_library_import` has more touch points, so I will add support for it in a followup CL",
+      "revId": "3cf0463a470549d3faea79cea5e1ae5573243a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
