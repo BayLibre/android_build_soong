@@ -16,6 +16,23 @@
       "message": "(+sadafebrahimi as fyi since she often deals with new warnings/errors when upgrading external projects...)",
       "revId": "8a70cf9e68eb893d46ac858ba0a3a9808ab1a82f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c5ba62_aa6114ed",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-30T20:09:21Z",
+      "side": 1,
+      "message": "Disabling warnings means they won\u0027t be shown in gerrit by the build warnings ayeaye analyzer. I agree warnings have little value when there\u0027s 1000s of them in the build output, but when only the ones caused by your cl are shown in gerrit, they\u0027re much more valuable. We\u0027d lose this if you disabled the warnings.\n\nCan we please keep the warnings? I think the proper fix here would be to do an LSC fixing them all and then promote them to an error. Or if you just want a quiet build, we can apply Peter\u0027s change to make `ANDROID_QUIET_BUILD` quieter.",
+      "revId": "8a70cf9e68eb893d46ac858ba0a3a9808ab1a82f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
