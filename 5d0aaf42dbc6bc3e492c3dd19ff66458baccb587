@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc6ac66_3bba86f3",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-30T00:05:32Z",
+      "side": 1,
+      "message": "I think it\u0027s better to just prevent all check types. It\u0027s simpler and we may want to add other analysis on the types of checks the user is customizing, and it would be easiest if they all used the dedicated properties.",
+      "parentUuid": "00862486_7e056acc",
+      "range": {
+        "startLine": 373,
+        "startChar": 44,
+        "endLine": 373,
+        "endChar": 46
+      },
+      "revId": "5d0aaf42dbc6bc3e492c3dd19ff66458baccb587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8089ff55_ea64f1da",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-29T23:09:14Z",
       "side": 1,
       "message": "Should this be \u003d\u003d instead of `Contains`?",
+      "range": {
+        "startLine": 374,
+        "startChar": 5,
+        "endLine": 374,
+        "endChar": 21
+      },
+      "revId": "5d0aaf42dbc6bc3e492c3dd19ff66458baccb587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de35e778_269d59d5",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-30T00:05:32Z",
+      "side": 1,
+      "message": "The `flags` property is just passed to a rulebuilder, which will flatten the list out into a string with space separators. So `flags: [\"--disable\", \"NewApi\"]` and `flags: [\"--disable NewApi\"]` are equivalent. I wanted to make sure we catch the latter as well.",
+      "parentUuid": "8089ff55_ea64f1da",
       "range": {
         "startLine": 374,
         "startChar": 5,
