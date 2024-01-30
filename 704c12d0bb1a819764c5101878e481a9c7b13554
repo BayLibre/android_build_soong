@@ -34,6 +34,24 @@
       "parentUuid": "c8ef6192_1d2af6a6",
       "revId": "704c12d0bb1a819764c5101878e481a9c7b13554",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54c27514_26f0249f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-01-30T08:50:30Z",
+      "side": 1,
+      "message": "\"vndk\" directory is the git project where we used to store the VNDK ABI dumps. Now we reuse it to store the LLNDK ABI dumps.",
+      "parentUuid": "f65b4957_61eb1399",
+      "revId": "704c12d0bb1a819764c5101878e481a9c7b13554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
