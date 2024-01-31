@@ -335,6 +335,39 @@ func parseCStd(cStdPtr *string) string {
 	}
 }
 
+// Remove x86 specific flags that are added to bpf targets b/308826679
+// The correct fix is to use bpf rule rather than cc rules
+func stripRedundantBPFFlags(flags []string) []string {
+	replacedFlags := []string{}
+	dropFlags := []string{"-march=x86", "-march=x86-64", "-msse3", "-mssse3", "-msse4", "-mpopcnt"}
+	for _, flag := range flags {
+		var keep bool = true
+		for _, df := range dropFlags {
+			if df == flag {
+				keep = false
+			}
+		}
+		if keep {
+			replacedFlags = append(replacedFlags, flag)
+		}
+	}
+	return replacedFlags
+}
+
+func targetIsBPF(flags []string) bool {
+	// Check for the last --target flag.
+	for i := len(flags)-1; i >= 0; i-- {
+		if strings.HasPrefix(flags[i], "--target=") {
+			if flags[i] == "--target=bpf" {
+				return true
+			} else {
+				return false
+			}
+		}
+	}
+	return false
+}
+
 // Create a Flags struct that collects the compile flags from global values,
 // per-target values, module type values, and per-module Blueprints properties
 func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags {
@@ -507,6 +540,12 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		flags.Global.CommonFlags = append(flags.Global.CommonFlags, "${config.ExternalCflags}")
 	}
 
+	if targetIsBPF(flags.Local.CFlags) {
+		// If the last value of --target is bpf
+		flags.Global.CFlags = stripRedundantBPFFlags(flags.Local.CFlags)
+		flags.Global.CppFlags = stripRedundantBPFFlags(flags.Local.CppFlags)
+		flags.Global.CommonFlags = stripRedundantBPFFlags(flags.Local.CommonFlags)
+	}
 	if tc.Bionic() {
 		if Bool(compiler.Properties.Rtti) {
 			flags.Local.CppFlags = append(flags.Local.CppFlags, "-frtti")
