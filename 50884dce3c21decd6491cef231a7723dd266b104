@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c0196e8_6abd1cb4",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-01-31T17:29:42Z",
+      "side": 1,
+      "message": "Do we need to differentiate between stub libraries that are provided by the platform vs stub libraries provided by apexes? https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/9b42d9dd15fb3528ecc4f751dbd4c80e5638ade9:docs/map_files.md;l\u003d154-155;bpv\u003d1;bpt\u003d0;drc\u003d10363161e76c1d2ed196582e593ee6cef0706dd1",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 38
+      },
+      "revId": "50884dce3c21decd6491cef231a7723dd266b104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
