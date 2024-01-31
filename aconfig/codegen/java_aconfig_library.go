@@ -42,6 +42,11 @@ type JavaAconfigDeclarationsLibraryProperties struct {
 	// "force-read-only": to generate force-read-only mode version of the library
 	// an error will be thrown if the mode is not supported
 	Mode *string
+
+	// sdk_version of the module. Unlike all java modules where sdk_version defaults to the
+	// private api, the sdk_version of java_aconfig_library defaults to core, in order to
+	// prevent the dependency to framework.
+	Sdk_version *string
 }
 
 type JavaAconfigDeclarationsLibraryCallbacks struct {
@@ -50,6 +55,11 @@ type JavaAconfigDeclarationsLibraryCallbacks struct {
 
 func JavaDeclarationsLibraryFactory() android.Module {
 	callbacks := &JavaAconfigDeclarationsLibraryCallbacks{}
+
+	// The sdk_version of the java_aconfig_library defaults to core instead of private
+	if callbacks.properties.Sdk_version == nil {
+		callbacks.properties.Sdk_version = proptools.StringPtr("core_current")
+	}
 	return java.GeneratedJavaLibraryModuleFactory("java_aconfig_library", callbacks, &callbacks.properties)
 }
 
