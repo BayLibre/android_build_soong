@@ -34,6 +34,24 @@
       "parentUuid": "b9540a33_71f67cc5",
       "revId": "02e9c714c5ba6d989e865b3adf3df6e66f291706",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88dfd317_180f55bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-31T00:45:34Z",
+      "side": 1,
+      "message": "\u003e becomes false on \"REL\" devices, which is what we want.\n\nIsn\u0027t that a problem? You could take an app that was compiled on an old version, then run it on a newer device that is publicly released V, so we want the check to return true, not false.",
+      "parentUuid": "b9a25dcc_b0d63c11",
+      "revId": "02e9c714c5ba6d989e865b3adf3df6e66f291706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
