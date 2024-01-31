@@ -105,6 +105,24 @@
       "parentUuid": "5fb06afd_90a387d0",
       "revId": "8a70cf9e68eb893d46ac858ba0a3a9808ab1a82f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a53773_a40fc534",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-01-31T00:23:04Z",
+      "side": 1,
+      "message": "oh, nice --- that little list includes the parts of hardware/ i would have said seemed questionable too :-)",
+      "parentUuid": "ef2aa435_cc508de9",
+      "revId": "8a70cf9e68eb893d46ac858ba0a3a9808ab1a82f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
