@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d2a0f9a_b3074ba3",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-01-31T19:22:25Z",
+      "side": 1,
+      "message": "I\u0027m bit unsure about this part -- @paulduffin@google.com Should the runtime stubs be used for the module sdk snapshot generation, or the exportable stubs? Ditto for the api.txt files. Currently, the api.txt files are not generated for the runtime stubs",
+      "range": {
+        "startLine": 709,
+        "startChar": 0,
+        "endLine": 711,
+        "endChar": 142
+      },
+      "revId": "72e50bb94df933e674a271e222e138cc5432a554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
