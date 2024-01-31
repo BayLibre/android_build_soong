@@ -34,6 +34,24 @@
       "parentUuid": "eeb7cb84_e1c3b768",
       "revId": "31bd3146d24b407a854dad15d990c9d64c63c3ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e8d73f9_64eec4f7",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-31T22:53:01Z",
+      "side": 1,
+      "message": "If you only want it set in Soong and never in an Android.bp file you can tag it with `blueprint:\"mutated\"` instead of `android:\"arch_variant\"`.",
+      "parentUuid": "a06eab50_88da1cfd",
+      "revId": "31bd3146d24b407a854dad15d990c9d64c63c3ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
