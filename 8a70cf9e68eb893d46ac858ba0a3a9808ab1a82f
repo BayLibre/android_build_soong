@@ -87,6 +87,24 @@
       "parentUuid": "02a68471_1f48bbaf",
       "revId": "8a70cf9e68eb893d46ac858ba0a3a9808ab1a82f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2aa435_cc508de9",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2024-01-31T00:20:48Z",
+      "side": 1,
+      "message": "`vendor/google*` does not count as third party: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/paths.go;l\u003d2281;drc\u003dc8c729556d69aa27fff24e5412140563fc1527af",
+      "parentUuid": "5fb06afd_90a387d0",
+      "revId": "8a70cf9e68eb893d46ac858ba0a3a9808ab1a82f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
