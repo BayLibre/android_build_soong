@@ -482,6 +482,7 @@ func (d *Droidstubs) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuil
 			}
 		}
 	}
+	cmd.FlagWithArg("--source-model-provider ", "turbine")
 }
 
 func (d *Droidstubs) annotationsFlags(ctx android.ModuleContext, cmd *android.RuleBuilderCommand, params annotationFlagsParams) {
