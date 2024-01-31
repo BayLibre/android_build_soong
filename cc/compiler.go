@@ -116,6 +116,10 @@ type BaseCompilerProperties struct {
 	// if set to false, use -std=c++* instead of -std=gnu++*
 	Gnu_extensions *bool
 
+	// cc Build rules targeting BPF must set this to true. The correct fix is to
+	// ban targeting bpf in cc rules instead use bpf_rules. (b/323415017)
+	Bpf_target *bool
+
 	Yacc *YaccProperties
 	Lex  *LexProperties
 
@@ -335,6 +339,18 @@ func parseCStd(cStdPtr *string) string {
 	}
 }
 
+// Remove x86 and X86-64 specific flags added to bpf targets b/308826679.
+// The correct fix is to use bpf rule rather than cc rules.
+func stripRedundantBPFFlags(flags []string) []string {
+	replacedFlags := []string{}
+	dropFlags := []string{
+		"${config.X86Cflags}",
+		"${config.X86_64Cflags}",
+	}
+	replacedFlags = removeListFromList(flags, dropFlags)
+	return replacedFlags
+}
+
 // Create a Flags struct that collects the compile flags from global values,
 // per-target values, module type values, and per-module Blueprints properties
 func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags {
@@ -483,6 +499,10 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		}
 	}
 
+	// bpf targets don't need the default target triple.
+	if proptools.BoolDefault(compiler.Properties.Bpf_target, false) {
+		target = "--target=bpf"
+	}
 	flags.Global.CFlags = append(flags.Global.CFlags, target)
 	flags.Global.AsFlags = append(flags.Global.AsFlags, target)
 	flags.Global.LdFlags = append(flags.Global.LdFlags, target)
@@ -652,6 +672,10 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	//TODO(b/145621474): Move this check into IInterface.h when clang-tidy no longer uses absolute paths.
 	if android.HasAnyPrefix(ctx.ModuleDir(), allowedManualInterfacePaths) {
 		flags.Local.CFlags = append(flags.Local.CFlags, "-DDO_NOT_CHECK_MANUAL_BINDER_INTERFACES")
+	}
+
+	if proptools.BoolDefault(compiler.Properties.Bpf_target, false) {
+		flags.Global.CommonFlags = stripRedundantBPFFlags(flags.Global.CommonFlags)
 	}
 
 	return flags
