@@ -16,6 +16,8 @@ package java
 
 import (
 	"android/soong/android"
+
+	"github.com/google/blueprint/proptools"
 )
 
 type GeneratedJavaLibraryModule struct {
@@ -58,6 +60,12 @@ func GeneratedJavaLibraryModuleFactory(moduleName string, callbacks GeneratedJav
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	if properties != nil {
 		module.AddProperties(properties)
+	}
+
+	// sdk_version is defaulted to core in order to prevent the implicit dependency to framework
+	if module.Library.deviceProperties.Sdk_version == nil {
+		module.Library.deviceProperties.Sdk_version = proptools.StringPtr("core_current")
+		module.Library.properties.Libs = append(module.Library.properties.Libs, "fake_device_config")
 	}
 	return module
 }
