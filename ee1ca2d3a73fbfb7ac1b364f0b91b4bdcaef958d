@@ -16,6 +16,29 @@
       "message": "Thanks for the review!",
       "revId": "ee1ca2d3a73fbfb7ac1b364f0b91b4bdcaef958d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7257e30e_ed94aa1c",
+        "filename": "scripts/construct_uffd_gc_flag.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-31T18:17:51Z",
+      "side": 1,
+      "message": "`sys.exit` can accept a string instead of a number, in which case it will exit with status code 1 and print the string to stderr.",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "ee1ca2d3a73fbfb7ac1b364f0b91b4bdcaef958d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

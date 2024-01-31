@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37f999e6_b0eae1c3",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-31T18:17:51Z",
+      "side": 1,
+      "message": "You can have make generate the file somewhere else though. There\u0027s only 1 of these files per build so it doesn\u0027t need to include os/arch.",
+      "parentUuid": "83d51d23_9610624c",
+      "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46531847_a62b8a1c",
         "filename": "dexpreopt/config.go",
         "patchSetId": 6
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "The rule also involves diffing through `rsync`, even for the true/false cases, so `android.WriteFileRule` won\u0027t do.",
       "parentUuid": "46531847_a62b8a1c",
+      "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5ab405_c4474e0c",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-31T18:17:51Z",
+      "side": 1,
+      "message": "The diffing through rsync is not necessary on the true/false cases, because they have no dependencies so will only rerun if we did reanalysis and the command line changed.",
+      "parentUuid": "1ccff9a7_ab564210",
       "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -125,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41429b9e_1d06b0b9",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-31T18:17:51Z",
+      "side": 1,
+      "message": "Really? Soong shouldn\u0027t add an `rm -f`, where are you seeing that? If it did, then the rsync would also delete the file first and then always copy it with an updated timestamp.",
+      "parentUuid": "86913f87_c9d3330c",
+      "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96351e9c_e2312d42",
         "filename": "dexpreopt/config.go",
         "patchSetId": 6
@@ -154,6 +208,24 @@
       "side": 1,
       "message": "To write out `uffd_gc_flag.txt`, I need to get the path from `GetGlobalSoongConfig(ctx)`, and the latter needs dex2oat because the global soong config also contains the path to dex2oat. I can potentially create another global soong config, separate from the one for dex2oat, just for `uffd_gc_flag.txt`, but it looks like an overkill. It doesn\u0027t hurt to add the dependency, IIUC.",
       "parentUuid": "96351e9c_e2312d42",
+      "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09efa0db_83291abc",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-31T18:17:51Z",
+      "side": 1,
+      "message": "You can just make a helper function to get the value of `UffdGcFlag`, like you do for `GetDexpreoptDirName`. It would still be added to the global config object as well separately so that the dexpreopt tool can use it.",
+      "parentUuid": "fc6502ba_e90ffa50",
       "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -294,6 +366,24 @@
       "side": 1,
       "message": "I want to give the flexibility to the caller to decide what to do with the error. Added `sys.exit` on the caller side.",
       "parentUuid": "3d016b37_f85e3ae2",
+      "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7968e1ad_7f0ff5d0",
+        "filename": "scripts/uffd_gc_utils.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-01-31T18:17:51Z",
+      "side": 1,
+      "message": "`sys.exit` just raises a `SystemExit` exception, you can still catch that in the tests if you want.",
+      "parentUuid": "9322bbf3_31dd539e",
       "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
