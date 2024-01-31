@@ -52,6 +52,24 @@
       "parentUuid": "b9a25dcc_b0d63c11",
       "revId": "02e9c714c5ba6d989e865b3adf3df6e66f291706",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15681c61_1266d997",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-01-31T01:20:10Z",
+      "side": 1,
+      "message": "Oh I see what you mean. So, for example, if a module built in in 24q2-release branch (sdk is still 34) is run on a V device (sdk is 35), you\u0027re saying the check should return true, right?\n\nHmm, that seeminly makes sense. But I don\u0027t think so. 24q1-release doesn\u0027t guarantee anything about 35 APIs. So, if a module is built in 24q1-release, it shouldn\u0027t call the new API even when it\u0027s run on a new platform.",
+      "parentUuid": "88dfd317_180f55bc",
+      "revId": "02e9c714c5ba6d989e865b3adf3df6e66f291706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
