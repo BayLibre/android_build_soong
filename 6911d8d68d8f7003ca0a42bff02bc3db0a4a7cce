@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc933493_b8989925",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-01-31T23:54:57Z",
+      "side": 1,
+      "message": "I\u0027ll leave it to Spandan to +2.",
+      "revId": "6911d8d68d8f7003ca0a42bff02bc3db0a4a7cce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
