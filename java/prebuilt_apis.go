@@ -158,6 +158,21 @@ func createApiModule(mctx android.LoadHookContext, name string, path string) {
 	mctx.CreateModule(genrule.GenRuleFactory, &genruleProps)
 }
 
+func createCombinedApiFilegroupModule(mctx android.LoadHookContext, name string, srcs []string) {
+	filegroupProps := struct {
+		Name *string
+		Srcs []string
+	}{}
+	filegroupProps.Name = proptools.StringPtr(name)
+
+	var transformedSrcs []string
+	for _, src := range srcs {
+		transformedSrcs = append(transformedSrcs, ":"+src)
+	}
+	filegroupProps.Srcs = transformedSrcs
+	mctx.CreateModule(android.FileGroupFactory, &filegroupProps)
+}
+
 func createLatestApiModuleExtensionVersionFile(mctx android.LoadHookContext, name string, version string) {
 	genruleProps := struct {
 		Name *string
@@ -252,6 +267,10 @@ func PrebuiltApiModuleName(module, scope, version string) string {
 	return module + ".api." + scope + "." + version
 }
 
+func PrebuiltApiCombinedModuleName(module, scope, version string) string {
+	return module + ".api.combined." + scope + "." + version
+}
+
 func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 	// <apiver>/<scope>/api/<module>.txt
 	apiLevelFiles := globApiDirs(mctx, p, "api/*.txt")
@@ -332,11 +351,42 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 			incompatibilities[referencedModule+"."+scope] = true
 		}
 	}
-	// Create empty incompatibilities files for remaining modules
 	for _, k := range android.SortedKeys(latest) {
+		// Create empty incompatibilities files for remaining modules
+		// If the incompatibility module has been created, create a corresponding combined module
 		if _, ok := incompatibilities[k]; !ok {
 			createEmptyFile(mctx, PrebuiltApiModuleName(latest[k].module+"-incompatibilities", latest[k].scope, "latest"))
 		}
+	}
+
+	for _, k := range android.SortedKeys(latest) {
+		info := latest[k]
+		name := PrebuiltApiCombinedModuleName(info.module, info.scope, "latest")
+		var srcs []string
+		currentApiScope := scopeByName[info.scope]
+		for currentApiScope != nil {
+			if _, ok := latest[fmt.Sprintf("%s.%s", info.module, currentApiScope.name)]; ok {
+				srcs = append(srcs, PrebuiltApiModuleName(info.module, currentApiScope.name, "latest"))
+			}
+			currentApiScope = currentApiScope.extends
+		}
+		android.ReverseSliceInPlace(srcs)
+		createCombinedApiFilegroupModule(mctx, name, srcs)
+	}
+
+	for _, k := range android.SortedKeys(latest) {
+		info := latest[k]
+		name := PrebuiltApiCombinedModuleName(info.module+"-incompatibilities", info.scope, "latest")
+		var srcs []string
+		currentApiScope := scopeByName[info.scope]
+		for currentApiScope != nil {
+			if _, ok := latest[fmt.Sprintf("%s.%s", info.module, currentApiScope.name)]; ok {
+				srcs = append(srcs, PrebuiltApiModuleName(info.module+"-incompatibilities", currentApiScope.name, "latest"))
+			}
+			currentApiScope = currentApiScope.extends
+		}
+		android.ReverseSliceInPlace(srcs)
+		createCombinedApiFilegroupModule(mctx, name, srcs)
 	}
 }
 

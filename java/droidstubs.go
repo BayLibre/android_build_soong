@@ -512,8 +512,8 @@ func (d *Droidstubs) annotationsFlags(ctx android.ModuleContext, cmd *android.Ru
 		cmd.Flag(config.MetalavaAnnotationsFlags)
 
 		if params.migratingNullability {
-			previousApi := android.PathForModuleSrc(ctx, String(d.properties.Previous_api))
-			cmd.FlagWithInput("--migrate-nullness ", previousApi)
+			previousApiFiles := android.PathsForModuleSrc(ctx, []string{String(d.properties.Previous_api)})
+			cmd.FlagForEachInput("--migrate-nullness ", previousApiFiles)
 		}
 
 		if s := String(d.properties.Validate_nullability_from_list); s != "" {
@@ -903,9 +903,9 @@ func (d *Droidstubs) everythingOptionalCmd(ctx android.ModuleContext, cmd *andro
 
 	// Add API lint options.
 	if doApiLint {
-		newSince := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Api_lint.New_since)
-		if newSince.Valid() {
-			cmd.FlagWithInput("--api-lint ", newSince.Path())
+		newSince := android.PathsForModuleSrc(ctx, []string{proptools.String(d.properties.Check_api.Api_lint.New_since)})
+		if len(newSince) > 0 {
+			cmd.FlagForEachInput("--api-lint ", newSince)
 		} else {
 			cmd.Flag("--api-lint")
 		}
@@ -919,7 +919,7 @@ func (d *Droidstubs) everythingOptionalCmd(ctx android.ModuleContext, cmd *andro
 			cmd.Flag("--warnings-as-errors") // Most lints are actually warnings.
 		}
 
-		baselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Api_lint.Baseline_file)
+		baselineFiles := android.PathsForModuleSrc(ctx, []string{String(d.properties.Check_api.Api_lint.Baseline_file)})
 		updatedBaselineOutput := android.PathForModuleOut(ctx, Everything.String(), "api_lint_baseline.txt")
 		d.apiLintTimestamp = android.PathForModuleOut(ctx, Everything.String(), "api_lint.timestamp")
 
@@ -938,8 +938,8 @@ func (d *Droidstubs) everythingOptionalCmd(ctx android.ModuleContext, cmd *andro
 			`1. You can suppress the errors with @SuppressLint("<id>")\n` +
 			`   where the <id> is given in brackets in the error message above.\n`
 
-		if baselineFile.Valid() {
-			cmd.FlagWithInput("--baseline:api-lint ", baselineFile.Path())
+		if len(baselineFiles) > 0 {
+			cmd.FlagForEachInput("--baseline:api-lint ", baselineFiles)
 			cmd.FlagWithOutput("--update-baseline:api-lint ", updatedBaselineOutput)
 
 			msg += fmt.Sprintf(``+
@@ -949,7 +949,7 @@ func (d *Droidstubs) everythingOptionalCmd(ctx android.ModuleContext, cmd *andro
 				`       "%s" \\\n`+
 				`       "%s")\n`+
 				`   To submit the revised baseline.txt to the main Android\n`+
-				`   repository, you will need approval.\n`, updatedBaselineOutput, baselineFile.Path())
+				`   repository, you will need approval.\n`, updatedBaselineOutput, baselineFiles)
 		} else {
 			msg += fmt.Sprintf(``+
 				`2. You can add a baseline file of existing lint failures\n`+
@@ -967,18 +967,18 @@ func (d *Droidstubs) everythingOptionalCmd(ctx android.ModuleContext, cmd *andro
 			ctx.PropertyErrorf("out", "out property may not be combined with check_api")
 		}
 
-		apiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Api_file))
-		removedApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Removed_api_file))
-		baselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Last_released.Baseline_file)
+		apiFiles := android.PathsForModuleSrc(ctx, []string{String(d.properties.Check_api.Last_released.Api_file)})
+		removedApiFiles := android.PathsForModuleSrc(ctx, []string{String(d.properties.Check_api.Last_released.Removed_api_file)})
+		baselineFiles := android.PathsForModuleSrc(ctx, []string{String(d.properties.Check_api.Last_released.Baseline_file)})
 		updatedBaselineOutput := android.PathForModuleOut(ctx, Everything.String(), "last_released_baseline.txt")
 
 		d.checkLastReleasedApiTimestamp = android.PathForModuleOut(ctx, Everything.String(), "check_last_released_api.timestamp")
 
-		cmd.FlagWithInput("--check-compatibility:api:released ", apiFile)
-		cmd.FlagWithInput("--check-compatibility:removed:released ", removedApiFile)
+		cmd.FlagForEachInput("--check-compatibility:api:released ", apiFiles)
+		cmd.FlagForEachInput("--check-compatibility:removed:released ", removedApiFiles)
 
-		if baselineFile.Valid() {
-			cmd.FlagWithInput("--baseline:compatibility:released ", baselineFile.Path())
+		if len(baselineFiles) > 0 {
+			cmd.FlagForEachInput("--baseline:compatibility:released ", baselineFiles)
 			cmd.FlagWithOutput("--update-baseline:compatibility:released ", updatedBaselineOutput)
 		}
 
