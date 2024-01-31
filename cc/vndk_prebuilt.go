@@ -131,12 +131,6 @@ func (p *vndkPrebuiltLibraryDecorator) singleSourcePath(ctx ModuleContext) andro
 
 func (p *vndkPrebuiltLibraryDecorator) link(ctx ModuleContext,
 	flags Flags, deps PathDeps, objs Objects) android.Path {
-	platformVndkApiLevel := android.ApiLevelOrPanic(ctx, ctx.DeviceConfig().PlatformVndkVersion())
-	if platformVndkApiLevel.LessThanOrEqualTo(android.ApiLevelOrPanic(ctx, p.Version())) {
-		// This prebuilt VNDK module is not required for the current build
-		ctx.Module().HideFromMake()
-		return nil
-	}
 
 	if !p.MatchesWithDevice(ctx.DeviceConfig()) {
 		ctx.Module().HideFromMake()
@@ -245,14 +239,6 @@ func vndkPrebuiltSharedLibrary() *Module {
 	module.AddProperties(
 		&prebuilt.properties,
 	)
-
-	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
-		// empty BOARD_VNDK_VERSION implies that the device won't support
-		// system only OTA. In this case, VNDK snapshots aren't needed.
-		if ctx.DeviceConfig().VndkVersion() == "" {
-			ctx.Module().Disable()
-		}
-	})
 
 	return module
 }
