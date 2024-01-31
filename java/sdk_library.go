@@ -704,10 +704,10 @@ type scopePaths struct {
 	annotationsZip android.OptionalPath
 
 	// The path to the latest API file.
-	latestApiPath android.OptionalPath
+	latestApiPaths android.Paths
 
 	// The path to the latest removed API file.
-	latestRemovedApiPath android.OptionalPath
+	latestRemovedApiPaths android.Paths
 }
 
 func (paths *scopePaths) extractStubsLibraryInfoFromDependency(ctx android.ModuleContext, dep android.Module) error {
@@ -828,28 +828,25 @@ func (paths *scopePaths) extractStubsSourceAndApiInfoFromApiStubsProvider(ctx an
 	})
 }
 
-func extractSingleOptionalOutputPath(dep android.Module) (android.OptionalPath, error) {
+func extractOutputPaths(dep android.Module) (android.Paths, error) {
 	var paths android.Paths
 	if sourceFileProducer, ok := dep.(android.SourceFileProducer); ok {
 		paths = sourceFileProducer.Srcs()
+		return paths, nil
 	} else {
-		return android.OptionalPath{}, fmt.Errorf("module %q does not produce source files", dep)
+		return nil, fmt.Errorf("module %q does not produce source files", dep)
 	}
-	if len(paths) != 1 {
-		return android.OptionalPath{}, fmt.Errorf("expected one path from %q, got %q", dep, paths)
-	}
-	return android.OptionalPathForPath(paths[0]), nil
 }
 
 func (paths *scopePaths) extractLatestApiPath(ctx android.ModuleContext, dep android.Module) error {
-	outputPath, err := extractSingleOptionalOutputPath(dep)
-	paths.latestApiPath = outputPath
+	outputPaths, err := extractOutputPaths(dep)
+	paths.latestApiPaths = outputPaths
 	return err
 }
 
 func (paths *scopePaths) extractLatestRemovedApiPath(ctx android.ModuleContext, dep android.Module) error {
-	outputPath, err := extractSingleOptionalOutputPath(dep)
-	paths.latestRemovedApiPath = outputPath
+	outputPaths, err := extractOutputPaths(dep)
+	paths.latestRemovedApiPaths = outputPaths
 	return err
 }
 
@@ -1615,11 +1612,11 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		scopes[scope.name] = scopeInfo
 		scopeInfo["current_api"] = scope.snapshotRelativeCurrentApiTxtPath(baseModuleName)
 		scopeInfo["removed_api"] = scope.snapshotRelativeRemovedApiTxtPath(baseModuleName)
-		if p := scopePaths.latestApiPath; p.Valid() {
-			scopeInfo["latest_api"] = p.Path().String()
+		if p := scopePaths.latestApiPaths; len(p) > 0 {
+			scopeInfo["latest_api"] = p
 		}
-		if p := scopePaths.latestRemovedApiPath; p.Valid() {
-			scopeInfo["latest_removed_api"] = p.Path().String()
+		if p := scopePaths.latestRemovedApiPaths; len(p) > 0 {
+			scopeInfo["latest_removed_api"] = p
 		}
 	}
 	android.SetProvider(ctx, android.AdditionalSdkInfoProvider, android.AdditionalSdkInfo{additionalSdkInfo})
