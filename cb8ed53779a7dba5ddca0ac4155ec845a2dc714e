@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d400bd0f_57b3036a",
+        "filename": "cc/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-31T22:40:11Z",
+      "side": 1,
+      "message": "Use `FilterList` instead: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/util.go;l\u003d255",
+      "revId": "cb8ed53779a7dba5ddca0ac4155ec845a2dc714e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abb12a38_f54e0d60",
+        "filename": "cc/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-01-31T22:40:11Z",
+      "side": 1,
+      "message": "Use InList instead: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/util.go;l\u003d166",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 37
+      },
+      "revId": "cb8ed53779a7dba5ddca0ac4155ec845a2dc714e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
