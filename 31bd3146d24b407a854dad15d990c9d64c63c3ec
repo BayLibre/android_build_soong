@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeb7cb84_e1c3b768",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-01-31T22:38:36Z",
+      "side": 1,
+      "message": "Is there a current use case for this?  If not, leave it out.  If yes, rename it to `No_crt_pad_segment`, and add a comment that will show up as the user facing documentation at go/Android.bp.",
+      "revId": "31bd3146d24b407a854dad15d990c9d64c63c3ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
