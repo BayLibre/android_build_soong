@@ -70,6 +70,24 @@
       "parentUuid": "88dfd317_180f55bc",
       "revId": "02e9c714c5ba6d989e865b3adf3df6e66f291706",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9673c3a_7b380156",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-01-31T01:21:45Z",
+      "side": 1,
+      "message": "I used 24q1-release or 24q2-release interchangeably as a REL platform but not V yet.",
+      "parentUuid": "15681c61_1266d997",
+      "revId": "02e9c714c5ba6d989e865b3adf3df6e66f291706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
