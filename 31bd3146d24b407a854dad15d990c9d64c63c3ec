@@ -52,6 +52,24 @@
       "parentUuid": "a06eab50_88da1cfd",
       "revId": "31bd3146d24b407a854dad15d990c9d64c63c3ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3c5c0bb_d2af502e",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2024-02-01T00:47:04Z",
+      "side": 1,
+      "message": "Added documentation comment and renamed to `No_crt_pad_segment`\n\nNeeded to set it from the test blueprints so kept the `android:\"arch_variant\"` tag.",
+      "parentUuid": "2e8d73f9_64eec4f7",
+      "revId": "31bd3146d24b407a854dad15d990c9d64c63c3ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
