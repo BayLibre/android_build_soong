@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59a2c68e_5f09ff6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-01T16:53:16Z",
+      "side": 1,
+      "message": "There is one remaining module type that needs this mechanism: `java_sytem_modules_import`. I will add that in a followup CL today.",
+      "revId": "432178ffdf9e05ead236a5bfff190f5950287429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
