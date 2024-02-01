@@ -46,6 +46,30 @@
       },
       "revId": "50884dce3c21decd6491cef231a7723dd266b104",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4002d1d_6daa0863",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-01T03:58:35Z",
+      "side": 1,
+      "message": "IIUC, this CL will classify apex stub libraries like [libstatspull](packages/modules/StatsD/lib/libstatspull/Android.bp) as `PLATFORM`. Do you think they should have a different classification since they are not part of the non-updatable platform?",
+      "parentUuid": "ab1a7466_1cd5dac0",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 38
+      },
+      "revId": "50884dce3c21decd6491cef231a7723dd266b104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
