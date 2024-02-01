@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87560ffa_365e4c31",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-01T04:20:41Z",
+      "side": 1,
+      "message": "Will we have apiVersions for `runtime` in the future?\n- If we will, I would recommend moving this to the top of this CL stack.\n- If we wont, I would recommend throwing an error for invalid stubsType(s)",
+      "range": {
+        "startLine": 544,
+        "startChar": 4,
+        "endLine": 548,
+        "endChar": 5
+      },
+      "revId": "cef3ecf46198c9bdb72df7de2dbcbfc4e7d1945c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
