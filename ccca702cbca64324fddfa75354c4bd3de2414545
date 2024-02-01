@@ -33,6 +33,24 @@
       "message": "Do an `if sys.version_info \u003e\u003d (3, 7):` instead of the try/catch.",
       "revId": "ccca702cbca64324fddfa75354c4bd3de2414545",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1036347b_64632948",
+        "filename": "python/scripts/precompile_python.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1959868
+      },
+      "writtenOn": "2024-02-01T19:42:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28183a38_54a679e1",
+      "revId": "ccca702cbca64324fddfa75354c4bd3de2414545",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
