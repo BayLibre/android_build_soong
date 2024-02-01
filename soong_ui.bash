@@ -37,5 +37,17 @@ soong_build_go mk2rbc android/soong/mk2rbc/mk2rbc
 soong_build_go rbcrun rbcrun/rbcrun
 soong_build_go release-config android/soong/cmd/release_config/release_config
 
+new_args=()
+do_thing=false
+for arg in "$@"
+do
+  if [ "$arg" = 'general-tests' ] || [ "$arg" = 'mts' ] || [ "$arg" = 'acts_tests' ] || [ "$arg" = 'gts' ] || [ "$arg" = 'vts' ] || [ "$arg" = 'wts' ] || [ "$arg" = 'catbox' ] || [ "$arg" = 'gcatbox' ] || [ "$arg" = 'bluetooth_stack_with_facade' ] || [ "$arg" = 'haiku-presubmit' ] || [ "$arg" = 'wvts' ] || [ "$arg" = 'device-tests' ]
+  then
+    echo "skip"
+  else
+    new_args+=("$arg")
+  fi
+done
+
 cd ${TOP}
-exec "$(getoutdir)/soong_ui" "$@"
+exec "$(getoutdir)/soong_ui" "${new_args[@]}"
