@@ -70,6 +70,30 @@
       },
       "revId": "50884dce3c21decd6491cef231a7723dd266b104",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7487f85e_64955707",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-02-01T04:54:29Z",
+      "side": 1,
+      "message": "The ABI tool does not decide whether a library is updatable. It simply reports the ABI changes. The developer and the code reviewers decide whether the changes are intended.\nDifferentiating `APEX` and `PLATFORM` makes lsdump_paths.txt more understandable, but their ABI check rules have no difference, so I did not consider adding `APEX`. Maybe we will need it when we adapt the check rules for trunk stable.",
+      "parentUuid": "b4002d1d_6daa0863",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 38
+      },
+      "revId": "50884dce3c21decd6491cef231a7723dd266b104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
