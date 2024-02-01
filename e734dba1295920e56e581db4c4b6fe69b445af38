@@ -244,6 +244,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04c64163_c1915296",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-01T23:26:45Z",
+      "side": 1,
+      "message": "What flags are getting through if you skip `ToolchainCflags`?",
+      "parentUuid": "29ee4994_37207d6e",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08c2b443_a4049c38",
         "filename": "cc/compiler.go",
         "patchSetId": 4
