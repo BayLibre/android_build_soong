@@ -208,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3296106_e39057ca",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-01T23:16:59Z",
+      "side": 1,
+      "message": "i tried it but didn\u0027t work. it could be because CommonFlags are populated with x86 specific flags a little earlier in the function? Another problem with gating this flag for non-bpf targets is that we may miss some required flags. So, short term we should only remove the ones that aren\u0027t needed and work towards onboarding the libbpf-tools to use bpf rules instead.",
+      "parentUuid": "4dd3e26d_70f09de3",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08c2b443_a4049c38",
         "filename": "cc/compiler.go",
         "patchSetId": 4
