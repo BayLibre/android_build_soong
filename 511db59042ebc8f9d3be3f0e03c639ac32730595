@@ -16,6 +16,23 @@
       "message": "I\u0027ll leave it to Spandan to +2.",
       "revId": "511db59042ebc8f9d3be3f0e03c639ac32730595",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c565919_4fc8d8f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-01T04:59:35Z",
+      "side": 1,
+      "message": "Will we need a runtime stubs library equivalent for `java_sdk_library_import`?",
+      "revId": "511db59042ebc8f9d3be3f0e03c639ac32730595",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
