@@ -63,6 +63,30 @@
       },
       "revId": "cb8ed53779a7dba5ddca0ac4155ec845a2dc714e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eefcc24_7da66b62",
+        "filename": "cc/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-01T06:11:44Z",
+      "side": 1,
+      "message": "ACK.  `FilterListPred` could be used here but it\u0027ll end up scanning the entire list (but the list itself is small since this is scanning the `cflags` list from the Android.bp).\n\nWe can have the current version since this is just temporary.",
+      "parentUuid": "4f33a792_687ba910",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 37
+      },
+      "revId": "cb8ed53779a7dba5ddca0ac4155ec845a2dc714e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
