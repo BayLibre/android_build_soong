@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc471e71_cc1f6a7a",
+        "filename": "cc/compiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-01T23:22:00Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed - they are not directly added into flags but get expanded from the \"${config.*flags}\" below.  But we should add the equivalent variables for ARM and ARM64.",
+      "range": {
+        "startLine": 347,
+        "startChar": 2,
+        "endLine": 352,
+        "endChar": 13
+      },
+      "revId": "c26f74784ed0c0424a06d3f8c393d873a1e8f43c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f302f7d_aefca01a",
         "filename": "cc/compiler.go",
         "patchSetId": 5
