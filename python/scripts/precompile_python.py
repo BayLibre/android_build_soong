@@ -23,9 +23,9 @@ import zipfile
 # This file needs to support both python 2 and 3.
 
 
-def process_one_file(name, inf, outzip):
-    if not name.endswith('.py'):
-        outzip.writestr(name, inf.read())
+def process_one_file(info, inf, outzip):
+    if not info.filename.endswith('.py'):
+        outzip.writestr(info, inf.read())
         return
 
     # Unfortunately py_compile requires the input/output files to be written
@@ -36,9 +36,13 @@ def process_one_file(name, inf, outzip):
     with tempfile.NamedTemporaryFile(prefix="Soong_precompile_", delete=False) as tmp:
         out_name = tmp.name
     try:
-        py_compile.compile(in_name, out_name, name, doraise=True)
+        # Ensure deterministic pyc by using the hash rather than timestamp.
+        # This is required to improve caching in accelerated builds.
+        py_compile.compile(in_name, out_name, info.filename, doraise=True, invalidation_mode=py_compile.PycInvalidationMode.CHECKED_HASH)
         with open(out_name, 'rb') as f:
-            outzip.writestr(name + 'c', f.read())
+            info.filename = info.filename + 'c'
+            # Use ZipInfo rather than str to reuse timestamps for deterministic zip files.
+            outzip.writestr(info, f.read())
     finally:
         os.remove(in_name)
         os.remove(out_name)
@@ -52,9 +56,9 @@ def main():
 
     with open(args.dst_zip, 'wb') as outf, open(args.src_zip, 'rb') as inf:
         with zipfile.ZipFile(outf, mode='w') as outzip, zipfile.ZipFile(inf, mode='r') as inzip:
-            for name in inzip.namelist():
-                with inzip.open(name, mode='r') as inzipf:
-                    process_one_file(name, inzipf, outzip)
+            for info in inzip.infolist():
+                with inzip.open(info.filename, mode='r') as inzipf:
+                    process_one_file(info, inzipf, outzip)
 
 
 if __name__ == "__main__":
