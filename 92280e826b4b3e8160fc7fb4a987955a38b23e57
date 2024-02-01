@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09efcc34_1741cd28",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-01T04:32:59Z",
+      "side": 1,
+      "message": "Should this also have a `if params.stubConfig.annotationsEnabled` guard?",
+      "range": {
+        "startLine": 785,
+        "startChar": 1,
+        "endLine": 785,
+        "endChar": 46
+      },
+      "revId": "92280e826b4b3e8160fc7fb4a987955a38b23e57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
