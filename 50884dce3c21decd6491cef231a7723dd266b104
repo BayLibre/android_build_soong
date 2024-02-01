@@ -22,6 +22,30 @@
       },
       "revId": "50884dce3c21decd6491cef231a7723dd266b104",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab1a7466_1cd5dac0",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-02-01T02:56:37Z",
+      "side": 1,
+      "message": "No, because the document says `a single map.txt file should not contain _both_ # apex and # systemapi symbols.`",
+      "parentUuid": "1c0196e8_6abd1cb4",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 38
+      },
+      "revId": "50884dce3c21decd6491cef231a7723dd266b104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
