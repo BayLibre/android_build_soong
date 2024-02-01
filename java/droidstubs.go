@@ -982,8 +982,11 @@ func (d *Droidstubs) exportableStubCmd(ctx android.ModuleContext, params stubsCo
 		stubConfig: params,
 	}
 
-	d.Javadoc.exportableStubsSrcJar = android.PathForModuleOut(ctx, params.stubsType.String(), ctx.ModuleName()+"-"+"stubs.srcjar")
-	optionalCmdParams.stubsSrcJar = d.Javadoc.exportableStubsSrcJar
+	if params.generateStubs {
+		d.Javadoc.exportableStubsSrcJar = android.PathForModuleOut(ctx, params.stubsType.String(), ctx.ModuleName()+"-"+"stubs.srcjar")
+		optionalCmdParams.stubsSrcJar = d.Javadoc.exportableStubsSrcJar
+	}
+
 	if params.writeSdkValues {
 		d.exportableArtifacts.metadataZip = android.PathForModuleOut(ctx, params.stubsType.String(), ctx.ModuleName()+"-metadata.zip")
 		d.exportableArtifacts.metadataDir = android.PathForModuleOut(ctx, params.stubsType.String(), "metadata")
