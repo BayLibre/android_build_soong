@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cec5976_9a41cd88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-01T18:57:37Z",
+      "side": 1,
+      "message": "Thanks for catching this!",
+      "revId": "ccca702cbca64324fddfa75354c4bd3de2414545",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28183a38_54a679e1",
+        "filename": "python/scripts/precompile_python.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-01T18:57:37Z",
+      "side": 1,
+      "message": "Do an `if sys.version_info \u003e\u003d (3, 7):` instead of the try/catch.",
+      "revId": "ccca702cbca64324fddfa75354c4bd3de2414545",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
