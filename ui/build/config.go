@@ -1407,7 +1407,7 @@ func (c *configImpl) rbeSockAddr(dir string) (string, error) {
 func (c *configImpl) IsGooglerEnvironment() bool {
 	cf := "ANDROID_BUILD_ENVIRONMENT_CONFIG"
 	if v, ok := c.environ.Get(cf); ok {
-		return v == "googler"
+		return v == "googler" || v == "googler-cog"
 	}
 	return false
 }
