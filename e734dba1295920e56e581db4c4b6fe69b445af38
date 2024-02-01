@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45af377f_504fe6c7",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-01T21:41:30Z",
+      "side": 1,
+      "message": "Actually it doesn\u0027t fail on arm64 because of https://android.googlesource.com/toolchain/llvm_android/+/refs/heads/main/patches/Ignore-flags-that-typically-get-used-with-bpf-but-ar.patch which removes `-march\u003d`.  But the medium term fix is to remove the arch-specific configs for all architectures so we can remove the local patch.",
+      "parentUuid": "fac31ed2_ae257a88",
+      "range": {
+        "startLine": 342,
+        "startChar": 107,
+        "endLine": 342,
+        "endChar": 116
+      },
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f6515ea_c29b4ead",
         "filename": "cc/compiler.go",
         "patchSetId": 4
