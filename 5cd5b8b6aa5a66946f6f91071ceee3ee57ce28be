@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afecf31_f1f62ef5",
+        "filename": "cc/compiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-01T23:29:15Z",
+      "side": 1,
+      "message": "I think this is `X86_64Cflags`, but also all the relevant `-march` flags are in the `\"X86_64\"+variant+\"VariantCflags\"` variables.",
+      "range": {
+        "startLine": 348,
+        "startChar": 12,
+        "endLine": 348,
+        "endChar": 23
+      },
+      "revId": "5cd5b8b6aa5a66946f6f91071ceee3ee57ce28be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
