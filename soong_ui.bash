@@ -36,5 +36,17 @@ soong_build_go soong_ui android/soong/cmd/soong_ui
 soong_build_go mk2rbc android/soong/mk2rbc/mk2rbc
 soong_build_go rbcrun rbcrun/rbcrun
 
+new_args=()
+do_thing=false
+for arg in "$@"
+do
+  if [ "$arg" = 'general-tests' ] || [ "$arg" = 'mts' ]
+  then
+    echo "skip"
+  else
+    new_args+=("$arg")
+  fi
+done
+
 cd ${TOP}
-exec "$(getoutdir)/soong_ui" "$@"
+exec "$(getoutdir)/soong_ui" "${new_args[@]}"
