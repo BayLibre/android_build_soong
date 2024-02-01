@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fac31ed2_ae257a88",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-01T21:25:55Z",
+      "side": 1,
+      "message": "This _does_ fail for arm64 as well [1] .  I wonder how clang switchover passed presubmit (including checkbuild for an arm64 target) 😕\n\n[1] lunch oriole-trunk_staging-userdebug \u0026\u0026 m cpufreq.bpf.o",
+      "parentUuid": "fa7c6bc3_d8d82270",
+      "range": {
+        "startLine": 342,
+        "startChar": 107,
+        "endLine": 342,
+        "endChar": 116
+      },
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f6515ea_c29b4ead",
         "filename": "cc/compiler.go",
         "patchSetId": 4
@@ -101,6 +125,24 @@
       "writtenOn": "2024-02-01T18:38:50Z",
       "side": 1,
       "message": "This is where the target that is being overridden is set, can we skip setting it?  Bonus points for setting `-target\u003dbpf` here instead of in the Android.bp files, and then forbidding  `-target` in Android.bp  files via `CheckBadCompilerFlags`.",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "233639e7_5d4f3b05",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-01T21:25:55Z",
+      "side": 1,
+      "message": "That\u0027s what should happen eventually.  Currently, `-target\u003dbpf` is set in a `cc_object` (external/bcc/libbpf-tools/Android.bp).  Aditya\u0027s change to switch them to `bpf` modules doesn\u0027t work (aosp/2829075 - restarted presubmit on it to see what actually fails).",
+      "parentUuid": "aacf43b2_a2edf0a7",
       "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
