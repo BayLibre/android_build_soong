@@ -39,6 +39,30 @@
       },
       "revId": "cb8ed53779a7dba5ddca0ac4155ec845a2dc714e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f33a792_687ba910",
+        "filename": "cc/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-01T00:51:54Z",
+      "side": 1,
+      "message": "we need to search backwards and there is no related API.",
+      "parentUuid": "abb12a38_f54e0d60",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 37
+      },
+      "revId": "cb8ed53779a7dba5ddca0ac4155ec845a2dc714e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
