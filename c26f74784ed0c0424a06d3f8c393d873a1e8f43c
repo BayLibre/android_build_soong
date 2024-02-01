@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f302f7d_aefca01a",
+        "filename": "cc/compiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-01T22:50:42Z",
+      "side": 1,
+      "message": "Maybe do this in line 497?  `if bpf, add --target\u003dbpf, else add -target\u003dtc.ClangTriple`.",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 66
+      },
+      "revId": "c26f74784ed0c0424a06d3f8c393d873a1e8f43c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
