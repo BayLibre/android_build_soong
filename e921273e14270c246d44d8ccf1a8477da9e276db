@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57e97e52_acb0647d",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-02-01T14:21:18Z",
+      "side": 1,
+      "message": "paulduffin@ suggested using singleton modules instead of using plain singletons in a CL review in the past. But fine, let\u0027s table this discussion to unblock this CL as OEMs are waiting for it.\n\nMoved the kernel version file to `out/soong/dexpreopt/kernel_version_for_uffd_gc.txt` and removed the singleton module.",
+      "parentUuid": "37f999e6_b0eae1c3",
+      "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46531847_a62b8a1c",
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "The diffing through rsync is not necessary on the true/false cases, because they have no dependencies so will only rerun if we did reanalysis and the command line changed.",
       "parentUuid": "1ccff9a7_ab564210",
+      "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efad8be2_ae9a8259",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-02-01T14:21:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f5ab405_c4474e0c",
       "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -177,6 +213,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d38cea15_de9d3b76",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-02-01T14:21:18Z",
+      "side": 1,
+      "message": "You are right! I probably confused myself with something else.",
+      "parentUuid": "41429b9e_1d06b0b9",
+      "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96351e9c_e2312d42",
@@ -226,6 +280,24 @@
       "side": 1,
       "message": "You can just make a helper function to get the value of `UffdGcFlag`, like you do for `GetDexpreoptDirName`. It would still be added to the global config object as well separately so that the dexpreopt tool can use it.",
       "parentUuid": "fc6502ba_e90ffa50",
+      "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "428f7e8e_0ac43329",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-02-01T14:21:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09efa0db_83291abc",
       "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -384,6 +456,24 @@
       "side": 1,
       "message": "`sys.exit` just raises a `SystemExit` exception, you can still catch that in the tests if you want.",
       "parentUuid": "9322bbf3_31dd539e",
+      "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8860fdc5_e187eec0",
+        "filename": "scripts/uffd_gc_utils.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-02-01T14:21:18Z",
+      "side": 1,
+      "message": "Good to know!",
+      "parentUuid": "7968e1ad_7f0ff5d0",
       "revId": "e921273e14270c246d44d8ccf1a8477da9e276db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
