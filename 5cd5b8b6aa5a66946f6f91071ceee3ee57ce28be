@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6382dcba_e3feb5eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1981633
+      },
+      "writtenOn": "2024-02-01T23:45:56Z",
+      "side": 1,
+      "message": "I am in support of this approach as an intermediate step until we get the BPF soong objects fixed. Ultimately the toolchain specifics are outside of my expertise, so will leave that up to someone else for final approval.",
+      "revId": "5cd5b8b6aa5a66946f6f91071ceee3ee57ce28be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9afecf31_f1f62ef5",
