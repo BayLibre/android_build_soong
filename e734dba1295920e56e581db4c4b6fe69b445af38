@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9fa3ebb_058f3a14",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-01T23:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02786cbd_7989b3a0",
+      "range": {
+        "startLine": 342,
+        "startChar": 23,
+        "endLine": 342,
+        "endChar": 96
+      },
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f6515ea_c29b4ead",
@@ -262,6 +286,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e550d98_8a0474be",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-01T23:57:23Z",
+      "side": 1,
+      "message": "With\n```\n+       if !proptools.BoolDefault(compiler.Properties.Bpf_target, false) {\n+               flags.Global.CommonFlags \u003d append(flags.Global.CommonFlags, tc.ToolchainCflags())\n+       }\n```\n\nAnd removing calls to stripRedundantBPFFlags I get error for `-msse3` which I believe is coming from cc/config/x86_device.go:26",
+      "parentUuid": "04c64163_c1915296",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08c2b443_a4049c38",
         "filename": "cc/compiler.go",
         "patchSetId": 4
@@ -313,6 +355,30 @@
       "writtenOn": "2024-02-01T17:55:43Z",
       "side": 1,
       "message": "I _think_ these are unnecessary as well but your local test may prove otherwise.",
+      "range": {
+        "startLine": 685,
+        "startChar": 2,
+        "endLine": 686,
+        "endChar": 71
+      },
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf38893_88382742",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-01T23:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f2d8138_135bebdc",
       "range": {
         "startLine": 685,
         "startChar": 2,
