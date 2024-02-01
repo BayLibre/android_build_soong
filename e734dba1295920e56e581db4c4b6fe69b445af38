@@ -190,6 +190,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4dd3e26d_70f09de3",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-01T22:48:41Z",
+      "side": 1,
+      "message": "The latest patch looks great!  I think ccross\u0027s suggestion is that we add this only if `Bpf_target` is false.  By doing so, we can get remove stripRedundantBPFFlags and all calls to it.",
+      "parentUuid": "5c8e6b85_10f810ec",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08c2b443_a4049c38",
         "filename": "cc/compiler.go",
         "patchSetId": 4
