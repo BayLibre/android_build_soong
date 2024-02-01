@@ -49,6 +49,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa7c6bc3_d8d82270",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-01T18:38:50Z",
+      "side": 1,
+      "message": "These flags are specific to the build configuration.  Isn\u0027t this just going to fail with the arm64 flags instead on an arm64 build?",
+      "parentUuid": "47f5022c_5fa430f3",
+      "range": {
+        "startLine": 342,
+        "startChar": 107,
+        "endLine": 342,
+        "endChar": 116
+      },
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f6515ea_c29b4ead",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-01T18:38:50Z",
+      "side": 1,
+      "message": "Instead of trying to recognize this, can we add a boolean property and set it on the libbpf modules?",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aacf43b2_a2edf0a7",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-01T18:38:50Z",
+      "side": 1,
+      "message": "This is where the target that is being overridden is set, can we skip setting it?  Bonus points for setting `-target\u003dbpf` here instead of in the Android.bp files, and then forbidding  `-target` in Android.bp  files via `CheckBadCompilerFlags`.",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c8e6b85_10f810ec",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-01T18:38:50Z",
+      "side": 1,
+      "message": "This is probably where the rest of the x86_64-specific flags are being added.",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08c2b443_a4049c38",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-01T18:38:50Z",
+      "side": 1,
+      "message": "Can we avoid adding these flags instead of trying to strip them later?",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c93de13_13e39323",
         "filename": "cc/compiler.go",
         "patchSetId": 4
