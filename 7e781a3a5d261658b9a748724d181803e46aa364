@@ -16,6 +16,23 @@
       "message": "Thank you for the suggestions!",
       "revId": "7e781a3a5d261658b9a748724d181803e46aa364",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1de592f_f103c8e3",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-01T18:34:44Z",
+      "side": 1,
+      "message": "Sorry, I should\u0027ve said `WriteFileRuleVerbatim` to match what `construct_uffd_gc_flag` does. `WriteFileRule` adds a newline, though I think it doesn\u0027t really matter because the `$(cat ...)` will remove the newline again.",
+      "revId": "7e781a3a5d261658b9a748724d181803e46aa364",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
