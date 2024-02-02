@@ -143,6 +143,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ea7fcb7_5b2bec42",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-02T00:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45af377f_504fe6c7",
+      "range": {
+        "startLine": 342,
+        "startChar": 107,
+        "endLine": 342,
+        "endChar": 116
+      },
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f6515ea_c29b4ead",
@@ -387,6 +411,24 @@
       "writtenOn": "2024-02-01T18:38:50Z",
       "side": 1,
       "message": "Can we avoid adding these flags instead of trying to strip them later?",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e419de0_58440388",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-02T00:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08c2b443_a4049c38",
       "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
