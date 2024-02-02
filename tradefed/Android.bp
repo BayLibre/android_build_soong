@@ -13,6 +13,7 @@ bootstrap_go_package {
         "autogen.go",
         "config.go",
         "makevars.go",
+        "test_module_config.go",
     ],
     pluginFor: ["soong_build"],
 }

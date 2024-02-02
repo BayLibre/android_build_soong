@@ -18,6 +18,7 @@ package java
 // related module types, including their override variants.
 
 import (
+	"encoding/json"
 	"fmt"
 	"path/filepath"
 	"strings"
@@ -1313,6 +1314,11 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.extraTestConfigs = android.PathsForModuleSrc(ctx, a.testProperties.Test_options.Extra_test_configs)
 	a.data = android.PathsForModuleSrc(ctx, a.testProperties.Data)
 	android.SetProvider(ctx, testing.TestModuleProviderKey, testing.TestModuleProviderData{})
+	android.SetProvider(ctx, tradefed.BaseTestProviderKey, tradefed.BaseTestProviderData{
+		InstalledFiles: a.data,
+		OutputFile:     a.OutputFile(),
+		TestConfig:     a.testConfig,
+	})
 }
 
 func (a *AndroidTest) FixTestConfig(ctx android.ModuleContext, testConfig android.Path) android.Path {
@@ -1342,6 +1348,13 @@ func (a *AndroidTest) FixTestConfig(ctx android.ModuleContext, testConfig androi
 		command.FlagWithArg("--mainline-package-name ", *a.appTestProperties.Mainline_package_name)
 	}
 
+	if len(a.testProperties.Test_options.Test_runner_options) > 0 {
+		fixNeeded = true
+		xmlTestRunnerSnippet, _ := json.Marshal(a.testProperties.Test_options.Test_runner_options)
+		escaped := proptools.NinjaAndShellEscape(string(xmlTestRunnerSnippet))
+		command.Flag("--test-runner-options ").Text(escaped)
+	}
+
 	if fixNeeded {
 		rule.Build("fix_test_config", "fix test config")
 		return fixedConfig
@@ -1361,6 +1374,14 @@ func (a *AndroidTest) OverridablePropertiesDepsMutator(ctx android.BottomUpMutat
 		// use instrumentationForTag instead of libTag.
 		ctx.AddVariationDependencies(nil, instrumentationForTag, String(a.appTestProperties.Instrumentation_for))
 	}
+}
+
+// TODO(ron): delete unused
+// aconfig provider
+func (a *AndroidTest) InstalledFiles() android.Paths {
+	// fmt.Printf("APP/InstallFiles: data: %v\n tpData: %v\n", a.data, a.testProperties.Data)
+	// return android.PathsForModuleSrc(ctx, a.data)
+	return a.data
 }
 
 // android_test compiles test sources and Android resources into an Android application package `.apk` file and
@@ -1516,6 +1537,7 @@ func OverrideAndroidTestModuleFactory() android.Module {
 	m := &OverrideAndroidTest{}
 	m.AddProperties(&overridableAppProperties{})
 	m.AddProperties(&appTestProperties{})
+	m.AddProperties(&testProperties{})
 
 	android.InitAndroidMultiTargetsArchModule(m, android.DeviceSupported, android.MultilibCommon)
 	android.InitOverrideModule(m)
