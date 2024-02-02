@@ -1251,6 +1251,20 @@ func (j *TestHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	j.Test.generateAndroidBuildActionsWithConfig(ctx, configs)
 	android.SetProvider(ctx, testing.TestModuleProviderKey, testing.TestModuleProviderData{})
+
+	var output android.Path
+	if j.dexJarFile.IsSet() {
+		output = j.dexJarFile.Path()
+	} else {
+		output = j.implementationAndResourcesJar
+	}
+
+	android.SetProvider(ctx, tradefed.BaseTestProviderKey, tradefed.BaseTestProviderData{
+		// TODO(rbraunstein): add j.hostTestProperties.Data_devices_bins_both
+		InstalledFiles: j.data,
+		OutputFile:     output, //j.testConfig, /// j.dexJarFile.Path(), // I think already in data and don't need
+		TestConfig:     j.testConfig,
+	})
 }
 
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
