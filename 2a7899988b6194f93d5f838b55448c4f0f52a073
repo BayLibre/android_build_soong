@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0ea505_d38dc886",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-02T12:11:20Z",
+      "side": 1,
+      "message": "Why is this conditional when it was not before?",
+      "range": {
+        "startLine": 985,
+        "startChar": 4,
+        "endLine": 985,
+        "endChar": 24
+      },
+      "revId": "2a7899988b6194f93d5f838b55448c4f0f52a073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
