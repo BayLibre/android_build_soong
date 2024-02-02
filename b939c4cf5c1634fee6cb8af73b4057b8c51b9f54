@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf97666_ef7469dd",
+        "filename": "cc/check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-02T05:11:26Z",
+      "side": 1,
+      "message": "We should also throw an error on `-target \u003cfoo\u003e`.  Maybe remove the `\u003d`?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 48
+      },
+      "revId": "b939c4cf5c1634fee6cb8af73b4057b8c51b9f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
