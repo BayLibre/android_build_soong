@@ -22,6 +22,30 @@
       },
       "revId": "cef3ecf46198c9bdb72df7de2dbcbfc4e7d1945c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d40c69a_9ca4373f",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-02T00:02:05Z",
+      "side": 1,
+      "message": "No we won\u0027t, as no other artifacts than the stubs will be generated for `runtime`. I\u0027ve added the error condition as suggested.",
+      "parentUuid": "87560ffa_365e4c31",
+      "range": {
+        "startLine": 544,
+        "startChar": 4,
+        "endLine": 548,
+        "endChar": 5
+      },
+      "revId": "cef3ecf46198c9bdb72df7de2dbcbfc4e7d1945c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
