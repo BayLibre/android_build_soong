@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7639c033_a15db19c",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-02T23:38:27Z",
+      "side": 1,
+      "message": "nit: It seems like `psi` is only used in L565 - Can we move it to inside the if branch in L558?",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 553,
+        "endChar": 4
+      },
+      "revId": "b99d281cffab89d634e4f32ea8ee30dc1cd90f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba5c09ff_23360927",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-02T23:38:27Z",
+      "side": 1,
+      "message": "WDYT about below? Is there a specific reason why you are inlining the interface to be casted to?\n\n```suggestion\n\t\t\t\t\tif sdkLibrary, ok :\u003d m.(SdkLibraryComponentDependency); ok \u0026\u0026 sdkLibrary.SdkLibraryName() !\u003d nil {\n```",
+      "revId": "b99d281cffab89d634e4f32ea8ee30dc1cd90f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85683d5_fb88bc1d",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-02T23:38:27Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Common Typos: Common typo found: \"libaries\" -- should it be \"libraries\"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \"libaries\" -- should it be \"libraries\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 1776,
+        "startChar": 12,
+        "endLine": 1776,
+        "endChar": 20
+      },
+      "revId": "b99d281cffab89d634e4f32ea8ee30dc1cd90f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c5cc880_ebb6f765",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-02T23:38:27Z",
+      "side": 1,
+      "message": "Do you mind explaining why adservices-specific build flag is set here for testing?",
+      "revId": "b99d281cffab89d634e4f32ea8ee30dc1cd90f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
