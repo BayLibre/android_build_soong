@@ -19,6 +19,7 @@
 from __future__ import print_function
 
 import argparse
+import json
 import sys
 from xml.dom import minidom
 
@@ -30,6 +31,8 @@ from manifest import write_xml
 
 KNOWN_PREPARERS = ['com.android.tradefed.targetprep.TestAppInstallSetup',
                    'com.android.tradefed.targetprep.suite.SuiteApkInstaller']
+
+KNOWN_TEST_RUNNERS = ['com.android.tradefed.testtype.AndroidJUnitTest']
 
 MAINLINE_CONTROLLER = 'com.android.tradefed.testtype.suite.module.MainlineTestModuleController'
 
@@ -45,6 +48,8 @@ def parse_args():
                       help=('overwrite test file name in the test config'))
   parser.add_argument('--mainline-package-name', default='', dest='mainline_package_name',
                       help=('overwrite mainline module package name in the test config'))
+  parser.add_argument('--test-runner-options', default='', dest='test_runner_options',
+                      help=('Add test runner options in the test config'))
   parser.add_argument('input', help='input test config file')
   parser.add_argument('output', help='output test config file')
   return parser.parse_args()
@@ -86,6 +91,35 @@ def overwrite_mainline_module_package_name(test_config_doc, mainline_package_nam
         if option.getAttribute('name') == "mainline-module-package-name":
           option.setAttribute('value', mainline_package_name)
 
+def add_test_runner_options_toplevel(test_config_doc, test_runner_options):
+
+  test_config = parse_test_config(test_config_doc)
+  tests = get_children_with_tag(test_config, 'test')
+  if len(tests) != 1:
+    raise RuntimeError('Exactly one <test> element expected')
+
+
+  test_config.appendChild(test_config_doc.createComment("Options from Android.bp"))
+  test_config.appendChild(test_config_doc.createTextNode("\n"))
+  for new_option in json.loads(test_runner_options):
+    option = test_config_doc.createElement("option")
+    # name and value are mandatory,
+    name = new_option.get('Name')
+    if not name:
+      raise RuntimeError('"name" must set in test_runner_option"')
+    value = new_option.get('Value')
+    if not value:
+      raise RuntimeError('"value" must set in test_runner_option"')
+    option.setAttribute('name', name) # 'include-filter')
+    option.setAttribute('value', value) # 'android.test.example.devcodelab.DevCodelabTest#testHelloFail')
+    key = new_option.get('Key')
+    if key:
+      option.setAttribute('key', key) # 'include-filter')
+    # add tab and newline for readability
+    test_config.appendChild(test_config_doc.createTextNode("    "))
+    test_config.appendChild(option)
+    test_config.appendChild(test_config_doc.createTextNode("\n"))
+
 def main():
   """Program entry point."""
   try:
@@ -104,6 +138,9 @@ def main():
 
     if args.mainline_package_name:
       overwrite_mainline_module_package_name(doc, args.mainline_package_name)
+
+    if args.test_runner_options:
+      add_test_runner_options_toplevel(doc, args.test_runner_options)
 
     with open(args.output, 'w') as f:
       write_xml(f, doc)
