@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9970ae8_d8552254",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-02T22:28:03Z",
+      "side": 1,
+      "message": "I don\u0027t think we can move this to extraExternalCflags after the above bug is fixed.\n\nThe problem is `-Wall -Wextra` in module C flags requiring that these be disabled in the \"noOverride\" section.  Let\u0027s just remove this comment.\n```suggestion\n```",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 62
+      },
+      "revId": "8663137a745132822dab41de73ff28cd36fd819e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
