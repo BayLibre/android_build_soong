@@ -356,6 +356,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d87abf_8c7f3416",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-02T00:47:18Z",
+      "side": 1,
+      "message": "the problem was that tc.clflags also needs to be gated.",
+      "parentUuid": "01047828_9629e264",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08c2b443_a4049c38",
