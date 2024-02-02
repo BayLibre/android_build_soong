@@ -141,6 +141,30 @@
       },
       "revId": "c26f74784ed0c0424a06d3f8c393d873a1e8f43c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97042b02_a38d6bea",
+        "filename": "cc/compiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-02T01:02:07Z",
+      "side": 1,
+      "message": "I think this is still pending (line 479 instead of 497 like I mentioned earlier)... And adding a code-comment linking to the bug.\n\nThe rest of the patch LGTM.",
+      "parentUuid": "dcb8fc52_7e1ec939",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 66
+      },
+      "revId": "c26f74784ed0c0424a06d3f8c393d873a1e8f43c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
