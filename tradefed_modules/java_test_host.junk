@@ -1,0 +1,32 @@
+func TestModuleConfigJavaHostBase(t *testing.T) {
+	bp := `
+		java_test_host {
+			name: "base"
+		}
+
+                test_module_config {
+                        name: "test_config",
+                        base: "base",
+			options: [
+			    {
+				name: "exclude-filter",
+				value: "android.test.example.devcodelab.DevCodelabTest#testHelloFail",
+			    },
+			],
+                }
+
+	`
+	result := android.GroupFixturePreparers(
+		java.PrepareForTestWithJavaDefaultModules,
+		android.FixtureRegisterWithContext(tradefed.RegisterTestModuleConfigBuildComponents),
+	).RunTestWithBp(t, bp)
+
+	ctx := result.TestContext
+
+	buildOS := ctx.Config().BuildOS.String()
+	//module :=
+	ctx.ModuleForTests("base", buildOS+"_common").Module()
+	/* android.AssertDeepEquals(t, "Default installable value should be true.", proptools.BoolPtr(true),
+	module.GetProperties("Installable"))
+	*/
+}
