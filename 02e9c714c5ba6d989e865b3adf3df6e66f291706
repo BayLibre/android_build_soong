@@ -180,6 +180,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9983b9a5_f9456143",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-02-02T21:12:29Z",
+      "side": 1,
+      "message": "Well, I think we\u0027d better fix isOsVersionAtLeast. I guess we have time to fix it upstream until V finalization.",
+      "parentUuid": "eeecf519_d4a65367",
+      "revId": "02e9c714c5ba6d989e865b3adf3df6e66f291706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cc8deb7b_70bb4ef2",
