@@ -165,6 +165,30 @@
       },
       "revId": "c26f74784ed0c0424a06d3f8c393d873a1e8f43c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0228587f_41d2ca95",
+        "filename": "cc/compiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-02T04:53:02Z",
+      "side": 1,
+      "message": "Making it like `if bpf, add --target\u003dbpf, else add -target\u003dtc.ClangTriple.` will make it a little complicated because `target +\u003d ` happening in subsequent lines. I feel like it will make the code more unreadable but I\u0027m happy to rewrite that way if you think otherwise.",
+      "parentUuid": "97042b02_a38d6bea",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 66
+      },
+      "revId": "c26f74784ed0c0424a06d3f8c393d873a1e8f43c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
