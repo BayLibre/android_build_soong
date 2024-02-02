@@ -46,6 +46,30 @@
       },
       "revId": "2a7899988b6194f93d5f838b55448c4f0f52a073",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f78207eb_c316574b",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-02T17:43:15Z",
+      "side": 1,
+      "message": "I\u0027ve added the conditional to respect the user defined `generate_stubs` property. It seems like `d.stubsSrcJar` is not being null checked in StubsSrcJar(StubsType) either. Should this be fixed altogether?",
+      "parentUuid": "a47062f6_8696a2d8",
+      "range": {
+        "startLine": 985,
+        "startChar": 4,
+        "endLine": 985,
+        "endChar": 24
+      },
+      "revId": "2a7899988b6194f93d5f838b55448c4f0f52a073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
