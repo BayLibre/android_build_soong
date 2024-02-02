@@ -126,6 +126,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e87389f_8aec375b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-02-02T20:13:01Z",
+      "side": 1,
+      "message": "TBH, I think a better solution would be either\n- fix `__isOSVersionAtLeast()` to understand in-development version and evals to true with `__builtin_available(android __ANDROID_API_V__, *)`. Then we wouldn\u0027t need this CL. But I don\u0027t think it\u0027s feasible because `__isOSVersionAtLeast` is a clang implementation and we can\u0027t update it every year.\n- or, set `ro.build.version.sdk` to 35 even we\u0027re still developing V(35) in trunk_staging.",
+      "parentUuid": "ed95724f_40d19d59",
+      "revId": "02e9c714c5ba6d989e865b3adf3df6e66f291706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cc8deb7b_70bb4ef2",
