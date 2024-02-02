@@ -144,6 +144,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "19df84e5_d9abcaed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-02T20:20:22Z",
+      "side": 1,
+      "message": "I guess if the concern is about existing usages, could we add `#define AT_LEAST_V (__builtin_available(android __ANDROID_API_FUTURE__, *))` to `api-level.h` and update the finalizatin script to change it from `__ANDROID_API_FUTURE__` to `__ANDROID_API_V__` when finalizing?",
+      "parentUuid": "1e87389f_8aec375b",
+      "revId": "02e9c714c5ba6d989e865b3adf3df6e66f291706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cc8deb7b_70bb4ef2",
