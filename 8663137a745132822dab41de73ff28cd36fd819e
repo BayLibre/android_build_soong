@@ -22,6 +22,30 @@
       },
       "revId": "8663137a745132822dab41de73ff28cd36fd819e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4589eb12_9720dee2",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-02T22:33:09Z",
+      "side": 1,
+      "message": "Acknowledged. i\u0027ll remove it then.",
+      "parentUuid": "e9970ae8_d8552254",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 62
+      },
+      "revId": "8663137a745132822dab41de73ff28cd36fd819e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
