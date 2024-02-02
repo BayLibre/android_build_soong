@@ -22,6 +22,30 @@
       },
       "revId": "2a7899988b6194f93d5f838b55448c4f0f52a073",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47062f6_8696a2d8",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-02T12:52:26Z",
+      "side": 1,
+      "message": "I think this is a problem because:\n1. This will cause `d.Javadoc.exportableStubsSrcJar` to be `nil`.\n2. `StubsSrcJar(StubsType)` uses `d.Javadoc.exportableStubsSrcJar` without checking for `nil` and so could return `nil`.\n3. `OutputFiles(String)` uses `StubsSrcJar(StubsType)` and returns a `Paths{nil}` which seems like a bad idea.\n\nSo, either remove this conditional, or if that causes problems (because something in make expects `LOCAL_DROIDDOC_STUBS_SRCJAR` to not be set if the file is never produced then I think `StubsSrcJar(StubsType)` needs a check to see if the file it returns exists and if it does not error.",
+      "parentUuid": "fc0ea505_d38dc886",
+      "range": {
+        "startLine": 985,
+        "startChar": 4,
+        "endLine": 985,
+        "endChar": 24
+      },
+      "revId": "2a7899988b6194f93d5f838b55448c4f0f52a073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
