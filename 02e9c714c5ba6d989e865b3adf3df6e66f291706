@@ -162,6 +162,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeecf519_d4a65367",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-02-02T20:35:10Z",
+      "side": 1,
+      "message": "Well, I\u0027m not familiar with how the finalization script works. I thought it\u0027s applied to the release branch after cut-off from the main. Will it work with Trunk Stable? AFAIK -next-/-trunk_staging- should work with the same code base. I\u0027m okay if it works as expected:\n- When platform sdk version is 34 and codename is VanillaIceCream (the current -trunk_staging-), then the guard should be true\n- When platform sdk version is 34 and codename is REL (the current -next-), then the guard should be false,\n- When platform sdk version is 35 and codename is REL, then the guard should be true\n..",
+      "parentUuid": "19df84e5_d9abcaed",
+      "revId": "02e9c714c5ba6d989e865b3adf3df6e66f291706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cc8deb7b_70bb4ef2",
