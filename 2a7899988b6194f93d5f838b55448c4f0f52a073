@@ -94,6 +94,30 @@
       },
       "revId": "2a7899988b6194f93d5f838b55448c4f0f52a073",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4d5ab58_92f92ffe",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-02T18:22:01Z",
+      "side": 1,
+      "message": "Understood. I\u0027ve witnessed that all other files in `OutputFiles(String)` were not being null checked. I\u0027ve updated them altogether.\n\nHowever, I\u0027ve also noticed that null checking annotations zip file leads to an error in [`extractApiInfoFromApiStubsProvider`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/sdk_library.go;drc\u003d2ea84dd0dc034d982e867e7dec97b713b68ce3bf;l\u003d780) in Soong tests. The issue is arising for both the everything and exportable annotations zip, so I believe that this should be further investigated. I\u0027ll skip the null checking in annotations zip for now, and fix this is a follow up CL.",
+      "parentUuid": "ece645bc_6df98bd9",
+      "range": {
+        "startLine": 985,
+        "startChar": 4,
+        "endLine": 985,
+        "endChar": 24
+      },
+      "revId": "2a7899988b6194f93d5f838b55448c4f0f52a073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
