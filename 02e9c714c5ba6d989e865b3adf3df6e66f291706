@@ -90,6 +90,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5f57d3b_6786a45f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-02T19:52:34Z",
+      "side": 1,
+      "message": "I suppose `#define __ANDROID_API_V__ __ANDROID_API_FUTURE__` will have the same issue....\n\n\u003e I think they wanted to use a concrete version numbers instead of 10000\n\nWouldn\u0027t this solution also use 10000 until `__ANDROID_PLATFORM_API__ \u003e\u003d __ANDROID_API_V__`?",
+      "parentUuid": "b9673c3a_7b380156",
+      "revId": "02e9c714c5ba6d989e865b3adf3df6e66f291706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cc8deb7b_70bb4ef2",
