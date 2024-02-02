@@ -160,6 +160,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bab93e8a_88a7b229",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-02T00:20:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f6515ea_c29b4ead",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aacf43b2_a2edf0a7",
@@ -322,6 +340,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01047828_9629e264",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-02T00:20:43Z",
+      "side": 1,
+      "message": "maybe there is a bug in the X86Cflags rule. It seems only variant flags are added to toolchain e.g.,\n arm64_device.go(https://source.corp.google.com/h/android/platform/superproject/main/+/main:build/soong/cc/config/arm64_device.go;l\u003d222?q\u003darm64_device.go) there is \n```\n\ttoolchainCflags :\u003d []string{arm64ArchVariantCflagsVar[arch.ArchVariant]}\n```\n\n\nbut x86_device.go has -msse3 in x86Cflags?",
+      "parentUuid": "4e550d98_8a0474be",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08c2b443_a4049c38",
         "filename": "cc/compiler.go",
         "patchSetId": 4
@@ -350,6 +386,30 @@
       "writtenOn": "2024-02-01T17:55:43Z",
       "side": 1,
       "message": "Removing from flags.Local.* is unnecessary as the strings we\u0027re removing are only part of flags.Global.*.",
+      "range": {
+        "startLine": 682,
+        "startChar": 2,
+        "endLine": 684,
+        "endChar": 75
+      },
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "603500eb_a0668f2c",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-02T00:20:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c93de13_13e39323",
       "range": {
         "startLine": 682,
         "startChar": 2,
