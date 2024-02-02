@@ -166,6 +166,30 @@
       },
       "revId": "dba3eb589e67357b82ceebbea10bb5ca5aea3893",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e51ffaa_25e6311c",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2024-02-02T22:21:59Z",
+      "side": 1,
+      "message": "As discussed in the chat thread, we\u0027re working on steps 2 through 4 - for step 1 above, this CL adds \u0027-Wno-unused\u0027 and \u0027-Wno-unused-parameter\u0027 to noOverrideExternalGlobalCflags, is this then reasonable to land?",
+      "parentUuid": "e97d6b77_6bcc5c51",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 26
+      },
+      "revId": "dba3eb589e67357b82ceebbea10bb5ca5aea3893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
