@@ -195,6 +195,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01b418f5_002693e6",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-02T00:02:32Z",
+      "side": 1,
+      "message": "\u003e then forbidding -target in Android.bp files via CheckBadCompilerFlags.\n\nadded a check here: https://android-review.git.corp.google.com/c/platform/build/soong/+/2944973",
+      "parentUuid": "233639e7_5d4f3b05",
+      "revId": "e734dba1295920e56e581db4c4b6fe69b445af38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c8e6b85_10f810ec",
