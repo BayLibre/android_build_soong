@@ -108,6 +108,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed95724f_40d19d59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-02-02T20:07:00Z",
+      "side": 1,
+      "message": "Yes, this solution would pass 10000 to `__builtin_available` until `__ANDROID_PLATFORM_API__ \u003e\u003d __ANDROID_API_V__`.\n\nAgain, I agree that `#define __ANDROID_API_V__ __ANDROID_API_FUTURE__` would work just like suggestion in this CL. Especially for what I wanted to do. (guarding APIs). But `__ANDROID_API_V__` is already in use in many places as a concrete version (35). I\u0027m not sure I can change them all to work correctly.",
+      "parentUuid": "c5f57d3b_6786a45f",
+      "revId": "02e9c714c5ba6d989e865b3adf3df6e66f291706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cc8deb7b_70bb4ef2",
