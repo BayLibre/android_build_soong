@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "197f78bf_fb182287",
+        "filename": "cc/compiler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-02T03:34:48Z",
+      "side": 1,
+      "message": "nit: this is the same as `proptools.Bool(compiler.Properties.Bpf_target)`\n```suggestion\n\tif !proptools.Bool(compiler.Properties.Bpf_target) {\n```",
+      "range": {
+        "startLine": 512,
+        "startChar": 5,
+        "endLine": 512,
+        "endChar": 66
+      },
+      "revId": "30f37095edaceaf4e33589838cb192b951464325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "751bbc77_cd88ef70",
+        "filename": "cc/compiler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-02T03:34:48Z",
+      "side": 1,
+      "message": "nit: this is the same as `proptools.Bool(compiler.Properties.Bpf_target)`\n```suggestion\n\tif !proptools.Bool(compiler.Properties.Bpf_target) {\n```",
+      "range": {
+        "startLine": 538,
+        "startChar": 5,
+        "endLine": 538,
+        "endChar": 65
+      },
+      "revId": "30f37095edaceaf4e33589838cb192b951464325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
