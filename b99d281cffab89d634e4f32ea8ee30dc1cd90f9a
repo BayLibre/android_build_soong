@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4a64559_91b3327e",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-03T00:15:07Z",
+      "side": 1,
+      "message": "I think currently we are calculating once per prebuilt module. If we move it inside the if branch in line 558, there might be some redundancy since we will calculate it once per rdep of the prebuilt module",
+      "parentUuid": "7639c033_a15db19c",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 553,
+        "endChar": 4
+      },
+      "revId": "b99d281cffab89d634e4f32ea8ee30dc1cd90f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba5c09ff_23360927",
         "filename": "android/prebuilt.go",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2024-02-02T23:38:27Z",
       "side": 1,
       "message": "WDYT about below? Is there a specific reason why you are inlining the interface to be casted to?\n\n```suggestion\n\t\t\t\t\tif sdkLibrary, ok :\u003d m.(SdkLibraryComponentDependency); ok \u0026\u0026 sdkLibrary.SdkLibraryName() !\u003d nil {\n```",
+      "revId": "b99d281cffab89d634e4f32ea8ee30dc1cd90f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "168a1b9f_ea60f4e4",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-03T00:15:07Z",
+      "side": 1,
+      "message": "I think `SdkLibraryComponentDependency` is in `build/soong/java` and not `build/soong/android`. If using that is preferable, then I can move it to this package.",
+      "parentUuid": "ba5c09ff_23360927",
       "revId": "b99d281cffab89d634e4f32ea8ee30dc1cd90f9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f87ed56_dce22896",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-03T00:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b85683d5_fb88bc1d",
+      "range": {
+        "startLine": 1776,
+        "startChar": 12,
+        "endLine": 1776,
+        "endChar": 20
+      },
+      "revId": "b99d281cffab89d634e4f32ea8ee30dc1cd90f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c5cc880_ebb6f765",
@@ -77,6 +143,24 @@
       "writtenOn": "2024-02-02T23:38:27Z",
       "side": 1,
       "message": "Do you mind explaining why adservices-specific build flag is set here for testing?",
+      "revId": "b99d281cffab89d634e4f32ea8ee30dc1cd90f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a364a23_fa913129",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-03T00:15:07Z",
+      "side": 1,
+      "message": "The prebuilt stub source selection for mainline modules via `all_apex_contributions` uses this hardcoded list of build flags https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/00a675435627b8e5b06138bdef7f87a7cb5d619c:android/config.go;l\u003d1984-2008;drc\u003d14a55a9b82c8347b1317a3d260bd0764b81879dd;bpv\u003d1;bpt\u003d0\n\nWe can use any of them for testing. I have left a comment in the test.",
+      "parentUuid": "8c5cc880_ebb6f765",
       "revId": "b99d281cffab89d634e4f32ea8ee30dc1cd90f9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
