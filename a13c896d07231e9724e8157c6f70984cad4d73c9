@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba73a9b_d4b33bbf",
+        "filename": "cc/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-03T00:54:54Z",
+      "side": 1,
+      "message": "This could replace in place in the flags slice instead of copying.  If you\u0027re going to copy, you could make it slightly more efficient by preallocating the slice:\n```\n    replacedFlags :\u003d make([]string, 0, len(flags))\n```",
+      "revId": "a13c896d07231e9724e8157c6f70984cad4d73c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e55f39f_322bc976",
+        "filename": "cc/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-03T00:54:54Z",
+      "side": 1,
+      "message": "The regex seems like overkill here, `strings.ReplaceAll(\"-Wno-error\u003d\", \"-Wno-\")` seems sufficient?",
+      "range": {
+        "startLine": 344,
+        "startChar": 40,
+        "endLine": 344,
+        "endChar": 104
+      },
+      "revId": "a13c896d07231e9724e8157c6f70984cad4d73c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b86b28e_774bcbfa",
+        "filename": "cc/compiler_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-03T00:54:54Z",
+      "side": 1,
+      "message": "you can use `slices.Equal` here.",
+      "range": {
+        "startLine": 61,
+        "startChar": 46,
+        "endLine": 61,
+        "endChar": 63
+      },
+      "revId": "a13c896d07231e9724e8157c6f70984cad4d73c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6550051_bf7cd782",
+        "filename": "cc/compiler_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-03T00:54:54Z",
+      "side": 1,
+      "message": "This is usually done as a builder pattern:\n```\nresult :\u003d android.GroupFixturePreparers(\n    prepareForCcTest,\n    android.FixtureAddTextFile(\"device/libnoerror/Android.bp\", device_bp),\n    android.FixtureAddTextFile(\"external/libnoerror/Android.bp\", external_bp),\n).RunTest(t)\n```",
+      "revId": "a13c896d07231e9724e8157c6f70984cad4d73c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689e5cc3_9d629297",
+        "filename": "cc/compiler_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-03T00:54:54Z",
+      "side": 1,
+      "message": "This shouldn\u0027t have `t.Helper`, this is the test, not a helper.",
+      "revId": "a13c896d07231e9724e8157c6f70984cad4d73c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
