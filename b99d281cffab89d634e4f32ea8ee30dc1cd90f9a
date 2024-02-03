@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40e45e93_1c36671b",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-03T00:24:56Z",
+      "side": 1,
+      "message": "I would prefer this asserting to the actual interface `SdkLibraryComponentDependency` because if `SdkLibraryComponentDependency.SdkLibraryName()` is modified, this won\u0027t get caught in compile time and would be hard to debug.\n\nHowever, I don\u0027t have a strong preference given that this is a temporary solution.",
+      "parentUuid": "168a1b9f_ea60f4e4",
+      "revId": "b99d281cffab89d634e4f32ea8ee30dc1cd90f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b85683d5_fb88bc1d",
         "filename": "java/sdk_library_test.go",
         "patchSetId": 1
