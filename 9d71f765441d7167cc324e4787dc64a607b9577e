@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f1760fc_50dfde79",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-05T23:53:11Z",
+      "side": 1,
+      "message": "This seems worth factoring out into a separate function, but if you were going to do that I might just reimplement it using a combination of the for loop in `validateNinjaNames` but with `unicode.IsLetter` instead of the range checks.",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "9d71f765441d7167cc324e4787dc64a607b9577e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
