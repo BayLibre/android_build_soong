@@ -16,6 +16,24 @@
       "message": "We have a couple of different existing indentifier checkers, might be worth staying consitent with one of those.  The blueprint parser uses the default scanner implementation of `IsIdentRune`: https://cs.android.com/android/platform/superproject/main/+/main:prebuilts/go/linux-x86/src/text/scanner/scanner.go;l\u003d350;drc\u003d1cbb82abab1e31bb6b63b0d1fda8071b9e72510e\n\nThe java package parser has as Java IsIdentRune:  https://cs.android.com/android/platform/superproject/main/+/main:build/soong/jar/jar.go;l\u003d128;drc\u003d2863e4535eb65e15f955dc8ed48fa99b1d2a1db5\n\nAnd we validate ninja names:\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/blueprint/ninja_strings.go;l\u003d401;drc\u003ddbf18bec9803687acd203f81b89c0d4a0f635958",
       "revId": "802bd7c0ba3e8b13fc603f6b967ef227c4e2115f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b63632a7_28e4c6be",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-05T23:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5c2d7a7_6b2970c2",
+      "revId": "802bd7c0ba3e8b13fc603f6b967ef227c4e2115f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
