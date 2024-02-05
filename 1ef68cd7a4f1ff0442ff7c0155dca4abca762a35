@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc4dabb_6fafffad",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1411,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-02-05T12:21:25Z",
+      "side": 1,
+      "message": "We don\u0027t know when this breaks in the future.\nWhen it happens, it would be difficult to fix all of such cases.\nIt would be better to make a function for it (maybe api_levels.go) to update in a single function in the future.\nWhen we have another case of this, let\u0027s make a function.",
+      "range": {
+        "startLine": 1411,
+        "startChar": 4,
+        "endLine": 1411,
+        "endChar": 18
+      },
+      "revId": "1ef68cd7a4f1ff0442ff7c0155dca4abca762a35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
