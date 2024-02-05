@@ -1008,6 +1008,27 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 
 	android.CollectDependencyAconfigFiles(ctx, &mod.mergedAconfigFiles)
+
+	// Dump metadata that can not be done in android/metadata.go
+	metadataInfo := ctx.MetadataInfo()
+	staticDeps := actx.GetDirectDepsWithTag(rlibDepTag)
+	staticDepNames := make([]string, len(staticDeps))
+	for _, dep := range staticDeps {
+		staticDepNames = append(staticDepNames, dep.Name()+"."+dep.Target().String())
+	}
+
+	staticDepPaths := make([]string, len(deps.StaticLibs)+len(deps.RLibs))
+	// C static libraries
+	for _, dep := range deps.StaticLibs {
+		staticDepPaths = append(staticDepPaths, dep.String())
+	}
+	// Rust static libraries
+	for _, dep := range deps.RLibs {
+		staticDepPaths = append(staticDepPaths, dep.Path.String())
+	}
+	metadataInfo.SetListValue(android.MetadataProp.STATIC_DEPS, android.FirstUniqueStrings(staticDepNames))
+	metadataInfo.SetListValue(android.MetadataProp.STATIC_DEP_FILES, android.FirstUniqueStrings(staticDepPaths))
+	metadataInfo.SetStringValue(android.MetadataProp.BUILT_FILES, mod.outputFile.String())
 }
 
 func (mod *Module) deps(ctx DepsContext) Deps {
