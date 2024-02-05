@@ -70,13 +70,14 @@ function test_sbom_aosp_cf_x86_64_phone {
   # m droid, build sbom later in case additional dependencies might be built and included in partition images.
   run_soong "${out_dir}" "droid dump.erofs lz4"
 
+  soong_sbom_out=$out_dir/soong/sbom/$target_product
   product_out=$out_dir/target/product/vsoc_x86_64
   sbom_test=$product_out/sbom_test
   mkdir -p $sbom_test
   cp $product_out/*.img $sbom_test
 
-  # m sbom
-  run_soong "${out_dir}" sbom
+  # m sbom soong-sbom
+  run_soong "${out_dir}" "sbom soong-sbom"
 
   # Generate installed file list from .img files in PRODUCT_OUT
   dump_erofs=$out_dir/host/linux-x86/bin/dump.erofs
@@ -118,6 +119,7 @@ function test_sbom_aosp_cf_x86_64_phone {
     partition_name=$(basename $f | cut -d. -f1)
     file_list_file="${sbom_test}/sbom-${partition_name}-files.txt"
     files_in_spdx_file="${sbom_test}/sbom-${partition_name}-files-in-spdx.txt"
+    files_in_soong_spdx_file="${sbom_test}/sbom-${partition_name}-files-in-spdx.txt"
     rm "$file_list_file" > /dev/null 2>&1 || true
     all_dirs="/"
     while [ ! -z "$all_dirs" ]; do
@@ -145,6 +147,7 @@ function test_sbom_aosp_cf_x86_64_phone {
     done
     sort -n -o "$file_list_file" "$file_list_file"
 
+    # Diff the file list from image and file list in SBOM created by Make
     grep "FileName: /${partition_name}/" $product_out/sbom.spdx | sed 's/^FileName: //' > "$files_in_spdx_file"
     if [ "$partition_name" = "system" ]; then
       # system partition is mounted to /, so include FileName starts with /root/ too.
@@ -154,6 +157,17 @@ function test_sbom_aosp_cf_x86_64_phone {
 
     echo ============ Diffing files in $f and SBOM
     diff_files "$file_list_file" "$files_in_spdx_file" "$partition_name" ""
+
+    # Diff the file list from image and file list in SBOM created by Soong
+    grep "FileName: /${partition_name}/" $soong_sbom_out/sbom.spdx | sed 's/^FileName: //' > "$files_in_soong_spdx_file"
+        if [ "$partition_name" = "system" ]; then
+          # system partition is mounted to /, so include FileName starts with /root/ too.
+          grep "FileName: /root/" $soong_sbom_out/sbom.spdx | sed 's/^FileName: \/root//' >> "$files_in_soong_spdx_file"
+        fi
+        sort -n -o "$files_in_soong_spdx_file" "$files_in_soong_spdx_file"
+
+        echo ============ Diffing files in $f and SBOM created by Soong
+        diff_files "$file_list_file" "$files_in_soong_spdx_file" "$partition_name" ""
   done
 
   RAMDISK_IMAGES="$product_out/ramdisk.img"
@@ -161,6 +175,7 @@ function test_sbom_aosp_cf_x86_64_phone {
     partition_name=$(basename $f | cut -d. -f1)
     file_list_file="${sbom_test}/sbom-${partition_name}-files.txt"
     files_in_spdx_file="${sbom_test}/sbom-${partition_name}-files-in-spdx.txt"
+    files_in_soong_spdx_file="${sbom_test}/sbom-${partition_name}-files-in-soong-spdx.txt"
     # lz4 decompress $f to stdout
     # cpio list all entries like ls -l
     # grep filter normal files and symlinks
@@ -170,11 +185,17 @@ function test_sbom_aosp_cf_x86_64_phone {
 
     grep "FileName: /${partition_name}/" $product_out/sbom.spdx | sed 's/^FileName: //' | sort -n > "$files_in_spdx_file"
 
+    grep "FileName: /${partition_name}/" $soong_sbom_out/sbom.spdx | sed 's/^FileName: //' | sort -n > "$files_in_soong_spdx_file"
+
     echo ============ Diffing files in $f and SBOM
     diff_files "$file_list_file" "$files_in_spdx_file" "$partition_name" ""
+
+    echo ============ Diffing files in $f and SBOM created by Soong
+    diff_files "$file_list_file" "$files_in_soong_spdx_file" "$partition_name" ""
   done
 
   verify_package_verification_code "$product_out/sbom.spdx"
+  verify_package_verification_code "$soong_sbom_out/sbom.spdx"
 
   # Teardown
   cleanup "${out_dir}"
@@ -274,7 +295,7 @@ function test_sbom_unbundled_apk {
 
 target_product=aosp_cf_x86_64_phone
 target_release=trunk_staging
-target_build_variant=userdebug
+target_build_variant=eng
 for i in "$@"; do
   case $i in
     TARGET_PRODUCT=*)
