@@ -1309,6 +1309,16 @@ func (c *config) VendorApiLevel() string {
 	return String(c.productVariables.VendorApiLevel)
 }
 
+// Convert VendorApiLevel from YYYYMM string to a decimal number.
+func (c *config) VendorApiLevelInt() int {
+	value, err := strconv.Atoi(c.VendorApiLevel())
+	if err != nil {
+		panic(fmt.Errorf("Cannot parse VendorApiLevel %s to an integer: %s",
+			c.VendorApiLevel(), err))
+	}
+	return value
+}
+
 func (c *config) VendorApiLevelFrozen() bool {
 	return c.productVariables.GetBuildFlagBool("RELEASE_BOARD_API_LEVEL_FROZEN")
 }
