@@ -21,6 +21,14 @@ import (
 	"android/soong/cc/config"
 )
 
+const (
+	llndkLsdumpTag    = "LLNDK"
+	ndkLsdumpTag      = "NDK"
+	platformLsdumpTag = "PLATFORM"
+	productLsdumpTag  = "PRODUCT"
+	vendorLsdumpTag   = "VENDOR"
+)
+
 var (
 	lsdumpPaths     []string
 	lsdumpPathsLock sync.Mutex
@@ -107,21 +115,21 @@ func classifySourceAbiDump(ctx android.BaseModuleContext) []string {
 	}
 	if !m.InProduct() && !m.InVendor() {
 		if m.isImplementationForLLNDKPublic() {
-			result = append(result, "LLNDK")
+			result = append(result, llndkLsdumpTag)
 		}
 		// Return NDK if the library is both NDK and APEX.
 		// TODO(b/309880485): Split NDK and APEX ABI.
 		if m.IsNdk(ctx.Config()) {
-			result = append(result, "NDK")
+			result = append(result, ndkLsdumpTag)
 		} else if m.library.hasStubsVariants() || headerAbiChecker.enabled() {
-			result = append(result, "PLATFORM")
+			result = append(result, platformLsdumpTag)
 		}
 	} else if headerAbiChecker.enabled() {
 		if m.InProduct() {
-			result = append(result, "PRODUCT")
+			result = append(result, productLsdumpTag)
 		}
 		if m.InVendor() {
-			result = append(result, "VENDOR")
+			result = append(result, vendorLsdumpTag)
 		}
 	}
 	return result
