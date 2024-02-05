@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d60f7bc5_c40b779f",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-05T20:10:03Z",
+      "side": 1,
+      "message": "Mention that this modifies the slice in place.",
+      "revId": "273c3d6e2f5525d792423130a43ca94cc42dff18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71016e75_f307cf80",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-05T20:10:03Z",
+      "side": 1,
+      "message": "Returning flags is a little odd, the return value is unnecessary since this modifies in place and having no return value provides a hint that this is going to modify the input.",
+      "revId": "273c3d6e2f5525d792423130a43ca94cc42dff18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
