@@ -22,6 +22,30 @@
       },
       "revId": "ff94d226cabbae0484f05e0a818469c46a77a2b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23585fbf_e19c1dac",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1526,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-02-05T12:29:44Z",
+      "side": 1,
+      "message": "I could see the presubmit results.\nThe version is defined by default for trunk builds. But I need to dig into it.",
+      "parentUuid": "e2c8775d_ea92f928",
+      "range": {
+        "startLine": 1526,
+        "startChar": 14,
+        "endLine": 1526,
+        "endChar": 40
+      },
+      "revId": "ff94d226cabbae0484f05e0a818469c46a77a2b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
