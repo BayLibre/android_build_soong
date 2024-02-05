@@ -15,14 +15,16 @@
 package build
 
 import (
-	"android/soong/ui/metrics"
-	"android/soong/ui/status"
 	"bufio"
 	"fmt"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"sort"
 	"strings"
+
+	"android/soong/ui/metrics"
+	"android/soong/ui/status"
 )
 
 // Checks for files in the out directory that have a rule that depends on them but no rule to
@@ -79,6 +81,10 @@ func testForDanglingRules(ctx Context, config Config) {
 	// bpglob is built explicitly using Microfactory
 	bpglob := filepath.Join(config.SoongOutDir(), "bpglob")
 
+	// out/target/product/<xxxxx>/build_fingerprint.txt is a source file created in sysprop.mk
+	// ^out/target/product/[^/]+/build_fingerprint.txt$
+	buildFingerPrintFilePattern := regexp.MustCompile("^" + filepath.Join(outDir, "target", "product") + "/[^/]+/build_fingerprint.txt$")
+
 	danglingRules := make(map[string]bool)
 
 	scanner := bufio.NewScanner(stdout)
@@ -93,7 +99,8 @@ func testForDanglingRules(ctx Context, config Config) {
 			line == variablesFilePath ||
 			line == dexpreoptConfigFilePath ||
 			line == buildDatetimeFilePath ||
-			line == bpglob {
+			line == bpglob ||
+			buildFingerPrintFilePattern.MatchString(line) {
 			// Leaf node is in one of Soong's bootstrap directories, which do not have
 			// full build rules in the primary build.ninja file.
 			continue
