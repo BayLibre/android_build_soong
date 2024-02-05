@@ -2202,6 +2202,43 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		}
 
 	}
+
+	buildMetadataInfo(ctx, c, deps)
+}
+
+func buildMetadataInfo(ctx ModuleContext, c *Module, deps PathDeps) {
+	// Dump metadata that can not be done in android/metadata.go
+	metadataInfo := ctx.MetadataInfo()
+	metadataInfo.SetStringValue(android.MetadataProp.IS_STATIC_LIB, strconv.FormatBool(ctx.static()))
+	metadataInfo.SetStringValue(android.MetadataProp.BUILT_FILES, c.outputFile.String())
+
+	// Static deps
+	staticDeps := ctx.GetDirectDepsWithTag(StaticDepTag(false))
+	staticDepNames := make([]string, len(staticDeps))
+	for _, dep := range staticDeps {
+		staticDepNames = append(staticDepNames, dep.Name())
+	}
+
+	staticDepPaths := make([]string, len(deps.StaticLibs))
+	for _, dep := range deps.StaticLibs {
+		staticDepPaths = append(staticDepPaths, dep.String())
+	}
+	metadataInfo.SetListValue(android.MetadataProp.STATIC_DEPS, android.FirstUniqueStrings(staticDepNames))
+	metadataInfo.SetListValue(android.MetadataProp.STATIC_DEP_FILES, android.FirstUniqueStrings(staticDepPaths))
+
+	// Whole static deps
+	wholeStaticDeps := ctx.GetDirectDepsWithTag(StaticDepTag(true))
+	wholeStaticDepNames := make([]string, len(wholeStaticDeps))
+	for _, dep := range wholeStaticDeps {
+		wholeStaticDepNames = append(wholeStaticDepNames, dep.Name())
+	}
+
+	wholeStaticDepPaths := make([]string, len(deps.WholeStaticLibs))
+	for _, dep := range deps.WholeStaticLibs {
+		wholeStaticDepPaths = append(wholeStaticDepPaths, dep.String())
+	}
+	metadataInfo.SetListValue(android.MetadataProp.WHOLE_STATIC_DEPS, android.FirstUniqueStrings(wholeStaticDepNames))
+	metadataInfo.SetListValue(android.MetadataProp.WHOLE_STATIC_DEP_FILES, android.FirstUniqueStrings(wholeStaticDepPaths))
 }
 
 func (c *Module) maybeUnhideFromMake() {

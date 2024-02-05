@@ -908,6 +908,10 @@ type ModuleBase struct {
 	// moduleInfoJSON can be filled out by GenerateAndroidBuildActions to write a JSON file that will
 	// be included in the final module-info.json produced by Make.
 	moduleInfoJSON *ModuleInfoJSON
+
+	// metadataInfo is for different module types to dump metadata.
+	// See android.ModuleContext interface.
+	metadataInfo *MetadataInfo
 }
 
 func (m *ModuleBase) AddJSONData(d *map[string]interface{}) {
@@ -1974,6 +1978,8 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	m.buildParams = ctx.buildParams
 	m.ruleParams = ctx.ruleParams
 	m.variables = ctx.variables
+
+	buildMetadataProvider(ctx, m)
 }
 
 func SetJarJarPrefixHandler(handler func(ModuleContext)) {
