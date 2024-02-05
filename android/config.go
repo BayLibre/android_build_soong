@@ -24,6 +24,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"regexp"
 	"runtime"
 	"strconv"
 	"strings"
@@ -354,6 +355,18 @@ func loadFromConfigFile(configurable *ProductVariables, filename string) error {
 	configurable.Native_coverage = proptools.BoolPtr(
 		Bool(configurable.GcovCoverage) ||
 			Bool(configurable.ClangCoverage))
+
+	var cIdentifierRegex = regexp.MustCompile("^[a-zA-Z_][a-zA-Z0-9_]*$")
+	for namespace := range configurable.VendorVars {
+		if !cIdentifierRegex.MatchString(namespace) {
+			return fmt.Errorf("soong config namespaces must be valid c identifiers: %q", namespace)
+		}
+		for variable := range configurable.VendorVars[namespace] {
+			if !cIdentifierRegex.MatchString(variable) {
+				return fmt.Errorf("soong config variables must be valid c identifiers: %q", variable)
+			}
+		}
+	}
 
 	// when Platform_sdk_final is true (or PLATFORM_VERSION_CODENAME is REL), use Platform_sdk_version;
 	// if false (pre-released version, for example), use Platform_sdk_codename.
