@@ -15,7 +15,6 @@
 package android
 
 import (
-	"android/soong/bazel"
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
@@ -26,6 +25,8 @@ import (
 	"slices"
 	"sort"
 	"strings"
+
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -1871,6 +1872,8 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	m.buildParams = ctx.buildParams
 	m.ruleParams = ctx.ruleParams
 	m.variables = ctx.variables
+
+	buildMetadataProvider(ctx, m)
 }
 
 func SetJarJarPrefixHandler(handler func(ModuleContext)) {
