@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acdc3563_c5bc144d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-02-05T19:44:35Z",
+      "side": 1,
+      "message": "The non-determinism could be an indicator of an accuracy bug (aconfig flag overrides not working correctly).\n\nIn the end, we should probably sort them, but the sort key may need to be based on the order in which the value sets were originally given in RELEASE_ACONFIG_VALUE_SETS.",
+      "revId": "d6bb47b49ac7f0f7c0cf36831376feddcfc1656a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "381ee562_c668ce24",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-02-05T19:44:35Z",
+      "side": 1,
+      "message": "We may need to think more about this. We need the aconfig values (soong modules) to be processed in the order that `RELEASE_ACONFIG_VALUE_SETS` has, so that the correct value winds up being assigned.  That may require that we add something to that module to give us a proper sort key.\n\nPlease confirm that the on-device cache files (`{partition}/etc/aconfig_flags.bp`) contain the same values with and without this flag.  (That\u0027s not to say that there isn\u0027t already a bug there that we need to fix...)",
+      "revId": "d6bb47b49ac7f0f7c0cf36831376feddcfc1656a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
