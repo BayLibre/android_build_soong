@@ -216,6 +216,11 @@ type ModuleContext interface {
 	// SetOutputFiles stores the outputFiles to outputFiles property, which is used
 	// to set the OutputFilesProvider later.
 	SetOutputFiles(outputFiles Paths, tag string)
+
+	// MetadataInfo returns a MetadataInfo instance for different module types to dump metadata,
+	// which usually happens in GenerateAndroidBuildActions() of a module type.
+	// See android.ModuleBase.metadataInfo
+	MetadataInfo() *MetadataInfo
 }
 
 type moduleContext struct {
@@ -727,6 +732,15 @@ func (m *moduleContext) SetOutputFiles(outputFiles Paths, tag string) {
 			m.module.base().outputFiles.TaggedOutputFiles[tag] = outputFiles
 		}
 	}
+}
+
+func (m *moduleContext) MetadataInfo() *MetadataInfo {
+	if metadataInfo := m.module.base().metadataInfo; metadataInfo != nil {
+		return metadataInfo
+	}
+	metadataInfo := NewMetadataInfo()
+	m.module.base().metadataInfo = metadataInfo
+	return metadataInfo
 }
 
 // Returns a list of paths expanded from globs and modules referenced using ":module" syntax.  The property must
