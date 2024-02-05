@@ -28,6 +28,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"text/scanner"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
@@ -354,6 +355,25 @@ func loadFromConfigFile(configurable *ProductVariables, filename string) error {
 	configurable.Native_coverage = proptools.BoolPtr(
 		Bool(configurable.GcovCoverage) ||
 			Bool(configurable.ClangCoverage))
+
+	// The go scanner's definition of identifiers is c-style identifiers, but allowing unicode's
+	// definition of letters and digits. This is the same scanner that blueprint uses, so it
+	// will allow the same identifiers as are valid in bp files.
+	scan := scanner.Scanner{}
+	for namespace := range configurable.VendorVars {
+		scan.Init(strings.NewReader(namespace))
+		scan.Mode = scanner.ScanIdents
+		if scan.Scan() != scanner.Ident || scan.Scan() != scanner.EOF {
+			return fmt.Errorf("soong config namespaces must be valid c identifiers: %q", namespace)
+		}
+		for variable := range configurable.VendorVars[namespace] {
+			scan.Init(strings.NewReader(variable))
+			scan.Mode = scanner.ScanIdents
+			if scan.Scan() != scanner.Ident || scan.Scan() != scanner.EOF {
+				return fmt.Errorf("soong config variables must be valid c identifiers: %q", variable)
+			}
+		}
+	}
 
 	// when Platform_sdk_final is true (or PLATFORM_VERSION_CODENAME is REL), use Platform_sdk_version;
 	// if false (pre-released version, for example), use Platform_sdk_codename.
