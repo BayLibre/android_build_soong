@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba6bdd6_86cf8a15",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-05T20:14:48Z",
+      "side": 1,
+      "message": "I do think we should simplify paths and particularly InstallPath more, but not for this cl.",
+      "revId": "c0e42d5dfc265345037b980b981824bc83b9e8b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
