@@ -33,6 +33,24 @@
       "message": "We may need to think more about this. We need the aconfig values (soong modules) to be processed in the order that `RELEASE_ACONFIG_VALUE_SETS` has, so that the correct value winds up being assigned.  That may require that we add something to that module to give us a proper sort key.\n\nPlease confirm that the on-device cache files (`{partition}/etc/aconfig_flags.bp`) contain the same values with and without this flag.  (That\u0027s not to say that there isn\u0027t already a bug there that we need to fix...)",
       "revId": "d6bb47b49ac7f0f7c0cf36831376feddcfc1656a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1fd585c_7d7ddb89",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-05T21:01:39Z",
+      "side": 1,
+      "message": "The effect of this CL seems to be limited to the .ninja file. The actual artifacts seem to be bit-identical\n\nIn internal,\n```\n$ lunch cf_x86_64_only_phone-trunk_food-userdebug\n$ m out/target/product/vsoc_x86_64_only/obj/FLAGS/system/aconfig_flags.pb\n\n# shasum before and after change are identical\n```",
+      "parentUuid": "381ee562_c668ce24",
+      "revId": "d6bb47b49ac7f0f7c0cf36831376feddcfc1656a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
