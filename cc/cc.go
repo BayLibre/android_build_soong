@@ -2204,6 +2204,22 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		}
 
 	}
+
+	// Dump metadata that can not be done in android/metadata.go
+	metadataInfo := ctx.MetadataInfo()
+	staticDeps := actx.GetDirectDepsWithTag(StaticDepTag(false))
+	staticDepNames := make([]string, len(staticDeps))
+	for _, dep := range staticDeps {
+		staticDepNames = append(staticDepNames, dep.Name()+"."+dep.Target().String())
+	}
+
+	staticDepPaths := make([]string, len(deps.StaticLibs))
+	for _, dep := range deps.StaticLibs {
+		staticDepPaths = append(staticDepPaths, dep.String())
+	}
+	metadataInfo.SetListValue(android.MetadataProp.STATIC_DEPS, android.FirstUniqueStrings(staticDepNames))
+	metadataInfo.SetListValue(android.MetadataProp.STATIC_DEP_FILES, android.FirstUniqueStrings(staticDepPaths))
+	metadataInfo.SetStringValue(android.MetadataProp.BUILT_FILES, c.outputFile.String())
 }
 
 func (c *Module) maybeUnhideFromMake() {
