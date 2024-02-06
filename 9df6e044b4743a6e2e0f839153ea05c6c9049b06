@@ -163,6 +163,24 @@
       "parentUuid": "cbedaa1a_bdbb1fc8",
       "revId": "9df6e044b4743a6e2e0f839153ea05c6c9049b06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da6ab080_fb5c6878",
+        "filename": "java/system_modules_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-06T21:51:45Z",
+      "side": 1,
+      "message": "FYI `CheckModuleHasDependency` still requires `AssertBoolEquals` as it only returns a boolean value and does not emit an error.",
+      "parentUuid": "80a7d994_b3ca77d3",
+      "revId": "9df6e044b4743a6e2e0f839153ea05c6c9049b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
