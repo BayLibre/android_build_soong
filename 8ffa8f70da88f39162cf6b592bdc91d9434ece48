@@ -34,6 +34,24 @@
       "parentUuid": "73bc94ff_fbe1817b",
       "revId": "8ffa8f70da88f39162cf6b592bdc91d9434ece48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc2bf71_ca5f4756",
+        "filename": "python/scripts/precompile_python.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-06T21:59:58Z",
+      "side": 1,
+      "message": "Yes, but the input file should not be nondeterministic either. Where does that non-determinism come from? We should fix it at the source.",
+      "parentUuid": "67d5cb48_08667e9f",
+      "revId": "8ffa8f70da88f39162cf6b592bdc91d9434ece48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
