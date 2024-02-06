@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72aadbbf_fd7cd8c3",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-06T21:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c39c40c2_b57d1d54",
+      "revId": "0829dbf4ca360d5d5757de764a09d9fead3b4c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1a4991d_e353dca1",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-06T20:47:15Z",
       "side": 1,
       "message": "Can we add an error handling condition when the module does not implement `BaseModuleName()`?",
+      "revId": "0829dbf4ca360d5d5757de764a09d9fead3b4c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d5cebbe_dac645df",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-06T21:50:12Z",
+      "side": 1,
+      "message": "I believe we will never run into that since all modules have an embedded `android.ModuleBase`, and `android.ModuleBase` provides a `BaseModuleName` implementation.",
+      "parentUuid": "e1a4991d_e353dca1",
       "revId": "0829dbf4ca360d5d5757de764a09d9fead3b4c0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
