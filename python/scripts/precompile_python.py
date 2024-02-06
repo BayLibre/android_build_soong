@@ -47,7 +47,10 @@ def process_one_file(info, infile, outzip):
             py_compile.compile(in_name, out_name, info.filename, doraise=True)
         with open(out_name, 'rb') as f:
             info.filename = info.filename + 'c'
-            # Use ZipInfo rather than str to reuse timestamps for deterministic zip files.
+            # Reset date_time to fixed value to maintain a deterministic zip archive.
+            # Value chosen to be the same as
+            # https://cs.android.com/android/platform/superproject/main/+/main:build/soong/jar/jar.go;l=36;drc=2863e4535eb65e15f955dc8ed48fa99b1d2a1db5
+            info.date_time = (2008, 1, 1, 0, 0, 0)
             outzip.writestr(info, f.read())
     finally:
         os.remove(in_name)
