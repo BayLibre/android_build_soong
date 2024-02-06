@@ -16,6 +16,24 @@
       "message": "We were already copying the timestamp from the input zip file. Can we change whatever generates the input zip file to have hardcoded timestamps instead?",
       "revId": "8ffa8f70da88f39162cf6b592bdc91d9434ece48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d5cb48_08667e9f",
+        "filename": "python/scripts/precompile_python.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1959868
+      },
+      "writtenOn": "2024-02-06T21:32:43Z",
+      "side": 1,
+      "message": "This makes the program deterministic by itself, regardless of the determinism of the input zip file. This goes well with the hash-based invalidation above. I.e. the output of this program is invariant to timestamps if used with python 3.7+.",
+      "parentUuid": "73bc94ff_fbe1817b",
+      "revId": "8ffa8f70da88f39162cf6b592bdc91d9434ece48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
