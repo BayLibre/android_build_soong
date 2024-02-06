@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd7a82ca_d46abf25",
+        "filename": "java/system_modules.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-06T21:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2f5c0dd_c797d392",
+      "revId": "9df6e044b4743a6e2e0f839153ea05c6c9049b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e0a2ce7_2996f71e",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-02-06T20:38:04Z",
       "side": 1,
       "message": "Please fix this ERROR reported by Common Typos: Common typo found: \"mutliple\" -- should it be \"multiple\"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \"mutliple\" -- should it be \"multiple\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 13
+      },
+      "revId": "9df6e044b4743a6e2e0f839153ea05c6c9049b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce512887_7190116c",
+        "filename": "java/system_modules_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-06T21:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e0a2ce7_2996f71e",
       "range": {
         "startLine": 126,
         "startChar": 5,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b0300c_06d1bdc4",
+        "filename": "java/system_modules_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-06T21:40:50Z",
+      "side": 1,
+      "message": "I have refactored this to be a single property",
+      "parentUuid": "eab662d3_9171e095",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 31
+      },
+      "revId": "9df6e044b4743a6e2e0f839153ea05c6c9049b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbedaa1a_bdbb1fc8",
@@ -77,6 +143,24 @@
       "writtenOn": "2024-02-06T20:38:04Z",
       "side": 1,
       "message": "nit: Does [`CheckModuleHasDependency`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/testing.go;drc\u003dbd093457e2606e9525de0efa98e3c06eafe523af;l\u003d613) meet the use case here?",
+      "revId": "9df6e044b4743a6e2e0f839153ea05c6c9049b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a7d994_b3ca77d3",
+        "filename": "java/system_modules_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-06T21:40:50Z",
+      "side": 1,
+      "message": "Good point. I have updated the CL to use this function instead.",
+      "parentUuid": "cbedaa1a_bdbb1fc8",
       "revId": "9df6e044b4743a6e2e0f839153ea05c6c9049b06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
