@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9f11711_364d18eb",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-06T04:18:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0b74352_e11ce2e6",
+      "revId": "50315892cbf6c30089d5a8204758ac46d367db8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25160622_308d94bb",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-06T02:22:46Z",
       "side": 1,
       "message": "nit: WDYT about `Creating_java_sdk_library_name`? Same for all other introductions of this property.",
+      "revId": "50315892cbf6c30089d5a8204758ac46d367db8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd3d293e_cef3fd69",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2707,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-06T04:18:49Z",
+      "side": 1,
+      "message": "I think `Creating_` might have different interpretations based on whether it is read as a verb or as a noun. I am guessing you mean it as a noun here.\n\nI originally read it as a verb, and was confused because the child modules do not create the parent modules. `Created_by` is less ambiguous, albeit a mouthful.",
+      "parentUuid": "25160622_308d94bb",
       "revId": "50315892cbf6c30089d5a8204758ac46d367db8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db09e3e8_e83efe97",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2717,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-06T04:18:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72b98fc5_17634692",
+      "revId": "50315892cbf6c30089d5a8204758ac46d367db8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b73b473_25cd55fc",
@@ -69,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e8a1644_1dbdbe40",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-06T04:18:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b73b473_25cd55fc",
+      "revId": "50315892cbf6c30089d5a8204758ac46d367db8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fe53307_2f818d98",
@@ -82,6 +154,30 @@
       "writtenOn": "2024-02-06T02:22:46Z",
       "side": 1,
       "message": "```suggestion\n\tprops.Created_by_java_sdk_library_name \u003d proptools.StringPtr(module.RootLibraryName())\n```",
+      "range": {
+        "startLine": 2772,
+        "startChar": 62,
+        "endLine": 2772,
+        "endChar": 86
+      },
+      "revId": "50315892cbf6c30089d5a8204758ac46d367db8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb13fc72_2b5f49ca",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2772,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-06T04:18:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fe53307_2f818d98",
       "range": {
         "startLine": 2772,
         "startChar": 62,
