@@ -70,6 +70,24 @@
       "parentUuid": "4cc2bf71_ca5f4756",
       "revId": "8ffa8f70da88f39162cf6b592bdc91d9434ece48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef40382_73ac05cf",
+        "filename": "python/scripts/precompile_python.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-06T22:11:27Z",
+      "side": 1,
+      "message": "I think either keep it as is, or change it to not copy the ZipInfos from the input zip and instead create new, as stable as possible, zipinfos.",
+      "parentUuid": "48bfcc48_025a3f1a",
+      "revId": "8ffa8f70da88f39162cf6b592bdc91d9434ece48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
