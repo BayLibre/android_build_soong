@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "875709bd_517d00ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-02-06T10:18:21Z",
+      "side": 1,
+      "message": "Previously broken build was successful with this revert applied.\n\nab/P69501604",
+      "revId": "149b5d003a0368657d76da5677ca70123a165f33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
