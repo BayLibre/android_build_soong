@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b74352_e11ce2e6",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-06T02:22:46Z",
+      "side": 1,
+      "message": "nit: Can we name this interface instead of inlining it in type assertion?",
+      "revId": "50315892cbf6c30089d5a8204758ac46d367db8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25160622_308d94bb",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2707,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-06T02:22:46Z",
+      "side": 1,
+      "message": "nit: WDYT about `Creating_java_sdk_library_name`? Same for all other introductions of this property.",
+      "revId": "50315892cbf6c30089d5a8204758ac46d367db8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b98fc5_17634692",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2717,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-06T02:22:46Z",
+      "side": 1,
+      "message": "```suggestion\n\tprops.Created_by_java_sdk_library_name \u003d proptools.StringPtr(module.RootLibraryName())\n```",
+      "revId": "50315892cbf6c30089d5a8204758ac46d367db8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b73b473_25cd55fc",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-06T02:22:46Z",
+      "side": 1,
+      "message": "```suggestion\n\tprops.Created_by_java_sdk_library_name \u003d proptools.StringPtr(module.RootLibraryName())\n```",
+      "revId": "50315892cbf6c30089d5a8204758ac46d367db8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe53307_2f818d98",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2772,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-06T02:22:46Z",
+      "side": 1,
+      "message": "```suggestion\n\tprops.Created_by_java_sdk_library_name \u003d proptools.StringPtr(module.RootLibraryName())\n```",
+      "range": {
+        "startLine": 2772,
+        "startChar": 62,
+        "endLine": 2772,
+        "endChar": 86
+      },
+      "revId": "50315892cbf6c30089d5a8204758ac46d367db8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
