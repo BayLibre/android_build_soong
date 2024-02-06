@@ -744,8 +744,11 @@ func (d *Droidstubs) generateRevertAnnotationArgs(ctx android.ModuleContext, cmd
 		filterArgs = "--filter='state:ENABLED+permission:READ_ONLY' --filter='permission:READ_WRITE'"
 
 	case Exportable:
-		filterArgs = "--filter='state:ENABLED+permission:READ_ONLY'"
-
+		if ctx.Config().ReleaseExportRuntimeApis() {
+			filterArgs = "--filter='state:ENABLED+permission:READ_ONLY' --filter='permission:READ_WRITE'"
+		} else {
+			filterArgs = "--filter='state:ENABLED+permission:READ_ONLY'"
+		}
 	}
 
 	ctx.Build(pctx, android.BuildParams{
