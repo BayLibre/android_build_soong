@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c39c40c2_b57d1d54",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-06T20:47:15Z",
+      "side": 1,
+      "message": "Can we export this so that it could be used for the `apex/prebuilt.go` line changes of this CL?",
+      "revId": "0829dbf4ca360d5d5757de764a09d9fead3b4c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a4991d_e353dca1",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-06T20:47:15Z",
+      "side": 1,
+      "message": "Can we add an error handling condition when the module does not implement `BaseModuleName()`?",
+      "revId": "0829dbf4ca360d5d5757de764a09d9fead3b4c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
