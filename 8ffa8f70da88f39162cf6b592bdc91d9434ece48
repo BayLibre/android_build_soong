@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73bc94ff_fbe1817b",
+        "filename": "python/scripts/precompile_python.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-06T19:47:31Z",
+      "side": 1,
+      "message": "We were already copying the timestamp from the input zip file. Can we change whatever generates the input zip file to have hardcoded timestamps instead?",
+      "revId": "8ffa8f70da88f39162cf6b592bdc91d9434ece48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
