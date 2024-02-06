@@ -33,6 +33,24 @@
       "message": "I don\u0027t fully understand the `RootModuleName()` being introduced here. Do you mind further explaining the expected behaviors of the properties with some examples?\ne.g. What would `BaseModuleName()` and `RootModuleName()` be for jsl_import `framework-foo`?",
       "revId": "432178ffdf9e05ead236a5bfff190f5950287429",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d37965_ab58dd66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-06T00:00:24Z",
+      "side": 1,
+      "message": "I have left a comment in source code describing the different values returned by *Name functions. In the above example, both `BaseModuleName` and `RootLibraryName` are both `framework-foo`. The differences arise when we start having `framework-foo.v1`, `framework-foo.v2` ...\n\nI am also open to using a different name for the function if the current function name is confusing.",
+      "parentUuid": "5b54d41c_862f7802",
+      "revId": "432178ffdf9e05ead236a5bfff190f5950287429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
