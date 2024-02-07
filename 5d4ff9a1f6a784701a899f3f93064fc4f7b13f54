@@ -93,6 +93,30 @@
       },
       "revId": "5d4ff9a1f6a784701a899f3f93064fc4f7b13f54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98250c39_1959a23f",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-02-07T08:33:22Z",
+      "side": 1,
+      "message": "As commented before, this rule may break easily.\nLet\u0027s define a function here or api_levels.go so that we may update it easily when needed.\n```\nprevVendorApiLevel(vendorApiLevel) {\n    if vendorApiLevel \u003c 202404 || vendorApiLevel % 100 !\u003d 4 {\n        panic(\"Unknown vendor api level\")\n    }\n    if vendorApiLevel \u003d\u003d 202404 {\n        return 34\n    }\n    return vendorApiLevel - 100\n}\n```",
+      "parentUuid": "32de3e40_a0489556",
+      "range": {
+        "startLine": 1385,
+        "startChar": 40,
+        "endLine": 1385,
+        "endChar": 43
+      },
+      "revId": "5d4ff9a1f6a784701a899f3f93064fc4f7b13f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
