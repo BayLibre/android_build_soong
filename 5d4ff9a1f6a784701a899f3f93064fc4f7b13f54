@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14296578_f0b657c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-02-07T07:57:04Z",
+      "side": 1,
+      "message": "Do you plan to change this part in any of the follow-up CLs?",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "5d4ff9a1f6a784701a899f3f93064fc4f7b13f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8609076e_ba255472",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-02-07T07:57:04Z",
+      "side": 1,
+      "message": "Where is this from?",
+      "range": {
+        "startLine": 1385,
+        "startChar": 40,
+        "endLine": 1385,
+        "endChar": 43
+      },
+      "revId": "5d4ff9a1f6a784701a899f3f93064fc4f7b13f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
