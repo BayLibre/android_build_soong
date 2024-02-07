@@ -16,6 +16,24 @@
       "message": "Do you envision a case where a module _shouldn\u0027t_ be visible to all partition rules?  Should `android_fileystem` and `android_system_image` ignore visibility rules?",
       "revId": "894bb3b530d9dcab9fd3d2a45b55d5f9660641d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a44e2cd8_4df2ea32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-07T20:09:09Z",
+      "side": 1,
+      "message": "Yes, we discussed this on the bug some. Your proposal was also the original proposal.\n\nI didn\u0027t want to do that because there should be some way to have absolute confidence that your module isn\u0027t being used in an unexpected way, without weird exceptions. Notably, it would simplify the process of updating python a lot if OpenSSL was in the tree, but we can\u0027t include OpenSSL because it\u0027s against policy to use it for anything other than python, and there\u0027s currently no way to enforce that in the build system, given that make code doesn\u0027t respect visibility. We wouldn\u0027t want the possibility of including OpenSSL on device, so it wouldn\u0027t set `//visibility:any_partition`.",
+      "parentUuid": "759f9c1c_1abdfa70",
+      "revId": "894bb3b530d9dcab9fd3d2a45b55d5f9660641d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
