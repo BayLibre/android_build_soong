@@ -94,6 +94,30 @@
       },
       "revId": "5919815f80cb8da3d28a7cb4692245ac82c114f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf25fdd2_4f3455ee",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1950620
+      },
+      "writtenOn": "2024-02-07T20:56:11Z",
+      "side": 1,
+      "message": "@jainne@google.com can we create a new build target for this google3 drop?",
+      "parentUuid": "0ca8ca53_ecff98eb",
+      "range": {
+        "startLine": 215,
+        "startChar": 52,
+        "endLine": 215,
+        "endChar": 79
+      },
+      "revId": "5919815f80cb8da3d28a7cb4692245ac82c114f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
