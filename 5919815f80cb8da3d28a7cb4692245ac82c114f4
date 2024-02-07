@@ -22,6 +22,30 @@
       },
       "revId": "5919815f80cb8da3d28a7cb4692245ac82c114f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af018cd_d1b18676",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2024-02-07T15:52:56Z",
+      "side": 1,
+      "message": "In a release config similar to this. See cs/search?q\u003dRELEASE_PLATFORM_SDK_EXTENSION_VERSION\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main for examples setting the value of RELEASE_PLATFORM_SDK_EXTENSION_VERSION.",
+      "parentUuid": "705dc222_d47e5863",
+      "range": {
+        "startLine": 215,
+        "startChar": 52,
+        "endLine": 215,
+        "endChar": 79
+      },
+      "revId": "5919815f80cb8da3d28a7cb4692245ac82c114f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
