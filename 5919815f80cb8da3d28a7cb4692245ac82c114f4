@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705dc222_d47e5863",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1950620
+      },
+      "writtenOn": "2024-02-07T14:53:15Z",
+      "side": 1,
+      "message": "The default for this bool is `False`. Where do we set it to true for this case?",
+      "range": {
+        "startLine": 215,
+        "startChar": 52,
+        "endLine": 215,
+        "endChar": 79
+      },
+      "revId": "5919815f80cb8da3d28a7cb4692245ac82c114f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
