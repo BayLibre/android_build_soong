@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2971a4_7c373c1b",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-07T00:52:48Z",
+      "side": 1,
+      "message": "Since this are really just the runtime apis, can we call this build flag as `ReleaseExportRuntimeApis`?",
+      "range": {
+        "startLine": 747,
+        "startChar": 5,
+        "endLine": 747,
+        "endChar": 46
+      },
+      "revId": "0fbdd9a436ca9f394c531ec3d23cc8ee75addf96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f66465_e4d1ed43",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-07T00:52:48Z",
+      "side": 1,
+      "message": "Could you please leave an abbreviated description here?",
+      "range": {
+        "startLine": 748,
+        "startChar": 2,
+        "endLine": 748,
+        "endChar": 3
+      },
+      "revId": "0fbdd9a436ca9f394c531ec3d23cc8ee75addf96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
