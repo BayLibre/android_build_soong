@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e2700c_6a72192e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-02-07T08:12:41Z",
+      "side": 1,
+      "message": "It\u0027s a git project. A few documents and scripts refer to it. I don\u0027t have a plan to change it.",
+      "parentUuid": "14296578_f0b657c1",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "5d4ff9a1f6a784701a899f3f93064fc4f7b13f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8609076e_ba255472",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-07T07:57:04Z",
       "side": 1,
       "message": "Where is this from?",
+      "range": {
+        "startLine": 1385,
+        "startChar": 40,
+        "endLine": 1385,
+        "endChar": 43
+      },
+      "revId": "5d4ff9a1f6a784701a899f3f93064fc4f7b13f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32de3e40_a0489556",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-02-07T08:12:41Z",
+      "side": 1,
+      "message": "It\u0027s YYYYMM - 1 year. Do you know any better way to get the previously finalized version?",
+      "parentUuid": "8609076e_ba255472",
       "range": {
         "startLine": 1385,
         "startChar": 40,
