@@ -46,6 +46,30 @@
       },
       "revId": "5919815f80cb8da3d28a7cb4692245ac82c114f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be28637_4da1e4d7",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1950620
+      },
+      "writtenOn": "2024-02-07T16:37:37Z",
+      "side": 1,
+      "message": "Gotcha, thanks. Who is doing that?",
+      "parentUuid": "4af018cd_d1b18676",
+      "range": {
+        "startLine": 215,
+        "startChar": 52,
+        "endLine": 215,
+        "endChar": 79
+      },
+      "revId": "5919815f80cb8da3d28a7cb4692245ac82c114f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
