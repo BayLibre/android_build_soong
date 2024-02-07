@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcaeebdd_8725f982",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2024-02-07T21:43:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d60f7bc5_c40b779f",
+      "revId": "273c3d6e2f5525d792423130a43ca94cc42dff18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71016e75_f307cf80",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-05T20:10:03Z",
       "side": 1,
       "message": "Returning flags is a little odd, the return value is unnecessary since this modifies in place and having no return value provides a hint that this is going to modify the input.",
+      "revId": "273c3d6e2f5525d792423130a43ca94cc42dff18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "431ec236_3deb13c7",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2024-02-07T21:43:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71016e75_f307cf80",
       "revId": "273c3d6e2f5525d792423130a43ca94cc42dff18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
