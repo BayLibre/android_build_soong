@@ -27,11 +27,6 @@ var (
 		"-DWIN32_LEAN_AND_MEAN",
 		"-Wno-unused-parameter",
 
-		// Workaround differences in inttypes.h between host and target.
-		//See bug 12708004.
-		"-D__STDC_FORMAT_MACROS",
-		"-D__STDC_CONSTANT_MACROS",
-
 		// Use C99-compliant printf functions (%zd).
 		"-D__USE_MINGW_ANSI_STDIO=1",
 		// Admit to using >= Windows 7. Both are needed because of <_mingw.h>.
