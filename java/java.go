@@ -399,7 +399,6 @@ var (
 	kotlinStdlibTag         = dependencyTag{name: "kotlin-stdlib", runtimeLinked: true}
 	kotlinAnnotationsTag    = dependencyTag{name: "kotlin-annotations", runtimeLinked: true}
 	kotlinPluginTag         = dependencyTag{name: "kotlin-plugin", toolchain: true}
-	proguardRaiseTag        = dependencyTag{name: "proguard-raise"}
 	certificateTag          = dependencyTag{name: "certificate"}
 	instrumentationForTag   = dependencyTag{name: "instrumentation_for"}
 	extraLintCheckTag       = dependencyTag{name: "extra-lint-check", toolchain: true}
@@ -474,14 +473,6 @@ func sdkDeps(ctx android.BottomUpMutatorContext, sdkContext android.SdkContext, 
 		ctx.AddVariationDependencies(nil, bootClasspathTag, sdkDep.bootclasspath...)
 		ctx.AddVariationDependencies(nil, java9LibTag, sdkDep.java9Classpath...)
 		ctx.AddVariationDependencies(nil, sdkLibTag, sdkDep.classpath...)
-		if d.effectiveOptimizeEnabled() && sdkDep.hasStandardLibs() {
-			ctx.AddVariationDependencies(nil, proguardRaiseTag,
-				config.LegacyCorePlatformBootclasspathLibraries...,
-			)
-		}
-		if d.effectiveOptimizeEnabled() && sdkDep.hasFrameworkLibs() {
-			ctx.AddVariationDependencies(nil, proguardRaiseTag, config.FrameworkLibraries...)
-		}
 	}
 	if sdkDep.systemModules != "" {
 		ctx.AddVariationDependencies(nil, systemModulesTag, sdkDep.systemModules)
