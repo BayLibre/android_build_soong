@@ -70,6 +70,30 @@
       },
       "revId": "5919815f80cb8da3d28a7cb4692245ac82c114f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca8ca53_ecff98eb",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-07T20:11:42Z",
+      "side": 1,
+      "message": "We need a dedicated build target for Google3 sdk drop because this flag depends on the build flag `\"RELEASE_HIDDEN_API_EXPORTABLE_STUBS\"` AND the aconfig flag `\"com.android.libcore.v_apis\"`. As of now, these flags are not and should not be turned on for `trunk_staging` release config as setting these flags to true lead to significant increase in incremental build time. If a dedicated build target for Google3 sdk drop is created, then I believe that we can turn on all three flags for that target.",
+      "parentUuid": "2be28637_4da1e4d7",
+      "range": {
+        "startLine": 215,
+        "startChar": 52,
+        "endLine": 215,
+        "endChar": 79
+      },
+      "revId": "5919815f80cb8da3d28a7cb4692245ac82c114f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
