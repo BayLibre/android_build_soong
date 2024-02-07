@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759f9c1c_1abdfa70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-07T20:05:15Z",
+      "side": 1,
+      "message": "Do you envision a case where a module _shouldn\u0027t_ be visible to all partition rules?  Should `android_fileystem` and `android_system_image` ignore visibility rules?",
+      "revId": "894bb3b530d9dcab9fd3d2a45b55d5f9660641d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
