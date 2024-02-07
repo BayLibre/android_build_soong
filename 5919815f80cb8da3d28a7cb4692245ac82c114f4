@@ -118,6 +118,30 @@
       },
       "revId": "5919815f80cb8da3d28a7cb4692245ac82c114f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f06177b_98268a81",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1950620
+      },
+      "writtenOn": "2024-02-07T20:56:41Z",
+      "side": 1,
+      "message": "Resolving since this should not block from the cl landing",
+      "parentUuid": "cf25fdd2_4f3455ee",
+      "range": {
+        "startLine": 215,
+        "startChar": 52,
+        "endLine": 215,
+        "endChar": 79
+      },
+      "revId": "5919815f80cb8da3d28a7cb4692245ac82c114f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
