@@ -26,6 +26,8 @@ import zipfile
 
 def process_one_file(name, infile, outzip):
     # Create a ZipInfo instance with a fixed date to ensure a deterministic output.
+    # Date was chosen to be the same as
+    # https://cs.android.com/android/platform/superproject/main/+/main:build/soong/jar/jar.go;l=36;drc=2863e4535eb65e15f955dc8ed48fa99b1d2a1db5
     info = zipfile.ZipInfo(filename=name, date_time=(2008, 1, 1, 0, 0, 0))
 
     if not info.filename.endswith('.py'):
