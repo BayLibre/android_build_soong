@@ -141,7 +141,19 @@ func TransformSrctoDylib(ctx ModuleContext, mainSrc android.Path, deps PathDeps,
 
 func TransformSrctoStatic(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath) buildOutput {
-	flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto=thin")
+
+	// We don't apply "-C lto=thin" to static libs as this can lead to symbol collision during
+	// the clang linking step.
+	//
+	// TODO(ivanlozano): Add a minimized test which causes symbol collision when LTO is enabled.
+
+	// If the rustc internal-LLVM version aligns with the clang internal-LLVM version,
+	// we can use "-C linker-plugin-lto" to defer LTO to the clang linking step. Right
+	// now however it is prone to emit warnings about invalid debug symbols, so we leave
+	// it disabled to reduce warning noise.
+	//
+	//flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C linker-plugin-lto")
+
 	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "staticlib")
 }
 
