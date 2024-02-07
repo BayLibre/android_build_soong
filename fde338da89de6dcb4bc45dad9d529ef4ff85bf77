@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d72ed3a_3d980160",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-07T23:43:02Z",
+      "side": 1,
+      "message": "This change is blocked on metalava support of multiple api files input",
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
