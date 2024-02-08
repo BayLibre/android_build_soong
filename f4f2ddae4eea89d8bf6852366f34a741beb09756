@@ -52,6 +52,24 @@
       "parentUuid": "59825832_0914e602",
       "revId": "f4f2ddae4eea89d8bf6852366f34a741beb09756",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96121488_7882ea4f",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1959868
+      },
+      "writtenOn": "2024-02-08T19:43:32Z",
+      "side": 1,
+      "message": "I had `[]string{sboxOutDir}` in mind, but yes, `filepath.Clean` is good to avoid in hot paths.",
+      "parentUuid": "e2f66873_5bdbdc39",
+      "revId": "f4f2ddae4eea89d8bf6852366f34a741beb09756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
