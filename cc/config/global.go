@@ -337,6 +337,9 @@ var (
 		// http://b/239661264
 		"-Wno-deprecated-non-prototype",
 
+		// http://b/324323434
+		"-Wno-ambiguous-reversed-operator",
+
 		"-Wno-unused",
 		"-Wno-deprecated",
 	}
