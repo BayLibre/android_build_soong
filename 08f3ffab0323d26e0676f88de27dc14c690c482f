@@ -39,6 +39,48 @@
       "message": "```suggestion\n\t\t// http://b/324323434\n```",
       "revId": "08f3ffab0323d26e0676f88de27dc14c690c482f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf052ce_42ac1734",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-02-08T00:47:56Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "9e0d7667_05171aa0",
+      "revId": "08f3ffab0323d26e0676f88de27dc14c690c482f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0413e5_60fe2f6c",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-02-08T00:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "929695a6_d05c8e32",
+      "range": {
+        "startLine": 340,
+        "startChar": 12,
+        "endLine": 340,
+        "endChar": 21
+      },
+      "revId": "08f3ffab0323d26e0676f88de27dc14c690c482f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
