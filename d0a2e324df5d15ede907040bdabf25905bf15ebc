@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f28533f_397b841b",
+        "filename": "ui/build/androidmk_denylist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-02-08T09:31:42Z",
+      "side": 1,
+      "message": "The presence of `toolchain` in this list broke builds for both the Clang/LLVM and Rust teams in Android. I\u0027m working on a workaround/fix for this. It\u0027s really surprising to see this warning turned into a hard error without checking that all downstream builds were unaffected via something like a global presubmit test. In our case, we had `Android.mk` files present in directories to prevent overzealous build scanning for deeper `.mk` files in external projects (things like `toolchain/rustc`).",
+      "revId": "d0a2e324df5d15ede907040bdabf25905bf15ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
