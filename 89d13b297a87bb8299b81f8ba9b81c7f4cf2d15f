@@ -70,6 +70,30 @@
       },
       "revId": "89d13b297a87bb8299b81f8ba9b81c7f4cf2d15f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff5e922_b0fd7c66",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-08T05:25:14Z",
+      "side": 1,
+      "message": "\u003e  letting projects opt into the actual warning would be acceptable\n\nI agree with this goal (and we\u0027d want to eventually get there).  But given the number of `-Wall` opt-ins (e.g. https://source.corp.google.com/search?q\u003d%22-Wall%22%20(file:Android.mk%20OR%20file:Android.bp)%20file:vendor\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main), disabling it here wouldn\u0027t really fix all the breaks we\u0027re seeing 😞",
+      "parentUuid": "86dabf3b_8f1f8bbd",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 37
+      },
+      "revId": "89d13b297a87bb8299b81f8ba9b81c7f4cf2d15f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
