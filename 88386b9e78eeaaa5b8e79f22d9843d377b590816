@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89cbd9c6_81b5acd7",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-08T23:30:55Z",
+      "side": 1,
+      "message": "Again, I don\u0027t think the \"case 1\" is any additional optimization over the default case.\n\n```suggestion\n\tpath :\u003d sboxOutDir\n\tif len(subPathComponents) \u003e 0 {\n\t\tpath \u003d filepath.Join(append([]string{sboxOutDir}, subPathComponents...)...)\n\t}\n```",
+      "range": {
+        "startLine": 1164,
+        "startChar": 0,
+        "endLine": 1173,
+        "endChar": 2
+      },
+      "revId": "88386b9e78eeaaa5b8e79f22d9843d377b590816",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
