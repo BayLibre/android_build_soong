@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6198d7e_59d73bee",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-08T17:52:18Z",
+      "side": 1,
+      "message": "Please skip the heap allocation of the string list if `len(subPathComponents) \u003d\u003d 0`",
+      "revId": "f4f2ddae4eea89d8bf6852366f34a741beb09756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
