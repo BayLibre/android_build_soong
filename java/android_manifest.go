@@ -153,8 +153,12 @@ func ManifestFixer(ctx android.ModuleContext, manifest android.Path,
 		targetSdkVersion := targetSdkVersionForManifestFixer(ctx, params)
 
 		if UseApiFingerprint(ctx) && ctx.ModuleName() != "framework-res" {
-			targetSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", ApiFingerprintPath(ctx).String())
-			deps = append(deps, ApiFingerprintPath(ctx))
+			if ctx.Config().IsEnvTrue("UNBUNDLED_BUILD_TARGET_SDK_WITH_API_FINGERPRINT") {
+				targetSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", ApiFingerprintPath(ctx).String())
+				deps = append(deps, ApiFingerprintPath(ctx))
+			} else {
+				targetSdkVersion = ctx.Config().Getenv("UNBUNDLED_BUILD_TARGET_SDK_WITH_DESSERT_SHA")
+			}
 		}
 
 		args = append(args, "--targetSdkVersion ", targetSdkVersion)
@@ -170,8 +174,12 @@ func ManifestFixer(ctx android.ModuleContext, manifest android.Path,
 		}
 
 		if UseApiFingerprint(ctx) && ctx.ModuleName() != "framework-res" {
-			minSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", ApiFingerprintPath(ctx).String())
-			deps = append(deps, ApiFingerprintPath(ctx))
+			if ctx.Config().IsEnvTrue("UNBUNDLED_BUILD_TARGET_SDK_WITH_API_FINGERPRINT") {
+				minSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", ApiFingerprintPath(ctx).String())
+				deps = append(deps, ApiFingerprintPath(ctx))
+			} else {
+				minSdkVersion = ctx.Config().Getenv("UNBUNDLED_BUILD_TARGET_SDK_WITH_DESSERT_SHA")
+			}
 		}
 
 		if err != nil {

@@ -36,7 +36,8 @@ var apiFingerprintPathKey = android.NewOnceKey("apiFingerprintPathKey")
 func UseApiFingerprint(ctx android.BaseModuleContext) bool {
 	if ctx.Config().UnbundledBuild() &&
 		!ctx.Config().AlwaysUsePrebuiltSdks() &&
-		ctx.Config().IsEnvTrue("UNBUNDLED_BUILD_TARGET_SDK_WITH_API_FINGERPRINT") {
+		(ctx.Config().IsEnvTrue("UNBUNDLED_BUILD_TARGET_SDK_WITH_API_FINGERPRINT") ||
+			ctx.Config().Getenv("UNBUNDLED_BUILD_TARGET_SDK_WITH_DESSERT_SHA") != "") {
 		return true
 	}
 	return false

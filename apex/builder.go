@@ -696,8 +696,12 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 		minSdkVersion = ctx.Config().DefaultAppTargetSdk(ctx).String()
 
 		if java.UseApiFingerprint(ctx) {
-			minSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", java.ApiFingerprintPath(ctx).String())
-			implicitInputs = append(implicitInputs, java.ApiFingerprintPath(ctx))
+			if ctx.Config().IsEnvTrue("UNBUNDLED_BUILD_TARGET_SDK_WITH_API_FINGERPRINT") {
+				minSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", java.ApiFingerprintPath(ctx).String())
+				implicitInputs = append(implicitInputs, java.ApiFingerprintPath(ctx))
+			} else {
+				minSdkVersion = ctx.Config().Getenv("UNBUNDLED_BUILD_TARGET_SDK_WITH_DESSERT_SHA")
+			}
 		}
 	}
 	// apex module doesn't have a concept of target_sdk_version, hence for the time
@@ -705,8 +709,12 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 	targetSdkVersion := strconv.Itoa(ctx.Config().DefaultAppTargetSdk(ctx).FinalOrFutureInt())
 
 	if java.UseApiFingerprint(ctx) {
-		targetSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", java.ApiFingerprintPath(ctx).String())
-		implicitInputs = append(implicitInputs, java.ApiFingerprintPath(ctx))
+		if ctx.Config().IsEnvTrue("UNBUNDLED_BUILD_TARGET_SDK_WITH_API_FINGERPRINT") {
+			targetSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", java.ApiFingerprintPath(ctx).String())
+			implicitInputs = append(implicitInputs, java.ApiFingerprintPath(ctx))
+		} else {
+			targetSdkVersion = ctx.Config().Getenv("UNBUNDLED_BUILD_TARGET_SDK_WITH_DESSERT_SHA")
+		}
 	}
 	optFlags = append(optFlags, "--target_sdk_version "+targetSdkVersion)
 	optFlags = append(optFlags, "--min_sdk_version "+minSdkVersion)
