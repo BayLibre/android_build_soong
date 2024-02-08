@@ -18,7 +18,6 @@ package apex
 
 import (
 	"fmt"
-	"log"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -1000,12 +999,6 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 			if c, ok := child.(*cc.Module); ok && c.IsVndk() {
 				return false
 			}
-		}
-
-		//TODO: b/296491928 Vendor APEX should use libbinder.ndk instead of libbinder once VNDK is fully deprecated.
-		if useVndk && mctx.Config().IsVndkDeprecated() && child.Name() == "libbinder" {
-			log.Print("Libbinder is linked from Vendor APEX ", a.Name(), " with module ", parent.Name())
-			return false
 		}
 
 		// By default, all the transitive dependencies are collected, unless filtered out
