@@ -70,6 +70,24 @@
       "parentUuid": "7cd9e0d8_bf039804",
       "revId": "ac43c556569e1efcbe405ac0db36ad2dae214896",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b886f34_8380e0d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-02-08T19:30:43Z",
+      "side": 1,
+      "message": "\u003e I triggered a presubmit of aosp-build-tools/darwin_mac, if that works this seems good to me (that should be running with a macos11 sdk, and that\u0027s the oldest we claim to support)\n\nis this something regular mortals can do? lots of folks on our team would be interested in that if so... +srhines",
+      "parentUuid": "d6e2918e_e5f8b921",
+      "revId": "ac43c556569e1efcbe405ac0db36ad2dae214896",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
