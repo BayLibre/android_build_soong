@@ -94,6 +94,30 @@
       },
       "revId": "89d13b297a87bb8299b81f8ba9b81c7f4cf2d15f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19915869_74427ddc",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-02-08T08:38:26Z",
+      "side": 1,
+      "message": "Ah I didn\u0027t realize it was part of `-Wall`. Moving it is the correct thing to do.",
+      "parentUuid": "4ff5e922_b0fd7c66",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 37
+      },
+      "revId": "89d13b297a87bb8299b81f8ba9b81c7f4cf2d15f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
