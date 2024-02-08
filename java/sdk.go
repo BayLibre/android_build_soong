@@ -34,10 +34,13 @@ var nonUpdatableFrameworkAidlPathKey = android.NewOnceKey("nonUpdatableFramework
 var apiFingerprintPathKey = android.NewOnceKey("apiFingerprintPathKey")
 
 func UseApiFingerprint(ctx android.BaseModuleContext) bool {
-	if ctx.Config().UnbundledBuild() &&
-		!ctx.Config().AlwaysUsePrebuiltSdks() &&
-		ctx.Config().IsEnvTrue("UNBUNDLED_BUILD_TARGET_SDK_WITH_API_FINGERPRINT") {
-		return true
+	if ctx.Config().UnbundledBuild() && !ctx.Config().AlwaysUsePrebuiltSdks() {
+		apiFingerprintTrue := ctx.Config().IsEnvTrue("UNBUNDLED_BUILD_TARGET_SDK_WITH_API_FINGERPRINT")
+		dessertShaIsSet := ctx.Config().Getenv("UNBUNDLED_BUILD_TARGET_SDK_WITH_DESSERT_SHA") != ""
+		if apiFingerprintTrue && dessertShaIsSet {
+			ctx.ModuleErrorf("UNBUNDLED_BUILD_TARGET_SDK_WITH_API_FINGERPRINT=true cannot be set alongside with UNBUNDLED_BUILD_TARGET_SDK_WITH_DESSERT_SHA")
+		}
+		return apiFingerprintTrue || dessertShaIsSet
 	}
 	return false
 }
