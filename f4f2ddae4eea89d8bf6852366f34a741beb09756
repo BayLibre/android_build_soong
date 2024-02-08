@@ -34,6 +34,24 @@
       "parentUuid": "b6198d7e_59d73bee",
       "revId": "f4f2ddae4eea89d8bf6852366f34a741beb09756",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2f66873_5bdbdc39",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-08T19:37:42Z",
+      "side": 1,
+      "message": "I don\u0027t think 1+ would be an optimization because I think calling a function with variadic arguments always allocates a slice (unless you\u0027re passing in a slice). But skipping the call to filepath.Join entirely would be an optimization.",
+      "parentUuid": "59825832_0914e602",
+      "revId": "f4f2ddae4eea89d8bf6852366f34a741beb09756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
