@@ -21,6 +21,7 @@ import (
 	"reflect"
 	"regexp"
 	"runtime"
+	"slices"
 	"sort"
 	"strings"
 	"sync"
@@ -116,9 +117,7 @@ func SortedKeys[T cmp.Ordered, V any](m map[T]V) []T {
 	for k := range m {
 		ret = append(ret, k)
 	}
-	sort.Slice(ret, func(i, j int) bool {
-		return ret[i] < ret[j]
-	})
+	slices.Sort(ret)
 	return ret
 }
 
