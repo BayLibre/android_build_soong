@@ -34,6 +34,24 @@
       "parentUuid": "8f28533f_397b841b",
       "revId": "d0a2e324df5d15ede907040bdabf25905bf15ebc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7398dee_0a313a04",
+        "filename": "ui/build/androidmk_denylist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-02-08T16:31:23Z",
+      "side": 1,
+      "message": "toolchain/ was blocked quietly since Jan, but after b/319658303 happened I think it\u0027s better to make this an explicit error since there are always some downstream branches I don\u0027t know and quietly ignoring Android.mk files can cause unnecessary long time troubleshooting in these branches. Considering that right now we are cleaning and converting all Google Android.mk files to Android.bp files, exposing the errors explicitly will help us notice unknown Android.mk files or downstream branches earlier and fix them accordingly. But sorry for the inconvenience.",
+      "parentUuid": "b67d49cf_157a2512",
+      "revId": "d0a2e324df5d15ede907040bdabf25905bf15ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
