@@ -16,6 +16,24 @@
       "message": "If its possible to add any tests for this, that would be good. But I\u0027m not familiar with the codebase enough to mandate adding tests.",
       "revId": "854042a6855b33d9ed1db5617a163cdaa3a6d5bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a96803_6310d23b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-08T18:01:36Z",
+      "side": 1,
+      "message": "Definitely worth adding a test to `TestMergeZips`.",
+      "parentUuid": "3a52a20d_57009cdb",
+      "revId": "854042a6855b33d9ed1db5617a163cdaa3a6d5bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
