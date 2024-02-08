@@ -22,6 +22,30 @@
       },
       "revId": "89d13b297a87bb8299b81f8ba9b81c7f4cf2d15f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4de1480c_5b2a5650",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-02-08T01:01:41Z",
+      "side": 1,
+      "message": "I thought about this too, but maybe it\u0027s ok just here (and letting projects opt into the actual warning would be acceptable). I\u0027m not firmly for or against any particular place in the cflags for the suppression.",
+      "parentUuid": "37ce4396_1b243ca1",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 37
+      },
+      "revId": "89d13b297a87bb8299b81f8ba9b81c7f4cf2d15f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
