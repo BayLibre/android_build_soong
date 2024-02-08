@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "135274e8_8f32c920",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-02-08T09:41:53Z",
+      "side": 1,
+      "message": "https://android-review.git.corp.google.com/c/platform/build/soong/+/2954227 is the breaking CL.",
+      "revId": "728bb716b6f0358dd9aaa81e509a78c31e23cb59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
