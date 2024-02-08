@@ -24,6 +24,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"slices"
 	"sort"
 	"strings"
 
@@ -383,6 +384,7 @@ func (oz *OutputZip) getUninitializedPythonPackages(inputZips []InputZip) ([]str
 			noInitPackages = append(noInitPackages, pyPkg)
 		}
 	}
+	slices.Sort(noInitPackages)
 	return noInitPackages, nil
 }
 
