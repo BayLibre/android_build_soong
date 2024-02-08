@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d60528b4_3099bd9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2024-02-08T20:51:45Z",
+      "side": 1,
+      "message": "It\u0027s a pure cherry-pick, so ignoring the typo warning.",
+      "revId": "4a9869d066a52ae80653da2686b0c1d21749b2c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
