@@ -53,6 +53,7 @@ var (
 	// deny.
 	defaultClippyLints = []string{
 		"-A clippy::type-complexity",
+		"-A clippy::unnecessary_fallible_conversions",
 		"-A clippy::unnecessary-wraps",
 		"-A clippy::unusual-byte-groupings",
 		"-A clippy::upper-case-acronyms",
