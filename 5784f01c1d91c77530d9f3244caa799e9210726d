@@ -34,6 +34,24 @@
       "parentUuid": "52f4a8e7_84e43982",
       "revId": "5784f01c1d91c77530d9f3244caa799e9210726d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14c5d712_79c83f13",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-09T21:18:32Z",
+      "side": 1,
+      "message": "LGTM.",
+      "parentUuid": "be82cd9f_654d1304",
+      "revId": "5784f01c1d91c77530d9f3244caa799e9210726d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
