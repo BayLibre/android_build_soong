@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68278eb_121f907b",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-09T00:35:07Z",
+      "side": 1,
+      "message": "Also switch this to -Wno-format? (cc: @enh@google.com)",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 22
+      },
+      "revId": "94688b5a4f78c7b49bb74266db2236aabdd45983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
