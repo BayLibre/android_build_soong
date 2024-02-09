@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f4a8e7_84e43982",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1959868
+      },
+      "writtenOn": "2024-02-09T19:54:19Z",
+      "side": 1,
+      "message": "I noticed this option exists already and could be used instead of forcing a sort.\n\nAlso, it sounds like the code should produce deterministic outputs for deterministic inputs, even without specifying this argument.\n\nI think a better change would be to fix the stated contract here rather than break it differently. I\u0027ll see if that works for my usecase and update this CL.",
+      "revId": "5784f01c1d91c77530d9f3244caa799e9210726d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
