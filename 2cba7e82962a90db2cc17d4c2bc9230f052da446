@@ -16,6 +16,24 @@
       "message": "nit: `slices.Sort` has worse performance than `sort.Strings` on slices of strings. \n\nhttps://github.com/golang/go/issues/61725\nhttps://aead.dev/news/sort-strings/",
       "revId": "2cba7e82962a90db2cc17d4c2bc9230f052da446",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c122ee_1a7e3be7",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-09T00:07:38Z",
+      "side": 1,
+      "message": "Actually nevermind, it appears `sort.Strings` calls `slices.Sort` now. (did they degrade its performance?)",
+      "parentUuid": "7fca6ef3_6a96411e",
+      "revId": "2cba7e82962a90db2cc17d4c2bc9230f052da446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
