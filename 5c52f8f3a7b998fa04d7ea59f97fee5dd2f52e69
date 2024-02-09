@@ -16,6 +16,24 @@
       "message": "Why do we need a dependency on the profile file if this is the non-afdo variant? Could you leave a comment?",
       "revId": "5c52f8f3a7b998fa04d7ea59f97fee5dd2f52e69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a272253_788365a3",
+        "filename": "cc/afdo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-09T21:49:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99ae4599_fc48587b",
+      "revId": "5c52f8f3a7b998fa04d7ea59f97fee5dd2f52e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
