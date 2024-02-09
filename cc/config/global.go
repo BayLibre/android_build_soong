@@ -255,6 +255,14 @@ var (
 		"-Werror=fortify-source",
 		// http://b/315246135 temporarily disabled
 		"-Wno-unused-variable",
+<<<<<<< PATCH SET (c416cf s/Wno-error=format/Wno-format)
+		// http://b/315250603 temporarily disabled
+		"-Wno-format",
+||||||| BASE
+		// http://b/315250603 temporarily disabled
+		"-Wno-error=format",
+=======
+>>>>>>> BASE      (c4179b Merge "Convert checkApexAvailability to use ModuleProxy." in)
 		// Disabled because it produces many false positives. http://b/323050926
 		"-Wno-missing-field-initializers",
 		// http://b/323050889
