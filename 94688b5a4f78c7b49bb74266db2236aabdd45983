@@ -46,6 +46,30 @@
       },
       "revId": "94688b5a4f78c7b49bb74266db2236aabdd45983",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e0a36e0_6d2e20ad",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-02-09T06:03:14Z",
+      "side": 1,
+      "message": "https://android-review.git.corp.google.com/c/platform/build/soong/+/2956773",
+      "parentUuid": "fa454fa0_60c1a858",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 22
+      },
+      "revId": "94688b5a4f78c7b49bb74266db2236aabdd45983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
