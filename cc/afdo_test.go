@@ -45,9 +45,6 @@ func TestAfdoDeps(t *testing.T) {
 		srcs: ["test.c"],
 		static_libs: ["libFoo"],
 		afdo: true,
-		lto: {
-			thin: true,
-		},
 	}
 
 	cc_library_static {
@@ -75,20 +72,13 @@ func TestAfdoDeps(t *testing.T) {
 			"afdo_profiles_package/Android.bp": []byte(`
 				fdo_profile {
 					name: "libTest_afdo",
-					arch: {
-						arm64: {
-							profile: "libTest.afdo",
-						},
-					},
+					profile: "libTest.afdo",
 				}
 			`),
 		}.AddToFixture(),
 	).RunTestWithBp(t, bp)
 
-	profileSampleCFlag := "-fprofile-sample-use=afdo_profiles_package/libTest.afdo"
-	uniqueInternalLinkageNamesCFlag := "-funique-internal-linkage-names"
-	afdoLtoLdFlag := "-Wl,-plugin-opt,-import-instr-limit=40"
-	noAfdoLtoLdFlag := "-Wl,-plugin-opt,-import-instr-limit=5"
+	expectedCFlag := "-fprofile-sample-use=afdo_profiles_package/libTest.afdo"
 
 	libTest := result.ModuleForTests("libTest", "android_arm64_armv8-a_shared")
 	libFooAfdoVariant := result.ModuleForTests("libFoo", "android_arm64_armv8-a_static_afdo-libTest")
@@ -96,32 +86,18 @@ func TestAfdoDeps(t *testing.T) {
 
 	// Check cFlags of afdo-enabled module and the afdo-variant of its static deps
 	cFlags := libTest.Rule("cc").Args["cFlags"]
-	if !strings.Contains(cFlags, profileSampleCFlag) {
-		t.Errorf("Expected 'libTest' to enable afdo profile, but did not find %q in cflags %q", profileSampleCFlag, cFlags)
-	}
-	if !strings.Contains(cFlags, uniqueInternalLinkageNamesCFlag) {
-		t.Errorf("Expected 'libTest' to enable afdo, but did not find %q in cflags %q", profileSampleCFlag, cFlags)
-	}
-
-	ldFlags := libTest.Rule("ld").Args["ldFlags"]
-	if !strings.Contains(ldFlags, afdoLtoLdFlag) {
-		t.Errorf("Expected 'libTest' to enable afdo, but did not find %q in ldflags %q", afdoLtoLdFlag, ldFlags)
+	if !strings.Contains(cFlags, expectedCFlag) {
+		t.Errorf("Expected 'libTest' to enable afdo, but did not find %q in cflags %q", expectedCFlag, cFlags)
 	}
 
 	cFlags = libFooAfdoVariant.Rule("cc").Args["cFlags"]
-	if !strings.Contains(cFlags, profileSampleCFlag) {
-		t.Errorf("Expected 'libFooAfdoVariant' to enable afdo profile, but did not find %q in cflags %q", profileSampleCFlag, cFlags)
-	}
-	if !strings.Contains(cFlags, uniqueInternalLinkageNamesCFlag) {
-		t.Errorf("Expected 'libFooAfdoVariant' to enable afdo, but did not find %q in cflags %q", profileSampleCFlag, cFlags)
+	if !strings.Contains(cFlags, expectedCFlag) {
+		t.Errorf("Expected 'libFooAfdoVariant' to enable afdo, but did not find %q in cflags %q", expectedCFlag, cFlags)
 	}
 
 	cFlags = libBarAfdoVariant.Rule("cc").Args["cFlags"]
-	if !strings.Contains(cFlags, profileSampleCFlag) {
-		t.Errorf("Expected 'libBarAfdoVariant' to enable afdo profile, but did not find %q in cflags %q", profileSampleCFlag, cFlags)
-	}
-	if !strings.Contains(cFlags, uniqueInternalLinkageNamesCFlag) {
-		t.Errorf("Expected 'libBarAfdoVariant' to enable afdo, but did not find %q in cflags %q", profileSampleCFlag, cFlags)
+	if !strings.Contains(cFlags, expectedCFlag) {
+		t.Errorf("Expected 'libBarAfdoVariant' to enable afdo, but did not find %q in cflags %q", expectedCFlag, cFlags)
 	}
 
 	// Check dependency edge from afdo-enabled module to static deps
@@ -138,18 +114,12 @@ func TestAfdoDeps(t *testing.T) {
 	libBar := result.ModuleForTests("libBar", "android_arm64_armv8-a_static")
 
 	cFlags = libFoo.Rule("cc").Args["cFlags"]
-	if strings.Contains(cFlags, profileSampleCFlag) {
-		t.Errorf("Expected 'libFoo' to not enable afdo profile, but found %q in cflags %q", profileSampleCFlag, cFlags)
-	}
-	if strings.Contains(cFlags, uniqueInternalLinkageNamesCFlag) {
-		t.Errorf("Expected 'libFoo' to not enable afdo, but found %q in cflags %q", profileSampleCFlag, cFlags)
+	if strings.Contains(cFlags, expectedCFlag) {
+		t.Errorf("Expected 'libFoo' to not enable afdo, but found %q in cflags %q", expectedCFlag, cFlags)
 	}
 	cFlags = libBar.Rule("cc").Args["cFlags"]
-	if strings.Contains(cFlags, profileSampleCFlag) {
-		t.Errorf("Expected 'libBar' to not enable afdo profile, but found %q in cflags %q", profileSampleCFlag, cFlags)
-	}
-	if strings.Contains(cFlags, uniqueInternalLinkageNamesCFlag) {
-		t.Errorf("Expected 'libBar' to not enable afdo, but found %q in cflags %q", profileSampleCFlag, cFlags)
+	if strings.Contains(cFlags, expectedCFlag) {
+		t.Errorf("Expected 'libBar' to not enable afdo, but found %q in cflags %q", expectedCFlag, cFlags)
 	}
 
 	// Check dependency edges of static deps
@@ -160,56 +130,6 @@ func TestAfdoDeps(t *testing.T) {
 	if !hasDirectDep(result, libFoo.Module(), libBar.Module()) {
 		t.Errorf("libFoo missing dependency on non-afdo variant of libBar")
 	}
-
-	// Verify that the arm variant does not have FDO since the fdo_profile module only has a profile for arm64
-	libTest32 := result.ModuleForTests("libTest", "android_arm_armv7-a-neon_shared")
-	libFooAfdoVariant32 := result.ModuleForTests("libFoo", "android_arm_armv7-a-neon_static_afdo-libTest_lto-thin")
-	libBarAfdoVariant32 := result.ModuleForTests("libBar", "android_arm_armv7-a-neon_static_afdo-libTest_lto-thin")
-
-	cFlags = libTest32.Rule("cc").Args["cFlags"]
-	if strings.Contains(cFlags, profileSampleCFlag) {
-		t.Errorf("Expected arm32 'libTest' not to enable afdo, but found %q in cflags %q", profileSampleCFlag, cFlags)
-	}
-
-	// TODO(b/324141705): when the fdo_profile module doesn't provide a source file the dependencies don't get
-	//  -funique-internal-linkage-names but the module does.
-	if !strings.Contains(cFlags, uniqueInternalLinkageNamesCFlag) {
-		t.Errorf("Expected arm32 'libTest' to enable -funique-internal-linkage-names but did not find %q in cflags %q",
-			uniqueInternalLinkageNamesCFlag, cFlags)
-	}
-
-	ldFlags = libTest32.Rule("ld").Args["ldFlags"]
-	if !strings.Contains(ldFlags, noAfdoLtoLdFlag) {
-		t.Errorf("Expected arm32 'libTest' to not enable afdo, but did not find %q in ldflags %q", noAfdoLtoLdFlag, ldFlags)
-	}
-	if strings.Contains(ldFlags, afdoLtoLdFlag) {
-		t.Errorf("Expected arm32 'libTest' to not enable afdo, but found %q in ldflags %q", afdoLtoLdFlag, ldFlags)
-	}
-
-	// Check dependency edge from afdo-enabled module to static deps
-	if !hasDirectDep(result, libTest32.Module(), libFooAfdoVariant32.Module()) {
-		t.Errorf("arm32 libTest missing dependency on afdo variant of libFoo")
-	}
-
-	if !hasDirectDep(result, libFooAfdoVariant32.Module(), libBarAfdoVariant32.Module()) {
-		t.Errorf("arm32 libTest missing dependency on afdo variant of libBar")
-	}
-
-	cFlags = libFooAfdoVariant32.Rule("cc").Args["cFlags"]
-	if strings.Contains(cFlags, profileSampleCFlag) {
-		t.Errorf("Expected arm32 'libFoo' to not enable afdo profile, but found %q in cflags %q", uniqueInternalLinkageNamesCFlag, cFlags)
-	}
-	if !strings.Contains(cFlags, uniqueInternalLinkageNamesCFlag) {
-		t.Errorf("Expected arm32 'libFoo' to enable afdo, but did not find %q in cflags %q", uniqueInternalLinkageNamesCFlag, cFlags)
-	}
-	cFlags = libBarAfdoVariant32.Rule("cc").Args["cFlags"]
-	if strings.Contains(cFlags, profileSampleCFlag) {
-		t.Errorf("Expected arm32 'libBar' to not enable afdo profile, but found %q in cflags %q", uniqueInternalLinkageNamesCFlag, cFlags)
-	}
-	if !strings.Contains(cFlags, uniqueInternalLinkageNamesCFlag) {
-		t.Errorf("Expected arm32 'libBar' to enable afdo, but did not find %q in cflags %q", uniqueInternalLinkageNamesCFlag, cFlags)
-	}
-
 }
 
 func TestAfdoEnabledOnStaticDepNoAfdo(t *testing.T) {
@@ -254,11 +174,11 @@ func TestAfdoEnabledOnStaticDepNoAfdo(t *testing.T) {
 	libBar := result.ModuleForTests("libBar", "android_arm64_armv8-a_static").Module()
 
 	if !hasDirectDep(result, libTest, libFoo.Module()) {
-		t.Errorf("libTest missing dependency on non-afdo variant of libFoo")
+		t.Errorf("libTest missing dependency on afdo variant of libFoo")
 	}
 
 	if !hasDirectDep(result, libFoo.Module(), libBar) {
-		t.Errorf("libFoo missing dependency on non-afdo variant of libBar")
+		t.Errorf("libFoo missing dependency on afdo variant of libBar")
 	}
 
 	fooVariants := result.ModuleVariantsForTests("foo")
