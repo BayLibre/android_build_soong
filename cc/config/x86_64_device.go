@@ -23,6 +23,7 @@ import (
 
 var (
 	x86_64Cflags = []string{
+		"-fno-omit-frame-pointer",
 		// Help catch common 32/64-bit errors.
 		"-Werror=implicit-function-declaration",
 	}
