@@ -52,6 +52,24 @@
       "parentUuid": "f1a96803_6310d23b",
       "revId": "854042a6855b33d9ed1db5617a163cdaa3a6d5bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d66d2c97_082694ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-12T19:13:11Z",
+      "side": 1,
+      "message": "You can\u0027t test iteration order, Go picks a new seed for the hash on every process start.  You can test that you get the expected input file order, and it should fail ~50% of the time if its using map ordering instead.",
+      "parentUuid": "f7743789_68798009",
+      "revId": "854042a6855b33d9ed1db5617a163cdaa3a6d5bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
