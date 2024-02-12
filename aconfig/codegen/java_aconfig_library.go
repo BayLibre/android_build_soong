@@ -109,6 +109,12 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 	module.AddJarJarRenameRule(declarations.Package+".FeatureFlagsImpl", "")
 	module.AddJarJarRenameRule(declarations.Package+".FakeFeatureFlagsImpl", "")
 
+	android.SetProvider(ctx, CodegenInfoProvider, CodegenInfo{
+		AconfigDeclarations:         declarationsModules[0].Name(),
+		IntermediateCacheOutputPath: declarations.IntermediateCacheOutputPath,
+		Srcjar:                      srcJarPath,
+	})
+
 	return srcJarPath
 }
 
