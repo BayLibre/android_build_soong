@@ -16,6 +16,23 @@
       "message": "@ccross@android.com Would you be able to take a look at this change and the other one in the same topic?",
       "revId": "e541c4b1899b0bde8ed320a5d240ae09422e4296",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ca38610_e9b941f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-12T18:31:06Z",
+      "side": 1,
+      "message": "`aosp-build-tools`build failures does not seem to be related to this change; The build is already [failing](go/ab/aosp-build-tools) on ToT with identical errors.",
+      "revId": "e541c4b1899b0bde8ed320a5d240ae09422e4296",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
