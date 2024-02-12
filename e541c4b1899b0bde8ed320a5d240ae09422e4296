@@ -33,6 +33,23 @@
       "message": "`aosp-build-tools`build failures does not seem to be related to this change; The build is already [failing](go/ab/aosp-build-tools) on ToT with identical errors.",
       "revId": "e541c4b1899b0bde8ed320a5d240ae09422e4296",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b748bb54_af842ea9",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-12T19:30:01Z",
+      "side": 1,
+      "message": "It seems odd to manually check `UNBUNDLED_BUILD_TARGET_SDK_WITH_API_FINGERPRINT` here inside the `java.UseApiFingerprint` conditional, when the output of `java.UseApiFingerprint` already depends on that environment variable.  There\u0027s also a lot of duplication of this code.  Maybe it would make sense to abstract all of this into a helper function that returns the correct value for `minSdkVersion`/`targetSdkVersion`, plus any required deps?  It would either need to take the default value of `minSdkVersion`/`targetSdkVersion` as a string, or return a bool if it wants to override the version:\n```\n    if fingerprintMinSdkVersion, fingerprintDeps, useFingerprint :\u003d java.ApiFingerprint(ctx); useFingerprint {\n        minSdkVersion \u003d fingerprintMinSdkVerion\n        implicitInputs \u003d append(implicitInputs, fingerprintDeps)\n    }\n```",
+      "revId": "e541c4b1899b0bde8ed320a5d240ae09422e4296",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
