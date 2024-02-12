@@ -20,6 +20,20 @@ import (
 	"github.com/google/blueprint"
 )
 
+type CodegenInfo struct {
+	// AconfigDeclarations is the name of the aconfig_declarations module that
+	// the codegen module is associated with
+	AconfigDeclarations string
+
+	// Path to the cache file of the associated aconfig_declaration module
+	IntermediateCacheOutputPath android.Path
+
+	// Srcjar is a path to the srcjar file generated from the java_aconfig_library
+	Srcjar android.Path
+}
+
+var CodegenInfoProvider = blueprint.NewProvider[CodegenInfo]()
+
 var (
 	pctx = android.NewPackageContext("android/soong/aconfig/codegen")
 
@@ -77,6 +91,7 @@ func init() {
 }
 
 func RegisterBuildComponents(ctx android.RegistrationContext) {
+	ctx.RegisterModuleType("aconfig_declarations_group", AconfigDeclarationsGroupFactory)
 	ctx.RegisterModuleType("cc_aconfig_library", CcAconfigLibraryFactory)
 	ctx.RegisterModuleType("java_aconfig_library", JavaDeclarationsLibraryFactory)
 	ctx.RegisterModuleType("rust_aconfig_library", RustAconfigLibraryFactory)
