@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec323df3_3743a717",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-12T20:59:31Z",
+      "side": 1,
+      "message": "Make this line a little shorter by wrapping this or breaking it out into a separate `if`.",
+      "range": {
+        "startLine": 172,
+        "startChar": 114,
+        "endLine": 172,
+        "endChar": 149
+      },
+      "revId": "880d631c76af1183e30264c7a009aa6bf5c9f245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
