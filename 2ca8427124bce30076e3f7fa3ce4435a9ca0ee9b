@@ -50,6 +50,24 @@
       "message": "Hm? Trying locally as well.",
       "revId": "2ca8427124bce30076e3f7fa3ce4435a9ca0ee9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca2a7aa_28a61c8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-12T21:10:47Z",
+      "side": 1,
+      "message": "aosp-build-tools branch was broken, should be fixed now.",
+      "parentUuid": "8a9b8ea0_ec6646dd",
+      "revId": "2ca8427124bce30076e3f7fa3ce4435a9ca0ee9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
