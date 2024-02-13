@@ -34,6 +34,24 @@
       "parentUuid": "ecb7cb50_007dbff1",
       "revId": "07709d06257bdb134f6026c18162197dc987290d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc3f936_89dbde7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-13T23:34:09Z",
+      "side": 1,
+      "message": "It works for me (aosp_cf_x86_64_phone-trunk_staging-userdebug in aosp):\n\n```\n$ gunzip -c out/verbose.log.gz | grep \"\\[-Wformat\"\n$ \n```",
+      "parentUuid": "e22c3d98_45736382",
+      "revId": "07709d06257bdb134f6026c18162197dc987290d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
