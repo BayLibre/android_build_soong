@@ -1626,6 +1626,12 @@ func (u *usesLibrary) classLoaderContextForUsesLibDeps(ctx android.ModuleContext
 			if impl := comp.OptionalSdkLibraryImplementation(); impl != nil && *impl != dep {
 				return
 			}
+			// If the dependency is optional _and_ the dependency does not provide a dex jar, skip it.
+			// One example of this is some java_sdk_library_import modules which might contain stubs, but
+			// not impl.
+			if tag == usesLibOptTag && comp.DexJarBuildPath(ctx).PathOrNil() == nil {
+				return
+			}
 		}
 
 		if lib, ok := m.(UsesLibraryDependency); ok {

@@ -2799,18 +2799,24 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 	}
 
 	depName := android.RemoveOptionalPrebuiltPrefix(ctx.OtherModuleName(depModule))
+	depTag := ctx.OtherModuleDependencyTag(depModule)
 
 	var sdkLib *string
 	if lib, ok := depModule.(SdkLibraryDependency); ok && lib.sharedLibrary() {
 		// A shared SDK library. This should be added as a top-level CLC element.
 		sdkLib = &depName
+		// If the dependency is optional _and_ the dependency does not provide a dex jar, skip it.
+		// One example of this is some java_sdk_library_import modules which might contain stubs, but
+		// not impl.
+		if depTag == usesLibOptTag && lib.DexJarBuildPath(ctx).PathOrNil() == nil {
+			sdkLib = nil
+		}
 	} else if ulib, ok := depModule.(ProvidesUsesLib); ok {
 		// A non-SDK library disguised as an SDK library by the means of `provides_uses_lib`
 		// property. This should be handled in the same way as a shared SDK library.
 		sdkLib = ulib.ProvidesUsesLib()
 	}
 
-	depTag := ctx.OtherModuleDependencyTag(depModule)
 	if IsLibDepTag(depTag) {
 		// Ok, propagate <uses-library> through non-static library dependencies.
 	} else if tag, ok := depTag.(usesLibraryDependencyTag); ok && tag.sdkVersion == dexpreopt.AnySdkVersion {
