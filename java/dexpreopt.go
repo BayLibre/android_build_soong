@@ -19,6 +19,8 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/google/blueprint/proptools"
+
 	"android/soong/android"
 	"android/soong/dexpreopt"
 )
@@ -30,6 +32,9 @@ type DexpreopterInterface interface {
 
 	// True if dexpreopt is disabled for the java module.
 	dexpreoptDisabled(ctx android.BaseModuleContext, libraryName string) bool
+
+	// Disable dexpreopt for this module
+	DisableDexpreopt()
 
 	// If the java module is to be installed into an APEX, this list contains information about the
 	// dexpreopt outputs to be installed on devices. Note that these dexpreopt outputs are installed
@@ -527,4 +532,8 @@ func (d *dexpreopter) AndroidMkEntriesForApex() []android.AndroidMkEntries {
 
 func (d *dexpreopter) OutputProfilePathOnHost() android.Path {
 	return d.outputProfilePathOnHost
+}
+
+func (d *dexpreopter) DisableDexpreopt() {
+	d.dexpreoptProperties.Dex_preopt.Enabled = proptools.BoolPtr(false)
 }

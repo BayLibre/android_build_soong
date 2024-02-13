@@ -1628,6 +1628,16 @@ func (u *usesLibrary) classLoaderContextForUsesLibDeps(ctx android.ModuleContext
 			}
 		}
 
+		// Skip java_sdk_library dependencies that provide stubs, but not an implementation.
+		// This will be restricted to optional_uses_libs
+		if sdklib, ok := m.(SdkLibraryDependency); ok {
+			if tag == usesLibOptTag && sdklib.DexJarBuildPath(ctx).PathOrNil() == nil {
+				dexpreopter := ctx.Module().(DexpreopterInterface)
+				dexpreopter.DisableDexpreopt()
+				return
+			}
+		}
+
 		if lib, ok := m.(UsesLibraryDependency); ok {
 			libName := dep
 			if ulib, ok := m.(ProvidesUsesLib); ok && ulib.ProvidesUsesLib() != nil {
