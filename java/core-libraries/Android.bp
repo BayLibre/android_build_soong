@@ -522,6 +522,7 @@ java_system_modules {
     visibility: [
         "//art/build/sdk",
         "//external/conscrypt",
+        "//external/icu",
         "//external/icu/android_icu4j",
         "//external/wycheproof",
     ],
