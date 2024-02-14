@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de4c67b7_9120c550",
+        "filename": "aconfig/codegen/aconfig_declarations_group.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-14T18:23:17Z",
+      "side": 1,
+      "message": "Actually, I\u0027ve designed the module so that `aconfig_declarations_group` can depend on other `aconfig_declarations_group`. PTAL at [this topic CLs](https://googleplex-android-review.git.corp.google.com/q/topic:%22aconfig_declarations_group%22). However, thinking of it now it does not make sense for an `aconfig_declarations_group` to depend on another via the currently defined properties of the module (i.e. java, rust, cc _aconfig_libraries). I\u0027ve added another property `aconfig_declarations_groups` where the dependent modules can be specified. I\u0027ll update the aforementioned CLs accordingly as well.",
+      "parentUuid": "c2f45d02_10a3e57e",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "0d762f8c921db1422a615b28649a2e09efd5dc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee657942_91d369d4",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Understood, I think you are right that `JavaInfoProvider` might not be appropriate here.\n\nimo one of the advantages of keeping this language agnostic will manifest when we use this provider for rust and cc aconfig libraries. With the current schema, rust and cc will set a `CodegenInfo` provider that has a `srcJars` property even though srcJars is not relevant for those languages. (albeit it will be empty)\n\nnit: Do we need to call this property `SrcJars`? Can we replace them with a more generic property `Srcs` and use the same switch same statement logic in line 84 of `aconfig/codegen/aconfig_declarations_group.go`?\n\nDont mean this be blocking, but I was wondering how you anticipate this struct will evolve with cc and rust",
       "parentUuid": "a0299a56_9a831b3d",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "0d762f8c921db1422a615b28649a2e09efd5dc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99849190_e3d888de",
+        "filename": "aconfig/init.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-14T18:23:17Z",
+      "side": 1,
+      "message": "Ah, I understand your point, and agree that `srcs` would be generic and more applicable for all three codegen module types. However, the limitation of renaming the property to the generic `Srcs` somewhat coincides with the fact that `aconfig_declarations_group` can depend on one another, as explained in another comment. i.e. if we rename the property to the generic `Srcs`, we cannot differentiate the srcs provided from java, rust or cc modules when the provider is utilized in the `aconfig_declarations_group`. I think that one solution we could utilize is to introduce an separate provider for `aconfig_declarations_group`, which can specify srcs for each languages, while renaming the property as the generic srcs for this provider. WDYT?",
+      "parentUuid": "3cde89b8_73cb420a",
       "range": {
         "startLine": 31,
         "startChar": 1,
