@@ -22,6 +22,30 @@
       },
       "revId": "b1cde7d871c081070112911e5e20b1b17c4cca92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c10681_c45761c0",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-14T04:55:24Z",
+      "side": 1,
+      "message": "`aconfigDeclarationsTag` is used for entries listed in [`aconfig_declarations`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/droidstubs.go;drc\u003d5919815f80cb8da3d28a7cb4692245ac82c114f4;l\u003d454) property, which are \"a list of aconfig_declarations module names that the stubs generated in this (droidstubs) module depend on.\" I believe that implicitly adding srcjars as deps for an entry listed as `aconfig_declaration` property may lead to confusion for users. If the user were to retrieve the collected srcjars of the `aconfig_declarations_group` module type, the user can utilize the output file tag as seen below:\n```\naconfig_declarations_group {\n    name: \"foo\",\n    java_aconfig_libraries: [\n    ...\n    ],\n}\n\ndroidstubs {\n    name: \"bar\",\n    srcs: [\n        \":foo{.srcjars}\"\n    ],\n```",
+      "parentUuid": "8fdce90a_b8b43011",
+      "range": {
+        "startLine": 417,
+        "startChar": 5,
+        "endLine": 419,
+        "endChar": 5
+      },
+      "revId": "b1cde7d871c081070112911e5e20b1b17c4cca92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
