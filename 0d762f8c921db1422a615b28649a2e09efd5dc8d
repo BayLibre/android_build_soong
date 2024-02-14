@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee657942_91d369d4",
+        "filename": "aconfig/init.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-14T03:31:41Z",
+      "side": 1,
+      "message": "Can we consider keeping codegenInfo language agnostic? Specifically, make this new module type set a `JavaInfoProvider` which contains the srcJars information \n\nWe have several places in the tree where the provider interface between java modules is a `JavaInfoProvider` https://source.corp.google.com/search?q\u003dOtherModuleProvider.*JavaInfo\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main. If we use a new provider for this, we might need to update those",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "0d762f8c921db1422a615b28649a2e09efd5dc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
