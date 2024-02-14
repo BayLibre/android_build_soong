@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fdce90a_b8b43011",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-14T03:42:39Z",
+      "side": 1,
+      "message": "In the current implementation of aosp/2959346, aconfig_declarations can provide a srcjar. Is there a reason why we dont add it to `deps.srcJars` here?",
+      "range": {
+        "startLine": 417,
+        "startChar": 5,
+        "endLine": 419,
+        "endChar": 5
+      },
+      "revId": "b1cde7d871c081070112911e5e20b1b17c4cca92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
