@@ -141,6 +141,30 @@
       },
       "revId": "0d762f8c921db1422a615b28649a2e09efd5dc8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a121ce41_837a34a8",
+        "filename": "aconfig/init.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-14T18:41:39Z",
+      "side": 1,
+      "message": "I think the current implementation is reasonable. We can modify it later if necessary.",
+      "parentUuid": "99849190_e3d888de",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "0d762f8c921db1422a615b28649a2e09efd5dc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
