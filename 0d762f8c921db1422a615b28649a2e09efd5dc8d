@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2f45d02_10a3e57e",
+        "filename": "aconfig/codegen/aconfig_declarations_group.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-14T08:33:08Z",
+      "side": 1,
+      "message": "My understanding is that this is not necessary since `aconfig_declaratations_group` cannot depend on other `aconfig_declarations_group`. What is the use case of setting this provider here?",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "0d762f8c921db1422a615b28649a2e09efd5dc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee657942_91d369d4",
         "filename": "aconfig/init.go",
         "patchSetId": 5
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "Thanks for pointing this out! However, I don\u0027t think that the purpose of the module `aconfig_declarations_group` is mimicking the behavior of [`java.Module`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/base.go;drc\u003dbacee38680ec91b4f68c4102809b38c80b74f3d3;l\u003d415), which would have made sense to set `JavaInfoProvider` if it does. e.g. the module itself does not perform any compilations, and the output files of this module is not suitable to be passed as a property of a `java_*` module that expects `JavaInfoProvider`. e.g. this module type **can** be used as following:\n```\naconfig_declarations_group {\n    name: \"foo\",\n    java_aconfig_libraries: [\n    ...\n    ],\n}\n\njava_library {\n    name: \"bar\",\n    srcs: [\n        \":foo{.srcjars}\"\n    ],\n}\n\ndroidstubs {\n    name: \"baz\",\n    aconfig_declarations:[\n        \"foo\",\n    ],\n}\n```\n\nThis module type **cannot** be used as the following:\n```\naconfig_declarations_group {\n    name: \"foo\",\n    java_aconfig_libraries: [\n    ...\n    ],\n}\n\njava_library {\n    name: \"bar\",\n    \n    // Cannot be used this way, as the module does not provide any compiled jars.\n    // Same reason applies to static_libs\n    libs: [\n        \"foo\",\n    ],\n}\n```\n\nAs seen in the properties of this module type, this module can specify rust and cc aconfig library module names, on top of the java ones. Although this initial change does not add support for rust and cc output files at the moment, setting this module as a java info provider instead of the introduced codegen info specific provider would mean that we would need to set this module as a provider for the other two languages as well. Do you mind sharing the advantages of setting providers per languages instead of setting one codegen specific provider?",
       "parentUuid": "ee657942_91d369d4",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "0d762f8c921db1422a615b28649a2e09efd5dc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cde89b8_73cb420a",
+        "filename": "aconfig/init.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-14T08:33:08Z",
+      "side": 1,
+      "message": "Understood, I think you are right that `JavaInfoProvider` might not be appropriate here.\n\nimo one of the advantages of keeping this language agnostic will manifest when we use this provider for rust and cc aconfig libraries. With the current schema, rust and cc will set a `CodegenInfo` provider that has a `srcJars` property even though srcJars is not relevant for those languages. (albeit it will be empty)\n\nnit: Do we need to call this property `SrcJars`? Can we replace them with a more generic property `Srcs` and use the same switch same statement logic in line 84 of `aconfig/codegen/aconfig_declarations_group.go`?\n\nDont mean this be blocking, but I was wondering how you anticipate this struct will evolve with cc and rust",
+      "parentUuid": "a0299a56_9a831b3d",
       "range": {
         "startLine": 31,
         "startChar": 1,
