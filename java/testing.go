@@ -526,6 +526,7 @@ func gatherRequiredDepsForTest() string {
             java_api_library {
                 name: "%s",
                 api_contributions: ["%s"],
+				stubs_type: "everything",
             }
         `, libName, droidstubs.name+".api.contribution")
 	}
