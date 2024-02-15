@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d1e4d3_f5ee360f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-15T12:45:03Z",
+      "side": 1,
+      "message": "Verified that it fixes the specific build failure.",
+      "revId": "2766baa922343f12529d5f780cffc6ea831cbf83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
