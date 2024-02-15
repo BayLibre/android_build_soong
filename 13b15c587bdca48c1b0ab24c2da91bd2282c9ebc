@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9488ecd8_2e8d0e6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-15T17:50:16Z",
+      "side": 1,
+      "message": "I assume these reverts are for testing something, and you don\u0027t necessarily plan to submit them?",
+      "revId": "13b15c587bdca48c1b0ab24c2da91bd2282c9ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
