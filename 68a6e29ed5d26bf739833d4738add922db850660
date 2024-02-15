@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "399757dc_6bfc41e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-15T01:40:23Z",
+      "side": 1,
+      "message": "This is a cp of this internal change https://googleplex-android-review.git.corp.google.com/q/topic:%22skip-ac-parent%22",
+      "revId": "68a6e29ed5d26bf739833d4738add922db850660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
