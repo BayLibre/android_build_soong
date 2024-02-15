@@ -2624,3 +2624,54 @@ func TestMultiplePrebuilts(t *testing.T) {
 		android.AssertStringEquals(t, "unexpected LOCAL_MODULE", "bar", entries.EntryMap["LOCAL_MODULE"][0])
 	}
 }
+
+func TestApiLibraryAconfigDeclarations(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+		}),
+		android.FixtureMergeMockFs(map[string][]byte{
+			"a/A.java":      nil,
+			"a/current.txt": nil,
+			"a/removed.txt": nil,
+		}),
+	).RunTestWithBp(t, `
+	aconfig_declarations {
+		name: "bar",
+		package: "com.example.package",
+		srcs: [
+			"bar.aconfig",
+		],
+	}
+	java_api_contribution {
+		name: "baz",
+		api_file: "a/current.txt",
+		api_surface: "public",
+	}
+	java_api_library {
+		name: "foo",
+		api_surface: "public",
+		api_contributions: [
+			"baz",
+		],
+		aconfig_declarations: [
+			"bar",
+		],
+		stubs_type: "exportable",
+		enable_validation: false,
+	}
+	`)
+
+	// Check if java_api_library depends on aconfig_declarations
+	android.AssertBoolEquals(t, "foo expected to depend on bar",
+		CheckModuleHasDependency(t, result.TestContext, "foo", "android_common", "bar"), true)
+
+	m := result.ModuleForTests("foo", "android_common")
+	android.AssertStringDoesContain(t, "foo generates revert annotations file",
+		strings.Join(m.AllOutputs(), ""), "revert-annotations-exportable.txt")
+
+	// revert-annotations.txt passed to exportable stubs generation metalava command
+	manifest := m.Output("metalava.sbox.textproto")
+	cmdline := String(android.RuleBuilderSboxProtoForTests(t, result.TestContext, manifest).Commands[0].Command)
+	android.AssertStringDoesContain(t, "flagged api hide command not included", cmdline, "revert-annotations-exportable.txt")
+}
