@@ -342,8 +342,7 @@ func (oz *OutputZip) writeEntries(entries []string) error {
 func (oz *OutputZip) getUninitializedPythonPackages(inputZips []InputZip) ([]string, error) {
 	// the runfiles packages needs to be populated with "__init__.py".
 	// the runfiles dirs have been treated as packages.
-	var allPackages []string // Using a slice to preserve input order.
-	seenPkgs := make(map[string]bool)
+	allPackages := make(map[string]bool)
 	initedPackages := make(map[string]bool)
 	getPackage := func(path string) string {
 		ret := filepath.Dir(path)
@@ -370,17 +369,16 @@ func (oz *OutputZip) getUninitializedPythonPackages(inputZips []InputZip) ([]str
 				initedPackages[pyPkg] = true
 			}
 			for pyPkg != "" {
-				if _, found := seenPkgs[pyPkg]; found {
+				if _, found := allPackages[pyPkg]; found {
 					break
 				}
-				seenPkgs[pyPkg] = true
-				allPackages = append(allPackages, pyPkg)
+				allPackages[pyPkg] = true
 				pyPkg = getPackage(pyPkg)
 			}
 		}
 	}
 	noInitPackages := make([]string, 0)
-	for _, pyPkg := range allPackages {
+	for pyPkg := range allPackages {
 		if _, found := initedPackages[pyPkg]; !found {
 			noInitPackages = append(noInitPackages, pyPkg)
 		}
