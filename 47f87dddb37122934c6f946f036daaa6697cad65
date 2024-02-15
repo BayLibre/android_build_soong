@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e916773_f2c6825d",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-02-15T04:28:51Z",
+      "side": 0,
+      "message": "Can we make this an error for a while. I think this can be a helpful message.",
+      "range": {
+        "startLine": 1007,
+        "startChar": 3,
+        "endLine": 1008,
+        "endChar": 15
+      },
+      "revId": "47f87dddb37122934c6f946f036daaa6697cad65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
