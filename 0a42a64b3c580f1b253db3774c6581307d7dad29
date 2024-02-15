@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5774474e_4736a3c4",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-02-15T06:58:39Z",
+      "side": 1,
+      "message": "nit: libbinder_ndk",
+      "range": {
+        "startLine": 1005,
+        "startChar": 84,
+        "endLine": 1005,
+        "endChar": 97
+      },
+      "revId": "0a42a64b3c580f1b253db3774c6581307d7dad29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
