@@ -1157,15 +1157,11 @@ func (c *RuleBuilderCommand) Outputs(paths WritablePaths) *RuleBuilderCommand {
 
 // OutputDir adds the output directory to the command line. This is only available when used with RuleBuilder.Sbox,
 // and will be the temporary output directory managed by sbox, not the final one.
-func (c *RuleBuilderCommand) OutputDir(subPathComponents ...string) *RuleBuilderCommand {
+func (c *RuleBuilderCommand) OutputDir() *RuleBuilderCommand {
 	if !c.rule.sbox {
 		panic("OutputDir only valid with Sbox")
 	}
-	path := sboxOutDir
-	if len(subPathComponents) > 0 {
-		path = filepath.Join(append([]string{sboxOutDir}, subPathComponents...)...)
-	}
-	return c.Text(path)
+	return c.Text(sboxOutDir)
 }
 
 // DepFile adds the specified depfile path to the paths returned by RuleBuilder.DepFiles and adds it to the command
