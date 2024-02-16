@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a745b16_838ff862",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-16T17:14:08Z",
+      "side": 1,
+      "message": "You aren\u0027t using interface any more, everything has access to the concrete dexpreopter type.",
+      "revId": "38ad06938591496c9957eadff61630e1336cf988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e92c32_d0391669",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-16T17:14:08Z",
+      "side": 1,
+      "message": "We\u0027re slowly moving towards not modifying user-provided properties.  Can you add a separate field in dexpreopter for this, and check it in `dexpreoptDisabled()`?",
+      "revId": "38ad06938591496c9957eadff61630e1336cf988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
