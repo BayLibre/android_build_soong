@@ -267,7 +267,6 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 		flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C codegen-units=1")
 
 		if !(ctx.RustModule().Rlib() || ctx.RustModule().ProcMacro()) {
-			flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-Z dylib-lto")
 			flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto=thin")
 		}
 	}
