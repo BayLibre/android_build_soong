@@ -139,6 +139,7 @@ type variableProperties struct {
 			Srcs         []string
 			Exclude_srcs []string
 			Cmd          *string
+			Enabled *bool
 		}
 
 		// eng is true for -eng builds, and can be used to turn on additional heavyweight debugging
