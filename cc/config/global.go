@@ -365,8 +365,13 @@ var (
 		"-Wno-unqualified-std-cast-call",
 		"-Wno-array-parameter",
 		"-Wno-gnu-offsetof-extensions",
+<<<<<<< PATCH SET (46d66f Enable -Wfortify-source)
+		"-Wno-tautological-negation-compare",
+		"-Wno-tautological-undefined-compare",
+=======
 		// TODO: Enable this warning http://b/315245071
 		"-Wno-fortify-source",
+>>>>>>> BASE      (6edbaa Merge "Remove wtautological warnings added during toolchain )
 	}
 
 	llvmNextExtraCommonGlobalCflags = []string{
