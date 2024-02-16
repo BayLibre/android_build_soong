@@ -69,6 +69,24 @@
       "parentUuid": "67e92c32_d0391669",
       "revId": "38ad06938591496c9957eadff61630e1336cf988",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d405ebf_f6d45521",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-16T18:31:34Z",
+      "side": 1,
+      "message": "Mutating a few user properties requires every variant to have its own copy of the all the properties, which adds up to a significant amount of memory usage and time spent allocating when creating variants.  Ideally we could share the property structs between variants and write variant specific data to the module itself (like you\u0027re doing here), or to a Provider.",
+      "parentUuid": "70433b54_c46ab20c",
+      "revId": "38ad06938591496c9957eadff61630e1336cf988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
