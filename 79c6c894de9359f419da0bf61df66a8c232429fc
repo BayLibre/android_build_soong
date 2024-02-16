@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6de7c561_46c6ada2",
+        "filename": "android/metadata.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-02-16T08:32:48Z",
+      "side": 1,
+      "message": "nit: Not sure if it is intended to remove s from licenses.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "79c6c894de9359f419da0bf61df66a8c232429fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
