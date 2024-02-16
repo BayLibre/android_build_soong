@@ -16,6 +16,24 @@
       "message": "Instead of reaching back to to the module to get the dexpreopter, would it make more sense to either add an extra return value to this function or store the \"need to disable\" state on the *usesLibrary and copy it to the dexpreopter from the caller?",
       "revId": "5ff2b9b6cd8e17b599ac6d9260c52ae8332e7193",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7bf3932_e797a191",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1636,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-16T02:45:47Z",
+      "side": 1,
+      "message": "I think requiring the callers to check for a \"disable_dexpreopt\" value sounds good. I have updated the CL to pass this state from `usesLibrary` to `dexpreopter`.",
+      "parentUuid": "3bfc5fdc_aef3c360",
+      "revId": "5ff2b9b6cd8e17b599ac6d9260c52ae8332e7193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
