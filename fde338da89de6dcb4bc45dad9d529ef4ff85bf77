@@ -16,6 +16,166 @@
       "message": "This change is blocked on metalava support of multiple api files input",
       "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e1bbd4_6be4f00c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-16T11:17:58Z",
+      "side": 1,
+      "message": "I was a little surprised that this change was working so well as Metalava does not support passing multiple files for `--migrate-nullness`, `--api-lint` or the baseline options but I realized that it is working because Metalava just uses the last one and ignores the rest and the last file is the widest scope which is what was being passed before.",
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29b9ce3a_9ed85530",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-16T11:17:58Z",
+      "side": 1,
+      "message": "I think this only needs one baseline file as before.",
+      "range": {
+        "startLine": 941,
+        "startChar": 4,
+        "endLine": 941,
+        "endChar": 27
+      },
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3d21d1_f557d9a4",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-16T11:17:58Z",
+      "side": 1,
+      "message": "There\u0027s a lot of calls like this, it would make sense to extract a common variable.",
+      "range": {
+        "startLine": 354,
+        "startChar": 19,
+        "endLine": 354,
+        "endChar": 45
+      },
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a1b6fb_daa5b8a4",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-16T11:17:58Z",
+      "side": 1,
+      "message": "I think this should be outside the loop as it was previously.",
+      "range": {
+        "startLine": 355,
+        "startChar": 2,
+        "endLine": 355,
+        "endChar": 63
+      },
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2436d221_8a796cff",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-16T11:17:58Z",
+      "side": 1,
+      "message": "Could you document what this loop (and the following one) are doing as it is hard to tell from the code.",
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0adff9b_7ecd9dbe",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-16T11:17:58Z",
+      "side": 1,
+      "message": "Is this sorting scope specific files into order, if so could you explain what the order is.",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 374,
+        "endChar": 0
+      },
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b93f79_2d45ea68",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-16T11:17:58Z",
+      "side": 1,
+      "message": "I think that this loop is unnecessary. Metalava does not need to be given multiple incompatibilities files, just the one for the main scope. e.g. when generating system it needs to be given the system incompatibilities file.",
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f6fcb9c_530a6b2c",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1667,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-16T11:17:58Z",
+      "side": 1,
+      "message": "Remove commented code.",
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
