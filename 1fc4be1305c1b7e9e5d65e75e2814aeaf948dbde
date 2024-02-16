@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62249e5_398a1394",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-02-16T20:13:01Z",
+      "side": 1,
+      "message": "Do you want to just collapse this with the reland CL and give it a new commit message?",
+      "revId": "1fc4be1305c1b7e9e5d65e75e2814aeaf948dbde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
