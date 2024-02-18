@@ -32,6 +32,7 @@ var androidmk_denylist []string = []string{
 	"pdk/",
 	// Add back toolchain/ once defensive Android.mk files are removed
 	//"toolchain/",
+	"vendor/xts/",
 }
 
 func blockAndroidMks(ctx Context, androidMks []string) {
