@@ -1430,6 +1430,11 @@ func (library *libraryDecorator) sameVersionAbiDiff(ctx android.ModuleContext, r
 	libName := strings.TrimSuffix(baseName, filepath.Ext(baseName))
 	errorMessage := "error: Please update ABI references with: $$ANDROID_BUILD_TOP/development/vndk/tools/header-checker/utils/create_reference_dumps.py -l " + libName
 
+	targetRelease := ctx.Config().Getenv("TARGET_RELEASE")
+	if targetRelease != "" {
+		errorMessage += " -release " + targetRelease
+	}
+
 	library.sourceAbiDiff(ctx, referenceDump, baseName, nameExt,
 		isLlndkOrNdk, false /* allowExtensions */, "current", errorMessage)
 }
