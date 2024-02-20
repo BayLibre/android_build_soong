@@ -74,7 +74,6 @@ func TestAndroidMkJavaLibrary(t *testing.T) {
 				"my_java_aconfig_library_foo",
 				"my_java_aconfig_library_bar",
 			],
-			platform_apis: true,
 		}
 	`
 
@@ -110,7 +109,6 @@ func TestAndroidMkBinary(t *testing.T) {
 				"my_java_aconfig_library_foo",
 				"my_java_aconfig_library_bar",
 			],
-			platform_apis: true,
 			main_class: "foo",
 		}
 	`
@@ -129,7 +127,6 @@ func TestAndroidMkAndroidLibrary(t *testing.T) {
 				"my_java_aconfig_library_foo",
 				"my_java_aconfig_library_bar",
 			],
-			platform_apis: true,
 		}
 	`
 
@@ -148,7 +145,6 @@ func TestAndroidMkBinaryThatLinksAgainstAar(t *testing.T) {
 				"my_java_aconfig_library_foo",
 				"my_java_aconfig_library_bar",
 			],
-			platform_apis: true,
 		}
 		java_binary {
 			name: "my_module",
@@ -158,7 +154,6 @@ func TestAndroidMkBinaryThatLinksAgainstAar(t *testing.T) {
 			static_libs: [
 				"some_library",
 			],
-			platform_apis: true,
 			main_class: "foo",
 		}
 	`

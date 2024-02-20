@@ -870,7 +870,19 @@ func init() {
 	}
 }
 
+func (j *Module) checkPlatformApiIsNotSet(ctx android.ModuleContext) {
+	if _, exists := PlatformApiAllowlist[j.Name()]; exists {
+		// Existing violation.
+		return
+	}
+	// Prevent new violations
+	if j.deviceProperties.Platform_apis != nil {
+		ctx.PropertyErrorf("platforms_apis", "platform_apis is not a valid property for module type: %s. Please remove it.", ctx.ModuleType())
+	}
+}
+
 func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	j.checkPlatformApiIsNotSet(ctx)
 	j.provideHiddenAPIPropertyInfo(ctx)
 
 	j.sdkVersion = j.SdkVersion(ctx)
