@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb98f41_aefd960a",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-20T18:04:16Z",
+      "side": 1,
+      "message": "I\u0027ll +2, but this seems like such a minor issue an allowlist may not be necessary. if `platform_apis: true` is a no-op it should be easy to remove it from everywhere quickly and then make it an error.",
+      "revId": "8469e939f364d3fac034f5021bcd6eeb345ecb91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4339ca43_e8a05345",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-20T18:04:16Z",
+      "side": 1,
+      "message": "Previously for the bp2build and genrule allowlists we just had one list, and the internal soong plugin appended to the list. But either way works.",
+      "revId": "8469e939f364d3fac034f5021bcd6eeb345ecb91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
