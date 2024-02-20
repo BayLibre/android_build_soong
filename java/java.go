@@ -1279,6 +1279,7 @@ func (j *Test) generateAndroidBuildActionsWithConfig(ctx android.ModuleContext, 
 		}
 	})
 
+	j.setApiMap(inList("cts", j.testProperties.Test_suites))
 	j.Library.GenerateAndroidBuildActions(ctx)
 }
 

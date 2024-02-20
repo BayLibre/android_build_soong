@@ -177,6 +177,9 @@ type CommonProperties struct {
 	// If true, then jacocoagent is automatically added as a libs dependency so that
 	// r8 will not strip instrumentation classes out of dexed libraries.
 	Instrument bool `blueprint:"mutated"`
+
+	ApiMap bool `blueprint:"mutated"`
+
 	// If true, then the module supports statically including the jacocoagent
 	// into the library.
 	Supports_static_instrumentation bool `blueprint:"mutated"`
@@ -699,6 +702,10 @@ func (j *Module) shouldInstrumentInApex(ctx android.BaseModuleContext) bool {
 
 func (j *Module) setInstrument(value bool) {
 	j.properties.Instrument = value
+}
+
+func (j *Module) setApiMap(value bool) {
+	j.properties.ApiMap = value
 }
 
 func (j *Module) SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
