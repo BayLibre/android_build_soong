@@ -15,6 +15,7 @@
 package java
 
 import (
+	// "os"
 	"fmt"
 	"path/filepath"
 	"strconv"
@@ -177,6 +178,9 @@ type CommonProperties struct {
 	// If true, then jacocoagent is automatically added as a libs dependency so that
 	// r8 will not strip instrumentation classes out of dexed libraries.
 	Instrument bool `blueprint:"mutated"`
+
+	ApiMap bool `blueprint:"mutated"`
+
 	// If true, then the module supports statically including the jacocoagent
 	// into the library.
 	Supports_static_instrumentation bool `blueprint:"mutated"`
@@ -699,6 +703,10 @@ func (j *Module) shouldInstrumentInApex(ctx android.BaseModuleContext) bool {
 
 func (j *Module) setInstrument(value bool) {
 	j.properties.Instrument = value
+}
+
+func (j *Module) setApiMap(value bool) {
+	j.properties.ApiMap = value
 }
 
 func (j *Module) SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
@@ -1558,6 +1566,15 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		outputFile = j.instrument(ctx, flags, outputFile, jarName, specs)
 	}
 
+	// if j.properties.ApiMap {
+	// if strings.Contains(outputFile.String(), "CtsInputMethodServiceHostTestCases") {
+	// outputReport := j.apiMap(ctx, outputFile)
+	// f, _ := os.OpenFile("/usr/local/google/home/slotus/SSD/aosp-main/a.txt", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
+	// defer f.Close()
+	// f.WriteString(outputFile.String() + "\n" + outputReport.String() + "\n\n")
+	// j.extraOutputFiles = append(j.extraOutputFiles, outputReport)
+	// }
+
 	// merge implementation jar with resources if necessary
 	implementationAndResourcesJar := outputFile
 	if j.resourceJar != nil {
@@ -1884,6 +1901,12 @@ func (j *Module) instrument(ctx android.ModuleContext, flags javaBuilderFlags,
 	j.jacocoReportClassesFile = jacocoReportClassesFile
 
 	return instrumentedJar
+}
+
+func (j *Module) apiMap(ctx android.ModuleContext, classesJar android.Path) android.OutputPath {
+	outputReport := android.PathForModuleOut(ctx, ctx.ModuleName()+"-apimap.xml").OutputPath
+	apiMap(ctx, classesJar, outputReport)
+	return outputReport
 }
 
 type providesTransitiveHeaderJars struct {

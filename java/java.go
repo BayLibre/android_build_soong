@@ -19,6 +19,7 @@ package java
 // is handled in builder.go
 
 import (
+	// "os"
 	"fmt"
 	"path/filepath"
 	"sort"
@@ -731,6 +732,18 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				archDir = ctx.DeviceConfig().DeviceArch()
 			}
 			installDir = android.PathForModuleInstall(ctx, ctx.ModuleName(), archDir)
+			// if j.properties.ApiMap {
+			// 	for _, extra := range j.extraOutputFiles {
+			// 		if strings.Contains(extra.String(), "apimap.xml") {
+			// 			f, _ := os.OpenFile("/usr/local/google/home/slotus/SSD/aosp-main/b.txt", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
+			// 			defer f.Close()
+			// 			f.WriteString(j.outputFile.String() + "\n" + extra.String() + "\n\n")
+			// 			// continue
+			// 			installed := ctx.InstallFile(installDir, extra.Base(), extra)
+			// 			extraInstallDeps = append(extraInstallDeps, installed)
+			// 		}
+			// 	}
+			// }
 		} else {
 			installDir = android.PathForModuleInstall(ctx, "framework")
 		}
@@ -1279,7 +1292,15 @@ func (j *Test) generateAndroidBuildActionsWithConfig(ctx android.ModuleContext, 
 		}
 	})
 
+	j.setApiMap(inList("cts", j.testProperties.Test_suites))
 	j.Library.GenerateAndroidBuildActions(ctx)
+	// if j.properties.ApiMap {
+	// 	for _, extra := range j.extraOutputFiles {
+	// 		if strings.Contains(extra.String(), "apimap.xml") {
+	// 			j.data = append(j.data, extra)
+	// 		}
+	// 	}
+	// }
 }
 
 func (j *TestHelperLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {

@@ -178,6 +178,11 @@ func (j *Test) AndroidMkEntries() []android.AndroidMkEntries {
 		}
 		androidMkWriteExtraTestConfigs(j.extraTestConfigs, entries)
 		androidMkWriteTestData(j.data, entries)
+
+		if j.properties.ApiMap {
+			entries.SetPath("LOCAL_API_MAP_FILE", j.implementationJarFile)
+		}
+
 		if !BoolDefault(j.testProperties.Auto_gen_config, true) {
 			entries.SetString("LOCAL_DISABLE_AUTO_GENERATE_TEST_CONFIG", "true")
 		}
@@ -492,6 +497,21 @@ func (a *AndroidTest) AndroidMkEntries() []android.AndroidMkEntries {
 		}
 		androidMkWriteExtraTestConfigs(a.extraTestConfigs, entries)
 		androidMkWriteTestData(a.data, entries)
+
+		// if a.properties.ApiMap {
+		// 	testFiles := ""
+		// 	for _, d := range a.data {
+		// 		testFiles = testFiles + d.String() + ":" + d.Rel() + "\n"
+		// 	}
+		// 	f, _ := os.OpenFile("/usr/local/google/home/slotus/SSD/aosp-main/c.txt", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
+		// 	defer f.Close()
+		// 	f.WriteString(a.outputFile.String() + "\n" + testFiles + "\n")
+		// }
+
+		if a.properties.ApiMap {
+			entries.SetPath("LOCAL_API_MAP_FILE", a.implementationJarFile)
+		}
+
 		entries.AddStrings("LOCAL_TEST_MAINLINE_MODULES", a.testProperties.Test_mainline_modules...)
 	})
 
