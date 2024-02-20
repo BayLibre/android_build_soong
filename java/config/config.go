@@ -201,6 +201,7 @@ func init() {
 	pctx.StaticVariableWithEnvOverride("REZipExecStrategy", "RBE_ZIP_EXEC_STRATEGY", remoteexec.LocalExecStrategy)
 
 	pctx.HostJavaToolVariable("JacocoCLIJar", "jacoco-cli.jar")
+	pctx.HostJavaToolVariable("ApiMapJar", "cts-api-map.jar")
 
 	pctx.HostBinToolVariable("ManifestCheckCmd", "manifest_check")
 	pctx.HostBinToolVariable("ManifestFixerCmd", "manifest_fixer")

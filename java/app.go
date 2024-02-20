@@ -18,6 +18,7 @@ package java
 // related module types, including their override variants.
 
 import (
+	// "os"
 	"fmt"
 	"path/filepath"
 	"strings"
@@ -332,6 +333,7 @@ func (a *AndroidTestHelperApp) GenerateAndroidBuildActions(ctx android.ModuleCon
 		}
 		a.aapt.manifestValues.applicationId = *applicationId
 	}
+	a.setApiMap(a.includedInTestSuite("cts"))
 	a.generateAndroidBuildActions(ctx)
 }
 
@@ -901,10 +903,20 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 
 		var extraInstalledPaths android.InstallPaths
+		// files := ""
 		for _, extra := range a.extraOutputFiles {
+			// files = files + extra.String() + "\n"
+			if strings.Contains(extra.String(), "apimap.xml") {
+				continue
+			}
 			installed := ctx.InstallFile(a.installDir, extra.Base(), extra)
 			extraInstalledPaths = append(extraInstalledPaths, installed)
 		}
+		// if strings.Contains(files, "apimap.xml") {
+		// 	f, _ := os.OpenFile("/usr/local/google/home/slotus/SSD/aosp-main/b.txt", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
+		// 	defer f.Close()
+		// 	f.WriteString(a.outputFile.String() + "\n" + files + "\n")
+		// }
 		ctx.InstallFile(a.installDir, a.outputFile.Base(), a.outputFile, extraInstalledPaths...)
 	}
 
@@ -1283,6 +1295,7 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 		a.aapt.manifestValues.applicationId = *applicationId
 	}
+	a.setApiMap(a.includedInTestSuite("cts"))
 	a.generateAndroidBuildActions(ctx)
 
 	for _, module := range a.testProperties.Test_mainline_modules {
@@ -1294,6 +1307,13 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.testConfig = a.FixTestConfig(ctx, testConfig)
 	a.extraTestConfigs = android.PathsForModuleSrc(ctx, a.testProperties.Test_options.Extra_test_configs)
 	a.data = android.PathsForModuleSrc(ctx, a.testProperties.Data)
+	// if a.properties.ApiMap {
+	// 	for _, extra := range a.extraOutputFiles {
+	// 		if strings.Contains(extra.String(), "apimap.xml") {
+	// 			a.data = append(a.data, extra)
+	// 		}
+	// 	}
+	// }
 	android.SetProvider(ctx, testing.TestModuleProviderKey, testing.TestModuleProviderData{})
 }
 

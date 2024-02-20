@@ -45,6 +45,15 @@ var (
 		"strippedJar", "stripSpec", "tmpDir", "tmpJar")
 )
 
+var (
+	apiMapRule = pctx.AndroidStaticRule("apiMapRule", blueprint.RuleParams{
+		Command: `java -jar ${config.ApiMapJar} ${ctsJar} ${apiXml} $out`,
+		CommandDeps: []string{
+			"${config.ApiMapJar}",
+		},
+	}, "ctsJar", "apiXml")
+)
+
 func jacocoDepsMutator(ctx android.BottomUpMutatorContext) {
 	type instrumentable interface {
 		shouldInstrument(ctx android.BaseModuleContext) bool
@@ -71,6 +80,20 @@ func jacocoDepsMutator(ctx android.BottomUpMutatorContext) {
 		// module.
 		ctx.AddFarVariationDependencies(ctx.Module().Target().Variations(), libTag, "jacocoagent")
 	}
+}
+
+func apiMap(ctx android.ModuleContext, inputJar android.Path, outputReport android.WritablePath) {
+	apiXmlFile := android.PathForArbitraryOutput(ctx, "target", "common", "obj", "api.xml")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        apiMapRule,
+		Description: "apiMapRule",
+		Output:      outputReport,
+		Inputs:      []android.Path{inputJar, apiXmlFile},
+		Args: map[string]string{
+			"ctsJar": inputJar.String(),
+			"apiXml": apiXmlFile.String(),
+		},
+	})
 }
 
 // Instruments a jar using the Jacoco command line interface.  Uses stripSpec to extract a subset
