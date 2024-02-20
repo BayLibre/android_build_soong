@@ -18,6 +18,7 @@ package java
 // related module types, including their override variants.
 
 import (
+	// "os"
 	"fmt"
 	"path/filepath"
 	"strings"
@@ -332,6 +333,7 @@ func (a *AndroidTestHelperApp) GenerateAndroidBuildActions(ctx android.ModuleCon
 		}
 		a.aapt.manifestValues.applicationId = *applicationId
 	}
+	a.setApiMap(a.includedInTestSuite("cts"))
 	a.generateAndroidBuildActions(ctx)
 }
 
@@ -1283,6 +1285,7 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 		a.aapt.manifestValues.applicationId = *applicationId
 	}
+	a.setApiMap(a.includedInTestSuite("cts"))
 	a.generateAndroidBuildActions(ctx)
 
 	for _, module := range a.testProperties.Test_mainline_modules {
