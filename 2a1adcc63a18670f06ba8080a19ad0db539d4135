@@ -86,6 +86,30 @@
       },
       "revId": "2a1adcc63a18670f06ba8080a19ad0db539d4135",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39f0aa6a_47bb5e5a",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2024-02-20T13:36:17Z",
+      "side": 1,
+      "message": "Yes, it\u0027s pretty-printed. This is what it looks like for a single flag.\n\n```\nparsed_flag {\n  package: \"android.content.pm\"\n  name: \"recoverability_detection\"\n  namespace: \"package_manager_service\"\n  description: \"Feature flag to enable recoverability detection feature. It includes GMS core rollback and improvements to rescue party.\"\n  bug: \"291135724\"\n  state: DISABLED\n  permission: READ_ONLY\n  trace {\n    source: \"frameworks/base/core/java/android/content/pm/flags.aconfig\"\n    state: DISABLED\n    permission: READ_ONLY\n  }\n  is_fixed_read_only: true\n  is_exported: false\n  metadata {\n    purpose: PURPOSE_UNSPECIFIED\n  }\n}\n```",
+      "parentUuid": "3270a66b_3da64a73",
+      "range": {
+        "startLine": 92,
+        "startChar": 71,
+        "endLine": 92,
+        "endChar": 76
+      },
+      "revId": "2a1adcc63a18670f06ba8080a19ad0db539d4135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
