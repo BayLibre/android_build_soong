@@ -703,7 +703,7 @@ func setUncompressDex(ctx android.ModuleContext, dexpreopter *dexpreopter, dexer
 // this property is a no-op for java_library
 // TODO (b/215379393): Remove this allowlist
 var (
-	aospPlatformApiAllowlist = map[string]bool{
+	PlatformApiAllowlist = map[string]bool{
 		"adservices-test-scenarios":                         true,
 		"aidl-cpp-java-test-interface-java":                 true,
 		"aidl-test-extras-java":                             true,
@@ -859,18 +859,21 @@ var (
 		"wm-shell-flicker-utils":                            true,
 		"wycheproof-keystore":                               true,
 	}
-
-	// Union of aosp and internal allowlists
-	PlatformApiAllowlist = map[string]bool{}
 )
 
-func init() {
-	for k, v := range aospPlatformApiAllowlist {
-		PlatformApiAllowlist[k] = v
+func (j *Module) checkPlatformApiIsNotSet(ctx android.ModuleContext) {
+	if _, exists := PlatformApiAllowlist[j.Name()]; exists {
+		// Existing violation.
+		return
+	}
+	// Prevent new violations
+	if j.deviceProperties.Platform_apis != nil {
+		ctx.PropertyErrorf("platforms_apis", "platform_apis is not a valid property for module type: %s. Please remove it.", ctx.ModuleType())
 	}
 }
 
 func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	j.checkPlatformApiIsNotSet(ctx)
 	j.provideHiddenAPIPropertyInfo(ctx)
 
 	j.sdkVersion = j.SdkVersion(ctx)
