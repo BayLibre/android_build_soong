@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "477558f7_75a8719b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-20T13:31:27Z",
+      "side": 1,
+      "message": "+100 for the intent, I\u0027ll leave it up to the build experts to comment on the implementation.",
+      "revId": "2a1adcc63a18670f06ba8080a19ad0db539d4135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38b9d692_4e1b6bab",
@@ -37,6 +54,30 @@
       "writtenOn": "2024-02-20T11:57:47Z",
       "side": 1,
       "message": "My intention is: include flags.pb for tools to consume, but also include the same info in text proto format for humans to quickly check flags in CI builds.",
+      "range": {
+        "startLine": 92,
+        "startChar": 71,
+        "endLine": 92,
+        "endChar": 76
+      },
+      "revId": "2a1adcc63a18670f06ba8080a19ad0db539d4135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3270a66b_3da64a73",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-20T13:31:27Z",
+      "side": 1,
+      "message": "That sounds like a great idea! Being able to read the contents with a single click in the web page would be a lot quicker than having to download the file and running some tool (even assuming you know exactly what tool to run).\n\nCan you confirm that the resulting `textproto` file is pretty printed as that would make them a LOT more readable.",
+      "parentUuid": "263cb5fe_44d67b1d",
       "range": {
         "startLine": 92,
         "startChar": 71,
