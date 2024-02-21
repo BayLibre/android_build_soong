@@ -22,6 +22,30 @@
       },
       "revId": "c6d5d578fc3e5f45d402ab03fd38b4b61418acd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a69b4ec9_9a0573c0",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-21T19:27:17Z",
+      "side": 1,
+      "message": "I did that in patchset 2 by mistake, but it can\u0027t be that because this is in a loop and needs to continue processing other fields after this one.",
+      "parentUuid": "c7d14a78_df38e03c",
+      "range": {
+        "startLine": 721,
+        "startChar": 3,
+        "endLine": 723,
+        "endChar": 4
+      },
+      "revId": "c6d5d578fc3e5f45d402ab03fd38b4b61418acd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
