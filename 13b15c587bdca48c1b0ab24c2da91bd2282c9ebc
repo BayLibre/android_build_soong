@@ -16,6 +16,24 @@
       "message": "I assume these reverts are for testing something, and you don\u0027t necessarily plan to submit them?",
       "revId": "13b15c587bdca48c1b0ab24c2da91bd2282c9ebc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5401d94_55a37aaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2024-02-21T15:32:41Z",
+      "side": 1,
+      "message": "Apologies for late repsonse, I did intend to revert these changes since the timeline seemed like it coincided with the RBE capacity problems in CI. But turns out the root cause is different - I\u0027ll abandon these changes.",
+      "parentUuid": "9488ecd8_2e8d0e6e",
+      "revId": "13b15c587bdca48c1b0ab24c2da91bd2282c9ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
