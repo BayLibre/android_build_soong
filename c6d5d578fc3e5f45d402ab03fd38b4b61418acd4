@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7d14a78_df38e03c",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-21T19:26:11Z",
+      "side": 1,
+      "message": "Can\u0027t this just be `return s.printfIntoPropertyRecursive(fieldName, field, configValue)`?",
+      "range": {
+        "startLine": 721,
+        "startChar": 3,
+        "endLine": 723,
+        "endChar": 4
+      },
+      "revId": "c6d5d578fc3e5f45d402ab03fd38b4b61418acd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
