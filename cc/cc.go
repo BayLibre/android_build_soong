@@ -1604,13 +1604,8 @@ func (ctx *moduleContextImpl) useSdk() bool {
 
 func (ctx *moduleContextImpl) sdkVersion() string {
 	if ctx.ctx.Device() {
-		config := ctx.ctx.Config()
-		if !config.IsVndkDeprecated() && ctx.useVndk() {
-			vndkVer := ctx.mod.VndkVersion()
-			if inList(vndkVer, config.PlatformVersionActiveCodenames()) {
-				return "current"
-			}
-			return vndkVer
+		if ctx.useVndk() {
+			return "current"
 		}
 		return String(ctx.mod.Properties.Sdk_version)
 	}
@@ -1624,16 +1619,6 @@ func (ctx *moduleContextImpl) minSdkVersion() string {
 	}
 	if ver == "apex_inherit" || ver == "" {
 		ver = ctx.sdkVersion()
-	}
-
-	if ctx.ctx.Device() {
-		config := ctx.ctx.Config()
-		if config.IsVndkDeprecated() && ctx.inVendor() {
-			// If building for vendor with final API, then use the latest _stable_ API as "current".
-			if config.VendorApiLevelFrozen() && (ver == "" || ver == "current") {
-				ver = config.PlatformSdkVersion().String()
-			}
-		}
 	}
 
 	// For crt objects, the meaning of min_sdk_version is very different from other types of

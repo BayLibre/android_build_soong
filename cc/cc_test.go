@@ -4881,6 +4881,6 @@ func TestVendorSdkVersionWithoutVndk(t *testing.T) {
 			variables.BuildFlags["RELEASE_BOARD_API_LEVEL_FROZEN"] = "true"
 		}),
 	).RunTestWithBp(t, bp)
-	testSdkVersionFlag("libfoo", "30")
+	testSdkVersionFlag("libfoo", "10000")
 	testSdkVersionFlag("libbar", "29")
 }
