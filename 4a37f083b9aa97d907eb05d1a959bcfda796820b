@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c1da0d_0f413c0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-02-22T09:05:21Z",
+      "side": 1,
+      "message": "Let\u0027s continue the discussion in the other CL.",
+      "revId": "4a37f083b9aa97d907eb05d1a959bcfda796820b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3816a8dd_3dd2c1a7",
