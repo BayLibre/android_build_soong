@@ -145,6 +145,7 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 		Args: map[string]string{
 			"release_version":    ctx.Config().ReleaseVersion(),
 			"package":            module.properties.Package,
+			"container":          module.properties.Container,
 			"declarations":       android.JoinPathsWithPrefix(declarationFiles, "--declarations "),
 			"values":             joinAndPrefix(" --values ", module.properties.Values),
 			"default-permission": optionalVariable(" --default-permission ", defaultPermission),
