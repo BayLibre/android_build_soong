@@ -83,6 +83,7 @@ func init() {
 	pctx.HostBinToolVariable("assemble_vintf", "assemble_vintf")
 	pctx.HostBinToolVariable("apex_elf_checker", "apex_elf_checker")
 	pctx.HostBinToolVariable("aconfig", "aconfig")
+	pctx.HostBinToolVariable("host_apex_verifier", "host_apex_verifier")
 }
 
 type createStorageStruct struct {
@@ -248,6 +249,13 @@ var (
 		CommandDeps: []string{"${conv_linker_config}"},
 		Description: "run apex_linkerconfig_validation",
 	}, "image_dir")
+
+	apexHostVerifierRule = pctx.StaticRule("apexHostVerifierRule", blueprint.RuleParams{
+		Command: `${host_apex_verifier} --deapexer=${deapexer} --debugfs=${debugfs_static} ` +
+			`--fsckerofs=${fsck_erofs} --apex=${in} && touch ${out}`,
+		CommandDeps: []string{"${host_apex_verifier}", "${deapexer}", "${debugfs_static}", "${fsck_erofs}"},
+		Description: "run host_apex_verifier",
+	})
 
 	assembleVintfRule = pctx.StaticRule("assembleVintfRule", blueprint.RuleParams{
 		Command:     `rm -f $out && VINTF_IGNORE_TARGET_FCM_VERSION=true ${assemble_vintf} -i $in -o $out`,
@@ -947,6 +955,10 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 	if !a.testApex && suffix == imageApexSuffix && ext4 == a.payloadFsType {
 		validations = append(validations, runApexSepolicyTests(ctx, unsignedOutputFile.OutputPath))
 	}
+	// TODO(b/326509378) host_apex_verifier is not available where libhidlmetadata is not available (e.g. master-art branch)
+	if !a.testApex && ctx.OtherModuleExists("libhidlmetadata") {
+		validations = append(validations, runApexHostVerifier(ctx, unsignedOutputFile.OutputPath))
+	}
 	if !a.testApex && len(a.properties.Unwanted_transitive_deps) > 0 {
 		validations = append(validations,
 			runApexElfCheckerUnwanted(ctx, unsignedOutputFile.OutputPath, a.properties.Unwanted_transitive_deps))
@@ -1241,6 +1253,16 @@ func runApexElfCheckerUnwanted(ctx android.ModuleContext, apexFile android.Outpu
 			"unwanted":  android.JoinWithSuffixAndSeparator(unwanted, ".so", ":"),
 			"tool_path": ctx.Config().HostToolPath(ctx, "").String() + ":${config.ClangBin}",
 		},
+	})
+	return timestamp
+}
+
+func runApexHostVerifier(ctx android.ModuleContext, apexFile android.OutputPath) android.Path {
+	timestamp := android.PathForModuleOut(ctx, "host_apex_verifier.timestamp")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   apexHostVerifierRule,
+		Input:  apexFile,
+		Output: timestamp,
 	})
 	return timestamp
 }
