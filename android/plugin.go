@@ -62,6 +62,7 @@ var allowedPluginsByName = map[string]bool{
 	"soong-robolectric":                      true,
 	"soong-rust-prebuilts":                   true,
 	"soong-selinux":                          true,
+	"soong-trusty":                           true,
 	"soong-wayland-protocol-codegen":         true,
 	"treble_report_app":                      true,
 	"treble_report_local":                    true,
