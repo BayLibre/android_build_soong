@@ -777,7 +777,7 @@ func transformObjToStaticLib(ctx android.ModuleContext,
 // Generate a rule for compiling multiple .o files, plus static libraries, whole static libraries,
 // and shared libraries, to a shared library (.so) or dynamic executable
 func transformObjToDynamicBinary(ctx android.ModuleContext,
-	objFiles, sharedLibs, staticLibs, lateStaticLibs, wholeStaticLibs, deps, crtBegin, crtEnd android.Paths,
+	objFiles, sharedLibs, staticLibs, lateStaticLibs, wholeStaticLibs, rustStaticLibs, deps, crtBegin, crtEnd android.Paths,
 	groupLate bool, flags builderFlags, outputFile android.WritablePath,
 	implicitOutputs android.WritablePaths, validations android.Paths) {
 
@@ -800,6 +800,7 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 	}
 
 	libFlagsList = append(libFlagsList, staticLibs.Strings()...)
+	libFlagsList = append(libFlagsList, rustStaticLibs.Strings()...)
 
 	if groupLate && !ctx.Darwin() && len(lateStaticLibs) > 0 {
 		libFlagsList = append(libFlagsList, "-Wl,--start-group")
@@ -818,6 +819,7 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 	}
 
 	deps = append(deps, staticLibs...)
+	deps = append(deps, rustStaticLibs...)
 	deps = append(deps, lateStaticLibs...)
 	deps = append(deps, wholeStaticLibs...)
 	deps = append(deps, crtBegin...)
