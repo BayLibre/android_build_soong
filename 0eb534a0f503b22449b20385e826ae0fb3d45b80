@@ -16,6 +16,23 @@
       "message": "I believe this CLI arg is passed as-is, and wired to https://cs.android.com/android/platform/superproject/main/+/main:tools/metalava/metalava/src/main/java/com/android/tools/metalava/Options.kt;l\u003d212;drc\u003d4169a3129f4cd8a808b2cb28d23e7924d34ebb04 ?",
       "revId": "0eb534a0f503b22449b20385e826ae0fb3d45b80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a80bcece_f3fe4c09",
+        "filename": "java/config/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-23T23:05:27Z",
+      "side": 1,
+      "message": "Should this be enabled for [`java_api_library`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/java.go;drc\u003d8469e939f364d3fac034f5021bcd6eeb345ecb91;l\u003d1965) as well?",
+      "revId": "0eb534a0f503b22449b20385e826ae0fb3d45b80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
