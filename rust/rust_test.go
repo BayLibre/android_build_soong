@@ -214,15 +214,11 @@ func TestDepsTracking(t *testing.T) {
 			host_supported: true,
 			name: "cc_stubs_dep",
 		}
-		rust_ffi_host_static {
+		cc_library_host_static {
 			name: "libstatic",
-			srcs: ["foo.rs"],
-			crate_name: "static",
 		}
-		rust_ffi_host_static {
+		cc_library_host_static {
 			name: "libwholestatic",
-			srcs: ["foo.rs"],
-			crate_name: "wholestatic",
 		}
 		rust_ffi_host_shared {
 			name: "libshared",
