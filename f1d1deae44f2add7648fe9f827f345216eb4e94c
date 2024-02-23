@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8f26dcb_5bf24e9e",
+        "filename": "java/app_import.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-23T16:42:34Z",
+      "side": 1,
+      "message": "You can use `archStruct.Elem()` since you know its a pointer.  You can save extra repeated calls with something like:\n```\nif archStruct :\u003d archStructPtr.Elem(); archStruct.IsValid() {\n```",
+      "revId": "f1d1deae44f2add7648fe9f827f345216eb4e94c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
