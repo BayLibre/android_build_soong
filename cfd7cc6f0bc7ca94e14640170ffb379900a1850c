@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcbb1def_dfe0efa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012569
+      },
+      "writtenOn": "2024-02-23T14:23:40Z",
+      "side": 1,
+      "message": "GNU Make and ckati allow below\n\nall:\n\u003ctab\u003eecho 1\n\n\u003ctab\u003eecho 2\nBut, androidmk returns errors. It only support new line with tab.",
+      "revId": "cfd7cc6f0bc7ca94e14640170ffb379900a1850c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
