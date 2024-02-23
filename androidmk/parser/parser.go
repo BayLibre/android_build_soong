@@ -403,7 +403,6 @@ func (p *parser) nameToVariable(name *MakeString) Variable {
 
 func (p *parser) parseRule(target *MakeString) {
 	prerequisites, newLine := p.parseRulePrerequisites(target)
-
 	recipe := ""
 	recipePos := p.pos()
 loop:
@@ -412,6 +411,9 @@ loop:
 			if p.tok == '\t' {
 				p.accept('\t')
 				newLine = false
+				continue loop
+			} else if p.tok == '\n' {
+				p.accept('\n')
 				continue loop
 			} else if p.parseDirective() {
 				newLine = false
