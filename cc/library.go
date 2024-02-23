@@ -274,11 +274,12 @@ func LibraryHostSharedFactory() android.Module {
 type flagExporter struct {
 	Properties FlagExporterProperties
 
-	dirs       android.Paths // Include directories to be included with -I
-	systemDirs android.Paths // System include directories to be included with -isystem
-	flags      []string      // Exported raw flags.
-	deps       android.Paths
-	headers    android.Paths
+	dirs           android.Paths // Include directories to be included with -I
+	systemDirs     android.Paths // System include directories to be included with -isystem
+	flags          []string      // Exported raw flags.
+	deps           android.Paths
+	headers        android.Paths
+	rustStaticDeps android.Paths
 }
 
 // exportedIncludes returns the effective include paths for this module and
@@ -335,6 +336,10 @@ func (f *flagExporter) reexportDeps(deps ...android.Path) {
 	f.deps = append(f.deps, deps...)
 }
 
+func (f *flagExporter) reexportRustStaticDeps(deps ...android.Path) {
+	f.rustStaticDeps = append(f.rustStaticDeps, deps...)
+}
+
 // addExportedGeneratedHeaders does nothing but collects generated header files.
 // This can be differ to exportedDeps which may contain phony files to minimize ninja.
 func (f *flagExporter) addExportedGeneratedHeaders(headers ...android.Path) {
@@ -352,6 +357,8 @@ func (f *flagExporter) setProvider(ctx android.ModuleContext) {
 		// Used sparingly, for extra files that need to be explicitly exported to dependers,
 		// or for phony files to minimize ninja.
 		Deps: f.deps,
+		// Used for exporting generated Rust static libraries to dependents.
+		RustStaticDeps: f.rustStaticDeps,
 		// For exported generated headers, such as exported aidl headers, proto headers, or
 		// sysprop headers.
 		GeneratedHeaders: f.headers,
@@ -1129,7 +1136,7 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	linkerDeps = append(linkerDeps, deps.SharedLibsDeps...)
 	linkerDeps = append(linkerDeps, deps.LateSharedLibsDeps...)
 	transformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs,
-		deps.StaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs,
+		deps.StaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs, deps.RustStaticLibs,
 		linkerDeps, deps.CrtBegin, deps.CrtEnd, false, builderFlags, outputFile, implicitOutputs, objs.tidyDepFiles)
 
 	objs.coverageFiles = append(objs.coverageFiles, deps.StaticLibObjs.coverageFiles...)
@@ -1541,6 +1548,7 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 	library.reexportSystemDirs(deps.ReexportedSystemDirs...)
 	library.reexportFlags(deps.ReexportedFlags...)
 	library.reexportDeps(deps.ReexportedDeps...)
+	library.reexportRustStaticDeps(deps.ReexportedRustStaticDeps...)
 	library.addExportedGeneratedHeaders(deps.ReexportedGeneratedHeaders...)
 
 	// Optionally export aidl headers.
@@ -2070,14 +2078,12 @@ func LinkageMutator(mctx android.BottomUpMutatorContext) {
 			// Header only
 		}
 
-	} else if library, ok := mctx.Module().(LinkableInterface); ok && library.CcLibraryInterface() {
-
+	} else if library, ok := mctx.Module().(LinkableInterface); ok && (library.CcLibraryInterface() || library.RustLibraryInterface()) {
 		// Non-cc.Modules may need an empty variant for their mutators.
 		variations := []string{}
 		if library.NonCcVariants() {
 			variations = append(variations, "")
 		}
-
 		isLLNDK := false
 		if m, ok := mctx.Module().(*Module); ok {
 			isLLNDK = m.IsLlndk()

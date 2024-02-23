@@ -702,7 +702,8 @@ var (
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext, nativeModules ApexNativeDependencies, target android.Target, imageVariation string) {
 	binVariations := target.Variations()
 	libVariations := append(target.Variations(), blueprint.Variation{Mutator: "link", Variation: "shared"})
-	rustLibVariations := append(target.Variations(), blueprint.Variation{Mutator: "rust_libraries", Variation: "dylib"})
+	// Rust libraries need a link mutator variation since they have might have variations. Rust dylibs will be the empty variation.
+	rustLibVariations := append(target.Variations(), []blueprint.Variation{{Mutator: "rust_libraries", Variation: "dylib"}, {Mutator: "link", Variation: ""}}...)
 
 	// Append "image" variation
 	binVariations = append(binVariations, blueprint.Variation{Mutator: "image", Variation: imageVariation})

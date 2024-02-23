@@ -233,8 +233,8 @@ func (mod *Module) SelectedStl() string {
 
 func (mod *Module) NonCcVariants() bool {
 	if mod.compiler != nil {
-		if _, ok := mod.compiler.(libraryInterface); ok {
-			return false
+		if library, ok := mod.compiler.(libraryInterface); ok {
+			return library.buildRlib() || library.buildDylib()
 		}
 	}
 	panic(fmt.Errorf("NonCcVariants called on non-library module: %q", mod.BaseModuleName()))
@@ -624,6 +624,15 @@ func (mod *Module) RustLibraryInterface() bool {
 	return false
 }
 
+func (mod *Module) RustGeneratedStaticLib() bool {
+	if mod.sourceProvider != nil {
+		if _, ok := mod.sourceProvider.(*generatedLibraryDecorator); ok {
+			return true
+		}
+	}
+	return false
+}
+
 func (mod *Module) IsFuzzModule() bool {
 	if _, ok := mod.compiler.(*fuzzDecorator); ok {
 		return true
@@ -654,15 +663,6 @@ func (mod *Module) UnstrippedOutputFile() android.Path {
 		return mod.compiler.unstrippedOutputFilePath()
 	}
 	return nil
-}
-
-func (mod *Module) IncludeDirs() android.Paths {
-	if mod.compiler != nil {
-		if library, ok := mod.compiler.(*libraryDecorator); ok {
-			return library.includeDirs
-		}
-	}
-	panic(fmt.Errorf("IncludeDirs called on non-library module: %q", mod.BaseModuleName()))
 }
 
 func (mod *Module) SetStatic() {
@@ -1222,7 +1222,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			return
 		}
 
-		if rustDep, ok := dep.(*Module); ok && !rustDep.CcLibraryInterface() {
+		if rustDep, ok := dep.(*Module); ok && !rustDep.Static() && !rustDep.Shared() {
 			//Handle Rust Modules
 			makeLibName := rustMakeLibName(ctx, mod, rustDep, depName+rustDep.Properties.RustSubName)
 
@@ -1247,6 +1247,10 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				directRlibDeps = append(directRlibDeps, rustDep)
 				mod.Properties.AndroidMkRlibs = append(mod.Properties.AndroidMkRlibs, makeLibName)
 				mod.Properties.SnapshotRlibs = append(mod.Properties.SnapshotRlibs, cc.BaseLibName(depName))
+
+				// rust_ffi rlibs may export include dirs, so collect those here.
+				exportedInfo, _ := android.OtherModuleProvider(ctx, dep, cc.FlagExporterInfoProvider)
+				depPaths.depIncludePaths = append(depPaths.depIncludePaths, exportedInfo.IncludeDirs...)
 
 			case procMacroDepTag:
 				directProcMacroDeps = append(directProcMacroDeps, rustDep)
@@ -1295,6 +1299,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					lib.exportLinkDirs(linkDir)
 				}
 			}
+
 			if depTag == sourceDepTag {
 				if _, ok := mod.sourceProvider.(*protobufDecorator); ok && mod.Source() {
 					if _, ok := rustDep.sourceProvider.(*protobufDecorator); ok {
@@ -1497,6 +1502,10 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	depPaths.depIncludePaths = android.FirstUniquePaths(depPaths.depIncludePaths)
 	depPaths.depSystemIncludePaths = android.FirstUniquePaths(depPaths.depSystemIncludePaths)
 
+	if _, ok := mod.sourceProvider.(*generatedLibraryDecorator); ok {
+		// Generated Library Decoratory should include all its dependency include paths as if it defined them itself.
+		mod.compiler.(*libraryDecorator).includeDirs = append(mod.compiler.(*libraryDecorator).includeDirs, depPaths.depIncludePaths...)
+	}
 	return depPaths
 }
 
@@ -1558,6 +1567,7 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	}
 
 	rlibDepVariations := commonDepVariations
+	rlibDepVariations = append(rlibDepVariations, blueprint.Variation{Mutator: "link", Variation: ""})
 
 	if lib, ok := mod.compiler.(libraryInterface); !ok || !lib.sysroot() {
 		rlibDepVariations = append(rlibDepVariations,
@@ -1573,6 +1583,7 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 
 	// dylibs
 	dylibDepVariations := append(commonDepVariations, blueprint.Variation{Mutator: "rust_libraries", Variation: dylibVariation})
+	dylibDepVariations = append(dylibDepVariations, blueprint.Variation{Mutator: "link", Variation: ""})
 	for _, lib := range deps.Dylibs {
 		actx.AddVariationDependencies(dylibDepVariations, dylibDepTag, lib)
 	}
@@ -1592,7 +1603,7 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 					// otherwise select the rlib variant.
 					autoDepVariations := append(commonDepVariations,
 						blueprint.Variation{Mutator: "rust_libraries", Variation: autoDep.variation})
-
+					autoDepVariations = append(autoDepVariations, blueprint.Variation{Mutator: "link", Variation: ""})
 					if actx.OtherModuleDependencyVariantExists(autoDepVariations, lib) {
 						actx.AddVariationDependencies(autoDepVariations, autoDep.depTag, lib)
 
@@ -1607,7 +1618,11 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			for _, lib := range deps.Rustlibs {
 				srcProviderVariations := append(commonDepVariations,
 					blueprint.Variation{Mutator: "rust_libraries", Variation: "source"})
+				srcProviderVariations = append(srcProviderVariations, blueprint.Variation{Mutator: "link", Variation: ""})
 
+				// Only add rustlib dependencies if they're source providers themselves.
+				// This is used to track which crate names need to be added to the source generated
+				// in the rust_protobuf mod.rs.
 				if actx.OtherModuleDependencyVariantExists(srcProviderVariations, lib) {
 					actx.AddVariationDependencies(srcProviderVariations, sourceDepTag, lib)
 				}
@@ -1619,7 +1634,7 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	if deps.Stdlibs != nil {
 		if mod.compiler.stdLinkage(ctx) == RlibLinkage {
 			for _, lib := range deps.Stdlibs {
-				actx.AddVariationDependencies(append(commonDepVariations, []blueprint.Variation{{Mutator: "rust_libraries", Variation: "rlib"}}...),
+				actx.AddVariationDependencies(append(commonDepVariations, []blueprint.Variation{{Mutator: "rust_libraries", Variation: "rlib"}, {Mutator: "link", Variation: ""}}...),
 					rlibDepTag, lib)
 			}
 		} else {

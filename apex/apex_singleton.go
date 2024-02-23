@@ -46,6 +46,8 @@ var (
 		Command: "cat $out.rsp | xargs cat" +
 			// Only track non-external dependencies, i.e. those that end up in the binary
 			" | grep -v '(external)'" +
+			// Ignore generated rust staticlibs as they're synthetic dependencies
+			" | grep -v '_generated_rust_staticlib'" +
 			// Ignore comments in any of the files
 			" | grep -v '^#'" +
 			" | sort -u -f >$out",
