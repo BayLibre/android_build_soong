@@ -120,6 +120,9 @@ type LinkableInterface interface {
 	// RustLibraryInterface returns true if this is a Rust library module
 	RustLibraryInterface() bool
 
+	// Returns true if this is a rust.generated_library
+	IsRustGeneratedStaticLib() bool
+
 	// BaseModuleName returns the android.ModuleBase.BaseModuleName() value for this module.
 	BaseModuleName() string
 
@@ -427,6 +430,7 @@ type FlagExporterInfo struct {
 	SystemIncludeDirs android.Paths // System include directories to be included with -isystem
 	Flags             []string      // Exported raw flags.
 	Deps              android.Paths
+	RustStaticDeps    android.Paths
 	GeneratedHeaders  android.Paths
 }
 
