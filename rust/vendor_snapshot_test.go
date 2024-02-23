@@ -104,6 +104,16 @@ func TestVendorSnapshotCapture(t *testing.T) {
 			filepath.Join(sharedDir, "libffivendor_available.so.json"))
 
 		// For static libraries, all vendor:true and vendor_available modules (including VNDK) are captured.
+		rlibFFIVariant := fmt.Sprintf("android_vendor.29_%s_%s_rlib_rlib-std", archType, archVariant)
+		rlibFFIDir := filepath.Join(snapshotVariantPath, archDir, "rlib")
+		cc.CheckSnapshot(t, ctx, snapshotSingleton, "libffivendor_available", "libffivendor_available.rlib-std.rlib", rlibFFIDir, rlibFFIVariant)
+		cc.CheckSnapshot(t, ctx, snapshotSingleton, "libffivendor", "libffivendor.rlib-std.rlib", rlibFFIDir, rlibFFIVariant)
+		jsonFiles = append(jsonFiles,
+			filepath.Join(rlibFFIDir, "libffivendor_available.rlib-std.rlib.json"))
+		jsonFiles = append(jsonFiles,
+			filepath.Join(rlibFFIDir, "libffivendor.rlib-std.rlib.json"))
+
+		// For static libraries, all vendor:true and vendor_available modules (including VNDK) are captured.
 		staticVariant := fmt.Sprintf("android_vendor.29_%s_%s_static", archType, archVariant)
 		staticDir := filepath.Join(snapshotVariantPath, archDir, "static")
 		cc.CheckSnapshot(t, ctx, snapshotSingleton, "libffivendor_available", "libffivendor_available.a", staticDir, staticVariant)
@@ -128,9 +138,9 @@ func TestVendorSnapshotCapture(t *testing.T) {
 		cc.CheckSnapshot(t, ctx, snapshotSingleton, "librustvendor_available", "librustvendor_available.rlib-std.rlib", rlibDir, rlibStdVariant)
 		cc.CheckSnapshot(t, ctx, snapshotSingleton, "librustvendor", "librustvendor.rlib-std.rlib", rlibDir, rlibStdVariant)
 		jsonFiles = append(jsonFiles,
-			filepath.Join(rlibDir, "librustvendor_available.rlib.json"))
+			filepath.Join(rlibDir, "librustvendor_available.rlib-std.rlib.json"))
 		jsonFiles = append(jsonFiles,
-			filepath.Join(rlibDir, "librustvendor.rlib.json"))
+			filepath.Join(rlibDir, "librustvendor.rlib-std.rlib.json"))
 
 		// For dylib libraries, all vendor:true and vendor_available modules (including VNDK) are captured.
 		dylibVariant := fmt.Sprintf("android_vendor.29_%s_%s_dylib", archType, archVariant)
@@ -1238,6 +1248,15 @@ func TestRecoverySnapshotCapture(t *testing.T) {
 		jsonFiles = append(jsonFiles,
 			filepath.Join(staticDir, "librecovery.a.json"),
 			filepath.Join(staticDir, "librecovery_available.a.json"))
+
+		// For rlib FFI libraries, all recovery:true and recovery_available modules are captured.
+		rlibFFIVariant := fmt.Sprintf("android_recovery_%s_%s_rlib_rlib-std", archType, archVariant)
+		rlibFFIDir := filepath.Join(snapshotVariantPath, archDir, "rlib")
+		cc.CheckSnapshot(t, ctx, snapshotSingleton, "librecovery", "librecovery.rlib-std.rlib", rlibFFIDir, rlibFFIVariant)
+		cc.CheckSnapshot(t, ctx, snapshotSingleton, "librecovery_available", "librecovery_available.rlib-std.rlib", rlibFFIDir, rlibFFIVariant)
+		jsonFiles = append(jsonFiles,
+			filepath.Join(rlibFFIDir, "librecovery.rlib-std.rlib.json"),
+			filepath.Join(rlibFFIDir, "librecovery_available.rlib-std.rlib.json"))
 
 		// For rlib libraries, all recovery:true and recovery_available modules are captured.
 		rlibVariant := fmt.Sprintf("android_recovery_%s_%s_rlib_dylib-std", archType, archVariant)

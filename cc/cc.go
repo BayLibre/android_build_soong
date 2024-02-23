@@ -38,6 +38,14 @@ import (
 	"android/soong/snapshot"
 )
 
+var (
+	RustStaticLibraryFactory (func() android.Module) = nil
+)
+
+func SetRustStaticLibraryFactory(fn func() android.Module) {
+	RustStaticLibraryFactory = fn
+}
+
 func init() {
 	RegisterCCBuildComponents(android.InitRegistrationContext)
 
@@ -150,7 +158,7 @@ type PathDeps struct {
 	// Paths to the dependencies to use for .so files (.so.toc files)
 	SharedLibsDeps, EarlySharedLibsDeps, LateSharedLibsDeps android.Paths
 	// Paths to .a files
-	StaticLibs, LateStaticLibs, WholeStaticLibs android.Paths
+	RustStaticLibs, StaticLibs, LateStaticLibs, WholeStaticLibs android.Paths
 
 	// Transitive static library dependencies of static libraries for use in ordering.
 	TranstiveStaticLibrariesForOrdering *android.DepSet[android.Path]
@@ -179,6 +187,7 @@ type PathDeps struct {
 	ReexportedFlags            []string
 	ReexportedGeneratedHeaders android.Paths
 	ReexportedDeps             android.Paths
+	ReexportedRustStaticDeps   android.Paths
 
 	// Paths to crt*.o files
 	CrtBegin, CrtEnd android.Paths
@@ -611,6 +620,7 @@ type linker interface {
 	linkerFlags(ctx ModuleContext, flags Flags) Flags
 	linkerProps() []interface{}
 	useClangLld(actx ModuleContext) bool
+	staticRlibs() []string
 
 	link(ctx ModuleContext, flags Flags, deps PathDeps, objs Objects) android.Path
 	appendLdflags([]string)
@@ -1108,6 +1118,10 @@ func (c *Module) RlibStd() bool {
 }
 
 func (c *Module) RustLibraryInterface() bool {
+	return false
+}
+
+func (c *Module) IsRustGeneratedStaticLib() bool {
 	return false
 }
 
@@ -1813,6 +1827,74 @@ func newBaseModule(hod android.HostOrDeviceSupported, multilib android.Multilib)
 	}
 }
 
+func rustStaticLibLoadHook(ctx android.DefaultableHookContext, module *Module) {
+	if module.hasStaticRlibs() {
+		var linkerProperties *BaseLinkerProperties
+		for _, p := range ctx.Module().GetProperties() {
+
+			lp, ok := p.(*BaseLinkerProperties)
+			if ok {
+				linkerProperties = lp
+			}
+		}
+		if linkerProperties != nil {
+			newCrateName := strings.ReplaceAll(strings.ToLower(ctx.ModuleName()), "-", "_") + "_generated_rust_staticlib"
+			newModuleName := "lib" + newCrateName
+			props := struct {
+				Name                     *string
+				Source_stem              *string
+				Crate_name               string   `android:"arch_variant"`
+				Static_rlibs             []string `android:"arch_variant"`
+				Apex_available           []string
+				Stdlibs                  []string `android:"arch_variant"`
+				Min_sdk_version          *string
+				Vendor_available         *bool
+				No_stdlibs               *bool
+				Vendor_ramdisk_available *bool
+				Ramdisk_available        *bool
+				Recovery_available       *bool
+				Product_available        *bool
+				Device_specific          *bool
+				Odm_available            *bool
+				Host_supported           *bool
+				Device_supported         *bool
+				Soc_specific             *bool
+				Product_specific         *bool
+				Compile_multilib         *string `android:"arch_variant"`
+			}{
+				Name:         StringPtr(newModuleName),
+				Source_stem:  StringPtr(fmt.Sprintf("%s.rs", newCrateName)),
+				Crate_name:   newCrateName,
+				Static_rlibs: linkerProperties.Static_rlibs,
+				No_stdlibs:   linkerProperties.Static_rlibs_config.No_stdlibs,
+				Stdlibs:      linkerProperties.Static_rlibs_config.Stdlibs,
+				Apex_available: []string{
+					"//apex_available:platform",
+					"//apex_available:anyapex",
+				},
+				Vendor_available:         BoolPtr(module.VendorAvailable()),
+				Vendor_ramdisk_available: BoolPtr(module.VendorRamdiskAvailable()),
+				Ramdisk_available:        BoolPtr(module.RamdiskAvailable()),
+				Recovery_available:       BoolPtr(module.RecoveryAvailable()),
+				Device_specific:          BoolPtr(module.DeviceSpecific()),
+				Product_available:        BoolPtr(module.ProductAvailable()),
+				Product_specific:         BoolPtr(module.ProductSpecific()),
+				Odm_available:            BoolPtr(module.OdmAvailable()),
+				Soc_specific:             BoolPtr(module.SocSpecific()),
+				Min_sdk_version:          StringPtr(module.MinSdkVersion()),
+				Host_supported:           BoolPtr(module.HostSupported()),
+				Device_supported:         BoolPtr(module.DeviceSupported()),
+				Compile_multilib:         module.CompileMultilib(),
+			}
+			createdModuleName := ctx.CreateModule(RustStaticLibraryFactory, &props).Name()
+
+			linkerProperties.Static_libs = append(linkerProperties.Static_libs, createdModuleName)
+			// The generated staticlib dependency is exported, so we export the headers as well.
+			linkerProperties.Export_static_lib_headers = append(linkerProperties.Export_static_lib_headers, createdModuleName)
+		}
+	}
+}
+
 func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Module {
 	module := newBaseModule(hod, multilib)
 	module.features = []feature{
@@ -1827,7 +1909,14 @@ func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Mo
 	module.lto = &lto{}
 	module.afdo = &afdo{}
 	module.orderfile = &orderfile{}
+
+	module.SetDefaultableHook(func(ctx android.DefaultableHookContext) { rustStaticLibLoadHook(ctx, module) })
+
 	return module
+}
+
+func (c *Module) hasStaticRlibs() bool {
+	return len(c.linker.staticRlibs()) != 0
 }
 
 func (c *Module) Prebuilt() *android.Prebuilt {
@@ -3297,6 +3386,15 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 						panic(fmt.Errorf("unexpected library dependency order %d", libDepTag.Order))
 					}
 				}
+
+				// We re-export the Rust static libraries built from static_rlibs so static dependencies don't need to be redeclared by dependents.
+				// E.g. libfoo (cc_library_static) depends on libfoo.ffi (a rust_ffi rlib), libbar depending on libfoo shouldn't have to also add libfoo.ffi to static_rlibs.
+				if ccDep.IsRustGeneratedStaticLib() {
+					depPaths.ReexportedRustStaticDeps = append(depPaths.ReexportedRustStaticDeps, linkFile.Path())
+				} else {
+					depPaths.ReexportedRustStaticDeps = append(depPaths.ReexportedRustStaticDeps, depExporterInfo.RustStaticDeps...)
+				}
+
 				if libDepTag.unexportedSymbols {
 					depPaths.LdFlags = append(depPaths.LdFlags,
 						"-Wl,--exclude-libs="+staticLibraryInfo.StaticLibrary.Base())
@@ -3349,6 +3447,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			depPaths.SystemIncludeDirs = append(depPaths.SystemIncludeDirs, depExporterInfo.SystemIncludeDirs...)
 			depPaths.GeneratedDeps = append(depPaths.GeneratedDeps, depExporterInfo.Deps...)
 			depPaths.Flags = append(depPaths.Flags, depExporterInfo.Flags...)
+			depPaths.RustStaticLibs = append(depPaths.RustStaticLibs, depExporterInfo.RustStaticDeps...)
 
 			if libDepTag.reexportFlags {
 				reexportExporter(depExporterInfo)
@@ -3432,6 +3531,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	depPaths.ReexportedFlags = android.FirstUniqueStrings(depPaths.ReexportedFlags)
 	depPaths.ReexportedDeps = android.FirstUniquePaths(depPaths.ReexportedDeps)
 	depPaths.ReexportedGeneratedHeaders = android.FirstUniquePaths(depPaths.ReexportedGeneratedHeaders)
+	depPaths.ReexportedRustStaticDeps = android.FirstUniquePaths(depPaths.ReexportedRustStaticDeps)
 
 	if c.sabi != nil {
 		c.sabi.Properties.ReexportedIncludes = android.FirstUniqueStrings(c.sabi.Properties.ReexportedIncludes)
