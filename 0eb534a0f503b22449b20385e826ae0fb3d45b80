@@ -33,6 +33,42 @@
       "message": "Should this be enabled for [`java_api_library`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/java.go;drc\u003d8469e939f364d3fac034f5021bcd6eeb345ecb91;l\u003d1965) as well?",
       "revId": "0eb534a0f503b22449b20385e826ae0fb3d45b80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f697069_f9a64cfc",
+        "filename": "java/config/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-23T23:07:10Z",
+      "side": 1,
+      "message": "It is.",
+      "parentUuid": "905a63be_53b9bcc0",
+      "revId": "0eb534a0f503b22449b20385e826ae0fb3d45b80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06d3a48b_ae96393e",
+        "filename": "java/config/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-23T23:07:10Z",
+      "side": 1,
+      "message": "I don\u0027t believe so. This option only affects generating from sources and AIUI `java_api_library` only generates from API signature files.",
+      "parentUuid": "a80bcece_f3fe4c09",
+      "revId": "0eb534a0f503b22449b20385e826ae0fb3d45b80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
