@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfbef539_222bcffa",
+        "filename": "java/app_import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2024-02-23T07:18:57Z",
+      "side": 1,
+      "message": "Done. It\u0027s really magic. Thanks so much.",
+      "parentUuid": "53336453_e94c5893",
+      "range": {
+        "startLine": 579,
+        "startChar": 9,
+        "endLine": 579,
+        "endChar": 25
+      },
+      "revId": "3250549f49037a9ba1b4d956ffb004eff76b26cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d38985c3_ac9a49ad",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-02-22T22:40:21Z",
       "side": 1,
       "message": "If you use `reflect.PtrTo(archVariantGroupStruct)` here the top level type will be a struct containing a single nil pointer, which will be very small.  Then blueprint will allocate the `archVariantGroupStruct` if the property is used, which avoids allocating the full `len(archNames) * len(dpiNames)` properties for every module.  You could do the same on lines 564 and 572.  You\u0027ll need to add nil checks when traversing the structs on line 176 though.",
+      "revId": "3250549f49037a9ba1b4d956ffb004eff76b26cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a476468d_356eb9bf",
+        "filename": "java/app_import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2024-02-23T07:18:57Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion. The value can get with reflect.Indirect() if using reflect.PtrTo().",
+      "parentUuid": "d38985c3_ac9a49ad",
       "revId": "3250549f49037a9ba1b4d956ffb004eff76b26cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
