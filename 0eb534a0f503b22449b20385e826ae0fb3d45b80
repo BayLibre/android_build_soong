@@ -69,6 +69,24 @@
       "parentUuid": "a80bcece_f3fe4c09",
       "revId": "0eb534a0f503b22449b20385e826ae0fb3d45b80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc9b0e7_7e0cfe35",
+        "filename": "java/config/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-23T23:08:13Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "06d3a48b_ae96393e",
+      "revId": "0eb534a0f503b22449b20385e826ae0fb3d45b80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
