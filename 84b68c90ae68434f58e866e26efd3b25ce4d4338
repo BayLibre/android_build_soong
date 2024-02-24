@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83d60d5_021d4188",
+        "filename": "android/base_module_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3232564
+      },
+      "writtenOn": "2024-02-24T22:40:23Z",
+      "side": 0,
+      "message": "https://android-review.googlesource.com/c/platform/build/soong/+/2889112/2?usp\u003drelated-change",
+      "revId": "84b68c90ae68434f58e866e26efd3b25ce4d4338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
