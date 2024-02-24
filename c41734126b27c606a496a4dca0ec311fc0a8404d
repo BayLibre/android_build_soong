@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fdb4ccb_9edb8c4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-24T04:10:56Z",
+      "side": 1,
+      "message": "How much headroom does this buy you on b/326661767?  Does `-Oz` fully offset the size increase of the coverage build, or is the coverage build always going to be the first to hit size limits like this?",
+      "revId": "c41734126b27c606a496a4dca0ec311fc0a8404d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
