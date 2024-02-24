@@ -32,6 +32,7 @@ var (
  		"-runtime-counter-relocation",
  	}
  	clangCoverageCFlags = []string{
+        "-Oz",
  		"-Wno-frame-larger-than=",
  	}
  	clangCoverageCommonFlags = []string{
