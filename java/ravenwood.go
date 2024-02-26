@@ -52,7 +52,6 @@ func getLibPath(archType android.ArchType) string {
 }
 
 type ravenwoodTestProperties struct {
-	Jni_libs []string
 }
 
 type ravenwoodTest struct {
@@ -62,6 +61,7 @@ type ravenwoodTest struct {
 
 	testProperties testProperties
 	testConfig     android.Path
+	data           android.Paths
 
 	forceOSType   android.OsType
 	forceArchType android.ArchType
@@ -111,7 +111,7 @@ func (r *ravenwoodTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 	}
 
 	// Add jni libs
-	for _, lib := range r.ravenwoodTestProperties.Jni_libs {
+	for _, lib := range r.testProperties.Jni_libs {
 		ctx.AddVariationDependencies(ctx.Config().BuildOSTarget.Variations(), jniLibTag, lib)
 	}
 }
@@ -128,6 +128,8 @@ func (r *ravenwoodTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		DeviceTemplate:         "${RavenwoodTestConfigTemplate}",
 		HostTemplate:           "${RavenwoodTestConfigTemplate}",
 	})
+
+	r.data = android.PathsForModuleSrc(ctx, r.testProperties.Data)
 
 	r.Library.GenerateAndroidBuildActions(ctx)
 
@@ -173,6 +175,11 @@ func (r *ravenwoodTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 		installJni := ctx.InstallFile(soInstallPath, jniLib.path.Base(), jniLib.path)
 		installDeps = append(installDeps, installJni)
+	}
+
+	for _, data := range android.PathsForModuleSrc(ctx, r.testProperties.Data) {
+		installedData := ctx.InstallFile(installPath, data.Rel(), data)
+		installDeps = append(installDeps, installedData)
 	}
 
 	// Install our JAR with all dependencies

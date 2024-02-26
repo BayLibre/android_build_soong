@@ -115,27 +115,32 @@ func TestRavenwoodTest(t *testing.T) {
 		PrepareForIntegrationTestWithJava,
 		prepareRavenwoodRuntime,
 	).RunTestWithBp(t, `
-	cc_library_shared {
-		name: "jni-lib1",
-		host_supported: true,
-		srcs: ["jni.cpp"],
-	}
-	cc_library_shared {
-		name: "jni-lib2",
-		host_supported: true,
-		srcs: ["jni.cpp"],
-		stem: "libblue",
-		shared_libs: [
-			"jni-lib3",
-		],
-	}
-	cc_library_shared {
-		name: "jni-lib3",
-		host_supported: true,
-		srcs: ["jni.cpp"],
-		stem: "libpink",
-	}
-	android_ravenwood_test {
+		cc_library_shared {
+			name: "jni-lib1",
+			host_supported: true,
+			srcs: ["jni.cpp"],
+		}
+		cc_library_shared {
+			name: "jni-lib2",
+			host_supported: true,
+			srcs: ["jni.cpp"],
+			stem: "libblue",
+			shared_libs: [
+				"jni-lib3",
+			],
+		}
+		cc_library_shared {
+			name: "jni-lib3",
+			host_supported: true,
+			srcs: ["jni.cpp"],
+			stem: "libpink",
+		}
+		android_app {
+			name: "app1",
+			sdk_version: "current",
+			srcs: ["app.java"],
+		}
+		android_ravenwood_test {
 			name: "ravenwood-test",
 			srcs: ["Test.java"],
 			jni_libs: [
@@ -144,6 +149,9 @@ func TestRavenwoodTest(t *testing.T) {
 				"ravenwood-runtime-jni2",
 			],
 			sdk_version: "test_current",
+			data: [
+				":app1",
+			],
 		}
 	`)
 
@@ -169,6 +177,7 @@ func TestRavenwoodTest(t *testing.T) {
 	module.Output(installPathPrefix + "/ravenwood-test/lib64/jni-lib1.so")
 	module.Output(installPathPrefix + "/ravenwood-test/lib64/libblue.so")
 	module.Output(installPathPrefix + "/ravenwood-test/lib64/libpink.so")
+	module.Output(installPathPrefix + "/ravenwood-test/app1.apk")
 
 	// ravenwood-runtime*.so are included in the runtime, so it shouldn't be emitted.
 	for _, o := range module.AllOutputs() {
