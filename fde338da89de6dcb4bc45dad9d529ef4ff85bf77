@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8ad378d_bfc32df6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-26T23:44:50Z",
+      "side": 1,
+      "message": "When trying to build an `java_sdk_library` module using this change, I\u0027ve witnessed a following error:\n```\nFAILED: out/soong/.intermediates/libcore/art.module.public.api.stubs.source.module_lib/android_common/everything/art.module.public.api.stubs.source.module_lib-stubs.srcjar out/soong/.intermediates/libcore/art.module.public.api.stubs.source.module_lib/android_common/everything/art.module.public.api.stubs.source.module_lib_annotations.zip out/soong/.intermediates/libcore/art.module.public.api.stubs.source.module_lib/android_common/everything/art.module.public.api.stubs.source.module_lib_api.txt out/soong/.intermediates/libcore/art.module.public.api.stubs.source.module_lib/android_common/everything/art.module.public.api.stubs.source.module_lib_removed.txt out/soong/.intermediates/libcore/art.module.public.api.stubs.source.module_lib/android_common/everything/check_last_released_api.timestamp out/soong/.intermediates/libcore/art.module.public.api.stubs.source.module_lib/android_common/everything/last_released_baseline.txt\nout/host/linux-x86/bin/sbox --sandbox-path out/soong/.temp --output-dir out/soong/.intermediates/libcore/art.module.public.api.stubs.source.module_lib/android_common/everything --manifest out/soong/.intermediates/libcore/art.module.public.api.stubs.source.module_lib/android_common/metalava.sbox.textproto --write-if-changed\nThe failing command was run inside an sbox sandbox in temporary directory\nout/soong/.temp/sbox/e5d861e6346c28d423d70f543d3c600c98fbf8cc\nThe failing command line can be found in\nout/soong/.temp/sbox/e5d861e6346c28d423d70f543d3c600c98fbf8cc/sbox_command.0.bash\nout/soong/.intermediates/libcore/core_oj_api_files/gen/gensrcs/libcore/ojluni/src/main/java/java/util/Properties.java:157: error: Field java.util.Properties.defaults has changed \u0027volatile\u0027 qualifier [ChangedVolatile]\nmetalava wrote updated baseline to /usr/local/google/home/jihoonkang/aosp-main-with-phones/out/soong/.temp/sbox/e5d861e6346c28d423d70f543d3c600c98fbf8cc/./out/last_released_baseline.txt\n\nAborting: Found compatibility problems checking the public API (/usr/local/google/home/jihoonkang/aosp-main-with-phones/out/soong/.temp/sbox/e5d861e6346c28d423d70f543d3c600c98fbf8cc/out/soong/.intermediates/libcore/core_oj_api_files/gen/gensrcs/libcore/ojluni/src/main/java) against the API in /usr/local/google/home/jihoonkang/aosp-main-with-phones/out/soong/.temp/sbox/e5d861e6346c28d423d70f543d3c600c98fbf8cc/./out/soong/.intermediates/prebuilts/sdk/art.api.public.latest/gen/art.api.public.latest\n\n******************************\nYou have tried to change the API from what has been previously released in\nan SDK.  Please fix the errors listed above.\n******************************\nexit status 255\n```\n\n@paulduffin@google.com is this because metalava does not fully support multiple latest api files?",
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29b9ce3a_9ed85530",
         "filename": "java/droidstubs.go",
         "patchSetId": 2
@@ -48,6 +65,30 @@
       "writtenOn": "2024-02-16T11:17:58Z",
       "side": 1,
       "message": "I think this only needs one baseline file as before.",
+      "range": {
+        "startLine": 941,
+        "startChar": 4,
+        "endLine": 941,
+        "endChar": 27
+      },
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d8cfc1c_ccce699d",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-26T23:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29b9ce3a_9ed85530",
       "range": {
         "startLine": 941,
         "startChar": 4,
@@ -81,6 +122,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf753234_69df0bc5",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-26T23:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c3d21d1_f557d9a4",
+      "range": {
+        "startLine": 354,
+        "startChar": 19,
+        "endLine": 354,
+        "endChar": 45
+      },
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9a1b6fb_daa5b8a4",
@@ -94,6 +159,30 @@
       "writtenOn": "2024-02-16T11:17:58Z",
       "side": 1,
       "message": "I think this should be outside the loop as it was previously.",
+      "range": {
+        "startLine": 355,
+        "startChar": 2,
+        "endLine": 355,
+        "endChar": 63
+      },
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2550ccce_8c953fb1",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-26T23:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9a1b6fb_daa5b8a4",
       "range": {
         "startLine": 355,
         "startChar": 2,
@@ -121,6 +210,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abab6b64_aa796859",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-26T23:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2436d221_8a796cff",
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0adff9b_7ecd9dbe",
@@ -134,6 +241,30 @@
       "writtenOn": "2024-02-16T11:17:58Z",
       "side": 1,
       "message": "Is this sorting scope specific files into order, if so could you explain what the order is.",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 374,
+        "endChar": 0
+      },
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fd2d62b_aca31d8c",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-26T23:44:50Z",
+      "side": 1,
+      "message": "Correct. This reverses the srcs order, which is currently sorted from the widest api scope to the narrowest api scope. I\u0027ve added more description in the comment.",
+      "parentUuid": "d0adff9b_7ecd9dbe",
       "range": {
         "startLine": 365,
         "startChar": 0,
@@ -161,6 +292,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09acfa8f_521a9b3c",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-26T23:44:50Z",
+      "side": 1,
+      "message": "Understood. Removed the combined-incompatibilities module generation logic.",
+      "parentUuid": "38b93f79_2d45ea68",
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f6fcb9c_530a6b2c",
@@ -174,6 +323,24 @@
       "writtenOn": "2024-02-16T11:17:58Z",
       "side": 1,
       "message": "Remove commented code.",
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece1fa74_28117b0b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1667,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-26T23:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f6fcb9c_530a6b2c",
       "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
