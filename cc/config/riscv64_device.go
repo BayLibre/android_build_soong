@@ -27,8 +27,7 @@ var (
 		"-Werror=implicit-function-declaration",
 		"-march=rv64gcv_zba_zbb_zbs",
 		// Equivalent to "-munaligned-access", but our clang doesn't have that yet.
-		"-Xclang -target-feature -Xclang +unaligned-scalar-mem",
-		"-Xclang -target-feature -Xclang +unaligned-vector-mem",
+		"-Xclang -target-feature -Xclang +fast-unaligned-access",
 		// Until https://gitlab.com/qemu-project/qemu/-/issues/1976 is fixed...
 		"-mno-implicit-float",
 		// (https://github.com/google/android-riscv64/issues/124)
