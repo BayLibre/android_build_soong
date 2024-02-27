@@ -33,6 +33,24 @@
       "message": "Will we need a runtime stubs library equivalent for `java_sdk_library_import`?",
       "revId": "511db59042ebc8f9d3be3f0e03c639ac32730595",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f1507aa_da6325fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-27T01:53:01Z",
+      "side": 1,
+      "message": "`java_sdk_library_import` will never have to generate non-\"everything\" stubs library, because there is no non-\"everything\" prebuilt stubs jar equivalent, although the contents of the prebuilt jar may be \"exportable\" or \"runtime\" based on the release configuration. Likewise, \"exportable\" stubs library is not created in `java_sdk_library_import`.",
+      "parentUuid": "6c565919_4fc8d8f0",
+      "revId": "511db59042ebc8f9d3be3f0e03c639ac32730595",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
