@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26ef38fe_9fb01717",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-27T01:52:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34c814fd_2bc590f2",
+      "range": {
+        "startLine": 1057,
+        "startChar": 61,
+        "endLine": 1057,
+        "endChar": 62
+      },
+      "revId": "6911d8d68d8f7003ca0a42bff02bc3db0a4a7cce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a2df51b_a080d6e1",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-02-01T04:57:25Z",
       "side": 1,
       "message": "nit: Since all the test cases run on the same TestResult, imo we can remove the iteration and do the necessary assertions in a single flattened code block.",
+      "range": {
+        "startLine": 439,
+        "startChar": 1,
+        "endLine": 439,
+        "endChar": 36
+      },
+      "revId": "6911d8d68d8f7003ca0a42bff02bc3db0a4a7cce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55133c05_ba4bfba7",
+        "filename": "java/droidstubs_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-27T01:52:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a2df51b_a080d6e1",
       "range": {
         "startLine": 439,
         "startChar": 1,
