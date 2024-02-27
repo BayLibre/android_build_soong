@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa47ac2b_f373d62b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-02-27T11:33:25Z",
+      "side": 1,
+      "message": "I think this might be because Metalava filters out changes that are not in the `Codebase` being created, which for the case of `module-lib` would exclude any issues in the public or system APIs. However, with this change the `Codebase` being created for `module-lib` would include the `public` and `system`.\n\nThe issue has already been included in the `art-incompatibilities.txt` file for the `public` api (see https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:prebuilts/sdk/35/public/api/art-incompatibilities.txt;l\u003d39;drc\u003d9c99b8b09682eb4241f7cb3c89e8a9d156cd568e).\n\nI will fix Metalava to only report issues on APIs listed in the last (widest) file, otherwise we will end up duplicating every error in `public` in `system` and every error in `system` in `test` and `module-lib`. It will be a nightmare.",
+      "parentUuid": "d8ad378d_bfc32df6",
+      "revId": "fde338da89de6dcb4bc45dad9d529ef4ff85bf77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29b9ce3a_9ed85530",
         "filename": "java/droidstubs.go",
         "patchSetId": 2
