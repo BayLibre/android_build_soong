@@ -920,6 +920,7 @@ type commonSdkLibraryAndImportModule interface {
 	// 1. Name(): prebuilt_framework-foo.v1 # unique
 	// 2. BaseModuleName(): framework-foo # the source
 	// 3. RootLibraryName: framework-foo.v1 # the undecordated `name` from Android.bp
+	BaseModuleName() string
 	RootLibraryName() string
 }
 
@@ -1172,7 +1173,7 @@ func (c *commonToSdkLibraryAndImport) selectHeaderJarsForSdkVersion(ctx android.
 
 	// If a specific numeric version has been requested then use prebuilt versions of the sdk.
 	if !sdkVersion.ApiLevel.IsPreview() {
-		return PrebuiltJars(ctx, c.module.RootLibraryName(), sdkVersion)
+		return PrebuiltJars(ctx, c.module.BaseModuleName(), sdkVersion)
 	}
 
 	paths := c.selectScopePaths(ctx, sdkVersion.Kind)
