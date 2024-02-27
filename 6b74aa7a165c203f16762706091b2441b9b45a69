@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69821354_f9324960",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-27T14:01:31Z",
+      "side": 1,
+      "message": "nit: Change this to an if-else block so that the string values in `StringToStubsType` and `s.String` never go out of sync\n\n```\nfunc StringToStubsType(s string) StubsType {\n  if s \u003d\u003d Everything.String() {\n    return Everything\n  } else if s \u003d\u003d Runtime.String() {\n    return Runtime\n  } ...\n}\n```",
+      "range": {
+        "startLine": 57,
+        "startChar": 18,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "6b74aa7a165c203f16762706091b2441b9b45a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa08ef0e_682b2c20",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2115,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-27T14:01:31Z",
+      "side": 1,
+      "message": "Since most of the `java_api_library` modules are dynamically generated from `java_sdk_library`, can we make this value explicit instead of an implicit default?",
+      "range": {
+        "startLine": 2113,
+        "startChar": 1,
+        "endLine": 2115,
+        "endChar": 2
+      },
+      "revId": "6b74aa7a165c203f16762706091b2441b9b45a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "460f35b7_b6e6372f",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2119,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-27T14:01:31Z",
+      "side": 1,
+      "message": "nit: Move this outside to a var block so that it does not initialized everytime",
+      "range": {
+        "startLine": 2119,
+        "startChar": 1,
+        "endLine": 2119,
+        "endChar": 63
+      },
+      "revId": "6b74aa7a165c203f16762706091b2441b9b45a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
