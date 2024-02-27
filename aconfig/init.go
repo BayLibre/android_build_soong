@@ -34,6 +34,9 @@ type CodegenInfo struct {
 
 var CodegenInfoProvider = blueprint.NewProvider[CodegenInfo]()
 
+const ExportableFilterArgs = "--filter='state:ENABLED+permission:READ_ONLY'"
+const RuntimeFilterArgs = "--filter='state:ENABLED+permission:READ_ONLY' --filter='permission:READ_WRITE'"
+
 var (
 	pctx = android.NewPackageContext("android/soong/aconfig")
 
@@ -100,19 +103,19 @@ var (
 		// exported flags (only). Finally collect all generated code
 		// into the ${out} JAR file.
 		blueprint.RuleParams{
-			Command: `rm -rf ${out}.tmp` +
+			Command: `rm -rf ${out}.tmp ` +
 				`&& for cache in ${cache_files}; do ` +
-				`  if [ -n "$$(${aconfig} dump-cache --dedup --cache $$cache --filter=is_exported:true --format='{fully_qualified_name}')" ]; then ` +
+				`  if [ -n "$$(${aconfig} dump-cache --dedup --cache $$cache ${filter} --format='{fully_qualified_name}')" ]; then ` +
 				`    ${aconfig} create-java-lib --cache $$cache --mode=exported --out ${out}.tmp; ` +
 				`  fi ` +
-				`done` +
-				`&& $soong_zip -write_if_changed -jar -o ${out} -C ${out}.tmp -D ${out}.tmp` +
-				`&& rm -rf ${out}.tmp`,
+				`done ` +
+				`&& $soong_zip -write_if_changed -jar -o ${out} -C ${out}.tmp -D ${out}.tmp ` +
+				`&& rm -rf ${out}.tmp `,
 			CommandDeps: []string{
 				"$aconfig",
 				"$soong_zip",
 			},
-		}, "cache_files")
+		}, "cache_files", "filter")
 )
 
 func init() {
