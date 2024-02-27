@@ -37,6 +37,14 @@ func (this *exportedJavaDeclarationsLibrarySingleton) GenerateBuildActions(ctx a
 		cacheFiles = append(cacheFiles, decl.IntermediateCacheOutputPath)
 	})
 
+	// Modify filter conditions based on the release configuration.
+	// If the release configuration sets all runtime flags to be exported,
+	// runtime filter is applied instead of the exportable filter.
+	filterArgs := ExportableFilterArgs
+	if ctx.Config().ReleaseExportRuntimeApis() {
+		filterArgs = RuntimeFilterArgs
+	}
+
 	// Generate build action for aconfig
 	this.intermediatePath = android.PathForIntermediates(ctx, "exported_java_aconfig_library.jar")
 	ctx.Build(pctx, android.BuildParams{
@@ -46,6 +54,7 @@ func (this *exportedJavaDeclarationsLibrarySingleton) GenerateBuildActions(ctx a
 		Description: "exported_java_aconfig_library",
 		Args: map[string]string{
 			"cache_files": android.JoinPathsWithPrefix(cacheFiles, " "),
+			"filter":      filterArgs,
 		},
 	})
 	ctx.Phony("exported_java_aconfig_library", this.intermediatePath)
