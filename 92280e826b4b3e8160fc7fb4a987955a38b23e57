@@ -22,6 +22,30 @@
       },
       "revId": "92280e826b4b3e8160fc7fb4a987955a38b23e57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6063d306_e5fc8dfe",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-27T01:52:40Z",
+      "side": 1,
+      "message": "[`apiLevelsAnnotationsFlags(...)`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/droidstubs.go;drc\u003d5919815f80cb8da3d28a7cb4692245ac82c114f4;l\u003d561) has different build rules based on `params.stubConfig.annotationsEnabled` value, thus the method needs to be called regardless of the value.",
+      "parentUuid": "09efcc34_1741cd28",
+      "range": {
+        "startLine": 785,
+        "startChar": 1,
+        "endLine": 785,
+        "endChar": 46
+      },
+      "revId": "92280e826b4b3e8160fc7fb4a987955a38b23e57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
