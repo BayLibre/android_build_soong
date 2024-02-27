@@ -22,6 +22,7 @@ import (
 
 	"github.com/google/blueprint/proptools"
 
+	"android/soong/aconfig"
 	"android/soong/android"
 	"android/soong/java/config"
 	"android/soong/remoteexec"
@@ -741,16 +742,16 @@ func (d *Droidstubs) generateRevertAnnotationArgs(ctx android.ModuleContext, cmd
 		return
 
 	case Runtime:
-		filterArgs = "--filter='state:ENABLED+permission:READ_ONLY' --filter='permission:READ_WRITE'"
+		filterArgs = aconfig.RuntimeFilterArgs
 
 	case Exportable:
 		// When the build flag RELEASE_EXPORT_RUNTIME_APIS is set to true, apis marked with
 		// the flagged apis that have read_write permissions are exposed on top of the enabled
 		// and read_only apis. This is to support local override of flag values at runtime.
 		if ctx.Config().ReleaseExportRuntimeApis() {
-			filterArgs = "--filter='state:ENABLED+permission:READ_ONLY' --filter='permission:READ_WRITE'"
+			filterArgs = aconfig.RuntimeFilterArgs
 		} else {
-			filterArgs = "--filter='state:ENABLED+permission:READ_ONLY'"
+			filterArgs = aconfig.ExportableFilterArgs
 		}
 	}
 
