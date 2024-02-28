@@ -99,6 +99,24 @@
       "parentUuid": "b670ae4c_4f8b346d",
       "revId": "573aaac0678b3111a8473de90e119ba6af0497a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34bcd9ff_846eb0b7",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-28T20:28:28Z",
+      "side": 1,
+      "message": "Interestingly, the unit test fails on my workspace with the following name change\n```\n~/aosp-main/build/soong$ git diff\ndiff --git a/android/prebuilt.go b/android/prebuilt.go                                                                                           \nindex cde55862a..a41e598f7 100644\n--- a/android/prebuilt.go\n+++ b/android/prebuilt.go                                                                                                                        \n@@ -580,7 +580,7 @@ func PrebuiltPostDepsMutator(ctx BottomUpMutatorContext) {\n                if p.properties.UsePrebuilt {                                                                                                    \n                        if p.properties.SourceExists {\n                                ctx.ReplaceDependenciesIf(name, func(from blueprint.Module, tag blueprint.DependencyTag, to blueprint.Module) bool {\n-                                       if sdkLibrary, ok :\u003d m.(interface{ SdkLibraryName() *string }); ok \u0026\u0026 sdkLibrary.SdkLibraryName() !\u003d nil {\n+                                       if sdkLibrary, ok :\u003d m.(interface{ SdkLibraryNameNew() *string }); ok \u0026\u0026 sdkLibrary.SdkLibraryNameNew() !\u003d nil {\n                                                // Do not replace deps to the top-level prebuilt java_sdk_library hook.                          \n                                                // This hook has been special-cased in #isSelected to be _always_ active, even in next builds    \n                                                // for dexpreopt and hiddenapi processing.                                                       \n(reverse-i-search)`o\u0027: go test ./java -run TestStubResoluti^COfJavaSdkLibraryInLibs\nspandandas@sdas:~/aosp-main/build/soong$ ^C\nspandandas@sdas:~/aosp-main/build/soong$ go test ./java -run TestStubResolutionOfJavaSdkLibraryInLibs\n--- FAIL: TestStubResolutionOfJavaSdkLibraryInLibs (0.12s)\n    sdk_library_test.go:1831: Could not find the expected stub on classpath: could not find \"out/soong/.intermediates/sdklib.stubs/android_common/turbine-combined/sdklib.stubs.jar\" within [\"out/soong/.intermediates/default/java/core-public-stubs-system-modules/android_common/system/lib/modules\" \"out/soong/.intermediates/default/java/core-public-stubs-system-modules/android_common/system/lib/jrt-fs.jar\" \"out/soong/.intermediates/default/java/core-public-stubs-system-modules/android_common/system/release\" \"out/soong/.intermediates/default/java/android_stubs_current/android_common/turbine-combined/android_stubs_current.jar\" \"out/soong/.intermediates/prebuilt_sdklib.stubs/android_common/combined/sdklib.stubs.jar\"]\nFAIL                                                                                                                                             \nFAIL    android/soong/java      0.228s                                                                                                           \nFAIL                              \n```",
+      "parentUuid": "3534fc00_faf59384",
+      "revId": "573aaac0678b3111a8473de90e119ba6af0497a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
