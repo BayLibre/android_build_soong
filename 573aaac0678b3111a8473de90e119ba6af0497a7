@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f19224_189e8249",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-28T19:59:53Z",
+      "side": 1,
+      "message": "I think we cannot throw an error at this point since two prebuilts can have their UsePrebuilt evaluate to true if they are in same soong config namespace. This is because we still [fallback](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/android/prebuilt.go;l\u003d666-673;bpv\u003d1) to the soong config vars for source vs prebuilt selection if the module is not listed in apex_contributions\n\n(fwiw `properties.UsePrebuilt` is a mutated property)",
+      "parentUuid": "d90531ed_e348acb5",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 539,
+        "endChar": 114
+      },
+      "revId": "573aaac0678b3111a8473de90e119ba6af0497a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fc538ad_b0be61b8",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-02-28T18:48:43Z",
       "side": 1,
       "message": "I\u0027m bit worried that hardcoding an interface type here may be error-prone to future changes that modify the signature of the `SdkLibraryComponentDependency.SdkLibraryName()` method. e.g. if the signature of the method changes, wouldn\u0027t the logic here break?\n\nBut I also realized that this is in `android` package so the `java` package cannot be imported here. Do you have any thoughts about how we can make this more robust?",
+      "revId": "573aaac0678b3111a8473de90e119ba6af0497a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b670ae4c_4f8b346d",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-28T19:59:53Z",
+      "side": 1,
+      "message": "One guard here is the presence of unit tests. If the signature was updated to `SdkLibraryComponentDependency.SdkLibraryNameNew()` in the future, then the test `TestStubResolutionOfJavaSdkLibraryInLibs` will fail.",
+      "parentUuid": "6fc538ad_b0be61b8",
       "revId": "573aaac0678b3111a8473de90e119ba6af0497a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
