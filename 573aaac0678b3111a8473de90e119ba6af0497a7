@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d90531ed_e348acb5",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-28T18:48:43Z",
+      "side": 1,
+      "message": "Is throwing an error when the value is true instead of implicitly modifying a property value an option?",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 539,
+        "endChar": 114
+      },
+      "revId": "573aaac0678b3111a8473de90e119ba6af0497a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc538ad_b0be61b8",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-28T18:48:43Z",
+      "side": 1,
+      "message": "I\u0027m bit worried that hardcoding an interface type here may be error-prone to future changes that modify the signature of the `SdkLibraryComponentDependency.SdkLibraryName()` method. e.g. if the signature of the method changes, wouldn\u0027t the logic here break?\n\nBut I also realized that this is in `android` package so the `java` package cannot be imported here. Do you have any thoughts about how we can make this more robust?",
+      "revId": "573aaac0678b3111a8473de90e119ba6af0497a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
