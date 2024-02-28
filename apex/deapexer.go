@@ -131,7 +131,11 @@ func (p *Deapexer) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// apex relative path to extracted file path available for other modules.
 	if len(exports) > 0 {
 		// Make the information available for other modules.
-		di := android.NewDeapexerInfo(apexModuleName(ctx.ModuleName()), exports, p.properties.CommonModules)
+		fixed := []string{}
+		for _, in := range p.properties.CommonModules {
+			fixed = append(fixed, strings.TrimSuffix(in, ".v2"))
+		}
+		di := android.NewDeapexerInfo(apexModuleName(ctx.ModuleName()), exports, fixed)
 		di.AddDexpreoptProfileGuidedExportedModuleNames(p.properties.DexpreoptProfileGuidedModules...)
 		android.SetProvider(ctx, android.DeapexerProvider, di)
 

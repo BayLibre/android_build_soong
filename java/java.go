@@ -3009,6 +3009,7 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 	}
 
 	depName := android.RemoveOptionalPrebuiltPrefix(ctx.OtherModuleName(depModule))
+	depName = strings.TrimSuffix(depName, ".v2")
 
 	var sdkLib *string
 	if lib, ok := depModule.(SdkLibraryDependency); ok && lib.sharedLibrary() {
