@@ -16,6 +16,23 @@
       "message": "This replaces aosp/2961923 now that b/323030375 is fixed.",
       "revId": "0e227774f90bbf8552ccbeb8cfea5b3a57b43cdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca002dd0_97a5beab",
+        "filename": "java/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-02-28T18:40:24Z",
+      "side": 1,
+      "message": "Consider counting the length manually instead of joining strings for performance.",
+      "revId": "0e227774f90bbf8552ccbeb8cfea5b3a57b43cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
