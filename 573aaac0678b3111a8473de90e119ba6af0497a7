@@ -117,6 +117,24 @@
       "parentUuid": "3534fc00_faf59384",
       "revId": "573aaac0678b3111a8473de90e119ba6af0497a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00e0961c_702ec790",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-28T23:23:21Z",
+      "side": 1,
+      "message": "Oh, I meant for a case where the signature of a method in **`SdkLibraryComponentDependency`** changes, as seen below:\n```\n$ git diff\ndiff --git a/java/hiddenapi_modular.go b/java/hiddenapi_modular.go\nindex e4beb5e55..3c6a896cc 100644\n--- a/java/hiddenapi_modular.go\n+++ b/java/hiddenapi_modular.go\n@@ -687,7 +687,7 @@ func (s StubDexJarsByModule) addStubDexJar(ctx android.ModuleContext, module and\n                // migrated to a module_lib API.\n                name \u003d \"conscrypt.module.public.api\"\n        } else if d, ok :\u003d module.(SdkLibraryComponentDependency); ok {\n-               sdkLibraryName :\u003d d.SdkLibraryName()\n+               sdkLibraryName :\u003d d.SdkLibraryNameNew()\n                if sdkLibraryName !\u003d nil {\n                        // The module is a component of a java_sdk_library so use the name of the java_sdk_library.\n                        // e.g. if this module is `foo.system.stubs` and is part of the `foo` java_sdk_library then\ndiff --git a/java/sdk_library.go b/java/sdk_library.go\nindex d532aaa00..07a5d6a0a 100644\n--- a/java/sdk_library.go\n+++ b/java/sdk_library.go\n@@ -1308,7 +1308,7 @@ func (e *EmbeddableSdkLibraryComponent) initSdkLibraryComponent(module android.M\n }\n \n // to satisfy SdkLibraryComponentDependency\n-func (e *EmbeddableSdkLibraryComponent) SdkLibraryName() *string {\n+func (e *EmbeddableSdkLibraryComponent) SdkLibraryNameNew() *string {\n        return e.sdkLibraryComponentProperties.SdkLibraryName\n }\n \n@@ -1330,8 +1330,8 @@ func (e *EmbeddableSdkLibraryComponent) OptionalSdkLibraryImplementation() *stri\n type SdkLibraryComponentDependency interface {\n        UsesLibraryDependency\n \n-       // SdkLibraryName returns the name of the java_sdk_library/_import module.\n-       SdkLibraryName() *string\n+       // SdkLibraryNameNew returns the name of the java_sdk_library/_import module.\n+       SdkLibraryNameNew() *string\n \n        // The name of the implementation library for the optional SDK library or nil, if there isn\u0027t one.\n        OptionalSdkLibraryImplementation() *string\n        \n$ go test ./java -run TestStubResolutionOfJavaSdkLibraryInLibs\nok  \tandroid/soong/java\t0.228s\n```\n\nBut again, I don\u0027t think this is blocking so I\u0027ll mark this as resolved.",
+      "parentUuid": "34bcd9ff_846eb0b7",
+      "revId": "573aaac0678b3111a8473de90e119ba6af0497a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
