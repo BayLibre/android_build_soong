@@ -22,6 +22,30 @@
       },
       "revId": "d783b28b459e1c6e5220bbab8e2801ff01855ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c5e9dff_9eb996b1",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-28T07:56:31Z",
+      "side": 1,
+      "message": "Thanks for catching this, it seems like L526~528 is formatted with spaces instead of tabs. I\u0027ve replaced all the spaces with tabs.",
+      "parentUuid": "78bbf21d_46dc95a1",
+      "range": {
+        "startLine": 529,
+        "startChar": 3,
+        "endLine": 529,
+        "endChar": 4
+      },
+      "revId": "d783b28b459e1c6e5220bbab8e2801ff01855ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
