@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78bbf21d_46dc95a1",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-28T07:36:41Z",
+      "side": 1,
+      "message": "nit: There are extra tabs here",
+      "range": {
+        "startLine": 529,
+        "startChar": 3,
+        "endLine": 529,
+        "endChar": 4
+      },
+      "revId": "d783b28b459e1c6e5220bbab8e2801ff01855ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
