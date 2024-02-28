@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c63ec0_bbd64c00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-28T18:52:22Z",
+      "side": 1,
+      "message": "IIUC even when there are multiple prebuilts, only one of them will be installed?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "e2b5dff5c73ec82af464e9386339894964bde3b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
