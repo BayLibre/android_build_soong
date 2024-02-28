@@ -33,6 +33,24 @@
       "message": "Consider counting the length manually instead of joining strings for performance.",
       "revId": "0e227774f90bbf8552ccbeb8cfea5b3a57b43cdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e9860c4_b4b382ea",
+        "filename": "java/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-28T21:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca002dd0_97a5beab",
+      "revId": "0e227774f90bbf8552ccbeb8cfea5b3a57b43cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
