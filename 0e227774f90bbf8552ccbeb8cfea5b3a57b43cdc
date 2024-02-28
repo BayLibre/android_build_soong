@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c52696_e01481fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-28T00:05:11Z",
+      "side": 1,
+      "message": "This replaces aosp/2961923 now that b/323030375 is fixed.",
+      "revId": "0e227774f90bbf8552ccbeb8cfea5b3a57b43cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
