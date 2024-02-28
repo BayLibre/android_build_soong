@@ -22,6 +22,30 @@
       },
       "revId": "e2b5dff5c73ec82af464e9386339894964bde3b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e2c09ba_0ddd650c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-28T18:54:59Z",
+      "side": 1,
+      "message": "Yes. If we try to install both of them, we will (correctly) get a duplicate installation error.",
+      "parentUuid": "63c63ec0_bbd64c00",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "e2b5dff5c73ec82af464e9386339894964bde3b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
