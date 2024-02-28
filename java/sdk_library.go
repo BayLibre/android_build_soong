@@ -2807,7 +2807,7 @@ func (module *SdkLibraryImport) ComponentDepsMutator(ctx android.BottomUpMutator
 // Add other dependencies as normal.
 func (module *SdkLibraryImport) DepsMutator(ctx android.BottomUpMutatorContext) {
 
-	implName := module.implLibraryModuleName()
+	implName := module.BaseModuleName() + ".impl"
 	if ctx.OtherModuleExists(implName) {
 		ctx.AddVariationDependencies(nil, implLibraryTag, implName)
 

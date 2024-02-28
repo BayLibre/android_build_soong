@@ -1643,6 +1643,7 @@ func (u *usesLibrary) classLoaderContextForUsesLibDeps(ctx android.ModuleContext
 		}
 
 		dep := android.RemoveOptionalPrebuiltPrefix(ctx.OtherModuleName(m))
+		dep = strings.TrimSuffix(dep, ".v2")
 
 		// Skip stub libraries. A dependency on the implementation library has been added earlier,
 		// so it will be added to CLC, but the stub shouldn't be. Stub libraries can be distingushed
