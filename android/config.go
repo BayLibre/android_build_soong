@@ -2027,6 +2027,7 @@ func (c *config) UseResourceProcessorByDefault() bool {
 
 var (
 	mainlineApexContributionBuildFlags = []string{
+		"RELEASE_APEX_CONTRIBUTIONS_APPS",
 		"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES",
 		"RELEASE_APEX_CONTRIBUTIONS_APPSEARCH",
 		"RELEASE_APEX_CONTRIBUTIONS_ART",
