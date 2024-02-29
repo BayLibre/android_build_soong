@@ -169,6 +169,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b7fea95_cb967229",
+        "filename": "tradefed/test_module_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-29T22:22:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "39be8307_f29c6ea0",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "7ac966ede184f977c9e882b831cdc9c9b7bdb611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4806471a_ba36013a",
@@ -206,6 +230,30 @@
       "side": 1,
       "message": "3) and 4) are done by base or soong_app_prebuilt, not us.\nI\u0027ll add those comments below.  Please let me know if it clarifies or not.",
       "parentUuid": "4806471a_ba36013a",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 52
+      },
+      "revId": "7ac966ede184f977c9e882b831cdc9c9b7bdb611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db6630ef_481f96ea",
+        "filename": "tradefed/test_module_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-29T22:22:49Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "bd907bc5_3ee229dd",
       "range": {
         "startLine": 125,
         "startChar": 0,

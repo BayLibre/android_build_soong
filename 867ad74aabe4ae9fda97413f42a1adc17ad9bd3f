@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b4e2672_2305334f",
+        "filename": "tradefed/tests/place_holder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-29T22:22:49Z",
+      "side": 1,
+      "message": "Out of curiosity, why not move `test_module_config.go` to this package? Wouldn\u0027t that allow you to import both `tradefed` and `java` packages here? Seems like `suite_harness` does the same thing despite being located inside `tradefed/` subdirectory.",
+      "revId": "867ad74aabe4ae9fda97413f42a1adc17ad9bd3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ae17ca_c819221f",
+        "filename": "tradefed/tests/test_module_config_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-29T22:22:49Z",
+      "side": 1,
+      "message": "Do you mind adding a test cases for:\n- `\"derived_test\"` setting non-`android_test` module as base and testing expected error\n- no `*_filters` or `*_annotations` specified and testing expected error\n- same `android_test` is referenced by multiple `test_module_config` modules and android mk entries are written as expected",
+      "revId": "867ad74aabe4ae9fda97413f42a1adc17ad9bd3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
