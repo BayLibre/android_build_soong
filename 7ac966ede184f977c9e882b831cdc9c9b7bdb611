@@ -266,6 +266,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3c8da35_50a9a120",
+        "filename": "tradefed/test_module_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-02-29T15:49:22Z",
+      "side": 1,
+      "message": "One other idea that might work, but I\u0027m not sure if it is allowed or if it would break the ordering of things is:\nCan I call base\u0027s AndroidMkEntries() func in my GenerateAndroidBuildActions and store the result (rather than store base or emit via a provider)?",
+      "parentUuid": "15484b59_be6e1d63",
+      "revId": "7ac966ede184f977c9e882b831cdc9c9b7bdb611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc8eafdc_986e27c2",
         "filename": "tradefed/test_module_config.go",
         "patchSetId": 14
