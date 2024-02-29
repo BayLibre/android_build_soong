@@ -16,6 +16,24 @@
       "message": "Thanks a lot for this Spandan. Not sure if this intentional or not. I think you might miss\n\ncom.google.android.neuralnetworks\ncom.google.android.extservices\ncom.google.android.cellbroadcast",
       "revId": "e8180ff37c54fe4b41eac5f951f3cef34126984c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b568d3_c4235daf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-02-29T15:37:11Z",
+      "side": 1,
+      "message": "Thanks for catching it. this was not intentional. I have added the build flags here, and will do so in the internal CL as well",
+      "parentUuid": "2cd87cc6_a4ca3f43",
+      "revId": "e8180ff37c54fe4b41eac5f951f3cef34126984c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
