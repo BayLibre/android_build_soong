@@ -52,6 +52,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5a1c03a_336e06ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-02-29T15:39:21Z",
+      "side": 1,
+      "message": "Thank you for the review.\nI think we have one conceptual issue to resolve before I fix the code.\nI feel like lifting from base to the provider and all using soong_app_prebuilt.mk will greatly increase the change, but I can do it.  I highlight some of the expanse below.",
+      "revId": "7ac966ede184f977c9e882b831cdc9c9b7bdb611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8d85d95_ce01c209",
@@ -225,6 +242,24 @@
       "writtenOn": "2024-02-28T22:37:34Z",
       "side": 1,
       "message": "It seems like `Test.AndroidMkEntries()` just writes `data` to `LOCAL_COMPATIBILITY_SUPPORT_FILES`. Given that we already have this information in `provider`, can we utilize this information instead of calling the base module\u0027s \n`AndroidMkEntries()`?\n\nWe could utilize [`androidMkWriteTestData()`](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/java/androidmk.go;drc\u003d7dacb0e872d8a2662e0665f999216badb62e9fc1;l\u003d725) but that may require [exporting](https://go.dev/ref/spec#Exported_identifiers) this method and moving this method to `tradefed` or `android` package in order to prevent import cycles.",
+      "revId": "7ac966ede184f977c9e882b831cdc9c9b7bdb611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15484b59_be6e1d63",
+        "filename": "tradefed/test_module_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-02-29T15:39:21Z",
+      "side": 1,
+      "message": "Yes, that is why I ended up calling base.\nI was also trying to decide if I should enumerate all entries that actually get written our used or just assume that base would \"do-the-right-thing\".\nThis implementation was based on the decision to use soong_app_prebuilt.mk (via base) and letting it write all entries necessary and then we just modify the entries necessary.\nIf instead, we should create our own \".mk\" and set the entries needed, I can do that too.\nIf that were the case, I would end up doing \"ctx.InstallFile()\" on the datafiles and maybe the OutputFile rather than rely on the new \".mk\" to do that for me.\n\nA dump from Androd-$product.mk for one of these modules is below.\nI just wanted to \"inherit\" things like LOCAL_CERTIFICATE and LOCAL_LICENSE_METADATA (and possibly others), \n\nPulling each of these out into ProviderData (and extending for other base types like java_test_host and sh_test) feels like we are exposing more than soong normally does so I shied away from it.\n\nI see at least three paths forward:\n\n1) Do as you suggest and pull out the values from base to the provider and add things like the .mk to include rather than call base.AndroidMkEntries()\n\n2) Keep the call to base.AndroidMkEntries(). I believe this goes against the idea of providers, but I also thought this how all srcs, data dependencies work for other rules.\n\n3) Create my own .mk to include that is the bare minimum and do more work in soong via ctx.Install() etc.  I think the first time I tried this, I had trouble because it wasn\u0027t emitting data to module-info.json and atest had trouble running the tests.  But I know more now can try again.\n\n4) ??\n\nPart of my rationale for writing the code this way was \"forward-change-thinking\".  If someone updates the soong code for `android_test`, then `test_module_config` would probably just inherit the fixes.  Otherwise someone might need to make changes to this implementation as well.  And I\u0027m not sure if I would miss things that need to get done (like license checks) or if I should just skip everything other than copy build artifacts.\n\nPlease let me know what you think.\n\n```\ninclude $(CLEAR_VARS)  # type: test_module_config, name: DerivedFrameworks1, variant: android_common\nLOCAL_PATH :\u003d frameworks/base/services/tests/servicestests\nLOCAL_MODULE :\u003d DerivedFrameworks1\nLOCAL_MODULE_CLASS :\u003d APPS\nLOCAL_PREBUILT_MODULE_FILE :\u003d out/soong/.intermediates/frameworks/base/services/tests/servicestests/FrameworksServicesTests/android_common/7d7acb43234fdf0817e197528d533911/FrameworksServicesTests.apk\nLOCAL_SOONG_MODULE_TYPE :\u003d test_module_config\nLOCAL_SOONG_INSTALLED_MODULE :\u003d out/target/product/shiba/testcases/DerivedFrameworks1/test_module_config.manifest\nLOCAL_SOONG_INSTALL_PAIRS :\u003d out/soong/.intermediates/frameworks/base/services/tests/servicestests/DerivedFrameworks1/android_common/7d7acb43234fdf0817e197528d533911/test_module_config.manifest:out/target/product/shiba/testcases/DerivedFrameworks1/test_module_config.manifest\nLOCAL_SOONG_LICENSE_METADATA :\u003d out/soong/.intermediates/frameworks/base/services/tests/servicestests/DerivedFrameworks1/android_common/7d7acb43234fdf0817e197528d533911/meta_lic\nLOCAL_SOONG_HEADER_JAR :\u003d out/soong/.intermediates/frameworks/base/services/tests/servicestests/FrameworksServicesTests/android_common/7d7acb43234fdf0817e197528d533911/turbine-combined/FrameworksServicesTests.jar\nLOCAL_SOONG_RESOURCE_EXPORT_PACKAGE :\u003d out/soong/.intermediates/frameworks/base/services/tests/servicestests/FrameworksServicesTests/android_common/7d7acb43234fdf0817e197528d533911/package-res.apk\nLOCAL_SOONG_DEX_JAR :\u003d out/soong/.intermediates/frameworks/base/services/tests/servicestests/FrameworksServicesTests/android_common/7d7acb43234fdf0817e197528d533911/dex-withres/FrameworksServicesTests.jar\nLOCAL_SOONG_CLASSES_JAR :\u003d out/soong/.intermediates/frameworks/base/services/tests/servicestests/FrameworksServicesTests/android_common/7d7acb43234fdf0817e197528d533911/withres/FrameworksServicesTests.jar\nLOCAL_SOONG_BUNDLE :\u003d out/soong/.intermediates/frameworks/base/services/tests/servicestests/FrameworksServicesTests/android_common/7d7acb43234fdf0817e197528d533911/base.zip\nLOCAL_FULL_MANIFEST_FILE :\u003d out/soong/.intermediates/frameworks/base/services/tests/servicestests/FrameworksServicesTests/android_common/7d7acb43234fdf0817e197528d533911/manifest_merger/AndroidManifest.xml\nLOCAL_CERTIFICATE :\u003d build/make/target/product/security/platform.x509.pem\nLOCAL_SOONG_JNI_LIBS_SYMBOLS :\u003d \nLOCAL_ACONFIG_FILES :\u003d out/soong/.intermediates/frameworks/base/services/tests/servicestests/FrameworksServicesTests/android_common/7d7acb43234fdf0817e197528d533911/system/aconfig_merged.pb out/soong/.intermediates/frameworks/base/services/tests/servicestests/FrameworksServicesTests/android_common/7d7acb43234fdf0817e197528d533911/aconfig_merged.pb out/soong/.intermediates/frameworks/base/services/tests/servicestests/FrameworksServicesTests/android_common/7d7acb43234fdf0817e197528d533911/system/aconfig_merged.pb out/soong/.intermediates/frameworks/base/services/tests/servicestests/FrameworksServicesTests/android_common/7d7acb43234fdf0817e197528d533911/aconfig_merged.pb\nLOCAL_MODULE_TAGS :\u003d tests\nLOCAL_COMPATIBILITY_SUITE :\u003d  device-tests\nLOCAL_FULL_TEST_CONFIG :\u003d out/soong/.intermediates/frameworks/base/services/tests/servicestests/DerivedFrameworks1/android_common/7d7acb43234fdf0817e197528d533911/test_config_fixer/DerivedFrameworks1.config\nLOCAL_COMPATIBILITY_SUPPORT_FILES :\u003d out/soong/.intermediates/frameworks/base/core/tests/coretests/BstatsTestApp/BstatsTestApp/android_common/6c826b466f2421b82c3ec7d86f8481e7/BstatsTestApp.apk:BstatsTestApp.apk out/soong/.intermediates/frameworks/base/services/tests/servicestests/test-apps/JobTestApp/JobTestApp/android_common/6c826b466f2421b82c3ec7d86f8481e7/JobTestApp.apk:JobTestApp.apk out/soong/.intermediates/frameworks/base/services/tests/servicestests/test-apps/SimpleServiceTestApp/SimpleServiceTestApp1/android_common/6c826b466f2421b82c3ec7d86f8481e7/SimpleServiceTestApp1.apk:SimpleServiceTestApp1.apk out/soong/.intermediates/frameworks/base/services/tests/servicestests/test-apps/SimpleServiceTestApp/SimpleServiceTestApp2/android_common/6c826b466f2421b82c3ec7d86f8481e7/SimpleServiceTestApp2.apk:SimpleServiceTestApp2.apk out/soong/.intermediates/frameworks/base/services/tests/servicestests/test-apps/SimpleServiceTestApp/SimpleServiceTestApp3/android_common/6c826b466f2421b82c3ec7d86f8481e7/SimpleServiceTestApp3.apk:SimpleServiceTestApp3.apk out/soong/.intermediates/frameworks/base/services/tests/servicestests/test-apps/SuspendTestApp/SuspendTestApp/android_common/6c826b466f2421b82c3ec7d86f8481e7/SuspendTestApp.apk:SuspendTestApp.apk out/soong/.intermediates/frameworks/base/services/tests/servicestests/test-apps/MediaButtonReceiverHolderTestHelperApp/MediaButtonReceiverHolderTestHelperApp/android_common/6c826b466f2421b82c3ec7d86f8481e7/MediaButtonReceiverHolderTestHelperApp.apk:MediaButtonReceiverHolderTestHelperApp.apk frameworks/base/services/tests/servicestests/data/broken_shortcut.xml:data/broken_shortcut.xml\ninclude $(BUILD_SYSTEM)/soong_app_prebuilt.mk\n```",
+      "parentUuid": "8a41fcf1_dbdc7527",
       "revId": "7ac966ede184f977c9e882b831cdc9c9b7bdb611",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
