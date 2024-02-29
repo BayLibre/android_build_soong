@@ -16,6 +16,24 @@
       "message": "Is there any action I need to take to resolve the presubmit issue?",
       "revId": "53ca8b2512dd9f4bd78d5b70d43d37e6dea5771d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af6a6e60_82b15416",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-02-29T20:37:07Z",
+      "side": 1,
+      "message": "The presubmit issues are related to this CL, but I\u0027m not sure how.  `m aconfig_storage.test.rust` builds fine without this CL, but fails with this CL:\n```\nFAILED: //build/make/tools/aconfig/aconfig_storage_file/tests:aconfig_storage.test.rust cp out\nOutputs: out/soong/.intermediates/build/make/tools/aconfig/aconfig_storage_file/tests/aconfig_storage.test.rust/android_x86_64_silvermont/out/tmp.ro.package.map out/soong/.intermediates/build/make/tools/aconfig/aconfig_storage_file/tests/aconfig_storage.test.rust/android_x86_64_silvermont/out/tmp.ro.flag.map out/soong/.intermediates/build/make/tools/aconfig/aconfig_storage_file/tests/aconfig_storage.test.rust/android_x86_64_silvermont/out/tmp.ro.flag.val\nError: exited with code: 1\nCommand: cp `cat out/soong/.intermediates/build/make/tools/aconfig/aconfig_storage_file/tests/aconfig_storage.test.rust/android_x86_64_silvermont/out.rsp` out/soong/.intermediates/build/make/tools/aconfig/aconfig_storage_file/tests/aconfig_storage.test.rust/android_x86_64_silvermont/out\nOutput:\ncp: out/soong/.intermediates/build/make/tools/aconfig/aconfig_storage_file/tests/aconfig_storage.test.rust/android_x86_64_silvermont/out/tmp.ro.package.map: Permission denied\ncp: out/soong/.intermediates/build/make/tools/aconfig/aconfig_storage_file/tests/aconfig_storage.test.rust/android_x86_64_silvermont/out/tmp.ro.flag.map: Permission denied\ncp: out/soong/.intermediates/build/make/tools/aconfig/aconfig_storage_file/tests/aconfig_storage.test.rust/android_x86_64_silvermont/out/tmp.ro.flag.val: Permission denied\n```\n\n`aconfig_storage.test-rust` depends on `androidmk/parser/parser.go` via the `sbox` tool we use to sandbox genrules:\n```\n$ aninja -t path aconfig_storage.test.rust build/soong/androidmk/parser/parser.go\naconfig_storage.test.rust\ndevice_aconfig_storage.test.rust_all_targets\nout/target/product/vsoc_x86_64/testcases/aconfig_storage.test.rust/x86_64/tests/tmp.ro.flag.map\nout/soong/.intermediates/build/make/tools/aconfig/aconfig_storage_file/ro.flag.map/gen/tests/tmp.ro.flag.map\nout/host/linux-x86/bin/sbox\nout/host/linux-x86/bin/go/sbox/obj/a.out\nout/host/linux-x86/bin/go/androidmk-parser/pkg/android/soong/androidmk/parser.a\nbuild/soong/androidmk/parser/parser.go\n```\n\n`sbox` uses the androidmk parser via the `makedeps` package to parse the deps files written out during rules: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cmd/sbox/sbox.go;l\u003d710-751;drc\u003dca355af1fc04ed8fd6b61cdce3b4353851efc58f.",
+      "parentUuid": "e1e6fea4_e5206f7b",
+      "revId": "53ca8b2512dd9f4bd78d5b70d43d37e6dea5771d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
