@@ -302,6 +302,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80ea07ae_9908477c",
+        "filename": "tradefed/test_module_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-02-29T19:43:50Z",
+      "side": 1,
+      "message": "FYI, my quick attempt to call AndroidMkEntries on the base seems to work.\nI\u0027m guaranteed that base\u0027s GenerateAndroidBuildActions is already called in my GenerateAndroidBuildActions, so AndroidMkEntries is still called later (from base\u0027s point of view) and I just stash away the results.  It helps that AndroidMkEntries() doesn\u0027t expect a context so doesn\u0027t really have side effects or have implicit inputs.\n\nIf you don\u0027t have a strong opinion on moving everything into the Provider now, then I would suggest leaving the structure as it is.  When the Provider migration is under way, then perhaps we can consider the approach of calling base\u0027s AndroidMkEntries directly or document better what constraints must be satisfied to do that.\n\nI don\u0027t really want to put things off, but I don\u0027t know if we will come up with other ways do deal with this problem when migrating other modules.  I\u0027d rather learn from them than lead the way here.\n\nFor now the provider satisfies the dependencies that are needed during GenerateAndroidBuildActions.  (I\u0027ll fix the one found below for HostRequiredModuleNames()))",
+      "parentUuid": "fc016bb5_4e332444",
+      "revId": "7ac966ede184f977c9e882b831cdc9c9b7bdb611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc8eafdc_986e27c2",
         "filename": "tradefed/test_module_config.go",
         "patchSetId": 14
