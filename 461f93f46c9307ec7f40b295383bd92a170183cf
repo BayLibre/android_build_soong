@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f09c92_ef764e3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-02-29T22:01:37Z",
+      "side": 1,
+      "message": "I\u0027ve address the concerns (other than removing base).\n\nOn thinking some more, I can have the provider return the entries list and have base\u0027s GenerateAndroidBuildActions call its own AndroidMkEntries() and populate the provider, but it feels like extra work for most java modules that don\u0027t need the provider data.",
+      "revId": "461f93f46c9307ec7f40b295383bd92a170183cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
