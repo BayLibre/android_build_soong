@@ -1904,6 +1904,8 @@ type JavaApiLibraryProperties struct {
 	// in sync with the source Java files. However, the environment variable
 	// DISABLE_STUB_VALIDATION has precedence over this property.
 	Enable_validation *bool
+
+	Sdk_version *string
 }
 
 func ApiLibraryFactory() android.Module {
@@ -2059,13 +2061,19 @@ func (al *ApiLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 			}
 		}
 	}
+	if ctx.Device() {
+		sdkDep := decodeSdkDep(ctx, android.SdkContext(al))
+		if sdkDep.useModule {
+			ctx.AddVariationDependencies(nil, systemModulesTag, sdkDep.systemModules)
+			ctx.AddVariationDependencies(nil, libTag, sdkDep.classpath...)
+			ctx.AddVariationDependencies(nil, bootClasspathTag, sdkDep.bootclasspath...)
+
+		}
+	}
 	ctx.AddVariationDependencies(nil, libTag, al.properties.Libs...)
 	ctx.AddVariationDependencies(nil, staticLibTag, al.properties.Static_libs...)
 	if al.properties.Full_api_surface_stub != nil {
 		ctx.AddVariationDependencies(nil, depApiSrcsTag, String(al.properties.Full_api_surface_stub))
-	}
-	if al.properties.System_modules != nil {
-		ctx.AddVariationDependencies(nil, systemModulesTag, String(al.properties.System_modules))
 	}
 }
 
@@ -2103,6 +2111,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	var srcFilesInfo []JavaApiImportInfo
 	var classPaths android.Paths
+	var bootclassPaths android.Paths
 	var staticLibs android.Paths
 	var depApiSrcsStubsJar android.Path
 	var systemModulesPaths android.Paths
@@ -2118,6 +2127,9 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		case libTag:
 			provider, _ := android.OtherModuleProvider(ctx, dep, JavaInfoProvider)
 			classPaths = append(classPaths, provider.HeaderJars...)
+		case bootClasspathTag:
+			provider, _ := android.OtherModuleProvider(ctx, dep, JavaInfoProvider)
+			bootclassPaths = append(bootclassPaths, provider.HeaderJars...)
 		case staticLibTag:
 			provider, _ := android.OtherModuleProvider(ctx, dep, JavaInfoProvider)
 			staticLibs = append(staticLibs, provider.HeaderJars...)
@@ -2178,7 +2190,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		flags.javaVersion = getStubsJavaVersion()
 		flags.javacFlags = strings.Join(al.properties.Javacflags, " ")
 		flags.classpath = classpath(classPaths)
-		flags.bootClasspath = classpath(systemModulesPaths)
+		flags.bootClasspath = classpath(append(systemModulesPaths, bootclassPaths...))
 
 		annoSrcJar := android.PathForModuleOut(ctx, ctx.ModuleName(), "anno.srcjar")
 
@@ -2232,19 +2244,34 @@ func (al *ApiLibrary) ClassLoaderContexts() dexpreopt.ClassLoaderContextMap {
 	return nil
 }
 
-// java_api_library constitutes the sdk, and does not build against one
+// Most java_api_library constitues the sdk, but there are some java_api_library that
+// does not contribute to the api surface. Such modules are allowed to set sdk_version
+// other than "none"
 func (al *ApiLibrary) SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
-	return android.SdkSpecNone
+	return android.SdkSpecFrom(ctx, String(al.properties.Sdk_version))
 }
 
 // java_api_library is always at "current". Return FutureApiLevel
 func (al *ApiLibrary) MinSdkVersion(ctx android.EarlyModuleContext) android.ApiLevel {
-	return android.FutureApiLevel
+	return al.SdkVersion(ctx).ApiLevel
+}
+
+func (al *ApiLibrary) ReplaceMaxSdkVersionPlaceholder(ctx android.EarlyModuleContext) android.ApiLevel {
+	return al.SdkVersion(ctx).ApiLevel
+}
+
+func (al *ApiLibrary) SystemModules() string {
+	return proptools.String(al.properties.System_modules)
+}
+
+func (al *ApiLibrary) TargetSdkVersion(ctx android.EarlyModuleContext) android.ApiLevel {
+	return al.SdkVersion(ctx).ApiLevel
 }
 
 // implement the following interfaces for hiddenapi processing
 var _ hiddenAPIModule = (*ApiLibrary)(nil)
 var _ UsesLibraryDependency = (*ApiLibrary)(nil)
+var _ android.SdkContext = (*ApiLibrary)(nil)
 
 //
 // Java prebuilts

@@ -52,20 +52,6 @@ java_library {
     ],
 }
 
-java_api_library {
-    name: "core.current.stubs.from-text",
-    api_surface: "core",
-    api_contributions: [
-        "art.module.public.api.stubs.source.api.contribution",
-        "conscrypt.module.public.api.stubs.source.api.contribution",
-        "i18n.module.public.api.stubs.source.api.contribution",
-    ],
-    libs: [
-        "stub-annotations",
-    ],
-    enable_validation: false,
-}
-
 java_library {
     name: "core.current.stubs",
     defaults: [
@@ -74,16 +60,6 @@ java_library {
     static_libs: [
         "core.current.stubs.from-source",
     ],
-    product_variables: {
-        build_from_text_stub: {
-            static_libs: [
-                "core.current.stubs.from-text",
-            ],
-            exclude_static_libs: [
-                "core.current.stubs.from-source",
-            ],
-        },
-    },
 }
 
 java_library {
@@ -202,16 +178,6 @@ java_library {
     static_libs: [
         "core.module_lib.stubs.from-source",
     ],
-    product_variables: {
-        build_from_text_stub: {
-            static_libs: [
-                "core.module_lib.stubs.from-text",
-            ],
-            exclude_static_libs: [
-                "core.module_lib.stubs.from-source",
-            ],
-        },
-    },
 }
 
 java_library {
@@ -228,26 +194,6 @@ java_library {
         "conscrypt.module.public.api.stubs",
         "i18n.module.public.api.stubs",
     ],
-}
-
-java_api_library {
-    name: "core.module_lib.stubs.from-text",
-    api_surface: "module-lib",
-    api_contributions: [
-        "art.module.public.api.stubs.source.api.contribution",
-        "art.module.public.api.stubs.source.system.api.contribution",
-        "art.module.public.api.stubs.source.module_lib.api.contribution",
-
-        // Add the module-lib correspondence when Conscrypt or i18N module
-        // provides @SystemApi(MODULE_LIBRARIES). Currently, assume that only ART module provides
-        // @SystemApi(MODULE_LIBRARIES).
-        "conscrypt.module.public.api.stubs.source.api.contribution",
-        "i18n.module.public.api.stubs.source.api.contribution",
-    ],
-    libs: [
-        "stub-annotations",
-    ],
-    visibility: ["//visibility:private"],
 }
 
 // Produces a dist file that is used by the
@@ -346,20 +292,6 @@ java_defaults {
     ],
 }
 
-java_api_library {
-    name: "legacy.core.platform.api.stubs.from-text",
-    api_surface: "core_platform",
-    defaults: [
-        "android_core_platform_stubs_current_contributions",
-    ],
-    api_contributions: [
-        "legacy.i18n.module.platform.api.stubs.source.api.contribution",
-    ],
-    libs: [
-        "stub-annotations",
-    ],
-}
-
 java_library {
     name: "legacy.core.platform.api.stubs",
     visibility: core_platform_visibility,
@@ -369,16 +301,6 @@ java_library {
     static_libs: [
         "legacy.core.platform.api.stubs.from-source",
     ],
-    product_variables: {
-        build_from_text_stub: {
-            static_libs: [
-                "legacy.core.platform.api.stubs.from-text",
-            ],
-            exclude_static_libs: [
-                "legacy.core.platform.api.stubs.from-source",
-            ],
-        },
-    },
 }
 
 java_library {
@@ -434,20 +356,6 @@ java_library {
     ],
 }
 
-java_api_library {
-    name: "stable.core.platform.api.stubs.from-text",
-    api_surface: "core_platform",
-    defaults: [
-        "android_core_platform_stubs_current_contributions",
-    ],
-    api_contributions: [
-        "stable.i18n.module.platform.api.stubs.source.api.contribution",
-    ],
-    libs: [
-        "stub-annotations",
-    ],
-}
-
 java_library {
     name: "stable.core.platform.api.stubs",
     visibility: core_platform_visibility,
@@ -457,16 +365,6 @@ java_library {
     static_libs: [
         "stable.core.platform.api.stubs.from-source",
     ],
-    product_variables: {
-        build_from_text_stub: {
-            static_libs: [
-                "stable.core.platform.api.stubs.from-text",
-            ],
-            exclude_static_libs: [
-                "stable.core.platform.api.stubs.from-source",
-            ],
-        },
-    },
 }
 
 // Same as stable.core.platform.api.stubs, but android annotations are
