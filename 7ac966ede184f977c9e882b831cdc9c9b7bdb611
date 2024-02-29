@@ -284,6 +284,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc016bb5_4e332444",
+        "filename": "tradefed/test_module_config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-02-29T19:15:04Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong opinion regarding this. I wanted to suggest using the provider based approach as all inter-module communication would be only done using the providers in the long run. This is because providers can be serialized to disk, and incremental build can benefit from it as the module that didn\u0027t change can just reload it\u0027s providers for its reverse dependencies that did change. However, I don\u0027t think that this needs to be addressed today.\n\n\u003e Can I call base\u0027s AndroidMkEntries() func in my GenerateAndroidBuildActions and store the result (rather than store base or emit via a provider)?\n\nNo, `AndroidMkEntries()` run in the later phase of the build, after `GenerateAndroidBuildActions()`. go/soong-overview#soong for more info.",
+      "parentUuid": "c3c8da35_50a9a120",
+      "revId": "7ac966ede184f977c9e882b831cdc9c9b7bdb611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc8eafdc_986e27c2",
         "filename": "tradefed/test_module_config.go",
         "patchSetId": 14
