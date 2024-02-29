@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cd87cc6_a4ca3f43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951966
+      },
+      "writtenOn": "2024-02-29T15:32:47Z",
+      "side": 1,
+      "message": "Thanks a lot for this Spandan. Not sure if this intentional or not. I think you might miss\n\ncom.google.android.neuralnetworks\ncom.google.android.extservices\ncom.google.android.cellbroadcast",
+      "revId": "e8180ff37c54fe4b41eac5f951f3cef34126984c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
