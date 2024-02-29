@@ -2016,15 +2016,15 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 
 func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, apiScope *apiScope, alternativeFullApiSurfaceStub string) {
 	props := struct {
-		Name                  *string
-		Visibility            []string
-		Api_contributions     []string
-		Libs                  []string
-		Static_libs           []string
-		Full_api_surface_stub *string
-		System_modules        *string
-		Enable_validation     *bool
-		Stubs_type            *string
+		Name              *string
+		Visibility        []string
+		Api_contributions []string
+		Libs              []string
+		Static_libs       []string
+		System_modules    *string
+		Enable_validation *bool
+		Stubs_type        *string
+		Sdk_version       *string
 	}{}
 
 	props.Name = proptools.StringPtr(module.apiLibraryModuleName(apiScope))
@@ -2049,32 +2049,19 @@ func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, 
 
 	props.Api_contributions = apiContributions
 	props.Libs = module.properties.Libs
+	props.Libs = append(props.Libs, module.properties.Static_libs...)
 	props.Libs = append(props.Libs, module.sdkLibraryProperties.Stub_only_libs...)
 	props.Libs = append(props.Libs, module.scopeToProperties[apiScope].Libs...)
 	props.Libs = append(props.Libs, "stub-annotations")
 	props.Static_libs = module.sdkLibraryProperties.Stub_only_static_libs
-	props.Full_api_surface_stub = proptools.StringPtr(apiScope.kind.DefaultJavaLibraryName())
-	if alternativeFullApiSurfaceStub != "" {
-		props.Full_api_surface_stub = proptools.StringPtr(alternativeFullApiSurfaceStub)
-	}
-
-	// android_module_lib_stubs_current.from-text only comprises api contributions from art, conscrypt and i18n.
-	// Thus, replace with android_module_lib_stubs_current_full.from-text, which comprises every api domains.
-	if apiScope.kind == android.SdkModule {
-		props.Full_api_surface_stub = proptools.StringPtr(apiScope.kind.DefaultJavaLibraryName() + "_full.from-text")
-	}
-
-	// java_sdk_library modules that set sdk_version as none does not depend on other api
-	// domains. Therefore, java_api_library created from such modules should not depend on
-	// full_api_surface_stubs but create and compile stubs by the java_api_library module
-	// itself.
-	if module.SdkVersion(mctx).Kind == android.SdkNone {
-		props.Full_api_surface_stub = nil
-	}
 
 	props.System_modules = module.deviceProperties.System_modules
 	props.Enable_validation = proptools.BoolPtr(true)
 	props.Stubs_type = proptools.StringPtr("everything")
+
+	if module.deviceProperties.Sdk_version != nil {
+		props.Sdk_version = module.deviceProperties.Sdk_version
+	}
 
 	mctx.CreateModule(ApiLibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
 }
