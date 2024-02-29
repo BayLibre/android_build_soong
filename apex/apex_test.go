@@ -9992,9 +9992,6 @@ func TestApexLintBcpFragmentSdkLibDeps(t *testing.T) {
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.PrepareForTestWithJacocoInstrumentation,
 		java.FixtureWithLastReleaseApis("foo"),
-		android.FixtureModifyConfig(func(config android.Config) {
-			config.SetApiLibraries([]string{"foo"})
-		}),
 		android.FixtureMergeMockFs(fs),
 	).RunTestWithBp(t, bp)
 
@@ -11478,9 +11475,6 @@ func TestAconfifDeclarationsValidation(t *testing.T) {
 		prepareForApexTest,
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo"),
-		android.FixtureModifyConfig(func(config android.Config) {
-			config.SetApiLibraries([]string{"foo"})
-		}),
 	).RunTestWithBp(t, `
 		java_library {
 			name: "baz-java-lib",
