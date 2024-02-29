@@ -424,22 +424,10 @@ var (
 		apiScopeModuleLib,
 		apiScopeSystemServer,
 	}
-	apiLibraryAdditionalProperties = map[string]struct {
-		FullApiSurfaceStubLib     string
-		AdditionalApiContribution string
-	}{
-		"legacy.i18n.module.platform.api": {
-			FullApiSurfaceStubLib:     "legacy.core.platform.api.stubs",
-			AdditionalApiContribution: "i18n.module.public.api.stubs.source.api.contribution",
-		},
-		"stable.i18n.module.platform.api": {
-			FullApiSurfaceStubLib:     "stable.core.platform.api.stubs",
-			AdditionalApiContribution: "i18n.module.public.api.stubs.source.api.contribution",
-		},
-		"conscrypt.module.platform.api": {
-			FullApiSurfaceStubLib:     "stable.core.platform.api.stubs",
-			AdditionalApiContribution: "conscrypt.module.public.api.stubs.source.api.contribution",
-		},
+	apiLibraryAdditionalProperties = map[string]string{
+		"legacy.i18n.module.platform.api": "i18n.module.public.api.stubs.source.api.contribution",
+		"stable.i18n.module.platform.api": "i18n.module.public.api.stubs.source.api.contribution",
+		"conscrypt.module.platform.api":   "conscrypt.module.public.api.stubs.source.api.contribution",
 	}
 )
 
@@ -650,16 +638,13 @@ type sdkLibraryProperties struct {
 		Legacy_errors_allowed *bool
 	}
 
-	// Determines if the module contributes to any api surfaces.
-	// This property should be set to true only if the module is listed under
-	// frameworks-base-api.bootclasspath in frameworks/base/api/Android.bp.
-	// Otherwise, this property should be set to false.
-	// Defaults to false.
-	Contribute_to_android_api *bool
-
 	// a list of aconfig_declarations module names that the stubs generated in this module
 	// depend on.
 	Aconfig_declarations []string
+
+	// Determines if the module is allowed to generate the stubs from the api signature files
+	// instead of the source Java files. Defaults to true.
+	Build_from_text_stub *bool
 
 	// TODO: determines whether to create HTML doc or not
 	// Html_doc *bool
@@ -1696,30 +1681,13 @@ func (module *SdkLibrary) latestIncompatibilitiesModuleName(apiScope *apiScope) 
 	return latestPrebuiltApiModuleName(module.distStem()+"-incompatibilities", apiScope)
 }
 
-func (module *SdkLibrary) contributesToApiSurface(c android.Config) bool {
-	_, exists := c.GetApiLibraries()[module.Name()]
-	return exists
-}
-
-// The listed modules are the special java_sdk_libraries where apiScope.kind do not match the
-// api surface that the module contribute to. For example, the public droidstubs and java_library
-// do not contribute to the public api surface, but contributes to the core platform api surface.
-// This method returns the full api surface stub lib that
-// the generated java_api_library should depend on.
-func (module *SdkLibrary) alternativeFullApiSurfaceStubLib() string {
-	if val, ok := apiLibraryAdditionalProperties[module.Name()]; ok {
-		return val.FullApiSurfaceStubLib
-	}
-	return ""
-}
-
 // The listed modules' stubs contents do not match the corresponding txt files,
 // but require additional api contributions to generate the full stubs.
 // This method returns the name of the additional api contribution module
 // for corresponding sdk_library modules.
 func (module *SdkLibrary) apiLibraryAdditionalApiContribution() string {
 	if val, ok := apiLibraryAdditionalProperties[module.Name()]; ok {
-		return val.AdditionalApiContribution
+		return val
 	}
 	return ""
 }
@@ -2014,17 +1982,17 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 	mctx.CreateModule(DroidstubsFactory, &props, module.sdkComponentPropertiesForChildLibrary()).(*Droidstubs).CallHookIfAvailable(mctx)
 }
 
-func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, apiScope *apiScope, alternativeFullApiSurfaceStub string) {
+func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, apiScope *apiScope) {
 	props := struct {
-		Name                  *string
-		Visibility            []string
-		Api_contributions     []string
-		Libs                  []string
-		Static_libs           []string
-		Full_api_surface_stub *string
-		System_modules        *string
-		Enable_validation     *bool
-		Stubs_type            *string
+		Name              *string
+		Visibility        []string
+		Api_contributions []string
+		Libs              []string
+		Static_libs       []string
+		System_modules    *string
+		Enable_validation *bool
+		Stubs_type        *string
+		Sdk_version       *string
 	}{}
 
 	props.Name = proptools.StringPtr(module.apiLibraryModuleName(apiScope))
@@ -2049,32 +2017,19 @@ func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, 
 
 	props.Api_contributions = apiContributions
 	props.Libs = module.properties.Libs
+	props.Libs = append(props.Libs, module.properties.Static_libs...)
 	props.Libs = append(props.Libs, module.sdkLibraryProperties.Stub_only_libs...)
 	props.Libs = append(props.Libs, module.scopeToProperties[apiScope].Libs...)
 	props.Libs = append(props.Libs, "stub-annotations")
 	props.Static_libs = module.sdkLibraryProperties.Stub_only_static_libs
-	props.Full_api_surface_stub = proptools.StringPtr(apiScope.kind.DefaultJavaLibraryName())
-	if alternativeFullApiSurfaceStub != "" {
-		props.Full_api_surface_stub = proptools.StringPtr(alternativeFullApiSurfaceStub)
-	}
-
-	// android_module_lib_stubs_current.from-text only comprises api contributions from art, conscrypt and i18n.
-	// Thus, replace with android_module_lib_stubs_current_full.from-text, which comprises every api domains.
-	if apiScope.kind == android.SdkModule {
-		props.Full_api_surface_stub = proptools.StringPtr(apiScope.kind.DefaultJavaLibraryName() + "_full.from-text")
-	}
-
-	// java_sdk_library modules that set sdk_version as none does not depend on other api
-	// domains. Therefore, java_api_library created from such modules should not depend on
-	// full_api_surface_stubs but create and compile stubs by the java_api_library module
-	// itself.
-	if module.SdkVersion(mctx).Kind == android.SdkNone {
-		props.Full_api_surface_stub = nil
-	}
 
 	props.System_modules = module.deviceProperties.System_modules
 	props.Enable_validation = proptools.BoolPtr(true)
 	props.Stubs_type = proptools.StringPtr("everything")
+
+	if module.deviceProperties.Sdk_version != nil {
+		props.Sdk_version = module.deviceProperties.Sdk_version
+	}
 
 	mctx.CreateModule(ApiLibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
 }
@@ -2099,14 +2054,14 @@ func (module *SdkLibrary) topLevelStubsLibraryProps(mctx android.DefaultableHook
 }
 
 func (module *SdkLibrary) createTopLevelStubsLibrary(
-	mctx android.DefaultableHookContext, apiScope *apiScope, contributesToApiSurface bool) {
+	mctx android.DefaultableHookContext, apiScope *apiScope) {
 
 	props := module.topLevelStubsLibraryProps(mctx, apiScope)
 	props.Name = proptools.StringPtr(module.stubsLibraryModuleName(apiScope))
 
 	// Add the stub compiling java_library/java_api_library as static lib based on build config
 	staticLib := module.sourceStubsLibraryModuleName(apiScope)
-	if mctx.Config().BuildFromTextStub() && contributesToApiSurface {
+	if mctx.Config().BuildFromTextStub() && module.ModuleBuildFromTextStubs() {
 		staticLib = module.apiLibraryModuleName(apiScope)
 	}
 	props.Static_libs = append(props.Static_libs, staticLib)
@@ -2153,8 +2108,8 @@ func (module *SdkLibrary) UniqueApexVariations() bool {
 	return module.uniqueApexVariations()
 }
 
-func (module *SdkLibrary) ContributeToApi() bool {
-	return proptools.BoolDefault(module.sdkLibraryProperties.Contribute_to_android_api, false)
+func (module *SdkLibrary) ModuleBuildFromTextStubs() bool {
+	return proptools.BoolDefault(module.sdkLibraryProperties.Build_from_text_stub, true)
 }
 
 // Creates the xml file that publicizes the runtime library
@@ -2339,16 +2294,8 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 		module.createStubsLibrary(mctx, scope)
 		module.createExportableStubsLibrary(mctx, scope)
 
-		alternativeFullApiSurfaceStubLib := ""
-		if scope == apiScopePublic {
-			alternativeFullApiSurfaceStubLib = module.alternativeFullApiSurfaceStubLib()
-		}
-		contributesToApiSurface := module.contributesToApiSurface(mctx.Config()) || alternativeFullApiSurfaceStubLib != ""
-		if contributesToApiSurface {
-			module.createApiLibrary(mctx, scope, alternativeFullApiSurfaceStubLib)
-		}
-
-		module.createTopLevelStubsLibrary(mctx, scope, contributesToApiSurface)
+		module.createApiLibrary(mctx, scope)
+		module.createTopLevelStubsLibrary(mctx, scope)
 		module.createTopLevelExportableStubsLibrary(mctx, scope)
 	}
 
