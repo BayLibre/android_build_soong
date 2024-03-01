@@ -125,7 +125,9 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 			// flags that the module may use.
 			flags.Local.CFlags = append(flags.Local.CFlags, "-Wno-frame-larger-than=", "-O0")
 		} else if clangCoverage {
-			flags.Local.CommonFlags = append(flags.Local.CommonFlags, profileInstrFlag)
+			const coverageIgnoreList := android.PathForSource(ctx, "build/soong/cc/config/coverage_ignorelist.txt")
+			flags.Local.CommonFlags = append(flags.Local.CommonFlags, profileInstrFlag, coverageIgnoreList)
+			flags.CFlagsDeps = append(flags.CFlagsDeps, coverageIgnoreList.Path())
 			flags.Local.CommonFlags = append(flags.Local.CommonFlags, clangCoverageCommonFlags...)
 			// Override -Wframe-larger-than.  We can expect frame size increase after
 			// coverage instrumentation.
