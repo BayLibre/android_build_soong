@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf028335_2830dab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-01T00:01:28Z",
+      "side": 1,
+      "message": "Thanks for the thoughtful reviews!",
+      "revId": "867ad74aabe4ae9fda97413f42a1adc17ad9bd3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b4e2672_2305334f",
@@ -20,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ebbdfe3_5683f530",
+        "filename": "tradefed/tests/place_holder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-01T00:01:28Z",
+      "side": 1,
+      "message": "I believe this would create a circular dependency from java -\u003e tradefed/tests -\u003e java.\n\nMy cl allows the java -\u003e tradefed dep, then also creates the \n tradefed/tests -\u003e java,tradefed dependencies.  \nThis works because java doesn\u0027t depend on tradefed/tests.\n\nI\u0027m okay with moving test_module_config.go -\u003e java, since it seems to only work with `android_test` for now.  I think I might need a different rule for cc_test and sh_test.  I would leave the provider definition in tradefed, but move the module definition to java.\nOr we can leave it.\n\nI just went to this extreme to get it work to:\n  1) Ensure we only depend on Public parts or providers.\n  2) Unlock the achievement: \"can you make it work in tradefed\". from Joe\n\nLet me know where you want it to live.",
+      "parentUuid": "2b4e2672_2305334f",
+      "revId": "867ad74aabe4ae9fda97413f42a1adc17ad9bd3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71ae17ca_c819221f",
         "filename": "tradefed/tests/test_module_config_test.go",
         "patchSetId": 17
@@ -31,6 +66,24 @@
       "writtenOn": "2024-02-29T22:22:49Z",
       "side": 1,
       "message": "Do you mind adding a test cases for:\n- `\"derived_test\"` setting non-`android_test` module as base and testing expected error\n- no `*_filters` or `*_annotations` specified and testing expected error\n- same `android_test` is referenced by multiple `test_module_config` modules and android mk entries are written as expected",
+      "revId": "867ad74aabe4ae9fda97413f42a1adc17ad9bd3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "070bcd67_75f215a1",
+        "filename": "tradefed/tests/test_module_config_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-01T00:01:28Z",
+      "side": 1,
+      "message": "Thanks for the suggestions.\nDone.\nI wish there were a better way to testing integration with the make system too, not just our LOCAL_ entries.",
+      "parentUuid": "71ae17ca_c819221f",
       "revId": "867ad74aabe4ae9fda97413f42a1adc17ad9bd3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
