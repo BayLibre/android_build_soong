@@ -46,6 +46,7 @@ var (
 )
 
 const profileInstrFlag = "-fprofile-instr-generate=/data/misc/trace/clang-%p-%m.profraw"
+const coverageIgnoreList = "-fsanitize-ignorelist=build/soong/cc/config/coverage_ignorelist.txt"
 
 type CoverageProperties struct {
 	Native_coverage *bool
@@ -125,7 +126,7 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 			// flags that the module may use.
 			flags.Local.CFlags = append(flags.Local.CFlags, "-Wno-frame-larger-than=", "-O0")
 		} else if clangCoverage {
-			flags.Local.CommonFlags = append(flags.Local.CommonFlags, profileInstrFlag)
+			flags.Local.CommonFlags = append(flags.Local.CommonFlags, profileInstrFlag, coverageIgnoreList)
 			flags.Local.CommonFlags = append(flags.Local.CommonFlags, clangCoverageCommonFlags...)
 			// Override -Wframe-larger-than.  We can expect frame size increase after
 			// coverage instrumentation.
