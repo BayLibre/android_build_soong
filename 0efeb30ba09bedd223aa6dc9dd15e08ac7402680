@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b77f2602_ec7aee6a",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-05T23:20:44Z",
+      "side": 1,
+      "message": "Go doesn\u0027t have const for arbitrary types, only for strings, bools, chars, and numbers.",
+      "range": {
+        "startLine": 883,
+        "startChar": 2,
+        "endLine": 883,
+        "endChar": 7
+      },
+      "revId": "0efeb30ba09bedd223aa6dc9dd15e08ac7402680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
