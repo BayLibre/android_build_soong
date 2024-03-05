@@ -880,6 +880,8 @@ func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		}
 
 		flags.Local.CFlags = append(flags.Local.CFlags, cfiCflags...)
+		const cfiBlocklist := android.PathForSource(ctx, cfiBlocklistPath + "/" + cfiBlocklistFilename)
+		flags.CFlagsDeps = append(flags.CFlagsDeps, cfiBlocklist.Path())
 		flags.Local.AsFlags = append(flags.Local.AsFlags, cfiAsflags...)
 		if Bool(s.Properties.Sanitize.Config.Cfi_assembly_support) {
 			flags.Local.CFlags = append(flags.Local.CFlags, cfiAssemblySupportFlag)
