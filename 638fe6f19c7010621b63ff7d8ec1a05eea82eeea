@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "867e1e6b_e6edcd8e",
+        "filename": "ui/status/status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-05T22:39:12Z",
+      "side": 1,
+      "message": "can you expand on \"last time\" here?  I think this is \"since the last time this action was run\"",
+      "range": {
+        "startLine": 46,
+        "startChar": 10,
+        "endLine": 46,
+        "endChar": 19
+      },
+      "revId": "638fe6f19c7010621b63ff7d8ec1a05eea82eeea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
