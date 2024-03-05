@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aaa09c68_90b9cd4a",
+        "filename": "tradefed/tests/place_holder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-05T19:41:59Z",
+      "side": 1,
+      "message": "It sounds like you may want to import `cc` package in the future. Given that `cc` package [imports](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/test.go;drc\u003daa39480d2107fff4c42e321616436b0b0b718cde;l\u003d25) `tradefed` package, I don\u0027t think it\u0027s scalable for `test_module_config` to live in `tradefed` package (as it would lead to circular dependency), and moving this out to `tests` package is a more scalable option.\n\n\u003e I believe this would create a circular dependency from java -\u003e tradefed/tests -\u003e java.\n\nNote that `tests` is not a subpackage of `tradefed` package, but is an independent one. There is a `java -\u003e tradefed` dependency and `tests -\u003e java` dependency. [This](https://docs.google.com/drawings/d/1lRyh2GSNA1zfirdF0DVt31ELMC2kl3T_kBVpBLvKKlY/edit?usp\u003dsharing\u0026resourcekey\u003d0-b8sGnPFAyF6OZCqZS8LEZw) is how the dependency chain looks like at the moment. Thus, as long as java -\u003e tradefed/tests dependency chain is not established, circular dependency issue will not be encountered.\n\nAlso, this change already [establishes](https://android-review.git.corp.google.com/c/platform/build/soong/+/2947425/19/tradefed/tests/test_module_config_test.go#18) a tradefed/tests -\u003e java dependency chain, and does not lead to circular dependency.\n\nMoving `test_module_config` to `tests` also allows utilization of `java.androidMkWriteTestData()`.",
+      "parentUuid": "8ebbdfe3_5683f530",
+      "revId": "867ad74aabe4ae9fda97413f42a1adc17ad9bd3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71ae17ca_c819221f",
         "filename": "tradefed/tests/test_module_config_test.go",
         "patchSetId": 17
