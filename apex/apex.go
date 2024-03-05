@@ -2321,10 +2321,13 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 }
 
 func addAconfigFiles(vctx *visitorContext, ctx android.ModuleContext, module blueprint.Module) {
-	dep, _ := android.OtherModuleProvider(ctx, module, android.AconfigTransitiveDeclarationsInfoProvider)
-	if len(dep.AconfigFiles) > 0 && dep.AconfigFiles[ctx.ModuleName()] != nil {
-		vctx.aconfigFiles = append(vctx.aconfigFiles, dep.AconfigFiles[ctx.ModuleName()]...)
+	if dep, ok := android.OtherModuleProvider(ctx, module, android.AconfigTransitiveDeclarationsInfoProvider); ok {
+		if len(dep.AconfigFiles) > 0 && dep.AconfigFiles[ctx.ModuleName()] != nil {
+			vctx.aconfigFiles = append(vctx.aconfigFiles, dep.AconfigFiles[ctx.ModuleName()]...)
+		}
 	}
+
+	android.VerifyAconfigBuildMode(ctx, ctx.ModuleName(), module)
 }
 
 func (a *apexBundle) shouldCheckDuplicate(ctx android.ModuleContext) bool {
