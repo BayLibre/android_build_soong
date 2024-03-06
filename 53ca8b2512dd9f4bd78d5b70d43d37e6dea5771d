@@ -52,6 +52,23 @@
       "parentUuid": "af6a6e60_82b15416",
       "revId": "53ca8b2512dd9f4bd78d5b70d43d37e6dea5771d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7754a1c_9608667a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012569
+      },
+      "writtenOn": "2024-03-06T08:39:59Z",
+      "side": 1,
+      "message": "I comment in https://android-review.googlesource.com/c/platform/build/+/2955288.\nI think that aconfig_storage.test.rust will failed if it\u0027s dependency (e.g. andoirdmk-parser, makedeps) changed.",
+      "revId": "53ca8b2512dd9f4bd78d5b70d43d37e6dea5771d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
