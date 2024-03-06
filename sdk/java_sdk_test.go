@@ -1509,6 +1509,11 @@ func TestSnapshotWithJavaSdkLibrary_SystemServer(t *testing.T) {
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
+apex_contributions_defaults {
+    name: "mysdk.contributions",
+    contents: ["prebuilt_myjavalib"],
+}
+
 java_sdk_library_import {
     name: "myjavalib",
     prefer: false,

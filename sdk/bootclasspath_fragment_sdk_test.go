@@ -152,6 +152,15 @@ func TestSnapshotWithBootclasspathFragment_ImageName(t *testing.T) {
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
+apex_contributions_defaults {
+    name: "mysdk.contributions",
+    contents: [
+        "prebuilt_art-bootclasspath-fragment",
+        "prebuilt_core1",
+        "prebuilt_core2",
+    ],
+}
+
 prebuilt_bootclasspath_fragment {
     name: "art-bootclasspath-fragment",
     prefer: false,
@@ -187,6 +196,7 @@ java_import {
     apex_available: ["com.android.art"],
     jars: ["java_boot_libs/snapshot/jars/are/invalid/core2.jar"],
 }
+
 `),
 		checkAllCopyRules(`
 .intermediates/art-bootclasspath-fragment/android_common/modular-hiddenapi/annotation-flags.csv -> hiddenapi/annotation-flags.csv
