@@ -152,6 +152,15 @@ func TestSnapshotWithBootclasspathFragment_ImageName(t *testing.T) {
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
+apex_contributions_defaults {
+    name: "mysdk.contributions",
+    contents: [
+        "prebuilt_art-bootclasspath-fragment",
+        "prebuilt_core1",
+        "prebuilt_core2",
+    ],
+}
+
 prebuilt_bootclasspath_fragment {
     name: "art-bootclasspath-fragment",
     prefer: false,
@@ -187,6 +196,7 @@ java_import {
     apex_available: ["com.android.art"],
     jars: ["java_boot_libs/snapshot/jars/are/invalid/core2.jar"],
 }
+
 `),
 		checkAllCopyRules(`
 .intermediates/art-bootclasspath-fragment/android_common/modular-hiddenapi/annotation-flags.csv -> hiddenapi/annotation-flags.csv
@@ -352,6 +362,17 @@ func testSnapshotWithBootClasspathFragment_Contents(t *testing.T, sdk string, co
 	CheckSnapshot(t, result, "mysdk", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
+
+apex_contributions_defaults {
+    name: "mysdk.contributions",
+    contents: [
+        "prebuilt_mybootclasspathfragment",
+        "prebuilt_mybootlib",
+        "prebuilt_myothersdklibrary",
+        "prebuilt_mysdklibrary",
+        "prebuilt_mycoreplatform",
+    ],
+}
 
 prebuilt_bootclasspath_fragment {
     name: "mybootclasspathfragment",
@@ -642,6 +663,14 @@ func TestSnapshotWithBootClasspathFragment_Fragments(t *testing.T) {
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
+apex_contributions_defaults {
+    name: "mysdk.contributions",
+    contents: [
+        "prebuilt_mybootclasspathfragment",
+        "prebuilt_mysdklibrary",
+    ],
+}
+
 prebuilt_bootclasspath_fragment {
     name: "mybootclasspathfragment",
     prefer: false,
@@ -881,6 +910,16 @@ func TestSnapshotWithBootclasspathFragment_HiddenAPI(t *testing.T) {
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
+apex_contributions_defaults {
+    name: "mysdk.contributions",
+    contents: [
+        "prebuilt_mybootclasspathfragment",
+        "prebuilt_mybootlib",
+        "prebuilt_mynewlibrary",
+        "prebuilt_mysdklibrary",
+    ],
+}
+
 prebuilt_bootclasspath_fragment {
     name: "mybootclasspathfragment",
     prefer: false,
@@ -1007,6 +1046,9 @@ func testSnapshotWithBootClasspathFragment_MinSdkVersion(t *testing.T, targetBui
 
 		android.FixtureMergeEnv(map[string]string{
 			"SOONG_SDK_SNAPSHOT_TARGET_BUILD_RELEASE": targetBuildRelease,
+		}),
+		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+			variables.Platform_version_active_codenames = []string{"VanillaIceCream"}
 		}),
 
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
@@ -1225,6 +1267,9 @@ func TestSnapshotWithEmptyBootClasspathFragment(t *testing.T) {
 		fixtureAddPlatformBootclasspathForBootclasspathFragment("myapex", "mybootclasspathfragment"),
 		android.FixtureMergeEnv(map[string]string{
 			"SOONG_SDK_SNAPSHOT_TARGET_BUILD_RELEASE": "S",
+		}),
+		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+			variables.Platform_version_active_codenames = []string{"VanillaIceCream"}
 		}),
 		android.FixtureWithRootAndroidBp(`
 			sdk {
