@@ -16,6 +16,24 @@
       "message": "Anything in an Android.bp file shouldn\u0027t panic, ideally use `ctx.PropertyErrorf` to give a line number for where the unsupported variable is used, or at least `ModuleErrorf`.",
       "revId": "03e5471f00fac2740ba0b9c47a905bae3fab8b29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0175ca3_0f42bfd2",
+        "filename": "android/module_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-06T23:21:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "283c5da8_621ce00c",
+      "revId": "03e5471f00fac2740ba0b9c47a905bae3fab8b29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
