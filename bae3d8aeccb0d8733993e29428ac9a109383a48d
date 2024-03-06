@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8c7c04_135c4077",
+        "filename": "cc/coverage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-06T19:32:12Z",
+      "side": 1,
+      "message": "`coverageIgnoreList :\u003d`",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 25
+      },
+      "revId": "bae3d8aeccb0d8733993e29428ac9a109383a48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a94af4_b4329e15",
+        "filename": "cc/coverage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-06T19:32:12Z",
+      "side": 1,
+      "message": "`coverageIgnoreList.String()`, also wrap long line",
+      "range": {
+        "startLine": 129,
+        "startChar": 106,
+        "endLine": 129,
+        "endChar": 124
+      },
+      "revId": "bae3d8aeccb0d8733993e29428ac9a109383a48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
