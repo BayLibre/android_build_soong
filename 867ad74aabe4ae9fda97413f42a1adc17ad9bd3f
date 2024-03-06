@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad7c8d0_5b43f2b7",
+        "filename": "tradefed/tests/place_holder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-06T00:30:31Z",
+      "side": 1,
+      "message": "Acknowledged. Thanks for looking into this and restructuring the package dependencies.",
+      "parentUuid": "a37183b6_10265d06",
+      "revId": "867ad74aabe4ae9fda97413f42a1adc17ad9bd3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71ae17ca_c819221f",

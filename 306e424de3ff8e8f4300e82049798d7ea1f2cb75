@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a3b0158_315d44ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-06T00:30:31Z",
+      "side": 1,
+      "message": "Is `tradefed_modules/java_test_host.junk` intended for submission? I don\u0027t see its usages anywhere else in this change.",
+      "revId": "306e424de3ff8e8f4300e82049798d7ea1f2cb75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
