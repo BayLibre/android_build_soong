@@ -66,7 +66,7 @@ func (lto *lto) props() []interface{} {
 
 func (lto *lto) begin(ctx BaseModuleContext) {
 	// First, determine the module independent default LTO mode.
-	ltoDefault := true
+	ltoDefault := false
 	if ctx.Config().IsEnvTrue("DISABLE_LTO") {
 		ltoDefault = false
 	} else if lto.Never() {
