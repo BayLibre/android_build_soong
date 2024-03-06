@@ -1395,7 +1395,7 @@ func (c *configImpl) rbeSockAddr(dir string) (string, error) {
 		return name, nil
 	}
 
-	name = filepath.Join("/tmp", base)
+	name = filepath.Join("///tmp", base)
 	if len(name) < maxNameLen {
 		return name, nil
 	}
