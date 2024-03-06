@@ -16,6 +16,24 @@
       "message": "Is `tradefed_modules/java_test_host.junk` intended for submission? I don\u0027t see its usages anywhere else in this change.",
       "revId": "306e424de3ff8e8f4300e82049798d7ea1f2cb75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b68afd07_54fb307b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-06T00:56:20Z",
+      "side": 1,
+      "message": "Oops 😞\nRemoved.\nThanks.",
+      "parentUuid": "7a3b0158_315d44ed",
+      "revId": "306e424de3ff8e8f4300e82049798d7ea1f2cb75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
