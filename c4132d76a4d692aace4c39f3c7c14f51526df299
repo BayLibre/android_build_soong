@@ -16,6 +16,23 @@
       "message": "Apologies for the late reply, I missed the notification.",
       "revId": "c4132d76a4d692aace4c39f3c7c14f51526df299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fbb9890_51940e69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-06T00:18:23Z",
+      "side": 1,
+      "message": "Thanks for the review.\n\nI believe the intent of your suggestion was to move the module type (and its test) to a different package that java does not depend on.  I\u0027ve done that in the latest patchset.\n\nI also tried removing my dependency on base by having the provider provide and []AndroidMkEntries, but that contains funcs, not just primitive types so it wasn\u0027t allowed.  For now I\u0027ll leave base, but I\u0027ll continue to look for a way to move the information to the provider.",
+      "revId": "c4132d76a4d692aace4c39f3c7c14f51526df299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

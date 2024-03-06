@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a37183b6_10265d06",
+        "filename": "tradefed/tests/place_holder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-06T00:18:23Z",
+      "side": 1,
+      "message": "I think there were two issues:\n  1) test_module_config.go was introducing a new type for the provider that java was depending on.  I\u0027ve left that in tradefed.\n  2) My \u0027tests\u0027 package wasn\u0027t intended to house module types, just tests, so I don\u0027t think moving test_module_config.go was the right thing.",
+      "parentUuid": "aaa09c68_90b9cd4a",
+      "revId": "867ad74aabe4ae9fda97413f42a1adc17ad9bd3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71ae17ca_c819221f",
         "filename": "tradefed/tests/test_module_config_test.go",
         "patchSetId": 17
