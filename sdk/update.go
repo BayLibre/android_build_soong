@@ -421,6 +421,7 @@ be unnecessary as every module in the sdk already has its own licenses property.
 
 	// Create the prebuilt modules for each of the member modules.
 	traits := s.gatherTraits()
+	memberNames := []string{} // soong module names of the members. contains the prebuilt_ prefix.
 	for _, member := range members {
 		memberType := member.memberType
 		if !memberType.ArePrebuiltsRequired() {
@@ -442,6 +443,19 @@ be unnecessary as every module in the sdk already has its own licenses property.
 
 		prebuiltModule := memberType.AddPrebuiltModule(memberCtx, member)
 		s.createMemberSnapshot(memberCtx, member, prebuiltModule.(*bpModule))
+
+		if member.memberType != android.LicenseModuleSdkMemberType {
+			memberNames = append(memberNames, android.PrebuiltNameFromSource(member.name))
+		}
+	}
+
+	// create an apex_contributions_defaults for this module's sdk.
+	// this module type is supported in V and above.
+	if targetApiLevel.GreaterThan(android.ApiLevelUpsideDownCake) {
+		ac := newModule("apex_contributions_defaults")
+		ac.AddProperty("name", s.Name()+".contributions")
+		ac.AddProperty("contents", memberNames)
+		bpFile.AddModule(ac)
 	}
 
 	// Create a transformer that will transform a module by replacing any references
