@@ -588,10 +588,11 @@ func TestPrebuilts(t *testing.T) {
 	javac := fooModule.Rule("javac")
 	combineJar := ctx.ModuleForTests("foo", "android_common").Description("for javac")
 	barModule := ctx.ModuleForTests("bar", "android_common")
-	barJar := barModule.Rule("combineJar").Output
+	barJar := barModule.Output("combined/bar.jar").Output
 	bazModule := ctx.ModuleForTests("baz", "android_common")
 	bazJar := bazModule.Rule("combineJar").Output
-	sdklibStubsJar := ctx.ModuleForTests("sdklib.stubs", "android_common").Rule("combineJar").Output
+	sdklibStubsJar := ctx.ModuleForTests("sdklib.stubs", "android_common").
+		Output("combined/sdklib.stubs.jar").Output
 
 	fooLibrary := fooModule.Module().(*Library)
 	assertDeepEquals(t, "foo unique sources incorrect",
@@ -1035,7 +1036,7 @@ func TestExcludeFileGroupInSrcs(t *testing.T) {
 	}
 }
 
-func TestJavaLibrary(t *testing.T) {
+func TestJavaLibraryOutputFiles(t *testing.T) {
 	testJavaWithFS(t, "", map[string][]byte{
 		"libcore/Android.bp": []byte(`
 				java_library {
@@ -1052,7 +1053,7 @@ func TestJavaLibrary(t *testing.T) {
 	})
 }
 
-func TestJavaImport(t *testing.T) {
+func TestJavaImportOutputFiles(t *testing.T) {
 	testJavaWithFS(t, "", map[string][]byte{
 		"libcore/Android.bp": []byte(`
 				java_import {
@@ -1066,6 +1067,38 @@ func TestJavaImport(t *testing.T) {
 				}
 		`),
 	})
+}
+
+func TestJavaImport(t *testing.T) {
+	bp := `
+		java_library {
+			name: "source_library",
+		}
+
+		java_import {
+			name: "import_with_no_deps",
+			jars: ["a.jar"],
+		}
+
+		java_import {
+			name: "import_with_source_deps",
+			jars: ["b.jar"],
+			static_libs: ["source_library"],
+		}
+
+		java_import {
+			name: "import_with_import_deps",
+			jars: ["c.jar"],
+			static_libs: ["import_with_no_deps"],
+		}
+	`
+	ctx := android.GroupFixturePreparers(
+		PrepareForTestWithJavaDefaultModules,
+	).RunTestWithBp(t, bp)
+
+	_ = ctx
+
+	// TODO: verify header and implementation combined jars
 }
 
 var compilerFlagsTestCases = []struct {
