@@ -33,6 +33,24 @@
       "message": "This is probably where the filtering should be done. Check `targetBuildRelease`.",
       "revId": "08e12d4d91a74f30a36d8aeca9adfe846284ca15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51cfb30f_5ab4e3c2",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-07T15:41:04Z",
+      "side": 1,
+      "message": "Thanks Paul. I am now using the api level of `targetBuildRelease` to do the filtering.",
+      "parentUuid": "fa4ced6f_745cf433",
+      "revId": "08e12d4d91a74f30a36d8aeca9adfe846284ca15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
