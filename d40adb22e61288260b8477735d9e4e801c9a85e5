@@ -16,6 +16,24 @@
       "message": "shombert, please take a look at the performance tradeoff.",
       "revId": "d40adb22e61288260b8477735d9e4e801c9a85e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ecf6368_984a8096",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1623611
+      },
+      "writtenOn": "2024-03-07T15:57:35Z",
+      "side": 1,
+      "message": "It sounds like LTO optimization was disabled on - what, usereng builds? - to speed up builds, but the plan was always to enable full LTO by default.  Is that correct?",
+      "parentUuid": "054f91d7_383babfd",
+      "revId": "d40adb22e61288260b8477735d9e4e801c9a85e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
