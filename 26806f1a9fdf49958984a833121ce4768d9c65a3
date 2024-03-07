@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb13f0a7_f4d31016",
+        "filename": "android/module_context.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-07T00:00:26Z",
+      "side": 1,
+      "message": "Can this be something like \"unsupported product variable in select (b/323382414)\"?",
+      "revId": "26806f1a9fdf49958984a833121ce4768d9c65a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
