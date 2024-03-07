@@ -16,6 +16,23 @@
       "message": "I will need to update a lot of unit tests in build/soong/sdk before this can be submitted",
       "revId": "08e12d4d91a74f30a36d8aeca9adfe846284ca15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa4ced6f_745cf433",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-03-07T13:29:31Z",
+      "side": 1,
+      "message": "This is probably where the filtering should be done. Check `targetBuildRelease`.",
+      "revId": "08e12d4d91a74f30a36d8aeca9adfe846284ca15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
