@@ -34,6 +34,24 @@
       "parentUuid": "054f91d7_383babfd",
       "revId": "d40adb22e61288260b8477735d9e4e801c9a85e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be7fa1f2_693ddbe3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-03-07T16:15:25Z",
+      "side": 1,
+      "message": "This is in line with other kinds of optimizations turned off in `eng` builds (e.g., R8 dex shrinking + opt), but otherwise enabled by default.\n\n@yikong@google.com what is the expected impact on build times for `userdebug`? If it\u0027s significant, we\u0027d probably want to give a heads up to engprod ( @samccone@google.com FYI).",
+      "parentUuid": "9ecf6368_984a8096",
+      "revId": "d40adb22e61288260b8477735d9e4e801c9a85e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
