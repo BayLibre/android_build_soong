@@ -16,6 +16,24 @@
       "message": "Could you keep the go link?",
       "revId": "90b8b5919d6f04d66ed8530bcc36fe3167b55ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e33c828_c584af4e",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-08T00:12:02Z",
+      "side": 1,
+      "message": "I removed it as the announcement is fairly outdated, but looking at the content again I agree that it\u0027s better to keep it as it contains some valid information like opting out.",
+      "parentUuid": "22181231_dc88b773",
+      "revId": "90b8b5919d6f04d66ed8530bcc36fe3167b55ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
