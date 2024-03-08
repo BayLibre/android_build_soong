@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22181231_dc88b773",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-08T00:08:07Z",
+      "side": 1,
+      "message": "Could you keep the go link?",
+      "revId": "90b8b5919d6f04d66ed8530bcc36fe3167b55ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
