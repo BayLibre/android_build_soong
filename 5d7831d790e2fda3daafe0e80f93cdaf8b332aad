@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0289a52_1d3ad5e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-03-08T20:49:18Z",
+      "side": 1,
+      "message": "Hugo, can you test this with your workflow and send me either confirmation that it works, or send me a reproducer for any issues you hit?\n\nLet me know if I need to change the environment variable name.\n\n-2 set to prevent submission before Hugo has confirmed this works for their workflow.",
+      "revId": "5d7831d790e2fda3daafe0e80f93cdaf8b332aad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
