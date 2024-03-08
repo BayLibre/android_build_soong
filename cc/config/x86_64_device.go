@@ -103,8 +103,8 @@ func init() {
 	exportedVars.ExportStringListStaticVariable("X86_64Ldflags", x86_64Ldflags)
 	exportedVars.ExportStringList("X86_64Lldflags", X86_64Lldflags)
 	pctx.VariableFunc("X86_64Lldflags", func(ctx android.PackageVarContext) string {
-		maxPageSizeFlag := "-Wl,-z,max-page-size=" + ctx.Config().MaxPageSizeSupported()
-		flags := append(X86_64Lldflags, maxPageSizeFlag)
+		flags := maxPageSizeFlags(arm64Lldflags, ctx.Config().MaxPageSizeSupported())
+
 		return strings.Join(flags, " ")
 	})
 
