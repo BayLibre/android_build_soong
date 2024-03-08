@@ -157,12 +157,11 @@ func (g *syspropRustGenRule) GenerateAndroidBuildActions(ctx android.ModuleConte
 		syspropDir := strings.TrimSuffix(syspropFile.String(), syspropFile.Ext())
 		outputDir := android.PathForModuleGen(ctx, syspropDir, "src")
 		libPath := android.PathForModuleGen(ctx, syspropDir, "src", "lib.rs")
-		parsersPath := android.PathForModuleGen(ctx, syspropDir, "src", "gen_parsers_and_formatters.rs")
 
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        syspropRust,
 			Description: "sysprop_rust " + syspropFile.Rel(),
-			Outputs:     android.WritablePaths{libPath, parsersPath},
+			Outputs:     android.WritablePaths{libPath},
 			Input:       syspropFile,
 			Implicit:    checkApiFileTimeStamp,
 			Args: map[string]string{
@@ -171,7 +170,7 @@ func (g *syspropRustGenRule) GenerateAndroidBuildActions(ctx android.ModuleConte
 			},
 		})
 
-		g.genSrcs = append(g.genSrcs, libPath, parsersPath)
+		g.genSrcs = append(g.genSrcs, libPath)
 	}
 }
 
