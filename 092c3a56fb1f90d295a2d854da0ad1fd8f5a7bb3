@@ -16,6 +16,24 @@
       "message": "Is this respected with `WriteFileRuleVerbatim`? Should we use `WriteExecutableFileRuleVerbatim` instead?",
       "revId": "092c3a56fb1f90d295a2d854da0ad1fd8f5a7bb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83adb737_a53e82c3",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-08T18:18:23Z",
+      "side": 0,
+      "message": "I noticed this, but the only files being written are an Android.bp file and a JSON file, which probably shouldn\u0027t be executable.",
+      "parentUuid": "dff85be9_7bffaa85",
+      "revId": "092c3a56fb1f90d295a2d854da0ad1fd8f5a7bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
