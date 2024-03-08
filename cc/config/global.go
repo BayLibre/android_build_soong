@@ -15,8 +15,11 @@
 package config
 
 import (
+	"fmt"
+
 	"runtime"
 	"slices"
+	"strconv"
 	"strings"
 
 	"android/soong/android"
@@ -588,4 +591,54 @@ func clangPath(ctx android.PathContext) android.SourcePath {
 		}
 		return android.PathForSource(ctx, clangBase, ctx.Config().PrebuiltOS(), clangVersion)
 	})
+}
+
+func validMaxPageSizeSupported(maxPageSizeSupported string) bool {
+	maxPageSizes := []string{"4096", "0x1000", "16384", "0x4000", "65536", "0x10000"}
+
+	for _, size := range maxPageSizes {
+		if size == maxPageSizeSupported {
+			return true
+		}
+	}
+
+	return false
+}
+
+func maxPageSize(size string) int {
+	if len(size) > 2 && size[:2] == "0x" {
+		if num, err := strconv.ParseInt(size[2:], 16, 32); err == nil {
+			return int(num)
+		}
+	} else {
+		if num, err := strconv.Atoi(size); err == nil {
+			return num
+		}
+	}
+
+	// Return the 64kB in case of error.
+	// This shouldn't happen the string was validated in validMaxPageSizeSupported().
+	return 65536
+}
+
+func maxPageSizeFlags(lldFlags []string, maxPageSizeSupported string) []string {
+	maxPageSizeSupported = strings.TrimSpace(maxPageSizeSupported)
+
+	if !validMaxPageSizeSupported(maxPageSizeSupported) {
+		panic(fmt.Errorf("Invalid max-page-size: ", maxPageSizeSupported))
+	}
+
+	maxPageSizeFlag := "-Wl,-z,max-page-size=" + maxPageSizeSupported
+	flags := append(lldFlags, maxPageSizeFlag)
+
+	// We can't know the runtime page size, so for anything other than 4096 use separate
+	// loadable segments to prevent SIGBUS from accesses beyond a mapped file's size.
+	// This can happen when runtime-page-size < elf-max-page-size, with crt_pad_segment
+	// See: b/328797737
+	elfMaxPageSize := maxPageSize(maxPageSizeSupported)
+	if elfMaxPageSize > 4096 {
+		flags = append(flags, "-Wl,-z,separate-loadable-segments")
+	}
+
+	return flags
 }
