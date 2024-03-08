@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dff85be9_7bffaa85",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-08T06:33:52Z",
+      "side": 0,
+      "message": "Is this respected with `WriteFileRuleVerbatim`? Should we use `WriteExecutableFileRuleVerbatim` instead?",
+      "revId": "092c3a56fb1f90d295a2d854da0ad1fd8f5a7bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
