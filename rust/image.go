@@ -240,8 +240,14 @@ func (mod *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 	if !mod.Properties.CoreVariantNeeded || mod.HasNonSystemVariants() {
 
 		if _, ok := mod.compiler.(*prebuiltLibraryDecorator); ok {
-			// Rust does not support prebuilt libraries on non-System images.
-			mctx.ModuleErrorf("Rust prebuilt modules not supported for non-system images.")
+			// If you are looking to use Rust prebuilts outside the system image, this environment variable is NOT for you.
+			// This environment variable is intended for a very narrow use-case.
+			// If you set this environment variable, your build is unsupported.
+			// Failed builds or tests with this environment variable set will be bypassed or ignored when updating Rust or the build system.
+			if mctx.Config().GetenvWithDefault("SDV_AUTO", "") == "" {
+				// Rust does not support prebuilt libraries on non-System images.
+				mctx.ModuleErrorf("Rust prebuilt modules not supported for non-system images.")
+			}
 		}
 	}
 }
