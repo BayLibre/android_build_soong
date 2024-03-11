@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c64bbfaa_86650313",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-11T08:27:41Z",
+      "side": 1,
+      "message": "ndkstubgen fileters version blocks first with attached tags. A new filtering logic is based on introduced\u003d and llndk-introduced\u003d when targeting LLNDK.\n- include if introduced \u003c\u003d 34\n- include if introduced \u003e\u003d 35 and llndk-introduced \u003c\u003d target-api-level(in this case vendor api level)",
+      "parentUuid": "5cd39c15_ed5e6b65",
+      "range": {
+        "startLine": 16,
+        "startChar": 25,
+        "endLine": 16,
+        "endChar": 48
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "892e6734_d736db64",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "782622fa_aa2a5378",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-11T08:27:41Z",
+      "side": 1,
+      "message": "`# llndk` is to tell the symbol is exclusively LLNDK.\n`# llndk-introduced\u003d` is to tell when it\u0027s introduced.",
+      "parentUuid": "892e6734_d736db64",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 38
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9825a14_d2794d9c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -60,6 +108,30 @@
       "writtenOn": "2024-03-11T08:22:16Z",
       "side": 1,
       "message": "Why is bar included in NDK? Its tag doesn\u0027t say anything about ndk.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95b1be5_7b532bbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-11T08:27:41Z",
+      "side": 1,
+      "message": "When mode(systemapi/apex/llndk) is not specified, the symbol belongs to all.",
+      "parentUuid": "f9825a14_d2794d9c",
       "range": {
         "startLine": 24,
         "startChar": 0,
