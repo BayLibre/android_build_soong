@@ -70,6 +70,24 @@
       "parentUuid": "bfd621bf_3819402f",
       "revId": "f917a5c10329d09a775ad7f8f898ce148391cd08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4b21ab3_dac0090a",
+        "filename": "cc/library_cmake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-03-11T21:04:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2645d691_ab876dd1",
+      "revId": "f917a5c10329d09a775ad7f8f898ce148391cd08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

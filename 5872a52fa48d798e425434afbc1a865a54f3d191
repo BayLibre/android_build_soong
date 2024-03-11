@@ -62,6 +62,30 @@
       },
       "revId": "5872a52fa48d798e425434afbc1a865a54f3d191",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d40450f_febececa",
+        "filename": "cc/library_cmake.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-03-11T21:04:52Z",
+      "side": 1,
+      "message": "It looks like it (mostly) worked, thanks! There\u0027s a problem about windows variant, I\u0027ll post some details in a sec.",
+      "parentUuid": "331fe2a5_5b156395",
+      "range": {
+        "startLine": 193,
+        "startChar": 9,
+        "endLine": 193,
+        "endChar": 26
+      },
+      "revId": "5872a52fa48d798e425434afbc1a865a54f3d191",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
