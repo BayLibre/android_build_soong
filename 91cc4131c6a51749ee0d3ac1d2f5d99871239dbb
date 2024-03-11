@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef58a4b_4a9c14a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-11T15:36:06Z",
+      "side": 1,
+      "message": "LGTM. Let\u0027s invite owners.",
+      "revId": "91cc4131c6a51749ee0d3ac1d2f5d99871239dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
