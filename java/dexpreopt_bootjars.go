@@ -1040,7 +1040,7 @@ func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, p
 		FlagForEachArg("--dex-location=", image.dexLocations).
 		Flag("--generate-debug-info").
 		Flag("--generate-build-id").
-		Flag("--image-format=lz4hc").
+		Flag("--image-format=uncompressed").
 		FlagWithArg("--oat-symbols=", symbolsFile.String()).
 		FlagWithArg("--oat-file=", outputPath.String()).
 		FlagWithArg("--oat-location=", oatLocation).

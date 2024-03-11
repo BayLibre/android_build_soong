@@ -496,7 +496,7 @@ func dexpreoptCommand(ctx android.BuilderContext, globalSoong *GlobalSoongConfig
 		appImagePath := odexPath.ReplaceExtension(ctx, "art")
 		appImageInstallPath := pathtools.ReplaceExtension(odexInstallPath, "art")
 		cmd.FlagWithOutput("--app-image-file=", appImagePath).
-			FlagWithArg("--image-format=", "lz4")
+			FlagWithArg("--image-format=", "uncompressed")
 		if !global.DontResolveStartupStrings {
 			cmd.FlagWithArg("--resolve-startup-const-strings=", "true")
 		}
