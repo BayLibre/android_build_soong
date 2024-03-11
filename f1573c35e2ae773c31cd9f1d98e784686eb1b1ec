@@ -70,6 +70,30 @@
       },
       "revId": "f1573c35e2ae773c31cd9f1d98e784686eb1b1ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bffffd3_58837ccc",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-11T08:07:25Z",
+      "side": 1,
+      "message": "Yes. IIUC, we won\u0027t encode \"preview\" in vendor api level.",
+      "parentUuid": "21dec128_08eb35f6",
+      "range": {
+        "startLine": 683,
+        "startChar": 11,
+        "endLine": 683,
+        "endChar": 26
+      },
+      "revId": "f1573c35e2ae773c31cd9f1d98e784686eb1b1ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
