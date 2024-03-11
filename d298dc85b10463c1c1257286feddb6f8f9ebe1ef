@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a2dd10f_4f77d14e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-11T08:36:34Z",
+      "side": 1,
+      "message": "can\u0027t introduced\u003d35 imply llndk-introduced\u003d202404?",
+      "parentUuid": "c64bbfaa_86650313",
+      "range": {
+        "startLine": 16,
+        "startChar": 25,
+        "endLine": 16,
+        "endChar": 48
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "892e6734_d736db64",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -97,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0eb93938_43eb0f45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-11T08:36:34Z",
+      "side": 1,
+      "message": "`#llndk-introduced\u003d` is awkward because it not only specifies when it was added, but also specifies that it\u0027s a member of LLNDK. A single tag shouldn\u0027t do two things.",
+      "parentUuid": "782622fa_aa2a5378",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 38
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9825a14_d2794d9c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "When mode(systemapi/apex/llndk) is not specified, the symbol belongs to all.",
       "parentUuid": "f9825a14_d2794d9c",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a200716c_d637204e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-11T08:36:34Z",
+      "side": 1,
+      "message": "users don\u0027t distinguish mode and llndk-introduced. this is a very surprising behavior to users.",
+      "parentUuid": "f95b1be5_7b532bbc",
       "range": {
         "startLine": 24,
         "startChar": 0,
