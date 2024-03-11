@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cd39c15_ed5e6b65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-11T08:22:16Z",
+      "side": 1,
+      "message": "why is this part needed?",
+      "range": {
+        "startLine": 16,
+        "startChar": 25,
+        "endLine": 16,
+        "endChar": 48
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "892e6734_d736db64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-11T08:22:16Z",
+      "side": 1,
+      "message": "why do we have to say LLNDK twice?",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 38
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9825a14_d2794d9c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-11T08:22:16Z",
+      "side": 1,
+      "message": "Why is bar included in NDK? Its tag doesn\u0027t say anything about ndk.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
