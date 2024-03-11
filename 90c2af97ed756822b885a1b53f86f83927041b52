@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9229470_15985d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2024-03-11T13:09:35Z",
+      "side": 1,
+      "message": "Turns out it\u0027s beneficial to be able to inspect the flags all sorts of ab/ builds, not just the droid and sdk builds. Background: b/328923659.",
+      "revId": "90c2af97ed756822b885a1b53f86f83927041b52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
