@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d369aea0_b431ac6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-11T09:53:43Z",
+      "side": 1,
+      "message": "Removed it.",
+      "parentUuid": "3a2dd10f_4f77d14e",
+      "range": {
+        "startLine": 16,
+        "startChar": 25,
+        "endLine": 16,
+        "endChar": 48
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "892e6734_d736db64",
@@ -167,6 +191,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54cb804b_fa116b29",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-11T09:53:43Z",
+      "side": 1,
+      "message": "Removed llndk-introduced.",
+      "parentUuid": "c00aefb7_8c3a044c",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 38
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9825a14_d2794d9c",
@@ -252,6 +300,30 @@
       "side": 1,
       "message": "Well, map.txt has been this way for long.",
       "parentUuid": "a200716c_d637204e",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e6f3062_91fb3f39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-11T09:53:43Z",
+      "side": 1,
+      "message": "Removed llndk-introduced. Now, we need a separate line for LLNDK membership.\n\n`foo;` no longer means that `foo` is LLNDK. Instead one should explicitly add a line `foo; #llndk\u003dxxxxxx`.",
+      "parentUuid": "73f8479e_a32cca4a",
       "range": {
         "startLine": 24,
         "startChar": 0,
