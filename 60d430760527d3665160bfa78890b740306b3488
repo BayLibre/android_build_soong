@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e00fd22a_785a3f91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-03-11T20:39:33Z",
+      "side": 1,
+      "message": "Specifically: `all_aconfig_declarations` is **ALL** aconfig declarations from the source tree.  This **cannot** go onto the device.\n\nIf we need to capture the other containers for on-device activity, we\u0027ll need to extend the processing that creates `{partition}/etc/aconfig_flags.pb`.",
+      "revId": "60d430760527d3665160bfa78890b740306b3488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
