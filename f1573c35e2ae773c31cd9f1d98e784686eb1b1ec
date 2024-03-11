@@ -22,6 +22,30 @@
       },
       "revId": "f1573c35e2ae773c31cd9f1d98e784686eb1b1ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71d30a73_ece27f98",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-11T07:55:21Z",
+      "side": 1,
+      "message": "`parseNativeAbiDefinition` requires `ApiLevel`. Since Vendor API level is just a number, it should work.",
+      "parentUuid": "b8314e23_68116616",
+      "range": {
+        "startLine": 683,
+        "startChar": 11,
+        "endLine": 683,
+        "endChar": 26
+      },
+      "revId": "f1573c35e2ae773c31cd9f1d98e784686eb1b1ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
