@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c00aefb7_8c3a044c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-11T08:42:40Z",
+      "side": 1,
+      "message": "It\u0027s not. The membership is controlled by mode tags. `llndk-introduced` is an attribute for LLNDK mode just like `introduced\u003d` is an attribute for NDK.\n\n```\nfoo; # introduced\u003dx llndk-introduced\u003dxxxxxx\nbar; # llndk llndk-introduced\u003dxxxx\n```\n\n- foo is NDK (introduced in xx) and LLNDK(introduced in xxxxxx)\n- bar is LLNDK(introduced in xxxxxx)",
+      "parentUuid": "0eb93938_43eb0f45",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 38
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9825a14_d2794d9c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "users don\u0027t distinguish mode and llndk-introduced. this is a very surprising behavior to users.",
       "parentUuid": "f95b1be5_7b532bbc",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "d298dc85b10463c1c1257286feddb6f8f9ebe1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f8479e_a32cca4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-11T08:42:40Z",
+      "side": 1,
+      "message": "Well, map.txt has been this way for long.",
+      "parentUuid": "a200716c_d637204e",
       "range": {
         "startLine": 24,
         "startChar": 0,
