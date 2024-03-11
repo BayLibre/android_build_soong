@@ -17,6 +17,8 @@
 package apex
 
 import (
+	"encoding/json"
+
 	"github.com/google/blueprint"
 
 	"android/soong/android"
@@ -129,3 +131,39 @@ func (s *apexDepsInfoSingleton) MakeVars(ctx android.MakeVarsContext) {
 	// Export check result to Make. The path is added to droidcore.
 	ctx.Strict("APEX_ALLOWED_DEPS_CHECK", s.allowedApexDepsInfoCheckResult.String())
 }
+
+func init() {
+	registerApexPrebuiltInfoComponents(android.InitRegistrationContext)
+}
+
+func registerApexPrebuiltInfoComponents(ctx android.RegistrationContext) {
+	ctx.RegisterParallelSingletonType("apex_prebuiltinfo_singleton", apexPrebuiltInfoFactory)
+}
+
+func apexPrebuiltInfoFactory() android.Singleton {
+	return &apexPrebuiltInfo{}
+}
+
+type apexPrebuiltInfo struct {
+}
+
+func (a *apexPrebuiltInfo) GenerateBuildActions(ctx android.SingletonContext) {
+	prebuiltInfos := []prebuiltInfo{}
+
+	ctx.VisitAllModules(func(m android.Module) {
+		// TODO: Add desc
+		prebuiltInfo, exists := android.SingletonModuleProvider(ctx, m, prebuiltInfoProvider)
+		if exists && !m.IsHideFromMake() {
+			prebuiltInfos = append(prebuiltInfos, prebuiltInfo)
+		}
+	})
+
+	j, err := json.Marshal(prebuiltInfos)
+	if err != nil {
+		ctx.Errorf("Could not convert prebuilt info of apexes to json due to error: %v", err)
+	}
+	out := android.PathForOutput(ctx, "prebuilt_info.json")
+	android.WriteFileRule(ctx, out, string(j))
+}
+
+// TODO: dist

@@ -2424,6 +2424,25 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	// Set a provider for dexpreopt of bootjars
 	a.provideApexExportsInfo(ctx)
+
+	// Set a provider for prebuilt_info.json
+	a.providePrebuiltInfo(ctx)
+}
+
+var prebuiltInfoProvider = blueprint.NewProvider[prebuiltInfo]()
+
+// TODO: add desc
+type prebuiltInfo struct {
+	Name        string
+	Is_prebuilt bool
+}
+
+func (a *apexBundle) providePrebuiltInfo(ctx android.ModuleContext) {
+	info := prebuiltInfo{
+		Name:        a.Name(),
+		Is_prebuilt: false,
+	}
+	android.SetProvider(ctx, prebuiltInfoProvider, info)
 }
 
 // Set a provider containing information about the jars and .prof provided by the apex

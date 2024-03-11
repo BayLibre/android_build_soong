@@ -819,6 +819,15 @@ func (p *prebuiltCommon) provideApexExportsInfo(ctx android.ModuleContext) {
 	}
 }
 
+// TODO: Add desc
+func (p *prebuiltCommon) providePrebuiltInfo(ctx android.ModuleContext) {
+	info := prebuiltInfo{
+		Name:        p.BaseModuleName(),
+		Is_prebuilt: true,
+	}
+	android.SetProvider(ctx, prebuiltInfoProvider, info)
+}
+
 func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	p.apexKeysPath = writeApexKeys(ctx, p)
 	// TODO(jungjw): Check the key validity.
@@ -845,6 +854,8 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	// provide info used for generating the boot image
 	p.provideApexExportsInfo(ctx)
+
+	p.providePrebuiltInfo(ctx)
 
 	// Save the files that need to be made available to Make.
 	p.initApexFilesForAndroidMk(ctx)
@@ -1067,6 +1078,8 @@ func (a *ApexSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	// provide info used for generating the boot image
 	a.provideApexExportsInfo(ctx)
+
+	a.providePrebuiltInfo(ctx)
 
 	// Save the files that need to be made available to Make.
 	a.initApexFilesForAndroidMk(ctx)
