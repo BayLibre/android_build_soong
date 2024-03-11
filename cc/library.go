@@ -678,17 +678,9 @@ func (library *libraryDecorator) getHeaderAbiCheckerProperties(ctx android.BaseM
 func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
 	if ctx.IsLlndk() {
 		// This is the vendor variant of an LLNDK library, build the LLNDK stubs.
-		vndkVer := ctx.Module().(*Module).VndkVersion()
-		if !inList(vndkVer, ctx.Config().PlatformVersionActiveCodenames()) || vndkVer == "" {
-			// For non-enforcing devices, vndkVer is empty. Use "current" in that case, too.
-			vndkVer = "current"
-		}
-		if library.stubsVersion() != "" {
-			vndkVer = library.stubsVersion()
-		}
 		nativeAbiResult := parseNativeAbiDefinition(ctx,
 			String(library.Properties.Llndk.Symbol_file),
-			android.ApiLevelOrPanic(ctx, vndkVer), "--llndk")
+			android.ApiLevelOrPanic(ctx, ctx.Config().VendorApiLevel()), "--llndk")
 		objs := compileStubLibrary(ctx, flags, nativeAbiResult.stubSrc)
 		if !Bool(library.Properties.Llndk.Unversioned) {
 			library.versionScriptPath = android.OptionalPathForPath(

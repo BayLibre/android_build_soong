@@ -463,6 +463,54 @@ class IntegrationTest(unittest.TestCase):
         """)
         self.assertEqual(expected_version, version_file.getvalue())
 
+    def test_integration_with_llndk(self) -> None:
+        input_file = io.StringIO(textwrap.dedent("""\
+            VERSION_34 { # introduced=34
+                global:
+                    foo;
+                    bar; # llndk
+            };
+            VERSION_35 { # introduced=35 llndk-introduced=202404
+                global:
+                    wiggle;
+                    bubble; # llndk llndk-introduced=202404
+                    duddle; # llndk llndk-introduced=202504
+            } VERSION_34;
+        """))
+        f = copy(self.filter)
+        f.llndk = True
+        f.api = 202404
+        parser = symbolfile.SymbolFileParser(input_file, {}, f)
+        versions = parser.parse()
+
+        src_file = io.StringIO()
+        version_file = io.StringIO()
+        symbol_list_file = io.StringIO()
+
+        generator = ndkstubgen.Generator(src_file,
+                                         version_file, symbol_list_file, f)
+        generator.write(versions)
+
+        expected_src = textwrap.dedent("""\
+            void foo() {}
+            void bar() {}
+            void bubble() {}
+        """)
+        self.assertEqual(expected_src, src_file.getvalue())
+
+        expected_version = textwrap.dedent("""\
+            VERSION_34 {
+                global:
+                    foo;
+                    bar;
+            };
+            VERSION_35 {
+                global:
+                    bubble;
+            } VERSION_34;
+        """)
+        self.assertEqual(expected_version, version_file.getvalue())
+
     def test_empty_stub(self) -> None:
         """Tests that empty stubs can be generated.
 
