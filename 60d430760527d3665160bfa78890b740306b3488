@@ -16,6 +16,24 @@
       "message": "Specifically: `all_aconfig_declarations` is **ALL** aconfig declarations from the source tree.  This **cannot** go onto the device.\n\nIf we need to capture the other containers for on-device activity, we\u0027ll need to extend the processing that creates `{partition}/etc/aconfig_flags.pb`.",
       "revId": "60d430760527d3665160bfa78890b740306b3488",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57860cf9_ca88f814",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-11T20:50:54Z",
+      "side": 1,
+      "message": "Does all artifacts in the `dist` directory goes onto the device? IIUC this change adds `docs` as an additional target where `all_aconfig_declarations/flag{.pb \u0026\u0026 .textproto}` is copied to the dist directory. Do you mean that L91~95 should be removed altogether?",
+      "parentUuid": "e00fd22a_785a3f91",
+      "revId": "60d430760527d3665160bfa78890b740306b3488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
