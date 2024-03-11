@@ -94,6 +94,30 @@
       },
       "revId": "f1573c35e2ae773c31cd9f1d98e784686eb1b1ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4d0db3_228399b4",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-03-11T08:10:44Z",
+      "side": 1,
+      "message": "FYI, `ctx.Config().VendorApiLevelFrozen()` returns the preview status.",
+      "parentUuid": "7bffffd3_58837ccc",
+      "range": {
+        "startLine": 683,
+        "startChar": 11,
+        "endLine": 683,
+        "endChar": 26
+      },
+      "revId": "f1573c35e2ae773c31cd9f1d98e784686eb1b1ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
