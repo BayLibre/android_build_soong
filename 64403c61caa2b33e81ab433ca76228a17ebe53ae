@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddc2f5dc_1628a746",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-03-11T18:34:04Z",
+      "side": 1,
+      "message": "thoughts on the right direction here? the context is that my toybox getopt just moved out of pending/, which reminded me it existed, and so i can either add the missing symlinks (i was already building it for the host, apparently; presumably i got interrupted part way through the switch!), or -- it would seem -- we can just remove this from soong\u0027s list of exceptions and disallow it.\n\ni\u0027ve uploaded https://android-review.googlesource.com/c/platform/prebuilts/build-tools/+/2998616 anyway, but i\u0027ll let you two decide whether i should add it to this topic or not. (since \"include all the things that work\" and \"include only the things absolutely needed\" are both defensible philosophical positions, but i don\u0027t really know where you stand on that...)",
+      "revId": "64403c61caa2b33e81ab433ca76228a17ebe53ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
