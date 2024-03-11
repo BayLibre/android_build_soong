@@ -46,6 +46,30 @@
       },
       "revId": "f1573c35e2ae773c31cd9f1d98e784686eb1b1ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21dec128_08eb35f6",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-03-11T08:06:13Z",
+      "side": 1,
+      "message": "Acknowledged. So it does not care if the version is preview or not.",
+      "parentUuid": "71d30a73_ece27f98",
+      "range": {
+        "startLine": 683,
+        "startChar": 11,
+        "endLine": 683,
+        "endChar": 26
+      },
+      "revId": "f1573c35e2ae773c31cd9f1d98e784686eb1b1ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
