@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d4a4d1_f48138e6",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-11T15:30:27Z",
+      "side": 1,
+      "message": "Just copy-pasted the fallback block. But this case is to avoid test failures failing due to missing vendor api version. Rephrased.",
+      "parentUuid": "bf12aa2a_fc282779",
+      "range": {
+        "startLine": 682,
+        "startChar": 48,
+        "endLine": 682,
+        "endChar": 60
+      },
+      "revId": "39221a32feea46673967a97c4b6b5ea0c08f677a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02ea749f_0803b476",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-11T13:22:46Z",
       "side": 1,
       "message": "Some map.txt file for NDK libs don\u0027t have multiple versions. ex: libandroid.map.txt.\n\nDoes the following work?\n\n```\nLIBANDROID {\n    global:\n        foo; # introduced\u003d34\n        bar; # introduced\u003d35\n        bar; # llndk\u003d202404\n        baz; # introduced\u003d35\n}\n```\n\n\u003d\u003d\u003e for vendor targeting 202404, the LLNDK APIs are ...\n\n* foo: old behavior (ndk implies llndk)\n* bar: due to #llndj\u003d202404\n* baz is NOT included",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 473,
+        "endChar": 40
+      },
+      "revId": "39221a32feea46673967a97c4b6b5ea0c08f677a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "054c0791_25dca7c7",
+        "filename": "cc/ndkstubgen/test_ndkstubgen.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-11T15:30:27Z",
+      "side": 1,
+      "message": "Yes it works. Added additional test.",
+      "parentUuid": "02ea749f_0803b476",
       "range": {
         "startLine": 473,
         "startChar": 0,
