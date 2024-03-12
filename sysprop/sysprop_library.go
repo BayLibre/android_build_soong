@@ -312,8 +312,16 @@ func (m *syspropLibrary) rustGenModuleName() string {
 	return m.rustCrateName() + "_rust_gen"
 }
 
+func (m *syspropLibrary) rustGenPublicStubName() string {
+	return m.rustCrateName() + "_rust_gen_public"
+}
+
 func (m *syspropLibrary) rustGenStubName() string {
 	return "lib" + m.rustCrateName() + "_rust"
+}
+
+func (m *syspropLibrary) rustPublicStubName() string {
+	return "lib" + m.rustCrateName() + "_public_rust"
 }
 
 func (m *syspropLibrary) rustCrateName() string {
@@ -321,6 +329,10 @@ func (m *syspropLibrary) rustCrateName() string {
 	moduleName = strings.ReplaceAll(moduleName, "-", "_")
 	moduleName = strings.ReplaceAll(moduleName, ".", "_")
 	return moduleName
+}
+
+func (m *syspropLibrary) rustPublicStubCrateName() string {
+	return m.rustCrateName() + "_public"
 }
 
 func (m *syspropLibrary) BaseModuleName() string {
@@ -630,8 +642,10 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 	// and allow any modules (even from different partition) to link against the sysprop_library.
 	// To do that, we create a public stub and expose it to modules with sdk_version: system_*.
 	var publicStub string
+	var rustPublicStub string
 	if isOwnerPlatform && installedInSystem {
 		publicStub = m.javaPublicStubName()
+		rustPublicStub = m.rustPublicStubName()
 	}
 
 	ctx.CreateModule(java.LibraryFactory, &javaLibraryProperties{
@@ -687,6 +701,24 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 		Min_sdk_version:   proptools.StringPtr("29"),
 	}
 	ctx.CreateModule(rust.RustLibraryFactory, &rustProps)
+	if rustPublicStub != "" {
+		ctx.CreateModule(syspropRustGenFactory, &syspropGenProperties{
+			Srcs:      m.properties.Srcs,
+			Scope:     "public",
+			Name:      proptools.StringPtr(m.rustGenPublicStubName()),
+			Check_api: proptools.StringPtr(ctx.ModuleName()),
+		})
+		ctx.CreateModule(rust.RustLibraryFactory, &rustLibraryProperties{
+			Name:        proptools.StringPtr(rustPublicStub),
+			Srcs:        []string{":" + m.rustGenPublicStubName()},
+			Installable: proptools.BoolPtr(false),
+			Crate_name:  m.rustPublicStubCrateName(),
+			Rustlibs: []string{
+				"librustutils",
+			},
+			Min_sdk_version: proptools.StringPtr("29"),
+		})
+	}
 
 	// syspropLibraries will be used by property_contexts to check types.
 	// Record absolute paths of sysprop_library to prevent soong_namespace problem.
