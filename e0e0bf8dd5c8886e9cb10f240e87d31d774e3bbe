@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb3581c_da0cb0ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-12T16:50:53Z",
+      "side": 1,
+      "message": "IIUC, does this mean that instead of the full api surface jar, we use the jar corresponding to `sdk_version` of the java_api_library?\n\nCan you print an abbreviated dependency graph for stubs with this change? (I am surprised that we are not running into circular dependency issues)",
+      "range": {
+        "startLine": 15,
+        "startChar": 42,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "e0e0bf8dd5c8886e9cb10f240e87d31d774e3bbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19e6b46c_9c1f5dd1",
@@ -14,6 +37,46 @@
       "writtenOn": "2024-03-08T11:04:59Z",
       "side": 1,
       "message": "@spandandas@google.com Spandan would you be able to take a look at this change? If it is too large to review I\u0027ll break it down into smaller changes.",
+      "revId": "e0e0bf8dd5c8886e9cb10f240e87d31d774e3bbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7976155b_018c213d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-12T16:50:53Z",
+      "side": 1,
+      "message": "Looks like there is a presubmit error for wear stubs",
+      "revId": "e0e0bf8dd5c8886e9cb10f240e87d31d774e3bbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "276d100b_4a778763",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2262,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-12T16:50:53Z",
+      "side": 1,
+      "message": "Does `sdk_version` of java_api_library default to an empty string? Would this make framework a dependency of such java_api_library(s)?",
+      "range": {
+        "startLine": 2262,
+        "startChar": 8,
+        "endLine": 2262,
+        "endChar": 67
+      },
       "revId": "e0e0bf8dd5c8886e9cb10f240e87d31d774e3bbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

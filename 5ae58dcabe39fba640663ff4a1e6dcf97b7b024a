@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a087f45_d14f03d1",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-12T16:50:53Z",
+      "side": 0,
+      "message": "Would this mean that `core_platform` always builds stubs from source?\nDitto with `core` api surface",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 5
+      },
+      "revId": "5ae58dcabe39fba640663ff4a1e6dcf97b7b024a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
