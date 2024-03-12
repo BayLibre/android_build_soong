@@ -16,6 +16,24 @@
       "message": "Why is this necessary? This just skips the `isAllowedFromOutsideVendor` check, but `isAllowedFromOutsideVendor(\"visibility\", \"any_partition\")` will return true anyways.",
       "revId": "0cf80b9bacdf3dbcfd35e2466716df901fd24674",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f55639_5403ff30",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-12T17:26:11Z",
+      "side": 1,
+      "message": "Oh, nevermind, I missed the check below. Could you add a test for this in visibility_test.go please?",
+      "parentUuid": "ac3ffdf7_246371f3",
+      "revId": "0cf80b9bacdf3dbcfd35e2466716df901fd24674",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
