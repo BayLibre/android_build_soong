@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "848473d7_ca65172d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-12T17:55:36Z",
+      "side": 1,
+      "message": "LGTM, but Jooyung if you could also take a look that would be appreciated.",
+      "revId": "f1f276c9049aa9db2f8827b6643228bf98732653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
