@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "487e198d_c9ac3f9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-12T03:41:27Z",
+      "side": 1,
+      "message": "The zipping was recommended by Colin when I first wrote this module, though I don\u0027t quitely remember the reason. So over to him.",
+      "revId": "527d9e326e209e41ba8bc385e7056705d0004b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e11b733_782daad0",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 2
