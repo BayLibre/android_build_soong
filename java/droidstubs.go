@@ -1118,8 +1118,25 @@ func (d *Droidstubs) optionalStubCmd(ctx android.ModuleContext, params stubsComm
 	rule.Build(fmt.Sprintf("metalava_%s", params.stubConfig.stubsType.String()), "metalava merged")
 }
 
+func (d *Droidstubs) validateAconfigDeclarations(ctx android.ModuleContext) {
+	diff, missingEntries, _ := android.ListSetDifference(d.expectedAconfigDeclarations, d.properties.Aconfig_declarations)
+	if diff && len(missingEntries) > 0 {
+		moduleName := d.Name()
+		// If the module was dynamically created from java_sdk_library, print the error to add
+		// the property to the root java_sdk_library module instead.
+		if d.SdkLibraryName() != nil {
+			moduleName = proptools.String(d.SdkLibraryName())
+		}
+		ctx.ModuleErrorf(
+			"Add the following aconfig_declarations modules to %q using \"aconfig_declarations\" property: %q",
+			moduleName, android.SortedUniqueStrings(missingEntries))
+	}
+}
+
 func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	deps := d.Javadoc.collectDeps(ctx)
+
+	d.validateAconfigDeclarations(ctx)
 
 	javaVersion := getJavaVersion(ctx, String(d.Javadoc.properties.Java_version), android.SdkContext(d))
 	generateStubs := BoolDefault(d.properties.Generate_stubs, true)

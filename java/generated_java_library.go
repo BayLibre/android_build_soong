@@ -35,6 +35,10 @@ type GeneratedJavaLibraryCallbacks interface {
 	// Called from inside GenerateAndroidBuildActions. Add the build rules to
 	// make the srcjar, and return the path to it.
 	GenerateSourceJarBuildActions(module *GeneratedJavaLibraryModule, ctx android.ModuleContext) android.Path
+
+	// Called from inside GenerateAndroidBuildActions. Returns the name of the
+	// aconfig_declarations module.
+	AconfigDeclarations() *string
 }
 
 // GeneratedJavaLibraryModuleFactory provides a utility for modules that are generated
@@ -105,6 +109,7 @@ func (module *GeneratedJavaLibraryModule) GenerateAndroidBuildActions(ctx androi
 
 	srcJarPath := module.callbacks.GenerateSourceJarBuildActions(module, ctx)
 	module.Library.properties.Generated_srcjars = append(module.Library.properties.Generated_srcjars, srcJarPath)
+	module.Library.properties.Aconfig_declaration = module.callbacks.AconfigDeclarations()
 	module.Library.GenerateAndroidBuildActions(ctx)
 }
 
