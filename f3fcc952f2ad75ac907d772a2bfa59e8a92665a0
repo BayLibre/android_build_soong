@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82d5e09e_5abd5880",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-12T01:27:57Z",
+      "side": 0,
+      "message": "do we need to remove this?",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 2
+      },
+      "revId": "f3fcc952f2ad75ac907d772a2bfa59e8a92665a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
