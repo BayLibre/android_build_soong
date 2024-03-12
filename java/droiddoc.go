@@ -221,6 +221,14 @@ type Javadoc struct {
 	stubsSrcJar android.WritablePath
 
 	exportableStubsSrcJar android.WritablePath
+
+	// a list that stores the names of the aconfig_declarations modules that corresponds to the
+	// java_aconfig_library modules that this module depends on.
+	expectedAconfigDeclarations []string
+
+	// a list that stores the names of the aconfig_declarations modules that are provided to
+	// this module as a dependency.
+	collectedAconfigDeclarations []string
 }
 
 func (j *Javadoc) OutputFiles(tag string) (android.Paths, error) {
@@ -391,12 +399,14 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 			} else if dep, ok := android.OtherModuleProvider(ctx, module, JavaInfoProvider); ok {
 				deps.classpath = append(deps.classpath, dep.HeaderJars...)
 				deps.aidlIncludeDirs = append(deps.aidlIncludeDirs, dep.AidlIncludeDirs...)
+				j.expectedAconfigDeclarations = append(j.expectedAconfigDeclarations, dep.AconfigDeclarations...)
 			} else if dep, ok := module.(android.SourceFileProducer); ok {
 				checkProducesJars(ctx, dep)
 				deps.classpath = append(deps.classpath, dep.Srcs()...)
 			} else {
 				ctx.ModuleErrorf("depends on non-java module %q", otherName)
 			}
+
 		case java9LibTag:
 			if dep, ok := android.OtherModuleProvider(ctx, module, JavaInfoProvider); ok {
 				deps.java9Classpath = append(deps.java9Classpath, dep.HeaderJars...)
@@ -413,8 +423,10 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 		case aconfigDeclarationTag:
 			if dep, ok := android.OtherModuleProvider(ctx, module, android.AconfigDeclarationsProviderKey); ok {
 				deps.aconfigProtoFiles = append(deps.aconfigProtoFiles, dep.IntermediateCacheOutputPath)
+				j.collectedAconfigDeclarations = append(j.collectedAconfigDeclarations, module.Name())
 			} else if dep, ok := android.OtherModuleProvider(ctx, module, android.CodegenInfoProvider); ok {
 				deps.aconfigProtoFiles = append(deps.aconfigProtoFiles, dep.IntermediateCacheOutputPaths...)
+				j.collectedAconfigDeclarations = append(j.collectedAconfigDeclarations, dep.AconfigDeclarations...)
 			} else {
 				ctx.ModuleErrorf("Only aconfig_declarations and aconfig_declarations_group "+
 					"module type is allowed for flags_packages property, but %s is neither "+
@@ -428,6 +440,19 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 	// may contain filegroup or genrule.
 	srcFiles := android.PathsForModuleSrcExcludes(ctx, j.properties.Srcs, j.properties.Exclude_srcs)
 	j.implicits = append(j.implicits, srcFiles...)
+
+	// Module can depend on a java_aconfig_library module using the ":module_name{.tag}" syntax.
+	// Find the corresponding aconfig_declarations module name for such case.
+	for _, src := range j.properties.Srcs {
+		if moduleName, tag := android.SrcIsModuleWithTag(src); moduleName != "" {
+			otherModule := android.GetModuleFromPathDep(ctx, moduleName, tag)
+			if dep, ok := android.OtherModuleProvider(ctx, otherModule, android.CodegenInfoProvider); ok {
+				j.expectedAconfigDeclarations = append(j.expectedAconfigDeclarations, dep.AconfigDeclarations[0])
+			} else if dep, ok := android.OtherModuleProvider(ctx, otherModule, android.AconfigTransitiveDeclarationsInfoProvider); ok {
+				j.expectedAconfigDeclarations = append(j.expectedAconfigDeclarations, dep.AconfigDeclarations...)
+			}
+		}
+	}
 
 	filterByPackage := func(srcs []android.Path, filterPackages []string) []android.Path {
 		if filterPackages == nil {

@@ -40,6 +40,10 @@ func (callbacks *JavaGenLibTestCallbacks) GenerateSourceJarBuildActions(module *
 	return android.PathForOutput(ctx, "blah.srcjar")
 }
 
+func (callbacks *JavaGenLibTestCallbacks) AconfigDeclarations() *string {
+	return nil
+}
+
 func testGenLib(t *testing.T, errorHandler android.FixtureErrorHandler, bp string) *android.TestResult {
 	return android.GroupFixturePreparers(
 		PrepareForIntegrationTestWithJava,
