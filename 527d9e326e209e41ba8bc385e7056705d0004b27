@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2598fd8a_d8492610",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-12T16:50:17Z",
+      "side": 1,
+      "message": "Colin is OOO this week. It looks like you switched from a directory to a zip file from patchset 2 to 3 in aosp/1496007, but there\u0027s no comments left there about why. I do think it would be wrong without the `rm -rf` though, and in general it is harder to write it correctly when using a directory instead of a zip file, but if we want the best performance it\u0027s necessary.",
+      "parentUuid": "487e198d_c9ac3f9b",
+      "revId": "527d9e326e209e41ba8bc385e7056705d0004b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e11b733_782daad0",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2024-03-12T01:27:57Z",
       "side": 1,
       "message": "might be misleading; can we log `err` too?",
+      "range": {
+        "startLine": 226,
+        "startChar": 3,
+        "endLine": 226,
+        "endChar": 65
+      },
+      "revId": "527d9e326e209e41ba8bc385e7056705d0004b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "731375f2_18f1433f",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-12T16:50:17Z",
+      "side": 1,
+      "message": "The errors that `Rel` returns don\u0027t really give any more information, but I changed the wording to be similar to what `Rel` would say.",
+      "parentUuid": "8e11b733_782daad0",
       "range": {
         "startLine": 226,
         "startChar": 3,
