@@ -215,6 +215,9 @@ type CommonProperties struct {
 	// the stubs via libs, but should be set to true when the module depends on
 	// the stubs via static libs.
 	Is_stubs_module *bool
+
+	// aconfig_declarations that the generated java_library module provides.
+	Aconfig_declaration *string `android:"mutated"`
 }
 
 // Properties that are specific to device modules. Host module factories should not add these when
@@ -2381,6 +2384,10 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 
 		addCLCFromDep(ctx, module, j.classLoaderContexts)
 	})
+
+	if j.properties.Aconfig_declaration != nil {
+		deps.aconfigDeclarations = append(deps.aconfigDeclarations, *j.properties.Aconfig_declaration)
+	}
 
 	return deps
 }

@@ -127,6 +127,10 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 	return srcJarPath
 }
 
+func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) AconfigDeclarations() *string {
+	return proptools.StringPtr(callbacks.properties.Aconfig_declarations)
+}
+
 func isModeSupported(mode string) bool {
 	return android.InList(mode, aconfigSupportedModes)
 }

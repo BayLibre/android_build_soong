@@ -11922,3 +11922,87 @@ func TestInstallationRulesForMultipleApexPrebuilts(t *testing.T) {
 		checkHideFromMake(t, ctx, tc.expectedVisibleModuleName, tc.expectedHiddenModuleNames)
 	}
 }
+
+func TestAconfifDeclarationsValidation(t *testing.T) {
+	android.GroupFixturePreparers(
+		prepareForApexTest,
+		java.PrepareForTestWithJavaSdkLibraryFiles,
+		java.FixtureWithLastReleaseApis("foo"),
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.SetApiLibraries([]string{"foo"})
+		}),
+	).ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+		`Add the following aconfig_declarations modules to "foo" using "aconfig_declarations" property: \["baz" "qux"\]`,
+	)).RunTestWithBp(t, `
+		aconfig_declarations {
+			name: "bar",
+			package: "com.example.package",
+			srcs: [
+				"bar.aconfig",
+			],
+		}
+		java_aconfig_library {
+			name: "bar-lib",
+			aconfig_declarations: "bar",
+		}
+		aconfig_declarations {
+			name: "baz",
+			package: "com.example.package",
+			srcs: [
+				"baz.aconfig",
+			],
+		}
+		java_aconfig_library {
+			name: "baz-lib",
+			aconfig_declarations: "baz",
+		}
+		java_library {
+			name: "baz-java-lib",
+			static_libs: [
+				"baz-lib",
+			],
+		}
+		aconfig_declarations {
+			name: "qux",
+			package: "com.example.package",
+			srcs: [
+				"qux.aconfig",
+			],
+		}
+		java_aconfig_library {
+			name: "qux-lib",
+			aconfig_declarations: "qux",
+		}
+		filegroup {
+			name: "qux-filegroup",
+			srcs: [
+				":qux-lib{.generated_srcjars}",
+			],
+		}
+
+		java_sdk_library {
+			name: "foo",
+			srcs: [
+				":qux-filegroup",
+			],
+			api_packages: ["foo"],
+			system: {
+				enabled: true,
+			},
+			module_lib: {
+				enabled: true,
+			},
+			test: {
+				enabled: true,
+			},
+			libs: [
+				"bar-lib",
+				"baz-java-lib",
+			],
+
+			aconfig_declarations: [
+				"bar",
+			],
+		}
+	`)
+}
