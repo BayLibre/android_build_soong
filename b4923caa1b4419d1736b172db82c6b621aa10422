@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fc4eff6_6cdc1d71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-12T19:30:05Z",
+      "side": 1,
+      "message": "My cloudtop invocation is still running, but the new file appears in the build artifacts of the presubmit runs of this CL.",
+      "parentUuid": "bdf4409d_64010183",
+      "revId": "b4923caa1b4419d1736b172db82c6b621aa10422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44b3809b_dc612fcf",
