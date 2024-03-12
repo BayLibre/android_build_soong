@@ -153,25 +153,41 @@ func (g *syspropRustGenRule) GenerateAndroidBuildActions(ctx android.ModuleConte
 		}
 	})
 
+	outputDir := android.PathForModuleOut(ctx, "sysprop", "srcrust").Join(ctx, "src")
+	libFile := outputDir.Join(ctx, "lib.rs")
+	g.genSrcs = append(g.genSrcs, libFile)
+	libFileLines := []string{"// Soong generated source"}
+
 	for _, syspropFile := range android.PathsForModuleSrc(ctx, g.properties.Srcs) {
-		syspropDir := android.GenPathWithExt(ctx, "sysprop", syspropFile, "srcrust")
-		outputDir := syspropDir.Join(ctx, "src")
-		libPath := syspropDir.Join(ctx, "src", "lib.rs")
+		moduleName := syspropPathToRustModule(syspropFile)
+		moduleDir := outputDir.Join(ctx, moduleName)
+		modulePath := moduleDir.Join(ctx, "mod.rs")
 
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        syspropRust,
 			Description: "sysprop_rust " + syspropFile.Rel(),
-			Outputs:     android.WritablePaths{libPath},
+			Outputs:     android.WritablePaths{modulePath},
 			Input:       syspropFile,
 			Implicit:    checkApiFileTimeStamp,
 			Args: map[string]string{
 				"scope":   g.properties.Scope,
-				"out_dir": outputDir.String(),
+				"out_dir": moduleDir.String(),
 			},
 		})
 
-		g.genSrcs = append(g.genSrcs, libPath)
+		g.genSrcs = append(g.genSrcs, modulePath)
+		libFileLines = append(libFileLines, fmt.Sprintf("pub mod %s;", moduleName))
 	}
+
+	libFileSource := strings.Join(libFileLines, "\n")
+	android.WriteFileRule(ctx, libFile, libFileSource)
+}
+
+// syspropPathToRustModule takes a path to a .sysprop file and returns the name to use for the
+// corresponding Rust module.
+func syspropPathToRustModule(syspropFilename android.Path) string {
+	filenameBase, _ := strings.CutSuffix(syspropFilename.Base(), ".sysprop")
+	return strings.ToLower(filenameBase)
 }
 
 func (g *syspropRustGenRule) DepsMutator(ctx android.BottomUpMutatorContext) {
