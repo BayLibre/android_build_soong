@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cd39e6a_d08dfaca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-12T17:42:51Z",
+      "side": 1,
+      "message": "nit: Have `m droidcore dist` been tested?",
+      "revId": "b4923caa1b4419d1736b172db82c6b621aa10422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44b3809b_dc612fcf",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-12T17:42:51Z",
+      "side": 1,
+      "message": "```suggestion\n\t// In case of mainline modules, the .prebuilt_info file contains the build_id that was used to generate the prebuilt.\n```\nI was bit confused if the `Prebuilt_info` property can be set as the build_id for mainline modules",
+      "revId": "b4923caa1b4419d1736b172db82c6b621aa10422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b39b68_acfd4084",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-12T17:42:51Z",
+      "side": 1,
+      "message": "Can we use `android.PathForModuleSrc` instead?",
+      "range": {
+        "startLine": 835,
+        "startChar": 30,
+        "endLine": 835,
+        "endChar": 47
+      },
+      "revId": "b4923caa1b4419d1736b172db82c6b621aa10422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
