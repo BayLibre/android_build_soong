@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49af6e32_4579b5ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-03-12T20:33:02Z",
+      "side": 1,
+      "message": "do you think i should wait for ccross next week, or just \"submit and revert\"? (and was your question for ccross actually just my \"which do we prefer?\", in which case i definitely want to wait... i interpreted your +1 as a \"yeah, don\u0027t expose anything we\u0027re not proven to need\", which wasn\u0027t necessarily what you meant!)",
+      "revId": "b235db985ecce8070efad74d55dc26e96978ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
