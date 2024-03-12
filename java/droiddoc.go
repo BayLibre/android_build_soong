@@ -222,6 +222,10 @@ type Javadoc struct {
 	stubsSrcJar android.WritablePath
 
 	exportableStubsSrcJar android.WritablePath
+
+	// a list that stores the names of the aconfig_declarations modules that corresponds to the
+	// java_aconfig_library modules that this module depends on.
+	expectedAconfigDeclarations []string
 }
 
 func (j *Javadoc) OutputFiles(tag string) (android.Paths, error) {
@@ -398,6 +402,12 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 			} else {
 				ctx.ModuleErrorf("depends on non-java module %q", otherName)
 			}
+
+			// java_aconfig_library is both JavaInfoProvider and CodegenInfoProvider.
+			if dep, ok := android.OtherModuleProvider(ctx, module, aconfig.CodegenInfoProvider); ok {
+				// java_aconfig_library provides exactly one aconfig_declarations module name.
+				j.expectedAconfigDeclarations = append(j.expectedAconfigDeclarations, dep.AconfigDeclarations[0])
+			}
 		case java9LibTag:
 			if dep, ok := android.OtherModuleProvider(ctx, module, JavaInfoProvider); ok {
 				deps.java9Classpath = append(deps.java9Classpath, dep.HeaderJars...)
@@ -429,6 +439,17 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 	// may contain filegroup or genrule.
 	srcFiles := android.PathsForModuleSrcExcludes(ctx, j.properties.Srcs, j.properties.Exclude_srcs)
 	j.implicits = append(j.implicits, srcFiles...)
+
+	// Module can depend on a java_aconfig_library module using the ":module_name{.tag}" syntax.
+	// Find the corresponding aconfig_declarations module name for such case.
+	for _, src := range j.properties.Srcs {
+		if moduleName, tag := android.SrcIsModuleWithTag(src); moduleName != "" {
+			otherModule := android.GetModuleFromPathDep(ctx, moduleName, tag)
+			if dep, ok := android.OtherModuleProvider(ctx, otherModule, aconfig.CodegenInfoProvider); ok {
+				j.expectedAconfigDeclarations = append(j.expectedAconfigDeclarations, dep.AconfigDeclarations[0])
+			}
+		}
+	}
 
 	filterByPackage := func(srcs []android.Path, filterPackages []string) []android.Path {
 		if filterPackages == nil {
