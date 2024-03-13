@@ -34,6 +34,24 @@
       "parentUuid": "848473d7_ca65172d",
       "revId": "f1f276c9049aa9db2f8827b6643228bf98732653",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50fa6cc6_c0dfc8aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-03-13T02:09:27Z",
+      "side": 1,
+      "message": "The tool aims to monitor the ABI that is declared in the exported headers but not visible in the symbol table.",
+      "parentUuid": "22c14752_a3767f70",
+      "revId": "f1f276c9049aa9db2f8827b6643228bf98732653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
