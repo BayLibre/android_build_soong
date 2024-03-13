@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd639e91_f52755c0",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-13T07:02:56Z",
+      "side": 1,
+      "message": "*string  in case we want to have defaults?",
+      "range": {
+        "startLine": 118,
+        "startChar": 26,
+        "endLine": 118,
+        "endChar": 32
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dcd02d2_2ad5f762",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-13T07:02:56Z",
+      "side": 1,
+      "message": "[1] says that `partition` should be `systemimage` in this case? Also, it appears that we don\u0027t have staging_dir.stamp for other partitions.\n\n[1] https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;drc\u003d9738259f3ed11747c438f18027258c27d5350935;l\u003d3451",
+      "range": {
+        "startLine": 432,
+        "startChar": 59,
+        "endLine": 432,
+        "endChar": 62
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7137fe1e_baab3ce8",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-13T07:02:56Z",
+      "side": 1,
+      "message": "Is this file guaranteed to be up-to-date when staging_dir.stamp is built?\n\nI don\u0027t see a dependency from stanging_dir.stamp to file_list.txt in build/make/core/Makefile",
+      "range": {
+        "startLine": 433,
+        "startChar": 79,
+        "endLine": 433,
+        "endChar": 92
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "617e98cc_fb03a4f8",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-13T07:02:56Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 433,
+        "startChar": 62,
+        "endLine": 433,
+        "endChar": 64
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e20f8d_23c85588",
+        "filename": "scripts/merge_directories.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-13T07:02:56Z",
+      "side": 1,
+      "message": "nit: respect line width",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 192
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36caec05_05cdee1b",
+        "filename": "scripts/merge_directories.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-13T07:02:56Z",
+      "side": 1,
+      "message": "When can there be multiple directories in in_dirs?",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ed16cbb_1041f5a3",
+        "filename": "scripts/merge_directories.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-13T07:02:56Z",
+      "side": 1,
+      "message": "This isn\u0027t super critical, but file_list is not checked here, which means unwanted directories in in_dir can be created in out_dir.",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 48
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

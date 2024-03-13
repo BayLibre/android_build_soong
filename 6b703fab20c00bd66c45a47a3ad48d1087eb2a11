@@ -22,6 +22,30 @@
       },
       "revId": "6b703fab20c00bd66c45a47a3ad48d1087eb2a11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bef6946c_1d3ebb48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-13T07:02:56Z",
+      "side": 1,
+      "message": "We may not need this for the packaging of system partition. But we will need this for other partitions where Make is expected to never die. So thanks!",
+      "parentUuid": "4c5c1385_ba24c230",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 71
+      },
+      "revId": "6b703fab20c00bd66c45a47a3ad48d1087eb2a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
