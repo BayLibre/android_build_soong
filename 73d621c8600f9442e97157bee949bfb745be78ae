@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09dbd91_60315a87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-13T21:23:03Z",
+      "side": 1,
+      "message": "Yeah, we might not need the vFRC version because we do not aim to generate different LLNDK stub versions in a single build. But I think this helps when adding a new symbol targeting LLNDK. And as you pointed out a single version block can have two vFRC versions based on when they are added (before/after vFRC freezing), it can also serve a documentation (which vFRC version an LLNDK symbol belongs).",
+      "parentUuid": "be971a02_30483d6b",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "73d621c8600f9442e97157bee949bfb745be78ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab1fd581_133b8b9a",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "775f7473_5a5f2c32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-13T21:23:03Z",
+      "side": 1,
+      "message": "that\u0027d be very uncommon but could happen because NDK/SDK freezing happens one quarter later after vFRC/LLNDK freezing. In this year, symbols added in that period will be added in the version block for V (introduced\u003d35) while they are not part of 202404 vFRC but 202504.",
+      "parentUuid": "ab1fd581_133b8b9a",
+      "revId": "73d621c8600f9442e97157bee949bfb745be78ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f13fb10_85ace0da",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-03-13T18:14:24Z",
       "side": 1,
       "message": "Missing (and probably the most interesting?) test case: introduced\u003d34 symbols should be present for LL-NDK 202404.",
+      "revId": "73d621c8600f9442e97157bee949bfb745be78ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2338a0_aabc9ec8",
+        "filename": "cc/symbolfile/test_symbolfile.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-13T21:23:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f13fb10_85ace0da",
       "revId": "73d621c8600f9442e97157bee949bfb745be78ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
