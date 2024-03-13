@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9978b2ff_8d4d867f",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-13T00:39:25Z",
+      "side": 1,
+      "message": "Hmm yeah, I can see this becoming an issue. Do you have any thoughts about resolving this issue other than recursively iterating through the dependency chain?",
+      "parentUuid": "1f05d8d4_37931dcb",
+      "range": {
+        "startLine": 448,
+        "startChar": 17,
+        "endLine": 448,
+        "endChar": 92
+      },
+      "revId": "14ac90b857e302e7e502d519aa80ffc187e00bd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "809cc8af_7fa676a4",
         "filename": "java/droidstubs.go",
         "patchSetId": 3
