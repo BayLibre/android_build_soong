@@ -101,6 +101,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "180cddfa_22efe27d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-13T21:35:49Z",
+      "side": 1,
+      "message": "\u003e but -- even if we\u0027re not on real api bumps per release by then -- wouldn\u0027t the 2025 llndk be \"everything in 35\"+\"stuff marked llndk in \u003cnext year\u0027s major api bump\u003e\"? with no need to retcon the 2024 llndk?\n\nNo. 202504 llndk will be \"202404 llndk\" + \"stuff marked llndk\u003d202504\". Not everything in 35 will go into 202504 LLNDK.",
+      "parentUuid": "d80e5cae_b3d99e78",
+      "revId": "73d621c8600f9442e97157bee949bfb745be78ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f13fb10_85ace0da",
