@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36bc2623_d396411d",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-13T17:28:01Z",
+      "side": 1,
+      "message": "Non-pointers don\u0027t prevent defaults to my knowledge. Pointer properties are only necessary if you want to differentiate unset from the zero value. But since this property can only be set to certain values, we can use the empty string to indicate unset.\n\nAnd it would not be a breaking change to change it to `*string` in the future if we decided we needed that.",
+      "parentUuid": "dd639e91_f52755c0",
+      "range": {
+        "startLine": 118,
+        "startChar": 26,
+        "endLine": 118,
+        "endChar": 32
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dcd02d2_2ad5f762",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-13T07:02:56Z",
       "side": 1,
       "message": "[1] says that `partition` should be `systemimage` in this case? Also, it appears that we don\u0027t have staging_dir.stamp for other partitions.\n\n[1] https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;drc\u003d9738259f3ed11747c438f18027258c27d5350935;l\u003d3451",
+      "range": {
+        "startLine": 432,
+        "startChar": 59,
+        "endLine": 432,
+        "endChar": 62
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a8ce0c2_39ab29b3",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-13T17:28:01Z",
+      "side": 1,
+      "message": "Sorry, this was supposed to be in a topic with aosp/3001001, where I renamed it from `systemimage` to `system` and added stamp files for the other partitions. Fixed the topic.",
+      "parentUuid": "6dcd02d2_2ad5f762",
       "range": {
         "startLine": 432,
         "startChar": 59,
@@ -93,6 +141,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fcc0369_39a087b3",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-13T17:28:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "617e98cc_fb03a4f8",
+      "range": {
+        "startLine": 433,
+        "startChar": 62,
+        "endLine": 433,
+        "endChar": 64
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04037210_444c8801",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-13T17:28:01Z",
+      "side": 1,
+      "message": "No, but the file_list.txt is a dependency of the merge_directories rulebuilder below, so it will be built for that.",
+      "parentUuid": "7137fe1e_baab3ce8",
+      "range": {
+        "startLine": 433,
+        "startChar": 79,
+        "endLine": 433,
+        "endChar": 92
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4e20f8d_23c85588",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-03-13T07:02:56Z",
       "side": 1,
       "message": "nit: respect line width",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 192
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f84f370_5778be7b",
+        "filename": "scripts/merge_directories.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-13T17:28:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4e20f8d_23c85588",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "284d77f7_603385fd",
+        "filename": "scripts/merge_directories.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-13T17:28:01Z",
+      "side": 1,
+      "message": "I was thinking there might be some usecases for it (like combining the packaging specs directory, the \"extra files\" directory, and the make staging directory in one command, or combining two directories to a new, empty, result directory), but you\u0027re right, it\u0027s not used. Removed.",
+      "parentUuid": "36caec05_05cdee1b",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ed16cbb_1041f5a3",
@@ -152,6 +296,30 @@
       "writtenOn": "2024-03-13T07:02:56Z",
       "side": 1,
       "message": "This isn\u0027t super critical, but file_list is not checked here, which means unwanted directories in in_dir can be created in out_dir.",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 48
+      },
+      "revId": "60483c667ace526145d4273aef6c6c36deacdaf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13eb8975_75401218",
+        "filename": "scripts/merge_directories.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-13T17:28:01Z",
+      "side": 1,
+      "message": "Good catch, done.",
+      "parentUuid": "8ed16cbb_1041f5a3",
       "range": {
         "startLine": 43,
         "startChar": 12,
