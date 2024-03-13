@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "959537a7_55e87a6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-13T16:39:25Z",
+      "side": 1,
+      "message": "Ah, thanks. Now that `CopySpecsToDir` accepts a `RuleBuilder`, we should be following Colin\u0027s second suggestion there: \"Return a partially filled out RuleBuilder that has the copy commands and let the caller add the packaging commands.\".\n\nThe files will be copied and then packaged entirely within one RuleBuilder, so the intermediate copies won\u0027t be treated as ninja output files.",
+      "parentUuid": "3c699bc2_9f1a4c9a",
+      "revId": "527d9e326e209e41ba8bc385e7056705d0004b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e11b733_782daad0",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 2
