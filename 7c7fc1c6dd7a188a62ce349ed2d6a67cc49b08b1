@@ -16,6 +16,24 @@
       "message": "Alyssa, this CL is not submittable as-is because I need to update the other unit tests in `build/soong/sdk`, but can I please get your feedback on the general approach?",
       "revId": "7c7fc1c6dd7a188a62ce349ed2d6a67cc49b08b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392c1e92_3174f728",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951966
+      },
+      "writtenOn": "2024-03-13T18:17:07Z",
+      "side": 1,
+      "message": "Thanks Spandan! The idea is good.\n\nIIUC, you are adding the contents of apex_contributions using the info from sdk type. The contents in apex_contributions_default will be prebuilt_* only at the moment.\n\nDuring the test run, I vaguely recalled that it was not working when I added java_import for the module starting with art-module-sdk_* (e.g. art-module-sdk_art.module.api.annotations.for.system.modules) in apex_contributions\u0027 contents. However, the visibility for this is `private` and therefore I can easily configured the dependency for v2. I am not sure if we really need them as part of apex contributions or we can just treat it in similar manner as license.\n\nAnyways, please let me know when it is ready. I can try and give you more feedback later.",
+      "parentUuid": "05b25d12_b0bb0cb1",
+      "revId": "7c7fc1c6dd7a188a62ce349ed2d6a67cc49b08b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
