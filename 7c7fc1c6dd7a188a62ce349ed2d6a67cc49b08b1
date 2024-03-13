@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b25d12_b0bb0cb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-13T17:52:52Z",
+      "side": 1,
+      "message": "Alyssa, this CL is not submittable as-is because I need to update the other unit tests in `build/soong/sdk`, but can I please get your feedback on the general approach?",
+      "revId": "7c7fc1c6dd7a188a62ce349ed2d6a67cc49b08b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
