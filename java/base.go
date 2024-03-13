@@ -26,7 +26,6 @@ import (
 	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
-	"android/soong/aconfig"
 	"android/soong/android"
 	"android/soong/dexpreopt"
 	"android/soong/java/config"
@@ -1228,6 +1227,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 			ExportedPluginClasses:          j.exportedPluginClasses,
 			ExportedPluginDisableTurbine:   j.exportedDisableTurbine,
 			StubsLinkType:                  j.stubsLinkType,
+			AconfigDeclarations:            deps.aconfigDeclarations,
 		})
 
 		j.outputFile = j.headerJarFile
@@ -1746,6 +1746,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		ExportedPluginDisableTurbine:   j.exportedDisableTurbine,
 		JacocoReportClassesFile:        j.jacocoReportClassesFile,
 		StubsLinkType:                  j.stubsLinkType,
+		AconfigDeclarations:            deps.aconfigDeclarations,
 	})
 
 	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource
@@ -2296,6 +2297,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				// annotation processor that generates API is incompatible with the turbine
 				// optimization.
 				deps.disableTurbine = deps.disableTurbine || dep.ExportedPluginDisableTurbine
+				deps.aconfigDeclarations = append(deps.aconfigDeclarations, dep.AconfigDeclarations...)
 			case pluginTag:
 				if plugin, ok := module.(*Plugin); ok {
 					if plugin.pluginProperties.Processor_class != nil {
@@ -2354,6 +2356,8 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				deps.staticJars = append(deps.staticJars, dep.Srcs()...)
 				deps.staticHeaderJars = append(deps.staticHeaderJars, dep.Srcs()...)
 			}
+		} else if dep, ok := android.OtherModuleProvider(ctx, module, android.CodegenInfoProvider); ok {
+			deps.aconfigDeclarations = append(deps.aconfigDeclarations, dep.AconfigDeclarations...)
 		} else {
 			switch tag {
 			case bootClasspathTag:
@@ -2551,7 +2555,7 @@ func collectDirectDepsProviders(ctx android.ModuleContext) (result *JarJarProvid
 				default:
 					return RenameUseExclude, "srcfile"
 				}
-			} else if _, ok := android.OtherModuleProvider(ctx, m, aconfig.CodegenInfoProvider); ok {
+			} else if _, ok := android.OtherModuleProvider(ctx, m, android.CodegenInfoProvider); ok {
 				return RenameUseInclude, "aconfig_declarations_group"
 			} else {
 				switch tag {

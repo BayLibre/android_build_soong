@@ -15,7 +15,6 @@
 package codegen
 
 import (
-	"android/soong/aconfig"
 	"android/soong/android"
 	"fmt"
 
@@ -78,7 +77,7 @@ func (adg *AconfigDeclarationsGroup) DepsMutator(ctx android.BottomUpMutatorCont
 func (adg *AconfigDeclarationsGroup) VisitDeps(ctx android.ModuleContext) {
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		tag := ctx.OtherModuleDependencyTag(dep)
-		if provider, ok := android.OtherModuleProvider(ctx, dep, aconfig.CodegenInfoProvider); ok {
+		if provider, ok := android.OtherModuleProvider(ctx, dep, android.CodegenInfoProvider); ok {
 
 			// aconfig declaration names and cache files are collected for all aconfig library dependencies
 			adg.aconfigDeclarationNames = append(adg.aconfigDeclarationNames, provider.AconfigDeclarations...)
@@ -100,7 +99,7 @@ func (adg *AconfigDeclarationsGroup) GenerateAndroidBuildActions(ctx android.Mod
 	adg.aconfigDeclarationNames = android.FirstUniqueStrings(adg.aconfigDeclarationNames)
 	adg.intermediateCacheOutputPaths = android.FirstUniquePaths(adg.intermediateCacheOutputPaths)
 
-	android.SetProvider(ctx, aconfig.CodegenInfoProvider, aconfig.CodegenInfo{
+	android.SetProvider(ctx, android.CodegenInfoProvider, android.CodegenInfo{
 		AconfigDeclarations:          adg.aconfigDeclarationNames,
 		IntermediateCacheOutputPaths: adg.intermediateCacheOutputPaths,
 		Srcjars:                      adg.javaSrcjars,

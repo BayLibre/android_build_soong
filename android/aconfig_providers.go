@@ -45,10 +45,25 @@ var AconfigDeclarationsProviderKey = blueprint.NewProvider[AconfigDeclarationsPr
 // This is used to collect the aconfig declarations info on the transitive closure,
 // the data is keyed on the container.
 type AconfigTransitiveDeclarationsInfo struct {
-	AconfigFiles map[string]Paths
+	AconfigDeclarations []string
+	AconfigFiles        map[string]Paths
 }
 
 var AconfigTransitiveDeclarationsInfoProvider = blueprint.NewProvider[AconfigTransitiveDeclarationsInfo]()
+
+type CodegenInfo struct {
+	// AconfigDeclarations is the name of the aconfig_declarations modules that
+	// the codegen module is associated with
+	AconfigDeclarations []string
+
+	// Paths to the cache files of the associated aconfig_declaration modules
+	IntermediateCacheOutputPaths Paths
+
+	// Paths to the srcjar files generated from the java_aconfig_library modules
+	Srcjars Paths
+}
+
+var CodegenInfoProvider = blueprint.NewProvider[CodegenInfo]()
 
 // CollectDependencyAconfigFiles is used by some module types to provide finer dependency graphing than
 // we can do in ModuleBase.
@@ -56,12 +71,14 @@ func CollectDependencyAconfigFiles(ctx ModuleContext, mergedAconfigFiles *map[st
 	if *mergedAconfigFiles == nil {
 		*mergedAconfigFiles = make(map[string]Paths)
 	}
+	var aconfigDeclarations []string
 	ctx.VisitDirectDepsIgnoreBlueprint(func(module Module) {
 		if dep, _ := OtherModuleProvider(ctx, module, AconfigDeclarationsProviderKey); dep.IntermediateCacheOutputPath != nil {
 			(*mergedAconfigFiles)[dep.Container] = append((*mergedAconfigFiles)[dep.Container], dep.IntermediateCacheOutputPath)
 			return
 		}
 		if dep, ok := OtherModuleProvider(ctx, module, aconfigPropagatingProviderKey); ok {
+			aconfigDeclarations = append(aconfigDeclarations, dep.AconfigDeclarations...)
 			for container, v := range dep.AconfigFiles {
 				(*mergedAconfigFiles)[container] = append((*mergedAconfigFiles)[container], v...)
 			}
@@ -69,9 +86,13 @@ func CollectDependencyAconfigFiles(ctx ModuleContext, mergedAconfigFiles *map[st
 		// We process these last, so that they determine the final value, eliminating any duplicates that we picked up
 		// from UpdateAndroidBuildActions.
 		if dep, ok := OtherModuleProvider(ctx, module, AconfigTransitiveDeclarationsInfoProvider); ok {
+			aconfigDeclarations = append(aconfigDeclarations, dep.AconfigDeclarations...)
 			for container, v := range dep.AconfigFiles {
 				(*mergedAconfigFiles)[container] = append((*mergedAconfigFiles)[container], v...)
 			}
+		}
+		if dep, ok := OtherModuleProvider(ctx, module, CodegenInfoProvider); ok {
+			aconfigDeclarations = append(aconfigDeclarations, dep.AconfigDeclarations...)
 		}
 	})
 
@@ -80,7 +101,8 @@ func CollectDependencyAconfigFiles(ctx ModuleContext, mergedAconfigFiles *map[st
 	}
 
 	SetProvider(ctx, AconfigTransitiveDeclarationsInfoProvider, AconfigTransitiveDeclarationsInfo{
-		AconfigFiles: *mergedAconfigFiles,
+		AconfigDeclarations: aconfigDeclarations,
+		AconfigFiles:        *mergedAconfigFiles,
 	})
 }
 
@@ -89,19 +111,22 @@ func SetAconfigFileMkEntries(m *ModuleBase, entries *AndroidMkEntries, aconfigFi
 }
 
 type aconfigPropagatingDeclarationsInfo struct {
-	AconfigFiles map[string]Paths
+	AconfigDeclarations []string
+	AconfigFiles        map[string]Paths
 }
 
 var aconfigPropagatingProviderKey = blueprint.NewProvider[aconfigPropagatingDeclarationsInfo]()
 
 func aconfigUpdateAndroidBuildActions(ctx ModuleContext) {
 	mergedAconfigFiles := make(map[string]Paths)
+	var mergedAconfigDeclarations []string
 	ctx.VisitDirectDepsIgnoreBlueprint(func(module Module) {
 		// If any of our dependencies have aconfig declarations (directly or propagated), then merge those and provide them.
 		if dep, ok := OtherModuleProvider(ctx, module, AconfigDeclarationsProviderKey); ok {
 			mergedAconfigFiles[dep.Container] = append(mergedAconfigFiles[dep.Container], dep.IntermediateCacheOutputPath)
 		}
 		if dep, ok := OtherModuleProvider(ctx, module, aconfigPropagatingProviderKey); ok {
+			mergedAconfigDeclarations = append(mergedAconfigDeclarations, dep.AconfigDeclarations...)
 			for container, v := range dep.AconfigFiles {
 				mergedAconfigFiles[container] = append(mergedAconfigFiles[container], v...)
 			}
@@ -110,6 +135,9 @@ func aconfigUpdateAndroidBuildActions(ctx ModuleContext) {
 			for container, v := range dep.AconfigFiles {
 				mergedAconfigFiles[container] = append(mergedAconfigFiles[container], v...)
 			}
+		}
+		if dep, ok := OtherModuleProvider(ctx, module, CodegenInfoProvider); ok {
+			mergedAconfigDeclarations = append(mergedAconfigDeclarations, dep.AconfigDeclarations...)
 		}
 	})
 	// We only need to set the provider if we have aconfig files.
@@ -119,7 +147,8 @@ func aconfigUpdateAndroidBuildActions(ctx ModuleContext) {
 		}
 
 		SetProvider(ctx, aconfigPropagatingProviderKey, aconfigPropagatingDeclarationsInfo{
-			AconfigFiles: mergedAconfigFiles,
+			AconfigDeclarations: mergedAconfigDeclarations,
+			AconfigFiles:        mergedAconfigFiles,
 		})
 	}
 }
