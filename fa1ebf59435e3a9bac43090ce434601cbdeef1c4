@@ -16,6 +16,24 @@
       "message": "(not really a comment on _this_ change, which seems like a good idea to me, but... is this an argument for _not_ changing the dynamic linker? should we just hoist this up into the toolchain\u0027s defaults instead, when building with a larger page size?)",
       "revId": "fa1ebf59435e3a9bac43090ce434601cbdeef1c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "705aad28_a9a438c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2024-03-13T18:40:32Z",
+      "side": 1,
+      "message": "Hi enh, I think we couldn\u0027t do it by default. For the apps we would like them to fix the assumption once they upgrade. \n\nThe reason is the sparseness depends on how the files get created. In the data partition (RW) we couldn\u0027t be sure the exhaustive list of ways files are created/copied there. They could end up allocating the zero blocks which would incur the size increase.",
+      "parentUuid": "53b6ef0f_14e564a1",
+      "revId": "fa1ebf59435e3a9bac43090ce434601cbdeef1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
