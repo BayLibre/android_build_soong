@@ -210,3 +210,59 @@ func TestVendorProductVariantGenrule(t *testing.T) {
 		t.Errorf(`expected product variant, but does not exist in %v`, variants)
 	}
 }
+
+func TestMultilibGenruleOut(t *testing.T) {
+	bp := `
+				cc_genrule {
+					name: "gen",
+					cmd: "cp $(in) $(out)",
+					srcs: ["foo"],
+					multilib: {
+						lib32: {
+							out: [
+								"subdir/external-module-name32",
+							],
+						},
+						lib64: {
+							out: [
+								"subdir/external-module-name64",
+							],
+						},
+					},
+				}
+			`
+	config := android.TestArchConfig(t.TempDir(), nil, bp, nil)
+
+	ctx := testGenruleContext(config)
+
+	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
+	if errs == nil {
+		_, errs = ctx.PrepareBuildActions(config)
+	}
+	if errs != nil {
+		t.Fatal(errs)
+	}
+
+	gen_32bit := ctx.ModuleForTests("gen", "android_arm_armv7-a-neon").OutputFiles(t, "")
+
+	exportedIncludeDir_32bit := "out/soong/.intermediates/gen/android_arm_armv7-a-neon/gen"
+	android.AssertPathsRelativeToTopEquals(
+		t,
+		"files",
+		[]string{
+			exportedIncludeDir_32bit + "/subdir/external-module-name32",
+		},
+		gen_32bit,
+	)
+
+	gen_64bit := ctx.ModuleForTests("gen", "android_arm64_armv8-a").OutputFiles(t, "")
+	exportedIncludeDir_64bit := "out/soong/.intermediates/gen/android_arm64_armv8-a/gen"
+	android.AssertPathsRelativeToTopEquals(
+		t,
+		"files",
+		[]string{
+			exportedIncludeDir_64bit + "/subdir/external-module-name64",
+		},
+		gen_64bit,
+	)
+}
