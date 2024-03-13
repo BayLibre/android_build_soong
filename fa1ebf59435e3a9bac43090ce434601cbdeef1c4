@@ -34,6 +34,24 @@
       "parentUuid": "53b6ef0f_14e564a1",
       "revId": "fa1ebf59435e3a9bac43090ce434601cbdeef1c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0976d743_9ceb9bd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-03-13T20:22:53Z",
+      "side": 1,
+      "message": "\u003e In the data partition (RW) we couldn\u0027t be sure the exhaustive list of ways files are created/copied there.\n\nis that actually true? other than PackageManager, how are they getting onto the data partition?",
+      "parentUuid": "705aad28_a9a438c1",
+      "revId": "fa1ebf59435e3a9bac43090ce434601cbdeef1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
