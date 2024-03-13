@@ -107,6 +107,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a4da79_ba127d79",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-13T03:49:38Z",
+      "side": 1,
+      "message": "Resolved with aosp/3001320",
+      "parentUuid": "94c668fc_caacf67c",
+      "range": {
+        "startLine": 448,
+        "startChar": 17,
+        "endLine": 448,
+        "endChar": 92
+      },
+      "revId": "14ac90b857e302e7e502d519aa80ffc187e00bd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "809cc8af_7fa676a4",
@@ -120,6 +144,30 @@
       "writtenOn": "2024-03-13T00:35:44Z",
       "side": 1,
       "message": "nit: Rename to `validateAconfigDeclarations`",
+      "range": {
+        "startLine": 1121,
+        "startChar": 21,
+        "endLine": 1121,
+        "endChar": 39
+      },
+      "revId": "14ac90b857e302e7e502d519aa80ffc187e00bd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83aa3797_0e8bc325",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-13T03:49:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "809cc8af_7fa676a4",
       "range": {
         "startLine": 1121,
         "startChar": 21,
