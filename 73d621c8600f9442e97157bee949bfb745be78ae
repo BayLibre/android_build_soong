@@ -39,6 +39,23 @@
       "message": "but isn\u0027t the example wrong? the `# introduced\u003d35` seems incompatible with the existence of _both_ `llndk\u003d202404` and `llndk\u003d202505`, no?\n\ni thought \"llndk\" now just basically means \"these ones made it in one quarter earlier, and didn\u0027t then change before 35 actually shipped\". and any map where you\u0027re claiming _multiple different_ llndk versions is automatically wrong?",
       "revId": "73d621c8600f9442e97157bee949bfb745be78ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f13fb10_85ace0da",
+        "filename": "cc/symbolfile/test_symbolfile.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2024-03-13T18:14:24Z",
+      "side": 1,
+      "message": "Missing (and probably the most interesting?) test case: introduced\u003d34 symbols should be present for LL-NDK 202404.",
+      "revId": "73d621c8600f9442e97157bee949bfb745be78ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
