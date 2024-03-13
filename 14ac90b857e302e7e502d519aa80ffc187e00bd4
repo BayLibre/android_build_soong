@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94c668fc_caacf67c",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-13T00:47:08Z",
+      "side": 1,
+      "message": "I think that this could be an issue for all transitive dependencies, e.g.:\n```\njava_aconfig_library {\n  name: \"qux\",\n  ...\n}\njava_library {\n  name: \"quux\",\n  static_libs: [\n    \"qux\",\n  ],\n  ...\n}\njava_sdk_library {\n  name: \"foo\",\n  libs: [\n    \"quux\",\n  ],\n  ...\n}\n```",
+      "parentUuid": "9978b2ff_8d4d867f",
+      "range": {
+        "startLine": 448,
+        "startChar": 17,
+        "endLine": 448,
+        "endChar": 92
+      },
+      "revId": "14ac90b857e302e7e502d519aa80ffc187e00bd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "809cc8af_7fa676a4",
         "filename": "java/droidstubs.go",
         "patchSetId": 3
