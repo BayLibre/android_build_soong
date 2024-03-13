@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5742057c_739159aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-13T16:57:29Z",
+      "side": 1,
+      "message": "`srcs` makes perfect sense to me.\n\nI think I dont fully understand `libs` use case though. The metalava invocation of rdeps presumably does not contain the sources of `libs`. If so, do rdeps need to specify the aconfig_declarations of `libs`?",
+      "range": {
+        "startLine": 18,
+        "startChar": 26,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "09e0195323bd3cd8c8eec9fa901bb274f6c6fac1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
