@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c699bc2_9f1a4c9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-13T06:38:04Z",
+      "side": 1,
+      "message": "It was from https://android-review.git.corp.google.com/c/platform/build/soong/+/1492003/6..8/android/packaging.go#b58\n\n\u003e This is going to result in a rule with an arbitrary number of output files, which will then all be used as inputs to another rule. That seems like an unnecessary load on the build.ninja file an ninja.\n\nDoes the comment apply to this CL as well?",
+      "parentUuid": "2598fd8a_d8492610",
+      "revId": "527d9e326e209e41ba8bc385e7056705d0004b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e11b733_782daad0",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 2
