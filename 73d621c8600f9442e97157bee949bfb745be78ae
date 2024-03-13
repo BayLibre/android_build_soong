@@ -83,6 +83,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d80e5cae_b3d99e78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-03-13T21:25:43Z",
+      "side": 1,
+      "message": "but -- even if we\u0027re not on real api bumps per release by then -- wouldn\u0027t the 2025 llndk be \"everything in 35\"+\"stuff marked llndk in \u003cnext year\u0027s major api bump\u003e\"? with no need to retcon the 2024 llndk?",
+      "parentUuid": "775f7473_5a5f2c32",
+      "revId": "73d621c8600f9442e97157bee949bfb745be78ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f13fb10_85ace0da",
