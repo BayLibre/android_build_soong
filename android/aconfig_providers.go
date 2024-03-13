@@ -46,7 +46,8 @@ var AconfigDeclarationsProviderKey = blueprint.NewProvider[AconfigDeclarationsPr
 // This is used to collect the aconfig declarations info on the transitive closure,
 // the data is keyed on the container.
 type AconfigTransitiveDeclarationsInfo struct {
-	AconfigFiles map[string]Paths
+	AconfigDeclarations []string
+	AconfigFiles        map[string]Paths
 }
 
 var AconfigTransitiveDeclarationsInfoProvider = blueprint.NewProvider[AconfigTransitiveDeclarationsInfo]()
@@ -86,6 +87,7 @@ func CollectDependencyAconfigFiles(ctx ModuleContext, mergedAconfigFiles *map[st
 	if *mergedAconfigFiles == nil {
 		*mergedAconfigFiles = make(map[string]Paths)
 	}
+	var aconfigDeclarations []string
 	ctx.VisitDirectDepsIgnoreBlueprint(func(module Module) {
 		if dep, _ := OtherModuleProvider(ctx, module, AconfigDeclarationsProviderKey); dep.IntermediateCacheOutputPath != nil {
 			(*mergedAconfigFiles)[dep.Container] = append((*mergedAconfigFiles)[dep.Container], dep.IntermediateCacheOutputPath)
@@ -99,9 +101,13 @@ func CollectDependencyAconfigFiles(ctx ModuleContext, mergedAconfigFiles *map[st
 		// We process these last, so that they determine the final value, eliminating any duplicates that we picked up
 		// from UpdateAndroidBuildActions.
 		if dep, ok := OtherModuleProvider(ctx, module, AconfigTransitiveDeclarationsInfoProvider); ok {
+			aconfigDeclarations = append(aconfigDeclarations, dep.AconfigDeclarations...)
 			for container, v := range dep.AconfigFiles {
 				(*mergedAconfigFiles)[container] = append((*mergedAconfigFiles)[container], v...)
 			}
+		}
+		if dep, ok := OtherModuleProvider(ctx, module, CodegenInfoProvider); ok {
+			aconfigDeclarations = append(aconfigDeclarations, dep.AconfigDeclarations...)
 		}
 	})
 
@@ -110,7 +116,8 @@ func CollectDependencyAconfigFiles(ctx ModuleContext, mergedAconfigFiles *map[st
 	}
 
 	SetProvider(ctx, AconfigTransitiveDeclarationsInfoProvider, AconfigTransitiveDeclarationsInfo{
-		AconfigFiles: *mergedAconfigFiles,
+		AconfigDeclarations: aconfigDeclarations,
+		AconfigFiles:        *mergedAconfigFiles,
 	})
 }
 
@@ -149,6 +156,7 @@ func aconfigUpdateAndroidBuildActions(ctx ModuleContext) {
 	mergedAconfigFiles := make(map[string]Paths)
 	mergedModeInfos := make(map[string]ModeInfo)
 
+	var mergedAconfigDeclarations []string
 	ctx.VisitDirectDepsIgnoreBlueprint(func(module Module) {
 		if aconfig_dep, ok := OtherModuleProvider(ctx, module, CodegenInfoProvider); ok && len(aconfig_dep.ModeInfos) > 0 {
 			maps.Copy(mergedModeInfos, aconfig_dep.ModeInfos)
@@ -168,6 +176,9 @@ func aconfigUpdateAndroidBuildActions(ctx ModuleContext) {
 			for container, v := range dep.AconfigFiles {
 				mergedAconfigFiles[container] = append(mergedAconfigFiles[container], v...)
 			}
+		}
+		if dep, ok := OtherModuleProvider(ctx, module, CodegenInfoProvider); ok {
+			mergedAconfigDeclarations = append(mergedAconfigDeclarations, dep.AconfigDeclarations...)
 		}
 	})
 	// We only need to set the provider if we have aconfig files.

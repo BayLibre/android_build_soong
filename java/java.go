@@ -309,6 +309,10 @@ type JavaInfo struct {
 	// implementation jars. If the provider is set by java_sdk_library, the link type is "unknown"
 	// and selection between the stub jar vs implementation jar is deferred to SdkLibrary.sdkJars(...)
 	StubsLinkType StubsLinkType
+
+	// List of aconfig_declarations modules that are provided by the statically linked
+	// java_aconfig_library modules.
+	AconfigDeclarations []string
 }
 
 var JavaInfoProvider = blueprint.NewProvider[JavaInfo]()
@@ -544,6 +548,7 @@ type deps struct {
 	kotlinAnnotations       android.Paths
 	kotlinPlugins           android.Paths
 	aconfigProtoFiles       android.Paths
+	aconfigDeclarations     []string
 
 	disableTurbine bool
 }
