@@ -66,6 +66,9 @@ type DexProperties struct {
 		// If true, optimize for size by removing unused resources. Defaults to false.
 		Shrink_resources *bool
 
+		// If true, use optimized resource shrinking in R8. Defaults to false.
+		Optimized_shrink_resources *bool
+
 		// Flags to pass to proguard.
 		Proguard_flags []string
 
@@ -355,6 +358,9 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 		r8Flags = append(r8Flags, "--resource-input", d.resourcesInput.Path().String())
 		r8Deps = append(r8Deps, d.resourcesInput.Path())
 		r8Flags = append(r8Flags, "--resource-output", d.resourcesOutput.Path().String())
+		if Bool(opt.Optimized_shrink_resources) {
+			r8Flags = append(r8Flags, "--optimized-resource-shrinking")
+		}
 	}
 
 	return r8Flags, r8Deps

@@ -525,6 +525,7 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 			classLoaderContexts:            a.classLoaderContexts,
 			excludedLibs:                   a.usesLibraryProperties.Exclude_uses_libs,
 			enforceDefaultTargetSdkVersion: a.enforceDefaultTargetSdkVersion(),
+			forceNonFinalResourceIDs:       Bool(a.dexProperties.Optimize.Optimized_shrink_resources),
 			extraLinkFlags:                 aaptLinkFlags,
 			aconfigTextFiles:               aconfigTextFilePaths,
 		},
@@ -547,7 +548,9 @@ func (a *AndroidApp) proguardBuildActions(ctx android.ModuleContext) {
 	staticLibProguardFlagFiles = android.FirstUniquePaths(staticLibProguardFlagFiles)
 
 	a.Module.extraProguardFlagsFiles = append(a.Module.extraProguardFlagsFiles, staticLibProguardFlagFiles...)
-	a.Module.extraProguardFlagsFiles = append(a.Module.extraProguardFlagsFiles, a.proguardOptionsFile)
+	if !Bool(a.dexProperties.Optimize.Optimized_shrink_resources) {
+		a.Module.extraProguardFlagsFiles = append(a.Module.extraProguardFlagsFiles, a.proguardOptionsFile)
+	}
 }
 
 func (a *AndroidApp) installPath(ctx android.ModuleContext) android.InstallPath {
