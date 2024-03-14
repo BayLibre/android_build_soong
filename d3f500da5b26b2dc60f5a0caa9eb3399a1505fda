@@ -33,6 +33,24 @@
       "message": "Can you put this in a topic with the change to the tool? Otherwise it could cause a lot of build-time harm, as a missing output will rebuild on every incremental build. (Or in the other direction, incorrect builds)",
       "revId": "d3f500da5b26b2dc60f5a0caa9eb3399a1505fda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "877e5706_7060f1fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-03-14T15:49:36Z",
+      "side": 1,
+      "message": "Done, though not sure how that works with changes that were already submitted.",
+      "parentUuid": "69e1cd74_4f315e5c",
+      "revId": "d3f500da5b26b2dc60f5a0caa9eb3399a1505fda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
