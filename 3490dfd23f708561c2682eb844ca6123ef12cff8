@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fb6ae2e_6944d73d",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-14T21:15:35Z",
+      "side": 1,
+      "message": "Unrelated to this change and maybe I should have asked while reviewing https://r.android.com/2999198, but why do we need two different `init()` here? Can\u0027t we call `registerApexPrebuiltInfoComponents(...` right after L28?\n\nAlso, do you mind sharing why we need a different singleton for this? Can\u0027t we utilize the preexisting `\"apex_depsinfo_singleton\"`?",
+      "revId": "3490dfd23f708561c2682eb844ca6123ef12cff8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
