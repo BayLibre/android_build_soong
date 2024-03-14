@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f3e9082_70005bad",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-03-14T20:29:50Z",
+      "side": 1,
+      "message": "Does this have any runtime impact? Or will R8 make them effectively final in its pass?",
+      "range": {
+        "startLine": 622,
+        "startChar": 26,
+        "endLine": 622,
+        "endChar": 37
+      },
+      "revId": "5d33188852e39e989da1a9413d7a3168717cb657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

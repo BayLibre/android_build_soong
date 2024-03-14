@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b9be0dd_7f6ef59f",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-03-14T20:29:50Z",
+      "side": 1,
+      "message": "That seems reasonable. Though now I\u0027m wondering about the case where R8 is completely disabled, will this be a no-op? Or will there be some side effects (non-final fields)? That is, the case where `effectiveOptimizeEnabled` is false: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/dex.go;drc\u003d349ae8dd6bb70a53e69548f61a967791e46a3f06;l\u003d105",
+      "parentUuid": "64b88b3f_2588ec6a",
+      "range": {
+        "startLine": 528,
+        "startChar": 65,
+        "endLine": 528,
+        "endChar": 91
+      },
+      "revId": "1f116fd7a4f0b72db34ceda28caf80fc97258162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9eef6242_1a019ebc",
         "filename": "java/app.go",
         "patchSetId": 1
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "I took a different approach and make resource shrinking enabled if either is on, WDYT?",
       "parentUuid": "22e2dbbb_fc97cb68",
+      "range": {
+        "startLine": 69,
+        "startChar": 28,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "1f116fd7a4f0b72db34ceda28caf80fc97258162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a25e7d42_11672e85",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-03-14T20:29:50Z",
+      "side": 1,
+      "message": "Looks good, I would just leave a comment here, something like like:\n\n// If true, use optimized resource shrinking in R8, overriding the `Shrink_resources` setting. Defaults to false.",
+      "parentUuid": "c7030278_828bf5e7",
       "range": {
         "startLine": 69,
         "startChar": 28,
