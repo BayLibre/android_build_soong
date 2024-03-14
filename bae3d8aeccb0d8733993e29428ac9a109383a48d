@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a31d86_5f317db7",
+        "filename": "cc/coverage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-03-14T17:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad8c7c04_135c4077",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 25
+      },
+      "revId": "bae3d8aeccb0d8733993e29428ac9a109383a48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7a94af4_b4329e15",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-06T19:32:12Z",
       "side": 1,
       "message": "`coverageIgnoreList.String()`, also wrap long line",
+      "range": {
+        "startLine": 129,
+        "startChar": 106,
+        "endLine": 129,
+        "endChar": 124
+      },
+      "revId": "bae3d8aeccb0d8733993e29428ac9a109383a48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94aaa792_0fa23c1a",
+        "filename": "cc/coverage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-03-14T17:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7a94af4_b4329e15",
       "range": {
         "startLine": 129,
         "startChar": 106,
