@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c59fd95f_f17fbe7b",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-14T09:17:08Z",
+      "side": 1,
+      "message": "I am just afraid we may break the shell command line length limit when there are many files. @jeongik@google.com would you run your CL with this change to see if this CL can cope with many files?",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 54
+      },
+      "revId": "0609fda7d337be620d20d5120b1ed23bccc66152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6d4ae50_a0184d44",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-14T09:17:08Z",
+      "side": 1,
+      "message": "here as well",
+      "range": {
+        "startLine": 245,
+        "startChar": 15,
+        "endLine": 245,
+        "endChar": 29
+      },
+      "revId": "0609fda7d337be620d20d5120b1ed23bccc66152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
