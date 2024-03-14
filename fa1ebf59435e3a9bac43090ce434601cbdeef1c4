@@ -70,6 +70,24 @@
       "parentUuid": "0976d743_9ceb9bd8",
       "revId": "fa1ebf59435e3a9bac43090ce434601cbdeef1c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d73dc28_90cb710d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-03-14T14:59:26Z",
+      "side": 1,
+      "message": "no, you need to `adb install` (which talks to package manager) rather than `adb push` to install an app.",
+      "parentUuid": "2be38d8f_f835aec1",
+      "revId": "fa1ebf59435e3a9bac43090ce434601cbdeef1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
