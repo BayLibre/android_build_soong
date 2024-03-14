@@ -87,6 +87,24 @@
       "parentUuid": "9e7b3cd6_96eeb2f1",
       "revId": "d3f500da5b26b2dc60f5a0caa9eb3399a1505fda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d9544c_3f40ed51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2024-03-14T16:07:59Z",
+      "side": 1,
+      "message": "Yeah, we never turned on strict output file requirements in ninja, as it requires a couple of other features in order to not have false positives/negatives.\n\nNormally it would be caught as a missing input file, but I suspect the rust rules aren\u0027t very strict about it. RBE would also catch it, but that hasn\u0027t been enabled for rust yet either.",
+      "parentUuid": "3739ff3c_79abac67",
+      "revId": "d3f500da5b26b2dc60f5a0caa9eb3399a1505fda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
