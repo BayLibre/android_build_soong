@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64b88b3f_2588ec6a",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2024-03-14T12:03:38Z",
+      "side": 1,
+      "message": "that is a good point, I have changed the code to instead call a method to check if resource shrinking is on which it is if either of the flags is set to true. This will give us:\nshrink_resources \u003d false + optimized_shrink_resources \u003d false \u003d off\nshrink_resources \u003d true + optimized_shrink_resources \u003d false \u003d normal resource shrinking\nshrink_resources \u003d false + optimized_shrink_resources \u003d true \u003d optimized resource shrinking\nshrink_resources \u003d true + optimized_shrink_resources \u003d true \u003d optimized resource shrinking\nwhich is what I think we want as defaults here, let me know if this is not the normal way to do this in soong?",
+      "parentUuid": "0bba9794_569e9206",
+      "range": {
+        "startLine": 528,
+        "startChar": 65,
+        "endLine": 528,
+        "endChar": 91
+      },
+      "revId": "1f116fd7a4f0b72db34ceda28caf80fc97258162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9eef6242_1a019ebc",
         "filename": "java/app.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-13T16:10:24Z",
       "side": 1,
       "message": "This probably deserves a comment as to why this can be excluded. Also, what about the case where `Shrink_resources` is false?",
+      "range": {
+        "startLine": 551,
+        "startChar": 35,
+        "endLine": 551,
+        "endChar": 61
+      },
+      "revId": "1f116fd7a4f0b72db34ceda28caf80fc97258162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e002b996_02ae890a",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2024-03-14T12:03:38Z",
+      "side": 1,
+      "message": "added comment, for shrink resources I changed it so that this is on if we have Optimized_resource_shrinking on (as described in first comment)",
+      "parentUuid": "9eef6242_1a019ebc",
       "range": {
         "startLine": 551,
         "startChar": 35,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7030278_828bf5e7",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2024-03-14T12:03:38Z",
+      "side": 1,
+      "message": "I took a different approach and make resource shrinking enabled if either is on, WDYT?",
+      "parentUuid": "22e2dbbb_fc97cb68",
+      "range": {
+        "startLine": 69,
+        "startChar": 28,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "1f116fd7a4f0b72db34ceda28caf80fc97258162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f526e67d_e6142299",
         "filename": "java/dex.go",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2024-03-13T16:10:24Z",
       "side": 1,
       "message": "Add a comment here that `resourcesInput` is empty when `Shrink_resources` isn\u0027t enabled.",
+      "range": {
+        "startLine": 357,
+        "startChar": 6,
+        "endLine": 357,
+        "endChar": 20
+      },
+      "revId": "1f116fd7a4f0b72db34ceda28caf80fc97258162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2f1923f_f761c354",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2024-03-14T12:03:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f526e67d_e6142299",
       "range": {
         "startLine": 357,
         "startChar": 6,
