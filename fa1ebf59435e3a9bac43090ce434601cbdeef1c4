@@ -52,6 +52,24 @@
       "parentUuid": "705aad28_a9a438c1",
       "revId": "fa1ebf59435e3a9bac43090ce434601cbdeef1c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be38d8f_f835aec1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2024-03-14T04:16:51Z",
+      "side": 1,
+      "message": "\u003e is that actually true? other than PackageManager, how are they getting onto the data partition?\n\nI assumed that were many ways but I guess we don\u0027t concern with the manual push/copy to the device. \n\nIf the package manager is the only one we are concerned with, then I agree with what you suggested. There is also ongoing work to make sure that package manager punches holes in the ELF padding (either in the APK for uncompressed, or once extracted at the destination for compressed)",
+      "parentUuid": "0976d743_9ceb9bd8",
+      "revId": "fa1ebf59435e3a9bac43090ce434601cbdeef1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
