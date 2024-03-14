@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d74534_ff46792d",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2024-03-14T09:27:55Z",
+      "side": 1,
+      "message": "I think as long as extraFiles aren\u0027t too many, it would be okay.",
+      "parentUuid": "c59fd95f_f17fbe7b",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 54
+      },
+      "revId": "0609fda7d337be620d20d5120b1ed23bccc66152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6d4ae50_a0184d44",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-14T09:17:08Z",
       "side": 1,
       "message": "here as well",
+      "range": {
+        "startLine": 245,
+        "startChar": 15,
+        "endLine": 245,
+        "endChar": 29
+      },
+      "revId": "0609fda7d337be620d20d5120b1ed23bccc66152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5459f871_968c5db0",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2024-03-14T09:27:55Z",
+      "side": 1,
+      "message": "I modified `CopySpecsToDir` to support very long cmds in aosp/2887586, so it is okay, and I tested with my WIP CL. Even in the previous logic, CopyDepsToZip calls CopySpecsToDir internally, so both are okay.",
+      "parentUuid": "c6d4ae50_a0184d44",
       "range": {
         "startLine": 245,
         "startChar": 15,
