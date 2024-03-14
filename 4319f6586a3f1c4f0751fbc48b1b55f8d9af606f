@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ea4560_8c857275",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-03-14T16:58:44Z",
+      "side": 1,
+      "message": "Hi Cole, could I please get a quick review on this? Normally I\u0027d send to Colin, but he\u0027s OOO and this fix is needed to get the xref updated again - it\u0027s been getting stale since the move to JDK 21.",
+      "revId": "4319f6586a3f1c4f0751fbc48b1b55f8d9af606f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
