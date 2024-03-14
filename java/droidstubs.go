@@ -109,8 +109,8 @@ type Droidstubs struct {
 	// Single aconfig "cache file" merged from this module and all dependencies.
 	mergedAconfigFiles map[string]android.Paths
 
-	exportableApiFile        android.WritablePath
-	exportableRemovedApiFile android.WritablePath
+	exportableApiFile        android.Path
+	exportableRemovedApiFile android.Path
 }
 
 type DroidstubsProperties struct {
@@ -368,7 +368,7 @@ func (d *Droidstubs) ApiFilePath(stubsType StubsType) (ret android.Path, err err
 		ret, err = nil, fmt.Errorf("api file path not supported for the stub type %s", stubsType.String())
 	}
 	if ret == nil && err == nil {
-		err = fmt.Errorf("stubs srcjar is null for the stub type %s", stubsType.String())
+		err = fmt.Errorf("api file is null for the stub type %s", stubsType.String())
 	}
 	return ret, err
 }
@@ -490,7 +490,12 @@ func (d *Droidstubs) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuil
 		}
 	} else if sourceApiFile := proptools.String(d.properties.Check_api.Current.Api_file); sourceApiFile != "" {
 		// If check api is disabled then make the source file available for export.
-		d.apiFile = android.PathForModuleSrc(ctx, sourceApiFile)
+		sourceApiFilePath := android.PathForModuleSrc(ctx, sourceApiFile)
+		if stubsType == Everything {
+			d.apiFile = sourceApiFilePath
+		} else if stubsType == Exportable {
+			d.exportableApiFile = sourceApiFilePath
+		}
 	}
 
 	if checkApi || String(d.properties.Removed_api_filename) != "" {
@@ -505,7 +510,12 @@ func (d *Droidstubs) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuil
 		}
 	} else if sourceRemovedApiFile := proptools.String(d.properties.Check_api.Current.Removed_api_file); sourceRemovedApiFile != "" {
 		// If check api is disabled then make the source removed api file available for export.
-		d.removedApiFile = android.PathForModuleSrc(ctx, sourceRemovedApiFile)
+		sourceRemovedApiFilePath := android.PathForModuleSrc(ctx, sourceRemovedApiFile)
+		if stubsType == Everything {
+			d.removedApiFile = sourceRemovedApiFilePath
+		} else if stubsType == Exportable {
+			d.exportableRemovedApiFile = sourceRemovedApiFilePath
+		}
 	}
 
 	if stubsDir.Valid() {
