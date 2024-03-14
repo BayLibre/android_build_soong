@@ -1328,6 +1328,7 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		OutputFile:              a.OutputFile(),
 		TestConfig:              a.testConfig,
 		HostRequiredModuleNames: a.HostRequiredModuleNames(),
+		TestSuites:              a.testProperties.Test_suites,
 	})
 }
 
