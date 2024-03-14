@@ -16,6 +16,24 @@
       "message": "Unrelated to this change and maybe I should have asked while reviewing https://r.android.com/2999198, but why do we need two different `init()` here? Can\u0027t we call `registerApexPrebuiltInfoComponents(...` right after L28?\n\nAlso, do you mind sharing why we need a different singleton for this? Can\u0027t we utilize the preexisting `\"apex_depsinfo_singleton\"`?",
       "revId": "3490dfd23f708561c2682eb844ca6123ef12cff8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f7991d5_ebb56281",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-14T22:05:17Z",
+      "side": 1,
+      "message": "\u003e Unrelated to this change and maybe I should have asked while reviewing https://r.android.com/2999198, but why do we need two different init() here? Can\u0027t we call registerApexPrebuiltInfoComponents(... right after L28?\n\nI personally tend to agree with some of the opinions expressed in\nhttps://stackoverflow.com/questions/45278540/whats-the-purpose-of-golang-allowing-multiple-init-in-one-package about using multiple init if it allows related code to be colocated.\n\n\u003e Also, do you mind sharing why we need a different singleton for this? Can\u0027t we utilize the preexisting \"apex_depsinfo_singleton\"\n\nI think it allows us to keep the scope of each singleton limited. Unlike mutators where it might make sense to squash functionality for perf gains, I think creating new parallel singletons does not incur perf penalties.",
+      "parentUuid": "1fb6ae2e_6944d73d",
+      "revId": "3490dfd23f708561c2682eb844ca6123ef12cff8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
