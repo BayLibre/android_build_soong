@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7448523_f1d851aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-03-14T18:04:41Z",
+      "side": 1,
+      "message": "WIP https://b.corp.google.com/issues/302112430#comment14 to relax apksigner requirements.",
+      "revId": "92b0ac18270b496df40d0baca124c48c51973cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
