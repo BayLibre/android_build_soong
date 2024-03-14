@@ -70,6 +70,30 @@
       },
       "revId": "9415bc4610394479907ab78d93b39105c0ee464d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e6061b3_96494040",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-14T20:55:30Z",
+      "side": 1,
+      "message": "Regardless of the validation action, we still need the rule to generate the exportable api file even if it is not within the critical path of a build target, as failing to do so leads to a missing build rule error or a NPE. Apart from the validation action, there are [some modules](https://cs.android.com/search?q\u003d%22%7B.exportable%22%20f:.bp) that depend on the exportable api file \\ removed api file, which will fail to build when `WITHOUT_CHECK_API\u003dtrue`.\n\n\u003e we should atleast have a mechanism that raises an exception for sdk builds if `WITHOUT_CHECK_API` is true.\n\nAgreed. Created https://r.android.com/3003853 to address this.",
+      "parentUuid": "7e6aaf23_eec22809",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 498,
+        "endChar": 3
+      },
+      "revId": "9415bc4610394479907ab78d93b39105c0ee464d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
