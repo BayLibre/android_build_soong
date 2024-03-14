@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d0bdc3_12dd33ce",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-14T18:28:02Z",
+      "side": 1,
+      "message": "Would this mean that exportable and everything use the same file when checkapi is turned off? Will this have an inadvertent side effect of exporting unfinalized apis when `WITHOUT_CHECK_API` is true?",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 498,
+        "endChar": 3
+      },
+      "revId": "9415bc4610394479907ab78d93b39105c0ee464d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
