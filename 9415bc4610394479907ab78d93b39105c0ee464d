@@ -46,6 +46,30 @@
       },
       "revId": "9415bc4610394479907ab78d93b39105c0ee464d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e6aaf23_eec22809",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-14T19:01:41Z",
+      "side": 1,
+      "message": "\u003e as you can see, the logic of \"copying the source api file\" has existed pre-trunk stable\n\nimo, this is a \"clever\" trick to make checkapi pass by comparing a file to itself. imo, this does not fully map to a trunk stable world because we have a single checked-in file, but multiple flavors of stubs.\n\nCan we instead selectively add the validation action? i.e. skip the validation action [here](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/df9a212001e98d5251798d67db454cea8447d878:java/java.go;l\u003d2170;bpv\u003d1;bpt\u003d0;drc\u003d5d701272e44e63504b4c9e106f33d62361b35705) when `WITHOUT_CHECK_API` is true\n\nIf you prefer going ahead with the current implementation of this CL, then I think we should atleast have a mechanism that raises an exception for sdk builds if `WITHOUT_CHECK_API` is true",
+      "parentUuid": "df48407c_b0056bc8",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 498,
+        "endChar": 3
+      },
+      "revId": "9415bc4610394479907ab78d93b39105c0ee464d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
