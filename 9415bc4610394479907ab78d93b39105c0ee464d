@@ -22,6 +22,30 @@
       },
       "revId": "9415bc4610394479907ab78d93b39105c0ee464d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df48407c_b0056bc8",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-14T18:35:23Z",
+      "side": 1,
+      "message": "`WITHOUT_CHECK_API` environment variable is never used for api finalization or sdk builds, or for the platform build within Google (as you can see, the logic of \"copying the source api file\" has existed pre-trunk stable). The purpose of running `WITHOUT_CHECK_API` (for vendors) is mainly to improve the build performance. However, if we generate the \"exportable\" api file via metalava, metalava would have to run and diminishes the purpose of setting `WITHOUT_CHECK_API`.",
+      "parentUuid": "78d0bdc3_12dd33ce",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 498,
+        "endChar": 3
+      },
+      "revId": "9415bc4610394479907ab78d93b39105c0ee464d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
