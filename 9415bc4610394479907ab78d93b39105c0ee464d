@@ -94,6 +94,30 @@
       },
       "revId": "9415bc4610394479907ab78d93b39105c0ee464d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adc28010_98a5e54c",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-14T23:54:23Z",
+      "side": 1,
+      "message": "\u003e Regardless of the validation action, we still need the rule to generate the exportable api file even if it is not within the critical path of a build target, as failing to do so leads to a missing build rule error or a NPE.\n\nDo partners need it for soong analysis or for ninja execution? Do partners actually _build_ the soong modules linked in the previous comment? If they do, then Soong analysis will pass, but the actual results will be incorrect because the modules will be built using the checked-in api file.",
+      "parentUuid": "7e6061b3_96494040",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 498,
+        "endChar": 3
+      },
+      "revId": "9415bc4610394479907ab78d93b39105c0ee464d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
