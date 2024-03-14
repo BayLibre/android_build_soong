@@ -16,6 +16,23 @@
       "message": "Ping, can you take a look at this please?",
       "revId": "d3f500da5b26b2dc60f5a0caa9eb3399a1505fda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69e1cd74_4f315e5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2024-03-14T15:38:08Z",
+      "side": 1,
+      "message": "Can you put this in a topic with the change to the tool? Otherwise it could cause a lot of build-time harm, as a missing output will rebuild on every incremental build. (Or in the other direction, incorrect builds)",
+      "revId": "d3f500da5b26b2dc60f5a0caa9eb3399a1505fda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
