@@ -1425,6 +1425,12 @@ func (j *TestHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	j.Test.generateAndroidBuildActionsWithConfig(ctx, configs)
 	android.SetProvider(ctx, testing.TestModuleProviderKey, testing.TestModuleProviderData{})
+	android.SetProvider(ctx, tradefed.BaseTestProviderKey, tradefed.BaseTestProviderData{
+		InstalledFiles:          j.data,
+		OutputFile:              j.outputFile,
+		TestConfig:              j.testConfig,
+		HostRequiredModuleNames: j.RequiredModuleNames(),
+	})
 }
 
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {

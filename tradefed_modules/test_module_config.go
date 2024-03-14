@@ -5,6 +5,7 @@ import (
 	"android/soong/tradefed"
 	"encoding/json"
 	"fmt"
+	"io"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -17,6 +18,7 @@ func init() {
 // Register the license_kind module type.
 func RegisterTestModuleConfigBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("test_module_config", TestModuleConfigFactory)
+	ctx.RegisterModuleType("test_module_config_host", TestModuleConfigHostFactory)
 }
 
 type testModuleConfigModule struct {
@@ -30,6 +32,12 @@ type testModuleConfigModule struct {
 	testConfig android.OutputPath
 	manifest   android.InstallPath
 	provider   tradefed.BaseTestProviderData
+}
+
+// Host is mostly the same as non-host, just some diffs for AddDependency and
+// AndroidMkEntries, but the properties are the same.
+type testModuleConfigHostModule struct {
+	testModuleConfigModule
 }
 
 // Properties to list in Android.bp for this module.
@@ -155,6 +163,7 @@ func (m *testModuleConfigModule) GenerateAndroidBuildActions(ctx android.ModuleC
 	})
 
 	// 1) A manifest file listing the base.
+	// TODO(ron): add testcases back in? remove false flag from IS_TESTCASE or something?
 	installDir := android.PathForModuleInstall(ctx, ctx.ModuleName())
 	out := android.PathForModuleOut(ctx, "test_module_config.manifest")
 	android.WriteFileRule(ctx, out, fmt.Sprintf("{%q: %q}", "base", *m.tradefedProperties.Base))
@@ -181,6 +190,15 @@ func TestModuleConfigFactory() android.Module {
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 
+	return module
+}
+
+func TestModuleConfigHostFactory() android.Module {
+	module := &testModuleConfigHostModule{}
+
+	module.AddProperties(&module.tradefedProperties)
+	android.InitAndroidMultiTargetsArchModule(module, android.HostSupported, android.MultilibCommon)
+	android.InitDefaultableModule(module)
 	return module
 }
 
@@ -217,3 +235,137 @@ func (m *testModuleConfigModule) AndroidMkEntries() []android.AndroidMkEntries {
 	})
 	return entriesList
 }
+
+func (m *testModuleConfigHostModule) InstallInTestcases() bool {
+	return false
+}
+
+func (m *testModuleConfigHostModule) DepsMutator(ctx android.BottomUpMutatorContext) {
+	ctx.AddFarVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(), testModuleConfigTag, *m.Base)
+}
+
+func (m *testModuleConfigHostModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+
+	visited := false
+	ctx.VisitDirectDepsWithTag(testModuleConfigTag, func(dep android.Module) {
+		if provider, ok := android.OtherModuleProvider(ctx, dep, tradefed.BaseTestProviderKey); ok {
+			m.base = dep
+			m.provider = provider
+			visited = true
+		} else {
+			ctx.ModuleErrorf("The base module '%s' does not provide test BaseTestProviderData.  Only 'java_test_host' modules are supported.", dep.Name())
+			return
+		}
+	})
+
+	if !visited {
+		ctx.ModuleErrorf("The base module '%s' does not provide test BaseTestProviderData.  Only 'java_test_host' modules are supported.", *m.Base)
+		return
+
+	}
+
+	// a) out/host/linux-x86/testcases/derived-module/derived-module.config
+	// b) out/host/linux-x86/testcases/derived-module/base.jar
+	// c) out/host/linux-x86/framework/base.jar  [** multi ** ]
+	//      ctx.InstallFile works for this.
+	//
+
+	// 1) A manifest file listing the base, write text to a tiny file.
+	installDir := android.PathForModuleInstall(ctx, ctx.ModuleName())
+
+	manifest := android.PathForModuleOut(ctx, "test_module_config.manifest")
+	android.WriteFileRule(ctx, manifest, fmt.Sprintf("{%q: %q}", "base", *m.tradefedProperties.Base))
+	// TODO(ron): bring back?
+	ctx.InstallFile(installDir, manifest.Base(), manifest)
+
+	// 2) Module.config / AndroidTest.xml
+	// Note, there is still a "test-tag" element with base's module name, but
+	// Tradefed team says its ignored anyway.
+	m.testConfig = m.fixTestConfig(ctx, m.provider.TestConfig)
+
+	// build/soong/android/androidmk.go has this comment:
+	//    Assume the primary install file is last
+	// so we need to Install our file last.
+
+	fmt.Printf("BASE: outfile: %s\n", m.provider.OutputFile)
+	// But the installDir should be:
+	//   		installDir = android.PathForModuleInstall(ctx, "framework")
+	// We don't want two rules installing the jar, rename again?
+	// TODO(ron): not needed.
+	// ctx.InstallFile(installDir, m.provider.OutputFile.Base()+"-derived_copy", m.provider.OutputFile)
+	// ctx.InstallAbsoluteSymlink(installDir, m.provider.OutputFile.Base(), m.provider.OutputFile.String())
+
+	// 3) Write ARCH/Module.apk in testcases.
+	// Handled by soong_app_prebuilt and OutputFile in entries.
+	// Nothing to do here.
+
+	// 4) Copy base's data files.
+	// Handled by soong_app_prebuilt and LOCAL_COMPATIBILITY_SUPPORT_FILES.
+	// Nothing to do here.
+}
+
+var _ android.AndroidMkEntriesProvider = (*testModuleConfigHostModule)(nil)
+
+// Things to fix:
+//  * SOONG_INSTALLED_MODULE is the config, should be out/host/linux-x86/framework/CtsAppSecurityHostTestCases.jar
+//  * INSTALL_PAIRS?
+/*
+ % grep -B2 -A22 'LOCAL_MODULE := CtsAppSecurityHostTestCases' ~/aosp-main-with-phones/out/soong/Android-aosp_shiba.mk| head -24 > local.mk.cash
+ % grep -B2 -A22 'LOCAL_MODULE := CtsAppSecurityHostTestCases_' ~/aosp-main-with-phones/out/soong/Android-aosp_shiba.mk| head -24 > local.mk.cash.pre
+*/
+
+func (m *testModuleConfigHostModule) AndroidMkEntries() []android.AndroidMkEntries {
+	// We rely on base writing LOCAL_COMPATIBILITY_SUPPORT_FILES for its data files
+	entriesList := m.base.(android.AndroidMkEntriesProvider).AndroidMkEntries()
+	entries := &entriesList[0]
+	// entries.OutputFile = android.OptionalPathForPath(m.provider.OutputFile)
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+		entries.SetString("LOCAL_MODULE", m.Name()) //  out module name, not base's
+
+		// Out update config file with extra options.
+		entries.SetPath("LOCAL_FULL_TEST_CONFIG", m.testConfig)
+		entries.SetString("LOCAL_MODULE_TAGS", "tests")
+		// Required for atest to run additional tradefed testtypes
+		entries.AddStrings("LOCAL_REQUIRED_MODULES", m.provider.HostRequiredModuleNames...)
+
+		// Don't append to base's test-suites, only use the ones we define, so clear it before
+		// appending to it.
+		entries.SetString("LOCAL_COMPATIBILITY_SUITE", "")
+		if len(m.tradefedProperties.Test_suites) > 0 {
+			entries.AddCompatibilityTestSuites(m.tradefedProperties.Test_suites...)
+		} else {
+			entries.AddCompatibilityTestSuites("null-suite")
+		}
+	})
+
+	// The "base" jar is written to out/host/ARCH/framework dir.
+	// All tests seems to share that directory in addition to writing to testcases.
+	// If our module (derived), depends on base, then our config file depend on base.jar
+	// We don't really want to make an extra copy to derived.jar and we can't use an install
+	// rule to ensure base.jar gets written to the framework dir, because then there would
+	// be two rules creating that file.  Instead we just add a dependency on the target.
+	entries.ExtraFooters = []android.AndroidMkExtraFootersFunc{
+		func(w io.Writer, name, prefix, moduleDir string) {
+			baseDep := *m.tradefedProperties.Base
+			fmt.Fprintln(w, m.Name()+":", baseDep)
+		},
+	}
+
+	return entriesList
+}
+
+func (m *testModuleConfigHostModule) MakeVars(ctx android.MakeVarsContext) {
+	neededBaseJar := m.provider.OutputFile
+	fmt.Printf("GOAL: %s - %s\n", m.Name(), neededBaseJar)
+	// ctx.DistForGoal(m.Name()+"-host", neededBaseJar+"-host")
+	ctx.DistForGoal(m.Name(), neededBaseJar)
+	// "all_teams", this.outputPath)
+}
+
+// out/host/linux-x86/framework
+// vs out/host/linux-x86/testcases/framework
+
+/*
+   atest --collect-tests-only 'android.appsecurity.cts.EphemeralTest'
+   atest -v --collect-tests-only 'android.appsecurity.cts.EphemeralTest#testEphemeralStartExposed01'
+*/
