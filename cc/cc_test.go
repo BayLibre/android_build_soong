@@ -42,6 +42,7 @@ var prepareForCcTest = android.GroupFixturePreparers(
 	PrepareForTestWithCcIncludeVndk,
 	android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 		variables.VendorApiLevel = StringPtr("202404")
+		variables.VendorLlndkVersioningHeader = StringPtr("android/llndk-versioning.h")
 		variables.DeviceVndkVersion = StringPtr("current")
 		variables.KeepVndk = BoolPtr(true)
 		variables.Platform_vndk_version = StringPtr("29")
@@ -2131,12 +2132,14 @@ func TestEnforceProductVndkVersion(t *testing.T) {
 	ensureStringContains(t, vendor_cflags, "-D__ANDROID_VENDOR__")
 	ensureStringNotContains(t, vendor_cflags, "-D__ANDROID_PRODUCT__")
 	ensureStringContains(t, vendor_cflags, "-D__ANDROID_VENDOR_API__=202404")
+	ensureStringContains(t, vendor_cflags, "-include android/llndk-versioning.h")
 
 	product_cflags := product_static.Rule("cc").Args["cFlags"]
 	ensureStringContains(t, product_cflags, "-D__ANDROID_VNDK__")
 	ensureStringContains(t, product_cflags, "-D__ANDROID_PRODUCT__")
 	ensureStringNotContains(t, product_cflags, "-D__ANDROID_VENDOR__")
 	ensureStringNotContains(t, product_cflags, "-D__ANDROID_VENDOR_API__=202404")
+	ensureStringNotContains(t, product_cflags, "-include android/llndk-versioning.h")
 }
 
 func TestEnforceProductVndkVersionErrors(t *testing.T) {
