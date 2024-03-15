@@ -138,6 +138,9 @@ func makeToListExpression(ms *mkparser.MakeString, file *bpFile) (bpparser.Expre
 			} else {
 				name, err := extractVariableName(f.Variables[0].Name, file)
 				if err != nil {
+					if len(ret) == 2 && ret[0] == "ERROR" {
+						err = fmt.Errorf(ret[1])
+					}
 					return nil, err
 				}
 				if name == "TOP" {
