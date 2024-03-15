@@ -16,6 +16,29 @@
       "message": "Following up on the email thread that was started to assess the impact this would have on build times.",
       "revId": "ce23b9ba161c807737e72e04d3914e22f68a4268",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f72b6c_6e7e8ac8",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-03-15T23:15:14Z",
+      "side": 1,
+      "message": "It looks this obsoletes the \"false\" value of property \"Thin\" on line 49, can you review the existing use of property \"thin\" in Android.bp files and migrate them to the new property.",
+      "range": {
+        "startLine": 117,
+        "startChar": 25,
+        "endLine": 117,
+        "endChar": 31
+      },
+      "revId": "ce23b9ba161c807737e72e04d3914e22f68a4268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
