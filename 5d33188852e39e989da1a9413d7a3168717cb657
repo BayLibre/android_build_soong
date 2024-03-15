@@ -22,6 +22,30 @@
       },
       "revId": "5d33188852e39e989da1a9413d7a3168717cb657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda3dded_333dee3a",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2024-03-15T06:09:59Z",
+      "side": 1,
+      "message": "these are only ever written in clinit, so they are effectively final and R8 will inline them - we end up with just the styleable arrays in the R class",
+      "parentUuid": "0f3e9082_70005bad",
+      "range": {
+        "startLine": 622,
+        "startChar": 26,
+        "endLine": 622,
+        "endChar": 37
+      },
+      "revId": "5d33188852e39e989da1a9413d7a3168717cb657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
