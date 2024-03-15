@@ -134,10 +134,17 @@ func makeToListExpression(ms *mkparser.MakeString, file *bpFile) (bpparser.Expre
 	for _, f := range fields {
 		if len(f.Variables) == 1 && f.Strings[0] == "" && f.Strings[1] == "" {
 			if ret, ok := f.Variables[0].EvalFunction(file.scope); ok {
+				fmt.Println("After EvalFunction", ret)
 				listValue.Values = append(listValue.Values, stringListToStringValueList(ret)...)
 			} else {
+				fmt.Println("Get f.Variables.name", f.Variables[0].Name)
+				fmt.Println("Error message 0", ret[0])
+				fmt.Println("Error message 1", ret[1])
 				name, err := extractVariableName(f.Variables[0].Name, file)
 				if err != nil {
+					if len(ret) == 2 && ret[0] == "ERROR" {
+						err = fmt.Errorf(ret[1])
+					}
 					return nil, err
 				}
 				if name == "TOP" {

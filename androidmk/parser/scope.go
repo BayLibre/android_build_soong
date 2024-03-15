@@ -15,7 +15,7 @@
 package parser
 
 import (
-	"strings"
+	"fmt"
 )
 
 type Scope interface {
@@ -84,11 +84,13 @@ func (v Variable) EvalFunction(scope Scope) ([]string, bool) {
 			for i, a := range args {
 				argVals[i] = a.Value(scope)
 			}
+			fmt.Println("CAll EvalFunction", f, fname, argVals)
 
 			if fname == "call" {
 				return scope.Call(argVals[0], argVals[1:]), true
 			} else {
-				return []string{"__builtin_func:" + fname + " " + strings.Join(argVals, " ")}, true
+				// return []string{"__builtin_func:" + fname + " " + strings.Join(argVals, " ")}, true
+				return []string{"ERROR", "Unsuppoert function: " + fname}, false
 			}
 		}
 	}
