@@ -2517,6 +2517,7 @@ func TestOverrideAndroidApp(t *testing.T) {
 			certificate: "expiredkey",
 			overrides: ["qux"],
 			sdk_version: "current",
+			stem: "foo-new",
 		}
 
 		override_android_app {
@@ -4400,4 +4401,21 @@ func TestNoDexpreoptOptionalUsesLibDoesNotHaveImpl(t *testing.T) {
 	result := prepareForJavaTest.RunTestWithBp(t, bp)
 	dexpreopt := result.ModuleForTests("app", "android_common").MaybeRule("dexpreopt").Rule
 	android.AssertBoolEquals(t, "dexpreopt should be disabled if optional_uses_libs does not have an implementation", true, dexpreopt == nil)
+}
+
+func TestAppStem(t *testing.T) {
+	ctx := testApp(t, `
+				android_app {
+					name: "foo",
+					srcs: ["a.java"],
+					stem: "foo-new",
+					sdk_version: "current",
+				}`)
+
+	foo := ctx.ModuleForTests("foo", "android_common")
+
+	outputs := fmt.Sprint(foo.AllOutputs())
+	if !strings.Contains(outputs, "foo-new.apk") {
+		t.Errorf("Module output does not contain expected apk %s", "foo-new.apk")
+	}
 }

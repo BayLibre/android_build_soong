@@ -755,7 +755,7 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 
 	// Unlike installApkName, a.stem should respect base module name for override_android_app.
 	// Therefore, use ctx.ModuleName() instead of a.Name().
-	a.stem = proptools.StringDefault(a.overridableDeviceProperties.Stem, ctx.ModuleName())
+	a.stem = proptools.StringDefault(a.overridableDeviceProperties.Stem, proptools.StringDefault(a.properties.Stem, ctx.ModuleName()))
 
 	// Check if the install APK name needs to be overridden.
 	// Both android_app and override_android_app module are expected to possess
