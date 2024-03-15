@@ -2131,12 +2131,14 @@ func TestEnforceProductVndkVersion(t *testing.T) {
 	ensureStringContains(t, vendor_cflags, "-D__ANDROID_VENDOR__")
 	ensureStringNotContains(t, vendor_cflags, "-D__ANDROID_PRODUCT__")
 	ensureStringContains(t, vendor_cflags, "-D__ANDROID_VENDOR_API__=202404")
+	ensureStringContains(t, vendor_cflags, "-include system/core/libvendorsupport/include_llndk/android/llndk-versioning.h")
 
 	product_cflags := product_static.Rule("cc").Args["cFlags"]
 	ensureStringContains(t, product_cflags, "-D__ANDROID_VNDK__")
 	ensureStringContains(t, product_cflags, "-D__ANDROID_PRODUCT__")
 	ensureStringNotContains(t, product_cflags, "-D__ANDROID_VENDOR__")
 	ensureStringNotContains(t, product_cflags, "-D__ANDROID_VENDOR_API__=202404")
+	ensureStringNotContains(t, product_cflags, "-include system/core/libvendorsupport/include_llndk/android/llndk-versioning.h")
 }
 
 func TestEnforceProductVndkVersionErrors(t *testing.T) {

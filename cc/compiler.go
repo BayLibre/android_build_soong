@@ -419,6 +419,9 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 				vendorApiLevel = ctx.Config().PlatformSdkVersion().String()
 			}
 			flags.Global.CommonFlags = append(flags.Global.CommonFlags, "-D__ANDROID_VENDOR_API__="+vendorApiLevel)
+
+			vendorLlndkVersioningHeader := "system/core/libvendorsupport/include_llndk/android/llndk-versioning.h"
+			flags.Global.CommonFlags = append(flags.Global.CommonFlags, "-include "+vendorLlndkVersioningHeader)
 		} else if ctx.inProduct() {
 			flags.Global.CommonFlags = append(flags.Global.CommonFlags, "-D__ANDROID_PRODUCT__")
 		}
@@ -538,7 +541,6 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	if !proptools.Bool(compiler.Properties.Bpf_target) {
 		flags.Global.CommonFlags = append(flags.Global.CommonFlags, tc.ToolchainCflags())
 	}
-
 
 	cStd := parseCStd(compiler.Properties.C_std)
 	cppStd := parseCppStd(compiler.Properties.Cpp_std)
