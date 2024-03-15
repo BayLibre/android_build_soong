@@ -118,6 +118,30 @@
       },
       "revId": "9415bc4610394479907ab78d93b39105c0ee464d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac7bee5_ac59d65f",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-15T22:34:11Z",
+      "side": 1,
+      "message": "\u003e Do partners need it for soong analysis or for ninja execution?\n\nThis fix is required for a successful Soong analysis when `WITHOUT_CHECK_API\u003dtrue`. For additional context, please take a look at the associated bug in the commit message to see the error that this change is trying to resolve.\n\n\n\u003e Do partners actually build the soong modules linked in the previous comment? \n\nI do not have a solid answer to this question. We cannot speculate anything about what the partners are doing. However, given that the partners are not utilizing the from-text stubs and are purposefully disabling `checkapi`, I hardly see the use cases of this module for the partners.\n\nI\u0027ve uploaded a new patchset to generate the correct exportable api file / removed api file by always invoking metalava regardless of the `WITHOUT_CHECK_API` value. Please let me know if you prefer this implementation, and if not I would appreciate it if you can suggest an alternative solution.",
+      "parentUuid": "adc28010_98a5e54c",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 498,
+        "endChar": 3
+      },
+      "revId": "9415bc4610394479907ab78d93b39105c0ee464d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
