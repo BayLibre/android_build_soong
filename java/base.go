@@ -303,8 +303,8 @@ type DeviceProperties struct {
 	HiddenAPIFlagFileProperties
 }
 
-// Device properties that can be overridden by overriding module (e.g. override_android_app)
-type OverridableDeviceProperties struct {
+// Properties that can be overridden by overriding module (e.g. override_android_app)
+type OverridableProperties struct {
 	// set the name of the output. If not set, `name` is used.
 	// To override a module with this property set, overriding module might need to set this as well.
 	// Otherwise, both the overridden and the overriding modules will have the same output name, which
@@ -432,7 +432,7 @@ type Module struct {
 	protoProperties  android.ProtoProperties
 	deviceProperties DeviceProperties
 
-	overridableDeviceProperties OverridableDeviceProperties
+	overridableProperties OverridableProperties
 
 	// jar file containing header classes including static library dependencies, suitable for
 	// inserting into the bootclasspath/classpath of another compile
@@ -616,6 +616,7 @@ func (j *Module) addHostProperties() {
 		&j.properties,
 		&j.protoProperties,
 		&j.usesLibraryProperties,
+		&j.overridableProperties,
 	)
 }
 
@@ -623,7 +624,6 @@ func (j *Module) addHostAndDeviceProperties() {
 	j.addHostProperties()
 	j.AddProperties(
 		&j.deviceProperties,
-		&j.overridableDeviceProperties,
 		&j.dexer.dexProperties,
 		&j.dexpreoptProperties,
 		&j.linter.properties,
