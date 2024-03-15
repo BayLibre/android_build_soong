@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f961ed92_96045199",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-03-15T19:14:00Z",
+      "side": 1,
+      "message": "\u003e Should we maybe generally fail hard in soong if you try to run resource shrinking without using R8?\n\nYeah, either that or change the semantics and explicitly turn it off (in a separate change). I\u0027d be curious if there are scenarios where people are currently disabling any R8 usage but have resource shrinking enalbed.",
+      "parentUuid": "09539fe9_4767c5e9",
+      "range": {
+        "startLine": 528,
+        "startChar": 65,
+        "endLine": 528,
+        "endChar": 91
+      },
+      "revId": "1f116fd7a4f0b72db34ceda28caf80fc97258162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eef6242_1a019ebc",
