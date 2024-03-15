@@ -213,6 +213,9 @@ type CommonProperties struct {
 	// the stubs via libs, but should be set to true when the module depends on
 	// the stubs via static libs.
 	Is_stubs_module *bool
+
+	// Output file name based on Stem property.
+	Stem *string
 }
 
 // Properties that are specific to device modules. Host module factories should not add these when
