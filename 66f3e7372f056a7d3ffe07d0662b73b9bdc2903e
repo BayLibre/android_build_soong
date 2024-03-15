@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b88a6ecd_50bde82c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-03-15T07:45:28Z",
+      "side": 1,
+      "message": "Please don\u0027t revert this as trying to do so will create more breakages. I\u0027ll try to find a fix for b/328845931, or disable the test if I cannot provide something quickly.",
+      "revId": "66f3e7372f056a7d3ffe07d0662b73b9bdc2903e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
