@@ -213,6 +213,9 @@ type CommonProperties struct {
 	// the stubs via libs, but should be set to true when the module depends on
 	// the stubs via static libs.
 	Is_stubs_module *bool
+
+	// Output file name based on Stem property.
+	Stem *string
 }
 
 // Properties that are specific to device modules. Host module factories should not add these when
@@ -303,7 +306,7 @@ type DeviceProperties struct {
 	HiddenAPIFlagFileProperties
 }
 
-// Device properties that can be overridden by overriding module (e.g. override_android_app)
+// Properties that can be overridden by overriding module (e.g. override_android_app)
 type OverridableDeviceProperties struct {
 	// set the name of the output. If not set, `name` is used.
 	// To override a module with this property set, overriding module might need to set this as well.
@@ -616,6 +619,7 @@ func (j *Module) addHostProperties() {
 		&j.properties,
 		&j.protoProperties,
 		&j.usesLibraryProperties,
+		&j.overridableDeviceProperties,
 	)
 }
 
@@ -623,7 +627,6 @@ func (j *Module) addHostAndDeviceProperties() {
 	j.addHostProperties()
 	j.AddProperties(
 		&j.deviceProperties,
-		&j.overridableDeviceProperties,
 		&j.dexer.dexProperties,
 		&j.dexpreoptProperties,
 		&j.linter.properties,
