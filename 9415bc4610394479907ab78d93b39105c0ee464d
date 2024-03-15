@@ -142,6 +142,30 @@
       },
       "revId": "9415bc4610394479907ab78d93b39105c0ee464d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a7728e_0a0837d9",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-15T23:40:00Z",
+      "side": 1,
+      "message": "Resolved with offline discussion: @spandandas@google.com believes that the latest patchset resolves his concern about the exportable api file rule being incorrect when the `WITHOUT_CHECK_API\u003dfalse`.",
+      "parentUuid": "eac7bee5_ac59d65f",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 498,
+        "endChar": 3
+      },
+      "revId": "9415bc4610394479907ab78d93b39105c0ee464d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
