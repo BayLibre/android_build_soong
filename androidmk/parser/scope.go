@@ -14,10 +14,6 @@
 
 package parser
 
-import (
-	"strings"
-)
-
 type Scope interface {
 	Get(name string) string
 	Set(name, value string)
@@ -88,7 +84,7 @@ func (v Variable) EvalFunction(scope Scope) ([]string, bool) {
 			if fname == "call" {
 				return scope.Call(argVals[0], argVals[1:]), true
 			} else {
-				return []string{"__builtin_func:" + fname + " " + strings.Join(argVals, " ")}, true
+				return []string{"ERROR", "Unsuppoert function: " + fname}, false
 			}
 		}
 	}
