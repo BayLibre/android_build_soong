@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ab6d4d4_2f08dcdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-16T00:34:37Z",
+      "side": 1,
+      "message": "LGTM regarding the source files change, but left some comments regarding the test being added.",
+      "revId": "dc1bdd97cd0872ae94f428373c025b5be17a190a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e03b06_1c9990df",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2689,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-16T00:34:37Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand the purpose of this test here -- despite only `myconfig.v2` specifying `source_module_name`, the behaviors of `prebuilt_myconfig` and `prebuilt_myconfig.v2` do not look different? i.e. How would the expected testing behavior differ when `myconfig.v2` did not specify the `source_module_name` property?",
+      "revId": "dc1bdd97cd0872ae94f428373c025b5be17a190a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2724c443_c26a653b",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2699,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-16T00:34:37Z",
+      "side": 1,
+      "message": "Unblocking but we may want to add a test purpose Soong-internal build flag that mimics the behavior of the `\"RELEASE_APEX_CONTRIBUTIONS_*\"` build flags?",
+      "revId": "dc1bdd97cd0872ae94f428373c025b5be17a190a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
