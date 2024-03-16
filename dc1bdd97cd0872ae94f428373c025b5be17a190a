@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7865e7e_4f63c373",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2689,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-16T01:19:45Z",
+      "side": 1,
+      "message": "`source_module_name` defaults to the naming convention of the module name without the `prebuilt_` prefix. If we do not explicitly specify the `source_module_name` in `prebuilt_myconfig.v2`, then its `source_module_name` will be `myconfig.v2`\n\n\u003e  How would the expected testing behavior differ when myconfig.v2 did not specify the source_module_name property?\n\nIn this scenario, two soong modules will have enabled\u003dtrue, and therefore the singleton [platform_compat_config_singleton](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/7d53941629b5e7112ad4658c59dea1ac58a7cd6b:java/platform_compat_config.go;l\u003d225-236;drc\u003d8ff105860d20f2ccbb8d8044bf562f94100b7f6a;bpv\u003d1;bpt\u003d0) will merge two .xml files.",
+      "parentUuid": "e1e03b06_1c9990df",
+      "revId": "dc1bdd97cd0872ae94f428373c025b5be17a190a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2724c443_c26a653b",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-03-16T00:34:37Z",
       "side": 1,
       "message": "Unblocking but we may want to add a test purpose Soong-internal build flag that mimics the behavior of the `\"RELEASE_APEX_CONTRIBUTIONS_*\"` build flags?",
+      "revId": "dc1bdd97cd0872ae94f428373c025b5be17a190a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a22676a7_dca64c16",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2699,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-16T01:19:45Z",
+      "side": 1,
+      "message": "Acknowledged, I will do this in a followup Cl.",
+      "parentUuid": "2724c443_c26a653b",
       "revId": "dc1bdd97cd0872ae94f428373c025b5be17a190a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
