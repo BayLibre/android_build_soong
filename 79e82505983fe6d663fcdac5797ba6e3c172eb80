@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c6f2bc2_7cf5eb13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-16T01:12:25Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you also add an header search path for this header? (adding a dependency to the header lib module)",
+      "revId": "79e82505983fe6d663fcdac5797ba6e3c172eb80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
