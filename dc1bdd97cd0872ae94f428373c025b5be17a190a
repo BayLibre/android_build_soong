@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "313161ce_1a53a47f",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2689,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-16T01:48:34Z",
+      "side": 1,
+      "message": "\u003e Are multiple prebuilt_myconfig.v* modules allowed to set the same source_module_name? If not, is there a mechanism to prevent it?\n\nI believe they should be allowed to set the same `source_module_name`. This property is used in `build/soong/android/prebuilt.go` to create a [connected tree](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/7d53941629b5e7112ad4658c59dea1ac58a7cd6b:android/prebuilt.go;l\u003d425-431;drc\u003d972917d794e1f9a225fa3737cf648f4a8d044d31;bpv\u003d0;bpt\u003d0), and [disable](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/7d53941629b5e7112ad4658c59dea1ac58a7cd6b:android/prebuilt.go;l\u003d532-545;drc\u003d972917d794e1f9a225fa3737cf648f4a8d044d31;bpv\u003d0;bpt\u003d0) the source or prebuilt which is not active in the current release configuration.",
+      "parentUuid": "f9ab2a5f_630b1fcf",
+      "revId": "dc1bdd97cd0872ae94f428373c025b5be17a190a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2724c443_c26a653b",
