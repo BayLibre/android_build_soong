@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9ab2a5f_630b1fcf",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2689,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-16T01:33:36Z",
+      "side": 1,
+      "message": "\u003e In this scenario, two soong modules will have enabled\u003dtrue, and therefore the singleton platform_compat_config_singleton will merge two .xml files.\n\nAcknowledged, do you mind adding a comment regarding this here?\n\nOne follow up question (for my own benefit to better understand the multiple prebuilts):\n- Are multiple `prebuilt_myconfig.v*` modules allowed to set the same `source_module_name`? If not, is there a mechanism to prevent it?",
+      "parentUuid": "d7865e7e_4f63c373",
+      "revId": "dc1bdd97cd0872ae94f428373c025b5be17a190a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2724c443_c26a653b",
         "filename": "java/java_test.go",
         "patchSetId": 2
