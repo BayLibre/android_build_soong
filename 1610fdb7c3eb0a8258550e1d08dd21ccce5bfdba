@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46af4031_fd389fb0",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-03-18T03:12:43Z",
+      "side": 1,
+      "message": "@colefaust@google.com I am not too familiar with the expectation for AndroidMkEntries. Can we create a phony entry (and delegate to Soong the dependency management) or do I need multiple entries here (one per file + one fake)?",
+      "range": {
+        "startLine": 499,
+        "startChar": 2,
+        "endLine": 499,
+        "endChar": 12
+      },
+      "revId": "1610fdb7c3eb0a8258550e1d08dd21ccce5bfdba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
