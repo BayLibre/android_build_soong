@@ -16,9 +16,10 @@ package android
 
 import (
 	"fmt"
-	"github.com/google/blueprint"
 	"regexp"
 	"strings"
+
+	"github.com/google/blueprint"
 )
 
 // BaseModuleContext is the same as blueprint.BaseModuleContext except that Config() returns
@@ -297,6 +298,12 @@ func (b *baseModuleContext) getMissingDependencies() []string {
 type AllowDisabledModuleDependency interface {
 	blueprint.DependencyTag
 	AllowDisabledModuleDependency(target Module) bool
+}
+
+type AlwaysAllowDisabledModuleDependencyTag struct{}
+
+func (t AlwaysAllowDisabledModuleDependencyTag) AllowDisabledModuleDependency(Module) bool {
+	return true
 }
 
 func (b *baseModuleContext) validateAndroidModule(module blueprint.Module, tag blueprint.DependencyTag, strict bool, ignoreBlueprint bool) Module {

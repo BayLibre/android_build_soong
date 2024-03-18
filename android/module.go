@@ -541,6 +541,15 @@ type TeamDepTagType struct {
 
 var teamDepTag = TeamDepTagType{}
 
+// Dependency tag for required, host_required, and target_required modules.
+var RequiredDepTag = struct {
+	blueprint.BaseDependencyTag
+	InstallAlwaysNeededDependencyTag
+	// Requiring disabled module should be allowed for the cases like a host-side python binary
+	// requiring a host-side glibc shared library.
+	AlwaysAllowDisabledModuleDependencyTag
+}{}
+
 // CommonTestOptions represents the common `test_options` properties in
 // Android.bp.
 type CommonTestOptions struct {
@@ -1005,6 +1014,56 @@ func (m *ModuleBase) DepsMutator(BottomUpMutatorContext) {}
 func (m *ModuleBase) baseDepsMutator(ctx BottomUpMutatorContext) {
 	if m.Team() != "" {
 		ctx.AddDependency(ctx.Module(), teamDepTag, m.Team())
+	}
+
+	m.addRequiredDeps(ctx)
+}
+
+// addRequiredDeps adds required, target_required, and host_required as dependencies.
+func (m *ModuleBase) addRequiredDeps(ctx BottomUpMutatorContext) {
+	addDepIfExists := func(target Target, depName string) {
+		if ctx.Config().AllowMissingDependencies() && !ctx.OtherModuleExists(depName) {
+			ctx.AddMissingDependencies([]string{depName})
+			return
+		}
+
+		// If Android native module requires another Android native module, ensure that
+		// they have the same bitness. This mimics the policy in select-bitness-of-required-modules
+		// in build/make/core/main.mk.
+		// TODO(jiyong): the Make-side does this only when the required module is a shared
+		// library or a native test.
+		bothInAndroid := m.Device() && target.Os.Class == Device
+		nativeArch := m.Arch().ArchType.Multilib != string(MultilibCommon)
+		sameBitness := m.Arch().ArchType.Multilib == target.Arch.ArchType.Multilib
+		if bothInAndroid && nativeArch && !sameBitness {
+			return
+		}
+
+		variation := target.Variations()
+		if ctx.OtherModuleFarDependencyVariantExists(variation, depName) {
+			ctx.AddFarVariationDependencies(variation, RequiredDepTag, depName)
+		}
+	}
+
+	for _, depName := range m.RequiredModuleNames() {
+		for _, target := range ctx.Config().Targets[Android] {
+			addDepIfExists(target, depName)
+		}
+		for _, target := range ctx.Config().Targets[ctx.Config().BuildOS] {
+			addDepIfExists(target, depName)
+		}
+	}
+
+	for _, depName := range m.TargetRequiredModuleNames() {
+		for _, target := range ctx.Config().Targets[Android] {
+			addDepIfExists(target, depName)
+		}
+	}
+
+	for _, depName := range m.HostRequiredModuleNames() {
+		for _, target := range ctx.Config().Targets[ctx.Config().BuildOS] {
+			addDepIfExists(target, depName)
+		}
 	}
 }
 

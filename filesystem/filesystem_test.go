@@ -75,6 +75,11 @@ func TestFileSystemDeps(t *testing.T) {
 
 		cc_library {
 			name: "libbar",
+			required: ["libbaz"],
+		}
+
+		cc_library {
+			name: "libbaz",
 		}
 	`)
 
@@ -86,6 +91,7 @@ func TestFileSystemDeps(t *testing.T) {
 		"bin/foo",
 		"lib/libbar.so",
 		"lib64/libbar.so",
+		"lib64/libbaz.so",
 		"etc/bpf/bpf.o",
 	}
 	for _, e := range expected {

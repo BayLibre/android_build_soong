@@ -2974,6 +2974,9 @@ func checkDoubleLoadableLibraries(ctx android.TopDownMutatorContext) {
 		if depTag == stubImplDepTag {
 			return false
 		}
+		if depTag == android.RequiredDepTag {
+			return false
+		}
 
 		// Even if target lib has no vendor variant, keep checking dependency
 		// graph in case it depends on vendor_available or product_available
@@ -3148,6 +3151,10 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		}
 
 		if depTag == android.ProtoPluginDepTag {
+			return
+		}
+
+		if depTag == android.RequiredDepTag {
 			return
 		}
 
