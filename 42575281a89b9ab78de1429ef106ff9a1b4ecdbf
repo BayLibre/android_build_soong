@@ -16,6 +16,40 @@
       "message": "Ping, can I get owner review for this please?",
       "revId": "42575281a89b9ab78de1429ef106ff9a1b4ecdbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d3a283_7da886d6",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-18T18:01:14Z",
+      "side": 1,
+      "message": "Nit: You can use `Output:` instead of `Outputs` since you only have 1 path.",
+      "revId": "42575281a89b9ab78de1429ef106ff9a1b4ecdbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ebc80f_d081e730",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-18T18:01:14Z",
+      "side": 1,
+      "message": "Nit: use `strings.TrimSuffix` if you\u0027re going to ignore the second return value.",
+      "revId": "42575281a89b9ab78de1429ef106ff9a1b4ecdbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
