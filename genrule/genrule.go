@@ -317,7 +317,15 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 						// required relative locations of the tool and its dependencies, use those
 						// instead.  They will be copied to those relative locations in the sbox
 						// sandbox.
-						packagedTools = append(packagedTools, specs...)
+						// Care must be taken since TransitivePackagingSpec
+						// may return device-side paths via the required
+						// property. Filter them out.
+						for _, ps := range specs {
+							if ps.Partition() != "" {
+								continue
+							}
+							packagedTools = append(packagedTools, ps)
+						}
 						// Assume that the first PackagingSpec of the module is the tool.
 						addLocationLabel(tag.label, packagedToolLocation{specs[0]})
 					} else {
