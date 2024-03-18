@@ -38,7 +38,7 @@ var (
 	riscv64Ldflags = []string{
 		"-Wl,--hash-style=gnu",
 		"-march=rv64gcv_zba_zbb_zbs",
-		"-munaligned-access",
+		"-mno-strict-align",
 		// We should change the default for this in clang, but for now...
 		// (https://github.com/google/android-riscv64/issues/124)
 		"-Wl,-mllvm -Wl,-jump-is-expensive=false",
