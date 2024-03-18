@@ -483,6 +483,8 @@ type ProductVariables struct {
 
 	ReleaseDefaultModuleBuildFromSource *bool `json:",omitempty"`
 
+	ReleaseDisableVerifyOverlapsCheck *bool `json:",omitempty"`
+
 	KeepVndk *bool `json:",omitempty"`
 
 	CheckVendorSeappViolations *bool `json:",omitempty"`
