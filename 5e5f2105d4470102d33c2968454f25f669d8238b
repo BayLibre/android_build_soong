@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "546e777b_469833a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2024-03-18T23:39:36Z",
+      "side": 1,
+      "message": "There is no existing environment variable that I am aware of that can specify these paths (at least llvm-symbolizer does not recognize any, and grepping for `/usr/lib/debug` in GNU binutils and LLDB did not reveal an existing one). Host tools such as the proposed `adb tombstone` will need to arrange to pass `--debug-file-directory $ANDROID_PRODUCT_OUT/symbols` to llvm-symbolizer.\n\nI was considering proposing the definition of an environment variable called `DEBUGPATH` which would be a colon-separated list of these paths. Once that is in place and llvm-symbolizer knows about it, we can start setting it and stop passing `--debug-file-directory` from the host tools. And if LLDB knows about it we could potentially simplify `gdbclient.py` by making it build-id based as well.",
+      "parentUuid": "7005c3f8_605793ea",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4197ed04_e19a594f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2024-03-18T22:22:50Z",
       "side": 1,
       "message": "Since we don\u0027t particularly care which file the symlink points to, would it be reasonable to do this as a side-effect of the rule that copies to the symbols directory, and just let the latest one win?  It could be made atomic by creating the symlink with a unique suffix and then renaming that into the final location.",
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8339288_70c54662",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2024-03-18T23:39:36Z",
+      "side": 1,
+      "message": "There are two updates that need to be done when updating a file in the symbols directory.\n1. We need to create a symlink for the new build-id.\n2. We need to delete the symlink for the old build-id, or make it refer to another existing symbols file with the old build-id if it exists. Without that, if I make a change that causes build-ids to diverge (i.e. two binaries previously having the same build-id now have different build-ids), we may be unable to symbolize using the old build-id because the symlink could point to the wrong file (i.e. the one whose build-id changed).\n\n1 is easy as long as we\u0027re willing to accept the non-determinism that you mentioned. 2 is tricky because we don\u0027t know how many references from other symbol files are still in use (at least I couldn\u0027t see a good non-racy way to do it).",
+      "parentUuid": "4197ed04_e19a594f",
       "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -83,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3822981_7a75ca48",
+        "filename": "elf/build_id_dir.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2024-03-18T23:39:36Z",
+      "side": 1,
+      "message": "I will benchmark some options and get back to you.",
+      "parentUuid": "e94c6893_14b830db",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 15
+      },
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d748b757_d838215c",
         "filename": "elf/build_id_dir.go",
         "patchSetId": 3
@@ -106,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7531849f_01aae49f",
+        "filename": "elf/build_id_dir.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2024-03-18T23:39:36Z",
+      "side": 1,
+      "message": "I was thinking about how to do this incrementally, but I hadn\u0027t considered collecting the old tree and applying a diff. Let me see if that helps.",
+      "parentUuid": "d748b757_d838215c",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f62b1a49_ffa2dee9",
         "filename": "ui/build/build.go",
         "patchSetId": 3
@@ -117,6 +207,24 @@
       "writtenOn": "2024-03-18T22:22:50Z",
       "side": 1,
       "message": "Can you collect metrics for this:\n```\n\tctx.BeginTrace(metrics.RunShutdownTool, \"update_build_id_dir\")\n\tdefer ctx.EndTrace()\n```",
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ece639e_80f0cd0d",
+        "filename": "ui/build/build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2024-03-18T23:39:36Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "f62b1a49_ffa2dee9",
       "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
