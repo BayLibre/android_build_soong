@@ -50,9 +50,15 @@ var (
 		// This is already the driver's Android default, but duplicated here (and
 		// above) for ease of experimentation with additional extensions.
 		"-march=rv64gcv_zba_zbb_zbs",
+<<<<<<< PATCH SET (bed3d9 [cc:riscv64] -munaligned-access => -mno-strict-align)
+		"-mno-strict-align",
+		// We should change the default for this in clang, but for now...
+		// (https://github.com/google/android-riscv64/issues/124)
+=======
 		// TODO: move to driver (https://github.com/google/android-riscv64/issues/111)
 		"-munaligned-access",
 		// TODO: remove when clang default changed (https://github.com/google/android-riscv64/issues/124)
+>>>>>>> BASE      (c26004 Fully document all the riscv64 flags.)
 		"-Wl,-mllvm -Wl,-jump-is-expensive=false",
 	}
 
