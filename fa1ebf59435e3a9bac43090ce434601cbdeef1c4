@@ -88,6 +88,29 @@
       "parentUuid": "2be38d8f_f835aec1",
       "revId": "fa1ebf59435e3a9bac43090ce434601cbdeef1c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c836a7_33031e88",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-03-18T17:21:16Z",
+      "side": 1,
+      "message": "can\u0027t we delete this option now because separate-loadable-segments overrides it?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 25
+      },
+      "revId": "fa1ebf59435e3a9bac43090ce434601cbdeef1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
