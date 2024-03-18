@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccab5f04_6ee24b4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-18T23:42:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "546e777b_469833a2",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4197ed04_e19a594f",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "There are two updates that need to be done when updating a file in the symbols directory.\n1. We need to create a symlink for the new build-id.\n2. We need to delete the symlink for the old build-id, or make it refer to another existing symbols file with the old build-id if it exists. Without that, if I make a change that causes build-ids to diverge (i.e. two binaries previously having the same build-id now have different build-ids), we may be unable to symbolize using the old build-id because the symlink could point to the wrong file (i.e. the one whose build-id changed).\n\n1 is easy as long as we\u0027re willing to accept the non-determinism that you mentioned. 2 is tricky because we don\u0027t know how many references from other symbol files are still in use (at least I couldn\u0027t see a good non-racy way to do it).",
       "parentUuid": "4197ed04_e19a594f",
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed19cfdd_78cab93f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-18T23:42:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d8339288_70c54662",
       "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
