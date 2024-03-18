@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7005c3f8_605793ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-18T22:22:50Z",
+      "side": 1,
+      "message": "Is there further integration needed so these tools can find the `.build-id` directory?  Should `envsetup.sh` be setting an environment variable that points to it?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4197ed04_e19a594f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-18T22:22:50Z",
+      "side": 1,
+      "message": "Since we don\u0027t particularly care which file the symlink points to, would it be reasonable to do this as a side-effect of the rule that copies to the symbols directory, and just let the latest one win?  It could be made atomic by creating the symlink with a unique suffix and then renaming that into the final location.",
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5bb128e_1f737894",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-18T22:22:50Z",
+      "side": 1,
+      "message": "+joeo for adding a step that runs after build complete.",
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e94c6893_14b830db",
+        "filename": "elf/build_id_dir.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-18T22:22:50Z",
+      "side": 1,
+      "message": "a `sync.Map` may work better here.  If not, another option is to return the `path, id` pair through a channel, and have the main function be the only one that writes to the map, then no extra locking is necessary.",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 15
+      },
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d748b757_d838215c",
+        "filename": "elf/build_id_dir.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-18T22:22:50Z",
+      "side": 1,
+      "message": "Would it be faster to incrementally update this directory?  You\u0027ve already walked this directory once, you could keep a list of all the existing files in `.build-id`, then remove the ones that no longer exist in `buildIdToFile`, verify the ones that exist in both with `os.Readlink`, and link the new ones that only exist in `buildIdToFile`.",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62b1a49_ffa2dee9",
+        "filename": "ui/build/build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-18T22:22:50Z",
+      "side": 1,
+      "message": "Can you collect metrics for this:\n```\n\tctx.BeginTrace(metrics.RunShutdownTool, \"update_build_id_dir\")\n\tdefer ctx.EndTrace()\n```",
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
