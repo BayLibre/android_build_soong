@@ -58,19 +58,16 @@ const (
 var visibilityRuleRegexp = regexp.MustCompile(visibilityRulePattern)
 
 type visibilityModuleReference struct {
-	name              qualifiedModuleName
-	isPartitionModule bool
+	name   qualifiedModuleName
+	typ    string
+	module Module
 }
 
-func createVisibilityModuleReference(name, dir, typ string) visibilityModuleReference {
-	isPartitionModule := false
-	switch typ {
-	case "android_filesystem", "android_system_image":
-		isPartitionModule = true
-	}
+func createVisibilityModuleReference(name, dir, typ string, module Module) visibilityModuleReference {
 	return visibilityModuleReference{
-		name:              createQualifiedModuleName(name, dir),
-		isPartitionModule: isPartitionModule,
+		name:   createQualifiedModuleName(name, dir),
+		typ:    typ,
+		module: module,
 	}
 }
 
@@ -215,19 +212,36 @@ func (r privateRule) String() string {
 }
 
 // visibilityRule for //visibility:any_partition
-type anyPartitionRule struct{}
+type anyPartitionRule struct {
+	partitionType string
+}
 
 var _ visibilityRule = anyPartitionRule{}
 
+type PartitionTypeInterface interface {
+	PartitionType() string
+}
+
 func (r anyPartitionRule) matches(m visibilityModuleReference) bool {
-	return m.isPartitionModule
+	switch m.typ {
+	case "android_system_image", "android_filesystem":
+		break
+	default:
+		return false
+	}
+	return r.partitionType == m.module.(PartitionTypeInterface).PartitionType()
 }
 
 func (r anyPartitionRule) String() string {
-	return "//visibility:any_partition"
+	return "//visibility:any_" + r.partitionType + "_partition"
 }
 
 var visibilityRuleMap = NewOnceKey("visibilityRuleMap")
+
+type visibilityRulesForModule struct {
+	rule                   compositeRule
+	implicitPartitionRules compositeRule
+}
 
 // The map from qualifiedModuleName to visibilityRule.
 func moduleToVisibilityRuleMap(config Config) *sync.Map {
@@ -304,8 +318,8 @@ func checkRules(ctx BaseModuleContext, currentPkg, property string, visibility [
 		if pkg == "visibility" {
 			switch name {
 			case "private", "public":
-			case "any_partition":
-				// any_partition can be used with another visibility fields
+			case "any_system_partition", "any_system_ext_partition", "any_vendor_partition", "any_product_partition", "any_data_partition", "any_odm_partition":
+				// any_*_partition can be used with another visibility fields
 				continue
 			case "legacy_public":
 				ctx.PropertyErrorf(property, "//visibility:legacy_public must not be used")
@@ -352,14 +366,19 @@ func visibilityRuleGatherer(ctx BottomUpMutatorContext) {
 
 	// Parse the visibility rules that control access to the module and store them by id
 	// for use when enforcing the rules.
+	var rule compositeRule
 	primaryProperty := m.base().primaryVisibilityProperty
 	if primaryProperty != nil {
 		if visibility := primaryProperty.getStrings(); visibility != nil {
-			rule := parseRules(ctx, currentPkg, primaryProperty.getName(), visibility)
-			if rule != nil {
-				moduleToVisibilityRuleMap(ctx.Config()).Store(qualifiedModuleId, rule)
-			}
+			rule = parseRules(ctx, currentPkg, primaryProperty.getName(), visibility)
 		}
+	}
+	ipr := implicitPartitionRules(ctx)
+	if rule != nil || ipr != nil {
+		moduleToVisibilityRuleMap(ctx.Config()).Store(qualifiedModuleId, visibilityRulesForModule{
+			rule:                   rule,
+			implicitPartitionRules: ipr,
+		})
 	}
 }
 
@@ -392,8 +411,26 @@ func parseRules(ctx BaseModuleContext, currentPkg, property string, visibility [
 				hasNonPrivateRule = false
 				// This does not actually create a rule so continue onto the next rule.
 				continue
-			case "any_partition":
-				r = anyPartitionRule{}
+			case "any_system_partition":
+				r = anyPartitionRule{
+					partitionType: "system",
+				}
+			case "any_system_ext_partition":
+				r = anyPartitionRule{
+					partitionType: "system_ext",
+				}
+			case "any_vendor_partition":
+				r = anyPartitionRule{
+					partitionType: "vendor",
+				}
+			case "any_data_partition":
+				r = anyPartitionRule{
+					partitionType: "data",
+				}
+			case "any_odm_partition":
+				r = anyPartitionRule{
+					partitionType: "odm",
+				}
 			}
 		} else {
 			switch name {
@@ -430,6 +467,22 @@ func parseRules(ctx BaseModuleContext, currentPkg, property string, visibility [
 	}
 
 	return rules
+}
+
+func implicitPartitionRules(ctx BaseModuleContext) compositeRule {
+	var result compositeRule
+	if ctx.SocSpecific() {
+		result = append(result, anyPartitionRule{partitionType: "vendor"})
+	} else if ctx.ProductSpecific() {
+		result = append(result, anyPartitionRule{partitionType: "product"})
+	} else if ctx.Module().InstallInData() {
+		result = append(result, anyPartitionRule{partitionType: "data"})
+	} else if ctx.SystemExtSpecific() {
+		result = append(result, anyPartitionRule{partitionType: "system_ext"})
+	} else if ctx.DeviceSpecific() {
+		result = append(result, anyPartitionRule{partitionType: "odm"})
+	}
+	return result
 }
 
 func isAllowedFromOutsideVendor(pkg string, name string) bool {
@@ -470,7 +523,7 @@ func splitRule(ctx BaseModuleContext, ruleExpression string, currentPkg, propert
 }
 
 func visibilityRuleEnforcer(ctx TopDownMutatorContext) {
-	qualified := createVisibilityModuleReference(ctx.ModuleName(), ctx.ModuleDir(), ctx.ModuleType())
+	qualified := createVisibilityModuleReference(ctx.ModuleName(), ctx.ModuleDir(), ctx.ModuleType(), ctx.Module())
 
 	// Visit all the dependencies making sure that this module has access to them all.
 	ctx.VisitDirectDeps(func(dep Module) {
@@ -505,10 +558,13 @@ var defaultVisibility = compositeRule{publicRule{}}
 // which is currently //visibility:public.
 func effectiveVisibilityRules(config Config, qualified qualifiedModuleName) compositeRule {
 	moduleToVisibilityRule := moduleToVisibilityRuleMap(config)
-	value, ok := moduleToVisibilityRule.Load(qualified)
+	value := visibilityRulesForModule{}
+	if valueRaw, ok := moduleToVisibilityRule.Load(qualified); ok {
+		value = valueRaw.(visibilityRulesForModule)
+	}
 	var rule compositeRule
-	if ok {
-		rule = value.(compositeRule)
+	if value.rule != nil {
+		rule = value.rule
 	} else {
 		rule = packageDefaultVisibility(moduleToVisibilityRule, qualified)
 	}
@@ -518,6 +574,20 @@ func effectiveVisibilityRules(config Config, qualified qualifiedModuleName) comp
 	if rule == nil {
 		rule = defaultVisibility
 	}
+
+	// If a partition rule wasn't specified, add implicit partition visibility
+	// rules based on the partition properties like vendor: true.
+	foundPartitionRule := false
+	for _, r := range rule {
+		if _, ok := r.(anyPartitionRule); ok {
+			foundPartitionRule = true
+			break
+		}
+	}
+	if !foundPartitionRule {
+		rule = append(rule, value.implicitPartitionRules...)
+	}
+
 	return rule
 }
 
@@ -531,7 +601,7 @@ func packageDefaultVisibility(moduleToVisibilityRule *sync.Map, moduleId qualifi
 	for {
 		value, ok := moduleToVisibilityRule.Load(packageQualifiedId)
 		if ok {
-			return value.(compositeRule)
+			return value.(visibilityRulesForModule).rule
 		}
 
 		if packageQualifiedId.isRootPackage() {
@@ -605,7 +675,7 @@ func EffectiveVisibilityRules(ctx BaseModuleContext, module Module) VisibilityRu
 
 	rule := effectiveVisibilityRules(ctx.Config(), qualified)
 
-	currentModule := createVisibilityModuleReference(moduleName, dir, ctx.OtherModuleType(module))
+	currentModule := createVisibilityModuleReference(moduleName, dir, ctx.OtherModuleType(module), module)
 
 	// Modules are implicitly visible to other modules in the same package,
 	// without checking the visibility rules. Here we need to add that visibility
