@@ -22,6 +22,30 @@
       },
       "revId": "09e0195323bd3cd8c8eec9fa901bb274f6c6fac1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd92251_9ec2511e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-18T22:49:34Z",
+      "side": 1,
+      "message": "Resolved with offline discussion. The modules passed as `libs` to `droidstubs` are also essential to generate the \"exportable\" stubs even if they are not part of the generated stubs or the api files. Therefore, the information about the aconfig_declarations of these modules must be passed to metalava.",
+      "parentUuid": "5742057c_739159aa",
+      "range": {
+        "startLine": 18,
+        "startChar": 26,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "09e0195323bd3cd8c8eec9fa901bb274f6c6fac1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
