@@ -39,6 +39,30 @@
       },
       "revId": "ce23b9ba161c807737e72e04d3914e22f68a4268",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1096106a_c363bc3f",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2024-03-18T17:16:42Z",
+      "side": 1,
+      "message": "We have a pending LSC plan to clean up the old property: https://docs.google.com/document/d/18FTDz0rE0r1WehrPz_3ggYBZiGhW0y1SxYvku6udL-U/edit?tab\u003dt.0#heading\u003dh.xgjl2srtytjt",
+      "parentUuid": "79f72b6c_6e7e8ac8",
+      "range": {
+        "startLine": 117,
+        "startChar": 25,
+        "endLine": 117,
+        "endChar": 31
+      },
+      "revId": "ce23b9ba161c807737e72e04d3914e22f68a4268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
