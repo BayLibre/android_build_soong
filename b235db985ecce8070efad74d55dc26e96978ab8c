@@ -52,6 +52,23 @@
       "parentUuid": "4a775d31_3e690fba",
       "revId": "b235db985ecce8070efad74d55dc26e96978ab8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c82d89ed_11643e65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-03-18T16:12:24Z",
+      "side": 1,
+      "message": "ccross: thoughts on \"remove or support anyway\"? it is POSIX, but afaict currently unused. i don\u0027t remember what your philosophical position was between (a) only keep what\u0027s been needed at some point (b) only keep what\u0027s actively needed right now (c) include all the [POSIX?] things.\n\n(dwillemsen: i don\u0027t think i\u0027m ever going to get a non-timeout on a nuke build!)",
+      "revId": "b235db985ecce8070efad74d55dc26e96978ab8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
