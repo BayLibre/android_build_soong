@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37c247c8_6760e043",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-03-18T19:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4d3a283_7da886d6",
+      "revId": "42575281a89b9ab78de1429ef106ff9a1b4ecdbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30ebc80f_d081e730",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-03-18T18:01:14Z",
       "side": 1,
       "message": "Nit: use `strings.TrimSuffix` if you\u0027re going to ignore the second return value.",
+      "revId": "42575281a89b9ab78de1429ef106ff9a1b4ecdbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dafeda5_9090d7e4",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-03-18T19:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ebc80f_d081e730",
       "revId": "42575281a89b9ab78de1429ef106ff9a1b4ecdbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
