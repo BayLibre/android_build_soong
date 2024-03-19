@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1edbdf0_0a079156",
+        "filename": "java/base.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-03-19T09:16:27Z",
+      "side": 0,
+      "message": "I think this should still be keep due to that override_app use this prop, I  think keep it should be more reasonable.\n\nhttps://android-review.git.corp.google.com/c/platform/build/soong/+/3000681/8/java/app.go",
+      "parentUuid": "82df6fbe_9872e455",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 1
+      },
+      "revId": "08bef285d826625bc73e67a0d40bdf3479aeb034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd364c6c_e45dd1b2",
         "filename": "java/base.go",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-19T06:19:13Z",
       "side": 0,
       "message": "Remove this?",
+      "range": {
+        "startLine": 626,
+        "startChar": 2,
+        "endLine": 626,
+        "endChar": 32
+      },
+      "revId": "08bef285d826625bc73e67a0d40bdf3479aeb034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4f5a196_ca63b7ba",
+        "filename": "java/base.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-03-19T09:16:27Z",
+      "side": 0,
+      "message": "Move it to HostProp to share with both device and host.",
+      "parentUuid": "dd364c6c_e45dd1b2",
       "range": {
         "startLine": 626,
         "startChar": 2,
