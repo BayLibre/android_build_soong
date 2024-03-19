@@ -75,6 +75,8 @@ type compiler interface {
 	strippedOutputFilePath() android.OptionalPath
 
 	checkedCrateRootPath() (android.Path, error)
+
+	Aliases() map[string]string
 }
 
 func (compiler *baseCompiler) edition() string {
@@ -139,6 +141,9 @@ type BaseCompilerProperties struct {
 
 	// flags to pass to the linker
 	Ld_flags []string `android:"arch_variant"`
+
+	// Rust crate dependencies to rename
+	Aliases map[string]string
 
 	// list of rust rlib crate dependencies
 	Rlibs []string `android:"arch_variant"`
@@ -279,6 +284,10 @@ func (compiler *baseCompiler) coverageOutputZipPath() android.OptionalPath {
 
 func (compiler *baseCompiler) preferRlib() bool {
 	return Bool(compiler.Properties.Prefer_rlib)
+}
+
+func (compiler *baseCompiler) Aliases() map[string]string {
+	return compiler.Properties.Aliases
 }
 
 func (compiler *baseCompiler) stdLinkage(ctx *depsContext) RustLinkage {
