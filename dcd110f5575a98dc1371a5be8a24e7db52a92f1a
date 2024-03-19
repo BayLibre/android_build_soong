@@ -124,6 +124,24 @@
       "parentUuid": "ab2f55ba_05dd3f77",
       "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef53b80_3acb7154",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-19T23:44:21Z",
+      "side": 1,
+      "message": "I believe that the correct fix is to add `VanillaIceCream` to [`mainline.scl`](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:vendor/google/release/build_config/mainline.scl;drc\u003d7405d63b7e3bec93c2fc61e78f89ffef2a7ce9de;l\u003d44). This value is set as `VanillaIceCream` by default in [`build_flags.scl`](https://cs.android.com/android/platform/superproject/main/+/main:build/release/build_flags.scl;drc\u003d01ab42f9d5519cbae24d786a34c0f6cdfac0816c;l\u003d178), but overridden in `mainline.scl`. This explains why the build breakage was observed only in `mainline` release configuration builds.\n\nThis build flag value is passed to [`PreviewApiLevels()`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/config.go;drc\u003d07145109fffd6361d79266ef2a8f966d8c53906f;l\u003d951).",
+      "parentUuid": "0bbb859b_94b33100",
+      "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
