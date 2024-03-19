@@ -106,6 +106,24 @@
       "parentUuid": "13aa6c21_86c82ea0",
       "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bbb859b_94b33100",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2024-03-19T23:37:24Z",
+      "side": 1,
+      "message": "Looking the usage in internal branch - https://source.corp.google.com/search?q\u003d%22min_sdk_version:%20%5C%22VanillaIceCream%5C%22%22\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main\n\nAll of the existing usages seems to be working around this issue by overriding the `min_sdk_version`. \n\nFor ex:\n\n1. NFC usage - https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:packages/apps/Nfc/Android.bp;drc\u003d97e21d376f958f50bf88987d12010f0dfaaf20ba;l\u003d27\n\nis overridden here (where the library is statically included): https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:packages/apps/Nfc/Android.bp;drc\u003d97e21d376f958f50bf88987d12010f0dfaaf20ba;l\u003d83\n\n2. V apex default - https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:packages/modules/common/sdk/ModuleDefaults.bp;drc\u003d7fe8448082e2175b61a231d6182da8055616e35f;l\u003d281\n\n\nis overridden by all the users: https://source.corp.google.com/search?q\u003dv-launched-apex-module\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main\n\nlike this one: https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:packages/modules/WebViewBootstrap/apex/Android.bp;drc\u003d57e76ad82bda752a72d17dc4ccc7f1ddcb781220;l\u003d38",
+      "parentUuid": "ab2f55ba_05dd3f77",
+      "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
