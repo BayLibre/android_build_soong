@@ -70,6 +70,24 @@
       "parentUuid": "6b133362_91f1df82",
       "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13aa6c21_86c82ea0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-19T22:04:21Z",
+      "side": 1,
+      "message": "The build target that was broken in [b/330171104](https://b.corp.google.com/issues/330171104) was built successfully when built with this change: [ABTD run](https://android-build.corp.google.com/abtd/run/L48900030002604615/). @colefaust@google.com Do you have any alternative solutions other than this?",
+      "parentUuid": "5fd90126_6184db8a",
+      "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
