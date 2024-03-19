@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb0a8f7e_fe446f63",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-19T23:41:33Z",
+      "side": 1,
+      "message": "nit: rename to module since this is not app-specific",
+      "range": {
+        "startLine": 108,
+        "startChar": 78,
+        "endLine": 108,
+        "endChar": 81
+      },
+      "revId": "23f012d3834406ac2e4d5ec2c437f0e27267b645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71d2f02f_71afa5eb",
+        "filename": "java/aar_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-19T23:41:33Z",
+      "side": 1,
+      "message": "I think [rro module type](https://source.corp.google.com/search?q\u003daapt$%20f:build%2Fsoong%2Fjava%20case:yes\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main) uses aapt as well. Can you add a unit test for that?",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 3
+      },
+      "revId": "23f012d3834406ac2e4d5ec2c437f0e27267b645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
