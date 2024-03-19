@@ -34,6 +34,24 @@
       "parentUuid": "e760fb72_e043ba4c",
       "revId": "01c41e3a89d58889415ea4f8de37529d7b7a8913",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d66102f_7ed3be9e",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-19T21:13:58Z",
+      "side": 1,
+      "message": "\u003e \"If the release build flag RELEASE_DISABLE_VERIFY_OVERLAPS_CHECK is true, the env var DISABLE_VERIFY_OVERLAPS cannot be an explicit false\"\n\nThis option SGTM. I don\u0027t have a strong opinion about adding an error if we have a guarantee that the three variables cannot be set together with conflicting values.",
+      "parentUuid": "6c22dff0_1e7f2405",
+      "revId": "01c41e3a89d58889415ea4f8de37529d7b7a8913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
