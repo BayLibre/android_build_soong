@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a535a72c_181a38ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-19T19:52:09Z",
+      "side": 1,
+      "message": "This is for much further down the road, but I envision something like a top-level \"android_product\" module type that depends on all the partitions, then can look at its dependencies and find cases where system modules link against vendor modules and error out. Without having to mark modules as specific to a certain partition.",
+      "parentUuid": "57acd963_2fca6f3e",
+      "range": {
+        "startLine": 22,
+        "startChar": 63,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "52e3efecbb81a0b74d88417f1e0ff452d6962d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21e232d4_2ecd0659",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-19T00:52:34Z",
       "side": 1,
       "message": "can\u0027t these two be inferred from `module`?",
+      "range": {
+        "startLine": 66,
+        "startChar": 37,
+        "endLine": 66,
+        "endChar": 60
+      },
+      "revId": "52e3efecbb81a0b74d88417f1e0ff452d6962d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "938eb200_96670859",
+        "filename": "android/visibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-19T19:52:09Z",
+      "side": 1,
+      "message": "Name could be, but as far as I can tell, there\u0027s no way to get the directory/type of a module from the `Module` itself, only from a `ModuleContext`.",
+      "parentUuid": "21e232d4_2ecd0659",
       "range": {
         "startLine": 66,
         "startChar": 37,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f67edb3_68210aaf",
+        "filename": "android/visibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-19T19:52:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e1e8296_9b48f3d5",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 51
+      },
+      "revId": "52e3efecbb81a0b74d88417f1e0ff452d6962d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "729eb53f_0486cc01",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-03-19T00:52:34Z",
       "side": 1,
       "message": "Would using regex be better to handle these cases at once? We may want to add more partitions in the future.",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 5
+      },
+      "revId": "52e3efecbb81a0b74d88417f1e0ff452d6962d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa899c6e_31ed02f5",
+        "filename": "android/visibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-19T19:52:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "729eb53f_0486cc01",
       "range": {
         "startLine": 414,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a28bfb12_83c02b3a",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-19T19:52:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88ec0ae7_bb74e824",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 36
+      },
+      "revId": "52e3efecbb81a0b74d88417f1e0ff452d6962d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0de11fba_722de88c",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-03-19T00:52:34Z",
       "side": 1,
       "message": "Why is this enforced? `partition_type: \"system\"` should be fine, right?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "52e3efecbb81a0b74d88417f1e0ff452d6962d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b305092_972e0dec",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-19T19:52:09Z",
+      "side": 1,
+      "message": "That would be fine, but I don\u0027t see much reason in setting that if that\u0027s the only value it could be set to.",
+      "parentUuid": "0de11fba_722de88c",
       "range": {
         "startLine": 46,
         "startChar": 0,
