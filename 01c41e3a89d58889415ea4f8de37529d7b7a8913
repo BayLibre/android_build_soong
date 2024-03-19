@@ -16,6 +16,24 @@
       "message": "Should we emit an error when more than one of these three variables/flags are set with conflicting values? Or is there an order of precedence within these three variables/flags?",
       "revId": "01c41e3a89d58889415ea4f8de37529d7b7a8913",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c22dff0_1e7f2405",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-19T21:07:25Z",
+      "side": 1,
+      "message": "Could you give an example of what the error will look like? Would it be something like \"If the release build flag `RELEASE_DISABLE_VERIFY_OVERLAPS_CHECK` is true, the env var `DISABLE_VERIFY_OVERLAPS` cannot be an explicit false)?\n\n(btw, we are discussing of removing the third variable `RELEASE_DEFAULT_MODULE_BUILD_FROM_SOURCE` altogether b/328573404)",
+      "parentUuid": "e760fb72_e043ba4c",
+      "revId": "01c41e3a89d58889415ea4f8de37529d7b7a8913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
