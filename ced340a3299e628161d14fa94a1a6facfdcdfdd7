@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c48c228_8fae694c",
+        "filename": "android/filegroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-19T18:31:12Z",
+      "side": 1,
+      "message": "Is there a reason why this is being used instead of `VisitDirectDeps`?",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "ced340a3299e628161d14fa94a1a6facfdcdfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
