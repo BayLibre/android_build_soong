@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c8433d_95d313e1",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-19T02:09:16Z",
+      "side": 0,
+      "message": "nit: unnecessary change",
+      "revId": "e430878f4870c5859eb453cf648e4590787aaf79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
