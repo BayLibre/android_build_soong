@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t you also add an header search path for this header? (adding a dependency to the header lib module)",
       "revId": "79e82505983fe6d663fcdac5797ba6e3c172eb80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5d6391b_c1061224",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-03-19T01:39:22Z",
+      "side": 1,
+      "message": "As the llndk-versioning.h file is automatically included to the vendor modules with the full path, they don\u0027t need to add the header lib to the search path.",
+      "parentUuid": "3c6f2bc2_7cf5eb13",
+      "revId": "79e82505983fe6d663fcdac5797ba6e3c172eb80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
