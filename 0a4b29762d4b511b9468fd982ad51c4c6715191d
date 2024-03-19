@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dc417db_96d1941a",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-19T17:50:32Z",
+      "side": 1,
+      "message": "I thought we didn\u0027t have glibc in the build, and instead implicitly relied on the host\u0027s linux distro\u0027s glibc? Where is that requirement added?",
+      "revId": "0a4b29762d4b511b9468fd982ad51c4c6715191d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
