@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f03674f_b592ed73",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-19T17:34:18Z",
+      "side": 1,
+      "message": "Is it possible for the first spec to be for device? Maybe you should save the first file from the loop that was for host and use that instead of `specs[0]`.",
+      "range": {
+        "startLine": 330,
+        "startChar": 55,
+        "endLine": 330,
+        "endChar": 60
+      },
+      "revId": "9f87b4f560a25fddff2103614f1d7db8de79a47b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
