@@ -22,6 +22,30 @@
       },
       "revId": "ced340a3299e628161d14fa94a1a6facfdcdfdd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a1bd6ef_d0c8cb99",
+        "filename": "android/filegroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-19T18:56:01Z",
+      "side": 1,
+      "message": "Mainly because `CollectDependencyAconfigFiles` also utilizes `VisitDirectDepsIgnoreBlueprint` which ignores any direct dependencies that are not `android.Module`. I\u0027ll look into if this can be replaced with `VisitDirectDeps`.",
+      "parentUuid": "6c48c228_8fae694c",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "ced340a3299e628161d14fa94a1a6facfdcdfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
