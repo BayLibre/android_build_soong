@@ -52,6 +52,24 @@
       "parentUuid": "2af7d625_d0660caf",
       "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd90126_6184db8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2024-03-19T18:11:33Z",
+      "side": 1,
+      "message": "\u003e oh, then what\u0027s the usecase for this change? Is there a particular module that\u0027s not working?\n\n\nyes, we need it for NFC Apex. See b/329995729, trying to fix it via http://ag/q/topic:%22nfc_min_sdk%22 caused a build breakage - b/330171104",
+      "parentUuid": "6b133362_91f1df82",
+      "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
