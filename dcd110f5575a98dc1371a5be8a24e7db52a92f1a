@@ -16,6 +16,24 @@
       "message": "I\u0027m not confident in this cl, we\u0027ve never added unreleased versions to getApiLevelsMapReleasedVersions to my knowledge.\n\nHowever I\u0027m not sure what you\u0027d do if you want to set minSdkVersion to V in that case...",
       "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2af7d625_d0660caf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-19T16:44:56Z",
+      "side": 1,
+      "message": "Yeah I\u0027m bit unsure if this change is needed either -- e.g. there already are [modules](https://cs.android.com/android/platform/superproject/main/+/main:packages/apps/Nfc/Android.bp;drc\u003da0b72e2e13b4d6ce1776787f5f455732e77b1980;l\u003d14) that are setting `min_sdk_version: \"VanillaIceCream\"` in aosp even without this change, and they seem to be building without any issues.",
+      "parentUuid": "017626ee_58520873",
+      "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
