@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6458b057_18aa2f53",
+        "filename": "java/aar.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2024-03-19T06:28:35Z",
+      "side": 1,
+      "message": "Is it possible to keep the original code, and try to update the overridableDeviceProperties?",
+      "range": {
+        "startLine": 826,
+        "startChar": 34,
+        "endLine": 826,
+        "endChar": 68
+      },
+      "revId": "a6022721641516e89dd789788839b548b35ea3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7df3c29f_076c4135",
         "filename": "java/app.go",
         "patchSetId": 7
