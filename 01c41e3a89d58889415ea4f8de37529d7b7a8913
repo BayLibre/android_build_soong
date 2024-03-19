@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e760fb72_e043ba4c",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-19T19:52:35Z",
+      "side": 1,
+      "message": "Should we emit an error when more than one of these three variables/flags are set with conflicting values? Or is there an order of precedence within these three variables/flags?",
+      "revId": "01c41e3a89d58889415ea4f8de37529d7b7a8913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
