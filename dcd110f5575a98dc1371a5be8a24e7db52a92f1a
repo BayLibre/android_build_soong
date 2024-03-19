@@ -142,6 +142,24 @@
       "parentUuid": "0bbb859b_94b33100",
       "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59bac3a5_ed2221b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-19T23:54:22Z",
+      "side": 1,
+      "message": "Created [ag/26639504](http://ag/26639504) to address this and configured an [ABTD run](https://android-build.corp.google.com/builds/abtd/run/L94500030002625217) with this change and http://ag/q/topic:%22nfc_min_sdk%22",
+      "parentUuid": "eef53b80_3acb7154",
+      "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
