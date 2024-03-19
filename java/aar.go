@@ -104,6 +104,9 @@ type aaptProperties struct {
 
 	// Filter only specified product and ignore other products
 	Filter_product *string `blueprint:"mutated"`
+
+	// Names of aconfig_declarations modules that specify aconfig flags that the app depends on.
+	Flags_packages []string
 }
 
 type aapt struct {
@@ -334,6 +337,10 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 func (a *aapt) deps(ctx android.BottomUpMutatorContext, sdkDep sdkDep) {
 	if sdkDep.frameworkResModule != "" {
 		ctx.AddVariationDependencies(nil, frameworkResTag, sdkDep.frameworkResModule)
+	}
+
+	for _, aconfig_declaration := range a.aaptProperties.Flags_packages {
+		ctx.AddDependency(ctx.Module(), aconfigDeclarationTag, aconfig_declaration)
 	}
 }
 
@@ -817,6 +824,7 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 			sdkContext:                     android.SdkContext(a),
 			classLoaderContexts:            a.classLoaderContexts,
 			enforceDefaultTargetSdkVersion: false,
+			aconfigTextFiles:               getAconfigFilePaths(ctx),
 		},
 	)
 
