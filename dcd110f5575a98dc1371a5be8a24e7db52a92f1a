@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "017626ee_58520873",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-19T16:40:01Z",
+      "side": 1,
+      "message": "I\u0027m not confident in this cl, we\u0027ve never added unreleased versions to getApiLevelsMapReleasedVersions to my knowledge.\n\nHowever I\u0027m not sure what you\u0027d do if you want to set minSdkVersion to V in that case...",
+      "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
