@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57acd963_2fca6f3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-19T00:52:34Z",
+      "side": 1,
+      "message": "One aspect that the visibility property can\u0027t provide but the partition properties can is the ability to prevent system modules from linking to vendor modules (or vice versa).",
+      "range": {
+        "startLine": 22,
+        "startChar": 63,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "52e3efecbb81a0b74d88417f1e0ff452d6962d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e232d4_2ecd0659",
+        "filename": "android/visibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-19T00:52:34Z",
+      "side": 1,
+      "message": "can\u0027t these two be inferred from `module`?",
+      "range": {
+        "startLine": 66,
+        "startChar": 37,
+        "endLine": 66,
+        "endChar": 60
+      },
+      "revId": "52e3efecbb81a0b74d88417f1e0ff452d6962d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e1e8296_9b48f3d5",
+        "filename": "android/visibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-19T00:52:34Z",
+      "side": 1,
+      "message": "Perhaps we want to check if `module` implements `PackageModule` interface.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 51
+      },
+      "revId": "52e3efecbb81a0b74d88417f1e0ff452d6962d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729eb53f_0486cc01",
+        "filename": "android/visibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-19T00:52:34Z",
+      "side": 1,
+      "message": "Would using regex be better to handle these cases at once? We may want to add more partitions in the future.",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 5
+      },
+      "revId": "52e3efecbb81a0b74d88417f1e0ff452d6962d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88ec0ae7_bb74e824",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-19T00:52:34Z",
+      "side": 1,
+      "message": "use proptools.StringDefault?\n```suggestion\n\treturn proptools.StringDefault(f.properties.Partition_type, \"system\")\n}\n```",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 36
+      },
+      "revId": "52e3efecbb81a0b74d88417f1e0ff452d6962d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de11fba_722de88c",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-19T00:52:34Z",
+      "side": 1,
+      "message": "Why is this enforced? `partition_type: \"system\"` should be fine, right?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "52e3efecbb81a0b74d88417f1e0ff452d6962d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
