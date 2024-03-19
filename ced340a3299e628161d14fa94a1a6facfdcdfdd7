@@ -46,6 +46,30 @@
       },
       "revId": "ced340a3299e628161d14fa94a1a6facfdcdfdd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc9d0f4f_d12cc6da",
+        "filename": "android/filegroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-19T20:54:38Z",
+      "side": 1,
+      "message": "`CollectDependencyAconfigFiles` is being called in different module types such as `genrule`, which may depend on non-`android.Module` (e.g. `blueprint_go_binary` module types, which are `blueprint.Module`). However, it seems like that is not the case for `filegroup` modules. I\u0027ve updated this to use `VisitDirectDeps` instead. Thanks for catching this.",
+      "parentUuid": "5a1bd6ef_d0c8cb99",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "ced340a3299e628161d14fa94a1a6facfdcdfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
