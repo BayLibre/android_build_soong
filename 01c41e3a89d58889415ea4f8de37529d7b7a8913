@@ -52,6 +52,24 @@
       "parentUuid": "6c22dff0_1e7f2405",
       "revId": "01c41e3a89d58889415ea4f8de37529d7b7a8913",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96d6f41_a61368b6",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-19T21:33:41Z",
+      "side": 1,
+      "message": "For these two scenarios\n1. DISABLE_VERIFY_OVERLAPS is true and RELEASE_DISABLE_VERIFY_OVERLAPS_CHECK is false\n2. DISABLE_VERIFY_OVERLAPS is false RELEASE_DISABLE_VERIFY_OVERLAPS_CHECK is true\n\nI am raising an exception for (2).\n\nI am not raising an exception for (1) since devs might want to use it for local development.",
+      "parentUuid": "6d66102f_7ed3be9e",
+      "revId": "01c41e3a89d58889415ea4f8de37529d7b7a8913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
