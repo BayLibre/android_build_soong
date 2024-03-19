@@ -841,6 +841,10 @@ func (c *config) BuildId() string {
 	return String(c.productVariables.BuildId)
 }
 
+func (c *config) DisplayBuildNumber() bool {
+	return Bool(c.productVariables.DisplayBuildNumber)
+}
+
 // BuildNumberFile returns the path to a text file containing metadata
 // representing the current build's number.
 //
@@ -850,6 +854,23 @@ func (c *config) BuildId() string {
 // rebuild on every incremental build when the build number changes.
 func (c *config) BuildNumberFile(ctx PathContext) Path {
 	return PathForOutput(ctx, String(c.productVariables.BuildNumberFile))
+}
+
+// BuildHostnameFile returns the path to a text file containing metadata
+// representing the current build's host name.
+func (c *config) BuildHostnameFile(ctx PathContext) Path {
+	return PathForOutput(ctx, String(c.productVariables.BuildHostnameFile))
+}
+
+// BuildThumbprintFile returns the path to a text file containing metadata
+// representing the current build's thumbprint.
+//
+// Rules that want to reference the build thumbprint should read from this file
+// without depending on it. They will run whenever their other dependencies
+// require them to run and get the current build thumbprint. This ensures they
+// don't rebuild on every incremental build when the build thumbprint changes.
+func (c *config) BuildThumbprintFile(ctx PathContext) Path {
+	return PathForOutput(ctx, String(c.productVariables.BuildThumbprintFile))
 }
 
 // DeviceName returns the name of the current device target.
@@ -873,12 +894,20 @@ func (c *config) HasDeviceProduct() bool {
 	return c.productVariables.DeviceProduct != nil
 }
 
+func (c *config) DeviceAbi() []string {
+	return c.productVariables.DeviceAbi
+}
+
 func (c *config) DeviceResourceOverlays() []string {
 	return c.productVariables.DeviceResourceOverlays
 }
 
 func (c *config) ProductResourceOverlays() []string {
 	return c.productVariables.ProductResourceOverlays
+}
+
+func (c *config) PlatformDisplayVersionName() string {
+	return String(c.productVariables.Platform_display_version_name)
 }
 
 func (c *config) PlatformVersionName() string {
@@ -1110,6 +1139,10 @@ func (c *config) Debuggable() bool {
 
 func (c *config) Eng() bool {
 	return Bool(c.productVariables.Eng)
+}
+
+func (c *config) BuildType() string {
+	return String(c.productVariables.BuildType)
 }
 
 // DevicePrimaryArchType returns the ArchType for the first configured device architecture, or
@@ -2085,4 +2118,20 @@ func (c *config) AllApexContributions() []string {
 
 func (c *config) BuildIgnoreApexContributionContents() []string {
 	return c.productVariables.BuildIgnoreApexContributionContents
+}
+
+func (c *config) ProductLocales() []string {
+	return c.productVariables.ProductLocales
+}
+
+func (c *config) ProductDefaultWifiChannels() []string {
+	return c.productVariables.ProductDefaultWifiChannels
+}
+
+func (c *config) BoardUseVbmetaDigestInFingerprint() bool {
+	return Bool(c.productVariables.BoardUseVbmetaDigestInFingerprint)
+}
+
+func (c *config) OemProperties() []string {
+	return c.productVariables.OemProperties
 }
