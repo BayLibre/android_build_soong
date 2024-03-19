@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a2dc688_2c9e02ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-19T18:24:25Z",
+      "side": 1,
+      "message": "LGTM modulo the errorprone issue",
+      "revId": "026b053ddc8e0c872f10cd103a3198f1c09b10c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
