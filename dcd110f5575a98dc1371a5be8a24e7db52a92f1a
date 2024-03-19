@@ -88,6 +88,24 @@
       "parentUuid": "5fd90126_6184db8a",
       "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab2f55ba_05dd3f77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-19T22:09:15Z",
+      "side": 1,
+      "message": "I have no alternative solutions, but if we\u0027re going to go with this change, can we at least get a detailed explanation about what\u0027s going on first?\n\nThat would include why the module in question fails to build without this change, and why other modules can set `min_sdk_version: \"VanillaIceCream\"` just fine without this change.",
+      "parentUuid": "13aa6c21_86c82ea0",
+      "revId": "dcd110f5575a98dc1371a5be8a24e7db52a92f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
