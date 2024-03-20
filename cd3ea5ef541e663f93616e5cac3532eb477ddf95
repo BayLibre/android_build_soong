@@ -16,6 +16,24 @@
       "message": "@spandandas@google.com sorry for the late response - I am not aware that we need to add prebuilt sscp/bcp fragment in apex_contributions. I tested it and it didn\u0027t cause any issue with v1; however, if I added v2 in apex_contributions (e.g. \"prebuilt_art-bootclasspath-fragment.v2\"), it seemed to run into below issue\n\n```\nprebuilt_art-bootclasspath-fragment.v2 listed in apex_contributions art.google.contributions.prebuilt.v2 does not exist\n```",
       "revId": "cd3ea5ef541e663f93616e5cac3532eb477ddf95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "413dcf53_4b994e66",
+        "filename": "sdk/systemserverclasspath_fragment_sdk_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-20T21:42:39Z",
+      "side": 1,
+      "message": "I think you are right, they are not used by the rest of the build. (dexpreopt/hiddenapi does need some information from the fragments, but it gets it from the top-level apex via a provider).\n\nI have removed these modules and their non-sdk contents from `apex_contributions`.",
+      "parentUuid": "ba19889d_766b589e",
+      "revId": "cd3ea5ef541e663f93616e5cac3532eb477ddf95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
