@@ -189,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e739f71_823568ee",
+        "filename": "elf/build_id_dir.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2024-03-20T04:09:10Z",
+      "side": 1,
+      "message": "I tried both of those options and they regressed performance compared to baseline.\n\nMap: Ife6a03360d33f7fc093cf33f95b950434018cfd0\n\n133.0 ms ± 6.4 ms for single update.\n\nChannel: I797763c6fa5082ebb3b82615c83c28d89813e806\n\n160.5 ms ± 7.7 ms for single update.",
+      "parentUuid": "e3822981_7a75ca48",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 15
+      },
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d748b757_d838215c",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "I was thinking about how to do this incrementally, but I hadn\u0027t considered collecting the old tree and applying a diff. Let me see if that helps.",
       "parentUuid": "d748b757_d838215c",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "5e5f2105d4470102d33c2968454f25f669d8238b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9be31590_dda25f95",
+        "filename": "elf/build_id_dir.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2024-03-20T04:09:10Z",
+      "side": 1,
+      "message": "Yes, that helps a lot in the single update case. See benchmark results in the commit message.",
+      "parentUuid": "7531849f_01aae49f",
       "range": {
         "startLine": 87,
         "startChar": 1,
