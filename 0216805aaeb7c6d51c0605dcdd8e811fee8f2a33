@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "880cb9bd_7abd12d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-03-20T11:34:39Z",
+      "side": 1,
+      "message": "I don\u0027t particularly like the dist file being different depending on the release configuration. I would rather that both were copied to the dist files with separate paths that make it clear which is which and then the consumers can be changed to make sure that they pick the right one.",
+      "revId": "0216805aaeb7c6d51c0605dcdd8e811fee8f2a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
