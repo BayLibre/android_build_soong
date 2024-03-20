@@ -71,6 +71,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35affda5_6a25f8a8",
+        "filename": "java/aar.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-03-20T01:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "319bdfb8_18337ab4",
+      "range": {
+        "startLine": 826,
+        "startChar": 34,
+        "endLine": 826,
+        "endChar": 68
+      },
+      "revId": "a6022721641516e89dd789788839b548b35ea3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73671068_15f6a3fc",
+        "filename": "java/aar.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-03-20T01:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41a43d0d_b95956c1",
+      "range": {
+        "startLine": 826,
+        "startChar": 1,
+        "endLine": 826,
+        "endChar": 131
+      },
+      "revId": "a6022721641516e89dd789788839b548b35ea3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7df3c29f_076c4135",
@@ -94,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8efefc34_1657bf71",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-03-20T01:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7df3c29f_076c4135",
+      "range": {
+        "startLine": 758,
+        "startChar": 1,
+        "endLine": 758,
+        "endChar": 131
+      },
+      "revId": "a6022721641516e89dd789788839b548b35ea3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30d5bc72_7cf29311",
@@ -107,6 +179,30 @@
       "writtenOn": "2024-03-19T06:19:13Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 766,
+        "startChar": 2,
+        "endLine": 766,
+        "endChar": 116
+      },
+      "revId": "a6022721641516e89dd789788839b548b35ea3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a736ba8_932f1f09",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-03-20T01:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30d5bc72_7cf29311",
       "range": {
         "startLine": 766,
         "startChar": 2,
@@ -164,6 +260,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ccdcb0d_c546be10",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-03-20T01:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16c89fdd_89f7588c",
+      "range": {
+        "startLine": 892,
+        "startChar": 1,
+        "endLine": 892,
+        "endChar": 131
+      },
+      "revId": "a6022721641516e89dd789788839b548b35ea3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab1ea185_5a3176b6",
@@ -201,6 +321,30 @@
       "side": 1,
       "message": "Just update it.",
       "parentUuid": "ab1ea185_5a3176b6",
+      "range": {
+        "startLine": 1689,
+        "startChar": 0,
+        "endLine": 1689,
+        "endChar": 131
+      },
+      "revId": "a6022721641516e89dd789788839b548b35ea3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91af781c_2645d80e",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1689,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-03-20T01:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac9342b0_33285cda",
       "range": {
         "startLine": 1689,
         "startChar": 0,
