@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd972899_d7c38a6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-20T17:55:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "28235225_d484756b",
+      "revId": "7d1bacb8347cf483990da598da05be5587baf171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4605128_018d871f",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-03-20T17:21:51Z",
       "side": 1,
       "message": "nit: duplicate with L318~319?",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 331,
+        "endChar": 5
+      },
+      "revId": "7d1bacb8347cf483990da598da05be5587baf171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0bffa0_84e406bd",
+        "filename": "android/visibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-20T17:55:59Z",
+      "side": 1,
+      "message": "oops, thanks for catching.",
+      "parentUuid": "b4605128_018d871f",
       "range": {
         "startLine": 328,
         "startChar": 4,
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e65108cb_a3bd2d93",
+        "filename": "android/visibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-20T17:55:59Z",
+      "side": 1,
+      "message": "`checkRules()` will check for that. Added a test as per your other comment.",
+      "parentUuid": "dd2fa860_ad861d43",
+      "revId": "7d1bacb8347cf483990da598da05be5587baf171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec35152f_17b9dbda",
@@ -71,6 +131,24 @@
       "writtenOn": "2024-03-20T17:21:51Z",
       "side": 1,
       "message": "do you mind adding a test case when setting a visibility with an undefined partition?",
+      "revId": "7d1bacb8347cf483990da598da05be5587baf171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaff586e_2b01362f",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2012,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-20T17:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec35152f_17b9dbda",
       "revId": "7d1bacb8347cf483990da598da05be5587baf171",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
