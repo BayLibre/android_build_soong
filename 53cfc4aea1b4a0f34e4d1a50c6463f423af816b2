@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1158d8_dc1c5657",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-20T19:31:40Z",
+      "side": 1,
+      "message": "Hi, this is ready for review.\nPlease let me know if there is anything else I should have to do for \"host\" vs non-host test modules.",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c3d23e0_48f75f9a",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-20T19:31:40Z",
+      "side": 1,
+      "message": "Please let me know if this is the right way to deal with variations for Host modules and if it should AddFarVariation instead",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
