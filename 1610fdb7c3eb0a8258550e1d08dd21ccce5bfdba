@@ -94,6 +94,30 @@
       },
       "revId": "1610fdb7c3eb0a8258550e1d08dd21ccce5bfdba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1057ca6_5dc93e10",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-20T22:41:31Z",
+      "side": 1,
+      "message": "I also checked and it does appear to work, but +1 to passing the first output file in `AndroidMkEntries.OutputFile` instead of a timestamp file.",
+      "parentUuid": "2444b885_a15255c7",
+      "range": {
+        "startLine": 499,
+        "startChar": 2,
+        "endLine": 499,
+        "endChar": 12
+      },
+      "revId": "1610fdb7c3eb0a8258550e1d08dd21ccce5bfdba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
