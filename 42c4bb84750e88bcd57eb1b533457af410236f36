@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82573dd5_0ae976ba",
+        "filename": "java/dex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-20T17:28:00Z",
+      "side": 1,
+      "message": "Can you give a quick explanation here on how `optimized_shrink_resources` is different from `shrink_resources` so anyone looking at go/Android.bp can tell which one they should use?",
+      "revId": "42c4bb84750e88bcd57eb1b533457af410236f36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
