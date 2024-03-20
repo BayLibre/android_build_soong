@@ -276,3 +276,199 @@ func TestGeneratedLibraryStdConfig(t *testing.T) {
 			genLibCompiler.Args["libFlags"])
 	}
 }
+
+func TestCCSuggestedStaticRlibs(t *testing.T) {
+	// Test that multiple generated libraries bubbling up to a CC module results
+	// in a module error, and that the list of suggested entries for static_rlibs
+	// is correct.
+	//
+	// This is included here instead of in soong-cc because soong-cc cannot depend
+	// on soong-rust
+	testRustError(t, ".*Suggested static_rlibs entries: \\[libbar.ffi libfoo.ffi\\].*", `
+		cc_binary {
+			name: "fizzbuzz",
+			srcs: ["foo.c"],
+			static_libs: ["libcc_foo","libcc_bar"],
+			host_supported: true,
+		}
+		cc_library {
+			name: "libcc_bar",
+			srcs: ["bar.c"],
+			static_rlibs: [
+				"libbar.ffi",
+			],
+			host_supported: true,
+		}
+		cc_library {
+			name: "libcc_foo",
+			srcs: ["foo.c"],
+			static_rlibs: [
+				"libfoo.ffi",
+			],
+			host_supported: true,
+		}
+		rust_ffi_rlib {
+			name: "libfoo.ffi",
+			srcs: ["foo.rs"],
+			rustlibs: ["libfoo_rs"],
+			crate_name: "foo",
+			host_supported: true,
+			include_dirs: ["include/foo"]
+		}
+		rust_ffi_rlib {
+			name: "libbar.ffi",
+			srcs: ["bar.rs"],
+			rustlibs: ["libfoo_rs"],
+			crate_name: "bar",
+			host_supported: true,
+			include_dirs: ["include/bar"]
+		}
+		rust_library {
+			name: "libfoo_rs",
+			srcs: ["foo.rs"],
+			crate_name: "foo_rs",
+			host_supported: true,
+		}
+		rust_library {
+			name: "libbar_rs",
+			srcs: ["bar.rs"],
+			crate_name: "bar_rs",
+			host_supported: true,
+		}
+	`)
+}
+
+func TestCCIgnoredPropagatedDeps(t *testing.T) {
+	// Test that a CC module will ignore propagated deps if static_rlibs is defined.
+	//
+	// This is included here instead of in soong-cc because soong-cc cannot depend
+	// on soong-rust
+	ctx := testRust(t, `
+		cc_binary {
+			name: "fizzbuzz",
+			srcs: ["foo.c"],
+			static_libs: ["libcc_foo","libcc_bar"],
+			static_rlibs: ["libbar.ffi"],
+			host_supported: true,
+		}
+		cc_library {
+			name: "libcc_bar",
+			srcs: ["bar.c"],
+			static_rlibs: [
+				"libbar.ffi",
+			],
+			host_supported: true,
+		}
+		cc_library {
+			name: "libcc_foo",
+			srcs: ["foo.c"],
+			static_rlibs: [
+				"libfoo.ffi",
+			],
+			host_supported: true,
+		}
+		rust_ffi_rlib {
+			name: "libfoo.ffi",
+			srcs: ["foo.rs"],
+			rustlibs: ["libfoo_rs"],
+			crate_name: "foo",
+			host_supported: true,
+			include_dirs: ["include/foo"]
+		}
+		rust_ffi_rlib {
+			name: "libbar.ffi",
+			srcs: ["bar.rs"],
+			rustlibs: ["libfoo_rs"],
+			crate_name: "bar",
+			host_supported: true,
+			include_dirs: ["include/bar"]
+		}
+		rust_library {
+			name: "libfoo_rs",
+			srcs: ["foo.rs"],
+			crate_name: "foo_rs",
+			host_supported: true,
+		}
+		rust_library {
+			name: "libbar_rs",
+			srcs: ["bar.rs"],
+			crate_name: "bar_rs",
+			host_supported: true,
+		}
+	`)
+
+	ccBin := ctx.ModuleForTests("fizzbuzz", "linux_glibc_x86_64").Rule("cc")
+	ccBinModule := ctx.ModuleForTests("fizzbuzz", "linux_glibc_x86_64").Module().(*cc.Module)
+
+	if strings.Contains(ccBin.Args["libFlags"], "liblibcc_foo_generated_rust_staticlib") {
+		t.Errorf("expected 'liblibcc_foo_generated_rust_staticlib' to be missing in linkFlags, got: %#v",
+			ccBin.Args["libFlags"])
+	}
+
+	if !android.InList("libfizzbuzz_generated_rust_staticlib", ccBinModule.Properties.AndroidMkStaticLibs) {
+		t.Errorf("libfizzbuzz_generated_rust_staticlib expected to be a dependency of cc_binary static libraries. Static lib deps are: %#v",
+			ccBinModule.Properties.AndroidMkStaticLibs)
+	}
+}
+
+func TestDuplicateRustStaticlibs(t *testing.T) {
+	// Test that a CC module won't complain if multiple identical generated Rust
+	// staticlibs end up in its dependency tree.
+	//
+	// This is included here instead of in soong-cc because soong-cc cannot depend
+	// on soong-rust
+	testRust(t, `
+		cc_binary {
+			name: "fizzbuzz",
+			srcs: ["foo.c"],
+			static_libs: ["libcc_foo","libcc_bar"],
+			host_supported: true,
+		}
+		cc_library {
+			name: "libcc_bar",
+			srcs: ["bar.c"],
+			static_rlibs: [
+				"libbar.ffi",
+				"libfoo.ffi",
+			],
+			host_supported: true,
+		}
+		cc_library {
+			name: "libcc_foo",
+			srcs: ["foo.c"],
+			static_rlibs: [
+				"libfoo.ffi",
+				"libbar.ffi",
+			],
+			host_supported: true,
+		}
+		rust_ffi_rlib {
+			name: "libfoo.ffi",
+			srcs: ["foo.rs"],
+			rustlibs: ["libfoo_rs"],
+			crate_name: "foo",
+			host_supported: true,
+			include_dirs: ["include/foo"]
+		}
+		rust_ffi_rlib {
+			name: "libbar.ffi",
+			srcs: ["bar.rs"],
+			rustlibs: ["libfoo_rs"],
+			crate_name: "bar",
+			host_supported: true,
+			include_dirs: ["include/bar"]
+		}
+		rust_library {
+			name: "libfoo_rs",
+			srcs: ["foo.rs"],
+			crate_name: "foo_rs",
+			host_supported: true,
+		}
+		rust_library {
+			name: "libbar_rs",
+			srcs: ["bar.rs"],
+			crate_name: "bar_rs",
+			host_supported: true,
+		}
+	`)
+}

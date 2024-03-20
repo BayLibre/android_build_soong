@@ -158,14 +158,21 @@ type Deps struct {
 // It's used to construct flags for various build statements (such as for compiling and linking).
 // It is then passed to module decorator functions responsible for registering build statements
 // (such as `module.compiler.compile()`).`
+
+type rustStaticLib struct {
+	libPath  android.Path
+	rlibDeps []string
+}
+
 type PathDeps struct {
 	// Paths to .so files
 	SharedLibs, EarlySharedLibs, LateSharedLibs android.Paths
 	// Paths to the dependencies to use for .so files (.so.toc files)
 	SharedLibsDeps, EarlySharedLibsDeps, LateSharedLibsDeps android.Paths
 	// Paths to .a files
-	RustStaticLibs, StaticLibs, LateStaticLibs, WholeStaticLibs android.Paths
-
+	StaticLibs, LateStaticLibs, WholeStaticLibs android.Paths
+	// Paths and rlib dependencies for generated Rust staticlibs
+	RustStaticLibs []rustStaticLib
 	// Transitive static library dependencies of static libraries for use in ordering.
 	TranstiveStaticLibrariesForOrdering *android.DepSet[android.Path]
 
@@ -193,7 +200,7 @@ type PathDeps struct {
 	ReexportedFlags            []string
 	ReexportedGeneratedHeaders android.Paths
 	ReexportedDeps             android.Paths
-	ReexportedRustStaticDeps   android.Paths
+	ReexportedRustStaticDeps   []rustStaticLib
 
 	// Paths to crt*.o files
 	CrtBegin, CrtEnd android.Paths
@@ -613,6 +620,7 @@ type linker interface {
 	linkerProps() []interface{}
 	useClangLld(actx ModuleContext) bool
 	declaredStaticRlibs() []string
+	staticRlibs(ctx android.ModuleContext) []string
 
 	link(ctx ModuleContext, flags Flags, deps PathDeps, objs Objects) android.Path
 	appendLdflags([]string)
@@ -1948,6 +1956,11 @@ func (c *Module) staticRlibsDeclared() bool {
 	return len(c.linker.declaredStaticRlibs()) != 0
 }
 
+// StaticRlibs returns the list of static_rlibs defined in the module
+// definition. This will return static_rlibs for a particular variant.
+func (c *Module) StaticRlibs(ctx android.ModuleContext) []string {
+	return c.linker.staticRlibs(ctx)
+}
 func (c *Module) Prebuilt() *android.Prebuilt {
 	if p, ok := c.linker.(prebuiltLinkerInterface); ok {
 		return p.prebuilt()
@@ -3383,10 +3396,14 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 				// We re-export the Rust static libraries built from static_rlibs so static dependencies don't need to be redeclared by dependents.
 				// E.g. libfoo (cc_library_static) depends on libfoo.ffi (a rust_ffi rlib), libbar depending on libfoo shouldn't have to also add libfoo.ffi to static_rlibs.
-				if ccDep.IsRustGeneratedStaticLib() {
-					depPaths.ReexportedRustStaticDeps = append(depPaths.ReexportedRustStaticDeps, linkFile.Path())
-				} else {
-					depPaths.ReexportedRustStaticDeps = append(depPaths.ReexportedRustStaticDeps, depExporterInfo.RustStaticDeps...)
+				// If static_rlibs is defined for this module, we don't re-export.
+				if c.CcLibrary() && c.Static() {
+					if ccDep.IsRustGeneratedStaticLib() {
+						depPaths.ReexportedRustStaticDeps = []rustStaticLib{{libPath: linkFile.Path(), rlibDeps: ccDep.StaticRlibs(ctx)}}
+					} else if len(c.StaticRlibs(ctx)) == 0 {
+						// Only re-export RustStaticDeps for static libs
+						depPaths.ReexportedRustStaticDeps = append(depPaths.ReexportedRustStaticDeps, depExporterInfo.RustStaticDeps...)
+					}
 				}
 
 				if libDepTag.unexportedSymbols {
@@ -3514,12 +3531,14 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	depPaths.IncludeDirs = android.FirstUniquePaths(depPaths.IncludeDirs)
 	depPaths.SystemIncludeDirs = android.FirstUniquePaths(depPaths.SystemIncludeDirs)
 	depPaths.GeneratedDeps = android.FirstUniquePaths(depPaths.GeneratedDeps)
+	depPaths.RustStaticLibs = firstUniqueRustStaticlibs(depPaths.RustStaticLibs)
+
 	depPaths.ReexportedDirs = android.FirstUniquePaths(depPaths.ReexportedDirs)
 	depPaths.ReexportedSystemDirs = android.FirstUniquePaths(depPaths.ReexportedSystemDirs)
 	depPaths.ReexportedFlags = android.FirstUniqueStrings(depPaths.ReexportedFlags)
 	depPaths.ReexportedDeps = android.FirstUniquePaths(depPaths.ReexportedDeps)
 	depPaths.ReexportedGeneratedHeaders = android.FirstUniquePaths(depPaths.ReexportedGeneratedHeaders)
-	depPaths.ReexportedRustStaticDeps = android.FirstUniquePaths(depPaths.ReexportedRustStaticDeps)
+	depPaths.ReexportedRustStaticDeps = firstUniqueRustStaticlibs(depPaths.ReexportedRustStaticDeps)
 
 	if c.sabi != nil {
 		c.sabi.Properties.ReexportedIncludes = android.FirstUniqueStrings(c.sabi.Properties.ReexportedIncludes)
@@ -4091,6 +4110,21 @@ func (c *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
 		return fmt.Errorf("newer SDK(%v)", ver)
 	}
 	return nil
+}
+
+func firstUniqueRustStaticlibs(rustLibs []rustStaticLib) []rustStaticLib {
+	k := 0
+outer:
+	for i := 0; i < len(rustLibs); i++ {
+		for j := 0; j < k; j++ {
+			if rustLibs[i].libPath.String() == rustLibs[j].libPath.String() {
+				continue outer
+			}
+		}
+		rustLibs[k] = rustLibs[i]
+		k++
+	}
+	return rustLibs[:k]
 }
 
 // Implements android.ApexModule
