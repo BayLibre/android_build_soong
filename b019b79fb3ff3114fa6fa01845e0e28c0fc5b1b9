@@ -22,6 +22,30 @@
       },
       "revId": "b019b79fb3ff3114fa6fa01845e0e28c0fc5b1b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2991c267_73878e62",
+        "filename": "cc/genrule_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1308036
+      },
+      "writtenOn": "2024-03-20T01:29:20Z",
+      "side": 1,
+      "message": "Done. Thanks Colin.",
+      "parentUuid": "e3b50cc4_c112abb1",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 0
+      },
+      "revId": "b019b79fb3ff3114fa6fa01845e0e28c0fc5b1b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
