@@ -60,8 +60,7 @@ func UpdateBuildIdDir(path string) error {
 	// Collect build-id -> file mapping from ELF files in the symbols directory.
 	concurrency := 8
 	done := make(chan error)
-	buildIdToFile := make(map[string]string)
-	var mu sync.Mutex
+	var buildIdToFile sync.Map
 	for i := 0; i != concurrency; i++ {
 		go func(paths []string) {
 			for _, path := range paths {
@@ -73,12 +72,15 @@ func UpdateBuildIdDir(path string) error {
 				if id == "" {
 					continue
 				}
-				mu.Lock()
-				oldPath := buildIdToFile[id]
-				if oldPath == "" || oldPath > path {
-					buildIdToFile[id] = path
+				for {
+					oldPath, loaded := buildIdToFile.LoadOrStore(id, path)
+					if loaded && oldPath.(string) > path {
+						if !buildIdToFile.CompareAndSwap(id, oldPath, path) {
+							continue
+						}
+					}
+					break
 				}
-				mu.Unlock()
 			}
 			done <- nil
 		}(symbolFiles[len(symbolFiles)*i/concurrency : len(symbolFiles)*(i+1)/concurrency])
@@ -133,7 +135,7 @@ out:
 
 	// Delete old symlinks.
 	for id, _ := range prevBuildIdToFile {
-		if buildIdToFile[id] == "" {
+		if _, ok := buildIdToFile.Load(id); !ok {
 			symlinkDir := buildIdPath + "/" + id[:2]
 			symlinkPath := symlinkDir + "/" + id[2:] + ".debug"
 			if err := os.Remove(symlinkPath); err != nil {
@@ -143,30 +145,34 @@ out:
 	}
 
 	// Add new symlinks and update changed symlinks.
-	for id, path := range buildIdToFile {
+	var err error
+	buildIdToFile.Range(func(id_, path_ any) bool {
+		id := id_.(string)
+		path := path_.(string)
 		prevPath := prevBuildIdToFile[id]
 		if prevPath == path {
-			continue
+			return true
 		}
 		symlinkDir := buildIdPath + "/" + id[:2]
 		symlinkPath := symlinkDir + "/" + id[2:] + ".debug"
 		if prevPath == "" {
-			if err := os.MkdirAll(symlinkDir, 0755); err != nil {
-				return err
+			if err = os.MkdirAll(symlinkDir, 0755); err != nil {
+				return false
 			}
 		} else {
-			if err := os.Remove(symlinkPath); err != nil {
-				return err
+			if err = os.Remove(symlinkPath); err != nil {
+				return false
 			}
 		}
 
 		target, err := filepath.Rel(symlinkDir, path)
 		if err != nil {
-			return err
+			return false
 		}
-		if err := os.Symlink(target, symlinkPath); err != nil {
-			return err
+		if err = os.Symlink(target, symlinkPath); err != nil {
+			return false
 		}
-	}
-	return nil
+		return true
+	})
+	return err
 }
