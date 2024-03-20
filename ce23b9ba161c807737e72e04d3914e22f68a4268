@@ -87,6 +87,30 @@
       },
       "revId": "ce23b9ba161c807737e72e04d3914e22f68a4268",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c79d382_0f97d4e4",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2024-03-20T13:40:20Z",
+      "side": 1,
+      "message": "That is exactly our plan.",
+      "parentUuid": "2efe42b1_d2d0a25c",
+      "range": {
+        "startLine": 117,
+        "startChar": 25,
+        "endLine": 117,
+        "endChar": 31
+      },
+      "revId": "ce23b9ba161c807737e72e04d3914e22f68a4268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
