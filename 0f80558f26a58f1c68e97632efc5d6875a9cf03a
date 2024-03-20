@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7408f123_60940962",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-20T00:45:58Z",
+      "side": 1,
+      "message": "unexport this function.\n```suggestion\nfunc (p *PrebuiltEtc) installBaseDir(ctx android.ModuleContext) string {\n```",
+      "range": {
+        "startLine": 316,
+        "startChar": 22,
+        "endLine": 316,
+        "endChar": 36
+      },
+      "revId": "0f80558f26a58f1c68e97632efc5d6875a9cf03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7077cce_c8ca0295",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-20T00:45:58Z",
+      "side": 1,
+      "message": "You can have set but empty list properties:\n```suggestion\n\t} else if len(p.properties.Srcs) \u003e 0 {\n```",
+      "range": {
+        "startLine": 383,
+        "startChar": 11,
+        "endLine": 383,
+        "endChar": 35
+      },
+      "revId": "0f80558f26a58f1c68e97632efc5d6875a9cf03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c3ddb3_36660fc3",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-20T00:45:58Z",
+      "side": 1,
+      "message": "Please also add an assertion that filename_from_src is not set as well. If it\u0027s implicitly always set, there\u0027s no need to set it in the bp file.",
+      "revId": "0f80558f26a58f1c68e97632efc5d6875a9cf03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

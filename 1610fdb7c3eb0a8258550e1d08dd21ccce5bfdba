@@ -22,6 +22,30 @@
       },
       "revId": "1610fdb7c3eb0a8258550e1d08dd21ccce5bfdba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c1c4d6_24f19be1",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-20T00:45:58Z",
+      "side": 1,
+      "message": "I don\u0027t believe this will work, if you don\u0027t tell make exactly what files were installed, they won\u0027t be included on the final partition images.\n\nIf you only intend to use these multi-file prebuilt etcs from an apex, you could call `HideFromMake()` to avoid the problem entirely.\n\nOtherwise, you should test that they get installed on partitions correctly. Though off the top of my head I\u0027m not sure what would need to change for that.",
+      "parentUuid": "46af4031_fd389fb0",
+      "range": {
+        "startLine": 499,
+        "startChar": 2,
+        "endLine": 499,
+        "endChar": 12
+      },
+      "revId": "1610fdb7c3eb0a8258550e1d08dd21ccce5bfdba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
