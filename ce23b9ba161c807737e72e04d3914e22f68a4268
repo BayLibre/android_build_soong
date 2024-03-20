@@ -111,6 +111,30 @@
       },
       "revId": "ce23b9ba161c807737e72e04d3914e22f68a4268",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12418567_df6d714b",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-03-20T20:58:22Z",
+      "side": 1,
+      "message": "Then you might want to keep !lto.ThinLTO() in the if statement instead of removing it, iiuc at least there is one case using it: https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:system/libhwbinder/Android.bp;drc\u003dc09faf011443e2569b770cd7e1710a22114d62e3;l\u003d158",
+      "parentUuid": "2c79d382_0f97d4e4",
+      "range": {
+        "startLine": 117,
+        "startChar": 25,
+        "endLine": 117,
+        "endChar": 31
+      },
+      "revId": "ce23b9ba161c807737e72e04d3914e22f68a4268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
