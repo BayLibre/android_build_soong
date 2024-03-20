@@ -16,6 +16,24 @@
       "message": "Is there any chance that you could split this into two parts? One to add a new target `...combined.latest` which is just the same as `...latest`. That can then be submitted with the changes to the other git repositories.\n\nThe second would modify `...combined.latest` to include all the files and updates the parameters to Metalava. That will make it easier for me to reproduce.",
       "revId": "a3a93648618f74faf7beba76d50ed573f3ad5987",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59dfe54f_2bff4eef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-03-20T16:20:36Z",
+      "side": 1,
+      "message": "Unresolving.",
+      "parentUuid": "68766b80_e504403e",
+      "revId": "a3a93648618f74faf7beba76d50ed573f3ad5987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
