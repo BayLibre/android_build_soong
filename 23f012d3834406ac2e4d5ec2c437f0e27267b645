@@ -93,6 +93,30 @@
       },
       "revId": "23f012d3834406ac2e4d5ec2c437f0e27267b645",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "123d35d6_67880002",
+        "filename": "java/aar_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-20T00:07:46Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "cff00931_b5115034",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 3
+      },
+      "revId": "23f012d3834406ac2e4d5ec2c437f0e27267b645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
