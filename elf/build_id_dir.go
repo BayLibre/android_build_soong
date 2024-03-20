@@ -19,7 +19,6 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"sync"
 	"time"
 )
 
@@ -58,29 +57,27 @@ func UpdateBuildIdDir(path string) error {
 	}
 
 	// Collect build-id -> file mapping from ELF files in the symbols directory.
+	type resp struct {
+		id, path string
+		err      error
+	}
 	concurrency := 8
-	done := make(chan error)
+	done := make(chan resp)
 	buildIdToFile := make(map[string]string)
-	var mu sync.Mutex
 	for i := 0; i != concurrency; i++ {
 		go func(paths []string) {
 			for _, path := range paths {
 				id, err := Identifier(path, true)
 				if err != nil {
-					done <- err
+					done <- resp{"", "", err}
 					return
 				}
 				if id == "" {
 					continue
 				}
-				mu.Lock()
-				oldPath := buildIdToFile[id]
-				if oldPath == "" || oldPath > path {
-					buildIdToFile[id] = path
-				}
-				mu.Unlock()
+				done <- resp{id, path, nil}
 			}
-			done <- nil
+			done <- resp{}
 		}(symbolFiles[len(symbolFiles)*i/concurrency : len(symbolFiles)*(i+1)/concurrency])
 	}
 
@@ -124,10 +121,18 @@ out:
 	}
 
 	// Wait for build-id collection from ELF files to finish.
-	for i := 0; i != concurrency; i++ {
-		err := <-done
-		if err != nil {
-			return err
+	for i := 0; i != concurrency; {
+		resp := <-done
+		if resp.err != nil {
+			return resp.err
+		}
+		if resp.id == "" {
+			i++
+		} else {
+			oldPath := buildIdToFile[resp.id]
+			if oldPath == "" || oldPath > resp.path {
+				buildIdToFile[resp.id] = resp.path
+			}
 		}
 	}
 
