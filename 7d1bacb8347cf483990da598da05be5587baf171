@@ -16,6 +16,63 @@
       "message": "This LGTM, but I wish someone from your team (other than yourself) review this as well. I may be missing something important.",
       "revId": "7d1bacb8347cf483990da598da05be5587baf171",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4605128_018d871f",
+        "filename": "android/visibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-20T17:21:51Z",
+      "side": 1,
+      "message": "nit: duplicate with L318~319?",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 331,
+        "endChar": 5
+      },
+      "revId": "7d1bacb8347cf483990da598da05be5587baf171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd2fa860_ad861d43",
+        "filename": "android/visibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-20T17:21:51Z",
+      "side": 1,
+      "message": "Should we throw an error when an unrecognized partition is found?",
+      "revId": "7d1bacb8347cf483990da598da05be5587baf171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec35152f_17b9dbda",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2012,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-20T17:21:51Z",
+      "side": 1,
+      "message": "do you mind adding a test case when setting a visibility with an undefined partition?",
+      "revId": "7d1bacb8347cf483990da598da05be5587baf171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
