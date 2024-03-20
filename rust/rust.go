@@ -546,6 +546,13 @@ func (mod *Module) PreventInstall() bool {
 	return mod.Properties.PreventInstall
 }
 
+func (mod *Module) StaticRlibs() []string {
+	if sp, ok := mod.sourceProvider.(*generatedLibraryDecorator); ok {
+		return sp.Properties.Static_rlibs
+	}
+	return []string{}
+}
+
 func (mod *Module) MarkAsCoverageVariant(coverage bool) {
 	mod.coverage.Properties.IsCoverageVariant = coverage
 }
