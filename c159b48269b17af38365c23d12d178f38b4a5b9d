@@ -16,6 +16,24 @@
       "message": "@colefaust@google.com Do you know why `echo -e` doesn\u0027t work? It works locally but it fails on the build server.",
       "revId": "c159b48269b17af38365c23d12d178f38b4a5b9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2957a64a_33abe4d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-20T18:42:10Z",
+      "side": 1,
+      "message": "Unfortunately the shell used in the build comes from the host system. Not all shells support `echo -e`, and if the flag isn\u0027t supported it will just echo the `-e` literally.\n\nIt might be easier to write out most of the file with a `WriteFileRule`, and just leave placeholders for the few things that need to come from other files. Then run a python script on the result to replace the placeholders with their real values.",
+      "parentUuid": "731452e8_e1e65664",
+      "revId": "c159b48269b17af38365c23d12d178f38b4a5b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
