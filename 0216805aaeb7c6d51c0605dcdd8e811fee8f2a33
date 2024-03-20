@@ -16,6 +16,24 @@
       "message": "I don\u0027t particularly like the dist file being different depending on the release configuration. I would rather that both were copied to the dist files with separate paths that make it clear which is which and then the consumers can be changed to make sure that they pick the right one.",
       "revId": "0216805aaeb7c6d51c0605dcdd8e811fee8f2a33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54bd7d3f_d12a1d88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-20T21:45:45Z",
+      "side": 1,
+      "message": "IIUC the dist directory should differ based on the artifact it is copied from?\ne.g.\n```\nout/.../exportable/framework-foo.stubs.source_api.txt --\u003e out/dist/.../api/exportable/framework-foo.txt\n\nout/.../everything/framework-foo.stubs.source_api.txt --\u003e out/dist/.../api/everything/framework-foo.txt\n```\n?\n\nI believe that this is feasible, but could modifying the file paths in the dist directory break any mechanisms or workflows during release or api finalization?",
+      "parentUuid": "880cb9bd_7abd12d2",
+      "revId": "0216805aaeb7c6d51c0605dcdd8e811fee8f2a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
