@@ -279,7 +279,7 @@ type flagExporter struct {
 	flags          []string      // Exported raw flags.
 	deps           android.Paths
 	headers        android.Paths
-	rustStaticDeps android.Paths
+	rustStaticDeps []rustStaticLib
 }
 
 // exportedIncludes returns the effective include paths for this module and
@@ -336,7 +336,7 @@ func (f *flagExporter) reexportDeps(deps ...android.Path) {
 	f.deps = append(f.deps, deps...)
 }
 
-func (f *flagExporter) reexportRustStaticDeps(deps ...android.Path) {
+func (f *flagExporter) reexportRustStaticDeps(deps ...rustStaticLib) {
 	f.rustStaticDeps = append(f.rustStaticDeps, deps...)
 }
 
@@ -1136,8 +1136,8 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	linkerDeps = append(linkerDeps, deps.SharedLibsDeps...)
 	linkerDeps = append(linkerDeps, deps.LateSharedLibsDeps...)
 	transformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs,
-		deps.StaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs, deps.RustStaticLibs,
-		linkerDeps, deps.CrtBegin, deps.CrtEnd, false, builderFlags, outputFile, implicitOutputs, objs.tidyDepFiles)
+		deps.StaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs, linkerDeps, deps.CrtBegin,
+		deps.CrtEnd, deps.RustStaticLibs, false, builderFlags, outputFile, implicitOutputs, objs.tidyDepFiles)
 
 	objs.coverageFiles = append(objs.coverageFiles, deps.StaticLibObjs.coverageFiles...)
 	objs.coverageFiles = append(objs.coverageFiles, deps.WholeStaticLibObjs.coverageFiles...)

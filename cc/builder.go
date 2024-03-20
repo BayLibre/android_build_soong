@@ -777,8 +777,8 @@ func transformObjToStaticLib(ctx android.ModuleContext,
 // Generate a rule for compiling multiple .o files, plus static libraries, whole static libraries,
 // and shared libraries, to a shared library (.so) or dynamic executable
 func transformObjToDynamicBinary(ctx android.ModuleContext,
-	objFiles, sharedLibs, staticLibs, lateStaticLibs, wholeStaticLibs, rustStaticLibs, deps, crtBegin, crtEnd android.Paths,
-	groupLate bool, flags builderFlags, outputFile android.WritablePath,
+	objFiles, sharedLibs, staticLibs, lateStaticLibs, wholeStaticLibs, deps, crtBegin, crtEnd android.Paths,
+	depsRustStaticLibs []rustStaticLib, groupLate bool, flags builderFlags, outputFile android.WritablePath,
 	implicitOutputs android.WritablePaths, validations android.Paths) {
 
 	ldCmd := "${config.ClangBin}/clang++"
@@ -800,7 +800,8 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 	}
 
 	libFlagsList = append(libFlagsList, staticLibs.Strings()...)
-	libFlagsList = append(libFlagsList, rustStaticLibs.Strings()...)
+
+	deps, libFlagsList = propagatedRustStaticLibs(ctx, depsRustStaticLibs, deps, libFlagsList)
 
 	if groupLate && !ctx.Darwin() && len(lateStaticLibs) > 0 {
 		libFlagsList = append(libFlagsList, "-Wl,--start-group")
@@ -819,7 +820,6 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 	}
 
 	deps = append(deps, staticLibs...)
-	deps = append(deps, rustStaticLibs...)
 	deps = append(deps, lateStaticLibs...)
 	deps = append(deps, wholeStaticLibs...)
 	deps = append(deps, crtBegin...)
@@ -851,6 +851,46 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 		Validations:     validations,
 		Args:            args,
 	})
+}
+
+// Return any generated Rust staticlibs propagated dependencies and their flags.
+// If there's more than one, this will check if they're identical and if not error out
+// with a suggestion of static_rlibs to define for this module.
+func propagatedRustStaticLibs(ctx android.ModuleContext, depsRustStaticLibs []rustStaticLib, deps android.Paths, libFlagsList []string) (android.Paths, []string) {
+
+	// If there are rustStaticLibs propagating from dependencies,
+	// make sure there's only one, otherwise error out to avoid symbol collisions
+	if len(ctx.Module().(*Module).StaticRlibs()) == 0 && len(depsRustStaticLibs) > 0 {
+		if len(depsRustStaticLibs) != 1 {
+			// If there's more than one propagated Rust staticlib, check if they
+			// have the same deps -- if they do, shouldn't be a collision and we
+			// can just use the first one.
+			identicalStaticlibs := true
+			suggestedRlibs := []string{}
+			for i, lib := range depsRustStaticLibs {
+				if i < len(depsRustStaticLibs)-1 && identicalStaticlibs {
+					if ok, _, _ := android.ListSetDifference(depsRustStaticLibs[i].rlibDeps, depsRustStaticLibs[i+1].rlibDeps); ok {
+						identicalStaticlibs = false
+					}
+				}
+				suggestedRlibs = append(suggestedRlibs, lib.rlibDeps...)
+			}
+
+			if !identicalStaticlibs {
+				// If the deps aren't identical, then error out with a suggested list
+				// of rlibs to depend on.
+				suggestedRlibs = android.SortedUniqueStrings(suggestedRlibs)
+				ctx.ModuleErrorf(
+					"Module has multiple Rust static libs from dependencies. To avoid symbol collisions, redeclare Rust rlib dependencies in this modules static_rlibs. Suggested static_rlibs entries: %v;;; debug %#v",
+					suggestedRlibs, depsRustStaticLibs)
+			}
+		}
+		lib := depsRustStaticLibs[0].libPath
+		libFlagsList = append(libFlagsList, lib.String())
+		deps = append(deps, lib)
+	}
+
+	return deps, libFlagsList
 }
 
 // Generate a rule to combine .dump sAbi dump files from multiple source files

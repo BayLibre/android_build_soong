@@ -249,6 +249,9 @@ type LinkableInterface interface {
 	// Partition returns the partition string for this module.
 	Partition() string
 
+	// StaticRlibs returns the a list of rlib deps from static_rlibs (applicable to CC modules)
+	StaticRlibs() []string
+
 	// FuzzModule returns the fuzz.FuzzModule associated with the module.
 	FuzzModuleStruct() fuzz.FuzzModule
 }
@@ -383,7 +386,7 @@ type FlagExporterInfo struct {
 	SystemIncludeDirs android.Paths // System include directories to be included with -isystem
 	Flags             []string      // Exported raw flags.
 	Deps              android.Paths
-	RustStaticDeps    android.Paths
+	RustStaticDeps    []rustStaticLib
 	GeneratedHeaders  android.Paths
 }
 
