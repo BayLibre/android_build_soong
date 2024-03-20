@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a64eee_a35bb010",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-20T09:13:05Z",
+      "side": 1,
+      "message": "Yes, that\u0027s an option too.",
+      "parentUuid": "a535a72c_181a38ba",
+      "range": {
+        "startLine": 22,
+        "startChar": 63,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "52e3efecbb81a0b74d88417f1e0ff452d6962d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21e232d4_2ecd0659",
