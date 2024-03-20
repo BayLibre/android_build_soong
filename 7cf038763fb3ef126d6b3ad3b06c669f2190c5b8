@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cce6d12_a219d83a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-20T17:24:54Z",
+      "side": 1,
+      "message": "`__builtin_func` doesn\u0027t work anywhere, it\u0027s just a placeholder for an unsupported function call that will need to be manually handled.  The advantage vs. just reporting an error is that it can translate the rest of the line for you.  For example, for your newly added test it would have produced:\n```\n            srcs: [\"__builtin_func:filter-out filter-out-file.java  src/**/*.java\"],\n```\ninstead of:\n```\n\t// ANDROIDMK TRANSLATION ERROR: Unsuppoert function: filter-out\n\t// LOCAL_SRC_FILES :\u003d $(filter-out filter-out-file.java ,$(call all-java-files-under, src))\n```\n\nThe original version handled both translating `LOCAL_SRC_FILES` to `srcs` and `$(call all-java-files-under, src)` to `src/**/*.java`.\n\n`__builtin_func:` isn\u0027t very clear, so I\u0027d be fine with changing it to something like `UNSUPPORTED FUNCTION:`.",
+      "revId": "7cf038763fb3ef126d6b3ad3b06c669f2190c5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
