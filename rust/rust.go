@@ -546,6 +546,26 @@ func (mod *Module) PreventInstall() bool {
 	return mod.Properties.PreventInstall
 }
 
+func (mod *Module) StaticRlibs(ctx android.ModuleContext) []string {
+	if sp, ok := mod.sourceProvider.(*generatedLibraryDecorator); ok {
+		staticRlibs := sp.Properties.Static_rlibs
+		if mod.InProduct() {
+			staticRlibs = append(staticRlibs, sp.Properties.Target.Product.Static_rlibs...)
+		}
+		if mod.InVendor() {
+			staticRlibs = append(staticRlibs, sp.Properties.Target.Vendor.Static_rlibs...)
+		}
+		if mod.InRecovery() {
+			staticRlibs = append(staticRlibs, sp.Properties.Target.Recovery.Static_rlibs...)
+		}
+		if mod.InRamdisk() {
+			staticRlibs = append(staticRlibs, sp.Properties.Target.Ramdisk.Static_rlibs...)
+		}
+		return staticRlibs
+	}
+	return []string{}
+}
+
 func (mod *Module) MarkAsCoverageVariant(coverage bool) {
 	mod.coverage.Properties.IsCoverageVariant = coverage
 }

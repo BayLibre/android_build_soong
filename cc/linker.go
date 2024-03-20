@@ -315,7 +315,7 @@ func (linker *baseLinker) linkerProps() []interface{} {
 // are produced, and as such makes no distinction between target-specific
 // variants. It's primarily meant to answer whether any static_rlibs are defined
 // in the module definition and should not be used to check the static_rlibs
-// of a particular variant.
+// of a particular variant -- instead look at Module.StaticRlibs().
 func (linker *baseLinker) declaredStaticRlibs() []string {
 	staticRlibs := linker.Properties.Static_rlibs
 
@@ -323,6 +323,27 @@ func (linker *baseLinker) declaredStaticRlibs() []string {
 	staticRlibs = append(staticRlibs, linker.Properties.Target.Vendor.Static_rlibs...)
 	staticRlibs = append(staticRlibs, linker.Properties.Target.Recovery.Static_rlibs...)
 	staticRlibs = append(staticRlibs, linker.Properties.Target.Ramdisk.Static_rlibs...)
+
+	return staticRlibs
+}
+
+// declaredStaticRlibs returns the list of static_rlibs defined in the module
+// definition. This will return static_rlibs for a particular variant.
+func (linker *baseLinker) staticRlibs(ctx android.ModuleContext) []string {
+	mctx := ctx.(*moduleContext)
+	staticRlibs := linker.Properties.Static_rlibs
+	if mctx.inProduct() {
+		staticRlibs = append(staticRlibs, linker.Properties.Target.Product.Static_rlibs...)
+	}
+	if mctx.inVendor() {
+		staticRlibs = append(staticRlibs, linker.Properties.Target.Vendor.Static_rlibs...)
+	}
+	if mctx.inRecovery() {
+		staticRlibs = append(staticRlibs, linker.Properties.Target.Recovery.Static_rlibs...)
+	}
+	if mctx.inRamdisk() {
+		staticRlibs = append(staticRlibs, linker.Properties.Target.Ramdisk.Static_rlibs...)
+	}
 
 	return staticRlibs
 }
