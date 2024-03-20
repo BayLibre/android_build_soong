@@ -46,6 +46,30 @@
       },
       "revId": "1610fdb7c3eb0a8258550e1d08dd21ccce5bfdba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2df75cf_5c7e57c1",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-03-20T04:12:34Z",
+      "side": 1,
+      "message": "Ack. I think I do need to keep AndroidMkEntries in general, as `cacerts` is referenced directly in build/make/target/product/runtime_libart.mk (`PRODUCT_PACKAGES +\u003d cacerts`).\n\nI have tested rebuilding everything from scratch (after `rm -rf out`) and the certificates are at the right locations (with the changes in the topic). From my understanding, the `ctx.InstallFile` below is what gets translated into a Makefile statement to effectively copy the file to the partition.\n\nFrom what I gathered, generating entries with AndroidMkEntries is to declare the dependencies of the module so that Kati can have a complete picture of the dependency graph. But since that module is defined in Soong, it\u0027s Soong\u0027s business to generate what it wants, and there is no need for Kati to know the exact output.",
+      "parentUuid": "46c1c4d6_24f19be1",
+      "range": {
+        "startLine": 499,
+        "startChar": 2,
+        "endLine": 499,
+        "endChar": 12
+      },
+      "revId": "1610fdb7c3eb0a8258550e1d08dd21ccce5bfdba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

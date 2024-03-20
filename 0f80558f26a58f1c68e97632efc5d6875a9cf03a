@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22a577d2_6b825fe5",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-03-20T04:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7408f123_60940962",
+      "range": {
+        "startLine": 316,
+        "startChar": 22,
+        "endLine": 316,
+        "endChar": 36
+      },
+      "revId": "0f80558f26a58f1c68e97632efc5d6875a9cf03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7077cce_c8ca0295",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "518565c4_58098b07",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-03-20T04:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7077cce_c8ca0295",
+      "range": {
+        "startLine": 383,
+        "startChar": 11,
+        "endLine": 383,
+        "endChar": 35
+      },
+      "revId": "0f80558f26a58f1c68e97632efc5d6875a9cf03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2c3ddb3_36660fc3",
@@ -60,6 +108,24 @@
       "writtenOn": "2024-03-20T00:45:58Z",
       "side": 1,
       "message": "Please also add an assertion that filename_from_src is not set as well. If it\u0027s implicitly always set, there\u0027s no need to set it in the bp file.",
+      "revId": "0f80558f26a58f1c68e97632efc5d6875a9cf03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e3b9579_62d1b583",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-03-20T04:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2c3ddb3_36660fc3",
       "revId": "0f80558f26a58f1c68e97632efc5d6875a9cf03a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
