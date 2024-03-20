@@ -16,6 +16,24 @@
       "message": "I thought we didn\u0027t have glibc in the build, and instead implicitly relied on the host\u0027s linux distro\u0027s glibc? Where is that requirement added?",
       "revId": "0a4b29762d4b511b9468fd982ad51c4c6715191d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e7058c_f6f4f26d",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-20T08:05:49Z",
+      "side": 1,
+      "message": "we use host\u0027s glibc. sure. but the focus shouldn\u0027t be on glibc here. \n\nI added this just because having a disabled module in `required` was okay before this change, and I don\u0027t intend to make it an error at least in this topic.\n\nI\u0027ve updated the comment.",
+      "parentUuid": "6dc417db_96d1941a",
+      "revId": "0a4b29762d4b511b9468fd982ad51c4c6715191d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
