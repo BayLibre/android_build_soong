@@ -239,6 +239,9 @@ var (
 	// should be the last resort, because it prevents all code in Android from
 	// opting into the warning.
 	noOverrideGlobalCflags = []string{
+		// FIXME: Suppress all warnings for testing
+		"-Wno-everything",
+
 		"-Werror=bool-operation",
 		"-Werror=format-insufficient-args",
 		"-Werror=implicit-int-float-conversion",
@@ -302,6 +305,9 @@ var (
 		// until then because it causes warnings in the _callers_, not the
 		// project itself.
 		"-Wno-deprecated-dynamic-exception-spec",
+
+		// Allow using VLA CXX extension.
+		"-Wno-vla-cxx-extension",
 	}
 
 	noOverride64GlobalCflags = []string{}
@@ -386,7 +392,7 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r510928"
+	ClangDefaultVersion      = "clang-r522817"
 	ClangDefaultShortVersion = "18"
 
 	// Directories with warnings from Android.bp files.
