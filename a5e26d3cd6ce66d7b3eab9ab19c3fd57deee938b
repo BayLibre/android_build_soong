@@ -22,6 +22,30 @@
       },
       "revId": "a5e26d3cd6ce66d7b3eab9ab19c3fd57deee938b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "452dcd16_64d4ac87",
+        "filename": "sdk/update.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-21T16:59:44Z",
+      "side": 1,
+      "message": "Correct, these are the java_imports with `\"snapshot/jars/are/invalid\"` jars. \n\nI believe the ambiguity error might have been triggered by [this](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/62aeba6724238d8c57b0c99a09f1e69771234f59:android/prebuilt.go;l\u003d563-566;bpv\u003d1;bpt\u003d0;drc\u003d972917d794e1f9a225fa3737cf648f4a8d044d31)\n\nWould you recall if you had `RELEASE_DEFAULT_MODULE_BUILD_FROM_SOURCE` set to `False`? If we do, then both the prebuilts will become preferred via the `source_build` value of the module\u0027s soong config namespaces. This require one of them to be listed in `apex_contributions` to settle the tie.\n\nI think if `RELEASE_DEFAULT_MODULE_BUILD_FROM_SOURCE` is unset, we do not need these libraries in `apex_contributions`. \n\nIf feasible, my preference would be that these libraries should not be listed in apex_contributions. But I think we can add them here if it makes it more maintaintable.",
+      "parentUuid": "23008584_cdae3116",
+      "range": {
+        "startLine": 418,
+        "startChar": 6,
+        "endLine": 418,
+        "endChar": 56
+      },
+      "revId": "a5e26d3cd6ce66d7b3eab9ab19c3fd57deee938b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
