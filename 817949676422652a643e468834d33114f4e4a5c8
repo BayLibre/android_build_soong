@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "179f2531_d865b41e",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-21T19:14:53Z",
+      "side": 1,
+      "message": "Consider using non-combined jars here and in `HeaderJars()` and `ImplementationAndResourcesJars()`",
+      "revId": "817949676422652a643e468834d33114f4e4a5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
