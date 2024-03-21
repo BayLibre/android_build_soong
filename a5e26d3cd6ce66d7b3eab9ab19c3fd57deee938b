@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23008584_cdae3116",
+        "filename": "sdk/update.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1951966
+      },
+      "writtenOn": "2024-03-21T13:09:45Z",
+      "side": 1,
+      "message": "Is this the type of lib with \"snapshot/jars/are/invalid\"? From my test run, I recalled (vaguely) that I put `source_module_name` for this soong module too; then I had to put it into apex_contributions (even though it is fake jar) to suppress the error about ambiguity.",
+      "range": {
+        "startLine": 418,
+        "startChar": 6,
+        "endLine": 418,
+        "endChar": 56
+      },
+      "revId": "a5e26d3cd6ce66d7b3eab9ab19c3fd57deee938b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
