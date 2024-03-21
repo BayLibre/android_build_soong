@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e483292c_d42bab85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-03-21T00:33:53Z",
+      "side": 1,
+      "message": "It looks like we still need this specific module: within the apex, the certificates are expected at : `/apex/com.android.conscrypt/cacerts` while this moves them to `/apex/com.android.conscrypt/etc`. Keep the module for now.",
+      "revId": "36f95774b2213eef3078be2f56813cb2a07fbfc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
