@@ -34,6 +34,24 @@
       "parentUuid": "880cb9bd_7abd12d2",
       "revId": "0216805aaeb7c6d51c0605dcdd8e811fee8f2a33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf77b1a0_60714ff0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-03-21T13:07:22Z",
+      "side": 1,
+      "message": "Changing the directory would break consumers of those files, including API finalization. However, it is probably better to break them than to have them just using whichever file happens to be there.\n\nYou could always migrate them away from using it by first copying the files to all 3 locations, i.e. the 2 artifact specific directory and then the current, common, directory. That would give any consumers a chance to switch to use the one that is appropriate for them before you remove the current file that differs from build to build.",
+      "parentUuid": "54bd7d3f_d12a1d88",
+      "revId": "0216805aaeb7c6d51c0605dcdd8e811fee8f2a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
