@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d9d025_7ef54dca",
+        "filename": "scripts/buildinfo.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-21T18:27:47Z",
+      "side": 1,
+      "message": "`required\u003dFalse` is the default for flags, remove all of these.",
+      "range": {
+        "startLine": 26,
+        "startChar": 60,
+        "endLine": 26,
+        "endChar": 75
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b390c241_c2343cba",
+        "filename": "scripts/buildinfo.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-21T18:27:47Z",
+      "side": 1,
+      "message": "Use `text\u003dTrue` instead of `encoding\u003d\u0027utf-8\u0027` on both of these subprocesses.",
+      "range": {
+        "startLine": 80,
+        "startChar": 37,
+        "endLine": 80,
+        "endChar": 53
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0db4a2f_ff8c1310",
+        "filename": "scripts/buildinfo.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-21T18:27:47Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd03083_33c9325e",
+        "filename": "scripts/buildinfo.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-21T18:27:47Z",
+      "side": 1,
+      "message": "Don\u0027t pass `sys.argv[1:]` to `.parse_args()`. Argparse will use use `sys.argv` by default if nothing is passed, and it uses `sys.argv[0]` to display the name of the program in help dialogs.",
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
