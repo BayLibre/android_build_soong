@@ -46,6 +46,30 @@
       },
       "revId": "a5e26d3cd6ce66d7b3eab9ab19c3fd57deee938b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39140562_4d00cc52",
+        "filename": "sdk/update.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1951966
+      },
+      "writtenOn": "2024-03-21T17:09:23Z",
+      "side": 1,
+      "message": "Thank you. The explanation makes a lot of sense. I think I set `RELEASE_DEFAULT_MODULE_BUILD_FROM_SOURCE` to `False` when I began testing.\n\nI don\u0027t think listing (or not listing) would make it more maintainable, so please do it as you\u0027d prefer.",
+      "parentUuid": "452dcd16_64d4ac87",
+      "range": {
+        "startLine": 418,
+        "startChar": 6,
+        "endLine": 418,
+        "endChar": 56
+      },
+      "revId": "a5e26d3cd6ce66d7b3eab9ab19c3fd57deee938b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
