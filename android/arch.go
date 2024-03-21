@@ -387,6 +387,19 @@ func (target Target) ArchVariation() string {
 	return variation
 }
 
+// NativeBridgeArchVariation returns the variation name used by the archMutator for the Target,
+// with the prefix "native_bridge_".
+func (target Target) NativeBridgeArchVariation() string {
+	return fmt.Sprintf("native_bridge_%s", target.Arch.String())
+}
+
+func (target Target) NativeBridgeArchVariations() []blueprint.Variation {
+	return []blueprint.Variation{
+		{Mutator: "os", Variation: target.OsVariation()},
+		{Mutator: "arch", Variation: target.NativeBridgeArchVariation()},
+	}
+}
+
 // Variations returns a list of blueprint.Variations for the osMutator and archMutator for the
 // Target.
 func (target Target) Variations() []blueprint.Variation {
