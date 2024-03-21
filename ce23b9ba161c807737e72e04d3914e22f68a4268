@@ -135,6 +135,30 @@
       },
       "revId": "ce23b9ba161c807737e72e04d3914e22f68a4268",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03ecfade_227e1018",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2024-03-21T03:33:40Z",
+      "side": 1,
+      "message": "That is an incorrect use of the `Thin` rule, as it should not be set to `false`, but rather use `Never`. The codegen behaviour changed when we switched on global ThinLTO. I suspect that workaround is no longer necessary.",
+      "parentUuid": "12418567_df6d714b",
+      "range": {
+        "startLine": 117,
+        "startChar": 25,
+        "endLine": 117,
+        "endChar": 31
+      },
+      "revId": "ce23b9ba161c807737e72e04d3914e22f68a4268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
