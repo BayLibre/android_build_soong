@@ -16,6 +16,24 @@
       "message": "Consider using non-combined jars here and in `HeaderJars()` and `ImplementationAndResourcesJars()`",
       "revId": "817949676422652a643e468834d33114f4e4a5c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0fc2039_8289b5cb",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-21T19:27:30Z",
+      "side": 1,
+      "message": "If I understand correctly, that would be different from all other java modules.  I\u0027d like to use non-combined jars in more places (b/308016794), but that would be a separate project across all java module types.",
+      "parentUuid": "179f2531_d865b41e",
+      "revId": "817949676422652a643e468834d33114f4e4a5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
