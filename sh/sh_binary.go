@@ -20,6 +20,7 @@ import (
 	"strings"
 
 	"android/soong/testing"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -141,6 +142,10 @@ type TestProperties struct {
 	// list of device library modules that should be installed alongside the test.
 	// Only available for host sh_test modules.
 	Data_device_libs []string `android:"path,arch_variant"`
+
+	// list of native bridge binary modules that should be installed alongside the test.
+	// Only available for host sh_test modules.
+	Data_native_bridge_bins []string `android:"path,arch_variant"`
 
 	// list of java modules that provide data that should be installed alongside the test.
 	Java_data []string
@@ -332,6 +337,10 @@ func (s *ShTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if ctx.Target().Os.Class == android.Host && len(ctx.Config().Targets[android.Android]) > 0 {
 		deviceVariations := ctx.Config().AndroidFirstDeviceTarget.Variations()
 		ctx.AddFarVariationDependencies(deviceVariations, shTestDataDeviceBinsTag, s.testProperties.Data_device_bins...)
+
+		nativeBridgeVariations := ctx.Config().AndroidFirstDeviceTarget.NativeBridgeArchVariations()
+		ctx.AddFarVariationDependencies(nativeBridgeVariations, shTestDataDeviceBinsTag, s.testProperties.Data_native_bridge_bins...)
+
 		ctx.AddFarVariationDependencies(append(deviceVariations, sharedLibVariations...),
 			shTestDataDeviceLibsTag, s.testProperties.Data_device_libs...)
 
