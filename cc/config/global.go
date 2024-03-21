@@ -30,6 +30,9 @@ var (
 	// Flags used by lots of devices.  Putting them in package static variables
 	// will save bytes in build.ninja so they aren't repeated for every file
 	commonGlobalCflags = []string{
+		// FIXME: Suppress all warnings for testing
+		"-Wno-everything",
+
 		// Enable some optimization by default.
 		"-O2",
 
@@ -386,7 +389,7 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r510928"
+	ClangDefaultVersion      = "clang-r522817"
 	ClangDefaultShortVersion = "18"
 
 	// Directories with warnings from Android.bp files.
