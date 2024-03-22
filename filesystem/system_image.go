@@ -56,19 +56,40 @@ func (s *systemImage) buildLinkerConfigFile(ctx android.ModuleContext, root andr
 	output := root.Join(ctx, "system", "etc", "linker.config.pb")
 
 	// we need "Module"s for packaging items
-	var otherModules []android.Module
+	otherModulesMap := make(map[android.Module]bool)
+	modulesInPackage := make(map[string]bool)
+
 	deps := s.gatherFilteredPackagingSpecs(ctx)
 	ctx.WalkDeps(func(child, parent android.Module) bool {
 		for _, ps := range child.PackagingSpecs() {
 			if _, ok := deps[ps.RelPathInPackage()]; ok {
-				otherModules = append(otherModules, child)
+				otherModulesMap[child] = true
+				modulesInPackage[child.Name()] = true
+				return true
 			}
 		}
 		return true
 	})
 
+	otherModules := make([]android.Module, 0, len(otherModulesMap))
+	for mod := range otherModulesMap {
+		otherModules = append(otherModules, mod)
+	}
+
+	var dependentModules []android.Module
+	ctx.WalkDeps(func(child, parent android.Module) bool {
+		_, parentInPackage := otherModulesMap[parent]
+		_, childInPackageName := modulesInPackage[child.Name()]
+
+		// When parent is in the package, and child (or its variant) is not, this can be from an interface.
+		if parentInPackage && !childInPackageName {
+			dependentModules = append(dependentModules, child)
+		}
+		return true
+	})
+
 	builder := android.NewRuleBuilder(pctx, ctx)
-	linkerconfig.BuildLinkerConfig(ctx, builder, input, otherModules, output)
+	linkerconfig.BuildLinkerConfig(ctx, builder, input, otherModules, dependentModules, output)
 	builder.Build("conv_linker_config", "Generate linker config protobuf "+output.String())
 	return output
 }
