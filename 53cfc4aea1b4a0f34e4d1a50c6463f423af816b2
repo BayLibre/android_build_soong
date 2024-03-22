@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "98da77bf_39f12ee5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-22T02:33:58Z",
+      "side": 1,
+      "message": "Do you mind adding a tracking for this change?",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8f1158d8_dc1c5657",
@@ -20,6 +37,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6414dde8_e7fe5cb9",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1440,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-22T02:33:58Z",
+      "side": 1,
+      "message": "Do you mind explaining why you are passing `j.RequiredModuleNames()` instead of `j.HostRequiredModuleNames()`?",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf9de4e_3b2dc4a2",
+        "filename": "tradefed/providers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-22T02:33:58Z",
+      "side": 1,
+      "message": "Instead of creating a new provider with same struct, you can add a bool property like `IsHostModule` in `BaseTestProviderData`. This enables you to remove the \"`ProviderKey`determination based on `dependencyTag`\" logic in `testModuleConfigModule.validateBase`",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "601cca4a_fb4ad93a",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-22T02:33:58Z",
+      "side": 1,
+      "message": "WDYT about this method taking a `ModuleContext` as an input and throw a module error here instead of returning an error message and a bool value?",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c3d23e0_48f75f9a",
         "filename": "tradefed_modules/test_module_config.go",
         "patchSetId": 2
@@ -31,6 +99,47 @@
       "writtenOn": "2024-03-20T19:31:40Z",
       "side": 1,
       "message": "Please let me know if this is the right way to deal with variations for Host modules and if it should AddFarVariation instead",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19288abc_fbc2754c",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-22T02:33:58Z",
+      "side": 1,
+      "message": "I don\u0027t think that this will matter, as this is a host module depending on a host module.",
+      "parentUuid": "3c3d23e0_48f75f9a",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac79b565_72cbe64b",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-22T02:33:58Z",
+      "side": 1,
+      "message": "I believe that this can be determined by checking the nullness of `m.tradefedProperties.Base` and return early before `VisitDirectDepsWithTag`.",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 2
+      },
       "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
