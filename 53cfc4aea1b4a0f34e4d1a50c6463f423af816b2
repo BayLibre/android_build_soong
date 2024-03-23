@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a187637d_f8927df1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-23T14:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98da77bf_39f12ee5",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8f1158d8_dc1c5657",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7aee3d3_ac32c541",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1440,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-23T14:18:39Z",
+      "side": 1,
+      "message": "Thanks, good catch, I was inadvertently using it as a union type.\nAdding both fields here lets me clean up the androidmk entries specialization I was doing where I converted it back to the right name.\n\nI find it is a little odd / unexpected that java_test_host needs \"RequiredModuleNames\", while \"android_test\" seems to need \"HostRequiredModuleNames\", but that is what I found in my testing of these tests.\nIt is possible that they both theoretically need both and only in practice only need one.",
+      "parentUuid": "6414dde8_e7fe5cb9",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbf9de4e_3b2dc4a2",
@@ -69,6 +105,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "658960a2_62823527",
+        "filename": "tradefed/providers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-23T14:18:39Z",
+      "side": 1,
+      "message": "Thanks, I was thinking I needed a new provider key, but really didn\u0027t.\nAnd I can use IsHost for any specialization I need.  I do checks in GenerateAndroidBuildActions to ensure we don\u0027t use android_test as base for test_module_config_host or java_test_host as base for test_module_config.\nThe tests catch these too.  Otherwise, using a single Provider can cause problems as we can\u0027t tell which type to add at DepsMutator and we add the tag the for the type we want without knowing what the type of base actually is.",
+      "parentUuid": "bbf9de4e_3b2dc4a2",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "601cca4a_fb4ad93a",
@@ -82,6 +136,24 @@
       "writtenOn": "2024-03-22T02:33:58Z",
       "side": 1,
       "message": "WDYT about this method taking a `ModuleContext` as an input and throw a module error here instead of returning an error message and a bool value?",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "703d559a_28aa202f",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-23T14:18:39Z",
+      "side": 1,
+      "message": "Changed to take ModuleContext, call ModuleErrorf and return a bool, but I\u0027m not sure if you are suggesting something else \"with \u0027throw a module error\u0027\".  Is there a way to mimic throw and not have to return the boolean?\n\nI changed the \u0027if\u0027 statements for this and the other validate method to be slightly simpler.",
+      "parentUuid": "601cca4a_fb4ad93a",
       "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -121,6 +193,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb9a802f_84c0176a",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-23T14:18:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "19288abc_fbc2754c",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac79b565_72cbe64b",
@@ -134,6 +224,30 @@
       "writtenOn": "2024-03-22T02:33:58Z",
       "side": 1,
       "message": "I believe that this can be determined by checking the nullness of `m.tradefedProperties.Base` and return early before `VisitDirectDepsWithTag`.",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 2
+      },
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a27eeae_6d2015cd",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-23T14:18:39Z",
+      "side": 1,
+      "message": "But what if they give a base of some other module type that doesn\u0027t match the tag?\nVisitDirectDepsWithTag won\u0027t find it because the tag doesn\u0027t match so it won\u0027t hit the error case above.\nI could change that to just \"VisitDirectDeps\" and then check the tag if that is more idiomatic.  I think in my original incarnation, I used GetDirectDepWithTag and then did a similar check, but then switched away.",
+      "parentUuid": "ac79b565_72cbe64b",
       "range": {
         "startLine": 281,
         "startChar": 1,
