@@ -255,9 +255,9 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 		java.PrepareForTestWithDexpreopt,
 		dexpreopt.FixtureDisableDexpreoptBootImages(false),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-			}
+			})
 		}),
 	).RunTestWithBp(t, `
 		apex {
@@ -429,9 +429,9 @@ func TestPlatformBootclasspath_AlwaysUsePrebuiltSdks(t *testing.T) {
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 			variables.Always_use_prebuilt_sdks = proptools.BoolPtr(true)
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-			}
+			})
 		}),
 		java.FixtureWithPrebuiltApis(map[string][]string{
 			"current": {},

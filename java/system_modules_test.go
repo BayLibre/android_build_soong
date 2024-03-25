@@ -183,9 +183,9 @@ func TestMultipleSystemModulesPrebuilts(t *testing.T) {
 		res := android.GroupFixturePreparers(
 			prepareForJavaTest,
 			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-				variables.BuildFlags = map[string]string{
+				variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 					"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "myapex_contributions",
-				}
+				})
 			}),
 		).RunTestWithBp(t, fmt.Sprintf(bp, tc.selectedDependencyName))
 

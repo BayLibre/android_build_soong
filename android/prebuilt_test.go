@@ -362,9 +362,9 @@ func TestPrebuilts(t *testing.T) {
 						"use_source": "true",
 					},
 				}
-				variables.BuildFlags = map[string]string{
+				variables.BuildFlags = GenerateBuildFlagsMapForTest(map[string]string{
 					"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "my_mainline_module_contribution",
-				}
+				})
 			}),
 			// use_source_config_var indicates that source should be used
 			// but this is superseded by `my_mainline_module_contribution`
@@ -398,9 +398,9 @@ func TestPrebuilts(t *testing.T) {
 						"use_source": "false",
 					},
 				}
-				variables.BuildFlags = map[string]string{
+				variables.BuildFlags = GenerateBuildFlagsMapForTest(map[string]string{
 					"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "my_mainline_module_contribution",
-				}
+				})
 			}),
 			// use_source_config_var indicates that prebuilt should be used
 			// but this is superseded by `my_mainline_module_contribution`
@@ -736,9 +736,9 @@ func newOverrideSourceModule() Module {
 func TestPrebuiltErrorCannotListBothSourceAndPrebuiltInContributions(t *testing.T) {
 	selectMainlineModuleContritbutions := GroupFixturePreparers(
 		FixtureModifyProductVariables(func(variables FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "my_apex_contributions",
-			}
+			})
 		}),
 	)
 	testPrebuiltErrorWithFixture(t, `Found duplicate variations of the same module in apex_contributions: foo and prebuilt_foo. Please remove one of these`, `
@@ -767,9 +767,9 @@ func TestPrebuiltErrorCannotListBothSourceAndPrebuiltInContributions(t *testing.
 func TestSourceIsSelectedInCoverageBuilds(t *testing.T) {
 	prebuiltMainlineContributions := GroupFixturePreparers(
 		FixtureModifyProductVariables(func(variables FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "my_prebuilt_apex_contributions",
-			}
+			})
 		}),
 		FixtureMergeEnv(map[string]string{
 			"EMMA_INSTRUMENT_FRAMEWORK": "true",

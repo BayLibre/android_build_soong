@@ -2066,9 +2066,23 @@ func (c *deviceConfig) CheckVendorSeappViolations() bool {
 	return Bool(c.config.productVariables.CheckVendorSeappViolations)
 }
 
-func (c *config) GetBuildFlag(name string) (string, bool) {
-	val, ok := c.productVariables.BuildFlags[name]
-	return val, ok
+func (c *config) GetBuildFlag(name string) (BuildFlagData, bool) {
+	if flag, ok := c.productVariables.BuildFlags[name]; ok {
+		return flag, true
+	}
+	return BuildFlagData{}, false
+}
+
+func (c *config) GetBuildFlagValue(name string) (string, bool) {
+	if flag, ok := c.productVariables.BuildFlags[name]; ok {
+		return flag.Value, true
+	}
+	return "", false
+}
+
+func (c *config) GetBuildFlagsInPartition(partition string) ([]string, bool) {
+	list, ok := c.productVariables.BuildFlagsPartitions[partition]
+	return list, ok
 }
 
 func (c *config) UseResourceProcessorByDefault() bool {
@@ -2116,7 +2130,7 @@ var (
 func (c *config) AllApexContributions() []string {
 	ret := []string{}
 	for _, f := range mainlineApexContributionBuildFlags {
-		if val, exists := c.GetBuildFlag(f); exists && val != "" {
+		if val, exists := c.GetBuildFlagValue(f); exists && val != "" {
 			ret = append(ret, val)
 		}
 	}

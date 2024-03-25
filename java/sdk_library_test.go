@@ -39,9 +39,9 @@ func TestJavaSdkLibrary(t *testing.T) {
 			config.SetApiLibraries([]string{"foo"})
 		}),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-			}
+			})
 		}),
 	).RunTestWithBp(t, `
 		droiddoc_exported_dir {
@@ -541,9 +541,9 @@ func TestJavaSdkLibrary_Deps(t *testing.T) {
 		PrepareForTestWithJavaSdkLibraryFiles,
 		FixtureWithLastReleaseApis("sdklib"),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-			}
+			})
 		}),
 	).RunTestWithBp(t, `
 		java_sdk_library {
@@ -937,9 +937,9 @@ func TestJavaSdkLibraryImport_WithSource(t *testing.T) {
 		PrepareForTestWithJavaSdkLibraryFiles,
 		FixtureWithLastReleaseApis("sdklib"),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-			}
+			})
 		}),
 	).RunTestWithBp(t, `
 		java_sdk_library {
@@ -990,9 +990,9 @@ func testJavaSdkLibraryImport_Preferred(t *testing.T, prefer string, preparer an
 		FixtureWithLastReleaseApis("sdklib"),
 		preparer,
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-			}
+			})
 		}),
 	).RunTestWithBp(t, `
 		java_sdk_library {
@@ -1198,9 +1198,9 @@ func TestSdkLibraryImport_MetadataModuleSupersedesPreferred(t *testing.T) {
 		PrepareForTestWithJavaSdkLibraryFiles,
 		FixtureWithLastReleaseApis("sdklib.source_preferred_using_legacy_flags", "sdklib.prebuilt_preferred_using_legacy_flags"),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "my_mainline_module_contributions",
-			}
+			})
 		}),
 	).RunTestWithBp(t, bp)
 
@@ -1384,9 +1384,9 @@ func TestJavaSdkLibraryDist(t *testing.T) {
 			"sdklib_owner_foo",
 			"foo"),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-			}
+			})
 		}),
 	).RunTestWithBp(t, `
 		java_sdk_library {
@@ -1811,10 +1811,10 @@ func TestStubResolutionOfJavaSdkLibraryInLibs(t *testing.T) {
 		PrepareForTestWithJavaSdkLibraryFiles,
 		FixtureWithLastReleaseApis("sdklib"),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				// We can use any of the apex contribution build flags from build/soong/android/config.go#mainlineApexContributionBuildFlags here
 				"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "my_mainline_module_contributions",
-			}
+			})
 		}),
 	)
 
@@ -1899,9 +1899,9 @@ func TestMultipleSdkLibraryPrebuilts(t *testing.T) {
 		PrepareForTestWithJavaSdkLibraryFiles,
 		FixtureWithLastReleaseApis("sdklib", "sdklib.v1", "sdklib.v2"),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "my_mainline_module_contributions",
-			}
+			})
 		}),
 	)
 

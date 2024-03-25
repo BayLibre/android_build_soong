@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+
 	"github.com/google/blueprint"
 )
 
@@ -583,9 +584,9 @@ func TestMultiplePrebuilts(t *testing.T) {
 				android.RegisterApexContributionsBuildComponents(ctx)
 			}),
 			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-				variables.BuildFlags = map[string]string{
+				variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 					"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "myapex_contributions",
-				}
+				})
 			}),
 		)
 		ctx := testPrebuilt(t, fmt.Sprintf(bp, tc.selectedDependencyName), map[string][]byte{
@@ -681,9 +682,9 @@ func TestMultiplePrebuiltsPreferredUsingLegacyFlags(t *testing.T) {
 				android.RegisterApexContributionsBuildComponents(ctx)
 			}),
 			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-				variables.BuildFlags = map[string]string{
+				variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 					"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "myapex_contributions",
-				}
+				})
 			}),
 		)
 		if tc.expectedErr != "" {
@@ -745,9 +746,9 @@ func TestMissingVariantInModuleSdk(t *testing.T) {
 			android.RegisterApexContributionsBuildComponents(ctx)
 		}),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "myapex_contributions",
-			}
+			})
 		}),
 	)
 	ctx := testPrebuilt(t, bp, map[string][]byte{

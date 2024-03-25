@@ -54,9 +54,9 @@ func TestBootclasspathFragments_FragmentDependency(t *testing.T) {
 		java.FixtureConfigureApexBootJars("someapex:foo", "someapex:bar"),
 		prepareForTestWithArtApex,
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-			}
+			})
 		}),
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo", "baz"),
@@ -704,9 +704,9 @@ func TestBootclasspathFragment_HiddenAPIList(t *testing.T) {
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo", "quuz"),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-			}
+			})
 		}),
 	).RunTestWithBp(t, `
 		apex {

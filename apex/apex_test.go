@@ -11232,9 +11232,9 @@ func TestBootDexJarsMultipleApexPrebuilts(t *testing.T) {
 				"system/sepolicy/apex/com.android.foo-file_contexts": nil,
 			}),
 			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-				variables.BuildFlags = map[string]string{
+				variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 					"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": tc.selectedApexContributions,
-				}
+				})
 			}),
 		)
 		ctx := testDexpreoptWithApexes(t, bp, "", preparer, fragment)
@@ -11382,9 +11382,9 @@ func TestInstallationRulesForMultipleApexPrebuilts(t *testing.T) {
 				"system/sepolicy/apex/com.android.foo-file_contexts": nil,
 			}),
 			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-				variables.BuildFlags = map[string]string{
+				variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 					"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": tc.selectedApexContributions,
-				}
+				})
 			}),
 		)
 		if tc.expectedError != "" {

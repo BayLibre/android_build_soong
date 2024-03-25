@@ -400,9 +400,9 @@ func TestDexpreoptProfileWithMultiplePrebuiltArtApexes(t *testing.T) {
 			PrepareForTestWithApexBuildComponents,
 			prepareForTestWithArtApex,
 			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-				variables.BuildFlags = map[string]string{
+				variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 					"RELEASE_APEX_CONTRIBUTIONS_ART": tc.selectedArtApexContributions,
-				}
+				})
 			}),
 		).RunTestWithBp(t, bp)
 

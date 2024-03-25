@@ -223,9 +223,9 @@ func TestBootclasspathFragment_StubLibs(t *testing.T) {
 		FixtureWithLastReleaseApis("mysdklibrary", "myothersdklibrary", "mycoreplatform"),
 		FixtureConfigureApexBootJars("someapex:mysdklibrary"),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
+			variables.BuildFlags = android.GenerateBuildFlagsMapForTest(map[string]string{
 				"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-			}
+			})
 		}),
 	).RunTestWithBp(t, `
 		bootclasspath_fragment {
