@@ -583,11 +583,7 @@ func newOverrideSourceModule() Module {
 
 func TestPrebuiltErrorCannotListBothSourceAndPrebuiltInContributions(t *testing.T) {
 	selectMainlineModuleContritbutions := GroupFixturePreparers(
-		FixtureModifyProductVariables(func(variables FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
-				"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "my_apex_contributions",
-			}
-		}),
+		FixtureAddBuildFlag("RELEASE_APEX_CONTRIBUTIONS_ADSERVICES", "my_apex_contributions"),
 	)
 	testPrebuiltErrorWithFixture(t, `Found duplicate variations of the same module in apex_contributions: foo and prebuilt_foo. Please remove one of these`, `
 		source {
@@ -614,11 +610,7 @@ func TestPrebuiltErrorCannotListBothSourceAndPrebuiltInContributions(t *testing.
 // Test that apex_contributions of prebuilt modules are ignored in coverage builds
 func TestSourceIsSelectedInCoverageBuilds(t *testing.T) {
 	prebuiltMainlineContributions := GroupFixturePreparers(
-		FixtureModifyProductVariables(func(variables FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
-				"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "my_prebuilt_apex_contributions",
-			}
-		}),
+		FixtureAddBuildFlag("RELEASE_APEX_CONTRIBUTIONS_ADSERVICES", "my_prebuilt_apex_contributions"),
 		FixtureMergeEnv(map[string]string{
 			"EMMA_INSTRUMENT_FRAMEWORK": "true",
 		}),
