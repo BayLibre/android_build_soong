@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cae819d_0f4520fb",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-25T02:27:27Z",
+      "side": 1,
+      "message": "Well, I was thinking about moving this to the caller ;-)",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 26
+      },
+      "revId": "ee599d6694cf14bf582559b141d0ecf5b6a07105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

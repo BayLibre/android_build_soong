@@ -191,6 +191,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4158fb3_927bd6fb",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-25T02:27:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f79c51f4_4d0cdcad",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "d09743e6f5a73f898b6140531a71afa02a8b5cb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1d72614_1560d67c",
@@ -228,6 +252,30 @@
       "side": 1,
       "message": "Updated as suggested. PTAL.",
       "parentUuid": "b1d72614_1560d67c",
+      "range": {
+        "startLine": 104,
+        "startChar": 21,
+        "endLine": 104,
+        "endChar": 85
+      },
+      "revId": "d09743e6f5a73f898b6140531a71afa02a8b5cb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c3152b_2cf178ff",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-25T02:27:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "40c057c2_2ae2e10a",
       "range": {
         "startLine": 104,
         "startChar": 21,
