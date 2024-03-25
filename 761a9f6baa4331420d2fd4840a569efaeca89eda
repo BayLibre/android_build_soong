@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e6f6017_2060391f",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-25T18:07:24Z",
+      "side": 1,
+      "message": "nit: Can we just make `baseShouldBeHost` bool instead of creating a new type which is basically a bool?",
+      "revId": "761a9f6baa4331420d2fd4840a569efaeca89eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cbb4abc_4886b51d",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-25T18:07:24Z",
+      "side": 1,
+      "message": "WDYT about throwing a more informative error message when `baseShouldBeHost` !\u003d `provider.IsHost`? e.g. `\"android_test_host module type expected as base but android_test was given\"`.",
+      "revId": "761a9f6baa4331420d2fd4840a569efaeca89eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df92c0d6_96a73473",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-25T18:07:24Z",
+      "side": 1,
+      "message": "Number of `%s` does not match the number of arguments.",
+      "revId": "761a9f6baa4331420d2fd4840a569efaeca89eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2008343b_ee8ce34e",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-25T18:07:24Z",
+      "side": 1,
+      "message": "Number of `%s` does not match the number of arguments.",
+      "revId": "761a9f6baa4331420d2fd4840a569efaeca89eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
