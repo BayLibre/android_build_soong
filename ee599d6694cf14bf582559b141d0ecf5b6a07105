@@ -22,6 +22,30 @@
       },
       "revId": "ee599d6694cf14bf582559b141d0ecf5b6a07105",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ab1dcc_7438bc83",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-03-25T04:18:49Z",
+      "side": 1,
+      "message": "I\u0027m not 100% confident on this, because in that case we need to implement same logic when we have other caller. Let\u0027s discuss this from separated thread if possible.",
+      "parentUuid": "1cae819d_0f4520fb",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 26
+      },
+      "revId": "ee599d6694cf14bf582559b141d0ecf5b6a07105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
