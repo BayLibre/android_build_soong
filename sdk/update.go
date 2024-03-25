@@ -181,6 +181,14 @@ func (s *sdk) groupMemberVariantsByMemberThenType(ctx android.ModuleContext, tar
 		variant := memberVariantDep.variant
 
 		name := ctx.OtherModuleName(variant)
+		targetApiLevel, err := android.ApiLevelFromUser(ctx, targetBuildRelease.name)
+		if err != nil {
+			targetApiLevel = android.FutureApiLevel
+		}
+		if android.InList(name, []string{"libdexfile", "libartpalette", "libartbase"}) && memberVariantDep.Host() && targetApiLevel.GreaterThan(android.ApiLevelUpsideDownCake) {
+			// host variant of libdexfile and its deps are not required in V+ snapshots.
+			continue
+		}
 		member := byName[name]
 		if member == nil {
 			member = &sdkMember{memberType: memberType, name: name}
