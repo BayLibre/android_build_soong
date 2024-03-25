@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f5044c8_9f0a65a9",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-25T01:33:19Z",
+      "side": 1,
+      "message": "Why `return`? Isn\u0027t this changing the original behavior?",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "d09743e6f5a73f898b6140531a71afa02a8b5cb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8913f93_0b75c048",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-25T01:33:19Z",
+      "side": 1,
+      "message": "I think we can merge this and the above and make things clearer: Find what\u0027s installed and what\u0027s just beyond the boundary.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "d09743e6f5a73f898b6140531a71afa02a8b5cb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d72614_1560d67c",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-25T01:33:19Z",
+      "side": 1,
+      "message": "It took me long to get what these two arrays mean. Can we refactor to get `provideLibs` and `requireLibs` as string arrays? It looks like the logic to get them is tied to the caller.",
+      "range": {
+        "startLine": 104,
+        "startChar": 21,
+        "endLine": 104,
+        "endChar": 85
+      },
+      "revId": "d09743e6f5a73f898b6140531a71afa02a8b5cb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
