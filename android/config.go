@@ -2031,6 +2031,24 @@ func (c *config) GetBuildFlag(name string) (string, bool) {
 	return val, ok
 }
 
+func (c *config) GetBuildFlagExtra(name, tag string) string {
+	switch tag {
+	case "set":
+		return c.productVariables.BuildFlagsSet[name]
+	case "default":
+		return c.productVariables.BuildFlagsDefault[name]
+	case "declared":
+		return c.productVariables.BuildFlagsDeclared[name]
+	default:
+		return ""
+	}
+}
+
+func (c *config) GetBuildFlagsInPartition(partition string) ([]string, bool) {
+	list, ok := c.productVariables.BuildFlagsPartitions[partition]
+	return list, ok
+}
+
 func (c *config) UseResourceProcessorByDefault() bool {
 	return c.productVariables.GetBuildFlagBool("RELEASE_USE_RESOURCE_PROCESSOR_BY_DEFAULT")
 }
