@@ -457,11 +457,7 @@ java_import {
 			android.FixtureMergeEnv(map[string]string{
 				"SOONG_SDK_SNAPSHOT_TARGET_BUILD_RELEASE": "S",
 			}),
-			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-				variables.BuildFlags = map[string]string{
-					"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-				}
-			}),
+			android.FixtureAddBuildFlag("RELEASE_HIDDEN_API_EXPORTABLE_STUBS", "true"),
 		).RunTest(t)
 
 		CheckSnapshot(t, result, "mysdk", "",
