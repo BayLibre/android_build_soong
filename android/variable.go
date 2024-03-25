@@ -491,7 +491,11 @@ type ProductVariables struct {
 	// partition images. They should not be read from soong modules.
 	PartitionVarsForBazelMigrationOnlyDoNotUse PartitionVariables `json:",omitempty"`
 
-	BuildFlags map[string]string `json:",omitempty"`
+	BuildFlags           map[string]string   `json:",omitempty"`
+	BuildFlagsSet        map[string]string   `json:",omitempty"`
+	BuildFlagsDefault    map[string]string   `json:",omitempty"`
+	BuildFlagsDeclared   map[string]string   `json:",omitempty"`
+	BuildFlagsPartitions map[string][]string `json:",omitempty"`
 
 	BuildFromSourceStub *bool `json:",omitempty"`
 
