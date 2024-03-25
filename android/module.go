@@ -2145,10 +2145,7 @@ func (e configurationEvalutor) EvaluateConfiguration(ty parser.SelectType, prope
 	m := e.m
 	switch ty {
 	case parser.SelectTypeReleaseVariable:
-		if v, ok := ctx.Config().productVariables.BuildFlags[condition]; ok {
-			return v, true
-		}
-		return "", false
+		return ctx.Config().GetBuildFlagValue(condition)
 	case parser.SelectTypeProductVariable:
 		// TODO(b/323382414): Might add these on a case-by-case basis
 		ctx.OtherModulePropertyErrorf(m, property, "TODO(b/323382414): Product variables are not yet supported in selects")

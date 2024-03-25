@@ -389,6 +389,16 @@ func FixtureModifyProductVariables(mutator func(variables FixtureProductVariable
 	})
 }
 
+func FixtureAddBuildFlag(name, value string) FixturePreparer {
+	return FixtureModifyConfig(func(config Config) {
+		productVariables := FixtureProductVariables{&config.productVariables}
+		if productVariables.BuildFlags == nil {
+			productVariables.BuildFlags = make(map[string]BuildFlagData)
+		}
+		productVariables.BuildFlags[name] = BuildFlagData{name, value, "", "", ""}
+	})
+}
+
 var PrepareForSkipTestOnMac = newSimpleFixturePreparer(func(fixture *fixture) {
 	if runtime.GOOS != "linux" {
 		fixture.t.Skip("Test is only supported on linux.")

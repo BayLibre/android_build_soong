@@ -200,10 +200,8 @@ func TestHiddenAPISingletonSdks(t *testing.T) {
 				prepareForTestWithDefaultPlatformBootclasspath,
 				android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 					variables.Always_use_prebuilt_sdks = proptools.BoolPtr(tc.unbundledBuild)
-					variables.BuildFlags = map[string]string{
-						"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-					}
 				}),
+				android.FixtureAddBuildFlag("RELEASE_HIDDEN_API_EXPORTABLE_STUBS", "true"),
 			).RunTest(t)
 
 			hiddenAPI := result.ModuleForTests("platform-bootclasspath", "android_common")
