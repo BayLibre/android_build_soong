@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1953e71f_a5c0cbac",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-03-25T01:45:05Z",
+      "side": 1,
+      "message": "I thought this is better, because previous impl can add child into otherModules multiple times, while this would add only once.",
+      "parentUuid": "3f5044c8_9f0a65a9",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "d09743e6f5a73f898b6140531a71afa02a8b5cb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8913f93_0b75c048",
         "filename": "filesystem/system_image.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-25T01:33:19Z",
       "side": 1,
       "message": "I think we can merge this and the above and make things clearer: Find what\u0027s installed and what\u0027s just beyond the boundary.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "d09743e6f5a73f898b6140531a71afa02a8b5cb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08600d7d_b0ae0ecd",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-03-25T01:45:05Z",
+      "side": 1,
+      "message": "We need information from above loop in this loop. I also thought about merging, but this loop requires more information - which modules are installed in the system image. Unfortunately these cannot be merged in one loop.",
+      "parentUuid": "c8913f93_0b75c048",
       "range": {
         "startLine": 79,
         "startChar": 0,
