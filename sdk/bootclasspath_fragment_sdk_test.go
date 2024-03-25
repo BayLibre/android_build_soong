@@ -276,11 +276,7 @@ func testSnapshotWithBootClasspathFragment_Contents(t *testing.T, sdk string, co
 		// Add a platform_bootclasspath that depends on the fragment.
 		fixtureAddPlatformBootclasspathForBootclasspathFragment("myapex", "mybootclasspathfragment"),
 
-		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
-				"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-			}
-		}),
+		android.FixtureAddBuildFlag("RELEASE_HIDDEN_API_EXPORTABLE_STUBS", "true"),
 
 		android.FixtureWithRootAndroidBp(sdk+`
 			apex {
@@ -786,11 +782,7 @@ func TestSnapshotWithBootclasspathFragment_HiddenAPI(t *testing.T) {
 		// Add a platform_bootclasspath that depends on the fragment.
 		fixtureAddPlatformBootclasspathForBootclasspathFragment("myapex", "mybootclasspathfragment"),
 
-		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
-				"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-			}
-		}),
+		android.FixtureAddBuildFlag("RELEASE_HIDDEN_API_EXPORTABLE_STUBS", "true"),
 
 		android.MockFS{
 			"my-blocked.txt":                   nil,
@@ -1040,11 +1032,7 @@ func testSnapshotWithBootClasspathFragment_MinSdkVersion(t *testing.T, targetBui
 			variables.Platform_version_active_codenames = []string{"VanillaIceCream"}
 		}),
 
-		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
-				"RELEASE_HIDDEN_API_EXPORTABLE_STUBS": "true",
-			}
-		}),
+		android.FixtureAddBuildFlag("RELEASE_HIDDEN_API_EXPORTABLE_STUBS", "true"),
 
 		android.FixtureWithRootAndroidBp(`
 			sdk {

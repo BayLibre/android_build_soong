@@ -356,16 +356,16 @@ func TestPrebuilts(t *testing.T) {
 					name: "all_apex_contributions",
 				}
 				`,
-			preparer: FixtureModifyProductVariables(func(variables FixtureProductVariables) {
-				variables.VendorVars = map[string]map[string]string{
-					"acme": {
-						"use_source": "true",
-					},
-				}
-				variables.BuildFlags = map[string]string{
-					"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "my_mainline_module_contribution",
-				}
-			}),
+			preparer: GroupFixturePreparers(
+				FixtureModifyProductVariables(func(variables FixtureProductVariables) {
+					variables.VendorVars = map[string]map[string]string{
+						"acme": {
+							"use_source": "true",
+						},
+					}
+				}),
+				FixtureAddBuildFlag("RELEASE_APEX_CONTRIBUTIONS_ADSERVICES", "my_mainline_module_contribution"),
+			),
 			// use_source_config_var indicates that source should be used
 			// but this is superseded by `my_mainline_module_contribution`
 			prebuilt: []OsType{Android, buildOS},
@@ -392,16 +392,16 @@ func TestPrebuilts(t *testing.T) {
 					name: "all_apex_contributions",
 				}
 				`,
-			preparer: FixtureModifyProductVariables(func(variables FixtureProductVariables) {
-				variables.VendorVars = map[string]map[string]string{
-					"acme": {
-						"use_source": "false",
-					},
-				}
-				variables.BuildFlags = map[string]string{
-					"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "my_mainline_module_contribution",
-				}
-			}),
+			preparer: GroupFixturePreparers(
+				FixtureModifyProductVariables(func(variables FixtureProductVariables) {
+					variables.VendorVars = map[string]map[string]string{
+						"acme": {
+							"use_source": "false",
+						},
+					}
+				}),
+				FixtureAddBuildFlag("RELEASE_APEX_CONTRIBUTIONS_ADSERVICES", "my_mainline_module_contribution"),
+			),
 			// use_source_config_var indicates that prebuilt should be used
 			// but this is superseded by `my_mainline_module_contribution`
 			prebuilt: nil,
@@ -735,11 +735,7 @@ func newOverrideSourceModule() Module {
 
 func TestPrebuiltErrorCannotListBothSourceAndPrebuiltInContributions(t *testing.T) {
 	selectMainlineModuleContritbutions := GroupFixturePreparers(
-		FixtureModifyProductVariables(func(variables FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
-				"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "my_apex_contributions",
-			}
-		}),
+		FixtureAddBuildFlag("RELEASE_APEX_CONTRIBUTIONS_ADSERVICES", "my_apex_contributions"),
 	)
 	testPrebuiltErrorWithFixture(t, `Found duplicate variations of the same module in apex_contributions: foo and prebuilt_foo. Please remove one of these`, `
 		source {
@@ -766,11 +762,7 @@ func TestPrebuiltErrorCannotListBothSourceAndPrebuiltInContributions(t *testing.
 // Test that apex_contributions of prebuilt modules are ignored in coverage builds
 func TestSourceIsSelectedInCoverageBuilds(t *testing.T) {
 	prebuiltMainlineContributions := GroupFixturePreparers(
-		FixtureModifyProductVariables(func(variables FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
-				"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "my_prebuilt_apex_contributions",
-			}
-		}),
+		FixtureAddBuildFlag("RELEASE_APEX_CONTRIBUTIONS_ADSERVICES", "my_prebuilt_apex_contributions"),
 		FixtureMergeEnv(map[string]string{
 			"EMMA_INSTRUMENT_FRAMEWORK": "true",
 		}),

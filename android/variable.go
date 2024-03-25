@@ -496,7 +496,8 @@ type ProductVariables struct {
 	// partition images. They should not be read from soong modules.
 	PartitionVarsForBazelMigrationOnlyDoNotUse PartitionVariables `json:",omitempty"`
 
-	BuildFlags map[string]string `json:",omitempty"`
+	BuildFlags           map[string]BuildFlagData `json:",omitempty"`
+	BuildFlagsPartitions map[string][]string      `json:",omitempty"`
 
 	BuildFromSourceStub *bool `json:",omitempty"`
 
@@ -637,11 +638,11 @@ func (v *ProductVariables) SetDefaultConfig() {
 }
 
 func (this *ProductVariables) GetBuildFlagBool(flag string) bool {
-	val, ok := this.BuildFlags[flag]
+	buildFlag, ok := this.BuildFlags[flag]
 	if !ok {
 		return false
 	}
-	return val == "true"
+	return buildFlag.Value == "true"
 }
 
 // ProductConfigContext requires the access to the Module to get product config properties.

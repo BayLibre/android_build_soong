@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+
 	"github.com/google/blueprint"
 )
 
@@ -582,11 +583,7 @@ func TestMultiplePrebuilts(t *testing.T) {
 			android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
 				android.RegisterApexContributionsBuildComponents(ctx)
 			}),
-			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-				variables.BuildFlags = map[string]string{
-					"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "myapex_contributions",
-				}
-			}),
+			android.FixtureAddBuildFlag("RELEASE_APEX_CONTRIBUTIONS_ADSERVICES", "myapex_contributions"),
 		)
 		ctx := testPrebuilt(t, fmt.Sprintf(bp, tc.selectedDependencyName), map[string][]byte{
 			"libbar.so": nil,
@@ -680,11 +677,7 @@ func TestMultiplePrebuiltsPreferredUsingLegacyFlags(t *testing.T) {
 			android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
 				android.RegisterApexContributionsBuildComponents(ctx)
 			}),
-			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-				variables.BuildFlags = map[string]string{
-					"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "myapex_contributions",
-				}
-			}),
+			android.FixtureAddBuildFlag("RELEASE_APEX_CONTRIBUTIONS_ADSERVICES", "myapex_contributions"),
 		)
 		if tc.expectedErr != "" {
 			preparer = preparer.ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(tc.expectedErr))
@@ -744,11 +737,7 @@ func TestMissingVariantInModuleSdk(t *testing.T) {
 		android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
 			android.RegisterApexContributionsBuildComponents(ctx)
 		}),
-		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.BuildFlags = map[string]string{
-				"RELEASE_APEX_CONTRIBUTIONS_ADSERVICES": "myapex_contributions",
-			}
-		}),
+		android.FixtureAddBuildFlag("RELEASE_APEX_CONTRIBUTIONS_ADSERVICES", "myapex_contributions"),
 	)
 	ctx := testPrebuilt(t, bp, map[string][]byte{
 		"libbar.so": nil,
