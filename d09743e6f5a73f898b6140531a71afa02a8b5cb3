@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5da6ab9e_6937209c",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-25T01:57:11Z",
+      "side": 1,
+      "message": "Ack. So, this is not related to this change, right?",
+      "parentUuid": "1953e71f_a5c0cbac",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "d09743e6f5a73f898b6140531a71afa02a8b5cb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8913f93_0b75c048",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "We need information from above loop in this loop. I also thought about merging, but this loop requires more information - which modules are installed in the system image. Unfortunately these cannot be merged in one loop.",
       "parentUuid": "c8913f93_0b75c048",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "d09743e6f5a73f898b6140531a71afa02a8b5cb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363f114d_ec3f1a96",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-25T01:57:11Z",
+      "side": 1,
+      "message": "Hmm, I thought that the information is available during `WalkDeps`.\n\nOne more question: why we use `Name()` for `modulesInPackage` map while `otherModulesMap` uses `Module`?\n\n(Btw, `otherModulesMap` could be renamed `packaged-` or `installed-`)",
+      "parentUuid": "08600d7d_b0ae0ecd",
       "range": {
         "startLine": 79,
         "startChar": 0,
