@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b02ffdf_2d9a5d0f",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2039,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-26T06:52:23Z",
+      "side": 1,
+      "message": "can this be `return`?",
+      "range": {
+        "startLine": 2039,
+        "startChar": 2,
+        "endLine": 2039,
+        "endChar": 12
+      },
+      "revId": "a41ee540e7546b5dd2cbc327ece0eff3b7696c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9203dc2f_eda7a189",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2051,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-26T06:52:23Z",
+      "side": 1,
+      "message": "can this be `return `?",
+      "range": {
+        "startLine": 2051,
+        "startChar": 1,
+        "endLine": 2051,
+        "endChar": 13
+      },
+      "revId": "a41ee540e7546b5dd2cbc327ece0eff3b7696c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81889db3_0a6ce240",
+        "filename": "packaging/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-26T06:52:23Z",
+      "side": 1,
+      "message": "Does this deserve a new package? Also, packaging seems to be a bit too broad for this module type. Can this be in the aconfig package? This and that are for Trunk Stable anyway.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "a41ee540e7546b5dd2cbc327ece0eff3b7696c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c04138b_6457c277",
+        "filename": "packaging/flags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-26T06:52:23Z",
+      "side": 1,
+      "message": "Please add a test preparer like aosp/3013013",
+      "revId": "a41ee540e7546b5dd2cbc327ece0eff3b7696c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b6a6ff9_569cfcb7",
+        "filename": "packaging/flags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-26T06:52:23Z",
+      "side": 1,
+      "message": "buildFlags?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 8
+      },
+      "revId": "a41ee540e7546b5dd2cbc327ece0eff3b7696c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
