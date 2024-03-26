@@ -22,6 +22,30 @@
       },
       "revId": "d6d4ad2a79f8bc6a81d1957c8d1ec971f8827dd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b9c4c9_537d2646",
+        "filename": "scripts/buildinfo.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-26T05:57:45Z",
+      "side": 1,
+      "message": "Thanks for suggestion. Let me take a look at it and update this script if it seems better.\n\nI\u0027ll leave TODO on the bug.",
+      "parentUuid": "537b647a_e652956c",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 54
+      },
+      "revId": "d6d4ad2a79f8bc6a81d1957c8d1ec971f8827dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
