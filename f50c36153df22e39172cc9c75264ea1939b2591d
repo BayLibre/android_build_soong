@@ -97,6 +97,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a7aebd8_ab38e2dd",
+        "filename": "android/buildinfo_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-26T03:54:44Z",
+      "side": 1,
+      "message": "Then I would add a method getBuildKeys to the config struct. It requires ctx just to construct PathContext, but you actually don\u0027t use the path. You just want to check if it\u0027s the same as the certain path or not.",
+      "parentUuid": "24c630f2_cf67db14",
+      "range": {
+        "startLine": 67,
+        "startChar": 18,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18e3d8f3_38d3023d",
+        "filename": "android/buildinfo_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-26T03:54:44Z",
+      "side": 1,
+      "message": "This is repeated in config.go as well.",
+      "range": {
+        "startLine": 69,
+        "startChar": 59,
+        "endLine": 69,
+        "endChar": 103
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b82537e_a3305363",
         "filename": "android/buildinfo_prop.go",
         "patchSetId": 5
