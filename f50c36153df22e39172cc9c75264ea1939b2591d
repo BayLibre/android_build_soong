@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "855dd34a_04148284",
+        "filename": "android/buildinfo_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-26T05:56:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a7aebd8_ab38e2dd",
+      "range": {
+        "startLine": 67,
+        "startChar": 18,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18e3d8f3_38d3023d",
@@ -132,6 +156,30 @@
       "writtenOn": "2024-03-26T03:54:44Z",
       "side": 1,
       "message": "This is repeated in config.go as well.",
+      "range": {
+        "startLine": 69,
+        "startChar": 59,
+        "endLine": 69,
+        "endChar": 103
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f13b1784_7dd01a83",
+        "filename": "android/buildinfo_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-26T05:56:48Z",
+      "side": 1,
+      "message": "removed duplicates.",
+      "parentUuid": "18e3d8f3_38d3023d",
       "range": {
         "startLine": 69,
         "startChar": 59,
