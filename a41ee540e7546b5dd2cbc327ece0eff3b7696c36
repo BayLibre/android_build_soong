@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b0f6f28_0b4b2092",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2039,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-03-26T07:29:08Z",
+      "side": 1,
+      "message": "This is to return `ok` with the value, but I don\u0027t use the `ok` value from this function. Let me remove it.",
+      "parentUuid": "0b02ffdf_2d9a5d0f",
+      "range": {
+        "startLine": 2039,
+        "startChar": 2,
+        "endLine": 2039,
+        "endChar": 12
+      },
+      "revId": "a41ee540e7546b5dd2cbc327ece0eff3b7696c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9203dc2f_eda7a189",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-26T06:52:23Z",
       "side": 1,
       "message": "can this be `return `?",
+      "range": {
+        "startLine": 2051,
+        "startChar": 1,
+        "endLine": 2051,
+        "endChar": 13
+      },
+      "revId": "a41ee540e7546b5dd2cbc327ece0eff3b7696c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c154337_74bd76bb",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2051,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-03-26T07:29:08Z",
+      "side": 1,
+      "message": "This is required to see if the partition is in the list or not.",
+      "parentUuid": "9203dc2f_eda7a189",
       "range": {
         "startLine": 2051,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6be044b6_5817ed90",
+        "filename": "packaging/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-03-26T07:29:08Z",
+      "side": 1,
+      "message": "SGTM. aconfig is specific to only the aconfigs for now. I will move it to aconfig when @joeo@google.com agrees.",
+      "parentUuid": "81889db3_0a6ce240",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "a41ee540e7546b5dd2cbc327ece0eff3b7696c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c04138b_6457c277",
         "filename": "packaging/flags.go",
         "patchSetId": 1
@@ -83,6 +155,24 @@
       "writtenOn": "2024-03-26T06:52:23Z",
       "side": 1,
       "message": "Please add a test preparer like aosp/3013013",
+      "revId": "a41ee540e7546b5dd2cbc327ece0eff3b7696c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "953a8899_1ef2fe4e",
+        "filename": "packaging/flags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-03-26T07:29:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c04138b_6457c277",
       "revId": "a41ee540e7546b5dd2cbc327ece0eff3b7696c36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -100,6 +190,30 @@
       "writtenOn": "2024-03-26T06:52:23Z",
       "side": 1,
       "message": "buildFlags?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 8
+      },
+      "revId": "a41ee540e7546b5dd2cbc327ece0eff3b7696c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ab8b456_28efb3f6",
+        "filename": "packaging/flags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-03-26T07:29:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b6a6ff9_569cfcb7",
       "range": {
         "startLine": 71,
         "startChar": 1,
