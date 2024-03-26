@@ -178,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a9c6e04_d6eab01b",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-26T15:35:45Z",
+      "side": 1,
+      "message": "Okay, I was concerned about calling `generateManifestAndConfig` if the base wasn\u0027t valid and provider wasn\u0027t properly.\nI removed the bool from validateBase and added a test for having a base of \"java_library\" and it panic\u0027d with \"rule builder paths cannot bi nil\" in fixTextConfig because baseTestConfig would be nil. Added an early return there instead.",
+      "parentUuid": "202a5b4f_5e51bc91",
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c3d23e0_48f75f9a",
         "filename": "tradefed_modules/test_module_config.go",
         "patchSetId": 2

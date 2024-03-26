@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcd704e8_0e634e1d",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-26T15:35:45Z",
+      "side": 1,
+      "message": "Done, I was just trying to make it clear at the call site what the bool meant.",
+      "parentUuid": "0e6f6017_2060391f",
+      "revId": "761a9f6baa4331420d2fd4840a569efaeca89eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cbb4abc_4886b51d",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-03-25T18:07:24Z",
       "side": 1,
       "message": "WDYT about throwing a more informative error message when `baseShouldBeHost` !\u003d `provider.IsHost`? e.g. `\"android_test_host module type expected as base but android_test was given\"`.",
+      "revId": "761a9f6baa4331420d2fd4840a569efaeca89eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63eba48f_938d9167",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-26T15:35:45Z",
+      "side": 1,
+      "message": "Done, but this error handling nesting is making me miss rust.\nAnd I\u0027m not sure how to avoid `variant` warning in  TestModuleConfigHostBadBaseShouldFailWithVariantWarning test and get the error I expect.\n\nI moved the nil base check out to DepMutators to simplify a bit.",
+      "parentUuid": "0cbb4abc_4886b51d",
       "revId": "761a9f6baa4331420d2fd4840a569efaeca89eda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad7d4861_1198cc79",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-26T15:35:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df92c0d6_96a73473",
+      "revId": "761a9f6baa4331420d2fd4840a569efaeca89eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2008343b_ee8ce34e",
@@ -65,6 +119,24 @@
       "writtenOn": "2024-03-25T18:07:24Z",
       "side": 1,
       "message": "Number of `%s` does not match the number of arguments.",
+      "revId": "761a9f6baa4331420d2fd4840a569efaeca89eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b0a48b8_4d8585e3",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-26T15:35:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2008343b_ee8ce34e",
       "revId": "761a9f6baa4331420d2fd4840a569efaeca89eda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
