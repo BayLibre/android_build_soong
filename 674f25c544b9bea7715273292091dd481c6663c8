@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "952b5d87_dd0a5af7",
+        "filename": "android/arch_module_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-26T00:10:49Z",
+      "side": 1,
+      "message": "Can you add godoc in a few places that defines what \"ready\" means?  Or use something more explicit like AfterArchMutator.",
+      "revId": "674f25c544b9bea7715273292091dd481c6663c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9abbf598_d70692a5",
+        "filename": "android/base_module_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-26T00:10:49Z",
+      "side": 1,
+      "message": "Could you pass the property through to here so you can use PropertyErrorf, which will highlight which property caused the problem?",
+      "revId": "674f25c544b9bea7715273292091dd481c6663c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
