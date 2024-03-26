@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "537b647a_e652956c",
+        "filename": "scripts/buildinfo.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2024-03-26T02:23:04Z",
+      "side": 1,
+      "message": "can we use a template engine instead? it looks like `py-jinja` is included in Android repo.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 54
+      },
+      "revId": "d6d4ad2a79f8bc6a81d1957c8d1ec971f8827dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
