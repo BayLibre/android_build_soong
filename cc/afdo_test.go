@@ -91,7 +91,7 @@ func TestAfdoDeps(t *testing.T) {
 
 	profileSampleCFlag := "-fprofile-sample-use=afdo_profiles_package/libTest.afdo"
 	uniqueInternalLinkageNamesCFlag := "-funique-internal-linkage-names"
-	afdoLtoLdFlag := "-Wl,-plugin-opt,-import-instr-limit=40"
+	afdoLtoLdFlag := "-Wl,-plugin-opt,-import-instr-limit=30"
 	noAfdoLtoLdFlag := "-Wl,-plugin-opt,-import-instr-limit=5"
 
 	libTest := result.ModuleForTests("libTest", "android_arm64_armv8-a_shared")
