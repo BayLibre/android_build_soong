@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4e48592_b640e804",
+        "filename": "android/buildinfo_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-26T02:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d1a7a40_9b2ec5e7",
+      "range": {
+        "startLine": 57,
+        "startChar": 21,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fd7d4f9_05c43815",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-22T00:52:01Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 67,
+        "startChar": 18,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c630f2_cf67db14",
+        "filename": "android/buildinfo_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-26T02:09:36Z",
+      "side": 1,
+      "message": "We need ctx in this case (see `DefaultAppCertificate(ctx)`).",
+      "parentUuid": "0fd7d4f9_05c43815",
       "range": {
         "startLine": 67,
         "startChar": 18,
@@ -93,6 +141,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b063b53e_e3fcd944",
+        "filename": "android/buildinfo_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-26T02:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "848b7796_786a009a",
+      "range": {
+        "startLine": 76,
+        "startChar": 20,
+        "endLine": 76,
+        "endChar": 34
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfabb3b7_b249fdc4",
+        "filename": "android/buildinfo_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-26T02:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b82537e_a3305363",
+      "range": {
+        "startLine": 76,
+        "startChar": 37,
+        "endLine": 76,
+        "endChar": 57
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3d9d025_7ef54dca",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-03-21T18:27:47Z",
       "side": 1,
       "message": "`required\u003dFalse` is the default for flags, remove all of these.",
+      "range": {
+        "startLine": 26,
+        "startChar": 60,
+        "endLine": 26,
+        "endChar": 75
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c8e1a5f_dac267a9",
+        "filename": "scripts/buildinfo.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-26T02:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3d9d025_7ef54dca",
       "range": {
         "startLine": 26,
         "startChar": 60,
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbb11193_5243d395",
+        "filename": "scripts/buildinfo.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-26T02:09:36Z",
+      "side": 1,
+      "message": "done. and removed other `encoding\u003d\u0027utf-8\u0027` above.",
+      "parentUuid": "b390c241_c2343cba",
+      "range": {
+        "startLine": 80,
+        "startChar": 37,
+        "endLine": 80,
+        "endChar": 53
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0db4a2f_ff8c1310",
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7016b999_f82849ff",
+        "filename": "scripts/buildinfo.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-26T02:09:36Z",
+      "side": 1,
+      "message": "Oops! thanks for catching.",
+      "parentUuid": "e0db4a2f_ff8c1310",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fd03083_33c9325e",
@@ -175,6 +343,24 @@
       "writtenOn": "2024-03-21T18:27:47Z",
       "side": 1,
       "message": "Don\u0027t pass `sys.argv[1:]` to `.parse_args()`. Argparse will use use `sys.argv` by default if nothing is passed, and it uses `sys.argv[0]` to display the name of the program in help dialogs.",
+      "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "543a5c4d_22a94a67",
+        "filename": "scripts/buildinfo.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-26T02:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fd03083_33c9325e",
       "revId": "f50c36153df22e39172cc9c75264ea1939b2591d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
