@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b26093b_32446d9c",
+        "filename": "android/arch_module_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-26T00:14:54Z",
+      "side": 1,
+      "message": "Feel free to add this in a followup so you don\u0027t have to deal with the conflicts when you move it in the next patch.",
+      "parentUuid": "952b5d87_dd0a5af7",
+      "revId": "674f25c544b9bea7715273292091dd481c6663c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9abbf598_d70692a5",
         "filename": "android/base_module_context.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2024-03-26T00:10:49Z",
       "side": 1,
       "message": "Could you pass the property through to here so you can use PropertyErrorf, which will highlight which property caused the problem?",
+      "revId": "674f25c544b9bea7715273292091dd481c6663c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14faef9b_9c9b7651",
+        "filename": "android/base_module_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-03-26T00:14:54Z",
+      "side": 1,
+      "message": "Nevermind, I see that\u0027s covered in the next patch.",
+      "parentUuid": "9abbf598_d70692a5",
       "revId": "674f25c544b9bea7715273292091dd481c6663c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
