@@ -24,8 +24,11 @@ func registerAllTeamBuildComponents(ctx RegistrationContext) {
 
 // For each module, list the team or the bpFile the module is defined in.
 type moduleTeamInfo struct {
-	teamName string
-	bpFile   string
+	teamName       string
+	bpFile         string
+	testOnly       bool
+	topLevelTarget bool
+	kind           string
 }
 
 type allTeamsSingleton struct {
@@ -60,8 +63,8 @@ func (this *allTeamsSingleton) lookupDefaultTeam(bpFilePath string) (teamPropert
 	return this.lookupDefaultTeam(filepath.Join(parent, base))
 }
 
-// Create a rule to run a tool to collect all the intermediate files
-// which list the team per module into one proto file.
+// Visit all modules and collect all teams and use WriteFileRuleVerbatim
+// to write it out.
 func (this *allTeamsSingleton) GenerateBuildActions(ctx SingletonContext) {
 	this.packages = make(map[string]packageProperties)
 	this.teams = make(map[string]teamProperties)
@@ -69,6 +72,11 @@ func (this *allTeamsSingleton) GenerateBuildActions(ctx SingletonContext) {
 
 	ctx.VisitAllModules(func(module Module) {
 		bpFile := ctx.BlueprintFile(module)
+
+		testModInfo := TestModuleInformation{}
+		if tmi, ok := SingletonModuleProvider(ctx, module, TestOnlyProviderKey); ok {
+			testModInfo = tmi
+		}
 
 		// Package Modules and Team Modules are stored in a map so we can look them up by name for
 		// modules without a team.
@@ -86,9 +94,9 @@ func (this *allTeamsSingleton) GenerateBuildActions(ctx SingletonContext) {
 		// If a team name is given for a module, store it.
 		// Otherwise store the bpFile so we can do a package walk later.
 		if module.base().Team() != "" {
-			this.teams_for_mods[module.Name()] = moduleTeamInfo{teamName: module.base().Team(), bpFile: bpFile}
+			this.teams_for_mods[module.Name()] = moduleTeamInfo{teamName: module.base().Team(), bpFile: bpFile, testOnly: testModInfo.TestOnly, topLevelTarget: testModInfo.TopLevelTarget, kind: ctx.ModuleType(module)}
 		} else {
-			this.teams_for_mods[module.Name()] = moduleTeamInfo{bpFile: bpFile}
+			this.teams_for_mods[module.Name()] = moduleTeamInfo{bpFile: bpFile, testOnly: testModInfo.TestOnly, topLevelTarget: testModInfo.TopLevelTarget, kind: ctx.ModuleType(module)}
 		}
 	})
 
@@ -132,20 +140,18 @@ func (this *allTeamsSingleton) lookupTeamForAllModules() *team_proto.AllTeams {
 
 		var files []string
 		teamData := new(team_proto.Team)
+		*teamData = team_proto.Team{
+			TargetName:     proto.String(moduleName),
+			Path:           proto.String(m.bpFile),
+			File:           files,
+			TestOnly:       proto.Bool(m.testOnly),
+			TopLevelTarget: proto.Bool(m.topLevelTarget),
+			Kind:           proto.String(m.kind),
+		}
 		if trendy_team_id != "" {
-			*teamData = team_proto.Team{
-				TrendyTeamId: proto.String(trendy_team_id),
-				TargetName:   proto.String(moduleName),
-				Path:         proto.String(m.bpFile),
-				File:         files,
-			}
+			teamData.TrendyTeamId = proto.String(trendy_team_id)
 		} else {
 			// Clients rely on the TrendyTeamId optional field not being set.
-			*teamData = team_proto.Team{
-				TargetName: proto.String(moduleName),
-				Path:       proto.String(m.bpFile),
-				File:       files,
-			}
 		}
 		teamsProto[i] = teamData
 	}
