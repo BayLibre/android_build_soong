@@ -215,6 +215,11 @@ type CommonProperties struct {
 	// the stubs via libs, but should be set to true when the module depends on
 	// the stubs via static libs.
 	Is_stubs_module *bool
+
+	// TODO(rbraunstein): probably change this to use ModuleDecoration here AddProperty
+	// Indicates that the module and its source code are only used in tests, not
+	// production code.  Used by coverage reports and potentially other tools.
+	Test_only *bool
 }
 
 // Properties that are specific to device modules. Host module factories should not add these when

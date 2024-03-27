@@ -25,6 +25,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/android/team_proto"
 	"android/soong/cc"
 	"android/soong/dexpreopt"
 )
@@ -4400,4 +4401,56 @@ func TestNoDexpreoptOptionalUsesLibDoesNotHaveImpl(t *testing.T) {
 	result := prepareForJavaTest.RunTestWithBp(t, bp)
 	dexpreopt := result.ModuleForTests("app", "android_common").MaybeRule("dexpreopt").Rule
 	android.AssertBoolEquals(t, "dexpreopt should be disabled if optional_uses_libs does not have an implementation", true, dexpreopt == nil)
+}
+
+func TestTestOnlyApp(t *testing.T) {
+	t.Parallel()
+	ctx := android.GroupFixturePreparers(
+		android.PrepareForTestWithTeamBuildComponents,
+		prepareForJavaTest,
+		android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
+			ctx.RegisterParallelSingletonType("all_teams", android.AllTeamsFactory)
+		}),
+	).RunTestWithBp(t, `
+                package { default_team: "someteam"}
+                // These should be test-only
+                android_test {
+                        name: "android-test",
+                }
+                android_test_helper_app {
+                        name: "helper-app",
+                }
+                override_android_test {
+                        name: "override-test",
+                        base: "android-app",
+                }
+                // And these should not be
+		android_app {
+			name: "android-app",
+                        srcs: ["b.java"],
+			sdk_version: "current",
+		}
+		team {
+			name: "someteam",
+			trendy_team_id: "cool_team",
+		}
+	`)
+
+	var teams *team_proto.AllTeams
+	teams = getTeamProtoOutput(t, ctx)
+
+	// map of module name -> trendy team name.
+	actualTrueModules := make(map[string]bool)
+	for _, teamProto := range teams.Teams {
+		if Bool(teamProto.TestOnly) {
+			actualTrueModules[teamProto.GetTargetName()] = Bool(teamProto.TestOnly)
+		}
+	}
+	expectedModules := map[string]bool{
+		"android-test":  true,
+		"helper-app":    true,
+		"override-test": true,
+	}
+
+	android.AssertDeepEquals(t, "compare maps", expectedModules, actualTrueModules)
 }

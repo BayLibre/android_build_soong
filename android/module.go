@@ -2444,3 +2444,10 @@ func (s *soongConfigTraceSingleton) GenerateBuildActions(ctx SingletonContext) {
 	WriteFileRule(ctx, outFile, string(j))
 	ctx.Phony("soong_config_trace", outFile)
 }
+
+// For storing user-supplied properties about a module to be queried later.
+type ModuleDecoration struct {
+	// Indicates that the module and its source code are only used in tests, not
+	// production code.  Used by coverage reports and potentially other tools.
+	Test_only *bool
+}

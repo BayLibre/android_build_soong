@@ -16,6 +16,7 @@ package java
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -26,9 +27,11 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
+	"google.golang.org/protobuf/proto"
 
 	"android/soong/aconfig"
 	"android/soong/android"
+	"android/soong/android/team_proto"
 	"android/soong/cc"
 	"android/soong/dexpreopt"
 	"android/soong/genrule"
@@ -2756,4 +2759,90 @@ func TestApiLibraryAconfigDeclarations(t *testing.T) {
 	manifest := m.Output("metalava.sbox.textproto")
 	cmdline := String(android.RuleBuilderSboxProtoForTests(t, result.TestContext, manifest).Commands[0].Command)
 	android.AssertStringDoesContain(t, "flagged api hide command not included", cmdline, "revert-annotations-exportable.txt")
+}
+
+func TestTestOnly(t *testing.T) {
+	t.Parallel()
+	ctx := android.GroupFixturePreparers(
+		android.PrepareForTestWithTeamBuildComponents,
+		prepareForJavaTest,
+		android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
+			ctx.RegisterParallelSingletonType("all_teams", android.AllTeamsFactory)
+		}),
+	).RunTestWithBp(t, `
+                package { default_team: "someteam"}
+                // These should be test-only
+		java_library {
+			name: "lib1-test-only",
+                        srcs: ["a.java"],
+                        test_only: true,
+		}
+                java_test {
+                        name: "java-test",
+                }
+                java_test_host {
+                        name: "java-test-host",
+                }
+                java_test_helper_library {
+                        name: "helper-library",
+                }
+                // And these should not be
+                java_test_helper_library {
+                        name: "helper-library-set-false",
+                        // We let people set this back to false.
+                        test_only: false,
+                }
+		java_library {
+			name: "lib2-app",
+                        srcs: ["b.java"],
+		}
+		java_import {
+			name: "bar",
+			jars: ["bar.jar"],
+		}
+                java_binary {
+                        name: "java-binary",
+			srcs: ["foo.java"],
+			main_class: "foo.bar.jb",
+                }
+		team {
+			name: "someteam",
+			trendy_team_id: "cool_team",
+		}
+	`)
+
+	var teams *team_proto.AllTeams
+	teams = getTeamProtoOutput(t, ctx)
+
+	// map of module name -> trendy team name.
+	actualTrueModules := make(map[string]bool)
+	for _, teamProto := range teams.Teams {
+		if Bool(teamProto.TestOnly) {
+			actualTrueModules[teamProto.GetTargetName()] = Bool(teamProto.TestOnly)
+		}
+	}
+	expectedModules := map[string]bool{
+		"lib1-test-only": true,
+		"java-test":      true,
+		"java-test-host": true,
+		"helper-library": true,
+	}
+
+	android.AssertDeepEquals(t, "compare maps", expectedModules, actualTrueModules)
+}
+
+// Todo ron export from all_teams test
+func getTeamProtoOutput(t *testing.T, ctx *android.TestResult) *team_proto.AllTeams {
+	teams := new(team_proto.AllTeams)
+	config := ctx.SingletonForTests("all_teams")
+	allOutputs := config.AllOutputs()
+
+	protoPath := allOutputs[0]
+
+	out := config.MaybeOutput(protoPath)
+	outProto := []byte(android.ContentFromFileRuleForTests(t, ctx.TestContext, out))
+	if err := proto.Unmarshal(outProto, teams); err != nil {
+		log.Fatalln("Failed to parse teams proto:", err)
+	}
+	return teams
 }

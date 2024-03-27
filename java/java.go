@@ -952,6 +952,12 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 		j.installFile = ctx.InstallFile(installDir, j.Stem()+".jar", j.outputFile, extraInstallDeps...)
 	}
+	android.SetProvider(ctx, android.ModuleRelationshipProviderKey, android.ModuleRelationshipData{
+		TestOnly: Bool(j.properties.Test_only),
+		// TODO(ron): have call back for this?
+		TopLevelTarget: false,
+	})
+
 }
 
 func (j *Library) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -1590,6 +1596,7 @@ func TestFactory() android.Module {
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 	module.Module.dexpreopter.isTest = true
 	module.Module.linter.properties.Lint.Test = proptools.BoolPtr(true)
+	module.Module.properties.Test_only = proptools.BoolPtr(true)
 
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	return module
@@ -1605,6 +1612,8 @@ func TestHelperLibraryFactory() android.Module {
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 	module.Module.dexpreopter.isTest = true
 	module.Module.linter.properties.Lint.Test = proptools.BoolPtr(true)
+	/* android.ModuleRelationships */
+	module.Module.properties.Test_only = proptools.BoolPtr(true)
 
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	return module
@@ -1660,6 +1669,7 @@ func InitTestHost(th *TestHost, installable *bool, testSuites []string, autoGenC
 	th.properties.Installable = installable
 	th.testProperties.Auto_gen_config = autoGenConfig
 	th.testProperties.Test_suites = testSuites
+	th.properties.Test_only = proptools.BoolPtr(true)
 }
 
 //

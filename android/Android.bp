@@ -103,6 +103,7 @@ bootstrap_go_package {
         "visibility.go",
     ],
     testSrcs: [
+        "all_teams_test.go",
         "android_test.go",
         "androidmk_test.go",
         "apex_test.go",
