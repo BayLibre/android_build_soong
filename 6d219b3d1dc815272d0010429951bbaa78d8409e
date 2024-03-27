@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4072798c_8224dd8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-27T13:00:04Z",
+      "side": 1,
+      "message": "LGTM, but should be approved by the owners. If possible, it would be great if I can read the followup change as well, so that I can see how these fileds are used.",
+      "revId": "6d219b3d1dc815272d0010429951bbaa78d8409e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
