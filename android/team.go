@@ -14,6 +14,8 @@
 
 package android
 
+import "github.com/google/blueprint"
+
 func init() {
 	RegisterTeamBuildComponents(InitRegistrationContext)
 }
@@ -36,6 +38,24 @@ type teamModule struct {
 
 	properties teamProperties
 }
+
+// We have two different providers here because languages (cc/java)
+// need to set the provider in GenerateAndroidBuildActions.
+// However, for java there is GenerateAndroidBuildActions for both *Library
+// and *Test.  The Library method gets called for both tests and libraries, but
+// a provider can only be set once and not mutated.
+// The "test-only" is generally known at the library level, while the TopLevelTarget
+// is known at Test level.
+// It seems we need two different provider, not a larger struct to handle this situation.
+// Client code should read both providers and OR them together and language code can
+// optionally write with one or two providers.
+type TestModuleInformation struct {
+	TestOnly       bool
+	TopLevelTarget bool
+}
+
+var TestOnlyProviderKey = blueprint.NewProvider[TestModuleInformation]()
+var TestTargetProviderKey = blueprint.NewProvider[TestModuleInformation]()
 
 // Real work is done for the module that depends on us.
 // If needed, the team can serialize the config to json/proto file as well.

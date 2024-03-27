@@ -182,6 +182,8 @@ type AndroidApp struct {
 
 	overridableAppProperties overridableAppProperties
 
+	sourceProperties android.SourceProperties
+
 	jniLibs                  []jniLib
 	installPathForJNISymbols android.Path
 	embeddedJniLibs          bool
@@ -928,6 +930,10 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 			isPrebuilt:     false,
 		},
 	)
+
+	android.SetProvider(ctx, android.TestOnlyProviderKey, android.TestModuleInformation{
+		TestOnly: Bool(a.sourceProperties.Test_only),
+	})
 }
 
 type appDepsInterface interface {
@@ -1191,7 +1197,8 @@ func AndroidAppFactory() android.Module {
 	module.AddProperties(
 		&module.aaptProperties,
 		&module.appProperties,
-		&module.overridableAppProperties)
+		&module.overridableAppProperties,
+		&module.sourceProperties)
 
 	module.usesLibrary.enforce = true
 
@@ -1340,6 +1347,10 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		TestSuites:              a.testProperties.Test_suites,
 		IsHost:                  false,
 	})
+	android.SetProvider(ctx, android.TestTargetProviderKey, android.TestModuleInformation{
+		TopLevelTarget: true,
+	})
+
 }
 
 func (a *AndroidTest) FixTestConfig(ctx android.ModuleContext, testConfig android.Path) android.Path {
@@ -1404,6 +1415,7 @@ func AndroidTestFactory() android.Module {
 	module.appProperties.AlwaysPackageNativeLibs = true
 	module.Module.dexpreopter.isTest = true
 	module.Module.linter.properties.Lint.Test = proptools.BoolPtr(true)
+	module.sourceProperties.Test_only = proptools.BoolPtr(true)
 
 	module.addHostAndDeviceProperties()
 	module.AddProperties(
@@ -1460,6 +1472,7 @@ func AndroidTestHelperAppFactory() android.Module {
 	module.appProperties.AlwaysPackageNativeLibs = true
 	module.Module.dexpreopter.isTest = true
 	module.Module.linter.properties.Lint.Test = proptools.BoolPtr(true)
+	module.sourceProperties.Test_only = proptools.BoolPtr(true)
 
 	module.addHostAndDeviceProperties()
 	module.AddProperties(
@@ -1532,9 +1545,13 @@ type OverrideAndroidTest struct {
 	android.OverrideModuleBase
 }
 
-func (i *OverrideAndroidTest) GenerateAndroidBuildActions(_ android.ModuleContext) {
+func (i *OverrideAndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// All the overrides happen in the base module.
 	// TODO(jungjw): Check the base module type.
+	android.SetProvider(ctx, android.TestTargetProviderKey, android.TestModuleInformation{
+		TestOnly:       true,
+		TopLevelTarget: true,
+	})
 }
 
 // override_android_test is used to create an android_app module based on another android_test by overriding
@@ -1543,6 +1560,8 @@ func OverrideAndroidTestModuleFactory() android.Module {
 	m := &OverrideAndroidTest{}
 	m.AddProperties(&overridableAppProperties{})
 	m.AddProperties(&appTestProperties{})
+	// TODO(ron): not needed?
+	// m.properties.Test_only = proptools.BoolPtr(true)
 
 	android.InitAndroidMultiTargetsArchModule(m, android.DeviceSupported, android.MultilibCommon)
 	android.InitOverrideModule(m)

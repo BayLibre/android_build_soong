@@ -380,6 +380,11 @@ type BaseProperties struct {
 			Exclude_required []string `android:"arch_variant"`
 		} `android:"arch_variant"`
 	} `android:"arch_variant"`
+
+	// TODO(rbraunstein): probably change this to use ModuleDecoration here AddProperty
+	// Indicates that the module and its source code are only used in tests, not
+	// production code.  Used by coverage reports and potentially other tools.
+	Test_only *bool
 }
 
 type VendorProperties struct {
@@ -836,8 +841,9 @@ type Module struct {
 	Properties       BaseProperties
 
 	// initialize before calling Init
-	hod        android.HostOrDeviceSupported
-	multilib   android.Multilib
+	hod      android.HostOrDeviceSupported
+	multilib android.Multilib
+	// cc_test, cc_fuzz
 	testModule bool
 
 	// Allowable SdkMemberTypes of this module type.
@@ -2126,6 +2132,18 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	if c.testModule {
 		android.SetProvider(ctx, testing.TestModuleProviderKey, testing.TestModuleProviderData{})
 	}
+
+	// If Test_only is set on a module in bp file, respect the setting, otherwise
+	// see if is known test module type.
+	testOnly := c.testModule || c.testLibrary()
+	if c.Properties.Test_only != nil {
+		testOnly = Bool(c.Properties.Test_only)
+	}
+	android.SetProvider(ctx, android.TestOnlyProviderKey, android.TestModuleInformation{
+		TestOnly:       testOnly,
+		TopLevelTarget: c.testModule,
+	})
+
 	android.SetProvider(ctx, blueprint.SrcsFileProviderKey, blueprint.SrcsFileProviderData{SrcPaths: deps.GeneratedSources.Strings()})
 
 	android.CollectDependencyAconfigFiles(ctx, &c.mergedAconfigFiles)
@@ -3800,6 +3818,10 @@ func (c *Module) Installable() *bool {
 	return c.Properties.Installable
 }
 
+func (c *Module) IsTestOnly() bool {
+	return Bool(c.Properties.Test_only)
+}
+
 func installable(c LinkableInterface, apexInfo android.ApexInfo) bool {
 	ret := c.EverInstallable() &&
 		// Check to see whether the module has been configured to not be installed.
@@ -4060,6 +4082,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		// RustBindgenProperties is included here so that cc_defaults can be used for rust_bindgen modules.
 		&RustBindgenClangProperties{},
 		&prebuiltLinkerProperties{},
+		&android.SourceProperties{},
 	)
 
 	android.InitDefaultsModule(module)
