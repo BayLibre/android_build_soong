@@ -72,6 +72,14 @@ func (install *dexpreopterInstall) SubModuleName() string {
 	return "-dexpreopt-" + install.name
 }
 
+func (install *dexpreopterInstall) OutputPathOnHost() string {
+	return install.outputPathOnHost.String()
+}
+
+func (install *dexpreopterInstall) OutputPathOnDevice() string {
+	return filepath.Join(install.installDirOnDevice.String(), install.installFileOnDevice)
+}
+
 // Returns Make entries for installing the file.
 //
 // This function uses a value receiver rather than a pointer receiver to ensure that the object is

@@ -192,14 +192,6 @@ func (p *prebuiltCommon) IsInstallable() bool {
 	return p.installable()
 }
 
-// initApexFilesForAndroidMk initializes the prebuiltCommon.requiredModuleNames field with the install only deps of the prebuilt apex
-func (p *prebuiltCommon) initApexFilesForAndroidMk(ctx android.ModuleContext) {
-	// If this apex contains a system server jar, then the dexpreopt artifacts should be added as required
-	for _, install := range p.Dexpreopter.DexpreoptBuiltInstalledForApex() {
-		p.requiredModuleNames = append(p.requiredModuleNames, install.FullModuleName())
-	}
-}
-
 // If this prebuilt has system server jar, create the rules to dexpreopt it and install it alongside the prebuilt apex
 func (p *prebuiltCommon) dexpreoptSystemServerJars(ctx android.ModuleContext) {
 	// If this apex does not export anything, return
@@ -251,20 +243,20 @@ func (p *prebuiltCommon) AndroidMkEntries() []android.AndroidMkEntries {
 					entries.SetString("LOCAL_MODULE_PATH", p.installDir.String())
 					entries.SetString("LOCAL_MODULE_STEM", p.installFilename)
 					entries.SetPath("LOCAL_SOONG_INSTALLED_MODULE", p.installedFile)
-					entries.SetString("LOCAL_SOONG_INSTALL_PAIRS", p.outputApex.String()+":"+p.installedFile.String())
 					entries.AddStrings("LOCAL_SOONG_INSTALL_SYMLINKS", p.compatSymlinks.Strings()...)
 					entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", !p.installable())
 					entries.AddStrings("LOCAL_OVERRIDES_MODULES", p.prebuiltCommonProperties.Overrides...)
 					entries.SetString("LOCAL_APEX_KEY_PATH", p.apexKeysPath.String())
 					p.addRequiredModules(entries)
+					installPairs := p.outputApex.String() + ":" + p.installedFile.String()
+					for _, install := range p.Dexpreopter.DexpreoptBuiltInstalledForApex() {
+						// Install any Dexpreopt'd artifacts if present.
+						installPairs += " " + install.OutputPathOnHost() + ":" + install.OutputPathOnDevice()
+					}
+					entries.SetString("LOCAL_SOONG_INSTALL_PAIRS", installPairs)
 				},
 			},
 		},
-	}
-
-	// Add the dexpreopt artifacts to androidmk
-	for _, install := range p.Dexpreopter.DexpreoptBuiltInstalledForApex() {
-		entriesList = append(entriesList, install.ToMakeEntries())
 	}
 
 	// Iterate over the apexFilesForAndroidMk list and create an AndroidMkEntries struct for each
@@ -867,9 +859,6 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	p.providePrebuiltInfo(ctx)
 
-	// Save the files that need to be made available to Make.
-	p.initApexFilesForAndroidMk(ctx)
-
 	// in case that prebuilt_apex replaces source apex (using prefer: prop)
 	p.compatSymlinks = makeCompatSymlinks(p.BaseModuleName(), ctx)
 	// or that prebuilt_apex overrides other apexes (using overrides: prop)
@@ -1090,9 +1079,6 @@ func (a *ApexSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.provideApexExportsInfo(ctx)
 
 	a.providePrebuiltInfo(ctx)
-
-	// Save the files that need to be made available to Make.
-	a.initApexFilesForAndroidMk(ctx)
 
 	a.installDir = android.PathForModuleInstall(ctx, "apex")
 	if a.installable() {

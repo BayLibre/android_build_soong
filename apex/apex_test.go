@@ -9647,13 +9647,18 @@ func TestAndroidMk_DexpreoptBuiltInstalledForApex_Prebuilt(t *testing.T) {
 	prebuilt := ctx.ModuleForTests("myapex", "android_common_myapex").Module().(*Prebuilt)
 	entriesList := android.AndroidMkEntriesForTest(t, ctx, prebuilt)
 	mainModuleEntries := entriesList[0]
-	android.AssertArrayString(t,
-		"LOCAL_REQUIRED_MODULES",
-		mainModuleEntries.EntryMap["LOCAL_REQUIRED_MODULES"],
-		[]string{
-			"foo-dexpreopt-arm64-apex@myapex@javalib@foo.jar@classes.odex",
-			"foo-dexpreopt-arm64-apex@myapex@javalib@foo.jar@classes.vdex",
-		})
+	android.AssertStringDoesContain(
+		t,
+		"Missing dexpreopt artifacts of SSCP jar foo",
+		mainModuleEntries.EntryMap["LOCAL_SOONG_INSTALL_PAIRS"][0],
+		"target/product/test_device/system/framework/oat/arm64/apex@myapex@javalib@foo.jar@classes.odex", // .odex
+	)
+	android.AssertStringDoesContain(
+		t,
+		"Missing dexpreopt artifacts of SSCP jar foo",
+		mainModuleEntries.EntryMap["LOCAL_SOONG_INSTALL_PAIRS"][0],
+		"target/product/test_device/system/framework/oat/arm64/apex@myapex@javalib@foo.jar@classes.vdex", // .vdex
+	)
 }
 
 func TestAndroidMk_RequiredModules(t *testing.T) {
