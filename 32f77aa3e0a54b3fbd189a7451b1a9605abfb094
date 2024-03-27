@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8138ba2f_44031480",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-03-27T08:31:44Z",
+      "side": 1,
+      "message": "Jooyung, can you first review with multiple vendor / VNDK APEX related test updates / removes?",
+      "revId": "32f77aa3e0a54b3fbd189a7451b1a9605abfb094",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
