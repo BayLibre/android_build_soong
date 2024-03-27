@@ -302,6 +302,9 @@ var (
 		// until then because it causes warnings in the _callers_, not the
 		// project itself.
 		"-Wno-deprecated-dynamic-exception-spec",
+		// VLAs are used in many places.
+		"-Wno-vla-extension",
+		"-Wno-vla-cxx-extension",
 	}
 
 	noOverride64GlobalCflags = []string{}
