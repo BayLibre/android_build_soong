@@ -24,9 +24,8 @@ import (
 func TestAllTeams(t *testing.T) {
 	t.Parallel()
 	ctx := GroupFixturePreparers(
-		PrepareForTestWithTeamBuildComponents,
+		prepareForTestWithTeamAndFakeBuildComponents,
 		FixtureRegisterWithContext(func(ctx RegistrationContext) {
-			ctx.RegisterModuleType("fake", fakeModuleFactory)
 			ctx.RegisterParallelSingletonType("all_teams", AllTeamsFactory)
 		}),
 	).RunTestWithBp(t, `
@@ -171,10 +170,9 @@ func TestPackageLookup(t *testing.T) {
 		} `
 
 	ctx := GroupFixturePreparers(
-		PrepareForTestWithTeamBuildComponents,
+		prepareForTestWithTeamAndFakeBuildComponents,
 		PrepareForTestWithPackageModule,
 		FixtureRegisterWithContext(func(ctx RegistrationContext) {
-			ctx.RegisterModuleType("fake", fakeModuleFactory)
 			ctx.RegisterParallelSingletonType("all_teams", AllTeamsFactory)
 		}),
 		FixtureAddTextFile("Android.bp", rootBp),
@@ -206,3 +204,22 @@ func TestPackageLookup(t *testing.T) {
 	}
 	AssertDeepEquals(t, "compare maps", expectedTeams, actualTeams)
 }
+
+type fakeModuleForTests struct {
+	ModuleBase
+}
+
+func fakeModuleFactory() Module {
+	module := &fakeModuleForTests{}
+	InitAndroidModule(module)
+	return module
+}
+
+var prepareForTestWithTeamAndFakeBuildComponents = GroupFixturePreparers(
+	FixtureRegisterWithContext(RegisterTeamBuildComponents),
+	FixtureRegisterWithContext(func(ctx RegistrationContext) {
+		ctx.RegisterModuleType("fake", fakeModuleFactory)
+	}),
+)
+
+func (*fakeModuleForTests) GenerateAndroidBuildActions(ModuleContext) {}

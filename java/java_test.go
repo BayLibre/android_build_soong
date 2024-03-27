@@ -16,6 +16,7 @@ package java
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -26,9 +27,11 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
+	"google.golang.org/protobuf/proto"
 
 	"android/soong/aconfig"
 	"android/soong/android"
+	"android/soong/android/team_proto"
 	"android/soong/cc"
 	"android/soong/dexpreopt"
 	"android/soong/genrule"
@@ -2836,6 +2839,129 @@ func TestApiLibraryAconfigDeclarations(t *testing.T) {
 	manifest := m.Output("metalava.sbox.textproto")
 	cmdline := String(android.RuleBuilderSboxProtoForTests(t, result.TestContext, manifest).Commands[0].Command)
 	android.AssertStringDoesContain(t, "flagged api hide command not included", cmdline, "revert-annotations-exportable.txt")
+}
+
+func TestTestOnly(t *testing.T) {
+	t.Parallel()
+	ctx := android.GroupFixturePreparers(
+		prepareForJavaTest,
+	).RunTestWithBp(t, `
+                // These should be test-only
+		java_library {
+			name: "lib1-test-only",
+                        srcs: ["a.java"],
+                        test_only: true,
+		}
+                java_test {
+                        name: "java-test",
+                }
+                java_test_host {
+                        name: "java-test-host",
+                }
+                java_test_helper_library {
+                        name: "helper-library",
+                }
+                java_binary {
+                        name: "java-data-binary",
+			srcs: ["foo.java"],
+			main_class: "foo.bar.jb",
+                        test_only: true,
+                }
+
+                // These are NOT
+		java_library {
+			name: "lib2-app",
+                        srcs: ["b.java"],
+		}
+		java_import {
+			name: "bar",
+			jars: ["bar.jar"],
+		}
+                java_binary {
+                        name: "java-binary",
+			srcs: ["foo.java"],
+			main_class: "foo.bar.jb",
+                }
+	`)
+
+	actualTrueModules := []string{}
+	ctx.VisitAllModules(func(m blueprint.Module) {
+		if provider, ok := android.OtherModuleProvider(ctx.TestContext.OtherModuleProviderAdaptor(), m, android.TestModuleInformationProviderKey); ok {
+			if provider.TestOnly {
+				actualTrueModules = append(actualTrueModules, m.Name())
+			}
+		}
+	})
+
+	expectedModules := []string{
+		"lib1-test-only",
+		"java-test",
+		"java-test-host",
+		"helper-library",
+		"java-data-binary",
+	}
+
+	notEqual, left, right := android.ListSetDifference(expectedModules, actualTrueModules)
+	if notEqual {
+		t.Errorf("Expected but not found: %v, Found but not expected: %v", left, right)
+	}
+}
+
+// Don't allow setting test-only on things that are always tests or never tests.
+func TestInvalidTestOnlyTargets(t *testing.T) {
+	testCases := []string{
+		` java_test {  name: "java-test", test_only: true, srcs: ["foo.java"],  } `,
+		` java_test_host {  name: "java-test-host", test_only: true, srcs: ["foo.java"],  } `,
+		` java_test_import {  name: "java-test-import", test_only: true, } `,
+		` java_api_library {  name: "java-api-library", test_only: true, } `,
+		` java_test_helper_library { name: "test-help-lib", test_only: true, } `,
+	}
+
+	for _, bp := range testCases {
+		ctx := android.GroupFixturePreparers(prepareForJavaTest).
+			ExtendWithErrorHandler(android.FixtureIgnoreErrors).
+			RunTestWithBp(t, bp)
+		if len(ctx.Errs) == 0 {
+			t.Errorf("Expected err setting test_only")
+		}
+		if len(ctx.Errs) > 1 {
+			t.Errorf("Too many errs: [%s] %v", bp, ctx.Errs)
+		}
+
+		if len(ctx.Errs) == 1 {
+			if !strings.Contains(ctx.Errs[0].Error(), "unrecognized property \"test_only\"") {
+				t.Errorf("ERR: %s bad bp: %s", ctx.Errs[0], bp)
+			}
+		}
+	}
+}
+
+/*
+	actualTestOnly := make(map[string]bool)
+	ctx.VisitAllModules(func(m blueprint.Module) {
+		if provider, ok := android.OtherModuleProvider(ctx.TestContext.OtherModuleProviderAdaptor(), m, android.ModuleRelationshipProviderKey); ok {
+			if provider.TestOnly {
+				actualTestOnly[m.Name()] = provider.TestOnly
+			}
+		}
+	})
+
+*/
+
+// Todo ron export from all_teams test
+func getTeamProtoOutput(t *testing.T, ctx *android.TestResult) *team_proto.AllTeams {
+	teams := new(team_proto.AllTeams)
+	config := ctx.SingletonForTests("all_teams")
+	allOutputs := config.AllOutputs()
+
+	protoPath := allOutputs[0]
+
+	out := config.MaybeOutput(protoPath)
+	outProto := []byte(android.ContentFromFileRuleForTests(t, ctx.TestContext, out))
+	if err := proto.Unmarshal(outProto, teams); err != nil {
+		log.Fatalln("Failed to parse teams proto:", err)
+	}
+	return teams
 }
 
 func TestJavaLibHostWithStem(t *testing.T) {
