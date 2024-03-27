@@ -251,20 +251,19 @@ func (p *prebuiltCommon) AndroidMkEntries() []android.AndroidMkEntries {
 					entries.SetString("LOCAL_MODULE_PATH", p.installDir.String())
 					entries.SetString("LOCAL_MODULE_STEM", p.installFilename)
 					entries.SetPath("LOCAL_SOONG_INSTALLED_MODULE", p.installedFile)
-					entries.SetString("LOCAL_SOONG_INSTALL_PAIRS", p.outputApex.String()+":"+p.installedFile.String())
 					entries.AddStrings("LOCAL_SOONG_INSTALL_SYMLINKS", p.compatSymlinks.Strings()...)
 					entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", !p.installable())
 					entries.AddStrings("LOCAL_OVERRIDES_MODULES", p.prebuiltCommonProperties.Overrides...)
 					entries.SetString("LOCAL_APEX_KEY_PATH", p.apexKeysPath.String())
-					p.addRequiredModules(entries)
+					installPairs := p.outputApex.String() + ":" + p.installedFile.String()
+					for _, install := range p.Dexpreopter.DexpreoptBuiltInstalledForApex() {
+						// Install any Dexpreopt'd artifacts if present.
+						installPairs += " " + install.OutputPathOnHost() + ":" + install.OutputPathOnDevice()
+					}
+					entries.SetString("LOCAL_SOONG_INSTALL_PAIRS", installPairs)
 				},
 			},
 		},
-	}
-
-	// Add the dexpreopt artifacts to androidmk
-	for _, install := range p.Dexpreopter.DexpreoptBuiltInstalledForApex() {
-		entriesList = append(entriesList, install.ToMakeEntries())
 	}
 
 	// Iterate over the apexFilesForAndroidMk list and create an AndroidMkEntries struct for each
