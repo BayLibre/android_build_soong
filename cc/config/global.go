@@ -98,6 +98,8 @@ var (
 		"-Wno-sign-compare",
 		// Poor signal to noise ratio.
 		"-Wno-unused",
+		// VLAs are used in many places.
+		"-Wno-vla-extension",
 
 		// Global preprocessor constants.
 
