@@ -177,11 +177,11 @@ func (t SanitizerType) name() string {
 
 func (t SanitizerType) registerMutators(ctx android.RegisterMutatorsContext) {
 	switch t {
-	case cfi, Hwasan, Asan, tsan, Fuzzer, scs:
+	case cfi, Hwasan, Asan, tsan, Fuzzer, scs, Memtag_stack:
 		sanitizer := &sanitizerSplitMutator{t}
 		ctx.TopDown(t.variationName()+"_markapexes", sanitizer.markSanitizableApexesMutator)
 		ctx.Transition(t.variationName(), sanitizer)
-	case Memtag_heap, Memtag_stack, Memtag_globals, intOverflow:
+	case Memtag_heap, Memtag_globals, intOverflow:
 		// do nothing
 	default:
 		panic(fmt.Errorf("unknown SanitizerType %d", t))
@@ -430,6 +430,7 @@ func init() {
 
 	android.RegisterMakeVarsProvider(pctx, cfiMakeVarsProvider)
 	android.RegisterMakeVarsProvider(pctx, hwasanMakeVarsProvider)
+	android.RegisterMakeVarsProvider(pctx, memtagStackMakeVarsProvider)
 }
 
 func (sanitize *sanitize) props() []interface{} {
@@ -1053,7 +1054,8 @@ func (sanitize *sanitize) isVariantOnProductionDevice() bool {
 	return !sanitize.isSanitizerEnabled(Asan) &&
 		!sanitize.isSanitizerEnabled(Hwasan) &&
 		!sanitize.isSanitizerEnabled(tsan) &&
-		!sanitize.isSanitizerEnabled(Fuzzer)
+		!sanitize.isSanitizerEnabled(Fuzzer) &&
+		!sanitize.isSanitizerEnabled(Memtag_stack)
 }
 
 func (sanitize *sanitize) SetSanitizer(t SanitizerType, b bool) {
@@ -1382,6 +1384,8 @@ func (s *sanitizerSplitMutator) Mutate(mctx android.BottomUpMutatorContext, vari
 					hwasanStaticLibs(mctx.Config()).add(c, c.Module().Name())
 				} else if s.sanitizer == cfi {
 					cfiStaticLibs(mctx.Config()).add(c, c.Module().Name())
+				} else if s.sanitizer == Memtag_stack {
+					memtagStackStaticLibs(mctx.Config()).add(c, c.Module().Name());
 				}
 			}
 		} else if c.IsSanitizerEnabled(s.sanitizer) {
@@ -1411,6 +1415,8 @@ func (s *sanitizerSplitMutator) Mutate(mctx android.BottomUpMutatorContext, vari
 					cfiStaticLibs(mctx.Config()).add(c, c.BaseModuleName())
 				} else if s.sanitizer == Hwasan {
 					hwasanStaticLibs(mctx.Config()).add(c, c.BaseModuleName())
+				} else if s.sanitizer == Memtag_stack {
+					memtagStackStaticLibs(mctx.Config()).add(c, c.BaseModuleName())
 				}
 			}
 		}
@@ -1865,6 +1871,14 @@ func hwasanStaticLibs(config android.Config) *sanitizerStaticLibsMap {
 	}).(*sanitizerStaticLibsMap)
 }
 
+var memtagStackStaticLibsKey = android.NewOnceKey("memtagStackStaticLibs")
+
+func memtagStackStaticLibs(config android.Config) *sanitizerStaticLibsMap {
+	return config.Once(memtagStackStaticLibsKey, func() interface{} {
+		return newSanitizerStaticLibsMap(Memtag_stack)
+	}).(*sanitizerStaticLibsMap)
+}
+
 func enableMinimalRuntime(sanitize *sanitize) bool {
 	if sanitize.isSanitizerEnabled(Asan) {
 		return false
@@ -1910,4 +1924,8 @@ func cfiMakeVarsProvider(ctx android.MakeVarsContext) {
 
 func hwasanMakeVarsProvider(ctx android.MakeVarsContext) {
 	hwasanStaticLibs(ctx.Config()).exportToMake(ctx)
+}
+
+func memtagStackMakeVarsProvider(ctx android.MakeVarsContext) {
+	memtagStackStaticLibs(ctx.Config()).exportToMake(ctx)
 }
