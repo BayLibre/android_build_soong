@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a498bbf7_18bb56af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-27T23:21:46Z",
+      "side": 1,
+      "message": "This CL does this for prebuilt apex module types. If the approach looks reasonable to y\u0027all, I would like to do this for the source apex as well.",
+      "revId": "ad6ac97ace233b49f42883b1a285d7b96aa77adf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
