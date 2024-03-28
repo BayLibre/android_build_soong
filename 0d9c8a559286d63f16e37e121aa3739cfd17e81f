@@ -33,6 +33,24 @@
       "message": "This is a duplicate with `TestModuleConfigBadBaseShouldFailWithGeneralMessage`?",
       "revId": "0d9c8a559286d63f16e37e121aa3739cfd17e81f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d2b10c5_2634a5a7",
+        "filename": "tradefed_modules/test_module_config_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-28T22:09:36Z",
+      "side": 1,
+      "message": "Yes, sorry I missed this.\n\nI was trying to cc_test or sh_test here too, but then didn\u0027t want to deal with all the setup/preparers and left it in.",
+      "parentUuid": "17aa4a8c_92a4e31e",
+      "revId": "0d9c8a559286d63f16e37e121aa3739cfd17e81f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

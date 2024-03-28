@@ -334,6 +334,30 @@
       },
       "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5da96d_aa99f8f8",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-28T22:09:36Z",
+      "side": 1,
+      "message": "I think moving the check for base !\u003d nil to the DepMutators and adding and TestModuleConfigNoBaseShouldFail ends up resolving this.",
+      "parentUuid": "6ffbf067_e921c116",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 2
+      },
+      "revId": "53cfc4aea1b4a0f34e4d1a50c6463f423af816b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

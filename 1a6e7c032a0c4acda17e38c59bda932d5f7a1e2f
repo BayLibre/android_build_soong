@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c00fa944_71721375",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-03-28T22:09:36Z",
+      "side": 1,
+      "message": "Thanks for the reviews, I removed the duplicate test.",
+      "revId": "1a6e7c032a0c4acda17e38c59bda932d5f7a1e2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
