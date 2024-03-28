@@ -16,6 +16,24 @@
       "message": "LGTM, but does this remove the tests only, and leave the snapshot logic behind?",
       "revId": "d8ec229bc0e6c3905a69f4844ecdd9540661dbf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eeb7f37_c6e19c3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-03-28T06:20:47Z",
+      "side": 1,
+      "message": "VNDK related logic will be removed with following CLs (still working on it).",
+      "parentUuid": "fe18692d_8ab46558",
+      "revId": "d8ec229bc0e6c3905a69f4844ecdd9540661dbf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
