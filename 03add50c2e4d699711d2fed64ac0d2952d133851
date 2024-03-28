@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "668c2399_781e6264",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2024-03-28T16:38:56Z",
+      "side": 1,
+      "message": "The change looks good to me, but I have not been involved with Android for more than a year. I don\u0027t what the current state of the build system is wrt. licensing.",
+      "revId": "03add50c2e4d699711d2fed64ac0d2952d133851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
