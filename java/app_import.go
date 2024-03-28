@@ -611,6 +611,12 @@ func createArchDpiVariantGroupType(archNames []string, dpiNames []string) reflec
 	return return_struct
 }
 
+func (a *AndroidAppImport) UsesLibrary() *usesLibrary {
+	return &a.usesLibrary
+}
+
+var _ ModuleWithUsesLibrary = (*AndroidAppImport)(nil)
+
 // android_app_import imports a prebuilt apk with additional processing specified in the module.
 // DPI-specific apk source files can be specified using dpi_variants. Example:
 //
