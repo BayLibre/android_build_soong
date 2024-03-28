@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e43bb02a_b5bbcb5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-03-28T11:29:17Z",
+      "side": 1,
+      "message": "@paulduffin@google.com should take a look at changes here.",
+      "revId": "430d46dddc91a8390918d7b63cd30fc0c597f7d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b851b015_7bc56b8e",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-03-28T11:29:17Z",
+      "side": 1,
+      "message": "Style: Since it\u0027s a single variable just drop the paren.",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 5
+      },
+      "revId": "430d46dddc91a8390918d7b63cd30fc0c597f7d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
