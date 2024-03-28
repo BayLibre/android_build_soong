@@ -86,6 +86,30 @@
       },
       "revId": "32f77aa3e0a54b3fbd189a7451b1a9605abfb094",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb5c739_86224826",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-28T02:04:32Z",
+      "side": 1,
+      "message": "Oh, I thought it\u0027s deprecated. I\u0027m curious what\u0027s the plan on this. Who will use this?",
+      "parentUuid": "7df8ca11_21590f66",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 16
+      },
+      "revId": "32f77aa3e0a54b3fbd189a7451b1a9605abfb094",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
