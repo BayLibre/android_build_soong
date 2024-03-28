@@ -71,6 +71,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73fb33e9_ba6d19e5",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-28T20:24:19Z",
+      "side": 1,
+      "message": "Acknowledged. Unfortunately Soong does not have a straightforward API to get the type of a module at the moment. I do not have a good idea about avoiding the variant error either at the moment :(",
+      "parentUuid": "63eba48f_938d9167",
+      "revId": "761a9f6baa4331420d2fd4840a569efaeca89eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6440305_64d9f987",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-03-28T20:24:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "63eba48f_938d9167",
+      "revId": "761a9f6baa4331420d2fd4840a569efaeca89eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df92c0d6_96a73473",
