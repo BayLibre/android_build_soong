@@ -530,6 +530,7 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 			forceNonFinalResourceIDs:       nonFinalIds,
 			extraLinkFlags:                 aaptLinkFlags,
 			aconfigTextFiles:               getAconfigFilePaths(ctx),
+			usesLibrary:                    &a.usesLibrary,
 		},
 	)
 
