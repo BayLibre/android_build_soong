@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e22e83a_130fd472",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-03-28T20:41:40Z",
+      "side": 1,
+      "message": "Pending on https://googleplex-android-review.git.corp.google.com/c/platform/hardware/qcom/sw5100/gps/+/26748731",
+      "revId": "b23cec87d037bb52732115a786617dad6bb83429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
