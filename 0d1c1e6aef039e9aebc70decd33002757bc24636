@@ -94,6 +94,30 @@
       },
       "revId": "0d1c1e6aef039e9aebc70decd33002757bc24636",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35dd2e8_bc01e76b",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-03-28T21:43:34Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong opinion. @spandandas@google.com?",
+      "parentUuid": "667c228f_fd8ba4c1",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 0
+      },
+      "revId": "0d1c1e6aef039e9aebc70decd33002757bc24636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
