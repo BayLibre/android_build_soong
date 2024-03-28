@@ -91,7 +91,13 @@ type ApexInfo struct {
 	TestApexes []string
 }
 
-var ApexInfoProvider = blueprint.NewMutatorProvider[ApexInfo]("apex")
+// AllApexInfo holds the ApexInfo of all apexes that include this module.
+type AllApexInfo struct {
+	ApexInfos []ApexInfo
+}
+
+var ApexInfoProvider = blueprint.NewMutatorProvider[ApexInfo]("apex_mutate")
+var AllApexInfoProvider = blueprint.NewMutatorProvider[*AllApexInfo]("apex_info")
 
 func (i ApexInfo) AddJSONData(d *map[string]interface{}) {
 	(*d)["Apex"] = map[string]interface{}{
@@ -587,75 +593,122 @@ func mergeApexVariations(apexInfos []ApexInfo) (merged []ApexInfo, aliases [][2]
 	return merged, aliases
 }
 
-// CreateApexVariations mutates a given module into multiple apex variants each of which is for an
-// apexBundle (and/or the platform) where the module is part of.
-func CreateApexVariations(mctx BottomUpMutatorContext, module ApexModule) []Module {
+func IncomingApexTransition(ctx IncomingTransitionContext, incomingVariation string) string {
+	module := ctx.Module().(ApexModule)
 	base := module.apexModuleBase()
 
+	var apexInfos []ApexInfo
+	if allApexInfos, ok := ModuleProvider(ctx, AllApexInfoProvider); ok {
+		apexInfos = allApexInfos.ApexInfos
+	}
+
+	if incomingVariation == "" {
+		return ""
+	}
+
 	// Shortcut
-	if len(base.apexInfos) == 0 {
-		return nil
+	if len(apexInfos) == 0 {
+		return ""
+	}
+
+	var aliases [][2]string
+	if !module.UniqueApexVariations() && !base.ApexProperties.UniqueApexVariationsForDeps {
+		apexInfos, aliases = mergeApexVariations(apexInfos)
+	}
+
+	variation := ""
+	aliasIndex := slices.IndexFunc(aliases, func(alias [2]string) bool {
+		return alias[0] == incomingVariation
+	})
+	if aliasIndex >= 0 {
+		variation = aliases[aliasIndex][1]
+	} else {
+		apexIndex := slices.IndexFunc(apexInfos, func(info ApexInfo) bool {
+			return info.ApexVariationName == incomingVariation
+		})
+		if apexIndex >= 0 {
+			variation = incomingVariation
+		}
+	}
+
+	return variation
+}
+
+func MutateApexTransition(ctx BaseModuleContext, variation string) {
+	module := ctx.Module().(ApexModule)
+	base := module.apexModuleBase()
+	platformVariation := variation == ""
+
+	var apexInfos []ApexInfo
+	if allApexInfos, ok := ModuleProvider(ctx, AllApexInfoProvider); ok {
+		apexInfos = allApexInfos.ApexInfos
+	}
+
+	// Shortcut
+	if len(apexInfos) == 0 {
+		return
 	}
 
 	// Do some validity checks.
 	// TODO(jiyong): is this the right place?
-	base.checkApexAvailableProperty(mctx)
+	base.checkApexAvailableProperty(ctx)
 
-	var apexInfos []ApexInfo
-	var aliases [][2]string
-	if !mctx.Module().(ApexModule).UniqueApexVariations() && !base.ApexProperties.UniqueApexVariationsForDeps {
-		apexInfos, aliases = mergeApexVariations(base.apexInfos)
-	} else {
-		apexInfos = base.apexInfos
+	if !module.UniqueApexVariations() && !base.ApexProperties.UniqueApexVariationsForDeps {
+		apexInfos, _ = mergeApexVariations(apexInfos)
 	}
-	// base.apexInfos is only needed to propagate the list of apexes from apexInfoMutator to
-	// apexMutator. It is no longer accurate after mergeApexVariations, and won't be copied to
-	// all but the first created variant. Clear it so it doesn't accidentally get used later.
-	base.apexInfos = nil
-	slices.SortFunc(apexInfos, func(a, b ApexInfo) int {
-		return cmp.Compare(a.ApexVariationName, b.ApexVariationName)
-	})
 
 	var inApex ApexMembership
 	for _, a := range apexInfos {
 		for _, apexContents := range a.ApexContents {
-			inApex = inApex.merge(apexContents.contents[mctx.ModuleName()])
+			inApex = inApex.merge(apexContents.contents[ctx.ModuleName()])
 		}
 	}
 	base.ApexProperties.InAnyApex = true
 	base.ApexProperties.DirectlyInAnyApex = inApex == directlyInApex
 
-	defaultVariation := ""
-	mctx.SetDefaultDependencyVariation(&defaultVariation)
+	if platformVariation && !ctx.Host() && !module.AvailableFor(AvailableToPlatform) {
+		// Do not install the module for platform, but still allow it to output
+		// uninstallable AndroidMk entries in certain cases when they have side
+		// effects.  TODO(jiyong): move this routine to somewhere else
+		module.MakeUninstallable()
+	}
+	if !platformVariation {
+		var thisApexInfo ApexInfo
 
-	variations := []string{defaultVariation}
-	testApexes := []string{}
+		apexIndex := slices.IndexFunc(apexInfos, func(info ApexInfo) bool {
+			return info.ApexVariationName == variation
+		})
+		if apexIndex >= 0 {
+			thisApexInfo = apexInfos[apexIndex]
+		} else {
+			panic(fmt.Errorf("failed to find apexInfo for incoming variation %q", variation))
+		}
+
+		SetProvider(ctx, ApexInfoProvider, thisApexInfo)
+	}
+
+	// Set the value of TestApexes in every single apex variant.
+	// This allows each apex variant to be aware of the test apexes in the user provided apex_available.
+	var testApexes []string
 	for _, a := range apexInfos {
-		variations = append(variations, a.ApexVariationName)
 		testApexes = append(testApexes, a.TestApexes...)
 	}
-	modules := mctx.CreateVariations(variations...)
-	for i, mod := range modules {
-		platformVariation := i == 0
-		if platformVariation && !mctx.Host() && !mod.(ApexModule).AvailableFor(AvailableToPlatform) {
-			// Do not install the module for platform, but still allow it to output
-			// uninstallable AndroidMk entries in certain cases when they have side
-			// effects.  TODO(jiyong): move this routine to somewhere else
-			mod.MakeUninstallable()
-		}
-		if !platformVariation {
-			mctx.SetVariationProvider(mod, ApexInfoProvider, apexInfos[i-1])
-		}
-		// Set the value of TestApexes in every single apex variant.
-		// This allows each apex variant to be aware of the test apexes in the user provided apex_available.
-		mod.(ApexModule).apexModuleBase().ApexProperties.TestApexes = testApexes
-	}
+	base.ApexProperties.TestApexes = testApexes
 
-	for _, alias := range aliases {
-		mctx.CreateAliasVariation(alias[0], alias[1])
-	}
+}
 
-	return modules
+func ApexInfoMutator(ctx TopDownMutatorContext, module ApexModule) {
+	base := module.apexModuleBase()
+	if len(base.apexInfos) > 0 {
+		apexInfos := slices.Clone(base.apexInfos)
+		slices.SortFunc(apexInfos, func(a, b ApexInfo) int {
+			return cmp.Compare(a.ApexVariationName, b.ApexVariationName)
+		})
+		SetProvider(ctx, AllApexInfoProvider, &AllApexInfo{apexInfos})
+		// base.apexInfos is only needed to propagate the list of apexes from the apex module to its
+		// contents within apexInfoMutator. Clear it so it doesn't accidentally get used later.
+		base.apexInfos = nil
+	}
 }
 
 // UpdateUniqueApexVariationsForDeps sets UniqueApexVariationsForDeps if any dependencies that are
@@ -666,13 +719,16 @@ func UpdateUniqueApexVariationsForDeps(mctx BottomUpMutatorContext, am ApexModul
 	// InApexVariants list in common. It is used instead of DepIsInSameApex because it needs to
 	// determine if the dep is in the same APEX due to being directly included, not only if it
 	// is included _because_ it is a dependency.
-	anyInSameApex := func(a, b []ApexInfo) bool {
-		collectApexes := func(infos []ApexInfo) []string {
-			var ret []string
-			for _, info := range infos {
-				ret = append(ret, info.InApexVariants...)
+	anyInSameApex := func(a, b ApexModule) bool {
+		collectApexes := func(m ApexModule) []string {
+			if allApexInfo, ok := OtherModuleProvider(mctx, m, AllApexInfoProvider); ok {
+				var ret []string
+				for _, info := range allApexInfo.ApexInfos {
+					ret = append(ret, info.InApexVariants...)
+				}
+				return ret
 			}
-			return ret
+			return nil
 		}
 
 		aApexes := collectApexes(a)
@@ -690,7 +746,7 @@ func UpdateUniqueApexVariationsForDeps(mctx BottomUpMutatorContext, am ApexModul
 	// If any of the dependencies requires unique apex variations, so does this module.
 	mctx.VisitDirectDeps(func(dep Module) {
 		if depApexModule, ok := dep.(ApexModule); ok {
-			if anyInSameApex(depApexModule.apexModuleBase().apexInfos, am.apexModuleBase().apexInfos) &&
+			if anyInSameApex(depApexModule, am) &&
 				(depApexModule.UniqueApexVariations() ||
 					depApexModule.apexModuleBase().ApexProperties.UniqueApexVariationsForDeps) {
 				am.apexModuleBase().ApexProperties.UniqueApexVariationsForDeps = true
