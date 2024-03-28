@@ -2383,6 +2383,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 		}
 
 		addCLCFromDep(ctx, module, j.classLoaderContexts)
+		addMissingOptionalUsesLibsFromDep(ctx, module, &j.usesLibrary)
 	})
 
 	return deps
@@ -2706,3 +2707,13 @@ type ModuleWithStem interface {
 }
 
 var _ ModuleWithStem = (*Module)(nil)
+
+type ModuleWithUsesLibrary interface {
+	UsesLibrary() *usesLibrary
+}
+
+func (j *Module) UsesLibrary() *usesLibrary {
+	return &j.usesLibrary
+}
+
+var _ ModuleWithUsesLibrary = (*Module)(nil)
