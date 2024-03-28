@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef08c04f_9581b8f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2024-03-28T13:29:53Z",
+      "side": 1,
+      "message": "Hi Yikong,\n\nThere is a high probability that the AVF test (b/331541324) will be affected by this change. Could you please investigate that issue first before relanding this change?",
+      "revId": "9b4474557e8461e5d0d23e3252bc92eb6c638fd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
