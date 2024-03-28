@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a80f11e8_78a40e99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-28T02:01:23Z",
+      "side": 1,
+      "message": "Can we have a separate change for this?",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "32f77aa3e0a54b3fbd189a7451b1a9605abfb094",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8138ba2f_44031480",
@@ -14,6 +37,29 @@
       "writtenOn": "2024-03-27T08:31:44Z",
       "side": 1,
       "message": "Jooyung, can you first review with multiple vendor / VNDK APEX related test updates / removes?",
+      "revId": "32f77aa3e0a54b3fbd189a7451b1a9605abfb094",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "723539c8_1f2bd7c0",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-28T02:01:23Z",
+      "side": 1,
+      "message": "Is this still in use?",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 16
+      },
       "revId": "32f77aa3e0a54b3fbd189a7451b1a9605abfb094",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
