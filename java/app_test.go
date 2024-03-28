@@ -3280,7 +3280,7 @@ func TestUsesLibraries(t *testing.T) {
 			sdk_version: "current",
 			optional_uses_libs: [
 				"bar",
-				"baz",
+				"missing-lib-b",
 			],
 		}
 
@@ -3295,7 +3295,7 @@ func TestUsesLibraries(t *testing.T) {
 			],
 			optional_uses_libs: [
 				"bar",
-				"baz",
+				"missing-lib-b",
 			],
 		}
 	`
@@ -3331,17 +3331,17 @@ func TestUsesLibraries(t *testing.T) {
 
 	// Test that all libraries are verified (library order matters).
 	verifyCmd := app.Rule("verify_uses_libraries").RuleParams.Command
-	verifyArgs := `--uses-library foo ` +
-		`--uses-library com.non.sdk.lib ` +
-		`--uses-library qux ` +
+	verifyArgs := `--uses-library qux ` +
 		`--uses-library quuz ` +
+		`--uses-library foo ` +
+		`--uses-library com.non.sdk.lib ` +
 		`--uses-library runtime-library ` +
 		`--uses-library runtime-required-x ` +
 		`--uses-library runtime-required-y ` +
 		`--optional-uses-library bar ` +
-		`--optional-uses-library baz ` +
 		`--optional-uses-library runtime-optional-x ` +
-		`--optional-uses-library runtime-optional-y `
+		`--optional-uses-library runtime-optional-y ` +
+		`--missing-optional-uses-library missing-lib-b `
 	android.AssertStringDoesContain(t, "verify cmd args", verifyCmd, verifyArgs)
 
 	// Test that all libraries are verified for an APK (library order matters).
@@ -3350,7 +3350,7 @@ func TestUsesLibraries(t *testing.T) {
 		`--uses-library com.non.sdk.lib ` +
 		`--uses-library android.test.runner ` +
 		`--optional-uses-library bar ` +
-		`--optional-uses-library baz `
+		`--missing-optional-uses-library missing-lib-b `
 	android.AssertStringDoesContain(t, "verify apk cmd args", verifyApkCmd, verifyApkArgs)
 
 	// Test that necessary args are passed for constructing CLC in Ninja phase.

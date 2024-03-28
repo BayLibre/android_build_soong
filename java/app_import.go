@@ -355,7 +355,7 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 	}
 
 	if a.usesLibrary.enforceUsesLibraries() {
-		a.usesLibrary.verifyUsesLibrariesAPK(ctx, srcApk)
+		a.usesLibrary.verifyUsesLibrariesAPK(ctx, srcApk, &a.dexpreopter.classLoaderContexts)
 	}
 
 	a.dexpreopter.dexpreopt(ctx, android.RemoveOptionalPrebuiltPrefix(ctx.ModuleName()), jnisUncompressed)
