@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "480eb7cb_b9e5f6df",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-28T06:23:39Z",
+      "side": 1,
+      "message": "This isn\u0027t test code.",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 0
+      },
+      "revId": "0d1c1e6aef039e9aebc70decd33002757bc24636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
