@@ -3331,17 +3331,17 @@ func TestUsesLibraries(t *testing.T) {
 
 	// Test that all libraries are verified (library order matters).
 	verifyCmd := app.Rule("verify_uses_libraries").RuleParams.Command
-	verifyArgs := `--uses-library foo ` +
-		`--uses-library com.non.sdk.lib ` +
-		`--uses-library qux ` +
+	verifyArgs := `--uses-library qux ` +
 		`--uses-library quuz ` +
+		`--uses-library foo ` +
+		`--uses-library com.non.sdk.lib ` +
 		`--uses-library runtime-library ` +
 		`--uses-library runtime-required-x ` +
 		`--uses-library runtime-required-y ` +
 		`--optional-uses-library bar ` +
-		`--optional-uses-library baz ` +
 		`--optional-uses-library runtime-optional-x ` +
-		`--optional-uses-library runtime-optional-y `
+		`--optional-uses-library runtime-optional-y ` +
+		`--optional-uses-library baz `
 	android.AssertStringDoesContain(t, "verify cmd args", verifyCmd, verifyArgs)
 
 	// Test that all libraries are verified for an APK (library order matters).
