@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc26c5e1_d4553cd7",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-03-28T18:13:44Z",
+      "side": 1,
+      "message": "Thanks for the fix! Please remove the mkdir entirely like Colin suggested on the bug.",
+      "revId": "b46a0d5a88d3fe3c106cc321cc4076a57d5664c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
