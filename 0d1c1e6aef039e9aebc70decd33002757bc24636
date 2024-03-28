@@ -46,6 +46,30 @@
       },
       "revId": "0d1c1e6aef039e9aebc70decd33002757bc24636",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce9676dd_2852b197",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-28T06:32:22Z",
+      "side": 1,
+      "message": "I think we can remove CcApiVaraint. Probably in a separate change. What do you think?",
+      "parentUuid": "ffa30a19_1c09bd8d",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 0
+      },
+      "revId": "0d1c1e6aef039e9aebc70decd33002757bc24636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
