@@ -143,6 +143,9 @@ func (r *ravenwoodTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		HostTemplate:           "${RavenwoodTestConfigTemplate}",
 	})
 
+	// Always enable Ravenizer for ravenwood tests.
+	r.Library.ravenizer.enabled = true
+
 	r.Library.GenerateAndroidBuildActions(ctx)
 
 	// Start by depending on all files installed by dependencies
