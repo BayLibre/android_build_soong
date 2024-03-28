@@ -118,6 +118,30 @@
       },
       "revId": "0d1c1e6aef039e9aebc70decd33002757bc24636",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c5cc34_60afc4bd",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-03-28T21:53:10Z",
+      "side": 1,
+      "message": "Removing `CcApiVariant` SGTM. We do not have any [existing Android.bp](https://source.corp.google.com/search?q\u003dcc_api_variant%20f:%5C.bp\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main) files that use this module type, so hopefully the changes should be limited to `build/soong`",
+      "parentUuid": "f35dd2e8_bc01e76b",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 0
+      },
+      "revId": "0d1c1e6aef039e9aebc70decd33002757bc24636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
