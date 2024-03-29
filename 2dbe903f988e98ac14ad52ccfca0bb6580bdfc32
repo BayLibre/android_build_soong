@@ -43,6 +43,115 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fc9c0e0_2a272998",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-29T11:00:53Z",
+      "side": 1,
+      "message": "Can this function be moved to another go file?",
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d53fa91b_7465c562",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-29T11:00:53Z",
+      "side": 1,
+      "message": "Can we continue to see all errors?",
+      "range": {
+        "startLine": 501,
+        "startChar": 4,
+        "endLine": 502,
+        "endChar": 9
+      },
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d4dd6bf_3156bc4c",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-29T11:00:53Z",
+      "side": 1,
+      "message": "nit: seenDirs",
+      "range": {
+        "startLine": 520,
+        "startChar": 1,
+        "endLine": 520,
+        "endChar": 8
+      },
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fdad1d3_ab1229ec",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-29T11:00:53Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be an implicit input of the cmd? Otherwise, the cmd will not be executed when the inputs are modified.",
+      "range": {
+        "startLine": 523,
+        "startChar": 2,
+        "endLine": 523,
+        "endChar": 58
+      },
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "394946f0_3d5ef61e",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-03-29T11:00:53Z",
+      "side": 1,
+      "message": "Wouldn\u0027t this create extremely long command?",
+      "range": {
+        "startLine": 545,
+        "startChar": 0,
+        "endLine": 547,
+        "endChar": 2
+      },
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1a0cb2e_3ef37740",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 1
