@@ -178,6 +178,10 @@ python_binary_host {
 python_library_host {
     name: "ninja_rsp",
     srcs: ["ninja_rsp.py"],
+    visibility: [
+        "//build/soong:__subpackages__",
+        "//system/security/fsverity", // used by fsverity_manifest_generator
+    ],
 }
 
 python_binary_host {
