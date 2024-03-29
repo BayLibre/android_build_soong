@@ -1004,6 +1004,22 @@ func TestLlndkLibrary(t *testing.T) {
 	checkExportedIncludeDirs("libllndk_with_external_headers", "android_vendor_arm64_armv8-a_shared", "include_llndk")
 	checkExportedIncludeDirs("libllndk_with_override_headers", "android_arm64_armv8-a_shared", "include")
 	checkExportedIncludeDirs("libllndk_with_override_headers", "android_vendor_arm64_armv8-a_shared", "include_llndk")
+
+	checkAbiLinkerIncludeDirs := func(module, variant string, expectedDirs ...string) {
+		t.Helper()
+		expectedFlags := android.JoinWithPrefix(expectedDirs, "-I")
+		testingModule := result.ModuleForTests(module, variant)
+		for _, output := range testingModule.AllOutputs() {
+			if strings.HasSuffix(output, ".so.llndk.lsdump") {
+				flags := testingModule.Output(output).Args["exportedHeaderFlags"]
+				android.AssertStringEquals(t, "sAbiLink exportedHeaderFlags for "+module, expectedFlags, flags)
+			}
+		}
+	}
+	// The expectedDirs are the same as those for vendor variant.
+	checkAbiLinkerIncludeDirs("libllndk", "android_arm64_armv8-a_shared", "include")
+	checkAbiLinkerIncludeDirs("libllndk_with_override_headers", "android_arm64_armv8-a_shared", "include_llndk")
+	checkAbiLinkerIncludeDirs("libllndk_with_external_headers", "android_arm64_armv8-a_shared", "include_llndk")
 }
 
 func TestLlndkHeaders(t *testing.T) {
