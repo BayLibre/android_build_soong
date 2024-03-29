@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c119d5_be5ee4a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-29T08:47:37Z",
+      "side": 1,
+      "message": "two TODOs still remaining (see comments) but PTAL in the meantime.",
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431bf891_ed2be7f6",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-29T08:47:37Z",
+      "side": 1,
+      "message": "Need documentation.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 16
+      },
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a0cb2e_3ef37740",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-03-29T08:47:37Z",
+      "side": 1,
+      "message": "Need to remove hard-coded path",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 115
+      },
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
