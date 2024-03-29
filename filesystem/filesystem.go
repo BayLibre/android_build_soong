@@ -57,13 +57,17 @@ type filesystem struct {
 	output     android.OutputPath
 	installDir android.InstallPath
 
-	// For testing. Keeps the result of CopyDepsToZip()
+	// For testing. Keeps the result of CopySpecsToDir()
 	entries []string
 }
 
 type symlinkDefinition struct {
 	Target *string
 	Name   *string
+}
+
+type fsverityProperties struct {
+	Inputs []string
 }
 
 type filesystemProperties struct {
@@ -120,6 +124,8 @@ type filesystemProperties struct {
 	// modules would be installed to the same location as a make module, they will overwrite
 	// the make version.
 	Include_make_built_files string
+
+	Fsverity fsverityProperties
 }
 
 // android_filesystem packages a set of modules and their transitive dependencies into a filesystem
@@ -174,6 +180,10 @@ func (f *filesystem) fsType(ctx android.ModuleContext) fsType {
 
 func (f *filesystem) installFileName() string {
 	return f.BaseModuleName() + ".img"
+}
+
+func (f *filesystem) partitionName() string {
+	return proptools.StringDefault(f.properties.Partition_name, f.Name())
 }
 
 var pctx = android.NewPackageContext("android/soong/filesystem")
@@ -255,10 +265,12 @@ func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) androi
 	builder := android.NewRuleBuilder(pctx, ctx)
 	// Wipe the root dir to get rid of leftover files from prior builds
 	builder.Command().Textf("rm -rf %s && mkdir -p %s", rootDir, rootDir)
-	f.entries = f.CopySpecsToDir(ctx, builder, f.gatherFilteredPackagingSpecs(ctx), rebasedDir)
+	specs := f.gatherFilteredPackagingSpecs(ctx)
+	f.entries = f.CopySpecsToDir(ctx, builder, specs, rebasedDir)
 
 	f.buildNonDepsFiles(ctx, builder, rootDir)
 	f.addMakeBuiltFiles(ctx, builder, rootDir)
+	f.buildFsverityMetadataFiles(ctx, builder, specs, rootDir, rebasedDir)
 
 	// run host_init_verifier
 	// Ideally we should have a concept of pluggable linters that verify the generated image.
@@ -338,13 +350,12 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (propFile android.
 		addStr("avb_algorithm", algorithm)
 		key := android.PathForModuleSrc(ctx, proptools.String(f.properties.Avb_private_key))
 		addPath("avb_key_path", key)
-		partitionName := proptools.StringDefault(f.properties.Partition_name, f.Name())
-		addStr("partition_name", partitionName)
+		addStr("partition_name", f.partitionName())
 		avb_add_hashtree_footer_args := "--do_not_generate_fec"
 		if hashAlgorithm := proptools.String(f.properties.Avb_hash_algorithm); hashAlgorithm != "" {
 			avb_add_hashtree_footer_args += " --hash_algorithm " + hashAlgorithm
 		}
-		securityPatchKey := "com.android.build." + partitionName + ".security_patch"
+		securityPatchKey := "com.android.build." + f.partitionName() + ".security_patch"
 		securityPatchValue := ctx.Config().PlatformSecurityPatch()
 		avb_add_hashtree_footer_args += " --prop " + securityPatchKey + ":" + securityPatchValue
 		addStr("avb_add_hashtree_footer_args", avb_add_hashtree_footer_args)
@@ -388,9 +399,11 @@ func (f *filesystem) buildCpioImage(ctx android.ModuleContext, compressed bool) 
 	builder := android.NewRuleBuilder(pctx, ctx)
 	// Wipe the root dir to get rid of leftover files from prior builds
 	builder.Command().Textf("rm -rf %s && mkdir -p %s", rootDir, rootDir)
-	f.entries = f.CopySpecsToDir(ctx, builder, f.gatherFilteredPackagingSpecs(ctx), rebasedDir)
+	specs := f.gatherFilteredPackagingSpecs(ctx)
+	f.entries = f.CopySpecsToDir(ctx, builder, specs, rebasedDir)
 
 	f.buildNonDepsFiles(ctx, builder, rootDir)
+	f.buildFsverityMetadataFiles(ctx, builder, specs, rootDir, rebasedDir)
 
 	output := android.PathForModuleOut(ctx, f.installFileName()).OutputPath
 	cmd := builder.Command().
@@ -466,6 +479,105 @@ func (f *filesystem) AndroidMkEntries() []android.AndroidMkEntries {
 			},
 		},
 	}}
+}
+
+func (f *filesystem) buildFsverityMetadataFiles(ctx android.ModuleContext, builder *android.RuleBuilder, specs map[string]android.PackagingSpec, rootDir android.OutputPath, rebasedDir android.OutputPath) {
+	match := func(path string) (bool, error) {
+		for _, pattern := range f.properties.Fsverity.Inputs {
+			if matched, err := filepath.Match(pattern, path); matched {
+				return true, nil
+			} else if err != nil {
+				ctx.PropertyErrorf("fsverity.inputs", "bad pattern %q", pattern)
+				return false, err
+			}
+		}
+		return false, nil
+	}
+
+	var matchedSpecs []android.PackagingSpec
+	for _, relPath := range android.SortedKeys(specs) {
+		if matched, err := match(relPath); matched {
+			matchedSpecs = append(matchedSpecs, specs[relPath])
+		} else if err != nil {
+			return
+		}
+	}
+
+	if len(matchedSpecs) == 0 {
+		return
+	}
+
+	fsverityBuilderPath := android.PathForModuleOut(ctx, "fsverity_builder.sh")
+	metadataGeneratorPath := ctx.Config().HostToolPath(ctx, "fsverity_metadata_generator")
+	fsverityPath := ctx.Config().HostToolPath(ctx, "fsverity")
+
+	cmd := builder.Command().Tool(fsverityBuilderPath)
+
+	// STEP 1: generate .fsv_meta
+	var sb strings.Builder
+	sb.WriteString("set -e\n")
+	cmd.Implicit(metadataGeneratorPath).Implicit(fsverityPath)
+	seenDir := make(map[string]bool)
+	for _, spec := range matchedSpecs {
+		// srcPath is copied by CopySpecsToDir()
+		srcPath := rebasedDir.Join(ctx, spec.RelPathInPackage())
+		destPath := rebasedDir.Join(ctx, spec.RelPathInPackage()+".fsv_meta")
+		destDir := filepath.Dir(destPath.String())
+		if _, ok := seenDir[destDir]; !ok {
+			seenDir[destDir] = true
+			sb.WriteString(fmt.Sprintf("mkdir -p %s\n", destDir))
+		}
+		sb.WriteString(fmt.Sprintf("%s --fsverity-path %s --signature none --hash-alg sha256 --output %s %s\n",
+			metadataGeneratorPath.String(), fsverityPath.String(), destPath.String(), srcPath.String()))
+	}
+
+	// STEP 2: generate signed BuildManifest.apk
+	// STEP 2-1: generate build_manifest.pb
+	assetsPath := android.PathForModuleOut(ctx, "fsverity_manifest/assets")
+	manifestPbPath := assetsPath.Join(ctx, "build_manifest.pb")
+	manifestGeneratorPath := ctx.Config().HostToolPath(ctx, "fsverity_manifest_generator")
+	cmd.Implicit(manifestGeneratorPath)
+	sb.WriteString(fmt.Sprintf("rm -rf %s; mkdir -p %s\n", assetsPath.String(), assetsPath.String()))
+	sb.WriteString(fmt.Sprintf("%s ", manifestGeneratorPath.String()))
+	sb.WriteString(fmt.Sprintf("--fsverity-path %s ", fsverityPath.String()))
+	sb.WriteString(fmt.Sprintf("--base-dir %s ", rootDir.String()))
+	sb.WriteString(fmt.Sprintf("--output %s", manifestPbPath.String()))
+	for _, spec := range matchedSpecs {
+		sb.WriteString(fmt.Sprintf(" %s", rebasedDir.Join(ctx, spec.RelPathInPackage()).String()))
+	}
+	sb.WriteString("\n")
+
+	// STEP 2-2: generate BuildManifest.apk (unsigned)
+	aapt2Path := ctx.Config().HostToolPath(ctx, "aapt2")
+	apkPath := rebasedDir.Join(ctx, "etc", "security", "fsverity", "BuildManifest.apk")
+	manifestTemplatePath := android.PathForSource(ctx, "system/security/fsverity/AndroidManifest.xml")
+	cmd.Implicit(aapt2Path)
+	cmd.Implicit(manifestTemplatePath)
+	sb.WriteString(fmt.Sprintf("%s link -o %s ", aapt2Path.String(), apkPath.String()))
+	sb.WriteString(fmt.Sprintf("-A %s ", assetsPath.String()))
+	sb.WriteString(fmt.Sprintf("-I %s ", "out/target/common/obj/APPS/framework-res_intermediates/package-export.apk"))
+	minSdkVersion := ctx.Config().PlatformSdkCodename()
+	if minSdkVersion == "REL" {
+		minSdkVersion = ctx.Config().PlatformSdkVersion().String()
+	}
+	sb.WriteString(fmt.Sprintf("--min-sdk-version %s ", minSdkVersion))
+	sb.WriteString(fmt.Sprintf("--version-code %s ", ctx.Config().PlatformSdkVersion().String()))
+	sb.WriteString(fmt.Sprintf("--version-name %s ", ctx.Config().AppsDefaultVersionName()))
+	sb.WriteString(fmt.Sprintf("--manifest %s ", manifestTemplatePath.String()))
+	sb.WriteString(fmt.Sprintf("--rename-manifest-package com.android.security.fsverity_metadata.%s\n", f.partitionName()))
+
+	// STEP 2-3: sign BuildManifest.apk
+	apksignerPath := ctx.Config().HostToolPath(ctx, "apksigner")
+	pemPath, keyPath := ctx.Config().DefaultAppCertificate(ctx)
+	cmd.Implicit(apksignerPath)
+	cmd.Implicit(pemPath)
+	cmd.Implicit(keyPath)
+	sb.WriteString(fmt.Sprintf("%s sign ", apksignerPath.String()))
+	sb.WriteString(fmt.Sprintf("--in %s ", apkPath.String()))
+	sb.WriteString(fmt.Sprintf("--cert %s ", pemPath.String()))
+	sb.WriteString(fmt.Sprintf("--key %s\n", keyPath.String()))
+
+	android.WriteExecutableFileRuleVerbatim(ctx, fsverityBuilderPath, sb.String())
 }
 
 var _ android.OutputFileProducer = (*filesystem)(nil)
