@@ -142,6 +142,30 @@
       },
       "revId": "0d1c1e6aef039e9aebc70decd33002757bc24636",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db38228b_639bf730",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-03-29T02:51:42Z",
+      "side": 1,
+      "message": "I believe we have a small piece of code in `build/make` 😊\n\nAnyway, let\u0027s work on this as separated task, with lower priority than this.",
+      "parentUuid": "c1c5cc34_60afc4bd",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 0
+      },
+      "revId": "0d1c1e6aef039e9aebc70decd33002757bc24636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
