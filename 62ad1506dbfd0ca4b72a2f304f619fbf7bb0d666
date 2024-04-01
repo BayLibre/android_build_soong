@@ -16,6 +16,24 @@
       "message": "Do you not also need to set `TARGET_RELEASE` and potentially `TARGET_BUILD_VARIANT`?",
       "revId": "62ad1506dbfd0ca4b72a2f304f619fbf7bb0d666",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec1a2c20_2f2d54d7",
+        "filename": "tests/lib.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-01T21:42:00Z",
+      "side": 1,
+      "message": "I think it is not strictly necessary in these integration tests since the artifacts are under test (e.g. *.ninja) do not vary based on these on these variables. However for consistency, I have added them as well.",
+      "parentUuid": "eef8bf3d_6214cbf4",
+      "revId": "62ad1506dbfd0ca4b72a2f304f619fbf7bb0d666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
