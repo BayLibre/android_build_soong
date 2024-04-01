@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74489280_389b2871",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-01T02:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81c119d5_be5ee4a7",
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "431bf891_ed2be7f6",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-03-29T08:47:37Z",
       "side": 1,
       "message": "Need documentation.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 16
+      },
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e84a3c1_dd66f4d0",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-01T02:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "431bf891_ed2be7f6",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c685c9f3_1b72527f",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-01T02:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fc9c0e0_2a272998",
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d53fa91b_7465c562",
@@ -71,6 +131,30 @@
       "writtenOn": "2024-03-29T11:00:53Z",
       "side": 1,
       "message": "Can we continue to see all errors?",
+      "range": {
+        "startLine": 501,
+        "startChar": 4,
+        "endLine": 502,
+        "endChar": 9
+      },
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0fd59af_0472a2d9",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-01T02:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d53fa91b_7465c562",
       "range": {
         "startLine": 501,
         "startChar": 4,
@@ -104,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "167d9454_2eb6e540",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-01T02:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d4dd6bf_3156bc4c",
+      "range": {
+        "startLine": 520,
+        "startChar": 1,
+        "endLine": 520,
+        "endChar": 8
+      },
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fdad1d3_ab1229ec",
@@ -117,6 +225,30 @@
       "writtenOn": "2024-03-29T11:00:53Z",
       "side": 1,
       "message": "Shouldn\u0027t this be an implicit input of the cmd? Otherwise, the cmd will not be executed when the inputs are modified.",
+      "range": {
+        "startLine": 523,
+        "startChar": 2,
+        "endLine": 523,
+        "endChar": 58
+      },
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "067dec37_e480474d",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-01T02:25:45Z",
+      "side": 1,
+      "message": "We don\u0027t need that. This `srcPath` is copied by `CopySpecsToDir()`, which is done by the same `RuleBuilder`.",
+      "parentUuid": "3fdad1d3_ab1229ec",
       "range": {
         "startLine": 523,
         "startChar": 2,
@@ -150,6 +282,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3bd6528_4ee549d8",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-01T02:25:45Z",
+      "side": 1,
+      "message": "changed to rsp file.",
+      "parentUuid": "394946f0_3d5ef61e",
+      "range": {
+        "startLine": 545,
+        "startChar": 0,
+        "endLine": 547,
+        "endChar": 2
+      },
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1a0cb2e_3ef37740",
@@ -163,6 +319,30 @@
       "writtenOn": "2024-03-29T08:47:37Z",
       "side": 1,
       "message": "Need to remove hard-coded path",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 115
+      },
+      "revId": "2dbe903f988e98ac14ad52ccfca0bb6580bdfc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a75cfd1_beedaed2",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-01T02:25:45Z",
+      "side": 1,
+      "message": "it can\u0027t be done easily for now.",
+      "parentUuid": "f1a0cb2e_3ef37740",
       "range": {
         "startLine": 558,
         "startChar": 0,
