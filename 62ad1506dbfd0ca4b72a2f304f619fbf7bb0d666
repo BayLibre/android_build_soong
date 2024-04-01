@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef8bf3d_6214cbf4",
+        "filename": "tests/lib.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-01T21:23:55Z",
+      "side": 1,
+      "message": "Do you not also need to set `TARGET_RELEASE` and potentially `TARGET_BUILD_VARIANT`?",
+      "revId": "62ad1506dbfd0ca4b72a2f304f619fbf7bb0d666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
