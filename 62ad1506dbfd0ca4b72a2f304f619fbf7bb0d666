@@ -34,6 +34,24 @@
       "parentUuid": "eef8bf3d_6214cbf4",
       "revId": "62ad1506dbfd0ca4b72a2f304f619fbf7bb0d666",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae6555ce_2b3a9f26",
+        "filename": "tests/lib.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-01T21:48:39Z",
+      "side": 1,
+      "message": "I was asking because the build will error out if TARGET_RELEASE isn\u0027t set, not so much for consistency.",
+      "parentUuid": "ec1a2c20_2f2d54d7",
+      "revId": "62ad1506dbfd0ca4b72a2f304f619fbf7bb0d666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
