@@ -16,6 +16,24 @@
       "message": "Can we also print to the console that this is being deprecated? It seems like [this](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/prebuilt.go;drc\u003d972917d794e1f9a225fa3737cf648f4a8d044d31;l\u003d707) is the only usage. WDYT about adding a print statement here?",
       "revId": "f8ba702fc01e4d0d2d82308f9722394f2833f092",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e6a7c3_76306edb",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-01T22:46:47Z",
+      "side": 1,
+      "message": "I think logging the warning will result in spam build up in our logs since we have several soong modules that still set this property.",
+      "parentUuid": "a2690483_9ce419dc",
+      "revId": "f8ba702fc01e4d0d2d82308f9722394f2833f092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
