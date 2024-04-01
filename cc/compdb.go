@@ -151,6 +151,10 @@ func getArguments(src android.Path, ctx android.SingletonContext, ccModule *Modu
 		isCpp = false
 		clangPath = ccPath
 	}
+	globalCFlags, err := ctx.Eval(pctx, "${config.NoOverrideGlobalCflags}")
+	if err != nil {
+		log.Fatalf("Could not find global C flags: %s", err)
+	}
 	args = append(args, clangPath)
 	args = append(args, expandAllVars(ctx, ccModule.flags.Global.CommonFlags)...)
 	args = append(args, expandAllVars(ctx, ccModule.flags.Local.CommonFlags)...)
@@ -164,6 +168,7 @@ func getArguments(src android.Path, ctx android.SingletonContext, ccModule *Modu
 		args = append(args, expandAllVars(ctx, ccModule.flags.Local.ConlyFlags)...)
 	}
 	args = append(args, expandAllVars(ctx, ccModule.flags.SystemIncludeFlags)...)
+	args = append(args, strings.Fields(globalCFlags)...)
 	args = append(args, src.String())
 	return args
 }
