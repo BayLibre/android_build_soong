@@ -52,6 +52,24 @@
       "parentUuid": "50e6a7c3_76306edb",
       "revId": "f8ba702fc01e4d0d2d82308f9722394f2833f092",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d4b5c3_ec2cb7b8",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-01T23:00:16Z",
+      "side": 1,
+      "message": "I will be filing a tracking bug to remove this from Android.bp files, but it is undecided whether it will be done by me or module owners or whether it will be a sharded operation.",
+      "parentUuid": "4f4fd330_9555c6a8",
+      "revId": "f8ba702fc01e4d0d2d82308f9722394f2833f092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
