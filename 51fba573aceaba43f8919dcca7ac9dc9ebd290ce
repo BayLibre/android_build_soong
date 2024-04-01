@@ -16,6 +16,24 @@
       "message": "This isn\u0027t the only possible additional set of flags, https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/builder.go;l\u003d525-543;drc\u003d5f5d271fc334e59817f8db9a9e231b2ea499ebf9 has more flags and some extra conditional logic.  That shouldn\u0027t be duplicated here, so I think the right fix is to move those flags to where the rest of the flags are set so the logic is shared.  That probably means adding a `ccModule.flags.NoOverride` struct to hold the flags.",
       "revId": "51fba573aceaba43f8919dcca7ac9dc9ebd290ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af7b1203_4ded711d",
+        "filename": "cc/compdb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 3306106
+      },
+      "writtenOn": "2024-04-01T22:28:10Z",
+      "side": 1,
+      "message": "Thanks for taking a look.\n\nI need a little more help here. It seems like `ccModule.flags` is initialized in compiler.go: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/compiler.go;l\u003d344;drc\u003d4df5df65a5cc16e6add2cd3eb2575e2746dbbba2. So it sounds to me like I should move the logic you pointed to in builder.go to this function and remove it from its current location. However, I cannot find the connection in the code between those two to make the change confidently.",
+      "parentUuid": "c9d6e6e9_b92a900b",
+      "revId": "51fba573aceaba43f8919dcca7ac9dc9ebd290ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
