@@ -52,6 +52,24 @@
       "parentUuid": "ec1a2c20_2f2d54d7",
       "revId": "62ad1506dbfd0ca4b72a2f304f619fbf7bb0d666",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59c7ebed_568f0135",
+        "filename": "tests/lib.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-01T21:54:16Z",
+      "side": 1,
+      "message": "For some reason, it does not error out when I run locally. Maybe it could be because`run_soong` invokes `soong_ui.bash` with the `--skip-config` argument",
+      "parentUuid": "ae6555ce_2b3a9f26",
+      "revId": "62ad1506dbfd0ca4b72a2f304f619fbf7bb0d666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
