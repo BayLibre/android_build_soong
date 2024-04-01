@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9d6e6e9_b92a900b",
+        "filename": "cc/compdb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-01T19:27:21Z",
+      "side": 1,
+      "message": "This isn\u0027t the only possible additional set of flags, https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/builder.go;l\u003d525-543;drc\u003d5f5d271fc334e59817f8db9a9e231b2ea499ebf9 has more flags and some extra conditional logic.  That shouldn\u0027t be duplicated here, so I think the right fix is to move those flags to where the rest of the flags are set so the logic is shared.  That probably means adding a `ccModule.flags.NoOverride` struct to hold the flags.",
+      "revId": "51fba573aceaba43f8919dcca7ac9dc9ebd290ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
