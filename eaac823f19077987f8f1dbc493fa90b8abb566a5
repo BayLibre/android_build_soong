@@ -16,6 +16,24 @@
       "message": "You will likely need the ability for `//visibility:any_system_partition` to make modules visible to a `android_system_image_defaults` module. And then if you do that, we\u0027ll need a check that an `android_system_image_defaults` module can only be used with an `android_system_image` module instead of another partition type. But these can be in a followup.",
       "revId": "eaac823f19077987f8f1dbc493fa90b8abb566a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "541eca75_b976713e",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-01T18:51:58Z",
+      "side": 1,
+      "message": "Thanks. Will do.",
+      "parentUuid": "9183ee78_7a223daf",
+      "revId": "eaac823f19077987f8f1dbc493fa90b8abb566a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
