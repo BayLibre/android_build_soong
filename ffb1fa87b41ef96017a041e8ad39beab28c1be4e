@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff5e57fb_733a2ff8",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-01T19:47:59Z",
+      "side": 1,
+      "message": "None of these non-deps files will be needed in the fsverity metadata, right?",
+      "revId": "ffb1fa87b41ef96017a041e8ad39beab28c1be4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd3adc8_e20c0578",
+        "filename": "filesystem/fsverity_metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-01T19:47:59Z",
+      "side": 1,
+      "message": "strings.Builder. Also this may have to change to match the argparse change I suggested in aosp/3018648",
+      "range": {
+        "startLine": 42,
+        "startChar": 51,
+        "endLine": 42,
+        "endChar": 63
+      },
+      "revId": "ffb1fa87b41ef96017a041e8ad39beab28c1be4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99e305b9_96ccc87c",
+        "filename": "filesystem/fsverity_metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-01T19:47:59Z",
+      "side": 1,
+      "message": "Are the mkdirs necessary given that the `.fsv_meta` file is in the same folder as the packagingSpec, which has already been copied into this folder?",
+      "revId": "ffb1fa87b41ef96017a041e8ad39beab28c1be4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82f8b60a_edbd7025",
+        "filename": "filesystem/fsverity_metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-01T19:47:59Z",
+      "side": 1,
+      "message": "throughout this function, please use multiple `WriteString` calls instead of `Sprintf` to avoid allocating temporary strings.",
+      "revId": "ffb1fa87b41ef96017a041e8ad39beab28c1be4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b3131df_2915d764",
+        "filename": "filesystem/fsverity_metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-01T19:47:59Z",
+      "side": 1,
+      "message": "Use `\u0026\u0026` instead of a semicolon to check for errors.",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 39
+      },
+      "revId": "ffb1fa87b41ef96017a041e8ad39beab28c1be4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
