@@ -295,6 +295,10 @@ func (f *flagExporter) exportedIncludes(ctx ModuleContext) android.Paths {
 	return android.PathsForModuleSrc(ctx, f.Properties.Export_include_dirs)
 }
 
+func (f *flagExporter) exportedSystemIncludes(ctx ModuleContext) android.Paths {
+	return android.PathsForModuleSrc(ctx, f.Properties.Export_system_include_dirs)
+}
+
 // exportIncludes registers the include directories and system include directories to be exported
 // transitively to modules depending on this module.
 func (f *flagExporter) exportIncludes(ctx ModuleContext) {
@@ -754,7 +758,10 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 	}
 	if library.sabi.shouldCreateSourceAbiDump() {
 		flags.SAbiFlags = []string{}
-		for _, dir := range library.exportedIncludeDirsForAbiCheck(ctx) {
+		includeDirs, systemIncludeDirs := library.exportedIncludeDirsForAbiCheck(ctx)
+		// The ABI checker does not distinguish normal and system include dirs.
+		includeDirs = append(includeDirs, systemIncludeDirs...)
+		for _, dir := range includeDirs {
 			flags.SAbiFlags = append(flags.SAbiFlags, "-I"+dir)
 		}
 		totalLength := len(library.baseCompiler.Properties.Srcs) + len(deps.GeneratedSources) +
@@ -1332,24 +1339,29 @@ func (library *libraryDecorator) coverageOutputFilePath() android.OptionalPath {
 	return library.coverageOutputFile
 }
 
-func (library *libraryDecorator) exportedIncludeDirsForAbiCheck(ctx ModuleContext) []string {
+// Get the include dirs exported by the library, excluding those reexported from shared libraries.
+func (library *libraryDecorator) exportedIncludeDirsForAbiCheck(ctx ModuleContext) ([]string, []string) {
 	exportIncludeDirs := library.flagExporter.exportedIncludes(ctx).Strings()
 	exportIncludeDirs = append(exportIncludeDirs, library.sabi.Properties.ReexportedIncludes...)
-	return exportIncludeDirs
+	exportSystemIncludeDirs := library.flagExporter.exportedSystemIncludes(ctx).Strings()
+	exportSystemIncludeDirs = append(exportSystemIncludeDirs, library.sabi.Properties.ReexportedSystemIncludes...)
+	return exportIncludeDirs, exportSystemIncludeDirs
 }
 
-func (library *libraryDecorator) llndkIncludeDirsForAbiCheck(ctx ModuleContext, deps PathDeps) []string {
+func (library *libraryDecorator) llndkIncludeDirsForAbiCheck(ctx ModuleContext, deps PathDeps) ([]string, []string) {
 	// The ABI checker does not need the preprocess which adds macro guards to function declarations.
 	includeDirs := android.PathsForModuleSrc(ctx, library.Properties.Llndk.Export_preprocessed_headers).Strings()
+	systemIncludeDirs := []string{}
 
 	if library.Properties.Llndk.Override_export_include_dirs != nil {
 		includeDirs = append(includeDirs, android.PathsForModuleSrc(
 			ctx, library.Properties.Llndk.Override_export_include_dirs).Strings()...)
 	} else {
-		includeDirs = append(includeDirs, library.exportedIncludeDirsForAbiCheck(ctx)...)
+		dirs, systemDirs := library.exportedIncludeDirsForAbiCheck(ctx)
+		includeDirs = append(includeDirs, dirs...)
+		systemIncludeDirs = append(systemIncludeDirs, systemDirs...)
 	}
 
-	systemIncludeDirs := []string{}
 	if Bool(library.Properties.Llndk.Export_headers_as_system) {
 		systemIncludeDirs = append(systemIncludeDirs, includeDirs...)
 		includeDirs = nil
@@ -1357,8 +1369,7 @@ func (library *libraryDecorator) llndkIncludeDirsForAbiCheck(ctx ModuleContext, 
 	// Header libs.
 	includeDirs = append(includeDirs, deps.LlndkIncludeDirs.Strings()...)
 	systemIncludeDirs = append(systemIncludeDirs, deps.LlndkSystemIncludeDirs.Strings()...)
-	// The ABI checker does not distinguish normal and system headers.
-	return append(includeDirs, systemIncludeDirs...)
+	return includeDirs, systemIncludeDirs
 }
 
 func getRefAbiDumpFile(ctx android.ModuleInstallPathContext,
@@ -1473,7 +1484,10 @@ func (library *libraryDecorator) optInAbiDiff(ctx android.ModuleContext,
 
 func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, deps PathDeps, objs Objects, fileName string, soFile android.Path) {
 	if library.sabi.shouldCreateSourceAbiDump() {
-		exportedIncludeDirs := library.exportedIncludeDirsForAbiCheck(ctx)
+		exportedIncludeDirs, exportedSystemIncludeDirs := library.exportedIncludeDirsForAbiCheck(ctx)
+		// The ABI checker does not distinguish normal and system include dirs.
+		exportedIncludeDirs = append(exportedIncludeDirs, exportedSystemIncludeDirs...)
+
 		headerAbiChecker := library.getHeaderAbiCheckerProperties(ctx)
 		currSdkVersion := currRefAbiDumpSdkVersion(ctx)
 		currVendorVersion := ctx.Config().VendorApiLevel()
@@ -1492,11 +1506,13 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, deps PathD
 		for _, tag := range tags {
 			if tag == llndkLsdumpTag {
 				if llndkDump == nil {
-					llndkIncludeDirs := library.llndkIncludeDirsForAbiCheck(ctx, deps)
+					llndkIncludeDirs, llndkSystemIncludeDirs := library.llndkIncludeDirsForAbiCheck(ctx, deps)
+					llndkIncludeDirs = append(llndkIncludeDirs, llndkSystemIncludeDirs...)
 					// NDK symbols in version 34 are LLNDK symbols. Those in version 35 are not.
 					// TODO(b/314010764): Add parameters to read LLNDK symbols from the symbol file.
 					llndkDump = transformDumpToLinkedDump(ctx,
-						[]android.Path{implDump}, soFile, fileName+".llndk",
+						objs.sAbiDumpFiles,
+						soFile, fileName+".llndk",
 						llndkIncludeDirs,
 						android.OptionalPathForModuleSrc(ctx, library.Properties.Llndk.Symbol_file),
 						headerAbiChecker.Exclude_symbol_versions,
