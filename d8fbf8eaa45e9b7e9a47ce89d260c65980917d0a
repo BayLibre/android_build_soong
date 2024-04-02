@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e304b2ed_cd14794b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-04-02T01:06:26Z",
+      "side": 1,
+      "message": "i\u0027m getting an error:\n```\n$ m out/host/linux-x86/bin/go/soong-sdk/test/test.passed\n\n--- FAIL: TestUniqueHostSoname (0.26s)\n    cc_sdk_test.go:2251: defaults/cc/common/Android.bp:228:3: module \"libc++\" variant \"android_vendor_arm64_armv8-a_static_cfi\": source path \"external/compiler-rt/lib/cfi/cfi_blocklist.txt\" does not exist\nFAIL\n```\nbut the file is there.",
+      "revId": "d8fbf8eaa45e9b7e9a47ce89d260c65980917d0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
