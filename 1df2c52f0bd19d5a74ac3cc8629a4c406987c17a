@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c6aeead_03a6181c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-02T18:05:30Z",
+      "side": 1,
+      "message": "This is an empty change, it has already been submitted.",
+      "revId": "1df2c52f0bd19d5a74ac3cc8629a4c406987c17a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
