@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f411dc3b_a657269c",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-02T01:04:48Z",
+      "side": 1,
+      "message": "Right. I don\u0027t think it will be.",
+      "parentUuid": "ff5e57fb_733a2ff8",
+      "revId": "ffb1fa87b41ef96017a041e8ad39beab28c1be4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbd3adc8_e20c0578",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-04-01T19:47:59Z",
       "side": 1,
       "message": "strings.Builder. Also this may have to change to match the argparse change I suggested in aosp/3018648",
+      "range": {
+        "startLine": 42,
+        "startChar": 51,
+        "endLine": 42,
+        "endChar": 63
+      },
+      "revId": "ffb1fa87b41ef96017a041e8ad39beab28c1be4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b9b5e7d_13621555",
+        "filename": "filesystem/fsverity_metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-02T01:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbd3adc8_e20c0578",
       "range": {
         "startLine": 42,
         "startChar": 51,
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ada3411_288ca9b5",
+        "filename": "filesystem/fsverity_metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-02T01:04:48Z",
+      "side": 1,
+      "message": "Ah you\u0027re right! We don\u0027t need. Removed.",
+      "parentUuid": "99e305b9_96ccc87c",
+      "revId": "ffb1fa87b41ef96017a041e8ad39beab28c1be4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82f8b60a_edbd7025",
@@ -75,6 +135,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c39707e_ade442ea",
+        "filename": "filesystem/fsverity_metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-02T01:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82f8b60a_edbd7025",
+      "revId": "ffb1fa87b41ef96017a041e8ad39beab28c1be4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b3131df_2915d764",
@@ -88,6 +166,30 @@
       "writtenOn": "2024-04-01T19:47:59Z",
       "side": 1,
       "message": "Use `\u0026\u0026` instead of a semicolon to check for errors.",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 39
+      },
+      "revId": "ffb1fa87b41ef96017a041e8ad39beab28c1be4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03a38457_3f686168",
+        "filename": "filesystem/fsverity_metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-02T01:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b3131df_2915d764",
       "range": {
         "startLine": 102,
         "startChar": 38,
