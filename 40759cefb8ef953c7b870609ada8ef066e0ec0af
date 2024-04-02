@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb44326_3db3617a",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-04-02T08:03:58Z",
+      "side": 1,
+      "message": "how about reserve the exact size we need:\n`make([]string, len(library.exportedIncludeDirsForAbiCheck(ctx)))`",
+      "range": {
+        "startLine": 756,
+        "startChar": 20,
+        "endLine": 756,
+        "endChar": 30
+      },
+      "revId": "40759cefb8ef953c7b870609ada8ef066e0ec0af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
