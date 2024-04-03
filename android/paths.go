@@ -1836,8 +1836,8 @@ func pathForNdkOrSdkInstall(ctx PathContext, prefix string, paths []string) Inst
 	return base.Join(ctx, paths...)
 }
 
-func PathForNdkInstall(ctx PathContext, paths ...string) InstallPath {
-	return pathForNdkOrSdkInstall(ctx, "ndk", paths)
+func PathForNdkInstall(ctx PathContext, paths ...string) OutputPath {
+	return PathForOutput(ctx, append([]string{"ndk"}, paths...)...)
 }
 
 func PathForMainlineSdksInstall(ctx PathContext, paths ...string) InstallPath {
