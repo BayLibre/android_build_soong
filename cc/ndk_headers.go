@@ -15,7 +15,6 @@
 package cc
 
 import (
-	"fmt"
 	"path/filepath"
 
 	"android/soong/android"
@@ -129,13 +128,12 @@ func (m *headerModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	for _, header := range m.srcPaths {
 		installDir := getHeaderInstallDir(ctx, header, String(m.properties.From),
 			String(m.properties.To))
-		installedPath := ctx.InstallFile(installDir, header.Base(), header)
 		installPath := installDir.Join(ctx, header.Base())
-		if installPath != installedPath {
-			panic(fmt.Sprintf(
-				"expected header install path (%q) not equal to actual install path %q",
-				installPath, installedPath))
-		}
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   android.Cp,
+			Input:  header,
+			Output: installPath,
+		})
 		m.installPaths = append(m.installPaths, installPath)
 	}
 
