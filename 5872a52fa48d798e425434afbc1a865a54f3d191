@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e13f12ac_fed4aa8a",
+        "filename": "cc/library_cmake.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-04-03T20:23:56Z",
+      "side": 1,
+      "message": "Done. I skipped adding \"Cmake\" to the name of this function because it\u0027s called `RegisterPreDepsMutators` everywhere and `Register.+PreDepsMutators` in only one place.",
+      "parentUuid": "7d97fe5a_05df5259",
+      "range": {
+        "startLine": 59,
+        "startChar": 25,
+        "endLine": 59,
+        "endChar": 48
+      },
+      "revId": "5872a52fa48d798e425434afbc1a865a54f3d191",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97df83ed_de040a7e",
