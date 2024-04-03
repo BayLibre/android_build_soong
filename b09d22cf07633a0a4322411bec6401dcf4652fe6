@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "813e1729_ea821a9f",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-04-03T16:46:58Z",
+      "side": 1,
+      "message": "Would a `map[string]struct{}` be better?",
+      "range": {
+        "startLine": 169,
+        "startChar": 42,
+        "endLine": 169,
+        "endChar": 48
+      },
+      "revId": "b09d22cf07633a0a4322411bec6401dcf4652fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
