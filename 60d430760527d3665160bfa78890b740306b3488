@@ -52,6 +52,24 @@
       "parentUuid": "57860cf9_ca88f814",
       "revId": "60d430760527d3665160bfa78890b740306b3488",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76f53502_ffb5bde6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-04-03T13:40:49Z",
+      "side": 1,
+      "message": "What was the result of the discussion? I am asking because I am trying to debug an issue with docs generation including a field whose associated flag should have been disabled and I would like to verify that it was disabled when those docs were generated. However, I cannot do that because the `flags.textproto` file is missing due to this change.\n\nAFAIK the `docs` target does not produce anything that should end up on the device so it should be safe to include this file in the dist directory.",
+      "parentUuid": "b4b4f609_3d04b267",
+      "revId": "60d430760527d3665160bfa78890b740306b3488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
