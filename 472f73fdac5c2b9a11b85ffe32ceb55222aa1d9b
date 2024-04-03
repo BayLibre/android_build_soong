@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355980bc_0fa039ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-03T01:08:23Z",
+      "side": 1,
+      "message": "This change cannot go through presubmit until ag/26802071 is submitted.",
+      "revId": "472f73fdac5c2b9a11b85ffe32ceb55222aa1d9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
