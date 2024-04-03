@@ -215,8 +215,7 @@ type Flags struct {
 	// Local flags (which individual modules are responsible for). These may override global flags.
 	Local LocalOrGlobalFlags
 	// Global flags (which build system or toolchain is responsible for).
-	Global          LocalOrGlobalFlags
-	NoOverrideFlags []string // Flags applied to the end of list of flags so they are not overridden
+	Global LocalOrGlobalFlags
 
 	aidlFlags     []string // Flags that apply to aidl source files
 	rsFlags       []string // Flags that apply to renderscript source files

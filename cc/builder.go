@@ -375,14 +375,13 @@ type builderFlags struct {
 	localCppFlags        string
 	localLdFlags         string
 
-	noOverrideFlags string // Flags appended at the end so they are not overridden.
-	libFlags        string // Flags to add to the linker directly after specifying libraries to link.
-	extraLibFlags   string // Flags to add to the linker last.
-	tidyFlags       string // Flags that apply to clang-tidy
-	sAbiFlags       string // Flags that apply to header-abi-dumps
-	aidlFlags       string // Flags that apply to aidl source files
-	rsFlags         string // Flags that apply to renderscript source files
-	toolchain       config.Toolchain
+	libFlags      string // Flags to add to the linker directly after specifying libraries to link.
+	extraLibFlags string // Flags to add to the linker last.
+	tidyFlags     string // Flags that apply to clang-tidy
+	sAbiFlags     string // Flags that apply to header-abi-dumps
+	aidlFlags     string // Flags that apply to aidl source files
+	rsFlags       string // Flags that apply to renderscript source files
+	toolchain     config.Toolchain
 
 	// True if these extra features are enabled.
 	tidy          bool
@@ -486,8 +485,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		flags.localCommonFlags + " " +
 		flags.localToolingCFlags + " " +
 		flags.localConlyFlags + " " +
-		flags.systemIncludeFlags + " " +
-		flags.noOverrideFlags
+		flags.systemIncludeFlags
 
 	cflags := flags.globalCommonFlags + " " +
 		flags.globalCFlags + " " +
@@ -495,8 +493,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		flags.localCommonFlags + " " +
 		flags.localCFlags + " " +
 		flags.localConlyFlags + " " +
-		flags.systemIncludeFlags + " " +
-		flags.noOverrideFlags
+		flags.systemIncludeFlags
 
 	toolingCppflags := flags.globalCommonFlags + " " +
 		flags.globalToolingCFlags + " " +
@@ -504,8 +501,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		flags.localCommonFlags + " " +
 		flags.localToolingCFlags + " " +
 		flags.localToolingCppFlags + " " +
-		flags.systemIncludeFlags + " " +
-		flags.noOverrideFlags
+		flags.systemIncludeFlags
 
 	cppflags := flags.globalCommonFlags + " " +
 		flags.globalCFlags + " " +
@@ -513,8 +509,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		flags.localCommonFlags + " " +
 		flags.localCFlags + " " +
 		flags.localCppFlags + " " +
-		flags.systemIncludeFlags + " " +
-		flags.noOverrideFlags
+		flags.systemIncludeFlags
 
 	asflags := flags.globalCommonFlags + " " +
 		flags.globalAsFlags + " " +
@@ -525,6 +520,26 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 	var sAbiDumpFiles android.Paths
 	if flags.sAbiDump {
 		sAbiDumpFiles = make(android.Paths, 0, len(srcFiles))
+	}
+
+	cflags += " ${config.NoOverrideGlobalCflags}"
+	toolingCflags += " ${config.NoOverrideGlobalCflags}"
+	cppflags += " ${config.NoOverrideGlobalCflags}"
+	toolingCppflags += " ${config.NoOverrideGlobalCflags}"
+
+	if flags.toolchain.Is64Bit() {
+		cflags += " ${config.NoOverride64GlobalCflags}"
+		toolingCflags += " ${config.NoOverride64GlobalCflags}"
+		cppflags += " ${config.NoOverride64GlobalCflags}"
+		toolingCppflags += " ${config.NoOverride64GlobalCflags}"
+	}
+
+	modulePath := ctx.ModuleDir()
+	if android.IsThirdPartyPath(modulePath) {
+		cflags += " ${config.NoOverrideExternalGlobalCflags}"
+		toolingCflags += " ${config.NoOverrideExternalGlobalCflags}"
+		cppflags += " ${config.NoOverrideExternalGlobalCflags}"
+		toolingCppflags += " ${config.NoOverrideExternalGlobalCflags}"
 	}
 
 	// Multiple source files have build rules usually share the same cFlags or tidyFlags.
