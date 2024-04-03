@@ -16,6 +16,24 @@
       "message": "Pending on aosp/3022944",
       "revId": "9a6fcbe6f470fe648bc1ab482e0b02405e764b77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa1e2be_bff13615",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-04-03T06:27:25Z",
+      "side": 1,
+      "message": "Pending on aosp/3022944 merged to git_main",
+      "parentUuid": "9fc85be5_b9ded008",
+      "revId": "9a6fcbe6f470fe648bc1ab482e0b02405e764b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
