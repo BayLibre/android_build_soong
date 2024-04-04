@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2866c0d_1a3efefe",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1834,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-04T01:30:10Z",
+      "side": 1,
+      "message": "I think this can just be inlined into `PathForMainlineSdksInstall` now, it should be only used there.",
+      "range": {
+        "startLine": 1834,
+        "startChar": 5,
+        "endLine": 1834,
+        "endChar": 27
+      },
+      "revId": "682c042e87deb1dd5c2376da48e42c30d118e795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
