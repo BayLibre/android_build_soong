@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a0e1a3_57d80a1d",
+        "filename": "rust/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-04T08:56:59Z",
+      "side": 1,
+      "message": "remove this too?",
+      "range": {
+        "startLine": 753,
+        "startChar": 0,
+        "endLine": 758,
+        "endChar": 1
+      },
+      "revId": "2e17471b39019b5900ca3b1e9ab55f505c91deb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
