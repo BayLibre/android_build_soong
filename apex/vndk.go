@@ -46,7 +46,7 @@ func vndkApexBundleFactory() android.Module {
 }
 
 func (a *apexBundle) vndkVersion() string {
-	return proptools.StringDefault(a.vndkProperties.Vndk_version, "current")
+	return proptools.StringDefault(a.vndkProperties.Vndk_version, "")
 }
 
 type apexVndkProperties struct {

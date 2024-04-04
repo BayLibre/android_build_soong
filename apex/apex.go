@@ -743,21 +743,14 @@ func (a *apexBundle) getImageVariationPair(deviceConfig android.DeviceConfig) (s
 	}
 
 	prefix := android.CoreVariation
-	vndkVersion := ""
-	if deviceConfig.VndkVersion() != "" {
-		if a.SocSpecific() || a.DeviceSpecific() {
-			prefix = cc.VendorVariationPrefix
-			vndkVersion = deviceConfig.VndkVersion()
-		}
-	} else {
-		if a.SocSpecific() || a.DeviceSpecific() {
-			prefix = cc.VendorVariation
-		} else if a.ProductSpecific() {
-			prefix = cc.ProductVariation
-		}
+
+	if a.SocSpecific() || a.DeviceSpecific() {
+		prefix = cc.VendorVariation
+	} else if a.ProductSpecific() {
+		prefix = cc.ProductVariation
 	}
 
-	return prefix, vndkVersion
+	return prefix, ""
 }
 
 // getImageVariation returns the image variant name for this apexBundle. In most cases, it's simply
