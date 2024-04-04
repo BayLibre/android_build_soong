@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f0b7ba5_1d5391b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-04T00:14:51Z",
+      "side": 1,
+      "message": "If this is really where the headers are copied, they probably shouldn\u0027t be using an `InstallPath`. Could you change the function chain all the way up to `pathForNdkOrSdkInstall` to use an `OutputPath` instead?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "b6b55b354da89fbae1d85c9b98b1cc1d8bcedc4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
