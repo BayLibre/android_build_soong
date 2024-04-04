@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc6e069c_9cd0329a",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2418,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-04-04T13:56:25Z",
+      "side": 1,
+      "message": "This was added to support recovery snapshot. I don\u0027t think we need to keep it.",
+      "range": {
+        "startLine": 2418,
+        "startChar": 5,
+        "endLine": 2418,
+        "endChar": 21
+      },
+      "revId": "2e17471b39019b5900ca3b1e9ab55f505c91deb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "338f28b4_796503d6",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-04-04T13:56:25Z",
+      "side": 1,
+      "message": "Is it still used without snapshots?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "2e17471b39019b5900ca3b1e9ab55f505c91deb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5a0e1a3_57d80a1d",
         "filename": "rust/library.go",
         "patchSetId": 5

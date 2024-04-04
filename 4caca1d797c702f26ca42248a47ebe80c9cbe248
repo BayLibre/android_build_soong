@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f9942cc_275d5fa1",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2492,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-04-04T13:56:25Z",
+      "side": 0,
+      "message": "The comment is for NDK libraries. Is it outdated?",
+      "range": {
+        "startLine": 2474,
+        "startChar": 0,
+        "endLine": 2492,
+        "endChar": 17
+      },
+      "revId": "4caca1d797c702f26ca42248a47ebe80c9cbe248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "178ae2f0_5a37ef87",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2493,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-04-04T13:56:25Z",
+      "side": 0,
+      "message": "I think, rust still needs this for the ndk libraries.",
+      "range": {
+        "startLine": 2493,
+        "startChar": 5,
+        "endLine": 2493,
+        "endChar": 16
+      },
+      "revId": "4caca1d797c702f26ca42248a47ebe80c9cbe248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac1f588_dcb3d729",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1558,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-04-04T13:56:25Z",
+      "side": 0,
+      "message": "Is this all about vendor snapshot, but not for NDK?",
+      "range": {
+        "startLine": 1556,
+        "startChar": 1,
+        "endLine": 1558,
+        "endChar": 2
+      },
+      "revId": "4caca1d797c702f26ca42248a47ebe80c9cbe248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
