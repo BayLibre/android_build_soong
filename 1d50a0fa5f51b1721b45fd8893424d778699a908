@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "168de190_9920cb17",
+        "filename": "android/selects_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-04T21:52:53Z",
+      "side": 1,
+      "message": "This test case seems to be same as the test case before it.",
+      "range": {
+        "startLine": 395,
+        "startChar": 43,
+        "endLine": 395,
+        "endChar": 44
+      },
+      "revId": "1d50a0fa5f51b1721b45fd8893424d778699a908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
