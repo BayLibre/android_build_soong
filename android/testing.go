@@ -1120,9 +1120,13 @@ func AndroidMkEntriesForTest(t *testing.T, ctx *TestContext, mod blueprint.Modul
 		t.Errorf("module does not implement AndroidMkEntriesProvider: " + mod.Name())
 	}
 
+	// if p.AndroidMkEntries() == nil {
+	// 	return []AndroidMkEntries{}
+	// }
+
 	entriesList := p.AndroidMkEntries()
 	aconfigUpdateAndroidMkEntries(ctx, mod.(Module), &entriesList)
-	for i, _ := range entriesList {
+	for i := range entriesList {
 		entriesList[i].fillInEntries(ctx, mod)
 	}
 	return entriesList

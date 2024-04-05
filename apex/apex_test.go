@@ -5693,7 +5693,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 
 		ctx := testDexpreoptWithApexes(t, bp, "", preparer, fragment)
 		checkBootDexJarPath(t, ctx, "libfoo", "out/soong/.intermediates/my-bootclasspath-fragment/android_common_myapex/hiddenapi-modular/encoded/libfoo.jar")
-		checkBootDexJarPath(t, ctx, "libbar", "out/soong/.intermediates/my-bootclasspath-fragment/android_common_myapex/hiddenapi-modular/encoded/libbar.jar")
+		checkBootDexJarPath(t, ctx, "libbar", "out/soong/.intermediates/my-bootclasspath-fragment/android_common_myapex/hiddenapi-modular/encoded/libbar.impl.jar")
 
 		// Verify the correct module jars contribute to the hiddenapi index file.
 		checkHiddenAPIIndexFromClassesInputs(t, ctx, ``)

@@ -953,6 +953,10 @@ type commonToSdkLibraryAndImport struct {
 	// Path to the header jars of the implementation library
 	// This is non-empty only when api_only is false.
 	implLibraryHeaderJars android.Paths
+
+	// The reference to the implementation library created by the source module.
+	// Is nil if the source module does not exist.
+	implLibraryModule *Library
 }
 
 func (c *commonToSdkLibraryAndImport) initCommon(module commonSdkLibraryAndImportModule) {
@@ -997,6 +1001,10 @@ func (c *commonToSdkLibraryAndImport) uniqueApexVariations() bool {
 
 func (c *commonToSdkLibraryAndImport) generateCommonBuildActions(ctx android.ModuleContext) {
 	c.doctagPaths = android.PathsForModuleSrc(ctx, c.commonSdkLibraryProperties.Doctag_files)
+}
+
+func (c *commonToSdkLibraryAndImport) getImplLibraryModule() *Library {
+	return c.implLibraryModule
 }
 
 // Module name of the runtime implementation library
@@ -1375,6 +1383,8 @@ type SdkLibraryDependency interface {
 
 	// sharedLibrary returns true if this can be used as a shared library.
 	sharedLibrary() bool
+
+	getImplLibraryModule() *Library
 }
 
 type SdkLibrary struct {
@@ -1541,10 +1551,6 @@ func (module *SdkLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 		m += "Please see the documentation of the prebuilt_apis module type (and a usage example in prebuilts/sdk) for a convenient way to generate these."
 		ctx.ModuleErrorf(m)
 	}
-	if module.requiresRuntimeImplementationLibrary() {
-		// Only add the deps for the library if it is actually going to be built.
-		module.Library.deps(ctx)
-	}
 }
 
 func (module *SdkLibrary) OutputFiles(tag string) (android.Paths, error) {
@@ -1568,12 +1574,9 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 
 	module.generateCommonBuildActions(ctx)
 
-	// Only build an implementation library if required.
-	if module.requiresRuntimeImplementationLibrary() {
-		// stubsLinkType must be set before calling Library.GenerateAndroidBuildActions
-		module.Library.stubsLinkType = Unknown
-		module.Library.GenerateAndroidBuildActions(ctx)
-	}
+	module.stem = proptools.StringDefault(module.overridableProperties.Stem, ctx.ModuleName())
+
+	module.provideHiddenAPIPropertyInfo(ctx)
 
 	// Collate the components exported by this module. All scope specific modules are exported but
 	// the impl and xml component modules are not.
@@ -1600,13 +1603,37 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		if tag == implLibraryTag {
 			if dep, ok := android.OtherModuleProvider(ctx, to, JavaInfoProvider); ok {
 				module.implLibraryHeaderJars = append(module.implLibraryHeaderJars, dep.HeaderJars...)
+				module.implLibraryModule = to.(*Library)
 			}
 		}
 	})
 
+	if module.implLibraryModule != nil {
+		if ctx.Device() {
+			module.classesJarPaths = android.Paths{module.implLibraryModule.implementationJarFile}
+			module.bootDexJarPath = module.implLibraryModule.bootDexJarPath
+			module.uncompressDexState = module.implLibraryModule.uncompressDexState
+			module.active = module.implLibraryModule.active
+		}
+
+		android.SetProvider(ctx, blueprint.SrcsFileProviderKey, blueprint.SrcsFileProviderData{SrcPaths: module.implLibraryModule.uniqueSrcFiles.Strings()})
+	}
+
 	// Make the set of components exported by this module available for use elsewhere.
 	exportedComponentInfo := android.ExportedComponentsInfo{Components: android.SortedKeys(exportedComponents)}
 	android.SetProvider(ctx, android.ExportedComponentsInfoProvider, exportedComponentInfo)
+
+	if ctx.Device() {
+		module.dexpreopter.installPath = module.dexpreopter.getInstallPath(
+			ctx, module.Name(), android.PathForModuleInstall(ctx, "framework", module.Stem()+".jar"))
+		module.dexpreopter.isSDKLibrary = module.deviceProperties.IsSDKLibrary
+		setUncompressDex(ctx, &module.dexpreopter, &module.dexer)
+		module.dexpreopter.uncompressedDex = *module.dexProperties.Uncompress_dex
+		module.classLoaderContexts = module.usesLibrary.classLoaderContextForUsesLibDeps(ctx)
+		if module.usesLibrary.shouldDisableDexpreopt {
+			module.dexpreopter.disableDexpreopt()
+		}
+	}
 
 	// Provide additional information for inclusion in an sdk's generated .info file.
 	additionalSdkInfo := map[string]interface{}{}
@@ -2584,10 +2611,6 @@ type SdkLibraryImport struct {
 	scopeProperties map[*apiScope]*sdkLibraryScopeProperties
 
 	commonToSdkLibraryAndImport
-
-	// The reference to the implementation library created by the source module.
-	// Is nil if the source module does not exist.
-	implLibraryModule *Library
 
 	// The reference to the xml permissions module created by the source module.
 	// Is nil if the source module does not exist.
