@@ -16,6 +16,29 @@
       "message": "@spandandas@google.com this is the change to make the \"magic\" always return the \".impl.jar\" instead of the top level sdk library jar. I will be cleaning up the build actions of the sdk library in a follow up change.",
       "revId": "e9b57b823fc66351ecc7629c13bf1606bdd67fe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ebefa6d_32134df2",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-05T00:28:15Z",
+      "side": 1,
+      "message": "nit: `implLibraryHeaderJars` (plural)",
+      "range": {
+        "startLine": 955,
+        "startChar": 21,
+        "endLine": 955,
+        "endChar": 22
+      },
+      "revId": "e9b57b823fc66351ecc7629c13bf1606bdd67fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
