@@ -423,7 +423,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, libName string, dexJa
 
 	// A single apex can have multiple system server jars
 	// Use the dexJar to create a unique scope for each
-	dexJarStem := strings.TrimSuffix(dexJarFile.Base(), dexJarFile.Ext())
+	dexJarStem := strings.TrimSuffix(strings.TrimSuffix(dexJarFile.Base(), dexJarFile.Ext()), ".impl")
 
 	// Full dexpreopt config, used to create dexpreopt build rules.
 	dexpreoptConfig := &dexpreopt.ModuleConfig{
