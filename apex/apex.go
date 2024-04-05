@@ -1929,6 +1929,9 @@ func (vctx *visitorContext) normalizeFileInfo(mctx android.ModuleContext) {
 		if f.transitiveDep && f.module != nil && android.InList(mctx.OtherModuleName(f.module), vctx.unwantedTransitiveDeps) {
 			continue
 		}
+		if f.builtFile == nil {
+			continue
+		}
 		dest := filepath.Join(f.installDir, f.builtFile.Base())
 		if e, ok := encountered[dest]; !ok {
 			encountered[dest] = f
