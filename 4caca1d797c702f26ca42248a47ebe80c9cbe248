@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "367c8b30_09b650a3",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2492,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-05T01:44:53Z",
+      "side": 0,
+      "message": "I refactored this as FilterNdkLibs",
+      "parentUuid": "4f9942cc_275d5fa1",
+      "range": {
+        "startLine": 2474,
+        "startChar": 0,
+        "endLine": 2492,
+        "endChar": 17
+      },
+      "revId": "4caca1d797c702f26ca42248a47ebe80c9cbe248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "178ae2f0_5a37ef87",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f200a74_aa9b5609",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2493,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-05T01:44:53Z",
+      "side": 0,
+      "message": "Updated in rust.go to use cc.FilterNdkLibs. Thx.",
+      "parentUuid": "178ae2f0_5a37ef87",
+      "range": {
+        "startLine": 2493,
+        "startChar": 5,
+        "endLine": 2493,
+        "endChar": 16
+      },
+      "revId": "4caca1d797c702f26ca42248a47ebe80c9cbe248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fac1f588_dcb3d729",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-04-04T13:56:25Z",
       "side": 0,
       "message": "Is this all about vendor snapshot, but not for NDK?",
+      "range": {
+        "startLine": 1556,
+        "startChar": 1,
+        "endLine": 1558,
+        "endChar": 2
+      },
+      "revId": "4caca1d797c702f26ca42248a47ebe80c9cbe248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fb246f1_a10aafe3",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1558,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-05T01:44:53Z",
+      "side": 0,
+      "message": "I updated code to filter out NDK libs. Thanks.",
+      "parentUuid": "fac1f588_dcb3d729",
       "range": {
         "startLine": 1556,
         "startChar": 1,
