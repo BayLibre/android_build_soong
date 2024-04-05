@@ -381,7 +381,7 @@ func TestFileSystemWithCoverageVariants(t *testing.T) {
 
 func TestSystemImageDefaults(t *testing.T) {
 	result := fixture.RunTestWithBp(t, `
-		android_system_image_defaults {
+		android_filesystem_defaults {
 			name: "defaults",
 			multilib: {
 				common: {
