@@ -670,6 +670,10 @@ type Library struct {
 
 var _ android.ApexModule = (*Library)(nil)
 
+func (j *Library) CheckDepsMinSdkVersion(ctx android.ModuleContext) {
+	CheckMinSdkVersion(ctx, j)
+}
+
 // Provides access to the list of permitted packages from apex boot jars.
 type PermittedPackagesForUpdatableBootJars interface {
 	PermittedPackagesForUpdatableBootJars() []string
@@ -891,6 +895,12 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.sdkVersion = j.SdkVersion(ctx)
 	j.minSdkVersion = j.MinSdkVersion(ctx)
 	j.maxSdkVersion = j.MaxSdkVersion(ctx)
+
+	// Check min_sdk_version of the transitive dependencies if this module is created from
+	// java_sdk_library.
+	if j.deviceProperties.Min_sdk_version != nil && j.SdkLibraryName() != nil {
+		j.CheckDepsMinSdkVersion(ctx)
+	}
 
 	// SdkLibrary.GenerateAndroidBuildActions(ctx) sets the stubsLinkType to Unknown.
 	// If the stubsLinkType has already been set to Unknown, the stubsLinkType should
