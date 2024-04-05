@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2edc98_e6c13b12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-05T01:49:06Z",
+      "side": 1,
+      "message": "Can you also remove snapshot related variables?\n\n* vendor_snapshot.mk\n* soong config variables in soong_config.mk / variable.go / config.go\n    * DirectedVendorSnapshot\n    * VendorSnapshotModules\n    * DirectedRecoverySnapshot\n    * RecoverySnapshotModules\n    * VendorSnapshotDirsIncluded\n    * ... (and their friends)",
+      "revId": "fa3f280f3c9d866f15d3f4cf8ab060bb4383d9b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
