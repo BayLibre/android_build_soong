@@ -1672,7 +1672,11 @@ func apexFileForJavaModuleWithFile(ctx android.BaseModuleContext, module javaMod
 	af.jacocoReportClassesFile = module.JacocoReportClassesFile()
 	af.lintDepSets = module.LintDepSets()
 	af.customStem = module.Stem() + ".jar"
-	if dexpreopter, ok := module.(java.DexpreopterInterface); ok {
+	if sdkLib, ok := module.(*java.SdkLibrary); ok {
+		for _, install := range sdkLib.BuiltInstalledForApex() {
+			af.requiredModuleNames = append(af.requiredModuleNames, install.FullModuleName())
+		}
+	} else if dexpreopter, ok := module.(java.DexpreopterInterface); ok {
 		for _, install := range dexpreopter.DexpreoptBuiltInstalledForApex() {
 			af.requiredModuleNames = append(af.requiredModuleNames, install.FullModuleName())
 		}
