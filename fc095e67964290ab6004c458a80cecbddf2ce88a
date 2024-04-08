@@ -16,6 +16,24 @@
       "message": "Can\u0027t we use `mctx.SetDefaultDependencyVariation(\u0026apexBundleName)` and then not need the alias variation?",
       "revId": "fc095e67964290ab6004c458a80cecbddf2ce88a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b19a7d7_7d2cb1da",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-08T22:28:10Z",
+      "side": 1,
+      "message": "No. That won\u0027t work, because the other module (be it apex or non-apex) won\u0027t have the variation named apexBundleName.",
+      "parentUuid": "7d7db723_95404008",
+      "revId": "fc095e67964290ab6004c458a80cecbddf2ce88a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
