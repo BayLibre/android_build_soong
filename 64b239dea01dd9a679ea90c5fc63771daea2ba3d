@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2bf8b82_5f0e1ac3",
+        "filename": "android/all_teams.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T23:07:50Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t// and other information.  We will look up the package hierarchy for the team name if possible.\n```",
+      "revId": "64b239dea01dd9a679ea90c5fc63771daea2ba3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "238cc2c5_2c4bd1b6",
+        "filename": "android/all_teams.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T23:07:50Z",
+      "side": 1,
+      "message": "why is this special casing required? https://go.dev/play/p/WjZWqJyZnH8",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 3
+      },
+      "revId": "64b239dea01dd9a679ea90c5fc63771daea2ba3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

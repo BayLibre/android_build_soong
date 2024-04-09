@@ -313,6 +313,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77648c61_92808cba",
+        "filename": "android/all_teams.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T23:07:50Z",
+      "side": 1,
+      "message": "But isn\u0027t `lookupDefaultTeam(...)` only called when `teamName` is not specified in the module, based on the current implementation:\n```\nif teamName !\u003d \"\" {\n\tteamProperties, found \u003d t.teams[teamName]\n} else {\n\tteamProperties, found \u003d t.lookupDefaultTeam(m.bpFile)\n}\n```\n?\nWouldn\u0027t pre-processing default team per bp file directory (which can be overridden by `teamName` property later) possible?",
+      "parentUuid": "f65fdb40_6080f162",
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac3a6f25_eab9450e",
         "filename": "android/all_teams.go",
         "patchSetId": 6
@@ -395,6 +413,30 @@
       "side": 1,
       "message": "https://www.cultofpedagogy.com/two-spaces-after-period/",
       "parentUuid": "63c707a6_ba5b7363",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "679e45e4_3b6fc17f",
+        "filename": "android/shared_properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T23:07:50Z",
+      "side": 1,
+      "message": "TIL. Thanks for sharing :)",
+      "parentUuid": "b8bbc6ae_9eb2ea2d",
       "range": {
         "startLine": 20,
         "startChar": 20,
