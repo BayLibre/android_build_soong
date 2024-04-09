@@ -68,6 +68,7 @@ var (
 		}, map[string]*remoteexec.REParams{
 			"$javaTemplate": &remoteexec.REParams{
 				Labels:       map[string]string{"type": "compile", "lang": "java", "compiler": "javac"},
+				Inputs:       []string{"${config.JavacCmd}", "$srcJarDir", "$javacREImplicits"},
 				ExecStrategy: "${config.REJavacExecStrategy}",
 				Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
 			},
@@ -86,7 +87,7 @@ var (
 				Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
 			},
 		}, []string{"javacFlags", "bootClasspath", "classpath", "processorpath", "processor", "srcJars", "srcJarDir",
-			"outDir", "annoDir", "annoSrcJar", "javaVersion"}, nil)
+			"outDir", "annoDir", "annoSrcJar", "javaVersion"}, []string{"javacREImplicits"})
 
 	_ = pctx.VariableFunc("kytheCorpus",
 		func(ctx android.PackageVarContext) string { return ctx.Config().XrefCorpusName() })
@@ -612,17 +613,18 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 		Inputs:         srcFiles,
 		Implicits:      deps,
 		Args: map[string]string{
-			"javacFlags":    flags.javacFlags,
-			"bootClasspath": bootClasspath,
-			"classpath":     classpathArg,
-			"processorpath": flags.processorPath.FormJavaClassPath("-processorpath"),
-			"processor":     processor,
-			"srcJars":       strings.Join(srcJars.Strings(), " "),
-			"srcJarDir":     android.PathForModuleOut(ctx, intermediatesDir, srcJarDir).String(),
-			"outDir":        android.PathForModuleOut(ctx, intermediatesDir, outDir).String(),
-			"annoDir":       android.PathForModuleOut(ctx, intermediatesDir, annoDir).String(),
-			"annoSrcJar":    annoSrcJar.String(),
-			"javaVersion":   flags.javaVersion.String(),
+			"javacFlags":       flags.javacFlags,
+			"bootClasspath":    bootClasspath,
+			"classpath":        classpathArg,
+			"processorpath":    flags.processorPath.FormJavaClassPath("-processorpath"),
+			"processor":        processor,
+			"srcJars":          strings.Join(srcJars.Strings(), " "),
+			"srcJarDir":        android.PathForModuleOut(ctx, intermediatesDir, srcJarDir).String(),
+			"outDir":           android.PathForModuleOut(ctx, intermediatesDir, outDir).String(),
+			"annoDir":          android.PathForModuleOut(ctx, intermediatesDir, annoDir).String(),
+			"annoSrcJar":       annoSrcJar.String(),
+			"javaVersion":      flags.javaVersion.String(),
+			"javacREImplicits": strings.Join(deps.Strings(), ","), // The classpath jars are an implicit dep of javacRE
 		},
 	})
 }
