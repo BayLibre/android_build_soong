@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d77ec841_c0523b36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-09T00:26:18Z",
+      "side": 1,
+      "message": "Hi, I think this is ready for review.\nLet me know if you want me to take a different approach anywhere.",
+      "revId": "2866fa5141b65196027b4b2cfa71720bd0b44a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
