@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb9cd5f_ca2fd9d0",
+        "filename": "java/config/error_prone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-09T01:40:54Z",
+      "side": 0,
+      "message": "I think `external/error_prone/soong/error_prone.go` sets the value of this variable. Could changing this to a non-pointer argument be a possible explanation for the presubmit errors?",
+      "range": {
+        "startLine": 39,
+        "startChar": 78,
+        "endLine": 39,
+        "endChar": 98
+      },
+      "revId": "39011ef40c55b070ae277466c0c3463e0e2b3ecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
