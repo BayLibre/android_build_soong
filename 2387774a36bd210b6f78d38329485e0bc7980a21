@@ -1,0 +1,226 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ac9a40_70e882ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T19:51:57Z",
+      "side": 1,
+      "message": "Do you mind splitting this change to smaller ones? Preferably one base change in `android` that adds the `test-only` and `test-target` fields, and each child changes in `cc` and `java` that utilizes the added fields. I\u0027ve only looked at the `android` changes so far.",
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ce3e9c7_fb02548d",
+        "filename": "android/all_teams.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T19:51:57Z",
+      "side": 1,
+      "message": "nit: this struct no longer only contains \"team info\". Would you have any other naming suggestions?",
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "361ad370_d58244ff",
+        "filename": "android/all_teams.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T19:51:57Z",
+      "side": 1,
+      "message": "[receiver name should be a reflection of its identity; don\u0027t use generic names such as \"this\" or \"self\"](https://staticcheck.io/docs/checks/#ST1006)",
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fab310a_94b8dc2b",
+        "filename": "android/all_teams.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T19:51:57Z",
+      "side": 1,
+      "message": "Ditto regarding `this`.",
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "634a4562_79525faf",
+        "filename": "android/all_teams.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T19:51:57Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tthis.teams_for_mods[module.Name()] \u003d moduleTeamInfo{\n\t\t\tteamName:       module.base().Team(),\n\t\t\tbpFile:         bpFile,\n\t\t\ttestOnly:       testModInfo.TestOnly,\n\t\t\ttopLevelTarget: testModInfo.TopLevelTarget,\n\t\t\tkind:           ctx.ModuleType(module),\n\t\t}\n```",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7fe780a_9f2796a8",
+        "filename": "android/all_teams.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T19:51:57Z",
+      "side": 1,
+      "message": "Ditto regarding `this`.",
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ecad70_3f0de225",
+        "filename": "android/all_teams.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T19:51:57Z",
+      "side": 1,
+      "message": "Ditto regarding `this`.",
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b5c489_075ef96f",
+        "filename": "android/all_teams.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T19:51:57Z",
+      "side": 1,
+      "message": "Unrelated to this change, but why not store the `bpFile` map to `teamName`? I believe that this will be quite costly for a bp file that has a lot of number of modules defined.",
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3a6f25_eab9450e",
+        "filename": "android/all_teams.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T19:51:57Z",
+      "side": 1,
+      "message": "nit: rename to `Files`",
+      "range": {
+        "startLine": 146,
+        "startChar": 3,
+        "endLine": 146,
+        "endChar": 7
+      },
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c707a6_ba5b7363",
+        "filename": "android/shared_properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T19:51:57Z",
+      "side": 1,
+      "message": "nit: extra space\n```suggestion\n\t// production code. Used by coverage reports and potentially other tools.\n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ec0c11_98dc11b5",
+        "filename": "android/shared_properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T19:51:57Z",
+      "side": 1,
+      "message": "Do you mind elaborating on the definition of a \"top level target\", and how it is determined?",
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44145f96_a9db3ecb",
+        "filename": "cc/cc_test_only_property_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T19:51:57Z",
+      "side": 1,
+      "message": "Please add this file to [`\"soong-cc.testSrcs\"`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/Android.bp;drc\u003d37693d0a278f62f5a21aab1958440d86f3a78f0a;l\u003d90) as well.",
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

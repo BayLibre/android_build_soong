@@ -16,6 +16,24 @@
       "message": "I was missing this before :(, but ran \u0027go test android/ locally which was running it.",
       "revId": "8ef16890d238d42f113971229fedc98719b24f32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26915076_6e7809b3",
+        "filename": "android/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-09T19:51:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f50ced83_7a26977f",
+      "revId": "8ef16890d238d42f113971229fedc98719b24f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
