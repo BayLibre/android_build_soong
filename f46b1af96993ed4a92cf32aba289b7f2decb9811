@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dfdbb7c_952f7580",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-09T18:32:54Z",
+      "side": 1,
+      "message": "I\u0027m kindof surprised that a case like this still triggers the error properly:\n```\nandroid_filesystem {\n  name: \"system\",\n  defaults: [\"system_def\"],\n}\n\nandroid_filesystem_defaults {\n  name: \"system_def\",\n  partition_type: \"system_ext\",\n}\n```\nI would\u0027ve thought the default module would apply the `system_ext` partition type to the `android_filesystem` first, before the check happens. But that doesn\u0027t seem to happen in practice.",
+      "revId": "f46b1af96993ed4a92cf32aba289b7f2decb9811",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
