@@ -16,6 +16,24 @@
       "message": "could you\n\n* Add test cases that verifies the core-variant .lsdump and vendor-variant stub _exports_ the same set of `-I` flags\n\n* Add test cases for system_include_dir",
       "revId": "4403652bc901f14fc4a67f39aba6f787a9c42a86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf5ac5ae_aa5faa0a",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-04-09T10:48:03Z",
+      "side": 1,
+      "message": "Done\nThe test case for system_include_dir requires aosp/3021863. I can\u0027t add to this patch.",
+      "parentUuid": "c6b83973_5d66dfc2",
+      "revId": "4403652bc901f14fc4a67f39aba6f787a9c42a86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
