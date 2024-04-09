@@ -329,6 +329,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5993bf7b_0c32a8c5",
+        "filename": "android/all_teams.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-09T23:37:08Z",
+      "side": 1,
+      "message": "Yes, but `default_team` for a package actually projects down to all subdirs.\nHowever, when setting teams, this feature was mostly ignored 😞\n\nI\u0027ll compute the the overhead of a simple VisitAll vs the extra overhead of the work I add to see if there is much to shave from the 400 millis.\nI\u0027m guessing the extra map lookup per module isn\u0027t much, but I can investigate later.\n\nTo me, the big win is to add features to soong so this would not be treated as a normal \"GenerateBuildActions\", but instead as a query.  I think most runs of soong should never have to hit this singleton module unless they want the target.\nI discussed this briefly and also offline with joe.  Its like controlling soongdb via env variables isn\u0027t quite ideal either.\nI\u0027d rather help with fixing that via a RegisterOptionalParallelSingletonType() [note the optional], that only gets triggered when its target-name is specified on the command line.\n\nAlso, I forget now, but I think I didn\u0027t have access to the \"package\" module yet.  I had to build the map of them first.\n\nI do create a `packages` map which is a map from bpFile -\u003e team name (see packageProperties) as you suggested in your first comment.",
+      "parentUuid": "77648c61_92808cba",
+      "revId": "2387774a36bd210b6f78d38329485e0bc7980a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac3a6f25_eab9450e",
