@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "293b8705_df5dc36d",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-10T18:02:53Z",
+      "side": 1,
+      "message": "It would be good to figure out how this was working at all without these...",
+      "revId": "eaa475107dc4cc21c061b643dd08b270442facf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
