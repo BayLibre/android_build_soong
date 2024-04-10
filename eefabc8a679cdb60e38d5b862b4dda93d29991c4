@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e48f8f8f_5d0b1ad3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1881539
+      },
+      "writtenOn": "2024-04-10T23:42:07Z",
+      "side": 1,
+      "message": "Interesting, the `-Wno-error\u003dformat` was silencing the `-Werror\u003dformat-insufficient-args` at the beginning of the `noOverrideGlobalCflags` list.\n\nI\u0027ll go and fix those occurences.",
+      "revId": "eefabc8a679cdb60e38d5b862b4dda93d29991c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
