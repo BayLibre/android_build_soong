@@ -34,6 +34,24 @@
       "parentUuid": "c6b83973_5d66dfc2",
       "revId": "4403652bc901f14fc4a67f39aba6f787a9c42a86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ef4503b_d41ca73a",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-04-10T08:38:27Z",
+      "side": 1,
+      "message": "i meant the system_include_dir re-exported from export_llndk_headers",
+      "parentUuid": "cf5ac5ae_aa5faa0a",
+      "revId": "4403652bc901f14fc4a67f39aba6f787a9c42a86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
