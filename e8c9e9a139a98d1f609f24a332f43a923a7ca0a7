@@ -16,6 +16,24 @@
       "message": "I started working on fixing the build failures this causes but this change conflicted with https://r.android.com/3018345 so I resolved the conflicts and uploaded them. Would you be able to take a look and make sure that I did it correctly?",
       "revId": "e8c9e9a139a98d1f609f24a332f43a923a7ca0a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0f6a10b_d0976b6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-10T18:23:17Z",
+      "side": 1,
+      "message": "LGTM. Thanks for resolving the merge conflicts.",
+      "parentUuid": "9f2eb564_b244a648",
+      "revId": "e8c9e9a139a98d1f609f24a332f43a923a7ca0a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
