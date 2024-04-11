@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8a53351_6ba32c43",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4105,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-11T22:32:32Z",
+      "side": 1,
+      "message": "I\u0027m not fully convinced about allowing this to be set in the defaults module. For example, how is it expected to work for the scenario like below:\n```\ncc_defaults {\n  name: \"foo1\",\n  test_only: false,\n}\ncc_defaults {\n  name: \"foo2\",\n  test_only: true,\n}\ncc_library {\n  name: \"bar\",\n  defaults: [\"foo1\", \"foo2\"],\n}\n```\nIMHO values of both `test_only` and `top_level_test_target` properties should be scoped to the module level, and should not be propagated to other modules?\n\nAlso, `cc_defaults` is not being tested in `cc_test_only_property_test.go`.",
+      "revId": "2bb76f78a8c682f00ac15a9af9c1947f81839c0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2fac09b_179a5bca",
+        "filename": "cc/cc_test_only_property_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-11T22:32:32Z",
+      "side": 1,
+      "message": "Do you mind adding a test case for the scenario below:\n```\ncc_defaults {\n  name: \"foo\",\n  test_only: false,\n}\ncc_test {\n  name: \"bar\",\n  defaults: [\"foo\"],\n}\n```\nDoes it fail with undefined property error?",
+      "revId": "2bb76f78a8c682f00ac15a9af9c1947f81839c0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b5e66e3_1be98de7",
+        "filename": "cc/cc_test_only_property_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-11T22:32:32Z",
+      "side": 1,
+      "message": "nit: utilize `android.AssertArrayString` instead?",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "2bb76f78a8c682f00ac15a9af9c1947f81839c0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
