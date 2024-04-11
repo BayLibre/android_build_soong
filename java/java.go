@@ -1458,6 +1458,7 @@ func (j *TestHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		RequiredModuleNames: j.RequiredModuleNames(),
 		TestSuites:          j.testProperties.Test_suites,
 		IsHost:              true,
+		LocalSdkVersion:     j.sdkVersion.String(),
 	})
 }
 
