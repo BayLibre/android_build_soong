@@ -16,6 +16,24 @@
       "message": "It would be good to figure out how this was working at all without these...",
       "revId": "eaa475107dc4cc21c061b643dd08b270442facf4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "432bee6e_b8b93051",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-11T20:18:20Z",
+      "side": 1,
+      "message": "I think reclient handles this itself by examining the javac command line.  As long as ninja has the dependency the files will be in place, and reclient will copy them to the remote sandbox: https://github.com/bazelbuild/reclient/blob/main/internal/pkg/inputprocessor/action/javac/flagsparser.go#L62",
+      "parentUuid": "293b8705_df5dc36d",
+      "revId": "eaa475107dc4cc21c061b643dd08b270442facf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
