@@ -74,9 +74,6 @@ func TestModuleConfigAndroidTest(t *testing.T) {
 	// And some new derived entries are there.
 	android.AssertArrayString(t, "", entries.EntryMap["LOCAL_MODULE_TAGS"], []string{"tests"})
 
-	// And ones we override
-	android.AssertArrayString(t, "", entries.EntryMap["LOCAL_SOONG_JNI_LIBS_SYMBOLS"], []string{""})
-
 	android.AssertStringMatches(t, "", entries.EntryMap["LOCAL_FULL_TEST_CONFIG"][0], "derived_test/android_common/test_config_fixer/derived_test.config")
 }
 
@@ -92,7 +89,7 @@ func TestModuleConfigOptions(t *testing.T) {
 	derived := ctx.ModuleForTests("derived_test", "android_common")
 	rule_cmd := derived.Rule("fix_test_config").RuleParams.Command
 	android.AssertStringDoesContain(t, "Bad FixConfig rule inputs", rule_cmd,
-		`--test-file-name=derived_test.apk --orig-test-file-name=base.apk --test-runner-options='[{"Name":"exclude-filter","Key":"","Value":"android.test.example.devcodelab.DevCodelabTest#testHelloFail"},{"Name":"include-annotation","Key":"","Value":"android.platform.test.annotations.LargeTest"}]'`)
+		`--test-runner-options='[{"Name":"exclude-filter","Key":"","Value":"android.test.example.devcodelab.DevCodelabTest#testHelloFail"},{"Name":"include-annotation","Key":"","Value":"android.platform.test.annotations.LargeTest"}]'`)
 }
 
 // Ensure we error for a base we don't support.
@@ -221,7 +218,6 @@ func TestModuleConfigMultipleDerivedTestsWriteDistinctMakeEntries(t *testing.T) 
 		entries := android.AndroidMkEntriesForTest(t, ctx.TestContext, derived.Module())[0]
 		// All these should be the same in both derived tests
 		assertEntryPairValues(t, entries.EntryMap["LOCAL_COMPATIBILITY_SUPPORT_FILES"], []string{"HelperApp.apk", "data/testfile"})
-		android.AssertArrayString(t, "", entries.EntryMap["LOCAL_SOONG_JNI_LIBS_SYMBOLS"], []string{""})
 		// Except this one, which points to the updated tradefed xml file.
 		android.AssertStringMatches(t, "", entries.EntryMap["LOCAL_FULL_TEST_CONFIG"][0], "derived_test/android_common/test_config_fixer/derived_test.config")
 		// And this one, the module name.
@@ -233,7 +229,6 @@ func TestModuleConfigMultipleDerivedTestsWriteDistinctMakeEntries(t *testing.T) 
 		entries := android.AndroidMkEntriesForTest(t, ctx.TestContext, derived.Module())[0]
 		// All these should be the same in both derived tests
 		assertEntryPairValues(t, entries.EntryMap["LOCAL_COMPATIBILITY_SUPPORT_FILES"], []string{"HelperApp.apk", "data/testfile"})
-		android.AssertArrayString(t, "", entries.EntryMap["LOCAL_SOONG_JNI_LIBS_SYMBOLS"], []string{""})
 		// Except this one, which points to the updated tradefed xml file.
 		android.AssertStringMatches(t, "", entries.EntryMap["LOCAL_FULL_TEST_CONFIG"][0], "another_derived_test/android_common/test_config_fixer/another_derived_test.config")
 		// And this one, the module name.

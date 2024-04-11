@@ -20,7 +20,10 @@ type BaseTestProviderData struct {
 	// List of test suites base uses.
 	TestSuites []string
 	// Used for bases that are Host
-	IsHost bool
+	IsHost           bool
+	LocalSdkVersion  string
+	LocalCertificate string
+	IsUnitTest       bool
 }
 
 var BaseTestProviderKey = blueprint.NewProvider[BaseTestProviderData]()
