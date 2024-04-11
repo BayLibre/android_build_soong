@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a0bfc1_9cf57850",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-11T16:52:55Z",
+      "side": 1,
+      "message": "The original CL seems to break a lot of builds. I think we should submit the revert now, and do a correct fix later.",
+      "revId": "d0476e465237c6898caeb5ca5a3f2d2231977541",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
