@@ -2579,7 +2579,8 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 	}
 	j.combinedHeaderFile = headerOutputFile
-	j.combinedImplementationFile = outputFile
+	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource
+	j.combinedImplementationFile = outputFile.WithoutRel()
 
 	j.maybeInstall(ctx, jarName, outputFile)
 
