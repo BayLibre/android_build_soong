@@ -16,6 +16,24 @@
       "message": "LGTM modulo the errorprone issue",
       "revId": "026b053ddc8e0c872f10cd103a3198f1c09b10c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba41f61f_8cf76b17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-11T17:37:46Z",
+      "side": 1,
+      "message": "errorprone issues have been resolved in b/330256591 and b/333770148",
+      "parentUuid": "4a2dc688_2c9e02ac",
+      "revId": "026b053ddc8e0c872f10cd103a3198f1c09b10c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
