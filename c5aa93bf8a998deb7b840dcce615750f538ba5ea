@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a5edb6_60a97474",
+        "filename": "android/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-12T01:28:47Z",
+      "side": 1,
+      "message": "@colefaust@google.com I do not have a good idea to simplify this, thoughts? I\u0027ve tried type constrainting `T` as `~[]E | ~string` but did not work :(",
+      "range": {
+        "startLine": 551,
+        "startChar": 1,
+        "endLine": 555,
+        "endChar": 2
+      },
+      "revId": "c5aa93bf8a998deb7b840dcce615750f538ba5ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
