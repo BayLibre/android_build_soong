@@ -16,6 +16,29 @@
       "message": "Thanks for the review.  I removed test-only from defaults.",
       "revId": "a0bbac3efc1c153c7ed2929f644de75f02641308",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4b6e90_2c724165",
+        "filename": "cc/cc_test_only_property_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-12T01:40:31Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\tExtendWithErrorHandler(android.FixtureExpectsOneErrorPattern(\"unrecognized property \\\"test_only\\\"\").\n\t\t\tRunTestWithBp(t, bp)\n```",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 170,
+        "endChar": 3
+      },
+      "revId": "a0bbac3efc1c153c7ed2929f644de75f02641308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
