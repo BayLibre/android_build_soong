@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a994fc4_b7f7ad81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-12T18:53:02Z",
+      "side": 1,
+      "message": "Hi, this set of changes is slightly more complicated than the cc_ changes because the java module heirarchy is implemented differently.  I can\u0027t rely (*Library) GenerateAndroidBuildActions to be called for all module types.\nSo I don\u0027t set sourceProperties in all factories but instead call GenerateAndroidBuildActions from some modules.\n\nSetProvider panics if called twice.   I call it in AndroidApp#GeneratedAndroidBuildAction because there is not \"a.Library.GenerateABA())\" equivalent.  If there ever is one, the tests will fail.",
+      "revId": "cdc66f4268d5f185fc39208352de51965ed7aa53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
