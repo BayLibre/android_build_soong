@@ -16,6 +16,24 @@
       "message": "I have some Metalava hacks that fix this issue and while testing locally I found an issue with the handling of `new_since`. When that was not set the previous code treated it as `\"\"`, i.e. the current directory. That caused the following error:\n```\nerror copying \"packages/services/Car/car-lib\" to \"out/soong/.temp/sbox/46379f276f08816264c46ccf861162d0356ffcbb/packages/services/Car/car-lib\": write out/soong/.temp/sbox/46379f276f08816264c46ccf861162d0356ffcbb/packages/services/Car/car-lib: copy_file_range: is a directory\n```\n\nThis change fixes it. I will work on cleaning up the Metalava changes now.",
       "revId": "703f5cb5979a9f9d9be6d272ad2755ee33a423a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9713efc_a50d5b40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-12T17:36:53Z",
+      "side": 1,
+      "message": "Thanks for fixing this. Please let me know if I can help with anything else.",
+      "parentUuid": "168de5b5_44f7e0c5",
+      "revId": "703f5cb5979a9f9d9be6d272ad2755ee33a423a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
