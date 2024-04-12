@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87998ac_303203d4",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4105,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-12T00:44:55Z",
+      "side": 1,
+      "message": "I agree, removing from defaults is good idea.",
+      "parentUuid": "c8a53351_6ba32c43",
+      "revId": "2bb76f78a8c682f00ac15a9af9c1947f81839c0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2fac09b_179a5bca",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3be480b1_1daa4003",
+        "filename": "cc/cc_test_only_property_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-12T00:44:55Z",
+      "side": 1,
+      "message": "Added cc_defaults as an invalid case below.",
+      "parentUuid": "d2fac09b_179a5bca",
+      "revId": "2bb76f78a8c682f00ac15a9af9c1947f81839c0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b5e66e3_1be98de7",
@@ -48,6 +84,30 @@
       "writtenOn": "2024-04-11T22:32:32Z",
       "side": 1,
       "message": "nit: utilize `android.AssertArrayString` instead?",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "2bb76f78a8c682f00ac15a9af9c1947f81839c0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "390552b8_49a9525a",
+        "filename": "cc/cc_test_only_property_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-12T00:44:55Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure if order was guaranteed and this seemed easier than sorting :(",
+      "parentUuid": "1b5e66e3_1be98de7",
       "range": {
         "startLine": 75,
         "startChar": 1,
