@@ -48,7 +48,7 @@ var (
 func genAidl(ctx android.ModuleContext, aidlFiles android.Paths, aidlGlobalFlags string, aidlIndividualFlags map[string]string, deps android.Paths) android.Paths {
 	// Shard aidl files into groups of 50 to avoid having to recompile all of them if one changes and to avoid
 	// hitting command line length limits.
-	shards := android.ShardPaths(aidlFiles, 50)
+	shards := android.ShardPaths(android.FirstUniquePaths(aidlFiles), 50)
 
 	srcJarFiles := make(android.Paths, 0, len(shards))
 
