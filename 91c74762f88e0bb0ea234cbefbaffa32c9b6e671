@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddd2318c_6e1bc87e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3383875
+      },
+      "writtenOn": "2024-04-12T09:09:50Z",
+      "side": 1,
+      "message": "If this could also be backported to Android 13 that would be fantastic.",
+      "revId": "91c74762f88e0bb0ea234cbefbaffa32c9b6e671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
