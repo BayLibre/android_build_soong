@@ -524,35 +524,34 @@ func SplitFileExt(name string) (string, string, string) {
 	return root, suffix, ext
 }
 
-// ShardPaths takes a Paths, and returns a slice of Paths where each one has at most shardSize paths.
-func ShardPaths(paths Paths, shardSize int) []Paths {
-	if len(paths) == 0 {
+func shard[T any](toShard []T, shardSize int) [][]T {
+	if len(toShard) == 0 {
 		return nil
 	}
-	ret := make([]Paths, 0, (len(paths)+shardSize-1)/shardSize)
-	for len(paths) > shardSize {
-		ret = append(ret, paths[0:shardSize])
-		paths = paths[shardSize:]
+
+	ret := make([][]T, 0, (len(toShard)+shardSize-1)/shardSize)
+	for len(toShard) > shardSize {
+		ret = append(ret, toShard[0:shardSize])
+		toShard = toShard[shardSize:]
 	}
-	if len(paths) > 0 {
-		ret = append(ret, paths)
+	if len(toShard) > 0 {
+		ret = append(ret, toShard)
 	}
 	return ret
+}
+
+// ShardPaths takes a Paths, and returns a slice of Paths where each one has at most shardSize paths.
+func ShardPaths(paths []Path, shardSize int) [][]Path {
+	return shard(paths, shardSize)
 }
 
 // ShardString takes a string and returns a slice of strings where the length of each one is
 // at most shardSize.
 func ShardString(s string, shardSize int) []string {
-	if len(s) == 0 {
-		return nil
-	}
-	ret := make([]string, 0, (len(s)+shardSize-1)/shardSize)
-	for len(s) > shardSize {
-		ret = append(ret, s[0:shardSize])
-		s = s[shardSize:]
-	}
-	if len(s) > 0 {
-		ret = append(ret, s)
+	shardedByteArr := shard([]byte(s), shardSize)
+	ret := make([]string, len(shardedByteArr))
+	for i := range ret {
+		ret[i] = string(shardedByteArr[i])
 	}
 	return ret
 }
@@ -560,18 +559,7 @@ func ShardString(s string, shardSize int) []string {
 // ShardStrings takes a slice of strings, and returns a slice of slices of strings where each one has at most shardSize
 // elements.
 func ShardStrings(s []string, shardSize int) [][]string {
-	if len(s) == 0 {
-		return nil
-	}
-	ret := make([][]string, 0, (len(s)+shardSize-1)/shardSize)
-	for len(s) > shardSize {
-		ret = append(ret, s[0:shardSize])
-		s = s[shardSize:]
-	}
-	if len(s) > 0 {
-		ret = append(ret, s)
-	}
-	return ret
+	return shard(s, shardSize)
 }
 
 // CheckDuplicate checks if there are duplicates in given string list.
