@@ -69,6 +69,30 @@
       },
       "revId": "fdbf5d476b82ee32b96ad599351f451282089bce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91dbe031_9e221036",
+        "filename": "android/selects_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-12T23:07:53Z",
+      "side": 1,
+      "message": "If you used `soong_config_variable(\"boolean_var\", \"for_testing\")` instead of `boolean_var_for_testing()`, you would have to select on `\"true\"` and `\"false\"` instead of `true` and `false`.\n\nCurrently we don\u0027t have a way to specify the type of a soong config variable, so I just added `boolean_var_for_testing()` to test that the select statements support boolean-typed variables until we add a proper use case.",
+      "parentUuid": "bf0ee27b_b2532631",
+      "range": {
+        "startLine": 500,
+        "startChar": 15,
+        "endLine": 503,
+        "endChar": 7
+      },
+      "revId": "fdbf5d476b82ee32b96ad599351f451282089bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
