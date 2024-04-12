@@ -480,7 +480,7 @@ func TransformJavaToHeaderClasses(ctx android.ModuleContext, outputFile android.
 		"outputFlags":  "--output " + outputFile.String() + ".tmp",
 		"outputs":      outputFile.String(),
 	}
-	if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_TURBINE") {
+	if true || ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_TURBINE") {
 		rule = turbineRE
 		args["implicits"] = strings.Join(deps.Strings(), ",")
 		args["rbeOutputs"] = outputFile.String() + ".tmp"

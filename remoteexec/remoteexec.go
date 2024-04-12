@@ -178,5 +178,7 @@ func (r *REParams) wrapperArgs() string {
 		args += " --env_var_allowlist=" + strings.Join(envVarAllowlist, ",")
 	}
 
+	args += " --action_log=${out}" + "." + strings.Join(kvs, ".") + ".rbe.log"
+
 	return args + " -- "
 }
