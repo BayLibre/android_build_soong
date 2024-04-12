@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c5bfd3f_cde8ea41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-12T23:13:39Z",
+      "side": 1,
+      "message": "Thanks, submitting.",
+      "revId": "cdc66f4268d5f185fc39208352de51965ed7aa53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ddfd6a3_f3515fb7",
@@ -31,6 +48,24 @@
       "writtenOn": "2024-04-12T22:44:34Z",
       "side": 1,
       "message": "Do you mind explaining why `TopLevelTarget: true` is omitted here?",
+      "revId": "cdc66f4268d5f185fc39208352de51965ed7aa53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6011bf0_b9daa793",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-12T23:13:39Z",
+      "side": 1,
+      "message": "I\u0027m not sure if you mean explain in CR comment or explain in code.\nBut a helper app isn\u0027t a test that gets run.  It gets called by tests, similar to how test_libraries get called by tests.  They get installed alongside tests by tradefed as part of the run, but they would not be listed as modules in CI or by atest.\n\nI\u0027ll submit.  Let me know if that comment belongs in the code too.",
+      "parentUuid": "0ddfd6a3_f3515fb7",
       "revId": "cdc66f4268d5f185fc39208352de51965ed7aa53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
