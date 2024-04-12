@@ -39,6 +39,30 @@
       },
       "revId": "a0bbac3efc1c153c7ed2929f644de75f02641308",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4881bed5_e2b32039",
+        "filename": "cc/cc_test_only_property_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-12T03:19:09Z",
+      "side": 1,
+      "message": "Thanks, I had that originally, but given the multiple test cases it was hard to tell which one was failing.\nI considered a custom error handler that could take an index/string to represent the testcase, then thought about that to android, then just left it as is.\nI can do a follow up CL to augment OnErrorPattern with custom messages.",
+      "parentUuid": "cc4b6e90_2c724165",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 170,
+        "endChar": 3
+      },
+      "revId": "a0bbac3efc1c153c7ed2929f644de75f02641308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
