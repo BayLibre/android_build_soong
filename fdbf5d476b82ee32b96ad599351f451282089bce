@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6950b27_cfc315b9",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2172,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-12T23:00:54Z",
+      "side": 1,
+      "message": "For this select statement,\n```\nselect((\n    arch(),\n), {\n    (\"arm64\"): [\"libfoo64\"],\n    (default): [\"libbar\"],\n})\n```\n\nI was expecting the `FunctionName` to be `arch`, and `Args` to be a a non-empty string. imo this would have been more symmetrical with the other ConfigurableConditions. \n\nIs there a reason to implement `arch` as an argument in `variant` rather than its own dedicated function?",
+      "range": {
+        "startLine": 2172,
+        "startChar": 1,
+        "endLine": 2172,
+        "endChar": 16
+      },
+      "revId": "fdbf5d476b82ee32b96ad599351f451282089bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf0ee27b_b2532631",
+        "filename": "android/selects_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-12T23:00:54Z",
+      "side": 1,
+      "message": "Is this similar to\n```\nmy_string: select(soong_config_variable(\"boolean_var\", \"for_testing\" {\ntrue: \"t\",\nfalse: \"f\",\n}),\n```\n\nIf so, would we need a `boolean_var_for_testing` special-case for testing purposes?",
+      "range": {
+        "startLine": 500,
+        "startChar": 15,
+        "endLine": 503,
+        "endChar": 7
+      },
+      "revId": "fdbf5d476b82ee32b96ad599351f451282089bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
