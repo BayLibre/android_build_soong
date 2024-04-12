@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5101fe8b_fbe65af1",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2172,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-12T23:01:44Z",
+      "side": 1,
+      "message": "Nvm, I just saw aosp/3039967",
+      "parentUuid": "c6950b27_cfc315b9",
+      "range": {
+        "startLine": 2172,
+        "startChar": 1,
+        "endLine": 2172,
+        "endChar": 16
+      },
+      "revId": "fdbf5d476b82ee32b96ad599351f451282089bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf0ee27b_b2532631",
