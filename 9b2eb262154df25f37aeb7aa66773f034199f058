@@ -34,6 +34,24 @@
       "parentUuid": "d1febaa3_d4d2596c",
       "revId": "9b2eb262154df25f37aeb7aa66773f034199f058",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1eaa379_32d84927",
+        "filename": "java/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-12T18:37:27Z",
+      "side": 1,
+      "message": "Yes, but we should.\n\nIt does appear there are a lot of current occurrences though. Could we at least move the deduping to `PathsAndMissingDepsRelativeToModuleSourceDir` and file a bug to make it an error?",
+      "parentUuid": "8a83883b_4ffcd260",
+      "revId": "9b2eb262154df25f37aeb7aa66773f034199f058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
