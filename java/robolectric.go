@@ -48,6 +48,31 @@ var (
 	roboRuntimesTag     = dependencyTag{name: "roboRuntimes"}
 )
 
+// strict level for Strict_mode robolectric tests
+type strictLevels string
+
+const (
+	// no access including Reflection.
+	NoAccess strictLevels = "NoAccess"
+	// Can not directly reference Robolectric libs, but may use Reflection.
+	NoDirectAccess = "NoDirectAccess"
+	// open for direct invocation of Robolectric APIs.
+	AllowAccess = "AllowAccess"
+)
+
+func getStrictLevel(level string) strictLevels {
+	switch level {
+	case "NoAccess":
+		return NoAccess
+	case "NoDirectAccess":
+		return NoDirectAccess
+	case "AllowAccess":
+		return AllowAccess
+	default:
+		return AllowAccess
+	}
+}
+
 type robolectricProperties struct {
 	// The name of the android_app module that the tests will run against.
 	Instrumentation_for *string
@@ -70,6 +95,9 @@ type robolectricProperties struct {
 	// Use /external/robolectric rather than /external/robolectric-shadows as the version of robolectric
 	// to use.  /external/robolectric closely tracks github's master, and will fully replace /external/robolectric-shadows
 	Upstream *bool
+
+	// Use strict mode to limit access of Robolectric API directly. See go/roboStrictMode
+	Strict_mode *string
 }
 
 type robolectricTest struct {
@@ -112,7 +140,7 @@ func (r *robolectricTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	if v := String(r.robolectricProperties.Robolectric_prebuilt_version); v != "" {
 		ctx.AddVariationDependencies(nil, libTag, fmt.Sprintf(robolectricPrebuiltLibPattern, v))
-	} else {
+	} else if getStrictLevel(String(r.robolectricProperties.Strict_mode)) == AllowAccess {
 		if proptools.Bool(r.robolectricProperties.Upstream) {
 			ctx.AddVariationDependencies(nil, libTag, robolectricCurrentLib+"_upstream")
 		} else {
@@ -411,8 +439,9 @@ func robolectricRuntimesFactory() android.Module {
 }
 
 type robolectricRuntimesProperties struct {
-	Jars []string `android:"path"`
-	Lib  *string
+	Jars                []string `android:"path"`
+	Runtime_from_source *string
+	Runtime_from_lib    *string
 }
 
 type robolectricRuntimes struct {
@@ -433,8 +462,13 @@ func (r *robolectricRuntimes) TestSuites() []string {
 var _ android.TestSuiteModule = (*robolectricRuntimes)(nil)
 
 func (r *robolectricRuntimes) DepsMutator(ctx android.BottomUpMutatorContext) {
-	if !ctx.Config().AlwaysUsePrebuiltSdks() && r.props.Lib != nil {
-		ctx.AddVariationDependencies(nil, libTag, String(r.props.Lib))
+	// Runtime_from_source
+	if !ctx.Config().AlwaysUsePrebuiltSdks() && r.props.Runtime_from_source != nil {
+		ctx.AddVariationDependencies(nil, libTag, String(r.props.Runtime_from_source))
+	}
+	// Runtime_from_lib
+	if r.props.Runtime_from_lib != nil {
+		ctx.AddVariationDependencies(nil, libTag, String(r.props.Runtime_from_lib))
 	}
 }
 
@@ -454,25 +488,44 @@ func (r *robolectricRuntimes) GenerateAndroidBuildActions(ctx android.ModuleCont
 		r.runtimes = append(r.runtimes, installedRuntime)
 	}
 
-	if !ctx.Config().AlwaysUsePrebuiltSdks() && r.props.Lib != nil {
-		runtimeFromSourceModule := ctx.GetDirectDepWithTag(String(r.props.Lib), libTag)
-		if runtimeFromSourceModule == nil {
-			if ctx.Config().AllowMissingDependencies() {
-				ctx.AddMissingDependencies([]string{String(r.props.Lib)})
-			} else {
-				ctx.PropertyErrorf("lib", "missing dependency %q", String(r.props.Lib))
-			}
-			return
+	if !ctx.Config().AlwaysUsePrebuiltSdks() {
+		// install android all runtime
+		if r.props.Runtime_from_source != nil {
+			r.installRuntimes(
+				String(r.props.Runtime_from_source),
+				// "TREE" name is essential here because it hooks into the "TREE" name in
+				// Robolectric's SdkConfig.java that will always correspond to the NEWEST_SDK
+				// in Robolectric configs.
+				"android-all-current-robolectric-r0.jar",
+				androidAllDir,
+				ctx)
 		}
-		runtimeFromSourceJar := android.OutputFileForModule(ctx, runtimeFromSourceModule, "")
 
-		// "TREE" name is essential here because it hooks into the "TREE" name in
-		// Robolectric's SdkConfig.java that will always correspond to the NEWEST_SDK
-		// in Robolectric configs.
-		runtimeName := "android-all-current-robolectric-r0.jar"
-		installedRuntime := ctx.InstallFile(androidAllDir, runtimeName, runtimeFromSourceJar)
-		r.runtimes = append(r.runtimes, installedRuntime)
+		if r.props.Runtime_from_lib != nil {
+			// install robolectric lib, including all robolectric APIs into runtime
+			r.installRuntimes(
+				String(r.props.Runtime_from_lib),
+				"robo-lib-runtime.jar",
+				android.PathForModuleInstall(ctx, "robolectric-runtime-all"),
+				ctx)
+		}
 	}
+}
+
+func (r *robolectricRuntimes) installRuntimes(runtimeStr string, runtimeName string, installDir android.InstallPath, ctx android.ModuleContext) {
+	runtimeModule := ctx.GetDirectDepWithTag(runtimeStr, libTag)
+	if runtimeModule == nil {
+		if ctx.Config().AllowMissingDependencies() {
+			ctx.AddMissingDependencies([]string{runtimeStr})
+		} else {
+			ctx.PropertyErrorf("lib", "missing dependency %q", runtimeStr)
+		}
+		return
+	}
+	runtimeJar := android.OutputFileForModule(ctx, runtimeModule, "")
+
+	installedRuntime := ctx.InstallFile(installDir, runtimeName, runtimeJar)
+	r.runtimes = append(r.runtimes, installedRuntime)
 }
 
 func (r *robolectricRuntimes) InstallInTestcases() bool { return true }
