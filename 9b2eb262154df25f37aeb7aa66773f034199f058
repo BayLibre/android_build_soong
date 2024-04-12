@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1febaa3_d4d2596c",
+        "filename": "java/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-12T01:12:01Z",
+      "side": 1,
+      "message": "Could we make duplicate aidl files an error, and fix wherever they\u0027re coming from?",
+      "revId": "9b2eb262154df25f37aeb7aa66773f034199f058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
