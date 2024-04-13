@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a3e096_ffc02347",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1913,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-13T23:31:16Z",
+      "side": 1,
+      "message": "I changed blueprint code so this call to ModuleProvider doesn\u0027t panic.",
+      "revId": "860c85fcc2db96a519eadde0222c58b0c2780133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
