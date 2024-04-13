@@ -22,6 +22,30 @@
       },
       "revId": "c5aa93bf8a998deb7b840dcce615750f538ba5ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ee3d8a4_bb351402",
+        "filename": "android/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-13T21:03:41Z",
+      "side": 1,
+      "message": "Yeah... I\u0027m not sure there\u0027s a better way to do this. I would keep it as it originally was too, because this new version introduces extra copies.",
+      "parentUuid": "99a5edb6_60a97474",
+      "range": {
+        "startLine": 551,
+        "startChar": 1,
+        "endLine": 555,
+        "endChar": 2
+      },
+      "revId": "c5aa93bf8a998deb7b840dcce615750f538ba5ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
