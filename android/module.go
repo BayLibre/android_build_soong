@@ -1838,8 +1838,19 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 
 	if m.Enabled() {
 		// ensure all direct android.Module deps are enabled
+		testOnlyDeps := []string{}
 		ctx.VisitDirectDepsBlueprint(func(bm blueprint.Module) {
 			if m, ok := bm.(Module); ok {
+				ctx.validateAndroidModule(bm, ctx.OtherModuleDependencyTag(m), ctx.baseModuleContext.strictVisitDeps, false)
+			}
+			// TODO(RON), get providers here.
+			if m, ok := bm.(Module); ok {
+				top, ok := OtherModuleProvider(ctx, bm, TestOnlyProviderKey)
+				if ok {
+					if top.TestOnly {
+						testOnlyDeps = append(testOnlyDeps, bm.Name())
+					}
+				}
 				ctx.validateAndroidModule(bm, ctx.OtherModuleDependencyTag(m), ctx.baseModuleContext.strictVisitDeps, false)
 			}
 		})
@@ -1895,6 +1906,23 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		if ctx.Failed() {
 			return
 		}
+		// TODO(ron): getprovider here if we can?, maybe not finsihed yet so can't/
+		// May have to call getProp or IsTestOnly()
+		myTestOnly := false
+		if len(testOnlyDeps) > 0 {
+			top, ok := ModuleProvider(ctx, TestOnlyProviderKey)
+			if ok {
+				if top.TestOnly {
+					myTestOnly = true
+				}
+				if !top.TestOnly {
+					fmt.Printf("MISS TEST_ONLY: %s,%s [%v]\n", ctx.ModuleType(), m.Name(), testOnlyDeps)
+				}
+			} else {
+				fmt.Printf("MISS TEST_ONLY: %s,%s [%v]\n", ctx.ModuleType(), m.Name(), testOnlyDeps)
+			}
+		}
+		// fmt.Printf("DETAIL DEB TEST_ONLY:, me (%v):, %s,%s [%v]\n", m, myTestOnly, ctx.ModuleType(), testOnlyDeps)
 
 		aconfigUpdateAndroidBuildActions(ctx)
 		if ctx.Failed() {
