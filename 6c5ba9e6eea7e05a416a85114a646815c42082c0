@@ -122,6 +122,30 @@
       },
       "revId": "6c5ba9e6eea7e05a416a85114a646815c42082c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8e7ec4f_ad918283",
+        "filename": "cc/cc_test_only_property_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-15T23:24:44Z",
+      "side": 1,
+      "message": "Thanks.\nI tweaked your tweak,but I understood your intent.\nFYI: Needed to add check for !testOnly and fix the boolPtr comparison to compare bools.",
+      "parentUuid": "f1bc4308_99f28be6",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 3
+      },
+      "revId": "6c5ba9e6eea7e05a416a85114a646815c42082c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
