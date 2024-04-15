@@ -15,6 +15,7 @@
 package java
 
 import (
+	"fmt"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -86,6 +87,19 @@ func genAidl(ctx android.ModuleContext, aidlFiles android.Paths, aidlGlobalFlags
 			FlagWithOutput("-o ", srcJarFile).
 			FlagWithArg("-C ", outDir.String()).
 			FlagWithArg("-D ", outDir.String())
+
+		// Diff the existence of files in the intermediate directory and the output srcjar
+		// If `aidl` silently does not convert .aidl to .java, then the output srcjar might contain a stale copy of the
+		// generated .java file in incremental builds.
+		// TODO(b/308687455): Remove this after b/308687455 has been root caused.
+		rule.Command().Text(
+			fmt.Sprintf(
+				"/bin/bash -c srcjar_files=$(unzip -Z1 %s | grep \\.java$) tmpdir_files=$(find %s -type f -name *.java); "+
+					"if [ $(echo ${srcjar_files} | wc -w) != $(echo ${tmpdir_files} | wc -w) ]; then "+
+					"diff <(echo ${srcjar_files}) <(echo ${tmpdir_files}); fi || true", // Silently diff the results
+				srcJarFile,
+				outDir),
+		)
 
 		rule.Command().Text("rm -rf").Flag(outDir.String())
 
