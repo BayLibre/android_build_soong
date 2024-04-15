@@ -357,6 +357,8 @@ type ProductVariables struct {
 
 	Override_rs_driver *string `json:",omitempty"`
 
+	Target_recovery_updater_libs []string `json:",omitempty"`
+
 	DeviceKernelHeaders []string `json:",omitempty"`
 
 	ExtraVndkVersions []string `json:",omitempty"`
