@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ad4697_62d95dfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-15T20:27:46Z",
+      "side": 1,
+      "message": "Hi, I think the only way to catch things like this is with the validation checking I\u0027m trying to add, but it is possible we will have to retrofit other implementation if we find other corner cases.",
+      "revId": "e26fef8395ee2a64356c03bff747398abe8c8538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
