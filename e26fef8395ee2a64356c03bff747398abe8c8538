@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de33f750_dfea2396",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-15T21:07:54Z",
+      "side": 1,
+      "message": "Implemented the suggestion.",
+      "revId": "e26fef8395ee2a64356c03bff747398abe8c8538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87254113_d5884b73",
@@ -31,6 +48,30 @@
       "writtenOn": "2024-04-15T20:41:32Z",
       "side": 1,
       "message": "Why can\u0027t we just set this early in the `GenerateAndroidBuildActions` i.e. before `if c.IsTestPerSrcAllTestsVariation()` block to prevent this kind of change when any kind of \"shortcircuit\" is added in the future?",
+      "range": {
+        "startLine": 2149,
+        "startChar": 1,
+        "endLine": 2158,
+        "endChar": 3
+      },
+      "revId": "e26fef8395ee2a64356c03bff747398abe8c8538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3888b96_db9e948e",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2158,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-15T21:07:54Z",
+      "side": 1,
+      "message": "Okay, made the change.\nI just felt weird taking the \"top spot\" in the method.",
+      "parentUuid": "87254113_d5884b73",
       "range": {
         "startLine": 2149,
         "startChar": 1,
