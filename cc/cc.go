@@ -1995,6 +1995,7 @@ func (d *Defaults) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 }
 
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
+	ctx := moduleContextFromAndroidModuleContext(actx, c)
 	// Handle the case of a test module split by `test_per_src` mutator.
 	//
 	// The `test_per_src` mutator adds an extra variation named "", depending on all the other
@@ -2002,6 +2003,12 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	// module and return early, as this module does not produce an output file per se.
 	if c.IsTestPerSrcAllTestsVariation() {
 		c.outputFile = android.OptionalPath{}
+		// Because of early return, we must set the provider on this variant too.
+		android.SetProvider(actx, android.TestOnlyProviderKey, android.TestModuleInformation{
+			TestOnly:       true,
+			TopLevelTarget: true, // implied by Test_per_src
+		})
+
 		return
 	}
 
@@ -2012,8 +2019,6 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 
 	c.makeLinkType = GetMakeLinkType(actx, c)
-
-	ctx := moduleContextFromAndroidModuleContext(actx, c)
 
 	deps := c.depsToPaths(ctx)
 	if ctx.Failed() {
