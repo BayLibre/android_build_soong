@@ -99,6 +99,10 @@ type variableProperties struct {
 			Cflags []string
 		}
 
+		Target_recovery_updater_libs struct {
+			Static_libs []string
+		}
+
 		// treble_linker_namespaces is true when the system/vendor linker namespace separation is
 		// enabled.
 		Treble_linker_namespaces struct {
@@ -356,6 +360,8 @@ type ProductVariables struct {
 	BtConfigIncludeDir *string `json:",omitempty"`
 
 	Override_rs_driver *string `json:",omitempty"`
+
+	Target_recovery_updater_libs []string `json:",omitempty"`
 
 	DeviceKernelHeaders []string `json:",omitempty"`
 
