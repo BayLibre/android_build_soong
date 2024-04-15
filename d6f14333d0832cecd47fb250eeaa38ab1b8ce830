@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c3a24d2_11e29d73",
+        "filename": "cc/cc_test_only_property_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-15T22:53:11Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tif module, ok :\u003d m.(*Module); ok {\n\t\t\tif testModule, ok :\u003d module.installer.(*testBinary); ok {\n\t\t\t\tif testModule.Properties.Test_per_src \u003d\u003d proptools.BoolPtr(true) {\n```",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 17
+      },
+      "revId": "d6f14333d0832cecd47fb250eeaa38ab1b8ce830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

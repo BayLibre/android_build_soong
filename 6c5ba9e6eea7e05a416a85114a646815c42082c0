@@ -98,6 +98,30 @@
       },
       "revId": "6c5ba9e6eea7e05a416a85114a646815c42082c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1bc4308_99f28be6",
+        "filename": "cc/cc_test_only_property_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-15T22:53:11Z",
+      "side": 1,
+      "message": "Acknowledged. I made another suggestion to test based on the \"test_per_src\" property value instead of the name of the module.",
+      "parentUuid": "3d975d9a_fff61a44",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 3
+      },
+      "revId": "6c5ba9e6eea7e05a416a85114a646815c42082c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
