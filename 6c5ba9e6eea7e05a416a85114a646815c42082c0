@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41fe6339_32cd9c7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-15T21:57:34Z",
+      "side": 1,
+      "message": "Thanks for the suggestions.\nTaking one of them.",
+      "revId": "6c5ba9e6eea7e05a416a85114a646815c42082c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e51703b_3c6e8050",
@@ -18,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be1ec2e5_49ca347c",
+        "filename": "cc/cc_test_only_property_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-15T21:57:34Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "6e51703b_3c6e8050",
+      "revId": "6c5ba9e6eea7e05a416a85114a646815c42082c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45a69749_98044516",
@@ -31,6 +66,30 @@
       "writtenOn": "2024-04-15T21:52:40Z",
       "side": 1,
       "message": "```suggestion\n\t\tif provider, ok :\u003d android.OtherModuleProvider(ctx.TestContext.OtherModuleProviderAdaptor(), m, android.TestOnlyProviderKey); ok {\n\t\t\tif m.Name() \u003d\u003d \"cc-test\" \u0026\u0026 !provider.TestOnly {\n\t\t\t\tt.Errorf(\"%v is not test-only but should be\", m)\n\t\t\t}\n\t\t}\n```",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 3
+      },
+      "revId": "6c5ba9e6eea7e05a416a85114a646815c42082c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d975d9a_fff61a44",
+        "filename": "cc/cc_test_only_property_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-15T21:57:34Z",
+      "side": 1,
+      "message": "If for some reason the provider isn\u0027t set, I want the test to fail.\n\nI\u0027m nearly 100% confident another test would fail in this case too, but since this is already a special case, probably best to leave it.",
+      "parentUuid": "45a69749_98044516",
       "range": {
         "startLine": 97,
         "startChar": 2,
