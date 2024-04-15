@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9043e802_729e1847",
+        "filename": "android/build_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-15T15:56:11Z",
+      "side": 1,
+      "message": "consider using `PartitionTag` defined for `ModuleBase`.",
+      "range": {
+        "startLine": 79,
+        "startChar": 14,
+        "endLine": 79,
+        "endChar": 36
+      },
+      "revId": "cd9051988efcef3923dd77134a9465558baa9a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa04206c_c8b76706",
+        "filename": "android/build_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-15T15:56:11Z",
+      "side": 1,
+      "message": "Why is this an error? A partition may not have any release flag, right?",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 73
+      },
+      "revId": "cd9051988efcef3923dd77134a9465558baa9a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "502f4cec_56ea0eac",
+        "filename": "android/build_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-15T15:56:11Z",
+      "side": 1,
+      "message": "This doesn\u0027t read well. Getting build flag from build flag.",
+      "range": {
+        "startLine": 87,
+        "startChar": 30,
+        "endLine": 87,
+        "endChar": 53
+      },
+      "revId": "cd9051988efcef3923dd77134a9465558baa9a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde1db15_71062014",
+        "filename": "android/build_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-15T15:56:11Z",
+      "side": 1,
+      "message": "Why can\u0027t this block be done by GetBuildFlagsInPartition?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "cd9051988efcef3923dd77134a9465558baa9a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5063ef73_b4c43181",
+        "filename": "android/build_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-15T15:56:11Z",
+      "side": 1,
+      "message": "const filename?",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 9
+      },
+      "revId": "cd9051988efcef3923dd77134a9465558baa9a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b9302b_6fdf9a4b",
+        "filename": "android/build_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-15T15:56:11Z",
+      "side": 1,
+      "message": "Can this be done inside of generateFlagsJson?",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 14
+      },
+      "revId": "cd9051988efcef3923dd77134a9465558baa9a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece0a552_b919b320",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2069,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-15T15:56:11Z",
+      "side": 1,
+      "message": "This can be *BuildFlagData to avoid unnecessary copying.",
+      "range": {
+        "startLine": 2069,
+        "startChar": 44,
+        "endLine": 2069,
+        "endChar": 57
+      },
+      "revId": "cd9051988efcef3923dd77134a9465558baa9a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebc839f1_0e3829e8",
+        "filename": "apex/platform_bootclasspath_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-15T15:56:11Z",
+      "side": 1,
+      "message": "THis looks too verbose and there are so many repetition of this. Can this be simplified as below?\n\n```\nandroid.FixtureAddBuildFlag(\"name\", \"value\"),\nandroid.FixtureAddBuildFlag(\"name2\", \"value2\"),\nandroid.FixtureAddBuildFlag(\"name3\", \"value3\"),\n```",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 5
+      },
+      "revId": "cd9051988efcef3923dd77134a9465558baa9a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
