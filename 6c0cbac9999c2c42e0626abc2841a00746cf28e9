@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81288498_55e79bea",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-16T19:40:43Z",
+      "side": 1,
+      "message": "Nit: I think https://go-review.git.corp.google.com/c/go/+/532195 means that `strings.Compare` will be faster than `cmp.Compare`, at least until further work is done.",
+      "range": {
+        "startLine": 611,
+        "startChar": 9,
+        "endLine": 611,
+        "endChar": 12
+      },
+      "revId": "6c0cbac9999c2c42e0626abc2841a00746cf28e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
