@@ -109,6 +109,13 @@ type variableProperties struct {
 			Cflags []string
 		}
 
+		Emma_instrument struct {
+			Dist struct {
+				dest    *string
+				targets []string
+			}
+		}
+
 		Build_from_text_stub struct {
 			Static_libs         []string
 			Exclude_static_libs []string
@@ -296,6 +303,7 @@ type ProductVariables struct {
 	Eng                          *bool    `json:",omitempty"`
 	Treble_linker_namespaces     *bool    `json:",omitempty"`
 	Enforce_vintf_manifest       *bool    `json:",omitempty"`
+	Emma_instrument              *bool    `json:",omitempty"`
 	Uml                          *bool    `json:",omitempty"`
 	Arc                          *bool    `json:",omitempty"`
 	MinimizeJavaDebugInfo        *bool    `json:",omitempty"`
