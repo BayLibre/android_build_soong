@@ -907,6 +907,11 @@ type ModuleBase struct {
 	// moduleInfoJSON can be filled out by GenerateAndroidBuildActions to write a JSON file that will
 	// be included in the final module-info.json produced by Make.
 	moduleInfoJSON *ModuleInfoJSON
+
+	// List of module names from out direct deps that are "test-only".
+	// This is populated during GenerateBuildActions, not during mutators.
+	// It is enforced in validateTestOnlySingleton.
+	testOnlyDeps []string
 }
 
 func (m *ModuleBase) AddJSONData(d *map[string]interface{}) {
@@ -1838,8 +1843,14 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	if m.Enabled() {
 		// ensure all direct android.Module deps are enabled
 		ctx.VisitDirectDepsBlueprint(func(bm blueprint.Module) {
-			if m, ok := bm.(Module); ok {
-				ctx.validateAndroidModule(bm, ctx.OtherModuleDependencyTag(m), ctx.baseModuleContext.strictVisitDeps, false)
+			if dep, ok := bm.(Module); ok {
+				ctx.validateAndroidModule(bm, ctx.OtherModuleDependencyTag(dep), ctx.baseModuleContext.strictVisitDeps, false)
+				// Stash away which deps are test-only. Check later in validateTestOnlySingleton
+				if tmi, ok := OtherModuleProvider(ctx, bm, TestOnlyProviderKey); ok {
+					if tmi.TestOnly {
+						m.base().testOnlyDeps = append(m.base().testOnlyDeps, dep.Name())
+					}
+				}
 			}
 		})
 
@@ -1894,6 +1905,22 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		if ctx.Failed() {
 			return
 		}
+		// TODO(ron): getprovider here if we can?, maybe not finsihed yet so can't/
+		// May have to call getProp or IsTestOnly()
+		// myTestOnly := false
+		/*
+			if len(testOnlyDeps) > 0 {
+				top, ok := ModuleProvider(ctx, TestOnlyProviderKey)
+				if ok {
+					// if top.TestOnly {	myTestOnly = true				}
+					if !top.TestOnly {
+						fmt.Printf("MISS TEST_ONLY: %s,%s [%v]\n", ctx.ModuleType(), m.Name(), testOnlyDeps)
+					}
+				} else {
+					fmt.Printf("MISS TEST_ONLY: %s,%s [%v]\n", ctx.ModuleType(), m.Name(), testOnlyDeps)
+				}
+			}
+		*/
 
 		aconfigUpdateAndroidBuildActions(ctx)
 		if ctx.Failed() {

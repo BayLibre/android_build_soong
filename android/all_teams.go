@@ -14,12 +14,59 @@ func AllTeamsFactory() Singleton {
 	return &allTeamsSingleton{}
 }
 
+func ValidateTestOnlyFactory() Singleton {
+	return &validateTestOnlySingleton{}
+}
+
+type validateTestOnlySingleton struct{}
+
+// Ensure that if a module is not test-only, that its direct deps are not test-only too
+func (t *validateTestOnlySingleton) GenerateBuildActions(ctx SingletonContext) {
+	// TODO(rbraunstein): Find way to enable based on config.
+	//     This will probalby only enabled on git-main to start with.
+	// by name, not variant
+	testOnlyCache := make(map[string]bool)
+	IsTestOnly := func(mod Module) bool {
+		val, ok := testOnlyCache[mod.Name()]
+		if ok {
+			return val
+		}
+		if tmi, ok := SingletonModuleProvider(ctx, mod, TestOnlyProviderKey); ok {
+			if tmi.TestOnly {
+				testOnlyCache[mod.Name()] = true
+				return true
+			}
+		}
+		testOnlyCache[mod.Name()] = false
+		return false
+	}
+	ctx.VisitAllModules(func(module Module) {
+		// Early exit if we are test-only.  It doesn't matter what our deps are.
+		if !module.Enabled() {
+			return
+		}
+		if IsTestOnly(module) {
+			return
+		}
+
+		testOnlyDeps := module.base().testOnlyDeps
+		if len(testOnlyDeps) > 0 {
+			ctx.ModuleErrorf(module, "[%s], depends on test-only modules %v", ctx.ModuleType(module), testOnlyDeps)
+		}
+	})
+}
+
 func init() {
 	registerAllTeamBuildComponents(InitRegistrationContext)
+	registerTestOnlyValidator(InitRegistrationContext)
 }
 
 func registerAllTeamBuildComponents(ctx RegistrationContext) {
 	ctx.RegisterParallelSingletonType("all_teams", AllTeamsFactory)
+}
+
+func registerTestOnlyValidator(ctx RegistrationContext) {
+	ctx.RegisterParallelSingletonType("validate_test_only", ValidateTestOnlyFactory)
 }
 
 // For each module, list the team or the bpFile the module is defined in.
