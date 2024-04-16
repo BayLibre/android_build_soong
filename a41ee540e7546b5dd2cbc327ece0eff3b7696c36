@@ -166,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9093f628_d3e22dca",
+        "filename": "packaging/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-04-16T05:57:29Z",
+      "side": 1,
+      "message": "As @joeo@google.com suggested, I moved the build_flags.go to the `android` package.",
+      "parentUuid": "6be044b6_5817ed90",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "a41ee540e7546b5dd2cbc327ece0eff3b7696c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c04138b_6457c277",
