@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73c1628e_6d5edd51",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-16T22:36:18Z",
+      "side": 1,
+      "message": "These provider names seem misleading, why not name them \"apex_info\" and \"all_apex_info\" to match their variable names?",
+      "revId": "fcdd89239b192bf7d8a4a700a19b3405bde2f903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e667778_0b8bdba0",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-16T22:36:18Z",
+      "side": 1,
+      "message": "Could you add a comment explaining the logic? Like how we use the incoming variation if this module is eventually part of an apex with that name, or the name of a different variant it was merged into, or the empty variant otherwise.",
+      "revId": "fcdd89239b192bf7d8a4a700a19b3405bde2f903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be97c681_32e3d2df",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-16T22:36:18Z",
+      "side": 1,
+      "message": "nit: remove this variable and just directly return where it was set.",
+      "revId": "fcdd89239b192bf7d8a4a700a19b3405bde2f903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
