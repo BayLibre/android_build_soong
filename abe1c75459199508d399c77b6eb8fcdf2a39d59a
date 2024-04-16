@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b0a3c94_4b187375",
+        "filename": "java/gen.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-16T17:46:53Z",
+      "side": 1,
+      "message": "We discussed offline, but this warning is only testing that soong_zip produces a zip file correctly, not that aidl it working. I trust soong_zip, so I don\u0027t think this will ever print a warning.",
+      "revId": "abe1c75459199508d399c77b6eb8fcdf2a39d59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
