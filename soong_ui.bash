@@ -30,6 +30,8 @@ require_top
 # Save the current PWD for use in soong_ui
 export ORIGINAL_PWD=${PWD}
 export TOP=$(gettop)
+export SANITIZE_HOST=address
+export ASAN_OPTIONS="detect_leaks=0"
 source ${TOP}/build/soong/scripts/microfactory.bash
 
 soong_build_go soong_ui android/soong/cmd/soong_ui
