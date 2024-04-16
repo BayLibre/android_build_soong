@@ -51,7 +51,7 @@ var DexpreoptRunningInSoong = false
 
 // GenerateDexpreoptRule generates a set of commands that will preopt a module based on a GlobalConfig and a
 // ModuleConfig.  The produced files and their install locations will be available through rule.Installs().
-func GenerateDexpreoptRule(ctx android.BuilderContext, globalSoong *GlobalSoongConfig,
+func GenerateDexpreoptRule(ctx android.ModuleContext, globalSoong *GlobalSoongConfig,
 	global *GlobalConfig, module *ModuleConfig, productPackages android.Path) (
 	rule *android.RuleBuilder, err error) {
 
@@ -229,7 +229,39 @@ func ToOdexPath(path string, arch android.ArchType) string {
 		pathtools.ReplaceExtension(filepath.Base(path), "odex"))
 }
 
-func dexpreoptCommand(ctx android.BuilderContext, globalSoong *GlobalSoongConfig,
+func isApexVariant(ctx android.BaseModuleContext) bool {
+	apexInfo, _ := android.ModuleProvider(ctx, android.ApexInfoProvider)
+	return !apexInfo.IsForPlatform()
+}
+
+// For apex variant of modules, this returns true on the source variant if the prebuilt apex
+// has been selected using apex_contributions.
+// The prebuilt apex will be responsible for generating the dexpreopt rules of the deapexed java lib.
+func DisableSourceApexVariant(ctx android.BaseModuleContext) bool {
+	if !isApexVariant(ctx) {
+		return false // platform variant
+	}
+	apexInfo, _ := android.ModuleProvider(ctx, android.ApexInfoProvider)
+	psi := android.PrebuiltSelectionInfoMap{}
+	ctx.VisitDirectDepsWithTag(android.PrebuiltDepTag, func(am android.Module) {
+		psi, _ = android.OtherModuleProvider(ctx, am, android.PrebuiltSelectionInfoProvider)
+	})
+	// Find the apex variant for this module
+	_, apexVariantsWithoutTestApexes, _ := android.ListSetDifference(apexInfo.InApexVariants, apexInfo.TestApexes)
+	disableSource := false
+	// find the selected apexes
+	for _, apexVariant := range apexVariantsWithoutTestApexes {
+		for _, selected := range psi.GetSelectedModulesForApiDomain(apexVariant) {
+			// If the apex_contribution for this api domain contains a prebuilt apex, disable the source variant
+			if strings.HasPrefix(selected, "prebuilt_com.google.android") {
+				disableSource = true
+			}
+		}
+	}
+	return disableSource
+}
+
+func dexpreoptCommand(ctx android.ModuleContext, globalSoong *GlobalSoongConfig,
 	global *GlobalConfig, module *ModuleConfig, rule *android.RuleBuilder, archIdx int,
 	profile android.WritablePath, appImage bool, generateDM bool, productPackages android.Path) {
 
@@ -277,7 +309,11 @@ func dexpreoptCommand(ctx android.BuilderContext, globalSoong *GlobalSoongConfig
 			clcTarget = append(clcTarget, GetSystemServerDexLocation(ctx, global, lib))
 		}
 
-		if DexpreoptRunningInSoong {
+		if DexpreoptRunningInSoong && DisableSourceApexVariant(ctx) {
+			// Prebuilts are active, do not copy the dexpreopt'd source javalib to out/soong/system_server_dexjars
+			// The javalib from the deapexed prebuilt will be copied to this location.
+			// TODO (b/331665856): Implement a principled solution for this.
+		} else if DexpreoptRunningInSoong {
 			// Copy the system server jar to a predefined location where dex2oat will find it.
 			dexPathHost := SystemServerDexJarHostPath(ctx, module.Name)
 			rule.Command().Text("mkdir -p").Flag(filepath.Dir(dexPathHost.String()))
