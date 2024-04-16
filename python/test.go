@@ -18,6 +18,7 @@ import (
 	"fmt"
 
 	"android/soong/testing"
+
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -36,7 +37,9 @@ func registerPythonTestComponents(ctx android.RegistrationContext) {
 }
 
 func NewTest(hod android.HostOrDeviceSupported) *PythonTestModule {
-	return &PythonTestModule{PythonBinaryModule: *NewBinary(hod)}
+	p := &PythonTestModule{PythonBinaryModule: *NewBinary(hod)}
+	p.sourceProperties = android.SourceProperties{Test_only: proptools.BoolPtr(true), Top_level_test_target: true}
+	return p
 }
 
 func PythonTestHostFactory() android.Module {
