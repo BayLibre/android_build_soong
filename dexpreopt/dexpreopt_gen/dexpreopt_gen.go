@@ -206,7 +206,7 @@ func writeScripts(ctx android.BuilderContext, globalSoong *dexpreopt.GlobalSoong
 		}
 	}
 	dexpreoptRule, err := dexpreopt.GenerateDexpreoptRule(
-		ctx, globalSoong, global, module, android.PathForTesting(productPackagesPath))
+		ctx, globalSoong, global, module, android.PathForTesting(productPackagesPath), false)
 	if err != nil {
 		panic(err)
 	}
