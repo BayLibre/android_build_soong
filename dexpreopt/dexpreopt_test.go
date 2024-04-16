@@ -101,7 +101,7 @@ func TestDexPreopt(t *testing.T) {
 	module := testSystemModuleConfig(ctx, "test")
 	productPackages := android.PathForTesting("product_packages.txt")
 
-	rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, module, productPackages)
+	rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, module, productPackages, true)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -161,7 +161,7 @@ func TestDexPreoptSystemOther(t *testing.T) {
 	for _, test := range tests {
 		global.PatternsOnSystemOther = test.patterns
 		for _, mt := range test.moduleTests {
-			rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, mt.module, productPackages)
+			rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, mt.module, productPackages, true)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -191,7 +191,7 @@ func TestDexPreoptApexSystemServerJars(t *testing.T) {
 	global.ApexSystemServerJars = android.CreateTestConfiguredJarList(
 		[]string{"com.android.apex1:service-A"})
 
-	rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, module, productPackages)
+	rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, module, productPackages, true)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -215,7 +215,7 @@ func TestDexPreoptStandaloneSystemServerJars(t *testing.T) {
 	global.StandaloneSystemServerJars = android.CreateTestConfiguredJarList(
 		[]string{"platform:service-A"})
 
-	rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, module, productPackages)
+	rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, module, productPackages, true)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -239,7 +239,7 @@ func TestDexPreoptSystemExtSystemServerJars(t *testing.T) {
 	global.StandaloneSystemServerJars = android.CreateTestConfiguredJarList(
 		[]string{"system_ext:service-A"})
 
-	rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, module, productPackages)
+	rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, module, productPackages, true)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -263,7 +263,7 @@ func TestDexPreoptApexStandaloneSystemServerJars(t *testing.T) {
 	global.ApexStandaloneSystemServerJars = android.CreateTestConfiguredJarList(
 		[]string{"com.android.apex1:service-A"})
 
-	rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, module, productPackages)
+	rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, module, productPackages, true)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -286,7 +286,7 @@ func TestDexPreoptProfile(t *testing.T) {
 
 	module.ProfileClassListing = android.OptionalPathForPath(android.PathForTesting("profile"))
 
-	rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, module, productPackages)
+	rule, err := GenerateDexpreoptRule(ctx, globalSoong, global, module, productPackages, true)
 	if err != nil {
 		t.Fatal(err)
 	}
