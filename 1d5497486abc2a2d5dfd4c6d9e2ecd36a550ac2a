@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cf62688_24bdf9a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-17T23:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c6aa684_6509ccb8",
+      "revId": "1d5497486abc2a2d5dfd4c6d9e2ecd36a550ac2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ade851e_898095ad",
@@ -49,6 +67,30 @@
       "writtenOn": "2024-04-17T12:14:21Z",
       "side": 1,
       "message": "I think this is incorrect behavior. It may change the names of library files on the device which may cause compatibility issues.",
+      "range": {
+        "startLine": 5528,
+        "startChar": 147,
+        "endLine": 5528,
+        "endChar": 151
+      },
+      "revId": "1d5497486abc2a2d5dfd4c6d9e2ecd36a550ac2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ba8b275_d9fb0942",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5528,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-17T23:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ade851e_898095ad",
       "range": {
         "startLine": 5528,
         "startChar": 147,
