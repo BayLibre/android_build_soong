@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ed973d_1b19f831",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-17T07:00:29Z",
+      "side": 1,
+      "message": "The failed tests are now passing. See https://android-build.corp.google.com/abtd/run/L93500030003248425/?referrer\u003demail",
+      "revId": "f21dd65c0836d3505425485eee522337c30fcf5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
