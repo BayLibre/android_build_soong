@@ -17,7 +17,7 @@ package release_config_lib
 import (
 	"fmt"
 
-	"android/soong/cmd/release_config/release_config_proto"
+	rc_proto "android/soong/cmd/release_config/release_config_proto"
 
 	"google.golang.org/protobuf/proto"
 )
@@ -33,7 +33,7 @@ type ReleaseConfigContribution struct {
 	DeclarationIndex int
 
 	// Protobufs relevant to the config.
-	proto release_config_proto.ReleaseConfig
+	proto rc_proto.ReleaseConfig
 
 	FlagValues []*FlagValue
 }
@@ -61,7 +61,7 @@ type ReleaseConfig struct {
 	FlagArtifacts FlagArtifacts
 
 	// Generated release config
-	ReleaseConfigArtifact *release_config_proto.ReleaseConfigArtifact
+	ReleaseConfigArtifact *rc_proto.ReleaseConfigArtifact
 
 	// We have begun compiling this release config.
 	compileInProgress bool
@@ -123,20 +123,20 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 	}
 
 	directories := []string{}
-	for idx, confDir := range configs.ConfigDirs {
+	for idx, confDir := range configs.configDirs {
 		if _, ok := myDirsMap[idx]; ok {
 			directories = append(directories, confDir)
 		}
 	}
 
 	config.FlagArtifacts = myFlags
-	config.ReleaseConfigArtifact = &release_config_proto.ReleaseConfigArtifact{
+	config.ReleaseConfigArtifact = &rc_proto.ReleaseConfigArtifact{
 		Name:       proto.String(config.Name),
 		OtherNames: config.OtherNames,
-		FlagArtifacts: func() []*release_config_proto.FlagArtifact {
-			ret := []*release_config_proto.FlagArtifact{}
+		FlagArtifacts: func() []*rc_proto.FlagArtifact {
+			ret := []*rc_proto.FlagArtifact{}
 			for _, flag := range myFlags {
-				ret = append(ret, &release_config_proto.FlagArtifact{
+				ret = append(ret, &rc_proto.FlagArtifact{
 					FlagDeclaration: flag.FlagDeclaration,
 					Traces:          flag.Traces,
 					Value:           flag.Value,
