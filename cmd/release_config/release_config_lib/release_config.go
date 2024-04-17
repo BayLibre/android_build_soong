@@ -16,8 +16,9 @@ package release_config_lib
 
 import (
 	"fmt"
+	"strings"
 
-	"android/soong/cmd/release_config/release_config_proto"
+	rc_proto "android/soong/cmd/release_config/release_config_proto"
 
 	"google.golang.org/protobuf/proto"
 )
@@ -33,7 +34,7 @@ type ReleaseConfigContribution struct {
 	DeclarationIndex int
 
 	// Protobufs relevant to the config.
-	proto release_config_proto.ReleaseConfig
+	proto rc_proto.ReleaseConfig
 
 	FlagValues []*FlagValue
 }
@@ -61,7 +62,7 @@ type ReleaseConfig struct {
 	FlagArtifacts FlagArtifacts
 
 	// Generated release config
-	ReleaseConfigArtifact *release_config_proto.ReleaseConfigArtifact
+	ReleaseConfigArtifact *rc_proto.ReleaseConfigArtifact
 
 	// We have begun compiling this release config.
 	compileInProgress bool
@@ -85,6 +86,11 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 	contributionsToApply := []*ReleaseConfigContribution{}
 	myInherits := []string{}
 	myInheritsSet := make(map[string]bool)
+	// If there is a "root" release config, it is the start of every inheritance chain.
+	_, err := configs.GetReleaseConfig("root")
+	if err == nil {
+		config.InheritNames = append([]string{"root"}, config.InheritNames...)
+	}
 	for _, inherit := range config.InheritNames {
 		if _, ok := myInheritsSet[inherit]; ok {
 			continue
@@ -102,9 +108,37 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 
 	myAconfigValueSets := []string{}
 	myFlags := configs.FlagArtifacts.Clone()
+	workflow := rc_proto.Workflow(rc_proto.Workflow_MANUAL)
+	container := rc_proto.Container(rc_proto.Container_ALL)
+	releaseAconfigValueSets := FlagArtifact{
+		FlagDeclaration: &rc_proto.FlagDeclaration{
+			Name:        proto.String("RELEASE_ACONFIG_VALUE_SETS"),
+			Namespace:   proto.String("android_UNKNOWN"),
+			Description: proto.String("Aconfig value sets assembled by release-config"),
+			Workflow:    &workflow,
+			Container:   &container,
+			Value:       &rc_proto.Value{Val: &rc_proto.Value_StringValue{""}},
+		},
+		DeclarationIndex: -1,
+		Traces: []*rc_proto.Tracepoint{
+			&rc_proto.Tracepoint{
+				Source: proto.String("$release-config"),
+				Value:  &rc_proto.Value{Val: &rc_proto.Value_StringValue{""}},
+			},
+		},
+	}
+	myFlags["RELEASE_ACONFIG_VALUE_SETS"] = &releaseAconfigValueSets
 	myDirsMap := make(map[int]bool)
 	for _, contrib := range contributionsToApply {
-		myAconfigValueSets = append(myAconfigValueSets, contrib.proto.AconfigValueSets...)
+		if len(contrib.proto.AconfigValueSets) > 0 {
+			myAconfigValueSets = append(myAconfigValueSets, contrib.proto.AconfigValueSets...)
+			releaseAconfigValueSets.Traces = append(
+				releaseAconfigValueSets.Traces,
+				&rc_proto.Tracepoint{
+					Source: proto.String(contrib.path),
+					Value:  &rc_proto.Value{Val: &rc_proto.Value_StringValue{strings.Join(contrib.proto.AconfigValueSets, " ")}},
+				})
+		}
 		myDirsMap[contrib.DeclarationIndex] = true
 		for _, value := range contrib.FlagValues {
 			fa, ok := myFlags[*value.proto.Name]
@@ -121,22 +155,23 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 			}
 		}
 	}
+	releaseAconfigValueSets.Value = &rc_proto.Value{Val: &rc_proto.Value_StringValue{strings.Join(myAconfigValueSets, " ")}}
 
 	directories := []string{}
-	for idx, confDir := range configs.ConfigDirs {
+	for idx, confDir := range configs.configDirs {
 		if _, ok := myDirsMap[idx]; ok {
 			directories = append(directories, confDir)
 		}
 	}
 
 	config.FlagArtifacts = myFlags
-	config.ReleaseConfigArtifact = &release_config_proto.ReleaseConfigArtifact{
+	config.ReleaseConfigArtifact = &rc_proto.ReleaseConfigArtifact{
 		Name:       proto.String(config.Name),
 		OtherNames: config.OtherNames,
-		FlagArtifacts: func() []*release_config_proto.FlagArtifact {
-			ret := []*release_config_proto.FlagArtifact{}
+		FlagArtifacts: func() []*rc_proto.FlagArtifact {
+			ret := []*rc_proto.FlagArtifact{}
 			for _, flag := range myFlags {
-				ret = append(ret, &release_config_proto.FlagArtifact{
+				ret = append(ret, &rc_proto.FlagArtifact{
 					FlagDeclaration: flag.FlagDeclaration,
 					Traces:          flag.Traces,
 					Value:           flag.Value,
