@@ -94,6 +94,30 @@
       },
       "revId": "c5aa93bf8a998deb7b840dcce615750f538ba5ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46313113_6963b9a9",
+        "filename": "android/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-17T00:39:44Z",
+      "side": 1,
+      "message": "Thanks for the clarification. I\u0027ve restored the change while maintaining the original behavior for `ShardString`.",
+      "parentUuid": "a69de9a5_62ff799f",
+      "range": {
+        "startLine": 551,
+        "startChar": 1,
+        "endLine": 555,
+        "endChar": 2
+      },
+      "revId": "c5aa93bf8a998deb7b840dcce615750f538ba5ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
