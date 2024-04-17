@@ -127,6 +127,9 @@ type filesystemProperties struct {
 	// the make version.
 	Include_make_built_files string
 
+	// Install aconfig_flags.pb file for the modules installed in this partition.
+	Gen_aconfig_flags_pb *bool
+
 	Fsverity fsverityProperties
 }
 
@@ -288,6 +291,7 @@ func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) androi
 	f.buildNonDepsFiles(ctx, builder, rootDir)
 	f.addMakeBuiltFiles(ctx, builder, rootDir)
 	f.buildFsverityMetadataFiles(ctx, builder, specs, rootDir, rebasedDir)
+	f.buildAconfigFlagsFiles(ctx, builder, specs, rebasedDir)
 
 	// run host_init_verifier
 	// Ideally we should have a concept of pluggable linters that verify the generated image.
