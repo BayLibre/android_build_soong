@@ -22,6 +22,30 @@
       },
       "revId": "935b4db4cba317084e23e7b66c752370fa7391e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46d412e4_1d9e5e29",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1483,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-17T18:26:06Z",
+      "side": 0,
+      "message": "Correct, this is just removing the unused function. I\u0027ve moved this to aosp/3047153.",
+      "parentUuid": "178458cb_d01f6bf5",
+      "range": {
+        "startLine": 1483,
+        "startChar": 5,
+        "endLine": 1483,
+        "endChar": 37
+      },
+      "revId": "935b4db4cba317084e23e7b66c752370fa7391e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

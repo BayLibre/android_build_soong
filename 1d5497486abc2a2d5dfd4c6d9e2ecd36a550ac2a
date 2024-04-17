@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c6aa684_6509ccb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-17T18:26:06Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. Will resolve this in the next patchset.",
+      "parentUuid": "363c99c5_81459924",
+      "revId": "1d5497486abc2a2d5dfd4c6d9e2ecd36a550ac2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ade851e_898095ad",
         "filename": "apex/apex_test.go",
         "patchSetId": 2
