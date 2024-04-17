@@ -27,6 +27,9 @@ import (
 // be a new filesystem image that is a subset of system.img (e.g. for an Android-like mini OS
 // running on a VM), or a zip archive for some of the host tools.
 type PackagingSpec struct {
+	// Soong module
+	module Module
+
 	// Path relative to the root of the package
 	relPathInPackage string
 
@@ -43,6 +46,11 @@ type PackagingSpec struct {
 	effectiveLicenseFiles *Paths
 
 	partition string
+}
+
+// Get soong module name of the package
+func (p *PackagingSpec) Module() Module {
+	return p.module
 }
 
 // Get file name of installed package

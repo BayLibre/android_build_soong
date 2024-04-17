@@ -91,7 +91,7 @@ func CollectDependencyAconfigFiles(ctx ModuleContext, mergedAconfigFiles *map[st
 			(*mergedAconfigFiles)[dep.Container] = append((*mergedAconfigFiles)[dep.Container], dep.IntermediateCacheOutputPath)
 			return
 		}
-		if dep, ok := OtherModuleProvider(ctx, module, aconfigPropagatingProviderKey); ok {
+		if dep, ok := OtherModuleProvider(ctx, module, AconfigPropagatingProviderKey); ok {
 			for container, v := range dep.AconfigFiles {
 				(*mergedAconfigFiles)[container] = append((*mergedAconfigFiles)[container], v...)
 			}
@@ -124,10 +124,10 @@ type aconfigPropagatingDeclarationsInfo struct {
 	ModeInfos    map[string]ModeInfo
 }
 
-var aconfigPropagatingProviderKey = blueprint.NewProvider[aconfigPropagatingDeclarationsInfo]()
+var AconfigPropagatingProviderKey = blueprint.NewProvider[aconfigPropagatingDeclarationsInfo]()
 
 func VerifyAconfigBuildMode(ctx ModuleContext, container string, module blueprint.Module, asError bool) {
-	if dep, ok := OtherModuleProvider(ctx, module, aconfigPropagatingProviderKey); ok {
+	if dep, ok := OtherModuleProvider(ctx, module, AconfigPropagatingProviderKey); ok {
 		for k, v := range dep.ModeInfos {
 			msg := fmt.Sprintf("%s/%s depends on %s/%s/%s across containers\n",
 				module.Name(), container, k, v.Container, v.Mode)
@@ -159,7 +159,7 @@ func aconfigUpdateAndroidBuildActions(ctx ModuleContext) {
 		if dep, ok := OtherModuleProvider(ctx, module, AconfigDeclarationsProviderKey); ok {
 			mergedAconfigFiles[dep.Container] = append(mergedAconfigFiles[dep.Container], dep.IntermediateCacheOutputPath)
 		}
-		if dep, ok := OtherModuleProvider(ctx, module, aconfigPropagatingProviderKey); ok {
+		if dep, ok := OtherModuleProvider(ctx, module, AconfigPropagatingProviderKey); ok {
 			for container, v := range dep.AconfigFiles {
 				mergedAconfigFiles[container] = append(mergedAconfigFiles[container], v...)
 			}
@@ -178,7 +178,7 @@ func aconfigUpdateAndroidBuildActions(ctx ModuleContext) {
 			mergedAconfigFiles[container] = mergeAconfigFiles(ctx, container, aconfigFiles, true)
 		}
 
-		SetProvider(ctx, aconfigPropagatingProviderKey, aconfigPropagatingDeclarationsInfo{
+		SetProvider(ctx, AconfigPropagatingProviderKey, aconfigPropagatingDeclarationsInfo{
 			AconfigFiles: mergedAconfigFiles,
 			ModeInfos:    mergedModeInfos,
 		})
@@ -186,7 +186,7 @@ func aconfigUpdateAndroidBuildActions(ctx ModuleContext) {
 }
 
 func aconfigUpdateAndroidMkData(ctx fillInEntriesContext, mod Module, data *AndroidMkData) {
-	info, ok := SingletonModuleProvider(ctx, mod, aconfigPropagatingProviderKey)
+	info, ok := SingletonModuleProvider(ctx, mod, AconfigPropagatingProviderKey)
 	// If there is no aconfigPropagatingProvider, or there are no AconfigFiles, then we are done.
 	if !ok || len(info.AconfigFiles) == 0 {
 		return
@@ -217,7 +217,7 @@ func aconfigUpdateAndroidMkEntries(ctx fillInEntriesContext, mod Module, entries
 	if len(*entries) == 0 {
 		return
 	}
-	info, ok := SingletonModuleProvider(ctx, mod, aconfigPropagatingProviderKey)
+	info, ok := SingletonModuleProvider(ctx, mod, AconfigPropagatingProviderKey)
 	if !ok || len(info.AconfigFiles) == 0 {
 		return
 	}
@@ -259,18 +259,7 @@ func setAconfigFileMkEntries(m *ModuleBase, entries *AndroidMkEntries, aconfigFi
 	entries.AddPaths("LOCAL_ACONFIG_FILES", getAconfigFilePaths(m, aconfigFiles))
 }
 
-func getAconfigFilePaths(m *ModuleBase, aconfigFiles map[string]Paths) (paths Paths) {
-	// TODO(b/311155208): The default container here should be system.
-	container := "system"
-
-	if m.SocSpecific() {
-		container = "vendor"
-	} else if m.ProductSpecific() {
-		container = "product"
-	} else if m.SystemExtSpecific() {
-		container = "system_ext"
-	}
-
+func GetPathsFromContainer(aconfigFiles map[string]Paths, container string) (paths Paths) {
 	paths = append(paths, aconfigFiles[container]...)
 	if container == "system" {
 		// TODO(b/311155208): Once the default container is system, we can drop this.
@@ -285,4 +274,17 @@ func getAconfigFilePaths(m *ModuleBase, aconfigFiles map[string]Paths) (paths Pa
 		paths = append(paths, aconfigFiles[""]...)
 	}
 	return
+}
+
+func getAconfigFilePaths(m *ModuleBase, aconfigFiles map[string]Paths) (paths Paths) {
+	// TODO(b/311155208): The default container here should be system.
+	container := "system"
+	if m.SocSpecific() {
+		container = "vendor"
+	} else if m.ProductSpecific() {
+		container = "product"
+	} else if m.SystemExtSpecific() {
+		container = "system_ext"
+	}
+	return GetPathsFromContainer(aconfigFiles, container)
 }
