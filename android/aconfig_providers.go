@@ -259,18 +259,7 @@ func setAconfigFileMkEntries(m *ModuleBase, entries *AndroidMkEntries, aconfigFi
 	entries.AddPaths("LOCAL_ACONFIG_FILES", getAconfigFilePaths(m, aconfigFiles))
 }
 
-func getAconfigFilePaths(m *ModuleBase, aconfigFiles map[string]Paths) (paths Paths) {
-	// TODO(b/311155208): The default container here should be system.
-	container := "system"
-
-	if m.SocSpecific() {
-		container = "vendor"
-	} else if m.ProductSpecific() {
-		container = "product"
-	} else if m.SystemExtSpecific() {
-		container = "system_ext"
-	}
-
+func getAconfigFilePathsForContainer(aconfigFiles map[string]Paths, container string) (paths Paths) {
 	paths = append(paths, aconfigFiles[container]...)
 	if container == "system" {
 		// TODO(b/311155208): Once the default container is system, we can drop this.
@@ -285,4 +274,17 @@ func getAconfigFilePaths(m *ModuleBase, aconfigFiles map[string]Paths) (paths Pa
 		paths = append(paths, aconfigFiles[""]...)
 	}
 	return
+}
+
+func getAconfigFilePaths(m *ModuleBase, aconfigFiles map[string]Paths) (paths Paths) {
+	// TODO(b/311155208): The default container here should be system.
+	container := "system"
+	if m.SocSpecific() {
+		container = "vendor"
+	} else if m.ProductSpecific() {
+		container = "product"
+	} else if m.SystemExtSpecific() {
+		container = "system_ext"
+	}
+	return getAconfigFilePathsForContainer(aconfigFiles, container)
 }

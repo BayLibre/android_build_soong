@@ -27,6 +27,9 @@ import (
 // be a new filesystem image that is a subset of system.img (e.g. for an Android-like mini OS
 // running on a VM), or a zip archive for some of the host tools.
 type PackagingSpec struct {
+	// Soong module
+	module Module
+
 	// Path relative to the root of the package
 	relPathInPackage string
 
@@ -72,6 +75,17 @@ func (p *PackagingSpec) EffectiveLicenseFiles() Paths {
 
 func (p *PackagingSpec) Partition() string {
 	return p.partition
+}
+
+// Paths of aconfig files for the built artifact
+func (p *PackagingSpec) GetAconfigPaths(ctx ModuleContext) Paths {
+	if p.module != nil {
+		info, ok := OtherModuleProvider(ctx, p.module, aconfigPropagatingProviderKey)
+		if ok {
+			return getAconfigFilePathsForContainer(info.AconfigFiles, p.partition)
+		}
+	}
+	return Paths{}
 }
 
 type PackageModule interface {
