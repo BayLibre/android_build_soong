@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66c164f2_f8d0ee0b",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-17T13:50:00Z",
+      "side": 1,
+      "message": "The output is not just paths. Rename to `FilterAConfigFilesForContainer` or similar?",
+      "range": {
+        "startLine": 262,
+        "startChar": 5,
+        "endLine": 262,
+        "endChar": 26
+      },
+      "revId": "9674b8a60de7901a86e9e66b95a75d09f9c72aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "654fd0d9_6f7990f7",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-17T13:50:00Z",
+      "side": 1,
+      "message": "This is too generic. I think we just want to have the list of aconfig files. Therefore,\n\n```\naconfigsPaths Paths\n```\n?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "9674b8a60de7901a86e9e66b95a75d09f9c72aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb00301_b2cacc6f",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-17T13:50:00Z",
+      "side": 1,
+      "message": "This is the only part where this function depends on `filesystem`. Can this be done at the call site? Then this function could be moved to the android package. Then you don\u0027t have to make AconfigPropagatingProviderKey public touching multiple places.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "9674b8a60de7901a86e9e66b95a75d09f9c72aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec51195f_fec395dd",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-17T13:50:00Z",
+      "side": 1,
+      "message": "These have to be added as implicits",
+      "range": {
+        "startLine": 52,
+        "startChar": 57,
+        "endLine": 52,
+        "endChar": 74
+      },
+      "revId": "9674b8a60de7901a86e9e66b95a75d09f9c72aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f15ad59_23a85683",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-17T13:50:00Z",
+      "side": 1,
+      "message": "You can use SortedUniqueStrings to avoid duplication.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 3
+      },
+      "revId": "9674b8a60de7901a86e9e66b95a75d09f9c72aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da84256_3e06eb48",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-17T13:50:00Z",
+      "side": 1,
+      "message": "gen_aconfig_flags_pb, because `aconfig_flags` sounds like it accepts a list of aconfig flags.",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "9674b8a60de7901a86e9e66b95a75d09f9c72aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
