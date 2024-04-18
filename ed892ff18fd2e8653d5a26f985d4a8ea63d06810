@@ -16,6 +16,46 @@
       "message": "Hi, I found another problem with test-only and variants.",
       "revId": "ed892ff18fd2e8653d5a26f985d4a8ea63d06810",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dd4d332_6a9fad1d",
+        "filename": "android/all_teams.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-18T21:58:19Z",
+      "side": 1,
+      "message": "Do you know why this is the case? Can\u0027t we just set the provider regardless of whether the module is enabled or not?",
+      "revId": "ed892ff18fd2e8653d5a26f985d4a8ea63d06810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e508521_084871bc",
+        "filename": "android/all_teams_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-18T21:58:19Z",
+      "side": 1,
+      "message": "nit: can we just use `\"\"`?",
+      "range": {
+        "startLine": 101,
+        "startChar": 44,
+        "endLine": 101,
+        "endChar": 51
+      },
+      "revId": "ed892ff18fd2e8653d5a26f985d4a8ea63d06810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
