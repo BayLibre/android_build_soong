@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b45b7a17_5ec19390",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-18T21:22:29Z",
+      "side": 1,
+      "message": "There doesn\u0027t seem to be any difference in behavior between NoAccess and NoDirectAcess.\n\nWe usually try to avoid magic strings like this when possible, they are easy to typo.  Can this be two separate bools?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "8e3215b22ace03d555fc46d914afad3002511ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a3bd0c_615cbb6f",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-18T21:22:29Z",
+      "side": 1,
+      "message": "Can you add comments here to document the difference between `Runtime_from_source` and `Runtime_from_lib`?  I\u0027m confused by the naming, since they seem to be fundamentally different things (IIUC one is the pure framework and dependencies, one is the robolectric shadows?), and both are libraries built from source.",
+      "revId": "8e3215b22ace03d555fc46d914afad3002511ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5469f84c_968bfa65",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-18T21:22:29Z",
+      "side": 1,
+      "message": "I don\u0027t particularly object to pulling this out of the jar, since it\u0027s around 157MB that is repeated in every robolectric test, but you could simplify this change and reduce the risk by keeping it in the jar for now, and just removing it from the classpath.  That would be done by using a different dependency tag for libraries that should be in the classpath vs. libraries that should both be in the classpath and combined into the final jar.  Normally `libTag` is used for the former and `staticLibTag` is used for the latter, but this file currently uses `libTag` for the latter.  You could replace all `libTag` with `staticLibTag`, and then use `libTag` for the `robolectricCurrentLib` dep when using strict mode.",
+      "revId": "8e3215b22ace03d555fc46d914afad3002511ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
