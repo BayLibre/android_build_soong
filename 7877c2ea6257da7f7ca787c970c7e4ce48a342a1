@@ -16,6 +16,23 @@
       "message": "ping for review.",
       "revId": "7877c2ea6257da7f7ca787c970c7e4ce48a342a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80151dfc_d31c8ef2",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-18T23:18:51Z",
+      "side": 1,
+      "message": "I\u0027m not thrilled about the new syntax, but I guess it\u0027s not terrible, given that we don\u0027t have more advanced expressions in blueprint.\n\nThe CL LGTM, but could you update the documentation in soong/README.md? https://cs.android.com/android/platform/superproject/main/+/main:build/soong/README.md;l\u003d439;drc\u003d894bb3b530d9dcab9fd3d2a45b55d5f9660641d4",
+      "revId": "7877c2ea6257da7f7ca787c970c7e4ce48a342a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
