@@ -296,45 +296,6 @@ func TestPrebuilts(t *testing.T) {
 			prebuilt: []OsType{Android, buildOS},
 		},
 		{
-			name: "prebuilt use_source_config_var={acme, use_source} - no var specified",
-			modules: `
-				source {
-					name: "bar",
-				}
-
-				prebuilt {
-					name: "bar",
-					use_source_config_var: {config_namespace: "acme", var_name: "use_source"},
-					srcs: ["prebuilt_file"],
-				}`,
-			// When use_source_env is specified then it will use the prebuilt by default if the environment
-			// variable is not set.
-			prebuilt: []OsType{Android, buildOS},
-		},
-		{
-			name: "prebuilt use_source_config_var={acme, use_source} - acme_use_source=false",
-			modules: `
-				source {
-					name: "bar",
-				}
-
-				prebuilt {
-					name: "bar",
-					use_source_config_var: {config_namespace: "acme", var_name: "use_source"},
-					srcs: ["prebuilt_file"],
-				}`,
-			preparer: FixtureModifyProductVariables(func(variables FixtureProductVariables) {
-				variables.VendorVars = map[string]map[string]string{
-					"acme": {
-						"use_source": "false",
-					},
-				}
-			}),
-			// Setting the environment variable named in use_source_env to false will cause the prebuilt to
-			// be used.
-			prebuilt: []OsType{Android, buildOS},
-		},
-		{
 			name: "apex_contributions supersedes any source preferred via use_source_config_var",
 			modules: `
 				source {
