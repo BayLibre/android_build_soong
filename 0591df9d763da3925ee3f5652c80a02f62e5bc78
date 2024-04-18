@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc49505d_6d7c5ac3",
+        "filename": "android/module_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-18T22:04:49Z",
+      "side": 1,
+      "message": "This can be \n\n```\naconfigPaths: m.Module().GetAconfigPaths()\n```",
+      "range": {
+        "startLine": 473,
+        "startChar": 2,
+        "endLine": 473,
+        "endChar": 36
+      },
+      "revId": "0591df9d763da3925ee3f5652c80a02f62e5bc78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
