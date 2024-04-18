@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f9abe8_57e0a077",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-18T22:00:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cfd56517_e95884f4",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "050e8e32323610acb618c728c4fe1f83d075fdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "765bf28e_d7fc691b",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-04-18T21:47:24Z",
       "side": 1,
       "message": "This should be merged after ag/27014918 has landed",
+      "revId": "050e8e32323610acb618c728c4fe1f83d075fdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "810ffb38_eb58e2c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-18T22:00:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "765bf28e_d7fc691b",
       "revId": "050e8e32323610acb618c728c4fe1f83d075fdcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
