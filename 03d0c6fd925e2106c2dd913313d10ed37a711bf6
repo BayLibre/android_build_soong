@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1452e653_cc301b1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-18T22:25:02Z",
+      "side": 1,
+      "message": "cc @kalyssa@google.com. I think this has an impact on `RELEASE_DEFAULT_MODULE_BUILD_FROM_SOURCE`, since that build flag used soong config namespaces and `use_source_config_var` to toggle prebuilts.",
+      "revId": "03d0c6fd925e2106c2dd913313d10ed37a711bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
