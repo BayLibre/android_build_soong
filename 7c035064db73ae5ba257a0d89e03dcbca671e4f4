@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "100cf1eb_49fa6ea6",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-18T23:38:57Z",
+      "side": 1,
+      "message": "Doesn\u0027t have to be part of this change, but it would be great if these will be consolidated into a single property.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "7c035064db73ae5ba257a0d89e03dcbca671e4f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
