@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d839ed45_590ac649",
+        "filename": "android/all_teams.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-18T22:58:35Z",
+      "side": 1,
+      "message": "No, I wasn\u0027t able to figure it out.  But it happened for python_test_host and test_module_config_host as well.  I\u0027m guessing something is adding it to the list of module variants but not calling GenerateAndroidBuildActions on it (and marking it not-enabled) by design.  But for some modules, there are no variants availble for this build  because of the target architecture.  We still want to visit these modules and write out owners.\n\nThis is guess-work by me, so I\u0027ll submit for now and we can update again if needed.",
+      "parentUuid": "0dd4d332_6a9fad1d",
+      "revId": "ed892ff18fd2e8653d5a26f985d4a8ea63d06810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e508521_084871bc",
@@ -48,6 +66,30 @@
       "writtenOn": "2024-04-18T21:58:19Z",
       "side": 1,
       "message": "nit: can we just use `\"\"`?",
+      "range": {
+        "startLine": 101,
+        "startChar": 44,
+        "endLine": 101,
+        "endChar": 51
+      },
+      "revId": "ed892ff18fd2e8653d5a26f985d4a8ea63d06810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ba0141a_b9522438",
+        "filename": "android/all_teams_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-18T22:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e508521_084871bc",
       "range": {
         "startLine": 101,
         "startChar": 44,
