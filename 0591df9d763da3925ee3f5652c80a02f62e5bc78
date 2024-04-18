@@ -22,6 +22,23 @@
       },
       "revId": "0591df9d763da3925ee3f5652c80a02f62e5bc78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81a9b281_36b9e436",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-18T23:05:28Z",
+      "side": 1,
+      "message": "Doesn\u0027t this get duplicate aconfig files if a single module has multiple PackagingSpecs?\n\nMaybe it would be better to make a dedicated `TransitiveAconfigFiles` provider that modules propagate up, then you loop over all the `deps` and get the aconfig files from that provider, instead of lumping it into the PackagingSpecs.\n\nHowever either way I think you\u0027ll need deduplication.",
+      "revId": "0591df9d763da3925ee3f5652c80a02f62e5bc78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
