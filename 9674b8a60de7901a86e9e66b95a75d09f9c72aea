@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5563b0f_32e0aaf1",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-04-18T07:01:55Z",
+      "side": 1,
+      "message": "I think you can `builder.Command().Tool(aconfigFlagsBuilderPath).Implicit(aconfigToolPath).Implicits(ps.GetAconfigPaths(ctx))`.",
+      "parentUuid": "51d73941_1108d155",
+      "range": {
+        "startLine": 52,
+        "startChar": 57,
+        "endLine": 52,
+        "endChar": 74
+      },
+      "revId": "9674b8a60de7901a86e9e66b95a75d09f9c72aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f15ad59_23a85683",
         "filename": "filesystem/aconfig_files.go",
         "patchSetId": 1
