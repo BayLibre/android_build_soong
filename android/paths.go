@@ -277,6 +277,7 @@ type WritablePath interface {
 
 type genPathProvider interface {
 	genPathWithExt(ctx ModuleOutPathContext, subdir, ext string) ModuleGenPath
+	genPathWithExtAndTrimExt(ctx ModuleOutPathContext, subdir, ext string, trimExt string) ModuleGenPath
 }
 type objPathProvider interface {
 	objPathWithExt(ctx ModuleOutPathContext, subdir, ext string) ModuleObjPath
@@ -290,6 +291,16 @@ type resPathProvider interface {
 func GenPathWithExt(ctx ModuleOutPathContext, subdir string, p Path, ext string) ModuleGenPath {
 	if path, ok := p.(genPathProvider); ok {
 		return path.genPathWithExt(ctx, subdir, ext)
+	}
+	ReportPathErrorf(ctx, "Tried to create generated file from unsupported path: %s(%s)", reflect.TypeOf(p).Name(), p)
+	return PathForModuleGen(ctx)
+}
+
+// GenPathWithExtAndTrimExt derives a new file path in ctx's generated sources directory
+// from the current path, but with the new extension and trim the matched string.
+func GenPathWithExtAndTrimExt(ctx ModuleOutPathContext, subdir string, p Path, ext string, trimExt string) ModuleGenPath {
+	if path, ok := p.(genPathProvider); ok {
+		return path.genPathWithExtAndTrimExt(ctx, subdir, ext, trimExt)
 	}
 	ReportPathErrorf(ctx, "Tried to create generated file from unsupported path: %s(%s)", reflect.TypeOf(p).Name(), p)
 	return PathForModuleGen(ctx)
@@ -1506,6 +1517,10 @@ func (p SourcePath) genPathWithExt(ctx ModuleOutPathContext, subdir, ext string)
 	return PathForModuleGen(ctx, subdir, pathtools.ReplaceExtension(p.path, ext))
 }
 
+func (p SourcePath) genPathWithExtAndTrimExt(ctx ModuleOutPathContext, subdir, ext string, trimExt string) ModuleGenPath {
+	return PathForModuleGen(ctx, subdir, pathtools.ReplaceExtension(pathtools.TrimExtension(p.path, trimExt), ext))
+}
+
 func (p SourcePath) objPathWithExt(ctx ModuleOutPathContext, subdir, ext string) ModuleObjPath {
 	return PathForModuleObj(ctx, subdir, pathtools.ReplaceExtension(p.path, ext))
 }
@@ -1591,6 +1606,10 @@ func PathForModuleGen(ctx ModuleOutPathContext, paths ...string) ModuleGenPath {
 func (p ModuleGenPath) genPathWithExt(ctx ModuleOutPathContext, subdir, ext string) ModuleGenPath {
 	// TODO: make a different path for local vs remote generated files?
 	return PathForModuleGen(ctx, subdir, pathtools.ReplaceExtension(p.path, ext))
+}
+
+func (p ModuleGenPath) genPathWithExtAndTrimExt(ctx ModuleOutPathContext, subdir, ext string, trimExt string) ModuleGenPath {
+	return PathForModuleGen(ctx, subdir, pathtools.ReplaceExtension(pathtools.TrimExtension(p.path, trimExt), ext))
 }
 
 func (p ModuleGenPath) objPathWithExt(ctx ModuleOutPathContext, subdir, ext string) ModuleObjPath {
