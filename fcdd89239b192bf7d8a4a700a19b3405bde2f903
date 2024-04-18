@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1eb65b2a_660a2fb6",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-18T22:09:13Z",
+      "side": 1,
+      "message": "These aren\u0027t the names of the providers, they are the name of the mutator that sets them.",
+      "parentUuid": "73c1628e_6d5edd51",
+      "revId": "fcdd89239b192bf7d8a4a700a19b3405bde2f903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e667778_0b8bdba0",
         "filename": "android/apex.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2024-04-16T22:36:18Z",
       "side": 1,
       "message": "Could you add a comment explaining the logic? Like how we use the incoming variation if this module is eventually part of an apex with that name, or the name of a different variant it was merged into, or the empty variant otherwise.",
+      "revId": "fcdd89239b192bf7d8a4a700a19b3405bde2f903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74cb3c59_725840f8",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-18T22:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e667778_0b8bdba0",
       "revId": "fcdd89239b192bf7d8a4a700a19b3405bde2f903",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2024-04-16T22:36:18Z",
       "side": 1,
       "message": "nit: remove this variable and just directly return where it was set.",
+      "revId": "fcdd89239b192bf7d8a4a700a19b3405bde2f903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee5ce009_b94845d8",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-18T22:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be97c681_32e3d2df",
       "revId": "fcdd89239b192bf7d8a4a700a19b3405bde2f903",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
