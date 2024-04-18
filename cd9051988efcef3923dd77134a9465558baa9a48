@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93ef7a73_5b4dde75",
+        "filename": "android/build_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-18T22:06:23Z",
+      "side": 1,
+      "message": "\u003e It is not allowed for odm partition to define build flags.\n\nWhy is that?",
+      "parentUuid": "5c113f50_c26e1740",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 73
+      },
+      "revId": "cd9051988efcef3923dd77134a9465558baa9a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "502f4cec_56ea0eac",
         "filename": "android/build_flags.go",
         "patchSetId": 3
