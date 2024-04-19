@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d88890_f47c8be8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-04-19T09:48:49Z",
+      "side": 1,
+      "message": "Hi Colin, I\u0027m experimenting with using Java 21 for core-all. I\u0027d prefer to land this change now, but I can wait until I get the 21 features working in libcore so no one uses it accidentally.",
+      "revId": "1fe2cc883f9bcc961c0f5f11bf83605230ff59be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
