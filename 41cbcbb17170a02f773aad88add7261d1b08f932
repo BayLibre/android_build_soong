@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a0226a_875dcbe3",
+        "filename": "cc/sabi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-19T21:26:59Z",
+      "side": 1,
+      "message": "Then wouldn\u0027t tagging them as apex be misleading?",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 143,
+        "endChar": 69
+      },
+      "revId": "41cbcbb17170a02f773aad88add7261d1b08f932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
