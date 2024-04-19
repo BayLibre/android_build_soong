@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eae52110_7bfda47e",
+        "filename": "android/test_suites.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1990655
+      },
+      "writtenOn": "2024-04-19T23:39:26Z",
+      "side": 1,
+      "message": "It\u0027s essential for the test suite to save cas upload time, but not for test_list which is small anyways.",
+      "parentUuid": "683a2854_a725c32e",
+      "revId": "7856ce7cc1e907f1458186f40c952463f8196c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a63319e_cd55bb6d",
@@ -58,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e194b43_ea22ff35",
+        "filename": "android/test_suites.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1990655
+      },
+      "writtenOn": "2024-04-19T23:39:26Z",
+      "side": 1,
+      "message": "I\u0027d keep it unchanged in this cl. See L87 in original.",
+      "parentUuid": "8a63319e_cd55bb6d",
+      "range": {
+        "startLine": 158,
+        "startChar": 50,
+        "endLine": 158,
+        "endChar": 53
+      },
+      "revId": "7856ce7cc1e907f1458186f40c952463f8196c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3676a6a0_740f221f",
@@ -71,6 +113,24 @@
       "writtenOn": "2024-04-19T22:38:31Z",
       "side": 1,
       "message": "Is Extra_test_configs allowed for robolectric tests? https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/java/java.go;l\u003d1176?q\u003dextra_test_configs\u0026sq\u003dgit:googleplex-android%2Fplatform%2Fsuperproject%2Fmain@main\nI\u0027m not sure that it makes sense but I don\u0027t know what would happen if there were several here.",
+      "revId": "7856ce7cc1e907f1458186f40c952463f8196c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e19088f_e5598268",
+        "filename": "android/test_suites_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1990655
+      },
+      "writtenOn": "2024-04-19T23:39:26Z",
+      "side": 1,
+      "message": "We don\u0027t have special handling for extra .config files so far in other tests as well. Looks like we only set some .xml files with this property. Leaving as is for now.",
+      "parentUuid": "3676a6a0_740f221f",
       "revId": "7856ce7cc1e907f1458186f40c952463f8196c32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
