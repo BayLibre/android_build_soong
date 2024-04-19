@@ -193,6 +193,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bab61a8f_1d3fe74b",
+        "filename": "android/build_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-04-19T23:54:01Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/release_config.scl;l\u003d21?q\u003dbuild%2Fmake%2Fcore%2Frelease_config.scl\u0026ss\u003dandroid\nOnly the partitions listed here can define build flags. Otherwise it will always be empty.",
+      "parentUuid": "93ef7a73_5b4dde75",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 73
+      },
+      "revId": "cd9051988efcef3923dd77134a9465558baa9a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "502f4cec_56ea0eac",
         "filename": "android/build_flags.go",
         "patchSetId": 3
