@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "331ff4aa_bd4453ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-19T01:12:00Z",
+      "side": 1,
+      "message": "Rebasing doesn\u0027t affect this cl, it only affects running `m all_teams`. The providers work the same after rebasing, but I\u0027ll rebase after that cl goes in.",
+      "parentUuid": "474d4121_c8dcbe25",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "bf6cd3c7a38502b5cd3afe18a2433fbbe8704ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "75babcf6_7d6b865e",
