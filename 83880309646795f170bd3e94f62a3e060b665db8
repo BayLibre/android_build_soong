@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "417d07af_a6082bbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-04-19T14:48:22Z",
+      "side": 1,
+      "message": "Can you add a note or two in the CL description about why/how we use the non-final IDs?",
+      "revId": "83880309646795f170bd3e94f62a3e060b665db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
