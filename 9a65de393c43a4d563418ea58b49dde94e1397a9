@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8f7a7c3_452418f9",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-19T17:14:51Z",
+      "side": 1,
+      "message": "Could you please document the behavior of the list variables some more? How they can only be applied to list of strings properties, and they replicate the given list for each value in the list variable.",
+      "revId": "9a65de393c43a4d563418ea58b49dde94e1397a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
