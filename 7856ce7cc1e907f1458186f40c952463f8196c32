@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28ad575_b3284c6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-19T22:38:31Z",
+      "side": 1,
+      "message": "Just curious, I thought the tradefed code that looks for .config files looks for .xml or .config:  https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:tools/tradefederation/core/src/com/android/tradefed/config/ConfigurationFactory.java;l\u003d70;drc\u003dca71e0032223fcd362c9312881724f6e9f4ac919;bpv\u003d1;bpt\u003d1?q\u003d%5C%22%5C.config%20f:tradefed\u0026sq\u003dgit:googleplex-android%2Fplatform%2Fsuperproject%2Fmain@main\n\nBut I know all the Soong rules convert AndroidTest.xml -\u003e TestModule.config so its not a problem (except maybe for extra_test_configs)\nI also assume its not a problem if there are data files that get installed that end in \".config\" because they are already there in the real zip and this test_list is just a subset of that file list.",
+      "revId": "7856ce7cc1e907f1458186f40c952463f8196c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "683a2854_a725c32e",
+        "filename": "android/test_suites.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-19T22:38:31Z",
+      "side": 1,
+      "message": "if sha256 is essential and not just \"nice to have\" I\u0027d add a comment explaining why.",
+      "revId": "7856ce7cc1e907f1458186f40c952463f8196c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a63319e_cd55bb6d",
+        "filename": "android/test_suites.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-19T22:38:31Z",
+      "side": 1,
+      "message": "Is this X86 because it is always built for host and our test infra is always Linux?\nI don\u0027t know if this should be ctx.Arch() or ctx.Arch().Name or something completely different.",
+      "range": {
+        "startLine": 158,
+        "startChar": 50,
+        "endLine": 158,
+        "endChar": 53
+      },
+      "revId": "7856ce7cc1e907f1458186f40c952463f8196c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3676a6a0_740f221f",
+        "filename": "android/test_suites_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-19T22:38:31Z",
+      "side": 1,
+      "message": "Is Extra_test_configs allowed for robolectric tests? https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/java/java.go;l\u003d1176?q\u003dextra_test_configs\u0026sq\u003dgit:googleplex-android%2Fplatform%2Fsuperproject%2Fmain@main\nI\u0027m not sure that it makes sense but I don\u0027t know what would happen if there were several here.",
+      "revId": "7856ce7cc1e907f1458186f40c952463f8196c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
