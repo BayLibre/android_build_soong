@@ -89,7 +89,10 @@ func ProcessBuildFlags(dir string, namespaceMap map[string]string) error {
 	for _, line := range lines {
 		if comment := commentRegexp.FindStringSubmatch(commentRegexp.FindString(line)); comment != nil {
 			// Description is the text from any contiguous series of lines before a `flag()` call.
-			description += fmt.Sprintf(" %s", strings.TrimSpace(comment[commentRegexp.SubexpIndex("comment")]))
+			descLine := strings.TrimSpace(comment[commentRegexp.SubexpIndex("comment")])
+			if !strings.HasPrefix(descLine, "keep-sorted") {
+				description += fmt.Sprintf(" %s", descLine)
+			}
 			continue
 		}
 		matches := declRegexp.FindStringSubmatch(declRegexp.FindString(line))
