@@ -22,6 +22,30 @@
       },
       "revId": "41cbcbb17170a02f773aad88add7261d1b08f932",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03a5aa00_126a8a6b",
+        "filename": "cc/sabi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-04-20T04:45:08Z",
+      "side": 1,
+      "message": "Some apex libraries have header_abi_checker enabled, which means opt-in. They were tagged with PLATFORM. For example,\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:packages/modules/DnsResolver/Android.bp;l\u003d318\n\nThe properties were written before we implicitly tag all apex libraries with PLATFORM.\n\nThis change differentiates APEX and PLATFORM. Since the apex libraries with header_abi_checker enabled are not real opt-in libraries, they are tagged with APEX. I intend to move the real opt-in dumps to the libraries\u0027 own directories like aosp/3043453.",
+      "parentUuid": "92a0226a_875dcbe3",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 143,
+        "endChar": 69
+      },
+      "revId": "41cbcbb17170a02f773aad88add7261d1b08f932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
