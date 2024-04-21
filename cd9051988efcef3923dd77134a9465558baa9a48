@@ -239,6 +239,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5351e171_ff1b0351",
+        "filename": "android/build_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-04-21T02:59:35Z",
+      "side": 1,
+      "message": "I wanted to notify that the partition is not considered for the build flags with the build error. But in my second thought, users may not solve this error by adding the partition to the build system, but the only choice is to remove the module from the Android.bp. As you said, we don\u0027t need to enforce this with an error.\nI updated the code to generate empty json file and added a test for it.",
+      "parentUuid": "3de1c950_ac58e4cd",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 73
+      },
+      "revId": "cd9051988efcef3923dd77134a9465558baa9a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "502f4cec_56ea0eac",
