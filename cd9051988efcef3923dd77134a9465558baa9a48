@@ -287,6 +287,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4fb3cf7_2df79ae1",
+        "filename": "android/build_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-04-22T17:57:34Z",
+      "side": 1,
+      "message": "We may add the odm partition to flags.mk and release_config.scl with a separate CL if needed.\nThis CL reads the given information from the configurations.\n\nLet me work on that once this CL is submitted.",
+      "parentUuid": "88f7cfb1_bbf62d6b",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 73
+      },
+      "revId": "cd9051988efcef3923dd77134a9465558baa9a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "502f4cec_56ea0eac",
