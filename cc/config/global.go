@@ -296,7 +296,6 @@ var (
 		"-Wno-error=single-bit-bitfield-constant-conversion", // http://b/243965903
 		"-Wno-error=enum-constexpr-conversion",               // http://b/243964282
 		// New warnings to be fixed after clang-r522817
-		"-Wno-error=invalid-offsetof",
 		"-Wno-error=thread-safety-reference-return",
 
 		// Irrelevant on Android because _we_ don't use exceptions, but causes
