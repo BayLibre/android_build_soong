@@ -22,6 +22,30 @@
       },
       "revId": "7c035064db73ae5ba257a0d89e03dcbca671e4f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d32dfd8_6ae1b9ec",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-22T18:32:17Z",
+      "side": 1,
+      "message": "That seems somewhat orthogonal to this CL, that depends on the TransitionMutator used to create the relevant variants for each dependency type.  For these that is mostly the arch mutator, which hasn\u0027t been converted yet.",
+      "parentUuid": "100cf1eb_49fa6ea6",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "7c035064db73ae5ba257a0d89e03dcbca671e4f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
