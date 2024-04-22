@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f945c3_7256b1a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-22T23:06:06Z",
+      "side": 1,
+      "message": "@paulduffin@google.com I\u0027ll retrigger the presubmits once the metalava changes are merged to main",
+      "revId": "0a71d7329dcb113a848c42d4c64360671d0ac9d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
