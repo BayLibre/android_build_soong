@@ -263,6 +263,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f7cfb1_bbf62d6b",
+        "filename": "android/build_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-04-22T15:31:23Z",
+      "side": 1,
+      "message": "I don\u0027t think it was deliberate to exclude odm. I added that list of four partitions very early in trunk stable, before we had really gauged the interest of partners in flagging.  If you think it\u0027s better to just add all partitions to the list, that\u0027s fine too.",
+      "parentUuid": "5351e171_ff1b0351",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 73
+      },
+      "revId": "cd9051988efcef3923dd77134a9465558baa9a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "502f4cec_56ea0eac",
