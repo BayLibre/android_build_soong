@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c405ca8a_8bbe3519",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-23T19:14:11Z",
+      "side": 1,
+      "message": "+1 to making the information in PackagingSpec more specific than a whole module.",
+      "parentUuid": "4b7a4f37_3f0acbd9",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "9674b8a60de7901a86e9e66b95a75d09f9c72aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bbb00301_b2cacc6f",
         "filename": "filesystem/aconfig_files.go",
         "patchSetId": 1
