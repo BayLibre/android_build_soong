@@ -16,6 +16,24 @@
       "message": "You don\u0027t need this conditional, using the roboRuntimeOnlyTag has already checked the conditional.",
       "revId": "395402fc8b624ee25509fa0628b23fc33a7ad955",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "365c5975_ab2f3ee5",
+        "filename": "java/robolectric.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1959907
+      },
+      "writtenOn": "2024-04-23T22:48:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f542ad38_4e570615",
+      "revId": "395402fc8b624ee25509fa0628b23fc33a7ad955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

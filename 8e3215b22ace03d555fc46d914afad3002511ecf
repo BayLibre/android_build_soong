@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95b11a3f_311ee260",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1959907
+      },
+      "writtenOn": "2024-04-23T22:48:58Z",
+      "side": 1,
+      "message": "Oh, I see what you are saying. Changing to Bools.",
+      "parentUuid": "9cfc73a0_703185ff",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "8e3215b22ace03d555fc46d914afad3002511ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31a3bd0c_615cbb6f",
@@ -103,6 +127,24 @@
       "side": 1,
       "message": "Oh my apology for the confusion :P. You are right, Runtime_from_lib is also build from source, but I tried to distinguish it from the android-all jars, as it\u0027s pretty much a jar of \"robolectricCurrentLib\" (shadows + deps). I was thinking to have \"Runtime_from_lib\" that could even take any lib/jar or even a list of libs/jars as []string in the future to be able to take any runtime dependencies that we rely on running the tests but not able to add them to the compile time classpath.",
       "parentUuid": "31a3bd0c_615cbb6f",
+      "revId": "8e3215b22ace03d555fc46d914afad3002511ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5d25e65_a8ba8772",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1959907
+      },
+      "writtenOn": "2024-04-23T22:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4655589e_819f1361",
       "revId": "8e3215b22ace03d555fc46d914afad3002511ecf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
