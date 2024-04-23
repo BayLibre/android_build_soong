@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ceacdd30_3b4512ae",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1959907
+      },
+      "writtenOn": "2024-04-23T19:06:49Z",
+      "side": 1,
+      "message": "Yeah, ATM, the Reflection restriction is not yet implemented yet. Maybe I should comment it out till the implementation is in place.\n\nAs to these \"magic string\" I was mainly trying to add a enum like variable so that the used could choose. Having two bools might be slightly less clear on the strict levels. I also thought about int enum, but I feel using descriptive strings could be more clear for the future developers who\u0027s trying to add this flag to direct invoke Robolectric APIs awares that this is not the recommended behaviour and knows what they are doing.\n\nI am also open to suggestions and advices 😊",
+      "parentUuid": "b45b7a17_5ec19390",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "8e3215b22ace03d555fc46d914afad3002511ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31a3bd0c_615cbb6f",
         "filename": "java/robolectric.go",
         "patchSetId": 1
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4655589e_819f1361",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1959907
+      },
+      "writtenOn": "2024-04-23T19:06:49Z",
+      "side": 1,
+      "message": "Oh my apology for the confusion :P. You are right, Runtime_from_lib is also build from source, but I tried to distinguish it from the android-all jars, as it\u0027s pretty much a jar of \"robolectricCurrentLib\" (shadows + deps). I was thinking to have \"Runtime_from_lib\" that could even take any lib/jar or even a list of libs/jars as []string in the future to be able to take any runtime dependencies that we rely on running the tests but not able to add them to the compile time classpath.",
+      "parentUuid": "31a3bd0c_615cbb6f",
+      "revId": "8e3215b22ace03d555fc46d914afad3002511ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5469f84c_968bfa65",
         "filename": "java/robolectric.go",
         "patchSetId": 1
@@ -54,6 +96,24 @@
       "writtenOn": "2024-04-18T21:22:29Z",
       "side": 1,
       "message": "I don\u0027t particularly object to pulling this out of the jar, since it\u0027s around 157MB that is repeated in every robolectric test, but you could simplify this change and reduce the risk by keeping it in the jar for now, and just removing it from the classpath.  That would be done by using a different dependency tag for libraries that should be in the classpath vs. libraries that should both be in the classpath and combined into the final jar.  Normally `libTag` is used for the former and `staticLibTag` is used for the latter, but this file currently uses `libTag` for the latter.  You could replace all `libTag` with `staticLibTag`, and then use `libTag` for the `robolectricCurrentLib` dep when using strict mode.",
+      "revId": "8e3215b22ace03d555fc46d914afad3002511ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73333e94_0f61fe56",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1959907
+      },
+      "writtenOn": "2024-04-23T19:06:49Z",
+      "side": 1,
+      "message": "Thanks Colin, by manipulate the dependency tag, this indeed simplified the change. Thanks for pointing out the `handleLibDeps` is where deps are added to compile time classpath and packaged into the jars.\nNow it\u0027s much cleaner.",
+      "parentUuid": "5469f84c_968bfa65",
       "revId": "8e3215b22ace03d555fc46d914afad3002511ecf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
