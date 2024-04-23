@@ -46,6 +46,30 @@
       },
       "revId": "f0f18591a565a38450d78fb516ba8be6c8afcf41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce62fa0c_3e1b23b1",
+        "filename": "aconfig/codegen/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1981530
+      },
+      "writtenOn": "2024-04-23T20:25:04Z",
+      "side": 1,
+      "message": "Also I experimented with removing some of the deps, but get a compile error, so they seem to be needed.",
+      "parentUuid": "38f36fbf_ac172b11",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "f0f18591a565a38450d78fb516ba8be6c8afcf41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
