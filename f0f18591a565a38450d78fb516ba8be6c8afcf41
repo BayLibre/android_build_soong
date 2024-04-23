@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b828e3_54ddcdbd",
+        "filename": "aconfig/codegen/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-04-23T19:35:11Z",
+      "side": 1,
+      "message": "I don\u0027t think you really need the other 3 here, did you run into any problem without them? What you will have to fix is the places where there is something like:\ncc_library {\nname: \"A\",\nstatic_deps: [\"cc_aconfig_library_B\"],\n}\n\nit has to be changed to\ncc_library {\nname: \"A\",\nstatic_deps: [\"cc_aconfig_library_B\", \"libaconfig_storage_read_api_cc\"],\n}",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "f0f18591a565a38450d78fb516ba8be6c8afcf41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
