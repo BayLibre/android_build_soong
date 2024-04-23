@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9cfc73a0_703185ff",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-23T20:36:45Z",
+      "side": 1,
+      "message": "I\u0027d still suggest two bools.  Your strings have no error checking, so \"NoDirectAcces\" is treated as \"AllowAccess\".",
+      "parentUuid": "ceacdd30_3b4512ae",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "8e3215b22ace03d555fc46d914afad3002511ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31a3bd0c_615cbb6f",
         "filename": "java/robolectric.go",
         "patchSetId": 1
