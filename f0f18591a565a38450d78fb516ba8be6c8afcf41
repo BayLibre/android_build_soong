@@ -70,6 +70,30 @@
       },
       "revId": "f0f18591a565a38450d78fb516ba8be6c8afcf41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "132b1809_fd8add9b",
+        "filename": "aconfig/codegen/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-04-23T21:10:05Z",
+      "side": 1,
+      "message": "talked offline.",
+      "parentUuid": "ce62fa0c_3e1b23b1",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "f0f18591a565a38450d78fb516ba8be6c8afcf41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
