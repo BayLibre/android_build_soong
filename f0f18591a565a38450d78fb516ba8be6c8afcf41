@@ -22,6 +22,30 @@
       },
       "revId": "f0f18591a565a38450d78fb516ba8be6c8afcf41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f36fbf_ac172b11",
+        "filename": "aconfig/codegen/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1981530
+      },
+      "writtenOn": "2024-04-23T20:09:38Z",
+      "side": 1,
+      "message": "Ah yes, so I experimented a bit; we\u0027ll need to do that regardless if the deps are static or shared. What I\u0027m thinking of doing is creating a `cc_defaults` target, `libaconfig_storage_read_api_cc.defaults`, and then in there I\u0027ll include all the deps. Any dep taking the read api will include `defaults: [\"libaconfig_storage_read_api_cc.defaults\"]`. So we will need to update all of the Android.bp targets that take the read API as a static dep. I\u0027ve done it locally, there are only about ~10 such files, so it\u0027s not untenable.",
+      "parentUuid": "05b828e3_54ddcdbd",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "f0f18591a565a38450d78fb516ba8be6c8afcf41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
