@@ -46,6 +46,7 @@ const robolectricPrebuiltLibPattern = "platform-robolectric-%s-prebuilt"
 var (
 	roboCoverageLibsTag = dependencyTag{name: "roboCoverageLibs"}
 	roboRuntimesTag     = dependencyTag{name: "roboRuntimes"}
+	roboRuntimesOnlyTag = dependencyTag{name: "roboRuntimesOnlyTag"}
 )
 
 type robolectricProperties struct {
