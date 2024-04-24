@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "314019d9_03c49b4f",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-24T23:47:54Z",
+      "side": 1,
+      "message": "This is going to have odd behavior if the trimmed extension is not the full extension, e.g. `foo.a.b.c` when `trimExt` is `.b.c`.  ReplaceExtension will replace the `.a` as well.",
+      "range": {
+        "startLine": 1521,
+        "startChar": 48,
+        "endLine": 1521,
+        "endChar": 64
+      },
+      "revId": "7fc4a514cc18ab42058a9250e1236bf62d39ac5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6698312_02debd92",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-24T23:47:54Z",
+      "side": 1,
+      "message": "Trim",
+      "range": {
+        "startLine": 790,
+        "startChar": 4,
+        "endLine": 790,
+        "endChar": 9
+      },
+      "revId": "7fc4a514cc18ab42058a9250e1236bf62d39ac5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
