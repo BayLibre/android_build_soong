@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c805cf_1a7fc8b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-24T18:28:12Z",
+      "side": 1,
+      "message": "I don\u0027t think this runs into length limitations, but I can change it to something shorter like `a:\"r\"` if necessary.",
+      "revId": "5fda87b82269b77099049034e5892a408deb99fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
