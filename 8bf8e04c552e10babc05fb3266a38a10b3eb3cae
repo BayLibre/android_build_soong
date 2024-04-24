@@ -22,6 +22,30 @@
       },
       "revId": "8bf8e04c552e10babc05fb3266a38a10b3eb3cae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fc4dd52_33de41fc",
+        "filename": "cc/sabi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-04-24T04:39:43Z",
+      "side": 1,
+      "message": "aosp/3026483 NDK team does not want to generate the dumps.\nThe libraries that are in both APEX and NDK have two tags, so APEX dumps can be generated.",
+      "parentUuid": "7d09384d_b81bba8a",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 4
+      },
+      "revId": "8bf8e04c552e10babc05fb3266a38a10b3eb3cae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
