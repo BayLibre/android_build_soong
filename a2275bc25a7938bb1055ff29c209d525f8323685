@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b1a73d_e09a5c95",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-04-25T17:45:04Z",
+      "side": 1,
+      "message": "We could replace the hardcoded map using the relationship between the api scopes defined in sdk_library.go, like similar to [this](https://android-review.git.corp.google.com/c/platform/build/soong/+/2955008/4/java/prebuilt_apis.go#379). Do you mind adding a TODO in the comment?",
+      "range": {
+        "startLine": 623,
+        "startChar": 1,
+        "endLine": 633,
+        "endChar": 93
+      },
+      "revId": "a2275bc25a7938bb1055ff29c209d525f8323685",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
