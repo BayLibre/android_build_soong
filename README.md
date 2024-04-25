@@ -600,6 +600,9 @@ to soong config variables on each module, and then accumulating records of each
 module's all dependencies. `m soong_config_trace` builds information about
 hashes to `$OUT_DIR/soong/soong_config_trace.json`.
 
+Setting the environment variable `DISABLE_SOONG_CONFIG_TRACE_HASH=true` disables
+using hashes as subdirectories.
+
 ## Build logic
 
 The build logic is written in Go using the

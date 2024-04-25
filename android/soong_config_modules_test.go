@@ -18,6 +18,8 @@ import (
 	"fmt"
 	"path/filepath"
 	"testing"
+
+	"github.com/google/blueprint/proptools"
 )
 
 type soongConfigTestDefaultsModule struct {
@@ -658,6 +660,9 @@ func TestSoongConfigModuleTrace(t *testing.T) {
 			PrepareForTestWithDefaults,
 			PrepareForTestWithSoongConfigModuleBuildComponents,
 			prepareForSoongConfigTestModule,
+			FixtureModifyProductVariables(func(variables FixtureProductVariables) {
+				variables.DisableSoongConfigTrace = proptools.BoolPtr(false)
+			}),
 			FixtureRegisterWithContext(func(ctx RegistrationContext) {
 				ctx.FinalDepsMutators(registerSoongConfigTraceMutator)
 			}),
@@ -698,5 +703,41 @@ func TestSoongConfigModuleTrace(t *testing.T) {
 		AssertDeepEquals(t, "board_size hash calc", boardSize.base().commonProperties.SoongConfigTrace.hash(), boardSize.base().commonProperties.SoongConfigTraceHash)
 		AssertDeepEquals(t, "board_size trace", boardSize.base().commonProperties.SoongConfigTrace, boardSizeDefaults.base().commonProperties.SoongConfigTrace)
 		AssertDeepEquals(t, "board_size hash", boardSize.base().commonProperties.SoongConfigTraceHash, boardSizeDefaults.base().commonProperties.SoongConfigTraceHash)
+	})
+
+	t.Run("disabled soong config trace hash", func(t *testing.T) {
+		result := GroupFixturePreparers(
+			preparer,
+			PrepareForTestWithDefaults,
+			PrepareForTestWithSoongConfigModuleBuildComponents,
+			prepareForSoongConfigTestModule,
+			FixtureModifyProductVariables(func(variables FixtureProductVariables) {
+				variables.DisableSoongConfigTrace = proptools.BoolPtr(true)
+			}),
+			FixtureRegisterWithContext(func(ctx RegistrationContext) {
+				ctx.FinalDepsMutators(registerSoongConfigTraceMutator)
+			}),
+			FixtureWithRootAndroidBp(bp),
+		).RunTest(t)
+
+		// paths must not contain hash if DisableSoongConfigTrace is turned on
+		normal := result.ModuleForTests("normal", "").Module().(*soongConfigTestModule)
+		AssertDeepEquals(t, "normal out", normal.outputPath.RelativeToTop().String(), "out/soong/.intermediates/normal/test")
+
+		board1 := result.ModuleForTests("board_1", "").Module().(*soongConfigTestModule)
+		board1Output := board1.outputPath.RelativeToTop().String()
+		AssertDeepEquals(t, "board1 path", board1Output, "out/soong/.intermediates/board_1/test")
+
+		board2 := result.ModuleForTests("board_2", "").Module().(*soongConfigTestModule)
+		board2Output := board2.outputPath.RelativeToTop().String()
+		AssertDeepEquals(t, "board2 path", board2Output, "out/soong/.intermediates/board_2/test")
+
+		size := result.ModuleForTests("size", "").Module().(*soongConfigTestModule)
+		sizeOutput := size.outputPath.RelativeToTop().String()
+		AssertDeepEquals(t, "size path", sizeOutput, "out/soong/.intermediates/size/test")
+
+		boardSize := result.ModuleForTests("board_and_size", "").Module().(*soongConfigTestModule)
+		boardSizeOutput := boardSize.outputPath.RelativeToTop().String()
+		AssertDeepEquals(t, "board and size path", boardSizeOutput, "out/soong/.intermediates/board_and_size/test")
 	})
 }

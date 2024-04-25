@@ -2146,3 +2146,7 @@ func (c *config) BoardUseVbmetaDigestInFingerprint() bool {
 func (c *config) OemProperties() []string {
 	return c.productVariables.OemProperties
 }
+
+func (c *config) DisableSoongConfigTrace() bool {
+	return Bool(c.productVariables.DisableSoongConfigTrace)
+}
