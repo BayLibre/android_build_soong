@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "708c104b_9583fac6",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-25T16:58:35Z",
+      "side": 1,
+      "message": "I commented on b/336864420, but I don\u0027t think this is the right fix to the problem. Could we discuss more there?",
+      "revId": "57525e65851aab3eb4d3134c1008fc6bdb04194a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
