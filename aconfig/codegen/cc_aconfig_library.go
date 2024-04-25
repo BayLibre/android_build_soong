@@ -87,11 +87,11 @@ func (this *CcAconfigLibraryCallbacks) GeneratorDeps(ctx cc.DepsContext, deps cc
 	// Add a dependency for the aconfig flags base library if it is not forced read only
 	if mode != "force-read-only" {
 		deps.SharedLibs = append(deps.SharedLibs, baseLibDep)
-
-		deps.SharedLibs = append(deps.SharedLibs, libBaseDep)
-		deps.SharedLibs = append(deps.SharedLibs, libLogDep)
 		deps.SharedLibs = append(deps.SharedLibs, libAconfigStorageReadApiCcDep)
-		deps.SharedLibs = append(deps.SharedLibs, libAconfigStorageProtosCcDep)
+
+		deps.StaticLibs = append(deps.StaticLibs, libBaseDep)
+		deps.StaticLibs = append(deps.StaticLibs, libLogDep)
+		deps.StaticLibs = append(deps.StaticLibs, libAconfigStorageProtosCcDep)
 	}
 	// TODO: It'd be really nice if we could reexport this library and not make everyone do it.
 
