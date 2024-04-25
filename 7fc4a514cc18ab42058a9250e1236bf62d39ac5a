@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9f1b94c_6b3ea14f",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-04-25T03:12:12Z",
+      "side": 1,
+      "message": "Yes, that\u0027s intended, my original thought is that I still respect the original logic for replace extension(replace the last element of `.` and if there\u0027s no . in path just add it as extension.) so user may need to clean all the extension, if the src is foo.a.b.c and user want to make it to be foo.a.d, they may need to trim \".a.b.c\" and replace the extension with \".a.d\".\n\nIf that seems hard to understand I am thinking, how about that I change the attribute to `trimsuffix` which is more easy to understand and use the same logic as I mentioned above and maybe with some example\u0027s in doc string?\n\nWDYT?",
+      "parentUuid": "314019d9_03c49b4f",
+      "range": {
+        "startLine": 1521,
+        "startChar": 48,
+        "endLine": 1521,
+        "endChar": 64
+      },
+      "revId": "7fc4a514cc18ab42058a9250e1236bf62d39ac5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6698312_02debd92",
         "filename": "genrule/genrule.go",
         "patchSetId": 1
