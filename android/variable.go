@@ -184,6 +184,11 @@ type variableProperties struct {
 			Cflags []string
 			Cmd    *string
 		}
+		
+	    // GoogleSoc is true for those product which declare TARGET_SOC_NAME is google.
+		GoogleSoc struct {
+			Enabled *bool `android:"arch_variant"`
+		} `android:"arch_variant"`
 	} `android:"arch_variant"`
 }
 
@@ -509,6 +514,8 @@ type ProductVariables struct {
 	BoardUseVbmetaDigestInFingerprint *bool `json:",omitempty"`
 
 	OemProperties []string `json:",omitempty"`
+	
+	GoogleSoc *bool `json:",omitempty"`
 }
 
 type PartitionQualifiedVariablesType struct {
