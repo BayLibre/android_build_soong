@@ -406,6 +406,30 @@
       },
       "revId": "41cbcbb17170a02f773aad88add7261d1b08f932",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0dab2b0_97bd174f",
+        "filename": "cc/sabi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-04-25T04:05:58Z",
+      "side": 1,
+      "message": "IIUC, the end goal is to actually *reduce* complexity by making the intentions of generating ABI dumps and checks more explicit for opt-in libs:\n\n* placing only ref dumps for APEX / LLNDK under prebuilts/\n* opt-in libraries must define ref_dump_dir\n* APEX / LLNDK are automatically checked against their reference dump\n* opt-in libs must define header_abi_checker.enabled to enable building sdumps",
+      "parentUuid": "fad8bef7_bc600742",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 143,
+        "endChar": 69
+      },
+      "revId": "41cbcbb17170a02f773aad88add7261d1b08f932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
