@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a9384de_a7428123",
+        "filename": "cmd/release_config/release_config/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-04-26T18:12:41Z",
+      "side": 1,
+      "message": "??",
+      "revId": "f4cc08e11402b03944fc9e58f1aa7aa42f8c49f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1dfd258_d93ba781",
+        "filename": "cmd/release_config/release_config_lib/release_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-04-26T18:12:41Z",
+      "side": 1,
+      "message": "Will this work for apexes too?",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 20
+      },
+      "revId": "f4cc08e11402b03944fc9e58f1aa7aa42f8c49f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
