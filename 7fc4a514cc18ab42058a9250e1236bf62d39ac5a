@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a66c7330_59a63b33",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-04-26T02:41:28Z",
+      "side": 1,
+      "message": "Thanks, I think I already update the logic like this and add testcases, PTAL.",
+      "parentUuid": "66f7e626_91ada2d2",
+      "range": {
+        "startLine": 1521,
+        "startChar": 48,
+        "endLine": 1521,
+        "endChar": 64
+      },
+      "revId": "7fc4a514cc18ab42058a9250e1236bf62d39ac5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6698312_02debd92",
         "filename": "genrule/genrule.go",
         "patchSetId": 1
