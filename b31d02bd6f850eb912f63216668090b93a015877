@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ba7e60_fad8152f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-29T08:16:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69409aee_a093dbc1",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "b31d02bd6f850eb912f63216668090b93a015877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae652177_c3722684",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a6ef76a_27118fca",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-29T08:16:29Z",
+      "side": 1,
+      "message": "Thanks. I forgot it 😞",
+      "parentUuid": "ae652177_c3722684",
+      "revId": "b31d02bd6f850eb912f63216668090b93a015877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96a0cb57_079a6cc6",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-04-29T07:24:25Z",
       "side": 1,
       "message": "Consider using `android.FilterListPred` instead.",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "b31d02bd6f850eb912f63216668090b93a015877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91887393_84704781",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-29T08:16:29Z",
+      "side": 1,
+      "message": "I updated logic so moduleNames would be filtered when it is generated. Thx.",
+      "parentUuid": "96a0cb57_079a6cc6",
       "range": {
         "startLine": 154,
         "startChar": 1,
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73fe23e5_af36a0b5",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-29T08:16:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8634366_35534aff",
+      "range": {
+        "startLine": 168,
+        "startChar": 44,
+        "endLine": 168,
+        "endChar": 89
+      },
+      "revId": "b31d02bd6f850eb912f63216668090b93a015877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d0c4d84_cb9e3b07",
@@ -100,6 +190,30 @@
       "writtenOn": "2024-04-29T07:24:25Z",
       "side": 1,
       "message": "assert these",
+      "range": {
+        "startLine": 171,
+        "startChar": 3,
+        "endLine": 171,
+        "endChar": 20
+      },
+      "revId": "b31d02bd6f850eb912f63216668090b93a015877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f7a878_5b3ae089",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-29T08:16:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d0c4d84_cb9e3b07",
       "range": {
         "startLine": 171,
         "startChar": 3,
@@ -135,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebeb3168_878addea",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-29T08:16:29Z",
+      "side": 1,
+      "message": "Seems like this logic is required for `libclang_rt.asan`, and probably for other libclang_rt defines `is_llndk:true`.",
+      "parentUuid": "26460854_84ef7258",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "b31d02bd6f850eb912f63216668090b93a015877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2c5837a_823dce95",
         "filename": "cc/llndk_library.go",
         "patchSetId": 1
@@ -146,6 +284,30 @@
       "writtenOn": "2024-04-29T07:24:25Z",
       "side": 1,
       "message": "Is this TODO still needed?",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 73
+      },
+      "revId": "b31d02bd6f850eb912f63216668090b93a015877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ae23474_651443c4",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-29T08:16:29Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "b2c5837a_823dce95",
       "range": {
         "startLine": 212,
         "startChar": 0,
@@ -179,6 +341,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "232a72d5_794291f0",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-29T08:16:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e7760f9_c5579573",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 28
+      },
+      "revId": "b31d02bd6f850eb912f63216668090b93a015877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f86becc8_8a9624cc",
@@ -192,6 +378,30 @@
       "writtenOn": "2024-04-29T07:24:25Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 31
+      },
+      "revId": "b31d02bd6f850eb912f63216668090b93a015877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0ed589_03f4debf",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-29T08:16:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f86becc8_8a9624cc",
       "range": {
         "startLine": 226,
         "startChar": 0,
