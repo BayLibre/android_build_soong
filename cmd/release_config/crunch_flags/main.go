@@ -216,7 +216,7 @@ func ProcessBuildConfigs(dir, name string, paths []string, releaseProto *rc_prot
 				fmt.Printf("%s: Unexpected value %s=%s\n", path, valName, valValue)
 			}
 			if flagValue != nil {
-				if releaseProto.AconfigFlagsOnly {
+				if releaseProto.GetAconfigFlagsOnly() {
 					return fmt.Errorf("%s does not allow build flag overrides", RenameNext(name))
 				}
 				valPath := filepath.Join(dir, "flag_values", RenameNext(name), fmt.Sprintf("%s.textproto", valName))
@@ -300,7 +300,7 @@ func ProcessReleaseConfigMap(dir string, descriptionMap map[string]string) error
 			Name: proto.String(RenameNext(name)),
 		}
 		if aconfigFlagsOnlyConfigs[name] {
-			releaseConfig.AconfigFlagsOnly = true
+			releaseConfig.AconfigFlagsOnly = proto.Bool(true)
 		}
 		configFiles := config[configRegexp.SubexpIndex("files")]
 		files := strings.Split(strings.ReplaceAll(configFiles, "$(local_dir)", dir+"/"), " ")
