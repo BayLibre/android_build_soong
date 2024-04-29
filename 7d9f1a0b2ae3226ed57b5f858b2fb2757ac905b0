@@ -16,6 +16,24 @@
       "message": "Can this go in just build-flag, and have release_config_lib assume that it\u0027s always chdir-ed to the top level?\n\nFine for a followup CL.",
       "revId": "7d9f1a0b2ae3226ed57b5f858b2fb2757ac905b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f31bde3c_030ef25c",
+        "filename": "cmd/release_config/release_config_lib/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-04-29T22:50:54Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "5027644f_4238e8d2",
+      "revId": "7d9f1a0b2ae3226ed57b5f858b2fb2757ac905b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
