@@ -1,10 +1,12 @@
 package main
 
 import (
+	"cmp"
 	"flag"
 	"fmt"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 
 	rc_lib "android/soong/cmd/release_config/release_config_lib"
@@ -36,6 +38,13 @@ type Flags struct {
 
 	// Disable warning messages
 	quiet bool
+
+	// Show all release configs
+	allReleases bool
+
+	// Call get_build_var PRODUCT_RELEASE_CONFIG_MAPS to get the
+	// product-specific map directories.
+	useGetBuildVar bool
 }
 
 type CommandFunc func(*rc_lib.ReleaseConfigs, Flags, string, []string) error
@@ -60,6 +69,14 @@ func GetMapDir(path string) (string, error) {
 	return "", fmt.Errorf("Could not determine directory from %s", path)
 }
 
+func MarshalFlagDefaultValue(config *rc_lib.ReleaseConfig, name string) (ret string, err error) {
+	fa, ok := config.FlagArtifacts[name]
+	if !ok {
+		return "", fmt.Errorf("%s not found in %s", name, config.Name)
+	}
+	return rc_lib.MarshalValue(fa.Traces[0].Value), nil
+}
+
 func MarshalFlagValue(config *rc_lib.ReleaseConfig, name string) (ret string, err error) {
 	fa, ok := config.FlagArtifacts[name]
 	if !ok {
@@ -68,19 +85,41 @@ func MarshalFlagValue(config *rc_lib.ReleaseConfig, name string) (ret string, er
 	return rc_lib.MarshalValue(fa.Value), nil
 }
 
+// Returns a list of ReleaseConfig objects for which to process flags.
 func GetReleaseArgs(configs *rc_lib.ReleaseConfigs, commonFlags Flags) ([]*rc_lib.ReleaseConfig, error) {
 	var all bool
-	relFlags := flag.NewFlagSet("set", flag.ExitOnError)
-	relFlags.BoolVar(&all, "all", false, "Display all flags")
+	relFlags := flag.NewFlagSet("releaseFlags", flag.ExitOnError)
+	relFlags.BoolVar(&all, "all", false, "Display all releases")
 	relFlags.Parse(commonFlags.targetReleases)
 	var ret []*rc_lib.ReleaseConfig
-	if all {
+	if all || commonFlags.allReleases {
+		sortMap := map[string]int{
+			"trunk_staging": 0,
+			"trunk_food":    10,
+			"trunk":         20,
+			// Anything not listed above, uses this for key 1 in the sort.
+			"-default": 100,
+		}
+
 		for _, config := range configs.ReleaseConfigs {
 			ret = append(ret, config)
 		}
+		slices.SortFunc(ret, func(a, b *rc_lib.ReleaseConfig) int {
+			mapValue := func(v *rc_lib.ReleaseConfig) int {
+				if v, ok := sortMap[v.Name]; ok {
+					return v
+				}
+				return sortMap["-default"]
+			}
+			if n := cmp.Compare(mapValue(a), mapValue(b)); n != 0 {
+				return n
+			}
+			return cmp.Compare(a.Name, b.Name)
+		})
 		return ret, nil
 	}
 	for _, arg := range relFlags.Args() {
+		// Return releases in the order that they were given.
 		config, err := configs.GetReleaseConfig(arg)
 		if err != nil {
 			return nil, err
@@ -92,12 +131,17 @@ func GetReleaseArgs(configs *rc_lib.ReleaseConfigs, commonFlags Flags) ([]*rc_li
 
 func GetCommand(configs *rc_lib.ReleaseConfigs, commonFlags Flags, cmd string, args []string) error {
 	isTrace := cmd == "trace"
+	isSet := cmd == "set"
+
 	var all bool
-	getFlags := flag.NewFlagSet("set", flag.ExitOnError)
+	getFlags := flag.NewFlagSet("get", flag.ExitOnError)
 	getFlags.BoolVar(&all, "all", false, "Display all flags")
 	getFlags.Parse(args)
 	args = getFlags.Args()
 
+	if isSet {
+		commonFlags.allReleases = true
+	}
 	releaseConfigList, err := GetReleaseArgs(configs, commonFlags)
 	if err != nil {
 		return err
@@ -113,22 +157,66 @@ func GetCommand(configs *rc_lib.ReleaseConfigs, commonFlags Flags, cmd string, a
 		}
 	}
 
-	showName := len(releaseConfigList) > 1 || len(args) > 1
-	for _, config := range releaseConfigList {
-		var configName string
-		if len(releaseConfigList) > 1 {
-			configName = fmt.Sprintf("%s.", config.Name)
-		}
+	var maxVariableNameLen, maxReleaseNameLen int
+	var releaseNameFormat, variableNameFormat string
+	valueFormat := "%s"
+	showReleaseName := len(releaseConfigList) > 1
+	showVariableName := len(args) > 1
+	if showVariableName {
 		for _, arg := range args {
+			maxVariableNameLen = max(len(arg), maxVariableNameLen)
+		}
+		variableNameFormat = fmt.Sprintf("%%-%ds ", maxVariableNameLen)
+		valueFormat = "'%s'"
+	}
+	if showReleaseName {
+		for _, config := range releaseConfigList {
+			maxReleaseNameLen = max(len(config.Name), maxReleaseNameLen)
+		}
+		releaseNameFormat = fmt.Sprintf("%%-%ds ", maxReleaseNameLen)
+		valueFormat = "'%s'"
+	}
+
+	outputOneLine := func(variable, release, value string) {
+		var outStr string
+		if showVariableName {
+			outStr += fmt.Sprintf(variableNameFormat, variable)
+		}
+		if showReleaseName {
+			outStr += fmt.Sprintf(releaseNameFormat, release)
+		}
+		outStr += fmt.Sprintf(valueFormat, value)
+		fmt.Println(outStr)
+	}
+
+	for _, arg := range args {
+		for _, config := range releaseConfigList {
+			if isSet {
+				// If this is from the set command, format the output as:
+				// <default>           ""
+				// trunk_staging       ""
+				// trunk               ""
+				//
+				// ap1a                ""
+				// ...
+				switch config.Name {
+				case "trunk_staging":
+					defaultValue, err := MarshalFlagDefaultValue(config, arg)
+					if err != nil {
+						return err
+					}
+					outputOneLine(arg, "<default>", defaultValue)
+				case "trunk_food":
+					continue
+				case "trunk":
+					fmt.Println()
+				}
+			}
 			val, err := MarshalFlagValue(config, arg)
 			if err != nil {
 				return err
 			}
-			if showName {
-				fmt.Printf("%s%s=%s\n", configName, arg, val)
-			} else {
-				fmt.Printf("%s\n", val)
-			}
+			outputOneLine(arg, config.Name, val)
 			if isTrace {
 				for _, trace := range config.FlagArtifacts[arg].Traces {
 					fmt.Printf("  => \"%s\" in %s\n", rc_lib.MarshalValue(trace.Value), *trace.Source)
@@ -177,26 +265,37 @@ func SetCommand(configs *rc_lib.ReleaseConfigs, commonFlags Flags, cmd string, a
 		Value: rc_lib.UnmarshalValue(value),
 	}
 	flagPath := filepath.Join(valueDir, "flag_values", targetRelease, fmt.Sprintf("%s.textproto", name))
-	return rc_lib.WriteMessage(flagPath, flagValue)
+	err = rc_lib.WriteMessage(flagPath, flagValue)
+	if err != nil {
+		return err
+	}
+
+	// Reload the release configs.
+	configs, err = rc_lib.ReadReleaseConfigMaps(commonFlags.maps, commonFlags.targetReleases[0], commonFlags.useGetBuildVar)
+	if err != nil {
+		return err
+	}
+	err = GetCommand(configs, commonFlags, cmd, args[0:1])
+	if err != nil {
+		return err
+	}
+	fmt.Printf("Updated: %s\n", flagPath)
+	return nil
 }
 
 func main() {
-	var err error
 	var commonFlags Flags
 	var configs *rc_lib.ReleaseConfigs
-	var useBuildVar bool
+	topDir, err := rc_lib.GetTopDir()
 
-	outEnv := os.Getenv("OUT_DIR")
-	if outEnv == "" {
-		outEnv = "out"
-	}
 	// Handle the common arguments
-	flag.StringVar(&commonFlags.top, "top", ".", "path to top of workspace")
+	flag.StringVar(&commonFlags.top, "top", topDir, "path to top of workspace")
 	flag.BoolVar(&commonFlags.quiet, "quiet", false, "disable warning messages")
 	flag.Var(&commonFlags.maps, "map", "path to a release_config_map.textproto. may be repeated")
-	flag.StringVar(&commonFlags.outDir, "out_dir", rc_lib.GetDefaultOutDir(), "basepath for the output. Multiple formats are created")
+	flag.StringVar(&commonFlags.outDir, "out-dir", rc_lib.GetDefaultOutDir(), "basepath for the output. Multiple formats are created")
 	flag.Var(&commonFlags.targetReleases, "release", "TARGET_RELEASE for this build")
-	flag.BoolVar(&useBuildVar, "use_get_build_var", true, "use get_build_var PRODUCT_RELEASE_CONFIG_MAPS")
+	flag.BoolVar(&commonFlags.allReleases, "all-releases", false, "operate on all releases. (Ignored for set command)")
+	flag.BoolVar(&commonFlags.useGetBuildVar, "use-get-build-var", true, "use get_build_var PRODUCT_RELEASE_CONFIG_MAPS to get needed maps")
 	flag.Parse()
 
 	if commonFlags.quiet {
@@ -214,10 +313,9 @@ func main() {
 	// Get the current state of flagging.
 	relName := commonFlags.targetReleases[0]
 	if relName == "--all" || relName == "-all" {
-		// If the users said `--release --all`, grab trunk staging for simplicity.
-		relName = "trunk_staging"
+		commonFlags.allReleases = true
 	}
-	configs, err = rc_lib.ReadReleaseConfigMaps(commonFlags.maps, relName, true)
+	configs, err = rc_lib.ReadReleaseConfigMaps(commonFlags.maps, relName, commonFlags.useGetBuildVar)
 	if err != nil {
 		panic(err)
 	}
