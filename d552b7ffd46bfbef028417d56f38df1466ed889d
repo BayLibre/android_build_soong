@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8e79c30_d6211380",
+        "filename": "aconfig/codegen/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-04-29T19:44:32Z",
+      "side": 1,
+      "message": "indentation?",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 156,
+        "endChar": 14
+      },
+      "revId": "d552b7ffd46bfbef028417d56f38df1466ed889d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
