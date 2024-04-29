@@ -271,6 +271,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b56d356a_e419a6e3",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-29T09:06:34Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ebeb3168_878addea",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "b31d02bd6f850eb912f63216668090b93a015877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2c5837a_823dce95",
