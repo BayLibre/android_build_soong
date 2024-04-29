@@ -50,10 +50,11 @@ var (
 				`    --mode ${mode}` +
 				`    --cache ${in}` +
 				`    --out ${gendir}`,
+				`    --allow-instrumentation ${debug}`,
 			CommandDeps: []string{
 				"$aconfig",
 			},
-		}, "gendir", "mode")
+		}, "gendir", "mode", "debug")
 
 	// For rust_aconfig_library: Generate Rust library
 	rustRule = pctx.AndroidStaticRule("rust_aconfig_library",
