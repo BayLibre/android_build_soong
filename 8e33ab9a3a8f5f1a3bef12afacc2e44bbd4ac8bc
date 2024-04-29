@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c4a565_80d811a4",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-04-29T20:57:24Z",
+      "side": 1,
+      "message": "Can you add a file here that has an extra extension before the `trim_extension` value?  For example `qux.ext.a.b.c.proto`, which should generate `qux.ext.proto.h`.",
+      "revId": "8e33ab9a3a8f5f1a3bef12afacc2e44bbd4ac8bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
