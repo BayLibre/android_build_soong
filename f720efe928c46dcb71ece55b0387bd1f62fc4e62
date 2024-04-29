@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d185f12c_375442cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 52
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-04-29T18:53:30Z",
+      "side": 1,
+      "message": "Okay, the change does everything it needs and is ready for review.\n\nDuring work on it, I collected a few complaints related to soong project structure - please let me know if you want me to file bugs for any (or maybe some are trivially fixable?):\n- `CmakeSnapshot` doesn\u0027t hold state between mutators (see `cmakeSnapshotCache`)\n- obtaining `android.Paths` for other modules\u0027 `Glob` is very complicated (I needed `PostDepsMutators` and `FinalDepsMutators` to populate `cmakeSnapshotsUsingDirs` and `cmakeSnapshotData.sourceFiles`)\n- I tried detecting project\u0027s top-level directory (e.g. `frameworks/native/libs/binder` is TLD for `.../binder/tests`, `.../binder/ndk` and `.../binder/ndk/tests`). This would let me use `LIBBINDER_DIR` instead of full paths to sources (see http://shortn/_WEgRX2oVx2). But I couldn\u0027t find any good way except scanning for `default_applicable_licenses` in `Android.bp`\u0027s)\n- I wouldn\u0027t need `merge_zips` if `soong_zip` supported multiple sets of `-C`, `-P` and `-r` flags\n- Why can\u0027t you `WalkDeps` by tag like in `VisitDirectDepsWithTag`?\n- Why `cc.Module.compiler` is `baseCompiler` and not `binaryDecorator` (see `getCompilerProperties` vs `getLinkerProperties`)?",
+      "revId": "f720efe928c46dcb71ece55b0387bd1f62fc4e62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
