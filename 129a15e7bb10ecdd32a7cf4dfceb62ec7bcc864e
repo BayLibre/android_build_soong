@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae232e3_d8ff4c75",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-04-29T21:42:40Z",
+      "side": 1,
+      "message": "We don\u0027t need to do it in this change, but a potential future improvement would be to accept any situation where one entry is a superset of all other entries.",
+      "revId": "129a15e7bb10ecdd32a7cf4dfceb62ec7bcc864e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fd875b5_684e609d",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-04-29T21:42:40Z",
+      "side": 1,
+      "message": "This separated the Pathdeps doc comment from PathDeps. It should at least go above that comment, and might want its own comment.",
+      "revId": "129a15e7bb10ecdd32a7cf4dfceb62ec7bcc864e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99d28b24_ffa2dcb0",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 4115,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-04-29T21:42:40Z",
+      "side": 1,
+      "message": "I was rewriting this to be cleaner (e.g. rename `k` to `uniqueElementsFound`, use range iterators, etc. and then found that this is a copypaste of the existing paths function.\n\nI think that given the paths function exists and Go doesn\u0027t allow us to avoid repeating it, this style is fine, but am yet again grumpy at Go that this is not a `.unique_by_key(|lib| lib.libPath)` or similar.",
+      "revId": "129a15e7bb10ecdd32a7cf4dfceb62ec7bcc864e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a60f91a_9ece4ae2",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 4120,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-04-29T21:42:40Z",
+      "side": 1,
+      "message": "Do we actually need to project to strings here? I thought paths were directly comparable.",
+      "revId": "129a15e7bb10ecdd32a7cf4dfceb62ec7bcc864e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
