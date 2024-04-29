@@ -16,6 +16,24 @@
       "message": "I commented on b/336864420, but I don\u0027t think this is the right fix to the problem. Could we discuss more there?",
       "revId": "57525e65851aab3eb4d3134c1008fc6bdb04194a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff46c4ac_1b8fbe35",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-29T17:57:49Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t think we want this. The issue in the bug can be resolved by implementing a more robust binary search.",
+      "parentUuid": "708c104b_9583fac6",
+      "revId": "57525e65851aab3eb4d3134c1008fc6bdb04194a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
