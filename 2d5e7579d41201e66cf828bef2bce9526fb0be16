@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257c2af9_2b399a52",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-04-29T10:33:51Z",
+      "side": 0,
+      "message": "I noticed this is removed with the vndk deprecation.\nBut it is still used from the apex_text.go.\nDoes `--no-skip-soong-tests` pass without this?",
+      "range": {
+        "startLine": 408,
+        "startChar": 42,
+        "endLine": 408,
+        "endChar": 70
+      },
+      "revId": "2d5e7579d41201e66cf828bef2bce9526fb0be16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

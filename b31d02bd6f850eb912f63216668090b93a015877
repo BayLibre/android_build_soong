@@ -177,6 +177,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f02f5cec_41059a17",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-04-29T10:33:51Z",
+      "side": 1,
+      "message": "`LLNDK_LIBRARIES` is the list of LLNDK libraries to be installed. hwasan is removed from this list to install it only if required.\n\nHowever, it must be listed in the llndk.libraries.txt file to be read from linker config.",
+      "parentUuid": "73fe23e5_af36a0b5",
+      "range": {
+        "startLine": 168,
+        "startChar": 44,
+        "endLine": 168,
+        "endChar": 89
+      },
+      "revId": "b31d02bd6f850eb912f63216668090b93a015877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d0c4d84_cb9e3b07",
