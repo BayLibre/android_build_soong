@@ -68,6 +68,24 @@
       "message": "The single quotes are not necessary since there are no special characters being quoted here:\n\n```suggestion\n\t\t\"--cfg android_platform\",\n```",
       "revId": "152e48a5021a4a77f7f85d892a4e161fc39a1015",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd126858_7c181fcb",
+        "filename": "rust/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-04-30T16:03:01Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "70241bd9_9d90c8fa",
+      "revId": "152e48a5021a4a77f7f85d892a4e161fc39a1015",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
