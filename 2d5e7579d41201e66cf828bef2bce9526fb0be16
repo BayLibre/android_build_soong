@@ -22,6 +22,30 @@
       },
       "revId": "2d5e7579d41201e66cf828bef2bce9526fb0be16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cdc21f7_e29bb123",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-30T04:07:44Z",
+      "side": 0,
+      "message": "This is because llndk_libraries_txt_for_apex is added only when target is current version, while there is no more `vndkLibrariesTxtFiles` with current version. Let me clean up the test together.",
+      "parentUuid": "257c2af9_2b399a52",
+      "range": {
+        "startLine": 408,
+        "startChar": 42,
+        "endLine": 408,
+        "endChar": 70
+      },
+      "revId": "2d5e7579d41201e66cf828bef2bce9526fb0be16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
