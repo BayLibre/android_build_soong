@@ -34,6 +34,24 @@
       "parentUuid": "b21e28ef_1b4371cc",
       "revId": "4ba73fcfb4c9767a5de789aef364250e5b240f3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f352d2fd_ade25841",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-30T17:41:01Z",
+      "side": 1,
+      "message": "I don\u0027t like this style because when reading the code, you have to realize that a call to GatherPackagingSpecs is affected by a random, otherwise unused function definition somewhere completely different. You could still make a heirarchy by adding a `GetPackagingSpecFilter()` to android_filesystem that\u0027s called by android_system_image.\n\nI wouldn\u0027t be opposed to merging the two gathering functions and only having 1 that accepted a filter though.",
+      "parentUuid": "569d094a_b2ababd6",
+      "revId": "4ba73fcfb4c9767a5de789aef364250e5b240f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
