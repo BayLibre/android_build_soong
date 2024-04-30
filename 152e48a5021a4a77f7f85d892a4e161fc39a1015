@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff430843_85058bc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-04-30T15:46:41Z",
+      "side": 1,
+      "message": "Can you explain where this makes sense but `#[cfg(target_os \u003d \"android\")]` does not?\n\n(We might want to bikeshed the name too, because this will be applied to non-platform components built by soong, but if target_os is enough we can skip that)",
+      "revId": "152e48a5021a4a77f7f85d892a4e161fc39a1015",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
