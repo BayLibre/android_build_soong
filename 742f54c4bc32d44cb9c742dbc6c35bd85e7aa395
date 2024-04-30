@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b29af29d_767e9b03",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-30T19:17:19Z",
+      "side": 1,
+      "message": "Oh I see why you wanted to change it now. I guess you could do the same `ctx.Module().(SomeInterface).filterFunc` change you were doing before, but do it in the filesystem modules instead of in `GatherPackagingSpecs` so that it\u0027s clear that it applies to `GatherPackagingSpecs`. But this is fine too.",
+      "revId": "742f54c4bc32d44cb9c742dbc6c35bd85e7aa395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
