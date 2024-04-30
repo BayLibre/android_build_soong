@@ -51,6 +51,23 @@
       "message": "Please update the documentation somewhere as well so that I can find this later 😊 I already have a use for this flag.",
       "revId": "152e48a5021a4a77f7f85d892a4e161fc39a1015",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70241bd9_9d90c8fa",
+        "filename": "rust/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1943701
+      },
+      "writtenOn": "2024-04-30T15:56:47Z",
+      "side": 1,
+      "message": "The single quotes are not necessary since there are no special characters being quoted here:\n\n```suggestion\n\t\t\"--cfg android_platform\",\n```",
+      "revId": "152e48a5021a4a77f7f85d892a4e161fc39a1015",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
