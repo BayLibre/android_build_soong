@@ -201,6 +201,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "542117ad_8efacb10",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-04-30T06:57:54Z",
+      "side": 1,
+      "message": "`llndk.libraries.txt` file is created with `txt.fileNames` so it won\u0027t filter any hwasan libraries.",
+      "parentUuid": "f02f5cec_41059a17",
+      "range": {
+        "startLine": 168,
+        "startChar": 44,
+        "endLine": 168,
+        "endChar": 89
+      },
+      "revId": "b31d02bd6f850eb912f63216668090b93a015877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d0c4d84_cb9e3b07",
