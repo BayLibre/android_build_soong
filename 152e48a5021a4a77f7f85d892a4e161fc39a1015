@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1757065_c54e172b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-04-30T16:04:40Z",
+      "side": 1,
+      "message": "OK. `soong` seems like a better name for that than `android_platform`, since it\u0027s being set for host builds, app builds, etc. as well, but if you really want `android_platform` I guess it\u0027s fine.\n\nHopefully this doesn\u0027t get used that many places.",
+      "parentUuid": "df1de5e3_303cbb85",
+      "revId": "152e48a5021a4a77f7f85d892a4e161fc39a1015",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70241bd9_9d90c8fa",
         "filename": "rust/config/global.go",
         "patchSetId": 1
