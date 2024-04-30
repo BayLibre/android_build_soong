@@ -16,6 +16,24 @@
       "message": "Can you explain where this makes sense but `#[cfg(target_os \u003d \"android\")]` does not?\n\n(We might want to bikeshed the name too, because this will be applied to non-platform components built by soong, but if target_os is enough we can skip that)",
       "revId": "152e48a5021a4a77f7f85d892a4e161fc39a1015",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df1de5e3_303cbb85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-04-30T15:51:04Z",
+      "side": 1,
+      "message": "The idea is for this to replace the places we currently set cfg `soong`: https://cs.android.com/search?q\u003dlang:soong%20cfgs%20%22%5C%22soong%5C%22%22\u0026sq\u003d\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain\n\nThis is used to distinguish builds in the Android platform from cargo builds, primarily for external crates which need Android platform specific patches but we still need them to build without the patch for `cargo_embargo` to work.",
+      "parentUuid": "ff430843_85058bc5",
+      "revId": "152e48a5021a4a77f7f85d892a4e161fc39a1015",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
