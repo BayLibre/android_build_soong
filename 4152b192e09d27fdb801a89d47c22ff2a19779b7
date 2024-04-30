@@ -16,6 +16,24 @@
       "message": "Could you give an example of how \"simple gathering\" is used? Naively I would think we could just not make the PackagingSpec at all if skipInstall is true.",
       "revId": "4152b192e09d27fdb801a89d47c22ff2a19779b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af794963_b128aead",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-30T17:42:39Z",
+      "side": 1,
+      "message": "It\u0027s basically a theoretical one. I don\u0027t have a concrete example. There are some modules using PackagingBase like host_snapshot and sdk_repo_host, but I don\u0027t know if they can be considered simple gathering. That however doesn\u0027t mean that we won\u0027t have it. \n\n\u003e Naively I would think we could just not make the PackagingSpec at all if skipInstall is true.\n\nYes, I actually liked that, and tried it by merging the two concepts: packaging and installation. But in the end I decided to not go that far here. Perhaps in the future?",
+      "parentUuid": "110db2de_0b353b63",
+      "revId": "4152b192e09d27fdb801a89d47c22ff2a19779b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
