@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09252307_005b1288",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-30T18:53:41Z",
+      "side": 1,
+      "message": "This property should default to true, don\u0027t you think?\n```suggestion\n\tif !proptools.BoolDefault(f.properties.Build_logtags, true) {\n```",
+      "revId": "10468311faa19089399d708d95b401c1c14070c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a0c609_d429f137",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-30T18:53:41Z",
+      "side": 1,
+      "message": "Eventually this MergedLogtagsPath shouldn\u0027t come from a singleton. The filesystem (or maybe an `android_product` module if it needs to span multiple filesystems) should look at its transitive deps and create the merged file based on that, so that it doesn\u0027t change based on how much extra stuff is in your tree, or if someone changes an unrelated module.\n\nBut no need to do that now.",
+      "revId": "10468311faa19089399d708d95b401c1c14070c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
