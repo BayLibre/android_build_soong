@@ -243,8 +243,12 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 					continue
 				}
 			}
-			if _, ok := m[ps.relPathInPackage]; !ok {
-				m[ps.relPathInPackage] = ps
+			dstPath := ps.relPathInPackage
+			existingPs, exists := m[dstPath]
+			if !exists || existingPs == ps {
+				m[dstPath] = ps
+			} else {
+				ctx.ModuleErrorf("packaging conflict at %v:\n%v\n%v", dstPath, existingPs.srcPath, ps.srcPath)
 			}
 		}
 	})
