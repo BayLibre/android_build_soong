@@ -1,0 +1,180 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a4841b_6b2023c0",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-30T17:34:42Z",
+      "side": 0,
+      "message": "Having two versions of this function looked risky because there always is a chance that someone calls GatherPackagingSpec in a context where filtering is needed.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 65
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "33c7252d_5bfa8081",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/packaging.go",
+              "range": {
+                "startLine": 95,
+                "startChar": 0,
+                "endLine": 96,
+                "endChar": 0
+              },
+              "replacement": "\t// GatherPackagingSpecs gathers PackagingSpecs of transitive dependencies. This is expected to\n\t// be called in GenerateAndroidBuildActions.\n"
+            },
+            {
+              "path": "android/packaging.go",
+              "range": {
+                "startLine": 98,
+                "startChar": 0,
+                "endLine": 98,
+                "endChar": 0
+              },
+              "replacement": "\t// GatherFilteredPackagingSpecs gathers PackagingSpecs of transitive dependencies. This is\n\t// expected to be called in GenerateAndroidBuildActions.\n\tGatherFilteredPackagingSpecs(ctx ModuleContext) map[string]PackagingSpec\n\n"
+            },
+            {
+              "path": "android/packaging.go",
+              "range": {
+                "startLine": 104,
+                "startChar": 0,
+                "endLine": 106,
+                "endChar": 0
+              },
+              "replacement": "\t// Tests whether the given PackagingSpec needs to be included in the GatherPackagingSpecs or\n\t// not. This is expected to be called in GenerateAndroidBuildActions.\n"
+            },
+            {
+              "path": "android/packaging.go",
+              "range": {
+                "startLine": 258,
+                "startChar": 0,
+                "endLine": 258,
+                "endChar": 0
+              },
+              "replacement": "\n\t\t\tm[dstPath] \u003d ps\n\t\t}\n\t})\n\treturn m\n}\n\n// See PackageModule.GatherFilteredPackagingSpecs\nfunc (p *PackagingBase) GatherFilteredPackagingSpecs(ctx ModuleContext) map[string]PackagingSpec {\n\tpm :\u003d ctx.Module().(PackageModule)\n\tm :\u003d make(map[string]PackagingSpec)\n\tctx.VisitDirectDeps(func(child Module) {\n\t\tif pi, ok :\u003d ctx.OtherModuleDependencyTag(child).(PackagingItem); !ok || !pi.IsPackagingItem() {\n\t\t\treturn\n\t\t}\n\t\tfor _, ps :\u003d range child.TransitivePackagingSpecs() {\n\t\t\tif !pm.FilterPackagingSpec(\u0026ps) {\n\t\t\t\tcontinue\n\t\t\t}\n\t\t\tdstPath :\u003d ps.relPathInPackage\n\t\t\tif existingPs, ok :\u003d m[dstPath]; ok {\n\t\t\t\tsameSrc :\u003d existingPs.srcPath \u003d\u003d ps.srcPath\n\t\t\t\tsameSymlink :\u003d existingPs.symlinkTarget \u003d\u003d ps.symlinkTarget\n\t\t\t\tif !sameSrc || !sameSymlink {\n\t\t\t\t\tctx.ModuleErrorf(\"packaging conflict at %v:\\n%v\\n%v\", dstPath, existingPs, ps)\n\t\t\t\t\tcontinue\n\t\t\t\t}\n\t\t\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2a0f7cde869b3bdfb7ff1f6c6605435f49f7a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e375c7_cdca803e",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-30T17:34:42Z",
+      "side": 0,
+      "message": "For the same reason, I don\u0027t like this either, but didn\u0027t touch it.",
+      "range": {
+        "startLine": 39,
+        "startChar": 18,
+        "endLine": 39,
+        "endChar": 34
+      },
+      "revId": "2a0f7cde869b3bdfb7ff1f6c6605435f49f7a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86898c34_57edd744",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-30T17:34:42Z",
+      "side": 0,
+      "message": "This actually is an impl detail of the filesystem module. We could depend on that simply because we are on the same package.",
+      "range": {
+        "startLine": 40,
+        "startChar": 18,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "aa025c41_a807bc80",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "filesystem/system_image.go",
+              "range": {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 41,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "2a0f7cde869b3bdfb7ff1f6c6605435f49f7a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf8b5f63_6f116a23",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-30T17:34:42Z",
+      "side": 0,
+      "message": "I didn\u0027t want to add a null check here. ex:\n\n`(s.filesystem.filterPackagingSpec \u003d\u003d nil || s.filesystem.filterPackagingSpec(ps)) \u0026\u0026 ps.Partition() \u003d\u003d \"system\"`",
+      "range": {
+        "startLine": 101,
+        "startChar": 7,
+        "endLine": 101,
+        "endChar": 8
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "feee269c_1d52d0e7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "filesystem/system_image.go",
+              "range": {
+                "startLine": 100,
+                "startChar": 0,
+                "endLine": 101,
+                "endChar": 0
+              },
+              "replacement": "\treturn (s.filesystem.FilterPackagingSpec \u003d\u003d nil || s.filesystem.FilterPackagingSpec(ps)) \u0026\u0026 ps.Partition() \u003d\u003d \"system\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2a0f7cde869b3bdfb7ff1f6c6605435f49f7a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
