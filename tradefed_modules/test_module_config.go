@@ -168,25 +168,8 @@ func (m *testModuleConfigModule) GenerateAndroidBuildActions(ctx android.ModuleC
 // Returns _, true if okay.
 func (m *testModuleConfigModule) validateTestSuites(ctx android.ModuleContext) bool {
 	if len(m.tradefedProperties.Test_suites) == 0 {
-		ctx.ModuleErrorf("At least one test-suite must be set or this won't run. Use \"general-tests\"")
+		ctx.ModuleErrorf("At least one test-suite must be set or this won't run. Use \"general-tests\" or \"device-tests\"")
 		return false
-	}
-
-	derivedSuites := make(map[string]bool)
-	// See if any suites in base is also in derived (other than general-tests)
-	for _, s := range m.tradefedProperties.Test_suites {
-		if s != "general-tests" {
-			derivedSuites[s] = true
-		}
-	}
-	if len(derivedSuites) == 0 {
-		return true
-	}
-	for _, baseSuite := range m.provider.TestSuites {
-		if derivedSuites[baseSuite] {
-			ctx.ModuleErrorf("TestSuite %s exists in the base, do not add it here", baseSuite)
-			return false
-		}
 	}
 
 	return true
