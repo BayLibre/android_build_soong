@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21e28ef_1b4371cc",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-30T17:23:23Z",
+      "side": 1,
+      "message": "Do we need to change this? I think it\u0027s easier to use and more flexible if you can pass the filter in explicitly instead of tying it to the module.",
+      "revId": "4ba73fcfb4c9767a5de789aef364250e5b240f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
