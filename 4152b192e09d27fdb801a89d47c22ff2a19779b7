@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "110db2de_0b353b63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-30T17:28:35Z",
+      "side": 1,
+      "message": "Could you give an example of how \"simple gathering\" is used? Naively I would think we could just not make the PackagingSpec at all if skipInstall is true.",
+      "revId": "4152b192e09d27fdb801a89d47c22ff2a19779b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
