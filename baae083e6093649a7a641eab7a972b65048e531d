@@ -22,6 +22,30 @@
       },
       "revId": "baae083e6093649a7a641eab7a972b65048e531d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2e1b82_d5432164",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-30T00:14:39Z",
+      "side": 1,
+      "message": "I noticed this a while ago, I think I was looking at the `zipinfo -l` output for some python binary and saw that everything was listed as \u0027stor\u0027 instead of \u0027defN\u0027.",
+      "parentUuid": "0ff75d26_5c80553c",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "baae083e6093649a7a641eab7a972b65048e531d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
