@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f5efa7_525b4d6b",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-30T17:26:51Z",
+      "side": 1,
+      "message": "Consider making a `packagingSpec.Equals(packagingSpec)` method that can be called here. It should probably include other fields as well like `partition` and `executable`.",
+      "revId": "2a0f7cde869b3bdfb7ff1f6c6605435f49f7a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd4784e_92fe9717",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-04-30T17:26:51Z",
+      "side": 1,
+      "message": "Consider moving this continue outside of the if statement. Before, it took the first packaging spec, now you\u0027re taking the last duplicate spec.",
+      "revId": "2a0f7cde869b3bdfb7ff1f6c6605435f49f7a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
