@@ -16,6 +16,24 @@
       "message": "@jdesprez@google.com\n\n1. What if we disallow using the same test_suite_tag in the base test and the derived test instead?\n2. We should also disallow including in cts in both.\n\nBoth of these are optional.",
       "revId": "0dd436cd0a165aa5fe5c317c803b494f91a8844a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fff5ae3_5efc8e10",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-30T14:27:16Z",
+      "side": 0,
+      "message": "I was doing 1. before.  Except I allowed \"general-tests\".  I considered allowing \"general-tests\" or \"device-tests\" as the one repeated test_suite, but then decided to simplify until the migration is done.  Since these is in preparation of making these symlinks to take less space it seems okay.\nI also want to wait to see if we do  \u0027dedicated test mapping groups for teams\u0027 and if they would go in their own zips or not.",
+      "parentUuid": "7522497a_5cd3b1e5",
+      "revId": "0dd436cd0a165aa5fe5c317c803b494f91a8844a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
