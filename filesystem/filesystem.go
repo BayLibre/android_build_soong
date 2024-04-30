@@ -127,6 +127,9 @@ type filesystemProperties struct {
 	// the make version.
 	Include_make_built_files string
 
+	// When set, builds etc/event-log-tags file by merging logtags from all dependencies.
+	Build_logtags *bool
+
 	Fsverity fsverityProperties
 }
 
@@ -288,6 +291,7 @@ func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) androi
 	f.buildNonDepsFiles(ctx, builder, rootDir)
 	f.addMakeBuiltFiles(ctx, builder, rootDir)
 	f.buildFsverityMetadataFiles(ctx, builder, specs, rootDir, rebasedDir)
+	f.buildEventLogtagsFile(ctx, builder, rebasedDir)
 
 	// run host_init_verifier
 	// Ideally we should have a concept of pluggable linters that verify the generated image.
@@ -428,6 +432,7 @@ func (f *filesystem) buildCpioImage(ctx android.ModuleContext, compressed bool) 
 
 	f.buildNonDepsFiles(ctx, builder, rootDir)
 	f.buildFsverityMetadataFiles(ctx, builder, specs, rootDir, rebasedDir)
+	f.buildEventLogtagsFile(ctx, builder, rebasedDir)
 
 	output := android.PathForModuleOut(ctx, f.installFileName()).OutputPath
 	cmd := builder.Command().
@@ -483,6 +488,37 @@ func (f *filesystem) addMakeBuiltFiles(ctx android.ModuleContext, builder *andro
 		FlagWithInput("--file-list", android.PathForArbitraryOutput(ctx, fileListFile)).
 		Text(rootDir.String()).
 		Text(android.PathForArbitraryOutput(ctx, stagingDir).String())
+}
+
+func (f *filesystem) buildEventLogtagsFile(ctx android.ModuleContext, builder *android.RuleBuilder, rebasedDir android.OutputPath) {
+	if !proptools.Bool(f.properties.Build_logtags) {
+		return
+	}
+
+	logtagsFilePaths := make(map[string]bool)
+	ctx.WalkDeps(func(child, parent android.Module) bool {
+		if logtagsInfo, ok := android.OtherModuleProvider(ctx, child, android.LogtagsProviderKey); ok {
+			for _, path := range logtagsInfo.Logtags {
+				logtagsFilePaths[path.String()] = true
+			}
+		}
+		return true
+	})
+
+	if len(logtagsFilePaths) == 0 {
+		return
+	}
+
+	etcPath := rebasedDir.Join(ctx, "etc")
+	eventLogtagsPath := etcPath.Join(ctx, "event-log-tags")
+	builder.Command().Text("mkdir").Flag("-p").Text(etcPath.String())
+	cmd := builder.Command().BuiltTool("merge-event-log-tags").
+		FlagWithArg("-o ", eventLogtagsPath.String()).
+		FlagWithInput("-m ", android.MergedLogtagsPath(ctx))
+
+	for _, path := range android.SortedKeys(logtagsFilePaths) {
+		cmd.Text(path)
+	}
 }
 
 type partition interface {
