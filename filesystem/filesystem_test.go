@@ -479,3 +479,26 @@ func TestInconsistentPartitionTypesInDefaults(t *testing.T) {
 		}
 	`)
 }
+
+func TestDuplicatedEntries(t *testing.T) {
+	fixture.ExtendWithErrorHandler(android.FixtureExpectsOneErrorPattern(
+		"packaging conflict at")).
+		RunTestWithBp(t, `
+		android_filesystem {
+			name: "fs",
+			deps: [
+				"foo",
+				"foo_dup",
+			],
+		}
+
+		cc_binary {
+			name: "foo",
+		}
+
+		cc_binary {
+			name: "foo_dup",
+			stem: "foo",
+		}
+	`)
+}
