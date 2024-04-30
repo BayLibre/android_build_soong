@@ -94,13 +94,16 @@ type PackageModule interface {
 
 	// GatherPackagingSpecs gathers PackagingSpecs of transitive dependencies.
 	GatherPackagingSpecs(ctx ModuleContext) map[string]PackagingSpec
-	GatherPackagingSpecsWithFilter(ctx ModuleContext, filter func(PackagingSpec) bool) map[string]PackagingSpec
 
 	// CopyDepsToZip zips the built artifacts of the dependencies into the given zip file and
 	// returns zip entries in it. This is expected to be called in GenerateAndroidBuildActions,
 	// followed by a build rule that unzips it and creates the final output (img, zip, tar.gz,
 	// etc.) from the extracted files
 	CopyDepsToZip(ctx ModuleContext, specs map[string]PackagingSpec, zipOut WritablePath) []string
+
+	// Tests whether the given PackagingSpec needs to be included in the GatherPackagingSpec or
+	// not.
+	FilterPackagingSpec(ps *PackagingSpec) bool
 }
 
 // PackagingBase provides basic functionality for packaging dependencies. A module is expected to
@@ -231,17 +234,17 @@ func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.Dep
 	}
 }
 
-func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter func(PackagingSpec) bool) map[string]PackagingSpec {
+// See PackageModule.GatherPackagingSpecs
+func (p *PackagingBase) GatherPackagingSpecs(ctx ModuleContext) map[string]PackagingSpec {
+	pm := ctx.Module().(PackageModule)
 	m := make(map[string]PackagingSpec)
 	ctx.VisitDirectDeps(func(child Module) {
 		if pi, ok := ctx.OtherModuleDependencyTag(child).(PackagingItem); !ok || !pi.IsPackagingItem() {
 			return
 		}
 		for _, ps := range child.TransitivePackagingSpecs() {
-			if filter != nil {
-				if !filter(ps) {
-					continue
-				}
+			if !pm.FilterPackagingSpec(&ps) {
+				continue
 			}
 			dstPath := ps.relPathInPackage
 			existingPs, exists := m[dstPath]
@@ -253,11 +256,6 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 		}
 	})
 	return m
-}
-
-// See PackageModule.GatherPackagingSpecs
-func (p *PackagingBase) GatherPackagingSpecs(ctx ModuleContext) map[string]PackagingSpec {
-	return p.GatherPackagingSpecsWithFilter(ctx, nil)
 }
 
 // CopySpecsToDir is a helper that will add commands to the rule builder to copy the PackagingSpec
@@ -315,4 +313,10 @@ func (p *PackagingBase) CopyDepsToZip(ctx ModuleContext, specs map[string]Packag
 
 	builder.Build("zip_deps", fmt.Sprintf("Zipping deps for %s", ctx.ModuleName()))
 	return entries
+}
+
+func (p *PackagingBase) FilterPackagingSpec(ps *PackagingSpec) bool {
+	// By default every packaging spec is included. This can be overridden by the module
+	// inheriting from PackagingBase
+	return true
 }
