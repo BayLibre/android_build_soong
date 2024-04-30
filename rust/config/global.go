@@ -53,6 +53,9 @@ var (
 		"--color=always",
 		"-Z dylib-lto",
 		"-Z link-native-libraries=no",
+
+		// cfg flag to indicate that we are building in AOSP
+		"--cfg 'android_platform'",
 	}
 
 	LinuxHostGlobalLinkFlags = []string{
