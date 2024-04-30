@@ -52,6 +52,24 @@
       "parentUuid": "569d094a_b2ababd6",
       "revId": "4ba73fcfb4c9767a5de789aef364250e5b240f3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "add4403c_585ec253",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-30T19:06:27Z",
+      "side": 1,
+      "message": "hmm, I don\u0027t like the suggested style because it feels like breaking the module boundaries. But in the end, it may be just a matter of taste.  I\u0027ve amended the change as requested.",
+      "parentUuid": "f352d2fd_ade25841",
+      "revId": "4ba73fcfb4c9767a5de789aef364250e5b240f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

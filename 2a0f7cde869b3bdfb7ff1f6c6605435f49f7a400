@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eed2ea4_c1335c04",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-30T19:06:27Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "f4a4841b_6b2023c0",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 65
+      },
+      "revId": "2a0f7cde869b3bdfb7ff1f6c6605435f49f7a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53e375c7_cdca803e",
@@ -85,6 +109,30 @@
       "writtenOn": "2024-04-30T17:34:42Z",
       "side": 0,
       "message": "For the same reason, I don\u0027t like this either, but didn\u0027t touch it.",
+      "range": {
+        "startLine": 39,
+        "startChar": 18,
+        "endLine": 39,
+        "endChar": 34
+      },
+      "revId": "2a0f7cde869b3bdfb7ff1f6c6605435f49f7a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b7dcbf3_2c7d8717",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-30T19:06:27Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "53e375c7_cdca803e",
       "range": {
         "startLine": 39,
         "startChar": 18,
@@ -136,6 +184,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93fddca6_a1646c0e",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-30T19:06:27Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "86898c34_57edd744",
+      "range": {
+        "startLine": 40,
+        "startChar": 18,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "revId": "2a0f7cde869b3bdfb7ff1f6c6605435f49f7a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf8b5f63_6f116a23",
@@ -173,6 +245,30 @@
           ]
         }
       ],
+      "revId": "2a0f7cde869b3bdfb7ff1f6c6605435f49f7a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce4ee9f_949c5686",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-04-30T19:06:27Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "cf8b5f63_6f116a23",
+      "range": {
+        "startLine": 101,
+        "startChar": 7,
+        "endLine": 101,
+        "endChar": 8
+      },
       "revId": "2a0f7cde869b3bdfb7ff1f6c6605435f49f7a400",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
