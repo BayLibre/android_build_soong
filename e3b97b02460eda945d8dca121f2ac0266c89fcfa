@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75e80191_051bb28b",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-30T18:46:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fe61d1f_7980abd7",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 36
+      },
+      "revId": "e3b97b02460eda945d8dca121f2ac0266c89fcfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "746bd08d_81f1c872",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-30T18:25:04Z",
       "side": 1,
       "message": "This method currently only returns a single bool value.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 27
+      },
+      "revId": "e3b97b02460eda945d8dca121f2ac0266c89fcfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a709fbd_096a3e2e",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-04-30T18:46:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "746bd08d_81f1c872",
       "range": {
         "startLine": 167,
         "startChar": 0,
