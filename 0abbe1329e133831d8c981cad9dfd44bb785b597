@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff3188c_78e6e87a",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-01T22:30:57Z",
+      "side": 1,
+      "message": "Since some soong modules still list `android.test.base` in their .bp files and rely on soong\u0027s automagic resolution, should this change be submitted in a topic that makes those references explicit?",
+      "range": {
+        "startLine": 258,
+        "startChar": 23,
+        "endLine": 258,
+        "endChar": 47
+      },
+      "revId": "0abbe1329e133831d8c981cad9dfd44bb785b597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a71da7_93b95f39",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-01T22:30:57Z",
+      "side": 1,
+      "message": "I think we do not create installation rules for stubs, so `out/target/product/\u003c\u003e/framework/android.test.base.stubs.jar` will not be a valid path. Did you notice any changes to the .ninja file with this change?",
+      "range": {
+        "startLine": 296,
+        "startChar": 44,
+        "endLine": 298,
+        "endChar": 75
+      },
+      "revId": "0abbe1329e133831d8c981cad9dfd44bb785b597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
