@@ -16,6 +16,24 @@
       "message": "Marking as WIP until resolving dexpreopt related issues for `userdebug` builds :( Details about the issue can be found [here](https://android-build.corp.google.com/artifact/pending/P73389962/aosp_cf_riscv64_phone-trunk_staging-userdebug/latest/view/logs%2Fbuild_error.log).",
       "revId": "f74cc67df377188a04e6b2a9566b6f19d6408c3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71ad0f63_b64f4364",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-01T18:36:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ca1c061_2d4a1afe",
+      "revId": "f74cc67df377188a04e6b2a9566b6f19d6408c3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

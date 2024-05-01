@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84b070a9_801be208",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-01T18:36:41Z",
+      "side": 1,
+      "message": "The two targets are currently failing with `FailPresubmitOnLowDiskError`, which I believe can be resolved with b/338165208#comment7. Other than this, no build errors are observed and I believe that this change is ready for review.",
+      "revId": "c817a9711175edee77d2be4c3b209f0afe453264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
