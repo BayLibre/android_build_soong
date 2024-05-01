@@ -430,7 +430,9 @@ func (m *moduleContext) skipInstall() bool {
 		return true
 	}
 
-	if m.module.base().commonProperties.HideFromMake {
+	// When explicitly hidden from make by setting the property hide_from_make, the module
+	// is not considered uninstallable. It is just not exported to Make.
+	if m.module.base().commonProperties.HideFromMakeInternal {
 		return true
 	}
 
@@ -505,7 +507,7 @@ func (m *moduleContext) installFile(installPath InstallPath, name string, srcPat
 			orderOnlyDeps = InstallPaths(deps).Paths()
 		}
 
-		if m.Config().KatiEnabled() {
+		if m.Config().KatiEnabled() && !m.module.base().HideFromMake() {
 			// When creating the install rule in Soong but embedding in Make, write the rule to a
 			// makefile instead of directly to the ninja file so that main.mk can add the
 			// dependencies from the `required` property that are hard to resolve in Soong.
