@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ff3ce8_471ba180",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-05-01T21:28:55Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll be out for a bit but will try with only one of -target/-host and upload a new patch if that works.",
+      "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ba5b521_e1dd8561",
@@ -139,6 +156,24 @@
       "side": 1,
       "message": "A few questions:\n- Why do we need both `-target` and `-host` phony targets for both `test_module_config` and `test_module_config_host`? It sounds bit unintuitive for me that the phony target `-host` needs to be created for `test_module_config`, and vice versa for `test_module_config_host`.\n- Phony targets are considered \"dirty\", and will always be rebuilt in incremental build. Instead of the `-target` and `-host` phony targets depending on the base module phony targets, can we make it depend on an actual depending target file?",
       "parentUuid": "32241190_e00ce36e",
+      "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ad83e02_d7917c79",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-05-01T21:28:55Z",
+      "side": 1,
+      "message": "I\u0027ll try just using one of -target or -host.  Since I didn\u0027t fully understand when they are created, I thought there was no reason not to create both of them.\n\nFor .phony targets, I thought it being \"dirty\" just meant that anything that depended on it will then proceed to do the dirty analysis on its children.  i.e. phone is just an alias.  I thought that was the point and expanding to its children defeated the purpose.  Are you expecting extra time/compiles to happen on incremental builds?  I don\u0027t see these happening, but could check verbose logs again.",
+      "parentUuid": "2378ef71_0ec97b03",
       "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
