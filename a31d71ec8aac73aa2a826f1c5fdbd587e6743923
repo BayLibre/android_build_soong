@@ -16,6 +16,24 @@
       "message": "I mean all these deps should be inside the if block above in the long run. In eventual form, if it is all read only, then we don\u0027t need any flag read api at all, as the values are hardcoded in the flag api during codegen. So all these three deps would be inside the if block. \n\nBut we need it for now, as we are reading from storage for fixed read only instead of hardcode the values in the generated code. So we need it even for force read only.",
       "revId": "a31d71ec8aac73aa2a826f1c5fdbd587e6743923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e72491_cb866ee5",
+        "filename": "aconfig/codegen/cc_aconfig_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1981530
+      },
+      "writtenOn": "2024-05-01T13:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3873fc6e_22cc7ffb",
+      "revId": "a31d71ec8aac73aa2a826f1c5fdbd587e6743923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
