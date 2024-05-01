@@ -604,6 +604,11 @@ func (d *Droidstubs) apiLevelsAnnotationsFlags(ctx android.ModuleContext, cmd *a
 	}
 }
 
+// AndroidPlusUpdatableJar is the name of some extra jars added into `module-lib` and
+// `system-server` directories that contain all the APIs provided by the platform and updatable
+// modules because the `android.jar` files do not. See b/337836752.
+const AndroidPlusUpdatableJar = "android-plus-updatable.jar"
+
 func (d *Droidstubs) apiLevelsGenerationFlags(ctx android.ModuleContext, cmd *android.RuleBuilderCommand, stubsType StubsType, apiVersionsXml android.WritablePath) {
 	if len(d.properties.Api_levels_annotations_dirs) == 0 {
 		ctx.PropertyErrorf("api_levels_annotations_dirs",
@@ -659,6 +664,10 @@ func (d *Droidstubs) apiLevelsGenerationFlags(ctx android.ModuleContext, cmd *an
 					depBase := dep.Base()
 					if depBase == filename {
 						cmd.Implicit(dep)
+					} else if depBase == AndroidPlusUpdatableJar {
+						// The module-lib and system-server directories should use `android-plus-updatable.jar`
+						// instead of `android.jar`. See AndroidPlusUpdatableJar for more information.
+						cmd.Implicit(dep)
 					} else if filename != "android.jar" && depBase == "android.jar" {
 						// Metalava implicitly searches these patterns:
 						//  prebuilts/tools/common/api-versions/android-%/android.jar
@@ -678,9 +687,25 @@ func (d *Droidstubs) apiLevelsGenerationFlags(ctx android.ModuleContext, cmd *an
 		}
 	})
 
+	// Generate the list of --android-jar-pattern options. The order matters so the first one which
+	// matches will be the one that is used for a specific api level..
 	for _, sdkDir := range sdkDirs {
 		for _, dir := range dirs {
-			cmd.FlagWithArg("--android-jar-pattern ", fmt.Sprintf("%s/%%/%s/%s", dir, sdkDir, filename))
+			addPattern := func(jarFilename string) {
+				cmd.FlagWithArg("--android-jar-pattern ", fmt.Sprintf("%s/%%/%s/%s", dir, sdkDir, jarFilename))
+			}
+
+			if sdkDir == "module-lib" || sdkDir == "system-server" {
+				// The module-lib and system-server android.jars do not include the updatable modules (as
+				// doing so in the source would introduce dependency cycles and the prebuilts have to
+				// match the sources). So, instead an additional `android-plus-updatable.jar` will be used
+				// that does include the updatable modules and this pattern will match that. This pattern
+				// is added in addition to the following pattern to decouple this change from the change
+				// to add the `android-plus-updatable.jar`.
+				addPattern(AndroidPlusUpdatableJar)
+			}
+
+			addPattern(filename)
 		}
 	}
 
