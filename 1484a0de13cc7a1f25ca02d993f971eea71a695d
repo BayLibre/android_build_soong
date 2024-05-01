@@ -123,6 +123,24 @@
       "parentUuid": "a7caf441_94b1357f",
       "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2378ef71_0ec97b03",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-01T20:31:00Z",
+      "side": 1,
+      "message": "A few questions:\n- Why do we need both `-target` and `-host` phony targets for both `test_module_config` and `test_module_config_host`? It sounds bit unintuitive for me that the phony target `-host` needs to be created for `test_module_config`, and vice versa for `test_module_config_host`.\n- Phony targets are considered \"dirty\", and will always be rebuilt in incremental build. Instead of the `-target` and `-host` phony targets depending on the base module phony targets, can we make it depend on an actual depending target file?",
+      "parentUuid": "32241190_e00ce36e",
+      "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
