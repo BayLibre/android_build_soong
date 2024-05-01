@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fe039c8_c2dc5628",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-01T22:51:35Z",
+      "side": 1,
+      "message": "The commit message should have an explanation of why this patch useful.  On the surface adding aidl properties to a cc module doesn\u0027t make any sense and is worth a deeper explanation.",
+      "revId": "c6597d18db8715800f0506789405f34a2ae711f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
