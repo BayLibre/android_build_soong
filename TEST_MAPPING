@@ -3,5 +3,14 @@
     {
       "path": "packages/modules/SdkExtensions"
     }
+  ],
+
+  "presubmit": [
+    {
+      "name": "MicrodroidHostTestCases"
+    },
+    {
+      "name": "MicrodroidTestApp"
+    }
   ]
 }
