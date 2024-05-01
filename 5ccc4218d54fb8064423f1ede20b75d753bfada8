@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b096e0f4_33743875",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1780,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-01T17:07:59Z",
+      "side": 1,
+      "message": "This doesn\u0027t do anything unless you also add a call to [use_soong_sanitized_static_libraries](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/binary.mk;l\u003d1181;drc\u003d9aa1265fbe665d017f2f13853f3f20c094ed8c3b) in make.",
+      "revId": "5ccc4218d54fb8064423f1ede20b75d753bfada8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
