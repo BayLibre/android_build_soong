@@ -985,7 +985,7 @@ func shouldSkipAndroidMkProcessing(module *ModuleBase) bool {
 	}
 
 	return !module.Enabled() ||
-		module.commonProperties.HideFromMake ||
+		module.IsHideFromMake() ||
 		// Make does not understand LinuxBionic
 		module.Os() == LinuxBionic ||
 		// Make does not understand LinuxMusl, except when we are building with USE_HOST_MUSL=true
