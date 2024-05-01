@@ -430,7 +430,9 @@ func (m *moduleContext) skipInstall() bool {
 		return true
 	}
 
-	if m.module.base().commonProperties.HideFromMake {
+	// When explicitly hidden from make by setting the property hide_from_make, the module
+	// is not considered uninstallable. It is just not exported to Make.
+	if m.module.base().commonProperties.HideFromMakeInternal {
 		return true
 	}
 

@@ -484,9 +484,12 @@ type commonProperties struct {
 	// Set by osMutator.
 	CommonOSVariant bool `blueprint:"mutated"`
 
-	// When HideFromMake is set to true, no entry for this variant will be emitted in the
-	// generated Android.mk file.
-	HideFromMake bool `blueprint:"mutated"`
+	// When set to true, this module is not emiitted to the generated Android.mk file.
+	Hide_from_make *bool
+
+	// Same as Hide_from_make but this is set internally by soong. A module is hidden from Make
+	// if wither of Hide_from_make or HideFromMakeInternal is true.
+	HideFromMakeInternal bool `blueprint:"mutated"`
 
 	// When SkipInstall is set to true, calls to ctx.InstallFile, ctx.InstallExecutable,
 	// ctx.InstallSymlink and ctx.InstallAbsoluteSymlink act like calls to ctx.PackageFile
@@ -1408,12 +1411,13 @@ func (m *ModuleBase) Disable() {
 
 // HideFromMake marks this variant so that it is not emitted in the generated Android.mk file.
 func (m *ModuleBase) HideFromMake() {
-	m.commonProperties.HideFromMake = true
+	m.commonProperties.HideFromMakeInternal = true
 }
 
 // IsHideFromMake returns true if HideFromMake was previously called.
 func (m *ModuleBase) IsHideFromMake() bool {
-	return m.commonProperties.HideFromMake == true
+	return proptools.Bool(m.commonProperties.Hide_from_make) ||
+		(m.commonProperties.HideFromMakeInternal == true)
 }
 
 // SkipInstall marks this variant to not create install rules when ctx.Install* are called.
@@ -1447,7 +1451,8 @@ func (m *ModuleBase) IsReplacedByPrebuilt() bool {
 }
 
 func (m *ModuleBase) ExportedToMake() bool {
-	return m.commonProperties.NamespaceExportedToMake
+	return m.commonProperties.NamespaceExportedToMake &&
+		!m.IsHideFromMake()
 }
 
 func (m *ModuleBase) EffectiveLicenseKinds() []string {
