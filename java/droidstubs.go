@@ -648,23 +648,26 @@ func (d *Droidstubs) apiLevelsGenerationFlags(ctx android.ModuleContext, cmd *an
 			// Grab the first extensions_dir and we find while scanning ExportedDroiddocDir.deps;
 			// ideally this should be read from prebuiltApis.properties.Extensions_*
 			for _, dep := range t.deps {
+				// Check to see if it matches an extension first.
 				if extRegex.MatchString(dep.String()) && d.properties.Extensions_info_file != nil {
 					if extensions_dir == "" {
 						extensions_dir = t.dir.String() + "/extensions"
 					}
 					cmd.Implicit(dep)
-				}
-				if dep.Base() == filename {
-					cmd.Implicit(dep)
-				}
-				if filename != "android.jar" && dep.Base() == "android.jar" {
-					// Metalava implicitly searches these patterns:
-					//  prebuilts/tools/common/api-versions/android-%/android.jar
-					//  prebuilts/sdk/%/public/android.jar
-					// Add android.jar files from the api_levels_annotations_dirs directories to try
-					// to satisfy these patterns.  If Metalava can't find a match for an API level
-					// between 1 and 28 in at least one pattern it will fail.
-					cmd.Implicit(dep)
+				} else {
+					// Check to see if it matches a dessert release.
+					depBase := dep.Base()
+					if depBase == filename {
+						cmd.Implicit(dep)
+					} else if filename != "android.jar" && depBase == "android.jar" {
+						// Metalava implicitly searches these patterns:
+						//  prebuilts/tools/common/api-versions/android-%/android.jar
+						//  prebuilts/sdk/%/public/android.jar
+						// Add android.jar files from the api_levels_annotations_dirs directories to try
+						// to satisfy these patterns.  If Metalava can't find a match for an API level
+						// between 1 and 28 in at least one pattern it will fail.
+						cmd.Implicit(dep)
+					}
 				}
 			}
 
@@ -1327,7 +1330,7 @@ func (d *Droidstubs) createApiContribution(ctx android.DefaultableHookContext) {
 // use a strict naming convention
 var (
 	droidstubsModuleNamingToSdkKind = map[string]android.SdkKind{
-		//public is commented out since the core libraries use public in their java_sdk_library names
+		// public is commented out since the core libraries use public in their java_sdk_library names
 		"intracore":     android.SdkIntraCore,
 		"intra.core":    android.SdkIntraCore,
 		"system_server": android.SdkSystemServer,
