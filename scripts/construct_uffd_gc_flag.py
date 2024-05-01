@@ -31,7 +31,7 @@ def parse_args():
 def main():
   args = parse_args()
   enable_uffd_gc = should_enable_uffd_gc(args.kernel_version_file)
-  flag = '--runtime-arg -Xgc:CMC' if enable_uffd_gc else ''
+  flag = '--runtime-arg -Xgc:CMC'
   # Prevent the file's mtime from being changed if the contents don't change.
   # This avoids unnecessary dexpreopt reruns.
   if os.path.isfile(args.output):
