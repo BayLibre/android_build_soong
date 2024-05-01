@@ -88,10 +88,12 @@ func (this *CcAconfigLibraryCallbacks) GeneratorDeps(ctx cc.DepsContext, deps cc
 	if mode != "force-read-only" {
 		deps.SharedLibs = append(deps.SharedLibs, baseLibDep)
 
-		deps.SharedLibs = append(deps.SharedLibs, libAconfigStorageReadApiCcDep)
-		deps.SharedLibs = append(deps.SharedLibs, libLogDep)
-		deps.SharedLibs = append(deps.SharedLibs, libBaseDep)
 	}
+
+	deps.SharedLibs = append(deps.SharedLibs, libAconfigStorageReadApiCcDep)
+	deps.SharedLibs = append(deps.SharedLibs, libLogDep)
+	deps.SharedLibs = append(deps.SharedLibs, libBaseDep)
+
 	// TODO: It'd be really nice if we could reexport this library and not make everyone do it.
 
 	return deps
