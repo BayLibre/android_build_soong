@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc3d5eac_1a0d8665",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-01T18:41:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6ac17bdf_9b95f8e0",
+      "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c418ef2c_27c6ba56",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "yes, as in the \"base\" modules.\n\n```\ntest_module_config {\n    name: \"FrameworksServicesTests_contentprotection\",\n    base: \"FrameworksServicesTests\",\n    test_suites: [\"general-tests\"],\n    include_filters: [\"com.android.server.contentprotection\"],\n    exclude_annotations: FLAKY_AND_IGNORED,\n}```\n\nBuilding `FrameworksServicesTests_contentprotection-target` will also build `FrameworksServicesTests-target`",
       "parentUuid": "c418ef2c_27c6ba56",
+      "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7caf441_94b1357f",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-01T18:41:58Z",
+      "side": 1,
+      "message": "Can we list the base module in `AndroidMkEntries.Required` instead?",
+      "parentUuid": "e1d41221_0aea5679",
       "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
