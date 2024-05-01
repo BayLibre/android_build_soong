@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e09fffe1_973a7954",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-01T14:36:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2fd33cf_690ecd52",
+      "revId": "d93f5b9773e117236c15df1565b0ce7345058a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5219287d_7d9ac931",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-04-29T22:25:29Z",
       "side": 1,
       "message": "?",
+      "revId": "d93f5b9773e117236c15df1565b0ce7345058a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "530d7268_a60b2035",
+        "filename": "cc/binary.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-01T14:36:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5219287d_7d9ac931",
       "revId": "d93f5b9773e117236c15df1565b0ce7345058a8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7a77090_0622bab2",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1825,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-01T14:36:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6d9fb5f_bf03d74b",
+      "revId": "d93f5b9773e117236c15df1565b0ce7345058a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "723ec31f_5981e109",
@@ -65,6 +119,24 @@
       "writtenOn": "2024-04-29T22:25:29Z",
       "side": 1,
       "message": "I don\u0027t like how this makes its correctness dependent on none of these property names ever changing, and if they *do* change, it won\u0027t necessarily be obvious that it\u0027s broken.\n\nSince most of these are user-exposed, I don\u0027t expect them to change, and I can\u0027t think of a better way to do it, but it definitely doesn\u0027t leave a good taste.",
+      "revId": "d93f5b9773e117236c15df1565b0ce7345058a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63e2bf00_9f5d3c2f",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-01T14:36:57Z",
+      "side": 1,
+      "message": "Agreed. I\u0027m not aware if there\u0027s a better way to handle this. This is how it\u0027s done in a couple other places (e.g. see the various CreateModule calls in sysprop/sysprop_library.go).",
+      "parentUuid": "723ec31f_5981e109",
       "revId": "d93f5b9773e117236c15df1565b0ce7345058a8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
