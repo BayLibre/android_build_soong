@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abc7cab3_055c674c",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-01T21:26:18Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\t} else if dep.Base() \u003d\u003d filename {\n\t\t\t\t\t// Check to see if it matches a dessert release.\n\t\t\t\t\tcmd.Implicit(dep)\n\t\t\t\t} else if filename !\u003d \"android.jar\" \u0026\u0026 dep.Base() \u003d\u003d \"android.jar\" {\n\t\t\t\t\t// Metalava implicitly searches these patterns:\n\t\t\t\t\t//  prebuilts/tools/common/api-versions/android-%/android.jar\n\t\t\t\t\t//  prebuilts/sdk/%/public/android.jar\n\t\t\t\t\t// Add android.jar files from the api_levels_annotations_dirs directories to try\n\t\t\t\t\t// to satisfy these patterns.  If Metalava can\u0027t find a match for an API level\n\t\t\t\t\t// between 1 and 28 in at least one pattern it will fail.\n\t\t\t\t\tcmd.Implicit(dep)\n\t\t\t\t}\n```\n\n\nCan we use else ifs instead of the nested if-else blocks? If you don\u0027t like the repetition of `dep.Base()` we could probably store `depBase` in L651",
+      "range": {
+        "startLine": 657,
+        "startChar": 4,
+        "endLine": 670,
+        "endChar": 6
+      },
+      "revId": "d7831013d66f21e27ecba95a1b65cb85d723bf54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
