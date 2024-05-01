@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c83933_c9406d21",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-01T23:17:06Z",
+      "side": 1,
+      "message": "You can do this with `slices.Compact`.",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 21
+      },
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08b6e8c2_f107637e",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-01T23:17:06Z",
+      "side": 1,
+      "message": "You can\u0027t use global data, it breaks testing.  You can attach data to the context using something like https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/sdk_library.go;l\u003d2280-2286;drc\u003d00e0991f702751098fe95c0dfce5cd3725659abf, but I don\u0027t think that\u0027s necessary here.  \n\nThe reinitialization is an artifact of needing to be able to clone modules to create variants, combined with limitations of Go\u0027s reflection functionality.  We can\u0027t clone arbitrary types or unexported values, so the only data that gets cloned is the property structs.\n\nIf you need to store data from mutators for use later, use a [Provider](https://cs.android.com/android/platform/superproject/main/+/main:build/blueprint/provider.go;l\u003d85;drc\u003d7add62142d6d75bdef9eb788ecb59bae9bb04421).",
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23028203_551da2f7",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-01T23:17:06Z",
+      "side": 1,
+      "message": "prefer `ctx.ModuleName()` or `ctx.OtherModuleName(module)` over `Name()`, those handle various ways the names can change.",
+      "range": {
+        "startLine": 233,
+        "startChar": 35,
+        "endLine": 233,
+        "endChar": 43
+      },
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "495dd2ff_6f098384",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-01T23:17:06Z",
+      "side": 1,
+      "message": "`soong_zip` supports multiple `-C`, `-P` and `-r` arguments, it should be possible to do this with a single invocation.",
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc51b94_449d0e35",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-01T23:17:06Z",
+      "side": 1,
+      "message": "This is going to visit a single variant of each module, is that what you want?  You could use ccmod as the key, which would cause you to visit each variant once instead.",
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72349a76_d56a049d",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-01T23:17:06Z",
+      "side": 1,
+      "message": "Explicitly listing every possible type here isn\u0027t going to be scalable.  You could add a method to the `compiler` interface that returns the properties, and you\u0027d only have to implement it on `baseCompiler` since the rest of these types embed `baseCompiler`.  But we\u0027re also trying to move away from type asserting interfaces on dependencies, and use Providers instead.  How much are you collecting from each module?  Would it be possible for each module to export it via a Provider instead? \n The downside is that at least today it would apply to all cc modules, so you\u0027d be exporting more information and only using the results from a few modules.",
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb8dfe92_5f6d23ca",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-01T23:17:06Z",
+      "side": 1,
+      "message": "`nil` is semantically equivalent to an empty slice",
+      "range": {
+        "startLine": 467,
+        "startChar": 8,
+        "endLine": 467,
+        "endChar": 18
+      },
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6c7358a_f46a6f1d",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-01T23:17:06Z",
+      "side": 1,
+      "message": "This (and all the property structs above) should have godoc that will become the user visible documentation at go/Android.bp",
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c05dc338_3fe2c234",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-01T23:17:06Z",
+      "side": 1,
+      "message": "You can\u0027t use global data, it breaks testing.  Ideally there shouldn\u0027t be any global data at all, but if you have it it has to be attached to the context.  See https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/sdk_library.go;l\u003d2280-2286;drc\u003d00e0991f702751098fe95c0dfce5cd3725659abf for an example.",
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7962439d_f2db137c",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-01T23:17:06Z",
+      "side": 1,
+      "message": "This is unnecessary, a nil slice has well defined behavior.",
+      "range": {
+        "startLine": 506,
+        "startChar": 34,
+        "endLine": 506,
+        "endChar": 44
+      },
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df982dd_880201c4",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-01T23:17:06Z",
+      "side": 1,
+      "message": "`var files []android.Path` is more idomatic.",
+      "range": {
+        "startLine": 544,
+        "startChar": 2,
+        "endLine": 544,
+        "endChar": 27
+      },
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
