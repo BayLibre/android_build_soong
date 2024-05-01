@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a7a27d_e354d072",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-01T14:38:39Z",
+      "side": 1,
+      "message": "My initial impression is I don\u0027t think  we can guarantee this will work in all cases -- from testing, it seems duplicate symbol errors are thrown by the linker for duplicate symbols if they reside in different sections in object files or are different sizes.\n\nIf building the superset results in the duplicate object files having a different section arrangement or symbols with different sizes due to LTO (not always the case, but it does occur), then the linker would throw duplicate symbol errors.",
+      "parentUuid": "8ae232e3_d8ff4c75",
+      "revId": "129a15e7bb10ecdd32a7cf4dfceb62ec7bcc864e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fd875b5_684e609d",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-04-29T21:42:40Z",
       "side": 1,
       "message": "This separated the Pathdeps doc comment from PathDeps. It should at least go above that comment, and might want its own comment.",
+      "revId": "129a15e7bb10ecdd32a7cf4dfceb62ec7bcc864e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85fe7717_6f46d27f",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-01T14:38:39Z",
+      "side": 1,
+      "message": "Whoops, good catch -- thanks!",
+      "parentUuid": "7fd875b5_684e609d",
       "revId": "129a15e7bb10ecdd32a7cf4dfceb62ec7bcc864e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -65,6 +101,24 @@
       "writtenOn": "2024-04-29T21:42:40Z",
       "side": 1,
       "message": "Do we actually need to project to strings here? I thought paths were directly comparable.",
+      "revId": "129a15e7bb10ecdd32a7cf4dfceb62ec7bcc864e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a389d63d_83533bd8",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 4120,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-01T14:38:39Z",
+      "side": 1,
+      "message": "You\u0027re right -- thanks!",
+      "parentUuid": "6a60f91a_9ece4ae2",
       "revId": "129a15e7bb10ecdd32a7cf4dfceb62ec7bcc864e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
