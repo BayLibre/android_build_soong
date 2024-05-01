@@ -105,6 +105,24 @@
       "parentUuid": "e1d41221_0aea5679",
       "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32241190_e00ce36e",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-05-01T19:41:38Z",
+      "side": 1,
+      "message": "But I think we separate into -target and -host so you when you `atest FrameworksServicesTests`, it will only build `FramewworksServicesTests-target`\n\nIf we add `base` to RequiredModules, it won\u0027t actually build `base`-target.\ni.e. current `m FrameworksServicesTests` doesn\u0027t populate the testcases dir.\n\nI tried adding to Required and removing my -target deps; then I did `m FrameworksServicesTests_contentprotection`\nThe base .apk was built and installed, but the `base` support files were not installed:\n\n```\ntree -ls out/target/product/vsoc_x86_64/testcases/FrameworksServicesTests out/target/product/vsoc_x86_64/testcases/FrameworksServicesTests_contentprotection\n[       4096]  out/target/product/vsoc_x86_64/testcases/FrameworksServicesTests\n└── [       4096]  x86_64\n    └── [   82610907]  FrameworksServicesTests.apk\n[       4096]  out/target/product/vsoc_x86_64/testcases/FrameworksServicesTests_contentprotection\n├── [       4096]  data\n│   └── [         54]  broken_shortcut.xml -\u003e ../../FrameworksServicesTests/data/broken_shortcut.xml\n├── [       3005]  FrameworksServicesTests_contentprotection.config\n├── [         41]  JobTestApp.apk -\u003e ../FrameworksServicesTests/JobTestApp.apk\n├── [         69]  MediaButtonReceiverHolderTestHelperApp.apk -\u003e ../FrameworksServicesTests/MediaButtonReceiverHolderTestHelperApp.apk\n├── [         52]  SimpleServiceTestApp1.apk -\u003e ../FrameworksServicesTests/SimpleServiceTestApp1.apk\n├── [         52]  SimpleServiceTestApp2.apk -\u003e ../FrameworksServicesTests/SimpleServiceTestApp2.apk\n├── [         52]  SimpleServiceTestApp3.apk -\u003e ../FrameworksServicesTests/SimpleServiceTestApp3.apk\n├── [         45]  SuspendTestApp.apk -\u003e ../FrameworksServicesTests/SuspendTestApp.apk\n├── [         36]  test_module_config.manifest\n└── [       4096]  x86_64\n    ├── [         64]  FrameworksServicesTests.apk -\u003e ../../FrameworksServicesTests/x86_64/FrameworksServicesTests.apk\n    └── [         36]  UNUSED-FrameworksServicesTests.apk\n\n```\n\nThis is definitely an area where I just found something \"that worked\", so I\u0027m open to test out more ideas and see if they work too.",
+      "parentUuid": "a7caf441_94b1357f",
+      "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
