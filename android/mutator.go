@@ -293,14 +293,15 @@ type BottomUpMutatorContext interface {
 	// WalkDeps, etc.
 	AddInterVariantDependency(tag blueprint.DependencyTag, from, to blueprint.Module)
 
-	// ReplaceDependencies replaces all dependencies on the identical variant of the module with the
-	// specified name with the current variant of this module.  Replacements don't take effect until
-	// after the mutator pass is finished.
+	// ReplaceDependencies replaces all dependencies on the variant of the module with the
+	// specified name that depends on the current variant of this module with the current
+	// variant of this module.  Replacements don't take effect until after the mutator pass
+	// is finished.
 	ReplaceDependencies(string)
 
-	// ReplaceDependencies replaces all dependencies on the identical variant of the module with the
-	// specified name with the current variant of this module as long as the supplied predicate returns
-	// true.
+	// ReplaceDependenciesIf replaces all dependencies on the variant of the module with the
+	// specified name that depends on the current variant of this module with the current
+	// variant of this module as long as the supplied predicate returns true.
 	//
 	// Replacements don't take effect until after the mutator pass is finished.
 	ReplaceDependenciesIf(string, blueprint.ReplaceDependencyPredicate)
