@@ -254,9 +254,9 @@ type ClassLoaderContextMap map[int][]*ClassLoaderContext
 // Compatibility libraries. Some are optional, and some are required: this is the default that
 // affects how they are handled by the Soong logic that automatically adds implicit SDK libraries
 // to the manifest_fixer, but an explicit `uses_libs`/`optional_uses_libs` can override this.
-var OrgApacheHttpLegacy = "org.apache.http.legacy"
-var AndroidTestBase = "android.test.base"
-var AndroidTestMock = "android.test.mock"
+var OrgApacheHttpLegacy = "org.apache.http.legacy.stubs"
+var AndroidTestBase = "android.test.base.stubs"
+var AndroidTestMock = "android.test.mock.stubs"
 var AndroidHidlBase = "android.hidl.base-V1.0-java"
 var AndroidHidlManager = "android.hidl.manager-V1.0-java"
 
