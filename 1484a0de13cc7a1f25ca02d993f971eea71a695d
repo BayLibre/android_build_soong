@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ac17bdf_9b95f8e0",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-05-01T18:35:11Z",
+      "side": 1,
+      "message": "It looked like LocalSdkVersion was only host tests and certificate was only used for apks.\n```\n egrep  \u0027^include|SDK_VER\u0027  out/soong/Android-aosp_cf_x86_64_phone.mk | grep -B1 LOCAL_SDK | grep include | cut -d: -f 2| sort | uniq -c \n\negrep  \u0027^include|CERT\u0027  out/soong/Android-aosp_cf_x86_64_phone.mk | grep -B1 CERT | grep include | cut -d: -f 2| sort | uniq -c \n```",
+      "parentUuid": "3ba5b521_e1dd8561",
+      "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c418ef2c_27c6ba56",
         "filename": "tradefed_modules/test_module_config.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2024-05-01T18:09:22Z",
       "side": 1,
       "message": "Uhh do you mind reminding me what the `base-target` and `base-host` are? Is it the \"base\" modules of the `test_module_config` and `test_module_config_host`?",
+      "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1d41221_0aea5679",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-05-01T18:35:11Z",
+      "side": 1,
+      "message": "yes, as in the \"base\" modules.\n\n```\ntest_module_config {\n    name: \"FrameworksServicesTests_contentprotection\",\n    base: \"FrameworksServicesTests\",\n    test_suites: [\"general-tests\"],\n    include_filters: [\"com.android.server.contentprotection\"],\n    exclude_annotations: FLAKY_AND_IGNORED,\n}```\n\nBuilding `FrameworksServicesTests_contentprotection-target` will also build `FrameworksServicesTests-target`",
+      "parentUuid": "c418ef2c_27c6ba56",
       "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
