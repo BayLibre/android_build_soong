@@ -31,7 +31,6 @@ type lsdumpTag string
 const (
 	apexLsdumpTag     lsdumpTag = "APEX"
 	llndkLsdumpTag    lsdumpTag = "LLNDK"
-	ndkLsdumpTag      lsdumpTag = "NDK"
 	platformLsdumpTag lsdumpTag = "PLATFORM"
 	productLsdumpTag  lsdumpTag = "PRODUCT"
 	vendorLsdumpTag   lsdumpTag = "VENDOR"
@@ -42,8 +41,6 @@ func (tag *lsdumpTag) dirName() string {
 	switch *tag {
 	case apexLsdumpTag:
 		return "platform"
-	case ndkLsdumpTag:
-		return "ndk"
 	case llndkLsdumpTag:
 		return "vndk"
 	default:
@@ -134,9 +131,6 @@ func classifySourceAbiDump(ctx android.BaseModuleContext) []lsdumpTag {
 	if !m.InProduct() && !m.InVendor() {
 		if m.isImplementationForLLNDKPublic() {
 			result = append(result, llndkLsdumpTag)
-		}
-		if m.IsNdk(ctx.Config()) {
-			result = append(result, ndkLsdumpTag)
 		}
 		if m.library.hasStubsVariants() {
 			result = append(result, apexLsdumpTag)
