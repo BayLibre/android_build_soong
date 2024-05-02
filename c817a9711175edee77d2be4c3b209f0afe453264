@@ -16,6 +16,75 @@
       "message": "The two targets are currently failing with `FailPresubmitOnLowDiskError`, which I believe can be resolved with b/338165208#comment7. Other than this, no build errors are observed and I believe that this change is ready for review.",
       "revId": "c817a9711175edee77d2be4c3b209f0afe453264",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68ef856_54f5b2a1",
+        "filename": "apex/apex.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1677,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-02T22:00:46Z",
+      "side": 1,
+      "message": "Could you leave a comment on why this is necessary? (If this is for the missing dexpreopt artifact error, can we make `SdkLibrary` implement `DexpreopterInterface`?)",
+      "range": {
+        "startLine": 1677,
+        "startChar": 3,
+        "endLine": 1677,
+        "endChar": 84
+      },
+      "revId": "c817a9711175edee77d2be4c3b209f0afe453264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34fb83e3_30524cea",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1827,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-02T22:00:46Z",
+      "side": 1,
+      "message": "Since we do not have a top-level library after this CL, wdyt about removing the `impl_only_libs` and `impl_only_static_libs` in a followup cleanup?",
+      "range": {
+        "startLine": 1827,
+        "startChar": 67,
+        "endLine": 1827,
+        "endChar": 81
+      },
+      "revId": "c817a9711175edee77d2be4c3b209f0afe453264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c049ad04_ce3999e6",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 2227,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-02T22:00:46Z",
+      "side": 1,
+      "message": "Would this treat a java library dependency to be in the same apex if users specify the .impl library explicitly in their Android.bp file?\n\n\n```\n# hypothetical example\njava_sdk_library {\n   name: \"framework-bluetooth\",\n   libs: [\"framework-wifi.impl\"],\n}\n```\n\nAfter this CL, would `DepIsInSameApex` return true on `framework-wifi` when called from `framework-bluetooth`\u0027s context?",
+      "range": {
+        "startLine": 2225,
+        "startChar": 1,
+        "endLine": 2227,
+        "endChar": 2
+      },
+      "revId": "c817a9711175edee77d2be4c3b209f0afe453264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
