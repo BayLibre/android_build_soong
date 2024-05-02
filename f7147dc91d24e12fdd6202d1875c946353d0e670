@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d47dde_8678b87b",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-02T19:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68c83933_c9406d21",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 21
+      },
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08b6e8c2_f107637e",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-05-01T23:17:06Z",
       "side": 1,
       "message": "prefer `ctx.ModuleName()` or `ctx.OtherModuleName(module)` over `Name()`, those handle various ways the names can change.",
+      "range": {
+        "startLine": 233,
+        "startChar": 35,
+        "endLine": 233,
+        "endChar": 43
+      },
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d92952cc_d15f4a92",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-02T19:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23028203_551da2f7",
       "range": {
         "startLine": 233,
         "startChar": 35,
@@ -174,6 +222,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de3e8a8a_57cba6df",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-02T19:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb8dfe92_5f6d23ca",
+      "range": {
+        "startLine": 467,
+        "startChar": 8,
+        "endLine": 467,
+        "endChar": 18
+      },
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6c7358a_f46a6f1d",
@@ -187,6 +259,24 @@
       "writtenOn": "2024-05-01T23:17:06Z",
       "side": 1,
       "message": "This (and all the property structs above) should have godoc that will become the user visible documentation at go/Android.bp",
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f312cd93_87fe5218",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-02T19:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6c7358a_f46a6f1d",
       "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -231,6 +321,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1962b59c_972a66e3",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-02T19:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7962439d_f2db137c",
+      "range": {
+        "startLine": 506,
+        "startChar": 34,
+        "endLine": 506,
+        "endChar": 44
+      },
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6df982dd_880201c4",
@@ -244,6 +358,30 @@
       "writtenOn": "2024-05-01T23:17:06Z",
       "side": 1,
       "message": "`var files []android.Path` is more idomatic.",
+      "range": {
+        "startLine": 544,
+        "startChar": 2,
+        "endLine": 544,
+        "endChar": 27
+      },
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eace5a4_7b817138",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-02T19:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6df982dd_880201c4",
       "range": {
         "startLine": 544,
         "startChar": 2,
