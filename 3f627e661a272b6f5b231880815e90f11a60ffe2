@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "41a62c75_21367c27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-02T18:12:20Z",
+      "side": 1,
+      "message": "Could you give an example of a module that is `installable: false` and a dependency of the microdroid/cuttlefish system image? I\u0027m trying to understand why we can\u0027t just make `installable: false` act the same as `no_full_install: true`.",
+      "revId": "3f627e661a272b6f5b231880815e90f11a60ffe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4d07ff95_147a4440",
