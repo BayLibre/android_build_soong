@@ -108,6 +108,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f308c3d1_e7cc3f77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-02T23:13:42Z",
+      "side": 1,
+      "message": "system/sepolicy/Android.bp has some good examples of `installable: false` modules. They are totally unrelated with the path conflicts.",
+      "parentUuid": "7243f736_c8dbf6f5",
+      "revId": "3f627e661a272b6f5b231880815e90f11a60ffe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4d07ff95_147a4440",
