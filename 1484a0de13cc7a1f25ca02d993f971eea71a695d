@@ -194,6 +194,24 @@
       "parentUuid": "1ad83e02_d7917c79",
       "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec74311b_c80a21fa",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-02T17:57:36Z",
+      "side": 1,
+      "message": "Acknowledged, thanks for the explanation.",
+      "parentUuid": "0dae68c6_771ce067",
+      "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
