@@ -1,5 +1,46 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a60e606_89a6b9f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2024-05-02T11:04:44Z",
+      "side": 1,
+      "message": "Nit: commit msg doesn\u0027t state *why* this is needed?",
+      "revId": "c3031c5c7bb400f21be64c8548078fa59a4a7624",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7f7dff1_4a400fee",
+        "filename": "aconfig/codegen/cc_aconfig_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2024-05-02T11:04:44Z",
+      "side": 1,
+      "message": "nit: missing bug reference",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 8
+      },
+      "revId": "c3031c5c7bb400f21be64c8548078fa59a4a7624",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
