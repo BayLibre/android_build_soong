@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f8396af_f4dbade1",
+        "filename": "apex/apex.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1677,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-02T22:21:31Z",
+      "side": 1,
+      "message": "Actually, `SdkLibrary` already implements `DexpreopterInterface` as it extends `java.Library`. However, we cannot call `sdkLib.dexpreopter` as this change delegates the dexpreopting to the `implLibraryModule` and the top level sdk library itself does not perform any dexpreopting anymore.\n\nAnother attempt I have done was `sdkLib.dexpreopter.builtInstalledForApex \u003d sdkLib.implLibraryModule.dexpreopter.builtInstalledForApex`, but that led to other errors in androidmk.\n\nI believe that this special casing can go away once we start listing the impl libraries in the bootclasspath_fragments and systemserver_fragments, as the sdk_library modules listed here end up in the apexes.",
+      "parentUuid": "e68ef856_54f5b2a1",
+      "range": {
+        "startLine": 1677,
+        "startChar": 3,
+        "endLine": 1677,
+        "endChar": 84
+      },
+      "revId": "c817a9711175edee77d2be4c3b209f0afe453264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34fb83e3_30524cea",
         "filename": "java/sdk_library.go",
         "patchSetId": 11
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3af4c300_01c82ca8",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1827,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-02T22:21:31Z",
+      "side": 1,
+      "message": "I think even after this cl, `impl_only_*` is significant in that the modules listed in `impl_only_*` are not passed into the stub libraries. i.e. these properties should exist to list the deps that are exclusive to the impl jar, and not the stub jar.",
+      "parentUuid": "34fb83e3_30524cea",
+      "range": {
+        "startLine": 1827,
+        "startChar": 67,
+        "endLine": 1827,
+        "endChar": 81
+      },
+      "revId": "c817a9711175edee77d2be4c3b209f0afe453264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c049ad04_ce3999e6",
         "filename": "java/sdk_library.go",
         "patchSetId": 11
@@ -77,6 +125,30 @@
       "writtenOn": "2024-05-02T22:00:46Z",
       "side": 1,
       "message": "Would this treat a java library dependency to be in the same apex if users specify the .impl library explicitly in their Android.bp file?\n\n\n```\n# hypothetical example\njava_sdk_library {\n   name: \"framework-bluetooth\",\n   libs: [\"framework-wifi.impl\"],\n}\n```\n\nAfter this CL, would `DepIsInSameApex` return true on `framework-wifi` when called from `framework-bluetooth`\u0027s context?",
+      "range": {
+        "startLine": 2225,
+        "startChar": 1,
+        "endLine": 2227,
+        "endChar": 2
+      },
+      "revId": "c817a9711175edee77d2be4c3b209f0afe453264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e899c9_81ad13e7",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 2227,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-02T22:21:31Z",
+      "side": 1,
+      "message": "Nope, this change only makes the impl library of a sdk library to be considered as to be in a same apex with the sdk library that generates the impl library. i.e. in the above example, `framework-bluetooth` and `framework-bluetooth.impl` would be considered to be in the same apex, not with `framework-wifi.impl`.\n\n`module.implLibraryModuleName()` returns the [string with \".impl\" suffix appended to the module name](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/sdk_library.go;drc\u003d00e0991f702751098fe95c0dfce5cd3725659abf;l\u003d1000).",
+      "parentUuid": "c049ad04_ce3999e6",
       "range": {
         "startLine": 2225,
         "startChar": 1,
