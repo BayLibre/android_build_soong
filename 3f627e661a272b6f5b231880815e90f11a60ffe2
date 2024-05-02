@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d9f6c9_a1f4b59b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-02T22:06:28Z",
+      "side": 1,
+      "message": "Sure. Please see the modules that are touched by the submitted-together changes. `apexd.microdroid` is a good example. Both `apexd` and `apexd.microdroid` are installed to `/system/bin/apex`. https://android-review.git.corp.google.com/q/topic:%22hide_from_make%22\n\nre: make `installable: false` act the same as `no_full_install: true`\n\nThe problem of `installable` is that it\u0027s not available to every module (i.e. `android.Module`). I could go in that direction, but that would be been a much more intrusive change; I didn\u0027t like that. Another reason was that the expression `installable: false` is misleading because we still do install the module to filesystem modules.\n\nI think, in the long term, we should deprecate `no_full_install` (while keeping `installable`) if we stop making filesystem image in Make.",
+      "parentUuid": "41a62c75_21367c27",
+      "revId": "3f627e661a272b6f5b231880815e90f11a60ffe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4d07ff95_147a4440",
