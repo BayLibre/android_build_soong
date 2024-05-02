@@ -176,6 +176,24 @@
       "parentUuid": "2378ef71_0ec97b03",
       "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dae68c6_771ce067",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-05-02T14:18:34Z",
+      "side": 1,
+      "message": "I\u0027ve updated to only create -host or -target based on module type.\nI\u0027ve removed the creation of the .phony targets as it seems something else does this for me, but only the needed one.  i.e. something else is creating either -target or -host.\n\nI think having dependencies on phony targets is fine, but I did change to have my support files (links) depend directly on the base ones to ensure they always resolve to something.  I\u0027ve tested locally with \"m clean \u0026\u0026 m FrameworksServicesTests_contentprotection\" but it still needs unit tests.",
+      "parentUuid": "1ad83e02_d7917c79",
+      "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
