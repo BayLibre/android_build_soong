@@ -22,6 +22,30 @@
       },
       "revId": "89250918633c39a987cf4813ad1be0704ec707d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfeeda85_1c13545d",
+        "filename": "android/mutator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-02T20:54:55Z",
+      "side": 1,
+      "message": "It\u0027s the variant of the other module that depends on the current variant of this module.",
+      "parentUuid": "6210fd85_5bad16c5",
+      "range": {
+        "startLine": 296,
+        "startChar": 49,
+        "endLine": 296,
+        "endChar": 78
+      },
+      "revId": "89250918633c39a987cf4813ad1be0704ec707d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
