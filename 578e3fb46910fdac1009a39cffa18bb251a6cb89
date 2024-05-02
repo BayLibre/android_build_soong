@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e87d3fc_fcca5342",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-02T17:30:10Z",
+      "side": 1,
+      "message": "Fix this one too please",
+      "revId": "578e3fb46910fdac1009a39cffa18bb251a6cb89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
