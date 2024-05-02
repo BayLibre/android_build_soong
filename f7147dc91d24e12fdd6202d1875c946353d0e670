@@ -83,6 +83,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b0b744c_aa15c269",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-02T02:49:24Z",
+      "side": 1,
+      "message": "`soong_zip -o ~/_temp/test3.zip -C liblog_stub/include -P l1 -r ~/_temp/list1 -C include -P l2 -r ~/_temp/list2`\n\nHmm, indeed it does. Let me try again maybe tomorrow. Thanks!",
+      "parentUuid": "495dd2ff_6f098384",
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdc51b94_449d0e35",
         "filename": "cc/cmake_snapshot.go",
         "patchSetId": 56
@@ -94,6 +112,24 @@
       "writtenOn": "2024-05-01T23:17:06Z",
       "side": 1,
       "message": "This is going to visit a single variant of each module, is that what you want?  You could use ccmod as the key, which would cause you to visit each variant once instead.",
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dab80e0_ec4f8782",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-02T02:49:24Z",
+      "side": 1,
+      "message": "I actually don\u0027t need variants here at all, only dependencies between modules.",
+      "parentUuid": "bdc51b94_449d0e35",
       "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
