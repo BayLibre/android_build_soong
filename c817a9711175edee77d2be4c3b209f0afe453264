@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0a2b6eb_ab2ca2c8",
+        "filename": "apex/apex.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1677,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-02T23:09:33Z",
+      "side": 1,
+      "message": "\u003e I believe that this special casing can go away once we start listing the impl libraries in the bootclasspath_fragments and systemserver_fragments, as the sdk_library modules listed here end up in the apexes.\n\nAcknowledged, would you mind adding a TODO here?",
+      "parentUuid": "0f8396af_f4dbade1",
+      "range": {
+        "startLine": 1677,
+        "startChar": 3,
+        "endLine": 1677,
+        "endChar": 84
+      },
+      "revId": "c817a9711175edee77d2be4c3b209f0afe453264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34fb83e3_30524cea",
         "filename": "java/sdk_library.go",
         "patchSetId": 11
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I think even after this cl, `impl_only_*` is significant in that the modules listed in `impl_only_*` are not passed into the stub libraries. i.e. these properties should exist to list the deps that are exclusive to the impl jar, and not the stub jar.",
       "parentUuid": "34fb83e3_30524cea",
+      "range": {
+        "startLine": 1827,
+        "startChar": 67,
+        "endLine": 1827,
+        "endChar": 81
+      },
+      "revId": "c817a9711175edee77d2be4c3b209f0afe453264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a80a829_e1844bb5",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1827,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-02T23:09:33Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3af4c300_01c82ca8",
       "range": {
         "startLine": 1827,
         "startChar": 67,
@@ -149,6 +197,30 @@
       "side": 1,
       "message": "Nope, this change only makes the impl library of a sdk library to be considered as to be in a same apex with the sdk library that generates the impl library. i.e. in the above example, `framework-bluetooth` and `framework-bluetooth.impl` would be considered to be in the same apex, not with `framework-wifi.impl`.\n\n`module.implLibraryModuleName()` returns the [string with \".impl\" suffix appended to the module name](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/sdk_library.go;drc\u003d00e0991f702751098fe95c0dfce5cd3725659abf;l\u003d1000).",
       "parentUuid": "c049ad04_ce3999e6",
+      "range": {
+        "startLine": 2225,
+        "startChar": 1,
+        "endLine": 2227,
+        "endChar": 2
+      },
+      "revId": "c817a9711175edee77d2be4c3b209f0afe453264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba2a9b8e_1ffc472b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 2227,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-02T23:09:33Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "67e899c9_81ad13e7",
       "range": {
         "startLine": 2225,
         "startChar": 1,
