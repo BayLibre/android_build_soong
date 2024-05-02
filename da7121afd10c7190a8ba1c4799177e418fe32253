@@ -16,6 +16,24 @@
       "message": "Can this be moved outside of the loop?",
       "revId": "da7121afd10c7190a8ba1c4799177e418fe32253",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3192155_29c4cf68",
+        "filename": "android/override_module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-02T21:56:46Z",
+      "side": 1,
+      "message": "This loop isn\u0027t supposed to execute more than once.  I rewrote it to explicitly assert that it doesn\u0027t get more than 1 dependency.",
+      "parentUuid": "83f46624_faf94d3f",
+      "revId": "da7121afd10c7190a8ba1c4799177e418fe32253",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
