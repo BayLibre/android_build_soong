@@ -34,6 +34,24 @@
       "parentUuid": "d185f12c_375442cb",
       "revId": "f720efe928c46dcb71ece55b0387bd1f62fc4e62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1de6096_c175e4b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 52
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-02T21:06:45Z",
+      "side": 1,
+      "message": "* You generally shouldn\u0027t be obtaining `android.Paths` for other modules\u0027 globs, those globs are evaluated in the context of that module and evaluating them outside of that context is difficult to get correct.  It may be better to avoid reaching into to other modules and instead have those modules publish what you need.  If you want the sources after globbing, try the `Srcs()` method provided by the compiler interface.\n* Soong doesn\u0027t have a concept of a TLD, that\u0027s something you\u0027d have to infer via some heuristic or provide as part of the cmake_snapshot module properties.  `default_applicable_licenses` doesn\u0027t seem like a stable value to use, maybe you could do some clustering on the directory trees of all the modules?\n* There\u0027s never been a need for `WalkDeps` by tag, all the existing use cases need to handle multiple types of tags.\n* `cc_binary` only affects linking and installation, so `binaryDecorator` only embeds `baseLinker` and `baseInstaller`.  None of that would be relevant though if you used interface methods on `compiler` and `linker`.",
+      "parentUuid": "da16a31b_90a63a69",
+      "revId": "f720efe928c46dcb71ece55b0387bd1f62fc4e62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
