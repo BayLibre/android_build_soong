@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c51295e9_7c4dab5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-02T20:25:17Z",
+      "side": 1,
+      "message": "Do you expect vendors to be using this property?",
+      "revId": "a5a6b9c766f7706ba9cbc2b01383a91350817240",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
