@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "498249f7_c3265e98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-02T23:03:21Z",
+      "side": 1,
+      "message": "Well stubs will never be installed, so they won\u0027t emit any packaging specs in the first place. So I don\u0027t think they\u0027re a valid reason to keep `installable: false`.",
+      "parentUuid": "0dfb5378_25c3c69f",
+      "revId": "3f627e661a272b6f5b231880815e90f11a60ffe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4d07ff95_147a4440",
