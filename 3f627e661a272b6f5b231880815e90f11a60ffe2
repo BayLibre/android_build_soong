@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d07ff95_147a4440",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-02T07:15:10Z",
+      "side": 1,
+      "message": "Please don\u0027t worry about the TH failure. It\u0027s b/330660509 and is unrelated.",
+      "revId": "3f627e661a272b6f5b231880815e90f11a60ffe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
