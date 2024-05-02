@@ -116,7 +116,7 @@ func (r *robolectricTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	if v := String(r.robolectricProperties.Robolectric_prebuilt_version); v != "" {
 		ctx.AddVariationDependencies(nil, libTag, fmt.Sprintf(robolectricPrebuiltLibPattern, v))
-	} else if !proptools.Bool(r.robolectricProperties.Strict_mode) {
+	} else if !proptools.BoolDefault(r.robolectricProperties.Strict_mode, true) {
 		if proptools.Bool(r.robolectricProperties.Upstream) {
 			ctx.AddVariationDependencies(nil, libTag, robolectricCurrentLib+"_upstream")
 		} else {
@@ -124,7 +124,7 @@ func (r *robolectricTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 		}
 	}
 
-	if proptools.Bool(r.robolectricProperties.Strict_mode) {
+	if proptools.BoolDefault(r.robolectricProperties.Strict_mode, true) {
 		ctx.AddVariationDependencies(nil, roboRuntimeOnlyTag, robolectricCurrentLib+"_upstream")
 	}
 
@@ -210,7 +210,11 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		}
 	}
 
+	strictModeLibExist := false
 	for _, dep := range ctx.GetDirectDepsWithTag(libTag) {
+		if dep.Name() == "robolectric_strict_mode_res" {
+			strictModeLibExist = true
+		}
 		handleLibDeps(dep, false)
 	}
 	for _, dep := range ctx.GetDirectDepsWithTag(sdkLibTag) {
@@ -219,6 +223,14 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	// handle the runtimeOnly tag for strict_mode
 	for _, dep := range ctx.GetDirectDepsWithTag(roboRuntimeOnlyTag) {
 		handleLibDeps(dep, true)
+	}
+
+	// When opt out from strict mode, validate if robolectric_strict_mode_res exist
+	if !proptools.BoolDefault(r.robolectricProperties.Strict_mode, true) {
+		if !strictModeLibExist {
+			fmt.Printf("XXXXXXXXXXX: Robolectric test ModuleName = %s\n", ctx.ModuleName())
+			ctx.PropertyErrorf("missing dependency", "Missing %q when opt-out from stric_mode", "robolectric_strict_mode_res")
+		}
 	}
 
 	r.combinedJar = android.PathForModuleOut(ctx, "robolectric_combined", r.outputFile.Base())
