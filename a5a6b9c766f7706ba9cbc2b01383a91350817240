@@ -34,6 +34,23 @@
       "parentUuid": "c51295e9_7c4dab5e",
       "revId": "a5a6b9c766f7706ba9cbc2b01383a91350817240",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "623c9d42_6cacddca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2024-05-02T23:06:45Z",
+      "side": 1,
+      "message": "Thanks for the heads up here, and thanks for confirming that the behavior stays the same for Go.\n\nI\u0027m a little confused (the renaming will definitely help).  Will all low_ram use Malloc_low_memory, or will some things (like Wear, Auto, and TV) which used to be defaulting to the low memory config now find themselves defaulting to the regular allocator?  If it\u0027s the latter, then we likely want to reach out to them and fix their configs in this topic.",
+      "revId": "a5a6b9c766f7706ba9cbc2b01383a91350817240",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
