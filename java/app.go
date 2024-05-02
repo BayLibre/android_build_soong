@@ -753,6 +753,13 @@ func (a *AndroidApp) createPrivappAllowlist(ctx android.ModuleContext) android.P
 	return &outPath
 }
 
+func (a *AndroidApp) RequiredModuleNames() []string {
+	if a.embeddedJniLibs {
+		return nil
+	}
+	return a.appProperties.Jni_libs
+}
+
 func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	var apkDeps android.Paths
 
