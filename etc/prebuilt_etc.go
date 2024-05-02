@@ -52,6 +52,7 @@ func RegisterPrebuiltEtcBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("prebuilt_usr_share", PrebuiltUserShareFactory)
 	ctx.RegisterModuleType("prebuilt_usr_share_host", PrebuiltUserShareHostFactory)
 	ctx.RegisterModuleType("prebuilt_font", PrebuiltFontFactory)
+	ctx.RegisterModuleType("prebuilt_overlay", PrebuiltOverlayFactory)
 	ctx.RegisterModuleType("prebuilt_firmware", PrebuiltFirmwareFactory)
 	ctx.RegisterModuleType("prebuilt_dsp", PrebuiltDSPFactory)
 	ctx.RegisterModuleType("prebuilt_rfsa", PrebuiltRFSAFactory)
@@ -452,6 +453,15 @@ func PrebuiltUserShareHostFactory() android.Module {
 func PrebuiltFontFactory() android.Module {
 	module := &PrebuiltEtc{}
 	InitPrebuiltEtcModule(module, "fonts")
+	// This module is device-only
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
+	return module
+}
+
+// prebuilt_overlay is for a prebuilt artifact in <partition>/overlay directory.
+func PrebuiltOverlayFactory() android.Module {
+	module := &PrebuiltEtc{}
+	InitPrebuiltEtcModule(module, "overlay")
 	// This module is device-only
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	return module
