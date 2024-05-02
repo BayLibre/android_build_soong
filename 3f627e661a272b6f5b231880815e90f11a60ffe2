@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dfb5378_25c3c69f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-02T23:00:58Z",
+      "side": 1,
+      "message": "There can be build-only dependencies like stubs. You don\u0027t want to install it even if there\u0027s a dependency to it from a filesystem module (or listed in PRODUCT_PACKAGES).\n\nI think that\u0027s where `installable: false` will still be necessary.\n\nIf you agree on that `installable` shall persist AND we will be deprecating placing files to \"out/target/product\", I think it\u0027s better to introduce a new property that only handles that aspect only. Otherwise we will have to distinguish two different meanings of `installable: false`: (1) don\u0027t install this anywhere, (2) just don\u0027t put it to out/target/product.",
+      "parentUuid": "dda2882d_b8dde351",
+      "revId": "3f627e661a272b6f5b231880815e90f11a60ffe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4d07ff95_147a4440",
