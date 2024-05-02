@@ -90,6 +90,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7243f736_c8dbf6f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-02T23:11:23Z",
+      "side": 1,
+      "message": "There could be a hand-crafted stubs which is just seen as a normal cc_library to Soong. I remember we have such in AOSP as well, but forgot what it was.\n\nThere are many more build-only artifacts. Just see https://cs.android.com/search?q\u003df:%5C.bp%20installable:%5C%20false%20-f:test\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain\u0026start\u003d31",
+      "parentUuid": "498249f7_c3265e98",
+      "revId": "3f627e661a272b6f5b231880815e90f11a60ffe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4d07ff95_147a4440",
