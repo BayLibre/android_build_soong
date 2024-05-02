@@ -2850,6 +2850,16 @@ func TestTestOnly(t *testing.T) {
                         srcs: ["a.java"],
                         test_only: true,
 		}
+		java_library_host {
+			name: "lib1-host-test-only",
+                        srcs: ["a.java"],
+                        test_only: true,
+		}
+		java_library_static {
+			name: "lib12-static-test-only",
+                        srcs: ["a.java"],
+                        test_only: true,
+		}
                 java_test {
                         name: "java-test",
                 }
@@ -2863,6 +2873,24 @@ func TestTestOnly(t *testing.T) {
                         name: "java-data-binary",
 			srcs: ["foo.java"],
 			main_class: "foo.bar.jb",
+                        test_only: true,
+                }
+                java_genrule {
+                        name: "java-genrule",
+                        out: ["unused"],
+                        cmd: "touch $(out)",
+                        test_only: true,
+                }
+                java_genrule_host {
+                        name: "java-genrule-host",
+                        out: ["unused"],
+                        cmd: "touch $(out)",
+                        test_only: true,
+                }
+                genrule {
+                        name: "genrule",
+                        out: ["unused"],
+                        cmd: "touch $(out)",
                         test_only: true,
                 }
 
@@ -2884,10 +2912,12 @@ func TestTestOnly(t *testing.T) {
 
 	expectedTestOnlyModules := []string{
 		"lib1-test-only",
+		"lib1-host-test-only",
 		"java-test",
 		"java-test-host",
 		"helper-library",
 		"java-data-binary",
+		"java-genrule",
 	}
 	expectedTopLevelTests := []string{
 		"java-test",

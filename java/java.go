@@ -1160,6 +1160,7 @@ func LibraryHostFactory() android.Module {
 	module := &Library{}
 
 	module.addHostProperties()
+	module.AddProperties(&module.sourceProperties)
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 

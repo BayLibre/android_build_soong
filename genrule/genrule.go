@@ -163,7 +163,8 @@ type Module struct {
 
 	android.ImageInterface
 
-	properties generatorProperties
+	properties       generatorProperties
+	sourceProperties android.SourceProperties
 
 	// For the different tasks that genrule and gensrc generate. genrule will
 	// generate 1 task, and gensrc will generate 1 or more tasks based on the
@@ -589,6 +590,9 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		g.outputDeps = android.Paths{phonyFile}
 	}
 	android.CollectDependencyAconfigFiles(ctx, &g.mergedAconfigFiles)
+	android.SetProvider(ctx, android.TestOnlyProviderKey, android.TestModuleInformation{
+		TestOnly: Bool(g.sourceProperties.Test_only),
+	})
 }
 
 func (g *Module) AndroidMkEntries() []android.AndroidMkEntries {
@@ -656,6 +660,7 @@ func generatorFactory(taskGenerator taskFunc, props ...interface{}) *Module {
 
 	module.AddProperties(props...)
 	module.AddProperties(&module.properties)
+	module.AddProperties(&module.sourceProperties)
 
 	module.ImageInterface = noopImageInterface{}
 
