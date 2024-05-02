@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dda2882d_b8dde351",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-02T22:36:44Z",
+      "side": 1,
+      "message": "I don\u0027t think moving it to `android.Module` is a big deal. Creating a separate property that does something very similar is more tech debt than an \"intrusive change\" IMO.\n\n\u003e I think, in the long term, we should deprecate no_full_install (while keeping installable) if we stop making filesystem image in Make.\n\nIn the long term, I think we should deprecate both of these properties. If you want something to not be installed, you just wouldn\u0027t list it as a dependency of the filesystem image.",
+      "parentUuid": "c5d9f6c9_a1f4b59b",
+      "revId": "3f627e661a272b6f5b231880815e90f11a60ffe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4d07ff95_147a4440",
