@@ -114,6 +114,11 @@ func (r *robolectricTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 		ctx.PropertyErrorf("instrumentation_for", "missing required instrumented module")
 	}
 
+	if r.robolectricProperties.Strict_mode == nil {
+		defaultStrictMode := true
+		r.robolectricProperties.Strict_mode = &defaultStrictMode
+	}
+
 	if v := String(r.robolectricProperties.Robolectric_prebuilt_version); v != "" {
 		ctx.AddVariationDependencies(nil, libTag, fmt.Sprintf(robolectricPrebuiltLibPattern, v))
 	} else if !proptools.Bool(r.robolectricProperties.Strict_mode) {
