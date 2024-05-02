@@ -16,6 +16,24 @@
       "message": "Do you expect vendors to be using this property?",
       "revId": "a5a6b9c766f7706ba9cbc2b01383a91350817240",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b870414c_a33b0092",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-05-02T20:39:55Z",
+      "side": 1,
+      "message": "I don\u0027t think any vendors currently use the malloc_not_svelte in blueprint files, so I don\u0027t expect them to use this one either. I did a quick scan, and malloc_not_svelte is only used in the files I\u0027m modifying in this topic.",
+      "parentUuid": "c51295e9_7c4dab5e",
+      "revId": "a5a6b9c766f7706ba9cbc2b01383a91350817240",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
