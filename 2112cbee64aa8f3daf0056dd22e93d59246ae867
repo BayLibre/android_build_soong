@@ -16,6 +16,24 @@
       "message": "This comment should be replaced with the comment on CmakeSnapshot, as this is what gets pulled into go/Android.bp for the module-level documentation.",
       "revId": "2112cbee64aa8f3daf0056dd22e93d59246ae867",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe3c15f0_8a4aef4b",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 61
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-03T20:22:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96fb19e9_c88f02c5",
+      "revId": "2112cbee64aa8f3daf0056dd22e93d59246ae867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

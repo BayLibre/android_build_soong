@@ -52,6 +52,24 @@
       "parentUuid": "da16a31b_90a63a69",
       "revId": "f720efe928c46dcb71ece55b0387bd1f62fc4e62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd584792_1f7b19fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 52
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-03T20:22:24Z",
+      "side": 1,
+      "message": "Thanks for detailed explanations!\n\nI think I have an idea for TLD heuristic. I think I can look at the generated module tree and pick the first of a given tree as TLD. For binder_sdk it would be:\n- frameworks/native/libs/binder\n- system/core/libutils/binder\n- external/fmtlib\n- external/boringssl\n\nNow, the problem is - how to name the first two (certainly not BINDER_DIR). But I\u0027ll figure it out - maybe in a follow-up CL.",
+      "parentUuid": "a1de6096_c175e4b7",
+      "revId": "f720efe928c46dcb71ece55b0387bd1f62fc4e62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

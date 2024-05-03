@@ -65,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e2f7ec5_c4e4fe31",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-03T20:22:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08b6e8c2_f107637e",
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23028203_551da2f7",
@@ -147,6 +165,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd57ddc_00be7390",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-03T20:22:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b0b744c_aa15c269",
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdc51b94_449d0e35",
@@ -195,6 +231,24 @@
       "writtenOn": "2024-05-01T23:17:06Z",
       "side": 1,
       "message": "Explicitly listing every possible type here isn\u0027t going to be scalable.  You could add a method to the `compiler` interface that returns the properties, and you\u0027d only have to implement it on `baseCompiler` since the rest of these types embed `baseCompiler`.  But we\u0027re also trying to move away from type asserting interfaces on dependencies, and use Providers instead.  How much are you collecting from each module?  Would it be possible for each module to export it via a Provider instead? \n The downside is that at least today it would apply to all cc modules, so you\u0027d be exporting more information and only using the results from a few modules.",
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be087c96_5ecd9bef",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-03T20:22:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72349a76_d56a049d",
       "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -294,6 +348,24 @@
       "writtenOn": "2024-05-01T23:17:06Z",
       "side": 1,
       "message": "You can\u0027t use global data, it breaks testing.  Ideally there shouldn\u0027t be any global data at all, but if you have it it has to be attached to the context.  See https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/sdk_library.go;l\u003d2280-2286;drc\u003d00e0991f702751098fe95c0dfce5cd3725659abf for an example.",
+      "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da939d55_ac7f21dd",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 56
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-03T20:22:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c05dc338_3fe2c234",
       "revId": "f7147dc91d24e12fdd6202d1875c946353d0e670",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
