@@ -180,6 +180,15 @@ func TestProductVariables(t *testing.T) {
 		module3 {
 			name: "baz",
 		}
+
+		module4 {
+			name: "qux",
+			product_variables: {
+				debuggable: {
+					proguard_flags_files: ["proguard.flags"],
+				},
+			},
+		}
 	`
 
 	GroupFixturePreparers(
@@ -198,6 +207,10 @@ func TestProductVariables(t *testing.T) {
 			// A module type that does not have any properties that match product_variables.
 			ctx.RegisterModuleType("module3", testProductVariableModuleFactoryFactory(&struct {
 				Foo []string
+			}{}))
+			// A module type that has a proguard_flag_files property in debuggable variants.
+			ctx.RegisterModuleType("module4", testProductVariableModuleFactoryFactory(&struct {
+				proguard_flags_files []string
 			}{}))
 			ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
 				ctx.BottomUp("variable", VariableMutator).Parallel()
