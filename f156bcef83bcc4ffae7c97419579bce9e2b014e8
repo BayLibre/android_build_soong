@@ -73,6 +73,24 @@
       "message": "This list concerns me, it\u0027s going to be very easy to forget to add new properties here, which could cause the synthetic rust library to miscompile.\n\nIn your doc you said you were worried about creating a rust ninja rule directly from the cc module, can you show an example command line produced by the synthetic rust module as a measure of how much complexity would need to be fed into the rust compile?",
       "revId": "f156bcef83bcc4ffae7c97419579bce9e2b014e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25a6e629_aac84fbf",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-03T19:42:29Z",
+      "side": 1,
+      "message": "I\u0027ve added the command to the doc (it\u0027s a bit large to paste here), but the flags break down like this:\n\n* Flags set by default for all modules (rust.config.GlobalRustFlags)\n* Flags set by default for Host/Device (e.g. rust.config.deviceGlobalRustFlags and rust.config.deviceGlobalLinkFlags)\n* Flags set by toolchain target and target variant (e.g. rust.config.Arm64RustFlags and rust.config.Arm64ArchVariantRustFlags)\n* Flags emitted by the build rule itself\n* Flags from libraryDecorator (e.g. rust.libraryDecorator.compilerFlags() and rust.libraryDecorator.cfgFlags()) \n* Flags containing paths to direct deps (static libraries, rlibs, etc...)\n* Flags exported from depedents (exported from rlibs -- these are mostly -L flags to indirect deps)\n\nI think most of the static lists of flags could be exported from soong-rust to soong-cc similar to how we export the generated library factory in this CL. Handling target toolchain flags correctly is less clear to me, but maybe not insurmountable? Dynamically generated flags like those from deps could be reproduced in cc.\n\nMy primary concern is that this could add complexity or fragility w/r to having to make sure that any relevant changes to how Rust libraries are built in soong-rust are reflected in soong-cc when building these Rust libraries. To me this seemed more prone to subtle errors than keeping this property name list synced, though I admit this large list of properties isn\u0027t ideal either.",
+      "parentUuid": "6034e5d1_e9876395",
+      "revId": "f156bcef83bcc4ffae7c97419579bce9e2b014e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
