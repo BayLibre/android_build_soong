@@ -433,9 +433,7 @@ func (a *AndroidApp) shouldUncompressDex(ctx android.ModuleContext) bool {
 }
 
 func (a *AndroidApp) shouldEmbedJnis(ctx android.BaseModuleContext) bool {
-	apexInfo, _ := android.ModuleProvider(ctx, android.ApexInfoProvider)
-	return ctx.Config().UnbundledBuild() || Bool(a.appProperties.Use_embedded_native_libs) ||
-		!apexInfo.IsForPlatform() || a.appProperties.AlwaysPackageNativeLibs
+	return true
 }
 
 func generateAaptRenamePackageFlags(packageName string, renameResourcesPackage bool) []string {
