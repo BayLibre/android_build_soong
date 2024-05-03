@@ -22,6 +22,30 @@
       },
       "revId": "88532dedfbe6b500fc81d7d87c476ed4533a22c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae09d176_c07b09e9",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-03T23:51:06Z",
+      "side": 1,
+      "message": "Not all api surfaces listed here have strict subset/superset relationship, but the order follows the general trend. I agree that the \"narrower\" may be misinterpreted as a subset/superset relationship. Do you have any other recommendations?\n\nRegarding the toolchain api surface, I believe that the correct location to be in this \"roughly general hierarchy\" is between \"none\" and \"core\", but CMIW.",
+      "parentUuid": "6b541d1c_c90c178b",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 75
+      },
+      "revId": "88532dedfbe6b500fc81d7d87c476ed4533a22c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
