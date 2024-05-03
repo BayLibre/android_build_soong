@@ -122,6 +122,24 @@
       "parentUuid": "4fdb952f_37e0d4e8",
       "revId": "a5a6b9c766f7706ba9cbc2b01383a91350817240",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01cd8890_771beef5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-05-03T17:55:18Z",
+      "side": 1,
+      "message": "Before this change, and without a MALLOC_SVELTE :\u003d true, they got the default allocator (which is scudo). After the change they still get the default allocator (still scudo).\n\nThe only thing this change really does is rename the internal blueprint names and change some of the blueprint files to be more readable.",
+      "parentUuid": "02d835e1_703ec53e",
+      "revId": "a5a6b9c766f7706ba9cbc2b01383a91350817240",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
