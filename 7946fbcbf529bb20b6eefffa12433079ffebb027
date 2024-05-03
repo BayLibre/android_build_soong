@@ -39,6 +39,30 @@
       },
       "revId": "7946fbcbf529bb20b6eefffa12433079ffebb027",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d861b4_b6f91505",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-03T18:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a159e7f_52492bb3",
+      "range": {
+        "startLine": 387,
+        "startChar": 5,
+        "endLine": 387,
+        "endChar": 27
+      },
+      "revId": "7946fbcbf529bb20b6eefffa12433079ffebb027",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
