@@ -73,9 +73,8 @@ func (module *DeclarationsModule) DepsMutator(ctx android.BottomUpMutatorContext
 	if len(module.properties.Package) == 0 {
 		ctx.PropertyErrorf("package", "missing package property")
 	}
-	if len(module.properties.Container) == 0 {
-		ctx.PropertyErrorf("container", "missing container property")
-	}
+	// TODO(b/311155208): Add mandatory check for container after all pre-existing
+	// ones are changed.
 
 	// Add a dependency on the aconfig_value_sets defined in
 	// RELEASE_ACONFIG_VALUE_SETS, and add any aconfig_values that
