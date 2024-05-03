@@ -590,8 +590,16 @@ func (b *BootclasspathFragmentModule) configuredJars(ctx android.ModuleContext) 
 		// So ignore it even if it is not in PRODUCT_APEX_BOOT_JARS.
 		// TODO(b/202896428): Add better way to handle this.
 		_, unknown = android.RemoveFromList("android.car-module", unknown)
-		if isActiveModule(ctx.Module()) && len(unknown) > 0 {
-			ctx.ModuleErrorf("%s in contents must also be declared in PRODUCT_APEX_BOOT_JARS", unknown)
+		if isApexVariant(ctx) && len(unknown) > 0 {
+			// Validate that there are no unknown boot jars. This will be done for
+			// 1. All prebuilt bootclasspath fragments
+			// 2. Source bootclasspath fragment, unless a prebuilt apex is selected
+			//
+			// The special case (2) is necessary because it is possible that a new boot jar has been
+			// introduced in source apexes, and missing in the prebuilt apex.
+			if android.IsModulePrebuilt(ctx.Module()) || !disableSourceApexVariant(ctx) {
+				ctx.ModuleErrorf("%s in contents must also be declared in PRODUCT_APEX_BOOT_JARS", unknown)
+			}
 		}
 	}
 	return jars
