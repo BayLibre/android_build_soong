@@ -91,6 +91,24 @@
       "parentUuid": "6034e5d1_e9876395",
       "revId": "f156bcef83bcc4ffae7c97419579bce9e2b014e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3e44d81_5e664864",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-03T22:29:08Z",
+      "side": 1,
+      "message": "I wouldn\u0027t expect the flags to be exported to cc, just a single \"combine these rust staticlibs\" function.  It\u0027s hard to tell how much duplication that would require in order to map that to a call to the right `Transform*` function in builder.go.  The flags seem relatively simple, maybe pull a little bit of `baseCompiler.compilerFlags` into a helper function that could be called outside a rust module.  `depsToPaths` seems like the harder part, but again most of that seems independent of the rust module and is mostly just looking at dependencies and filling out a `PathDeps`, maybe that could be factored out too.",
+      "parentUuid": "25a6e629_aac84fbf",
+      "revId": "f156bcef83bcc4ffae7c97419579bce9e2b014e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
