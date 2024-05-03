@@ -4382,7 +4382,6 @@ func TestAppFlagsPackages(t *testing.T) {
 		aconfig_declarations {
 			name: "bar",
 			package: "com.example.package.bar",
-			container: "com.android.foo",
 			srcs: [
 				"bar.aconfig",
 			],
@@ -4390,7 +4389,6 @@ func TestAppFlagsPackages(t *testing.T) {
 		aconfig_declarations {
 			name: "baz",
 			package: "com.example.package.baz",
-			container: "com.android.foo",
 			srcs: [
 				"baz.aconfig",
 			],
