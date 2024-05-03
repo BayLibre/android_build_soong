@@ -139,6 +139,10 @@ type variableProperties struct {
 			Cmd          *string
 
 			Deps []string
+
+			Optimize struct {
+				Proguard_flags_files []string
+			}
 		}
 
 		// eng is true for -eng builds, and can be used to turn on additional heavyweight debugging
