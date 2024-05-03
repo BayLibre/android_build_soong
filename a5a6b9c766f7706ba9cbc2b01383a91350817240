@@ -104,6 +104,24 @@
       "parentUuid": "623c9d42_6cacddca",
       "revId": "a5a6b9c766f7706ba9cbc2b01383a91350817240",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d835e1_703ec53e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2024-05-03T17:26:26Z",
+      "side": 1,
+      "message": "\u003e If you enabled the low memory allocator before, you will get it after.\n\nApologies at dragging this out, but the wording in the commit message has me a little confused.\n\nI understand that if a target set `MALLOC_SVELTE :\u003d true` before, that behavior will remain the same.  But if a target didn\u0027t set `MALLOC_SVELTE` at all before, what were they getting?  The \"Change this so that the default is the regular allocator\" wording has me concerned that before they were getting the equivalent of `MALLOC_SVELTE :\u003d true`, and after this change they would get the equivalent of `MALLOC_SVELTE :\u003d false`.\n\nIf that\u0027s the case, I don\u0027t oppose this change in default behavior.  I just want to make sure teams potentially impacted by it are in the loop.\n\nThanks!",
+      "parentUuid": "4fdb952f_37e0d4e8",
+      "revId": "a5a6b9c766f7706ba9cbc2b01383a91350817240",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
