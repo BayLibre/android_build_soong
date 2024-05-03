@@ -34,7 +34,9 @@ import (
 )
 
 const (
-	sdkXmlFileSuffix = ".xml"
+	sdkXmlFileSuffix   = ".xml"
+	implLibrarySuffix  = ".impl"
+	stubsLibrarySuffix = ".stubs"
 )
 
 // A tag to associated a dependency with a specific api scope.
@@ -246,7 +248,7 @@ func initApiScope(scope *apiScope) *apiScope {
 }
 
 func (scope *apiScope) stubsLibraryModuleNameSuffix() string {
-	return ".stubs" + scope.moduleSuffix
+	return stubsLibrarySuffix + scope.moduleSuffix
 }
 
 func (scope *apiScope) exportableStubsLibraryModuleNameSuffix() string {
@@ -285,6 +287,16 @@ func (scope *apiScope) String() string {
 	return scope.name
 }
 
+func (scope *apiScope) extendsScope(anotherScope *apiScope) bool {
+	for scope != nil {
+		if scope == anotherScope {
+			return true
+		}
+		scope = scope.extends
+	}
+	return false
+}
+
 // snapshotRelativeDir returns the snapshot directory into which the files related to scopes will
 // be stored.
 func (scope *apiScope) snapshotRelativeDir() string {
@@ -320,6 +332,29 @@ func (scopes apiScopes) MapToIndex(accessor func(*apiScope) string) map[string]i
 	ret := make(map[string]int)
 	for i, scope := range scopes {
 		ret[accessor(scope)] = i
+	}
+	return ret
+}
+
+func (scopes apiScopes) SdkKinds() map[*apiScope]android.SdkKind {
+	ret := make(map[*apiScope]android.SdkKind, len(scopes))
+	for _, scope := range scopes {
+		ret[scope] = scope.kind
+	}
+	return ret
+}
+
+// Find the api scope of the stub library module from its suffix naming convention
+// It is guaranteed that all stub library modules generated from sdk_library follow this convention
+func (scopes apiScopes) ApiScopeFromStubModuleName(moduleName string) *apiScope {
+	var ret *apiScope
+	for _, apiScope := range scopes {
+		// public api scope does not specify
+		if strings.HasSuffix(moduleName, apiScope.stubsLibraryModuleNameSuffix()) ||
+			strings.HasSuffix(moduleName, apiScope.exportableStubsLibraryModuleNameSuffix()) {
+			ret = apiScope
+			break
+		}
 	}
 	return ret
 }
@@ -919,6 +954,12 @@ type commonSdkLibraryAndImportModule interface {
 	// 2. BaseModuleName(): framework-foo # the source
 	// 3. RootLibraryName: framework-foo.v1 # the undecordated `name` from Android.bp
 	RootLibraryName() string
+
+	// Get the list of api scopes of the stub libraries that the module generates.
+	getGeneratedApiScopes(ctx android.EarlyModuleContext) apiScopes
+
+	// Returns whether the module defaults to link against the stubs or not.
+	defaultsToStubs() bool
 }
 
 func (m *SdkLibrary) RootLibraryName() string {
@@ -984,6 +1025,10 @@ func (c *commonToSdkLibraryAndImport) initCommonAfterDefaultsApplied(ctx android
 		c.sdkLibraryComponentProperties.SdkLibraryToImplicitlyTrack = namePtr
 	}
 
+	c.sdkLibraryComponentProperties.DefaultToStubs = proptools.BoolPtr(c.module.defaultsToStubs())
+
+	c.sdkLibraryComponentProperties.CreatedApiScopes = c.module.getGeneratedApiScopes(ctx)
+
 	return true
 }
 
@@ -1006,7 +1051,7 @@ func (c *commonToSdkLibraryAndImport) getImplLibraryModule() *Library {
 
 // Module name of the runtime implementation library
 func (c *commonToSdkLibraryAndImport) implLibraryModuleName() string {
-	return c.module.RootLibraryName() + ".impl"
+	return c.module.RootLibraryName() + implLibrarySuffix
 }
 
 // Module name of the XML file for the lib
@@ -1224,9 +1269,9 @@ func sdkKindToApiScope(kind android.SdkKind) *apiScope {
 		apiScope = apiScopeSystem
 	case android.SdkModule:
 		apiScope = apiScopeModuleLib
-	case android.SdkTest:
+	case android.SdkTest, android.SdkTestFrameworksCore:
 		apiScope = apiScopeTest
-	case android.SdkSystemServer:
+	case android.SdkSystemServer, android.SdkPrivate:
 		apiScope = apiScopeSystemServer
 	default:
 		apiScope = apiScopePublic
@@ -1305,6 +1350,12 @@ type SdkLibraryComponentProperties struct {
 	// in the AndroidManifest.xml of any Android app that includes code that references
 	// this module. If not set then no java_sdk_library/_import is tracked.
 	SdkLibraryToImplicitlyTrack *string `blueprint:"mutated"`
+
+	// Indicates whether the java_sdk_library defaults to linking against the stubs or not.
+	DefaultToStubs *bool `blueprint:"mutated"`
+
+	// List of api scopes generated from this module.
+	CreatedApiScopes apiScopes `blueprint:"mutated"`
 }
 
 // Structure to be embedded in a module struct that needs to support the
@@ -1335,6 +1386,16 @@ func (e *EmbeddableSdkLibraryComponent) OptionalSdkLibraryImplementation() *stri
 	return e.sdkLibraryComponentProperties.SdkLibraryToImplicitlyTrack
 }
 
+// to satisfy SdkLibraryComponentDependency
+func (e *EmbeddableSdkLibraryComponent) SdkLibraryDefaultToStubs() bool {
+	return proptools.BoolDefault(e.sdkLibraryComponentProperties.DefaultToStubs, false)
+}
+
+// to satisfy SdkLibraryComponentDependency
+func (e *EmbeddableSdkLibraryComponent) SdkLibraryCreatedApiScopes() apiScopes {
+	return e.sdkLibraryComponentProperties.CreatedApiScopes
+}
+
 // Implemented by modules that are (or possibly could be) a component of a java_sdk_library
 // (including the java_sdk_library) itself.
 type SdkLibraryComponentDependency interface {
@@ -1345,6 +1406,10 @@ type SdkLibraryComponentDependency interface {
 
 	// The name of the implementation library for the optional SDK library or nil, if there isn't one.
 	OptionalSdkLibraryImplementation() *string
+
+	SdkLibraryDefaultToStubs() bool
+
+	SdkLibraryCreatedApiScopes() apiScopes
 }
 
 // Make sure that all the module types that are components of java_sdk_library/_import
@@ -2744,6 +2809,18 @@ func (module *SdkLibraryImport) Name() string {
 
 func (module *SdkLibraryImport) BaseModuleName() string {
 	return proptools.StringDefault(module.properties.Source_module_name, module.ModuleBase.Name())
+}
+
+func (module *SdkLibraryImport) getGeneratedApiScopes(mctx android.EarlyModuleContext) apiScopes {
+	var generatedApiScopes apiScopes
+	for scope := range module.scopeProperties {
+		generatedApiScopes = append(generatedApiScopes, scope)
+	}
+	return generatedApiScopes
+}
+
+func (module *SdkLibraryImport) defaultsToStubs() bool {
+	return true
 }
 
 func (module *SdkLibraryImport) createInternalModules(mctx android.DefaultableHookContext) {
