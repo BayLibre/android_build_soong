@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "330e32e3_c209bd3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-05-03T00:11:47Z",
+      "side": 1,
+      "message": "I added unit tests for the new footers and entries.\nI added comments for new fields in the provider (but I had hoped they were named consistently enough to not need them).\n\nWhen you get a chance, please also look at the other CL in the topic related to make/core/tasks.\nThanks.",
+      "parentUuid": "f1005f29_edbea7a0",
+      "revId": "24d0c82ad3a59d22ebd286a23ad829ab4378f5dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a0886a7_87e44664",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-05-02T17:57:36Z",
       "side": 1,
       "message": "Do you mind adding comments for these entries as well?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "24d0c82ad3a59d22ebd286a23ad829ab4378f5dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c75fa9_c7283e27",
+        "filename": "tradefed/providers.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-05-03T00:11:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a0886a7_87e44664",
       "range": {
         "startLine": 23,
         "startChar": 0,

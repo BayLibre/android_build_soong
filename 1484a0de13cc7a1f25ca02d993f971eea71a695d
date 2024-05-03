@@ -212,6 +212,24 @@
       "parentUuid": "0dae68c6_771ce067",
       "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67991a64_13452763",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-05-03T00:11:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec74311b_c80a21fa",
+      "revId": "1484a0de13cc7a1f25ca02d993f971eea71a695d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
