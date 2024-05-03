@@ -2801,7 +2801,6 @@ func TestApiLibraryAconfigDeclarations(t *testing.T) {
 	aconfig_declarations {
 		name: "bar",
 		package: "com.example.package",
-		container: "com.android.foo",
 		srcs: [
 			"bar.aconfig",
 		],
