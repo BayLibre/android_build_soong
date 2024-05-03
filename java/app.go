@@ -92,8 +92,7 @@ type appProperties struct {
 	// Store native libraries uncompressed in the APK and set the android:extractNativeLibs="false" manifest
 	// flag so that they are used from inside the APK at runtime.  Defaults to true for android_test modules unless
 	// sdk_version or min_sdk_version is set to a version that doesn't support it (<23), defaults to true for
-	// android_app modules that are embedded to APEXes, defaults to false for other module types where the native
-	// libraries are generally preinstalled outside the APK.
+	// all apps.
 	Use_embedded_native_libs *bool
 
 	// Store dex files uncompressed in the APK and set the android:useEmbeddedDex="true" manifest attribute so that
@@ -409,7 +408,7 @@ func (a *AndroidApp) useEmbeddedNativeLibs(ctx android.ModuleContext) bool {
 	}
 
 	apexInfo, _ := android.ModuleProvider(ctx, android.ApexInfoProvider)
-	return (minSdkVersion.FinalOrFutureInt() >= 23 && Bool(a.appProperties.Use_embedded_native_libs)) ||
+	return (minSdkVersion.FinalOrFutureInt() >= 23 && BoolDefault(a.appProperties.Use_embedded_native_libs, true)) ||
 		!apexInfo.IsForPlatform()
 }
 
@@ -433,9 +432,7 @@ func (a *AndroidApp) shouldUncompressDex(ctx android.ModuleContext) bool {
 }
 
 func (a *AndroidApp) shouldEmbedJnis(ctx android.BaseModuleContext) bool {
-	apexInfo, _ := android.ModuleProvider(ctx, android.ApexInfoProvider)
-	return ctx.Config().UnbundledBuild() || Bool(a.appProperties.Use_embedded_native_libs) ||
-		!apexInfo.IsForPlatform() || a.appProperties.AlwaysPackageNativeLibs
+	return true
 }
 
 func generateAaptRenamePackageFlags(packageName string, renameResourcesPackage bool) []string {
