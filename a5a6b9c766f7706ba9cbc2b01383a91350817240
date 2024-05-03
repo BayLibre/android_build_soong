@@ -86,6 +86,24 @@
       "parentUuid": "b7eda0b5_89ca6737",
       "revId": "a5a6b9c766f7706ba9cbc2b01383a91350817240",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fdb952f_37e0d4e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-05-03T01:04:18Z",
+      "side": 1,
+      "message": "Nobody really uses the blueprint variable directly. The board makefiles use the variable MALLOC_SVELTE :\u003d true and that still enables the low memory allocator. After this change, you can also use MALLOC_LOW_MEMORY :\u003d true which is a little more intention revealing.\n\nBut before and after, nobody should see any differences on Wear/Auto/TV. If you enabled the low memory allocator before, you will get it after.",
+      "parentUuid": "623c9d42_6cacddca",
+      "revId": "a5a6b9c766f7706ba9cbc2b01383a91350817240",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
