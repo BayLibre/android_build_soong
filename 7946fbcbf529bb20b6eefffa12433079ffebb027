@@ -16,6 +16,29 @@
       "message": "Ping for owners review -- thanks!",
       "revId": "7946fbcbf529bb20b6eefffa12433079ffebb027",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a159e7f_52492bb3",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-03T17:58:35Z",
+      "side": 1,
+      "message": "`ctx.RustModule()`",
+      "range": {
+        "startLine": 387,
+        "startChar": 5,
+        "endLine": 387,
+        "endChar": 27
+      },
+      "revId": "7946fbcbf529bb20b6eefffa12433079ffebb027",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
