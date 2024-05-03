@@ -89,21 +89,13 @@ type appProperties struct {
 	// STL library to use for JNI libraries.
 	Stl *string `android:"arch_variant"`
 
-	// Store native libraries uncompressed in the APK and set the android:extractNativeLibs="false" manifest
-	// flag so that they are used from inside the APK at runtime.  Defaults to true for android_test modules unless
-	// sdk_version or min_sdk_version is set to a version that doesn't support it (<23), defaults to true for
-	// android_app modules that are embedded to APEXes, defaults to false for other module types where the native
-	// libraries are generally preinstalled outside the APK.
+	// This property is ignored. It's left just for compatibility. Native libs are always
+	// embedded as uncompressed.
 	Use_embedded_native_libs *bool
 
 	// Store dex files uncompressed in the APK and set the android:useEmbeddedDex="true" manifest attribute so that
 	// they are used from inside the APK at runtime.
 	Use_embedded_dex *bool
-
-	// Forces native libraries to always be packaged into the APK,
-	// Use_embedded_native_libs still selects whether they are stored uncompressed and aligned or compressed.
-	// True for android_test* modules.
-	AlwaysPackageNativeLibs bool `blueprint:"mutated"`
 
 	// If set, find and merge all NOTICE files that this module and its dependencies have and store
 	// it in the APK as an asset.
@@ -408,9 +400,8 @@ func (a *AndroidApp) useEmbeddedNativeLibs(ctx android.ModuleContext) bool {
 		ctx.PropertyErrorf("min_sdk_version", "invalid value %q: %s", a.MinSdkVersion(ctx), err)
 	}
 
-	apexInfo, _ := android.ModuleProvider(ctx, android.ApexInfoProvider)
-	return (minSdkVersion.FinalOrFutureInt() >= 23 && Bool(a.appProperties.Use_embedded_native_libs)) ||
-		!apexInfo.IsForPlatform()
+	// Use this as long as the target API level supports it.
+	return minSdkVersion.FinalOrFutureInt() >= 23
 }
 
 // Returns whether this module should have the dex file stored uncompressed in the APK.
@@ -433,9 +424,8 @@ func (a *AndroidApp) shouldUncompressDex(ctx android.ModuleContext) bool {
 }
 
 func (a *AndroidApp) shouldEmbedJnis(ctx android.BaseModuleContext) bool {
-	apexInfo, _ := android.ModuleProvider(ctx, android.ApexInfoProvider)
-	return ctx.Config().UnbundledBuild() || Bool(a.appProperties.Use_embedded_native_libs) ||
-		!apexInfo.IsForPlatform() || a.appProperties.AlwaysPackageNativeLibs
+	// Always!
+	return true
 }
 
 func generateAaptRenamePackageFlags(packageName string, renameResourcesPackage bool) []string {
@@ -1400,8 +1390,6 @@ func AndroidTestFactory() android.Module {
 	module.Module.properties.Instrument = true
 	module.Module.properties.Supports_static_instrumentation = true
 	module.Module.properties.Installable = proptools.BoolPtr(true)
-	module.appProperties.Use_embedded_native_libs = proptools.BoolPtr(true)
-	module.appProperties.AlwaysPackageNativeLibs = true
 	module.Module.dexpreopter.isTest = true
 	module.Module.linter.properties.Lint.Test = proptools.BoolPtr(true)
 
@@ -1456,8 +1444,6 @@ func AndroidTestHelperAppFactory() android.Module {
 	module.Module.dexProperties.Optimize.EnabledByDefault = true
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
-	module.appProperties.Use_embedded_native_libs = proptools.BoolPtr(true)
-	module.appProperties.AlwaysPackageNativeLibs = true
 	module.Module.dexpreopter.isTest = true
 	module.Module.linter.properties.Lint.Test = proptools.BoolPtr(true)
 
