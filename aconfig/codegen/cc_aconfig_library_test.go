@@ -50,7 +50,6 @@ func testCCCodegenModeHelper(t *testing.T, bpMode string, ruleMode string) {
 			aconfig_declarations {
 				name: "my_aconfig_declarations",
 				package: "com.example.package",
-				container: "com.android.foo",
 				srcs: ["foo.aconfig"],
 			}
 
@@ -113,7 +112,6 @@ func testIncorrectCCCodegenModeHelper(t *testing.T, bpMode string, err string) {
 			aconfig_declarations {
 				name: "my_aconfig_declarations",
 				package: "com.example.package",
-				container: "com.android.foo",
 				srcs: ["foo.aconfig"],
 			}
 
@@ -169,7 +167,6 @@ func TestAndroidMkCcLibrary(t *testing.T) {
 		aconfig_declarations {
 			name: "my_aconfig_declarations_bar",
 			package: "com.example.package",
-			container: "com.android.foo",
 			srcs: ["bar.aconfig"],
 		}
 
@@ -244,7 +241,6 @@ func TestForceReadOnly(t *testing.T) {
 			aconfig_declarations {
 				name: "my_aconfig_declarations",
 				package: "com.example.package",
-				container: "com.android.foo",
 				srcs: ["foo.aconfig"],
 			}
 
