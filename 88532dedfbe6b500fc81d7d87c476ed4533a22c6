@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b541d1c_c90c178b",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-03T23:43:34Z",
+      "side": 1,
+      "message": "Does narrower here mean subset relationship? My understanding is that SdkToolchain is not a subset of SdkPublic (e.g. `LambdaMetafactory` is part of toolchain api, but is not part of public api). This is likely true for other pairs in the proposed ordering as well.",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 75
+      },
+      "revId": "88532dedfbe6b500fc81d7d87c476ed4533a22c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
