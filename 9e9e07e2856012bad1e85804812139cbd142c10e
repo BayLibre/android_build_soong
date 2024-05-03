@@ -16,6 +16,40 @@
       "message": "Please take a look a the other CL in the topic when you get a chance too.",
       "revId": "9e9e07e2856012bad1e85804812139cbd142c10e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d37ce317_76c2afa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-03T21:23:45Z",
+      "side": 1,
+      "message": "Lgtm apart from the tradefed test failure.",
+      "revId": "9e9e07e2856012bad1e85804812139cbd142c10e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e3ab24e_95b6c940",
+        "filename": "tradefed_modules/test_module_config_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-03T21:23:45Z",
+      "side": 1,
+      "message": "nit: can you add a check here if `entries.Class \u003d\u003d \"JAVA_LIBRARIES\"`?",
+      "revId": "9e9e07e2856012bad1e85804812139cbd142c10e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
