@@ -139,6 +139,11 @@ var testProductVariableProperties = struct {
 			Srcs   []string
 			Cflags []string
 		}
+		Debuggable struct {
+			Optimize struct {
+				Proguard_flags_files []string
+			}
+		}
 	}
 }{}
 
@@ -198,6 +203,36 @@ func TestProductVariables(t *testing.T) {
 			// A module type that does not have any properties that match product_variables.
 			ctx.RegisterModuleType("module3", testProductVariableModuleFactoryFactory(&struct {
 				Foo []string
+			}{}))
+			ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
+				ctx.BottomUp("variable", VariableMutator).Parallel()
+			})
+		}),
+		FixtureWithRootAndroidBp(bp),
+	).RunTest(t)
+
+	bp = `
+      module4 {
+         name: "qux",
+         product_variables: {
+            debuggable: {
+               optimize: {
+                  proguard_flags_files: ["proguard.flags"],
+               },
+            }
+         },
+      }
+   `
+	GroupFixturePreparers(
+		FixtureModifyProductVariables(func(variables FixtureProductVariables) {
+			variables.Debuggable = proptools.BoolPtr(true)
+		}),
+		FixtureRegisterWithContext(func(ctx RegistrationContext) {
+			// A module type that has a proguard_flags_files property in debuggable variants.
+			ctx.RegisterModuleType("module4", testProductVariableModuleFactoryFactory(&struct {
+				Optimize struct {
+					Proguard_flags_files []string
+				}
 			}{}))
 			ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
 				ctx.BottomUp("variable", VariableMutator).Parallel()
