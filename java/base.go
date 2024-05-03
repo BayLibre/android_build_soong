@@ -2275,6 +2275,11 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 					dep = syspropDep.JavaInfo
 				}
 			}
+			// Validate if this module can depend on the submodule of a sdk library
+			if lib, ok := module.(*Library); ok {
+				j.validateSdkLibSubModulesDependency(ctx, lib)
+			}
+
 			switch tag {
 			case bootClasspathTag:
 				deps.bootClasspath = append(deps.bootClasspath, dep.HeaderJars...)
@@ -2737,3 +2742,68 @@ func (j *Module) UsesLibrary() *usesLibrary {
 }
 
 var _ ModuleWithUsesLibrary = (*Module)(nil)
+
+func (j *Module) validateSdkLibSubModulesDependency(ctx android.ModuleContext, lib *Library) {
+	// If the dependency is not a java_library module or not generated from sdk_library,
+	// there is nothing to be done.
+	if lib.SdkLibraryName() == nil {
+		return
+	}
+
+	if android.InList(j.Name(), []string{
+		"core.module_lib.stubs.from-source",
+		"legacy.core.platform.api.stubs.from-source",
+		"legacy.core.platform.api.stubs.exportable.from-source",
+		"stable.core.platform.api.stubs.from-source",
+		"stable.core.platform.api.stubs.exportable.from-source",
+	}) {
+		return
+	}
+
+	// If the dependency is created from the same java_sdk_library as this module,
+	// they can depend on each other.
+	if proptools.String(j.SdkLibraryName()) == proptools.String(lib.SdkLibraryName()) {
+		return
+	}
+
+	// If this module is a platform variant, do not perform the check as it cannot be determined
+	// whether this module belongs to the same apex with the depending module.
+	// If the dependency is disallowed, the error would be throw during the validation for the
+	// apex variant of this module.
+	if !isApexVariant(ctx) {
+		return
+	}
+
+	// Check if the module can depend on an implementation library.
+	// If the (impl library of the) sdk_library is within the same apex as the client,
+	// the client can link against the implementation library.
+	// If not, only the modules that set sdk_version to private (i.e. do not specify the sdk_version)
+	// can link against the implementation library.
+	// However, if the sdk_library sets `default_to_stubs` property to true, the client cannot
+	// depend on the implementation library even if sdk_version is not specified.
+	if strings.HasSuffix(lib.Name(), implLibrarySuffix) {
+		stubsPreferred := lib.SdkLibraryDefaultToStubs() && !j.sdkVersion.Specified()
+		canAccessImplLib := j.sdkVersion.Kind == android.SdkPrivate || withinSameApexesAs(ctx, lib)
+		if stubsPreferred || !canAccessImplLib {
+			ctx.ModuleErrorf("%s cannot depend on %s. "+
+				"Consider depending on the stubs, or do not specify the sdk_version.", j.Name(), lib.Name())
+		}
+	}
+
+	// Check if the module can depend on an specific api scope stub library
+	// Get this modules's closest api scope from the sdk_version, and get the depending
+	// stub library module's api scope from its naming rules suffix.
+	// Check if the module's api scope extends (i.e. is a superset of) that of the stub library
+	thisModuleApiScope := sdkKindToApiScope(j.sdkVersion.Kind)
+	stubLibApiScope := allApiScopes.ApiScopeFromStubModuleName(lib.Name())
+
+	if !thisModuleApiScope.extendsScope(stubLibApiScope) {
+		var dependableStubModuleNames []string
+		for _, apiScope := range lib.SdkLibraryCreatedApiScopes() {
+			if thisModuleApiScope.extendsScope(apiScope) {
+				dependableStubModuleNames = append(dependableStubModuleNames, apiScope.stubsLibraryModuleName(proptools.String(lib.SdkLibraryName())))
+			}
+		}
+		ctx.ModuleErrorf("%s cannot depend on %s. Try depending on one of %s instead.", j.Name(), lib.Name(), dependableStubModuleNames)
+	}
+}
