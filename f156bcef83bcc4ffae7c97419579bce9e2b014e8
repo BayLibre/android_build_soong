@@ -16,6 +16,63 @@
       "message": "Ping for owners review -- thanks!",
       "revId": "f156bcef83bcc4ffae7c97419579bce9e2b014e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41fae793_72969ab3",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-03T17:23:27Z",
+      "side": 1,
+      "message": "Can we remove this from `$in` instead?",
+      "revId": "f156bcef83bcc4ffae7c97419579bce9e2b014e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f77fb8fb_344fe071",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-03T17:23:27Z",
+      "side": 1,
+      "message": "You could avoid the regexp here by using `strings.Map` to replace special characters with underscores.",
+      "range": {
+        "startLine": 1834,
+        "startChar": 1,
+        "endLine": 1838,
+        "endChar": 31
+      },
+      "revId": "f156bcef83bcc4ffae7c97419579bce9e2b014e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6034e5d1_e9876395",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-03T17:23:27Z",
+      "side": 1,
+      "message": "This list concerns me, it\u0027s going to be very easy to forget to add new properties here, which could cause the synthetic rust library to miscompile.\n\nIn your doc you said you were worried about creating a rust ninja rule directly from the cc module, can you show an example command line produced by the synthetic rust module as a measure of how much complexity would need to be fed into the rust compile?",
+      "revId": "f156bcef83bcc4ffae7c97419579bce9e2b014e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
