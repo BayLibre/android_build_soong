@@ -70,6 +70,30 @@
       },
       "revId": "88532dedfbe6b500fc81d7d87c476ed4533a22c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d998dd6_60381181",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-04T00:14:23Z",
+      "side": 1,
+      "message": "Updated the comment to be more descriptive. Please take a look.\n\n\u003e Btw, could I know the use case of having a sorted SdkKind set? Since there is no subset/superset relationship, I am not sure if true sorting is even possible.\n\nI\u0027m trying to implement a check that verifies that the module does not link against a stub of a wider api scope. The order should generally determined based on the recursive iteration of [`apiScope.extends`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/sdk_library.go;drc\u003d00e0991f702751098fe95c0dfce5cd3725659abf;l\u003d75), but [not all `SdkKind` has a corresponding `apiScope`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/sdk_library.go;drc\u003d00e0991f702751098fe95c0dfce5cd3725659abf;l\u003d421), thus I believe that having this \"general trend\" of the `SdkKind`s can assist determining the closest `apiScope` for the `sdkKind` that does not exist in `allApiScopes`.\n\nI\u0027ll send out the change that implements the check once it\u0027s ready, and maybe we can continue the discussion there?",
+      "parentUuid": "0b09dc16_52ff4718",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 75
+      },
+      "revId": "88532dedfbe6b500fc81d7d87c476ed4533a22c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
