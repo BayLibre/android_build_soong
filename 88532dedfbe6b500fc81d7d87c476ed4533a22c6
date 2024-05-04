@@ -46,6 +46,30 @@
       },
       "revId": "88532dedfbe6b500fc81d7d87c476ed4533a22c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b09dc16_52ff4718",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-04T00:00:06Z",
+      "side": 1,
+      "message": "I think placing toolchain before core sounds reasonable, but imo the comment \"These are ordered from the narrower sdk version to the wider sdk verion.\" comment can be confusing since there is no strict hierarchy. Can we reword/drop it?\n\nBtw, could I know the use case of having a sorted SdkKind set? Since there is no subset/superset relationship, I am not sure if true sorting is even possible.",
+      "parentUuid": "ae09d176_c07b09e9",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 75
+      },
+      "revId": "88532dedfbe6b500fc81d7d87c476ed4533a22c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
