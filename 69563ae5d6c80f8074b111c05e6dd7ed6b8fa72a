@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a68234ce_5ba1d6a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-05-04T13:41:14Z",
+      "side": 1,
+      "message": "Added the entries.class check but also added the base apk to \"support files\".\nThe \"device-tests.zip\" was missing it and correctly causing some tradefed checks to fail.",
+      "revId": "69563ae5d6c80f8074b111c05e6dd7ed6b8fa72a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
