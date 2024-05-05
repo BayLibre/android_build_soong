@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "507a9877_08717e3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-05T03:30:59Z",
+      "side": 1,
+      "message": "This is a follow up on aosp/3074024 which is expected to cause bloats on some APKs.\n\nConsider this dependency graph.\n\n```\nandroid_app\n   --(jni_libs)--\u003e cc_shared_lib(libfoo)\n                         --(shared_libs)--\u003e cc_shared_lib(libc++)\n```\n\nOriginally (even before aosp/3074024):\n \n* /system/app/App/App.apk (no libfoo or libc++ in it)\n* /system/app/App/lib/arm64/libfoo.so -\u003e /system/lib64/libfoo.so\n* /system/lib64/libfoo.so\n* /system/lib64/libc++.so\n\nAfter aosp/3074024:\n* /system/app/App/App.apk (with libfoo.so AND libc++.so in it)\n* /system/lib64/libc++.so\n\nSo, there are two copies of libc++: in the app, and outside the app.\n\nAfter this change:\n* /system/app/App/App.apk (only with libfoo.so in it)\n* /system/lib64/libc++.so\n\nNow, platform libs like libc++ are not embedded into the apk, unless they are explicitly listed in `jni_libs`.",
+      "revId": "4bc5231f6115c71aaa0aaaa3d575e5015f01bc5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
