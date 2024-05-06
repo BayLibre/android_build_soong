@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4fc621_e4486146",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-06T19:21:52Z",
+      "side": 1,
+      "message": "Why does this need to be handled so early?  Can this happen in GenerateAndroidBuildActions instead?  Mutators can be unnecessarily costly because they visit every module in the tree.",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
