@@ -34,6 +34,80 @@
       "parentUuid": "3a4fc621_e4486146",
       "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "307c0e3d_96e5965b",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-06T19:29:52Z",
+      "side": 1,
+      "message": "Can this be in the regular deps mutator by implementing the `DepsMutator` method?",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e126ca5_c7eb26fc",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-06T19:29:52Z",
+      "side": 1,
+      "message": "Can this be at the beginning of GenerateAndroidBuildActions instead?",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cccb15a3_6b4db2bc",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-06T19:29:52Z",
+      "side": 1,
+      "message": "Can this be at the beginning of `cmakeSnapshot` GenerateAndroidBuildActions instead, using `ctx.OtherModuleDir()` for each of the dependency modules?",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca8b0d5_c9e73af9",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-06T19:29:52Z",
+      "side": 1,
+      "message": "This is going to do the expensive atomic lookup repeatedly, move it out of the loop",
+      "range": {
+        "startLine": 558,
+        "startChar": 4,
+        "endLine": 558,
+        "endChar": 22
+      },
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
