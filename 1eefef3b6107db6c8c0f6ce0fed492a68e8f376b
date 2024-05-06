@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81345354_2857d04c",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-06T21:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "307c0e3d_96e5965b",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e126ca5_c7eb26fc",
@@ -66,6 +84,24 @@
       "writtenOn": "2024-05-06T19:29:52Z",
       "side": 1,
       "message": "Can this be at the beginning of GenerateAndroidBuildActions instead?",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b54b8664_47aff94d",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-06T21:24:23Z",
+      "side": 1,
+      "message": "It\u0027s needed to run before the code in `cmakeSnapshotFinalDepsMutator`.",
+      "parentUuid": "5e126ca5_c7eb26fc",
       "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -87,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15441b50_b204dd57",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-06T21:24:23Z",
+      "side": 1,
+      "message": "I tried, but then I can\u0027t do android.GlobFiles for modules outside of *current* mctx.",
+      "parentUuid": "cccb15a3_6b4db2bc",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ca8b0d5_c9e73af9",
@@ -100,6 +154,30 @@
       "writtenOn": "2024-05-06T19:29:52Z",
       "side": 1,
       "message": "This is going to do the expensive atomic lookup repeatedly, move it out of the loop",
+      "range": {
+        "startLine": 558,
+        "startChar": 4,
+        "endLine": 558,
+        "endChar": 22
+      },
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9394c5f_729cd2e7",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-06T21:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ca8b0d5_c9e73af9",
       "range": {
         "startLine": 558,
         "startChar": 4,
