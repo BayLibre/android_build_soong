@@ -36,18 +36,22 @@ var pctx = android.NewPackageContext("android/soong/rust")
 
 func init() {
 	android.RegisterModuleType("rust_defaults", defaultsFactory)
-	android.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
-		ctx.BottomUp("rust_libraries", LibraryMutator).Parallel()
-		ctx.BottomUp("rust_stdlinkage", LibstdMutator).Parallel()
-		ctx.BottomUp("rust_begin", BeginMutator).Parallel()
-	})
-	android.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
-		ctx.BottomUp("rust_sanitizers", rustSanitizerRuntimeMutator).Parallel()
-	})
+	android.PreDepsMutators(registerPreDepsMutators)
+	android.PostDepsMutators(registerPostDepsMutators)
 	pctx.Import("android/soong/android")
 	pctx.Import("android/soong/rust/config")
 	pctx.ImportAs("cc_config", "android/soong/cc/config")
 	android.InitRegistrationContext.RegisterParallelSingletonType("kythe_rust_extract", kytheExtractRustFactory)
+}
+
+func registerPreDepsMutators(ctx android.RegisterMutatorsContext) {
+	ctx.Transition("rust_libraries", &libraryTransitionMutator{})
+	ctx.Transition("rust_stdlinkage", &libstdTransitionMutator{})
+	ctx.BottomUp("rust_begin", BeginMutator).Parallel()
+}
+
+func registerPostDepsMutators(ctx android.RegisterMutatorsContext) {
+	ctx.BottomUp("rust_sanitizers", rustSanitizerRuntimeMutator).Parallel()
 }
 
 type Flags struct {
@@ -1090,10 +1094,11 @@ type autoDep struct {
 }
 
 var (
-	rlibVariation  = "rlib"
-	dylibVariation = "dylib"
-	rlibAutoDep    = autoDep{variation: rlibVariation, depTag: rlibDepTag}
-	dylibAutoDep   = autoDep{variation: dylibVariation, depTag: dylibDepTag}
+	sourceVariation = "source"
+	rlibVariation   = "rlib"
+	dylibVariation  = "dylib"
+	rlibAutoDep     = autoDep{variation: rlibVariation, depTag: rlibDepTag}
+	dylibAutoDep    = autoDep{variation: dylibVariation, depTag: dylibDepTag}
 )
 
 type autoDeppable interface {
@@ -1608,7 +1613,7 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		} else if _, ok := mod.sourceProvider.(*protobufDecorator); ok {
 			for _, lib := range deps.Rustlibs {
 				srcProviderVariations := append(commonDepVariations,
-					blueprint.Variation{Mutator: "rust_libraries", Variation: "source"})
+					blueprint.Variation{Mutator: "rust_libraries", Variation: sourceVariation})
 
 				if actx.OtherModuleDependencyVariantExists(srcProviderVariations, lib) {
 					actx.AddVariationDependencies(srcProviderVariations, sourceDepTag, lib)
