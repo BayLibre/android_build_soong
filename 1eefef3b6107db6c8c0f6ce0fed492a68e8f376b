@@ -16,6 +16,24 @@
       "message": "Why does this need to be handled so early?  Can this happen in GenerateAndroidBuildActions instead?  Mutators can be unnecessarily costly because they visit every module in the tree.",
       "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0177ab9c_9688e11f",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-06T19:26:52Z",
+      "side": 1,
+      "message": "It\u0027s used in `cmakeSnapshotPostDepsMutator` (directly and through WalkDepsOnce).\n\nI tried having it in `cmakeSnapshotPreDepsMutator`, but then it complains about calling `SetProvider` twice for this module (because post Arch stage it\u0027s two variants of it - Linux and Windows).",
+      "parentUuid": "3a4fc621_e4486146",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
