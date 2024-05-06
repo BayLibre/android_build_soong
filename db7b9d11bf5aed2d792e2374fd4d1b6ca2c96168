@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "486c025d_918d2b12",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1311067
+      },
+      "writtenOn": "2024-05-06T08:14:11Z",
+      "side": 1,
+      "message": "I\u0027ve removed support for `proguard_flags` since there is no existing use cases.",
+      "parentUuid": "50f4f4a8_02870512",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 18
+      },
+      "revId": "db7b9d11bf5aed2d792e2374fd4d1b6ca2c96168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2364a8f_320f60f2",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-06T06:11:55Z",
       "side": 1,
       "message": "May I know why not also add test for proguard_flags?",
+      "range": {
+        "startLine": 220,
+        "startChar": 5,
+        "endLine": 220,
+        "endChar": 25
+      },
+      "revId": "db7b9d11bf5aed2d792e2374fd4d1b6ca2c96168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f2cf94d_d2223f03",
+        "filename": "android/variable_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1311067
+      },
+      "writtenOn": "2024-05-06T08:14:11Z",
+      "side": 1,
+      "message": "I\u0027ve removed support for `proguard_flags` since there is no existing use cases.",
+      "parentUuid": "b2364a8f_320f60f2",
       "range": {
         "startLine": 220,
         "startChar": 5,
