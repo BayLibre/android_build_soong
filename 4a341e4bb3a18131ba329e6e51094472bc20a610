@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "045b74ac_22d09280",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-06T17:08:02Z",
+      "side": 1,
+      "message": "I tried to convince the module owners not to make the flags different in debug builds (ag/c/15401417/5/Android.mk#28, b/199829525), but it was never completed, and the author is no longer at Google.  I\u0027d like to avoid putting proguard flags in debuggable, as that makes it too easy to violate go/android-userdebug-policy.  Can you suggest to the current module owners that we use the `proguard_debug.flags` file on user builds too?",
+      "revId": "4a341e4bb3a18131ba329e6e51094472bc20a610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
