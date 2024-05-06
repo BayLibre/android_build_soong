@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50f4f4a8_02870512",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-05-06T06:27:12Z",
+      "side": 1,
+      "message": "Why we need this?\nIs there any use case?",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 18
+      },
+      "revId": "db7b9d11bf5aed2d792e2374fd4d1b6ca2c96168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2364a8f_320f60f2",
         "filename": "android/variable_test.go",
         "patchSetId": 5
