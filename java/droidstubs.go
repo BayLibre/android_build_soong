@@ -467,6 +467,7 @@ func (d *Droidstubs) DepsMutator(ctx android.BottomUpMutatorContext) {
 			ctx.AddDependency(ctx.Module(), aconfigDeclarationTag, aconfigDeclarationModuleName)
 		}
 	}
+	ctx.AddDependency(ctx.Module(), aconfigDeclarationTag, "all_aconfig_declarations")
 
 	if d.properties.Api_levels_module != nil {
 		ctx.AddDependency(ctx.Module(), metalavaAPILevelsModuleTag, proptools.String(d.properties.Api_levels_module))

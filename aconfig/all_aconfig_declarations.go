@@ -26,22 +26,38 @@ import (
 // Note that this is ALL aconfig_declarations modules present in the tree, not just
 // ones that are relevant to the product currently being built, so that that infra
 // doesn't need to pull from multiple builds and merge them.
-func AllAconfigDeclarationsFactory() android.Singleton {
-	return &allAconfigDeclarationsSingleton{}
+func AllAconfigDeclarationsFactory() android.SingletonModule {
+	module := &allAconfigDeclarationsSingleton{}
+	android.InitAndroidModule(module)
+	return module
 }
 
 type allAconfigDeclarationsSingleton struct {
+	android.SingletonModuleBase
 	intermediateBinaryProtoPath android.OutputPath
 	intermediateTextProtoPath   android.OutputPath
 }
 
-func (this *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+func (this *allAconfigDeclarationsSingleton) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// Generate build action for aconfig (binary proto output)
+	this.intermediateBinaryProtoPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.pb")
+
+	// Generate build action for aconfig (text proto output)
+	this.intermediateTextProtoPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.textproto")
+
+	android.SetProvider(ctx, android.AconfigDeclarationsProviderKey, android.AconfigDeclarationsProviderData{
+		IntermediateCacheOutputPath: this.intermediateBinaryProtoPath,
+		IntermediateDumpOutputPath:  this.intermediateTextProtoPath,
+	})
+}
+
+func (this *allAconfigDeclarationsSingleton) GenerateSingletonBuildActions(ctx android.SingletonContext) {
 	// Find all of the aconfig_declarations modules
 	var packages = make(map[string]int)
 	var cacheFiles android.Paths
 	ctx.VisitAllModules(func(module android.Module) {
 		decl, ok := android.SingletonModuleProvider(ctx, module, android.AconfigDeclarationsProviderKey)
-		if !ok {
+		if !ok || module.Name() == this.Name() {
 			return
 		}
 		cacheFiles = append(cacheFiles, decl.IntermediateCacheOutputPath)
@@ -60,8 +76,6 @@ func (this *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx android.Si
 		panic(fmt.Errorf("Only one aconfig_declarations allowed for each package."))
 	}
 
-	// Generate build action for aconfig (binary proto output)
-	this.intermediateBinaryProtoPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.pb")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        AllDeclarationsRule,
 		Inputs:      cacheFiles,
@@ -73,8 +87,6 @@ func (this *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx android.Si
 	})
 	ctx.Phony("all_aconfig_declarations", this.intermediateBinaryProtoPath)
 
-	// Generate build action for aconfig (text proto output)
-	this.intermediateTextProtoPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.textproto")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        AllDeclarationsRuleTextProto,
 		Inputs:      cacheFiles,
