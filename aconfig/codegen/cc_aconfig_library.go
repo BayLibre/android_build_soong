@@ -92,8 +92,6 @@ func (this *CcAconfigLibraryCallbacks) GeneratorDeps(ctx cc.DepsContext, deps cc
 
 	// TODO: after storage migration is over, don't add these in force-read-only-mode.
 	deps.SharedLibs = append(deps.SharedLibs, libAconfigStorageReadApiCcDep)
-	deps.SharedLibs = append(deps.SharedLibs, libBaseDep)
-	deps.SharedLibs = append(deps.SharedLibs, libLogDep)
 
 	// TODO: It'd be really nice if we could reexport this library and not make everyone do it.
 
