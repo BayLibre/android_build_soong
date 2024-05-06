@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9984b3bb_b961e02e",
+        "filename": "cc/compiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-06T19:32:00Z",
+      "side": 1,
+      "message": "If I understand correctly these will never be set in an Android.bp file.  Can you annotate the struct and all its members with `blueprint:\"mutated\"`, which will prevent setting them directly and hide them in the docs?  Also add a comment that explains where and why they are set.",
+      "revId": "1ada8126f59b425eeac610353e67022e3345e55c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
