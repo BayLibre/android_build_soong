@@ -22,6 +22,9 @@ import (
 
 func TestTwoAconfigDeclarationsPerPackage(t *testing.T) {
 	bp := `
+	all_aconfig_declarations {
+		name: "all_aconfig_declarations",
+	}
 		aconfig_declarations {
 			name: "module_name.foo",
 			package: "com.example.package",

@@ -26,16 +26,32 @@ import (
 // Note that this is ALL aconfig_declarations modules present in the tree, not just
 // ones that are relevant to the product currently being built, so that that infra
 // doesn't need to pull from multiple builds and merge them.
-func AllAconfigDeclarationsFactory() android.Singleton {
-	return &allAconfigDeclarationsSingleton{}
+func AllAconfigDeclarationsFactory() android.SingletonModule {
+	module := &allAconfigDeclarationsSingleton{}
+	android.InitAndroidModule(module)
+	return module
 }
 
 type allAconfigDeclarationsSingleton struct {
+	android.SingletonModuleBase
 	intermediateBinaryProtoPath android.OutputPath
 	intermediateTextProtoPath   android.OutputPath
 }
 
-func (this *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+func (module *allAconfigDeclarationsSingleton) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// Generate build action for aconfig (binary proto output)
+	module.intermediateBinaryProtoPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.pb")
+
+	// Generate build action for aconfig (text proto output)
+	module.intermediateTextProtoPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.textproto")
+
+	android.SetProvider(ctx, android.AconfigDeclarationsProviderKey, android.AconfigDeclarationsProviderData{
+		IntermediateCacheOutputPath: module.intermediateBinaryProtoPath,
+		IntermediateDumpOutputPath:  module.intermediateTextProtoPath,
+	})
+}
+
+func (module *allAconfigDeclarationsSingleton) GenerateSingletonBuildActions(ctx android.SingletonContext) {
 	// Find all of the aconfig_declarations modules
 	var packages = make(map[string]int)
 	var cacheFiles android.Paths
@@ -60,37 +76,33 @@ func (this *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx android.Si
 		panic(fmt.Errorf("Only one aconfig_declarations allowed for each package."))
 	}
 
-	// Generate build action for aconfig (binary proto output)
-	this.intermediateBinaryProtoPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.pb")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        AllDeclarationsRule,
 		Inputs:      cacheFiles,
-		Output:      this.intermediateBinaryProtoPath,
+		Output:      module.intermediateBinaryProtoPath,
 		Description: "all_aconfig_declarations",
 		Args: map[string]string{
 			"cache_files": android.JoinPathsWithPrefix(cacheFiles, "--cache "),
 		},
 	})
-	ctx.Phony("all_aconfig_declarations", this.intermediateBinaryProtoPath)
+	ctx.Phony("all_aconfig_declarations", module.intermediateBinaryProtoPath)
 
-	// Generate build action for aconfig (text proto output)
-	this.intermediateTextProtoPath = android.PathForIntermediates(ctx, "all_aconfig_declarations.textproto")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        AllDeclarationsRuleTextProto,
 		Inputs:      cacheFiles,
-		Output:      this.intermediateTextProtoPath,
+		Output:      module.intermediateTextProtoPath,
 		Description: "all_aconfig_declarations_textproto",
 		Args: map[string]string{
 			"cache_files": android.JoinPathsWithPrefix(cacheFiles, "--cache "),
 		},
 	})
-	ctx.Phony("all_aconfig_declarations_textproto", this.intermediateTextProtoPath)
+	ctx.Phony("all_aconfig_declarations_textproto", module.intermediateTextProtoPath)
 }
 
-func (this *allAconfigDeclarationsSingleton) MakeVars(ctx android.MakeVarsContext) {
-	ctx.DistForGoal("droid", this.intermediateBinaryProtoPath)
+func (module *allAconfigDeclarationsSingleton) MakeVars(ctx android.MakeVarsContext) {
+	ctx.DistForGoal("droid", module.intermediateBinaryProtoPath)
 	for _, goal := range []string{"docs", "droid", "sdk"} {
-		ctx.DistForGoalWithFilename(goal, this.intermediateBinaryProtoPath, "flags.pb")
-		ctx.DistForGoalWithFilename(goal, this.intermediateTextProtoPath, "flags.textproto")
+		ctx.DistForGoalWithFilename(goal, module.intermediateBinaryProtoPath, "flags.pb")
+		ctx.DistForGoalWithFilename(goal, module.intermediateTextProtoPath, "flags.textproto")
 	}
 }
