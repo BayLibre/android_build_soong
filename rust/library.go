@@ -20,6 +20,8 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/google/blueprint"
+
 	"android/soong/android"
 	"android/soong/cc"
 )
@@ -653,26 +655,23 @@ func validateLibraryStem(ctx BaseModuleContext, filename string, crate_name stri
 	}
 }
 
-// LibraryMutator mutates the libraries into variants according to the
-// build{Rlib,Dylib} attributes.
-func LibraryMutator(mctx android.BottomUpMutatorContext) {
-	// Only mutate on Rust libraries.
-	m, ok := mctx.Module().(*Module)
+type libraryTransitionMutator struct{}
+
+func (libraryTransitionMutator) Split(ctx android.BaseModuleContext) []string {
+	m, ok := ctx.Module().(*Module)
 	if !ok || m.compiler == nil {
-		return
+		return []string{""}
 	}
 	library, ok := m.compiler.(libraryInterface)
 	if !ok {
-		return
+		return []string{""}
 	}
 
 	var variants []string
 	// The source variant is used for SourceProvider modules. The other variants (i.e. rlib and dylib)
 	// depend on this variant. It must be the first variant to be declared.
-	sourceVariant := false
 	if m.sourceProvider != nil {
-		variants = append(variants, "source")
-		sourceVariant = true
+		variants = append(variants, sourceVariation)
 	}
 	if library.buildRlib() {
 		variants = append(variants, rlibVariation)
@@ -682,68 +681,113 @@ func LibraryMutator(mctx android.BottomUpMutatorContext) {
 	}
 
 	if len(variants) == 0 {
+		return []string{""}
+	}
+
+	return variants
+}
+
+func (libraryTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
+	return ""
+}
+
+func (libraryTransitionMutator) IncomingTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	m, ok := ctx.Module().(*Module)
+	if !ok || m.compiler == nil {
+		return ""
+	}
+	_, ok = m.compiler.(libraryInterface)
+	if !ok {
+		return ""
+	}
+
+	if incomingVariation == "" {
+		return sourceVariation
+	}
+	return incomingVariation
+}
+
+func (libraryTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, variation string) {
+	m, ok := ctx.Module().(*Module)
+	if !ok || m.compiler == nil {
 		return
 	}
-	modules := mctx.CreateLocalVariations(variants...)
+	library, ok := m.compiler.(libraryInterface)
+	if !ok {
+		return
+	}
 
-	// The order of the variations (modules) matches the variant names provided. Iterate
-	// through the new variation modules and set their mutated properties.
-	for i, v := range modules {
-		switch variants[i] {
-		case rlibVariation:
-			v.(*Module).compiler.(libraryInterface).setRlib()
-		case dylibVariation:
-			v.(*Module).compiler.(libraryInterface).setDylib()
-			if v.(*Module).ModuleBase.ImageVariation().Variation == android.VendorRamdiskVariation {
-				// TODO(b/165791368)
-				// Disable dylib Vendor Ramdisk variations until we support these.
-				v.(*Module).Disable()
-			}
-
-		case "source":
-			v.(*Module).compiler.(libraryInterface).setSource()
-			// The source variant does not produce any library.
-			// Disable the compilation steps.
-			v.(*Module).compiler.SetDisabled()
+	switch variation {
+	case rlibVariation:
+		library.setRlib()
+	case dylibVariation:
+		library.setDylib()
+		if m.ModuleBase.ImageVariation().Variation == android.VendorRamdiskVariation {
+			// TODO(b/165791368)
+			// Disable dylib Vendor Ramdisk variations until we support these.
+			m.Disable()
 		}
+
+	case sourceVariation:
+		library.setSource()
+		// The source variant does not produce any library.
+		// Disable the compilation steps.
+		m.compiler.SetDisabled()
 	}
 
 	// If a source variant is created, add an inter-variant dependency
 	// between the other variants and the source variant.
-	if sourceVariant {
-		sv := modules[0]
-		for _, v := range modules[1:] {
-			if !v.Enabled() {
-				continue
-			}
-			mctx.AddInterVariantDependency(sourceDepTag, v, sv)
-		}
-		// Alias the source variation so it can be named directly in "srcs" properties.
-		mctx.AliasVariation("source")
+	if m.sourceProvider != nil && variation != sourceVariation {
+		ctx.AddVariationDependencies([]blueprint.Variation{{"rust_libraries", sourceVariation}}, sourceDepTag, ctx.ModuleName())
 	}
 }
 
-func LibstdMutator(mctx android.BottomUpMutatorContext) {
-	if m, ok := mctx.Module().(*Module); ok && m.compiler != nil && !m.compiler.Disabled() {
-		switch library := m.compiler.(type) {
-		case libraryInterface:
-			// Only create a variant if a library is actually being built.
-			if library.rlib() && !library.sysroot() {
-				variants := []string{"rlib-std", "dylib-std"}
-				modules := mctx.CreateLocalVariations(variants...)
+type libstdTransitionMutator struct{}
 
-				rlib := modules[0].(*Module)
-				dylib := modules[1].(*Module)
-				rlib.compiler.(libraryInterface).setRlibStd()
-				dylib.compiler.(libraryInterface).setDylibStd()
-				if dylib.ModuleBase.ImageVariation().Variation == android.VendorRamdiskVariation {
-					// TODO(b/165791368)
-					// Disable rlibs that link against dylib-std on vendor ramdisk variations until those dylib
-					// variants are properly supported.
-					dylib.Disable()
-				}
-				rlib.Properties.RustSubName += RlibStdlibSuffix
+func (libstdTransitionMutator) Split(ctx android.BaseModuleContext) []string {
+	if m, ok := ctx.Module().(*Module); ok && m.compiler != nil && !m.compiler.Disabled() {
+		// Only create a variant if a library is actually being built.
+		if library, ok := m.compiler.(libraryInterface); ok {
+			if library.rlib() && !library.sysroot() {
+				return []string{"rlib-std", "dylib-std"}
 			}
+		}
+	}
+	return []string{""}
+}
+
+func (libstdTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
+	return ""
+}
+
+func (libstdTransitionMutator) IncomingTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if m, ok := ctx.Module().(*Module); ok && m.compiler != nil && !m.compiler.Disabled() {
+		if library, ok := m.compiler.(libraryInterface); ok {
+			if library.rlib() && !library.sysroot() {
+				if incomingVariation != "" {
+					return incomingVariation
+				}
+				// TODO: is this right?
+				return "rlib-std"
+			}
+		}
+	}
+	return ""
+}
+
+func (libstdTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, variation string) {
+	if variation == "rlib-std" {
+		rlib := ctx.Module().(*Module)
+		rlib.compiler.(libraryInterface).setRlibStd()
+		rlib.Properties.RustSubName += RlibStdlibSuffix
+	} else if variation == "dylib-std" {
+		dylib := ctx.Module().(*Module)
+		dylib.compiler.(libraryInterface).setDylibStd()
+		if dylib.ModuleBase.ImageVariation().Variation == android.VendorRamdiskVariation {
+			// TODO(b/165791368)
+			// Disable rlibs that link against dylib-std on vendor ramdisk variations until those dylib
+			// variants are properly supported.
+			dylib.Disable()
 		}
 	}
 }
