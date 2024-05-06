@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13838546_9abdfc08",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-06T22:24:13Z",
+      "side": 1,
+      "message": "But `FlagWithRspFileInputList` will not accept strings.\n\nHowever, I must admit if it did accept strings (assuming `GlobWithDeps` worked), it would make cmake_snapshot implementation much simpler.",
+      "parentUuid": "54267a57_a7415c13",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ca8b0d5_c9e73af9",
         "filename": "cc/cmake_snapshot.go",
         "patchSetId": 66
