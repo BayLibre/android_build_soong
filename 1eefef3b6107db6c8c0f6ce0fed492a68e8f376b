@@ -179,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54267a57_a7415c13",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-06T22:18:59Z",
+      "side": 1,
+      "message": "Ah, I missed that `android.GlobFiles` covnerted it to a module path.\n\nCan you try with `mctx.GlobWithDeps()` instead?  That will return strings instead of Paths.",
+      "parentUuid": "bad67b62_142e9daf",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ca8b0d5_c9e73af9",
         "filename": "cc/cmake_snapshot.go",
         "patchSetId": 66
