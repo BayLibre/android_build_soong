@@ -22,6 +22,30 @@
       },
       "revId": "2ddb22ce99d56fdaf0ce65726d68c068b3dc3247",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aedf9c82_a3f1dd16",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-05-06T17:39:39Z",
+      "side": 0,
+      "message": "This should be okay. Thanks Jihoon for checking with me!",
+      "parentUuid": "c636217a_8429773c",
+      "range": {
+        "startLine": 1577,
+        "startChar": 0,
+        "endLine": 1582,
+        "endChar": 2
+      },
+      "revId": "2ddb22ce99d56fdaf0ce65726d68c068b3dc3247",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
