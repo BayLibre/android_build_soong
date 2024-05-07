@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf92d462_906ff485",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-07T01:17:25Z",
+      "side": 1,
+      "message": "@dariofreni@google.com Would you able to take a look if this satisfies the requirements, and look into what other flags need to be modified? Below is one example of failures being observed:\n```\n//packages/modules/NetworkStack:NetworkStack aapt2 link\nFAILED: out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/e18b8e8d84cb9f664aa09a397b08c165/package-res.apk out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/e18b8e8d84cb9f664aa09a397b08c165/gen/proguard.options out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/e18b8e8d84cb9f664aa09a397b08c165/R.txt out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/e18b8e8d84cb9f664aa09a397b08c165/gen/android/R.srcjar\nrm -rf out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/e18b8e8d84cb9f664aa09a397b08c165/gen/aapt2/R \u0026\u0026 out/host/linux-x86/bin/aapt2 link -o out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/e18b8e8d84cb9f664aa09a397b08c165/package-res.apk --enable-compact-entries --manifest out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/e18b8e8d84cb9f664aa09a397b08c165/manifest_merger/AndroidManifest.xml  --min-sdk-version 30 --target-sdk-version 30 --non-updatable-system --version-name  VanillaIceCream --auto-add-overlay -I prebuilts/sdk/34/module-lib/android.jar -I prebuilts/sdk/tools/core-lambda-stubs.jar -c en_US,af_ZA,am_ET,ar_EG,ar_XB,as_IN,az_AZ,be_BY,bg_BG,bn_BD,bs_BA,ca_ES,cs_CZ,da_DK,de_DE,el_GR,en_AU,en_CA,en_GB,en_IN,en_XA,es_ES,es_US,et_EE,eu_ES,fa_IR,fi_FI,fr_CA,fr_FR,gl_ES,gu_IN,hi_IN,hr_HR,hu_HU,hy_AM,in_ID,is_IS,it_IT,iw_IL,ja_JP,ka_GE,kk_KZ,km_KH,kn_IN,ko_KR,ky_KG,lo_LA,lt_LT,lv_LV,mk_MK,ml_IN,mn_MN,mr_IN,ms_MY,my_MM,nb_NO,ne_NP,nl_NL,or_IN,pa_IN,pl_PL,pt_BR,pt_PT,ro_RO,ru_RU,si_LK,sk_SK,sl_SI,sq_AL,sr_Latn_RS,sr_RS,sv_SE,sw_TZ,ta_IN,te_IN,th_TH,tl_PH,tr_TR,uk_UA,ur_PK,uz_UZ,vi_VN,zh_CN,zh_HK,zh_TW,zu_ZA,en_XC, --no-static-lib-packages --java out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/e18b8e8d84cb9f664aa09a397b08c165/gen/aapt2/R --proguard\n...\nSegmentation fault (core dumped)\n```\n\nShould `--version-name` be removed as well from the list of flags passed to `aapt2`?",
+      "revId": "9c3be7e805ff3997154b1acbb822d76d5abe1799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
