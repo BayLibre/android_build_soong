@@ -310,7 +310,7 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 
 	// Version code
 	if !hasVersionCode {
-		linkFlags = append(linkFlags, "--version-code", ctx.Config().PlatformSdkVersion().String())
+		linkFlags = append(linkFlags, "--non-updatable-system")
 	}
 
 	if !hasVersionName {
