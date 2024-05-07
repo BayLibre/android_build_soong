@@ -537,9 +537,6 @@ type Module struct {
 	// or the module should override Stem().
 	stem string
 
-	// Single aconfig "cache file" merged from this module and all dependencies.
-	mergedAconfigFiles map[string]android.Paths
-
 	// Values that will be set in the JarJarProvider data for jarjar repackaging,
 	// and merged with our dependencies' rules.
 	jarjarRenameRules map[string]string
@@ -1730,7 +1727,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 
 	ctx.CheckbuildFile(outputFile)
 
-	android.CollectDependencyAconfigFiles(ctx, &j.mergedAconfigFiles)
+	android.CollectDependencyAconfigFiles(ctx, j.GetMergedAconfigFiles())
 
 	android.SetProvider(ctx, JavaInfoProvider, JavaInfo{
 		HeaderJars:                          android.PathsIfNonNil(j.headerJarFile),

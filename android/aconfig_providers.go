@@ -103,6 +103,10 @@ func CollectDependencyAconfigFiles(ctx ModuleContext, mergedAconfigFiles *map[st
 				(*mergedAconfigFiles)[container] = append((*mergedAconfigFiles)[container], v...)
 			}
 		}
+
+		for container, v := range *module.GetMergedAconfigFiles() {
+			(*mergedAconfigFiles)[container] = append((*mergedAconfigFiles)[container], v...)
+		}
 	})
 
 	for _, container := range SortedKeys(*mergedAconfigFiles) {
@@ -115,7 +119,7 @@ func CollectDependencyAconfigFiles(ctx ModuleContext, mergedAconfigFiles *map[st
 	})
 }
 
-func SetAconfigFileMkEntries(m *ModuleBase, entries *AndroidMkEntries, aconfigFiles map[string]Paths) {
+func SetAconfigFileMkEntries(m *ModuleBase, entries *AndroidMkEntries, aconfigFiles *map[string]Paths) {
 	setAconfigFileMkEntries(m, entries, aconfigFiles)
 }
 
@@ -192,7 +196,7 @@ func aconfigUpdateAndroidMkData(ctx fillInEntriesContext, mod Module, data *Andr
 		return
 	}
 	data.Extra = append(data.Extra, func(w io.Writer, outputFile Path) {
-		AndroidMkEmitAssignList(w, "LOCAL_ACONFIG_FILES", getAconfigFilePaths(mod.base(), info.AconfigFiles).Strings())
+		AndroidMkEmitAssignList(w, "LOCAL_ACONFIG_FILES", getAconfigFilePaths(mod.base(), &info.AconfigFiles).Strings())
 	})
 	// If there is a Custom writer, it needs to support this provider.
 	if data.Custom != nil {
@@ -225,7 +229,7 @@ func aconfigUpdateAndroidMkEntries(ctx fillInEntriesContext, mod Module, entries
 	for idx, _ := range *entries {
 		(*entries)[idx].ExtraEntries = append((*entries)[idx].ExtraEntries,
 			func(ctx AndroidMkExtraEntriesContext, entries *AndroidMkEntries) {
-				setAconfigFileMkEntries(mod.base(), entries, info.AconfigFiles)
+				setAconfigFileMkEntries(mod.base(), entries, &info.AconfigFiles)
 			},
 		)
 
@@ -255,11 +259,11 @@ func mergeAconfigFiles(ctx ModuleContext, container string, inputs Paths, genera
 	return Paths{output}
 }
 
-func setAconfigFileMkEntries(m *ModuleBase, entries *AndroidMkEntries, aconfigFiles map[string]Paths) {
+func setAconfigFileMkEntries(m *ModuleBase, entries *AndroidMkEntries, aconfigFiles *map[string]Paths) {
 	entries.AddPaths("LOCAL_ACONFIG_FILES", getAconfigFilePaths(m, aconfigFiles))
 }
 
-func getAconfigFilePaths(m *ModuleBase, aconfigFiles map[string]Paths) (paths Paths) {
+func getAconfigFilePaths(m *ModuleBase, aconfigFiles *map[string]Paths) (paths Paths) {
 	// TODO(b/311155208): The default container here should be system.
 	container := "system"
 
@@ -271,18 +275,18 @@ func getAconfigFilePaths(m *ModuleBase, aconfigFiles map[string]Paths) (paths Pa
 		container = "system_ext"
 	}
 
-	paths = append(paths, aconfigFiles[container]...)
+	paths = append(paths, (*aconfigFiles)[container]...)
 	if container == "system" {
 		// TODO(b/311155208): Once the default container is system, we can drop this.
-		paths = append(paths, aconfigFiles[""]...)
+		paths = append(paths, (*aconfigFiles)[""]...)
 	}
 	if container != "system" {
-		if len(aconfigFiles[container]) == 0 && len(aconfigFiles[""]) > 0 {
+		if len((*aconfigFiles)[container]) == 0 && len((*aconfigFiles)[""]) > 0 {
 			// TODO(b/308625757): Either we guessed the container wrong, or the flag is misdeclared.
 			// For now, just include the system (aka "") container if we get here.
-			//fmt.Printf("container_mismatch: module=%v container=%v files=%v\n", m, container, aconfigFiles)
+			//fmt.Printf("container_mismatch: module=%v container=%v files=%v\n", m, container, *aconfigFiles)
 		}
-		paths = append(paths, aconfigFiles[""]...)
+		paths = append(paths, (*aconfigFiles)[""]...)
 	}
 	return
 }

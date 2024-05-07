@@ -907,9 +907,6 @@ type Module struct {
 
 	hideApexVariantFromMake bool
 
-	// Aconfig files for all transitive deps.  Also exposed via TransitiveDeclarationsInfo
-	mergedAconfigFiles map[string]android.Paths
-
 	logtagsPaths android.Paths
 }
 
@@ -2163,7 +2160,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 
 	android.SetProvider(ctx, blueprint.SrcsFileProviderKey, blueprint.SrcsFileProviderData{SrcPaths: deps.GeneratedSources.Strings()})
 
-	android.CollectDependencyAconfigFiles(ctx, &c.mergedAconfigFiles)
+	android.CollectDependencyAconfigFiles(ctx, c.GetMergedAconfigFiles())
 
 	c.maybeInstall(ctx, apexInfo)
 

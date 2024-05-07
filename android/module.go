@@ -94,6 +94,7 @@ type Module interface {
 	ExportedToMake() bool
 	InitRc() Paths
 	VintfFragments() Paths
+	GetMergedAconfigFiles() *map[string]Paths
 	EffectiveLicenseKinds() []string
 	EffectiveLicenseFiles() Paths
 
@@ -902,6 +903,9 @@ type ModuleBase struct {
 	installedInitRcPaths         InstallPaths
 	installedVintfFragmentsPaths InstallPaths
 
+	// Aconfig files for all transitive deps.  Also exposed via TransitiveDeclarationsInfo
+	mergedAconfigFiles map[string]Paths
+
 	// set of dependency module:location mappings used to populate the license metadata for
 	// apex containers.
 	licenseInstallMap []string
@@ -1630,6 +1634,10 @@ func (m *ModuleBase) VintfFragments() Paths {
 
 func (m *ModuleBase) CompileMultilib() *string {
 	return m.base().commonProperties.Compile_multilib
+}
+
+func (m *ModuleBase) GetMergedAconfigFiles() *map[string]Paths {
+	return &m.mergedAconfigFiles
 }
 
 // SetLicenseInstallMap stores the set of dependency module:location mappings for files in an

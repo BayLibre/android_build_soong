@@ -180,9 +180,6 @@ type Module struct {
 
 	subName string
 	subDir  string
-
-	// Aconfig files for all transitive deps.  Also exposed via TransitiveDeclarationsInfo
-	mergedAconfigFiles map[string]android.Paths
 }
 
 type taskFunc func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) []generateTask
@@ -588,7 +585,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		})
 		g.outputDeps = android.Paths{phonyFile}
 	}
-	android.CollectDependencyAconfigFiles(ctx, &g.mergedAconfigFiles)
+	android.CollectDependencyAconfigFiles(ctx, g.GetMergedAconfigFiles())
 }
 
 func (g *Module) AndroidMkEntries() []android.AndroidMkEntries {
@@ -596,7 +593,7 @@ func (g *Module) AndroidMkEntries() []android.AndroidMkEntries {
 		OutputFile: android.OptionalPathForPath(g.outputFiles[0]),
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
-				android.SetAconfigFileMkEntries(g.AndroidModuleBase(), entries, g.mergedAconfigFiles)
+				android.SetAconfigFileMkEntries(g.AndroidModuleBase(), entries, g.GetMergedAconfigFiles())
 			},
 		},
 	}
