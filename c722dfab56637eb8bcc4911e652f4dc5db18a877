@@ -46,6 +46,30 @@
       },
       "revId": "c722dfab56637eb8bcc4911e652f4dc5db18a877",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1b75be_6d0c9943",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-07T23:52:36Z",
+      "side": 1,
+      "message": "Yeah even the things that are common to all `android.Module`s should should through providers to enable incremental analysis.\n\nWe plan to make `VisitDirectDepentdencies`, `AddDependency`, etc, give you a fake `android.Module` that you can only get providers from in the future to enforce this.",
+      "parentUuid": "b9553115_af80131c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "c722dfab56637eb8bcc4911e652f4dc5db18a877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
