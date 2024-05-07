@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd5dc56_ac66ba4f",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-07T06:45:32Z",
+      "side": 1,
+      "message": "I know this has been the case before your change, but why is this `map[string]Paths` not just `Paths`? A module is installed to a single partition. Why would a module have to care about other partitions?",
+      "range": {
+        "startLine": 907,
+        "startChar": 20,
+        "endLine": 907,
+        "endChar": 36
+      },
+      "revId": "02a8336953db550782f441daa3dca4f7faa60257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
