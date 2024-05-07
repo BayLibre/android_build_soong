@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87c87237_2d6f2720",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2024-05-07T15:39:27Z",
+      "side": 1,
+      "message": "I was considering this, having the eng build also use non final ids ensures that you don\u0027t start using these in switches or annotations, just to get compilation failures for userdebug builds then. Having non final ids should not change behaviour here, except that there is not a field load (the values would have been inlined by javac). I doubt this has performance implications, I assume that the framework call with the id is the dominating factor (and art can still optimize this if it is hot). WDYT",
+      "parentUuid": "a398f37a_d7468e0c",
+      "range": {
+        "startLine": 524,
+        "startChar": 46,
+        "endLine": 524,
+        "endChar": 72
+      },
+      "revId": "6579f763e6092865afce6c0236ab474c940bc637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbde7fb3_e5f6de18",
         "filename": "java/app.go",
         "patchSetId": 1
