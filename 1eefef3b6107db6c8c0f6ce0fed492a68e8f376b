@@ -359,6 +359,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59967535_811fc99d",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-07T20:06:08Z",
+      "side": 1,
+      "message": "It\u0027s hard to predict how future features will work, and we may end up wanting different flags.  I\u0027d suggest starting with something cmake-specific, and generalizing it later once we have at least two examples to compare.",
+      "parentUuid": "9b2b1c89_f132247b",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ca8b0d5_c9e73af9",
         "filename": "cc/cmake_snapshot.go",
         "patchSetId": 66
