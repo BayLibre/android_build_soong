@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb8b3bd_2402fe68",
+        "filename": "android/module_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-07T06:45:24Z",
+      "side": 1,
+      "message": "slice is a reference type. You don\u0027t need to use a pointer.",
+      "range": {
+        "startLine": 485,
+        "startChar": 58,
+        "endLine": 485,
+        "endChar": 65
+      },
+      "revId": "464fb60fb0e2ece93073c83cf77c855574066d4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
