@@ -215,6 +215,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28f9482d_804c1ccf",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-07T18:24:59Z",
+      "side": 1,
+      "message": "I see, the Path does get used later.\n\nIt seems valuable to try to untangle this, since a significant amount of complexity is created by this impedance mismatch.  I don\u0027t think `FlagWithRspFileInputList` can take strings, as you also need dependencies on all the files to ensure the zip file gets recreated if the files change, and we do all dependencies through Path.\n\nOne option is to make `android.GlobFiles` (or another function) use `safePathForSource` without trying to enforce that it has the `ctx.ModuleDir()` prefix.  I\u0027m hesitant to do that though, as it opens up the possibility of module types incorrectly reaching into other modules.\n\nAnother option is to have the modules in the snapshot glob their own files in their own `GenerateAndroidBuildActions`, and then export them as a Provider to the snapshot module.  That\u0027s going to be too expensive to do every cc module, so you\u0027ll need some way to restrict it to just the modules in the snapshot.  You could do that with a variant, but I don\u0027t recommend that as it can be very difficult to fit new variants into the build graph.  Another option would be to manually mark with a boolean property in the Android.bp files all modules that can be part of a snapshot, and enable the extra logic with that boolean.\n\nI also wonder whether it\u0027s worth having this directory zipping logic in Soong at all.  Would producing the cmake files and a list of directories be sufficient, and then something outside the build could gather the files?\n\nHow do you handle `filegroup` dependencies, where files from outside the module\u0027s directory could be compiled by the module?",
+      "parentUuid": "13838546_9abdfc08",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ca8b0d5_c9e73af9",
         "filename": "cc/cmake_snapshot.go",
         "patchSetId": 66
