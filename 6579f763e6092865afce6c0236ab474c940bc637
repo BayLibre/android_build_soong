@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a398f37a_d7468e0c",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-07T15:35:11Z",
+      "side": 1,
+      "message": "What about this case? Seems like we\u0027d want final IDs. Maybe we should have an `optimizedResourceShrinkingEnabled()` helper query?",
+      "range": {
+        "startLine": 524,
+        "startChar": 46,
+        "endLine": 524,
+        "endChar": 72
+      },
+      "revId": "6579f763e6092865afce6c0236ab474c940bc637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbde7fb3_e5f6de18",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-07T15:35:11Z",
+      "side": 1,
+      "message": "Same with this case, I think we\u0027d want to pass in the aapt keep rules.",
+      "range": {
+        "startLine": 555,
+        "startChar": 12,
+        "endLine": 555,
+        "endChar": 25
+      },
+      "revId": "6579f763e6092865afce6c0236ab474c940bc637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
