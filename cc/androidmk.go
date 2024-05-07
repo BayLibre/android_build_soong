@@ -128,7 +128,7 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 					entries.SetString("SOONG_SDK_VARIANT_MODULES",
 						"$(SOONG_SDK_VARIANT_MODULES) $(patsubst %.sdk,%,$(LOCAL_MODULE))")
 				}
-				android.SetAconfigFileMkEntries(c.AndroidModuleBase(), entries, c.mergedAconfigFiles)
+				android.SetAconfigFileMkEntries(c.AndroidModuleBase(), entries)
 			},
 		},
 		ExtraFooters: []android.AndroidMkExtraFootersFunc{
