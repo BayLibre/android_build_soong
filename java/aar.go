@@ -308,9 +308,9 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 	// This behavior has been copied from Make.
 	linkFlags = append(linkFlags, "--target-sdk-version "+minSdkVersion)
 
-	// Version code
+	// Mark non updatable when the module does not specify version code
 	if !hasVersionCode {
-		linkFlags = append(linkFlags, "--version-code", ctx.Config().PlatformSdkVersion().String())
+		linkFlags = append(linkFlags, "--non-updatable-system")
 	}
 
 	if !hasVersionName {
