@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0b21287_74b5ffa0",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-07T15:49:00Z",
+      "side": 1,
+      "message": "Yeah, I guess I\u0027m not really worried about performance, more just the mental model of \"what is different in `eng` vs `userdebug`\". Since this could catch compilation failure, maybe best to keep as you have it, it\u0027s just a bit harder to reason about how resource shrinking impacts `eng` vs `userdebug` since it now has some side effects but not all. I\u0027m fine either way.",
+      "parentUuid": "87c87237_2d6f2720",
+      "range": {
+        "startLine": 524,
+        "startChar": 46,
+        "endLine": 524,
+        "endChar": 72
+      },
+      "revId": "6579f763e6092865afce6c0236ab474c940bc637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbde7fb3_e5f6de18",
         "filename": "java/app.go",
         "patchSetId": 1
