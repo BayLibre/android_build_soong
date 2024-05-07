@@ -323,6 +323,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a9ef8fb_81197044",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-07T19:57:09Z",
+      "side": 1,
+      "message": "That doesn\u0027t seem like an unreasonable number to add `cmake_snapshot_supported: true`.",
+      "parentUuid": "facf4099_eb319e8b",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ca8b0d5_c9e73af9",
         "filename": "cc/cmake_snapshot.go",
         "patchSetId": 66
