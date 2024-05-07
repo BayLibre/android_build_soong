@@ -903,7 +903,7 @@ type ModuleBase struct {
 	installedInitRcPaths         InstallPaths
 	installedVintfFragmentsPaths InstallPaths
 
-	// Aconfig files for all transitive deps.  Also exposed via TransitiveDeclarationsInfo
+	// Aconfig files for all transitive deps.
 	mergedAconfigFiles map[string]Paths
 
 	// set of dependency module:location mappings used to populate the license metadata for
