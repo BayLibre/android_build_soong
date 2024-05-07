@@ -233,6 +233,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5178452_4251a984",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-07T18:34:51Z",
+      "side": 1,
+      "message": "How about providing `android.GlobFilesOtherModule` without that check? This way most uses will avoid incorrectly reaching into other modules (with regular versinon of `android.GlobFiles`) and if one needs it, it will be easy to catch during review.",
+      "parentUuid": "28f9482d_804c1ccf",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ca8b0d5_c9e73af9",
         "filename": "cc/cmake_snapshot.go",
         "patchSetId": 66
