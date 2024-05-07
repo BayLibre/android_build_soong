@@ -995,8 +995,6 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	if mod.testModule {
 		android.SetProvider(ctx, testing.TestModuleProviderKey, testing.TestModuleProviderData{})
 	}
-
-	android.CollectDependencyAconfigFiles(ctx, mod.GetMergedAconfigFiles())
 }
 
 func (mod *Module) deps(ctx DepsContext) Deps {

@@ -18,6 +18,7 @@ import (
 	"fmt"
 
 	"android/soong/testing"
+
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -151,7 +152,6 @@ func (p *PythonTestModule) GenerateAndroidBuildActions(ctx android.ModuleContext
 	// just use buildBinary() so that the binary is not installed into the location
 	// it would be for regular binaries.
 	p.PythonLibraryModule.GenerateAndroidBuildActions(ctx)
-	android.CollectDependencyAconfigFiles(ctx, p.GetMergedAconfigFiles())
 	p.buildBinary(ctx)
 
 	var configs []tradefed.Option

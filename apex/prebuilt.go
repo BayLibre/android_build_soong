@@ -878,8 +878,6 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		p.installedFile = ctx.InstallFile(p.installDir, p.installFilename, p.inputApex, p.compatSymlinks...)
 		p.provenanceMetaDataFile = provenance.GenerateArtifactProvenanceMetaData(ctx, p.inputApex, p.installedFile)
 	}
-
-	android.CollectDependencyAconfigFiles(ctx, p.GetMergedAconfigFiles())
 }
 
 func (p *Prebuilt) ProvenanceMetaDataFile() android.OutputPath {

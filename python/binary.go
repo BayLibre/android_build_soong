@@ -103,7 +103,6 @@ func (p *PythonBinaryModule) GenerateAndroidBuildActions(ctx android.ModuleConte
 	p.buildBinary(ctx)
 	p.installedDest = ctx.InstallFile(installDir(ctx, "bin", "", ""),
 		p.installSource.Base(), p.installSource)
-	android.CollectDependencyAconfigFiles(ctx, p.GetMergedAconfigFiles())
 }
 
 func (p *PythonBinaryModule) buildBinary(ctx android.ModuleContext) {

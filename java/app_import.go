@@ -413,7 +413,6 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 		artifactPath := android.PathForModuleSrc(ctx, *a.properties.Apk)
 		a.provenanceMetaDataFile = provenance.GenerateArtifactProvenanceMetaData(ctx, artifactPath, a.installPath)
 	}
-	android.CollectDependencyAconfigFiles(ctx, a.GetMergedAconfigFiles())
 
 	providePrebuiltInfo(ctx,
 		prebuiltInfoProps{

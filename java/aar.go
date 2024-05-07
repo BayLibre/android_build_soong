@@ -1383,7 +1383,6 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	android.SetProvider(ctx, JniPackageProvider, JniPackageInfo{
 		JniPackages: a.jniPackages,
 	})
-	android.CollectDependencyAconfigFiles(ctx, a.GetMergedAconfigFiles())
 }
 
 func (a *AARImport) HeaderJars() android.Paths {

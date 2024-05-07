@@ -1339,7 +1339,6 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 		rule.Build("nullabilityWarningsCheck", "nullability warnings check")
 	}
-	android.CollectDependencyAconfigFiles(ctx, d.GetMergedAconfigFiles())
 }
 
 func (d *Droidstubs) createApiContribution(ctx android.DefaultableHookContext) {

@@ -78,31 +78,12 @@ func propagateModeInfos(ctx ModuleContext, module Module, to, from map[string]Mo
 	}
 }
 
-// CollectDependencyAconfigFiles is used by some module types to provide finer dependency graphing than
-// we can do in ModuleBase.
-func CollectDependencyAconfigFiles(ctx ModuleContext, mergedAconfigFiles *map[string]Paths) {
-	if *mergedAconfigFiles == nil {
-		*mergedAconfigFiles = make(map[string]Paths)
-	}
-	ctx.VisitDirectDepsIgnoreBlueprint(func(module Module) {
-		for container, v := range *module.GetMergedAconfigFiles() {
-			(*mergedAconfigFiles)[container] = append((*mergedAconfigFiles)[container], v...)
-		}
-	})
-
-	for _, container := range SortedKeys(*mergedAconfigFiles) {
-		aconfigFiles := (*mergedAconfigFiles)[container]
-		(*mergedAconfigFiles)[container] = mergeAconfigFiles(ctx, container, aconfigFiles, false)
-	}
-}
-
 func SetAconfigFileMkEntries(m *ModuleBase, entries *AndroidMkEntries, aconfigFiles *map[string]Paths) {
 	setAconfigFileMkEntries(m, entries, aconfigFiles)
 }
 
 type aconfigPropagatingDeclarationsInfo struct {
-	AconfigFiles map[string]Paths
-	ModeInfos    map[string]ModeInfo
+	ModeInfos map[string]ModeInfo
 }
 
 var aconfigPropagatingProviderKey = blueprint.NewProvider[aconfigPropagatingDeclarationsInfo]()
@@ -151,8 +132,7 @@ func aconfigUpdateAndroidBuildActions(ctx ModuleContext) {
 		}
 
 		SetProvider(ctx, aconfigPropagatingProviderKey, aconfigPropagatingDeclarationsInfo{
-			AconfigFiles: mergedAconfigFiles,
-			ModeInfos:    mergedModeInfos,
+			ModeInfos: mergedModeInfos,
 		})
 		ctx.Module().base().mergedAconfigFiles = mergedAconfigFiles
 	}
