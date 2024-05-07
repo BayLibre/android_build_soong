@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f10dc7f_b91e69ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-07T17:47:32Z",
+      "side": 1,
+      "message": "This needs to be part of a topic with CLs in aosp-main-with-phones, but cross-server atomic submits are not supported, so presubmit fails.  Only aosp-main-with-phones is affected, and the build will pass when the CLs are manually submitted together on both servers.  There may be a single failed build in CI on aosp-main-with-phones.",
+      "revId": "a963b94cde194257fa67ce9596026a4da2fe7523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
