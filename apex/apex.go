@@ -2317,9 +2317,10 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 }
 
 func addAconfigFiles(vctx *visitorContext, ctx android.ModuleContext, module blueprint.Module) {
-	if dep, ok := android.OtherModuleProvider(ctx, module, android.AconfigTransitiveDeclarationsInfoProvider); ok {
-		if len(dep.AconfigFiles) > 0 && dep.AconfigFiles[ctx.ModuleName()] != nil {
-			vctx.aconfigFiles = append(vctx.aconfigFiles, dep.AconfigFiles[ctx.ModuleName()]...)
+	if mod, ok := module.(android.Module); ok && *mod.GetMergedAconfigFiles() != nil {
+		mergedAconfigFiles := mod.GetMergedAconfigFiles()
+		if len(*mergedAconfigFiles) > 0 && (*mergedAconfigFiles)[ctx.ModuleName()] != nil {
+			vctx.aconfigFiles = append(vctx.aconfigFiles, (*mergedAconfigFiles)[ctx.ModuleName()]...)
 		}
 	}
 

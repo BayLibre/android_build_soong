@@ -171,5 +171,8 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 		IntermediateCacheOutputPath: intermediateCacheFilePath,
 		IntermediateDumpOutputPath:  intermediateDumpFilePath,
 	})
+	mergedAconfigFiles := module.GetMergedAconfigFiles()
+	*mergedAconfigFiles = make(map[string]android.Paths)
+	(*mergedAconfigFiles)[module.properties.Container] = android.Paths{intermediateCacheFilePath}
 
 }
