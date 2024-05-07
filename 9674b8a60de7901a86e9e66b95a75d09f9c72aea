@@ -143,6 +143,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eae29b6_45589625",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-07T05:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c405ca8a_8bbe3519",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "9674b8a60de7901a86e9e66b95a75d09f9c72aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbb00301_b2cacc6f",
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "I think you can `builder.Command().Tool(aconfigFlagsBuilderPath).Implicit(aconfigToolPath).Implicits(ps.GetAconfigPaths(ctx))`.",
       "parentUuid": "51d73941_1108d155",
+      "range": {
+        "startLine": 52,
+        "startChar": 57,
+        "endLine": 52,
+        "endChar": 74
+      },
+      "revId": "9674b8a60de7901a86e9e66b95a75d09f9c72aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4feeb53_9186b97e",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-07T05:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5563b0f_32e0aaf1",
       "range": {
         "startLine": 52,
         "startChar": 57,
