@@ -21,6 +21,7 @@ import (
 	"github.com/google/blueprint"
 
 	"android/soong/android"
+	"android/soong/cc"
 	"android/soong/rust/config"
 )
 
@@ -185,18 +186,18 @@ func makeLibFlags(deps PathDeps) []string {
 	return libFlags
 }
 
-func rustEnvVars(ctx ModuleContext, deps PathDeps) []string {
+func rustEnvVars(ctx android.ModuleContext, deps PathDeps, crateName string, cargoOutDir android.OptionalPath) []string {
 	var envVars []string
 
 	// libstd requires a specific environment variable to be set. This is
 	// not officially documented and may be removed in the future. See
 	// https://github.com/rust-lang/rust/blob/master/library/std/src/env.rs#L866.
-	if ctx.RustModule().CrateName() == "std" {
-		envVars = append(envVars, "STD_ENV_ARCH="+config.StdEnvArch[ctx.RustModule().Arch().ArchType])
+	if crateName == "std" {
+		envVars = append(envVars, "STD_ENV_ARCH="+config.StdEnvArch[ctx.Arch().ArchType])
 	}
 
-	if len(deps.SrcDeps) > 0 {
-		moduleGenDir := ctx.RustModule().compiler.cargoOutDir()
+	if len(deps.SrcDeps) > 0 && cargoOutDir.Valid() {
+		moduleGenDir := cargoOutDir
 		// We must calculate an absolute path for OUT_DIR since Rust's include! macro (which normally consumes this)
 		// assumes that paths are relative to the source file.
 		var outDirPrefix string
@@ -215,13 +216,15 @@ func rustEnvVars(ctx ModuleContext, deps PathDeps) []string {
 
 	envVars = append(envVars, "ANDROID_RUST_VERSION="+config.GetRustVersion(ctx))
 
-	if ctx.RustModule().compiler.cargoEnvCompat() {
-		if bin, ok := ctx.RustModule().compiler.(*binaryDecorator); ok {
+	if rustMod, ok := ctx.Module().(*Module); ok && rustMod.compiler.cargoEnvCompat() {
+		// We only emulate cargo environment variables for 3p code, which is only ever built
+		// by defining a Rust module, so we only need to set these for true Rust modules.
+		if bin, ok := rustMod.compiler.(*binaryDecorator); ok {
 			envVars = append(envVars, "CARGO_BIN_NAME="+bin.getStem(ctx))
 		}
-		envVars = append(envVars, "CARGO_CRATE_NAME="+ctx.RustModule().CrateName())
-		envVars = append(envVars, "CARGO_PKG_NAME="+ctx.RustModule().CrateName())
-		pkgVersion := ctx.RustModule().compiler.cargoPkgVersion()
+		envVars = append(envVars, "CARGO_CRATE_NAME="+crateName)
+		envVars = append(envVars, "CARGO_PKG_NAME="+crateName)
+		pkgVersion := rustMod.compiler.cargoPkgVersion()
 		if pkgVersion != "" {
 			envVars = append(envVars, "CARGO_PKG_VERSION="+pkgVersion)
 
@@ -245,8 +248,44 @@ func rustEnvVars(ctx ModuleContext, deps PathDeps) []string {
 	return envVars
 }
 
-func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, flags Flags,
+func transformSrctoCrate(ctx android.ModuleContext, main android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath, crateType string) buildOutput {
+	var crateName string
+	var targetTriple string
+	var is64Bit bool
+	var bootstrap bool
+	var inRecovery bool
+	var inRamdisk bool
+	var inVendorRamdisk bool
+	var cargoOutDir android.OptionalPath
+
+	toolchain := config.FindToolchain(ctx.Os(), ctx.Arch())
+	targetTriple = toolchain.RustTriple()
+	is64Bit = toolchain.Is64Bit()
+
+	if rctx, ok := ctx.(ModuleContext); ok {
+		// This is being called from a Rust module context
+		module := rctx.RustModule()
+		crateName = module.CrateName()
+		bootstrap = module.Bootstrap()
+		inRecovery = module.InRecovery()
+		inRamdisk = module.InRamdisk()
+		inVendorRamdisk = module.InVendorRamdisk()
+		cargoOutDir = module.compiler.cargoOutDir()
+	} else {
+		// This is being called from a cc module context for a synthetic Rust library.
+
+		// Crate name can be a predefined value as this is a staticlib and
+		// it does not need to be unique. The crate name is used for name
+		// mangling, but it is mixed with the metadata for that purpose, which we
+		// already set to the module name.
+		crateName = "generated_rust_staticlib"
+		ccModule := ctx.(cc.ModuleContext).Module().(*cc.Module)
+		bootstrap = ccModule.Bootstrap()
+		inRecovery = ccModule.InRecovery()
+		inRamdisk = ccModule.InRamdisk()
+		inVendorRamdisk = ccModule.InVendorRamdisk()
+	}
 
 	var inputs android.Paths
 	var implicits android.Paths
@@ -256,10 +295,8 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	var earlyLinkFlags string
 
 	output.outputFile = outputFile
-	crateName := ctx.RustModule().CrateName()
-	targetTriple := ctx.toolchain().RustTriple()
 
-	envVars := rustEnvVars(ctx, deps)
+	envVars := rustEnvVars(ctx, deps, crateName, cargoOutDir)
 
 	inputs = append(inputs, main)
 
@@ -302,9 +339,9 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	linkFlags = append(linkFlags, flags.LinkFlags...)
 
 	// Check if this module needs to use the bootstrap linker
-	if ctx.RustModule().Bootstrap() && !ctx.RustModule().InRecovery() && !ctx.RustModule().InRamdisk() && !ctx.RustModule().InVendorRamdisk() {
+	if bootstrap && !inRecovery && !inRamdisk && !inVendorRamdisk {
 		dynamicLinker := "-Wl,-dynamic-linker,/system/bin/bootstrap/linker"
-		if ctx.toolchain().Is64Bit() {
+		if is64Bit {
 			dynamicLinker += "64"
 		}
 		linkFlags = append(linkFlags, dynamicLinker)
@@ -326,49 +363,57 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 
 	orderOnly = append(orderOnly, deps.SharedLibs...)
 
-	if len(deps.SrcDeps) > 0 {
-		moduleGenDir := ctx.RustModule().compiler.cargoOutDir()
-		var outputs android.WritablePaths
+	if rctx, ok := ctx.(ModuleContext); ok {
+		// Only worry about OUT_DIR for actual Rust modules.
+		// Libraries built from cc use generated source, and do not utilize OUT_DIR.
+		if len(deps.SrcDeps) > 0 {
+			moduleGenDir := rctx.RustModule().compiler.cargoOutDir()
+			var outputs android.WritablePaths
 
-		for _, genSrc := range deps.SrcDeps {
-			if android.SuffixInList(outputs.Strings(), genSubDir+genSrc.Base()) {
-				ctx.PropertyErrorf("srcs",
-					"multiple source providers generate the same filename output: "+genSrc.Base())
+			for _, genSrc := range deps.SrcDeps {
+				if android.SuffixInList(outputs.Strings(), genSubDir+genSrc.Base()) {
+					ctx.PropertyErrorf("srcs",
+						"multiple source providers generate the same filename output: "+genSrc.Base())
+				}
+				outputs = append(outputs, android.PathForModuleOut(ctx, genSubDir+genSrc.Base()))
 			}
-			outputs = append(outputs, android.PathForModuleOut(ctx, genSubDir+genSrc.Base()))
-		}
 
-		ctx.Build(pctx, android.BuildParams{
-			Rule:        cp,
-			Description: "cp " + moduleGenDir.Path().Rel(),
-			Outputs:     outputs,
-			Inputs:      deps.SrcDeps,
-			Args: map[string]string{
-				"outDir": moduleGenDir.String(),
-			},
-		})
-		implicits = append(implicits, outputs.Paths()...)
+			ctx.Build(pctx, android.BuildParams{
+				Rule:        cp,
+				Description: "cp " + moduleGenDir.Path().Rel(),
+				Outputs:     outputs,
+				Inputs:      deps.SrcDeps,
+				Args: map[string]string{
+					"outDir": moduleGenDir.String(),
+				},
+			})
+			implicits = append(implicits, outputs.Paths()...)
+		}
 	}
 
-	if flags.Clippy {
-		clippyFile := android.PathForModuleOut(ctx, outputFile.Base()+".clippy")
-		ctx.Build(pctx, android.BuildParams{
-			Rule:            clippyDriver,
-			Description:     "clippy " + main.Rel(),
-			Output:          clippyFile,
-			ImplicitOutputs: nil,
-			Inputs:          inputs,
-			Implicits:       implicits,
-			OrderOnly:       orderOnly,
-			Args: map[string]string{
-				"rustcFlags":  strings.Join(rustcFlags, " "),
-				"libFlags":    strings.Join(libFlags, " "),
-				"clippyFlags": strings.Join(flags.ClippyFlags, " "),
-				"envVars":     strings.Join(envVars, " "),
-			},
-		})
-		// Declare the clippy build as an implicit dependency of the original crate.
-		implicits = append(implicits, clippyFile)
+	if _, ok := ctx.(ModuleContext); ok {
+		// Only worry about clippy for actual Rust modules.
+		// Libraries built from cc use generated source, and don't need to run clippy.
+		if flags.Clippy {
+			clippyFile := android.PathForModuleOut(ctx, outputFile.Base()+".clippy")
+			ctx.Build(pctx, android.BuildParams{
+				Rule:            clippyDriver,
+				Description:     "clippy " + main.Rel(),
+				Output:          clippyFile,
+				ImplicitOutputs: nil,
+				Inputs:          inputs,
+				Implicits:       implicits,
+				OrderOnly:       orderOnly,
+				Args: map[string]string{
+					"rustcFlags":  strings.Join(rustcFlags, " "),
+					"libFlags":    strings.Join(libFlags, " "),
+					"clippyFlags": strings.Join(flags.ClippyFlags, " "),
+					"envVars":     strings.Join(envVars, " "),
+				},
+			})
+			// Declare the clippy build as an implicit dependency of the original crate.
+			implicits = append(implicits, clippyFile)
+		}
 	}
 
 	ctx.Build(pctx, android.BuildParams{
@@ -389,25 +434,29 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 		},
 	})
 
-	if flags.EmitXrefs {
-		kytheFile := android.PathForModuleOut(ctx, outputFile.Base()+".kzip")
-		ctx.Build(pctx, android.BuildParams{
-			Rule:        kytheExtract,
-			Description: "Xref Rust extractor " + main.Rel(),
-			Output:      kytheFile,
-			Inputs:      inputs,
-			Implicits:   implicits,
-			OrderOnly:   orderOnly,
-			Args: map[string]string{
-				"rustcFlags": strings.Join(rustcFlags, " "),
-				"linkFlags":  strings.Join(linkFlags, " "),
-				"libFlags":   strings.Join(libFlags, " "),
-				"crtBegin":   strings.Join(deps.CrtBegin.Strings(), " "),
-				"crtEnd":     strings.Join(deps.CrtEnd.Strings(), " "),
-				"envVars":    strings.Join(envVars, " "),
-			},
-		})
-		output.kytheFile = kytheFile
+	if _, ok := ctx.(ModuleContext); ok {
+		// Don't emit xrefs for libraries built from cc --
+		// these are synthetic libraries.
+		if flags.EmitXrefs {
+			kytheFile := android.PathForModuleOut(ctx, outputFile.Base()+".kzip")
+			ctx.Build(pctx, android.BuildParams{
+				Rule:        kytheExtract,
+				Description: "Xref Rust extractor " + main.Rel(),
+				Output:      kytheFile,
+				Inputs:      inputs,
+				Implicits:   implicits,
+				OrderOnly:   orderOnly,
+				Args: map[string]string{
+					"rustcFlags": strings.Join(rustcFlags, " "),
+					"linkFlags":  strings.Join(linkFlags, " "),
+					"libFlags":   strings.Join(libFlags, " "),
+					"crtBegin":   strings.Join(deps.CrtBegin.Strings(), " "),
+					"crtEnd":     strings.Join(deps.CrtEnd.Strings(), " "),
+					"envVars":    strings.Join(envVars, " "),
+				},
+			})
+			output.kytheFile = kytheFile
+		}
 	}
 	return output
 }
@@ -457,7 +506,7 @@ func Rustdoc(ctx ModuleContext, main android.Path, deps PathDeps,
 		Args: map[string]string{
 			"rustdocFlags": strings.Join(rustdocFlags, " "),
 			"outDir":       docDir.String(),
-			"envVars":      strings.Join(rustEnvVars(ctx, deps), " "),
+			"envVars":      strings.Join(rustEnvVars(ctx, deps, crateName, ctx.RustModule().compiler.cargoOutDir()), " "),
 		},
 	})
 
