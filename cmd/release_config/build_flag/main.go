@@ -48,15 +48,21 @@ type Flags struct {
 
 	// Panic on errors.
 	debug bool
+
+	// Map directory for non-trunk_staging release configs in build/release.
+	buildReleaseFuture string
 }
 
 type CommandFunc func(*rc_lib.ReleaseConfigs, Flags, string, []string) error
 
-var commandMap map[string]CommandFunc = map[string]CommandFunc{
-	"get":   GetCommand,
-	"set":   SetCommand,
-	"trace": GetCommand, // Also handled by GetCommand
-}
+var (
+	commandMap map[string]CommandFunc = map[string]CommandFunc{
+		"get":   GetCommand,
+		"set":   SetCommand,
+		"trace": GetCommand, // Also handled by GetCommand
+	}
+	buildReleaseFutureDefault string = "vendor/google_shared/build/release"
+)
 
 // Find the top of the release config contribution directory.
 // Returns the parent of the flag_declarations and flag_values directories.
@@ -270,6 +276,9 @@ func SetCommand(configs *rc_lib.ReleaseConfigs, commonFlags Flags, cmd string, a
 		if err != nil {
 			return err
 		}
+		if mapDir == "build/release" && targetRelease != "trunk_staging" {
+			mapDir = "vendor/google_shared/build/release"
+		}
 		valueDir = mapDir
 	}
 
@@ -310,6 +319,7 @@ func main() {
 	flag.BoolVar(&commonFlags.allReleases, "all-releases", false, "operate on all releases. (Ignored for set command)")
 	flag.BoolVar(&commonFlags.useGetBuildVar, "use-get-build-var", true, "use get_build_var PRODUCT_RELEASE_CONFIG_MAPS to get needed maps")
 	flag.BoolVar(&commonFlags.debug, "debug", false, "turn on debugging output for errors")
+	flag.StringVar(&commonFlags.buildReleaseFuture, "future", buildReleaseFutureDefault, "Where to write non-trunk_staging flag values for build/release")
 	flag.Parse()
 
 	errorExit := func(err error) {
