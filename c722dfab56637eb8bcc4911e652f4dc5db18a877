@@ -22,6 +22,30 @@
       },
       "revId": "c722dfab56637eb8bcc4911e652f4dc5db18a877",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9553115_af80131c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-07T23:27:12Z",
+      "side": 1,
+      "message": "I thought we don\u0027t need providers for global module variables, such as the `mergedAconfigFiles` variable. Originally, it was defined for some modules, but now it is set for all module types. Do we still prefer to use providers in this case?",
+      "parentUuid": "746c2bb9_8e56c728",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "c722dfab56637eb8bcc4911e652f4dc5db18a877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
