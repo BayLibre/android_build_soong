@@ -25,6 +25,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc/config"
+	"android/soong/etc"
 )
 
 var (
@@ -408,6 +409,8 @@ func init() {
 	android.RegisterMakeVarsProvider(pctx, cfiMakeVarsProvider)
 	android.RegisterMakeVarsProvider(pctx, hwasanMakeVarsProvider)
 	android.RegisterMakeVarsProvider(pctx, memtagStackMakeVarsProvider)
+
+	RegisterSanitizerLibrariesTxtType(android.InitRegistrationContext)
 }
 
 func (sanitize *sanitize) props() []interface{} {
@@ -1316,7 +1319,7 @@ func (s *sanitizerSplitMutator) Mutate(mctx android.BottomUpMutatorContext, vari
 				} else if s.sanitizer == cfi {
 					cfiStaticLibs(mctx.Config()).add(c, c.Module().Name())
 				} else if s.sanitizer == Memtag_stack {
-					memtagStackStaticLibs(mctx.Config()).add(c, c.Module().Name());
+					memtagStackStaticLibs(mctx.Config()).add(c, c.Module().Name())
 				}
 			}
 		} else if c.IsSanitizerEnabled(s.sanitizer) {
@@ -1522,25 +1525,25 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 		if Bool(sanProps.Address) {
 			if toolchain.Musl() || (c.staticBinary() && toolchain.Bionic()) {
 				// Use a static runtime for musl to match what clang does for glibc.
-				addStaticDeps(config.AddressSanitizerStaticRuntimeLibrary(toolchain), false)
-				addStaticDeps(config.AddressSanitizerCXXStaticRuntimeLibrary(toolchain), false)
+				addStaticDeps(config.AddressSanitizerStaticRuntimeLibrary(), false)
+				addStaticDeps(config.AddressSanitizerCXXStaticRuntimeLibrary(), false)
 			} else {
-				runtimeSharedLibrary = config.AddressSanitizerRuntimeLibrary(toolchain)
+				runtimeSharedLibrary = config.AddressSanitizerRuntimeLibrary()
 			}
 		} else if Bool(sanProps.Hwaddress) {
 			if c.staticBinary() {
-				addStaticDeps(config.HWAddressSanitizerStaticLibrary(toolchain), true)
+				addStaticDeps(config.HWAddressSanitizerStaticLibrary(), true)
 				addStaticDeps("libdl", false)
 			} else {
-				runtimeSharedLibrary = config.HWAddressSanitizerRuntimeLibrary(toolchain)
+				runtimeSharedLibrary = config.HWAddressSanitizerRuntimeLibrary()
 			}
 		} else if Bool(sanProps.Thread) {
-			runtimeSharedLibrary = config.ThreadSanitizerRuntimeLibrary(toolchain)
+			runtimeSharedLibrary = config.ThreadSanitizerRuntimeLibrary()
 		} else if Bool(sanProps.Scudo) {
 			if len(diagSanitizers) == 0 && !c.sanitize.Properties.UbsanRuntimeDep {
-				runtimeSharedLibrary = config.ScudoMinimalRuntimeLibrary(toolchain)
+				runtimeSharedLibrary = config.ScudoMinimalRuntimeLibrary()
 			} else {
-				runtimeSharedLibrary = config.ScudoRuntimeLibrary(toolchain)
+				runtimeSharedLibrary = config.ScudoRuntimeLibrary()
 			}
 		} else if len(diagSanitizers) > 0 || c.sanitize.Properties.UbsanRuntimeDep ||
 			Bool(sanProps.Fuzzer) ||
@@ -1553,17 +1556,17 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 				// Also manually add a static runtime for musl to match what clang does for glibc.
 				// Otherwise dlopening libraries that depend on libclang_rt.ubsan_standalone.so fails with:
 				// Error relocating ...: initial-exec TLS resolves to dynamic definition
-				addStaticDeps(config.UndefinedBehaviorSanitizerRuntimeLibrary(toolchain)+".static", true)
+				addStaticDeps(config.UndefinedBehaviorSanitizerRuntimeLibrary()+".static", true)
 			} else {
-				runtimeSharedLibrary = config.UndefinedBehaviorSanitizerRuntimeLibrary(toolchain)
+				runtimeSharedLibrary = config.UndefinedBehaviorSanitizerRuntimeLibrary()
 			}
 		}
 
 		if enableMinimalRuntime(c.sanitize) || c.sanitize.Properties.MinimalRuntimeDep {
-			addStaticDeps(config.UndefinedBehaviorSanitizerMinimalRuntimeLibrary(toolchain), true)
+			addStaticDeps(config.UndefinedBehaviorSanitizerMinimalRuntimeLibrary(), true)
 		}
 		if c.sanitize.Properties.BuiltinsDep {
-			addStaticDeps(config.BuiltinsRuntimeLibrary(toolchain), true)
+			addStaticDeps(config.BuiltinsRuntimeLibrary(), true)
 		}
 
 		if runtimeSharedLibrary != "" && (toolchain.Bionic() || toolchain.Musl()) {
@@ -1786,4 +1789,113 @@ func hwasanMakeVarsProvider(ctx android.MakeVarsContext) {
 
 func memtagStackMakeVarsProvider(ctx android.MakeVarsContext) {
 	memtagStackStaticLibs(ctx.Config()).exportToMake(ctx)
+}
+
+type sanitizerLibrariesTxtModule struct {
+	android.SingletonModuleBase
+
+	outputFile android.OutputPath
+}
+
+var _ etc.PrebuiltEtcModule = &sanitizerLibrariesTxtModule{}
+var _ android.OutputFileProducer = &sanitizerLibrariesTxtModule{}
+
+func RegisterSanitizerLibrariesTxtType(ctx android.RegistrationContext) {
+	ctx.RegisterParallelSingletonModuleType("sanitizer_libraries_txt", sanitizerLibrariesTxtFactory)
+}
+
+func sanitizerLibrariesTxtFactory() android.SingletonModule {
+	m := &sanitizerLibrariesTxtModule{}
+	android.InitAndroidArchModule(m, android.DeviceSupported, android.MultilibCommon)
+	return m
+}
+
+func (txt *sanitizerLibrariesTxtModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	filename := txt.Name()
+
+	txt.outputFile = android.PathForModuleOut(ctx, filename).OutputPath
+
+	installPath := android.PathForModuleInstall(ctx, "etc")
+	ctx.InstallFile(installPath, filename, txt.outputFile)
+}
+
+func getSanitizerLibraries(ctx android.SingletonContext, target android.Target) []string {
+	var sanitizerLibStems []string
+
+	if target.Os.Class != android.Device {
+		return sanitizerLibStems
+	}
+
+	sanitizerLibs := android.SortedStringValues(sanitizerVariables)
+
+	ctx.VisitAllModules(func(m android.Module) {
+		if !m.Enabled(ctx) {
+			return
+		}
+
+		ccModule, _ := m.(*Module)
+		if ccModule == nil || ccModule.library == nil || !ccModule.library.shared() {
+			return
+		}
+
+		if android.InList(strings.TrimPrefix(ctx.ModuleName(m), "prebuilt_"), sanitizerLibs) &&
+			m.Target().Os == target.Os && m.Target().Arch.ArchType == target.Arch.ArchType {
+			outputFile := ccModule.outputFile
+			if outputFile.Valid() {
+				sanitizerLibStems = append(sanitizerLibStems, outputFile.Path().Base())
+			}
+		}
+	})
+
+	return sanitizerLibStems
+}
+
+func (txt *sanitizerLibrariesTxtModule) GenerateSingletonBuildActions(ctx android.SingletonContext) {
+	if txt.outputFile.String() == "" {
+		// Skip if target file path is empty
+		return
+	}
+
+	var sanitizerLibStems []string
+
+	deviceTargets := ctx.Config().Targets[android.Android]
+	sanitizerLibStems = append(sanitizerLibStems, getSanitizerLibraries(ctx, deviceTargets[0])...)
+	if len(deviceTargets) > 1 {
+		sanitizerLibStems = append(sanitizerLibStems, getSanitizerLibraries(ctx, deviceTargets[1])...)
+	}
+
+	sanitizerLibStems = android.SortedUniqueStrings(sanitizerLibStems)
+
+	android.WriteFileRule(ctx, txt.outputFile, strings.Join(sanitizerLibStems, "\n"))
+}
+
+func (txt *sanitizerLibrariesTxtModule) AndroidMkEntries() []android.AndroidMkEntries {
+	return []android.AndroidMkEntries{{
+		Class:      "ETC",
+		OutputFile: android.OptionalPathForPath(txt.outputFile),
+		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
+			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+				entries.SetString("LOCAL_MODULE_STEM", txt.outputFile.Base())
+			},
+		},
+	}}
+}
+
+// PrebuiltEtcModule interface
+func (txt *sanitizerLibrariesTxtModule) OutputFile() android.OutputPath {
+	return txt.outputFile
+}
+
+// PrebuiltEtcModule interface
+func (txt *sanitizerLibrariesTxtModule) BaseDir() string {
+	return "etc"
+}
+
+// PrebuiltEtcModule interface
+func (txt *sanitizerLibrariesTxtModule) SubDir() string {
+	return ""
+}
+
+func (txt *sanitizerLibrariesTxtModule) OutputFiles(tag string) (android.Paths, error) {
+	return android.Paths{txt.outputFile}, nil
 }
