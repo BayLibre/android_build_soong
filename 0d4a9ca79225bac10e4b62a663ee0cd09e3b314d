@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78e9f939_07334444",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-07T07:16:19Z",
+      "side": 1,
+      "message": "This change is to fix build errors from aosp-clang-tools and aosp_kernel-build-tools build.",
+      "revId": "0d4a9ca79225bac10e4b62a663ee0cd09e3b314d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
