@@ -269,6 +269,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "517444fe_95e46de5",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-07T18:48:04Z",
+      "side": 1,
+      "message": "Still, the name clearly suggest what this function would be doing. You couldn\u0027t prevent vendors from implementing it themselves either - just by doing what I did here with mutators.",
+      "parentUuid": "583c27b5_5cc6b366",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ca8b0d5_c9e73af9",
         "filename": "cc/cmake_snapshot.go",
         "patchSetId": 66
