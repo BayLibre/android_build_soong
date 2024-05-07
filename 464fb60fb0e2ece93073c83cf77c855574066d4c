@@ -22,6 +22,30 @@
       },
       "revId": "464fb60fb0e2ece93073c83cf77c855574066d4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac2a9a9_9622cb04",
+        "filename": "android/module_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-07T08:53:38Z",
+      "side": 1,
+      "message": "`PackagingSpec` must be a comparable type to be used as a `depSettableType`. To satisfy this condition, a pointer is used as a workaound.",
+      "parentUuid": "deb8b3bd_2402fe68",
+      "range": {
+        "startLine": 485,
+        "startChar": 58,
+        "endLine": 485,
+        "endChar": 65
+      },
+      "revId": "464fb60fb0e2ece93073c83cf77c855574066d4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
