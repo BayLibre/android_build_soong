@@ -305,6 +305,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "facf4099_eb319e8b",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 66
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-07T19:49:08Z",
+      "side": 1,
+      "message": "In this specific snapshot (binder_sdk) it\u0027s 30 modules.",
+      "parentUuid": "d624d863_e4276d1f",
+      "revId": "1eefef3b6107db6c8c0f6ce0fed492a68e8f376b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ca8b0d5_c9e73af9",
         "filename": "cc/cmake_snapshot.go",
         "patchSetId": 66
