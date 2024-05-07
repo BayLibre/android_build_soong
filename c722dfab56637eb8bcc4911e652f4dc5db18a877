@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "746c2bb9_8e56c728",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-07T17:57:25Z",
+      "side": 1,
+      "message": "Why are we removing the provider? We\u0027re trying to make all inter-module communication go through providers so that they can be serialized and restored on later builds for incremental analysis.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "c722dfab56637eb8bcc4911e652f4dc5db18a877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
