@@ -1727,8 +1727,6 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 
 	ctx.CheckbuildFile(outputFile)
 
-	android.CollectDependencyAconfigFiles(ctx, j.GetMergedAconfigFiles())
-
 	android.SetProvider(ctx, JavaInfoProvider, JavaInfo{
 		HeaderJars:                          android.PathsIfNonNil(j.headerJarFile),
 		RepackagedHeaderJars:                android.PathsIfNonNil(j.repackagedHeaderJarFile),

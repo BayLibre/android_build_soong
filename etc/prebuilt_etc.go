@@ -418,7 +418,6 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	for _, ip := range installs {
 		ip.addInstallRules(ctx)
 	}
-	android.CollectDependencyAconfigFiles(ctx, p.GetMergedAconfigFiles())
 }
 
 type installProperties struct {

@@ -585,7 +585,6 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		})
 		g.outputDeps = android.Paths{phonyFile}
 	}
-	android.CollectDependencyAconfigFiles(ctx, g.GetMergedAconfigFiles())
 }
 
 func (g *Module) AndroidMkEntries() []android.AndroidMkEntries {
