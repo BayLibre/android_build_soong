@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48159297_6aa1cc86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 74
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-08T22:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7262cf9d_e5213397",
+      "revId": "92f2b99f7e3f4404ab751f485551d7d607ee83dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "046ed331_1ef3cd7e",
@@ -106,6 +124,24 @@
           ]
         }
       ],
+      "revId": "92f2b99f7e3f4404ab751f485551d7d607ee83dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27437452_8ebb5568",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 74
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-08T22:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8b21470_135bf051",
       "revId": "92f2b99f7e3f4404ab751f485551d7d607ee83dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
