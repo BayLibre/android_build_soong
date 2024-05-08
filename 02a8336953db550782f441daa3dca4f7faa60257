@@ -46,6 +46,30 @@
       },
       "revId": "02a8336953db550782f441daa3dca4f7faa60257",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "202956b2_d5f9e5e2",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-08T06:36:12Z",
+      "side": 1,
+      "message": "We had a chat on this. The conclusion was that this field is not necessary at all.",
+      "parentUuid": "c19a6f95_b108511f",
+      "range": {
+        "startLine": 907,
+        "startChar": 20,
+        "endLine": 907,
+        "endChar": 36
+      },
+      "revId": "02a8336953db550782f441daa3dca4f7faa60257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
