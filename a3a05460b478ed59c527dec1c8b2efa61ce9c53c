@@ -16,6 +16,41 @@
       "message": "[ABTD run](https://android-build.corp.google.com/builds/abtd/run/L41700030003674001) configured for a previously breaking target with the original submission.",
       "revId": "a3a05460b478ed59c527dec1c8b2efa61ce9c53c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73bcdc1e_d5d89861",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-08T19:20:13Z",
+      "side": 1,
+      "message": "@spandandas@google.com FYI [this](https://paste.googleplex.com/5480525188038656) is the diff of this change from the original submission",
+      "revId": "a3a05460b478ed59c527dec1c8b2efa61ce9c53c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e36e0528_772a1826",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-08T19:20:13Z",
+      "side": 1,
+      "message": "ABTD run completed successfully.",
+      "parentUuid": "63f94d5a_4a5b5fd0",
+      "revId": "a3a05460b478ed59c527dec1c8b2efa61ce9c53c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
