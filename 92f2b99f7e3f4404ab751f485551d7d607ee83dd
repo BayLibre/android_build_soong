@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff2ccfec_bac47759",
+        "filename": "cc/cc.go",
+        "patchSetId": 74
+      },
+      "lineNbr": 2164,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-08T22:48:51Z",
+      "side": 1,
+      "message": "There isn\u0027t too many modules with snapshot support - would you mind if I ignore this optimizatinon nit for the sake of keeping this code easier to read?",
+      "parentUuid": "046ed331_1ef3cd7e",
+      "revId": "92f2b99f7e3f4404ab751f485551d7d607ee83dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8b21470_135bf051",
