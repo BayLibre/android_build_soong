@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b3063f_984fbea4",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-05-08T02:21:04Z",
+      "side": 1,
+      "message": "Don\u0027t we need this in `buildCpioImage`?",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 58
+      },
+      "revId": "c4972a6b02ed51187aeb48bf094539395ef5302d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
