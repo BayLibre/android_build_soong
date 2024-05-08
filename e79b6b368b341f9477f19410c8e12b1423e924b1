@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58729b23_0c7fdfa7",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-08T21:11:47Z",
+      "side": 1,
+      "message": "I would inline the whole function because it\u0027s only 1 line long.",
+      "parentUuid": "1b0a9600_54206e0f",
+      "range": {
+        "startLine": 211,
+        "startChar": 29,
+        "endLine": 211,
+        "endChar": 44
+      },
+      "revId": "e79b6b368b341f9477f19410c8e12b1423e924b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6cd8995_59f05542",
         "filename": "android/aconfig_providers.go",
         "patchSetId": 2
