@@ -70,6 +70,30 @@
       },
       "revId": "02a8336953db550782f441daa3dca4f7faa60257",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f619e62f_068a1bf4",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-08T07:38:58Z",
+      "side": 1,
+      "message": "I kept `mergedAconfigFiles Paths` in `ModuleBase` to be used in `SetAconfigFileMkEntries(m *ModuleBase, entries *AndroidMkEntries)`.",
+      "parentUuid": "202956b2_d5f9e5e2",
+      "range": {
+        "startLine": 907,
+        "startChar": 20,
+        "endLine": 907,
+        "endChar": 36
+      },
+      "revId": "02a8336953db550782f441daa3dca4f7faa60257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
