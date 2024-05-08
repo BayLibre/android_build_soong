@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d55801e9_565c9142",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2024-05-08T11:16:23Z",
+      "side": 1,
+      "message": "Verified that with this patch applied the microdroid system image has the required libs (libc++.so, libcrypto.so, etc.) and a VM can boot",
+      "revId": "acd5f590afb54d5245dd17f4d1f62d03d3691ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
