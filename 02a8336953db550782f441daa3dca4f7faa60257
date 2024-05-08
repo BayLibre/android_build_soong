@@ -94,6 +94,30 @@
       },
       "revId": "02a8336953db550782f441daa3dca4f7faa60257",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a0d8bfd_7e7f9987",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-08T12:11:07Z",
+      "side": 1,
+      "message": "Well, I think you can use providers also in the mk context.",
+      "parentUuid": "f619e62f_068a1bf4",
+      "range": {
+        "startLine": 907,
+        "startChar": 20,
+        "endLine": 907,
+        "endChar": 36
+      },
+      "revId": "02a8336953db550782f441daa3dca4f7faa60257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

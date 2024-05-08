@@ -1,0 +1,250 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1301a52_30163784",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-08T12:11:07Z",
+      "side": 1,
+      "message": "This has the provider function. You should be able to read the aconfig file paths for `mod` via the provider.",
+      "range": {
+        "startLine": 168,
+        "startChar": 39,
+        "endLine": 168,
+        "endChar": 59
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b7a822f4_28bd03ee",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/aconfig_providers.go",
+              "range": {
+                "startLine": 168,
+                "startChar": 0,
+                "endLine": 169,
+                "endChar": 0
+              },
+              "replacement": "func aconfigUpdateAndroidMkEntries(ctx fillInEntriesContext, mod Module, entries *[]AndroidMkEntries) bool {\n"
+            },
+            {
+              "path": "android/aconfig_providers.go",
+              "range": {
+                "startLine": 171,
+                "startChar": 0,
+                "endLine": 172,
+                "endChar": 0
+              },
+              "replacement": "\t\treturn false\n"
+            },
+            {
+              "path": "android/aconfig_providers.go",
+              "range": {
+                "startLine": 175,
+                "startChar": 0,
+                "endLine": 176,
+                "endChar": 0
+              },
+              "replacement": "\t\treturn false\n"
+            },
+            {
+              "path": "android/aconfig_providers.go",
+              "range": {
+                "startLine": 186,
+                "startChar": 0,
+                "endLine": 186,
+                "endChar": 0
+              },
+              "replacement": "\treturn true\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e79b6b368b341f9477f19410c8e12b1423e924b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b0a9600_54206e0f",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-08T12:11:07Z",
+      "side": 1,
+      "message": "This argument is not used.",
+      "range": {
+        "startLine": 211,
+        "startChar": 29,
+        "endLine": 211,
+        "endChar": 44
+      },
+      "revId": "e79b6b368b341f9477f19410c8e12b1423e924b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6cd8995_59f05542",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-08T12:11:07Z",
+      "side": 1,
+      "message": "map is a reference type. You don\u0027t need to pass it as a pointer.",
+      "range": {
+        "startLine": 215,
+        "startChar": 53,
+        "endLine": 215,
+        "endChar": 70
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "05bb3725_5b670b17",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/aconfig_providers.go",
+              "range": {
+                "startLine": 137,
+                "startChar": 0,
+                "endLine": 138,
+                "endChar": 0
+              },
+              "replacement": "\t\tctx.Module().base().mergedAconfigFiles \u003d getAconfigFilePaths(ctx.Module().base(), mergedAconfigFilesMap)\n"
+            },
+            {
+              "path": "android/aconfig_providers.go",
+              "range": {
+                "startLine": 148,
+                "startChar": 0,
+                "endLine": 149,
+                "endChar": 0
+              },
+              "replacement": "\t\tAndroidMkEmitAssignList(w, \"LOCAL_ACONFIG_FILES\", getAconfigFilePaths(mod.base(), info.AconfigFiles).Strings())\n"
+            },
+            {
+              "path": "android/aconfig_providers.go",
+              "range": {
+                "startLine": 181,
+                "startChar": 0,
+                "endLine": 182,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\tsetAconfigFileMkEntries(mod.base(), entries, getAconfigFilePaths(mod.base(), info.AconfigFiles))\n"
+            },
+            {
+              "path": "android/aconfig_providers.go",
+              "range": {
+                "startLine": 215,
+                "startChar": 0,
+                "endLine": 216,
+                "endChar": 0
+              },
+              "replacement": "func getAconfigFilePaths(m *ModuleBase, aconfigFiles map[string]Paths) (paths Paths) {\n"
+            },
+            {
+              "path": "android/aconfig_providers.go",
+              "range": {
+                "startLine": 227,
+                "startChar": 0,
+                "endLine": 228,
+                "endChar": 0
+              },
+              "replacement": "\tpaths \u003d append(paths, aconfigFiles[container]...)\n"
+            },
+            {
+              "path": "android/aconfig_providers.go",
+              "range": {
+                "startLine": 230,
+                "startChar": 0,
+                "endLine": 231,
+                "endChar": 0
+              },
+              "replacement": "\t\tpaths \u003d append(paths, aconfigFiles[\"\"]...)\n"
+            },
+            {
+              "path": "android/aconfig_providers.go",
+              "range": {
+                "startLine": 233,
+                "startChar": 0,
+                "endLine": 234,
+                "endChar": 0
+              },
+              "replacement": "\t\tif len(aconfigFiles[container]) \u003d\u003d 0 \u0026\u0026 len(aconfigFiles[\"\"]) \u003e 0 {\n"
+            },
+            {
+              "path": "android/aconfig_providers.go",
+              "range": {
+                "startLine": 238,
+                "startChar": 0,
+                "endLine": 239,
+                "endChar": 0
+              },
+              "replacement": "\t\tpaths \u003d append(paths, aconfigFiles[\"\"]...)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e79b6b368b341f9477f19410c8e12b1423e924b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d372c47a_b79b8410",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-08T12:11:07Z",
+      "side": 1,
+      "message": "Since the handling of aconfig files are done in `android.MobuleBase`, I think that the handling of LOCAL_ACONFIG_FILES should also be moved to android/androidmk.go.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 67
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f8d1a8bd_765f03b2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/androidmk.go",
+              "range": {
+                "startLine": 131,
+                "startChar": 0,
+                "endLine": 132,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "e79b6b368b341f9477f19410c8e12b1423e924b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
