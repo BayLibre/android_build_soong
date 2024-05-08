@@ -70,6 +70,30 @@
       },
       "revId": "c722dfab56637eb8bcc4911e652f4dc5db18a877",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4565f30e_91ff7fcb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-08T07:33:15Z",
+      "side": 1,
+      "message": "This CL is no more required. I updated aosp/3074027 without removing the providers.",
+      "parentUuid": "9f1b75be_6d0c9943",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "c722dfab56637eb8bcc4911e652f4dc5db18a877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
