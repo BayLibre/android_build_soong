@@ -61,7 +61,6 @@ type AndroidAppSet struct {
 	prebuilt android.Prebuilt
 
 	properties    AndroidAppSetProperties
-	packedOutput  android.WritablePath
 	primaryOutput android.WritablePath
 	apkcertsFile  android.ModuleOutPath
 }
@@ -84,10 +83,6 @@ func (as *AndroidAppSet) Privileged() bool {
 
 func (as *AndroidAppSet) OutputFile() android.Path {
 	return as.primaryOutput
-}
-
-func (as *AndroidAppSet) PackedAdditionalOutputs() android.Path {
-	return as.packedOutput
 }
 
 func (as *AndroidAppSet) APKCertsFile() android.Path {
@@ -144,7 +139,7 @@ func providePrebuiltInfo(ctx android.ModuleContext, p prebuiltInfoProps) {
 }
 
 func (as *AndroidAppSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	as.packedOutput = android.PathForModuleOut(ctx, ctx.ModuleName()+".zip")
+	packedOutput := android.PathForModuleOut(ctx, ctx.ModuleName()+".zip")
 	as.primaryOutput = android.PathForModuleOut(ctx, as.BaseModuleName()+".apk")
 	as.apkcertsFile = android.PathForModuleOut(ctx, "apkcerts.txt")
 	// We are assuming here that the install file in the APK
@@ -161,7 +156,7 @@ func (as *AndroidAppSet) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 			Rule:            extractMatchingApks,
 			Description:     "Extract APKs from APK set",
 			Output:          as.primaryOutput,
-			ImplicitOutputs: android.WritablePaths{as.packedOutput, as.apkcertsFile},
+			ImplicitOutputs: android.WritablePaths{packedOutput, as.apkcertsFile},
 			Inputs:          android.Paths{as.prebuilt.SingleSourcePath(ctx)},
 			Args: map[string]string{
 				"abis":              strings.Join(SupportedAbis(ctx, false), ","),
@@ -172,7 +167,7 @@ func (as *AndroidAppSet) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 				"stem":              as.BaseModuleName(),
 				"apkcerts":          as.apkcertsFile.String(),
 				"partition":         as.PartitionTag(ctx.DeviceConfig()),
-				"zip":               as.packedOutput.String(),
+				"zip":               packedOutput.String(),
 			},
 		})
 
@@ -182,7 +177,7 @@ func (as *AndroidAppSet) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	} else {
 		installDir = android.PathForModuleInstall(ctx, "app", as.BaseModuleName())
 	}
-	ctx.InstallFileWithExtraFilesZip(installDir, as.BaseModuleName()+".apk", as.primaryOutput, as.packedOutput)
+	ctx.InstallFileWithExtraFilesZip(installDir, as.BaseModuleName()+".apk", as.primaryOutput, packedOutput)
 
 	providePrebuiltInfo(ctx,
 		prebuiltInfoProps{

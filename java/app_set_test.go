@@ -16,8 +16,6 @@ package java
 
 import (
 	"fmt"
-	"reflect"
-	"strings"
 	"testing"
 
 	"android/soong/android"
@@ -52,16 +50,6 @@ func TestAndroidAppSet(t *testing.T) {
 			"out/soong/.intermediates/foo/android_common/apkcerts.txt",
 		},
 		params.ImplicitOutputs.Paths())
-
-	mkEntries := android.AndroidMkEntriesForTest(t, result.TestContext, module.Module())[0]
-	actualInstallFile := mkEntries.EntryMap["LOCAL_APK_SET_INSTALL_FILE"]
-	expectedInstallFile := []string{
-		strings.Replace(params.ImplicitOutputs[0].String(), android.OutSoongDir, result.Config.SoongOutDir(), 1),
-	}
-	if !reflect.DeepEqual(actualInstallFile, expectedInstallFile) {
-		t.Errorf("Unexpected LOCAL_APK_SET_INSTALL_FILE value: '%s', expected: '%s',",
-			actualInstallFile, expectedInstallFile)
-	}
 }
 
 func TestAndroidAppSet_Variants(t *testing.T) {

@@ -7865,46 +7865,7 @@ func TestAppBundle(t *testing.T) {
 	ensureContains(t, content, `"apex_config":{"apex_embedded_apk_config":[{"package_name":"com.android.foo","path":"app/AppFoo@TEST.BUILD_ID/AppFoo.apk"}]}`)
 }
 
-func TestAppSetBundle(t *testing.T) {
-	ctx := testApex(t, `
-		apex {
-			name: "myapex",
-			key: "myapex.key",
-			apps: ["AppSet"],
-			updatable: false,
-		}
-
-		apex_key {
-			name: "myapex.key",
-			public_key: "testkey.avbpubkey",
-			private_key: "testkey.pem",
-		}
-
-		android_app_set {
-			name: "AppSet",
-			set: "AppSet.apks",
-		}`)
-	mod := ctx.ModuleForTests("myapex", "android_common_myapex")
-	bundleConfigRule := mod.Output("bundle_config.json")
-	content := android.ContentFromFileRuleForTests(t, ctx, bundleConfigRule)
-	ensureContains(t, content, `"compression":{"uncompressed_glob":["apex_payload.img","apex_manifest.*"]}`)
-	s := mod.Rule("apexRule").Args["copy_commands"]
-	copyCmds := regexp.MustCompile(" *&& *").Split(s, -1)
-	if len(copyCmds) != 4 {
-		t.Fatalf("Expected 4 commands, got %d in:\n%s", len(copyCmds), s)
-	}
-	ensureMatches(t, copyCmds[0], "^rm -rf .*/app/AppSet@TEST.BUILD_ID$")
-	ensureMatches(t, copyCmds[1], "^mkdir -p .*/app/AppSet@TEST.BUILD_ID$")
-	ensureMatches(t, copyCmds[2], "^cp -f .*/app/AppSet@TEST.BUILD_ID/AppSet.apk$")
-	ensureMatches(t, copyCmds[3], "^unzip .*-d .*/app/AppSet@TEST.BUILD_ID .*/AppSet.zip$")
-
-	// Ensure that canned_fs_config has an entry for the app set zip file
-	generateFsRule := mod.Rule("generateFsConfig")
-	cmd := generateFsRule.RuleParams.Command
-	ensureContains(t, cmd, "AppSet.zip")
-}
-
-func TestAppSetBundlePrebuilt(t *testing.T) {
+func TestApexSetBundlePrebuilt(t *testing.T) {
 	bp := `
 		apex_set {
 			name: "myapex",

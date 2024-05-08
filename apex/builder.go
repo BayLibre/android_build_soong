@@ -454,7 +454,7 @@ func (a *apexBundle) buildBundleConfig(ctx android.ModuleContext) android.Output
 	// Collect the manifest names and paths of android apps if their manifest names are
 	// overridden.
 	for _, fi := range a.filesInfo {
-		if fi.class != app && fi.class != appSet {
+		if fi.class != app {
 			continue
 		}
 		packageName := fi.overriddenPackageName
@@ -523,9 +523,6 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 		destPath := imageDir.Join(ctx, fi.path()).String()
 		// Prepare the destination path
 		destPathDir := filepath.Dir(destPath)
-		if fi.class == appSet {
-			copyCommands = append(copyCommands, "rm -rf "+destPathDir)
-		}
 		copyCommands = append(copyCommands, "mkdir -p "+destPathDir)
 
 		installMapPath := fi.builtFile
@@ -548,20 +545,8 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 			}
 
 			var installedPath android.InstallPath
-			if fi.class == appSet {
-				// In case of AppSet, we need to copy additional APKs as well. They
-				// are zipped. So we need to unzip them.
-				copyCommands = append(copyCommands,
-					fmt.Sprintf("unzip -qDD -d %s %s", destPathDir,
-						fi.module.(*java.AndroidAppSet).PackedAdditionalOutputs().String()))
-				if installSymbolFiles {
-					installedPath = ctx.InstallFileWithExtraFilesZip(apexDir.Join(ctx, fi.installDir),
-						fi.stem(), fi.builtFile, fi.module.(*java.AndroidAppSet).PackedAdditionalOutputs())
-				}
-			} else {
-				if installSymbolFiles {
-					installedPath = ctx.InstallFile(apexDir.Join(ctx, fi.installDir), fi.stem(), fi.builtFile)
-				}
+			if installSymbolFiles {
+				installedPath = ctx.InstallFile(apexDir.Join(ctx, fi.installDir), fi.stem(), fi.builtFile)
 			}
 
 			// Create additional symlinks pointing the file inside the APEX (if any). Note that
@@ -1141,8 +1126,6 @@ func (a *apexBundle) buildLintReports(ctx android.ModuleContext) {
 func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext, defaultReadOnlyFiles []string) android.OutputPath {
 	var readOnlyPaths = defaultReadOnlyFiles
 	var executablePaths []string // this also includes dirs
-	var appSetDirs []string
-	appSetFiles := make(map[string]android.Path)
 	for _, f := range a.filesInfo {
 		pathInApex := f.path()
 		if f.installDir == "bin" || strings.HasPrefix(f.installDir, "bin/") {
@@ -1154,12 +1137,6 @@ func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext, defaultReadO
 			for _, s := range f.symlinks {
 				executablePaths = append(executablePaths, filepath.Join(f.installDir, s))
 			}
-		} else if f.class == appSet {
-			// base APK
-			readOnlyPaths = append(readOnlyPaths, pathInApex)
-			// Additional APKs
-			appSetDirs = append(appSetDirs, f.installDir)
-			appSetFiles[f.installDir] = f.module.(*java.AndroidAppSet).PackedAdditionalOutputs()
 		} else {
 			readOnlyPaths = append(readOnlyPaths, pathInApex)
 		}
@@ -1175,7 +1152,6 @@ func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext, defaultReadO
 	}
 	sort.Strings(readOnlyPaths)
 	sort.Strings(executablePaths)
-	sort.Strings(appSetDirs)
 
 	cannedFsConfig := android.PathForModuleOut(ctx, "canned_fs_config")
 	builder := android.NewRuleBuilder(pctx, ctx)
@@ -1187,11 +1163,6 @@ func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext, defaultReadO
 	}
 	for _, p := range executablePaths {
 		cmd.Textf("echo '/%s 0 2000 0755';", p)
-	}
-	for _, dir := range appSetDirs {
-		cmd.Textf("echo '/%s 0 2000 0755';", dir)
-		file := appSetFiles[dir]
-		cmd.Text("zipinfo -1").Input(file).Textf(`| sed "s:\(.*\):/%s/\1 1000 1000 0644:";`, dir)
 	}
 	// Custom fs_config is "appended" to the last so that entries from the file are preferred
 	// over default ones set above.

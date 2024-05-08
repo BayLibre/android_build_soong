@@ -500,7 +500,6 @@ type apexFileClass int
 
 const (
 	app apexFileClass = iota
-	appSet
 	etc
 	javaSharedLib
 	nativeExecutable
@@ -512,7 +511,6 @@ const (
 var (
 	classes = map[string]apexFileClass{
 		"app":              app,
-		"appSet":           appSet,
 		"etc":              etc,
 		"javaSharedLib":    javaSharedLib,
 		"nativeExecutable": nativeExecutable,
@@ -2069,20 +2067,6 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 				addAconfigFiles(vctx, ctx, child)
 			case *java.AndroidTestHelperApp:
 				vctx.filesInfo = append(vctx.filesInfo, apexFilesForAndroidApp(ctx, ap)...)
-				addAconfigFiles(vctx, ctx, child)
-			case *java.AndroidAppSet:
-				appDir := "app"
-				if ap.Privileged() {
-					appDir = "priv-app"
-				}
-				// TODO(b/224589412, b/226559955): Ensure that the dirname is
-				// suffixed so that PackageManager correctly invalidates the
-				// existing installed apk in favour of the new APK-in-APEX.
-				// See bugs for more information.
-				appDirName := filepath.Join(appDir, ap.BaseModuleName()+"@"+sanitizedBuildIdForPath(ctx))
-				af := newApexFile(ctx, ap.OutputFile(), ap.BaseModuleName(), appDirName, appSet, ap)
-				af.certificate = java.PresignedCertificate
-				vctx.filesInfo = append(vctx.filesInfo, af)
 				addAconfigFiles(vctx, ctx, child)
 			default:
 				ctx.PropertyErrorf("apps", "%q is not an android_app module", depName)

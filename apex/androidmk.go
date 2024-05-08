@@ -48,7 +48,7 @@ func (class apexFileClass) nameInMake() string {
 		return "JAVA_LIBRARIES"
 	case nativeTest:
 		return "NATIVE_TESTS"
-	case app, appSet:
+	case app:
 		// b/142537672 Why isn't this APP? We want to have full control over
 		// the paths and file names of the apk file under the flattend APEX.
 		// If this is set to APP, then the paths and file names are modified
@@ -176,14 +176,6 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, moduleDir st
 				}
 			}
 			fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_app_prebuilt.mk")
-		case appSet:
-			as, ok := fi.module.(*java.AndroidAppSet)
-			if !ok {
-				panic(fmt.Sprintf("Expected %s to be AndroidAppSet", fi.module))
-			}
-			fmt.Fprintln(w, "LOCAL_APK_SET_INSTALL_FILE :=", as.PackedAdditionalOutputs().String())
-			fmt.Fprintln(w, "LOCAL_APKCERTS_FILE :=", as.APKCertsFile().String())
-			fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_android_app_set.mk")
 		case nativeSharedLib, nativeExecutable, nativeTest:
 			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", fi.stem())
 			if ccMod, ok := fi.module.(*cc.Module); ok {
