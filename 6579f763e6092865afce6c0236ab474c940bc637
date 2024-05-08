@@ -141,6 +141,30 @@
       },
       "revId": "6579f763e6092865afce6c0236ab474c940bc637",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd53aa52_9fa29bbe",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-08T16:01:33Z",
+      "side": 1,
+      "message": "Ah, I see, so `--debug` will implicitly turn off optimized resource shrinking, so we only need to turn off the legacy resource shrinking?\n\nWithout the appt-generated keep rules, I\u0027m assuming `--debug` + `--optimized-resource-shrinking` can still properly keep everything we need/",
+      "parentUuid": "7497f9c3_916da248",
+      "range": {
+        "startLine": 555,
+        "startChar": 12,
+        "endLine": 555,
+        "endChar": 25
+      },
+      "revId": "6579f763e6092865afce6c0236ab474c940bc637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
