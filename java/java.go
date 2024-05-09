@@ -484,6 +484,8 @@ func (s sdkDep) hasFrameworkLibs() bool {
 	return !s.noStandardLibs && !s.noFrameworksLibs
 }
 
+// jniLib or their dependencies. The dependencies could be any, for example cc_shared_library, or
+// even prebuilt_etc.
 type jniLib struct {
 	name           string
 	path           android.Path
@@ -491,6 +493,8 @@ type jniLib struct {
 	coverageFile   android.OptionalPath
 	unstrippedFile android.Path
 	partition      string
+	embedded       bool
+	installPaths   android.InstallPaths
 }
 
 func sdkDeps(ctx android.BottomUpMutatorContext, sdkContext android.SdkContext, d dexer) {

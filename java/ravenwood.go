@@ -242,9 +242,15 @@ func (r *ravenwoodLibgroup) GenerateAndroidBuildActions(ctx android.ModuleContex
 	r.forceOSType = ctx.Config().BuildOS
 	r.forceArchType = ctx.Config().BuildArch
 
-	// Collect the JNI dependencies, including the transitive deps.
+	// Collect the JNI dependencies, including the transitive deps, but not the non-embedded
+	// deps.
 	jniDepNames := make(map[string]bool)
-	jniLibs := collectTransitiveJniDeps(ctx)
+	var jniLibs []jniLib
+	for _, j := range collectTransitiveJniDeps(ctx) {
+		if j.embedded {
+			jniLibs = append(jniLibs, j)
+		}
+	}
 
 	for _, jni := range jniLibs {
 		jniDepNames[jni.name] = true

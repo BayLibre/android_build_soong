@@ -440,7 +440,7 @@ func (a *AndroidApp) shouldEmbedJnis(ctx android.BaseModuleContext) bool {
 	return true
 }
 
-func (a *AndroidApp) shouldCollectRecursiveNativeDeps(ctx android.ModuleContext) bool {
+func (a *AndroidApp) shouldEmbedRecursiveNativeDeps(ctx android.ModuleContext) bool {
 	// JNI libs are always embedded, but whether to embed their transitive dependencies as well
 	// or not is determined here. For most of the apps built here (using the platform build
 	// system), we don't need to collect the transitive deps because they will anyway be
@@ -846,7 +846,7 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 
 	dexJarFile, packageResources := a.dexBuildActions(ctx)
 
-	jniLibs, prebuiltJniPackages, certificates := collectAppDeps(ctx, a, a.shouldCollectRecursiveNativeDeps(ctx), !Bool(a.appProperties.Jni_uses_platform_apis))
+	jniLibs, prebuiltJniPackages, certificates := collectAppDeps(ctx, a, a.shouldEmbedRecursiveNativeDeps(ctx), !Bool(a.appProperties.Jni_uses_platform_apis))
 	jniJarFile := a.jniBuildActions(jniLibs, prebuiltJniPackages, ctx)
 
 	if ctx.Failed() {
@@ -928,6 +928,13 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 			installed := ctx.InstallFile(a.installDir, extra.Base(), extra)
 			extraInstalledPaths = append(extraInstalledPaths, installed)
 		}
+		// Install the transitive dependencies that didn't get embedded into this app.
+		for _, jniLib := range jniLibs {
+			if jniLib.embedded {
+				continue
+			}
+			extraInstalledPaths = append(extraInstalledPaths, jniLib.installPaths...)
+		}
 		ctx.InstallFile(a.installDir, a.outputFile.Base(), a.outputFile, extraInstalledPaths...)
 	}
 
@@ -948,14 +955,14 @@ type appDepsInterface interface {
 }
 
 func collectAppDeps(ctx android.ModuleContext, app appDepsInterface,
-	shouldCollectRecursiveNativeDeps bool,
+	shouldEmbedRecursiveNativeDeps bool,
 	checkNativeSdkVersion bool) ([]jniLib, android.Paths, []Certificate) {
 
 	if checkNativeSdkVersion {
 		checkNativeSdkVersion = app.SdkVersion(ctx).Specified() &&
 			app.SdkVersion(ctx).Kind != android.SdkCorePlatform && !app.RequiresStableAPIs(ctx)
 	}
-	jniLib, prebuiltJniPackages := collectJniDeps(ctx, shouldCollectRecursiveNativeDeps,
+	jniLib, prebuiltJniPackages := collectJniDeps(ctx, shouldEmbedRecursiveNativeDeps,
 		checkNativeSdkVersion, func(dep cc.LinkableInterface) bool {
 			return !dep.IsNdk(ctx.Config()) && !dep.IsStubs()
 		})
@@ -978,7 +985,7 @@ func collectAppDeps(ctx android.ModuleContext, app appDepsInterface,
 }
 
 func collectJniDeps(ctx android.ModuleContext,
-	shouldCollectRecursiveNativeDeps bool,
+	shouldEmbedRecursiveNativeDeps bool,
 	checkNativeSdkVersion bool,
 	filter func(cc.LinkableInterface) bool) ([]jniLib, android.Paths) {
 	var jniLibs []jniLib
@@ -1008,6 +1015,12 @@ func collectJniDeps(ctx android.ModuleContext,
 							otherName)
 					}
 
+					// Direct jni deps are always embedded.
+					// shouldEmbedRecursiveNativeDeps determines whether to
+					// embed transitive deps as well, or not.
+					directDep := parent == ctx.Module()
+					embed := directDep || shouldEmbedRecursiveNativeDeps
+
 					jniLibs = append(jniLibs, jniLib{
 						name:           ctx.OtherModuleName(module),
 						path:           path,
@@ -1015,6 +1028,8 @@ func collectJniDeps(ctx android.ModuleContext,
 						coverageFile:   dep.CoverageOutputFile(),
 						unstrippedFile: dep.UnstrippedOutputFile(),
 						partition:      dep.Partition(),
+						embedded:       embed,
+						installPaths:   module.FilesToInstall(),
 					})
 				} else if ctx.Config().AllowMissingDependencies() {
 					ctx.AddMissingDependencies([]string{otherName})
@@ -1025,7 +1040,23 @@ func collectJniDeps(ctx android.ModuleContext,
 				ctx.ModuleErrorf("jni_libs dependency %q must be a cc library", otherName)
 			}
 
-			return shouldCollectRecursiveNativeDeps
+			return true
+		} else if android.IsInstallDepNeededTag(tag) {
+			// Track non-shared lib dependencies as well. cc_shared_library which got
+			// embedded into the apk may have `required` deps.
+			jniLibs = append(jniLibs, jniLib{
+				name:           ctx.OtherModuleName(module),
+				path:           nil,
+				target:         module.Target(),
+				coverageFile:   android.InvalidOptionalPath("non shared lib dep"),
+				unstrippedFile: nil,
+				partition:      module.PartitionTag(ctx.DeviceConfig()),
+				embedded:       false, // non-shared deps can't be embedded
+				installPaths:   module.FilesToInstall(),
+			})
+			// No further traverse is needed because installing this will install its
+			// own dependencies.
+			return false
 		}
 
 		if info, ok := android.OtherModuleProvider(ctx, module, JniPackageProvider); ok {
