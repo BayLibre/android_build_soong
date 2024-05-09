@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95dc0187_6602d962",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-09T04:37:14Z",
+      "side": 1,
+      "message": "See https://android-build.corp.google.com/builds/abtd/run/L25200030003721198 and https://android-build.corp.google.com/builds/abtd/run/L43100030003684153 as well.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "775e3d3a30737880b5f01cb7800c3b0fb68a0006",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
