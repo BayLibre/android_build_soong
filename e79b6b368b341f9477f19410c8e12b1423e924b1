@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a1d0e15_3a1afae4",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-09T09:46:41Z",
+      "side": 1,
+      "message": "`SetAconfigFileMkEntries()` is a duplicate of `aconfigUpdateAndroidMkEntries()`. So I can safely remove the former.",
+      "parentUuid": "f1301a52_30163784",
+      "range": {
+        "startLine": 168,
+        "startChar": 39,
+        "endLine": 168,
+        "endChar": 59
+      },
+      "revId": "e79b6b368b341f9477f19410c8e12b1423e924b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b0a9600_54206e0f",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "I would inline the whole function because it\u0027s only 1 line long.",
       "parentUuid": "1b0a9600_54206e0f",
+      "range": {
+        "startLine": 211,
+        "startChar": 29,
+        "endLine": 211,
+        "endChar": 44
+      },
+      "revId": "e79b6b368b341f9477f19410c8e12b1423e924b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b7b997_67fcb3aa",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-09T09:46:41Z",
+      "side": 1,
+      "message": "Replaced this to inline.",
+      "parentUuid": "58729b23_0c7fdfa7",
       "range": {
         "startLine": 211,
         "startChar": 29,
@@ -230,6 +278,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cbc3084_6ca6b1ea",
+        "filename": "android/aconfig_providers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-09T09:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6cd8995_59f05542",
+      "range": {
+        "startLine": 215,
+        "startChar": 53,
+        "endLine": 215,
+        "endChar": 70
+      },
+      "revId": "e79b6b368b341f9477f19410c8e12b1423e924b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d372c47a_b79b8410",
@@ -267,6 +339,30 @@
           ]
         }
       ],
+      "revId": "e79b6b368b341f9477f19410c8e12b1423e924b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35d2df99_7a8b78fa",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-09T09:46:41Z",
+      "side": 1,
+      "message": "As you commented, that is already implemented in `android.ModuleBase`. This is a duplicated call for the aconfig mk entries. I can safely remove this function from each module.",
+      "parentUuid": "d372c47a_b79b8410",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 67
+      },
       "revId": "e79b6b368b341f9477f19410c8e12b1423e924b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
