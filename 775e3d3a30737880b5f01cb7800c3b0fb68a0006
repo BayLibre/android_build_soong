@@ -39,6 +39,24 @@
       "message": "Sorry, I know I implied a solution similar to this one at the meeting yesterday, but I think a better solution would be to collect (at least some) transitive packaging specs in `ModuleBase.computeInstallDeps()`. \n\nI think we could do this by changing:\n\n```\nfunc (d libraryDependencyTag) InstallDepNeeded() bool {\n\treturn d.shared()\n}\n```\n\nto return `d.shared() || d.static()`, or potentially even just `return true`. What do you think?",
       "revId": "775e3d3a30737880b5f01cb7800c3b0fb68a0006",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b00e87a_e82d9f7e",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-09T22:44:10Z",
+      "side": 1,
+      "message": "`cc.libraryDependencyTag` is irrelevant here, because `libprivate` in my example could even be of type `prebuilt_etc`.\n\nI think you are talking about `java.jniLibTag`. If we make it return true on `InstallDepNeeded`, then `libprivate` will get installed (as we want), but at the same time, `libfoo` will also get installed... at `/system/lib64` AND be embedded in the apk as well.\n\nBy the way, I found a problem in my approach as well. This works well when the apks are installed to the global install path, but doesn\u0027t work well for the filesystem module case. `libprvate` is not installed to the filesystem.\n\nI will come back with a fix.",
+      "parentUuid": "2762a2da_6aa33741",
+      "revId": "775e3d3a30737880b5f01cb7800c3b0fb68a0006",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
