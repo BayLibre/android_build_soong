@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ea25a81_23666abc",
+        "filename": "scripts/extra_install_zips_file_list.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-09T21:22:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f691499_73918306",
+      "range": {
+        "startLine": 15,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "35123c1dbcc2e0e3dfa501009ba7b44ad8597ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a8986d9_4de11932",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-09T21:13:05Z",
       "side": 1,
       "message": "Could there be a scenario where two zips to have the same internal layout and cause duplicate copy rules to the staging directory?",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 47
+      },
+      "revId": "35123c1dbcc2e0e3dfa501009ba7b44ad8597ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4cf1e4e_607fef1d",
+        "filename": "scripts/extra_install_zips_file_list.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-09T21:22:15Z",
+      "side": 1,
+      "message": "I suppose that is possible, but that would\u0027ve happened during the unzipping rules in makevars.go. At the point of this script, it would just cause the script to output some duplicate lines, which isn\u0027t a problem.",
+      "parentUuid": "1a8986d9_4de11932",
       "range": {
         "startLine": 26,
         "startChar": 16,
