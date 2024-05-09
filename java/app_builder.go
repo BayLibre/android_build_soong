@@ -236,6 +236,10 @@ func TransformJniLibsToJar(
 	}
 
 	for _, j := range jniLibs {
+		// jniLibs contains non-embeddable deps as well. Skip them.
+		if !j.embedded {
+			continue
+		}
 		deps = append(deps, j.path)
 		jarArgs = append(jarArgs,
 			"-P", targetToJniDir(j.target),
