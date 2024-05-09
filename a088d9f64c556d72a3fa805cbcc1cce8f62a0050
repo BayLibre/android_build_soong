@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3912ea9_0c9dbf15",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-09T11:09:18Z",
+      "side": 1,
+      "message": "To avoid defining this variable in `ModuleBase`, we had following options:\n\n1. Get the value from `GenerateAndroidBuildActions()` of the filesystem module using `ModuleProvider(ctx, android.AconfigPropagatingProviderKey)`: This is not available because the provider data is set in the same BuildAction. Soong does not allow setting and getting the provider data in the same action.\n2. Collect the aconfig information by defining a mutator for it: This is also not available. The aconfig paths are the output path of a build rule. We cannot generate the aconfig paths in a mutator but must use the `GenerateAndroidBuildActions()` to generate the rule for aconfig files and get the output paths of the files.\n\nSo far, this is the only solution to add the information to the packaging spec.",
+      "range": {
+        "startLine": 906,
+        "startChar": 1,
+        "endLine": 906,
+        "endChar": 23
+      },
+      "revId": "a088d9f64c556d72a3fa805cbcc1cce8f62a0050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
