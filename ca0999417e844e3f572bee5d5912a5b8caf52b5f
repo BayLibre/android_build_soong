@@ -34,6 +34,24 @@
       ],
       "revId": "ca0999417e844e3f572bee5d5912a5b8caf52b5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "105f9f7c_dd97aa21",
+        "filename": "cc/cmake_snapshot_test.go",
+        "patchSetId": 77
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-09T17:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d2e807b_1fbd8e73",
+      "revId": "ca0999417e844e3f572bee5d5912a5b8caf52b5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
