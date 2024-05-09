@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2e807b_1fbd8e73",
+        "filename": "cc/cmake_snapshot_test.go",
+        "patchSetId": 77
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-09T15:38:28Z",
+      "side": 1,
+      "message": "nit: suggest adding `t.Helper()` here so that the test assertion is attributed to the line that called `wasGenerated` instead of function.",
+      "fixSuggestions": [
+        {
+          "fixId": "c26cb8fb_378ffd96",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/cmake_snapshot_test.go",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 25,
+                "endChar": 0
+              },
+              "replacement": "\tt.Helper()\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ca0999417e844e3f572bee5d5912a5b8caf52b5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
