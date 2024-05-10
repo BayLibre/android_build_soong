@@ -22,6 +22,30 @@
       },
       "revId": "78c5bdc60db2c0ff733849c481e6c9f7f6374faf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "972df940_4130a113",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-10T14:21:21Z",
+      "side": 1,
+      "message": "Modified description to make it clear - I need to disable cc_cmake_snapshot for mac, not the test. Otherwise, build will fail as soon as I merge the first use of cc_cmake_snapshot.",
+      "parentUuid": "c6e98ebf_35c5ec62",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 53
+      },
+      "revId": "78c5bdc60db2c0ff733849c481e6c9f7f6374faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
