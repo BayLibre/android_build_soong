@@ -46,6 +46,30 @@
       },
       "revId": "78c5bdc60db2c0ff733849c481e6c9f7f6374faf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7646e285_cab12a92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2024-05-10T14:23:55Z",
+      "side": 1,
+      "message": "Ah, that gets more complicated :) Historically we supported everything on Mac, now it just needs to be a subset, but I don\u0027t know if we have an example of things being explicitly disabled.",
+      "parentUuid": "972df940_4130a113",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 53
+      },
+      "revId": "78c5bdc60db2c0ff733849c481e6c9f7f6374faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
