@@ -39,9 +39,14 @@ function(add_aidl_library NAME LANG SOURCES AIDLFLAGS)
     target_include_directories(${NAME}
         PUBLIC
         "${GEN_DIR}/include"
-        "${ANDROID_BUILD_TOP}/frameworks/native/libs/binder/ndk/include_${LANG}"
     )
+
+    if (${LANG} MATCHES "ndk")
+        set(BINDER_LIB_NAME "libbinder_ndk_sdk")
+    else()
+        set(BINDER_LIB_NAME "libbinder_sdk")
+    endif()
     target_link_libraries(${NAME}
-        libbinder_sdk
+        ${BINDER_LIB_NAME}
     )
 endfunction()
