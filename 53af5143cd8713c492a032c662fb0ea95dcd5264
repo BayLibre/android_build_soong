@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff286b36_f6f57187",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307230
+      },
+      "writtenOn": "2024-05-10T12:57:29Z",
+      "side": 1,
+      "message": "@chenhaosjtuacm@google.com can we get help with this revert\u0027s merge conflict (in cc/cc.go).",
+      "revId": "53af5143cd8713c492a032c662fb0ea95dcd5264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
