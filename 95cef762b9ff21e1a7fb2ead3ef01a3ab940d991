@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fae868d_da0f619f",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-10T17:49:24Z",
+      "side": 1,
+      "message": "This is later than we usually modified Enabled, normally we do it in a load hook set during the factory.",
+      "fixSuggestions": [
+        {
+          "fixId": "99d4aca6_f373974c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/cmake_snapshot.go",
+              "range": {
+                "startLine": 29,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "cc/cmake_snapshot.go",
+              "range": {
+                "startLine": 247,
+                "startChar": 0,
+                "endLine": 257,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "cc/cmake_snapshot.go",
+              "range": {
+                "startLine": 320,
+                "startChar": 0,
+                "endLine": 321,
+                "endChar": 0
+              },
+              "replacement": "\t\tif !dep.Properties.Cmake_snapshot_supported {\n"
+            },
+            {
+              "path": "cc/cmake_snapshot.go",
+              "range": {
+                "startLine": 364,
+                "startChar": 0,
+                "endLine": 365,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tif !dep.Properties.Cmake_snapshot_supported {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "95cef762b9ff21e1a7fb2ead3ef01a3ab940d991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "877198e2_6322d5e9",
+        "filename": "cc/cmake_snapshot_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-10T17:49:24Z",
+      "side": 1,
+      "message": "This test will still fail on mac because it won\u0027t generate the expected files.\n```suggestion\nfunc TestEmptyCmakeSnapshot(t *testing.T) {\n\tif runtime.GOOS !\u003d \"linux\" {\n\t\tt.Skip(\"requires linux\")\n\t}\n```",
+      "revId": "95cef762b9ff21e1a7fb2ead3ef01a3ab940d991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
