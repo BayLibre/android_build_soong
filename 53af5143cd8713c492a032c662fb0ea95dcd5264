@@ -33,6 +33,23 @@
       "message": "I am the author of most of this CL, problem\u0027s on me.\n\nFix forward: aosp/3082227",
       "revId": "53af5143cd8713c492a032c662fb0ea95dcd5264",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cd5cebb_e422d568",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-10T20:47:19Z",
+      "side": 1,
+      "message": "Fix forward helped turning sdk-sdk_mac-trunk_staging green, no need to revert.\n\nThanks!",
+      "revId": "53af5143cd8713c492a032c662fb0ea95dcd5264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
