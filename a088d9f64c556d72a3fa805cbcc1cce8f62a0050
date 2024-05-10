@@ -22,6 +22,30 @@
       },
       "revId": "a088d9f64c556d72a3fa805cbcc1cce8f62a0050",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82605649_46456c0d",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-10T05:58:11Z",
+      "side": 1,
+      "message": "\u003e The aconfig paths are the output path of a build rule\n\nI see. IntermediateCacheOutputPath is an outpu tpath.",
+      "parentUuid": "e3912ea9_0c9dbf15",
+      "range": {
+        "startLine": 906,
+        "startChar": 1,
+        "endLine": 906,
+        "endChar": 23
+      },
+      "revId": "a088d9f64c556d72a3fa805cbcc1cce8f62a0050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
