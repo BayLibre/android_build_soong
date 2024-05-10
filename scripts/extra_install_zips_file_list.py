@@ -23,8 +23,8 @@ def main():
 
     staging_dir = args.staging_dir.removesuffix('/') + '/'
 
-    for zip_pair in args.extra_install_zips:
-        d, z = zip_pair.split(':')
+    for zip_trio in args.extra_install_zips:
+        _, d, z = zip_trio.split(':')
         d = d.removesuffix('/') + '/'
 
         if d.startswith(staging_dir):
