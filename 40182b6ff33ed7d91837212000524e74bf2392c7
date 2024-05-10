@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e7540bf_40e0c276",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-10T05:51:18Z",
+      "side": 1,
+      "message": "I see that Cole +1\u0027ed, so let me +2 this so that we can proceed.",
+      "revId": "40182b6ff33ed7d91837212000524e74bf2392c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4081c2a_cc8f1606",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "I tried that and left a comment on another CL (https://android-review.git.corp.google.com/c/platform/build/soong/+/3046652/comment/e3912ea9_0c9dbf15/)\n\nIn short, this function generates build rules and need the output module path for the build rule. That is not available from the mutator.\n\nThe merged aconfig files are the output of a build rule.",
       "parentUuid": "d4081c2a_cc8f1606",
+      "range": {
+        "startLine": 1897,
+        "startChar": 2,
+        "endLine": 1897,
+        "endChar": 39
+      },
+      "revId": "40182b6ff33ed7d91837212000524e74bf2392c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f21c92_cdb7e885",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1897,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-10T05:51:18Z",
+      "side": 1,
+      "message": "Ok. Let\u0027s discuss that issue there. I think this CL by itself is fine.",
+      "parentUuid": "2dff39e8_0efdb808",
       "range": {
         "startLine": 1897,
         "startChar": 2,
