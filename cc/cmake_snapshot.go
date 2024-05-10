@@ -244,6 +244,16 @@ func executeTemplate(templ *template.Template, buffer *bytes.Buffer, data any) s
 }
 
 func (m *CmakeSnapshot) DepsMutator(ctx android.BottomUpMutatorContext) {
+	props := struct {
+		Target struct {
+			Darwin struct {
+				Enabled *bool
+			}
+		}
+	}{}
+	props.Target.Darwin.Enabled = proptools.BoolPtr(false)
+	proptools.AppendProperties(&m.Properties, &props, nil)
+
 	variations := []blueprint.Variation{
 		{"os", "linux_glibc"},
 		{"arch", "x86_64"},
