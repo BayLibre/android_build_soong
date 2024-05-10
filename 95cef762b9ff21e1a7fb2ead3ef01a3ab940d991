@@ -84,6 +84,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ce9306_be9400cb",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-10T18:11:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42cde0cb_bc7acda9",
+      "revId": "95cef762b9ff21e1a7fb2ead3ef01a3ab940d991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "877198e2_6322d5e9",
@@ -97,6 +115,24 @@
       "writtenOn": "2024-05-10T17:49:24Z",
       "side": 1,
       "message": "This test will still fail on mac because it won\u0027t generate the expected files.\n```suggestion\nfunc TestEmptyCmakeSnapshot(t *testing.T) {\n\tif runtime.GOOS !\u003d \"linux\" {\n\t\tt.Skip(\"requires linux\")\n\t}\n```",
+      "revId": "95cef762b9ff21e1a7fb2ead3ef01a3ab940d991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f57ba7c3_2cf81957",
+        "filename": "cc/cmake_snapshot_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-10T18:11:16Z",
+      "side": 1,
+      "message": "Done. I actually wanted it to fail to confirm it goes past the bp parsing stage (it was WIP change).",
+      "parentUuid": "877198e2_6322d5e9",
       "revId": "95cef762b9ff21e1a7fb2ead3ef01a3ab940d991",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
