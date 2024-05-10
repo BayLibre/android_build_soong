@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f06d5075_8accb897",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1495,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-10T18:21:10Z",
+      "side": 1,
+      "message": "Should you check platformLsdumpTag is contained within tags, even if it\u0027s not the only element?",
+      "range": {
+        "startLine": 1495,
+        "startChar": 49,
+        "endLine": 1495,
+        "endChar": 95
+      },
+      "revId": "3d5c6791bc4cbd32106fb69660b61290c02a4c4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
