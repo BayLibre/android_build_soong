@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4081c2a_cc8f1606",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1897,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-10T05:12:40Z",
+      "side": 1,
+      "message": "Didn\u0027t we want to run this in a separate bottom-up mutator so that the aconfig files are accessible via provider in GenerateAndroidBuildActions?",
+      "range": {
+        "startLine": 1897,
+        "startChar": 2,
+        "endLine": 1897,
+        "endChar": 39
+      },
+      "revId": "40182b6ff33ed7d91837212000524e74bf2392c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
