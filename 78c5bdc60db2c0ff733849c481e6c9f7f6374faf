@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e98ebf_35c5ec62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2024-05-10T14:18:13Z",
+      "side": 1,
+      "message": "See https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/androidmk_test.go;drc\u003d5180438478bf50d43401f0f7ce646f0519f74a42;l\u003d164",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 53
+      },
+      "revId": "78c5bdc60db2c0ff733849c481e6c9f7f6374faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
