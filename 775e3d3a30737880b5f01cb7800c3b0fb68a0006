@@ -99,6 +99,24 @@
       "parentUuid": "4b00e87a_e82d9f7e",
       "revId": "775e3d3a30737880b5f01cb7800c3b0fb68a0006",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07ad417b_cf132bab",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-10T20:00:57Z",
+      "side": 1,
+      "message": "Thanks, this new solution looks much better",
+      "parentUuid": "13159745_f7766060",
+      "revId": "775e3d3a30737880b5f01cb7800c3b0fb68a0006",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
