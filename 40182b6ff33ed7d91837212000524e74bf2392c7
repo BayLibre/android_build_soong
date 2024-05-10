@@ -22,6 +22,30 @@
       },
       "revId": "40182b6ff33ed7d91837212000524e74bf2392c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dff39e8_0efdb808",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1897,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-10T05:48:01Z",
+      "side": 1,
+      "message": "I tried that and left a comment on another CL (https://android-review.git.corp.google.com/c/platform/build/soong/+/3046652/comment/e3912ea9_0c9dbf15/)\n\nIn short, this function generates build rules and need the output module path for the build rule. That is not available from the mutator.\n\nThe merged aconfig files are the output of a build rule.",
+      "parentUuid": "d4081c2a_cc8f1606",
+      "range": {
+        "startLine": 1897,
+        "startChar": 2,
+        "endLine": 1897,
+        "endChar": 39
+      },
+      "revId": "40182b6ff33ed7d91837212000524e74bf2392c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
