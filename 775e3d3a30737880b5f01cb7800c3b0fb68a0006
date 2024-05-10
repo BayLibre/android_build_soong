@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee159b8_15e715b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-10T05:06:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95dc0187_6602d962",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "775e3d3a30737880b5f01cb7800c3b0fb68a0006",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2762a2da_6aa33741",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "`cc.libraryDependencyTag` is irrelevant here, because `libprivate` in my example could even be of type `prebuilt_etc`.\n\nI think you are talking about `java.jniLibTag`. If we make it return true on `InstallDepNeeded`, then `libprivate` will get installed (as we want), but at the same time, `libfoo` will also get installed... at `/system/lib64` AND be embedded in the apk as well.\n\nBy the way, I found a problem in my approach as well. This works well when the apks are installed to the global install path, but doesn\u0027t work well for the filesystem module case. `libprvate` is not installed to the filesystem.\n\nI will come back with a fix.",
       "parentUuid": "2762a2da_6aa33741",
+      "revId": "775e3d3a30737880b5f01cb7800c3b0fb68a0006",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13159745_f7766060",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-10T05:06:10Z",
+      "side": 1,
+      "message": "I\u0027ve switched to a completely new implementation, which is movitaved from your suggestion. See this and the parent change.",
+      "parentUuid": "4b00e87a_e82d9f7e",
       "revId": "775e3d3a30737880b5f01cb7800c3b0fb68a0006",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
