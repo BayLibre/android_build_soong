@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f035fd_2a79084d",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-05-12T04:54:07Z",
+      "side": 1,
+      "message": "Should this also respect aapt_include_all_resources like here?\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/app.go;l\u003d510",
+      "fixSuggestions": [
+        {
+          "fixId": "2b8c7586_d026087e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/app.go",
+              "range": {
+                "startLine": 1246,
+                "startChar": 0,
+                "endLine": 1248,
+                "endChar": 0
+              },
+              "replacement": "\t\tif !Bool(a.aaptProperties.Aapt_include_all_resources) {\n\t\t\tfor _, aaptConfig :\u003d range ctx.Config().ProductAAPTConfig() {\n\t\t\t\trroProperties.Aaptflags \u003d append(rroProperties.Aaptflags, \"-c\", aaptConfig)\n\t\t\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "192f1bc4b520f7392efaab7f9fc2f243363950d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
