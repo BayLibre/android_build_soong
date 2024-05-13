@@ -169,6 +169,10 @@ type overridableAppProperties struct {
 	// binaries would be installed by default (in PRODUCT_PACKAGES) the other binary will be removed
 	// from PRODUCT_PACKAGES.
 	Overrides []string
+
+	// if not blank, set the minimum version of the sdk that the compiled artifacts will run against.
+	// Defaults to sdk_version if not set. See sdk_version for possible values.
+	Min_sdk_version *string
 }
 
 type AndroidApp struct {
@@ -340,11 +344,9 @@ func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 func (a *AndroidApp) MinSdkVersion(ctx android.EarlyModuleContext) android.ApiLevel {
 	defaultMinSdkVersion := a.Module.MinSdkVersion(ctx)
-	if proptools.Bool(a.appProperties.Updatable) {
-		overrideApiLevel := android.MinSdkVersionFromValue(ctx, ctx.DeviceConfig().ApexGlobalMinSdkVersionOverride())
-		if !overrideApiLevel.IsNone() && overrideApiLevel.CompareTo(defaultMinSdkVersion) > 0 {
-			return overrideApiLevel
-		}
+	overrideApiLevel := android.MinSdkVersionFromValue(ctx, proptools.String(a.overridableAppProperties.Min_sdk_version))
+	if !overrideApiLevel.IsNone() && overrideApiLevel.CompareTo(defaultMinSdkVersion) > 0 {
+		return overrideApiLevel
 	}
 	return defaultMinSdkVersion
 }
