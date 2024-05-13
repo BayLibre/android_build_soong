@@ -837,6 +837,10 @@ func (c *config) DeviceResourceOverlays() []string {
 	return c.productVariables.DeviceResourceOverlays
 }
 
+func (c *config) DeviceDir(ctx PathContext) SourcePath {
+	return PathForSource(ctx, String(c.productVariables.DeviceDir))
+}
+
 func (c *config) ProductResourceOverlays() []string {
 	return c.productVariables.ProductResourceOverlays
 }
@@ -2052,4 +2056,20 @@ func (c *config) ProductPropFiles(ctx PathContext) Paths {
 
 func (c *config) EnableUffdGc() string {
 	return String(c.productVariables.EnableUffdGc)
+}
+
+func (c *config) BoardInfoFile(ctx PathContext) OptionalPath {
+	path := String(c.productVariables.BoardInfoFile)
+	if path != "" {
+		return OptionalPathForPath(PathForSource(ctx, path))
+	}
+	return InvalidOptionalPath("TARGET_BOARD_INFO_FILE empty")
+}
+
+func (c *config) BoardInfoFiles(ctx PathContext) Paths {
+	return PathsForSource(ctx, c.productVariables.BoardInfoFiles)
+}
+
+func (c *config) BootloaderBoardName() string {
+	return String(c.productVariables.BootloaderBoardName)
 }

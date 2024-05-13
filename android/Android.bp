@@ -29,6 +29,7 @@ bootstrap_go_package {
     srcs: [
         "aconfig_providers.go",
         "all_teams.go",
+        "android_info.go",
         "androidmk.go",
         "apex.go",
         "apex_contributions.go",
