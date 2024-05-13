@@ -34,6 +34,24 @@
       ],
       "revId": "192f1bc4b520f7392efaab7f9fc2f243363950d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00ddfac6_56b07918",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1927750
+      },
+      "writtenOn": "2024-05-13T12:01:05Z",
+      "side": 1,
+      "message": "Do you mean that I should also add the Aapt_include_all_resources judgment here? I may have missed it, please help me review it again, thank you!",
+      "parentUuid": "b7f035fd_2a79084d",
+      "revId": "192f1bc4b520f7392efaab7f9fc2f243363950d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
