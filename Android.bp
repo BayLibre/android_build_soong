@@ -131,6 +131,10 @@ buildinfo_prop {
     visibility: ["//packages/modules/Virtualization/microdroid"],
 }
 
+android_info {
+    name: "android-info.txt",
+}
+
 // container for apex_contributions selected using build flags
 all_apex_contributions {
     name: "all_apex_contributions",
