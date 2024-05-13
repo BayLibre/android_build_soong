@@ -116,8 +116,11 @@ func (i ApexInfo) AddJSONData(d *map[string]interface{}) {
 // or not also matters; if two APEXes don't have the same allowance, they get different names and
 // thus wouldn't be merged.
 func (i ApexInfo) mergedName() string {
-	name := "apex" + strconv.Itoa(i.MinSdkVersion.FinalOrFutureInt())
-	return name
+	return MergedApexVariationName(i.MinSdkVersion)
+}
+
+func MergedApexVariationName(minSdkVersion ApiLevel) string {
+	return "apex" + strconv.Itoa(minSdkVersion.FinalOrFutureInt())
 }
 
 // IsForPlatform tells whether this module is for the platform or not. If false is returned, it
@@ -395,7 +398,7 @@ func (m *ApexModuleBase) BuildForApex(apex ApexInfo) {
 	m.apexInfosLock.Lock()
 	defer m.apexInfosLock.Unlock()
 	for i, v := range m.apexInfos {
-		if v.ApexVariationName == apex.ApexVariationName {
+		if v.ApexVariationName == apex.ApexVariationName && v.MinSdkVersion == apex.MinSdkVersion {
 			if len(apex.InApexModules) != 1 {
 				panic(fmt.Errorf("Newly created apexInfo must be for a single APEX"))
 			}

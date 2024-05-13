@@ -388,6 +388,10 @@ type overridableProperties struct {
 
 	// Trim against a specific Dynamic Common Lib APEX
 	Trim_against *string
+
+	// The minimum SDK version that this APEX must support at minimum. This is usually set to
+	// the SDK version that the APEX was first introduced.
+	Min_sdk_version *string
 }
 
 type apexBundle struct {
@@ -1305,6 +1309,20 @@ func (a *apexTransitionMutator) Split(ctx android.BaseModuleContext) []string {
 }
 
 func (a *apexTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
+	// Overrides are implemented as module variants of the base apex.
+	// For optimization, apex variants are dedupded based on min_sdk_version.
+	// Since min_sdk_version is an overridable property, propagate the apex variant name that is specific to
+	// the visited overridden module variant.
+	if ab, ok := ctx.Module().(*apexBundle); ok {
+		if overridable, _ := ctx.Module().(android.OverridableModule); overridable.GetOverriddenBy() != "" {
+			rawMinSdkVersionString := proptools.String(ab.overridableProperties.Min_sdk_version)
+			minSdkVersion := android.NoneApiLevel
+			if rawMinSdkVersionString != "" {
+				minSdkVersion, _ = android.ApiLevelFromUserWithConfig(ctx.Config(), rawMinSdkVersionString)
+			}
+			return android.MergedApexVariationName(minSdkVersion)
+		}
+	}
 	return sourceVariation
 }
 
@@ -2651,7 +2669,8 @@ func (a *apexBundle) minSdkVersionValue(ctx android.EarlyModuleContext) string {
 	// Only override the minSdkVersion value on Apexes which already specify
 	// a min_sdk_version (it's optional for non-updatable apexes), and that its
 	// min_sdk_version value is lower than the one to override with.
-	minApiLevel := android.MinSdkVersionFromValue(ctx, proptools.String(a.properties.Min_sdk_version))
+	minSdkVersion := proptools.StringDefault(a.overridableProperties.Min_sdk_version, proptools.String(a.properties.Min_sdk_version))
+	minApiLevel := android.MinSdkVersionFromValue(ctx, minSdkVersion)
 	if minApiLevel.IsNone() {
 		return ""
 	}
