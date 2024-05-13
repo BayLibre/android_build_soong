@@ -4492,3 +4492,36 @@ func TestAppStem(t *testing.T) {
 		t.Errorf("Module output does not contain expected apk %s", "foo-new.apk")
 	}
 }
+
+func TestAppMinSdkVersionOverride(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		PrepareForTestWithJavaDefaultModules,
+	).RunTestWithBp(t, `
+		android_app {
+			name: "com.android.foo",
+			srcs: ["a.java"],
+			sdk_version: "current",
+			min_sdk_version: "31",
+			updatable: true,
+		}
+		override_android_app {
+			name: "com.android.go.foo",
+			base: "com.android.foo",
+			min_sdk_version: "33",
+		}
+	`)
+	foo := result.ModuleForTests("com.android.foo", "android_common").Rule("manifestFixer")
+	fooOverride := result.ModuleForTests("com.android.foo", "android_common_com.android.go.foo").Rule("manifestFixer")
+
+	android.AssertStringDoesContain(t,
+		"com.android.foo: expected manifest fixer to set minSdkVersion to T",
+		foo.BuildParams.Args["args"],
+		"--minSdkVersion  31",
+	)
+	android.AssertStringDoesContain(t,
+		"com.android.go.foo: expected manifest fixer to set minSdkVersion to T",
+		fooOverride.BuildParams.Args["args"],
+		"--minSdkVersion  33",
+	)
+
+}
