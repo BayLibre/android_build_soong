@@ -395,7 +395,7 @@ func (m *ApexModuleBase) BuildForApex(apex ApexInfo) {
 	m.apexInfosLock.Lock()
 	defer m.apexInfosLock.Unlock()
 	for i, v := range m.apexInfos {
-		if v.ApexVariationName == apex.ApexVariationName {
+		if v.ApexVariationName == apex.ApexVariationName && v.MinSdkVersion == apex.MinSdkVersion {
 			if len(apex.InApexModules) != 1 {
 				panic(fmt.Errorf("Newly created apexInfo must be for a single APEX"))
 			}
@@ -639,7 +639,35 @@ func IncomingApexTransition(ctx IncomingTransitionContext, incomingVariation str
 		return incomingVariation
 	}
 
+	// Check if the incoming variation is from an override apex that shares variations with a base apex
+	apexModuleIndex := slices.IndexFunc(apexInfos, func(info ApexInfo) bool {
+		return InList(incomingVariation, info.InApexModules)
+	})
+	if apexModuleIndex >= 0 {
+		apexVariationName := apexInfos[apexModuleIndex].ApexVariationName
+		// If the apex variation of the requested apex is unique, return that.
+		if apexVariationIsUnique(apexVariationName, apexInfos) {
+			return apexVariationName
+		}
+		// Otherwise return the requested apex
+		// One scenario where this could happen is when we have two override apex that override `min_sdk_version`,
+		// of the base apex, but apex variation merging is turned off.
+		// In this scenario this will return the overriding apex name
+		return incomingVariation
+	}
+
 	return ""
+}
+
+// Returns true if apexVariationName is unique across all apexInfo objects
+func apexVariationIsUnique(apexVariationName string, apexInfos []ApexInfo) bool {
+	count := 0
+	for _, apexInfo := range apexInfos {
+		if apexInfo.ApexVariationName == apexVariationName {
+			count += 1
+		}
+	}
+	return count < 2
 }
 
 func MutateApexTransition(ctx BaseModuleContext, variation string) {
