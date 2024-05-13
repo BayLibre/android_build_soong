@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd0a346_011c8314",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1368,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-05-13T09:38:56Z",
+      "side": 1,
+      "message": "Is there a better way to get the release config name?",
+      "range": {
+        "startLine": 1368,
+        "startChar": 31,
+        "endLine": 1368,
+        "endChar": 55
+      },
+      "revId": "311621999928025e67e0a827fc4517fbf2e3da2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
