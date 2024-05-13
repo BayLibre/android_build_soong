@@ -137,10 +137,6 @@ type apexBundleProperties struct {
 	// Rust binaries with prefer_rlib:true add unnecessary dependencies.
 	Unwanted_transitive_deps []string
 
-	// The minimum SDK version that this APEX must support at minimum. This is usually set to
-	// the SDK version that the APEX was first introduced.
-	Min_sdk_version *string
-
 	// Whether this APEX is considered updatable or not. When set to true, this will enforce
 	// additional rules for making sure that the APEX is truly updatable. To be updatable,
 	// min_sdk_version should be set as well. This will also disable the size optimizations like
@@ -388,6 +384,10 @@ type overridableProperties struct {
 
 	// Trim against a specific Dynamic Common Lib APEX
 	Trim_against *string
+
+	// The minimum SDK version that this APEX must support at minimum. This is usually set to
+	// the SDK version that the APEX was first introduced.
+	Min_sdk_version *string
 }
 
 type apexBundle struct {
@@ -1310,8 +1310,8 @@ func (a *apexTransitionMutator) IncomingTransition(ctx android.IncomingTransitio
 		return android.IncomingApexTransition(ctx, incomingVariation)
 	} else if ai, ok := ctx.Module().(ApexInfoMutator); ok {
 		return ai.ApexVariationName()
-	} else if o, ok := ctx.Module().(*OverrideApex); ok {
-		return o.GetOverriddenModuleName()
+	} else if _, ok := ctx.Module().(*OverrideApex); ok {
+		return ctx.Module().Name() // Return the name of the overriding apex
 	}
 
 	return ""
@@ -2646,7 +2646,7 @@ func (a *apexBundle) minSdkVersionValue(ctx android.EarlyModuleContext) string {
 	// Only override the minSdkVersion value on Apexes which already specify
 	// a min_sdk_version (it's optional for non-updatable apexes), and that its
 	// min_sdk_version value is lower than the one to override with.
-	minApiLevel := android.MinSdkVersionFromValue(ctx, proptools.String(a.properties.Min_sdk_version))
+	minApiLevel := android.MinSdkVersionFromValue(ctx, proptools.String(a.overridableProperties.Min_sdk_version))
 	if minApiLevel.IsNone() {
 		return ""
 	}
