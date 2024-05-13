@@ -227,6 +227,7 @@ type ProductVariables struct {
 	DeviceSystemSdkVersions               []string `json:",omitempty"`
 	DeviceMaxPageSizeSupported            *string  `json:",omitempty"`
 	DeviceNoBionicPageSizeMacro           *bool    `json:",omitempty"`
+	DeviceDir                             *string  `json:",omitempty"`
 
 	VendorApiLevel *string `json:",omitempty"`
 
@@ -509,6 +510,10 @@ type ProductVariables struct {
 	BoardUseVbmetaDigestInFingerprint *bool `json:",omitempty"`
 
 	OemProperties []string `json:",omitempty"`
+
+	BoardInfoFile       *string  `json:",omitempty"`
+	BoardInfoFiles      []string `json:",omitempty"`
+	BootloaderBoardName *string  `json:",omitempty"`
 }
 
 type PartitionQualifiedVariablesType struct {
