@@ -22,6 +22,30 @@
       },
       "revId": "3d5c6791bc4cbd32106fb69660b61290c02a4c4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a6e8226_b11114ae",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1495,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-05-13T02:53:40Z",
+      "side": 1,
+      "message": "No. There are a few libraries tagged with apexLsdumpTag (has stubs) and platformLsdumpTag (header_abi_checker enabled) like\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:packages/modules/NeuralNetworks/runtime/packageinfo/Android.bp;l\u003d44\n\nThe libraries were opt-in before we added the rule to check all APEX libraries.",
+      "parentUuid": "f06d5075_8accb897",
+      "range": {
+        "startLine": 1495,
+        "startChar": 49,
+        "endLine": 1495,
+        "endChar": 95
+      },
+      "revId": "3d5c6791bc4cbd32106fb69660b61290c02a4c4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
