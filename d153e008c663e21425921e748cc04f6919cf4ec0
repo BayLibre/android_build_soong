@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab396986_94472b12",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-14T23:02:16Z",
+      "side": 0,
+      "message": "My understanding of https://b.corp.google.com/issues/295311875#comment14 is this check limits the scope of the global override function to only the updatable modules.\n\nSince we now support per module overrides, module authors have the flexibility (and the responsibility) to set an explicit `min_sdk_version` in only the updatable modules.\n\nI think for consistency with how overrides of other properties work, I would like to remove this special case. WDYT?",
+      "parentUuid": "eee33795_a083853f",
+      "revId": "d153e008c663e21425921e748cc04f6919cf4ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b2bfc17_caee6744",
         "filename": "java/app.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2024-05-14T00:31:14Z",
       "side": 0,
       "message": "Would this not cause build breakages if you removed this immediately without updating relevant Android.bp files first?",
+      "revId": "d153e008c663e21425921e748cc04f6919cf4ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "628a9e1f_a7fd99ca",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-14T23:02:16Z",
+      "side": 0,
+      "message": "I think it should not cause any breakages in the current state of things.\n\nDuring the investigation of this bug, we found out that the only script that uses this global override functionality was subsumed by a different script. So this functionality is not actively being used atm. https://b.corp.google.com/issues/295311875#comment62\n\nIf you prefer, I can do the removal of this functionality in a followup CL.",
+      "parentUuid": "2b2bfc17_caee6744",
       "revId": "d153e008c663e21425921e748cc04f6919cf4ec0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

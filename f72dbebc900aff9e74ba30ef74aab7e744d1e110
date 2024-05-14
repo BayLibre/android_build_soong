@@ -16,6 +16,24 @@
       "message": "Could we consider making this work for all java modules by moving `Min_sdk_version` from `DeviceProperties` to `OverridableProperties` in `java/base.go`?",
       "revId": "f72dbebc900aff9e74ba30ef74aab7e744d1e110",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ced541cb_d523e492",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-14T23:02:16Z",
+      "side": 1,
+      "message": "I think this would require us to call `InitOverridableModule` on all java modules types. Without it, we will always get a nil value.\n\nimo having this be specific to android_app seems simpler, but we can revisit this later.",
+      "parentUuid": "7175b6c2_23ebee17",
+      "revId": "f72dbebc900aff9e74ba30ef74aab7e744d1e110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
