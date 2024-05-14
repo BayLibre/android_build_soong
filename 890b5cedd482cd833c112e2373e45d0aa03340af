@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c94d0c_6c1fe154",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-14T23:39:17Z",
+      "side": 1,
+      "message": "I think this is applying the non-google name on an incoming transition, and then your added code above is changing the non-google name to the google name on the outgoing transition. I think you should change this line to instead give the overriding module name here, and then you can leave OutgoingTransition untouched.",
+      "revId": "890b5cedd482cd833c112e2373e45d0aa03340af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
