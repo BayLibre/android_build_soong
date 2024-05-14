@@ -46,6 +46,30 @@
       },
       "revId": "ec7e271bec0d895f0336b6c34b07c3e702c88df0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b459e0_d6e8ab39",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-14T23:29:38Z",
+      "side": 1,
+      "message": "ah yeah, that\u0027s what I want. That should make it consistent with other things like `cc.libraryDependencyTag`. And it appears there\u0027s also a `jniInstallTag` that we can dedup. We can do it in a followup cl though.\n\nHow are the non-embedded jnilibs installed today if neither of these methods are used? I found this, but it appears to unconditionally always install them: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/java.go;l\u003d1839;drc\u003dcd9dca20a04e9b6d4cb3bdeb38967d72cc0a593e",
+      "parentUuid": "312a8dfa_9fa8546f",
+      "range": {
+        "startLine": 924,
+        "startChar": 5,
+        "endLine": 925,
+        "endChar": 51
+      },
+      "revId": "ec7e271bec0d895f0336b6c34b07c3e702c88df0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
