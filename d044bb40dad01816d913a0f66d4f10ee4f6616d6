@@ -16,6 +16,24 @@
       "message": "Hey, I am reverting this topic again due to a regression in size. See b/339923078\n\nI found a critical problem with my approach and decided to implement the symlink in Soong instead. See aosp/3086469 for more details. I will send it to you when it passes all the checks.\n\nPlease approve the four reverts in this chain. Sorry for the inconvenience.",
       "revId": "d044bb40dad01816d913a0f66d4f10ee4f6616d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c21f87e7_66dbb241",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-14T19:15:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "04c7a255_36267d1f",
+      "revId": "d044bb40dad01816d913a0f66d4f10ee4f6616d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
