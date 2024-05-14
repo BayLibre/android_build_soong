@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3963cb2e_3a7ad278",
+        "filename": "android/android_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-14T20:47:32Z",
+      "side": 1,
+      "message": "I know you\u0027re just doing an incremental migration from make, but nothing here looks too difficult. Could we make this module just accept a `board-info.txt` through a property rather than configuration variables, and make an instance of this module for the cuttlefish system image?",
+      "revId": "e75e992e2a9e94ffc3ffca2448956253ec0ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4464f19_debf5c53",
+        "filename": "android/android_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-14T20:47:32Z",
+      "side": 1,
+      "message": "Please make this a regular module type instead of a SingletonModule. If you want to ensure there\u0027s only 1 of them, you can just add an `if ctx.ModuleDir() !\u003d \"build/soong\" { error }`",
+      "revId": "e75e992e2a9e94ffc3ffca2448956253ec0ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
