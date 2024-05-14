@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "117b317e_34766542",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-05-14T19:18:51Z",
+      "side": 1,
+      "message": "nit: Will it work fine when `prebuilt_etc`\u0027s `srcs` include multiple files with the same name?",
+      "range": {
+        "startLine": 13,
+        "startChar": 27,
+        "endLine": 13,
+        "endChar": 65
+      },
+      "revId": "685bbba24edb813145142dee7667b104cae6a070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2da32a2e_b38c9b68",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
