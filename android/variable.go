@@ -139,6 +139,12 @@ type variableProperties struct {
 			Cmd          *string
 
 			Deps []string
+
+			Multilib struct {
+				First struct {
+					Deps []string
+				}
+			}
 		}
 
 		// eng is true for -eng builds, and can be used to turn on additional heavyweight debugging
