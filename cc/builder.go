@@ -19,6 +19,7 @@ package cc
 // functions.
 
 import (
+	"fmt"
 	"path/filepath"
 	"runtime"
 	"strconv"
@@ -330,6 +331,10 @@ var (
 			CommandDeps: []string{"$cxxExtractor", "$kytheVnames"},
 		},
 		"cFlags")
+
+	// Function pointer for producting staticlibs from rlibs
+	TransformRlibstoStaticlib (func(ctx android.ModuleContext, mainSrc android.Path, deps []RustRlibDep,
+		outputFile android.WritablePath) android.Path) = nil
 )
 
 func PwdPrefix() string {
@@ -772,6 +777,46 @@ func transformObjToStaticLib(ctx android.ModuleContext,
 			},
 		})
 	}
+}
+
+// Generate a Rust staticlib from a list of rlibDeps. Will panic if called without
+// loading soong-rust.
+func generateRustStaticlib(ctx android.ModuleContext, rlibDeps []RustRlibDep) android.Path {
+
+	output := android.PathForModuleOut(ctx, "generated_rust_staticlib", "lib"+ctx.ModuleName()+"_rust_staticlib.a")
+	//output := outputFile.ReplaceExtension(ctx, "generated_rust_staticlib.a")
+	stemFile := output.ReplaceExtension(ctx, "rs")
+
+	if TransformRlibstoStaticlib == nil {
+		panic("TransformRlibstoStaticlib is nil -- this might happen if static_rlibs is defined yet the soong-rust module hasn't been loaded (such as in Soong test modules)")
+	}
+
+	crateNames := []string{}
+	// Collect crate names
+	for _, lib := range rlibDeps {
+		// Exclude libstd so this can support no_std builds.
+		if lib.CrateName != "libstd" {
+			crateNames = append(crateNames, lib.CrateName)
+		}
+	}
+
+	// Deduplicate any crateNames just to be safe
+	crateNames = android.FirstUniqueStrings(crateNames)
+
+	// Write the source file
+	android.WriteFileRule(ctx, stemFile, genRustStaticlibSrcFile(crateNames))
+
+	return TransformRlibstoStaticlib(ctx, stemFile, rlibDeps, output)
+}
+
+func genRustStaticlibSrcFile(crateNames []string) string {
+	lines := []string{
+		"// @Soong generated Source",
+	}
+	for _, crate := range crateNames {
+		lines = append(lines, fmt.Sprintf("extern crate %s;", crate))
+	}
+	return strings.Join(lines, "\n")
 }
 
 // Generate a rule for compiling multiple .o files, plus static libraries, whole static libraries,

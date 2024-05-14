@@ -119,6 +119,7 @@ type buildOutput struct {
 
 func init() {
 	pctx.HostBinToolVariable("SoongZipCmd", "soong_zip")
+	cc.TransformRlibstoStaticlib = TransformRlibstoStaticlib
 }
 
 func TransformSrcToBinary(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
@@ -131,6 +132,27 @@ func TransformSrcToBinary(ctx ModuleContext, mainSrc android.Path, deps PathDeps
 func TransformSrctoRlib(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath) buildOutput {
 	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "rlib")
+}
+
+func TransformRlibstoStaticlib(ctx android.ModuleContext, mainSrc android.Path, deps []cc.RustRlibDep,
+	outputFile android.WritablePath) android.Path {
+
+	var rustPathDeps PathDeps
+	var rustFlags Flags
+
+	for _, rlibDep := range deps {
+		rustPathDeps.RLibs = append(rustPathDeps.RLibs, RustLibrary{Path: rlibDep.LibPath, CrateName: rlibDep.CrateName})
+		rustPathDeps.linkDirs = append(rustPathDeps.linkDirs, rlibDep.LinkDirs...)
+	}
+	toolchain := config.FindToolchain(ctx.Os(), ctx.Arch())
+
+	rustFlags = CommonDefaultFlags(ctx, toolchain, rustFlags)
+	rustFlags = CommonLibraryCompilerFlags(ctx, rustFlags)
+	rustFlags.GlobalRustFlags = append(rustFlags.GlobalRustFlags, "-C lto=thin")
+
+	rustFlags.EmitXrefs = false
+
+	return transformSrctoCrate(ctx, mainSrc, rustPathDeps, rustFlags, outputFile, "staticlib").outputFile
 }
 
 func TransformSrctoDylib(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,

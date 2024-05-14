@@ -76,6 +76,10 @@ func (procMacro *procMacroDecorator) compile(ctx ModuleContext, flags Flags, dep
 	srcPath := crateRootPath(ctx, procMacro)
 	ret := TransformSrctoProcMacro(ctx, srcPath, deps, flags, outputFile)
 	procMacro.baseCompiler.unstrippedOutputFile = outputFile
+
+	procMacro.flagExporter.exportLinkDirs(linkPathFromFilePath(outputFile))
+	procMacro.flagExporter.setProvider(ctx)
+
 	return ret
 }
 
