@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e7079b5_c4b96d4b",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-14T21:03:17Z",
+      "side": 1,
+      "message": "I don\u0027t know much about aconfig, but I\u0027m assuming that the container name should be something like \"system\", \"system_ext\", etc. But `partitionName()` defaults to the name of the module, which will not be something as simple as \"system\". Did you mean to use `PartitionType()`?",
+      "range": {
+        "startLine": 68,
+        "startChar": 19,
+        "endLine": 68,
+        "endChar": 32
+      },
+      "revId": "04264c5ce3ae1a242cdb9f2b3952be257a410e4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
