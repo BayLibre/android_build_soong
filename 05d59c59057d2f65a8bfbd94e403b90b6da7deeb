@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ccdee0_42cea127",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-05-14T23:03:20Z",
+      "side": 1,
+      "message": "Map iteration in go is also not in a predictable order. Does this code care?",
+      "revId": "05d59c59057d2f65a8bfbd94e403b90b6da7deeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
