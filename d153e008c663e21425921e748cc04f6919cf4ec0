@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eee33795_a083853f",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-14T00:31:14Z",
+      "side": 0,
+      "message": "Why\u0027d we remove the updatable check?",
+      "revId": "d153e008c663e21425921e748cc04f6919cf4ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b2bfc17_caee6744",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-14T00:31:14Z",
+      "side": 0,
+      "message": "Would this not cause build breakages if you removed this immediately without updating relevant Android.bp files first?",
+      "revId": "d153e008c663e21425921e748cc04f6919cf4ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

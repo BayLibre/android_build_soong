@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7175b6c2_23ebee17",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-14T00:31:14Z",
+      "side": 1,
+      "message": "Could we consider making this work for all java modules by moving `Min_sdk_version` from `DeviceProperties` to `OverridableProperties` in `java/base.go`?",
+      "revId": "f72dbebc900aff9e74ba30ef74aab7e744d1e110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
