@@ -50,6 +50,24 @@
       "message": "Do you need this check? I thought the overrides mutator would change the min_sdk_version property if it was overridden, and we don\u0027t need to worry about checking for overrides manually.",
       "revId": "d153e008c663e21425921e748cc04f6919cf4ec0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c01af95a_14d1a54f",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-14T23:01:40Z",
+      "side": 1,
+      "message": "I discussed this with Cole offline, and I think there were some gaps in my original implementation. Not all module variants are deduped, so transitioning to `apex_\u003cmin_sdk_version\u003e` will not work in those cases.\n\nI have updated the CL to transition to the overriding apex variant instead. If deduping is possible, transitive deps will be built in `apex_\u003cmin_sdk_version\u003e` variant.",
+      "parentUuid": "52804daf_98548785",
+      "revId": "d153e008c663e21425921e748cc04f6919cf4ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
