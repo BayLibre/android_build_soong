@@ -70,6 +70,24 @@
       "parentUuid": "00ddfac6_56b07918",
       "revId": "192f1bc4b520f7392efaab7f9fc2f243363950d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "123d76e4_9d090204",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1927750
+      },
+      "writtenOn": "2024-05-14T06:19:35Z",
+      "side": 1,
+      "message": "I updated the commit message and described the situation I encountered. Please review it.Thanks!",
+      "parentUuid": "40eb173f_8ce6b372",
+      "revId": "192f1bc4b520f7392efaab7f9fc2f243363950d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
