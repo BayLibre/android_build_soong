@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759acd17_0ddd412d",
+        "filename": "android/override_module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-14T21:22:38Z",
+      "side": 1,
+      "message": "The reapplication appears to be the same as the original cl, could you record in the commit message what\u0027s different now that allows us to resubmit?",
+      "revId": "844212d42af5e08d81890c6688a5f596366c2fd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
