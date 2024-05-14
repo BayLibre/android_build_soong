@@ -425,6 +425,10 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 	validations = append(validations, objs.tidyDepFiles...)
 	linkerDeps = append(linkerDeps, flags.LdFlagsDeps...)
 
+	if len(deps.RustRlibDeps) > 0 {
+		deps.StaticLibs = append(deps.StaticLibs, generateRustStaticlib(ctx, deps.RustRlibDeps))
+	}
+
 	// Register link action.
 	transformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs, deps.StaticLibs,
 		deps.LateStaticLibs, deps.WholeStaticLibs, linkerDeps, deps.CrtBegin, deps.CrtEnd, true,
