@@ -22,6 +22,30 @@
       },
       "revId": "ec7e271bec0d895f0336b6c34b07c3e702c88df0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "312a8dfa_9fa8546f",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-14T23:02:53Z",
+      "side": 1,
+      "message": "i don\u0027t think so, because jni libs could be embedded (and not installed to /system/lib) if the app is configured as such.\n\nwe can make jniLibTag to have a property (ex: `installable bool`) which is set depending on the configuration of the containing app, is that what you want?\n\nit\u0027s certainly doable, but the extent of the scope will be bigger than this change because jniLibTag is being used in several places.",
+      "parentUuid": "a7284085_db96f95d",
+      "range": {
+        "startLine": 924,
+        "startChar": 5,
+        "endLine": 925,
+        "endChar": 51
+      },
+      "revId": "ec7e271bec0d895f0336b6c34b07c3e702c88df0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
