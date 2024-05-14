@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7284085_db96f95d",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-14T22:10:49Z",
+      "side": 1,
+      "message": "Could we remove the need for this by making `jniDepTag` implement `InstallNeededDependencyTag` and return true?",
+      "range": {
+        "startLine": 924,
+        "startChar": 5,
+        "endLine": 925,
+        "endChar": 51
+      },
+      "revId": "ec7e271bec0d895f0336b6c34b07c3e702c88df0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
