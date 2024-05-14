@@ -16,6 +16,40 @@
       "message": "cc Colin as well since this might affect conversion of overrides to transition mutator.",
       "revId": "d153e008c663e21425921e748cc04f6919cf4ec0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0e8bd58_90d448ca",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-14T00:38:42Z",
+      "side": 1,
+      "message": "Can this be removed now that it\u0027s in the `overrideableProperties`?",
+      "revId": "d153e008c663e21425921e748cc04f6919cf4ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52804daf_98548785",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-14T00:38:42Z",
+      "side": 1,
+      "message": "Do you need this check? I thought the overrides mutator would change the min_sdk_version property if it was overridden, and we don\u0027t need to worry about checking for overrides manually.",
+      "revId": "d153e008c663e21425921e748cc04f6919cf4ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
