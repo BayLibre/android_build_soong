@@ -70,6 +70,30 @@
       },
       "revId": "ec7e271bec0d895f0336b6c34b07c3e702c88df0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce32b3d9_c33c4752",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-14T23:47:15Z",
+      "side": 1,
+      "message": "Ok, I will prepare a follow-up change. Thanks for the suggestion.\n\n\u003e How are the non-embedded jnilibs installed today \n\nThe code you found is for jni libs depended on from java_library. For apps, it\u0027s [1]. The instalation is entirely done in Make [2].\n\n[1] https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/app.go;drc\u003de8cb9178ec8b4faf24ffd3c0f123efa7f7f9fe65;l\u003d286\n\n[2] https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/install_jni_libs_internal.mk;drc\u003dd203e12f20b5b7dc843f4c910739b2c21e5e8667;l\u003d84",
+      "parentUuid": "96b459e0_d6e8ab39",
+      "range": {
+        "startLine": 924,
+        "startChar": 5,
+        "endLine": 925,
+        "endChar": 51
+      },
+      "revId": "ec7e271bec0d895f0336b6c34b07c3e702c88df0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
