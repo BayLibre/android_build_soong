@@ -99,6 +99,7 @@ type Deps struct {
 	StaticLibs, LateStaticLibs, WholeStaticLibs []string
 	HeaderLibs                                  []string
 	RuntimeLibs                                 []string
+	Rlibs                                       []string
 
 	// UnexportedStaticLibs are static libraries that are also passed to -Wl,--exclude-libs= to
 	// prevent automatically exporting symbols.
@@ -144,6 +145,13 @@ type Deps struct {
 	LlndkHeaderLibs []string
 }
 
+// A struct which to collect flags for rlib dependencies
+type RustRlibDep struct {
+	LibPath   android.Path // path to the rlib
+	LinkDirs  []string     // flags required for dependency (e.g. -L flags)
+	CrateName string       // crateNames associated with rlibDeps
+}
+
 // PathDeps is a struct containing file paths to dependencies of a module.
 // It's constructed in depsToPath() by traversing the direct dependencies of the current module.
 // It's used to construct flags for various build statements (such as for compiling and linking).
@@ -156,6 +164,8 @@ type PathDeps struct {
 	SharedLibsDeps, EarlySharedLibsDeps, LateSharedLibsDeps android.Paths
 	// Paths to .a files
 	StaticLibs, LateStaticLibs, WholeStaticLibs android.Paths
+	// Paths and crateNames for RustStaticLib dependencies
+	RustRlibDeps []RustRlibDep
 
 	// Transitive static library dependencies of static libraries for use in ordering.
 	TranstiveStaticLibrariesForOrdering *android.DepSet[android.Path]
@@ -184,6 +194,7 @@ type PathDeps struct {
 	ReexportedFlags            []string
 	ReexportedGeneratedHeaders android.Paths
 	ReexportedDeps             android.Paths
+	ReexportedRustRlibDeps     []RustRlibDep
 
 	// Paths to crt*.o files
 	CrtBegin, CrtEnd android.Paths
@@ -297,6 +308,7 @@ type BaseProperties struct {
 
 	AndroidMkSharedLibs       []string `blueprint:"mutated"`
 	AndroidMkStaticLibs       []string `blueprint:"mutated"`
+	AndroidMkRlibs            []string `blueprint:"mutated"`
 	AndroidMkRuntimeLibs      []string `blueprint:"mutated"`
 	AndroidMkWholeStaticLibs  []string `blueprint:"mutated"`
 	AndroidMkHeaderLibs       []string `blueprint:"mutated"`
@@ -653,6 +665,7 @@ const (
 	headerLibraryDependency = iota
 	sharedLibraryDependency
 	staticLibraryDependency
+	rlibLibraryDependency
 )
 
 func (k libraryDependencyKind) String() string {
@@ -663,6 +676,8 @@ func (k libraryDependencyKind) String() string {
 		return "sharedLibraryDependency"
 	case staticLibraryDependency:
 		return "staticLibraryDependency"
+	case rlibLibraryDependency:
+		return "rlibLibraryDependency"
 	default:
 		panic(fmt.Errorf("unknown libraryDependencyKind %d", k))
 	}
@@ -738,6 +753,11 @@ func (d libraryDependencyTag) shared() bool {
 // shared returns true if the libraryDependencyTag is tagging a static lib dependency.
 func (d libraryDependencyTag) static() bool {
 	return d.Kind == staticLibraryDependency
+}
+
+// rlib returns true if the libraryDependencyTag is tagging an rlib dependency.
+func (d libraryDependencyTag) rlib() bool {
+	return d.Kind == rlibLibraryDependency
 }
 
 func (d libraryDependencyTag) LicenseAnnotations() []android.LicenseAnnotation {
@@ -1106,6 +1126,14 @@ func (c *Module) RlibStd() bool {
 
 func (c *Module) RustLibraryInterface() bool {
 	return false
+}
+
+func (c *Module) CrateName() string {
+	panic(fmt.Errorf("CrateName called on non-Rust module: %q", c.BaseModuleName()))
+}
+
+func (c *Module) ExportedCrateLinkDirs() []string {
+	panic(fmt.Errorf("ExportedCrateLinkDirs called on non-Rust module: %q", c.BaseModuleName()))
 }
 
 func (c *Module) IsFuzzModule() bool {
@@ -2300,6 +2328,7 @@ func (c *Module) deps(ctx DepsContext) Deps {
 
 	deps.WholeStaticLibs = android.LastUniqueStrings(deps.WholeStaticLibs)
 	deps.StaticLibs = android.LastUniqueStrings(deps.StaticLibs)
+	deps.Rlibs = android.LastUniqueStrings(deps.Rlibs)
 	deps.LateStaticLibs = android.LastUniqueStrings(deps.LateStaticLibs)
 	deps.SharedLibs = android.LastUniqueStrings(deps.SharedLibs)
 	deps.LateSharedLibs = android.LastUniqueStrings(deps.LateSharedLibs)
@@ -2604,6 +2633,15 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 
 		actx.AddVariationDependencies([]blueprint.Variation{
 			{Mutator: "link", Variation: "static"},
+		}, depTag, lib)
+	}
+
+	for _, lib := range deps.Rlibs {
+		depTag := libraryDependencyTag{Kind: rlibLibraryDependency}
+		actx.AddVariationDependencies([]blueprint.Variation{
+			{Mutator: "link", Variation: ""},
+			{Mutator: "rust_libraries", Variation: "rlib"},
+			{Mutator: "rust_stdlinkage", Variation: "rlib-std"},
 		}, depTag, lib)
 	}
 
@@ -3216,6 +3254,14 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				default:
 					panic(fmt.Errorf("unexpected library dependency order %d", libDepTag.Order))
 				}
+
+			case libDepTag.rlib():
+				rlibDep := RustRlibDep{LibPath: linkFile.Path(), CrateName: ccDep.CrateName(), LinkDirs: ccDep.ExportedCrateLinkDirs()}
+				depPaths.ReexportedRustRlibDeps = append(depPaths.ReexportedRustRlibDeps, rlibDep)
+				depPaths.RustRlibDeps = append(depPaths.RustRlibDeps, rlibDep)
+				depPaths.IncludeDirs = append(depPaths.IncludeDirs, depExporterInfo.IncludeDirs...)
+				depPaths.ReexportedDirs = append(depPaths.ReexportedDirs, depExporterInfo.IncludeDirs...)
+
 			case libDepTag.static():
 				staticLibraryInfo, isStaticLib := android.OtherModuleProvider(ctx, dep, StaticLibraryInfoProvider)
 				if !isStaticLib {
@@ -3268,6 +3314,12 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 						panic(fmt.Errorf("unexpected library dependency order %d", libDepTag.Order))
 					}
 				}
+
+				// We re-export the Rust static_rlibs so rlib dependencies don't need to be redeclared by cc_library_static dependents.
+				// E.g. libfoo (cc_library_static) depends on libfoo.ffi (a rust_ffi rlib), libbar depending on libfoo shouldn't have to also add libfoo.ffi to static_rlibs.
+				depPaths.ReexportedRustRlibDeps = append(depPaths.ReexportedRustRlibDeps, depExporterInfo.RustRlibDeps...)
+				depPaths.RustRlibDeps = append(depPaths.RustRlibDeps, depExporterInfo.RustRlibDeps...)
+
 				if libDepTag.unexportedSymbols {
 					depPaths.LdFlags = append(depPaths.LdFlags,
 						"-Wl,--exclude-libs="+staticLibraryInfo.StaticLibrary.Base())
@@ -3320,6 +3372,12 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			depPaths.SystemIncludeDirs = append(depPaths.SystemIncludeDirs, depExporterInfo.SystemIncludeDirs...)
 			depPaths.GeneratedDeps = append(depPaths.GeneratedDeps, depExporterInfo.Deps...)
 			depPaths.Flags = append(depPaths.Flags, depExporterInfo.Flags...)
+			depPaths.RustRlibDeps = append(depPaths.RustRlibDeps, depExporterInfo.RustRlibDeps...)
+
+			// Only re-export RustRlibDeps for cc static libs
+			if c.static() {
+				depPaths.ReexportedRustRlibDeps = append(depPaths.ReexportedRustRlibDeps, depExporterInfo.RustRlibDeps...)
+			}
 
 			if libDepTag.reexportFlags {
 				reexportExporter(depExporterInfo)
@@ -3392,11 +3450,14 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	depPaths.IncludeDirs = android.FirstUniquePaths(depPaths.IncludeDirs)
 	depPaths.SystemIncludeDirs = android.FirstUniquePaths(depPaths.SystemIncludeDirs)
 	depPaths.GeneratedDeps = android.FirstUniquePaths(depPaths.GeneratedDeps)
+	depPaths.RustRlibDeps = firstUniqueRustStaticlibs(depPaths.RustRlibDeps)
+
 	depPaths.ReexportedDirs = android.FirstUniquePaths(depPaths.ReexportedDirs)
 	depPaths.ReexportedSystemDirs = android.FirstUniquePaths(depPaths.ReexportedSystemDirs)
 	depPaths.ReexportedFlags = android.FirstUniqueStrings(depPaths.ReexportedFlags)
 	depPaths.ReexportedDeps = android.FirstUniquePaths(depPaths.ReexportedDeps)
 	depPaths.ReexportedGeneratedHeaders = android.FirstUniquePaths(depPaths.ReexportedGeneratedHeaders)
+	depPaths.ReexportedRustRlibDeps = firstUniqueRustStaticlibs(depPaths.ReexportedRustRlibDeps)
 
 	if c.sabi != nil {
 		c.sabi.Properties.ReexportedIncludes = android.FirstUniqueStrings(c.sabi.Properties.ReexportedIncludes)
@@ -3404,6 +3465,21 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	}
 
 	return depPaths
+}
+
+func firstUniqueRustStaticlibs(rustLibs []RustRlibDep) []RustRlibDep {
+	k := 0
+outer:
+	for i := 0; i < len(rustLibs); i++ {
+		for j := 0; j < k; j++ {
+			if rustLibs[i].LibPath.String() == rustLibs[j].LibPath.String() {
+				continue outer
+			}
+		}
+		rustLibs[k] = rustLibs[i]
+		k++
+	}
+	return rustLibs[:k]
 }
 
 func ShouldUseStubForApex(ctx android.ModuleContext, dep android.Module) bool {
