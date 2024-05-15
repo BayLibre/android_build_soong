@@ -34,6 +34,24 @@
       "parentUuid": "7175b6c2_23ebee17",
       "revId": "f72dbebc900aff9e74ba30ef74aab7e744d1e110",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fee6e2f_628fa595",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-15T04:58:49Z",
+      "side": 1,
+      "message": "My previous comment was incorrect. The nil value observation was specific to `java_sdk_library` and can be attribute to a missing initialization step in the internal modules created by `java_sdk_library` if we were to move `min_sdk_version` to `OverridableProperties`\n\nI have updated the CL to do this move.",
+      "parentUuid": "ced541cb_d523e492",
+      "revId": "f72dbebc900aff9e74ba30ef74aab7e744d1e110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
