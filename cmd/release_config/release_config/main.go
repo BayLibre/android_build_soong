@@ -92,14 +92,18 @@ func main() {
 	}
 	if allMake {
 		// Write one makefile per release config, using the canonical release name.
-		for k, _ := range configs.ReleaseConfigs {
-			if k != targetRelease {
-				makefilePath = filepath.Join(outputDir, fmt.Sprintf("release_config-%s-%s.mk", product, k))
-				err = configs.WriteMakefile(makefilePath, k)
+		err = configs.VisitAllReleaseConfigs(func(c *rc_lib.ReleaseConfig) error {
+			if c.Name != targetRelease {
+				makefilePath = filepath.Join(outputDir, fmt.Sprintf("release_config-%s-%s.mk", product, c.Name))
+				err = configs.WriteMakefile(makefilePath, c.Name)
 				if err != nil {
-					panic(err)
+					return err
 				}
 			}
+			return nil
+		})
+		if err != nil {
+			panic(err)
 		}
 	}
 	if json {
