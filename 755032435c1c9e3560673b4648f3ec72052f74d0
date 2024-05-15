@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4fd2b72_b8de842d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-15T12:24:01Z",
+      "side": 1,
+      "message": "This shouldn\u0027t land alone. I\u0027ve found that some JNI libs are not installed to the system partition. This happens when both android_app and cc_library have sdk_version set. Then the sdk variant of the jni lib is depended on. However, sdk variant is NOT installable (FilesToInstall() returns nothing).\n\nThis are fixed by the follow-up changes.",
+      "revId": "755032435c1c9e3560673b4648f3ec72052f74d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
