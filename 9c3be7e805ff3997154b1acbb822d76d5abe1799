@@ -70,6 +70,24 @@
       "parentUuid": "49c4ad9f_0f0ab074",
       "revId": "9c3be7e805ff3997154b1acbb822d76d5abe1799",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa816730_a9ec5ea6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-15T18:40:22Z",
+      "side": 1,
+      "message": "Done (for both `android_test` change and the unit test)",
+      "parentUuid": "ada7add5_95f3bcde",
+      "revId": "9c3be7e805ff3997154b1acbb822d76d5abe1799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
