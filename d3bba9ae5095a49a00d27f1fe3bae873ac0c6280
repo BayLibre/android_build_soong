@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb358405_9a661055",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-15T03:33:58Z",
+      "side": 1,
+      "message": "This doesn\u0027t work due to the way shouldEmbedJni function is implemented.",
+      "revId": "d3bba9ae5095a49a00d27f1fe3bae873ac0c6280",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
