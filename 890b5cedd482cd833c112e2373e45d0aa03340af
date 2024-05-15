@@ -16,6 +16,24 @@
       "message": "I think this is applying the non-google name on an incoming transition, and then your added code above is changing the non-google name to the google name on the outgoing transition. I think you should change this line to instead give the overriding module name here, and then you can leave OutgoingTransition untouched.",
       "revId": "890b5cedd482cd833c112e2373e45d0aa03340af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b290388f_97574186",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-15T02:24:34Z",
+      "side": 1,
+      "message": "I attempted this approach, but I ran into some issues. I think `sourceVariation` in `OutgoingTransition` is populated on each element returned by `Split`. In line 1299, we return the base apex name. So we need `OutgoingTransition` to ignore the base apex name, and change it back to the overriden apex name.\n\nAnother approach I tried was to change `Split` to return the overridden module name instead of the base apex name. In my draft implementation, it ended up creating two variants of the overriding apex, so I abandoned that approach\n```\ne.g.\ncom.android.foo{perform_override:com.google.android.foo,apex:com.android.foo}\ncom.android.foo{perform_override:com.google.android.foo,apex:com.google.android.foo}\n# 2 override variants iirc\n```",
+      "parentUuid": "a6c94d0c_6c1fe154",
+      "revId": "890b5cedd482cd833c112e2373e45d0aa03340af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
