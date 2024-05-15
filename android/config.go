@@ -81,7 +81,7 @@ type Config struct {
 type SoongBuildMode int
 
 type CmdArgs struct {
-	bootstrap.Args
+	blueprint.Args
 	RunGoTests     bool
 	OutDir         string
 	SoongOutDir    string
