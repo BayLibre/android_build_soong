@@ -1,0 +1,99 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6037c867_d077a669",
+        "filename": "cmd/release_config/release_config_lib/release_configs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-15T19:18:13Z",
+      "side": 1,
+      "message": "You\u0027re not checking the returned error here.\n\nAlso it would be slightly more efficient if you added a method that returned the sorted names or the configs sorted by name, and then iterated over that here and on line 426.  It would also be easier to follow without the lambda.",
+      "fixSuggestions": [
+        {
+          "fixId": "ca169798_de79af88",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cmd/release_config/release_config_lib/release_configs.go",
+              "range": {
+                "startLine": 123,
+                "startChar": 0,
+                "endLine": 124,
+                "endChar": 0
+              },
+              "replacement": "func (configs *ReleaseConfigs) VisitAllReleaseConfigs(visit func(*ReleaseConfig)) {\n"
+            },
+            {
+              "path": "cmd/release_config/release_config_lib/release_configs.go",
+              "range": {
+                "startLine": 125,
+                "startChar": 0,
+                "endLine": 126,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "cmd/release_config/release_config_lib/release_configs.go",
+              "range": {
+                "startLine": 133,
+                "startChar": 0,
+                "endLine": 137,
+                "endChar": 0
+              },
+              "replacement": "\t\tvisit(configs.ReleaseConfigs[name])\n"
+            },
+            {
+              "path": "cmd/release_config/release_config_lib/release_configs.go",
+              "range": {
+                "startLine": 138,
+                "startChar": 0,
+                "endLine": 139,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "cmd/release_config/release_config_lib/release_configs.go",
+              "range": {
+                "startLine": 413,
+                "startChar": 0,
+                "endLine": 419,
+                "endChar": 0
+              },
+              "replacement": "\tconfigs.VisitAllReleaseConfigs(func(c *ReleaseConfig) {\n\t\tc.GenerateReleaseConfig(configs)\n"
+            },
+            {
+              "path": "cmd/release_config/release_config_lib/release_configs.go",
+              "range": {
+                "startLine": 426,
+                "startChar": 0,
+                "endLine": 427,
+                "endChar": 0
+              },
+              "replacement": "\tconfigs.VisitAllReleaseConfigs(func(c *ReleaseConfig) {\n"
+            },
+            {
+              "path": "cmd/release_config/release_config_lib/release_configs.go",
+              "range": {
+                "startLine": 430,
+                "startChar": 0,
+                "endLine": 431,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "d5e173736b976389f8a4e17f31bccbfed7c7b0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
