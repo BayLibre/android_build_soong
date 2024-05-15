@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ce7734_fd5beb3c",
+        "filename": "rust/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-15T22:34:19Z",
+      "side": 1,
+      "message": "You could take all these as parameters, or as a single struct parameter, and fill them out from the two callers.  I think if you add a `synthetic` bool too you wouldn\u0027t need to type assert `ctx` at all.",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 37
+      },
+      "revId": "6b9f4a7a2e55b33801539f7a1395f543e170b739",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ad38fc_5e6b8c99",
+        "filename": "rust/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-15T22:34:19Z",
+      "side": 1,
+      "message": "You already have `cargoOutDir` here",
+      "range": {
+        "startLine": 370,
+        "startChar": 19,
+        "endLine": 370,
+        "endChar": 59
+      },
+      "revId": "6b9f4a7a2e55b33801539f7a1395f543e170b739",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
