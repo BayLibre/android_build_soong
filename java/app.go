@@ -283,7 +283,11 @@ func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 			Bool(a.appProperties.Jni_uses_sdk_apis) {
 			variation = append(variation, blueprint.Variation{Mutator: "sdk", Variation: "sdk"})
 		}
-		ctx.AddFarVariationDependencies(variation, jniLibTag, a.appProperties.Jni_libs...)
+		if a.shouldEmbedJnis(ctx) {
+			ctx.AddFarVariationDependencies(variation, jniInstallTag, a.appProperties.Jni_libs...)
+		} else {
+			ctx.AddFarVariationDependencies(variation, jniLibTag, a.appProperties.Jni_libs...)
+		}
 	}
 	for _, aconfig_declaration := range a.aaptProperties.Flags_packages {
 		ctx.AddDependency(ctx.Module(), aconfigDeclarationTag, aconfig_declaration)
@@ -911,20 +915,14 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 			installed := ctx.InstallFile(a.installDir, extra.Base(), extra)
 			extraInstalledPaths = append(extraInstalledPaths, installed)
 		}
-		// If we don't embed jni libs, make sure that those are installed along with the
-		// app, and also place symlinks to the installed paths under the lib/<arch>
-		// directory of the app installation directory. ex:
+		// If we don't embed jni libs, place symlinks to the installed paths under the
+		// lib/<arch> directory of the app installation directory. ex:
 		// /system/app/MyApp/lib/arm64/libfoo.so -> /system/lib64/libfoo.so
 		if !a.embeddedJniLibs {
 			for _, jniLib := range jniLibs {
 				archStr := jniLib.target.Arch.ArchType.String()
 				symlinkDir := a.installDir.Join(ctx, "lib", archStr)
 				for _, installedLib := range jniLib.installPaths {
-					// install the symlink target along with the app
-					extraInstalledPaths = append(extraInstalledPaths, installedLib)
-					ctx.PackageFile(installedLib, "", jniLib.path)
-
-					// install the symlink itself
 					symlinkName := installedLib.Base()
 					symlinkTarget := android.InstallPathToOnDevicePath(ctx, installedLib)
 					ctx.InstallAbsoluteSymlink(symlinkDir, symlinkName, symlinkTarget)
