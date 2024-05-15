@@ -16,6 +16,24 @@
       "message": "@dariofreni@google.com @zyy@google.com It seems like the `tradefed` target is failing as `tradefed` branch does not utilize the`aapt2` built from source, but uses the prebuilt one in `prebuilts/sdk/tools/linux/bin/aapt2` and the checked in prebuilt `aapt2` is not up to date to include aosp/3053042 ([Repo manifest of `tradefed` branch](https://googleplex-android.googlesource.com/platform/manifest/+/refs/heads/tradefed/default.xml) does not include `frameworks/base`). Can we update the prebuilt so that the `--non-updatable-system` flag is recognized?",
       "revId": "b0c226a94d49693a35a48b197538dc7a1ca39324",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b75db076_072dbaca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-15T22:43:24Z",
+      "side": 1,
+      "message": "Update: I\u0027m trying to update the prebuilts in `prebuilts/sdk/tools` directory, but hitting some errors in updating the `darwin` binaries as there are no `sdk_mac` build targets in `git_main` or `git_main-throttled`. I have filed b/340941613 regarding this.",
+      "parentUuid": "2dcd82d2_ae10e0b7",
+      "revId": "b0c226a94d49693a35a48b197538dc7a1ca39324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
