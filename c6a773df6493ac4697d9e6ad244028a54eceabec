@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e1910ed_ecbb7f7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-15T13:13:31Z",
+      "side": 1,
+      "message": "Ping. This is irrelevant to aosp/3081253",
+      "revId": "c6a773df6493ac4697d9e6ad244028a54eceabec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
