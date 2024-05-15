@@ -16,6 +16,29 @@
       "message": "It seems like an improvement.",
       "revId": "b881e324d260a5e1884e8f96f8e70c431a4e6855",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3ce47b_70b288ae",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-15T15:09:57Z",
+      "side": 1,
+      "message": "I don\u0027t know much about `ld` behaviour, but I noticed that when dsrbecky@ did something similar in our code he also added `-Wl,--enable-new-dtags`: https://r.android.com/1353909",
+      "range": {
+        "startLine": 366,
+        "startChar": 54,
+        "endLine": 366,
+        "endChar": 76
+      },
+      "revId": "b881e324d260a5e1884e8f96f8e70c431a4e6855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
