@@ -63,6 +63,30 @@
       },
       "revId": "b881e324d260a5e1884e8f96f8e70c431a4e6855",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db8a130e_b7ed467b",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2024-05-15T21:23:45Z",
+      "side": 1,
+      "message": "--enable-new-dtags enables DT_RUNPATH (instead of DT_RPATH). The flag isn\u0027t needed here because Android binaries always use DT_RUNPATH.\n\ne.g. I think LLD always defaults to --enable-new-dtags, for example:\n\nhttp://google3/third_party/llvm/llvm-project/lld/ELF/Driver.cpp;l\u003d1251-1252;rcl\u003d633354390\n\nI\u0027m less sure what the default is for ld.bfd and ld.gold, but we\u0027re not using those anymore. e.g. See https://stackoverflow.com/a/55283740.\n\nBionic only supports DT_RUNPATH. Bionic will print a warning for attempts to use DT_RPATH.",
+      "parentUuid": "fc71ca9e_c6ad068f",
+      "range": {
+        "startLine": 366,
+        "startChar": 54,
+        "endLine": 366,
+        "endChar": 76
+      },
+      "revId": "b881e324d260a5e1884e8f96f8e70c431a4e6855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
