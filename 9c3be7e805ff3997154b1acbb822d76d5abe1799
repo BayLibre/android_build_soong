@@ -52,6 +52,24 @@
       "parentUuid": "387a9327_04b14a0d",
       "revId": "9c3be7e805ff3997154b1acbb822d76d5abe1799",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada7add5_95f3bcde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2024-05-15T16:38:46Z",
+      "side": 1,
+      "message": "(also: could we add a unit test for this change?)",
+      "parentUuid": "49c4ad9f_0f0ab074",
+      "revId": "9c3be7e805ff3997154b1acbb822d76d5abe1799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
