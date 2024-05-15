@@ -15,7 +15,6 @@
 package build
 
 import (
-	"android/soong/ui/tracer"
 	"fmt"
 	"io/fs"
 	"os"
@@ -25,6 +24,8 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"android/soong/ui/tracer"
 
 	"android/soong/bazel"
 	"android/soong/ui/metrics"
@@ -94,7 +95,7 @@ func writeEnvironmentFile(_ Context, envFile string, envDeps map[string]string) 
 // bootstrapping Soong)
 
 // A tiny struct used to tell Blueprint that it's in bootstrap mode. It would
-// probably be nicer to use a flag in bootstrap.Args instead.
+// probably be nicer to use a flag in blueprint.Args instead.
 type BlueprintConfig struct {
 	toolDir                   string
 	soongOutDir               string
@@ -387,7 +388,7 @@ func bootstrapBlueprint(ctx Context, config Config) {
 		invocations = append(invocations, pbi)
 	}
 
-	blueprintArgs := bootstrap.Args{
+	blueprintArgs := blueprint.Args{
 		ModuleListFile: filepath.Join(config.FileListDir(), "Android.bp.list"),
 		OutFile:        shared.JoinPath(config.SoongOutDir(), "bootstrap.ninja"),
 		EmptyNinjaFile: false,
