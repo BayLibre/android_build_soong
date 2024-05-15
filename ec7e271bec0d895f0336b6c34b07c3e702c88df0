@@ -94,6 +94,30 @@
       },
       "revId": "ec7e271bec0d895f0336b6c34b07c3e702c88df0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "022f6b92_2b829cdc",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-15T08:51:40Z",
+      "side": 1,
+      "message": "aosp/3088205 is the follow-up change, but it doesn\u0027t work. See the commit message there.",
+      "parentUuid": "ce32b3d9_c33c4752",
+      "range": {
+        "startLine": 924,
+        "startChar": 5,
+        "endLine": 925,
+        "endChar": 51
+      },
+      "revId": "ec7e271bec0d895f0336b6c34b07c3e702c88df0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
