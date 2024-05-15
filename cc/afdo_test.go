@@ -47,9 +47,7 @@ func TestAfdoDeps(t *testing.T) {
 		srcs: ["test.c"],
 		static_libs: ["libFoo"],
 		afdo: true,
-		lto: {
-			thin: true,
-		},
+		lto_opt: "2",
 	}
 
 	cc_library_static {

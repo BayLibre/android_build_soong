@@ -49,6 +49,10 @@ type LTOProperties struct {
 		Thin  *bool `android:"arch_variant"`
 	} `android:"arch_variant"`
 
+	// Update to the new LTO property naming scheme. No functionality change.
+	// Lto struct will be deprecated when finishing the migration smoothly.
+	Lto_opt *string `android:"arch_variant"`
+
 	LtoEnabled bool `blueprint:"mutated"`
 	LtoDefault bool `blueprint:"mutated"`
 
@@ -67,12 +71,21 @@ func (lto *lto) props() []interface{} {
 	return []interface{}{&lto.Properties}
 }
 
+func LtoOptErrorCheck(a *string) {
+	if a != nil {
+		value := *a
+		if value != "off" && value != "2" && value != "0" {
+			panic(fmt.Sprintf("The value of lto_opt is: %s. It is invalid and it should be 'off', '0' or '2'", value))
+		}
+	}
+}
+
 func (lto *lto) begin(ctx BaseModuleContext) {
 	// First, determine the module independent default LTO mode.
 	ltoDefault := true
 	if ctx.Config().IsEnvTrue("DISABLE_LTO") {
 		ltoDefault = false
-	} else if lto.Never() {
+	} else if lto.Off() {
 		ltoDefault = false
 	} else if ctx.Host() {
 		// Performance and binary size are less important for host binaries.
@@ -85,7 +98,7 @@ func (lto *lto) begin(ctx BaseModuleContext) {
 	// Then, determine the actual LTO mode to use. If different from `ltoDefault`, a variant needs
 	// to be created.
 	ltoEnabled := ltoDefault
-	if lto.Never() {
+	if lto.Off() {
 		ltoEnabled = false
 	} else if lto.ThinLTO() {
 		// Module explicitly requests for LTO.
@@ -108,6 +121,9 @@ func (lto *lto) flags(ctx ModuleContext, flags Flags) Flags {
 	if lto.Properties.LtoEnabled {
 		ltoCFlags := []string{"-flto=thin", "-fsplit-lto-unit"}
 		var ltoLdFlags []string
+
+		// Error check lto_opt
+		LtoOptErrorCheck(lto.Properties.Lto_opt)
 
 		// Do not perform costly LTO optimizations for Eng builds.
 		if Bool(lto.Properties.Lto_O0) || ctx.optimizeForSize() || ctx.Config().Eng() {
@@ -162,11 +178,13 @@ func (lto *lto) flags(ctx ModuleContext, flags Flags) Flags {
 }
 
 func (lto *lto) ThinLTO() bool {
-	return lto != nil && proptools.Bool(lto.Properties.Lto.Thin)
+	thinlto := (lto.Properties.Lto_opt != nil && *lto.Properties.Lto_opt == "2")
+	return lto != nil && (thinlto || proptools.Bool(lto.Properties.Lto.Thin))
 }
 
-func (lto *lto) Never() bool {
-	return lto != nil && proptools.Bool(lto.Properties.Lto.Never)
+func (lto *lto) Off() bool {
+	off := (lto.Properties.Lto_opt != nil && *lto.Properties.Lto_opt == "off")
+	return lto != nil && (off || proptools.Bool(lto.Properties.Lto.Never))
 }
 
 func ltoPropagateViaDepTag(tag blueprint.DependencyTag) bool {
@@ -214,7 +232,7 @@ func (l *ltoTransitionMutator) OutgoingTransition(ctx android.OutgoingTransition
 
 func (l *ltoTransitionMutator) IncomingTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
 	if m, ok := ctx.Module().(*Module); ok && m.lto != nil {
-		if m.lto.Never() {
+		if m.lto.Off() {
 			return ""
 		}
 		// Rewrite explicit variations back to the default variation if the default variation matches.
