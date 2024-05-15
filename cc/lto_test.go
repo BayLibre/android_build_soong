@@ -43,7 +43,7 @@ func TestThinLtoDeps(t *testing.T) {
 	cc_library_shared {
 		name: "lto_enabled",
 		srcs: ["src.c"],
-		static_libs: ["foo", "lib_never_lto"],
+		static_libs: ["foo", "lib_off_lto"],
 		shared_libs: ["bar"],
 	}
 	cc_library_static {
@@ -61,10 +61,8 @@ func TestThinLtoDeps(t *testing.T) {
 		name: "qux",
 	}
 	cc_library_static {
-		name: "lib_never_lto",
-		lto: {
-			never: true,
-		},
+		name: "lib_off_lto",
+		lto_opt: "off",
 	}
 `
 
@@ -82,9 +80,9 @@ func TestThinLtoDeps(t *testing.T) {
 		t.Errorf("'foo' missing dependency on the default variant of transitive dep 'baz'")
 	}
 
-	libNeverLto := result.ModuleForTests("lib_never_lto", "android_arm64_armv8-a_static").Module()
-	if !hasDep(result, libLto, libNeverLto) {
-		t.Errorf("'lto_enabled' missing dependency on the default variant of 'lib_never_lto'")
+	libOffLto := result.ModuleForTests("lib_off_lto", "android_arm64_armv8-a_static").Module()
+	if !hasDep(result, libLto, libOffLto) {
+		t.Errorf("'lto_enabled' missing dependency on the default variant of 'lib_off_lto'")
 	}
 
 	libBar := result.ModuleForTests("bar", "android_arm64_armv8-a_shared").Module()
@@ -118,17 +116,13 @@ func TestThinLtoOnlyOnStaticDep(t *testing.T) {
 		name: "root_no_lto",
 		srcs: ["src.c"],
 		static_libs: ["foo"],
-		lto: {
-			never: true,
-		}
+		lto_opt: "off",
 	}
 	cc_library_static {
 		name: "foo",
 		srcs: ["foo.c"],
 		static_libs: ["baz"],
-		lto: {
-			thin: true,
-		}
+		lto_opt: "2",
 	}
 	cc_library_static {
 		name: "baz",
@@ -139,7 +133,7 @@ func TestThinLtoOnlyOnStaticDep(t *testing.T) {
 	result := LTOPreparer.RunTestWithBp(t, bp)
 
 	libRoot := result.ModuleForTests("root", "android_arm64_armv8-a_shared").Module()
-	libRootLtoNever := result.ModuleForTests("root_no_lto", "android_arm64_armv8-a_shared").Module()
+	libRootLtoOff := result.ModuleForTests("root_no_lto", "android_arm64_armv8-a_shared").Module()
 
 	libFoo := result.ModuleForTests("foo", "android_arm64_armv8-a_static")
 	if !hasDep(result, libRoot, libFoo.Module()) {
@@ -147,7 +141,7 @@ func TestThinLtoOnlyOnStaticDep(t *testing.T) {
 	}
 
 	libFooNoLto := result.ModuleForTests("foo", "android_arm64_armv8-a_static_lto-none")
-	if !hasDep(result, libRootLtoNever, libFooNoLto.Module()) {
+	if !hasDep(result, libRootLtoOff, libFooNoLto.Module()) {
 		t.Errorf("'root_no_lto' missing dependency on the lto_none variant of 'foo'")
 	}
 
@@ -173,15 +167,10 @@ func TestLtoDisabledButEnabledForArch(t *testing.T) {
 	cc_library {
 		name: "libfoo",
 		srcs: ["foo.c"],
-		lto: {
-			never: true,
-		},
+		lto_opt: "off",
 		target: {
 			android_arm: {
-				lto: {
-					never: false,
-					thin: true,
-				},
+				lto_opt: "2",
 			},
 		},
 	}`
@@ -208,9 +197,7 @@ func TestLtoDoesNotPropagateToRuntimeLibs(t *testing.T) {
 		name: "libfoo",
 		srcs: ["foo.c"],
 		runtime_libs: ["runtime_libbar"],
-		lto: {
-			thin: true,
-		},
+		lto_opt: "2",
 	}`
 
 	result := LTOPreparer.RunTestWithBp(t, bp)
