@@ -94,6 +94,24 @@
       ],
       "revId": "d5e173736b976389f8a4e17f31bccbfed7c7b0fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7fe31d0_3d462930",
+        "filename": "cmd/release_config/release_config_lib/release_configs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-05-15T22:49:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6037c867_d077a669",
+      "revId": "d5e173736b976389f8a4e17f31bccbfed7c7b0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
