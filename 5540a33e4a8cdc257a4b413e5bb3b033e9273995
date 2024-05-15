@@ -16,6 +16,108 @@
       "message": "Build failures look unrelated.",
       "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22fdd8d2_39e41fc7",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-15T22:59:44Z",
+      "side": 1,
+      "message": "This line is getting long, suggest wrapping.",
+      "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf58f86_0e4bc518",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-15T22:59:44Z",
+      "side": 1,
+      "message": "Mention why this needs to be a function pointer.",
+      "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a7c3ad5_f77e5a5e",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-15T22:59:44Z",
+      "side": 1,
+      "message": "Maybe panic if `TransformRlibstoStaticlib` is nil when `rlibDeps` is not empty?",
+      "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a62c1e3_c3c66b6c",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2645,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-15T22:59:44Z",
+      "side": 1,
+      "message": "I wonder if we could avoid the new property by tweaking the variants of the rust modules (assuming mixing the rust and cc dependencies in `static_libs` is even desirable).  Could we assume an incoming dependency with an empty rust_libraries and rust_stdlinkage variations is looking for the rlib?  That becomes much easier to implement after aosp/3077410 lands.",
+      "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "858a5c1d_e07cd8b5",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3470,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-15T22:59:44Z",
+      "side": 1,
+      "message": "I\u0027d suggest adding this to `android/util.go` as a generic `FirstUniqueFunc` method, and then calling it with your custom comparator as a lambda, similar to the way `slices.SortFunc` works.",
+      "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4b4adb9_a6b4d4b4",
+        "filename": "cc/linker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-15T22:59:44Z",
+      "side": 1,
+      "message": "This should probably be tagged `android:\"arch_variant\"` to allow it to be different on host vs. device.",
+      "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
