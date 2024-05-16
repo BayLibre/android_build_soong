@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "529e9326_63ad03d9",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-16T17:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22fdd8d2_39e41fc7",
+      "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edf58f86_0e4bc518",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae5698ca_7f868d20",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-16T17:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edf58f86_0e4bc518",
+      "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a7c3ad5_f77e5a5e",
@@ -65,6 +101,24 @@
       "writtenOn": "2024-05-15T22:59:44Z",
       "side": 1,
       "message": "Maybe panic if `TransformRlibstoStaticlib` is nil when `rlibDeps` is not empty?",
+      "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "066dd362_ddc384c0",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-16T17:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a7c3ad5_f77e5a5e",
       "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -88,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b793e6c_cca711dc",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2645,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-16T17:01:52Z",
+      "side": 1,
+      "message": "We could potentially avoid the new property by just checking if a variation exists, e.g.\n\n```\nif OtherModuleDependencyVariantExists(// rust_ffi_variant //) {\n   // link to the rust_ffi_rlib variant\n} else {\n   // attempt to link the rust_ffi_static variant\n}\n```\n\nThe `static_rlibs` property was originally needed for the CreateModule approach. However, I kept it since I think it would still be desirable to clearly indicate in the module definition that we want rlibs bundled into a single generated staticlib.\n\nLonger term, I was thinking we could leave `rust_ffi_static` implemented as a specialized module type for cases where we may need to build some specialized staticlib. In this scenario, once we\u0027ve ported all existing `rust_ffi_static` usage to `rust_ffi_rlib`, Soong would enforce that only one Rust staticlib (either from `static_libs` or `static_rlibs`) shows up in the final link. `rust_ffi` would only produce the rlib and shared variants to further cement that `rust_ffi_static` is a special use-case.\n\nI don\u0027t feel strongly one way or another though -- if you think we should avoid adding the new property then I\u0027m fine implementing something like the above snippet.",
+      "parentUuid": "2a62c1e3_c3c66b6c",
+      "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "858a5c1d_e07cd8b5",
         "filename": "cc/cc.go",
         "patchSetId": 4
@@ -99,6 +171,24 @@
       "writtenOn": "2024-05-15T22:59:44Z",
       "side": 1,
       "message": "I\u0027d suggest adding this to `android/util.go` as a generic `FirstUniqueFunc` method, and then calling it with your custom comparator as a lambda, similar to the way `slices.SortFunc` works.",
+      "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d79f98c2_e47dfb37",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3470,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-16T17:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "858a5c1d_e07cd8b5",
       "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -116,6 +206,24 @@
       "writtenOn": "2024-05-15T22:59:44Z",
       "side": 1,
       "message": "This should probably be tagged `android:\"arch_variant\"` to allow it to be different on host vs. device.",
+      "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5abb1d0e_e95da713",
+        "filename": "cc/linker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-16T17:01:52Z",
+      "side": 1,
+      "message": "Ah yes, thanks!",
+      "parentUuid": "d4b4adb9_a6b4d4b4",
       "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
