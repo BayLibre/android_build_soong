@@ -22,6 +22,30 @@
       },
       "revId": "04264c5ce3ae1a242cdb9f2b3952be257a410e4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea0b5fcf_5e48c47b",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-16T04:13:46Z",
+      "side": 1,
+      "message": "I think your understanding is correct.\nWe only have a small set of available containers for this. (https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/aconfig_providers.go;l\u003d207)\nSo, I agree `PartitionType()` better fits for this.",
+      "parentUuid": "6e7079b5_c4b96d4b",
+      "range": {
+        "startLine": 68,
+        "startChar": 19,
+        "endLine": 68,
+        "endChar": 32
+      },
+      "revId": "04264c5ce3ae1a242cdb9f2b3952be257a410e4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
