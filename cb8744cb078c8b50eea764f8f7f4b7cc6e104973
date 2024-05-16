@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e898d0a_32e360a1",
+        "filename": "cc/lto.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-16T21:24:23Z",
+      "side": 1,
+      "message": "We usually prefer to use multiple boolean properties instead of strings.  Using boolean properties gives you syntax checking for free.  If you use strings you\u0027ll need extensive checks that the value in the `Android.bp` file is valid.\n\nIf you use a string here, use `*string` instead of `string`, which will allow the value to be overridden instead of appended in defaults modules.\n\nAlso add a comment here, which will become the user facing documentation for the property at go/Android.bp.",
+      "revId": "cb8744cb078c8b50eea764f8f7f4b7cc6e104973",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d278f21_c81590be",
+        "filename": "cc/lto.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-16T21:24:23Z",
+      "side": 1,
+      "message": "You don\u0027t need `proptools.Bool` here, that\u0027s a convenience function for dealing with `*bool` variables.  Just use `thinlto` directly.",
+      "range": {
+        "startLine": 169,
+        "startChar": 23,
+        "endLine": 169,
+        "endChar": 47
+      },
+      "revId": "cb8744cb078c8b50eea764f8f7f4b7cc6e104973",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
