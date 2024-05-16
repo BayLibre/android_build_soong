@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "923aa588_177208fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-16T23:36:30Z",
+      "side": 1,
+      "message": "I could go either way on this actually, I think it\u0027s a better / more intuitive long-term approach, but having it behave differently for filesystems vs every other module type is confusing.",
+      "parentUuid": "6db30c24_deffaf6a",
+      "revId": "3ea9b659905b72332885a4d55527f8ee4bbc1326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37730acd_e5af4906",
         "filename": "android/packaging.go",
         "patchSetId": 2
@@ -51,6 +69,65 @@
                 "endChar": 0
               },
               "replacement": "\t// If this is set to true by a module type inheriting PackagingBase, the deps property collects\n\t// the first target only even with compile_multilib: true.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3ea9b659905b72332885a4d55527f8ee4bbc1326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd32622_75374f75",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-16T23:36:30Z",
+      "side": 1,
+      "message": "Please make this property `blueprint:\"mutated\"`.",
+      "parentUuid": "37730acd_e5af4906",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "3ea9b659905b72332885a4d55527f8ee4bbc1326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96d6f496_c5b8813a",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-16T23:36:30Z",
+      "side": 1,
+      "message": "Could we make `compile_multilib: \"both\"` be the default for filesystems as well?",
+      "fixSuggestions": [
+        {
+          "fixId": "22a51262_be6f1a4c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "filesystem/filesystem.go",
+              "range": {
+                "startLine": 156,
+                "startChar": 0,
+                "endLine": 157,
+                "endChar": 0
+              },
+              "replacement": "\tandroid.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibBoth)\n"
             }
           ]
         }
