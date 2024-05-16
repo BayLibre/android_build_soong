@@ -22,6 +22,23 @@
       },
       "revId": "311621999928025e67e0a827fc4517fbf2e3da2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222524dd_f9809d2b",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1511,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-05-16T07:04:08Z",
+      "side": 1,
+      "message": "How about explicitly telling the user that we expect exactly one lsdump tags\n\n\n```suggestion\n\t\t\tctx.ModuleErrorf(\"Expect exactly one opt-in lsdump tag when ref_dump_dirs is specified: %s\", optInTags)\n```",
+      "revId": "311621999928025e67e0a827fc4517fbf2e3da2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
