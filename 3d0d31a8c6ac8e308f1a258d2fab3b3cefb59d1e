@@ -22,6 +22,30 @@
       },
       "revId": "3d0d31a8c6ac8e308f1a258d2fab3b3cefb59d1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f918837_b6309d45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-16T23:34:52Z",
+      "side": 1,
+      "message": "One of my motivations for this was to limit the check on only the active prebuilt used in the prebuilt. We have some [logic](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/8f3a9ce4ab7f3ee12e3732b58007a08cdfa01f4c:android/prebuilt.go;l\u003d535-548;drc\u003d7eaf503cfd42a70f625405bb4a4b67eb5de47c8d;bpv\u003d1;bpt\u003d0) in the prebuilt postdeps mutator that calls `HideFromMake` on the unselected source/prebuilts.\n\nBut I realized that we are calling `validateApexClasspathFragments` on the prebuilt apex even though it might not be active. Since this has been merged in internal, I would like to submit this as-is, and conditionally perform `validateApexClasspathFragments` in a follow up CL",
+      "parentUuid": "e5aede2a_57c5da85",
+      "range": {
+        "startLine": 24,
+        "startChar": 15,
+        "endLine": 24,
+        "endChar": 56
+      },
+      "revId": "3d0d31a8c6ac8e308f1a258d2fab3b3cefb59d1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
