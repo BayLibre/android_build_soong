@@ -213,6 +213,12 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	android.SetProvider(ctx, blueprint.SrcsFileProviderKey, blueprint.SrcsFileProviderData{SrcPaths: srcs.Strings()})
+
+	outputFilesInfo := android.OutputFilesInfo{
+		DefaultOutputFiles: bpf.objs,
+		Error:              fmt.Errorf("unsupported module reference tag"),
+	}
+	android.SetProvider(ctx, android.OutputFilesProviderKey, outputFilesInfo)
 }
 
 func (bpf *bpf) AndroidMk() android.AndroidMkData {
@@ -260,6 +266,7 @@ func (bpf *bpf) AndroidMk() android.AndroidMkData {
 func (bpf *bpf) OutputFiles(tag string) (android.Paths, error) {
 	switch tag {
 	case "":
+		// fmt.Println("Module name: ", bpf.Name(), " ||BPF output file at empty tag: ", bpf.objs)
 		return bpf.objs, nil
 	default:
 		return nil, fmt.Errorf("unsupported module reference tag %q", tag)

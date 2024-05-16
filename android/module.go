@@ -2412,6 +2412,16 @@ func OutputFileForModule(ctx PathContext, module blueprint.Module, tag string) P
 }
 
 func outputFilesForModule(ctx PathContext, module blueprint.Module, tag string) (Paths, error) {
+	if mctx, ok := ctx.(ModuleContext); ok {
+		omt := mctx.OtherModuleType(module)
+		if omt == "bpf" {
+			// if !strings.Contains(omt, "apex") && omt != "android_app" && omt != "android_sdk_repo_host" && omt != "gen_notice_build_rules" {
+			if outputFilesProvider, ok := OtherModuleProvider(mctx, module, OutputFilesProviderKey); ok {
+				fmt.Println("Output files from OutputFilesProviderKey: ", outputFilesProvider.DefaultOutputFiles)
+				return outputFilesProvider.DefaultOutputFiles, outputFilesProvider.Error
+			}
+		}
+	}
 	if outputFileProducer, ok := module.(OutputFileProducer); ok {
 		paths, err := outputFileProducer.OutputFiles(tag)
 		if err != nil {
@@ -2429,6 +2439,19 @@ func outputFilesForModule(ctx PathContext, module blueprint.Module, tag string) 
 		return nil, fmt.Errorf("module %q is not an OutputFileProducer", pathContextName(ctx, module))
 	}
 }
+
+type OutputFilesInfo struct {
+	// default output files when tag is an empty string ""
+	DefaultOutputFiles Paths
+
+	// the corresponding output files for given tags
+	TaggedOutputFiles map[string]Paths
+
+	// the error message to report if the given tag is not supported
+	Error error
+}
+
+var OutputFilesProviderKey = blueprint.NewProvider[OutputFilesInfo]()
 
 // Modules can implement HostToolProvider and return a valid OptionalPath from HostToolPath() to
 // specify that they can be used as a tool by a genrule module.
