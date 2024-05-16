@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01eb1228_e066efa0",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-16T02:28:44Z",
+      "side": 1,
+      "message": "@colefaust@google.com I think this part is the essence of what you requested.",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 89
+      },
+      "revId": "df3526f8a7fcb4321199f1dc56b4962823c34b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
