@@ -33,6 +33,24 @@
       "message": "ping?",
       "revId": "0b8a2198ad3e86d60b14699efb54e53bb6a3a404",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59319c24_87999993",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-16T23:37:54Z",
+      "side": 1,
+      "message": "You could change deps to a `Configurable[string]` and use the select statement syntax instead :)",
+      "parentUuid": "433e7e5d_a3c76f93",
+      "revId": "0b8a2198ad3e86d60b14699efb54e53bb6a3a404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
