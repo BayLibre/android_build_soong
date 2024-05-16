@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a4fe2b50_c04f1237",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-16T00:33:01Z",
+      "side": 1,
+      "message": "Yes, sure. But I think this is more related to how required dependencies from phony modules are handled.\n\nWhen you have `required: [\"libfoo\"]` in a `cc_binary`, do you want to have `lib/libfoo.so`, `lib64/libfoo.so`, or both? The answer is `lib64/libfoo.so` because `cc_binary` would be for 64-bit arch (in most cases). But if it was from a phony module, there\u0027s no good answer. Our current behavior is installing both.\n\nBut that has brought up an issue that CL tries to fix.",
+      "parentUuid": "be58ced7_cb5ea1a4",
+      "revId": "c6a773df6493ac4697d9e6ad244028a54eceabec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3e1910ed_ecbb7f7b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
