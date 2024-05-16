@@ -23,7 +23,7 @@ import (
 func modulesOutputDirs(ctx BuilderContext, modules ...Module) []string {
 	dirs := make([]string, 0, len(modules))
 	for _, module := range modules {
-		paths, err := outputFilesForModule(ctx, module, "")
+		paths, err := outputFilesForModuleNoProvider(ctx, module, "")
 		if err != nil {
 			continue
 		}
