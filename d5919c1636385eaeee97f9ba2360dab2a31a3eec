@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af3b60a7_d8dca51f",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-16T23:22:14Z",
+      "side": 1,
+      "message": "+Joe and Lamont, shouldn\u0027t decisions be made based off a particular flag instead of the value of TARGET_RELEASE?",
+      "revId": "d5919c1636385eaeee97f9ba2360dab2a31a3eec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
