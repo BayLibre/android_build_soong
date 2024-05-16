@@ -16,6 +16,47 @@
       "message": "This is how I interpreted your suggestion.",
       "revId": "3ea9b659905b72332885a4d55527f8ee4bbc1326",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37730acd_e5af4906",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-16T10:24:15Z",
+      "side": 1,
+      "message": "I made this configurable since I didn\u0027t want to affect other module types inheriting from PackagingBase.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "87317031_75047028",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/packaging.go",
+              "range": {
+                "startLine": 146,
+                "startChar": 0,
+                "endLine": 148,
+                "endChar": 0
+              },
+              "replacement": "\t// If this is set to true by a module type inheriting PackagingBase, the deps property collects\n\t// the first target only even with compile_multilib: true.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3ea9b659905b72332885a4d55527f8ee4bbc1326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
