@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b9c6b1_4a94bdc2",
+        "filename": "cmd/release_config/release_config_lib/release_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-16T23:15:23Z",
+      "side": 1,
+      "message": "nit (feel free to ignore in this patch): if these are just strings (or any other natively comparable type) you can use `slices.Sort`",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 3
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e8c9a9d4_b326c241",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cmd/release_config/release_config_lib/release_config.go",
+              "range": {
+                "startLine": 18,
+                "startChar": 0,
+                "endLine": 19,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "cmd/release_config/release_config_lib/release_config.go",
+              "range": {
+                "startLine": 124,
+                "startChar": 0,
+                "endLine": 127,
+                "endChar": 0
+              },
+              "replacement": "\tslices.Sort(ret)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "693c703ab3f625103759227854f65cd96824fe88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
