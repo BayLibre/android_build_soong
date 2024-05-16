@@ -176,6 +176,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c0c734_09f6d360",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2645,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-05-16T21:10:37Z",
+      "side": 1,
+      "message": "I don\u0027t think we should do it in this patch, but I\u0027d prefer to remove things we don\u0027t have an intended use for eventually. If we leave `rust_ffi_static` and user-accessible `static_rlibs`, I guarantee there will be at least one user in two years, doing something we never expected.\n\nIf we have a reason to keep them, great, but I think that otherwise it makes sense once we finish moving everyone off `rust_ffi_static` to pull it out.",
+      "parentUuid": "bbfdc38e_1340190f",
+      "revId": "5540a33e4a8cdc257a4b413e5bb3b033e9273995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "858a5c1d_e07cd8b5",
