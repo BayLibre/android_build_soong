@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e4ef63_1f80bb29",
+        "filename": "rust/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-16T17:01:29Z",
+      "side": 1,
+      "message": "Ah thanks, that is a lot cleaner -- I\u0027ve added a `transformProperties` struct to collect all of these, and a `getTransformProperties` to handle the common setup for Rust modules (i.e. non-synthetic builds)",
+      "parentUuid": "53ce7734_fd5beb3c",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 37
+      },
+      "revId": "6b9f4a7a2e55b33801539f7a1395f543e170b739",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6ad38fc_5e6b8c99",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-15T22:34:19Z",
       "side": 1,
       "message": "You already have `cargoOutDir` here",
+      "range": {
+        "startLine": 370,
+        "startChar": 19,
+        "endLine": 370,
+        "endChar": 59
+      },
+      "revId": "6b9f4a7a2e55b33801539f7a1395f543e170b739",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e28b7768_f2cf64e5",
+        "filename": "rust/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-16T17:01:29Z",
+      "side": 1,
+      "message": "Ah thanks!",
+      "parentUuid": "a6ad38fc_5e6b8c99",
       "range": {
         "startLine": 370,
         "startChar": 19,
