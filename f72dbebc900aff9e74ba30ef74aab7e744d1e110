@@ -52,6 +52,24 @@
       "parentUuid": "ced541cb_d523e492",
       "revId": "f72dbebc900aff9e74ba30ef74aab7e744d1e110",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce6240e_c0b24ec4",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-17T19:10:35Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "2fee6e2f_628fa595",
+      "revId": "f72dbebc900aff9e74ba30ef74aab7e744d1e110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

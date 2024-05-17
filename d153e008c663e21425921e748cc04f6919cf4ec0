@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cf0dad3_bb51d759",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-17T19:10:35Z",
+      "side": 0,
+      "message": "SGTM.",
+      "parentUuid": "ab396986_94472b12",
+      "revId": "d153e008c663e21425921e748cc04f6919cf4ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b2bfc17_caee6744",
@@ -67,6 +85,24 @@
       "side": 0,
       "message": "I think it should not cause any breakages in the current state of things.\n\nDuring the investigation of this bug, we found out that the only script that uses this global override functionality was subsumed by a different script. So this functionality is not actively being used atm. https://b.corp.google.com/issues/295311875#comment62\n\nIf you prefer, I can do the removal of this functionality in a followup CL.",
       "parentUuid": "2b2bfc17_caee6744",
+      "revId": "d153e008c663e21425921e748cc04f6919cf4ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64902486_47e254c4",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-17T19:10:35Z",
+      "side": 0,
+      "message": "ah ok, you can do it here if it\u0027s not being used.",
+      "parentUuid": "628a9e1f_a7fd99ca",
       "revId": "d153e008c663e21425921e748cc04f6919cf4ec0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
