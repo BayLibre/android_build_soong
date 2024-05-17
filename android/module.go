@@ -15,6 +15,7 @@
 package android
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/url"
 	"path/filepath"
@@ -499,6 +500,12 @@ type commonProperties struct {
 	Team *string `android:"path"`
 }
 
+type soongConfigDebugProperties struct {
+	SoongConfigBaseModuleType     string   `blueprint:"mutated"`
+	SoongConfigProperties         []string `blueprint:"mutated"`
+	AlreadyConfigurableProperties []string `blueprint:"mutated"`
+}
+
 type distProperties struct {
 	// configuration to distribute output files from this module to the distribution
 	// directory (default: $OUT/dist, configurable with $DIST_DIR)
@@ -691,6 +698,7 @@ func InitAndroidModule(m Module) {
 	m.AddProperties(
 		&base.nameProperties,
 		&base.commonProperties,
+		&base.soongConfigDebugProperties,
 		&base.distProperties)
 
 	initProductVariableModule(m)
@@ -807,12 +815,13 @@ type ModuleBase struct {
 	// TODO: remove this
 	module Module
 
-	nameProperties          nameProperties
-	commonProperties        commonProperties
-	distProperties          distProperties
-	variableProperties      interface{}
-	hostAndDeviceProperties hostAndDeviceProperties
-	hostCrossProperties     hostCrossProperties
+	nameProperties             nameProperties
+	commonProperties           commonProperties
+	soongConfigDebugProperties soongConfigDebugProperties
+	distProperties             distProperties
+	variableProperties         interface{}
+	hostAndDeviceProperties    hostAndDeviceProperties
+	hostCrossProperties        hostCrossProperties
 
 	// Arch specific versions of structs in GetProperties() prior to
 	// initialization in InitAndroidArchModule, lets call it `generalProperties`.
@@ -2570,6 +2579,7 @@ type HostToolProvider interface {
 
 func init() {
 	RegisterParallelSingletonType("buildtarget", BuildTargetSingleton)
+	RegisterParallelSingletonType("soongconfigtrace", soongConfigTraceSingletonFunc)
 }
 
 func BuildTargetSingleton() Singleton {
@@ -2730,4 +2740,50 @@ type IdeInfo struct {
 func CheckBlueprintSyntax(ctx BaseModuleContext, filename string, contents string) []error {
 	bpctx := ctx.blueprintBaseModuleContext()
 	return blueprint.CheckBlueprintSyntax(bpctx.ModuleFactories(), filename, contents)
+}
+
+// soongConfigTraceSingleton writes a map from each module's config hash value to trace data.
+func soongConfigTraceSingletonFunc() Singleton {
+	return &soongConfigTraceSingleton{}
+}
+
+type soongConfigTraceSingleton struct {
+}
+
+func (s *soongConfigTraceSingleton) GenerateBuildActions(ctx SingletonContext) {
+	propertiesFile := PathForOutput(ctx, "soong_config_properties.json")
+
+	affectedProperties := make(map[string]map[string]int)
+	modules := make(map[string]bool)
+	ctx.VisitAllModules(func(module Module) {
+		baseModuleType := module.base().soongConfigDebugProperties.SoongConfigBaseModuleType
+		if baseModuleType != "" {
+			name := fmt.Sprintf("//%s:%s", ctx.ModuleDir(module), ctx.ModuleName(module))
+			modules[name] = true
+			for _, prop := range module.base().soongConfigDebugProperties.SoongConfigProperties {
+				if slices.Contains(module.base().soongConfigDebugProperties.AlreadyConfigurableProperties, prop) {
+					continue
+				}
+				if affectedProperties[baseModuleType] == nil {
+					affectedProperties[baseModuleType] = make(map[string]int)
+				}
+				affectedProperties[baseModuleType][prop] += 1
+			}
+		}
+	})
+
+	propertiesJson, err := json.Marshal(struct {
+		Properties map[string]map[string]int
+		Modules    []string
+	}{
+		Properties: affectedProperties,
+		Modules:    SortedKeys(modules),
+	})
+	if err != nil {
+		ctx.Errorf("json marshal to %q failed: %#v", propertiesFile, err)
+		return
+	}
+
+	WriteFileRule(ctx, propertiesFile, string(propertiesJson))
+	ctx.Phony("soong_config_properties", propertiesFile)
 }

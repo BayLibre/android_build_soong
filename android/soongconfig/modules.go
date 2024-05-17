@@ -267,7 +267,7 @@ type SoongConfigDefinition struct {
 func CreateProperties(factoryProps []interface{}, moduleType *ModuleType) reflect.Value {
 	var fields []reflect.StructField
 
-	affectablePropertiesType := createAffectablePropertiesType(moduleType.affectableProperties, factoryProps)
+	affectablePropertiesType := createAffectablePropertiesType(moduleType.AffectableProperties, factoryProps)
 	if affectablePropertiesType == nil {
 		return reflect.Value{}
 	}
@@ -436,17 +436,17 @@ func PropertiesToApply(moduleType *ModuleType, props reflect.Value, config Soong
 }
 
 type ModuleType struct {
-	BaseModuleType  string
-	ConfigNamespace string
-	Variables       []soongConfigVariable
+	BaseModuleType       string
+	ConfigNamespace      string
+	Variables            []soongConfigVariable
+	AffectableProperties []string
 
-	affectableProperties []string
-	variableNames        []string
+	variableNames []string
 }
 
 func newModuleType(props *ModuleTypeProperties) (*ModuleType, []error) {
 	mt := &ModuleType{
-		affectableProperties: props.Properties,
+		AffectableProperties: props.Properties,
 		ConfigNamespace:      props.Config_namespace,
 		BaseModuleType:       props.Module_type,
 		variableNames:        props.Variables,

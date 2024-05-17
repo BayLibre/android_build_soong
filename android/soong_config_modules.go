@@ -519,7 +519,60 @@ func configModuleFactory(factory blueprint.ModuleFactory, moduleType *soongconfi
 			for _, ps := range newProps {
 				ctx.AppendProperties(ps)
 			}
+
+			module.(Module).base().soongConfigDebugProperties.SoongConfigBaseModuleType = moduleType.BaseModuleType
+			addToStringListIfNotPresent(&module.(Module).base().soongConfigDebugProperties.SoongConfigProperties, moduleType.AffectableProperties)
+			// for _, propName := range moduleType.AffectableProperties {
+			// 	if isPropertyConfigurable(reflect.ValueOf(props), propName) {
+			// 		addToStringListIfNotPresent(&module.(Module).base().soongConfigDebugProperties.AlreadyConfigurableProperties, moduleType.AffectableProperties)
+			// 	}
+			// }
 		})
 		return module, props
+	}
+}
+
+// TODO: This is not very accurate ATM
+func isPropertyConfigurable(props reflect.Value, propName string) bool {
+	if props.Kind() == reflect.Pointer || props.Kind() == reflect.Interface {
+		if props.IsNil() {
+			return false
+		}
+		props = props.Elem()
+	}
+	if props.Kind() == reflect.Slice {
+		return false
+	}
+	if propName == "" {
+		return false
+	}
+	propName, remainder, _ := strings.Cut(propName, ".")
+	if field, found := props.Type().FieldByName(propName); found {
+		switch field.Type.Kind() {
+		case reflect.Pointer, reflect.Interface:
+			return isPropertyConfigurable(props.FieldByName(propName), remainder)
+		case reflect.Struct:
+			if proptools.IsConfigurable(field.Type) {
+				if remainder != "" {
+					panic(fmt.Sprintf("Found configurable value but remainder had stuff leftover: %q", remainder))
+				}
+				return true
+			}
+			return isPropertyConfigurable(props.FieldByName(propName), remainder)
+		}
+	}
+
+	return false
+}
+
+func addToStringListIfNotPresent(out *[]string, in []string) {
+outer:
+	for _, x := range in {
+		for _, y := range *out {
+			if x == y {
+				continue outer
+			}
+		}
+		*out = append(*out, x)
 	}
 }
