@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd122ac_968f4187",
+        "filename": "android/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-17T22:49:32Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary either now that the ApexVariationName is the override name as soon as the ApexInfo is created.",
+      "range": {
+        "startLine": 394,
+        "startChar": 51,
+        "endLine": 394,
+        "endChar": 91
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2316c09a_544cf130",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/apex.go",
+              "range": {
+                "startLine": 394,
+                "startChar": 0,
+                "endLine": 395,
+                "endChar": 0
+              },
+              "replacement": "\t\tif v.ApexVariationName \u003d\u003d apex.ApexVariationName {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8a4531f8089af063aa2d036e71d342cb7569808e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
