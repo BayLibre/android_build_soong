@@ -177,6 +177,7 @@ func InitDefaultsModule(module DefaultsModule) {
 	module.AddProperties(
 		&hostAndDeviceProperties{},
 		commonProperties,
+		&module.base().soongConfigDebugProperties,
 		&ApexProperties{},
 		&distProperties{})
 
