@@ -22,6 +22,30 @@
       },
       "revId": "df3526f8a7fcb4321199f1dc56b4962823c34b9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8661528f_956ed7d9",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-17T00:17:34Z",
+      "side": 1,
+      "message": "Yes, thanks!",
+      "parentUuid": "01eb1228_e066efa0",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 89
+      },
+      "revId": "df3526f8a7fcb4321199f1dc56b4962823c34b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
