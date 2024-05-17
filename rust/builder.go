@@ -269,6 +269,9 @@ func makeLibFlags(deps PathDeps) []string {
 	for _, path := range deps.linkDirs {
 		libFlags = append(libFlags, "-L "+path)
 	}
+	for _, path := range deps.ccLinkDirs {
+		libFlags = append(libFlags, "-L "+path)
+	}
 
 	return libFlags
 }
