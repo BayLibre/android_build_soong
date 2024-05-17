@@ -806,8 +806,8 @@ type RustBindgenClangProperties struct {
 	// be added to the include path using -I
 	Local_include_dirs []string `android:"arch_variant,variant_prepend"`
 
-	// list of Rust static libraries.
-	Static_rlibs []string `android:"arch_variant,variant_prepend"`
+	// deprecated use static_libs instead; list of Rust libs that should be statically linked into this module.
+	Static_rlibs []string `android:"arch_variant"`
 
 	// list of static libraries that provide headers for this binding.
 	Static_libs []string `android:"arch_variant,variant_prepend"`
