@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a223c25_1184ce3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-17T23:02:52Z",
+      "side": 1,
+      "message": "CF auto boot test was also passing with the change.\n\nhttps://android-build.corp.google.com/test_investigate/?invocationId\u003dI20400010278129185\u0026testResultId\u003dTR17929307160752225",
+      "revId": "caf7a9bea4e4615ca0ac9460526fa9c3a23f6992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
