@@ -100,7 +100,6 @@ type Deps struct {
 	StaticLibs, LateStaticLibs, WholeStaticLibs []string
 	HeaderLibs                                  []string
 	RuntimeLibs                                 []string
-	Rlibs                                       []string
 
 	// UnexportedStaticLibs are static libraries that are also passed to -Wl,--exclude-libs= to
 	// prevent automatically exporting symbols.
@@ -2341,7 +2340,6 @@ func (c *Module) deps(ctx DepsContext) Deps {
 
 	deps.WholeStaticLibs = android.LastUniqueStrings(deps.WholeStaticLibs)
 	deps.StaticLibs = android.LastUniqueStrings(deps.StaticLibs)
-	deps.Rlibs = android.LastUniqueStrings(deps.Rlibs)
 	deps.LateStaticLibs = android.LastUniqueStrings(deps.LateStaticLibs)
 	deps.SharedLibs = android.LastUniqueStrings(deps.SharedLibs)
 	deps.LateSharedLibs = android.LastUniqueStrings(deps.LateSharedLibs)
@@ -2627,35 +2625,42 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			deps.LlndkHeaderLibs...)
 	}
 
-	for _, lib := range deps.WholeStaticLibs {
-		depTag := libraryDependencyTag{Kind: staticLibraryDependency, wholeStatic: true, reexportFlags: true}
+	rlibVariation := []blueprint.Variation{
+		{Mutator: "link", Variation: ""},
+		{Mutator: "rust_libraries", Variation: "rlib"},
+		{Mutator: "rust_stdlinkage", Variation: "rlib-std"},
+	}
+	rlibDepTag := libraryDependencyTag{Kind: rlibLibraryDependency}
 
-		actx.AddVariationDependencies([]blueprint.Variation{
-			{Mutator: "link", Variation: "static"},
-		}, depTag, lib)
+	for _, lib := range deps.WholeStaticLibs {
+		if actx.OtherModuleDependencyVariantExists(rlibVariation, lib) {
+			actx.AddVariationDependencies(rlibVariation, rlibDepTag, lib)
+		} else {
+			depTag := libraryDependencyTag{Kind: staticLibraryDependency, wholeStatic: true, reexportFlags: true}
+
+			actx.AddVariationDependencies([]blueprint.Variation{
+				{Mutator: "link", Variation: "static"},
+			}, depTag, lib)
+		}
 	}
 
 	for _, lib := range deps.StaticLibs {
-		depTag := libraryDependencyTag{Kind: staticLibraryDependency}
-		if inList(lib, deps.ReexportStaticLibHeaders) {
-			depTag.reexportFlags = true
-		}
-		if inList(lib, deps.ExcludeLibsForApex) {
-			depTag.excludeInApex = true
-		}
+		// Some dependencies listed in static_libs might actually be rust_ffi rlib variants.
+		if actx.OtherModuleDependencyVariantExists(rlibVariation, lib) {
+			actx.AddVariationDependencies(rlibVariation, rlibDepTag, lib)
+		} else {
+			depTag := libraryDependencyTag{Kind: staticLibraryDependency}
 
-		actx.AddVariationDependencies([]blueprint.Variation{
-			{Mutator: "link", Variation: "static"},
-		}, depTag, lib)
-	}
-
-	for _, lib := range deps.Rlibs {
-		depTag := libraryDependencyTag{Kind: rlibLibraryDependency}
-		actx.AddVariationDependencies([]blueprint.Variation{
-			{Mutator: "link", Variation: ""},
-			{Mutator: "rust_libraries", Variation: "rlib"},
-			{Mutator: "rust_stdlinkage", Variation: "rlib-std"},
-		}, depTag, lib)
+			if inList(lib, deps.ReexportStaticLibHeaders) {
+				depTag.reexportFlags = true
+			}
+			if inList(lib, deps.ExcludeLibsForApex) {
+				depTag.excludeInApex = true
+			}
+			actx.AddVariationDependencies([]blueprint.Variation{
+				{Mutator: "link", Variation: "static"},
+			}, depTag, lib)
+		}
 	}
 
 	// staticUnwinderDep is treated as staticDep for Q apexes
@@ -3328,8 +3333,8 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					}
 				}
 
-				// We re-export the Rust static_rlibs so rlib dependencies don't need to be redeclared by cc_library_static dependents.
-				// E.g. libfoo (cc_library_static) depends on libfoo.ffi (a rust_ffi rlib), libbar depending on libfoo shouldn't have to also add libfoo.ffi to static_rlibs.
+				// We re-export the Rust ffi rlibs so rlib dependencies don't need to be redeclared by cc_library_static dependents.
+				// E.g. libfoo (cc_library_static) depends on libfoo.ffi (a rust_ffi rlib), libbar depending on libfoo shouldn't have to also add libfoo.ffi.
 				depPaths.ReexportedRustRlibDeps = append(depPaths.ReexportedRustRlibDeps, depExporterInfo.RustRlibDeps...)
 				depPaths.RustRlibDeps = append(depPaths.RustRlibDeps, depExporterInfo.RustRlibDeps...)
 

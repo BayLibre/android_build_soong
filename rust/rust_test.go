@@ -450,20 +450,19 @@ func TestRustRlibs(t *testing.T) {
 		cc_library_shared {
 			name: "libcc_shared",
 			srcs:["foo.c"],
-			static_rlibs: ["libbar"],
+			static_libs: ["libbar"],
 		}
 
 		cc_library_static {
 			name: "libcc_static",
 			srcs:["foo.c"],
-			static_rlibs: ["libfoo"],
+			static_libs: ["libfoo"],
 		}
 
 		cc_binary {
 			name: "ccBin",
 			srcs:["foo.c"],
-			static_rlibs: ["libbar"],
-			static_libs: ["libcc_static"],
+			static_libs: ["libcc_static", "libbar"],
 		}
 		`)
 

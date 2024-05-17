@@ -822,6 +822,7 @@ func generateRustStaticlib(ctx android.ModuleContext, rlibDeps []RustRlibDep) an
 func genRustStaticlibSrcFile(crateNames []string) string {
 	lines := []string{
 		"// @Soong generated Source",
+		"#![no_std]", // pre-emptively set no_std to support both std and no_std.
 	}
 	for _, crate := range crateNames {
 		lines = append(lines, fmt.Sprintf("extern crate %s;", crate))
