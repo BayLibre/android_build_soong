@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14e411b4_10162602",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-17T00:56:20Z",
+      "side": 1,
+      "message": "This should delete the files, not gzip them.",
+      "revId": "99789dc2386d87ec3f50139e964d8cb7ba6b0875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
