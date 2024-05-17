@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce4a7167_4cafd3f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-17T23:03:50Z",
+      "side": 1,
+      "message": "Could you elaborate?",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "42642f04f8bd25b75ab3dc59f68b6f1070994927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
