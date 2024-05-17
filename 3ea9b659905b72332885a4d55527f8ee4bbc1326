@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b50a09f8_9696f10f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-17T05:00:18Z",
+      "side": 1,
+      "message": "True. I think we could make other module types to \"eventually\" follow the filesystem\u0027s case. I just want to start small.",
+      "parentUuid": "923aa588_177208fb",
+      "revId": "3ea9b659905b72332885a4d55527f8ee4bbc1326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37730acd_e5af4906",
@@ -101,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3000d4ea_92eef6e7",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-17T05:00:18Z",
+      "side": 1,
+      "message": "This is not added as a property, but a field in the module struct.",
+      "parentUuid": "cdd32622_75374f75",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "3ea9b659905b72332885a4d55527f8ee4bbc1326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96d6f496_c5b8813a",
@@ -132,6 +174,24 @@
           ]
         }
       ],
+      "revId": "3ea9b659905b72332885a4d55527f8ee4bbc1326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6b18dd_2f2abf8f",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-17T05:00:18Z",
+      "side": 1,
+      "message": "I will make that as a separate change.",
+      "parentUuid": "96d6f496_c5b8813a",
       "revId": "3ea9b659905b72332885a4d55527f8ee4bbc1326",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
