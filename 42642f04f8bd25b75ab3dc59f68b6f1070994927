@@ -22,6 +22,30 @@
       },
       "revId": "42642f04f8bd25b75ab3dc59f68b6f1070994927",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c341c8d8_3abc95c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-17T23:13:06Z",
+      "side": 1,
+      "message": "I\u0027ve left comment on b/341335305",
+      "parentUuid": "ce4a7167_4cafd3f6",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "42642f04f8bd25b75ab3dc59f68b6f1070994927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
