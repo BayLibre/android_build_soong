@@ -391,7 +391,7 @@ func (library *libraryDecorator) BuildOnlyFFI() {
 	// we build rlibs for later static ffi linkage.
 	library.MutatedProperties.BuildRlib = true
 	library.MutatedProperties.BuildShared = true
-	library.MutatedProperties.BuildStatic = true
+	library.MutatedProperties.BuildStatic = false
 
 	library.isFFI = true
 }

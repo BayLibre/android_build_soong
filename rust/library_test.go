@@ -34,10 +34,15 @@ func TestLibraryVariants(t *testing.T) {
 			name: "libfoo.ffi",
 			srcs: ["foo.rs"],
 			crate_name: "foo"
+		}
+		rust_ffi_host_static {
+			name: "libfoo.ffi_static",
+			srcs: ["foo.rs"],
+			crate_name: "foo"
 		}`)
 
 	// Test all variants are being built.
-	libfooStatic := ctx.ModuleForTests("libfoo.ffi", "linux_glibc_x86_64_static").Rule("rustc")
+	libfooStatic := ctx.ModuleForTests("libfoo.ffi_static", "linux_glibc_x86_64_static").Rule("rustc")
 	libfooRlib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_rlib_rlib-std").Rule("rustc")
 	libfooDylib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_dylib").Rule("rustc")
 	libfooFFIRlib := ctx.ModuleForTests("libfoo.ffi", "linux_glibc_x86_64_rlib_rlib-std").Rule("rustc")
@@ -188,7 +193,7 @@ func TestSharedLibraryToc(t *testing.T) {
 
 func TestStaticLibraryLinkage(t *testing.T) {
 	ctx := testRust(t, `
-		rust_ffi {
+		rust_ffi_static {
 			name: "libfoo",
 			srcs: ["foo.rs"],
 			crate_name: "foo",
@@ -305,12 +310,21 @@ func TestAutoDeps(t *testing.T) {
 				"libbar",
 				"librlib_only",
 			],
+		}
+		rust_ffi_host_static {
+			name: "libfoo.ffi.static",
+			srcs: ["foo.rs"],
+			crate_name: "foo",
+			rustlibs: [
+				"libbar",
+				"librlib_only",
+			],
 		}`)
 
 	libfooRlib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_rlib_rlib-std")
 	libfooDylib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_dylib")
 	libfooFFIRlib := ctx.ModuleForTests("libfoo.ffi", "linux_glibc_x86_64_rlib_rlib-std")
-	libfooStatic := ctx.ModuleForTests("libfoo.ffi", "linux_glibc_x86_64_static")
+	libfooStatic := ctx.ModuleForTests("libfoo.ffi.static", "linux_glibc_x86_64_static")
 	libfooShared := ctx.ModuleForTests("libfoo.ffi", "linux_glibc_x86_64_shared")
 
 	for _, static := range []android.TestingModule{libfooRlib, libfooStatic, libfooFFIRlib} {
@@ -381,6 +395,12 @@ func TestLibstdLinkage(t *testing.T) {
 			crate_name: "bar",
 			rustlibs: ["libfoo"],
 		}
+		rust_ffi_static {
+			name: "libbar_static",
+			srcs: ["foo.rs"],
+			crate_name: "bar",
+			rustlibs: ["libfoo"],
+		}
 		rust_ffi {
 			name: "libbar.prefer_rlib",
 			srcs: ["foo.rs"],
@@ -394,7 +414,7 @@ func TestLibstdLinkage(t *testing.T) {
 	libfooRlibDynamic := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_rlib_dylib-std").Module().(*Module)
 
 	libbarShared := ctx.ModuleForTests("libbar", "android_arm64_armv8-a_shared").Module().(*Module)
-	libbarStatic := ctx.ModuleForTests("libbar", "android_arm64_armv8-a_static").Module().(*Module)
+	libbarStatic := ctx.ModuleForTests("libbar_static", "android_arm64_armv8-a_static").Module().(*Module)
 	libbarFFIRlib := ctx.ModuleForTests("libbar", "android_arm64_armv8-a_rlib_rlib-std").Module().(*Module)
 
 	// prefer_rlib works the same for both rust_library and rust_ffi, so a single check is sufficient here.
