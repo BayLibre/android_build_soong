@@ -50,6 +50,30 @@
       ],
       "revId": "693c703ab3f625103759227854f65cd96824fe88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b9f216c_f2edfe91",
+        "filename": "cmd/release_config/release_config_lib/release_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-05-17T00:40:45Z",
+      "side": 1,
+      "message": "Thanks! I\u0027ll switch to that in a follow-on CL.",
+      "parentUuid": "83b9c6b1_4a94bdc2",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 3
+      },
+      "revId": "693c703ab3f625103759227854f65cd96824fe88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
