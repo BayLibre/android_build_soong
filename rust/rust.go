@@ -693,6 +693,24 @@ func (mod *Module) BuildStaticVariant() bool {
 	panic(fmt.Errorf("BuildStaticVariant called on non-library module: %q", mod.BaseModuleName()))
 }
 
+func (mod *Module) BuildRlibVariant() bool {
+	if mod.compiler != nil {
+		if library, ok := mod.compiler.(libraryInterface); ok {
+			return library.buildRlib()
+		}
+	}
+	panic(fmt.Errorf("BuildRlibVariant called on non-library module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) IsRustFFI() bool {
+	if mod.compiler != nil {
+		if library, ok := mod.compiler.(libraryInterface); ok {
+			return library.isFFILibrary()
+		}
+	}
+	return false
+}
+
 func (mod *Module) BuildSharedVariant() bool {
 	if mod.compiler != nil {
 		if library, ok := mod.compiler.(libraryInterface); ok {
@@ -1217,7 +1235,6 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
-
 		if _, exists := skipModuleList[depName]; exists {
 			return
 		}
@@ -1230,8 +1247,8 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			//Handle Rust Modules
 			makeLibName := rustMakeLibName(ctx, mod, rustDep, depName+rustDep.Properties.RustSubName)
 
-			switch depTag {
-			case dylibDepTag:
+			switch {
+			case depTag == dylibDepTag:
 				dylib, ok := rustDep.compiler.(libraryInterface)
 				if !ok || !dylib.dylib() {
 					ctx.ModuleErrorf("mod %q not an dylib library", depName)
@@ -1241,8 +1258,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				mod.Properties.AndroidMkDylibs = append(mod.Properties.AndroidMkDylibs, makeLibName)
 				mod.Properties.SnapshotDylibs = append(mod.Properties.SnapshotDylibs, cc.BaseLibName(depName))
 
-			case rlibDepTag:
-
+			case depTag == rlibDepTag:
 				rlib, ok := rustDep.compiler.(libraryInterface)
 				if !ok || !rlib.rlib() {
 					ctx.ModuleErrorf("mod %q not an rlib library", makeLibName)
@@ -1257,16 +1273,25 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				depPaths.depIncludePaths = append(depPaths.depIncludePaths, exportedInfo.IncludeDirs...)
 				depPaths.exportedLinkDirs = append(depPaths.exportedLinkDirs, linkPathFromFilePath(rustDep.OutputFile().Path()))
 
-			case procMacroDepTag:
+			case depTag == procMacroDepTag:
 				directProcMacroDeps = append(directProcMacroDeps, rustDep)
 				mod.Properties.AndroidMkProcMacroLibs = append(mod.Properties.AndroidMkProcMacroLibs, makeLibName)
 				// proc_macro link dirs need to be exported, so collect those here.
 				depPaths.exportedLinkDirs = append(depPaths.exportedLinkDirs, linkPathFromFilePath(rustDep.OutputFile().Path()))
 
-			case sourceDepTag:
+			case depTag == sourceDepTag:
 				if _, ok := mod.sourceProvider.(*protobufDecorator); ok {
 					collectIncludedProtos(mod, rustDep)
 				}
+			case cc.IsStaticDepTag(depTag):
+				// Rust FFI rlibs should not be declared in a Rust modules
+				// "static_libs" list as we can't handle them properly at the
+				// moment (for example, they only produce an rlib-std variant).
+				// Instead, a normal rust_library variant should be used.
+				ctx.PropertyErrorf("static_libs",
+					"found '%s' in static_libs; use a rust_library module in rustlibs instead of a rust_ffi module in static_libs",
+					depName)
+
 			}
 
 			transitiveAndroidMkSharedLibs = append(transitiveAndroidMkSharedLibs, rustDep.transitiveAndroidMkSharedLibs)
