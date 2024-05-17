@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0544e21d_db8d4f5e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-17T12:42:43Z",
+      "side": 0,
+      "message": "Surprised to know that this wasn\u0027t an error.",
+      "range": {
+        "startLine": 1319,
+        "startChar": 67,
+        "endLine": 1319,
+        "endChar": 68
+      },
+      "revId": "54fa3bbef521129598c26d2b882f3349fe815282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

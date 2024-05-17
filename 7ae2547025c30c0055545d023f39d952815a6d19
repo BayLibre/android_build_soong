@@ -1,0 +1,195 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c8b1b4_8c78dc88",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-17T12:42:43Z",
+      "side": 1,
+      "message": "Is this a refactoring, or a critical part of this change?",
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "419e7ba1_aa07fde6",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1800,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-17T12:42:43Z",
+      "side": 1,
+      "message": "No need to create the object. `(*sanitizerLibrariesTxtModule)(nil)`",
+      "range": {
+        "startLine": 1800,
+        "startChar": 30,
+        "endLine": 1800,
+        "endChar": 60
+      },
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c47cbdf0_22a4a42e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-17T12:42:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1801,
+        "startChar": 0,
+        "endLine": 1801,
+        "endChar": 65
+      },
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3626d95_07851f1b",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1825,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-17T12:42:43Z",
+      "side": 1,
+      "message": "When does this case happen? You don\u0027t call this function with the host target.",
+      "range": {
+        "startLine": 1825,
+        "startChar": 0,
+        "endLine": 1825,
+        "endChar": 39
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "34c286b3_2bbcf46a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/sanitize.go",
+              "range": {
+                "startLine": 1825,
+                "startChar": 0,
+                "endLine": 1829,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a5a726_3af9c114",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-17T12:42:43Z",
+      "side": 1,
+      "message": "When can this happen?",
+      "range": {
+        "startLine": 1854,
+        "startChar": 0,
+        "endLine": 1857,
+        "endChar": 2
+      },
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eea7cc8_b8262608",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-17T12:42:43Z",
+      "side": 1,
+      "message": "why not\n\n```\nfor _, t :\u003d range deviceTargets {\n   sanitizerLibStems \u003d append(sanitizerLibStems, getSanitizerLibraries(..., t)\n}\n```",
+      "range": {
+        "startLine": 1862,
+        "startChar": 0,
+        "endLine": 1865,
+        "endChar": 2
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "17671334_6bb9b577",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/sanitize.go",
+              "range": {
+                "startLine": 1862,
+                "startChar": 0,
+                "endLine": 1865,
+                "endChar": 0
+              },
+              "replacement": "\tfor _, t :\u003d range deviceTargets {\n\t\tsanitizerLibStems \u003d append(sanitizerLibStems, getSanitizerLibraries(ctx, t)...)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03246ed5_5d149e46",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1878,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-17T12:42:43Z",
+      "side": 1,
+      "message": "Is this a must? The stem by default is the module name, right?",
+      "range": {
+        "startLine": 1878,
+        "startChar": 0,
+        "endLine": 1878,
+        "endChar": 65
+      },
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
