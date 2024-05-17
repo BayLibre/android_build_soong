@@ -22,6 +22,53 @@
       },
       "revId": "35be1c6f6157587055d9b7d1c7297f2b614b6772",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8755f82d_1a5ac658",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-17T17:44:38Z",
+      "side": 1,
+      "message": "I intentionally made it an error for the value being selected on to not have a matching branch, so if a new value was added to a string variable you could easily find all the places that value wasn\u0027t handled. I guess it does make less sense for boolean variables, but I think it\u0027s good to keep consistent behavior with non-booleans. You could also use `false` instead of `default`.",
+      "parentUuid": "8e24988d_af5c5bef",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "35be1c6f6157587055d9b7d1c7297f2b614b6772",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b9ff53e_9997aca0",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-17T17:44:38Z",
+      "side": 1,
+      "message": "`BaseModuleContext` already implements `EvaluateConfiguration`, you can just pass it directly. This syntax is only needed if you have a more limited context like a SingletonContext.",
+      "range": {
+        "startLine": 196,
+        "startChar": 27,
+        "endLine": 196,
+        "endChar": 62
+      },
+      "revId": "35be1c6f6157587055d9b7d1c7297f2b614b6772",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
