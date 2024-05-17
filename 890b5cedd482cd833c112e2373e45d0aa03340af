@@ -34,6 +34,24 @@
       "parentUuid": "a6c94d0c_6c1fe154",
       "revId": "890b5cedd482cd833c112e2373e45d0aa03340af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a2bc497_9790573f",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-17T03:56:06Z",
+      "side": 1,
+      "message": "I worked on this with Cole offline. In the updated CL, `Split` and `IncomingTransition` will use the Overriding module name in the Overridden module ctx of the base apex. The non overriden variant of the base apex will be kept untouched.",
+      "parentUuid": "b290388f_97574186",
+      "revId": "890b5cedd482cd833c112e2373e45d0aa03340af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
