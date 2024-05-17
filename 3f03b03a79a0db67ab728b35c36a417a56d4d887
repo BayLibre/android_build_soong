@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d21596_02acd7f9",
+        "filename": "android/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-17T19:01:26Z",
+      "side": 1,
+      "message": "Update",
+      "range": {
+        "startLine": 42,
+        "startChar": 43,
+        "endLine": 43,
+        "endChar": 59
+      },
+      "revId": "3f03b03a79a0db67ab728b35c36a417a56d4d887",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e87a0f58_5e38ce6d",
+        "filename": "android/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-17T19:01:26Z",
+      "side": 1,
+      "message": "I think this stuff should not be necessary, it should already handle by the merging/aliases above. I think it\u0027s currently not working without it because the ApexInfo\u0027s ApexVariationName is always the base module, not the overridden module. I think we need to update this instead: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/apex/apex.go;l\u003d1037;drc\u003de8fcd377759608129bb23581d5593e384bb2c15e",
+      "range": {
+        "startLine": 643,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 0
+      },
+      "revId": "3f03b03a79a0db67ab728b35c36a417a56d4d887",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10835cb_033c9a00",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-17T19:01:26Z",
+      "side": 1,
+      "message": "I don\u0027t think the sorting is necessary, because:\n - they\u0027re already sorted in `ApexInfoMutator`.\n - You\u0027re not copying the ApexInfos slice, meaning you\u0027d be changing the provider if they weren\u0027t already sorted. Providers are supposed to be immutable, and there\u0027s a check that they\u0027re not changed that you would be failing.",
+      "revId": "3f03b03a79a0db67ab728b35c36a417a56d4d887",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
