@@ -530,8 +530,10 @@ type commonProperties struct {
 	// builds among similar products (e.g. aosp_cf_x86_64_phone and aosp_cf_x86_64_foldable),
 	// and there are variables other than soong_config, which isn't captured by soong config
 	// trace, but influence modules among products.
-	SoongConfigTrace     soongConfigTrace `blueprint:"mutated"`
-	SoongConfigTraceHash string           `blueprint:"mutated"`
+	SoongConfigTrace          soongConfigTrace `blueprint:"mutated"`
+	SoongConfigTraceHash      string           `blueprint:"mutated"`
+	SoongConfigBaseModuleType string
+	SoongConfigProperties     []string `blueprint:"mutated"`
 
 	// The team (defined by the owner/vendor) who owns the property.
 	Team *string `android:"path"`
@@ -2642,13 +2644,24 @@ type soongConfigTraceSingleton struct {
 
 func (s *soongConfigTraceSingleton) GenerateBuildActions(ctx SingletonContext) {
 	outFile := PathForOutput(ctx, "soong_config_trace.json")
+	propertiesFile := PathForOutput(ctx, "soong_config_properties.json")
 
+	affectedProperties := make(map[string]map[string]int)
 	traces := make(map[string]*soongConfigTrace)
 	ctx.VisitAllModules(func(module Module) {
 		trace := &module.base().commonProperties.SoongConfigTrace
 		if !trace.isEmpty() {
 			hash := module.base().commonProperties.SoongConfigTraceHash
 			traces[hash] = trace
+		}
+		baseModuleType := module.base().commonProperties.SoongConfigBaseModuleType
+		if baseModuleType != "" {
+			for _, prop := range module.base().commonProperties.SoongConfigProperties {
+				if affectedProperties[baseModuleType] == nil {
+					affectedProperties[baseModuleType] = make(map[string]int)
+				}
+				affectedProperties[baseModuleType][prop] += 1
+			}
 		}
 	})
 
@@ -2660,4 +2673,23 @@ func (s *soongConfigTraceSingleton) GenerateBuildActions(ctx SingletonContext) {
 
 	WriteFileRule(ctx, outFile, string(j))
 	ctx.Phony("soong_config_trace", outFile)
+
+	propertiesJson, err := json.Marshal(affectedProperties)
+	if err != nil {
+		ctx.Errorf("json marshal to %q failed: %#v", propertiesFile, err)
+		return
+	}
+
+	WriteFileRule(ctx, propertiesFile, string(propertiesJson))
+	ctx.Phony("soong_config_properties", propertiesFile)
+}
+
+func addToStringListIfNotPresent(l []string, items ...string) []string {
+	for _, i := range items {
+		if !slices.Contains(l, i) {
+			l = append(l, i)
+		}
+	}
+
+	return l
 }
