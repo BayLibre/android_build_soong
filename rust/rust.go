@@ -697,6 +697,24 @@ func (mod *Module) BuildStaticVariant() bool {
 	panic(fmt.Errorf("BuildStaticVariant called on non-library module: %q", mod.BaseModuleName()))
 }
 
+func (mod *Module) BuildRlibVariant() bool {
+	if mod.compiler != nil {
+		if library, ok := mod.compiler.(libraryInterface); ok {
+			return library.buildRlib()
+		}
+	}
+	panic(fmt.Errorf("BuildRlibVariant called on non-library module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) IsRustFFI() bool {
+	if mod.compiler != nil {
+		if library, ok := mod.compiler.(libraryInterface); ok {
+			return library.isFFILibrary()
+		}
+	}
+	return false
+}
+
 func (mod *Module) BuildSharedVariant() bool {
 	if mod.compiler != nil {
 		if library, ok := mod.compiler.(libraryInterface); ok {
