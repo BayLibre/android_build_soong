@@ -412,6 +412,12 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 				if app.embeddedJniLibs {
 					jniSymbols := app.JNISymbolsInstalls(app.installPathForJNISymbols.String())
 					entries.SetString("LOCAL_SOONG_JNI_LIBS_SYMBOLS", jniSymbols.String())
+				} else {
+					var names []string
+					for _, jniLib := range app.jniLibs {
+						names = append(names, jniLib.name)
+					}
+					entries.AddStrings("LOCAL_REQUIRED_MODULES", names...)
 				}
 
 				if len(app.jniCoverageOutputs) > 0 {

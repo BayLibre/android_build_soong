@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/cc"
 )
 
 func TestRequired(t *testing.T) {
@@ -250,5 +251,53 @@ func TestGetOverriddenPackages(t *testing.T) {
 		actual := entries.EntryMap["LOCAL_OVERRIDES_PACKAGES"]
 
 		android.AssertDeepEquals(t, "overrides property", expected.overrides, actual)
+	}
+}
+
+func TestJniAsRequiredDeps(t *testing.T) {
+	ctx := android.GroupFixturePreparers(
+		PrepareForTestWithJavaDefaultModules,
+		cc.PrepareForTestWithCcDefaultModules,
+		android.PrepareForTestWithAndroidMk,
+	).RunTestWithBp(t, `
+		android_app {
+			name: "app",
+			jni_libs: ["libjni"],
+			platform_apis: true,
+		}
+
+		android_app {
+			name: "app_embedded",
+			jni_libs: ["libjni"],
+			platform_apis: true,
+			use_embedded_native_libs: true,
+		}
+
+		cc_library {
+			name: "libjni",
+			system_shared_libs: [],
+			stl: "none",
+		}
+		`)
+
+	testcases := []struct {
+		name     string
+		expected []string
+	}{
+		{
+			name:     "app",
+			expected: []string{"libjni"},
+		},
+		{
+			name:     "app_embedded",
+			expected: nil,
+		},
+	}
+
+	for _, tc := range testcases {
+		mod := ctx.ModuleForTests(tc.name, "android_common").Module()
+		entries := android.AndroidMkEntriesForTest(t, ctx.TestContext, mod)[0]
+		required := entries.EntryMap["LOCAL_REQUIRED_MODULES"]
+		android.AssertDeepEquals(t, "unexpected required deps", tc.expected, required)
 	}
 }
