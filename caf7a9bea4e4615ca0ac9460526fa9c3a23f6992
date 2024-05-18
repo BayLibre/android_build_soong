@@ -16,6 +16,23 @@
       "message": "CF auto boot test was also passing with the change.\n\nhttps://android-build.corp.google.com/test_investigate/?invocationId\u003dI20400010278129185\u0026testResultId\u003dTR17929307160752225",
       "revId": "caf7a9bea4e4615ca0ac9460526fa9c3a23f6992",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e226e57_98c3cf63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-18T00:03:04Z",
+      "side": 1,
+      "message": "Yu Shan confirmed that the issue disappeared after another round of revert and reland. The incremental build may have been broken temporarily by the change. \n\nAnyway, he confirmed that it\u0027s working now and I independently have confirmed the same as well (the jni lib is there and auto is bootable)",
+      "revId": "caf7a9bea4e4615ca0ac9460526fa9c3a23f6992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
