@@ -51,6 +51,16 @@ var (
 		},
 		"ccCmd", "cFlags")
 
+	// Rule to invoke gcc with given command, flags, and dependencies. Outputs a .d depfile.
+	cc_clangverify = pctx.AndroidRemoteStaticRule("cc_clangverify", android.RemoteRuleSupports{Goma: true, RBE: true},
+		blueprint.RuleParams{
+			Depfile:     "${out}.d",
+			Deps:        blueprint.DepsGCC,
+			Command:     "$relPwd ${config.CcWrapper}$ccCmd -c $cFlags -MD -MF ${out}.d -o $out $in && touch $out",
+			CommandDeps: []string{"$ccCmd"},
+		},
+		"ccCmd", "cFlags")
+
 	// Rule to invoke gcc with given command and flags, but no dependencies.
 	ccNoDeps = pctx.AndroidStaticRule("ccNoDeps",
 		blueprint.RuleParams{
@@ -400,6 +410,7 @@ type builderFlags struct {
 	gcovCoverage  bool
 	sAbiDump      bool
 	emitXrefs     bool
+	clangVerify   bool
 
 	assemblerWithCpp bool // True if .s files should be processed with the c preprocessor.
 
@@ -634,6 +645,10 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		ccDesc := ccCmd
 
 		ccCmd = "${config.ClangBin}/" + ccCmd
+
+		if flags.clangVerify {
+			rule = cc_clangverify
+		}
 
 		var implicitOutputs android.WritablePaths
 		if coverage {
