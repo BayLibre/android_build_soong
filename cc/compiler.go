@@ -120,6 +120,10 @@ type BaseCompilerProperties struct {
 	// ban targeting bpf in cc rules instead use bpf_rules. (b/323415017)
 	Bpf_target *bool
 
+	// Add "-Xclang -verify" to the cflags and appends "touch $out" to
+	// the clang command line.
+	Clang_verify *bool
+
 	Yacc *YaccProperties
 	Lex  *LexProperties
 
