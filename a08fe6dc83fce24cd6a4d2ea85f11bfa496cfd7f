@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbf302a5_36b3faf7",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3339,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-05-20T20:26:20Z",
+      "side": 1,
+      "message": "Just to make sure - there are two reasons people use `whole_static_libs` today:\n1. Work around lack of Soong static dep propagation\n2. Force inclusion of unreferenced `.o` files\n\n#2 is generally an anti-pattern, and I would argue for banning whole-static in most of the codebase were it not for #1. Are we getting the effect of #2 on Rust modules with this? It looks like not, which I generally approve of (I don\u0027t want people leveraging static initializers or similar logic in Rust code - that way lies madness.), but I want to make sure we\u0027re intentionally picking this.",
+      "revId": "a08fe6dc83fce24cd6a4d2ea85f11bfa496cfd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
