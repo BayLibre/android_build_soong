@@ -704,7 +704,6 @@ func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext, nativeM
 	rustLibVariations := append(
 		target.Variations(), []blueprint.Variation{
 			{Mutator: "rust_libraries", Variation: "dylib"},
-			{Mutator: "link", Variation: ""},
 		}...,
 	)
 
