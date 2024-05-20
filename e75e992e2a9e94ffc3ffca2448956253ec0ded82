@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7244a81b_4e43dad7",
+        "filename": "android/android_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-05-20T06:25:22Z",
+      "side": 1,
+      "message": "There are three challenges here.\n\n1) `TARGET_BOOTLOADER_BOARD_NAME` is printed if no board-info.txt files exist.\n2) We must migrate `check_radio_versions` too. It refers to files added to `add-radio-file-checked`\n3) We must install `android-info.txt` to `$(PRODUCT_OUT)`.\n\nFor now, cuttlefish system image just needs `board-info.txt` files and we don\u0027t need to fully implement 1), 2) and 3). But in the future we need to consider 1), 2) and 3) and probably we can\u0027t avoid reading configs. WDYT?",
+      "parentUuid": "3963cb2e_3a7ad278",
+      "revId": "e75e992e2a9e94ffc3ffca2448956253ec0ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4464f19_debf5c53",
         "filename": "android/android_info.go",
         "patchSetId": 1
