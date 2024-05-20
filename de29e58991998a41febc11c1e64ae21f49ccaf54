@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4f53922_e85ce46b",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-20T21:03:56Z",
+      "side": 1,
+      "message": "You could avoid having to duplicate the whole rule here by adding a \"$postCommand\" variable at the end of the regular cc rule, and then setting it to `\" \u0026\u0026 touch $out\"`.",
+      "revId": "de29e58991998a41febc11c1e64ae21f49ccaf54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
