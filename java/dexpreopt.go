@@ -139,6 +139,10 @@ type dexpreopter struct {
 	// The path to the profile that dexpreopter accepts. It must be in the binary format. If this is
 	// set, it overrides the profile settings in `dexpreoptProperties`.
 	inputProfilePathOnHost android.Path
+
+	// The path to the profile that matches the dex optimized by r8/d8. It is in text format. If this is
+	// set, it will be converted to a binary profile which will be subsequently used for dexpreopt.
+	baselineProfileOutput android.Path
 }
 
 type DexpreoptProperties struct {
@@ -158,6 +162,11 @@ type DexpreoptProperties struct {
 		// defaults to searching for a file that matches the name of this module in the default
 		// profile location set by PRODUCT_DEX_PREOPT_PROFILE_DIR, or empty if not found.
 		Profile *string `android:"path"`
+
+		// If set, provides the path to baseline profile relative to the Android.bp file.
+		// r8 will use this as input to generate a new profile that matches the optimized dex.
+		// The new profile will be subsequently used as the profile to dexpreopt the dex file.
+		Baseline_profile *string `android:"path"`
 	}
 
 	Dex_preopt_result struct {
@@ -420,6 +429,10 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, libName string, dexJa
 
 	if d.inputProfilePathOnHost != nil {
 		profileClassListing = android.OptionalPathForPath(d.inputProfilePathOnHost)
+	} else if d.GetBaselineProfileOutput() != nil {
+		// Use the profile that matches the dex optimized by r8/d8
+		profileClassListing = android.OptionalPathForPath(d.GetBaselineProfileOutput())
+		profileIsTextListing = true
 	} else if BoolDefault(d.dexpreoptProperties.Dex_preopt.Profile_guided, true) && !forPrebuiltApex(ctx) {
 		// If dex_preopt.profile_guided is not set, default it based on the existence of the
 		// dexprepot.profile option or the profile class listing.
@@ -587,4 +600,16 @@ func (d *dexpreopter) OutputProfilePathOnHost() android.Path {
 
 func (d *dexpreopter) disableDexpreopt() {
 	d.shouldDisableDexpreopt = true
+}
+
+func (d *dexpreopter) BaselineProfile() *string {
+	return d.dexpreoptProperties.Dex_preopt.Baseline_profile
+}
+
+func (d *dexpreopter) GetBaselineProfileOutput() android.Path {
+	return d.baselineProfileOutput
+}
+
+func (d *dexpreopter) SetBaselineProfileOutput(p android.Path) {
+	d.baselineProfileOutput = p
 }
