@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2cb533c8_3fa7799e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-20T21:32:44Z",
+      "side": 1,
+      "message": "For future reference, the issue appears to be that an android app is automatically creating a corresponding \"product characteristics\" RRO. The app\u0027s resources are filtered by the aapt product config, but the rro resources are not. This cl makes the RRO resources also filtered.",
+      "revId": "bbf7951eb49141aa85d493773a5b55047829afbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "79864289_15f5d93e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -14,6 +31,23 @@
       "writtenOn": "2024-05-20T01:53:56Z",
       "side": 1,
       "message": "@joeo@google.com @colefaust@google.com \nPlease help me take a look, thank you~",
+      "revId": "bbf7951eb49141aa85d493773a5b55047829afbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30f6420c_35f5d62d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-20T21:32:44Z",
+      "side": 1,
+      "message": "This cl needs to be on the `main` branch, not `master`. I\u0027ll cherrypick it.",
       "revId": "bbf7951eb49141aa85d493773a5b55047829afbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
