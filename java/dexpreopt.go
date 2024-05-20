@@ -158,6 +158,11 @@ type DexpreoptProperties struct {
 		// defaults to searching for a file that matches the name of this module in the default
 		// profile location set by PRODUCT_DEX_PREOPT_PROFILE_DIR, or empty if not found.
 		Profile *string `android:"path"`
+
+		// If set, provides the path to baseline profile relative to the Android.bp file.
+		// r8 will use this as input to generate a new profile that matches the optimized dex.
+		// The new profile will be subsequently used as the profile to dexpreopt the dex file.
+		Baseline_profile *string `android:"path"`
 	}
 
 	Dex_preopt_result struct {
@@ -573,4 +578,8 @@ func (d *dexpreopter) OutputProfilePathOnHost() android.Path {
 
 func (d *dexpreopter) disableDexpreopt() {
 	d.shouldDisableDexpreopt = true
+}
+
+func (d *dexpreopter) BaselineProfile() *string {
+	return d.dexpreoptProperties.Dex_preopt.Baseline_profile
 }

@@ -379,14 +379,16 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 }
 
 type compileDexParams struct {
-	flags         javaBuilderFlags
-	sdkVersion    android.SdkSpec
-	minSdkVersion android.ApiLevel
-	classesJar    android.Path
-	jarName       string
+	flags           javaBuilderFlags
+	sdkVersion      android.SdkSpec
+	minSdkVersion   android.ApiLevel
+	classesJar      android.Path
+	jarName         string
+	artProfileInput *string
 }
 
-func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParams) android.OutputPath {
+// Return the compiled dex jar and (optional) profile _after_ r8 optimization
+func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParams) (android.OutputPath, *android.OutputPath) {
 
 	// Compile classes.jar into classes.dex and then javalib.jar
 	javalibJar := android.PathForModuleOut(ctx, "dex", dexParams.jarName).OutputPath
@@ -406,6 +408,7 @@ func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParam
 	}
 
 	useR8 := d.effectiveOptimizeEnabled()
+	var artProfileOutputPath *android.OutputPath
 	if useR8 {
 		proguardDictionary := android.PathForModuleOut(ctx, "proguard_dictionary")
 		d.proguardDictionary = android.OptionalPathForPath(proguardDictionary)
@@ -419,6 +422,17 @@ func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParam
 		resourcesOutput := android.PathForModuleOut(ctx, "package-res-shrunken.apk")
 		d.resourcesOutput = android.OptionalPathForPath(resourcesOutput)
 		r8Flags, r8Deps := d.r8Flags(ctx, dexParams.flags)
+		if dexParams.artProfileInput != nil {
+			artProfileInputPath := android.PathForModuleSrc(ctx, *dexParams.artProfileInput)
+			artProfileOutputPathValue := android.PathForModuleOut(ctx, "profile.txt.prof").OutputPath
+			artProfileOutputPath = &artProfileOutputPathValue
+			r8Flags = append(r8Flags,
+				"--art-profile",
+				artProfileInputPath.String(),
+				artProfileOutputPath.String(),
+			)
+			r8Deps = append(r8Deps, artProfileInputPath)
+		}
 		r8Deps = append(r8Deps, commonDeps...)
 		rule := r8
 		args := map[string]string{
@@ -439,7 +453,11 @@ func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParam
 		implicitOutputs := android.WritablePaths{
 			proguardDictionary,
 			proguardUsageZip,
-			proguardConfiguration}
+			proguardConfiguration,
+		}
+		if artProfileOutputPath != nil {
+			implicitOutputs = append(implicitOutputs, artProfileOutputPath)
+		}
 		if d.resourcesInput.Valid() {
 			implicitOutputs = append(implicitOutputs, resourcesOutput)
 			args["resourcesOutput"] = resourcesOutput.String()
@@ -480,5 +498,5 @@ func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParam
 		javalibJar = alignedJavalibJar
 	}
 
-	return javalibJar
+	return javalibJar, artProfileOutputPath
 }

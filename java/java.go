@@ -2332,7 +2332,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		classesJar:    al.stubsJar,
 		jarName:       ctx.ModuleName() + ".jar",
 	}
-	dexOutputFile := al.dexer.compileDex(ctx, dexParams)
+	dexOutputFile, _ := al.dexer.compileDex(ctx, dexParams)
 	uncompressed := true
 	al.initHiddenAPI(ctx, makeDexJarPathFromPath(dexOutputFile), al.stubsJar, &uncompressed)
 	dexOutputFile = al.hiddenAPIEncodeDex(ctx, dexOutputFile)
@@ -2716,7 +2716,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				jarName:       jarName,
 			}
 
-			dexOutputFile = j.dexer.compileDex(ctx, dexParams)
+			dexOutputFile, _ = j.dexer.compileDex(ctx, dexParams)
 			if ctx.Failed() {
 				return
 			}

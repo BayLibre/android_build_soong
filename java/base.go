@@ -1643,15 +1643,21 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 			// Dex compilation
 			var dexOutputFile android.OutputPath
 			params := &compileDexParams{
-				flags:         flags,
-				sdkVersion:    j.SdkVersion(ctx),
-				minSdkVersion: j.MinSdkVersion(ctx),
-				classesJar:    implementationAndResourcesJar,
-				jarName:       jarName,
+				flags:           flags,
+				sdkVersion:      j.SdkVersion(ctx),
+				minSdkVersion:   j.MinSdkVersion(ctx),
+				classesJar:      implementationAndResourcesJar,
+				jarName:         jarName,
+				artProfileInput: j.BaselineProfile(),
 			}
-			dexOutputFile = j.dexer.compileDex(ctx, params)
+			dexOutputFile, dexArtProfileOutput := j.dexer.compileDex(ctx, params)
 			if ctx.Failed() {
 				return
+			}
+
+			// If r8 provides a profile that matches the optimized dex, use that for dexpreopt.
+			if dexArtProfileOutput != nil {
+				j.dexpreopter.inputProfilePathOnHost = *dexArtProfileOutput
 			}
 
 			// merge dex jar with resources if necessary
