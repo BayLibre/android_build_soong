@@ -34,6 +34,24 @@
       "parentUuid": "af3b60a7_d8dca51f",
       "revId": "d5919c1636385eaeee97f9ba2360dab2a31a3eec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ce2d7cd_09b441df",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-05-20T03:16:31Z",
+      "side": 1,
+      "message": "create_reference_dumps.py combines the arguments into build commands.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:development/vndk/tools/header-checker/utils/utils.py;l\u003d176\n\nsourceAbiDiff shows TARGET_RELEASE in the error message. It does not decide the output files based on TARGET_RELEASE.",
+      "parentUuid": "1f52ba71_a2a4e271",
+      "revId": "d5919c1636385eaeee97f9ba2360dab2a31a3eec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
