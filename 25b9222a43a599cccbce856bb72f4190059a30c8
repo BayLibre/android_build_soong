@@ -16,6 +16,24 @@
       "message": "Cole. I squashed the forward fix into here.",
       "revId": "25b9222a43a599cccbce856bb72f4190059a30c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "482a045d_c5ab49bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-20T22:36:29Z",
+      "side": 1,
+      "message": "LGTM, thanks. I wouldn\u0027t really consider it a \"forward fix\" because the breaking cl isn\u0027t submitted.",
+      "parentUuid": "d619ffc2_41d929cf",
+      "revId": "25b9222a43a599cccbce856bb72f4190059a30c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
