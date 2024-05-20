@@ -16,6 +16,24 @@
       "message": "In one of the other cls you removed some `LOCAL_SOONG_JNI_LIBS_*` variables from here, which also get propagated to file_list.txt eventually. Why\u0027d we remove those and replace them with LOCAL_REQUIRED_MODULES?\n\nhttps://android-review.git.corp.google.com/c/platform/build/soong/+/3094478/1/java/androidmk.go#b418\n\nEven if we stick with `LOCAL_REQUIRED_MODULES`, consider folding this cl into the prior revert^2 cl.",
       "revId": "700eea0303c89ac706fbf021c796d8b9655af2c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c74e23f_c8479ac1",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-20T21:43:45Z",
+      "side": 1,
+      "message": "I think this is similar to how shared lib dependencies among cc_* libraries are handled. Soong installs everything, but it emits LOCAL_SHARED_LIBRARIES as well so that the module which depended on isn\u0027t dropped from file_list.txt.\n\nLOCAL_SOONG_JNI_LIBS_* is very complex and tricky. The reason it works is it sneakily adds the jni libs to `.INSTALLED` list of the apk [1]. I don\u0027t want to bring the complexity back. \n\nOn folding: I didn\u0027t intentionally squashed this CL in the revert^2 CL, in order to highlight the forward fix. But since you ask, I did it.\n\n[1] https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/install_jni_libs_internal.mk;drc\u003dd203e12f20b5b7dc843f4c910739b2c21e5e8667;l\u003d84",
+      "parentUuid": "8f7c4385_61cc65e5",
+      "revId": "700eea0303c89ac706fbf021c796d8b9655af2c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
