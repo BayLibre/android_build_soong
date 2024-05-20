@@ -16,6 +16,24 @@
       "message": "These android*-dev branches are supposed to be read-only, and I think only certain administrators have the ability to submit here. I\u0027m not very familiar with how partners ingest the code, but if we were to backport it to the internal development branches would you receive it?",
       "revId": "a47ba2b6610d9cddf9e008fae498458850851ef5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e598b699_0ec0f43c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-20T22:59:59Z",
+      "side": 1,
+      "message": "Actually it sounds like it may need to be backported to the automotive-specific branches. Could you run this through your TAM to get their input?",
+      "parentUuid": "5917d762_c1e6f7ec",
+      "revId": "a47ba2b6610d9cddf9e008fae498458850851ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
