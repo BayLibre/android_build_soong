@@ -40,6 +40,7 @@ var androidmk_denylist []string = []string{
 	"trusty/",
 	// Add back toolchain/ once defensive Android.mk files are removed
 	//"toolchain/",
+	"vendor/google_testing/",
 }
 
 func blockAndroidMks(ctx Context, androidMks []string) {
