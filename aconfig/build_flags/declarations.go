@@ -23,6 +23,13 @@ import (
 	"github.com/google/blueprint"
 )
 
+type BuildFlagDeclarationsProviderData struct {
+	IntermediateCacheOutputPath android.WritablePath
+	IntermediateDumpOutputPath  android.WritablePath
+}
+
+var BuildFlagDeclarationsProviderKey = blueprint.NewProvider[BuildFlagDeclarationsProviderData]()
+
 type DeclarationsModule struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
@@ -77,9 +84,6 @@ func optionalVariable(prefix string, value string) string {
 }
 
 func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	// Get the values that came from the global RELEASE_ACONFIG_VALUE_SETS flag
-	valuesFiles := make([]android.Path, 0)
-
 	// Intermediate format
 	declarationFiles := android.PathsForModuleSrc(ctx, module.properties.Srcs)
 	intermediateCacheFilePath := android.PathForModuleOut(ctx, "build_flag_intermediate.pb")
@@ -88,37 +92,27 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 
 	// TODO(lamont): generate the rc_proto.FlagArtifacts message for the sources.
 	args := map[string]string{
-		"release_version":    ctx.Config().ReleaseVersion(),
-		"package":            module.properties.Package,
-		"declarations":       android.JoinPathsWithPrefix(declarationFiles, "--declarations "),
-		"values":             joinAndPrefix(" --values ", module.properties.Values),
-		"default-permission": optionalVariable(" --default-permission ", defaultPermission),
-	}
-	if len(module.properties.Container) > 0 {
-		args["container"] = "--container " + module.properties.Container
+		"release_version": ctx.Config().ReleaseVersion(),
+		"declarations":    android.JoinPathsWithPrefix(declarationFiles, "--decl "),
 	}
 	ctx.Build(pctx, android.BuildParams{
-		Rule:        aconfigRule,
+		Rule:        buildFlagRule,
 		Output:      intermediateCacheFilePath,
 		Inputs:      inputFiles,
-		Description: "aconfig_declarations",
+		Description: "build_flag_declarations",
 		Args:        args,
 	})
 
-	intermediateDumpFilePath := android.PathForModuleOut(ctx, "intermediate.txt")
+	intermediateDumpFilePath := android.PathForModuleOut(ctx, "build_flag_intermediate.textproto")
 	ctx.Build(pctx, android.BuildParams{
-		Rule:        aconfigTextRule,
+		Rule:        buildFlagTextRule,
 		Output:      intermediateDumpFilePath,
-		Inputs:      android.Paths{intermediateCacheFilePath},
-		Description: "aconfig_text",
+		Input:       intermediateCacheFilePath,
+		Description: "build_flag_declarations_text",
 	})
 
-	android.SetProvider(ctx, android.AconfigDeclarationsProviderKey, android.AconfigDeclarationsProviderData{
-		Package:                     module.properties.Package,
-		Container:                   module.properties.Container,
-		Exportable:                  module.properties.Exportable,
+	android.SetProvider(ctx, BuildFlagDeclarationsProviderKey, BuildFlagDeclarationsProviderData{
 		IntermediateCacheOutputPath: intermediateCacheFilePath,
 		IntermediateDumpOutputPath:  intermediateDumpFilePath,
 	})
-
 }
