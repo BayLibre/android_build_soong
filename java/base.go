@@ -1654,9 +1654,21 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 				classesJar:    implementationAndResourcesJar,
 				jarName:       jarName,
 			}
-			dexOutputFile = j.dexer.compileDex(ctx, params)
+			if j.EnableProfileRewriting() {
+				profile := j.GetProfile()
+				if profile == "" {
+					ctx.PropertyErrorf("enable_profile_rewriting", "Profile must be set when enable_profile_rewriting is true")
+				}
+				params.artProfileInput = &profile
+			}
+			dexOutputFile, dexArtProfileOutput := j.dexer.compileDex(ctx, params)
 			if ctx.Failed() {
 				return
+			}
+
+			// If r8 provides a profile that matches the optimized dex, use that for dexpreopt.
+			if dexArtProfileOutput != nil {
+				j.dexpreopter.SetRewrittenProfile(*dexArtProfileOutput)
 			}
 
 			// merge dex jar with resources if necessary
