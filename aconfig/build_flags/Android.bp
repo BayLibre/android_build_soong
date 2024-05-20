@@ -13,9 +13,9 @@ bootstrap_go_package {
         "soong-android",
     ],
     srcs: [
+        "all_build_flag_declarations.go",
         "declarations.go",
-        //"all_build_flag_declarations.go",
-        //"init.go",
+        "init.go",
     ],
     testSrcs: [
     ],
