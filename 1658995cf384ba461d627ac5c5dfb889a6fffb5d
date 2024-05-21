@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f11cb00_eec58c46",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-21T03:25:37Z",
+      "side": 1,
+      "message": "Remove the space here, which will prevent a trailing space in all non-verify commands that would invalidate all actions in existing incremental builds.",
+      "range": {
+        "startLine": 49,
+        "startChar": 90,
+        "endLine": 49,
+        "endChar": 91
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4ca273ea_80764a5b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/builder.go",
+              "range": {
+                "startLine": 49,
+                "startChar": 0,
+                "endLine": 50,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tCommand:     \"$relPwd ${config.CcWrapper}$ccCmd -c $cFlags -MD -MF ${out}.d -o $out $in$postCmd\",\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1658995cf384ba461d627ac5c5dfb889a6fffb5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d457893_2b30efd3",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-21T03:25:37Z",
+      "side": 1,
+      "message": "You\u0027ll need to add postCmd to this rule too",
+      "revId": "1658995cf384ba461d627ac5c5dfb889a6fffb5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
