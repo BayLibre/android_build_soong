@@ -50,6 +50,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01810b6a_75647ed5",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-21T17:34:54Z",
+      "side": 1,
+      "message": "Because you\u0027re only considering modules in the `sanitizerLibs` list, could you make this a normal module instead of a singletonModule, that adds deps on the sanitizerLibs during the deps mutator?",
+      "revId": "2dbcc7a3c79f6a513717ff8448fe6f689d165356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69a77e85_d795e3c7",
         "filename": "cc/sanitize.go",
         "patchSetId": 6
