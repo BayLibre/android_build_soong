@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c5529d_e53f7403",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-05-21T06:24:50Z",
+      "side": 1,
+      "message": "I don\u0027t think removing `t Toolchain` is necessary for this change.",
+      "range": {
+        "startLine": 212,
+        "startChar": 28,
+        "endLine": 212,
+        "endChar": 35
+      },
+      "revId": "2dbcc7a3c79f6a513717ff8448fe6f689d165356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a77e85_d795e3c7",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1853,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-05-21T06:24:50Z",
+      "side": 1,
+      "message": "how can this happen?",
+      "range": {
+        "startLine": 1850,
+        "startChar": 0,
+        "endLine": 1853,
+        "endChar": 2
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d59c2f90_464b99f7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/sanitize.go",
+              "range": {
+                "startLine": 1850,
+                "startChar": 0,
+                "endLine": 1855,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "2dbcc7a3c79f6a513717ff8448fe6f689d165356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddc83587_685ac325",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1861,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-05-21T06:24:50Z",
+      "side": 1,
+      "message": "nit: these lines could be put together in a single function.",
+      "range": {
+        "startLine": 1855,
+        "startChar": 0,
+        "endLine": 1861,
+        "endChar": 67
+      },
+      "revId": "2dbcc7a3c79f6a513717ff8448fe6f689d165356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
