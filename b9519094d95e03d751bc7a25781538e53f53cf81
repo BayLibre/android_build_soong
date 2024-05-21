@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1757712d_8c356aaf",
+        "filename": "android/selects_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-21T18:24:29Z",
+      "side": 1,
+      "message": "nit: Add a test for the default as well?",
+      "range": {
+        "startLine": 711,
+        "startChar": 5,
+        "endLine": 711,
+        "endChar": 6
+      },
+      "revId": "b9519094d95e03d751bc7a25781538e53f53cf81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
