@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef285082_80855977",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-21T03:55:05Z",
+      "side": 1,
+      "message": "This is kind of refactoring of this change - it requires more steps to generate toolchain from refactored logic, while it is never used.",
+      "parentUuid": "b0c8b1b4_8c78dc88",
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "419e7ba1_aa07fde6",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c05bbf4c_d8f4a153",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1800,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-21T03:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "419e7ba1_aa07fde6",
+      "range": {
+        "startLine": 1800,
+        "startChar": 30,
+        "endLine": 1800,
+        "endChar": 60
+      },
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c47cbdf0_22a4a42e",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-05-17T12:42:43Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 1801,
+        "startChar": 0,
+        "endLine": 1801,
+        "endChar": 65
+      },
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0de9c8f_0bf17f77",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-21T03:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c47cbdf0_22a4a42e",
       "range": {
         "startLine": 1801,
         "startChar": 0,
@@ -105,6 +171,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2427695d_e4d46716",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1825,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-21T03:55:05Z",
+      "side": 1,
+      "message": "The case was removed during the refactoring, and I forgot to remove this part. Thanks.",
+      "parentUuid": "b3626d95_07851f1b",
+      "range": {
+        "startLine": 1825,
+        "startChar": 0,
+        "endLine": 1825,
+        "endChar": 39
+      },
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97a5a726_3af9c114",
@@ -118,6 +208,30 @@
       "writtenOn": "2024-05-17T12:42:43Z",
       "side": 1,
       "message": "When can this happen?",
+      "range": {
+        "startLine": 1854,
+        "startChar": 0,
+        "endLine": 1857,
+        "endChar": 2
+      },
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4704ec8_b64a16e6",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-21T03:55:05Z",
+      "side": 1,
+      "message": "This can happen from prebuilt tools build, as of case from aosp/3076484.",
+      "parentUuid": "97a5a726_3af9c114",
       "range": {
         "startLine": 1854,
         "startChar": 0,
@@ -169,6 +283,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aeae6d4_76e57911",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-21T03:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eea7cc8_b8262608",
+      "range": {
+        "startLine": 1862,
+        "startChar": 0,
+        "endLine": 1865,
+        "endChar": 2
+      },
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03246ed5_5d149e46",
@@ -182,6 +320,30 @@
       "writtenOn": "2024-05-17T12:42:43Z",
       "side": 1,
       "message": "Is this a must? The stem by default is the module name, right?",
+      "range": {
+        "startLine": 1878,
+        "startChar": 0,
+        "endLine": 1878,
+        "endChar": 65
+      },
+      "revId": "7ae2547025c30c0055545d023f39d952815a6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4093bbbd_edc12f02",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1878,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-21T03:55:05Z",
+      "side": 1,
+      "message": "I probably just copied from somewhere else. I removed this part. Thanks.",
+      "parentUuid": "03246ed5_5d149e46",
       "range": {
         "startLine": 1878,
         "startChar": 0,
