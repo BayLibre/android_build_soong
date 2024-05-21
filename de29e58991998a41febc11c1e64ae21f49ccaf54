@@ -16,6 +16,24 @@
       "message": "You could avoid having to duplicate the whole rule here by adding a \"$postCommand\" variable at the end of the regular cc rule, and then setting it to `\" \u0026\u0026 touch $out\"`.",
       "revId": "de29e58991998a41febc11c1e64ae21f49ccaf54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3356b110_1e8a1a9b",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308036
+      },
+      "writtenOn": "2024-05-21T03:16:25Z",
+      "side": 1,
+      "message": "Done. Thanks Colin.",
+      "parentUuid": "f4f53922_e85ce46b",
+      "revId": "de29e58991998a41febc11c1e64ae21f49ccaf54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
