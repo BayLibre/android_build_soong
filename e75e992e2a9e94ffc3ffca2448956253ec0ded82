@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2c732da_c521c410",
+        "filename": "android/android_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-21T22:35:07Z",
+      "side": 1,
+      "message": "I think all of those things are fairly convertible, but it\u0027s not a 1:1 representation. \n\n1) We could deprecate `TARGET_BOOTLOADER_BOARD_NAME`, and instead add a `board_name` property to the `android_info` module that you can use instead of a `board_info_file` property.\n2) There could be a special property on the system partition module for the checked radio files. Then the system partition would take those files and the `android_info` module and run the check script on them.\n3) Installing the `android-info.txt` is the easy part, you\u0027ve done most of that in this cl already.\n\nIn general I think we need to start migrating off of these global configuration variables and rewriting them in terms of soong modules where it makes sense. And I think this is one of those places.",
+      "parentUuid": "7244a81b_4e43dad7",
+      "revId": "e75e992e2a9e94ffc3ffca2448956253ec0ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4464f19_debf5c53",
         "filename": "android/android_info.go",
         "patchSetId": 1
