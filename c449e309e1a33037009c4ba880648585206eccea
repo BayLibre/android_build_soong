@@ -22,6 +22,30 @@
       },
       "revId": "c449e309e1a33037009c4ba880648585206eccea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e0f66ad_e455b5b5",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1864,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-21T04:16:06Z",
+      "side": 1,
+      "message": "Removed from patch 6. Thx.",
+      "parentUuid": "b4735bbc_da3813dc",
+      "range": {
+        "startLine": 1861,
+        "startChar": 0,
+        "endLine": 1864,
+        "endChar": 3
+      },
+      "revId": "c449e309e1a33037009c4ba880648585206eccea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
