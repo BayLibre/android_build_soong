@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda59ad0_6c676fd4",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308036
+      },
+      "writtenOn": "2024-05-21T03:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f11cb00_eec58c46",
+      "range": {
+        "startLine": 49,
+        "startChar": 90,
+        "endLine": 49,
+        "endChar": 91
+      },
+      "revId": "1658995cf384ba461d627ac5c5dfb889a6fffb5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d457893_2b30efd3",
@@ -55,6 +79,24 @@
       "writtenOn": "2024-05-21T03:25:37Z",
       "side": 1,
       "message": "You\u0027ll need to add postCmd to this rule too",
+      "revId": "1658995cf384ba461d627ac5c5dfb889a6fffb5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "750628a7_41c056f5",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308036
+      },
+      "writtenOn": "2024-05-21T03:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d457893_2b30efd3",
       "revId": "1658995cf384ba461d627ac5c5dfb889a6fffb5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
