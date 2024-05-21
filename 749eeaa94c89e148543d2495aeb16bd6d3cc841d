@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaa7af6c_12ee5f9f",
+        "filename": "android/selects_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-21T21:34:24Z",
+      "side": 1,
+      "message": "Isn\u0027t this going to be necessary outside of tests too?  Should it go in blueprint?",
+      "fixSuggestions": [
+        {
+          "fixId": "2903fd39_368847f6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/selects_test.go",
+              "range": {
+                "startLine": 794,
+                "startChar": 0,
+                "endLine": 802,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "android/selects_test.go",
+              "range": {
+                "startLine": 805,
+                "startChar": 0,
+                "endLine": 810,
+                "endChar": 0
+              },
+              "replacement": "\t\tmy_bool:                        p.properties.My_bool.Config(ctx),\n\t\tmy_string:                      p.properties.My_string.Config(ctx),\n\t\tmy_string_list:                 p.properties.My_string_list.Config(ctx),\n\t\tmy_paths:                       p.properties.My_paths.Config(ctx),\n\t\treplacing_string_list:          p.properties.Replacing_string_list.Config(ctx),\n"
+            }
+          ]
+        }
+      ],
+      "revId": "749eeaa94c89e148543d2495aeb16bd6d3cc841d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
