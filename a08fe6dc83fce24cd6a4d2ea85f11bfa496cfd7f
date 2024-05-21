@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71cda926_80bb09f7",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2635,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-21T17:12:21Z",
+      "side": 1,
+      "message": "I\u0027d like to avoid adding more usages of `OtherModuleDependencyVariantExists`, as it has no analog in a future Soong world where variants are created on demand.  Is there some way to make the variants line up between a rust library that is suitable for use as a static cc library?  e.g. can we build the rlib in a `link: static` variant?",
+      "revId": "a08fe6dc83fce24cd6a4d2ea85f11bfa496cfd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbf302a5_36b3faf7",
         "filename": "cc/cc.go",
         "patchSetId": 2
