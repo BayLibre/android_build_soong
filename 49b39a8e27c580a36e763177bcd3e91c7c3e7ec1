@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a5dfb20_f2cdfd85",
+        "filename": "aconfig/build_flags/declarations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-05-21T17:30:05Z",
+      "side": 1,
+      "message": "I\u0027ll look into that for a follow-on change.",
+      "parentUuid": "301289fb_032da954",
+      "range": {
+        "startLine": 49,
+        "startChar": 34,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "49b39a8e27c580a36e763177bcd3e91c7c3e7ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "beebb889_44234733",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-21T17:18:44Z",
       "side": 1,
       "message": "Would it be possible to reuse `declarationsFiles` as inputs in line 103 and not have the copy altogether?\n\nOne of the side effects of always copying during soong analysis is that rdeps will become \"dirty\" in ninja every time soong build runs, even though the actual `Srcs` might not have changed.\n\nIf copying is necessary, can we do this during ninja execution and not during soong analysis?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 35
+      },
+      "revId": "49b39a8e27c580a36e763177bcd3e91c7c3e7ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363ce8d2_1428a919",
+        "filename": "aconfig/build_flags/declarations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-05-21T17:30:05Z",
+      "side": 1,
+      "message": "This is copying the variable, not the files.  Or am I misunderstanding your question?",
+      "parentUuid": "beebb889_44234733",
       "range": {
         "startLine": 87,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf0066f_690cdb68",
+        "filename": "bin/build-flag-declarations",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-05-21T17:30:05Z",
+      "side": 1,
+      "message": "I was told to not chnage the date when I made this copy of build/soong/soong_ui.bash.",
+      "parentUuid": "4577491c_cf5e2f4f",
+      "range": {
+        "startLine": 3,
+        "startChar": 12,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "49b39a8e27c580a36e763177bcd3e91c7c3e7ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f579610_f7c3137d",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-05-21T17:18:44Z",
       "side": 1,
       "message": "In aosp/3093085, it looks like we are building `build_flag_declarations` as part of ninja execution. \n\nIs there a use case for having `bin/build-flag-declarations` as well? `bin/build-flag-declratations` will build the go binary every single time, so might have some performance implications on incremental/null builds.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 95
+      },
+      "revId": "49b39a8e27c580a36e763177bcd3e91c7c3e7ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6daccd18_755e6465",
+        "filename": "bin/build-flag-declarations",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-05-21T17:30:05Z",
+      "side": 1,
+      "message": "This is here for developer convenience only.  If the tool has already been built by ninja, that will be the binary that is run.  This binary is only found when the user runs it prior a build which needs the binary.\n\nI could certainly drop it from the CL.",
+      "parentUuid": "4f579610_f7c3137d",
       "range": {
         "startLine": 25,
         "startChar": 0,
