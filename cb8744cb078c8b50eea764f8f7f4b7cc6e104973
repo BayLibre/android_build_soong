@@ -39,6 +39,30 @@
       },
       "revId": "cb8744cb078c8b50eea764f8f7f4b7cc6e104973",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5551b21_277800ae",
+        "filename": "cc/lto.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1890456
+      },
+      "writtenOn": "2024-05-21T20:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d278f21_c81590be",
+      "range": {
+        "startLine": 169,
+        "startChar": 23,
+        "endLine": 169,
+        "endChar": 47
+      },
+      "revId": "cb8744cb078c8b50eea764f8f7f4b7cc6e104973",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
