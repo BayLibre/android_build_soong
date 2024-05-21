@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a941950f_6b53cc49",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-21T07:34:24Z",
+      "side": 1,
+      "message": "It was not easy to get proper Toolchain value from this refactoring, while Toolchain argument was not in use.",
+      "parentUuid": "a3c5529d_e53f7403",
+      "range": {
+        "startLine": 212,
+        "startChar": 28,
+        "endLine": 212,
+        "endChar": 35
+      },
+      "revId": "2dbcc7a3c79f6a513717ff8448fe6f689d165356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69a77e85_d795e3c7",
@@ -61,6 +85,30 @@
           ]
         }
       ],
+      "revId": "2dbcc7a3c79f6a513717ff8448fe6f689d165356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb5fc5b_8e1799c4",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1853,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-21T07:34:24Z",
+      "side": 1,
+      "message": "This can happen from prebuilt tools build, as of case from aosp/3076484.",
+      "parentUuid": "69a77e85_d795e3c7",
+      "range": {
+        "startLine": 1850,
+        "startChar": 0,
+        "endLine": 1853,
+        "endChar": 2
+      },
       "revId": "2dbcc7a3c79f6a513717ff8448fe6f689d165356",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
