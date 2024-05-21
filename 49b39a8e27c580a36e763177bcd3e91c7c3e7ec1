@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "301289fb_032da954",
+        "filename": "aconfig/build_flags/declarations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-21T17:18:44Z",
+      "side": 1,
+      "message": "nit: I believe Zi is working on a proposal to redesign `OutputFiles` b/339477385. It looks like this is unused for `DeclarationsModule`, if so, can we consider removing it?",
+      "range": {
+        "startLine": 49,
+        "startChar": 34,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "49b39a8e27c580a36e763177bcd3e91c7c3e7ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beebb889_44234733",
+        "filename": "aconfig/build_flags/declarations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-21T17:18:44Z",
+      "side": 1,
+      "message": "Would it be possible to reuse `declarationsFiles` as inputs in line 103 and not have the copy altogether?\n\nOne of the side effects of always copying during soong analysis is that rdeps will become \"dirty\" in ninja every time soong build runs, even though the actual `Srcs` might not have changed.\n\nIf copying is necessary, can we do this during ninja execution and not during soong analysis?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 35
+      },
+      "revId": "49b39a8e27c580a36e763177bcd3e91c7c3e7ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4577491c_cf5e2f4f",
+        "filename": "bin/build-flag-declarations",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-21T17:18:44Z",
+      "side": 1,
+      "message": "nit: Update to 2024",
+      "range": {
+        "startLine": 3,
+        "startChar": 12,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "49b39a8e27c580a36e763177bcd3e91c7c3e7ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f579610_f7c3137d",
+        "filename": "bin/build-flag-declarations",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-21T17:18:44Z",
+      "side": 1,
+      "message": "In aosp/3093085, it looks like we are building `build_flag_declarations` as part of ninja execution. \n\nIs there a use case for having `bin/build-flag-declarations` as well? `bin/build-flag-declratations` will build the go binary every single time, so might have some performance implications on incremental/null builds.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 95
+      },
+      "revId": "49b39a8e27c580a36e763177bcd3e91c7c3e7ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
