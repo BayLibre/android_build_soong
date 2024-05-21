@@ -213,12 +213,13 @@ func GetDefaultMapPaths(queryMaps bool) (defaultMapPaths StringList, err error) 
 	var prodMaps string
 	if queryMaps {
 		getBuildVar := exec.Command("build/soong/soong_ui.bash", "--dumpvar-mode", "PRODUCT_RELEASE_CONFIG_MAPS")
-		var stdout strings.Builder
+		var stdout, stderr strings.Builder
 		getBuildVar.Stdin = strings.NewReader("")
 		getBuildVar.Stdout = &stdout
+		getBuildVar.Stderr = &stderr
 		err = getBuildVar.Run()
 		if err != nil {
-			return
+			return defaultMapPaths, fmt.Errorf("get_build_var error: %s:\n%s", err, stderr.String())
 		}
 		prodMaps = stdout.String()
 	} else {
