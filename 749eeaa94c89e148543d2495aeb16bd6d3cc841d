@@ -44,6 +44,24 @@
       ],
       "revId": "749eeaa94c89e148543d2495aeb16bd6d3cc841d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da712c84_9ec90097",
+        "filename": "android/selects_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-21T21:37:18Z",
+      "side": 1,
+      "message": "I expect code outside of tests to use `.IsPresent` + `.Get()` or `.GetOrDefault()` instead of converting to a pointer. This `optionalToPtr` is not that efficient because it does a memory allocation, I wouldn\u0027t recommend that for actual code.\n\nCurrently the other few usages of Configurable properties are all already using `GetOrDefault()`, so they\u0027re not seeing this new optional change.\n\nI mostly just made this to be lazy and not have to update all the tests to an alternate syntax.",
+      "parentUuid": "eaa7af6c_12ee5f9f",
+      "revId": "749eeaa94c89e148543d2495aeb16bd6d3cc841d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
