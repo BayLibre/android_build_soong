@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c7c8b7_3761bbe4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-05-21T21:55:25Z",
+      "side": 1,
+      "message": "The entire stack of changes has now passed presubmit.  However, since aosp/3093084 was submitted independently, gerrit is refusing to let me submit the remainder of the stack.",
+      "revId": "49b39a8e27c580a36e763177bcd3e91c7c3e7ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "301289fb_032da954",
