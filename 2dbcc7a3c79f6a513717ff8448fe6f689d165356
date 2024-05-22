@@ -139,6 +139,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df4302c9_97f794ed",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-22T17:25:11Z",
+      "side": 1,
+      "message": "\u003e If I switch sanitizer_libraries_txt into general module, then I should add reverse dependency from sanitizer_libraries_txt to sanitizer libraries from DepsMutator, while most of dependencies invoked in the DepsMutator is from the module (including sanitizer libraries) to other modules.\n\nWhy would you add reverse dependencies? It would be forward dependencies from the `sanitizer_libraries_txt` onto the `sanitizerVariables` libraries. I\u0027m saying implement this in the `DepsMutator` of `sanitizer_libraries_txt`, not the `DepsMutator` of other module types.",
+      "parentUuid": "9126eb88_8c5b7f5e",
+      "revId": "2dbcc7a3c79f6a513717ff8448fe6f689d165356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69a77e85_d795e3c7",
         "filename": "cc/sanitize.go",
         "patchSetId": 6
