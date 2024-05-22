@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0134d57f_15073a98",
+        "filename": "rust/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-22T18:57:48Z",
+      "side": 1,
+      "message": "At ToT, `library.baseCompiler.Properties.Cfgs` is being mutated by this function. After this CL, `android_dylib` will no longer be added. Is the mutation no longer necessary?",
+      "range": {
+        "startLine": 513,
+        "startChar": 2,
+        "endLine": 513,
+        "endChar": 38
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "52236b0a_346c6423",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "rust/library.go",
+              "range": {
+                "startLine": 507,
+                "startChar": 0,
+                "endLine": 508,
+                "endChar": 0
+              },
+              "replacement": "\tcfgs :\u003d cfgsToFlags(library.baseCompiler.Properties.Cfgs.GetOrDefault(ctx, []string{\"android_dylib\"}))\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6cf5a99d32ac619eefc7d7edda61adaaad5be9e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

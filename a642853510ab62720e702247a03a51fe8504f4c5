@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee8fbeb_134d6c88",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-22T18:57:48Z",
+      "side": 0,
+      "message": "Has this check been replaced by a different one?",
+      "range": {
+        "startLine": 268,
+        "startChar": 2,
+        "endLine": 268,
+        "endChar": 18
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "481fd0be_7d8ea08c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "etc/prebuilt_etc.go",
+              "range": {
+                "startLine": 265,
+                "startChar": 0,
+                "endLine": 269,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "a642853510ab62720e702247a03a51fe8504f4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
