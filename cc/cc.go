@@ -1635,14 +1635,6 @@ func (ctx *moduleContextImpl) useSdk() bool {
 
 func (ctx *moduleContextImpl) sdkVersion() string {
 	if ctx.ctx.Device() {
-		config := ctx.ctx.Config()
-		if !config.IsVndkDeprecated() && ctx.useVndk() {
-			vndkVer := ctx.mod.VndkVersion()
-			if inList(vndkVer, config.PlatformVersionActiveCodenames()) {
-				return "current"
-			}
-			return vndkVer
-		}
 		return String(ctx.mod.Properties.Sdk_version)
 	}
 	return ""
@@ -1659,7 +1651,7 @@ func (ctx *moduleContextImpl) minSdkVersion() string {
 
 	if ctx.ctx.Device() {
 		config := ctx.ctx.Config()
-		if config.IsVndkDeprecated() && ctx.inVendor() {
+		if ctx.inVendor() {
 			// If building for vendor with final API, then use the latest _stable_ API as "current".
 			if config.VendorApiLevelFrozen() && (ver == "" || ver == "current") {
 				ver = config.PlatformSdkVersion().String()
@@ -3647,12 +3639,7 @@ func MakeLibName(ctx android.ModuleContext, c LinkableInterface, ccDep LinkableI
 		}
 	}
 
-	if ctx.DeviceConfig().VndkUseCoreVariant() && ccDep.IsVndk() && !ccDep.MustUseVendorVariant() &&
-		!c.InRamdisk() && !c.InVendorRamdisk() && !c.InRecovery() {
-		// The vendor module is a no-vendor-variant VNDK library.  Depend on the
-		// core module instead.
-		return libName
-	} else if ccDep.InVendorOrProduct() && nonSystemVariantsExist {
+	if ccDep.InVendorOrProduct() && nonSystemVariantsExist {
 		// The vendor and product modules in Make will have been renamed to not conflict with the
 		// core module, so update the dependency name here accordingly.
 		return libName + ccDep.SubName()
@@ -3865,8 +3852,6 @@ func GetMakeLinkType(actx android.ModuleContext, c LinkableInterface) string {
 		// TODO(b/114741097): use the correct ndk stl once build errors have been fixed
 		//family, link := getNdkStlFamilyAndLinkType(c)
 		//return fmt.Sprintf("native:ndk:%s:%s", family, link)
-	} else if actx.DeviceConfig().VndkUseCoreVariant() && !c.MustUseVendorVariant() {
-		return "native:platform_vndk"
 	} else {
 		return "native:platform"
 	}

@@ -304,9 +304,6 @@ func processVndkLibrary(mctx android.BottomUpMutatorContext, m *Module) {
 	if inList(name, vndkMustUseVendorVariantList(mctx.Config())) {
 		m.Properties.MustUseVendorVariant = true
 	}
-	if mctx.DeviceConfig().VndkUseCoreVariant() && !m.Properties.MustUseVendorVariant {
-		m.VendorProperties.IsVNDKUsingCoreVariant = true
-	}
 
 	if m.vndkdep.isVndkSp() {
 		m.VendorProperties.IsVNDKSP = true
@@ -356,8 +353,8 @@ func IsForVndkApex(mctx android.BottomUpMutatorContext, m *Module) bool {
 		if lib.buildStubs() {
 			return false
 		}
-		useCoreVariant := mctx.DeviceConfig().VndkUseCoreVariant() && !m.MustUseVendorVariant()
-		return lib.shared() && m.InVendor() && m.IsVndk() && !m.IsVndkExt() && !useCoreVariant
+
+		return lib.shared() && m.InVendor() && m.IsVndk() && !m.IsVndkExt()
 	}
 	return false
 }
