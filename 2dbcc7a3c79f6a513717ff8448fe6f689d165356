@@ -67,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4335c8ea_02256d6f",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-22T00:29:06Z",
+      "side": 1,
+      "message": "I can try, but I\u0027d like to understand what would be the benefit of defining this as normal module, as we already have cc deps mutator which is complex enough.",
+      "parentUuid": "01810b6a_75647ed5",
+      "revId": "2dbcc7a3c79f6a513717ff8448fe6f689d165356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69a77e85_d795e3c7",
         "filename": "cc/sanitize.go",
         "patchSetId": 6
