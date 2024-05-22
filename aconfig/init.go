@@ -104,6 +104,7 @@ var (
 
 func init() {
 	RegisterBuildComponents(android.InitRegistrationContext)
+	pctx.Import("android/soong/android")
 	pctx.HostBinToolVariable("aconfig", "aconfig")
 	pctx.HostBinToolVariable("soong_zip", "soong_zip")
 }
