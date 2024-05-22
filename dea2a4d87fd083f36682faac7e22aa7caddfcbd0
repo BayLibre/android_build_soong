@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bef2f3e1_f825821d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1114063
+      },
+      "writtenOn": "2024-05-22T06:19:07Z",
+      "side": 1,
+      "message": "Yes, we packaged the script just for the testing purpose.",
+      "parentUuid": "ff2c64e5_9b474e5b",
+      "revId": "dea2a4d87fd083f36682faac7e22aa7caddfcbd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa71fd3c_8a2151be",
         "filename": "bin/Android.bp",
         "patchSetId": 4
@@ -49,6 +67,24 @@
       "writtenOn": "2024-05-22T00:37:05Z",
       "side": 1,
       "message": "I don\u0027t think we need to zip up a single shell script, could you just make a filegroup instead?",
+      "revId": "dea2a4d87fd083f36682faac7e22aa7caddfcbd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac032a3e_6507e484",
+        "filename": "bin/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1114063
+      },
+      "writtenOn": "2024-05-22T06:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa71fd3c_8a2151be",
       "revId": "dea2a4d87fd083f36682faac7e22aa7caddfcbd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -84,6 +120,24 @@
       "side": 1,
       "message": "Probably not unless we\u0027re referencing a symbol from there. @zhuoyao@google.com to confirm.",
       "parentUuid": "577046ca_2d463632",
+      "revId": "dea2a4d87fd083f36682faac7e22aa7caddfcbd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08778e28_589614f3",
+        "filename": "tests/run_tool_with_logging_test.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1114063
+      },
+      "writtenOn": "2024-05-22T06:19:07Z",
+      "side": 1,
+      "message": "I removed the envsetup from the test.\n\nI had that before as I want to test what the user will interact with the function (source build/envsetup.sh and then run the script). But now I think it is clearer (and simpler) to just test the script functionality here.",
+      "parentUuid": "aca9a12e_726b4b02",
       "revId": "dea2a4d87fd083f36682faac7e22aa7caddfcbd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
