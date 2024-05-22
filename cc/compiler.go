@@ -50,7 +50,7 @@ type BaseCompilerProperties struct {
 	Exclude_srcs []string `android:"path,arch_variant"`
 
 	// list of module-specific flags that will be used for C and C++ compiles.
-	Cflags []string `android:"arch_variant"`
+	Cflags proptools.Configurable[[]string] `android:"arch_variant"`
 
 	// list of module-specific flags that will be used for C++ compiles
 	Cppflags []string `android:"arch_variant"`
