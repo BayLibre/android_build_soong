@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa71fd3c_8a2151be",
+        "filename": "bin/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-22T00:37:05Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to zip up a single shell script, could you just make a filegroup instead?",
+      "revId": "dea2a4d87fd083f36682faac7e22aa7caddfcbd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "577046ca_2d463632",
+        "filename": "tests/run_tool_with_logging_test.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-22T00:37:05Z",
+      "side": 1,
+      "message": "Do we still need envsetup in this test?",
+      "revId": "dea2a4d87fd083f36682faac7e22aa7caddfcbd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
