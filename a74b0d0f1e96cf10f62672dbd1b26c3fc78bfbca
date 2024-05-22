@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd39a86_8a8ecfb0",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-22T23:46:34Z",
+      "side": 1,
+      "message": "Switched to `FlagWithArg`, and tweaked the var name to note that it\u0027s an optional artifact.",
+      "parentUuid": "07949a08_6dfb75d0",
+      "range": {
+        "startLine": 263,
+        "startChar": 2,
+        "endLine": 263,
+        "endChar": 43
+      },
+      "revId": "a74b0d0f1e96cf10f62672dbd1b26c3fc78bfbca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef25dd40_9de9575c",
@@ -79,6 +103,30 @@
           ]
         }
       ],
+      "revId": "a74b0d0f1e96cf10f62672dbd1b26c3fc78bfbca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7eff3cd_88e1b018",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-22T23:46:34Z",
+      "side": 1,
+      "message": "Switched to `IsEnvTrue`",
+      "parentUuid": "ef25dd40_9de9575c",
+      "range": {
+        "startLine": 492,
+        "startChar": 51,
+        "endLine": 492,
+        "endChar": 53
+      },
       "revId": "a74b0d0f1e96cf10f62672dbd1b26c3fc78bfbca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
