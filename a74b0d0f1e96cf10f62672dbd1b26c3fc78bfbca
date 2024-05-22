@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07949a08_6dfb75d0",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-22T22:22:59Z",
+      "side": 1,
+      "message": "Only call this when DEX_PREOPT_SYMBOLIZE is set to \"true\". Otherwise, Soong will expect the symbol file as an output and can\u0027t find it, resulting in warnings.",
+      "range": {
+        "startLine": 263,
+        "startChar": 2,
+        "endLine": 263,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1ff1fee4_0f49949a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "dexpreopt/dexpreopt.go",
+              "range": {
+                "startLine": 262,
+                "startChar": 0,
+                "endLine": 264,
+                "endChar": 0
+              },
+              "replacement": "\trule.Command().FlagWithOutput(\"rm -f \", odexPath)\n\tif ctx.Config().Getenv(\"DEX_PREOPT_SYMBOLIZE\") !\u003d \"\" {\n\t\trule.Command().FlagWithOutput(\"rm -f \", odexSymbolsPath)\n\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a74b0d0f1e96cf10f62672dbd1b26c3fc78bfbca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef25dd40_9de9575c",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-22T22:22:59Z",
+      "side": 1,
+      "message": "`\"true\"`, just in case someone finds it surprising when it\u0027s set to \"false\".",
+      "range": {
+        "startLine": 492,
+        "startChar": 51,
+        "endLine": 492,
+        "endChar": 53
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "41b046ad_7c2b9a62",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "dexpreopt/dexpreopt.go",
+              "range": {
+                "startLine": 492,
+                "startChar": 0,
+                "endLine": 493,
+                "endChar": 0
+              },
+              "replacement": "\tif ctx.Config().Getenv(\"DEX_PREOPT_SYMBOLIZE\") \u003d\u003d \"true\" {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a74b0d0f1e96cf10f62672dbd1b26c3fc78bfbca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
