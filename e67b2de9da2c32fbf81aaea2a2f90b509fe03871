@@ -80,6 +80,30 @@
       ],
       "revId": "e67b2de9da2c32fbf81aaea2a2f90b509fe03871",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e10a2941_c283352f",
+        "filename": "android/build_flags.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-05-22T15:47:16Z",
+      "side": 1,
+      "message": "Please ignore the \"AI-suggested fix\".",
+      "parentUuid": "f5c0a7a6_4db14ce3",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "e67b2de9da2c32fbf81aaea2a2f90b509fe03871",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
