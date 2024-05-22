@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c0a7a6_4db14ce3",
+        "filename": "android/build_flags.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-05-22T15:43:52Z",
+      "side": 1,
+      "message": "Consider moving this to `aconfig/build_flags` -- I don\u0027t think it needs to be in the android module.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a380a561_51cb440b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/build_flags.go",
+              "range": {
+                "startLine": 15,
+                "startChar": 0,
+                "endLine": 16,
+                "endChar": 0
+              },
+              "replacement": "package aconfig\n"
+            },
+            {
+              "path": "android/build_flags.go",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 33,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "android/build_flags.go",
+              "range": {
+                "startLine": 34,
+                "startChar": 0,
+                "endLine": 35,
+                "endChar": 0
+              },
+              "replacement": "\tModuleBase `json:`\n"
+            },
+            {
+              "path": "android/build_flags.go",
+              "range": {
+                "startLine": 39,
+                "startChar": 0,
+                "endLine": 46,
+                "endChar": 0
+              },
+              "replacement": "func (m *buildFlags) GenerateAndroidBuildActions(ctx ModuleContext) { // NOLINT\n"
+            },
+            {
+              "path": "android/build_flags.go",
+              "range": {
+                "startLine": 64,
+                "startChar": 0,
+                "endLine": 66,
+                "endChar": 0
+              },
+              "replacement": "func (m *buildFlags) AndroidMkEntries() []AndroidMkEntries { // NOLINT\n\treturn []AndroidMkEntries{{\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e67b2de9da2c32fbf81aaea2a2f90b509fe03871",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
