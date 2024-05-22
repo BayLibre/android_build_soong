@@ -121,6 +121,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9126eb88_8c5b7f5e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-22T04:37:16Z",
+      "side": 1,
+      "message": "\u003e they have the potential to cause their reverse dependencies to rebuild when anything in the tree changes.\n\nI think soong should be invoked anyway if there is any change in Android.bp, as we are not sure if the change would include change in sanitizer library list or not.\n\n\u003e They can also get different results based on how much of the tree you have downloaded, which makes it harder for developers to check out a minimal source tree.\n\nI believe this is somewhat expected - if there are less sanitizer library definitions in the checked-out tree, then it should generate with those checked-out libraries.\n\nIf I switch `sanitizer_libraries_txt` into general module, then I should add reverse dependency from sanitizer_libraries_txt to sanitizer libraries from DepsMutator, while most of dependencies invoked in the DepsMutator is from the module (including sanitizer libraries) to other modules. Also, to implement this from DepsMutator, the only way I can think of is to find module by name (sanitizer.libraries.txt), but this somewhat limits usage of `sanitizer_libraries_txt` to have a single name.\n\nThis may look inefficient, but making this into general module can have more limitation on the module, and I don\u0027t see any remarkable benefits from this. Can we go with singleton module, and switch into the general module later if needed?",
+      "parentUuid": "342b966c_28fe8ce7",
+      "revId": "2dbcc7a3c79f6a513717ff8448fe6f689d165356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69a77e85_d795e3c7",
         "filename": "cc/sanitize.go",
         "patchSetId": 6
