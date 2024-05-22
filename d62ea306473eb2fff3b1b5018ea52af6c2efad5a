@@ -22,6 +22,30 @@
       },
       "revId": "d62ea306473eb2fff3b1b5018ea52af6c2efad5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2b0723_5a9222fb",
+        "filename": "cc/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-22T17:27:36Z",
+      "side": 1,
+      "message": "`$out` doesn\u0027t work either, but `postCmd \u003d \" \u0026\u0026 touch \" + objFile.String()` works.",
+      "parentUuid": "40652418_31834a77",
+      "range": {
+        "startLine": 641,
+        "startChar": 24,
+        "endLine": 641,
+        "endChar": 29
+      },
+      "revId": "d62ea306473eb2fff3b1b5018ea52af6c2efad5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
