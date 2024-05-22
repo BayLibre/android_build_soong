@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0d4147f_756ce148",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-22T08:13:02Z",
+      "side": 1,
+      "message": "Cool, but what about this function?\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/cc.go;drc\u003dc026f2f5b9ee57b53b738863b58a1b3761796c83;l\u003d1397",
+      "revId": "fd71634279d13a5daedbc38deb809f63b2f5edaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
