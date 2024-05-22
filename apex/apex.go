@@ -985,8 +985,15 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 			return false
 		}
 
+<<<<<<< PATCH SET (74398d VNDK is fully deprecated from Soong)
+		//TODO: b/296491928 Vendor APEX should use libbinder.ndk instead of libbinder.
+		if useVndk && child.Name() == "libbinder" {
+			log.Print("Libbinder is linked from Vendor APEX ", a.Name(), " with module ", parent.Name())
+			return false
+=======
 		if useVndk && child.Name() == "libbinder" {
 			mctx.ModuleErrorf("Module %s in the vendor APEX %s should not use libbinder. Use libbinder_ndk instead.", parent.Name(), a.Name())
+>>>>>>> BASE      (79b0ee Merge "Move vendor and product variant generation logic from)
 		}
 
 		// By default, all the transitive dependencies are collected, unless filtered out
