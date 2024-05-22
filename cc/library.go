@@ -1782,16 +1782,7 @@ func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 
 				if mayUseCoreVariant {
 					library.checkSameCoreVariant = true
-					if ctx.DeviceConfig().VndkUseCoreVariant() {
-						library.useCoreVariant = true
-					}
 				}
-			}
-
-			// do not install vndk libs
-			// vndk libs are packaged into VNDK APEX
-			if ctx.isVndk() && !ctx.IsVndkExt() && !ctx.Config().IsVndkDeprecated() && !ctx.inProduct() {
-				return
 			}
 		} else if library.hasStubsVariants() && !ctx.Host() && ctx.directlyInAnyApex() {
 			// Bionic libraries (e.g. libc.so) is installed to the bootstrap subdirectory.

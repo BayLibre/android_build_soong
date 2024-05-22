@@ -1391,10 +1391,6 @@ func (c *config) PrebuiltHiddenApiDir(_ PathContext) string {
 	return String(c.productVariables.PrebuiltHiddenApiDir)
 }
 
-func (c *config) IsVndkDeprecated() bool {
-	return !Bool(c.productVariables.KeepVndk)
-}
-
 func (c *config) VendorApiLevel() string {
 	return String(c.productVariables.VendorApiLevel)
 }
@@ -1460,10 +1456,6 @@ func (c *deviceConfig) CurrentApiLevelForVendorModules() string {
 
 func (c *deviceConfig) ExtraVndkVersions() []string {
 	return c.config.productVariables.ExtraVndkVersions
-}
-
-func (c *deviceConfig) VndkUseCoreVariant() bool {
-	return Bool(c.config.productVariables.VndkUseCoreVariant) && Bool(c.config.productVariables.KeepVndk)
 }
 
 func (c *deviceConfig) SystemSdkVersions() []string {
