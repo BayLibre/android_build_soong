@@ -1,0 +1,59 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1856bc77_3957b76b",
+        "filename": "cmd/release_config/release_config_lib/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-05-22T00:14:40Z",
+      "side": 1,
+      "message": "Should you just let stderr fall through to this processes\u0027 stderr, or do you really want to capture and re-print it?",
+      "fixSuggestions": [
+        {
+          "fixId": "636f9d1f_bca0afa5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cmd/release_config/release_config_lib/util.go",
+              "range": {
+                "startLine": 216,
+                "startChar": 0,
+                "endLine": 217,
+                "endChar": 0
+              },
+              "replacement": "\t\tvar stdout strings.Builder\n"
+            },
+            {
+              "path": "cmd/release_config/release_config_lib/util.go",
+              "range": {
+                "startLine": 219,
+                "startChar": 0,
+                "endLine": 220,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "cmd/release_config/release_config_lib/util.go",
+              "range": {
+                "startLine": 222,
+                "startChar": 0,
+                "endLine": 223,
+                "endChar": 0
+              },
+              "replacement": "\t\t\treturn defaultMapPaths, fmt.Errorf(\"get_build_var error: %s\", err)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6e00051ed8c042d44eca1afc0c503af66d3ceab0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
