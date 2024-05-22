@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "666fff0b_290efa16",
+        "filename": "android/selects_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-22T22:23:27Z",
+      "side": 1,
+      "message": "TIL we can do such substitutions",
+      "range": {
+        "startLine": 730,
+        "startChar": 24,
+        "endLine": 730,
+        "endChar": 36
+      },
+      "revId": "5f297068431ab79d90e474c12d434f1776265a85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
