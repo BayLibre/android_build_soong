@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff2c64e5_9b474e5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2024-05-22T00:45:06Z",
+      "side": 1,
+      "message": "Can\u0027t see where you placed the comment but I\u0027m assuming it\u0027s for the packaged zip. The tests run in the test environment (lab) and don\u0027t have access to the source tree.",
+      "parentUuid": "129a8bb1_2174c688",
+      "revId": "dea2a4d87fd083f36682faac7e22aa7caddfcbd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa71fd3c_8a2151be",
         "filename": "bin/Android.bp",
         "patchSetId": 4
@@ -48,6 +66,24 @@
       "writtenOn": "2024-05-22T00:37:05Z",
       "side": 1,
       "message": "Do we still need envsetup in this test?",
+      "revId": "dea2a4d87fd083f36682faac7e22aa7caddfcbd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca9a12e_726b4b02",
+        "filename": "tests/run_tool_with_logging_test.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2024-05-22T00:45:06Z",
+      "side": 1,
+      "message": "Probably not unless we\u0027re referencing a symbol from there. @zhuoyao@google.com to confirm.",
+      "parentUuid": "577046ca_2d463632",
       "revId": "dea2a4d87fd083f36682faac7e22aa7caddfcbd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
