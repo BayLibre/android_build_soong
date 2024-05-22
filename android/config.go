@@ -852,6 +852,17 @@ func (c *config) DisplayBuildNumber() bool {
 	return Bool(c.productVariables.DisplayBuildNumber)
 }
 
+// BuildFingerprintFile returns the path to a text file containing metadata
+// representing the current build's fingerprint.
+//
+// Rules that want to reference the build fingerprint should read from this file
+// without depending on it. They will run whenever their other dependencies
+// require them to run and get the current build fingerprint. This ensures they
+// don't rebuild on every incremental build when the build number changes.
+func (c *config) BuildFingerprintFile(ctx PathContext) Path {
+	return PathForArbitraryOutput(ctx, "target", "product", c.DeviceName(), String(c.productVariables.BuildFingerprintFile))
+}
+
 // BuildNumberFile returns the path to a text file containing metadata
 // representing the current build's number.
 //
@@ -903,6 +914,18 @@ func (c *config) HasDeviceProduct() bool {
 
 func (c *config) DeviceAbi() []string {
 	return c.productVariables.DeviceAbi
+}
+
+func (c *config) DeviceAbiList() string {
+	return proptools.String(c.productVariables.DeviceAbiList)
+}
+
+func (c *config) DeviceAbiList32() string {
+	return proptools.String(c.productVariables.DeviceAbiList32)
+}
+
+func (c *config) DeviceAbiList64() string {
+	return proptools.String(c.productVariables.DeviceAbiList64)
 }
 
 func (c *config) DeviceResourceOverlays() []string {
@@ -1784,12 +1807,40 @@ func (c *deviceConfig) DeviceArchVariant() string {
 	return String(c.config.productVariables.DeviceArchVariant)
 }
 
+func (c *deviceConfig) DeviceCpuVariant() string {
+	return String(c.config.productVariables.DeviceCpuVariant)
+}
+
+func (c *deviceConfig) DeviceCpuVariantRuntime() string {
+	return String(c.config.productVariables.DeviceCpuVariantRuntime)
+}
+
 func (c *deviceConfig) DeviceSecondaryArch() string {
 	return String(c.config.productVariables.DeviceSecondaryArch)
 }
 
 func (c *deviceConfig) DeviceSecondaryArchVariant() string {
 	return String(c.config.productVariables.DeviceSecondaryArchVariant)
+}
+
+func (c *deviceConfig) DeviceSecondaryArchVariantRuntime() string {
+	return String(c.config.productVariables.DeviceSecondaryCpuVariantRuntime)
+}
+
+func (c *deviceConfig) Dex2oatTargetCpuVariantRuntime() string {
+	return String(c.config.productVariables.Dex2oatTargetCpuVariantRuntime)
+}
+
+func (c *deviceConfig) Dex2oatTargetInstructionSetFeatures() string {
+	return String(c.config.productVariables.Dex2oatTargetInstructionSetFeatures)
+}
+
+func (c *deviceConfig) SecondaryDex2oatCpuVariantRuntime() string {
+	return String(c.config.productVariables.SecondaryDex2oatCpuVariantRuntime)
+}
+
+func (c *deviceConfig) SecondaryDex2oatInstructionSetFeatures() string {
+	return String(c.config.productVariables.SecondaryDex2oatInstructionSetFeatures)
 }
 
 func (c *deviceConfig) BoardUsesRecoveryAsBoot() bool {
@@ -1911,12 +1962,24 @@ func (c *deviceConfig) HostFakeSnapshotEnabled() bool {
 	return c.config.productVariables.HostFakeSnapshotEnabled
 }
 
+func (c *deviceConfig) BoardPlatform() string {
+	return String(c.config.productVariables.BoardPlatform)
+}
+
+func (c *deviceConfig) BoardShippingApiLevel() string {
+	return String(c.config.productVariables.BoardShippingApiLevel)
+}
+
 func (c *deviceConfig) ShippingApiLevel() ApiLevel {
 	if c.config.productVariables.ShippingApiLevel == nil {
 		return NoneApiLevel
 	}
 	apiLevel, _ := strconv.Atoi(*c.config.productVariables.ShippingApiLevel)
 	return uncheckedFinalApiLevel(apiLevel)
+}
+
+func (c *deviceConfig) ShippingVendorApiLevel() string {
+	return String(c.config.productVariables.ShippingVendorApiLevel)
 }
 
 func (c *deviceConfig) BuildBrokenPluginValidation() []string {
@@ -1961,6 +2024,10 @@ func (c *deviceConfig) BuildBrokenInputDir(name string) bool {
 
 func (c *deviceConfig) BuildBrokenDontCheckSystemSdk() bool {
 	return c.config.productVariables.BuildBrokenDontCheckSystemSdk
+}
+
+func (c *deviceConfig) BuildBrokenDupSysprop() bool {
+	return c.config.productVariables.BuildBrokenDupSysprop
 }
 
 func (c *config) BuildWarningBadOptionalUsesLibsAllowlist() []string {
@@ -2150,6 +2217,166 @@ func (c *config) BoardUseVbmetaDigestInFingerprint() bool {
 	return Bool(c.productVariables.BoardUseVbmetaDigestInFingerprint)
 }
 
+func (c *config) SystemProperties() []string {
+	return c.productVariables.SystemProperties
+}
+
+func (c *config) SystemDefaultProperties() []string {
+	return c.productVariables.SystemDefaultProperties
+}
+
+func (c *config) SystemExtProperties() []string {
+	return c.productVariables.SystemExtProperties
+}
+
+func (c *config) VendorProperties() []string {
+	return c.productVariables.VendorProperties
+}
+
+func (c *config) ProductProperties() []string {
+	return c.productVariables.ProductProperties
+}
+
+func (c *config) OdmProperties() []string {
+	return c.productVariables.OdmProperties
+}
+
 func (c *config) OemProperties() []string {
 	return c.productVariables.OemProperties
+}
+
+func (c *config) PropertyOverrides() []string {
+	return c.productVariables.PropertyOverrides
+}
+
+func (c *config) BootloaderBoardName() string {
+	return String(c.productVariables.BootloaderBoardName)
+}
+
+func (c *config) EnableUffdGc() string {
+	return String(c.productVariables.EnableUffdGc)
+}
+
+func (c *config) ProductManufacturer() string {
+	return c.productVariables.ProductManufacturer
+}
+
+func (c *config) ProductBrand() string {
+	return c.productVariables.ProductBrand
+}
+
+func (c *config) ProductModel() string {
+	return c.productVariables.ProductModel
+}
+
+func (c *config) ProductModelForAttestation() string {
+	return String(c.productVariables.ProductModelForAttestation)
+}
+
+func (c *config) ProductBrandForAttestation() string {
+	return String(c.productVariables.ProductBrandForAttestation)
+}
+
+func (c *config) ProductNameForAttestation() string {
+	return String(c.productVariables.ProductNameForAttestation)
+}
+
+func (c *config) ProductDeviceForAttestation() string {
+	return String(c.productVariables.ProductDeviceForAttestation)
+}
+
+func (c *config) ProductManufacturerForAttestation() string {
+	return String(c.productVariables.ProductManufacturerForAttestation)
+}
+
+func (c *config) SystemBrand() string {
+	return String(c.productVariables.SystemBrand)
+}
+
+func (c *config) SystemDevice() string {
+	return String(c.productVariables.SystemDevice)
+}
+
+func (c *config) SystemManufacturer() string {
+	return String(c.productVariables.SystemManufacturer)
+}
+
+func (c *config) SystemModel() string {
+	return String(c.productVariables.SystemModel)
+}
+
+func (c *config) SystemName() string {
+	return String(c.productVariables.SystemName)
+}
+
+func (c *config) SystemServerCompilerFilter() string {
+	return String(c.productVariables.SystemServerCompilerFilter)
+}
+
+func (c *config) Product16KDeveloperOption() bool {
+	return Bool(c.productVariables.Product16KDeveloperOption)
+}
+
+func (c *config) RecoveryDefaultRotation() string {
+	return String(c.productVariables.RecoveryDefaultRotation)
+}
+
+func (c *config) RecoveryOverscanPercent() string {
+	return String(c.productVariables.RecoveryOverscanPercent)
+}
+
+func (c *config) RecoveryPixelFormat() string {
+	return String(c.productVariables.RecoveryPixelFormat)
+}
+
+func (c *config) AbOtaUpdater() *bool {
+	return c.productVariables.AbOtaUpdater
+}
+
+func (c *config) AbOtaPartitions() string {
+	return String(c.productVariables.AbOtaPartitions)
+}
+
+func (c *config) UseDynamicPartitions() *bool {
+	return c.productVariables.UseDynamicPartitions
+}
+
+func (c *config) RetrofitDynamicPartitions() *bool {
+	return c.productVariables.RetrofitDynamicPartitions
+}
+
+func (c *config) DontUseVabcOta() bool {
+	return Bool(c.productVariables.DontUseVabcOta)
+}
+
+func (c *config) FullTreble() bool {
+	return Bool(c.productVariables.FullTreble)
+}
+
+func (c *config) NoBionicPageSizeMacro() bool {
+	return Bool(c.productVariables.NoBionicPageSizeMacro)
+}
+
+func (c *config) PropertySplitEnabled() bool {
+	return Bool(c.productVariables.PropertySplitEnabled)
+}
+
+func (c *config) ScreenDensity() string {
+	return String(c.productVariables.ScreenDensity)
+}
+
+func (c *config) UsesVulkan() bool {
+	return Bool(c.productVariables.UsesVulkan)
+}
+
+func (c *config) ZygoteForce64() bool {
+	return Bool(c.productVariables.ZygoteForce64)
+}
+
+func (c *config) VendorSecurityPatch() string {
+	return String(c.productVariables.VendorSecurityPatch)
+}
+
+func (c *config) VendorImageFileSystemType() string {
+	return String(c.productVariables.VendorImageFileSystemType)
 }

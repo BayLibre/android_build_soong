@@ -54,7 +54,7 @@ func (p *buildinfoPropModule) OutputFiles(tag string) (Paths, error) {
 	return Paths{p.outputFilePath}, nil
 }
 
-func getBuildVariant(config Config) string {
+func (p *buildinfoPropModule) getBuildVariant(config Config) string {
 	if config.Eng() {
 		return "eng"
 	} else if config.Debuggable() {
@@ -64,15 +64,15 @@ func getBuildVariant(config Config) string {
 	}
 }
 
-func getBuildFlavor(config Config) string {
-	buildFlavor := config.DeviceProduct() + "-" + getBuildVariant(config)
+func (p *buildinfoPropModule) getBuildFlavor(config Config) string {
+	buildFlavor := config.DeviceProduct() + "-" + p.getBuildVariant(config)
 	if InList("address", config.SanitizeDevice()) && !strings.Contains(buildFlavor, "_asan") {
 		buildFlavor += "_asan"
 	}
 	return buildFlavor
 }
 
-func shouldAddBuildThumbprint(config Config) bool {
+func (p *buildinfoPropModule) shouldAddBuildThumbprint(config Config) bool {
 	knownOemProperties := []string{
 		"ro.product.brand",
 		"ro.product.name",
@@ -97,8 +97,8 @@ func (p *buildinfoPropModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	rule := NewRuleBuilder(pctx, ctx)
 
 	config := ctx.Config()
-	buildVariant := getBuildVariant(config)
-	buildFlavor := getBuildFlavor(config)
+	buildVariant := p.getBuildVariant(config)
+	buildFlavor := p.getBuildFlavor(config)
 
 	cmd := rule.Command().BuiltTool("buildinfo")
 
@@ -114,7 +114,7 @@ func (p *buildinfoPropModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	// shouldn't depend on BuildNumberFile and BuildThumbprintFile to prevent from rebuilding
 	// on every incremental build.
 	cmd.FlagWithArg("--build-number-file=", config.BuildNumberFile(ctx).String())
-	if shouldAddBuildThumbprint(config) {
+	if p.shouldAddBuildThumbprint(config) {
 		cmd.FlagWithArg("--build-thumbprint-file=", config.BuildThumbprintFile(ctx).String())
 	}
 
