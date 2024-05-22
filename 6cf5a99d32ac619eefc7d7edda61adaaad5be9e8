@@ -40,6 +40,30 @@
       ],
       "revId": "6cf5a99d32ac619eefc7d7edda61adaaad5be9e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf9b4a07_856daa4a",
+        "filename": "rust/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-22T20:31:48Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s necessary, because this property is only read in this function or `baseCompiler`\u0027s `cfgFlags`. if baseCompiler\u0027s cfgFlags was used, I don\u0027t think this function would be used.",
+      "parentUuid": "0134d57f_15073a98",
+      "range": {
+        "startLine": 513,
+        "startChar": 2,
+        "endLine": 513,
+        "endChar": 38
+      },
+      "revId": "6cf5a99d32ac619eefc7d7edda61adaaad5be9e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

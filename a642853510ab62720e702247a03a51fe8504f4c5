@@ -40,6 +40,30 @@
       ],
       "revId": "a642853510ab62720e702247a03a51fe8504f4c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a9c94f_e94cbd85",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-22T20:31:48Z",
+      "side": 0,
+      "message": "I initially thought this would be covered by the check for using both src and srcs in GenerateAndroidBuildActions, but I see now it\u0027s not really the same thing. Brought it back.",
+      "parentUuid": "aee8fbeb_134d6c88",
+      "range": {
+        "startLine": 268,
+        "startChar": 2,
+        "endLine": 268,
+        "endChar": 18
+      },
+      "revId": "a642853510ab62720e702247a03a51fe8504f4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
