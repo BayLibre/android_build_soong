@@ -74,7 +74,7 @@ func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 	// it should create a platform variant.
 	ctx.BottomUp("mark_platform_availability", markPlatformAvailability).Parallel()
 	ctx.Transition("apex", &apexTransitionMutator{})
-	ctx.BottomUp("apex_directly_in_any", apexDirectlyInAnyMutator).Parallel()
+	ctx.BottomUp("apex_directly_in_any", apexDirectlyInAnyMutator)
 	ctx.BottomUp("apex_dcla_deps", apexDCLADepsMutator).Parallel()
 	// Register after apex_info mutator so that it can use ApexVariationName
 	ctx.TopDown("apex_strict_updatability_lint", apexStrictUpdatibilityLintMutator).Parallel()
