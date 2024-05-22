@@ -34,8 +34,6 @@ var ccDeclarationsTag = ccDeclarationsTagType{}
 
 const baseLibDep = "server_configurable_flags"
 
-const libBaseDep = "libbase"
-const libLogDep = "liblog"
 const libAconfigStorageReadApiCcDep = "libaconfig_storage_read_api_cc"
 
 type CcAconfigLibraryProperties struct {
@@ -92,8 +90,6 @@ func (this *CcAconfigLibraryCallbacks) GeneratorDeps(ctx cc.DepsContext, deps cc
 
 	// TODO: after storage migration is over, don't add these in force-read-only-mode.
 	deps.SharedLibs = append(deps.SharedLibs, libAconfigStorageReadApiCcDep)
-	deps.SharedLibs = append(deps.SharedLibs, libBaseDep)
-	deps.SharedLibs = append(deps.SharedLibs, libLogDep)
 
 	// TODO: It'd be really nice if we could reexport this library and not make everyone do it.
 
