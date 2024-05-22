@@ -54,6 +54,24 @@
       ],
       "revId": "6e00051ed8c042d44eca1afc0c503af66d3ceab0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ca2951_5d47f2ad",
+        "filename": "cmd/release_config/release_config_lib/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-05-22T00:21:21Z",
+      "side": 1,
+      "message": "It wasn\u0027t showing up on stderr until I added this change.  All we got was \"exit status 1\", which was less than helpful as an error message.",
+      "parentUuid": "1856bc77_3957b76b",
+      "revId": "6e00051ed8c042d44eca1afc0c503af66d3ceab0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
