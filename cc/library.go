@@ -19,6 +19,7 @@ import (
 	"io"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"strconv"
 	"strings"
 	"sync"
@@ -711,7 +712,7 @@ type versionedInterface interface {
 	setStubsVersion(string)
 	stubsVersion() string
 
-	stubsVersions(ctx android.BaseMutatorContext) []string
+	stubsVersions(ctx android.BaseModuleContext) []string
 	setAllStubsVersions([]string)
 	allStubsVersions() []string
 
@@ -1903,7 +1904,7 @@ func (library *libraryDecorator) isStubsImplementationRequired() bool {
 	return BoolDefault(library.Properties.Stubs.Implementation_installable, true)
 }
 
-func (library *libraryDecorator) stubsVersions(ctx android.BaseMutatorContext) []string {
+func (library *libraryDecorator) stubsVersions(ctx android.BaseModuleContext) []string {
 	if !library.hasStubsVariants() {
 		return nil
 	}
@@ -2204,64 +2205,14 @@ func normalizeVersions(ctx android.BaseModuleContext, versions []string) {
 	}
 }
 
-func createVersionVariations(mctx android.BottomUpMutatorContext, versions []string) {
-	// "" is for the non-stubs (implementation) variant for system modules, or the LLNDK variant
-	// for LLNDK modules.
-	variants := append(android.CopyOf(versions), "")
-
-	m := mctx.Module().(*Module)
-	isLLNDK := m.IsLlndk()
-	isVendorPublicLibrary := m.IsVendorPublicLibrary()
-	isImportedApiLibrary := m.isImportedApiLibrary()
-
-	modules := mctx.CreateLocalVariations(variants...)
-	for i, m := range modules {
-
-		if variants[i] != "" || isLLNDK || isVendorPublicLibrary || isImportedApiLibrary {
-			// A stubs or LLNDK stubs variant.
-			c := m.(*Module)
-			if c.sanitize != nil {
-				c.sanitize.Properties.ForceDisable = true
-			}
-			if c.stl != nil {
-				c.stl.Properties.Stl = StringPtr("none")
-			}
-			c.Properties.PreventInstall = true
-			lib := moduleLibraryInterface(m)
-			isLatest := i == (len(versions) - 1)
-			lib.setBuildStubs(isLatest)
-
-			if variants[i] != "" {
-				// A non-LLNDK stubs module is hidden from make and has a dependency from the
-				// implementation module to the stubs module.
-				c.Properties.HideFromMake = true
-				lib.setStubsVersion(variants[i])
-				mctx.AddInterVariantDependency(stubImplDepTag, modules[len(modules)-1], modules[i])
-			}
-		}
-	}
-	mctx.AliasVariation("")
-	latestVersion := ""
-	if len(versions) > 0 {
-		latestVersion = versions[len(versions)-1]
-	}
-	mctx.CreateAliasVariation("latest", latestVersion)
-}
-
-func createPerApiVersionVariations(mctx android.BottomUpMutatorContext, minSdkVersion string) {
+func perApiVersionVariations(mctx android.BaseModuleContext, minSdkVersion string) []string {
 	from, err := nativeApiLevelFromUser(mctx, minSdkVersion)
 	if err != nil {
 		mctx.PropertyErrorf("min_sdk_version", err.Error())
-		return
+		return []string{""}
 	}
 
-	versionStrs := ndkLibraryVersions(mctx, from)
-	modules := mctx.CreateLocalVariations(versionStrs...)
-
-	for i, module := range modules {
-		module.(*Module).Properties.Sdk_version = StringPtr(versionStrs[i])
-		module.(*Module).Properties.Min_sdk_version = StringPtr(versionStrs[i])
-	}
+	return ndkLibraryVersions(mctx, from)
 }
 
 func canBeOrLinkAgainstVersionVariants(module interface {
@@ -2291,7 +2242,7 @@ func moduleLibraryInterface(module blueprint.Module) libraryInterface {
 }
 
 // setStubsVersions normalizes the versions in the Stubs.Versions property into MutatedProperties.AllStubsVersions.
-func setStubsVersions(mctx android.BottomUpMutatorContext, library libraryInterface, module *Module) {
+func setStubsVersions(mctx android.BaseModuleContext, library libraryInterface, module *Module) {
 	if !library.buildShared() || !canBeVersionVariant(module) {
 		return
 	}
@@ -2304,25 +2255,98 @@ func setStubsVersions(mctx android.BottomUpMutatorContext, library libraryInterf
 	library.setAllStubsVersions(versions)
 }
 
-// versionMutator splits a module into the mandatory non-stubs variant
+// versionTransitionMutator splits a module into the mandatory non-stubs variant
 // (which is unnamed) and zero or more stubs variants.
-func versionMutator(mctx android.BottomUpMutatorContext) {
-	if mctx.Os() != android.Android {
-		return
+type versionTransitionMutator struct{}
+
+func (versionTransitionMutator) Split(ctx android.BaseModuleContext) []string {
+	if ctx.Os() != android.Android {
+		return []string{""}
 	}
 
-	m, ok := mctx.Module().(*Module)
-	if library := moduleLibraryInterface(mctx.Module()); library != nil && canBeVersionVariant(m) {
-		setStubsVersions(mctx, library, m)
+	m, ok := ctx.Module().(*Module)
+	if library := moduleLibraryInterface(ctx.Module()); library != nil && canBeVersionVariant(m) {
+		setStubsVersions(ctx, library, m)
 
-		createVersionVariations(mctx, library.allStubsVersions())
-		return
+		return append(slices.Clone(library.allStubsVersions()), "")
+	} else if ok && m.SplitPerApiLevel() && m.IsSdkVariant() {
+		return perApiVersionVariations(ctx, m.MinSdkVersion())
 	}
 
-	if ok {
-		if m.SplitPerApiLevel() && m.IsSdkVariant() {
-			createPerApiVersionVariations(mctx, m.MinSdkVersion())
+	return []string{""}
+}
+
+func (versionTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
+	return ""
+}
+
+func (versionTransitionMutator) IncomingTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if ctx.Os() != android.Android {
+		return ""
+	}
+	m, ok := ctx.Module().(*Module)
+	if library := moduleLibraryInterface(ctx.Module()); library != nil && canBeVersionVariant(m) {
+		if incomingVariation == "latest" {
+			latestVersion := ""
+			versions := library.allStubsVersions()
+			if len(versions) > 0 {
+				latestVersion = versions[len(versions)-1]
+			}
+			return latestVersion
 		}
+		return incomingVariation
+	} else if ok && m.SplitPerApiLevel() && m.IsSdkVariant() {
+		// If this module only has variants with versions and the incoming dependency doesn't specify which one
+		// is needed then assume the latest version.
+		if incomingVariation == "" {
+			return android.FutureApiLevel.String()
+		}
+		return incomingVariation
+	}
+
+	return ""
+}
+
+func (versionTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, variation string) {
+	// Optimization: return early if this module can't be affected.
+	if ctx.Os() != android.Android {
+		return
+	}
+
+	m, ok := ctx.Module().(*Module)
+	if library := moduleLibraryInterface(ctx.Module()); library != nil && canBeVersionVariant(m) {
+		isLLNDK := m.IsLlndk()
+		isVendorPublicLibrary := m.IsVendorPublicLibrary()
+		isImportedApiLibrary := m.isImportedApiLibrary()
+
+		if variation != "" || isLLNDK || isVendorPublicLibrary || isImportedApiLibrary {
+			// A stubs or LLNDK stubs variant.
+			if m.sanitize != nil {
+				m.sanitize.Properties.ForceDisable = true
+			}
+			if m.stl != nil {
+				m.stl.Properties.Stl = StringPtr("none")
+			}
+			m.Properties.PreventInstall = true
+			lib := moduleLibraryInterface(m)
+			allStubsVersions := library.allStubsVersions()
+			isLatest := len(allStubsVersions) > 0 && variation == allStubsVersions[len(allStubsVersions)-1]
+			lib.setBuildStubs(isLatest)
+		}
+		if variation != "" {
+			// A non-LLNDK stubs module is hidden from make
+			library.setStubsVersion(variation)
+			m.Properties.HideFromMake = true
+		} else {
+			// A non-LLNDK implementation module has a dependency to all stubs versions
+			for _, version := range library.allStubsVersions() {
+				ctx.AddVariationDependencies([]blueprint.Variation{{"version", version}},
+					stubImplDepTag, ctx.ModuleName())
+			}
+		}
+	} else if ok && m.SplitPerApiLevel() && m.IsSdkVariant() {
+		m.Properties.Sdk_version = StringPtr(variation)
+		m.Properties.Min_sdk_version = StringPtr(variation)
 	}
 }
 
