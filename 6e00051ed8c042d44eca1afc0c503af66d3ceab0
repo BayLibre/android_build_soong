@@ -72,6 +72,24 @@
       "parentUuid": "1856bc77_3957b76b",
       "revId": "6e00051ed8c042d44eca1afc0c503af66d3ceab0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acf16f65_caef3dae",
+        "filename": "cmd/release_config/release_config_lib/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-05-22T00:54:14Z",
+      "side": 1,
+      "message": "Fixed.  Thanks for the suggestion.",
+      "parentUuid": "b3ca2951_5d47f2ad",
+      "revId": "6e00051ed8c042d44eca1afc0c503af66d3ceab0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
