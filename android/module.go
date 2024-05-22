@@ -2429,6 +2429,13 @@ func OutputFileForModule(ctx PathContext, module blueprint.Module, tag string) P
 }
 
 func outputFilesForModule(ctx PathContext, module blueprint.Module, tag string) (Paths, error) {
+	if mctx, ok := ctx.(ModuleContext); ok {
+		paths, error := OutputFilesForModuleFromProvider(mctx, module, tag)
+		if paths != nil || error != nil {
+			return paths, error
+		}
+	}
+
 	if outputFileProducer, ok := module.(OutputFileProducer); ok {
 		paths, err := outputFileProducer.OutputFiles(tag)
 		if err != nil {
@@ -2446,6 +2453,36 @@ func outputFilesForModule(ctx PathContext, module blueprint.Module, tag string) 
 		return nil, fmt.Errorf("module %q is not an OutputFileProducer", pathContextName(ctx, module))
 	}
 }
+
+// This method uses OutputFilesProvider for output files *inter-module-communication*.
+// If mctx module is the same as the param module this func will return nil, to
+// avoid both setting and reading OutputFilesProvider before
+// GenerateBuildActions is finished. If a module doesn't have the
+// OutputFilesProvider, nil is also returned.
+func OutputFilesForModuleFromProvider(mctx BaseModuleContext, module blueprint.Module, tag string) (Paths, error) {
+	if mctx.Module() != module {
+		if outputFilesProvider, ok := OtherModuleProvider(mctx, module, OutputFilesProviderKey); ok {
+			if tag == "" {
+				return outputFilesProvider.DefaultOutputFiles, nil
+			} else if taggedOutputFiles, hasTag := outputFilesProvider.TaggedOutputFiles[tag]; hasTag {
+				return taggedOutputFiles, nil
+			} else {
+				return nil, fmt.Errorf("unsupported module reference tag %q", tag)
+			}
+		}
+	}
+	return nil, nil
+}
+
+type OutputFilesInfo struct {
+	// default output files when tag is an empty string ""
+	DefaultOutputFiles Paths
+
+	// the corresponding output files for given tags
+	TaggedOutputFiles map[string]Paths
+}
+
+var OutputFilesProviderKey = blueprint.NewProvider[OutputFilesInfo]()
 
 // Modules can implement HostToolProvider and return a valid OptionalPath from HostToolPath() to
 // specify that they can be used as a tool by a genrule module.
