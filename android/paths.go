@@ -565,21 +565,14 @@ func getPathsFromModuleDep(ctx ModuleWithDepsPathContext, path, moduleName, tag 
 	if aModule, ok := module.(Module); ok && !aModule.Enabled(ctx) {
 		return nil, missingDependencyError{[]string{moduleName}}
 	}
-	if outProducer, ok := module.(OutputFileProducer); ok {
-		outputFiles, err := outProducer.OutputFiles(tag)
-		if err != nil {
-			return nil, fmt.Errorf("path dependency %q: %s", path, err)
-		}
-		return outputFiles, nil
-	} else if tag != "" {
-		return nil, fmt.Errorf("path dependency %q is not an output file producing module", path)
+	outputFiles, err := outputFilesForModule(ctx, module, tag)
+	if outputFiles != nil {
+		return outputFiles, err
 	} else if goBinary, ok := module.(bootstrap.GoBinaryTool); ok {
 		goBinaryPath := PathForGoBinary(ctx, goBinary)
 		return Paths{goBinaryPath}, nil
-	} else if srcProducer, ok := module.(SourceFileProducer); ok {
-		return srcProducer.Srcs(), nil
 	} else {
-		return nil, fmt.Errorf("path dependency %q is not a source file producing module", path)
+		return nil, err
 	}
 }
 
