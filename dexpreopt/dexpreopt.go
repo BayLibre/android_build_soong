@@ -244,6 +244,7 @@ func dexpreoptCommand(ctx android.BuilderContext, globalSoong *GlobalSoongConfig
 	}
 
 	odexPath := module.BuildPath.InSameDir(ctx, "oat", arch.String(), pathtools.ReplaceExtension(base, "odex"))
+	odexOptionalSymbolsPath := odexPath.ReplaceExtension(ctx, "symbols.odex")
 	odexInstallPath := ToOdexPath(module.DexLocation, arch)
 	if odexOnSystemOther(module, global) {
 		odexInstallPath = filepath.Join(SystemOtherPartition, odexInstallPath)
@@ -258,7 +259,8 @@ func dexpreoptCommand(ctx android.BuilderContext, globalSoong *GlobalSoongConfig
 	systemServerClasspathJars := global.AllSystemServerClasspathJars(ctx)
 
 	rule.Command().FlagWithArg("mkdir -p ", filepath.Dir(odexPath.String()))
-	rule.Command().FlagWithOutput("rm -f ", odexPath)
+	rule.Command().FlagWithOutput("rm -f ", odexPath).
+		FlagWithArg("rm -f ", odexOptionalSymbolsPath.String())
 
 	if jarIndex := systemServerJars.IndexOfJar(module.Name); jarIndex >= 0 {
 		// System server jars should be dexpreopted together: class loader context of each jar
@@ -386,7 +388,6 @@ func dexpreoptCommand(ctx android.BuilderContext, globalSoong *GlobalSoongConfig
 		FlagWithArg("--instruction-set=", arch.String()).
 		FlagWithArg("--instruction-set-variant=", global.CpuVariant[arch]).
 		FlagWithArg("--instruction-set-features=", global.InstructionSetFeatures[arch]).
-		Flag("--no-generate-debug-info").
 		Flag("--generate-build-id").
 		Flag("--abort-on-hard-verifier-error").
 		Flag("--force-determinism").
@@ -486,6 +487,14 @@ func dexpreoptCommand(ctx android.BuilderContext, globalSoong *GlobalSoongConfig
 		cmd.Flag("--generate-mini-debug-info")
 	} else {
 		cmd.Flag("--no-generate-mini-debug-info")
+	}
+
+	if ctx.Config().IsEnvTrue("DEX_PREOPT_SYMBOLIZE") {
+		cmd.FlagWithOutput("--oat-symbols=", odexOptionalSymbolsPath).
+			Flag("--generate-debug-info").
+			Flag("--strip")
+	} else {
+		cmd.Flag("--no-generate-debug-info")
 	}
 
 	// Set the compiler reason to 'prebuilt' to identify the oat files produced
