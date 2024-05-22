@@ -2065,26 +2065,26 @@ func NewLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) 
 
 // connects a shared library to a static library in order to reuse its .o files to avoid
 // compiling source files twice.
-func reuseStaticLibrary(mctx android.BottomUpMutatorContext, static, shared *Module) {
-	if staticCompiler, ok := static.compiler.(*libraryDecorator); ok {
-		sharedCompiler := shared.compiler.(*libraryDecorator)
+func reuseStaticLibrary(ctx android.BottomUpMutatorContext, shared *Module) {
+	if sharedCompiler, ok := shared.compiler.(*libraryDecorator); ok {
 
 		// Check libraries in addition to cflags, since libraries may be exporting different
 		// include directories.
-		if len(staticCompiler.StaticProperties.Static.Cflags.GetOrDefault(mctx, nil)) == 0 &&
-			len(sharedCompiler.SharedProperties.Shared.Cflags.GetOrDefault(mctx, nil)) == 0 &&
-			len(staticCompiler.StaticProperties.Static.Whole_static_libs) == 0 &&
+		if len(sharedCompiler.StaticProperties.Static.Cflags.GetOrDefault(ctx, nil)) == 0 &&
+			len(sharedCompiler.SharedProperties.Shared.Cflags.GetOrDefault(ctx, nil)) == 0 &&
+			len(sharedCompiler.StaticProperties.Static.Whole_static_libs) == 0 &&
 			len(sharedCompiler.SharedProperties.Shared.Whole_static_libs) == 0 &&
-			len(staticCompiler.StaticProperties.Static.Static_libs) == 0 &&
+			len(sharedCompiler.StaticProperties.Static.Static_libs) == 0 &&
 			len(sharedCompiler.SharedProperties.Shared.Static_libs) == 0 &&
-			len(staticCompiler.StaticProperties.Static.Shared_libs) == 0 &&
+			len(sharedCompiler.StaticProperties.Static.Shared_libs) == 0 &&
 			len(sharedCompiler.SharedProperties.Shared.Shared_libs) == 0 &&
 			// Compare System_shared_libs properties with nil because empty lists are
 			// semantically significant for them.
-			staticCompiler.StaticProperties.Static.System_shared_libs == nil &&
+			sharedCompiler.StaticProperties.Static.System_shared_libs == nil &&
 			sharedCompiler.SharedProperties.Shared.System_shared_libs == nil {
 
-			mctx.AddInterVariantDependency(reuseObjTag, shared, static)
+			// TODO: namespaces?
+			ctx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}}, reuseObjTag, ctx.ModuleName())
 			sharedCompiler.baseCompiler.Properties.OriginalSrcs =
 				sharedCompiler.baseCompiler.Properties.Srcs
 			sharedCompiler.baseCompiler.Properties.Srcs = nil
@@ -2092,19 +2092,21 @@ func reuseStaticLibrary(mctx android.BottomUpMutatorContext, static, shared *Mod
 		}
 
 		// This dep is just to reference static variant from shared variant
-		mctx.AddInterVariantDependency(staticVariantTag, shared, static)
+		ctx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}}, staticVariantTag, ctx.ModuleName())
 	}
 }
 
-// LinkageMutator adds "static" or "shared" variants for modules depending
+// linkageTransitionMutator adds "static" or "shared" variants for modules depending
 // on whether the module can be built as a static library or a shared library.
-func LinkageMutator(mctx android.BottomUpMutatorContext) {
+type linkageTransitionMutator struct{}
+
+func (linkageTransitionMutator) Split(ctx android.BaseModuleContext) []string {
 	ccPrebuilt := false
-	if m, ok := mctx.Module().(*Module); ok && m.linker != nil {
+	if m, ok := ctx.Module().(*Module); ok && m.linker != nil {
 		_, ccPrebuilt = m.linker.(prebuiltLibraryInterface)
 	}
 	if ccPrebuilt {
-		library := mctx.Module().(*Module).linker.(prebuiltLibraryInterface)
+		library := ctx.Module().(*Module).linker.(prebuiltLibraryInterface)
 
 		// Differentiate between header only and building an actual static/shared library
 		buildStatic := library.buildStatic()
@@ -2113,75 +2115,118 @@ func LinkageMutator(mctx android.BottomUpMutatorContext) {
 			// Always create both the static and shared variants for prebuilt libraries, and then disable the one
 			// that is not being used.  This allows them to share the name of a cc_library module, which requires that
 			// all the variants of the cc_library also exist on the prebuilt.
-			modules := mctx.CreateLocalVariations("static", "shared")
-			static := modules[0].(*Module)
-			shared := modules[1].(*Module)
-
-			static.linker.(prebuiltLibraryInterface).setStatic()
-			shared.linker.(prebuiltLibraryInterface).setShared()
-
-			if buildShared {
-				mctx.AliasVariation("shared")
-			} else if buildStatic {
-				mctx.AliasVariation("static")
-			}
-
-			if !buildStatic {
-				static.linker.(prebuiltLibraryInterface).disablePrebuilt()
-			}
-			if !buildShared {
-				shared.linker.(prebuiltLibraryInterface).disablePrebuilt()
-			}
+			return []string{"static", "shared"}
 		} else {
 			// Header only
 		}
-
-	} else if library, ok := mctx.Module().(LinkableInterface); ok && (library.CcLibraryInterface() || library.RustLibraryInterface()) {
+	} else if library, ok := ctx.Module().(LinkableInterface); ok && (library.CcLibraryInterface() || library.RustLibraryInterface()) {
 		// Non-cc.Modules may need an empty variant for their mutators.
 		variations := []string{}
 		if library.NonCcVariants() {
 			variations = append(variations, "")
 		}
 		isLLNDK := false
-		if m, ok := mctx.Module().(*Module); ok {
+		if m, ok := ctx.Module().(*Module); ok {
 			isLLNDK = m.IsLlndk()
 		}
 		buildStatic := library.BuildStaticVariant() && !isLLNDK
 		buildShared := library.BuildSharedVariant()
 		if buildStatic && buildShared {
-			variations := append([]string{"static", "shared"}, variations...)
-
-			modules := mctx.CreateLocalVariations(variations...)
-			static := modules[0].(LinkableInterface)
-			shared := modules[1].(LinkableInterface)
-			static.SetStatic()
-			shared.SetShared()
-
-			if _, ok := library.(*Module); ok {
-				reuseStaticLibrary(mctx, static.(*Module), shared.(*Module))
-			}
-			mctx.AliasVariation("shared")
+			variations = append([]string{"static", "shared"}, variations...)
+			return variations
 		} else if buildStatic {
-			variations := append([]string{"static"}, variations...)
-
-			modules := mctx.CreateLocalVariations(variations...)
-			modules[0].(LinkableInterface).SetStatic()
-			mctx.AliasVariation("static")
+			variations = append([]string{"static"}, variations...)
 		} else if buildShared {
-			variations := append([]string{"shared"}, variations...)
-
-			modules := mctx.CreateLocalVariations(variations...)
-			modules[0].(LinkableInterface).SetShared()
-			mctx.AliasVariation("shared")
-		} else if len(variations) > 0 {
-			mctx.CreateLocalVariations(variations...)
-			mctx.AliasVariation(variations[0])
+			variations = append([]string{"shared"}, variations...)
 		}
-		if library.BuildRlibVariant() && library.IsRustFFI() && !buildStatic {
+
+		if len(variations) > 0 {
+			return variations
+		}
+	}
+	return []string{""}
+}
+
+func (linkageTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
+	return ""
+}
+
+func (linkageTransitionMutator) IncomingTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	ccPrebuilt := false
+	if m, ok := ctx.Module().(*Module); ok && m.linker != nil {
+		_, ccPrebuilt = m.linker.(prebuiltLibraryInterface)
+	}
+	if ccPrebuilt {
+		if incomingVariation != "" {
+			return incomingVariation
+		}
+		library := ctx.Module().(*Module).linker.(prebuiltLibraryInterface)
+		if library.buildShared() {
+			return "shared"
+		} else if library.buildStatic() {
+			return "static"
+		}
+		return ""
+	} else if library, ok := ctx.Module().(LinkableInterface); ok && library.CcLibraryInterface() {
+		isLLNDK := false
+		if m, ok := ctx.Module().(*Module); ok {
+			isLLNDK = m.IsLlndk()
+		}
+		buildStatic := library.BuildStaticVariant() && !isLLNDK
+		buildShared := library.BuildSharedVariant()
+		if library.BuildRlibVariant() && library.IsRustFFI() && !buildStatic && (incomingVariation == "static" || incomingVariation == "") {
 			// Rust modules do not build static libs, but rlibs are used as if they
 			// were via `static_libs`. Thus we need to alias the BuildRlibVariant
 			// to "static" for Rust FFI libraries.
-			mctx.CreateAliasVariation("static", "")
+			return ""
+		}
+		if incomingVariation != "" {
+			return incomingVariation
+		}
+		if buildShared {
+			return "shared"
+		} else if buildStatic {
+			return "static"
+		}
+		return ""
+	}
+	return ""
+}
+
+func (linkageTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, variation string) {
+	ccPrebuilt := false
+	if m, ok := ctx.Module().(*Module); ok && m.linker != nil {
+		_, ccPrebuilt = m.linker.(prebuiltLibraryInterface)
+	}
+	if ccPrebuilt {
+		library := ctx.Module().(*Module).linker.(prebuiltLibraryInterface)
+		if variation == "static" {
+			library.setStatic()
+			if !library.buildStatic() {
+				library.disablePrebuilt()
+			}
+		} else if variation == "shared" {
+			library.setShared()
+			if !library.buildShared() {
+				library.disablePrebuilt()
+			}
+		}
+	} else if library, ok := ctx.Module().(LinkableInterface); ok && library.CcLibraryInterface() {
+		if variation == "static" {
+			library.SetStatic()
+		} else if variation == "shared" {
+			library.SetShared()
+			var isLLNDK bool
+			if m, ok := ctx.Module().(*Module); ok {
+				isLLNDK = m.IsLlndk()
+			}
+			buildStatic := library.BuildStaticVariant() && !isLLNDK
+			buildShared := library.BuildSharedVariant()
+			if buildStatic && buildShared {
+				if _, ok := library.(*Module); ok {
+					reuseStaticLibrary(ctx, library.(*Module))
+				}
+			}
 		}
 	}
 }
