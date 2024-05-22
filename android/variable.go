@@ -193,11 +193,12 @@ type ProductVariables struct {
 	// Suffix to add to generated Makefiles
 	Make_suffix *string `json:",omitempty"`
 
-	BuildId             *string `json:",omitempty"`
-	BuildNumberFile     *string `json:",omitempty"`
-	BuildHostnameFile   *string `json:",omitempty"`
-	BuildThumbprintFile *string `json:",omitempty"`
-	DisplayBuildNumber  *bool   `json:",omitempty"`
+	BuildId              *string `json:",omitempty"`
+	BuildFingerprintFile *string `json:",omitempty"`
+	BuildNumberFile      *string `json:",omitempty"`
+	BuildHostnameFile    *string `json:",omitempty"`
+	BuildThumbprintFile  *string `json:",omitempty"`
+	DisplayBuildNumber   *bool   `json:",omitempty"`
 
 	Platform_display_version_name          *string  `json:",omitempty"`
 	Platform_version_name                  *string  `json:",omitempty"`
@@ -221,7 +222,11 @@ type ProductVariables struct {
 	DeviceArch                            *string  `json:",omitempty"`
 	DeviceArchVariant                     *string  `json:",omitempty"`
 	DeviceCpuVariant                      *string  `json:",omitempty"`
+	DeviceCpuVariantRuntime               *string  `json:",omitempty"`
 	DeviceAbi                             []string `json:",omitempty"`
+	DeviceAbiList                         *string  `json:",omitempty"`
+	DeviceAbiList32                       *string  `json:",omitempty"`
+	DeviceAbiList64                       *string  `json:",omitempty"`
 	DeviceVndkVersion                     *string  `json:",omitempty"`
 	DeviceCurrentApiLevelForVendorModules *string  `json:",omitempty"`
 	DeviceSystemSdkVersions               []string `json:",omitempty"`
@@ -233,10 +238,16 @@ type ProductVariables struct {
 
 	RecoverySnapshotVersion *string `json:",omitempty"`
 
-	DeviceSecondaryArch        *string  `json:",omitempty"`
-	DeviceSecondaryArchVariant *string  `json:",omitempty"`
-	DeviceSecondaryCpuVariant  *string  `json:",omitempty"`
-	DeviceSecondaryAbi         []string `json:",omitempty"`
+	DeviceSecondaryArch              *string  `json:",omitempty"`
+	DeviceSecondaryArchVariant       *string  `json:",omitempty"`
+	DeviceSecondaryCpuVariant        *string  `json:",omitempty"`
+	DeviceSecondaryCpuVariantRuntime *string  `json:",omitempty"`
+	DeviceSecondaryAbi               []string `json:",omitempty"`
+
+	Dex2oatTargetCpuVariantRuntime         *string `json:",omitempty"`
+	Dex2oatTargetInstructionSetFeatures    *string `json:",omitempty"`
+	SecondaryDex2oatCpuVariantRuntime      *string `json:",omitempty"`
+	SecondaryDex2oatInstructionSetFeatures *string `json:",omitempty"`
 
 	NativeBridgeArch         *string  `json:",omitempty"`
 	NativeBridgeArchVariant  *string  `json:",omitempty"`
@@ -440,7 +451,10 @@ type ProductVariables struct {
 
 	PrebuiltHiddenApiDir *string `json:",omitempty"`
 
-	ShippingApiLevel *string `json:",omitempty"`
+	BoardPlatform          *string `json:",omitempty"`
+	BoardShippingApiLevel  *string `json:",omitempty"`
+	ShippingApiLevel       *string `json:",omitempty"`
+	ShippingVendorApiLevel *string `json:",omitempty"`
 
 	BuildBrokenPluginValidation         []string `json:",omitempty"`
 	BuildBrokenClangAsFlags             bool     `json:",omitempty"`
@@ -454,6 +468,7 @@ type ProductVariables struct {
 	BuildBrokenIncorrectPartitionImages bool     `json:",omitempty"`
 	BuildBrokenInputDirModules          []string `json:",omitempty"`
 	BuildBrokenDontCheckSystemSdk       bool     `json:",omitempty"`
+	BuildBrokenDupSysprop               bool     `json:",omitempty"`
 
 	BuildWarningBadOptionalUsesLibsAllowlist []string `json:",omitempty"`
 
@@ -479,6 +494,19 @@ type ProductVariables struct {
 
 	ProductManufacturer string `json:",omitempty"`
 	ProductBrand        string `json:",omitempty"`
+	ProductModel        string `json:",omitempty"`
+
+	ProductModelForAttestation        *string `json:",omitempty"`
+	ProductBrandForAttestation        *string `json:",omitempty"`
+	ProductNameForAttestation         *string `json:",omitempty"`
+	ProductDeviceForAttestation       *string `json:",omitempty"`
+	ProductManufacturerForAttestation *string `json:",omitempty"`
+
+	SystemBrand        *string `json:",omitempty"`
+	SystemDevice       *string `json:",omitempty"`
+	SystemManufacturer *string `json:",omitempty"`
+	SystemModel        *string `json:",omitempty"`
+	SystemName         *string `json:",omitempty"`
 
 	ReleaseVersion          string   `json:",omitempty"`
 	ReleaseAconfigValueSets []string `json:",omitempty"`
@@ -509,11 +537,48 @@ type ProductVariables struct {
 
 	BoardUseVbmetaDigestInFingerprint *bool `json:",omitempty"`
 
-	OemProperties []string `json:",omitempty"`
+	SystemProperties        []string `json:",omitempty"`
+	SystemDefaultProperties []string `json:",omitempty"`
+	SystemExtProperties     []string `json:",omitempty"`
+	VendorProperties        []string `json:",omitempty"`
+	ProductProperties       []string `json:",omitempty"`
+	OdmProperties           []string `json:",omitempty"`
+	OemProperties           []string `json:",omitempty"`
+	PropertyOverrides       []string `json:",omitempty"`
 
 	BoardInfoFile       *string  `json:",omitempty"`
 	BoardInfoFiles      []string `json:",omitempty"`
 	BootloaderBoardName *string  `json:",omitempty"`
+
+	EnableUffdGc *string `json:",omitempty"`
+
+	SystemServerCompilerFilter *string `json:",omitempty"`
+	Product16KDeveloperOption  *bool   `json:",omitempty"`
+	RecoveryDefaultRotation    *string `json:",omitempty"`
+	RecoveryOverscanPercent    *string `json:",omitempty"`
+	RecoveryPixelFormat        *string `json:",omitempty"`
+
+	AbOtaUpdater    *bool   `json:",omitempty"`
+	AbOtaPartitions *string `json:",omitempty"`
+
+	UseDynamicPartitions      *bool `json:",omitempty"`
+	RetrofitDynamicPartitions *bool `json:",omitempty"`
+
+	DontUseVabcOta *bool `json:",omitempty"`
+
+	FullTreble            *bool `json:",omitempty"`
+	NoBionicPageSizeMacro *bool `json:",omitempty"`
+
+	PropertySplitEnabled *bool `json:",omitempty"`
+
+	ScreenDensity *string `json:",omitempty"`
+
+	UsesVulkan *bool `json:",omitempty"`
+
+	ZygoteForce64 *bool `json:",omitempty"`
+
+	VendorSecurityPatch       *string `json:",omitempty"`
+	VendorImageFileSystemType *string `json:",omitempty"`
 }
 
 type PartitionQualifiedVariablesType struct {

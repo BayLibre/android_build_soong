@@ -121,6 +121,7 @@ dexpreopt_systemserver_check {
 }
 
 // buildinfo.prop contains common properties for system/build.prop, like ro.build.version.*
+// TODO(b/322090587): merge this to gen_build_prop.py script.
 buildinfo_prop {
     name: "buildinfo.prop",
 
