@@ -761,18 +761,20 @@ func UpdateUniqueApexVariationsForDeps(mctx BottomUpMutatorContext, am ApexModul
 
 // UpdateDirectlyInAnyApex uses the final module to store if any variant of this module is directly
 // in any APEX, and then copies the final value to all the modules. It also copies the
-// DirectlyInAnyApex value to any direct dependencies with a CopyDirectlyInAnyApexTag dependency
-// tag.
+// DirectlyInAnyApex value to any transitive dependencies with a CopyDirectlyInAnyApexTag
+// dependency tag.
 func UpdateDirectlyInAnyApex(mctx BottomUpMutatorContext, am ApexModule) {
 	base := am.apexModuleBase()
-	// Copy DirectlyInAnyApex and InAnyApex from any direct dependencies with a
+	// Copy DirectlyInAnyApex and InAnyApex from any transitive dependencies with a
 	// CopyDirectlyInAnyApexTag dependency tag.
-	mctx.VisitDirectDeps(func(dep Module) {
-		if _, ok := mctx.OtherModuleDependencyTag(dep).(CopyDirectlyInAnyApexTag); ok {
-			depBase := dep.(ApexModule).apexModuleBase()
+	mctx.WalkDeps(func(child, parent Module) bool {
+		if _, ok := mctx.OtherModuleDependencyTag(child).(CopyDirectlyInAnyApexTag); ok {
+			depBase := child.(ApexModule).apexModuleBase()
 			depBase.ApexProperties.DirectlyInAnyApex = base.ApexProperties.DirectlyInAnyApex
 			depBase.ApexProperties.InAnyApex = base.ApexProperties.InAnyApex
+			return true
 		}
+		return false
 	})
 
 	if base.ApexProperties.DirectlyInAnyApex {
