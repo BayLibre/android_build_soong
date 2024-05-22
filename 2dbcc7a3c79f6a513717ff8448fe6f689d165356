@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c61d02d8_ee85b67a",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-22T00:51:58Z",
+      "side": 1,
+      "message": "SingletonModules are pretty unfriendly towards incremental builds, they have the potential to cause their reverse dependencies to rebuild when anything in the tree changes. They can also get different results based on how much of the tree you have downloaded, which makes it harder for developers to check out a minimal source tree.\n\nIn this case we don\u0027t hit any of those issues because we\u0027re not really taking full advantage of the SingletonModule. But it would be better to prove that you\u0027re not doing something problematic by using a regular module instead.",
+      "parentUuid": "4335c8ea_02256d6f",
+      "revId": "2dbcc7a3c79f6a513717ff8448fe6f689d165356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69a77e85_d795e3c7",
         "filename": "cc/sanitize.go",
         "patchSetId": 6
