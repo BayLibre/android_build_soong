@@ -276,6 +276,15 @@ func (m *CmakeSnapshot) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if len(m.Properties.Prebuilts) > 0 {
 		prebuilts := append(m.Properties.Prebuilts, "libc++")
 		ctx.AddVariationDependencies(variations, cmakeSnapshotPrebuiltTag, prebuilts...)
+
+		variations = []blueprint.Variation{
+			{"os", "linux_musl"},
+			{"arch", "arm64"},
+		}
+		if ctx.OtherModuleDependencyVariantExists(variations, "libc_musl") {
+			ctx.AddVariationDependencies(variations, cmakeSnapshotPrebuiltTag, prebuilts...)
+			ctx.AddVariationDependencies(variations, cmakeSnapshotPrebuiltTag, "libc_musl")
+		}
 	}
 }
 
