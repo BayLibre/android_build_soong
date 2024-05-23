@@ -52,6 +52,24 @@
       "parentUuid": "42869768_74d23a95",
       "revId": "b51af42d20d529724e002f54017da894ad421017",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa70c10f_f37fcd29",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-23T18:29:44Z",
+      "side": 1,
+      "message": "Will `--generate-debug-info` have an impact on the stripped odex?",
+      "parentUuid": "a2a6a2c9_47509149",
+      "revId": "b51af42d20d529724e002f54017da894ad421017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
