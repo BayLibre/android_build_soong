@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "882011e0_88a8a2e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-23T16:36:34Z",
+      "side": 1,
+      "message": "If you care about modules in Make you\u0027ll also need to update https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/java_common.mk;l\u003d36;drc\u003dd35691dabef19b4973641c96f83848ed88d8ffa8",
+      "revId": "253f8c045a6650e45f3c50ca8882bbd73890bb13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
