@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49012a8d_49e74fa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-23T19:52:43Z",
+      "side": 1,
+      "message": "I tested this to the point that\u0027s possible on arm32 RPi3. Marking as WIP until I test it completely on RPi5 tomorrow.",
+      "revId": "edb45df1d8efb8cf143f9e343cfb3cd222868e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
