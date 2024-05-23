@@ -283,6 +283,10 @@ func (m *CmakeSnapshot) DepsMutator(ctx android.BottomUpMutatorContext) {
 	deviceSystemVariations := append(deviceVariations, blueprint.Variation{"image", ""})
 	deviceVendorVariations := append(deviceVariations, blueprint.Variation{"image", "vendor"})
 	hostVariations := ctx.Config().BuildOSTarget.Variations()
+	crossHostVariations := []blueprint.Variation{
+		{"os", "linux_musl"},
+		{"arch", "arm64"},
+	}
 
 	ctx.AddVariationDependencies(hostVariations, cmakeSnapshotModuleTag, m.Properties.Modules...)
 	ctx.AddVariationDependencies(hostVariations, cmakeSnapshotModuleTag, m.Properties.Modules_host...)
@@ -291,7 +295,13 @@ func (m *CmakeSnapshot) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	if len(m.Properties.Prebuilts) > 0 {
 		prebuilts := append(m.Properties.Prebuilts, "libc++")
+
 		ctx.AddVariationDependencies(hostVariations, cmakeSnapshotPrebuiltTag, prebuilts...)
+
+		if ctx.OtherModuleDependencyVariantExists(crossHostVariations, "libc_musl") {
+			ctx.AddVariationDependencies(crossHostVariations, cmakeSnapshotPrebuiltTag, prebuilts...)
+			ctx.AddVariationDependencies(crossHostVariations, cmakeSnapshotPrebuiltTag, "libc_musl")
+		}
 	}
 }
 
