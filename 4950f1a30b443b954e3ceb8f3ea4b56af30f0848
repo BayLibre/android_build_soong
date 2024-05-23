@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22c2099b_69830523",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2432,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-23T21:25:30Z",
+      "side": 1,
+      "message": "What other context types are passed here?  Should this be encapsulated in `OutputFilesForModuleFromProvider`, which could then also handle `ModuleProviderContext` so it can be called from Singletons too?",
+      "revId": "4950f1a30b443b954e3ceb8f3ea4b56af30f0848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73a84b3f_7981933c",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-23T21:25:30Z",
+      "side": 1,
+      "message": "Replacing the `OutputFileProducer` interface for this module with the provider is only safe if everything that needs it can get the provider value.  Since `OutputFilesForModuleFromProvider` is skipped for non-`ModuleContext` callers and returns nil when called from the same module, don\u0027t you need the `OutputFileProducer` still as a fallback?\n\nAlternatively, can you handle those cases?  We talked about abstracting some of this away into `android.ModuleBase`, which could then be used to return the appropriate value without going through the provider.  So the module could call `ctx.SetOutputFiles(bpf.objs)`, which would temporarily store the values in ModuleBase, then `ModuleBase.GenerateBuildActions` would set the provider, and `OutputFilesForModuleFromProvider` could fall back to getting the values from `ModuleBase` when called on the current module.",
+      "fixSuggestions": [
+        {
+          "fixId": "310136d5_a650ec84",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "bpf/bpf.go",
+              "range": {
+                "startLine": 218,
+                "startChar": 0,
+                "endLine": 219,
+                "endChar": 0
+              },
+              "replacement": "\tandroid.AddLoadHook(ctx, func(ctx android.LoadHookContext) {\n\t\tctx.AddProvider(outputFilesInfo)\n\t})\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4950f1a30b443b954e3ceb8f3ea4b56af30f0848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
