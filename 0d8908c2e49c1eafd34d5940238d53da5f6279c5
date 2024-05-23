@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79086db6_ba6947f4",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1881,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-23T17:57:20Z",
+      "side": 1,
+      "message": "If you still want to make sure that there\u0027s only 1 of these now that it\u0027s not a singletonModule, consider adding assertions on `ctx.ModuleDir()` and `ctx.ModuleName()`",
+      "revId": "0d8908c2e49c1eafd34d5940238d53da5f6279c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
