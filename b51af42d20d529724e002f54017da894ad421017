@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42869768_74d23a95",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-23T17:00:55Z",
+      "side": 1,
+      "message": "How expensive (disk space and time) is it to always  write out these files?",
+      "fixSuggestions": [
+        {
+          "fixId": "439ed4c6_7a508154",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "dexpreopt/dexpreopt.go",
+              "range": {
+                "startLine": 492,
+                "startChar": 0,
+                "endLine": 493,
+                "endChar": 0
+              },
+              "replacement": "\tif ctx.Config().IsEnvTrue(\"DEX_PREOPT_SYMBOLIZE\") || global.AlwaysGenerateSymbols {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b51af42d20d529724e002f54017da894ad421017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
