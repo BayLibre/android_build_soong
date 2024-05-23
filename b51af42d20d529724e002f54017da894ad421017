@@ -34,6 +34,24 @@
       ],
       "revId": "b51af42d20d529724e002f54017da894ad421017",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2a6a2c9_47509149",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-23T18:24:52Z",
+      "side": 1,
+      "message": "I\u0027ll do a check. From local testing the symbolized `.odex` were up to 2x the size, though I didn\u0027t look at the compile + stripping runtime costs on the host. My guess is that if we only did this for preopted targets that actually generate meaninful compiled bits (either `speed` or `speed-profile` w/ a valid profile), the overall impact would be pretty minimal.",
+      "parentUuid": "42869768_74d23a95",
+      "revId": "b51af42d20d529724e002f54017da894ad421017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
