@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d077e56_fc5c2f95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-24T05:07:13Z",
+      "side": 1,
+      "message": "Culprit of b/342501488 seems to be ag/27094667.",
+      "revId": "890b5ddf41840d5d86de02021987f0ed0d5a4b20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
