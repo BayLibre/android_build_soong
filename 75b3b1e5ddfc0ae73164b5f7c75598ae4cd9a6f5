@@ -34,6 +34,24 @@
       "parentUuid": "931ff345_832ee3d9",
       "revId": "75b3b1e5ddfc0ae73164b5f7c75598ae4cd9a6f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9610a61_88c8a26d",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-24T17:59:47Z",
+      "side": 1,
+      "message": "It would be separate zip files, but that doesn\u0027t seem like a bad thing?  Is there a reason you need a single zip file that has both arm64 and x86_64 prebuilts in it?",
+      "parentUuid": "f5c36b04_6ce2a57b",
+      "revId": "75b3b1e5ddfc0ae73164b5f7c75598ae4cd9a6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
