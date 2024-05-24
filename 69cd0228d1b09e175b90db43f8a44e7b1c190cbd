@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98b6d154_cdf9aa0e",
+        "filename": "bin/run_tool_with_logging",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2024-05-24T16:42:04Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused about how this is intended to be used. Are we defining a function here and sourcing the file from envsetup.sh to be called? Or are we treating this entire file as an executable.\n\nIf the latter, I don\u0027t see the corresponding changes to the ADB function. Also, would you still need the subshell seeing that you would already be forking to run a subprocess?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "69cd0228d1b09e175b90db43f8a44e7b1c190cbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
