@@ -128,7 +128,12 @@ buildinfo_prop {
     installable: false,
 
     // Currently, only microdroid can refer to buildinfo.prop
-    visibility: ["//packages/modules/Virtualization/microdroid"],
+    visibility: [
+        "//packages/modules/Virtualization/microdroid",
+        "//tools/tradefederation:__subpackages__",
+        "//frameworks/base/api",
+    ],
+    required: ["api_fingerprint"],
 }
 
 // container for apex_contributions selected using build flags
