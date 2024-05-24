@@ -46,6 +46,30 @@
       },
       "revId": "69cd0228d1b09e175b90db43f8a44e7b1c190cbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e9121d_f1ae7c0d",
+        "filename": "bin/run_tool_with_logging",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2024-05-24T20:44:25Z",
+      "side": 1,
+      "message": "Reposting what I commented on the MP thread:\n\n```\nOk, I see. It\u0027s because _mp_impl is a function. A few possible alternatives I can think of:\n\n1) Extract _mp_impl into a shell script to make it an executable that we can pass to run_tool_with_logging.\n\n2) Export _mp_impl before calling run_tool_with_logging so that it can see it. I\u0027m not sure this would work though.\n\n3) Add a run_mp_with_logging function in here that sources the run_tool_with_logging function in a subshell. That would allow you to remove the subshell from the run_tool_with_logging implementation.\n```",
+      "parentUuid": "5834f06f_4a94b12c",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "69cd0228d1b09e175b90db43f8a44e7b1c190cbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
