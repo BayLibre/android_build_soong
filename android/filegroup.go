@@ -19,7 +19,6 @@ import (
 	"strings"
 
 	"github.com/google/blueprint"
-	"github.com/google/blueprint/proptools"
 )
 
 func init() {
@@ -37,9 +36,9 @@ func RegisterFilegroupBuildComponents(ctx RegistrationContext) {
 
 type fileGroupProperties struct {
 	// srcs lists files that will be included in this filegroup
-	Srcs proptools.Configurable[[]string] `android:"path"`
+	Srcs []string `android:"path"`
 
-	Exclude_srcs proptools.Configurable[[]string] `android:"path"`
+	Exclude_srcs []string `android:"path"`
 
 	// The base path to the files.  May be used by other modules to determine which portion
 	// of the path to use.  For example, when a filegroup is used as data in a cc_test rule,
@@ -90,7 +89,7 @@ func (fg *fileGroup) JSONActions() []blueprint.JSONAction {
 }
 
 func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
-	fg.srcs = PathsForModuleSrcExcludes(ctx, fg.properties.Srcs.GetOrDefault(ctx, nil), fg.properties.Exclude_srcs.GetOrDefault(ctx, nil))
+	fg.srcs = PathsForModuleSrcExcludes(ctx, fg.properties.Srcs, fg.properties.Exclude_srcs)
 	if fg.properties.Path != nil {
 		fg.srcs = PathsWithModuleSrcSubDir(ctx, fg.srcs, String(fg.properties.Path))
 	}
