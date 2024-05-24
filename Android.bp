@@ -126,9 +126,18 @@ buildinfo_prop {
 
     // not installable because this will be included to system/build.prop
     installable: false,
+}
 
-    // Currently, only microdroid can refer to buildinfo.prop
-    visibility: ["//packages/modules/Virtualization/microdroid"],
+java_genrule {
+    name: "api_fingerprint",
+    srcs: [
+        ":frameworks-base-api-current.txt",
+        ":frameworks-base-api-system-current.txt",
+        ":frameworks-base-api-module-lib-current.txt",
+        ":frameworks-base-api-system-server-current.txt",
+    ],
+    out: ["api_fingerprint.txt"],
+    cmd: "cat $(in) | md5sum | cut -d' ' -f1 > $(out)",
 }
 
 // container for apex_contributions selected using build flags
