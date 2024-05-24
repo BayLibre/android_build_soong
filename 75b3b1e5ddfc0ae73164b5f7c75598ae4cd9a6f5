@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "931ff345_832ee3d9",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-05-24T17:20:18Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need to guess if linux_musl_arm64 exists here.  It looks like you are building a single CmakeSnapshot module and expecting it to find both linux_glibc_x86_64 and linux_musl_arm64 artifacts.  It would be better to use the linux_glibc_x86_64 variant of your module to gather the linux_glibc_x86_64 variants, and the linux_musl_arm64 variant to gather the linux_musl_arm64 variants.  That would mean dropping `variations` completely and passing `nil` to `AddVariationDependencies`, which will reuse the current module\u0027s variations, and using `ctx.Os() \u003d\u003d android.LinuxMusl` to check if the current module is building for musl.",
+      "revId": "75b3b1e5ddfc0ae73164b5f7c75598ae4cd9a6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
