@@ -22,6 +22,30 @@
       },
       "revId": "69cd0228d1b09e175b90db43f8a44e7b1c190cbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5834f06f_4a94b12c",
+        "filename": "bin/run_tool_with_logging",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1114063
+      },
+      "writtenOn": "2024-05-24T16:50:53Z",
+      "side": 1,
+      "message": "we treat the file as an executable and it is added to the PATH after source envsetup.sh. We dont need change to the ADB as it is in the PATH. \n\nInitially I removed the subshell as you said call the executable directly will for subshell. However, I got problem when I handle the makepush case because mp is a function which is sourced to the current shell, and if we run our logging script in a subshell, the mp function is not available, so I have to execute our logging script in the current shell (using . ) and in that case we need to create the subshell to make the trap handler work.\n\nAgree it is a bit confusing... let me know if you have a better way to solve the problem.",
+      "parentUuid": "98b6d154_cdf9aa0e",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "69cd0228d1b09e175b90db43f8a44e7b1c190cbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
