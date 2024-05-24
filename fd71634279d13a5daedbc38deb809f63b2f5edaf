@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd330067_b3d464dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-24T02:23:51Z",
+      "side": 1,
+      "message": "Separated CL to remove UseCoreVariant. PTAL.",
+      "parentUuid": "992153a7_b7e4a496",
+      "revId": "fd71634279d13a5daedbc38deb809f63b2f5edaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ab6a903_91a35457",
@@ -85,6 +103,30 @@
       "writtenOn": "2024-05-22T08:35:37Z",
       "side": 1,
       "message": "Do we still need this?",
+      "range": {
+        "startLine": 2190,
+        "startChar": 0,
+        "endLine": 2193,
+        "endChar": 4
+      },
+      "revId": "fd71634279d13a5daedbc38deb809f63b2f5edaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68bae0b5_9f9f6b44",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2193,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-24T02:23:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ab6a903_91a35457",
       "range": {
         "startLine": 2190,
         "startChar": 0,
