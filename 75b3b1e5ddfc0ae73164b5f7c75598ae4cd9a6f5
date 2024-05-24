@@ -52,6 +52,24 @@
       "parentUuid": "f5c36b04_6ce2a57b",
       "revId": "75b3b1e5ddfc0ae73164b5f7c75598ae4cd9a6f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c69b54c3_ef429cd9",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-05-24T18:07:07Z",
+      "side": 1,
+      "message": "Wanted to generate a single release/SDK zip file. A quick look into android SDK ship various components with multiple binary variants (e.g. 32 and 64 bit).",
+      "parentUuid": "d9610a61_88c8a26d",
+      "revId": "75b3b1e5ddfc0ae73164b5f7c75598ae4cd9a6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
