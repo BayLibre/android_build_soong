@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50db9fc7_1d7de740",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1470,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-05-24T02:25:47Z",
+      "side": 0,
+      "message": "need to remove `TARGET_VNDK_USE_CORE_VARIANT` in build/make/core/soong_config.mk?",
+      "range": {
+        "startLine": 1470,
+        "startChar": 39,
+        "endLine": 1470,
+        "endChar": 57
+      },
+      "revId": "41a1ff1a28d71463ca7f86a532ac422dd56b4cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
