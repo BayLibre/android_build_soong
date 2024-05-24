@@ -2223,6 +2223,35 @@ func (j *Module) checkSdkLinkType(
 	}
 }
 
+func (j *Module) printApiDomainsCrossingDependency(ctx android.ModuleContext, dependency android.Module, tag blueprint.DependencyTag) {
+	if dep, ok := dependency.(*Library); ok {
+		if apexInfo, thisModuleIsApexModule := android.ModuleProvider(ctx, android.ApexInfoProvider); thisModuleIsApexModule {
+			if _, depIsApexModule := android.OtherModuleProvider(ctx, dependency, android.ApexInfoProvider); depIsApexModule {
+				// Apex module - Apex module dependency. Do nothing for now
+
+			} else if dep.Platform() && !strings.Contains(dep.Name(), "stub") {
+				// Apex module - non-stub system module dependency
+
+				if !apexInfo.Updatable && android.InList(dependency.Name(), config.FrameworkLibraries) {
+					// Non-Updatable Apex module - (framework || ext) dependency
+					// If the apex module belongs to a non-updatable apex,
+					// it is allowed to depend on "framework" or "ext".
+					// These modules are added as a dependency by default when the module does
+					// not specify a sdk version
+
+				} else {
+					tn, tnOk := tag.(dependencyTag)
+					tagName := ""
+					if tnOk {
+						tagName = tn.name
+					}
+					fmt.Printf("%s, %s, %s, %s\n", j.Name(), apexInfo.InApexModules, dep.Name(), tagName)
+				}
+			}
+		}
+	}
+}
+
 func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 	var deps deps
 
@@ -2256,6 +2285,8 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			// Handled by AndroidApp.collectAppDeps
 			return
 		}
+
+		j.printApiDomainsCrossingDependency(ctx, module, tag)
 
 		if dep, ok := module.(SdkLibraryDependency); ok {
 			switch tag {
