@@ -94,6 +94,30 @@
       },
       "revId": "69cd0228d1b09e175b90db43f8a44e7b1c190cbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04e066ef_9bdbb0aa",
+        "filename": "bin/run_tool_with_logging",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2024-05-25T04:16:38Z",
+      "side": 1,
+      "message": "We\u0027d have to reimplement the trap handler which is tricky. The remaining args to the logger would also have to be passed in but that\u0027s less of a problem.\n\nI think we have something that already works we\u0027re just trying to make sure it\u0027s clear and easy to understand.",
+      "parentUuid": "af11027f_f587e99b",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "69cd0228d1b09e175b90db43f8a44e7b1c190cbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
