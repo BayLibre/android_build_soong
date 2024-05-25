@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b233c194_72a75a4e",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-25T00:23:33Z",
+      "side": 1,
+      "message": "nit: WDYT about moving this to inside `r8Flags(...)`? Ditto for `d8Flags(...)`.",
+      "range": {
+        "startLine": 425,
+        "startChar": 2,
+        "endLine": 435,
+        "endChar": 3
+      },
+      "revId": "e8066eb3e473b6a75e4b17de93d44c4242375b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6b0210f_7a6c0f84",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-25T00:23:33Z",
+      "side": 1,
+      "message": "Should this be enabled even when `Profile_guided` is `false`?",
+      "range": {
+        "startLine": 432,
+        "startChar": 0,
+        "endLine": 435,
+        "endChar": 29
+      },
+      "revId": "e8066eb3e473b6a75e4b17de93d44c4242375b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abfd6079_e31bcbd1",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-05-25T00:23:33Z",
+      "side": 1,
+      "message": "So IIUC when `baseline_profile` property is set, `profile` will be ignored. Is this intentional? If not, can we throw an error when both properties are specified?",
+      "range": {
+        "startLine": 439,
+        "startChar": 2,
+        "endLine": 441,
+        "endChar": 84
+      },
+      "revId": "e8066eb3e473b6a75e4b17de93d44c4242375b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
