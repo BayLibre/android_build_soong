@@ -70,6 +70,30 @@
       },
       "revId": "69cd0228d1b09e175b90db43f8a44e7b1c190cbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af11027f_f587e99b",
+        "filename": "bin/run_tool_with_logging",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-05-25T03:15:07Z",
+      "side": 1,
+      "message": "Why not just add the instrumentation directly to mp?  Have it call tool_event_logger directly, rather than making this so complicated.",
+      "parentUuid": "42e9121d_f1ae7c0d",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "69cd0228d1b09e175b90db43f8a44e7b1c190cbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
