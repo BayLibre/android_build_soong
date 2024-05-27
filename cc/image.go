@@ -17,7 +17,6 @@ package cc
 // functions to determine where a module is installed, etc.
 
 import (
-	"fmt"
 	"reflect"
 	"strings"
 
@@ -186,23 +185,6 @@ func visitPropsAndCompareVendorAndProductProps(v reflect.Value) bool {
 	return true
 }
 
-// In the case of VNDK, vendor and product variants must have the same properties.
-// VNDK installs only one file and shares it for both vendor and product modules on
-// runtime. We may not define different versions of a VNDK lib for each partition.
-// This function is used only for the VNDK modules that is available to both vendor
-// and product partitions.
-func (c *Module) compareVendorAndProductProps() bool {
-	if !c.IsVndk() && !Bool(c.VendorProperties.Product_available) {
-		panic(fmt.Errorf("This is only for product available VNDK libs. %q is not a VNDK library or not product available", c.Name()))
-	}
-	for _, properties := range c.GetProperties() {
-		if !visitPropsAndCompareVendorAndProductProps(reflect.ValueOf(properties).Elem()) {
-			return false
-		}
-	}
-	return true
-}
-
 // ImageMutatableModule provides a common image mutation interface for  LinkableInterface modules.
 type ImageMutatableModule interface {
 	android.Module
@@ -260,60 +242,7 @@ type ImageMutatableModule interface {
 var _ ImageMutatableModule = (*Module)(nil)
 
 func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
-	m.CheckVndkProperties(mctx)
 	MutateImage(mctx, m)
-}
-
-// CheckVndkProperties checks whether the VNDK-related properties are set correctly.
-// If properties are not set correctly, results in a module context property error.
-func (m *Module) CheckVndkProperties(mctx android.BaseModuleContext) {
-	vendorSpecific := mctx.SocSpecific() || mctx.DeviceSpecific()
-	productSpecific := mctx.ProductSpecific()
-
-	if vndkdep := m.vndkdep; vndkdep != nil {
-		if vndkdep.isVndk() {
-			if vendorSpecific || productSpecific {
-				if !vndkdep.isVndkExt() {
-					mctx.PropertyErrorf("vndk",
-						"must set `extends: \"...\"` to vndk extension")
-				} else if Bool(m.VendorProperties.Vendor_available) {
-					mctx.PropertyErrorf("vendor_available",
-						"must not set at the same time as `vndk: {extends: \"...\"}`")
-				} else if Bool(m.VendorProperties.Product_available) {
-					mctx.PropertyErrorf("product_available",
-						"must not set at the same time as `vndk: {extends: \"...\"}`")
-				}
-			} else {
-				if vndkdep.isVndkExt() {
-					mctx.PropertyErrorf("vndk",
-						"must set `vendor: true` or `product_specific: true` to set `extends: %q`",
-						m.getVndkExtendsModuleName())
-				}
-				if !Bool(m.VendorProperties.Vendor_available) {
-					mctx.PropertyErrorf("vndk",
-						"vendor_available must be set to true when `vndk: {enabled: true}`")
-				}
-				if Bool(m.VendorProperties.Product_available) {
-					// If a VNDK module creates both product and vendor variants, they
-					// must have the same properties since they share a single VNDK
-					// library on runtime.
-					if !m.compareVendorAndProductProps() {
-						mctx.ModuleErrorf("product properties must have the same values with the vendor properties for VNDK modules")
-					}
-				}
-			}
-		} else {
-			if vndkdep.isVndkSp() {
-				mctx.PropertyErrorf("vndk",
-					"must set `enabled: true` to set `support_system_process: true`")
-			}
-			if vndkdep.isVndkExt() {
-				mctx.PropertyErrorf("vndk",
-					"must set `enabled: true` to set `extends: %q`",
-					m.getVndkExtendsModuleName())
-			}
-		}
-	}
 }
 
 func (m *Module) VendorAvailable() bool {
@@ -456,7 +385,7 @@ func MutateImage(mctx android.BaseModuleContext, m ImageMutatableModule) {
 		} else {
 			vendorVariants = append(vendorVariants, m.SnapshotVersion(mctx))
 		}
-	} else if m.HasNonSystemVariants() && !m.IsVndkExt() {
+	} else if m.HasNonSystemVariants() {
 		// This will be available to /system unless it is product_specific
 		// which will be handled later.
 		coreVariantNeeded = true
