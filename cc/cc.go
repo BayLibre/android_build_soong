@@ -49,7 +49,6 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 
 	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.BottomUp("sdk", sdkMutator).Parallel()
-		ctx.BottomUp("vndk", VndkMutator).Parallel()
 		ctx.BottomUp("llndk", llndkMutator).Parallel()
 		ctx.BottomUp("link", LinkageMutator).Parallel()
 		ctx.BottomUp("test_per_src", TestPerSrcMutator).Parallel()
@@ -475,19 +474,6 @@ type VendorProperties struct {
 	// IsLLNDK is set to true for the vendor variant of a cc_library module that has LLNDK stubs.
 	IsLLNDK bool `blueprint:"mutated"`
 
-	// IsVNDKCore is set if a VNDK module does not set the vndk.support_system_process property.
-	IsVNDKCore bool `blueprint:"mutated"`
-
-	// IsVNDKSP is set if a VNDK module sets the vndk.support_system_process property.
-	IsVNDKSP bool `blueprint:"mutated"`
-
-	// IsVNDKPrivate is set if a VNDK module sets the vndk.private property or an LLNDK
-	// module sets the llndk.private property.
-	IsVNDKPrivate bool `blueprint:"mutated"`
-
-	// IsVNDKProduct is set if a VNDK module sets the product_available property.
-	IsVNDKProduct bool `blueprint:"mutated"`
-
 	// IsVendorPublicLibrary is set for the core and product variants of a library that has
 	// vendor_public_library stubs.
 	IsVendorPublicLibrary bool `blueprint:"mutated"`
@@ -516,10 +502,6 @@ type ModuleContextIntf interface {
 	IsLlndk() bool
 	IsLlndkPublic() bool
 	isImplementationForLLNDKPublic() bool
-	IsVndkPrivate() bool
-	isVndk() bool
-	isVndkSp() bool
-	IsVndkExt() bool
 	IsVendorPublicLibrary() bool
 	inProduct() bool
 	inVendor() bool
@@ -529,7 +511,6 @@ type ModuleContextIntf interface {
 	InVendorOrProduct() bool
 	selectedStl() string
 	baseModuleName() string
-	getVndkExtendsModuleName() string
 	isAfdoCompile(ctx ModuleContext) bool
 	isOrderfileCompile() bool
 	isCfi() bool
@@ -894,7 +875,6 @@ type Module struct {
 	coverage  *coverage
 	fuzzer    *fuzzer
 	sabi      *sabi
-	vndkdep   *vndkdep
 	lto       *lto
 	afdo      *afdo
 	orderfile *orderfile
@@ -968,10 +948,6 @@ func (c *Module) AddJSONData(d *map[string]interface{}) {
 		"InstallInVendorRamdisk": c.InstallInVendorRamdisk(),
 		"InstallInRecovery":      c.InstallInRecovery(),
 		"InstallInRoot":          c.InstallInRoot(),
-		"IsVndk":                 c.IsVndk(),
-		"IsVndkExt":              c.IsVndkExt(),
-		"IsVndkPrivate":          c.IsVndkPrivate(),
-		"IsVndkSp":               c.IsVndkSp(),
 		"IsLlndk":                c.IsLlndk(),
 		"IsLlndkPublic":          c.IsLlndkPublic(),
 		"IsVendorPublicLibrary":  c.IsVendorPublicLibrary(),
@@ -1278,9 +1254,6 @@ func (c *Module) Init() android.Module {
 	if c.sabi != nil {
 		c.AddProperties(c.sabi.props()...)
 	}
-	if c.vndkdep != nil {
-		c.AddProperties(c.vndkdep.props()...)
-	}
 	if c.lto != nil {
 		c.AddProperties(c.lto.props()...)
 	}
@@ -1336,7 +1309,7 @@ func (c *Module) IsLlndk() bool {
 }
 
 func (c *Module) IsLlndkPublic() bool {
-	return c.VendorProperties.IsLLNDK && !c.VendorProperties.IsVNDKPrivate
+	return c.VendorProperties.IsLLNDK
 }
 
 func (m *Module) NeedsLlndkVariants() bool {
@@ -1357,6 +1330,13 @@ func (c *Module) IsVendorPublicLibrary() bool {
 func (c *Module) IsVndkPrebuiltLibrary() bool {
 	if _, ok := c.linker.(*vndkPrebuiltLibraryDecorator); ok {
 		return true
+	}
+	return false
+}
+
+func (c *Module) IsVndkEnabledVndkPrebuiltLibrary() bool {
+	if vndkprebuilt, ok := c.linker.(*vndkPrebuiltLibraryDecorator); ok {
+		return Bool(vndkprebuilt.properties.Vndk.Enabled)
 	}
 	return false
 }
@@ -1383,31 +1363,6 @@ func (c *Module) isImplementationForLLNDKPublic() bool {
 	library, _ := c.library.(*libraryDecorator)
 	return library != nil && library.hasLLNDKStubs() &&
 		!Bool(library.Properties.Llndk.Private)
-}
-
-// Returns true for LLNDK-private, VNDK-SP-private, and VNDK-core-private.
-func (c *Module) IsVndkPrivate() bool {
-	// Check if VNDK-core-private or VNDK-SP-private
-	if c.IsVndk() {
-		return Bool(c.vndkdep.Properties.Vndk.Private)
-	}
-
-	// Check if LLNDK-private
-	if library, ok := c.library.(*libraryDecorator); ok && c.IsLlndk() {
-		return Bool(library.Properties.Llndk.Private)
-	}
-
-	return false
-}
-
-// IsVndk() returns true if this module has a vndk variant.
-// Note that IsVndk() returns true for all variants of vndk-enabled libraries. Not only vendor variant,
-// but also platform and product variants of vndk-enabled libraries return true for IsVndk().
-func (c *Module) IsVndk() bool {
-	if vndkdep := c.vndkdep; vndkdep != nil {
-		return vndkdep.isVndk()
-	}
-	return false
 }
 
 func (c *Module) isAfdoCompile(ctx ModuleContext) bool {
@@ -1445,29 +1400,8 @@ func (c *Module) isNDKStubLibrary() bool {
 	return false
 }
 
-func (c *Module) IsVndkSp() bool {
-	if vndkdep := c.vndkdep; vndkdep != nil {
-		return vndkdep.isVndkSp()
-	}
-	return false
-}
-
-func (c *Module) IsVndkExt() bool {
-	if vndkdep := c.vndkdep; vndkdep != nil {
-		return vndkdep.isVndkExt()
-	}
-	return false
-}
-
 func (c *Module) SubName() string {
 	return c.Properties.SubName
-}
-
-func (c *Module) getVndkExtendsModuleName() string {
-	if vndkdep := c.vndkdep; vndkdep != nil {
-		return vndkdep.getVndkExtendsModuleName()
-	}
-	return ""
 }
 
 func (c *Module) IsStubs() bool {
@@ -1707,14 +1641,6 @@ func (ctx *moduleContextImpl) isImplementationForLLNDKPublic() bool {
 	return ctx.mod.isImplementationForLLNDKPublic()
 }
 
-func (ctx *moduleContextImpl) IsVndkPrivate() bool {
-	return ctx.mod.IsVndkPrivate()
-}
-
-func (ctx *moduleContextImpl) isVndk() bool {
-	return ctx.mod.IsVndk()
-}
-
 func (ctx *moduleContextImpl) isAfdoCompile(mctx ModuleContext) bool {
 	return ctx.mod.isAfdoCompile(mctx)
 }
@@ -1735,14 +1661,6 @@ func (ctx *moduleContextImpl) isNDKStubLibrary() bool {
 	return ctx.mod.isNDKStubLibrary()
 }
 
-func (ctx *moduleContextImpl) isVndkSp() bool {
-	return ctx.mod.IsVndkSp()
-}
-
-func (ctx *moduleContextImpl) IsVndkExt() bool {
-	return ctx.mod.IsVndkExt()
-}
-
 func (ctx *moduleContextImpl) IsVendorPublicLibrary() bool {
 	return ctx.mod.IsVendorPublicLibrary()
 }
@@ -1760,10 +1678,6 @@ func (ctx *moduleContextImpl) useClangLld(actx ModuleContext) bool {
 
 func (ctx *moduleContextImpl) baseModuleName() string {
 	return ctx.mod.BaseModuleName()
-}
-
-func (ctx *moduleContextImpl) getVndkExtendsModuleName() string {
-	return ctx.mod.getVndkExtendsModuleName()
 }
 
 func (ctx *moduleContextImpl) isForPlatform() bool {
@@ -1830,7 +1744,6 @@ func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Mo
 	module.coverage = &coverage{}
 	module.fuzzer = &fuzzer{}
 	module.sabi = &sabi{}
-	module.vndkdep = &vndkdep{}
 	module.lto = &lto{}
 	module.afdo = &afdo{}
 	module.orderfile = &orderfile{}
@@ -2762,15 +2675,6 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		{Mutator: "link", Variation: "shared"},
 	}, ndkLateStubDepTag, apiLateNdkLibs...)
 
-	if vndkdep := c.vndkdep; vndkdep != nil {
-		if vndkdep.isVndkExt() {
-			actx.AddVariationDependencies([]blueprint.Variation{
-				c.ImageVariation(),
-				{Mutator: "link", Variation: "shared"},
-			}, vndkExtDepTag, vndkdep.getVndkExtendsModuleName())
-		}
-	}
-
 	if len(deps.AidlLibs) > 0 {
 		actx.AddDependency(
 			c,
@@ -2808,20 +2712,6 @@ func checkLinkType(ctx android.BaseModuleContext, from LinkableInterface, to Lin
 		return
 	}
 
-	// VNDK is cc.Module supported only for now.
-	if ccFrom, ok := from.(*Module); ok && from.UseVndk() {
-		// Though allowed dependency is limited by the image mutator,
-		// each vendor and product module needs to check link-type
-		// for VNDK.
-		if ccTo, ok := to.(*Module); ok {
-			if ccFrom.vndkdep != nil {
-				ccFrom.vndkdep.vndkCheckLinkType(ctx, ccTo, tag)
-			}
-		} else if _, ok := to.(LinkableInterface); !ok {
-			ctx.ModuleErrorf("Attempting to link VNDK cc.Module with unsupported module type")
-		}
-		return
-	}
 	// TODO(b/244244438) : Remove this once all variants are implemented
 	if ccFrom, ok := from.(*Module); ok && ccFrom.isImportedApiLibrary() {
 		return
@@ -2976,7 +2866,7 @@ func checkDoubleLoadableLibraries(ctx android.TopDownMutatorContext) {
 			return true
 		}
 
-		if to.IsVndkSp() || to.IsLlndk() {
+		if to.IsLlndk() {
 			return false
 		}
 
@@ -3815,10 +3705,7 @@ func GetMakeLinkType(actx android.ModuleContext, c LinkableInterface) string {
 			}
 			return "native:vndk"
 		}
-		if c.IsVndk() && !c.IsVndkExt() {
-			if c.IsVndkPrivate() {
-				return "native:vndk_private"
-			}
+		if c.IsVndkEnabledVndkPrebuiltLibrary() {
 			return "native:vndk"
 		}
 		if c.InProduct() {
@@ -4020,15 +3907,6 @@ func (c *Module) AlwaysRequiresPlatformApexVariant() bool {
 	return c.IsStubs() || c.Target().NativeBridge == android.NativeBridgeEnabled
 }
 
-// Overrides android.ApexModuleBase.UniqueApexVariations
-func (c *Module) UniqueApexVariations() bool {
-	// When a vendor APEX needs a VNDK lib in it (use_vndk_as_stable: false), it should be a unique
-	// APEX variation. Otherwise, another vendor APEX with use_vndk_as_stable:true may use a wrong
-	// variation of the VNDK lib because APEX variations are merged/grouped.
-	// TODO(b/274401041) Find a way to merge APEX variations for vendor apexes.
-	return c.UseVndk() && c.IsVndk()
-}
-
 func (c *Module) overriddenModules() []string {
 	if o, ok := c.linker.(overridable); ok {
 		return o.overriddenModules()
@@ -4136,7 +4014,6 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&TidyProperties{},
 		&CoverageProperties{},
 		&SAbiProperties{},
-		&VndkProperties{},
 		&LTOProperties{},
 		&AfdoProperties{},
 		&OrderfileProperties{},
