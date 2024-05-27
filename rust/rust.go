@@ -345,20 +345,12 @@ func (mod *Module) SubName() string {
 	return mod.Properties.SubName
 }
 
-func (mod *Module) IsVndk() bool {
-	// TODO(b/165791368)
-	return false
-}
-
-func (mod *Module) IsVndkExt() bool {
-	return false
-}
-
-func (mod *Module) IsVndkSp() bool {
-	return false
-}
-
 func (mod *Module) IsVndkPrebuiltLibrary() bool {
+	// Rust modules do not provide VNDK prebuilts
+	return false
+}
+
+func (mod *Module) IsVndkEnabledVndkPrebuiltLibrary() bool {
 	// Rust modules do not provide VNDK prebuilts
 	return false
 }
