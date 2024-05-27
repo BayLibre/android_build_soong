@@ -576,6 +576,10 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	flags.Local.ConlyFlags = append([]string{"-std=" + cStd}, flags.Local.ConlyFlags...)
 	flags.Local.CppFlags = append([]string{"-std=" + cppStd}, flags.Local.CppFlags...)
 
+	if ctx.optimizeForSize() {
+		flags.Local.CFlags = append(flags.Local.CFlags, "-Oz")
+	}
+
 	if ctx.inVendor() {
 		flags.Local.CFlags = append(flags.Local.CFlags, esc(compiler.Properties.Target.Vendor.Cflags)...)
 	}
