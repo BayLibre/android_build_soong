@@ -162,14 +162,9 @@ type LinkableInterface interface {
 	// Bootstrap tests if this module is allowed to use non-APEX version of libraries.
 	Bootstrap() bool
 
-	// IsVndkSp returns true if this is a VNDK-SP module.
-	IsVndkSp() bool
-
-	IsVndk() bool
-	IsVndkExt() bool
-	IsVndkPrivate() bool
 	IsVendorPublicLibrary() bool
 	IsVndkPrebuiltLibrary() bool
+	IsVndkEnabledVndkPrebuiltLibrary() bool
 	HasVendorVariant() bool
 	HasProductVariant() bool
 	HasNonSystemVariants() bool
