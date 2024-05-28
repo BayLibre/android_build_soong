@@ -143,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f37cc31a_c4dce2da",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-28T15:48:45Z",
+      "side": 1,
+      "message": "My one issue with the term `obfuscated` is that we want this for any target that is optimized *or* obfuscated. @rahulrav@google.com @christofferqa@google.com do y\u0027all have any thoughts on naming relative to the terminology we use elsewhere (in AGP)? Was looking at upstream documentation (https://developer.android.com/topic/performance/baselineprofiles/overview) and there\u0027s not really a clear naming distinction between rewritten/optimized baseline profiles and \"pre\"-rewritten baseline profiles. Would be OK with `unoptimized_profile`, `is_profile_unoptimized`, or possibly something a bit more explicit like `enable_profile_rewriting* bool` or `rewrite_profile_with_optimization* bool` or something like that.\n\nDon\u0027t feel strongly about a separate profile path or a flag as long as soong fails if you try to configure something ambiguous.",
+      "parentUuid": "ed49a5c4_dafa95c9",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 18
+      },
+      "revId": "e8066eb3e473b6a75e4b17de93d44c4242375b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6b0210f_7a6c0f84",
         "filename": "java/dexpreopt.go",
         "patchSetId": 3
