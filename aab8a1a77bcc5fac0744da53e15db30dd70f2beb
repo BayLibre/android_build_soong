@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f547e4e7_08e9b98a",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-05-28T21:45:37Z",
+      "side": 1,
+      "message": "typo\n```suggestion\n\t// Aggressively trade performance for smaller binary size.\n```",
+      "range": {
+        "startLine": 289,
+        "startChar": 4,
+        "endLine": 289,
+        "endChar": 15
+      },
+      "revId": "aab8a1a77bcc5fac0744da53e15db30dd70f2beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "686399a9_55a521e4",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-05-28T21:45:37Z",
+      "side": 1,
+      "message": "Appending seems fine, but should we also check that the user didn\u0027t specify a different optimization flag as part of their options too? It might be confusing otherwise.",
+      "revId": "aab8a1a77bcc5fac0744da53e15db30dd70f2beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
