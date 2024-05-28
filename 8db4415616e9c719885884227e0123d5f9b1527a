@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3fc224f_70b5ab4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-05-28T06:09:28Z",
+      "side": 1,
+      "message": "LGTM but not sure how to check if native_bridge targets are installed as intended, so over to colefaust@",
+      "revId": "8db4415616e9c719885884227e0123d5f9b1527a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
