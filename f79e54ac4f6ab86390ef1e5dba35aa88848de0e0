@@ -1,0 +1,244 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14329337_f83607ef",
+        "filename": "java/base.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1657,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-28T21:24:31Z",
+      "side": 1,
+      "message": "Also check `profile_guided`?",
+      "range": {
+        "startLine": 1657,
+        "startChar": 32,
+        "endLine": 1657,
+        "endChar": 33
+      },
+      "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c1f055_f0abab55",
+        "filename": "java/dex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-28T21:24:31Z",
+      "side": 1,
+      "message": "Nit: \"--\".",
+      "range": {
+        "startLine": 404,
+        "startChar": 8,
+        "endLine": 404,
+        "endChar": 9
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8965b002_d0384f8b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 404,
+                "startChar": 0,
+                "endLine": 405,
+                "endChar": 0
+              },
+              "replacement": "// Adds --art-profile to r8/d8 command.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0ba7167_113cf976",
+        "filename": "java/dex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-28T21:24:31Z",
+      "side": 1,
+      "message": "android.WritablePaths",
+      "range": {
+        "startLine": 499,
+        "startChar": 21,
+        "endLine": 499,
+        "endChar": 43
+      },
+      "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "247d8421_e8d097e8",
+        "filename": "java/dex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-28T21:24:31Z",
+      "side": 1,
+      "message": "It\u0027s better to use append, in case someone adds something to `implicitOutputs` above.",
+      "range": {
+        "startLine": 503,
+        "startChar": 21,
+        "endLine": 505,
+        "endChar": 4
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a2260366_619fc007",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 503,
+                "startChar": 0,
+                "endLine": 504,
+                "endChar": 0
+              },
+              "replacement": "\t\t\timplicitOutputs \u003d append(implicitOutputs, android.WritablePaths{\n"
+            },
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 505,
+                "startChar": 0,
+                "endLine": 506,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t})\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "200bce86_ddd7bbb3",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-28T21:24:31Z",
+      "side": 1,
+      "message": "Nit: \"rewritten\"",
+      "range": {
+        "startLine": 435,
+        "startChar": 49,
+        "endLine": 435,
+        "endChar": 58
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "848e2e5d_04f0eb0c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dexpreopt.go",
+              "range": {
+                "startLine": 435,
+                "startChar": 0,
+                "endLine": 436,
+                "endChar": 0
+              },
+              "replacement": "\t\t// If enable_profile_rewriting is set, use the rewritten profile instead of the checked-in profile\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b305bf5c_c67a4a93",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-28T21:24:31Z",
+      "side": 1,
+      "message": "`profile :\u003d d.GetProfile(); profile !\u003d \"\"`",
+      "range": {
+        "startLine": 439,
+        "startChar": 12,
+        "endLine": 439,
+        "endChar": 66
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "07e8adc6_ba34e0e1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dexpreopt.go",
+              "range": {
+                "startLine": 439,
+                "startChar": 0,
+                "endLine": 440,
+                "endChar": 0
+              },
+              "replacement": "\t\t} else if profile :\u003d d.GetProfile(); profile !\u003d \"\" {\n"
+            },
+            {
+              "path": "java/dexpreopt.go",
+              "range": {
+                "startLine": 443,
+                "startChar": 0,
+                "endLine": 444,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\tandroid.PathForModuleSrc(ctx, profile))\n"
+            },
+            {
+              "path": "java/dexpreopt.go",
+              "range": {
+                "startLine": 445,
+                "startChar": 0,
+                "endLine": 446,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\tctx.ModuleDir(), profile+\"-boot\")\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
