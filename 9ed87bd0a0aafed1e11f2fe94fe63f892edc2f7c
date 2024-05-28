@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97dad114_3f1aef4c",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-05-28T04:41:46Z",
+      "side": 1,
+      "message": "What about deps among native bridge enabled modules?",
+      "range": {
+        "startLine": 1078,
+        "startChar": 0,
+        "endLine": 1083,
+        "endChar": 0
+      },
+      "revId": "9ed87bd0a0aafed1e11f2fe94fe63f892edc2f7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
