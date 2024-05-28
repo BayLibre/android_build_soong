@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d55e19_41a91b8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-05-28T20:33:42Z",
+      "side": 1,
+      "message": "When we changed the message type, we also needed to change how we read intermediate files.",
+      "revId": "194d492d55ee59742288b954e7a39e920c34d5fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
