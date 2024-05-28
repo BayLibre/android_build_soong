@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa7b3c84_5f655b72",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-28T10:22:20Z",
+      "side": 1,
+      "message": "`profile.prof.txt`",
+      "range": {
+        "startLine": 427,
+        "startChar": 63,
+        "endLine": 427,
+        "endChar": 79
+      },
+      "revId": "e8066eb3e473b6a75e4b17de93d44c4242375b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b233c194_72a75a4e",
         "filename": "java/dex.go",
         "patchSetId": 3
@@ -19,6 +42,100 @@
         "startChar": 2,
         "endLine": 435,
         "endChar": 3
+      },
+      "revId": "e8066eb3e473b6a75e4b17de93d44c4242375b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b13cbd7d_f4a0105e",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-28T10:22:20Z",
+      "side": 1,
+      "message": "Consider moving this to a function and call it like\n\n```\nr8Flags, r8Deps, artProfileOutputPath :\u003d addArtProfile(r8Flags, r8Deps, artProfileInput)\n```\n\nto reuse it for both r8 and d8.",
+      "range": {
+        "startLine": 425,
+        "startChar": 2,
+        "endLine": 435,
+        "endChar": 3
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "63288c4b_6e4962a2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 380,
+                "startChar": 0,
+                "endLine": 380,
+                "endChar": 0
+              },
+              "replacement": "\nfunc (d *dexer) addArtProfile(ctx android.ModuleContext, r8Flags []string, r8Deps android.Paths,\n\tartProfileInput *string) ([]string, android.Paths, *android.OutputPath) {\n\tif artProfileInput \u003d\u003d nil {\n\t\treturn r8Flags, r8Deps, nil\n\t}\n\tartProfileInputPath :\u003d android.PathForModuleSrc(ctx, *artProfileInput)\n\tartProfileOutputPathValue :\u003d android.PathForModuleOut(ctx, \"profile.txt.prof\").OutputPath\n\tartProfileOutputPath :\u003d \u0026artProfileOutputPathValue\n\tr8Flags \u003d append(r8Flags,\n\t\t\"--art-profile\",\n\t\tartProfileInputPath.String(),\n\t\tartProfileOutputPath.String(),\n\t)\n\tr8Deps \u003d append(r8Deps, artProfileInputPath)\n\treturn r8Flags, r8Deps, artProfileOutputPath\n}\n"
+            },
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 425,
+                "startChar": 0,
+                "endLine": 436,
+                "endChar": 0
+              },
+              "replacement": "\t\tr8Flags, r8Deps, artProfileOutputPath \u003d d.addArtProfile(ctx, r8Flags, r8Deps,\n\t\t\tdexParams.artProfileInput)\n"
+            },
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 477,
+                "startChar": 0,
+                "endLine": 490,
+                "endChar": 0
+              },
+              "replacement": "\t\td8Flags, d8Deps, artProfileOutputPath \u003d d.addArtProfile(ctx, d8Flags, d8Deps,\n\t\t\tdexParams.artProfileInput)\n\t\timplicitOutputs \u003d android.WritablePaths{\n\t\t\tartProfileOutputPath,\n"
+            },
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 491,
+                "startChar": 0,
+                "endLine": 491,
+                "endChar": 0
+              },
+              "replacement": "\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e8066eb3e473b6a75e4b17de93d44c4242375b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed49a5c4_dafa95c9",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-28T10:22:20Z",
+      "side": 1,
+      "message": "I think the name of this property can be improved. Profiles provided through `profile` are also baseline profiles, so adding another property called `baseline_profile` can confuse users.\n\nGiven the main difference between `profile` and the new property is that profiles provided through the new property are to be processed by r8 before used, consider names like `unobfuscated_profile`.\n\nAlternatively, replace this string property with a boolean, say, `is_profile_unobfuscated`. When it\u0027s set to true, process `profile` with r8 before using. This can also address Jihoon\u0027s concern about both string properties being set.",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 18
       },
       "revId": "e8066eb3e473b6a75e4b17de93d44c4242375b99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -66,6 +183,87 @@
         "endLine": 441,
         "endChar": 84
       },
+      "revId": "e8066eb3e473b6a75e4b17de93d44c4242375b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062dba2e_eb572941",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-28T10:22:20Z",
+      "side": 1,
+      "message": "Consider `obfuscatedProfileOutput`",
+      "range": {
+        "startLine": 610,
+        "startChar": 10,
+        "endLine": 610,
+        "endChar": 31
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9e44a0a2_0e472595",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dexpreopt.go",
+              "range": {
+                "startLine": 145,
+                "startChar": 0,
+                "endLine": 146,
+                "endChar": 0
+              },
+              "replacement": "\tobfuscatedProfileOutput android.Path\n"
+            },
+            {
+              "path": "java/dexpreopt.go",
+              "range": {
+                "startLine": 432,
+                "startChar": 0,
+                "endLine": 433,
+                "endChar": 0
+              },
+              "replacement": "\t} else if d.GetObfuscatedProfileOutput() !\u003d nil {\n"
+            },
+            {
+              "path": "java/dexpreopt.go",
+              "range": {
+                "startLine": 434,
+                "startChar": 0,
+                "endLine": 435,
+                "endChar": 0
+              },
+              "replacement": "\t\tprofileClassListing \u003d android.OptionalPathForPath(d.GetObfuscatedProfileOutput())\n"
+            },
+            {
+              "path": "java/dexpreopt.go",
+              "range": {
+                "startLine": 609,
+                "startChar": 0,
+                "endLine": 611,
+                "endChar": 0
+              },
+              "replacement": "func (d *dexpreopter) GetObfuscatedProfileOutput() android.Path {\n\treturn d.obfuscatedProfileOutput\n"
+            },
+            {
+              "path": "java/dexpreopt.go",
+              "range": {
+                "startLine": 613,
+                "startChar": 0,
+                "endLine": 615,
+                "endChar": 0
+              },
+              "replacement": "func (d *dexpreopter) SetObfuscatedProfileOutput(p android.Path) {\n\td.obfuscatedProfileOutput \u003d p\n"
+            }
+          ]
+        }
+      ],
       "revId": "e8066eb3e473b6a75e4b17de93d44c4242375b99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
