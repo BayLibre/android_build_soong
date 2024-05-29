@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b1809b7_dc1c3ebf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-29T00:07:18Z",
+      "side": 1,
+      "message": "I hit this when I was trying to enable mainline prebuilts for ap3a",
+      "revId": "19c933d9e935442caafb5cbc2ce5fed6f749dd94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
