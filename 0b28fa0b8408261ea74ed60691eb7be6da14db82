@@ -16,6 +16,24 @@
       "message": "Does this mean you can\u0027t have a prebuilt of a override apex?",
       "revId": "0b28fa0b8408261ea74ed60691eb7be6da14db82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d52304_ac77f316",
+        "filename": "android/override_module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-29T00:53:43Z",
+      "side": 1,
+      "message": "I _think_ since rdeps of an override apex do not use `overrideBaseDependencyTag`, we should be able to support prebuilts of override apex. If there are edge cases which are not fully covered, I can implement them in a followup CL.",
+      "parentUuid": "4f72eda0_5b34b6c9",
+      "revId": "0b28fa0b8408261ea74ed60691eb7be6da14db82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
