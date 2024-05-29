@@ -167,3 +167,20 @@ build_prop {
     relative_install_path: "etc", // odm/etc/build.prop
     visibility: ["//visibility:private"],
 }
+
+// A file that contains the build number for the current build.
+// Any dependencies on this file will be transformed into order-only dependencies,
+// which means they will not be rebuilt if only this file changed. You could
+// easily introduce stale build numbers if you go through two levels of
+// dependencies because of this though.
+//
+// Most things should not use the build number, this is here to ease the
+// transition from Android.mk -> Android.bp files and other cases where
+// the build number was mistakenly accessible previously. Thus, the
+// visibility of this module should be kept as tight as possible.
+build_number_file {
+    name: "build_number_file",
+    visibility: [
+        "//tools/tradefederation/core",
+    ],
+}
