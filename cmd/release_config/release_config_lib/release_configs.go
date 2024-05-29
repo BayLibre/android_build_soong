@@ -78,6 +78,60 @@ type ReleaseConfigs struct {
 	configDirIndexes ReleaseConfigDirMap
 }
 
+func (configs *ReleaseConfigs) WriteInheritanceGraph(outFile string) error {
+	data := []string{
+		"digraph {",
+		"graph [ratio=.5];",
+	}
+	usedAliases := make(map[string]bool)
+	for _, config := range configs.GetSortedReleaseConfigs() {
+		for _, inherit := range config.InheritNames {
+			if inherit == "root" {
+				// Only show "root" if we have no other inheritance.
+				if len(config.InheritNames) > 1 {
+					continue
+				}
+			}
+			data = append(data, fmt.Sprintf(`"%s" -> "%s"`, config.Name, inherit))
+			if name, found := configs.Aliases[inherit]; found {
+				if !usedAliases[inherit] {
+					usedAliases[inherit] = true
+					data = append(data, fmt.Sprintf(`"%s" -> "%s"`, inherit, *name))
+				}
+			}
+		}
+	}
+	for _, config := range configs.GetSortedReleaseConfigs() {
+		fillColor := "white"
+		fontColor := "black"
+		label := config.Name
+		if config.Name == *configs.Artifact.ReleaseConfig.Name {
+			fillColor = "#d2e3fc"
+		}
+		if len(config.InheritNames) > 0 {
+			label += "\\ninherits: " + strings.Join(config.InheritNames, " ")
+		}
+		if len(config.OtherNames) > 0 {
+			label += "\\nother names: " + strings.Join(config.OtherNames, " ")
+		}
+		data = append(data,
+			fmt.Sprintf(`"%s" [ label="%s" style="filled" fillcolor="%s" colorscheme="svg" fontcolor="%s" ]`,
+				config.Name, label, fillColor, fontColor))
+	}
+	var sortedAliases []string
+	for a := range usedAliases {
+		sortedAliases = append(sortedAliases, a)
+	}
+	slices.Sort(sortedAliases)
+	for _, alias := range sortedAliases {
+		data = append(data,
+			fmt.Sprintf(`"%s" [ label="%s" shape="oval" style="filled" fillcolor="white" colorscheme="svg" fontcolor="black" ]`,
+				alias, alias+"\\ncurrently: "+*configs.Aliases[alias]))
+	}
+	data = append(data, "}")
+	return os.WriteFile(outFile, []byte(strings.Join(data, "\n")), 0644)
+}
+
 // Write the "all_release_configs" artifact.
 //
 // The file will be in "{outDir}/all_release_configs-{product}.{format}"
@@ -256,7 +310,17 @@ func (configs *ReleaseConfigs) LoadReleaseConfigMap(path string, ConfigDirIndex 
 		}
 		config := configs.ReleaseConfigs[name]
 		config.FilesUsedMap[path] = true
-		config.InheritNames = append(config.InheritNames, releaseConfigContribution.proto.Inherits...)
+		inheritNames := make(map[string]bool)
+		for _, inh := range config.InheritNames {
+			inheritNames[inh] = true
+		}
+		// If this contribution says to inherit something we already inherited, we do not want the duplicate.
+		for _, cInh := range releaseConfigContribution.proto.Inherits {
+			if !inheritNames[cInh] {
+				config.InheritNames = append(config.InheritNames, cInh)
+				inheritNames[cInh] = true
+			}
+		}
 
 		// Only walk flag_values/{RELEASE} for defined releases.
 		err2 := WalkTextprotoFiles(dir, filepath.Join("flag_values", name), func(path string, d fs.DirEntry, err error) error {
