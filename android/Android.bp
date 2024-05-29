@@ -40,6 +40,7 @@ bootstrap_go_package {
         "base_module_context.go",
         "build_prop.go",
         "compliance_metadata.go",
+        "build_number.go",
         "config.go",
         "container.go",
         "test_config.go",
