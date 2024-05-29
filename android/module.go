@@ -421,6 +421,10 @@ type commonProperties struct {
 	// VINTF manifest fragments to be installed if this module is installed
 	Vintf_fragments []string `android:"path"`
 
+	// VINTF manifest fragments to be excluded. Useful for handling different variations
+	// based on values in product_variables
+	Exclude_vintf_fragments []string `android:"path"`
+
 	// names of other modules to install if this module is installed
 	Required []string `android:"arch_variant"`
 
@@ -1871,7 +1875,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 				}
 			}
 
-			m.vintfFragmentsPaths = PathsForModuleSrc(ctx, m.commonProperties.Vintf_fragments)
+			m.vintfFragmentsPaths = PathsForModuleSrc(ctx, RemoveListFromList(m.commonProperties.Vintf_fragments, m.commonProperties.Exclude_vintf_fragments))
 			vintfDir := PathForModuleInstall(ctx, "etc", "vintf", "manifest")
 			for _, src := range m.vintfFragmentsPaths {
 				installedVintfFragment := vintfDir.Join(ctx, src.Base())

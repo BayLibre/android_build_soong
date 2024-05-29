@@ -186,6 +186,12 @@ type variableProperties struct {
 			Required        []string
 			Vintf_fragments []string
 		}
+
+		// needed to move the vintf fragment to the mainline module
+		// that is serving the media.c2 interface
+		ReleaseDefaultModuleBuildFromSource struct {
+			Exclude_vintf_fragments []string
+		}
 	} `android:"arch_variant"`
 }
 
