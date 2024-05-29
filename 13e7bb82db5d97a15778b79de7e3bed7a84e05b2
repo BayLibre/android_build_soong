@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "582728f3_ab418c36",
+        "filename": "java/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2024-05-29T13:38:56Z",
+      "side": 1,
+      "message": "this should also be OVERRIDDEN",
+      "range": {
+        "startLine": 428,
+        "startChar": 36,
+        "endLine": 428,
+        "endChar": 45
+      },
+      "revId": "13e7bb82db5d97a15778b79de7e3bed7a84e05b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
