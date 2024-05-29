@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f72eda0_5b34b6c9",
+        "filename": "android/override_module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-05-29T00:13:13Z",
+      "side": 1,
+      "message": "Does this mean you can\u0027t have a prebuilt of a override apex?",
+      "revId": "0b28fa0b8408261ea74ed60691eb7be6da14db82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
