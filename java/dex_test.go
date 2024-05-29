@@ -672,8 +672,8 @@ func TestR8FlagsArtProfile(t *testing.T) {
 			dex_preopt: {
 				profile_guided: true,
 				profile: "profile.txt.prof",
-				enable_profile_rewriting: true,
 			},
+			optimize: {optimize: true},
 		}
 	`)
 

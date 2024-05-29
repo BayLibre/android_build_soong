@@ -1650,10 +1650,10 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 				classesJar:    implementationAndResourcesJar,
 				jarName:       jarName,
 			}
-			if j.EnableProfileRewriting() {
+			if j.GetProfileGuided() && j.optimizeOrObfuscate() {
 				profile := j.GetProfile()
-				if profile == "" || !j.GetProfileGuided() {
-					ctx.PropertyErrorf("enable_profile_rewriting", "Profile and Profile_guided must be set when enable_profile_rewriting is true")
+				if profile == "" {
+					ctx.PropertyErrorf("Profile", "Profile must be set when profile_guided is true and r8/d8 optimization is enabled")
 				}
 				params.artProfileInput = &profile
 			}
