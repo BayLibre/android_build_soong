@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d74f878f_43b53a64",
+        "filename": "java/base.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1657,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-29T01:13:39Z",
+      "side": 1,
+      "message": "Good idea, done",
+      "parentUuid": "14329337_f83607ef",
+      "range": {
+        "startLine": 1657,
+        "startChar": 32,
+        "endLine": 1657,
+        "endChar": 33
+      },
+      "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6c1f055_f0abab55",
@@ -65,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9566102_30cedbc0",
+        "filename": "java/dex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-29T01:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6c1f055_f0abab55",
+      "range": {
+        "startLine": 404,
+        "startChar": 8,
+        "endLine": 404,
+        "endChar": 9
+      },
+      "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0ba7167_113cf976",
@@ -78,6 +126,30 @@
       "writtenOn": "2024-05-28T21:24:31Z",
       "side": 1,
       "message": "android.WritablePaths",
+      "range": {
+        "startLine": 499,
+        "startChar": 21,
+        "endLine": 499,
+        "endChar": 43
+      },
+      "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c41c65bc_14267311",
+        "filename": "java/dex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-29T01:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0ba7167_113cf976",
       "range": {
         "startLine": 499,
         "startChar": 21,
@@ -139,6 +211,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7088aae5_08544cde",
+        "filename": "java/dex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-29T01:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "247d8421_e8d097e8",
+      "range": {
+        "startLine": 503,
+        "startChar": 21,
+        "endLine": 505,
+        "endChar": 4
+      },
+      "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "200bce86_ddd7bbb3",
@@ -176,6 +272,30 @@
           ]
         }
       ],
+      "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a284ab7_bb7bef3e",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-29T01:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "200bce86_ddd7bbb3",
+      "range": {
+        "startLine": 435,
+        "startChar": 49,
+        "endLine": 435,
+        "endChar": 58
+      },
       "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -237,6 +357,30 @@
           ]
         }
       ],
+      "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32224b5f_e07ab7b8",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-29T01:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b305bf5c_c67a4a93",
+      "range": {
+        "startLine": 439,
+        "startChar": 12,
+        "endLine": 439,
+        "endChar": 66
+      },
       "revId": "f79e54ac4f6ab86390ef1e5dba35aa88848de0e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
