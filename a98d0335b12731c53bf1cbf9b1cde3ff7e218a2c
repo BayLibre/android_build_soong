@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f3894b_d72e1d24",
+        "filename": "cc/vndk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-30T03:56:55Z",
+      "side": 1,
+      "message": "Are these still needed?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 54
+      },
+      "revId": "a98d0335b12731c53bf1cbf9b1cde3ff7e218a2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9739f4ef_ec3015fb",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-05-30T03:56:55Z",
+      "side": 1,
+      "message": "Why do we have this condition? Is there prebuilt vndk library that is disabled?",
+      "range": {
+        "startLine": 280,
+        "startChar": 50,
+        "endLine": 280,
+        "endChar": 84
+      },
+      "revId": "a98d0335b12731c53bf1cbf9b1cde3ff7e218a2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
