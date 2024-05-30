@@ -16,6 +16,23 @@
       "message": "The buildinfo_prop module should only be used for building partition images. It changes every build, and will cause constant rebuilds.",
       "revId": "6df55cc2f12e3dfd710509dffc616f3a5773f2de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d0beda_8594e5ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2024-05-30T02:14:18Z",
+      "side": 1,
+      "message": "Let\u0027s don\u0027t use buildinfo_prop. Abandon this CL.",
+      "revId": "6df55cc2f12e3dfd710509dffc616f3a5773f2de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
