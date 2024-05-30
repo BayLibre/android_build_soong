@@ -1257,7 +1257,25 @@ func (c *configImpl) canSupportRBE() bool {
 	if !c.StubbyExists() && strings.Contains(authType, "use_google_prod_creds") {
 		return false
 	}
+	if c.UseABFS() {
+		return false
+	}
 	return true
+}
+
+func (c *configImpl) UseABFS() bool {
+	if v, ok := c.environ.Get("NO_ABFS"); ok {
+		v = strings.ToLower(strings.TrimSpace(v))
+		if v == "true" || v == "1" {
+			return false
+		}
+	}
+	_, err := os.Stat("build/abfs/abfsbox")
+	if err != nil {
+		return false
+	}
+	err = exec.Command("build/abfs/abfsbox", "hash", srcDirFileCheck).Run()
+	return err == nil
 }
 
 func (c *configImpl) UseRBE() bool {
@@ -1561,6 +1579,20 @@ func (c *configImpl) HostPrebuiltTag() string {
 	} else {
 		panic("Unsupported OS")
 	}
+}
+
+func (c *configImpl) KatiBin() string {
+	if c.UseABFS() {
+		return "build/abfs/ckati"
+	}
+	return c.PrebuiltBuildTool("ckati")
+}
+
+func (c *configImpl) NinjaBin() string {
+	if c.UseABFS() {
+		return "build/abfs/ninja"
+	}
+	return c.PrebuiltBuildTool("ninja")
 }
 
 func (c *configImpl) PrebuiltBuildTool(name string) string {
