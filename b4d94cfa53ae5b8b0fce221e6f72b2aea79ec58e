@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "656a5598_a27131f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-05-30T20:24:51Z",
+      "side": 1,
+      "message": "Adding Yi, since this CL will need to merge along with the Clang update. Should we just detach the Soong part of the CLs for now, and let them reassociate this with the other topic?",
+      "revId": "b4d94cfa53ae5b8b0fce221e6f72b2aea79ec58e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
