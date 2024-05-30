@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b443dc1_59d11c46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-05-30T01:56:07Z",
+      "side": 1,
+      "message": "We need the wait for the next toolchain update (1.78) to land this, as we need the weak-intrinsics feature in aosp/3101257 to fix host target builds.\n\nThat update should be landing relatively soon.",
+      "revId": "71d69b33e7cd90f6dbf628b2826062c553c46bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
