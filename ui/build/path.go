@@ -262,6 +262,10 @@ func SetupPath(ctx Context, config Config) {
 		ctx.Fatalf("BUILD_BROKEN_PYTHON_IS_PYTHON2 can only be set to 'true' or an empty string, but got %s\n", value)
 	}
 
+	if config.UseABFS() {
+		myPath = "build/abfs" + string(os.PathListSeparator) + myPath
+	}
+
 	// Replace the $PATH variable with the path_interposer symlinks, and
 	// checked-in prebuilts.
 	config.Environment().Set("PATH", myPath)

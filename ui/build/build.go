@@ -17,7 +17,9 @@ package build
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"sync"
 	"text/template"
@@ -208,9 +210,43 @@ func checkRAM(ctx Context, config Config) {
 	}
 }
 
+func abfsBuildStarted(args []string) {
+	cmdArgs := []string{"build-started", "--"}
+	cmdArgs = append(cmdArgs, os.Args...)
+	cmd := exec.Command("./build/abfs/abfsbox", cmdArgs...)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err := cmd.Run(); err != nil {
+		log.Fatalf("failed calling abfsbox build-started: %s", err)
+	}
+}
+
+func abfsBuildFinished(finished bool) {
+	var errMsg string
+	if !finished {
+		errMsg = "build was interrupted"
+	}
+	cmdArgs := []string{"build-finished", "-e", errMsg, "--"}
+	cmdArgs = append(cmdArgs, os.Args...)
+	cmd := exec.Command("./build/abfs/abfsbox", cmdArgs...)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err := cmd.Run(); err != nil {
+		log.Fatalf("failed calling abfsbox build-finished: %s", err)
+	}
+}
+
 // Build the tree. Various flags in `config` govern which components of
 // the build to run.
 func Build(ctx Context, config Config) {
+	done := false
+	if config.UseABFS() {
+		abfsBuildStarted(config.Arguments())
+		defer func() {
+			abfsBuildFinished(done)
+		}()
+	}
+
 	ctx.Verboseln("Starting build with args:", config.Arguments())
 	ctx.Verboseln("Environment:", config.Environment().Environ())
 
@@ -347,6 +383,7 @@ func Build(ctx Context, config Config) {
 	if what&RunDistActions != 0 {
 		runDistActions(ctx, config)
 	}
+	done = true
 }
 
 func evaluateWhatToRun(config Config, verboseln func(v ...interface{})) int {

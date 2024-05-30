@@ -49,6 +49,7 @@ var (
 )
 
 const nsjailPath = "prebuilts/build-tools/linux-x86/bin/nsjail"
+const abfsSrcDir = "/src"
 
 var sandboxConfig struct {
 	once sync.Once
@@ -146,7 +147,16 @@ func (c *Cmd) sandboxSupported() bool {
 }
 
 func (c *Cmd) wrapSandbox() {
-	wd, _ := os.Getwd()
+	originalWD, _ := os.Getwd()
+	wd := originalWD
+	srcDirArg := sandboxConfig.srcDir
+	outDirArg := sandboxConfig.outDir
+
+	if c.config.UseABFS() {
+		wd = abfsSrcDir
+		srcDirArg = sandboxConfig.srcDir + ":" + abfsSrcDir
+		outDirArg = sandboxConfig.outDir + ":" + filepath.Join(abfsSrcDir, "out")
+	}
 
 	sandboxArgs := []string{
 		// The executable to run
@@ -188,10 +198,10 @@ func (c *Cmd) wrapSandbox() {
 		"-B", "/tmp",
 
 		// Mount source
-		c.config.sandboxConfig.SrcDirMountFlag(), sandboxConfig.srcDir,
+		c.config.sandboxConfig.SrcDirMountFlag(), srcDirArg,
 
 		//Mount out dir as read-write
-		"-B", sandboxConfig.outDir,
+		"-B", outDirArg,
 
 		// Disable newcgroup for now, since it may require newer kernels
 		// TODO: try out cgroups
@@ -199,6 +209,9 @@ func (c *Cmd) wrapSandbox() {
 
 		// Only log important warnings / errors
 		"-q",
+	}
+	if c.config.UseABFS() {
+		sandboxArgs = append(sandboxArgs, "-B", "{ABFS_DIR}")
 	}
 
 	// Mount srcDir RW allowlists as Read-Write
@@ -237,6 +250,13 @@ func (c *Cmd) wrapSandbox() {
 	env := Environment(c.Env)
 	if _, hasUser := env.Get("USER"); hasUser {
 		env.Set("USER", "nobody")
+	}
+	if c.config.UseABFS() {
+		for i, envVar := range env {
+			if k, v, ok := decodeKeyValue(envVar); ok {
+				env[i] = k + "=" + strings.ReplaceAll(v, originalWD, abfsSrcDir)
+			}
+		}
 	}
 	c.Env = []string(env)
 }
