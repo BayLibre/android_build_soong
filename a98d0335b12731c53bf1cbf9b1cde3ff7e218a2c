@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a4f97d6_e3db40b5",
+        "filename": "cc/vndk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-30T03:59:32Z",
+      "side": 1,
+      "message": "Yes, to add dependencies into VNDK APEXes.",
+      "parentUuid": "81f3894b_d72e1d24",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 54
+      },
+      "revId": "a98d0335b12731c53bf1cbf9b1cde3ff7e218a2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9739f4ef_ec3015fb",
         "filename": "cc/vndk_prebuilt.go",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-30T03:56:55Z",
       "side": 1,
       "message": "Why do we have this condition? Is there prebuilt vndk library that is disabled?",
+      "range": {
+        "startLine": 280,
+        "startChar": 50,
+        "endLine": 280,
+        "endChar": 84
+      },
+      "revId": "a98d0335b12731c53bf1cbf9b1cde3ff7e218a2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71cb2d80_60329a8a",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-30T03:59:32Z",
+      "side": 1,
+      "message": "There are LLNDK libraries in prebuilt VNDK which is not VNDK enabled.",
+      "parentUuid": "9739f4ef_ec3015fb",
       "range": {
         "startLine": 280,
         "startChar": 50,
