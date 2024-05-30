@@ -113,6 +113,11 @@ message release_config {
 
   // Only aconfig flags are allowed in this release config.
   optional bool aconfig_flags_only = 4;
+
+  // Next stage(s) for flag advancement (during development).
+  // Once a flag has met criteria, to which release config should it be
+  // advanced.
+  repeated string next_stages = 5;
 }
 
 // Any aliases.  These are used for continuous integration builder config.

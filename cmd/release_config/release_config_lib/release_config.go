@@ -80,6 +80,11 @@ type ReleaseConfig struct {
 
 	// Partitioned artifacts for {partition}/etc/build_flags.json
 	PartitionBuildFlags map[string]*rc_proto.FlagArtifacts
+
+	// Next stage(s) for flag advancement (during development).
+	// Once a flag has met criteria, to which release config should it be
+	// advanced.
+	NextStagesMap map[string]bool
 }
 
 func ReleaseConfigFactory(name string, index int) (c *ReleaseConfig) {
@@ -87,6 +92,7 @@ func ReleaseConfigFactory(name string, index int) (c *ReleaseConfig) {
 		Name:             name,
 		DeclarationIndex: index,
 		FilesUsedMap:     make(map[string]bool),
+		NextStagesMap:    make(map[string]bool),
 	}
 }
 
@@ -117,14 +123,7 @@ func (config *ReleaseConfig) InheritConfig(iConfig *ReleaseConfig) error {
 }
 
 func (config *ReleaseConfig) GetSortedFileList() []string {
-	ret := []string{}
-	for k := range config.FilesUsedMap {
-		ret = append(ret, k)
-	}
-	slices.SortFunc(ret, func(a, b string) int {
-		return cmp.Compare(a, b)
-	})
-	return ret
+	return SortedMapKeys(config.FilesUsedMap)
 }
 
 func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) error {
@@ -195,6 +194,9 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 				Value:  &rc_proto.Value{Val: &rc_proto.Value_StringValue{contribAconfigValueSetsString}},
 			})
 
+		for _, nextStage := range contrib.proto.NextStages {
+			config.NextStagesMap[nextStage] = true
+		}
 		myDirsMap[contrib.DeclarationIndex] = true
 		if config.AconfigFlagsOnly && len(contrib.FlagValues) > 0 {
 			return fmt.Errorf("%s does not allow build flag overrides", config.Name)
@@ -278,6 +280,7 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 		AconfigValueSets: myAconfigValueSets,
 		Inherits:         myInherits,
 		Directories:      directories,
+		NextStages:       SortedMapKeys(config.NextStagesMap),
 	}
 
 	config.compileInProgress = false
