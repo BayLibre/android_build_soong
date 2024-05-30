@@ -18,6 +18,7 @@ import (
 	"cmp"
 	"fmt"
 	"path/filepath"
+	"regexp"
 	"slices"
 	"sort"
 	"strings"
@@ -137,6 +138,11 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 	config.compileInProgress = true
 	isRoot := config.Name == "root"
 
+	// Is this a build-prefix release config, such as 'ap3a'?
+	isBuildPrefix, err := regexp.MatchString("^[a-z][a-z][0-9][0-9a-z]$", config.Name)
+	if err != nil {
+		return err
+	}
 	// Start with only the flag declarations.
 	config.FlagArtifacts = configs.FlagArtifacts.Clone()
 	releaseAconfigValueSets := config.FlagArtifacts["RELEASE_ACONFIG_VALUE_SETS"]
@@ -147,13 +153,16 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 	myInherits := []string{}
 	myInheritsSet := make(map[string]bool)
 	// If there is a "root" release config, it is the start of every inheritance chain.
-	_, err := configs.GetReleaseConfig("root")
+	_, err = configs.GetReleaseConfig("root")
 	if err == nil && !isRoot {
 		config.InheritNames = append([]string{"root"}, config.InheritNames...)
 	}
 	for _, inherit := range config.InheritNames {
 		if _, ok := myInheritsSet[inherit]; ok {
 			continue
+		}
+		if isBuildPrefix && configs.Aliases[inherit] != nil {
+			return fmt.Errorf("%s cannot inherit from alias %s", config.Name, inherit)
 		}
 		myInherits = append(myInherits, inherit)
 		myInheritsSet[inherit] = true
