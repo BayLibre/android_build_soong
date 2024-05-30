@@ -16,6 +16,24 @@
       "message": "My only concern about this is that, historically, the default/common approach to generating a profile is done *with the optimized build*. You have to deliberately use an unoptimized/unobfuscated APK to generate a profile for rewriting. I don\u0027t know the best way to detect this, but I do wonder if requiring an extra explicit step in the `dex_preopt` flow is better than assuming they\u0027ve generated their profile intentionally for rewriting. At least for now? We can still warn/fail if they don\u0027t get the right config, but that might be safer than assuming they\u0027re using the pre-rewritten profile.",
       "revId": "df79ffc37dd9b214b6266a16371096003a6a1d76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fbeb39d_6dbbc255",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-30T00:05:48Z",
+      "side": 1,
+      "message": "IIUC, would the use case for keeping `dex_preopt.enable_profile_rewriting` is for generating profiles for apps that do not have optimization/obfuscation turned on?\n\n(If so, then I agree that it would be nice to keep this explicit property).",
+      "parentUuid": "fba2076b_e9a631ef",
+      "revId": "df79ffc37dd9b214b6266a16371096003a6a1d76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
