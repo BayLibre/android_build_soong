@@ -533,3 +533,7 @@ func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParam
 
 	return javalibJar, artProfileOutputPath
 }
+
+func (d *dexer) optimizeOrObfuscate() bool {
+	return proptools.Bool(d.dexProperties.Optimize.Optimize) || proptools.Bool(d.dexProperties.Optimize.Obfuscate)
+}
