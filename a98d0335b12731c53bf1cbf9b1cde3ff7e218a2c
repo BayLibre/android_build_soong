@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02ab728d_3fd0ff77",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1331,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-30T04:38:54Z",
+      "side": 1,
+      "message": "Where is this function used?",
+      "range": {
+        "startLine": 1331,
+        "startChar": 17,
+        "endLine": 1331,
+        "endChar": 49
+      },
+      "revId": "a98d0335b12731c53bf1cbf9b1cde3ff7e218a2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81f3894b_d72e1d24",
         "filename": "cc/vndk.go",
         "patchSetId": 6
@@ -43,6 +66,29 @@
         "startChar": 0,
         "endLine": 28,
         "endChar": 54
+      },
+      "revId": "a98d0335b12731c53bf1cbf9b1cde3ff7e218a2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb1db89_cfa6de05",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-30T04:38:54Z",
+      "side": 1,
+      "message": "As `vndk.go` is removed, the values of this property are not been used.\nIs this just to avoid build error for parsing the Android.bp for `vndk_prebuilt_shared`?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 15
       },
       "revId": "a98d0335b12731c53bf1cbf9b1cde3ff7e218a2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"

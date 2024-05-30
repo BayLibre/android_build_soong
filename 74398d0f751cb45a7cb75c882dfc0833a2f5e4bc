@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1efd50b6_070d37ca",
+        "filename": "cc/image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-05-30T04:38:54Z",
+      "side": 0,
+      "message": "This function also can be removed. It is to make product and vendor VNDK libs the same.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 1
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "498af8af_82fb9f9f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/image.go",
+              "range": {
+                "startLine": 158,
+                "startChar": 0,
+                "endLine": 187,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "74398d0f751cb45a7cb75c882dfc0833a2f5e4bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
