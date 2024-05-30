@@ -146,6 +146,7 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 	// Start with only the flag declarations.
 	config.FlagArtifacts = configs.FlagArtifacts.Clone()
 	releaseAconfigValueSets := config.FlagArtifacts["RELEASE_ACONFIG_VALUE_SETS"]
+	releasePlatformVersion := config.FlagArtifacts["RELEASE_PLATFORM_VERSION"]
 
 	// Generate any configs we need to inherit.  This will detect loops in
 	// the config.
@@ -188,6 +189,20 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 
 	workflowManual := rc_proto.Workflow(rc_proto.Workflow_MANUAL)
 	myDirsMap := make(map[int]bool)
+	if isBuildPrefix && releasePlatformVersion != nil {
+		if MarshalValue(releasePlatformVersion.Value) != strings.ToUpper(config.Name) {
+			value := FlagValue{
+				path: config.Contributions[0].path,
+				proto: rc_proto.FlagValue{
+					Name:  releasePlatformVersion.FlagDeclaration.Name,
+					Value: UnmarshalValue(strings.ToUpper(config.Name)),
+				},
+			}
+			if err := releasePlatformVersion.UpdateValue(value); err != nil {
+				return err
+			}
+		}
+	}
 	for _, contrib := range contributionsToApply {
 		contribAconfigValueSets := []string{}
 		// Gather the aconfig_value_sets from this contribution, allowing duplicates for simplicity.
