@@ -40,6 +40,30 @@
       ],
       "revId": "74398d0f751cb45a7cb75c882dfc0833a2f5e4bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1216f59b_028626f9",
+        "filename": "cc/image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-30T05:04:59Z",
+      "side": 0,
+      "message": "Removed. Thx.",
+      "parentUuid": "1efd50b6_070d37ca",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 1
+      },
+      "revId": "74398d0f751cb45a7cb75c882dfc0833a2f5e4bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
