@@ -52,6 +52,24 @@
       "parentUuid": "6fbeb39d_6dbbc255",
       "revId": "df79ffc37dd9b214b6266a16371096003a6a1d76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce3c493f_7a6c6e56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-30T19:10:17Z",
+      "side": 1,
+      "message": "I discussed this with Jared offline, and decided that this behavior should be kept explicit. I have replaced this https://r.android.com/3108767 which fails the build when profile guided dexpreopt _and_ optimization/obfuscation are enabled.",
+      "parentUuid": "23a7e2d9_e54beca8",
+      "revId": "df79ffc37dd9b214b6266a16371096003a6a1d76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
