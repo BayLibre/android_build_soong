@@ -34,6 +34,24 @@
       "parentUuid": "fba2076b_e9a631ef",
       "revId": "df79ffc37dd9b214b6266a16371096003a6a1d76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a7e2d9_e54beca8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-30T16:34:21Z",
+      "side": 1,
+      "message": "I\u0027m not sure we\u0027d need the flag for that case. I think the main reason to keep the flag is to make it very explicit that you should be feeding in a profile from an unoptimized target. We should fail if they try to use an invalid combo, but I think a failure + explicit recognition is better than hoping they\u0027re using an unoptimized profile implicitly.\n\nOne thing we might consider is making it easier for developers to build the \"unoptimized\" flavor they should use to generate the profile. Maybe we could implicitly add a target output (e.g., SystemUIGoogle-unoptimized.apk) when a target has enabled profile rewriting + optimization? And they can build that to get the \"proper\" baseline?",
+      "parentUuid": "6fbeb39d_6dbbc255",
+      "revId": "df79ffc37dd9b214b6266a16371096003a6a1d76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
