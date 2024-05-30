@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb3d0a27_a7b94a15",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1331,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-05-30T05:54:45Z",
+      "side": 1,
+      "message": "Updated PTAL.",
+      "parentUuid": "5ac8ff91_bac4d33c",
+      "range": {
+        "startLine": 1331,
+        "startChar": 17,
+        "endLine": 1331,
+        "endChar": 49
+      },
+      "revId": "a98d0335b12731c53bf1cbf9b1cde3ff7e218a2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81f3894b_d72e1d24",
         "filename": "cc/vndk.go",
         "patchSetId": 6
