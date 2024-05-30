@@ -1,0 +1,114 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f97b7093_4e868abb",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1655,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-30T20:22:36Z",
+      "side": 1,
+      "message": "Maybe add another line to this like:\n\"The attached profile should be sourced from an unoptimized/unobfuscated APK.\"",
+      "range": {
+        "startLine": 1655,
+        "startChar": 121,
+        "endLine": 1655,
+        "endChar": 122
+      },
+      "revId": "839ca2fb7a2549fea3ef27c3e544c77040dbe79c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84a4edd6_88f454ff",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1655,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-30T20:22:36Z",
+      "side": 1,
+      "message": "Nit: I would just note `R8` here.",
+      "range": {
+        "startLine": 1655,
+        "startChar": 77,
+        "endLine": 1655,
+        "endChar": 83
+      },
+      "revId": "839ca2fb7a2549fea3ef27c3e544c77040dbe79c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15e888d4_5f4f3e3a",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-30T20:22:36Z",
+      "side": 1,
+      "message": "Move this up by the other `...Enabled()` queries and probably add a `Enabled()` suffix for consistency?",
+      "range": {
+        "startLine": 537,
+        "startChar": 16,
+        "endLine": 537,
+        "endChar": 35
+      },
+      "revId": "839ca2fb7a2549fea3ef27c3e544c77040dbe79c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d67137f_dd17b72f",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-30T20:22:36Z",
+      "side": 1,
+      "message": "In practice, `Optimize.Optimize`/`Optimize.Obfuscate` will only be effective if `dexProperties.Enabled` is also true, so I guess we might as well add that prefix.",
+      "range": {
+        "startLine": 538,
+        "startChar": 18,
+        "endLine": 538,
+        "endChar": 22
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "91db2352_08846f01",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 538,
+                "startChar": 0,
+                "endLine": 539,
+                "endChar": 0
+              },
+              "replacement": "\treturn d.effectiveOptimizeEnabled() \u0026\u0026 (proptools.Bool(d.dexProperties.Optimize.Optimize) || proptools.Bool(d.dexProperties.Optimize.Obfuscate))\n"
+            }
+          ]
+        }
+      ],
+      "revId": "839ca2fb7a2549fea3ef27c3e544c77040dbe79c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
