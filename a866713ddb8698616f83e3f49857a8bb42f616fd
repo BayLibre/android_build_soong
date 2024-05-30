@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c931a218_f037b535",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-05-30T16:57:02Z",
+      "side": 1,
+      "message": "Fixes build failure for this minimal manifest: https://groups.google.com/a/google.com/g/android-build-police/c/7K6pZbdrlvA/m/tDrPAXTlAwAJ",
+      "revId": "a866713ddb8698616f83e3f49857a8bb42f616fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
