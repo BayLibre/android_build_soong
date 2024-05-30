@@ -79,13 +79,11 @@ type ReleaseConfigs struct {
 }
 
 func (configs *ReleaseConfigs) WriteInheritanceGraph(outFile string) error {
-	data := []string{
-		"digraph {",
-		"graph [ ratio=.5 ]",
-		"node [ shape=box style=filled fillcolor=white colorscheme=svg fontcolor=black ]",
-	}
+	data := []string{}
 	usedAliases := make(map[string]bool)
-	for _, config := range configs.GetSortedReleaseConfigs() {
+	nextStages := make(map[string][]string)
+	stageNames := make(map[string]bool)
+	for _, config := range configs.ReleaseConfigs {
 		var fillColor string
 		inherits := []string{}
 		for _, inherit := range config.InheritNames {
@@ -108,6 +106,13 @@ func (configs *ReleaseConfigs) WriteInheritanceGraph(outFile string) error {
 				}
 			}
 		}
+		// Add links for all of the advancement progressions.
+		for nextStage := range config.NextStagesMap {
+			data = append(data, fmt.Sprintf(`"%s" -> "%s" [ style=dashed color="#81c995" ]`,
+				config.Name, nextStage))
+			nextStages[config.Name] = append(nextStages[config.Name], nextStage)
+			stageNames[nextStage] = true
+		}
 		label := config.Name
 		if len(inherits) > 0 {
 			label += "\\ninherits: " + strings.Join(inherits, " ")
@@ -122,6 +127,15 @@ func (configs *ReleaseConfigs) WriteInheritanceGraph(outFile string) error {
 		data = append(data,
 			fmt.Sprintf(`"%s" [ label="%s" %s]`, config.Name, label, fillColor))
 	}
+	if len(stageNames) > 0 {
+		data = append(data, fmt.Sprintf("subgraph {rank=same %s}", strings.Join(SortedMapKeys(stageNames), " ")))
+	}
+	slices.Sort(data)
+	data = append([]string{
+		"digraph {",
+		"graph [ ratio=.5 ]",
+		"node [ shape=box style=filled fillcolor=white colorscheme=svg fontcolor=black ]",
+	}, data...)
 	data = append(data, "}")
 	return os.WriteFile(outFile, []byte(strings.Join(data, "\n")), 0644)
 }
