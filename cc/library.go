@@ -503,6 +503,10 @@ func CommonLibraryLinkerFlags(ctx android.ModuleContext, flags Flags,
 		flags.Global.LdFlags = append(flags.Global.LdFlags, f...)
 	}
 
+	if ctx.Arch().ArchType == android.Arm64 && mod.Shared() {
+		flags.Global.CFlags = append(flags.Global.CFlags, "-mllvm")
+		flags.Global.CFlags = append(flags.Global.CFlags, "-aarch64-force-data-got")
+	}
 	return flags
 }
 
