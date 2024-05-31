@@ -70,6 +70,24 @@
       "parentUuid": "a2a6a2c9_47509149",
       "revId": "b51af42d20d529724e002f54017da894ad421017",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0f7191b_ca8d9873",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-05-31T16:34:54Z",
+      "side": 1,
+      "message": "It shouldn\u0027t, I found that it was necessary to get a meaningful symbolized output, but the stripped size for the regular odex output was identical to that with `--no-generate-debug-info`. @vmarko@google.com can probably confirm?\n\nStill looking at the cost of always generating these.",
+      "parentUuid": "aa70c10f_f37fcd29",
+      "revId": "b51af42d20d529724e002f54017da894ad421017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
