@@ -1143,6 +1143,7 @@ func (d *Droidstubs) optionalStubCmd(ctx android.ModuleContext, params stubsComm
 
 	generateRevertAnnotationArgs(ctx, cmd, params.stubConfig.stubsType, params.stubConfig.deps.aconfigProtoFiles)
 
+	treatDocumentationIssuesAsErrors := false
 	if params.stubConfig.doApiLint {
 		// Pass the lint baseline file as an input to resolve the lint errors.
 		// The exportable stubs generation does not update the lint baseline file.
@@ -1151,6 +1152,17 @@ func (d *Droidstubs) optionalStubCmd(ctx android.ModuleContext, params stubsComm
 		if baselineFile.Valid() {
 			cmd.FlagWithInput("--baseline:api-lint ", baselineFile.Path())
 		}
+
+		// TODO(b/154317059): Clean up this allowlist by baselining and/or checking in last-released.
+		if d.Name() != "android.car-system-stubs-docs" &&
+			d.Name() != "android.car-stubs-docs" {
+			treatDocumentationIssuesAsErrors = true
+		}
+	}
+
+	if !treatDocumentationIssuesAsErrors {
+		// Treat documentation issues as warnings, but error when new.
+		cmd.Flag("--error-when-new-category").Flag("Documentation")
 	}
 
 	if params.stubConfig.generateStubs {
