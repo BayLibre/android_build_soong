@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8efac866_97b0f20d",
+        "filename": "bin/run_tool_with_logging",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1114063
+      },
+      "writtenOn": "2024-06-01T00:08:39Z",
+      "side": 1,
+      "message": "We need to source shell_utils.sh each time when calling run_tool_with_logging? Will such overhead cause any performance issue?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 82
+      },
+      "revId": "e6ab835ddbab1693ae0b7cd3da6954a4cd5319fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8385e8c_8796dec6",
+        "filename": "bin/run_tool_with_logging",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1114063
+      },
+      "writtenOn": "2024-06-01T00:08:39Z",
+      "side": 1,
+      "message": "We want the logger called when the tool invocation is completed so that we can get the invocation duration (by recording both the start and stop timestamp). However, it seems here we call the logger before the invocation is started? Or did I misunderstand anything?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "e6ab835ddbab1693ae0b7cd3da6954a4cd5319fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
