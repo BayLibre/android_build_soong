@@ -45,6 +45,30 @@
       },
       "revId": "e6ab835ddbab1693ae0b7cd3da6954a4cd5319fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "595957c2_4d2437f0",
+        "filename": "bin/run_tool_with_logging",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1114063
+      },
+      "writtenOn": "2024-06-01T00:26:43Z",
+      "side": 1,
+      "message": "Hmm, looks like it actually record the invocation duration correctly as log_tool_invocation just defined the trap function which will only be triggered at the end of this shell script.",
+      "parentUuid": "f8385e8c_8796dec6",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "e6ab835ddbab1693ae0b7cd3da6954a4cd5319fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
