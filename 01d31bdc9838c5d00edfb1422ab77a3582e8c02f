@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9c4f8f6_4cc79bf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-06-02T14:34:51Z",
+      "side": 1,
+      "message": "Hi, I was finally able to submit the symlink cl (after waiting on some tradefed enhancements), but it broke a build in post submit. I reverted the reverts (original code) and added one tiny patcheset to fix it.\n\nhttps://android-build.corp.google.com/artifact/submitted/11914755/mainline_modules_sdks-trunk_staging-userdebug/latest/view/logs%2Fbuild_error.log",
+      "revId": "01d31bdc9838c5d00edfb1422ab77a3582e8c02f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e128990f_9da8bdd3",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-06-02T14:34:51Z",
+      "side": 1,
+      "message": "This fixes the problem and gives us \"foo.apk\" rather than \"/foo.apk\" when there is no DeviceArch().\nThat only seems to happen in sdk/ndk \"soong-mode\" builds that don\u0027t build these targets.",
+      "range": {
+        "startLine": 346,
+        "startChar": 22,
+        "endLine": 346,
+        "endChar": 63
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "66c862ff_13b95ad5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tradefed_modules/test_module_config.go",
+              "range": {
+                "startLine": 346,
+                "startChar": 0,
+                "endLine": 346,
+                "endChar": 0
+              },
+              "replacement": "\t// TODO(b/151171111): Remove this check when we can build java_host_test in sdk/ndk mode.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "01d31bdc9838c5d00edfb1422ab77a3582e8c02f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
