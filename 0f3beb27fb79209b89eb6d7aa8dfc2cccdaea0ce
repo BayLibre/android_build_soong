@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c46dd3ab_a92283aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-03T22:33:19Z",
+      "side": 1,
+      "message": "Colin, do variables not get added to host targets? or do you know how to add them?",
+      "revId": "0f3beb27fb79209b89eb6d7aa8dfc2cccdaea0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
