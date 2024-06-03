@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ffce68c_7d6b36ef",
+        "filename": "bin/run_tool_with_logging",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-06-03T20:40:49Z",
+      "side": 1,
+      "message": "No. It is fast. It doesn\u0027t doing any tree scanning for vendorsetup.sh or anything like envsetup.sh does.",
+      "parentUuid": "8efac866_97b0f20d",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 82
+      },
+      "revId": "e6ab835ddbab1693ae0b7cd3da6954a4cd5319fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8385e8c_8796dec6",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Hmm, looks like it actually record the invocation duration correctly as log_tool_invocation just defined the trap function which will only be triggered at the end of this shell script.",
       "parentUuid": "f8385e8c_8796dec6",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "e6ab835ddbab1693ae0b7cd3da6954a4cd5319fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a54c5090_9a297fc4",
+        "filename": "bin/run_tool_with_logging",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-06-03T20:40:49Z",
+      "side": 1,
+      "message": "Exactly. Log_tool_invocation sets up the trap handler and then regardless of the exit status (error or not) it automatically handles the rest.",
+      "parentUuid": "595957c2_4d2437f0",
       "range": {
         "startLine": 22,
         "startChar": 0,
