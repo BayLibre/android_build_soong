@@ -426,6 +426,14 @@ func (sanitize *sanitize) props() []interface{} {
 	return []interface{}{&sanitize.Properties}
 }
 
+func XomDisabledByModule(ctx BaseModuleContext) bool {
+	c, ok := ctx.Module().(*Module)
+	if ok && c.xom != nil && c.xom.Properties.Xom != nil && !*c.xom.Properties.Xom {
+		return true
+	}
+	return false
+}
+
 func (p *sanitizeMutatedProperties) copyUserPropertiesToMutated(userProps *SanitizeUserProps) {
 	p.Never = userProps.Never
 	p.Address = userProps.Address
@@ -777,6 +785,24 @@ func toDisableUnsignedShiftBaseChange(flags []string) bool {
 	return false
 }
 
+func toDisableFunctionAndKcfiSanitizer(ctx ModuleContext, flags []string) bool {
+	// Function and kcfi sanitizers are not compatible with execute-only mode.
+	// If either of them are enabled explicitly together with XOM, then throw an error.
+	// If none of them is enabled explicitly they still need to be disabled if
+	// execute-only is on, as they still can be enabled implicitly via undefined sanitizer.
+	if ctx.Arch().ArchType == android.Arm64 && ctx.Config().EnableXOM() &&
+		!ctx.Config().XOMDisabledForPath(ctx.ModuleDir()) && !XomDisabledByModule(ctx) {
+		for _, f := range flags {
+			if strings.HasPrefix(f, "-fsanitize") &&
+				(strings.Contains(f, "function") || strings.Contains(f, "kcfi")) {
+				ctx.ModuleErrorf("\nFunction and kcfi sanitizers are not supported with XOMenabled")
+			}
+		}
+		return true
+	}
+	return false
+}
+
 func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	if s.Properties.ForceDisable {
 		return flags
@@ -965,6 +991,10 @@ func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		// http://b/171275751, Android doesn't build with this sanitizer yet.
 		if toDisableUnsignedShiftBaseChange(flags.Local.CFlags) {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize=unsigned-shift-base")
+		}
+
+		if toDisableFunctionAndKcfiSanitizer(ctx, flags.Local.CFlags) {
+			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize=function", "-fno-sanitize=kcfi")
 		}
 	}
 
