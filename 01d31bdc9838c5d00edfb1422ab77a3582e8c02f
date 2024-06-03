@@ -57,6 +57,30 @@
       ],
       "revId": "01d31bdc9838c5d00edfb1422ab77a3582e8c02f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b23bac_124fae4e",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-03T22:53:40Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e128990f_9da8bdd3",
+      "range": {
+        "startLine": 346,
+        "startChar": 22,
+        "endLine": 346,
+        "endChar": 63
+      },
+      "revId": "01d31bdc9838c5d00edfb1422ab77a3582e8c02f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
