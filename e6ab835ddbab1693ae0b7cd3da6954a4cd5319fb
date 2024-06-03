@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a5a8e73_3759958d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1114063
+      },
+      "writtenOn": "2024-06-03T22:36:10Z",
+      "side": 1,
+      "message": "Even I sourced the function from shell_utils.sh, the logging still not working.. (it now recognized __mp_impl but no log sent). I think the problem is because we run mp() in the current shell while the trap function is only triggered if we exit the shell.",
+      "parentUuid": "d9a3efb2_8939324f",
+      "revId": "e6ab835ddbab1693ae0b7cd3da6954a4cd5319fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8efac866_97b0f20d",
         "filename": "bin/run_tool_with_logging",
         "patchSetId": 2
