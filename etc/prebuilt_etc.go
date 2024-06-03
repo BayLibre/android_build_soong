@@ -559,10 +559,11 @@ func PrebuiltEtcCaCertsFactory() android.Module {
 }
 
 // prebuilt_root is for a prebuilt artifact that is installed in
-// <partition>/ directory. Can't have any sub directories.
+// <partition>/<sub_dir> directory.
 func PrebuiltRootFactory() android.Module {
 	module := &PrebuiltEtc{}
-	InitPrebuiltRootModule(module)
+	//InitPrebuiltRootModule(module)
+	InitPrebuiltEtcModule(module, ".")
 	// This module is device-only
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	android.InitDefaultableModule(module)
