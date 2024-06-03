@@ -131,6 +131,32 @@ func dexpreoptDisabled(ctx android.PathContext, global *GlobalConfig, module *Mo
 	return false
 }
 
+// RuleBuilder.Install() adds source-to-install copy pairs to a list for Make. To share this
+// information with PackagingSpec in soong, call PackageFile with the same parameter.
+//
+// This works only with a ModuleContext that is a module to be installed. Also, the install path and
+// the target install partition of the module must be the same.
+func PackageFile(ctx android.PathContext, srcPath android.Path, fullInstallPath string) {
+	mctx, ok := ctx.(android.ModuleContext)
+	if !ok {
+		return
+	}
+
+	installPath := android.PathForModuleInstall(mctx)
+	prefix := fmt.Sprintf("/%s/", installPath.Partition())
+	if !strings.HasPrefix(fullInstallPath, prefix) {
+		// Skip if the install path is not for the target image.
+		// Files for "apex" and "system_other" are skipped here.
+		return
+	}
+
+	relPath, err := filepath.Rel(prefix, fullInstallPath)
+	if err != nil {
+		panic(err)
+	}
+	mctx.PackageFile(installPath.Join(mctx, filepath.Dir(relPath)), filepath.Base(relPath), srcPath)
+}
+
 func profileCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, global *GlobalConfig,
 	module *ModuleConfig, rule *android.RuleBuilder) android.WritablePath {
 
@@ -168,6 +194,7 @@ func profileCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, glo
 		cmd.Text(fmt.Sprintf(`|| echo "Profile out of date for %s"`, module.DexPath))
 	}
 	rule.Install(profilePath, profileInstalledPath)
+	PackageFile(ctx, profilePath, profileInstalledPath)
 
 	return profilePath
 }
@@ -201,6 +228,7 @@ func bootProfileCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig,
 		cmd.Text(fmt.Sprintf(`|| echo "Profile out of date for %s"`, module.DexPath))
 	}
 	rule.Install(profilePath, profileInstalledPath)
+	PackageFile(ctx, profilePath, profileInstalledPath)
 
 	return profilePath
 }
@@ -457,6 +485,7 @@ func dexpreoptCommand(ctx android.BuilderContext, globalSoong *GlobalSoongConfig
 			Flag("-j").
 			Input(tmpPath)
 		rule.Install(dmPath, dmInstalledPath)
+		PackageFile(ctx, dmPath, dmInstalledPath)
 	}
 
 	// By default, emit debug info.
@@ -501,6 +530,7 @@ func dexpreoptCommand(ctx android.BuilderContext, globalSoong *GlobalSoongConfig
 			cmd.FlagWithArg("--resolve-startup-const-strings=", "true")
 		}
 		rule.Install(appImagePath, appImageInstallPath)
+		PackageFile(ctx, appImagePath, appImageInstallPath)
 	}
 
 	if profile != nil {
@@ -509,6 +539,8 @@ func dexpreoptCommand(ctx android.BuilderContext, globalSoong *GlobalSoongConfig
 
 	rule.Install(odexPath, odexInstallPath)
 	rule.Install(vdexPath, vdexInstallPath)
+	PackageFile(ctx, odexPath, odexInstallPath)
+	PackageFile(ctx, vdexPath, vdexInstallPath)
 }
 
 func shouldGenerateDM(module *ModuleConfig, global *GlobalConfig) bool {

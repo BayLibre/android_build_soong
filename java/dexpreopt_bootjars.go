@@ -15,6 +15,7 @@
 package java
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 
@@ -929,6 +930,41 @@ func getApexNameToApexExportsInfoMap(ctx android.ModuleContext) apexNameToApexEx
 	return apexNameToApexExportsInfoMap
 }
 
+func packageFileForTargetImage(mctx android.ModuleContext, srcPath android.Path, fullInstallPath string, target android.Target) {
+	if target.Os != mctx.Os() {
+		// This is not for the target device.
+		return
+	}
+
+	installPath := android.PathForModuleInstall(mctx)
+	prefix := fmt.Sprintf("/%s/", installPath.Partition())
+	if !strings.HasPrefix(fullInstallPath, prefix) {
+		// Skip if the install path is not for the target image.
+		// Files for "apex" and "system_other" are skipped here.
+		return
+	}
+
+	relPath, err := filepath.Rel(prefix, fullInstallPath)
+	if err != nil {
+		panic(err)
+	}
+	installDir, filename := filepath.Split(relPath)
+
+	if strings.HasSuffix(fullInstallPath, ".vdex") && target.Arch.ArchType != mctx.Config().BuildArch {
+		// Note that the vdex files are identical between architectures. If the target image is not
+		// for the primary architecture create symlinks to share the vdex of the primary
+		// architecture with the other architectures.
+		//
+		// Assuming that the install path has the architecture name with it, replace the
+		// architecture name with the primary architecture name to find the source vdex file.
+		srcRelDir := strings.ReplaceAll(installDir, target.Arch.ArchType.Name, mctx.Config().BuildArch.Name)
+		mctx.InstallSymlink(installPath.Join(mctx, installDir), filename, installPath.Join(mctx, srcRelDir, filename))
+		return
+	}
+	// .vdex for primary architecture, or the other file types must be packaged.
+	mctx.PackageFile(installPath.Join(mctx, installDir), filename, srcPath)
+}
+
 // Generate boot image build rules for a specific target.
 func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, profile android.Path) bootImageVariantOutputs {
 
@@ -1097,6 +1133,7 @@ func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, p
 
 		// Install the .oat and .art files
 		rule.Install(artOrOat, filepath.Join(installDir, artOrOat.Base()))
+		packageFileForTargetImage(ctx, artOrOat, filepath.Join(installDir, artOrOat.Base()), image.target)
 	}
 
 	for _, vdex := range image.moduleFiles(ctx, outputDir, ".vdex") {
@@ -1106,6 +1143,7 @@ func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, p
 		// Make rules will create symlinks to share them between architectures.
 		vdexInstalls = append(vdexInstalls,
 			android.RuleBuilderInstall{vdex, filepath.Join(installDir, vdex.Base())})
+		packageFileForTargetImage(ctx, vdex, filepath.Join(installDir, vdex.Base()), image.target)
 	}
 
 	for _, unstrippedOat := range image.moduleFiles(ctx, symbolsDir, ".oat") {
@@ -1204,6 +1242,7 @@ func bootImageProfileRule(ctx android.ModuleContext, image *bootImageConfig) (an
 	if image == defaultBootImageConfig(ctx) {
 		rule := android.NewRuleBuilder(pctx, ctx)
 		rule.Install(profile, "/system/etc/boot-image.prof")
+		dexpreopt.PackageFile(ctx, profile, "/system/etc/boot-image.prof")
 		return profile, rule.Installs()
 	}
 	return profile, nil
@@ -1235,6 +1274,7 @@ func bootFrameworkProfileRule(ctx android.ModuleContext, image *bootImageConfig)
 		FlagWithOutput("--reference-profile-file=", profile)
 
 	rule.Install(profile, "/system/etc/boot-image.bprof")
+	dexpreopt.PackageFile(ctx, profile, "/system/etc/boot-image.bprof")
 	rule.Build("bootFrameworkProfile", "profile boot framework jars")
 	return profile, rule.Installs()
 }
