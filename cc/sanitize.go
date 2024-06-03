@@ -16,6 +16,7 @@ package cc
 
 import (
 	"fmt"
+	"slices"
 	"sort"
 	"strings"
 	"sync"
@@ -599,6 +600,14 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		}
 	}
 
+	if ctx.Arch().ArchType == android.Arm64 && ctx.Config().EnableXOM() {
+		if s.Misc_undefined != nil {
+			if slices.Contains(s.Misc_undefined, "function") || slices.Contains(s.Misc_undefined, "kcfi") {
+				ctx.ModuleErrorf("Function and kcfi sanitizers are not supported with XOMenabled")
+			}
+		}
+	}
+
 	// Enable Memtag for all components in the include paths (for Aarch64 only)
 	if ctx.Arch().ArchType == android.Arm64 && ctx.toolchain().Bionic() {
 		if ctx.Config().MemtagHeapSyncEnabledForPath(ctx.ModuleDir()) {
@@ -773,6 +782,23 @@ func toDisableUnsignedShiftBaseChange(flags []string) bool {
 		if strings.HasPrefix(f, "-fsanitize") && strings.Contains(f, "integer") {
 			return true
 		}
+	}
+	return false
+}
+
+func toDisableFunctionAndKcfiSanitizer(ctx ModuleContext, flags []string) bool {
+	// Function and kcfi sanitizers are not compatible with execute-only mode.
+	// If either of them are enabled explicitly together with XOM, then throw an error.
+	// If none of them is enabled explicitly they still need to be disabled if
+	// execute-only is on, as they still can be enabled implicitly via undefined sanitizer.
+	if ctx.Arch().ArchType == android.Arm64 && ctx.Config().EnableXOM() {
+		for _, f := range flags {
+			if strings.HasPrefix(f, "-fsanitize") &&
+				(strings.Contains(f, "function") || strings.Contains(f, "kcfi")) {
+				ctx.ModuleErrorf("Function and kcfi sanitizers are not supported with XOMenabled")
+			}
+		}
+		return true
 	}
 	return false
 }
@@ -965,6 +991,10 @@ func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		// http://b/171275751, Android doesn't build with this sanitizer yet.
 		if toDisableUnsignedShiftBaseChange(flags.Local.CFlags) {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize=unsigned-shift-base")
+		}
+
+		if toDisableFunctionAndKcfiSanitizer(ctx, flags.Local.CFlags) {
+			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize=function", "-fno-sanitize=kcfi")
 		}
 	}
 
