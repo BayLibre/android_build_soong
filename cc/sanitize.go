@@ -777,6 +777,15 @@ func toDisableUnsignedShiftBaseChange(flags []string) bool {
 	return false
 }
 
+func toDisableFunctionAndKcfiSanitizer(ctx ModuleContext, flags []string) bool {
+	// Function and kcfi sanitizers are not compatible with execute-only mode,
+	// which is the default behavior on all aarch64 devices.
+	if ctx.Arch().ArchType == android.Arm64 {
+		return true
+	}
+	return false
+}
+
 func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	if s.Properties.ForceDisable {
 		return flags
@@ -965,6 +974,10 @@ func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		// http://b/171275751, Android doesn't build with this sanitizer yet.
 		if toDisableUnsignedShiftBaseChange(flags.Local.CFlags) {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize=unsigned-shift-base")
+		}
+
+		if toDisableFunctionAndKcfiSanitizer(ctx, flags.Local.CFlags) {
+			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize=function", "-fno-sanitize=kcfi")
 		}
 	}
 
