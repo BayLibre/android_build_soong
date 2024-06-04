@@ -184,6 +184,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "440c4a5e_c2675346",
+        "filename": "android/paths.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-04T19:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "482e189b_24069c1d",
+      "revId": "b6e4a0da67ebf2362286956334cbdc29122fe462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a6c5bc9_81840ae0",
@@ -197,6 +215,24 @@
       "writtenOn": "2024-06-04T17:56:05Z",
       "side": 1,
       "message": "Just use `OutputFilesForModule` and leave `OutputFilesForModuleFromProvider` un-exported.",
+      "revId": "b6e4a0da67ebf2362286956334cbdc29122fe462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63b75a16_8a205b1d",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2115,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-04T19:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a6c5bc9_81840ae0",
       "revId": "b6e4a0da67ebf2362286956334cbdc29122fe462",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
