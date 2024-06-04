@@ -31,7 +31,8 @@ var (
 	commonGlobalCflags = []string{
 		// Enable some optimization by default.
 		"-O2",
-
+		"-mllvm",
+		"-hot-cold-split",
 		// Warnings enabled by default. Reference:
 		// https://clang.llvm.org/docs/DiagnosticsReference.html
 		"-Wall",
