@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b0f305_54e4f29a",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-04T18:59:28Z",
+      "side": 1,
+      "message": "The build flags are already exported to soong via the `BuildFlags` and `BuildFlagTypes` variables in soong.variables. You could also add a `BuildFlagPartitions` variable, and then change `build_flags_json` to get the build flags from the Config object instead of the files directly, which would not have this issue.\n\nThough this is ok as well.",
+      "revId": "605b5da192dc025802d0a1f833586674dd420255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
