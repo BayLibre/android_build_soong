@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81a18fdb_67d261b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-04T03:22:54Z",
+      "side": 1,
+      "message": "I mean, I want to get the value of PRODUCT_SHIPPING_API_LEVEL as a cflag in code, so I can branch on this value in host code, so that I can detect some things at build time which are test failures.",
+      "parentUuid": "fea15b59_94a614e0",
+      "revId": "0f3beb27fb79209b89eb6d7aa8dfc2cccdaea0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a7e8748_0f3846a2",
         "filename": "android/variable.go",
         "patchSetId": 1
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "Or just leave this variable in camel case, as that\u0027s the convention here.",
       "parentUuid": "5a7e8748_0f3846a2",
+      "revId": "0f3beb27fb79209b89eb6d7aa8dfc2cccdaea0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d5f5782_d0559ac2",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-04T03:22:54Z",
+      "side": 1,
+      "message": "Convention is underscore for values specifiable in blueprint (there are others here).\n\nI can\u0027t believe it\u0027s not a build error if soong_config is wrong. Thank you for the catch.\n\nI added this into the topic though, and it still doesn\u0027t allow me to see the variable in Soong.\n\nBtw, error is:\n\n```\n[ 26% 39838/151658] //system/core/init:host_init_verifier clang++ service_parser.cpp [linux_glibc]\nFAILED: out/soong/.intermediates/system/core/init/host_init_verifier/linux_glibc_x86_64/632f217a037e98b2bd67dd3df4d2852b/obj/system/core/init/service_parser.o\nPWD\u003d/proc/self/cwd prebuilts/clang/host/linux-x86/clang-r510928/bin/clang++ -c  -Wa,--noexecstack -fPIC -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE\u003d2 -fstack-protector --gcc-toolchain\u003dprebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -fstack-protector-strong -m64 --sysroot prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot -O2 -Wall -Wextra -Winit-self -Wpointer-arith -Wunguarded-availability -Werror\u003ddate-time -Werror\u003dint-conversion -Werror\u003dpragma-pack -Werror\u003dpragma-pack-suspicious-include -Werror\u003dsizeof-array-div -Werror\u003dstring-plus-int -Werror\u003dunreachable-code-loop-increment -Wno-error\u003ddeprecated-declarations -Wno-c99-designator -Wno-gnu-folding-constant -Wno-inconsistent-missing-override -Wno-error\u003dreorder-init-list -Wno-reorder-init-list -Wno-sign-compare -Wno-unused -DANDROID -DNDEBUG -UDEBUG -D__compiler_offsetof\u003d__builtin_offsetof -D__ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__ -faddrsig -fdebug-default-version\u003d5 -fcolor-diagnostics -ffp-contract\u003doff -fno-exceptions -fno-strict-aliasing -fmessage-length\u003d0 -fno-relaxed-template-template-args -gsimple-template-names -gz\u003dzstd -no-canonical-prefixes -Wno-error\u003dformat -fdebug-prefix-map\u003d/proc/self/cwd\u003d -ftrivial-auto-var-init\u003dzero -g   -target x86_64-linux-gnu -DANDROID_STRICT -fPIE -Wimplicit-fallthrough -D_LIBCPP_ENABLE_THREAD_SAFETY_ANNOTATIONS -Wno-gnu-include-next   -Isystem/core/init -Iout/soong/.intermediates/system/core/init/host_init_verifier/linux_glibc_x86_64/632f217a037e98b2bd67dd3df4d2852b/gen/proto/system/core/init -Iout/soong/.intermediates/system/core/init/host_init_verifier/linux_glibc_x86_64/632f217a037e98b2bd67dd3df4d2852b/gen/proto -Iexternal/libcap/libcap/include -Isystem/libbase/include -Iexternal/fmtlib/include -Iexternal/selinux/libselinux/include -Iexternal/pcre/include -Isystem/logging/liblog/include -Isystem/core/property_service/libpropertyinfoserializer/include -Isystem/core/property_service/libpropertyinfoparser/include -Isystem/core/libcutils/include -Isystem/core/libprocessgroup/include -Isystem/tools/hidl/utils/include -Isystem/tools/hidl/metadata/include -Iexternal/protobuf/src -Iprebuilts/clang/host/linux-x86/clang-r510928/include/x86_64-unknown-linux-gnu/c++/v1 -Iprebuilts/clang/host/linux-x86/clang-r510928/include/c++/v1 -Iout/soong/.intermediates/system/core/init/generated_stub_builtin_function_map/gen -Iout/soong/.intermediates/bionic/libc/generated_android_ids/gen -Wall -Wextra -Wno-unused-parameter -Werror -DGOOGLE_PROTOBUF_NO_RTTI -std\u003dgnu++20 -nostdinc++ -Isystem/core/include -Isystem/logging/liblog/include -Isystem/media/audio/include -Ihardware/libhardware/include -Ihardware/libhardware_legacy/include -Ihardware/ril/include -Iframeworks/native/include -Iframeworks/native/opengl/include -Iframeworks/av/include  -Werror\u003dbool-operation -Werror\u003dformat-insufficient-args -Werror\u003dimplicit-int-float-conversion -Werror\u003dint-in-bool-context -Werror\u003dint-to-pointer-cast -Werror\u003dpointer-to-int-cast -Werror\u003dxor-used-as-pow -Wno-void-pointer-to-enum-cast -Wno-void-pointer-to-int-cast -Wno-pointer-to-int-cast -Werror\u003dfortify-source -Wno-unused-variable -Wno-missing-field-initializers -Wno-packed-non-pod -Werror\u003daddress-of-temporary -Werror\u003dincompatible-function-pointer-types -Werror\u003dnull-dereference -Werror\u003dreturn-type -Wno-tautological-constant-compare -Wno-tautological-type-limit-compare -Wno-implicit-int-float-conversion -Wno-tautological-overlap-compare -Wno-deprecated-copy -Wno-range-loop-construct -Wno-zero-as-null-pointer-constant -Wno-deprecated-anon-enum-enum-conversion -Wno-deprecated-enum-enum-conversion -Wno-pessimizing-move -Wno-non-c-typedef-for-linkage -Wno-align-mismatch -Wno-error\u003dunused-but-set-variable -Wno-error\u003dunused-but-set-parameter -Wno-error\u003ddeprecated-builtins -Wno-error\u003ddeprecated -Wno-error\u003dsingle-bit-bitfield-constant-conversion -Wno-error\u003denum-constexpr-conversion -Wno-deprecated-dynamic-exception-spec  -MD -MF out/soong/.intermediates/system/core/init/host_init_verifier/linux_glibc_x86_64/632f217a037e98b2bd67dd3df4d2852b/obj/system/core/init/service_parser.o.d -o out/soong/.intermediates/system/core/init/host_init_verifier/linux_glibc_x86_64/632f217a037e98b2bd67dd3df4d2852b/obj/system/core/init/service_parser.o system/core/init/service_parser.cpp\nsystem/core/init/service_parser.cpp:55:45: error: use of undeclared identifier \u0027BUILD_SHIPPING_API_LEVEL\u0027\n   55 | constexpr uint64_t kBuildShippingApiLevel \u003d BUILD_SHIPPING_API_LEVEL + 0 /* +0 if empty */;\n      |                                             ^\n1 error generated.\n02:56:34 ninja failed with: exit status 1\n```\n\nWith the Android.bp file change that tries to add it as well.",
+      "parentUuid": "8ecbd371_20c3c2ef",
       "revId": "0f3beb27fb79209b89eb6d7aa8dfc2cccdaea0ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
