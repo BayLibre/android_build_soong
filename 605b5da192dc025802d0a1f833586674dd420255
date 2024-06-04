@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e597ab4_c16d4f50",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-06-04T19:04:53Z",
+      "side": 1,
+      "message": "This is not strictly true: they are created during product config, which is initiated by Soong.  That said, this approach seems fine to me.",
+      "revId": "605b5da192dc025802d0a1f833586674dd420255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84b0f305_54e4f29a",
         "filename": "ui/build/test_build.go",
         "patchSetId": 1
