@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "270847b8_c280902e",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-04T14:45:24Z",
+      "side": 1,
+      "message": "we call this onDevicePath in android/paths.go\n\nSo, perhaps you want to make a function like OnDevicePathToInstallPath there and use it from here.",
+      "range": {
+        "startLine": 139,
+        "startChar": 64,
+        "endLine": 139,
+        "endChar": 79
+      },
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39912eaa_7b30c295",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-04T14:45:24Z",
+      "side": 1,
+      "message": "Can this be asserted instead of bailing out?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 9
+      },
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17936380_08ef71c7",
         "filename": "dexpreopt/dexpreopt.go",
         "patchSetId": 1
@@ -82,6 +128,29 @@
         "startChar": 5,
         "endLine": 943,
         "endChar": 58
+      },
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0272ce3_23d7c1ed",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-04T14:45:24Z",
+      "side": 1,
+      "message": "This part is pretty much the same as the one in the above. Can we dedup?",
+      "range": {
+        "startLine": 939,
+        "startChar": 0,
+        "endLine": 950,
+        "endChar": 2
       },
       "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
