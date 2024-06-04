@@ -195,6 +195,24 @@
       "parentUuid": "d5f84de5_739afc96",
       "revId": "0f3beb27fb79209b89eb6d7aa8dfc2cccdaea0ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61ba8ffe_c8b775e5",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-04T20:43:08Z",
+      "side": 1,
+      "message": "oh actually I think you just missed it in a defaults module. I commented on the other cl.",
+      "parentUuid": "34f4a48e_b5803cf7",
+      "revId": "0f3beb27fb79209b89eb6d7aa8dfc2cccdaea0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
