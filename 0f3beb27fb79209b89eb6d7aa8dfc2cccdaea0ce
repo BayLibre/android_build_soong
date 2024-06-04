@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eba412c2_b59b4213",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-04T00:02:17Z",
+      "side": 1,
+      "message": "These product variables should be global to the build and not depend on host/device.",
+      "parentUuid": "c46dd3ab_a92283aa",
+      "revId": "0f3beb27fb79209b89eb6d7aa8dfc2cccdaea0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a7e8748_0f3846a2",
         "filename": "android/variable.go",
         "patchSetId": 1
