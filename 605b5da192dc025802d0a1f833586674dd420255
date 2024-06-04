@@ -69,6 +69,24 @@
       "message": "The build flags are already exported to soong via the `BuildFlags` and `BuildFlagTypes` variables in soong.variables. You could also add a `BuildFlagPartitions` variable, and then change `build_flags_json` to get the build flags from the Config object instead of the files directly, which would not have this issue.\n\nThough this is ok as well.",
       "revId": "605b5da192dc025802d0a1f833586674dd420255",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0308a65_208c93d7",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-04T23:32:09Z",
+      "side": 1,
+      "message": "I originally implemented it with your suggestion: https://android-review.googlesource.com/c/platform/build/soong/+/3011253/8 (PS8 was the code).\nBut as LaMont moved the build_flags.json generation to `soong/cmd` we agreed on using the output of the generated build_flags.json instead of importing the build flags struct to soong variables.",
+      "parentUuid": "84b0f305_54e4f29a",
+      "revId": "605b5da192dc025802d0a1f833586674dd420255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
