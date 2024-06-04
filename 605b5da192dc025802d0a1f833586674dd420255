@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42da46f_33e81458",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-06-04T21:34:36Z",
+      "side": 1,
+      "message": "Fair point.",
+      "parentUuid": "3eada625_0172ad03",
+      "revId": "605b5da192dc025802d0a1f833586674dd420255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84b0f305_54e4f29a",
