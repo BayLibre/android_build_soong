@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "088ec539_8ad31b34",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-06-04T05:58:15Z",
+      "side": 1,
+      "message": "Remove the comment.",
+      "range": {
+        "startLine": 565,
+        "startChar": 3,
+        "endLine": 565,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "809cfca8_76408063",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "etc/prebuilt_etc.go",
+              "range": {
+                "startLine": 565,
+                "startChar": 0,
+                "endLine": 566,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "2bf83267a94636e301804bd9ab27db19de03cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
