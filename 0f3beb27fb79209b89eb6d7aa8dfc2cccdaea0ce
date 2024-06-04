@@ -33,6 +33,24 @@
       "message": "You\u0027ll need to update this line too: https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/soong_config.mk;l\u003d290;drc\u003d5ed5fe8b62e797c32eeb76941ca4a72916f2561b",
       "revId": "0f3beb27fb79209b89eb6d7aa8dfc2cccdaea0ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ecbd371_20c3c2ef",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-04T00:01:40Z",
+      "side": 1,
+      "message": "Or just leave this variable in camel case, as that\u0027s the convention here.",
+      "parentUuid": "5a7e8748_0f3846a2",
+      "revId": "0f3beb27fb79209b89eb6d7aa8dfc2cccdaea0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
