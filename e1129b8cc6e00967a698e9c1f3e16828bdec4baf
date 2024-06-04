@@ -16,6 +16,23 @@
       "message": "Excellent!!!!!!!",
       "revId": "e1129b8cc6e00967a698e9c1f3e16828bdec4baf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7c8a70b_31c8ee3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-04T20:49:08Z",
+      "side": 1,
+      "message": "Presubmits are failing because of some cls that were partially submitted to internal-only first, need to wait for their aosp cherrypick: aosp/3109757",
+      "revId": "e1129b8cc6e00967a698e9c1f3e16828bdec4baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
