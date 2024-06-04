@@ -31,7 +31,8 @@ var (
 	commonGlobalCflags = []string{
 		// Enable some optimization by default.
 		"-O2",
-
+		"-mllvm",
+		"-enable-gvn-hoist",
 		// Warnings enabled by default. Reference:
 		// https://clang.llvm.org/docs/DiagnosticsReference.html
 		"-Wall",
