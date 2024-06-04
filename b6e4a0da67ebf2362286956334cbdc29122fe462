@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cbb3f42_57bbab4b",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2507,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-04T21:20:49Z",
+      "side": 1,
+      "message": "\u003e If there is no ability to get own output files here, we probably need to add another property for a number of module types and cast the module to these certain module types here, which seems not convenient.\n\nI don\u0027t think we\u0027d have to do that, the individual module types could get their own output from their own properties. They wouldn\u0027t call `outputFilesForModuleFromProvider` or `outputFilesForModule` on themselves, right?",
+      "parentUuid": "9b705f27_c8f0b58b",
+      "range": {
+        "startLine": 2501,
+        "startChar": 2,
+        "endLine": 2507,
+        "endChar": 2
+      },
+      "revId": "b6e4a0da67ebf2362286956334cbdc29122fe462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46da7b8c_a4b2147a",
         "filename": "android/module.go",
         "patchSetId": 5
@@ -163,6 +187,24 @@
       "side": 1,
       "message": "pls ignore my first reply. Guess I saved my draft in different chrome tabs.",
       "parentUuid": "8e955ff7_5c4f0c57",
+      "revId": "b6e4a0da67ebf2362286956334cbdc29122fe462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b91cefd7_961bb9d7",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2514,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-04T21:20:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4dfb025d_7767ede2",
       "revId": "b6e4a0da67ebf2362286956334cbdc29122fe462",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

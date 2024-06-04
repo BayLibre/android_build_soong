@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3822ac2_289909bf",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2463,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-04T21:20:49Z",
+      "side": 1,
+      "message": "Add the tag to this error message so that we get something similar to the old `path dependency \":foo{.public.annotations.zip}\":` error message.",
+      "revId": "648a3c2accaed4c383c422f56de10908a1eef0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
