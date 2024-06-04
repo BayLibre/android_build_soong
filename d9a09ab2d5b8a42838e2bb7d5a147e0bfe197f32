@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa75d482_e9d81414",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-04T12:49:20Z",
+      "side": 1,
+      "message": "All the rules provided by `profileCommand`, `bootProfileCommand`, and `dexpreoptCommand` are supplied to Make through [this line](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/dexpreopt.go;l\u003d568;drc\u003dd5137445c0d4067406cb3e38aade5507ff2fcd16). Could you call `PackageFile` there in order to ensure a consistent behavior between Soong and Make? In this way, you get `ModuleContext` for free and you don\u0027t have to skip for apexes.\n\nSimilarly, boot images are supplied [here](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/dexpreopt_bootjars.go;l\u003d1123-1125;drc\u003dd5137445c0d4067406cb3e38aade5507ff2fcd16) and boot image profiles are supplied [here](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/dexpreopt_bootjars.go;l\u003d612;drc\u003dd5137445c0d4067406cb3e38aade5507ff2fcd16).",
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17936380_08ef71c7",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-04T12:49:20Z",
+      "side": 1,
+      "message": "If files for \"system_other\" are skipped here, do you know who will take care of them by any chance?",
+      "range": {
+        "startLine": 149,
+        "startChar": 27,
+        "endLine": 149,
+        "endChar": 39
+      },
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9efcd1_0fe76a67",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-04T12:49:20Z",
+      "side": 1,
+      "message": "This looks like something that can be defined as a overload of `mctx.PackageFile` and reused elsewhere (e.g., in `packageFileForTargetImage`).",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 97
+      },
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5ce25bd_1bf5c09c",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-04T12:49:20Z",
+      "side": 1,
+      "message": "Do we have files for \"apex\" and \"system_other\" for boot images?",
+      "range": {
+        "startLine": 943,
+        "startChar": 5,
+        "endLine": 943,
+        "endChar": 58
+      },
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
