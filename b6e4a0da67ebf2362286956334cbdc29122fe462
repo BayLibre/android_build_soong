@@ -26,6 +26,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9bf35e70_2b5a7731",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2507,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-04T18:38:59Z",
+      "side": 1,
+      "message": "bpf doesn\u0027t get its own outputFiles here. But there are some other module types (e.g. `gen_notice_build_rules`, `android_sdk_repo_host1, android_app, apex_*, ...) try to get their own output.\n\nIf there is no ability to get own output files here, we probably need to add another property for a number module types and cast the module to these certain module types here, which seems not convenient to me.",
+      "parentUuid": "5277040d_1b188101",
+      "range": {
+        "startLine": 2501,
+        "startChar": 2,
+        "endLine": 2507,
+        "endChar": 2
+      },
+      "revId": "b6e4a0da67ebf2362286956334cbdc29122fe462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1552aee_154759fe",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2507,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-04T18:38:59Z",
+      "side": 1,
+      "message": "bpf doesn\u0027t get its own outputFiles here. But there are some other module types (e.g. `gen_notice_build_rules`, `android_sdk_repo_host1`, `android_app`, `apex_*`, ...) try to get their own output.\n\nIf there is no ability to get own output files here, we probably need to add another property for a number of module types and cast the module to these certain module types here, which seems not convenient.",
+      "parentUuid": "5277040d_1b188101",
+      "range": {
+        "startLine": 2501,
+        "startChar": 2,
+        "endLine": 2507,
+        "endChar": 2
+      },
+      "revId": "b6e4a0da67ebf2362286956334cbdc29122fe462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46da7b8c_a4b2147a",
         "filename": "android/module.go",
         "patchSetId": 5
@@ -37,6 +85,42 @@
       "writtenOn": "2024-06-04T17:56:05Z",
       "side": 1,
       "message": "Any reason for splitting this out? We could just store it under `\"\"` in `TaggedOutputFiles`.",
+      "revId": "b6e4a0da67ebf2362286956334cbdc29122fe462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e955ff7_5c4f0c57",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2514,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-04T18:38:59Z",
+      "side": 1,
+      "message": "The main concern here is the memory cost. Most module types only have empty tag output files. In this case, no memory is allocated to `TaggedOutputFiles`, so that the provider size is smaller.",
+      "parentUuid": "46da7b8c_a4b2147a",
+      "revId": "b6e4a0da67ebf2362286956334cbdc29122fe462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a850196_517bddc2",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2514,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-04T18:38:59Z",
+      "side": 1,
+      "message": "The main concern here is the memory cost. Most module types only have empty tag output files. In this case, no memory is allocated to TaggedOutputFiles, so that the provider size is smaller.",
+      "parentUuid": "46da7b8c_a4b2147a",
       "revId": "b6e4a0da67ebf2362286956334cbdc29122fe462",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
