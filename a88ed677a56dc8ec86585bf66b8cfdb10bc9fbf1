@@ -16,6 +16,24 @@
       "message": "Actually this needs to be tagged `android:\"replace_instead_of_append\"` to fix the presubmit issue. `*string` properties are replaced when merging them (via defaults, specialized properties, etc) while `string` properties are not. For configurable properties, we use this tag instead of a pointer as the differentiator.",
       "revId": "a88ed677a56dc8ec86585bf66b8cfdb10bc9fbf1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52287ca0_c7c17b46",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1812161
+      },
+      "writtenOn": "2024-06-04T17:22:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e88f73af_495c5612",
+      "revId": "a88ed677a56dc8ec86585bf66b8cfdb10bc9fbf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
