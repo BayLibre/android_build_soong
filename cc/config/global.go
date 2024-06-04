@@ -31,6 +31,8 @@ var (
 	commonGlobalCflags = []string{
 		// Enable some optimization by default.
 		"-O2",
+		"-mllvm",
+		"-enable-jump-table-to-switch=true",
 
 		// Warnings enabled by default. Reference:
 		// https://clang.llvm.org/docs/DiagnosticsReference.html
