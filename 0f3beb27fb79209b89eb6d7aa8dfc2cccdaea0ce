@@ -177,6 +177,24 @@
       "parentUuid": "3d5f5782_d0559ac2",
       "revId": "0f3beb27fb79209b89eb6d7aa8dfc2cccdaea0ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34f4a48e_b5803cf7",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-04T19:45:28Z",
+      "side": 1,
+      "message": "The thing is, this is the only context where I need to read the value. host_init_verifier is the host tool I want to read this, so I can provide build errors (instead of people hitting potentially hard to resolve runtime errors later or failing *TS tests later).\n\nAny debug hints/ideas? If you don\u0027t know, I can debug and trace the info through the build, but I\u0027ve never work on this path, so I was hoping you would know.",
+      "parentUuid": "d5f84de5_739afc96",
+      "revId": "0f3beb27fb79209b89eb6d7aa8dfc2cccdaea0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
