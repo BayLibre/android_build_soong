@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "084981fa_15a0e281",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2507,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-05T00:09:50Z",
+      "side": 1,
+      "message": "As discussed offline, we will keep the ability to get module own output files here. The reason is that there are several module types both set and get outputFiles within `GenerateBuildActions`, but providers don\u0027t support both \"set\" and \"get\" inside `GenerateBuildActions`.",
+      "parentUuid": "0cbb3f42_57bbab4b",
+      "range": {
+        "startLine": 2501,
+        "startChar": 2,
+        "endLine": 2507,
+        "endChar": 2
+      },
+      "revId": "b6e4a0da67ebf2362286956334cbdc29122fe462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46da7b8c_a4b2147a",

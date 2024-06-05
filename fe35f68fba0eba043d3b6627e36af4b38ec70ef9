@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f61411_6e064071",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-05T00:09:50Z",
+      "side": 1,
+      "message": "Done. The updated logic looks a little clumsy in `GoBinaryTool` part since it checks the err string from `outputFilesForModule`.",
+      "parentUuid": "6749b3c3_017f13d9",
+      "revId": "fe35f68fba0eba043d3b6627e36af4b38ec70ef9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "187ab575_8ad3887b",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-06-04T21:20:49Z",
       "side": 1,
       "message": "Enforce that the tag is `\"\"` if we\u0027re getting files from GoBinaryTool.",
+      "revId": "fe35f68fba0eba043d3b6627e36af4b38ec70ef9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef257c29_897295c7",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-05T00:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "187ab575_8ad3887b",
       "revId": "fe35f68fba0eba043d3b6627e36af4b38ec70ef9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

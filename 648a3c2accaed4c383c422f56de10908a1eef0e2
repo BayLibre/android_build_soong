@@ -16,6 +16,24 @@
       "message": "Add the tag to this error message so that we get something similar to the old `path dependency \":foo{.public.annotations.zip}\":` error message.",
       "revId": "648a3c2accaed4c383c422f56de10908a1eef0e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34409961_8d18b3ff",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2463,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-05T00:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3822ac2_289909bf",
+      "revId": "648a3c2accaed4c383c422f56de10908a1eef0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
