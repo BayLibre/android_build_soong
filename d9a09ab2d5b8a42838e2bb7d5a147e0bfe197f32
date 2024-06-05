@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63db66d7_2b5f63f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-05T11:44:53Z",
+      "side": 1,
+      "message": "Thanks for the suggestion.\nUpdated the patchset as suggested.",
+      "parentUuid": "aa75d482_e9d81414",
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "270847b8_c280902e",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-06-04T14:45:24Z",
       "side": 1,
       "message": "we call this onDevicePath in android/paths.go\n\nSo, perhaps you want to make a function like OnDevicePathToInstallPath there and use it from here.",
+      "range": {
+        "startLine": 139,
+        "startChar": 64,
+        "endLine": 139,
+        "endChar": 79
+      },
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75aad41d_3112aed9",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-05T11:44:53Z",
+      "side": 1,
+      "message": "Thank for the tip.\nI wanted to do as suggested, but the function must not make error for the wrong install path (different partition in the install path), instead it must be ignored in this case.\nSo, it would be better to define the function here for its own use.",
+      "parentUuid": "270847b8_c280902e",
       "range": {
         "startLine": 139,
         "startChar": 64,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f72d229b_1aaae3c7",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-05T11:44:53Z",
+      "side": 1,
+      "message": "We don\u0027t need this any more in the new patch set.",
+      "parentUuid": "39912eaa_7b30c295",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 9
+      },
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17936380_08ef71c7",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-06-04T12:49:20Z",
       "side": 1,
       "message": "If files for \"system_other\" are skipped here, do you know who will take care of them by any chance?",
+      "range": {
+        "startLine": 149,
+        "startChar": 27,
+        "endLine": 149,
+        "endChar": 39
+      },
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ddcbfc_e879ea2d",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-05T11:44:53Z",
+      "side": 1,
+      "message": "For now we are working on building system image from soong. But we still need to care for the other partitions in the future. I added \"TODO\" for this.",
+      "parentUuid": "17936380_08ef71c7",
       "range": {
         "startLine": 149,
         "startChar": 27,
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f957d4d2_06909970",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-05T11:44:53Z",
+      "side": 1,
+      "message": "I defined a function `getModuleInstallPathInfo` to reuse this information.",
+      "parentUuid": "da9efcd1_0fe76a67",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 97
+      },
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5ce25bd_1bf5c09c",
@@ -133,6 +247,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b47177a0_ceb5a2cd",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-05T11:44:53Z",
+      "side": 1,
+      "message": "Yes. `/apex/art_boot_images/javalib/x86/boot.vdex` is an example.",
+      "parentUuid": "e5ce25bd_1bf5c09c",
+      "range": {
+        "startLine": 943,
+        "startChar": 5,
+        "endLine": 943,
+        "endChar": 58
+      },
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0272ce3_23d7c1ed",
@@ -146,6 +284,30 @@
       "writtenOn": "2024-06-04T14:45:24Z",
       "side": 1,
       "message": "This part is pretty much the same as the one in the above. Can we dedup?",
+      "range": {
+        "startLine": 939,
+        "startChar": 0,
+        "endLine": 950,
+        "endChar": 2
+      },
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e17a5aba_f71c3ad1",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-05T11:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0272ce3_23d7c1ed",
       "range": {
         "startLine": 939,
         "startChar": 0,
