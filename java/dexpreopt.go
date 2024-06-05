@@ -545,12 +545,13 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, libName string, dexJa
 	// Use the path of the dex file to determine the library name
 	isApexSystemServerJar := global.AllApexSystemServerJars(ctx).ContainsJar(dexJarStem)
 
+	partition := d.installPath.Partition()
 	for _, install := range dexpreoptRule.Installs() {
 		// Remove the "/" prefix because the path should be relative to $ANDROID_PRODUCT_OUT.
-		installDir := strings.TrimPrefix(filepath.Dir(install.To), "/")
+		installDir := strings.TrimPrefix(strings.TrimPrefix(filepath.Dir(install.To), "/"), partition+"/")
 		installBase := filepath.Base(install.To)
 		arch := filepath.Base(installDir)
-		installPath := android.PathForModuleInPartitionInstall(ctx, "", installDir)
+		installPath := android.PathForModuleInPartitionInstall(ctx, partition, installDir)
 		isProfile := strings.HasSuffix(installBase, ".prof")
 
 		if isProfile {
@@ -581,6 +582,34 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, libName string, dexJa
 
 	if !isApexSystemServerJar {
 		d.builtInstalled = dexpreoptRule.Installs().String()
+	}
+}
+
+func getModuleInstallPathInfo(ctx android.ModuleContext, fullInstallPath string) (android.InstallPath, string, string) {
+	installPath := android.PathForModuleInstall(ctx)
+	installDir, installBase := filepath.Split(strings.TrimPrefix(fullInstallPath, "/"))
+
+	if !strings.HasPrefix(installDir, installPath.Partition()+"/") {
+		// Return empty filename if the install partition is not for the target image.
+		return installPath, "", ""
+	}
+	relDir, err := filepath.Rel(installPath.Partition(), installDir)
+	if err != nil {
+		panic(err)
+	}
+	return installPath, relDir, installBase
+}
+
+// RuleBuilder.Install() adds output-to-install copy pairs to a list for Make. To share this
+// information with PackagingSpec in soong, call PackageFile for them.
+// The install path and the target install partition of the module must be the same.
+func packageFile(ctx android.ModuleContext, install android.RuleBuilderInstall) {
+	installPath, relDir, name := getModuleInstallPathInfo(ctx, install.To)
+	// Empty name means the install partition is not for the target image. Skip in this case.
+	// TODO(b/320196894): Files for "system_other" are skipped here because soong creates the system
+	// image only for now.
+	if name != "" {
+		ctx.PackageFile(installPath.Join(ctx, relDir), name, install.From)
 	}
 }
 
