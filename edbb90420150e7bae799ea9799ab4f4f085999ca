@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd368ecc_94e82942",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-05T13:08:45Z",
+      "side": 1,
+      "message": "For my education, what does this line do?",
+      "revId": "edbb90420150e7bae799ea9799ab4f4f085999ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df2806b8_0f4a642f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-05T13:08:45Z",
+      "side": 1,
+      "message": "Check whether `install` is from `image.vdexInstalls` instead of doing string matching?",
+      "range": {
+        "startLine": 942,
+        "startChar": 5,
+        "endLine": 942,
+        "endChar": 43
+      },
+      "revId": "edbb90420150e7bae799ea9799ab4f4f085999ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -273,6 +273,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "914811f9_37c21fe4",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-05T13:08:45Z",
+      "side": 1,
+      "message": "Oh, that doesn\u0027t go into any image. It\u0027s for testing only. Please briefly mention in `packageFileForTargetImage` that this is skipped.",
+      "parentUuid": "b47177a0_ceb5a2cd",
+      "range": {
+        "startLine": 943,
+        "startChar": 5,
+        "endLine": 943,
+        "endChar": 58
+      },
+      "revId": "d9a09ab2d5b8a42838e2bb7d5a147e0bfe197f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0272ce3_23d7c1ed",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 1
