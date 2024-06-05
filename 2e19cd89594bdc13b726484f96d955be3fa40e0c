@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c02f2e6_4164a8ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3390841
+      },
+      "writtenOn": "2024-06-05T23:26:45Z",
+      "side": 1,
+      "message": "517754: Always use installed version of d8-compat-dx | https://android-review.googlesource.com/c/platform/build/soong/+/517754",
+      "revId": "2e19cd89594bdc13b726484f96d955be3fa40e0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
