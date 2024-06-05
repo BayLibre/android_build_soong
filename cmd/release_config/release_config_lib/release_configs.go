@@ -87,7 +87,6 @@ func (configs *ReleaseConfigs) WriteInheritanceGraph(outFile string) error {
 	data := []string{}
 	usedAliases := make(map[string]bool)
 	priorStages := make(map[string][]string)
-	rankedStageNames := make(map[string]bool)
 	for _, config := range configs.ReleaseConfigs {
 		var fillColor string
 		inherits := []string{}
@@ -120,7 +119,6 @@ func (configs *ReleaseConfigs) WriteInheritanceGraph(outFile string) error {
 			data = append(data, fmt.Sprintf(`"%s" -> "%s" [ style=dashed color="#81c995" ]`,
 				priorStage, stageName))
 			priorStages[stageName] = append(priorStages[stageName], priorStage)
-			rankedStageNames[stageName] = true
 		}
 		label := config.Name
 		if len(inherits) > 0 {
@@ -135,9 +133,6 @@ func (configs *ReleaseConfigs) WriteInheritanceGraph(outFile string) error {
 		}
 		data = append(data,
 			fmt.Sprintf(`"%s" [ label="%s" %s]`, config.Name, label, fillColor))
-	}
-	if len(rankedStageNames) > 0 {
-		data = append(data, fmt.Sprintf("subgraph {rank=same %s}", strings.Join(SortedMapKeys(rankedStageNames), " ")))
 	}
 	slices.Sort(data)
 	data = append([]string{
