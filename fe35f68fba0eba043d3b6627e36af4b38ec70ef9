@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "774359d6_a1f9ef88",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-05T15:55:12Z",
+      "side": 1,
+      "message": "Thanks Cole. Done.",
+      "parentUuid": "9c25aca1_e5e959d8",
+      "revId": "fe35f68fba0eba043d3b6627e36af4b38ec70ef9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "187ab575_8ad3887b",
