@@ -550,7 +550,13 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, libName string, dexJa
 		installDir := strings.TrimPrefix(filepath.Dir(install.To), "/")
 		installBase := filepath.Base(install.To)
 		arch := filepath.Base(installDir)
-		installPath := android.PathForModuleInPartitionInstall(ctx, "", installDir)
+		installPath, relDir, _ := getModuleInstallPathInfo(ctx, install.To)
+		if relDir != "" {
+			installPath = installPath.Join(ctx, relDir)
+		} else {
+			// installPath for different partitions.
+			installPath = android.PathForModuleInPartitionInstall(ctx, "", installDir)
+		}
 		isProfile := strings.HasSuffix(installBase, ".prof")
 
 		if isProfile {
@@ -581,6 +587,34 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, libName string, dexJa
 
 	if !isApexSystemServerJar {
 		d.builtInstalled = dexpreoptRule.Installs().String()
+	}
+}
+
+func getModuleInstallPathInfo(ctx android.ModuleContext, fullInstallPath string) (android.InstallPath, string, string) {
+	installPath := android.PathForModuleInstall(ctx)
+	installDir, installBase := filepath.Split(strings.TrimPrefix(fullInstallPath, "/"))
+
+	if !strings.HasPrefix(installDir, installPath.Partition()+"/") {
+		// Return empty filename if the install partition is not for the target image.
+		return installPath, "", ""
+	}
+	relDir, err := filepath.Rel(installPath.Partition(), installDir)
+	if err != nil {
+		panic(err)
+	}
+	return installPath, relDir, installBase
+}
+
+// RuleBuilder.Install() adds output-to-install copy pairs to a list for Make. To share this
+// information with PackagingSpec in soong, call PackageFile for them.
+// The install path and the target install partition of the module must be the same.
+func packageFile(ctx android.ModuleContext, install android.RuleBuilderInstall) {
+	installPath, relDir, name := getModuleInstallPathInfo(ctx, install.To)
+	// Empty name means the install partition is not for the target image. Skip in this case.
+	// TODO(b/320196894): Files for "system_other" are skipped here because soong creates the system
+	// image only for now.
+	if name != "" {
+		ctx.PackageFile(installPath.Join(ctx, relDir), name, install.From)
 	}
 }
 
