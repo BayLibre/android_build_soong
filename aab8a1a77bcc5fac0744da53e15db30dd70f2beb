@@ -105,6 +105,24 @@
       "parentUuid": "686399a9_55a521e4",
       "revId": "aab8a1a77bcc5fac0744da53e15db30dd70f2beb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3e27972_f67cda88",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2024-06-06T06:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24efe07d_47ec7d60",
+      "revId": "aab8a1a77bcc5fac0744da53e15db30dd70f2beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
