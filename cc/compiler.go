@@ -549,12 +549,10 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		flags.Global.CommonFlags = append(flags.Global.CommonFlags, "${config.ExternalCflags}")
 	}
 
-	if tc.Bionic() {
-		if Bool(compiler.Properties.Rtti) {
-			flags.Local.CppFlags = append(flags.Local.CppFlags, "-frtti")
-		} else {
-			flags.Local.CppFlags = append(flags.Local.CppFlags, "-fno-rtti")
-		}
+	if Bool(compiler.Properties.Rtti) {
+		flags.Local.CppFlags = append(flags.Local.CppFlags, "-frtti")
+	} else {
+		flags.Local.CppFlags = append(flags.Local.CppFlags, "-fno-rtti")
 	}
 
 	flags.Global.AsFlags = append(flags.Global.AsFlags, "${config.CommonGlobalAsflags}")
