@@ -214,6 +214,30 @@
       },
       "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a3f9355_bab221a4",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-07T13:27:11Z",
+      "side": 1,
+      "message": "Re Justin, sorry, I\u0027m not sure I get it. `/system/framework/oat/\u003cisa\u003e/apex@com.android.btservices@javalib@service-bluetooth.jar@classes.odex` should be installed to the system image, and `atest art_standalone_dexpreopt_tests` checks that. Could you please elaborate what it means by \"These files are not installed to the image\"?\n\nAre you using an \"eng\" build? A \"eng\" build disables dexpreopt completely. Please test with \"userdebug\" or \"user\".",
+      "parentUuid": "e54d98f1_dbd95cf1",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 3
+      },
+      "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
