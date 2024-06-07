@@ -190,6 +190,30 @@
       },
       "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e54d98f1_dbd95cf1",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-07T12:49:36Z",
+      "side": 1,
+      "message": "In other words, I wish `RuleBuilder.Install` accepts `InstallPath` as arguments. Then we could use the `InstallPath` also to `InstallFile`. `RuleBuilderInstalls.String` could then use `InstallPathToOnDevicePath` to convert the `InstallPath` into `string`",
+      "parentUuid": "a401b9b0_87b6091b",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 3
+      },
+      "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
