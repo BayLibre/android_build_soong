@@ -118,6 +118,30 @@
       },
       "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7cec16d_d2312e3a",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-07T12:04:05Z",
+      "side": 1,
+      "message": "IIUC, `d.installPath` is the path to the apk/jar, not the path to the dexpreopt artifacts. An apk/jar and its dexpreopt artifacts can be on different partitions. For example, an apk on `/system` can have dexpreopt artifacts on `system_other`.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/dexpreopt/dexpreopt.go;l\u003d249;drc\u003dd5137445c0d4067406cb3e38aade5507ff2fcd16",
+      "parentUuid": "0ad21bcb_3d26961f",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 3
+      },
+      "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
