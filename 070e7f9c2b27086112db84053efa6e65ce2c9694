@@ -142,6 +142,30 @@
       },
       "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e45d41fa_7846794f",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-07T12:44:23Z",
+      "side": 1,
+      "message": "My first analysis found the cases, that the install partition differs from `d.installPath` for the files in `system/framework/oat/x86(_64)`, which is the directory that I am installing.\nBut with Jiyong\u0027s comment, I found these cases are only for the files that are not installed. A basename (filename) of the files, for example, is `apex@com.android.btservices@javalib@service-bluetooth.jar@classes.odex` of `service-blutooth` module. These files are not installed to the image.\n\nSo as Jiyong suggested, we may safely use the partition name from `d.installPath`. It also does not change the existing installPath values.",
+      "parentUuid": "a7cec16d_d2312e3a",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 3
+      },
+      "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
