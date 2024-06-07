@@ -94,6 +94,30 @@
       },
       "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad21bcb_3d26961f",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-07T11:10:14Z",
+      "side": 1,
+      "message": "For app and app_import, the `installPath` is set via `PathForModuleInstall`. ex [1]. So there\u0027s no worry there.\n\nFor java_libs, it is from `getInstallPath` [2] which uses `PathForModuleInPartitionInstall` as you said. But `PathForModuleInPartitionInstall` is called only for java libs in APEX. For ordinary java libs, the `defaultInstallPath` is returned [3].\n\nFinally for java libs in APEX, the path `/apex/\u003cname\u003e/...` is converted to `/system/framework/...` at `ToOdexPath` [4]. It could return `InstallPath` instead of `string. The return value could be constructed using `PathForModuleInPartitionInstall` with `partition` set to `system`.\n\n[1] https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/app.go;drc\u003dd5137445c0d4067406cb3e38aade5507ff2fcd16;l\u003d601\n\n[2] https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/dexpreopt.go;drc\u003dd5137445c0d4067406cb3e38aade5507ff2fcd16;l\u003d315\n\n[3] https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/dexpreopt.go;drc\u003dd5137445c0d4067406cb3e38aade5507ff2fcd16;l\u003d326\n\n[4] https://cs.android.com/android/platform/superproject/main/+/main:build/soong/dexpreopt/dexpreopt.go;drc\u003dd5137445c0d4067406cb3e38aade5507ff2fcd16;l\u003d222",
+      "parentUuid": "af9b34f1_d1f30755",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 3
+      },
+      "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
