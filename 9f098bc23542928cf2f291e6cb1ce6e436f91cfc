@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2149361d_28dee73e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-07T16:21:23Z",
+      "side": 1,
+      "message": "IIUC, with this CL\n1. We will still publish exportable apis of art to R,S,U,V platform trees, and not the everything apis. i.e. `prebuilts/module_sdk/art/current/sdk_library/public/art.module.public.api.srcjar` will be identical across all the art-module-sdk.zip files\n2. For U and below, we will rename the name of the library in the generated .bp file and trim the .exportable substring\n\nIf so, this looks reasonable to me.",
+      "revId": "9f098bc23542928cf2f291e6cb1ce6e436f91cfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
