@@ -149,9 +149,6 @@ var (
 
 		// Make paths in deps files relative.
 		"-no-canonical-prefixes",
-
-		// http://b/315250603 temporarily disabled
-		"-Wno-error=format",
 	}
 
 	commonGlobalConlyflags = []string{}
