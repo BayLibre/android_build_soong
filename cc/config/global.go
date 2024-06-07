@@ -97,6 +97,7 @@ var (
 		"-Wno-sign-compare",
 		// Poor signal to noise ratio.
 		"-Wno-unused",
+		"-Wno-format-pedantic",
 
 		// Global preprocessor constants.
 
@@ -149,9 +150,6 @@ var (
 
 		// Make paths in deps files relative.
 		"-no-canonical-prefixes",
-
-		// http://b/315250603 temporarily disabled
-		"-Wno-error=format",
 	}
 
 	commonGlobalConlyflags = []string{}
