@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5785c73_aeb08f59",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-07T01:04:28Z",
+      "side": 1,
+      "message": "I was also curious why it is not packaged with the `InstallFile` call.\nThe reason was that the `installPath` is not for the filesystem `ctx` but for the `installDir` which is generated outside of `ctx`.",
+      "parentUuid": "288a4e28_6ae01578",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 28
+      },
+      "revId": "edbb90420150e7bae799ea9799ab4f4f085999ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df2806b8_0f4a642f",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 2
