@@ -22,6 +22,30 @@
       },
       "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4e803ec_b82af8c7",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-07T08:11:22Z",
+      "side": 1,
+      "message": "The `partition` directory is not always a single depth, but can have multiple depth. I wanted to call `PathForModuleInstall` to find the exact partition string and verify if the `fullInstallPath` is under the same partition with the `getModuleInstallPathInfo` function.",
+      "parentUuid": "9d1eeeb2_18dcea71",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 3
+      },
+      "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
