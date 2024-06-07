@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "337d1fc1_29b96e88",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-07T08:00:33Z",
+      "side": 1,
+      "message": "Thanks, Jiyong!",
+      "parentUuid": "129a9ba3_c23bf90e",
+      "revId": "edbb90420150e7bae799ea9799ab4f4f085999ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "288a4e28_6ae01578",
@@ -131,6 +149,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29b8db16_4dcd220b",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-07T08:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "817f070f_e283d5f9",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 28
+      },
+      "revId": "edbb90420150e7bae799ea9799ab4f4f085999ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df2806b8_0f4a642f",
@@ -144,6 +186,30 @@
       "writtenOn": "2024-06-05T13:08:45Z",
       "side": 1,
       "message": "Check whether `install` is from `image.vdexInstalls` instead of doing string matching?",
+      "range": {
+        "startLine": 942,
+        "startChar": 5,
+        "endLine": 942,
+        "endChar": 43
+      },
+      "revId": "edbb90420150e7bae799ea9799ab4f4f085999ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cea7382_afe15447",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-07T08:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df2806b8_0f4a642f",
       "range": {
         "startLine": 942,
         "startChar": 5,
