@@ -310,6 +310,30 @@
       },
       "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe5fb5d4_38bbf605",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-07T15:05:31Z",
+      "side": 1,
+      "message": "Ah, I realized what\u0027s going on. Those files are passed to `d.builtInstalledForApex` on line 570 and handled from there. You probably need to call `PackageFile` below that line.",
+      "parentUuid": "b6d1140f_5df50643",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 3
+      },
+      "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
