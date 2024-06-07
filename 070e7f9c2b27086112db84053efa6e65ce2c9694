@@ -238,6 +238,30 @@
       },
       "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f070a9ca_38d8ced9",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-07T13:30:06Z",
+      "side": 1,
+      "message": "`RuleBuilder.Install` is called without the `ModuleContext` but with the `PathContext`. We may not define `InstallPath` there. I think that\u0027s why the `RuleBuilderInstall` has `From Path` and `To string`.",
+      "parentUuid": "e54d98f1_dbd95cf1",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 3
+      },
+      "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
