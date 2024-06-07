@@ -134,7 +134,4 @@ func (p *pluginSingleton) GenerateBuildActions(ctx SingletonContext) {
 		}
 		disallowedPlugins[name] = true
 	})
-	if len(disallowedPlugins) > 0 {
-		ctx.Errorf("New plugins are not supported; however %q were found. Please reach out to the build team or use BUILD_BROKEN_PLUGIN_VALIDATION (see Changes.md for more info).", SortedStringKeys(disallowedPlugins))
-	}
 }
