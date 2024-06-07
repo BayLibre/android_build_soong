@@ -20,6 +20,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "129a9ba3_c23bf90e",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-07T00:39:21Z",
+      "side": 1,
+      "message": "This prevents Soong from making a build rule for placing the output of this module at under out/target/product/\u003cname\u003e. Without this option, this Soong module and the existing routine in Make will make duplicated rules.\n\nEventually, this shall be dropped if we get rid of the Make part.",
+      "parentUuid": "bd368ecc_94e82942",
+      "revId": "edbb90420150e7bae799ea9799ab4f4f085999ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "288a4e28_6ae01578",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-07T00:39:21Z",
+      "side": 1,
+      "message": "Why do we need to call PackageFile here? InstallFile just above should be enough to pass the installed files to the fileystem module.",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 28
+      },
+      "revId": "edbb90420150e7bae799ea9799ab4f4f085999ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df2806b8_0f4a642f",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 2
