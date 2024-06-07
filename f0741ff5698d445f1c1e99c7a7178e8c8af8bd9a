@@ -70,6 +70,30 @@
       },
       "revId": "f0741ff5698d445f1c1e99c7a7178e8c8af8bd9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a75f940_36fa4f9d",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-07T15:40:06Z",
+      "side": 1,
+      "message": "What is the empty partition case?",
+      "parentUuid": "8a894596_e8abd5ad",
+      "range": {
+        "startLine": 551,
+        "startChar": 16,
+        "endLine": 551,
+        "endChar": 100
+      },
+      "revId": "f0741ff5698d445f1c1e99c7a7178e8c8af8bd9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

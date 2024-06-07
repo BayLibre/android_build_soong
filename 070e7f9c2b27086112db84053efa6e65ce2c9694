@@ -334,6 +334,30 @@
       },
       "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44eac2dc_7f54516b",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-07T15:40:06Z",
+      "side": 1,
+      "message": "Calling PackagingFile for builtInstalledForApex might not work because the java_sdk_library for an APEX is never installed; java_sdk_library is \"included\" in an APEX, and the APEX is what gets installed. dexpreopt files for those libs are installed by defining Make modules [1] and adding them as required modules [2] from the containing APEX.\n\nIdeally (i.e. not in this CL), I think we should move away from creating the Make module. The APEX could add the dexpreopt files as its install dependencies.\n\n[1] https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/dexpreopt.go;drc\u003dd5137445c0d4067406cb3e38aade5507ff2fcd16;l\u003d79\n\n[2] https://cs.android.com/android/platform/superproject/main/+/main:build/soong/apex/apex.go;drc\u003dd5137445c0d4067406cb3e38aade5507ff2fcd16;l\u003d1699",
+      "parentUuid": "fe5fb5d4_38bbf605",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 3
+      },
+      "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
