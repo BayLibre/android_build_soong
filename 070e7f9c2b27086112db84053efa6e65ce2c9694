@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d1eeeb2_18dcea71",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-07T08:01:30Z",
+      "side": 1,
+      "message": "Why don\u0027t you explicitly identify the partition?\n\n```\nelems :\u003d strings.Split(install.To, \"/\")\npartition :\u003d elems[1]\ninstallDir :\u003d filepath.Join(elems[2:len(elems)-1]...)\ninstallBase :\u003d elems[len(elems)-1]\ninstallPath :\u003d android.PathForModuleInPartitionInstall(ctx, partition, installDir)\n```",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 3
+      },
+      "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
