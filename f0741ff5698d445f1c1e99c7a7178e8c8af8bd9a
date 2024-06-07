@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60057603_c976f027",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-07T12:52:39Z",
+      "side": 1,
+      "message": "`strings.TrimPrefix(filepath.Dir(install.To), \"/\" + partition + \"/\")`?",
+      "range": {
+        "startLine": 551,
+        "startChar": 16,
+        "endLine": 551,
+        "endChar": 100
+      },
+      "revId": "f0741ff5698d445f1c1e99c7a7178e8c8af8bd9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
