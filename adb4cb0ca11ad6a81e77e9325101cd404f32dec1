@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d099b4_0afaf7a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2024-06-07T03:30:04Z",
+      "side": 1,
+      "message": "The following build hung in the most recent presubmit run but succeeded in the run previous: https://android-build.corp.google.com/build_explorer/build_details/P75851858/aosp_panther_hwasan-trunk_staging-userdebug/",
+      "revId": "adb4cb0ca11ad6a81e77e9325101cd404f32dec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
