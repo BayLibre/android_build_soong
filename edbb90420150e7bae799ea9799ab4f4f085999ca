@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "817f070f_e283d5f9",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-07T07:21:15Z",
+      "side": 1,
+      "message": "`installPath` for `ctx.InstallFile` has empty partition field because of line#553: `installPath :\u003d android.PathForModuleInPartitionInstall(ctx, \"\", installDir)`. That cannot be used for packaging file which requires the partition information.\nSo I had to call the `packageFile` again with the partition information.\n\nInstead calling the duplicated `packageFile`, I updated the `installPath` definition.",
+      "parentUuid": "7e31e15c_b6245938",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 28
+      },
+      "revId": "edbb90420150e7bae799ea9799ab4f4f085999ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df2806b8_0f4a642f",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 2
