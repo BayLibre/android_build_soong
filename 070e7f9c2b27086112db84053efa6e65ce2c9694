@@ -262,6 +262,30 @@
       },
       "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74b7303b_d1bcf60e",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-07T13:35:17Z",
+      "side": 1,
+      "message": "Re Jiakai,\nI am building the \"aosp_cf_x86_64_phone\" target with \"userdebug\" build.\nI said they are not installed because I could not find the files in `$PRODUCT_OUT/system/framework/oat/x86(_64)/` directory after building.",
+      "parentUuid": "f070a9ca_38d8ced9",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 3
+      },
+      "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
