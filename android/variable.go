@@ -446,7 +446,6 @@ type ProductVariables struct {
 
 	Shipping_api_level *string `json:",omitempty"`
 
-	BuildBrokenPluginValidation         []string `json:",omitempty"`
 	BuildBrokenClangAsFlags             bool     `json:",omitempty"`
 	BuildBrokenClangCFlags              bool     `json:",omitempty"`
 	BuildBrokenClangProperty            bool     `json:",omitempty"`
