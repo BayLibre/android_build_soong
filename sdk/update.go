@@ -480,6 +480,12 @@ be unnecessary as every module in the sdk already has its own licenses property.
 		// Transform the module module to make it suitable for use in the snapshot.
 		module = transformModule(module, snapshotTransformer)
 		module = transformModule(module, emptyClasspathContentsTransformation{})
+
+		targetApiLevel, err := android.ApiLevelFromUser(ctx, s.targetBuildRelease(ctx).name)
+		if err == nil && targetApiLevel.LessThan(android.ApiLevelVanillaIceCream) {
+			module = transformModule(module, replaceExportablePropertiesTransformer{})
+		}
+
 		if module != nil {
 			bpFile.AddModule(module)
 		}
@@ -802,6 +808,50 @@ func (t pruneEmptySetTransformer) transformPropertySetAfterContents(_ string, pr
 	} else {
 		return propertySet, tag
 	}
+}
+
+type replaceExportablePropertiesTransformer struct {
+	identityTransformation
+}
+
+var _ bpTransformer = (*replaceExportablePropertiesTransformer)(nil)
+
+func handleExportableProperties(value interface{}) interface{} {
+	val := reflect.ValueOf(value)
+	switch val.Kind() {
+	case reflect.String:
+		return java.AllApiScopes.ConvertStubsLibraryExportableToEverything(value.(string))
+	case reflect.Ptr:
+		if _, ok := value.(*bpPropertySet); ok {
+			ret := handleExportableProperties(value.(*bpPropertySet).properties)
+			fmt.Printf("%s -> %s\n", value, ret)
+			return ret
+		}
+	case reflect.Slice:
+		var ret []interface{}
+		for _, v := range value.([]interface{}) {
+			ret = append(ret, handleExportableProperties(v))
+		}
+		fmt.Printf("%s -> %s\n", value, ret)
+		return ret
+	case reflect.Map:
+		ret := make(map[interface{}]interface{})
+		for k, v := range value.(map[interface{}]interface{}) {
+			ret[k] = handleExportableProperties(v)
+		}
+		fmt.Printf("%s -> %s\n", value, ret)
+		return ret
+	}
+	return value
+}
+
+func (t replaceExportablePropertiesTransformer) transformPropertySetAfterContents(name string, propertySet *bpPropertySet, tag android.BpPropertyTag) (*bpPropertySet, android.BpPropertyTag) {
+	if name == "name" {
+		return propertySet, tag
+	}
+	// fmt.Println(handleExportableProperties(propertySet.properties))
+	// propertySet.properties = handleExportableProperties(propertySet.properties).(map[string]interface{})
+	return propertySet, tag
 }
 
 func generateBpContents(bpFile *bpFile) string {
