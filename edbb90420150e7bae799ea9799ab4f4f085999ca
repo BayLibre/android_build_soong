@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e31e15c_b6245938",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-07T04:12:54Z",
+      "side": 1,
+      "message": "I don\u0027t understand that. The filesystem module can handle files installed to `out/target/product/...`.",
+      "parentUuid": "d5785c73_aeb08f59",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 28
+      },
+      "revId": "edbb90420150e7bae799ea9799ab4f4f085999ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df2806b8_0f4a642f",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 2
