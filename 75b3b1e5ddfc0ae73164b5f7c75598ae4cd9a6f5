@@ -124,6 +124,24 @@
       "parentUuid": "c6b2841f_9116f057",
       "revId": "75b3b1e5ddfc0ae73164b5f7c75598ae4cd9a6f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67b828a_91f6fdbc",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-06-10T22:18:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure if I follow your comment. Is it a remark for aosp/3107166, AI for me or AI for you?",
+      "parentUuid": "5e9077c3_f3178b3a",
+      "revId": "75b3b1e5ddfc0ae73164b5f7c75598ae4cd9a6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
