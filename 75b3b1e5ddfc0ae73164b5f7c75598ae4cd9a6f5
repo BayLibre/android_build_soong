@@ -106,6 +106,24 @@
       "parentUuid": "8823c971_1bd5165e",
       "revId": "75b3b1e5ddfc0ae73164b5f7c75598ae4cd9a6f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e9077c3_f3178b3a",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-10T22:04:00Z",
+      "side": 1,
+      "message": "This is going to make more work for me to move towards variants-on-demand.  We currently have `android.InitAndroidMultiTargetsArchModule` to create a module that gets a single variant per OS, and then can get the list of architectures for that OS vis `ctx.MultiTargets()`.  I think we need to expand that to allow a single variant for all OSes.",
+      "parentUuid": "c6b2841f_9116f057",
+      "revId": "75b3b1e5ddfc0ae73164b5f7c75598ae4cd9a6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
