@@ -94,6 +94,30 @@
       },
       "revId": "f0741ff5698d445f1c1e99c7a7178e8c8af8bd9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f03b5c5_1ee80df9",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-10T01:20:42Z",
+      "side": 1,
+      "message": "For example, if `partition \u003d\u003d \"\"`, the line will trim `\"//\"`. This will not remove the `\"/\"` prefix from the paths.\nAlso, for the system_other files `strings.TrimPrefix(\"/system_other/system/app/...\", \"/system/\")` does not work.\nWe still must trim `\"/\"` for all paths.",
+      "parentUuid": "5a75f940_36fa4f9d",
+      "range": {
+        "startLine": 551,
+        "startChar": 16,
+        "endLine": 551,
+        "endChar": 100
+      },
+      "revId": "f0741ff5698d445f1c1e99c7a7178e8c8af8bd9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
