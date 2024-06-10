@@ -358,6 +358,30 @@
       },
       "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95444e41_aee96ce1",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-10T00:56:31Z",
+      "side": 1,
+      "message": "Thank you, Jiyong for the analysis.\n\nRe: Jiakai,\nSorry for the confusion, this CL does not change the installed files in `$PRODUCT_OUT/system/framework/oat/x86(_64)/`. With this CL, I still can find the `apex@..` files in the `$PRODUCT_OUT/system/framework/oat/x86(_64)/` directory.\nBut as Jiyong commented, it does not cover the apex files in soong defined system image which is the image we are working on now.",
+      "parentUuid": "44eac2dc_7f54516b",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 3
+      },
+      "revId": "070e7f9c2b27086112db84053efa6e65ce2c9694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
