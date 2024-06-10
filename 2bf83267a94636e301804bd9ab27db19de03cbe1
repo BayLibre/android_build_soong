@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2bf669f6_9b59492c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-10T18:47:07Z",
+      "side": 1,
+      "message": "This is intentionally unsupported in order to prevent it\u0027s use to put arbitrary files in directories like \"/system/lib64\".",
+      "revId": "2bf83267a94636e301804bd9ab27db19de03cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "088ec539_8ad31b34",
         "filename": "etc/prebuilt_etc.go",
         "patchSetId": 2
