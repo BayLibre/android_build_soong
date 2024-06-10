@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f0ad6a_8971dc94",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1603,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-10T17:31:27Z",
+      "side": 1,
+      "message": "Please use `proptools.NewConfigurable(nil, nil)` instead of a default-constructed Configurable struct.",
+      "revId": "9c0953af19b494ab308c8fa6c23c4f68990f5883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
