@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "219c4071_c9510917",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-10T10:12:16Z",
+      "side": 1,
+      "message": "The presubmit shows Bloat Buster warnings for wear apps that install odex files in `system/system_other`. Were they missing before this CL for some reason? What is the rule to add the odex files in `system/system_other`?",
+      "revId": "d9d00e39df67015b0e2da78da015202a93495f1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
