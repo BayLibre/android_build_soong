@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8dda8e4_4dfee7b5",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-10T16:40:20Z",
+      "side": 1,
+      "message": "Can we add some docs describing the context that requires us to hide these three types?",
+      "range": {
+        "startLine": 1086,
+        "startChar": 1,
+        "endLine": 1088,
+        "endChar": 12
+      },
+      "revId": "054202db4651a9b72e7c847272dfec8b4b5f1762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82310345_8a0feeac",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-10T16:40:20Z",
+      "side": 1,
+      "message": "nit: replace with `cmd.FlagForEachArg(\"--hide \", HIDDEN_DOCUMENTATION_ISSUES)`",
+      "range": {
+        "startLine": 1096,
+        "startChar": 1,
+        "endLine": 1098,
+        "endChar": 2
+      },
+      "revId": "054202db4651a9b72e7c847272dfec8b4b5f1762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
