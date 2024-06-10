@@ -1054,8 +1054,7 @@ func (d *Droidstubs) everythingOptionalCmd(ctx android.ModuleContext, cmd *andro
 	}
 
 	if !treatDocumentationIssuesAsErrors {
-		// Treat documentation issues as warnings, but error when new.
-		cmd.Flag("--error-when-new-category").Flag("Documentation")
+		treatDocumentationIssuesAsWarningErrorWhenNew(cmd)
 	}
 
 	// Add "check released" options. (Detect incompatible API changes from the last public release)
@@ -1080,6 +1079,22 @@ func (d *Droidstubs) everythingOptionalCmd(ctx android.ModuleContext, cmd *andro
 		// generate the output signature files (both api and removed).
 		currentApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Api_file))
 		cmd.FlagWithInput("--use-same-format-as ", currentApiFile)
+	}
+}
+
+var HIDDEN_DOCUMENTATION_ISSUES = []string{
+	"Deprecated",
+	"IntDef",
+	"Nullable",
+}
+
+func treatDocumentationIssuesAsWarningErrorWhenNew(cmd *android.RuleBuilderCommand) {
+	// Treat documentation issues as warnings, but error when new.
+	cmd.Flag("--error-when-new-category").Flag("Documentation")
+
+	// Hide some documentation issues that generated a lot of noise for little benefit.
+	for _, issue := range HIDDEN_DOCUMENTATION_ISSUES {
+		cmd.Flag("--hide").Flag(issue)
 	}
 }
 
@@ -1154,7 +1169,7 @@ func (d *Droidstubs) optionalStubCmd(ctx android.ModuleContext, params stubsComm
 	}
 
 	// Treat documentation issues as warnings, but error when new.
-	cmd.Flag("--error-when-new-category").Flag("Documentation")
+	treatDocumentationIssuesAsWarningErrorWhenNew(cmd)
 
 	if params.stubConfig.generateStubs {
 		rule.Command().
