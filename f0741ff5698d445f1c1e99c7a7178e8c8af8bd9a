@@ -142,6 +142,30 @@
       },
       "revId": "f0741ff5698d445f1c1e99c7a7178e8c8af8bd9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04ea00b9_029d47b0",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-10T04:38:22Z",
+      "side": 1,
+      "message": "The partition field is empty for `.odex` files when `isApexSystemServerJar \u003d\u003d true`. However, `.vdex` files for the Apex has set the partition correctly.",
+      "parentUuid": "7ed9a95a_d584c414",
+      "range": {
+        "startLine": 551,
+        "startChar": 16,
+        "endLine": 551,
+        "endChar": 100
+      },
+      "revId": "f0741ff5698d445f1c1e99c7a7178e8c8af8bd9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
