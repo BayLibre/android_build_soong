@@ -166,6 +166,30 @@
       },
       "revId": "f0741ff5698d445f1c1e99c7a7178e8c8af8bd9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93ec8e4a_a09cc56a",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-10T05:46:49Z",
+      "side": 1,
+      "message": "I filed b/346222693 for that.",
+      "parentUuid": "04ea00b9_029d47b0",
+      "range": {
+        "startLine": 551,
+        "startChar": 16,
+        "endLine": 551,
+        "endChar": 100
+      },
+      "revId": "f0741ff5698d445f1c1e99c7a7178e8c8af8bd9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
