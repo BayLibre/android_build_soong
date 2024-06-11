@@ -32,12 +32,8 @@ func (p *productConfigModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	}
 	p.outputFilePath = PathForModuleOut(ctx, p.Name()+".json").OutputPath
 
-	targetProduct := ctx.Config().DeviceProduct()
-	if targetProduct != "" {
-		targetProduct += "."
-	}
-	soongVariablesPath := PathForOutput(ctx, "soong."+targetProduct+"variables")
-	extraVariablesPath := PathForOutput(ctx, "soong."+targetProduct+"extra.variables")
+	soongVariablesPath := PathForOutput(ctx, "soong."+ctx.Config().DeviceProduct()+".variables")
+	extraVariablesPath := PathForOutput(ctx, "soong."+ctx.Config().DeviceProduct()+".extra.variables")
 
 	rule := NewRuleBuilder(pctx, ctx)
 	rule.Command().BuiltTool("merge_json").
