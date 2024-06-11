@@ -16,12 +16,19 @@ package aconfig
 
 import (
 	"fmt"
+	"path/filepath"
+	"slices"
 	"strings"
 
 	"android/soong/android"
 
 	"github.com/google/blueprint"
 )
+
+type AconfigReleaseConfigValue struct {
+	ReleaseConfig string
+	Values        []string `blueprint:"mutated"`
+}
 
 type DeclarationsModule struct {
 	android.ModuleBase
@@ -35,8 +42,10 @@ type DeclarationsModule struct {
 		// Release config flag package
 		Package string
 
-		// Values from TARGET_RELEASE / RELEASE_ACONFIG_VALUE_SETS
-		Values []string `blueprint:"mutated"`
+		// Values for release configs / RELEASE_ACONFIG_VALUE_SETS
+		// The current release config is `ReleaseConfig: ""`, others
+		// are from RELEASE_ACONFIG_EXTRA_RELEASE_CONFIGS.
+		ReleaseConfigValues []AconfigReleaseConfigValue
 
 		// Container(system/vendor/apex) that this module belongs to
 		Container string
@@ -60,6 +69,10 @@ func DeclarationsFactory() android.Module {
 
 type implicitValuesTagType struct {
 	blueprint.BaseDependencyTag
+
+	// The release config name for these values.
+	// Empty string for the actual current release config.
+	ReleaseConfig string
 }
 
 var implicitValuesTag = implicitValuesTagType{}
@@ -83,6 +96,11 @@ func (module *DeclarationsModule) DepsMutator(ctx android.BottomUpMutatorContext
 	valuesFromConfig := ctx.Config().ReleaseAconfigValueSets()
 	if len(valuesFromConfig) > 0 {
 		ctx.AddDependency(ctx.Module(), implicitValuesTag, valuesFromConfig...)
+	}
+	for rcName, valueSets := range ctx.Config().ReleaseAconfigExtraReleaseConfigsValueSets() {
+		if len(valueSets) > 0 {
+			ctx.AddDependency(ctx.Module(), implicitValuesTagType{ReleaseConfig: rcName}, valueSets...)
+		}
 	}
 }
 
@@ -116,60 +134,101 @@ func optionalVariable(prefix string, value string) string {
 	return sb.String()
 }
 
+// Assemble the actual filename.
+// If `rcName` is not empty, then insert "-{rcName}" into the path before the
+// file extension.
+func assembleFileName(rcName, path string) string {
+	if rcName == "" {
+		return path
+	}
+	dir, file := filepath.Split(path)
+	rcName = "-" + rcName
+	ext := filepath.Ext(file)
+	base := file[:len(file)-len(ext)]
+	return dir + base + rcName + ext
+}
+
 func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	// Get the values that came from the global RELEASE_ACONFIG_VALUE_SETS flag
-	valuesFiles := make([]android.Path, 0)
-	ctx.VisitDirectDeps(func(dep android.Module) {
-		if depData, ok := android.OtherModuleProvider(ctx, dep, valueSetProviderKey); ok {
-			paths, ok := depData.AvailablePackages[module.properties.Package]
-			if ok {
-				valuesFiles = append(valuesFiles, paths...)
-				for _, path := range paths {
-					module.properties.Values = append(module.properties.Values, path.String())
+	// What release configs are we processing?
+	extraAconfigReleaseConfigs := ctx.Config().ReleaseAconfigExtraReleaseConfigs()
+	tagMap := map[string]implicitValuesTagType{
+		"": implicitValuesTag,
+	}
+	configs := []string{""}
+	for _, k := range extraAconfigReleaseConfigs {
+		tagMap[k] = implicitValuesTagType{ReleaseConfig: k}
+		configs = append(configs, k)
+	}
+	slices.Sort(configs)
+
+	values := make(map[string][]string)
+	providerData := android.AconfigReleaseDeclarationsProviderData{}
+	for _, config := range configs {
+		// Get the values that came from the global RELEASE_ACONFIG_VALUE_SETS flag
+		valuesFiles := make(map[string][]android.Path, 0)
+		ctx.VisitDirectDepsWithTag(tagMap[config], func(dep android.Module) {
+			if depData, ok := android.OtherModuleProvider(ctx, dep, valueSetProviderKey); ok {
+				paths, ok := depData.AvailablePackages[module.properties.Package]
+				if ok {
+					valuesFiles[config] = append(valuesFiles[config], paths...)
+					for _, path := range paths {
+						values[config] = append(values[config], path.String())
+					}
 				}
 			}
+		})
+		module.properties.ReleaseConfigValues = append(module.properties.ReleaseConfigValues, AconfigReleaseConfigValue{
+			ReleaseConfig: config,
+			Values:        values[config],
+		})
+
+		// Intermediate format
+		declarationFiles := android.PathsForModuleSrc(ctx, module.properties.Srcs)
+		intermediateCacheFilePath := android.PathForModuleOut(ctx, assembleFileName(config, "intermediate.pb"))
+		var defaultPermission string
+		defaultPermission = ctx.Config().ReleaseAconfigFlagDefaultPermission()
+		if config != "" {
+			if confPerm, ok := ctx.Config().GetBuildFlag("RELEASE_ACONFIG_FLAG_DEFAULT_PERMISSION_" + config); ok {
+				defaultPermission = confPerm
+			}
 		}
-	})
+		inputFiles := make([]android.Path, len(declarationFiles))
+		copy(inputFiles, declarationFiles)
+		inputFiles = append(inputFiles, valuesFiles[config]...)
+		args := map[string]string{
+			"release_version":    ctx.Config().ReleaseVersion(),
+			"package":            module.properties.Package,
+			"declarations":       android.JoinPathsWithPrefix(declarationFiles, "--declarations "),
+			"values":             joinAndPrefix(" --values ", values[config]),
+			"default-permission": optionalVariable(" --default-permission ", defaultPermission),
+		}
+		if len(module.properties.Container) > 0 {
+			args["container"] = "--container " + module.properties.Container
+		}
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        aconfigRule,
+			Output:      intermediateCacheFilePath,
+			Inputs:      inputFiles,
+			Description: "aconfig_declarations",
+			Args:        args,
+		})
 
-	// Intermediate format
-	declarationFiles := android.PathsForModuleSrc(ctx, module.properties.Srcs)
-	intermediateCacheFilePath := android.PathForModuleOut(ctx, "intermediate.pb")
-	defaultPermission := ctx.Config().ReleaseAconfigFlagDefaultPermission()
-	inputFiles := make([]android.Path, len(declarationFiles))
-	copy(inputFiles, declarationFiles)
-	inputFiles = append(inputFiles, valuesFiles...)
-	args := map[string]string{
-		"release_version":    ctx.Config().ReleaseVersion(),
-		"package":            module.properties.Package,
-		"declarations":       android.JoinPathsWithPrefix(declarationFiles, "--declarations "),
-		"values":             joinAndPrefix(" --values ", module.properties.Values),
-		"default-permission": optionalVariable(" --default-permission ", defaultPermission),
+		intermediateDumpFilePath := android.PathForModuleOut(ctx, assembleFileName(config, "intermediate.txt"))
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        aconfigTextRule,
+			Output:      intermediateDumpFilePath,
+			Inputs:      android.Paths{intermediateCacheFilePath},
+			Description: "aconfig_text",
+		})
+
+		providerData[config] = android.AconfigDeclarationsProviderData{
+			Package:                     module.properties.Package,
+			Container:                   module.properties.Container,
+			Exportable:                  module.properties.Exportable,
+			IntermediateCacheOutputPath: intermediateCacheFilePath,
+			IntermediateDumpOutputPath:  intermediateDumpFilePath,
+		}
 	}
-	if len(module.properties.Container) > 0 {
-		args["container"] = "--container " + module.properties.Container
-	}
-	ctx.Build(pctx, android.BuildParams{
-		Rule:        aconfigRule,
-		Output:      intermediateCacheFilePath,
-		Inputs:      inputFiles,
-		Description: "aconfig_declarations",
-		Args:        args,
-	})
-
-	intermediateDumpFilePath := android.PathForModuleOut(ctx, "intermediate.txt")
-	ctx.Build(pctx, android.BuildParams{
-		Rule:        aconfigTextRule,
-		Output:      intermediateDumpFilePath,
-		Inputs:      android.Paths{intermediateCacheFilePath},
-		Description: "aconfig_text",
-	})
-
-	android.SetProvider(ctx, android.AconfigDeclarationsProviderKey, android.AconfigDeclarationsProviderData{
-		Package:                     module.properties.Package,
-		Container:                   module.properties.Container,
-		Exportable:                  module.properties.Exportable,
-		IntermediateCacheOutputPath: intermediateCacheFilePath,
-		IntermediateDumpOutputPath:  intermediateDumpFilePath,
-	})
-
+	android.SetProvider(ctx, android.AconfigDeclarationsProviderKey, providerData[""])
+	android.SetProvider(ctx, android.AconfigReleaseDeclarationsProviderKey, providerData)
 }
