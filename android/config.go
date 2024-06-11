@@ -82,10 +82,11 @@ type SoongBuildMode int
 
 type CmdArgs struct {
 	bootstrap.Args
-	RunGoTests     bool
-	OutDir         string
-	SoongOutDir    string
-	SoongVariables string
+	RunGoTests          bool
+	OutDir              string
+	SoongOutDir         string
+	SoongVariables      string
+	SoongExtraVariables string
 
 	BazelQueryViewDir string
 	ModuleGraphFile   string
@@ -259,6 +260,8 @@ type config struct {
 	TestProductVariables *ProductVariables
 
 	ProductVariablesFileName string
+
+	extraVariables map[string]interface{}
 
 	// BuildOS stores the OsType for the OS that the build is running on.
 	BuildOS OsType
@@ -681,6 +684,19 @@ func NewConfig(cmdArgs CmdArgs, availableEnv map[string]string) (Config, error) 
 	}
 
 	config.productVariables.Build_from_text_stub = boolPtr(config.BuildFromTextStub())
+
+	extraVariablesFile := absolutePath(cmdArgs.SoongExtraVariables)
+	extraVariablesFileReader, err := os.Open(extraVariablesFile)
+	if err != nil {
+		return Config{}, fmt.Errorf("config file: could not open %s: %s", extraVariablesFile, err.Error())
+	}
+	defer extraVariablesFileReader.Close()
+
+	jsonDecoder := json.NewDecoder(extraVariablesFileReader)
+	err = jsonDecoder.Decode(&config.extraVariables)
+	if err != nil {
+		return Config{}, fmt.Errorf("config file: %s did not parse correctly: %s", extraVariablesFile, err.Error())
+	}
 
 	return Config{config}, err
 }

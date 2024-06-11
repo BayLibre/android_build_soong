@@ -303,7 +303,10 @@ func bootstrapBlueprint(ctx Context, config Config) {
 	// Clean up some files for incremental builds across incompatible changes.
 	bootstrapEpochCleanup(ctx, config)
 
-	baseArgs := []string{"--soong_variables", config.SoongVarsFile()}
+	baseArgs := []string{
+		"--soong_variables", config.SoongVarsFile(),
+		"--soong_extra_variables", config.SoongExtraVarsFile(),
+	}
 
 	mainSoongBuildExtraArgs := append(baseArgs, "-o", config.SoongNinjaFile())
 	if config.EmptyNinjaFile() {
@@ -694,6 +697,7 @@ func runSoong(ctx Context, config Config) {
 		}
 	}
 	distFile(ctx, config, config.SoongVarsFile(), "soong")
+	distFile(ctx, config, config.SoongExtraVarsFile(), "soong")
 
 	if !config.SkipKati() {
 		distGzipFile(ctx, config, config.SoongAndroidMk(), "soong")
