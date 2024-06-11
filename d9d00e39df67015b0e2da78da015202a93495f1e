@@ -16,6 +16,29 @@
       "message": "The presubmit shows Bloat Buster warnings for wear apps that install odex files in `system/system_other`. Were they missing before this CL for some reason? What is the rule to add the odex files in `system/system_other`?",
       "revId": "d9d00e39df67015b0e2da78da015202a93495f1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc396914_6c1be921",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-11T01:21:12Z",
+      "side": 1,
+      "message": "The \"Bloat Buster\" error was caused by the case below:\n- `partition \u003d\u003d \"system\"`\n- `installDir \u003d\u003d \"/system_other/system/app/\u003capp_name\u003e/oat/x86/\u003capp_name\u003e.vdex`\n\nThere are cases that `partition !\u003d partition_of(installDir)`. So we may not blindly set `partition` to the `installPath` for the `installDir`.\n\nLet me address this in the new patch set.",
+      "range": {
+        "startLine": 554,
+        "startChar": 62,
+        "endLine": 554,
+        "endChar": 71
+      },
+      "revId": "d9d00e39df67015b0e2da78da015202a93495f1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
