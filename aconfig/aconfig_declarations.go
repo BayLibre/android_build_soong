@@ -25,6 +25,7 @@ import (
 type DeclarationsModule struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
+	blueprint.IncrementalModule
 
 	// Properties for "aconfig_declarations"
 	properties struct {
@@ -157,3 +158,17 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 		IntermediateDumpOutputPath:  intermediateDumpFilePath,
 	})
 }
+
+func (module *DeclarationsModule) BuildActionProviderKeys() []blueprint.AnyProviderKey {
+	return []blueprint.AnyProviderKey{android.AconfigDeclarationsProviderKey}
+}
+
+func (module *DeclarationsModule) PackageContextPath() string {
+	return pkgPath
+}
+
+func (module *DeclarationsModule) CachedRules() []blueprint.Rule {
+	return []blueprint.Rule{aconfigRule, aconfigTextRule}
+}
+
+var _ blueprint.Incremental = &DeclarationsModule{}
