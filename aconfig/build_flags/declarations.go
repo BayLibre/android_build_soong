@@ -15,7 +15,6 @@
 package build_flags
 
 import (
-	"fmt"
 	"strings"
 
 	"android/soong/android"
@@ -51,18 +50,6 @@ func DeclarationsFactory() android.Module {
 	module.AddProperties(&module.properties)
 
 	return module
-}
-
-func (module *DeclarationsModule) OutputFiles(tag string) (android.Paths, error) {
-	switch tag {
-	case "":
-		// The default output of this module is the intermediates format, which is
-		// not installable and in a private format that no other rules can handle
-		// correctly.
-		return []android.Path{module.intermediatePath}, nil
-	default:
-		return nil, fmt.Errorf("unsupported build_flags_declarations module reference tag %q", tag)
-	}
 }
 
 func joinAndPrefix(prefix string, values []string) string {
@@ -115,4 +102,9 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 		IntermediateCacheOutputPath: intermediateCacheFilePath,
 		IntermediateDumpOutputPath:  intermediateDumpFilePath,
 	})
+
+	// The default output of this module is the intermediates format, which is
+	// not installable and in a private format that no other rules can handle
+	// correctly.
+	ctx.SetOutputFiles([]android.Path{module.intermediatePath}, "")
 }

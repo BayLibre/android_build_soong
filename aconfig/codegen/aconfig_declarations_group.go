@@ -15,7 +15,6 @@
 package codegen
 
 import (
-	"fmt"
 	"maps"
 
 	"android/soong/android"
@@ -115,19 +114,13 @@ func (adg *AconfigDeclarationsGroup) GenerateAndroidBuildActions(ctx android.Mod
 		Srcjars:                      adg.javaSrcjars,
 		ModeInfos:                    adg.modeInfos,
 	})
+
+	adg.setOutputFiles(ctx)
 }
 
-var _ android.OutputFileProducer = (*AconfigDeclarationsGroup)(nil)
-
-func (adg *AconfigDeclarationsGroup) OutputFiles(tag string) (android.Paths, error) {
-	switch tag {
-	case "":
-		return adg.intermediateCacheOutputPaths, nil
-	case ".srcjars":
-		return adg.javaSrcjars, nil
-	default:
-		return nil, fmt.Errorf("unsupported module reference tag %s", tag)
-	}
+func (adg *AconfigDeclarationsGroup) setOutputFiles(ctx android.ModuleContext) {
+	ctx.SetOutputFiles(adg.intermediateCacheOutputPaths, "")
+	ctx.SetOutputFiles(adg.javaSrcjars, ".srcjars")
 }
 
 func (adg *AconfigDeclarationsGroup) Srcjars() android.Paths {
