@@ -485,7 +485,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		coverageFiles = make(android.Paths, 0, len(srcFiles))
 	}
 	var kytheFiles android.Paths
-	if flags.emitXrefs {
+	if flags.emitXrefs && ctx.Module() == ctx.PrimaryModule() {
 		kytheFiles = make(android.Paths, 0, len(srcFiles))
 	}
 
