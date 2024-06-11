@@ -3481,10 +3481,6 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 func ShouldUseStubForApex(ctx android.ModuleContext, dep android.Module) bool {
 	depName := ctx.OtherModuleName(dep)
-	thisModule, ok := ctx.Module().(android.ApexModule)
-	if !ok {
-		panic(fmt.Errorf("Not an APEX module: %q", ctx.ModuleName()))
-	}
 
 	inVendorOrProduct := false
 	bootstrap := false
@@ -3535,21 +3531,6 @@ func ShouldUseStubForApex(ctx android.ModuleContext, dep android.Module) bool {
 					useStubs = false
 					break
 				}
-			}
-		}
-		if useStubs {
-			// Yet another exception: If this module and the dependency are
-			// available to the same APEXes then skip stubs between their
-			// platform variants. This complements the test_for case above,
-			// which avoids the stubs on a direct APEX library dependency, by
-			// avoiding stubs for indirect test dependencies as well.
-			//
-			// TODO(b/183882457): This doesn't work if the two libraries have
-			// only partially overlapping apex_available. For that test_for
-			// modules would need to be split into APEX variants and resolved
-			// separately for each APEX they have access to.
-			if !isApexImportedApiLibrary && android.AvailableToSameApexes(thisModule, dep.(android.ApexModule)) {
-				useStubs = false
 			}
 		}
 	} else {

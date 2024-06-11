@@ -1582,17 +1582,7 @@ func TestStubsForLibraryInMultipleApexes(t *testing.T) {
 		}
 	}
 
-	linkAgainstFoo := []string{"libBarA1"}
-	linkAgainstFooStubs := []string{"libBar", "libA1", "libBaz", "libQux", "libAnyApex"}
-
-	libFooPath := "libFoo/android_arm64_armv8-a_shared/libFoo.so"
-	for _, lib := range linkAgainstFoo {
-		libLinkRule := ctx.ModuleForTests(lib, "android_arm64_armv8-a_shared").Rule("ld")
-		libFlags := libLinkRule.Args["libFlags"]
-		if !strings.Contains(libFlags, libFooPath) {
-			t.Errorf("%q: %q is not found in %q", lib, libFooPath, libFlags)
-		}
-	}
+	linkAgainstFooStubs := []string{"libBarA1", "libBar", "libA1", "libBaz", "libQux", "libAnyApex"}
 
 	libFooStubPath := "libFoo/android_arm64_armv8-a_shared_current/libFoo.so"
 	for _, lib := range linkAgainstFooStubs {

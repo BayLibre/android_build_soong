@@ -8676,10 +8676,6 @@ func TestIndirectTestFor(t *testing.T) {
 	// The platform variant of mytestlib links to the platform variant of the
 	// internal myprivlib.
 	ensureLinkedLibIs("mytestlib", "android_arm64_armv8-a_shared", "out/soong/.intermediates/myprivlib/", "android_arm64_armv8-a_shared/myprivlib.so")
-
-	// The platform variant of myprivlib links to the platform variant of mylib
-	// and bypasses its stubs.
-	ensureLinkedLibIs("myprivlib", "android_arm64_armv8-a_shared", "out/soong/.intermediates/mylib/", "android_arm64_armv8-a_shared/mylib.so")
 }
 
 func TestTestForForLibInOtherApex(t *testing.T) {
