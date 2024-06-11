@@ -2071,6 +2071,10 @@ func (c *config) GetApiLibraries() map[string]struct{} {
 	return c.apiLibraries
 }
 
+func (c *config) GetAvailableEnv() map[string]string {
+	return c.env
+}
+
 func (c *deviceConfig) CheckVendorSeappViolations() bool {
 	return Bool(c.config.productVariables.CheckVendorSeappViolations)
 }

@@ -1309,12 +1309,12 @@ type OutputPath struct {
 	// The soong build directory, i.e. Config.SoongOutDir()
 	soongOutDir string
 
-	fullPath string
+	FullPath string
 }
 
 func (p OutputPath) withRel(rel string) OutputPath {
 	p.basePath = p.basePath.withRel(rel)
-	p.fullPath = filepath.Join(p.fullPath, rel)
+	p.FullPath = filepath.Join(p.FullPath, rel)
 	return p
 }
 
@@ -1332,7 +1332,7 @@ func (p OutputPath) RelativeToTop() Path {
 }
 
 func (p OutputPath) outputPathRelativeToTop() OutputPath {
-	p.fullPath = StringPathRelativeToTop(p.soongOutDir, p.fullPath)
+	p.FullPath = StringPathRelativeToTop(p.soongOutDir, p.FullPath)
 	p.soongOutDir = OutSoongDir
 	return p
 }
@@ -1391,7 +1391,7 @@ func PathsForOutput(ctx PathContext, paths []string) WritablePaths {
 func (p OutputPath) writablePath() {}
 
 func (p OutputPath) String() string {
-	return p.fullPath
+	return p.FullPath
 }
 
 // Join creates a new OutputPath with paths... joined with the current path. The
