@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "251d71ee_b468eec5",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-11T23:47:00Z",
+      "side": 1,
+      "message": "You can use `s.properties.ImageVariation \u003d variation`, you don\u0027t need the type assert",
+      "revId": "25551a2bcf78fb23bcbaf525aa766cffcbabcc5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "132a6d7e_94e5f535",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-11T23:47:00Z",
+      "side": 1,
+      "message": "This seems odd that this would have to be handled explicitly in the module type, since Soong already knows which image variation this is.  Is this what other module types do?",
+      "revId": "25551a2bcf78fb23bcbaf525aa766cffcbabcc5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
