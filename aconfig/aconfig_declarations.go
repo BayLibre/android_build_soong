@@ -26,6 +26,7 @@ import (
 type DeclarationsModule struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
+	blueprint.IncrementalModule
 
 	// Properties for "aconfig_declarations"
 	properties struct {
@@ -173,3 +174,9 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 	})
 
 }
+
+func (module *DeclarationsModule) BuildActionProviderKeys() []blueprint.AnyProviderKey {
+	return []blueprint.AnyProviderKey{android.AconfigDeclarationsProviderKey}
+}
+
+var _ blueprint.Incremental = &DeclarationsModule{}
