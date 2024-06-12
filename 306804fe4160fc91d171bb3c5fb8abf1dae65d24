@@ -87,6 +87,24 @@
       "message": "Bypassing due to preexisting failure b/346789311",
       "revId": "306804fe4160fc91d171bb3c5fb8abf1dae65d24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce455a6_85938d0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-12T18:25:24Z",
+      "side": 1,
+      "message": "I have added a unit test in https://r.android.com/3129153",
+      "parentUuid": "c9dafdac_a214c8d9",
+      "revId": "306804fe4160fc91d171bb3c5fb8abf1dae65d24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
