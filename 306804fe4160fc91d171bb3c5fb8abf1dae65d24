@@ -70,6 +70,23 @@
       "parentUuid": "b7231e34_ba974f7b",
       "revId": "306804fe4160fc91d171bb3c5fb8abf1dae65d24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66ba84e9_6639e737",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-12T18:21:26Z",
+      "side": 1,
+      "message": "Bypassing due to preexisting failure b/346789311",
+      "revId": "306804fe4160fc91d171bb3c5fb8abf1dae65d24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
