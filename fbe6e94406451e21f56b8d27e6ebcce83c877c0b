@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c686f351_bce352cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-06-12T06:07:43Z",
+      "side": 1,
+      "message": "Sorry, may I know why not collect the deps for java?",
+      "revId": "fbe6e94406451e21f56b8d27e6ebcce83c877c0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ed8c3e_608d13f4",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-06-12T06:07:43Z",
+      "side": 1,
+      "message": "May I know what this file for, I mean for SBOM\u0027s usage why we need this, sorry not familiar with java.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 76
+      },
+      "revId": "fbe6e94406451e21f56b8d27e6ebcce83c877c0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
