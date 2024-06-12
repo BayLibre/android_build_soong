@@ -95,6 +95,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a042310_fc5f6a1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-12T15:58:51Z",
+      "side": 1,
+      "message": "Ah, I see. I thought `m` always uses Make because it\u0027s alias of `soong_ui --make-mode`",
+      "parentUuid": "a1c722de_2d847756",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "a4310e33c0eaad44925dff4220d553fb9c6dfaf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "809ac904_4f84cd5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-12T15:58:51Z",
+      "side": 1,
+      "message": "That\u0027s right.",
+      "parentUuid": "5646ea99_e91653d5",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "a4310e33c0eaad44925dff4220d553fb9c6dfaf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80e19740_ea479054",
