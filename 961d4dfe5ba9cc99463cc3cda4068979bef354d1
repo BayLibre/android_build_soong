@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37c43e7d_c294164e",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-06-12T21:18:13Z",
+      "side": 1,
+      "message": "it looks this is not used any more and can be removed.",
+      "revId": "961d4dfe5ba9cc99463cc3cda4068979bef354d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
