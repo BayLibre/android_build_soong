@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae58ca1_10e12a88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-12T12:56:31Z",
+      "side": 1,
+      "message": "This command builds the system image using Make, right? Did you test building the system image using Soong?",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "a4310e33c0eaad44925dff4220d553fb9c6dfaf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e99f3f_75532fd3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-12T12:56:31Z",
+      "side": 1,
+      "message": "Please also test a build that uses prebuilts, and make sure that the dexpreopt files are installed.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "a4310e33c0eaad44925dff4220d553fb9c6dfaf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e19740_ea479054",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-12T12:56:31Z",
+      "side": 1,
+      "message": "It\u0027s a bit weird to say that the dex partition is \"system\". Those dex jars are in apexes, not on \"system\". To get the right `installPath` for dexpreopt artifacts for apexes, I think you just need something like:\n\n```\nif isApexSystemServerJar {\n  partition :\u003d \"system\"\n}\n```\n\non line 564.",
+      "range": {
+        "startLine": 558,
+        "startChar": 1,
+        "endLine": 560,
+        "endChar": 2
+      },
+      "revId": "a4310e33c0eaad44925dff4220d553fb9c6dfaf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
