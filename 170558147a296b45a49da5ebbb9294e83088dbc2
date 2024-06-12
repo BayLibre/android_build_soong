@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a68f5f6_ed8b1d68",
+        "filename": "android/product_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-12T06:13:40Z",
+      "side": 1,
+      "message": "Can we just make a copy of ctx.Config().config.productVariables?",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 60
+      },
+      "revId": "170558147a296b45a49da5ebbb9294e83088dbc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
