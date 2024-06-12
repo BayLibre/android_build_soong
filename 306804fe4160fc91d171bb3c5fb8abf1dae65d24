@@ -52,6 +52,24 @@
       "parentUuid": "1f05689d_74166530",
       "revId": "306804fe4160fc91d171bb3c5fb8abf1dae65d24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9dafdac_a214c8d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1931236
+      },
+      "writtenOn": "2024-06-12T17:18:40Z",
+      "side": 1,
+      "message": "Oh, sorry for missing the comment. :-)",
+      "parentUuid": "b7231e34_ba974f7b",
+      "revId": "306804fe4160fc91d171bb3c5fb8abf1dae65d24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
