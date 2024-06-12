@@ -33,6 +33,24 @@
       "message": "I thought the point of this module was to use an alternate \"extra variables\" file and skip analysis in certain cases. If we\u0027re just dumping the productVariables struct to json, this doesn\u0027t seem like it provides any benefit over using the variables from the struct directly.\n\nWhat is the intended benefit of this cl?",
       "revId": "aabbd09f3ba9236f372ef9d242cc6c0c0d1ddd40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e0f75d5_00ab7e1a",
+        "filename": "android/product_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-06-12T00:51:33Z",
+      "side": 1,
+      "message": "I wrote like this as because we anyway need productVariables and it\u0027s much easier to start from a simple module. On top of this, I was trying to add extra variables as a follow-up change.\n\nI can amend this change if you want that.",
+      "parentUuid": "08666d9c_14eab205",
+      "revId": "aabbd09f3ba9236f372ef9d242cc6c0c0d1ddd40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
