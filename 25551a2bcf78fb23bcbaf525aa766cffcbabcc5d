@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e2bc1e7_5fd14822",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-12T20:28:23Z",
+      "side": 1,
+      "message": "Given that the property is being assigned to `module` instead of `s`, wouldn\u0027t type assertion still be necessary?",
+      "parentUuid": "251d71ee_b468eec5",
+      "revId": "25551a2bcf78fb23bcbaf525aa766cffcbabcc5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "132a6d7e_94e5f535",
         "filename": "sh/sh_binary.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2024-06-11T23:47:00Z",
       "side": 1,
       "message": "This seems odd that this would have to be handled explicitly in the module type, since Soong already knows which image variation this is.  Is this what other module types do?",
+      "revId": "25551a2bcf78fb23bcbaf525aa766cffcbabcc5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d37a0753_77a56491",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-12T20:28:23Z",
+      "side": 1,
+      "message": "From offline discussion, the root problem is `PathForModuleInstall` not respecting the `*_available` properties. cc modules bypass this problem by overriding `InstallIn*()` methods of the module base, so that the method respects the `*_available` property for the matching image variants. I\u0027ve taken a similar approach and implemented overrides of `InstallIn*()` methods for `ShBinary` and removed these lines.",
+      "parentUuid": "132a6d7e_94e5f535",
       "revId": "25551a2bcf78fb23bcbaf525aa766cffcbabcc5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
