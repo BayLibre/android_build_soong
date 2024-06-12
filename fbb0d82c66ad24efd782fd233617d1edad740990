@@ -16,6 +16,23 @@
       "message": "Good to know that the problem is fixed.",
       "revId": "fbb0d82c66ad24efd782fd233617d1edad740990",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610452f0_43f6c1ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-12T01:31:34Z",
+      "side": 1,
+      "message": "LGTM from my perspective.\n\nCole, could you take a look to make a final verdict?",
+      "revId": "fbb0d82c66ad24efd782fd233617d1edad740990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
