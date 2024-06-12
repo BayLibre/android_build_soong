@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f041b9a_6e0a9175",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-12T19:33:51Z",
+      "side": 1,
+      "message": "again, I thought the purpose of the extra variables file was that we wouldn\u0027t expose it to soong at all, to prevent usages and reanalysis. we shouldn\u0027t load the extra variables into the config object, but instead have the product_variables module read it at execution time.",
+      "revId": "170558147a296b45a49da5ebbb9294e83088dbc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a68f5f6_ed8b1d68",
         "filename": "android/product_config.go",
         "patchSetId": 2
