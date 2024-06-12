@@ -76,11 +76,6 @@ type ReleaseConfigs struct {
 	// A map from the config directory to its order in the list of config
 	// directories.
 	configDirIndexes ReleaseConfigDirMap
-
-	// True if we should allow a missing primary release config.  In this
-	// case, we will substitute `trunk_staging` values, but the release
-	// config will not be in ALL_RELEASE_CONFIGS_FOR_PRODUCT.
-	allowMissing bool
 }
 
 func (configs *ReleaseConfigs) WriteInheritanceGraph(outFile string) error {
@@ -379,11 +374,6 @@ func (configs *ReleaseConfigs) GetReleaseConfig(name string) (*ReleaseConfig, er
 	if config, ok := configs.ReleaseConfigs[name]; ok {
 		return config, nil
 	}
-	if configs.allowMissing {
-		if config, ok := configs.ReleaseConfigs["trunk_staging"]; ok {
-			return config, nil
-		}
-	}
 	return nil, fmt.Errorf("Missing config %s.  Trace=%v", name, trace)
 }
 
@@ -531,7 +521,7 @@ func (configs *ReleaseConfigs) GenerateReleaseConfigs(targetRelease string) erro
 	return nil
 }
 
-func ReadReleaseConfigMaps(releaseConfigMapPaths StringList, targetRelease string, useBuildVar, allowMissing bool) (*ReleaseConfigs, error) {
+func ReadReleaseConfigMaps(releaseConfigMapPaths StringList, targetRelease string, useBuildVar bool) (*ReleaseConfigs, error) {
 	var err error
 
 	if len(releaseConfigMapPaths) == 0 {
@@ -548,7 +538,6 @@ func ReadReleaseConfigMaps(releaseConfigMapPaths StringList, targetRelease strin
 	}
 
 	configs := ReleaseConfigsFactory()
-	configs.allowMissing = allowMissing
 	mapsRead := make(map[string]bool)
 	var idx int
 	for _, releaseConfigMapPath := range releaseConfigMapPaths {
