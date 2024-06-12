@@ -49,6 +49,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1c722de_2d847756",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-12T15:17:00Z",
+      "side": 1,
+      "message": "`aosp_cf_system_x86_64` is a soong filesystem module to build the system image in soong. The test command is called after `lunch aosp_cf_x86_64_phone-trunk_staging-userdebug`. I also tested the make build using just `m`. I added the lunch command to the commit message.",
+      "parentUuid": "aae58ca1_10e12a88",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "a4310e33c0eaad44925dff4220d553fb9c6dfaf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5646ea99_e91653d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-12T15:17:00Z",
+      "side": 1,
+      "message": "AFAIK, that is with the `next` configuration, isn\u0027t it?",
+      "parentUuid": "71e99f3f_75532fd3",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "a4310e33c0eaad44925dff4220d553fb9c6dfaf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80e19740_ea479054",
         "filename": "java/dexpreopt.go",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2024-06-12T12:56:31Z",
       "side": 1,
       "message": "It\u0027s a bit weird to say that the dex partition is \"system\". Those dex jars are in apexes, not on \"system\". To get the right `installPath` for dexpreopt artifacts for apexes, I think you just need something like:\n\n```\nif isApexSystemServerJar {\n  partition :\u003d \"system\"\n}\n```\n\non line 564.",
+      "range": {
+        "startLine": 558,
+        "startChar": 1,
+        "endLine": 560,
+        "endChar": 2
+      },
+      "revId": "a4310e33c0eaad44925dff4220d553fb9c6dfaf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ac16ff5_d2e8e90b",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-12T15:17:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80e19740_ea479054",
       "range": {
         "startLine": 558,
         "startChar": 1,
