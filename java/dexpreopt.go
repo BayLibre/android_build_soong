@@ -96,6 +96,10 @@ func (install dexpreopterInstall) ToMakeEntries() android.AndroidMkEntries {
 	}
 }
 
+func (install dexpreopterInstall) PackageFile(ctx android.ModuleContext) android.PackagingSpec {
+	return ctx.PackageFile(install.installDirOnDevice, install.installFileOnDevice, install.outputPathOnHost)
+}
+
 type Dexpreopter struct {
 	dexpreopter
 }
@@ -545,10 +549,19 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, libName string, dexJa
 	// Use the path of the dex file to determine the library name
 	isApexSystemServerJar := global.AllApexSystemServerJars(ctx).ContainsJar(dexJarStem)
 
-	partition := d.installPath.Partition()
+	dexPartition := d.installPath.Partition()
+	// dexPartition is set to empty for dexpreopts of system APEXes and files for system_other.
+	// Set it to "system" manually as a workaround. If the dexpreopt is for system_other, set the
+	// partition back to empty string.
+	// TODO(b/346662300): Let dexpreopter generate the installPath for dexpreopt files instead of
+	// using the dex location to generate the installPath.
+	if dexPartition == "" {
+		dexPartition = "system"
+	}
 	for _, install := range dexpreoptRule.Installs() {
 		// Remove the "/" prefix because the path should be relative to $ANDROID_PRODUCT_OUT.
 		installDir := strings.TrimPrefix(filepath.Dir(install.To), "/")
+		partition := dexPartition
 		if strings.HasPrefix(installDir, partition+"/") {
 			installDir = strings.TrimPrefix(installDir, partition+"/")
 		} else {
