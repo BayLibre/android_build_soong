@@ -16,6 +16,24 @@
       "message": "Can we have a test that verifies that if the value is in the Android.bp file it should be present in the classpaths.pb file so that this problem doesn\u0027t happen in the future?",
       "revId": "306804fe4160fc91d171bb3c5fb8abf1dae65d24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0e36c2_cb253ff0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1931236
+      },
+      "writtenOn": "2024-06-12T17:16:51Z",
+      "side": 1,
+      "message": "Ideally done in a separate CL so as not to block the submission of this P0 blocking CL.",
+      "parentUuid": "1f05689d_74166530",
+      "revId": "306804fe4160fc91d171bb3c5fb8abf1dae65d24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
