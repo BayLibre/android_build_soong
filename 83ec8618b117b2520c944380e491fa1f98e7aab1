@@ -33,6 +33,24 @@
       "message": "```suggestion\n\t\t\t\t\tif minSdkVersion.Specified() {\n```\nI believe that this should also be fixed?",
       "revId": "83ec8618b117b2520c944380e491fa1f98e7aab1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d90d742_f37e4f09",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-12T17:13:25Z",
+      "side": 1,
+      "message": "Good catch, done.",
+      "parentUuid": "7ae48a37_2036b46e",
+      "revId": "83ec8618b117b2520c944380e491fa1f98e7aab1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
