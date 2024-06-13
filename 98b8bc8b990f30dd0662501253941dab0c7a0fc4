@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61110e94_d1e91294",
+        "filename": "aconfig/aconfig_declarations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-13T18:48:03Z",
+      "side": 1,
+      "message": "Was this field ever set? I don\u0027t see anything. Same in declarations.go",
+      "revId": "98b8bc8b990f30dd0662501253941dab0c7a0fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2efdc18f_17a37e00",
+        "filename": "aconfig/codegen/aconfig_declarations_group.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-13T18:48:03Z",
+      "side": 1,
+      "message": "I would just inline this function",
+      "revId": "98b8bc8b990f30dd0662501253941dab0c7a0fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
