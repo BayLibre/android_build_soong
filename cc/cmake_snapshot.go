@@ -489,23 +489,16 @@ func getModuleType(m *Module) string {
 		return "library"
 	case *testBinary:
 		return "executable"
-	case *benchmarkDecorator:
-		return "executable"
 	}
-	panic(fmt.Sprintf("Unexpected module type: %T", m.linker))
+	panic(fmt.Sprintf("Unexpected module type: %T", m.compiler))
 }
 
 func getExtraLibs(m *Module) []string {
 	switch decorator := m.linker.(type) {
 	case *testBinary:
 		if decorator.testDecorator.gtest() {
-			return []string{
-				"libgtest",
-				"libgtest_main",
-			}
+			return []string{"libgtest"}
 		}
-	case *benchmarkDecorator:
-		return []string{"libgoogle-benchmark"}
 	}
 	return nil
 }
