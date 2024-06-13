@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83eec752_d502de8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-13T01:00:28Z",
+      "side": 1,
+      "message": "LGTM, though the cross-partition stuff will be more interesting.",
+      "parentUuid": "610452f0_43f6c1ff",
+      "revId": "fbb0d82c66ad24efd782fd233617d1edad740990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0aaba30b_7a927976",
