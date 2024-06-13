@@ -1392,10 +1392,6 @@ func (c *config) PrebuiltHiddenApiDir(_ PathContext) string {
 	return String(c.productVariables.PrebuiltHiddenApiDir)
 }
 
-func (c *config) IsVndkDeprecated() bool {
-	return !Bool(c.productVariables.KeepVndk)
-}
-
 func (c *config) VendorApiLevel() string {
 	return String(c.productVariables.VendorApiLevel)
 }
