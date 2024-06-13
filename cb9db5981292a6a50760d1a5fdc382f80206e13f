@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a64776_611760e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2024-06-13T21:18:59Z",
+      "side": 1,
+      "message": "Seems this could be made better for users by auto adding the dependency?",
+      "revId": "cb9db5981292a6a50760d1a5fdc382f80206e13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "130656a2_35025d3d",
+        "filename": "java/robolectric.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2024-06-13T21:18:59Z",
+      "side": 1,
+      "message": "could you just add the extra dep if strict_mode is false and watch it fail?",
+      "fixSuggestions": [
+        {
+          "fixId": "02cb8a5f_1385ac06",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/robolectric.go",
+              "range": {
+                "startLine": 231,
+                "startChar": 0,
+                "endLine": 232,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "cb9db5981292a6a50760d1a5fdc382f80206e13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
