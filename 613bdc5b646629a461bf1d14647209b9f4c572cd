@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27c00700_625dd96a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-13T03:50:28Z",
+      "side": 1,
+      "message": "Inviting Cole for the owner\u0027s review.",
+      "revId": "613bdc5b646629a461bf1d14647209b9f4c572cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
