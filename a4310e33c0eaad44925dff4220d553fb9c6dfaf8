@@ -143,6 +143,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f263aef_57fea2f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-13T03:38:09Z",
+      "side": 1,
+      "message": "cf targets that I am testing does not have prebuilt apex even for `next`. So I used a Pixel target and confirm that the odex/vdex files for prebuilt APEX bundles are installed for both make and soong images.",
+      "parentUuid": "809ac904_4f84cd5d",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "a4310e33c0eaad44925dff4220d553fb9c6dfaf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80e19740_ea479054",
