@@ -22,6 +22,30 @@
       },
       "revId": "e96c16a806053d7db9b1de164f7dba8e499e4a44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7916879d_5f469b6c",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-13T22:22:09Z",
+      "side": 1,
+      "message": "I think these could probably be eventually replaced with `cflags: select(image(), {...})` instead of dedicated properties. I\u0027d rather do that than make these selectable, but yes we should be able to do it in the near future.",
+      "parentUuid": "1757727d_7849dab3",
+      "range": {
+        "startLine": 380,
+        "startChar": 29,
+        "endLine": 380,
+        "endChar": 43
+      },
+      "revId": "e96c16a806053d7db9b1de164f7dba8e499e4a44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
