@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "acac355d_0e0cf5b3",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-06-13T02:10:39Z",
+      "side": 1,
+      "message": "\u003e I thought the purpose of the extra variables file was that we wouldn\u0027t expose it to soong at all, to prevent usages and reanalysis.\n\nI thought the primary purpose is to pass variables from Makefile to the module (product_variables or product_config), not to prevent Soong from rerunning (which is a bonus IMO).\n\n\u003e we shouldn\u0027t load the extra variables into the config object, but instead have the product_variables module read it at execution time.\n\nI\u0027m not sure how to pass soong.extra.variables file to inputs of the module (don\u0027t know how to construct Path object from an absolute path), and how to merge two files (soong.extra.variables and ProductVariables).\n\nTo pass the file, probably I can do hard-code the path, not passing it to Soong\u0027s CmdArgs, like:\n\n    extraVariablesFile :\u003d PathForOutput(ctx,\n        \"soong.\"+ctx.Config().TargetProduct()+\".extra.variables)\n    // use extraVariablesFile as input.\n    \nTo merge two files, I think we need a script. Then we don\u0027t even need to marshal - unmarshal in Soong.\n\n    soongVariablesFile :\u003d PathForOutput(ctx,\n        \"soong.\"+ctx.Config().TargetProduct()+\".variables)\n    \n    rule.Command().BuiltTool(\"merge_json\").\n         Input(soongVariablesFile).\n         Input(extraVariablesFile).\n         FlagWithOutput(\"-o \", outputPath)\n    \nDoes this look good? Or any better suggestions? In the meantime I\u0027ll try this.",
+      "parentUuid": "9f041b9a_6e0a9175",
+      "revId": "170558147a296b45a49da5ebbb9294e83088dbc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a68f5f6_ed8b1d68",
         "filename": "android/product_config.go",
         "patchSetId": 2
