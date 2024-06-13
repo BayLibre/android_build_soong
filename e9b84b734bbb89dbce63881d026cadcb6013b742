@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90095542_9a8a2445",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-13T18:48:58Z",
+      "side": 1,
+      "message": "Can we make this a local variable now?",
+      "revId": "e9b84b734bbb89dbce63881d026cadcb6013b742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
