@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5735c71c_167fa2be",
+        "filename": "cc/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1311067
+      },
+      "writtenOn": "2024-06-13T08:16:29Z",
+      "side": 1,
+      "message": "Encountered\n```\nfirst argument to append must be a slice; have compiler.Properties.Cflags (variable of type proptools.Configurable[[]string])\n```\nin the build time.",
+      "fixSuggestions": [
+        {
+          "fixId": "964643c7_0145f2f8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/compiler.go",
+              "range": {
+                "startLine": 277,
+                "startChar": 0,
+                "endLine": 278,
+                "endChar": 0
+              },
+              "replacement": "\tcompiler.Properties.Cflags.Add(flags...)\n"
+            },
+            {
+              "path": "cc/compiler.go",
+              "range": {
+                "startLine": 281,
+                "startChar": 0,
+                "endLine": 282,
+                "endChar": 0
+              },
+              "replacement": "\tcompiler.Properties.Asflags.Add(flags...)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6854cd1bfdfb05cffd54c2e23b16a3a099b438c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
