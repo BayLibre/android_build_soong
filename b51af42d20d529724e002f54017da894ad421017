@@ -88,6 +88,24 @@
       "parentUuid": "aa70c10f_f37fcd29",
       "revId": "b51af42d20d529724e002f54017da894ad421017",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2dc5d0d_f37c37dc",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-06-13T22:56:01Z",
+      "side": 1,
+      "message": "Finally got around to measuring this. Additional impact on a full Pixel build for unconditionally generating the `symbols.odex` for any preopted targets is ~150MB (half of that from SystemUI). For an aosp variant it\u0027s ~80MB. Overall build time is negligible (1-2s total system time increase), confirmed by summing trace system_time_ms costs for dex2oat as well as running the commands locally for the largest dexpreopt artifacts (SystemUI).\n\nI tried a variant that only generates the symbols if it\u0027s speed or speed-profile compiled, but that doesn\u0027t really save much on size (maybe ~5MB), as the quicken/verify variant `odex` sizes are quite small.\n\nThoughts?",
+      "parentUuid": "a0f7191b_ca8d9873",
+      "revId": "b51af42d20d529724e002f54017da894ad421017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
