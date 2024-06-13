@@ -16,6 +16,23 @@
       "message": "Hi Paul, could you PTaL? I am not 100% confident if this will solve the problem from b/342067844, but it does remove FlaggedApi from the core-for-system-modules.jar.",
       "revId": "8a08e6af3c7e0a3ff3e32faa608c9ab755c5207b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af47ee28_d6b12084",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-06-13T14:45:11Z",
+      "side": 1,
+      "message": "You can\u0027t strip the `FlaggedApi` annotation. We need that for Android Lint to check to make sure that calls to flagged APIs are protected with a flag check.",
+      "revId": "8a08e6af3c7e0a3ff3e32faa608c9ab755c5207b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
