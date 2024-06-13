@@ -22,6 +22,30 @@
       },
       "revId": "ce320f86a084cb29d5f4e24aee221e9e4dd4fb47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78ba58e6_68d474c3",
+        "filename": "java/app_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 4525,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-13T22:39:09Z",
+      "side": 1,
+      "message": "Test targets do not set `versionCode`, so this change should not be applied. More details are available in [this comment thread](https://android-review.git.corp.google.com/c/platform/build/soong/+/3076227/comments/bf92d462_906ff485).",
+      "parentUuid": "da47eef6_39601b93",
+      "range": {
+        "startLine": 4525,
+        "startChar": 2,
+        "endLine": 4525,
+        "endChar": 39
+      },
+      "revId": "ce320f86a084cb29d5f4e24aee221e9e4dd4fb47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
