@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca9a808_a3efdb4a",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-13T21:04:15Z",
+      "side": 1,
+      "message": "You\u0027re right, https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/image.go;l\u003d46-48;drc\u003d2f5c340b49b63bae00b8cbe8eab325d5bd2653c5 makes it clear that `s` is the old module from before `CreateVariations`.  That seems unnecessary, I\u0027m not sure why it doesn\u0027t call this on the new variant.",
+      "parentUuid": "9e2bc1e7_5fd14822",
+      "revId": "25551a2bcf78fb23bcbaf525aa766cffcbabcc5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "132a6d7e_94e5f535",
