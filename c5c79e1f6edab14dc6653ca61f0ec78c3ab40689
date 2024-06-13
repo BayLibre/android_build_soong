@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a5f334b_d50014b9",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-13T17:22:15Z",
+      "side": 1,
+      "message": "Can we update the documentation to indicate that timestamps are not included/meaningful anymore?",
+      "range": {
+        "startLine": 68,
+        "startChar": 47,
+        "endLine": 69,
+        "endChar": 31
+      },
+      "revId": "c5c79e1f6edab14dc6653ca61f0ec78c3ab40689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
