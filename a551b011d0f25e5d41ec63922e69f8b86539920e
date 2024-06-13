@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e15d41a3_e64fc01e",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-13T18:04:06Z",
+      "side": 0,
+      "message": "IIUC, does this mean that at ToT\n- we never apply debug.cflags?\n- we always apply release.cflags? (with no Android.bp module actually setting this)",
+      "range": {
+        "startLine": 484,
+        "startChar": 91,
+        "endLine": 484,
+        "endChar": 92
+      },
+      "revId": "a551b011d0f25e5d41ec63922e69f8b86539920e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
