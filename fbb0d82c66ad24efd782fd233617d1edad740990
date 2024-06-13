@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b9befdc_3bef9857",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-13T00:07:19Z",
+      "side": 1,
+      "message": "This is equivalent for make, but different for soong packaging spec. Empty partition in the installPath does not package files in the soong packaging spec.\nThis is to fill the correct `partition` string to the `installPath`, so that soong filesystem can package the dexpreopt files correctly.",
+      "parentUuid": "0aaba30b_7a927976",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 84
+      },
+      "revId": "fbb0d82c66ad24efd782fd233617d1edad740990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61e80c95_20dc2413",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 7
@@ -71,6 +95,30 @@
       "writtenOn": "2024-06-12T19:10:58Z",
       "side": 1,
       "message": "`BuildArch` is the architecture of the host machine doing the build. Shouldn\u0027t you be comparing against `ctx.Arch().ArchType`?",
+      "range": {
+        "startLine": 946,
+        "startChar": 48,
+        "endLine": 946,
+        "endChar": 57
+      },
+      "revId": "fbb0d82c66ad24efd782fd233617d1edad740990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b982017_a83c0297",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-13T00:07:19Z",
+      "side": 1,
+      "message": "Thanks for catching this. I wanted to get the primary arch of the target device.\nFixed.",
+      "parentUuid": "61e80c95_20dc2413",
       "range": {
         "startLine": 946,
         "startChar": 48,
