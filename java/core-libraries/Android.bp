@@ -130,6 +130,7 @@ java_library {
     ],
     sdk_version: "none",
     system_modules: "none",
+    jarjar_rules: "jarjar-strip-annotations-rules.txt",
     dists: [
         {
             // Legacy dist location for the public file.
