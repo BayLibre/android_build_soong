@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da47eef6_39601b93",
+        "filename": "java/app_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 4525,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-13T22:36:10Z",
+      "side": 1,
+      "message": "Why do android_test and android_test_helper_app need to be special-cased?",
+      "range": {
+        "startLine": 4525,
+        "startChar": 2,
+        "endLine": 4525,
+        "endChar": 39
+      },
+      "revId": "ce320f86a084cb29d5f4e24aee221e9e4dd4fb47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
