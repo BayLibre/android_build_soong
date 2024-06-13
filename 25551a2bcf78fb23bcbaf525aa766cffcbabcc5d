@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "972f4a63_a3ef1056",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-13T21:51:49Z",
+      "side": 1,
+      "message": "Agreed, I\u0027ve created [this topic](https://android-review.git.corp.google.com/q/topic:%22cleanup_image_variation%22) to clean this up. PTAL😊",
+      "parentUuid": "aca9a808_a3efdb4a",
+      "revId": "25551a2bcf78fb23bcbaf525aa766cffcbabcc5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "132a6d7e_94e5f535",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "From offline discussion, the root problem is `PathForModuleInstall` not respecting the `*_available` properties. cc modules bypass this problem by overriding `InstallIn*()` methods of the module base, so that the method respects the `*_available` property for the matching image variants. I\u0027ve taken a similar approach and implemented overrides of `InstallIn*()` methods for `ShBinary` and removed these lines.",
       "parentUuid": "132a6d7e_94e5f535",
+      "revId": "25551a2bcf78fb23bcbaf525aa766cffcbabcc5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f88142ff_e7e0b128",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-13T21:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d37a0753_77a56491",
       "revId": "25551a2bcf78fb23bcbaf525aa766cffcbabcc5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
