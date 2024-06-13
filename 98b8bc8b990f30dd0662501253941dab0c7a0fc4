@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42cd317a_e688fc62",
+        "filename": "aconfig/aconfig_declarations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-13T23:26:17Z",
+      "side": 1,
+      "message": "I deleted this field after talking with Joe. I also removed the ctx.SetOutputFiles since the real output files are used to set another provider.",
+      "parentUuid": "61110e94_d1e91294",
+      "revId": "98b8bc8b990f30dd0662501253941dab0c7a0fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2efdc18f_17a37e00",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-06-13T18:48:03Z",
       "side": 1,
       "message": "I would just inline this function",
+      "revId": "98b8bc8b990f30dd0662501253941dab0c7a0fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c962978d_82f470b6",
+        "filename": "aconfig/codegen/aconfig_declarations_group.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-13T23:26:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2efdc18f_17a37e00",
       "revId": "98b8bc8b990f30dd0662501253941dab0c7a0fc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
