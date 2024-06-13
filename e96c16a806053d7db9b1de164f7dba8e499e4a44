@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1757727d_7849dab3",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-13T22:17:06Z",
+      "side": 1,
+      "message": "For a followup CL: Can we make these configurable as well?",
+      "range": {
+        "startLine": 380,
+        "startChar": 29,
+        "endLine": 380,
+        "endChar": 43
+      },
+      "revId": "e96c16a806053d7db9b1de164f7dba8e499e4a44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
