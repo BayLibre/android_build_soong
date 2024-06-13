@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd82e80_e6081983",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-06-13T13:46:09Z",
+      "side": 1,
+      "message": "Hi Paul, could you PTaL? I am not 100% confident if this will solve the problem from b/342067844, but it does remove FlaggedApi from the core-for-system-modules.jar.",
+      "revId": "8a08e6af3c7e0a3ff3e32faa608c9ab755c5207b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
