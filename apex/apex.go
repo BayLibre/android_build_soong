@@ -2426,6 +2426,8 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.provideApexExportsInfo(ctx)
 
 	a.providePrebuiltInfo(ctx)
+
+	a.setOutputFiles(ctx)
 }
 
 // Set prebuiltInfoProvider. This will be used by `apex_prebuiltinfo_singleton` to print out a metadata file
@@ -2452,6 +2454,18 @@ func (a *apexBundle) provideApexExportsInfo(ctx android.ModuleContext) {
 			android.SetProvider(ctx, android.ApexExportsInfoProvider, exports)
 		}
 	})
+}
+
+// Set output files to outputFiles property, which is later used to set the
+// OutputFilesProvider
+func (a *apexBundle) setOutputFiles(ctx android.ModuleContext) {
+	// default dist path
+	ctx.SetOutputFiles(android.Paths{a.outputFile}, "")
+	ctx.SetOutputFiles(android.Paths{a.outputFile}, android.DefaultDistTag)
+	// uncompressed one
+	if a.outputApexFile != nil {
+		ctx.SetOutputFiles(android.Paths{a.outputApexFile}, imageApexSuffix)
+	}
 }
 
 // apexBootclasspathFragmentFiles returns the list of apexFile structures defining the files that
