@@ -163,7 +163,6 @@ func GetCommand(configs *rc_lib.ReleaseConfigs, commonFlags Flags, cmd string, a
 		for _, fa := range configs.FlagArtifacts {
 			args = append(args, *fa.FlagDeclaration.Name)
 		}
-		slices.Sort(args)
 	}
 
 	var maxVariableNameLen, maxReleaseNameLen int
