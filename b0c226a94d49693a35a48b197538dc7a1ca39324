@@ -70,6 +70,24 @@
       "parentUuid": "eeffcdf2_b953428d",
       "revId": "b0c226a94d49693a35a48b197538dc7a1ca39324",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b809a051_1f418110",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-13T22:18:30Z",
+      "side": 1,
+      "message": "Thanks for the inputs, I have updated the prebuilt build tools from the `ub-aapt2-release` branch in aosp/3128577. I believe that the presubmits would have been unblocked now.",
+      "parentUuid": "fc7b6de9_aa049e86",
+      "revId": "b0c226a94d49693a35a48b197538dc7a1ca39324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
