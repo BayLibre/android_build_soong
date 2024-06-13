@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48afc119_92e46ba5",
+        "filename": "android/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-13T21:55:31Z",
+      "side": 1,
+      "message": "This needs updating",
+      "range": {
+        "startLine": 46,
+        "startChar": 70,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "de08160f0dffc76007e1f67f9703384fbb931d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
