@@ -58,7 +58,9 @@ message flag_artifact {
 
 message flag_artifacts {
   // The artifacts
-  repeated flag_artifact flag_artifacts = 1;
+  repeated flag_artifact flags = 2;
+  reserved "flag_artifacts";
+  reserved 1;
 }
 
 message release_config_artifact {
@@ -71,22 +73,24 @@ message release_config_artifact {
 
   // The complete set of build flags in this release config, after all
   // inheritance and other processing is complete.
-  repeated flag_artifact flag_artifacts = 3;
+  repeated flag_artifact flags = 4;
+  reserved "flag_artifacts";
+  reserved 3;
 
   // The (complete) list of aconfig_value_sets Soong modules to use.
-  repeated string aconfig_value_sets = 4;
+  repeated string aconfig_value_sets = 5;
 
   // The names of the release_config_artifacts from which we inherited.
   // Included for reference only.
-  repeated string inherits = 5;
+  repeated string inherits = 6;
 
   // The release config directories used for this config.
   // For example, "build/release".
-  repeated string directories = 6;
+  repeated string directories = 7;
 
   // Prior stage(s) for flag advancement (during development).
   // Once a flag has met criteria in a prior stage, it can advance to this one.
-  repeated string prior_stages = 7;
+  repeated string prior_stages = 8;
 }
 
 message release_configs_artifact {
