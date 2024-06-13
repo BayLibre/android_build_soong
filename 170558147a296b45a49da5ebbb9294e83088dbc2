@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "833f044d_82117cbd",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-13T21:17:56Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what I was expecting. That looks good.\n\n\u003e I thought the primary purpose is to pass variables from Makefile to the module\n\nYeah, but you could also do that just like we were doing it before this cl, by passing the necessary variables on the command line to actions. So I think the only real benefits to changing that strategy is if we can keep some variables out of soong for reanalysis reasons and so that people doesn\u0027t start depending on them from within soong.",
+      "parentUuid": "acac355d_0e0cf5b3",
+      "revId": "170558147a296b45a49da5ebbb9294e83088dbc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a68f5f6_ed8b1d68",
         "filename": "android/product_config.go",
         "patchSetId": 2
