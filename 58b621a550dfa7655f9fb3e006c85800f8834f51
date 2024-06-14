@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4ef37f4_12ffc199",
+        "filename": "android/product_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-14T18:45:03Z",
+      "side": 1,
+      "message": "Make this a local variable",
+      "revId": "58b621a550dfa7655f9fb3e006c85800f8834f51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "133dea5b_233d9475",
+        "filename": "scripts/merge_json.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-14T18:45:03Z",
+      "side": 1,
+      "message": "Make `output` the first argument and make it a positional argument.",
+      "revId": "58b621a550dfa7655f9fb3e006c85800f8834f51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
