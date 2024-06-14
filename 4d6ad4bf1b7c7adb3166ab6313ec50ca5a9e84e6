@@ -34,6 +34,24 @@
       "parentUuid": "bc4dec29_47760030",
       "revId": "4d6ad4bf1b7c7adb3166ab6313ec50ca5a9e84e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1631cc14_c4f72df1",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-14T17:53:29Z",
+      "side": 1,
+      "message": "OK. The change looks good to me in terms of addressing the build issue. Could you add someone else to take another look to check if this change is okay in terms of the impact on app developers?",
+      "parentUuid": "02f61210_8c2c6a44",
+      "revId": "4d6ad4bf1b7c7adb3166ab6313ec50ca5a9e84e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
