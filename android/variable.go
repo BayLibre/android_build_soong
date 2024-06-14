@@ -190,6 +190,18 @@ type variableProperties struct {
 			Required        []string
 			Vintf_fragments []string
 		}
+		
+		Board_uses_vendor_image struct {
+			Proprietary *bool
+		}
+		
+		Board_uses_scaler_m2m1shot struct {
+			Cflags []string
+		}
+		
+	    Board_uses_align_restriction struct {
+			Cflags []string
+		}
 	} `android:"arch_variant"`
 }
 
@@ -515,6 +527,10 @@ type ProductVariables struct {
 	BoardUseVbmetaDigestInFingerprint *bool `json:",omitempty"`
 
 	OemProperties []string `json:",omitempty"`
+	
+	Board_uses_vendor_image      *bool `json:",omitempty"`
+	Board_uses_scaler_m2m1shot   *bool `json:",omitempty"`
+	Board_uses_align_restriction *bool `json:",omitempty"`
 }
 
 type PartitionQualifiedVariablesType struct {
