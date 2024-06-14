@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e890f8_6927e5e8",
+        "filename": "android/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-14T17:53:46Z",
+      "side": 1,
+      "message": "Update this comment",
+      "revId": "f927c27e02671e1455a45196ca6151c93726076a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
