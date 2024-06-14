@@ -51,6 +51,24 @@
       ],
       "revId": "cb9db5981292a6a50760d1a5fdc382f80206e13f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96c75a30_f87a6650",
+        "filename": "java/robolectric.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1959907
+      },
+      "writtenOn": "2024-06-14T21:16:02Z",
+      "side": 1,
+      "message": "Great idea. Auto add the lib when strict_mode is false and leave the rest to visibility rule.",
+      "parentUuid": "130656a2_35025d3d",
+      "revId": "cb9db5981292a6a50760d1a5fdc382f80206e13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
