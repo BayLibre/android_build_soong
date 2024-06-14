@@ -135,7 +135,10 @@ func afdoPropagateViaDepTag(tag blueprint.DependencyTag) bool {
 type afdoTransitionMutator struct{}
 
 func (a *afdoTransitionMutator) Split(ctx android.BaseModuleContext) []string {
-	return []string{""}
+	if m, ok := ctx.Module().(*Module); ok && m.afdo != nil && !ctx.Host() {
+		return []string{""}
+	}
+	return nil
 }
 
 func (a *afdoTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
@@ -168,10 +171,10 @@ func (a *afdoTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitio
 }
 
 func (a *afdoTransitionMutator) IncomingTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
-	if m, ok := ctx.Module().(*Module); ok && m.afdo != nil {
+	if m, ok := ctx.Module().(*Module); ok && m.afdo != nil && !ctx.Host() {
 		return incomingVariation
 	}
-	return ""
+	return blueprint.NoTransition
 }
 
 func (a *afdoTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, variation string) {

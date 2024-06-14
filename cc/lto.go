@@ -188,7 +188,10 @@ const LTO_NONE_VARIATION = "lto-none"
 const LTO_THIN_VARIATION = "lto-thin"
 
 func (l *ltoTransitionMutator) Split(ctx android.BaseModuleContext) []string {
-	return []string{""}
+	if m, ok := ctx.Module().(*Module); ok && m.lto != nil {
+		return []string{""}
+	}
+	return nil
 }
 
 func (l *ltoTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
@@ -225,7 +228,7 @@ func (l *ltoTransitionMutator) IncomingTransition(ctx android.IncomingTransition
 		}
 		return incomingVariation
 	}
-	return ""
+	return blueprint.NoTransition
 }
 
 func (l *ltoTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, variation string) {

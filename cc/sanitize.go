@@ -1189,7 +1189,7 @@ func (s *sanitizerSplitMutator) Split(ctx android.BaseModuleContext) []string {
 		}
 	}
 
-	return []string{""}
+	return nil
 }
 
 func (s *sanitizerSplitMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
@@ -1212,9 +1212,8 @@ func (s *sanitizerSplitMutator) OutgoingTransition(ctx android.OutgoingTransitio
 }
 
 func (s *sanitizerSplitMutator) IncomingTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
-	if d, ok := ctx.Module().(PlatformSanitizeable); ok {
-		if !d.SanitizePropDefined() ||
-			d.SanitizeNever() ||
+	if d, ok := ctx.Module().(PlatformSanitizeable); ok && d.SanitizePropDefined() {
+		if d.SanitizeNever() ||
 			d.IsSanitizerExplicitlyDisabled(s.sanitizer) ||
 			!d.SanitizerSupported(s.sanitizer) {
 			// If a module opts out of a sanitizer, use its non-sanitized variation
@@ -1258,7 +1257,7 @@ func (s *sanitizerSplitMutator) IncomingTransition(ctx android.IncomingTransitio
 		return incomingVariation
 	}
 
-	return ""
+	return blueprint.NoTransition
 }
 
 func (s *sanitizerSplitMutator) Mutate(mctx android.BottomUpMutatorContext, variationName string) {

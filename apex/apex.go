@@ -1289,15 +1289,20 @@ type apexTransitionMutator struct{}
 
 func (a *apexTransitionMutator) Split(ctx android.BaseModuleContext) []string {
 	// apexBundle itself is mutated so that it and its dependencies have the same apex variant.
-	if ai, ok := ctx.Module().(ApexInfoMutator); ok && apexModuleTypeRequiresVariant(ai) {
-		if overridable, ok := ctx.Module().(android.OverridableModule); ok && overridable.GetOverriddenBy() != "" {
-			return []string{overridable.GetOverriddenBy()}
+	if am, ok := ctx.Module().(android.ApexModule); ok && am.CanHaveApexVariants() {
+		return []string{""}
+	} else if ai, ok := ctx.Module().(ApexInfoMutator); ok {
+		if apexModuleTypeRequiresVariant(ai) {
+			if overridable, ok := ctx.Module().(android.OverridableModule); ok && overridable.GetOverriddenBy() != "" {
+				return []string{overridable.GetOverriddenBy()}
+			}
+			return []string{ai.ApexVariationName()}
 		}
-		return []string{ai.ApexVariationName()}
+		return []string{""}
 	} else if _, ok := ctx.Module().(*OverrideApex); ok {
 		return []string{ctx.ModuleName()}
 	}
-	return []string{""}
+	return nil
 }
 
 func (a *apexTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
@@ -1316,7 +1321,7 @@ func (a *apexTransitionMutator) IncomingTransition(ctx android.IncomingTransitio
 		return ctx.Module().Name()
 	}
 
-	return ""
+	return blueprint.NoTransition
 }
 
 func (a *apexTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, variation string) {

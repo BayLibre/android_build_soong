@@ -288,7 +288,7 @@ func (overrideTransitionMutator) Split(ctx BaseModuleContext) []string {
 	if b, ok := ctx.Module().(OverridableModule); ok {
 		overrides := b.getOverrides()
 		if len(overrides) == 0 {
-			return []string{""}
+			return nil
 		}
 		variants := make([]string, len(overrides)+1)
 		// The first variant is for the original, non-overridden, base module.
@@ -304,7 +304,7 @@ func (overrideTransitionMutator) Split(ctx BaseModuleContext) []string {
 		return []string{o.Name()}
 	}
 
-	return []string{""}
+	return nil
 }
 
 func (overrideTransitionMutator) OutgoingTransition(ctx OutgoingTransitionContext, sourceVariation string) string {
@@ -319,14 +319,18 @@ func (overrideTransitionMutator) OutgoingTransition(ctx OutgoingTransitionContex
 }
 
 func (overrideTransitionMutator) IncomingTransition(ctx IncomingTransitionContext, incomingVariation string) string {
-	if _, ok := ctx.Module().(OverridableModule); ok {
+	if b, ok := ctx.Module().(OverridableModule); ok {
+		overrides := b.getOverrides()
+		if len(overrides) == 0 {
+			return blueprint.NoTransition
+		}
 		return incomingVariation
 	} else if o, ok := ctx.Module().(OverrideModule); ok {
 		// To allow dependencies to be added without having to know the variation.
 		return o.Name()
 	}
 
-	return ""
+	return blueprint.NoTransition
 }
 
 func (overrideTransitionMutator) Mutate(ctx BottomUpMutatorContext, variation string) {

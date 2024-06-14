@@ -598,7 +598,7 @@ func (a *androidTransitionMutator) IncomingTransition(bpctx blueprint.IncomingTr
 		}
 		return a.mutator.IncomingTransition(ctx, incomingVariation)
 	} else {
-		return ""
+		return blueprint.NoTransition
 	}
 }
 

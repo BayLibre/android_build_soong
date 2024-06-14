@@ -208,7 +208,10 @@ type orderfileTransitionMutator struct{}
 const ORDERFILE_VARIATION = "orderfile"
 
 func (o *orderfileTransitionMutator) Split(ctx android.BaseModuleContext) []string {
-	return []string{""}
+	if m, ok := ctx.Module().(*Module); ok && m.orderfile != nil {
+		return []string{""}
+	}
+	return nil
 }
 
 func (o *orderfileTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
@@ -233,7 +236,7 @@ func (o *orderfileTransitionMutator) IncomingTransition(ctx android.IncomingTran
 	if m, ok := ctx.Module().(*Module); ok && m.orderfile != nil {
 		return incomingVariation
 	}
-	return ""
+	return blueprint.NoTransition
 }
 
 func (o *orderfileTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, variation string) {

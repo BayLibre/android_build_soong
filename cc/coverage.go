@@ -293,7 +293,7 @@ func (c coverageTransitionMutator) Split(ctx android.BaseModuleContext) []string
 		return []string{"cov"}
 	}
 
-	return []string{""}
+	return nil
 }
 
 func (c coverageTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
@@ -302,21 +302,21 @@ func (c coverageTransitionMutator) OutgoingTransition(ctx android.OutgoingTransi
 
 func (c coverageTransitionMutator) IncomingTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
 	if c, ok := ctx.Module().(*Module); ok && c.coverage != nil {
-		if !c.coverage.Properties.NeedCoverageVariant {
-			return ""
+		if c.coverage.Properties.NeedCoverageVariant {
+			return incomingVariation
 		}
+		return ""
 	} else if cov, ok := ctx.Module().(Coverage); ok {
-		if !cov.IsNativeCoverageNeeded(ctx) {
-			return ""
+		if cov.IsNativeCoverageNeeded(ctx) {
+			return incomingVariation
 		}
+		return ""
 	} else if cov, ok := ctx.Module().(UseCoverage); ok && cov.IsNativeCoverageNeeded(ctx) {
 		// Module only has a "cov" variation, so all incoming variations should use "cov".
 		return "cov"
-	} else {
-		return ""
 	}
 
-	return incomingVariation
+	return blueprint.NoTransition
 }
 
 func (c coverageTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, variation string) {
