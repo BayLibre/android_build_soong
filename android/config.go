@@ -130,6 +130,10 @@ func (c Config) OutDir() string {
 	return c.outDir
 }
 
+func (c Config) RunMyTests() bool {
+	return c.runGoTests
+}
+
 func (c Config) RunGoTests() bool {
 	return c.runGoTests
 }
