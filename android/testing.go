@@ -1018,6 +1018,11 @@ func (m TestingModule) VariablesForTestsRelativeToTop() map[string]string {
 // immediately if there is an error and otherwise returns the result of calling Paths.RelativeToTop
 // on the returned Paths.
 func (m TestingModule) OutputFiles(t *testing.T, tag string) Paths {
+	// TODO: add non-empty-string tag case and remove OutputFileProducer part
+	if tag == "" && m.module.base().outputFiles.DefaultOutputFiles != nil {
+		return m.module.base().outputFiles.DefaultOutputFiles.RelativeToTop()
+	}
+
 	producer, ok := m.module.(OutputFileProducer)
 	if !ok {
 		t.Fatalf("%q must implement OutputFileProducer\n", m.module.Name())
