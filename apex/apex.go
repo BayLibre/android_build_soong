@@ -18,7 +18,6 @@ package apex
 
 import (
 	"fmt"
-	"log"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -954,7 +953,6 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 	// the non-system APEXes because the VNDK libraries won't be included (and duped) in the
 	// APEX, but shared across APEXes via the VNDK APEX.
 	useVndk := a.SocSpecific() || a.DeviceSpecific() || (a.ProductSpecific() && mctx.Config().EnforceProductPartitionInterface())
-	excludeVndkLibs := useVndk && a.useVndkAsStable(mctx)
 	if proptools.Bool(a.properties.Use_vndk_as_stable) {
 		if !useVndk {
 			mctx.PropertyErrorf("use_vndk_as_stable", "not supported for system/system_ext APEXes")
@@ -962,11 +960,6 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 		if a.minSdkVersionValue(mctx) != "" {
 			mctx.PropertyErrorf("use_vndk_as_stable", "not supported when min_sdk_version is set")
 		}
-		mctx.VisitDirectDepsWithTag(sharedLibTag, func(dep android.Module) {
-			if c, ok := dep.(*cc.Module); ok && c.IsVndk() {
-				mctx.PropertyErrorf("use_vndk_as_stable", "Trying to include a VNDK library(%s) while use_vndk_as_stable is true.", dep.Name())
-			}
-		})
 		if mctx.Failed() {
 			return
 		}
@@ -988,16 +981,9 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 		if !android.IsDepInSameApex(mctx, parent, child) {
 			return false
 		}
-		if excludeVndkLibs {
-			if c, ok := child.(*cc.Module); ok && c.IsVndk() {
-				return false
-			}
-		}
 
-		//TODO: b/296491928 Vendor APEX should use libbinder.ndk instead of libbinder once VNDK is fully deprecated.
-		if useVndk && mctx.Config().IsVndkDeprecated() && child.Name() == "libbinder" {
-			log.Print("Libbinder is linked from Vendor APEX ", a.Name(), " with module ", parent.Name())
-			return false
+		if useVndk && child.Name() == "libbinder" {
+			mctx.ModuleErrorf("Module %s in the vendor APEX %s should not use libbinder. Use libbinder_ndk instead.", parent.Name(), a.Name())
 		}
 
 		// By default, all the transitive dependencies are collected, unless filtered out
@@ -2195,15 +2181,6 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 	// tags used below are private (e.g. `cc.sharedDepTag`).
 	if cc.IsSharedDepTag(depTag) || cc.IsRuntimeDepTag(depTag) {
 		if ch, ok := child.(*cc.Module); ok {
-			if ch.UseVndk() && a.useVndkAsStable(ctx) && ch.IsVndk() {
-				vctx.requireNativeLibs = append(vctx.requireNativeLibs, ":vndk")
-				return false
-			}
-
-			//TODO: b/296491928 Vendor APEX should use libbinder.ndk instead of libbinder once VNDK is fully deprecated.
-			if ch.InVendorOrProduct() && ctx.Config().IsVndkDeprecated() && child.Name() == "libbinder" {
-				return false
-			}
 			af := apexFileForNativeLibrary(ctx, ch, vctx.handleSpecialLibs)
 			af.transitiveDep = true
 
@@ -3023,13 +3000,4 @@ func rBcpPackages() map[string][]string {
 
 func (a *apexBundle) IsTestApex() bool {
 	return a.testApex
-}
-
-func (a *apexBundle) useVndkAsStable(ctx android.BaseModuleContext) bool {
-	// VNDK cannot be linked if it is deprecated
-	if ctx.Config().IsVndkDeprecated() {
-		return false
-	}
-
-	return proptools.Bool(a.properties.Use_vndk_as_stable)
 }

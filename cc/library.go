@@ -1762,22 +1762,7 @@ func (library *libraryDecorator) installSymlinkToRuntimeApex(ctx ModuleContext, 
 
 func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 	if library.shared() {
-		if ctx.Device() && ctx.useVndk() {
-			// set subDir for VNDK extensions
-			if ctx.IsVndkExt() {
-				if ctx.isVndkSp() {
-					library.baseInstaller.subDir = "vndk-sp"
-				} else {
-					library.baseInstaller.subDir = "vndk"
-				}
-			}
-
-			// do not install vndk libs
-			// vndk libs are packaged into VNDK APEX
-			if ctx.isVndk() && !ctx.IsVndkExt() && !ctx.Config().IsVndkDeprecated() && !ctx.inProduct() {
-				return
-			}
-		} else if library.hasStubsVariants() && !ctx.Host() && ctx.directlyInAnyApex() {
+		if library.hasStubsVariants() && !ctx.Host() && ctx.directlyInAnyApex() {
 			// Bionic libraries (e.g. libc.so) is installed to the bootstrap subdirectory.
 			// The original path becomes a symlink to the corresponding file in the
 			// runtime APEX.
