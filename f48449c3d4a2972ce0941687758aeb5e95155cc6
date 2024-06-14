@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb8d4587_a150338b",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-06-14T15:23:22Z",
+      "side": 1,
+      "message": "OK, I\u0027ve created aosp/3131596 and if that\u0027s fine, I\u0027ll abandon this.",
+      "parentUuid": "662779bb_06cfd21c",
+      "revId": "f48449c3d4a2972ce0941687758aeb5e95155cc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c12d848_f116cc5a",
         "filename": "scripts/check_boot_jars/package_allowed_list.txt",
         "patchSetId": 1
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8e12f56_7d8be8f2",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-06-14T15:23:22Z",
+      "side": 1,
+      "message": "OK, I\u0027ve created aosp/3131596 and if that\u0027s fine, I\u0027ll abandon this.",
+      "parentUuid": "4c12d848_f116cc5a",
+      "revId": "f48449c3d4a2972ce0941687758aeb5e95155cc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "885c4c85_98182acb",
         "filename": "scripts/check_boot_jars/package_allowed_list.txt",
         "patchSetId": 1
@@ -48,6 +84,24 @@
       "writtenOn": "2024-06-14T14:02:57Z",
       "side": 1,
       "message": "Consider `jdk(\\..*)?`?",
+      "revId": "f48449c3d4a2972ce0941687758aeb5e95155cc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbee8f80_5a11d09a",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-06-14T15:23:22Z",
+      "side": 1,
+      "message": "OK, I\u0027ve created aosp/3131596 and if that\u0027s fine, I\u0027ll abandon this.",
+      "parentUuid": "885c4c85_98182acb",
       "revId": "f48449c3d4a2972ce0941687758aeb5e95155cc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
