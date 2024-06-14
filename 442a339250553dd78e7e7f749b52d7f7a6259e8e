@@ -16,6 +16,24 @@
       "message": "Ditto.",
       "revId": "442a339250553dd78e7e7f749b52d7f7a6259e8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7c95eca_6d35e600",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-06-14T15:23:42Z",
+      "side": 1,
+      "message": "OK, I\u0027ve created aosp/3131596 and if that\u0027s fine, I\u0027ll abandon this.",
+      "parentUuid": "aa5a6977_a0bf29cb",
+      "revId": "442a339250553dd78e7e7f749b52d7f7a6259e8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
