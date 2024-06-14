@@ -796,6 +796,8 @@ type AndroidLibrary struct {
 	androidLibraryProperties androidLibraryProperties
 
 	aarFile android.WritablePath
+
+	aconfigTextFilePaths android.Paths
 }
 
 var _ android.OutputFileProducer = (*AndroidLibrary)(nil)
@@ -831,12 +833,13 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	if a.usesLibrary.shouldDisableDexpreopt {
 		a.dexpreopter.disableDexpreopt()
 	}
+	a.aconfigTextFilePaths = getAconfigFilePaths(ctx)
 	a.aapt.buildActions(ctx,
 		aaptBuildActionOptions{
 			sdkContext:                     android.SdkContext(a),
 			classLoaderContexts:            a.classLoaderContexts,
 			enforceDefaultTargetSdkVersion: false,
-			aconfigTextFiles:               getAconfigFilePaths(ctx),
+			aconfigTextFiles:               a.aconfigTextFilePaths,
 			usesLibrary:                    &a.usesLibrary,
 		},
 	)
@@ -906,6 +909,10 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 			JniPackages: prebuiltJniPackages,
 		})
 	}
+
+	android.SetProvider(ctx, FlagsPackagesProvider, FlagsPackages{
+		AconfigTextFiles: a.aconfigTextFilePaths,
+	})
 }
 
 func (a *AndroidLibrary) IDEInfo(dpInfo *android.IdeInfo) {
