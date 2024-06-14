@@ -1776,7 +1776,11 @@ func (m *ModuleBase) baseModuleContextFactory(ctx blueprint.BaseModuleContext) b
 	}
 }
 
-func (m *ModuleBase) archModuleContextFactory(ctx blueprint.IncomingTransitionContext) archModuleContext {
+type archModuleContextFactoryContext interface {
+	Config() interface{}
+}
+
+func (m *ModuleBase) archModuleContextFactory(ctx archModuleContextFactoryContext) archModuleContext {
 	config := ctx.Config().(Config)
 	target := m.Target()
 	primaryArch := false

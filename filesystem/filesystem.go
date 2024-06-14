@@ -607,7 +607,7 @@ func sha1sum(values []string) string {
 
 var _ cc.UseCoverage = (*filesystem)(nil)
 
-func (*filesystem) IsNativeCoverageNeeded(ctx android.IncomingTransitionContext) bool {
+func (*filesystem) IsNativeCoverageNeeded(ctx cc.IsNativeCoverageNeededContext) bool {
 	return ctx.Device() && ctx.DeviceConfig().NativeCoverageEnabled()
 }
 
