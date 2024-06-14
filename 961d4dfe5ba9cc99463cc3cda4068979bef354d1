@@ -16,6 +16,24 @@
       "message": "it looks this is not used any more and can be removed.",
       "revId": "961d4dfe5ba9cc99463cc3cda4068979bef354d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10bffce5_a261030e",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2024-06-14T01:39:18Z",
+      "side": 1,
+      "message": "INTERNAL_PLATFORM_MERGED_COMPAT_CONFIG is not used from code search. Let\u0027s remove it.",
+      "parentUuid": "37c43e7d_c294164e",
+      "revId": "961d4dfe5ba9cc99463cc3cda4068979bef354d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
