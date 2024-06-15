@@ -104,6 +104,24 @@
       ],
       "revId": "83993d9f3063958bc82adfec26c85071ece51af3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e9a7ec_a87512da",
+        "filename": "cmd/release_config/release_config_proto/build_flags_out.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-06-15T23:22:48Z",
+      "side": 1,
+      "message": "If it\u0027s just a rename of the field, but with the same meaning, I think you want the same field number to preserve binary compatibility.",
+      "parentUuid": "6c24f500_16a1dad2",
+      "revId": "83993d9f3063958bc82adfec26c85071ece51af3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
