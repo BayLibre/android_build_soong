@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67006bff_9be42b3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2024-06-16T20:00:47Z",
+      "side": 1,
+      "message": "https://android-build.corp.google.com/artifact/submitted/11976843/aosp_falcon-next-userdebug/latest/view/logs%2Fbuild_error\n\nlogs/build_error on branch git_main on target aosp_falcon-next-userdebug at 11976843\n\nvendor/qcom/sa8295/proprietary/bluetooth/btconfig/btconfig.c:1768:9: \u001b[0m\u001b[0;1;31merror: \u001b[0m\u001b[1m\u0027snprintf\u0027 will always be truncated; specified size is 1, but format string expands to at least 2 [-Werror,-Wformat-truncation]\u001b[0m\n 1768 |         snprintf(\u0026bda[j],sizeof(bda[j]),\"%X\",((buf[i]\u003e\u003e4)\u00260xFF));\u001b[0m\n      | \u001b[0;1;32m        ^\n\u001b[0m\u001b[1mvendor/qcom/sa8295/proprietary/bluetooth/btconfig/btconfig.c:1769:9: \u001b[0m\u001b[0;1;31merror: \u001b[0m\u001b[1m\u0027snprintf\u0027 will always be truncated; specified size is 1, but format string expands to at least 2 [-Werror,-Wformat-truncation]\u001b[0m\n 1769 |         snprintf(\u0026bda[j+1],sizeof(bda[j+1]),\"%X\",(buf[i]\u00260x0F));\u001b[0m\n      | \u001b[0;1;32m        ^\n\u001b[0m\u001b[1mvendor/qcom/sa8295/proprietary/bluetooth/btconfig/btconfig.c:1772:5: \u001b[0m\u001b[0;1;31merror: \u001b[0m\u001b[1m\u0027snprintf\u0027 will always be truncated; specified size is 1, but format string expands to at least 2 [-Werror,-Wformat-truncation]\u001b[0m\n 1772 |     snprintf(\u0026bda[15],sizeof(bda[15]),\"%X\",((buf[7]\u003e\u003e4)\u00260xFF));\u001b[0m\n      | \u001b[0;1;32m    ^\n\u001b[0m\u001b[1mvendor/qcom/sa8295/proprietary/bluetooth/btconfig/btconfig.c:1773:5: \u001b[0m\u001b[0;1;31merror: \u001b[0m\u001b[1m\u0027snprintf\u0027 will always be truncated; specified size is 1, but format string expands to at least 2 [-Werror,-Wformat-truncation]\u001b[0m\n 1773 |     snprintf(\u0026bda[16],sizeof(bda[16]),\"%X\",(buf[7]\u00260x0F));\u001b[0m\n      | \u001b[0;1;32m    ^\n\u001b[0m\u001b[1mvendor/qcom/sa8295/proprietary/bluetooth/btconfig/btconfig.c:2205:9: \u001b[0m\u001b[0;1;31merror: \u001b[0m\u001b[1m\u0027snprintf\u0027 will always be truncated; specified size is 1, but format string expands to at least 2 [-Werror,-Wformat-truncation]\u001b[0m\n 2205 |         snprintf(\u0026bda[j],sizeof(bda[j]),\"%X\",((buf[i]\u003e\u003e4)\u00260xFF));\u001b[0m\n      | \u001b[0;1;32m        ^\n\u001b[0m\u001b[1mvendor/qcom/sa8295/proprietary/bluetooth/btconfig/btconfig.c:2206:9: \u001b[0m\u001b[0;1;31merror: \u001b[0m\u001b[1m\u0027snprintf\u0027 will always be truncated; specified size is 1, but format string expands to at least 2 [-Werror,-Wformat-truncation]\u001b[0m\n 2206 |         snprintf(\u0026bda[j+1],sizeof(bda[j+1]),\"%X\",(buf[i]\u00260x0F));\u001b[0m\n      | \u001b[0;1;32m        ^\n\u001b[0m\u001b[1mvendor/qcom/sa8295/proprietary/bluetooth/btconfig/btconfig.c:2209:5: \u001b[0m\u001b[0;1;31merror: \u001b[0m\u001b[1m\u0027snprintf\u0027 will always be truncated; specified size is 1, but format string expands to at least 2 [-Werror,-Wformat-truncation]\u001b[0m\n 2209 |     snprintf(\u0026bda[15],sizeof(bda[15]),\"%X\",((buf[7]\u003e\u003e4)\u00260xFF));\u001b[0m\n      | \u001b[0;1;32m    ^\n\u001b[0m\u001b[1mvendor/qcom/sa8295/proprietary/bluetooth/btconfig/btconfig.c:2210:5: \u001b[0m\u001b[0;1;31merror: \u001b[0m\u001b[1m\u0027snprintf\u0027 will always be truncated; specified size is 1, but format string expands to at least 2 [-Werror,-Wformat-truncation]\u001b[0m\n 2210 |     snprintf(\u0026bda[16],sizeof(bda[16]),\"%X\",(buf[7]\u00260x0F));\u001b[0m\n      | \u001b[0;1;32m    ^\n\u001b[0m8 errors generated.",
+      "revId": "8c696dd08e0b411b5f5a69dbd28a8e6d44a9dc30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
