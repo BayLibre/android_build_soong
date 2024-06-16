@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3df09bc6_94799395",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2024-06-16T20:04:35Z",
+      "side": 1,
+      "message": "https://android-build.corp.google.com/artifact/submitted/11976843/seahawk-next-userdebug/latest/view/logs%2Fbuild_error.log\n\nlogs/build_error.log on branch on target seahawk-next-userdebug at 11976843\n\nvendor/qcom/sa8155/proprietary/wlan/common-tools/cnssdiag/nan-parser.c\"\nvendor/qcom/sa8155/proprietary/wlan/common-tools/cnssdiag/nan-parser.c:287:3: error: \u0027snprintf\u0027 will always be truncated; specified size is 8, but format string expands to at least 12 [-Werror,-Wformat-truncation]\n  287 |                 snprintf(\u0026str[(arg_idx-2)*11], sizeof(\u0026str[(arg_idx-2)*11]),\n      |                 ^\nvendor/qcom/sa8155/proprietary/wlan/common-tools/cnssdiag/nan-parser.c:918:5: error: \u0027snprintf\u0027 will always be truncated; specified size is 8, but format string expands to at least 10 [-Werror,-Wformat-truncation]\n  918 |                                 snprintf(\u0026str[i*9], sizeof(\u0026str[i*9]),\n      |                                 ^\nvendor/qcom/sa8155/proprietary/wlan/common-tools/cnssdiag/nan-parser.c:932:5: error: \u0027snprintf\u0027 will always be truncated; specified size is 8, but format string expands to at least 10 [-Werror,-Wformat-truncation]\n  932 |                                 snprintf(\u0026str[i*9], sizeof(\u0026str[i*9]),\n      |                                 ^\n3 errors generated.",
+      "revId": "5a32f1f7fef97da1991a572b73213cebc18efcca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
