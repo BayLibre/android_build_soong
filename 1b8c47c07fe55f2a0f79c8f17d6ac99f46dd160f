@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee22312d_03fa2620",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4444,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-17T17:16:00Z",
+      "side": 1,
+      "message": "Is this already covered in line 4439? Should this instead be foo with a DoesNotContain check?",
+      "range": {
+        "startLine": 4444,
+        "startChar": 3,
+        "endLine": 4444,
+        "endChar": 65
+      },
+      "revId": "1b8c47c07fe55f2a0f79c8f17d6ac99f46dd160f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
