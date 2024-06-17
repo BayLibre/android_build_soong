@@ -16,6 +16,29 @@
       "message": "This looks much better. Thanks!",
       "revId": "ac5d99af2d0aea64f6e874a343bcef4636b4ad0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f48b464b_79397091",
+        "filename": "scripts/merge_json.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-17T18:12:54Z",
+      "side": 1,
+      "message": "Input can stay as a positional argument, because it\u0027s required. Moving output first allows us to distinguish the two positional arguments from each other, because output can only be a single file.",
+      "range": {
+        "startLine": 29,
+        "startChar": 23,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "ac5d99af2d0aea64f6e874a343bcef4636b4ad0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
