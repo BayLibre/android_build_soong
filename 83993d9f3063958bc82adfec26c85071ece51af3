@@ -122,6 +122,24 @@
       "parentUuid": "6c24f500_16a1dad2",
       "revId": "83993d9f3063958bc82adfec26c85071ece51af3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda519b8_b3732c02",
+        "filename": "cmd/release_config/release_config_proto/build_flags_out.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1427939
+      },
+      "writtenOn": "2024-06-17T15:23:11Z",
+      "side": 1,
+      "message": "That makes sense to me.",
+      "parentUuid": "f8e9a7ec_a87512da",
+      "revId": "83993d9f3063958bc82adfec26c85071ece51af3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
