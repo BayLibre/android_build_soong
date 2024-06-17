@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e893d7c_067f5d0e",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-17T17:11:24Z",
+      "side": 1,
+      "message": "I believe that the `getAconfigFilePaths(...)` function used in the above link is `android.getAconfigFilePaths(...)`, which is defined [here](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/be0f95b374edd6ccf17e177b259850eed59f90f0:android/aconfig_providers.go;drc\u003d74f3f30ae440e545f78ea21fb6053b707aa1d646;l\u003d207). This function is being defined in `java` package, and `android` package should not be able to depend on `java` package.\n\nWould this resolve your concern in the comment? If not, we can certainly discuss about this with LaMont.",
+      "parentUuid": "346ee63c_daae9861",
+      "range": {
+        "startLine": 493,
+        "startChar": 5,
+        "endLine": 493,
+        "endChar": 24
+      },
+      "revId": "ad506b40feb2efe14588c9b7152c661519e99809",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21242060_8aab6522",
         "filename": "java/app.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-15T00:46:09Z",
       "side": 1,
       "message": "Similar to a comment below, can this be a local variable?",
+      "range": {
+        "startLine": 570,
+        "startChar": 1,
+        "endLine": 570,
+        "endChar": 3
+      },
+      "revId": "ad506b40feb2efe14588c9b7152c661519e99809",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1c4b15_6a48a483",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-17T17:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21242060_8aab6522",
       "range": {
         "startLine": 570,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c6f3c7_db7834fa",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4433,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-17T17:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "603500da_151942fa",
+      "range": {
+        "startLine": 4433,
+        "startChar": 37,
+        "endLine": 4433,
+        "endChar": 41
+      },
+      "revId": "ad506b40feb2efe14588c9b7152c661519e99809",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32d87fa4_1502830d",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-06-15T00:46:09Z",
       "side": 1,
       "message": "Since we are using a provider anyways, can this be a local variable? IOW, do we need to add a new property to `RuntimeResourceOverlay` in line 45?",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 3
+      },
+      "revId": "ad506b40feb2efe14588c9b7152c661519e99809",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d3fcb10_e89e6ed5",
+        "filename": "java/rro.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-17T17:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32d87fa4_1502830d",
       "range": {
         "startLine": 155,
         "startChar": 1,
