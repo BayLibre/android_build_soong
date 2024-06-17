@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5cf77e2_e02a633a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-06-17T16:16:13Z",
+      "side": 1,
+      "message": "I think it would be good to do something similar to aosp/3131596 - it\u0027ll make it easier to update these while allowing the prebuilts to be preloaded on older versions.",
+      "revId": "78ba397272555a3d8bc6e86f2c4c63791e59379f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
