@@ -127,6 +127,11 @@ java_library {
         // This one is not on device but it's needed when javac compiles code
         // containing lambdas.
         "core-lambda-stubs-for-system-modules",
+        // This one is not on device but it's needed for interopatibility with code that
+        // references libcore methods annotated with `FlaggedApi`.
+        // Since these annotations are not part of the Public API, they have been converted
+        // to package-private.
+        "private-stub-annotations-jar",
     ],
     sdk_version: "none",
     system_modules: "none",
