@@ -142,6 +142,24 @@
       "parentUuid": "5e9077c3_f3178b3a",
       "revId": "75b3b1e5ddfc0ae73164b5f7c75598ae4cd9a6f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "912eb55c_a4454ea1",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-06-18T17:16:06Z",
+      "side": 1,
+      "message": "Good morning @ccross@android.com, can we move forward with this one?",
+      "parentUuid": "e67b828a_91f6fdbc",
+      "revId": "75b3b1e5ddfc0ae73164b5f7c75598ae4cd9a6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
