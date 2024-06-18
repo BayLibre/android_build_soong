@@ -22,6 +22,30 @@
       },
       "revId": "502f9e54da21736d92d51fa95faeceadb72a8edb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b3474e5_e31301cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1951966
+      },
+      "writtenOn": "2024-06-18T18:18:33Z",
+      "side": 1,
+      "message": "Thanks so much, Spandan. Yes, I think that might be another way to explain the issue. I have shared my thoughts and solution in b/346995836#comment7 - In short, I believe that https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:frameworks/base/api/Android.bp;l\u003d92?q\u003dcombined_apis\u0026ss\u003dh%2Fgoogleplex-android%2Fplatform%2Fsuperproject%2Fmain%2F%2B%2Frefs%2Fheads%2Fmain:frameworks%2Fbase%2Fapi%2F doesn\u0027t contain `framework-pdf` and therefore, the platform might not be aware of `framework-pdf` when building monolithic flag. Paul has suggested this workaround in b/346995836#comment10. Do you have any other ideas?\n\n\u003e As an alternative, can we reconcile this by adding framework-pdf to PRODUCT_APEX_BOOT_JARS in U? Specifically, CP this CL to udc-dev https://android-review.git.corp.google.com/c/platform/build/+/3112124\n\nI already patched aosp/3112124 to my local build (for different issue) and unfortunately it did not fix this issue.",
+      "parentUuid": "811197ca_61f09820",
+      "range": {
+        "startLine": 11,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "502f9e54da21736d92d51fa95faeceadb72a8edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
