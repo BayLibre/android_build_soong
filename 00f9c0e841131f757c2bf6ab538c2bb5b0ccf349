@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b71610d_704eebdd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-18T23:43:05Z",
+      "side": 1,
+      "message": "In progress run: https://android-build.corp.google.com/builds/abtd/run/L59900030004679761",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "00f9c0e841131f757c2bf6ab538c2bb5b0ccf349",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "797d7c0e_be666a90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-18T23:43:05Z",
+      "side": 1,
+      "message": "I will add unit tests in a followup CL",
+      "revId": "00f9c0e841131f757c2bf6ab538c2bb5b0ccf349",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
