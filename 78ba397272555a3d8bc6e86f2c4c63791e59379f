@@ -16,6 +16,24 @@
       "message": "I think it would be good to do something similar to aosp/3131596 - it\u0027ll make it easier to update these while allowing the prebuilts to be preloaded on older versions.",
       "revId": "78ba397272555a3d8bc6e86f2c4c63791e59379f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bb5627c_75b1a686",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2024-06-18T10:08:05Z",
+      "side": 1,
+      "message": "The commit message says \"Downstream branches don\u0027t need this CL because they have more fine-grained entries\". Is `main` one of the downstream branches?\n\nI don\u0027t have a strong opinion, but feels like that if we do, we may want to do it in a separate commit.",
+      "parentUuid": "f5cf77e2_e02a633a",
+      "revId": "78ba397272555a3d8bc6e86f2c4c63791e59379f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
