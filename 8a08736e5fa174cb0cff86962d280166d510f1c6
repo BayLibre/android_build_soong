@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d76f031c_e6beac00",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1989,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-06-18T23:44:20Z",
+      "side": 1,
+      "message": "changed to calculate the hash of used env",
+      "parentUuid": "b429d465_5d2fad3d",
+      "revId": "8a08736e5fa174cb0cff86962d280166d510f1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8dd6e216_416add2c",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-06-18T21:50:35Z",
       "side": 1,
       "message": "Change to GetEnvHash or something like that.\n\nAlso, should it do the whole environment or just the variables that were used.",
+      "revId": "8a08736e5fa174cb0cff86962d280166d510f1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78a6cff_acea59ae",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-06-18T23:44:20Z",
+      "side": 1,
+      "message": "Use used env as we discussed.",
+      "parentUuid": "8dd6e216_416add2c",
       "revId": "8a08736e5fa174cb0cff86962d280166d510f1c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
