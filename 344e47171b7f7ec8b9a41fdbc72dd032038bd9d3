@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d7bf84a_3d589bc4",
+        "filename": "android/build_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-18T18:30:30Z",
+      "side": 1,
+      "message": "We need to depend on this build number file, because infrastructure expects the build number to always be up-to-date. We hit issues when doing this with buildinfo_prop: b/332733525",
+      "revId": "344e47171b7f7ec8b9a41fdbc72dd032038bd9d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa62c0e5_9600db66",
+        "filename": "android/build_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-18T18:30:30Z",
+      "side": 1,
+      "message": "update",
+      "range": {
+        "startLine": 110,
+        "startChar": 42,
+        "endLine": 110,
+        "endChar": 51
+      },
+      "revId": "344e47171b7f7ec8b9a41fdbc72dd032038bd9d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29684e2_062f697a",
+        "filename": "android/build_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-18T18:30:30Z",
+      "side": 1,
+      "message": "Do we need to export this as an android.mk module? Make isn\u0027t consuming it currently.",
+      "revId": "344e47171b7f7ec8b9a41fdbc72dd032038bd9d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
