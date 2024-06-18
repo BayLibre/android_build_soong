@@ -724,6 +724,15 @@ func (b *BootclasspathFragmentModule) generateHiddenApiFlagRules(ctx android.Mod
 	return flagOutput
 }
 
+// A list of modules which will not be included in generating HiddenAPIOutput for sdk snapshots below the ApiLevel.
+// The key is the module name.
+// the value is the first ApiLevel that the module will contribute to HiddenAPIOutput.
+// This is to bypass verify_overlaps check for jar introduced in new dessert release that gets preloaded in platform with older ApiLevel.
+var skipHiddenAPIOutputForModuleBelowDessert = map[string]android.ApiLevel{
+	// framework-pdf is introduced in 35 as part of com.android.mediaprovider apex, but has its min_sdk_level set to 31.
+	"framework-pdf": android.ApiLevelVanillaIceCream,
+}
+
 // produceHiddenAPIOutput produces the hidden API all-flags.csv file (and supporting files)
 // for the fragment as well as encoding the flags in the boot dex jars.
 func (b *BootclasspathFragmentModule) produceHiddenAPIOutput(ctx android.ModuleContext, contents []android.Module, fragments []android.Module, input HiddenAPIFlagInput) *HiddenAPIOutput {
@@ -756,6 +765,10 @@ func (b *BootclasspathFragmentModule) produceHiddenAPIOutput(ctx android.ModuleC
 		// not work on the target build release and so must not be included in the sdk snapshot.
 		minApiLevel := android.MinApiLevelForSdkSnapshot(ctx, module)
 		if minApiLevel.GreaterThan(targetApiLevel) {
+			continue
+		}
+
+		if firstApiLevel, exists := skipHiddenAPIOutputForModuleBelowDessert[module.Name()]; exists && targetApiLevel.LessThan(firstApiLevel) {
 			continue
 		}
 
