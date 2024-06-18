@@ -2117,7 +2117,23 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		if c.Properties.IsSdkVariant && c.Properties.SdkAndPlatformVariantVisibleToMake {
 			moduleInfoJSON.Uninstallable = true
 		}
+	}
 
+	c.setOutputFiles(ctx)
+}
+
+func (c *Module) setOutputFiles(ctx ModuleContext) {
+	if c.outputFile.Valid() {
+		ctx.SetOutputFiles(android.Paths{c.outputFile.Path()}, "")
+	} else {
+		ctx.SetOutputFiles(android.Paths{}, "")
+	}
+	if c.linker != nil {
+		ctx.SetOutputFiles(android.PathsIfNonNil(c.linker.unstrippedOutputFilePath()), "unstripped")
+		// only libraryDecorator has meaningful strippedAllOutputFile
+		if _, ok := c.linker.(*libraryDecorator); ok {
+			ctx.SetOutputFiles(android.PathsIfNonNil(c.linker.strippedAllOutputFilePath()), "stripped_all")
+		}
 	}
 }
 
