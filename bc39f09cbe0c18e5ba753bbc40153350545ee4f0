@@ -22,6 +22,30 @@
       },
       "revId": "bc39f09cbe0c18e5ba753bbc40153350545ee4f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a26f273_26620e09",
+        "filename": "android/build_prop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-06-18T08:20:49Z",
+      "side": 1,
+      "message": "I updated the comment.",
+      "parentUuid": "ed13efea_01c483bb",
+      "range": {
+        "startLine": 42,
+        "startChar": 11,
+        "endLine": 42,
+        "endChar": 23
+      },
+      "revId": "bc39f09cbe0c18e5ba753bbc40153350545ee4f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
