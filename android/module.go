@@ -1235,25 +1235,16 @@ func (m *ModuleBase) GenerateTaggedDistFiles(ctx BaseModuleContext) TaggedDistFi
 		// the special tag name which represents that.
 		tag := proptools.StringDefault(dist.Tag, DefaultDistTag)
 
-		if outputFileProducer, ok := m.module.(OutputFileProducer); ok {
-			// Call the OutputFiles(tag) method to get the paths associated with the tag.
-			distFilesForTag, err := outputFileProducer.OutputFiles(tag)
-
-			// If the tag was not supported and is not DefaultDistTag then it is an error.
-			// Failing to find paths for DefaultDistTag is not an error. It just means
-			// that the module type requires the legacy behavior.
-			if err != nil && tag != DefaultDistTag {
-				ctx.PropertyErrorf("dist.tag", "%s", err.Error())
-			}
-
-			distFiles = distFiles.addPathsForTag(tag, distFilesForTag...)
-		} else if tag != DefaultDistTag {
-			// If the tag was specified then it is an error if the module does not
-			// implement OutputFileProducer because there is no other way of accessing
-			// the paths for the specified tag.
-			ctx.PropertyErrorf("dist.tag",
-				"tag %s not supported because the module does not implement OutputFileProducer", tag)
+		distFilesForTag, err := outputFilesForModuleFromProvider(ctx, m.module, tag)
+		// If the tag was not supported and is not DefaultDistTag then it is an
+		// error.
+		// Failing to find paths for DefaultDistTag is not an error. It just means
+		// that the module type requires the legacy behavior.
+		if err != nil && tag != DefaultDistTag {
+			ctx.PropertyErrorf("dist.tag", "%s", err.Error())
 		}
+
+		distFiles = distFiles.addPathsForTag(tag, distFilesForTag...)
 	}
 
 	return distFiles
