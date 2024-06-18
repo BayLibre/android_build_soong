@@ -46,6 +46,30 @@
       },
       "revId": "502f9e54da21736d92d51fa95faeceadb72a8edb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91dbf225_f185bd7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-18T20:59:39Z",
+      "side": 1,
+      "message": "Thanks for the explanation Alyssa. IIUC, the two options under consideration are\n1. b/346995836#comment7: Add framework-pdf to combined_apis in U-. This will require CPs to older branches\n2. b/346995836#comment10: Remove framework-pdf\u0027s apis from modular hiddenapi files. This has the advantage that we do not need to do CPs.\n\nDo apps/tests etc in U- platform trees need access to framework-pdf\u0027s apis at compile time? I believe in option 2, setting an sdk_version to *_current will not add framework-pdf\u0027s apis to the classpath, and will require explicitly adding this library to `libs` property.\n\n(Btw, if we were to go with option #1, can we use a soong config variable to add framework-pdf to combined_apis only when prebuilts are active?)",
+      "parentUuid": "3b3474e5_e31301cb",
+      "range": {
+        "startLine": 11,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "502f9e54da21736d92d51fa95faeceadb72a8edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
