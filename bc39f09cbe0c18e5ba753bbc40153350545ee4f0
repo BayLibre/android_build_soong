@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed13efea_01c483bb",
+        "filename": "android/build_prop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-18T06:55:55Z",
+      "side": 1,
+      "message": "the product_config module",
+      "range": {
+        "startLine": 42,
+        "startChar": 11,
+        "endLine": 42,
+        "endChar": 23
+      },
+      "revId": "bc39f09cbe0c18e5ba753bbc40153350545ee4f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
