@@ -94,6 +94,30 @@
       },
       "revId": "502f9e54da21736d92d51fa95faeceadb72a8edb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5fec9b5_e1c7e5b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-19T01:32:55Z",
+      "side": 1,
+      "message": "As Spandan mentioned, this change may allow verify overlaps to be satisfied, but does not allow U platform/apps to call `framework-pdf` \u0027s apis and introduces a hack in the build system. Thus, I would prefer option 1 over the option 2 as well.\n\n\u003e However, when I tried adding framework-pdf and built target (with prebuilt enabled), it seems to require the source framework-pdf to be specified\n\nDo you mind sharing the error message so that we can discuss more?",
+      "parentUuid": "a8db973d_8b94be9e",
+      "range": {
+        "startLine": 11,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "502f9e54da21736d92d51fa95faeceadb72a8edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
