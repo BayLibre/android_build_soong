@@ -70,6 +70,30 @@
       },
       "revId": "502f9e54da21736d92d51fa95faeceadb72a8edb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8db973d_8b94be9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1951966
+      },
+      "writtenOn": "2024-06-19T00:21:12Z",
+      "side": 1,
+      "message": "Thanks for pointing out the issue with option 2. I assume that in the end, if we want to be able to use framework-pdf in compile, we need to find the way to add it in combined_apis (e.g. option1).\n\n\u003e Btw, if we were to go with option #1, can we use a soong config variable to add framework-pdf to combined_apis only when prebuilts are active?\n\nI thought of doing that too. However, when I tried adding `framework-pdf` and built target (with prebuilt enabled), it seems to require the source `framework-pdf` to be specified",
+      "parentUuid": "91dbf225_f185bd7b",
+      "range": {
+        "startLine": 11,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "502f9e54da21736d92d51fa95faeceadb72a8edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
