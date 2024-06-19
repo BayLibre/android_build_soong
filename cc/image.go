@@ -39,17 +39,9 @@ const (
 )
 
 const (
-	// VendorVariation is the variant name used for /vendor code that does not
-	// compile against the VNDK.
-	VendorVariation = "vendor"
-
 	// VendorVariationPrefix is the variant prefix used for /vendor code that compiles
 	// against the VNDK.
 	VendorVariationPrefix = "vendor."
-
-	// ProductVariation is the variant name used for /product code that does not
-	// compile against the VNDK.
-	ProductVariation = "product"
 
 	// ProductVariationPrefix is the variant prefix used for /product code that compiles
 	// against the VNDK.
@@ -117,12 +109,12 @@ func (c *Module) HasNonSystemVariants() bool {
 
 // Returns true if the module is "product" variant. Usually these modules are installed in /product
 func (c *Module) InProduct() bool {
-	return c.Properties.ImageVariation == ProductVariation
+	return c.Properties.ImageVariation == android.ProductVariation
 }
 
 // Returns true if the module is "vendor" variant. Usually these modules are installed in /vendor
 func (c *Module) InVendor() bool {
-	return c.Properties.ImageVariation == VendorVariation
+	return c.Properties.ImageVariation == android.VendorVariation
 }
 
 // Returns true if the module is "vendor" or "product" variant. This replaces previous UseVndk usages
@@ -207,6 +199,12 @@ type ImageMutatableModule interface {
 
 	// SetCoreVariantNeeded sets whether the Core Variant is needed.
 	SetCoreVariantNeeded(b bool)
+
+	// SetProductVariantNeeded sets whether the Product Variant is needed.
+	SetProductVariantNeeded(b bool)
+
+	// SetVendorVariantNeeded sets whether the Vendor Variant is needed.
+	SetVendorVariantNeeded(b bool)
 }
 
 var _ ImageMutatableModule = (*Module)(nil)
@@ -267,6 +265,14 @@ func (m *Module) SetCoreVariantNeeded(b bool) {
 	m.Properties.CoreVariantNeeded = b
 }
 
+func (m *Module) SetProductVariantNeeded(b bool) {
+	m.Properties.ProductVariantNeeded = b
+}
+
+func (m *Module) SetVendorVariantNeeded(b bool) {
+	m.Properties.VendorVariantNeeded = b
+}
+
 func (m *Module) SnapshotVersion(mctx android.BaseModuleContext) string {
 	if snapshot, ok := m.linker.(SnapshotInterface); ok {
 		return snapshot.Version()
@@ -319,6 +325,8 @@ func MutateImage(mctx android.BaseModuleContext, m ImageMutatableModule) {
 		}
 	}
 
+	var vendorVariantNeeded bool = false
+	var productVariantNeeded bool = false
 	var coreVariantNeeded bool = false
 	var ramdiskVariantNeeded bool = false
 	var vendorRamdiskVariantNeeded bool = false
@@ -334,19 +342,19 @@ func MutateImage(mctx android.BaseModuleContext, m ImageMutatableModule) {
 		// and vendor and product variants will be created with LLNDK stubs.
 		// The LLNDK libraries need vendor variants even if there is no VNDK.
 		coreVariantNeeded = true
-		vendorVariants = append(vendorVariants, "")
-		productVariants = append(productVariants, "")
+		vendorVariantNeeded = true
+		productVariantNeeded = true
 		// Generate vendor variants for boardVndkVersion only if the VNDK snapshot does not
 		// provide the LLNDK stub libraries.
 		if needVndkVersionVendorVariantForLlndk {
-			vendorVariants = append(vendorVariants, "")
+			vendorVariantNeeded = true
 		}
 	} else if m.NeedsVendorPublicLibraryVariants() {
 		// A vendor public library has the implementation on /vendor, with stub variants
 		// for system and product.
 		coreVariantNeeded = true
-		vendorVariants = append(vendorVariants, "")
-		productVariants = append(productVariants, "")
+		vendorVariantNeeded = true
+		productVariantNeeded = true
 	} else if m.IsSnapshotPrebuilt() {
 		// Make vendor variants only for the versions in BOARD_VNDK_VERSION and
 		// PRODUCT_EXTRA_VNDK_VERSIONS.
@@ -364,16 +372,16 @@ func MutateImage(mctx android.BaseModuleContext, m ImageMutatableModule) {
 		// BOARD_VNDK_VERSION. The other modules are regarded as AOSP, or
 		// PLATFORM_VNDK_VERSION.
 		if m.HasVendorVariant() {
-			vendorVariants = append(vendorVariants, "")
+			vendorVariantNeeded = true
 		}
 
 		// product_available modules are available to /product.
 		if m.HasProductVariant() {
-			productVariants = append(productVariants, "")
+			productVariantNeeded = true
 		}
 	} else if vendorSpecific && m.SdkVersion() == "" {
 		// This will be available in /vendor (or /odm) only
-		vendorVariants = append(vendorVariants, "")
+		vendorVariantNeeded = true
 	} else {
 		// This is either in /system (or similar: /data), or is a
 		// module built with the NDK. Modules built with the NDK
@@ -384,7 +392,7 @@ func MutateImage(mctx android.BaseModuleContext, m ImageMutatableModule) {
 	if coreVariantNeeded && productSpecific && m.SdkVersion() == "" {
 		// The module has "product_specific: true" that does not create core variant.
 		coreVariantNeeded = false
-		productVariants = append(productVariants, "")
+		productVariantNeeded = true
 	}
 
 	if m.RamdiskAvailable() {
@@ -415,17 +423,13 @@ func MutateImage(mctx android.BaseModuleContext, m ImageMutatableModule) {
 	}
 
 	for _, variant := range android.FirstUniqueStrings(vendorVariants) {
-		if variant == "" {
-			m.AppendExtraVariant(VendorVariation)
-		} else {
+		if variant != "" {
 			m.AppendExtraVariant(VendorVariationPrefix + variant)
 		}
 	}
 
 	for _, variant := range android.FirstUniqueStrings(productVariants) {
-		if variant == "" {
-			m.AppendExtraVariant(ProductVariation)
-		} else {
+		if variant != "" {
 			m.AppendExtraVariant(ProductVariationPrefix + variant)
 		}
 	}
@@ -434,6 +438,8 @@ func MutateImage(mctx android.BaseModuleContext, m ImageMutatableModule) {
 	m.SetVendorRamdiskVariantNeeded(vendorRamdiskVariantNeeded)
 	m.SetRecoveryVariantNeeded(recoveryVariantNeeded)
 	m.SetCoreVariantNeeded(coreVariantNeeded)
+	m.SetProductVariantNeeded(productVariantNeeded)
+	m.SetVendorVariantNeeded(vendorVariantNeeded)
 
 	// Disable the module if no variants are needed.
 	if !ramdiskVariantNeeded &&
@@ -442,6 +448,14 @@ func MutateImage(mctx android.BaseModuleContext, m ImageMutatableModule) {
 		len(m.ExtraVariants()) == 0 {
 		m.Disable()
 	}
+}
+
+func (c *Module) VendorVariantNeeded(ctx android.BaseModuleContext) bool {
+	return c.Properties.VendorVariantNeeded
+}
+
+func (c *Module) ProductVariantNeeded(ctx android.BaseModuleContext) bool {
+	return c.Properties.ProductVariantNeeded
 }
 
 func (c *Module) CoreVariantNeeded(ctx android.BaseModuleContext) bool {
@@ -537,15 +551,15 @@ func (c *Module) SetImageVariation(ctx android.BaseModuleContext, variant string
 	} else if variant == android.RecoveryVariation {
 		c.MakeAsPlatform()
 		squashRecoverySrcs(c)
-	} else if strings.HasPrefix(variant, VendorVariation) {
-		c.Properties.ImageVariation = VendorVariation
+	} else if strings.HasPrefix(variant, android.VendorVariation) {
+		c.Properties.ImageVariation = android.VendorVariation
 
 		if strings.HasPrefix(variant, VendorVariationPrefix) {
 			c.Properties.VndkVersion = strings.TrimPrefix(variant, VendorVariationPrefix)
 		}
 		squashVendorSrcs(c)
-	} else if strings.HasPrefix(variant, ProductVariation) {
-		c.Properties.ImageVariation = ProductVariation
+	} else if strings.HasPrefix(variant, android.ProductVariation) {
+		c.Properties.ImageVariation = android.ProductVariation
 		if strings.HasPrefix(variant, ProductVariationPrefix) {
 			c.Properties.VndkVersion = strings.TrimPrefix(variant, ProductVariationPrefix)
 		}
