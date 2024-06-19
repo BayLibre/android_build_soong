@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb16b59a_c9e745b6",
+        "filename": "android/build_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-06-19T01:44:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d7bf84a_3d589bc4",
+      "revId": "344e47171b7f7ec8b9a41fdbc72dd032038bd9d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa62c0e5_9600db66",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f0a003c_bf0715d6",
+        "filename": "android/build_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-06-19T01:44:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa62c0e5_9600db66",
+      "range": {
+        "startLine": 110,
+        "startChar": 42,
+        "endLine": 110,
+        "endChar": 51
+      },
+      "revId": "344e47171b7f7ec8b9a41fdbc72dd032038bd9d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d29684e2_062f697a",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-06-18T18:30:30Z",
       "side": 1,
       "message": "Do we need to export this as an android.mk module? Make isn\u0027t consuming it currently.",
+      "revId": "344e47171b7f7ec8b9a41fdbc72dd032038bd9d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53e2b9e4_e34a12c8",
+        "filename": "android/build_prop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-06-19T01:44:32Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "d29684e2_062f697a",
       "revId": "344e47171b7f7ec8b9a41fdbc72dd032038bd9d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
