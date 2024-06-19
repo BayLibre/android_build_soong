@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "50bc300a_14ff12ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-19T04:28:29Z",
+      "side": 1,
+      "message": "The test passes with this CL",
+      "parentUuid": "9b71610d_704eebdd",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "00f9c0e841131f757c2bf6ab538c2bb5b0ccf349",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "797d7c0e_be666a90",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
