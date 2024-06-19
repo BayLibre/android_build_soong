@@ -806,6 +806,29 @@ func (c *config) DisplayBuildNumber() bool {
 	return Bool(c.productVariables.DisplayBuildNumber)
 }
 
+func (c *config) pathForFullOutputPath(ctx PathContext, fullPath string) (Path, error) {
+	absoluteOutDir, err := filepath.Abs(c.outDir)
+	if err != nil {
+		return nil, fmt.Errorf("error getting absolute path for (%s): %w", c.outDir, err)
+	}
+
+	absolutePath, err := filepath.Abs(fullPath)
+	if err != nil {
+		return nil, fmt.Errorf("error getting absolute path for (%s): %w", fullPath, err)
+	}
+
+	relPath, err := filepath.Rel(absoluteOutDir, absolutePath)
+	if err != nil {
+		return nil, fmt.Errorf("error determining relative path for (%s): %w", absolutePath, err)
+	}
+
+	if strings.HasPrefix(relPath, ".."+string(os.PathSeparator)) {
+		return nil, fmt.Errorf("%s must be within the output directory (%s)", absolutePath, absoluteOutDir)
+	}
+
+	return PathForArbitraryOutput(ctx, relPath), nil
+}
+
 // BuildFingerprintFile returns the path to a text file containing metadata
 // representing the current build's fingerprint.
 //
@@ -814,7 +837,11 @@ func (c *config) DisplayBuildNumber() bool {
 // require them to run and get the current build fingerprint. This ensures they
 // don't rebuild on every incremental build when the build number changes.
 func (c *config) BuildFingerprintFile(ctx PathContext) Path {
-	return PathForArbitraryOutput(ctx, "target", "product", c.DeviceName(), String(c.productVariables.BuildFingerprintFile))
+	path, err := c.pathForFullOutputPath(ctx, String(c.productVariables.BuildFingerprintFile))
+	if err != nil {
+		panic(fmt.Errorf("error determining path for BuildFingerprintFile: %w", err))
+	}
+	return path
 }
 
 // BuildNumberFile returns the path to a text file containing metadata
@@ -825,13 +852,21 @@ func (c *config) BuildFingerprintFile(ctx PathContext) Path {
 // require them to run and get the current build number. This ensures they don't
 // rebuild on every incremental build when the build number changes.
 func (c *config) BuildNumberFile(ctx PathContext) Path {
-	return PathForOutput(ctx, String(c.productVariables.BuildNumberFile))
+	path, err := c.pathForFullOutputPath(ctx, String(c.productVariables.BuildNumberFile))
+	if err != nil {
+		panic(fmt.Errorf("error determining path for BuildNumberFile: %w", err))
+	}
+	return path
 }
 
 // BuildHostnameFile returns the path to a text file containing metadata
 // representing the current build's host name.
 func (c *config) BuildHostnameFile(ctx PathContext) Path {
-	return PathForOutput(ctx, String(c.productVariables.BuildHostnameFile))
+	path, err := c.pathForFullOutputPath(ctx, String(c.productVariables.BuildHostnameFile))
+	if err != nil {
+		panic(fmt.Errorf("error determining path for BuildHostnameFile: %w", err))
+	}
+	return path
 }
 
 // BuildThumbprintFile returns the path to a text file containing metadata
@@ -842,7 +877,11 @@ func (c *config) BuildHostnameFile(ctx PathContext) Path {
 // require them to run and get the current build thumbprint. This ensures they
 // don't rebuild on every incremental build when the build thumbprint changes.
 func (c *config) BuildThumbprintFile(ctx PathContext) Path {
-	return PathForArbitraryOutput(ctx, "target", "product", c.DeviceName(), String(c.productVariables.BuildThumbprintFile))
+	path, err := c.pathForFullOutputPath(ctx, String(c.productVariables.BuildThumbprintFile))
+	if err != nil {
+		panic(fmt.Errorf("error determining path for BuildThumbprintFile: %w", err))
+	}
+	return path
 }
 
 // DeviceName returns the name of the current device target.
