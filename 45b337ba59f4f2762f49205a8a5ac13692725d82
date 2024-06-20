@@ -16,6 +16,24 @@
       "message": "@ccross@android.com - I see how InitAndroidMultiTargetsArchModule could help with aosp/3101977, but how about this one? This change is basically: \"I don\u0027t care what variant there is (host or not, vendor or system), just give me any\". What\u0027s your thoughts?",
       "revId": "45b337ba59f4f2762f49205a8a5ac13692725d82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66821dd2_d7961ac2",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-20T18:40:52Z",
+      "side": 1,
+      "message": "This has the same problem.  `InitAndroidMultiTargetsArchModule` would tell you which variants are appropriate for the current build, and then you could just take the first one.  You may need to split `Modules` into `Host_modules` and `Device_modules`.",
+      "parentUuid": "e65e7409_3463f4e7",
+      "revId": "45b337ba59f4f2762f49205a8a5ac13692725d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
