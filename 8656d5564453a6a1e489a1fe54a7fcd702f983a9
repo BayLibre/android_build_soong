@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eda1db6_a362bfba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-20T16:50:59Z",
+      "side": 1,
+      "message": "I don\u0027t see a build/abfs repsitory: https://android.googlesource.com/\n\nWhen is that going to be added?",
+      "revId": "8656d5564453a6a1e489a1fe54a7fcd702f983a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c98685_178508e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-20T16:50:59Z",
+      "side": 1,
+      "message": "Needs a bug: tag",
+      "revId": "8656d5564453a6a1e489a1fe54a7fcd702f983a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e98c82_0ece9a2b",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-20T16:50:59Z",
+      "side": 1,
+      "message": "Why do we need to pass soong ui\u0027s arguments to abfs? I don\u0027t want abfs to depend on our flags.",
+      "revId": "8656d5564453a6a1e489a1fe54a7fcd702f983a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c665ce_a56ac25d",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-20T16:50:59Z",
+      "side": 1,
+      "message": "Why does abfs have separate copies of ckati and ninja? We can\u0027t support two different versions of these tools.",
+      "revId": "8656d5564453a6a1e489a1fe54a7fcd702f983a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cc39210_52437104",
+        "filename": "ui/build/path.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-20T16:50:59Z",
+      "side": 1,
+      "message": "What tools are going to be here? This should probably be a dedicated `bin` folder instead of the top-level `build/abfs` folder.",
+      "revId": "8656d5564453a6a1e489a1fe54a7fcd702f983a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
