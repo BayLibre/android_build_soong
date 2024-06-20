@@ -34,6 +34,24 @@
       "parentUuid": "e65e7409_3463f4e7",
       "revId": "45b337ba59f4f2762f49205a8a5ac13692725d82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcc480df_e54d5fdb",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-06-20T19:42:25Z",
+      "side": 1,
+      "message": "Splitting Modules into host/device would be a bummer, but okay.\n\nDo you think InitAndroidMultiTargetsArchModule would be a minor effort for me, or it\u0027s better to just wait until you have time for it? How difficult would it be compared to cc_cmake_snapshot?",
+      "parentUuid": "66821dd2_d7961ac2",
+      "revId": "45b337ba59f4f2762f49205a8a5ac13692725d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
