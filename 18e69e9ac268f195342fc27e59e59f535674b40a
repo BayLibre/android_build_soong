@@ -16,6 +16,24 @@
       "message": "Before we go any further with this CL, can we please do a design review of how we\u0027re going to upstream ABFS, integrate it into soong, etc.",
       "revId": "18e69e9ac268f195342fc27e59e59f535674b40a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed8fef62_a6bfb764",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1945475
+      },
+      "writtenOn": "2024-06-20T17:44:24Z",
+      "side": 1,
+      "message": "Sure. I\u0027ll toss together a doc describing what we\u0027re doing here and set up a review",
+      "parentUuid": "3d66d452_49da26e5",
+      "revId": "18e69e9ac268f195342fc27e59e59f535674b40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
