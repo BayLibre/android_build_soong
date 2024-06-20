@@ -378,7 +378,7 @@ func (m *moduleContext) ModuleSubDir() string {
 }
 
 func (m *moduleContext) SoongConfigTraceHash() string {
-	return m.module.base().commonProperties.SoongConfigTraceHash
+	return m.module.base().soongConfigTraceProperties.SoongConfigTraceHash
 }
 
 func (m *moduleContext) InstallInData() bool {
