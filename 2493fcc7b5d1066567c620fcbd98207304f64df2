@@ -33,6 +33,24 @@
       "message": "Is it intentional to only add libc++ if there are other prebuilts listed?",
       "revId": "2493fcc7b5d1066567c620fcbd98207304f64df2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d66efbaf_aaa599c5",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-06-20T23:57:21Z",
+      "side": 1,
+      "message": "It\u0027s adding libc++ to the list of all prebuilts and then adding all of them together. Is that what you\u0027re asking about?",
+      "parentUuid": "381728cd_61c0f0fc",
+      "revId": "2493fcc7b5d1066567c620fcbd98207304f64df2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
