@@ -81,6 +81,10 @@ type DexProperties struct {
 		// If true, transitive reverse dependencies of this module will have this
 		// module's proguard spec appended to their optimization action
 		Export_proguard_flags_files *bool
+
+		// If true, use d8, with sharding, for eng builds.
+		// This will greatly reduce the time it takes to generate the dex.
+		Sharded_d8_compilation_for_eng *bool
 	}
 
 	// Keep the data uncompressed. We always need uncompressed dex for execution,
@@ -123,17 +127,15 @@ func (d *dexer) optimizeOrObfuscateEnabled() bool {
 	return d.effectiveOptimizeEnabled() && (proptools.Bool(d.dexProperties.Optimize.Optimize) || proptools.Bool(d.dexProperties.Optimize.Obfuscate))
 }
 
-var d8, d8RE = pctx.MultiCommandRemoteStaticRules("d8",
+func (d *dexer) useD8InShardedMode(ctx android.ModuleContext) bool {
+	return ctx.Config().Eng() && Bool(d.dexProperties.Optimize.Sharded_d8_compilation_for_eng)
+}
+
+var d8, d8RE = pctx.MultiCommandRemoteStaticRules("d8s",
 	blueprint.RuleParams{
-		Command: `rm -rf "$outDir" && mkdir -p "$outDir" && ` +
-			`$d8Template${config.D8Cmd} ${config.D8Flags} $d8Flags --output $outDir --no-dex-input-jar $in && ` +
-			`$zipTemplate${config.SoongZipCmd} $zipFlags -o $outDir/classes.dex.jar -C $outDir -f "$outDir/classes*.dex" && ` +
-			`${config.MergeZipsCmd} -D -stripFile "**/*.class" $mergeZipsFlags $out $outDir/classes.dex.jar $in && ` +
-			`rm -f "$outDir/classes*.dex" "$outDir/classes.dex.jar"`,
+		Command: `$d8Template${config.D8Cmd} ${config.D8Flags} $d8Flags --output $out --no-dex-input-jar $in`,
 		CommandDeps: []string{
 			"${config.D8Cmd}",
-			"${config.SoongZipCmd}",
-			"${config.MergeZipsCmd}",
 		},
 	}, map[string]*remoteexec.REParams{
 		"$d8Template": &remoteexec.REParams{
@@ -143,14 +145,7 @@ var d8, d8RE = pctx.MultiCommandRemoteStaticRules("d8",
 			ToolchainInputs: []string{"${config.JavaCmd}"},
 			Platform:        map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
 		},
-		"$zipTemplate": &remoteexec.REParams{
-			Labels:       map[string]string{"type": "tool", "name": "soong_zip"},
-			Inputs:       []string{"${config.SoongZipCmd}", "$outDir"},
-			OutputFiles:  []string{"$outDir/classes.dex.jar"},
-			ExecStrategy: "${config.RED8ExecStrategy}",
-			Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
-		},
-	}, []string{"outDir", "d8Flags", "zipFlags", "mergeZipsFlags"}, nil)
+	}, []string{"d8Flags"}, nil)
 
 var r8, r8RE = pctx.MultiCommandRemoteStaticRules("r8",
 	blueprint.RuleParams{
@@ -273,6 +268,14 @@ func (d *dexer) d8Flags(ctx android.ModuleContext, dexParams *compileDexParams) 
 
 	return d8Flags, d8Deps, artProfileOutput
 }
+
+var dexJarMergeRule = pctx.AndroidStaticRule("dexJarMerger",
+	blueprint.RuleParams{
+		Command: `${config.MergeDexJarsCmd} ` +
+			`--output $out $args`,
+		CommandDeps: []string{"${config.MergeDexJarsCmd}"},
+	},
+	"args")
 
 func (d *dexer) r8Flags(ctx android.ModuleContext, dexParams *compileDexParams) (r8Flags []string, r8Deps android.Paths, artProfileOutput *android.OutputPath) {
 	flags := dexParams.flags
@@ -423,8 +426,9 @@ func (d *dexer) addArtProfile(ctx android.ModuleContext, dexParams *compileDexPa
 
 }
 
-// Return the compiled dex jar and (optional) profile _after_ r8 optimization
 func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParams) (android.OutputPath, *android.OutputPath) {
+	const DEFAULT_D8_SHARDS = 1
+	const SHARDED_D8_SHARDS = 16
 
 	// Compile classes.jar into classes.dex and then javalib.jar
 	javalibJar := android.PathForModuleOut(ctx, "dex", dexParams.jarName).OutputPath
@@ -443,7 +447,7 @@ func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParam
 		mergeZipsFlags = "-stripFile META-INF/*.kotlin_module -stripFile **/*.kotlin_builtins"
 	}
 
-	useR8 := d.effectiveOptimizeEnabled()
+	useR8 := d.effectiveOptimizeEnabled() && !d.useD8InShardedMode(ctx)
 	var artProfileOutputPath *android.OutputPath
 	if useR8 {
 		proguardDictionary := android.PathForModuleOut(ctx, "proguard_dictionary")
@@ -510,22 +514,45 @@ func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParam
 			)
 		}
 		d8Deps = append(d8Deps, commonDeps...)
+
+		shards := DEFAULT_D8_SHARDS
+		if d.useD8InShardedMode(ctx) {
+			shards = SHARDED_D8_SHARDS
+		}
 		rule := d8
 		if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_D8") {
 			rule = d8RE
 		}
+		toMerge := android.Paths{}
+		shardCommonFlags := append(commonFlags, d8Flags...)
+		shardCommonFlags = append(shardCommonFlags, "--shard-count")
+		shardCommonFlags = append(shardCommonFlags, strconv.Itoa(shards))
+
+		for i := range shards {
+			outputPath := android.PathForModuleOut(ctx, "split_"+strconv.Itoa(i)+".jar")
+			toMerge = append(toMerge, outputPath)
+			currentShardD8Flags := append(shardCommonFlags, "--shard-number")
+			currentShardD8Flags = append(currentShardD8Flags, strconv.Itoa(i))
+			ctx.Build(pctx, android.BuildParams{
+				Rule:        rule,
+				Description: "d8 shard " + strconv.Itoa(i) + " out of " + strconv.Itoa(shards),
+				Output:      outputPath,
+				Input:       dexParams.classesJar,
+				Implicits:   d8Deps,
+				Args: map[string]string{
+					"d8Flags": strings.Join(currentShardD8Flags, " "),
+				},
+			})
+		}
+		arg_string := strings.Join(toMerge.Strings(), " ")
+		arg_string = arg_string + " --original_jar " + dexParams.classesJar.String()
 		ctx.Build(pctx, android.BuildParams{
-			Rule:            rule,
-			Description:     "d8",
-			Output:          javalibJar,
-			Input:           dexParams.classesJar,
-			ImplicitOutputs: implicitOutputs,
-			Implicits:       d8Deps,
+			Rule:        dexJarMergeRule,
+			Description: "merge dex jars",
+			Implicits:   toMerge,
+			Output:      javalibJar,
 			Args: map[string]string{
-				"d8Flags":        strings.Join(append(commonFlags, d8Flags...), " "),
-				"zipFlags":       zipFlags,
-				"outDir":         outDir.String(),
-				"mergeZipsFlags": mergeZipsFlags,
+				"args": arg_string,
 			},
 		})
 	}
