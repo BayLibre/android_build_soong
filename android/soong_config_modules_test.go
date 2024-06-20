@@ -666,7 +666,7 @@ func TestSoongConfigModuleTrace(t *testing.T) {
 
 		// Hashes of modules not using soong config should be empty
 		normal := result.ModuleForTests("normal", "").Module().(*soongConfigTestModule)
-		AssertDeepEquals(t, "normal hash", normal.base().commonProperties.SoongConfigTraceHash, "")
+		AssertDeepEquals(t, "normal hash", normal.base().soongConfigTraceProperties.SoongConfigTraceHash, "")
 		AssertDeepEquals(t, "normal hash out", normal.outputPath.RelativeToTop().String(), "out/soong/.intermediates/normal/test")
 
 		board1 := result.ModuleForTests("board_1", "").Module().(*soongConfigTestModule)
@@ -674,29 +674,29 @@ func TestSoongConfigModuleTrace(t *testing.T) {
 		size := result.ModuleForTests("size", "").Module().(*soongConfigTestModule)
 
 		// Trace mutator sets soong config trace hash correctly
-		board1Hash := board1.base().commonProperties.SoongConfigTrace.hash()
+		board1Hash := board1.base().soongConfigTraceProperties.SoongConfigTrace.hash()
 		board1Output := board1.outputPath.RelativeToTop().String()
-		AssertDeepEquals(t, "board hash calc", board1Hash, board1.base().commonProperties.SoongConfigTraceHash)
+		AssertDeepEquals(t, "board hash calc", board1Hash, board1.base().soongConfigTraceProperties.SoongConfigTraceHash)
 		AssertDeepEquals(t, "board hash path", board1Output, filepath.Join("out/soong/.intermediates/board_1", board1Hash, "test"))
 
-		sizeHash := size.base().commonProperties.SoongConfigTrace.hash()
+		sizeHash := size.base().soongConfigTraceProperties.SoongConfigTrace.hash()
 		sizeOutput := size.outputPath.RelativeToTop().String()
-		AssertDeepEquals(t, "size hash calc", sizeHash, size.base().commonProperties.SoongConfigTraceHash)
+		AssertDeepEquals(t, "size hash calc", sizeHash, size.base().soongConfigTraceProperties.SoongConfigTraceHash)
 		AssertDeepEquals(t, "size hash path", sizeOutput, filepath.Join("out/soong/.intermediates/size", sizeHash, "test"))
 
 		// Trace should be identical for modules using the same set of variables
-		AssertDeepEquals(t, "board trace", board1.base().commonProperties.SoongConfigTrace, board2.base().commonProperties.SoongConfigTrace)
-		AssertDeepEquals(t, "board hash", board1.base().commonProperties.SoongConfigTraceHash, board2.base().commonProperties.SoongConfigTraceHash)
+		AssertDeepEquals(t, "board trace", board1.base().soongConfigTraceProperties.SoongConfigTrace, board2.base().soongConfigTraceProperties.SoongConfigTrace)
+		AssertDeepEquals(t, "board hash", board1.base().soongConfigTraceProperties.SoongConfigTraceHash, board2.base().soongConfigTraceProperties.SoongConfigTraceHash)
 
 		// Trace hash should be different for different sets of soong variables
-		AssertBoolEquals(t, "board hash not equal to size hash", board1.base().commonProperties.SoongConfigTraceHash == size.commonProperties.SoongConfigTraceHash, false)
+		AssertBoolEquals(t, "board hash not equal to size hash", board1.base().soongConfigTraceProperties.SoongConfigTraceHash == size.soongConfigTraceProperties.SoongConfigTraceHash, false)
 
 		boardSize := result.ModuleForTests("board_and_size", "").Module().(*soongConfigTestModule)
 		boardSizeDefaults := result.ModuleForTests("board_and_size_with_defaults", "").Module()
 
 		// Trace should propagate
-		AssertDeepEquals(t, "board_size hash calc", boardSize.base().commonProperties.SoongConfigTrace.hash(), boardSize.base().commonProperties.SoongConfigTraceHash)
-		AssertDeepEquals(t, "board_size trace", boardSize.base().commonProperties.SoongConfigTrace, boardSizeDefaults.base().commonProperties.SoongConfigTrace)
-		AssertDeepEquals(t, "board_size hash", boardSize.base().commonProperties.SoongConfigTraceHash, boardSizeDefaults.base().commonProperties.SoongConfigTraceHash)
+		AssertDeepEquals(t, "board_size hash calc", boardSize.base().soongConfigTraceProperties.SoongConfigTrace.hash(), boardSize.base().soongConfigTraceProperties.SoongConfigTraceHash)
+		AssertDeepEquals(t, "board_size trace", boardSize.base().soongConfigTraceProperties.SoongConfigTrace, boardSizeDefaults.base().soongConfigTraceProperties.SoongConfigTrace)
+		AssertDeepEquals(t, "board_size hash", boardSize.base().soongConfigTraceProperties.SoongConfigTraceHash, boardSizeDefaults.base().soongConfigTraceProperties.SoongConfigTraceHash)
 	})
 }

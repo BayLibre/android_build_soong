@@ -571,7 +571,7 @@ func configModuleFactory(factory blueprint.ModuleFactory, moduleType *soongconfi
 				ctx.AppendProperties(ps)
 			}
 
-			module.(Module).base().commonProperties.SoongConfigTrace = tracingConfig.getTrace()
+			module.(Module).base().soongConfigTraceProperties.SoongConfigTrace = tracingConfig.getTrace()
 		})
 		return module, props
 	}
