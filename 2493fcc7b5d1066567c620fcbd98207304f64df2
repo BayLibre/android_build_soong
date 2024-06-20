@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19672acb_e6bea14a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-06-20T22:36:38Z",
+      "side": 1,
+      "message": "These are hopefully non-controversial pieces of aosp/3107166 and aosp/3101977 that can be merged sooner (now?).",
+      "revId": "2493fcc7b5d1066567c620fcbd98207304f64df2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
