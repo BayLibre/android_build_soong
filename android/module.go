@@ -523,6 +523,11 @@ type commonProperties struct {
 	// constants in image.go, but can also be set to a custom value by individual module types.
 	ImageVariation string `blueprint:"mutated"`
 
+	// The team (defined by the owner/vendor) who owns the property.
+	Team *string `android:"path"`
+}
+
+type soongConfigTraceProperties struct {
 	// SoongConfigTrace records accesses to VendorVars (soong_config). The trace will be hashed
 	// and used as a subdir of PathForModuleOut.  Note that we mainly focus on incremental
 	// builds among similar products (e.g. aosp_cf_x86_64_phone and aosp_cf_x86_64_foldable),
@@ -530,9 +535,6 @@ type commonProperties struct {
 	// trace, but influence modules among products.
 	SoongConfigTrace     soongConfigTrace `blueprint:"mutated"`
 	SoongConfigTraceHash string           `blueprint:"mutated"`
-
-	// The team (defined by the owner/vendor) who owns the property.
-	Team *string `android:"path"`
 }
 
 type distProperties struct {
@@ -722,6 +724,7 @@ func InitAndroidModule(m Module) {
 	m.AddProperties(
 		&base.nameProperties,
 		&base.commonProperties,
+		&base.soongConfigTraceProperties,
 		&base.distProperties)
 
 	initProductVariableModule(m)
@@ -834,11 +837,12 @@ type ModuleBase struct {
 	// TODO: remove this
 	module Module
 
-	nameProperties          nameProperties
-	commonProperties        commonProperties
-	distProperties          distProperties
-	variableProperties      interface{}
-	hostAndDeviceProperties hostAndDeviceProperties
+	nameProperties             nameProperties
+	commonProperties           commonProperties
+	soongConfigTraceProperties soongConfigTraceProperties
+	distProperties             distProperties
+	variableProperties         interface{}
+	hostAndDeviceProperties    hostAndDeviceProperties
 
 	// Arch specific versions of structs in GetProperties() prior to
 	// initialization in InitAndroidArchModule, lets call it `generalProperties`.
@@ -2771,9 +2775,9 @@ func registerSoongConfigTraceMutator(ctx RegisterMutatorsContext) {
 // soongConfigTraceMutator accumulates recorded soong_config trace from children. Also it normalizes
 // SoongConfigTrace to make it consistent.
 func soongConfigTraceMutator(ctx BottomUpMutatorContext) {
-	trace := &ctx.Module().base().commonProperties.SoongConfigTrace
+	trace := &ctx.Module().base().soongConfigTraceProperties.SoongConfigTrace
 	ctx.VisitDirectDeps(func(m Module) {
-		childTrace := &m.base().commonProperties.SoongConfigTrace
+		childTrace := &m.base().soongConfigTraceProperties.SoongConfigTrace
 		trace.Bools = append(trace.Bools, childTrace.Bools...)
 		trace.Strings = append(trace.Strings, childTrace.Strings...)
 		trace.IsSets = append(trace.IsSets, childTrace.IsSets...)
@@ -2782,7 +2786,7 @@ func soongConfigTraceMutator(ctx BottomUpMutatorContext) {
 	trace.Strings = SortedUniqueStrings(trace.Strings)
 	trace.IsSets = SortedUniqueStrings(trace.IsSets)
 
-	ctx.Module().base().commonProperties.SoongConfigTraceHash = trace.hash()
+	ctx.Module().base().soongConfigTraceProperties.SoongConfigTraceHash = trace.hash()
 }
 
 // soongConfigTraceSingleton writes a map from each module's config hash value to trace data.
@@ -2798,9 +2802,9 @@ func (s *soongConfigTraceSingleton) GenerateBuildActions(ctx SingletonContext) {
 
 	traces := make(map[string]*soongConfigTrace)
 	ctx.VisitAllModules(func(module Module) {
-		trace := &module.base().commonProperties.SoongConfigTrace
+		trace := &module.base().soongConfigTraceProperties.SoongConfigTrace
 		if !trace.isEmpty() {
-			hash := module.base().commonProperties.SoongConfigTraceHash
+			hash := module.base().soongConfigTraceProperties.SoongConfigTraceHash
 			traces[hash] = trace
 		}
 	})
