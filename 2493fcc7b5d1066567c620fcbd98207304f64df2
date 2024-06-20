@@ -16,6 +16,23 @@
       "message": "These are hopefully non-controversial pieces of aosp/3107166 and aosp/3101977 that can be merged sooner (now?).",
       "revId": "2493fcc7b5d1066567c620fcbd98207304f64df2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "381728cd_61c0f0fc",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-20T22:57:47Z",
+      "side": 1,
+      "message": "Is it intentional to only add libc++ if there are other prebuilts listed?",
+      "revId": "2493fcc7b5d1066567c620fcbd98207304f64df2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
