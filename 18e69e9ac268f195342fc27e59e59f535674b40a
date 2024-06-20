@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d66d452_49da26e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-06-20T17:31:26Z",
+      "side": 1,
+      "message": "Before we go any further with this CL, can we please do a design review of how we\u0027re going to upstream ABFS, integrate it into soong, etc.",
+      "revId": "18e69e9ac268f195342fc27e59e59f535674b40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
