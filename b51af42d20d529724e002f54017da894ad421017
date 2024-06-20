@@ -124,6 +124,24 @@
       "parentUuid": "e2dc5d0d_f37c37dc",
       "revId": "b51af42d20d529724e002f54017da894ad421017",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5990f623_c193f775",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-20T04:51:33Z",
+      "side": 1,
+      "message": "That seems like a negligible cost, I\u0027d say leave out the environment variable.  Is it worth collecting and disting them in a zip file the way we do for proguard dictionaries and ELF symbol files?",
+      "parentUuid": "742496a5_4572dab5",
+      "revId": "b51af42d20d529724e002f54017da894ad421017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
