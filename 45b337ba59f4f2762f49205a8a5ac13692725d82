@@ -52,6 +52,24 @@
       "parentUuid": "66821dd2_d7961ac2",
       "revId": "45b337ba59f4f2762f49205a8a5ac13692725d82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4008f4c_dbd289f6",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-20T20:26:06Z",
+      "side": 1,
+      "message": "I wouldn\u0027t expect it to be too hard, but it can be hard to predict when deep changes like this will have unexpected consequences.  aosp/776920 added the arch-only MultiTargets, and it was fairly small.",
+      "parentUuid": "dcc480df_e54d5fdb",
+      "revId": "45b337ba59f4f2762f49205a8a5ac13692725d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
