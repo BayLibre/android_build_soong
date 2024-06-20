@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bdaa70d_4bb2c7b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1945475
+      },
+      "writtenOn": "2024-06-20T17:24:49Z",
+      "side": 1,
+      "message": "It\u0027s added as part of the ABFS setup and build process, not checked into revision control.",
+      "parentUuid": "7eda1db6_a362bfba",
+      "revId": "8656d5564453a6a1e489a1fe54a7fcd702f983a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63c98685_178508e1",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-06-20T16:50:59Z",
       "side": 1,
       "message": "Needs a bug: tag",
+      "revId": "8656d5564453a6a1e489a1fe54a7fcd702f983a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44029ab9_9a160962",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1945475
+      },
+      "writtenOn": "2024-06-20T17:24:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "63c98685_178508e1",
       "revId": "8656d5564453a6a1e489a1fe54a7fcd702f983a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3015742e_5af8fe48",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1945475
+      },
+      "writtenOn": "2024-06-20T17:24:49Z",
+      "side": 1,
+      "message": "It\u0027s straight passthrough for logging purposes. ABFS tracks the state of the world at build-start time. There\u0027s not dependence on the args.",
+      "parentUuid": "80e98c82_0ece9a2b",
+      "revId": "8656d5564453a6a1e489a1fe54a7fcd702f983a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87c665ce_a56ac25d",
@@ -69,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f41cbdf6_98f56c23",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1945475
+      },
+      "writtenOn": "2024-06-20T17:24:49Z",
+      "side": 1,
+      "message": "The ABFS team is supporting these tools and they are not used in non-ABFS configured builds.\n\nThese binary changes add the logic necessary to deal with content-addressable builds rather than timestamp based builds, as well as grabbing build artifacts from the cache on cache hits.",
+      "parentUuid": "87c665ce_a56ac25d",
+      "revId": "8656d5564453a6a1e489a1fe54a7fcd702f983a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cc39210_52437104",
@@ -82,6 +154,24 @@
       "writtenOn": "2024-06-20T16:50:59Z",
       "side": 1,
       "message": "What tools are going to be here? This should probably be a dedicated `bin` folder instead of the top-level `build/abfs` folder.",
+      "revId": "8656d5564453a6a1e489a1fe54a7fcd702f983a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "305d5925_3bb1891a",
+        "filename": "ui/build/path.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1945475
+      },
+      "writtenOn": "2024-06-20T17:24:49Z",
+      "side": 1,
+      "message": "These are tools populated as part of the ABFS setup process. Things like ckati, ninjago, and helpers around filesystem \"tapping\".",
+      "parentUuid": "5cc39210_52437104",
       "revId": "8656d5564453a6a1e489a1fe54a7fcd702f983a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
