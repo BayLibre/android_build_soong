@@ -160,6 +160,24 @@
       "parentUuid": "e67b828a_91f6fdbc",
       "revId": "75b3b1e5ddfc0ae73164b5f7c75598ae4cd9a6f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eacb295e_7e3bfb51",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-20T04:36:38Z",
+      "side": 1,
+      "message": "I\u0027m working on a large series of patches and fighting all the existing uses of `OtherModuleDependencyVariantExists`, I don\u0027t want any new ones added.  I\u0027d like to see this done properly with `android.InitAndroidMultiTargetsArchModule`.  Unfortunately I don\u0027t have time in the immediate future to add it myself.",
+      "parentUuid": "912eb55c_a4454ea1",
+      "revId": "75b3b1e5ddfc0ae73164b5f7c75598ae4cd9a6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
