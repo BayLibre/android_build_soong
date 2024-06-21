@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4149662_20b6e6c4",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2547,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-21T18:30:56Z",
+      "side": 1,
+      "message": "Consider returning an error if it\u0027s neither a ModuleContext or SingletonContextAdaptor so that we know if there are cases that are being skipped.",
+      "revId": "c78e491b938d8ca0f25d86d3a0b5f92c973c7698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
