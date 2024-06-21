@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b46965_d0965fe6",
+        "filename": "android/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-21T22:51:14Z",
+      "side": 1,
+      "message": "Can we rename this from just generically \"Metadata\" to something SBOM-specific?\n\nWe already have a lot of different metadata reports: soongdbg, json module graph, json action graph, queryview, etc. This one should have a name that makes it obvious it\u0027s used for the sbom.",
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0a4d117_99ba0299",
+        "filename": "android/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-21T22:51:14Z",
+      "side": 1,
+      "message": "Receiver names should be abbreviations for the type: https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#receiver-names",
+      "range": {
+        "startLine": 134,
+        "startChar": 6,
+        "endLine": 134,
+        "endChar": 10
+      },
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346cc46a_fe23cf41",
+        "filename": "android/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-21T22:51:14Z",
+      "side": 1,
+      "message": "Since you only allow this fixed list of props, you should just make MetadataInfo contain all those properties as regular fields instead of containing a `map[string]string`.",
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4ae0117_957d2717",
+        "filename": "android/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-21T22:51:14Z",
+      "side": 1,
+      "message": "You should create this first and write each line directly to it immediately so that we don\u0027t have to build temporary string slices.",
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98871076_f021a15c",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2150,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-21T22:51:14Z",
+      "side": 1,
+      "message": "This will put a bunch of empty strings before your actual strings: https://go.dev/play/p/bnT5w5pmpJU",
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
