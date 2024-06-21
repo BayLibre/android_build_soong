@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30119432_c5fca3ab",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-06-21T08:31:00Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be `rel`?",
+      "range": {
+        "startLine": 308,
+        "startChar": 24,
+        "endLine": 308,
+        "endChar": 39
+      },
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
