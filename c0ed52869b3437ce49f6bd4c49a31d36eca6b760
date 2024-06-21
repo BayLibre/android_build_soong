@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a19534a_67b193f5",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-21T11:16:11Z",
+      "side": 1,
+      "message": "Let this function return OutputPaths",
+      "range": {
+        "startLine": 25,
+        "startChar": 21,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c20eccb7_de5c6be0",
         "filename": "filesystem/aconfig_files.go",
         "patchSetId": 1
@@ -49,6 +72,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69aeb325_cb76d108",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-21T11:16:11Z",
+      "side": 1,
+      "message": "This should go to the `entries` below.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 34
+      },
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca925230_d2dabb9c",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-21T11:16:11Z",
+      "side": 1,
+      "message": "Let this function return OutputPaths for the files that are built here.",
+      "range": {
+        "startLine": 268,
+        "startChar": 21,
+        "endLine": 268,
+        "endChar": 38
+      },
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30119432_c5fca3ab",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 1
@@ -65,6 +134,29 @@
         "startChar": 24,
         "endLine": 308,
         "endChar": 39
+      },
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7294a025_dccbcb05",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-21T11:16:11Z",
+      "side": 1,
+      "message": "Let this function return OutputPath for the file that is built here.",
+      "range": {
+        "startLine": 537,
+        "startChar": 21,
+        "endLine": 537,
+        "endChar": 42
       },
       "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
