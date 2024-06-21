@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c20eccb7_de5c6be0",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-21T09:13:08Z",
+      "side": 1,
+      "message": "derive this from installAconfigFlagsPath",
+      "range": {
+        "startLine": 59,
+        "startChar": 31,
+        "endLine": 59,
+        "endChar": 51
+      },
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b886cd8_785dc62c",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-21T09:13:08Z",
+      "side": 1,
+      "message": "make this a variable?",
+      "range": {
+        "startLine": 73,
+        "startChar": 17,
+        "endLine": 73,
+        "endChar": 75
+      },
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30119432_c5fca3ab",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 1
@@ -19,6 +65,98 @@
         "startChar": 24,
         "endLine": 308,
         "endChar": 39
+      },
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d167af09_96ae9f34",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-21T09:13:08Z",
+      "side": 1,
+      "message": "derive this from eventLogtagsPath.",
+      "range": {
+        "startLine": 566,
+        "startChar": 31,
+        "endLine": 566,
+        "endChar": 49
+      },
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1632fcfb_af32f593",
+        "filename": "filesystem/fsverity_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-21T09:13:08Z",
+      "side": 1,
+      "message": "let\u0027s save this to a variable and use it.",
+      "range": {
+        "startLine": 82,
+        "startChar": 35,
+        "endLine": 82,
+        "endChar": 70
+      },
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a1e8379_37f76753",
+        "filename": "filesystem/fsverity_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-21T09:13:08Z",
+      "side": 1,
+      "message": "I wish we don\u0027t repeat the same strings. Can we derive this from `apkPath`.",
+      "range": {
+        "startLine": 171,
+        "startChar": 31,
+        "endLine": 171,
+        "endChar": 70
+      },
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c54529c5_8bf60b35",
+        "filename": "filesystem/fsverity_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-21T09:13:08Z",
+      "side": 1,
+      "message": "I don\u0027t see this file in the above rules. If it was omitted, it should be added as an implicit output to the corresponding rule.",
+      "range": {
+        "startLine": 172,
+        "startChar": 31,
+        "endLine": 172,
+        "endChar": 76
       },
       "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
