@@ -95,6 +95,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96cec466_1fc21941",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-21T12:58:53Z",
+      "side": 1,
+      "message": "Can we sort the list here and compare this with the kati installed list directly with `diff`?",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 19
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7baf1422_9f3f01dd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "filesystem/filesystem.go",
+              "range": {
+                "startLine": 22,
+                "startChar": 0,
+                "endLine": 22,
+                "endChar": 0
+              },
+              "replacement": "\t\"sort\"\n"
+            },
+            {
+              "path": "filesystem/filesystem.go",
+              "range": {
+                "startLine": 246,
+                "startChar": 0,
+                "endLine": 246,
+                "endChar": 0
+              },
+              "replacement": "\tsort.Strings(installedFilePaths)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca925230_d2dabb9c",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 1
