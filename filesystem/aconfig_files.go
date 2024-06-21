@@ -56,6 +56,7 @@ func (f *filesystem) buildAconfigFlagsFiles(ctx android.ModuleContext, builder *
 	sb.WriteString(" \\\n")
 	sb.WriteString(sbCaches.String())
 	cmd.ImplicitOutput(installAconfigFlagsPath)
+	f.addAdditionalInstalledFile("etc/aconfig_flags.pb")
 
 	installAconfigStorageDir := dir.Join(ctx, "etc", "aconfig")
 	sb.WriteString("mkdir -p ")
@@ -73,6 +74,7 @@ func (f *filesystem) buildAconfigFlagsFiles(ctx android.ModuleContext, builder *
 		sb.WriteString(" \\\n")
 		sb.WriteString(sbCaches.String())
 		cmd.ImplicitOutput(installAconfigStorageDir.Join(ctx, fileName))
+		f.addAdditionalInstalledFile("etc/aconfig/" + fileName)
 	}
 	generatePartitionAconfigStorageFile("package_map", "package.map")
 	generatePartitionAconfigStorageFile("flag_map", "flag.map")

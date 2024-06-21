@@ -60,6 +60,9 @@ type filesystem struct {
 	output     android.OutputPath
 	installDir android.InstallPath
 
+	fileListFile             android.OutputPath
+	additionalInstalledFiles []string
+
 	// For testing. Keeps the result of CopySpecsToDir()
 	entries []string
 }
@@ -222,7 +225,26 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	f.installDir = android.PathForModuleInstall(ctx, "etc")
 	ctx.InstallFile(f.installDir, f.installFileName(), f.output)
 
-	ctx.SetOutputFiles([]android.Path{f.output}, "")
+	f.fileListFile = android.PathForModuleOut(ctx, "fileList").OutputPath
+	android.WriteFileRule(ctx, f.fileListFile, f.installedFilesList(ctx))
+}
+
+func (f *filesystem) addAdditionalInstalledFile(relPath string) {
+	f.additionalInstalledFiles = append(f.additionalInstalledFiles, relPath)
+}
+
+func (f *filesystem) installedFilesList(ctx android.ModuleContext) string {
+	var installedFilePaths []string
+
+	for path := range f.gatherFilteredPackagingSpecs(ctx) {
+		installedFilePaths = append(installedFilePaths, path)
+	}
+
+	installedFilePaths = append(installedFilePaths, f.additionalInstalledFiles...)
+
+	installedFilePaths = android.FirstUniqueStrings(installedFilePaths)
+
+	return strings.Join(installedFilePaths, " ")
 }
 
 func validatePartitionType(ctx android.ModuleContext, p partition) {
@@ -269,16 +291,22 @@ func (f *filesystem) buildNonDepsFiles(ctx android.ModuleContext, builder *andro
 		builder.Command().Textf("(! [ -e %s -o -L %s ] || (echo \"%s already exists from an earlier stage of the build\" && exit 1))", dst, dst, dst)
 		builder.Command().Text("mkdir -p").Text(filepath.Dir(dst.String()))
 		builder.Command().Text("ln -sf").Text(proptools.ShellEscape(target)).Text(dst.String())
+		if strings.HasPrefix(name, f.partitionName()+"/") {
+			f.addAdditionalInstalledFile(strings.TrimPrefix(name, f.partitionName()+"/"))
+		}
 	}
 
 	// create extra files if there's any
 	if f.buildExtraFiles != nil {
 		rootForExtraFiles := android.PathForModuleGen(ctx, "root-extra").OutputPath
 		extraFiles := f.buildExtraFiles(ctx, rootForExtraFiles)
-		for _, f := range extraFiles {
-			rel, err := filepath.Rel(rootForExtraFiles.String(), f.String())
+		for _, extraFile := range extraFiles {
+			rel, err := filepath.Rel(rootForExtraFiles.String(), extraFile.String())
 			if err != nil || strings.HasPrefix(rel, "..") {
-				ctx.ModuleErrorf("can't make %q relative to %q", f, rootForExtraFiles)
+				ctx.ModuleErrorf("can't make %q relative to %q", extraFile, rootForExtraFiles)
+			}
+			if strings.HasPrefix(extraFile.Rel(), f.partitionName()+"/") {
+				f.addAdditionalInstalledFile(strings.TrimPrefix(extraFile.Rel(), f.partitionName()+"/"))
 			}
 		}
 		if len(extraFiles) > 0 {
@@ -535,6 +563,7 @@ func (f *filesystem) buildEventLogtagsFile(ctx android.ModuleContext, builder *a
 	for _, path := range android.SortedKeys(logtagsFilePaths) {
 		cmd.Text(path)
 	}
+	f.addAdditionalInstalledFile("etc/event-log-tags")
 }
 
 type partition interface {
@@ -609,6 +638,21 @@ var _ cc.UseCoverage = (*filesystem)(nil)
 
 func (*filesystem) IsNativeCoverageNeeded(ctx android.IncomingTransitionContext) bool {
 	return ctx.Device() && ctx.DeviceConfig().NativeCoverageEnabled()
+}
+
+// Implement OutputFileProducer
+
+var _ android.OutputFileProducer = (*filesystem)(nil)
+
+func (f *filesystem) OutputFiles(tag string) (android.Paths, error) {
+	switch tag {
+	case ".filelist":
+		return android.Paths{f.fileListFile}, nil
+	case "":
+		return android.Paths{f.output}, nil
+	default:
+		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
+	}
 }
 
 // android_filesystem_defaults

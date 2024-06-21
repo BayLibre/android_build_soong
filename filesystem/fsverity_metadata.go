@@ -58,6 +58,7 @@ func (f *filesystem) buildFsverityMetadataFiles(ctx android.ModuleContext, build
 	for _, relPath := range android.SortedKeys(specs) {
 		if match(relPath) {
 			matchedSpecs = append(matchedSpecs, specs[relPath])
+			f.addAdditionalInstalledFile(relPath)
 		}
 	}
 
@@ -87,6 +88,7 @@ func (f *filesystem) buildFsverityMetadataFiles(ctx android.ModuleContext, build
 		sb.WriteRune(' ')
 		sb.WriteString(srcPath.String())
 		sb.WriteRune('\n')
+		f.addAdditionalInstalledFile(spec.RelPathInPackage() + ".fsv_meta")
 	}
 
 	// STEP 2: generate signed BuildManifest.apk
@@ -166,4 +168,6 @@ func (f *filesystem) buildFsverityMetadataFiles(ctx android.ModuleContext, build
 	sb.WriteRune('\n')
 
 	android.WriteExecutableFileRuleVerbatim(ctx, fsverityBuilderPath, sb.String())
+	f.addAdditionalInstalledFile("etc/security/fsverity/BuildManifest.apk")
+	f.addAdditionalInstalledFile("etc/security/fsverity/BuildManifest.apk.idsig")
 }
