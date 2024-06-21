@@ -69,6 +69,24 @@
       "parentUuid": "d66efbaf_aaa599c5",
       "revId": "2493fcc7b5d1066567c620fcbd98207304f64df2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a6cd0e_52521610",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-06-21T16:56:10Z",
+      "side": 1,
+      "message": "Yes, that\u0027s exactly what\u0027s intended: if someone adds a binary prebuilt, they will also need libc++ for it. But if a cmake snapshot doesn\u0027t have any, there\u0027s no point bundling in any libs with it.",
+      "parentUuid": "05079970_7dc5eb7f",
+      "revId": "2493fcc7b5d1066567c620fcbd98207304f64df2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
