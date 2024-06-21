@@ -16,6 +16,7 @@ package rust
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 
 	"android/soong/bloaty"
@@ -988,6 +989,46 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	if mod.testModule {
 		android.SetProvider(ctx, testing.TestModuleProviderKey, testing.TestModuleProviderData{})
 	}
+
+	buildMetadataInfo(ctx, mod, deps)
+}
+
+func buildMetadataInfo(ctx *moduleContext, mod *Module, deps PathDeps) {
+	// Dump metadata that can not be done in android/metadata.go
+	metadataInfo := ctx.MetadataInfo()
+	metadataInfo.SetStringValue(android.MetadataProp.IS_STATIC_LIB, strconv.FormatBool(mod.Static()))
+	metadataInfo.SetStringValue(android.MetadataProp.BUILT_FILES, mod.outputFile.String())
+
+	// Static libs
+	staticDeps := ctx.GetDirectDepsWithTag(rlibDepTag)
+	staticDepNames := make([]string, len(staticDeps))
+	for _, dep := range staticDeps {
+		staticDepNames = append(staticDepNames, dep.Name())
+	}
+	ccStaticDeps := ctx.GetDirectDepsWithTag(cc.StaticDepTag(false))
+	for _, dep := range ccStaticDeps {
+		staticDepNames = append(staticDepNames, dep.Name())
+	}
+
+	staticDepPaths := make([]string, len(deps.StaticLibs)+len(deps.RLibs))
+	// C static libraries
+	for _, dep := range deps.StaticLibs {
+		staticDepPaths = append(staticDepPaths, dep.String())
+	}
+	// Rust static libraries
+	for _, dep := range deps.RLibs {
+		staticDepPaths = append(staticDepPaths, dep.Path.String())
+	}
+	metadataInfo.SetListValue(android.MetadataProp.STATIC_DEPS, android.FirstUniqueStrings(staticDepNames))
+	metadataInfo.SetListValue(android.MetadataProp.STATIC_DEP_FILES, android.FirstUniqueStrings(staticDepPaths))
+
+	// C Whole static libs
+	ccWholeStaticDeps := ctx.GetDirectDepsWithTag(cc.StaticDepTag(true))
+	wholeStaticDepNames := make([]string, len(ccWholeStaticDeps))
+	for _, dep := range ccStaticDeps {
+		wholeStaticDepNames = append(wholeStaticDepNames, dep.Name())
+	}
+	metadataInfo.SetListValue(android.MetadataProp.STATIC_DEPS, android.FirstUniqueStrings(staticDepNames))
 }
 
 func (mod *Module) deps(ctx DepsContext) Deps {
