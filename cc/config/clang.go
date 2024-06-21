@@ -86,6 +86,15 @@ var ClangTidyDisableChecks = []string{
 
 func ClangFilterUnknownCflags(cflags []string) []string {
 	result, _ := android.FilterList(cflags, ClangUnknownCflags)
+
+	// Filter out a new warning disabled in clang-r530567.
+	// TODO: Remove it after switching to clang-r530567.
+	if ClangDefaultVersion != "clang-r530567" {
+		result, _ = android.FilterList(result, []string{
+			"-Wno-nan-infinity-disabled",
+		})
+	}
+
 	return result
 }
 
