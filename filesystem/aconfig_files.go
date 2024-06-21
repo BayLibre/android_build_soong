@@ -16,15 +16,16 @@ package filesystem
 
 import (
 	"android/soong/android"
-	"path/filepath"
 	"strings"
 
 	"github.com/google/blueprint/proptools"
 )
 
-func (f *filesystem) buildAconfigFlagsFiles(ctx android.ModuleContext, builder *android.RuleBuilder, specs map[string]android.PackagingSpec, dir android.OutputPath) {
+func (f *filesystem) buildAconfigFlagsFiles(ctx android.ModuleContext, builder *android.RuleBuilder, specs map[string]android.PackagingSpec, dir android.OutputPath) android.OutputPaths {
+	var builtFiles android.OutputPaths
+
 	if !proptools.Bool(f.properties.Gen_aconfig_flags_pb) {
-		return
+		return builtFiles
 	}
 
 	aconfigFlagsBuilderPath := android.PathForModuleOut(ctx, "aconfig_flags_builder.sh")
@@ -56,6 +57,7 @@ func (f *filesystem) buildAconfigFlagsFiles(ctx android.ModuleContext, builder *
 	sb.WriteString(" \\\n")
 	sb.WriteString(sbCaches.String())
 	cmd.ImplicitOutput(installAconfigFlagsPath)
+	builtFiles = append(builtFiles, installAconfigFlagsPath)
 
 	installAconfigStorageDir := dir.Join(ctx, "etc", "aconfig")
 	sb.WriteString("mkdir -p ")
@@ -63,20 +65,24 @@ func (f *filesystem) buildAconfigFlagsFiles(ctx android.ModuleContext, builder *
 	sb.WriteRune('\n')
 
 	generatePartitionAconfigStorageFile := func(fileType, fileName string) {
+		outputPath := installAconfigStorageDir.Join(ctx, fileName)
 		sb.WriteString(aconfigToolPath.String())
 		sb.WriteString(" create-storage --container ")
 		sb.WriteString(f.PartitionType())
 		sb.WriteString(" --file ")
 		sb.WriteString(fileType)
 		sb.WriteString(" --out ")
-		sb.WriteString(filepath.Join(installAconfigStorageDir.String(), fileName))
+		sb.WriteString(outputPath.String())
 		sb.WriteString(" \\\n")
 		sb.WriteString(sbCaches.String())
-		cmd.ImplicitOutput(installAconfigStorageDir.Join(ctx, fileName))
+		cmd.ImplicitOutput(outputPath)
+		builtFiles = append(builtFiles, outputPath)
 	}
 	generatePartitionAconfigStorageFile("package_map", "package.map")
 	generatePartitionAconfigStorageFile("flag_map", "flag.map")
 	generatePartitionAconfigStorageFile("flag_val", "flag.val")
 
 	android.WriteExecutableFileRuleVerbatim(ctx, aconfigFlagsBuilderPath, sb.String())
+
+	return builtFiles
 }
