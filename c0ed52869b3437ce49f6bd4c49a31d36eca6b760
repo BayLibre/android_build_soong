@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdba21cc_c86352c4",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-21T18:44:46Z",
+      "side": 1,
+      "message": "+1 same for all the other functions, and remove `addAdditionalInstalledFile`",
+      "parentUuid": "ca925230_d2dabb9c",
+      "range": {
+        "startLine": 268,
+        "startChar": 21,
+        "endLine": 268,
+        "endChar": 38
+      },
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30119432_c5fca3ab",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 1
@@ -232,6 +256,23 @@
         "endLine": 566,
         "endChar": 49
       },
+      "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea67ca63_e73ed61f",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-21T18:44:46Z",
+      "side": 1,
+      "message": "use `ctx.SetOutputFiles()` instead. (We\u0027re transitioning OutputFiles to a provider)",
       "revId": "c0ed52869b3437ce49f6bd4c49a31d36eca6b760",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
