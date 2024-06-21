@@ -51,6 +51,24 @@
       "parentUuid": "381728cd_61c0f0fc",
       "revId": "2493fcc7b5d1066567c620fcbd98207304f64df2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05079970_7dc5eb7f",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-21T04:12:03Z",
+      "side": 1,
+      "message": "But it\u0027s only adding it to the list of prebuilts if the list is not empty.  If you had a module that didn\u0027t specify any prebuilts then you wouldn\u0027t add a dependency on `libc++`.",
+      "parentUuid": "d66efbaf_aaa599c5",
+      "revId": "2493fcc7b5d1066567c620fcbd98207304f64df2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
