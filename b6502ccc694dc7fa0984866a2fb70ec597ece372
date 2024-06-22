@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6488c2d4_48c4c270",
+        "filename": "android/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-06-22T02:51:56Z",
+      "side": 1,
+      "message": "It is a generic metadata database, but so far it contains just necessary data for compliance uses. Renamed everything to indicate that.",
+      "parentUuid": "a7b46965_d0965fe6",
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0a4d117_99ba0299",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-06-21T22:51:14Z",
       "side": 1,
       "message": "Receiver names should be abbreviations for the type: https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#receiver-names",
+      "range": {
+        "startLine": 134,
+        "startChar": 6,
+        "endLine": 134,
+        "endChar": 10
+      },
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59fef314_66781dca",
+        "filename": "android/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-06-22T02:51:56Z",
+      "side": 1,
+      "message": "I prefer long name instead of single character variable names, will keep this instead following g3 guide.",
+      "parentUuid": "f0a4d117_99ba0299",
       "range": {
         "startLine": 134,
         "startChar": 6,
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0a3a69_5a8524db",
+        "filename": "android/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-06-22T02:51:56Z",
+      "side": 1,
+      "message": "The use of map is intended which is useful for adding/removing columns in the data set, and the serialization to csv logic doesn\u0027t have to change every time.",
+      "parentUuid": "346cc46a_fe23cf41",
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4ae0117_957d2717",
@@ -75,6 +135,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fde0c90_17884f87",
+        "filename": "android/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-06-22T02:51:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4ae0117_957d2717",
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98871076_f021a15c",
@@ -88,6 +166,24 @@
       "writtenOn": "2024-06-21T22:51:14Z",
       "side": 1,
       "message": "This will put a bunch of empty strings before your actual strings: https://go.dev/play/p/bnT5w5pmpJU",
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f0324ce_6ad61f93",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2150,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-06-22T02:51:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98871076_f021a15c",
       "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
