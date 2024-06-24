@@ -819,22 +819,23 @@ func (paths *scopePaths) extractStubsSourceInfoFromApiStubsProviders(provider Ap
 }
 
 func (paths *scopePaths) extractStubsSourceInfoFromDep(ctx android.ModuleContext, dep android.Module) error {
+	stubsType := Everything
+	if ctx.Config().ReleaseHiddenApiExportableStubs() {
+		stubsType = Exportable
+	}
 	return paths.treatDepAsApiStubsSrcProvider(dep, func(provider ApiStubsSrcProvider) error {
-		return paths.extractStubsSourceInfoFromApiStubsProviders(provider, Everything)
+		return paths.extractStubsSourceInfoFromApiStubsProviders(provider, stubsType)
 	})
 }
 
 func (paths *scopePaths) extractStubsSourceAndApiInfoFromApiStubsProvider(ctx android.ModuleContext, dep android.Module) error {
+	stubsType := Everything
 	if ctx.Config().ReleaseHiddenApiExportableStubs() {
-		return paths.treatDepAsApiStubsProvider(dep, func(provider ApiStubsProvider) error {
-			extractApiInfoErr := paths.extractApiInfoFromApiStubsProvider(provider, Exportable)
-			extractStubsSourceInfoErr := paths.extractStubsSourceInfoFromApiStubsProviders(provider, Exportable)
-			return errors.Join(extractApiInfoErr, extractStubsSourceInfoErr)
-		})
+		stubsType = Exportable
 	}
 	return paths.treatDepAsApiStubsProvider(dep, func(provider ApiStubsProvider) error {
-		extractApiInfoErr := paths.extractApiInfoFromApiStubsProvider(provider, Everything)
-		extractStubsSourceInfoErr := paths.extractStubsSourceInfoFromApiStubsProviders(provider, Everything)
+		extractApiInfoErr := paths.extractApiInfoFromApiStubsProvider(provider, stubsType)
+		extractStubsSourceInfoErr := paths.extractStubsSourceInfoFromApiStubsProviders(provider, stubsType)
 		return errors.Join(extractApiInfoErr, extractStubsSourceInfoErr)
 	})
 }
