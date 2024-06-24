@@ -166,7 +166,9 @@ var postDeps = []RegisterMutatorFunc{
 	RegisterOverridePostDepsMutators,
 }
 
-var finalDeps = []RegisterMutatorFunc{}
+var finalDeps = []RegisterMutatorFunc{
+	registerContainerFinalDepsMutator,
+}
 
 func PreArchMutators(f RegisterMutatorFunc) {
 	preArch = append(preArch, f)
