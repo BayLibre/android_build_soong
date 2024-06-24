@@ -427,6 +427,7 @@ func makeDexJarPathFromPath(path android.Path) OptionalDexJarPath {
 // Module contains the properties and members used by all java module types
 type Module struct {
 	android.ModuleBase
+	android.InstallableModuleBase
 	android.DefaultableModuleBase
 	android.ApexModuleBase
 
