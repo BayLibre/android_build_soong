@@ -180,7 +180,7 @@ var r8, r8RE = pctx.MultiCommandRemoteStaticRules("r8",
 		"$r8Template": &remoteexec.REParams{
 			Labels:          map[string]string{"type": "compile", "compiler": "r8"},
 			Inputs:          []string{"$implicits", "${config.R8Jar}"},
-			OutputFiles:     []string{"${outUsage}", "${outConfig}", "${outDict}", "${resourcesOutput}"},
+			OutputFiles:     []string{"${outUsage}", "${outConfig}", "${outDict}", "${resourcesOutput}", "${implicitOutputs}"},
 			ExecStrategy:    "${config.RER8ExecStrategy}",
 			ToolchainInputs: []string{"${config.JavaCmd}"},
 			Platform:        map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
@@ -200,7 +200,7 @@ var r8, r8RE = pctx.MultiCommandRemoteStaticRules("r8",
 			Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
 		},
 	}, []string{"outDir", "outDict", "outConfig", "outUsage", "outUsageZip", "outUsageDir",
-		"r8Flags", "zipFlags", "mergeZipsFlags", "resourcesOutput"}, []string{"implicits"})
+		"r8Flags", "zipFlags", "mergeZipsFlags", "resourcesOutput", "implicitOutputs"}, []string{"implicits"})
 
 func (d *dexer) dexCommonFlags(ctx android.ModuleContext,
 	dexParams *compileDexParams) (flags []string, deps android.Paths) {
@@ -485,6 +485,7 @@ func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParam
 		if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_R8") {
 			rule = r8RE
 			args["implicits"] = strings.Join(r8Deps.Strings(), ",")
+			args["implicitOutputs"] = strings.Join(implicitOutputs.Strings(), ",")
 		}
 		if d.resourcesInput.Valid() {
 			implicitOutputs = append(implicitOutputs, resourcesOutput)
