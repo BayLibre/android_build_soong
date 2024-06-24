@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0f22f26_390d7710",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-24T20:03:47Z",
+      "side": 1,
+      "message": "aosp/2257928 was the last attempt at this.\n\nCan you run this through go/woodchipper-guide (or manually through ABTD) on a wide variety of products to try to catch any broken cases before submitting?",
+      "revId": "8d8253f5257e7ab8ffa001d2e491bd0934d9119e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
