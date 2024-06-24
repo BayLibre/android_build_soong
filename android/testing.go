@@ -143,6 +143,7 @@ var PrepareForTestWithAndroidBuildComponents = GroupFixturePreparers(
 	// correct order.
 	PrepareForTestWithArchMutator,
 	PrepareForTestWithComponentsMutator,
+	prepareForTestWithContainer,
 	PrepareForTestWithDefaults,
 	PrepareForTestWithFilegroup,
 	PrepareForTestWithOverrides,
