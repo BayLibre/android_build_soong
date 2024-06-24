@@ -109,6 +109,7 @@ func (p *platformCompatConfig) GenerateAndroidBuildActions(ctx android.ModuleCon
 	p.installDirPath = android.PathForModuleInstall(ctx, "etc", "compatconfig")
 	p.installConfigFile = android.PathForModuleInstall(ctx, "etc", "compatconfig", p.configFile.Base())
 	rule.Build(configFileName, "Extract compat/compat_config.xml and install it")
+	ctx.InstallFile(p.installDirPath, p.configFile.Base(), p.configFile)
 }
 
 func (p *platformCompatConfig) FilesToInstall() android.InstallPaths {
