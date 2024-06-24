@@ -126,6 +126,8 @@ var PrepareForTestWithMakevars = FixtureRegisterWithContext(func(ctx Registratio
 	ctx.RegisterSingletonType("makevars", makeVarsSingletonFunc)
 })
 
+var PrepareForTestWithContainer = FixtureRegisterWithContext(RegisterContainerMutator)
+
 // Test fixture preparer that will register most java build components.
 //
 // Singletons and mutators should only be added here if they are needed for a majority of java
@@ -143,6 +145,7 @@ var PrepareForTestWithAndroidBuildComponents = GroupFixturePreparers(
 	// correct order.
 	PrepareForTestWithArchMutator,
 	PrepareForTestWithComponentsMutator,
+	PrepareForTestWithContainer,
 	PrepareForTestWithDefaults,
 	PrepareForTestWithFilegroup,
 	PrepareForTestWithOverrides,
