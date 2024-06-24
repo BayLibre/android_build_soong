@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb3a033_d42b6d09",
+        "filename": "android/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-24T18:42:01Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "6488c2d4_48c4c270",
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0a4d117_99ba0299",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "I prefer long name instead of single character variable names, will keep this instead following g3 guide.",
       "parentUuid": "f0a4d117_99ba0299",
+      "range": {
+        "startLine": 134,
+        "startChar": 6,
+        "endLine": 134,
+        "endChar": 10
+      },
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "484802b9_e52dbc26",
+        "filename": "android/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-24T18:42:01Z",
+      "side": 1,
+      "message": "The style guide\u0027s purpose is to overrule individual preferences so that we have a consistent code style, please follow it.",
+      "parentUuid": "59fef314_66781dca",
       "range": {
         "startLine": 134,
         "startChar": 6,
@@ -184,6 +226,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "98871076_f021a15c",
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d78c0a26_7aa708db",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2150,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-24T18:42:01Z",
+      "side": 1,
+      "message": "You should still preallocate the length, but the syntax is `make([]string, 0, len(wholeStaticDeps))` instead of `make([]string, len(wholeStaticDeps))`",
+      "parentUuid": "9f0324ce_6ad61f93",
       "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
