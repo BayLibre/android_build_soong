@@ -22,7 +22,7 @@ type ImageInterface interface {
 	// VendorVariantNeeded should return true if the module needs a vendor variant (installed on the vendor image).
 	VendorVariantNeeded(ctx BaseModuleContext) bool
 
-	// ProductVariantNeeded should return true if the module needs a product variant (unstalled on the product image).
+	// ProductVariantNeeded should return true if the module needs a product variant (installed on the product image).
 	ProductVariantNeeded(ctx BaseModuleContext) bool
 
 	// CoreVariantNeeded should return true if the module needs a core variant (installed on the system image).
@@ -126,6 +126,15 @@ func imageMutator(ctx BottomUpMutatorContext) {
 		for i, v := range variations {
 			mod[i].base().setImageVariation(v)
 			mod[i].(ImageInterface).SetImageVariation(ctx, v)
+		}
+
+		if container, ok := ctx.Module().(InstallableModule); ok {
+			if m.ProductVariantNeeded(ctx) {
+				container.SetProductContainer(true)
+			}
+			if m.VendorVariantNeeded(ctx) {
+				container.SetVendorContainer(true)
+			}
 		}
 	}
 }
