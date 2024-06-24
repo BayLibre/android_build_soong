@@ -1801,6 +1801,8 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		variables:         make(map[string]string),
 	}
 
+	setContainerInfo(ctx)
+
 	m.licenseMetadataFile = PathForModuleOut(ctx, "meta_lic")
 
 	dependencyInstallFiles, dependencyPackagingSpecs := m.computeInstallDeps(ctx)
