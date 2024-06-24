@@ -201,6 +201,11 @@ func ListSetDifference[T comparable](l1, l2 []T) (bool, []T, []T) {
 	return listsDiffer, diff1, diff2
 }
 
+func HasIntersection[T comparable](l1, l2 []T) bool {
+	_, a, b := ListSetDifference(l1, l2)
+	return len(a)+len(b) < len(l1)+len(l2)
+}
+
 // Returns true if the given string s is prefixed with any string in the given prefix list.
 func HasAnyPrefix(s string, prefixList []string) bool {
 	for _, prefix := range prefixList {

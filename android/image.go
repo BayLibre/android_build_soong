@@ -127,5 +127,14 @@ func imageMutator(ctx BottomUpMutatorContext) {
 			mod[i].base().setImageVariation(v)
 			mod[i].(ImageInterface).SetImageVariation(ctx, v)
 		}
+
+		// if container, ok := ctx.Module().(Container); ok {
+		// 	if m.ProductVariantNeeded(ctx) {
+		// 		container.SetSystemDomain(true)
+		// 	}
+		// 	if m.VendorVariantNeeded(ctx) {
+		// 		container.SetVendorDomain(true)
+		// 	}
+		// }
 	}
 }
