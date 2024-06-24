@@ -532,7 +532,11 @@ func OdexOnSystemOtherByName(name string, dexLocation string, global *GlobalConf
 	}
 
 	for _, f := range global.PatternsOnSystemOther {
-		if makefileMatch(filepath.Join(SystemPartition, f), dexLocation) {
+		// Prepend `/` if necessary
+		if !strings.HasPrefix(f, "/") {
+			f = "/" + f
+		}
+		if makefileMatch(f, dexLocation) {
 			return true
 		}
 	}
