@@ -46,6 +46,30 @@
       },
       "revId": "d0c6541e1921c03ca9941e9de73da67c10085b36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc470c3_80024b79",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-24T18:42:30Z",
+      "side": 1,
+      "message": "Thanks, I have created a `outR8ArtProfile` to be specific about this implicit output.",
+      "parentUuid": "5d8c8cc8_1d57c346",
+      "range": {
+        "startLine": 183,
+        "startChar": 47,
+        "endLine": 183,
+        "endChar": 56
+      },
+      "revId": "d0c6541e1921c03ca9941e9de73da67c10085b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
