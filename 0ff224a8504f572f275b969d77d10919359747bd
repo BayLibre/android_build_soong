@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7fbc018_a5794523",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-24T17:58:06Z",
+      "side": 1,
+      "message": "Is this androidmk entry still necessary?",
+      "revId": "0ff224a8504f572f275b969d77d10919359747bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
