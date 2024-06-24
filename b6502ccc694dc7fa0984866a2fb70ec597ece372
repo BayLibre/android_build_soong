@@ -125,6 +125,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b9c077_8d79d3e8",
+        "filename": "android/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-06-24T19:36:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "484802b9_e52dbc26",
+      "range": {
+        "startLine": 134,
+        "startChar": 6,
+        "endLine": 134,
+        "endChar": 10
+      },
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "346cc46a_fe23cf41",
@@ -244,6 +268,24 @@
       "side": 1,
       "message": "You should still preallocate the length, but the syntax is `make([]string, 0, len(wholeStaticDeps))` instead of `make([]string, len(wholeStaticDeps))`",
       "parentUuid": "9f0324ce_6ad61f93",
+      "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7201004c_71e16a6f",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2150,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-06-24T19:36:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d78c0a26_7aa708db",
       "revId": "b6502ccc694dc7fa0984866a2fb70ec597ece372",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
