@@ -87,6 +87,24 @@
       "parentUuid": "18e0d371_49fdbcdc",
       "revId": "7bfac0b181d9cd4b769589b8c7e96d86d4906368",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86166c93_21f6a094",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-25T17:51:29Z",
+      "side": 1,
+      "message": "I do not have any existing plans to expand the allowlist beyond the MTS use case.\n\nDo you think we should? Are there any known issues that would be ameliorated by requiring min_sdk_version in CTS/MCTS tests?",
+      "parentUuid": "b1f71450_a85e5d8d",
+      "revId": "7bfac0b181d9cd4b769589b8c7e96d86d4906368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
