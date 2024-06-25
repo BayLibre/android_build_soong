@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f79397_0dffd15b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-06-25T17:48:28Z",
+      "side": 1,
+      "message": "(modulo skia, which is fixed internally but hasn\u0027t yet made it into AOSP yet...)",
+      "revId": "3bb399e484c77498b6cee7fd2f8e66fe1c9fe9e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "589842d1_11e185b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-06-25T17:48:28Z",
+      "side": 1,
+      "message": "i\u0027m not sure this change is right/complete anyway, because i was expecting to see some kind of `\u003d true` somewhere?",
+      "revId": "3bb399e484c77498b6cee7fd2f8e66fe1c9fe9e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
