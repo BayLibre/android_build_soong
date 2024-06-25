@@ -16,6 +16,24 @@
       "message": "Should we disable `-Wnan-infinity-disabled` temporarily as well?",
       "revId": "1b953be5ca43f8f8af84f23909e9abc2e9f579e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f601e7_fe7660fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2024-06-25T23:25:30Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "parentUuid": "66d817e8_9eb9883f",
+      "revId": "1b953be5ca43f8f8af84f23909e9abc2e9f579e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
