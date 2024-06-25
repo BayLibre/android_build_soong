@@ -22,6 +22,30 @@
       },
       "revId": "37e293afc2ba4a3520bcc276a64a84767b0cabf0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e121eb_416a4c56",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-25T22:54:28Z",
+      "side": 1,
+      "message": "I think this is unnecessary, because it seems like `apiFileTag` (which uses `extractApiInfoFromDep` as `depInfoExtractor`) is not being used. I\u0027ve created aosp/3147357 to remove this.",
+      "parentUuid": "465c3fbe_8c2df4bf",
+      "range": {
+        "startLine": 809,
+        "startChar": 60,
+        "endLine": 809,
+        "endChar": 70
+      },
+      "revId": "37e293afc2ba4a3520bcc276a64a84767b0cabf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
