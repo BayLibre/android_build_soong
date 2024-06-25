@@ -105,6 +105,24 @@
       "parentUuid": "b1f71450_a85e5d8d",
       "revId": "7bfac0b181d9cd4b769589b8c7e96d86d4906368",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e60ad83_c8099bd4",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-25T18:00:37Z",
+      "side": 1,
+      "message": "I do not have any issues in mind. However, the description in the original bug (b/156476221#comment1) seems to advise adding `min_sdk_version` to CTS tests as well. But given that this document is deprecated, I believe that yuwu@ might have more up to date information.",
+      "parentUuid": "86166c93_21f6a094",
+      "revId": "7bfac0b181d9cd4b769589b8c7e96d86d4906368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
