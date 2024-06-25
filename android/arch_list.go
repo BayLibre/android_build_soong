@@ -109,9 +109,6 @@ var cpuVariants = map[ArchType][]string{
 }
 
 var archFeatures = map[ArchType][]string{
-	Arm: {
-		"neon",
-	},
 	Arm64: {
 		"dotprod",
 	},
