@@ -34,6 +34,24 @@
       "parentUuid": "b7fbc018_a5794523",
       "revId": "0ff224a8504f572f275b969d77d10919359747bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21733af8_e4891554",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-25T01:17:58Z",
+      "side": 1,
+      "message": "I think we can remove the whole `AndroidMkEntries()` function if removing the `Include:    \"$(BUILD_PREBUILT)\",` works.",
+      "parentUuid": "a444b7d7_62738e12",
+      "revId": "0ff224a8504f572f275b969d77d10919359747bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
