@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54d67c72_da5a54e4",
+        "filename": "android/arch_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2024-06-25T17:52:03Z",
+      "side": 0,
+      "message": "This is what enabled the neon feature, which is why you don\u0027t see an `\u003d true`",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 3
+      },
+      "revId": "af64ca93220b96cabd94a8b62b7aa5a83e698321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
