@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "465c3fbe_8c2df4bf",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-06-25T15:42:12Z",
+      "side": 1,
+      "message": "Should this use `Exportable` when `ctx.Config().ReleaseHiddenApiExportableStubs()` is `true`?",
+      "range": {
+        "startLine": 809,
+        "startChar": 60,
+        "endLine": 809,
+        "endChar": 70
+      },
+      "revId": "37e293afc2ba4a3520bcc276a64a84767b0cabf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
