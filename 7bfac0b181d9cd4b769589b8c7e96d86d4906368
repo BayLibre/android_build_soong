@@ -69,6 +69,24 @@
       "parentUuid": "51c8f349_0a9aca20",
       "revId": "7bfac0b181d9cd4b769589b8c7e96d86d4906368",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1f71450_a85e5d8d",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-25T17:45:18Z",
+      "side": 1,
+      "message": "Are you planning to expand the allowlist and enable this enforcement for CTS and MCTS as well?",
+      "parentUuid": "18e0d371_49fdbcdc",
+      "revId": "7bfac0b181d9cd4b769589b8c7e96d86d4906368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
