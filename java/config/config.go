@@ -176,6 +176,7 @@ func init() {
 	pctx.HostJavaToolVariable("DoclavaJar", "doclava.jar")
 	pctx.HostJavaToolVariable("MetalavaJar", "metalava.jar")
 	pctx.HostJavaToolVariable("DokkaJar", "dokka.jar")
+	pctx.HostJavaToolVariable("DackkaJar", "dackka.jar")
 	pctx.HostJavaToolVariable("JetifierJar", "jetifier.jar")
 	pctx.HostJavaToolVariable("R8Jar", "r8.jar")
 	pctx.HostJavaToolVariable("D8Jar", "d8.jar")
