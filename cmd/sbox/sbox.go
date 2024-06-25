@@ -378,10 +378,12 @@ func validateOutputFiles(copies []*sbox_proto.Copy, sandboxDir, outputDir, rawCo
 		fromPath := joinPath(sandboxDir, copyPair.GetFrom())
 		fileInfo, err := os.Stat(fromPath)
 		if err != nil {
-			missingOutputErrors = append(missingOutputErrors, fmt.Errorf("%s: does not exist", fromPath))
-			continue
-		}
-		if fileInfo.IsDir() {
+			_, _err := os.Lstat(fromPath)
+			if _err != nil {
+				missingOutputErrors = append(missingOutputErrors, fmt.Errorf("%s: does not exist", fromPath))
+				continue
+			}
+		} else if fileInfo.IsDir() {
 			missingOutputErrors = append(missingOutputErrors, fmt.Errorf("%s: not a file", fromPath))
 		}
 
@@ -669,11 +671,19 @@ func moveFiles(copies []*sbox_proto.Copy, fromDir, toDir string, write writeType
 		// files with old timestamps).
 		now := time.Now()
 		err = os.Chtimes(toPath, now, now)
-		if err != nil {
+		if !isSymlink(toPath) && err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+func isSymlink(path string) bool {
+	fileInfo, err := os.Lstat(path)
+	if err != nil {
+		return false
+	}
+	return !fileInfo.Mode().IsRegular()
 }
 
 // clearOutputDirectory removes all files in the output directory if write is alwaysWrite, or
