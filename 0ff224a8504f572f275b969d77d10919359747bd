@@ -52,6 +52,24 @@
       "parentUuid": "a444b7d7_62738e12",
       "revId": "0ff224a8504f572f275b969d77d10919359747bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6459d3af_e929a463",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-25T01:24:04Z",
+      "side": 1,
+      "message": "You are right, unless we don\u0027t have any make dependencies for these modules. But we have the dependencies: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/Android.bp;drc\u003d936249baab0bc5f587d308ca670f45332b510a7c;l\u003d553\nWithout `AndroidMkEntries()`, this `required` dependency fails.",
+      "parentUuid": "21733af8_e4891554",
+      "revId": "0ff224a8504f572f275b969d77d10919359747bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
