@@ -33,6 +33,24 @@
       "message": "i\u0027m not sure this change is right/complete anyway, because i was expecting to see some kind of `\u003d true` somewhere?",
       "revId": "3bb399e484c77498b6cee7fd2f8e66fe1c9fe9e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6227c09_ed654f22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-06-25T17:50:09Z",
+      "side": 1,
+      "message": "(i think ps2 finds and removes the `\u003d true` equivalents.)",
+      "parentUuid": "589842d1_11e185b9",
+      "revId": "3bb399e484c77498b6cee7fd2f8e66fe1c9fe9e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
