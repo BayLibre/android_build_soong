@@ -351,7 +351,6 @@ func runCommand(command *sbox_proto.Command, tempDir string, commandIndex int) (
 	if err != nil {
 		return "", err
 	}
-
 	return depFile, nil
 }
 
@@ -378,13 +377,14 @@ func validateOutputFiles(copies []*sbox_proto.Copy, sandboxDir, outputDir, rawCo
 		fromPath := joinPath(sandboxDir, copyPair.GetFrom())
 		fileInfo, err := os.Stat(fromPath)
 		if err != nil {
-			missingOutputErrors = append(missingOutputErrors, fmt.Errorf("%s: does not exist", fromPath))
-			continue
-		}
-		if fileInfo.IsDir() {
+			_, err1 := os.Lstat(fromPath)
+			if err1 != nil {
+				missingOutputErrors = append(missingOutputErrors, fmt.Errorf("%s: does not exist", fromPath))
+				continue
+			}
+		} else if fileInfo.IsDir() {
 			missingOutputErrors = append(missingOutputErrors, fmt.Errorf("%s: not a file", fromPath))
 		}
-
 		toPath := copyPair.GetTo()
 		if rel, err := filepath.Rel(outputDir, toPath); err != nil {
 			return err
@@ -659,7 +659,6 @@ func moveFiles(copies []*sbox_proto.Copy, fromDir, toDir string, write writeType
 		if write == onlyWriteIfChanged && filesHaveSameContents(fromPath, toPath) {
 			continue
 		}
-
 		err = os.Rename(fromPath, toPath)
 		if err != nil {
 			return err
@@ -669,11 +668,19 @@ func moveFiles(copies []*sbox_proto.Copy, fromDir, toDir string, write writeType
 		// files with old timestamps).
 		now := time.Now()
 		err = os.Chtimes(toPath, now, now)
-		if err != nil {
+		if !isSymlink(toPath) && err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+func isSymlink(path string) bool {
+	fileInfo, err := os.Lstat(path)
+	if err != nil {
+		return false
+	}
+	return fileInfo.Mode()&os.ModeSymlink == os.ModeSymlink
 }
 
 // clearOutputDirectory removes all files in the output directory if write is alwaysWrite, or
