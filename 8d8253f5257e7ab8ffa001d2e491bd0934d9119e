@@ -16,6 +16,24 @@
       "message": "aosp/2257928 was the last attempt at this.\n\nCan you run this through go/woodchipper-guide (or manually through ABTD) on a wide variety of products to try to catch any broken cases before submitting?",
       "revId": "8d8253f5257e7ab8ffa001d2e491bd0934d9119e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "861d418b_0465abdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-25T02:09:53Z",
+      "side": 1,
+      "message": "I lost my access to woodchipper, so I tried to manually create go/abtd builds. I think the following cover all products in go/ab/git_main:\n- https://android-build.corp.google.com/builds/abtd/run/L28000030004761792\n- https://android-build.corp.google.com/builds/abtd/run/L47000030004753560\n- https://android-build.corp.google.com/builds/abtd/run/L39500030004757997\n- https://android-build.corp.google.com/builds/abtd/run/L85800030004722263\n\nAll the products except 2 seem to be failing for this [module](https://source.corp.google.com/h/googleplex-android/platform/vendor/qcom/sa8295/proprietary/+/4603870f29003cd35012bef30e148f193316c742:chi-cdk/cdk/generated/build/android/Android.mk;l\u003d128-135;drc\u003d52b2771777cecf5378672d076013ff717471a319;bpv\u003d1;bpt\u003d0). [error log](https://android-build.corp.google.com/build_explorer/artifacts_list/P76653678/aosp_falcon-next-userdebug/latest/).\n\nIt looks this module is a \"phony\" module that is used to generate some files in a well defined location in $TARGET_OUT. I will work on a fix for this module tomorrow. \n\nMarking this comment as unresolved to prevent accidentally merging this CL before the fix.",
+      "parentUuid": "f0f22f26_390d7710",
+      "revId": "8d8253f5257e7ab8ffa001d2e491bd0934d9119e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
