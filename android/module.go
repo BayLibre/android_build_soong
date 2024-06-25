@@ -26,8 +26,6 @@ import (
 	"sort"
 	"strings"
 
-	"android/soong/bazel"
-
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
@@ -848,9 +846,6 @@ type ModuleBase struct {
 	// chooses the props specific to the architecture. The interface{} value is an
 	// archPropRoot that is filled with arch specific values by the arch mutator.
 	archProperties [][]interface{}
-
-	// Properties specific to the Blueprint to BUILD migration.
-	bazelTargetModuleProperties bazel.BazelTargetModuleProperties
 
 	// Information about all the properties on the module that contains visibility rules that need
 	// checking.

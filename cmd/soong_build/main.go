@@ -29,6 +29,7 @@ import (
 	"android/soong/android/allowlists"
 	"android/soong/bp2build"
 	"android/soong/shared"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/deptools"
