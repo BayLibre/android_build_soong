@@ -383,7 +383,8 @@ type SanitizeProperties struct {
 	Sanitize        SanitizeUserProps         `android:"arch_variant"`
 	SanitizeMutated sanitizeMutatedProperties `blueprint:"mutated"`
 
-	SanitizerEnabled  bool     `blueprint:"mutated"`
+	// ForceDisable is set by the version mutator to disable sanitization of stubs variants
+	ForceDisable      bool     `blueprint:"mutated"`
 	MinimalRuntimeDep bool     `blueprint:"mutated"`
 	BuiltinsDep       bool     `blueprint:"mutated"`
 	UbsanRuntimeDep   bool     `blueprint:"mutated"`
@@ -451,9 +452,23 @@ func (p *sanitizeMutatedProperties) copyUserPropertiesToMutated(userProps *Sanit
 	}
 }
 
+// anySanitizerEnabled returns true if any of the properties to enable an individual sanitizer are set
+// in SanitizeMutated.
+func (sanitize *sanitize) anySanitizerEnabled() bool {
+	s := &sanitize.Properties.SanitizeMutated
+	return Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) || Bool(s.Thread) ||
+		Bool(s.Fuzzer) || Bool(s.Safestack) || Bool(s.Cfi) || Bool(s.Integer_overflow) || len(s.Misc_undefined) > 0 ||
+		Bool(s.Scudo) || Bool(s.Hwaddress) || Bool(s.Scs) || Bool(s.Memtag_heap) || Bool(s.Memtag_stack) ||
+		Bool(s.Memtag_globals)
+}
+
 func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	s := &sanitize.Properties.SanitizeMutated
 	s.copyUserPropertiesToMutated(&sanitize.Properties.Sanitize)
+
+	if sanitize.Properties.ForceDisable {
+		return
+	}
 
 	// Don't apply sanitizers to NDK code.
 	if ctx.useSdk() {
@@ -708,13 +723,6 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		// TODO(ccross): error for compile_multilib = "32"?
 	}
 
-	if ctx.Os() != android.Windows && (Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) || Bool(s.Thread) ||
-		Bool(s.Fuzzer) || Bool(s.Safestack) || Bool(s.Cfi) || Bool(s.Integer_overflow) || len(s.Misc_undefined) > 0 ||
-		Bool(s.Scudo) || Bool(s.Hwaddress) || Bool(s.Scs) || Bool(s.Memtag_heap) || Bool(s.Memtag_stack) ||
-		Bool(s.Memtag_globals)) {
-		sanitize.Properties.SanitizerEnabled = true
-	}
-
 	// Disable Scudo if ASan or TSan is enabled, or if it's disabled globally.
 	if Bool(s.Address) || Bool(s.Thread) || Bool(s.Hwaddress) || ctx.Config().DisableScudo() {
 		s.Scudo = nil
@@ -765,7 +773,15 @@ func toDisableUnsignedShiftBaseChange(flags []string) bool {
 }
 
 func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
-	if !s.Properties.SanitizerEnabled && !s.Properties.UbsanRuntimeDep {
+	if s.Properties.ForceDisable {
+		return flags
+	}
+
+	if ctx.Windows() {
+		return flags
+	}
+
+	if !s.anySanitizerEnabled() && !s.Properties.UbsanRuntimeDep {
 		return flags
 	}
 	sanProps := &s.Properties.SanitizeMutated
@@ -1079,9 +1095,6 @@ func (sanitize *sanitize) SetSanitizer(t SanitizerType, b bool) {
 	default:
 		panic(fmt.Errorf("unknown SanitizerType %d", t))
 	}
-	if b {
-		sanitize.Properties.SanitizerEnabled = true
-	}
 }
 
 // Check if the sanitizer is explicitly disabled (as opposed to nil by
@@ -1104,7 +1117,7 @@ func (s *sanitize) isSanitizerEnabled(t SanitizerType) bool {
 	if s == nil {
 		return false
 	}
-	if proptools.Bool(s.Properties.SanitizeMutated.Never) {
+	if s.Properties.ForceDisable || proptools.Bool(s.Properties.SanitizeMutated.Never) {
 		return false
 	}
 
@@ -1329,7 +1342,7 @@ func (s *sanitizerSplitMutator) Mutate(mctx android.BottomUpMutatorContext, vari
 }
 
 func (c *Module) SanitizeNever() bool {
-	return Bool(c.sanitize.Properties.SanitizeMutated.Never)
+	return c.sanitize.Properties.ForceDisable || Bool(c.sanitize.Properties.SanitizeMutated.Never)
 }
 
 func (c *Module) IsSanitizerExplicitlyDisabled(t SanitizerType) bool {
@@ -1340,6 +1353,9 @@ func (c *Module) IsSanitizerExplicitlyDisabled(t SanitizerType) bool {
 func sanitizerRuntimeDepsMutator(mctx android.TopDownMutatorContext) {
 	// Change this to PlatformSanitizable when/if non-cc modules support ubsan sanitizers.
 	if c, ok := mctx.Module().(*Module); ok && c.sanitize != nil {
+		if c.sanitize.Properties.ForceDisable {
+			return
+		}
 		isSanitizableDependencyTag := c.SanitizableDepTagChecker()
 		mctx.WalkDeps(func(child, parent android.Module) bool {
 			if !isSanitizableDependencyTag(mctx.OtherModuleDependencyTag(child)) {
@@ -1350,7 +1366,7 @@ func sanitizerRuntimeDepsMutator(mctx android.TopDownMutatorContext) {
 			if !ok || !d.static() {
 				return false
 			}
-			if d.sanitize != nil {
+			if d.sanitize != nil && !d.sanitize.Properties.ForceDisable {
 				if enableMinimalRuntime(d.sanitize) {
 					// If a static dependency is built with the minimal runtime,
 					// make sure we include the ubsan minimal runtime.
@@ -1385,6 +1401,10 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 		if !c.Enabled(mctx) {
 			return
 		}
+		if c.sanitize.Properties.ForceDisable {
+			return
+		}
+
 		var sanitizers []string
 		var diagSanitizers []string
 
