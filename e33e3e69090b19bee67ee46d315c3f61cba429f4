@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4d26f8a_38fc7866",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2138,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-25T22:05:39Z",
+      "side": 1,
+      "message": "Isn\u0027t this a behavior change from what we had before? Why do we need to limit it to just libraryDecorator? Could we make non-libraryDecorator linkers return nil instead?",
+      "revId": "e33e3e69090b19bee67ee46d315c3f61cba429f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
