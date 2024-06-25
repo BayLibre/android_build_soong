@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d2dc089_c0ae453a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-25T05:34:32Z",
+      "side": 1,
+      "message": "Do you mind explaining why this enforcement is added only for `android_test` (and helper), and not for `java_test` or `java_test_host`?",
+      "revId": "7bfac0b181d9cd4b769589b8c7e96d86d4906368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51c8f349_0a9aca20",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-25T05:34:32Z",
+      "side": 1,
+      "message": "Is there a reason why this is enforced only for MTS modules? What about CTS or MCTS?",
+      "revId": "7bfac0b181d9cd4b769589b8c7e96d86d4906368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
