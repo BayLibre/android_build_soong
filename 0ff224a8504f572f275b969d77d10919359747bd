@@ -16,6 +16,24 @@
       "message": "Is this androidmk entry still necessary?",
       "revId": "0ff224a8504f572f275b969d77d10919359747bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a444b7d7_62738e12",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-06-25T00:50:03Z",
+      "side": 1,
+      "message": "No, we don\u0027t need that any more. I also removed `FilesToInstall()` because that must be set by `InstallFile()`.",
+      "parentUuid": "b7fbc018_a5794523",
+      "revId": "0ff224a8504f572f275b969d77d10919359747bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
