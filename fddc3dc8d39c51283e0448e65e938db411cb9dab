@@ -33,6 +33,24 @@
       "message": "Would a forward fix be acceptable here? I think we need this [build action in gtest](https://source.corp.google.com/h/googleplex-android/platform/art/+/7487ba98041d0c0e29c15bf437af82b7e93c13fd:build/Android.gtest.mk;l\u003d259-264;drc\u003d663eb13beff99ddf4bf1f0c4be70a8b045ef5e07;bpv\u003d1;bpt\u003d0) is missing the output.\n\nIf so, I can verify it locally and upload a fix. It should also affect the chromium art CI builds.",
       "revId": "fddc3dc8d39c51283e0448e65e938db411cb9dab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1466c970_0d40522e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-06-26T18:48:42Z",
+      "side": 1,
+      "message": "A fix forward will be fine if we can land soon. Our waterfall is red because of this.",
+      "parentUuid": "4135261a_2c1a573d",
+      "revId": "fddc3dc8d39c51283e0448e65e938db411cb9dab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
