@@ -34,6 +34,24 @@
       "parentUuid": "f0f22f26_390d7710",
       "revId": "8d8253f5257e7ab8ffa001d2e491bd0934d9119e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "969e9001_4f0d9c97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-26T02:18:16Z",
+      "side": 1,
+      "message": "I do not have a proper fix for the aforementioned Android.mk module, so for now I have added `BUILD_BROKEN_MISSING_OUTPUTS` to the products which include that module.",
+      "parentUuid": "861d418b_0465abdb",
+      "revId": "8d8253f5257e7ab8ffa001d2e491bd0934d9119e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
