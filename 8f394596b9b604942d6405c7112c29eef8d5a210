@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fef6abb_3d11250a",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-06-26T20:31:59Z",
+      "side": 1,
+      "message": "AllSanitizersDisabled and AnySanitizerEnabled seem to imply that they\u0027re always opposites of each other. Is it possible to just use the inverse of AnySantizierEnabled? If not, at least add a comment describing their differences.",
+      "revId": "8f394596b9b604942d6405c7112c29eef8d5a210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
