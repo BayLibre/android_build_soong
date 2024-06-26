@@ -16,6 +16,23 @@
       "message": "This is also affecting https://ci.chromium.org/p/art/g/luci/console e.g. https://ci.chromium.org/ui/p/art/builders/ci/host-x86-cms/10093/overview",
       "revId": "fddc3dc8d39c51283e0448e65e938db411cb9dab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4135261a_2c1a573d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-26T16:52:39Z",
+      "side": 1,
+      "message": "Would a forward fix be acceptable here? I think we need this [build action in gtest](https://source.corp.google.com/h/googleplex-android/platform/art/+/7487ba98041d0c0e29c15bf437af82b7e93c13fd:build/Android.gtest.mk;l\u003d259-264;drc\u003d663eb13beff99ddf4bf1f0c4be70a8b045ef5e07;bpv\u003d1;bpt\u003d0) is missing the output.\n\nIf so, I can verify it locally and upload a fix. It should also affect the chromium art CI builds.",
+      "revId": "fddc3dc8d39c51283e0448e65e938db411cb9dab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
