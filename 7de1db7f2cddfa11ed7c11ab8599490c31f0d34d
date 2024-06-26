@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84448814_b80bf327",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-06-26T14:51:32Z",
+      "side": 1,
+      "message": "With android.Paths.Strings as a method there\u0027s no need to have toStrings template function (template could use Strings directly). But I can fix it in a follow-up CL.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 4
+      },
+      "revId": "7de1db7f2cddfa11ed7c11ab8599490c31f0d34d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc30050_82d05cc5",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-06-26T14:51:32Z",
+      "side": 1,
+      "message": "nit: It would be nice to have something like android.SortedRange.",
+      "range": {
+        "startLine": 439,
+        "startChar": 23,
+        "endLine": 439,
+        "endChar": 41
+      },
+      "revId": "7de1db7f2cddfa11ed7c11ab8599490c31f0d34d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
