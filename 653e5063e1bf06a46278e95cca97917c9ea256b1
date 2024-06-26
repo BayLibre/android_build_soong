@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60cfc6b1_3e3a3b10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-26T18:23:13Z",
+      "side": 1,
+      "message": "I\u0027ve mentioned this in another change, but if the purpose of introducing `dackka` is to deprecate `dokka`, can we just replace the existing functionality of `dokka` with `dackka`?",
+      "revId": "653e5063e1bf06a46278e95cca97917c9ea256b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "796a1153_d1384208",
+        "filename": "java/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-26T18:23:13Z",
+      "side": 1,
+      "message": "Given that the ninja variable `DackkaJar` is not being used in this change, I don\u0027t think this is necessary.",
+      "revId": "653e5063e1bf06a46278e95cca97917c9ea256b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "421637bf_3ac9bc45",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-26T18:23:13Z",
+      "side": 1,
+      "message": "To utilize this, a bp module named `dackka` should be checked in. I believe that you can check in a `java_import_host` module under `prebuilts` directory.",
+      "revId": "653e5063e1bf06a46278e95cca97917c9ea256b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa2f1ba_53218c08",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-26T18:23:13Z",
+      "side": 1,
+      "message": "So when both `dokka_enabled` and `dackka_enabled` is set to true in a module definition, `dackka_enabled` would be silently ignored and `dokka` would run. Instead of doing this, I believe that throwing an error when both properties are set to true is more user friendly.",
+      "range": {
+        "startLine": 861,
+        "startChar": 0,
+        "endLine": 862,
+        "endChar": 83
+      },
+      "revId": "653e5063e1bf06a46278e95cca97917c9ea256b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26f61ca5_d2174063",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-26T18:23:13Z",
+      "side": 1,
+      "message": "Ditto regarding `dokka_enabled` and `dackka_enabled`",
+      "range": {
+        "startLine": 878,
+        "startChar": 0,
+        "endLine": 879,
+        "endChar": 17
+      },
+      "revId": "653e5063e1bf06a46278e95cca97917c9ea256b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
