@@ -51,6 +51,24 @@
       "parentUuid": "4135261a_2c1a573d",
       "revId": "fddc3dc8d39c51283e0448e65e938db411cb9dab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ff06a2_ee445b8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-26T19:09:07Z",
+      "side": 1,
+      "message": "Sorry for the breakage. I think we can just revert it for now, and work on a fix later.",
+      "parentUuid": "1466c970_0d40522e",
+      "revId": "fddc3dc8d39c51283e0448e65e938db411cb9dab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
