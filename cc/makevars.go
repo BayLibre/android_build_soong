@@ -136,6 +136,7 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("CLANG_COVERAGE_INSTR_PROFILE", profileInstrFlag)
 	ctx.Strict("CLANG_COVERAGE_CONTINUOUS_FLAGS", strings.Join(clangContinuousCoverageFlags, " "))
 	ctx.Strict("CLANG_COVERAGE_HWASAN_FLAGS", strings.Join(clangCoverageHWASanFlags, " "))
+	ctx.Strict("FUZZ_FEATURIZE_MACRO", strings.Join(fuzzFeaturizeMacro, " "))
 
 	ctx.Strict("ADDRESS_SANITIZER_CONFIG_EXTRA_CFLAGS", strings.Join(asanCflags, " "))
 	ctx.Strict("ADDRESS_SANITIZER_CONFIG_EXTRA_LDFLAGS", strings.Join(asanLdflags, " "))

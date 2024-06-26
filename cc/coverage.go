@@ -43,6 +43,9 @@ var (
  		"-mllvm",
  		"-hwasan-globals=0",
  	}
+ 	fuzzFeaturizeMacro = []string{
+ 		"-D__LIBFUZZON__",
+ 	}
 )
 
 const profileInstrFlag = "-fprofile-instr-generate=/data/misc/trace/clang-%p-%m.profraw"
@@ -113,6 +116,8 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 	if !gcovCoverage && !clangCoverage {
 		return flags, deps
 	}
+	// fuzz featurize macro on the server side
+	flags.Local.CFlags = append(flags.Local.CFlags, fuzzFeaturizeMacro...)
 
 	if cov.Properties.CoverageEnabled {
 		cov.linkCoverage = true
