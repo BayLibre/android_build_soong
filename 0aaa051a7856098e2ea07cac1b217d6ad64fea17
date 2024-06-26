@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f869899_db3e8996",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-06-26T15:14:56Z",
+      "side": 1,
+      "message": "This is the list of tools that we allowlist to come from the host environment instead of coming from the source tree.  Having it on this list means that it needs to be supported on all build servers, and have a process for handling updates, and have some level of compatibility between versions.\n\nYour two options are to check all of perl into the tree (I don\u0027t know if this is even possible, including dependencies), or to rewrite the script you\u0027re trying to call in another language that is supported.",
+      "revId": "0aaa051a7856098e2ea07cac1b217d6ad64fea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
