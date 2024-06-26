@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69b6e8ff_a5adedb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-06-26T14:55:39Z",
+      "side": 1,
+      "message": "This is also affecting https://ci.chromium.org/p/art/g/luci/console e.g. https://ci.chromium.org/ui/p/art/builders/ci/host-x86-cms/10093/overview",
+      "revId": "fddc3dc8d39c51283e0448e65e938db411cb9dab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
