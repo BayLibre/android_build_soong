@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eea2f14a_bc991ca2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-26T18:24:16Z",
+      "side": 1,
+      "message": "Voting -2 to prevent submission for now. I\u0027m not opposed to the overall approach.",
+      "revId": "653e5063e1bf06a46278e95cca97917c9ea256b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "796a1153_d1384208",
