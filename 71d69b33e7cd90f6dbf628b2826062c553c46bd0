@@ -33,6 +33,24 @@
       "message": "aosp/3108800 should resolve some of the failures in presubmit. We still need to wait for the toolchain update.\n\nThere\u0027s a behavior change which was leading to the presubmit failures that the patch above resolves (simply because we didn\u0027t need it anymore). I think it\u0027s around shared library propagation. I want to track it down to be sure, then make a decision whether to replicate the old behavior or keep the current behavior which matches cc more closely.\n\nAlso, a note to myself, I need to test `m blueprint_tests` still works.",
       "revId": "71d69b33e7cd90f6dbf628b2826062c553c46bd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2d445b_8e471a09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-06-26T01:43:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aa5a860_c0c1727c",
+      "revId": "71d69b33e7cd90f6dbf628b2826062c553c46bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
