@@ -552,6 +552,22 @@ type Module struct {
 	aconfigCacheFiles android.Paths
 }
 
+var _ android.InstallableModule = (*Module)(nil)
+
+func (j *Module) IsInstallableModule() bool {
+	return true
+}
+
+// Overrides android.ModuleBase.InstallInProduct()
+func (j *Module) InstallInProduct() bool {
+	return j.ModuleBase.InstallInProduct() || j.ProductSpecific()
+}
+
+// Overrides android.ModuleBase.InstallInVendor()
+func (j *Module) InstallInVendor() bool {
+	return j.ModuleBase.InstallInVendor() || j.SocSpecific()
+}
+
 func (j *Module) CheckStableSdkVersion(ctx android.BaseModuleContext) error {
 	sdkVersion := j.SdkVersion(ctx)
 	if sdkVersion.Stable() {

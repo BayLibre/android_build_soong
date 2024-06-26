@@ -1185,6 +1185,7 @@ func LibraryFactory() android.Module {
 	module.initModuleAndImport(module)
 
 	android.InitApexModule(module)
+
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	return module
 }
