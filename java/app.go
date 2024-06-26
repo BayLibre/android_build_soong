@@ -1258,6 +1258,7 @@ func AndroidAppFactory() android.Module {
 	android.InitDefaultableModule(module)
 	android.InitOverridableModule(module, &module.overridableAppProperties.Overrides)
 	android.InitApexModule(module)
+	android.InitInstallableModule(module)
 
 	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
 		a := ctx.Module().(*AndroidApp)
@@ -1542,6 +1543,7 @@ func AndroidTestHelperAppFactory() android.Module {
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	android.InitApexModule(module)
+	android.InitInstallableModule(module)
 	return module
 }
 

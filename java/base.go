@@ -427,6 +427,7 @@ func makeDexJarPathFromPath(path android.Path) OptionalDexJarPath {
 // Module contains the properties and members used by all java module types
 type Module struct {
 	android.ModuleBase
+	android.InstallableModuleBase
 	android.DefaultableModuleBase
 	android.ApexModuleBase
 
@@ -550,6 +551,29 @@ type Module struct {
 	// java_aconfig_library or java_library modules that are statically linked
 	// to this module. Does not contain cache files from all transitive dependencies.
 	aconfigCacheFiles android.Paths
+
+	// system bool
+}
+
+// func (j *Module) InSystemContainer() bool {
+// 	return j.system
+// }
+
+// func (j *Module) SetSystemContainer(isSystem bool) {
+// 	if j.Name() == "foo" {
+// 		fmt.Println("SetSystemContainer called")
+// 	}
+// 	j.system = isSystem
+// }
+
+// Overrides android.ModuleBase.InstallInProduct()
+func (j *Module) InstallInProduct() bool {
+	return j.ModuleBase.InstallInProduct() || j.ProductSpecific()
+}
+
+// Overrides android.ModuleBase.InstallInVendor()
+func (j *Module) InstallInVendor() bool {
+	return j.ModuleBase.InstallInVendor() || j.SocSpecific()
 }
 
 func (j *Module) CheckStableSdkVersion(ctx android.BaseModuleContext) error {

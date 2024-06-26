@@ -901,6 +901,8 @@ func init() {
 }
 
 func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	fmt.Printf("%s: system: %t, product: %t, vendor: %t, cts: %t, apex: %t\n", ctx.Module(), j.Module.InSystemContainer(), j.InProductContainer(), j.InVendorContainer(), j.InCts(), j.InApexes())
+
 	if disableSourceApexVariant(ctx) {
 		// Prebuilts are active, do not create the installation rules for the source javalib.
 		// Even though the source javalib is not used, we need to hide it to prevent duplicate installation rules.
@@ -1185,6 +1187,8 @@ func LibraryFactory() android.Module {
 	module.initModuleAndImport(module)
 
 	android.InitApexModule(module)
+	android.InitInstallableModule(module)
+
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	return module
 }
@@ -1206,6 +1210,7 @@ func LibraryHostFactory() android.Module {
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 
 	android.InitApexModule(module)
+	android.InitInstallableModule(module)
 	InitJavaModule(module, android.HostSupported)
 	return module
 }

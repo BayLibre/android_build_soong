@@ -943,6 +943,7 @@ func AndroidLibraryFactory() android.Module {
 	module.Module.linter.library = true
 
 	android.InitApexModule(module)
+	android.InitInstallableModule(module)
 	InitJavaModule(module, android.DeviceSupported)
 	return module
 }
