@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6769a7e1_bbcf2a04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-27T17:08:13Z",
+      "side": 1,
+      "message": "Thanks!",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "9cb0b14dbaf7cbcb3a8cef1161e3f2ed42ae5f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cbb83b1_c897b6e4",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-27T17:08:13Z",
+      "side": 1,
+      "message": "My understand of the [comment on `SYSTEM_OTHER_ODEX_FILTER`](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/dex_preopt_config.mk;l\u003d48;drc\u003d53dd895407cf3d09c559f31240a1985005d8085d) is that prepending `/` is always necessary.",
+      "range": {
+        "startLine": 535,
+        "startChar": 2,
+        "endLine": 538,
+        "endChar": 3
+      },
+      "revId": "9cb0b14dbaf7cbcb3a8cef1161e3f2ed42ae5f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
