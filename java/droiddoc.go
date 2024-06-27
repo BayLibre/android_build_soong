@@ -25,6 +25,8 @@ import (
 	"android/soong/java/config"
 )
 
+// test
+
 func init() {
 	RegisterDocsBuildComponents(android.InitRegistrationContext)
 }
