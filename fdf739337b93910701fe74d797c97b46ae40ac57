@@ -16,6 +16,24 @@
       "message": "Could this be a Provider instead?",
       "revId": "fdf739337b93910701fe74d797c97b46ae40ac57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b25798_9b61db30",
+        "filename": "android/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-27T19:19:31Z",
+      "side": 1,
+      "message": "Yes, I can work on converting this to a provider, but would you mind explaining the benefits of this being a provider over an interface? I initially implemented this as an interface as I thought this would be more scalable with interface embedding, as seen [here](https://android-review.git.corp.google.com/c/platform/build/soong/+/3150117/1/java/base.go#430).",
+      "parentUuid": "349d0480_2306b7b0",
+      "revId": "fdf739337b93910701fe74d797c97b46ae40ac57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
