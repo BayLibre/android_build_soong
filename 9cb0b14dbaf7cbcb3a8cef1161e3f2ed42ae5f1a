@@ -93,6 +93,30 @@
       },
       "revId": "9cb0b14dbaf7cbcb3a8cef1161e3f2ed42ae5f1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b80fd70_e1d28bbc",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-27T18:41:39Z",
+      "side": 1,
+      "message": "Keeping the paths relative in `SYSTEM_OTHER_ODEX_FILTER` seems reasonable, and I do not have any upcoming plans to fix it. Could you point me to where this pattern matching is done? (I think soong might have a different implementation in `makeFileMatch`)\n\nBut I think we need to add a starting `/` here. Without it, the behavior might not be correct, as surfaced by this test\n```\n$ --- FAIL: TestDexPreoptSystemOther (0.00s)                                                                                                       \n    dexpreopt_test.go:176: \n        want installs:\n           out/soong/Ptest/oat/arm/package.odex:/system_other/product/app/test/oat/arm/Ptest.odex out/soong/Ptest/oat/arm/package.vdex:/system_other/product/app/test/oat/arm/Ptest.vdex\n        got:\n           out/soong/Ptest/oat/arm/package.odex:/product/app/test/oat/arm/Ptest.odex out/soong/Ptest/oat/arm/package.vdex:/product/app/test/oat/arm/Ptest.vdex        \nFAIL                                                                                                                                             \nFAIL    android/soong/dexpreopt 0.099s                                                                                                           \nFAIL\n```\n\nI think this happens because [makeFileMatch](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/1b072bfda5a46daf2f331b72d899a9939695db32:dexpreopt/dexpreopt.go;l\u003d566-568;drc\u003d5ae65ee6e060815dc5f3c11b505a313a3c37317c;bpv\u003d1;bpt\u003d0) looks for the prefix rather than the substring. I have updated the implementation with `filepath.Join`\n\nFor the aosp_arm64 example, I think it is covered by `!global.HasSystemOther` in line 522?",
+      "parentUuid": "bd7dc19e_ea1446f0",
+      "range": {
+        "startLine": 535,
+        "startChar": 2,
+        "endLine": 538,
+        "endChar": 3
+      },
+      "revId": "9cb0b14dbaf7cbcb3a8cef1161e3f2ed42ae5f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
