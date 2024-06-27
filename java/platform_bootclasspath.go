@@ -15,8 +15,6 @@
 package java
 
 import (
-	"fmt"
-
 	"android/soong/android"
 	"android/soong/dexpreopt"
 )
@@ -76,8 +74,6 @@ func platformBootclasspathFactory() android.SingletonModule {
 	return m
 }
 
-var _ android.OutputFileProducer = (*platformBootclasspathModule)(nil)
-
 func (b *platformBootclasspathModule) AndroidMkEntries() (entries []android.AndroidMkEntries) {
 	entries = append(entries, android.AndroidMkEntries{
 		Class: "FAKE",
@@ -87,22 +83,6 @@ func (b *platformBootclasspathModule) AndroidMkEntries() (entries []android.Andr
 	})
 	entries = append(entries, b.classpathFragmentBase().androidMkEntries()...)
 	return
-}
-
-// Make the hidden API files available from the platform-bootclasspath module.
-func (b *platformBootclasspathModule) OutputFiles(tag string) (android.Paths, error) {
-	switch tag {
-	case "hiddenapi-flags.csv":
-		return android.Paths{b.hiddenAPIFlagsCSV}, nil
-	case "hiddenapi-index.csv":
-		return android.Paths{b.hiddenAPIIndexCSV}, nil
-	case "hiddenapi-metadata.csv":
-		return android.Paths{b.hiddenAPIMetadataCSV}, nil
-	case ".srcjar":
-		return android.Paths{b.srcjar}, nil
-	}
-
-	return nil, fmt.Errorf("unknown tag %s", tag)
 }
 
 func (b *platformBootclasspathModule) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -213,6 +193,15 @@ func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 
 	bootDexJarByModule := b.generateHiddenAPIBuildActions(ctx, b.configuredModules, b.fragments)
 	buildRuleForBootJarsPackageCheck(ctx, bootDexJarByModule)
+
+	b.setOutputFiles(ctx)
+}
+
+func (b *platformBootclasspathModule) setOutputFiles(ctx android.ModuleContext) {
+	ctx.SetOutputFiles(android.Paths{b.hiddenAPIFlagsCSV}, "hiddenapi-flags.csv")
+	ctx.SetOutputFiles(android.Paths{b.hiddenAPIIndexCSV}, "hiddenapi-index.csv")
+	ctx.SetOutputFiles(android.Paths{b.hiddenAPIMetadataCSV}, "hiddenapi-metadata.csv")
+	ctx.SetOutputFiles(android.Paths{b.srcjar}, ".srcjar")
 }
 
 // Generate classpaths.proto config
