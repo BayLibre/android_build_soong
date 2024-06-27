@@ -117,6 +117,30 @@
       },
       "revId": "9cb0b14dbaf7cbcb3a8cef1161e3f2ed42ae5f1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5368c1_9054d55d",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-27T19:24:26Z",
+      "side": 1,
+      "message": "\u003e  Could you point me to where this pattern matching is done?\n\nForgot that this is being done in the companion CL of this topic (aosp/3143014), which uses a filter rather than a prefix based match.\n\nI think `filepath.Join` should be compatible with aosp_arm64-userdebug. I verified that all the .odex files are installed in /system for this product.\n```\n$ lunch aosp_arm64-trunk_staging-userdebug\n$ grep product.*odex out/target/product/generic_arm64/obj/PACKAGING/system_intermediates/file_list.txt\nproduct/app/Browser2/oat/arm64/Browser2.odex\nproduct/app/Calendar/oat/arm64/Calendar.odex\nproduct/app/Camera2/oat/arm64/Camera2.odex\nproduct/app/DeskClock/oat/arm64/DeskClock.odex\nproduct/app/Gallery2/oat/arm64/Gallery2.odex\nproduct/app/LatinIME/oat/arm64/LatinIME.odex\nproduct/app/Music/oat/arm64/Music.odex\nproduct/app/PhotoTable/oat/arm64/PhotoTable.odex\nproduct/app/QuickSearchBox/oat/arm64/QuickSearchBox.odex\nproduct/app/messaging/oat/arm64/messaging.odex\nproduct/app/webview/oat/arm64/webview.odex\nproduct/priv-app/Contacts/oat/arm64/Contacts.odex\nproduct/priv-app/Dialer/oat/arm64/Dialer.odex\nproduct/priv-app/ImsServiceEntitlement/oat/arm64/ImsServiceEntitlement.odex\nproduct/priv-app/SettingsIntelligence/oat/arm64/SettingsIntelligence.odex\n```",
+      "parentUuid": "8b80fd70_e1d28bbc",
+      "range": {
+        "startLine": 535,
+        "startChar": 2,
+        "endLine": 538,
+        "endChar": 3
+      },
+      "revId": "9cb0b14dbaf7cbcb3a8cef1161e3f2ed42ae5f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
