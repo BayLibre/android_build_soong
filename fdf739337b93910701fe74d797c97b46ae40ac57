@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "349d0480_2306b7b0",
+        "filename": "android/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-27T16:59:07Z",
+      "side": 1,
+      "message": "Could this be a Provider instead?",
+      "revId": "fdf739337b93910701fe74d797c97b46ae40ac57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
