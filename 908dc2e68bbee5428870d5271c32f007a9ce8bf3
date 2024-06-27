@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8451734f_fc2bfdcb",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-27T13:17:01Z",
+      "side": 1,
+      "message": "... then we could eliminate this var",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 35
+      },
+      "revId": "908dc2e68bbee5428870d5271c32f007a9ce8bf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81c2952_5d7f0e84",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-06-27T13:17:01Z",
+      "side": 1,
+      "message": "Sorry. I should have been clearer. Can\u0027t we return these via `f.entries`?",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 35
+      },
+      "revId": "908dc2e68bbee5428870d5271c32f007a9ce8bf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
