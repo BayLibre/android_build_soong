@@ -45,6 +45,30 @@
       },
       "revId": "9cb0b14dbaf7cbcb3a8cef1161e3f2ed42ae5f1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e29c1a5e_e9ad1743",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-27T17:35:08Z",
+      "side": 1,
+      "message": "I think so too. I put the conditional here so that we do not add an accidental double `/` here in Soong if the pattern in `SYSTEM_OTHER_ODEX_FILTER` is refactored to begin with `/`",
+      "parentUuid": "5cbb83b1_c897b6e4",
+      "range": {
+        "startLine": 535,
+        "startChar": 2,
+        "endLine": 538,
+        "endChar": 3
+      },
+      "revId": "9cb0b14dbaf7cbcb3a8cef1161e3f2ed42ae5f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
