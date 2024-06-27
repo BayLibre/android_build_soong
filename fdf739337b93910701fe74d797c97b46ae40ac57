@@ -34,6 +34,24 @@
       "parentUuid": "349d0480_2306b7b0",
       "revId": "fdf739337b93910701fe74d797c97b46ae40ac57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89e8e0cd_1d743779",
+        "filename": "android/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-27T20:35:03Z",
+      "side": 1,
+      "message": "As part of the incremental Soong project we\u0027re moving everything in an interface over to a Provider, otherwise we can\u0027t know if the return value of an interface method will have changed in order to know when to reanalyze downstream modules.",
+      "parentUuid": "c3b25798_9b61db30",
+      "revId": "fdf739337b93910701fe74d797c97b46ae40ac57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
