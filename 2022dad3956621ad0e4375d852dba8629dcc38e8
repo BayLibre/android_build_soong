@@ -46,6 +46,30 @@
       },
       "revId": "2022dad3956621ad0e4375d852dba8629dcc38e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "200e1bbe_1b01a9ae",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-06-27T17:01:27Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "1e836d29_4a3ffafb",
+      "range": {
+        "startLine": 275,
+        "startChar": 65,
+        "endLine": 275,
+        "endChar": 76
+      },
+      "revId": "2022dad3956621ad0e4375d852dba8629dcc38e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
