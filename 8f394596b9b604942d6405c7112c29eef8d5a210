@@ -16,6 +16,24 @@
       "message": "AllSanitizersDisabled and AnySanitizerEnabled seem to imply that they\u0027re always opposites of each other. Is it possible to just use the inverse of AnySantizierEnabled? If not, at least add a comment describing their differences.",
       "revId": "8f394596b9b604942d6405c7112c29eef8d5a210",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6e48e7_649ac236",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-27T20:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fef6abb_3d11250a",
+      "revId": "8f394596b9b604942d6405c7112c29eef8d5a210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
