@@ -16,6 +16,24 @@
       "message": "The setOutputFiles is common to all 3 branches of the switch, can we move it after the switch?\n\nAnd then I\u0027d also consider inlining it at that point.",
       "revId": "89e4ff60d361cc7e0542f5da7a31c64f90b6d3b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7992809_8f46dc1e",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-27T21:18:36Z",
+      "side": 1,
+      "message": "The reason against it is the case `defaultDistFiles_Tagged`. The `GenerateTaggedDistFiles` wants outputFiles set already but right before it also sets `defaultDistPaths` which is used to set the outputFiles. So `setOutputFiles` has to be placed in between in this case, and thus needs to be placed to all the 3 branches.",
+      "parentUuid": "9d7dd239_f3c02aef",
+      "revId": "89e4ff60d361cc7e0542f5da7a31c64f90b6d3b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
