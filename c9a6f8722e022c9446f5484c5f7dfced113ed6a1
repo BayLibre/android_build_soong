@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac35943_c04b0019",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-27T21:09:13Z",
+      "side": 1,
+      "message": "Please add the bug number and the appropriate test message, as described in go/commit-change#footers-and-machine-parsable-text. If there is no corresponding bug at the moment, please file one with overall description of this work.",
+      "revId": "c9a6f8722e022c9446f5484c5f7dfced113ed6a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded35ecc_31f8fe1e",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-27T21:09:13Z",
+      "side": 1,
+      "message": "```suggestion\n\t// if set to true, generate docs through Dackka instead of Doclava.\n\t// Cannot be set together with Dokka_enabled.\n```",
+      "revId": "c9a6f8722e022c9446f5484c5f7dfced113ed6a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a08ca4_3e134036",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-27T21:09:13Z",
+      "side": 1,
+      "message": "This is not being used.",
+      "revId": "c9a6f8722e022c9446f5484c5f7dfced113ed6a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
