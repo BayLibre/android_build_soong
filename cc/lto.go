@@ -96,12 +96,22 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 		return flags
 	}
 
+<<<<<<< HEAD   (89fcdc Refactor the creation of soong_build calls.)
 	if lto.LTO() {
 		var ltoFlag string
 		if lto.ThinLTO() {
 			ltoFlag = "-flto=thin -fsplit-lto-unit"
 		} else {
 			ltoFlag = "-flto"
+=======
+		// The module did not explicitly turn on LTO. Only leverage LTO's
+		// better dead code elimination and CFG simplification, but do
+		// not perform costly optimizations for a balance between compile
+		// time, binary size and performance.
+		// Apply the same for Eng builds as well.
+		if !lto.ThinLTO() || ctx.Config().Eng() {
+			ltoLdFlags = append(ltoLdFlags, "-Wl,--lto-O0")
+>>>>>>> CHANGE (7255f0 Revert^5 "Enable full LTO optimization by default")
 		}
 
 		flags.Local.CFlags = append(flags.Local.CFlags, ltoFlag)
