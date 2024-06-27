@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f4a5f71_1e34dec3",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-27T23:02:05Z",
+      "side": 0,
+      "message": "Removing this is causing some changes to the sanitizer rules, because this gets set before sanitizer variants are created, and then the individual booleans are cleared in the non-sanitizer variant afterwards.  That leaves this SanitizerEnabled flag set in the non-sanitizer variant, which gives a different result than checking if any booleans are set later.  I\u0027m going to leave this strangeness for now with a todo.",
+      "revId": "f58d7efa297432b875e47d67f6665b9fd587bed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
