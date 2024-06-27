@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1229f8af_cf159477",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-06-27T14:41:38Z",
+      "side": 1,
+      "message": "@ccross@android.com: what does `image:` mean? System partition?\n\nIt\u0027s a question not as much related to this change, but for my own learning.",
+      "range": {
+        "startLine": 275,
+        "startChar": 65,
+        "endLine": 275,
+        "endChar": 76
+      },
+      "revId": "2022dad3956621ad0e4375d852dba8629dcc38e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
