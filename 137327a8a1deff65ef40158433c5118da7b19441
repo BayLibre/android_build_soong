@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4515dfea_250d73fb",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-06-27T08:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f39ec27_318768fc",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 2
+      },
+      "revId": "137327a8a1deff65ef40158433c5118da7b19441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f0f2c0b_a01fffb9",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-26T06:53:00Z",
       "side": 1,
       "message": "Why? Can\u0027t we just return a nil path? or `OptionalPath`?",
+      "range": {
+        "startLine": 549,
+        "startChar": 131,
+        "endLine": 549,
+        "endChar": 136
+      },
+      "revId": "137327a8a1deff65ef40158433c5118da7b19441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c746fb14_adeae6ad",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-06-27T08:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f0f2c0b_a01fffb9",
       "range": {
         "startLine": 549,
         "startChar": 131,
