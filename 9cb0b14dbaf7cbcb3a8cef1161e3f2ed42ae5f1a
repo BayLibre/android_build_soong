@@ -69,6 +69,30 @@
       },
       "revId": "9cb0b14dbaf7cbcb3a8cef1161e3f2ed42ae5f1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd7dc19e_ea1446f0",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-27T18:12:58Z",
+      "side": 1,
+      "message": "I see. Do you plan to refactor it? I think it\u0027s good to keep the paths relative, so that it can match both \u0027/\u003cp\u003e\u0027 and \u0027/system/\u003cp\u003e\u0027, as the comment suggests. Note that `system_ext` and `product` can be folders under `/system` instead of standalone partitions on some devices (e.g., https://android-build.corp.google.com/artifact/submitted/11997608/aosp_arm64-userdebug/latest/view/installed-files.txt). The pattern matching here has to handle this case.\n\nEven if you still think supporting leading `/`s is necessary, to avoid double `/`, you can simply use `filepath.Join(\u0027/\u0027, f)` instead of `f` on the next line.",
+      "parentUuid": "e29c1a5e_e9ad1743",
+      "range": {
+        "startLine": 535,
+        "startChar": 2,
+        "endLine": 538,
+        "endChar": 3
+      },
+      "revId": "9cb0b14dbaf7cbcb3a8cef1161e3f2ed42ae5f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
