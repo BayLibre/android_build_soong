@@ -22,6 +22,30 @@
       },
       "revId": "2022dad3956621ad0e4375d852dba8629dcc38e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e836d29_4a3ffafb",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-06-27T16:41:33Z",
+      "side": 1,
+      "message": "Correct, `\"\"` is the system image variant, but there are also `\"vendor\"`, `\"ramdisk\"`, etc. variants for some modules.",
+      "parentUuid": "1229f8af_cf159477",
+      "range": {
+        "startLine": 275,
+        "startChar": 65,
+        "endLine": 275,
+        "endChar": 76
+      },
+      "revId": "2022dad3956621ad0e4375d852dba8629dcc38e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
