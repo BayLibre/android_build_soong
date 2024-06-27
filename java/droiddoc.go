@@ -166,13 +166,13 @@ type DroiddocProperties struct {
 
 // Common flags passed down to build rule
 type droiddocBuilderFlags struct {
-	bootClasspathArgs  string
-	classpathArgs      string
-	sourcepathArgs     string
-	dokkaClasspathArgs string
+	bootClasspathArgs   string
+	classpathArgs       string
+	sourcepathArgs      string
+	dokkaClasspathArgs  string
 	dackkaClasspathArgs string
-	aidlFlags          string
-	aidlDeps           android.Paths
+	aidlFlags           string
+	aidlDeps            android.Paths
 
 	doclavaStubsFlags string
 	doclavaDocsFlags  string
@@ -854,7 +854,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	srcJarList := zipSyncCmd(ctx, rule, srcJarDir, d.Javadoc.srcJars)
 
-	if Bool(d.properties.Dackka_enabled) && Bool(d.properties.Dackka_enabled){
+	if Bool(d.properties.Dackka_enabled) && Bool(d.properties.Dackka_enabled) {
 		ctx.PropertyErrorf("dackka_enabled", "dackka_enabled and dokka_enabled cannot both be true")
 		return
 	}
