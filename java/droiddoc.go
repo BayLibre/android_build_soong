@@ -157,6 +157,9 @@ type DroiddocProperties struct {
 	// if set to true, generate docs through Dokka instead of Doclava.
 	Dokka_enabled *bool
 
+	// if set to true, generate docs through Dackka instead of Doclava or legacy Dokka.
+	Dackka_enabled *bool
+
 	// Compat config XML. Generates compat change documentation if set.
 	Compat_config *string `android:"path"`
 }
@@ -167,6 +170,7 @@ type droiddocBuilderFlags struct {
 	classpathArgs      string
 	sourcepathArgs     string
 	dokkaClasspathArgs string
+	dackkaClasspathArgs string
 	aidlFlags          string
 	aidlDeps           android.Paths
 
@@ -816,7 +820,23 @@ func dokkaCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 		FlagWithInputList("-classpath ", dokkaClasspath, ":").
 		FlagWithArg("-format ", "dac").
 		FlagWithArg("-dacRoot ", "/reference/kotlin").
-		FlagWithArg("-output ", outDir.String())
+		FlagWithArg("-output ", outDir.String()).
+		Input("android/prebuilts/tools/common/dackka/config.json")
+}
+
+func dackkaCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
+	outDir, srcJarDir android.Path, bootclasspath, classpath classpath) *android.RuleBuilderCommand {
+
+	// Dackka doesn't support bootClasspath, so combine these two classpath vars for Dackka.
+	dackkaClasspath := append(bootclasspath.Paths(), classpath.Paths()...)
+
+	return rule.Command().
+		BuiltTool("dackka").
+		Flag(config.JavacVmFlags).
+		Flag("-J--add-opens=java.base/java.lang=ALL-UNNAMED").
+		FlagWithInputList("-pluginsClasspath ", dackkaClasspath, ";").
+		FlagWithArg("--sourceSet ", srcJarDir.String())
+		FlagWithArg("-outputDir ", outDir.String())
 }
 
 func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -834,9 +854,16 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	srcJarList := zipSyncCmd(ctx, rule, srcJarDir, d.Javadoc.srcJars)
 
+	if Bool(d.properties.Dackka_enabled && d.properties.Dackka_enabled){
+		ctx.PropertyErrorf("dackka_enabled", "dackka_enabled and dokka_enabled cannot both be true")
+		return
+	}
+
 	var cmd *android.RuleBuilderCommand
 	if Bool(d.properties.Dokka_enabled) {
 		cmd = dokkaCmd(ctx, rule, outDir, srcJarDir, deps.bootClasspath, deps.classpath)
+	} else if Bool(d.properties.Dackka_enabled) {
+		cmd = dackkaCmd(ctx, rule, outDir, srcJarDir, deps.bootClasspath, deps.classpath)
 	} else {
 		cmd = javadocBootclasspathCmd(ctx, rule, d.Javadoc.srcFiles, outDir, srcJarDir, srcJarList,
 			deps.bootClasspath, deps.classpath, d.Javadoc.sourcepaths)
@@ -852,6 +879,8 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var desc string
 	if Bool(d.properties.Dokka_enabled) {
 		desc = "dokka"
+	} else if Bool(d.properties.Dackka_enabled) {
+		desc = "dackka"
 	} else {
 		d.doclavaDocsFlags(ctx, cmd, classpath{jsilver, doclava})
 
