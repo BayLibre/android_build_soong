@@ -22,6 +22,30 @@
       },
       "revId": "be52b45b9e9d947b7f035d87c9f4bd9d85db0096",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faa90a4f_93a14726",
+        "filename": "android/sbom.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-06-27T12:16:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e0d57b4_458efab3",
+      "range": {
+        "startLine": 95,
+        "startChar": 47,
+        "endLine": 95,
+        "endChar": 56
+      },
+      "revId": "be52b45b9e9d947b7f035d87c9f4bd9d85db0096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
