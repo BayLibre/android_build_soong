@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1a77bb0_dd5531fb",
+        "filename": "java/base.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-28T23:17:47Z",
+      "side": 1,
+      "message": "The intent of this function is to satisfy the `InstallableModule` interface (introduced in the parent change), so that the module types that implements the `InstallableModule` interface is differentiated from the module types that don\u0027t. If you have any other ideas about differentiating `InstallableModule` from other modules, I\u0027d appreciate any recommendations!",
+      "parentUuid": "62db96d9_838fc5cf",
+      "range": {
+        "startLine": 557,
+        "startChar": 17,
+        "endLine": 557,
+        "endChar": 36
+      },
+      "revId": "534c9d0aac51b3a44356a90985c828bfc92c5dce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e317c1a0_5da97739",
         "filename": "java/base.go",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-28T01:30:45Z",
       "side": 1,
       "message": "I think this is always [false](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/c8f1c38fdf7270a2b6d03651aa72611bbeb5faef:android/module.go;l\u003d1535-1537;drc\u003df58d7efa297432b875e47d67f6665b9fd587bed8;bpv\u003d1;bpt\u003d0), so we can probably do not need this",
+      "range": {
+        "startLine": 563,
+        "startChar": 8,
+        "endLine": 563,
+        "endChar": 39
+      },
+      "revId": "534c9d0aac51b3a44356a90985c828bfc92c5dce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f2d485_66f1748b",
+        "filename": "java/base.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-28T23:17:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e317c1a0_5da97739",
       "range": {
         "startLine": 563,
         "startChar": 8,
@@ -60,6 +108,30 @@
       "writtenOn": "2024-06-28T01:30:45Z",
       "side": 1,
       "message": "I _think_ we do not need to override this, since InstallInVendor and SocSpecific always return the same value in ModuleBase, and java.Module does not override SocSpecific\n\nDiff: https://diff.googleplex.com/#key\u003droadijWwD6LH",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 1
+      },
+      "revId": "534c9d0aac51b3a44356a90985c828bfc92c5dce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "597c4fab_e50aeee2",
+        "filename": "java/base.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-06-28T23:17:47Z",
+      "side": 1,
+      "message": "Done, thanks for looking into this!",
+      "parentUuid": "adc8ec8c_5eea4ed9",
       "range": {
         "startLine": 567,
         "startChar": 0,
