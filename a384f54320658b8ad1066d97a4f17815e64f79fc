@@ -16,6 +16,24 @@
       "message": "I would inline this if it\u0027s not called anywhere else. And then at least srcjar could be made a local variable.",
       "revId": "a384f54320658b8ad1066d97a4f17815e64f79fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "777a0360_c2bb7bce",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-06-28T16:39:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fffaf47_b500f824",
+      "revId": "a384f54320658b8ad1066d97a4f17815e64f79fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
