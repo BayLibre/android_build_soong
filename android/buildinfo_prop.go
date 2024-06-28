@@ -15,8 +15,6 @@
 package android
 
 import (
-	"fmt"
-
 	"github.com/google/blueprint/proptools"
 )
 
@@ -41,18 +39,8 @@ type buildinfoPropModule struct {
 	installPath    InstallPath
 }
 
-var _ OutputFileProducer = (*buildinfoPropModule)(nil)
-
 func (p *buildinfoPropModule) installable() bool {
 	return proptools.BoolDefault(p.properties.Installable, true)
-}
-
-// OutputFileProducer
-func (p *buildinfoPropModule) OutputFiles(tag string) (Paths, error) {
-	if tag != "" {
-		return nil, fmt.Errorf("unsupported tag %q", tag)
-	}
-	return Paths{p.outputFilePath}, nil
 }
 
 func shouldAddBuildThumbprint(config Config) bool {
@@ -115,6 +103,8 @@ func (p *buildinfoPropModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 
 	p.installPath = PathForModuleInstall(ctx)
 	ctx.InstallFile(p.installPath, p.Name(), p.outputFilePath)
+
+	ctx.SetOutputFiles(Paths{p.outputFilePath}, "")
 }
 
 func (p *buildinfoPropModule) AndroidMkEntries() []AndroidMkEntries {
