@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62db96d9_838fc5cf",
+        "filename": "java/base.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-28T01:30:45Z",
+      "side": 1,
+      "message": "IIUC, the intent of this function is different than the already existing [java.Module.IsInstallable](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/c8f1c38fdf7270a2b6d03651aa72611bbeb5faef:java/base.go;l\u003d2120-2122;drc\u003d8806166b1d77d5f33286a5705093c1fb61a52655;bpv\u003d1;bpt\u003d0).Can we use a different name for this function to avoid possible confusion?\n\nAlternatively, if we want to know whether a particular module variant is a non-host variant (please correct me if this is not the intent of this function), can we use the existing [android.ModuleBase.Device](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/c8f1c38fdf7270a2b6d03651aa72611bbeb5faef:android/module.go;l\u003d1260-1262;drc\u003df58d7efa297432b875e47d67f6665b9fd587bed8;bpv\u003d1;bpt\u003d0) function?",
+      "range": {
+        "startLine": 557,
+        "startChar": 17,
+        "endLine": 557,
+        "endChar": 36
+      },
+      "revId": "534c9d0aac51b3a44356a90985c828bfc92c5dce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e317c1a0_5da97739",
+        "filename": "java/base.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-28T01:30:45Z",
+      "side": 1,
+      "message": "I think this is always [false](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/c8f1c38fdf7270a2b6d03651aa72611bbeb5faef:android/module.go;l\u003d1535-1537;drc\u003df58d7efa297432b875e47d67f6665b9fd587bed8;bpv\u003d1;bpt\u003d0), so we can probably do not need this",
+      "range": {
+        "startLine": 563,
+        "startChar": 8,
+        "endLine": 563,
+        "endChar": 39
+      },
+      "revId": "534c9d0aac51b3a44356a90985c828bfc92c5dce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adc8ec8c_5eea4ed9",
+        "filename": "java/base.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-06-28T01:30:45Z",
+      "side": 1,
+      "message": "I _think_ we do not need to override this, since InstallInVendor and SocSpecific always return the same value in ModuleBase, and java.Module does not override SocSpecific\n\nDiff: https://diff.googleplex.com/#key\u003droadijWwD6LH",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 1
+      },
+      "revId": "534c9d0aac51b3a44356a90985c828bfc92c5dce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
