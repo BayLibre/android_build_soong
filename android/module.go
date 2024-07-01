@@ -1772,6 +1772,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	}
 
 	setContainerInfo(ctx)
+	checkContainerViolations(ctx)
 
 	m.licenseMetadataFile = PathForModuleOut(ctx, "meta_lic")
 
