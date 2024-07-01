@@ -302,47 +302,6 @@ func getStubsTypeAndTag(tag string) (StubsType, string, error) {
 	return stubsType, strings.TrimPrefix(tag, "."+stubsType.String()), nil
 }
 
-// Droidstubs' tag supports specifying with the stubs type.
-// While supporting the pre-existing tags, it also supports tags with
-// the stubs type prefix. Some examples are shown below:
-// {.annotations.zip} - pre-existing behavior. Returns the path to the
-// annotation zip.
-// {.exportable} - Returns the path to the exportable stubs src jar.
-// {.exportable.annotations.zip} - Returns the path to the exportable
-// annotations zip file.
-// {.runtime.api_versions.xml} - Runtime stubs does not generate api versions
-// xml file. For unsupported combinations, the default everything output file
-// is returned.
-func (d *Droidstubs) OutputFiles(tag string) (android.Paths, error) {
-	stubsType, prefixRemovedTag, err := getStubsTypeAndTag(tag)
-	if err != nil {
-		return nil, err
-	}
-	switch prefixRemovedTag {
-	case "":
-		stubsSrcJar, err := d.StubsSrcJar(stubsType)
-		return android.Paths{stubsSrcJar}, err
-	case ".docs.zip":
-		docZip, err := d.DocZip(stubsType)
-		return android.Paths{docZip}, err
-	case ".api.txt", android.DefaultDistTag:
-		// This is the default dist path for dist properties that have no tag property.
-		apiFilePath, err := d.ApiFilePath(stubsType)
-		return android.Paths{apiFilePath}, err
-	case ".removed-api.txt":
-		removedApiFilePath, err := d.RemovedApiFilePath(stubsType)
-		return android.Paths{removedApiFilePath}, err
-	case ".annotations.zip":
-		annotationsZip, err := d.AnnotationsZip(stubsType)
-		return android.Paths{annotationsZip}, err
-	case ".api_versions.xml":
-		apiVersionsXmlFilePath, err := d.ApiVersionsXmlFilePath(stubsType)
-		return android.Paths{apiVersionsXmlFilePath}, err
-	default:
-		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
-	}
-}
-
 func (d *Droidstubs) AnnotationsZip(stubsType StubsType) (ret android.Path, err error) {
 	switch stubsType {
 	case Everything:
@@ -1362,6 +1321,57 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			Text(")")
 
 		rule.Build("nullabilityWarningsCheck", "nullability warnings check")
+	}
+
+	d.setOutputFiles(ctx)
+}
+
+// This method sets the outputFiles property, which is used to set the
+// OutputFilesProvider later.
+// Droidstubs' tag supports specifying with the stubs type.
+// While supporting the pre-existing tags, it also supports tags with
+// the stubs type prefix. Some examples are shown below:
+// {.annotations.zip} - pre-existing behavior. Returns the path to the
+// annotation zip.
+// {.exportable} - Returns the path to the exportable stubs src jar.
+// {.exportable.annotations.zip} - Returns the path to the exportable
+// annotations zip file.
+// {.runtime.api_versions.xml} - Runtime stubs does not generate api versions
+// xml file. For unsupported combinations, the default everything output file
+// is returned.
+func (d *Droidstubs) setOutputFiles(ctx android.ModuleContext) {
+	var outputFile android.Path
+	var err error
+	var tagWithPrefix string
+	tags := []string{"", ".docs.zip", ".api.txt", android.DefaultDistTag,
+		".removed-api.txt", ".annotations.zip", ".api_versions.xml"}
+	stubsTypes := []StubsType{Everything, Exportable}
+	for _, tag := range tags {
+		for _, stubsType := range stubsTypes {
+			switch stubsType {
+			case Everything:
+				tagWithPrefix = tag
+			case Exportable:
+				tagWithPrefix = "." + stubsType.String() + tag
+			}
+			switch tag {
+			case "":
+				outputFile, err = d.StubsSrcJar(stubsType)
+			case "docs.zip":
+				outputFile, err = d.DocZip(stubsType)
+			case ".api.txt", android.DefaultDistTag:
+				outputFile, err = d.ApiFilePath(stubsType)
+			case ".removed-api.txt":
+				outputFile, err = d.RemovedApiFilePath(stubsType)
+			case ".annotations.zip":
+				outputFile, err = d.AnnotationsZip(stubsType)
+			case ".api_versions.xml":
+				outputFile, err = d.ApiVersionsXmlFilePath(stubsType)
+			}
+			if err == nil {
+				ctx.SetOutputFiles(android.Paths{outputFile}, tagWithPrefix)
+			}
+		}
 	}
 }
 
