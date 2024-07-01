@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "865aec1b_e6ed9f5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T22:30:13Z",
+      "side": 1,
+      "message": "I have used go/abtd to verify that relanding this will not break go/ab/git_master-art-host. https://android-build.corp.google.com/builds/abtd/run/L37400030004870694",
+      "revId": "28a6f198663ecc935b09411b56542adfeda3979e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
