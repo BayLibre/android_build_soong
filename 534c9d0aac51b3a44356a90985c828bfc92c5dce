@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a8a3092_d9d422c6",
+        "filename": "java/base.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T17:01:16Z",
+      "side": 1,
+      "message": "\u003e The intent of this function is to satisfy the InstallableModule interface \n\nWill this interface be used for API surface enforcements? If so, maybe one option might be to rename `IsInstallableModule` to `EnforceApiContainerChecks`.\n\nimo, this will make this function less ambiguous for cases like such\n```\njava_library {\n   name: \"foo\",\n   installable: false,\n   apex_available: [\"//apex_available:platform\"],\n}\n``` \n\nIn the current implementation, `foo` has\n1. IsInstallableModule: true\n2. IsInstallable: false",
+      "parentUuid": "e1a77bb0_dd5531fb",
+      "range": {
+        "startLine": 557,
+        "startChar": 17,
+        "endLine": 557,
+        "endChar": 36
+      },
+      "revId": "534c9d0aac51b3a44356a90985c828bfc92c5dce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e317c1a0_5da97739",
         "filename": "java/base.go",
         "patchSetId": 5
