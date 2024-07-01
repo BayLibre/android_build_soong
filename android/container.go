@@ -15,10 +15,14 @@
 package android
 
 import (
+	"fmt"
 	"reflect"
 	"slices"
+	"strings"
+	"sync"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 var containerDependencyViolationAllowlist = map[string][]string{
@@ -317,6 +321,39 @@ var depIsAidlInterfaceStubsModule = func(_ BottomUpMutatorContext, _, dep Module
 	return false
 }
 
+var belongsToCommonApexes = func(_ BottomUpMutatorContext, m, dep Module) bool {
+	mContainersInfo, _ := getContainerModuleInfo(m)
+	depContainersInfo, _ := getContainerModuleInfo(dep)
+
+	return HasIntersection(mContainersInfo.apexNames, depContainersInfo.apexNames)
+}
+
+var belongsToNonUpdatableApex = func(_ BottomUpMutatorContext, m, _ Module) bool {
+	mContainersInfo, _ := getContainerModuleInfo(m)
+	return !mContainersInfo.updatableApex
+}
+
+type SdkLibAndImportModule interface {
+	RootLibraryName() string
+}
+
+var depIsSdkLibUsesLibDependency = func(ctx BottomUpMutatorContext, m, dep Module) bool {
+	if _, ok := dep.(SdkLibAndImportModule); ok {
+		depTag := ctx.OtherModuleDependencyTag(dep)
+		return reflect.TypeOf(depTag).Name() == "usesLibraryDependencyTag"
+	}
+	return false
+}
+
+var prebuiltSdkLibToSourceSdkImplLibDep = func(_ BottomUpMutatorContext, m, dep Module) bool {
+	_, mSdkLibOk := m.(SdkLibAndImportModule)
+	depSdkLibSubModule, depSdkLibSubModuleOk := dep.(interface{ SdkLibraryName() *string })
+	if mSdkLibOk && depSdkLibSubModuleOk && proptools.String(depSdkLibSubModule.SdkLibraryName()) == m.Name() {
+		return dep.Name() == m.Name()+".impl"
+	}
+	return false
+}
+
 // Labels of exception functions, which are used to determine special dependencies that allow
 // otherwise restricted inter-container dependencies
 type exceptionHandleFuncLabel int
@@ -325,6 +362,10 @@ const (
 	checkStubs exceptionHandleFuncLabel = iota
 	checkHidlInterface
 	checkAidlInterface
+	checkInCommonApexes
+	checkApexIsNonUpdatable
+	checkSdkLibUsesLibDep
+	checkSdkLibToImplLibDep
 	undefined
 )
 
@@ -332,10 +373,14 @@ const (
 // hashable. As a workaround, the exceptionHandleFunc enum values are passed using providers,
 // and the corresponding functions are called from this map.
 var exceptionHandleFunctionsTable = map[exceptionHandleFuncLabel]func(BottomUpMutatorContext, Module, Module) bool{
-	checkStubs:         depIsStubsModule,
-	checkHidlInterface: depIsHidlInterfaceStubsModule,
-	checkAidlInterface: depIsAidlInterfaceStubsModule,
-	undefined:          func(BottomUpMutatorContext, Module, Module) bool { return false },
+	checkStubs:              depIsStubsModule,
+	checkHidlInterface:      depIsHidlInterfaceStubsModule,
+	checkAidlInterface:      depIsAidlInterfaceStubsModule,
+	checkInCommonApexes:     belongsToCommonApexes,
+	checkApexIsNonUpdatable: belongsToNonUpdatableApex,
+	checkSdkLibUsesLibDep:   depIsSdkLibUsesLibDependency,
+	checkSdkLibToImplLibDep: prebuiltSdkLibToSourceSdkImplLibDep,
+	undefined:               func(BottomUpMutatorContext, Module, Module) bool { return false },
 }
 
 type InstallableModule interface {
@@ -418,7 +463,8 @@ func initializeApexContainer() *container {
 					"modules belonging to the system partition. Either statically depend on the " +
 					"module or convert the depending module to java_sdk_library and depend on " +
 					"the stubs.",
-				allowedExceptions: []exceptionHandleFuncLabel{checkStubs},
+				allowedExceptions: []exceptionHandleFuncLabel{checkStubs, checkInCommonApexes,
+					checkApexIsNonUpdatable, checkSdkLibUsesLibDep, checkSdkLibToImplLibDep},
 			},
 		},
 	}
@@ -429,7 +475,7 @@ func initializeApexContainer() *container {
 			"modules belonging to other Apex(es). Either include the depending " +
 			"module in the Apex or convert the depending module to java_sdk_library " +
 			"and depend on its stubs.",
-		allowedExceptions: []exceptionHandleFuncLabel{checkStubs},
+		allowedExceptions: []exceptionHandleFuncLabel{checkStubs, checkInCommonApexes},
 	})
 
 	return apexContainer
@@ -451,6 +497,40 @@ func (c *ContainersInfo) ApexNames() []string {
 	return c.apexNames
 }
 
+func satisfyAllowedExceptions(ctx BottomUpMutatorContext, allowedExceptionLabels []exceptionHandleFuncLabel, m, dep Module) bool {
+	for _, label := range allowedExceptionLabels {
+		if exceptionHandleFunctionsTable[label](ctx, m, dep) {
+			return true
+		}
+	}
+	return false
+}
+
+func (c *ContainersInfo) GetViolations(ctx BottomUpMutatorContext, m, dep Module, depInfo ContainersInfo) []string {
+	var violations []string
+
+	// Any containers that the module belongs to but the dependency does not belong to must be examined.
+	_, containersUniqueToModule, _ := ListSetDifference(c.belongingContainers, depInfo.belongingContainers)
+
+	// Apex container should be examined even if both the module and the dependency belong to
+	// the apex container to check that the two modules belong to the same apex.
+	if InList(ApexContainer, c.belongingContainers) && !InList(ApexContainer, containersUniqueToModule) {
+		containersUniqueToModule = append(containersUniqueToModule, ApexContainer)
+	}
+
+	for _, containerUniqueToModule := range containersUniqueToModule {
+		for _, restriction := range containerUniqueToModule.restricted {
+			if InList(restriction.dependency, depInfo.belongingContainers) {
+				if !satisfyAllowedExceptions(ctx, restriction.allowedExceptions, m, dep) {
+					violations = append(violations, restriction.errorMessage)
+				}
+			}
+		}
+	}
+
+	return violations
+}
+
 var ContainersInfoProvider = blueprint.NewMutatorProvider[ContainersInfo]("container_generation")
 
 func RegisterContainerMutator(ctx RegistrationContext) {
@@ -459,6 +539,8 @@ func RegisterContainerMutator(ctx RegistrationContext) {
 
 func registerContainerFinalDepsMutator(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("container_generation", containerGenerationMutator).Parallel()
+	ctx.BottomUp("container_combination", containerCombinationMutator).Parallel()
+	ctx.BottomUp("container_enforcement", containerEnforcementMutator).Parallel()
 }
 
 // Determines if the module can be installed in the system partition or not.
@@ -533,5 +615,62 @@ func generateContainerInfo(ctx BottomUpMutatorContext) ContainersInfo {
 func containerGenerationMutator(ctx BottomUpMutatorContext) {
 	if _, ok := ctx.Module().(InstallableModule); ok {
 		SetProvider(ctx, ContainersInfoProvider, generateContainerInfo(ctx))
+	}
+}
+
+var visitedModuleNames sync.Map
+
+func combineVariantsContainerInfo(ctx BottomUpMutatorContext) ContainersInfo {
+	if info, ok := visitedModuleNames.Load(ctx.ModuleName()); ok {
+		return info.(ContainersInfo)
+	}
+
+	var containersInfo ContainersInfo
+	ctx.VisitAllModuleVariants(func(m Module) {
+		variantContainersInfo, _ := OtherModuleProvider(ctx, m, ContainersInfoProvider)
+		containersInfo.belongingContainers = append(containersInfo.belongingContainers, variantContainersInfo.belongingContainers...)
+		containersInfo.apexNames = append(containersInfo.apexNames, variantContainersInfo.apexNames...)
+		containersInfo.updatableApex = containersInfo.updatableApex || variantContainersInfo.updatableApex
+	})
+	containersInfo.belongingContainers = slices.Compact(containersInfo.belongingContainers)
+	containersInfo.apexNames = slices.Compact(containersInfo.apexNames)
+
+	visitedModuleNames.Store(ctx.ModuleName(), containersInfo)
+	return containersInfo
+}
+
+func containerCombinationMutator(ctx BottomUpMutatorContext) {
+	if _, ok := ModuleProvider(ctx, ContainersInfoProvider); ok {
+		combineVariantsContainerInfo(ctx)
+	}
+}
+
+func getContainerModuleInfo(module Module) (ContainersInfo, bool) {
+	val, ok := visitedModuleNames.Load(module.Name())
+	var info ContainersInfo
+	if ok {
+		info = val.(ContainersInfo)
+	}
+	return info, ok
+}
+
+func containerEnforcementMutator(ctx BottomUpMutatorContext) {
+	if containersInfo, ok := getContainerModuleInfo(ctx.Module()); ok {
+		ctx.VisitDirectDepsIgnoreBlueprint(func(dep Module) {
+			if depContainersInfo, ok := getContainerModuleInfo(dep); ok {
+				if allowedViolations, ok := containerDependencyViolationAllowlist[ctx.ModuleName()]; ok {
+					if InList(dep.Name(), allowedViolations) {
+						return
+					}
+				} else {
+					violations := containersInfo.GetViolations(ctx, ctx.Module(), dep, depContainersInfo)
+					if len(violations) > 0 {
+						errorMessage := fmt.Sprintf("%s cannot depend on %s. ", ctx.ModuleName(), dep.Name())
+						errorMessage += strings.Join(violations, " ")
+						ctx.ModuleErrorf(errorMessage)
+					}
+				}
+			}
+		})
 	}
 }
