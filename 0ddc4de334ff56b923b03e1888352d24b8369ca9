@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "853db0f1_218d8378",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-01T18:27:23Z",
+      "side": 1,
+      "message": "Given that we are newly introducing an enforcement, I\u0027d prefer explicit listing of all restrictions over all possible combinations except exceptions (i.e. allowlist). This allows new enforcement to be incrementally added in the future if necessary, and the current implementation of restriction to error message mapping allows informing users about why the dependency is disallowed and how to satisfy the restriction (e.g. depending on the stubs or HALs) IMO.\n\n\u003e e.g. In the current implementation, system only has vendor in its restricted. Should product, apex, ... be in the restricted list of system as well?\n\nI do not have a clear answer for this question. IIUC the purpose of this restriction is not to restrict all inter-container dependencies, but to restrict inter-container dependencies of interest. I believe that the restrictions explicitly listed here reflect the \"interest\".",
+      "parentUuid": "5907b158_04d95d46",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35709cd6_b1849173",
         "filename": "android/container.go",
         "patchSetId": 10
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-01T17:21:50Z",
       "side": 1,
       "message": "This method seems to be unused in this CL as well as the subsequent CL of this stack.",
+      "range": {
+        "startLine": 93,
+        "startChar": 25,
+        "endLine": 93,
+        "endChar": 38
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "930db32d_dc969d24",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-01T18:27:23Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. This is used in the child change https://r.android.com/3155659. I have moved this to that change for ease in review.",
+      "parentUuid": "35709cd6_b1849173",
       "range": {
         "startLine": 93,
         "startChar": 25,
@@ -60,6 +108,30 @@
       "writtenOn": "2024-07-01T17:21:50Z",
       "side": 1,
       "message": "nit: Move this _test.go",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 86
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3506720a_29294040",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-01T18:27:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fd96a29_4cb07bbe",
       "range": {
         "startLine": 107,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ea03d24_e1db5005",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-01T18:27:23Z",
+      "side": 1,
+      "message": "I believe that checking this based on the image variation may lead to false positive for module types that do not implement image mutator. e.g. for Java modules this will return `true` even if `vendor: true`, as the vendor variant is not created and `ctx.Module().ImageVariation().Variation` will always be `CoreVariation` (i.e. an empty string).",
+      "parentUuid": "3c65daa5_375799e6",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 88
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6329a309_94cec143",
         "filename": "android/container.go",
         "patchSetId": 10
@@ -106,6 +202,30 @@
       "writtenOn": "2024-07-01T17:21:50Z",
       "side": 1,
       "message": "I think a specific module variant should only belong to a single container. Do you have an example that requires containers to be a list?",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 30
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8374eaac_14b45856",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-01T18:27:23Z",
+      "side": 1,
+      "message": "For module types that do not implement an image mutator I believe that it is possible for a variant to belong to a multiple container. e.g. IIUC a java library that is a static lib of a non updatable `apex` would be part of both the system container and an apex container.",
+      "parentUuid": "6329a309_94cec143",
       "range": {
         "startLine": 162,
         "startChar": 2,
