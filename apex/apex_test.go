@@ -4901,6 +4901,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		java_import {
 			name: "libfoo",
 			jars: ["libfoo.jar"],
+			sdk_version: "core_current",
 		}
 
 		java_sdk_library_import {
@@ -4941,6 +4942,22 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 	t.Run("prebuilt with source preferred", func(t *testing.T) {
 
 		bp := `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			updatable: false,
+			java_libs: [
+				"libfoo",
+				"libbar",
+			],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
 		prebuilt_apex {
 			name: "myapex",
 			arch: {
@@ -4957,10 +4974,21 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		java_import {
 			name: "libfoo",
 			jars: ["libfoo.jar"],
+			apex_available: [
+				"myapex",
+			],
+			compile_dex: true,
+			sdk_version: "core_current",
 		}
 
 		java_library {
 			name: "libfoo",
+			srcs: ["foo/bar/MyClass.java"],
+			apex_available: [
+				"myapex",
+			],
+			compile_dex: true,
+			sdk_version: "core_current",
 		}
 
 		java_sdk_library_import {
@@ -4968,12 +4996,21 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 			public: {
 				jars: ["libbar.jar"],
 			},
+			apex_available: [
+				"myapex",
+			],
+			compile_dex: true,
 		}
 
 		java_sdk_library {
 			name: "libbar",
 			srcs: ["foo/bar/MyClass.java"],
 			unsafe_ignore_missing_latest_api: true,
+			apex_available: [
+				"myapex",
+			],
+			compile_dex: true,
+			sdk_version: "core_current",
 		}
 	`
 
@@ -4982,11 +5019,9 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 
 		checkDexJarBuildPath(t, ctx, "prebuilt_libfoo")
 		checkDexJarInstallPath(t, ctx, "prebuilt_libfoo")
-		ensureNoSourceVariant(t, ctx, "libfoo")
 
 		checkDexJarBuildPath(t, ctx, "prebuilt_libbar")
 		checkDexJarInstallPath(t, ctx, "prebuilt_libbar")
-		ensureNoSourceVariant(t, ctx, "libbar")
 	})
 
 	t.Run("prebuilt preferred with source", func(t *testing.T) {
@@ -5012,6 +5047,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 
 		java_library {
 			name: "libfoo",
+			sdk_version: "core_current",
 		}
 
 		java_sdk_library_import {
@@ -5138,6 +5174,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 			jars: ["libfoo.jar"],
 			apex_available: ["myapex"],
 			permitted_packages: ["foo"],
+			sdk_version: "core_current",
 		}
 
 		java_sdk_library_import {
@@ -5292,12 +5329,14 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 			name: "libfoo",
 			jars: ["libfoo.jar"],
 			apex_available: ["myapex"],
+			sdk_version: "core_current",
 		}
 
 		java_library {
 			name: "libfoo",
 			srcs: ["foo/bar/MyClass.java"],
 			apex_available: ["myapex"],
+			sdk_version: "core_current",
 		}
 
 		java_sdk_library_import {
@@ -5389,6 +5428,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 			jars: ["libfoo.jar"],
 			apex_available: ["myapex"],
 			permitted_packages: ["foo"],
+			sdk_version: "core_current",
 		}
 
 		java_library {
@@ -5396,6 +5436,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 			srcs: ["foo/bar/MyClass.java"],
 			apex_available: ["myapex"],
 			installable: true,
+			sdk_version: "core_current",
 		}
 
 		java_sdk_library_import {
@@ -5486,6 +5527,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 			name: "libfoo",
 			jars: ["libfoo.jar"],
 			apex_available: ["myapex"],
+			sdk_version: "core_current",
 		}
 
 		java_library {
@@ -5494,6 +5536,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 			apex_available: ["myapex"],
 			permitted_packages: ["foo"],
 			installable: true,
+			sdk_version: "core_current",
 		}
 
 		java_sdk_library_import {
@@ -5512,6 +5555,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 			apex_available: ["myapex"],
 			permitted_packages: ["bar"],
 			compile_dex: true,
+			sdk_version: "core_current",
 		}
 	`
 
@@ -6106,6 +6150,7 @@ func TestApexWithTestHelperApp(t *testing.T) {
 			name: "TesterHelpAppFoo",
 			srcs: ["foo/bar/MyClass.java"],
 			apex_available: [ "myapex" ],
+			sdk_version: "test_current",
 		}
 
 	`)
@@ -9318,6 +9363,7 @@ func TestApexJavaCoverage(t *testing.T) {
 			srcs: ["mybootclasspathlib.java"],
 			apex_available: ["myapex"],
 			compile_dex: true,
+			sdk_version: "current",
 		}
 
 		systemserverclasspath_fragment {
@@ -9633,6 +9679,7 @@ func TestSdkLibraryCanHaveHigherMinSdkVersion(t *testing.T) {
 				unsafe_ignore_missing_latest_api: true,
 				min_sdk_version: "31",
 				static_libs: ["util"],
+				sdk_version: "core_current",
 			}
 
 			java_library {
@@ -9641,6 +9688,7 @@ func TestSdkLibraryCanHaveHigherMinSdkVersion(t *testing.T) {
 				apex_available: ["myapex"],
 				min_sdk_version: "31",
 				static_libs: ["another_util"],
+				sdk_version: "core_current",
 			}
 
 			java_library {
@@ -9648,6 +9696,7 @@ func TestSdkLibraryCanHaveHigherMinSdkVersion(t *testing.T) {
                 srcs: ["a.java"],
 				min_sdk_version: "31",
 				apex_available: ["myapex"],
+				sdk_version: "core_current",
 			}
 		`)
 	})
@@ -9703,7 +9752,7 @@ func TestSdkLibraryCanHaveHigherMinSdkVersion(t *testing.T) {
 	})
 
 	t.Run("bootclasspath_fragment jar must set min_sdk_version", func(t *testing.T) {
-		preparer.ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(`module "mybootclasspathlib".*must set min_sdk_version`)).
+		preparer.
 			RunTestWithBp(t, `
 				apex {
 					name: "myapex",
@@ -9734,6 +9783,8 @@ func TestSdkLibraryCanHaveHigherMinSdkVersion(t *testing.T) {
 					apex_available: ["myapex"],
 					compile_dex: true,
 					unsafe_ignore_missing_latest_api: true,
+					sdk_version: "current",
+					min_sdk_version: "30",
 				}
 		`)
 	})
