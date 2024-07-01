@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf158fad_f3e1cca8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-01T18:54:00Z",
+      "side": 1,
+      "message": "We need this one too. Sorry for spamming you with so many CLs.",
+      "revId": "ef39bed48242e5ba9b6896b7bf1f61978e2ebce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
