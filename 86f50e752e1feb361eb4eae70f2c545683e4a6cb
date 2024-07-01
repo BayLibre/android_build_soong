@@ -16,6 +16,23 @@
       "message": "Thank you Joe!",
       "revId": "86f50e752e1feb361eb4eae70f2c545683e4a6cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dd3ec40_77f78662",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-01T18:03:57Z",
+      "side": 1,
+      "message": "This test is broken on mac on the aosp-build-tools branch:\n```\n--- FAIL: TestBuildConfig (0.00s)\n    --- FAIL: TestBuildConfig/use_rbe (0.00s)\n        config_test.go:1066: Build config mismatch.\n            Expected build config: \"use_goma: false\\nuse_rbe: true\\nforce_use_goma: false\\nninja_weight_list_source: NOT_USED\\n\"\n            Actual build config: \"use_goma: false\\nuse_rbe: false\\nforce_use_goma: false\\nninja_weight_list_source: NOT_USED\\n\"\n--- FAIL: TestDumpRBEMetrics (0.00s)\n    --- FAIL: TestDumpRBEMetrics/rbe_metrics_generated (0.00s)\n        rbe_test.go:75: got false, want true for rbe metrics file /Volumes/Android/buildbot/src/android/build-tools/out/gotemp/TestDumpRBEMetricsrbe_metrics_generated3642053086/001/rbe_metrics.pb to exist.\n--- FAIL: TestDumpRBEMetricsErrors (0.00s)\n    --- FAIL: TestDumpRBEMetricsErrors/stopRBE_failed (0.00s)\n        rbe_test.go:123: got nil, expecting \"shutdown failed\" as a failure\n```\n\nhttps://android-build.corp.google.com/artifact/submitted/12033660/darwin_mac/latest/view/logs%2Fbuild.log?ref\u003djumpToFull",
+      "revId": "86f50e752e1feb361eb4eae70f2c545683e4a6cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
