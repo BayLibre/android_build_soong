@@ -16,6 +16,24 @@
       "message": "Has this been tested on previously failing post submit target?",
       "revId": "9429e0399643d6120d7c6dd245db2753b0c54433",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c5803e3_cbae3570",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-07-01T21:47:36Z",
+      "side": 1,
+      "message": "Yes. This change should not produce the same post submit error earlier. But I still need to keep an eye on what will happen after this change is submitted.",
+      "parentUuid": "db838eb0_e69e83e0",
+      "revId": "9429e0399643d6120d7c6dd245db2753b0c54433",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
