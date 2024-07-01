@@ -15,10 +15,13 @@
 package android
 
 import (
+	"fmt"
 	"reflect"
 	"slices"
+	"strings"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 type StubsAvailableModule interface {
@@ -33,19 +36,84 @@ var depIsStubsModule = func(_ ModuleContext, _, dep Module) bool {
 	return false
 }
 
+// Returns true if the dependency module belongs to any of the apexes.
+var depIsApexModule = func(mctx ModuleContext, _, dep Module) bool {
+	depContainersInfo, _ := getContainerModuleInfo(mctx, dep)
+	return InList(ApexContainer, depContainersInfo.belongingContainers)
+}
+
+// Returns true if the module and the dependent module belongs to common apexes.
+var belongsToCommonApexes = func(mctx ModuleContext, m, dep Module) bool {
+	mContainersInfo, _ := getContainerModuleInfo(mctx, m)
+	depContainersInfo, _ := getContainerModuleInfo(mctx, dep)
+
+	return HasIntersection(mContainersInfo.ApexNames(), depContainersInfo.ApexNames())
+}
+
+// Returns true when all apexes that the module belongs to are non updatable.
+// For an apex module to be allowed to depend on a non-apex partition module,
+// all apexes that the module belong to must be non updatable.
+var belongsToNonUpdatableApex = func(mctx ModuleContext, m, _ Module) bool {
+	mContainersInfo, _ := getContainerModuleInfo(mctx, m)
+
+	return !mContainersInfo.UpdatableApex()
+}
+
+type SdkLibAndImportModule interface {
+	RootLibraryName() string
+}
+
+// Returns true if the dependency is a source or prebuilt java sdk library added via
+// `usesLibraryDependencyTag` tag.
+// Currently, the top level sdk library module is implicitly added as a dependency using
+// `usesLibraryDependencyTag` when its submodule (e.g. impl lib or stub lib) is added as a
+// dependency. Ignore this case and evaluate violation based on the submodule that is explicitly
+// listed as a dependency in the module definition.
+var depIsSdkLibUsesLibDependency = func(ctx ModuleContext, m, dep Module) bool {
+	if _, ok := dep.(SdkLibAndImportModule); ok {
+		depTag := ctx.OtherModuleDependencyTag(dep)
+		return reflect.TypeOf(depTag).Name() == "usesLibraryDependencyTag"
+	}
+	return false
+}
+
+// Returns true when the dependency is a prebuilt sdk library depending on its source sdk
+// library created impl library.
+// Prebuilt top level sdk library (i.e. sdk_library_import) implicitly depends on the impl
+// library of the source sdk library. Given that this dependency is implicitly added, do not
+// turn this into a user facing error when the violation is detected.
+var prebuiltSdkLibToSourceSdkImplLibDep = func(_ ModuleContext, m, dep Module) bool {
+	_, mSdkLibOk := m.(SdkLibAndImportModule)
+	depSdkLibSubModule, depSdkLibSubModuleOk := dep.(interface{ SdkLibraryName() *string })
+	if mSdkLibOk && depSdkLibSubModuleOk && proptools.String(depSdkLibSubModule.SdkLibraryName()) == m.Name() {
+		return dep.Name() == m.Name()+".impl"
+	}
+	return false
+}
+
 // Labels of exception functions, which are used to determine special dependencies that allow
 // otherwise restricted inter-container dependencies
 type exceptionHandleFuncLabel int
 
 const (
 	checkStubs exceptionHandleFuncLabel = iota
+	checkInCommonApexes
+	checkApexModule
+	checkApexIsNonUpdatable
+	checkSdkLibUsesLibDep
+	checkSdkLibToImplLibDep
 )
 
 // Functions cannot be used as a value passed in providers, because functions are not
 // hashable. As a workaround, the exceptionHandleFunc enum values are passed using providers,
 // and the corresponding functions are called from this map.
 var exceptionHandleFunctionsTable = map[exceptionHandleFuncLabel]func(ModuleContext, Module, Module) bool{
-	checkStubs: depIsStubsModule,
+	checkStubs:              depIsStubsModule,
+	checkApexModule:         depIsApexModule,
+	checkInCommonApexes:     belongsToCommonApexes,
+	checkApexIsNonUpdatable: belongsToNonUpdatableApex,
+	checkSdkLibUsesLibDep:   depIsSdkLibUsesLibDependency,
+	checkSdkLibToImplLibDep: prebuiltSdkLibToSourceSdkImplLibDep,
 }
 
 type InstallableModule interface {
@@ -112,7 +180,7 @@ var (
 					"system partition, including \"framework\". Depending on the system " +
 					"partition may lead to disclosure of implementation details and regression " +
 					"due to API changes across platform versions. Try depending on the stubs instead.",
-				allowedExceptions: []exceptionHandleFuncLabel{checkStubs},
+				allowedExceptions: []exceptionHandleFuncLabel{},
 			},
 		},
 	}
@@ -128,7 +196,8 @@ func initializeApexContainer() *container {
 					"modules belonging to the system partition. Either statically depend on the " +
 					"module or convert the depending module to java_sdk_library and depend on " +
 					"the stubs.",
-				allowedExceptions: []exceptionHandleFuncLabel{checkStubs},
+				allowedExceptions: []exceptionHandleFuncLabel{checkStubs, checkApexModule,
+					checkInCommonApexes, checkApexIsNonUpdatable, checkSdkLibUsesLibDep, checkSdkLibToImplLibDep},
 			},
 		},
 	}
@@ -139,7 +208,7 @@ func initializeApexContainer() *container {
 			"modules belonging to other Apex(es). Either include the depending " +
 			"module in the Apex or convert the depending module to java_sdk_library " +
 			"and depend on its stubs.",
-		allowedExceptions: []exceptionHandleFuncLabel{checkStubs},
+		allowedExceptions: []exceptionHandleFuncLabel{checkStubs, checkInCommonApexes},
 	})
 
 	return apexContainer
@@ -155,7 +224,59 @@ func (c *ContainersInfo) BelongingContainers() []*container {
 	return c.belongingContainers
 }
 
+func (c *ContainersInfo) ApexNames() (ret []string) {
+	for _, apex := range c.belongingApexes {
+		ret = append(ret, apex.InApexModules...)
+	}
+	slices.Sort(ret)
+	return ret
+}
+
+// Returns true if any of the apex the module belongs to is updatable.
+func (c *ContainersInfo) UpdatableApex() bool {
+	for _, apex := range c.belongingApexes {
+		if apex.Updatable {
+			return true
+		}
+	}
+	return false
+}
+
 var ContainersInfoProvider = blueprint.NewProvider[ContainersInfo]()
+
+func satisfyAllowedExceptions(ctx ModuleContext, allowedExceptionLabels []exceptionHandleFuncLabel, m, dep Module) bool {
+	for _, label := range allowedExceptionLabels {
+		if exceptionHandleFunctionsTable[label](ctx, m, dep) {
+			return true
+		}
+	}
+	return false
+}
+
+func (c *ContainersInfo) GetViolations(mctx ModuleContext, m, dep Module, depInfo ContainersInfo) []string {
+	var violations []string
+
+	// Any containers that the module belongs to but the dependency does not belong to must be examined.
+	_, containersUniqueToModule, _ := ListSetDifference(c.belongingContainers, depInfo.belongingContainers)
+
+	// Apex container should be examined even if both the module and the dependency belong to
+	// the apex container to check that the two modules belong to the same apex.
+	if InList(ApexContainer, c.belongingContainers) && !InList(ApexContainer, containersUniqueToModule) {
+		containersUniqueToModule = append(containersUniqueToModule, ApexContainer)
+	}
+
+	for _, containerUniqueToModule := range containersUniqueToModule {
+		for _, restriction := range containerUniqueToModule.restricted {
+			if InList(restriction.dependency, depInfo.belongingContainers) {
+				if !satisfyAllowedExceptions(mctx, restriction.allowedExceptions, m, dep) {
+					violations = append(violations, restriction.errorMessage)
+				}
+			}
+		}
+	}
+
+	return violations
+}
 
 // Determines if the module can be installed in the system partition or not.
 // Logic is identical to that of modulePartition(...) defined in paths.go
@@ -225,9 +346,46 @@ func generateContainerInfo(ctx ModuleContext) ContainersInfo {
 	}
 }
 
+func getContainerModuleInfo(ctx ModuleContext, module Module) (ContainersInfo, bool) {
+	if ctx.Module() == module {
+		return generateContainerInfo(ctx), true
+	}
+
+	return OtherModuleProvider(ctx, module, ContainersInfoProvider)
+}
+
 func setContainerInfo(ctx ModuleContext) {
 	if _, ok := ctx.Module().(InstallableModule); ok {
 		containersInfo := generateContainerInfo(ctx)
 		SetProvider(ctx, ContainersInfoProvider, containersInfo)
+	}
+}
+
+func checkContainerViolations(ctx ModuleContext) {
+	if _, ok := ctx.Module().(InstallableModule); ok {
+		containersInfo, _ := getContainerModuleInfo(ctx, ctx.Module())
+		ctx.VisitDirectDepsIgnoreBlueprint(func(dep Module) {
+			if !dep.Enabled(ctx) {
+				return
+			}
+
+			// Pre-existing violating dependencies are tracked in containerDependencyViolationAllowlist.
+			// If this dependency is allowlisted, do not check for violation.
+			// If not, check if this dependency matches any restricted dependency and
+			// satisfies any exception functions, which allows bypassing the
+			// restriction. If all of the exceptions are not satisfied, throw an error.
+			if depContainersInfo, ok := getContainerModuleInfo(ctx, dep); ok {
+				if allowedViolations, ok := containerDependencyViolationAllowlist[ctx.ModuleName()]; ok && InList(dep.Name(), allowedViolations) {
+					return
+				} else {
+					violations := containersInfo.GetViolations(ctx, ctx.Module(), dep, depContainersInfo)
+					if len(violations) > 0 {
+						errorMessage := fmt.Sprintf("%s cannot depend on %s. ", ctx.ModuleName(), dep.Name())
+						errorMessage += strings.Join(violations, " ")
+						ctx.ModuleErrorf(errorMessage)
+					}
+				}
+			}
+		})
 	}
 }
