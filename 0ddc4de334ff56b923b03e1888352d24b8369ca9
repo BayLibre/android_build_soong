@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5907b158_04d95d46",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T17:21:50Z",
+      "side": 1,
+      "message": "nit: instead of restricted, can we implement this as allowed?\n\nI think the set of allowed for a specific container will be smaller than the set of restricted, which will make it more maintainable. \n\ne.g. In the current implementation, system only has vendor in its restricted. Should product, apex, ... be in the restricted list of system as well?",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35709cd6_b1849173",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T17:21:50Z",
+      "side": 1,
+      "message": "This method seems to be unused in this CL as well as the subsequent CL of this stack.",
+      "range": {
+        "startLine": 93,
+        "startChar": 25,
+        "endLine": 93,
+        "endChar": 38
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd96a29_4cb07bbe",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T17:21:50Z",
+      "side": 1,
+      "message": "nit: Move this _test.go",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 86
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c65daa5_375799e6",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T17:21:50Z",
+      "side": 1,
+      "message": "Can this be replaced with\n```\nreturn ctx.Module().ImageVariation().Variation \u003d\u003d android.CoreVariation\n```\n\nDoes `InstallInTestcases` makes this infesiable?",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 88
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6329a309_94cec143",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T17:21:50Z",
+      "side": 1,
+      "message": "I think a specific module variant should only belong to a single container. Do you have an example that requires containers to be a list?",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 30
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
