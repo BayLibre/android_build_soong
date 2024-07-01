@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de671dcf_28ccd93c",
+        "filename": "java/base.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-01T18:27:34Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, I\u0027ve renamed this interface method as `EnforceApiContainerChecks()`.",
+      "parentUuid": "2a8a3092_d9d422c6",
+      "range": {
+        "startLine": 557,
+        "startChar": 17,
+        "endLine": 557,
+        "endChar": 36
+      },
+      "revId": "534c9d0aac51b3a44356a90985c828bfc92c5dce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e317c1a0_5da97739",
