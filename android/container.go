@@ -15,14 +15,20 @@
 package android
 
 import (
+	"fmt"
 	"reflect"
 	"slices"
+	"strings"
 
 	"github.com/google/blueprint"
 )
 
 type InstallableModule interface {
 	EnforceApiContainerChecks() bool
+}
+
+type StubsAvailableModule interface {
+	IsStubsModule() bool
 }
 
 type container struct {
@@ -90,6 +96,18 @@ func (c *ContainersInfo) ApexNames() []string {
 	return c.apexNames
 }
 
+func (c *ContainersInfo) GetViolations(dep ContainersInfo) []string {
+	var violations []string
+	for _, depContainer := range dep.belongingContainers {
+		for _, belongingContainer := range c.belongingContainers {
+			if violation, ok := belongingContainer.restricted[depContainer]; ok {
+				violations = append(violations, violation)
+			}
+		}
+	}
+	return violations
+}
+
 var ContainersInfoProvider = blueprint.NewMutatorProvider[ContainersInfo]("container_generation")
 
 func RegisterContainerMutator(ctx RegistrationContext) {
@@ -98,6 +116,7 @@ func RegisterContainerMutator(ctx RegistrationContext) {
 
 func registerContainerFinalDepsMutator(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("container_generation", containerGenerationMutator).Parallel()
+	ctx.BottomUp("container_enforcement", containerEnforcementMutator).Parallel()
 }
 
 // Determines if the module can be installed in the system partition or not.
@@ -165,6 +184,47 @@ func containerGenerationMutator(ctx BottomUpMutatorContext) {
 		SetProvider(ctx, ContainersInfoProvider, ContainersInfo{
 			belongingContainers: containers,
 			apexNames:           apexNames,
+		})
+	}
+}
+
+var visitedModuleNames map[string]ContainersInfo
+
+func getContainerModuleInfo(ctx BottomUpMutatorContext, module Module) (info ContainersInfo, ok bool) {
+	if info, visited := visitedModuleNames[module.Name()]; visited {
+		return info, visited
+	} else {
+		if containersInfo, ok := OtherModuleProvider(ctx, module, ContainersInfoProvider); ok {
+			ctx.VisitAllModuleVariants(func(m Module) {
+				variantContainersInfo, _ := OtherModuleProvider(ctx, m, ContainersInfoProvider)
+				containersInfo.belongingContainers = append(containersInfo.belongingContainers, variantContainersInfo.belongingContainers...)
+				containersInfo.apexNames = append(containersInfo.apexNames, variantContainersInfo.apexNames...)
+			})
+			containersInfo.belongingContainers = slices.Compact(containersInfo.belongingContainers)
+			containersInfo.apexNames = slices.Compact(containersInfo.apexNames)
+
+			visitedModuleNames[module.Name()] = containersInfo
+			return containersInfo, ok
+		}
+	}
+	return ContainersInfo{}, false
+}
+
+func containerEnforcementMutator(ctx BottomUpMutatorContext) {
+	if containersInfo, ok := getContainerModuleInfo(ctx, ctx.Module()); ok {
+		ctx.VisitDirectDepsIgnoreBlueprint(func(dep Module) {
+			// If the dependency is a stubs module, do not check for the restriction
+			if stubsModule, ok := dep.(StubsAvailableModule); ok && stubsModule.IsStubsModule() {
+				return
+			}
+			if depContainersInfo, ok := getContainerModuleInfo(ctx, dep); ok {
+				violations := containersInfo.GetViolations(depContainersInfo)
+				if len(violations) > 0 {
+					errorMessage := fmt.Sprintf("%s cannot depend on %s. ", ctx.ModuleName(), dep.Name())
+					errorMessage += strings.Join(violations, " ")
+					ctx.ModuleErrorf(errorMessage)
+				}
+			}
 		})
 	}
 }
