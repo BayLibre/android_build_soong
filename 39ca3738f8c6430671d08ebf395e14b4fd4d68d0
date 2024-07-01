@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f7d1822_2d119cd0",
+        "filename": "apex/container_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T22:08:56Z",
+      "side": 1,
+      "message": "Sorry for my confusing comment. Can you add\n```\n\njava_sdk_library {\n\t\t\tname: \"mybootclasspathlib\",\n\t\t\tsrcs: [\n\t\t\t\t\"mybootclasspathlib.java\",\n\t\t\t],\n\t\t\tapex_available: [\n\t\t\t\t\"myapex\",\n\t\t\t],\n\t\t\tcompile_dex: true,\n\t\t\tstatic_libs: [\n\t\t\t\t\"foo\",\n\t\t\t\t\"baz\",\n\t\t\t],\n\t\t\tlibs: [\n\t\t\t\t\"bar\",\n\t\t\t],\n\t\t\tmin_sdk_version: \"30\",\n\t\t}\n\t\n\t\tjava_library {\n\t\t\tname: \"baz\",\n\t\t\tsrcs:[\n\t\t\t\t\"A.java\",\n\t\t\t],\n\t\t\tapex_available: [\n\t\t\t\t\"//apex_availble:platform\", \"myapex\",\n\t\t\t],\n\t\t\tmin_sdk_version: \"30\",\n\t\t}\t\n\t\t\n\t\t\n```\n\nIn patchset 8, a library is either for platform or for apex, but not both. It will be interesting to see the values of `container` for libraries which are both for platform and for apexes.\n\nIf this is out of scope of what this unit test was written for, can you add a different unit test?",
+      "parentUuid": "a77b7d8a_a8770896",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "39ca3738f8c6430671d08ebf395e14b4fd4d68d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14c125af_20e69c8a",
         "filename": "apex/container_test.go",
         "patchSetId": 7
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I believe that the test case above (`TestApexDepsContainers`) tests the behavior of an updatable apex. I\u0027ve specified the `updatable: true` property in `TestApexDepsContainers` test case for clarity.",
       "parentUuid": "14c125af_20e69c8a",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 3
+      },
+      "revId": "39ca3738f8c6430671d08ebf395e14b4fd4d68d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d1d2fae_a62fe352",
+        "filename": "apex/container_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T22:08:56Z",
+      "side": 1,
+      "message": "Can we add a unit test with co-existing updatable and non-updatable apexes? (maybe in a different unit test if you prefer to keep the scope of this test limited)\n\n\nI _think_ updatable and non-updatable apexes are resolved to the same apex variant of dependency if the top-level apexes have the same min_sdk_version. It will be interesting to assert what the `container` properties of that module variant should be.",
+      "parentUuid": "36f8d4b2_30d45ac7",
       "range": {
         "startLine": 153,
         "startChar": 2,
