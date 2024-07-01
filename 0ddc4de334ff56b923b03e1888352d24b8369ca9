@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "135afb28_f80c3ec2",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T18:48:50Z",
+      "side": 1,
+      "message": "The proposed set of restrictions implemented for this \"interest\" seem incomplete imo, as per go/android-api-types (e.g. `core` container is missing)\n\nWill you be adding more restrictions later? If so, can you please add a tracking bug for this?",
+      "parentUuid": "853db0f1_218d8378",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35709cd6_b1849173",
         "filename": "android/container.go",
         "patchSetId": 10
@@ -189,6 +213,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5be7d7eb_15a2c46b",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T18:48:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0ea03d24_e1db5005",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 88
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6329a309_94cec143",
@@ -226,6 +274,30 @@
       "side": 1,
       "message": "For module types that do not implement an image mutator I believe that it is possible for a variant to belong to a multiple container. e.g. IIUC a java library that is a static lib of a non updatable `apex` would be part of both the system container and an apex container.",
       "parentUuid": "6329a309_94cec143",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 30
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf447581_52d42a20",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T18:48:50Z",
+      "side": 1,
+      "message": "In this example, I think we will have _two_ module variants of the library.\n- platform variant\n- apex variant\n\nDoes each variant need a mutli value `container` property?",
+      "parentUuid": "8374eaac_14b45856",
       "range": {
         "startLine": 162,
         "startChar": 2,
