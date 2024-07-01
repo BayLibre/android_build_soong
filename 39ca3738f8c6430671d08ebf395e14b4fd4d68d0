@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a77b7d8a_a8770896",
+        "filename": "apex/container_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-01T21:30:08Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I\u0027ve interpreted this as testing for a no-op `apex_available` entry (i.e. testing if the module\u0027s `containers` include `ApexContainer` when the module does not actually belongs to an apex but sets `apex_available` property). Please feel free to correct me if this was not your intention.",
+      "parentUuid": "44f19ee7_ab3367fc",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "39ca3738f8c6430671d08ebf395e14b4fd4d68d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14c125af_20e69c8a",
         "filename": "apex/container_test.go",
         "patchSetId": 7
@@ -54,6 +78,30 @@
       "writtenOn": "2024-07-01T18:54:28Z",
       "side": 1,
       "message": "Can you add an updatable apex to this example as well, and see how it affects the container values?\n```\napex {\n\t\t\tname: \"myapex.updatable\",\n\t\t\tkey: \"myapex.key\",\n\t\t\tbootclasspath_fragments: [\n\t\t\t\t\"mybootclasspathfragment\",\n\t\t\t],\n\t\t\tupdatable: true,\n\t\t}\n\n```",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 3
+      },
+      "revId": "39ca3738f8c6430671d08ebf395e14b4fd4d68d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36f8d4b2_30d45ac7",
+        "filename": "apex/container_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-01T21:30:08Z",
+      "side": 1,
+      "message": "I believe that the test case above (`TestApexDepsContainers`) tests the behavior of an updatable apex. I\u0027ve specified the `updatable: true` property in `TestApexDepsContainers` test case for clarity.",
+      "parentUuid": "14c125af_20e69c8a",
       "range": {
         "startLine": 153,
         "startChar": 2,
