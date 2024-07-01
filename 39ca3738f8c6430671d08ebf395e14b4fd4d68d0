@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8da5ba5_0db77360",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T18:54:28Z",
+      "side": 1,
+      "message": "Overall looks reasonable, but added some comments about edge cases in unit tests",
+      "revId": "39ca3738f8c6430671d08ebf395e14b4fd4d68d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f19ee7_ab3367fc",
+        "filename": "apex/container_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T18:54:28Z",
+      "side": 1,
+      "message": "Can you add a java_library `baz` to this example which has\n```\napex_available: [\"//apex_available:platform\", \"myapex\"],\n```",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "39ca3738f8c6430671d08ebf395e14b4fd4d68d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c125af_20e69c8a",
+        "filename": "apex/container_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-01T18:54:28Z",
+      "side": 1,
+      "message": "Can you add an updatable apex to this example as well, and see how it affects the container values?\n```\napex {\n\t\t\tname: \"myapex.updatable\",\n\t\t\tkey: \"myapex.key\",\n\t\t\tbootclasspath_fragments: [\n\t\t\t\t\"mybootclasspathfragment\",\n\t\t\t],\n\t\t\tupdatable: true,\n\t\t}\n\n```",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 3
+      },
+      "revId": "39ca3738f8c6430671d08ebf395e14b4fd4d68d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
