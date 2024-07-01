@@ -899,9 +899,13 @@ type commonSdkLibraryAndImportModule interface {
 	RootLibraryName() string
 }
 
+var _ (android.SdkLibAndImportModule) = (*SdkLibrary)(nil)
+
 func (m *SdkLibrary) RootLibraryName() string {
 	return m.BaseModuleName()
 }
+
+var _ (android.SdkLibAndImportModule) = (*SdkLibraryImport)(nil)
 
 func (m *SdkLibraryImport) RootLibraryName() string {
 	// m.BaseModuleName refers to the source of the import
@@ -2093,6 +2097,7 @@ func (module *SdkLibrary) topLevelStubsLibraryProps(mctx android.DefaultableHook
 		props.Dist.Dir = proptools.StringPtr(module.apiDistPath(apiScope))
 		props.Dist.Tag = proptools.StringPtr(".jar")
 	}
+	props.Is_stubs_module = proptools.BoolPtr(true)
 
 	return props
 }
