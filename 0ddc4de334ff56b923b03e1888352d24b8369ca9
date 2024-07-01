@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce1b66a7_ad1b8174",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-01T21:29:51Z",
+      "side": 1,
+      "message": "IMO go/android-api-types is not strictly applicable here (i.e. is not a holistic list of rules). The distinguishing factor in go/android-api-types is the privilege of the consumer (i.e. which set of apis the consumer is allowed to access), while the distinguishing factor of this \"container\" work is the installation path. In other words, this check determines which modules are allowed to access the implementation of another module, while go/android-api-types determines which set of apis (i.e. system stubs, module lib stubs, etc..) of a stubs producing module a consumer is allowed to access.\n\nHowever, I agree that this is not a complete set of restrictions. I believe that further discussion is required to come up with a complete policy.\n\n\u003e `core` container is missing\n\nIIUC \"core\" and \"system\" is used interchangeably in the partition/container perspective, per the description of [`CoreVariation`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/image.go;drc\u003d47e918450f83fc5f2680c0a3f7d6d1209e031e7c;l\u003d69), but CMIW.",
+      "parentUuid": "135afb28_f80c3ec2",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35709cd6_b1849173",
         "filename": "android/container.go",
         "patchSetId": 10
@@ -298,6 +322,30 @@
       "side": 1,
       "message": "In this example, I think we will have _two_ module variants of the library.\n- platform variant\n- apex variant\n\nDoes each variant need a mutli value `container` property?",
       "parentUuid": "8374eaac_14b45856",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 30
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "099504ef_b6822b2d",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-01T21:29:51Z",
+      "side": 1,
+      "message": "IIUC in this example two variants would have different container**s** values. The platform variant would have {system}, and the apex variant would have {system, apex}. PTAL [`TestNonUpdatableApexDepsContainers` test cases](https://android-review.git.corp.google.com/c/platform/build/soong/+/3150117/7/apex/container_test.go#147) for example. Note that `installInSystemPartition` follows the identical logic of [`modulePartition()`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/paths.go;drc\u003db7e9f5f0359685a9609105bed182933b29cc10b3;l\u003d1923).",
+      "parentUuid": "cf447581_52d42a20",
       "range": {
         "startLine": 162,
         "startChar": 2,
