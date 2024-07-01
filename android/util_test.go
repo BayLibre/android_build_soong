@@ -832,6 +832,12 @@ var hasIntersectionTestCases = []struct {
 		expected: false,
 	},
 	{
+		name:     "both empty",
+		l1:       []string{},
+		l2:       []string{},
+		expected: false,
+	},
+	{
 		name:     "identical",
 		l1:       []string{"a", "b", "c"},
 		l2:       []string{"a", "b", "c"},

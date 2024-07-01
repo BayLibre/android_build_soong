@@ -901,6 +901,20 @@ func init() {
 }
 
 func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// if j.Name() == "mybootclasspathlib.impl" {
+	// 	fmt.Print("mybootclasspathlib.impl deps: \n")
+	// 	ctx.VisitDirectDeps(func(dep android.Module) {
+	// 		tag := ctx.OtherModuleDependencyTag(dep)
+	// 		tagName := ""
+	// 		if tn, tnOk := tag.(dependencyTag); tnOk {
+	// 			tagName = tn.name
+	// 		} else {
+	// 			tagName = reflect.TypeOf(tag).Name()
+	// 		}
+	// 		fmt.Printf("%s - %s\n", dep.Name(), tagName)
+	// 	})
+	// }
+
 	if disableSourceApexVariant(ctx) {
 		// Prebuilts are active, do not create the installation rules for the source javalib.
 		// Even though the source javalib is not used, we need to hide it to prevent duplicate installation rules.
