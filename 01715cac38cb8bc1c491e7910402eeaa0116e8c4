@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43fdf613_9cc1b9c6",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-02T17:41:10Z",
+      "side": 1,
+      "message": "Previously this was an empty block. Is there a reason why we are setting output files here?",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 41
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5383991a_fd4d7c68",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/androidmk_test.go",
+              "range": {
+                "startLine": 71,
+                "startChar": 0,
+                "endLine": 72,
+                "endChar": 0
+              },
+              "replacement": "\t\t// No default dist paths.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "01715cac38cb8bc1c491e7910402eeaa0116e8c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32dbf49f_2e27299c",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-02T17:41:10Z",
+      "side": 1,
+      "message": "nit: inline this",
+      "range": {
+        "startLine": 87,
+        "startChar": 24,
+        "endLine": 87,
+        "endChar": 40
+      },
+      "revId": "01715cac38cb8bc1c491e7910402eeaa0116e8c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f90b910e_b2a27c73",
+        "filename": "android/paths_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-02T17:41:10Z",
+      "side": 1,
+      "message": "nit: inline this\n```\nctx.SetOutputFiles(PathsForOutput(ctx, p.props.Outs), \"\")\nctx.SetOutputFiles(PathsForOutput(ctx, p.props.Tagged), \".tagged\")\n```",
+      "range": {
+        "startLine": 1205,
+        "startChar": 1,
+        "endLine": 1206,
+        "endChar": 42
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "74b96814_0db33ebc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/paths_test.go",
+              "range": {
+                "startLine": 1196,
+                "startChar": 0,
+                "endLine": 1207,
+                "endChar": 0
+              },
+              "replacement": "\tctx.SetOutputFiles(PathsForModuleOut(ctx, p.props.Outs), \"\")\n\tctx.SetOutputFiles(PathsForModuleOut(ctx, p.props.Tagged), \".tagged\")\n"
+            }
+          ]
+        }
+      ],
+      "revId": "01715cac38cb8bc1c491e7910402eeaa0116e8c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5cc46a0_39c32082",
+        "filename": "android/prebuilt_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-02T17:41:10Z",
+      "side": 1,
+      "message": "nit: replace with\n```\nif len(p.properties.Srcs) \u003e\u003d 1 {\n  ctx.SetOutputFiles(Paths{p.prebuilt.SingleSourcePath(ctx)}, \"\")\n}\n```",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 35
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ea02ec1e_a5f445c6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/prebuilt_test.go",
+              "range": {
+                "startLine": 511,
+                "startChar": 0,
+                "endLine": 512,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "android/prebuilt_test.go",
+              "range": {
+                "startLine": 513,
+                "startChar": 0,
+                "endLine": 514,
+                "endChar": 0
+              },
+              "replacement": "\t\tctx.SetOutputFiles(Paths{p.prebuilt.SingleSourcePath(ctx)}, \"\")\n"
+            },
+            {
+              "path": "android/prebuilt_test.go",
+              "range": {
+                "startLine": 515,
+                "startChar": 0,
+                "endLine": 516,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "01715cac38cb8bc1c491e7910402eeaa0116e8c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
