@@ -46,6 +46,30 @@
       },
       "revId": "39088882655bbeb5f91222d83e3086696b1f165c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f2a456b_9e0fce97",
+        "filename": "java/robolectric.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 2029642
+      },
+      "writtenOn": "2024-07-02T23:18:55Z",
+      "side": 1,
+      "message": "Yup, I\u0027ve filed a bug to track the effort to remove unused code in this file as it might be more than just the prebuilts (for example the directory robolectric-shadows), but I\u0027m not really sure as to what exactly can be removed here.",
+      "parentUuid": "5478c786_4e449770",
+      "range": {
+        "startLine": 379,
+        "startChar": 36,
+        "endLine": 379,
+        "endChar": 55
+      },
+      "revId": "39088882655bbeb5f91222d83e3086696b1f165c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
