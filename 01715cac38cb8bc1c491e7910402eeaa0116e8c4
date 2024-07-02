@@ -66,6 +66,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81bdaccb_7454ceca",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-07-02T18:18:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3beb27b2_01316f5b",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 41
+      },
+      "revId": "01715cac38cb8bc1c491e7910402eeaa0116e8c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32dbf49f_2e27299c",
@@ -79,6 +103,30 @@
       "writtenOn": "2024-07-02T17:41:10Z",
       "side": 1,
       "message": "nit: inline this",
+      "range": {
+        "startLine": 87,
+        "startChar": 24,
+        "endLine": 87,
+        "endChar": 40
+      },
+      "revId": "01715cac38cb8bc1c491e7910402eeaa0116e8c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a67522_06056923",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-07-02T18:18:02Z",
+      "side": 1,
+      "message": "I\u0027ll have a separate small CL for this.",
+      "parentUuid": "32dbf49f_2e27299c",
       "range": {
         "startLine": 87,
         "startChar": 24,
@@ -126,6 +174,30 @@
           ]
         }
       ],
+      "revId": "01715cac38cb8bc1c491e7910402eeaa0116e8c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e5626d_34f32402",
+        "filename": "android/paths_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-07-02T18:18:02Z",
+      "side": 1,
+      "message": "Here I\u0027ll also use the original implementation, since `PathsForOutput` returns `WritablePaths`, and using Paths() after it make the tests fail.",
+      "parentUuid": "f90b910e_b2a27c73",
+      "range": {
+        "startLine": 1205,
+        "startChar": 1,
+        "endLine": 1206,
+        "endChar": 42
+      },
       "revId": "01715cac38cb8bc1c491e7910402eeaa0116e8c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -205,6 +277,30 @@
       "side": 1,
       "message": "Here I will stick to my original change because when `len(p.properties.Srcs) \u003c 1` we still want to have the `SetOutputFiles` to keep the behavior the same as before.",
       "parentUuid": "a5cc46a0_39c32082",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 35
+      },
+      "revId": "01715cac38cb8bc1c491e7910402eeaa0116e8c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de5f32f_46792fb4",
+        "filename": "android/prebuilt_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-07-02T18:18:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f21abdf3_80cdca3b",
       "range": {
         "startLine": 511,
         "startChar": 0,
