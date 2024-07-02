@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a56ef85a_c75d0f3d",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-07-02T08:13:56Z",
+      "side": 0,
+      "message": "Kiyoung, I think removing this is fine because libbinder doesn\u0027t support apex variant (and the error mentions the same error(use libbinder_ndk instead) from the header) What do you think?",
+      "range": {
+        "startLine": 988,
+        "startChar": 0,
+        "endLine": 990,
+        "endChar": 3
+      },
+      "revId": "dd274aba5f085477f4daa02ef47cfab9bca3ac42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
