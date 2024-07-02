@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41be24e2_d4d88e0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-07-02T17:52:21Z",
+      "side": 1,
+      "message": "@ccross@android.com - this change follows your suggestion on how to avoid OtherModuleDependencyVariantExists for `modules` field (not arm64 host support).",
+      "revId": "d38d14056c5dd7bb319aea258b79bf3c90994f83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
