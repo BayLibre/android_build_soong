@@ -41,7 +41,6 @@ var robolectricDefaultLibs = []string{
 }
 
 const robolectricCurrentLib = "Robolectric_all-target"
-const robolectricPrebuiltLibPattern = "platform-robolectric-%s-prebuilt"
 
 var (
 	roboCoverageLibsTag = dependencyTag{name: "roboCoverageLibs"}
@@ -63,10 +62,6 @@ type robolectricProperties struct {
 		// Number of shards to use when running the tests.
 		Shards *int64
 	}
-
-	// The version number of a robolectric prebuilt to use from prebuilts/misc/common/robolectric
-	// instead of the one built from source in external/robolectric-shadows.
-	Robolectric_prebuilt_version *string
 
 	// Use /external/robolectric rather than /external/robolectric-shadows as the version of robolectric
 	// to use.  /external/robolectric closely tracks github's master, and will fully replace /external/robolectric-shadows
@@ -114,9 +109,7 @@ func (r *robolectricTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 		ctx.PropertyErrorf("instrumentation_for", "missing required instrumented module")
 	}
 
-	if v := String(r.robolectricProperties.Robolectric_prebuilt_version); v != "" {
-		ctx.AddVariationDependencies(nil, libTag, fmt.Sprintf(robolectricPrebuiltLibPattern, v))
-	} else if !proptools.BoolDefault(r.robolectricProperties.Strict_mode, true) {
+	if !proptools.BoolDefault(r.robolectricProperties.Strict_mode, true) {
 		if proptools.Bool(r.robolectricProperties.Upstream) {
 			ctx.AddVariationDependencies(nil, libTag, robolectricCurrentLib+"_upstream")
 		} else {
@@ -383,11 +376,7 @@ func (r *robolectricTest) writeTestRunner(w io.Writer, module, name string, test
 	if t := r.robolectricProperties.Test_options.Timeout; t != nil {
 		fmt.Fprintln(w, "LOCAL_ROBOTEST_TIMEOUT :=", *t)
 	}
-	if v := String(r.robolectricProperties.Robolectric_prebuilt_version); v != "" {
-		fmt.Fprintf(w, "-include prebuilts/misc/common/robolectric/%s/run_robotests.mk\n", v)
-	} else {
-		fmt.Fprintln(w, "-include external/robolectric-shadows/run_robotests.mk")
-	}
+	fmt.Fprintln(w, "-include external/robolectric-shadows/run_robotests.mk")
 }
 
 // An android_robolectric_test module compiles tests against the Robolectric framework that can run on the local host
