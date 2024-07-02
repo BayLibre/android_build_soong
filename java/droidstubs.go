@@ -875,6 +875,12 @@ func (d *Droidstubs) commonMetalavaStubCmd(ctx android.ModuleContext, rule *andr
 	cmd := metalavaCmd(ctx, rule, d.Javadoc.srcFiles, srcJarList, homeDir, params.stubConfig)
 	cmd.Implicits(d.Javadoc.implicits)
 
+	// Check if the current module should use Turbine
+	turbineOverridePatterns := turbineOverridePatterns(ctx)
+	if shouldUseTurbine(ctx.ModuleName(), turbineOverridePatterns) {
+		cmd.Flag("--source-model-provider turbine")
+	}
+
 	d.stubsFlags(ctx, cmd, params.stubsDir, params.stubConfig.stubsType, params.stubConfig.checkApi)
 
 	if params.stubConfig.writeSdkValues {
@@ -1531,4 +1537,31 @@ func PrebuiltStubsSourcesFactory() android.Module {
 	android.InitPrebuiltModule(module, &module.properties.Srcs)
 	InitDroiddocModule(module, android.HostAndDeviceSupported)
 	return module
+}
+
+func turbineOverridePatterns(ctx android.ModuleContext) []string {
+	patternsStr := ctx.Config().Getenv("SOONG_METALAVA_TURBINE_PATTERNS")
+
+	// Check if the environment variable is set
+	if patternsStr == "" {
+		return nil // Return an empty slice if the variable is not set
+	}
+	patterns := strings.Fields(patternsStr)
+	if len(patterns) == 0 {
+		return nil
+	}
+
+	println("patterns: %s ", patterns)
+
+	return patterns
+}
+
+func shouldUseTurbine(moduleName string, patterns []string) bool {
+	for _, pattern := range patterns {
+		// Direct match or Check for prefix match (pattern.*)
+		if pattern == moduleName || strings.HasPrefix(moduleName, pattern+".") {
+			return true
+		}
+	}
+	return false
 }
