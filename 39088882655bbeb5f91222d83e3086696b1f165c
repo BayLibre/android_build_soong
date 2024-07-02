@@ -22,6 +22,30 @@
       },
       "revId": "39088882655bbeb5f91222d83e3086696b1f165c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5478c786_4e449770",
+        "filename": "java/robolectric.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2024-07-02T19:27:26Z",
+      "side": 1,
+      "message": "pretty sure this is all dead code (generation of the make files) since atest can run tests both via the make file and without it.   I think this was for the tests people ran as part of the soong build, which I think have all been removed.",
+      "parentUuid": "001d2507_f382e016",
+      "range": {
+        "startLine": 379,
+        "startChar": 36,
+        "endLine": 379,
+        "endChar": 55
+      },
+      "revId": "39088882655bbeb5f91222d83e3086696b1f165c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
