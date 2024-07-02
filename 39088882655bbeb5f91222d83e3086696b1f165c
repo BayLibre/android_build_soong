@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001d2507_f382e016",
+        "filename": "java/robolectric.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-07-02T16:24:55Z",
+      "side": 1,
+      "message": "This directory isn\u0027t in the main branch.  Where is this used?",
+      "range": {
+        "startLine": 379,
+        "startChar": 36,
+        "endLine": 379,
+        "endChar": 55
+      },
+      "revId": "39088882655bbeb5f91222d83e3086696b1f165c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
