@@ -236,6 +236,7 @@ func createInitFirstStageRules() []Rule {
 			Without("name", "init_first_stage_defaults").
 			Without("name", "init_first_stage").
 			Without("name", "init_first_stage.microdroid").
+			Without("name", "cgroups.json").
 			With("install_in_root", "true").
 			Because("install_in_root is only for init_first_stage."),
 	}
