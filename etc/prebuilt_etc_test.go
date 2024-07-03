@@ -287,6 +287,20 @@ func TestPrebuiltPrebuiltUserHyphenDataInstallDirPath(t *testing.T) {
 	android.AssertPathRelativeToTopEquals(t, "install dir", expected, p.installDirPath)
 }
 
+func TestPrebuiltPrebuiltUserDataInstallDirPath(t *testing.T) {
+	result := prepareForPrebuiltEtcTest.RunTestWithBp(t, `
+	prebuilt_data {
+			name: "myCoolPrebuiltData",
+			src: "readme.txt",
+			sub_dir: "misc",
+		}
+	`)
+
+	p := result.Module("myCoolPrebuiltData", "android_arm64_armv8-a").(*PrebuiltEtc)
+	expected := "out/soong/target/product/test_device/system/data/misc"
+	android.AssertPathRelativeToTopEquals(t, "install dir", expected, p.installDirPath)
+}
+
 func TestPrebuiltPrebuiltUserKeyLayoutInstallDirPath(t *testing.T) {
 	result := prepareForPrebuiltEtcTest.RunTestWithBp(t, `
 	prebuilt_usr_keylayout {
