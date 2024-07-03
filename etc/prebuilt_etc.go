@@ -113,6 +113,9 @@ type prebuiltEtcProperties struct {
 
 	// Install symlinks to the installed file.
 	Symlinks []string `android:"arch_variant"`
+
+	// Install the file to the root of the partition. Default: false.
+	Install_in_root *bool
 }
 
 type prebuiltSubdirProperties struct {
@@ -239,6 +242,10 @@ func (p *PrebuiltEtc) VendorRamdiskVariantNeeded(ctx android.BaseModuleContext) 
 
 func (p *PrebuiltEtc) DebugRamdiskVariantNeeded(ctx android.BaseModuleContext) bool {
 	return proptools.Bool(p.properties.Debug_ramdisk_available) || p.ModuleBase.InstallInDebugRamdisk()
+}
+
+func (p *PrebuiltEtc) InstallInRoot(ctx android.BaseModuleContext) bool {
+	return proptools.Bool(p.properties.Install_in_root)
 }
 
 func (p *PrebuiltEtc) RecoveryVariantNeeded(ctx android.BaseModuleContext) bool {
