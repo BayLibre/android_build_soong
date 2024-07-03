@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49c38d27_9391bddb",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-03T18:43:41Z",
+      "side": 1,
+      "message": "nit: do these need to be defined outside of the for loop? Can we just inline it inside the for loop?",
+      "range": {
+        "startLine": 1324,
+        "startChar": 0,
+        "endLine": 1326,
+        "endChar": 25
+      },
+      "revId": "0436e9ecee22241ab2d8f1a1a161f52cc9085ce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
