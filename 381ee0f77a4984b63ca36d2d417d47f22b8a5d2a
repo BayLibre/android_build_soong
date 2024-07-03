@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c4e012_5683eee4",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-03T17:47:36Z",
+      "side": 0,
+      "message": "Do you mind removing this as well? IIRC the only usage of this function is in `OutputFiles`, which is now being removed.",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 1
+      },
+      "revId": "381ee0f77a4984b63ca36d2d417d47f22b8a5d2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09411087_7f24e833",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-03T17:47:36Z",
+      "side": 1,
+      "message": "Can we convert this to a mapping of tags to functions and iterate over the map keys instead? This would prevent having to hard code the tags again inside the for loop.\n```suggestion\n\ttagToOutputFileMap :\u003d map[string]func(StubsType) (android.Path, error){\n\t\t\"\":                                 d.StubsSrcJar,\n\t\t\".docs.zip\":                        d.DocZip,\n\t\t\".api.txt\":                         d.ApiFilePath,\n\t\tandroid.DefaultDistTag:             d.ApiFilePath,\n\t\t\".removed-api.txt\":                 d.RemovedApiFilePath,\n\t\t\".annotations.zip\":                 d.AnnotationsZip,\n\t\t\".api_versions.xml\":                d.ApiVersionsXmlFilePath,\n\t}\n```",
+      "range": {
+        "startLine": 1346,
+        "startChar": 0,
+        "endLine": 1347,
+        "endChar": 62
+      },
+      "revId": "03ec25cdfcdcb8aa15507b98b1883c1fb1ced111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
