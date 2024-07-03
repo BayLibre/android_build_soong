@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f2f8fdb_a7ef92dd",
+        "filename": "apex/container_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-03T17:18:47Z",
+      "side": 1,
+      "message": "Thanks for the clarification, updated the test case for this in the latest patchset.",
+      "parentUuid": "6f7d1822_2d119cd0",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "39ca3738f8c6430671d08ebf395e14b4fd4d68d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14c125af_20e69c8a",
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "Can we add a unit test with co-existing updatable and non-updatable apexes? (maybe in a different unit test if you prefer to keep the scope of this test limited)\n\n\nI _think_ updatable and non-updatable apexes are resolved to the same apex variant of dependency if the top-level apexes have the same min_sdk_version. It will be interesting to assert what the `container` properties of that module variant should be.",
       "parentUuid": "36f8d4b2_30d45ac7",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 3
+      },
+      "revId": "39ca3738f8c6430671d08ebf395e14b4fd4d68d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e04ce0a_c199888c",
+        "filename": "apex/container_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-03T17:18:47Z",
+      "side": 1,
+      "message": "Done. I can observe that in this case the common dependency `foo` is marked as being included in the apex container but not in the system container.",
+      "parentUuid": "0d1d2fae_a62fe352",
       "range": {
         "startLine": 153,
         "startChar": 2,
