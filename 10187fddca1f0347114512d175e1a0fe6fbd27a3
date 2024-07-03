@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f56f1a0_933e4c28",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-03T21:50:05Z",
+      "side": 1,
+      "message": "Do you mind utilizing `android.SortedKeys` to make the order deterministic?",
+      "revId": "10187fddca1f0347114512d175e1a0fe6fbd27a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22c4892f_bebaac71",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-03T21:50:05Z",
+      "side": 1,
+      "message": "```suggestion\n        stubsTypeToPrefixedTag :\u003d map[StubsType]string{\n\t\tEverything: \"\",\n\t\tExportable: \".exportable\",\n\t}\n\tfor tag, f :\u003d range tagToOutputFileFunc {\n\t\tfor stubsType, tagPrefix :\u003d range stubsTypeToPrefixedTag {\n\t\t\ttagWithPrefix :\u003d tagPrefix + tag\n\t\t\toutputFile, err :\u003d f(tagWithPrefix)\n\t\t\tif err \u003d\u003d nil {\n\t\t\t\tctx.SetOutputFiles(android.Paths{outputFile}, tagWithPrefix)\n\t\t\t}\n\t\t}\n\t}\n```",
+      "range": {
+        "startLine": 1333,
+        "startChar": 1,
+        "endLine": 1344,
+        "endChar": 2
+      },
+      "revId": "10187fddca1f0347114512d175e1a0fe6fbd27a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
