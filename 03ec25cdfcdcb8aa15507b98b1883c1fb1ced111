@@ -70,6 +70,30 @@
       },
       "revId": "03ec25cdfcdcb8aa15507b98b1883c1fb1ced111",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f659e183_e79f70ca",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-07-03T19:07:16Z",
+      "side": 1,
+      "message": "No worries:) Done.",
+      "parentUuid": "b8d63127_03cd3baa",
+      "range": {
+        "startLine": 1346,
+        "startChar": 0,
+        "endLine": 1347,
+        "endChar": 62
+      },
+      "revId": "03ec25cdfcdcb8aa15507b98b1883c1fb1ced111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
