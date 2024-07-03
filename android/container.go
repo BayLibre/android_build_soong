@@ -32,12 +32,36 @@ var moduleIsStubsModule = func(m Module) bool {
 	return false
 }
 
+type HidlStubsAvailableModule interface {
+	IsHidlStubsModule() bool
+}
+
+var moduleIsHidlInterfaceStubsModule = func(m Module) bool {
+	if hidlStubsAvailableModule, ok := m.(HidlStubsAvailableModule); ok {
+		return hidlStubsAvailableModule.IsHidlStubsModule()
+	}
+	return false
+}
+
+type AidlStubsAvailableModule interface {
+	IsAidlStubsModule() bool
+}
+
+var moduleIsAidlInterfaceStubsModule = func(m Module) bool {
+	if AidlStubsAvailableModule, ok := m.(AidlStubsAvailableModule); ok {
+		return AidlStubsAvailableModule.IsAidlStubsModule()
+	}
+	return false
+}
+
 // Labels of exception functions, which are used to determine special dependencies that allow
 // otherwise restricted inter-container dependencies
 type exceptionHandleFuncLabel int
 
 const (
 	checkStubs exceptionHandleFuncLabel = iota
+	checkHidlInterface
+	checkAidlInterface
 	undefined
 )
 
@@ -45,8 +69,10 @@ const (
 // hashable. As a workaround, the exceptionHandleFunc enum values are passed using providers,
 // and the corresponding functions are called from this map.
 var exceptionHandleFunctionsTable = map[exceptionHandleFuncLabel]func(Module) bool{
-	checkStubs: moduleIsStubsModule,
-	undefined:  func(Module) bool { return false },
+	checkStubs:         moduleIsStubsModule,
+	checkHidlInterface: moduleIsHidlInterfaceStubsModule,
+	checkAidlInterface: moduleIsAidlInterfaceStubsModule,
+	undefined:          func(Module) bool { return false },
 }
 
 type InstallableModule interface {
@@ -87,7 +113,7 @@ var (
 					"not allowed to depend on the vendor partition module, in order to support " +
 					"independent development/update cycles and to support the Generic System " +
 					"Image. Try depending on HALs, VNDK or AIDL instead.",
-				allowedExceptions: []exceptionHandleFuncLabel{undefined},
+				allowedExceptions: []exceptionHandleFuncLabel{checkHidlInterface, checkAidlInterface},
 			},
 		},
 	}
@@ -99,7 +125,7 @@ var (
 				errorMessage: "Module belonging to the product partition is not allowed to " +
 					"depend on the vendor partition module, as this may lead to security " +
 					"vulnerabilities. Try depending on the HALs or utilize AIDL instead.",
-				allowedExceptions: []exceptionHandleFuncLabel{undefined},
+				allowedExceptions: []exceptionHandleFuncLabel{checkHidlInterface, checkAidlInterface},
 			},
 		},
 	}
