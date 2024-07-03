@@ -302,6 +302,15 @@ type DeviceProperties struct {
 
 	HiddenAPIPackageProperties
 	HiddenAPIFlagFileProperties
+
+	// Indicates if this module was generated from hidl interface to provide the stubs.
+	// If this is set to true, this module can be used by the non-vendor modules to depend
+	// on the vendor partition.
+	Hidl_generated_stubs *bool
+
+	// Indicates if the module was generated from aidl interface backend to provide the stubs.
+	// If this is set to true, this module can be used by modules for inter-partition dependency.
+	Aidl_generated_stubs *bool
 }
 
 // Properties that can be overridden by overriding module (e.g. override_android_app)
@@ -562,6 +571,20 @@ func (j *Module) EnforceApiContainerChecks() bool {
 // Overrides android.ModuleBase.InstallInProduct()
 func (j *Module) InstallInProduct() bool {
 	return j.ProductSpecific()
+}
+
+var _ android.HidlStubsAvailableModule = (*Module)(nil)
+
+// To satisfy the HidlStubsAvailableModule interface
+func (j *Module) IsHidlStubsModule() bool {
+	return proptools.BoolDefault(j.deviceProperties.Hidl_generated_stubs, false)
+}
+
+var _ android.AidlStubsAvailableModule = (*Module)(nil)
+
+// To satisfy the AidlStubsAvailableModule interface
+func (j *Module) IsAidlStubsModule() bool {
+	return proptools.BoolDefault(j.deviceProperties.Aidl_generated_stubs, false)
 }
 
 func (j *Module) CheckStableSdkVersion(ctx android.BaseModuleContext) error {
