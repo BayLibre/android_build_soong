@@ -236,6 +236,9 @@ func createInitFirstStageRules() []Rule {
 			Without("name", "init_first_stage_defaults").
 			Without("name", "init_first_stage").
 			Without("name", "init_first_stage.microdroid").
+			Without("name", "q-developer-gsi.avbpubkey").
+			Without("name", "r-developer-gsi.avbpubkey").
+			Without("name", "s-developer-gsi.avbpubkey").
 			With("install_in_root", "true").
 			Because("install_in_root is only for init_first_stage."),
 	}
