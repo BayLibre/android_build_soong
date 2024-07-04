@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5b37be_e8e327b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-07-04T06:27:32Z",
+      "side": 1,
+      "message": "The conversion looks correct, but I don\u0027t see any product which actually uses PRODUCT_EXTRA_OTA_KEYS and PRODUCT_EXTRA_RECOVERY_KEYS. \n\nAdding @qsliu to see if this module is dead or not.",
+      "revId": "7a4d22b76dcab1d00971ff647956e0bb11376a9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
