@@ -190,6 +190,9 @@ type variableProperties struct {
 			Required        []string
 			Vintf_fragments []string
 		}
+		Release_libbinder_client_cache struct {
+			Cflags          []string
+		}
 	} `android:"arch_variant"`
 }
 
@@ -473,6 +476,8 @@ type ProductVariables struct {
 	SelinuxIgnoreNeverallows bool `json:",omitempty"`
 
 	Release_aidl_use_unfrozen *bool `json:",omitempty"`
+
+	Release_libbinder_client_cache *bool `json:",omitempty"`
 
 	SepolicyFreezeTestExtraDirs         []string `json:",omitempty"`
 	SepolicyFreezeTestExtraPrebuiltDirs []string `json:",omitempty"`
