@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "aebf7005_0327668c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1786377
+      },
+      "writtenOn": "2024-07-04T06:44:50Z",
+      "side": 1,
+      "message": "They\u0027re used by chromecast devices (in partner-android) to upgrade from dev-key to release-key image through OTA in the factory.",
+      "parentUuid": "4a5b37be_e8e327b6",
+      "revId": "7a4d22b76dcab1d00971ff647956e0bb11376a9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bbd62f8a_a88db602",
