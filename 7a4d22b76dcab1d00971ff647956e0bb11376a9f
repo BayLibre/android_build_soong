@@ -16,6 +16,100 @@
       "message": "The conversion looks correct, but I don\u0027t see any product which actually uses PRODUCT_EXTRA_OTA_KEYS and PRODUCT_EXTRA_RECOVERY_KEYS. \n\nAdding @qsliu to see if this module is dead or not.",
       "revId": "7a4d22b76dcab1d00971ff647956e0bb11376a9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd62f8a_a88db602",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-07-04T06:38:08Z",
+      "side": 1,
+      "message": "nit; I think we can have two distinct functions `ExtraOtaKeys` and `ExtraOtaRecoveryKeys`. I believe that\u0027s what we normally do in config.go. But it duplicates existing code, so this is not a strong opinion.",
+      "range": {
+        "startLine": 1058,
+        "startChar": 0,
+        "endLine": 1072,
+        "endChar": 1
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "49e28511_f2a0fe12",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/config.go",
+              "range": {
+                "startLine": 1058,
+                "startChar": 0,
+                "endLine": 1064,
+                "endChar": 0
+              },
+              "replacement": "func (c *config) ExtraOtaKeys(ctx PathContext) []SourcePath {\n\totaKeys :\u003d c.productVariables.ExtraOtaKeys\n\totaPaths :\u003d make([]SourcePath, len(otaKeys))\n\tfor i, key :\u003d range otaKeys {\n\t\totaPaths[i] \u003d PathForSource(ctx, key+\".x509.pem\")\n"
+            },
+            {
+              "path": "android/config.go",
+              "range": {
+                "startLine": 1065,
+                "startChar": 0,
+                "endLine": 1065,
+                "endChar": 0
+              },
+              "replacement": "\treturn otaPaths\n}\n"
+            },
+            {
+              "path": "android/config.go",
+              "range": {
+                "startLine": 1066,
+                "startChar": 0,
+                "endLine": 1066,
+                "endChar": 0
+              },
+              "replacement": "func (c *config) ExtraOtaRecoveryKeys(ctx PathContext) []SourcePath {\n\totaKeys :\u003d c.productVariables.ExtraOtaRecoveryKeys\n"
+            },
+            {
+              "path": "android/config.go",
+              "range": {
+                "startLine": 1070,
+                "startChar": 0,
+                "endLine": 1071,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "7a4d22b76dcab1d00971ff647956e0bb11376a9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466958bd_a2d2da52",
+        "filename": "etc/otacerts_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-07-04T06:38:08Z",
+      "side": 1,
+      "message": "can you move this comment above the factory function (`otacertsZipFactory`) so this can be shown at the Soong module reference?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "7a4d22b76dcab1d00971ff647956e0bb11376a9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
