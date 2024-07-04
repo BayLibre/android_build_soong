@@ -1936,6 +1936,10 @@ func (c *deviceConfig) Release_aidl_use_unfrozen() bool {
 	return Bool(c.config.productVariables.Release_aidl_use_unfrozen)
 }
 
+func (c *deviceConfig) Release_libbinder_client_cache() bool {
+	return Bool(c.config.productVariables.Release_libbinder_client_cache)
+}
+
 func (c *config) SelinuxIgnoreNeverallows() bool {
 	return c.productVariables.SelinuxIgnoreNeverallows
 }
