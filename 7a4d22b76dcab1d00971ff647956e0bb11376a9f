@@ -107,6 +107,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9730f2e_d4edfa53",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-07-04T07:02:50Z",
+      "side": 1,
+      "message": "I think we may regenerate or amend product variables in config functions instead of returning raw values.",
+      "parentUuid": "bbd62f8a_a88db602",
+      "range": {
+        "startLine": 1058,
+        "startChar": 0,
+        "endLine": 1072,
+        "endChar": 1
+      },
+      "revId": "7a4d22b76dcab1d00971ff647956e0bb11376a9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "466958bd_a2d2da52",
@@ -120,6 +144,30 @@
       "writtenOn": "2024-07-04T06:38:08Z",
       "side": 1,
       "message": "can you move this comment above the factory function (`otacertsZipFactory`) so this can be shown at the Soong module reference?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "7a4d22b76dcab1d00971ff647956e0bb11376a9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b892d68_2e596966",
+        "filename": "etc/otacerts_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-07-04T07:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "466958bd_a2d2da52",
       "range": {
         "startLine": 17,
         "startChar": 0,
