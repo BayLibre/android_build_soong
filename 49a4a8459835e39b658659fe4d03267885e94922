@@ -16,6 +16,24 @@
       "message": "As written, the output of `afind` includes .repo, .git, and out directories.\n\nIf the default is changed to `args\u003d( -print )`, then those are excluded.\n\nAlso, in my workspace, I see this, which may not be quite what we want either:\n```\n% afind . -name \u0027.*\u0027 | head -8\n.\n./out\n./frameworks/proto_logging/.git\n./frameworks/proto_logging/stats/express/.clang-format\n./frameworks/proto_logging/stats/.gitignore\n./frameworks/proto_logging/stats/stats_log_api_gen/.clang-format\n./frameworks/hardware/interfaces/.clang-format\n./frameworks/hardware/interfaces/.git\n```\n\nIf I use `afind . -name \u0027.*\u0027 -print`, then the .git directories (et. al.) go away.",
       "revId": "49a4a8459835e39b658659fe4d03267885e94922",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8522aab6_228808f4",
+        "filename": "bin/afind",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-07-05T18:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f868fbe_988aa3f2",
+      "revId": "49a4a8459835e39b658659fe4d03267885e94922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
