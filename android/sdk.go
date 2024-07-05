@@ -618,6 +618,9 @@ type SdkMemberTypeBase struct {
 	// The names of linkage variants supported by this module.
 	SupportedLinkageNames []string
 
+	// StripDisabled returns true if the stripping needs to be disabled for this module.
+	StripDisabled bool
+
 	// When set to true BpPropertyNotRequired indicates that the member type does not require the
 	// property to be specifiable in an Android.bp file.
 	BpPropertyNotRequired bool

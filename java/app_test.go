@@ -2984,6 +2984,41 @@ func TestOverrideAndroidTest(t *testing.T) {
 	}
 }
 
+// func TestOverrideApexManifestDefaultVersion(t *testing.T) {
+// 	ctx := testApex(t, `
+// 		apex {
+// 			name: "myapex",
+// 			key: "myapex.key",
+// 			apex_name: "com.android.myapex",
+// 			native_shared_libs: ["mylib"],
+// 			updatable: false,
+// 		}
+
+// 		apex_key {
+// 			name: "myapex.key",
+// 			public_key: "testkey.avbpubkey",
+// 			private_key: "testkey.pem",
+// 		}
+
+// 		cc_library {
+// 			name: "mylib",
+// 			srcs: ["mylib.cpp"],
+// 			system_shared_libs: [],
+// 			stl: "none",
+// 			apex_available: [
+// 				"//apex_available:platform",
+// 				"myapex",
+// 			],
+// 		}
+// 	`, android.FixtureMergeEnv(map[string]string{
+// 		"OVERRIDE_APEX_MANIFEST_DEFAULT_VERSION": "1234",
+// 	}))
+
+// 	module := ctx.ModuleForTests("myapex", "android_common_com.android.myapex_image")
+// 	apexManifestRule := module.Rule("apexManifestRule")
+// 	ensureContains(t, apexManifestRule.Args["default_version"], "1234")
+// }
+
 func TestAndroidTest_FixTestConfig(t *testing.T) {
 	ctx, _ := testJava(t, `
 		android_app {

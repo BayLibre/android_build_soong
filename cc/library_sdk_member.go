@@ -31,6 +31,7 @@ var sharedLibrarySdkMemberType = &librarySdkMemberType{
 		SupportsSdk:           true,
 		HostOsDependent:       true,
 		SupportedLinkageNames: []string{"shared"},
+		StripDisabled:         true,
 	},
 	prebuiltModuleType: "cc_prebuilt_library_shared",
 }
@@ -242,6 +243,14 @@ func (mt *librarySdkMemberType) AddPrebuiltModule(ctx android.SdkMemberContext, 
 		if uhs != nil {
 			pbm.AddProperty("unique_host_soname", proptools.Bool(uhs))
 		}
+	}
+
+	// Set stripper to none to skip stripping for generated snapshots.
+	// Mainline prebuilts (cc_prebuilt_library_shared) are not strippable in older platforms.
+	// Thus, stripping should be skipped when being used as prebuilts.
+	if mt.SdkMemberTypeBase.StripDisabled {
+		stripPropertySet := pbm.AddPropertySet("strip")
+		stripPropertySet.AddProperty("none", true)
 	}
 
 	return pbm

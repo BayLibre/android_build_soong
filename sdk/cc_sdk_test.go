@@ -136,6 +136,9 @@ cc_prebuilt_library_shared {
     host_supported: true,
     stl: "none",
     compile_multilib: "64",
+    strip: {
+        none: true,
+    },
     target: {
         host: {
             enabled: false,
@@ -360,6 +363,9 @@ cc_prebuilt_library_shared {
         "include_gen/generated_foo/gen",
         "include_gen/generated_foo/gen/protos",
     ],
+    strip: {
+        none: true,
+    },
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
@@ -434,6 +440,9 @@ cc_prebuilt_library_shared {
     stl: "none",
     compile_multilib: "both",
     export_include_dirs: ["include/myinclude"],
+    strip: {
+        none: true,
+    },
     sanitize: {
         fuzzer: false,
         diag: {
@@ -688,6 +697,9 @@ cc_prebuilt_library_shared {
     host_supported: true,
     stl: "none",
     compile_multilib: "64",
+    strip: {
+        none: true,
+    },
     target: {
         host: {
             enabled: false,
@@ -814,6 +826,9 @@ cc_prebuilt_library_shared {
     stl: "none",
     compile_multilib: "both",
     export_include_dirs: ["include/myinclude"],
+    strip: {
+        none: true,
+    },
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
@@ -924,6 +939,9 @@ cc_prebuilt_library_shared {
         "myothernativelib",
         "libc",
     ],
+    strip: {
+        none: true,
+    },
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
@@ -942,6 +960,9 @@ cc_prebuilt_library_shared {
     stl: "none",
     compile_multilib: "both",
     system_shared_libs: ["libm"],
+    strip: {
+        none: true,
+    },
     arch: {
         arm64: {
             srcs: ["arm64/lib/myothernativelib.so"],
@@ -959,6 +980,9 @@ cc_prebuilt_library_shared {
     apex_available: ["//apex_available:platform"],
     stl: "none",
     compile_multilib: "both",
+    strip: {
+        none: true,
+    },
     arch: {
         arm64: {
             srcs: ["arm64/lib/mysystemnativelib.so"],
@@ -1026,6 +1050,9 @@ cc_prebuilt_library_shared {
     stl: "none",
     compile_multilib: "both",
     export_include_dirs: ["include/myinclude"],
+    strip: {
+        none: true,
+    },
     target: {
         host: {
             enabled: false,
@@ -1104,6 +1131,9 @@ cc_prebuilt_library_shared {
     device_supported: false,
     host_supported: true,
     stl: "none",
+    strip: {
+        none: true,
+    },
     target: {
         host: {
             enabled: false,
@@ -2013,6 +2043,9 @@ cc_prebuilt_library_shared {
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
     compile_multilib: "both",
+    strip: {
+        none: true,
+    },
     arch: {
         arm64: {
             srcs: ["arm64/lib/sslnil.so"],
@@ -2030,6 +2063,9 @@ cc_prebuilt_library_shared {
     apex_available: ["//apex_available:platform"],
     compile_multilib: "both",
     system_shared_libs: [],
+    strip: {
+        none: true,
+    },
     arch: {
         arm64: {
             srcs: ["arm64/lib/sslempty.so"],
@@ -2047,6 +2083,9 @@ cc_prebuilt_library_shared {
     apex_available: ["//apex_available:platform"],
     compile_multilib: "both",
     system_shared_libs: ["sslnil"],
+    strip: {
+        none: true,
+    },
     arch: {
         arm64: {
             srcs: ["arm64/lib/sslnonempty.so"],
@@ -2092,6 +2131,9 @@ cc_prebuilt_library_shared {
     apex_available: ["//apex_available:platform"],
     host_supported: true,
     compile_multilib: "both",
+    strip: {
+        none: true,
+    },
     target: {
         host: {
             enabled: false,
@@ -2155,6 +2197,9 @@ cc_prebuilt_library_shared {
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
     compile_multilib: "both",
+    strip: {
+        none: true,
+    },
     stubs: {
         versions: [
             "1",
@@ -2215,6 +2260,9 @@ cc_prebuilt_library_shared {
     apex_available: ["//apex_available:platform"],
     host_supported: true,
     compile_multilib: "both",
+    strip: {
+        none: true,
+    },
     stubs: {
         versions: [
             "1",
@@ -2279,6 +2327,9 @@ cc_prebuilt_library_shared {
     host_supported: true,
     unique_host_soname: true,
     compile_multilib: "both",
+    strip: {
+        none: true,
+    },
     target: {
         host: {
             enabled: false,
@@ -2347,6 +2398,9 @@ cc_prebuilt_library_shared {
     apex_available: ["//apex_available:platform"],
     compile_multilib: "both",
     export_include_dirs: ["include/myinclude"],
+    strip: {
+        none: true,
+    },
     arch: {
         arm64: {
             export_system_include_dirs: ["arm64/include/arm64/include"],
