@@ -2215,6 +2215,8 @@ func (e configurationEvalutor) EvaluateConfiguration(condition proptools.Configu
 		switch variable {
 		case "debuggable":
 			return proptools.ConfigurableValueBool(ctx.Config().Debuggable())
+		case "eng":
+			return proptools.ConfigurableValueBool(ctx.Config().Eng())
 		default:
 			// TODO(b/323382414): Might add these on a case-by-case basis
 			ctx.OtherModulePropertyErrorf(m, property, fmt.Sprintf("TODO(b/323382414): Product variable %q is not yet supported in selects", variable))
