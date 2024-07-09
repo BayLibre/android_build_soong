@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure I want to do this.  Where are you going to use it?  It\u0027s really tough to search the tree for usages of \"eng\" to figure out what\u0027s different between the variants.\n\nIs this something that could be done with PRODUCT_PACKAGES_ENG instead?",
       "revId": "bc89b2d2004c34b24bd835bbf7329557b9798b48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e25b609c_10b85155",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-07-09T01:01:57Z",
+      "side": 1,
+      "message": "You can find more details from aosp/3161476, but the point is that ART APEX installs ART debug APEX in case of eng build. You can find this logic from https://cs.android.com/android/platform/superproject/main/+/main:build/make/target/product/runtime_libart.mk;l\u003d32-62, and I expect this would be the best way to have same logic.",
+      "parentUuid": "c064fddb_44d9a976",
+      "revId": "bc89b2d2004c34b24bd835bbf7329557b9798b48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
