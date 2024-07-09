@@ -25,6 +25,7 @@ var (
 	arm64Cflags = []string{
 		// Help catch common 32/64-bit errors.
 		"-Werror=implicit-function-declaration",
+		"-mllvm -aarch64-min-jump-table-entries=9",
 	}
 
 	arm64ArchVariantCflags = map[string][]string{
