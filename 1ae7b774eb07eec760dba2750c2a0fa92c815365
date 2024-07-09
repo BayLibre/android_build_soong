@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d6681a_d6d083e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1041813
+      },
+      "writtenOn": "2024-07-09T02:59:28Z",
+      "side": 1,
+      "message": "Hi, Cole\n\nOne issue after this change is that, if the CI build system does not have BUILD_NUMBER environment exported, then the build number will be always 00000000.000000, is it recommended to export its own BUILD_NUMBER in the CI build system?",
+      "revId": "1ae7b774eb07eec760dba2750c2a0fa92c815365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
