@@ -46,6 +46,30 @@
       },
       "revId": "256b10ed0dcfdb670368783cc1b3e3ad8ae8129d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe9f6d30_ebafa31f",
+        "filename": "cc/cc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-07-09T19:02:53Z",
+      "side": 1,
+      "message": "good to know.",
+      "parentUuid": "309caaad_1873bd5c",
+      "range": {
+        "startLine": 1382,
+        "startChar": 10,
+        "endLine": 1382,
+        "endChar": 18
+      },
+      "revId": "256b10ed0dcfdb670368783cc1b3e3ad8ae8129d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
