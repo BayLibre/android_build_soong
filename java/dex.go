@@ -15,6 +15,7 @@
 package java
 
 import (
+	"slices"
 	"strconv"
 	"strings"
 
@@ -206,6 +207,9 @@ func (d *dexer) dexCommonFlags(ctx android.ModuleContext,
 	dexParams *compileDexParams) (flags []string, deps android.Paths) {
 
 	flags = d.dexProperties.Dxflags
+
+	allow_multi_dex := !slices.Contains(flags, "--no-multi-dex") // see b/341652226
+
 	// Translate all the DX flags to D8 ones until all the build files have been migrated
 	// to D8 flags. See: b/69377755, b/341652226
 	flags = android.RemoveListFromList(flags,
@@ -240,6 +244,16 @@ func (d *dexer) dexCommonFlags(ctx android.ModuleContext,
 	effectiveVersion, err := dexParams.minSdkVersion.EffectiveVersion(ctx)
 	if err != nil {
 		ctx.PropertyErrorf("min_sdk_version", "%s", err)
+	}
+	if allow_multi_dex && effectiveVersion.FinalOrFutureInt() >= 35 {
+		// V is 35, but we have not bumped the SDK version yet, so check for both.
+		if ctx.Config().PlatformSdkVersion().FinalInt() >= 35 ||
+			ctx.Config().PlatformSdkCodename() == "VanillaIceCream" {
+			// TODO(b/329465418): Skip this module since it causes issue with app DRM
+			if ctx.ModuleName() != "framework-minus-apex" {
+				flags = append([]string{"-JDcom.android.tools.r8.dexContainerExperiment"}, flags...)
+			}
+		}
 	}
 
 	// If the specified SDK level is 10000, then configure the compiler to use the
