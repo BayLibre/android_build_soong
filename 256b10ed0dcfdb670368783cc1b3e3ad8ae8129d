@@ -22,6 +22,30 @@
       },
       "revId": "256b10ed0dcfdb670368783cc1b3e3ad8ae8129d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "309caaad_1873bd5c",
+        "filename": "cc/cc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-09T18:51:16Z",
+      "side": 1,
+      "message": "No, isSanitizerEnabled performs the nil check.  Unlike C++ or Java, in Go a method call on a nil pointer of a concrete type just calls the method with a nil receiver.",
+      "parentUuid": "204fb861_c453cf42",
+      "range": {
+        "startLine": 1382,
+        "startChar": 10,
+        "endLine": 1382,
+        "endChar": 18
+      },
+      "revId": "256b10ed0dcfdb670368783cc1b3e3ad8ae8129d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
