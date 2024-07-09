@@ -16,6 +16,24 @@
       "message": "Can you describe in the commit message why this option is useful and what it will be used for?",
       "revId": "d90c37e23ef8a0d63ed6a5e998cd8b3c074c687b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00d6ceba_e295e6c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1951966
+      },
+      "writtenOn": "2024-07-09T09:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1200c5e_44110db5",
+      "revId": "d90c37e23ef8a0d63ed6a5e998cd8b3c074c687b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
