@@ -34,6 +34,24 @@
       "parentUuid": "2f869899_db3e8996",
       "revId": "0aaa051a7856098e2ea07cac1b217d6ad64fea17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b937794d_3128f86d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-07-09T21:53:02Z",
+      "side": 1,
+      "message": "You can not use perl in an Android build.",
+      "parentUuid": "3e7808ad_3e569767",
+      "revId": "0aaa051a7856098e2ea07cac1b217d6ad64fea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
