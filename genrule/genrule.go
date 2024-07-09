@@ -123,6 +123,7 @@ type generatorProperties struct {
 	//  $(location <label>): the path to the tool, tool_file, input or output with name <label>. Use $(location) if <label> refers to a rule that outputs exactly one file.
 	//  $(locations <label>): the paths to the tools, tool_files, inputs or outputs with name <label>. Use $(locations) if <label> refers to a rule that outputs two or more files.
 	//  $(in): one or more input files.
+	//  $(inHeaders): zero or more input header files
 	//  $(out): a single output file.
 	//  $(genDir): the sandbox directory for this tool; contains $(out).
 	//  $$: a literal $
@@ -143,6 +144,12 @@ type generatorProperties struct {
 
 	// input files to exclude
 	Exclude_srcs []string `android:"path,arch_variant"`
+
+	// list of header files
+	Headers []string `android:"path,arch_variant"`
+
+	// header files to exclude
+	Exclude_headers []string `android:"path,arch_variant"`
 
 	// Enable restat to update the output only if the output is changed
 	Write_if_changed *bool
@@ -182,10 +189,11 @@ type Module struct {
 	subDir  string
 }
 
-type taskFunc func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) []generateTask
+type taskFunc func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths, srcHeaders android.Paths) []generateTask
 
 type generateTask struct {
 	in          android.Paths
+	inHeaders   android.Paths
 	out         android.WritablePaths
 	copyTo      android.WritablePaths // For gensrcs to set on gensrcsMerge rule.
 	genDir      android.WritablePath
@@ -383,6 +391,10 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 		return srcFiles
 	}
 	srcFiles := addLabelsForInputs("srcs", g.properties.Srcs, g.properties.Exclude_srcs)
+	srcHeaders := addLabelsForInputs("headers", g.properties.Headers, g.properties.Exclude_headers)
+	if len(g.properties.Headers) > 0 {
+		panic("sweet")
+	}
 	android.SetProvider(ctx, blueprint.SrcsFileProviderKey, blueprint.SrcsFileProviderData{SrcPaths: srcFiles.Strings()})
 
 	var copyFrom android.Paths
@@ -396,7 +408,7 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 
 	var extraInputs android.Paths
 	// Generate tasks, either from genrule or gensrcs.
-	for i, task := range g.taskGenerator(ctx, cmd, srcFiles) {
+	for i, task := range g.taskGenerator(ctx, cmd, srcFiles, srcHeaders) {
 		if len(task.out) == 0 {
 			ctx.ModuleErrorf("must have at least one output file")
 			return
@@ -468,6 +480,12 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 				return strings.Join(proptools.ShellEscapeList(sandboxOuts), " "), nil
 			case "genDir":
 				return proptools.ShellEscape(cmd.PathForOutput(task.genDir)), nil
+			case "inHeaders":
+				if len(srcHeaders) == 0 {
+					return "boop.h", nil
+				} else {
+					return strings.Join(proptools.ShellEscapeList(cmd.PathsForInputs(srcHeaders)), " "), nil
+				}
 			default:
 				if strings.HasPrefix(name, "location ") {
 					label := strings.TrimSpace(strings.TrimPrefix(name, "location "))
@@ -662,7 +680,7 @@ func NewGenSrcs() *Module {
 	// merged into it.
 	const finalSubDir = "gensrcs"
 
-	taskGenerator := func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) []generateTask {
+	taskGenerator := func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths, srcHeaders android.Paths) []generateTask {
 		shardSize := defaultShardSize
 		if s := properties.Shard_size; s != nil {
 			shardSize = int(*s)
@@ -715,6 +733,9 @@ func NewGenSrcs() *Module {
 						return in.String(), nil
 					case "out":
 						return rule.Command().PathForOutput(outFile), nil
+					case "inHeaders":
+						// I'm not sure how to actually get Headers piped this far.
+						return "$(inHeaders)", nil
 					default:
 						return "$(" + name + ")", nil
 					}
@@ -776,16 +797,17 @@ const defaultShardSize = 50
 func NewGenRule() *Module {
 	properties := &genRuleProperties{}
 
-	taskGenerator := func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) []generateTask {
+	taskGenerator := func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths, srcHeaders android.Paths) []generateTask {
 		outs := make(android.WritablePaths, len(properties.Out))
 		for i, out := range properties.Out {
 			outs[i] = android.PathForModuleGen(ctx, out)
 		}
 		return []generateTask{{
-			in:     srcFiles,
-			out:    outs,
-			genDir: android.PathForModuleGen(ctx),
-			cmd:    rawCommand,
+			in:        srcFiles,
+			inHeaders: srcHeaders,
+			out:       outs,
+			genDir:    android.PathForModuleGen(ctx),
+			cmd:       rawCommand,
 		}}
 	}
 
