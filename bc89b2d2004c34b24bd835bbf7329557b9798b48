@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c064fddb_44d9a976",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-07-09T00:54:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure I want to do this.  Where are you going to use it?  It\u0027s really tough to search the tree for usages of \"eng\" to figure out what\u0027s different between the variants.\n\nIs this something that could be done with PRODUCT_PACKAGES_ENG instead?",
+      "revId": "bc89b2d2004c34b24bd835bbf7329557b9798b48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
