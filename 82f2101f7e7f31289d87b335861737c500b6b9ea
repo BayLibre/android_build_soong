@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47b76fe4_1533f6ed",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-10T20:46:46Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong objection to this, especially since it should be temporary, but it seems more straightforward to add a new `No_dex_container` `*bool` field to `dexProperties`.",
+      "revId": "82f2101f7e7f31289d87b335861737c500b6b9ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
