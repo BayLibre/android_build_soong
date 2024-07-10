@@ -34,6 +34,47 @@
       "parentUuid": "64a9e558_b0e5a84f",
       "revId": "a4245051fc133142a88a31cd387340ba40177b07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab6e4715_9af5678b",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-07-10T22:16:08Z",
+      "side": 1,
+      "message": "Can you clarify the comment more about how this is meant to be used.  Maybe with an example?",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 37
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "46c4cf49_8dfecbb6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "filesystem/filesystem.go",
+              "range": {
+                "startLine": 116,
+                "startChar": 0,
+                "endLine": 117,
+                "endChar": 0
+              },
+              "replacement": "\t// Files to be installed under root. This is used to install files from other modules.\n\t// For example, if you want to install a file from a cc_library module, you can add the file\n\t// to the cc_library module\u0027s srcs and add the file to this property.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a4245051fc133142a88a31cd387340ba40177b07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
