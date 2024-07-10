@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d29fb031_a09a911b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-07-10T22:59:39Z",
+      "side": 1,
+      "message": "The presubmit failure(cf_x86_64_phone-trunk_staging-userdebug_coverage on git_main \n) has already been seen in previous presubmit runs (e.g. aosp/3163726, aosp/3156416...)",
+      "revId": "9f7b9f4a9ab77d1816e8ae30ac8339e335fb7e92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
