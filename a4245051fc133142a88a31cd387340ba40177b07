@@ -16,6 +16,24 @@
       "message": "I don\u0027t think this is ideal but this was the easiest way to put files under root. WDYT",
       "revId": "a4245051fc133142a88a31cd387340ba40177b07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61dcf371_93ec023c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-07-10T09:30:31Z",
+      "side": 1,
+      "message": "I don\u0027t like this. We need to have a way to install a module (not a file) at the root of the partition.",
+      "parentUuid": "64a9e558_b0e5a84f",
+      "revId": "a4245051fc133142a88a31cd387340ba40177b07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
