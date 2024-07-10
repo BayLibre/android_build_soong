@@ -113,6 +113,9 @@ type filesystemProperties struct {
 	// Symbolic links to be created under root with "ln -sf <target> <name>".
 	Symlinks []symlinkDefinition
 
+	// Files to be installed under root.
+	Root_files []string `android:"path"`
+
 	// Seconds since unix epoch to override timestamps of file entries
 	Fake_timestamp *string
 
@@ -289,6 +292,14 @@ func (f *filesystem) buildNonDepsFiles(ctx android.ModuleContext, builder *andro
 		builder.Command().Textf("(! [ -e %s -o -L %s ] || (echo \"%s already exists from an earlier stage of the build\" && exit 1))", dst, dst, dst)
 		builder.Command().Text("mkdir -p").Text(filepath.Dir(dst.String()))
 		builder.Command().Text("ln -sf").Text(proptools.ShellEscape(target)).Text(dst.String())
+		f.appendToEntry(ctx, dst)
+	}
+
+	for _, path := range android.PathsForModuleSrc(ctx, f.properties.Root_files) {
+		dst := rootDir.Join(ctx, path.Base())
+		builder.Command().Textf("(! [ -e %s -o -L %s ] || (echo \"%s already exists from an earlier stage of the build\" && exit 1))", dst, dst, dst)
+		builder.Command().Text("mkdir -p").Text(filepath.Dir(dst.String()))
+		builder.Command().Text("cp").Input(path).Text(dst.String())
 		f.appendToEntry(ctx, dst)
 	}
 
