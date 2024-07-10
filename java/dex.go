@@ -207,9 +207,9 @@ func (d *dexer) dexCommonFlags(ctx android.ModuleContext,
 
 	flags = d.dexProperties.Dxflags
 	// Translate all the DX flags to D8 ones until all the build files have been migrated
-	// to D8 flags. See: b/69377755
+	// to D8 flags. See: b/69377755, b/341652226
 	flags = android.RemoveListFromList(flags,
-		[]string{"--core-library", "--dex", "--multi-dex"})
+		[]string{"--core-library", "--dex", "--multi-dex", "--no-dex-container"})
 
 	for _, f := range android.PathsForModuleSrc(ctx, d.dexProperties.Main_dex_rules) {
 		flags = append(flags, "--main-dex-rules", f.String())
