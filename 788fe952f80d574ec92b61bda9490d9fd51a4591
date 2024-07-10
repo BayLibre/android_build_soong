@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e54864ae_463977ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-07-10T16:45:58Z",
+      "side": 1,
+      "message": "The existing uses of `hidden_api_packages` are in the process of being removed so this will not build yet.",
+      "revId": "788fe952f80d574ec92b61bda9490d9fd51a4591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
