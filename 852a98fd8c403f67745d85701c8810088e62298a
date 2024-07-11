@@ -34,6 +34,24 @@
       "parentUuid": "f20f46e2_061f17a6",
       "revId": "852a98fd8c403f67745d85701c8810088e62298a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "402c72d9_dface58c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-07-11T00:23:39Z",
+      "side": 1,
+      "message": "Several other targets also fail.  Let\u0027s revert and try to land it later.",
+      "parentUuid": "0f46637e_753e91e4",
+      "revId": "852a98fd8c403f67745d85701c8810088e62298a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
