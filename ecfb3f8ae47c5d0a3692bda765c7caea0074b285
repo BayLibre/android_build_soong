@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e2743e_d6ec9b6f",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-07-11T08:02:22Z",
+      "side": 1,
+      "message": "This looks very awkward to me. I suggest adding a method to the `PackageModule` interface so that the install path can be customized.\n\nex:\n\n```\ntype PackageModule interface {\n    ...\n    InstallPathFor(ps *PackaginSpec) OutputPath \n}\n\nfunc CopySpecs(p PackageModule, ... specs map[string]PackagingSpec) ... {\n    ...\n    for _, k :\u003d range SortedKeys(specs) {\n        destPath :\u003d p.InstallDirFor(ps)\n    }\n    ...     \n}\n\nfn (p *PackagingBase) InstallPathFor(ps *PackaginSpec) OutputPath {\n    return filepath.Join(p.rootDir, ps.relPathInPackage)\n}\n\n// overrides the default impl\nfn (f *filesystem) InstallPathFor(ps *PackaginSpec) OutputPath {\n    if ps.Partition() \u003d\u003d \"root\" {\n        return filepath.Join(f.rootDir, ps.relPathInPackage)\n    } else {\n        return filepath.Join(f.baseDir, ps.relPathInPackage)\n    }\n}\n```",
+      "range": {
+        "startLine": 425,
+        "startChar": 49,
+        "endLine": 425,
+        "endChar": 57
+      },
+      "revId": "ecfb3f8ae47c5d0a3692bda765c7caea0074b285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f2960d_a5247124",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-07-11T08:02:22Z",
+      "side": 1,
+      "message": "split line here for readability",
+      "range": {
+        "startLine": 101,
+        "startChar": 56,
+        "endLine": 101,
+        "endChar": 59
+      },
+      "revId": "ecfb3f8ae47c5d0a3692bda765c7caea0074b285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
