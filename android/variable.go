@@ -477,7 +477,7 @@ type ProductVariables struct {
 
 	Release_aidl_use_unfrozen *bool `json:",omitempty"`
 
-	Release_libbinder_client_cache *bool `json:",omitempty"`
+	ReleaseLibbinderClientCache *bool `json:",omitempty"`
 
 	SepolicyFreezeTestExtraDirs         []string `json:",omitempty"`
 	SepolicyFreezeTestExtraPrebuiltDirs []string `json:",omitempty"`

@@ -1952,8 +1952,8 @@ func (c *deviceConfig) Release_aidl_use_unfrozen() bool {
 	return Bool(c.config.productVariables.Release_aidl_use_unfrozen)
 }
 
-func (c *deviceConfig) Release_libbinder_client_cache() bool {
-	return Bool(c.config.productVariables.Release_libbinder_client_cache)
+func (c *deviceConfig) ReleaseLibbinderClientCache() bool {
+	return c.config.productVariables.GetBuildFlagBool("ReleaseLibbinderClientCache");
 }
 
 func (c *config) SelinuxIgnoreNeverallows() bool {
