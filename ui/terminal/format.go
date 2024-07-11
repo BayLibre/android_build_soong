@@ -23,9 +23,10 @@ import (
 )
 
 type formatter struct {
-	format string
-	quiet  bool
-	start  time.Time
+	colorize bool
+	format   string
+	quiet    bool
+	start    time.Time
 }
 
 // newFormatter returns a formatter for formatting output to
@@ -42,7 +43,7 @@ func newFormatter(format string, quiet bool) formatter {
 
 func (s formatter) message(level status.MsgLevel, message string) string {
 	if level >= status.ErrorLvl {
-		return fmt.Sprintf("FAILED: %s", message)
+		return fmt.Sprintf("%s %s", s.failedString(), message)
 	} else if level > status.StatusLvl {
 		return fmt.Sprintf("%s%s", level.Prefix(), message)
 	} else if level == status.StatusLvl {
@@ -127,9 +128,9 @@ func (s formatter) result(result status.ActionResult) string {
 	if result.Error != nil {
 		targets := strings.Join(result.Outputs, " ")
 		if s.quiet || result.Command == "" {
-			ret = fmt.Sprintf("FAILED: %s\n%s", targets, result.Output)
+			ret = fmt.Sprintf("%s %s\n%s", s.failedString(), targets, result.Output)
 		} else {
-			ret = fmt.Sprintf("FAILED: %s\n%s\n%s", targets, result.Command, result.Output)
+			ret = fmt.Sprintf("%s %s\n%s\n%s", s.failedString(), targets, result.Command, result.Output)
 		}
 	} else if result.Output != "" {
 		ret = result.Output
@@ -140,4 +141,12 @@ func (s formatter) result(result status.ActionResult) string {
 	}
 
 	return ret
+}
+
+func (s formatter) failedString() string {
+	failed := "FAILED:"
+	if s.colorize {
+		failed = ansi.red() + ansi.bold() + failed + ansi.regular()
+	}
+	return failed
 }
