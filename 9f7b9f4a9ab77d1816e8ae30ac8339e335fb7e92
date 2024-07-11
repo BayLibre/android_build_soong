@@ -39,6 +39,30 @@
       },
       "revId": "9f7b9f4a9ab77d1816e8ae30ac8339e335fb7e92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0df352c_723cb363",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2510,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-07-11T01:24:02Z",
+      "side": 1,
+      "message": "Thanks for catching it! Will address this typo in a separate CL.",
+      "parentUuid": "4e793164_70ac99c8",
+      "range": {
+        "startLine": 2510,
+        "startChar": 43,
+        "endLine": 2510,
+        "endChar": 45
+      },
+      "revId": "9f7b9f4a9ab77d1816e8ae30ac8339e335fb7e92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
