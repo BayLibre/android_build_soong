@@ -192,6 +192,7 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 
 	workflowManual := rc_proto.Workflow(rc_proto.Workflow_MANUAL)
 	myDirsMap := make(map[int]bool)
+	myValueDirsMap := make(map[int]bool)
 	if isBuildPrefix && releasePlatformVersion != nil {
 		if MarshalValue(releasePlatformVersion.Value) != strings.ToUpper(config.Name) {
 			value := FlagValue{
@@ -226,6 +227,8 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 			config.PriorStagesMap[priorStage] = true
 		}
 		myDirsMap[contrib.DeclarationIndex] = true
+		// This path *could* provide a value for this release config.
+		myValueDirsMap[contrib.DeclarationIndex] = true
 		if config.AconfigFlagsOnly {
 			// AconfigFlagsOnly allows very very few build flag values, all of them are part of aconfig flags.
 			allowedFlags := map[string]bool{
@@ -241,9 +244,11 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 			name := *value.proto.Name
 			fa, ok := config.FlagArtifacts[name]
 			if !ok {
-				return fmt.Errorf("Setting value for undefined flag %s in %s\n", name, value.path)
+				return fmt.Errorf("Setting value for undefined flag %s (declared in %s) in %s\n", name, configs.ReleaseConfigMaps[fa.DeclarationIndex], value.path)
 			}
+			// Record that flag declarations from fa.DeclarationIndex were included in this release config.
 			myDirsMap[fa.DeclarationIndex] = true
+			// Do not set myValueDirsMap, since it just records that we *could* provide values here.
 			if fa.DeclarationIndex > contrib.DeclarationIndex {
 				// Setting location is to the left of declaration.
 				return fmt.Errorf("Setting value for flag %s not allowed in %s\n", name, value.path)
@@ -273,9 +278,13 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 	releaseAconfigValueSets.Value = &rc_proto.Value{Val: &rc_proto.Value_StringValue{strings.TrimSpace(strings.Join(myAconfigValueSets, " "))}}
 
 	directories := []string{}
+	valueDirectories := []string{}
 	for idx, confDir := range configs.configDirs {
 		if _, ok := myDirsMap[idx]; ok {
 			directories = append(directories, confDir)
+		}
+		if _, ok := myValueDirsMap[idx]; ok {
+			valueDirectories = append(valueDirectories, confDir)
 		}
 	}
 
@@ -316,6 +325,7 @@ func (config *ReleaseConfig) GenerateReleaseConfig(configs *ReleaseConfigs) erro
 		AconfigValueSets: myAconfigValueSets,
 		Inherits:         myInherits,
 		Directories:      directories,
+		ValueDirectories: valueDirectories,
 		PriorStages:      SortedMapKeys(config.PriorStagesMap),
 	}
 
