@@ -121,7 +121,7 @@ func (s *sdkRepoHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		ctx.PropertyErrorf("deps_remap", "%s", err.Error())
 	}
 
-	s.CopySpecsToDir(ctx, builder, packageSpecs, dir)
+	s.CopySpecsToDir(ctx, builder, packageSpecs, dir, dir)
 
 	noticeFile := android.PathForModuleOut(ctx, "NOTICES.txt")
 	android.BuildNoticeTextOutputFromLicenseMetadata(

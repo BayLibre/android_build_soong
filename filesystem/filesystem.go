@@ -322,7 +322,7 @@ func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) androi
 	// Wipe the root dir to get rid of leftover files from prior builds
 	builder.Command().Textf("rm -rf %s && mkdir -p %s", rootDir, rootDir)
 	specs := f.gatherFilteredPackagingSpecs(ctx)
-	f.entries = f.CopySpecsToDir(ctx, builder, specs, rebasedDir)
+	f.entries = f.CopySpecsToDir(ctx, builder, specs, rootDir, rebasedDir)
 
 	f.buildNonDepsFiles(ctx, builder, rootDir)
 	f.addMakeBuiltFiles(ctx, builder, rootDir)
@@ -465,7 +465,7 @@ func (f *filesystem) buildCpioImage(ctx android.ModuleContext, compressed bool) 
 	// Wipe the root dir to get rid of leftover files from prior builds
 	builder.Command().Textf("rm -rf %s && mkdir -p %s", rootDir, rootDir)
 	specs := f.gatherFilteredPackagingSpecs(ctx)
-	f.entries = f.CopySpecsToDir(ctx, builder, specs, rebasedDir)
+	f.entries = f.CopySpecsToDir(ctx, builder, specs, rootDir, rebasedDir)
 
 	f.buildNonDepsFiles(ctx, builder, rootDir)
 	f.buildFsverityMetadataFiles(ctx, builder, specs, rootDir, rebasedDir)
