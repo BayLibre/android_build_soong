@@ -16,6 +16,24 @@
       "message": "I don\u0027t have a strong objection to this, especially since it should be temporary, but it seems more straightforward to add a new `No_dex_container` `*bool` field to `dexProperties`.",
       "revId": "82f2101f7e7f31289d87b335861737c500b6b9ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96198b76_f7d68bca",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-07-11T07:53:28Z",
+      "side": 1,
+      "message": "Indeed, this makes more sense. Fixed.",
+      "parentUuid": "47b76fe4_1533f6ed",
+      "revId": "82f2101f7e7f31289d87b335861737c500b6b9ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
