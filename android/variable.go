@@ -59,6 +59,16 @@ type variableProperties struct {
 			Cflags []string
 		}
 
+		BoardMoveRecoveryResourcesToVendorBoot struct {
+			Ramdisk        *bool
+			Vendor_ramdisk *bool
+		}
+
+		BoardUsesRecoveryAsBoot struct {
+			Ramdisk        *bool
+			Vendor_ramdisk *bool
+		}
+
 		// unbundled_build is a catch-all property to annotate modules that don't build in one or
 		// more unbundled branches, usually due to dependencies missing from the manifest.
 		Unbundled_build struct {
