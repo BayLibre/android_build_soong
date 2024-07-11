@@ -342,12 +342,18 @@ func ApiLevelFromUser(ctx PathContext, raw string) (ApiLevel, error) {
 func ApiLevelFromUserWithConfig(config Config, raw string) (ApiLevel, error) {
 	// This logic is replicated in starlark, if changing logic here update starlark code too
 	// https://cs.android.com/android/platform/superproject/+/main:build/bazel/rules/common/api.bzl;l=42;drc=231c7e8c8038fd478a79eb68aa5b9f5c64e0e061
+	min := config.MinSupportedSdkVersion()
+
 	if raw == "" {
 		panic("API level string must be non-empty")
 	}
 
 	if raw == "current" {
 		return FutureApiLevel, nil
+	}
+
+	if raw == "minimum" {
+		return uncheckedFinalApiLevel(min), nil
 	}
 
 	for _, preview := range config.PreviewApiLevels() {
@@ -366,7 +372,16 @@ func ApiLevelFromUserWithConfig(config Config, raw string) (ApiLevel, error) {
 		if err != nil {
 			return NoneApiLevel, fmt.Errorf("%q could not be parsed as an integer and is not a recognized codename", raw)
 		}
+
+		if asInt.LessThan(min) {
+			return uncheckedFinalApiLevel(min), nil
+		}
+
 		return uncheckedFinalApiLevel(asInt), nil
+	}
+
+	if asInt.LessThan(min) {
+		return uncheckedFinalApiLevel(min), nil
 	}
 
 	return uncheckedFinalApiLevel(canonical), nil
