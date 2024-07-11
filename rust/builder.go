@@ -519,6 +519,7 @@ func Rustdoc(ctx ModuleContext, main android.Path, deps PathDeps,
 	// Build an index for all our crates. -Z unstable options is required to use
 	// this flag.
 	rustdocFlags = append(rustdocFlags, "-Z", "unstable-options", "--enable-index-page")
+	rustdocFlags = append(rustdocFlags, "--cfg", "soong")
 
 	targetTriple := ctx.toolchain().RustTriple()
 
