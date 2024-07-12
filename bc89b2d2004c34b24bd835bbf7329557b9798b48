@@ -70,6 +70,24 @@
       "parentUuid": "5fe31316_c11d4f76",
       "revId": "bc89b2d2004c34b24bd835bbf7329557b9798b48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4a0e0af_f366c69d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-12T14:46:25Z",
+      "side": 1,
+      "message": "Sorry I think I skipped a step in the explanation: The reason for the separate `.debug` ART APEX in aosp/3168779 is have one with both the regular and debug runtime, but with the \"proper\" cleanup mentioned above we won\u0027t need it.",
+      "parentUuid": "fe0f4e4f_c29e54c4",
+      "revId": "bc89b2d2004c34b24bd835bbf7329557b9798b48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
