@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e5751b8_cc4b80c4",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-07-12T02:00:36Z",
+      "side": 1,
+      "message": "Well, I\u0027m not sure if we want to expose `rootDir` like that. It seems very easy to miss setting it before calling `CopySpecs`. (it doesn\u0027t even exist for now)\n\nHow about passing multiple `(specs, dir)` tuples to `CopySpecsToDir`?\n\n```\nfunc (p *PackagingBase) CopySpecsToDirs(ctx ModuleContext, builder *RuleBuilder, dirToSpecsMap map[WritablePath]map[string]PackagingSpec) {\n    ...\n    for dir, specs :\u003d range dirToSpecsMap {\n        // copy specs to dir\n    }\n}\n```",
+      "parentUuid": "13e2743e_d6ec9b6f",
+      "range": {
+        "startLine": 425,
+        "startChar": 49,
+        "endLine": 425,
+        "endChar": 57
+      },
+      "revId": "ecfb3f8ae47c5d0a3692bda765c7caea0074b285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2f2960d_a5247124",
         "filename": "filesystem/system_image.go",
         "patchSetId": 1
