@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92740fd1_4802c115",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-12T20:33:05Z",
+      "side": 1,
+      "message": "It\u0027s a little odd to modify the fomatter that was passed in here.  Can you compute `colorize` in [`NewStatusOutput`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/ui/terminal/status.go;l\u003d29;drc\u003db6d5ff505d826ceffbddbceba6eb449ef7e9933d) and pass it to `newFormatter`?",
+      "revId": "870e536e292e334bad8811615e2c938fb2c6e0f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
