@@ -52,6 +52,24 @@
       "parentUuid": "3e7808ad_3e569767",
       "revId": "0aaa051a7856098e2ea07cac1b217d6ad64fea17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68d8eecb_d6212c49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2024-07-12T10:45:22Z",
+      "side": 1,
+      "message": "For the record, for kernel builds `perl` is one of the few host dependencies.\n\nhttps://cs.android.com/android/kernel/superproject/+/common-android-mainline:build/kernel/BUILD.bazel;l\u003d226",
+      "parentUuid": "b937794d_3128f86d",
+      "revId": "0aaa051a7856098e2ea07cac1b217d6ad64fea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
