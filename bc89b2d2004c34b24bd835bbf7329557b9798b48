@@ -52,6 +52,24 @@
       "parentUuid": "e25b609c_10b85155",
       "revId": "bc89b2d2004c34b24bd835bbf7329557b9798b48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe0f4e4f_c29e54c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-12T13:15:13Z",
+      "side": 1,
+      "message": "As Kiyoung says, this is just keeping an existing wrinkle working - ART has a system with different library names for the runtime built with and without debug, and debug is enabled in eng builds (previously it was possible to choose between the debug and regular versions at boot, but that\u0027s no longer the case so there\u0027s really no good reason for this). The proper cleanup here is to get rid of the `*d.so` suffix libraries in ART and let `eng` just affect the compilation flags in the ART module. However, that\u0027s a bit of work so it\u0027s another story (b/234351700).\n\nIn the meantime, can we please submit this? AOSP eng builds are completely broken as it is and have been for several days. (Which also begs the question, can we add one in presubmit?)\n\nKiyoung, feel free to add a `TODO(b/234351700)` comment for context.",
+      "parentUuid": "5fe31316_c11d4f76",
+      "revId": "bc89b2d2004c34b24bd835bbf7329557b9798b48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
