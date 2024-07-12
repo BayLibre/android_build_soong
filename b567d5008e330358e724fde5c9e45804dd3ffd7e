@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0952d864_71392b26",
+        "filename": "docs/java.dot",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-12T00:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50bef6ff_4bfdeba1",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "b567d5008e330358e724fde5c9e45804dd3ffd7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95ba82f1_41892c3f",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-11T23:38:36Z",
       "side": 1,
       "message": "Wdyt about `\"merge_zips\"` instead, for the consistency of using the name of the tool as label?",
+      "range": {
+        "startLine": 67,
+        "startChar": 31,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "b567d5008e330358e724fde5c9e45804dd3ffd7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "133a2e75_09f2da14",
+        "filename": "docs/java.dot",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-12T00:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95ba82f1_41892c3f",
       "range": {
         "startLine": 67,
         "startChar": 31,
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8291ba4d_092cf9e7",
+        "filename": "docs/java.dot",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-12T00:20:38Z",
+      "side": 1,
+      "message": "Static library sources are not dexed, only the final installable artifact gets dexed.",
+      "parentUuid": "c8a36489_5dc3577a",
+      "revId": "b567d5008e330358e724fde5c9e45804dd3ffd7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b888f6ae_d6bb6caf",
@@ -77,6 +143,24 @@
       "writtenOn": "2024-07-11T23:38:36Z",
       "side": 1,
       "message": "```suggestion\n\tlib_java_sources -\u003e lib2_java_sources [ weight\u003d100 label\u003d\"libs or static libs dependency\" ];\n```\nWDYT about adding this edge?",
+      "revId": "b567d5008e330358e724fde5c9e45804dd3ffd7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8517251a_d3207d6a",
+        "filename": "docs/java.dot",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-12T00:20:38Z",
+      "side": 1,
+      "message": "I\u0027m worried that would confuse the Android.bp dependencies with the rule dependencies.  I\u0027m not sure how to display these, go/soong-docs links to markdown files in gitiles, and gitiles doesn\u0027t seem to be able to display dot files natively.  Maybe I\u0027ll check in a script that converts them to svg, and then embed the svg into markdown?  At that point I can give the example Android.bp file that produces these rules.",
+      "parentUuid": "b888f6ae_d6bb6caf",
       "revId": "b567d5008e330358e724fde5c9e45804dd3ffd7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
