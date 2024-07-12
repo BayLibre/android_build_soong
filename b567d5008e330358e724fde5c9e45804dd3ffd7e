@@ -163,6 +163,24 @@
       "parentUuid": "b888f6ae_d6bb6caf",
       "revId": "b567d5008e330358e724fde5c9e45804dd3ffd7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d4f57a_2eb7aa62",
+        "filename": "docs/java.dot",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-12T00:25:13Z",
+      "side": 1,
+      "message": "SGTM!",
+      "parentUuid": "8517251a_d3207d6a",
+      "revId": "b567d5008e330358e724fde5c9e45804dd3ffd7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
