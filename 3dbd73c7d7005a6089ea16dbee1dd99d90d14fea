@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e02b67f_7e76ed0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-07-13T04:10:14Z",
+      "side": 1,
+      "message": "Is this accurate for just AOSP? What happens on internal (or partner internal) trees?",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "3dbd73c7d7005a6089ea16dbee1dd99d90d14fea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
