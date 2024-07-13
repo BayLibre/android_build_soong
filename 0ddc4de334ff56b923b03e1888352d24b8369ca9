@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a42539e_0e1200a9",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-07-13T04:10:03Z",
+      "side": 1,
+      "message": "I also think that the \"correct\" way to think about this is with each container having an allowlist of which API surfaces it\u0027s allowed to use, rather than a set of restrictions.  Mostly, because the default should be that adding an API surface has the potential to cause compatibility problems, so I don\u0027t think that when one is added we should have to go back and add it to a bunch of denylists.\n\nBut I do think this CL is a good step in that direction, so it\u0027s reasonable to do this, and then flip over from a denylist to an allowlist once more of the tree is conforming to the rules.",
+      "parentUuid": "ce1b66a7_ad1b8174",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35709cd6_b1849173",
         "filename": "android/container.go",
         "patchSetId": 10

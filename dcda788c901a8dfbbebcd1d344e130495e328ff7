@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49e846f2_0c884cac",
+        "filename": "android/container.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-07-13T04:10:03Z",
+      "side": 1,
+      "message": "Another thought for future work: I think we should eventually split out this function, so rather than looking at all of the properties and trying to infer the container, especially for the variants, when the variants are created, that\u0027s when we should set the container.  If that were done early in the mutators, that information would be available for other logic to use more directly and explicitly, which I think could simplify several other mutators.",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 51
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "985f1af0_dd1892c5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/container.go",
+              "range": {
+                "startLine": 185,
+                "startChar": 0,
+                "endLine": 185,
+                "endChar": 0
+              },
+              "replacement": "\t\t// TODO(b/289091111): Split out the logic for determining the container\n\t\t// from the logic for determining the variant.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "dcda788c901a8dfbbebcd1d344e130495e328ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cc4f9c0_eaa50514",
+        "filename": "android/container.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-07-13T04:10:03Z",
+      "side": 1,
+      "message": "nit: Is this checking the container setting the container? Should it be called setContainer?",
+      "revId": "dcda788c901a8dfbbebcd1d344e130495e328ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
