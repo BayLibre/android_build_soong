@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e218ba_b71ae2dd",
+        "filename": "java/base.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-07-13T04:10:06Z",
+      "side": 1,
+      "message": "InstallInProduct() seems very close to something like Containers() \u003d\u003d PRODUCT.  This is sort of what I meant on aosp/3141104 where I said we should compute the containers earlier.",
+      "range": {
+        "startLine": 563,
+        "startChar": 17,
+        "endLine": 563,
+        "endChar": 33
+      },
+      "revId": "f1b992104a9affa2eb2545acaaf0f5bc7d23577d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
