@@ -22,6 +22,30 @@
       },
       "revId": "3dbd73c7d7005a6089ea16dbee1dd99d90d14fea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab9e74bf_b1f97907",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-15T19:54:35Z",
+      "side": 1,
+      "message": "This list is accurate for AOSP, and a separate list for internal should be submitted separately and specified here with `Merged-In` tag. I\u0027m not sure how we would specify the violating entries for the partner trees. Maybe we can introduce a build flag (or an environment variable) to bypass this check, which then the partners can utilize to unblock the build? I assume that this enforcement is essential for us, but not too so for partners.",
+      "parentUuid": "8e02b67f_7e76ed0c",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "3dbd73c7d7005a6089ea16dbee1dd99d90d14fea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
