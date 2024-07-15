@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "718fa6c1_afb4d767",
+        "filename": "android/container.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-15T23:12:31Z",
+      "side": 1,
+      "message": "Why is this `undefined` and not `checkStubs`? Ditto for `ProductContainer`.",
+      "range": {
+        "startLine": 90,
+        "startChar": 50,
+        "endLine": 90,
+        "endChar": 59
+      },
+      "revId": "4821b5f042052c75d29b40a9136f12ec5da2e22e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
