@@ -77,7 +77,6 @@ func NewSmartStatusOutput(w io.Writer, formatter formatter) status.StatusOutput 
 		done:     make(chan bool),
 		sigwinch: make(chan os.Signal),
 	}
-	s.formatter.colorize = true
 
 	if env, ok := os.LookupEnv(tableHeightEnVar); ok {
 		h, _ := strconv.Atoi(env)

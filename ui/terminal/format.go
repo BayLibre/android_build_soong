@@ -33,11 +33,12 @@ type formatter struct {
 // the terminal in a format similar to Ninja.
 // format takes nearly all the same options as NINJA_STATUS.
 // %c is currently unsupported.
-func newFormatter(format string, quiet bool) formatter {
+func newFormatter(colorize bool, format string, quiet bool) formatter {
 	return formatter{
-		format: format,
-		quiet:  quiet,
-		start:  time.Now(),
+		colorize: colorize,
+		format:   format,
+		quiet:    quiet,
+		start:    time.Now(),
 	}
 }
 
