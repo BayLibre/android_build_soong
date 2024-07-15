@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc50d863_f2c78cb6",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-15T23:50:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a42539e_0e1200a9",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35709cd6_b1849173",
@@ -370,6 +394,30 @@
       "side": 1,
       "message": "IIUC in this example two variants would have different container**s** values. The platform variant would have {system}, and the apex variant would have {system, apex}. PTAL [`TestNonUpdatableApexDepsContainers` test cases](https://android-review.git.corp.google.com/c/platform/build/soong/+/3150117/7/apex/container_test.go#147) for example. Note that `installInSystemPartition` follows the identical logic of [`modulePartition()`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/paths.go;drc\u003db7e9f5f0359685a9609105bed182933b29cc10b3;l\u003d1923).",
       "parentUuid": "cf447581_52d42a20",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 30
+      },
+      "revId": "0ddc4de334ff56b923b03e1888352d24b8369ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f39ae57_e6d0104a",
+        "filename": "android/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-15T23:50:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "099504ef_b6822b2d",
       "range": {
         "startLine": 162,
         "startChar": 2,
