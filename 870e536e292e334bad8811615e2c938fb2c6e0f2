@@ -70,6 +70,24 @@
       "parentUuid": "e3c3f50e_41206e4f",
       "revId": "870e536e292e334bad8811615e2c938fb2c6e0f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae4f2ee4_7e64832b",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 3514990
+      },
+      "writtenOn": "2024-07-15T22:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12cbbb4d_d231fe5a",
+      "revId": "870e536e292e334bad8811615e2c938fb2c6e0f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
