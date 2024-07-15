@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "669414f3_1806ec9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-15T19:55:35Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I believe that this description is wrong, and the HIDL \u0026 AIDL generated stubs would (if installed) be installed in system partition. In which case this would not be a `* -\u003e vendor` dependency, and making this an allowed exception for `-\u003e vendor` dependency does not make sense. Thus, I believe that this change is no longer needed.",
+      "parentUuid": "4a10c935_e87803f2",
+      "range": {
+        "startLine": 11,
+        "startChar": 58,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "d3b8c2c349922cd7dc56dcc6765ea0dbc2de7351",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "126aee84_3ef97370",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-07-13T04:10:10Z",
       "side": 1,
       "message": "Rather than enumerating HIDL and AIDL, could we have a provider that those (and other stub modules) set that said that this module is a stub, and that it\u0027s presenting a particular API surface?",
+      "revId": "d3b8c2c349922cd7dc56dcc6765ea0dbc2de7351",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db58b205_25f7f6c7",
+        "filename": "android/container.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-15T19:55:35Z",
+      "side": 1,
+      "message": "Agreed. The property specifying whether a module is a stub or not [already exists](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/java.go;drc\u003de1a8555581d4939882f94f4270d03a0d24ee93f3;l\u003d2452). I believe that this can be utilized for hidl and aidl stub modules as well.",
+      "parentUuid": "126aee84_3ef97370",
       "revId": "d3b8c2c349922cd7dc56dcc6765ea0dbc2de7351",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
