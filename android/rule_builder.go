@@ -58,6 +58,7 @@ type RuleBuilder struct {
 	sboxInputs       bool
 	sboxManifestPath WritablePath
 	missingDeps      []string
+	args             map[string]string
 }
 
 // NewRuleBuilder returns a newly created RuleBuilder.
@@ -76,6 +77,18 @@ func NewRuleBuilder(pctx PackageContext, ctx BuilderContext) *RuleBuilder {
 func (rb *RuleBuilder) SetSboxOutDirDirAsEmpty() *RuleBuilder {
 	rb.sboxOutSubDir = ""
 	return rb
+}
+
+func (rb *RuleBuilder) SetPhonyOutput(value bool) {
+	if rb.args == nil {
+		rb.args = make(map[string]string)
+	}
+
+	if value {
+		rb.args["phony_output"] = "true"
+	} else {
+		rb.args["phony_output"] = "false"
+	}
 }
 
 // RuleBuilderInstall is a tuple of install from and to locations.
@@ -744,6 +757,7 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscapeCommandString b
 		Depfile:         depFile,
 		Deps:            depFormat,
 		Description:     desc,
+		Args:            r.args,
 	})
 }
 
