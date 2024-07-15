@@ -16,6 +16,42 @@
       "message": "It\u0027s a little odd to modify the fomatter that was passed in here.  Can you compute `colorize` in [`NewStatusOutput`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/ui/terminal/status.go;l\u003d29;drc\u003db6d5ff505d826ceffbddbceba6eb449ef7e9933d) and pass it to `newFormatter`?",
       "revId": "870e536e292e334bad8811615e2c938fb2c6e0f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3c3f50e_41206e4f",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 3514990
+      },
+      "writtenOn": "2024-07-15T20:27:30Z",
+      "side": 1,
+      "message": "Does this work for you? \n\nfunc newFormatter(colorize bool, format string, quiet bool) formatter {\n\treturn formatter{\n\t\tcolorize: colorize,\n\t\tformat: format,\n\t\tquiet:  quiet,\n\t\tstart:  time.Now(),\n\t}\n}\n\nand then in NewStatusOutput:\nfunc NewStatusOutput(w io.Writer, statusFormat string, forceSimpleOutput, quietBuild, forceKeepANSI bool) status.StatusOutput {\n\tcanUseSmartFormatting :\u003d !forceSimpleOutput \u0026\u0026 isSmartTerminal(w)\n\tformatter :\u003d newFormatter(canUseSmartFormatting, statusFormat, quietBuild)\n\n\tif canUseSmartFormatting {\n\t\treturn NewSmartStatusOutput(w, formatter)\n\t} else {\n\t\treturn NewSimpleStatusOutput(w, formatter, forceKeepANSI)\n\t}\n}",
+      "parentUuid": "92740fd1_4802c115",
+      "revId": "870e536e292e334bad8811615e2c938fb2c6e0f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20627e98_f49064ba",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 3514990
+      },
+      "writtenOn": "2024-07-15T20:27:30Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "92740fd1_4802c115",
+      "revId": "870e536e292e334bad8811615e2c938fb2c6e0f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
