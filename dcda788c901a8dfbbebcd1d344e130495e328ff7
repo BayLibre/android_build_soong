@@ -57,6 +57,24 @@
       "message": "nit: Is this checking the container setting the container? Should it be called setContainer?",
       "revId": "dcda788c901a8dfbbebcd1d344e130495e328ff7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7589b375_fe348b3a",
+        "filename": "android/container.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-15T19:54:05Z",
+      "side": 1,
+      "message": "Apologies for the confusion, the method is further expanded in the [child change](https://android-review.git.corp.google.com/c/platform/build/soong/+/3155659/8/android/container.go#355) to actually check for the violations. I\u0027ve renamed this to `setContainerInfo` and split it from `checkContainerViolations`.",
+      "parentUuid": "6cc4f9c0_eaa50514",
+      "revId": "dcda788c901a8dfbbebcd1d344e130495e328ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
