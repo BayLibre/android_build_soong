@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bd4f35c_343e219e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-16T21:50:58Z",
+      "side": 1,
+      "message": "Why wouldn\u0027t we want to compile rust tests for windows or linux_musl_arm64?",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "f6dd32333883847ad04ae8515bd6d88d502ad503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "377f7f44_189a3bf7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -14,6 +37,29 @@
       "writtenOn": "2024-07-16T18:43:52Z",
       "side": 1,
       "message": "I still need to add a Soong test for this",
+      "revId": "f6dd32333883847ad04ae8515bd6d88d502ad503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96423106_c16d84d9",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-16T21:50:58Z",
+      "side": 1,
+      "message": "`hostCrossSupported`?",
+      "range": {
+        "startLine": 730,
+        "startChar": 8,
+        "endLine": 730,
+        "endChar": 21
+      },
       "revId": "f6dd32333883847ad04ae8515bd6d88d502ad503",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
