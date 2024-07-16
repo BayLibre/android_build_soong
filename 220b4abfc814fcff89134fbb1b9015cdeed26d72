@@ -1,0 +1,76 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce795cd8_a171fa1c",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-16T21:39:19Z",
+      "side": 1,
+      "message": "This is only matching on DeviceArch, but not checking if it is the for the host or device, which is what resulted in the divergent behavior between different lunch targets.\n\nYou should check both for both `ctx.Device()` (which will return true if this is a device variant) and `ctx.DeviceConfig().DeviceArch()`.",
+      "revId": "220b4abfc814fcff89134fbb1b9015cdeed26d72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d1f8f31_e57a95db",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-16T21:39:19Z",
+      "side": 1,
+      "message": "The last one is likely to be the least relevant (e.g. the 32-bit variant, the ASAN variant, etc.).\n\nI think you need a tristate value in the map, to capture \"unseen\", \"seen but not the best device variant\", or \"seen the best variant\".  If you\u0027ve seen the best variant then don\u0027t replace it, as the first variant that matches the device arch is likely to be the best.  If you\u0027ve seen a non-best variant, keep it unless you\u0027ve found the device arch variant.",
+      "fixSuggestions": [
+        {
+          "fixId": "4a53687b_1f740040",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/ccdeps.go",
+              "range": {
+                "startLine": 89,
+                "startChar": 0,
+                "endLine": 90,
+                "endChar": 0
+              },
+              "replacement": "\tseenModules :\u003d map[string]bool{}\n"
+            },
+            {
+              "path": "cc/ccdeps.go",
+              "range": {
+                "startLine": 187,
+                "startChar": 0,
+                "endLine": 188,
+                "endChar": 0
+              },
+              "replacement": "\tif seenModules[moduleName] {\n"
+            },
+            {
+              "path": "cc/ccdeps.go",
+              "range": {
+                "startLine": 199,
+                "startChar": 0,
+                "endLine": 200,
+                "endChar": 0
+              },
+              "replacement": "\tseenModules[moduleName] \u003d true\n"
+            }
+          ]
+        }
+      ],
+      "revId": "220b4abfc814fcff89134fbb1b9015cdeed26d72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
