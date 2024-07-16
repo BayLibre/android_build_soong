@@ -34,6 +34,24 @@
       "parentUuid": "1eede14f_c68827c1",
       "revId": "173645518dc6758b760b42584daf47b59a96f9f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce97a8d8_124bf087",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3514990
+      },
+      "writtenOn": "2024-07-16T18:20:10Z",
+      "side": 1,
+      "message": "The fix was just to update the hardcoded expected string. The red text formatting characters were not added to those. Things should pass now!",
+      "parentUuid": "c8abb793_179d31b7",
+      "revId": "173645518dc6758b760b42584daf47b59a96f9f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
