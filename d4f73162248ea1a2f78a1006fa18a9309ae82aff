@@ -16,6 +16,23 @@
       "message": "Strangely, I still see CarLauncherTests crashing on forrest with this CL even after ag/28230503. -1 while I\u0027m investigating",
       "revId": "d4f73162248ea1a2f78a1006fa18a9309ae82aff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ade5d19_77970380",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-07-16T07:38:07Z",
+      "side": 1,
+      "message": "CarLauncherTests app is broken for some different reason. I\u0027ll submit this as I have previously tested the fix locally and I could see it works (when CarLauncherTests was not broken).",
+      "revId": "d4f73162248ea1a2f78a1006fa18a9309ae82aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
