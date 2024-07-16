@@ -16,6 +16,24 @@
       "message": "Is this still accurate given that SDK variants are no longer created in the mutator? Does transition mutator create the variants returned by `Split()`?",
       "revId": "8996734c7052c025ba7b336f6749e7516c48a0d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4de1564_e44a352b",
+        "filename": "cc/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-16T22:41:53Z",
+      "side": 1,
+      "message": "Yes, transition mutator creates the variants returned by `Split()`, as well as any requested by the OutgoingTransition/IncomingTransition combination on incoming dependencies.",
+      "parentUuid": "1478267d_cfc6daeb",
+      "revId": "8996734c7052c025ba7b336f6749e7516c48a0d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
