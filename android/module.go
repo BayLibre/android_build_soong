@@ -603,6 +603,11 @@ type hostAndDeviceProperties struct {
 	Device_supported *bool
 }
 
+type hostCrossProperties struct {
+	// If set to true, build a variant of the module for the host cross.  Defaults to true.
+	Host_cross_supported *bool
+}
+
 type Multilib string
 
 const (
@@ -633,6 +638,10 @@ const (
 	// By default, _only_ device variant is built. Device variant can be disabled with `device_supported: false`
 	// Host and HostCross are disabled by default and can be enabled with `host_supported: true`
 	HostAndDeviceSupported = hostSupported | hostCrossSupported | deviceSupported | deviceDefault
+
+	// By default, _only_ device variant is built. Device variant can be disabled with `device_supported: false`
+	// Host is disabled by default and can be enabled with `host_supported: true`. No HostCross support.
+	HostAndDeviceSupportedNoCross = hostSupported | deviceSupported | deviceDefault
 
 	// Host, HostCross, and Device are built by default.
 	// Building Device can be disabled with `device_supported: false`
@@ -716,6 +725,10 @@ func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib 
 
 	if hod&hostSupported != 0 && hod&deviceSupported != 0 {
 		m.AddProperties(&base.hostAndDeviceProperties)
+	}
+
+	if hod&hostSupported != 0 {
+		m.AddProperties(&base.hostCrossProperties)
 	}
 
 	initArchModule(m)
@@ -803,6 +816,7 @@ type ModuleBase struct {
 	distProperties          distProperties
 	variableProperties      interface{}
 	hostAndDeviceProperties hostAndDeviceProperties
+	hostCrossProperties     hostCrossProperties
 
 	// Arch specific versions of structs in GetProperties() prior to
 	// initialization in InitAndroidArchModule, lets call it `generalProperties`.
@@ -1321,7 +1335,10 @@ func (m *ModuleBase) HostCrossSupported() bool {
 	// hostEnabled is true if the host_supported property is true or the HostOrDeviceSupported
 	// value has the hostDefault bit set.
 	hostEnabled := proptools.BoolDefault(m.hostAndDeviceProperties.Host_supported, hod&hostDefault != 0)
-	return hod&hostCrossSupported != 0 && hostEnabled
+
+	// Default true for the Host_cross_supported property
+	hostCrossEnabled := proptools.BoolDefault(m.hostCrossProperties.Host_cross_supported, true)
+	return hod&hostCrossSupported != 0 && hostEnabled && hostCrossEnabled
 }
 
 func (m *ModuleBase) Platform() bool {

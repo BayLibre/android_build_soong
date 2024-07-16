@@ -216,7 +216,7 @@ func init() {
 }
 
 func RustTestFactory() android.Module {
-	module, _ := NewRustTest(android.HostAndDeviceSupported)
+	module, _ := NewRustTest(android.HostAndDeviceSupportedNoCross)
 
 	// NewRustTest will set MultilibBoth true, however the host variant
 	// cannot produce the non-primary target. Therefore, add the
@@ -228,7 +228,7 @@ func RustTestFactory() android.Module {
 }
 
 func RustTestHostFactory() android.Module {
-	module, _ := NewRustTest(android.HostSupported)
+	module, _ := NewRustTest(android.HostSupportedNoCross)
 	module.testModule = true
 	return module.Init()
 }
