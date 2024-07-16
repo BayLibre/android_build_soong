@@ -16,6 +16,24 @@
       "message": "Some tests are failing:\n```\n--- FAIL: TestSmartStatusHideAfterFailure (0.00s)\n    status_test.go:368: want:\n        \"\\r\\x1b[1m[  0% 0/2] action1\\x1b[0m\\x1b[K\\r\\x1b[1m[  0% 0/2] action2\\x1b[0m\\x1b[K\\r\\x1b[1m[ 50% 1/2] action1\\x1b[0m\\x1b[K\\nFAILED: \\nOutput1\\n\\r\\x1b[1m[100% 2/2] action2\\x1b[0m\\x1b[K\\nThere was 1 action that completed after the action that failed. See verbose.log.gz for its output.\\n\"\n        got:\n        \"\\r\\x1b[1m[  0% 0/2] action1\\x1b[0m\\x1b[K\\r\\x1b[1m[  0% 0/2] action2\\x1b[0m\\x1b[K\\r\\x1b[1m[ 50% 1/2] action1\\x1b[0m\\x1b[K\\n\\x1b[31m\\x1b[1mFAILED:\\x1b[0m \\nOutput1\\n\\r\\x1b[1m[100% 2/2] action2\\x1b[0m\\x1b[K\\nThere was 1 action that completed after the action that failed. See verbose.log.gz for its output.\\n\"\n--- FAIL: TestSmartStatusHideAfterFailurePlural (0.00s)\n    status_test.go:413: want:\n        \"\\r\\x1b[1m[  0% 0/2] action1\\x1b[0m\\x1b[K\\r\\x1b[1m[  0% 0/2] action2\\x1b[0m\\x1b[K\\r\\x1b[1m[  0% 0/2] action3\\x1b[0m\\x1b[K\\r\\x1b[1m[ 50% 1/2] action1\\x1b[0m\\x1b[K\\nFAILED: \\nOutput1\\n\\r\\x1b[1m[100% 2/2] action2\\x1b[0m\\x1b[K\\r\\x1b[1m[150% 3/2] action3\\x1b[0m\\x1b[K\\nThere were 2 actions that completed after the action that failed. See verbose.log.gz for their output.\\n\"\n        got:\n        \"\\r\\x1b[1m[  0% 0/2] action1\\x1b[0m\\x1b[K\\r\\x1b[1m[  0% 0/2] action2\\x1b[0m\\x1b[K\\r\\x1b[1m[  0% 0/2] action3\\x1b[0m\\x1b[K\\r\\x1b[1m[ 50% 1/2] action1\\x1b[0m\\x1b[K\\n\\x1b[31m\\x1b[1mFAILED:\\x1b[0m \\nOutput1\\n\\r\\x1b[1m[100% 2/2] action2\\x1b[0m\\x1b[K\\r\\x1b[1m[150% 3/2] action3\\x1b[0m\\x1b[K\\nThere were 2 actions that completed after the action that failed. See verbose.log.gz for their output.\\n\"\n--- FAIL: TestSmartStatusDontHideErrorAfterFailure (0.00s)\n    status_test.go:451: want:\n        \"\\r\\x1b[1m[  0% 0/2] action1\\x1b[0m\\x1b[K\\r\\x1b[1m[  0% 0/2] action2\\x1b[0m\\x1b[K\\r\\x1b[1m[ 50% 1/2] action1\\x1b[0m\\x1b[K\\nFAILED: \\nOutput1\\n\\r\\x1b[1m[100% 2/2] action2\\x1b[0m\\x1b[K\\nFAILED: \\nOutput2\\n\"\n        got:\n        \"\\r\\x1b[1m[  0% 0/2] action1\\x1b[0m\\x1b[K\\r\\x1b[1m[  0% 0/2] action2\\x1b[0m\\x1b[K\\r\\x1b[1m[ 50% 1/2] action1\\x1b[0m\\x1b[K\\n\\x1b[31m\\x1b[1mFAILED:\\x1b[0m \\nOutput1\\n\\r\\x1b[1m[100% 2/2] action2\\x1b[0m\\x1b[K\\n\\x1b[31m\\x1b[1mFAILED:\\x1b[0m \\nOutput2\\n\"\n```",
       "revId": "173645518dc6758b760b42584daf47b59a96f9f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8abb793_179d31b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3514990
+      },
+      "writtenOn": "2024-07-16T17:15:13Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1eede14f_c68827c1",
+      "revId": "173645518dc6758b760b42584daf47b59a96f9f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
