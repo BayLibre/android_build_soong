@@ -603,6 +603,11 @@ type hostAndDeviceProperties struct {
 	Device_supported *bool
 }
 
+type hostCrossProperties struct {
+	// If set to true, build a variant of the module for the host cross.  Defaults to true.
+	Host_cross_supported *bool
+}
+
 type Multilib string
 
 const (
@@ -718,6 +723,10 @@ func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib 
 		m.AddProperties(&base.hostAndDeviceProperties)
 	}
 
+	if hod&hostCrossSupported != 0 {
+		m.AddProperties(&base.hostCrossProperties)
+	}
+
 	initArchModule(m)
 }
 
@@ -803,6 +812,7 @@ type ModuleBase struct {
 	distProperties          distProperties
 	variableProperties      interface{}
 	hostAndDeviceProperties hostAndDeviceProperties
+	hostCrossProperties     hostCrossProperties
 
 	// Arch specific versions of structs in GetProperties() prior to
 	// initialization in InitAndroidArchModule, lets call it `generalProperties`.
@@ -1321,7 +1331,11 @@ func (m *ModuleBase) HostCrossSupported() bool {
 	// hostEnabled is true if the host_supported property is true or the HostOrDeviceSupported
 	// value has the hostDefault bit set.
 	hostEnabled := proptools.BoolDefault(m.hostAndDeviceProperties.Host_supported, hod&hostDefault != 0)
-	return hod&hostCrossSupported != 0 && hostEnabled
+
+	// Default true for the Host_cross_supported property
+	hostCrossEnabled := proptools.BoolDefault(m.hostCrossProperties.Host_cross_supported, true)
+
+	return hod&hostCrossSupported != 0 && hostEnabled && hostCrossEnabled
 }
 
 func (m *ModuleBase) Platform() bool {
