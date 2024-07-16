@@ -16,6 +16,24 @@
       "message": "I hadn\u0027t noticed this in the base implementation, this means it is combining data from multiple variants together, as long as they match DeviceArch.  That\u0027s going to continue to give you divergent data on cf_x86_64 vs. pixel builds.  I think using `dpInfo :\u003d ccIdeInfo{}` here to start with a clean slate will work better.",
       "revId": "189ad26f46940148d3c6444e0fde45d31b500642",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c0cd5c_498b05cc",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1962470
+      },
+      "writtenOn": "2024-07-16T23:28:50Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "9e2fccce_81d66a94",
+      "revId": "189ad26f46940148d3c6444e0fde45d31b500642",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
