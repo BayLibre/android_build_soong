@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09fa1903_aa62a086",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-16T22:19:58Z",
+      "side": 1,
+      "message": "No, `DeviceArch()` just returns the global config for the architecture configured for the device.  For physical devices it will generally be `arm64`, for cuttlefish it will generally be `x86_64`.  The host is always `x86_64` though, which is sometimes mistaken as matching `DeviceArch()`.  You should check `ctx.Device() \u0026\u0026 ctx.Arch() \u003d\u003d ctx.DeviceConfig().DeviceArch()`.\n\nFor modules that don\u0027t have anything that matches that check, you should take the first variant seen.",
+      "parentUuid": "388460ba_2bb05d40",
+      "revId": "220b4abfc814fcff89134fbb1b9015cdeed26d72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d1f8f31_e57a95db",
         "filename": "cc/ccdeps.go",
         "patchSetId": 2
