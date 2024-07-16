@@ -83,20 +83,20 @@ type ccDeps struct {
 func (c *ccdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	// (b/204397180) Generate module_bp_cc_deps.json by default.
 	moduleDeps := ccDeps{}
-	moduleInfos := map[string]ccIdeInfo{}
-
-	// Track which projects have already had CMakeLists.txt generated to keep the first
-	// variant for each project.
-	seenProjects := map[string]bool{}
 
 	pathToCC, _ := evalVariable(ctx, "${config.ClangBin}/")
 	moduleDeps.C_clang = fmt.Sprintf("%s%s", buildCMakePath(pathToCC), cClang)
 	moduleDeps.Cpp_clang = fmt.Sprintf("%s%s", buildCMakePath(pathToCC), cppClang)
 
+	moduleInfos := map[string]ccIdeInfo{}
+
+	// Track processed modules and their associated arch.
+	seenModules := map[string]string{}
+
 	ctx.VisitAllModules(func(module android.Module) {
 		if ccModule, ok := module.(*Module); ok {
 			if compiledModule, ok := ccModule.compiler.(CompiledInterface); ok {
-				generateCLionProjectData(ctx, compiledModule, ccModule, seenProjects, moduleInfos)
+				generateCLionProjectData(ctx, compiledModule, ccModule, seenModules, moduleInfos)
 			}
 		}
 	})
@@ -180,26 +180,25 @@ func parseCompilerCCParameters(ctx android.SingletonContext, params []string) cc
 }
 
 func generateCLionProjectData(ctx android.SingletonContext, compiledModule CompiledInterface,
-	ccModule *Module, seenProjects map[string]bool, moduleInfos map[string]ccIdeInfo) {
+	ccModule *Module, seenModules map[string]string, moduleInfos map[string]ccIdeInfo) {
+	moduleName := ccModule.ModuleBase.Name()
+	// Skip if matching variant has already been added.
+	if ctx.DeviceConfig().DeviceArch() == seenModules[moduleName] {
+		return
+	}
+
 	srcs := compiledModule.Srcs()
+	// Skip if sources are empty.
 	if len(srcs) == 0 {
 		return
 	}
 
-	// Only keep the DeviceArch variant module.
-	if ctx.DeviceConfig().DeviceArch() != ccModule.ModuleBase.Arch().ArchType.Name {
-		return
-	}
+	// Add module variant to moduleInfos. Note that this will replace any previously added
+	// variant and will implicitly keep the last one. However, if a device arch match has
+	// already been found, then that will be preserved because this code won't be reached.
+	seenModules[moduleName] = ccModule.ModuleBase.Arch().ArchType.Name
 
-	clionProjectLocation := getCMakeListsForModule(ccModule, ctx)
-	if seenProjects[clionProjectLocation] {
-		return
-	}
-
-	seenProjects[clionProjectLocation] = true
-
-	name := ccModule.ModuleBase.Name()
-	dpInfo := moduleInfos[name]
+	dpInfo := moduleInfos[moduleName]
 
 	dpInfo.Path = append(dpInfo.Path, path.Dir(ctx.BlueprintFile(ccModule)))
 	dpInfo.Srcs = append(dpInfo.Srcs, srcs.Strings()...)
@@ -216,9 +215,9 @@ func generateCLionProjectData(ctx android.SingletonContext, compiledModule Compi
 	dpInfo.Local_Cpp_flags = parseCompilerCCParameters(ctx, ccModule.flags.Local.CppFlags)
 	dpInfo.System_include_flags = parseCompilerCCParameters(ctx, ccModule.flags.SystemIncludeFlags)
 
-	dpInfo.Module_name = name
+	dpInfo.Module_name = moduleName
 
-	moduleInfos[name] = dpInfo
+	moduleInfos[moduleName] = dpInfo
 }
 
 type Deal struct {
