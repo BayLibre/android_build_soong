@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "388460ba_2bb05d40",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1962470
+      },
+      "writtenOn": "2024-07-16T22:17:30Z",
+      "side": 1,
+      "message": "Correct me if I\u0027m wrong: is the issue here that `ctx.DeviceConfig().DeviceArch()` will be the empty string for host contexts, and therefore the conditional will be perpetually true and will always skip?\n\nAnd the behavior we want for host contexts is the proposed \"arbitrary fallback\", which can be achieved by your suggestion?",
+      "parentUuid": "ce795cd8_a171fa1c",
+      "revId": "220b4abfc814fcff89134fbb1b9015cdeed26d72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d1f8f31_e57a95db",
         "filename": "cc/ccdeps.go",
         "patchSetId": 2
