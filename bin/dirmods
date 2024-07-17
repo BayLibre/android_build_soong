@@ -35,6 +35,12 @@ def main():
     args = parser.parse_args()
 
     d = os.path.normpath(args.path)
+    # Fix absolute path to be relative to build top
+    if os.path.isabs(d):
+        base = os.environ.get('ANDROID_BUILD_TOP', '') + '/'
+        if d.startswith(base):
+            d = d[len(base):]
+
     prefix = d + '/'
 
     module_info = modinfo.ReadModuleInfo()
