@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f9d3d2_82b7c8ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-07-17T01:39:29Z",
+      "side": 1,
+      "message": "Ah you\u0027re right, we will want to be able to generally run tests there. \n\nAt the time I was looking at some tests for one of our Rust code generators, but we\u0027ll just have to explicitly mark those and any others that only make sense for the build host as host_cross_supported: false.",
+      "parentUuid": "5bd4f35c_343e219e",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "f6dd32333883847ad04ae8515bd6d88d502ad503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "377f7f44_189a3bf7",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b4c17d2_4f6aefa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-07-17T01:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "377f7f44_189a3bf7",
+      "revId": "f6dd32333883847ad04ae8515bd6d88d502ad503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96423106_c16d84d9",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-07-16T21:50:58Z",
       "side": 1,
       "message": "`hostCrossSupported`?",
+      "range": {
+        "startLine": 730,
+        "startChar": 8,
+        "endLine": 730,
+        "endChar": 21
+      },
+      "revId": "f6dd32333883847ad04ae8515bd6d88d502ad503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b718a2_1ea486e4",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-07-17T01:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96423106_c16d84d9",
       "range": {
         "startLine": 730,
         "startChar": 8,
