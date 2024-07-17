@@ -1405,6 +1405,7 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		IsHost:                  false,
 		LocalCertificate:        a.certificate.AndroidMkString(),
 		IsUnitTest:              Bool(a.testProperties.Test_options.Unit_test),
+		TestcaseDir:             a.installDir,
 	})
 	android.SetProvider(ctx, android.TestOnlyProviderKey, android.TestModuleInformation{
 		TestOnly:       true,

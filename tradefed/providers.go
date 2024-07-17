@@ -28,6 +28,9 @@ type BaseTestProviderData struct {
 	LocalCertificate string
 	// Indicates if the base module was a unit test.
 	IsUnitTest bool
+	// Relative path to this modules testcase dir.
+	// TODO(rbraunstein): Only needed because I can't figure out how to get from singleton context.
+	TestcaseDir android.InstallPath
 }
 
 var BaseTestProviderKey = blueprint.NewProvider[BaseTestProviderData]()
