@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19068a62_53927f65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2024-07-17T18:41:50Z",
+      "side": 1,
+      "message": "Prefer fixing the warning rather than reverting the entire toolchain update, which is costly.",
+      "revId": "46cc79c6a0032561f10656533fdb8b6570a845b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
