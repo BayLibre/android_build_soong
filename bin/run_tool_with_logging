@@ -45,8 +45,7 @@ trap - EXIT;
   --end_timestamp="$(date +%s.%N)" \
   --tool_args="$*" \
   --exit_code="${exit_code}" \
-  ${ANDROID_TOOL_LOGGER_EXTRA_ARGS} \
-  > /dev/null 2>&1 &
+  ${ANDROID_TOOL_LOGGER_EXTRA_ARGS}
 exit ${exit_code}
 ' SIGINT SIGTERM SIGQUIT EXIT
 
