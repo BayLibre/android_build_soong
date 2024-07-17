@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81444d6_66fe2fea",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-17T23:03:09Z",
+      "side": 1,
+      "message": "nit: this is fine, but you could also write this with the newish `slices.DeleteFunc`",
+      "range": {
+        "startLine": 608,
+        "startChar": 2,
+        "endLine": 614,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0a988abd_67ef6789",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/arch.go",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": "\t\"github.com/google/blueprint/slices\"\n"
+            },
+            {
+              "path": "android/arch.go",
+              "range": {
+                "startLine": 608,
+                "startChar": 0,
+                "endLine": 615,
+                "endChar": 0
+              },
+              "replacement": "\t\tslices.DeleteFunc(osTargets, func(t Target) bool { return t.HostCross })\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3424ce54c84bebe87b312d0dccc72726213412d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
