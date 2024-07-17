@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d79af0c_2f362744",
+        "filename": "rust/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-17T22:50:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc72b741_ba9e6ec4",
+      "range": {
+        "startLine": 836,
+        "startChar": 4,
+        "endLine": 837,
+        "endChar": 21
+      },
+      "revId": "797206c0e8767dd85bc7db2fb1168ebb0499930c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d78e6b8_a6efb91d",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-17T22:30:56Z",
       "side": 1,
       "message": "nit: delete this and line 1637?",
+      "range": {
+        "startLine": 1621,
+        "startChar": 1,
+        "endLine": 1621,
+        "endChar": 4
+      },
+      "revId": "797206c0e8767dd85bc7db2fb1168ebb0499930c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15de3072_72a43c98",
+        "filename": "rust/rust.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-17T22:50:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d78e6b8_a6efb91d",
       "range": {
         "startLine": 1621,
         "startChar": 1,
