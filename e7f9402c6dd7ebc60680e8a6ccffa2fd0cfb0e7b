@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e4c09be_7bc7cbdb",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2212,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-17T21:01:39Z",
+      "side": 1,
+      "message": "That would return `nil` from `Split`, which would then hit [this panic](https://cs.android.com/android/platform/superproject/main/+/main:build/blueprint/transition.go;l\u003d188;drc\u003d8351712ca1fb7342d27f45727de8dc8d8939c4d3) and hide this error.  This can be fixed in the future if TransitionMutator is changed to allow `nil`.",
+      "parentUuid": "9112911b_f2020152",
+      "range": {
+        "startLine": 2212,
+        "startChar": 9,
+        "endLine": 2212,
+        "endChar": 21
+      },
+      "revId": "e7f9402c6dd7ebc60680e8a6ccffa2fd0cfb0e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b80b1c7e_8a85bd54",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-07-17T18:32:21Z",
       "side": 1,
       "message": "Just for my understanding -- is there a reason why this should return a slice with an empty string, instead of an empty slice? Is this to ensure that at least one variant is created?",
+      "revId": "e7f9402c6dd7ebc60680e8a6ccffa2fd0cfb0e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96d954dd_d34422cf",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2264,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-17T21:01:39Z",
+      "side": 1,
+      "message": "This is the original design of TransitionMutator, every module has to have at least one variation, even if it is just the empty variant.  It\u0027s pretty clunky and possibly wasteful, since it has to allocation a 1-element backing array for every module, so I might make `nil` implicitly be treated as a single empty variation, but that will be a separate change.",
+      "parentUuid": "b80b1c7e_8a85bd54",
       "revId": "e7f9402c6dd7ebc60680e8a6ccffa2fd0cfb0e7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe6faeb6_121cbe16",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2301,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-17T21:01:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cb1270c_eda4e06d",
+      "range": {
+        "startLine": 2299,
+        "startChar": 2,
+        "endLine": 2301,
+        "endChar": 3
+      },
+      "revId": "e7f9402c6dd7ebc60680e8a6ccffa2fd0cfb0e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cefd27f_9aa2c3ef",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-07-17T18:20:25Z",
       "side": 1,
       "message": "Since you are using `canBeVersionVariant` in line 2314, this might not be necessary?",
+      "range": {
+        "startLine": 2309,
+        "startChar": 1,
+        "endLine": 2311,
+        "endChar": 2
+      },
+      "revId": "e7f9402c6dd7ebc60680e8a6ccffa2fd0cfb0e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b710157_14b07d5f",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2311,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-17T21:01:39Z",
+      "side": 1,
+      "message": "This visits every variant of every module, the goal was to save time by exiting early when possible and saving the two type assertions. Added a comment.",
+      "parentUuid": "7cefd27f_9aa2c3ef",
       "range": {
         "startLine": 2309,
         "startChar": 1,
