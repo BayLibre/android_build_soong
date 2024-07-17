@@ -115,6 +115,9 @@ do_strip_keep_mini_debug_info_linux() {
         "${CREATE_MINIDEBUGINFO}" "${decompressed}" "${outfile}.mini_debuginfo.xz"
         "${CLANG_BIN}/llvm-objcopy" --add-section .gnu_debugdata="${outfile}.mini_debuginfo.xz" "${outfile}.tmp"
         rm -f "${outfile}.mini_debuginfo.xz" "${decompressed}"
+
+        # Add a single element symtab.
+        "${CLANG_BIN}/llvm-objcopy" --add-symbol FAKE=.symtab:0 "${outfile}.tmp"
     else
         cp -f "${infile}" "${outfile}.tmp"
     fi
