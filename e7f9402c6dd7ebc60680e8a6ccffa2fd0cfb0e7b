@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b80b1c7e_8a85bd54",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2264,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-17T18:32:21Z",
+      "side": 1,
+      "message": "Just for my understanding -- is there a reason why this should return a slice with an empty string, instead of an empty slice? Is this to ensure that at least one variant is created?",
+      "revId": "e7f9402c6dd7ebc60680e8a6ccffa2fd0cfb0e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7cb1270c_eda4e06d",
         "filename": "cc/library.go",
         "patchSetId": 2
