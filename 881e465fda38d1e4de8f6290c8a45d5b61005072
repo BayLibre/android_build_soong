@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8c8296e_85e3ff12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-07-18T05:58:29Z",
+      "side": 1,
+      "message": "+1, This is actually what build/make/target/product/runtime_libart.mk is doing.",
+      "revId": "881e465fda38d1e4de8f6290c8a45d5b61005072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
