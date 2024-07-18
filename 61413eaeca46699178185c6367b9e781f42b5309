@@ -16,6 +16,24 @@
       "message": "It seems like `instrumentationForTag` also [contributes](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/base.go;drc\u003d96787337314b35fe851f2237c7c9a99f974c9608;l\u003d2297) to compilation?",
       "revId": "61413eaeca46699178185c6367b9e781f42b5309",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be3b4a92_d40b6505",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2409,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-18T23:46:20Z",
+      "side": 1,
+      "message": "Good catch, I have added `instrumentationForTag` in the latest patchset.",
+      "parentUuid": "1946e4cd_6bf70c4d",
+      "revId": "61413eaeca46699178185c6367b9e781f42b5309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
