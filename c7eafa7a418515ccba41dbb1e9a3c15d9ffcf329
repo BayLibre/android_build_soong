@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0973fb2_876270c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-07-18T13:33:15Z",
+      "side": 1,
+      "message": "Actually I think can avoid the presubmit breakage by removing this from the topic and waiting to submit the other topic CLs until this and the fix in the downstream repository has landed.",
+      "revId": "c7eafa7a418515ccba41dbb1e9a3c15d9ffcf329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
