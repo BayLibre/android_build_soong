@@ -74,6 +74,30 @@
       },
       "revId": "3424ce54c84bebe87b312d0dccc72726213412d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a2044d_bc850195",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-18T14:30:25Z",
+      "side": 1,
+      "message": "Oops, `osTargets` is a reference to the global list of targets, and this is modifying it.  Add a `slices.Clone()` around `osTargets`.",
+      "parentUuid": "d2976652_2fb0b612",
+      "range": {
+        "startLine": 608,
+        "startChar": 2,
+        "endLine": 614,
+        "endChar": 21
+      },
+      "revId": "3424ce54c84bebe87b312d0dccc72726213412d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
