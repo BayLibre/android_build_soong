@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02226ca5_8d4d2229",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-18T00:00:51Z",
+      "side": 1,
+      "message": "You can see the rendered version at https://android.googlesource.com/platform/build/soong/+/refs/changes/88/3180588/2/docs/resources.md",
+      "revId": "c56c3f74857a1b584627763460bbc0933de869f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
