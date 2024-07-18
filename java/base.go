@@ -1227,7 +1227,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 			return
 		}
 
-		android.SetProvider(ctx, JavaInfoProvider, JavaInfo{
+		android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
 			HeaderJars:                          android.PathsIfNonNil(j.headerJarFile),
 			TransitiveLibsHeaderJars:            j.transitiveLibsHeaderJars,
 			TransitiveStaticLibsHeaderJars:      j.transitiveStaticLibsHeaderJars,
@@ -1745,7 +1745,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 
 	ctx.CheckbuildFile(outputFile)
 
-	android.SetProvider(ctx, JavaInfoProvider, JavaInfo{
+	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
 		HeaderJars:                          android.PathsIfNonNil(j.headerJarFile),
 		RepackagedHeaderJars:                android.PathsIfNonNil(j.repackagedHeaderJarFile),
 		TransitiveLibsHeaderJars:            j.transitiveLibsHeaderJars,
@@ -1978,23 +1978,24 @@ func (j *providesTransitiveHeaderJars) collectTransitiveHeaderJars(ctx android.M
 			return
 		}
 
-		dep, _ := android.OtherModuleProvider(ctx, module, JavaInfoProvider)
-		tag := ctx.OtherModuleDependencyTag(module)
-		_, isUsesLibDep := tag.(usesLibraryDependencyTag)
-		if tag == libTag || tag == r8LibraryJarTag || isUsesLibDep {
-			directLibs = append(directLibs, dep.HeaderJars...)
-		} else if tag == staticLibTag {
-			directStaticLibs = append(directStaticLibs, dep.HeaderJars...)
-		} else {
-			// Don't propagate transitive libs for other kinds of dependencies.
-			return
-		}
+		if dep, ok := android.OtherModuleProvider(ctx, module, JavaInfoProvider); ok {
+			tag := ctx.OtherModuleDependencyTag(module)
+			_, isUsesLibDep := tag.(usesLibraryDependencyTag)
+			if tag == libTag || tag == r8LibraryJarTag || isUsesLibDep {
+				directLibs = append(directLibs, dep.HeaderJars...)
+			} else if tag == staticLibTag {
+				directStaticLibs = append(directStaticLibs, dep.HeaderJars...)
+			} else {
+				// Don't propagate transitive libs for other kinds of dependencies.
+				return
+			}
 
-		if dep.TransitiveLibsHeaderJars != nil {
-			transitiveLibs = append(transitiveLibs, dep.TransitiveLibsHeaderJars)
-		}
-		if dep.TransitiveStaticLibsHeaderJars != nil {
-			transitiveStaticLibs = append(transitiveStaticLibs, dep.TransitiveStaticLibsHeaderJars)
+			if dep.TransitiveLibsHeaderJars != nil {
+				transitiveLibs = append(transitiveLibs, dep.TransitiveLibsHeaderJars)
+			}
+			if dep.TransitiveStaticLibsHeaderJars != nil {
+				transitiveStaticLibs = append(transitiveStaticLibs, dep.TransitiveStaticLibsHeaderJars)
+			}
 		}
 	})
 	j.transitiveLibsHeaderJars = android.NewDepSet(android.POSTORDER, directLibs, transitiveLibs)
@@ -2103,9 +2104,10 @@ func (j *Module) collectTransitiveSrcFiles(ctx android.ModuleContext, mine andro
 	ctx.VisitDirectDeps(func(module android.Module) {
 		tag := ctx.OtherModuleDependencyTag(module)
 		if tag == staticLibTag {
-			depInfo, _ := android.OtherModuleProvider(ctx, module, JavaInfoProvider)
-			if depInfo.TransitiveSrcFiles != nil {
-				fromDeps = append(fromDeps, depInfo.TransitiveSrcFiles)
+			if depInfo, ok := android.OtherModuleProvider(ctx, module, JavaInfoProvider); ok {
+				if depInfo.TransitiveSrcFiles != nil {
+					fromDeps = append(fromDeps, depInfo.TransitiveSrcFiles)
+				}
 			}
 		}
 	})

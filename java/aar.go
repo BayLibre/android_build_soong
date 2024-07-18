@@ -1344,7 +1344,7 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		a.headerJarFile = classpathFile
 	}
 
-	android.SetProvider(ctx, JavaInfoProvider, JavaInfo{
+	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(a.headerJarFile),
 		ResourceJars:                   android.PathsIfNonNil(resourceJarFile),
 		TransitiveLibsHeaderJars:       a.transitiveLibsHeaderJars,
