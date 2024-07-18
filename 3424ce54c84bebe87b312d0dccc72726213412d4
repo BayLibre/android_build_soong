@@ -122,6 +122,30 @@
       },
       "revId": "3424ce54c84bebe87b312d0dccc72726213412d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "361b8407_6f8afb38",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-07-18T14:41:18Z",
+      "side": 1,
+      "message": "Oh just saw your comment -- I see! I can submit a follow-on CL to clean this up.",
+      "parentUuid": "0cac757b_ae80cead",
+      "range": {
+        "startLine": 608,
+        "startChar": 2,
+        "endLine": 614,
+        "endChar": 21
+      },
+      "revId": "3424ce54c84bebe87b312d0dccc72726213412d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
