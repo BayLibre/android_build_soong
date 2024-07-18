@@ -1379,11 +1379,17 @@ func (c *Module) isOrderfileCompile() bool {
 }
 
 func (c *Module) isCfi() bool {
-	return c.sanitize.isSanitizerEnabled(cfi)
+	if sanitize := c.sanitize; sanitize != nil {
+		return Bool(sanitize.Properties.SanitizeMutated.Cfi)
+	}
+	return false
 }
 
 func (c *Module) isFuzzer() bool {
-	return c.sanitize.isSanitizerEnabled(Fuzzer)
+	if sanitize := c.sanitize; sanitize != nil {
+		return Bool(sanitize.Properties.SanitizeMutated.Fuzzer)
+	}
+	return false
 }
 
 func (c *Module) isNDKStubLibrary() bool {
