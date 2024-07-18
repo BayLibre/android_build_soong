@@ -315,14 +315,14 @@ type JavaInfo struct {
 	AconfigIntermediateCacheOutputPaths android.Paths
 }
 
-var JavaInfoProvider = blueprint.NewProvider[JavaInfo]()
+var JavaInfoProvider = blueprint.NewProvider[*JavaInfo]()
 
 // SyspropPublicStubInfo contains info about the sysprop public stub library that corresponds to
 // the sysprop implementation library.
 type SyspropPublicStubInfo struct {
 	// JavaInfo is the JavaInfoProvider of the sysprop public stub library that corresponds to
 	// the sysprop implementation library.
-	JavaInfo JavaInfo
+	JavaInfo *JavaInfo
 }
 
 var SyspropPublicStubInfoProvider = blueprint.NewProvider[SyspropPublicStubInfo]()
@@ -2246,14 +2246,17 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			}
 			srcFilesInfo = append(srcFilesInfo, provider)
 		case libTag:
-			provider, _ := android.OtherModuleProvider(ctx, dep, JavaInfoProvider)
-			classPaths = append(classPaths, provider.HeaderJars...)
+			if provider, ok := android.OtherModuleProvider(ctx, dep, JavaInfoProvider); ok {
+				classPaths = append(classPaths, provider.HeaderJars...)
+			}
 		case staticLibTag:
-			provider, _ := android.OtherModuleProvider(ctx, dep, JavaInfoProvider)
-			staticLibs = append(staticLibs, provider.HeaderJars...)
+			if provider, ok := android.OtherModuleProvider(ctx, dep, JavaInfoProvider); ok {
+				staticLibs = append(staticLibs, provider.HeaderJars...)
+			}
 		case depApiSrcsTag:
-			provider, _ := android.OtherModuleProvider(ctx, dep, JavaInfoProvider)
-			depApiSrcsStubsJar = provider.HeaderJars[0]
+			if provider, ok := android.OtherModuleProvider(ctx, dep, JavaInfoProvider); ok {
+				depApiSrcsStubsJar = provider.HeaderJars[0]
+			}
 		case systemModulesTag:
 			module := dep.(SystemModulesProvider)
 			systemModulesPaths = append(systemModulesPaths, module.HeaderJars()...)
@@ -2354,7 +2357,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	ctx.Phony(ctx.ModuleName(), al.stubsJar)
 
-	android.SetProvider(ctx, JavaInfoProvider, JavaInfo{
+	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(al.stubsJar),
 		ImplementationAndResourcesJars: android.PathsIfNonNil(al.stubsJar),
 		ImplementationJars:             android.PathsIfNonNil(al.stubsJar),
@@ -2746,7 +2749,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 	}
 
-	android.SetProvider(ctx, JavaInfoProvider, JavaInfo{
+	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(j.combinedHeaderFile),
 		TransitiveLibsHeaderJars:       j.transitiveLibsHeaderJars,
 		TransitiveStaticLibsHeaderJars: j.transitiveStaticLibsHeaderJars,
