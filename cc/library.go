@@ -2220,12 +2220,8 @@ func createVersionVariations(mctx android.BottomUpMutatorContext, versions []str
 		if variants[i] != "" || isLLNDK || isVendorPublicLibrary || isImportedApiLibrary {
 			// A stubs or LLNDK stubs variant.
 			c := m.(*Module)
-			if c.sanitize != nil {
-				c.sanitize.Properties.ForceDisable = true
-			}
-			if c.stl != nil {
-				c.stl.Properties.Stl = StringPtr("none")
-			}
+			c.sanitize = nil
+			c.stl = nil
 			c.Properties.PreventInstall = true
 			lib := moduleLibraryInterface(m)
 			isLatest := i == (len(versions) - 1)
