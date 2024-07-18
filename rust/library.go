@@ -86,6 +86,8 @@ type LibraryMutatedProperties struct {
 	VariantIsRlib bool `blueprint:"mutated"`
 	// This variant is a shared library
 	VariantIsShared bool `blueprint:"mutated"`
+	// This variant is a static library
+	VariantIsStatic bool `blueprint:"mutated"`
 	// This variant is a source provider
 	VariantIsSource bool `blueprint:"mutated"`
 
@@ -177,7 +179,7 @@ func (library *libraryDecorator) shared() bool {
 }
 
 func (library *libraryDecorator) static() bool {
-	return false
+	return library.MutatedProperties.VariantIsStatic
 }
 
 func (library *libraryDecorator) source() bool {
@@ -203,12 +205,14 @@ func (library *libraryDecorator) buildStatic() bool {
 func (library *libraryDecorator) setRlib() {
 	library.MutatedProperties.VariantIsRlib = true
 	library.MutatedProperties.VariantIsDylib = false
+	library.MutatedProperties.VariantIsStatic = false
 	library.MutatedProperties.VariantIsShared = false
 }
 
 func (library *libraryDecorator) setDylib() {
 	library.MutatedProperties.VariantIsRlib = false
 	library.MutatedProperties.VariantIsDylib = true
+	library.MutatedProperties.VariantIsStatic = false
 	library.MutatedProperties.VariantIsShared = false
 }
 
@@ -225,13 +229,17 @@ func (library *libraryDecorator) setDylibStd() {
 }
 
 func (library *libraryDecorator) setShared() {
+	library.MutatedProperties.VariantIsStatic = false
 	library.MutatedProperties.VariantIsShared = true
 	library.MutatedProperties.VariantIsRlib = false
 	library.MutatedProperties.VariantIsDylib = false
 }
 
 func (library *libraryDecorator) setStatic() {
-	panic(fmt.Errorf("static variant is not supported for rust modules, use the rlib variant instead"))
+	library.MutatedProperties.VariantIsStatic = true
+	library.MutatedProperties.VariantIsShared = false
+	library.MutatedProperties.VariantIsRlib = false
+	library.MutatedProperties.VariantIsDylib = false
 }
 
 func (library *libraryDecorator) setSource() {
