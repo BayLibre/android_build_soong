@@ -16,6 +16,24 @@
       "message": "nit: Can you specify that `ApiLibrary` implements `IDEInfo` interface using blank identifier?",
       "revId": "4e7762ca70f50c2ef6823e8f017df699ce25e3d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97e7105b_fe783b96",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2388,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-18T20:35:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7b83a53_7dab9299",
+      "revId": "4e7762ca70f50c2ef6823e8f017df699ce25e3d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
