@@ -50,6 +50,30 @@
       ],
       "revId": "3424ce54c84bebe87b312d0dccc72726213412d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2976652_2fb0b612",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-07-18T13:04:55Z",
+      "side": 1,
+      "message": "Since I need to submit first on another branch to fix presubmit, I gave this suggestion a shot.\n\nI\u0027m trying:\n\n```\nif base.HostSupported() \u0026\u0026 !base.HostCrossSupported() {\n\tosTargets \u003d slices.DeleteFunc(osTargets, func(t Target) bool {\n\t\treturn t.HostCross\n\t})\n}\n```\n\nI think this should be functionally identical, but TestArchMutator becomes flaky, passing sometimes but more often failing... which is confusing?",
+      "parentUuid": "d81444d6_66fe2fea",
+      "range": {
+        "startLine": 608,
+        "startChar": 2,
+        "endLine": 614,
+        "endChar": 21
+      },
+      "revId": "3424ce54c84bebe87b312d0dccc72726213412d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
