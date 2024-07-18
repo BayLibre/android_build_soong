@@ -550,6 +550,10 @@ type Module struct {
 	// java_aconfig_library or java_library modules that are statically linked
 	// to this module. Does not contain cache files from all transitive dependencies.
 	aconfigCacheFiles android.Paths
+
+	// List of soong module dependencies required to compile the current module.
+	// This information is printed out to `Dependencies` field in module_bp_java_deps.json
+	compileDepNames []string
 }
 
 var _ android.InstallableModule = (*Module)(nil)
@@ -2048,7 +2052,7 @@ func (j *Module) ClassLoaderContexts() dexpreopt.ClassLoaderContextMap {
 
 // Collect information for opening IDE project files in java/jdeps.go.
 func (j *Module) IDEInfo(dpInfo *android.IdeInfo) {
-	dpInfo.Deps = append(dpInfo.Deps, j.CompilerDeps()...)
+	dpInfo.Deps = append(dpInfo.Deps, j.compileDepNames...)
 	dpInfo.Srcs = append(dpInfo.Srcs, j.expandIDEInfoCompiledSrcs...)
 	dpInfo.SrcJars = append(dpInfo.SrcJars, j.compiledSrcJars.Strings()...)
 	dpInfo.Aidl_include_dirs = append(dpInfo.Aidl_include_dirs, j.deviceProperties.Aidl.Include_dirs...)
@@ -2058,13 +2062,6 @@ func (j *Module) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Static_libs = append(dpInfo.Static_libs, j.properties.Static_libs...)
 	dpInfo.Libs = append(dpInfo.Libs, j.properties.Libs...)
 	dpInfo.SrcJars = append(dpInfo.SrcJars, j.annoSrcJars.Strings()...)
-}
-
-func (j *Module) CompilerDeps() []string {
-	jdeps := []string{}
-	jdeps = append(jdeps, j.properties.Libs...)
-	jdeps = append(jdeps, j.properties.Static_libs...)
-	return jdeps
 }
 
 func (j *Module) hasCode(ctx android.ModuleContext) bool {
@@ -2406,6 +2403,14 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			case instrumentationForTag:
 				ctx.PropertyErrorf("instrumentation_for", "dependency %q of type %q does not provide JavaInfo so is unsuitable for use with this property", ctx.OtherModuleName(module), ctx.OtherModuleType(module))
 			}
+		}
+
+		switch tag {
+		case sdkLibTag, libTag, staticLibTag, bootClasspathTag, systemModulesTag, java9LibTag, kotlinStdlibTag, kotlinAnnotationsTag, kotlinPluginTag, syspropPublicStubDepTag, instrumentationForTag:
+			// Add the dependency name to compileDepNames so that it can be recorded in module_bp_java_deps.json
+			j.compileDepNames = append(j.compileDepNames, otherName)
+		default:
+			// This dependency is not a compile dependency. e.g. license module
 		}
 
 		addCLCFromDep(ctx, module, j.classLoaderContexts)
