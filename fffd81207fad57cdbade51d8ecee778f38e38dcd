@@ -16,6 +16,24 @@
       "message": "The flags are already sent to soong automatically, so you can just do this:\n\n```\nfunc (c *deviceConfig) Release_libbinder_client_cache() bool {\n    return c.config.productVariables.GetBuildFlagBool(\"RELEASE_NDK_ABI_MONITORED\")\n}\n```",
       "revId": "fffd81207fad57cdbade51d8ecee778f38e38dcd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5582826_5ac29e2d",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1975865
+      },
+      "writtenOn": "2024-07-18T13:59:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d7d652a_c6fcf952",
+      "revId": "fffd81207fad57cdbade51d8ecee778f38e38dcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
