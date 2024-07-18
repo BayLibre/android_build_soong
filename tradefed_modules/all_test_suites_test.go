@@ -18,6 +18,7 @@ import (
 	"android/soong/java"
 	"encoding/json"
 	"fmt"
+	"strings"
 	"testing"
 )
 
@@ -87,14 +88,23 @@ func TestAllTestSuites(t *testing.T) {
                             suite_tags: [
                                 "suite-2",
                             ],
-                            module_names: [
-                                "TestModule1",
-                            ],
                         },
 
                         // TODO(ron): see all_teams for more arch fun
                         // arch: {arm: { skip: true},
                         //        arm64: { skip: true}},
+                }
+
+		test_suite {
+                        name: "mixed-suite",
+                        modules: {
+                            suite_tags: [
+                                "suite-2",
+                            ],
+                            module_names: [
+                                "TestModule1",
+                            ],
+                        },
                 }
 	`)
 
@@ -105,81 +115,46 @@ func TestAllTestSuites(t *testing.T) {
 	//   2) The zip of files in the manifest.
 	// The manifest should be always generated?
 	// The zip should be generated when its a target?
-	/*
-		var teams *team_proto.AllTeams
-		teams = getTeamProtoOutput(t, ctx)
-	*/
 
-	// map of module name -> trendy team name.
-	// AssertDeepEquals(t, "compare maps", expectedTeams, actualTeams)
-	//	AssertDeepEquals(t, "test matchup", expectedTests, actualTests)
+	android.AssertDeepEquals(t, "",
+		[]moduleName{
+			"TestModule1",
+			"TestModule2",
+		},
+		getTestSuiteManifest(t, ctx, "my-suite-of-modules"))
 
-	// Ensure the manifest contains the two named modules (how do I run it).
-	// Ensure the manifest contains the two modules for the suite.
-	expectedManifest := map[string][]string{
-		"TestModule1": []string{
-			"testcases/TestModule1/android_common/TestModule1.config",
-			"testcases/TestModule1/android_common/HelperApp.apk",
-			"testcases/TestModule1/android_common/TestModule1.apk",
-			"testcases/TestModule1/android_common/data/testfile",
-		}}
-	actualManifest := getTestSuiteManifest(t, ctx)
-	android.AssertDeepEquals(t, "", expectedManifest, actualManifest)
+	android.AssertDeepEquals(t, "",
+		[]moduleName{
+			"TestModule2",
+			"TestModule3",
+		},
+		getTestSuiteManifest(t, ctx, "my-suite-of-tags"))
+
+	android.AssertDeepEquals(t, "",
+		[]moduleName{
+			"TestModule1",
+			"TestModule2",
+			"TestModule3",
+		},
+		getTestSuiteManifest(t, ctx, "mixed-suite"))
 }
 
 // Read the json manifest file from the build rule output and return it as a map.
-func getTestSuiteManifest(t *testing.T, ctx *android.TestResult) map[string][]packagingInfo {
+func getTestSuiteManifest(t *testing.T, ctx *android.TestResult, manifestName string) []moduleName {
 	config := ctx.SingletonForTests("all_test_suites")
-	allOutputs := config.AllOutputs()
 
-	// TODO(rbraunstein): fix to deal with multiple outputs
-	manifestPath := allOutputs[1]
-	fmt.Printf("MP: %s\n", manifestPath)
+	for _, manifestPath := range config.AllOutputs() {
+		if strings.HasSuffix(manifestPath, fmt.Sprintf(manifestFilePattern, manifestName)) {
+			fmt.Printf("MP: %s\n", manifestPath)
 
-	out := config.MaybeOutput(manifestPath)
-	var manifest map[string][]packagingInfo
-	jsonBytes := []byte(android.ContentFromFileRuleForTests(t, ctx.TestContext, out))
-	json.Unmarshal(jsonBytes, &manifest)
-	return manifest
+			out := config.MaybeOutput(manifestPath)
+			var manifest []moduleName
+			jsonBytes := []byte(android.ContentFromFileRuleForTests(t, ctx.TestContext, out))
+			json.Unmarshal(jsonBytes, &manifest)
+			return manifest
+		}
+	}
+	t.Errorf("Manifest %s not found.", manifestName)
+	return nil
+
 }
-
-/*
-   % tree ~/aosp-main-with-phones/out/target/product/vsoc_x86_64/testcases/HelloWorldTests
-/usr/local/google/home/rbraunstein/aosp-main-with-phones/out/target/product/vsoc_x86_64/testcases/HelloWorldTests
-├── HelloWorldTests.config
-└── x86_64
-    └── HelloWorldTests.apk
-
-tree ~/aosp-main-with-phones/out/target/product/vsoc_x86_64/testcases/FrameworksServicesTests_contentcapture
-/usr/local/google/home/rbraunstein/aosp-main-with-phones/out/target/product/vsoc_x86_64/testcases/FrameworksServicesTests_contentcapture
-├── data
-│   └── broken_shortcut.xml -> ../../FrameworksServicesTests/data/broken_shortcut.xml
-├── FrameworksServicesTests_contentcapture.config
-├── MediaButtonReceiverHolderTestHelperApp.apk -> ../FrameworksServicesTests/MediaButtonReceiverHolderTestHelperApp.apk
-├── SimpleServiceTestApp1.apk -> ../FrameworksServicesTests/SimpleServiceTestApp1.apk
-├── SimpleServiceTestApp2.apk -> ../FrameworksServicesTests/SimpleServiceTestApp2.apk
-├── SimpleServiceTestApp3.apk -> ../FrameworksServicesTests/SimpleServiceTestApp3.apk
-├── SuspendTestApp.apk -> ../FrameworksServicesTests/SuspendTestApp.apk
-├── test_module_config.manifest
-└── x86_64
-    ├── FrameworksServicesTests.apk -> ../../FrameworksServicesTests/x86_64/FrameworksServicesTests.apk
-    └── UNUSED-FrameworksServicesTests.apk
-
-% tree ~/aosp-main-with-phones/out/host/linux-x86/testcases/CtsDevicePolicyManagerTestCases_Permissions
-/usr/local/google/home/rbraunstein/aosp-main-with-phones/out/host/linux-x86/testcases/CtsDevicePolicyManagerTestCases_Permissions
-├── CtsCertInstallerApp.apk -> ../CtsDevicePolicyManagerTestCases/CtsCertInstallerApp.apk
-├── CtsContactDirectoryProvider.apk -> ../CtsDevicePolicyManagerTestCases/CtsContactDirectoryProvider.apk
-├── CtsCorpOwnedManagedProfile2.apk -> ../CtsDevicePolicyManagerTestCases/CtsCorpOwnedManagedProfile2.apk
-├── CtsCorpOwnedManagedProfile.apk -> ../CtsDevicePolicyManagerTestCases/CtsCorpOwnedManagedProfile.apk
-├── CtsCrossProfileEnabledApp.apk -> ../CtsDevicePolicyManagerTestCases/CtsCrossProfileEnabledApp.apk
-├── CtsCrossProfileUserEnabledApp.apk -> ../CtsDevicePolicyManagerTestCases/CtsCrossProfileUserEnabledApp.apk
-├── CtsDelegateApp.apk -> ../CtsDevicePolicyManagerTestCases/CtsDelegateApp.apk
-├── CtsDeviceAdminApp23.apk -> ../CtsDevicePolicyManagerTestCases/CtsDeviceAdminApp23.apk
-
-
-  771  2008-01-01 00:00   target/testcases/art_standalone_artd_tests/x86/art-gtest-jars-Main.jar
-     1075  2008-01-01 00:00   target/testcases/art_standalone_artd_tests/x86/art-gtest-jars-Nested.jar
-      771  2008-01-01 00:00   target/testcases/art_standalone_artd_tests/x86_64/art-gtest-jars-Main.jar
-     1075  2008-01-01 00:00   target/testcases/art_standalone_artd_tests/x86_64/art-gtest-jars-Nested.jar
-
-*/
