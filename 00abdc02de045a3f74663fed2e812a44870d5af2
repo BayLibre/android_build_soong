@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4082241_9a00022e",
+        "filename": "android/makevars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-07-19T07:50:10Z",
+      "side": 0,
+      "message": "I think we can leave this as is because kati installs should eventually go away.\n\nThen we don\u0027t have to add vintfSource to katiInstall.",
+      "range": {
+        "startLine": 557,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 119
+      },
+      "revId": "00abdc02de045a3f74663fed2e812a44870d5af2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

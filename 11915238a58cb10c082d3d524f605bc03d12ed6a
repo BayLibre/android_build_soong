@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f061fa9_abbcbaa9",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1840,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-07-19T07:50:10Z",
+      "side": 1,
+      "message": "@ccross@android.com\n\nI think this isn\u0027t ideal and can be improved. `init_rc` and `vintf_fragments` could be replaced with `required` deps. ex:\n\n```\n// instead of this..\nmodule {\n   init_rc: [\"my_init.rc\"],\n}\n\n// do this\nmodule {\n   required: [\"my_init.rc\"],\n}\n\nprebuilt_etc { // or a new module type if some processing is required\n   name: \"my_init.rc\",\n   src: [\"my_init.rc\"],\n   subdir: \"init\",\n}\n```\n\nWe could perhaps automatically create the prebuilt_etc modules by soong, so that we don\u0027t have to touch many Android.bp files.",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1840,
+        "endChar": 79
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b690600_33e0a6dd",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1861,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-07-19T07:50:10Z",
+      "side": 1,
+      "message": "nit: use camelCase.\n\nConsider name this as `processedVintfFragment` or similar.",
+      "range": {
+        "startLine": 1861,
+        "startChar": 4,
+        "endLine": 1861,
+        "endChar": 21
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3e4a5a4_48d59a35",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1864,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-07-19T07:50:10Z",
+      "side": 1,
+      "message": "What is the meaning of this line? Need some inline comment I think.",
+      "range": {
+        "startLine": 1864,
+        "startChar": 0,
+        "endLine": 1864,
+        "endChar": 50
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a41fe6_bc5a1f30",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-07-19T07:50:10Z",
+      "side": 1,
+      "message": "This is too specific to be here. Refer to my comment above.",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 5
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
