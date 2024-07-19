@@ -106,6 +106,7 @@ bootstrap_go_package {
         "updatable_modules.go",
         "util.go",
         "variable.go",
+        "vintf_fragments.go",
         "visibility.go",
     ],
     testSrcs: [

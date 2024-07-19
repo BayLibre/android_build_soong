@@ -145,12 +145,22 @@ var preArch = []RegisterMutatorFunc{
 	// This must come after the defaults mutators to ensure that any visibility supplied
 	// in a defaults module has been successfully applied before the rules are gathered.
 	RegisterVisibilityRuleGatherer,
+
+	// Register items in vintf_manifests property as vintf_manifest modules
+	//
+	// This must come before any Mutators that create variants to prevent creating
+	// multiple modules being created with the same name.
+	registerVintfFragmentsMutator,
 }
 
 func registerArchMutator(ctx RegisterMutatorsContext) {
 	ctx.BottomUpBlueprint("os", osMutator).Parallel()
 	ctx.BottomUp("image", imageMutator).Parallel()
 	ctx.BottomUpBlueprint("arch", archMutator).Parallel()
+}
+
+func registerVintfFragmentsMutator(ctx RegisterMutatorsContext) {
+	ctx.TopDown("vintfFragment", vintfFragmentsMutator).Parallel()
 }
 
 var preDeps = []RegisterMutatorFunc{
