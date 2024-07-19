@@ -1855,15 +1855,24 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 
 			m.vintfFragmentsPaths = PathsForModuleSrc(ctx, m.commonProperties.Vintf_fragments)
 			vintfDir := PathForModuleInstall(ctx, "etc", "vintf", "manifest")
+			builder := NewRuleBuilder(pctx, ctx)
 			for _, src := range m.vintfFragmentsPaths {
 				installedVintfFragment := vintfDir.Join(ctx, src.Base())
+				processedVintfFragment := PathForModuleOut(ctx, src.Base())
+
+				builder.Command().
+					Flag("VINTF_IGNORE_TARGET_FCM_VERSION=true").
+					BuiltTool("assemble_vintf").
+					FlagWithInput("-i ", src).
+					FlagWithOutput("-o ", processedVintfFragment)
 				m.katiVintfInstalls = append(m.katiVintfInstalls, katiInstall{
 					from: src,
 					to:   installedVintfFragment,
 				})
-				ctx.PackageFile(vintfDir, src.Base(), src)
+				ctx.PackageFile(vintfDir, src.Base(), processedVintfFragment)
 				m.installedVintfFragmentsPaths = append(m.installedVintfFragmentsPaths, installedVintfFragment)
 			}
+			builder.Build("vintf_fragments", "Process Vintf Fragments for "+m.Name())
 		}
 
 		licensesPropertyFlattener(ctx)
