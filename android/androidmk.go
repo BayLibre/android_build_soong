@@ -602,9 +602,6 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 		if !base.InVendorRamdisk() {
 			a.AddPaths("LOCAL_FULL_INIT_RC", info.InitRcPaths)
 		}
-		if len(info.VintfFragmentsPaths) > 0 {
-			a.AddPaths("LOCAL_FULL_VINTF_FRAGMENTS", info.VintfFragmentsPaths)
-		}
 		a.SetBoolIfTrue("LOCAL_PROPRIETARY_MODULE", Bool(base.commonProperties.Proprietary))
 		if Bool(base.commonProperties.Vendor) || Bool(base.commonProperties.Soc_specific) {
 			a.SetString("LOCAL_VENDOR_MODULE", "true")
