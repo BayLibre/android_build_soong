@@ -2370,6 +2370,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.providePrebuiltInfo(ctx)
 
 	a.required = a.RequiredModuleNames(ctx)
+	a.required = append(a.required, a.VintfFragmentModuleNames(ctx)...)
 
 	a.setOutputFiles(ctx)
 }
