@@ -88,7 +88,6 @@ type Module interface {
 	IsReplacedByPrebuilt() bool
 	ExportedToMake() bool
 	InitRc() Paths
-	VintfFragments() Paths
 	EffectiveLicenseKinds() []string
 	EffectiveLicenseFiles() Paths
 
@@ -111,6 +110,7 @@ type Module interface {
 	RequiredModuleNames(ctx ConfigAndErrorContext) []string
 	HostRequiredModuleNames() []string
 	TargetRequiredModuleNames() []string
+	VintfFragmentModuleNames(ctx ConfigAndErrorContext) []string
 
 	FilesToInstall() InstallPaths
 	PackagingSpecs() []PackagingSpec
@@ -497,6 +497,9 @@ type commonProperties struct {
 
 	// The team (defined by the owner/vendor) who owns the property.
 	Team *string `android:"path"`
+
+	// vintf_fragment Modules required from this module.
+	Vintf_fragment_modules proptools.Configurable[[]string] `android:"path"`
 }
 
 type distProperties struct {
@@ -865,11 +868,9 @@ type ModuleBase struct {
 	ruleParams  map[blueprint.Rule]blueprint.RuleParams
 	variables   map[string]string
 
-	initRcPaths         Paths
-	vintfFragmentsPaths Paths
+	initRcPaths Paths
 
-	installedInitRcPaths         InstallPaths
-	installedVintfFragmentsPaths InstallPaths
+	installedInitRcPaths InstallPaths
 
 	// Merged Aconfig files for all transitive deps.
 	aconfigFilePaths Paths
@@ -1028,6 +1029,7 @@ func (m *ModuleBase) baseDepsMutator(ctx BottomUpMutatorContext) {
 	fullManifest := pv.DeviceArch != nil && pv.DeviceName != nil
 	if fullManifest {
 		addRequiredDeps(ctx)
+		addAdditionalDeps(ctx)
 	}
 }
 
@@ -1103,6 +1105,20 @@ func addRequiredDeps(ctx BottomUpMutatorContext) {
 			}
 		}
 	}
+}
+
+var vintfDepTag = struct {
+	blueprint.BaseDependencyTag
+	InstallAlwaysNeededDependencyTag
+}{}
+
+func addAdditionalDeps(ctx BottomUpMutatorContext) {
+	mod := ctx.Module()
+	if _, ok := mod.(*vintfFragmentModule); ok {
+		return
+	}
+
+	ctx.AddDependency(mod, vintfDepTag, mod.VintfFragmentModuleNames(ctx)...)
 }
 
 // AddProperties "registers" the provided props
@@ -1597,12 +1613,12 @@ func (m *ModuleBase) TargetRequiredModuleNames() []string {
 	return m.base().commonProperties.Target_required
 }
 
-func (m *ModuleBase) InitRc() Paths {
-	return append(Paths{}, m.initRcPaths...)
+func (m *ModuleBase) VintfFragmentModuleNames(ctx ConfigAndErrorContext) []string {
+	return m.base().commonProperties.Vintf_fragment_modules.GetOrDefault(m.ConfigurableEvaluator(ctx), nil)
 }
 
-func (m *ModuleBase) VintfFragments() Paths {
-	return append(Paths{}, m.vintfFragmentsPaths...)
+func (m *ModuleBase) InitRc() Paths {
+	return append(Paths{}, m.initRcPaths...)
 }
 
 func (m *ModuleBase) CompileMultilib() *string {
@@ -1853,17 +1869,6 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 				}
 			}
 
-			m.vintfFragmentsPaths = PathsForModuleSrc(ctx, m.commonProperties.Vintf_fragments.GetOrDefault(ctx, nil))
-			vintfDir := PathForModuleInstall(ctx, "etc", "vintf", "manifest")
-			for _, src := range m.vintfFragmentsPaths {
-				installedVintfFragment := vintfDir.Join(ctx, src.Base())
-				m.katiVintfInstalls = append(m.katiVintfInstalls, katiInstall{
-					from: src,
-					to:   installedVintfFragment,
-				})
-				ctx.PackageFile(vintfDir, src.Base(), src)
-				m.installedVintfFragmentsPaths = append(m.installedVintfFragmentsPaths, installedVintfFragment)
-			}
 		}
 
 		licensesPropertyFlattener(ctx)
