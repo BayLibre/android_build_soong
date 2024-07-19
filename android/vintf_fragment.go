@@ -14,6 +14,12 @@
 
 package android
 
+import (
+	"strings"
+
+	"github.com/google/blueprint/proptools"
+)
+
 type vintfFragmentProperties struct {
 	// Vintf fragment XML file.
 	Src string `android:"path"`
@@ -34,6 +40,9 @@ func init() {
 
 func registerVintfFragmentComponents(ctx RegistrationContext) {
 	ctx.RegisterModuleType("vintf_fragment", vintfLibraryFactory)
+	ctx.PreArchMutators(func(ctx RegisterMutatorsContext) {
+		ctx.TopDown("vintfFragment", vintfFragmentsMutator).Parallel()
+	})
 }
 
 // vintf_fragment module processes vintf fragment file and installs under etc/vintf/manifest.
@@ -81,4 +90,40 @@ func (m *vintfFragmentModule) AndroidMkEntries() []AndroidMkEntries {
 			},
 		},
 	}}
+}
+
+type generateVintfFragmentProperties struct {
+	Name             *string
+	Src              string `android:"path"`
+	Soc_specific     *bool
+	Device_specific  *bool
+	Product_specific *bool
+	Recovery         *bool
+}
+
+func vintfFragmentsMutator(ctx TopDownMutatorContext) {
+	var m = ctx.Module()
+	var addedVintfFragments []string
+
+	for _, vintf_fragment := range m.base().commonProperties.Vintf_fragments.GetOrDefault(ctx, nil) {
+		vintfProps := generateVintfFragmentProperties{}
+		moduleName := getVintfFragmentModuleName(m, vintf_fragment)
+		vintfProps.Name = proptools.StringPtr(moduleName)
+		vintfProps.Src = vintf_fragment
+		vintfProps.Soc_specific = proptools.BoolPtr(ctx.SocSpecific())
+		vintfProps.Device_specific = proptools.BoolPtr(ctx.DeviceSpecific())
+		vintfProps.Product_specific = proptools.BoolPtr(ctx.ProductSpecific())
+		vintfProps.Recovery = proptools.BoolPtr(m.InstallInRecovery())
+
+		ctx.CreateModule(vintfLibraryFactory, &vintfProps)
+		addedVintfFragments = append(addedVintfFragments, moduleName)
+	}
+
+	m.base().commonProperties.Vintf_fragment_modules.AppendSimpleValue(addedVintfFragments)
+}
+
+func getVintfFragmentModuleName(m Module, vintfFragment string) string {
+	vintfFragmentReplaced := strings.ReplaceAll(vintfFragment, "/", "_")
+	vintfFragmentReplaced = strings.ReplaceAll(vintfFragmentReplaced, ":", "_")
+	return m.Name() + "_vintf_fragment_" + vintfFragmentReplaced
 }

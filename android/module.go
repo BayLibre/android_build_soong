@@ -88,7 +88,6 @@ type Module interface {
 	IsReplacedByPrebuilt() bool
 	ExportedToMake() bool
 	InitRc() Paths
-	VintfFragments() Paths
 	EffectiveLicenseKinds() []string
 	EffectiveLicenseFiles() Paths
 
@@ -869,11 +868,9 @@ type ModuleBase struct {
 	ruleParams  map[blueprint.Rule]blueprint.RuleParams
 	variables   map[string]string
 
-	initRcPaths         Paths
-	vintfFragmentsPaths Paths
+	initRcPaths Paths
 
-	installedInitRcPaths         InstallPaths
-	installedVintfFragmentsPaths InstallPaths
+	installedInitRcPaths InstallPaths
 
 	// Merged Aconfig files for all transitive deps.
 	aconfigFilePaths Paths
@@ -1620,10 +1617,6 @@ func (m *ModuleBase) InitRc() Paths {
 	return append(Paths{}, m.initRcPaths...)
 }
 
-func (m *ModuleBase) VintfFragments() Paths {
-	return append(Paths{}, m.vintfFragmentsPaths...)
-}
-
 func (m *ModuleBase) CompileMultilib() *string {
 	return m.base().commonProperties.Compile_multilib
 }
@@ -1872,17 +1865,6 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 				}
 			}
 
-			m.vintfFragmentsPaths = PathsForModuleSrc(ctx, m.commonProperties.Vintf_fragments.GetOrDefault(ctx, nil))
-			vintfDir := PathForModuleInstall(ctx, "etc", "vintf", "manifest")
-			for _, src := range m.vintfFragmentsPaths {
-				installedVintfFragment := vintfDir.Join(ctx, src.Base())
-				m.katiVintfInstalls = append(m.katiVintfInstalls, katiInstall{
-					from: src,
-					to:   installedVintfFragment,
-				})
-				ctx.PackageFile(vintfDir, src.Base(), src)
-				m.installedVintfFragmentsPaths = append(m.installedVintfFragmentsPaths, installedVintfFragment)
-			}
 		}
 
 		licensesPropertyFlattener(ctx)
