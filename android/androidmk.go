@@ -518,6 +518,7 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 	a.Required = append(a.Required, amod.RequiredModuleNames(ctx)...)
 	a.Host_required = append(a.Host_required, amod.HostRequiredModuleNames()...)
 	a.Target_required = append(a.Target_required, amod.TargetRequiredModuleNames()...)
+	a.Required = append(a.Required, amod.VintfFragmentModuleNames(ctx)...)
 
 	for _, distString := range a.GetDistForGoals(mod) {
 		fmt.Fprintf(&a.header, distString)
@@ -589,9 +590,6 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 
 		if !base.InVendorRamdisk() {
 			a.AddPaths("LOCAL_FULL_INIT_RC", base.initRcPaths)
-		}
-		if len(base.vintfFragmentsPaths) > 0 {
-			a.AddPaths("LOCAL_FULL_VINTF_FRAGMENTS", base.vintfFragmentsPaths)
 		}
 		a.SetBoolIfTrue("LOCAL_PROPRIETARY_MODULE", Bool(base.commonProperties.Proprietary))
 		if Bool(base.commonProperties.Vendor) || Bool(base.commonProperties.Soc_specific) {

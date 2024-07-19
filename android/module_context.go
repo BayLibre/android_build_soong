@@ -518,7 +518,6 @@ func (m *moduleContext) installFile(installPath InstallPath, name string, srcPat
 	if m.requiresFullInstall() {
 		deps = append(deps, InstallPaths(m.module.base().installFilesDepSet.ToList())...)
 		deps = append(deps, m.module.base().installedInitRcPaths...)
-		deps = append(deps, m.module.base().installedVintfFragmentsPaths...)
 
 		var implicitDeps, orderOnlyDeps Paths
 
