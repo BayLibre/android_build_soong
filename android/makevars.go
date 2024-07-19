@@ -302,9 +302,21 @@ func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 	})
 	katiInstalls = append(katiInstalls, katiInitRcInstalls...)
 
-	slices.SortFunc(katiVintfManifestInstalls, compareKatiInstalls)
+	// Vintf Manifest may have different from paths as they are intermediate outputs from multiple variants.
+	// Use vintfSource instead to compare two katiInstalls.
+	compareKatiVintfManifestInstalls := func(a, b katiInstall) int {
+		aTo, bTo := a.to.String(), b.to.String()
+		if cmpTo := cmp.Compare(aTo, bTo); cmpTo != 0 {
+			return cmpTo
+		}
+
+		aSource, bSource := a.vintfSource.String(), b.vintfSource.String()
+		return cmp.Compare(aSource, bSource)
+	}
+
+	slices.SortFunc(katiVintfManifestInstalls, compareKatiVintfManifestInstalls)
 	katiVintfManifestInstalls = slices.CompactFunc(katiVintfManifestInstalls, func(a, b katiInstall) bool {
-		return compareKatiInstalls(a, b) == 0
+		return compareKatiVintfManifestInstalls(a, b) == 0
 	})
 
 	if ctx.Failed() {
@@ -554,8 +566,8 @@ EXTRA_INSTALL_ZIPS :=
 	}
 
 	for _, install := range katiVintfManifestInstalls {
-		// Write a rule for each vintf install request that calls the copy-vintf-manifest-chedk make function.
-		fmt.Fprintf(buf, "$(eval $(call copy-vintf-manifest-checked, %s, %s))\n", install.from.String(), install.to.String())
+		// Write a rule for each vintf install request that copies manifest file already handled with assemble_vintf.
+		fmt.Fprintf(buf, "$(eval $(call copy-one-file, %s, %s))\n", install.from.String(), install.to.String())
 
 		if len(install.implicitDeps) > 0 {
 			panic(fmt.Errorf("unsupported implicitDeps %q in vintf install rule %q", install.implicitDeps, install.to))

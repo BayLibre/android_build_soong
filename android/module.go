@@ -1855,15 +1855,26 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 
 			m.vintfFragmentsPaths = PathsForModuleSrc(ctx, m.commonProperties.Vintf_fragments)
 			vintfDir := PathForModuleInstall(ctx, "etc", "vintf", "manifest")
+			builder := NewRuleBuilder(pctx, ctx)
 			for _, src := range m.vintfFragmentsPaths {
 				installedVintfFragment := vintfDir.Join(ctx, src.Base())
+				intermediate_path := PathForModuleOut(ctx, src.Base())
+				// fmt.Println("Vintf Fragment " + installedVintfFragment.String() + "\n with intermediate path " + intermediate_path.String() + "\n with source name " + src.String() + "\n from " + ctx.ModuleDir() + ":" + m.Name() + "\n with # of items : " + strconv.Itoa(len(m.vintfFragmentsPaths)))
+
+				builder.Command().
+					Flag("VINTF_IGNORE_TARGET_FCM_VERSION=true").
+					BuiltTool("assemble_vintf").
+					FlagWithInput("-i ", src).
+					FlagWithOutput("-o ", intermediate_path)
 				m.katiVintfInstalls = append(m.katiVintfInstalls, katiInstall{
-					from: src,
-					to:   installedVintfFragment,
+					from:        intermediate_path,
+					to:          installedVintfFragment,
+					vintfSource: src,
 				})
-				ctx.PackageFile(vintfDir, src.Base(), src)
+				ctx.PackageFile(vintfDir, src.Base(), intermediate_path)
 				m.installedVintfFragmentsPaths = append(m.installedVintfFragmentsPaths, installedVintfFragment)
 			}
+			builder.Build("vintf_fragments", "Assemble Vintf for "+m.Name())
 		}
 
 		licensesPropertyFlattener(ctx)
@@ -2103,7 +2114,8 @@ type katiInstall struct {
 	executable    bool
 	extraFiles    *extraFilesZip
 
-	absFrom string
+	absFrom     string
+	vintfSource Path
 }
 
 type extraFilesZip struct {
