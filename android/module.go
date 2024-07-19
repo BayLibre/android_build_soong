@@ -385,6 +385,7 @@ type commonProperties struct {
 	Init_rc proptools.Configurable[[]string] `android:"arch_variant,path"`
 
 	// VINTF manifest fragments to be installed if this module is installed
+	// Deprecated: Use `vintf_fragment_modules` property instead.
 	Vintf_fragments proptools.Configurable[[]string] `android:"path"`
 
 	// names of other modules to install if this module is installed
@@ -1783,12 +1784,11 @@ type InstallFilesInfo struct {
 	TransitiveInstallFiles *DepSet[InstallPath]
 	// katiInitRcInstalls and katiVintfInstalls track the install rules created by Soong that are
 	// allowed to have duplicates across modules and variants.
-	KatiInitRcInstalls           katiInstalls
-	KatiVintfInstalls            katiInstalls
-	InitRcPaths                  Paths
-	VintfFragmentsPaths          Paths
-	InstalledInitRcPaths         InstallPaths
-	InstalledVintfFragmentsPaths InstallPaths
+	KatiInitRcInstalls   katiInstalls
+	KatiVintfInstalls    katiInstalls
+	InitRcPaths          Paths
+	VintfFragmentsPaths  Paths
+	InstalledInitRcPaths InstallPaths
 
 	// The files to copy to the dist as explicitly specified in the .bp file.
 	DistFiles TaggedDistFiles
@@ -1903,20 +1903,6 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 				installFiles.InstalledInitRcPaths = ctx.installedInitRcPaths
 			}
 
-			ctx.vintfFragmentsPaths = PathsForModuleSrc(ctx, m.commonProperties.Vintf_fragments.GetOrDefault(ctx, nil))
-			vintfDir := PathForModuleInstall(ctx, "etc", "vintf", "manifest")
-			for _, src := range ctx.vintfFragmentsPaths {
-				installedVintfFragment := vintfDir.Join(ctx, src.Base())
-				ctx.katiVintfInstalls = append(ctx.katiVintfInstalls, katiInstall{
-					from: src,
-					to:   installedVintfFragment,
-				})
-				ctx.PackageFile(vintfDir, src.Base(), src)
-				ctx.installedVintfFragmentsPaths = append(ctx.installedVintfFragmentsPaths, installedVintfFragment)
-			}
-			installFiles.VintfFragmentsPaths = ctx.vintfFragmentsPaths
-			installFiles.KatiVintfInstalls = ctx.katiVintfInstalls
-			installFiles.InstalledVintfFragmentsPaths = ctx.installedVintfFragmentsPaths
 		}
 
 		licensesPropertyFlattener(ctx)

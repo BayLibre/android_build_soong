@@ -110,6 +110,11 @@ var preArch = []RegisterMutatorFunc{
 	// This must run before the defaults so that defaults modules can pick up the package default.
 	RegisterLicensesPackageMapper,
 
+	// Register a mutator which converts all vintf_fragments into vintf_fragment modules.
+	//
+	// This must run before the defaults to create modules.
+	RegisterVintfPreArchMutator,
+
 	// Apply properties from defaults modules to the referencing modules.
 	//
 	// Any mutators that are added before this will not see any modules created by
