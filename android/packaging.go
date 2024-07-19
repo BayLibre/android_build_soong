@@ -358,6 +358,10 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 			}
 			dstPath := ps.relPathInPackage
 			if existingPs, ok := m[dstPath]; ok {
+				// VINTF manifest can have conflicts from multiple variants. Use the first one which is same logic from KATI.
+				if strings.HasPrefix(dstPath, "etc/vintf/manifest") {
+					continue
+				}
 				if !existingPs.Equals(&ps) {
 					ctx.ModuleErrorf("packaging conflict at %v:\n%v\n%v", dstPath, existingPs, ps)
 				}
