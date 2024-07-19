@@ -253,12 +253,11 @@ type moduleContext struct {
 	katiSymlinks katiInstalls
 	// katiInitRcInstalls and katiVintfInstalls track the install rules created by Soong that are
 	// allowed to have duplicates across modules and variants.
-	katiInitRcInstalls           katiInstalls
-	katiVintfInstalls            katiInstalls
-	initRcPaths                  Paths
-	vintfFragmentsPaths          Paths
-	installedInitRcPaths         InstallPaths
-	installedVintfFragmentsPaths InstallPaths
+	katiInitRcInstalls   katiInstalls
+	katiVintfInstalls    katiInstalls
+	initRcPaths          Paths
+	vintfFragmentsPaths  Paths
+	installedInitRcPaths InstallPaths
 
 	testData []DataPath
 
@@ -548,7 +547,6 @@ func (m *moduleContext) installFile(installPath InstallPath, name string, srcPat
 	if m.requiresFullInstall() {
 		deps = append(deps, InstallPaths(m.TransitiveInstallFiles.ToList())...)
 		deps = append(deps, m.installedInitRcPaths...)
-		deps = append(deps, m.installedVintfFragmentsPaths...)
 
 		var implicitDeps, orderOnlyDeps Paths
 
