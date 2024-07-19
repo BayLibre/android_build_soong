@@ -216,6 +216,8 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 				ctx.Module().MakeUninstallable()
 			}
 
+			addStubDependencyProviders(ctx)
+
 			return outputFile
 		}
 	}
