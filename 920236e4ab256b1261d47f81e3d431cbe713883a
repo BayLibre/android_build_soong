@@ -34,6 +34,24 @@
       "parentUuid": "43eda0b8_7bf73b47",
       "revId": "920236e4ab256b1261d47f81e3d431cbe713883a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a09824b0_62e6d1a5",
+        "filename": "java/base.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2409,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-19T00:09:09Z",
+      "side": 1,
+      "message": "I don\u0027t have an systematic way to enforce this in mind. But adding a comment above the definition of `compileDependencyTags` may be enough to raise awareness? Something like the following:\n```\n// Any dependency tags that modifies the following module properties must be\n// added to this list:\n// - classpath\n// - dexClasspath\n// - bootclasspath\n// - HeaderJars\n// ...\n```",
+      "parentUuid": "d9935c74_0e8a3ac0",
+      "revId": "920236e4ab256b1261d47f81e3d431cbe713883a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
