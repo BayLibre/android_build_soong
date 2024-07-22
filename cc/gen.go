@@ -236,6 +236,7 @@ func genSources(
 	aidlLibraryInfos []aidl_library.AidlLibraryInfo,
 	srcFiles android.Paths,
 	buildFlags builderFlags,
+        p *android.ProtoProperties,
 ) (android.Paths, android.Paths, generatedSourceInfo) {
 
 	var info generatedSourceInfo
@@ -283,7 +284,7 @@ func genSources(
 			genLex(ctx, srcFile, cppFile, buildFlags.lex)
 			generatedSources = append(generatedSources, cppFile)
 		case ".proto":
-			ccFile, headerFile := genProto(ctx, srcFile, buildFlags)
+			ccFile, headerFile := genProto(ctx, srcFile, buildFlags, p)
 			srcFiles[i] = ccFile
 			info.protoHeaders = append(info.protoHeaders, headerFile)
 			// Use the generated header as an order only dep to ensure that it is up to date when needed.
