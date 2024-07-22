@@ -27,7 +27,7 @@ const (
 
 // genProto creates a rule to convert a .proto file to generated .pb.cc and .pb.h files and returns
 // the paths to the generated files.
-func genProto(ctx android.ModuleContext, protoFile android.Path, flags builderFlags) (cc, header android.WritablePath) {
+func genProto(ctx android.ModuleContext, protoFile android.Path, flags builderFlags, p *android.ProtoProperties) (cc, header android.WritablePath) {
 	var ccFile, headerFile android.ModuleGenPath
 
 	srcSuffix := ".cc"
@@ -35,13 +35,19 @@ func genProto(ctx android.ModuleContext, protoFile android.Path, flags builderFl
 		srcSuffix = ".c"
 	}
 
+        srcInfix := "pb"
+        plugin := String(p.Proto.Plugin)
+        if plugin == "grpc-cpp-plugin" {
+          srcInfix = "grpc.pb"
+        }
+
 	if flags.proto.CanonicalPathFromRoot {
-		ccFile = android.GenPathWithExt(ctx, "proto", protoFile, "pb"+srcSuffix)
-		headerFile = android.GenPathWithExt(ctx, "proto", protoFile, "pb.h")
+		ccFile = android.GenPathWithExt(ctx, "proto", protoFile, srcInfix + srcSuffix)
+		headerFile = android.GenPathWithExt(ctx, "proto", protoFile, srcInfix + ".h")
 	} else {
 		rel := protoFile.Rel()
-		ccFile = android.PathForModuleGen(ctx, "proto", pathtools.ReplaceExtension(rel, "pb"+srcSuffix))
-		headerFile = android.PathForModuleGen(ctx, "proto", pathtools.ReplaceExtension(rel, "pb.h"))
+		ccFile = android.PathForModuleGen(ctx, "proto", pathtools.ReplaceExtension(rel, srcInfix + srcSuffix))
+		headerFile = android.PathForModuleGen(ctx, "proto", pathtools.ReplaceExtension(rel, srcInfix + ".h"))
 	}
 
 	protoDeps := flags.proto.Deps
