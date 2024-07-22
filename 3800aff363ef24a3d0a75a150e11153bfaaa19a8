@@ -16,6 +16,24 @@
       "message": "nit: do you mind adding a description? Ditto for the api library one.",
       "revId": "3800aff363ef24a3d0a75a150e11153bfaaa19a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9823ce93_781839b2",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-07-22T22:14:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dd1be44_dcae145d",
+      "revId": "3800aff363ef24a3d0a75a150e11153bfaaa19a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
