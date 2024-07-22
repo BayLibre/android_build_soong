@@ -22,6 +22,30 @@
       },
       "revId": "00abdc02de045a3f74663fed2e812a44870d5af2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69bce552_4785c5d5",
+        "filename": "android/makevars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-07-22T08:03:05Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "d4082241_9a00022e",
+      "range": {
+        "startLine": 557,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 119
+      },
+      "revId": "00abdc02de045a3f74663fed2e812a44870d5af2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a48ebe_4080154c",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1861,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-07-22T08:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b690600_33e0a6dd",
+      "range": {
+        "startLine": 1861,
+        "startChar": 4,
+        "endLine": 1861,
+        "endChar": 21
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3e4a5a4_48d59a35",
@@ -60,6 +84,30 @@
       "writtenOn": "2024-07-19T07:50:10Z",
       "side": 1,
       "message": "What is the meaning of this line? Need some inline comment I think.",
+      "range": {
+        "startLine": 1864,
+        "startChar": 0,
+        "endLine": 1864,
+        "endChar": 50
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c2fa829_62930684",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1864,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-07-22T08:03:05Z",
+      "side": 1,
+      "message": "This is copy of behavior from https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/definitions.mk;l\u003d3183. Not familiar with vintf, but it looks like `assemble_vintf` will use manifest version as legacy without this flag : https://cs.android.com/android/platform/superproject/main/+/main:system/libvintf/AssembleVintf.cpp;l\u003d593-596",
+      "parentUuid": "c3e4a5a4_48d59a35",
       "range": {
         "startLine": 1864,
         "startChar": 0,
