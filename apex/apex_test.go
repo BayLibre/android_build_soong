@@ -11738,3 +11738,14 @@ func TestUpdatableApexMinSdkVersionCurrent(t *testing.T) {
 		}
 	`)
 }
+
+func TestHidePlatformVariantOfPrebuiltApexLibraries(t *testing.T) {
+	ctx := testApex(t, `
+		cc_prebuilt_library_shared {
+			name: "prebuiltapexlib",
+			apex_available: ["myapex"], // not available to platform
+		}
+	`)
+	lib := ctx.ModuleForTests("prebuiltapexlib", "android_arm64_armv8-a_shared").Module()
+	android.AssertBoolEquals(t, "Platform variant of prebuilt apex library should not be installed", true, lib.IsHideFromMake())
+}
