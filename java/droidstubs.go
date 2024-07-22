@@ -408,6 +408,8 @@ func (d *Droidstubs) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if d.properties.Api_levels_module != nil {
 		ctx.AddDependency(ctx.Module(), metalavaAPILevelsModuleTag, proptools.String(d.properties.Api_levels_module))
 	}
+
+	addMetalavaConfigDeps(ctx)
 }
 
 func (d *Droidstubs) sdkValuesFlags(ctx android.ModuleContext, cmd *android.RuleBuilderCommand, metadataDir android.WritablePath) {
@@ -738,7 +740,26 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, srcs andr
 
 	cmd.Flag(config.MetalavaFlags)
 
+	addMetalavaConfigFilesToCmd(ctx, cmd)
+
 	return cmd
+}
+
+// MetalavaConfigFilesFilegroup is the name of the filegroup in build/soong/java/metalava that lists
+// the configuration files to pass to Metalava.
+const MetalavaConfigFilesFilegroup = "metalava-config-files"
+
+// addMetalavaConfigDeps adds a dependency on the MetalavaConfigFilesFilegroup filegroup. This must
+// be called from the DepsMutator(...) of any module that calls addMetalavaConfigFilesToCmd.
+func addMetalavaConfigDeps(ctx android.BottomUpMutatorContext) {
+	android.ExtractSourceDeps(ctx, proptools.StringPtr(MetalavaConfigFilesFilegroup))
+}
+
+// addMetalavaConfigFilesToCmd adds --config-file options to use the config files list in the
+// MetalavaConfigFilesFilegroup filegroup.
+func addMetalavaConfigFilesToCmd(ctx android.ModuleContext, cmd *android.RuleBuilderCommand) {
+	configFiles := android.PathsForModuleSrc(ctx, []string{":" + MetalavaConfigFilesFilegroup})
+	cmd.FlagForEachInput("--config-file2 ", configFiles)
 }
 
 // Pass flagged apis related flags to metalava. When aconfig_declarations property is not
