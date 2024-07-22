@@ -16,6 +16,24 @@
       "message": "Verified with the following:\n```\n$ aninja -t path api-stubs-docs-non-updatable build/soong/java/metalava/main-config.xml\napi-stubs-docs-non-updatable\nout/soong/.intermediates/frameworks/base/api/api-stubs-docs-non-updatable/android_common/everything/api-stubs-docs-non-updatable_api.txt\nbuild/soong/java/metalava/main-config.xml\n```",
       "revId": "c06fddfae17fdfe13a4b39a2e879622c7e410d9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1929632d_c5dc492f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-22T21:09:03Z",
+      "side": 1,
+      "message": "(After `m nothing`)",
+      "parentUuid": "c176ab7e_7991be5b",
+      "revId": "c06fddfae17fdfe13a4b39a2e879622c7e410d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
