@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a2d05e8_e6dcdf8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-07-22T22:17:35Z",
+      "side": 1,
+      "message": "Setting CR-2 to try and prevent the presubmit from being run until the Metalava change has been merged across.",
+      "revId": "78cad4a3739d35b312baa7ad444c3372c5ad6020",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
