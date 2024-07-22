@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33efdd8d_28cc3e9f",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-07-22T20:07:25Z",
+      "side": 1,
+      "message": "This is intentionally the wrong name as it lets me easily see if it is being passed to Metalava.",
+      "range": {
+        "startLine": 762,
+        "startChar": 23,
+        "endLine": 762,
+        "endChar": 37
+      },
+      "revId": "fe05fa34565a67ffed72085991b727cd1accaece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
