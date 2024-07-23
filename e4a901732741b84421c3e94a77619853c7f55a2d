@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "13322211_b7c8f397",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-23T19:41:58Z",
+      "side": 1,
+      "message": "Resolved from offline discussion: even when rdep does not specify sdk_version or set `sdk_version: \"\"`, it will get the stubs of the java_sdk_library when `default_to_stubs` property is set.",
+      "parentUuid": "15138d9e_ef24329d",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "e4a901732741b84421c3e94a77619853c7f55a2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c2a13522_4492c4c5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
