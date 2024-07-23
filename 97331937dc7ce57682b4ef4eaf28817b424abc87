@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d84a974_49b5f791",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-23T22:05:19Z",
+      "side": 1,
+      "message": "should this be an `OptionalPath` given that the stubs are generated only when `BuildStubs \u003d\u003d true`?",
+      "fixSuggestions": [
+        {
+          "fixId": "3533d881_d4b93701",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/library.go",
+              "range": {
+                "startLine": 433,
+                "startChar": 0,
+                "endLine": 434,
+                "endChar": 0
+              },
+              "replacement": "\tstubsSymbolFilePath android.OptionalPath\n"
+            },
+            {
+              "path": "cc/library.go",
+              "range": {
+                "startLine": 602,
+                "startChar": 0,
+                "endLine": 603,
+                "endChar": 0
+              },
+              "replacement": "\t\tlibrary.stubsSymbolFilePath \u003d android.OptionalPathForModuleSrc(ctx, symbolFile)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "97331937dc7ce57682b4ef4eaf28817b424abc87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
