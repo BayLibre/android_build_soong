@@ -38,8 +38,6 @@ func RegisterRequiredBuildComponentsForTest(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_cmake_snapshot", CmakeSnapshotFactory)
 	ctx.RegisterModuleType("cc_object", ObjectFactory)
 	ctx.RegisterModuleType("cc_genrule", GenRuleFactory)
-	ctx.RegisterModuleType("ndk_prebuilt_shared_stl", NdkPrebuiltSharedStlFactory)
-	ctx.RegisterModuleType("ndk_prebuilt_static_stl", NdkPrebuiltStaticStlFactory)
 	ctx.RegisterModuleType("ndk_library", NdkLibraryFactory)
 	ctx.RegisterModuleType("ndk_headers", NdkHeadersFactory)
 }
@@ -397,13 +395,6 @@ func commonDefaultModules() string {
 			name: "libprotobuf-cpp-lite",
 		}
 
-		cc_library {
-			name: "ndk_libunwind",
-			sdk_version: "minimum",
-			stl: "none",
-			system_shared_libs: [],
-		}
-
 		ndk_library {
 			name: "libc",
 			first_version: "minimum",
@@ -420,11 +411,6 @@ func commonDefaultModules() string {
 			name: "libdl",
 			first_version: "minimum",
 			symbol_file: "libdl.map.txt",
-		}
-
-		ndk_prebuilt_shared_stl {
-			name: "ndk_libc++_shared",
-			export_include_dirs: ["ndk_libc++_shared"],
 		}
 
 		cc_library_static {
@@ -557,13 +543,6 @@ var PrepareForTestWithCcBuildComponents = android.GroupFixturePreparers(
 
 		RegisterLlndkLibraryTxtType(ctx)
 	}),
-
-	// Additional files needed in tests that disallow non-existent source files.
-	// This includes files that are needed by all, or at least most, instances of a cc module type.
-	android.MockFS{
-		// Needed for ndk_prebuilt_(shared|static)_stl.
-		"defaults/cc/common/current/sources/cxx-stl/llvm-libc++/libs": nil,
-	}.AddToFixture(),
 )
 
 // Preparer that will define default cc modules, e.g. standard prebuilt modules.
@@ -576,7 +555,6 @@ var PrepareForTestWithCcDefaultModules = android.GroupFixturePreparers(
 		"defaults/cc/common/libdl.map.txt":               nil,
 		"defaults/cc/common/libft2.map.txt":              nil,
 		"defaults/cc/common/libm.map.txt":                nil,
-		"defaults/cc/common/ndk_libc++_shared":           nil,
 		"defaults/cc/common/crtbegin_so.c":               nil,
 		"defaults/cc/common/crtbegin.c":                  nil,
 		"defaults/cc/common/crtend_so.c":                 nil,
