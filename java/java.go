@@ -443,30 +443,6 @@ var (
 	usesLibCompat30OptTag   = makeUsesLibraryDependencyTag(30, true)
 )
 
-// A list of tags for deps used for compiling a module.
-// Any dependency tags that modifies the following properties of `deps` in `Module.collectDeps` should be
-// added to this list:
-// - bootClasspath
-// - classpath
-// - java9Classpath
-// - systemModules
-// - kotlin deps...
-var (
-	compileDependencyTags = []blueprint.DependencyTag{
-		sdkLibTag,
-		libTag,
-		staticLibTag,
-		bootClasspathTag,
-		systemModulesTag,
-		java9LibTag,
-		kotlinStdlibTag,
-		kotlinAnnotationsTag,
-		kotlinPluginTag,
-		syspropPublicStubDepTag,
-		instrumentationForTag,
-	}
-)
-
 func IsLibDepTag(depTag blueprint.DependencyTag) bool {
 	return depTag == libTag || depTag == sdkLibTag
 }

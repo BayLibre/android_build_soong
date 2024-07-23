@@ -550,10 +550,6 @@ type Module struct {
 	// java_aconfig_library or java_library modules that are statically linked
 	// to this module. Does not contain cache files from all transitive dependencies.
 	aconfigCacheFiles android.Paths
-
-	// List of soong module dependencies required to compile the current module.
-	// This information is printed out to `Dependencies` field in module_bp_java_deps.json
-	compileDepNames []string
 }
 
 var _ android.InstallableModule = (*Module)(nil)
@@ -2065,7 +2061,10 @@ func (j *Module) IDEInfo(dpInfo *android.IdeInfo) {
 }
 
 func (j *Module) CompilerDeps() []string {
-	return j.compileDepNames
+	jdeps := []string{}
+	jdeps = append(jdeps, j.properties.Libs...)
+	jdeps = append(jdeps, j.properties.Static_libs...)
+	return jdeps
 }
 
 func (j *Module) hasCode(ctx android.ModuleContext) bool {
@@ -2407,11 +2406,6 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			case instrumentationForTag:
 				ctx.PropertyErrorf("instrumentation_for", "dependency %q of type %q does not provide JavaInfo so is unsuitable for use with this property", ctx.OtherModuleName(module), ctx.OtherModuleType(module))
 			}
-		}
-
-		if android.InList(tag, compileDependencyTags) {
-			// Add the dependency name to compileDepNames so that it can be recorded in module_bp_java_deps.json
-			j.compileDepNames = append(j.compileDepNames, otherName)
 		}
 
 		addCLCFromDep(ctx, module, j.classLoaderContexts)
