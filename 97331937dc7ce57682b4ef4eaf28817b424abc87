@@ -44,6 +44,24 @@
       ],
       "revId": "97331937dc7ce57682b4ef4eaf28817b424abc87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97cc0459_5a03a950",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-23T22:24:24Z",
+      "side": 1,
+      "message": "I think since `Path` is an interface and not a struct, using it should be ok. `OptionalPath` implements `Path`, and `library_sdk_member.go` uses the Path interface rather than the underlying implementation of `OptionalPath|SrcPath|OutputPath...`\n\nI have also updated the CL with a check that errors out when the stub path is nil for the stub variant of the library.",
+      "parentUuid": "2d84a974_49b5f791",
+      "revId": "97331937dc7ce57682b4ef4eaf28817b424abc87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
