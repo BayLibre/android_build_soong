@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15138d9e_ef24329d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-23T18:40:52Z",
+      "side": 1,
+      "message": "My understanding of this [code block](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/061c7befc7f86ae6a8087e9f8f1e82aa50d1a611:java/sdk_library.go;l\u003d2283-2285;drc\u003dd2adde79aa1b008ebaf939b0591033a94f7b8160;bpv\u003d1;bpt\u003d0) is that it only happens when the rdep does not specify a sdk_version. If rdep has `sdk_version: \"\"`, then it will get impl of the java_sdk_library.\n\nSince the stubs vs impl depends on the value of `sdk_version` of the reverse dependency, do you think we should _always_ set `Is_stubs_module` on the top-level sdk library?",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "e4a901732741b84421c3e94a77619853c7f55a2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2a13522_4492c4c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-23T18:40:52Z",
+      "side": 1,
+      "message": "Setting `Is_stubs_module` for `Api_only: true` seems correct to me, but I left a question about `Default_to_stubs`.",
+      "revId": "e4a901732741b84421c3e94a77619853c7f55a2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
