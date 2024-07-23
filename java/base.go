@@ -562,9 +562,11 @@ type Module struct {
 
 var _ android.InstallableModule = (*Module)(nil)
 
-// To satisfy the InstallableModule interface
-func (j *Module) EnforceApiContainerChecks() bool {
-	return true
+// To satisfy the android.InstallableModule interface
+func (j *Module) IntraContainerDependencyTags() []blueprint.DependencyTag {
+	return []blueprint.DependencyTag{
+		staticLibTag,
+	}
 }
 
 // Overrides android.ModuleBase.InstallInProduct()

@@ -57,6 +57,20 @@ func TestJavaContainersModuleProperties(t *testing.T) {
 			test_suites: [
 				"cts",
 			],
+			static_libs: [
+				"foo_cts_static_lib",
+			],
+			libs: [
+				"foo_cts_lib",
+			],
+		}
+		java_library {
+			name: "foo_cts_static_lib",
+			srcs: ["A.java"],
+		}
+		java_library {
+			name: "foo_cts_lib",
+			srcs: ["A.java"],
 		}
 		java_test {
 			name: "foo_non_cts_test",
@@ -64,6 +78,20 @@ func TestJavaContainersModuleProperties(t *testing.T) {
 			test_suites: [
 				"general-tests",
 			],
+			static_libs: [
+				"foo_non_cts_static_lib",
+			],
+			libs: [
+				"foo_non_cts_lib",
+			],
+		}
+		java_library {
+			name: "foo_non_cts_static_lib",
+			srcs: ["A.java"],
+		}
+		java_library {
+			name: "foo_non_cts_lib",
+			srcs: ["A.java"],
 		}
 	`)
 
@@ -110,8 +138,36 @@ func TestJavaContainersModuleProperties(t *testing.T) {
 			isCts:              true,
 		},
 		{
+			moduleName:         "foo_cts_static_lib",
+			isSystemContainer:  true,
+			isVendorContainer:  false,
+			isProductContainer: false,
+			isCts:              true,
+		},
+		{
+			moduleName:         "foo_cts_lib",
+			isSystemContainer:  true,
+			isVendorContainer:  false,
+			isProductContainer: false,
+			isCts:              false,
+		},
+		{
 			moduleName:         "foo_non_cts_test",
 			isSystemContainer:  false,
+			isVendorContainer:  false,
+			isProductContainer: false,
+			isCts:              false,
+		},
+		{
+			moduleName:         "foo_non_cts_static_lib",
+			isSystemContainer:  true,
+			isVendorContainer:  false,
+			isProductContainer: false,
+			isCts:              false,
+		},
+		{
+			moduleName:         "foo_non_cts_lib",
+			isSystemContainer:  true,
 			isVendorContainer:  false,
 			isProductContainer: false,
 			isCts:              false,
@@ -121,7 +177,7 @@ func TestJavaContainersModuleProperties(t *testing.T) {
 	for _, c := range testcases {
 		m := result.ModuleForTests(c.moduleName, "android_common")
 		containers, _ := android.OtherModuleProvider(result.TestContext.OtherModuleProviderAdaptor(), m.Module(), android.ContainersInfoProvider)
-		belongingContainers := containers.BelongingContainers()
+		belongingContainers := containers.Containers()
 		checkContainerMatch(t, c.moduleName, "system", c.isSystemContainer, android.InList(android.SystemContainer, belongingContainers))
 		checkContainerMatch(t, c.moduleName, "vendor", c.isVendorContainer, android.InList(android.VendorContainer, belongingContainers))
 		checkContainerMatch(t, c.moduleName, "product", c.isProductContainer, android.InList(android.ProductContainer, belongingContainers))
