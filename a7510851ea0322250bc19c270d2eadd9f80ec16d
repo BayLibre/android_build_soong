@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dbfd08b_47426f7f",
+        "filename": "snapshot/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-07-23T03:58:05Z",
+      "side": 1,
+      "message": "do we still use these?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "a7510851ea0322250bc19c270d2eadd9f80ec16d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
