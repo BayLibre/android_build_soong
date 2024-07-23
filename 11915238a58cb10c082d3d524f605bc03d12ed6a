@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e35d2993_5e06d0e9",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1840,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-07-23T08:01:14Z",
+      "side": 1,
+      "message": "Can you please help me understand what would be benefits of this model? It doesn\u0027t look a lot different from current model to me, as long as init_rc and vintf_fragment files are not shared between modules, or may have different characteristics (such as properties or custom genrule) per each file.",
+      "parentUuid": "6f061fa9_abbcbaa9",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1840,
+        "endChar": 79
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b690600_33e0a6dd",
         "filename": "android/module.go",
         "patchSetId": 3
