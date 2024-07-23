@@ -17,9 +17,63 @@ package android
 import (
 	"reflect"
 	"slices"
+	"strings"
 
 	"github.com/google/blueprint"
 )
+
+func registerContainerPostDepsMutators(ctx RegisterMutatorsContext) {
+	ctx.TopDown("cts_container", ctsContainerMutator)
+}
+
+// Determines if the module belongs to the specific test suite based on the "test_suites"
+// property of the module.
+func inTestSuite(module Module, suite string) bool {
+	props := module.GetProperties()
+	for _, prop := range props {
+		val := reflect.ValueOf(prop).Elem()
+		if val.Kind() == reflect.Struct {
+			testSuites := val.FieldByName("Test_suites")
+			if testSuites.IsValid() &&
+				testSuites.Kind() == reflect.Slice &&
+				slices.Contains(testSuites.Interface().([]string), suite) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+type CtsInfo struct {
+	InCts bool
+}
+
+var CtsInfoProvider = blueprint.NewMutatorProvider[CtsInfo]("cts_container")
+
+// Visits test modules that belong to the cts test suites and walk the
+// dependencies.
+func ctsContainerMutator(ctx TopDownMutatorContext) {
+	if _, ok := ctx.Module().(InstallableModule); !ok {
+		return
+	}
+	if inTestSuite(ctx.Module(), "cts") {
+		ctx.WalkDeps(func(child, parent Module) bool {
+			SetProviderIfNotSet(ctx, CtsInfoProvider, CtsInfo{
+				InCts: true,
+			})
+
+			// Continue to iterate through the dependencies only if it is marked using a
+			// static dependency tag.
+			if im, ok := parent.(InstallableModule); ok {
+				tags := im.IntraContainerDependencyTags()
+				if InList(ctx.OtherModuleDependencyTag(child), tags) {
+					return true
+				}
+			}
+			return false
+		})
+	}
+}
 
 type StubsAvailableModule interface {
 	IsStubsModule() bool
@@ -49,7 +103,8 @@ var exceptionHandleFunctionsTable = map[exceptionHandleFuncLabel]func(ModuleCont
 }
 
 type InstallableModule interface {
-	EnforceApiContainerChecks() bool
+	// List of dependency tags that are used to add static dependencies.
+	IntraContainerDependencyTags() []blueprint.DependencyTag
 }
 
 type restriction struct {
@@ -64,12 +119,17 @@ type restriction struct {
 	// considered allowed and an error will not be thrown.
 	allowedExceptions []exceptionHandleFuncLabel
 }
+
 type container struct {
 	// The name of the container i.e. partition, api domain
 	name string
 
 	// Map of dependency restricted containers.
 	restricted []restriction
+}
+
+func (c container) String() string {
+	return c.name
 }
 
 var (
@@ -151,11 +211,37 @@ type ContainersInfo struct {
 	belongingApexes []ApexInfo
 }
 
-func (c *ContainersInfo) BelongingContainers() []*container {
-	return c.belongingContainers
+var ContainersInfoProvider = blueprint.NewProvider[ContainersInfo]()
+
+func (ci *ContainersInfo) Containers() []*container {
+	return ci.belongingContainers
 }
 
-var ContainersInfoProvider = blueprint.NewProvider[ContainersInfo]()
+func (ci ContainersInfo) String() string {
+	var sb strings.Builder
+
+	sb.WriteString("{ belonging containers: [")
+	for i, container := range ci.belongingContainers {
+		if i > 0 {
+			sb.WriteString(", ")
+		}
+		sb.WriteString(container.String())
+	}
+	sb.WriteString("], belonging apexes: [")
+	for i, apexModules := range ci.belongingApexes {
+		if i > 0 {
+			sb.WriteString(", ")
+		}
+		for j, apex := range apexModules.InApexModules {
+			if j > 0 {
+				sb.WriteString(", ")
+			}
+			sb.WriteString(apex)
+		}
+	}
+	sb.WriteString("] }")
+	return sb.String()
+}
 
 // Determines if the module can be installed in the system partition or not.
 // Logic is identical to that of modulePartition(...) defined in paths.go
@@ -173,6 +259,11 @@ func installInSystemPartition(ctx ModuleContext) bool {
 		determineModuleKind(module.base(), ctx.blueprintBaseModuleContext()) == platformModule
 }
 
+// Collect the container info of the partitions that are not converted into
+// Soong yet. Belonging to these containers mean that the variants of the module
+// will be installed into these partitions if they are actually installed.
+// Once all partitions are converted into Soong, this should be converted into
+// top down mutators and set during the graph walk.
 func generateContainerInfo(ctx ModuleContext) ContainersInfo {
 	inSystem := installInSystemPartition(ctx)
 	inProduct := ctx.Module().InstallInProduct()
@@ -185,15 +276,8 @@ func generateContainerInfo(ctx ModuleContext) ContainersInfo {
 		inVendor = inVendor || m.VendorVariantNeeded(ctx)
 	}
 
-	props := ctx.Module().GetProperties()
-	for _, prop := range props {
-		val := reflect.ValueOf(prop).Elem()
-		if val.Kind() == reflect.Struct {
-			testSuites := val.FieldByName("Test_suites")
-			if testSuites.IsValid() && testSuites.Kind() == reflect.Slice && slices.Contains(testSuites.Interface().([]string), "cts") {
-				inCts = true
-			}
-		}
+	if _, ok := ModuleProvider(ctx, CtsInfoProvider); ok {
+		inCts = true
 	}
 
 	var belongingApexes []ApexInfo

@@ -164,6 +164,7 @@ var postDeps = []RegisterMutatorFunc{
 	RegisterLicensesDependencyChecker,
 	registerNeverallowMutator,
 	RegisterOverridePostDepsMutators,
+	registerContainerPostDepsMutators,
 }
 
 var finalDeps = []RegisterMutatorFunc{}

@@ -152,7 +152,7 @@ func TestApexDepsContainers(t *testing.T) {
 	for _, c := range testcases {
 		m := result.ModuleForTests(c.moduleName, c.variant)
 		containers, _ := android.OtherModuleProvider(result.TestContext.OtherModuleProviderAdaptor(), m.Module(), android.ContainersInfoProvider)
-		belongingContainers := containers.BelongingContainers()
+		belongingContainers := containers.Containers()
 		checkContainerMatch(t, c.moduleName, "system", c.isSystemContainer, android.InList(android.SystemContainer, belongingContainers))
 		checkContainerMatch(t, c.moduleName, "apex", c.isApexContainer, android.InList(android.ApexContainer, belongingContainers))
 	}
@@ -262,7 +262,7 @@ func TestNonUpdatableApexDepsContainers(t *testing.T) {
 	for _, c := range testcases {
 		m := result.ModuleForTests(c.moduleName, c.variant)
 		containers, _ := android.OtherModuleProvider(result.TestContext.OtherModuleProviderAdaptor(), m.Module(), android.ContainersInfoProvider)
-		belongingContainers := containers.BelongingContainers()
+		belongingContainers := containers.Containers()
 		checkContainerMatch(t, c.moduleName, "system", c.isSystemContainer, android.InList(android.SystemContainer, belongingContainers))
 		checkContainerMatch(t, c.moduleName, "apex", c.isApexContainer, android.InList(android.ApexContainer, belongingContainers))
 	}
@@ -323,7 +323,7 @@ func TestUpdatableAndNonUpdatableApexesIdenticalMinSdkVersion(t *testing.T) {
 
 	fooApexVariant := result.ModuleForTests("foo", "android_common_apex30")
 	containers, _ := android.OtherModuleProvider(result.TestContext.OtherModuleProviderAdaptor(), fooApexVariant.Module(), android.ContainersInfoProvider)
-	belongingContainers := containers.BelongingContainers()
+	belongingContainers := containers.Containers()
 	checkContainerMatch(t, "foo", "system", true, android.InList(android.SystemContainer, belongingContainers))
 	checkContainerMatch(t, "foo", "apex", true, android.InList(android.ApexContainer, belongingContainers))
 }
