@@ -142,6 +142,24 @@
       "parentUuid": "742496a5_4572dab5",
       "revId": "b51af42d20d529724e002f54017da894ad421017",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82ae5f0_f8f7d960",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-07-23T19:25:41Z",
+      "side": 1,
+      "message": "Seems worth it. I\u0027ll land this first and follow up with collection and packaging.",
+      "parentUuid": "5990f623_c193f775",
+      "revId": "b51af42d20d529724e002f54017da894ad421017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
