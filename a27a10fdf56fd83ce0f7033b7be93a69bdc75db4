@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d8e811_2f651bde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-24T23:32:35Z",
+      "side": 1,
+      "message": "This type of top-down mutator is difficult to support with incremental analysis, as the configuration of the bottom module can change if anything above it changes.  The only way that this could work is if we made the container a variant.  Maybe that means expanding the `imageMutator` into a full `containerMutator`, and creating \"test\" or \"cts\" variants?  I haven\u0027t converted `imageMutator` to a `TransitionMutator` yet, which makes that much more difficult.",
+      "revId": "a27a10fdf56fd83ce0f7033b7be93a69bdc75db4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
