@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49c86481_66bc634c",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1840,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-07-24T07:18:12Z",
+      "side": 1,
+      "message": "We had a discussion about this today. My point was that the way init_rc and vintf_fragments are handled at the moment is very exceptional in Soong, which I think was okay only because \"required\" dependencies were not tracked in Soong then. Since Soong now can correctly track the required dependencies, I think this should be modeled after that. tl;dr; I consider this as a tech debt.\n\nColin, please chime in, as you wrote this. What was your plan on this?",
+      "parentUuid": "e35d2993_5e06d0e9",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1840,
+        "endChar": 79
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b690600_33e0a6dd",
         "filename": "android/module.go",
         "patchSetId": 3
