@@ -101,6 +101,14 @@ type BaseModuleContext interface {
 	// This method shouldn't be used directly, prefer the type-safe android.SetProvider instead.
 	setProvider(provider blueprint.AnyProviderKey, value any)
 
+	// setProviderIfNotSet sets the value for a provider for the current module.  It panics if not called
+	// during the appropriate mutator or GenerateBuildActions pass for the provider or if the value
+	// is not of the appropriate type. If the value has already been set, the value will not be
+	// overwritten but ignored. The value should not be modified after being passed to SetProvider.
+	//
+	// This method shouldn't be used directly, prefer the type-safe android.SetProviderIfNotSet instead.
+	setProviderIfNotSet(provider blueprint.AnyProviderKey, value any)
+
 	GetDirectDepsWithTag(tag blueprint.DependencyTag) []Module
 
 	// GetDirectDepWithTag returns the Module the direct dependency with the specified name, or nil if
@@ -268,6 +276,10 @@ func (b *baseModuleContext) provider(provider blueprint.AnyProviderKey) (any, bo
 
 func (b *baseModuleContext) setProvider(provider blueprint.AnyProviderKey, value any) {
 	b.bp.SetProvider(provider, value)
+}
+
+func (b *baseModuleContext) setProviderIfNotSet(provider blueprint.AnyProviderKey, value any) {
+	b.bp.SetProviderIfNotSet(provider, value)
 }
 
 func (b *baseModuleContext) GetDirectDepWithTag(name string, tag blueprint.DependencyTag) blueprint.Module {
