@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3a8243f_62000ede",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1840,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-24T17:34:05Z",
+      "side": 1,
+      "message": "I was just maintaining the status quo for how it worked in Make.\n\nSharing a `prebuilt_etc` module seems ideal, but there are 365 mentions of `init_rc:` in Soong.  I don\u0027t think automatically creating a `prebuilt_etc` module helps that much, creating modules is always hard to follow, and you\u0027d still need to do deduping to avoid creating the same `prebuilt_etc` module twice.",
+      "parentUuid": "49c86481_66bc634c",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1840,
+        "endChar": 79
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b690600_33e0a6dd",
         "filename": "android/module.go",
         "patchSetId": 3

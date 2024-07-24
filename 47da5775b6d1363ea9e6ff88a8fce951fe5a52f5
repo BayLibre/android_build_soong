@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0fbc749_804cd7f5",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1869,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-24T17:34:05Z",
+      "side": 1,
+      "message": "Should this be `processedVintfFragment`?",
+      "range": {
+        "startLine": 1869,
+        "startChar": 11,
+        "endLine": 1869,
+        "endChar": 14
+      },
+      "revId": "47da5775b6d1363ea9e6ff88a8fce951fe5a52f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
