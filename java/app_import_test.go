@@ -777,17 +777,19 @@ func TestAndroidTestImport_Preprocessed(t *testing.T) {
 }
 
 func TestAndroidAppImport_Preprocessed(t *testing.T) {
-	ctx, _ := testJava(t, `
+	result := android.GroupFixturePreparers(
+		PrepareForTestWithJavaDefaultModules,
+	).RunTestWithBp(t, `
 		android_app_import {
 			name: "foo",
 			apk: "prebuilts/apk/app.apk",
 			presigned: true,
 			preprocessed: true,
 		}
-		`)
+	`)
 
 	apkName := "foo.apk"
-	variant := ctx.ModuleForTests("foo", "android_common")
+	variant := result.ModuleForTests("foo", "android_common")
 	outputBuildParams := variant.Output(apkName).BuildParams
 	if outputBuildParams.Rule.String() != android.Cp.String() {
 		t.Errorf("Unexpected prebuilt android_app_import rule: " + outputBuildParams.Rule.String())
