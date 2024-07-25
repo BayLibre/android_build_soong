@@ -85,6 +85,24 @@
       "message": "If you use `*string` above, this can be:\n```\nif resourceApk :\u003d proptools.String(r.ravenwoodTestProperties.Resource_apk); resourceApk !\u003d \"\" {\n```",
       "revId": "6417e513b540ee5e0552f372eeb480ddea1411c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b73daff3_68c60a77",
+        "filename": "java/ravenwood.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2024-07-25T22:17:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b96f111_c6b97e35",
+      "revId": "6417e513b540ee5e0552f372eeb480ddea1411c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
