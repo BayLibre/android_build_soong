@@ -16,6 +16,46 @@
       "message": "I can\u0027t easily test on a mac, but I think this should fix the test failures.\n\nI\u0027m also not sure if the way I skipped the rbe tests is the go-like though.",
       "revId": "50735450b94a60c922f097867ddefca18769be15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22a2f06c_fd7d768a",
+        "filename": "ui/build/rbe_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-25T21:46:26Z",
+      "side": 1,
+      "message": "Use `t.Skip(\"RBE is only supported on linux\")`",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "50735450b94a60c922f097867ddefca18769be15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4a2fa91_ebb115d9",
+        "filename": "ui/build/rbe_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-25T21:46:26Z",
+      "side": 1,
+      "message": "Use `t.Skip(\"RBE is only supported on linux\")`",
+      "revId": "50735450b94a60c922f097867ddefca18769be15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
