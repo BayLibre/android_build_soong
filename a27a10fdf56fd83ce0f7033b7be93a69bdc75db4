@@ -34,6 +34,24 @@
       "parentUuid": "45d8e811_2f651bde",
       "revId": "a27a10fdf56fd83ce0f7033b7be93a69bdc75db4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdd52643_84c6fce7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-25T05:23:34Z",
+      "side": 1,
+      "message": "TransitionMutators can make an official configuration change, which will be the only supported way for a rdep to affect a module.  This is just a mutator that modifies it\u0027s dependencies, which we won\u0027t be able to track easily.  I suppose it is possible to make it work for incremental analysis, but it will never work for partial analysis, which is also a goal.",
+      "parentUuid": "8788122c_0b5d8df3",
+      "revId": "a27a10fdf56fd83ce0f7033b7be93a69bdc75db4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
