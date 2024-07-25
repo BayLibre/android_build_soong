@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94a0d664_526dbe98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-07-25T04:39:20Z",
+      "side": 1,
+      "message": "Somehow Lint doesn\u0027t give Exempt +1. Can I get +2?",
+      "revId": "625f66136dda856ec03642bf5699b9aa4f614953",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
