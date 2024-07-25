@@ -33,6 +33,40 @@
       "message": "@ccross PTAL?",
       "revId": "6417e513b540ee5e0552f372eeb480ddea1411c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "353399d3_fc23ee5a",
+        "filename": "java/ravenwood.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-25T17:22:17Z",
+      "side": 1,
+      "message": "Prefer `*string` here, which will give the right replacement semantics when using defaults modules.",
+      "revId": "6417e513b540ee5e0552f372eeb480ddea1411c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b96f111_c6b97e35",
+        "filename": "java/ravenwood.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-25T17:22:17Z",
+      "side": 1,
+      "message": "If you use `*string` above, this can be:\n```\nif resourceApk :\u003d proptools.String(r.ravenwoodTestProperties.Resource_apk); resourceApk !\u003d \"\" {\n```",
+      "revId": "6417e513b540ee5e0552f372eeb480ddea1411c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
