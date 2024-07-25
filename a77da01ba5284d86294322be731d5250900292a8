@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9058d6b_efdc6584",
+        "filename": "ui/build/paths/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-25T17:28:28Z",
+      "side": 1,
+      "message": "We almost never want to be adding tools to this list.  We\u0027d rather remove zip, since it\u0027s caused issues in the past when distros have broken zip binaries (for example https://bbs.archlinux.org/viewtopic.php?id\u003d277610), it just hasn\u0027t been a high enough priority yet.  If we\u0027re going to use pigz it would be by adding it to the tools built in the `build-tools` branch in AOSP so it gets distributed as a prebuilt in `prebuilts/build-tools/`.",
+      "revId": "a77da01ba5284d86294322be731d5250900292a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
