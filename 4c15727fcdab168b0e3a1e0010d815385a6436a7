@@ -22,6 +22,30 @@
       },
       "revId": "4c15727fcdab168b0e3a1e0010d815385a6436a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0408f545_62623c04",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 15
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-07-25T01:25:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "549e2645_2f2d08f7",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 84
+      },
+      "revId": "4c15727fcdab168b0e3a1e0010d815385a6436a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
