@@ -2077,3 +2077,7 @@ func (c *config) UseDebugArt() bool {
 
 	return Bool(c.productVariables.Eng)
 }
+
+func (c *config) EnableUffdGc() string {
+	return String(c.productVariables.EnableUffdGc)
+}
