@@ -16,6 +16,23 @@
       "message": "@ccross PTAL?",
       "revId": "6417e513b540ee5e0552f372eeb480ddea1411c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06eaac65_7bcc1dc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2024-07-25T16:01:18Z",
+      "side": 1,
+      "message": "@ccross PTAL?",
+      "revId": "6417e513b540ee5e0552f372eeb480ddea1411c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
