@@ -16,6 +16,24 @@
       "message": "This type of top-down mutator is difficult to support with incremental analysis, as the configuration of the bottom module can change if anything above it changes.  The only way that this could work is if we made the container a variant.  Maybe that means expanding the `imageMutator` into a full `containerMutator`, and creating \"test\" or \"cts\" variants?  I haven\u0027t converted `imageMutator` to a `TransitionMutator` yet, which makes that much more difficult.",
       "revId": "a27a10fdf56fd83ce0f7033b7be93a69bdc75db4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8788122c_0b5d8df3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-25T00:00:24Z",
+      "side": 1,
+      "message": "\u003e This type of top-down mutator is difficult to support with incremental analysis, as the configuration of the bottom module can change if anything above it changes.\n\nI may be wrong, but isn\u0027t it expected for the bottom module\u0027s configuration to change if it depends on the higher level module\u0027s configuration? Would you be able to explain how the `TransitionMutator`-converted `imageMutator` would resolve this issue? i.e. if the \"test\" variant is created when it is a transitive static dep of test modules, wouldn\u0027t a change in the top level test module lead to reanalysis of the bottom level module regardless of whether the mutator is top-down or transition?",
+      "parentUuid": "45d8e811_2f651bde",
+      "revId": "a27a10fdf56fd83ce0f7033b7be93a69bdc75db4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
