@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bd4ba77_31a74a6c",
+        "filename": "java/app_import_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-25T17:52:19Z",
+      "side": 1,
+      "message": "Wrap these subtests in `t.Run`.  That will make it clear which subtest failed when one of the asserts below fails.",
+      "revId": "90f4b911a7e2cfcb6116702e14a27f4dbe32981c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
