@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a5a98d5_b493675c",
+        "filename": "ui/build/rbe_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-07-25T23:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22a2f06c_fd7d768a",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "50735450b94a60c922f097867ddefca18769be15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4a2fa91_ebb115d9",
@@ -54,6 +78,24 @@
       "writtenOn": "2024-07-25T21:46:26Z",
       "side": 1,
       "message": "Use `t.Skip(\"RBE is only supported on linux\")`",
+      "revId": "50735450b94a60c922f097867ddefca18769be15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63f20d70_c3d9593e",
+        "filename": "ui/build/rbe_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-07-25T23:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4a2fa91_ebb115d9",
       "revId": "50735450b94a60c922f097867ddefca18769be15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
