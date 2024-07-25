@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "663fd570_da25ac4d",
+        "filename": "cc/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-25T17:40:19Z",
+      "side": 1,
+      "message": "Use tabs instead of spaces.  Run `gofmt` (or set up your editor to run `gofmt` or `goimports` automatically.",
+      "revId": "611cdbc32f192e8e358bc927f3250c78306cc8d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1170c853_426a2706",
+        "filename": "cc/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-25T17:40:19Z",
+      "side": 1,
+      "message": "Can you put this in `builderFlags` instead?",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 39
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "edd84215_329ca62a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/proto.go",
+              "range": {
+                "startLine": 39,
+                "startChar": 0,
+                "endLine": 41,
+                "endChar": 0
+              },
+              "replacement": "        if flags.proto.Plugin \u003d\u003d \"grpc-cpp-plugin\" {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "611cdbc32f192e8e358bc927f3250c78306cc8d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
