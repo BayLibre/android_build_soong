@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b29b334e_04c57a19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-07-25T16:00:37Z",
+      "side": 1,
+      "message": "Sorry for reverting too many times. I wasn\u0027t aware of Soong-only builds or risc-v builds.\n\nI verified these changes with all 4 broken targets using ABTD (see b/322090587#comment50 and b/322090587#comment51). PTAL.",
+      "revId": "036d9e6744f312afde1f4eb68f38747df27cf5f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
