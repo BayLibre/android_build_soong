@@ -33,6 +33,23 @@
       "message": "Oops, wrong cl. Ignore that last message.",
       "revId": "1db36e38884d50b9e67a948c387ab9623593695f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a8d5914_1d623886",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-07-26T17:02:18Z",
+      "side": 1,
+      "message": "Verified this fixes the mac build with https://android-build.corp.google.com/builds/abtd/run/L42900030005440356",
+      "revId": "1db36e38884d50b9e67a948c387ab9623593695f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
