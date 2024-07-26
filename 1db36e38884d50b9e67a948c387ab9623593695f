@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ba6a3f_a720c082",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-07-26T03:52:02Z",
+      "side": 1,
+      "message": "Looks like there is an infinite loop in the create_minidebuginfo tool. However, it appears to be in ART readelf code before it gets to the new code. I\u0027m looking at this to see what might be going on.",
+      "revId": "1db36e38884d50b9e67a948c387ab9623593695f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
