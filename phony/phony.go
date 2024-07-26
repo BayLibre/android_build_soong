@@ -20,8 +20,6 @@ import (
 	"strings"
 
 	"android/soong/android"
-
-	"github.com/google/blueprint/proptools"
 )
 
 func init() {
@@ -90,15 +88,14 @@ type PhonyRule struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
 
-	phonyDepsModuleNames []string
-	properties           PhonyProperties
+	properties PhonyProperties
 }
 
 type PhonyProperties struct {
 	// The Phony_deps is the set of all dependencies for this target,
 	// and it can function similarly to .PHONY in a makefile.
 	// Additionally, dependencies within it can even include genrule.
-	Phony_deps proptools.Configurable[[]string]
+	Phony_deps []string
 }
 
 // The phony_rule provides functionality similar to the .PHONY in a makefile.
@@ -112,14 +109,13 @@ func PhonyRuleFactory() android.Module {
 }
 
 func (p *PhonyRule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	p.phonyDepsModuleNames = p.properties.Phony_deps.GetOrDefault(p.ConfigurableEvaluator(ctx), nil)
 }
 
 func (p *PhonyRule) AndroidMk() android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
-			if len(p.phonyDepsModuleNames) > 0 {
-				depModulesStr := strings.Join(p.phonyDepsModuleNames, " ")
+			if len(p.properties.Phony_deps) > 0 {
+				depModulesStr := strings.Join(p.properties.Phony_deps, " ")
 				fmt.Fprintln(w, ".PHONY:", name)
 				fmt.Fprintln(w, name, ":", depModulesStr)
 			}
