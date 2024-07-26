@@ -907,7 +907,7 @@ func TestJavaSdkLibraryImport(t *testing.T) {
 		fooModule := result.ModuleForTests("foo"+scope, "android_common")
 		javac := fooModule.Rule("javac")
 
-		sdklibStubsJar := result.ModuleForTests("sdklib.stubs"+scope, "android_common").Rule("combineJar").Output
+		sdklibStubsJar := result.ModuleForTests("sdklib.stubs"+scope, "android_common").Output("combined/sdklib.stubs" + scope + ".jar").Output
 		android.AssertStringDoesContain(t, "foo classpath", javac.Args["classpath"], sdklibStubsJar.String())
 	}
 
