@@ -57,6 +57,30 @@
       ],
       "revId": "611cdbc32f192e8e358bc927f3250c78306cc8d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aedf5b66_03076275",
+        "filename": "cc/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3534717
+      },
+      "writtenOn": "2024-07-26T05:59:02Z",
+      "side": 1,
+      "message": "Looks like builderFlags.proto may already provide the information, will look into this",
+      "parentUuid": "1170c853_426a2706",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 39
+      },
+      "revId": "611cdbc32f192e8e358bc927f3250c78306cc8d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

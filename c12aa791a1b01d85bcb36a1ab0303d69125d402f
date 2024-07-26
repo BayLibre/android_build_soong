@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52d3635c_b5ebacf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3534717
+      },
+      "writtenOn": "2024-07-26T05:59:02Z",
+      "side": 1,
+      "message": "Restored original parameters, using buildFlags to get plugin information",
+      "revId": "c12aa791a1b01d85bcb36a1ab0303d69125d402f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
