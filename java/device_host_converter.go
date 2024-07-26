@@ -96,6 +96,8 @@ func (d *DeviceHostConverter) GenerateAndroidBuildActions(ctx android.ModuleCont
 		ctx.PropertyErrorf("libs", "at least one dependency is required")
 	}
 
+	var transitiveHeaderJars []*android.DepSet[android.Path]
+
 	ctx.VisitDirectDepsWithTag(deviceHostConverterDepTag, func(m android.Module) {
 		if dep, ok := android.OtherModuleProvider(ctx, m, JavaInfoProvider); ok {
 			d.headerJars = append(d.headerJars, dep.HeaderJars...)
@@ -105,6 +107,10 @@ func (d *DeviceHostConverter) GenerateAndroidBuildActions(ctx android.ModuleCont
 
 			d.srcJarArgs = append(d.srcJarArgs, dep.SrcJarArgs...)
 			d.srcJarDeps = append(d.srcJarDeps, dep.SrcJarDeps...)
+
+			if dep.TransitiveStaticLibsHeaderJars != nil {
+				transitiveHeaderJars = append(transitiveHeaderJars, dep.TransitiveStaticLibsHeaderJars)
+			}
 		} else {
 			ctx.PropertyErrorf("libs", "module %q cannot be used as a dependency", ctx.OtherModuleName(m))
 		}
@@ -132,6 +138,8 @@ func (d *DeviceHostConverter) GenerateAndroidBuildActions(ctx android.ModuleCont
 
 	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
 		HeaderJars:                     d.headerJars,
+		LocalHeaderJars:                d.headerJars,
+		TransitiveStaticLibsHeaderJars: android.NewDepSet(android.PREORDER, nil, transitiveHeaderJars),
 		ImplementationAndResourcesJars: d.implementationAndResourceJars,
 		ImplementationJars:             d.implementationJars,
 		ResourceJars:                   d.resourceJars,

@@ -1292,6 +1292,8 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var staticJars android.Paths
 	var staticHeaderJars android.Paths
 	var staticResourceJars android.Paths
+	var transitiveStaticLibsHeaderJars []*android.DepSet[android.Path]
+
 	ctx.VisitDirectDeps(func(module android.Module) {
 		if dep, ok := android.OtherModuleProvider(ctx, module, JavaInfoProvider); ok {
 			tag := ctx.OtherModuleDependencyTag(module)
@@ -1300,6 +1302,9 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				staticJars = append(staticJars, dep.ImplementationJars...)
 				staticHeaderJars = append(staticHeaderJars, dep.HeaderJars...)
 				staticResourceJars = append(staticResourceJars, dep.ResourceJars...)
+				if dep.TransitiveStaticLibsHeaderJars != nil {
+					transitiveStaticLibsHeaderJars = append(transitiveStaticLibsHeaderJars, dep.TransitiveStaticLibsHeaderJars)
+				}
 			}
 		}
 		addCLCFromDep(ctx, module, a.classLoaderContexts)
@@ -1349,13 +1354,15 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
-		HeaderJars:                     android.PathsIfNonNil(a.headerJarFile),
-		ResourceJars:                   android.PathsIfNonNil(resourceJarFile),
-		TransitiveLibsHeaderJars:       a.transitiveLibsHeaderJars,
-		TransitiveStaticLibsHeaderJars: a.transitiveStaticLibsHeaderJars,
-		ImplementationAndResourcesJars: android.PathsIfNonNil(a.implementationAndResourcesJarFile),
-		ImplementationJars:             android.PathsIfNonNil(a.implementationJarFile),
-		StubsLinkType:                  Implementation,
+		HeaderJars:                          android.PathsIfNonNil(a.headerJarFile),
+		LocalHeaderJars:                     android.PathsIfNonNil(classpathFile),
+		TransitiveStaticLibsHeaderJars:      android.NewDepSet(android.PREORDER, android.Paths{classpathFile}, transitiveStaticLibsHeaderJars),
+		ResourceJars:                        android.PathsIfNonNil(resourceJarFile),
+		TransitiveLibsHeaderJarsForR8:       a.transitiveLibsHeaderJarsForR8,
+		TransitiveStaticLibsHeaderJarsForR8: a.transitiveStaticLibsHeaderJarsForR8,
+		ImplementationAndResourcesJars:      android.PathsIfNonNil(a.implementationAndResourcesJarFile),
+		ImplementationJars:                  android.PathsIfNonNil(a.implementationJarFile),
+		StubsLinkType:                       Implementation,
 		// TransitiveAconfigFiles: // TODO(b/289117800): LOCAL_ACONFIG_FILES for prebuilts
 	})
 
