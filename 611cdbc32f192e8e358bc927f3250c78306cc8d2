@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77609842_6c9d85a3",
+        "filename": "cc/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 3534717
+      },
+      "writtenOn": "2024-07-26T09:27:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "663fd570_da25ac4d",
+      "revId": "611cdbc32f192e8e358bc927f3250c78306cc8d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1170c853_426a2706",
