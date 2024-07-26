@@ -1297,6 +1297,10 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var staticJars android.Paths
 	var staticHeaderJars android.Paths
 	var staticResourceJars android.Paths
+	var transitiveStaticLibsHeaderJars []*android.DepSet[android.Path]
+	var transitiveStaticLibsImplementationJars []*android.DepSet[android.Path]
+	var transitiveStaticLibsResourceJars []*android.DepSet[android.Path]
+
 	ctx.VisitDirectDeps(func(module android.Module) {
 		if dep, ok := android.OtherModuleProvider(ctx, module, JavaInfoProvider); ok {
 			tag := ctx.OtherModuleDependencyTag(module)
@@ -1305,66 +1309,111 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				staticJars = append(staticJars, dep.ImplementationJars...)
 				staticHeaderJars = append(staticHeaderJars, dep.HeaderJars...)
 				staticResourceJars = append(staticResourceJars, dep.ResourceJars...)
+				if dep.TransitiveStaticLibsHeaderJars != nil {
+					transitiveStaticLibsHeaderJars = append(transitiveStaticLibsHeaderJars, dep.TransitiveStaticLibsHeaderJars)
+				}
+				if dep.TransitiveStaticLibsImplementationJars != nil {
+					transitiveStaticLibsImplementationJars = append(transitiveStaticLibsImplementationJars, dep.TransitiveStaticLibsImplementationJars)
+				}
+				if dep.TransitiveStaticLibsResourceJars != nil {
+					transitiveStaticLibsResourceJars = append(transitiveStaticLibsResourceJars, dep.TransitiveStaticLibsResourceJars)
+				}
 			}
 		}
 		addCLCFromDep(ctx, module, a.classLoaderContexts)
 		addMissingOptionalUsesLibsFromDep(ctx, module, &a.usesLibrary)
 	})
 
+	completeStaticLibsHeaderJars := android.NewDepSet(android.PREORDER, android.Paths{classpathFile}, transitiveStaticLibsHeaderJars)
+	completeStaticLibsImplementationJars := android.NewDepSet(android.PREORDER, android.Paths{classpathFile}, transitiveStaticLibsImplementationJars)
+	completeStaticLibsResourceJars := android.NewDepSet(android.PREORDER, nil, transitiveStaticLibsResourceJars)
+
 	var implementationJarFile android.Path
-	if len(staticJars) > 0 {
-		combineJars := append(android.Paths{classpathFile}, staticJars...)
-		combinedImplementationJar := android.PathForModuleOut(ctx, "combined", jarName).OutputPath
-		TransformJarsToJar(ctx, combinedImplementationJar, "combine", combineJars, android.OptionalPath{}, false, nil, nil)
-		implementationJarFile = combinedImplementationJar
+	var combineJars android.Paths
+	if ctx.Config().UseTransitiveJarsInClasspath() {
+		combineJars = completeStaticLibsImplementationJars.ToList()
+	} else {
+		combineJars = append(android.Paths{classpathFile}, staticJars...)
+	}
+
+	if len(combineJars) > 1 {
+		implementationJarOutputPath := android.PathForModuleOut(ctx, "combined", jarName)
+		TransformJarsToJar(ctx, implementationJarOutputPath, "combine", combineJars, android.OptionalPath{}, false, nil, nil)
+		implementationJarFile = implementationJarOutputPath
 	} else {
 		implementationJarFile = classpathFile
 	}
 
 	var resourceJarFile android.Path
-	if len(staticResourceJars) > 1 {
+	var resourceJars android.Paths
+	if ctx.Config().UseTransitiveJarsInClasspath() {
+		resourceJars = completeStaticLibsResourceJars.ToList()
+	} else {
+		resourceJars = staticResourceJars
+	}
+	if len(resourceJars) > 1 {
 		combinedJar := android.PathForModuleOut(ctx, "res-combined", jarName)
-		TransformJarsToJar(ctx, combinedJar, "for resources", staticResourceJars, android.OptionalPath{},
+		TransformJarsToJar(ctx, combinedJar, "for resources", resourceJars, android.OptionalPath{},
 			false, nil, nil)
 		resourceJarFile = combinedJar
-	} else if len(staticResourceJars) == 1 {
-		resourceJarFile = staticResourceJars[0]
+	} else if len(resourceJars) == 1 {
+		resourceJarFile = resourceJars[0]
 	}
 
 	// merge implementation jar with resources if necessary
-	implementationAndResourcesJar := implementationJarFile
-	if resourceJarFile != nil {
-		jars := android.Paths{resourceJarFile, implementationAndResourcesJar}
+	var implementationAndResourcesJars android.Paths
+	if ctx.Config().UseTransitiveJarsInClasspath() {
+		implementationAndResourcesJars = append(slices.Clone(resourceJars), combineJars...)
+	} else {
+		implementationAndResourcesJars = android.PathsIfNonNil(resourceJarFile, implementationJarFile)
+	}
+	var implementationAndResourcesJar android.Path
+	if len(implementationAndResourcesJars) > 1 {
 		combinedJar := android.PathForModuleOut(ctx, "withres", jarName)
-		TransformJarsToJar(ctx, combinedJar, "for resources", jars, android.OptionalPath{},
+		TransformJarsToJar(ctx, combinedJar, "for resources", implementationAndResourcesJars, android.OptionalPath{},
 			false, nil, nil)
 		implementationAndResourcesJar = combinedJar
+	} else {
+		implementationAndResourcesJar = implementationAndResourcesJars[0]
 	}
 
 	a.implementationJarFile = implementationJarFile
 	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource
 	a.implementationAndResourcesJarFile = implementationAndResourcesJar.WithoutRel()
 
-	if len(staticHeaderJars) > 0 {
-		combineJars := append(android.Paths{classpathFile}, staticHeaderJars...)
+	var headerJars android.Paths
+	if ctx.Config().UseTransitiveJarsInClasspath() {
+		headerJars = completeStaticLibsHeaderJars.ToList()
+	} else {
+		headerJars = append(android.Paths{classpathFile}, staticHeaderJars...)
+	}
+	if len(headerJars) > 1 {
 		headerJarFile := android.PathForModuleOut(ctx, "turbine-combined", jarName)
-		TransformJarsToJar(ctx, headerJarFile, "combine header jars", combineJars, android.OptionalPath{}, false, nil, nil)
+		TransformJarsToJar(ctx, headerJarFile, "combine header jars", headerJars, android.OptionalPath{}, false, nil, nil)
 		a.headerJarFile = headerJarFile
 	} else {
-		a.headerJarFile = classpathFile
+		a.headerJarFile = headerJars[0]
 	}
 
-	ctx.CheckbuildFile(a.headerJarFile)
-	ctx.CheckbuildFile(a.implementationJarFile)
+	if ctx.Config().UseTransitiveJarsInClasspath() {
+		ctx.CheckbuildFile(classpathFile)
+	} else {
+		ctx.CheckbuildFile(a.headerJarFile)
+		ctx.CheckbuildFile(a.implementationJarFile)
+	}
 
 	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
-		HeaderJars:                          android.PathsIfNonNil(a.headerJarFile),
-		ResourceJars:                        android.PathsIfNonNil(resourceJarFile),
-		TransitiveLibsHeaderJarsForR8:       a.transitiveLibsHeaderJarsForR8,
-		TransitiveStaticLibsHeaderJarsForR8: a.transitiveStaticLibsHeaderJarsForR8,
-		ImplementationAndResourcesJars:      android.PathsIfNonNil(a.implementationAndResourcesJarFile),
-		ImplementationJars:                  android.PathsIfNonNil(a.implementationJarFile),
-		StubsLinkType:                       Implementation,
+		HeaderJars:                             android.PathsIfNonNil(a.headerJarFile),
+		LocalHeaderJars:                        android.PathsIfNonNil(classpathFile),
+		TransitiveStaticLibsHeaderJars:         completeStaticLibsHeaderJars,
+		TransitiveStaticLibsImplementationJars: completeStaticLibsImplementationJars,
+		TransitiveStaticLibsResourceJars:       completeStaticLibsResourceJars,
+		ResourceJars:                           android.PathsIfNonNil(resourceJarFile),
+		TransitiveLibsHeaderJarsForR8:          a.transitiveLibsHeaderJarsForR8,
+		TransitiveStaticLibsHeaderJarsForR8:    a.transitiveStaticLibsHeaderJarsForR8,
+		ImplementationAndResourcesJars:         android.PathsIfNonNil(a.implementationAndResourcesJarFile),
+		ImplementationJars:                     android.PathsIfNonNil(a.implementationJarFile),
+		StubsLinkType:                          Implementation,
 		// TransitiveAconfigFiles: // TODO(b/289117800): LOCAL_ACONFIG_FILES for prebuilts
 	})
 
