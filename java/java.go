@@ -264,6 +264,11 @@ type JavaInfo struct {
 	// set of header jars for all transitive static libs deps
 	TransitiveStaticLibsHeaderJarsForR8 *android.DepSet[android.Path]
 
+	// depset of header jars for this module and all transitive static dependencies
+	TransitiveStaticLibsHeaderJars         *android.DepSet[android.Path]
+	TransitiveStaticLibsImplementationJars *android.DepSet[android.Path]
+	TransitiveStaticLibsResourceJars       *android.DepSet[android.Path]
+
 	// ImplementationAndResourceJars is a list of jars that contain the implementations of classes
 	// in the module as well as any resources included in the module.
 	ImplementationAndResourcesJars android.Paths
@@ -274,6 +279,8 @@ type JavaInfo struct {
 
 	// ResourceJars is a list of jars that contain the resources included in the module.
 	ResourceJars android.Paths
+
+	LocalHeaderJars android.Paths
 
 	// AidlIncludeDirs is a list of directories that should be passed to the aidl tool when
 	// depending on this module.
@@ -568,6 +575,10 @@ type deps struct {
 	aconfigProtoFiles       android.Paths
 
 	disableTurbine bool
+
+	transitiveStaticLibsHeaderJars         []*android.DepSet[android.Path]
+	transitiveStaticLibsImplementationJars []*android.DepSet[android.Path]
+	transitiveStaticLibsResourceJars       []*android.DepSet[android.Path]
 }
 
 func checkProducesJars(ctx android.ModuleContext, dep android.SourceFileProducer) {
@@ -2357,11 +2368,14 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.Phony(ctx.ModuleName(), al.stubsJar)
 
 	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
-		HeaderJars:                     android.PathsIfNonNil(al.stubsJar),
-		ImplementationAndResourcesJars: android.PathsIfNonNil(al.stubsJar),
-		ImplementationJars:             android.PathsIfNonNil(al.stubsJar),
-		AidlIncludeDirs:                android.Paths{},
-		StubsLinkType:                  Stubs,
+		HeaderJars:                             android.PathsIfNonNil(al.stubsJar),
+		LocalHeaderJars:                        android.PathsIfNonNil(al.stubsJar),
+		TransitiveStaticLibsHeaderJars:         android.NewDepSet(android.PREORDER, android.PathsIfNonNil(al.stubsJar), nil),
+		TransitiveStaticLibsImplementationJars: android.NewDepSet(android.PREORDER, android.PathsIfNonNil(al.stubsJar), nil),
+		ImplementationAndResourcesJars:         android.PathsIfNonNil(al.stubsJar),
+		ImplementationJars:                     android.PathsIfNonNil(al.stubsJar),
+		AidlIncludeDirs:                        android.Paths{},
+		StubsLinkType:                          Stubs,
 		// No aconfig libraries on api libraries
 	})
 }
@@ -2632,6 +2646,12 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	var flags javaBuilderFlags
 
+	var transitiveClasspathHeaderJars []*android.DepSet[android.Path]
+	var transitiveBootClasspathHeaderJars []*android.DepSet[android.Path]
+	var transitiveStaticLibsHeaderJars []*android.DepSet[android.Path]
+	var transitiveStaticLibsImplementationJars []*android.DepSet[android.Path]
+	var transitiveStaticLibsResourceJars []*android.DepSet[android.Path]
+
 	j.collectTransitiveHeaderJarsForR8(ctx)
 	var staticJars android.Paths
 	var staticHeaderJars android.Paths
@@ -2642,30 +2662,65 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			case libTag, sdkLibTag:
 				flags.classpath = append(flags.classpath, dep.HeaderJars...)
 				flags.dexClasspath = append(flags.dexClasspath, dep.HeaderJars...)
+				if dep.TransitiveStaticLibsHeaderJars != nil {
+					transitiveClasspathHeaderJars = append(transitiveClasspathHeaderJars, dep.TransitiveStaticLibsHeaderJars)
+				}
 			case staticLibTag:
 				flags.classpath = append(flags.classpath, dep.HeaderJars...)
 				staticJars = append(staticJars, dep.ImplementationAndResourcesJars...)
 				staticHeaderJars = append(staticHeaderJars, dep.HeaderJars...)
+				if dep.TransitiveStaticLibsHeaderJars != nil {
+					transitiveClasspathHeaderJars = append(transitiveClasspathHeaderJars, dep.TransitiveStaticLibsHeaderJars)
+					transitiveStaticLibsHeaderJars = append(transitiveStaticLibsHeaderJars, dep.TransitiveStaticLibsHeaderJars)
+				}
+				if dep.TransitiveStaticLibsImplementationJars != nil {
+					transitiveStaticLibsImplementationJars = append(transitiveStaticLibsImplementationJars, dep.TransitiveStaticLibsImplementationJars)
+				}
+				if dep.TransitiveStaticLibsResourceJars != nil {
+					transitiveStaticLibsResourceJars = append(transitiveStaticLibsResourceJars, dep.TransitiveStaticLibsResourceJars)
+				}
 			case bootClasspathTag:
 				flags.bootClasspath = append(flags.bootClasspath, dep.HeaderJars...)
+				if dep.TransitiveStaticLibsHeaderJars != nil {
+					transitiveBootClasspathHeaderJars = append(transitiveBootClasspathHeaderJars, dep.TransitiveStaticLibsHeaderJars)
+				}
 			}
 		} else if dep, ok := module.(SdkLibraryDependency); ok {
 			switch tag {
 			case libTag, sdkLibTag:
-				flags.classpath = append(flags.classpath, dep.SdkHeaderJars(ctx, j.SdkVersion(ctx))...)
+				depHeaderJars := dep.SdkHeaderJars(ctx, j.SdkVersion(ctx))
+				flags.classpath = append(flags.classpath, depHeaderJars...)
+				transitiveClasspathHeaderJars = append(transitiveClasspathHeaderJars,
+					android.NewDepSet(android.PREORDER, depHeaderJars, nil))
 			}
 		}
 
 		addCLCFromDep(ctx, module, j.classLoaderContexts)
 	})
 
-	jars := android.PathsForModuleSrc(ctx, j.properties.Jars)
+	localJars := android.PathsForModuleSrc(ctx, j.properties.Jars)
 	jarName := j.Stem() + ".jar"
+
+	// Combine only the local jars together for use in transitive classpaths.
+	// Always pass input jar through TransformJarsToJar to strip module-info.class from prebuilts.
+	localCombinedHeaderJar := android.PathForModuleOut(ctx, "local-combined", jarName)
+	TransformJarsToJar(ctx, localCombinedHeaderJar, "combine local prebuilt implementation jars", localJars, android.OptionalPath{},
+		false, j.properties.Exclude_files, j.properties.Exclude_dirs)
+	localStrippedJars := android.Paths{localCombinedHeaderJar}
+
+	completeStaticLibsHeaderJars := android.NewDepSet(android.PREORDER, localStrippedJars, transitiveStaticLibsHeaderJars)
+	completeStaticLibsImplementationJars := android.NewDepSet(android.PREORDER, localStrippedJars, transitiveStaticLibsImplementationJars)
+	completeStaticLibsResourceJars := android.NewDepSet(android.PREORDER, nil, transitiveStaticLibsResourceJars)
 
 	// Always pass the input jars to TransformJarsToJar, even if there is only a single jar, we need the output
 	// file of the module to be named jarName.
 	outputFile := android.PathForModuleOut(ctx, "combined", jarName)
-	implementationJars := append(slices.Clone(jars), staticJars...)
+	var implementationJars android.Paths
+	if ctx.Config().UseTransitiveJarsInClasspath() {
+		implementationJars = completeStaticLibsImplementationJars.ToList()
+	} else {
+		implementationJars = append(slices.Clone(localJars), staticJars...)
+	}
 	TransformJarsToJar(ctx, outputFile, "combine prebuilt implementation jars", implementationJars, android.OptionalPath{},
 		false, j.properties.Exclude_files, j.properties.Exclude_dirs)
 
@@ -2677,7 +2732,12 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if reuseImplementationJarAsHeaderJar {
 		headerOutputFile = outputFile
 	} else {
-		headerJars := append(slices.Clone(jars), staticHeaderJars...)
+		var headerJars android.Paths
+		if ctx.Config().UseTransitiveJarsInClasspath() {
+			headerJars = completeStaticLibsHeaderJars.ToList()
+		} else {
+			headerJars = append(slices.Clone(localJars), staticHeaderJars...)
+		}
 		headerOutputFile = android.PathForModuleOut(ctx, "turbine-combined", jarName)
 		TransformJarsToJar(ctx, headerOutputFile, "combine prebuilt header jars", headerJars, android.OptionalPath{},
 			false, j.properties.Exclude_files, j.properties.Exclude_dirs)
@@ -2695,6 +2755,11 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		} else {
 			headerOutputFile = outputFile
 		}
+
+		// Enabling jetifier requires modifying classes from transitive dependencies, disable transitive
+		// classpath and use the combined header jar instead.
+		completeStaticLibsHeaderJars = android.NewDepSet(android.PREORDER, android.Paths{headerOutputFile}, nil)
+		completeStaticLibsImplementationJars = android.NewDepSet(android.PREORDER, android.Paths{outputFile}, nil)
 	}
 
 	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource.
@@ -2786,13 +2851,17 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
-		HeaderJars:                          android.PathsIfNonNil(j.combinedHeaderFile),
-		TransitiveLibsHeaderJarsForR8:       j.transitiveLibsHeaderJarsForR8,
-		TransitiveStaticLibsHeaderJarsForR8: j.transitiveStaticLibsHeaderJarsForR8,
-		ImplementationAndResourcesJars:      android.PathsIfNonNil(j.combinedImplementationFile),
-		ImplementationJars:                  android.PathsIfNonNil(j.combinedImplementationFile),
-		AidlIncludeDirs:                     j.exportAidlIncludeDirs,
-		StubsLinkType:                       j.stubsLinkType,
+		HeaderJars:                             android.PathsIfNonNil(j.combinedHeaderFile),
+		LocalHeaderJars:                        android.PathsIfNonNil(j.combinedHeaderFile),
+		TransitiveLibsHeaderJarsForR8:          j.transitiveLibsHeaderJarsForR8,
+		TransitiveStaticLibsHeaderJarsForR8:    j.transitiveStaticLibsHeaderJarsForR8,
+		TransitiveStaticLibsHeaderJars:         completeStaticLibsHeaderJars,
+		TransitiveStaticLibsImplementationJars: completeStaticLibsImplementationJars,
+		TransitiveStaticLibsResourceJars:       completeStaticLibsResourceJars,
+		ImplementationAndResourcesJars:         android.PathsIfNonNil(j.combinedImplementationFile),
+		ImplementationJars:                     android.PathsIfNonNil(j.combinedImplementationFile),
+		AidlIncludeDirs:                        j.exportAidlIncludeDirs,
+		StubsLinkType:                          j.stubsLinkType,
 		// TODO(b/289117800): LOCAL_ACONFIG_FILES for prebuilts
 	})
 
