@@ -587,7 +587,6 @@ func archMutator(bpctx blueprint.BottomUpMutatorContext) {
 	}
 
 	osTargets := mctx.Config().Targets[os]
-
 	image := base.commonProperties.ImageVariation
 	// Filter NativeBridge targets unless they are explicitly supported.
 	// Skip creating native bridge variants for non-core modules.
@@ -600,17 +599,6 @@ func archMutator(bpctx blueprint.BottomUpMutatorContext) {
 			}
 		}
 
-		osTargets = targets
-	}
-
-	// Filter HostCross targets if disabled.
-	if base.HostSupported() && !base.HostCrossSupported() {
-		var targets []Target
-		for _, t := range osTargets {
-			if !t.HostCross {
-				targets = append(targets, t)
-			}
-		}
 		osTargets = targets
 	}
 
