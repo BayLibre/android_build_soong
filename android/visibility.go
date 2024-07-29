@@ -583,14 +583,26 @@ func createQualifiedModuleName(moduleName, dir string) qualifiedModuleName {
 
 func packageDefaultVisibility(moduleToVisibilityRule *sync.Map, moduleId qualifiedModuleName) compositeRule {
 	packageQualifiedId := moduleId.getContainingPackageId()
+	value, ok := moduleToVisibilityRule.Load(packageQualifiedId)
+	if ok {
+		return value.(visibilityRulesForModule).rule
+	}
+	if hasAncestorPackageThatSetsDefaultVisibility(moduleToVisibilityRule, moduleId) {
+		return compositeRule{privateRule{}}
+	}
+	return nil
+}
+
+func hasAncestorPackageThatSetsDefaultVisibility(moduleToVisibilityRule *sync.Map, moduleId qualifiedModuleName) bool {
+	packageQualifiedId := moduleId.getContainingPackageId()
 	for {
-		value, ok := moduleToVisibilityRule.Load(packageQualifiedId)
+		_, ok := moduleToVisibilityRule.Load(packageQualifiedId)
 		if ok {
-			return value.(visibilityRulesForModule).rule
+			return true
 		}
 
 		if packageQualifiedId.isRootPackage() {
-			return nil
+			return false
 		}
 
 		packageQualifiedId = packageQualifiedId.getContainingPackageId()
