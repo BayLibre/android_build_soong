@@ -518,6 +518,11 @@ type ProductVariables struct {
 	BoardUseVbmetaDigestInFingerprint *bool `json:",omitempty"`
 
 	OemProperties []string `json:",omitempty"`
+
+	BoardAvbEnable                         *bool    `json:",omitempty"`
+	BoardAvbSystemAddHashtreeFooterArgs    []string `json:",omitempty"`
+	DeviceFrameworkCompatibilityMatrixFile []string `json:",omitempty"`
+	DeviceProductCompatibilityMatrixFile   []string `json:",omitempty"`
 }
 
 type PartitionQualifiedVariablesType struct {
