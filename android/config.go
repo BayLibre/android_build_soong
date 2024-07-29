@@ -2081,3 +2081,27 @@ func (c *config) UseDebugArt() bool {
 
 	return Bool(c.productVariables.Eng)
 }
+
+func (c *config) SystemPropFiles(ctx PathContext) Paths {
+	return PathsForSource(ctx, c.productVariables.SystemPropFiles)
+}
+
+func (c *config) EnableUffdGc() string {
+	return String(c.productVariables.EnableUffdGc)
+}
+
+func (c *config) DeviceFrameworkCompatibilityMatrixFile() []string {
+	return c.productVariables.DeviceFrameworkCompatibilityMatrixFile
+}
+
+func (c *config) DeviceProductCompatibilityMatrixFile() []string {
+	return c.productVariables.DeviceProductCompatibilityMatrixFile
+}
+
+func (c *config) BoardAvbEnable() bool {
+	return Bool(c.productVariables.BoardAvbEnable)
+}
+
+func (c *config) BoardAvbSystemAddHashtreeFooterArgs() []string {
+	return c.productVariables.BoardAvbSystemAddHashtreeFooterArgs
+}
