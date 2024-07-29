@@ -22,6 +22,30 @@
       },
       "revId": "5ae58dcabe39fba640663ff4a1e6dcf97b7b024a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2044b25c_6d146b10",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-29T21:35:26Z",
+      "side": 0,
+      "message": "Not necessarily -- this means that the from-text and from-source switch of the static libs of `legacy.core.platform.api.stubs.from-source` will be encapsulated within the module. In other words, `legacy.core.platform.api.stubs.from-source` will either be built from text or source based on the build configuration. In order to prevent the confusion, I have removed this module entirely and renamed `legacy.core.platform.api.stubs.from-source` to `legacy.core.platform.api.stubs`.",
+      "parentUuid": "3a087f45_d14f03d1",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 5
+      },
+      "revId": "5ae58dcabe39fba640663ff4a1e6dcf97b7b024a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
