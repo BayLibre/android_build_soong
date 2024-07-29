@@ -1028,6 +1028,13 @@ func (c *Module) SelectedStl() string {
 	return ""
 }
 
+func (c *Module) NdkPrebuiltStl() bool {
+	if _, ok := c.linker.(*ndkPrebuiltStlLinker); ok {
+		return true
+	}
+	return false
+}
+
 func (c *Module) StubDecorator() bool {
 	if _, ok := c.linker.(*stubDecorator); ok {
 		return true
@@ -1076,6 +1083,16 @@ func (c *Module) CcLibrary() bool {
 
 func (c *Module) CcLibraryInterface() bool {
 	if _, ok := c.linker.(libraryInterface); ok {
+		return true
+	}
+	return false
+}
+
+func (c *Module) IsNdkPrebuiltStl() bool {
+	if c.linker == nil {
+		return false
+	}
+	if _, ok := c.linker.(*ndkPrebuiltStlLinker); ok {
 		return true
 	}
 	return false
@@ -2735,6 +2752,10 @@ func checkLinkType(ctx android.BaseModuleContext, from LinkableInterface, to Lin
 		return
 	}
 	if c, ok := to.(*Module); ok {
+		if c.NdkPrebuiltStl() {
+			// These are allowed, but they don't set sdk_version
+			return
+		}
 		if c.StubDecorator() {
 			// These aren't real libraries, but are the stub shared libraries that are included in
 			// the NDK.
@@ -3904,6 +3925,7 @@ const (
 	headerLibrary
 	testBin // testBinary already declared
 	ndkLibrary
+	ndkPrebuiltStl
 )
 
 func (c *Module) typ() moduleType {
@@ -3942,6 +3964,8 @@ func (c *Module) typ() moduleType {
 		return sharedLibrary
 	} else if c.isNDKStubLibrary() {
 		return ndkLibrary
+	} else if c.IsNdkPrebuiltStl() {
+		return ndkPrebuiltStl
 	}
 	return unknownType
 }
