@@ -704,9 +704,8 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 		optFlags = append(optFlags, "--override_apk_package_name "+manifestPackageName)
 	}
 
-	androidManifest := a.properties.AndroidManifest.GetOrDefault(a.ConfigurableEvaluator(ctx), "")
-	if androidManifest != "" {
-		androidManifestFile := android.PathForModuleSrc(ctx, androidManifest)
+	if a.properties.AndroidManifest != nil {
+		androidManifestFile := android.PathForModuleSrc(ctx, proptools.String(a.properties.AndroidManifest))
 
 		if a.testApex {
 			androidManifestFile = markManifestTestOnly(ctx, androidManifestFile)
@@ -1196,9 +1195,8 @@ func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext, defaultReadO
 	}
 	// Custom fs_config is "appended" to the last so that entries from the file are preferred
 	// over default ones set above.
-	customFsConfig := a.properties.Canned_fs_config.GetOrDefault(a.ConfigurableEvaluator(ctx), "")
-	if customFsConfig != "" {
-		cmd.Text("cat").Input(android.PathForModuleSrc(ctx, customFsConfig))
+	if a.properties.Canned_fs_config != nil {
+		cmd.Text("cat").Input(android.PathForModuleSrc(ctx, *a.properties.Canned_fs_config))
 	}
 	cmd.Text(")").FlagWithOutput("> ", cannedFsConfig)
 	builder.Build("generateFsConfig", fmt.Sprintf("Generating canned fs config for %s", a.BaseModuleName()))
