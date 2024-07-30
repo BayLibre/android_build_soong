@@ -16,6 +16,24 @@
       "message": "Please explain why this is necessary.",
       "revId": "1207a34d0015b4f8a137357882cf6055f1154545",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfbc79c9_742ad051",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-07-30T18:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad0fd498_1955a89e",
+      "revId": "1207a34d0015b4f8a137357882cf6055f1154545",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
