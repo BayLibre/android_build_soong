@@ -943,20 +943,21 @@ func packageFileForTargetImage(ctx android.ModuleContext, image *bootImageVarian
 	}
 
 	for _, install := range image.vdexInstalls {
+		installPath, relDir, name := getModuleInstallPathInfo(ctx, install.To)
+		if name == "" {
+			continue
+		}
+		// Note that the vdex files are identical between architectures. Copy the vdex to a no arch directory
+		// and create symlinks for both the primary and secondary arches.
 		if image.target.Arch.ArchType.Name != ctx.DeviceConfig().DeviceArch() {
-			// Note that the vdex files are identical between architectures. If the target image is
-			// not for the primary architecture create symlinks to share the vdex of the primary
-			// architecture with the other architectures.
-			//
-			// Assuming that the install path has the architecture name with it, replace the
-			// architecture name with the primary architecture name to find the source vdex file.
-			installPath, relDir, name := getModuleInstallPathInfo(ctx, install.To)
-			if name != "" {
-				srcRelDir := strings.Replace(relDir, image.target.Arch.ArchType.Name, ctx.DeviceConfig().DeviceArch(), 1)
-				ctx.InstallSymlink(installPath.Join(ctx, relDir), name, installPath.Join(ctx, srcRelDir, name))
-			}
+			// Install a symlink in the secondary arch to the no-arch directory
+			ctx.InstallSymlink(installPath.Join(ctx, relDir), name, installPath.Join(ctx, "framework", name))
 		} else {
-			packageFile(ctx, install)
+			// Copy the vdex from the primary arch to the no-arch directory
+			// e.g. /system/framework/x86_64/$bootjar.vdex --> /system/framework/$bootjar.vdex
+			ctx.InstallFile(installPath.Join(ctx, "framework"), name, install.From)
+			// Install a symlink in the primary arch to the no-arch directory
+			ctx.InstallSymlink(installPath.Join(ctx, relDir), name, installPath.Join(ctx, "framework", name))
 		}
 	}
 }
