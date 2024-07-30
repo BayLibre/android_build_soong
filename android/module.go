@@ -1921,7 +1921,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 
 		restored := false
 		if incrementalAnalysis && cacheKey != nil {
-			restored = ctx.bp.RestoreBuildActions(cacheKey, incrementalModule)
+			restored = ctx.bp.RestoreBuildActions(cacheKey)
 		}
 
 		if !restored {
