@@ -60,7 +60,6 @@ func (p *buildPropModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	p.outputFilePath = PathForModuleOut(ctx, "build.prop").OutputPath
 	if !ctx.Config().KatiEnabled() {
 		WriteFileRule(ctx, p.outputFilePath, "# no build.prop if kati is disabled")
-		ctx.SetOutputFiles(Paths{p.outputFilePath}, "")
 		return
 	}
 
