@@ -954,6 +954,9 @@ func packageFileForTargetImage(ctx android.ModuleContext, image *bootImageVarian
 			if name != "" {
 				srcRelDir := strings.Replace(relDir, image.target.Arch.ArchType.Name, ctx.DeviceConfig().DeviceArch(), 1)
 				ctx.InstallSymlink(installPath.Join(ctx, relDir), name, installPath.Join(ctx, srcRelDir, name))
+				// Copy the vdex from the primary arch to the no-arch directory
+				// e.g. /system/framework/x86_64/$bootjar.vdex --> /system/framework/$bootjar.vdex
+				ctx.InstallFile(installPath.Join(ctx, "framework"), name, install.From)
 			}
 		} else {
 			packageFile(ctx, install)
