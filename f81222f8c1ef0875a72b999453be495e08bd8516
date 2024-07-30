@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a465313_0cbe2d6e",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-30T23:13:11Z",
+      "side": 1,
+      "message": "Out of curiosity, do you have a link to the build error? \n\nAnd IIUC, does this mean that from-text stub generation will be supported for java_sdk_library(s) that set sdk_version to none and specify custom system modules?",
+      "parentUuid": "77458eb4_ca99844a",
+      "range": {
+        "startLine": 2294,
+        "startChar": 1,
+        "endLine": 2294,
+        "endChar": 70
+      },
+      "revId": "f81222f8c1ef0875a72b999453be495e08bd8516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5b1b96d_84057762",
         "filename": "java/java_test.go",
         "patchSetId": 9
