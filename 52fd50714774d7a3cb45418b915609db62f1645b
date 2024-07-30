@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd2b8d9_42491f21",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-30T21:49:13Z",
+      "side": 1,
+      "message": "This is a newly introduced hack. I have a proposed solution (aosp/3195596), but it is a WIP. I will followup with the authors about the proposal or better alternatives.",
+      "range": {
+        "startLine": 675,
+        "startChar": 0,
+        "endLine": 677,
+        "endChar": 54
+      },
+      "revId": "52fd50714774d7a3cb45418b915609db62f1645b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
