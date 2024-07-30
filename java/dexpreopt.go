@@ -628,7 +628,7 @@ func packageFile(ctx android.ModuleContext, install android.RuleBuilderInstall) 
 	// TODO(b/320196894): Files for "system_other" are skipped because soong creates the system
 	// image only for now.
 	if name != "" {
-		ctx.PackageFile(installPath.Join(ctx, relDir), name, install.From)
+		ctx.InstallFile(installPath.Join(ctx, relDir), name, install.From)
 	}
 }
 
