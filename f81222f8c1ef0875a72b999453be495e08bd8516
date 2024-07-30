@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6df2e0a_f236da20",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-30T18:41:34Z",
+      "side": 1,
+      "message": "Does metalava support overriding system modules using `--system`? Do you run into build errors if system modules are not passed as classpath to the metalava stub cmd?",
+      "range": {
+        "startLine": 2294,
+        "startChar": 1,
+        "endLine": 2294,
+        "endChar": 70
+      },
+      "revId": "f81222f8c1ef0875a72b999453be495e08bd8516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5b1b96d_84057762",
+        "filename": "java/java_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2480,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-07-30T18:41:34Z",
+      "side": 1,
+      "message": "I think `foo.stubs` is not a `java_system_modules`, which `checkBootClasspathForSystemModule` is meant to check. Did you mean to pass `baz` instead?",
+      "range": {
+        "startLine": 2480,
+        "startChar": 1,
+        "endLine": 2480,
+        "endChar": 34
+      },
+      "revId": "f81222f8c1ef0875a72b999453be495e08bd8516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
