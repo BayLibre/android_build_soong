@@ -22,6 +22,30 @@
       },
       "revId": "d834b0ff9e9af6319d8aa2286c78fa8822697f51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6528db94_2698f0bf",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1869780
+      },
+      "writtenOn": "2024-07-30T22:01:38Z",
+      "side": 1,
+      "message": "Is there any other Android code for which -Wsign-compare and/or -Wunused-parameter are enabled? Will enabling these warnings perhaps introduce an inconsistent experience for Android developers?",
+      "parentUuid": "8fce01d3_6dc5d8be",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 22
+      },
+      "revId": "d834b0ff9e9af6319d8aa2286c78fa8822697f51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
