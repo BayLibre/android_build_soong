@@ -39,6 +39,24 @@
       "message": "My only concern is if this works ok in CI or not. I think dev builds we can test by hand.\n\nCan you see if you can send this CL against master-build-rbe-testing branch and test it there before merging it to AOSP?",
       "revId": "a5eb35a66e808f0e510af27b71604593c1340bcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6a6854_a06119c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2013700
+      },
+      "writtenOn": "2024-07-30T14:26:33Z",
+      "side": 1,
+      "message": "https://android-build.corp.google.com/builds/abtd/run/L00600030005544067\n\nRunning an abtd run with this CL now, will see if we still get all the logs after the build.",
+      "parentUuid": "ec033ee4_9b2aacdf",
+      "revId": "a5eb35a66e808f0e510af27b71604593c1340bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
