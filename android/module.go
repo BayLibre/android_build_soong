@@ -2202,6 +2202,8 @@ func (e configurationEvalutor) EvaluateConfiguration(condition proptools.Configu
 			default:
 				panic("unhandled release flag type: " + ty)
 			}
+		} else {
+			ctx.OtherModulePropertyErrorf(m, property, "unknown flag %q in release_flag", condition.Arg(0), condition.NumArgs())
 		}
 		return proptools.ConfigurableValueUndefined()
 	case "product_variable":
