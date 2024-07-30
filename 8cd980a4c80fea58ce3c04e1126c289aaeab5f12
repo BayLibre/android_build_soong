@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c40859_e3b9d720",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-07-30T18:02:31Z",
+      "side": 1,
+      "message": "Please explain how this method is different",
+      "revId": "8cd980a4c80fea58ce3c04e1126c289aaeab5f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
