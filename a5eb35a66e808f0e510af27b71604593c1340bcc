@@ -81,6 +81,24 @@
       "parentUuid": "ec033ee4_9b2aacdf",
       "revId": "a5eb35a66e808f0e510af27b71604593c1340bcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71356fc1_cd1dc43a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2013700
+      },
+      "writtenOn": "2024-07-30T17:16:29Z",
+      "side": 1,
+      "message": "1. I compared the log files generated from this build (http://shortn/_8yP1hBi4k7) with our regular CI build\u0027s logs, they are the same.\n2. All the CI builds have this env variable `RBE_proxy_log_dir \u003d %dist_dir%/logs`, so that CI builds\u0027 log files are not affected by this CL.",
+      "parentUuid": "9a6a6854_a06119c5",
+      "revId": "a5eb35a66e808f0e510af27b71604593c1340bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
