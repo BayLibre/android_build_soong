@@ -613,15 +613,16 @@ func (d *dexpreoptBootJars) GenerateAndroidBuildActions(ctx android.ModuleContex
 			profileLicenseMetadataFile: android.OptionalPathForPath(ctx.LicenseMetadataFile()),
 		})
 		for _, install := range profileInstalls {
-			packageFile(ctx, install)
+			installFile(ctx, install)
 		}
 	}
+	// Initialize in GenerateAndroidBuildActions, and not in GenerateSingletonBuildActions to prevent race conditions.
+	d.dexpreoptConfigForMake =
+		android.PathForOutput(ctx, dexpreopt.GetDexpreoptDirName(ctx), "dexpreopt.config")
 }
 
 // GenerateSingletonBuildActions generates build rules for the dexpreopt config for Make.
 func (d *dexpreoptBootJars) GenerateSingletonBuildActions(ctx android.SingletonContext) {
-	d.dexpreoptConfigForMake =
-		android.PathForOutput(ctx, dexpreopt.GetDexpreoptDirName(ctx), "dexpreopt.config")
 	writeGlobalConfigForMake(ctx, d.dexpreoptConfigForMake)
 }
 
@@ -939,7 +940,7 @@ func packageFileForTargetImage(ctx android.ModuleContext, image *bootImageVarian
 	}
 
 	for _, install := range image.installs {
-		packageFile(ctx, install)
+		installFile(ctx, install)
 	}
 
 	for _, install := range image.vdexInstalls {
@@ -1235,7 +1236,7 @@ func bootImageProfileRule(ctx android.ModuleContext, image *bootImageConfig) (an
 
 	profile := bootImageProfileRuleCommon(ctx, image.name, image.dexPathsDeps.Paths(), image.getAnyAndroidVariant().dexLocationsDeps)
 
-	if image == defaultBootImageConfig(ctx) {
+	if image == defaultBootImageConfig(ctx) && profile != nil {
 		rule := android.NewRuleBuilder(pctx, ctx)
 		rule.Install(profile, "/system/etc/boot-image.prof")
 		return profile, rule.Installs()
@@ -1380,4 +1381,25 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 		}
 		ctx.Strict("DEXPREOPT_IMAGE_NAMES", strings.Join(getImageNames(), " "))
 	}
+}
+
+// Add one of the outputs in `OutputFile`
+// This ensures that this singleton module does not get skipped when writing out/soong/Android-*.mk
+func (d *dexpreoptBootJars) AndroidMkEntries() []android.AndroidMkEntries {
+	return []android.AndroidMkEntries{{
+		Class: "ETC",
+		// Set the output file to an incorrect non nil file so that this module does not get skipped.
+		// Set the correct value in `ExtraEntries`.
+		OutputFile: android.OptionalPathForPath(d.dexpreoptConfigForMake),
+		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
+			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+				if info, ok := ctx.Provider(profileInstallInfoProvider); ok {
+					entries.SetString("LOCAL_PREBUILT_MODULE_FILE", android.OptionalPathForPath(info.(profileInstallInfo).profileInstalls[0].From).String())
+				} else {
+					// Boot image generation is disabled, so skip install.
+					entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", true)
+				}
+			},
+		},
+	}}
 }
