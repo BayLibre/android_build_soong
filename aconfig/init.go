@@ -23,8 +23,7 @@ import (
 )
 
 var (
-	pkgPath = "android/soong/aconfig"
-	pctx    = android.NewPackageContext(pkgPath)
+	pctx = android.NewPackageContext("android/soong/aconfig")
 
 	// For aconfig_declarations: Generate cache file
 	aconfigRule = pctx.AndroidStaticRule("aconfig",
