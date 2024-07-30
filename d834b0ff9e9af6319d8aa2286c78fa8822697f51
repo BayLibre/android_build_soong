@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fce01d3_6dc5d8be",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2024-07-30T21:51:32Z",
+      "side": 1,
+      "message": "personally not a huge fan of this: especially the no-unused-parameter part,\nbut really I see no reason why people can\u0027t disable this for themselves on their own build targets",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 22
+      },
+      "revId": "d834b0ff9e9af6319d8aa2286c78fa8822697f51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
