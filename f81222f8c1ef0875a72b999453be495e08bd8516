@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77458eb4_ca99844a",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-30T22:53:19Z",
+      "side": 1,
+      "message": "Metalava currently does not differentiate bootclasspath, classpath or system modules. I believe that build errors will be observed for generating from-text stubs for java_sdk_library that sets sdk_version to \"none\" and specify system modules.",
+      "parentUuid": "f6df2e0a_f236da20",
+      "range": {
+        "startLine": 2294,
+        "startChar": 1,
+        "endLine": 2294,
+        "endChar": 70
+      },
+      "revId": "f81222f8c1ef0875a72b999453be495e08bd8516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5b1b96d_84057762",
         "filename": "java/java_test.go",
         "patchSetId": 9
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-30T18:41:34Z",
       "side": 1,
       "message": "I think `foo.stubs` is not a `java_system_modules`, which `checkBootClasspathForSystemModule` is meant to check. Did you mean to pass `baz` instead?",
+      "range": {
+        "startLine": 2480,
+        "startChar": 1,
+        "endLine": 2480,
+        "endChar": 34
+      },
+      "revId": "f81222f8c1ef0875a72b999453be495e08bd8516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ecccb3_9cd503a6",
+        "filename": "java/java_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2480,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-30T22:53:19Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I think the name of this function is bit misleading. e.g. you can see that the `java_library` with `system_module` property is passed as an argument to the function in the [existing usages](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/java_test.go;drc\u003d9f7b9f4a9ab77d1816e8ae30ac8339e335fb7e92;l\u003d1345). For clarity, I\u0027ve renamed this function to `checkBootClasspathForLibWithSystemModule`.",
+      "parentUuid": "b5b1b96d_84057762",
       "range": {
         "startLine": 2480,
         "startChar": 1,

@@ -127,6 +127,30 @@
       },
       "revId": "e0e0bf8dd5c8886e9cb10f240e87d31d774e3bbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "395884c6_d30fe869",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2262,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-07-30T22:53:19Z",
+      "side": 1,
+      "message": "I\u0027ve reverted this back to following the behavior of the other java modules -- i.e. the default, unspecified sdk_version will be \"private\". Whether this is expected is debatable, but I believe that maintaining consistency between the from-source stubs and the from-text stubs is more crucial.",
+      "parentUuid": "ac8775f2_73faef3c",
+      "range": {
+        "startLine": 2262,
+        "startChar": 8,
+        "endLine": 2262,
+        "endChar": 67
+      },
+      "revId": "e0e0bf8dd5c8886e9cb10f240e87d31d774e3bbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
