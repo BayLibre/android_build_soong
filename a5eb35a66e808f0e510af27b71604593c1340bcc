@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e07ca4dd_025f6434",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2024-07-30T14:28:06Z",
+      "side": 1,
+      "message": "Nope parallel build in the same out dir is NOT in the scope of this bug.",
+      "parentUuid": "4a506238_ac10b4af",
+      "range": {
+        "startLine": 11,
+        "startChar": 192,
+        "endLine": 11,
+        "endChar": 204
+      },
+      "revId": "a5eb35a66e808f0e510af27b71604593c1340bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec033ee4_9b2aacdf",
