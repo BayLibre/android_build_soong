@@ -156,17 +156,11 @@ var (
 		"args")
 
 	// Rule to invoke `strip` (to discard symbols and data from object files) on darwin architecture.
-	darwinStrip = func() blueprint.Rule {
-		if runtime.GOOS == "darwin" {
-			return pctx.AndroidStaticRule("darwinStrip",
-				blueprint.RuleParams{
-					Command:     "${config.MacStripPath} -u -r -o $out $in",
-					CommandDeps: []string{"${config.MacStripPath}"},
-				})
-		} else {
-			return nil
-		}
-	}()
+	darwinStrip = pctx.AndroidStaticRule("darwinStrip",
+		blueprint.RuleParams{
+			Command:     "${config.MacStripPath} -u -r -o $out $in",
+			CommandDeps: []string{"${config.MacStripPath}"},
+		})
 
 	// b/132822437: objcopy uses a file descriptor per .o file when called on .a files, which runs the system out of
 	// file descriptors on darwin.  Limit concurrent calls to 5 on darwin.
@@ -180,17 +174,11 @@ var (
 		}
 	}()
 
-	darwinLipo = func() blueprint.Rule {
-		if runtime.GOOS == "darwin" {
-			return pctx.AndroidStaticRule("darwinLipo",
-				blueprint.RuleParams{
-					Command:     "${config.MacLipoPath} -create -output $out $in",
-					CommandDeps: []string{"${config.MacLipoPath}"},
-				})
-		} else {
-			return nil
-		}
-	}()
+	darwinLipo = pctx.AndroidStaticRule("darwinLipo",
+		blueprint.RuleParams{
+			Command:     "${config.MacLipoPath} -create -output $out $in",
+			CommandDeps: []string{"${config.MacLipoPath}"},
+		})
 
 	_ = pctx.SourcePathVariable("archiveRepackPath", "build/soong/scripts/archive_repack.sh")
 
