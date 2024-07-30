@@ -491,6 +491,9 @@ type dexpreoptBootJars struct {
 	// Build path to a config file that Soong writes for Make (to be used in makefiles that install
 	// the default boot image).
 	dexpreoptConfigForMake android.WritablePath
+
+	// Build path to the boot framework profile.
+	bootFrameworkProfile android.WritablePath
 }
 
 func (dbj *dexpreoptBootJars) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -603,7 +606,8 @@ func (d *dexpreoptBootJars) GenerateAndroidBuildActions(ctx android.ModuleContex
 		installs := generateBootImage(ctx, config)
 		profileInstalls = append(profileInstalls, installs...)
 		if config == d.defaultBootImage {
-			_, installs := bootFrameworkProfileRule(ctx, config)
+			bootProfile, installs := bootFrameworkProfileRule(ctx, config)
+			d.bootFrameworkProfile = bootProfile
 			profileInstalls = append(profileInstalls, installs...)
 		}
 	}
@@ -1235,7 +1239,7 @@ func bootImageProfileRule(ctx android.ModuleContext, image *bootImageConfig) (an
 
 	profile := bootImageProfileRuleCommon(ctx, image.name, image.dexPathsDeps.Paths(), image.getAnyAndroidVariant().dexLocationsDeps)
 
-	if image == defaultBootImageConfig(ctx) {
+	if image == defaultBootImageConfig(ctx) && profile != nil {
 		rule := android.NewRuleBuilder(pctx, ctx)
 		rule.Install(profile, "/system/etc/boot-image.prof")
 		return profile, rule.Installs()
@@ -1380,4 +1384,13 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 		}
 		ctx.Strict("DEXPREOPT_IMAGE_NAMES", strings.Join(getImageNames(), " "))
 	}
+}
+
+func (d *dexpreoptBootJars) AndroidMkEntries() []android.AndroidMkEntries {
+	return []android.AndroidMkEntries{{
+		Class: "ETC",
+		// Add one of the outputs in `OutputFile`
+		// This ensures that this singleton module does not get skipped when writing out/soong/Android-*.mk
+		OutputFile: android.OptionalPathForPath(d.bootFrameworkProfile),
+	}}
 }
