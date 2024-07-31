@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e390610_e3d36acf",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1840,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-07-31T11:20:03Z",
+      "side": 1,
+      "message": "Yeah, deduping is required for the auto-generated modules. And, yes they make logs difficult to understand, but I honestly don\u0027t think there actually will be a user error here.\n\nFixing all the 1000+ places (yes, in git_main) at the same time is impossible. So, I suggest we have an allowlist of directories where init_rc and vintf_fragments are allowed, so that new directories are forced to use the prebuilt_etc + required combo.",
+      "parentUuid": "f3a8243f_62000ede",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1840,
+        "endChar": 79
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b690600_33e0a6dd",
         "filename": "android/module.go",
         "patchSetId": 3
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "This is copy of behavior from https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/definitions.mk;l\u003d3183. Not familiar with vintf, but it looks like `assemble_vintf` will use manifest version as legacy without this flag : https://cs.android.com/android/platform/superproject/main/+/main:system/libvintf/AssembleVintf.cpp;l\u003d593-596",
       "parentUuid": "c3e4a5a4_48d59a35",
+      "range": {
+        "startLine": 1864,
+        "startChar": 0,
+        "endLine": 1864,
+        "endChar": 50
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2635b31a_8671f554",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1864,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-07-31T11:20:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9c2fa829_62930684",
       "range": {
         "startLine": 1864,
         "startChar": 0,
