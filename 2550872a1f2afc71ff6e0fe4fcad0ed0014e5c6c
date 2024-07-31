@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e625d5_47467a40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1981633
+      },
+      "writtenOn": "2024-07-31T22:56:34Z",
+      "side": 1,
+      "message": "I thought since we couldn\u0027t determine the difference, it would be a risk to enable either. If we want to say we only support 32 on 64 and call it a day, that\u0027s easy enough for me.",
+      "parentUuid": "0587464a_d5c2ac51",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "2550872a1f2afc71ff6e0fe4fcad0ed0014e5c6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c3e0ff88_309a1944",
