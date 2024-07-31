@@ -2303,11 +2303,15 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				if _, ok := module.(*Plugin); ok {
 					ctx.ModuleErrorf("a java_plugin (%s) cannot be used as a libs dependency", otherName)
 				}
-				deps.classpath = append(deps.classpath, dep.HeaderJars...)
-				deps.dexClasspath = append(deps.dexClasspath, dep.HeaderJars...)
-				if len(dep.RepackagedHeaderJars) == 1 && !slices.Contains(dep.HeaderJars, dep.RepackagedHeaderJars[0]) {
+				if ctx.ModuleName() == "services.core.unboosted" {
+					fmt.Println(ctx.Module(), dep.HeaderJars, dep.RepackagedHeaderJars)
+				}
+				if len(dep.RepackagedHeaderJars) > 0 {
 					deps.classpath = append(deps.classpath, dep.RepackagedHeaderJars...)
 					deps.dexClasspath = append(deps.dexClasspath, dep.RepackagedHeaderJars...)
+				} else {
+					deps.classpath = append(deps.classpath, dep.HeaderJars...)
+					deps.dexClasspath = append(deps.dexClasspath, dep.HeaderJars...)
 				}
 				deps.aidlIncludeDirs = append(deps.aidlIncludeDirs, dep.AidlIncludeDirs...)
 				addPlugins(&deps, dep.ExportedPlugins, dep.ExportedPluginClasses...)
