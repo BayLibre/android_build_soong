@@ -256,7 +256,7 @@ var (
 		"-Wno-pointer-to-int-cast",
 		"-Werror=fortify-source",
 		// http://b/315246135 temporarily disabled
-		"-Wno-unused-variable",
+		//"-Wno-unused-variable",
 		// Disabled because it produces many false positives. http://b/323050926
 		"-Wno-missing-field-initializers",
 		// http://b/323050889
@@ -365,7 +365,7 @@ var (
 		// enabling since it's a cosmetic issue.
 		"-Wno-bitwise-instead-of-logical",
 
-		"-Wno-unused",
+		//"-Wno-unused",
 		"-Wno-unused-parameter",
 		"-Wno-unused-but-set-parameter",
 		"-Wno-unqualified-std-cast-call",
