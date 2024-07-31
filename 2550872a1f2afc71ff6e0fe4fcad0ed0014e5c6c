@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0587464a_d5c2ac51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2024-07-31T22:50:48Z",
+      "side": 1,
+      "message": "kernel?\n\nnot that I like 32-bit userspace, but I think we can support 32-on-64 right?  Just hard to support both 32-on-32 and 32-on-64 at the same time.",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "2550872a1f2afc71ff6e0fe4fcad0ed0014e5c6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e0ff88_309a1944",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2024-07-31T22:50:48Z",
+      "side": 1,
+      "message": "could we please find a way to share code with bpf.go?\n\nI get creating a new \u0027multilibfirst\u0027 instead of \u0027common\u0027 target, but it should be possible to do it in the same .go file with less code...",
+      "revId": "2550872a1f2afc71ff6e0fe4fcad0ed0014e5c6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
