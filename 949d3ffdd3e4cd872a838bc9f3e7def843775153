@@ -16,6 +16,23 @@
       "message": "Here\u0027s what you need to import to have unused variable to properly be detected in scudo.",
       "revId": "949d3ffdd3e4cd872a838bc9f3e7def843775153",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0feb998_ce0ead40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-07-31T19:26:02Z",
+      "side": 1,
+      "message": "I did verify that adding an unused variable in scudo, while having this cl, it will be detected properly.",
+      "revId": "949d3ffdd3e4cd872a838bc9f3e7def843775153",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
