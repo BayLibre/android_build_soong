@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d43bbd09_c61acf5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-01T18:35:42Z",
+      "side": 1,
+      "message": "Ohh you are right. I think Soong was previously copying the vdex file to the primary arch, and creating a symlink from the secondary arch to the primary arch.\n\nI have updated the implementation to match make, so that we dont end up with _two_ copies of the vdex files on device.",
+      "parentUuid": "bbe4ad6b_e431ca79",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "4aa3895beaed8a1ae45833ec59d25de7b28c21ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7853828_b93f8799",
@@ -71,6 +95,30 @@
           ]
         }
       ],
+      "revId": "4aa3895beaed8a1ae45833ec59d25de7b28c21ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de6624c8_30d13ebe",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-01T18:35:42Z",
+      "side": 1,
+      "message": "Thanks for pointing out this discrepancy. I have the CL to match the existing make installation behavior.",
+      "parentUuid": "b7853828_b93f8799",
+      "range": {
+        "startLine": 957,
+        "startChar": 0,
+        "endLine": 959,
+        "endChar": 75
+      },
       "revId": "4aa3895beaed8a1ae45833ec59d25de7b28c21ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
