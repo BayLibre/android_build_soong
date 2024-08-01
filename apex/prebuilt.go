@@ -207,8 +207,14 @@ func (p *prebuiltCommon) dexpreoptSystemServerJars(ctx android.ModuleContext) {
 	if !p.hasExportedDeps() {
 		return
 	}
+	psi := android.PrebuiltSelectionInfoMap{}
+	ctx.VisitDirectDeps(func(am android.Module) {
+		if prebuiltSelectionInfo, ok := android.OtherModuleProvider(ctx, am, android.PrebuiltSelectionInfoProvider); ok {
+			psi = prebuiltSelectionInfo
+		}
+	})
 	// If this prebuilt apex has not been selected, return
-	if p.IsHideFromMake() {
+	if p.IsHideFromMake() || !psi.IsSelected(ctx.Module().Name()) {
 		return
 	}
 	// Use apex_name to determine the api domain of this prebuilt apex
