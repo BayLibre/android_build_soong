@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb1ff3f4_6e6aed2b",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-01T11:30:21Z",
+      "side": 1,
+      "message": "It\u0027s better to rename this function, as what it does has changed. The name `packageFile` gives readers a wrong impression that it doesn\u0027t copy the file.",
+      "range": {
+        "startLine": 622,
+        "startChar": 5,
+        "endLine": 622,
+        "endChar": 16
+      },
+      "revId": "90e22ebcc91225186e26d4b46e650e59dbaf5648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ace4bf_84a30eaa",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-01T11:30:21Z",
+      "side": 1,
+      "message": "Is this only used as the \"arbitrary file\"? If so, we can omit this and use something else in `AndroidMkEntries` instead (e.g., `android.SingletonModuleProvider(ctx, d, profileInstallInfoProvider).profileInstalls[0].From`)",
+      "range": {
+        "startLine": 496,
+        "startChar": 1,
+        "endLine": 496,
+        "endChar": 21
+      },
+      "revId": "90e22ebcc91225186e26d4b46e650e59dbaf5648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5d444dc_1be056b9",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1389,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-01T11:30:21Z",
+      "side": 1,
+      "message": "Dumb question: Are these vars only for Make to install the files? Can we get rid of some of them since the installation rules are moved to Soong?",
+      "range": {
+        "startLine": 1340,
+        "startChar": 0,
+        "endLine": 1389,
+        "endChar": 1
+      },
+      "revId": "90e22ebcc91225186e26d4b46e650e59dbaf5648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "386117e1_23a48db9",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1395,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-01T11:30:21Z",
+      "side": 1,
+      "message": "It\u0027s better to put this comment as the description of the method (i.e., above `func ... AndroidMkEntries()`), since it\u0027s the only goal of the function.",
+      "range": {
+        "startLine": 1395,
+        "startChar": 2,
+        "endLine": 1395,
+        "endChar": 101
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5688afe9_8f21687f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dexpreopt_bootjars.go",
+              "range": {
+                "startLine": 1391,
+                "startChar": 0,
+                "endLine": 1391,
+                "endChar": 0
+              },
+              "replacement": "// AndroidMkEntries returns a list of AndroidMkEntries for the dex_bootjars module.\n//\n// This ensures that this singleton module does not get skipped when writing out/soong/Android-*.mk\n"
+            },
+            {
+              "path": "java/dexpreopt_bootjars.go",
+              "range": {
+                "startLine": 1394,
+                "startChar": 0,
+                "endLine": 1396,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "90e22ebcc91225186e26d4b46e650e59dbaf5648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
