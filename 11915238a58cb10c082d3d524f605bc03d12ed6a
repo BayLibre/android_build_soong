@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcf6c4a8_b920cf77",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1840,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-01T07:20:50Z",
+      "side": 1,
+      "message": "Currently working on this idea, but found a small(?) blocker that different modules can have a same vintf fragment file, and this causes conflict for ninja to have same target file from two different command. One of the example is [these two modules](https://cs.android.com/android/platform/superproject/main/+/main:hardware/interfaces/automotive/remoteaccess/hal/default/Android.bp;l\u003d51-63) which shares same vintf_fragment file.\n\nOne of the possible solution would be to find all of cases and separate them into soong namespaces (if they are not going to be installed at the same time), or just explicitly define `vintf_fragment` module for them and to reference directly, instead of `vintf_fragments` property.",
+      "parentUuid": "3e390610_e3d36acf",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1840,
+        "endChar": 79
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b690600_33e0a6dd",
         "filename": "android/module.go",
         "patchSetId": 3

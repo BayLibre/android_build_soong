@@ -46,6 +46,30 @@
       },
       "revId": "47da5775b6d1363ea9e6ff88a8fce951fe5a52f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e05b95_218bc07b",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1869,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-01T07:20:50Z",
+      "side": 1,
+      "message": "I tried it from previous patch, but there are extra logics required from using `processedVintfFragment`, because there are multiple `processedVintfFragment` from a single `src`. If we can make vintf_fragment into a module, this logic will be removed.",
+      "parentUuid": "b0fbc749_804cd7f5",
+      "range": {
+        "startLine": 1869,
+        "startChar": 11,
+        "endLine": 1869,
+        "endChar": 14
+      },
+      "revId": "47da5775b6d1363ea9e6ff88a8fce951fe5a52f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
