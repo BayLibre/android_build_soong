@@ -130,16 +130,18 @@ type lintConfig struct {
 }
 
 const (
-	androidLints = "android"
-	vendorLints  = "vendor"
-	noneLints    = "none"
+	androidLints   = "android"
+	vendorLints    = "vendor"
+	realWorldLints = "real_world"
+	noneLints      = "none"
 )
 
 // lintSets defines the categories of linting for Android and their mapping to lintConfigs.
 var lintSets = map[string]lintConfig{
-	androidLints: {rustcDefault, true, clippyDefault},
-	vendorLints:  {rustcVendor, true, clippyVendor},
-	noneLints:    {rustcAllowAll, false, noLint},
+	androidLints:   {rustcDefault, true, clippyDefault},
+	vendorLints:    {rustcVendor, true, clippyVendor},
+	realWorldLints: {"", true, ""},
+	noneLints:      {rustcAllowAll, false, noLint},
 }
 
 type pathLintSet struct {

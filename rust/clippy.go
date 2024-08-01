@@ -24,8 +24,10 @@ type ClippyProperties struct {
 	// Possible values are "default" (for using a sensible set of lints
 	// depending on the module's location), "android" (for the strictest
 	// lint set that applies to all Android platform code), "vendor" (for a
-	// relaxed set) and "none" (to disable the execution of clippy).  The
-	// default value is "default". See also the `lints` property.
+	// relaxed set), "real_world" (to run clippy with the default set of
+	// lints that are enabled in cargo builds), and "none" (to disable the
+	// execution of clippy).  The default value is "default". See also the
+	// `lints` property.
 	Clippy_lints *string
 }
 
