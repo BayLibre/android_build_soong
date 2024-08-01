@@ -14,7 +14,7 @@
 
 package android
 
-// ImageInterface is implemented by modules that need to be split by the imageTransitionMutator.
+// ImageInterface is implemented by modules that need to be split by the imageMutator.
 type ImageInterface interface {
 	// ImageMutatorBegin is called before any other method in the ImageInterface.
 	ImageMutatorBegin(ctx BaseModuleContext)
@@ -81,15 +81,17 @@ const (
 	DebugRamdiskVariation string = "debug_ramdisk"
 )
 
-// imageTransitionMutator creates variants for modules that implement the ImageInterface that
+// imageMutator creates variants for modules that implement the ImageInterface that
 // allow them to build differently for each partition (recovery, core, vendor, etc.).
-type imageTransitionMutator struct{}
+func imageMutator(ctx BottomUpMutatorContext) {
+	if ctx.Os() != Android {
+		return
+	}
 
-func (imageTransitionMutator) Split(ctx BaseModuleContext) []string {
-	var variations []string
-
-	if m, ok := ctx.Module().(ImageInterface); ctx.Os() == Android && ok {
+	if m, ok := ctx.Module().(ImageInterface); ok {
 		m.ImageMutatorBegin(ctx)
+
+		var variations []string
 
 		if m.CoreVariantNeeded(ctx) {
 			variations = append(variations, CoreVariation)
@@ -115,29 +117,15 @@ func (imageTransitionMutator) Split(ctx BaseModuleContext) []string {
 
 		extraVariations := m.ExtraImageVariations(ctx)
 		variations = append(variations, extraVariations...)
-	}
 
-	if len(variations) == 0 {
-		variations = append(variations, "")
-	}
+		if len(variations) == 0 {
+			return
+		}
 
-	return variations
-}
-
-func (imageTransitionMutator) OutgoingTransition(ctx OutgoingTransitionContext, sourceVariation string) string {
-	return sourceVariation
-}
-
-func (imageTransitionMutator) IncomingTransition(ctx IncomingTransitionContext, incomingVariation string) string {
-	if _, ok := ctx.Module().(ImageInterface); ctx.Os() != Android || !ok {
-		return CoreVariation
-	}
-	return incomingVariation
-}
-
-func (imageTransitionMutator) Mutate(ctx BottomUpMutatorContext, variation string) {
-	ctx.Module().base().setImageVariation(variation)
-	if m, ok := ctx.Module().(ImageInterface); ok {
-		m.SetImageVariation(ctx, variation)
+		mod := ctx.CreateVariations(variations...)
+		for i, v := range variations {
+			mod[i].base().setImageVariation(v)
+			mod[i].(ImageInterface).SetImageVariation(ctx, v)
+		}
 	}
 }
