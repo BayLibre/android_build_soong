@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "743ab203_cad36007",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-01T23:48:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb1ff3f4_6e6aed2b",
+      "range": {
+        "startLine": 622,
+        "startChar": 5,
+        "endLine": 622,
+        "endChar": 16
+      },
+      "revId": "90e22ebcc91225186e26d4b46e650e59dbaf5648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5ace4bf_84a30eaa",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5da3f851_f26602d8",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-01T23:48:06Z",
+      "side": 1,
+      "message": "I did this, but had to use a hack. The ctx object to get the value of the provider is only available in `ExtraEntries` callback function. But we need to set `OutputFile` before that so that the module does not skipped. So I set `OutputFile` incorrectly to a non-nil value, and fix it in `ExtraEntries` using `profileInstallInfoProvider`.\n\nWDYT about this hack?",
+      "parentUuid": "b5ace4bf_84a30eaa",
+      "range": {
+        "startLine": 496,
+        "startChar": 1,
+        "endLine": 496,
+        "endChar": 21
+      },
+      "revId": "90e22ebcc91225186e26d4b46e650e59dbaf5648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5d444dc_1be056b9",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 4
@@ -60,6 +108,30 @@
       "writtenOn": "2024-08-01T11:30:21Z",
       "side": 1,
       "message": "Dumb question: Are these vars only for Make to install the files? Can we get rid of some of them since the installation rules are moved to Soong?",
+      "range": {
+        "startLine": 1340,
+        "startChar": 0,
+        "endLine": 1389,
+        "endChar": 1
+      },
+      "revId": "90e22ebcc91225186e26d4b46e650e59dbaf5648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32de2b0_1e7bc17f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1389,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-01T23:48:06Z",
+      "side": 1,
+      "message": "Good catch, I think these can be removed now. I will do this in a followup CL.",
+      "parentUuid": "e5d444dc_1be056b9",
       "range": {
         "startLine": 1340,
         "startChar": 0,
@@ -117,6 +189,30 @@
           ]
         }
       ],
+      "revId": "90e22ebcc91225186e26d4b46e650e59dbaf5648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d236e555_9dde8178",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1395,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-01T23:48:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "386117e1_23a48db9",
+      "range": {
+        "startLine": 1395,
+        "startChar": 2,
+        "endLine": 1395,
+        "endChar": 101
+      },
       "revId": "90e22ebcc91225186e26d4b46e650e59dbaf5648",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
