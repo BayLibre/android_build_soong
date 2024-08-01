@@ -16,6 +16,24 @@
       "message": "I\u0027m unclear on the intentions, and there is no associated bug or design doc mentioned. External projects currently don\u0027t run any lints. In general, we don\u0027t expect to see patches to external/rust/* sources that aren\u0027t made via their upstream projects first, so I\u0027m not sure of the value of lints in AOSP. I have some concerns about fragility of additional lints being added, because of the extra maintenance burden that they usually induce on my team specifically.",
       "revId": "c74137279d24ec86c4a7a33c145143baa84d9a26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ffe0054_dd21e704",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-01T23:32:30Z",
+      "side": 1,
+      "message": "I\u0027m working on `external/n2`, which is a fork of upstream n2 that we don\u0027t ever plan to merge back with. We\u0027ll have a significant amount of development there, and currently we\u0027re not getting any lints because it\u0027s in `external/` despite essentially being a google-owned project. I want lints, but I don\u0027t want to use `android` because `android` makes a few quite common issues into errors, and I don\u0027t immediately want to go through and fix all of them. I\u0027d also like the set of lints in soong to match what I see in cargo builds.",
+      "parentUuid": "ff06649d_0b3e63ef",
+      "revId": "c74137279d24ec86c4a7a33c145143baa84d9a26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
