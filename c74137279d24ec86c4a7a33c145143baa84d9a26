@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff06649d_0b3e63ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-01T23:26:59Z",
+      "side": 1,
+      "message": "I\u0027m unclear on the intentions, and there is no associated bug or design doc mentioned. External projects currently don\u0027t run any lints. In general, we don\u0027t expect to see patches to external/rust/* sources that aren\u0027t made via their upstream projects first, so I\u0027m not sure of the value of lints in AOSP. I have some concerns about fragility of additional lints being added, because of the extra maintenance burden that they usually induce on my team specifically.",
+      "revId": "c74137279d24ec86c4a7a33c145143baa84d9a26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
