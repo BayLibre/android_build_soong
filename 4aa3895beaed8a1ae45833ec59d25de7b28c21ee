@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbe4ad6b_e431ca79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-01T11:04:06Z",
+      "side": 1,
+      "message": "I think Make generates this as a symlink too.",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "4aa3895beaed8a1ae45833ec59d25de7b28c21ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7853828_b93f8799",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-01T11:04:06Z",
+      "side": 1,
+      "message": "IIUC, this `if` block is for second arch, while the `else` block below is for the primary arch. It\u0027s better to put this statement to the `else` block.\n\nAlso, as I mentioned in another comment, the `else` block should create a symlink too, rather than installing an actual file.",
+      "range": {
+        "startLine": 957,
+        "startChar": 0,
+        "endLine": 959,
+        "endChar": 75
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4f4ddd9b_82617d88",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dexpreopt_bootjars.go",
+              "range": {
+                "startLine": 957,
+                "startChar": 0,
+                "endLine": 960,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "java/dexpreopt_bootjars.go",
+              "range": {
+                "startLine": 963,
+                "startChar": 0,
+                "endLine": 963,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t// Copy the vdex from the primary arch to the no-arch directory\n\t\t\t// e.g. /system/framework/x86_64/$bootjar.vdex --\u003e /system/framework/$bootjar.vdex\n\t\t\tctx.InstallFile(installPath.Join(ctx, \"framework\"), name, install.From)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4aa3895beaed8a1ae45833ec59d25de7b28c21ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
