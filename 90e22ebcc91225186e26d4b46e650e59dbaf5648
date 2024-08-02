@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b84113f0_8be92bda",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-02T03:39:13Z",
+      "side": 1,
+      "message": "I was unable to get this hack working unfortunately. I used `d.dexpreoptConfigForMake` as the **incorrect** non-nil value in `AndroidMkEntries` (invoked in a singleton). But this property itself is set in `GenerateSingletonBuildActions` (also a singleton). So the go compiler was warning me about race conditions.\n\nI have changed the implementation back to store the arbitrary file using a new property in `dexpreoptBootJars` struct",
+      "parentUuid": "5da3f851_f26602d8",
+      "range": {
+        "startLine": 496,
+        "startChar": 1,
+        "endLine": 496,
+        "endChar": 21
+      },
+      "revId": "90e22ebcc91225186e26d4b46e650e59dbaf5648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5d444dc_1be056b9",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 4
