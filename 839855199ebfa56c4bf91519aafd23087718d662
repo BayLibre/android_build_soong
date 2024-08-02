@@ -40,6 +40,30 @@
       ],
       "revId": "839855199ebfa56c4bf91519aafd23087718d662",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f0664dd_afd6b9a4",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-02T19:03:11Z",
+      "side": 1,
+      "message": "IIUC, would your suggestion be to drop this comment?\n\nThe reason why I have kept it so far is because `vdexInstalls` contains files for primary and secondary arches, but not one for the \"no-arch\" location.\ne.g.\n```\n#image.vdexInstalls\nout/soong/dexpreopt_arm64/dex_bootjars/android/system/framework/arm/boot.vdex\nout/soong/dexpreopt_arm64/dex_bootjars/android/system/framework/arm64/boot.vdex\n```\n\nI wanted this comment to indicate that `out/soong/dexpreopt_arm64/dex_bootjars/android/system/framework/arm64/boot.vdex` gets installed at `out/soong/dexpreopt_arm64/dex_bootjars/android/system/framework/boot.vdex` (the root of the `framework` directory)",
+      "parentUuid": "2f379c07_38bd279a",
+      "range": {
+        "startLine": 954,
+        "startChar": 3,
+        "endLine": 955,
+        "endChar": 53
+      },
+      "revId": "839855199ebfa56c4bf91519aafd23087718d662",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
