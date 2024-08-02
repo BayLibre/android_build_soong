@@ -128,6 +128,13 @@ type generatorProperties struct {
 	//  $$: a literal $
 	Cmd proptools.Configurable[string] `android:"replace_instead_of_append"`
 
+	// Optional string to be appended to the command line.
+	//
+	// This allows genrule_defaults to have a cmd and still modify the command line
+	// in inheriting genrules.
+	// This string will be directly appndend to the command line, without a separator space.
+	Extra_cmd proptools.Configurable[string] `android:"replace_instead_of_append"`
+
 	// name of the modules (if any) that produces the host executable.   Leave empty for
 	// prebuilts or scripts that do not need a module to build them.
 	Tools []string
@@ -391,7 +398,7 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 	var outputFiles android.WritablePaths
 	var zipArgs strings.Builder
 
-	cmd := g.properties.Cmd.GetOrDefault(ctx, "")
+	cmd := g.properties.Cmd.GetOrDefault(ctx, "") + g.properties.Extra_cmd.GetOrDefault(ctx, "")
 	if g.CmdModifier != nil {
 		cmd = g.CmdModifier(ctx, cmd)
 	}

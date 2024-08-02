@@ -682,6 +682,7 @@ func TestGenruleDefaults(t *testing.T) {
 				genrule {
 					name: "gen",
 					out: ["out"],
+					extra_cmd: " # [extra]",
 					defaults: ["gen_defaults1", "gen_defaults2"],
 				}
 			`
@@ -690,7 +691,7 @@ func TestGenruleDefaults(t *testing.T) {
 
 	gen := result.Module("gen", "").(*Module)
 
-	expectedCmd := "cp in1 __SBOX_SANDBOX_DIR__/out/out"
+	expectedCmd := "cp in1 __SBOX_SANDBOX_DIR__/out/out # [extra]"
 	android.AssertStringEquals(t, "cmd", expectedCmd, gen.rawCommands[0])
 
 	expectedSrcs := []string{"in1"}
