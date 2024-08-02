@@ -22,6 +22,30 @@
       },
       "revId": "a496d63ee6778f909ddaf8af52e1c599a9cb1d05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38412cf0_9ab615e5",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-02T17:51:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d94fe06_61429474",
+      "range": {
+        "startLine": 960,
+        "startChar": 3,
+        "endLine": 960,
+        "endChar": 100
+      },
+      "revId": "a496d63ee6778f909ddaf8af52e1c599a9cb1d05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
