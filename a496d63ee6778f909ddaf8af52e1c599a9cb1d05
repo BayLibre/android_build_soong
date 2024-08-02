@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d94fe06_61429474",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-02T09:11:18Z",
+      "side": 1,
+      "message": "You can now move this out of `if..else` since it\u0027s in both branches.",
+      "range": {
+        "startLine": 960,
+        "startChar": 3,
+        "endLine": 960,
+        "endChar": 100
+      },
+      "revId": "a496d63ee6778f909ddaf8af52e1c599a9cb1d05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
