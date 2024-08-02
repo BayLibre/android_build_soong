@@ -52,6 +52,24 @@
       "parentUuid": "2ffe0054_dd21e704",
       "revId": "c74137279d24ec86c4a7a33c145143baa84d9a26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b98c23fd_becdf216",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-02T20:33:08Z",
+      "side": 1,
+      "message": "Mostly the lint that requires documentation on all public items. I didn\u0027t want to have to write potentially low-quality docs on those, but thinking about it more, I guess it\u0027s not a big deal. I\u0027ll do that instead, sorry for the trouble.",
+      "parentUuid": "b5cf5d28_6544a422",
+      "revId": "c74137279d24ec86c4a7a33c145143baa84d9a26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
