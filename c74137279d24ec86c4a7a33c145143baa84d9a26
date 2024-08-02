@@ -34,6 +34,24 @@
       "parentUuid": "ff06649d_0b3e63ef",
       "revId": "c74137279d24ec86c4a7a33c145143baa84d9a26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5cf5d28_6544a422",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-02T00:05:17Z",
+      "side": 1,
+      "message": "Does this open up the possibility of other projects opting out of the `android` lints for cargo-based lints instead?\n\nWhat will keep the list of lints the same as what cargo is currently using for a project? Should we call this `custom` instead, to indicate that this needs to be more of a manually curated list?\n\nWhich of the `android` lints are causing problems for you? If there are things that generally aren\u0027t helpful, perhaps we should also be revisiting our list.",
+      "parentUuid": "2ffe0054_dd21e704",
+      "revId": "c74137279d24ec86c4a7a33c145143baa84d9a26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
