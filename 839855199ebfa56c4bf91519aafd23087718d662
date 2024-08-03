@@ -64,6 +64,30 @@
       },
       "revId": "839855199ebfa56c4bf91519aafd23087718d662",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada63875_6cc0f5e8",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-03T22:21:28Z",
+      "side": 1,
+      "message": "Aha, when you said `/system/framework/x86_64/$bootjar.vdex`, I thought of the product install path (`out/target/product/vsoc_x86_64/system/framework/x86_64/$bootjar.vdex`), so it looked wrong to me.\n\nI think the problem is that the expression `/system/framework/x86_64/$bootjar.vdex --\u003e /system/framework/$bootjar.vdex` is misleading. The former is a path relative to the dexpreopt dex_bootjars root, while the latter is a path relative to the product output root.\n\nI would omit the former to avoid the confusion, as it\u0027s not important anyway. I.e., I would change the comment to:\n\n```\n// Copy the vdex from the primary arch to the no-arch directory\n// e.g. /system/framework/$bootjar.vdex\n```",
+      "parentUuid": "3f0664dd_afd6b9a4",
+      "range": {
+        "startLine": 954,
+        "startChar": 3,
+        "endLine": 955,
+        "endChar": 53
+      },
+      "revId": "839855199ebfa56c4bf91519aafd23087718d662",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
