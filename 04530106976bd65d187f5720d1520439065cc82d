@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41dbc266_199d6f7c",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2007,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-05T18:42:24Z",
+      "side": 1,
+      "message": "re: iteration\n\nI think we can move these from being explicit to being pattern matched, I dont have a strong opinion about it. At the moment, we do _not_ have a `GetBuildFlags` api to get the list of all build flags. This probably does not matter for this use case since it is in the same package as the `config` struct, but I am not sure whether this would be an improper use of `productVariables.BuildFlags`?\n\n\u003e Regarding the additional information being added, maybe we can introduce additional build flags\n\nI am not sure whether build flags is the right option for this. My understanding is that build flags are used to provide different build values across release configurations. But apex_names of mainline prebuilts are a constant.\n\nI am not a big fan of the current hardcoding here either. Do you have a recommendation of a different way to get this information?",
+      "parentUuid": "5b625313_5338043b",
+      "revId": "04530106976bd65d187f5720d1520439065cc82d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b44e2279_378c0bdb",
         "filename": "android/prebuilt.go",
         "patchSetId": 3
@@ -31,6 +49,30 @@
       "writtenOn": "2024-08-05T18:27:03Z",
       "side": 1,
       "message": "Do you mind explaining why this dependency needs to be added even when the module is not enabled?",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 3
+      },
+      "revId": "04530106976bd65d187f5720d1520439065cc82d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c6de176_4b669068",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-05T18:42:24Z",
+      "side": 1,
+      "message": "I think this dependency allows us to determine whether should be \"enabled or not\". The disabling happens in a subsequent mutator `PrebuiltSelectModuleMutator`",
+      "parentUuid": "b44e2279_378c0bdb",
       "range": {
         "startLine": 431,
         "startChar": 0,
