@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fe32947_89a7c5bd",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-05T17:08:57Z",
+      "side": 1,
+      "message": "Resolved from offline discussion that not passing system modules to metalava as classpath leads to compile time errors.",
+      "parentUuid": "4a465313_0cbe2d6e",
+      "range": {
+        "startLine": 2294,
+        "startChar": 1,
+        "endLine": 2294,
+        "endChar": 70
+      },
+      "revId": "f81222f8c1ef0875a72b999453be495e08bd8516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5b1b96d_84057762",
