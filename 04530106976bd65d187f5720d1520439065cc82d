@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82cc9218_38d1adc6",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2007,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-05T19:07:21Z",
+      "side": 1,
+      "message": "Maybe we could introduce a `GetBuildFlagsWithRegex` api instead of introducing an api that exposes the entire config buildflags map?\n\nAgreed in that the apex names would be identical across all release configurations. One question: Does \"all mainline apex names\" have to be mapped to the corresponding apex contribution build flags? From this change it seems like the mapping does not seem to be used, but CMIW. If the mapping is not necessary, is there anywhere else in the build system that we can retrieve the information about \"the names of all mainline apexes\"?",
+      "parentUuid": "41dbc266_199d6f7c",
+      "revId": "04530106976bd65d187f5720d1520439065cc82d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b44e2279_378c0bdb",
         "filename": "android/prebuilt.go",
         "patchSetId": 3
