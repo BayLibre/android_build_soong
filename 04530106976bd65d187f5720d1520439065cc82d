@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c49a197_3850658a",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2007,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-05T22:14:58Z",
+      "side": 1,
+      "message": "\u003e Maybe we could introduce a GetBuildFlagsWithRegex api instead of introducing an api that exposes the entire config buildflags map?\n\nMaybe. But we would have to ban wildcards like \"*\" so that users cannot get access to every build flag.\n \n\u003e Does \"all mainline apex names\" have to be mapped to the corresponding apex contribution build flags?\n\nThe mapping is used in line 689 of `android/prebuilt.go`\n```\nreturn InList(apex.ApexVariationName(), ctx.Config().AllMainlineApexNames())\n```\n\nI am restricting this to mainline apex names so that it does not break [non mainline usages](https://source.corp.google.com/search?q\u003df:vendor.*Android.bp%20-f:unbundled_google%20content:apex_name\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main)",
+      "parentUuid": "82cc9218_38d1adc6",
+      "revId": "04530106976bd65d187f5720d1520439065cc82d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b44e2279_378c0bdb",
         "filename": "android/prebuilt.go",
         "patchSetId": 3
