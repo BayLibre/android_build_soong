@@ -1797,6 +1797,17 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		ctx.ruleParams = make(map[blueprint.Rule]blueprint.RuleParams)
 	}
 
+	if !m.Enabled(ctx) {
+		if ctx.Config().AllowMissingDependencies() {
+			// If the module is not enabled it will not create any build rules, nothing will call
+			// ctx.GetMissingDependencies(), and blueprint will consider the missing dependencies to be unhandled
+			// and report them as an error even when AllowMissingDependencies = true.  Call
+			// ctx.GetMissingDependencies() here to tell blueprint not to handle them.
+			ctx.GetMissingDependencies()
+		}
+		return
+	}
+
 	desc := "//" + ctx.ModuleDir() + ":" + ctx.ModuleName() + " "
 	var suffix []string
 	if ctx.Os().Class != Device && ctx.Os().Class != Generic {
@@ -1823,140 +1834,132 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		checkDistProperties(ctx, fmt.Sprintf("dists[%d]", i), &m.distProperties.Dists[i])
 	}
 
-	if m.Enabled(ctx) {
-		// ensure all direct android.Module deps are enabled
-		ctx.VisitDirectDepsBlueprint(func(bm blueprint.Module) {
-			if m, ok := bm.(Module); ok {
-				ctx.validateAndroidModule(bm, ctx.OtherModuleDependencyTag(m), ctx.baseModuleContext.strictVisitDeps, false)
-			}
-		})
+	// ensure all direct android.Module deps are enabled
+	ctx.VisitDirectDepsBlueprint(func(bm blueprint.Module) {
+		if m, ok := bm.(Module); ok {
+			ctx.validateAndroidModule(bm, ctx.OtherModuleDependencyTag(m), ctx.baseModuleContext.strictVisitDeps, false)
+		}
+	})
 
-		if m.Device() {
-			// Handle any init.rc and vintf fragment files requested by the module.  All files installed by this
-			// module will automatically have a dependency on the installed init.rc or vintf fragment file.
-			// The same init.rc or vintf fragment file may be requested by multiple modules or variants,
-			// so instead of installing them now just compute the install path and store it for later.
-			// The full list of all init.rc and vintf fragment install rules will be deduplicated later
-			// so only a single rule is created for each init.rc or vintf fragment file.
+	if m.Device() {
+		// Handle any init.rc and vintf fragment files requested by the module.  All files installed by this
+		// module will automatically have a dependency on the installed init.rc or vintf fragment file.
+		// The same init.rc or vintf fragment file may be requested by multiple modules or variants,
+		// so instead of installing them now just compute the install path and store it for later.
+		// The full list of all init.rc and vintf fragment install rules will be deduplicated later
+		// so only a single rule is created for each init.rc or vintf fragment file.
 
-			if !m.InVendorRamdisk() {
-				m.initRcPaths = PathsForModuleSrc(ctx, m.commonProperties.Init_rc)
-				rcDir := PathForModuleInstall(ctx, "etc", "init")
-				for _, src := range m.initRcPaths {
-					installedInitRc := rcDir.Join(ctx, src.Base())
-					m.katiInitRcInstalls = append(m.katiInitRcInstalls, katiInstall{
-						from: src,
-						to:   installedInitRc,
-					})
-					ctx.PackageFile(rcDir, src.Base(), src)
-					m.installedInitRcPaths = append(m.installedInitRcPaths, installedInitRc)
-				}
-			}
-
-			m.vintfFragmentsPaths = PathsForModuleSrc(ctx, m.commonProperties.Vintf_fragments.GetOrDefault(ctx, nil))
-			vintfDir := PathForModuleInstall(ctx, "etc", "vintf", "manifest")
-			for _, src := range m.vintfFragmentsPaths {
-				installedVintfFragment := vintfDir.Join(ctx, src.Base())
-				m.katiVintfInstalls = append(m.katiVintfInstalls, katiInstall{
+		if !m.InVendorRamdisk() {
+			m.initRcPaths = PathsForModuleSrc(ctx, m.commonProperties.Init_rc)
+			rcDir := PathForModuleInstall(ctx, "etc", "init")
+			for _, src := range m.initRcPaths {
+				installedInitRc := rcDir.Join(ctx, src.Base())
+				m.katiInitRcInstalls = append(m.katiInitRcInstalls, katiInstall{
 					from: src,
-					to:   installedVintfFragment,
+					to:   installedInitRc,
 				})
-				ctx.PackageFile(vintfDir, src.Base(), src)
-				m.installedVintfFragmentsPaths = append(m.installedVintfFragmentsPaths, installedVintfFragment)
+				ctx.PackageFile(rcDir, src.Base(), src)
+				m.installedInitRcPaths = append(m.installedInitRcPaths, installedInitRc)
 			}
 		}
 
-		licensesPropertyFlattener(ctx)
-		if ctx.Failed() {
-			return
-		}
-
-		if jarJarPrefixHandler != nil {
-			jarJarPrefixHandler(ctx)
-			if ctx.Failed() {
-				return
-			}
-		}
-
-		// Call aconfigUpdateAndroidBuildActions to collect merged aconfig files before being used
-		// in m.module.GenerateAndroidBuildActions
-		aconfigUpdateAndroidBuildActions(ctx)
-		if ctx.Failed() {
-			return
-		}
-
-		incrementalAnalysis := false
-		incrementalEnabled := false
-		var cacheKey *blueprint.BuildActionCacheKey = nil
-		var incrementalModule *blueprint.Incremental = nil
-		if ctx.bp.GetIncrementalEnabled() {
-			if im, ok := m.module.(blueprint.Incremental); ok {
-				incrementalModule = &im
-				incrementalEnabled = im.IncrementalSupported()
-				incrementalAnalysis = ctx.bp.GetIncrementalAnalysis() && incrementalEnabled
-			}
-		}
-		if incrementalEnabled {
-			hash, err := proptools.CalculateHash(m.GetProperties())
-			if err != nil {
-				ctx.ModuleErrorf("failed to calculate properties hash: %s", err)
-				return
-			}
-			cacheInput := new(blueprint.BuildActionCacheInput)
-			cacheInput.PropertiesHash = hash
-			ctx.VisitDirectDeps(func(module Module) {
-				cacheInput.ProvidersHash =
-					append(cacheInput.ProvidersHash, ctx.bp.OtherModuleProviderInitialValueHashes(module))
+		m.vintfFragmentsPaths = PathsForModuleSrc(ctx, m.commonProperties.Vintf_fragments.GetOrDefault(ctx, nil))
+		vintfDir := PathForModuleInstall(ctx, "etc", "vintf", "manifest")
+		for _, src := range m.vintfFragmentsPaths {
+			installedVintfFragment := vintfDir.Join(ctx, src.Base())
+			m.katiVintfInstalls = append(m.katiVintfInstalls, katiInstall{
+				from: src,
+				to:   installedVintfFragment,
 			})
-			hash, err = proptools.CalculateHash(&cacheInput)
-			if err != nil {
-				ctx.ModuleErrorf("failed to calculate cache input hash: %s", err)
-				return
-			}
-			cacheKey = &blueprint.BuildActionCacheKey{
-				Id:        ctx.bp.ModuleCacheKey(),
-				InputHash: hash,
-			}
+			ctx.PackageFile(vintfDir, src.Base(), src)
+			m.installedVintfFragmentsPaths = append(m.installedVintfFragmentsPaths, installedVintfFragment)
 		}
+	}
 
-		restored := false
-		if incrementalAnalysis && cacheKey != nil {
-			restored = ctx.bp.RestoreBuildActions(cacheKey, incrementalModule)
-		}
+	licensesPropertyFlattener(ctx)
+	if ctx.Failed() {
+		return
+	}
 
-		if !restored {
-			m.module.GenerateAndroidBuildActions(ctx)
-			if ctx.Failed() {
-				return
-			}
-		}
-
-		if incrementalEnabled && cacheKey != nil {
-			ctx.bp.CacheBuildActions(cacheKey, incrementalModule)
-		}
-
-		// Create the set of tagged dist files after calling GenerateAndroidBuildActions
-		// as GenerateTaggedDistFiles() calls OutputFiles(tag) and so relies on the
-		// output paths being set which must be done before or during
-		// GenerateAndroidBuildActions.
-		m.distFiles = m.GenerateTaggedDistFiles(ctx)
+	if jarJarPrefixHandler != nil {
+		jarJarPrefixHandler(ctx)
 		if ctx.Failed() {
 			return
 		}
-
-		m.installFiles = append(m.installFiles, ctx.installFiles...)
-		m.checkbuildFiles = append(m.checkbuildFiles, ctx.checkbuildFiles...)
-		m.packagingSpecs = append(m.packagingSpecs, ctx.packagingSpecs...)
-		m.katiInstalls = append(m.katiInstalls, ctx.katiInstalls...)
-		m.katiSymlinks = append(m.katiSymlinks, ctx.katiSymlinks...)
-		m.testData = append(m.testData, ctx.testData...)
-	} else if ctx.Config().AllowMissingDependencies() {
-		// If the module is not enabled it will not create any build rules, nothing will call
-		// ctx.GetMissingDependencies(), and blueprint will consider the missing dependencies to be unhandled
-		// and report them as an error even when AllowMissingDependencies = true.  Call
-		// ctx.GetMissingDependencies() here to tell blueprint not to handle them.
-		ctx.GetMissingDependencies()
 	}
+
+	// Call aconfigUpdateAndroidBuildActions to collect merged aconfig files before being used
+	// in m.module.GenerateAndroidBuildActions
+	aconfigUpdateAndroidBuildActions(ctx)
+	if ctx.Failed() {
+		return
+	}
+
+	incrementalAnalysis := false
+	incrementalEnabled := false
+	var cacheKey *blueprint.BuildActionCacheKey = nil
+	var incrementalModule *blueprint.Incremental = nil
+	if ctx.bp.GetIncrementalEnabled() {
+		if im, ok := m.module.(blueprint.Incremental); ok {
+			incrementalModule = &im
+			incrementalEnabled = im.IncrementalSupported()
+			incrementalAnalysis = ctx.bp.GetIncrementalAnalysis() && incrementalEnabled
+		}
+	}
+	if incrementalEnabled {
+		hash, err := proptools.CalculateHash(m.GetProperties())
+		if err != nil {
+			ctx.ModuleErrorf("failed to calculate properties hash: %s", err)
+			return
+		}
+		cacheInput := new(blueprint.BuildActionCacheInput)
+		cacheInput.PropertiesHash = hash
+		ctx.VisitDirectDeps(func(module Module) {
+			cacheInput.ProvidersHash =
+				append(cacheInput.ProvidersHash, ctx.bp.OtherModuleProviderInitialValueHashes(module))
+		})
+		hash, err = proptools.CalculateHash(&cacheInput)
+		if err != nil {
+			ctx.ModuleErrorf("failed to calculate cache input hash: %s", err)
+			return
+		}
+		cacheKey = &blueprint.BuildActionCacheKey{
+			Id:        ctx.bp.ModuleCacheKey(),
+			InputHash: hash,
+		}
+	}
+
+	restored := false
+	if incrementalAnalysis && cacheKey != nil {
+		restored = ctx.bp.RestoreBuildActions(cacheKey, incrementalModule)
+	}
+
+	if !restored {
+		m.module.GenerateAndroidBuildActions(ctx)
+		if ctx.Failed() {
+			return
+		}
+	}
+
+	if incrementalEnabled && cacheKey != nil {
+		ctx.bp.CacheBuildActions(cacheKey, incrementalModule)
+	}
+
+	// Create the set of tagged dist files after calling GenerateAndroidBuildActions
+	// as GenerateTaggedDistFiles() calls OutputFiles(tag) and so relies on the
+	// output paths being set which must be done before or during
+	// GenerateAndroidBuildActions.
+	m.distFiles = m.GenerateTaggedDistFiles(ctx)
+	if ctx.Failed() {
+		return
+	}
+
+	m.installFiles = append(m.installFiles, ctx.installFiles...)
+	m.checkbuildFiles = append(m.checkbuildFiles, ctx.checkbuildFiles...)
+	m.packagingSpecs = append(m.packagingSpecs, ctx.packagingSpecs...)
+	m.katiInstalls = append(m.katiInstalls, ctx.katiInstalls...)
+	m.katiSymlinks = append(m.katiSymlinks, ctx.katiSymlinks...)
+	m.testData = append(m.testData, ctx.testData...)
 
 	if m == ctx.FinalModule().(Module).base() {
 		m.generateModuleTarget(ctx)
