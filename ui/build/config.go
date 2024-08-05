@@ -1149,6 +1149,14 @@ func (c *configImpl) TargetProductOrErr() (string, error) {
 	return "", fmt.Errorf("TARGET_PRODUCT is not defined")
 }
 
+func (c *configImpl) IsCoverageEnabled() bool {
+	if v, ok := c.environ.Get("EMMA_INSTRUMENT"); ok {
+		v = strings.TrimSpace(v)
+		return v == "true"
+	}
+	return false
+}
+
 func (c *configImpl) TargetDevice() string {
 	return c.targetDevice
 }
@@ -1538,6 +1546,8 @@ func (c *configImpl) SoongNinjaFile() string {
 	targetProduct, err := c.TargetProductOrErr()
 	if err != nil {
 		return filepath.Join(c.SoongOutDir(), "build.ninja")
+	} else if c.IsCoverageEnabled() {
+		return filepath.Join(c.SoongOutDir(), "build."+targetProduct+".coverage.ninja")
 	} else {
 		return filepath.Join(c.SoongOutDir(), "build."+targetProduct+".ninja")
 	}
@@ -1551,10 +1561,16 @@ func (c *configImpl) CombinedNinjaFile() string {
 }
 
 func (c *configImpl) SoongAndroidMk() string {
+	if c.IsCoverageEnabled() {
+		return filepath.Join(c.SoongOutDir(), "Android-"+c.TargetProduct()+".coverage.mk")
+	}
 	return filepath.Join(c.SoongOutDir(), "Android-"+c.TargetProduct()+".mk")
 }
 
 func (c *configImpl) SoongMakeVarsMk() string {
+	if c.IsCoverageEnabled() {
+		return filepath.Join(c.SoongOutDir(), "make_vars-"+c.TargetProduct()+".coverage.mk")
+	}
 	return filepath.Join(c.SoongOutDir(), "make_vars-"+c.TargetProduct()+".mk")
 }
 
