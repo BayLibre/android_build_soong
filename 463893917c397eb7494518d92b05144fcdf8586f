@@ -16,6 +16,24 @@
       "message": "Would you also need to remove the getters and setters for this in `build/soong/android` and `build/soong/java`?",
       "revId": "463893917c397eb7494518d92b05144fcdf8586f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "389d34f4_81bccf2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-06T22:48:55Z",
+      "side": 1,
+      "message": "The getters and setters have already been [removed](https://android-review.git.corp.google.com/c/platform/build/soong/+/3205865/1/android/config.go) as part of aosp/3205865 . I forgot to remove this list in that change😅",
+      "parentUuid": "70ec8482_4fcecc5f",
+      "revId": "463893917c397eb7494518d92b05144fcdf8586f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
