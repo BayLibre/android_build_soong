@@ -22,6 +22,30 @@
       },
       "revId": "b1af36a2a2110bc67e95a533963db0bfc2e3d1ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8cbda8a_10d2fa7b",
+        "filename": "android/sbom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-08-06T03:39:27Z",
+      "side": 1,
+      "message": "SBOMs of mainline modules are still in make, that is why I added this check so the switch is for SBOMs of products for now. \n\nAnd for your question, yes, after SBOMs of mainline modules are moved to Soong, there will be a else block in which phony target \"sbom\" depends on SBOM files of them when banchan or tapas is run. And overall the function is kept same as what we currently have in Make implementation.",
+      "parentUuid": "314277f0_fb04b351",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 39
+      },
+      "revId": "b1af36a2a2110bc67e95a533963db0bfc2e3d1ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
