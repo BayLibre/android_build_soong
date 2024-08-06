@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70ec8482_4fcecc5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-06T22:43:50Z",
+      "side": 1,
+      "message": "Would you also need to remove the getters and setters for this in `build/soong/android` and `build/soong/java`?",
+      "revId": "463893917c397eb7494518d92b05144fcdf8586f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
