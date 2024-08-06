@@ -483,6 +483,31 @@ func (v *CcApiVariant) Src() android.Path {
 	return v.src
 }
 
+var _ android.SdkInterface = (*CcApiVariant)(nil)
+
+// To satisfy the android.SdkInterface
+func (v *CcApiVariant) SdkVariants(ctx android.BaseModuleContext) []string {
+	if String(v.properties.Variant) == "ndk" {
+		return []string{"sdk"}
+	}
+	return []string{""}
+}
+
+// To satisfy the android.SdkInterface
+func (v *CcApiVariant) IncomingSdkTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if String(v.properties.Variant) == "ndk" {
+		return "sdk"
+	}
+	if ctx.IsAddingDependency() {
+		return incomingVariation
+	} else {
+		return ""
+	}
+}
+
+// To satisfy the android.SdkInterface
+func (v *CcApiVariant) MutateSdkVariant(ctx android.BottomUpMutatorContext, variation string) {}
+
 func BuildApiVariantName(baseName string, variant string, version string) string {
 	names := []string{baseName, variant}
 	if version != "" {

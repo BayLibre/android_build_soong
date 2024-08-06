@@ -1443,6 +1443,80 @@ func (c *Module) IsSnapshotPrebuilt() bool {
 	return false
 }
 
+// To satisfy the android.SdkInterface
+func (c *Module) SdkVariants(ctx android.BaseModuleContext) []string {
+	if c.AlwaysSdk() {
+		if !c.UseSdk() && !c.SplitPerApiLevel() {
+			ctx.ModuleErrorf("UseSdk() must return true when AlwaysSdk is set, did the factory forget to set Sdk_version?")
+		}
+		return []string{"sdk"}
+	} else if c.UseSdk() || c.SplitPerApiLevel() {
+		return []string{"", "sdk"}
+	} else {
+		return []string{""}
+	}
+}
+
+// To satisfy the android.SdkInterface
+func (c *Module) IncomingSdkTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if c.AlwaysSdk() {
+		return "sdk"
+	} else if c.UseSdk() || c.SplitPerApiLevel() {
+		return incomingVariation
+	}
+	if ctx.IsAddingDependency() {
+		return incomingVariation
+	} else {
+		return ""
+	}
+}
+
+// To satisfy the android.SdkInterface
+func (c *Module) MutateSdkVariant(ctx android.BottomUpMutatorContext, variation string) {
+	ccModule, isCcModule := ctx.Module().(*Module)
+	if ccModule.AlwaysSdk() {
+		if variation != "sdk" {
+			ctx.ModuleErrorf("tried to create variation %q for module with AlwaysSdk set, expected \"sdk\"", variation)
+		}
+
+		ccModule.Properties.IsSdkVariant = true
+	} else if ccModule.UseSdk() || ccModule.SplitPerApiLevel() {
+		if variation == "" {
+			// Clear the sdk_version property for the platform (non-SDK) variant so later code
+			// doesn't get confused by it.
+			ccModule.Properties.Sdk_version = nil
+		} else {
+			// Mark the SDK variant.
+			ccModule.Properties.IsSdkVariant = true
+
+			// SDK variant never gets installed because the variant is to be embedded in
+			// APKs, not to be installed to the platform.
+			ccModule.Properties.PreventInstall = true
+		}
+
+		if ctx.Config().UnbundledBuildApps() {
+			if variation == "" {
+				// For an unbundled apps build, hide the platform variant from Make
+				// so that other Make modules don't link against it, but against the
+				// SDK variant.
+				ccModule.Properties.HideFromMake = true
+			}
+		} else {
+			if variation == "sdk" {
+				// For a platform build, mark the SDK variant so that it gets a ".sdk" suffix when
+				// exposed to Make.
+				ccModule.Properties.SdkAndPlatformVariantVisibleToMake = true
+			}
+		}
+	} else {
+		if isCcModule {
+			// Clear the sdk_version property for modules that don't have an SDK variant so
+			// later code doesn't get confused by it.
+			ccModule.Properties.Sdk_version = nil
+		}
+	}
+}
+
 func isBionic(name string) bool {
 	switch name {
 	case "libc", "libm", "libdl", "libdl_android", "linker":

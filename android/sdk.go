@@ -886,3 +886,11 @@ func ApiFingerprintPath(ctx PathContext) OutputPath {
 		return PathForOutput(ctx, "api_fingerprint.txt")
 	}).(OutputPath)
 }
+
+type SdkInterface interface {
+	SdkVariants(ctx BaseModuleContext) []string
+
+	IncomingSdkTransition(ctx IncomingTransitionContext, incomingVariation string) string
+
+	MutateSdkVariant(ctx BottomUpMutatorContext, variation string)
+}
