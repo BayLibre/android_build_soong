@@ -716,6 +716,12 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		flags.NoOverrideFlags = append(flags.NoOverrideFlags, "${config.NoOverrideExternalGlobalCflags}")
 	}
 
+	// http://b/315246135 temporarily disable the unused variable warning
+	// for these modules that have not fixed their unused variables yet.
+	if strings.HasPrefix(ctx.ModuleDir(), "vendor/google/") || strings.HasPrefix(ctx.ModuleDir(), "packages/modules/") || strings.HasPrefix(ctx.ModuleDir(), "frameworks/") {
+		flags.NoOverrideFlags = append(flags.NoOverrideFlags, "-Wno-unused-variable")
+	}
+
 	return flags
 }
 

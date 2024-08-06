@@ -249,8 +249,6 @@ var (
 		// http://b/161386391 for -Wno-pointer-to-int-cast
 		"-Wno-pointer-to-int-cast",
 		"-Werror=fortify-source",
-		// http://b/315246135 temporarily disabled
-		"-Wno-unused-variable",
 		// Disabled because it produces many false positives. http://b/323050926
 		"-Wno-missing-field-initializers",
 		// http://b/323050889
