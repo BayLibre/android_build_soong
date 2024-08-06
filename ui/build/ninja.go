@@ -187,6 +187,8 @@ func runNinjaForBuild(ctx Context, config Config) {
 			"TARGET_BUILD_VARIANT",
 			// The product name of the product being built, e.g. aosp_arm, aosp_flame.
 			"TARGET_PRODUCT",
+			// Used for generating coverage suffix ninja files.
+			"EMMA_INSTRUMENT",
 			// b/147197813 - used by art-check-debug-apex-gen
 			"EMMA_INSTRUMENT_FRAMEWORK",
 
