@@ -16,6 +16,24 @@
       "message": "Is this field used? When I commented it out, `m nothing` still succeeded.",
       "revId": "7811e466699ff8781a11eaffef4266a3d5252019",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9e4160_994f7bdd",
+        "filename": "java/app_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-06T21:44:07Z",
+      "side": 1,
+      "message": "I think internal main does not have `android_app_set` modules, but partner workspaces have usages of this module.",
+      "parentUuid": "8197b814_9050fcd4",
+      "revId": "7811e466699ff8781a11eaffef4266a3d5252019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
