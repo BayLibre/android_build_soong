@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8197b814_9050fcd4",
+        "filename": "java/app_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-06T21:41:58Z",
+      "side": 1,
+      "message": "Is this field used? When I commented it out, `m nothing` still succeeded.",
+      "revId": "7811e466699ff8781a11eaffef4266a3d5252019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
