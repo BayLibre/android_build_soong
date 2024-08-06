@@ -165,10 +165,31 @@ func (c *Cmd) outDirArg() string {
 	return sandboxConfig.outDir + ":" + abfsOutDir
 }
 
+func (c *Cmd) readMountArgs() []string {
+	if !c.config.UseABFS() {
+		// For now, just map everything. Make most things readonly.
+		return []string{"-R", "/"}
+	}
+
+	entries, err := os.ReadDir("/")
+	if err != nil {
+		// If we can't read "/", just use the default non-ABFS behavior.
+		return []string{"-R", "/"}
+	}
+
+	args := make([]string, 0, 2*len(entries))
+	for _, ent := range entries {
+		args = append(args, "-R", "/"+ent.Name())
+	}
+
+	return args
+}
+
 func (c *Cmd) wrapSandbox() {
 	wd, _ := os.Getwd()
 
-	sandboxArgs := []string{
+	var sandboxArgs []string
+	sandboxArgs = append(sandboxArgs,
 		// The executable to run
 		"-x", c.Path,
 
@@ -200,10 +221,13 @@ func (c *Cmd) wrapSandbox() {
 		"--rlimit_cpu", "soft",
 		"--rlimit_fsize", "soft",
 		"--rlimit_nofile", "soft",
+	)
 
-		// For now, just map everything. Make most things readonly.
-		"-R", "/",
+	sandboxArgs = append(sandboxArgs,
+		c.readMountArgs()...,
+	)
 
+	sandboxArgs = append(sandboxArgs,
 		// Mount a writable tmp dir
 		"-B", "/tmp",
 
@@ -219,7 +243,7 @@ func (c *Cmd) wrapSandbox() {
 
 		// Only log important warnings / errors
 		"-q",
-	}
+	)
 	if c.config.UseABFS() {
 		sandboxArgs = append(sandboxArgs, "-B", "{ABFS_DIR}")
 	}
