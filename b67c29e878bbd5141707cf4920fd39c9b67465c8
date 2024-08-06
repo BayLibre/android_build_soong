@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf85d5c6_2d3dae3a",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1883870
+      },
+      "writtenOn": "2024-08-06T16:58:11Z",
+      "side": 1,
+      "message": "Maybe add a comment why we are doing this.",
+      "revId": "b67c29e878bbd5141707cf4920fd39c9b67465c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
