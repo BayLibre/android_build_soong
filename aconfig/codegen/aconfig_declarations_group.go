@@ -65,10 +65,10 @@ func AconfigDeclarationsGroupFactory() android.Module {
 }
 
 func (adg *AconfigDeclarationsGroup) DepsMutator(ctx android.BottomUpMutatorContext) {
-	ctx.AddDependency(ctx.Module(), aconfigDeclarationsGroupTag, adg.properties.Aconfig_declarations_groups...)
-	ctx.AddDependency(ctx.Module(), javaAconfigLibraryTag, adg.properties.Java_aconfig_libraries...)
-	ctx.AddDependency(ctx.Module(), ccAconfigLibraryTag, adg.properties.Cc_aconfig_libraries...)
-	ctx.AddDependency(ctx.Module(), rustAconfigLibraryTag, adg.properties.Rust_aconfig_libraries...)
+	ctx.AddFarVariationDependencies(nil, aconfigDeclarationsGroupTag, adg.properties.Aconfig_declarations_groups...)
+	ctx.AddFarVariationDependencies(nil, javaAconfigLibraryTag, adg.properties.Java_aconfig_libraries...)
+	ctx.AddFarVariationDependencies(nil, ccAconfigLibraryTag, adg.properties.Cc_aconfig_libraries...)
+	ctx.AddFarVariationDependencies(nil, rustAconfigLibraryTag, adg.properties.Rust_aconfig_libraries...)
 }
 
 func (adg *AconfigDeclarationsGroup) GenerateAndroidBuildActions(ctx android.ModuleContext) {

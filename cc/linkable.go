@@ -66,6 +66,8 @@ type SantizableDependencyTagChecker func(tag blueprint.DependencyTag) bool
 type LinkableInterface interface {
 	android.Module
 
+	android.SdkInterface
+
 	Module() android.Module
 	CcLibrary() bool
 	CcLibraryInterface() bool
@@ -248,6 +250,8 @@ type LinkableInterface interface {
 
 	// FuzzModule returns the fuzz.FuzzModule associated with the module.
 	FuzzModuleStruct() fuzz.FuzzModule
+
+	// SdkVariants(ctx android.BaseModuleContext) []string
 }
 
 var (

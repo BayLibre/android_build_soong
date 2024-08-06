@@ -25,6 +25,20 @@ var _ android.ImageInterface = (*Module)(nil)
 
 var _ cc.ImageMutatableModule = (*Module)(nil)
 
+func (mod *Module) SdkVariants(ctx android.BaseModuleContext) []string {
+	return []string{""}
+}
+
+func (mod *Module) IncomingSdkTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if ctx.IsAddingDependency() {
+		return incomingVariation
+	} else {
+		return ""
+	}
+}
+
+func (mod *Module) MutateSdkVariant(ctx android.BottomUpMutatorContext, variation string) {}
+
 func (mod *Module) VendorAvailable() bool {
 	return Bool(mod.VendorProperties.Vendor_available)
 }

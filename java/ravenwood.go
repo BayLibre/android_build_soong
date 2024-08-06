@@ -109,24 +109,24 @@ func (r *ravenwoodTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 	r.Library.DepsMutator(ctx)
 
 	// Generically depend on the runtime so that it's installed together with us
-	ctx.AddVariationDependencies(nil, ravenwoodRuntimeTag, ravenwoodRuntimeName)
+	ctx.AddFarVariationDependencies(nil, ravenwoodRuntimeTag, ravenwoodRuntimeName)
 
 	// Directly depend on any utils so that we link against them
-	utils := ctx.AddVariationDependencies(nil, ravenwoodUtilsTag, ravenwoodUtilsName)[0]
+	utils := ctx.AddFarVariationDependencies(nil, ravenwoodUtilsTag, ravenwoodUtilsName)[0]
 	if utils != nil {
 		for _, lib := range utils.(*ravenwoodLibgroup).ravenwoodLibgroupProperties.Libs {
-			ctx.AddVariationDependencies(nil, libTag, lib)
+			ctx.AddFarVariationDependencies(nil, libTag, lib)
 		}
 	}
 
 	// Add jni libs
 	for _, lib := range r.ravenwoodTestProperties.Jni_libs {
-		ctx.AddVariationDependencies(ctx.Config().BuildOSTarget.Variations(), jniLibTag, lib)
+		ctx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), jniLibTag, lib)
 	}
 
 	// Resources APK
 	if resourceApk := proptools.String(r.ravenwoodTestProperties.Resource_apk); resourceApk != "" {
-		ctx.AddVariationDependencies(nil, ravenwoodTestResourceApkTag, resourceApk)
+		ctx.AddFarVariationDependencies(nil, ravenwoodTestResourceApkTag, resourceApk)
 	}
 }
 

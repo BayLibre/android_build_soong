@@ -205,6 +205,25 @@ func (system *SystemModules) AndroidMk() android.AndroidMkData {
 	}
 }
 
+var _ android.SdkInterface = (*SystemModules)(nil)
+
+// To satisfy the android.SdkInterface interface
+func (system *SystemModules) SdkVariants(ctx android.BaseModuleContext) []string {
+	return []string{"", "sdk"}
+}
+
+// To satisfy the android.SdkInterface interface
+func (system *SystemModules) IncomingSdkTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if ctx.IsAddingDependency() {
+		return incomingVariation
+	} else {
+		return ""
+	}
+}
+
+// To satisfy the android.SdkInterface interface
+func (system *SystemModules) MutateSdkVariant(ctx android.BottomUpMutatorContext, variation string) {}
+
 // A prebuilt version of java_system_modules. It does not import the
 // generated system module, it generates the system module from imported
 // java libraries in the same way that java_system_modules does. It just
@@ -265,6 +284,26 @@ func (system *systemModulesImport) ComponentDepsMutator(ctx android.BottomUpMuta
 	for _, lib := range system.properties.Libs {
 		ctx.AddVariationDependencies(nil, systemModulesLibsTag, android.PrebuiltNameFromSource(lib))
 	}
+}
+
+var _ android.SdkInterface = (*systemModulesImport)(nil)
+
+// To satisfy the android.SdkInterface interface
+func (system *systemModulesImport) SdkVariants(ctx android.BaseModuleContext) []string {
+	return []string{"", "sdk"}
+}
+
+// To satisfy the android.SdkInterface interface
+func (system *systemModulesImport) IncomingSdkTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if ctx.IsAddingDependency() {
+		return incomingVariation
+	} else {
+		return ""
+	}
+}
+
+// To satisfy the android.SdkInterface interface
+func (system *systemModulesImport) MutateSdkVariant(ctx android.BottomUpMutatorContext, variation string) {
 }
 
 type systemModulesSdkMemberType struct {
