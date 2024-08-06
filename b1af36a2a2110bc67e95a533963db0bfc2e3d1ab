@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "314277f0_fb04b351",
+        "filename": "android/sbom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-08-06T02:50:57Z",
+      "side": 1,
+      "message": "Is this needed (or convenient) for the apex sbom(s) too?",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 39
+      },
+      "revId": "b1af36a2a2110bc67e95a533963db0bfc2e3d1ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
