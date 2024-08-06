@@ -1274,6 +1274,14 @@ func (c *config) DisableScudo() bool {
 	return Bool(c.productVariables.DisableScudo)
 }
 
+func (c *config) EnableXOM() bool {
+	if c.productVariables.EnableXOM == nil {
+		return true
+	} else {
+		return Bool(c.productVariables.EnableXOM)
+	}
+}
+
 func (c *config) Android64() bool {
 	for _, t := range c.Targets[Android] {
 		if t.Arch.ArchType.Multilib == "lib64" {
@@ -1801,6 +1809,13 @@ func (c *config) HWASanEnabledForPath(path string) bool {
 		return false
 	}
 	return HasAnyPrefix(path, c.productVariables.HWASanIncludePaths) && !c.HWASanDisabledForPath(path)
+}
+
+func (c *config) XOMDisabledForPath(path string) bool {
+	if c.productVariables.XOMExcludePaths == nil {
+		return false
+	}
+	return PrefixInList(c.productVariables.XOMExcludePaths, path)
 }
 
 func (c *config) VendorConfig(name string) VendorConfig {

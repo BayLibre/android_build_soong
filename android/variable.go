@@ -329,6 +329,9 @@ type ProductVariables struct {
 	CFIExcludePaths []string `json:",omitempty"`
 	CFIIncludePaths []string `json:",omitempty"`
 
+	EnableXOM       *bool    `json:",omitempty"`
+	XOMExcludePaths []string `json:",omitempty"`
+
 	DisableScudo *bool `json:",omitempty"`
 
 	MemtagHeapExcludePaths      []string `json:",omitempty"`
