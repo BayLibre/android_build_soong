@@ -67,6 +67,27 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 
 		// ART boot image for testing only. Do not rely on it to make any build-time decision.
 		artCfg := bootImageConfig{
+<<<<<<< PATCH SET (ca5217 [Do NOT SUBMIT] Test using speed compiler filter for boot im)
+			name:                 artBootImageName,
+			enabledIfExists:      "art-bootclasspath-fragment",
+			stem:                 bootImageStem,
+			installDir:           "apex/art_boot_images/javalib",
+			modules:              global.TestOnlyArtBootImageJars,
+			preloadedClassesFile: "art/build/boot/preloaded-classes",
+			compilerFilter:       "speed",
+			singleImage:          false,
+			profileImports:       profileImports,
+||||||| BASE
+			name:                 artBootImageName,
+			enabledIfExists:      "art-bootclasspath-fragment",
+			stem:                 bootImageStem,
+			installDir:           "apex/art_boot_images/javalib",
+			modules:              global.TestOnlyArtBootImageJars,
+			preloadedClassesFile: "art/build/boot/preloaded-classes",
+			compilerFilter:       "speed-profile",
+			singleImage:          false,
+			profileImports:       profileImports,
+=======
 			name:                  artBootImageName,
 			enabledIfExists:       "art-bootclasspath-fragment",
 			stem:                  bootImageStem,
@@ -77,6 +98,7 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 			singleImage:           false,
 			profileImports:        profileImports,
 			profileProviderModule: "art-bootclasspath-fragment",
+>>>>>>> BASE      (f68b9c Merge "Enable --salvage-unused-profile for AutoFDO" into mai)
 		}
 
 		// Framework config for the boot image extension.
@@ -88,7 +110,7 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 			installDir:           frameworkSubdir,
 			modules:              frameworkModules,
 			preloadedClassesFile: "frameworks/base/config/preloaded-classes",
-			compilerFilter:       "speed-profile",
+			compilerFilter:       "speed",
 			singleImage:          false,
 			profileImports:       profileImports,
 		}
