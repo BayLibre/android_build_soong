@@ -222,6 +222,13 @@ type CommonProperties struct {
 	// the stubs via libs, but should be set to true when the module depends on
 	// the stubs via static libs.
 	Is_stubs_module *bool
+
+	// If true, always create an sdk variant and don't create a platform variant.
+	Sdk_variant_only *bool
+
+	// If true, always create an platform variant and don't create an sdk variant even when
+	// sdk_version is specified and is not "none"
+	Platform_variant_only *bool
 }
 
 // Properties that are specific to device modules. Host module factories should not add these when
@@ -572,6 +579,63 @@ func (j *Module) InstallInProduct() bool {
 	return j.ProductSpecific()
 }
 
+var _ android.StubsAvailableModule = (*Module)(nil)
+
+// To safisfy the StubsAvailableModule interface
+func (j *Module) IsStubsModule() bool {
+	return proptools.Bool(j.properties.Is_stubs_module)
+}
+
+var _ android.SdkInterface = (*Module)(nil)
+
+// To satisfy the android.SdkInterface interface
+func (j *Module) SdkVariants(ctx android.BaseModuleContext) []string {
+	if android.InList(j.Name(), config.PrivateAndStubsCommonDependencyModules) {
+		return []string{"", "sdk"}
+	}
+	if j.sdkVariantOnly() {
+		return []string{"sdk"}
+	}
+	if j.platformVariantOnly() {
+		return []string{""}
+	}
+	isStubsModule := j.IsStubsModule()
+	sdkVersion := j.SdkVersion(ctx)
+	nonPrivateSdkVersion := sdkVersion.Kind != android.SdkPrivate
+	if isStubsModule || nonPrivateSdkVersion {
+		return []string{"", "sdk"}
+	} else {
+		return []string{""}
+	}
+}
+
+// To satisfy the android.SdkInterface interface
+func (j *Module) IncomingSdkTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if android.InList(j.Name(), config.PrivateAndStubsCommonDependencyModules) {
+		return incomingVariation
+	}
+	if j.sdkVariantOnly() {
+		return "sdk"
+	}
+	if j.platformVariantOnly() {
+		return ""
+	}
+	isStubsModule := j.IsStubsModule()
+	sdkVersion := android.SdkSpecFromWithConfig(ctx.Config(), String(j.deviceProperties.Sdk_version))
+	nonPrivateSdkVersion := sdkVersion.Kind != android.SdkPrivate
+	if isStubsModule || nonPrivateSdkVersion {
+		return incomingVariation
+	}
+	if ctx.IsAddingDependency() {
+		return incomingVariation
+	} else {
+		return ""
+	}
+}
+
+// To satisfy the android.SdkInterface interface
+func (j *Module) MutateSdkVariant(ctx android.BottomUpMutatorContext, variation string) {}
+
 func (j *Module) CheckStableSdkVersion(ctx android.BaseModuleContext) error {
 	sdkVersion := j.SdkVersion(ctx)
 	if sdkVersion.Stable() {
@@ -805,17 +869,17 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 			// This is a sysprop implementation library that has a corresponding sysprop public
 			// stubs library, and a dependency on it so that dependencies on the implementation can
 			// be forwarded to the public stubs library when necessary.
-			ctx.AddVariationDependencies(nil, syspropPublicStubDepTag, j.deviceProperties.SyspropPublicStub)
+			ctx.AddFarVariationDependencies(nil, syspropPublicStubDepTag, j.deviceProperties.SyspropPublicStub)
 		}
 	}
 
-	libDeps := ctx.AddVariationDependencies(nil, libTag, j.properties.Libs...)
+	libDeps := ctx.AddFarVariationDependencies(nil, libTag, j.properties.Libs...)
 
 	j.properties.Static_libs = android.RemoveListFromList(j.properties.Static_libs, j.properties.Exclude_static_libs)
-	ctx.AddVariationDependencies(nil, staticLibTag, j.properties.Static_libs...)
+	ctx.AddFarVariationDependencies(nil, staticLibTag, j.properties.Static_libs...)
 
 	// Add dependency on libraries that provide additional hidden api annotations.
-	ctx.AddVariationDependencies(nil, hiddenApiAnnotationsTag, j.properties.Hiddenapi_additional_annotations...)
+	ctx.AddFarVariationDependencies(nil, hiddenApiAnnotationsTag, j.properties.Hiddenapi_additional_annotations...)
 
 	if ctx.Config().EnforceInterPartitionJavaSdkLibrary() {
 		// Require java_sdk_library at inter-partition java dependency to ensure stable
@@ -857,7 +921,7 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 						android.InList(*lib, j.usesLibrary.usesLibraryProperties.Optional_uses_libs) {
 						tag = usesLibOptTag
 					}
-					ctx.AddVariationDependencies(nil, tag, *lib)
+					ctx.AddFarVariationDependencies(nil, tag, *lib)
 				}
 			}
 		}
@@ -875,9 +939,9 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	if j.hasSrcExt(".kt") {
 		// TODO(ccross): move this to a mutator pass that can tell if generated sources contain
 		// Kotlin files
-		ctx.AddVariationDependencies(nil, kotlinStdlibTag,
+		ctx.AddFarVariationDependencies(nil, kotlinStdlibTag,
 			"kotlin-stdlib", "kotlin-stdlib-jdk7", "kotlin-stdlib-jdk8")
-		ctx.AddVariationDependencies(nil, kotlinAnnotationsTag, "kotlin-annotations")
+		ctx.AddFarVariationDependencies(nil, kotlinAnnotationsTag, "kotlin-annotations")
 	}
 
 	// Framework libraries need special handling in static coverage builds: they should not have
@@ -888,11 +952,11 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 			j.properties.Instrument = true
 		}
 	} else if j.shouldInstrumentStatic(ctx) {
-		ctx.AddVariationDependencies(nil, staticLibTag, "jacocoagent")
+		ctx.AddFarVariationDependencies(nil, staticLibTag, "jacocoagent")
 	}
 
 	if j.useCompose() {
-		ctx.AddVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(), kotlinPluginTag,
+		ctx.AddFarVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(), kotlinPluginTag,
 			"androidx.compose.compiler_compiler-hosted")
 	}
 }
@@ -2127,6 +2191,14 @@ func (j *Module) collectTransitiveSrcFiles(ctx android.ModuleContext, mine andro
 
 func (j *Module) IsInstallable() bool {
 	return Bool(j.properties.Installable)
+}
+
+func (j *Module) sdkVariantOnly() bool {
+	return proptools.BoolDefault(j.properties.Sdk_variant_only, false)
+}
+
+func (j *Module) platformVariantOnly() bool {
+	return proptools.BoolDefault(j.properties.Platform_variant_only, false)
 }
 
 type sdkLinkType int

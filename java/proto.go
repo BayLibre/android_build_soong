@@ -82,14 +82,14 @@ func protoDeps(ctx android.BottomUpMutatorContext, p *android.ProtoProperties) {
 		switch String(p.Proto.Type) {
 		case "stream": // does not require additional dependencies
 		case "micro":
-			ctx.AddVariationDependencies(nil, staticLibTag, "libprotobuf-java-micro")
+			ctx.AddFarVariationDependencies(nil, staticLibTag, "libprotobuf-java-micro")
 		case "nano":
-			ctx.AddVariationDependencies(nil, staticLibTag, "libprotobuf-java-nano")
+			ctx.AddFarVariationDependencies(nil, staticLibTag, "libprotobuf-java-nano")
 		case "lite", unspecifiedProtobufPluginType:
-			ctx.AddVariationDependencies(nil, staticLibTag, "libprotobuf-java-lite")
+			ctx.AddFarVariationDependencies(nil, staticLibTag, "libprotobuf-java-lite")
 		case "full":
 			if ctx.Host() {
-				ctx.AddVariationDependencies(nil, staticLibTag, "libprotobuf-java-full")
+				ctx.AddFarVariationDependencies(nil, staticLibTag, "libprotobuf-java-full")
 			} else {
 				ctx.PropertyErrorf("proto.type", "full java protos only supported on the host")
 			}

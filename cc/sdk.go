@@ -16,7 +16,6 @@ package cc
 
 import (
 	"android/soong/android"
-	"android/soong/genrule"
 )
 
 // sdkTransitionMutator creates a platform and an SDK variant for modules
@@ -31,33 +30,8 @@ func (sdkTransitionMutator) Split(ctx android.BaseModuleContext) []string {
 		return []string{""}
 	}
 
-	switch m := ctx.Module().(type) {
-	case LinkableInterface:
-		if m.AlwaysSdk() {
-			if !m.UseSdk() && !m.SplitPerApiLevel() {
-				ctx.ModuleErrorf("UseSdk() must return true when AlwaysSdk is set, did the factory forget to set Sdk_version?")
-			}
-			return []string{"sdk"}
-		} else if m.UseSdk() || m.SplitPerApiLevel() {
-			return []string{"", "sdk"}
-		} else {
-			return []string{""}
-		}
-	case *genrule.Module:
-		if p, ok := m.Extra.(*GenruleExtraProperties); ok {
-			if String(p.Sdk_version) != "" {
-				return []string{"", "sdk"}
-			} else {
-				return []string{""}
-			}
-		}
-	case *CcApiVariant:
-		ccApiVariant, _ := ctx.Module().(*CcApiVariant)
-		if String(ccApiVariant.properties.Variant) == "ndk" {
-			return []string{"sdk"}
-		} else {
-			return []string{""}
-		}
+	if sdkInterface, ok := ctx.Module().(android.SdkInterface); ok {
+		return sdkInterface.SdkVariants(ctx)
 	}
 
 	return []string{""}
@@ -71,24 +45,9 @@ func (sdkTransitionMutator) IncomingTransition(ctx android.IncomingTransitionCon
 	if ctx.Os() != android.Android {
 		return ""
 	}
-	switch m := ctx.Module().(type) {
-	case LinkableInterface:
-		if m.AlwaysSdk() {
-			return "sdk"
-		} else if m.UseSdk() || m.SplitPerApiLevel() {
-			return incomingVariation
-		}
-	case *genrule.Module:
-		if p, ok := m.Extra.(*GenruleExtraProperties); ok {
-			if String(p.Sdk_version) != "" {
-				return incomingVariation
-			}
-		}
-	case *CcApiVariant:
-		ccApiVariant, _ := ctx.Module().(*CcApiVariant)
-		if String(ccApiVariant.properties.Variant) == "ndk" {
-			return "sdk"
-		}
+
+	if sdkInterface, ok := ctx.Module().(android.SdkInterface); ok {
+		return sdkInterface.IncomingSdkTransition(ctx, incomingVariation)
 	}
 
 	if ctx.IsAddingDependency() {
@@ -103,49 +62,7 @@ func (sdkTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, variation
 		return
 	}
 
-	switch m := ctx.Module().(type) {
-	case LinkableInterface:
-		ccModule, isCcModule := ctx.Module().(*Module)
-		if m.AlwaysSdk() {
-			if variation != "sdk" {
-				ctx.ModuleErrorf("tried to create variation %q for module with AlwaysSdk set, expected \"sdk\"", variation)
-			}
-
-			ccModule.Properties.IsSdkVariant = true
-		} else if m.UseSdk() || m.SplitPerApiLevel() {
-			if variation == "" {
-				// Clear the sdk_version property for the platform (non-SDK) variant so later code
-				// doesn't get confused by it.
-				ccModule.Properties.Sdk_version = nil
-			} else {
-				// Mark the SDK variant.
-				ccModule.Properties.IsSdkVariant = true
-
-				// SDK variant never gets installed because the variant is to be embedded in
-				// APKs, not to be installed to the platform.
-				ccModule.Properties.PreventInstall = true
-			}
-
-			if ctx.Config().UnbundledBuildApps() {
-				if variation == "" {
-					// For an unbundled apps build, hide the platform variant from Make
-					// so that other Make modules don't link against it, but against the
-					// SDK variant.
-					ccModule.Properties.HideFromMake = true
-				}
-			} else {
-				if variation == "sdk" {
-					// For a platform build, mark the SDK variant so that it gets a ".sdk" suffix when
-					// exposed to Make.
-					ccModule.Properties.SdkAndPlatformVariantVisibleToMake = true
-				}
-			}
-		} else {
-			if isCcModule {
-				// Clear the sdk_version property for modules that don't have an SDK variant so
-				// later code doesn't get confused by it.
-				ccModule.Properties.Sdk_version = nil
-			}
-		}
+	if sdkInterface, ok := ctx.Module().(android.SdkInterface); ok {
+		sdkInterface.MutateSdkVariant(ctx, variation)
 	}
 }

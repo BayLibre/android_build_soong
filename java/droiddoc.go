@@ -98,6 +98,9 @@ type JavadocProperties struct {
 
 	// names of the output files used in args that will be generated
 	Out []string
+
+	// If true, always create an sdk variant and don't create a platform variant.
+	Sdk_variant_only *bool
 }
 
 type ApiToCheck struct {
@@ -261,6 +264,10 @@ func (j *Javadoc) ReplaceMaxSdkVersionPlaceholder(ctx android.EarlyModuleContext
 
 func (j *Javadoc) TargetSdkVersion(ctx android.EarlyModuleContext) android.ApiLevel {
 	return j.SdkVersion(ctx).ApiLevel
+}
+
+func (j *Javadoc) sdkVariantOnly() bool {
+	return proptools.BoolDefault(j.properties.Sdk_variant_only, false)
 }
 
 func (j *Javadoc) addDeps(ctx android.BottomUpMutatorContext) {
@@ -576,6 +583,40 @@ func (j *Javadoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.SetOutputFiles(android.Paths{j.stubsSrcJar}, "")
 	ctx.SetOutputFiles(android.Paths{j.docZip}, ".docs.zip")
 }
+
+var _ android.SdkInterface = (*Javadoc)(nil)
+
+// To satisfy the android.SdkInterface interface
+func (j *Javadoc) SdkVariants(ctx android.BaseModuleContext) []string {
+	if j.sdkVariantOnly() {
+		return []string{"sdk"}
+	}
+	sdkVersion := j.SdkVersion(ctx)
+	if sdkVersion.Kind != android.SdkPrivate {
+		return []string{"", "sdk"}
+	} else {
+		return []string{""}
+	}
+}
+
+// To satisfy the android.SdkInterface interface
+func (j *Javadoc) IncomingSdkTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if j.sdkVariantOnly() {
+		return "sdk"
+	}
+	sdkVersion := android.SdkSpecFromWithConfig(ctx.Config(), String(j.properties.Sdk_version))
+	if sdkVersion.Kind != android.SdkPrivate {
+		return incomingVariation
+	}
+	if ctx.IsAddingDependency() {
+		return incomingVariation
+	} else {
+		return ""
+	}
+}
+
+// To satisfy the android.SdkInterface interface
+func (j *Javadoc) MutateSdkVariant(ctx android.BottomUpMutatorContext, variation string) {}
 
 // Droiddoc
 type Droiddoc struct {

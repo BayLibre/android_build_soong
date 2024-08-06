@@ -120,8 +120,8 @@ func (r *RuntimeResourceOverlay) DepsMutator(ctx android.BottomUpMutatorContext)
 		ctx.AddDependency(ctx.Module(), certificateTag, cert)
 	}
 
-	ctx.AddVariationDependencies(nil, staticLibTag, r.properties.Static_libs...)
-	ctx.AddVariationDependencies(nil, libTag, r.properties.Resource_libs...)
+	ctx.AddFarVariationDependencies(nil, staticLibTag, r.properties.Static_libs...)
+	ctx.AddFarVariationDependencies(nil, libTag, r.properties.Resource_libs...)
 
 	for _, aconfig_declaration := range r.aaptProperties.Flags_packages {
 		ctx.AddDependency(ctx.Module(), aconfigDeclarationTag, aconfig_declaration)
@@ -216,6 +216,35 @@ func (r *RuntimeResourceOverlay) OutputFile() android.Path {
 
 func (r *RuntimeResourceOverlay) Theme() string {
 	return String(r.properties.Theme)
+}
+
+var _ android.SdkInterface = (*RuntimeResourceOverlay)(nil)
+
+// To satisfy the android.SdkInterface interface
+func (r *RuntimeResourceOverlay) SdkVariants(ctx android.BaseModuleContext) []string {
+	sdkVersion := r.SdkVersion(ctx)
+	if sdkVersion.Kind != android.SdkPrivate {
+		return []string{"sdk"}
+	} else {
+		return []string{""}
+	}
+}
+
+// To satisfy the android.SdkInterface interface
+func (r *RuntimeResourceOverlay) IncomingSdkTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	sdkVersion := android.SdkSpecFromWithConfig(ctx.Config(), String(r.properties.Sdk_version))
+	if sdkVersion.Kind != android.SdkPrivate {
+		return incomingVariation
+	}
+	if ctx.IsAddingDependency() {
+		return incomingVariation
+	} else {
+		return ""
+	}
+}
+
+// To satisfy the android.SdkInterface interface
+func (r *RuntimeResourceOverlay) MutateSdkVariant(ctx android.BottomUpMutatorContext, variation string) {
 }
 
 // runtime_resource_overlay generates a resource-only apk file that can overlay application and

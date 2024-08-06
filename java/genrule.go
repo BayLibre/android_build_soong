@@ -17,6 +17,8 @@ package java
 import (
 	"android/soong/android"
 	"android/soong/genrule"
+
+	"github.com/google/blueprint/proptools"
 )
 
 func init() {
@@ -26,6 +28,10 @@ func init() {
 func RegisterGenRuleBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("java_genrule", GenRuleFactory)
 	ctx.RegisterModuleType("java_genrule_host", GenRuleFactoryHost)
+}
+
+type GenruleExtraProperties struct {
+	Sdk_version *string
 }
 
 // java_genrule is a genrule that can depend on other java_* objects.
@@ -62,6 +68,14 @@ func RegisterGenRuleBuildComponents(ctx android.RegistrationContext) {
 //	}
 func GenRuleFactory() android.Module {
 	module := genrule.NewGenRule()
+
+	extra := &GenruleExtraProperties{}
+	module.Extra = extra
+	module.AddProperties(module.Extra)
+
+	extraProp, _ := module.Extra.(*GenruleExtraProperties)
+	sdkVersion := proptools.StringDefault(extraProp.Sdk_version, "core_current")
+	extraProp.Sdk_version = proptools.StringPtr(sdkVersion)
 
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)

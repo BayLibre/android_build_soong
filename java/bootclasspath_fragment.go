@@ -840,6 +840,22 @@ func (b *BootclasspathFragmentModule) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Deps = append(dpInfo.Deps, b.properties.Contents...)
 }
 
+var _ android.SdkInterface = (*BootclasspathFragmentModule)(nil)
+
+// To satisfy the android.SdkInterface interface
+func (b *BootclasspathFragmentModule) SdkVariants(ctx android.BaseModuleContext) []string {
+	return []string{"sdk"}
+}
+
+// To satisfy the android.SdkInterface interface
+func (b *BootclasspathFragmentModule) IncomingSdkTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	return "sdk"
+}
+
+// To satisfy the android.SdkInterface interface
+func (b *BootclasspathFragmentModule) MutateSdkVariant(ctx android.BottomUpMutatorContext, variation string) {
+}
+
 type bootclasspathFragmentMemberType struct {
 	android.SdkMemberTypeBase
 }

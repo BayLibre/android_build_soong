@@ -1481,7 +1481,7 @@ func (a *AndroidTest) OverridablePropertiesDepsMutator(ctx android.BottomUpMutat
 		// The android_app dependency listed in instrumentation_for needs to be added to the classpath for javac,
 		// but not added to the aapt2 link includes like a normal android_app or android_library dependency, so
 		// use instrumentationForTag instead of libTag.
-		ctx.AddVariationDependencies(nil, instrumentationForTag, String(a.appTestProperties.Instrumentation_for))
+		ctx.AddFarVariationDependencies(nil, instrumentationForTag, String(a.appTestProperties.Instrumentation_for))
 	}
 }
 
@@ -1702,24 +1702,24 @@ type usesLibrary struct {
 
 func (u *usesLibrary) deps(ctx android.BottomUpMutatorContext, addCompatDeps bool) {
 	if !ctx.Config().UnbundledBuild() || ctx.Config().UnbundledBuildImage() {
-		ctx.AddVariationDependencies(nil, usesLibReqTag, u.usesLibraryProperties.Uses_libs...)
+		ctx.AddFarVariationDependencies(nil, usesLibReqTag, u.usesLibraryProperties.Uses_libs...)
 		presentOptionalUsesLibs := u.presentOptionalUsesLibs(ctx)
-		ctx.AddVariationDependencies(nil, usesLibOptTag, presentOptionalUsesLibs...)
+		ctx.AddFarVariationDependencies(nil, usesLibOptTag, presentOptionalUsesLibs...)
 		// Only add these extra dependencies if the module is an app that depends on framework
 		// libs. This avoids creating a cyclic dependency:
 		//     e.g. framework-res -> org.apache.http.legacy -> ... -> framework-res.
 		if addCompatDeps {
 			// Dexpreopt needs paths to the dex jars of these libraries in order to construct
 			// class loader context for dex2oat. Add them as a dependency with a special tag.
-			ctx.AddVariationDependencies(nil, usesLibCompat29ReqTag, dexpreopt.CompatUsesLibs29...)
-			ctx.AddVariationDependencies(nil, usesLibCompat28OptTag, dexpreopt.OptionalCompatUsesLibs28...)
-			ctx.AddVariationDependencies(nil, usesLibCompat30OptTag, dexpreopt.OptionalCompatUsesLibs30...)
+			ctx.AddFarVariationDependencies(nil, usesLibCompat29ReqTag, dexpreopt.CompatUsesLibs29...)
+			ctx.AddFarVariationDependencies(nil, usesLibCompat28OptTag, dexpreopt.OptionalCompatUsesLibs28...)
+			ctx.AddFarVariationDependencies(nil, usesLibCompat30OptTag, dexpreopt.OptionalCompatUsesLibs30...)
 		}
 		_, diff, _ := android.ListSetDifference(u.usesLibraryProperties.Optional_uses_libs, presentOptionalUsesLibs)
 		u.usesLibraryProperties.Missing_optional_uses_libs = diff
 	} else {
-		ctx.AddVariationDependencies(nil, r8LibraryJarTag, u.usesLibraryProperties.Uses_libs...)
-		ctx.AddVariationDependencies(nil, r8LibraryJarTag, u.presentOptionalUsesLibs(ctx)...)
+		ctx.AddFarVariationDependencies(nil, r8LibraryJarTag, u.usesLibraryProperties.Uses_libs...)
+		ctx.AddFarVariationDependencies(nil, r8LibraryJarTag, u.presentOptionalUsesLibs(ctx)...)
 	}
 }
 

@@ -520,20 +520,23 @@ type jniLib struct {
 func sdkDeps(ctx android.BottomUpMutatorContext, sdkContext android.SdkContext, d dexer) {
 	sdkDep := decodeSdkDep(ctx, sdkContext)
 	if sdkDep.useModule {
-		ctx.AddVariationDependencies(nil, bootClasspathTag, sdkDep.bootclasspath...)
-		ctx.AddVariationDependencies(nil, java9LibTag, sdkDep.java9Classpath...)
-		ctx.AddVariationDependencies(nil, sdkLibTag, sdkDep.classpath...)
+		ctx.AddFarVariationDependencies(nil, bootClasspathTag, sdkDep.bootclasspath...)
+		ctx.AddFarVariationDependencies(nil, java9LibTag, sdkDep.java9Classpath...)
+		ctx.AddFarVariationDependencies(nil, sdkLibTag, sdkDep.classpath...)
 		if d.effectiveOptimizeEnabled() && sdkDep.hasStandardLibs() {
-			ctx.AddVariationDependencies(nil, proguardRaiseTag,
+			ctx.AddFarVariationDependencies(nil, proguardRaiseTag,
 				config.LegacyCorePlatformBootclasspathLibraries...,
 			)
 		}
 		if d.effectiveOptimizeEnabled() && sdkDep.hasFrameworkLibs() {
-			ctx.AddVariationDependencies(nil, proguardRaiseTag, config.FrameworkLibraries...)
+			ctx.AddFarVariationDependencies(nil, proguardRaiseTag, config.FrameworkLibraries...)
 		}
 	}
 	if sdkDep.systemModules != "" {
-		ctx.AddVariationDependencies(nil, systemModulesTag, sdkDep.systemModules)
+		ctx.AddFarVariationDependencies([]blueprint.Variation{
+			{Mutator: "os", Variation: android.Android.Name},
+			{Mutator: "arch", Variation: android.COMMON_VARIANT},
+		}, systemModulesTag, sdkDep.systemModules)
 	}
 }
 
@@ -1085,7 +1088,7 @@ const (
 )
 
 func (mt *librarySdkMemberType) AddDependencies(ctx android.SdkDependencyContext, dependencyTag blueprint.DependencyTag, names []string) {
-	ctx.AddVariationDependencies(nil, dependencyTag, names...)
+	ctx.AddFarVariationDependencies(nil, dependencyTag, names...)
 }
 
 func (mt *librarySdkMemberType) IsInstance(module android.Module) bool {
@@ -1619,7 +1622,7 @@ type testSdkMemberType struct {
 }
 
 func (mt *testSdkMemberType) AddDependencies(ctx android.SdkDependencyContext, dependencyTag blueprint.DependencyTag, names []string) {
-	ctx.AddVariationDependencies(nil, dependencyTag, names...)
+	ctx.AddFarVariationDependencies(nil, dependencyTag, names...)
 }
 
 func (mt *testSdkMemberType) IsInstance(module android.Module) bool {
@@ -2045,6 +2048,9 @@ type JavaApiLibraryProperties struct {
 	// See build/soong/android/sdk_version.go for the complete and up to date list of SDK kinds.
 	// If the SDK kind is empty, it will be set to public.
 	Sdk_version *string
+
+	// If true, always create an sdk variant and don't create a platform variant.
+	Sdk_variant_only *bool
 }
 
 func ApiLibraryFactory() android.Module {
@@ -2179,8 +2185,7 @@ func (al *ApiLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 		}
 	}
 	ctx.AddVariationDependencies(nil, libTag, al.properties.Libs...)
-	ctx.AddVariationDependencies(nil, staticLibTag, al.properties.Static_libs...)
-
+	ctx.AddFarVariationDependencies(nil, staticLibTag, al.properties.Static_libs...)
 	for _, aconfigDeclarationsName := range al.properties.Aconfig_declarations {
 		ctx.AddDependency(ctx.Module(), aconfigDeclarationTag, aconfigDeclarationsName)
 	}
@@ -2404,6 +2409,10 @@ func (al *ApiLibrary) TargetSdkVersion(ctx android.EarlyModuleContext) android.A
 	return al.SdkVersion(ctx).ApiLevel
 }
 
+func (al *ApiLibrary) sdkVariantOnly() bool {
+	return proptools.BoolDefault(al.properties.Sdk_variant_only, false)
+}
+
 func (al *ApiLibrary) IDEInfo(i *android.IdeInfo) {
 	i.Deps = append(i.Deps, al.ideDeps()...)
 	i.Libs = append(i.Libs, al.properties.Libs...)
@@ -2423,6 +2432,38 @@ func (al *ApiLibrary) ideDeps() []string {
 	return ret
 }
 
+// To satisfy the android.SdkInterface interface
+func (al *ApiLibrary) SdkVariants(ctx android.BaseModuleContext) []string {
+	if al.sdkVariantOnly() {
+		return []string{"sdk"}
+	}
+	sdkVersion := al.SdkVersion(ctx)
+	if sdkVersion.Kind != android.SdkPrivate {
+		return []string{"sdk"}
+	} else {
+		return []string{""}
+	}
+}
+
+// To satisfy the android.SdkInterface interface
+func (al *ApiLibrary) IncomingSdkTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if al.sdkVariantOnly() {
+		return "sdk"
+	}
+	sdkVersion := android.SdkSpecFromWithConfig(ctx.Config(), String(al.properties.Sdk_version))
+	if sdkVersion.Kind != android.SdkPrivate {
+		return "sdk"
+	}
+	if ctx.IsAddingDependency() {
+		return incomingVariation
+	} else {
+		return ""
+	}
+}
+
+// To satisfy the android.SdkInterface interface
+func (al *ApiLibrary) MutateSdkVariant(ctx android.BottomUpMutatorContext, variation string) {}
+
 // implement the following interfaces for hiddenapi processing
 var _ hiddenAPIModule = (*ApiLibrary)(nil)
 var _ UsesLibraryDependency = (*ApiLibrary)(nil)
@@ -2430,6 +2471,7 @@ var _ android.SdkContext = (*ApiLibrary)(nil)
 
 // implement the following interface for IDE completion.
 var _ android.IDEInfo = (*ApiLibrary)(nil)
+var _ android.SdkInterface = (*ApiLibrary)(nil)
 
 //
 // Java prebuilts
@@ -2491,6 +2533,9 @@ type ImportProperties struct {
 
 	// Property signifying whether the module provides stubs jar or not.
 	Is_stubs_module *bool
+
+	// If true, always create an sdk variant and don't create a platform variant.
+	Sdk_variant_only *bool
 }
 
 type Import struct {
@@ -2525,6 +2570,40 @@ type Import struct {
 
 	stubsLinkType StubsLinkType
 }
+
+var _ android.SdkInterface = (*Import)(nil)
+
+// To satisfy the android.SdkInterface interface
+func (j *Import) SdkVariants(ctx android.BaseModuleContext) []string {
+	if j.sdkVariantOnly() {
+		return []string{"sdk"}
+	}
+	sdkVersion := j.SdkVersion(ctx)
+	if sdkVersion.Kind != android.SdkPrivate {
+		return []string{"sdk"}
+	} else {
+		return []string{""}
+	}
+}
+
+// To satisfy the android.SdkInterface interface
+func (j *Import) IncomingSdkTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if j.sdkVariantOnly() {
+		return "sdk"
+	}
+	sdkVersion := android.SdkSpecFromWithConfig(ctx.Config(), String(j.properties.Sdk_version))
+	if sdkVersion.Kind != android.SdkPrivate {
+		return "sdk"
+	}
+	if ctx.IsAddingDependency() {
+		return incomingVariation
+	} else {
+		return ""
+	}
+}
+
+// To satisfy the android.SdkInterface interface
+func (j *Import) MutateSdkVariant(ctx android.BottomUpMutatorContext, variation string) {}
 
 var _ PermittedPackagesForUpdatableBootJars = (*Import)(nil)
 
@@ -2598,9 +2677,13 @@ func (j *Import) getStrictUpdatabilityLinting() bool {
 func (j *Import) setStrictUpdatabilityLinting(bool) {
 }
 
+func (j *Import) sdkVariantOnly() bool {
+	return proptools.BoolDefault(j.properties.Sdk_variant_only, false)
+}
+
 func (j *Import) DepsMutator(ctx android.BottomUpMutatorContext) {
-	ctx.AddVariationDependencies(nil, libTag, j.properties.Libs...)
-	ctx.AddVariationDependencies(nil, staticLibTag, j.properties.Static_libs...)
+	ctx.AddFarVariationDependencies(nil, libTag, j.properties.Libs...)
+	ctx.AddFarVariationDependencies(nil, staticLibTag, j.properties.Static_libs...)
 
 	if ctx.Device() && Bool(j.dexProperties.Compile_dex) {
 		sdkDeps(ctx, android.SdkContext(j), j.dexer)

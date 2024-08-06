@@ -69,6 +69,7 @@ java_api_library {
     ],
     enable_validation: false,
     stubs_type: "everything",
+    sdk_variant_only: true,
 }
 
 java_library {

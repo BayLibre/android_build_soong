@@ -53,6 +53,8 @@ var (
 		"core-oj",
 		"core-libart",
 	}
+
+	PrivateAndStubsCommonDependencyModules = privateAndStubsCommonDependencyModules()
 )
 
 var (
@@ -294,4 +296,17 @@ func javaHome(ctx android.PathContext) android.SourcePath {
 		// This is set up and guaranteed by soong_ui
 		return android.PathForSource(ctx, ctx.Config().Getenv("ANDROID_JAVA_HOME"))
 	})
+}
+
+// Creates a list of modules that are added as dependencies for both modules that specifies
+// the sdk version and modules that do not. These modules create both the platform variant and
+// the sdk variant to prevent the missing variants error
+func privateAndStubsCommonDependencyModules() []string {
+	ret := LegacyCorePlatformBootclasspathLibraries
+	ret = append(ret, StableCorePlatformBootclasspathLibraries...)
+	ret = append(ret, LegacyCorePlatformSystemModules)
+	ret = append(ret, StableCorePlatformSystemModules)
+	// ret = append(ret, "framework-res")
+
+	return android.SortedUniqueStrings(ret)
 }

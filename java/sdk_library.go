@@ -1478,13 +1478,9 @@ func (module *SdkLibrary) ComponentDepsMutator(ctx android.BottomUpMutatorContex
 
 // Add other dependencies as normal.
 func (module *SdkLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
-	// If the module does not create an implementation library or defaults to stubs,
-	// mark the top level sdk library as stubs module as the module will provide stubs via
-	// "magic" when listed as a dependency in the Android.bp files.
-	notCreateImplLib := proptools.Bool(module.sdkLibraryProperties.Api_only)
-	preferStubs := proptools.Bool(module.sdkLibraryProperties.Default_to_stubs)
-	module.properties.Is_stubs_module = proptools.BoolPtr(notCreateImplLib || preferStubs)
-
+	if module.Name() == "org.apache.http.legacy" {
+		fmt.Printf("%s is stubs: %t\n", module.Name(), proptools.Bool(module.properties.Is_stubs_module))
+	}
 	var missingApiModules []string
 	for _, apiScope := range module.getGeneratedApiScopes(ctx) {
 		if apiScope.unstable {
@@ -1794,7 +1790,8 @@ type libraryProperties struct {
 		Dir     *string
 		Tag     *string
 	}
-	Is_stubs_module *bool
+	Is_stubs_module  *bool
+	Sdk_variant_only *bool
 }
 
 func (module *SdkLibrary) stubsLibraryProps(mctx android.DefaultableHookContext, apiScope *apiScope) libraryProperties {
@@ -1820,6 +1817,7 @@ func (module *SdkLibrary) stubsLibraryProps(mctx android.DefaultableHookContext,
 	// interop with older developer tools that don't support 1.9.
 	props.Java_version = proptools.StringPtr("1.8")
 	props.Is_stubs_module = proptools.BoolPtr(true)
+	props.Sdk_variant_only = module.properties.Sdk_variant_only
 
 	return props
 }
@@ -1879,7 +1877,8 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 			Include_dirs       []string
 			Local_include_dirs []string
 		}
-		Dists []android.Dist
+		Dists            []android.Dist
+		Sdk_variant_only *bool
 	}{}
 
 	// The stubs source processing uses the same compile time classpath when extracting the
@@ -2007,6 +2006,8 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 		}
 	}
 
+	props.Sdk_variant_only = module.properties.Sdk_variant_only
+
 	mctx.CreateModule(DroidstubsFactory, &props, module.sdkComponentPropertiesForChildLibrary()).(*Droidstubs).CallHookIfAvailable(mctx)
 }
 
@@ -2022,6 +2023,7 @@ func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, 
 		Stubs_type        *string
 		Sdk_version       *string
 		Previous_api      *string
+		Sdk_variant_only  *bool
 	}{}
 
 	props.Name = proptools.StringPtr(module.apiLibraryModuleName(apiScope))
@@ -2068,6 +2070,8 @@ func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, 
 		props.Previous_api = latestApiFilegroupName
 	}
 
+	props.Sdk_variant_only = module.properties.Sdk_variant_only
+
 	mctx.CreateModule(ApiLibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
 }
 
@@ -2093,6 +2097,8 @@ func (module *SdkLibrary) topLevelStubsLibraryProps(mctx android.DefaultableHook
 		props.Dist.Dir = proptools.StringPtr(module.apiDistPath(apiScope))
 		props.Dist.Tag = proptools.StringPtr(".jar")
 	}
+
+	props.Sdk_variant_only = module.properties.Sdk_variant_only
 
 	return props
 }
@@ -2483,6 +2489,14 @@ func SdkLibraryFactory() android.Module {
 	android.AddVisibilityProperty(module, "stubs_source_visibility", &module.sdkLibraryProperties.Stubs_source_visibility)
 
 	module.SetDefaultableHook(func(ctx android.DefaultableHookContext) {
+		// If the module does not create an implementation library or defaults to stubs,
+		// mark the top level sdk library as stubs module as the module will provide stubs via
+		// "magic" when listed as a dependency in the Android.bp files.
+		notCreateImplLib := proptools.Bool(module.sdkLibraryProperties.Api_only)
+		preferStubs := proptools.Bool(module.sdkLibraryProperties.Default_to_stubs)
+		isStubsModule := notCreateImplLib || preferStubs
+		module.properties.Is_stubs_module = proptools.BoolPtr(isStubsModule)
+
 		// If no implementation is required then it cannot be used as a shared library
 		// either.
 		if !module.requiresRuntimeImplementationLibrary() {
@@ -2788,7 +2802,7 @@ func (module *SdkLibraryImport) DepsMutator(ctx android.BottomUpMutatorContext) 
 
 	implName := module.implLibraryModuleName()
 	if ctx.OtherModuleExists(implName) {
-		ctx.AddVariationDependencies(nil, implLibraryTag, implName)
+		ctx.AddFarVariationDependencies(nil, implLibraryTag, implName)
 
 		xmlPermissionsModuleName := module.xmlPermissionsModuleName()
 		if module.sharedLibrary() && ctx.OtherModuleExists(xmlPermissionsModuleName) {
@@ -3374,7 +3388,7 @@ type sdkLibrarySdkMemberType struct {
 }
 
 func (s *sdkLibrarySdkMemberType) AddDependencies(ctx android.SdkDependencyContext, dependencyTag blueprint.DependencyTag, names []string) {
-	ctx.AddVariationDependencies(nil, dependencyTag, names...)
+	ctx.AddFarVariationDependencies(nil, dependencyTag, names...)
 }
 
 func (s *sdkLibrarySdkMemberType) IsInstance(module android.Module) bool {

@@ -202,6 +202,8 @@ func (g *Module) GeneratedSourceFiles() android.Paths {
 	return g.outputFiles
 }
 
+var _ android.SourceFileProducer = (*Module)(nil)
+
 func (g *Module) Srcs() android.Paths {
 	return append(android.Paths{}, g.outputFiles...)
 }
@@ -214,7 +216,34 @@ func (g *Module) GeneratedDeps() android.Paths {
 	return g.outputDeps
 }
 
-var _ android.SourceFileProducer = (*Module)(nil)
+var _ android.SdkInterface = (*Module)(nil)
+
+// To satisfy the android.SdkInterface
+func (g *Module) SdkVariants(ctx android.BaseModuleContext) []string {
+	if p, ok := g.Extra.(*(struct{ Sdk_version *string })); ok {
+		if String(p.Sdk_version) != "" {
+			return []string{"", "sdk"}
+		}
+	}
+	return []string{""}
+}
+
+// To satisfy the android.SdkInterface
+func (g *Module) IncomingSdkTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if p, ok := g.Extra.(*(struct{ Sdk_version *string })); ok {
+		if String(p.Sdk_version) != "" {
+			return incomingVariation
+		}
+	}
+	if ctx.IsAddingDependency() {
+		return incomingVariation
+	} else {
+		return ""
+	}
+}
+
+// To satisfy the android.SdkInterface
+func (g *Module) MutateSdkVariant(ctx android.BottomUpMutatorContext, variation string) {}
 
 func toolDepsMutator(ctx android.BottomUpMutatorContext) {
 	if g, ok := ctx.Module().(*Module); ok {
@@ -384,6 +413,10 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 		return srcFiles
 	}
 	g.properties.ResolvedSrcs = g.properties.Srcs.GetOrDefault(ctx, nil)
+	if g.Name() == "shell-as-test-app-apk-cpp" {
+		fmt.Printf("resolved srcs: %s\n", g.properties.ResolvedSrcs)
+	}
+
 	srcFiles := addLabelsForInputs("srcs", g.properties.ResolvedSrcs, g.properties.Exclude_srcs)
 	android.SetProvider(ctx, blueprint.SrcsFileProviderKey, blueprint.SrcsFileProviderData{SrcPaths: srcFiles.Strings()})
 

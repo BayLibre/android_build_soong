@@ -115,37 +115,37 @@ func (r *robolectricTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 	r.Library.DepsMutator(ctx)
 
 	if r.robolectricProperties.Instrumentation_for != nil {
-		ctx.AddVariationDependencies(nil, instrumentationForTag, String(r.robolectricProperties.Instrumentation_for))
+		ctx.AddFarVariationDependencies(nil, instrumentationForTag, String(r.robolectricProperties.Instrumentation_for))
 	} else {
 		ctx.PropertyErrorf("instrumentation_for", "missing required instrumented module")
 	}
 
 	if v := String(r.robolectricProperties.Robolectric_prebuilt_version); v != "" {
-		ctx.AddVariationDependencies(nil, libTag, fmt.Sprintf(robolectricPrebuiltLibPattern, v))
+		ctx.AddFarVariationDependencies(nil, libTag, fmt.Sprintf(robolectricPrebuiltLibPattern, v))
 	} else if !proptools.BoolDefault(r.robolectricProperties.Strict_mode, true) {
 		if proptools.Bool(r.robolectricProperties.Upstream) {
-			ctx.AddVariationDependencies(nil, libTag, robolectricCurrentLib+"_upstream")
+			ctx.AddFarVariationDependencies(nil, libTag, robolectricCurrentLib+"_upstream")
 		} else {
-			ctx.AddVariationDependencies(nil, libTag, robolectricCurrentLib)
+			ctx.AddFarVariationDependencies(nil, libTag, robolectricCurrentLib)
 		}
 	}
 
 	if proptools.BoolDefault(r.robolectricProperties.Strict_mode, true) {
-		ctx.AddVariationDependencies(nil, roboRuntimeOnlyTag, robolectricCurrentLib+"_upstream")
+		ctx.AddFarVariationDependencies(nil, roboRuntimeOnlyTag, robolectricCurrentLib+"_upstream")
 	} else {
 		// opting out from strict mode, robolectric_non_strict_mode_permission lib should be added
-		ctx.AddVariationDependencies(nil, libTag, "robolectric_non_strict_mode_permission")
+		ctx.AddFarVariationDependencies(nil, libTag, "robolectric_non_strict_mode_permission")
 	}
 
-	ctx.AddVariationDependencies(nil, libTag, robolectricDefaultLibs...)
+	ctx.AddFarVariationDependencies(nil, libTag, robolectricDefaultLibs...)
 
-	ctx.AddVariationDependencies(nil, roboCoverageLibsTag, r.robolectricProperties.Coverage_libs...)
+	ctx.AddFarVariationDependencies(nil, roboCoverageLibsTag, r.robolectricProperties.Coverage_libs...)
 
 	ctx.AddFarVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(),
 		roboRuntimesTag, "robolectric-android-all-prebuilts")
 
 	for _, lib := range r.robolectricProperties.Jni_libs {
-		ctx.AddVariationDependencies(ctx.Config().BuildOSTarget.Variations(), jniLibTag, lib)
+		ctx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), jniLibTag, lib)
 	}
 }
 
@@ -467,7 +467,7 @@ var _ android.TestSuiteModule = (*robolectricRuntimes)(nil)
 
 func (r *robolectricRuntimes) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if !ctx.Config().AlwaysUsePrebuiltSdks() && r.props.Lib != nil {
-		ctx.AddVariationDependencies(nil, libTag, String(r.props.Lib))
+		ctx.AddFarVariationDependencies(nil, libTag, String(r.props.Lib))
 	}
 }
 

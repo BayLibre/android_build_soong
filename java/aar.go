@@ -342,7 +342,7 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 
 func (a *aapt) deps(ctx android.BottomUpMutatorContext, sdkDep sdkDep) {
 	if sdkDep.frameworkResModule != "" {
-		ctx.AddVariationDependencies(nil, frameworkResTag, sdkDep.frameworkResModule)
+		ctx.AddFarVariationDependencies(nil, frameworkResTag, sdkDep.frameworkResModule)
 	}
 }
 
@@ -1093,12 +1093,12 @@ func (a *AARImport) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if !ctx.Config().AlwaysUsePrebuiltSdks() {
 		sdkDep := decodeSdkDep(ctx, android.SdkContext(a))
 		if sdkDep.useModule && sdkDep.frameworkResModule != "" {
-			ctx.AddVariationDependencies(nil, frameworkResTag, sdkDep.frameworkResModule)
+			ctx.AddFarVariationDependencies(nil, frameworkResTag, sdkDep.frameworkResModule)
 		}
 	}
 
-	ctx.AddVariationDependencies(nil, libTag, a.properties.Libs...)
-	ctx.AddVariationDependencies(nil, staticLibTag, a.properties.Static_libs...)
+	ctx.AddFarVariationDependencies(nil, libTag, a.properties.Libs...)
+	ctx.AddFarVariationDependencies(nil, staticLibTag, a.properties.Static_libs...)
 
 	a.usesLibrary.deps(ctx, false)
 }
