@@ -100,7 +100,7 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 			stem:            bootImageStem,
 			installDir:      frameworkSubdir,
 			modules:         mainlineBcpModules,
-			compilerFilter:  "verify",
+			compilerFilter:  "speed",
 			singleImage:     true,
 		}
 
