@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6662da3e_dc6361a8",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1890,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-08-06T17:02:57Z",
+      "side": 1,
+      "message": "Typo here.",
+      "range": {
+        "startLine": 1890,
+        "startChar": 51,
+        "endLine": 1890,
+        "endChar": 69
+      },
+      "revId": "59788c4b6a46f6f35a36f2a74c384d3a161e4502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f687474_e346170d",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1913,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-08-06T17:02:57Z",
+      "side": 1,
+      "message": "nit: consider rename this local variable to `combinedHeaderJar` based on the method signature?",
+      "range": {
+        "startLine": 1913,
+        "startChar": 19,
+        "endLine": 1913,
+        "endChar": 30
+      },
+      "revId": "59788c4b6a46f6f35a36f2a74c384d3a161e4502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
