@@ -34,6 +34,24 @@
       "parentUuid": "8197b814_9050fcd4",
       "revId": "7811e466699ff8781a11eaffef4266a3d5252019",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d87374_eb130202",
+        "filename": "java/app_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-06T21:52:49Z",
+      "side": 1,
+      "message": "oh and I see now it\u0027s used via reflection with `InitSingleSourcePrebuiltModule`.",
+      "parentUuid": "4d9e4160_994f7bdd",
+      "revId": "7811e466699ff8781a11eaffef4266a3d5252019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
