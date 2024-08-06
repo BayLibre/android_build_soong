@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ea9621a_9520eccb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-08-06T16:13:16Z",
+      "side": 1,
+      "message": "Presubmit failures are unrelated infra errors, trying again.",
+      "revId": "d8f64ec810b8ff39ab929a1ecdb4a4a81c22ffed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
