@@ -888,6 +888,8 @@ type Module struct {
 
 	library libraryInterface
 
+	xom *xom
+
 	outputFile android.OptionalPath
 
 	cachedToolchain config.Toolchain
@@ -1267,6 +1269,9 @@ func (c *Module) Init() android.Module {
 	}
 	if c.orderfile != nil {
 		c.AddProperties(c.orderfile.props()...)
+	}
+	if c.xom != nil {
+		c.AddProperties(c.xom.props()...)
 	}
 	for _, feature := range c.features {
 		c.AddProperties(feature.props()...)
@@ -1737,6 +1742,7 @@ func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Mo
 	module.lto = &lto{}
 	module.afdo = &afdo{}
 	module.orderfile = &orderfile{}
+	module.xom = &xom{}
 	return module
 }
 
@@ -1999,6 +2005,9 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 	if c.orderfile != nil {
 		flags = c.orderfile.flags(ctx, flags)
+	}
+	if c.xom != nil {
+		flags = c.xom.flags(ctx, flags)
 	}
 	for _, feature := range c.features {
 		flags = feature.flags(ctx, flags)
@@ -3942,6 +3951,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&LTOProperties{},
 		&AfdoProperties{},
 		&OrderfileProperties{},
+		&XomProperties{},
 		&android.ProtoProperties{},
 		// RustBindgenProperties is included here so that cc_defaults can be used for rust_bindgen modules.
 		&RustBindgenClangProperties{},
