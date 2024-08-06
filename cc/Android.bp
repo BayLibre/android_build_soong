@@ -50,6 +50,7 @@ bootstrap_go_package {
         "util.go",
         "vndk.go",
         "vndk_prebuilt.go",
+        "xom.go",
 
         "cmake_snapshot.go",
         "cmakelists.go",
