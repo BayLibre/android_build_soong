@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e9dea59_21484299",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1890,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-07T21:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6662da3e_dc6361a8",
+      "range": {
+        "startLine": 1890,
+        "startChar": 51,
+        "endLine": 1890,
+        "endChar": 69
+      },
+      "revId": "59788c4b6a46f6f35a36f2a74c384d3a161e4502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f687474_e346170d",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-06T17:02:57Z",
       "side": 1,
       "message": "nit: consider rename this local variable to `combinedHeaderJar` based on the method signature?",
+      "range": {
+        "startLine": 1913,
+        "startChar": 19,
+        "endLine": 1913,
+        "endChar": 30
+      },
+      "revId": "59788c4b6a46f6f35a36f2a74c384d3a161e4502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e806a55_5b6574f0",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1913,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-07T21:11:52Z",
+      "side": 1,
+      "message": "`combinedHeaderJar` is an `android.Path`, but this needs a separate `WritablePath` to pass to `TransformJarsToJar`.  I renamed it to `combinedHeaderJarOutputPath`.",
+      "parentUuid": "9f687474_e346170d",
       "range": {
         "startLine": 1913,
         "startChar": 19,
