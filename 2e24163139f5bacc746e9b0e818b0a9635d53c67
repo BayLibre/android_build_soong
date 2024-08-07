@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d933cc5_17df15d3",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-08-07T21:43:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0d2be63_3855531e",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 3
+      },
+      "revId": "2e24163139f5bacc746e9b0e818b0a9635d53c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0aada18_1a0843c9",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-08-07T21:26:30Z",
       "side": 1,
       "message": "Per the other comment, do you mind updating the test case accordingly so that test_module_config_host contains multiple test suites that are missing in base?",
+      "revId": "2e24163139f5bacc746e9b0e818b0a9635d53c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61a21420_5da72213",
+        "filename": "tradefed_modules/test_module_config_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-08-07T21:43:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0aada18_1a0843c9",
       "revId": "2e24163139f5bacc746e9b0e818b0a9635d53c67",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
