@@ -33,6 +33,23 @@
       "message": "Looks like Colin is OOO, so asking @dwillemsen...\n\nDan, do you know why `genrule` doesn\u0027t support any kind of way to do what I want to do -- define the base `cmd` in a genrule_defaults and slightly modify it in actual inheriting rules.\n\nFor example, it\u0027d be cool if genrule supported arguments like below, so I could move the cmd to defaults:\n\n```\ncmd: \"cp $(cp_arg) ...\"\n\nargs: {\n   cp_arg: \"-p\",\n}\n```\n\nThough, of course, I don\u0027t think you can use arbitrary property names. Then maybe we could pre-define 10 or so arguments:\n```\ncmd: \"cp $(arg1) ...\"\n\nargs: {\n   arg1: \"-p\",\n}\n```\n\nFor now though, I just want to append extra arguments to `cmd`, so currently I ended up with this CL.\n\nIs there any reason we shouldn\u0027t do it? (Other than being a little hacky.)",
       "revId": "fce35966d8d053ea72198dd1a47a21b62311e107",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0133631b_f14095e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2024-08-07T15:09:38Z",
+      "side": 1,
+      "message": "@Colin WDYT about it? I don\u0027t line the name \u0027extra_cmd\u0027, so I\u0027ll be happy to rename it if you have a better suggestion.",
+      "revId": "fce35966d8d053ea72198dd1a47a21b62311e107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
