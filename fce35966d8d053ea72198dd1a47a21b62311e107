@@ -50,6 +50,23 @@
       "message": "@Colin WDYT about it? I don\u0027t line the name \u0027extra_cmd\u0027, so I\u0027ll be happy to rename it if you have a better suggestion.",
       "revId": "fce35966d8d053ea72198dd1a47a21b62311e107",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "269368b9_a84493b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2024-08-07T15:46:31Z",
+      "side": 1,
+      "message": "Hmm actually using a string constant also works... I\u0027ll go with that for now... But I still wonder if we can utilize `genrule_defaults` better. Something like the below would be nicer too.\n\n```\ncmd: \"cp $(arg1) ...\"\n\nargs: {\n   arg1: \"-p\",\n}\n```",
+      "revId": "fce35966d8d053ea72198dd1a47a21b62311e107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
