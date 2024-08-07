@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"slices"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -174,6 +175,12 @@ func (m *testModuleConfigModule) validateTestSuites(ctx android.ModuleContext) b
 		return false
 	}
 
+	// Ensure all suites listed are also in base.
+	for _, s := range m.tradefedProperties.Test_suites {
+		if !slices.Contains(m.provider.TestSuites, s) {
+			ctx.ModuleErrorf("Suite: [%s] listed but does not exist in base module: %s", s, *m.tradefedProperties.Base)
+		}
+	}
 	return true
 }
 
