@@ -78,7 +78,8 @@ func stubLibrariesSingleton() android.Singleton {
 
 func (s *stubLibraries) MakeVars(ctx android.MakeVarsContext) {
 	// Convert stub library file names into Makefile variable.
-	ctx.Strict("STUB_LIBRARIES", strings.Join(android.SortedKeys(s.stubLibraryMap), " "))
+	_, stubs := android.RemoveFromList("libclang_rt.asan.so", android.SortedKeys(s.stubLibraryMap))
+	ctx.Strict("STUB_LIBRARIES", strings.Join(stubs, " "))
 	ctx.Strict("SOONG_STUB_VENDOR_LIBRARIES", strings.Join(android.SortedKeys(s.stubVendorLibraryMap), " "))
 
 	// Export the list of API XML files to Make.
