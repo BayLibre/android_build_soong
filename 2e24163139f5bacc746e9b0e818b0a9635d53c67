@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d2be63_3855531e",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-07T21:26:30Z",
+      "side": 1,
+      "message": "Can you aggregate the missing test suites and report altogether once? This will report only the first missing test suite.",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 3
+      },
+      "revId": "2e24163139f5bacc746e9b0e818b0a9635d53c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0aada18_1a0843c9",
+        "filename": "tradefed_modules/test_module_config_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-07T21:26:30Z",
+      "side": 1,
+      "message": "Per the other comment, do you mind updating the test case accordingly so that test_module_config_host contains multiple test suites that are missing in base?",
+      "revId": "2e24163139f5bacc746e9b0e818b0a9635d53c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
