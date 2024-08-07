@@ -16,6 +16,24 @@
       "message": "Before this change, `deps.kotlinStdlib` and `deps.kotlinAnnotations` are not inside `extraJars` if `j.properties.Static_kotlin_stdlib` is false. Will this discrepancy be a problem?",
       "revId": "0d310fba96fa9835e26c9c080ffea68c3c99a725",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9a8f54_96eb666f",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-07T21:11:52Z",
+      "side": 1,
+      "message": "Good catch!  Fixed.",
+      "parentUuid": "ed102e9a_ed817703",
+      "revId": "0d310fba96fa9835e26c9c080ffea68c3c99a725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
