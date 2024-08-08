@@ -2027,16 +2027,20 @@ func (j *Module) ClassLoaderContexts() dexpreopt.ClassLoaderContextMap {
 
 // Collect information for opening IDE project files in java/jdeps.go.
 func (j *Module) IDEInfo(dpInfo *android.IdeInfo) {
-	dpInfo.Deps = append(dpInfo.Deps, j.CompilerDeps()...)
-	dpInfo.Srcs = append(dpInfo.Srcs, j.expandIDEInfoCompiledSrcs...)
-	dpInfo.SrcJars = append(dpInfo.SrcJars, j.compiledSrcJars.Strings()...)
-	dpInfo.Aidl_include_dirs = append(dpInfo.Aidl_include_dirs, j.deviceProperties.Aidl.Include_dirs...)
+	// jarjar rules will repackage the sources. To prevent misleading results, IdeInfo should contain the
+	// repackaged jar instead of the input sources.
 	if j.expandJarjarRules != nil {
 		dpInfo.Jarjar_rules = append(dpInfo.Jarjar_rules, j.expandJarjarRules.String())
+		dpInfo.Jars = append(dpInfo.Jars, j.headerJarFile.String())
+	} else {
+		dpInfo.Srcs = append(dpInfo.Srcs, j.expandIDEInfoCompiledSrcs...)
+		dpInfo.SrcJars = append(dpInfo.SrcJars, j.compiledSrcJars.Strings()...)
+		dpInfo.SrcJars = append(dpInfo.SrcJars, j.annoSrcJars.Strings()...)
 	}
+	dpInfo.Deps = append(dpInfo.Deps, j.CompilerDeps()...)
+	dpInfo.Aidl_include_dirs = append(dpInfo.Aidl_include_dirs, j.deviceProperties.Aidl.Include_dirs...)
 	dpInfo.Static_libs = append(dpInfo.Static_libs, j.properties.Static_libs...)
 	dpInfo.Libs = append(dpInfo.Libs, j.properties.Libs...)
-	dpInfo.SrcJars = append(dpInfo.SrcJars, j.annoSrcJars.Strings()...)
 }
 
 func (j *Module) CompilerDeps() []string {
