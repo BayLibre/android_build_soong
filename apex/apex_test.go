@@ -6121,7 +6121,7 @@ func TestApexPropertiesShouldBeDefaultable(t *testing.T) {
 	// libfoo's apex_available comes from cc_defaults
 	testApexError(t, `requires "libfoo" that doesn't list the APEX under 'apex_available'.`, `
 	apex {
-		name: "myapex",
+		name: "com.google.myapex",
 		key: "myapex.key",
 		native_shared_libs: ["libfoo"],
 		updatable: false,
@@ -6134,7 +6134,7 @@ func TestApexPropertiesShouldBeDefaultable(t *testing.T) {
 	}
 
 	apex {
-		name: "otherapex",
+		name: "com.google.otherapex",
 		key: "myapex.key",
 		native_shared_libs: ["libfoo"],
 		updatable: false,
@@ -6142,7 +6142,7 @@ func TestApexPropertiesShouldBeDefaultable(t *testing.T) {
 
 	cc_defaults {
 		name: "libfoo-defaults",
-		apex_available: ["otherapex"],
+		apex_available: ["com.google.otherapex"],
 	}
 
 	cc_library {
@@ -6157,7 +6157,7 @@ func TestApexAvailable_DirectDep(t *testing.T) {
 	// libfoo is not available to myapex, but only to otherapex
 	testApexError(t, "requires \"libfoo\" that doesn't list the APEX under 'apex_available'.", `
 	apex {
-		name: "myapex",
+		name: "com.android.myapex",
 		key: "myapex.key",
 		native_shared_libs: ["libfoo"],
 		updatable: false,
@@ -6170,7 +6170,7 @@ func TestApexAvailable_DirectDep(t *testing.T) {
 	}
 
 	apex {
-		name: "otherapex",
+		name: "com.android.otherapex",
 		key: "otherapex.key",
 		native_shared_libs: ["libfoo"],
 		updatable: false,
@@ -6186,8 +6186,47 @@ func TestApexAvailable_DirectDep(t *testing.T) {
 		name: "libfoo",
 		stl: "none",
 		system_shared_libs: [],
-		apex_available: ["otherapex"],
+		apex_available: ["com.android.otherapex"],
 	}`)
+
+	// 'apex_available' check is bypassed for partner apex in case of direct dependency.
+	testApex(t, `
+	apex {
+		name: "com.partner.myapex",
+		key: "myapex.key",
+		native_shared_libs: ["libfoo"],
+		updatable: false,
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	apex {
+		name: "com.partner.otherapex",
+		key: "otherapex.key",
+		native_shared_libs: ["libfoo"],
+		updatable: false,
+	}
+
+	apex_key {
+		name: "otherapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	cc_library {
+		name: "libfoo",
+		stl: "none",
+		system_shared_libs: [],
+		apex_available: ["com.partner.otherapex"],
+	}`,
+		android.FixtureMergeMockFs(android.MockFS{
+			"system/sepolicy/apex/com.partner.myapex-file_contexts":    nil,
+			"system/sepolicy/apex/com.partner.otherapex-file_contexts": nil,
+		}))
 }
 
 func TestApexAvailable_IndirectDep(t *testing.T) {
@@ -6200,7 +6239,7 @@ func TestApexAvailable_IndirectDep(t *testing.T) {
 .*via tag cc\.libraryDependencyTag.*Kind:sharedLibraryDependency.*
 .*-> libbaz.*link:shared.*`, `
 	apex {
-		name: "myapex",
+		name: "com.google.myapex",
 		key: "myapex.key",
 		native_shared_libs: ["libfoo"],
 		updatable: false,
@@ -6217,7 +6256,7 @@ func TestApexAvailable_IndirectDep(t *testing.T) {
 		stl: "none",
 		shared_libs: ["libbar"],
 		system_shared_libs: [],
-		apex_available: ["myapex"],
+		apex_available: ["com.google.myapex"],
 	}
 
 	cc_library {
@@ -6225,7 +6264,7 @@ func TestApexAvailable_IndirectDep(t *testing.T) {
 		stl: "none",
 		shared_libs: ["libbaz"],
 		system_shared_libs: [],
-		apex_available: ["myapex"],
+		apex_available: ["com.google.myapex"],
 	}
 
 	cc_library {
@@ -6233,6 +6272,46 @@ func TestApexAvailable_IndirectDep(t *testing.T) {
 		stl: "none",
 		system_shared_libs: [],
 	}`)
+
+	// 'apex_available' check is bypassed for partner apex in case of indirect dependency.
+	testApex(t, `
+	apex {
+		name: "com.partner.myapex",
+		key: "myapex.key",
+		native_shared_libs: ["libfoo"],
+		updatable: false,
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	cc_library {
+		name: "libfoo",
+		stl: "none",
+		shared_libs: ["libbar"],
+		system_shared_libs: [],
+		apex_available: ["com.partner.myapex"],
+	}
+
+	cc_library {
+		name: "libbar",
+		stl: "none",
+		shared_libs: ["libbaz"],
+		system_shared_libs: [],
+		apex_available: ["com.partner.myapex"],
+	}
+
+	cc_library {
+		name: "libbaz",
+		stl: "none",
+		system_shared_libs: [],
+	}`,
+		android.FixtureMergeMockFs(android.MockFS{
+			"system/sepolicy/apex/com.partner.myapex-file_contexts": nil,
+		}))
 }
 
 func TestApexAvailable_IndirectStaticDep(t *testing.T) {
@@ -6274,7 +6353,7 @@ func TestApexAvailable_IndirectStaticDep(t *testing.T) {
 
 	testApexError(t, `requires "libbar" that doesn't list the APEX under 'apex_available'.`, `
 	apex {
-		name: "myapex",
+		name: "com.android.myapex",
 		key: "myapex.key",
 		native_shared_libs: ["libfoo"],
 		updatable: false,
@@ -6291,7 +6370,7 @@ func TestApexAvailable_IndirectStaticDep(t *testing.T) {
 		stl: "none",
 		static_libs: ["libbar"],
 		system_shared_libs: [],
-		apex_available: ["myapex"],
+		apex_available: ["com.android.myapex"],
 	}
 
 	cc_library {
@@ -6459,7 +6538,7 @@ func TestApexAvailable_ApexAvailableName(t *testing.T) {
 	t.Run("using name of apex that sets apex_available_name is not allowed", func(t *testing.T) {
 		testApexError(t, "Consider adding \"myapex\" to 'apex_available' property of \"AppFoo\"", `
 			apex {
-				name: "myapex_sminus",
+				name: "com.google.myapex_sminus",
 				key: "myapex.key",
 				apps: ["AppFoo"],
 				apex_available_name: "myapex",
@@ -6481,10 +6560,43 @@ func TestApexAvailable_ApexAvailableName(t *testing.T) {
 				srcs: ["foo/bar/MyClass.java"],
 				sdk_version: "none",
 				system_modules: "none",
-				apex_available: [ "myapex_sminus" ],
+				apex_available: [ "com.google.myapex_sminus" ],
 			}`,
 			android.FixtureMergeMockFs(android.MockFS{
 				"system/sepolicy/apex/myapex_sminus-file_contexts": nil,
+			}),
+		)
+	})
+
+	t.Run("apex_available_name is ignored for partner apex", func(t *testing.T) {
+		testApex(t, `
+			apex {
+				name: "com.partner.myapex_sminus",
+				key: "myapex.key",
+				apps: ["AppFoo"],
+				apex_available_name: "myapex",
+				updatable: false,
+			}
+			apex {
+				name: "myapex",
+				key: "myapex.key",
+				apps: ["AppFoo"],
+				updatable: false,
+			}
+			apex_key {
+				name: "myapex.key",
+				public_key: "testkey.avbpubkey",
+				private_key: "testkey.pem",
+			}
+			android_app {
+				name: "AppFoo",
+				srcs: ["foo/bar/MyClass.java"],
+				sdk_version: "none",
+				system_modules: "none",
+				apex_available: [ "com.partner.myapex_sminus" ],
+			}`,
+			android.FixtureMergeMockFs(android.MockFS{
+				"system/sepolicy/apex/com.partner.myapex_sminus-file_contexts": nil,
 			}),
 		)
 	})

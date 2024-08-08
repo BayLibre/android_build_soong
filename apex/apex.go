@@ -2718,8 +2718,8 @@ func (a *apexBundle) checkJavaStableSdkVersion(ctx android.ModuleContext) {
 
 // checkApexAvailability ensures that the all the dependencies are marked as available for this APEX.
 func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
-	// Let's be practical. Availability for test, host, and the VNDK apex isn't important
-	if a.testApex || a.vndkApex {
+	// Let's be practical. Availability for test, host, the VNDK apex and the partner apex isn't important
+	if a.testApex || a.vndkApex || !(strings.HasPrefix(a.ApexVariationName(), "com.google") || strings.HasPrefix(a.ApexVariationName(), "com.android")) {
 		return
 	}
 
