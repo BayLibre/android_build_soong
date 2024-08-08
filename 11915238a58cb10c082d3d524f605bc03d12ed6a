@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9b5311a_a1179391",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1840,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-08T13:49:48Z",
+      "side": 1,
+      "message": "I updated CL with suggested approach. The CL is still WIP (unit tests needed), but PTAL.",
+      "parentUuid": "dcf6c4a8_b920cf77",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1840,
+        "endChar": 79
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b690600_33e0a6dd",
         "filename": "android/module.go",
         "patchSetId": 3
@@ -275,6 +299,30 @@
       "writtenOn": "2024-07-19T07:50:10Z",
       "side": 1,
       "message": "This is too specific to be here. Refer to my comment above.",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 5
+      },
+      "revId": "11915238a58cb10c082d3d524f605bc03d12ed6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b7e3b5_16e781dc",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-08T13:49:48Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "44a41fe6_bc5a1f30",
       "range": {
         "startLine": 361,
         "startChar": 0,
