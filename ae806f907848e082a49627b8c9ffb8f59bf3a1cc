@@ -46,6 +46,30 @@
       },
       "revId": "ae806f907848e082a49627b8c9ffb8f59bf3a1cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a54b24ad_b64975a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-08T23:34:19Z",
+      "side": 1,
+      "message": "Thanks for looking into this. IIRC @ccross@android.com is working on modifying the classpaths with repackaging, so it might be worth checking with Colin about how his works would affect this.",
+      "parentUuid": "87ee5df5_f4b31568",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "ae806f907848e082a49627b8c9ffb8f59bf3a1cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
