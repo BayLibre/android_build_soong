@@ -43,6 +43,10 @@ func genKatiSuffix(ctx Context, config Config) {
 	// Construct the base suffix.
 	katiSuffix := "-" + config.TargetProduct()
 
+	if config.IsCoverageEnabled() {
+		katiSuffix += ".coverage"
+	}
+
 	// Append kati arguments to the suffix.
 	if args := config.KatiArgs(); len(args) > 0 {
 		katiSuffix += "-" + spaceSlashReplacer.Replace(strings.Join(args, "_"))

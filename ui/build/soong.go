@@ -178,6 +178,8 @@ func getGlobPathName(config Config) string {
 	globPathName, ok := config.TargetProductOrErr()
 	if ok != nil {
 		globPathName = soongBuildTag
+	// } else if config.IsCoverageEnabled() {
+	// 	globPathName += ".coverage"
 	}
 	return globPathName
 }
