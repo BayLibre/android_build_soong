@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a21a64d_a7ff2d99",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2722,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-08-08T04:22:45Z",
+      "side": 1,
+      "message": "Well, I\u0027m not sure we need this. Afaik, `com.google` means that Google as a partner. Even mainline modules use `com.android`. override_apex (google-signed mainline modules use this to override it\u0027s package name) doesn\u0027t change the apex name.",
+      "range": {
+        "startLine": 2722,
+        "startChar": 75,
+        "endLine": 2722,
+        "endChar": 88
+      },
+      "revId": "7b036dad61eed5900a7bc7f641ee3fec99691061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f9a7634_2f7703eb",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2722,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-08-08T04:22:45Z",
+      "side": 1,
+      "message": "Can you make this a separate `if`?",
+      "range": {
+        "startLine": 2722,
+        "startChar": 29,
+        "endLine": 2722,
+        "endChar": 150
+      },
+      "revId": "7b036dad61eed5900a7bc7f641ee3fec99691061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9467cca1_e29120ef",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2722,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-08-08T04:22:45Z",
+      "side": 1,
+      "message": "I think we need a dot at the end to distinguish `com.androidxxx` from `com.android.xxx`.",
+      "range": {
+        "startLine": 2722,
+        "startChar": 132,
+        "endLine": 2722,
+        "endChar": 149
+      },
+      "revId": "7b036dad61eed5900a7bc7f641ee3fec99691061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
