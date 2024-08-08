@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa0c86ad_12efdf68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2024-08-08T16:42:21Z",
+      "side": 1,
+      "message": "Ah! Got you! Didn\u0027t know there is an external \u0027Issue Tracker\u0027!",
+      "parentUuid": "8b8af4c7_690ae032",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "615a0cfa02caa0b050afaa9baccc200143da7c54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0c00ed0_e3f5c97b",
