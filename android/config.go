@@ -1668,6 +1668,10 @@ func (c *config) EnforceProductPartitionInterface() bool {
 	return Bool(c.productVariables.EnforceProductPartitionInterface)
 }
 
+func (c *config) EnforceApexAvailabilityNamespaceList() []string {
+	return c.productVariables.EnforceApexAvailabilityNamespaceList
+}
+
 func (c *config) EnforceInterPartitionJavaSdkLibrary() bool {
 	return Bool(c.productVariables.EnforceInterPartitionJavaSdkLibrary)
 }
