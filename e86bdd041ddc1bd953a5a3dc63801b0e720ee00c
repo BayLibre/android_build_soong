@@ -39,6 +39,30 @@
       },
       "revId": "e86bdd041ddc1bd953a5a3dc63801b0e720ee00c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b435cc92_4e9ea0da",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2727,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2024-08-08T08:49:37Z",
+      "side": 1,
+      "message": "Done. Please take a look, especially the product variable part (because it\u0027s the first time I add product variable, might be missing something).",
+      "parentUuid": "58d30902_277b1173",
+      "range": {
+        "startLine": 2727,
+        "startChar": 46,
+        "endLine": 2727,
+        "endChar": 60
+      },
+      "revId": "e86bdd041ddc1bd953a5a3dc63801b0e720ee00c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
