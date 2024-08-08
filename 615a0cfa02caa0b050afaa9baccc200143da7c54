@@ -117,6 +117,30 @@
       },
       "revId": "615a0cfa02caa0b050afaa9baccc200143da7c54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b3d7e2_1b8af680",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-08-08T22:43:25Z",
+      "side": 1,
+      "message": "No I don\u0027t think so. Here the condition says the apex is to be installed in system/ or system_ext/ which should be okay to have this optimization. It could apply for partner apexes.",
+      "parentUuid": "d0c00ed0_e3f5c97b",
+      "range": {
+        "startLine": 1835,
+        "startChar": 2,
+        "endLine": 1835,
+        "endChar": 27
+      },
+      "revId": "615a0cfa02caa0b050afaa9baccc200143da7c54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

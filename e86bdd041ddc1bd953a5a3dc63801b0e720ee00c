@@ -87,6 +87,30 @@
       },
       "revId": "e86bdd041ddc1bd953a5a3dc63801b0e720ee00c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "691a95a0_e2c091e7",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2727,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-08-08T22:43:25Z",
+      "side": 1,
+      "message": "\u003e 1. Partner apexes are never installed in /system. They will be installed in either /vendor and/or /product\n\nNo, partner apexes can be in /system as well.\n\n\u003e 2. Partners would still like to enforce this check on some of their updatable apexes (hence the proposed EnforceApexAvailabilityNamespaceList)\n\n\nHey Chan, you can use `PrefixInList` for the loop.",
+      "parentUuid": "c1e52ef5_fe166b31",
+      "range": {
+        "startLine": 2727,
+        "startChar": 46,
+        "endLine": 2727,
+        "endChar": 60
+      },
+      "revId": "e86bdd041ddc1bd953a5a3dc63801b0e720ee00c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
