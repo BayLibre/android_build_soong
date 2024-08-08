@@ -61,6 +61,8 @@ func (p *buildPropModule) propFiles(ctx ModuleContext) Paths {
 		return ctx.Config().SystemPropFiles(ctx)
 	} else if partition == "system_ext" {
 		return ctx.Config().SystemExtPropFiles(ctx)
+	} else if partition == "product" {
+		return ctx.Config().ProductPropFiles(ctx)
 	}
 	return nil
 }
@@ -80,6 +82,13 @@ func shouldAddBuildThumbprint(config Config) bool {
 	return false
 }
 
+var validPartitions = []string{
+	"system",
+	"system_ext",
+	"product",
+	"odm",
+}
+
 func (p *buildPropModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	p.outputFilePath = PathForModuleOut(ctx, "build.prop").OutputPath
 	if !ctx.Config().KatiEnabled() {
@@ -89,8 +98,8 @@ func (p *buildPropModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	}
 
 	partition := p.PartitionTag(ctx.DeviceConfig())
-	if partition != "system" && partition != "system_ext" {
-		ctx.PropertyErrorf("partition", "unsupported partition %q: only \"system\" and \"system_ext\" are supported", partition)
+	if !InList(partition, validPartitions) {
+		ctx.PropertyErrorf("partition", "unsupported partition %q: only %q are supported", partition, validPartitions)
 		return
 	}
 
@@ -118,7 +127,7 @@ func (p *buildPropModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	cmd.FlagWithInput("--platform-preview-sdk-fingerprint-file=", ApiFingerprintPath(ctx))
 	cmd.FlagWithInput("--product-config=", PathForModuleSrc(ctx, proptools.String(p.properties.Product_config)))
 	cmd.FlagWithArg("--partition=", partition)
-	cmd.FlagForEachInput("--prop-files=", ctx.Config().SystemPropFiles(ctx))
+	cmd.FlagForEachInput("--prop-files=", p.propFiles(ctx))
 	cmd.FlagWithOutput("--out=", p.outputFilePath)
 
 	postProcessCmd := rule.Command().BuiltTool("post_process_props")
