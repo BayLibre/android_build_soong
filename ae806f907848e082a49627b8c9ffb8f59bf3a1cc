@@ -22,6 +22,30 @@
       },
       "revId": "ae806f907848e082a49627b8c9ffb8f59bf3a1cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ee5df5_f4b31568",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-08T23:26:58Z",
+      "side": 1,
+      "message": "I think it should be _both_. I think `headerJarFile` becomes the output of jarjar-ing if `jarjar_rules` is not empty. With trunk stable, we introduced an additional `repackagedHeaderJarFile` to prevent collisions of aconfig flags on the bootclasspath/systemserverclasspath. \n\nSince both of them are on the [classpath](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/1220e589df1db2861e73f21d69977225ad5a20d2:java/base.go;l\u003d2273-2277;drc\u003d5866fc2d42638a3a055fd2b64f77aa8ed7abf22a;bpv\u003d1;bpt\u003d0), I have updated the patchset to include `repackagedHeaderJarFile` as well.",
+      "parentUuid": "268a8ddf_e1ae8ab2",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "ae806f907848e082a49627b8c9ffb8f59bf3a1cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
