@@ -2369,16 +2369,24 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			case bootClasspathTag:
 				// If a system modules dependency has been added to the bootclasspath
 				// then add its libs to the bootclasspath.
-				sm := module.(SystemModulesProvider)
-				deps.bootClasspath = append(deps.bootClasspath, sm.HeaderJars()...)
+				if sm, ok := android.OtherModuleProvider(ctx, module, SystemModulesProvider); ok {
+					depHeaderJars := sm.HeaderJars
+					deps.bootClasspath = append(deps.bootClasspath, depHeaderJars...)
+				} else {
+					ctx.PropertyErrorf("boot classpath dependency %q does not provide SystemModulesProvider",
+						ctx.OtherModuleName(module))
+				}
 
 			case systemModulesTag:
 				if deps.systemModules != nil {
 					panic("Found two system module dependencies")
 				}
-				sm := module.(SystemModulesProvider)
-				outputDir, outputDeps := sm.OutputDirAndDeps()
-				deps.systemModules = &systemModules{outputDir, outputDeps}
+				if sm, ok := android.OtherModuleProvider(ctx, module, SystemModulesProvider); ok {
+					deps.systemModules = &systemModules{sm.OutputDir, sm.OutputDirDeps}
+				} else {
+					ctx.PropertyErrorf("system modules dependency %q does not provide SystemModulesProvider",
+						ctx.OtherModuleName(module))
+				}
 
 			case instrumentationForTag:
 				ctx.PropertyErrorf("instrumentation_for", "dependency %q of type %q does not provide JavaInfo so is unsuitable for use with this property", ctx.OtherModuleName(module), ctx.OtherModuleType(module))
