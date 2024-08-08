@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "268a8ddf_e1ae8ab2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-08T22:50:52Z",
+      "side": 1,
+      "message": "Isn\u0027t `repackagedHeaderJarFile` the output of the repackaging, not the `headerJarFile`?",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "ae806f907848e082a49627b8c9ffb8f59bf3a1cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
