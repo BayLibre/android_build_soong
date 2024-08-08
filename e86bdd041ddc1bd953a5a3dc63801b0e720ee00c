@@ -63,6 +63,30 @@
       },
       "revId": "e86bdd041ddc1bd953a5a3dc63801b0e720ee00c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1e52ef5_fe166b31",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2727,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-08T17:37:15Z",
+      "side": 1,
+      "message": "Since I am not very familiar with partner apex development, could I please know whether these statements are true?\n\n1. Partner apexes are never installed in `/system`. They will be installed in either `/vendor` and/or `/product`\n2. Partners would still like to enforce this check on _some_ of their updatable apexes (hence the proposed `EnforceApexAvailabilityNamespaceList`)\n\nIf (1) is true, can we replace the string matching for `com.android` since they are system apexes? We can maybe look at `a.InstallIn(Vendor|Product)` to determine whether the current apex is a partner apex, and relax the check based on `EnforceApexAvailabilityNamespaceList`?",
+      "parentUuid": "b435cc92_4e9ea0da",
+      "range": {
+        "startLine": 2727,
+        "startChar": 46,
+        "endLine": 2727,
+        "endChar": 60
+      },
+      "revId": "e86bdd041ddc1bd953a5a3dc63801b0e720ee00c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
