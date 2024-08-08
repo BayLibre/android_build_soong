@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c00ed0_e3f5c97b",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2024-08-08T12:05:04Z",
+      "side": 1,
+      "message": "@jiyong@google.com @jooyung@google.com, could you help to confirm if we need to make this change for partner APEXs?\n\ncc @istvannador@google.com",
+      "range": {
+        "startLine": 1835,
+        "startChar": 2,
+        "endLine": 1835,
+        "endChar": 27
+      },
+      "revId": "615a0cfa02caa0b050afaa9baccc200143da7c54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
