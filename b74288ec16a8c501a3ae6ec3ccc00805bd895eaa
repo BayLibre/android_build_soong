@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503f5969_b8188a7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2024-08-08T06:54:13Z",
+      "side": 1,
+      "message": "Fix is http://ag/28697676. Please do not revert the change.",
+      "revId": "b74288ec16a8c501a3ae6ec3ccc00805bd895eaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
