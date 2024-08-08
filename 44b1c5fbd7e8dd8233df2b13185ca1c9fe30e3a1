@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daad9130_2d9fd89a",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1121678
+      },
+      "writtenOn": "2024-08-08T06:09:33Z",
+      "side": 1,
+      "message": "Going forward should this be 36 now?",
+      "range": {
+        "startLine": 248,
+        "startChar": 86,
+        "endLine": 248,
+        "endChar": 88
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "964796e5_ee077d0a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 248,
+                "startChar": 0,
+                "endLine": 252,
+                "endChar": 0
+              },
+              "replacement": "\tif !Bool(d.dexProperties.No_dex_container) \u0026\u0026 effectiveVersion.FinalOrFutureInt() \u003e\u003d 36 {\n\t\t// W is 36, but we have not bumped the SDK version yet, so check for both.\n\t\tif ctx.Config().PlatformSdkVersion().FinalInt() \u003e\u003d 36 ||\n\t\t\tctx.Config().PlatformSdkCodename() \u003d\u003d \"Wear\" {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "44b1c5fbd7e8dd8233df2b13185ca1c9fe30e3a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b145347_bc61813d",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1121678
+      },
+      "writtenOn": "2024-08-08T06:09:33Z",
+      "side": 1,
+      "message": "and Baklava (or whatever next it is called)",
+      "range": {
+        "startLine": 251,
+        "startChar": 42,
+        "endLine": 251,
+        "endChar": 57
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f9f540d0_2de65fbe",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 251,
+                "startChar": 0,
+                "endLine": 252,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tctx.Config().PlatformSdkCodename() \u003d\u003d \"VanillaIceCream\" ||\n\t\t\tctx.Config().PlatformSdkCodename() \u003d\u003d \"Baklava\" {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "44b1c5fbd7e8dd8233df2b13185ca1c9fe30e3a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
