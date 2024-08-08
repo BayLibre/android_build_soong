@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b8af4c7_690ae032",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1956220
+      },
+      "writtenOn": "2024-08-08T16:23:51Z",
+      "side": 1,
+      "message": "You should use the id as Istvan is proposing or remove the `Bug:` all together.\nb/ is not accessible, if you think the bug should be publicly accessible please use the id, the link would rather resolve to issuetracker which is accessible to AOSP community.",
+      "parentUuid": "85df1eea_49129ea1",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "615a0cfa02caa0b050afaa9baccc200143da7c54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0c00ed0_e3f5c97b",
         "filename": "apex/apex.go",
         "patchSetId": 3
