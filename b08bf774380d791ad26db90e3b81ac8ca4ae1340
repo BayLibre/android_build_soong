@@ -16,6 +16,24 @@
       "message": "Are `implementationJarFile` or `implementationAndResourceJarFile` not necessary for the ide info generation?",
       "revId": "b08bf774380d791ad26db90e3b81ac8ca4ae1340",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c154ac00_4f3ace8f",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-08T00:27:12Z",
+      "side": 1,
+      "message": "My understanding is that `headerJarFile` and `implementationJarFile` contain the same symbols, so either can be used for autocompletion. Building `headerJarFile` is faster, so using it here might be more optimal.\n\n`implementationAndResourceJarFile` contains the resources (.xml/.png/...) which are not pertinent for autocompletion. I think we can skip it.",
+      "parentUuid": "96c18e51_0a41e98a",
+      "revId": "b08bf774380d791ad26db90e3b81ac8ca4ae1340",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
