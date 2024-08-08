@@ -256,6 +256,18 @@ func InitPrebuiltModule(module PrebuiltInterface, srcs *[]string) {
 	InitPrebuiltModuleWithSrcSupplier(module, srcsSupplier, "srcs")
 }
 
+func InitConfigurablePrebuiltModule(module PrebuiltInterface, srcs *proptools.Configurable[[]string]) {
+	if srcs == nil {
+		panic(fmt.Errorf("srcs must not be nil"))
+	}
+
+	srcsSupplier := func(ctx BaseModuleContext, _ Module) []string {
+		return srcs.GetOrDefault(ctx, nil)
+	}
+
+	InitPrebuiltModuleWithSrcSupplier(module, srcsSupplier, "srcs")
+}
+
 func InitSingleSourcePrebuiltModule(module PrebuiltInterface, srcProps interface{}, srcField string) {
 	srcPropsValue := reflect.ValueOf(srcProps).Elem()
 	srcStructField, _ := srcPropsValue.Type().FieldByName(srcField)
