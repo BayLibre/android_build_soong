@@ -26,7 +26,7 @@ import (
 	"android/soong/rust"
 )
 
-func (a *apexBundle) AndroidMk() android.AndroidMkData {
+func (a *apexBundle) AndroidMk(unused android.SingletonContext) android.AndroidMkData {
 	if a.properties.HideFromMake {
 		return android.AndroidMkData{
 			Disabled: true,

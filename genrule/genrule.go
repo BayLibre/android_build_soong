@@ -599,7 +599,7 @@ func (g *Module) IDEInfo(dpInfo *android.IdeInfo) {
 	}
 }
 
-func (g *Module) AndroidMk() android.AndroidMkData {
+func (g *Module) AndroidMk(unused android.SingletonContext) android.AndroidMkData {
 	return android.AndroidMkData{
 		Class:      "ETC",
 		OutputFile: android.OptionalPathForPath(g.outputFiles[0]),

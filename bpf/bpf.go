@@ -224,7 +224,7 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.SetOutputFiles(bpf.objs, "")
 }
 
-func (bpf *bpf) AndroidMk() android.AndroidMkData {
+func (bpf *bpf) AndroidMk(unused android.SingletonContext) android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			var names []string

@@ -237,7 +237,7 @@ func (s *sdkRepoHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.InstallFile(android.PathForModuleInstall(ctx, "sdk-repo"), name+".zip", outputZipFile)
 }
 
-func (s *sdkRepoHost) AndroidMk() android.AndroidMkData {
+func (s *sdkRepoHost) AndroidMk(ctx android.SingletonContext) android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			fmt.Fprintln(w, ".PHONY:", name, "sdk_repo", "sdk-repo-"+name)

@@ -56,7 +56,7 @@ func (p *phony) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	p.targetRequiredModuleNames = ctx.TargetRequiredModuleNames()
 }
 
-func (p *phony) AndroidMk() android.AndroidMkData {
+func (p *phony) AndroidMk(unused android.SingletonContext) android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)", " # phony.phony")
@@ -115,7 +115,7 @@ func (p *PhonyRule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	p.phonyDepsModuleNames = p.properties.Phony_deps.GetOrDefault(ctx, nil)
 }
 
-func (p *PhonyRule) AndroidMk() android.AndroidMkData {
+func (p *PhonyRule) AndroidMk(unused android.SingletonContext) android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			if len(p.phonyDepsModuleNames) > 0 {

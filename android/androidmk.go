@@ -58,7 +58,7 @@ var PrepareForTestWithAndroidMk = GroupFixturePreparers(
 // Deprecated: Use AndroidMkEntriesProvider instead, especially if you're not going to use the
 // Custom function. It's easier to use and test.
 type AndroidMkDataProvider interface {
-	AndroidMk() AndroidMkData
+	AndroidMk(ctx SingletonContext) AndroidMkData
 	BaseModuleName() string
 }
 
@@ -860,7 +860,7 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, moduleInfoJSONs *
 		return nil
 	}
 
-	data := provider.AndroidMk()
+	data := provider.AndroidMk(nil)
 	if data.Include == "" {
 		data.Include = "$(BUILD_PREBUILT)"
 	}
