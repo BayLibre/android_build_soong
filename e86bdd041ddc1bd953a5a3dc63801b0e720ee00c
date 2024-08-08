@@ -16,6 +16,29 @@
       "message": "Thanks, Chan.",
       "revId": "e86bdd041ddc1bd953a5a3dc63801b0e720ee00c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d30902_277b1173",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2727,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-08T06:26:57Z",
+      "side": 1,
+      "message": "This is a good default, but I wish partners can extend this for their own updatable APEXes. Can you introduce a new product variable and add its value here?",
+      "range": {
+        "startLine": 2727,
+        "startChar": 46,
+        "endLine": 2727,
+        "endChar": 60
+      },
+      "revId": "e86bdd041ddc1bd953a5a3dc63801b0e720ee00c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
