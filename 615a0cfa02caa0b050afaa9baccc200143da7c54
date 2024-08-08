@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85df1eea_49129ea1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2024-08-08T14:04:32Z",
+      "side": 1,
+      "message": "I added b slash on purpose 😊 not sure if it\u0027s safe to expose the link",
+      "parentUuid": "9e2b52e5_56eb0427",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "615a0cfa02caa0b050afaa9baccc200143da7c54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0c00ed0_e3f5c97b",
         "filename": "apex/apex.go",
         "patchSetId": 3
