@@ -421,7 +421,8 @@ type ProductVariables struct {
 
 	TargetFSConfigGen []string `json:",omitempty"`
 
-	EnforceProductPartitionInterface *bool `json:",omitempty"`
+	EnforceProductPartitionInterface     *bool    `json:",omitempty"`
+	EnforceApexAvailabilityNamespaceList []string `json:",omitempty"`
 
 	EnforceInterPartitionJavaSdkLibrary *bool    `json:",omitempty"`
 	InterPartitionJavaLibraryAllowList  []string `json:",omitempty"`

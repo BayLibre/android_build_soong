@@ -2723,6 +2723,11 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 		return
 	}
 
+	// Availability for partner APEXs isn't important unless configured
+	if !strings.HasPrefix(a.ApexVariationName(), "com.android.") && !android.HasAnyPrefix(a.ApexVariationName(), ctx.Config().EnforceApexAvailabilityNamespaceList()) {
+		return
+	}
+
 	// Because APEXes targeting other than system/system_ext partitions can't set
 	// apex_available, we skip checks for these APEXes
 	if a.SocSpecific() || a.DeviceSpecific() || (a.ProductSpecific() && ctx.Config().EnforceProductPartitionInterface()) {
