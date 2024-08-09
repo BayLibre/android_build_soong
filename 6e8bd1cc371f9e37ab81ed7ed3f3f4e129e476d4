@@ -34,6 +34,24 @@
       "parentUuid": "da03b3d5_f48a4628",
       "revId": "6e8bd1cc371f9e37ab81ed7ed3f3f4e129e476d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2377577e_dbb39737",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2234,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-09T18:24:48Z",
+      "side": 1,
+      "message": "\u003e Would you prefer that we do this cleanup now instead of this hack?\n\nI\u0027m not quite sure. Could the existence of [this module](https://cs.android.com/android/platform/superproject/main/+/main:prebuilts/sdk/Android.bp?q\u003dname:%5Cs%5C%22sdk_.*_.*_android) disturb this logic?",
+      "parentUuid": "1b94e8b9_6732766a",
+      "revId": "6e8bd1cc371f9e37ab81ed7ed3f3f4e129e476d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
