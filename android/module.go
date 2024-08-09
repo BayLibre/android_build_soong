@@ -112,7 +112,8 @@ type Module interface {
 	HostRequiredModuleNames() []string
 	TargetRequiredModuleNames() []string
 
-	FilesToInstall() InstallPaths
+	FilesToInstall(ctx OtherModuleProviderContext) InstallPaths
+
 	PackagingSpecs() []PackagingSpec
 
 	// TransitivePackagingSpecs returns the PackagingSpecs for this module and any transitive
@@ -1476,8 +1477,12 @@ func isInstallDepNeeded(dep Module, tag blueprint.DependencyTag) bool {
 	return IsInstallDepNeededTag(tag)
 }
 
-func (m *ModuleBase) FilesToInstall() InstallPaths {
-	return m.installFiles
+func (m *ModuleBase) FilesToInstall(ctx OtherModuleProviderContext) InstallPaths {
+	var filesToInstall InstallPaths
+	if info, ok := OtherModuleProvider(ctx, m.module, InstallFilesProvider); ok {
+		filesToInstall = info.InstallFiles
+	}
+	return filesToInstall
 }
 
 func (m *ModuleBase) PackagingSpecs() []PackagingSpec {
@@ -1615,12 +1620,12 @@ func (m *ModuleBase) SetLicenseInstallMap(installMap []string) {
 	m.licenseInstallMap = append(m.licenseInstallMap, installMap...)
 }
 
-func (m *ModuleBase) generateModuleTarget(ctx ModuleContext) {
+func (m *ModuleBase) generateModuleTarget(ctx *moduleContext) {
 	var allInstalledFiles InstallPaths
 	var allCheckbuildFiles Paths
 	ctx.VisitAllModuleVariants(func(module Module) {
 		a := module.base()
-		allInstalledFiles = append(allInstalledFiles, a.installFiles...)
+		allInstalledFiles = append(allInstalledFiles, ctx.installFiles...)
 		// A module's -checkbuild phony targets should
 		// not be created if the module is not exported to make.
 		// Those could depend on the build target and fail to compile
@@ -1762,6 +1767,12 @@ func (m *ModuleBase) archModuleContextFactory(ctx archModuleContextFactoryContex
 	}
 
 }
+
+type InstallFilesInfo struct {
+	InstallFiles InstallPaths
+}
+
+var InstallFilesProvider = blueprint.NewProvider[InstallFilesInfo]()
 
 func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) {
 	ctx := &moduleContext{
@@ -1950,6 +1961,10 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		m.katiInstalls = append(m.katiInstalls, ctx.katiInstalls...)
 		m.katiSymlinks = append(m.katiSymlinks, ctx.katiSymlinks...)
 		m.testData = append(m.testData, ctx.testData...)
+
+		SetProvider(ctx, InstallFilesProvider, InstallFilesInfo{
+			InstallFiles: ctx.installFiles,
+		})
 	} else if ctx.Config().AllowMissingDependencies() {
 		// If the module is not enabled it will not create any build rules, nothing will call
 		// ctx.GetMissingDependencies(), and blueprint will consider the missing dependencies to be unhandled
@@ -1965,7 +1980,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		}
 	}
 
-	m.installFilesDepSet = NewDepSet[InstallPath](TOPOLOGICAL, m.installFiles, dependencyInstallFiles)
+	m.installFilesDepSet = NewDepSet[InstallPath](TOPOLOGICAL, ctx.installFiles, dependencyInstallFiles)
 	m.packagingSpecsDepSet = NewDepSet[PackagingSpec](TOPOLOGICAL, m.packagingSpecs, dependencyPackagingSpecs)
 
 	buildLicenseMetadata(ctx, m.licenseMetadataFile)
