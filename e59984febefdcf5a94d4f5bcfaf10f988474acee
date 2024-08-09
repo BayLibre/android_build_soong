@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05e44b27_24d72c2d",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-09T03:32:58Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "20ed25b7_defcde6d",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 73
+      },
+      "revId": "e59984febefdcf5a94d4f5bcfaf10f988474acee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17a7a2e9_c35911ba",
         "filename": "android/vintf_fragments.go",
         "patchSetId": 6
