@@ -70,6 +70,30 @@
       },
       "revId": "ae806f907848e082a49627b8c9ffb8f59bf3a1cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16cba397_ccbb8a55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-09T00:05:05Z",
+      "side": 1,
+      "message": "I filed b/356688296 for fixing that both the non-repackaged and repackaged header jars are in the classpath, but otherwise I\u0027m not changing anything here.\n\nI\u0027m concerned that using the repackaged jar isn\u0027t always going to be correct.  If you\u0027re editing code that is also going to be repackaged then the source code will be using the original name, and giving it the repackaged jar in its classpath is incorrect.\n\nI\u0027m guessing a lack of clarity around these borders is what led to the duplication in b/356688296.",
+      "parentUuid": "a54b24ad_b64975a7",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "ae806f907848e082a49627b8c9ffb8f59bf3a1cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
