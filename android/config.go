@@ -1975,6 +1975,17 @@ func (c *config) SetBuildFromTextStub(b bool) {
 	c.productVariables.Build_from_text_stub = boolPtr(b)
 }
 
+func (c *config) SetApiLibraries(libs []string) {
+	c.apiLibraries = make(map[string]struct{})
+	for _, lib := range libs {
+		c.apiLibraries[lib] = struct{}{}
+	}
+}
+
+func (c *config) GetApiLibraries() map[string]struct{} {
+	return c.apiLibraries
+}
+
 func (c *deviceConfig) CheckVendorSeappViolations() bool {
 	return Bool(c.config.productVariables.CheckVendorSeappViolations)
 }
