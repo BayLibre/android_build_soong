@@ -88,6 +88,24 @@
       "parentUuid": "05f8148c_5159e2d3",
       "revId": "6e8bd1cc371f9e37ab81ed7ed3f3f4e129e476d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "079b8014_0a2fc074",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2234,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-09T18:50:33Z",
+      "side": 1,
+      "message": "For the logic here:\nI believe the current implementation should be fine, albeit somewhat fortuitous because of these two combining together:\n1. The filegroup is not written to `module_bp_java_deps.json`, since it does not implement `IDEInfo`\n2. `prebuilt_` [prefix is trimmed](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/java/jdeps.go;l\u003d64;bpv\u003d1) from the name when writing to the json file. So the name of the java_import module does not contain the prefix.\n\nFor the cleanup:\nI think you are right, it will affect the cleanup. My preliminary thoughts are that it will be easier to rename the filegroup to something else and update its rdeps.",
+      "parentUuid": "9b2f6e0f_39a13452",
+      "revId": "6e8bd1cc371f9e37ab81ed7ed3f3f4e129e476d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
