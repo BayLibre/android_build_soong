@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20ed25b7_defcde6d",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-09T03:28:11Z",
+      "side": 1,
+      "message": "Yes this was something I wanted to discuss. I introduced `Vintf_fragment_modules` property for better visibility on `vintf_fragment` modules, but as you mentioned it makes sense to use `Required` property to reduce complexity. Let me work on to remove this new property and use `Required` instead. Thx.",
+      "parentUuid": "c4214154_a92b3a9e",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 73
+      },
+      "revId": "e59984febefdcf5a94d4f5bcfaf10f988474acee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17a7a2e9_c35911ba",
         "filename": "android/vintf_fragments.go",
         "patchSetId": 6
@@ -37,6 +61,24 @@
       "writtenOn": "2024-08-09T01:24:04Z",
       "side": 1,
       "message": "Could you separate this change into multiple topics?\n\n1. introduction of vintf_fragment module type.\n2. automatic generation of vintf_fragment modules",
+      "revId": "e59984febefdcf5a94d4f5bcfaf10f988474acee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7ca4ab3_de9b4c64",
+        "filename": "android/vintf_fragments.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-09T03:28:11Z",
+      "side": 1,
+      "message": "Sure. I will separate CL as you mentioned. Thx.",
+      "parentUuid": "17a7a2e9_c35911ba",
       "revId": "e59984febefdcf5a94d4f5bcfaf10f988474acee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
