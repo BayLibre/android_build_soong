@@ -106,6 +106,24 @@
       "parentUuid": "9b2f6e0f_39a13452",
       "revId": "6e8bd1cc371f9e37ab81ed7ed3f3f4e129e476d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2471a6_31d2b2b4",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2234,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-09T18:53:10Z",
+      "side": 1,
+      "message": "Agreed about renaming the filegroup, and I believe it is non blocking.",
+      "parentUuid": "079b8014_0a2fc074",
+      "revId": "6e8bd1cc371f9e37ab81ed7ed3f3f4e129e476d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
