@@ -34,6 +34,24 @@
       "parentUuid": "75174a18_f6e4ceee",
       "revId": "31cc1e1238c8dee763b15e078020333f0431ed37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "773a6a46_e43d5815",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-09T21:15:05Z",
+      "side": 1,
+      "message": "\u003e We will surface implementation symbols during code completion of libraries even if they are not in the same api domain.\n\nIIUC this means that the code completion will expose the private apis, even when the module does not actually link against the implementation; thus the code will fail to compile even when the class/method was suggested by the IDE.\n\nIf this is targeted toward the internal Google IDE (i.e. the 3P apps), I believe that there will be very few use cases that the app is allowed to access the private apis of the sdk library. Given this, would it make more sense to always link against the stubs, regardless of whether the module creates an impl lib or not?",
+      "parentUuid": "1e8dd7aa_bd1c0ebc",
+      "revId": "31cc1e1238c8dee763b15e078020333f0431ed37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
