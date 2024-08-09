@@ -62,6 +62,11 @@ type AndroidMkDataProvider interface {
 	BaseModuleName() string
 }
 
+type AndroidMkDataWithCtxProvider interface {
+	AndroidMkDataProvider
+	AndroidMkWithCtx(ctx SingletonContext) AndroidMkData
+}
+
 type AndroidMkData struct {
 	Class           string
 	SubName         string
@@ -860,7 +865,13 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, moduleInfoJSONs *
 		return nil
 	}
 
-	data := provider.AndroidMk()
+	var data AndroidMkData
+	if p, ok := provider.(AndroidMkDataWithCtxProvider); ok {
+		data = p.AndroidMkWithCtx(ctx)
+	} else {
+		data = provider.AndroidMk()
+	}
+
 	if data.Include == "" {
 		data.Include = "$(BUILD_PREBUILT)"
 	}

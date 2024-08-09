@@ -237,15 +237,19 @@ func (s *sdkRepoHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.InstallFile(android.PathForModuleInstall(ctx, "sdk-repo"), name+".zip", outputZipFile)
 }
 
-func (s *sdkRepoHost) AndroidMk() android.AndroidMkData {
+func (s *sdkRepoHost) AndroidMkWithCtx(ctx android.SingletonContext) android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			fmt.Fprintln(w, ".PHONY:", name, "sdk_repo", "sdk-repo-"+name)
-			fmt.Fprintln(w, "sdk_repo", "sdk-repo-"+name+":", strings.Join(s.FilesToInstall().Strings(), " "))
+			fmt.Fprintln(w, "sdk_repo", "sdk-repo-"+name+":", strings.Join(android.ModuleFilesToInstall(ctx, s).Strings(), " "))
 
 			fmt.Fprintf(w, "$(call dist-for-goals,sdk_repo sdk-repo-%s,%s:%s-FILE_NAME_TAG_PLACEHOLDER.zip)\n\n", s.BaseModuleName(), s.outputFile.String(), s.outputBaseName)
 		},
 	}
+}
+
+func (s *sdkRepoHost) AndroidMk() android.AndroidMkData {
+	panic("should call AndroidMkWithCtx on sdkRepoHost")
 }
 
 func remapPackageSpecs(specs map[string]android.PackagingSpec, remaps []remapProperties) error {
