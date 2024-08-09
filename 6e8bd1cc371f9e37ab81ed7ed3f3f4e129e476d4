@@ -52,6 +52,24 @@
       "parentUuid": "1b94e8b9_6732766a",
       "revId": "6e8bd1cc371f9e37ab81ed7ed3f3f4e129e476d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f8148c_5159e2d3",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2234,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-09T18:36:22Z",
+      "side": 1,
+      "message": "That filegroup is interesting. It clashes with the name of the `java_import` module created by `prebuilt_apis`. So we have two modules here\n1. `sdk_public_30_android` (a filegroup)\n2. `prebuilt_sdk_public_30_android` (a java_import, notice the `prebuilt_` prefix)\n\n\u003e Could the existence of this module disturb this logic\n\nFor clarification, are you referring to the logic here or after the cleanup of b/358608607?",
+      "parentUuid": "2377577e_dbb39737",
+      "revId": "6e8bd1cc371f9e37ab81ed7ed3f3f4e129e476d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
