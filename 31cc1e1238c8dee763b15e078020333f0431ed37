@@ -16,6 +16,24 @@
       "message": "A few questions:\n- Should the ide info link against the implementation jar? Could that lead to exposing the implementation details to the IDE users?\n- Should the dep jar of ide info contain the documentation? If so, I believe that it should always link against the from-source stub jar, as the from-text stub jar does not include the documentation.",
       "revId": "31cc1e1238c8dee763b15e078020333f0431ed37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e8dd7aa_bd1c0ebc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-09T19:17:14Z",
+      "side": 1,
+      "message": "\u003e Should the ide info link against the implementation jar? Could that lead to exposing the implementation details to the IDE users?\n\nYes, that is an unfortunate limitation of this CL. We will surface implementation symbols during code completion of libraries even if they are not in the same api domain.\n\nI think we can make the generation of `IdeInfo` be cognizant of api domain boundaries. My concern is that it will add some complexity to the codebase. Given that the long term plan is to make the dependency explicit in Android.bp (b/358613520), do you think we should invest in adding this complexity to the generation of IdeInfo?\n\n\u003e Should the dep jar of ide info contain the documentation?\n\nPotentially yes for the general use case. However, documentation is less relevant for the immediate use case I am working (code completion in internal Google IDE).",
+      "parentUuid": "75174a18_f6e4ceee",
+      "revId": "31cc1e1238c8dee763b15e078020333f0431ed37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
