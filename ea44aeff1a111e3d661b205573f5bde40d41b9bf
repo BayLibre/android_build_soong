@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae74aa8_598867b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-09T01:10:09Z",
+      "side": 1,
+      "message": "Thanks. Let me invite joeo for the owner\u0027s approval.",
+      "revId": "ea44aeff1a111e3d661b205573f5bde40d41b9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
