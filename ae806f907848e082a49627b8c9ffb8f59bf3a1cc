@@ -94,6 +94,30 @@
       },
       "revId": "ae806f907848e082a49627b8c9ffb8f59bf3a1cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c771887_22d403cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-09T22:39:02Z",
+      "side": 1,
+      "message": "Thanks both. Since the implications of adding the repackaged aconfig flag jars are fuzzy, I have removed `repackagedHeaderJarFile` for now.",
+      "parentUuid": "16cba397_ccbb8a55",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "ae806f907848e082a49627b8c9ffb8f59bf3a1cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
