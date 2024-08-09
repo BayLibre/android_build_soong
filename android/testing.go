@@ -202,7 +202,7 @@ func (ctx *TestContext) HardCodedPreArchMutators(f RegisterMutatorFunc) {
 	ctx.PreArchMutators(f)
 }
 
-func (ctx *TestContext) moduleProvider(m blueprint.Module, p blueprint.AnyProviderKey) (any, bool) {
+func (ctx *TestContext) otherModuleProvider(m blueprint.Module, p blueprint.AnyProviderKey) (any, bool) {
 	return ctx.Context.ModuleProvider(m, p)
 }
 
@@ -220,7 +220,7 @@ func (ctx *TestContext) FinalDepsMutators(f RegisterMutatorFunc) {
 
 func (ctx *TestContext) OtherModuleProviderAdaptor() OtherModuleProviderContext {
 	return NewOtherModuleProviderAdaptor(func(module blueprint.Module, provider blueprint.AnyProviderKey) (any, bool) {
-		return ctx.moduleProvider(module, provider)
+		return ctx.otherModuleProvider(module, provider)
 	})
 }
 
