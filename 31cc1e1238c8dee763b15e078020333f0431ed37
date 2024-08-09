@@ -52,6 +52,24 @@
       "parentUuid": "1e8dd7aa_bd1c0ebc",
       "revId": "31cc1e1238c8dee763b15e078020333f0431ed37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99c47dc1_bbf7c528",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-09T21:42:56Z",
+      "side": 1,
+      "message": "\u003e I believe that there will be very few use cases that the app is allowed to access the private apis of the sdk library. \n\nI think some exceptions are\n1. android apps that set `platform_apis` to true\n2. dependencies on non android sdk java_sdk_library (e.g. android.car.builtin)\n\nFWIW, I experimented by removing the implementation library from `Deps`, and it introduced the following unresolved deps https://paste.googleplex.com/5984361625419776",
+      "parentUuid": "773a6a46_e43d5815",
+      "revId": "31cc1e1238c8dee763b15e078020333f0431ed37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
