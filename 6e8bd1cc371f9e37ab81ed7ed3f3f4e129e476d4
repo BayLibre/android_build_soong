@@ -70,6 +70,24 @@
       "parentUuid": "2377577e_dbb39737",
       "revId": "6e8bd1cc371f9e37ab81ed7ed3f3f4e129e476d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b2f6e0f_39a13452",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2234,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-09T18:41:58Z",
+      "side": 1,
+      "message": "I was initially referring to the logic here, but I think that it might affect the cleanup as well. i.e. could there be a mismatch between the jar path in `sdkDep` and the module that we are appending to `compileDepNames`? Or should we append the `prebuilt_*` to the compile dep names instead?",
+      "parentUuid": "05f8148c_5159e2d3",
+      "revId": "6e8bd1cc371f9e37ab81ed7ed3f3f4e129e476d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
