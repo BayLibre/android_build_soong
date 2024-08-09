@@ -70,6 +70,69 @@
       "parentUuid": "773a6a46_e43d5815",
       "revId": "31cc1e1238c8dee763b15e078020333f0431ed37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92eef5b6_5bb25db6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-09T21:53:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "99c47dc1_bbf7c528",
+      "revId": "31cc1e1238c8dee763b15e078020333f0431ed37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c66fe1_454b61ab",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3616,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-09T21:53:36Z",
+      "side": 1,
+      "message": "nit: Check that `stubPaths.stubsHeaderPath` is not empty;\n\nI believe that this is unlikely given that if a module does not generate the impl lib then it should generate the stubs, but I think it\u0027s better to be safe :)",
+      "fixSuggestions": [
+        {
+          "fixId": "040f2d71_788582cb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/sdk_library.go",
+              "range": {
+                "startLine": 3616,
+                "startChar": 0,
+                "endLine": 3617,
+                "endChar": 0
+              },
+              "replacement": "\t\tif len(stubPaths.stubsHeaderPath) \u003e 0 {\n\t\t\tdpInfo.Jars \u003d append(dpInfo.Jars, stubPaths.stubsHeaderPath[0].String())\n\t\t}\n"
+            },
+            {
+              "path": "java/sdk_library.go",
+              "range": {
+                "startLine": 3619,
+                "startChar": 0,
+                "endLine": 3619,
+                "endChar": 0
+              },
+              "replacement": "}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "31cc1e1238c8dee763b15e078020333f0431ed37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
