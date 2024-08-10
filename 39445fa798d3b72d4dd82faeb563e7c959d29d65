@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5991008a_1430b57a",
+        "filename": "ui/build/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-10T00:38:05Z",
+      "side": 1,
+      "message": "All of these would require less duplication if you added a `CoverageSuffix()` method that returned `\"\"` or `\".coverage\"`, and then just concatenated in with the existing lines.",
+      "revId": "39445fa798d3b72d4dd82faeb563e7c959d29d65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc1d7241_57cf35ca",
+        "filename": "ui/build/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-10T00:38:05Z",
+      "side": 1,
+      "message": "Use `c.environ.IsEnvTrue(\"EMMA_INSTRUMENT\")`",
+      "range": {
+        "startLine": 1156,
+        "startChar": 23,
+        "endLine": 1156,
+        "endChar": 26
+      },
+      "revId": "39445fa798d3b72d4dd82faeb563e7c959d29d65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e39c71d_93514546",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-10T00:38:05Z",
+      "side": 1,
+      "message": "Is this necessary?  None of the other changes here are running inside ninja, so you shouldn\u0027t need to allowlist the environment variable.",
+      "revId": "39445fa798d3b72d4dd82faeb563e7c959d29d65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
