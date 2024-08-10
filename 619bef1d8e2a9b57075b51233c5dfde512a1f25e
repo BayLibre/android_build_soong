@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72238e51_b19b7778",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-10T01:55:47Z",
+      "side": 1,
+      "message": "This is causing some build failures:\n```\nninja: output file missing after successful execution: out/soong/.intermediates/system/logging/liblog/liblog/windows_x86_64_shared/liblog.pdb\n```",
+      "revId": "619bef1d8e2a9b57075b51233c5dfde512a1f25e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a5947d2_2566d428",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-10T01:55:47Z",
+      "side": 1,
+      "message": "This could go in `windowsCflags` in x86_windows_host.go.",
+      "revId": "619bef1d8e2a9b57075b51233c5dfde512a1f25e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
