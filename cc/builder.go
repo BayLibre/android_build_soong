@@ -22,6 +22,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"runtime"
+	"slices"
 	"strconv"
 	"strings"
 
@@ -563,6 +564,11 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		return "$" + kind + n
 	}
 
+	// Windows flags to generate PDB
+	if ctx.Windows() {
+		cflags += " -g -gcodeview "
+	}
+
 	for i, srcFile := range srcFiles {
 		objFile := android.ObjPathWithExt(ctx, subdir, srcFile, "o")
 
@@ -902,6 +908,15 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 		rule = ldRE
 		args["implicitOutputs"] = strings.Join(implicitOutputs.Strings(), ",")
 		args["implicitInputs"] = strings.Join(deps.Strings(), ",")
+	}
+
+	// On Windows, we always generate a PDB file
+	// --strip-debug is needed to also keep COFF symbols which are needed when
+	// we patch binaries with symbol_inject.
+	if ctx.Windows() {
+		pdb := outputFile.ReplaceExtension(ctx, "pdb")
+		args["ldFlags"] = args["ldFlags"] + " -Wl,--strip-debug -Wl,--pdb=" + pdb.String() + " "
+		implicitOutputs = append(slices.Clone(implicitOutputs), pdb)
 	}
 
 	ctx.Build(pctx, android.BuildParams{
