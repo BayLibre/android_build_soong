@@ -563,8 +563,14 @@ type Module struct {
 var _ android.InstallableModule = (*Module)(nil)
 
 // To satisfy the InstallableModule interface
-func (j *Module) EnforceApiContainerChecks() bool {
-	return true
+func (j *Module) StaticDependencyTags() []blueprint.DependencyTag {
+	return []blueprint.DependencyTag{staticLibTag}
+}
+
+// To satisfy the InstallableModule interface
+func (j *Module) DynamicDependencyTags() []blueprint.DependencyTag {
+	return []blueprint.DependencyTag{libTag, sdkLibTag, bootClasspathTag, systemModulesTag,
+		instrumentationForTag, java9LibTag}
 }
 
 // Overrides android.ModuleBase.InstallInProduct()
