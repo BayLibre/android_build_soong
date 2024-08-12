@@ -16,6 +16,24 @@
       "message": "Maybe add a comment why we are doing this.",
       "revId": "b67c29e878bbd5141707cf4920fd39c9b67465c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66d4a6dc_2128ae50",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1945475
+      },
+      "writtenOn": "2024-08-12T19:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf85d5c6_2d3dae3a",
+      "revId": "b67c29e878bbd5141707cf4920fd39c9b67465c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
