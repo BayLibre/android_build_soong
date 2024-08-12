@@ -19,6 +19,7 @@ import (
 	"slices"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 // ----------------------------------------------------------------------------
@@ -43,16 +44,100 @@ var depIsStubsModule exceptionHandleFunc = func(_ ModuleContext, _, dep Module) 
 	return false
 }
 
+// Returns true if the dependency module belongs to any of the apexes.
+var depIsApexModule exceptionHandleFunc = func(mctx ModuleContext, _, dep Module) bool {
+	depContainersInfo, _ := getContainerModuleInfo(mctx, dep)
+	return InList(ApexContainer, depContainersInfo.belongingContainers)
+}
+
+// Returns true if the module and the dependent module belongs to common apexes.
+var belongsToCommonApexes exceptionHandleFunc = func(mctx ModuleContext, m, dep Module) bool {
+	mContainersInfo, _ := getContainerModuleInfo(mctx, m)
+	depContainersInfo, _ := getContainerModuleInfo(mctx, dep)
+
+	return HasIntersection(mContainersInfo.ApexNames(), depContainersInfo.ApexNames())
+}
+
+// Returns true when all apexes that the module belongs to are non updatable.
+// For an apex module to be allowed to depend on a non-apex partition module,
+// all apexes that the module belong to must be non updatable.
+var belongsToNonUpdatableApex exceptionHandleFunc = func(mctx ModuleContext, m, _ Module) bool {
+	mContainersInfo, _ := getContainerModuleInfo(mctx, m)
+
+	return !mContainersInfo.UpdatableApex()
+}
+
+type SdkLibAndImportModule interface {
+	RootLibraryName() string
+}
+
+// Returns true if the dependency is a source or prebuilt java sdk library added via
+// `usesLibraryDependencyTag` tag.
+// Currently, the top level sdk library module is implicitly added as a dependency using
+// `usesLibraryDependencyTag` when its submodule (e.g. impl lib or stub lib) is added as a
+// dependency. Ignore this case and evaluate violation based on the submodule that is explicitly
+// listed as a dependency in the module definition.
+var depIsSdkLibUsesLibDependency exceptionHandleFunc = func(ctx ModuleContext, m, dep Module) bool {
+	if _, ok := dep.(SdkLibAndImportModule); ok {
+		depTag := ctx.OtherModuleDependencyTag(dep)
+		return reflect.TypeOf(depTag).Name() == "usesLibraryDependencyTag"
+	}
+	return false
+}
+
+// Returns true when the dependency is a prebuilt sdk library depending on its source sdk
+// library created impl library.
+// Prebuilt top level sdk library (i.e. sdk_library_import) implicitly depends on the impl
+// library of the source sdk library. Given that this dependency is implicitly added, do not
+// turn this into a user facing error when the violation is detected.
+var prebuiltSdkLibToSourceSdkImplLibDep exceptionHandleFunc = func(_ ModuleContext, m, dep Module) bool {
+	_, mSdkLibOk := m.(SdkLibAndImportModule)
+	depSdkLibSubModule, depSdkLibSubModuleOk := dep.(interface{ SdkLibraryName() *string })
+	if mSdkLibOk && depSdkLibSubModuleOk && proptools.String(depSdkLibSubModule.SdkLibraryName()) == m.Name() {
+		return dep.Name() == m.Name()+".impl"
+	}
+	return false
+}
+
+var globallyAllowlistedDependencies = []string{
+	// Modules that provide annotations used within the platform and apexes.
+	"unsupportedappusage",
+	"framework-annotations-lib",
+
+	// framework-res provides core resources essential for building apps and system UI.
+	// This module is implicitly added as a dependency for java modules even when the
+	// dependency specifies sdk_version.
+	"framework-res",
+}
+
+// Returns true when the dependency is globally allowlisted for inter-container dependency
+var depIsGloballyAllowlisted exceptionHandleFunc = func(_ ModuleContext, _, dep Module) bool {
+	return InList(dep.Name(), globallyAllowlistedDependencies)
+}
+
 // Labels of exception functions, which are used to determine special dependencies that allow
 // otherwise restricted inter-container dependencies
 type exceptionHandleFuncLabel int
 
 const (
 	checkStubs exceptionHandleFuncLabel = iota
+	checkInCommonApexes
+	checkApexModule
+	checkApexIsNonUpdatable
+	checkSdkLibUsesLibDep
+	checkSdkLibToImplLibDep
+	checkGlobalAllowlistedDep
 )
 
-var exceptionHandleFunctionsTable = map[exceptionHandleFuncLabel]exceptionHandleFunc{
-	checkStubs: depIsStubsModule,
+// Map of [exceptionHandleFuncLabel] to the [exceptionHandleFunc]
+var exceptionHandleFunctionsTable = map[exceptionHandleFuncLabel]func(ModuleContext, Module, Module) bool{
+	checkStubs:                depIsStubsModule,
+	checkApexModule:           depIsApexModule,
+	checkInCommonApexes:       belongsToCommonApexes,
+	checkApexIsNonUpdatable:   belongsToNonUpdatableApex,
+	checkSdkLibUsesLibDep:     depIsSdkLibUsesLibDependency,
+	checkSdkLibToImplLibDep:   prebuiltSdkLibToSourceSdkImplLibDep,
+	checkGlobalAllowlistedDep: depIsGloballyAllowlisted,
 }
 
 // ----------------------------------------------------------------------------
@@ -160,7 +245,7 @@ var (
 					"not allowed to depend on the vendor partition module, in order to support " +
 					"independent development/update cycles and to support the Generic System " +
 					"Image. Try depending on HALs, VNDK or AIDL instead.",
-				allowedExceptions: []exceptionHandleFuncLabel{},
+				allowedExceptions: []exceptionHandleFuncLabel{checkGlobalAllowlistedDep},
 			},
 		},
 	}
@@ -173,7 +258,7 @@ var (
 				errorMessage: "Module belonging to the product partition is not allowed to " +
 					"depend on the vendor partition module, as this may lead to security " +
 					"vulnerabilities. Try depending on the HALs or utilize AIDL instead.",
-				allowedExceptions: []exceptionHandleFuncLabel{},
+				allowedExceptions: []exceptionHandleFuncLabel{checkGlobalAllowlistedDep},
 			},
 		},
 	}
@@ -189,7 +274,7 @@ var (
 					"system partition, including \"framework\". Depending on the system " +
 					"partition may lead to disclosure of implementation details and regression " +
 					"due to API changes across platform versions. Try depending on the stubs instead.",
-				allowedExceptions: []exceptionHandleFuncLabel{checkStubs},
+				allowedExceptions: []exceptionHandleFuncLabel{checkStubs, checkGlobalAllowlistedDep},
 			},
 		},
 	}
@@ -213,7 +298,9 @@ func initializeApexContainer() *container {
 					"modules belonging to the system partition. Either statically depend on the " +
 					"module or convert the depending module to java_sdk_library and depend on " +
 					"the stubs.",
-				allowedExceptions: []exceptionHandleFuncLabel{checkStubs},
+				allowedExceptions: []exceptionHandleFuncLabel{checkStubs, checkApexModule,
+					checkInCommonApexes, checkApexIsNonUpdatable, checkSdkLibUsesLibDep,
+					checkSdkLibToImplLibDep, checkGlobalAllowlistedDep},
 			},
 		},
 	}
@@ -224,7 +311,7 @@ func initializeApexContainer() *container {
 			"modules belonging to other Apex(es). Either include the depending " +
 			"module in the Apex or convert the depending module to java_sdk_library " +
 			"and depend on its stubs.",
-		allowedExceptions: []exceptionHandleFuncLabel{checkStubs},
+		allowedExceptions: []exceptionHandleFuncLabel{checkStubs, checkInCommonApexes, checkGlobalAllowlistedDep},
 	})
 
 	return apexContainer
@@ -278,6 +365,14 @@ func generateContainerInfo(ctx ModuleContext) ContainersInfo {
 		belongingContainers: containers,
 		belongingApexes:     belongingApexes,
 	}
+}
+
+func getContainerModuleInfo(ctx ModuleContext, module Module) (ContainersInfo, bool) {
+	if ctx.Module() == module {
+		return generateContainerInfo(ctx), true
+	}
+
+	return OtherModuleProvider(ctx, module, ContainersInfoProvider)
 }
 
 func setContainerInfo(ctx ModuleContext) {
