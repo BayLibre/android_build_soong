@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba5dcc93_26be7c5c",
+        "filename": "android/vintf_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-12T09:24:44Z",
+      "side": 1,
+      "message": "Add a documentation of the Src property.",
+      "revId": "cb66577b5ce5e4d4229f1b6cb15e7f50a7b01d11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3472a3a4_7095c8c0",
+        "filename": "android/vintf_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-12T09:24:44Z",
+      "side": 1,
+      "message": "Add a documentation about this module type here.",
+      "revId": "cb66577b5ce5e4d4229f1b6cb15e7f50a7b01d11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
