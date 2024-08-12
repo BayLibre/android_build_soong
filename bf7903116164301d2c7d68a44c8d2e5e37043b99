@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8ae6d8a_edaeb8c0",
+        "filename": "android/module.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-12T21:24:11Z",
+      "side": 1,
+      "message": "Why is `OtherModuleFarDependencyVariantExists` necessary here?  All uses of `OtherModuleFarDependencyVariantExists` are going to have to be removed in order to support creating variants on demand in the future.",
+      "revId": "bf7903116164301d2c7d68a44c8d2e5e37043b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
