@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b7f6d25_84261d3f",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-12T00:57:53Z",
+      "side": 1,
+      "message": "Discussed with Jiyong from separated channel. From what I tested, if we put all vintf_fragment modules into required, it makes unexpected behavior from APEXes, as APEX copies all required dependency modules as package dependency. Let\u0027s keep vintf_fragment_modules as it is for now, until we refactor APEX with packaging.",
+      "parentUuid": "05e44b27_24d72c2d",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 73
+      },
+      "revId": "e59984febefdcf5a94d4f5bcfaf10f988474acee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17a7a2e9_c35911ba",
         "filename": "android/vintf_fragments.go",
         "patchSetId": 6
