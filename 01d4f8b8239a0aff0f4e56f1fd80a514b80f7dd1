@@ -16,6 +16,24 @@
       "message": "Why aren\u0027t all of the partitions in this list? Are the other ones not allowed to have build.prop files?",
       "revId": "01d4f8b8239a0aff0f4e56f1fd80a514b80f7dd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc36035_07fa93a5",
+        "filename": "android/build_prop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-08-12T00:07:27Z",
+      "side": 1,
+      "message": "No, they do have build.prop but Soong\u0027s build_prop can\u0027t support them for now (e.g. Soong can\u0027t install files under vendor_dlkm).",
+      "parentUuid": "2a82dc14_827d66f0",
+      "revId": "01d4f8b8239a0aff0f4e56f1fd80a514b80f7dd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
