@@ -193,13 +193,40 @@ var ctsContainerBoundaryFunc containerBoundaryFunc = func(mctx ModuleContext) bo
 	return false
 }
 
+type unstableInfo struct {
+	// Determines if the module contains the private APIs of the platform.
+	ContainsPlatformPrivateApis bool
+}
+
+var unstableInfoProvider = blueprint.NewProvider[unstableInfo]()
+
+func determineUnstableModule(mctx ModuleContext) bool {
+	module := mctx.Module()
+	unstableModule := module.Name() == "framework-minus-apex"
+	if installable, ok := module.(InstallableModule); ok {
+		for _, staticDepTag := range installable.StaticDependencyTags() {
+			mctx.VisitDirectDepsWithTag(staticDepTag, func(dep Module) {
+				if unstableInfo, ok := OtherModuleProvider(mctx, dep, unstableInfoProvider); ok {
+					unstableModule = unstableModule || unstableInfo.ContainsPlatformPrivateApis
+				}
+			})
+		}
+	}
+	return unstableModule
+}
+
+var unstableContainerBoundaryFunc containerBoundaryFunc = func(mctx ModuleContext) bool {
+	return determineUnstableModule(mctx)
+}
+
 // Map of [*container] to the [containerBoundaryFunc]
 var containerBoundaryFunctionsTable = map[*container]containerBoundaryFunc{
-	VendorContainer:  vendorContainerBoundaryFunc,
-	SystemContainer:  systemContainerBoundaryFunc,
-	ProductContainer: productContainerBoundaryFunc,
-	ApexContainer:    apexContainerBoundaryFunc,
-	CtsContainer:     ctsContainerBoundaryFunc,
+	VendorContainer:   vendorContainerBoundaryFunc,
+	SystemContainer:   systemContainerBoundaryFunc,
+	ProductContainer:  productContainerBoundaryFunc,
+	ApexContainer:     apexContainerBoundaryFunc,
+	CtsContainer:      ctsContainerBoundaryFunc,
+	UnstableContainer: unstableContainerBoundaryFunc,
 }
 
 // ----------------------------------------------------------------------------
@@ -207,7 +234,7 @@ var containerBoundaryFunctionsTable = map[*container]containerBoundaryFunc{
 // ----------------------------------------------------------------------------
 
 type InstallableModule interface {
-	EnforceApiContainerChecks() bool
+	StaticDependencyTags() []blueprint.DependencyTag
 }
 
 type restriction struct {
@@ -269,14 +296,20 @@ var (
 		name: "cts",
 		restricted: []restriction{
 			{
-				dependency: SystemContainer,
-				errorMessage: "CTS module should not depend on the modules belonging to the " +
-					"system partition, including \"framework\". Depending on the system " +
-					"partition may lead to disclosure of implementation details and regression " +
+				dependency: UnstableContainer,
+				errorMessage: "CTS module should not depend on the modules that contain the " +
+					"platform implementation details, including \"framework\". Depending on these " +
+					"modules may lead to disclosure of implementation details and regression " +
 					"due to API changes across platform versions. Try depending on the stubs instead.",
 				allowedExceptions: []exceptionHandleFuncLabel{checkStubs, checkGlobalAllowlistedDep},
 			},
 		},
+	}
+
+	// Container signifying that the module contains unstable platform private APIs
+	UnstableContainer = &container{
+		name:       "unstable",
+		restricted: nil,
 	}
 
 	allContainers = []*container{
@@ -285,6 +318,7 @@ var (
 		ProductContainer,
 		ApexContainer,
 		CtsContainer,
+		UnstableContainer,
 	}
 )
 
@@ -376,6 +410,12 @@ func getContainerModuleInfo(ctx ModuleContext, module Module) (ContainersInfo, b
 }
 
 func setContainerInfo(ctx ModuleContext) {
+	// Required to determine the unstable container. This provider is set here instead of the
+	// unstableContainerBoundaryFunc in order to prevent setting the provider multiple times.
+	SetProvider(ctx, unstableInfoProvider, unstableInfo{
+		ContainsPlatformPrivateApis: determineUnstableModule(ctx),
+	})
+
 	if _, ok := ctx.Module().(InstallableModule); ok {
 		containersInfo := generateContainerInfo(ctx)
 		SetProvider(ctx, ContainersInfoProvider, containersInfo)
