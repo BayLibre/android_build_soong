@@ -45,6 +45,30 @@
       },
       "revId": "26bae8b8f501f54dde5baf8872329f23ae75f21e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e524fcd_ba866886",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-12T22:23:10Z",
+      "side": 1,
+      "message": "I just realized that `AddJSONData` does not provide a ctx object.",
+      "parentUuid": "8ca66dce_f6b748dc",
+      "range": {
+        "startLine": 909,
+        "startChar": 0,
+        "endLine": 916,
+        "endChar": 21
+      },
+      "revId": "26bae8b8f501f54dde5baf8872329f23ae75f21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
