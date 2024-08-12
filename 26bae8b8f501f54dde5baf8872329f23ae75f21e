@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e01899bb_8771ec67",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-12T22:15:58Z",
+      "side": 1,
+      "message": "nit: Add docs for this function",
+      "range": {
+        "startLine": 259,
+        "startChar": 5,
+        "endLine": 259,
+        "endChar": 35
+      },
+      "revId": "26bae8b8f501f54dde5baf8872329f23ae75f21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ca66dce_f6b748dc",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-12T22:15:58Z",
+      "side": 1,
+      "message": "Are storing these properties orthogonal to making `srcs` and `exclude_srcs` configurable? If so, would you mind adding the reasoning to the commit description?",
+      "range": {
+        "startLine": 909,
+        "startChar": 0,
+        "endLine": 916,
+        "endChar": 21
+      },
+      "revId": "26bae8b8f501f54dde5baf8872329f23ae75f21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
