@@ -2519,7 +2519,7 @@ func outputFilesForModuleFromProvider(ctx PathContext, module blueprint.Module, 
 			fromProperty = true
 		}
 	} else if cta, isCta := ctx.(*singletonContextAdaptor); isCta {
-		providerData, _ := cta.moduleProvider(module, OutputFilesProvider)
+		providerData, _ := cta.otherModuleProvider(module, OutputFilesProvider)
 		outputFiles, _ = providerData.(OutputFilesInfo)
 	} else {
 		return nil, fmt.Errorf("unsupported context %q in method outputFilesForModuleFromProvider", reflect.TypeOf(ctx))
