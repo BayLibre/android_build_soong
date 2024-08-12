@@ -558,6 +558,10 @@ type Module struct {
 	// List of soong module dependencies required to compile the current module.
 	// This information is printed out to `Dependencies` field in module_bp_java_deps.json
 	compileDepNames []string
+
+	// Checks if the module is a transitive static reverse dependency of framework-minus-apex
+	// or itself
+	isFrameworkMinusApexStaticReverseDependency bool
 }
 
 var _ android.InstallableModule = (*Module)(nil)
@@ -1249,6 +1253,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 			ExportedPluginDisableTurbine:        j.exportedDisableTurbine,
 			StubsLinkType:                       j.stubsLinkType,
 			AconfigIntermediateCacheOutputPaths: deps.aconfigProtoFiles,
+			ContainsPlatformPrivateApis:         j.isFrameworkMinusApexStaticReverseDependency,
 		})
 
 		j.outputFile = j.headerJarFile
@@ -1773,6 +1778,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		JacocoReportClassesFile:             j.jacocoReportClassesFile,
 		StubsLinkType:                       j.stubsLinkType,
 		AconfigIntermediateCacheOutputPaths: j.aconfigCacheFiles,
+		ContainsPlatformPrivateApis:         j.isFrameworkMinusApexStaticReverseDependency,
 	})
 
 	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource
@@ -2246,6 +2252,10 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 	sdkLinkType, _ := j.getSdkLinkType(ctx, ctx.ModuleName())
 
 	j.collectTransitiveHeaderJars(ctx)
+
+	j.isFrameworkMinusApexStaticReverseDependency = j.isFrameworkMinusApexStaticReverseDependency ||
+		j.Name() == "framework-minus-apex"
+
 	ctx.VisitDirectDeps(func(module android.Module) {
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)
@@ -2409,6 +2419,9 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 
 		addCLCFromDep(ctx, module, j.classLoaderContexts)
 		addMissingOptionalUsesLibsFromDep(ctx, module, &j.usesLibrary)
+
+		j.isFrameworkMinusApexStaticReverseDependency = j.isFrameworkMinusApexStaticReverseDependency ||
+			otherName == "framework-minus-apex" && tag == staticLibTag
 	})
 
 	return deps
