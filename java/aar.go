@@ -993,7 +993,7 @@ type AARImport struct {
 	// Functionality common to Module and Import.
 	embeddableInModuleAndImport
 
-	providesTransitiveHeaderJars
+	providesTransitiveHeaderJarsForR8
 
 	properties AARImportProperties
 
@@ -1290,7 +1290,7 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	android.WriteFileRule(ctx, transitiveAaptResourcePackagesFile, strings.Join(transitiveAaptResourcePackages, "\n"))
 	a.transitiveAaptResourcePackagesFile = transitiveAaptResourcePackagesFile
 
-	a.collectTransitiveHeaderJars(ctx)
+	a.collectTransitiveHeaderJarsForR8(ctx)
 
 	a.classLoaderContexts = a.usesLibrary.classLoaderContextForUsesLibDeps(ctx)
 
@@ -1358,13 +1358,13 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.CheckbuildFile(a.implementationJarFile)
 
 	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
-		HeaderJars:                     android.PathsIfNonNil(a.headerJarFile),
-		ResourceJars:                   android.PathsIfNonNil(resourceJarFile),
-		TransitiveLibsHeaderJars:       a.transitiveLibsHeaderJars,
-		TransitiveStaticLibsHeaderJars: a.transitiveStaticLibsHeaderJars,
-		ImplementationAndResourcesJars: android.PathsIfNonNil(a.implementationAndResourcesJarFile),
-		ImplementationJars:             android.PathsIfNonNil(a.implementationJarFile),
-		StubsLinkType:                  Implementation,
+		HeaderJars:                          android.PathsIfNonNil(a.headerJarFile),
+		ResourceJars:                        android.PathsIfNonNil(resourceJarFile),
+		TransitiveLibsHeaderJarsForR8:       a.transitiveLibsHeaderJarsForR8,
+		TransitiveStaticLibsHeaderJarsForR8: a.transitiveStaticLibsHeaderJarsForR8,
+		ImplementationAndResourcesJars:      android.PathsIfNonNil(a.implementationAndResourcesJarFile),
+		ImplementationJars:                  android.PathsIfNonNil(a.implementationJarFile),
+		StubsLinkType:                       Implementation,
 		// TransitiveAconfigFiles: // TODO(b/289117800): LOCAL_ACONFIG_FILES for prebuilts
 	})
 

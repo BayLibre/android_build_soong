@@ -259,10 +259,10 @@ type JavaInfo struct {
 	RepackagedHeaderJars android.Paths
 
 	// set of header jars for all transitive libs deps
-	TransitiveLibsHeaderJars *android.DepSet[android.Path]
+	TransitiveLibsHeaderJarsForR8 *android.DepSet[android.Path]
 
 	// set of header jars for all transitive static libs deps
-	TransitiveStaticLibsHeaderJars *android.DepSet[android.Path]
+	TransitiveStaticLibsHeaderJarsForR8 *android.DepSet[android.Path]
 
 	// ImplementationAndResourceJars is a list of jars that contain the implementations of classes
 	// in the module as well as any resources included in the module.
@@ -2634,7 +2634,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	var flags javaBuilderFlags
 
-	j.collectTransitiveHeaderJars(ctx)
+	j.collectTransitiveHeaderJarsForR8(ctx)
 	var staticJars android.Paths
 	var staticResourceJars android.Paths
 	var staticHeaderJars android.Paths
@@ -2817,14 +2817,14 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
-		HeaderJars:                     android.PathsIfNonNil(j.combinedHeaderFile),
-		TransitiveLibsHeaderJars:       j.transitiveLibsHeaderJars,
-		TransitiveStaticLibsHeaderJars: j.transitiveStaticLibsHeaderJars,
-		ImplementationAndResourcesJars: android.PathsIfNonNil(j.combinedImplementationFile),
-		ImplementationJars:             android.PathsIfNonNil(implementationJarFile.WithoutRel()),
-		ResourceJars:                   android.PathsIfNonNil(resourceJarFile),
-		AidlIncludeDirs:                j.exportAidlIncludeDirs,
-		StubsLinkType:                  j.stubsLinkType,
+		HeaderJars:                          android.PathsIfNonNil(j.combinedHeaderFile),
+		TransitiveLibsHeaderJarsForR8:       j.transitiveLibsHeaderJarsForR8,
+		TransitiveStaticLibsHeaderJarsForR8: j.transitiveStaticLibsHeaderJarsForR8,
+		ImplementationAndResourcesJars:      android.PathsIfNonNil(j.combinedImplementationFile),
+		ImplementationJars:                  android.PathsIfNonNil(implementationJarFile.WithoutRel()),
+		ResourceJars:                        android.PathsIfNonNil(resourceJarFile),
+		AidlIncludeDirs:                     j.exportAidlIncludeDirs,
+		StubsLinkType:                       j.stubsLinkType,
 		// TODO(b/289117800): LOCAL_ACONFIG_FILES for prebuilts
 	})
 

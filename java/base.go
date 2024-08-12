@@ -1276,8 +1276,8 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 
 		android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
 			HeaderJars:                          android.PathsIfNonNil(j.headerJarFile),
-			TransitiveLibsHeaderJars:            j.transitiveLibsHeaderJars,
-			TransitiveStaticLibsHeaderJars:      j.transitiveStaticLibsHeaderJars,
+			TransitiveLibsHeaderJarsForR8:       j.transitiveLibsHeaderJarsForR8,
+			TransitiveStaticLibsHeaderJarsForR8: j.transitiveStaticLibsHeaderJarsForR8,
 			AidlIncludeDirs:                     j.exportAidlIncludeDirs,
 			ExportedPlugins:                     j.exportedPluginJars,
 			ExportedPluginClasses:               j.exportedPluginClasses,
@@ -1793,8 +1793,8 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
 		HeaderJars:                          android.PathsIfNonNil(j.headerJarFile),
 		RepackagedHeaderJars:                android.PathsIfNonNil(j.repackagedHeaderJarFile),
-		TransitiveLibsHeaderJars:            j.transitiveLibsHeaderJars,
-		TransitiveStaticLibsHeaderJars:      j.transitiveStaticLibsHeaderJars,
+		TransitiveLibsHeaderJarsForR8:       j.transitiveLibsHeaderJarsForR8,
+		TransitiveStaticLibsHeaderJarsForR8: j.transitiveStaticLibsHeaderJarsForR8,
 		ImplementationAndResourcesJars:      android.PathsIfNonNil(j.implementationAndResourcesJar),
 		ImplementationJars:                  android.PathsIfNonNil(j.implementationJarFile),
 		ResourceJars:                        android.PathsIfNonNil(j.resourceJar),
@@ -1974,22 +1974,18 @@ func (j *Module) instrument(ctx android.ModuleContext, flags javaBuilderFlags,
 	return instrumentedJar
 }
 
-type providesTransitiveHeaderJars struct {
+type providesTransitiveHeaderJarsForR8 struct {
 	// set of header jars for all transitive libs deps
-	transitiveLibsHeaderJars *android.DepSet[android.Path]
+	transitiveLibsHeaderJarsForR8 *android.DepSet[android.Path]
 	// set of header jars for all transitive static libs deps
-	transitiveStaticLibsHeaderJars *android.DepSet[android.Path]
+	transitiveStaticLibsHeaderJarsForR8 *android.DepSet[android.Path]
 }
 
-func (j *providesTransitiveHeaderJars) TransitiveLibsHeaderJars() *android.DepSet[android.Path] {
-	return j.transitiveLibsHeaderJars
-}
-
-func (j *providesTransitiveHeaderJars) TransitiveStaticLibsHeaderJars() *android.DepSet[android.Path] {
-	return j.transitiveStaticLibsHeaderJars
-}
-
-func (j *providesTransitiveHeaderJars) collectTransitiveHeaderJars(ctx android.ModuleContext) {
+// collectTransitiveHeaderJarsForR8 visits direct dependencies and collects all transitive libs and static_libs
+// header jars.  The semantics of the collected jars are odd (it collects combined jars that contain the static
+// libs, but also the static libs, and it collects transitive libs dependencies of static_libs), so these
+// are only used to expand the --lib arguments to R8.
+func (j *providesTransitiveHeaderJarsForR8) collectTransitiveHeaderJarsForR8(ctx android.ModuleContext) {
 	directLibs := android.Paths{}
 	directStaticLibs := android.Paths{}
 	transitiveLibs := []*android.DepSet[android.Path]{}
@@ -2012,16 +2008,16 @@ func (j *providesTransitiveHeaderJars) collectTransitiveHeaderJars(ctx android.M
 				return
 			}
 
-			if dep.TransitiveLibsHeaderJars != nil {
-				transitiveLibs = append(transitiveLibs, dep.TransitiveLibsHeaderJars)
+			if dep.TransitiveLibsHeaderJarsForR8 != nil {
+				transitiveLibs = append(transitiveLibs, dep.TransitiveLibsHeaderJarsForR8)
 			}
-			if dep.TransitiveStaticLibsHeaderJars != nil {
-				transitiveStaticLibs = append(transitiveStaticLibs, dep.TransitiveStaticLibsHeaderJars)
+			if dep.TransitiveStaticLibsHeaderJarsForR8 != nil {
+				transitiveStaticLibs = append(transitiveStaticLibs, dep.TransitiveStaticLibsHeaderJarsForR8)
 			}
 		}
 	})
-	j.transitiveLibsHeaderJars = android.NewDepSet(android.POSTORDER, directLibs, transitiveLibs)
-	j.transitiveStaticLibsHeaderJars = android.NewDepSet(android.POSTORDER, directStaticLibs, transitiveStaticLibs)
+	j.transitiveLibsHeaderJarsForR8 = android.NewDepSet(android.POSTORDER, directLibs, transitiveLibs)
+	j.transitiveStaticLibsHeaderJarsForR8 = android.NewDepSet(android.POSTORDER, directStaticLibs, transitiveStaticLibs)
 }
 
 func (j *Module) HeaderJars() android.Paths {
@@ -2287,7 +2283,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 
 	sdkLinkType, _ := j.getSdkLinkType(ctx, ctx.ModuleName())
 
-	j.collectTransitiveHeaderJars(ctx)
+	j.collectTransitiveHeaderJarsForR8(ctx)
 	ctx.VisitDirectDeps(func(module android.Module) {
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)
