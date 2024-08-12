@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab900a3f_661749f7",
+        "filename": "android/compliance_metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-08-12T17:37:24Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this still go through the InstallFiles accssor?  It seems like this compliance metadata module shouldn\u0027t be using private fields if possible. It\u0027s only in this package because of historical reasons.  (Actually I think the real answer is that we should pull the whole installed files concept into blueprint, but that\u0027s a way bigger project)",
+      "range": {
+        "startLine": 189,
+        "startChar": 32,
+        "endLine": 189,
+        "endChar": 48
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ef2237f3_d485ed7e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/compliance_metadata.go",
+              "range": {
+                "startLine": 189,
+                "startChar": 0,
+                "endLine": 190,
+                "endChar": 0
+              },
+              "replacement": "\t\tinstalled \u003d append(installed, m.InstallFiles()...)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1581758131a7062d3c3e7cdfd53ecc39cca45a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c1033bb_6f0692f2",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1967,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-08-12T17:37:24Z",
+      "side": 1,
+      "message": "I think here we should also clear out ctx.installFiles and/or set a flag that makes InstallFiles panic so anyone else using it incorrectly can fix their code.",
+      "revId": "1581758131a7062d3c3e7cdfd53ecc39cca45a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
