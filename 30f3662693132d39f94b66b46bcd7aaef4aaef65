@@ -16,6 +16,24 @@
       "message": "It would probably be best to throw an error if `d` doesn\u0027t start with `base`, because in that case the script will be guaranteed to not print any results.",
       "revId": "30f3662693132d39f94b66b46bcd7aaef4aaef65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e85f792_b762eb44",
+        "filename": "bin/dirmods",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-12T22:23:12Z",
+      "side": 1,
+      "message": "or if ANDROID_BUILD_TOP is undefined.",
+      "parentUuid": "17fad332_8c3ee6f9",
+      "revId": "30f3662693132d39f94b66b46bcd7aaef4aaef65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
