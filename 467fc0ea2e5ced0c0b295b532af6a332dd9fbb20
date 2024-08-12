@@ -16,6 +16,23 @@
       "message": "huh... the skia one i was expecting, but i don\u0027t understand the mokey one. cs/ says it\u0027s a lie (unless you count master rather than main?).",
       "revId": "467fc0ea2e5ced0c0b295b532af6a332dd9fbb20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2473a04_89925380",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-08-12T13:00:09Z",
+      "side": 1,
+      "message": "(still waiting for the skia fix to make it to AOSP ... try again next month.)",
+      "revId": "467fc0ea2e5ced0c0b295b532af6a332dd9fbb20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
