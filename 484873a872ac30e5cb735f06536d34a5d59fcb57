@@ -16,6 +16,24 @@
       "message": "I\u0027m sorry, this is not okay. libbinder cannot be in any APEX, especially on mobile phones. Having two copies of this could freeze the libbinder wire protocol. This is true for a number of other libraries as well.\n\nI see the need for this is to exclude APEX for a specific project. You might pursue an exclusion (e.g. ignore apex_available for APEXes in a specific namespace).\n\nEven then, avoiding certain libraries from getting copied in certain APEXes is still important. E.g. you want to avoid making copies of massive libraries, e.g. some libraries like libsqlite dealing with FDs assume a process-level lock.\n\nHaving new ways to declare availability is okay, but this regresses the guarantees we need to provide on mobile devices.",
       "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05fc722c_68b77a70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-12T23:44:56Z",
+      "side": 1,
+      "message": "In other words, what do you think of \"DISABLE_ENFORCE_APEX_AVAILABILITY_NAMESPACE_LIST\" so that you only disable these checks in places that you intend, and you ensure that no APEX here has \u0027updatable: true\u0027? and check \u0027com.android.*\u0027 is not in DISABLE_ENFORCE_APEX_AVAILABILITY_NAMESPACE_LIST?",
+      "parentUuid": "a69c263c_8a7e9341",
+      "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
