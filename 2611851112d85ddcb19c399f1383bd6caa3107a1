@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9d6ae19_da4db182",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1945475
+      },
+      "writtenOn": "2024-08-12T21:44:58Z",
+      "side": 1,
+      "message": "Seems to be something going on with the art tests. Another unrelated CR is hitting the same failures:\nhttps://android-review.git.corp.google.com/c/platform/build/soong/+/3216676?tab\u003dchecks",
+      "revId": "2611851112d85ddcb19c399f1383bd6caa3107a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
