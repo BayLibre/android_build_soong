@@ -52,6 +52,24 @@
       "parentUuid": "05fc722c_68b77a70",
       "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7a6e842_592cf048",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-13T00:18:15Z",
+      "side": 1,
+      "message": "\u003e yet-another step for most vendor apexes.\n\nI think we should go ahead and make the libraries APEX-available, fwiw, so that they don\u0027t have to do this step. Though, I think it\u0027s worth it to do this step if it means that we clearly message to library owners where their library is being used. For instance \"//apex_available:vendor\". Copying libraries in new places may introduce additional constraints. Do we really want to do it, and then if a problem is discovered, see what the library maintainer says?\n\nI\u0027m even conceding here, that maintaining so much config is difficult, so you could add a DISABLE_ENFORCE_APEX_AVAILABILITY_NAMESPACE_LIST list for cases like the motivating bug here. However, I don\u0027t strictly think that\u0027s a good idea.\n\n\u003e IMO we\u0027d better have a strict guard to prevent this for those libraries instead of relying on apex_available.\n\nI\u0027m curious what you have in mind. This was supposed to be the strict guard. New variants of libraries should be added directly on the module. Code can always be copied, but the .bp module definition is the local source of truth for where a module can be used. If Soong makes other copies of a library/code, and calls it a new variant, or ignores these lists, what else can I do?\n\n\u003e libsqlite is now available to the virt apex: aosp/2968594.\n\nI mean, it\u0027s okay as long as the APEX code doesn\u0027t accidentally use the same DB that platform code is using in the same process. So, opening it up for only the virt APEX is probably okay, but opening it up for everything might be considered too dangerous. Or perhaps we should fix libsqlite to track FDs more closely or support in-process file locking mechanisms, but still.\n\n\u003e This property is exclusive for mainline modules.\n\nCan people also use it if they intend to build it separately? What we\u0027re seeing with a lot of APEXes is people using them as prebuilts (e.g. bluetooth APEX as an example) and maybe across dessert versions. In order to support such things reliably, we need some way to say \"this APEX requires a stable interface\". I thought that was \u0027updatable:\u0027. Otherwise, if people do use them as prebuilts, it may cause UB (such as we\u0027re seeing with the Art APEX today).\n\nHow can we prevent prebuilts of APEXes that are built with unstable interfaces to the platform then?\n\n---\n\nAnyway, it\u0027s very easy to remove restrictions, and it\u0027s very difficult to add them, so only remove what is needed here?",
+      "parentUuid": "88ac29ef_d275c394",
+      "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
