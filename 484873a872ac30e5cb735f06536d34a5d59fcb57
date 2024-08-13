@@ -88,6 +88,24 @@
       "parentUuid": "d7a6e842_592cf048",
       "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb37ebc_128c4d8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-08-13T05:07:14Z",
+      "side": 1,
+      "message": "I understand Steven\u0027s concern and agree with it. However, I don\u0027t think `DISABLE_ENFORCE_APEX_AVAILABILITY_NAMESPACE_LIST` would work because those apexes will fail the checks when building other targets that doesn\u0027t set the variable.\n\nSteven suggested an interesting idea: `//apex_available:partnerapex`. And I think this would be better because it gives library owners a change to think about apex-availability. We can think of `partnerapex` as a pseudoname for non-AOSP APEXes (not starting with `com.android.`).\n\nChan and Jiyong, what do you think?",
+      "parentUuid": "a773bbb3_f139c60a",
+      "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
