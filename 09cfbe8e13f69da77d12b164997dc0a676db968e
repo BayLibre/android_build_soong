@@ -44,6 +44,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9dd10a0_1f9f4912",
+        "filename": "android/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-13T19:22:38Z",
+      "side": 1,
+      "message": "Ideally, this should be every standalone system jars as you have pointed out. However, I am not aware of any ways to figure out which module is one of those currently in Soong. I\u0027d appreciate it if you are aware of any ways to do so and able to share.",
+      "parentUuid": "a1864321_540591e1",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 58
+      },
+      "revId": "09cfbe8e13f69da77d12b164997dc0a676db968e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0ab6565_12bdc043",
         "filename": "android/container.go",
         "patchSetId": 1
