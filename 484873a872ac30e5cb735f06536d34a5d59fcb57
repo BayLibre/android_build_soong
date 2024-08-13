@@ -160,6 +160,24 @@
       "parentUuid": "57d55c70_aa522dbd",
       "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17619c19_70c84fec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-13T17:45:19Z",
+      "side": 1,
+      "message": "\u003e those apexes will fail the checks when building other targets that doesn\u0027t set the variable.\n\nThe variable could be set in a common place, or the check could only be executed if the apex is built installed (e.g. require apex to be in a soong_namespace).\n\n\u003e interesting idea: //apex_available:partnerapex. And I think this would be better because it gives library owners a change to think about apex-availability\n\n\u003c3 \u003c3 \u003c3 :D\n\n\u003e doesn\u0027t require you to modify whole lot of Android.bp files.\n\nI think this is a feature btw, because it makes sure each module owner knows",
+      "parentUuid": "8f520270_8ac51450",
+      "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
