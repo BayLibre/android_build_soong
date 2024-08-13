@@ -317,6 +317,10 @@ var (
 	// Android is the OS for target devices that run all of Android, including the Linux kernel
 	// and the Bionic libc runtime.
 	Android = newOsType("android", Device, false, Arm, Arm64, Riscv64, X86, X86_64)
+	// Trusty is the OS for the Trusty kernel plus the Trusty userspace. Trusty variants are created
+	// only when requested by modules, by setting trusty_specific: true.
+	// TODO(b/358302178): Add Arm64 support too
+	Trusty = newOsType("trusty", Device, false, X86_64 /*, Arm64 */)
 
 	// CommonOS is a pseudo OSType for a common OS variant, which is OsType agnostic and which
 	// has dependencies on all the OS variants.
@@ -1613,6 +1617,15 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 		// The primary device target.
 		addTarget(targetConfig{
 			os:                  Android,
+			archName:            *variables.DeviceArch,
+			archVariant:         variables.DeviceArchVariant,
+			cpuVariant:          variables.DeviceCpuVariant,
+			abi:                 variables.DeviceAbi,
+			nativeBridgeEnabled: NativeBridgeDisabled,
+		})
+
+		addTarget(targetConfig{
+			os:                  Trusty,
 			archName:            *variables.DeviceArch,
 			archVariant:         variables.DeviceArchVariant,
 			cpuVariant:          variables.DeviceCpuVariant,

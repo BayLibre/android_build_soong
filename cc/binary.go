@@ -258,7 +258,7 @@ func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags
 	// MinGW spits out warnings about -fPIC even for -fpie?!) being ignored because
 	// all code is position independent, and then those warnings get promoted to
 	// errors.
-	if !ctx.Windows() {
+	if !ctx.Windows() && !ctx.Trusty() {
 		flags.Global.CFlags = append(flags.Global.CFlags, "-fPIE")
 	}
 

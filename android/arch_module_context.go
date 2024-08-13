@@ -28,6 +28,7 @@ type ArchModuleContext interface {
 	Host() bool
 	Device() bool
 	Darwin() bool
+	Trusty() bool
 	Windows() bool
 	PrimaryArch() bool
 }
@@ -80,6 +81,10 @@ func (a *archModuleContext) Device() bool {
 
 func (a *archModuleContext) Darwin() bool {
 	return a.os == Darwin
+}
+
+func (a *archModuleContext) Trusty() bool {
+	return a.os == Trusty
 }
 
 func (a *archModuleContext) Windows() bool {

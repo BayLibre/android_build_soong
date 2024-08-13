@@ -199,6 +199,206 @@ func x86_64ToolchainFactory(arch android.Arch) Toolchain {
 	}
 }
 
+type toolchainTrustyX86_64 struct {
+	toolchainBase
+	toolchainNoCrt
+	toolchain64Bit
+
+	toolchainCflags string
+}
+
+func (t *toolchainTrustyX86_64) Name() string {
+	return "x86_64-trusty"
+}
+
+func (t *toolchainTrustyX86_64) IncludeFlags() string {
+	return ""
+}
+
+func (t *toolchainTrustyX86_64) ClangTriple() string {
+	// from external/trusty/lk/arch/x86/toolchain.mk
+	return "x86_64-linux-gnu"
+}
+
+func (t *toolchainTrustyX86_64) Cflags() string {
+	sharedFlags := []string{
+		"-O2",
+		// from external/trusty/lk/engine.mk
+		"-glldb",
+		"-fdebug-macro",
+		// HACK - need to port config.h to Soong
+		"-Werror",
+		"-Wall",
+		"-Wsign-compare",
+		"-Wno-multichar",
+		"-Wno-unused-function",
+		"-Wno-unused-label",
+		"-fno-short-enums",
+		"-fno-common",
+		"-fno-omit-frame-pointer",
+		"-Wstrict-prototypes",
+		"-Wwrite-strings",
+		"-Wimplicit-fallthrough",
+		// VLAs can have subtle security bugs and assist exploits, so ban them.
+		"-Wvla",
+		// use linker garbage collection
+		"-ffunction-sections",
+		"-fdata-sections",
+		// We are not Linux, and some libraries check this macro
+		// and incorrectly target the wrong OS
+		// TODO(b/224064243): remove this when we have a proper triple
+		"-U__linux__",
+
+		// from external/trusty/lk/make/module.mk
+		// Initialize all automatic var to 0 if not initialized
+		"-ftrivial-auto-var-init=zero",
+	}
+
+	// These flags are from config.h of the general_x86_64 target.
+	// TODO: migrate config.h to Soong, rather than hard-coding here.
+	globalDefines := []string{
+		"-DLK=1",
+		"-D__TRUSTY__=1",
+		"-DHEAP_GROW_SIZE=8192",
+		"-DMEMBASE=0X00200000",
+		"-DMEMSIZE=0X0FE00000",
+		"-DIS_64BIT=1",
+		"-DARCH_X86_64=1",
+		"-DMEMBASE=0X00200000",
+		"-DKERNEL_BASE=0XFFFFFFFF80000000",
+		"-DKERNEL_LOAD_OFFSET=0",
+		"-DKERNEL_ASPACE_BASE=0XFFFFFF8000000000UL",
+		"-DKERNEL_ASPACE_SIZE=0X0000008000000000UL",
+		"-DUSER_ASPACE_BASE=0X0000000000001000UL",
+		"-DUSER_ASPACE_SIZE=0X00007FFFFFFFE000UL",
+		"-DSMP_MAX_CPUS=1",
+		"-DX86_WITH_FPU=1",
+		"-DPLATFORM_HAS_DYNAMIC_TIMER=1",
+		"-DLK_LIBC_IMPLEMENTATION_IS_LK=1",
+		"-DWITH_LIB_TRUSTY=1",
+		"-DWITH_TRUSTY_IPC=1",
+		"-DWITH_WAIT_ANY_SUPPORT=1",
+		"-DWITH_SYSCALL_TABLE=1",
+		"-DLK_HEAP_IMPLEMENTATION=MINIHEAP",
+		"-DPROJECT_GENERIC_X86_64=1",
+		"-DPROJECT=GENERIC_X86_64",
+		"-DTARGET_GENERIC_X86_64=1",
+		"-DTARGET=GENERIC_X86_64",
+		"-DPLATFORM_GENERIC_X86_64=1",
+		"-DPLATFORM=GENERIC_X86_64",
+		"-DARCH_X86=1",
+		"-DARCH=X86",
+		"-DWITH_APP=1",
+		"-DWITH_DEV=1",
+		"-DWITH_DEV_INTERRUPT_X86_LAPIC=1",
+		"-DWITH_DEV_TIMER_X86_GENERIC=1",
+		"-DWITH_DEV_VIRTIO_VSOCK_RUST=1",
+		"-DWITH_KERNEL=1",
+		"-DWITH_KERNEL_VM=1",
+		"-DWITH_LIB_BINARY_SEARCH_TREE=1",
+		"-DWITH_LIB_CBUF=1",
+		"-DWITH_LIB_DEBUG=1",
+		"-DWITH_LIB_FIXED_POINT=1",
+		"-DWITH_LIB_HEAP=1",
+		"-DWITH_LIB_HEAP_MINIHEAP=1",
+		"-DWITH_LIB_IO=1",
+		"-DWITH_LIB_LIBC=1",
+		"-DWITH_LIB_LIBC_RAND=1",
+		"-DWITH_LIB_SYSCALL=1",
+		"-DWITH_PLATFORM=1",
+		"-DWITH_TARGET=1",
+		"-DLK_DEBUGLEVEL=2",
+		"-DLK_LOGLEVEL=2",
+		"-DTLOG_LVL_DEFAULT=4",
+		"-DIPC_MAX_HANDLES=64",
+		"-DRELEASE_BUILD=1",
+		"-DUSER_SCS_SUPPORTED=1",
+	}
+
+	return strings.Join(append(sharedFlags, globalDefines...), " ")
+}
+
+func (t *toolchainTrustyX86_64) Cppflags() string {
+	sharedFlags := []string{
+		// from external/trusty/lk/engine.mk
+		"-fno-exceptions",
+		"-fno-rtti",
+		"-fno-threadsafe-statics",
+		// c99 array designators are not part of C++, but they are convenient and help avoid errors.
+		"-Wno-c99-designator",
+
+		// from trusty/user/base/lib/libstdc++-trusty/rules.mk
+		"-D_LIBCPP_BUILD_STATIC",
+		"-D_LIBCPP_HAS_MUSL_LIBC",
+		"-D_LIBCPP_HAS_QUICK_EXIT",
+		"-D_LIBCPP_HAS_TIMESPEC_GET",
+		"-D_LIBCPP_HAS_C11_FEATURES",
+		"-D_LIBCPP_HAS_THREAD_API_PTHREAD",
+	}
+	return strings.Join(sharedFlags, " ")
+}
+
+func (toolchainTrustyX86_64) Ldflags() string {
+	return ""
+}
+
+func (toolchainTrustyX86_64) Lldflags() string {
+	return ""
+}
+
+func (toolchainTrustyX86_64) Asflags() string {
+	sharedFlags := []string{
+		// from external/trusty/lk/engine.mk
+		"-DASSEMBLY",
+	}
+	return strings.Join(sharedFlags, " ")
+}
+
+func (t *toolchainTrustyX86_64) ToolchainCflags() string {
+	return t.toolchainCflags
+}
+
+func (toolchainTrustyX86_64) AvailableLibraries() []string {
+	return nil
+}
+
+func (toolchainTrustyX86_64) LibclangRuntimeLibraryArch() string {
+	return "x86_64"
+}
+
+func (toolchainTrustyX86_64) ExecutableSuffix() string {
+	return ""
+}
+
+func (toolchainTrustyX86_64) ShlibSuffix() string {
+	return ""
+}
+
+func (toolchainTrustyX86_64) CrtBeginStaticBinary() []string {
+	return []string{"trusty-libc-crtbegin"}
+}
+
+func x86_64TrustyToolchainFactory(arch android.Arch) Toolchain {
+	// Error now rather than having a confusing Ninja error
+	if _, ok := x86_64ArchVariantCflags[arch.ArchVariant]; !ok {
+		panic(fmt.Sprintf("Unknown x86_64 architecture version: %q", arch.ArchVariant))
+	}
+
+	toolchainCflags := []string{
+		"${config.X86_64ToolchainCflags}",
+		"${config.X86_64" + arch.ArchVariant + "VariantCflags}",
+	}
+
+	for _, feature := range arch.ArchFeatures {
+		toolchainCflags = append(toolchainCflags, x86_64ArchFeatureCflags[feature]...)
+	}
+
+	return &toolchainTrustyX86_64{
+		toolchainCflags: strings.Join(toolchainCflags, " "),
+	}
+}
+
 func init() {
 	registerToolchainFactory(android.Android, android.X86_64, x86_64ToolchainFactory)
+	registerToolchainFactory(android.Trusty, android.X86_64, x86_64TrustyToolchainFactory)
 }
