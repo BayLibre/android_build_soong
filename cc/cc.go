@@ -3435,6 +3435,12 @@ func ShouldUseStubForApex(ctx android.ModuleContext, dep android.Module) bool {
 		useStubs = !android.DirectlyInAllApexes(apexInfo, depName)
 	}
 
+	if strings.Contains(dep.Name(), "libclang_rt.") {
+		// always use implementation of libclang_rt* libs
+		// TODO: Enforce stubs on libclang_rt* libs
+		useStubs = false
+	}
+
 	return useStubs
 }
 
