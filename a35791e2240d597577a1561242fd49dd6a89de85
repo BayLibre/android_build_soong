@@ -1,0 +1,22 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac0a5842_1ebcd379",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1884480
+      },
+      "writtenOn": "2024-08-13T03:08:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5991008a_1430b57a",
+      "revId": "a35791e2240d597577a1561242fd49dd6a89de85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

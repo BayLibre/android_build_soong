@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99ffd7d9_3f40564e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1884480
+      },
+      "writtenOn": "2024-08-13T03:08:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5991008a_1430b57a",
+      "revId": "39445fa798d3b72d4dd82faeb563e7c959d29d65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc1d7241_57cf35ca",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31cc7821_ba7ec8c1",
+        "filename": "ui/build/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1884480
+      },
+      "writtenOn": "2024-08-13T03:08:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc1d7241_57cf35ca",
+      "range": {
+        "startLine": 1156,
+        "startChar": 23,
+        "endLine": 1156,
+        "endChar": 26
+      },
+      "revId": "39445fa798d3b72d4dd82faeb563e7c959d29d65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e39c71d_93514546",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-08-10T00:38:05Z",
       "side": 1,
       "message": "Is this necessary?  None of the other changes here are running inside ninja, so you shouldn\u0027t need to allowlist the environment variable.",
+      "revId": "39445fa798d3b72d4dd82faeb563e7c959d29d65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c865f8bc_6ce23b9d",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1884480
+      },
+      "writtenOn": "2024-08-13T03:08:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e39c71d_93514546",
       "revId": "39445fa798d3b72d4dd82faeb563e7c959d29d65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
