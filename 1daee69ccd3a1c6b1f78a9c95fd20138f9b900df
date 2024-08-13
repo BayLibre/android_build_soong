@@ -22,6 +22,30 @@
       },
       "revId": "1daee69ccd3a1c6b1f78a9c95fd20138f9b900df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453a7747_29d40d53",
+        "filename": "android/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-13T21:01:00Z",
+      "side": 1,
+      "message": "The list was created by inspecting the commonly observed patterns within the currently existing violations. As described in the comment, the allowlisted modules either contain annotation definitions that is unlikely to change over time, or is a module that is implicitly added as a dependency regardless of the install partition. Not allow listing these modules may lead to struggle in adding any new modules for users, which is something we would like to avoid.",
+      "parentUuid": "b3483bdd_bbd80bc1",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "1daee69ccd3a1c6b1f78a9c95fd20138f9b900df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
