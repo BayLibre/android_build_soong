@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ab6565_12bdc043",
+        "filename": "android/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-13T00:27:31Z",
+      "side": 1,
+      "message": "How is different than the system container? What would be the use case of making this distinction?",
+      "range": {
+        "startLine": 310,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 32
+      },
+      "revId": "09cfbe8e13f69da77d12b164997dc0a676db968e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
