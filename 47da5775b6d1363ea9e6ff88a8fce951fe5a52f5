@@ -70,6 +70,30 @@
       },
       "revId": "47da5775b6d1363ea9e6ff88a8fce951fe5a52f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1662c868_273fc92b",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1869,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-13T08:58:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66e05b95_218bc07b",
+      "range": {
+        "startLine": 1869,
+        "startChar": 11,
+        "endLine": 1869,
+        "endChar": 14
+      },
+      "revId": "47da5775b6d1363ea9e6ff88a8fce951fe5a52f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

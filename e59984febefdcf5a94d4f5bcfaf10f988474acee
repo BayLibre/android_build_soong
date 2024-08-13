@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d8041fc_32791557",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-13T08:58:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b7f6d25_84261d3f",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 73
+      },
+      "revId": "e59984febefdcf5a94d4f5bcfaf10f988474acee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17a7a2e9_c35911ba",
@@ -127,6 +151,24 @@
       "side": 1,
       "message": "Sure. I will separate CL as you mentioned. Thx.",
       "parentUuid": "17a7a2e9_c35911ba",
+      "revId": "e59984febefdcf5a94d4f5bcfaf10f988474acee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0844e24d_8c8b5c1e",
+        "filename": "android/vintf_fragments.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-13T08:58:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7ca4ab3_de9b4c64",
       "revId": "e59984febefdcf5a94d4f5bcfaf10f988474acee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
