@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d67cda22_603cc553",
+        "filename": "android/vintf_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-13T01:03:46Z",
+      "side": 1,
+      "message": "I added some comments as you mentioned. Thanks.",
+      "parentUuid": "ba5dcc93_26be7c5c",
+      "revId": "cb66577b5ce5e4d4229f1b6cb15e7f50a7b01d11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3472a3a4_7095c8c0",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-12T09:24:44Z",
       "side": 1,
       "message": "Add a documentation about this module type here.",
+      "revId": "cb66577b5ce5e4d4229f1b6cb15e7f50a7b01d11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a51d4fd4_57b2d9ef",
+        "filename": "android/vintf_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-13T01:03:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3472a3a4_7095c8c0",
       "revId": "cb66577b5ce5e4d4229f1b6cb15e7f50a7b01d11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
