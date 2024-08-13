@@ -16,6 +16,52 @@
       "message": "I updated CL to include `vintf_fragment_modules` from here. PTAL.",
       "revId": "968731e794a7ddd0e7a1f85a72f4ca80b5acdfc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e6b747_420f02ba",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-13T05:37:55Z",
+      "side": 1,
+      "message": "nit: rename this to `addVintfFragmentDeps` or similar.",
+      "range": {
+        "startLine": 1118,
+        "startChar": 5,
+        "endLine": 1118,
+        "endChar": 22
+      },
+      "revId": "968731e794a7ddd0e7a1f85a72f4ca80b5acdfc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "101b5ddd_95e75b75",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-13T05:37:55Z",
+      "side": 1,
+      "message": "Is this check mandatory? vintf fragment modules don\u0027t have vintf fragment module deps, do they?",
+      "range": {
+        "startLine": 1119,
+        "startChar": 0,
+        "endLine": 1122,
+        "endChar": 2
+      },
+      "revId": "968731e794a7ddd0e7a1f85a72f4ca80b5acdfc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
