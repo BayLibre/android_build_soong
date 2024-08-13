@@ -70,6 +70,24 @@
       "parentUuid": "88ac29ef_d275c394",
       "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a773bbb3_f139c60a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2024-08-13T04:03:45Z",
+      "side": 1,
+      "message": "@smoreland@google.com, to clarify the purpose of the change a little bit - I don\u0027t think it\u0027s for exemption of a specific project but exemption of partner APEXs in that\n- for the Google-owned APEXs in our project, we would still follow the normal process of APEX availability\n- for the partner-owned APEXs, we apply for exemption because we don\u0027t know their names and it requires all the dependencies to be \u0027apex_available: //anyapex\u0027 which is not pleasant for the majority libraries that allow making copies. I would assume the same situation also applies to other partner APEXs.\n\nAt the same time, @jooyung@google.com @jiyong@google.com, do you see any concern if we replace the ENFORCE_APEX_AVAILABILITY_NAMESPACE_LIST with **DISABLE**_ENFORCE_APEX_AVAILABILITY_NAMESPACE_LIST?",
+      "parentUuid": "d7a6e842_592cf048",
+      "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
