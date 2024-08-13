@@ -34,6 +34,24 @@
       "parentUuid": "f8ae6d8a_edaeb8c0",
       "revId": "bf7903116164301d2c7d68a44c8d2e5e37043b99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2432458c_784b0b16",
+        "filename": "android/module.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-13T05:15:48Z",
+      "side": 1,
+      "message": "I moved the implementation to the prior CL : aosp/3213372. You can find update from there. Thanks.",
+      "parentUuid": "0b1b4af6_3aa533cb",
+      "revId": "bf7903116164301d2c7d68a44c8d2e5e37043b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
