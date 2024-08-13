@@ -34,6 +34,24 @@
       "parentUuid": "a69c263c_8a7e9341",
       "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88ac29ef_d275c394",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-08-13T00:08:18Z",
+      "side": 1,
+      "message": "Fair point. But I think adding a new apex to DISABLE_ENFORCE_APEX_AVAILABILITY_NAMESPACE_LIST would become a yet-another step for most vendor apexes. \n\n\u003e  Having two copies of this could freeze the libbinder wire protocol. This is true for a number of other libraries as well.\n\nIMO we\u0027d better have a strict guard to prevent this for those libraries instead of relying on apex_available. Like you did in libbinder.\n\nSome nits below:\n\n\u003e e.g. some libraries like libsqlite dealing with FDs assume a process-level lock.\n\nlibsqlite is now available to the virt apex: aosp/2968594. \n\n\u003e  \u0027updatable: true\u0027\n\nThis property is exclusive for mainline modules.",
+      "parentUuid": "05fc722c_68b77a70",
+      "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
