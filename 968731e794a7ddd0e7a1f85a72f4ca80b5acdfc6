@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24122e83_37872a5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-13T05:14:14Z",
+      "side": 1,
+      "message": "I updated CL to include `vintf_fragment_modules` from here. PTAL.",
+      "revId": "968731e794a7ddd0e7a1f85a72f4ca80b5acdfc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
