@@ -3,6 +3,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1864321_540591e1",
+        "filename": "android/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-13T19:08:50Z",
+      "side": 1,
+      "message": "How was \"framework-minus-apex\" identified for this? Should it be _every_ standalone system jar?",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 58
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "31430b93_76cc0fa1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/container.go",
+              "range": {
+                "startLine": 205,
+                "startChar": 0,
+                "endLine": 206,
+                "endChar": 0
+              },
+              "replacement": "\tunstableModule :\u003d module.Name() \u003d\u003d \"framework-minus-apex\" || module.Name() \u003d\u003d \"framework-minus-apex-stubs\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "09cfbe8e13f69da77d12b164997dc0a676db968e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0ab6565_12bdc043",
         "filename": "android/container.go",
         "patchSetId": 1
