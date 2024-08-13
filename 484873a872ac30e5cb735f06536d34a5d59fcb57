@@ -124,6 +124,24 @@
       "parentUuid": "1bb37ebc_128c4d8b",
       "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d55c70_aa522dbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-13T06:51:36Z",
+      "side": 1,
+      "message": "b/352818241#comment7 is my suggestion. It\u0027s similar to the partnerapex idea, but it doesn\u0027t require you to modify whole lot of Android.bp files.",
+      "parentUuid": "aace852f_e95562fd",
+      "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
