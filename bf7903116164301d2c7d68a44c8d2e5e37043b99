@@ -16,6 +16,24 @@
       "message": "Why is `OtherModuleFarDependencyVariantExists` necessary here?  All uses of `OtherModuleFarDependencyVariantExists` are going to have to be removed in order to support creating variants on demand in the future.",
       "revId": "bf7903116164301d2c7d68a44c8d2e5e37043b99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1b4af6_3aa533cb",
+        "filename": "android/module.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-13T04:40:43Z",
+      "side": 1,
+      "message": "I updated logic to use `AddDependency` instead. PTAL. Thanks.",
+      "parentUuid": "f8ae6d8a_edaeb8c0",
+      "revId": "bf7903116164301d2c7d68a44c8d2e5e37043b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
