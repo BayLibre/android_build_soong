@@ -22,6 +22,30 @@
       },
       "revId": "09cfbe8e13f69da77d12b164997dc0a676db968e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57c9ba1c_3e2c02a7",
+        "filename": "android/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-13T18:10:02Z",
+      "side": 1,
+      "message": "Any java modules that do not specify partition specific properties (e.g. `vendor`, `product_specific`, etc) are considered to be part of the system container by default. This produces a lot of noise in detecting the cts -\u003e system inter-container dependency violations, especially given that `PRODUCT_PACKAGES` reside in make and Soong does not know which modules actually get installed.\n\n`UnstableContainer` is introduced to mitigate this, to detect more common and serious cts -\u003e system dependency violations and reduce noise. Specifically, `UnstableContainer` is marked for modules that are static reverse dependencies of `framework-minus-apex`. Thus, theoretically the `UnstableContainer` is a subset of `SystemContainer`. I believe that this can go away once the partition is migrated to Soong.",
+      "parentUuid": "f0ab6565_12bdc043",
+      "range": {
+        "startLine": 310,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 32
+      },
+      "revId": "09cfbe8e13f69da77d12b164997dc0a676db968e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
