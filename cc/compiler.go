@@ -416,7 +416,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		flags.Local.YasmFlags = append(flags.Local.YasmFlags, "-I"+modulePath)
 	}
 
-	if !(ctx.useSdk() || ctx.InVendorOrProduct()) || ctx.Host() {
+	if !ctx.Trusty() && (!(ctx.useSdk() || ctx.InVendorOrProduct()) || ctx.Host()) {
 		flags.SystemIncludeFlags = append(flags.SystemIncludeFlags,
 			"${config.CommonGlobalIncludes}",
 			tc.IncludeFlags())
@@ -499,7 +499,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	flags.Local.LdFlags = config.ClangFilterUnknownCflags(flags.Local.LdFlags)
 
 	target := "-target " + tc.ClangTriple()
-	if ctx.Os().Class == android.Device {
+	if !ctx.Trusty() && ctx.Os().Class == android.Device {
 		version := ctx.minSdkVersion()
 		if version == "" || version == "current" {
 			target += strconv.Itoa(android.FutureApiLevelInt)
@@ -523,32 +523,38 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		hod = "Device"
 	}
 
-	flags.Global.CommonFlags = append(flags.Global.CommonFlags, instructionSetFlags)
-	flags.Global.ConlyFlags = append([]string{"${config.CommonGlobalConlyflags}"}, flags.Global.ConlyFlags...)
-	flags.Global.CppFlags = append([]string{fmt.Sprintf("${config.%sGlobalCppflags}", hod)}, flags.Global.CppFlags...)
+	if !ctx.Trusty() {
+		flags.Global.CommonFlags = append(flags.Global.CommonFlags, instructionSetFlags)
+		flags.Global.ConlyFlags = append([]string{"${config.CommonGlobalConlyflags}"}, flags.Global.ConlyFlags...)
+		flags.Global.CppFlags = append([]string{fmt.Sprintf("${config.%sGlobalCppflags}", hod)}, flags.Global.CppFlags...)
+
+		flags.Global.CppFlags = append([]string{"${config.CommonGlobalCppflags}"}, flags.Global.CppFlags...)
+	}
 
 	flags.Global.AsFlags = append(flags.Global.AsFlags, tc.Asflags())
-	flags.Global.CppFlags = append([]string{"${config.CommonGlobalCppflags}"}, flags.Global.CppFlags...)
 
 	// bpf targets don't need the target specific toolchain cflags. b/308826679
 	if !proptools.Bool(compiler.Properties.Bpf_target) {
 		flags.Global.CommonFlags = append(flags.Global.CommonFlags, tc.Cflags())
 	}
-	flags.Global.CommonFlags = append(flags.Global.CommonFlags,
-		"${config.CommonGlobalCflags}",
-		fmt.Sprintf("${config.%sGlobalCflags}", hod))
 
-	if android.IsThirdPartyPath(modulePath) {
-		flags.Global.CommonFlags = append(flags.Global.CommonFlags, "${config.ExternalCflags}")
+	if !ctx.Trusty() {
+		flags.Global.CommonFlags = append(flags.Global.CommonFlags,
+			"${config.CommonGlobalCflags}",
+			fmt.Sprintf("${config.%sGlobalCflags}", hod))
+
+		if android.IsThirdPartyPath(modulePath) {
+			flags.Global.CommonFlags = append(flags.Global.CommonFlags, "${config.ExternalCflags}")
+		}
+
+		if Bool(compiler.Properties.Rtti) {
+			flags.Local.CppFlags = append(flags.Local.CppFlags, "-frtti")
+		} else {
+			flags.Local.CppFlags = append(flags.Local.CppFlags, "-fno-rtti")
+		}
+
+		flags.Global.AsFlags = append(flags.Global.AsFlags, "${config.CommonGlobalAsflags}")
 	}
-
-	if Bool(compiler.Properties.Rtti) {
-		flags.Local.CppFlags = append(flags.Local.CppFlags, "-frtti")
-	} else {
-		flags.Local.CppFlags = append(flags.Local.CppFlags, "-fno-rtti")
-	}
-
-	flags.Global.AsFlags = append(flags.Global.AsFlags, "${config.CommonGlobalAsflags}")
 
 	flags.Global.CppFlags = append(flags.Global.CppFlags, tc.Cppflags())
 
@@ -594,15 +600,17 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	// rules that we want to apply to *our* code (but maybe can't for
 	// vendor/device specific things), we could extend this to be a ternary
 	// value.
-	strict := true
-	if strings.HasPrefix(modulePath, "external/") {
-		strict = false
-	}
+	if !ctx.Trusty() {
+		strict := true
+		if strings.HasPrefix(modulePath, "external/") {
+			strict = false
+		}
 
-	// Can be used to make some annotations stricter for code we can fix
-	// (such as when we mark functions as deprecated).
-	if strict {
-		flags.Global.CFlags = append(flags.Global.CFlags, "-DANDROID_STRICT")
+		// Can be used to make some annotations stricter for code we can fix
+		// (such as when we mark functions as deprecated).
+		if strict {
+			flags.Global.CFlags = append(flags.Global.CFlags, "-DANDROID_STRICT")
+		}
 	}
 
 	if compiler.hasSrcExt(ctx, ".proto") {
@@ -689,20 +697,22 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,-mllvm,-enable-ml-inliner=release")
 	}
 
-	// Exclude directories from manual binder interface allowed list.
-	//TODO(b/145621474): Move this check into IInterface.h when clang-tidy no longer uses absolute paths.
-	if android.HasAnyPrefix(ctx.ModuleDir(), allowedManualInterfacePaths) {
-		flags.Local.CFlags = append(flags.Local.CFlags, "-DDO_NOT_CHECK_MANUAL_BINDER_INTERFACES")
-	}
+	if !ctx.Trusty() {
+		// Exclude directories from manual binder interface allowed list.
+		//TODO(b/145621474): Move this check into IInterface.h when clang-tidy no longer uses absolute paths.
+		if android.HasAnyPrefix(ctx.ModuleDir(), allowedManualInterfacePaths) {
+			flags.Local.CFlags = append(flags.Local.CFlags, "-DDO_NOT_CHECK_MANUAL_BINDER_INTERFACES")
+		}
 
-	flags.NoOverrideFlags = append(flags.NoOverrideFlags, "${config.NoOverrideGlobalCflags}")
+		flags.NoOverrideFlags = append(flags.NoOverrideFlags, "${config.NoOverrideGlobalCflags}")
 
-	if flags.Toolchain.Is64Bit() {
-		flags.NoOverrideFlags = append(flags.NoOverrideFlags, "${config.NoOverride64GlobalCflags}")
-	}
+		if flags.Toolchain.Is64Bit() {
+			flags.NoOverrideFlags = append(flags.NoOverrideFlags, "${config.NoOverride64GlobalCflags}")
+		}
 
-	if android.IsThirdPartyPath(ctx.ModuleDir()) {
-		flags.NoOverrideFlags = append(flags.NoOverrideFlags, "${config.NoOverrideExternalGlobalCflags}")
+		if android.IsThirdPartyPath(ctx.ModuleDir()) {
+			flags.NoOverrideFlags = append(flags.NoOverrideFlags, "${config.NoOverrideExternalGlobalCflags}")
+		}
 	}
 
 	return flags

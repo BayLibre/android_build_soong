@@ -80,7 +80,15 @@ func (stl *stl) begin(ctx BaseModuleContext) {
 			return ""
 		}
 		s = deduplicateStlInput(s)
-		if ctx.useSdk() && ctx.Device() {
+		if ctx.Trusty() {
+			switch s {
+			case "", "trusty-libstdc++":
+				return "trusty-libstdc++"
+			default:
+				ctx.ModuleErrorf("stl: %q is not a supported STL with Trusty", s)
+				return ""
+			}
+		} else if ctx.useSdk() && ctx.Device() {
 			switch s {
 			case "", "system":
 				return "ndk_system"
@@ -178,6 +186,8 @@ func (stl *stl) deps(ctx BaseModuleContext, deps Deps) Deps {
 			deps.StaticLibs = append(deps.StaticLibs, stl.Properties.SelectedStl, "ndk_libc++abi")
 		}
 		deps.StaticLibs = append(deps.StaticLibs, "libunwind")
+	case "trusty-libstdc++":
+		deps.StaticLibs = append(deps.StaticLibs, "trusty-libstdc++")
 	default:
 		panic(fmt.Errorf("Unknown stl: %q", stl.Properties.SelectedStl))
 	}
@@ -230,6 +240,8 @@ func (stl *stl) flags(ctx ModuleContext, flags Flags) Flags {
 			flags.Local.CppFlags = append(flags.Local.CppFlags, "-nostdinc++")
 			flags.extraLibFlags = append(flags.extraLibFlags, "-nostdlib++")
 		}
+	case "trusty-libstdc++":
+		// Nothing
 	default:
 		panic(fmt.Errorf("Unknown stl: %q", stl.Properties.SelectedStl))
 	}

@@ -601,6 +601,9 @@ type hostAndDeviceProperties struct {
 
 	// If set to true, build a variant of the module for the device.  Defaults to true.
 	Device_supported *bool
+
+	// If set to true, build a variant of the module for Trusty.  Defaults to false.
+	Trusty_specific *bool
 }
 
 type hostCrossProperties struct {
@@ -1272,7 +1275,11 @@ func (m *ModuleBase) supportsTarget(target Target) bool {
 			return m.HostSupported()
 		}
 	case Device:
-		return m.DeviceSupported()
+		if target.Os == Trusty {
+			return m.TrustySpecific()
+		} else {
+			return !m.TrustySpecific() && m.DeviceSupported()
+		}
 	default:
 		return false
 	}
@@ -1287,6 +1294,11 @@ func (m *ModuleBase) DeviceSupported() bool {
 	// value has the deviceDefault bit set.
 	deviceEnabled := proptools.BoolDefault(m.hostAndDeviceProperties.Device_supported, hod&deviceDefault != 0)
 	return hod&deviceSupported != 0 && deviceEnabled
+}
+
+// TrustySpecific returns true if the current module is supported and enabled for Trusty.
+func (m *ModuleBase) TrustySpecific() bool {
+	return m.DeviceSupported() && proptools.Bool(m.hostAndDeviceProperties.Trusty_specific)
 }
 
 // HostSupported returns true if the current module is supported and enabled for host targets,

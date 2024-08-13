@@ -466,6 +466,30 @@ func CheckSdkVersionAtLeast(ctx ModuleContext, SdkVersion android.ApiLevel) bool
 	return true
 }
 
+func (linker *baseLinker) trustyLinkerFlags(ctx ModuleContext, flags Flags) Flags {
+	toolchain := ctx.toolchain()
+
+	if linker.useClangLld(ctx) {
+		flags.Global.LdFlags = append(flags.Global.LdFlags, toolchain.Lldflags())
+	} else {
+		flags.Global.LdFlags = append(flags.Global.LdFlags, toolchain.Ldflags())
+	}
+
+	CheckBadLinkerFlags(ctx, "ldflags", linker.Properties.Ldflags)
+
+	flags.Local.LdFlags = append(flags.Local.LdFlags, proptools.NinjaAndShellEscapeList(linker.Properties.Ldflags)...)
+
+	flags.Global.LdFlags = append(flags.Global.LdFlags, toolchain.ToolchainLdflags())
+
+	linkerScriptPaths := android.PathsForModuleSrc(ctx, linker.Properties.Linker_scripts)
+	for _, linkerScriptPath := range linkerScriptPaths {
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+			"-Wl,--script,"+linkerScriptPath.String())
+		flags.LdFlagsDeps = append(flags.LdFlagsDeps, linkerScriptPath)
+	}
+	return flags
+}
+
 // ModuleContext extends BaseModuleContext
 // BaseModuleContext should know if LLD is used?
 func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
@@ -474,6 +498,10 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	hod := "Host"
 	if ctx.Os().Class == android.Device {
 		hod = "Device"
+	}
+
+	if ctx.Os() == android.Trusty {
+		return linker.trustyLinkerFlags(ctx, flags)
 	}
 
 	if linker.useClangLld(ctx) {
