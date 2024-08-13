@@ -106,6 +106,24 @@
       "parentUuid": "a773bbb3_f139c60a",
       "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aace852f_e95562fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2024-08-13T05:39:28Z",
+      "side": 1,
+      "message": "Ah yes got you, `DISABLE_ENFORCE_APEX_AVAILABILITY_NAMESPACE_LIST` won\u0027t work for us.\n\n`//apex_available:partnerapex` sounds good to me. I can make the change if it also sounds good to @jiyong@google.com.",
+      "parentUuid": "1bb37ebc_128c4d8b",
+      "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
