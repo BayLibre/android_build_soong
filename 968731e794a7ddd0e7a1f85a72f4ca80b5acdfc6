@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea6e68a2_6267c96e",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-13T08:57:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51e6b747_420f02ba",
+      "range": {
+        "startLine": 1118,
+        "startChar": 5,
+        "endLine": 1118,
+        "endChar": 22
+      },
+      "revId": "968731e794a7ddd0e7a1f85a72f4ca80b5acdfc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "101b5ddd_95e75b75",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-08-13T05:37:55Z",
       "side": 1,
       "message": "Is this check mandatory? vintf fragment modules don\u0027t have vintf fragment module deps, do they?",
+      "range": {
+        "startLine": 1119,
+        "startChar": 0,
+        "endLine": 1122,
+        "endChar": 2
+      },
+      "revId": "968731e794a7ddd0e7a1f85a72f4ca80b5acdfc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8234f40d_bc8f0091",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-13T08:57:54Z",
+      "side": 1,
+      "message": "Removed. Thx.",
+      "parentUuid": "101b5ddd_95e75b75",
       "range": {
         "startLine": 1119,
         "startChar": 0,
