@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "023a1645_fb9f7ecc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-08-14T17:27:18Z",
+      "side": 1,
+      "message": "This allows us to say `RUST_LOG\u003ddebug SOONG_USE_N2\u003dtrue` and get increased logging from n2 during a build.  `RUST_LOG` does not affect operation of n2, other than making it more verbose.",
+      "revId": "b2ab527798f193c11e066e2942151b65518fb674",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
