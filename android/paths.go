@@ -118,6 +118,7 @@ type ModuleInstallPathContext interface {
 	InstallInOdm() bool
 	InstallInProduct() bool
 	InstallInVendor() bool
+	InstallWithoutPartion() bool
 	InstallForceOS() (*OsType, *ArchType)
 }
 
@@ -169,6 +170,10 @@ func (ctx *baseModuleContextToModuleInstallPathContext) InstallInProduct() bool 
 
 func (ctx *baseModuleContextToModuleInstallPathContext) InstallInVendor() bool {
 	return ctx.Module().InstallInVendor()
+}
+
+func (ctx *baseModuleContextToModuleInstallPathContext) InstallWithoutPartion() bool {
+	return ctx.Module().InstallWithoutPartion()
 }
 
 func (ctx *baseModuleContextToModuleInstallPathContext) InstallForceOS() (*OsType, *ArchType) {
@@ -1957,6 +1962,9 @@ func modulePartition(ctx ModuleInstallPathContext, device bool) string {
 		// "testcases" install directory can be used for host or device modules.
 		partition = "testcases"
 	} else if device {
+		if ctx.InstallWithoutPartion() {
+			return ""
+		}
 		if ctx.InstallInData() {
 			partition = "data"
 		} else if ctx.InstallInRamdisk() {
@@ -2192,19 +2200,20 @@ func PathContextForTesting(config Config) PathContext {
 type testModuleInstallPathContext struct {
 	baseModuleContext
 
-	inData          bool
-	inTestcases     bool
-	inSanitizerDir  bool
-	inRamdisk       bool
-	inVendorRamdisk bool
-	inDebugRamdisk  bool
-	inRecovery      bool
-	inRoot          bool
-	inOdm           bool
-	inProduct       bool
-	inVendor        bool
-	forceOS         *OsType
-	forceArch       *ArchType
+	inData           bool
+	inTestcases      bool
+	inSanitizerDir   bool
+	inRamdisk        bool
+	inVendorRamdisk  bool
+	inDebugRamdisk   bool
+	inRecovery       bool
+	inRoot           bool
+	inOdm            bool
+	inProduct        bool
+	inVendor         bool
+	withoutPartition bool
+	forceOS          *OsType
+	forceArch        *ArchType
 }
 
 func (m testModuleInstallPathContext) Config() Config {
@@ -2255,6 +2264,10 @@ func (m testModuleInstallPathContext) InstallInProduct() bool {
 
 func (m testModuleInstallPathContext) InstallInVendor() bool {
 	return m.inVendor
+}
+
+func (m testModuleInstallPathContext) InstallWithoutPartion() bool {
+	return m.withoutPartition
 }
 
 func (m testModuleInstallPathContext) InstallForceOS() (*OsType, *ArchType) {

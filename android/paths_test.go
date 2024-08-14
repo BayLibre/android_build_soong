@@ -455,6 +455,22 @@ func TestPathForModuleInstall(t *testing.T) {
 			partitionDir: "target/product/test_device/vendor_ramdisk/system",
 		},
 		{
+			name: "module with withoutPartition overrides inVendorRamdisk",
+			ctx: &testModuleInstallPathContext{
+				baseModuleContext: baseModuleContext{
+					archModuleContext: archModuleContext{
+						os:     deviceTarget.Os,
+						target: deviceTarget,
+					},
+				},
+				inVendorRamdisk:  true,
+				withoutPartition: true,
+			},
+			in:           []string{"my_test"},
+			out:          "target/product/test_device/my_test",
+			partitionDir: "target/product/test_device",
+		},
+		{
 			name: "vendor_ramdisk root binary",
 			ctx: &testModuleInstallPathContext{
 				baseModuleContext: baseModuleContext{
@@ -470,6 +486,24 @@ func TestPathForModuleInstall(t *testing.T) {
 			out:          "target/product/test_device/vendor_ramdisk/my_test",
 			partitionDir: "target/product/test_device/vendor_ramdisk",
 		},
+		{
+			name: "module with withoutPartition overrides inVendorRamdisk and inRoot",
+			ctx: &testModuleInstallPathContext{
+				baseModuleContext: baseModuleContext{
+					archModuleContext: archModuleContext{
+						os:     deviceTarget.Os,
+						target: deviceTarget,
+					},
+				},
+				inVendorRamdisk:  true,
+				inRoot:           true,
+				withoutPartition: true,
+			},
+			in:           []string{"my_test"},
+			out:          "target/product/test_device/my_test",
+			partitionDir: "target/product/test_device",
+		},
+
 		{
 			name: "debug_ramdisk binary",
 			ctx: &testModuleInstallPathContext{
@@ -847,6 +881,23 @@ func TestPathForModuleInstallRecoveryAsBoot(t *testing.T) {
 			out:          "target/product/test_device/recovery/root/first_stage_ramdisk/my_test",
 			partitionDir: "target/product/test_device/recovery/root/first_stage_ramdisk",
 		},
+		{
+			name: "module with withoutPartition overrides inRamdisk and inRoot and inRecoveryAsBoot",
+			ctx: &testModuleInstallPathContext{
+				baseModuleContext: baseModuleContext{
+					archModuleContext: archModuleContext{
+						os:     deviceTarget.Os,
+						target: deviceTarget,
+					},
+				},
+				inRamdisk:        true,
+				inRoot:           true,
+				withoutPartition: true,
+			},
+			in:           []string{"my_test"},
+			out:          "target/product/test_device/my_test",
+			partitionDir: "target/product/test_device",
+		},
 
 		{
 			name: "vendor_ramdisk binary",
@@ -863,6 +914,23 @@ func TestPathForModuleInstallRecoveryAsBoot(t *testing.T) {
 			in:           []string{"my_test"},
 			out:          "target/product/test_device/vendor_ramdisk/first_stage_ramdisk/my_test",
 			partitionDir: "target/product/test_device/vendor_ramdisk/first_stage_ramdisk",
+		},
+		{
+			name: "module with withoutPartition overrides inVendorRamdisk and inRoot and inRecoveryAsBoot",
+			ctx: &testModuleInstallPathContext{
+				baseModuleContext: baseModuleContext{
+					archModuleContext: archModuleContext{
+						os:     deviceTarget.Os,
+						target: deviceTarget,
+					},
+				},
+				inVendorRamdisk:  true,
+				inRoot:           true,
+				withoutPartition: true,
+			},
+			in:           []string{"my_test"},
+			out:          "target/product/test_device/my_test",
+			partitionDir: "target/product/test_device",
 		},
 	}
 

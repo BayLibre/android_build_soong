@@ -133,6 +133,13 @@ type prebuiltRootProperties struct {
 	// android_filesystem, this module will be installed to the root ("/"), unlike normal
 	// prebuilt_root modules which are installed to the partition subdir (e.g. "/system/").
 	Install_in_root *bool
+
+	// Install_without_partion indicates that the module should be installed directly
+	// under the $PRODUCT_OUT/ directory, bypassing any partition-specific
+	// installation logic, including Install_in_root. This is typically used for
+	// modules that need to be accessible early in the boot process or that have
+	// special installation requirements.
+	Install_without_partion *bool
 }
 
 type PrebuiltEtcModule interface {
@@ -258,6 +265,10 @@ func (p *PrebuiltEtc) DebugRamdiskVariantNeeded(ctx android.BaseModuleContext) b
 
 func (p *PrebuiltEtc) InstallInRoot() bool {
 	return proptools.Bool(p.rootProperties.Install_in_root)
+}
+
+func (p *PrebuiltEtc) InstallWithoutPartion() bool {
+	return proptools.Bool(p.rootProperties.Install_without_partion)
 }
 
 func (p *PrebuiltEtc) RecoveryVariantNeeded(ctx android.BaseModuleContext) bool {

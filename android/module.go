@@ -78,6 +78,7 @@ type Module interface {
 	InstallInOdm() bool
 	InstallInProduct() bool
 	InstallInVendor() bool
+	InstallWithoutPartion() bool
 	InstallForceOS() (*OsType, *ArchType)
 	PartitionTag(DeviceConfig) string
 	HideFromMake()
@@ -1533,6 +1534,10 @@ func (m *ModuleBase) InstallInVendor() bool {
 }
 
 func (m *ModuleBase) InstallInRoot() bool {
+	return false
+}
+
+func (m *ModuleBase) InstallWithoutPartion() bool {
 	return false
 }
 
