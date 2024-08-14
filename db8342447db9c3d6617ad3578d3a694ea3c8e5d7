@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c78f983_ba384d82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-14T00:50:39Z",
+      "side": 1,
+      "message": "This should be submitted after the existing violations in `git_main` are submitted in the downstream.",
+      "revId": "db8342447db9c3d6617ad3578d3a694ea3c8e5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
