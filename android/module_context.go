@@ -181,6 +181,7 @@ type ModuleContext interface {
 	InstallInOdm() bool
 	InstallInProduct() bool
 	InstallInVendor() bool
+	InstallWithoutPartition() bool
 	InstallForceOS() (*OsType, *ArchType)
 
 	RequiredModuleNames(ctx ConfigAndErrorContext) []string
@@ -427,6 +428,10 @@ func (m *moduleContext) InstallInProduct() bool {
 
 func (m *moduleContext) InstallInVendor() bool {
 	return m.module.InstallInVendor()
+}
+
+func (m *moduleContext) InstallWithoutPartition() bool {
+	return m.module.InstallWithoutPartition()
 }
 
 func (m *moduleContext) skipInstall() bool {

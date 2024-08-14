@@ -234,6 +234,21 @@ func TestPrebuiltRootInstallDirPath(t *testing.T) {
 	android.AssertPathRelativeToTopEquals(t, "install dir", expected, p.installDirPath)
 }
 
+func TestPrebuiltRootInstallWithoutPartitionDirPath(t *testing.T) {
+	result := prepareForPrebuiltEtcTest.RunTestWithBp(t, `
+		prebuilt_root {
+			name: "foo.conf",
+			src: "foo.conf",
+			filename: "foo.conf",
+			install_without_partition: true,
+		}
+	`)
+
+	p := result.Module("foo.conf", "android_arm64_armv8-a").(*PrebuiltEtc)
+	expected := "out/soong/target/product/test_device"
+	android.AssertPathRelativeToTopEquals(t, "install dir", expected, p.installDirPath)
+}
+
 func TestPrebuiltRootInstallDirPathValidate(t *testing.T) {
 	prepareForPrebuiltEtcTest.ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern("filename cannot contain separator")).RunTestWithBp(t, `
 		prebuilt_root {
