@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4941d56a_1b67edf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-08-14T06:12:30Z",
+      "side": 1,
+      "message": "Will the attribute do the same thing?\n`product_specific: true,`",
+      "revId": "a470dede5fc4dbec973ba7c5320a3cd846c23cfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
