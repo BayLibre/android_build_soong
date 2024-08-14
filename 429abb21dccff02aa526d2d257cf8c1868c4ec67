@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aa65144_b5e148e2",
+        "filename": "android/module.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-14T01:12:28Z",
+      "side": 1,
+      "message": "Hope we can touch this real soon!",
+      "range": {
+        "startLine": 871,
+        "startChar": 0,
+        "endLine": 873,
+        "endChar": 34
+      },
+      "revId": "429abb21dccff02aa526d2d257cf8c1868c4ec67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "651b6668_1a1326e9",
+        "filename": "android/variable.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-14T01:12:28Z",
+      "side": 1,
+      "message": "I think this change deserves an explanation.",
+      "revId": "429abb21dccff02aa526d2d257cf8c1868c4ec67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
