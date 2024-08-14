@@ -39,6 +39,24 @@
       "message": "I think this change deserves an explanation.",
       "revId": "429abb21dccff02aa526d2d257cf8c1868c4ec67",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c78c1e90_2780fefa",
+        "filename": "android/variable.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-14T01:40:21Z",
+      "side": 1,
+      "message": "Sure. I found a case that there is [a product variable adding vintf_manifest](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/mediaserver/Android.bp;l\u003d93-97). To apply this condition while generating vintf_manifest modules, this mutator should be handled in prior than vintf fragment mutator. AFAIK, variables can be resolved before any arch mutators, so I moved it to PreArchMutator.",
+      "parentUuid": "651b6668_1a1326e9",
+      "revId": "429abb21dccff02aa526d2d257cf8c1868c4ec67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
