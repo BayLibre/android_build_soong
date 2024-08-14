@@ -875,9 +875,12 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	if j.hasSrcExt(".kt") {
 		// TODO(ccross): move this to a mutator pass that can tell if generated sources contain
 		// Kotlin files
-		ctx.AddVariationDependencies(nil, kotlinStdlibTag,
-			"kotlin-stdlib", "kotlin-stdlib-jdk7", "kotlin-stdlib-jdk8")
-		ctx.AddVariationDependencies(nil, kotlinAnnotationsTag, "kotlin-annotations")
+		tag := staticLibTag
+		if !BoolDefault(j.properties.Static_kotlin_stdlib, true) {
+			tag = libTag
+		}
+		ctx.AddVariationDependencies(nil, tag,
+			"kotlin-stdlib", "kotlin-stdlib-jdk7", "kotlin-stdlib-jdk8", "kotlin-annotations")
 	}
 
 	// Framework libraries need special handling in static coverage builds: they should not have
@@ -1211,7 +1214,6 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 
 	var kotlinJars android.Paths
 	var kotlinHeaderJars android.Paths
-	var kotlinExtraJars android.Paths
 
 	// Prepend extraClasspathJars to classpath so that the resource processor R.jar comes before
 	// any dependencies so that it can override any non-final R classes from dependencies with the
@@ -1322,8 +1324,6 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 
 		kotlinJars = append(kotlinJars, kotlinJarPath)
 		kotlinHeaderJars = append(kotlinHeaderJars, kotlinHeaderJar)
-		kotlinExtraJars = append(kotlinExtraJars, deps.kotlinStdlib...)
-		kotlinExtraJars = append(kotlinExtraJars, deps.kotlinAnnotations...)
 	}
 
 	jars := slices.Clone(kotlinJars)
@@ -1342,9 +1342,6 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 			// with sharding enabled. See: b/77284273.
 		}
 		extraJars := slices.Clone(kotlinHeaderJars)
-		if BoolDefault(j.properties.Static_kotlin_stdlib, true) {
-			extraJars = append(extraJars, kotlinExtraJars...)
-		}
 		extraJars = append(extraJars, extraCombinedJars...)
 		var combinedHeaderJarFile android.Path
 		headerJarFileWithoutDepsOrJarjar, combinedHeaderJarFile =
@@ -1421,13 +1418,6 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		if ctx.Failed() {
 			return
 		}
-	}
-
-	// Jar kotlin classes into the final jar after javac
-	if BoolDefault(j.properties.Static_kotlin_stdlib, true) {
-		jars = append(jars, kotlinExtraJars...)
-	} else {
-		flags.dexClasspath = append(flags.dexClasspath, kotlinExtraJars...)
 	}
 
 	jars = append(jars, extraCombinedJars...)
@@ -2339,10 +2329,6 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				} else {
 					ctx.PropertyErrorf("exported_plugins", "%q is not a java_plugin module", otherName)
 				}
-			case kotlinStdlibTag:
-				deps.kotlinStdlib = append(deps.kotlinStdlib, dep.HeaderJars...)
-			case kotlinAnnotationsTag:
-				deps.kotlinAnnotations = dep.HeaderJars
 			case kotlinPluginTag:
 				deps.kotlinPlugins = append(deps.kotlinPlugins, dep.ImplementationAndResourcesJars...)
 			case syspropPublicStubDepTag:
@@ -2566,8 +2552,6 @@ func collectDirectDepsProviders(ctx android.ModuleContext) (result *JarJarProvid
 					return RenameUseInclude, "tagswitch"
 				case exportedPluginTag:
 					return RenameUseInclude, "tagswitch"
-				case kotlinStdlibTag, kotlinAnnotationsTag:
-					return RenameUseExclude, "tagswitch"
 				case kotlinPluginTag:
 					return RenameUseInclude, "tagswitch"
 				default:
