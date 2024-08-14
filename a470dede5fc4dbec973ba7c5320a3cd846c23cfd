@@ -16,6 +16,24 @@
       "message": "Will the attribute do the same thing?\n`product_specific: true,`",
       "revId": "a470dede5fc4dbec973ba7c5320a3cd846c23cfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "243e02c3_6ee5ea1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-08-14T06:43:33Z",
+      "side": 1,
+      "message": "In the current situation, it might not be possible to achieve this.\n\nAfter experimentation, setting `Android.bp` as follows:\n```\nprebuilt_root {\n    name: \"ramdisk_node_list\",\n    src: \"ramdisk_node_list\",\n    product_specific: true,\n} \n```\nresults in the final installation location being:\n`./out/target/product/vsoc_x86_64/product/ramdisk_node_list`\nHowever, we need it to be installed at:\n`./out/target/product/vsoc_x86_64/ramdisk_node_list`\n\nThe reason for the extra `product` subdirectory is that `ProductPath()` still has a default value of product even when no product variables are specified in the product configuration.\n```\n\t\t} else if ctx.ProductSpecific() || ctx.InstallInProduct() {\n\t\t\tpartition \u003d ctx.DeviceConfig().ProductPath()\n```\n```\nfunc (c *deviceConfig) ProductPath() string {\n    if c.config.productVariables.ProductPath !\u003d nil {\n        return *c.config.productVariables.ProductPath\n    }\n    return \"product\"   \n\n}\n```",
+      "parentUuid": "4941d56a_1b67edf0",
+      "revId": "a470dede5fc4dbec973ba7c5320a3cd846c23cfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
