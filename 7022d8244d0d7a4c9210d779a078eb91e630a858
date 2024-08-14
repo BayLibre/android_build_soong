@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37d016d3_d54160fb",
+        "filename": "android/module.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-08-14T21:44:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acf70d6b_f7e77a67",
+      "revId": "7022d8244d0d7a4c9210d779a078eb91e630a858",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c39cd77e_f460d85f",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-14T17:18:32Z",
       "side": 1,
       "message": "It looks like sdkRepoHost just installs one file: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android_sdk/sdk_repo_host.go;l\u003d237;drc\u003ddf34caf8b52c07eb56ffcda5fdce1057217c8b47\n\nCould we save that one file into a field in the module and use it here instead of using FilesToInstall?",
+      "revId": "7022d8244d0d7a4c9210d779a078eb91e630a858",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ff848b_6ce698a3",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-08-14T21:44:12Z",
+      "side": 1,
+      "message": "That will have similar issue as the one I am trying fix, i.e., when we skip this module we have to restore that field from somewhere other than from the providers, otherwise the androidmk singleton won\u0027t be able to build this phony rule correctly.",
+      "parentUuid": "c39cd77e_f460d85f",
       "revId": "7022d8244d0d7a4c9210d779a078eb91e630a858",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
