@@ -69,6 +69,24 @@
       "parentUuid": "c39cd77e_f460d85f",
       "revId": "7022d8244d0d7a4c9210d779a078eb91e630a858",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd2de8cf_daf6286a",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-08-14T22:57:34Z",
+      "side": 1,
+      "message": "talked offline and made the change accordingly.",
+      "parentUuid": "69ff848b_6ce698a3",
+      "revId": "7022d8244d0d7a4c9210d779a078eb91e630a858",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
