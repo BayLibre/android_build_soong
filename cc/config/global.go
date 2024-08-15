@@ -183,6 +183,9 @@ var (
 
 	deviceGlobalCppflags = []string{
 		"-fvisibility-inlines-hidden",
+
+		// Allow using VLA CXX extension.
+		"-Wno-vla-cxx-extension",
 	}
 
 	// Linking flags for device code; not applied to host binaries.
@@ -292,9 +295,6 @@ var (
 		// New warnings to be fixed after clang-r522817
 		"-Wno-error=invalid-offsetof",
 		"-Wno-error=thread-safety-reference-return",
-
-		// Allow using VLA CXX extension.
-		"-Wno-vla-cxx-extension",
 	}
 
 	noOverride64GlobalCflags = []string{}
