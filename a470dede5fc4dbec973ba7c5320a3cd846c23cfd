@@ -69,6 +69,24 @@
       "message": "This is an odd case, this file isn\u0027t really \"installed\" like a normal module, because it never ends up on the device.  It is instead being copied to a known location that is then referenced in the core makefiles: https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l\u003d1272;drc\u003d67911682c2eed89bf5d14a3017b89427fb3b3e06.\n\nOne option to support this would be to not make a copy at all, and instead replace the module with a filegroup that sets `export_to_make_var`:\n```\nfilegroup {\n    name: \"ramdisk_node_list\",\n    srcs: [\"ramdisk_node_list\"],\n    export_to_make_var: \"RAMDISK_NODE_LIST\",\n}\n```\nand then delete `RAMDISK_NODE_LIST :\u003d ...` in `build/make/core/Makefile`.  This will cause the `RAMDISK_NODE_LIST` variable to be set to point to the source tree location instead of the copy, but I think that should work fine with the rules that use it.",
       "revId": "a470dede5fc4dbec973ba7c5320a3cd846c23cfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4061a291_8c4dc4af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-08-15T03:38:21Z",
+      "side": 1,
+      "message": "Thanks a lot, updated it in https://android-review.git.corp.google.com/q/topic:%22ramdisk_node_list%22",
+      "parentUuid": "3ee65fc5_af0a7f50",
+      "revId": "a470dede5fc4dbec973ba7c5320a3cd846c23cfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
