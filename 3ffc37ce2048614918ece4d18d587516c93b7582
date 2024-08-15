@@ -34,6 +34,24 @@
       "parentUuid": "0c3bf2dd_9cadcbed",
       "revId": "3ffc37ce2048614918ece4d18d587516c93b7582",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74bf0993_34fb4b21",
+        "filename": "android/build_prop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2024-08-15T18:32:05Z",
+      "side": 1,
+      "message": "I don\u0027t think we should wait till Aug 25 to fix this as it\u0027s going to start causing issues for VTS testing due to the properties not getting set.",
+      "parentUuid": "aae3300c_17ef4040",
+      "revId": "3ffc37ce2048614918ece4d18d587516c93b7582",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
