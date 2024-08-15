@@ -178,6 +178,24 @@
       "parentUuid": "8f520270_8ac51450",
       "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b366639_e6eff463",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2024-08-15T14:35:33Z",
+      "side": 1,
+      "message": "\u003e The variable could be set in a common place, or the check could only be executed if the apex is built installed (e.g. require apex to be in a soong_namespace).\n\nSorry I don\u0027t understand `the apex is built installed`, could you help to elaborate?\n\n\u003e \u003e doesn\u0027t require you to modify whole lot of Android.bp files. \n\u003e\n\u003e I think this is a feature btw, because it makes sure each module owner knows\n\nI agree that letting library owners know about the usage from APEX is elegant. In the case of partner apexs, I think it\u0027s also worth considering the tradeoff between the practical value the wildcard \u0027:partnerapex\u0027 brings and the time it takes (for all direct and transitive dependencies) on a tight project schedule (e.g. our project).",
+      "parentUuid": "17619c19_70c84fec",
+      "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
