@@ -676,6 +676,14 @@ func (library *libraryDecorator) compileModuleLibApiStubs(ctx ModuleContext, fla
 		!strings.Contains(ctx.ModuleName(), "libclang_rt") {
 		flag = flag + " --no-ndk"
 	}
+	if isBionic(ctx.baseModuleName()) {
+		// set the flags explicitly for bionic libs.
+		// this is necessary for development in minimal branches which does not contain bionic/*.
+		// In such minimal branches, e.g. on the prebuilt libc stubs
+		// 1. IsNdk will return false (since the ndk_library definition for libc does not exist)
+		// 2. NotInPlatform will return true (since the source com.android.runtime does not exist)
+		flag = "--apex"
+	}
 	nativeAbiResult := parseNativeAbiDefinition(ctx, symbolFile,
 		android.ApiLevelOrPanic(ctx, library.MutatedProperties.StubsVersion), flag)
 	objs := compileStubLibrary(ctx, flags, nativeAbiResult.stubSrc)
