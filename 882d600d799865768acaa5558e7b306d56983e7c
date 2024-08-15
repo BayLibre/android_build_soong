@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a87e271d_c39e3929",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-15T22:13:30Z",
+      "side": 1,
+      "message": "This is resulting in putting the kotlin standard library in services.jar due to a mismatch in determining kotlin sources in the deps mutator vs. in GenerateAndroidBuildActions.  I\u0027m investigating whether to just fix the affected modules.",
+      "revId": "882d600d799865768acaa5558e7b306d56983e7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
