@@ -61,7 +61,7 @@ func (s *systemImage) buildLinkerConfigFile(ctx android.ModuleContext, root andr
 
 	deps := s.gatherFilteredPackagingSpecs(ctx)
 	ctx.WalkDeps(func(child, parent android.Module) bool {
-		for _, ps := range child.PackagingSpecs() {
+		for _, ps := range android.ModuleInstallFilesInfo(ctx, child).PackagingSpecs {
 			if _, ok := deps[ps.RelPathInPackage()]; ok {
 				modulesInPackageByModule[child] = true
 				modulesInPackageByName[child.Name()] = true

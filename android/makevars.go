@@ -279,10 +279,11 @@ func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 		}
 
 		if m.ExportedToMake() {
-			katiInstalls = append(katiInstalls, m.base().katiInstalls...)
+			info := ModuleInstallFilesInfo(ctx, m)
+			katiInstalls = append(katiInstalls, info.KatiInstalls...)
 			katiInitRcInstalls = append(katiInitRcInstalls, m.base().katiInitRcInstalls...)
 			katiVintfManifestInstalls = append(katiVintfManifestInstalls, m.base().katiVintfInstalls...)
-			katiSymlinks = append(katiSymlinks, m.base().katiSymlinks...)
+			katiSymlinks = append(katiSymlinks, info.KatiSymlinks...)
 		}
 	})
 
