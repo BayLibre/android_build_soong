@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c3bf2dd_9cadcbed",
+        "filename": "android/build_prop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-15T17:17:14Z",
+      "side": 1,
+      "message": "This function isn\u0027t used for anything now except a validity check, should that check also be changed to regular partition? Also this comment suggests Inseob thought of this, could you wait for Inseob\u0027s review before submitting?",
+      "revId": "3ffc37ce2048614918ece4d18d587516c93b7582",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
