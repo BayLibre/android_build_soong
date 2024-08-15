@@ -33,6 +33,24 @@
       "message": "I haven\u0027t checked if this is an existing case, but could it be possible for a child non-`Android.bp` file to define the `default_team`?",
       "revId": "c3ae4dbe1d67817556c9d2d54fb7b7baa4360158",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5034f14d_22712ba8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-08-15T22:04:27Z",
+      "side": 1,
+      "message": "I\u0027ll add a test for it, but fyi if this happens the parent Android.bp can\u0027t have package as well and I think the current code would find the package defintion.\nTheoretical example: system/software_defined_vehicle/automotive_services/Android.bp",
+      "parentUuid": "14305ab0_7bb59216",
+      "revId": "c3ae4dbe1d67817556c9d2d54fb7b7baa4360158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
