@@ -181,18 +181,20 @@ func FindDeapexerProviderForModule(ctx ModuleContext) (*DeapexerInfo, error) {
 			// An err has been found. Do not visit further.
 			return
 		}
-		c, _ := OtherModuleProvider(ctx, m, DeapexerProvider)
-		p := &c
-		if di != nil {
-			// If two DeapexerInfo providers have been found then check if they are
-			// equivalent. If they are then use the selected one, otherwise fail.
-			if selected := equivalentDeapexerInfoProviders(di, p); selected != nil {
-				di = selected
-				return
+		c, ok := OtherModuleProvider(ctx, m, DeapexerProvider)
+		if ok {
+			p := &c
+			if di != nil {
+				// If two DeapexerInfo providers have been found then check if they are
+				// equivalent. If they are then use the selected one, otherwise fail.
+				if selected := equivalentDeapexerInfoProviders(di, p); selected != nil {
+					di = selected
+					return
+				}
+				err = fmt.Errorf("Multiple installable prebuilt APEXes provide ambiguous deapexers: %s and %s", di.ApexModuleName(), p.ApexModuleName())
 			}
-			err = fmt.Errorf("Multiple installable prebuilt APEXes provide ambiguous deapexers: %s and %s", di.ApexModuleName(), p.ApexModuleName())
+			di = p
 		}
-		di = p
 	})
 	if err != nil {
 		return nil, err
