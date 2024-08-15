@@ -22,6 +22,30 @@
       },
       "revId": "642e720b5b13d02b33cab8997a35d4d71996b23f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc0dc74_c4fb4008",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-15T00:56:03Z",
+      "side": 1,
+      "message": "I am not totally sure why apexes did it this way instead of the usual `android:\"arch_variant\"` decorator. In theory that would be better, or using a select on arch, but maybe there\u0027s a slight difference? I figured I can wait and see if someone wants to configure this, and then if they do, they can tell me what the difference is.",
+      "parentUuid": "bafbea35_e0f1846a",
+      "range": {
+        "startLine": 522,
+        "startChar": 3,
+        "endLine": 522,
+        "endChar": 31
+      },
+      "revId": "642e720b5b13d02b33cab8997a35d4d71996b23f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
