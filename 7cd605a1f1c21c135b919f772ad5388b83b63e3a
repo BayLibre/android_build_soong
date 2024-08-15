@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9b1cd2b_5c72e843",
+        "filename": "android/deapexer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-15T00:38:03Z",
+      "side": 1,
+      "message": "If empty deapexer infos are invalid, should we add\n```\nif ok {\n...\n} else {\n   ctx.ModuleErrorf()\n}\n```",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 3
+      },
+      "revId": "7cd605a1f1c21c135b919f772ad5388b83b63e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
