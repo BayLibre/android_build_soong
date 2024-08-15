@@ -66,6 +66,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d2f36c2_5eaae924",
+        "filename": "android/compliance_metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-08-15T00:27:55Z",
+      "side": 1,
+      "message": "Talked offline",
+      "parentUuid": "64ef4aa4_0bb98cfb",
+      "range": {
+        "startLine": 189,
+        "startChar": 32,
+        "endLine": 189,
+        "endChar": 48
+      },
+      "revId": "1581758131a7062d3c3e7cdfd53ecc39cca45a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c1033bb_6f0692f2",
@@ -97,6 +121,24 @@
       "side": 1,
       "message": "This is a good point, just it is a little hard to implement since this is a field on ctx. Maybe we need some special place/mechanism to access these internal fields?",
       "parentUuid": "6c1033bb_6f0692f2",
+      "revId": "1581758131a7062d3c3e7cdfd53ecc39cca45a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdd2b4e3_b7d603a5",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1967,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-08-15T00:27:55Z",
+      "side": 1,
+      "message": "Talked offline",
+      "parentUuid": "897d15ce_5c5c17d3",
       "revId": "1581758131a7062d3c3e7cdfd53ecc39cca45a72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
