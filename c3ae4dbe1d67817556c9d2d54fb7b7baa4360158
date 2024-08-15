@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a99fe8b3_b4e0978d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-08-15T20:37:35Z",
+      "side": 1,
+      "message": "Hi, I\u0027m not sure if there is a better way to find the \"parent\" Android.bp that has the \"package\" module in it.",
+      "revId": "c3ae4dbe1d67817556c9d2d54fb7b7baa4360158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
