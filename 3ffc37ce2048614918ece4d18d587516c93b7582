@@ -52,6 +52,24 @@
       "parentUuid": "aae3300c_17ef4040",
       "revId": "3ffc37ce2048614918ece4d18d587516c93b7582",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa8cb616_95696852",
+        "filename": "android/build_prop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-15T20:52:32Z",
+      "side": 1,
+      "message": "oh I didn\u0027t realize Inseob was OOO. Ok, we can submit it as is.",
+      "parentUuid": "74bf0993_34fb4b21",
+      "revId": "3ffc37ce2048614918ece4d18d587516c93b7582",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
