@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef7bcb2_15ade36d",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-15T23:44:07Z",
+      "side": 1,
+      "message": "`OtherModuleProvider` will already return an empty `InstallsFileInfo` when `!ok`. So this function could just be:\n\n```\ni, _ :\u003d OtherModuleProvider(ctx, m, InstallFilesProvider)\nreturn i\n```\n\nIn that case, I don\u0027t think this function is really providing a lot of value. Could we just use `OtherModuleProvider` directly instead? The callers may actually want to check `ok` to be stricter about their dependencies always providing the provider.",
+      "range": {
+        "startLine": 761,
+        "startChar": 1,
+        "endLine": 764,
+        "endChar": 26
+      },
+      "revId": "41affa31faf798b522637071bc2a38fbc00f0d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
