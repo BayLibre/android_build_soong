@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bafbea35_e0f1846a",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-15T00:52:15Z",
+      "side": 1,
+      "message": "Are there instances where arch specific sources require configuration? (nested)",
+      "range": {
+        "startLine": 522,
+        "startChar": 3,
+        "endLine": 522,
+        "endChar": 31
+      },
+      "revId": "642e720b5b13d02b33cab8997a35d4d71996b23f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
