@@ -119,6 +119,13 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 	// Stub variants will create a stub .so file from stub .c files
 	if p.buildStubs() && objs.objFiles != nil {
 		// TODO (b/275273834): Make objs.objFiles == nil a hard error when the symbol files have been added to module sdk.
+
+		// TODO: libclang_rt.* prebuilts are generated without versioned symbols
+		// Skip the version from the stub variant as well
+		// DO NOT SUBMIT
+		if strings.Contains(ctx.ModuleName(), "libclang_rt.") {
+			p.versionScriptPath = android.OptionalPathForPath(nil)
+		}
 		return p.linkShared(ctx, flags, deps, objs)
 	}
 
