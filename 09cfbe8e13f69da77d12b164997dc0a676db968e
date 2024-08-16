@@ -92,6 +92,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd29c470_2eba8f27",
+        "filename": "android/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-16T06:09:41Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I believe that this should be totally feasible once variants on demand is implemented in Soong. Given that utilizing the GSI would involve top down graph walk, the only modern-Soong way to do this is by utilizing the transition mutator. However, the transition mutator involves creation of variants, which is significantly complex due to the currently existing [\"fallback\" behavior in blueprint for variant matching](https://cs.android.com/android/platform/superproject/main/+/main:build/blueprint/context.go;drc\u003d57af52e4eb7818de36d1365bb85bc34bab8a9f4b;l\u003d1896). [This change](https://android-review.git.corp.google.com/c/platform/build/soong/+/3208451) was a previous attempt to implement a transition mutator, which failed due to multiple missing variants error. However, implementation of variants on demand allows that \"fallback\" behavior to go away and be more lenient with variants creation. Thus, I believe that your suggestion should be the ideal solution in the long term.",
+      "parentUuid": "fff7bed2_c1b6a9a2",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 58
+      },
+      "revId": "09cfbe8e13f69da77d12b164997dc0a676db968e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0ab6565_12bdc043",
         "filename": "android/container.go",
         "patchSetId": 1
