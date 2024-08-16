@@ -16,6 +16,24 @@
       "message": "This is resulting in putting the kotlin standard library in services.jar due to a mismatch in determining kotlin sources in the deps mutator vs. in GenerateAndroidBuildActions.  I\u0027m investigating whether to just fix the affected modules.",
       "revId": "882d600d799865768acaa5558e7b306d56983e7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81c1922a_6880a968",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-16T18:46:01Z",
+      "side": 1,
+      "message": "I fixed the one case that was affecting services.jar.  There are many more cases, but they are mostly just CTS tests.",
+      "parentUuid": "a87e271d_c39e3929",
+      "revId": "882d600d799865768acaa5558e7b306d56983e7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
