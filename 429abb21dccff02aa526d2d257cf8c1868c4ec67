@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "524b2a39_7e3eeb0b",
+        "filename": "android/module.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-16T07:36:21Z",
+      "side": 1,
+      "message": "Yep! Will get to this as soon as all vintf fragment changes are succesfully landed 😊",
+      "parentUuid": "0aa65144_b5e148e2",
+      "range": {
+        "startLine": 871,
+        "startChar": 0,
+        "endLine": 873,
+        "endChar": 34
+      },
+      "revId": "429abb21dccff02aa526d2d257cf8c1868c4ec67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "651b6668_1a1326e9",
@@ -91,6 +115,24 @@
       "side": 1,
       "message": "I\u0027d suggest at least separating this out into a separate CL, and then diffing the build.ninja files or using go/compare-target-files to make sure it doesn\u0027t have any unintended effects.  In particular I\u0027d be worried about how this interacts with product variables that are also arch variant.",
       "parentUuid": "60cd7728_da54ab45",
+      "revId": "429abb21dccff02aa526d2d257cf8c1868c4ec67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1122e41f_9f0e180e",
+        "filename": "android/variable.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-16T07:36:21Z",
+      "side": 1,
+      "message": "I don\u0027t think this is something used in a wrong way. As both of you suggested, I separated CL to move VariableMutator into PreArchMutator. I compared build.ninja from internal main, and there was no change from the ninja file. Thanks!",
+      "parentUuid": "94230e4b_b8629218",
       "revId": "429abb21dccff02aa526d2d257cf8c1868c4ec67",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
