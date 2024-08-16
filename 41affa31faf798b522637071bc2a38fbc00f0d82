@@ -22,6 +22,30 @@
       },
       "revId": "41affa31faf798b522637071bc2a38fbc00f0d82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105d5735_d6fcaca6",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-08-16T00:23:01Z",
+      "side": 1,
+      "message": "in most of the places it can save me one line of code, I changed this to a more generic one, if a caller cares about if the provider is set they can use the other one. The original code doesn\u0027t check if these values are set or not, so this change should not change any behaviors.",
+      "parentUuid": "8ef7bcb2_15ade36d",
+      "range": {
+        "startLine": 761,
+        "startChar": 1,
+        "endLine": 764,
+        "endChar": 26
+      },
+      "revId": "41affa31faf798b522637071bc2a38fbc00f0d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
