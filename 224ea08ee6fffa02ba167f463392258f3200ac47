@@ -22,6 +22,30 @@
       },
       "revId": "224ea08ee6fffa02ba167f463392258f3200ac47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2606989b_dbf8607b",
+        "filename": "android/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-16T23:58:00Z",
+      "side": 1,
+      "message": "I believe that static deps are allowed, per [this comment](https://googleplex-android-review.git.corp.google.com/c/platform/vendor/google/build/+/28824301/comment/75233b48_1cf2ab31/). However for CTS tests, I believe that they should be restricted from statically depending on any modules in the \"unstable\" container.",
+      "parentUuid": "39a8fa2b_51aeea4a",
+      "range": {
+        "startLine": 254,
+        "startChar": 5,
+        "endLine": 254,
+        "endChar": 26
+      },
+      "revId": "224ea08ee6fffa02ba167f463392258f3200ac47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
