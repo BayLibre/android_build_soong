@@ -28,7 +28,7 @@ func init() {
 }
 
 func registerVariableBuildComponents(ctx RegistrationContext) {
-	ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
+	ctx.PreArchMutators(func(ctx RegisterMutatorsContext) {
 		ctx.BottomUp("variable", VariableMutator).Parallel()
 	})
 }
