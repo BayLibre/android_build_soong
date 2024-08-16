@@ -2634,6 +2634,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	j.collectTransitiveHeaderJars(ctx)
 	var staticJars android.Paths
+	var staticResourceJars android.Paths
 	var staticHeaderJars android.Paths
 	ctx.VisitDirectDeps(func(module android.Module) {
 		tag := ctx.OtherModuleDependencyTag(module)
@@ -2644,7 +2645,8 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				flags.dexClasspath = append(flags.dexClasspath, dep.HeaderJars...)
 			case staticLibTag:
 				flags.classpath = append(flags.classpath, dep.HeaderJars...)
-				staticJars = append(staticJars, dep.ImplementationAndResourcesJars...)
+				staticJars = append(staticJars, dep.ImplementationJars...)
+				staticResourceJars = append(staticResourceJars, dep.ResourceJars...)
 				staticHeaderJars = append(staticHeaderJars, dep.HeaderJars...)
 			case bootClasspathTag:
 				flags.bootClasspath = append(flags.bootClasspath, dep.HeaderJars...)
@@ -2675,6 +2677,16 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// header jar for this module.
 	reuseImplementationJarAsHeaderJar := slices.Equal(staticJars, staticHeaderJars)
 
+	var resourceJarFile android.Path
+	if len(staticResourceJars) > 1 {
+		combinedJar := android.PathForModuleOut(ctx, "res-combined", jarName)
+		TransformJarsToJar(ctx, combinedJar, "for resources", staticResourceJars, android.OptionalPath{},
+			false, nil, nil)
+		resourceJarFile = combinedJar
+	} else if len(staticResourceJars) == 1 {
+		resourceJarFile = staticResourceJars[0]
+	}
+
 	var headerJar android.Path
 	if reuseImplementationJarAsHeaderJar {
 		headerJar = outputFile
@@ -2698,6 +2710,17 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		} else {
 			headerJar = outputFile
 		}
+	}
+
+	implementationJarFile := outputFile
+
+	// merge implementation jar with resources if necessary
+	if resourceJarFile != nil {
+		jars := android.Paths{resourceJarFile, outputFile}
+		combinedJar := android.PathForModuleOut(ctx, "withres", jarName)
+		TransformJarsToJar(ctx, combinedJar, "for resources", jars, android.OptionalPath{},
+			false, nil, nil)
+		outputFile = combinedJar
 	}
 
 	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource.
@@ -2793,7 +2816,8 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		TransitiveLibsHeaderJars:       j.transitiveLibsHeaderJars,
 		TransitiveStaticLibsHeaderJars: j.transitiveStaticLibsHeaderJars,
 		ImplementationAndResourcesJars: android.PathsIfNonNil(j.combinedImplementationFile),
-		ImplementationJars:             android.PathsIfNonNil(j.combinedImplementationFile),
+		ImplementationJars:             android.PathsIfNonNil(implementationJarFile),
+		ResourceJars:                   android.PathsIfNonNil(resourceJarFile),
 		AidlIncludeDirs:                j.exportAidlIncludeDirs,
 		StubsLinkType:                  j.stubsLinkType,
 		// TODO(b/289117800): LOCAL_ACONFIG_FILES for prebuilts
