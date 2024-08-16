@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b6e2783_593a00da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-16T16:25:29Z",
+      "side": 1,
+      "message": "aosp/3221984 adds a test for the interaction between product variables and arch variant properties, and the test fails with this CL.",
+      "revId": "ae460be9f0014d69690b9062d931f98582a71a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
