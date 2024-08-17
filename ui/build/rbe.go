@@ -43,7 +43,7 @@ func rbeCommand(ctx Context, config Config, rbeCmd string) string {
 	if rbeDir := config.rbeDir(); rbeDir != "" {
 		cmdPath = filepath.Join(rbeDir, rbeCmd)
 	} else {
-		ctx.Fatalf("rbe command path not found")
+		ctx.Fatalf("rbe command path not found XXXXX")
 	}
 
 	if _, err := os.Stat(cmdPath); err != nil && os.IsNotExist(err) {
