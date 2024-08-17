@@ -70,6 +70,30 @@
       },
       "revId": "224ea08ee6fffa02ba167f463392258f3200ac47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "903cf279_7dfe4a95",
+        "filename": "android/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-17T00:26:11Z",
+      "side": 1,
+      "message": "\u003e IIUC, the linked comment refers to apex \u003c--\u003e system dependencies.\n\nThe linked comment refers to system -\u003e vendor dependency. [Sharing as a screenshot](https://screenshot.googleplex.com/AGwuXvsKCj5Mvgy) as this is internal to git_main.\n\n\u003e In the current implementation, are product container modules allowed to statically depend on any modules in in the \"unstable\" container?\n\nCurrently, there is no restriction on product -\u003e system inter-container dependency (\"unstable\" is a subset of \"system\").",
+      "parentUuid": "329a70f1_56e83a95",
+      "range": {
+        "startLine": 254,
+        "startChar": 5,
+        "endLine": 254,
+        "endChar": 26
+      },
+      "revId": "224ea08ee6fffa02ba167f463392258f3200ac47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
