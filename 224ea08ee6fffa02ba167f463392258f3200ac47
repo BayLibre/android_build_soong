@@ -46,6 +46,30 @@
       },
       "revId": "224ea08ee6fffa02ba167f463392258f3200ac47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "329a70f1_56e83a95",
+        "filename": "android/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-17T00:15:58Z",
+      "side": 1,
+      "message": "IIUC, the linked comment refers to apex \u003c--\u003e system dependencies.\n\nIn the current implementation, are product container modules allowed to statically depend on any modules in in the \"unstable\" container?",
+      "parentUuid": "2606989b_dbf8607b",
+      "range": {
+        "startLine": 254,
+        "startChar": 5,
+        "endLine": 254,
+        "endChar": 26
+      },
+      "revId": "224ea08ee6fffa02ba167f463392258f3200ac47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
