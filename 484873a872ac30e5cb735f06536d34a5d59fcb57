@@ -213,6 +213,24 @@
       "message": "Hi Chan, \n\nSorry that we have different opinions here. Today, I and Jooyung had a call with Steven to learn what his concern is and to see if there\u0027s a better way of handling your case.\n\nWhat we came up with in the meeting are as below:\n\n* let\u0027s not skip the apex availability check, regardless of who owns the apex. the check provides a value to the owner.\n\n* this means we don\u0027t want the product config (ENFORCE_APEX_AVAILABILITY_NAMESPACE_LIST)\n\n* instead, let\u0027s extend the apex_availability property so that it accepts a prefix: ex, `//apex_availability:com.google.foo.*`. This will prevent you from having to expose the apex names in bp files.\n\n* in addition to that, we\u0027d be interested in knowing the list of AOSP-defined libs that will be included in your apexes. You can use internal channels (chat, email) for that.\n\nHope to hear what you think. Again, sorry for the back and forth.",
       "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11da004c_74312428",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2024-08-19T01:53:18Z",
+      "side": 1,
+      "message": "Hi Jiyong,\n\nthanks so much for the summary. `//apex_availability:com.google.foo.*` sounds good to me. We\u0027ll discuss and confirm with OEM what prefix they\u0027ll use and then make the change.\n\nAbout the list of AOSP-defined libs we need, I can only provide a list at the end of next week (if there is no delay in API delivery) because there is a big refactoring ongoing and we decided not to do any apex availability work for the old (existing) libraries.\n\nThanks again and I\u0027ll abandon the current CLs!",
+      "parentUuid": "1bdb7d5f_c54367c2",
+      "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
