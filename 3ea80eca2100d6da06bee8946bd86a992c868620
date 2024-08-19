@@ -52,6 +52,46 @@
       "parentUuid": "5bafde0c_b79a84e2",
       "revId": "3ea80eca2100d6da06bee8946bd86a992c868620",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58397c53_3ce71458",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-19T22:10:45Z",
+      "side": 1,
+      "message": "Can you expand on the criteria to be allowed onto the allowlist?  e.g. must not end up in the system image.  Also add the comment to the allowlist itself.",
+      "range": {
+        "startLine": 160,
+        "startChar": 60,
+        "endLine": 161,
+        "endChar": 11
+      },
+      "revId": "3ea80eca2100d6da06bee8946bd86a992c868620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c655751_7ec84121",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-19T22:10:45Z",
+      "side": 1,
+      "message": "This is fine, but you could also use neverallow.go for this.",
+      "revId": "3ea80eca2100d6da06bee8946bd86a992c868620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
