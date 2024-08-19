@@ -16,6 +16,24 @@
       "message": "aosp/3221984 adds a test for the interaction between product variables and arch variant properties, and the test fails with this CL.",
       "revId": "ae460be9f0014d69690b9062d931f98582a71a74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be43664f_6bdd3e6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-19T00:31:54Z",
+      "side": 1,
+      "message": "Thanks! Probably I could not find the diff from ninja just there was no such use case. Let me try to update the specific usage instead.",
+      "parentUuid": "1b6e2783_593a00da",
+      "revId": "ae460be9f0014d69690b9062d931f98582a71a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
