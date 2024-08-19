@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "051a0375_7278a9a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-19T23:06:14Z",
+      "side": 1,
+      "message": "yeah. I think this requires updating use_version_lib\u0027s definition of an unbundled build though, currently it seems to do it by host/device. Also they embed the build number in the apex\u0027s manifest.json, so we couldn\u0027t use c code for that...",
+      "parentUuid": "a7658d83_c5d4db30",
+      "revId": "3ea80eca2100d6da06bee8946bd86a992c868620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58397c53_3ce71458",
@@ -77,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90438de4_137c08f2",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-19T23:06:14Z",
+      "side": 1,
+      "message": "I expanded the comment a little bit, but I don\u0027t think there really is any criteria for being allowed in the allowlist. IMO all usages of the build number should just be deleted.",
+      "parentUuid": "58397c53_3ce71458",
+      "range": {
+        "startLine": 160,
+        "startChar": 60,
+        "endLine": 161,
+        "endChar": 11
+      },
+      "revId": "3ea80eca2100d6da06bee8946bd86a992c868620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c655751_7ec84121",
@@ -90,6 +132,24 @@
       "writtenOn": "2024-08-19T22:10:45Z",
       "side": 1,
       "message": "This is fine, but you could also use neverallow.go for this.",
+      "revId": "3ea80eca2100d6da06bee8946bd86a992c868620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e4546f4_946419aa",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-19T23:06:14Z",
+      "side": 1,
+      "message": "I looked into it, but I would have to update neverallow.go significantly to give it the expressive power needed to deny all except for certain modules in certain folders.",
+      "parentUuid": "3c655751_7ec84121",
       "revId": "3ea80eca2100d6da06bee8946bd86a992c868620",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
