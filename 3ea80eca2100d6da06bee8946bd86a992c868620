@@ -16,6 +16,24 @@
       "message": "Would it be possible to scope this to only the host variant of cc_genrule and java_genrule?  Even with order-only dependencies we don\u0027t want the build number ending up embedded in anything that affects the system image.",
       "revId": "3ea80eca2100d6da06bee8946bd86a992c868620",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bafde0c_b79a84e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-19T22:02:14Z",
+      "side": 1,
+      "message": "Well I was planning on using this for `aidl_camera_build_version` and `com.google.pixel.camera.hal.manifest` as well, the last two genrules that are opted-out of genrule sandboxing at the moment. And they are both consumed by device modules. The camera team wants to embed their build number into their apex, (because it will be the build number of the apex-only build, and then imported as a prebuilt to main) and we brought it up with them that they shouldn\u0027t do this but they\u0027ve essentially brushed us off.\n\nThis cl does contain an allowlist of modules that are able to use it though, which should help with keeping build numbers off the system image.",
+      "parentUuid": "2377fcd3_189f4ad6",
+      "revId": "3ea80eca2100d6da06bee8946bd86a992c868620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
