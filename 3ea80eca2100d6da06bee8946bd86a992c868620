@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2377fcd3_189f4ad6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-19T21:56:23Z",
+      "side": 1,
+      "message": "Would it be possible to scope this to only the host variant of cc_genrule and java_genrule?  Even with order-only dependencies we don\u0027t want the build number ending up embedded in anything that affects the system image.",
+      "revId": "3ea80eca2100d6da06bee8946bd86a992c868620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
