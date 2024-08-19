@@ -16,6 +16,63 @@
       "message": "Thanks! THAT WAS FAST!!!",
       "revId": "f666ec483767cda5b095318d45f5be8e01da98e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bea25da_e5990a3c",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-19T18:13:18Z",
+      "side": 1,
+      "message": "There should also be an assertion that there is only 1 asterisk. (and a corresponding test for that)",
+      "revId": "f666ec483767cda5b095318d45f5be8e01da98e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c4e70f_93e75ff5",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2774,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-19T18:13:18Z",
+      "side": 1,
+      "message": "You\u0027ll probably want to check that there are at least 3 components, otherwise this could suggest `com.*`, which is invalid.",
+      "revId": "f666ec483767cda5b095318d45f5be8e01da98e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "170fb89e_0a6522f3",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2778,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-19T18:13:18Z",
+      "side": 1,
+      "message": "You need a space before the \"or\".",
+      "range": {
+        "startLine": 2778,
+        "startChar": 22,
+        "endLine": 2778,
+        "endChar": 26
+      },
+      "revId": "f666ec483767cda5b095318d45f5be8e01da98e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
