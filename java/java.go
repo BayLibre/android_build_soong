@@ -1864,10 +1864,12 @@ func (j *Binary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if ctx.Arch().ArchType == android.Common {
 		j.deps(ctx)
 	}
-	if ctx.Arch().ArchType != android.Common {
+	if ctx.Arch().ArchType != android.Common && ctx.Os().Class == android.Host {
 		// These dependencies ensure the host installation rules will install the jar file and
 		// the jni libraries when the wrapper is installed.
 		ctx.AddVariationDependencies(nil, jniInstallTag, j.binaryProperties.Jni_libs...)
+	}
+	if ctx.Arch().ArchType != android.Common {
 		ctx.AddVariationDependencies(
 			[]blueprint.Variation{{Mutator: "arch", Variation: android.CommonArch.String()}},
 			binaryInstallTag, ctx.ModuleName())
