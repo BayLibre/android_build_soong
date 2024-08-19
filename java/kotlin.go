@@ -64,6 +64,30 @@ var kotlinc = pctx.AndroidRemoteStaticRule("kotlinc", android.RemoteRuleSupports
 	"kotlincFlags", "classpath", "srcJars", "commonSrcFilesArg", "srcJarDir", "classesDir",
 	"headerClassesDir", "headerJar", "kotlinJvmTarget", "kotlinBuildFile", "emptyDir", "name")
 
+// TODO: Add plugins
+var kotlinKytheExtract = pctx.AndroidStaticRule("kotlinKythe",
+	blueprint.RuleParams{
+		Command: `rm -rf "srcJarDir" && mkdir -p "srcJarDir" && ` +
+			`${config.ZipSyncCmd} -d $srcJarDir -l $srcJarDir/list -f "*.java" -f "*.kt" $srcJars && ` +
+			`${config.KotlinKytheExtractor} -corpus ${kytheCorpus} --srcs @$out.rsp --srcs @"$srcJarDir/list" $commonSrcFilesList --cp @$classpath -o $out --kotlin_out $outJar` +
+			// wrap the additional kotlin args.
+			// Skip Xbuild file, pass the cp explicitly.
+			// Skip header jars, those should not have an effect on kythe results.
+			` --args '${config.KotlincGlobalFlags} ` +
+			` ${config.KotlincSuppressJDK9Warnings} ${config.JavacHeapFlags} ` +
+			` $kotlincFlags -jvm-target $kotlinJvmTarget` +
+			` -kotlin-home $emptyDir'`,
+		CommandDeps: []string{
+			"${config.KotlincCmd}",
+			"${config.KotlinKytheExtractor}",
+			"${config.ZipSyncCmd}",
+		},
+		Rspfile:        "$out.rsp",
+		RspfileContent: "$in",
+	},
+	"classpath", "kotlincFlags", "commonSrcFilesList", "kotlinJvmTarget", "emptyDir", "outJar", "srcJars", "srcJarDir",
+)
+
 func kotlinCommonSrcsList(ctx android.ModuleContext, commonSrcFiles android.Paths) android.OptionalPath {
 	if len(commonSrcFiles) > 0 {
 		// The list of common_srcs may be too long to put on the command line, but
@@ -81,7 +105,7 @@ func kotlinCommonSrcsList(ctx android.ModuleContext, commonSrcFiles android.Path
 }
 
 // kotlinCompile takes .java and .kt sources and srcJars, and compiles the .kt sources into a classes jar in outputFile.
-func kotlinCompile(ctx android.ModuleContext, outputFile, headerOutputFile android.WritablePath,
+func (j *Module) kotlinCompile(ctx android.ModuleContext, outputFile, headerOutputFile android.WritablePath,
 	srcFiles, commonSrcFiles, srcJars android.Paths,
 	flags javaBuilderFlags) {
 
@@ -105,6 +129,7 @@ func kotlinCompile(ctx android.ModuleContext, outputFile, headerOutputFile andro
 	android.WriteFileRule(ctx, classpathRspFile, strings.Join(flags.kotlincClasspath.Strings(), " "))
 	deps = append(deps, classpathRspFile)
 
+	emptyDir := android.PathForModuleOut(ctx, "kotlinc", "empty").String()
 	ctx.Build(pctx, android.BuildParams{
 		Rule:           kotlinc,
 		Description:    "kotlinc",
@@ -122,11 +147,37 @@ func kotlinCompile(ctx android.ModuleContext, outputFile, headerOutputFile andro
 			"headerJar":         headerOutputFile.String(),
 			"srcJarDir":         android.PathForModuleOut(ctx, "kotlinc", "srcJars").String(),
 			"kotlinBuildFile":   android.PathForModuleOut(ctx, "kotlinc-build.xml").String(),
-			"emptyDir":          android.PathForModuleOut(ctx, "kotlinc", "empty").String(),
+			"emptyDir":          emptyDir,
 			"kotlinJvmTarget":   flags.javaVersion.StringForKotlinc(),
 			"name":              kotlinName,
 		},
 	})
+
+	// Emit kythe xref rule
+	if (ctx.Config().EmitXrefRules()) && ctx.Module() == ctx.PrimaryModule() {
+		extractionFile := outputFile.ReplaceExtension(ctx, "kzip")
+		args := map[string]string{
+			"classpath":       classpathRspFile.String(),
+			"emptyDir":        emptyDir,
+			"kotlincFlags":    flags.kotlincFlags,
+			"kotlinJvmTarget": flags.javaVersion.StringForKotlinc(),
+			"outJar":          outputFile.String(), // TODO: Should this be the combined jar? (kt + java)
+			"srcJars":         strings.Join(srcJars.Strings(), " "),
+			"srcJarDir":       android.PathForModuleOut(ctx, "kotlinc", "srcJars.xref").String(),
+		}
+		if commonSrcsList.Valid() {
+			args["commonSrcFilesList"] = "--srcs @" + commonSrcsList.String()
+		}
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        kotlinKytheExtract,
+			Description: "kotlinKythe",
+			Output:      extractionFile,
+			Inputs:      srcFiles,
+			Implicits:   deps,
+			Args:        args,
+		})
+		j.kytheFiles = append(j.kytheFiles, extractionFile)
+	}
 }
 
 var kaptStubs = pctx.AndroidRemoteStaticRule("kaptStubs", android.RemoteRuleSupports{Goma: true},
