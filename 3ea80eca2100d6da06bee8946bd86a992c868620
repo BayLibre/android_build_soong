@@ -34,6 +34,24 @@
       "parentUuid": "2377fcd3_189f4ad6",
       "revId": "3ea80eca2100d6da06bee8946bd86a992c868620",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7658d83_c5d4db30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-19T22:08:19Z",
+      "side": 1,
+      "message": "Ideally we would move those two to something like `use_version_lib`, which would allow us to enforce the business logic that uses the system image version for regular builds, but can efficiently embed the build ID for unbundled builds.",
+      "parentUuid": "5bafde0c_b79a84e2",
+      "revId": "3ea80eca2100d6da06bee8946bd86a992c868620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
