@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a41fb1_6b7a2e7c",
+        "filename": "android/phony.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-08-19T21:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94038219_628d5ffe",
+      "revId": "3a7794a5d2392ba0bc9f33c956110c4d0cc3b92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bba4246_b73c05e1",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ef52d4a_4fac655c",
+        "filename": "android/phony.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-08-19T21:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bba4246_b73c05e1",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "3a7794a5d2392ba0bc9f33c956110c4d0cc3b92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1a80b40_d5c3b39f",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-08-19T21:20:57Z",
       "side": 1,
       "message": "I wonder whether this would be more straightforward if you renamed `addPhony` and `getPhonyMap` to `addSingletonPhony` and `getSingletonPhonyMap` to make it clear it doesn\u0027t have modules in it any more, and then locally allocated a map in this function and added both the singleton map and the phonies from module providers to it.",
+      "revId": "3a7794a5d2392ba0bc9f33c956110c4d0cc3b92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74ea523a_addfa075",
+        "filename": "android/phony.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-08-19T21:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1a80b40_d5c3b39f",
       "revId": "3a7794a5d2392ba0bc9f33c956110c4d0cc3b92f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
