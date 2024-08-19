@@ -231,6 +231,24 @@
       "parentUuid": "1bdb7d5f_c54367c2",
       "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c302a6c2_156b1353",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2024-08-19T02:28:15Z",
+      "side": 1,
+      "message": "Ah I can make the change to allow `//apex_availability:com.google.foo.*` without knowing what namespace our OEM use. Please ignore the order in my last comment.",
+      "parentUuid": "11da004c_74312428",
+      "revId": "484873a872ac30e5cb735f06536d34a5d59fcb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
