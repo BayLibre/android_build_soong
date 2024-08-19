@@ -262,8 +262,8 @@ func (module *SdkLibrary) createDroidstubs(mctx android.DefaultableHookContext, 
 	}
 	droidstubsArgs = append(droidstubsArgs, android.JoinWithPrefix(disabledWarnings, "--hide "))
 
-	// Output Javadoc comments for public scope.
-	if apiScope == apiScopePublic {
+	// Output Javadoc comments for public and system scope.
+	if apiScope == apiScopePublic || apiScope == apiScopeSystem {
 		props.Output_javadoc_comments = proptools.BoolPtr(true)
 	}
 
