@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea13d8b0_645559de",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-08-20T01:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bea25da_e5990a3c",
+      "revId": "f666ec483767cda5b095318d45f5be8e01da98e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0c4e70f_93e75ff5",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da8de334_1e0b8f50",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2774,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-08-20T01:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0c4e70f_93e75ff5",
+      "revId": "f666ec483767cda5b095318d45f5be8e01da98e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "170fb89e_0a6522f3",
@@ -65,6 +101,30 @@
       "writtenOn": "2024-08-19T18:13:18Z",
       "side": 1,
       "message": "You need a space before the \"or\".",
+      "range": {
+        "startLine": 2778,
+        "startChar": 22,
+        "endLine": 2778,
+        "endChar": 26
+      },
+      "revId": "f666ec483767cda5b095318d45f5be8e01da98e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c538eb30_9ad48560",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2778,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-08-20T01:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "170fb89e_0a6522f3",
       "range": {
         "startLine": 2778,
         "startChar": 22,
