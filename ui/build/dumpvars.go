@@ -163,6 +163,7 @@ var BannerVars = []string{
 	"HOST_CROSS_OS",
 	"BUILD_ID",
 	"OUT_DIR",
+	"TARGET_BOARD_PLATFORM",
 	"SOONG_SDK_SNAPSHOT_TARGET_BUILD_RELEASE",
 }
 
@@ -187,6 +188,7 @@ func runMakeProductConfig(ctx Context, config Config) {
 		// modified by a buildspec.mk
 		"TARGET_PRODUCT",
 		"TARGET_BUILD_VARIANT",
+		"TARGET_BOARD_PLATFORM",
 		"TARGET_BUILD_APPS",
 		"TARGET_BUILD_UNBUNDLED",
 
