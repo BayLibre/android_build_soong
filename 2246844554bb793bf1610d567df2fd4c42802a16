@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f2debd7_dbfe9ff5",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-08-20T21:00:42Z",
+      "side": 1,
+      "message": "I could also just do\n```\nif dexParams.sdkVersion.Kind !\u003d android.SdkModule\n```\nfor now, but this more restricted variant also seems to work (except for the `SystemServer` carveout).",
+      "range": {
+        "startLine": 293,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 90
+      },
+      "revId": "2246844554bb793bf1610d567df2fd4c42802a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
