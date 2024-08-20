@@ -187,9 +187,16 @@ func (c *Cmd) readMountArgs() []string {
 	return args
 }
 
-func (c *Cmd) wrapSandbox() {
-	wd, _ := os.Getwd()
+func (c *Cmd) workDir() string {
+	if !c.config.UseABFS() {
+		wd, _ := os.Getwd()
+		return wd
+	}
 
+	return abfsSrcDir
+}
+
+func (c *Cmd) wrapSandbox() {
 	var sandboxArgs []string
 	sandboxArgs = append(sandboxArgs,
 		// The executable to run
@@ -199,7 +206,7 @@ func (c *Cmd) wrapSandbox() {
 		"-H", "android-build",
 
 		// Use the current working dir
-		"--cwd", wd,
+		"--cwd", c.workDir(),
 
 		// No time limit
 		"-t", "0",
@@ -226,7 +233,7 @@ func (c *Cmd) wrapSandbox() {
 	)
 
 	sandboxArgs = append(sandboxArgs,
-		c.readMountArgs()...
+		c.readMountArgs()...,
 	)
 
 	sandboxArgs = append(sandboxArgs,
@@ -286,6 +293,9 @@ func (c *Cmd) wrapSandbox() {
 	env := Environment(c.Env)
 	if _, hasUser := env.Get("USER"); hasUser {
 		env.Set("USER", "nobody")
+	}
+	if c.config.UseABFS() {
+		env.Set("PWD", abfsSrcDir)
 	}
 	c.Env = []string(env)
 }
