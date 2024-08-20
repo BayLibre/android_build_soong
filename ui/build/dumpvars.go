@@ -187,6 +187,7 @@ func runMakeProductConfig(ctx Context, config Config) {
 		// modified by a buildspec.mk
 		"TARGET_PRODUCT",
 		"TARGET_BUILD_VARIANT",
+		"TARGET_BOARD_PLATFORM",
 		"TARGET_BUILD_APPS",
 		"TARGET_BUILD_UNBUNDLED",
 
