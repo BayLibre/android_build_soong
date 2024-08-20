@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "267e1710_c2c6e607",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-20T21:00:34Z",
+      "side": 1,
+      "message": "I think the CL itself LGTM, but I had a question about this statement.\n\n`GetOrDefault` is context dependent, and might evaluate to different values for different variants of the apex. Can we have an immutable struct that is common across all variants?",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 69
+      },
+      "revId": "ac92f3e3f40afce5931c2df438019a0a2b3591ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
