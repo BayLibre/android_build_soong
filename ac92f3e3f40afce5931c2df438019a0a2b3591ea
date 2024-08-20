@@ -22,6 +22,30 @@
       },
       "revId": "ac92f3e3f40afce5931c2df438019a0a2b3591ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bb2ae05_3024e6be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-20T21:37:21Z",
+      "side": 1,
+      "message": "Yes. The `proptools.Configurable` property contains all information needed to resolve all variants, calling `GetOrDefault` then just returns the value that corresponds to the current configuration. So the property itself can remain unchanged but give many different results.",
+      "parentUuid": "267e1710_c2c6e607",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 69
+      },
+      "revId": "ac92f3e3f40afce5931c2df438019a0a2b3591ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
