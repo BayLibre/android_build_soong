@@ -699,6 +699,10 @@ var (
 	shBinaryTag     = &dependencyTag{name: "shBinary", payload: true}
 )
 
+func (d *dependencyTag) InstallDepNeeded() bool {
+	return d == sscpfTag
+}
+
 // TODO(jiyong): shorten this function signature
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext, nativeModules ApexNativeDependencies, target android.Target, imageVariation string) {
 	binVariations := target.Variations()
@@ -1644,12 +1648,12 @@ func apexFileForJavaModuleWithFile(ctx android.ModuleContext, module javaModule,
 	if sdkLib, ok := module.(*java.SdkLibrary); ok {
 		for _, install := range sdkLib.BuiltInstalledForApex() {
 			af.requiredModuleNames = append(af.requiredModuleNames, install.FullModuleName())
-			install.PackageFile(ctx)
+			//install.InstallFile(ctx)
 		}
 	} else if dexpreopter, ok := module.(java.DexpreopterInterface); ok {
 		for _, install := range dexpreopter.DexpreoptBuiltInstalledForApex() {
 			af.requiredModuleNames = append(af.requiredModuleNames, install.FullModuleName())
-			install.PackageFile(ctx)
+			//install.InstallFile(ctx)
 		}
 	}
 	return af

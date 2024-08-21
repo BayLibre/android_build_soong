@@ -15,6 +15,7 @@
 package java
 
 import (
+	"fmt"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -88,16 +89,14 @@ func (install dexpreopterInstall) ToMakeEntries() android.AndroidMkEntries {
 				entries.SetString("LOCAL_MODULE_PATH", install.installDirOnDevice.String())
 				entries.SetString("LOCAL_INSTALLED_MODULE_STEM", install.installFileOnDevice)
 				entries.SetString("LOCAL_NOT_AVAILABLE_FOR_PLATFORM", "false")
-				// Unset LOCAL_SOONG_INSTALLED_MODULE so that this does not default to the primary .apex file
-				// Without this, installation of the dexpreopt artifacts get skipped
-				entries.SetString("LOCAL_SOONG_INSTALLED_MODULE", "")
 			},
 		},
 	}
 }
 
-func (install dexpreopterInstall) PackageFile(ctx android.ModuleContext) android.PackagingSpec {
-	return ctx.PackageFile(install.installDirOnDevice, install.installFileOnDevice, install.outputPathOnHost)
+// TODO: rename
+func (install dexpreopterInstall) InstallFile(ctx android.ModuleContext) android.InstallPath {
+	return ctx.InstallFile(install.installDirOnDevice, install.installFileOnDevice, install.outputPathOnHost)
 }
 
 type Dexpreopter struct {
@@ -583,13 +582,17 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, libName string, dexJa
 				// Preopting of boot classpath jars in the ART APEX are handled in
 				// java/dexpreopt_bootjars.go, and other APEX jars are not preopted.
 				// The installs will be handled by Make as sub-modules of the java library.
-				d.builtInstalledForApex = append(d.builtInstalledForApex, dexpreopterInstall{
+				di := dexpreopterInstall{
 					name:                arch + "-" + installBase,
 					moduleName:          libName,
 					outputPathOnHost:    install.From,
 					installDirOnDevice:  installPath,
 					installFileOnDevice: installBase,
-				})
+				}
+				fmt.Printf("installing file %v in moduleCtx of %v\n", di, ctx.Module())
+				di.InstallFile(ctx)
+				d.builtInstalledForApex = append(d.builtInstalledForApex, di)
+
 			}
 		} else if !d.preventInstall {
 			ctx.InstallFile(installPath, installBase, install.From)
