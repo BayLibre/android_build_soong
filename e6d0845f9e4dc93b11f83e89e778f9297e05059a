@@ -16,6 +16,29 @@
       "message": "Note that the presubmit is currently blocked on existing violations (i.e. sdk_version \"test\" -\u003e sdk_version \"private\").",
       "revId": "e6d0845f9e4dc93b11f83e89e778f9297e05059a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4a6fafb_622037d3",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2138,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-21T00:50:04Z",
+      "side": 1,
+      "message": "`test` and `module` seem to share the rank here. Would this mean that tests can access module lib apis?",
+      "range": {
+        "startLine": 2138,
+        "startChar": 57,
+        "endLine": 2138,
+        "endChar": 58
+      },
+      "revId": "e6d0845f9e4dc93b11f83e89e778f9297e05059a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
