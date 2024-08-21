@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85f28aa7_f4d9ae1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-21T17:24:00Z",
+      "side": 1,
+      "message": "I don\u0027t think that this is necessary. Any `java_sdk_library` (more specifically the impl lib of the `java_sdk_library`) that belongs to any apexes are instrumented by default.",
+      "revId": "a4bf0c8770dd5664e6a19ee7d79344588bee2b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
