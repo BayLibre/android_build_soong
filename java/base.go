@@ -2124,44 +2124,32 @@ func (j *Module) IsInstallable() bool {
 	return Bool(j.properties.Installable)
 }
 
-type sdkLinkType int
+type sdkLinkType struct {
+	name  string
+	order int
+}
 
-const (
+var (
 	// TODO(jiyong) rename these for better readability. Make the allowed
 	// and disallowed link types explicit
-	// order is important here. See rank()
-	javaCore sdkLinkType = iota
-	javaSdk
-	javaSystem
-	javaModule
-	javaSystemServer
-	javaPlatform
+	javaCore         = sdkLinkType{name: "core Java API", order: 0}
+	javaSdk          = sdkLinkType{name: "Android API", order: 1}
+	javaSystem       = sdkLinkType{name: "system API", order: 2}
+	javaTest         = sdkLinkType{name: "test API", order: 3}
+	javaModule       = sdkLinkType{name: "module API", order: 3}
+	javaSystemServer = sdkLinkType{name: "system server API", order: 4}
+	javaPlatform     = sdkLinkType{name: "private API", order: 5}
 )
 
 func (lt sdkLinkType) String() string {
-	switch lt {
-	case javaCore:
-		return "core Java API"
-	case javaSdk:
-		return "Android API"
-	case javaSystem:
-		return "system API"
-	case javaModule:
-		return "module API"
-	case javaSystemServer:
-		return "system server API"
-	case javaPlatform:
-		return "private API"
-	default:
-		panic(fmt.Errorf("unrecognized linktype: %d", lt))
-	}
+	return lt.name
 }
 
 // rank determines the total order among sdkLinkType. An SDK link type of rank A can link to
 // another SDK link type of rank B only when B <= A. For example, a module linking to Android SDK
 // can't statically depend on modules that use Platform API.
 func (lt sdkLinkType) rank() int {
-	return int(lt)
+	return lt.order
 }
 
 type moduleWithSdkDep interface {
@@ -2187,7 +2175,7 @@ func (m *Module) getSdkLinkType(ctx android.BaseModuleContext, name string) (ret
 	case android.SdkSystemServer.DefaultJavaLibraryName():
 		return javaSystemServer, true
 	case android.SdkTest.DefaultJavaLibraryName():
-		return javaSystem, true
+		return javaTest, true
 	}
 
 	if stub, linkType := moduleStubLinkType(name); stub {
@@ -2204,9 +2192,11 @@ func (m *Module) getSdkLinkType(ctx android.BaseModuleContext, name string) (ret
 		return javaSdk, false
 	case android.SdkModule:
 		return javaModule, false
+	case android.SdkTest:
+		return javaTest, false
 	case android.SdkSystemServer:
 		return javaSystemServer, false
-	case android.SdkPrivate, android.SdkNone, android.SdkCorePlatform, android.SdkTest:
+	case android.SdkPrivate, android.SdkNone, android.SdkCorePlatform:
 		return javaPlatform, false
 	}
 
