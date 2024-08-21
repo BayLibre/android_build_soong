@@ -70,6 +70,23 @@
       "parentUuid": "f295239b_5e3fdedf",
       "revId": "a4bf0c8770dd5664e6a19ee7d79344588bee2b56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35a4960a_b5e94c3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165189
+      },
+      "writtenOn": "2024-08-21T23:23:45Z",
+      "side": 1,
+      "message": "While the discussion is going, I keep this CL open.",
+      "revId": "a4bf0c8770dd5664e6a19ee7d79344588bee2b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
