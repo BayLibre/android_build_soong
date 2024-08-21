@@ -52,6 +52,24 @@
       "parentUuid": "ac1ee1c4_9389e69a",
       "revId": "a4bf0c8770dd5664e6a19ee7d79344588bee2b56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5e5226b_87ced955",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-21T21:05:46Z",
+      "side": 1,
+      "message": "I\u0027ve looked into [`car-frameworks-service`](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/opt/car/services/builtInServices/Android.bp;drc\u003dac11d67b087afbcdbd1d6109a1885f8c03c2653f;l\u003d7) module more closely. I\u0027ve assumed that the module is part of the `com.android.car.framework` apex based on how it is specified in the `apex_available` property. However, I figured that the module is not actually included in the apex bundle (it is a `lib` of `car-frameworks-service-module`, which is included in the apex). In fact, removing the `apex_available` property from the module definition of `car-frameworks-service` does not cause any failures.\n\nI believe the correct solution is to statically include `car-frameworks-service` in the `com.android.car.framework` apex. I don\u0027t think it\u0027s right to include `car-frameworks-service.impl` in `InstrumentFrameworkModules` as it is not an (Android) framework module, but @ccross@android.com might have different opinions.",
+      "parentUuid": "f295239b_5e3fdedf",
+      "revId": "a4bf0c8770dd5664e6a19ee7d79344588bee2b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
