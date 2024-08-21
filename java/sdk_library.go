@@ -2447,7 +2447,7 @@ func moduleStubLinkType(name string) (stub bool, ret sdkLinkType) {
 		return true, javaModule
 	}
 	if hasStubsLibrarySuffix(name, apiScopeTest) {
-		return true, javaSystem
+		return true, javaTest
 	}
 	if hasStubsLibrarySuffix(name, apiScopeSystemServer) {
 		return true, javaSystemServer
