@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdecd71a_b5838006",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-08-21T22:21:34Z",
+      "side": 1,
+      "message": "TARGET_BOARD_PLATFORM?",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "14c1f85853119d87afc1d454a9a23bd20a7e2b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
