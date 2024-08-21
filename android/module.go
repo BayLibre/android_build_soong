@@ -1612,26 +1612,43 @@ func (m *ModuleBase) SetLicenseInstallMap(installMap []string) {
 	m.licenseInstallMap = append(m.licenseInstallMap, installMap...)
 }
 
+func (m *ModuleBase) generateVariantTarget(ctx *moduleContext) {
+	namespacePrefix := ctx.Namespace().id
+	if namespacePrefix != "" {
+		namespacePrefix = namespacePrefix + "-"
+	}
+
+	if !ctx.uncheckedModule {
+		name := namespacePrefix + ctx.ModuleName() + "-" + ctx.ModuleSubDir() + "-checkbuild"
+		ctx.Phony(name, ctx.checkbuildFiles...)
+		ctx.checkbuildTarget = PathForPhony(ctx, name)
+	}
+
+}
+
 func (m *ModuleBase) generateModuleTarget(ctx *moduleContext) {
 	var allInstalledFiles InstallPaths
-	var allCheckbuildFiles Paths
+	var allCheckbuildTargets Paths
 	ctx.VisitAllModuleVariants(func(module Module) {
 		a := module.base()
-		var checkBuilds Paths
+		var checkbuildTarget Path
+		var uncheckedModule bool
 		if a == m {
 			allInstalledFiles = append(allInstalledFiles, ctx.installFiles...)
-			checkBuilds = ctx.checkbuildFiles
+			checkbuildTarget = ctx.checkbuildTarget
+			uncheckedModule = ctx.uncheckedModule
 		} else {
 			info := OtherModuleProviderOrDefault(ctx, module, InstallFilesProvider)
 			allInstalledFiles = append(allInstalledFiles, info.InstallFiles...)
-			checkBuilds = info.CheckbuildFiles
+			checkbuildTarget = info.CheckbuildTarget
+			uncheckedModule = info.UncheckedModule
 		}
 		// A module's -checkbuild phony targets should
 		// not be created if the module is not exported to make.
 		// Those could depend on the build target and fail to compile
 		// for the current build target.
-		if !ctx.Config().KatiEnabled() || !shouldSkipAndroidMkProcessing(ctx, a) {
-			allCheckbuildFiles = append(allCheckbuildFiles, checkBuilds...)
+		if !ctx.Config().KatiEnabled() || !shouldSkipAndroidMkProcessing(ctx, a) && !uncheckedModule {
+			allCheckbuildTargets = append(allCheckbuildTargets, checkbuildTarget)
 		}
 	})
 
@@ -1652,11 +1669,10 @@ func (m *ModuleBase) generateModuleTarget(ctx *moduleContext) {
 		deps = append(deps, info.InstallTarget)
 	}
 
-	if len(allCheckbuildFiles) > 0 {
+	if len(allCheckbuildTargets) > 0 {
 		name := namespacePrefix + ctx.ModuleName() + "-checkbuild"
-		ctx.Phony(name, allCheckbuildFiles...)
-		info.CheckbuildTarget = PathForPhony(ctx, name)
-		deps = append(deps, info.CheckbuildTarget)
+		ctx.Phony(name, allCheckbuildTargets...)
+		deps = append(deps, PathForPhony(ctx, name))
 	}
 
 	if len(deps) > 0 {
@@ -1773,9 +1789,11 @@ func (m *ModuleBase) archModuleContextFactory(ctx archModuleContextFactoryContex
 }
 
 type InstallFilesInfo struct {
-	InstallFiles    InstallPaths
-	CheckbuildFiles Paths
-	PackagingSpecs  []PackagingSpec
+	InstallFiles     InstallPaths
+	CheckbuildFiles  Paths
+	CheckbuildTarget Path
+	UncheckedModule  bool
+	PackagingSpecs   []PackagingSpec
 	// katiInstalls tracks the install rules that were created by Soong but are being exported
 	// to Make to convert to ninja rules so that Make can add additional dependencies.
 	KatiInstalls katiInstalls
@@ -1977,13 +1995,17 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 			return
 		}
 
+		m.generateVariantTarget(ctx)
+
 		SetProvider(ctx, InstallFilesProvider, InstallFilesInfo{
-			InstallFiles:    ctx.installFiles,
-			CheckbuildFiles: ctx.checkbuildFiles,
-			PackagingSpecs:  ctx.packagingSpecs,
-			KatiInstalls:    ctx.katiInstalls,
-			KatiSymlinks:    ctx.katiSymlinks,
-			TestData:        ctx.testData,
+			InstallFiles:     ctx.installFiles,
+			CheckbuildFiles:  ctx.checkbuildFiles,
+			CheckbuildTarget: ctx.checkbuildTarget,
+			UncheckedModule:  ctx.uncheckedModule,
+			PackagingSpecs:   ctx.packagingSpecs,
+			KatiInstalls:     ctx.katiInstalls,
+			KatiSymlinks:     ctx.katiSymlinks,
+			TestData:         ctx.testData,
 		})
 	} else if ctx.Config().AllowMissingDependencies() {
 		// If the module is not enabled it will not create any build rules, nothing will call
