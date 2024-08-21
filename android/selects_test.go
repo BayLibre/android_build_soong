@@ -1044,6 +1044,7 @@ my_module_type {
 			}
 			fixtures := GroupFixturePreparers(
 				PrepareForTestWithDefaults,
+				PrepareForTestWithBaseConfig,
 				PrepareForTestWithArchMutator,
 				PrepareForTestWithSoongConfigModuleBuildComponents,
 				FixtureRegisterWithContext(func(ctx RegistrationContext) {
