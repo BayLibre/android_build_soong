@@ -1644,12 +1644,10 @@ func apexFileForJavaModuleWithFile(ctx android.ModuleContext, module javaModule,
 	if sdkLib, ok := module.(*java.SdkLibrary); ok {
 		for _, install := range sdkLib.BuiltInstalledForApex() {
 			af.requiredModuleNames = append(af.requiredModuleNames, install.FullModuleName())
-			install.PackageFile(ctx)
 		}
 	} else if dexpreopter, ok := module.(java.DexpreopterInterface); ok {
 		for _, install := range dexpreopter.DexpreoptBuiltInstalledForApex() {
 			af.requiredModuleNames = append(af.requiredModuleNames, install.FullModuleName())
-			install.PackageFile(ctx)
 		}
 	}
 	return af
