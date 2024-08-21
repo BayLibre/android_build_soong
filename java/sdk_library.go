@@ -1794,7 +1794,8 @@ type libraryProperties struct {
 		Dir     *string
 		Tag     *string
 	}
-	Is_stubs_module *bool
+	Is_stubs_module       *bool
+	Stub_contributing_api *string
 }
 
 func (module *SdkLibrary) stubsLibraryProps(mctx android.DefaultableHookContext, apiScope *apiScope) libraryProperties {
@@ -1820,6 +1821,7 @@ func (module *SdkLibrary) stubsLibraryProps(mctx android.DefaultableHookContext,
 	// interop with older developer tools that don't support 1.9.
 	props.Java_version = proptools.StringPtr("1.8")
 	props.Is_stubs_module = proptools.BoolPtr(true)
+	props.Stub_contributing_api = proptools.StringPtr(apiScope.kind.String())
 
 	return props
 }
@@ -2086,6 +2088,8 @@ func (module *SdkLibrary) topLevelStubsLibraryProps(mctx android.DefaultableHook
 		compileDex = proptools.BoolPtr(true)
 	}
 	props.Compile_dex = compileDex
+
+	props.Stub_contributing_api = proptools.StringPtr(apiScope.kind.String())
 
 	if !Bool(module.sdkLibraryProperties.No_dist) && doDist {
 		props.Dist.Targets = []string{"sdk", "win_sdk"}
@@ -2423,34 +2427,21 @@ func (s *defaultNamingScheme) exportableSourceStubsLibraryModuleName(scope *apiS
 
 var _ sdkLibraryComponentNamingScheme = (*defaultNamingScheme)(nil)
 
-func hasStubsLibrarySuffix(name string, apiScope *apiScope) bool {
-	return strings.HasSuffix(name, apiScope.stubsLibraryModuleNameSuffix()) ||
-		strings.HasSuffix(name, apiScope.exportableStubsLibraryModuleNameSuffix())
-}
-
-func moduleStubLinkType(name string) (stub bool, ret sdkLinkType) {
-	name = strings.TrimSuffix(name, ".from-source")
-
-	// This suffix-based approach is fragile and could potentially mis-trigger.
-	// TODO(b/155164730): Clean this up when modules no longer reference sdk_lib stubs directly.
-	if hasStubsLibrarySuffix(name, apiScopePublic) {
-		if name == "hwbinder.stubs" || name == "libcore_private.stubs" {
-			// Due to a previous bug, these modules were not considered stubs, so we retain that.
-			return false, javaPlatform
+func moduleStubLinkType(j *Module) (stub bool, ret sdkLinkType) {
+	if j.properties.Stub_contributing_api != nil {
+		kind := android.ToSdkKind(proptools.String(j.properties.Stub_contributing_api))
+		switch kind {
+		case android.SdkPublic:
+			return true, javaSdk
+		case android.SdkSystem:
+			return true, javaSystem
+		case android.SdkModule:
+			return true, javaModule
+		case android.SdkTest:
+			return true, javaSystem
+		case android.SdkSystemServer:
+			return true, javaSystemServer
 		}
-		return true, javaSdk
-	}
-	if hasStubsLibrarySuffix(name, apiScopeSystem) {
-		return true, javaSystem
-	}
-	if hasStubsLibrarySuffix(name, apiScopeModuleLib) {
-		return true, javaModule
-	}
-	if hasStubsLibrarySuffix(name, apiScopeTest) {
-		return true, javaSystem
-	}
-	if hasStubsLibrarySuffix(name, apiScopeSystemServer) {
-		return true, javaSystemServer
 	}
 	return false, javaPlatform
 }
