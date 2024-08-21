@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8e0c86_fc0cb707",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-21T00:18:14Z",
+      "side": 1,
+      "message": "Note that the presubmit is currently blocked on existing violations (i.e. sdk_version \"test\" -\u003e sdk_version \"private\").",
+      "revId": "e6d0845f9e4dc93b11f83e89e778f9297e05059a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
