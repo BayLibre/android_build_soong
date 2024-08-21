@@ -1241,6 +1241,8 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		}
 		j.headerJarFile = combinedHeaderJarFile
 
+		ctx.CheckbuildFile(j.headerJarFile)
+
 		android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
 			HeaderJars:                          android.PathsIfNonNil(j.headerJarFile),
 			TransitiveLibsHeaderJars:            j.transitiveLibsHeaderJars,
@@ -1697,6 +1699,8 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 			j.dexpreopt(ctx, libName, dexOutputFile)
 
 			outputFile = dexOutputFile
+
+			ctx.CheckbuildFile(dexOutputFile)
 		} else {
 			// There is no code to compile into a dex jar, make sure the resources are propagated
 			// to the APK if this is an app.
@@ -1740,7 +1744,8 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 
 	j.collectTransitiveSrcFiles(ctx, srcFiles)
 
-	ctx.CheckbuildFile(outputFile)
+	ctx.CheckbuildFile(j.implementationJarFile)
+	ctx.CheckbuildFile(j.headerJarFile)
 
 	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
 		HeaderJars:                          android.PathsIfNonNil(j.headerJarFile),
@@ -1907,6 +1912,8 @@ func (j *Module) compileJavaHeader(ctx android.ModuleContext, srcFiles, srcJars 
 	combinedHeaderJarOutputPath := android.PathForModuleOut(ctx, "turbine-combined", jarName)
 	TransformJarsToJar(ctx, combinedHeaderJarOutputPath, "for turbine", jars, android.OptionalPath{},
 		false, nil, []string{"META-INF/TRANSITIVE"})
+
+	ctx.CheckbuildFile(combinedHeaderJarOutputPath)
 
 	return headerJar, combinedHeaderJarOutputPath
 }
