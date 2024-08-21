@@ -119,6 +119,7 @@ func runPackagingTest(t *testing.T, config testConfig, bp string, expected []str
 
 	result := GroupFixturePreparers(
 		PrepareForTestWithDefaults,
+		PrepareForTestWithBaseConfig,
 		PrepareForTestWithArchMutator,
 		FixtureRegisterWithContext(func(ctx RegistrationContext) {
 			ctx.RegisterModuleType("component", componentTestModuleFactory)

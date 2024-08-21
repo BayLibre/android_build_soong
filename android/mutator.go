@@ -116,6 +116,12 @@ var preArch = []RegisterMutatorFunc{
 	// a DefaultableHook.
 	RegisterDefaultsPreArchMutators,
 
+	// Allows some modules to always be built under a different "base configuration"
+	// from the rest of the build. The base configuration is meant to replace
+	// blueprints Config object so that we can have multiple different configurations
+	// in one build.
+	RegisterBaseConfigMutator,
+
 	// Add dependencies on any components so that any component references can be
 	// resolved within the deps mutator.
 	//

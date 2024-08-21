@@ -70,6 +70,11 @@ var PrepareForTestWithDefaults = FixtureRegisterWithContext(func(ctx Registratio
 	ctx.PreArchMutators(RegisterDefaultsPreArchMutators)
 })
 
+var PrepareForTestWithBaseConfig = FixtureRegisterWithContext(func(ctx RegistrationContext) {
+	ctx.PreArchMutators(RegisterBaseConfigMutator)
+	RegisterBaseConfigModuleTypes(ctx)
+})
+
 var PrepareForTestWithComponentsMutator = FixtureRegisterWithContext(func(ctx RegistrationContext) {
 	ctx.PreArchMutators(RegisterComponentsMutator)
 })
@@ -149,6 +154,7 @@ var PrepareForTestWithAndroidBuildComponents = GroupFixturePreparers(
 	PrepareForTestWithArchMutator,
 	PrepareForTestWithComponentsMutator,
 	PrepareForTestWithDefaults,
+	PrepareForTestWithBaseConfig,
 	PrepareForTestWithFilegroup,
 	PrepareForTestWithOverrides,
 	PrepareForTestWithPackageModule,

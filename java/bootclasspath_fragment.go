@@ -417,8 +417,12 @@ func (b *BootclasspathFragmentModule) DepIsInSameApex(ctx android.BaseModuleCont
 	// e.g. concsrypt-bootclasspath-fragment --> art-bootclasspath-fragment
 	if tag == bootclasspathFragmentDepTag {
 		return false
-
 	}
+
+	if _, ok := tag.(android.BaseConfigModuleDepTag); ok {
+		return false
+	}
+
 	panic(fmt.Errorf("boot_image module %q should not have a dependency on %q via tag %s", b, dep, android.PrettyPrintTag(tag)))
 }
 

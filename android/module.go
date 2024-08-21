@@ -2344,8 +2344,8 @@ func (e configurationEvalutor) EvaluateConfiguration(condition proptools.Configu
 	ctx := e.ctx
 	m := e.m
 
-	if !ctx.HasMutatorFinished("defaults") {
-		ctx.OtherModulePropertyErrorf(m, property, "Cannot evaluate configurable property before the defaults mutator has run")
+	if !ctx.HasMutatorFinished("base_config_mutate") {
+		ctx.OtherModulePropertyErrorf(m, property, "Cannot evaluate configurable property before the base config mutator has run")
 		return proptools.ConfigurableValueUndefined()
 	}
 
@@ -2395,24 +2395,26 @@ func (e configurationEvalutor) EvaluateConfiguration(condition proptools.Configu
 			ctx.OtherModulePropertyErrorf(m, property, "soong_config_variable requires 2 arguments, found %d", condition.NumArgs())
 			return proptools.ConfigurableValueUndefined()
 		}
+		baseConfig, ok := OtherModuleProvider(ctx, m, BaseConfigProviderKey)
+		if !ok {
+			// Panicking instead of returning an error because it's a bug in the soong implementation,
+			// every module should have a BaseConfig provider at this point.
+			panic(fmt.Sprintf("Could not find BaseConfigInfo for module %q", m.Name()))
+		}
+
 		namespace := condition.Arg(0)
 		variable := condition.Arg(1)
-		if n, ok := ctx.Config().productVariables.VendorVars[namespace]; ok {
-			if v, ok := n[variable]; ok {
-				ty := ""
-				if namespaces, ok := ctx.Config().productVariables.VendorVarTypes[namespace]; ok {
-					ty = namespaces[variable]
-				}
-				switch ty {
-				case "":
-					// strings are the default, we don't bother writing them to the soong variables json file
-					return proptools.ConfigurableValueString(v)
-				case "bool":
-					return proptools.ConfigurableValueBool(v == "true")
-				default:
-					panic("unhandled soong config variable type: " + ty)
-				}
-
+		v, ty, ok := baseConfig.SoongConfigVariable(namespace, variable)
+		if ok {
+			switch ty {
+			case "", "string":
+				// strings are the default, we don't bother writing them to the soong variables json file,
+				// so accept "" as well as "string".
+				return proptools.ConfigurableValueString(v)
+			case "bool":
+				return proptools.ConfigurableValueBool(v == "true")
+			default:
+				panic("unhandled soong config variable type: " + ty)
 			}
 		}
 		return proptools.ConfigurableValueUndefined()
