@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14e1dc02_53672074",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-21T16:52:31Z",
+      "side": 1,
+      "message": "It\u0027s not possible for mainline-updated SDK pieces to exist beside non-updated versions of the same class, like we have with the bootstrap+runtime libc copies? We\u0027ll always have one, right?",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "465baeed147d8ee85c53b966c583b61de5f9491b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
