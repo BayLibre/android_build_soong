@@ -403,6 +403,7 @@ func (a *aapt) buildActions(ctx android.ModuleContext, opts aaptBuildActionOptio
 			packageName:        a.manifestValues.applicationId,
 		}
 		a.mergedManifestFile = manifestMerger(ctx, transitiveManifestPaths[0], manifestMergerParams)
+		ctx.CheckbuildFile(a.mergedManifestFile)
 		if !a.isLibrary {
 			// Only use the merged manifest for applications.  For libraries, the transitive closure of manifests
 			// will be propagated to the final application and merged there.  The merged manifest for libraries is
@@ -537,6 +538,8 @@ func (a *aapt) buildActions(ctx android.ModuleContext, opts aaptBuildActionOptio
 	aapt2Link(ctx, packageRes, srcJar, proguardOptionsFile, rTxt,
 		linkFlags, linkDeps, compiledRes, compiledOverlay, transitiveAssets, splitPackages,
 		opts.aconfigTextFiles)
+	ctx.CheckbuildFile(packageRes)
+
 	// Extract assets from the resource package output so that they can be used later in aapt2link
 	// for modules that depend on this one.
 	if android.PrefixInList(linkFlags, "-A ") {
@@ -887,7 +890,6 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	var res android.Paths
 	if a.androidLibraryProperties.BuildAAR {
 		BuildAAR(ctx, a.aarFile, a.outputFile, a.manifestPath, a.rTxt, res)
-		ctx.CheckbuildFile(a.aarFile)
 	}
 
 	prebuiltJniPackages := android.Paths{}
@@ -1252,10 +1254,12 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	transitiveAssets := android.ReverseSliceInPlace(staticDeps.assets())
 	aapt2Link(ctx, exportPackage, nil, proguardOptionsFile, aaptRTxt,
 		linkFlags, linkDeps, nil, overlayRes, transitiveAssets, nil, nil)
+	ctx.CheckbuildFile(exportPackage)
 	a.exportPackage = exportPackage
 
 	rJar := android.PathForModuleOut(ctx, "busybox/R.jar")
 	resourceProcessorBusyBoxGenerateBinaryR(ctx, a.rTxt, a.manifest, rJar, nil, true, nil, false)
+	ctx.CheckbuildFile(rJar)
 	a.rJar = rJar
 
 	aapt2ExtractExtraPackages(ctx, extraAaptPackagesFile, a.rJar)
@@ -1349,6 +1353,9 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	} else {
 		a.headerJarFile = classpathFile
 	}
+
+	ctx.CheckbuildFile(a.headerJarFile)
+	ctx.CheckbuildFile(a.implementationJarFile)
 
 	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(a.headerJarFile),
