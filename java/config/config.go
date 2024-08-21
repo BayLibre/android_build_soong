@@ -48,6 +48,7 @@ var (
 		"android.car",
 		"android.car7",
 		"android.car.builtin.impl",
+		"car-frameworks-service.impl",
 		"conscrypt",
 		"core-icu4j",
 		"core-oj",
