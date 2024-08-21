@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27341d7e_a5769f07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-08-21T20:40:45Z",
+      "side": 1,
+      "message": "the presubmit failures are due to the fact that my previous change hasn\u0027t been auto-merged to these branches",
+      "revId": "876b7ce263e6085bb46fbdaaaf4d0ac67c5e5f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
