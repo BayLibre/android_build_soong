@@ -34,6 +34,24 @@
       "parentUuid": "85f28aa7_f4d9ae1e",
       "revId": "a4bf0c8770dd5664e6a19ee7d79344588bee2b56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f295239b_5e3fdedf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885298
+      },
+      "writtenOn": "2024-08-21T19:58:44Z",
+      "side": 1,
+      "message": "Just to verify @jihoonkang@google.com - do you say we should get the instrumented classes under `car-frameworks-service.impl_intermediates` in the build output?",
+      "parentUuid": "ac1ee1c4_9389e69a",
+      "revId": "a4bf0c8770dd5664e6a19ee7d79344588bee2b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
