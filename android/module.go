@@ -2237,8 +2237,8 @@ func (e configurationEvalutor) EvaluateConfiguration(condition proptools.Configu
 	ctx := e.ctx
 	m := e.m
 
-	if !ctx.HasMutatorFinished("defaults") {
-		ctx.OtherModulePropertyErrorf(m, property, "Cannot evaluate configurable property before the defaults mutator has run")
+	if !ctx.HasMutatorFinished("base_config_mutate") {
+		ctx.OtherModulePropertyErrorf(m, property, "Cannot evaluate configurable property before the base config mutator has run")
 		return proptools.ConfigurableValueUndefined()
 	}
 
@@ -2284,12 +2284,17 @@ func (e configurationEvalutor) EvaluateConfiguration(condition proptools.Configu
 			ctx.OtherModulePropertyErrorf(m, property, "soong_config_variable requires 2 arguments, found %d", condition.NumArgs())
 			return proptools.ConfigurableValueUndefined()
 		}
+		baseConfig, ok := OtherModuleProvider(ctx, m, BaseConfigProviderKey)
+		if !ok {
+			panic("Could not find BaseConfigInfo")
+		}
+
 		namespace := condition.Arg(0)
 		variable := condition.Arg(1)
-		if n, ok := ctx.Config().productVariables.VendorVars[namespace]; ok {
+		if n, ok := baseConfig.VendorVars[namespace]; ok {
 			if v, ok := n[variable]; ok {
 				ty := ""
-				if namespaces, ok := ctx.Config().productVariables.VendorVarTypes[namespace]; ok {
+				if namespaces, ok := baseConfig.VendorVarTypes[namespace]; ok {
 					ty = namespaces[variable]
 				}
 				switch ty {
@@ -2301,7 +2306,6 @@ func (e configurationEvalutor) EvaluateConfiguration(condition proptools.Configu
 				default:
 					panic("unhandled soong config variable type: " + ty)
 				}
-
 			}
 		}
 		return proptools.ConfigurableValueUndefined()
