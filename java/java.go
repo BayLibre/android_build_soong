@@ -2735,6 +2735,8 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.properties.Aidl.Export_include_dirs)
 
+	ctx.CheckbuildFile(outputFile)
+
 	if ctx.Device() {
 		// If this is a variant created for a prebuilt_apex then use the dex implementation jar
 		// obtained from the associated deapexer module.
@@ -2801,6 +2803,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			if ctx.Failed() {
 				return
 			}
+			ctx.CheckbuildFile(dexOutputFile)
 
 			// Initialize the hiddenapi structure.
 			j.initHiddenAPI(ctx, makeDexJarPathFromPath(dexOutputFile), outputFile, j.dexProperties.Uncompress_dex)
