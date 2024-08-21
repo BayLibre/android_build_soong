@@ -22,6 +22,30 @@
       },
       "revId": "52fd50714774d7a3cb45418b915609db62f1645b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90bf1b9c_b8ddbd09",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-21T17:57:10Z",
+      "side": 1,
+      "message": "aosp/3195596 has been submitted.",
+      "parentUuid": "abd2b8d9_42491f21",
+      "range": {
+        "startLine": 675,
+        "startChar": 0,
+        "endLine": 677,
+        "endChar": 54
+      },
+      "revId": "52fd50714774d7a3cb45418b915609db62f1645b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
