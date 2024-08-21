@@ -63,6 +63,30 @@
       },
       "revId": "e6d0845f9e4dc93b11f83e89e778f9297e05059a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d096540_b5ef4f6c",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2138,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-21T16:59:34Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "b0471cfd_23ecb6c9",
+      "range": {
+        "startLine": 2138,
+        "startChar": 57,
+        "endLine": 2138,
+        "endChar": 58
+      },
+      "revId": "e6d0845f9e4dc93b11f83e89e778f9297e05059a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
