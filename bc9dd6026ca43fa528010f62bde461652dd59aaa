@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45eaefe8_86f7c269",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2444,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-22T21:25:32Z",
+      "side": 1,
+      "message": "`ToSdkKind(\"\")` (i.e. when the property is not set) would return `SdkInvalid` and return L2446, so I don\u0027t think the default-panic case is necessary here. WDYT?",
+      "parentUuid": "58d12a19_a27fec4b",
+      "revId": "bc9dd6026ca43fa528010f62bde461652dd59aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f2f33ae_3062f892",
         "filename": "java/sdk_library_test.go",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2024-08-22T18:05:44Z",
       "side": 1,
       "message": "Use `FixtureExpectsOneErrorPattern`.",
+      "range": {
+        "startLine": 1867,
+        "startChar": 34,
+        "endLine": 1867,
+        "endChar": 72
+      },
+      "revId": "bc9dd6026ca43fa528010f62bde461652dd59aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b284dc_a48257e8",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1867,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-22T21:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f2f33ae_3062f892",
       "range": {
         "startLine": 1867,
         "startChar": 34,
