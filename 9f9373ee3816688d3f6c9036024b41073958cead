@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7392c381_6887984d",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-22T18:16:30Z",
+      "side": 1,
+      "message": "The java `dependencyTag` has an explicit `installable` field that can be customized when defining the tags, can we do the same here? https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/java.go;l\u003d370;drc\u003d3dac486013cf4256f7ce1bc15e0aa43bbb2524fe\n\nAlso move this method up by the other methods on the `dependencyTag`",
+      "revId": "9f9373ee3816688d3f6c9036024b41073958cead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
