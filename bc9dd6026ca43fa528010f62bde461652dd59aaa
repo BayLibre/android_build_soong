@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d12a19_a27fec4b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2444,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-22T18:05:44Z",
+      "side": 1,
+      "message": "if stub_contributing_api never contains an SdkInvalid, consider adding a default case that panics.",
+      "revId": "bc9dd6026ca43fa528010f62bde461652dd59aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f2f33ae_3062f892",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1867,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-22T18:05:44Z",
+      "side": 1,
+      "message": "Use `FixtureExpectsOneErrorPattern`.",
+      "range": {
+        "startLine": 1867,
+        "startChar": 34,
+        "endLine": 1867,
+        "endChar": 72
+      },
+      "revId": "bc9dd6026ca43fa528010f62bde461652dd59aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
