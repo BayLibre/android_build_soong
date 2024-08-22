@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edc6742c_bb5ceba3",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2444,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-22T21:56:04Z",
+      "side": 1,
+      "message": "Well I would special case the empty string too. But the point being that if it\u0027s set to a value that\u0027s not handled in the switch statement, it would be good to know about it.",
+      "parentUuid": "45eaefe8_86f7c269",
+      "revId": "bc9dd6026ca43fa528010f62bde461652dd59aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f2f33ae_3062f892",
         "filename": "java/sdk_library_test.go",
         "patchSetId": 1
