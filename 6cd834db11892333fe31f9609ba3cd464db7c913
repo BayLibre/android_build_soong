@@ -39,6 +39,46 @@
       "message": "over to owners.",
       "revId": "6cd834db11892333fe31f9609ba3cd464db7c913",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ba3bb6_30d5519f",
+        "filename": "rust/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-22T17:21:40Z",
+      "side": 1,
+      "message": "Please attach a bug to this TODO",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 8
+      },
+      "revId": "6cd834db11892333fe31f9609ba3cd464db7c913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b760718_f221c1f3",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-22T17:21:40Z",
+      "side": 1,
+      "message": "Remove this print.",
+      "revId": "6cd834db11892333fe31f9609ba3cd464db7c913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
