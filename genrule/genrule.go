@@ -243,13 +243,27 @@ func toolDepsMutator(ctx android.BottomUpMutatorContext) {
 	}
 }
 
+var buildNumberAllowlistKey = android.NewOnceKey("genruleBuildNumberAllowlistKey")
+
 // This allowlist should be kept to the bare minimum, it's
 // intended for things that existed before the build number
 // was tightly controlled. Prefer using libbuildversion
 // via the use_version_lib property of cc modules.
-var genrule_build_number_allowlist = map[string]bool{
-	"build/soong/tests:gen":                   true,
-	"tools/tradefederation/core:tradefed_zip": true,
+// This is a function instead of a global map so that
+// soong plugins cannot add entries to the allowlist
+func isModuleInBuildNumberAllowlist(ctx android.ModuleContext) bool {
+	allowlist := ctx.Config().Once(buildNumberAllowlistKey, func() interface{} {
+		return map[string]bool{
+			// go/keep-sorted start
+			"build/soong/tests:gen": true,
+			"hardware/google/camera/common/hal/aidl_service:aidl_camera_build_version": true,
+			"tools/tradefederation/core:tradefed_zip":                                  true,
+			// go/keep-sorted end
+		}
+	}).(map[string]bool)
+
+	_, ok := allowlist[ctx.ModuleDir()+":"+ctx.ModuleName()]
+	return ok
 }
 
 // generateCommonBuildActions contains build action generation logic
@@ -546,7 +560,7 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 		cmd.ImplicitTools(tools)
 		cmd.ImplicitPackagedTools(packagedTools)
 		if proptools.Bool(g.properties.Uses_order_only_build_number_file) {
-			if _, ok := genrule_build_number_allowlist[ctx.ModuleDir()+":"+ctx.ModuleName()]; !ok {
+			if !isModuleInBuildNumberAllowlist(ctx) {
 				ctx.ModuleErrorf("Only allowlisted modules may use uses_order_only_build_number_file: true")
 			}
 			cmd.OrderOnly(ctx.Config().BuildNumberFile(ctx))
