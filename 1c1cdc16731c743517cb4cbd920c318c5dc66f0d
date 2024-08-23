@@ -16,6 +16,46 @@
       "message": "Thanks for fixing this!",
       "revId": "1c1cdc16731c743517cb4cbd920c318c5dc66f0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51648fea_4e09968c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-23T21:18:57Z",
+      "side": 1,
+      "message": "I\u0027d also suggest testing this by making sure that at least analysis passes with a completely clean out directory.  That can be done easily by setting `OUT_DIR` to a directory that doesn\u0027t exist:\n```\nrm -rf out-clean-test; OUT_DIR\u003dout-clean-test m nothing\n```",
+      "revId": "1c1cdc16731c743517cb4cbd920c318c5dc66f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f6eccb_7e3cafb7",
+        "filename": "android/product_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-08-23T21:18:57Z",
+      "side": 1,
+      "message": "local variables are never exported, so generally written with a lower case first letter.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 15
+      },
+      "revId": "1c1cdc16731c743517cb4cbd920c318c5dc66f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
