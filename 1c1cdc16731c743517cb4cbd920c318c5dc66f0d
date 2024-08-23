@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2764ee2a_c0a3fabc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884480
+      },
+      "writtenOn": "2024-08-23T21:53:00Z",
+      "side": 1,
+      "message": "Thanks, Colin! Build succeeded: https://paste.googleplex.com/4780612805459968",
+      "parentUuid": "51648fea_4e09968c",
+      "revId": "1c1cdc16731c743517cb4cbd920c318c5dc66f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0f6eccb_7e3cafb7",
@@ -48,6 +66,30 @@
       "writtenOn": "2024-08-23T21:18:57Z",
       "side": 1,
       "message": "local variables are never exported, so generally written with a lower case first letter.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 15
+      },
+      "revId": "1c1cdc16731c743517cb4cbd920c318c5dc66f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bdc7cb5_a30f2846",
+        "filename": "android/product_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1884480
+      },
+      "writtenOn": "2024-08-23T21:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0f6eccb_7e3cafb7",
       "range": {
         "startLine": 41,
         "startChar": 1,
