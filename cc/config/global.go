@@ -361,9 +361,12 @@ var (
 		"-Wno-unqualified-std-cast-call",
 		"-Wno-array-parameter",
 		"-Wno-gnu-offsetof-extensions",
+<<<<<<< PATCH SET (96a425 Enable -Wfortify-source)
+=======
 		"-Wno-pessimizing-move",
 		// TODO: Enable this warning http://b/315245071
 		"-Wno-fortify-source",
+>>>>>>> BASE      (65c530 Merge "Remove suffix based stub matching logic" into main)
 	}
 
 	llvmNextExtraCommonGlobalCflags = []string{
