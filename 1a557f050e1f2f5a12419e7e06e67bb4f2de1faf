@@ -16,6 +16,24 @@
       "message": "```suggestion\n\t\t\tif !isModuleInBuildNumberAllowlist(ctx) {\n```\nIt seems like it was `!ok` initially?",
       "revId": "1a557f050e1f2f5a12419e7e06e67bb4f2de1faf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf8a63a2_e1b11ba4",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-23T22:44:36Z",
+      "side": 1,
+      "message": "oops, thanks for catching.",
+      "parentUuid": "1d7476e5_349a605d",
+      "revId": "1a557f050e1f2f5a12419e7e06e67bb4f2de1faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
