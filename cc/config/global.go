@@ -364,6 +364,8 @@ var (
 		"-Wno-pessimizing-move",
 		// TODO: Enable this warning http://b/315245071
 		"-Wno-fortify-source",
+		// http://b/361593466
+		"-Wno-cast-function-type-mismatch",
 	}
 
 	llvmNextExtraCommonGlobalCflags = []string{
