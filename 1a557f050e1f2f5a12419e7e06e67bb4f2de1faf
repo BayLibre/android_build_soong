@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d7476e5_349a605d",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-23T22:39:57Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\tif !isModuleInBuildNumberAllowlist(ctx) {\n```\nIt seems like it was `!ok` initially?",
+      "revId": "1a557f050e1f2f5a12419e7e06e67bb4f2de1faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
