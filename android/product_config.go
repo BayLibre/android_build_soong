@@ -37,8 +37,10 @@ func (p *productConfigModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	if targetProduct != "" {
 		targetProduct += "."
 	}
-	soongVariablesPath := PathForOutput(ctx, "soong."+targetProduct+"variables")
-	extraVariablesPath := PathForOutput(ctx, "soong."+targetProduct+"extra.variables")
+
+	CoverageSuffix := ctx.Config().CoverageSuffix()
+	soongVariablesPath := PathForOutput(ctx, "soong."+targetProduct+CoverageSuffix+"variables")
+	extraVariablesPath := PathForOutput(ctx, "soong."+targetProduct+CoverageSuffix+"extra.variables")
 
 	rule := NewRuleBuilder(pctx, ctx)
 	rule.Command().BuiltTool("merge_json").
