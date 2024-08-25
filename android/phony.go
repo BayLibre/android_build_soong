@@ -26,20 +26,14 @@ type phonyMap map[string]Paths
 
 var phonyMapLock sync.Mutex
 
-type ModulePhonyInfo struct {
-	Phonies map[string]Paths
-}
-
-var ModulePhonyProvider = blueprint.NewProvider[ModulePhonyInfo]()
-
-func getSingletonPhonyMap(config Config) phonyMap {
+func getPhonyMap(config Config) phonyMap {
 	return config.Once(phonyMapOnceKey, func() interface{} {
 		return make(phonyMap)
 	}).(phonyMap)
 }
 
-func addSingletonPhony(config Config, name string, deps ...Path) {
-	phonyMap := getSingletonPhonyMap(config)
+func addPhony(config Config, name string, deps ...Path) {
+	phonyMap := getPhonyMap(config)
 	phonyMapLock.Lock()
 	defer phonyMapLock.Unlock()
 	phonyMap[name] = append(phonyMap[name], deps...)
@@ -53,15 +47,7 @@ type phonySingleton struct {
 var _ SingletonMakeVarsProvider = (*phonySingleton)(nil)
 
 func (p *phonySingleton) GenerateBuildActions(ctx SingletonContext) {
-	p.phonyMap = getSingletonPhonyMap(ctx.Config())
-	ctx.VisitAllModules(func(m Module) {
-		if info, ok := OtherModuleProvider(ctx, m, ModulePhonyProvider); ok {
-			for k, v := range info.Phonies {
-				p.phonyMap[k] = append(p.phonyMap[k], v...)
-			}
-		}
-	})
-
+	p.phonyMap = getPhonyMap(ctx.Config())
 	p.phonyList = SortedKeys(p.phonyMap)
 	for _, phony := range p.phonyList {
 		p.phonyMap[phony] = SortedUniquePaths(p.phonyMap[phony])

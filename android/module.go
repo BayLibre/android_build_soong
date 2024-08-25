@@ -1797,7 +1797,6 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		bp:                blueprintCtx,
 		baseModuleContext: m.baseModuleContextFactory(blueprintCtx),
 		variables:         make(map[string]string),
-		phonies:           make(map[string]Paths),
 	}
 
 	setContainerInfo(ctx)
@@ -2053,11 +2052,6 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		SetProvider(ctx, OutputFilesProvider, m.outputFiles)
 	}
 
-	if len(ctx.phonies) > 0 {
-		SetProvider(ctx, ModulePhonyProvider, ModulePhonyInfo{
-			Phonies: ctx.phonies,
-		})
-	}
 	buildComplianceMetadataProvider(ctx, m)
 }
 

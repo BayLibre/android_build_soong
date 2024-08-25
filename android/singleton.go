@@ -177,7 +177,7 @@ func (s *singletonContextAdaptor) Build(pctx PackageContext, params BuildParams)
 }
 
 func (s *singletonContextAdaptor) Phony(name string, deps ...Path) {
-	addSingletonPhony(s.Config(), name, deps...)
+	addPhony(s.Config(), name, deps...)
 }
 
 func (s *singletonContextAdaptor) SetOutDir(pctx PackageContext, value string) {
