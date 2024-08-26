@@ -222,13 +222,6 @@ type CommonProperties struct {
 	// the stubs via libs, but should be set to true when the module depends on
 	// the stubs via static libs.
 	Is_stubs_module *bool
-
-	// If true, enable the "Ravenizer" tool on the output jar.
-	// "Ravenizer" is a tool for Ravenwood tests, but it can also be enabled on other kinds
-	// of java targets.
-	Ravenizer struct {
-		Enabled *bool
-	}
 }
 
 // Properties that are specific to device modules. Host module factories should not add these when
@@ -565,10 +558,6 @@ type Module struct {
 	// List of soong module dependencies required to compile the current module.
 	// This information is printed out to `Dependencies` field in module_bp_java_deps.json
 	compileDepNames []string
-
-	ravenizer struct {
-		enabled bool
-	}
 }
 
 var _ android.InstallableModule = (*Module)(nil)
@@ -1124,6 +1113,7 @@ func (j *Module) addGeneratedSrcJars(path android.Path) {
 }
 
 func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspathJars, extraCombinedJars android.Paths) {
+
 	// Auto-propagating jarjar rules
 	jarjarProviderData := j.collectJarJarRules(ctx)
 	if jarjarProviderData != nil {
@@ -1139,10 +1129,6 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 	}
 
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.deviceProperties.Aidl.Export_include_dirs)
-
-	if re := proptools.Bool(j.properties.Ravenizer.Enabled); re {
-		j.ravenizer.enabled = re
-	}
 
 	deps := j.collectDeps(ctx)
 	flags := j.collectBuilderFlags(ctx, deps)
@@ -1580,18 +1566,6 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 
 	if ctx.Failed() {
 		return
-	}
-
-	if j.ravenizer.enabled {
-		ravenizerInput := outputFile
-		ravenizerOutput := android.PathForModuleOut(ctx, "ravenizer", jarName)
-		ctx.Build(pctx, android.BuildParams{
-			Rule:        ravenizer,
-			Description: "ravenizer",
-			Input:       ravenizerInput,
-			Output:      ravenizerOutput,
-		})
-		outputFile = ravenizerOutput
 	}
 
 	// Check package restrictions if necessary.
