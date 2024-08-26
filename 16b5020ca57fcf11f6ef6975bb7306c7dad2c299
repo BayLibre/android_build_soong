@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13333047_071c56a7",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 17
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-08-26T19:01:51Z",
+      "side": 1,
+      "message": "I think this is fine for now, but what do you think about a followup change to change `is_stubs_module: true` to something like `api_surfaces: [\"public\"]`?",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "16b5020ca57fcf11f6ef6975bb7306c7dad2c299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
