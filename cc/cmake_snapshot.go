@@ -133,6 +133,7 @@ type CmakeSnapshot struct {
 
 	Properties CmakeSnapshotProperties
 
+	zipName string
 	zipPath android.WritablePath
 }
 
@@ -313,10 +314,16 @@ func (m *CmakeSnapshot) DepsMutator(ctx android.BottomUpMutatorContext) {
 	}
 }
 
+func ZipName(ctx android.ModuleContext) string {
+	return ctx.ModuleName() + ".zip"
+}
+
 func (m *CmakeSnapshot) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var templateBuffer bytes.Buffer
 	var pprop cmakeProcessedProperties
-	m.zipPath = android.PathForModuleOut(ctx, ctx.ModuleName()+".zip")
+
+	m.zipName = ctx.ModuleName() + ".zip"
+	m.zipPath = android.PathForModuleOut(ctx, m.zipName)
 
 	// Process Library_mapping for more efficient lookups
 	pprop.LibraryMapping = map[string]LibraryMappingProperty{}
@@ -509,6 +516,10 @@ func (m *CmakeSnapshot) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	zipRule.Build(m.zipPath.String(), "archiving "+ctx.ModuleName())
 
 	ctx.SetOutputFiles(android.Paths{m.zipPath}, "")
+}
+
+func (m *CmakeSnapshot) MakeVars(ctx android.MakeVarsContext) {
+	ctx.DistForGoalWithFilename(m.Name(), m.zipPath, m.zipName)
 }
 
 func (m *CmakeSnapshot) AndroidMkEntries() []android.AndroidMkEntries {
