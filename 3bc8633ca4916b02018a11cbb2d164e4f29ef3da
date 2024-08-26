@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c604ef_c179c60b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-26T23:53:44Z",
+      "side": 1,
+      "message": "if I call \u0027m binder_sdk\u0027 would you expect the dist targets to get created, or would you expect me to run \u0027m binder_sdk dist\u0027?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "3bc8633ca4916b02018a11cbb2d164e4f29ef3da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f42258_8f5d703e",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-26T23:53:44Z",
+      "side": 1,
+      "message": "I don\u0027t think this is getting picked up. Is there a way to do dist without a singleton?",
+      "range": {
+        "startLine": 521,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 0
+      },
+      "revId": "3bc8633ca4916b02018a11cbb2d164e4f29ef3da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
