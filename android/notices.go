@@ -38,8 +38,15 @@ func modulesOutputDirs(ctx BuilderContext, modules ...Module) []string {
 
 func modulesLicenseMetadata(ctx BuilderContext, modules ...Module) Paths {
 	result := make(Paths, 0, len(modules))
+	mctx, isMctx := ctx.(ModuleContext)
 	for _, module := range modules {
-		if mf := module.base().licenseMetadataFile; mf != nil {
+		var mf Path
+		if isMctx && mctx.Module() == module {
+			mf = mctx.LicenseMetadataFile()
+		} else {
+			mf = OtherModuleProviderOrDefault(ctx, module, InstallFilesProvider).LicenseMetadataFile
+		}
+		if mf != nil {
 			result = append(result, mf)
 		}
 	}

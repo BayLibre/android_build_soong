@@ -440,6 +440,7 @@ type BuilderContext interface {
 	PathContext
 	Rule(PackageContext, string, blueprint.RuleParams, ...string) blueprint.Rule
 	Build(PackageContext, BuildParams)
+	otherModuleProvider(m blueprint.Module, provider blueprint.AnyProviderKey) (any, bool)
 }
 
 var _ BuilderContext = ModuleContext(nil)
@@ -1356,6 +1357,10 @@ func (builderContextForTests) Rule(PackageContext, string, blueprint.RuleParams,
 	return nil
 }
 func (builderContextForTests) Build(PackageContext, BuildParams) {}
+
+func (builderContextForTests) otherModuleProvider(m blueprint.Module, provider blueprint.AnyProviderKey) (any, bool) {
+	return nil, false
+}
 
 func writeRspFileRule(ctx BuilderContext, rspFile WritablePath, paths Paths) {
 	buf := &strings.Builder{}
