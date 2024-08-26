@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t this comment be on TransitiveInstallFiles? The packaging specs were exposed via a public method.",
       "revId": "31bbeb428abfc8c683e5fdfceb62d74e03d54ecc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab0e628a_83ffd2ad",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1775,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-08-26T17:46:15Z",
+      "side": 1,
+      "message": "You are right, done",
+      "parentUuid": "7e3b678b_27d04155",
+      "revId": "31bbeb428abfc8c683e5fdfceb62d74e03d54ecc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
