@@ -16,6 +16,24 @@
       "message": "The java `dependencyTag` has an explicit `installable` field that can be customized when defining the tags, can we do the same here? https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/java.go;l\u003d370;drc\u003d3dac486013cf4256f7ce1bc15e0aa43bbb2524fe\n\nAlso move this method up by the other methods on the `dependencyTag`",
       "revId": "9f9373ee3816688d3f6c9036024b41073958cead",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a6df04b_4130efc1",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-26T20:01:19Z",
+      "side": 1,
+      "message": "I think we do not need `InstallDepNeeded` at all. We create a separate LOCAL_MODULE entry for each individual dexpreopt artifact for apex system server jars, and add those as required for the top-level apex.\n\nSince they are explicitly added to required, tracking them via InstallDepNeeded is not necessary.",
+      "parentUuid": "7392c381_6887984d",
+      "revId": "9f9373ee3816688d3f6c9036024b41073958cead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
