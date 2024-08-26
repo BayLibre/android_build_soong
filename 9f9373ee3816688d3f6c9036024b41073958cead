@@ -34,6 +34,24 @@
       "parentUuid": "7392c381_6887984d",
       "revId": "9f9373ee3816688d3f6c9036024b41073958cead",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecc70fea_675b28e0",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-26T20:59:14Z",
+      "side": 1,
+      "message": "I was incorrect, we need this dependency tag for the soong packaging system, as pointed out by the presubmit error.",
+      "parentUuid": "4a6df04b_4130efc1",
+      "revId": "9f9373ee3816688d3f6c9036024b41073958cead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
