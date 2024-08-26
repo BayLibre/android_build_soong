@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c58e005_74c08d99",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-26T18:07:05Z",
+      "side": 1,
+      "message": "It might be beneficial to create a `util` function based on this -- something like `RemoveElementsWithPrefix`?",
+      "range": {
+        "startLine": 268,
+        "startChar": 3,
+        "endLine": 273,
+        "endChar": 4
+      },
+      "revId": "5f2556348e0ee16447098c48e904dbb118dee458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
