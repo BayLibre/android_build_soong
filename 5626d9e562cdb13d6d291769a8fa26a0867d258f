@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1cc75a4_1ca4f0ef",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-26T23:34:21Z",
+      "side": 1,
+      "message": "Please change the function signature to take an `OtherModuleProviderContext`.",
+      "revId": "5626d9e562cdb13d6d291769a8fa26a0867d258f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
