@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3b678b_27d04155",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1775,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-26T17:36:47Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this comment be on TransitiveInstallFiles? The packaging specs were exposed via a public method.",
+      "revId": "31bbeb428abfc8c683e5fdfceb62d74e03d54ecc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
