@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5500d7a_fddbfbb5",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-27T19:14:40Z",
+      "side": 1,
+      "message": "We would like to remove the rules that copy files to the \"full install path\", because if there are multiple modules that get installed to the same location, those rules conflict, even if they\u0027re never included on the same device.\n\nInstead of adding them as implicit deps here, could you make the filesystem module do the copy as it\u0027s being built? This could be done by adding the \"full install\" directories to `dirsToSpecs` during `copyPackagingSpecs`, but don\u0027t you also need to copy the other, non-packagingspec files too?",
+      "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
