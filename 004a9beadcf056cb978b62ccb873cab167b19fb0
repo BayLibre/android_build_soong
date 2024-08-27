@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64a91019_11e5a807",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3045,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-27T23:09:54Z",
+      "side": 1,
+      "message": "Please use `%s` for both of these.",
+      "range": {
+        "startLine": 3045,
+        "startChar": 45,
+        "endLine": 3045,
+        "endChar": 60
+      },
+      "revId": "004a9beadcf056cb978b62ccb873cab167b19fb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
