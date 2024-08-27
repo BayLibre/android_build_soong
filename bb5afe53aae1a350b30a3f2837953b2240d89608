@@ -16,6 +16,24 @@
       "message": "Could you elaborate on this change?",
       "revId": "bb5afe53aae1a350b30a3f2837953b2240d89608",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c3be2d2_e5f8bf14",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-08-27T01:22:15Z",
+      "side": 1,
+      "message": "This is not related with this change.\nDuring the test run, I had an error on generating `linker.config.pb`. Even after fixing the problem, I had to manually remove the `android.PathForModuleOut(ctx, \"temp.pb\")` file to build again. By adding `--force` the script overwrites the output file without complaining.",
+      "parentUuid": "ef8d8909_9c987d46",
+      "revId": "bb5afe53aae1a350b30a3f2837953b2240d89608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
