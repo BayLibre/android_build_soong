@@ -17,6 +17,7 @@ package android
 import (
 	"crypto/sha256"
 	"fmt"
+	"os"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -580,6 +581,27 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscapeCommandString b
 				})
 			}
 
+			// Only allow the build to access certain environment variables
+			command.DontInheritEnv = proto.Bool(true)
+			inheritedVars := []string{
+				"PATH",
+				"JAVA_HOME",
+				"TMPDIR",
+			}
+			// Allow RBE variables because the art tests invoke RBE manually
+			for _, e := range os.Environ() {
+				if name, _, ok := strings.Cut(e, "="); ok && strings.HasPrefix(name, "RBE_") {
+					inheritedVars = append(inheritedVars, name)
+				}
+			}
+			for _, v := range inheritedVars {
+				command.Env = append(command.Env, &sbox_proto.EnvironmentVariable{
+					Name: proto.String(v),
+					State: &sbox_proto.EnvironmentVariable_Inherit{
+						Inherit: true,
+					},
+				})
+			}
 			// Set OUT_DIR to the relative path of the sandboxed out directory.
 			// Otherwise, OUT_DIR will be inherited from the rest of the build,
 			// which will allow scripts to escape the sandbox if OUT_DIR is an
