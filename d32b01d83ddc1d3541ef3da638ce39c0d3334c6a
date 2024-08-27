@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c192b6cb_5ed6452e",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-08-27T04:55:30Z",
+      "side": 1,
+      "message": "We may use `skipInstall` instead of `skipFullInstall` because these files are installed to both Make and Soong system images and we have rule to install them in both installPath.\nLet me update this with existing `skipInstall`",
+      "range": {
+        "startLine": 426,
+        "startChar": 10,
+        "endLine": 426,
+        "endChar": 25
+      },
+      "revId": "d32b01d83ddc1d3541ef3da638ce39c0d3334c6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
