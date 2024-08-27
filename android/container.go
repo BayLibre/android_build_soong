@@ -219,7 +219,6 @@ var containerBoundaryFunctionsTable = map[*container]containerBoundaryFunc{
 // ----------------------------------------------------------------------------
 
 type InstallableModule interface {
-	ContainersInfo() ContainersInfo
 	StaticDependencyTags() []blueprint.DependencyTag
 	DynamicDependencyTags() []blueprint.DependencyTag
 }
@@ -413,7 +412,7 @@ func generateContainerInfo(ctx ModuleContext) ContainersInfo {
 
 func getContainerModuleInfo(ctx ModuleContext, module Module) (ContainersInfo, bool) {
 	if ctx.Module() == module {
-		return module.ContainersInfo(), true
+		return ctx.getContainersInfo(), true
 	}
 
 	return OtherModuleProvider(ctx, module, ContainersInfoProvider)
@@ -428,7 +427,7 @@ func setContainerInfo(ctx ModuleContext) {
 
 	if _, ok := ctx.Module().(InstallableModule); ok {
 		containersInfo := generateContainerInfo(ctx)
-		ctx.Module().base().containersInfo = containersInfo
+		ctx.setContainersInfo(containersInfo)
 		SetProvider(ctx, ContainersInfoProvider, containersInfo)
 	}
 }
