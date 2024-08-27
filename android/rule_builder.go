@@ -17,6 +17,7 @@ package android
 import (
 	"crypto/sha256"
 	"fmt"
+	"os"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -463,6 +464,8 @@ func (r *RuleBuilder) Build(name string, desc string) {
 	r.build(name, desc, true)
 }
 
+var sandboxEnvOnceKey = NewOnceKey("sandbox_environment_variables")
+
 func (r *RuleBuilder) build(name string, desc string, ninjaEscapeCommandString bool) {
 	name = ninjaNameEscape(name)
 
@@ -580,16 +583,41 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscapeCommandString b
 				})
 			}
 
-			// Set OUT_DIR to the relative path of the sandboxed out directory.
-			// Otherwise, OUT_DIR will be inherited from the rest of the build,
-			// which will allow scripts to escape the sandbox if OUT_DIR is an
-			// absolute path.
-			command.Env = append(command.Env, &sbox_proto.EnvironmentVariable{
-				Name: proto.String("OUT_DIR"),
-				State: &sbox_proto.EnvironmentVariable_Value{
-					Value: sboxOutSubDir,
-				},
-			})
+			// Only allow the build to access certain environment variables
+			command.DontInheritEnv = proto.Bool(true)
+			command.Env = r.ctx.Config().Once(sandboxEnvOnceKey, func() interface{} {
+				var result []*sbox_proto.EnvironmentVariable
+				inheritedVars := []string{
+					"PATH",
+					"JAVA_HOME",
+					"TMPDIR",
+				}
+				// Allow RBE variables because the art tests invoke RBE manually
+				for _, e := range os.Environ() {
+					if name, _, ok := strings.Cut(e, "="); ok && strings.HasPrefix(name, "RBE_") {
+						inheritedVars = append(inheritedVars, name)
+					}
+				}
+				for _, v := range inheritedVars {
+					result = append(result, &sbox_proto.EnvironmentVariable{
+						Name: proto.String(v),
+						State: &sbox_proto.EnvironmentVariable_Inherit{
+							Inherit: true,
+						},
+					})
+				}
+				// Set OUT_DIR to the relative path of the sandboxed out directory.
+				// Otherwise, OUT_DIR will be inherited from the rest of the build,
+				// which will allow scripts to escape the sandbox if OUT_DIR is an
+				// absolute path.
+				result = append(result, &sbox_proto.EnvironmentVariable{
+					Name: proto.String("OUT_DIR"),
+					State: &sbox_proto.EnvironmentVariable_Value{
+						Value: sboxOutSubDir,
+					},
+				})
+				return result
+			}).([]*sbox_proto.EnvironmentVariable)
 			command.Chdir = proto.Bool(true)
 		}
 
