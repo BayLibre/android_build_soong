@@ -34,6 +34,24 @@
       ],
       "revId": "8a2c56c5165e90174dffc158fe9c76e13b00ba3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e261c9_1340123b",
+        "filename": "apex/dexpreopt_bootjars_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-27T23:05:35Z",
+      "side": 1,
+      "message": "I think this should not be necessary in the existing implementation. For source builds, the dependency is created from `dex_bootjars` to the apex boot jar directly.\n\nAlthough now to think of it, maybe `dex_bootjars` should depend on the top-level source apex for source builds?",
+      "parentUuid": "90b4eed1_ec184722",
+      "revId": "8a2c56c5165e90174dffc158fe9c76e13b00ba3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
