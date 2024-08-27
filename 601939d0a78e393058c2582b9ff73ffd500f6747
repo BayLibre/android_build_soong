@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70b2659_a169547d",
+        "filename": "android/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-27T18:11:40Z",
+      "side": 1,
+      "message": "How are the calls to jacoco methods resolved at runtime if the library is not installed on device?",
+      "range": {
+        "startLine": 97,
+        "startChar": 76,
+        "endLine": 98,
+        "endChar": 18
+      },
+      "revId": "601939d0a78e393058c2582b9ff73ffd500f6747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
