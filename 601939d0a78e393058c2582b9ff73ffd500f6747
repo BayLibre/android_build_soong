@@ -22,6 +22,30 @@
       },
       "revId": "601939d0a78e393058c2582b9ff73ffd500f6747",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d14acf53_f25fe7f4",
+        "filename": "android/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-27T18:39:59Z",
+      "side": 1,
+      "message": "I do not fully understand how the coverage works, but IIUC jacoco is only used for instrumentation (so it is basically a toolchain, like `javac` or `d8/r8`). i.e. in what case would a library on device call a jacoco method? If it does call a method and if `jacocoagent` is installed on device, how would the method call be resolved at runtime for non-coverage builds given that `jacocoagent` is only added as a dependency for coverage builds?",
+      "parentUuid": "f70b2659_a169547d",
+      "range": {
+        "startLine": 97,
+        "startChar": 76,
+        "endLine": 98,
+        "endChar": 18
+      },
+      "revId": "601939d0a78e393058c2582b9ff73ffd500f6747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
