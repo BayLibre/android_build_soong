@@ -1155,7 +1155,7 @@ func enforceAppUpdatability(mctx android.TopDownMutatorContext) {
 		mctx.VisitDirectDeps(func(module android.Module) {
 			// ignore android_test_app
 			if app, ok := module.(*java.AndroidApp); ok {
-				app.SetUpdatable(true)
+				app.SetUpdatable()
 			}
 		})
 	}
@@ -2774,14 +2774,9 @@ func (a *apexBundle) checkJavaStableSdkVersion(ctx android.ModuleContext) {
 
 // checkApexAvailability ensures that the all the dependencies are marked as available for this APEX.
 func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
-	// Let's be practical. Availability for test, host, and the VNDK apex isn't important
-	if a.testApex || a.vndkApex {
-		return
-	}
-
-	// Because APEXes targeting other than system/system_ext partitions can't set
-	// apex_available, we skip checks for these APEXes
-	if a.SocSpecific() || a.DeviceSpecific() || (a.ProductSpecific() && ctx.Config().EnforceProductPartitionInterface()) {
+	// Let's be practical. Availability for test, host, and the VNDK apex isn't important.
+	// Also, skip the check for non-updatable APEXes there really is a no reason to do so.
+	if a.testApex || a.vndkApex || !a.Updatable() {
 		return
 	}
 
