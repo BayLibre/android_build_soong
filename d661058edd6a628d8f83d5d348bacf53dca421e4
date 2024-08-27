@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80480337_8b12161b",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1739,
+      "author": {
+        "id": 1883870
+      },
+      "writtenOn": "2024-08-27T21:22:16Z",
+      "side": 1,
+      "message": "MetricsUpload run post-build so sometimes it prevents to unmount in abfs. Please create a bug here so that we can enable it later.",
+      "fixSuggestions": [
+        {
+          "fixId": "33483709_6a1d516a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "ui/build/config.go",
+              "range": {
+                "startLine": 1740,
+                "startChar": 0,
+                "endLine": 1740,
+                "endChar": 0
+              },
+              "replacement": "\t\t// TODO(b/290231111): Enable metrics upload after unmounting abfs.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d661058edd6a628d8f83d5d348bacf53dca421e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
