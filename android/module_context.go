@@ -498,23 +498,25 @@ func (m *moduleContext) InstallFileWithExtraFilesZip(installPath InstallPath, na
 
 func (m *moduleContext) PackageFile(installPath InstallPath, name string, srcPath Path) PackagingSpec {
 	fullInstallPath := installPath.Join(m, name)
-	return m.packageFile(fullInstallPath, srcPath, false)
+	return m.packageFile(fullInstallPath, srcPath, false, false)
 }
 
 func (m *moduleContext) getAconfigPaths() *Paths {
 	return &m.module.base().aconfigFilePaths
 }
 
-func (m *moduleContext) packageFile(fullInstallPath InstallPath, srcPath Path, executable bool) PackagingSpec {
+func (m *moduleContext) packageFile(fullInstallPath InstallPath, srcPath Path, executable bool, fullInstall bool) PackagingSpec {
 	licenseFiles := m.Module().EffectiveLicenseFiles()
 	spec := PackagingSpec{
 		relPathInPackage:      Rel(m, fullInstallPath.PartitionDir(), fullInstallPath.String()),
+		fullInstallPath:       fullInstallPath,
 		srcPath:               srcPath,
 		symlinkTarget:         "",
 		executable:            executable,
 		effectiveLicenseFiles: &licenseFiles,
 		partition:             fullInstallPath.partition,
 		skipInstall:           m.skipInstall(),
+		skipFullInstall:       !fullInstall,
 		aconfigPaths:          m.getAconfigPaths(),
 		archType:              m.target.Arch.ArchType,
 	}
@@ -588,7 +590,7 @@ func (m *moduleContext) installFile(installPath InstallPath, name string, srcPat
 		m.installFiles = append(m.installFiles, fullInstallPath)
 	}
 
-	m.packageFile(fullInstallPath, srcPath, executable)
+	m.packageFile(fullInstallPath, srcPath, executable, m.requiresFullInstall())
 
 	m.checkbuildFiles = append(m.checkbuildFiles, srcPath)
 
@@ -636,11 +638,13 @@ func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, src
 
 	m.packagingSpecs = append(m.packagingSpecs, PackagingSpec{
 		relPathInPackage: Rel(m, fullInstallPath.PartitionDir(), fullInstallPath.String()),
+		fullInstallPath:  fullInstallPath,
 		srcPath:          nil,
 		symlinkTarget:    relPath,
 		executable:       false,
 		partition:        fullInstallPath.partition,
 		skipInstall:      m.skipInstall(),
+		skipFullInstall:  !m.requiresFullInstall(),
 		aconfigPaths:     m.getAconfigPaths(),
 		archType:         m.target.Arch.ArchType,
 	})
@@ -680,11 +684,13 @@ func (m *moduleContext) InstallAbsoluteSymlink(installPath InstallPath, name str
 
 	m.packagingSpecs = append(m.packagingSpecs, PackagingSpec{
 		relPathInPackage: Rel(m, fullInstallPath.PartitionDir(), fullInstallPath.String()),
+		fullInstallPath:  fullInstallPath,
 		srcPath:          nil,
 		symlinkTarget:    absPath,
 		executable:       false,
 		partition:        fullInstallPath.partition,
 		skipInstall:      m.skipInstall(),
+		skipFullInstall:  !m.requiresFullInstall(),
 		aconfigPaths:     m.getAconfigPaths(),
 		archType:         m.target.Arch.ArchType,
 	})
