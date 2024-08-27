@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef8d8909_9c987d46",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-27T01:18:32Z",
+      "side": 1,
+      "message": "Could you elaborate on this change?",
+      "revId": "bb5afe53aae1a350b30a3f2837953b2240d89608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
