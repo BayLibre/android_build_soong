@@ -848,10 +848,6 @@ type ModuleBase struct {
 	// Merged Aconfig files for all transitive deps.
 	aconfigFilePaths Paths
 
-	// moduleInfoJSON can be filled out by GenerateAndroidBuildActions to write a JSON file that will
-	// be included in the final module-info.json produced by Make.
-	moduleInfoJSON *ModuleInfoJSON
-
 	// complianceMetadataInfo is for different module types to dump metadata.
 	// See android.ModuleContext interface.
 	complianceMetadataInfo *ComplianceMetadataInfo
@@ -1992,7 +1988,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	SetProvider(ctx, InstallFilesProvider, installFiles)
 	buildLicenseMetadata(ctx, ctx.licenseMetadataFile)
 
-	if m.moduleInfoJSON != nil {
+	if ctx.moduleInfoJSON != nil {
 		var installed InstallPaths
 		installed = append(installed, ctx.katiInstalls.InstallPaths()...)
 		installed = append(installed, ctx.katiSymlinks.InstallPaths()...)
@@ -2012,28 +2008,28 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 			data = append(data, d.ToRelativeInstallPath())
 		}
 
-		if m.moduleInfoJSON.Uninstallable {
+		if ctx.moduleInfoJSON.Uninstallable {
 			installedStrings = nil
-			if len(m.moduleInfoJSON.CompatibilitySuites) == 1 && m.moduleInfoJSON.CompatibilitySuites[0] == "null-suite" {
-				m.moduleInfoJSON.CompatibilitySuites = nil
-				m.moduleInfoJSON.TestConfig = nil
-				m.moduleInfoJSON.AutoTestConfig = nil
+			if len(ctx.moduleInfoJSON.CompatibilitySuites) == 1 && ctx.moduleInfoJSON.CompatibilitySuites[0] == "null-suite" {
+				ctx.moduleInfoJSON.CompatibilitySuites = nil
+				ctx.moduleInfoJSON.TestConfig = nil
+				ctx.moduleInfoJSON.AutoTestConfig = nil
 				data = nil
 			}
 		}
 
-		m.moduleInfoJSON.core = CoreModuleInfoJSON{
-			RegisterName:       m.moduleInfoRegisterName(ctx, m.moduleInfoJSON.SubName),
+		ctx.moduleInfoJSON.core = CoreModuleInfoJSON{
+			RegisterName:       m.moduleInfoRegisterName(ctx, ctx.moduleInfoJSON.SubName),
 			Path:               []string{ctx.ModuleDir()},
 			Installed:          installedStrings,
-			ModuleName:         m.BaseModuleName() + m.moduleInfoJSON.SubName,
+			ModuleName:         m.BaseModuleName() + ctx.moduleInfoJSON.SubName,
 			SupportedVariants:  []string{m.moduleInfoVariant(ctx)},
 			TargetDependencies: targetRequired,
 			HostDependencies:   hostRequired,
 			Data:               data,
 			Required:           m.RequiredModuleNames(ctx),
 		}
-		SetProvider(ctx, ModuleInfoJSONProvider, m.moduleInfoJSON)
+		SetProvider(ctx, ModuleInfoJSONProvider, ctx.moduleInfoJSON)
 	}
 
 	m.buildParams = ctx.buildParams

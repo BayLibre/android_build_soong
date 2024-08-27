@@ -266,6 +266,10 @@ type moduleContext struct {
 	buildParams []BuildParams
 	ruleParams  map[blueprint.Rule]blueprint.RuleParams
 	variables   map[string]string
+
+	// moduleInfoJSON can be filled out by GenerateAndroidBuildActions to write a JSON file that will
+	// be included in the final module-info.json produced by Make.
+	moduleInfoJSON *ModuleInfoJSON
 }
 
 var _ ModuleContext = &moduleContext{}
@@ -729,11 +733,11 @@ func (m *moduleContext) LicenseMetadataFile() Path {
 }
 
 func (m *moduleContext) ModuleInfoJSON() *ModuleInfoJSON {
-	if moduleInfoJSON := m.module.base().moduleInfoJSON; moduleInfoJSON != nil {
+	if moduleInfoJSON := m.moduleInfoJSON; moduleInfoJSON != nil {
 		return moduleInfoJSON
 	}
 	moduleInfoJSON := &ModuleInfoJSON{}
-	m.module.base().moduleInfoJSON = moduleInfoJSON
+	m.moduleInfoJSON = moduleInfoJSON
 	return moduleInfoJSON
 }
 
