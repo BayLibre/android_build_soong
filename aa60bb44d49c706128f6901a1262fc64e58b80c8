@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f7d546_7b2940f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2024-08-27T17:59:16Z",
+      "side": 1,
+      "message": "Bypass Presubmit Reason: https://irm.corp.google.com/incidents/i_rQFB82efw927BmqEuxE3/overview?search\u003d",
+      "revId": "aa60bb44d49c706128f6901a1262fc64e58b80c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
