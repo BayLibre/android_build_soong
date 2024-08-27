@@ -21,6 +21,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"strings"
+	"sync"
 
 	"android/soong/testing"
 
@@ -212,6 +213,9 @@ type AndroidApp struct {
 	javaApiUsedByOutputFile android.ModuleOutPath
 
 	privAppAllowlist android.OptionalPath
+
+	// This is to protect concurrenct access from SetUpdatable
+	mutex sync.Mutex
 }
 
 func (a *AndroidApp) IsInstallable() bool {
@@ -1204,8 +1208,12 @@ func (a *AndroidApp) Updatable() bool {
 	return Bool(a.appProperties.Updatable)
 }
 
-func (a *AndroidApp) SetUpdatable(val bool) {
-	a.appProperties.Updatable = &val
+func (a *AndroidApp) SetUpdatable() {
+	// apexInfoMutator runs in parallel and this function can be called on the same AndroidApp
+	// objects simultaneously if an app is depended on by multiple APEXes.
+	a.mutex.Lock()
+	defer a.mutex.Unlock()
+	a.appProperties.Updatable = proptools.BoolPtr(true)
 }
 
 func (a *AndroidApp) getCertString(ctx android.BaseModuleContext) string {
