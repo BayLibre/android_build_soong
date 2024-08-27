@@ -45,6 +45,30 @@
       },
       "revId": "3bc8633ca4916b02018a11cbb2d164e4f29ef3da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "113bb73f_0180e2fb",
+        "filename": "cc/cmake_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-27T00:07:09Z",
+      "side": 1,
+      "message": "You should be able to do this in blueprint already:\n\n```\ncc_cmake_snapshot {\n  name: \"foo\",\n  ... other props ...\n  dist {\n    targets: [\"foo\"]\n  }\n}\n```\n\nAnd there are other properties that affect the disting that you can see on go/Android.bp",
+      "parentUuid": "f5f42258_8f5d703e",
+      "range": {
+        "startLine": 521,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 0
+      },
+      "revId": "3bc8633ca4916b02018a11cbb2d164e4f29ef3da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
