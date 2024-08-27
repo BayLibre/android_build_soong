@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e474fe6c_4289c0ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-27T00:09:58Z",
+      "side": 1,
+      "message": "yeah you have to run `m \u003cdist target name\u003e dist` to do disting.",
+      "parentUuid": "11c604ef_c179c60b",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "3bc8633ca4916b02018a11cbb2d164e4f29ef3da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5f42258_8f5d703e",
         "filename": "cc/cmake_snapshot.go",
         "patchSetId": 1
