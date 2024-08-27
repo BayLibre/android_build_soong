@@ -34,6 +34,24 @@
       "parentUuid": "ef8d8909_9c987d46",
       "revId": "bb5afe53aae1a350b30a3f2837953b2240d89608",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0306d28b_14695419",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-27T01:25:50Z",
+      "side": 1,
+      "message": "Then please make it a separate change.",
+      "parentUuid": "4c3be2d2_e5f8bf14",
+      "revId": "bb5afe53aae1a350b30a3f2837953b2240d89608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
