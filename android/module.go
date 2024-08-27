@@ -116,9 +116,6 @@ type Module interface {
 	TransitivePackagingSpecs() []PackagingSpec
 
 	ConfigurableEvaluator(ctx ConfigAndErrorContext) proptools.ConfigurableEvaluator
-
-	// Get the information about the containers this module belongs to.
-	ContainersInfo() ContainersInfo
 }
 
 // Qualified id for a module
@@ -844,17 +841,6 @@ type ModuleBase struct {
 	buildParams []BuildParams
 	ruleParams  map[blueprint.Rule]blueprint.RuleParams
 	variables   map[string]string
-
-	// Merged Aconfig files for all transitive deps.
-	aconfigFilePaths Paths
-
-	// complianceMetadataInfo is for different module types to dump metadata.
-	// See android.ModuleContext interface.
-	complianceMetadataInfo *ComplianceMetadataInfo
-
-	// containersInfo stores the information about the containers and the information of the
-	// apexes the module belongs to.
-	containersInfo ContainersInfo
 }
 
 func (m *ModuleBase) AddJSONData(d *map[string]interface{}) {
@@ -2090,10 +2076,6 @@ func (m *ModuleBase) moduleInfoVariant(ctx ModuleContext) string {
 		}
 	}
 	return variant
-}
-
-func (m *ModuleBase) ContainersInfo() ContainersInfo {
-	return m.containersInfo
 }
 
 // Check the supplied dist structure to make sure that it is valid.
