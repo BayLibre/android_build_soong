@@ -2043,6 +2043,7 @@ func TestApexMinSdkVersion_InVendorApex(t *testing.T) {
 			vendor_available: true,
 			min_sdk_version: "29",
 			shared_libs: ["libbar"],
+			apex_available: ["myapex"],
 		}
 
 		cc_library {
@@ -6116,7 +6117,7 @@ func TestApexPropertiesShouldBeDefaultable(t *testing.T) {
 		name: "myapex",
 		key: "myapex.key",
 		native_shared_libs: ["libfoo"],
-		updatable: false,
+		updatable: true,
 	}
 
 	apex_key {
@@ -6152,7 +6153,7 @@ func TestApexAvailable_DirectDep(t *testing.T) {
 		name: "myapex",
 		key: "myapex.key",
 		native_shared_libs: ["libfoo"],
-		updatable: false,
+		updatable: true,
 	}
 
 	apex_key {
@@ -6195,7 +6196,7 @@ func TestApexAvailable_IndirectDep(t *testing.T) {
 		name: "myapex",
 		key: "myapex.key",
 		native_shared_libs: ["libfoo"],
-		updatable: false,
+		updatable: true,
 	}
 
 	apex_key {
@@ -6269,7 +6270,7 @@ func TestApexAvailable_IndirectStaticDep(t *testing.T) {
 		name: "myapex",
 		key: "myapex.key",
 		native_shared_libs: ["libfoo"],
-		updatable: false,
+		updatable: true,
 	}
 
 	apex_key {
@@ -6455,13 +6456,15 @@ func TestApexAvailable_ApexAvailableName(t *testing.T) {
 				key: "myapex.key",
 				apps: ["AppFoo"],
 				apex_available_name: "myapex",
-				updatable: false,
+				updatable: true,
+				min_sdk_version: "28",
 			}
 			apex {
 				name: "myapex",
 				key: "myapex.key",
 				apps: ["AppFoo"],
-				updatable: false,
+				updatable: true,
+				min_sdk_version: "29",
 			}
 			apex_key {
 				name: "myapex.key",
@@ -6474,6 +6477,7 @@ func TestApexAvailable_ApexAvailableName(t *testing.T) {
 				sdk_version: "none",
 				system_modules: "none",
 				apex_available: [ "myapex_sminus" ],
+				min_sdk_version: "29",
 			}`,
 			android.FixtureMergeMockFs(android.MockFS{
 				"system/sepolicy/apex/myapex_sminus-file_contexts": nil,
@@ -6776,7 +6780,8 @@ func TestApexAvailable_PrefixMatch(t *testing.T) {
 					name: "com.foo.bar",
 					key: "myapex.key",
 					native_shared_libs: ["libfoo"],
-					updatable: false,
+					updatable: true,
+					min_sdk_version: "29",
 				}
 
 				apex_key {
@@ -6790,6 +6795,7 @@ func TestApexAvailable_PrefixMatch(t *testing.T) {
 					stl: "none",
 					system_shared_libs: [],
 					apex_available: ["`+tc.apexAvailable+`"],
+					min_sdk_version: "29",
 				}`)
 		})
 	}
@@ -6798,7 +6804,7 @@ func TestApexAvailable_PrefixMatch(t *testing.T) {
 			name: "com.foo", // too short for a partner apex
 			key: "myapex.key",
 			native_shared_libs: ["libfoo"],
-			updatable: false,
+			updatable: true,
 		}
 
 		apex_key {
