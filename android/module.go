@@ -1956,6 +1956,13 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 			if ctx.Failed() {
 				return
 			}
+
+			if x, ok := m.module.(IDEInfo); ok {
+				var result IdeInfo
+				x.IDEInfo(&result)
+				result.BaseModuleName = x.BaseModuleName()
+				SetProvider(ctx, IdeInfoProviderKey, result)
+			}
 		}
 
 		if incrementalEnabled && cacheKey != nil {
@@ -2753,7 +2760,9 @@ type IDECustomizedModuleName interface {
 	IDECustomizedModuleName() string
 }
 
+// Collect information for opening IDE project files in java/jdeps.go.
 type IdeInfo struct {
+	BaseModuleName    string   `json:"-"`
 	Deps              []string `json:"dependencies,omitempty"`
 	Srcs              []string `json:"srcs,omitempty"`
 	Aidl_include_dirs []string `json:"aidl_include_dirs,omitempty"`
@@ -2766,6 +2775,31 @@ type IdeInfo struct {
 	Static_libs       []string `json:"static_libs,omitempty"`
 	Libs              []string `json:"libs,omitempty"`
 }
+
+// Merge merges two IdeInfos and produces a new one, leaving the origional unchanged
+func (i IdeInfo) Merge(other IdeInfo) IdeInfo {
+	return IdeInfo{
+		Deps:              mergeStringLists(i.Deps, other.Deps),
+		Srcs:              mergeStringLists(i.Srcs, other.Srcs),
+		Aidl_include_dirs: mergeStringLists(i.Aidl_include_dirs, other.Aidl_include_dirs),
+		Jarjar_rules:      mergeStringLists(i.Jarjar_rules, other.Jarjar_rules),
+		Jars:              mergeStringLists(i.Jars, other.Jars),
+		Classes:           mergeStringLists(i.Classes, other.Classes),
+		Installed_paths:   mergeStringLists(i.Installed_paths, other.Installed_paths),
+		SrcJars:           mergeStringLists(i.SrcJars, other.SrcJars),
+		Paths:             mergeStringLists(i.Paths, other.Paths),
+		Static_libs:       mergeStringLists(i.Static_libs, other.Static_libs),
+		Libs:              mergeStringLists(i.Libs, other.Libs),
+	}
+}
+
+// mergeStringLists appends the two string lists together and returns a new string list,
+// leaving the origionals unchanged. Duplicate strings will be deduplicated.
+func mergeStringLists(a, b []string) []string {
+	return FirstUniqueStrings(Concat(a, b))
+}
+
+var IdeInfoProviderKey = blueprint.NewProvider[IdeInfo]()
 
 func CheckBlueprintSyntax(ctx BaseModuleContext, filename string, contents string) []error {
 	bpctx := ctx.blueprintBaseModuleContext()
