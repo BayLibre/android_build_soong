@@ -15,6 +15,7 @@ bootstrap_go_package {
     ],
     srcs: [
         "allowlists.go",
+        "all_genrules.go",
         "genrule.go",
         "locations.go",
     ],
