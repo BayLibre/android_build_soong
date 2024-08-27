@@ -52,6 +52,24 @@
       "parentUuid": "90b4eed1_ec184722",
       "revId": "8a2c56c5165e90174dffc158fe9c76e13b00ba3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17c21f2b_e0a33733",
+        "filename": "apex/dexpreopt_bootjars_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-27T23:22:40Z",
+      "side": 1,
+      "message": "Yeah I think `dex_bootjars` depending on the apex for both prebuilt and source builds sounds like a good idea, but I am not sure what would be required to achieve this.",
+      "parentUuid": "c6e261c9_1340123b",
+      "revId": "8a2c56c5165e90174dffc158fe9c76e13b00ba3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
