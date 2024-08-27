@@ -509,6 +509,7 @@ func (m *moduleContext) packageFile(fullInstallPath InstallPath, srcPath Path, e
 	licenseFiles := m.Module().EffectiveLicenseFiles()
 	spec := PackagingSpec{
 		relPathInPackage:      Rel(m, fullInstallPath.PartitionDir(), fullInstallPath.String()),
+		fullInstallPath:       fullInstallPath,
 		srcPath:               srcPath,
 		symlinkTarget:         "",
 		executable:            executable,
@@ -636,6 +637,7 @@ func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, src
 
 	m.packagingSpecs = append(m.packagingSpecs, PackagingSpec{
 		relPathInPackage: Rel(m, fullInstallPath.PartitionDir(), fullInstallPath.String()),
+		fullInstallPath:  fullInstallPath,
 		srcPath:          nil,
 		symlinkTarget:    relPath,
 		executable:       false,
@@ -680,6 +682,7 @@ func (m *moduleContext) InstallAbsoluteSymlink(installPath InstallPath, name str
 
 	m.packagingSpecs = append(m.packagingSpecs, PackagingSpec{
 		relPathInPackage: Rel(m, fullInstallPath.PartitionDir(), fullInstallPath.String()),
+		fullInstallPath:  fullInstallPath,
 		srcPath:          nil,
 		symlinkTarget:    absPath,
 		executable:       false,

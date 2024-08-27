@@ -32,6 +32,9 @@ type PackagingSpec struct {
 	// Path relative to the root of the package
 	relPathInPackage string
 
+	// full install path in product out
+	fullInstallPath InstallPath
+
 	// The path to the built artifact
 	srcPath Path
 
@@ -416,6 +419,9 @@ func (p *PackagingBase) CopySpecsToDirs(ctx ModuleContext, builder *RuleBuilder,
 		specs := dirsToSpecs[dir]
 		for _, k := range SortedKeys(specs) {
 			ps := specs[k]
+			if !ps.skipInstall && ctx.ModuleName() == ctx.Config().SoongDefinedSystemImage() {
+				cmd.Implicit(ps.fullInstallPath)
+			}
 			destPath := filepath.Join(dir.String(), ps.relPathInPackage)
 			destDir := filepath.Dir(destPath)
 			entries = append(entries, ps.relPathInPackage)
