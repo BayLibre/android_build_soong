@@ -46,6 +46,30 @@
       },
       "revId": "16b5020ca57fcf11f6ef6975bb7306c7dad2c299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05aef82_5088e7c3",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 17
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-08-27T17:35:29Z",
+      "side": 1,
+      "message": "Those aidl ones I think are a good example. My first thought is that they probably shouldn\u0027t be exempt from the checking, or they should be in an API surface.  Even if they\u0027re stub-ish, they don\u0027t have the compatibility guarantees that would let us skip the checks.",
+      "parentUuid": "9322d277_ede25636",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "16b5020ca57fcf11f6ef6975bb7306c7dad2c299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
