@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90b4eed1_ec184722",
+        "filename": "apex/dexpreopt_bootjars_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-27T22:53:02Z",
+      "side": 1,
+      "message": "Should this also test that `dex_bootjars` does not have a dependency path to the source apex?",
+      "fixSuggestions": [
+        {
+          "fixId": "48bfe8d2_ef3b7d8b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "apex/dexpreopt_bootjars_test.go",
+              "range": {
+                "startLine": 514,
+                "startChar": 0,
+                "endLine": 514,
+                "endChar": 0
+              },
+              "replacement": "\tif java.CheckModuleHasDependency(t, res.TestContext, \"dex_bootjars\", \"android_common\", \"com.android.art\") {\n\t\tt.Errorf(\"Expected dexpreopt to not use source apex\")\n\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8a2c56c5165e90174dffc158fe9c76e13b00ba3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
