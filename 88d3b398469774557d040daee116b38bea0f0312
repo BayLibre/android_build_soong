@@ -34,6 +34,24 @@
       "parentUuid": "5719e07e_ef784a3d",
       "revId": "88d3b398469774557d040daee116b38bea0f0312",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b79701_5e7e4ebe",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-28T17:36:20Z",
+      "side": 1,
+      "message": "I was thinking either Mainline \u003e SDK or Trunk Stable. Whichever you think it suits better would work😊",
+      "parentUuid": "ba32b80e_09012f66",
+      "revId": "88d3b398469774557d040daee116b38bea0f0312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
