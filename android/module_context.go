@@ -522,6 +522,7 @@ func (m *moduleContext) getAconfigPaths() *Paths {
 
 func (m *moduleContext) packageFile(fullInstallPath InstallPath, srcPath Path, executable bool) PackagingSpec {
 	licenseFiles := m.Module().EffectiveLicenseFiles()
+	overrides := CopyOf(m.Module().base().commonProperties.Overrides)
 	spec := PackagingSpec{
 		relPathInPackage:      Rel(m, fullInstallPath.PartitionDir(), fullInstallPath.String()),
 		srcPath:               srcPath,
@@ -532,6 +533,8 @@ func (m *moduleContext) packageFile(fullInstallPath InstallPath, srcPath Path, e
 		skipInstall:           m.skipInstall(),
 		aconfigPaths:          m.getAconfigPaths(),
 		archType:              m.target.Arch.ArchType,
+		overrides:             &overrides,
+		owner:                 m.ModuleName(),
 	}
 	m.packagingSpecs = append(m.packagingSpecs, spec)
 	return spec
