@@ -34,6 +34,24 @@
       "parentUuid": "f5500d7a_fddbfbb5",
       "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b38201e_57d64732",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-28T18:01:50Z",
+      "side": 1,
+      "message": "I am suggesting to do the copy without a rule for it. `copyPackagingSpecs` / `CopySpecsToDirs` doesn\u0027t actually make rules that output the copied files, it just does the copying. That way you won\u0027t get conflicts. It will also prevent other rules from depending on these files, but that\u0027s desirable. The main reason we have the rules normally is so that make can depend on them and build the images from them, but with soong-built images it\u0027s not needed.\n\nYou could also do the copy on the whole staging directory after `buildAconfigFlagsFiles` so that the non-packagingspec files are also copied.",
+      "parentUuid": "1eec3a69_eba1be4f",
+      "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
