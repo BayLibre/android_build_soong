@@ -1528,7 +1528,8 @@ func TestJavaSdkLibrary_StubOnlyLibs_PassedToDroidstubs(t *testing.T) {
 
 	// The foo.stubs.source should depend on bar-lib
 	fooStubsSources := result.ModuleForTests("foo.stubs.source", "android_common").Module().(*Droidstubs)
-	android.AssertStringListContains(t, "foo stubs should depend on bar-lib", fooStubsSources.Javadoc.properties.Libs, "bar-lib")
+	eval := fooStubsSources.ConfigurableEvaluator(android.PanickingConfigAndErrorContext(result.TestContext))
+	android.AssertStringListContains(t, "foo stubs should depend on bar-lib", fooStubsSources.Javadoc.properties.Libs.GetOrDefault(eval, nil), "bar-lib")
 }
 
 func TestJavaSdkLibrary_Scope_Libs_PassedToDroidstubs(t *testing.T) {
@@ -1554,7 +1555,8 @@ func TestJavaSdkLibrary_Scope_Libs_PassedToDroidstubs(t *testing.T) {
 
 	// The foo.stubs.source should depend on bar-lib
 	fooStubsSources := result.ModuleForTests("foo.stubs.source", "android_common").Module().(*Droidstubs)
-	android.AssertStringListContains(t, "foo stubs should depend on bar-lib", fooStubsSources.Javadoc.properties.Libs, "bar-lib")
+	eval := fooStubsSources.ConfigurableEvaluator(android.PanickingConfigAndErrorContext(result.TestContext))
+	android.AssertStringListContains(t, "foo stubs should depend on bar-lib", fooStubsSources.Javadoc.properties.Libs.GetOrDefault(eval, nil), "bar-lib")
 }
 
 func TestJavaSdkLibrary_ApiLibrary(t *testing.T) {

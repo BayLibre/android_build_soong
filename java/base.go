@@ -80,7 +80,7 @@ type CommonProperties struct {
 	Libs []string `android:"arch_variant"`
 
 	// list of java libraries that will be compiled into the resulting jar
-	Static_libs []string `android:"arch_variant"`
+	Static_libs proptools.Configurable[[]string] `android:"arch_variant"`
 
 	// list of java libraries that should not be used to build this module
 	Exclude_static_libs []string `android:"arch_variant"`
@@ -835,6 +835,10 @@ func (j *Module) AvailableFor(what string) bool {
 	return j.ApexModuleBase.AvailableFor(what)
 }
 
+func (j *Module) staticLibs(ctx android.BaseModuleContext) []string {
+	return android.RemoveListFromList(j.properties.Static_libs.GetOrDefault(ctx, nil), j.properties.Exclude_static_libs)
+}
+
 func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	if ctx.Device() {
 		j.linter.deps(ctx)
@@ -851,8 +855,7 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 
 	libDeps := ctx.AddVariationDependencies(nil, libTag, j.properties.Libs...)
 
-	j.properties.Static_libs = android.RemoveListFromList(j.properties.Static_libs, j.properties.Exclude_static_libs)
-	ctx.AddVariationDependencies(nil, staticLibTag, j.properties.Static_libs...)
+	ctx.AddVariationDependencies(nil, staticLibTag, j.staticLibs(ctx)...)
 
 	// Add dependency on libraries that provide additional hidden api annotations.
 	ctx.AddVariationDependencies(nil, hiddenApiAnnotationsTag, j.properties.Hiddenapi_additional_annotations...)
@@ -934,7 +937,7 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 		ctx.AddVariationDependencies(nil, staticLibTag, "jacocoagent")
 	}
 
-	if j.useCompose() {
+	if j.useCompose(ctx) {
 		ctx.AddVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(), kotlinPluginTag,
 			"androidx.compose.compiler_compiler-hosted")
 	}
@@ -1838,8 +1841,8 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 	j.outputFile = outputFile.WithoutRel()
 }
 
-func (j *Module) useCompose() bool {
-	return android.InList("androidx.compose.runtime_runtime", j.properties.Static_libs)
+func (j *Module) useCompose(ctx android.BaseModuleContext) bool {
+	return android.InList("androidx.compose.runtime_runtime", j.staticLibs(ctx))
 }
 
 func collectDepProguardSpecInfo(ctx android.ModuleContext) (transitiveProguardFlags, transitiveUnconditionalExportedFlags []*android.DepSet[android.Path]) {
@@ -2096,7 +2099,7 @@ func (j *Module) IDEInfo(ctx android.BaseModuleContext, dpInfo *android.IdeInfo)
 	}
 	dpInfo.Deps = append(dpInfo.Deps, j.CompilerDeps()...)
 	dpInfo.Aidl_include_dirs = append(dpInfo.Aidl_include_dirs, j.deviceProperties.Aidl.Include_dirs...)
-	dpInfo.Static_libs = append(dpInfo.Static_libs, j.properties.Static_libs...)
+	dpInfo.Static_libs = append(dpInfo.Static_libs, j.staticLibs(ctx)...)
 	dpInfo.Libs = append(dpInfo.Libs, j.properties.Libs...)
 }
 

@@ -1994,7 +1994,7 @@ type JavaApiLibraryProperties struct {
 
 	// List of shared java libs that this module has dependencies to and
 	// should be passed as classpath in javac invocation
-	Libs []string
+	Libs proptools.Configurable[[]string]
 
 	// List of java libs that this module has static dependencies to and will be
 	// merge zipped after metalava invocation
@@ -2174,7 +2174,7 @@ func (al *ApiLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 		}
 	}
-	ctx.AddVariationDependencies(nil, libTag, al.properties.Libs...)
+	ctx.AddVariationDependencies(nil, libTag, al.properties.Libs.GetOrDefault(ctx, nil)...)
 	ctx.AddVariationDependencies(nil, staticLibTag, al.properties.Static_libs...)
 
 	for _, aconfigDeclarationsName := range al.properties.Aconfig_declarations {
@@ -2406,7 +2406,7 @@ func (al *ApiLibrary) TargetSdkVersion(ctx android.EarlyModuleContext) android.A
 
 func (al *ApiLibrary) IDEInfo(ctx android.BaseModuleContext, i *android.IdeInfo) {
 	i.Deps = append(i.Deps, al.ideDeps(ctx)...)
-	i.Libs = append(i.Libs, al.properties.Libs...)
+	i.Libs = append(i.Libs, al.properties.Libs.GetOrDefault(ctx, nil)...)
 	i.Static_libs = append(i.Static_libs, al.properties.Static_libs...)
 	i.SrcJars = append(i.SrcJars, al.stubsSrcJar.String())
 }
@@ -2414,7 +2414,7 @@ func (al *ApiLibrary) IDEInfo(ctx android.BaseModuleContext, i *android.IdeInfo)
 // deps of java_api_library for module_bp_java_deps.json
 func (al *ApiLibrary) ideDeps(ctx android.BaseModuleContext) []string {
 	ret := []string{}
-	ret = append(ret, al.properties.Libs...)
+	ret = append(ret, al.properties.Libs.GetOrDefault(ctx, nil)...)
 	ret = append(ret, al.properties.Static_libs...)
 	if al.properties.System_modules != nil {
 		ret = append(ret, proptools.String(al.properties.System_modules))
