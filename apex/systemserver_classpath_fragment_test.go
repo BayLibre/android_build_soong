@@ -80,7 +80,6 @@ func TestSystemserverclasspathFragmentContents(t *testing.T) {
 			apex_available: [
 				"myapex",
 			],
-			sdk_version: "core_current",
 		}
 
 		systemserverclasspath_fragment {
@@ -351,7 +350,6 @@ func TestSystemserverclasspathFragmentStandaloneContents(t *testing.T) {
 			apex_available: [
 				"myapex",
 			],
-			sdk_version: "core_current",
 		}
 
 		systemserverclasspath_fragment {
