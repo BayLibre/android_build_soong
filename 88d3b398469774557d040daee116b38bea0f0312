@@ -16,6 +16,24 @@
       "message": "Do you mind filing a bug for this?",
       "revId": "88d3b398469774557d040daee116b38bea0f0312",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba32b80e_09012f66",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-08-28T17:33:53Z",
+      "side": 1,
+      "message": "Sure. Which component?",
+      "parentUuid": "5719e07e_ef784a3d",
+      "revId": "88d3b398469774557d040daee116b38bea0f0312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
