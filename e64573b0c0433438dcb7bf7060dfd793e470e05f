@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb40b2c8_0330d175",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1996085
+      },
+      "writtenOn": "2024-08-28T21:50:43Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to revert the other CLs \"Disable -Wno-single...\", just this one.",
+      "revId": "e64573b0c0433438dcb7bf7060dfd793e470e05f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
