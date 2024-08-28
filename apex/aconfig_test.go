@@ -74,8 +74,6 @@ func TestValidationAcrossContainersExportedPass(t *testing.T) {
 					apex_available: [
 						"myapex",
 					],
-					sdk_version: "none",
-					system_modules: "none",
 				}`,
 		},
 		{
@@ -124,8 +122,6 @@ func TestValidationAcrossContainersExportedPass(t *testing.T) {
 					apex_available: [
 						"myapex",
 					],
-					sdk_version: "none",
-					system_modules: "none",
 				}`,
 		},
 		{
@@ -349,8 +345,6 @@ func TestValidationAcrossContainersNotExportedFail(t *testing.T) {
 					apex_available: [
 						"myapex",
 					],
-					sdk_version: "none",
-					system_modules: "none",
 				}`,
 			expectedError: `.*my_java_library_foo/myapex depends on my_java_aconfig_library_foo/otherapex/production across containers`,
 		},
@@ -398,8 +392,6 @@ func TestValidationAcrossContainersNotExportedFail(t *testing.T) {
 					apex_available: [
 						"myapex",
 					],
-					sdk_version: "none",
-					system_modules: "none",
 				}`,
 			expectedError: `.*my_android_app_foo/myapex depends on my_java_aconfig_library_foo/otherapex/production across containers`,
 		},
@@ -701,8 +693,6 @@ func TestValidationAcrossContainersNotExportedFail(t *testing.T) {
 					apex_available: [
 						"myapex",
 					],
-					sdk_version: "none",
-					system_modules: "none",
 				}`,
 			expectedError: `.*my_android_app_foo/myapex depends on my_java_aconfig_library_foo/otherapex/production across containers`,
 		},
@@ -779,8 +769,6 @@ func TestValidationNotPropagateAcrossShared(t *testing.T) {
 					apex_available: [
 						"myapex",
 					],
-					sdk_version: "none",
-					system_modules: "none",
 				}`,
 		},
 	}
