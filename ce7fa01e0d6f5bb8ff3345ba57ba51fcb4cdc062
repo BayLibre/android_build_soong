@@ -16,6 +16,24 @@
       "message": "We would like to remove the rules that copy files to the \"full install path\", because if there are multiple modules that get installed to the same location, those rules conflict, even if they\u0027re never included on the same device.\n\nInstead of adding them as implicit deps here, could you make the filesystem module do the copy as it\u0027s being built? This could be done by adding the \"full install\" directories to `dirsToSpecs` during `copyPackagingSpecs`, but don\u0027t you also need to copy the other, non-packagingspec files too?",
       "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eec3a69_eba1be4f",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-08-28T01:17:57Z",
+      "side": 1,
+      "message": "But this `cmd.Implicit(ps.fullInstallPath)` does not make additional rule to generate the file in `fullInstallPath` but to trigger the existing rule. I added this dependency to avoid the rule conflict to generate the `fullInstallPath` files.\n\n\u003e Instead of adding them as implicit deps here, could you make the filesystem module do the copy as it\u0027s being built?\n\nI think your suggestion to install the filesystem files to `fullInstallPath` during `copyPackagingSpecs` generates new rules to install files to `fullInstallPath`. The new rules will cause the rule conflict with the original install rules, won\u0027t they?\nThe `droid` target requires the files in `fullInstallPath` and we already have the rules for them.\n\n\u003e but don\u0027t you also need to copy the other, non-packagingspec files too?\n\nYes, and they are the more difficult part to address. (.fsv_meta, aconfig files..) Each must be resolved differently by ignoring make rules and using soong rules to install them to the `fullInstallPath`. This is also to avoid the rule conflict.",
+      "parentUuid": "f5500d7a_fddbfbb5",
+      "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
