@@ -16,6 +16,46 @@
       "message": "Hey I want to make sure as we\u0027re opening this up, are we also enforcing that these APEXes aren\u0027t actually updated or get out of sync? That it\u0027s only used for packaging?\n\nFor a library like libbinder, we are still preventing it to be copied in other APEXes, right?",
       "revId": "bd5e825f86e11ba1698e529d1ffca4f266d1d9c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2917770d_1af33f41",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-28T17:52:00Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 217,
+        "startChar": 23,
+        "endLine": 217,
+        "endChar": 34
+      },
+      "revId": "bd5e825f86e11ba1698e529d1ffca4f266d1d9c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b34810f7_ea6efc78",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-28T17:52:00Z",
+      "side": 1,
+      "message": "Please give this a name that indicates it\u0027s for SetUpdatable.",
+      "revId": "bd5e825f86e11ba1698e529d1ffca4f266d1d9c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
