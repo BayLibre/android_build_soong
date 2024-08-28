@@ -56,6 +56,10 @@ type PackagingSpec struct {
 
 	// ArchType of the module which produced this packaging spec
 	archType ArchType
+
+	overrides *[]string
+
+	owner string
 }
 
 func (p *PackagingSpec) Equals(other *PackagingSpec) bool {
@@ -325,7 +329,10 @@ func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.Dep
 }
 
 func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter func(PackagingSpec) bool) map[string]PackagingSpec {
-	m := make(map[string]PackagingSpec)
+	// all packaging specs gathered from the dep.
+	var all []PackagingSpec
+	// list of module names overridden
+	var overridden []string
 
 	var arches []ArchType
 	for _, target := range getSupportedTargets(ctx) {
@@ -357,17 +364,33 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 					continue
 				}
 			}
-			dstPath := ps.relPathInPackage
-			if existingPs, ok := m[dstPath]; ok {
-				if !existingPs.Equals(&ps) {
-					ctx.ModuleErrorf("packaging conflict at %v:\n%v\n%v", dstPath, existingPs, ps)
-				}
-				continue
+			all = append(all, ps)
+			if ps.overrides != nil {
+				overridden = append(overridden, *ps.overrides...)
 			}
-
-			m[dstPath] = ps
 		}
 	})
+
+	// all minus packaging specs that are overridden
+	var filtered []PackagingSpec
+	for _, ps := range all {
+		if ps.owner != "" && InList(ps.owner, overridden) {
+			continue
+		}
+		filtered = append(filtered, ps)
+	}
+
+	m := make(map[string]PackagingSpec)
+	for _, ps := range filtered {
+		dstPath := ps.relPathInPackage
+		if existingPs, ok := m[dstPath]; ok {
+			if !existingPs.Equals(&ps) {
+				ctx.ModuleErrorf("packaging conflict at %v:\n%v\n%v", dstPath, existingPs, ps)
+			}
+			continue
+		}
+		m[dstPath] = ps
+	}
 	return m
 }
 
