@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0981502e_01b8104d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-28T16:03:01Z",
+      "side": 1,
+      "message": "Hey I want to make sure as we\u0027re opening this up, are we also enforcing that these APEXes aren\u0027t actually updated or get out of sync? That it\u0027s only used for packaging?\n\nFor a library like libbinder, we are still preventing it to be copied in other APEXes, right?",
+      "revId": "bd5e825f86e11ba1698e529d1ffca4f266d1d9c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
