@@ -38,7 +38,6 @@ java_defaults {
     visibility: ["//visibility:public"],
     sdk_version: "none",
     system_modules: "none",
-    is_stubs_module: true,
 }
 
 java_library {
@@ -290,7 +289,6 @@ java_defaults {
     sdk_version: "none",
     system_modules: "none",
     patch_module: "java.base",
-    is_stubs_module: true,
 }
 
 // Same as legacy.core.platform.api.stubs, but android annotations are
@@ -309,7 +307,6 @@ java_library {
         "legacy.core.platform.api.stubs",
     ],
     patch_module: "java.base",
-    is_stubs_module: true,
 }
 
 java_library {
@@ -342,7 +339,6 @@ java_library {
         "stable.core.platform.api.stubs",
     ],
     patch_module: "java.base",
-    is_stubs_module: true,
 }
 
 // Used when compiling higher-level code against *.core.platform.api.stubs.

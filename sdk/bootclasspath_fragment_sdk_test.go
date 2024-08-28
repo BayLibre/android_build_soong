@@ -338,7 +338,6 @@ func testSnapshotWithBootClasspathFragment_Contents(t *testing.T, sdk string, co
 				shared_library: false,
 				public: {enabled: true},
 				min_sdk_version: "2",
-				sdk_version: "current",
 			}
 
 			java_sdk_library {
@@ -349,7 +348,6 @@ func testSnapshotWithBootClasspathFragment_Contents(t *testing.T, sdk string, co
 				public: {enabled: true},
 				min_sdk_version: "2",
 				permitted_packages: ["myothersdklibrary"],
-				sdk_version: "current",
 			}
 
 			java_sdk_library {
@@ -359,7 +357,6 @@ func testSnapshotWithBootClasspathFragment_Contents(t *testing.T, sdk string, co
 				compile_dex: true,
 				public: {enabled: true},
 				min_sdk_version: "2",
-				sdk_version: "current",
 			}
 		`),
 	).RunTest(t)
@@ -627,7 +624,6 @@ func TestSnapshotWithBootClasspathFragment_Fragments(t *testing.T) {
 				min_sdk_version: "2",
 				permitted_packages: ["myothersdklibrary"],
 				compile_dex: true,
-				sdk_version: "current",
 			}
 		`),
 
@@ -659,7 +655,6 @@ func TestSnapshotWithBootClasspathFragment_Fragments(t *testing.T) {
 				shared_library: false,
 				public: {enabled: true},
 				min_sdk_version: "2",
-				sdk_version: "current",
 			}
 		`),
 	).RunTest(t)
@@ -882,7 +877,6 @@ func TestSnapshotWithBootclasspathFragment_HiddenAPI(t *testing.T) {
 				public: {enabled: true},
 				permitted_packages: ["mysdklibrary"],
 				min_sdk_version: "current",
-				sdk_version: "current",
 			}
 
 			java_sdk_library {
@@ -901,7 +895,6 @@ func TestSnapshotWithBootclasspathFragment_HiddenAPI(t *testing.T) {
 					package_prefixes: ["newlibrary.all.mine"],
 					single_packages: ["newlibrary.mine"],
 				},
-				sdk_version: "current",
 			}
 		`),
 	).RunTest(t)
@@ -1087,7 +1080,6 @@ func testSnapshotWithBootClasspathFragment_MinSdkVersion(t *testing.T, targetBui
 				shared_library: false,
 				public: {enabled: true},
 				min_sdk_version: "S",
-				sdk_version: "current",
 			}
 
 			java_sdk_library {
@@ -1098,7 +1090,6 @@ func testSnapshotWithBootClasspathFragment_MinSdkVersion(t *testing.T, targetBui
 				public: {enabled: true},
 				min_sdk_version: "Tiramisu",
 				permitted_packages: ["mynewsdklibrary"],
-				sdk_version: "current",
 			}
 		`),
 	).RunTest(t)
@@ -1296,7 +1287,6 @@ func TestSnapshotWithEmptyBootClasspathFragment(t *testing.T) {
 				shared_library: false,
 				public: {enabled: true},
 				min_sdk_version: "Tiramisu",
-				sdk_version: "current",
 			}
 			java_sdk_library {
 				name: "mynewsdklibrary",
@@ -1306,7 +1296,6 @@ func TestSnapshotWithEmptyBootClasspathFragment(t *testing.T) {
 				public: {enabled: true},
 				min_sdk_version: "Tiramisu",
 				permitted_packages: ["mynewsdklibrary"],
-				sdk_version: "current",
 			}
 		`),
 	).RunTest(t)
