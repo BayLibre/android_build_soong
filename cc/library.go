@@ -1579,25 +1579,6 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, deps PathD
 	}
 }
 
-func processLLNDKHeaders(ctx ModuleContext, srcHeaderDir string, outDir android.ModuleGenPath) (timestamp android.Path, installPaths android.WritablePaths) {
-	srcDir := android.PathForModuleSrc(ctx, srcHeaderDir)
-	srcFiles := ctx.GlobFiles(filepath.Join(srcDir.String(), "**/*.h"), nil)
-
-	for _, header := range srcFiles {
-		headerDir := filepath.Dir(header.String())
-		relHeaderDir, err := filepath.Rel(srcDir.String(), headerDir)
-		if err != nil {
-			ctx.ModuleErrorf("filepath.Rel(%q, %q) failed: %s",
-				srcDir.String(), headerDir, err)
-			continue
-		}
-
-		installPaths = append(installPaths, outDir.Join(ctx, relHeaderDir, header.Base()))
-	}
-
-	return processHeadersWithVersioner(ctx, srcDir, outDir, srcFiles, installPaths), installPaths
-}
-
 // link registers actions to link this library, and sets various fields
 // on this library to reflect information that should be exported up the build
 // tree (for example, exported flags and include paths).
@@ -1610,11 +1591,6 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 			genHeaderOutDir := android.PathForModuleGen(ctx, "include")
 
 			var timestampFiles android.Paths
-			for _, dir := range library.Properties.Llndk.Export_preprocessed_headers {
-				timestampFile, installPaths := processLLNDKHeaders(ctx, dir, genHeaderOutDir)
-				timestampFiles = append(timestampFiles, timestampFile)
-				library.addExportedGeneratedHeaders(installPaths.Paths()...)
-			}
 
 			if Bool(library.Properties.Llndk.Export_headers_as_system) {
 				library.reexportSystemDirs(genHeaderOutDir)
