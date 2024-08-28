@@ -253,13 +253,21 @@ var buildNumberAllowlistKey = android.NewOnceKey("genruleBuildNumberAllowlistKey
 // soong plugins cannot add entries to the allowlist
 func isModuleInBuildNumberAllowlist(ctx android.ModuleContext) bool {
 	allowlist := ctx.Config().Once(buildNumberAllowlistKey, func() interface{} {
-		return map[string]bool{
+		// Define the allowlist as a list and then copy it inot a map so that
+		// gofmt doesn't change unnecessary lines trying to aligh the values of the map.
+		allowlist := []string{
 			// go/keep-sorted start
-			"build/soong/tests:gen": true,
-			"hardware/google/camera/common/hal/aidl_service:aidl_camera_build_version": true,
-			"tools/tradefederation/core:tradefed_zip":                                  true,
+			"build/soong/tests:gen",
+			"hardware/google/camera/common/hal/aidl_service:aidl_camera_build_version",
+			"tools/tradefederation/core:tradefed_zip",
+			"vendor/google/services/LyricCameraHAL/src/apex:com.google.pixel.camera.hal.manifest",
 			// go/keep-sorted end
 		}
+		allowlistMap := make(map[string]bool, len(allowlist))
+		for _, a := range allowlist {
+			allowlistMap[a] = true
+		}
+		return allowlistMap
 	}).(map[string]bool)
 
 	_, ok := allowlist[ctx.ModuleDir()+":"+ctx.ModuleName()]
