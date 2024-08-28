@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01a3a60a_56c94e89",
+        "filename": "android/module_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-28T17:45:44Z",
+      "side": 1,
+      "message": "Please clone the overrides slice so that packagingSpecs won\u0027t get updated if the property changes.",
+      "range": {
+        "startLine": 535,
+        "startChar": 25,
+        "endLine": 535,
+        "endChar": 71
+      },
+      "revId": "bdbca5d844a8352357586fb07054a114d801b804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d34842a_13c378d9",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-28T17:45:44Z",
+      "side": 1,
+      "message": "Typo",
+      "range": {
+        "startLine": 60,
+        "startChar": 35,
+        "endLine": 60,
+        "endChar": 43
+      },
+      "revId": "bdbca5d844a8352357586fb07054a114d801b804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a1201be_7db862b3",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-28T17:45:44Z",
+      "side": 1,
+      "message": "Can we change this to just report an error instead of silently overriding? I know this is a divergance from make\u0027s behavior, but I don\u0027t think this pattern of adding something to the list just to remove it later is a good one. Android.bp files should be property constructed to only contain entries that will actually be used.\n\nOr maybe we don\u0027t even need this feature at all, because the packaging conflict check will cover most of these.",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 2
+      },
+      "revId": "bdbca5d844a8352357586fb07054a114d801b804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
