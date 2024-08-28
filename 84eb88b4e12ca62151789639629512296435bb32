@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ba3188b_57398da1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-08-28T05:56:26Z",
+      "side": 1,
+      "message": "Please include the improvement in binary sizes, at least for some of the larger libraries.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "84eb88b4e12ca62151789639629512296435bb32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
