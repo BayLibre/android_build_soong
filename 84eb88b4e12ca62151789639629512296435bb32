@@ -22,6 +22,23 @@
       },
       "revId": "84eb88b4e12ca62151789639629512296435bb32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d589bb67_629d9dc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-08-28T18:08:46Z",
+      "side": 1,
+      "message": "Should this be behind a trunk stable go/android-build-flags ?",
+      "revId": "84eb88b4e12ca62151789639629512296435bb32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
