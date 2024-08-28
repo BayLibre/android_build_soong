@@ -970,6 +970,9 @@ func (d *Droidstubs) everythingOptionalCmd(ctx android.ModuleContext, cmd *andro
 		d.apiLintReport = android.PathForModuleOut(ctx, Everything.String(), "api_lint_report.txt")
 		cmd.FlagWithOutput("--report-even-if-suppressed ", d.apiLintReport) // TODO:  Change to ":api-lint"
 
+		// Make sure that UnflaggedApi issues are reported as errors in Android.
+		cmd.Flag("--error UnflaggedApi")
+
 		// TODO(b/154317059): Clean up this allowlist by baselining and/or checking in last-released.
 		if d.Name() != "android.car-system-stubs-docs" &&
 			d.Name() != "android.car-stubs-docs" {
