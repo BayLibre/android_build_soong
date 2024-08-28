@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d366ef50_fcfc32b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-08-28T16:52:26Z",
+      "side": 1,
+      "message": "FYI this may fail in internal, if it does then I will switch it to use `warning-error-when-new` which should cause the \"Build Warnings Aye Aye Analyzer\" to treat any new instances of the issue as errors while not breaking any builds.",
+      "revId": "7fb1670fb4c16471577dcc1df95355655659b90e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
