@@ -1758,7 +1758,13 @@ func (u *usesLibrary) classLoaderContextForUsesLibDeps(ctx android.ModuleContext
 		// so it will be added to CLC, but the stub shouldn't be. Stub libraries can be distingushed
 		// from implementation libraries by their name, which is different as it has a suffix.
 		if comp, ok := m.(SdkLibraryComponentDependency); ok {
-			if impl := comp.OptionalSdkLibraryImplementation(); impl != nil && *impl != dep {
+			// if m.Name() == "sdklib_noimpl" {
+			// 	fmt.Printf("sdklib_noimpl SdkLibraryComponentDependency: %t, impl: %s, dep: %s\n", ok, proptools.String(comp.OptionalSdkLibraryImplementation()), dep)
+			// }
+			if !android.InList(dep, []string{
+				proptools.String(comp.SdkLibraryName()),
+				proptools.String(comp.OptionalSdkLibraryImplementation()),
+			}) {
 				return
 			}
 		}
@@ -1766,6 +1772,7 @@ func (u *usesLibrary) classLoaderContextForUsesLibDeps(ctx android.ModuleContext
 		// Skip java_sdk_library dependencies that provide stubs, but not an implementation.
 		// This will be restricted to optional_uses_libs
 		if sdklib, ok := m.(SdkLibraryDependency); ok {
+			// fmt.Printf("sdklib_noimpl SdkLibraryDependency: %t, tag: %t, sdklib.DexJarBuildPath(ctx).PathOrNil() == nil: %t\n", ok, tag == usesLibOptTag, sdklib.DexJarBuildPath(ctx).PathOrNil() == nil)
 			if tag == usesLibOptTag && sdklib.DexJarBuildPath(ctx).PathOrNil() == nil {
 				u.shouldDisableDexpreopt = true
 				return

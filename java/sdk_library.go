@@ -1257,7 +1257,10 @@ func (e *EmbeddableSdkLibraryComponent) OptionalSdkLibraryImplementation() *stri
 	//
 	// For non-shared SDK (component or not) libraries this returns `nil`, as they are not
 	// <uses-library> and should not be added to the manifest or to CLC.
-	return e.sdkLibraryComponentProperties.SdkLibraryToImplicitlyTrack
+	if e.sdkLibraryComponentProperties.SdkLibraryToImplicitlyTrack == nil {
+		return nil
+	}
+	return proptools.StringPtr(proptools.String(e.sdkLibraryComponentProperties.SdkLibraryToImplicitlyTrack) + ".impl")
 }
 
 // Implemented by modules that are (or possibly could be) a component of a java_sdk_library

@@ -393,6 +393,8 @@ type usesLibraryDependencyTag struct {
 	optional   bool // If the dependency is optional or required.
 }
 
+func (t usesLibraryDependencyTag) ExcludeFromVisibilityEnforcement() {}
+
 func makeUsesLibraryDependencyTag(sdkVersion int, optional bool) usesLibraryDependencyTag {
 	return usesLibraryDependencyTag{
 		dependencyTag: dependencyTag{
@@ -2605,6 +2607,11 @@ func (j *Import) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if ctx.Device() && Bool(j.dexProperties.Compile_dex) {
 		sdkDeps(ctx, android.SdkContext(j), j.dexer)
 	}
+
+	// implLibName := proptools.String(j.properties.Created_by_java_sdk_library_name) + ".impl"
+	// if ctx.OtherModuleExists(implLibName) {
+	// 	ctx.AddVariationDependencies(nil, usesLibReqTag, implLibName)
+	// }
 }
 
 func (j *Import) commonBuildActions(ctx android.ModuleContext) {

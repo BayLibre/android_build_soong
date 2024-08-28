@@ -45,6 +45,7 @@ func TestJavaSdkLibrary(t *testing.T) {
 			name: "foo",
 			srcs: ["a.java", "b.java"],
 			api_packages: ["foo"],
+			sdk_version: "current",
 		}
 		java_sdk_library {
 			name: "bar",
@@ -55,7 +56,7 @@ func TestJavaSdkLibrary(t *testing.T) {
 		java_library {
 			name: "baz",
 			srcs: ["c.java"],
-			libs: ["foo", "bar.stubs"],
+			libs: ["foo.stubs.system", "bar.stubs"],
 			sdk_version: "system_current",
 		}
 		java_sdk_library {
@@ -68,6 +69,11 @@ func TestJavaSdkLibrary(t *testing.T) {
 			srcs: ["c.java"],
 			shared_library: false,
 		}
+		java_sdk_library {
+			name: "quuz",
+			srcs: ["c.java"],
+			api_packages: ["quuz"],
+		}
 		java_sdk_library_import {
 		    name: "quuz",
 				public: {
@@ -75,6 +81,12 @@ func TestJavaSdkLibrary(t *testing.T) {
 					current_api: "api/current.txt",
 					removed_api: "api/removed.txt",
 				},
+		}
+		java_sdk_library {
+			name: "fred",
+			srcs: ["c.java"],
+			api_packages: ["fred"],
+			sdk_version: "current",
 		}
 		java_sdk_library_import {
 		    name: "fred",
@@ -92,7 +104,7 @@ func TestJavaSdkLibrary(t *testing.T) {
 		java_library {
 		    name: "qux",
 		    srcs: ["c.java"],
-		    libs: ["baz", "fred", "quuz.stubs", "wilma", "barney", "betty"],
+		    libs: ["baz", "fred.impl", "quuz.stubs", "wilma", "barney", "betty"],
 		    sdk_version: "system_current",
 		}
 		java_library {
@@ -172,7 +184,7 @@ func TestJavaSdkLibrary(t *testing.T) {
 	qux := result.ModuleForTests("qux", "android_common")
 	if quxLib, ok := qux.Module().(*Library); ok {
 		requiredSdkLibs, optionalSdkLibs := quxLib.ClassLoaderContexts().UsesLibs()
-		android.AssertDeepEquals(t, "qux exports (required)", []string{"fred", "quuz", "foo", "bar"}, requiredSdkLibs)
+		android.AssertDeepEquals(t, "qux exports (required)", []string{"fred.impl", "quuz.impl", "foo.impl", "bar.impl"}, requiredSdkLibs)
 		android.AssertDeepEquals(t, "qux exports (optional)", []string{}, optionalSdkLibs)
 	}
 

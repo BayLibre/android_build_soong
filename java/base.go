@@ -870,15 +870,20 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	for _, dep := range libDeps {
 		if dep != nil {
 			if component, ok := dep.(SdkLibraryComponentDependency); ok {
-				if lib := component.OptionalSdkLibraryImplementation(); lib != nil {
+				if implLibPtr := component.OptionalSdkLibraryImplementation(); implLibPtr != nil {
 					// Add library as optional if it's one of the optional compatibility libs or it's
 					// explicitly listed in the optional_uses_libs property.
+					implLibName := proptools.String(implLibPtr)
 					tag := usesLibReqTag
-					if android.InList(*lib, dexpreopt.OptionalCompatUsesLibs) ||
-						android.InList(*lib, j.usesLibrary.usesLibraryProperties.Optional_uses_libs) {
+					if android.InList(strings.TrimSuffix(implLibName, ".impl"), dexpreopt.OptionalCompatUsesLibs) ||
+						android.InList(strings.TrimSuffix(implLibName, ".impl"), j.usesLibrary.usesLibraryProperties.Optional_uses_libs) {
 						tag = usesLibOptTag
 					}
-					ctx.AddVariationDependencies(nil, tag, *lib)
+					// Not all java_sdk_library generates the implementation library;
+					// Thus check if the impl lib exist before adding the dependency
+					if ctx.OtherModuleExists(implLibName) {
+						ctx.AddVariationDependencies(nil, tag, implLibName)
+					}
 				}
 			}
 		}

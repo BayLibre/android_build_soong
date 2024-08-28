@@ -340,6 +340,10 @@ func (clcMap ClassLoaderContextMap) addContext(ctx android.ModuleInstallPathCont
 		Device:      devicePath,
 		Subcontexts: subcontexts,
 	})
+	if lib == "sdklib_noimpl" {
+		fmt.Printf("%d clcMap: %s\n", sdkVer, clcMap[sdkVer])
+	}
+
 	return nil
 }
 
