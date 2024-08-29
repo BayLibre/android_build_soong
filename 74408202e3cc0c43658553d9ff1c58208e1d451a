@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3703eb32_5af75fe4",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-29T18:08:51Z",
+      "side": 1,
+      "message": "I see you also added the Vintf fragments to androidmk required in aosp/3226842. Could we make `RequiredModuleNames` automatically include the vintf fragments so that we don\u0027t have to do it in multiple places?",
+      "revId": "74408202e3cc0c43658553d9ff1c58208e1d451a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
