@@ -106,6 +106,24 @@
       "parentUuid": "1887d9ea_b7228b1e",
       "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5c3379_266bab38",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-29T23:31:15Z",
+      "side": 1,
+      "message": "`m \u003cmodule-name\u003e` would just build the `out/soong/.intermediates` files for that module. And for host tools it would still add them to the PATH. For apps, you could still `adb install` them but using the `out/soong/.intermediates` path instead. For more core system modules, building them individually would essentially just be a check that it compiles, there\u0027s not much you can do with them without building the whole device.",
+      "parentUuid": "b83798a7_4fc0f821",
+      "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
