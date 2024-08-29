@@ -140,6 +140,30 @@
       },
       "revId": "bdbca5d844a8352357586fb07054a114d801b804",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5091b66b_22b8aa62",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-29T17:57:01Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need to use a select in this case, you\u0027d just change `pkg` to only depend on b:\n\n```\nmodule { name: \"a\"}\nmodule { name: \"b\", overrides: [\"a\"] }\npackage { name: \"pkg\", deps: [\"b\"] }\n```\n\nBecause the goal is to have different packaging modules per-product, different products can depend on different types of modules without any override or conditional logic.",
+      "parentUuid": "f51bbf15_e4463882",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 2
+      },
+      "revId": "bdbca5d844a8352357586fb07054a114d801b804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
