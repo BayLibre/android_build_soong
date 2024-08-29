@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75685eb6_77f16f77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-29T02:11:06Z",
+      "side": 1,
+      "message": "I forgot the existence of the macro. Yeah, that is preventing libbinder from being compiled for any apex, which means the apex availability check has just been additional safeguard for libbinder. So, we are good? :)\n\n(note: I will make the other changes, but I think this can land before that)",
+      "parentUuid": "49059727_7aaaf973",
+      "revId": "bd5e825f86e11ba1698e529d1ffca4f266d1d9c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2917770d_1af33f41",
         "filename": "java/app.go",
         "patchSetId": 2
