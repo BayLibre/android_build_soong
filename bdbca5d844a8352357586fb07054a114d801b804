@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc955442_06625031",
+        "filename": "android/module_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-29T00:11:18Z",
+      "side": 1,
+      "message": "Done, but in order to do so, I had to change this into string because []string is not comparable, but PackagingSpec is required to be comparable in module.go. PTAL.",
+      "parentUuid": "01a3a60a_56c94e89",
+      "range": {
+        "startLine": 535,
+        "startChar": 25,
+        "endLine": 535,
+        "endChar": 71
+      },
+      "revId": "bdbca5d844a8352357586fb07054a114d801b804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d34842a_13c378d9",
         "filename": "android/packaging.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-28T17:45:44Z",
       "side": 1,
       "message": "Typo",
+      "range": {
+        "startLine": 60,
+        "startChar": 35,
+        "endLine": 60,
+        "endChar": 43
+      },
+      "revId": "bdbca5d844a8352357586fb07054a114d801b804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64482d0d_5b6f2857",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-29T00:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d34842a_13c378d9",
       "range": {
         "startLine": 60,
         "startChar": 35,
@@ -60,6 +108,30 @@
       "writtenOn": "2024-08-28T17:45:44Z",
       "side": 1,
       "message": "Can we change this to just report an error instead of silently overriding? I know this is a divergance from make\u0027s behavior, but I don\u0027t think this pattern of adding something to the list just to remove it later is a good one. Android.bp files should be property constructed to only contain entries that will actually be used.\n\nOr maybe we don\u0027t even need this feature at all, because the packaging conflict check will cover most of these.",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 2
+      },
+      "revId": "bdbca5d844a8352357586fb07054a114d801b804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f51bbf15_e4463882",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-29T00:11:18Z",
+      "side": 1,
+      "message": "That\u0027s a new perspective. Thank you. Note that A overriding B doesn\u0027t necessarily mean that A and B are at the same path, so the the conflict check just above is orthogonal to this.\n\nAnyway, I am thinking whether this will really be needed or not. One could implement the same behavior without relying on override, but using select. ex:\n\n```\nmodule { name: \"a\"}\nmodule { name: \"b\", overrides: [\"b\"] }\npackage { name: \"pkg\", deps: [\"a\", \"b\"] } // only b is installed.\n```\n\n```\nmodule { name: \"a\" }\nmodule { name: \"b\" }\npackage { name: \"pkg\",\n    deps: [\n        select(some_cond, {\n            \"true\": \"a\",\n            \"false\": \"b\",\n        })\n    ],\n}\n```\n\nBut isn\u0027t this overly complex and cumbersome? You need to add some_cond.\n\nNote that we already have \u0027overrides\u0027 in some Soong modules, though they are internally implemented in Make. Therefore, I don\u0027t think we can entirely get rid of the need for this.",
+      "parentUuid": "7a1201be_7db862b3",
       "range": {
         "startLine": 377,
         "startChar": 0,
