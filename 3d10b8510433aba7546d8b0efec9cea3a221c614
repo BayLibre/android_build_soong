@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5043ed6a_cecb99b6",
+        "filename": "android/selects_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1018,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-29T23:57:28Z",
+      "side": 1,
+      "message": "nit: indent",
+      "range": {
+        "startLine": 1018,
+        "startChar": 4,
+        "endLine": 1018,
+        "endChar": 45
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8ad7ee6f_534f41a4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/selects_test.go",
+              "range": {
+                "startLine": 1018,
+                "startChar": 0,
+                "endLine": 1019,
+                "endChar": 0
+              },
+              "replacement": "\tstring_list_postprocessor_add_to_elements: \"1\",\n"
+            },
+            {
+              "path": "android/selects_test.go",
+              "range": {
+                "startLine": 1023,
+                "startChar": 0,
+                "endLine": 1024,
+                "endChar": 0
+              },
+              "replacement": "\tstring_list_postprocessor_add_to_elements: \"2\",\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3d10b8510433aba7546d8b0efec9cea3a221c614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a65acceb_8f72912b",
+        "filename": "android/selects_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-29T23:57:28Z",
+      "side": 1,
+      "message": "How would this work for nested defaults? For example,\n```\nmy_defaults {\n\tname: \"defaults_A\",\n\tmy_string_list: [\"aa\", \"bb\", \"cc\"],\n}\nmy_defaults {\n\tname: \"defaults_a\",\n\tdefaults: \"defaults_A\"\n\tmy_string_list: [\"a\", \"b\", \"c\"],\n        string_list_postprocessor_add_to_elements: \"1\",\n}\n```\nWould `defaults_a.my_string_list` evaluate to `[\"aa\", \"bb\", \"cc\", \"a1\", \"b1\", \"c1\"]` or `[\"aa1\", \"bb1\", \"cc1\", \"a1\", \"b1\", \"c1\"]`? How would this behave if `defaults_A` also defined `string_list_postprocessor_add_to_elements`?",
+      "range": {
+        "startLine": 1025,
+        "startChar": 0,
+        "endLine": 1028,
+        "endChar": 1
+      },
+      "revId": "3d10b8510433aba7546d8b0efec9cea3a221c614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d22f3387_78126d9d",
+        "filename": "android/selects_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-08-29T23:57:28Z",
+      "side": 1,
+      "message": "WDYT about something like the following:\n```suggestion\n\tString_list_postprocessor_add_to_elements struct {\n\t    prefix string\n\t    suffix string\n\t}\n```",
+      "revId": "3d10b8510433aba7546d8b0efec9cea3a221c614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
