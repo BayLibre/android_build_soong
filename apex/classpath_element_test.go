@@ -92,7 +92,6 @@ func TestCreateClasspathElements(t *testing.T) {
 			],
 			srcs: ["b.java"],
 			installable: true,
-			sdk_version: "core_current",
 		}
 
 		java_library {
