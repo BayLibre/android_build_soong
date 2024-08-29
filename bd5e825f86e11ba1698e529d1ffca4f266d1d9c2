@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01cde65c_4110ea5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-29T06:58:13Z",
+      "side": 1,
+      "message": "I\u0027d like to land changes incrementally. There\u0027s no APEX prebuilt which is marked as \u0027updatable: false`, but actually is updatable. Fortunately(?), the default value for `updatable` is true, which means `updatable: false` is a deliberate decision.",
+      "parentUuid": "563536e3_1cb9f57a",
+      "revId": "bd5e825f86e11ba1698e529d1ffca4f266d1d9c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2917770d_1af33f41",
         "filename": "java/app.go",
         "patchSetId": 2
