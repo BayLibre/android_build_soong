@@ -1288,7 +1288,7 @@ func (c *Module) UseSdk() bool {
 }
 
 func (c *Module) isCoverageVariant() bool {
-	return c.coverage.Properties.IsCoverageVariant
+	return c.coverage != nil && c.coverage.Properties.IsCoverageVariant
 }
 
 func (c *Module) IsNdk(config android.Config) bool {
@@ -3434,6 +3434,13 @@ func ShouldUseStubForApex(ctx android.ModuleContext, dep android.Module) bool {
 			// modules would need to be split into APEX variants and resolved
 			// separately for each APEX they have access to.
 			if !isApexImportedApiLibrary && android.AvailableToSameApexes(thisModule, dep.(android.ApexModule)) {
+				useStubs = false
+			}
+		}
+		if useStubs {
+			// Another exception: coverage variants require implementation of bionic libraries.
+			// Since the coverage variants are not installed on device, skip stubs.
+			if cc, ok := ctx.Module().(*Module); ok && cc.isCoverageVariant() {
 				useStubs = false
 			}
 		}
