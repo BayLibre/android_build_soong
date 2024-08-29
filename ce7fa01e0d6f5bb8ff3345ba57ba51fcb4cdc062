@@ -88,6 +88,24 @@
       "parentUuid": "01399236_b4a540ed",
       "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83798a7_4fc0f821",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-08-29T23:25:45Z",
+      "side": 1,
+      "message": "I still think users expect that `m \u003cmodule-name\u003e` will build and update the files in `$(PRODUCT_OUT)` (even for the already installed files).\nWhat will be the target rule for `m \u003cmodule-name\u003e` with the soong filesystem? Or do you think we can remove supporting `m \u003cmodule-name\u003e` with the soong filesystem?",
+      "parentUuid": "1887d9ea_b7228b1e",
+      "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
