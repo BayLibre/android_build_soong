@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49059727_7aaaf973",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-29T00:52:31Z",
+      "side": 1,
+      "message": "We should solve this problem first, before we open up the restrictions?\n\n\u003e  for non-updatable APEXes. Would it be a problem?\n\nIt\u0027s a serious problem if they are updated, but if they are guaranteed to not be updated, then it\u0027s less serious, but it\u0027s still important. They should use libbinder_ndk anyway. Though as you pointed out, we do error on __ANDROID_APEX__ so maybe it\u0027s okay.",
+      "parentUuid": "bbc0ab45_5e082a9d",
+      "revId": "bd5e825f86e11ba1698e529d1ffca4f266d1d9c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2917770d_1af33f41",
         "filename": "java/app.go",
         "patchSetId": 2
