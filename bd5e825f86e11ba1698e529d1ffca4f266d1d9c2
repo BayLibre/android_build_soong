@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbc0ab45_5e082a9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-29T00:29:04Z",
+      "side": 1,
+      "message": "Are you saying preventing APEXes with \"updatable: false\" from being actually updated? Not in this CL, but that\u0027s on my todo list as we discussed.\n\nre libbinder: yes, but not for non-updatable APEXes. Would it be a problem?",
+      "parentUuid": "0981502e_01b8104d",
+      "revId": "bd5e825f86e11ba1698e529d1ffca4f266d1d9c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2917770d_1af33f41",
         "filename": "java/app.go",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2024-08-28T17:52:00Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 217,
+        "startChar": 23,
+        "endLine": 217,
+        "endChar": 34
+      },
+      "revId": "bd5e825f86e11ba1698e529d1ffca4f266d1d9c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "744bf936_72746c20",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-29T00:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2917770d_1af33f41",
       "range": {
         "startLine": 217,
         "startChar": 23,
@@ -54,6 +96,24 @@
       "writtenOn": "2024-08-28T17:52:00Z",
       "side": 1,
       "message": "Please give this a name that indicates it\u0027s for SetUpdatable.",
+      "revId": "bd5e825f86e11ba1698e529d1ffca4f266d1d9c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d21c48e0_6859ed63",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-29T00:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b34810f7_ea6efc78",
       "revId": "bd5e825f86e11ba1698e529d1ffca4f266d1d9c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
