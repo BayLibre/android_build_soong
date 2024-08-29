@@ -52,6 +52,24 @@
       "parentUuid": "1eec3a69_eba1be4f",
       "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01399236_b4a540ed",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-08-29T06:47:19Z",
+      "side": 1,
+      "message": "I got your point. But that will break the user journey of `m \u003cmodule-name\u003e \u0026\u0026 adb sync`. To allow the scenario, I think we still need to maintain the rule for the `fullInstallPath` in `$(PRODUCT_OUT)`.",
+      "parentUuid": "1b38201e_57d64732",
+      "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
