@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "810bc3fc_81a6de88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-08-29T18:21:27Z",
+      "side": 1,
+      "message": "Thanks for deprecating this!",
+      "revId": "a89a58ac1c9f9c01a8e06d4d2cbc5b8bfa70ee63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
