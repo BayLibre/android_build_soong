@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "563536e3_1cb9f57a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-29T02:19:37Z",
+      "side": 1,
+      "message": "What\u0027s the rush with this? If prebuilts get merged using random libraries, then it\u0027s going to be much harder to clean this up. Until that\u0027s fixed, it\u0027s safer to rely on apex_available so that authors know what\u0027s going on. WDYT?",
+      "parentUuid": "75685eb6_77f16f77",
+      "revId": "bd5e825f86e11ba1698e529d1ffca4f266d1d9c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2917770d_1af33f41",
         "filename": "java/app.go",
         "patchSetId": 2
