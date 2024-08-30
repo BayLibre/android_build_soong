@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "567fdd02_d8194c78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-30T18:40:20Z",
+      "side": 1,
+      "message": "I do wish the default value was more restrictive.\n\nI want to make sure we\u0027re not removing restrictions on things like the camera APEX which are updated. We shouldn\u0027t drop apex_availability restriction there, and then have that start using more libraries, and then try to enforce apex_availability, only to find they\u0027ve added more libraries.\n\nRestrictions first, then relax. If we relax and then add restrictions, we open a window for bad configurations.",
+      "parentUuid": "01cde65c_4110ea5e",
+      "revId": "bd5e825f86e11ba1698e529d1ffca4f266d1d9c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2917770d_1af33f41",
         "filename": "java/app.go",
         "patchSetId": 2
