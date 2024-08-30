@@ -52,6 +52,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0ef486_56e9f7bb",
+        "filename": "android/selects_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1018,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-30T20:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5043ed6a_cecb99b6",
+      "range": {
+        "startLine": 1018,
+        "startChar": 4,
+        "endLine": 1018,
+        "endChar": 45
+      },
+      "revId": "3d10b8510433aba7546d8b0efec9cea3a221c614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a65acceb_8f72912b",
@@ -65,6 +89,30 @@
       "writtenOn": "2024-08-29T23:57:28Z",
       "side": 1,
       "message": "How would this work for nested defaults? For example,\n```\nmy_defaults {\n\tname: \"defaults_A\",\n\tmy_string_list: [\"aa\", \"bb\", \"cc\"],\n}\nmy_defaults {\n\tname: \"defaults_a\",\n\tdefaults: \"defaults_A\"\n\tmy_string_list: [\"a\", \"b\", \"c\"],\n        string_list_postprocessor_add_to_elements: \"1\",\n}\n```\nWould `defaults_a.my_string_list` evaluate to `[\"aa\", \"bb\", \"cc\", \"a1\", \"b1\", \"c1\"]` or `[\"aa1\", \"bb1\", \"cc1\", \"a1\", \"b1\", \"c1\"]`? How would this behave if `defaults_A` also defined `string_list_postprocessor_add_to_elements`?",
+      "range": {
+        "startLine": 1025,
+        "startChar": 0,
+        "endLine": 1028,
+        "endChar": 1
+      },
+      "revId": "3d10b8510433aba7546d8b0efec9cea3a221c614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83733929_4c3f54ec",
+        "filename": "android/selects_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-30T20:11:56Z",
+      "side": 1,
+      "message": "The postprocessor in this test is applied in a load hook, so it would be applied before the defaults, and thus only add the \"1\" to `\"a\", \"b\", \"c\"`, i.e. your first option.\n\nYou would get your second option if the postprocessor was applied in the DefaultableHook.\n\nif defaults_A also defined `string_list_postprocessor_add_to_elements`, say with a value of 2, the outcome would be:\n  - For a load hook, it would be `[\"aa2\", \"bb2\", \"cc2\", \"a1\", \"b1\", \"c1\"]`\n  - For a defaultable hook, it would be `[\"aa1\", \"bb1\", \"cc1\", \"a1\", \"b1\", \"c1\"]`. This is because the defaults are applied in a top-down mutator, so the properties from `defaults_A` will be folded into `defaults_a` before `defaults_A`\u0027s defaultable hook was applied.\n\nAll of these outcomes should match the behavior as if the property was non-configurable and you modified its value directly in the load/defaultable hooks.\n\nThere\u0027s a more comprehensive test in the build/blueprint cl as well, though it doesn\u0027t deal with defaults modules.",
+      "parentUuid": "a65acceb_8f72912b",
       "range": {
         "startLine": 1025,
         "startChar": 0,
