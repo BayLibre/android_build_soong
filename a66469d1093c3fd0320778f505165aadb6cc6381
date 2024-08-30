@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f39c7a_5f8e1cca",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-08-30T18:34:29Z",
+      "side": 1,
+      "message": "Param ctx is unnecessary here.",
+      "range": {
+        "startLine": 739,
+        "startChar": 33,
+        "endLine": 739,
+        "endChar": 62
+      },
+      "revId": "a66469d1093c3fd0320778f505165aadb6cc6381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
