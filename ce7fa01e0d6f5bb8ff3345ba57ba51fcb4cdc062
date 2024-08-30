@@ -124,6 +124,24 @@
       "parentUuid": "b83798a7_4fc0f821",
       "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65bc0e1f_357f8565",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-30T08:36:17Z",
+      "side": 1,
+      "message": "Hi Cole,\n\nI agree with you on that `m \u003cmodule\u003e` being installed to `PRODUCT_OUT` was a bad design. But, what\u0027s happened is what\u0027s happened and we can\u0027t ignore the fact that existing developer workflow depend on this. We can\u0027t break them all at a sudden.\n\nA typical workflow is as follows.\n\n1. `\u003cmodule\u003e` is already in `PRODUCT_PACKAGES`. (ex: libc, libm, libdl)\n2. initially, `m \u0026\u0026 fastboot flashall`.\n3. make some changes, then, `m \u003cmodule\u003e`\n4. then, `adb sync` or `adevice`\n\nYes, people could have done `m` instead of `m \u003cmodule\u003e` at step 3. But it can be very long if `\u003cmodule\u003e` is close to the root of the dependency tree. You don\u0027t want to spend time on rebuilding every apks when you add a logging statement somewhere in `framework/base/core`.",
+      "parentUuid": "9b5c3379_266bab38",
+      "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
