@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2d32ef4_905d6c63",
+        "filename": "android/module_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-30T20:52:29Z",
+      "side": 1,
+      "message": "You can still keep it as a `*[]string`, you just have to clone it to a local variable and then do `\u0026myLocal` here.",
+      "parentUuid": "bc955442_06625031",
+      "range": {
+        "startLine": 535,
+        "startChar": 25,
+        "endLine": 535,
+        "endChar": 71
+      },
+      "revId": "bdbca5d844a8352357586fb07054a114d801b804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d34842a_13c378d9",
         "filename": "android/packaging.go",
         "patchSetId": 3
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "dropping \"a\" from \"pkg\" may not be possible in following cases:\n\n1. \"a\" is indirectly depended on (or required by) by another module.\n\n```\nmodule { name: \"a\"}\nmodule { name: \"b\"}\nmodule { name: \"c\", required: [\"a\"]}\npackage { name: \"pkg\", deps: [\"c\", \"b\"] }\n```\n\n2. \"pkg\" is inherited.\n\n```\npackage_defaults { name: \"pkg_defaults\", deps: [\"a\"] }\npackage { name: \"pkg\", defaults: [\"pkg_defaults]\", deps: [\"b\"] }\n```",
       "parentUuid": "5091b66b_22b8aa62",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 2
+      },
+      "revId": "bdbca5d844a8352357586fb07054a114d801b804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4de420dc_ee0c1f2f",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-30T20:52:29Z",
+      "side": 1,
+      "message": "Case 2 is something that we definitely want to solve by factoring out the defaults modules correctly.\n\nCase one is trickier. It could still be solved by doing something like creating two `package_defaults`, one that has c and a, and another that has c and b, and including the right one in the product. But I can see how this would be a lot of work to fix immediately.\n\nIs there currently a motivation for implementing overrides? Is it blocking the cuttlefish system image? Please update the commit message and bug with the motivation if so.\n\nAssuming there\u0027s a need for it, I\u0027ll +2 the cl though.",
+      "parentUuid": "91b27b33_97ae99cd",
       "range": {
         "startLine": 377,
         "startChar": 0,
