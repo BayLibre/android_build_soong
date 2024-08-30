@@ -142,6 +142,24 @@
       "parentUuid": "9b5c3379_266bab38",
       "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4559683_0df6007c",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-08-30T13:00:03Z",
+      "side": 1,
+      "message": "With the `adb sync` test, I noticed that the files in `$PRODUCT_OUT` does not have the same timestamp with those in the soong-built system image. We cannot match the timestamps with the \"Implicit\" dependency.\n\nTo enable the `adb sync`:\n1. copy with preserve option from `soong/.intermediate` to `$PRODUCT_OUT` (Cole\u0027s suggestion)\n2. create image from `$PRODUCT_OUT` instead of `soong/.intermediate`.\n3. use `adevice`\n\nOption 1 is the simplest solution (aosp/3247732) but has the concern for `m \u003cmodule\u003e`,\nOption 2 requires major modification on copy and packaging functions.\n\nHowever, I also agree with keeping the `m \u003cmodule\u003e` feature that I myself is using. Also I noticed that the fuzz test is using `m \u003cfuzz_test\u003e \u0026\u0026 adb sync data` commands. (https://source.android.com/docs/security/test/libfuzzer#write-a-fuzzer)\n\nSo, I think Option 1 cannot be the final solution.",
+      "parentUuid": "65bc0e1f_357f8565",
+      "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
