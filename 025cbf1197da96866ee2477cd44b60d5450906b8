@@ -127,6 +127,24 @@
       "parentUuid": "588da6e5_e87e100c",
       "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167675e7_d670495d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-30T18:40:10Z",
+      "side": 1,
+      "message": "I see. @ccross@android.com, could you weigh in on if changing the arch via cflags is ok?",
+      "parentUuid": "11af4fc2_528b48f5",
+      "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
