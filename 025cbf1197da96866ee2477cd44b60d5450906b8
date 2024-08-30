@@ -91,6 +91,24 @@
       "parentUuid": "4028a07b_2e5756a6",
       "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "588da6e5_e87e100c",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-30T18:12:25Z",
+      "side": 1,
+      "message": "Well basically I\u0027m asking where these `-march` flags come from in the first place, and if we can use the same source. If they\u0027re user-specified in Android.bp files then that\u0027s different though.",
+      "parentUuid": "f86ef5e7_d1cf7154",
+      "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
