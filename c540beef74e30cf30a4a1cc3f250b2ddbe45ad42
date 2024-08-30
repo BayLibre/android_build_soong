@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfc0a88a_6966e7b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-08-30T14:32:06Z",
+      "side": 1,
+      "message": "The previous submission of this change (https://r.android.com/3248195) was reverted due to issues with wear builds. See b/363016109. Those issues have been fixed by ag/29057143. Longer term a wear build target will be added to presubmit but in the meantime this is being explicitly tested in wear by https://android-build.corp.google.com/builds/abtd/run/L41600030006107228.",
+      "revId": "c540beef74e30cf30a4a1cc3f250b2ddbe45ad42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
