@@ -33,6 +33,29 @@
       "message": "This should be fine for arm/aarch64/x86 options:\n\nhttps://gcc.gnu.org/onlinedocs/gcc/ARM-Options.html\nhttps://gcc.gnu.org/onlinedocs/gcc/AArch64-Options.html#aarch64-feature-modifiers\nhttps://gcc.gnu.org/onlinedocs/gcc/x86-Options.html",
       "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d75e894_c537ac81",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2024-08-30T16:53:48Z",
+      "side": 1,
+      "message": "Just in case, shouldn\u0027t we use https://pkg.go.dev/regexp#Regexp.FindSubmatch to get the rightmost submatch?",
+      "range": {
+        "startLine": 788,
+        "startChar": 16,
+        "endLine": 788,
+        "endChar": 34
+      },
+      "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
