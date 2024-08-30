@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d80737ad_f4cb54a5",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-08-30T19:39:42Z",
+      "side": 1,
+      "message": "Thank you for flagging that.\n\nFindSubmatch also returned the first one in such case.\nI have now changed this to use FindAllStringSubmatch() and then return the last occurrence. Hope this is fine.",
+      "parentUuid": "25430222_1a39546b",
+      "range": {
+        "startLine": 788,
+        "startChar": 16,
+        "endLine": 788,
+        "endChar": 34
+      },
+      "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4028a07b_2e5756a6",
         "filename": "cc/sanitize.go",
         "patchSetId": 6
