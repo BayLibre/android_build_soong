@@ -1311,6 +1311,11 @@ func markPlatformAvailability(mctx android.BottomUpMutatorContext) {
 		availableToPlatform = true
 	}
 
+	// Exception 3 (TODO: b/281077552): Move this to Android.bp
+	if mctx.ModuleName() == "libhpke_jni" {
+		availableToPlatform = true
+	}
+
 	if !availableToPlatform {
 		am.SetNotAvailableForPlatform()
 	}
