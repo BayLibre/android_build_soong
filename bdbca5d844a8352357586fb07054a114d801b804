@@ -164,6 +164,30 @@
       },
       "revId": "bdbca5d844a8352357586fb07054a114d801b804",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b27b33_97ae99cd",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-08-30T04:01:12Z",
+      "side": 1,
+      "message": "dropping \"a\" from \"pkg\" may not be possible in following cases:\n\n1. \"a\" is indirectly depended on (or required by) by another module.\n\n```\nmodule { name: \"a\"}\nmodule { name: \"b\"}\nmodule { name: \"c\", required: [\"a\"]}\npackage { name: \"pkg\", deps: [\"c\", \"b\"] }\n```\n\n2. \"pkg\" is inherited.\n\n```\npackage_defaults { name: \"pkg_defaults\", deps: [\"a\"] }\npackage { name: \"pkg\", defaults: [\"pkg_defaults]\", deps: [\"b\"] }\n```",
+      "parentUuid": "5091b66b_22b8aa62",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 2
+      },
+      "revId": "bdbca5d844a8352357586fb07054a114d801b804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
