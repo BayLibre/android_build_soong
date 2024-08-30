@@ -136,6 +136,9 @@ type filesystemProperties struct {
 	// Install aconfig_flags.pb file for the modules installed in this partition.
 	Gen_aconfig_flags_pb *bool
 
+	// Update the Base_dir of the $PRODUCT_OUT directory with the packaging files.
+	Update_product_out *bool
+
 	Fsverity fsverityProperties
 }
 
@@ -331,6 +334,19 @@ func (f *filesystem) copyPackagingSpecs(ctx android.ModuleContext, builder *andr
 	return f.CopySpecsToDirs(ctx, builder, dirsToSpecs)
 }
 
+func (f *filesystem) copyFilesToProductOut(ctx android.ModuleContext, builder *android.RuleBuilder, rootDir, rebasedDir android.OutputPath) {
+	if !proptools.Bool(f.properties.Update_product_out) {
+		return
+	}
+	installPath := android.PathForModuleInPartitionInstall(ctx, "")
+	builder.Command().Textf("cp -prf %s %s", rebasedDir, installPath)
+	if f.properties.Base_dir != nil {
+		// The soong filesystem also has built the root directory. Copy the root files, too.
+		builder.Command().Textf("find %s -maxdepth 1 -not -path %s -exec cp -prf {} %s \\;", rootDir, rebasedDir, installPath)
+		builder.Command().Textf("mkdir -p %s", rootDir.Join(ctx, *f.properties.Base_dir))
+	}
+}
+
 func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) android.OutputPath {
 	rootDir := android.PathForModuleOut(ctx, "root").OutputPath
 	rebasedDir := rootDir
@@ -348,6 +364,7 @@ func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) androi
 	f.buildFsverityMetadataFiles(ctx, builder, specs, rootDir, rebasedDir)
 	f.buildEventLogtagsFile(ctx, builder, rebasedDir)
 	f.buildAconfigFlagsFiles(ctx, builder, specs, rebasedDir)
+	f.copyFilesToProductOut(ctx, builder, rootDir, rebasedDir)
 
 	// run host_init_verifier
 	// Ideally we should have a concept of pluggable linters that verify the generated image.
@@ -490,6 +507,7 @@ func (f *filesystem) buildCpioImage(ctx android.ModuleContext, compressed bool) 
 	f.buildFsverityMetadataFiles(ctx, builder, specs, rootDir, rebasedDir)
 	f.buildEventLogtagsFile(ctx, builder, rebasedDir)
 	f.buildAconfigFlagsFiles(ctx, builder, specs, rebasedDir)
+	f.copyFilesToProductOut(ctx, builder, rootDir, rebasedDir)
 
 	output := android.PathForModuleOut(ctx, f.installFileName()).OutputPath
 	cmd := builder.Command().
