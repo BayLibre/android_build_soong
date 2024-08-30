@@ -56,6 +56,23 @@
       },
       "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4028a07b_2e5756a6",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-30T18:00:05Z",
+      "side": 1,
+      "message": "Do you have to get the arch from the existing flags? Can it not be determined from the arch of the soong module itself?",
+      "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
