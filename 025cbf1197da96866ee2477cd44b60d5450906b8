@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59eb7ab8_5adab92d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-08-30T19:07:18Z",
+      "side": 1,
+      "message": "Pardon my limited understanding of golang.\n\nCurrently this is looping through flags (of type []string) and finding last occurrence of -march\u003d\u003c\u003e.\n\nIs using FindSubmatch() for []byte a better option than using FindStringSubmatch() for string?\n\nOr is there a better way to find -march\u003d\u003c\u003e in the []string without looping?\nIf yes, I will update the CL with that.\n\nThanks.",
+      "parentUuid": "9d75e894_c537ac81",
+      "range": {
+        "startLine": 788,
+        "startChar": 16,
+        "endLine": 788,
+        "endChar": 34
+      },
+      "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4028a07b_2e5756a6",
         "filename": "cc/sanitize.go",
         "patchSetId": 6
