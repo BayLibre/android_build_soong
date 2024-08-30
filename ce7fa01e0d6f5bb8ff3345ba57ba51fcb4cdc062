@@ -160,6 +160,24 @@
       "parentUuid": "65bc0e1f_357f8565",
       "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad71540e_2ed1c078",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-30T17:52:59Z",
+      "side": 1,
+      "message": "I\u0027m not suggesting we break `m \u003cmodule\u003e` -\u003e `$PRODUCT_OUT` right now. I\u0027m just requesting that we don\u0027t make the soong-built partitions rely on this functionality.\n\nI have two ideas for how to support `m \u003cmodule\u003e` -\u003e `$PRODUCT_OUT` in the long term:\n - Make the copying happen outside of the build, like by soong_ui\n - Do something similar to how `dist` works: make a `stage` target, so you could do `m \u003cmodule\u003e stage`. The staging would be done in a smaller ninja file that would be regenerated whenever the list of modules to stage on the command line changes.",
+      "parentUuid": "c4559683_0df6007c",
+      "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
