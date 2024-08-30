@@ -16,6 +16,24 @@
       "message": "I see you also added the Vintf fragments to androidmk required in aosp/3226842. Could we make `RequiredModuleNames` automatically include the vintf fragments so that we don\u0027t have to do it in multiple places?",
       "revId": "74408202e3cc0c43658553d9ff1c58208e1d451a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c8fa8b_d701f31d",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-08-30T01:00:44Z",
+      "side": 1,
+      "message": "This is discussed from https://android-review.git.corp.google.com/c/platform/build/soong/+/3183863/6..17/android/module.go#b502 . I decided to use `vintf_fragment_modules` instead of `required` because APEX exposes required of internal modules as APEX required itself - which means if we put this module as `required` then vintf_fragment file will be installed both in the APEX, and also partition contains APEX.",
+      "parentUuid": "3703eb32_5af75fe4",
+      "revId": "74408202e3cc0c43658553d9ff1c58208e1d451a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
