@@ -100,6 +100,11 @@ type sdkProperties struct {
 	Prebuilt_visibility []string
 }
 
+// Returns true if this module is of type `sdk`, and _not_ `module_exports`
+func (s *sdk) IsSdk() bool {
+	return !s.properties.Module_exports
+}
+
 // sdk defines an SDK which is a logical group of modules (e.g. native libs, headers, java libs, etc.)
 // which Mainline modules like APEX can choose to build with.
 func SdkModuleFactory() android.Module {

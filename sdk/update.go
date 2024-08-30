@@ -1104,7 +1104,12 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 
 	variant := member.Variants()[0]
 
-	if s.isInternalMember(name) {
+	if s.sdk.IsSdk() && !s.isInternalMember(name) {
+		// This is an SDK module, and contains stub libraries.
+		// Mark them with public visibility.
+		// Additional API enforcements (if necessary) will be done by other soong mutators.
+		m.AddProperty("visibility", []string{"//visibility:public"})
+	} else if s.isInternalMember(name) {
 		// An internal member is only referenced from the sdk snapshot which is in the
 		// same package so can be marked as private.
 		m.AddProperty("visibility", []string{"//visibility:private"})
