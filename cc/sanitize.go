@@ -16,6 +16,7 @@ package cc
 
 import (
 	"fmt"
+	"regexp"
 	"sort"
 	"strings"
 	"sync"
@@ -79,8 +80,7 @@ var (
 
 	minimalRuntimeFlags = []string{"-fsanitize-minimal-runtime", "-fno-sanitize-trap=integer,undefined",
 		"-fno-sanitize-recover=integer,undefined"}
-	memtagStackCommonFlags = []string{"-march=armv8-a+memtag"}
-	memtagStackLlvmFlags   = []string{"-dom-tree-reachability-max-bbs-to-explore=128"}
+	memtagStackLlvmFlags = []string{"-dom-tree-reachability-max-bbs-to-explore=128"}
 
 	hostOnlySanitizeFlags   = []string{"-fno-sanitize-recover=all"}
 	deviceOnlySanitizeFlags = []string{"-fsanitize-trap=all"}
@@ -777,6 +777,35 @@ func toDisableUnsignedShiftBaseChange(flags []string) bool {
 	return false
 }
 
+func extractLastArch(flags []string) (string, bool) {
+	// Define a regular expression to match "-march=<ARCH>", allowing alphanumeric, ".", "+",
+	// and "-" in ARCH
+	re := regexp.MustCompile(`-march=([\w\.+-]+)`)
+
+	// Iterate through the slice of flags in reverse order
+	for i := len(flags) - 1; i >= 0; i-- {
+		flag := flags[i]
+		// Find all matches
+		matches := re.FindAllStringSubmatch(flag, -1)
+
+		// If there are matches, return the last one
+		if len(matches) > 0 {
+			return matches[len(matches)-1][1], true
+		}
+	}
+
+	// If no match was found, return an empty string and false
+	return "", false
+}
+
+func getMemTagFlags(flags []string) []string {
+	arch, found := extractLastArch(flags)
+	if found {
+		return []string{fmt.Sprintf("-march=%s+memtag", arch)}
+	}
+	return []string{"-march=armv8-a+memtag"}
+}
+
 func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	if s.Properties.ForceDisable {
 		return flags
@@ -896,9 +925,9 @@ func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	}
 
 	if Bool(sanProps.Memtag_stack) {
-		flags.Local.CFlags = append(flags.Local.CFlags, memtagStackCommonFlags...)
-		flags.Local.AsFlags = append(flags.Local.AsFlags, memtagStackCommonFlags...)
-		flags.Local.LdFlags = append(flags.Local.LdFlags, memtagStackCommonFlags...)
+		flags.Local.CFlags = append(flags.Local.CFlags, getMemTagFlags(flags.Local.CFlags)...)
+		flags.Local.AsFlags = append(flags.Local.AsFlags, getMemTagFlags(flags.Local.AsFlags)...)
+		flags.Local.LdFlags = append(flags.Local.LdFlags, getMemTagFlags(flags.Local.LdFlags)...)
 
 		for _, flag := range memtagStackLlvmFlags {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-mllvm", flag)
