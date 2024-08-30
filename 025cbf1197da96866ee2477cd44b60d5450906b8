@@ -73,6 +73,24 @@
       "message": "Do you have to get the arch from the existing flags? Can it not be determined from the arch of the soong module itself?",
       "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86ef5e7_d1cf7154",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-08-30T18:03:28Z",
+      "side": 1,
+      "message": "\u003e Do you have to get the arch from the existing flags? Can it not be determined from the arch of the soong module itself?\n\nThe flags needed for some of the libaom/libvpx optimizations are `-march\u003darmv8.2-a+dotprod+i8mm`. For SVE2 it will be `-march\u003darmv9-a+i8mm+sve2`. How would the arch be derived?",
+      "parentUuid": "4028a07b_2e5756a6",
+      "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
