@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b31691e_34505c16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-08-30T16:36:11Z",
+      "side": 1,
+      "message": "Functionally this looks fine. I don\u0027t have any comments about the Go itself.",
+      "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a088a5b_6215bff5",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-08-30T16:36:11Z",
+      "side": 1,
+      "message": "This should be fine for arm/aarch64/x86 options:\n\nhttps://gcc.gnu.org/onlinedocs/gcc/ARM-Options.html\nhttps://gcc.gnu.org/onlinedocs/gcc/AArch64-Options.html#aarch64-feature-modifiers\nhttps://gcc.gnu.org/onlinedocs/gcc/x86-Options.html",
+      "revId": "025cbf1197da96866ee2477cd44b60d5450906b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
