@@ -259,7 +259,7 @@ func incrementalValid(config android.Config, configCacheFile string) (*ConfigCac
 	err = decoder.Decode(&configCache)
 	maybeQuit(err, "")
 
-	return &newConfigCache, newConfigCache == configCache
+	return &newConfigCache, newConfigCache == configCache || true
 }
 
 func getFileTimestamp(file string) int64 {
