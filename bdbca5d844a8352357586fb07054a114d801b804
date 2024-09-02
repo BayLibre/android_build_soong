@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "641e3f9b_07e96524",
+        "filename": "android/module_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-02T09:06:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2d32ef4_905d6c63",
+      "range": {
+        "startLine": 535,
+        "startChar": 25,
+        "endLine": 535,
+        "endChar": 71
+      },
+      "revId": "bdbca5d844a8352357586fb07054a114d801b804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d34842a_13c378d9",
@@ -228,6 +252,30 @@
       "side": 1,
       "message": "Case 2 is something that we definitely want to solve by factoring out the defaults modules correctly.\n\nCase one is trickier. It could still be solved by doing something like creating two `package_defaults`, one that has c and a, and another that has c and b, and including the right one in the product. But I can see how this would be a lot of work to fix immediately.\n\nIs there currently a motivation for implementing overrides? Is it blocking the cuttlefish system image? Please update the commit message and bug with the motivation if so.\n\nAssuming there\u0027s a need for it, I\u0027ll +2 the cl though.",
       "parentUuid": "91b27b33_97ae99cd",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 2
+      },
+      "revId": "bdbca5d844a8352357586fb07054a114d801b804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff9c402d_6b48f5e4",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-02T09:06:29Z",
+      "side": 1,
+      "message": "This isn\u0027t blocking cuttlefish system image, but will prevent us from doing the same for other partition images where the use of override is much more common.",
+      "parentUuid": "4de420dc_ee0c1f2f",
       "range": {
         "startLine": 377,
         "startChar": 0,
