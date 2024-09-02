@@ -103,7 +103,8 @@ func (w *Writer) Close() error {
 		b.uint16(uint16(len(h.Comment)))
 		b = b[4:] // skip disk number start and internal file attr (2x uint16)
 		b.uint32(h.ExternalAttrs)
-		if h.offset > uint32max {
+		// offset should be uint32max if 64-bit value is written to Zip64 header
+		if h.isZip64() || h.offset >= uint32max {
 			b.uint32(uint32max)
 		} else {
 			b.uint32(uint32(h.offset))
@@ -288,6 +289,16 @@ func writeHeader(w io.Writer, h *FileHeader) error {
 		b.uint32(0) // crc32,
 		b.uint32(0) // compressed size,
 		b.uint32(0) // uncompressed size
+		// 7z needs Extra field at Local File Header even if we use descriptor for zip64
+		if h.CompressedSize64 > uint32max || h.UncompressedSize64 > uint32max {
+			var buf [20]byte // 2x uint16 + 2x uint64
+			eb := writeBuf(buf[:])
+			eb.uint16(zip64ExtraId)
+			eb.uint16(16) // size = 2x uint64
+			eb.uint64(0)
+			eb.uint64(0)
+			h.Extra = append(h.Extra, buf[:]...)
+		}
 	} else {
 		b.uint32(h.CRC32)
 
@@ -329,6 +340,9 @@ func writeHeader(w io.Writer, h *FileHeader) error {
 		return err
 	}
 	_, err := w.Write(h.Extra)
+
+	// Clear not to save h.Extra again at closing
+	h.Extra = nil
 	return err
 }
 
