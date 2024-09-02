@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39e6d3d_8a4d0372",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-09-02T06:07:48Z",
+      "side": 1,
+      "message": "pruned the dependency on libhidlmetadata.",
+      "range": {
+        "startLine": 958,
+        "startChar": 4,
+        "endLine": 958,
+        "endChar": 47
+      },
+      "revId": "cccf95ac51d9d5f40bea2b67c4b239b4bff22a77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
