@@ -178,6 +178,24 @@
       "parentUuid": "c4559683_0df6007c",
       "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e944d60_79c22d77",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-02T09:40:39Z",
+      "side": 1,
+      "message": "\u003e requesting that we don\u0027t make the soong-built partitions rely on this functionality.\n\nYes, that\u0027s a very fair reason. Then how about this?\n\nThis filesystem module produces the list of module name it would install in it. Then Make uses that to install those modules to PRODUCT_OUT?",
+      "parentUuid": "ad71540e_2ed1c078",
+      "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
