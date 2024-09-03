@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd5e3a33_803cfb93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-09-03T22:24:05Z",
+      "side": 1,
+      "message": "This topic depends on https://android-review.git.corp.google.com/q/topic:%22ndk-header-cleanup%22",
+      "revId": "fa4994c2c79ecefff0f33a10e16c41c3d2499b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
