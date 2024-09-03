@@ -104,6 +104,24 @@
       "parentUuid": "b1791add_45245655",
       "revId": "fa4994c2c79ecefff0f33a10e16c41c3d2499b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "076f99df_a0b05710",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-09-03T23:03:32Z",
+      "side": 1,
+      "message": "I think they should be allowed, as they are inherited (from NewLibrary and they are in the Soong docs). I\u0027ve added them all just in case.",
+      "parentUuid": "b1791add_45245655",
+      "revId": "fa4994c2c79ecefff0f33a10e16c41c3d2499b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
