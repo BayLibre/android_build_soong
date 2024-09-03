@@ -68,6 +68,24 @@
       "message": "What about `export_generated_headers` `export_include_dirs` `export_shared_lib_headers` and `export_static_lib_headers`?",
       "revId": "fa4994c2c79ecefff0f33a10e16c41c3d2499b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1791add_45245655",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2024-09-03T23:01:07Z",
+      "side": 1,
+      "message": "Those don\u0027t exist for this module type, right? I think that\u0027s what https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/ndk_library.go;l\u003d107;drc\u003d7f1ae59d94d95d56853f4e4b74b9292578faac78 and https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/ndk_library.go;l\u003d558-564;drc\u003d7f1ae59d94d95d56853f4e4b74b9292578faac78 mean.",
+      "parentUuid": "616f5dfd_0403fa87",
+      "revId": "fa4994c2c79ecefff0f33a10e16c41c3d2499b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
