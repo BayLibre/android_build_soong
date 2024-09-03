@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74717269_c45d9c0c",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T21:30:05Z",
+      "side": 1,
+      "message": "Added a comment.",
+      "parentUuid": "2269340e_7efc10b5",
+      "range": {
+        "startLine": 590,
+        "startChar": 4,
+        "endLine": 594,
+        "endChar": 5
+      },
+      "revId": "8f2a54fa9ea28035a9c14cd4f724692e4d5b4661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a9f8184_8e7c856f",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-08-28T20:48:22Z",
       "side": 1,
       "message": "Is `USE_RBE` intentionally left out?",
+      "revId": "8f2a54fa9ea28035a9c14cd4f724692e4d5b4661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e93a37b6_c32e9805",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T21:30:05Z",
+      "side": 1,
+      "message": "The art tests don\u0027t use it, so I left it out for now at least.",
+      "parentUuid": "2a9f8184_8e7c856f",
       "revId": "8f2a54fa9ea28035a9c14cd4f724692e4d5b4661",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
