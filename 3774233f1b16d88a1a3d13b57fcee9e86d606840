@@ -16,6 +16,24 @@
       "message": "It shouldn\u0027t. This is a bug.",
       "revId": "3774233f1b16d88a1a3d13b57fcee9e86d606840",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05539205_602f0188",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-09-03T21:06:54Z",
+      "side": 1,
+      "message": "let\u0027s close out discussion on b/357711733 first",
+      "parentUuid": "cf214654_0d24d583",
+      "revId": "3774233f1b16d88a1a3d13b57fcee9e86d606840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
