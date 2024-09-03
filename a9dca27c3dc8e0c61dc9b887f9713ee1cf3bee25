@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88bae752_15eb7230",
+        "filename": "third_party/zip/writer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2024-09-03T18:08:57Z",
+      "side": 1,
+      "message": "I haven\u0027t checked recently, but IIRC, many of the reasons we forked this originally have been fixed upstream, so it\u0027s possible that we may be able to switch back to the upstream implementation.",
+      "parentUuid": "88fd60cc_c21d7d3a",
+      "revId": "a9dca27c3dc8e0c61dc9b887f9713ee1cf3bee25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf27931e_3c93084c",
         "filename": "third_party/zip/writer.go",
         "patchSetId": 1
