@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd723e7_72eace9a",
+        "filename": "android/module.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T20:50:23Z",
+      "side": 1,
+      "message": "Is this function ever called?",
+      "revId": "0e5cf6033e5cf04ae17528d1f2044cce08348db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ae5cf9_00a23373",
+        "filename": "android/module.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T20:50:23Z",
+      "side": 1,
+      "message": "These deps get added to the phony below, but I don\u0027t see any path for the phony to be added as a dependency of the \"checkbuild\" rule. How does that happen?",
+      "revId": "0e5cf6033e5cf04ae17528d1f2044cce08348db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7d3ca4c_f722cc9c",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T20:50:23Z",
+      "side": 1,
+      "message": "Why can\u0027t this use the new CheckBuildFile functionality?",
+      "revId": "0e5cf6033e5cf04ae17528d1f2044cce08348db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
