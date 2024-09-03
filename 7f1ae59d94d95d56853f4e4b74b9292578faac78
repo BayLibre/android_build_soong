@@ -70,6 +70,24 @@
       "parentUuid": "32dec8e5_fc6e29bf",
       "revId": "7f1ae59d94d95d56853f4e4b74b9292578faac78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8f5a68e_1d3a5c9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2024-09-03T21:07:45Z",
+      "side": 1,
+      "message": "Explained on the bug.",
+      "parentUuid": "dfe1c347_5ce5be5b",
+      "revId": "7f1ae59d94d95d56853f4e4b74b9292578faac78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
