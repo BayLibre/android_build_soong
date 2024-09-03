@@ -213,6 +213,7 @@ func (v *vbmeta) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.InstallFile(v.installDir, v.installFileName(), v.output)
 
 	ctx.SetOutputFiles([]android.Path{v.output}, "")
+	android.SetProvider(ctx, android.AndroidMkInfoProvider, v.prepareAndroidMKEntriesInfos(ctx))
 }
 
 // Returns the embedded shell command that prints the rollback index
@@ -265,20 +266,24 @@ func (v *vbmeta) extractPublicKeys(ctx android.ModuleContext) map[string]android
 	return result
 }
 
-var _ android.AndroidMkEntriesProvider = (*vbmeta)(nil)
-
-// Implements android.AndroidMkEntriesProvider
-func (v *vbmeta) AndroidMkEntries() []android.AndroidMkEntries {
-	return []android.AndroidMkEntries{android.AndroidMkEntries{
-		Class:      "ETC",
-		OutputFile: android.OptionalPathForPath(v.output),
-		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
-			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
-				entries.SetString("LOCAL_MODULE_PATH", v.installDir.String())
-				entries.SetString("LOCAL_INSTALLED_MODULE_STEM", v.installFileName())
-			},
+func (v *vbmeta) prepareAndroidMKEntriesInfos(ctx android.ModuleContext) android.AndroidMkProviderInfo {
+	providerData := android.AndroidMkProviderInfo{
+		PrimaryInfo: android.AndroidMkInfo{
+			Class:      "ETC",
+			OutputFile: android.OptionalPathForPath(v.output),
+			EntryMap:   make(map[string][]string),
 		},
-	}}
+	}
+	providerData.PrimaryInfo.SetString("LOCAL_MODULE_PATH", v.installDir.String())
+	providerData.PrimaryInfo.SetString("LOCAL_INSTALLED_MODULE_STEM", v.installFileName())
+	if v.Name() == "microdroid_vbmeta" {
+		fmt.Println("111111111111111111111", providerData.PrimaryInfo.EntryMap)
+	}
+	// android.AconfigUpdateAndroidMkInfos(ctx, v, &providerData)
+	if v.Name() == "microdroid_vbmeta" {
+		fmt.Println("222222222222222222222", providerData.PrimaryInfo.EntryMap)
+	}
+	return providerData
 }
 
 var _ Filesystem = (*vbmeta)(nil)
