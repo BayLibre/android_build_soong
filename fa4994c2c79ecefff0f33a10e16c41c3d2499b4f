@@ -122,6 +122,24 @@
       "parentUuid": "b1791add_45245655",
       "revId": "fa4994c2c79ecefff0f33a10e16c41c3d2499b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b3ea087_ccf5cfa6",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2024-09-03T23:14:10Z",
+      "side": 1,
+      "message": "I think you made the same mistake I just did of accidentally reading the properties of a different module type (I do this every time, I go to the module type, then ctrl+f, which jumps me to the first module type on the page that matches, rather than the one I\u0027m looking at). `export_header_libs` is the only `export_*` that shows up for `ndk_library` on https://ci.android.com/builds/submitted/12314317/linux/latest/view/soong_build.html.\n\nNo complaints about being overly thorough here though 😊 Hopefully just means that there won\u0027t be any surprises banning those as well.",
+      "parentUuid": "076f99df_a0b05710",
+      "revId": "fa4994c2c79ecefff0f33a10e16c41c3d2499b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
