@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ae0947a_0415319a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-03T13:41:48Z",
+      "side": 1,
+      "message": "`m \u0026\u0026 m \u003cmodule\u003e \u0026\u0026 m` will add output of \u003cmodule\u003e to PRODUCT_OUT if \u003cmodule\u003e is not in the deps of the filesystem image, because the second `m` would be no-op.",
+      "revId": "3662deb7a823857e6edeb650e87bd3ae173adec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
