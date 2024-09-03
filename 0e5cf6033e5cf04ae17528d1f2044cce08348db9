@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c934c11c_55d3c379",
+        "filename": "android/module.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-03T23:17:29Z",
+      "side": 1,
+      "message": "Whoops, got lost in the last rebase conflict resolution.  Fixed.",
+      "parentUuid": "5bd723e7_72eace9a",
+      "revId": "0e5cf6033e5cf04ae17528d1f2044cce08348db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63ae5cf9_00a23373",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc6d2d0a_fb24dc61",
+        "filename": "android/module.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-03T23:17:29Z",
+      "side": 1,
+      "message": "That happens in Make via https://android-review.git.corp.google.com/c/platform/build/soong/+/3237626/7/android/androidmk.go#560.  Doing it through Make maintains the current behavior w.r.t. which modules/variants are checked and which are not.",
+      "parentUuid": "63ae5cf9_00a23373",
+      "revId": "0e5cf6033e5cf04ae17528d1f2044cce08348db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7d3ca4c_f722cc9c",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-09-03T20:50:23Z",
       "side": 1,
       "message": "Why can\u0027t this use the new CheckBuildFile functionality?",
+      "revId": "0e5cf6033e5cf04ae17528d1f2044cce08348db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "446c07f9_1c9083a2",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-03T23:17:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7d3ca4c_f722cc9c",
       "revId": "0e5cf6033e5cf04ae17528d1f2044cce08348db9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
