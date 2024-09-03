@@ -232,6 +232,24 @@
       "parentUuid": "a89867d4_d043aeb2",
       "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5200257_b402faa5",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T19:19:08Z",
+      "side": 1,
+      "message": "Yeah aosp/3247732 is what I meant when I said \"make the filesystem module do the copy as it\u0027s being built\". Thanks!",
+      "parentUuid": "99783c4f_cd16c801",
+      "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
