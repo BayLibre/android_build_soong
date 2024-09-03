@@ -60,6 +60,7 @@ func init() {
 	AddNeverAllowRules(createCcStubsRule())
 	AddNeverAllowRules(createJavaExcludeStaticLibsRule())
 	AddNeverAllowRules(createProhibitHeaderOnlyRule())
+	AddNeverAllowRules(createLimitNdkExportRule())
 }
 
 // Add a NeverAllow rule to the set of rules to apply.
@@ -264,6 +265,21 @@ func createProhibitHeaderOnlyRule() Rule {
 		Without("name", "framework-minus-apex-headers").
 		With("headers_only", "true").
 		Because("headers_only can only be used for generating framework-minus-apex headers for non-updatable modules")
+}
+
+func createLimitNdkExportRule() Rule {
+	// DO NOT ADD HERE - please consult danalbert@
+	// b/357711733
+	//
+	// If the headers you're trying to export are meant to be a part of the NDK,
+	// they should be exposed by an ndk_headers module.
+	//
+	// If the headers shouldn't be a part of the NDK, the headers should instead
+	// be exposed from a separate `cc_library_headers` which consumers depend on.
+	return NeverAllow().
+		NotIn("frameworks/native/libs/binder/ndk").
+		ModuleType("ndk_library").
+		WithMatcher("export_header_libs", isSetMatcherInstance)
 }
 
 func neverallowMutator(ctx BottomUpMutatorContext) {
