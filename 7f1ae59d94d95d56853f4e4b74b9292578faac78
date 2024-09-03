@@ -52,6 +52,24 @@
       "parentUuid": "8b409f40_5a2cfea6",
       "revId": "7f1ae59d94d95d56853f4e4b74b9292578faac78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfe1c347_5ce5be5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-09-03T20:02:49Z",
+      "side": 1,
+      "message": "We\u0027re ready to remove include_cpp from the NDK now. Please setup a chat about this?",
+      "parentUuid": "32dec8e5_fc6e29bf",
+      "revId": "7f1ae59d94d95d56853f4e4b74b9292578faac78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
