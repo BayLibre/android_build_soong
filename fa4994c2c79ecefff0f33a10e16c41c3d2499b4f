@@ -86,6 +86,24 @@
       "parentUuid": "616f5dfd_0403fa87",
       "revId": "fa4994c2c79ecefff0f33a10e16c41c3d2499b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2817e1ae_143a1f69",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T23:03:30Z",
+      "side": 1,
+      "message": "I haven\u0027t tested fully if they actually work, but I\u0027m pretty sure they do exist given that they\u0027re documented on go/Android.bp for ndk_library.",
+      "parentUuid": "b1791add_45245655",
+      "revId": "fa4994c2c79ecefff0f33a10e16c41c3d2499b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
