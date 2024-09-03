@@ -16,6 +16,98 @@
       "message": "`m \u0026\u0026 m \u003cmodule\u003e \u0026\u0026 m` will add output of \u003cmodule\u003e to PRODUCT_OUT if \u003cmodule\u003e is not in the deps of the filesystem image, because the second `m` would be no-op.",
       "revId": "3662deb7a823857e6edeb650e87bd3ae173adec6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "361497bd_46f9eb57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T19:17:26Z",
+      "side": 1,
+      "message": "This looks much better, thanks!",
+      "revId": "3662deb7a823857e6edeb650e87bd3ae173adec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94ece67d_1ad91255",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T19:17:26Z",
+      "side": 1,
+      "message": "That\u0027s already the behavior today with make-built modules. And kindof necessary if you want `m \u003cmodule\u003e \u0026\u0026 adb sync` to work.",
+      "parentUuid": "6ae0947a_0415319a",
+      "revId": "3662deb7a823857e6edeb650e87bd3ae173adec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b22440_fd888fe7",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T19:17:26Z",
+      "side": 1,
+      "message": "Let\u0027s copy to PRODUCT_OUT unconditionally for now instead of letting users decide. This way it will be easier for us to change the behavior later.",
+      "revId": "3662deb7a823857e6edeb650e87bd3ae173adec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5304476b_fc07a499",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T19:17:26Z",
+      "side": 1,
+      "message": "`rsync` isn\u0027t vendored into the android tree, you\u0027re relying on the host system to have it installed. Could you switch to a more hermetic tool?",
+      "range": {
+        "startLine": 342,
+        "startChar": 26,
+        "endLine": 342,
+        "endChar": 31
+      },
+      "revId": "3662deb7a823857e6edeb650e87bd3ae173adec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b8c61a_c45b7456",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T19:17:26Z",
+      "side": 1,
+      "message": "The root files and the rebased files are installed to the same folder? And there\u0027s just an empty \"root\" folder?",
+      "revId": "3662deb7a823857e6edeb650e87bd3ae173adec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
