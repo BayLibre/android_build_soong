@@ -214,6 +214,24 @@
       "parentUuid": "7e944d60_79c22d77",
       "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99783c4f_cd16c801",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-03T13:42:11Z",
+      "side": 1,
+      "message": "aosp/3247732 looks good. Much simpler than what I suggested. However, there\u0027s caveat which I left as a comment. PTAL.",
+      "parentUuid": "a89867d4_d043aeb2",
+      "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
