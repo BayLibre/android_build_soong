@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23ef61a9_f7917f09",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2517,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-03T23:58:52Z",
+      "side": 1,
+      "message": "The highlighted part can be removed if there will be no ndk_header in export_header_libs of ndk_library.",
+      "range": {
+        "startLine": 2509,
+        "startChar": 0,
+        "endLine": 2517,
+        "endChar": 4
+      },
+      "revId": "f8fab9b8c66ed4ae56d8b257ebe65c3508d9a914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
