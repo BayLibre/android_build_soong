@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf214654_0d24d583",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2024-09-03T21:05:44Z",
+      "side": 1,
+      "message": "It shouldn\u0027t. This is a bug.",
+      "revId": "3774233f1b16d88a1a3d13b57fcee9e86d606840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
