@@ -51,6 +51,23 @@
       "parentUuid": "9404c168_604b4e58",
       "revId": "fa4994c2c79ecefff0f33a10e16c41c3d2499b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "616f5dfd_0403fa87",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T22:54:46Z",
+      "side": 1,
+      "message": "What about `export_generated_headers` `export_include_dirs` `export_shared_lib_headers` and `export_static_lib_headers`?",
+      "revId": "fa4994c2c79ecefff0f33a10e16c41c3d2499b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
