@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b1473e_aeee947d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-09-03T19:58:00Z",
+      "side": 1,
+      "message": "Dan, the Soong module type is used to build NDK variants, so it\u0027s useful to export things there. I\u0027ll remove all the exports if you like, but if you don\u0027t like this, can you propose another solution to clean up the headers or have some time to chat?",
+      "revId": "7f1ae59d94d95d56853f4e4b74b9292578faac78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
