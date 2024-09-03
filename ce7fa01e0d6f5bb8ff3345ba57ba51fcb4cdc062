@@ -196,6 +196,24 @@
       "parentUuid": "ad71540e_2ed1c078",
       "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a89867d4_d043aeb2",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-09-03T01:47:30Z",
+      "side": 1,
+      "message": "\u003e I\u0027m just requesting that we don\u0027t make the soong-built partitions rely on this functionality.\n\nThen the option 1 that I implemented with aosp/3247732 works for this purpose. `m \u003cmodule\u003e` still works with the change.\n\nWe may design a long-term solution when building all partitions from soong.",
+      "parentUuid": "7e944d60_79c22d77",
+      "revId": "ce7fa01e0d6f5bb8ff3345ba57ba51fcb4cdc062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
