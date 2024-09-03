@@ -495,18 +495,6 @@ type sdkLibraryProperties struct {
 	// List of source files that are needed to compile the API, but are not part of runtime library.
 	Api_srcs []string `android:"arch_variant"`
 
-	// Visibility for impl library module. If not specified then defaults to the
-	// visibility property.
-	Impl_library_visibility []string
-
-	// Visibility for stubs library modules. If not specified then defaults to the
-	// visibility property.
-	Stubs_library_visibility []string
-
-	// Visibility for stubs source modules. If not specified then defaults to the
-	// visibility property.
-	Stubs_source_visibility []string
-
 	// List of Java libraries that will be in the classpath when building the implementation lib
 	Impl_only_libs []string `android:"arch_variant"`
 
@@ -1727,35 +1715,19 @@ func (module *SdkLibrary) apiLibraryAdditionalApiContribution() string {
 	return ""
 }
 
-func childModuleVisibility(childVisibility []string) []string {
-	if childVisibility == nil {
-		// No child visibility set. The child will use the visibility of the sdk_library.
-		return nil
-	}
-
-	// Prepend an override to ignore the sdk_library's visibility, and rely on the child visibility.
-	var visibility []string
-	visibility = append(visibility, "//visibility:override")
-	visibility = append(visibility, childVisibility...)
-	return visibility
-}
-
 // Creates the implementation java library
 func (module *SdkLibrary) createImplLibrary(mctx android.DefaultableHookContext) {
-	visibility := childModuleVisibility(module.sdkLibraryProperties.Impl_library_visibility)
-
 	staticLibs := module.properties.Static_libs.Clone()
 	staticLibs.AppendSimpleValue(module.sdkLibraryProperties.Impl_only_static_libs)
+
 	props := struct {
 		Name           *string
-		Visibility     []string
 		Libs           []string
 		Static_libs    proptools.Configurable[[]string]
 		Apex_available []string
 		Stem           *string
 	}{
-		Name:       proptools.StringPtr(module.implLibraryModuleName()),
-		Visibility: visibility,
+		Name: proptools.StringPtr(module.implLibraryModuleName()),
 
 		Libs: append(module.properties.Libs, module.sdkLibraryProperties.Impl_only_libs...),
 
@@ -1859,7 +1831,6 @@ func (module *SdkLibrary) createExportableStubsLibrary(mctx android.DefaultableH
 func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookContext, apiScope *apiScope, name string, scopeSpecificDroidstubsArgs []string) {
 	props := struct {
 		Name                             *string
-		Visibility                       []string
 		Srcs                             []string
 		Installable                      *bool
 		Sdk_version                      *string
@@ -1900,7 +1871,6 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 	// * libs (static_libs/libs)
 
 	props.Name = proptools.StringPtr(name)
-	props.Visibility = childModuleVisibility(module.sdkLibraryProperties.Stubs_source_visibility)
 	props.Srcs = append(props.Srcs, module.properties.Srcs...)
 	props.Srcs = append(props.Srcs, module.sdkLibraryProperties.Api_srcs...)
 	props.Sdk_version = module.deviceProperties.Sdk_version
@@ -2087,7 +2057,6 @@ func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, 
 func (module *SdkLibrary) topLevelStubsLibraryProps(mctx android.DefaultableHookContext, apiScope *apiScope, doDist bool) libraryProperties {
 	props := libraryProperties{}
 
-	props.Visibility = childModuleVisibility(module.sdkLibraryProperties.Stubs_library_visibility)
 	sdkVersion := module.sdkVersionForStubsLibrary(mctx, apiScope)
 	props.Sdk_version = proptools.StringPtr(sdkVersion)
 
@@ -2481,11 +2450,6 @@ func SdkLibraryFactory() android.Module {
 		scopeToProperties[scope] = scope.scopeSpecificProperties(module)
 	}
 	module.scopeToProperties = scopeToProperties
-
-	// Add the properties containing visibility rules so that they are checked.
-	android.AddVisibilityProperty(module, "impl_library_visibility", &module.sdkLibraryProperties.Impl_library_visibility)
-	android.AddVisibilityProperty(module, "stubs_library_visibility", &module.sdkLibraryProperties.Stubs_library_visibility)
-	android.AddVisibilityProperty(module, "stubs_source_visibility", &module.sdkLibraryProperties.Stubs_source_visibility)
 
 	module.SetDefaultableHook(func(ctx android.DefaultableHookContext) {
 		// If no implementation is required then it cannot be used as a shared library
