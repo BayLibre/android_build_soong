@@ -42,6 +42,7 @@ const (
 
 	configFetcher         = "vendor/google/tools/soong/expconfigfetcher"
 	envConfigFetchTimeout = 10 * time.Second
+	abfsSrcDir   = "/src"
 )
 
 var (
@@ -316,6 +317,10 @@ func NewConfig(ctx Context, args ...string) Config {
 		environ:       OsEnvironment(),
 		sandboxConfig: &SandboxConfig{},
 	}
+	wd, err := os.Getwd()
+	if err != nil {
+		ctx.Fatalln("Failed to get working directory:", err)
+	}
 
 	// Default matching ninja
 	ret.parallel = runtime.NumCPU() + 2
@@ -329,17 +334,13 @@ func NewConfig(ctx Context, args ...string) Config {
 	}
 	// Make sure OUT_DIR is set appropriately
 	if outDir, ok := ret.environ.Get("OUT_DIR"); ok {
-		ret.environ.Set("OUT_DIR", filepath.Clean(outDir))
+		ret.environ.Set("OUT_DIR", ret.sandboxPath(wd, filepath.Clean(outDir)))
 	} else {
 		outDir := "out"
 		if baseDir, ok := ret.environ.Get("OUT_DIR_COMMON_BASE"); ok {
-			if wd, err := os.Getwd(); err != nil {
-				ctx.Fatalln("Failed to get working directory:", err)
-			} else {
-				outDir = filepath.Join(baseDir, filepath.Base(wd))
-			}
+			outDir = filepath.Join(baseDir, filepath.Base(wd))
 		}
-		ret.environ.Set("OUT_DIR", outDir)
+		ret.environ.Set("OUT_DIR", ret.sandboxPath(wd, outDir))
 	}
 
 	// loadEnvConfig needs to know what the OUT_DIR is, so it should
@@ -417,6 +418,9 @@ func NewConfig(ctx Context, args ...string) Config {
 		"ANDROID_DEV_SCRIPTS",
 		"ANDROID_EMULATOR_PREBUILTS",
 		"ANDROID_PRE_BUILD_PATHS",
+
+		// Leaks usernames into environment.
+		"HOME",
 	)
 
 	if ret.UseGoma() || ret.ForceUseGoma() {
@@ -428,12 +432,12 @@ func NewConfig(ctx Context, args ...string) Config {
 	ret.environ.Set("PYTHONDONTWRITEBYTECODE", "1")
 
 	tmpDir := absPath(ctx, ret.TempDir())
-	ret.environ.Set("TMPDIR", tmpDir)
+	ret.environ.Set("TMPDIR", ret.sandboxPath(wd, tmpDir))
 
 	// Always set ASAN_SYMBOLIZER_PATH so that ASAN-based tools can symbolize any crashes
 	symbolizerPath := filepath.Join("prebuilts/clang/host", ret.HostPrebuiltTag(),
 		"llvm-binutils-stable/llvm-symbolizer")
-	ret.environ.Set("ASAN_SYMBOLIZER_PATH", absPath(ctx, symbolizerPath))
+	ret.environ.Set("ASAN_SYMBOLIZER_PATH", ret.sandboxPath(wd, absPath(ctx, symbolizerPath)))
 
 	// Precondition: the current directory is the top of the source tree
 	checkTopDir(ctx)
@@ -492,11 +496,11 @@ func NewConfig(ctx Context, args ...string) Config {
 	}
 
 	ret.environ.Unset("OVERRIDE_ANDROID_JAVA_HOME")
-	ret.environ.Set("JAVA_HOME", absJavaHome)
-	ret.environ.Set("ANDROID_JAVA_HOME", javaHome)
-	ret.environ.Set("ANDROID_JAVA8_HOME", java8Home)
-	ret.environ.Set("ANDROID_JAVA9_HOME", java9Home)
-	ret.environ.Set("ANDROID_JAVA11_HOME", java11Home)
+	ret.environ.Set("JAVA_HOME", ret.sandboxPath(wd, absJavaHome))
+	ret.environ.Set("ANDROID_JAVA_HOME", ret.sandboxPath(wd, javaHome))
+	ret.environ.Set("ANDROID_JAVA8_HOME", ret.sandboxPath(wd, java8Home))
+	ret.environ.Set("ANDROID_JAVA9_HOME", ret.sandboxPath(wd, java9Home))
+	ret.environ.Set("ANDROID_JAVA11_HOME", ret.sandboxPath(wd, java11Home))
 	ret.environ.Set("PATH", strings.Join(newPath, string(filepath.ListSeparator)))
 
 	if ret.MultitreeBuild() {
@@ -511,8 +515,8 @@ func NewConfig(ctx Context, args ...string) Config {
 		ret.buildDateTime = strconv.FormatInt(time.Now().Unix(), 10)
 	}
 
-	ret.environ.Set("BUILD_DATETIME_FILE", buildDateTimeFile)
-
+	ret.environ.Set("BUILD_DATETIME_FILE", ret.sandboxPath(wd, buildDateTimeFile))
+	ret.environ.Set("PWD", ret.sandboxPath(wd, wd))
 	if ret.UseRBE() {
 		for k, v := range getRBEVars(ctx, Config{ret}) {
 			ret.environ.Set(k, v)
@@ -1367,6 +1371,19 @@ func (c *configImpl) UseABFS() bool {
 	return err == nil
 }
 
+func (c *configImpl) sandboxPath(base, in string) string {
+	if !c.UseABFS() {
+		return in
+	}
+
+	rel, err := filepath.Rel(base, in)
+	if err != nil {
+		return in
+	}
+
+	return filepath.Join(abfsSrcDir, rel)
+}
+
 func (c *configImpl) UseRBE() bool {
 	if v, ok := c.Environment().Get("USE_RBE"); ok {
 		v = strings.TrimSpace(v)
@@ -1746,16 +1763,21 @@ func (c *configImpl) IsBazelMixedBuildForceDisabled() bool {
 	return c.Environment().IsEnvTrue("BUILD_BROKEN_DISABLE_BAZEL")
 }
 
+func (c *configImpl) SkipMetricsUpload() bool {
+	// b/362625275 - Metrics upload sometimes prevents abfs unmount
+	if c.UseABFS() {
+		return true
+	}
+
+	return c.skipMetricsUpload
+}
+
 func (c *configImpl) IsPersistentBazelEnabled() bool {
 	return c.Environment().IsEnvTrue("USE_PERSISTENT_BAZEL")
 }
 
 func (c *configImpl) BazelModulesForceEnabledByFlag() string {
 	return c.bazelForceEnabledModules
-}
-
-func (c *configImpl) SkipMetricsUpload() bool {
-	return c.skipMetricsUpload
 }
 
 // Returns a Time object if one was passed via a command-line flag.
