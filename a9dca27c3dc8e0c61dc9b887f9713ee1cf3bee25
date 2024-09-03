@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88fd60cc_c21d7d3a",
+        "filename": "third_party/zip/writer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T17:46:08Z",
+      "side": 1,
+      "message": "Considering this file is forked from the go stdlib, at the minimum we should have `BEGIN/END ANDROID CHANGE` markers. But could we try upstreaming this into the go stdlib itself first?\n\nDoes the repro from the commit message also repro the issue when using the unmodified stdlib zip library?",
+      "revId": "a9dca27c3dc8e0c61dc9b887f9713ee1cf3bee25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf27931e_3c93084c",
+        "filename": "third_party/zip/writer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-03T17:46:08Z",
+      "side": 1,
+      "message": "Do we need to clear this? Does it not cause problems for client code that adds its own extras and may want to reuse the fileheader?",
+      "revId": "a9dca27c3dc8e0c61dc9b887f9713ee1cf3bee25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
