@@ -16,6 +16,23 @@
       "message": "This topic depends on https://android-review.git.corp.google.com/q/topic:%22ndk-header-cleanup%22",
       "revId": "fa4994c2c79ecefff0f33a10e16c41c3d2499b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9404c168_604b4e58",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2024-09-03T22:49:33Z",
+      "side": 1,
+      "message": "The most common reason for someone to do this is actually that they\u0027ve forgotten to put something in `ndk_headers`. How about:\n\n```\n// DO NOT ADD HERE - please consult danalbert@\n// http://b/357711733\n//\n// If the headers you\u0027re trying to export are meant to be a part of the NDK,\n// they should be exposed by an ndk_headers module.\n//\n// If the headers shouldn\u0027t be a part of the NDK, the headers should instead\n// be exposed from a separate `cc_library_headers` which consumers depend on.\n```",
+      "revId": "fa4994c2c79ecefff0f33a10e16c41c3d2499b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
