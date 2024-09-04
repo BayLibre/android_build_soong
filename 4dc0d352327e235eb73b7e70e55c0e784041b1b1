@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21028e47_de575863",
+        "filename": "java/base.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1697,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T19:00:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76818bef_5cd6d88c",
+      "range": {
+        "startLine": 1691,
+        "startChar": 2,
+        "endLine": 1697,
+        "endChar": 3
+      },
+      "revId": "4dc0d352327e235eb73b7e70e55c0e784041b1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d650a0c4_6d5d9cf6",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ecbcd2d_ed68f4f9",
+        "filename": "java/base.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 2390,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T19:00:57Z",
+      "side": 1,
+      "message": "No, once there is never a dependency on a module that implements SdkLibraryDependency this all gets deleted and the JavaInfoProvider path below gets used instead.",
+      "parentUuid": "d650a0c4_6d5d9cf6",
+      "revId": "4dc0d352327e235eb73b7e70e55c0e784041b1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd3ee736_8eb44e3c",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-09-04T18:00:38Z",
       "side": 1,
       "message": "nit: do you mind adding a comment about how this is different from `HeaderJars`?",
+      "revId": "4dc0d352327e235eb73b7e70e55c0e784041b1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20a0a992_f590f0b5",
+        "filename": "java/java.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T19:00:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd3ee736_8eb44e3c",
       "revId": "4dc0d352327e235eb73b7e70e55c0e784041b1b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
