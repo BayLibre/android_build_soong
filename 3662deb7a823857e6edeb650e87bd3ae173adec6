@@ -222,6 +222,24 @@
       "parentUuid": "74a67a4f_892350f0",
       "revId": "3662deb7a823857e6edeb650e87bd3ae173adec6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4774ce2e_640b537d",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-09-04T01:22:59Z",
+      "side": 1,
+      "message": "No. `installPath` is `$(PRODUCT_OUT)`. I used `PathForModuleInPartitionInstall(ctx, \"\")` instead of `PathForModuleInstall(ctx)` to get the `$(PRODUCT_OUT)`.\n\nSo the running commands are:\n```\nrsync -a \u003crootDir\u003e/\u003cbase_dir\u003e $(PRODUCT_OUT)\nrsync -a --exclude \u003cbase_dir\u003e \u003crootDir\u003e $(PRODUCT_OUT)\nmkdir -p $(PRODUCT_OUT)/root/\u003cbase_dir\u003e\n```\nSo the commands are filling in `$(PRODUCT_OUT)/root` and `$(PRODUCT_OUT)/system` which is the same with the current `$(PRODUCT_OUT)` structure.",
+      "parentUuid": "8112b1b0_a55ddfa7",
+      "revId": "3662deb7a823857e6edeb650e87bd3ae173adec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
