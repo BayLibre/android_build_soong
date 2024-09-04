@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1c2aee0_4ad3d4cb",
+        "filename": "android/module_context.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-04T17:20:00Z",
+      "side": 1,
+      "message": "Just call it `InstallDirectory`. I take it you were copying from `InstallAbsoluteSymlink`, but that also has a `InstallSymlink` that has difference semantics, which the directory version doesn\u0027t have.",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 25
+      },
+      "revId": "fd932ada981e057881a14eabe8ba8f8004a08b1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b103398_7c62f7f9",
+        "filename": "etc/install_directory.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-04T17:20:00Z",
+      "side": 1,
+      "message": "Don\u0027t add it to `LOCAL_SOONG_INSTALL_SYMLINKS`, it\u0027s not a symlink. For tests, I recommend getting the module\u0027s `InstallFilesInfo` and making sure it\u0027s in `info.InstallFiles`.",
+      "revId": "fd932ada981e057881a14eabe8ba8f8004a08b1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
