@@ -63,6 +63,7 @@ func getRBEVars(ctx Context, config Config) map[string]string {
 		"RBE_cache_dir":        config.rbeCacheDir(),
 		"RBE_download_tmp_dir": config.rbeDownloadTmpDir(),
 		"RBE_platform":         "container-image=" + remoteexec.DefaultImage,
+		"RBE_fast_log_collection": "true",
 	}
 	if config.StartRBE() {
 		name, err := config.rbeSockAddr(absPath(ctx, config.rbeTmpDir()))
