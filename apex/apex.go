@@ -1478,6 +1478,12 @@ func apexFileForCompatConfig(ctx android.BaseModuleContext, config java.Platform
 	return newApexFile(ctx, fileToCopy, depName, dirInApex, etc, config)
 }
 
+func apexFileForVintfFragment(ctx android.BaseModuleContext, vintfFragment *android.VintfFragmentModule) apexFile {
+	dirInApex := filepath.Join("etc", "vintf")
+
+	return newApexFile(ctx, vintfFragment.OutputFile(), vintfFragment.BaseModuleName(), dirInApex, etc, vintfFragment)
+}
+
 // javaModule is an interface to handle all Java modules (java_library, dex_import, etc) in the same
 // way.
 type javaModule interface {
@@ -2052,6 +2058,12 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 
 	if a.vndkApex {
 		return false
+	}
+
+	if android.IsVintfDepTag(depTag) {
+		if vf, ok := child.(*android.VintfFragmentModule); ok {
+			vctx.filesInfo = append(vctx.filesInfo, apexFileForVintfFragment(ctx, vf))
+		}
 	}
 
 	// indirect dependencies
