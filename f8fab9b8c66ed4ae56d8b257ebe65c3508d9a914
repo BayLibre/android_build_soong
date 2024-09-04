@@ -22,6 +22,30 @@
       },
       "revId": "f8fab9b8c66ed4ae56d8b257ebe65c3508d9a914",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3818a6b7_7eff8572",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2517,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-09-04T01:12:06Z",
+      "side": 1,
+      "message": "Thanks. Let me keep this until we know we don\u0027t need another solution, and I also need to check the neverallow.go error ordering with this.",
+      "parentUuid": "23ef61a9_f7917f09",
+      "range": {
+        "startLine": 2509,
+        "startChar": 0,
+        "endLine": 2517,
+        "endChar": 4
+      },
+      "revId": "f8fab9b8c66ed4ae56d8b257ebe65c3508d9a914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
