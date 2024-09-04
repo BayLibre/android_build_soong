@@ -132,6 +132,10 @@ type ModuleContext interface {
 	// dependency tags for which IsInstallDepNeeded returns true.
 	InstallFileWithExtraFilesZip(installPath InstallPath, name string, srcPath Path, extraZip Path, deps ...InstallPath) InstallPath
 
+	// InstallDirectory creates a rule to create an absolute directory at the specified installPath
+	// directory.
+	InstallDirectory(installPath InstallPath) InstallPath
+
 	// InstallSymlink creates a rule to create a symlink from src srcPath to name in the installPath
 	// directory.
 	//
@@ -629,6 +633,24 @@ func (m *moduleContext) installFile(installPath InstallPath, name string, srcPat
 	m.checkbuildFiles = append(m.checkbuildFiles, srcPath)
 
 	return fullInstallPath
+}
+
+// InstallDirectory creates a rule to create an absolute directory at the specified installPath
+func (m *moduleContext) InstallDirectory(installPath InstallPath) InstallPath {
+	m.module.base().hooks.runInstallHooks(m, nil, installPath, true)
+
+	if m.requiresFullInstall() {
+		m.Build(pctx, BuildParams{
+			Rule:        Mkdir,
+			Description: "mkdir " + installPath.String(),
+			Output:      installPath,
+			Default:     !m.Config().KatiEnabled(),
+		})
+
+		m.installFiles = append(m.installFiles, installPath)
+	}
+
+	return installPath
 }
 
 func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, srcPath InstallPath) InstallPath {
