@@ -141,6 +141,15 @@ type ModuleContext interface {
 	// dependency tags for which IsInstallDepNeeded returns true.
 	InstallSymlink(installPath InstallPath, name string, srcPath InstallPath) InstallPath
 
+	// InstallAbsoluteDirectory creates a rule to create an absolute directory at the specified installPath
+	// directory.
+	//
+	// The installed directory can be accessed by InstallFilesInfo.InstallFiles, and the PackagingSpec
+	// for the installed directory can be accessed by InstallFilesInfo.PackagingSpecs on this module
+	// or by InstallFilesInfo.TransitivePackagingSpecs on modules that depend on this module through
+	// dependency tags for which IsInstallDepNeeded returns true.
+	InstallAbsoluteDirectory(installPath InstallPath) InstallPath
+
 	// InstallAbsoluteSymlink creates a rule to create an absolute symlink from src srcPath to name
 	// in the installPath directory.
 	//
@@ -682,6 +691,24 @@ func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, src
 	})
 
 	return fullInstallPath
+}
+
+// InstallAbsoluteDirectory creates a rule to create an absolute directory at the specified installPath
+func (m *moduleContext) InstallAbsoluteDirectory(installPath InstallPath) InstallPath {
+	m.module.base().hooks.runInstallHooks(m, nil, installPath, true)
+
+	if m.requiresFullInstall() {
+		m.Build(pctx, BuildParams{
+			Rule:        Mkdir,
+			Description: "mkdir " + installPath.String(),
+			Output:      installPath,
+			Default:     !m.Config().KatiEnabled(),
+		})
+
+		m.installFiles = append(m.installFiles, installPath)
+	}
+
+	return installPath
 }
 
 // installPath/name -> absPath where absPath might be a path that is available only at runtime
