@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea00333_e7c0d154",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2024-09-04T16:20:29Z",
+      "side": 1,
+      "message": "as long as the build was hermetic and nothing leaked from prior builds, an ``atest  SystemUiRoboTests`` should be sufficient.    Can I asked why you used ``--host``, seems redundant?",
+      "revId": "ef5739ed649206ed70ad76c19034440ebd03e4f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27941131_702b82a8",
