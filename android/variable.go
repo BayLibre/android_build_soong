@@ -523,7 +523,8 @@ type ProductVariables struct {
 
 	PartitionVarsForSoongMigrationOnlyDoNotUse PartitionVariables
 
-	AdbKeys *string `json:",omitempty"`
+	AdbKeys             *string `json:",omitempty"`
+	ExtraAllowedDepsTxt *string `json:",omitempty"`
 }
 
 type PartitionQualifiedVariablesType struct {
