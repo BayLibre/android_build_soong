@@ -724,16 +724,17 @@ var (
 	fsTag          = &dependencyTag{name: "filesystem", payload: true}
 	bcpfTag        = &dependencyTag{name: "bootclasspathFragment", payload: true, sourceOnly: true, memberType: java.BootclasspathFragmentSdkMemberType}
 	// The dexpreopt artifacts of apex system server jars are installed onto system image.
-	sscpfTag        = &dependencyTag{name: "systemserverclasspathFragment", payload: true, sourceOnly: true, memberType: java.SystemServerClasspathFragmentSdkMemberType, installable: true}
-	compatConfigTag = &dependencyTag{name: "compatConfig", payload: true, sourceOnly: true, memberType: java.CompatConfigSdkMemberType}
-	javaLibTag      = &dependencyTag{name: "javaLib", payload: true}
-	jniLibTag       = &dependencyTag{name: "jniLib", payload: true}
-	keyTag          = &dependencyTag{name: "key"}
-	prebuiltTag     = &dependencyTag{name: "prebuilt", payload: true}
-	rroTag          = &dependencyTag{name: "rro", payload: true}
-	sharedLibTag    = &dependencyTag{name: "sharedLib", payload: true}
-	testTag         = &dependencyTag{name: "test", payload: true}
-	shBinaryTag     = &dependencyTag{name: "shBinary", payload: true}
+	sscpfTag         = &dependencyTag{name: "systemserverclasspathFragment", payload: true, sourceOnly: true, memberType: java.SystemServerClasspathFragmentSdkMemberType, installable: true}
+	compatConfigTag  = &dependencyTag{name: "compatConfig", payload: true, sourceOnly: true, memberType: java.CompatConfigSdkMemberType}
+	javaLibTag       = &dependencyTag{name: "javaLib", payload: true}
+	jniLibTag        = &dependencyTag{name: "jniLib", payload: true}
+	keyTag           = &dependencyTag{name: "key"}
+	prebuiltTag      = &dependencyTag{name: "prebuilt", payload: true}
+	rroTag           = &dependencyTag{name: "rro", payload: true}
+	sharedLibTag     = &dependencyTag{name: "sharedLib", payload: true}
+	testTag          = &dependencyTag{name: "test", payload: true}
+	shBinaryTag      = &dependencyTag{name: "shBinary", payload: true}
+	vintfFragmentTag = &dependencyTag{name: "test", payload: true}
 )
 
 // TODO(jiyong): shorten this function signature
@@ -1478,6 +1479,12 @@ func apexFileForCompatConfig(ctx android.BaseModuleContext, config java.Platform
 	return newApexFile(ctx, fileToCopy, depName, dirInApex, etc, config)
 }
 
+func apexFileForVintfFragment(ctx android.BaseModuleContext, vintfFragment *android.VintfFragmentModule) apexFile {
+	dirInApex := filepath.Join("etc", "vintf")
+
+	return newApexFile(ctx, vintfFragment.OutputFile(), vintfFragment.BaseModuleName(), dirInApex, etc, vintfFragment)
+}
+
 // javaModule is an interface to handle all Java modules (java_library, dex_import, etc) in the same
 // way.
 type javaModule interface {
@@ -2177,7 +2184,13 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 		// nothing
 	} else if am.CanHaveApexVariants() && am.IsInstallableToApex() {
 		ctx.ModuleErrorf("unexpected tag %s for indirect dependency %q", android.PrettyPrintTag(depTag), depName)
+	} else if android.IsVintfDepTag(depTag) {
+		if vf, ok := child.(*android.VintfFragmentModule); ok {
+			apexFile := apexFileForVintfFragment(ctx, vf)
+			vctx.filesInfo = append(vctx.filesInfo, apexFile)
+		}
 	}
+
 	return false
 }
 
