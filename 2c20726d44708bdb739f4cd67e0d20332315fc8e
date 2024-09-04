@@ -22,6 +22,30 @@
       },
       "revId": "2c20726d44708bdb739f4cd67e0d20332315fc8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5417a043_333e2e4a",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-04T17:22:33Z",
+      "side": 1,
+      "message": "\u003e A way to tighten this up a bit more is to make Soong check visibility on the corresponding source modules, even when the prebuilts are in use.\n\nI believe one edge case we would need to consider in this option is cross-dessert snapshots (V module SDK dropped to U trees) to prevent visibility errors like b/239121291",
+      "parentUuid": "d8450648_22af9d0c",
+      "range": {
+        "startLine": 1123,
+        "startChar": 5,
+        "endLine": 1123,
+        "endChar": 57
+      },
+      "revId": "2c20726d44708bdb739f4cd67e0d20332315fc8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
