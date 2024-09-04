@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "400ae36f_9b0fed62",
+        "filename": "java/robolectric.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T15:46:42Z",
+      "side": 0,
+      "message": "The source jar produced by this function was only used by the Make runner, where it was passed to `LOCAL_INSTRUMENT_SRCJARS`.  I don\u0027t know exactly how coverage works when running the tests in tradefed, but it doesn\u0027t seem to be using this srcjar.",
+      "parentUuid": "922248c2_95d545e0",
+      "revId": "a6182ab2fa21738384a3d83c6038c17f01b29dda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c3c196d_e5431aa5",
@@ -49,6 +67,24 @@
       "writtenOn": "2024-09-04T12:56:37Z",
       "side": 0,
       "message": "Yeah the deletion of this I was expecting.",
+      "revId": "a6182ab2fa21738384a3d83c6038c17f01b29dda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba26b6e_0a59018f",
+        "filename": "java/robolectric.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T15:46:42Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "4c3c196d_e5431aa5",
       "revId": "a6182ab2fa21738384a3d83c6038c17f01b29dda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

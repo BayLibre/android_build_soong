@@ -51,6 +51,24 @@
       "parentUuid": "27941131_702b82a8",
       "revId": "ef5739ed649206ed70ad76c19034440ebd03e4f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fe775de_eb9b5c72",
+        "filename": "java/robolectric.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T15:46:42Z",
+      "side": 1,
+      "message": "These were always treated as \"static\" dependencies, see line 228 in the original code, where all libTag dependencies were collected for combining into the final jar.  Making these staticLibTag instead of libTag has the same end result, but takes advantage of the more efficient combining being added in aosp/3214782.",
+      "parentUuid": "fda228b1_344b5372",
+      "revId": "ef5739ed649206ed70ad76c19034440ebd03e4f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
