@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd37cc1_9a0b82dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2024-09-04T12:56:37Z",
+      "side": 1,
+      "message": "Concerns for some tests that likely aren\u0027t covered in by default for a change like this.    Coverage tests without a source jar, and want to understand what the resulting zip contents would look like as that impacts the runtime.",
+      "revId": "ef5739ed649206ed70ad76c19034440ebd03e4f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27941131_702b82a8",
@@ -14,6 +31,24 @@
       "writtenOn": "2024-09-04T04:30:22Z",
       "side": 1,
       "message": "Is there a reason why this is now a static dependency?",
+      "revId": "ef5739ed649206ed70ad76c19034440ebd03e4f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda228b1_344b5372",
+        "filename": "java/robolectric.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2024-09-04T12:56:37Z",
+      "side": 1,
+      "message": "Will this get bundled in to a single static jar or will it be left a single file included in the zip?   There would be runtime impacts of that (likely catastrophic).   So I assume it\u0027s not the case.",
+      "parentUuid": "27941131_702b82a8",
       "revId": "ef5739ed649206ed70ad76c19034440ebd03e4f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

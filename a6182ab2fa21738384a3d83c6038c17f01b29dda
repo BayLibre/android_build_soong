@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "922248c2_95d545e0",
+        "filename": "java/robolectric.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2024-09-04T12:56:37Z",
+      "side": 0,
+      "message": "are you certain this isn\u0027t needed for code coverage?",
+      "fixSuggestions": [
+        {
+          "fixId": "61e873f7_296b4d1c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/robolectric.go",
+              "range": {
+                "startLine": 340,
+                "startChar": 0,
+                "endLine": 340,
+                "endChar": 0
+              },
+              "replacement": "\n\tctx.AddVariationDependencies(nil, roboCoverageLibsTag, r.robolectricProperties.Coverage_libs...)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a6182ab2fa21738384a3d83c6038c17f01b29dda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c3c196d_e5431aa5",
+        "filename": "java/robolectric.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2024-09-04T12:56:37Z",
+      "side": 0,
+      "message": "Yeah the deletion of this I was expecting.",
+      "revId": "a6182ab2fa21738384a3d83c6038c17f01b29dda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
