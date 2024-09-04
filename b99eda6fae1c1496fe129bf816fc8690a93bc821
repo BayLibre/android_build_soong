@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5dd72da_83cc1773",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1945475
+      },
+      "writtenOn": "2024-09-04T21:19:17Z",
+      "side": 1,
+      "message": "The prior version of this change broke MacOS targets, which wasn\u0027t caught as part of presubmit. This contains a fix for it and the previously broken MacOS target is passing:\nhttps://android-build.corp.google.com/abtd/run/L15000030006271756/",
+      "revId": "b99eda6fae1c1496fe129bf816fc8690a93bc821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
