@@ -524,6 +524,9 @@ type apexBundle struct {
 
 	// Required modules, filled out during GenerateAndroidBuildActions and used in AndroidMk
 	required []string
+
+	// VINTF fragment paths installed with vintf_fragment module
+	vintfFragmentFromModule map[string]bool
 }
 
 // apexFileClass represents a type of file that can be included in APEX.
@@ -799,6 +802,12 @@ func (a *apexBundle) getImageVariationPair() (string, string) {
 func (a *apexBundle) getImageVariation() string {
 	prefix, vndkVersion := a.getImageVariationPair()
 	return prefix + vndkVersion
+}
+
+// isFromVintfFragment checks if the relative file path is installed with vintf_fragment module
+func (a *apexBundle) isFromVintfFragment(filePath string) bool {
+	_, exists := a.vintfFragmentFromModule[filePath]
+	return exists
 }
 
 func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -1478,6 +1487,12 @@ func apexFileForCompatConfig(ctx android.BaseModuleContext, config java.Platform
 	return newApexFile(ctx, fileToCopy, depName, dirInApex, etc, config)
 }
 
+func apexFileForVintfFragment(ctx android.BaseModuleContext, vintfFragment *android.VintfFragmentModule) apexFile {
+	dirInApex := filepath.Join("etc", "vintf")
+
+	return newApexFile(ctx, vintfFragment.OutputFile(), vintfFragment.BaseModuleName(), dirInApex, etc, vintfFragment)
+}
+
 // javaModule is an interface to handle all Java modules (java_library, dex_import, etc) in the same
 // way.
 type javaModule interface {
@@ -2054,6 +2069,14 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 		return false
 	}
 
+	if android.IsVintfDepTag(depTag) {
+		if vf, ok := child.(*android.VintfFragmentModule); ok {
+			apexFile := apexFileForVintfFragment(ctx, vf)
+			a.vintfFragmentFromModule[apexFile.path()] = true
+			vctx.filesInfo = append(vctx.filesInfo, apexFile)
+		}
+	}
+
 	// indirect dependencies
 	am, ok := child.(android.ApexModule)
 	if !ok {
@@ -2434,7 +2457,9 @@ func apexFileForBootclasspathFragmentContentModule(ctx android.ModuleContext, fr
 //
 
 func newApexBundle() *apexBundle {
-	module := &apexBundle{}
+	module := &apexBundle{
+		vintfFragmentFromModule: make(map[string]bool),
+	}
 
 	module.AddProperties(&module.properties)
 	module.AddProperties(&module.targetProperties)

@@ -578,7 +578,7 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 			copyCommands = append(copyCommands, "ln -sfn "+pathOnDevice+" "+destPath)
 		} else {
 			// Copy the file into APEX
-			if !a.testApex && isVintfFragment(fi) {
+			if !a.testApex && isVintfFragment(fi) && !a.isFromVintfFragment(fi.path()) {
 				// copy the output of assemble_vintf instead of the original
 				vintfFragment := runAssembleVintf(ctx, fi.builtFile)
 				copyCommands = append(copyCommands, "cp -f "+vintfFragment.String()+" "+destPath)
