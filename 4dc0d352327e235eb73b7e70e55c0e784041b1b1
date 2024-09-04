@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76818bef_5cd6d88c",
+        "filename": "java/base.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1697,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-04T18:00:38Z",
+      "side": 1,
+      "message": "Should this also be flagged?",
+      "range": {
+        "startLine": 1691,
+        "startChar": 2,
+        "endLine": 1697,
+        "endChar": 3
+      },
+      "revId": "4dc0d352327e235eb73b7e70e55c0e784041b1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d650a0c4_6d5d9cf6",
+        "filename": "java/base.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 2390,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-04T18:00:38Z",
+      "side": 1,
+      "message": "Would this be necessary when the modules no longer depend on the top level java sdk library? I believe that an error would be thrown here in the long run(i.e. when a module depends on the java sdk library via `libTag` or `sdkLibTag`)",
+      "revId": "4dc0d352327e235eb73b7e70e55c0e784041b1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3ee736_8eb44e3c",
+        "filename": "java/java.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-04T18:00:38Z",
+      "side": 1,
+      "message": "nit: do you mind adding a comment about how this is different from `HeaderJars`?",
+      "revId": "4dc0d352327e235eb73b7e70e55c0e784041b1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
