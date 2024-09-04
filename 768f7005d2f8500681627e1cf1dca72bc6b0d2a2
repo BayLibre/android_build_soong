@@ -16,6 +16,24 @@
       "message": "Should this happen automatically in `NewProvider`?",
       "revId": "768f7005d2f8500681627e1cf1dca72bc6b0d2a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "390afe1c_4c7ea6e0",
+        "filename": "android/init.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-09-04T20:03:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2158b60b_4b405b18",
+      "revId": "768f7005d2f8500681627e1cf1dca72bc6b0d2a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
