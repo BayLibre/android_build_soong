@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b29114_2fe4b66d",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-04T13:24:43Z",
+      "side": 1,
+      "message": "this should better be f.properties.Partition_name, in preparation for other partitions. for them, rebasedDir \u003d\u003d rootDir \u003d\u003d out/soong/.../root. \n\nPseudo code:\n\n```\ninstallPath \u003d $PRODUCT_OUT/\u003cpartition_name\u003e\ncp $rebasedDir/* $installPath\n```\n\nI don\u0027t think we will have to fill $PRODUCT_OUT/root in, but if we really have to do, then add the following\n```\nif $rebasedDir !\u003d $rootDir {\n    installPath \u003d $PRODUCT_OUT/root\n    tar cf - -C $rootDir --exclude\u003d\u003cpartition_name\u003e . | tar xf - -C $installPath \n}\n```",
+      "range": {
+        "startLine": 341,
+        "startChar": 61,
+        "endLine": 341,
+        "endChar": 63
+      },
+      "revId": "728972124f5aadf2dc127f0d46c67d2909a86001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d10315_9d5b06cb",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-04T13:24:43Z",
+      "side": 1,
+      "message": "Note that this is not a must because adb sync doesn\u0027t read this directory.",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 86
+      },
+      "revId": "728972124f5aadf2dc127f0d46c67d2909a86001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35cb8f5c_17fe5ba2",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-04T13:24:43Z",
+      "side": 1,
+      "message": "tar is better for handing this. see my suggestion above.",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 120
+      },
+      "revId": "728972124f5aadf2dc127f0d46c67d2909a86001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f172ce9_c0606c3b",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-04T13:24:43Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be installPath? rootDir is local to this module.",
+      "range": {
+        "startLine": 346,
+        "startChar": 41,
+        "endLine": 346,
+        "endChar": 48
+      },
+      "revId": "728972124f5aadf2dc127f0d46c67d2909a86001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
