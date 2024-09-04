@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca0c010_59e4af39",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T23:46:38Z",
+      "side": 1,
+      "message": "Make this an AndroidStaticRule, we don\u0027t use Goma any more, so if this doesn\u0027t support RBE there\u0027s no point making it remoteable.",
+      "range": {
+        "startLine": 44,
+        "startChar": 25,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a4f4b1_f227c684",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T23:46:38Z",
+      "side": 1,
+      "message": "You\u0027ll need to add a definition of the `libbpf_headers` module that is used as an implicit dependency.",
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde6c656_fc130d7e",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T23:46:38Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be used anywhere",
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a542f6af_e3d23151",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T23:46:38Z",
+      "side": 1,
+      "message": "This is usually called Relative_install_path",
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "994164f9_06cba0d8",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T23:46:38Z",
+      "side": 1,
+      "message": "These are never read after GenerateAndroidBuildActions, but attaching them to the module is keeping them in memory.  Can you make them local to GenerateAndroidBuildActions?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 25
+      },
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af2ba195_23fdc7c1",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T23:46:38Z",
+      "side": 1,
+      "message": "`libbpf.cFlagsDeps \u003d append(libbpf.cFlagsDeps, genRule.GeneratedDeps()...)`",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 5
+      },
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc1ebf58_bdd0ca83",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T23:46:38Z",
+      "side": 1,
+      "message": "`src.Base()`",
+      "range": {
+        "startLine": 196,
+        "startChar": 26,
+        "endLine": 196,
+        "endChar": 53
+      },
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e30a738e_b9bdd0a6",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T23:46:38Z",
+      "side": 1,
+      "message": "Why is Custom needed here?",
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a18a82_21aab748",
+        "filename": "bpf/libbpf/libbpf_prog_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T23:46:38Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 75
+      },
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f02eb64_31baca54",
+        "filename": "bpf/libbpf/libbpf_prog_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-04T23:46:38Z",
+      "side": 1,
+      "message": "Can you use a shorter regex here to make this less sensitive to changes to the error format?",
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
