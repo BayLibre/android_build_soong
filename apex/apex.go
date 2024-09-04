@@ -524,6 +524,9 @@ type apexBundle struct {
 
 	// Required modules, filled out during GenerateAndroidBuildActions and used in AndroidMk
 	required []string
+
+	// VINTF fragment paths installed with vintf_fragment module
+	vintfFragmentFromModule []string
 }
 
 // apexFileClass represents a type of file that can be included in APEX.
@@ -799,6 +802,11 @@ func (a *apexBundle) getImageVariationPair() (string, string) {
 func (a *apexBundle) getImageVariation() string {
 	prefix, vndkVersion := a.getImageVariationPair()
 	return prefix + vndkVersion
+}
+
+// isFromVintfFragment checks if the relative file path is installed with vintf_fragment module
+func (a *apexBundle) isFromVintfFragment(filePath string) bool {
+	return android.InList(filePath, a.vintfFragmentFromModule)
 }
 
 func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -1478,6 +1486,12 @@ func apexFileForCompatConfig(ctx android.BaseModuleContext, config java.Platform
 	return newApexFile(ctx, fileToCopy, depName, dirInApex, etc, config)
 }
 
+func apexFileForVintfFragment(ctx android.BaseModuleContext, vintfFragment *android.VintfFragmentModule) apexFile {
+	dirInApex := filepath.Join("etc", "vintf")
+
+	return newApexFile(ctx, vintfFragment.OutputFile(), vintfFragment.BaseModuleName(), dirInApex, etc, vintfFragment)
+}
+
 // javaModule is an interface to handle all Java modules (java_library, dex_import, etc) in the same
 // way.
 type javaModule interface {
@@ -2052,6 +2066,14 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 
 	if a.vndkApex {
 		return false
+	}
+
+	if android.IsVintfDepTag(depTag) {
+		if vf, ok := child.(*android.VintfFragmentModule); ok {
+			apexFile := apexFileForVintfFragment(ctx, vf)
+			a.vintfFragmentFromModule = append(a.vintfFragmentFromModule, apexFile.path())
+			vctx.filesInfo = append(vctx.filesInfo, apexFile)
+		}
 	}
 
 	// indirect dependencies
