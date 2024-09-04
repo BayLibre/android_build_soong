@@ -106,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a0ba1cb_e5f9953c",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-04T01:02:21Z",
+      "side": 1,
+      "message": "In that case nevermind, I\u0027d rather have the default be to not copy than copy if it\u0027s going to be exposed to the user.",
+      "parentUuid": "6cced3c3_c510195a",
+      "revId": "3662deb7a823857e6edeb650e87bd3ae173adec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5304476b_fc07a499",
@@ -184,6 +202,24 @@
       "side": 1,
       "message": "With the `base_dir` property, `rebasedDir` is `rebasedDir \u003d rootDir.Join(ctx, *f.properties.Base_dir)` as the code below.\n\nThe filesystem module installs root files to the `rootDir`(\u003d`root`), and the `base_dir` files, which are the system files to the `root/system`.\n\nThe first `rsync` is to copy the `root/system` to the `$(PRODUCT_OUT)/system`, and the second `rsync` is to copy the `root` excluding `root/system` to the `$(PRODUCT_OUT)/root`.",
       "parentUuid": "b1b8c61a_c45b7456",
+      "revId": "3662deb7a823857e6edeb650e87bd3ae173adec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8112b1b0_a55ddfa7",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-04T01:02:21Z",
+      "side": 1,
+      "message": "But `installPath` \u003d\u003d `$(PRODUCT_OUT)/system`, right? Then we\u0027re running essentially these 3 commands:\n\n`rsync -a \u003crootDir\u003e/\u003cbase_dir\u003e $(PRODUCT_OUT)/system`\n`rsync -a --exclude \u003cbase_dir\u003e \u003crootDir\u003e $(PRODUCT_OUT)/system`\n`mkdir -p $(PRODUCT_OUT)/system/root/\u003cbase_dir\u003e`\n\nSo it looks to me like you\u0027re flattening both the rebasedDir and rootDir into `$(PRODUCT_OUT)/system`, and not installing anything into `$(PRODUCT_OUT)/root`.",
+      "parentUuid": "74a67a4f_892350f0",
       "revId": "3662deb7a823857e6edeb650e87bd3ae173adec6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
