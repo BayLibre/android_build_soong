@@ -75,6 +75,13 @@ var (
 		},
 		"cpFlags", "extraCmds")
 
+	// A mkdir rule.
+	Mkdir = pctx.AndroidStaticRule("Mkdir",
+		blueprint.RuleParams{
+			Command:     "mkdir -p $out",
+			Description: "mkdir -p $out",
+		})
+
 	// A timestamp touch rule.
 	Touch = pctx.AndroidStaticRule("Touch",
 		blueprint.RuleParams{
