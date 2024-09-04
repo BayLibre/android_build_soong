@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9baf0462_b240655a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-04T22:40:31Z",
+      "side": 1,
+      "message": "I believe the revert was already submitted as aosp/3255302?",
+      "revId": "4b7e35bbc18240e6c6bafe0fef02a7cbca5593e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
