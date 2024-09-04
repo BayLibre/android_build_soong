@@ -580,9 +580,15 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 			// Copy the file into APEX
 			if !a.testApex && isVintfFragment(fi) {
 				// copy the output of assemble_vintf instead of the original
-				vintfFragment := runAssembleVintf(ctx, fi.builtFile)
-				copyCommands = append(copyCommands, "cp -f "+vintfFragment.String()+" "+destPath)
-				implicitInputs = append(implicitInputs, vintfFragment)
+				// Copy directly if the vintf fragment is from vintf_fragment module
+				if _, isFromVintfFragment := a.vintfFragmentFromModule[fi.path()]; isFromVintfFragment {
+					copyCommands = append(copyCommands, "cp -f "+fi.builtFile.String()+" "+destPath)
+					implicitInputs = append(implicitInputs, fi.builtFile)
+				} else {
+					vintfFragment := runAssembleVintf(ctx, fi.builtFile)
+					copyCommands = append(copyCommands, "cp -f "+vintfFragment.String()+" "+destPath)
+					implicitInputs = append(implicitInputs, vintfFragment)
+				}
 			} else {
 				copyCommands = append(copyCommands, "cp -f "+fi.builtFile.String()+" "+destPath)
 				implicitInputs = append(implicitInputs, fi.builtFile)
