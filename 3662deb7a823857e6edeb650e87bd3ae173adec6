@@ -171,6 +171,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51a503be_a417bf35",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-09-04T07:24:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32ab3b5a_2aa34ecb",
+      "range": {
+        "startLine": 342,
+        "startChar": 26,
+        "endLine": 342,
+        "endChar": 31
+      },
+      "revId": "3662deb7a823857e6edeb650e87bd3ae173adec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1b8c61a_c45b7456",
