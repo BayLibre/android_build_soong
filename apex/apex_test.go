@@ -12328,3 +12328,35 @@ func TestApexVerifyNativeImplementationLibs(t *testing.T) {
 		})
 	}
 }
+
+func TestVintfFragmentInApex(t *testing.T) {
+	t.Parallel()
+	ctx := testApex(t, apex_default_bp+`
+		apex {
+			name: "myapex",
+			manifest: ":myapex.manifest",
+			androidManifest: ":myapex.androidmanifest",
+			key: "myapex.key",
+			binaries: [ "mybin" ],
+			updatable: false,
+		}
+
+		cc_binary {
+			name: "mybin",
+			srcs: ["mybin.cpp"],
+			vintf_fragment_modules: ["my_vintf_fragment.xml"],
+			apex_available: [ "myapex" ],
+		}
+
+		vintf_fragment {
+			name: "my_vintf_fragment.xml",
+			src: "my_vintf_fragment.xml",
+		}
+	`)
+
+	generateFsRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("generateFsConfig")
+	cmd := generateFsRule.RuleParams.Command
+
+	// Ensure that vintf fragment file is being installed
+	ensureContains(t, cmd, "/etc/vintf/my_vintf_fragment.xml ")
+}
