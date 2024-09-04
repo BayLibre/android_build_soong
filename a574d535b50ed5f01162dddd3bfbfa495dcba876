@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff7d4af9_e85e1932",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-04T00:00:42Z",
+      "side": 1,
+      "message": "hey, I lost your prior +2.",
+      "revId": "a574d535b50ed5f01162dddd3bfbfa495dcba876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
