@@ -16,6 +16,24 @@
       "message": "I think I need to pull this code and crack open a zip to compare.   Prior their were a few deps that did not get smooshed in to a single static zip.   The android-all, the robolectric-all, mockito.    In particular the android-all jar should not get repackaged, because robolectric relies on it being a representation of android, and if other classes get crammed in to the same jar, then there is a lot of logic that needs to be checked in robolectric.\n\nSimply reordering the artifacts that get repackaged via jarjar might \"work\" but will leave other debt.",
       "revId": "fdaa672ad1faacf0fb279adf876841dc2ffb404e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a1369f6_e245cc3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-05T16:23:26Z",
+      "side": 1,
+      "message": "You can examine the differences before and after this change with:\n```\n/google/bin/releases/android-build-soong-dev/compare_target_files/compare_target_files --bid P80409231 --artifact robolectric-tests.zip\n```\n\nYou can see that the jars have not significantly changed size, because this CL does not change what ends up in the jars.  If you want to download the changed jars to examine the contents, add `--download /tmp/robotests` to the command.",
+      "parentUuid": "982e3bcd_d3878334",
+      "revId": "fdaa672ad1faacf0fb279adf876841dc2ffb404e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
