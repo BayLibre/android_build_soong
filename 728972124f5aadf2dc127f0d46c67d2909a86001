@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7feaf12_04e43587",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-09-05T02:09:13Z",
+      "side": 1,
+      "message": "Done.\nAs you commented, we don\u0027t need to copy the root for adb sync.\nAlso, `$PRODUCT_OUT/root` is already created from Make.",
+      "parentUuid": "65b29114_2fe4b66d",
+      "range": {
+        "startLine": 341,
+        "startChar": 61,
+        "endLine": 341,
+        "endChar": 63
+      },
+      "revId": "728972124f5aadf2dc127f0d46c67d2909a86001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19d10315_9d5b06cb",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-04T13:24:43Z",
       "side": 1,
       "message": "Note that this is not a must because adb sync doesn\u0027t read this directory.",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 86
+      },
+      "revId": "728972124f5aadf2dc127f0d46c67d2909a86001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10859c72_c28ce7d2",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-09-05T02:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19d10315_9d5b06cb",
       "range": {
         "startLine": 344,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d347488a_ffdfc53a",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-09-05T02:09:13Z",
+      "side": 1,
+      "message": "I tried tar, but the tar from soong failed to include directory-symlinks, that works on the normal commandline.\nAnyway, I removed this line as we don\u0027t need to copy the root directory.",
+      "parentUuid": "35cb8f5c_17fe5ba2",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 120
+      },
+      "revId": "728972124f5aadf2dc127f0d46c67d2909a86001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f172ce9_c0606c3b",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-09-04T13:24:43Z",
       "side": 1,
       "message": "shouldn\u0027t this be installPath? rootDir is local to this module.",
+      "range": {
+        "startLine": 346,
+        "startChar": 41,
+        "endLine": 346,
+        "endChar": 48
+      },
+      "revId": "728972124f5aadf2dc127f0d46c67d2909a86001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7218370c_34e38c89",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-09-05T02:09:13Z",
+      "side": 1,
+      "message": "Oops. I used a wrong path for this.\nAnyway, this command is removed.",
+      "parentUuid": "1f172ce9_c0606c3b",
       "range": {
         "startLine": 346,
         "startChar": 41,
