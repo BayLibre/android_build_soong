@@ -250,8 +250,8 @@ class Filter:
 
         This defines the rules shared between version tagging and symbol tagging.
         """
-        # LLNDK mode/tags follow the similar filtering except that API level checking
-        # is based llndk= instead of introduced=.
+        # LLNDK mode/tags follow the similar filtering except that API level
+        # checking is based llndk= instead of introduced=.
         if self.llndk:
             if tags.has_mode_tags and not tags.has_llndk_tags:
                 return True
@@ -260,9 +260,9 @@ class Filter:
             if not symbol_in_llndk_api(tags, self.arch, self.api):
                 return True
             return False
-        # APEX or LLNDK mode and neither tag is provided, we fall back to the
-        # default behavior because all NDK symbols are implicitly available to
-        # APEX and LLNDK.
+        # If in APEX or LLNDK mode and neither tag is provided, we fall back to
+        # the default behavior because all NDK symbols are implicitly available
+        # to APEX and LLNDK.
         if tags.has_mode_tags:
             if self.apex and tags.has_apex_tags:
                 return False
@@ -316,14 +316,26 @@ def symbol_in_arch(tags: Tags, arch: Arch) -> bool:
     # for the tagged architectures.
     return not has_arch_tags
 
+def latest_api_level_for_llndk(llndk_api: int) -> int:
+    """Returns latest NDK api level when the llndk API level is finalized."""
+    if llndk_api < 202404:
+        return llndk_api
+    elif llndk_api == 202404:
+        return 34
+    else:
+        # Assumes yearly release, that maps 202504 to 36, 202604 to 37 and so
+        # on. This must be updated when the plan is changed.
+        return llndk_api // 100 - 2025 + 36
+
 def symbol_in_llndk_api(tags: Iterable[Tag], arch: Arch, api: int) -> bool:
     """Returns true if the symbol is present for the given LLNDK API level."""
     # Check llndk= first.
     for tag in tags:
         if tag.startswith('llndk='):
             return api >= int(get_tag_value(tag))
-    # If not, we keep old behavior: NDK symbols in <= 34 are LLNDK symbols.
-    return symbol_in_api(tags, arch, 34)
+    # If not, we keep old behavior: NDK symbols finalized earlier than LLNDK API
+    # level are LLNDK symbols.
+    return symbol_in_api(tags, arch, latest_api_level_for_llndk(api))
 
 def symbol_in_api(tags: Iterable[Tag], arch: Arch, api: int) -> bool:
     """Returns true if the symbol is present for the given API level."""
@@ -400,7 +412,6 @@ class SymbolFileParser:
                     f'Unexpected contents at top level: {self.current_line}')
 
         self.check_no_duplicate_symbols(versions)
-        self.check_llndk_introduced(versions)
         return versions
 
     def check_no_duplicate_symbols(self, versions: Iterable[Version]) -> None:
@@ -408,12 +419,24 @@ class SymbolFileParser:
 
         This situation is the normal case when symbol versioning is actually
         used, but this script doesn't currently handle that. The error message
-        will be a not necessarily obvious "error: redefition of 'foo'" from
+        will be a not necessarily obvious "error: redefinition of 'foo'" from
         stub.c, so it's better for us to catch this situation and raise a
         better error.
+
+        In vendor API level 202404 and later, there are cases of having the same
+        symbols between ndk (no-tags) and llndk (llndk tag) to tag the llndk
+        symbol with a specific vendor api level. Ignore this duplication in this
+        check.
         """
         symbol_names = set()
+        llndk_symbol_names = set()
         multiply_defined_symbols = set()
+
+        def check_duplicate(symbol: Symbol, symbol_set: set) -> None:
+            if symbol.name in symbol_set:
+                multiply_defined_symbols.add(symbol.name)
+            symbol_set.add(symbol.name)
+
         for version in versions:
             if self.filter.should_omit_version(version):
                 continue
@@ -422,37 +445,14 @@ class SymbolFileParser:
                 if self.filter.should_omit_symbol(symbol):
                     continue
 
-                if symbol.name in symbol_names:
-                    multiply_defined_symbols.add(symbol.name)
-                symbol_names.add(symbol.name)
+                if symbol.tags.has_llndk_tags:
+                    check_duplicate(symbol, llndk_symbol_names)
+                else:
+                    check_duplicate(symbol, symbol_names)
+
         if multiply_defined_symbols:
             raise MultiplyDefinedSymbolError(
                 sorted(list(multiply_defined_symbols)))
-
-    def check_llndk_introduced(self, versions: Iterable[Version]) -> None:
-        """Raises errors when llndk= is missing for new llndk symbols."""
-        if not self.filter.llndk:
-            return
-
-        def assert_llndk_with_version(tags: Tags,  name: str) -> None:
-            has_llndk_introduced = False
-            for tag in tags:
-                if tag.startswith('llndk='):
-                    has_llndk_introduced = True
-                    break
-            if not has_llndk_introduced:
-                raise ParseError(f'{name}: missing version. `llndk=yyyymm`')
-
-        arch = self.filter.arch
-        for version in versions:
-            # llndk symbols >= introduced=35 should be tagged
-            # explicitly with llndk=yyyymm.
-            for symbol in version.symbols:
-                if not symbol.tags.has_llndk_tags:
-                    continue
-                if symbol_in_api(symbol.tags, arch, 34):
-                    continue
-                assert_llndk_with_version(symbol.tags, symbol.name)
 
     def parse_version(self) -> Version:
         """Parses a single version section and returns a Version object."""
