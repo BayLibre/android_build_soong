@@ -15,10 +15,10 @@
 package java
 
 import (
+	"crypto/sha256"
 	"fmt"
 	"path/filepath"
 	"slices"
-	"strconv"
 	"strings"
 
 	"android/soong/android"
@@ -236,18 +236,21 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 		rroDirs = append(rroDirs, resRRODirs...)
 	}
 
+	assetDirsHasher := sha256.New()
 	var assetDeps android.Paths
-	for i, dir := range assetDirs {
+	for _, dir := range assetDirs {
 		// Add a dependency on every file in the asset directory.  This ensures the aapt2
 		// rule will be rerun if one of the files in the asset directory is modified.
-		assetDeps = append(assetDeps, androidResourceGlob(ctx, dir)...)
+		dirContents := androidResourceGlob(ctx, dir)
+		assetDeps = append(assetDeps, dirContents...)
 
-		// Add a dependency on a file that contains a list of all the files in the asset directory.
+		// Add a hash of all the files in the asset directory to the command line.
 		// This ensures the aapt2 rule will be run if a file is removed from the asset directory,
 		// or a file is added whose timestamp is older than the output of aapt2.
-		assetFileListFile := android.PathForModuleOut(ctx, "asset_dir_globs", strconv.Itoa(i)+".glob")
-		androidResourceGlobList(ctx, dir, assetFileListFile)
-		assetDeps = append(assetDeps, assetFileListFile)
+		// This is a deficiency in ninja, and indeed, is fixed by n2.
+		for _, path := range dirContents.Strings() {
+			assetDirsHasher.Write([]byte(path))
+		}
 	}
 
 	assetDirStrings := assetDirs.Strings()
@@ -282,6 +285,7 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 	linkDeps = append(linkDeps, manifestPath)
 
 	linkFlags = append(linkFlags, android.JoinWithPrefix(assetDirStrings, "-A "))
+	linkFlags = append(linkFlags, fmt.Sprintf("$$(: %x)", assetDirsHasher.Sum(nil)))
 	linkDeps = append(linkDeps, assetDeps...)
 
 	// Returns the effective version for {min|target}_sdk_version
