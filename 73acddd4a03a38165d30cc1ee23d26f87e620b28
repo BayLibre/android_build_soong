@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b077509_f862a9a4",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1981633
+      },
+      "writtenOn": "2024-09-05T22:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fca0c010_59e4af39",
+      "range": {
+        "startLine": 44,
+        "startChar": 25,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78a4f4b1_f227c684",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-09-04T23:46:38Z",
       "side": 1,
       "message": "You\u0027ll need to add a definition of the `libbpf_headers` module that is used as an implicit dependency.",
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85381664_8a869521",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1981633
+      },
+      "writtenOn": "2024-09-05T22:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78a4f4b1_f227c684",
       "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "082e96ee_cbe26424",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1981633
+      },
+      "writtenOn": "2024-09-05T22:45:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cde6c656_fc130d7e",
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a542f6af_e3d23151",
@@ -75,6 +135,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7420054_867ab304",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1981633
+      },
+      "writtenOn": "2024-09-05T22:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a542f6af_e3d23151",
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "994164f9_06cba0d8",
@@ -88,6 +166,30 @@
       "writtenOn": "2024-09-04T23:46:38Z",
       "side": 1,
       "message": "These are never read after GenerateAndroidBuildActions, but attaching them to the module is keeping them in memory.  Can you make them local to GenerateAndroidBuildActions?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 25
+      },
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b3d603_59276175",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1981633
+      },
+      "writtenOn": "2024-09-05T22:45:00Z",
+      "side": 1,
+      "message": "Made cFlagsDeps local, objs is used in AndroidMkData().",
+      "parentUuid": "994164f9_06cba0d8",
       "range": {
         "startLine": 97,
         "startChar": 0,
@@ -121,6 +223,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c598e5b_d705547c",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1981633
+      },
+      "writtenOn": "2024-09-05T22:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af2ba195_23fdc7c1",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 5
+      },
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc1ebf58_bdd0ca83",
@@ -134,6 +260,30 @@
       "writtenOn": "2024-09-04T23:46:38Z",
       "side": 1,
       "message": "`src.Base()`",
+      "range": {
+        "startLine": 196,
+        "startChar": 26,
+        "endLine": 196,
+        "endChar": 53
+      },
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b8c793_b007cae0",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1981633
+      },
+      "writtenOn": "2024-09-05T22:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc1ebf58_bdd0ca83",
       "range": {
         "startLine": 196,
         "startChar": 26,
@@ -202,6 +352,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2d7e1b_58c388ae",
+        "filename": "bpf/libbpf/libbpf_prog_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1981633
+      },
+      "writtenOn": "2024-09-05T22:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30a18a82_21aab748",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 75
+      },
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f02eb64_31baca54",
@@ -215,6 +389,24 @@
       "writtenOn": "2024-09-04T23:46:38Z",
       "side": 1,
       "message": "Can you use a shorter regex here to make this less sensitive to changes to the error format?",
+      "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb05d920_bfd6e700",
+        "filename": "bpf/libbpf/libbpf_prog_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1981633
+      },
+      "writtenOn": "2024-09-05T22:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f02eb64_31baca54",
       "revId": "73acddd4a03a38165d30cc1ee23d26f87e620b28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
