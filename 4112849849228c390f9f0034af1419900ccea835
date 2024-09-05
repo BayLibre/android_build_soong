@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ca66675_e82803dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-05T00:10:10Z",
+      "side": 1,
+      "message": "This cannot be submitted till we create a prebuilt kotlin extractor using https://android-review.git.corp.google.com/c/platform/external/kythe/+/3230795 (either in import or upstreamed). But I wanted to get your review on the general approach.",
+      "revId": "4112849849228c390f9f0034af1419900ccea835",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
