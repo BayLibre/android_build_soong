@@ -56,6 +56,13 @@ var (
 
 		// cfg flag to indicate that we are building in AOSP with Soong
 		"--cfg soong",
+
+		// Updating all of the machine generated code in Android can be
+		// impractical and removed or re-named lints are NOOPS.
+		//
+		// This can be removed when we upgrade to protobuf-4 or if we patch
+		// protobuf-3 to no longer emit `#![allow(box_pointers)]`.
+		// "-A renamed_and_removed_lints",
 	}
 
 	LinuxHostGlobalLinkFlags = []string{
