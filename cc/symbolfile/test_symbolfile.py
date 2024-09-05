@@ -352,6 +352,10 @@ class OmitSymbolTest(unittest.TestCase):
         f_llndk.llndk = True
         f_llndk.api = 202404
 
+        f_llndk_new = copy(f_ndk)
+        f_llndk_new.llndk = True
+        f_llndk_new.api = 202504
+
         s = Symbol('foo', Tags())
         s_llndk = Symbol('foo', Tags.from_strs(['llndk']))
         s_llndk_202404 = Symbol('foo', Tags.from_strs(['llndk=202404']))
@@ -382,6 +386,17 @@ class OmitSymbolTest(unittest.TestCase):
         self.assertOmit(f_llndk, s_35)
         self.assertInclude(f_llndk, s_35_llndk_202404)
         self.assertOmit(f_llndk, s_35_llndk_202504)
+
+        # No changes on adding old symbols in 202504
+        self.assertInclude(f_llndk_new, s)
+        self.assertInclude(f_llndk_new, s_llndk)
+        self.assertInclude(f_llndk_new, s_llndk_202404)
+        self.assertInclude(f_llndk_new, s_34)
+        self.assertInclude(f_llndk_new, s_34_llndk)
+        # Include new symbols(>=35) without any tags.
+        self.assertInclude(f_llndk_new, s_35)
+        self.assertInclude(f_llndk_new, s_35_llndk_202404)
+        self.assertInclude(f_llndk_new, s_35_llndk_202504)
 
     def test_omit_apex(self) -> None:
         f_none = self.filter
