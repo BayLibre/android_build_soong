@@ -418,9 +418,6 @@ func NewConfig(ctx Context, args ...string) Config {
 		"ANDROID_DEV_SCRIPTS",
 		"ANDROID_EMULATOR_PREBUILTS",
 		"ANDROID_PRE_BUILD_PATHS",
-
-		// Leaks usernames into environment.
-		"HOME",
 	)
 
 	if ret.UseGoma() || ret.ForceUseGoma() {
