@@ -16,6 +16,24 @@
       "message": "Since this appears to be a trivial update that has no required changes in a topic with it, I\u0027d suggest using go/android-build-flags (maybe with an accelerated promotion schedule) to avoid disrupting upcoming releases that are still in main.",
       "revId": "0434942082fca76349e8626f0822170a7b8ce615",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c437e9d_8d45ecc5",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-09-05T22:36:31Z",
+      "side": 1,
+      "message": "Acknowledged. Created b/364956472 to track this.",
+      "parentUuid": "7a5a4a42_b40b790b",
+      "revId": "0434942082fca76349e8626f0822170a7b8ce615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
