@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f13fce_466cd0f3",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-05T12:23:45Z",
+      "side": 1,
+      "message": "what is #llndk symbol comes first and then ndk symbol (of the same name) comes next? will we then have both symbols added? isn\u0027t that what we\u0027d like to avoid?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "3dae3b034b04d4f88065ebb8ec8cf93ad293a49c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
