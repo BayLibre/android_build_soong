@@ -295,6 +295,8 @@ var (
 
 		// Allow using VLA CXX extension.
 		"-Wno-vla-cxx-extension",
+		"-Wno-cast-function-type-mismatch",
+		"-Wno-c23-extensions",
 	}
 
 	noOverride64GlobalCflags = []string{}
@@ -364,6 +366,7 @@ var (
 		"-Wno-pessimizing-move",
 		// TODO: Enable this warning http://b/315245071
 		"-Wno-fortify-source",
+		"-Wno-cast-function-type-mismatch",
 	}
 
 	llvmNextExtraCommonGlobalCflags = []string{
@@ -383,7 +386,7 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r530567"
+	ClangDefaultVersion      = "clang-r536225"
 	ClangDefaultShortVersion = "19"
 
 	// Directories with warnings from Android.bp files.
