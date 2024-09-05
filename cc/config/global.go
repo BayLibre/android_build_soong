@@ -362,6 +362,8 @@ var (
 		"-Wno-array-parameter",
 		"-Wno-gnu-offsetof-extensions",
 		"-Wno-pessimizing-move",
+		// TODO: Enable this warning http://b/315245071
+		"-Wno-fortify-source",
 	}
 
 	llvmNextExtraCommonGlobalCflags = []string{
