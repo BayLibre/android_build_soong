@@ -81,6 +81,24 @@
       "parentUuid": "5b103398_7c62f7f9",
       "revId": "fd932ada981e057881a14eabe8ba8f8004a08b1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c78786f_9f439628",
+        "filename": "etc/install_directory.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-09-05T09:14:29Z",
+      "side": 1,
+      "message": "Is there a solution that doesn\u0027t require adding `LOCAL_SOONG_INSTALL_DIR`?\nI might not be very familiar with this part yet.",
+      "parentUuid": "c3a04412_453358c1",
+      "revId": "fd932ada981e057881a14eabe8ba8f8004a08b1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
