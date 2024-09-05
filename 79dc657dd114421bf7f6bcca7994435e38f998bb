@@ -121,6 +121,30 @@
       },
       "revId": "79dc657dd114421bf7f6bcca7994435e38f998bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b813f1_c2ad3184",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-09-05T09:16:49Z",
+      "side": 1,
+      "message": "Well, I was thinking something like\n\n```\n..\ncase 202504 \u003d\u003e 36\notherwise \u003d\u003e error\n```\n\nIMO the assumption is quite fragile.",
+      "parentUuid": "c3a26dc4_212906de",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 38
+      },
+      "revId": "79dc657dd114421bf7f6bcca7994435e38f998bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
