@@ -144,6 +144,7 @@ var (
 
 		// Make paths in deps files relative.
 		"-no-canonical-prefixes",
+		"-Wno-cast-function-type-mismatch",
 	}
 
 	commonGlobalConlyflags = []string{}
@@ -334,6 +335,7 @@ var (
 
 		// http://b/315250603 temporarily disabled
 		"-Wno-error=format",
+		"-Wno-cast-function-type-mismatch",
 	}
 
 	// Similar to noOverrideGlobalCflags, but applies only to third-party code
@@ -363,6 +365,7 @@ var (
 		"-Wno-pessimizing-move",
 		// TODO: Enable this warning http://b/315245071
 		"-Wno-fortify-source",
+		"-Wno-cast-function-type-mismatch",
 	}
 
 	llvmNextExtraCommonGlobalCflags = []string{
@@ -382,7 +385,7 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r530567"
+	ClangDefaultVersion      = "clang-r536225"
 	ClangDefaultShortVersion = "19"
 
 	// Directories with warnings from Android.bp files.
