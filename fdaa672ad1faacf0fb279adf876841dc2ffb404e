@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "982e3bcd_d3878334",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2024-09-05T15:57:36Z",
+      "side": 1,
+      "message": "I think I need to pull this code and crack open a zip to compare.   Prior their were a few deps that did not get smooshed in to a single static zip.   The android-all, the robolectric-all, mockito.    In particular the android-all jar should not get repackaged, because robolectric relies on it being a representation of android, and if other classes get crammed in to the same jar, then there is a lot of logic that needs to be checked in robolectric.\n\nSimply reordering the artifacts that get repackaged via jarjar might \"work\" but will leave other debt.",
+      "revId": "fdaa672ad1faacf0fb279adf876841dc2ffb404e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
