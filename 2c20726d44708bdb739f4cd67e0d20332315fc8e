@@ -94,6 +94,30 @@
       },
       "revId": "2c20726d44708bdb739f4cd67e0d20332315fc8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e84a9e_67a62bcd",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-05T16:41:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b7118169_ccf9b736",
+      "range": {
+        "startLine": 1123,
+        "startChar": 5,
+        "endLine": 1123,
+        "endChar": 57
+      },
+      "revId": "2c20726d44708bdb739f4cd67e0d20332315fc8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
