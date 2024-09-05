@@ -51,9 +51,16 @@ class Generator:
             version.tags, self.api)
         version_empty = True
         pruned_symbols = []
+        symbol_names = set()
         for symbol in version.symbols:
             if self.filter.should_omit_symbol(symbol):
                 continue
+
+            if self.filter.llndk and symbol.name in symbol_names and symbol.tags.has_llndk_tags:
+                # llndk may define duplicated symbols in the case of versioning llndk symbols with
+                # llndk=version tag before the ndk version is released. Skip the duplicated symbols.
+                continue
+            symbol_names.add(symbol.name)
 
             if symbolfile.symbol_versioned_in_api(symbol.tags, self.api):
                 version_empty = False
