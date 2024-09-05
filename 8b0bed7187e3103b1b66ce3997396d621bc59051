@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c3883c4_f306d191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-05T15:52:24Z",
+      "side": 1,
+      "message": "Colin Cross pointed me to this CL as a possible reason that I\u0027m getting an error when I run lunch:\n\n2024/09/05 15:17:44.939631 build/soong/ui/build/config.go:510: Error getting PRODUCT_RELEASE_CONFIG_MAPS: Failed to parse make line: \"/bin/bash: /nonexistent/.bashrc: Permission denied\"\n\n(full contents of out/dumpvars-soong.log at https://paste.googleplex.com/5996767968755712\n\nWhen I modified ui/build/dumpvars.go to not use the sandbox, then lunch ran successfully.",
+      "revId": "8b0bed7187e3103b1b66ce3997396d621bc59051",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
