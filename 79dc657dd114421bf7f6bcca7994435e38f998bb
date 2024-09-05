@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2811e9e_a1fd42e1",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-09-05T08:28:57Z",
+      "side": 1,
+      "message": "How about `latest_api_level_for_llndk(llndk_api)`",
+      "range": {
+        "startLine": 319,
+        "startChar": 4,
+        "endLine": 319,
+        "endChar": 17
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c7fa06d0_95801d8f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/symbolfile/__init__.py",
+              "range": {
+                "startLine": 319,
+                "startChar": 0,
+                "endLine": 320,
+                "endChar": 0
+              },
+              "replacement": "def latest_api_level_for_llndk(llndk_api: int) -\u003e int:\n"
+            },
+            {
+              "path": "cc/symbolfile/__init__.py",
+              "range": {
+                "startLine": 338,
+                "startChar": 0,
+                "endLine": 339,
+                "endChar": 0
+              },
+              "replacement": "    return symbol_in_api(tags, arch, latest_api_level_for_llndk(api))\n"
+            }
+          ]
+        }
+      ],
+      "revId": "79dc657dd114421bf7f6bcca7994435e38f998bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ee0116_64c1fd78",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-09-05T08:28:57Z",
+      "side": 1,
+      "message": "Can we make this more explicit? This is hard to read and reason about.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 38
+      },
+      "revId": "79dc657dd114421bf7f6bcca7994435e38f998bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
