@@ -145,6 +145,30 @@
       },
       "revId": "79dc657dd114421bf7f6bcca7994435e38f998bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10ab721_6d607b24",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-09-05T09:40:27Z",
+      "side": 1,
+      "message": "I thought differently. It will support the version mapping for more years unless the planning is changed. We have two more these mappings in the tree.\nThe right solution must be to use a single code or mapping file for all places.",
+      "parentUuid": "e8b813f1_c2ad3184",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 38
+      },
+      "revId": "79dc657dd114421bf7f6bcca7994435e38f998bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
