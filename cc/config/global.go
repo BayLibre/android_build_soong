@@ -144,6 +144,7 @@ var (
 
 		// Make paths in deps files relative.
 		"-no-canonical-prefixes",
+		"-Wno-cast-function-type-mismatch",
 	}
 
 	commonGlobalConlyflags = []string{}
@@ -382,7 +383,7 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r530567"
+	ClangDefaultVersion      = "clang-r536225"
 	ClangDefaultShortVersion = "19"
 
 	// Directories with warnings from Android.bp files.
