@@ -334,6 +334,7 @@ var (
 
 		// http://b/315250603 temporarily disabled
 		"-Wno-error=format",
+    "-Wno-cast-function-type-mismatch",
 	}
 
 	// Similar to noOverrideGlobalCflags, but applies only to third-party code
@@ -382,7 +383,7 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r530567"
+	ClangDefaultVersion      = "clang-r536225"
 	ClangDefaultShortVersion = "19"
 
 	// Directories with warnings from Android.bp files.
