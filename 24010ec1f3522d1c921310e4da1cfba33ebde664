@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0165b53_0aae0280",
+        "filename": "android/module_context.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-05T17:49:30Z",
+      "side": 1,
+      "message": "Doesn\u0027t this run into the ninja check that output files must be files, not directories? You commented on the bug that that\u0027s a warning but it looks like we add `-w outputdir\u003derr` to the ninja command line.\n\nI think it would be better to move the directory creation from a `LOCAL_POST_INSTALL_COMMAND` in `rootdir/Android.mk` to part of the rules that make the system image (I think that\u0027s where the root dir is packaged into) in `build/make/core/Makefile`.",
+      "revId": "24010ec1f3522d1c921310e4da1cfba33ebde664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
