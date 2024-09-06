@@ -142,6 +142,30 @@
       },
       "revId": "2c20726d44708bdb739f4cd67e0d20332315fc8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd956f54_6e2c7f1d",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-06T17:47:13Z",
+      "side": 1,
+      "message": "Agreed, `prebuilt_visiblity` is a noop now. I have filed b/365111645 to clean this up.\n\nIIUC, would your concerns be that not all stub libraries might be safe to link against at build time? In my mental model, I thought that module sdk stubs provide guarantees to all rdeps in (platform U mainline_modules). Vendors are not allowed to build against them, but that build time check is provided by `vendor_available` and co. properties.\n\nIf this is not always true, it might be best to drop this comment from docs. I have created https://r.android.com/3257954 for this. (less docs is better than potentially misleading docs).",
+      "parentUuid": "83b13f26_7210627c",
+      "range": {
+        "startLine": 1123,
+        "startChar": 5,
+        "endLine": 1123,
+        "endChar": 57
+      },
+      "revId": "2c20726d44708bdb739f4cd67e0d20332315fc8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
