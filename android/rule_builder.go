@@ -38,6 +38,8 @@ const sboxOutSubDir = "out"
 const sboxToolsSubDir = "tools"
 const sboxOutDir = sboxSandboxBaseDir + "/" + sboxOutSubDir
 
+const nsjailToolsSubDir = "tools"
+
 // RuleBuilder provides an alternative to ModuleContext.Rule and ModuleContext.Build to add a command line to the build
 // graph.
 type RuleBuilder struct {
@@ -59,6 +61,8 @@ type RuleBuilder struct {
 	sboxManifestPath WritablePath
 	missingDeps      []string
 	args             map[string]string
+	nsjail           bool
+	nsjailBasePath   WritablePath
 }
 
 // NewRuleBuilder returns a newly created RuleBuilder.
@@ -168,6 +172,16 @@ func (r *RuleBuilder) Sbox(outputDir WritablePath, manifestPath WritablePath) *R
 	r.sbox = true
 	r.outDir = outputDir
 	r.sboxManifestPath = manifestPath
+	return r
+}
+
+// TODO: add comment
+func (r *RuleBuilder) Nsjail(baseDir WritablePath) *RuleBuilder {
+	if len(r.commands) > 0 {
+		panic("Sbox() may not be called after Command()")
+	}
+	r.nsjail = true
+	r.nsjailBasePath = baseDir
 	return r
 }
 
@@ -513,6 +527,23 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscapeCommandString b
 	}
 
 	commandString := strings.Join(commands, " && ")
+
+	if r.nsjail {
+		copyToolsCommand := []string{}
+		for _, tool := range tools {
+			copyToolsCommand = append(copyToolsCommand, "mkdir -p "+filepath.Dir(filepath.Join(r.nsjailBasePath.String(), nsjailPathForToolRel(r.ctx, tool))))
+			copyToolsCommand = append(copyToolsCommand, "cp -f "+tool.String()+" "+filepath.Join(r.nsjailBasePath.String(), nsjailPathForToolRel(r.ctx, tool)))
+		}
+		for _, c := range r.commands {
+			for _, tool := range c.packagedTools {
+				copyToolsCommand = append(copyToolsCommand, "mkdir -p "+filepath.Dir(filepath.Join(r.nsjailBasePath.String(), nsjailPathForPackagedToolRel(tool))))
+				copyToolsCommand = append(copyToolsCommand, "cp -f "+tool.srcPath.String()+" "+filepath.Join(r.nsjailBasePath.String(), nsjailPathForPackagedToolRel(tool)))
+				tools = append(tools, tool.srcPath)
+			}
+		}
+
+		commandString = strings.Join(append(copyToolsCommand, commandString), " && ")
+	}
 
 	if r.sbox {
 		// If running the command inside sbox, write the rule data out to an sbox
@@ -910,6 +941,18 @@ func sboxPathForToolRel(ctx BuilderContext, path Path) string {
 	return filepath.Join(sboxToolsSubDir, "src", path.String())
 }
 
+func nsjailPathForToolRel(ctx BuilderContext, path Path) string {
+	// Errors will be handled in RuleBuilder.Build where we have a context to report them
+	toolDir := pathForInstall(ctx, ctx.Config().BuildOS, ctx.Config().BuildArch, "")
+	relOutSoong, isRelOutSoong, _ := maybeRelErr(toolDir.String(), path.String())
+	if isRelOutSoong {
+		// The tool is in the Soong output directory, it will be copied to __SBOX_OUT_DIR__/tools/out
+		return filepath.Join(nsjailToolsSubDir, "out", relOutSoong)
+	}
+	// The tool is in the source directory, it will be copied to __SBOX_OUT_DIR__/tools/src
+	return filepath.Join(nsjailToolsSubDir, "src", path.String())
+}
+
 func (r *RuleBuilder) _sboxPathForInputRel(path Path) (rel string, inSandbox bool) {
 	// Errors will be handled in RuleBuilder.Build where we have a context to report them
 	rel, isRelSboxOut, _ := maybeRelErr(r.outDir.String(), path.String())
@@ -945,15 +988,21 @@ func sboxPathForPackagedToolRel(spec PackagingSpec) string {
 	return filepath.Join(sboxToolsSubDir, "out", spec.relPathInPackage)
 }
 
+func nsjailPathForPackagedToolRel(spec PackagingSpec) string {
+	return filepath.Join(nsjailToolsSubDir, "out", spec.relPathInPackage)
+}
+
 // PathForPackagedTool takes a PackageSpec for a tool and returns the corresponding path for the
 // tool after copying it into the sandbox.  This can be used  on the RuleBuilder command line to
 // reference the tool.
 func (c *RuleBuilderCommand) PathForPackagedTool(spec PackagingSpec) string {
-	if !c.rule.sboxTools {
-		panic("PathForPackagedTool() requires SandboxTools()")
+	if c.rule.sboxTools {
+		return filepath.Join(sboxSandboxBaseDir, sboxPathForPackagedToolRel(spec))
+	} else if c.rule.nsjail {
+		return nsjailPathForPackagedToolRel(spec)
+	} else {
+		panic("PathForPackagedTool() requires SandboxTools() or Nsjail()")
 	}
-
-	return filepath.Join(sboxSandboxBaseDir, sboxPathForPackagedToolRel(spec))
 }
 
 // PathForTool takes a path to a tool, which may be an output file or a source file, and returns
@@ -983,20 +1032,22 @@ func (c *RuleBuilderCommand) PathsForTools(paths Paths) []string {
 // PackagedTool adds the specified tool path to the command line.  It can only be used with tool
 // sandboxing enabled by SandboxTools(), and will copy the tool into the sandbox.
 func (c *RuleBuilderCommand) PackagedTool(spec PackagingSpec) *RuleBuilderCommand {
-	if !c.rule.sboxTools {
-		panic("PackagedTool() requires SandboxTools()")
-	}
-
 	c.packagedTools = append(c.packagedTools, spec)
-	c.Text(sboxPathForPackagedToolRel(spec))
+	if c.rule.sboxTools {
+		c.Text(sboxPathForPackagedToolRel(spec))
+	} else if c.rule.nsjail {
+		c.Text(nsjailPathForPackagedToolRel(spec))
+	} else {
+		panic("PackagedTool() requires SandboxTools() or Nsjail()")
+	}
 	return c
 }
 
 // ImplicitPackagedTool copies the specified tool into the sandbox without modifying the command
 // line.  It can only be used with tool sandboxing enabled by SandboxTools().
 func (c *RuleBuilderCommand) ImplicitPackagedTool(spec PackagingSpec) *RuleBuilderCommand {
-	if !c.rule.sboxTools {
-		panic("ImplicitPackagedTool() requires SandboxTools()")
+	if !c.rule.sboxTools && !c.rule.nsjail {
+		panic("ImplicitPackagedTool() requires SandboxTools() or Nsjail()")
 	}
 
 	c.packagedTools = append(c.packagedTools, spec)
@@ -1006,8 +1057,8 @@ func (c *RuleBuilderCommand) ImplicitPackagedTool(spec PackagingSpec) *RuleBuild
 // ImplicitPackagedTools copies the specified tools into the sandbox without modifying the command
 // line.  It can only be used with tool sandboxing enabled by SandboxTools().
 func (c *RuleBuilderCommand) ImplicitPackagedTools(specs []PackagingSpec) *RuleBuilderCommand {
-	if !c.rule.sboxTools {
-		panic("ImplicitPackagedTools() requires SandboxTools()")
+	if !c.rule.sboxTools && !c.rule.nsjail {
+		panic("ImplicitPackagedTools() requires SandboxTools() or Nsjail()")
 	}
 
 	c.packagedTools = append(c.packagedTools, specs...)
