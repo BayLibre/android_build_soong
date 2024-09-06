@@ -21,6 +21,7 @@ package genrule
 import (
 	"fmt"
 	"io"
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -134,6 +135,9 @@ type generatorProperties struct {
 	// Local files that are used by the tool
 	Tool_files []string `android:"path"`
 
+	// Local files that are used by the tool
+	Prebuilt_tools []string `android:"path"`
+
 	// List of directories to export generated headers from
 	Export_include_dirs []string
 
@@ -210,6 +214,9 @@ type generateTask struct {
 	// For gensrsc sharding.
 	shard  int
 	shards int
+
+	// For nsjail tasks
+	useNsjail bool
 }
 
 func (g *Module) GeneratedSourceFiles() android.Paths {
@@ -397,6 +404,11 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 		addLocationLabel(toolFile, toolLocation{paths})
 	}
 
+	for _, prebuiltTool := range g.properties.Prebuilt_tools {
+		path := ctx.Config().PrebuiltBuildTool(ctx, prebuiltTool)
+		addLocationLabel(prebuiltTool, toolLocation{android.Paths{path}})
+	}
+
 	addLabelsForInputs := func(propName string, include, exclude []string) android.Paths {
 		includeDirInPaths := ctx.DeviceConfig().BuildBrokenInputDir(g.Name())
 		var srcFiles android.Paths
@@ -454,28 +466,66 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 
 		// Pick a unique path outside the task.genDir for the sbox manifest textproto,
 		// a unique rule name, and the user-visible description.
-		manifestName := "genrule.sbox.textproto"
+		var rule *android.RuleBuilder
 		desc := "generate"
 		name := "generator"
-		if task.shards > 0 {
-			manifestName = "genrule_" + strconv.Itoa(task.shard) + ".sbox.textproto"
-			desc += " " + strconv.Itoa(task.shard)
-			name += strconv.Itoa(task.shard)
-		} else if len(task.out) == 1 {
-			desc += " " + task.out[0].Base()
+		if task.useNsjail {
+			rule = android.NewRuleBuilder(pctx, ctx)
+		} else {
+			manifestName := "genrule.sbox.textproto"
+			if task.shards > 0 {
+				manifestName = "genrule_" + strconv.Itoa(task.shard) + ".sbox.textproto"
+				desc += " " + strconv.Itoa(task.shard)
+				name += strconv.Itoa(task.shard)
+			} else if len(task.out) == 1 {
+				desc += " " + task.out[0].Base()
+			}
+
+			manifestPath := android.PathForModuleOut(ctx, manifestName)
+
+			// Use a RuleBuilder to create a rule that runs the command inside an sbox sandbox.
+			rule = getSandboxedRuleBuilder(ctx, android.NewRuleBuilder(pctx, ctx).Sbox(task.genDir, manifestPath))
 		}
-
-		manifestPath := android.PathForModuleOut(ctx, manifestName)
-
-		// Use a RuleBuilder to create a rule that runs the command inside an sbox sandbox.
-		rule := getSandboxedRuleBuilder(ctx, android.NewRuleBuilder(pctx, ctx).Sbox(task.genDir, manifestPath))
 		if Bool(g.properties.Write_if_changed) {
 			rule.Restat()
 		}
 		cmd := rule.Command()
 
 		for _, out := range task.out {
-			addLocationLabel(out.Rel(), outputLocation{out})
+			if task.useNsjail {
+				addLocationLabel(out.Rel(), nsjailOutputLocation{filepath.Join("/nsjail_build_sandbox", out.Rel())})
+			} else {
+				addLocationLabel(out.Rel(), outputLocation{out})
+			}
+		}
+
+		if task.useNsjail {
+			cmd.Text("(")
+			cmd.PrebuiltBuildTool(ctx, "nsjail")
+
+			cmd.FlagWithArg("-B", "$PWD/"+task.genDir.String()+":nsjail_build_sandbox")
+			for _, input := range task.in {
+				cmd.FlagWithArg("-R", "$PWD/"+input.String()+":nsjail_build_sandbox/"+input.String())
+			}
+
+			// outDir is necessary to refer to built tools.
+			outDir := android.PathForArbitraryOutput(ctx)
+			cmd.FlagWithArg("-R", "$PWD/"+outDir.String()+":nsjail_build_sandbox/"+outDir.String())
+
+			// These five directories are necessary to run native host tools like /bin/bash and py3-cmd.
+			cmd.FlagWithArg("-R", "/bin")
+			cmd.FlagWithArg("-R", "/lib")
+			cmd.FlagWithArg("-R", "/lib64")
+			cmd.FlagWithArg("-R", "/dev")
+			cmd.FlagWithArg("-R", "/usr")
+
+			cmd.FlagWithArg("-D", "nsjail_build_sandbox")
+			cmd.FlagWithArg("-m", "none:/tmp:tmpfs:size=134217728") // 128MB
+			cmd.Flag("--disable_rlimits")
+
+			cmd.Text("--")
+
+			cmd.Text("/bin/bash").Flag("-c").Text("\"")
 		}
 
 		rawCommand, err := android.Expand(task.cmd, func(name string) (string, error) {
@@ -504,13 +554,25 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 			case "in":
 				return strings.Join(proptools.ShellEscapeList(cmd.PathsForInputs(srcFiles)), " "), nil
 			case "out":
-				var sandboxOuts []string
-				for _, out := range task.out {
-					sandboxOuts = append(sandboxOuts, cmd.PathForOutput(out))
+				if task.useNsjail {
+					var outs []string
+					for _, out := range task.out {
+						outs = append(outs, filepath.Join("/nsjail_build_sandbox", out.Rel()))
+					}
+					return strings.Join(proptools.ShellEscapeList(outs), " "), nil
+				} else {
+					var sandboxOuts []string
+					for _, out := range task.out {
+						sandboxOuts = append(sandboxOuts, cmd.PathForOutput(out))
+					}
+					return strings.Join(proptools.ShellEscapeList(sandboxOuts), " "), nil
 				}
-				return strings.Join(proptools.ShellEscapeList(sandboxOuts), " "), nil
 			case "genDir":
-				return proptools.ShellEscape(cmd.PathForOutput(task.genDir)), nil
+				if task.useNsjail {
+					return "/nsjail_build_sandbox", nil
+				} else {
+					return proptools.ShellEscape(cmd.PathForOutput(task.genDir)), nil
+				}
 			case "build_number_file":
 				if !proptools.Bool(g.properties.Uses_order_only_build_number_file) {
 					return reportError("to use the $(build_number_file) label, you must set uses_order_only_build_number_file: true")
@@ -558,15 +620,33 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 		cmd.Text(rawCommand)
 		cmd.Implicits(srcFiles) // need to be able to reference other srcs
 		cmd.Implicits(extraInputs)
-		cmd.ImplicitOutputs(task.out)
 		cmd.Implicits(task.in)
 		cmd.ImplicitTools(tools)
-		cmd.ImplicitPackagedTools(packagedTools)
+		cmd.ImplicitOutputs(task.out)
 		if proptools.Bool(g.properties.Uses_order_only_build_number_file) {
 			if !isModuleInBuildNumberAllowlist(ctx) {
 				ctx.ModuleErrorf("Only allowlisted modules may use uses_order_only_build_number_file: true")
 			}
 			cmd.OrderOnly(ctx.Config().BuildNumberFile(ctx))
+		}
+
+		if task.useNsjail {
+			stdoutLog := filepath.Join(task.genDir.String(), "stdout.log")
+			stderrLog := filepath.Join(task.genDir.String(), "stderr.log")
+			cmd.Text("\"")
+			cmd.Text("1>").Text(stdoutLog)
+			cmd.Text("2>").Text(stderrLog)
+			cmd.Text(fmt.Sprintf(") || (echo 'genrule_nsjail failed. See %q and %q'", stdoutLog, stderrLog))
+			cmd.Text("; exit 38)")
+
+			for _, input := range task.in {
+				// can fail if input is a file.
+				if paths, err := ctx.GlobWithDeps(filepath.Join(input.String(), "**/*"), nil); err == nil {
+					cmd.Implicits(android.PathsForSource(ctx, paths))
+				}
+			}
+		} else {
+			cmd.ImplicitPackagedTools(packagedTools)
 		}
 
 		// Create the rule to run the genrule command inside sbox.
@@ -832,15 +912,18 @@ func NewGenRule() *Module {
 	properties := &genRuleProperties{}
 
 	taskGenerator := func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) []generateTask {
+		useNsjail := Bool(properties.Use_nsjail)
+
 		outs := make(android.WritablePaths, len(properties.Out))
 		for i, out := range properties.Out {
 			outs[i] = android.PathForModuleGen(ctx, out)
 		}
 		return []generateTask{{
-			in:     srcFiles,
-			out:    outs,
-			genDir: android.PathForModuleGen(ctx),
-			cmd:    rawCommand,
+			in:        srcFiles,
+			out:       outs,
+			genDir:    android.PathForModuleGen(ctx),
+			cmd:       rawCommand,
+			useNsjail: useNsjail,
 		}}
 	}
 
@@ -855,6 +938,8 @@ func GenRuleFactory() android.Module {
 }
 
 type genRuleProperties struct {
+	Use_nsjail *bool
+
 	// names of the output files that will be generated
 	Out []string `android:"arch_variant"`
 }

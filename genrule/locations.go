@@ -87,6 +87,21 @@ func (l packagedToolLocation) Paths(cmd *android.RuleBuilderCommand) []string {
 
 var _ location = packagedToolLocation{}
 
+// nsjailOutputLocation is a $(location) result in nsjail for an entry in the out property.
+type nsjailOutputLocation struct {
+	path string
+}
+
+func (l nsjailOutputLocation) String() string {
+	return l.path
+}
+
+func (l nsjailOutputLocation) Paths(*android.RuleBuilderCommand) []string {
+	return []string{l.path}
+}
+
+var _ location = nsjailOutputLocation{}
+
 // errorLocation is a placeholder for a $(location) result that returns garbage to break the command
 // when error reporting is delayed by ALLOW_MISSING_DEPENDENCIES=true.
 type errorLocation struct {
