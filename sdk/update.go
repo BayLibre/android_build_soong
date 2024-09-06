@@ -1120,10 +1120,7 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 		// of a specific module.
 		// To reconcile this potential skew, change the visibility to public
 		//
-		// This is safe for (1) since these are stub libraries.
-		// This is ok for (2) since these are host and test exports and are intended for
-		// ART development.
-		// TODO (b/361303067): This can be removed if ART uses full manifests.
+		// TODO (b/361303067): This special case for category (2) can be removed if ART uses full manifests.
 		m.AddProperty("visibility", []string{"//visibility:public"})
 	}
 
