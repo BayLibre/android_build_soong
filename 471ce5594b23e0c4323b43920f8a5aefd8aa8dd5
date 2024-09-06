@@ -134,6 +134,24 @@
       "parentUuid": "29298e63_ff17a24b",
       "revId": "471ce5594b23e0c4323b43920f8a5aefd8aa8dd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "135080e4_6953e750",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-06T04:57:23Z",
+      "side": 1,
+      "message": "I see, yeah this is probably better. I have updated the CL to this.",
+      "parentUuid": "1b68dd4a_4f73f05b",
+      "revId": "471ce5594b23e0c4323b43920f8a5aefd8aa8dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
