@@ -99,9 +99,6 @@ type CommonProperties struct {
 	// if not blank, used as prefix to generate repackage rule
 	Jarjar_prefix *string
 
-	// if set to true, skip the jarjar repackaging
-	Skip_jarjar_repackage *bool
-
 	// If not blank, set the java version passed to javac as -source and -target
 	Java_version *string
 
@@ -1161,13 +1158,11 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 	jarjarProviderData := j.collectJarJarRules(ctx)
 	if jarjarProviderData != nil {
 		android.SetProvider(ctx, JarJarProvider, *jarjarProviderData)
-		if !proptools.Bool(j.properties.Skip_jarjar_repackage) {
-			text := getJarJarRuleText(jarjarProviderData)
-			if text != "" {
-				ruleTextFile := android.PathForModuleOut(ctx, "repackaged-jarjar", "repackaging.txt")
-				android.WriteFileRule(ctx, ruleTextFile, text)
-				j.repackageJarjarRules = ruleTextFile
-			}
+		text := getJarJarRuleText(jarjarProviderData)
+		if text != "" {
+			ruleTextFile := android.PathForModuleOut(ctx, "repackaged-jarjar", "repackaging.txt")
+			android.WriteFileRule(ctx, ruleTextFile, text)
+			j.repackageJarjarRules = ruleTextFile
 		}
 	}
 
