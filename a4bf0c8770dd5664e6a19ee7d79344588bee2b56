@@ -105,6 +105,24 @@
       "parentUuid": "e5e5226b_87ced955",
       "revId": "a4bf0c8770dd5664e6a19ee7d79344588bee2b56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f6f6ef_79111556",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-06T18:34:12Z",
+      "side": 1,
+      "message": "`car-frameworks-service` is currently shipped as a separate system server jar here: https://cs.android.com/android/platform/superproject/main/+/main:packages/services/Car/car_product/build/car_system.mk;l\u003d245;drc\u003d77a6100e51382b3ac12f60beb28e0a7042aa153c\n\n@allenhair@google.com for how to enable coverage for a product-specific system server jar.",
+      "parentUuid": "147bd14e_2b969b28",
+      "revId": "a4bf0c8770dd5664e6a19ee7d79344588bee2b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
