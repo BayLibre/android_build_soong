@@ -118,6 +118,30 @@
       },
       "revId": "2c20726d44708bdb739f4cd67e0d20332315fc8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b13f26_7210627c",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-06T14:56:14Z",
+      "side": 1,
+      "message": "In those cases the source modules would have the prerequisite visibilities for their corresponding prebuilts, and newly added internal dependencies in prebuilts (which should be rare) could still be addressed with `prebuilt_visibility`.\n\nSpeaking of which, iiuc that attribute has no function anymore. Isn\u0027t some cleanup in order for that? At least the doc comment ought to mention it\u0027s obsolete.\n\nAnyway, as mentioned I\u0027m not overly concerned by going for the simple solution here, in spite of the slightly higher risk for gaps. However, I think the commented sentence somewhat misrepresents the problem.",
+      "parentUuid": "f8e84a9e_67a62bcd",
+      "range": {
+        "startLine": 1123,
+        "startChar": 5,
+        "endLine": 1123,
+        "endChar": 57
+      },
+      "revId": "2c20726d44708bdb739f4cd67e0d20332315fc8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
