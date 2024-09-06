@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98176c21_186cea20",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-06T04:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08f2961f_c9d5e427",
+      "revId": "471ce5594b23e0c4323b43920f8a5aefd8aa8dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b32f5bc1_a6cb7120",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a7ec9ab_8eb80196",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-06T04:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b32f5bc1_a6cb7120",
+      "range": {
+        "startLine": 468,
+        "startChar": 40,
+        "endLine": 468,
+        "endChar": 50
+      },
+      "revId": "471ce5594b23e0c4323b43920f8a5aefd8aa8dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a2ecc33_e4063df4",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-09-06T04:33:34Z",
       "side": 1,
       "message": "I do not fully understand this part -- wouldn\u0027t this always be true? (i.e. when would `ctx.Module() !\u003d BootclasspathFragmentModule` in a `DepsMutator` of `BootclasspathFragmentModule`)? Is this because `PrebuiltBootclasspathFragmentModule` embeds `BootclasspathFragmentModule`?",
+      "revId": "471ce5594b23e0c4323b43920f8a5aefd8aa8dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29298e63_ff17a24b",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-06T04:47:41Z",
+      "side": 1,
+      "message": "Yes, that is my understanding. [go playground example](https://go.dev/play/p/rtpXERwDTss)\n\nDo you have a recommendation for an alternative that is less confusing?",
+      "parentUuid": "7a2ecc33_e4063df4",
       "revId": "471ce5594b23e0c4323b43920f8a5aefd8aa8dd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
