@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08f2961f_c9d5e427",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-06T04:33:34Z",
+      "side": 1,
+      "message": "```suggestion\n\t// Add a dependency to `all_apex_contributions` to determine if prebuilts are active.\n```",
+      "revId": "471ce5594b23e0c4323b43920f8a5aefd8aa8dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b32f5bc1_a6cb7120",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-06T04:33:34Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Common Typos: Common typo found: \"validaiton\" -- should it be \"validation\"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \"validaiton\" -- should it be \"validation\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 468,
+        "startChar": 40,
+        "endLine": 468,
+        "endChar": 50
+      },
+      "revId": "471ce5594b23e0c4323b43920f8a5aefd8aa8dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a2ecc33_e4063df4",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-06T04:33:34Z",
+      "side": 1,
+      "message": "I do not fully understand this part -- wouldn\u0027t this always be true? (i.e. when would `ctx.Module() !\u003d BootclasspathFragmentModule` in a `DepsMutator` of `BootclasspathFragmentModule`)? Is this because `PrebuiltBootclasspathFragmentModule` embeds `BootclasspathFragmentModule`?",
+      "revId": "471ce5594b23e0c4323b43920f8a5aefd8aa8dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
