@@ -87,6 +87,9 @@ type ApexInfo struct {
 
 	// Returns the name of the overridden apex (com.android.foo)
 	BaseApexName string
+
+	// Returns the value of `apex_available_name`
+	ApexAvailableName string
 }
 
 // AllApexInfo holds the ApexInfo of all apexes that include this module.
