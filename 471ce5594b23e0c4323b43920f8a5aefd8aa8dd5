@@ -116,6 +116,24 @@
       "parentUuid": "7a2ecc33_e4063df4",
       "revId": "471ce5594b23e0c4323b43920f8a5aefd8aa8dd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b68dd4a_4f73f05b",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-06T04:53:28Z",
+      "side": 1,
+      "message": "WDYT about below?\n```\nif _, isPrebuiltModule :\u003d ctx.Module().(*PrebuiltBootclasspathFragmentModule); !isPrebuiltModule {\n```",
+      "parentUuid": "29298e63_ff17a24b",
+      "revId": "471ce5594b23e0c4323b43920f8a5aefd8aa8dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
