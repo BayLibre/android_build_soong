@@ -16,6 +16,24 @@
       "message": "Can `ApexAvailableName` be identical to `BaseApexName`? Would we always want to append even if that is the case?",
       "revId": "8c69e49fa79f6ef339302103f9d646413c9d0eb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d76b2bf_15c83b46",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-06T04:31:13Z",
+      "side": 1,
+      "message": "I believe they are orthogonal to each other. `Apex_available_name`, which becomes `ApexAvailableName` in `ApexInfo` is a [non-overridable property](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/apex/apex.go;drc\u003d4a4feeb38d8eeedfc78e1ea9e38f040f5ee66fab;bpv\u003d1;bpt\u003d1;l\u003d437?q\u003dapex_available_name\u0026ct\u003dos\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main)\n\nWe could dedupe the list to be safe, but I think it should not have an effet on the results of the iteration in line 227",
+      "parentUuid": "f2e3b778_6a759ec7",
+      "revId": "8c69e49fa79f6ef339302103f9d646413c9d0eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
