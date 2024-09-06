@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e3b778_6a759ec7",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-06T04:22:38Z",
+      "side": 1,
+      "message": "Can `ApexAvailableName` be identical to `BaseApexName`? Would we always want to append even if that is the case?",
+      "revId": "8c69e49fa79f6ef339302103f9d646413c9d0eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
