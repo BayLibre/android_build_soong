@@ -15,13 +15,14 @@
 package main
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"flag"
 	"fmt"
+	"io/fs"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 	"time"
 
@@ -29,10 +30,12 @@ import (
 	"android/soong/android/allowlists"
 	"android/soong/bp2build"
 	"android/soong/shared"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/deptools"
 	"github.com/google/blueprint/metrics"
+	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 	androidProtobuf "google.golang.org/protobuf/android"
 )
@@ -283,7 +286,9 @@ func writeConfigCache(configCache *ConfigCache, configCacheFile string) {
 }
 
 // runSoongOnlyBuild runs the standard Soong build in a number of different modes.
-func runSoongOnlyBuild(ctx *android.Context, extraNinjaDeps []string) string {
+// It returns the path to the ouput file (usually the ninja file) and the deps that need
+// to trigger a soong rerun.
+func runSoongOnlyBuild(ctx *android.Context) (string, []string) {
 	ctx.EventHandler.Begin("soong_build")
 	defer ctx.EventHandler.End("soong_build")
 
@@ -299,37 +304,30 @@ func runSoongOnlyBuild(ctx *android.Context, extraNinjaDeps []string) string {
 
 	ninjaDeps, err := bootstrap.RunBlueprint(cmdlineArgs.Args, stopBefore, ctx.Context, ctx.Config())
 	maybeQuit(err, "")
-	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
-
-	writeBuildGlobsNinjaFile(ctx)
 
 	// Convert the Soong module graph into Bazel BUILD files.
 	switch ctx.Config().BuildMode {
 	case android.GenerateQueryView:
 		queryviewMarkerFile := cmdlineArgs.BazelQueryViewDir + ".marker"
 		runQueryView(cmdlineArgs.BazelQueryViewDir, queryviewMarkerFile, ctx)
-		writeDepFile(queryviewMarkerFile, ctx.EventHandler, ninjaDeps)
-		return queryviewMarkerFile
+		return queryviewMarkerFile, ninjaDeps
 	case android.GenerateModuleGraph:
 		writeJsonModuleGraphAndActions(ctx, cmdlineArgs)
-		writeDepFile(cmdlineArgs.ModuleGraphFile, ctx.EventHandler, ninjaDeps)
-		return cmdlineArgs.ModuleGraphFile
+		return cmdlineArgs.ModuleGraphFile, ninjaDeps
 	case android.GenerateDocFile:
 		// TODO: we could make writeDocs() return the list of documentation files
 		// written and add them to the .d file. Then soong_docs would be re-run
 		// whenever one is deleted.
 		err := writeDocs(ctx, shared.JoinPath(topDir, cmdlineArgs.DocFile))
 		maybeQuit(err, "error building Soong documentation")
-		writeDepFile(cmdlineArgs.DocFile, ctx.EventHandler, ninjaDeps)
-		return cmdlineArgs.DocFile
+		return cmdlineArgs.DocFile, ninjaDeps
 	default:
 		// The actual output (build.ninja) was written in the RunBlueprint() call
 		// above
-		writeDepFile(cmdlineArgs.OutFile, ctx.EventHandler, ninjaDeps)
 		if needToWriteNinjaHint(ctx) {
 			writeNinjaHint(ctx)
 		}
-		return cmdlineArgs.OutFile
+		return cmdlineArgs.OutFile, ninjaDeps
 	}
 }
 
@@ -359,6 +357,8 @@ func parseAvailableEnv() map[string]string {
 func main() {
 	flag.Parse()
 
+	soongStartTime := time.Now()
+
 	shared.ReexecWithDelveMaybe(delveListen, delvePath)
 	android.InitSandbox(topDir)
 
@@ -369,19 +369,34 @@ func main() {
 		configuration.SetAllowMissingDependencies()
 	}
 
-	extraNinjaDeps := []string{configuration.ProductVariablesFileName, usedEnvFile}
-	if shared.IsDebugging() {
-		// Add a non-existent file to the dependencies so that soong_build will rerun when the debugger is
-		// enabled even if it completed successfully.
-		extraNinjaDeps = append(extraNinjaDeps, filepath.Join(configuration.SoongOutDir(), "always_rerun_for_delve"))
-	}
-
 	// Bypass configuration.Getenv, as LOG_DIR does not need to be dependency tracked. By definition, it will
 	// change between every CI build, so tracking it would require re-running Soong for every build.
 	metricsDir := availableEnv["LOG_DIR"]
 
 	ctx := newContext(configuration)
 	android.StartBackgroundMetrics(configuration)
+
+	var finalOutFile2 string
+	switch ctx.Config().BuildMode {
+	case android.GenerateQueryView:
+		finalOutFile2 = cmdlineArgs.BazelQueryViewDir + ".marker"
+	case android.GenerateModuleGraph:
+		finalOutFile2 = cmdlineArgs.ModuleGraphFile
+	case android.GenerateDocFile:
+		finalOutFile2 = cmdlineArgs.DocFile
+	default:
+		finalOutFile2 = cmdlineArgs.OutFile
+	}
+
+	fmt.Fprintf(os.Stderr, "about to check soong rerun files\n")
+	needsRerun, err := checkSoongRerunFiles(ctx.EventHandler, finalOutFile2)
+	maybeQuit(err, "")
+	if !needsRerun {
+		touch(shared.JoinPath(topDir, finalOutFile2))
+		fmt.Fprintf(os.Stderr, "Soong does not need to rerun\n")
+		return
+	}
+	fmt.Fprintf(os.Stderr, "rerunning soong\n")
 
 	var configCache *ConfigCache
 	configFile := filepath.Join(topDir, ctx.Config().OutDir(), configCacheFile)
@@ -393,7 +408,16 @@ func main() {
 	ctx.SetIncrementalAnalysis(incremental)
 
 	ctx.Register()
-	finalOutputFile := runSoongOnlyBuild(ctx, extraNinjaDeps)
+	finalOutputFile, ninjaDeps := runSoongOnlyBuild(ctx)
+
+	ninjaDeps = append(ninjaDeps, usedEnvFile)
+	if shared.IsDebugging() {
+		// Add a non-existent file to the dependencies so that soong_build will rerun when the debugger is
+		// enabled even if it completed successfully.
+		ninjaDeps = append(ninjaDeps, filepath.Join(configuration.SoongOutDir(), "always_rerun_for_delve"))
+	}
+
+	writeDepFile(finalOutputFile, ctx.EventHandler, ninjaDeps)
 
 	if ctx.GetIncrementalEnabled() {
 		data, err := shared.EnvFileContents(configuration.EnvDeps())
@@ -406,6 +430,9 @@ func main() {
 	writeMetrics(configuration, ctx.EventHandler, metricsDir)
 
 	writeUsedEnvironmentFile(configuration)
+
+	err = writeGlobFile(ctx.EventHandler, finalOutputFile, ctx.Globs(), soongStartTime)
+	maybeQuit(err, "")
 
 	// Touch the output file so that it's the newest file created by soong_build.
 	// This is necessary because, if soong_build generated any files which
@@ -423,16 +450,96 @@ func writeUsedEnvironmentFile(configuration android.Config) {
 	data, err := shared.EnvFileContents(configuration.EnvDeps())
 	maybeQuit(err, "error writing used environment file '%s'\n", usedEnvFile)
 
-	if preexistingData, err := os.ReadFile(path); err != nil {
-		if !os.IsNotExist(err) {
-			maybeQuit(err, "error reading used environment file '%s'", usedEnvFile)
-		}
-	} else if bytes.Equal(preexistingData, data) {
-		// used environment file is unchanged
-		return
-	}
-	err = os.WriteFile(path, data, 0666)
+	err = pathtools.WriteFileIfChanged(path, data, 0666)
 	maybeQuit(err, "error writing used environment file '%s'", usedEnvFile)
+}
+
+type ninjaDepsCacheEntry struct {
+	Path  string
+	Mtime int64
+}
+
+func writeGlobFile(eventHandler *metrics.EventHandler, finalOutFile string, globs pathtools.MultipleGlobResults, soongStartTime time.Time) error {
+	eventHandler.Begin("writeGlobFile")
+	defer eventHandler.End("writeGlobFile")
+
+	globsFile, err := os.Create(shared.JoinPath(topDir, finalOutFile+".globs"))
+	if err != nil {
+		return err
+	}
+	defer globsFile.Close()
+	globsFileEncoder := json.NewEncoder(globsFile)
+	for _, glob := range globs {
+		if err := globsFileEncoder.Encode(glob); err != nil {
+			return err
+		}
+	}
+
+	return os.WriteFile(
+		shared.JoinPath(topDir, finalOutFile+".globs_time"),
+		[]byte(fmt.Sprintf("%d\n", soongStartTime.UnixMicro())),
+		0666,
+	)
+}
+
+func checkSoongRerunFiles(eventHandler *metrics.EventHandler, finalOutFile string) (bool, error) {
+	eventHandler.Begin("checkSoongRerunFiles")
+	defer eventHandler.End("checkSoongRerunFiles")
+
+	// We must run if the output file doesn't exist
+	if _, err := os.Stat(shared.JoinPath(topDir, finalOutFile)); errors.Is(err, fs.ErrNotExist) {
+		return true, nil
+	} else if err != nil {
+		return true, err
+	}
+
+	ninjaDepsFile, err := os.Open(shared.JoinPath(topDir, finalOutFile+".ninjadeps"))
+	if errors.Is(err, fs.ErrNotExist) {
+		return true, nil
+	} else if err != nil {
+		return true, err
+	}
+	defer ninjaDepsFile.Close()
+	ninjaDepsDecoder := json.NewDecoder(ninjaDepsFile)
+	var entry ninjaDepsCacheEntry
+	for ninjaDepsDecoder.More() {
+		if err := ninjaDepsDecoder.Decode(&entry); err != nil {
+			return true, err
+		}
+		info, err := os.Stat(shared.JoinPath(topDir, entry.Path))
+		if errors.Is(err, fs.ErrNotExist) {
+			return true, nil
+		} else if err != nil {
+			return true, err
+		}
+		if info.ModTime().UnixMicro() > entry.Mtime {
+			return true, nil
+		}
+	}
+
+	globsFile, err := os.Open(shared.JoinPath(topDir, finalOutFile+".globs"))
+	if errors.Is(err, fs.ErrNotExist) {
+		return true, nil
+	} else if err != nil {
+		return true, err
+	}
+	defer globsFile.Close()
+	globsFileDecoder := json.NewDecoder(globsFile)
+	var cachedGlob pathtools.GlobResult
+	for globsFileDecoder.More() {
+		if err := globsFileDecoder.Decode(&cachedGlob); err != nil {
+			return true, err
+		}
+		result, err := pathtools.Glob(cachedGlob.Pattern, cachedGlob.Excludes, pathtools.FollowSymlinks)
+		if err != nil {
+			return true, err
+		}
+		if !slices.Equal(result.Matches, cachedGlob.Matches) {
+			return true, nil
+		}
+	}
+
+	return false, nil
 }
 
 func touch(path string) {
