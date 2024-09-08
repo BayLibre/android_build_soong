@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47ae6ba3_7dd94b90",
+        "filename": "third_party/zip/writer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1041444
+      },
+      "writtenOn": "2024-09-08T23:15:31Z",
+      "side": 1,
+      "message": "Some people may have the same problem by compressing files over 4GB, so I will leave this commit as it is for reference.\nI will check if there is a problem with the zip stdlib when I have time.",
+      "parentUuid": "88bae752_15eb7230",
+      "revId": "a9dca27c3dc8e0c61dc9b887f9713ee1cf3bee25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf27931e_3c93084c",
         "filename": "third_party/zip/writer.go",
         "patchSetId": 1
@@ -49,6 +67,24 @@
       "writtenOn": "2024-09-03T17:46:08Z",
       "side": 1,
       "message": "Do we need to clear this? Does it not cause problems for client code that adds its own extras and may want to reuse the fileheader?",
+      "revId": "a9dca27c3dc8e0c61dc9b887f9713ee1cf3bee25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73a7ecbc_f3a9aa09",
+        "filename": "third_party/zip/writer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1041444
+      },
+      "writtenOn": "2024-09-08T23:15:31Z",
+      "side": 1,
+      "message": "Without this line, h.Extra will be saved again when closing zip file",
+      "parentUuid": "cf27931e_3c93084c",
       "revId": "a9dca27c3dc8e0c61dc9b887f9713ee1cf3bee25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
