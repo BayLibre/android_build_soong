@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6dcba30e_b3786ffe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-09T19:08:09Z",
+      "side": 1,
+      "message": "I am not sure I follow the relationship between the two. e.g. if an rdep specifies `foo.stubs.system` in their libs property, does it require `foo` and `foo.stubs.system` to have the same visibility?",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "0d1c97ff0ad9aeb4228e772388c7b0f12696ee02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ce4dad1_20dd3a9d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
