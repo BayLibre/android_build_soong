@@ -16,6 +16,64 @@
       "message": "Martin, would you have recommendations on how to improve this documentation?",
       "revId": "e28d329e69955485b4dda8188e50c20d5a5c6a2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c115b7_19b79ca8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-09T18:51:17Z",
+      "side": 1,
+      "message": "I added a suggestion, mainly just to get a few lines in the blame history so people can follow the breadcrumb trail back to the discussion on https://r.android.com/3252814.",
+      "parentUuid": "92ba595b_df6bf60b",
+      "revId": "e28d329e69955485b4dda8188e50c20d5a5c6a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47f6cf3b_465cc2f5",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-09T18:51:17Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t// To reconcile this potential skew, change the visibility to public.\n\t\t//\n\t\t// This means dependencies can bypass visibility restrictions when prebuilts are used, so we rely\n\t\t// on source builds in CI to check them.\n```",
+      "revId": "e28d329e69955485b4dda8188e50c20d5a5c6a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "869d44be_6e67a674",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-09T18:51:17Z",
+      "side": 1,
+      "message": "Actually, even if ART switches to full manifests there are still other users of module_exports, so resolving this ticket is necessary but not sufficient.",
+      "range": {
+        "startLine": 1123,
+        "startChar": 4,
+        "endLine": 1123,
+        "endChar": 102
+      },
+      "revId": "e28d329e69955485b4dda8188e50c20d5a5c6a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
