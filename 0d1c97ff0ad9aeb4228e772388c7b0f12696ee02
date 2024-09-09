@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abdcb5b8_cdeca5c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-09T19:40:59Z",
+      "side": 1,
+      "message": "\u003e In this scenario, should the stubs_visibility of foo be updated in its Android.bp file?\n\nMy opinion is that `stubs_visibility` property should not exist at all, but the submodules should inherit the visibility of the parent module.\n\n\u003e is your proposal that if bar requires stubs of foo, all sub modules of foo (impl+stubs) should be visible to bar?\n\nThe proposal is that if bar requires foo (and if foo is visible to bar), then all submodules of foo should be visible to bar.\n\nThe inspiration for this change was that when I was working on the cleanup for b/358613520, I\u0027ve encountered cases where the \"magic\" resolves to the impl lib, but the dependency `java_sdk_library` was limiting the visibility of the impl lib via `impl_library_visibility` property and raised an error when I replaced the top level `java_sdk_library` to the impl submodule to remove the magic.\n\nWDYT? I may be missing something.",
+      "parentUuid": "1ee374f0_0aefbcaf",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "0d1c97ff0ad9aeb4228e772388c7b0f12696ee02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ce4dad1_20dd3a9d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
