@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5a779af_12fb49c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-09T19:16:42Z",
+      "side": 1,
+      "message": "Yes, for example:\n```\n$ a/Android.bp\njava_sdk_library {\n    name: \"foo\",\n    public: {\n        enabled: true,\n    },\n    visibility: [\"//visibility:public\"],\n    stubs_visibility: [\":__subpackages__\"],\n    sdk_version: \"public\",\n}\n\n$ b/Android.bp\njava_library {\n    name: \"bar\",\n    libs: [\"foo\"],\n    sdk_version: \"public\",\n}\n```\n\nThe above example is unrestricted, but this becomes a problem when \"bar\" depends on `\"foo.stubs\"` instead of `\"foo\"`, even if the java_sdk_library \"magic\" resolves `\"foo\"` to the public stubs of \"foo\" (i.e. `\"foo.stubs\"`).",
+      "parentUuid": "6dcba30e_b3786ffe",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "0d1c97ff0ad9aeb4228e772388c7b0f12696ee02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ce4dad1_20dd3a9d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
