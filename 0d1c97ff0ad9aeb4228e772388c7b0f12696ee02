@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ee374f0_0aefbcaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-09T19:27:50Z",
+      "side": 1,
+      "message": "In this scenario, should the `stubs_visibility` of `foo` be updated in its Android.bp file?\n\nIIUC, is your proposal that if `bar` requires stubs of `foo`, all sub modules of `foo` (impl+stubs) should be visible to `bar`? \n\nIs it an intermediate proposal or will it remain after the \"magic\" has been removed?",
+      "parentUuid": "f5a779af_12fb49c6",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "0d1c97ff0ad9aeb4228e772388c7b0f12696ee02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ce4dad1_20dd3a9d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
