@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ce4dad1_20dd3a9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-09T19:01:25Z",
+      "side": 1,
+      "message": "@spandandas@google.com, WDYT about this change? Submitting this change would involve removing all existing usages of `impl_library_visibility`. `stubs_library_visibility` and `stubs_source_visibility`.",
+      "revId": "0d1c97ff0ad9aeb4228e772388c7b0f12696ee02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
