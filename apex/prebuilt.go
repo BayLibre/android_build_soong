@@ -15,6 +15,7 @@
 package apex
 
 import (
+	"reflect"
 	"strconv"
 	"strings"
 
@@ -58,6 +59,8 @@ type prebuiltCommon struct {
 
 	// Properties common to both prebuilt_apex and apex_set.
 	prebuiltCommonProperties *PrebuiltCommonProperties
+
+	archProperties []prebuiltArchPropRoot
 
 	installDir      android.InstallPath
 	installFilename string
@@ -126,12 +129,92 @@ type PrebuiltCommonProperties struct {
 	Prebuilt_info *string `android:"path"`
 }
 
+type prebuiltArchPropRoot struct {
+	Arch interface{}
+}
+
+var archPropTypeMap android.OncePer
+
 // initPrebuiltCommon initializes the prebuiltCommon structure and performs initialization of the
 // module that is common to Prebuilt and ApexSet.
 func (p *prebuiltCommon) initPrebuiltCommon(module android.Module, properties *PrebuiltCommonProperties) {
 	p.prebuiltCommonProperties = properties
-	android.InitSingleSourcePrebuiltModule(module.(android.PrebuiltInterface), properties, "Selected_apex")
+	p.archProperties = make([]prebuiltArchPropRoot, 0, 2)
+
+	var archVariantProps *struct {
+		Enabled  *bool
+		Required []string
+	}
+
+	p.addArchOverridableProps(archVariantProps)
+	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
+		for _, root := range p.archProperties {
+			archProp := getArchSpecificSelectorProp(&root, ctx)
+			if archProp != nil {
+				ctx.AppendProperties(archProp)
+			}
+		}
+	})
+
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	android.InitSingleSourcePrebuiltModule(module.(android.PrebuiltInterface), properties, "Selected_apex")
+}
+
+func (p *prebuiltCommon) addArchOverridableProps(props interface{}) {
+	t := reflect.TypeOf(props)
+	archPropType := archPropTypeMap.Once(android.NewCustomOnceKey(t), func() interface{} {
+		return createArchPropTypeDesc(t)
+	}).(reflect.Type)
+
+	i := len(p.archProperties)
+	p.archProperties = append(p.archProperties, prebuiltArchPropRoot{
+		Arch: reflect.Zero(archPropType).Interface(),
+	})
+
+	p.AddProperties(&p.archProperties[i])
+}
+
+func getArchSpecificSelectorProp(root *prebuiltArchPropRoot, ctx android.LoadHookContext) interface{} {
+	rootValue := reflect.ValueOf(root).Elem()
+	src := rootValue.FieldByName("Arch").Elem()
+
+	// Step into non-nil pointers to structs in the src value.
+	if src.Kind() == reflect.Ptr {
+		if src.IsNil() {
+			return nil
+		}
+		src = src.Elem()
+	}
+
+	arch := ctx.Config().AndroidFirstDeviceTarget.Arch.ArchType
+
+	src = src.FieldByName(arch.Field)
+	if !src.IsValid() || src.Kind() != reflect.Struct {
+		return nil
+	}
+	src = src.FieldByName("BlueprintEmbed")
+
+	return src.Interface()
+}
+
+func createArchPropTypeDesc(props reflect.Type) reflect.Type {
+	archTypeList := android.ArchTypeList()
+	archFields := make([]reflect.StructField, len(archTypeList))
+	for i, arch := range archTypeList {
+		fields := make([]reflect.StructField, 0, 1)
+		fields = append(fields, reflect.StructField{
+			Name:      "BlueprintEmbed",
+			Type:      props,
+			Anonymous: true,
+		})
+		archFields[i] = reflect.StructField{
+			Name: arch.Field,
+			Type: reflect.StructOf(fields),
+		}
+	}
+
+	archPropsStruct := reflect.StructOf(archFields)
+	return reflect.PtrTo(archPropsStruct)
 }
 
 func (p *prebuiltCommon) ApexVariationName() string {
@@ -276,10 +359,13 @@ type prebuiltApexModuleCreator interface {
 // DepsMutator so that the deapexer module it creates can add dependencies onto itself from the
 // exported modules.
 func prebuiltApexModuleCreatorMutator(ctx android.TopDownMutatorContext) {
-	module := ctx.Module()
-	if creator, ok := module.(prebuiltApexModuleCreator); ok {
-		creator.createPrebuiltApexModules(ctx)
-	}
+    module := ctx.Module()
+    if !module.Enabled(ctx) {
+        return
+    }
+    if creator, ok := module.(prebuiltApexModuleCreator); ok {
+        creator.createPrebuiltApexModules(ctx)
+    }
 }
 
 func (p *prebuiltCommon) hasExportedDeps() bool {
@@ -458,24 +544,7 @@ type ApexFileProperties struct {
 	// This cannot be marked as `android:"arch_variant"` because the `prebuilt_apex` is only mutated
 	// for android_common. That is so that it will have the same arch variant as, and so be compatible
 	// with, the source `apex` module type that it replaces.
-	Src  proptools.Configurable[string] `android:"path,replace_instead_of_append"`
-	Arch struct {
-		Arm struct {
-			Src *string `android:"path"`
-		}
-		Arm64 struct {
-			Src *string `android:"path"`
-		}
-		Riscv64 struct {
-			Src *string `android:"path"`
-		}
-		X86 struct {
-			Src *string `android:"path"`
-		}
-		X86_64 struct {
-			Src *string `android:"path"`
-		}
-	}
+	Src *string `android:"path"`
 }
 
 // prebuiltApexSelector selects the correct prebuilt APEX file for the build target.
@@ -490,27 +559,8 @@ func (p *ApexFileProperties) prebuiltApexSelector(ctx android.BaseModuleContext,
 		ctx.OtherModuleErrorf(prebuilt, "compile_multilib shouldn't be \"both\" for prebuilt_apex")
 		return nil
 	}
-	var src string
-	switch multiTargets[0].Arch.ArchType {
-	case android.Arm:
-		src = String(p.Arch.Arm.Src)
-	case android.Arm64:
-		src = String(p.Arch.Arm64.Src)
-	case android.Riscv64:
-		src = String(p.Arch.Riscv64.Src)
-		// HACK: fall back to arm64 prebuilts, the riscv64 ones don't exist yet.
-		if src == "" {
-			src = String(p.Arch.Arm64.Src)
-		}
-	case android.X86:
-		src = String(p.Arch.X86.Src)
-	case android.X86_64:
-		src = String(p.Arch.X86_64.Src)
-	}
-	if src == "" {
-		src = p.Src.GetOrDefault(ctx, "")
-	}
 
+	src := String(p.Src)
 	if src == "" {
 		if ctx.Config().AllowMissingDependencies() {
 			ctx.AddMissingDependencies([]string{ctx.OtherModuleName(prebuilt)})
@@ -539,6 +589,7 @@ func PrebuiltFactory() android.Module {
 	module := &Prebuilt{}
 	module.AddProperties(&module.properties)
 	module.initPrebuiltCommon(module, &module.properties.PrebuiltCommonProperties)
+	module.addArchOverridableProps(&module.properties.ApexFileProperties)
 
 	return module
 }
