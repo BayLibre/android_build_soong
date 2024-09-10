@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "629bf10c_b21b77fa",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-10T17:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e328887_3eb6637e",
+      "range": {
+        "startLine": 1126,
+        "startChar": 60,
+        "endLine": 1126,
+        "endChar": 62
+      },
+      "revId": "c5ba12837602e360677139a729fb2b2c5345a525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f870e633_028371ae",
@@ -55,6 +79,30 @@
       "writtenOn": "2024-09-10T17:50:03Z",
       "side": 1,
       "message": "It\u0027s certain, so you can delete this disclaimer.",
+      "range": {
+        "startLine": 1128,
+        "startChar": 18,
+        "endLine": 1128,
+        "endChar": 24
+      },
+      "revId": "c5ba12837602e360677139a729fb2b2c5345a525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2522b89f_ae62be8a",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-10T17:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f870e633_028371ae",
       "range": {
         "startLine": 1128,
         "startChar": 18,
