@@ -3879,6 +3879,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&VendorProperties{},
 		&BaseCompilerProperties{},
 		&BaseLinkerProperties{},
+		&BoltProperties{},
 		&ObjectLinkerProperties{},
 		&LibraryProperties{},
 		&StaticProperties{},

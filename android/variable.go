@@ -475,6 +475,7 @@ type ProductVariables struct {
 	SourceRootDirs []string `json:",omitempty"`
 
 	AfdoProfiles []string `json:",omitempty"`
+	BoltProfiles []string `json:",omitempty"`
 
 	ProductManufacturer string `json:",omitempty"`
 	ProductBrand        string `json:",omitempty"`
