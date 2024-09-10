@@ -116,6 +116,30 @@
       },
       "revId": "e28d329e69955485b4dda8188e50c20d5a5c6a2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c00d23c6_d37a0398",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-10T10:21:10Z",
+      "side": 1,
+      "message": "I reckon CodeSearch should give an accurate picture: https://cs.android.com/search?q\u003dmodule_exports%20f:bp\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain I.e. Conscrypt, TZ, and i18n. Those uses aren\u0027t to facilitate thin manifests, but to provide host tools and build tests.",
+      "parentUuid": "c27fc4de_60f1ec50",
+      "range": {
+        "startLine": 1123,
+        "startChar": 4,
+        "endLine": 1123,
+        "endChar": 102
+      },
+      "revId": "e28d329e69955485b4dda8188e50c20d5a5c6a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
