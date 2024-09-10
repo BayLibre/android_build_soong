@@ -1521,6 +1521,21 @@ func (c *deviceConfig) AfdoProfile(name string) (string, error) {
 	return "", nil
 }
 
+// BoltProfile returns path of the profile associated to the given module name
+func (c *deviceConfig) BoltProfile(name string) (string, error) {
+	for _, boltProfile := range c.config.productVariables.BoltProfiles {
+		split := strings.Split(boltProfile, ":")
+		if len(split) != 2 {
+			return "", fmt.Errorf("BOLT_PROFILES has invalid value: %s. "+
+				"The expected format is <module>:<path-to-bolt_profile>", boltProfile)
+		}
+		if split[0] == name {
+			return split[1], nil
+		}
+	}
+	return "", nil
+}
+
 func (c *deviceConfig) VendorSepolicyDirs() []string {
 	return c.config.productVariables.BoardVendorSepolicyDirs
 }
