@@ -140,6 +140,30 @@
       },
       "revId": "e28d329e69955485b4dda8188e50c20d5a5c6a2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f1b681_36890ade",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-10T17:11:17Z",
+      "side": 1,
+      "message": "I see. I have left a comment about those tools.\n(I previously thought those tools were only intended for ART)",
+      "parentUuid": "c00d23c6_d37a0398",
+      "range": {
+        "startLine": 1123,
+        "startChar": 4,
+        "endLine": 1123,
+        "endChar": 102
+      },
+      "revId": "e28d329e69955485b4dda8188e50c20d5a5c6a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
