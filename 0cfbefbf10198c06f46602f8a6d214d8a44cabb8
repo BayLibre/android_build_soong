@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1ff124b_ad1f420e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-10T20:30:27Z",
+      "side": 1,
+      "message": "This probably needs more than presubmit testing, can you run it through go/abtd or go/woodchipper-guide to test the device targets in main that are not in presubmit?",
+      "revId": "0cfbefbf10198c06f46602f8a6d214d8a44cabb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
