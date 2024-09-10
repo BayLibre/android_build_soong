@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "decab02f_e4d6a151",
+        "filename": "android/androidmk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-10T20:52:51Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, info is already the correct type",
+      "range": {
+        "startLine": 803,
+        "startChar": 26,
+        "endLine": 803,
+        "endChar": 55
+      },
+      "revId": "3cb44fb1f0bbc9b04637705763040a78e6e49287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66d473d3_e98c2f03",
+        "filename": "android/androidmk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-10T20:52:51Z",
+      "side": 1,
+      "message": "Make this `*AndroidMkProviderInfo` to avoid implicit copies",
+      "range": {
+        "startLine": 1113,
+        "startChar": 50,
+        "endLine": 1113,
+        "endChar": 71
+      },
+      "revId": "3cb44fb1f0bbc9b04637705763040a78e6e49287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
