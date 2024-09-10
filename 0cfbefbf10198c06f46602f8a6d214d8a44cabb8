@@ -16,6 +16,24 @@
       "message": "This probably needs more than presubmit testing, can you run it through go/abtd or go/woodchipper-guide to test the device targets in main that are not in presubmit?",
       "revId": "0cfbefbf10198c06f46602f8a6d214d8a44cabb8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "924dabac_03b21b88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-09-10T20:38:21Z",
+      "side": 1,
+      "message": "For this particular warning, it is not in our tree: https://source.corp.google.com/search?q\u003dfno-integrated-as%20file:Android.bp\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main.  I also gave a heads up on the keystone mailing list to make sure they are not impacted.",
+      "parentUuid": "a1ff124b_ad1f420e",
+      "revId": "0cfbefbf10198c06f46602f8a6d214d8a44cabb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
