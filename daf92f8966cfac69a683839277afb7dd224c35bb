@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56939224_b5106c33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-10T23:12:14Z",
+      "side": 1,
+      "message": "Does this change make it so visibility works on blueprint modules? :D",
+      "revId": "daf92f8966cfac69a683839277afb7dd224c35bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b591381b_0cd58ace",
+        "filename": "golang/golang.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-10T23:12:14Z",
+      "side": 1,
+      "message": "Is this because both `ModuleBase` and `GoBinary` have `GenerateBuildActions` and you need to pick one? Please add a comment, same in GoPackage.",
+      "revId": "daf92f8966cfac69a683839277afb7dd224c35bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8188c59_299a8bd2",
+        "filename": "golang/golang.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-10T23:12:14Z",
+      "side": 1,
+      "message": "Could you clarify _why_ we need to hide it?",
+      "revId": "daf92f8966cfac69a683839277afb7dd224c35bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c14875_92e0b6ad",
+        "filename": "golang/golang.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-10T23:12:14Z",
+      "side": 1,
+      "message": "Does setting this do anything? The `BinaryProvider` has already been set.",
+      "revId": "daf92f8966cfac69a683839277afb7dd224c35bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
