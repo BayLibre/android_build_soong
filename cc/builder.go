@@ -345,6 +345,15 @@ var (
 		},
 		"cFlags")
 
+	// Rule to invoke `llvm-bolt` to perform post-link optimization.
+	bolt = pctx.AndroidStaticRule("bolt",
+		blueprint.RuleParams{
+			// FIXME: --update-debug-sections
+			Command:     "$boltCmd ${in} -o=${out} --data ${profile} ${boltFlags}",
+			CommandDeps: []string{"${boltCmd}"},
+		},
+		"boltCmd", "profile", "boltFlags")
+
 	// Function pointer for producting staticlibs from rlibs. Corresponds to
 	// rust.TransformRlibstoStaticlib(), initialized in soong-rust (rust/builder.go init())
 	//
@@ -1194,6 +1203,26 @@ func transformArchiveRepack(ctx android.ModuleContext, inputFile android.Path,
 		Input:       inputFile,
 		Args: map[string]string{
 			"objects": strings.Join(objects, " "),
+		},
+	})
+}
+
+// Rule to invoke llvm-bolt to perform post-link optimization on binaries.
+// FIXME: profile should be android.Path?
+func transformBolt(ctx android.ModuleContext, inputFile android.Path,
+	outputFile android.WritablePath, profile string, boltFlags []string) {
+
+	boltCmd := "${config.ClangBin}/llvm-bolt"
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        bolt,
+		Description: "BOLT optimize " + outputFile.Base(),
+		Output:      outputFile,
+		Input:       inputFile,
+		Args: map[string]string{
+			"boltCmd":   boltCmd,
+			"boltFlags": strings.Join(boltFlags, " "),
+			"profile":   profile,
 		},
 	})
 }
