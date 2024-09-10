@@ -386,6 +386,7 @@ type libraryDecorator struct {
 
 	flagExporter
 	flagExporterInfo *FlagExporterInfo
+	bolt             Bolt
 	stripper         Stripper
 
 	// For whole_static_libs
@@ -441,6 +442,7 @@ func (library *libraryDecorator) linkerProps() []interface{} {
 	props = append(props,
 		&library.Properties,
 		&library.MutatedProperties,
+		&library.bolt.Properties,
 		&library.flagExporter.Properties,
 		&library.stripper.StripProperties)
 
@@ -501,6 +503,10 @@ func (library *libraryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Fla
 		}
 
 		flags.Global.LdFlags = append(flags.Global.LdFlags, f...)
+	}
+
+	if library.bolt.Enabled(ctx) {
+		flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,-q")
 	}
 
 	return flags
@@ -1153,6 +1159,13 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 			library.strippedAllOutputFile = strippedAllOutputFile
 			break
 		}
+	}
+
+	// Optimize the library with BOLT.
+	if library.bolt.Enabled(ctx) {
+		boltedOutputFile := outputFile
+		outputFile = android.PathForModuleOut(ctx, "unbolted", fileName)
+		library.bolt.ApplyBolt(ctx, outputFile, boltedOutputFile)
 	}
 
 	sharedLibs := deps.EarlySharedLibs

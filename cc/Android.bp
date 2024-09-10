@@ -25,6 +25,7 @@ bootstrap_go_package {
         "fdo_profile.go",
         "androidmk.go",
         "api_level.go",
+        "bolt.go",
         "builder.go",
         "cc.go",
         "ccdeps.go",

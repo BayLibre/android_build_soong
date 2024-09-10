@@ -800,6 +800,7 @@ var (
 	runtimeDepTag         = installDependencyTag{name: "runtime lib"}
 	stubImplDepTag        = dependencyTag{name: "stub_impl"}
 	JniFuzzLibTag         = dependencyTag{name: "jni_fuzz_lib_tag"}
+	BoltProfileTag        = dependencyTag{name: "bolt_profile"}
 	FdoProfileTag         = dependencyTag{name: "fdo_profile"}
 	aidlLibraryTag        = dependencyTag{name: "aidl_library"}
 	llndkHeaderLibTag     = dependencyTag{name: "llndk_header_lib"}
@@ -3987,6 +3988,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&VendorProperties{},
 		&BaseCompilerProperties{},
 		&BaseLinkerProperties{},
+		&BoltProperties{},
 		&ObjectLinkerProperties{},
 		&LibraryProperties{},
 		&StaticProperties{},
