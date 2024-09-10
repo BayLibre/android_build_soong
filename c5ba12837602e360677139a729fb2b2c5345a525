@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e328887_3eb6637e",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-10T17:50:03Z",
+      "side": 1,
+      "message": "Typo: delete",
+      "range": {
+        "startLine": 1126,
+        "startChar": 60,
+        "endLine": 1126,
+        "endChar": 62
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "caaa8951_1a6ac045",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "sdk/update.go",
+              "range": {
+                "startLine": 1126,
+                "startChar": 0,
+                "endLine": 1127,
+                "endChar": 0
+              },
+              "replacement": "\t\t// TODO (b/361303067): This special case for category (2) can be removed if existing usages\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c5ba12837602e360677139a729fb2b2c5345a525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f870e633_028371ae",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-10T17:50:03Z",
+      "side": 1,
+      "message": "It\u0027s certain, so you can delete this disclaimer.",
+      "range": {
+        "startLine": 1128,
+        "startChar": 18,
+        "endLine": 1128,
+        "endChar": 24
+      },
+      "revId": "c5ba12837602e360677139a729fb2b2c5345a525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
