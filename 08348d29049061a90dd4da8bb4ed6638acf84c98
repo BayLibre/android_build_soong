@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a55b7d3_01b286f0",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2024-09-10T19:27:48Z",
+      "side": 1,
+      "message": "I\u0027m confused. This is what we want to avoid.",
+      "revId": "08348d29049061a90dd4da8bb4ed6638acf84c98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
