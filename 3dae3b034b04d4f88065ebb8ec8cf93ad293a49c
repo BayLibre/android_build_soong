@@ -22,6 +22,30 @@
       },
       "revId": "3dae3b034b04d4f88065ebb8ec8cf93ad293a49c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a45e8573_7ce52e61",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-09-10T01:16:44Z",
+      "side": 1,
+      "message": "Thanks for catching this.\nI updated the comment with more details and allowed the case as well.",
+      "parentUuid": "45f13fce_466cd0f3",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "3dae3b034b04d4f88065ebb8ec8cf93ad293a49c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
