@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "674c91b3_42a0f736",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-10T00:52:33Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "47f6cf3b_465cc2f5",
+      "revId": "e28d329e69955485b4dda8188e50c20d5a5c6a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "869d44be_6e67a674",
@@ -66,6 +84,30 @@
       "writtenOn": "2024-09-09T18:51:17Z",
       "side": 1,
       "message": "Actually, even if ART switches to full manifests there are still other users of module_exports, so resolving this ticket is necessary but not sufficient.",
+      "range": {
+        "startLine": 1123,
+        "startChar": 4,
+        "endLine": 1123,
+        "endChar": 102
+      },
+      "revId": "e28d329e69955485b4dda8188e50c20d5a5c6a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c27fc4de_60f1ec50",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-10T00:52:33Z",
+      "side": 1,
+      "message": "Thanks Martin. Would you have knowledge on which users (apart from ART) have a dependency on these module exports?",
+      "parentUuid": "869d44be_6e67a674",
       "range": {
         "startLine": 1123,
         "startChar": 4,
