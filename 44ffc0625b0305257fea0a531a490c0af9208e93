@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff3c2ffe_442488d9",
+        "filename": "ui/build/androidmk_denylist.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-09-11T19:20:09Z",
+      "side": 1,
+      "message": "out of order?",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "44ffc0625b0305257fea0a531a490c0af9208e93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
