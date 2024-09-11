@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae12fa3_32826910",
+        "filename": "android/androidmk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-09-11T23:02:27Z",
+      "side": 1,
+      "message": "Thanks Colin for the explanation! I\u0027ll make the change in the following CLs.",
+      "parentUuid": "045cca22_f9f22232",
+      "range": {
+        "startLine": 803,
+        "startChar": 26,
+        "endLine": 803,
+        "endChar": 55
+      },
+      "revId": "3cb44fb1f0bbc9b04637705763040a78e6e49287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66d473d3_e98c2f03",
