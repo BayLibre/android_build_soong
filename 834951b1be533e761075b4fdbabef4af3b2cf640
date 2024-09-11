@@ -22,6 +22,30 @@
       },
       "revId": "834951b1be533e761075b4fdbabef4af3b2cf640",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "853b4767_23c9c2aa",
+        "filename": "golang/golang.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-11T18:10:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f31c9f7b_7c6c919f",
+      "range": {
+        "startLine": 96,
+        "startChar": 35,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "834951b1be533e761075b4fdbabef4af3b2cf640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
