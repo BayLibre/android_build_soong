@@ -1285,8 +1285,19 @@ type SdkLibraryDependency interface {
 	// sharedLibrary returns true if this can be used as a shared library.
 	sharedLibrary() bool
 
+	// getImplLibraryModule returns the pointer to the implementation library submodule of this
+	// sdk library.
 	getImplLibraryModule() *Library
 }
+
+type SdkLibraryInfo struct {
+	// GeneratingLibs are the names of the library modules that this sdk library
+	// generates. Note that this only includes the name of the modules that other modules can
+	// depend on, and is not a holistic list of generated modules.
+	GeneratingLibs []string
+}
+
+var SdkLibraryInfoProvider = blueprint.NewProvider[SdkLibraryInfo]()
 
 type SdkLibrary struct {
 	Library
@@ -1592,7 +1603,10 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	baseModuleName := module.distStem()
 	scopes := map[string]interface{}{}
 	additionalSdkInfo["scopes"] = scopes
+	var generatingLibs []string
 	for scope, scopePaths := range module.scopePaths {
+		generatingLibs = append(generatingLibs, module.stubsLibraryModuleName(scope))
+
 		scopeInfo := map[string]interface{}{}
 		scopes[scope.name] = scopeInfo
 		scopeInfo["current_api"] = scope.snapshotRelativeCurrentApiTxtPath(baseModuleName)
@@ -1610,9 +1624,15 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	}
 	android.SetProvider(ctx, android.AdditionalSdkInfoProvider, android.AdditionalSdkInfo{additionalSdkInfo})
 	module.setOutputFiles(ctx)
+
 	if module.requiresRuntimeImplementationLibrary() && module.implLibraryModule != nil {
+		generatingLibs = append(generatingLibs, module.implLibraryModuleName())
 		setOutputFiles(ctx, module.implLibraryModule.Module)
 	}
+
+	android.SetProvider(ctx, SdkLibraryInfoProvider, SdkLibraryInfo{
+		GeneratingLibs: generatingLibs,
+	})
 }
 
 func (module *SdkLibrary) BuiltInstalledForApex() []dexpreopterInstall {
@@ -2805,10 +2825,12 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 	})
 
 	// Populate the scope paths with information from the properties.
+	var generatingLibs []string
 	for apiScope, scopeProperties := range module.scopeProperties {
 		if len(scopeProperties.Jars) == 0 {
 			continue
 		}
+		generatingLibs = append(generatingLibs, module.stubsLibraryModuleName(apiScope))
 
 		paths := module.getScopePathsCreateIfNeeded(apiScope)
 		paths.annotationsZip = android.OptionalPathForModuleSrc(ctx, scopeProperties.Annotations)
@@ -2856,8 +2878,13 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 
 	module.setOutputFiles(ctx)
 	if module.implLibraryModule != nil {
+		generatingLibs = append(generatingLibs, module.implLibraryModuleName())
 		setOutputFiles(ctx, module.implLibraryModule.Module)
 	}
+
+	android.SetProvider(ctx, SdkLibraryInfoProvider, SdkLibraryInfo{
+		GeneratingLibs: generatingLibs,
+	})
 }
 
 func (module *SdkLibraryImport) sdkJars(ctx android.BaseModuleContext, sdkVersion android.SdkSpec, headerJars bool) android.Paths {
