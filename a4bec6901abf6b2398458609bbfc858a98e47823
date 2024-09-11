@@ -33,6 +33,23 @@
       "message": "In terms of correctness and/or runtime impact, how risky would you say this change is? Do you think it\u0027s worth a build flag or should it be \"correct\" as long as it compiles?\n\nWorth checking these other targets that increased in size?\n\nhttps://screenshot.googleplex.com/3fLEz89G7UEDYXP\nhttps://screenshot.googleplex.com/8Lq2EjSVzFbCU5s\n\nWondering if we ought to warn when there\u0027s a wildcard keep rule that covers a resource class...",
       "revId": "a4bec6901abf6b2398458609bbfc858a98e47823",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f613da18_09001b9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-09-11T16:00:33Z",
+      "side": 1,
+      "message": "Lots of really nice wins on Wear! https://screenshot.googleplex.com/Upm4wcvLve7cwub",
+      "revId": "a4bec6901abf6b2398458609bbfc858a98e47823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
