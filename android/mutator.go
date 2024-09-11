@@ -148,9 +148,9 @@ var preArch = []RegisterMutatorFunc{
 }
 
 func registerArchMutator(ctx RegisterMutatorsContext) {
-	ctx.BottomUp("os", osMutator).Parallel()
+	ctx.Transition("os", &osTransitionMutator{})
 	ctx.Transition("image", &imageTransitionMutator{})
-	ctx.BottomUp("arch", archMutator).Parallel()
+	ctx.Transition("arch", &archTransitionMutator{})
 }
 
 var preDeps = []RegisterMutatorFunc{
