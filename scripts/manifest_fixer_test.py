@@ -20,11 +20,12 @@ import io
 import sys
 import unittest
 from xml.dom import minidom
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ElementTree
 
 import manifest_fixer
 
 sys.dont_write_bytecode = True
+
 
 class CompareVersionGtTest(unittest.TestCase):
   """Unit tests for compare_version_gt function."""
@@ -69,25 +70,24 @@ class RaiseMinSdkVersionTest(unittest.TestCase):
       '%s'
       '</manifest>\n')
 
-  # pylint: disable=redefined-builtin
-  def uses_sdk(self, min=None, target=None, extra=''):
+  def uses_sdk(self, min_sdk=None, target_sdk=None, extra=''):
     attrs = ''
-    if min:
-      attrs += ' android:minSdkVersion="%s"' % (min)
-    if target:
-      attrs += ' android:targetSdkVersion="%s"' % (target)
+    if min_sdk:
+      attrs += ' android:minSdkVersion="%s"' % min_sdk
+    if target_sdk:
+      attrs += ' android:targetSdkVersion="%s"' % target_sdk
     if extra:
       attrs += ' ' + extra
-    return '    <uses-sdk%s/>\n' % (attrs)
+    return '    <uses-sdk%s/>\n' % attrs
 
   def assert_xml_equal(self, output, expected):
-    self.assertEqual(ET.canonicalize(output), ET.canonicalize(expected))
+    self.assertEqual(ElementTree.canonicalize(output), ElementTree.canonicalize(expected))
 
   def test_no_uses_sdk(self):
     """Tests inserting a uses-sdk element into a manifest."""
 
     manifest_input = self.manifest_tmpl % ''
-    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='28')
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='28', target_sdk='28')
     output = self.raise_min_sdk_version_test(manifest_input, '28', '28', False)
     self.assert_xml_equal(output, expected)
 
@@ -95,7 +95,7 @@ class RaiseMinSdkVersionTest(unittest.TestCase):
     """Tests inserting a minSdkVersion attribute into a uses-sdk element."""
 
     manifest_input = self.manifest_tmpl % '    <uses-sdk extra="foo"/>\n'
-    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='28',
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='28', target_sdk='28',
                                                   extra='extra="foo"')
     output = self.raise_min_sdk_version_test(manifest_input, '28', '28', False)
     self.assert_xml_equal(output, expected)
@@ -103,64 +103,64 @@ class RaiseMinSdkVersionTest(unittest.TestCase):
   def test_raise_min(self):
     """Tests inserting a minSdkVersion attribute into a uses-sdk element."""
 
-    manifest_input = self.manifest_tmpl % self.uses_sdk(min='27')
-    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='28')
+    manifest_input = self.manifest_tmpl % self.uses_sdk(min_sdk='27')
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='28', target_sdk='28')
     output = self.raise_min_sdk_version_test(manifest_input, '28', '28', False)
     self.assert_xml_equal(output, expected)
 
   def test_raise(self):
     """Tests raising a minSdkVersion attribute."""
 
-    manifest_input = self.manifest_tmpl % self.uses_sdk(min='27')
-    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='28')
+    manifest_input = self.manifest_tmpl % self.uses_sdk(min_sdk='27')
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='28', target_sdk='28')
     output = self.raise_min_sdk_version_test(manifest_input, '28', '28', False)
     self.assert_xml_equal(output, expected)
 
   def test_no_raise_min(self):
     """Tests a minSdkVersion that doesn't need raising."""
 
-    manifest_input = self.manifest_tmpl % self.uses_sdk(min='28')
-    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='27')
+    manifest_input = self.manifest_tmpl % self.uses_sdk(min_sdk='28')
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='28', target_sdk='27')
     output = self.raise_min_sdk_version_test(manifest_input, '27', '27', False)
     self.assert_xml_equal(output, expected)
 
   def test_raise_codename(self):
     """Tests raising a minSdkVersion attribute to a codename."""
 
-    manifest_input = self.manifest_tmpl % self.uses_sdk(min='28')
-    expected = self.manifest_tmpl % self.uses_sdk(min='P', target='P')
+    manifest_input = self.manifest_tmpl % self.uses_sdk(min_sdk='28')
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='P', target_sdk='P')
     output = self.raise_min_sdk_version_test(manifest_input, 'P', 'P', False)
     self.assert_xml_equal(output, expected)
 
   def test_no_raise_codename(self):
     """Tests a minSdkVersion codename that doesn't need raising."""
 
-    manifest_input = self.manifest_tmpl % self.uses_sdk(min='P')
-    expected = self.manifest_tmpl % self.uses_sdk(min='P', target='28')
+    manifest_input = self.manifest_tmpl % self.uses_sdk(min_sdk='P')
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='P', target_sdk='28')
     output = self.raise_min_sdk_version_test(manifest_input, '28', '28', False)
     self.assert_xml_equal(output, expected)
 
   def test_target(self):
     """Tests an existing targetSdkVersion is preserved."""
 
-    manifest_input = self.manifest_tmpl % self.uses_sdk(min='26', target='27')
-    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='27')
+    manifest_input = self.manifest_tmpl % self.uses_sdk(min_sdk='26', target_sdk='27')
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='28', target_sdk='27')
     output = self.raise_min_sdk_version_test(manifest_input, '28', '29', False)
     self.assert_xml_equal(output, expected)
 
   def test_no_target(self):
     """Tests inserting targetSdkVersion when minSdkVersion exists."""
 
-    manifest_input = self.manifest_tmpl % self.uses_sdk(min='27')
-    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='29')
+    manifest_input = self.manifest_tmpl % self.uses_sdk(min_sdk='27')
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='28', target_sdk='29')
     output = self.raise_min_sdk_version_test(manifest_input, '28', '29', False)
     self.assert_xml_equal(output, expected)
 
   def test_target_no_min(self):
     """"Tests inserting targetSdkVersion when minSdkVersion exists."""
 
-    manifest_input = self.manifest_tmpl % self.uses_sdk(target='27')
-    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='27')
+    manifest_input = self.manifest_tmpl % self.uses_sdk(target_sdk='27')
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='28', target_sdk='27')
     output = self.raise_min_sdk_version_test(manifest_input, '28', '29', False)
     self.assert_xml_equal(output, expected)
 
@@ -168,23 +168,23 @@ class RaiseMinSdkVersionTest(unittest.TestCase):
     """Tests inserting targetSdkVersion when minSdkVersion does not exist."""
 
     manifest_input = self.manifest_tmpl % ''
-    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='29')
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='28', target_sdk='29')
     output = self.raise_min_sdk_version_test(manifest_input, '28', '29', False)
     self.assert_xml_equal(output, expected)
 
   def test_library_no_target(self):
     """Tests inserting targetSdkVersion when minSdkVersion exists."""
 
-    manifest_input = self.manifest_tmpl % self.uses_sdk(min='27')
-    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='16')
+    manifest_input = self.manifest_tmpl % self.uses_sdk(min_sdk='27')
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='28', target_sdk='16')
     output = self.raise_min_sdk_version_test(manifest_input, '28', '29', True)
     self.assert_xml_equal(output, expected)
 
   def test_library_target_no_min(self):
     """Tests inserting targetSdkVersion when minSdkVersion exists."""
 
-    manifest_input = self.manifest_tmpl % self.uses_sdk(target='27')
-    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='27')
+    manifest_input = self.manifest_tmpl % self.uses_sdk(target_sdk='27')
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='28', target_sdk='27')
     output = self.raise_min_sdk_version_test(manifest_input, '28', '29', True)
     self.assert_xml_equal(output, expected)
 
@@ -192,7 +192,7 @@ class RaiseMinSdkVersionTest(unittest.TestCase):
     """Tests inserting targetSdkVersion when minSdkVersion does not exist."""
 
     manifest_input = self.manifest_tmpl % ''
-    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='16')
+    expected = self.manifest_tmpl % self.uses_sdk(min_sdk='28', target_sdk='16')
     output = self.raise_min_sdk_version_test(manifest_input, '28', '29', True)
     self.assert_xml_equal(output, expected)
 
@@ -233,7 +233,7 @@ class AddLoggingParentTest(unittest.TestCase):
   """Unit tests for add_logging_parent function."""
 
   def assert_xml_equal(self, output, expected):
-    self.assertEqual(ET.canonicalize(output), ET.canonicalize(expected))
+    self.assertEqual(ElementTree.canonicalize(output), ElementTree.canonicalize(expected))
 
   def add_logging_parent_test(self, input_manifest, logging_parent=None):
     doc = minidom.parseString(input_manifest)
@@ -253,8 +253,8 @@ class AddLoggingParentTest(unittest.TestCase):
     attrs = ''
     if logging_parent:
       meta_text = ('<meta-data android:name="android.content.pm.LOGGING_PARENT" '
-                   'android:value="%s"/>\n') % (logging_parent)
-      attrs += '    <application>\n        %s    </application>\n' % (meta_text)
+                   'android:value="%s"/>\n') % logging_parent
+      attrs += '    <application>\n        %s    </application>\n' % meta_text
 
     return attrs
 
@@ -277,7 +277,7 @@ class AddUsesLibrariesTest(unittest.TestCase):
   """Unit tests for add_uses_libraries function."""
 
   def assert_xml_equal(self, output, expected):
-    self.assertEqual(ET.canonicalize(output), ET.canonicalize(expected))
+    self.assertEqual(ElementTree.canonicalize(output), ElementTree.canonicalize(expected))
 
   def run_test(self, input_manifest, new_uses_libraries):
     doc = minidom.parseString(input_manifest)
@@ -366,7 +366,7 @@ class AddUsesNonSdkApiTest(unittest.TestCase):
   """Unit tests for add_uses_libraries function."""
 
   def assert_xml_equal(self, output, expected):
-    self.assertEqual(ET.canonicalize(output), ET.canonicalize(expected))
+    self.assertEqual(ElementTree.canonicalize(output), ElementTree.canonicalize(expected))
 
   def run_test(self, input_manifest):
     doc = minidom.parseString(input_manifest)
@@ -403,7 +403,7 @@ class UseEmbeddedDexTest(unittest.TestCase):
   """Unit tests for add_use_embedded_dex function."""
 
   def assert_xml_equal(self, output, expected):
-    self.assertEqual(ET.canonicalize(output), ET.canonicalize(expected))
+    self.assertEqual(ElementTree.canonicalize(output), ElementTree.canonicalize(expected))
 
   def run_test(self, input_manifest):
     doc = minidom.parseString(input_manifest)
@@ -442,7 +442,7 @@ class AddExtractNativeLibsTest(unittest.TestCase):
   """Unit tests for add_extract_native_libs function."""
 
   def assert_xml_equal(self, output, expected):
-    self.assertEqual(ET.canonicalize(output), ET.canonicalize(expected))
+    self.assertEqual(ElementTree.canonicalize(output), ElementTree.canonicalize(expected))
 
   def run_test(self, input_manifest, value):
     doc = minidom.parseString(input_manifest)
@@ -487,7 +487,7 @@ class AddNoCodeApplicationTest(unittest.TestCase):
   """Unit tests for set_has_code_to_false function."""
 
   def assert_xml_equal(self, output, expected):
-    self.assertEqual(ET.canonicalize(output), ET.canonicalize(expected))
+    self.assertEqual(ElementTree.canonicalize(output), ElementTree.canonicalize(expected))
 
   def run_test(self, input_manifest):
     doc = minidom.parseString(input_manifest)
@@ -515,7 +515,7 @@ class AddNoCodeApplicationTest(unittest.TestCase):
     self.assert_xml_equal(output, expected)
 
   def test_has_application_has_code_false(self):
-    """ Do nothing if there's already an application elemeent. """
+    """ Do nothing if there's already an application element. """
     manifest_input = self.manifest_tmpl % '    <application android:hasCode="false"/>\n'
     output = self.run_test(manifest_input)
     self.assert_xml_equal(output, manifest_input)
@@ -532,7 +532,7 @@ class AddTestOnlyApplicationTest(unittest.TestCase):
   """Unit tests for set_test_only_flag_to_true function."""
 
   def assert_xml_equal(self, output, expected):
-    self.assertEqual(ET.canonicalize(output), ET.canonicalize(expected))
+    self.assertEqual(ElementTree.canonicalize(output), ElementTree.canonicalize(expected))
 
   def run_test(self, input_manifest):
     doc = minidom.parseString(input_manifest)
@@ -576,7 +576,7 @@ class SetMaxSdkVersionTest(unittest.TestCase):
   """Unit tests for set_max_sdk_version function."""
 
   def assert_xml_equal(self, output, expected):
-    self.assertEqual(ET.canonicalize(output), ET.canonicalize(expected))
+    self.assertEqual(ElementTree.canonicalize(output), ElementTree.canonicalize(expected))
 
   def run_test(self, input_manifest, max_sdk_version):
     doc = minidom.parseString(input_manifest)
@@ -591,15 +591,15 @@ class SetMaxSdkVersionTest(unittest.TestCase):
       '%s'
       '</manifest>\n')
 
-  def permission(self, max=None):
-    if max is None:
+  def permission(self, max_sdk=None):
+    if max_sdk is None:
       return '   <permission/>'
-    return '    <permission android:maxSdkVersion="%s"/>\n' % max
+    return '    <permission android:maxSdkVersion="%s"/>\n' % max_sdk
 
-  def uses_permission(self, max=None):
-    if max is None:
+  def uses_permission(self, max_sdk=None):
+    if max_sdk is None:
       return '   <uses-permission/>'
-    return '    <uses-permission android:maxSdkVersion="%s"/>\n' % max
+    return '    <uses-permission android:maxSdkVersion="%s"/>\n' % max_sdk
 
   def test_permission_no_max_sdk_version(self):
     """Tests if permission has no maxSdkVersion attribute"""
@@ -643,11 +643,12 @@ class SetMaxSdkVersionTest(unittest.TestCase):
     output = self.run_test(manifest_input, '9000')
     self.assert_xml_equal(output, expected)
 
+
 class OverrideDefaultVersionTest(unittest.TestCase):
   """Unit tests for override_default_version function."""
 
   def assert_xml_equal(self, output, expected):
-    self.assertEqual(ET.canonicalize(output), ET.canonicalize(expected))
+    self.assertEqual(ElementTree.canonicalize(output), ElementTree.canonicalize(expected))
 
   def run_test(self, input_manifest, version):
     doc = minidom.parseString(input_manifest)

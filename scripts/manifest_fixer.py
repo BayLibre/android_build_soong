@@ -48,9 +48,9 @@ def parse_args():
   parser.add_argument('--library', dest='library', action='store_true',
                       help='manifest is for a static library')
   parser.add_argument('--uses-library', dest='uses_libraries', action='append',
-                      help='specify additional <uses-library> tag to add. android:requred is set to true')
+                      help='specify additional <uses-library> tag to add. android:required is set to true')
   parser.add_argument('--optional-uses-library', dest='optional_uses_libraries', action='append',
-                      help='specify additional <uses-library> tag to add. android:requred is set to false')
+                      help='specify additional <uses-library> tag to add. android:required is set to false')
   parser.add_argument('--uses-non-sdk-api', dest='uses_non_sdk_api', action='store_true',
                       help='manifest is for a package built against the platform')
   parser.add_argument('--logging-parent', dest='logging_parent', default='',
@@ -125,7 +125,7 @@ def raise_min_sdk_version(doc, min_sdk_version, target_sdk_version, library):
     if library:
       # TODO(b/117122200): libraries shouldn't set targetSdkVersion at all, but
       # ManifestMerger treats minSdkVersion="Q" as targetSdkVersion="Q" if it
-      # is empty.  Set it to something low so that it will be overriden by the
+      # is empty.  Set it to something low so that it will be overridden by the
       # main manifest, but high enough that it doesn't cause implicit
       # permissions grants.
       target_attr.value = '16'
@@ -325,6 +325,7 @@ def set_has_code_to_false(doc):
   attr.value = 'false'
   application.setAttributeNode(attr)
 
+
 def set_test_only_flag_to_true(doc):
   manifest = parse_manifest(doc)
   elems = get_children_with_tag(manifest, 'application')
@@ -346,6 +347,7 @@ def set_test_only_flag_to_true(doc):
   attr.value = 'true'
   application.setAttributeNode(attr)
 
+
 def set_max_sdk_version(doc, max_sdk_version):
   """Replace the maxSdkVersion attribute value for permission and
   uses-permission tags if the value was originally set to 'current'.
@@ -364,6 +366,7 @@ def set_max_sdk_version(doc, max_sdk_version):
       if max_attr and max_attr.value == 'current':
         max_attr.value = max_sdk_version
 
+
 def override_placeholder_version(doc, new_version):
   """Replace the versionCode attribute value if it\'s currently
   set to the placeholder version of 0.
@@ -374,8 +377,9 @@ def override_placeholder_version(doc, new_version):
   """
   manifest = parse_manifest(doc)
   version = manifest.getAttribute("android:versionCode")
-  if (version == '0'):
+  if version == '0':
     manifest.setAttribute("android:versionCode", new_version)
+
 
 def main():
   """Program entry point."""
@@ -426,6 +430,7 @@ def main():
   except Exception as err:
     print('error: ' + str(err), file=sys.stderr)
     sys.exit(-1)
+
 
 if __name__ == '__main__':
   main()

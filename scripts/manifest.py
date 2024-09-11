@@ -25,7 +25,7 @@ android_ns = 'http://schemas.android.com/apk/res/android'
 
 def get_children_with_tag(parent, tag_name):
   children = []
-  for child in  parent.childNodes:
+  for child in parent.childNodes:
     if child.nodeType == minidom.Node.ELEMENT_NODE and \
        child.tagName == tag_name:
       children.append(child)
