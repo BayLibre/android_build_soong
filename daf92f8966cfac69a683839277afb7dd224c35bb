@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68519a5d_977d597b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-11T04:56:35Z",
+      "side": 1,
+      "message": "Visibility should be enforced but can\u0027t currently be set.  The go modules get parsed in two different contexts, first by the bootstrap builder to produce the rules to build soong_build, and then by soong_build.  The first time it is parsed as a bootstrap.GoBinary, which doesn\u0027t have any visibility properties, so setting visibility on the module in the Android.bp file will fail.  The second time it is parsed by soong_build, which should enforce visibility, but it can only get values from default visibility.  I think if we added a Visibility property to bootstrap.GoPackage and bootstrap.GoBinary then everything would just work.",
+      "parentUuid": "56939224_b5106c33",
+      "revId": "daf92f8966cfac69a683839277afb7dd224c35bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b591381b_0cd58ace",
