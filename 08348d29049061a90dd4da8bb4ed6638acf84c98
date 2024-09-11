@@ -16,6 +16,24 @@
       "message": "I\u0027m confused. This is what we want to avoid.",
       "revId": "08348d29049061a90dd4da8bb4ed6638acf84c98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97aa28b1_5b4a59db",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-09-11T00:26:57Z",
+      "side": 1,
+      "message": "The problem we had was that NDK symbols are not automatically included in LLNDK.\nBut with this change, the NDK symbols will be included to the next or the same quarter LLNDK release.\n\nThis does not require any changes on existing map.txt files, but provide symbol versioning if an llndk symbol is required before the ndk finalization. In this case, we have to annotate the llndk versioning as before.\n\nFor example, \n```\nVERSION_35 { # introduced\u003d35\n    global:\n        ndk_35;\n        ndk_2024;\n        ndk_2024; # llndk\u003d202404\n        llndk_symbol; # llndk\n};\n```\n* `ndk_35` will be included in NDK 25 and LLNDK 202504, which is the next LLNDK release after the NDK finalization in 24Q3.\n* `ndk_2024` is included LLNDK 202404 in 24Q2 and NDK 35 in 24Q3. We have to explicitly annotate the LLNDK version in this case. Also, `ndk_2024` is not a LLNDK-only symbol, it needs to have the symbol without annotation. We don\u0027t need this duplication if NDK and LLDNK are finalized in the same release.\n* `llndk_symbol` will not be included in NDK but only for LLNDK. In this example, it will be released with 202504.\n\nSo, we don\u0027t need any changes on libc.map.txt file to include the finalized symbols in LLNDK.",
+      "parentUuid": "2a55b7d3_01b286f0",
+      "revId": "08348d29049061a90dd4da8bb4ed6638acf84c98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
