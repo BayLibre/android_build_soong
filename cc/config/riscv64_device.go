@@ -29,10 +29,6 @@ var (
 		// This is already the driver's Android default, but duplicated here (and
 		// below) for ease of experimentation with additional extensions.
 		"-march=rv64gcv_zba_zbb_zbs",
-		// TODO: remove when qemu V works (https://gitlab.com/qemu-project/qemu/-/issues/1976)
-		// (Note that we'll probably want to wait for berberis to be good enough
-		// that most people don't care about qemu's V performance either!)
-		"-mno-implicit-float",
 	}
 
 	riscv64ArchVariantCflags = map[string][]string{}
