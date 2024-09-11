@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c826079_bc1eb920",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-09-11T16:26:45Z",
+      "side": 1,
+      "message": "Added abtd run https://android-build.corp.google.com/abtd/run/L60200030006416866/ for a few riscv64 targets.  @prashanthsw is there a test_suites target for riscv64 as well?",
+      "revId": "89a29dccc40f09f800cbd66c782f1e277b79b0ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
