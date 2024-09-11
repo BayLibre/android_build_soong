@@ -1893,3 +1893,67 @@ func TestStubLinkType(t *testing.T) {
 		}
 		`)
 }
+
+func TestSdkLibDirectDependency(t *testing.T) {
+	android.GroupFixturePreparers(
+		prepareForJavaTest,
+		PrepareForTestWithJavaSdkLibraryFiles,
+		FixtureWithLastReleaseApis("foo", "bar"),
+	).ExtendWithErrorHandler(android.FixtureExpectsAllErrorsToMatchAPattern([]string{
+		`module "baz" variant "android_common": cannot depend directly on java_sdk_library ` +
+			`"foo"; try depending on "foo.stubs", or "foo.impl" instead`,
+		`module "baz" variant "android_common": cannot depend directly on java_sdk_library ` +
+			`"prebuilt_bar"; try depending on "bar.stubs", or "bar.impl" instead`,
+	}),
+	).RunTestWithBp(t, `
+		java_sdk_library {
+			name: "foo",
+			srcs: ["a.java"],
+			sdk_version: "current",
+			public: {
+				enabled: true,
+			},
+		}
+
+		java_sdk_library_import {
+			name: "foo",
+			public: {
+				jars: ["a.jar"],
+				stub_srcs: ["a.java"],
+				current_api: "current.txt",
+				removed_api: "removed.txt",
+				annotations: "annotations.zip",
+			},
+		}
+
+		java_sdk_library {
+			name: "bar",
+			srcs: ["a.java"],
+			sdk_version: "current",
+			public: {
+				enabled: true,
+			},
+		}
+
+		java_sdk_library_import {
+			name: "bar",
+			prefer: true,
+			public: {
+				jars: ["a.jar"],
+				stub_srcs: ["a.java"],
+				current_api: "current.txt",
+				removed_api: "removed.txt",
+				annotations: "annotations.zip",
+			},
+		}
+
+		java_library {
+			name: "baz",
+			srcs: ["b.java"],
+			libs: [
+				"foo",
+				"bar",
+			],
+		}
+	`)
+}
