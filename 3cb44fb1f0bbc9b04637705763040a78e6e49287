@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "045cca22_f9f22232",
+        "filename": "android/androidmk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-11T20:33:41Z",
+      "side": 1,
+      "message": "Oh, that\u0027s because you\u0027re using `ctx.otherModuleProvider(...)` instead of `android.OtherModuleProvider(ctx, ...)`.  Go doesn\u0027t support making the methods in the `SingletonContext` interface generic, so you only get the type-safe generics when using the function wrappers.",
+      "parentUuid": "486e77dc_45ba0b7f",
+      "range": {
+        "startLine": 803,
+        "startChar": 26,
+        "endLine": 803,
+        "endChar": 55
+      },
+      "revId": "3cb44fb1f0bbc9b04637705763040a78e6e49287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66d473d3_e98c2f03",
         "filename": "android/androidmk.go",
         "patchSetId": 5
