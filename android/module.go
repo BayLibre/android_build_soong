@@ -2228,6 +2228,7 @@ func (e configurationEvalutor) PropertyErrorf(property string, fmt string, args 
 func (e configurationEvalutor) EvaluateConfiguration(condition proptools.ConfigurableCondition, property string) proptools.ConfigurableValue {
 	ctx := e.ctx
 	m := e.m
+
 	switch condition.FunctionName() {
 	case "release_flag":
 		if condition.NumArgs() != 1 {

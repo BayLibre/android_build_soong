@@ -502,6 +502,7 @@ type fillInEntriesContext interface {
 	otherModuleProvider(module blueprint.Module, provider blueprint.AnyProviderKey) (any, bool)
 	ModuleType(module blueprint.Module) string
 	OtherModulePropertyErrorf(module Module, property string, fmt string, args ...interface{})
+	HasMutatorFinished(mutatorName string) bool
 }
 
 func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint.Module) {
