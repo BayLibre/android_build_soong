@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "486e77dc_45ba0b7f",
+        "filename": "android/androidmk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-09-11T19:16:05Z",
+      "side": 1,
+      "message": "Unfortunately a type assertion is needed here since `info` is still considered as type `any` if passed into `translateAndroidMkEntriesInfoModule` in the following line.",
+      "parentUuid": "decab02f_e4d6a151",
+      "range": {
+        "startLine": 803,
+        "startChar": 26,
+        "endLine": 803,
+        "endChar": 55
+      },
+      "revId": "3cb44fb1f0bbc9b04637705763040a78e6e49287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66d473d3_e98c2f03",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-10T20:52:51Z",
       "side": 1,
       "message": "Make this `*AndroidMkProviderInfo` to avoid implicit copies",
+      "range": {
+        "startLine": 1113,
+        "startChar": 50,
+        "endLine": 1113,
+        "endChar": 71
+      },
+      "revId": "3cb44fb1f0bbc9b04637705763040a78e6e49287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a867b2fc_4b0c55e4",
+        "filename": "android/androidmk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-09-11T19:16:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66d473d3_e98c2f03",
       "range": {
         "startLine": 1113,
         "startChar": 50,
