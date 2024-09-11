@@ -234,6 +234,32 @@ class EnforceUsesLibrariesTest(unittest.TestCase):
             optional_uses_libraries=['//x/y/z:bar'])
         self.assertTrue(matches)
 
+    def test_multiple_applications(self):
+        xml = """<?xml version="1.0" encoding="utf-8"?>
+            <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+                <application android:featureFlag="foo">
+                    <uses-library android:name="foo" />
+                    <uses-library android:name="bar" android:required="false" />
+                </application>
+                <application android:featureFlag="!foo">
+                    <uses-library android:name="foo" />
+                    <uses-library android:name="qux" android:required="false" />
+                </application>
+            </manifest>
+        """
+        apk = self.apk_tmpl % ('\n'.join([
+            uses_library_apk('foo'),
+            uses_library_apk('bar', required_apk(False)),
+            uses_library_apk('foo'),
+            uses_library_apk('qux', required_apk(False))
+        ]))
+        matches = self.run_test(
+            xml,
+            apk,
+            uses_libraries=['//x/y/z:foo'],
+            optional_uses_libraries=['//x/y/z:bar', '//x/y/z:qux'])
+        self.assertTrue(matches)
+
 
 class ExtractTargetSdkVersionTest(unittest.TestCase):
 

@@ -25,10 +25,7 @@ import subprocess
 import sys
 from xml.dom import minidom
 
-from manifest import android_ns
-from manifest import get_children_with_tag
-from manifest import parse_manifest
-from manifest import write_xml
+from manifest import *
 
 
 class ManifestMismatchError(Exception):
@@ -205,25 +202,20 @@ def extract_uses_libs_xml(xml):
     """Extract <uses-library> tags from the manifest."""
 
     manifest = parse_manifest(xml)
-    elems = get_children_with_tag(manifest, 'application')
-    if len(elems) > 1:
-        raise RuntimeError('found multiple <application> tags')
-    if not elems:
-        return [], [], []
+    required = []
+    optional = []
+    for application in get_or_create_applications(xml, manifest):
+        libs = get_children_with_tag(application, 'uses-library')
 
-    application = elems[0]
+        required.extend([uses_library_name(x) for x in libs if uses_library_required(x)])
+        optional.extend([
+            uses_library_name(x) for x in libs if not uses_library_required(x)
+        ])
 
-    libs = get_children_with_tag(application, 'uses-library')
-
-    required = [uses_library_name(x) for x in libs if uses_library_required(x)]
-    optional = [
-        uses_library_name(x) for x in libs if not uses_library_required(x)
-    ]
-
-    # render <uses-library> tags as XML for a pretty error message
-    tags = []
-    for lib in libs:
-        tags.append(lib.toprettyxml())
+        # render <uses-library> tags as XML for a pretty error message
+        tags = []
+        for lib in libs:
+            tags.append(lib.toprettyxml())
 
     required = first_unique_elements(required)
     optional = first_unique_elements(optional)

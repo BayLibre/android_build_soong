@@ -228,6 +228,18 @@ class RaiseMinSdkVersionTest(unittest.TestCase):
 
     self.assert_xml_equal(output, expected)
 
+  def test_multiple_uses_sdks(self):
+    """Tests a manifest that contains multiple uses_sdks elements."""
+
+    manifest_input = self.manifest_tmpl % (
+        '    <uses-sdk android:featureFlag="foo" android:minSdkVersion="21" />\n'
+        '    <uses-sdk android:featureFlag="!foo" android:minSdkVersion="22" />\n')
+    expected = self.manifest_tmpl % (
+      '    <uses-sdk android:featureFlag="foo" android:minSdkVersion="28" android:targetSdkVersion="28" />\n'
+      '    <uses-sdk android:featureFlag="!foo" android:minSdkVersion="28" android:targetSdkVersion="28" />\n')
+
+    output = self.raise_min_sdk_version_test(manifest_input, '28', '28', False)
+    self.assert_xml_equal(output, expected)
 
 class AddLoggingParentTest(unittest.TestCase):
   """Unit tests for add_logging_parent function."""
@@ -289,18 +301,16 @@ class AddUsesLibrariesTest(unittest.TestCase):
   manifest_tmpl = (
       '<?xml version="1.0" encoding="utf-8"?>\n'
       '<manifest xmlns:android="http://schemas.android.com/apk/res/android">\n'
-      '    <application>\n'
       '%s'
-      '    </application>\n'
       '</manifest>\n')
 
   def uses_libraries(self, name_required_pairs):
-    ret = ''
+    ret = '    <application>\n'
     for name, required in name_required_pairs:
       ret += (
           '        <uses-library android:name="%s" android:required="%s"/>\n'
       ) % (name, required)
-
+    ret += '    </application>\n'
     return ret
 
   def test_empty(self):
@@ -361,6 +371,17 @@ class AddUsesLibrariesTest(unittest.TestCase):
     output = self.run_test(manifest_input, ['foo', 'bar'])
     self.assert_xml_equal(output, expected)
 
+  def test_multiple_application(self):
+    """When there are multiple applications, the libs are added to each."""
+    manifest_input = self.manifest_tmpl % (
+            self.uses_libraries([('foo', 'false')]) +
+            self.uses_libraries([('bar', 'false')]))
+    expected = self.manifest_tmpl % (
+            self.uses_libraries([('foo', 'false'), ('bar', 'true')]) +
+            self.uses_libraries([('bar', 'false'), ('foo', 'true')]))
+    output = self.run_test(manifest_input, ['foo', 'bar'])
+    self.assert_xml_equal(output, expected)
+
 
 class AddUsesNonSdkApiTest(unittest.TestCase):
   """Unit tests for add_uses_libraries function."""
@@ -378,11 +399,11 @@ class AddUsesNonSdkApiTest(unittest.TestCase):
   manifest_tmpl = (
       '<?xml version="1.0" encoding="utf-8"?>\n'
       '<manifest xmlns:android="http://schemas.android.com/apk/res/android">\n'
-      '    <application%s/>\n'
+      '    %s\n'
       '</manifest>\n')
 
   def uses_non_sdk_api(self, value):
-    return ' android:usesNonSdkApi="true"' if value else ''
+    return '<application %s/>' % ('android:usesNonSdkApi="true"' if value else '')
 
   def test_set_true(self):
     """Empty new_uses_libraries must not touch the manifest."""
@@ -395,6 +416,13 @@ class AddUsesNonSdkApiTest(unittest.TestCase):
     """new_uses_libraries must not overwrite existing tags."""
     manifest_input = self.manifest_tmpl % self.uses_non_sdk_api(True)
     expected = manifest_input
+    output = self.run_test(manifest_input)
+    self.assert_xml_equal(output, expected)
+
+  def test_multiple_applications(self):
+    """new_uses_libraries must be added to all applications."""
+    manifest_input = self.manifest_tmpl % (self.uses_non_sdk_api(True) +  self.uses_non_sdk_api(False))
+    expected = self.manifest_tmpl % (self.uses_non_sdk_api(True) +  self.uses_non_sdk_api(True))
     output = self.run_test(manifest_input)
     self.assert_xml_equal(output, expected)
 
@@ -415,14 +443,14 @@ class UseEmbeddedDexTest(unittest.TestCase):
   manifest_tmpl = (
       '<?xml version="1.0" encoding="utf-8"?>\n'
       '<manifest xmlns:android="http://schemas.android.com/apk/res/android">\n'
-      '    <application%s/>\n'
+      '    %s\n'
       '</manifest>\n')
 
   def use_embedded_dex(self, value):
-    return ' android:useEmbeddedDex="%s"' % value
+    return '<application android:useEmbeddedDex="%s" />' % value
 
   def test_manifest_with_undeclared_preference(self):
-    manifest_input = self.manifest_tmpl % ''
+    manifest_input = self.manifest_tmpl % '<application/>'
     expected = self.manifest_tmpl % self.use_embedded_dex('true')
     output = self.run_test(manifest_input)
     self.assert_xml_equal(output, expected)
@@ -436,6 +464,18 @@ class UseEmbeddedDexTest(unittest.TestCase):
   def test_manifest_with_not_use_embedded_dex(self):
     manifest_input = self.manifest_tmpl % self.use_embedded_dex('false')
     self.assertRaises(RuntimeError, self.run_test, manifest_input)
+
+  def test_multiple_applications(self):
+    manifest_input = self.manifest_tmpl % (
+        self.use_embedded_dex('true') +
+        '<application/>'
+    )
+    expected = self.manifest_tmpl % (
+        self.use_embedded_dex('true') +
+        self.use_embedded_dex('true')
+    )
+    output = self.run_test(manifest_input)
+    self.assert_xml_equal(output, expected)
 
 
 class AddExtractNativeLibsTest(unittest.TestCase):
@@ -454,20 +494,20 @@ class AddExtractNativeLibsTest(unittest.TestCase):
   manifest_tmpl = (
       '<?xml version="1.0" encoding="utf-8"?>\n'
       '<manifest xmlns:android="http://schemas.android.com/apk/res/android">\n'
-      '    <application%s/>\n'
+      '    %s\n'
       '</manifest>\n')
 
   def extract_native_libs(self, value):
-    return ' android:extractNativeLibs="%s"' % value
+    return '<application android:extractNativeLibs="%s" />' % value
 
   def test_set_true(self):
-    manifest_input = self.manifest_tmpl % ''
+    manifest_input = self.manifest_tmpl % '<application/>'
     expected = self.manifest_tmpl % self.extract_native_libs('true')
     output = self.run_test(manifest_input, True)
     self.assert_xml_equal(output, expected)
 
   def test_set_false(self):
-    manifest_input = self.manifest_tmpl % ''
+    manifest_input = self.manifest_tmpl % '<application/>'
     expected = self.manifest_tmpl % self.extract_native_libs('false')
     output = self.run_test(manifest_input, False)
     self.assert_xml_equal(output, expected)
@@ -481,6 +521,12 @@ class AddExtractNativeLibsTest(unittest.TestCase):
   def test_conflict(self):
     manifest_input = self.manifest_tmpl % self.extract_native_libs('true')
     self.assertRaises(RuntimeError, self.run_test, manifest_input, False)
+
+  def test_multiple_applications(self):
+    manifest_input = self.manifest_tmpl % (self.extract_native_libs('true') + '<application/>')
+    expected = self.manifest_tmpl % (self.extract_native_libs('true') + self.extract_native_libs('true'))
+    output = self.run_test(manifest_input, True)
+    self.assert_xml_equal(output, expected)
 
 
 class AddNoCodeApplicationTest(unittest.TestCase):
@@ -527,6 +573,19 @@ class AddNoCodeApplicationTest(unittest.TestCase):
     output = self.run_test(manifest_input)
     self.assert_xml_equal(output, manifest_input)
 
+  def test_multiple_applications(self):
+    """ Apply to all applications  """
+    manifest_input = self.manifest_tmpl % (
+        '    <application android:hasCode="true" />\n' +
+        '    <application android:hasCode="false" />\n' +
+        '    <application/>\n')
+    expected = self.manifest_tmpl % (
+        '    <application android:hasCode="true" />\n' +
+        '    <application android:hasCode="false" />\n' +
+        '    <application android:hasCode="false" />\n')
+    output = self.run_test(manifest_input)
+    self.assert_xml_equal(output, expected)
+
 
 class AddTestOnlyApplicationTest(unittest.TestCase):
   """Unit tests for set_test_only_flag_to_true function."""
@@ -570,6 +629,20 @@ class AddTestOnlyApplicationTest(unittest.TestCase):
     manifest_input = self.manifest_tmpl % '    <application android:testOnly="false"/>\n'
     output = self.run_test(manifest_input)
     self.assert_xml_equal(output, manifest_input)
+
+  def test_multiple_applications(self):
+    manifest_input = self.manifest_tmpl % (
+        '    <application android:testOnly="true" />\n' +
+        '    <application android:testOnly="false" />\n' +
+        '    <application/>\n'
+    )
+    expected = self.manifest_tmpl % (
+        '    <application android:testOnly="true" />\n' +
+        '    <application android:testOnly="false" />\n' +
+        '    <application android:testOnly="true" />\n'
+    )
+    output = self.run_test(manifest_input)
+    self.assert_xml_equal(output, expected)
 
 
 class SetMaxSdkVersionTest(unittest.TestCase):
