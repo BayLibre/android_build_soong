@@ -16,6 +16,23 @@
       "message": "The size regression on NexusLauncher on x84 is fixed by:\nhttps://android-review.git.corp.google.com/c/platform/packages/apps/Launcher3/+/3259687",
       "revId": "a4bec6901abf6b2398458609bbfc858a98e47823",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa63b85b_f3e87296",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-09-11T15:59:45Z",
+      "side": 1,
+      "message": "In terms of correctness and/or runtime impact, how risky would you say this change is? Do you think it\u0027s worth a build flag or should it be \"correct\" as long as it compiles?\n\nWorth checking these other targets that increased in size?\n\nhttps://screenshot.googleplex.com/3fLEz89G7UEDYXP\nhttps://screenshot.googleplex.com/8Lq2EjSVzFbCU5s\n\nWondering if we ought to warn when there\u0027s a wildcard keep rule that covers a resource class...",
+      "revId": "a4bec6901abf6b2398458609bbfc858a98e47823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
