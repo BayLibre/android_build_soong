@@ -50,6 +50,24 @@
       "message": "Lots of really nice wins on Wear! https://screenshot.googleplex.com/Upm4wcvLve7cwub",
       "revId": "a4bec6901abf6b2398458609bbfc858a98e47823",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d8dbac_4c4b3da5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-11T16:39:47Z",
+      "side": 1,
+      "message": "This should definitely be flagged, see go/android-build-flags for an overview of the build flagging process, and b/364956472#comment3 has links to an example set of CLs that enabled a build feature behind a flag.",
+      "parentUuid": "fa63b85b_f3e87296",
+      "revId": "a4bec6901abf6b2398458609bbfc858a98e47823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
