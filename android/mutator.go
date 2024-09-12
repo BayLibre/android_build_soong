@@ -231,28 +231,6 @@ type BottomUpMutatorContext interface {
 	// module's dependency list.
 	AddReverseDependency(module blueprint.Module, tag blueprint.DependencyTag, name string)
 
-	// CreateVariations splits  a module into multiple variants, one for each name in the variationNames
-	// parameter.  It returns a list of new modules in the same order as the variationNames
-	// list.
-	//
-	// If any of the dependencies of the module being operated on were already split
-	// by calling CreateVariations with the same name, the dependency will automatically
-	// be updated to point the matching variant.
-	//
-	// If a module is split, and then a module depending on the first module is not split
-	// when the Mutator is later called on it, the dependency of the depending module will
-	// automatically be updated to point to the first variant.
-	CreateVariations(...string) []Module
-
-	// CreateLocationVariations splits a module into multiple variants, one for each name in the variantNames
-	// parameter.  It returns a list of new modules in the same order as the variantNames
-	// list.
-	//
-	// Local variations do not affect automatic dependency resolution - dependencies added
-	// to the split module via deps or DynamicDependerModule must exactly match a variant
-	// that contains all the non-local variations.
-	CreateLocalVariations(...string) []Module
-
 	// SetDependencyVariation sets all dangling dependencies on the current module to point to the variation
 	// with given name. This function ignores the default variation set by SetDefaultDependencyVariation.
 	SetDependencyVariation(string)
@@ -303,30 +281,6 @@ type BottomUpMutatorContext interface {
 	// as long as the supplied predicate returns true.
 	// Replacements don't take effect until after the mutator pass is finished.
 	ReplaceDependenciesIf(string, blueprint.ReplaceDependencyPredicate)
-
-	// AliasVariation takes a variationName that was passed to CreateVariations for this module,
-	// and creates an alias from the current variant (before the mutator has run) to the new
-	// variant.  The alias will be valid until the next time a mutator calls CreateVariations or
-	// CreateLocalVariations on this module without also calling AliasVariation.  The alias can
-	// be used to add dependencies on the newly created variant using the variant map from
-	// before CreateVariations was run.
-	AliasVariation(variationName string)
-
-	// CreateAliasVariation takes a toVariationName that was passed to CreateVariations for this
-	// module, and creates an alias from a new fromVariationName variant the toVariationName
-	// variant.  The alias will be valid until the next time a mutator calls CreateVariations or
-	// CreateLocalVariations on this module without also calling AliasVariation.  The alias can
-	// be used to add dependencies on the toVariationName variant using the fromVariationName
-	// variant.
-	CreateAliasVariation(fromVariationName, toVariationName string)
-
-	// SetVariationProvider sets the value for a provider for the given newly created variant of
-	// the current module, i.e. one of the Modules returned by CreateVariations..  It panics if
-	// not called during the appropriate mutator or GenerateBuildActions pass for the provider,
-	// if the value is not of the appropriate type, or if the module is not a newly created
-	// variant of the current module.  The value should not be modified after being passed to
-	// SetVariationProvider.
-	SetVariationProvider(module blueprint.Module, provider blueprint.AnyProviderKey, value interface{})
 }
 
 // An outgoingTransitionContextImpl and incomingTransitionContextImpl is created for every dependency of every module
@@ -755,43 +709,6 @@ func (b *bottomUpMutatorContext) AddReverseDependency(module blueprint.Module, t
 	}
 	b.bp.AddReverseDependency(module, tag, name)
 }
-
-func (b *bottomUpMutatorContext) CreateVariations(variations ...string) []Module {
-	if b.finalPhase {
-		panic("CreateVariations not allowed in FinalDepsMutators")
-	}
-
-	modules := b.bp.CreateVariations(variations...)
-
-	aModules := make([]Module, len(modules))
-	for i := range variations {
-		aModules[i] = modules[i].(Module)
-		base := aModules[i].base()
-		base.commonProperties.DebugMutators = append(base.commonProperties.DebugMutators, b.MutatorName())
-		base.commonProperties.DebugVariations = append(base.commonProperties.DebugVariations, variations[i])
-	}
-
-	return aModules
-}
-
-func (b *bottomUpMutatorContext) CreateLocalVariations(variations ...string) []Module {
-	if b.finalPhase {
-		panic("CreateLocalVariations not allowed in FinalDepsMutators")
-	}
-
-	modules := b.bp.CreateLocalVariations(variations...)
-
-	aModules := make([]Module, len(modules))
-	for i := range variations {
-		aModules[i] = modules[i].(Module)
-		base := aModules[i].base()
-		base.commonProperties.DebugMutators = append(base.commonProperties.DebugMutators, b.MutatorName())
-		base.commonProperties.DebugVariations = append(base.commonProperties.DebugVariations, variations[i])
-	}
-
-	return aModules
-}
-
 func (b *bottomUpMutatorContext) SetDependencyVariation(variation string) {
 	b.bp.SetDependencyVariation(variation)
 }
