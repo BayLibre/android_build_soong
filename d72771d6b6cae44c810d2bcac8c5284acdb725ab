@@ -16,6 +16,52 @@
       "message": "Submission of this change is currently blocked by b/358613520",
       "revId": "d72771d6b6cae44c810d2bcac8c5284acdb725ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f459e96_eefc70ba",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2418,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-12T17:16:51Z",
+      "side": 1,
+      "message": "What would be the use case for not doing this on all values of `tag`? Is it for the bootclasspath and systemserverclasspath fragments?",
+      "range": {
+        "startLine": 2418,
+        "startChar": 3,
+        "endLine": 2418,
+        "endChar": 39
+      },
+      "revId": "d72771d6b6cae44c810d2bcac8c5284acdb725ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04ba996a_81822983",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2887,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-12T17:16:51Z",
+      "side": 1,
+      "message": "nit: Can you move this common code to `generateCommonBuildActions`?",
+      "range": {
+        "startLine": 2885,
+        "startChar": 1,
+        "endLine": 2887,
+        "endChar": 3
+      },
+      "revId": "d72771d6b6cae44c810d2bcac8c5284acdb725ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
