@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86d2262_dfc6387a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-12T16:00:52Z",
+      "side": 1,
+      "message": "This CL will add kotlin compilation units to the \"super\" kzip files generated in the aosp main and internal main CI targets.",
+      "revId": "64e159883d3f13b2e115987dceb360fe21fca3d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
