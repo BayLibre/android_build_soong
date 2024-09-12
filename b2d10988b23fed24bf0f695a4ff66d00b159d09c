@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf13c598_73bd8ad7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-09-12T19:00:31Z",
+      "side": 1,
+      "message": "Is this warning unrelated? https://screenshot.googleplex.com/3hFtDJhCfYUfedC",
+      "revId": "b2d10988b23fed24bf0f695a4ff66d00b159d09c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
