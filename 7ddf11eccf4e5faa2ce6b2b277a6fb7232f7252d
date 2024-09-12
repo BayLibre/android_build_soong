@@ -183,6 +183,30 @@
       },
       "revId": "7ddf11eccf4e5faa2ce6b2b277a6fb7232f7252d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2de7d811_065d9222",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2024-09-12T23:07:55Z",
+      "side": 1,
+      "message": "\u003e\u003e I think the LL-NDK is approaching this as-if the implementation could be separately stabilized.\n\u003e\n\u003e Trunk Stable did apply to LL-NDK in Android V and that work was done and approved\n\n\"trunk stable\" as in \"it\u0027s all \u0027one\u0027 branch now\" did. Flagging did not. The plumbing simply does not exist.\n\n\u003e\u003e The LL-NDK has to finalize the implementation on the same schedule as the rest of the platform.\n\u003e\n\u003e This change gives you the choice for Android W\n\nHow? There\u0027s only one implementation. It\u0027s finalized or it isn\u0027t. What am I missing?",
+      "parentUuid": "f2f61b9f_27aca670",
+      "range": {
+        "startLine": 326,
+        "startChar": 16,
+        "endLine": 326,
+        "endChar": 18
+      },
+      "revId": "7ddf11eccf4e5faa2ce6b2b277a6fb7232f7252d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
