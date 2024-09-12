@@ -16,6 +16,9 @@ package aconfig
 
 import (
 	"android/soong/android"
+	"fmt"
+	"strings"
+
 	"github.com/google/blueprint"
 )
 
@@ -27,6 +30,9 @@ type ValueSetModule struct {
 	properties struct {
 		// aconfig_values modules
 		Values []string
+
+		// Paths to the Android.bp files where the aconfig_values modules are defined.
+		Srcs []string
 	}
 }
 
@@ -56,7 +62,30 @@ type valueSetProviderData struct {
 
 var valueSetProviderKey = blueprint.NewProvider[valueSetProviderData]()
 
+func (module *ValueSetModule) FindAconfigValuesFromSrc(ctx android.BottomUpMutatorContext) []string {
+	moduleDir := ctx.ModuleDir()
+	srcs := android.PathsForModuleSrcExcludes(ctx, module.properties.Srcs, []string{ctx.BlueprintsFile()})
+
+	aconfigValuesPrefix := strings.Replace(module.Name(), "aconfig_value_set", "aconfig-values", 1)
+	var moduleNames []string
+	for _, src := range srcs {
+		subDir := strings.TrimPrefix(src.String(), moduleDir+"/")
+		packageName, _, found := strings.Cut(subDir, "/")
+		if found {
+			moduleNames = append(moduleNames, fmt.Sprintf("%s-%s-all", aconfigValuesPrefix, packageName))
+		}
+	}
+	return moduleNames
+}
+
 func (module *ValueSetModule) DepsMutator(ctx android.BottomUpMutatorContext) {
+	// TODO: b/366285733 - Remove the file path based solution with more robust solution.
+	for _, moduleName := range module.FindAconfigValuesFromSrc(ctx) {
+		if ctx.OtherModuleExists(moduleName) {
+			ctx.AddDependency(ctx.Module(), valueSetTag, moduleName)
+		}
+	}
+
 	deps := ctx.AddDependency(ctx.Module(), valueSetTag, module.properties.Values...)
 	for _, dep := range deps {
 		_, ok := dep.(*ValuesModule)
