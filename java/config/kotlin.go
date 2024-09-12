@@ -50,4 +50,5 @@ func init() {
 	}, " "))
 
 	pctx.StaticVariable("KotlincGlobalFlags", strings.Join([]string{}, " "))
+	pctx.StaticVariable("KotlincKytheGlobalFlags", strings.Join([]string{"-language-version 1.9"}, " "))
 }
