@@ -52,6 +52,24 @@
       "parentUuid": "97aa28b1_5b4a59db",
       "revId": "08348d29049061a90dd4da8bb4ed6638acf84c98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6179e02b_cf520920",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2024-09-12T19:16:44Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m still wrapping my head around what the requirements are and how things work today, but I think I\u0027d really like, if nothing else, to disallow anything to be enumerated twice. I just feel like I\u0027m going to misread something because I forgot to look for the _other_ definitions.",
+      "parentUuid": "43e68085_81e56913",
+      "revId": "08348d29049061a90dd4da8bb4ed6638acf84c98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
