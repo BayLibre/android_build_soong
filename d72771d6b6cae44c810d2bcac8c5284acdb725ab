@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a0ef05_5aab5d97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-12T16:55:06Z",
+      "side": 1,
+      "message": "Submission of this change is currently blocked by b/358613520",
+      "revId": "d72771d6b6cae44c810d2bcac8c5284acdb725ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
