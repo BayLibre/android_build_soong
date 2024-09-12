@@ -33,6 +33,24 @@
       "message": "This comment should probably be on the variable definition, so that it\u0027s next to the actual `-language-version` flag.",
       "revId": "19011a22ddd6f25287879a74d87231507733377f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d5a33f_43b20682",
+        "filename": "java/kotlin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-12T18:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3598b0b_731bf582",
+      "revId": "19011a22ddd6f25287879a74d87231507733377f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
