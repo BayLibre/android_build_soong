@@ -318,12 +318,27 @@ def symbol_in_arch(tags: Tags, arch: Arch) -> bool:
 
 def symbol_in_llndk_api(tags: Iterable[Tag], arch: Arch, api: int) -> bool:
     """Returns true if the symbol is present for the given LLNDK API level."""
+
+    # LLNDK APIs may be released before NDK APIs, so we only allow
+    # APIs from the next version.
+    VERSION_LLNDK_IN_NDK = {
+        202404: 34, # V LLNDK can use U APIs
+        202504: 35, # W LLNDK can use V APIs
+    }
+
     # Check llndk= first.
     for tag in tags:
         if tag.startswith('llndk='):
             return api >= int(get_tag_value(tag))
+
     # If not, we keep old behavior: NDK symbols in <= 34 are LLNDK symbols.
-    return symbol_in_api(tags, arch, 34)
+    if api <= 34:
+        return symbol_in_api(tags, arch, 34)
+
+    if api not in VERSION_LLNDK_IN_NDK:
+        raise ParseError(f"Unrecognized LLNDK version: {api}")
+
+    return symbol_in_api(tags, arch, VERSION_LLNDK_IN_NDK[api])
 
 def symbol_in_api(tags: Iterable[Tag], arch: Arch, api: int) -> bool:
     """Returns true if the symbol is present for the given API level."""
