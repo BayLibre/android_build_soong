@@ -127,7 +127,7 @@ all_apex_contributions {
 
 product_config {
     name: "product_config",
-    visibility: ["//device/google/cuttlefish/system_image"],
+    visibility: ["//build/make/target/product/generic"],
 }
 
 build_prop {
@@ -136,7 +136,7 @@ build_prop {
     product_config: ":product_config",
     // Currently, only microdroid and cf system image can refer to system-build.prop
     visibility: [
-        "//device/google/cuttlefish/system_image",
+        "//build/make/target/product/generic",
         "//packages/modules/Virtualization/build/microdroid",
     ],
 }
