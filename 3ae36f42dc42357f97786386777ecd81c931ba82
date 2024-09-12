@@ -88,6 +88,24 @@
       "parentUuid": "9c6e70c4_88bda7a4",
       "revId": "3ae36f42dc42357f97786386777ecd81c931ba82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72439557_68d1942e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-12T22:00:56Z",
+      "side": 1,
+      "message": "The main idea behind this change is to limit the number of things that are constantly rebuilt due to the timestamp, so we wouldn\u0027t want to insert the date into the UI at build time. But having the settings app look it up at runtime is fine.",
+      "parentUuid": "5f4870eb_f2f39004",
+      "revId": "3ae36f42dc42357f97786386777ecd81c931ba82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
