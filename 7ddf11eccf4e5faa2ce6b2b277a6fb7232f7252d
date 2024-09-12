@@ -135,6 +135,30 @@
       },
       "revId": "7ddf11eccf4e5faa2ce6b2b277a6fb7232f7252d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "598e478e_7c118a27",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2024-09-12T21:20:24Z",
+      "side": 1,
+      "message": "\u003e Leaving it 35 means that the trend set by Trunk Stable, which allows for LL-NDK and NDK APIs to be defined at separate times\n\nThat\u0027s not one of the things trunk stable does afaik. Even if that\u0027s the plan, nothing about trunk stable applies to native APIs because the work needed to support it was never funded.\n\nI think the LL-NDK is approaching this as-if the _implementation_ could be separately stabilized. The map files define what\u0027s in the stubs and when something is added to each set of stubs can vary, but I can\u0027t think of a good reason to do so (aside from promoting LL-NDK APIs to the NDK, which is uncommon, and I\u0027ve never seen the reverse happen). There\u0027s only one implementation though. Trunk stable (that is, feature flags) can\u0027t change that. The LL-NDK has to finalize the implementation on the same schedule as the rest of the platform.\n\n\u003e pro: makes Android V start a trend, rather than being special\n\nA trend of what? I don\u0027t follow.\n\n\u003e pro: allows us to specify LL-NDK/NDK membership independently this year\n\nBeing _able_ to do that is one thing. Being _required_ to do that for every API is a con. The LL-NDK should inherit from the NDK by default and opt-out in the rare cases where that\u0027s necessary.",
+      "parentUuid": "3e764002_1de860da",
+      "range": {
+        "startLine": 326,
+        "startChar": 16,
+        "endLine": 326,
+        "endChar": 18
+      },
+      "revId": "7ddf11eccf4e5faa2ce6b2b277a6fb7232f7252d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
