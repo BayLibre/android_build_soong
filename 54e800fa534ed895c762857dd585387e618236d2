@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62f3693b_1d712712",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-09-12T18:37:39Z",
+      "side": 1,
+      "message": "This should go in noOverrideGlobalCflags, after the `-Wno-error\u003ddeprecated`.  Can you make sure the warning is silenced during `mmma art/libnativeloader`?  I am not sure if `-Wno-error\u003d` and `-Wno-` behaves as expected.",
+      "revId": "54e800fa534ed895c762857dd585387e618236d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
