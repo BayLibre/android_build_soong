@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed5f34f_2ce245a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-09-12T18:58:41Z",
+      "side": 1,
+      "message": "Add \"Bug: http://b/218805949\" as well.",
+      "revId": "ab8efc9be2476f3b59c0f80cb28fa7f30adf4f7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
