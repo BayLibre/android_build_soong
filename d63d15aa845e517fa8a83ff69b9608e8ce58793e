@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f59793c_eb07719b",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-12T04:02:38Z",
+      "side": 1,
+      "message": "this is repeated as well.",
+      "range": {
+        "startLine": 1076,
+        "startChar": 46,
+        "endLine": 1076,
+        "endChar": 90
+      },
+      "revId": "d63d15aa845e517fa8a83ff69b9608e8ce58793e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a0ba562_c19d9f6a",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-12T04:02:38Z",
+      "side": 1,
+      "message": "This can be done outside the loop.",
+      "range": {
+        "startLine": 1076,
+        "startChar": 6,
+        "endLine": 1076,
+        "endChar": 42
+      },
+      "revId": "d63d15aa845e517fa8a83ff69b9608e8ce58793e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fdf345c_806f26b6",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-12T04:02:38Z",
+      "side": 1,
+      "message": "nit: add a local variable for this as this is called multiple times.",
+      "range": {
+        "startLine": 1076,
+        "startChar": 23,
+        "endLine": 1076,
+        "endChar": 41
+      },
+      "revId": "d63d15aa845e517fa8a83ff69b9608e8ce58793e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e154e9b8_435ef5e0",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-12T04:02:38Z",
+      "side": 1,
+      "message": "are installed to different partitions.",
+      "range": {
+        "startLine": 1077,
+        "startChar": 62,
+        "endLine": 1077,
+        "endChar": 89
+      },
+      "revId": "d63d15aa845e517fa8a83ff69b9608e8ce58793e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
