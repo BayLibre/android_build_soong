@@ -159,6 +159,30 @@
       },
       "revId": "7ddf11eccf4e5faa2ce6b2b277a6fb7232f7252d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f61b9f_27aca670",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-09-12T23:00:44Z",
+      "side": 1,
+      "message": "\u003e I think the LL-NDK is approaching this as-if the implementation could be separately stabilized.\n\nTrunk Stable did apply to LL-NDK in Android V and that work was done and approved. If you want to make changes to that, I can put you in touch with the right people. Let me know! We can\u0027t exactly rewrite the past.\n\n\u003e The LL-NDK has to finalize the implementation on the same schedule as the rest of the platform.\n\nThis change gives you the choice for Android W, you can have it either way, up to you. If you want to make statements about what can ever happen in the future, you\u0027ll need to pursue that separately as it\u0027s way above what I can say. I can say flexibility in the code is great though!",
+      "parentUuid": "598e478e_7c118a27",
+      "range": {
+        "startLine": 326,
+        "startChar": 16,
+        "endLine": 326,
+        "endChar": 18
+      },
+      "revId": "7ddf11eccf4e5faa2ce6b2b277a6fb7232f7252d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
