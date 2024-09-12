@@ -16,6 +16,23 @@
       "message": "Is this warning unrelated? https://screenshot.googleplex.com/3hFtDJhCfYUfedC",
       "revId": "b2d10988b23fed24bf0f695a4ff66d00b159d09c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cfafbc4_a62605b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-09-12T19:00:46Z",
+      "side": 1,
+      "message": "Can you update the CL description about use of the build flag?",
+      "revId": "b2d10988b23fed24bf0f695a4ff66d00b159d09c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
