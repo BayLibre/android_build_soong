@@ -70,6 +70,24 @@
       "parentUuid": "958bb140_21c978ec",
       "revId": "3ae36f42dc42357f97786386777ecd81c931ba82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f4870eb_f2f39004",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2024-09-12T21:50:13Z",
+      "side": 1,
+      "message": "That\u0027s good to know... and it does seem to be correct:\n\n$ adbz shell getprop ro.build.fingerprint\ngoogle/mokey/mokey:VanillaIceCream/MAIN/eng.maze.20240409.191610:userdebug/dev-keys\n\n$ date +%Y%m%d.%H%M%S -d \"$(adbz shell getprop ro.build.date)\"                                                                                                            \n20240409.191608\n\nBut is that visible in the UI?  Settings \u003e About phone -\u003e Build number\n\nPerhaps we could have %%date%% here and have whatever generates the build property with ro.build.date replace it with the right value?",
+      "parentUuid": "9c6e70c4_88bda7a4",
+      "revId": "3ae36f42dc42357f97786386777ecd81c931ba82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
