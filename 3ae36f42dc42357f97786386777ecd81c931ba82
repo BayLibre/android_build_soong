@@ -52,6 +52,24 @@
       "parentUuid": "d3e31294_636817b7",
       "revId": "3ae36f42dc42357f97786386777ecd81c931ba82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c6e70c4_88bda7a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-12T21:23:06Z",
+      "side": 1,
+      "message": "Note that you can still get the build time from `adb shell getprop ro.build.date`. Is that sufficient?\n\nRe: `m installclean` - As of ~1 year ago I\u0027ve changed it so that you shouldn\u0027t need to use installclean to get correct results if you\u0027re using the emulator or flashing with `fasboot flashall`. If you\u0027re using `adb sync` it\u0027s still necessary though.",
+      "parentUuid": "958bb140_21c978ec",
+      "revId": "3ae36f42dc42357f97786386777ecd81c931ba82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
