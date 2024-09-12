@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8429635_a4321157",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-09-12T19:38:45Z",
+      "side": 1,
+      "message": "if this is 36 instead of 35, then NDK would imply LL-NDK for this release alone",
+      "range": {
+        "startLine": 326,
+        "startChar": 16,
+        "endLine": 326,
+        "endChar": 18
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e0f3588b_5b6c642f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/symbolfile/__init__.py",
+              "range": {
+                "startLine": 326,
+                "startChar": 0,
+                "endLine": 327,
+                "endChar": 0
+              },
+              "replacement": "        202504: 36, # W LLNDK can use V APIs\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7ddf11eccf4e5faa2ce6b2b277a6fb7232f7252d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
