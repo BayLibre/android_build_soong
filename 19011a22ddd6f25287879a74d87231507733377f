@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ca28ce_c46f20c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-12T18:21:18Z",
+      "side": 1,
+      "message": "@peskal@google.com since he\u0027s looking at kotlin 2.0 in the platform.",
+      "revId": "19011a22ddd6f25287879a74d87231507733377f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3598b0b_731bf582",
