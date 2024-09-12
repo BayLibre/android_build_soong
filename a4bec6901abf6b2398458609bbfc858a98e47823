@@ -104,6 +104,24 @@
       "parentUuid": "4d7d4ee6_e65ad309",
       "revId": "a4bec6901abf6b2398458609bbfc858a98e47823",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a61852f2_06834c77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-12T17:12:07Z",
+      "side": 1,
+      "message": "The build flag is fine as-is, but if something goes wrong the whole topic will be reverted and you\u0027ll have to start over.  If you separate out the part that sets the flag for trunk_staging then you can submit this part without risking it being reverted, then submit the flag flip, and if that gets reverted you can just fix-forward and reland the flag.",
+      "parentUuid": "85a05b0d_73d6a130",
+      "revId": "a4bec6901abf6b2398458609bbfc858a98e47823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
