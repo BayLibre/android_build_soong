@@ -68,6 +68,24 @@
       "parentUuid": "fa63b85b_f3e87296",
       "revId": "a4bec6901abf6b2398458609bbfc858a98e47823",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d7d4ee6_e65ad309",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2024-09-12T12:39:26Z",
+      "side": 1,
+      "message": "Added build flag for this, default on for trunk staging\n\nWith regards to the other size increases:\ndocumentsui: \nhttps://cs.android.com/android/platform/superproject/main/+/main:packages/apps/DocumentsUI/proguard.flags;l\u003d29\neasteregg:\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/packages/EasterEgg/proguard.flags;l\u003d4\nwallpaperpicker:\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:vendor/unbundled_google/packages/WallpaperPickerGoogle/proguard.flags;l\u003d10",
+      "parentUuid": "45d8dbac_4c4b3da5",
+      "revId": "a4bec6901abf6b2398458609bbfc858a98e47823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
