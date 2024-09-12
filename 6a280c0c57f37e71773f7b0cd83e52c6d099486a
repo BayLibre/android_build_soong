@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0d75ed3_d06cdbfa",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1666,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-12T17:43:59Z",
+      "side": 1,
+      "message": "Either uncomment or remove.",
+      "revId": "6a280c0c57f37e71773f7b0cd83e52c6d099486a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
