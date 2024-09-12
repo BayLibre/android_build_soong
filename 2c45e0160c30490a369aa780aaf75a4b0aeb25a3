@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a8c6ac8_ee0a57e3",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-09-12T18:12:18Z",
+      "side": 1,
+      "message": "Should we actually delete this block instead? If so, we should also mention this Bug number in the commit message.",
+      "fixSuggestions": [
+        {
+          "fixId": "5e3a3f60_c0684aaa",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/config/global.go",
+              "range": {
+                "startLine": 124,
+                "startChar": 0,
+                "endLine": 127,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "2c45e0160c30490a369aa780aaf75a4b0aeb25a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
