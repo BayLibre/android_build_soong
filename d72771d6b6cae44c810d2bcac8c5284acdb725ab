@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19951aa4_d10d58b0",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2418,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-12T21:06:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0314e46d_83188d9d",
+      "range": {
+        "startLine": 2418,
+        "startChar": 3,
+        "endLine": 2418,
+        "endChar": 39
+      },
+      "revId": "d72771d6b6cae44c810d2bcac8c5284acdb725ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04ba996a_81822983",
