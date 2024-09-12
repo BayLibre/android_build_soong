@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f45a06d_e9379f6e",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-09-12T20:58:25Z",
+      "side": 1,
+      "message": "I\u0027ll disambiguate:\n\n\"[LL-NDK] APIs from the next version [to include NDK APIs]\"\n\"[NDK] APIs from the previous version [to be included in the LL-NDK]\"",
+      "parentUuid": "488df4a4_8a0c1d6a",
+      "range": {
+        "startLine": 323,
+        "startChar": 20,
+        "endLine": 323,
+        "endChar": 24
+      },
+      "revId": "7ddf11eccf4e5faa2ce6b2b277a6fb7232f7252d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8429635_a4321157",
         "filename": "cc/symbolfile/__init__.py",
         "patchSetId": 1
@@ -79,6 +103,30 @@
       "side": 1,
       "message": "while i think there\u0027s an argument that that would be fine _for bionic_, it\u0027s not true for ndk api in general, and is the whole reason they want the llndk to lag behind?",
       "parentUuid": "f8429635_a4321157",
+      "range": {
+        "startLine": 326,
+        "startChar": 16,
+        "endLine": 326,
+        "endChar": 18
+      },
+      "revId": "7ddf11eccf4e5faa2ce6b2b277a6fb7232f7252d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e764002_1de860da",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-09-12T20:58:25Z",
+      "side": 1,
+      "message": "It should be fine for all NDK libraries (which are also LL-NDK libraries, the only ones this matters for). LL-NDK has always implicitly included NDK APIs, using \u002736\u0027 would mean that we have the same behavior here that we\u0027ve always had for the LL-NDK/NDK in Android.\n\nLeaving it 35 means that the trend set by Trunk Stable, which allows for LL-NDK and NDK APIs to be defined at separate times, to continue moving forward. The reason the LL-NDK had to lag behind for 202404/34 was because the LL-NDK API was frozen 1 quarter earlier last year.\n\nLeaving it as 35 is also the most flexible choice possible here, which is why I put it in the CL itself. It\u0027s my preference beacuse:\n- pro: makes Android V start a trend, rather than being special\n- pro: allows us to specify LL-NDK/NDK membership independently this year\n- con: requires two lines of .txt for an API to be included in 202404 and 36",
+      "parentUuid": "349a258f_95b7894f",
       "range": {
         "startLine": 326,
         "startChar": 16,
