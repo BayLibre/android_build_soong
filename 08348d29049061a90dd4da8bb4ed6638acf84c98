@@ -34,6 +34,24 @@
       "parentUuid": "2a55b7d3_01b286f0",
       "revId": "08348d29049061a90dd4da8bb4ed6638acf84c98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e68085_81e56913",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-12T01:58:13Z",
+      "side": 1,
+      "message": "Justin, I think Dan wants to make such case a hard error.",
+      "parentUuid": "97aa28b1_5b4a59db",
+      "revId": "08348d29049061a90dd4da8bb4ed6638acf84c98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
