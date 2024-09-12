@@ -16,6 +16,24 @@
       "message": "FYI: the lack of a build timestamp is super annoying - because it\u0027s later unclear what OS version a phone is running when you look at it days later,  I keep the changes to this line reverted in my local client.",
       "revId": "3ae36f42dc42357f97786386777ecd81c931ba82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3e31294_636817b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-12T18:21:22Z",
+      "side": 1,
+      "message": "I would be interested to hear more about the usecase. A timestamp doesn\u0027t actually tell you anything concrete about the OS version, given it could be from different branches, have local changes, be built using a different configuration, etc.",
+      "parentUuid": "85d29498_de7fa698",
+      "revId": "3ae36f42dc42357f97786386777ecd81c931ba82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
