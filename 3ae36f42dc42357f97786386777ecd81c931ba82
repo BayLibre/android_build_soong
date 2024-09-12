@@ -34,6 +34,24 @@
       "parentUuid": "85d29498_de7fa698",
       "revId": "3ae36f42dc42357f97786386777ecd81c931ba82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "958bb140_21c978ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2024-09-12T18:50:28Z",
+      "side": 1,
+      "message": "There\u0027s never a reason to build a release branch as you can just use an official release build (and flashstation) instead and cut down on sync+build time (ditto for older releases).\n\nAs such we actually don\u0027t have any different branches that are useful: just goog/main and aosp/main, and the difference between those two is *utterly* obvious.\n\nSince \u0027user\u0027 builds aren\u0027t useful for debugging (too locked down), and \u0027eng\u0027 builds are utterly untested and thus things often don\u0027t work quite right (been bitten by this *many* times over the years and spent hours debugging crazy failures) this makes \u0027eng\u0027 a waste of time in spite of \u0027userdebug\u0027 building slower.  Hence only \u0027userdebug\u0027 exists for dev purposes.  Why don\u0027t we just delete the \u0027eng\u0027 target?\n\nI\u0027m pretty sure I could break eng build or boot and TH would still +2 my CL.\nActually let\u0027s test that: https://android-review.git.corp.google.com/c/platform/packages/modules/Connectivity/+/3264718\n\nbtw. this also applies to \u0027m installclean\u0027 - not running it has bitten me so many times that I have it hardcoded into my default build/flash scripts.  I only make an exception and not run it when I *know* I recently built the tree and haven\u0027t synced or changed too much since.\n\nSimilarly \u0027trunk_staging\u0027 is the only thing that\u0027s actually relatively well tested at head (for example, next isn\u0027t even in treehugger: TH *will* +2 \u0026 autosubmit changes that break all *-next-* build targets - I know as I\u0027ve quite recently merged such changes and they were only reverted later after ab/ went a brilliant shade of red), so you\u0027d have to be crazy to sync/build/flash the not-even-build-tested other targets.\n\nFurthermore since I mostly work on mainline module code, I don\u0027t want the prebuilts, so I\u0027m always building those from source.\n\nAs such I *always* build phonecodename-trunk_staging-userdebug (with modules from source) from a recently (\u003c48 hours) synced goog/main (checking ab/ to see it\u0027s not too red) with the same-ish set of local changes (to fix a few personal annoyances), so it actually does tell me all I need to know: it tells me how old the build is.\n\nIt doesn\u0027t need to be second accurate, but already just the day is useful.  If I built/flashed it today, I know what\u0027s on the phone because I still remember.  If it\u0027s a few days/weeks old then it falls out of my mind, and yet the day is still enough to tell me roughly what the state of the codebase is (a build from the 13th will include everything merged before the 10th and nothing from the 14th).\n\nSure, some of this is related to how I personally do development...",
+      "parentUuid": "d3e31294_636817b7",
+      "revId": "3ae36f42dc42357f97786386777ecd81c931ba82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
