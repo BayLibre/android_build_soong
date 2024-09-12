@@ -97,6 +97,8 @@ var (
 		"-Wno-sign-compare",
 		// Poor signal to noise ratio.
 		"-Wno-unused",
+		// Disabling until the warning is fixed in libc++abi header files b/366180429
+		"-Wno-deprecated-dynamic-exception-spec",
 
 		// Global preprocessor constants.
 
