@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "839f7fe7_e0c03dda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-09-13T01:59:21Z",
+      "side": 1,
+      "message": "With this change, 202504 LLNDK stubgen will include all ndk symbols introduced in 35 and `# llndk\u003d202404` symbols that cause duplication.\naosp/3256716 includes this change and avoids duplication errors for the `# llndk\u003d202404` tags.\n\nI also agree on this change, but we must also agree on handling the earlier LLNDK symbols in the same CL.",
+      "revId": "7ddf11eccf4e5faa2ce6b2b277a6fb7232f7252d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "488df4a4_8a0c1d6a",
         "filename": "cc/symbolfile/__init__.py",
         "patchSetId": 1
