@@ -232,11 +232,7 @@ def extract_uses_libs_xml(xml):
 
 
 def first_unique_elements(l):
-    result = []
-    for x in l:
-        if x not in result:
-            result.append(x)
-    return result
+    return sorted(list(set(l)))
 
 
 def uses_library_name(lib):
