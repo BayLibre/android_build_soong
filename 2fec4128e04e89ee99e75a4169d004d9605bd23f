@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06d6d49d_69fd07cc",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2024-09-13T11:51:59Z",
+      "side": 1,
+      "message": "This seems to cause soong re-runs everytime I run `build/make/tools/aconfig/aflags/src/main.rs`\n\nThere\u0027s no glob per se in the Android.bp but it seems like aflags.test has an implicit glob to something like \"**/AndroidTest.xml\"\n`{\"Pattern\":\"build/make/tools/aconfig/aflags/AndroidTest.xml\",\"Excludes\":null,\"Matches\":null,\"Deps\":[\"build/make/tools/aconfig/aflags\"]}`\n\nSince an inner file of the directory has been updated also its own mtime has been updated, thus forcing a rebuild.\n\nThis doesn\u0027t seem to happen in android15-release (with the old glob behavior) because it used the \"generated\" file list vs the glob rules + timestamp.\n\nLooking at the pattern rules a lot entries are caused by the AndroidTest.xml glob and every subdir will face the same issue...",
+      "range": {
+        "startLine": 766,
+        "startChar": 0,
+        "endLine": 769,
+        "endChar": 6
+      },
+      "revId": "2fec4128e04e89ee99e75a4169d004d9605bd23f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
