@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fcb762d_841a591f",
+        "filename": "scripts/manifest_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-13T18:20:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f709221_c1dc5f63",
+      "range": {
+        "startLine": 207,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 65
+      },
+      "revId": "57842d22b7482717783f90d17bf24d9a817a7390",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e7e1d4f_fd79737e",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-12T00:04:07Z",
       "side": 1,
       "message": "Should this be `false` to match the required value of `bar` in the input manifest?",
+      "range": {
+        "startLine": 380,
+        "startChar": 60,
+        "endLine": 380,
+        "endChar": 64
+      },
+      "revId": "57842d22b7482717783f90d17bf24d9a817a7390",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee5e4a5_8ef86781",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-13T18:20:34Z",
+      "side": 1,
+      "message": "The input manifest is two different application tags, one with `foo` false and no `bar`, and one with `bar` false and no `foo`.  This the modified version of the first application tag, which keeps its `foo` false, and adds a `bar` true.  The next line is the second application tag, which keeps its `bar` false and adds a `foo` true.",
+      "parentUuid": "2e7e1d4f_fd79737e",
       "range": {
         "startLine": 380,
         "startChar": 60,
