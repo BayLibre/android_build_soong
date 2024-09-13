@@ -516,6 +516,9 @@ type androidTransitionMutator struct {
 }
 
 func (a *androidTransitionMutator) Split(ctx blueprint.BaseModuleContext) []string {
+	if a.finalPhase {
+		panic("TransitionMutator not allowed in FinalDepsMutators")
+	}
 	if m, ok := ctx.Module().(Module); ok {
 		moduleContext := m.base().baseModuleContextFactory(ctx)
 		return a.mutator.Split(&moduleContext)
