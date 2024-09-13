@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "895ebf44_4973ec84",
+        "filename": "java/kotlin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-13T21:52:56Z",
+      "side": 1,
+      "message": "Deps already contains the common srcs from up here, shouldn\u0027t need to readd them.",
+      "revId": "5cc91d25bbd475252080d3729496a5e4614ae0d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
