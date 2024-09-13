@@ -16,6 +16,24 @@
       "message": "Deps already contains the common srcs from up here, shouldn\u0027t need to readd them.",
       "revId": "5cc91d25bbd475252080d3729496a5e4614ae0d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e26131f_f14f7a49",
+        "filename": "java/kotlin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-13T22:14:13Z",
+      "side": 1,
+      "message": "good catch, I was incorrect about this. I have removed this statement.",
+      "parentUuid": "895ebf44_4973ec84",
+      "revId": "5cc91d25bbd475252080d3729496a5e4614ae0d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
