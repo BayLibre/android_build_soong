@@ -1257,7 +1257,7 @@ func ExistentPathForSource(ctx PathGlobContext, pathComponents ...string) Option
 		return OptionalPath{}
 	}
 
-	exists, err := existsWithDependencies(ctx, path)
+	exists, _, err := ctx.Config().fs.Exists(path.String())
 	if err != nil {
 		reportPathError(ctx, err)
 		return OptionalPath{}
@@ -1265,6 +1265,16 @@ func ExistentPathForSource(ctx PathGlobContext, pathComponents ...string) Option
 	if !exists {
 		return InvalidOptionalPath(path.String() + " does not exist")
 	}
+
+	// Use glob to produce proper dependencies, even though we only want
+	// a single file.
+	_, err = ctx.GlobWithDeps(path.String(), nil)
+
+	if err != nil {
+		reportPathError(ctx, err)
+		return OptionalPath{}
+	}
+
 	return OptionalPathForPath(path)
 }
 
