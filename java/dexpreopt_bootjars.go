@@ -1186,8 +1186,9 @@ func bootImageProfileRuleCommon(ctx android.ModuleContext, name string, dexFiles
 		return nil
 	}
 
-	defaultProfile := "frameworks/base/config/boot-image-profile.txt"
-	extraProfile := "frameworks/base/config/boot-image-profile-extra.txt"
+	defaultProfile := "frameworks/base/boot/boot-image-profile.txt"
+	artProfile := "art/build/boot/boot-image-profile.txt"
+	extraProfile := "frameworks/base/boot/boot-image-profile-extra.txt"
 
 	rule := android.NewRuleBuilder(pctx, ctx)
 
@@ -1201,6 +1202,9 @@ func bootImageProfileRuleCommon(ctx android.ModuleContext, name string, dexFiles
 		// like master-art-host that don't have frameworks/base).
 		// Return nil and continue without profile.
 		return nil
+	}
+	if path := android.ExistentPathForSource(ctx, artProfile); path.Valid() {
+		profiles = append(profiles, path.Path())
 	}
 	if path := android.ExistentPathForSource(ctx, extraProfile); path.Valid() {
 		profiles = append(profiles, path.Path())
