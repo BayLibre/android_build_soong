@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf368677_88c27999",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-13T21:32:22Z",
+      "side": 1,
+      "message": "This should be submitted after a new prebuilt kotlinc_extractor is published containing https://r.android.com/3266381",
+      "revId": "7fa59a48abbb7d427ada7ddd80eff99334163fc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
