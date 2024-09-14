@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2984e47c_ec7b8ef5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-14T00:23:01Z",
+      "side": 1,
+      "message": "drive-by comment: I believe my changes (soong: aosp/3184953, llvm: aosp/3195596) is responsible for the presubmit failures observed here. (sorry for the breakage)\n\n- The soong CL stack switched the build rules to link against stubs generated from symbol files instead of the checked-in so files. \n- The LLVM CL modified the mapfile.py gen script to add `#systemapi` annotations to the symbol files of libclang_rt libs\n\nHowever, this annotation should only be used for platform libraries, otherwise the symbols will be missing in the generated stub files. This value is not correct for `libclang_rt.hwasan`, since it is part of [runtime apex](https://source.corp.google.com/h/googleplex-android/platform/bionic/+/ce87f19bc5c12b6fed301517257194c41d7cf204:apex/Android.bp;l\u003d48;drc\u003dd13ca8d06a1acbfac60b275e6d5026a5116fbd45;bpv\u003d0;bpt\u003d0) for 64 bit builds",
+      "revId": "5c613a0c70f40d91288daad49ef2be377a76d5f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
