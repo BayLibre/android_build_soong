@@ -69,6 +69,24 @@
       "message": "The abtd runs failed... the first failure is:\n\n```\nprebuilts/remoteexecution-client/live/rewrapper --labels\u003dtool\u003dclang,type\u003dlink --platform\u003d\"Pool\u003djava16,container-image\u003ddocker://gcr.io/androidbuild-re-dockerimage/android-build-remoteexec-image@sha256:1eb7f64b9e17102b970bd7a1af7daaebdb01c3fb777715899ef462d6c6d01a45\" --exec_strategy\u003dremote_local_fallback --inputs\u003dout/soong/.intermediates/art/imgdiag/imgdiag/android_riscv64_apex31/unstripped/imgdiag64.rsp,out/soong/.intermediates/system/libbase/libbase/android_riscv64_shared_apex31/libbase.so.toc,out/soong/.intermediates/art/runtime/libart/android_riscv64_shared_apex31/libart.so.toc,out/soong/.intermediates/art/libartbase/libartbase/android_riscv64_shared_apex31/libartbase.so.toc,out/soong/.intermediates/prebuilts/clang/host/linux-x86/libc++/android_riscv64_shared_apex31/libc++.so.toc,out/soong/.intermediates/bionic/libc/libc/android_riscv64_shared_current/libc.so.toc,out/soong/.intermediates/bionic/libm/libm/android_riscv64_shared_current/libm.so.toc,out/soong/.intermediates/bionic/libdl/libdl/android_riscv64_shared_current/libdl.so.toc,out/soong/.intermediates/system/libprocinfo/libprocinfo/android_riscv64_static_apex31/libprocinfo.a,prebuilts/clang/host/linux-x86/clang-r530567/android_libc++/platform/riscv64/lib/libc++demangle.a,prebuilts/clang/host/linux-x86/clang-r530567/lib/clang/19/lib/linux/libclang_rt.builtins-riscv64-android.a,out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_riscv64_apex31/crtbegin_dynamic.o,out/soong/.intermediates/bionic/libc/crtend_android/android_riscv64_apex31/crtend_android.o --input_list_paths\u003dout/soong/.intermediates/art/imgdiag/imgdiag/android_riscv64_apex31/unstripped/imgdiag64.rsp --output_files\u003dout/soong/.intermediates/art/imgdiag/imgdiag/android_riscv64_apex31/unstripped/imgdiag64, --toolchain_inputs\u003dprebuilts/clang/host/linux-x86/clang-r530567/bin/clang++ --env_var_allowlist\u003dLANG,LC_MESSAGES,PYTHONDONTWRITEBYTECODE -- prebuilts/clang/host/linux-x86/clang-r530567/bin/clang++ out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_riscv64_apex31/crtbegin_dynamic.o @out/soong/.intermediates/art/imgdiag/imgdiag/android_riscv64_apex31/unstripped/imgdiag64.rsp out/soong/.intermediates/bionic/libc/crtend_android/android_riscv64_apex31/crtend_android.o -o out/soong/.intermediates/art/imgdiag/imgdiag/android_riscv64_apex31/unstripped/imgdiag64 -target riscv64-linux-android10000 -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--build-id\u003dmd5 -Wl,--fatal-warnings -Wl,--no-undefined-version -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libgcc_stripped.a -Wl,--exclude-libs,libunwind_llvm.a -Wl,--exclude-libs,libunwind.a -fuse-ld\u003dlld -Wl,--icf\u003dsafe -Wl,--no-demangle -Wl,--compress-debug-sections\u003dzstd -Wl,--pack-dyn-relocs\u003dandroid+relr -Wl,--no-undefined -march\u003drv64gcv_zba_zbb_zbs -Wl,-mllvm -Wl,-jump-is-expensive\u003dfalse -Wl,-z,max-page-size\u003d4096   -pie -nostdlib -Bdynamic -Wl,--gc-sections -Wl,-z,nocopyreloc -Wl,--exclude-libs\u003dlibziparchive.a -flto\u003dthin -fsplit-lto-unit -Wl,-plugin-opt,-import-instr-limit\u003d5 -Wl,--exclude-libs\u003dlibclang_rt.builtins-riscv64-android.a -Wl,-dynamic-linker,/system/bin/linker64 \n\n```",
       "revId": "89a29dccc40f09f800cbd66c782f1e277b79b0ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7521206_f389cb59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-09-16T05:57:49Z",
+      "side": 1,
+      "message": "```\nld.lld: error: art/imgdiag/imgdiag.cc:1419:0: stack frame size (1744) exceeds limit (1736) in function \u0027_ZN3art13ImgDiagDumper13DumpImageDiffERKNS_11ImageHeaderERKNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEERKNS4_13unordered_mapIPNS_6mirror6ObjectENS_12_GLOBAL__N_110ParentInfoENS4_4hashISG_EENS4_8equal_toISG_EENS8_INS4_4pairIKSG_SI_EEEEEE\u0027\n```",
+      "parentUuid": "6b90fd04_e41a010f",
+      "revId": "89a29dccc40f09f800cbd66c782f1e277b79b0ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
