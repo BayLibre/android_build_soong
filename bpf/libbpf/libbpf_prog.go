@@ -89,6 +89,8 @@ type LibbpfProgProperties struct {
 	// be added to the include path using -I
 	Local_include_dirs []string `android:"arch_variant"`
 
+	Header_libs []string `android:"arch_variant"`
+
 	// optional subdirectory under which this module is installed into.
 	Relative_install_path string
 }
@@ -141,6 +143,7 @@ func (libbpf *libbpfProg) SetImageVariation(ctx android.BaseModuleContext, varia
 
 func (libbpf *libbpfProg) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddDependency(ctx.Module(), libbpfProgDepTag, "libbpf_headers")
+	ctx.AddVariationDependencies(nil, cc.HeaderDepTag(), libbpf.properties.Header_libs...)
 }
 
 func (libbpf *libbpfProg) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -243,9 +246,16 @@ func (libbpf *libbpfProg) AndroidMk() android.AndroidMkData {
 			fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
 			fmt.Fprintln(w)
 			var localModulePath string
+			var localHeaderLibs string
+
 			localModulePath = "LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/bpf/libbpf"
 			if len(libbpf.properties.Relative_install_path) > 0 {
 				localModulePath += "/" + libbpf.properties.Relative_install_path
+			}
+			if len(libbpf.properties.Header_libs) > 0 {
+				for _, headerlib := range libbpf.properties.Header_libs {
+					localHeaderLibs += " " + headerlib
+				}
 			}
 			for _, obj := range libbpf.objs {
 				objName := name + "_" + obj.Base()
@@ -261,6 +271,7 @@ func (libbpf *libbpfProg) AndroidMk() android.AndroidMkData {
 					extra(w, nil)
 				}
 				fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
+				fmt.Fprintln(w, "LOCAL_HEADER_LIBS :=", localHeaderLibs)
 				fmt.Fprintln(w)
 			}
 			fmt.Fprintln(w, "include $(CLEAR_VARS)", " # libbpf.libbpf")
