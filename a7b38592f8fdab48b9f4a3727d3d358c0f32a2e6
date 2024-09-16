@@ -34,6 +34,24 @@
       "parentUuid": "4ba86d73_efecd4dd",
       "revId": "a7b38592f8fdab48b9f4a3727d3d358c0f32a2e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "300a3a10_bf3085a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-09-16T16:54:47Z",
+      "side": 1,
+      "message": "\u003e SystemUI it is already enabled by default :-)\n\nRight, I was curious as I don\u0027t recall if we discussed build time impact back when we enabled it for SystemUI. Thanks for confirming!",
+      "parentUuid": "d576bcc5_beb52bfe",
+      "revId": "a7b38592f8fdab48b9f4a3727d3d358c0f32a2e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
