@@ -89,6 +89,8 @@ type LibbpfProgProperties struct {
 	// be added to the include path using -I
 	Local_include_dirs []string `android:"arch_variant"`
 
+	Header_libs []string `android:"arch_variant"`
+
 	// optional subdirectory under which this module is installed into.
 	Relative_install_path string
 }
@@ -141,6 +143,7 @@ func (libbpf *libbpfProg) SetImageVariation(ctx android.BaseModuleContext, varia
 
 func (libbpf *libbpfProg) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddDependency(ctx.Module(), libbpfProgDepTag, "libbpf_headers")
+	ctx.AddVariationDependencies(nil, cc.HeaderDepTag(), libbpf.properties.Header_libs...)
 }
 
 func (libbpf *libbpfProg) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -181,6 +184,11 @@ func (libbpf *libbpfProg) GenerateAndroidBuildActions(ctx android.ModuleContext)
 			} else {
 				depName := ctx.OtherModuleName(dep)
 				ctx.ModuleErrorf("module %q is not a genrule", depName)
+			}
+		} else if depTag == cc.HeaderDepTag() {
+			depExporterInfo, _ := android.OtherModuleProvider(ctx, dep, cc.FlagExporterInfoProvider)
+			for _, dir := range depExporterInfo.IncludeDirs {
+				cflags = append(cflags, "-I "+dir.String())
 			}
 		}
 	})
@@ -243,6 +251,7 @@ func (libbpf *libbpfProg) AndroidMk() android.AndroidMkData {
 			fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
 			fmt.Fprintln(w)
 			var localModulePath string
+
 			localModulePath = "LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/bpf/libbpf"
 			if len(libbpf.properties.Relative_install_path) > 0 {
 				localModulePath += "/" + libbpf.properties.Relative_install_path
