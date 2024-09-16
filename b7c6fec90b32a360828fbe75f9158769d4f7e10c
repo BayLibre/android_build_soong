@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b73d16_9d8e237c",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-16T20:21:32Z",
+      "side": 1,
+      "message": "Not for this cl, but would it be a good idea to make a provider type that\u0027s set in a certain mutator and then no longer available to be read after another mutator? This could help not just with capsulation, but incremental soong could skip checking/caching these providers in certain cases.",
+      "revId": "b7c6fec90b32a360828fbe75f9158769d4f7e10c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af957f7e_c4e86188",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-16T20:21:32Z",
+      "side": 1,
+      "message": "Could you add a comment why this logic here is necessary? It seems confusing that the os will change only if there\u0027s 1 possibility. Should it error out if there\u0027s more than 1 possibility?",
+      "revId": "b7c6fec90b32a360828fbe75f9158769d4f7e10c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2435b23_6ab1ea53",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-16T20:21:32Z",
+      "side": 1,
+      "message": "This check shouldn\u0027t be necessary because we\u0027re essentially doing it with the `variation \u003d\u003d \"\"` check below.",
+      "range": {
+        "startLine": 492,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 2
+      },
+      "revId": "b7c6fec90b32a360828fbe75f9158769d4f7e10c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9de7ab1_7019e3a4",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-16T20:21:32Z",
+      "side": 1,
+      "message": "Either bring this back or update the comment. The comment could probably use updating either way actually.",
+      "revId": "b7c6fec90b32a360828fbe75f9158769d4f7e10c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
