@@ -16,6 +16,24 @@
       "message": "Out of curiosity, how does this affect build times? Like for SystemUI, is the target build time comparable with and without advanced resource shrinking?",
       "revId": "a7b38592f8fdab48b9f4a3727d3d358c0f32a2e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d576bcc5_beb52bfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2024-09-16T06:09:21Z",
+      "side": 1,
+      "message": "it is, and for SystemUI it is already enabled by default :-)",
+      "parentUuid": "4ba86d73_efecd4dd",
+      "revId": "a7b38592f8fdab48b9f4a3727d3d358c0f32a2e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
