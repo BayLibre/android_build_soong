@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "085d94ea_d84ab300",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-16T18:06:32Z",
+      "side": 1,
+      "message": "Reverting sounds reasonable to me for unblocking the clang update. But if a forward fix is acceptable, can we consider modifying the tags in `libclang_rt.hwasan`\u0027s symbol file from `#systemapi` to `#apex`?",
+      "revId": "7b2056e36e3ccc8cad64e32f87b4bbc0efbfb955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
