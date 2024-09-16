@@ -87,6 +87,41 @@
       "parentUuid": "6b90fd04_e41a010f",
       "revId": "89a29dccc40f09f800cbd66c782f1e277b79b0ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d84c29_0e07ae7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-09-16T12:07:43Z",
+      "side": 1,
+      "message": "or, more helpfully:\n```\nld.lld: error: art/imgdiag/imgdiag.cc:1419:0: stack frame size (1744) exceeds limit (1736) in function \u0027_ZN3art13ImgDiagDumper13DumpImageDiffERKNS_11ImageHeaderERKNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEERKNS4_13unordered_mapIPNS_6mirror6ObjectENS_12_GLOBAL__N_110ParentInfoENS4_4hashISG_EENS4_8equal_toISG_EENS8_INS4_4pairIKSG_SI_EEEEEE\u0027\n```\nwhich is pretty harmless, especially because 1736 seems like a number pulled out of the air (\"that\u0027s what we needed on the architectures we were building for at the time\").\n\ntry again in a topic with https://android-review.git.corp.google.com/c/platform/art/+/3266996?",
+      "parentUuid": "6b90fd04_e41a010f",
+      "revId": "89a29dccc40f09f800cbd66c782f1e277b79b0ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "113a05b8_07589105",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-09-16T12:07:43Z",
+      "side": 1,
+      "message": "(oops, looks like i forgot to hit \"send\" on friday... nor did i add you to https://android-review.git.corp.google.com/c/platform/art/+/3266996 /facepalm)",
+      "revId": "89a29dccc40f09f800cbd66c782f1e277b79b0ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
