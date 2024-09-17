@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95165f4a_3d67d8d9",
+        "filename": "android/gen_product_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-17T21:52:34Z",
+      "side": 1,
+      "message": "Please call this file `product_config_to_bp.go` and the phony `product_config_to_bp`.",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "9414f0334eca692df150b3357c3507aa41e13438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
