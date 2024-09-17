@@ -16,6 +16,24 @@
       "message": "This should be submitted after a new prebuilt kotlinc_extractor is published containing https://r.android.com/3266381",
       "revId": "7fa59a48abbb7d427ada7ddd80eff99334163fc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7287d91_89e08f86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-17T16:58:57Z",
+      "side": 1,
+      "message": "This change should be available in the prebuilt drop of https://r.android.com/3269874",
+      "parentUuid": "bf368677_88c27999",
+      "revId": "7fa59a48abbb7d427ada7ddd80eff99334163fc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
