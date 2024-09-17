@@ -57,6 +57,7 @@ bootstrap_go_package {
         "filegroup.go",
         "fixture.go",
         "gen_notice.go",
+        "gen_product_config.go",
         "hooks.go",
         "image.go",
         "init.go",
