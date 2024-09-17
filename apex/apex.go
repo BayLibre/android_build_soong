@@ -59,7 +59,6 @@ func registerPreArchMutators(ctx android.RegisterMutatorsContext) {
 }
 
 func RegisterPreDepsMutators(ctx android.RegisterMutatorsContext) {
-	ctx.TopDown("apex_vndk", apexVndkMutator).Parallel()
 	ctx.BottomUp("apex_vndk_deps", apexVndkDepsMutator).Parallel()
 }
 
