@@ -14,11 +14,14 @@
 
 package android
 
-import "github.com/google/blueprint/proptools"
+import (
+	"github.com/google/blueprint/proptools"
+)
 
 func init() {
 	ctx := InitRegistrationContext
 	ctx.RegisterModuleType("product_config", productConfigFactory)
+	ctx.RegisterParallelSingletonType("product_config_to_bp_singleton", productConfigToBpSingletonFactory)
 }
 
 type productConfigModule struct {
@@ -57,4 +60,18 @@ func productConfigFactory() Module {
 	module := &productConfigModule{}
 	InitAndroidModule(module)
 	return module
+}
+
+type productConfigToBpSingleton struct{}
+
+func (s *productConfigToBpSingleton) GenerateBuildActions(ctx SingletonContext) {
+	// TODO: update content from make-based product config
+	var content string
+	generatedBp := PathForOutput(ctx, "soong_generated_product_config.bp")
+	WriteFileRule(ctx, generatedBp, content)
+}
+
+// productConfigToBpSingleton generates a bp file from make-based product config
+func productConfigToBpSingletonFactory() Singleton {
+	return &productConfigToBpSingleton{}
 }
