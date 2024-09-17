@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a2494cf_1239cea5",
+        "filename": "bpf/libbpf/libbpf_prog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-17T17:51:19Z",
+      "side": 1,
+      "message": "You don\u0027t need this, Make isn\u0027t going to do anything with it abd it\u0027s going to cause unnecessary kati reanalysis when it changes.",
+      "revId": "23bba28f016b13e1303ac572993f27c587a09d1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
