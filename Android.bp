@@ -106,6 +106,10 @@ dex_bootjars {
     name: "dex_bootjars",
 }
 
+dex_bootjars_host {
+    name: "dex_bootjars_host",
+}
+
 // Pseudo-test that's run on checkbuilds to ensure that get_clang_version can
 // parse cc/config/global.go.
 genrule {
