@@ -17,7 +17,6 @@ package android
 import (
 	"bytes"
 	"encoding/gob"
-	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -1068,7 +1067,7 @@ type basePath struct {
 func (p basePath) GobEncode() ([]byte, error) {
 	w := new(bytes.Buffer)
 	encoder := gob.NewEncoder(w)
-	err := errors.Join(encoder.Encode(p.path), encoder.Encode(p.rel))
+	err := joinGobErrors[basePath](encodeValue(encoder, p.path), encodeValue(encoder, p.rel))
 	if err != nil {
 		return nil, err
 	}
@@ -1079,12 +1078,7 @@ func (p basePath) GobEncode() ([]byte, error) {
 func (p *basePath) GobDecode(data []byte) error {
 	r := bytes.NewBuffer(data)
 	decoder := gob.NewDecoder(r)
-	err := errors.Join(decoder.Decode(&p.path), decoder.Decode(&p.rel))
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return joinGobErrors[basePath](decodeValue(decoder, &p.path), decodeValue(decoder, &p.rel))
 }
 
 func (p basePath) Ext() string {
@@ -1340,7 +1334,7 @@ type OutputPath struct {
 func (p OutputPath) GobEncode() ([]byte, error) {
 	w := new(bytes.Buffer)
 	encoder := gob.NewEncoder(w)
-	err := errors.Join(encoder.Encode(p.basePath), encoder.Encode(p.outDir), encoder.Encode(p.fullPath))
+	err := joinGobErrors[OutputPath](encodeValue(encoder, p.basePath), encodeValue(encoder, p.outDir), encodeValue(encoder, p.fullPath))
 	if err != nil {
 		return nil, err
 	}
@@ -1351,12 +1345,8 @@ func (p OutputPath) GobEncode() ([]byte, error) {
 func (p *OutputPath) GobDecode(data []byte) error {
 	r := bytes.NewBuffer(data)
 	decoder := gob.NewDecoder(r)
-	err := errors.Join(decoder.Decode(&p.basePath), decoder.Decode(&p.outDir), decoder.Decode(&p.fullPath))
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return joinGobErrors[OutputPath](decodeValue(decoder, &p.basePath), decodeValue(decoder, &p.outDir),
+		decodeValue(decoder, &p.fullPath))
 }
 
 func (p OutputPath) withRel(rel string) OutputPath {
@@ -1756,12 +1746,13 @@ type InstallPath struct {
 	fullPath string
 }
 
-func (p *InstallPath) GobEncode() ([]byte, error) {
+func (p InstallPath) GobEncode() ([]byte, error) {
+	// Can't use a pointer receiver, otherwise it might result in an unaddressable value
 	w := new(bytes.Buffer)
 	encoder := gob.NewEncoder(w)
-	err := errors.Join(encoder.Encode(p.basePath), encoder.Encode(p.soongOutDir),
-		encoder.Encode(p.partitionDir), encoder.Encode(p.partition),
-		encoder.Encode(p.makePath), encoder.Encode(p.fullPath))
+	err := joinGobErrors[InstallPath](encodeValue(encoder, p.basePath), encodeValue(encoder, p.soongOutDir),
+		encodeValue(encoder, p.partitionDir), encodeValue(encoder, p.partition),
+		encodeValue(encoder, p.makePath), encodeValue(encoder, p.fullPath))
 	if err != nil {
 		return nil, err
 	}
@@ -1772,14 +1763,9 @@ func (p *InstallPath) GobEncode() ([]byte, error) {
 func (p *InstallPath) GobDecode(data []byte) error {
 	r := bytes.NewBuffer(data)
 	decoder := gob.NewDecoder(r)
-	err := errors.Join(decoder.Decode(&p.basePath), decoder.Decode(&p.soongOutDir),
-		decoder.Decode(&p.partitionDir), decoder.Decode(&p.partition),
-		decoder.Decode(&p.makePath), decoder.Decode(&p.fullPath))
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return joinGobErrors[InstallPath](decodeValue(decoder, &p.basePath), decodeValue(decoder, &p.soongOutDir),
+		decodeValue(decoder, &p.partitionDir), decodeValue(decoder, &p.partition),
+		decodeValue(decoder, &p.makePath), decodeValue(decoder, &p.fullPath))
 }
 
 // Will panic if called from outside a test environment.

@@ -17,7 +17,6 @@ package android
 import (
 	"bytes"
 	"encoding/gob"
-	"errors"
 	"fmt"
 	"net/url"
 	"path/filepath"
@@ -2132,10 +2131,10 @@ type katiInstall struct {
 func (p *katiInstall) GobEncode() ([]byte, error) {
 	w := new(bytes.Buffer)
 	encoder := gob.NewEncoder(w)
-	err := errors.Join(encoder.Encode(p.from), encoder.Encode(p.to),
-		encoder.Encode(p.implicitDeps), encoder.Encode(p.orderOnlyDeps),
-		encoder.Encode(p.executable), encoder.Encode(p.extraFiles),
-		encoder.Encode(p.absFrom))
+	err := joinGobErrors[katiInstall](encodeValue(encoder, p.from), encodeValue(encoder, p.to),
+		encodeValue(encoder, p.implicitDeps), encodeValue(encoder, p.orderOnlyDeps),
+		encodeValue(encoder, p.executable), encodeValue(encoder, p.extraFiles),
+		encodeValue(encoder, p.absFrom))
 	if err != nil {
 		return nil, err
 	}
@@ -2146,15 +2145,10 @@ func (p *katiInstall) GobEncode() ([]byte, error) {
 func (p *katiInstall) GobDecode(data []byte) error {
 	r := bytes.NewBuffer(data)
 	decoder := gob.NewDecoder(r)
-	err := errors.Join(decoder.Decode(&p.from), decoder.Decode(&p.to),
-		decoder.Decode(&p.implicitDeps), decoder.Decode(&p.orderOnlyDeps),
-		decoder.Decode(&p.executable), decoder.Decode(&p.extraFiles),
-		decoder.Decode(&p.absFrom))
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return joinGobErrors[katiInstall](decodeValue(decoder, &p.from), decodeValue(decoder, &p.to),
+		decodeValue(decoder, &p.implicitDeps), decodeValue(decoder, &p.orderOnlyDeps),
+		decodeValue(decoder, &p.executable), decodeValue(decoder, &p.extraFiles),
+		decodeValue(decoder, &p.absFrom))
 }
 
 type extraFilesZip struct {
@@ -2165,7 +2159,7 @@ type extraFilesZip struct {
 func (p *extraFilesZip) GobEncode() ([]byte, error) {
 	w := new(bytes.Buffer)
 	encoder := gob.NewEncoder(w)
-	err := errors.Join(encoder.Encode(p.zip), encoder.Encode(p.dir))
+	err := joinGobErrors[extraFilesZip](encodeValue(encoder, p.zip), encodeValue(encoder, p.dir))
 	if err != nil {
 		return nil, err
 	}
@@ -2176,12 +2170,7 @@ func (p *extraFilesZip) GobEncode() ([]byte, error) {
 func (p *extraFilesZip) GobDecode(data []byte) error {
 	r := bytes.NewBuffer(data)
 	decoder := gob.NewDecoder(r)
-	err := errors.Join(decoder.Decode(&p.zip), decoder.Decode(&p.dir))
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return joinGobErrors[extraFilesZip](decodeValue(decoder, &p.zip), decodeValue(decoder, &p.dir))
 }
 
 type katiInstalls []katiInstall

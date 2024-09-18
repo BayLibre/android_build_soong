@@ -16,6 +16,8 @@ package android
 
 import (
 	"cmp"
+	"encoding/gob"
+	"errors"
 	"fmt"
 	"path/filepath"
 	"reflect"
@@ -659,4 +661,53 @@ func (m *SyncMap[K, V]) Store(key K, value V) {
 func (m *SyncMap[K, V]) LoadOrStore(key K, value V) (actual V, loaded bool) {
 	v, loaded := m.Map.LoadOrStore(key, value)
 	return v.(V), loaded
+}
+
+// The helper methods below handle two special cases when using gob.Encoder.Encode
+// and gob.Decoder.Decode in custom Gob encoder and decoder.
+// 1. gob.Encoder.Encode won't be able to handle nil pointer.
+// 2. When the value is an interface, gob.Encoder.Encode will encode the concrete
+// type along the value without any information about this value being and interface,
+// and gob.Decoder.Decode will try to decode it back to an interface and will fail
+// with this: panic: gob: local interface type foo can only be decoded from remote interface type;
+// received concrete type bar.
+func encodeValue[T any](enc *gob.Encoder, value T) error {
+	val := reflect.ValueOf(value)
+	if !val.IsValid() || val.IsZero() {
+		return enc.Encode(false) // Encode false to indicate nil
+	}
+	if err := enc.Encode(true); err != nil { // Encode true to indicate non-nil
+		return err
+	}
+	// Encode the pointer in order to handle the case where value is an interface,
+	// otherwise gob encodes it as the concrete type and then tries to decode as
+	// an interface
+	return enc.Encode(&value)
+}
+
+func decodeValue[T any](dec *gob.Decoder, ptr *T) error {
+	var isNotNil bool
+	err := dec.Decode(&isNotNil)
+	if err != nil || !isNotNil {
+		return err
+	}
+
+	return dec.Decode(ptr)
+}
+
+// Wrap around errors.Join() with some checks to ensure all fields of the struct
+// are encoded/decoded.
+func joinGobErrors[T any](errs ...error) error {
+	var value T
+	typ := reflect.TypeOf(value)
+	if typ.Kind() == reflect.Ptr {
+		typ = typ.Elem() // Dereference pointer if necessary
+	}
+	if typ.Kind() != reflect.Struct {
+		panic(fmt.Errorf("input of Gob is not a struct or pointer to struct: %s", typ.String()))
+	}
+	if typ.NumField() != len(errs) {
+		panic(fmt.Errorf("missing fields of struct for Gob: %s", typ.String()))
+	}
+	return errors.Join(errs...)
 }
