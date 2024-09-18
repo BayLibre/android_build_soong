@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef1520f_88257007",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-18T17:32:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a071f2f3_d0152844",
+      "revId": "ddda6ea7d3a9ecaad57df85359b43d10bc32648c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f723602_03a14387",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-09-18T17:31:07Z",
       "side": 1,
       "message": "why is this conditional necessary?",
+      "range": {
+        "startLine": 3349,
+        "startChar": 2,
+        "endLine": 3349,
+        "endChar": 89
+      },
+      "revId": "ddda6ea7d3a9ecaad57df85359b43d10bc32648c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8dfabe_519b6638",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3349,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-18T17:32:46Z",
+      "side": 1,
+      "message": "This is so that the stub submodules (which are also `SdkLibraryComponentDependency`) does not set `sdkLib`.",
+      "parentUuid": "2f723602_03a14387",
       "range": {
         "startLine": 3349,
         "startChar": 2,
