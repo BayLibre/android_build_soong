@@ -16,6 +16,24 @@
       "message": "This seems like the kind of change with broad runtime impacts that should be behind a build flag.  See b/364956472#comment3 for some links on how to add a build flag.",
       "revId": "3cdcd1e9a2d5b6eaff4d5d2b6557050f70f8aec8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "701d9536_5a611d66",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1425,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2024-09-18T18:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86f8cebf_30591381",
+      "revId": "3cdcd1e9a2d5b6eaff4d5d2b6557050f70f8aec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
