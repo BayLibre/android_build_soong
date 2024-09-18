@@ -22,6 +22,30 @@
       },
       "revId": "a76e566925f7c4b7a0d7ad226410a95c11723cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d164bb7_fe7a7a8f",
+        "filename": "compliance/notice.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-09-18T23:53:25Z",
+      "side": 1,
+      "message": "Done. forgot to remove it, thanks!",
+      "parentUuid": "1ec22ef5_6b59171c",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "a76e566925f7c4b7a0d7ad226410a95c11723cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
