@@ -17,7 +17,6 @@ package android
 import (
 	"bytes"
 	"encoding/gob"
-	"errors"
 	"fmt"
 	"path/filepath"
 	"sort"
@@ -70,11 +69,13 @@ type PackagingSpec struct {
 func (p *PackagingSpec) GobEncode() ([]byte, error) {
 	w := new(bytes.Buffer)
 	encoder := gob.NewEncoder(w)
-	err := errors.Join(encoder.Encode(p.relPathInPackage), encoder.Encode(p.srcPath),
-		encoder.Encode(p.symlinkTarget), encoder.Encode(p.executable),
-		encoder.Encode(p.effectiveLicenseFiles), encoder.Encode(p.partition),
-		encoder.Encode(p.skipInstall), encoder.Encode(p.aconfigPaths),
-		encoder.Encode(p.archType))
+	err := joinGobErrors[PackagingSpec](encoder.Encode(&p.relPathInPackage), encoder.Encode(&p.srcPath),
+		encoder.Encode(&p.symlinkTarget), encoder.Encode(&p.executable),
+		encoder.Encode(&p.effectiveLicenseFiles), encoder.Encode(&p.partition),
+		encoder.Encode(&p.skipInstall), encoder.Encode(&p.aconfigPaths),
+		encoder.Encode(&p.archType), encoder.Encode(&p.overrides),
+		encoder.Encode(&p.owner))
+
 	if err != nil {
 		return nil, err
 	}
@@ -85,16 +86,13 @@ func (p *PackagingSpec) GobEncode() ([]byte, error) {
 func (p *PackagingSpec) GobDecode(data []byte) error {
 	r := bytes.NewBuffer(data)
 	decoder := gob.NewDecoder(r)
-	err := errors.Join(decoder.Decode(&p.relPathInPackage), decoder.Decode(&p.srcPath),
+
+	return joinGobErrors[PackagingSpec](decoder.Decode(&p.relPathInPackage), decoder.Decode(&p.srcPath),
 		decoder.Decode(&p.symlinkTarget), decoder.Decode(&p.executable),
 		decoder.Decode(&p.effectiveLicenseFiles), decoder.Decode(&p.partition),
 		decoder.Decode(&p.skipInstall), decoder.Decode(&p.aconfigPaths),
-		decoder.Decode(&p.archType))
-	if err != nil {
-		return err
-	}
-
-	return nil
+		decoder.Decode(&p.archType), decoder.Decode(&p.overrides),
+		decoder.Decode(&p.owner))
 }
 
 func (p *PackagingSpec) Equals(other *PackagingSpec) bool {

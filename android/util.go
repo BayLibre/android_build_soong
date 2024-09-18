@@ -16,6 +16,7 @@ package android
 
 import (
 	"cmp"
+	"errors"
 	"fmt"
 	"path/filepath"
 	"reflect"
@@ -659,4 +660,21 @@ func (m *SyncMap[K, V]) Store(key K, value V) {
 func (m *SyncMap[K, V]) LoadOrStore(key K, value V) (actual V, loaded bool) {
 	v, loaded := m.Map.LoadOrStore(key, value)
 	return v.(V), loaded
+}
+
+// Wrap around errors.Join() with some checks to ensure all fields of the struct
+// are encoded/decoded.
+func joinGobErrors[T any](errs ...error) error {
+	var value T
+	typ := reflect.TypeOf(value)
+	if typ.Kind() == reflect.Ptr {
+		typ = typ.Elem() // Dereference pointer if necessary
+	}
+	if typ.Kind() != reflect.Struct {
+		panic(fmt.Errorf("input of Gob is not a struct or pointer to struct: %s", typ.String()))
+	}
+	if typ.NumField() != len(errs) {
+		panic(fmt.Errorf("missing fields of struct for Gob: %s", typ.String()))
+	}
+	return errors.Join(errs...)
 }
