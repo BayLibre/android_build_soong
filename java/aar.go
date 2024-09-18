@@ -45,7 +45,7 @@ func RegisterAARBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("android_library_import", AARImportFactory)
 	ctx.RegisterModuleType("android_library", AndroidLibraryFactory)
 	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
-		ctx.TopDown("propagate_rro_enforcement", propagateRROEnforcementMutator)
+		ctx.Transition("propagate_rro_enforcement", &propagateRROEnforcementTransitionMutator{})
 	})
 }
 
@@ -152,14 +152,46 @@ type split struct {
 }
 
 // Propagate RRO enforcement flag to static lib dependencies transitively.
-func propagateRROEnforcementMutator(ctx android.TopDownMutatorContext) {
+type propagateRROEnforcementTransitionMutator struct{}
+
+func (p propagateRROEnforcementTransitionMutator) Split(ctx android.BaseModuleContext) []string {
+	return []string{""}
+}
+
+func (p propagateRROEnforcementTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
+	if ctx.DepTag() != staticLibTag {
+		return ""
+	}
+
 	m := ctx.Module()
-	if d, ok := m.(AndroidLibraryDependency); ok && d.IsRROEnforced(ctx) {
-		ctx.VisitDirectDepsWithTag(staticLibTag, func(d android.Module) {
-			if a, ok := d.(AndroidLibraryDependency); ok {
-				a.SetRROEnforcedForDependent(true)
-			}
-		})
+	if _, ok := m.(AndroidLibraryDependency); ok {
+		if ctx.Config().EnforceRROForModule(ctx.Module().Name()) {
+			return "rro"
+		}
+	}
+
+	return sourceVariation
+}
+
+func (p propagateRROEnforcementTransitionMutator) IncomingTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if incomingVariation == "rro" {
+		m := ctx.Module()
+		if _, ok := m.(AndroidLibraryDependency); ok {
+			return "rro"
+		}
+		return ""
+	}
+
+	return ""
+}
+
+func (p propagateRROEnforcementTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, variation string) {
+	if variation == "rro" {
+		m := ctx.Module()
+		if d, ok := m.(AndroidLibraryDependency); ok {
+			d.SetRROEnforcedForDependent(true)
+			m.HideFromMake()
+		}
 	}
 }
 
