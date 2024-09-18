@@ -17,7 +17,6 @@ package android
 import (
 	"bytes"
 	"encoding/gob"
-	"errors"
 	"fmt"
 )
 
@@ -71,8 +70,8 @@ type DepSet[T depSettableType] struct {
 func (d *DepSet[T]) GobEncode() ([]byte, error) {
 	w := new(bytes.Buffer)
 	encoder := gob.NewEncoder(w)
-	err := errors.Join(encoder.Encode(d.preorder), encoder.Encode(d.reverse),
-		encoder.Encode(d.order), encoder.Encode(d.direct), encoder.Encode(d.transitive))
+	err := joinGobErrors[DepSet[T]](encodeValue(encoder, d.preorder), encodeValue(encoder, d.reverse),
+		encodeValue(encoder, d.order), encodeValue(encoder, d.direct), encodeValue(encoder, d.transitive))
 	if err != nil {
 		return nil, err
 	}
@@ -83,13 +82,8 @@ func (d *DepSet[T]) GobEncode() ([]byte, error) {
 func (d *DepSet[T]) GobDecode(data []byte) error {
 	r := bytes.NewBuffer(data)
 	decoder := gob.NewDecoder(r)
-	err := errors.Join(decoder.Decode(&d.preorder), decoder.Decode(&d.reverse),
-		decoder.Decode(&d.order), decoder.Decode(&d.direct), decoder.Decode(&d.transitive))
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return joinGobErrors[DepSet[T]](decodeValue(decoder, &d.preorder), decodeValue(decoder, &d.reverse),
+		decodeValue(decoder, &d.order), decodeValue(decoder, &d.direct), decodeValue(decoder, &d.transitive))
 }
 
 // NewDepSet returns an immutable DepSet with the given order, direct and transitive contents.
