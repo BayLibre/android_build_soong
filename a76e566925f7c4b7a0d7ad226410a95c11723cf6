@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ec22ef5_6b59171c",
+        "filename": "compliance/notice.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-09-18T23:31:46Z",
+      "side": 1,
+      "message": "is this useful?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "a76e566925f7c4b7a0d7ad226410a95c11723cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
