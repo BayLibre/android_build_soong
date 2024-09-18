@@ -19,17 +19,35 @@ func init() {
 	ctx.RegisterParallelSingletonType("product_config_to_bp_singleton", productConfigToBpSingletonFactory)
 }
 
+// productConfigToBpSingleton generates a bp file from make-based product config
+func productConfigToBpSingletonFactory() Singleton {
+	return &productConfigToBpSingleton{}
+}
+
 type productConfigToBpSingleton struct{}
 
 func (s *productConfigToBpSingleton) GenerateBuildActions(ctx SingletonContext) {
-	// TODO: update content from make-based product config
-	var content string
+	content := s.generateSystemImage(ctx)
 	generatedBp := PathForOutput(ctx, "soong_generated_product_config.bp")
 	WriteFileRule(ctx, generatedBp, content)
 	ctx.Phony("product_config_to_bp", generatedBp)
 }
 
-// productConfigToBpSingleton generates a bp file from make-based product config
-func productConfigToBpSingletonFactory() Singleton {
-	return &productConfigToBpSingleton{}
+func (s *productConfigToBpSingleton) generateSystemImage(ctx SingletonContext) string {
+	partitionVars := ctx.Config().productVariables.PartitionVarsForSoongMigrationOnlyDoNotUse
+	productPackages := partitionVars.ProductPackages
+	ctx.VisitAllModules(func(m Module) {
+		if !installInSystem(m) {
+			return
+		}
+
+	})
+
+}
+
+func installInSystem(m Module) bool {
+	return !m.InstallInData() && !m.InstallInDebugRamdisk() && !m.InstallInOdm() &&
+		!m.InstallInProduct() && !m.InstallInRamdisk() && !m.InstallInRecovery() && !m.InstallInRoot() &&
+		!m.InstallInSanitizerDir() && !m.InstallInTestcases() && !m.InstallInVendor() &&
+		!m.InstallInVendorRamdisk()
 }

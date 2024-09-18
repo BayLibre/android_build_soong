@@ -523,6 +523,8 @@ type ProductVariables struct {
 	BoardAvbSystemAddHashtreeFooterArgs    []string `json:",omitempty"`
 	DeviceFrameworkCompatibilityMatrixFile []string `json:",omitempty"`
 	DeviceProductCompatibilityMatrixFile   []string `json:",omitempty"`
+
+	PartitionVarsForSoongMigrationOnlyDoNotUse PartitionVariables
 }
 
 type PartitionQualifiedVariablesType struct {
