@@ -1437,11 +1437,11 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 					//"null",
 					//"shift-base",
 					//"signed-integer-overflow",
-					// TODO(danalbert): Fix UB in libc++'s __tree so we can turn this on.
-					// https://llvm.org/PR19302
-					// http://reviews.llvm.org/D6974
-					// "object-size",
 				)
+
+				if mctx.Config().ReleaseBuildObjectSizeSanitizer() {
+					sanitizers = append(sanitizers, "object-size")
+				}
 			}
 			sanitizers = append(sanitizers, sanProps.Misc_undefined...)
 		}

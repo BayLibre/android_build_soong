@@ -197,7 +197,7 @@ func (c Config) NoBionicPageSizeMacro() bool {
 
 // The release version passed to aconfig, derived from RELEASE_VERSION
 func (c Config) ReleaseVersion() string {
-	return c.config.productVariables.ReleaseVersion
+	return c.config.GetBuildFlagBoolproductVariables.ReleaseVersion
 }
 
 // The aconfig value set passed to aconfig, derived from RELEASE_VERSION
@@ -236,6 +236,11 @@ func (c Config) ReleaseAconfigExtraReleaseConfigsValueSets() map[string][]string
 // derived from RELEASE_ACONFIG_FLAG_DEFAULT_PERMISSION
 func (c Config) ReleaseAconfigFlagDefaultPermission() string {
 	return c.config.productVariables.ReleaseAconfigFlagDefaultPermission
+}
+
+// Enable object size sanitizer
+func (c Config) ReleaseBuildObjectSizeSanitizer() bool {
+	return c.config.productVariables.GetBuildFlagBool("RELEASE_BUILD_OBJECT_SIZE_SANITIZER")
 }
 
 // The flag indicating behavior for the tree wrt building modules or using prebuilts
