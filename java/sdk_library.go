@@ -1082,21 +1082,6 @@ func (c *commonToSdkLibraryAndImport) findClosestScopePath(scope *apiScope) *sco
 	return nil
 }
 
-func (c *commonToSdkLibraryAndImport) selectHeaderJarsForSdkVersion(ctx android.BaseModuleContext, sdkVersion android.SdkSpec) android.Paths {
-
-	// If a specific numeric version has been requested then use prebuilt versions of the sdk.
-	if !sdkVersion.ApiLevel.IsPreview() {
-		return PrebuiltJars(ctx, c.module.RootLibraryName(), sdkVersion)
-	}
-
-	paths := c.selectScopePaths(ctx, sdkVersion.Kind)
-	if paths == nil {
-		return nil
-	}
-
-	return paths.stubsHeaderPath
-}
-
 // selectScopePaths returns the *scopePaths appropriate for the specific kind.
 //
 // If the module does not support the specific kind then it will return the *scopePaths for the
@@ -1262,12 +1247,6 @@ var _ SdkLibraryComponentDependency = (*SdkLibraryImport)(nil)
 // Provides access to sdk_version related files, e.g. header and implementation jars.
 type SdkLibraryDependency interface {
 	SdkLibraryComponentDependency
-
-	// Get the header jars appropriate for the supplied sdk_version.
-	//
-	// These are turbine generated jars so they only change if the externals of the
-	// class changes but it does not contain and implementation or JavaDoc.
-	SdkHeaderJars(ctx android.BaseModuleContext, sdkVersion android.SdkSpec) android.Paths
 
 	// SdkApiStubDexJar returns the dex jar for the stubs for the prebuilt
 	// java_sdk_library_import module. It is needed by the hiddenapi processing tool which
@@ -2249,35 +2228,6 @@ func withinSameApexesAs(ctx android.BaseModuleContext, other android.Module) boo
 	return len(otherApexInfo.InApexVariants) > 0 && reflect.DeepEqual(apexInfo.InApexVariants, otherApexInfo.InApexVariants)
 }
 
-func (module *SdkLibrary) sdkJars(ctx android.BaseModuleContext, sdkVersion android.SdkSpec) android.Paths {
-	// If the client doesn't set sdk_version, but if this library prefers stubs over
-	// the impl library, let's provide the widest API surface possible. To do so,
-	// force override sdk_version to module_current so that the closest possible API
-	// surface could be found in selectHeaderJarsForSdkVersion
-	if module.defaultsToStubs() && !sdkVersion.Specified() {
-		sdkVersion = android.SdkSpecFrom(ctx, "module_current")
-	}
-
-	// Only provide access to the implementation library if it is actually built.
-	if module.requiresRuntimeImplementationLibrary() {
-		// Check any special cases for java_sdk_library.
-		//
-		// Only allow access to the implementation library in the following condition:
-		// * No sdk_version specified on the referencing module.
-		// * The referencing module is in the same apex as this.
-		if sdkVersion.Kind == android.SdkPrivate || withinSameApexesAs(ctx, module) {
-			return module.implLibraryHeaderJars
-		}
-	}
-
-	return module.selectHeaderJarsForSdkVersion(ctx, sdkVersion)
-}
-
-// to satisfy SdkLibraryDependency interface
-func (module *SdkLibrary) SdkHeaderJars(ctx android.BaseModuleContext, sdkVersion android.SdkSpec) android.Paths {
-	return module.sdkJars(ctx, sdkVersion)
-}
-
 var javaSdkLibrariesKey = android.NewOnceKey("javaSdkLibraries")
 
 func javaSdkLibraries(config android.Config) *[]string {
@@ -2891,28 +2841,6 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 	android.SetProvider(ctx, SdkLibraryInfoProvider, SdkLibraryInfo{
 		GeneratingLibs: generatingLibs,
 	})
-}
-
-func (module *SdkLibraryImport) sdkJars(ctx android.BaseModuleContext, sdkVersion android.SdkSpec, headerJars bool) android.Paths {
-
-	// For consistency with SdkLibrary make the implementation jar available to libraries that
-	// are within the same APEX.
-	implLibraryModule := module.implLibraryModule
-	if implLibraryModule != nil && withinSameApexesAs(ctx, module) {
-		if headerJars {
-			return implLibraryModule.HeaderJars()
-		} else {
-			return implLibraryModule.ImplementationJars()
-		}
-	}
-
-	return module.selectHeaderJarsForSdkVersion(ctx, sdkVersion)
-}
-
-// to satisfy SdkLibraryDependency interface
-func (module *SdkLibraryImport) SdkHeaderJars(ctx android.BaseModuleContext, sdkVersion android.SdkSpec) android.Paths {
-	// This module is just a wrapper for the prebuilt stubs.
-	return module.sdkJars(ctx, sdkVersion, true)
 }
 
 // to satisfy UsesLibraryDependency interface
