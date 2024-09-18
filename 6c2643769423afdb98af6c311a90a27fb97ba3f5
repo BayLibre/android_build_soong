@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f4e1f58_6169f78c",
+        "filename": "android/base_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-18T04:27:51Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be called anywhere. Do you have a follow-up change?",
+      "range": {
+        "startLine": 71,
+        "startChar": 25,
+        "endLine": 71,
+        "endChar": 44
+      },
+      "revId": "6c2643769423afdb98af6c311a90a27fb97ba3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31e21644_40a4059c",
+        "filename": "android/base_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-18T04:27:51Z",
+      "side": 1,
+      "message": "What are the valid values for \"type\"?",
+      "range": {
+        "startLine": 91,
+        "startChar": 70,
+        "endLine": 91,
+        "endChar": 74
+      },
+      "revId": "6c2643769423afdb98af6c311a90a27fb97ba3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40aa2679_485d02ed",
+        "filename": "android/base_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-18T04:27:51Z",
+      "side": 1,
+      "message": "nit: does this mean that \":\" cannot be escaped?",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 36
+      },
+      "revId": "6c2643769423afdb98af6c311a90a27fb97ba3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdde055f_e755f778",
+        "filename": "android/base_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-18T04:27:51Z",
+      "side": 1,
+      "message": "Ok, but it would be nicer if this is documented in the above as well.",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 37
+      },
+      "revId": "6c2643769423afdb98af6c311a90a27fb97ba3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e2e48c3_f4a80385",
+        "filename": "android/base_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-18T04:27:51Z",
+      "side": 1,
+      "message": "This looks odd. Even if string is default, why do you want to omit?",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 3
+      },
+      "revId": "6c2643769423afdb98af6c311a90a27fb97ba3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42f318f0_890c2e9c",
+        "filename": "android/base_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-18T04:27:51Z",
+      "side": 1,
+      "message": "Add a documentation for this type? For example, which module types are expected to implement this interface, etc.",
+      "revId": "6c2643769423afdb98af6c311a90a27fb97ba3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eb75db6_7fef37d2",
+        "filename": "android/base_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-18T04:27:51Z",
+      "side": 1,
+      "message": "Can you give a name to this condition?",
+      "range": {
+        "startLine": 248,
+        "startChar": 4,
+        "endLine": 248,
+        "endChar": 66
+      },
+      "revId": "6c2643769423afdb98af6c311a90a27fb97ba3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9ae8c8_faa84f16",
+        "filename": "android/base_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-18T04:27:51Z",
+      "side": 1,
+      "message": "I don\u0027t understand this part. `variation` was used to initialize `configModuleName` in the above. Why do we have to read `variation`, not `configModuleName`?",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 20
+      },
+      "revId": "6c2643769423afdb98af6c311a90a27fb97ba3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04409789_64ae64bf",
+        "filename": "android/base_config_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-18T04:27:51Z",
+      "side": 1,
+      "message": "nit: move these two above providers and add an empty new line so that inputs and outputs are visually separted.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "6c2643769423afdb98af6c311a90a27fb97ba3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
