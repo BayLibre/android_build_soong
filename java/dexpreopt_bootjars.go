@@ -1401,21 +1401,11 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 					suffix = "_host"
 				}
 				sfx := variant.name + suffix + "_" + variant.target.Arch.ArchType.String()
-				ctx.Strict("DEXPREOPT_IMAGE_VDEX_BUILT_INSTALLED_"+sfx, variant.vdexInstalls.String())
+				// `DEXPREOPT_IMAGE_*` is used as a phony target in art/Android.mk
 				ctx.Strict("DEXPREOPT_IMAGE_"+sfx, variant.imagePathOnHost.String())
-				ctx.Strict("DEXPREOPT_IMAGE_DEPS_"+sfx, strings.Join(variant.imagesDeps.Strings(), " "))
-				ctx.Strict("DEXPREOPT_IMAGE_BUILT_INSTALLED_"+sfx, variant.installs.String())
-				ctx.Strict("DEXPREOPT_IMAGE_UNSTRIPPED_BUILT_INSTALLED_"+sfx, variant.unstrippedInstalls.String())
-				if variant.licenseMetadataFile.Valid() {
-					ctx.Strict("DEXPREOPT_IMAGE_LICENSE_METADATA_"+sfx, variant.licenseMetadataFile.String())
-				}
 			}
-			imageLocationsOnHost, imageLocationsOnDevice := current.getAnyAndroidVariant().imageLocations()
-			ctx.Strict("DEXPREOPT_IMAGE_LOCATIONS_ON_HOST"+current.name, strings.Join(imageLocationsOnHost, ":"))
-			ctx.Strict("DEXPREOPT_IMAGE_LOCATIONS_ON_DEVICE"+current.name, strings.Join(imageLocationsOnDevice, ":"))
 			ctx.Strict("DEXPREOPT_IMAGE_ZIP_"+current.name, current.zip.String())
 		}
-		ctx.Strict("DEXPREOPT_IMAGE_NAMES", strings.Join(getImageNames(), " "))
 	}
 }
 
@@ -1479,11 +1469,16 @@ func (d *dexpreoptBootJarsHost) installFile(ctx android.ModuleContext, ruleBuild
 
 // Set `OutputFile` expclitly so that this module does not get elided when generating out/soong/Android-*.mk
 func (d *dexpreoptBootJarsHost) AndroidMkEntries() []android.AndroidMkEntries {
+	var outputFile android.OptionalPath
 	if len(d.artBootImageInstalls) == 0 {
-		return []android.AndroidMkEntries{}
+		// this might be true e.g. when building with `WITH_DEXPREOPT=false`
+		// create an empty file so that the `dex_bootjars_host` is known to the packaging system.
+		outputFile = android.OptionalPath{}
+	} else {
+		outputFile = android.OptionalPathForPath(d.artBootImageInstalls[0])
 	}
 	return []android.AndroidMkEntries{{
 		Class:      "ETC",
-		OutputFile: android.OptionalPathForPath(d.artBootImageInstalls[0]),
+		OutputFile: outputFile,
 	}}
 }
