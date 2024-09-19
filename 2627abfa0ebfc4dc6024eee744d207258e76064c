@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "684d4018_90d26a2c",
+        "filename": "android/base_config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-19T21:22:19Z",
+      "side": 1,
+      "message": "Good point, I changed it so that modules always use the variation that matches the name of the base_configuration module they\u0027re using.",
+      "parentUuid": "22145eb0_ef09a507",
+      "range": {
+        "startLine": 277,
+        "startChar": 6,
+        "endLine": 278,
+        "endChar": 16
+      },
+      "revId": "2627abfa0ebfc4dc6024eee744d207258e76064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbf85155_311cdd33",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-19T01:00:50Z",
       "side": 1,
       "message": "Why can\u0027t we hide all variations from Make?",
+      "range": {
+        "startLine": 284,
+        "startChar": 6,
+        "endLine": 284,
+        "endChar": 71
+      },
+      "revId": "2627abfa0ebfc4dc6024eee744d207258e76064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d295e7a_67684eda",
+        "filename": "android/base_config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-19T21:22:19Z",
+      "side": 1,
+      "message": "The empty string variation would be the same as the module today. Hiding all variations would mean hiding literally everything from make.",
+      "parentUuid": "bbf85155_311cdd33",
       "range": {
         "startLine": 284,
         "startChar": 6,
