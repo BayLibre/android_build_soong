@@ -28,6 +28,9 @@ bootstrap_go_package {
     testSrcs: [
     ],
     pluginFor: ["soong_build"],
+    visibility: [
+        "//device/google/cuttlefish/system_image"
+    ]
 }
 
 notice_xml {
