@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d1879c_ace70752",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1316,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-19T21:33:59Z",
+      "side": 1,
+      "message": "nit: since you are using `OtherModuleExists` here, you can iterate over `AllApiScopes` and remove `GeneratingApiScopes`",
+      "range": {
+        "startLine": 1314,
+        "startChar": 2,
+        "endLine": 1316,
+        "endChar": 3
+      },
+      "revId": "28310e00e8a6c0c4227230adcb757d67dff704cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
