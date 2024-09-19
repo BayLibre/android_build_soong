@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22145eb0_ef09a507",
+        "filename": "android/base_config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-19T01:00:50Z",
+      "side": 1,
+      "message": "I find this an odd decision. Wouldn\u0027t it be better for the variation name follows the config name, even if it\u0027s the only variation... for uh consistency?\n\nOr is it to easily identify the baseline variation from the other variations?",
+      "range": {
+        "startLine": 277,
+        "startChar": 6,
+        "endLine": 278,
+        "endChar": 16
+      },
+      "revId": "2627abfa0ebfc4dc6024eee744d207258e76064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf85155_311cdd33",
+        "filename": "android/base_config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-19T01:00:50Z",
+      "side": 1,
+      "message": "Why can\u0027t we hide all variations from Make?",
+      "range": {
+        "startLine": 284,
+        "startChar": 6,
+        "endLine": 284,
+        "endChar": 71
+      },
+      "revId": "2627abfa0ebfc4dc6024eee744d207258e76064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

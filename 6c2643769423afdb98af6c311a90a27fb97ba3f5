@@ -365,6 +365,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6181aba7_86d6e198",
+        "filename": "android/base_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-19T01:00:50Z",
+      "side": 1,
+      "message": "Thanks the comment answered my question but as I understand more I have more questions. :)",
+      "parentUuid": "dc4836fb_5885d583",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 20
+      },
+      "revId": "6c2643769423afdb98af6c311a90a27fb97ba3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04409789_64ae64bf",
