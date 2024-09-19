@@ -4885,236 +4885,6 @@ type moduleErrorfTestCtx struct {
 func (ctx moduleErrorfTestCtx) ModuleErrorf(format string, args ...interface{}) {
 }
 
-// These tests verify that the prebuilt_apex/deapexer to java_import wiring allows for the
-// propagation of paths to dex implementation jars from the former to the latter.
-func TestPrebuiltExportDexImplementationJars(t *testing.T) {
-	transform := android.NullFixturePreparer
-
-	checkDexJarBuildPath := func(t *testing.T, ctx *android.TestContext, name string) {
-		t.Helper()
-		// Make sure the import has been given the correct path to the dex jar.
-		p := ctx.ModuleForTests(name, "android_common_myapex").Module().(java.UsesLibraryDependency)
-		dexJarBuildPath := p.DexJarBuildPath(moduleErrorfTestCtx{}).PathOrNil()
-		stem := android.RemoveOptionalPrebuiltPrefix(name)
-		android.AssertStringEquals(t, "DexJarBuildPath should be apex-related path.",
-			".intermediates/prebuilt_myapex.deapexer/android_common/deapexer/javalib/"+stem+".jar",
-			android.NormalizePathForTesting(dexJarBuildPath))
-	}
-
-	checkDexJarInstallPath := func(t *testing.T, ctx *android.TestContext, name string) {
-		t.Helper()
-		// Make sure the import has been given the correct path to the dex jar.
-		p := ctx.ModuleForTests(name, "android_common_myapex").Module().(java.UsesLibraryDependency)
-		dexJarBuildPath := p.DexJarInstallPath()
-		stem := android.RemoveOptionalPrebuiltPrefix(name)
-		android.AssertStringEquals(t, "DexJarInstallPath should be apex-related path.",
-			"target/product/test_device/apex/myapex/javalib/"+stem+".jar",
-			android.NormalizePathForTesting(dexJarBuildPath))
-	}
-
-	ensureNoSourceVariant := func(t *testing.T, ctx *android.TestContext, name string) {
-		t.Helper()
-		// Make sure that an apex variant is not created for the source module.
-		android.AssertArrayString(t, "Check if there is no source variant",
-			[]string{"android_common"},
-			ctx.ModuleVariantsForTests(name))
-	}
-
-	t.Run("prebuilt only", func(t *testing.T) {
-		bp := `
-		prebuilt_apex {
-			name: "myapex",
-			arch: {
-				arm64: {
-					src: "myapex-arm64.apex",
-				},
-				arm: {
-					src: "myapex-arm.apex",
-				},
-			},
-			exported_java_libs: ["libfoo", "libbar"],
-		}
-
-		java_import {
-			name: "libfoo",
-			jars: ["libfoo.jar"],
-			sdk_version: "core_current",
-		}
-
-		java_sdk_library_import {
-			name: "libbar",
-			public: {
-				jars: ["libbar.jar"],
-			},
-		}
-	`
-
-		// Make sure that dexpreopt can access dex implementation files from the prebuilt.
-		ctx := testDexpreoptWithApexes(t, bp, "", transform)
-
-		deapexerName := deapexerModuleName("prebuilt_myapex")
-		android.AssertStringEquals(t, "APEX module name from deapexer name", "prebuilt_myapex", apexModuleName(deapexerName))
-
-		// Make sure that the deapexer has the correct input APEX.
-		deapexer := ctx.ModuleForTests(deapexerName, "android_common")
-		rule := deapexer.Rule("deapexer")
-		if expected, actual := []string{"myapex-arm64.apex"}, android.NormalizePathsForTesting(rule.Implicits); !reflect.DeepEqual(expected, actual) {
-			t.Errorf("expected: %q, found: %q", expected, actual)
-		}
-
-		// Make sure that the prebuilt_apex has the correct input APEX.
-		prebuiltApex := ctx.ModuleForTests("myapex", "android_common_myapex")
-		rule = prebuiltApex.Rule("android/soong/android.Cp")
-		if expected, actual := "myapex-arm64.apex", android.NormalizePathForTesting(rule.Input); !reflect.DeepEqual(expected, actual) {
-			t.Errorf("expected: %q, found: %q", expected, actual)
-		}
-
-		checkDexJarBuildPath(t, ctx, "libfoo")
-		checkDexJarInstallPath(t, ctx, "libfoo")
-
-		checkDexJarBuildPath(t, ctx, "libbar")
-		checkDexJarInstallPath(t, ctx, "libbar")
-	})
-
-	t.Run("prebuilt with source preferred", func(t *testing.T) {
-
-		bp := `
-		apex {
-			name: "myapex",
-			key: "myapex.key",
-			updatable: false,
-			java_libs: [
-				"libfoo",
-				"libbar",
-			],
-		}
-
-		apex_key {
-			name: "myapex.key",
-			public_key: "testkey.avbpubkey",
-			private_key: "testkey.pem",
-		}
-
-		prebuilt_apex {
-			name: "myapex",
-			arch: {
-				arm64: {
-					src: "myapex-arm64.apex",
-				},
-				arm: {
-					src: "myapex-arm.apex",
-				},
-			},
-			exported_java_libs: ["libfoo", "libbar"],
-		}
-
-		java_import {
-			name: "libfoo",
-			jars: ["libfoo.jar"],
-			apex_available: [
-				"myapex",
-			],
-			compile_dex: true,
-			sdk_version: "core_current",
-		}
-
-		java_library {
-			name: "libfoo",
-			srcs: ["foo/bar/MyClass.java"],
-			apex_available: [
-				"myapex",
-			],
-			compile_dex: true,
-			sdk_version: "core_current",
-		}
-
-		java_sdk_library_import {
-			name: "libbar",
-			public: {
-				jars: ["libbar.jar"],
-			},
-			apex_available: [
-				"myapex",
-			],
-			compile_dex: true,
-		}
-
-		java_sdk_library {
-			name: "libbar",
-			srcs: ["foo/bar/MyClass.java"],
-			unsafe_ignore_missing_latest_api: true,
-			apex_available: [
-				"myapex",
-			],
-			compile_dex: true,
-			sdk_version: "core_current",
-		}
-	`
-
-		// Make sure that dexpreopt can access dex implementation files from the prebuilt.
-		ctx := testDexpreoptWithApexes(t, bp, "", transform)
-
-		checkDexJarBuildPath(t, ctx, "prebuilt_libfoo")
-		checkDexJarInstallPath(t, ctx, "prebuilt_libfoo")
-
-		checkDexJarBuildPath(t, ctx, "prebuilt_libbar")
-		checkDexJarInstallPath(t, ctx, "prebuilt_libbar")
-	})
-
-	t.Run("prebuilt preferred with source", func(t *testing.T) {
-		bp := `
-		prebuilt_apex {
-			name: "myapex",
-			arch: {
-				arm64: {
-					src: "myapex-arm64.apex",
-				},
-				arm: {
-					src: "myapex-arm.apex",
-				},
-			},
-			exported_java_libs: ["libfoo", "libbar"],
-		}
-
-		java_import {
-			name: "libfoo",
-			prefer: true,
-			jars: ["libfoo.jar"],
-		}
-
-		java_library {
-			name: "libfoo",
-			sdk_version: "core_current",
-		}
-
-		java_sdk_library_import {
-			name: "libbar",
-			prefer: true,
-			public: {
-				jars: ["libbar.jar"],
-			},
-		}
-
-		java_sdk_library {
-			name: "libbar",
-			srcs: ["foo/bar/MyClass.java"],
-			unsafe_ignore_missing_latest_api: true,
-		}
-	`
-
-		// Make sure that dexpreopt can access dex implementation files from the prebuilt.
-		ctx := testDexpreoptWithApexes(t, bp, "", transform)
-
-		checkDexJarBuildPath(t, ctx, "prebuilt_libfoo")
-		checkDexJarInstallPath(t, ctx, "prebuilt_libfoo")
-		ensureNoSourceVariant(t, ctx, "libfoo")
-
-		checkDexJarBuildPath(t, ctx, "prebuilt_libbar")
-		checkDexJarInstallPath(t, ctx, "prebuilt_libbar")
-		ensureNoSourceVariant(t, ctx, "libbar")
-	})
-}
-
 func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 	preparer := android.GroupFixturePreparers(
 		java.FixtureConfigureApexBootJars("myapex:libfoo", "myapex:libbar"),
@@ -5136,23 +4906,6 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 			fs["platform/Test.java"] = nil
 		}),
 	)
-
-	checkBootDexJarPath := func(t *testing.T, ctx *android.TestContext, stem string, bootDexJarPath string) {
-		t.Helper()
-		s := ctx.ModuleForTests("dex_bootjars", "android_common")
-		foundLibfooJar := false
-		base := stem + ".jar"
-		for _, output := range s.AllOutputs() {
-			if filepath.Base(output) == base {
-				foundLibfooJar = true
-				buildRule := s.Output(output)
-				android.AssertStringEquals(t, "boot dex jar path", bootDexJarPath, buildRule.Input.String())
-			}
-		}
-		if !foundLibfooJar {
-			t.Errorf("Rule for libfoo.jar missing in dex_bootjars singleton outputs %q", android.StringPathsRelativeToTop(ctx.Config().SoongOutDir(), s.AllOutputs()))
-		}
-	}
 
 	checkHiddenAPIIndexFromClassesInputs := func(t *testing.T, ctx *android.TestContext, expectedIntermediateInputs string) {
 		t.Helper()
@@ -5226,8 +4979,6 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 	`
 
 		ctx := testDexpreoptWithApexes(t, bp, "", preparer, fragment)
-		checkBootDexJarPath(t, ctx, "libfoo", "out/soong/.intermediates/prebuilt_myapex.deapexer/android_common/deapexer/javalib/libfoo.jar")
-		checkBootDexJarPath(t, ctx, "libbar", "out/soong/.intermediates/prebuilt_myapex.deapexer/android_common/deapexer/javalib/libbar.jar")
 
 		// Verify the correct module jars contribute to the hiddenapi index file.
 		checkHiddenAPIIndexFromClassesInputs(t, ctx, `out/soong/.intermediates/platform/foo/android_common/javac/foo.jar`)
@@ -5304,8 +5055,6 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 	`
 
 		ctx := testDexpreoptWithApexes(t, bp, "", preparer, fragment)
-		checkBootDexJarPath(t, ctx, "libfoo", "out/soong/.intermediates/prebuilt_myapex.deapexer/android_common/deapexer/javalib/libfoo.jar")
-		checkBootDexJarPath(t, ctx, "libbar", "out/soong/.intermediates/prebuilt_myapex.deapexer/android_common/deapexer/javalib/libbar.jar")
 
 		// Verify the correct module jars contribute to the hiddenapi index file.
 		checkHiddenAPIIndexFromClassesInputs(t, ctx, `out/soong/.intermediates/platform/foo/android_common/javac/foo.jar`)
@@ -5497,8 +5246,6 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 	`
 
 		ctx := testDexpreoptWithApexes(t, bp, "", preparer, fragment)
-		checkBootDexJarPath(t, ctx, "libfoo", "out/soong/.intermediates/prebuilt_myapex.deapexer/android_common/deapexer/javalib/libfoo.jar")
-		checkBootDexJarPath(t, ctx, "libbar", "out/soong/.intermediates/prebuilt_myapex.deapexer/android_common/deapexer/javalib/libbar.jar")
 
 		// Verify the correct module jars contribute to the hiddenapi index file.
 		checkHiddenAPIIndexFromClassesInputs(t, ctx, `out/soong/.intermediates/platform/foo/android_common/javac/foo.jar`)
@@ -5597,8 +5344,6 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 	`
 
 		ctx := testDexpreoptWithApexes(t, bp, "", preparer, fragment)
-		checkBootDexJarPath(t, ctx, "libfoo", "out/soong/.intermediates/my-bootclasspath-fragment/android_common_myapex/hiddenapi-modular/encoded/libfoo.jar")
-		checkBootDexJarPath(t, ctx, "libbar", "out/soong/.intermediates/my-bootclasspath-fragment/android_common_myapex/hiddenapi-modular/encoded/libbar.jar")
 
 		// Verify the correct module jars contribute to the hiddenapi index file.
 		checkHiddenAPIIndexFromClassesInputs(t, ctx, `out/soong/.intermediates/platform/foo/android_common/javac/foo.jar`)
@@ -5710,8 +5455,6 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 		)
 
 		ctx := testDexpreoptWithApexes(t, bp, "", preparer2, fragment)
-		checkBootDexJarPath(t, ctx, "libfoo", "out/soong/.intermediates/prebuilt_myapex.deapexer/android_common/deapexer/javalib/libfoo.jar")
-		checkBootDexJarPath(t, ctx, "libbar", "out/soong/.intermediates/prebuilt_myapex.deapexer/android_common/deapexer/javalib/libbar.jar")
 
 		// Verify the correct module jars contribute to the hiddenapi index file.
 		checkHiddenAPIIndexFromClassesInputs(t, ctx, `out/soong/.intermediates/platform/foo/android_common/javac/foo.jar`)
@@ -8209,189 +7952,6 @@ func testDexpreoptWithApexes(t *testing.T, bp, errmsg string, preparer android.F
 		RunTestWithBp(t, bp)
 
 	return result.TestContext
-}
-
-func TestDuplicateDeapexersFromPrebuiltApexes(t *testing.T) {
-	preparers := android.GroupFixturePreparers(
-		java.PrepareForTestWithJavaDefaultModules,
-		prepareForTestWithBootclasspathFragment,
-		dexpreopt.FixtureSetTestOnlyArtBootImageJars("com.android.art:libfoo"),
-		PrepareForTestWithApexBuildComponents,
-	).
-		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
-			"Multiple installable prebuilt APEXes provide ambiguous deapexers: prebuilt_com.android.art and prebuilt_com.mycompany.android.art"))
-
-	bpBase := `
-		apex_set {
-			name: "com.android.art",
-			installable: true,
-			exported_bootclasspath_fragments: ["art-bootclasspath-fragment"],
-			set: "myapex.apks",
-		}
-
-		apex_set {
-			name: "com.mycompany.android.art",
-			apex_name: "com.android.art",
-			installable: true,
-			exported_bootclasspath_fragments: ["art-bootclasspath-fragment"],
-			set: "company-myapex.apks",
-		}
-
-		prebuilt_bootclasspath_fragment {
-			name: "art-bootclasspath-fragment",
-			apex_available: ["com.android.art"],
-			hidden_api: {
-				annotation_flags: "my-bootclasspath-fragment/annotation-flags.csv",
-				metadata: "my-bootclasspath-fragment/metadata.csv",
-				index: "my-bootclasspath-fragment/index.csv",
-				stub_flags: "my-bootclasspath-fragment/stub-flags.csv",
-				all_flags: "my-bootclasspath-fragment/all-flags.csv",
-			},
-			%s
-		}
-	`
-
-	t.Run("java_import", func(t *testing.T) {
-		_ = preparers.RunTestWithBp(t, fmt.Sprintf(bpBase, `contents: ["libfoo"]`)+`
-			java_import {
-				name: "libfoo",
-				jars: ["libfoo.jar"],
-				apex_available: ["com.android.art"],
-			}
-		`)
-	})
-
-	t.Run("java_sdk_library_import", func(t *testing.T) {
-		_ = preparers.RunTestWithBp(t, fmt.Sprintf(bpBase, `contents: ["libfoo"]`)+`
-			java_sdk_library_import {
-				name: "libfoo",
-				public: {
-					jars: ["libbar.jar"],
-				},
-				shared_library: false,
-				apex_available: ["com.android.art"],
-			}
-		`)
-	})
-
-	t.Run("prebuilt_bootclasspath_fragment", func(t *testing.T) {
-		_ = preparers.RunTestWithBp(t, fmt.Sprintf(bpBase, `
-			image_name: "art",
-			contents: ["libfoo"],
-		`)+`
-			java_sdk_library_import {
-				name: "libfoo",
-				public: {
-					jars: ["libbar.jar"],
-				},
-				shared_library: false,
-				apex_available: ["com.android.art"],
-			}
-		`)
-	})
-}
-
-func TestDuplicateButEquivalentDeapexersFromPrebuiltApexes(t *testing.T) {
-	preparers := android.GroupFixturePreparers(
-		java.PrepareForTestWithJavaDefaultModules,
-		PrepareForTestWithApexBuildComponents,
-	)
-
-	errCtx := moduleErrorfTestCtx{}
-
-	bpBase := `
-		apex_set {
-			name: "com.android.myapex",
-			installable: true,
-			exported_bootclasspath_fragments: ["my-bootclasspath-fragment"],
-			set: "myapex.apks",
-		}
-
-		apex_set {
-			name: "com.android.myapex_compressed",
-			apex_name: "com.android.myapex",
-			installable: true,
-			exported_bootclasspath_fragments: ["my-bootclasspath-fragment"],
-			set: "myapex_compressed.apks",
-		}
-
-		prebuilt_bootclasspath_fragment {
-			name: "my-bootclasspath-fragment",
-			apex_available: [
-				"com.android.myapex",
-				"com.android.myapex_compressed",
-			],
-			hidden_api: {
-				annotation_flags: "annotation-flags.csv",
-				metadata: "metadata.csv",
-				index: "index.csv",
-				signature_patterns: "signature_patterns.csv",
-			},
-			%s
-		}
-	`
-
-	t.Run("java_import", func(t *testing.T) {
-		result := preparers.RunTestWithBp(t,
-			fmt.Sprintf(bpBase, `contents: ["libfoo"]`)+`
-			java_import {
-				name: "libfoo",
-				jars: ["libfoo.jar"],
-				apex_available: [
-					"com.android.myapex",
-					"com.android.myapex_compressed",
-				],
-			}
-		`)
-
-		module := result.Module("libfoo", "android_common_com.android.myapex")
-		usesLibraryDep := module.(java.UsesLibraryDependency)
-		android.AssertPathRelativeToTopEquals(t, "dex jar path",
-			"out/soong/.intermediates/prebuilt_com.android.myapex.deapexer/android_common/deapexer/javalib/libfoo.jar",
-			usesLibraryDep.DexJarBuildPath(errCtx).Path())
-	})
-
-	t.Run("java_sdk_library_import", func(t *testing.T) {
-		result := preparers.RunTestWithBp(t,
-			fmt.Sprintf(bpBase, `contents: ["libfoo"]`)+`
-			java_sdk_library_import {
-				name: "libfoo",
-				public: {
-					jars: ["libbar.jar"],
-				},
-				apex_available: [
-					"com.android.myapex",
-					"com.android.myapex_compressed",
-				],
-				compile_dex: true,
-			}
-		`)
-
-		module := result.Module("libfoo", "android_common_com.android.myapex")
-		usesLibraryDep := module.(java.UsesLibraryDependency)
-		android.AssertPathRelativeToTopEquals(t, "dex jar path",
-			"out/soong/.intermediates/prebuilt_com.android.myapex.deapexer/android_common/deapexer/javalib/libfoo.jar",
-			usesLibraryDep.DexJarBuildPath(errCtx).Path())
-	})
-
-	t.Run("prebuilt_bootclasspath_fragment", func(t *testing.T) {
-		_ = preparers.RunTestWithBp(t, fmt.Sprintf(bpBase, `
-			image_name: "art",
-			contents: ["libfoo"],
-		`)+`
-			java_sdk_library_import {
-				name: "libfoo",
-				public: {
-					jars: ["libbar.jar"],
-				},
-				apex_available: [
-					"com.android.myapex",
-					"com.android.myapex_compressed",
-				],
-				compile_dex: true,
-			}
-		`)
-	})
 }
 
 func TestUpdatable_should_set_min_sdk_version(t *testing.T) {
