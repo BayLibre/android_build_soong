@@ -2817,83 +2817,46 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		ctx.CheckbuildFile(outputFile)
 	}
 
-	if ctx.Device() {
-		// If this is a variant created for a prebuilt_apex then use the dex implementation jar
-		// obtained from the associated deapexer module.
-		ai, _ := android.ModuleProvider(ctx, android.ApexInfoProvider)
-		if ai.ForPrebuiltApex {
-			// Get the path of the dex implementation jar from the `deapexer` module.
-			di, err := android.FindDeapexerProviderForModule(ctx)
-			if err != nil {
-				// An error was found, possibly due to multiple apexes in the tree that export this library
-				// Defer the error till a client tries to call DexJarBuildPath
-				j.dexJarFileErr = err
-				j.initHiddenAPIError(err)
-				return
-			}
-			dexJarFileApexRootRelative := ApexRootRelativePathToJavaLib(j.BaseModuleName())
-			if dexOutputPath := di.PrebuiltExportPath(dexJarFileApexRootRelative); dexOutputPath != nil {
-				dexJarFile := makeDexJarPathFromPath(dexOutputPath)
-				j.dexJarFile = dexJarFile
-				installPath := android.PathForModuleInPartitionInstall(ctx, "apex", ai.ApexVariationName, ApexRootRelativePathToJavaLib(j.BaseModuleName()))
-				j.dexJarInstallFile = installPath
-
-				j.dexpreopter.installPath = j.dexpreopter.getInstallPath(ctx, android.RemoveOptionalPrebuiltPrefix(ctx.ModuleName()), installPath)
-				setUncompressDex(ctx, &j.dexpreopter, &j.dexer)
-				j.dexpreopter.uncompressedDex = *j.dexProperties.Uncompress_dex
-
-				if profilePath := di.PrebuiltExportPath(dexJarFileApexRootRelative + ".prof"); profilePath != nil {
-					j.dexpreopter.inputProfilePathOnHost = profilePath
-				}
-
-				// Initialize the hiddenapi structure.
-				j.initHiddenAPI(ctx, dexJarFile, outputFile, j.dexProperties.Uncompress_dex)
-			} else {
-				// This should never happen as a variant for a prebuilt_apex is only created if the
-				// prebuilt_apex has been configured to export the java library dex file.
-				ctx.ModuleErrorf("internal error: no dex implementation jar available from prebuilt APEX %s", di.ApexModuleName())
-			}
-		} else if Bool(j.dexProperties.Compile_dex) {
-			sdkDep := decodeSdkDep(ctx, android.SdkContext(j))
-			if sdkDep.invalidVersion {
-				ctx.AddMissingDependencies(sdkDep.bootclasspath)
-				ctx.AddMissingDependencies(sdkDep.java9Classpath)
-			} else if sdkDep.useFiles {
-				// sdkDep.jar is actually equivalent to turbine header.jar.
-				flags.classpath = append(flags.classpath, sdkDep.jars...)
-			}
-
-			// Dex compilation
-
-			j.dexpreopter.installPath = j.dexpreopter.getInstallPath(
-				ctx, android.RemoveOptionalPrebuiltPrefix(ctx.ModuleName()), android.PathForModuleInstall(ctx, "framework", jarName))
-			setUncompressDex(ctx, &j.dexpreopter, &j.dexer)
-			j.dexpreopter.uncompressedDex = *j.dexProperties.Uncompress_dex
-
-			var dexOutputFile android.Path
-			dexParams := &compileDexParams{
-				flags:         flags,
-				sdkVersion:    j.SdkVersion(ctx),
-				minSdkVersion: j.MinSdkVersion(ctx),
-				classesJar:    outputFile,
-				jarName:       jarName,
-			}
-
-			dexOutputFile, _ = j.dexer.compileDex(ctx, dexParams)
-			if ctx.Failed() {
-				return
-			}
-			ctx.CheckbuildFile(dexOutputFile)
-
-			// Initialize the hiddenapi structure.
-			j.initHiddenAPI(ctx, makeDexJarPathFromPath(dexOutputFile), outputFile, j.dexProperties.Uncompress_dex)
-
-			// Encode hidden API flags in dex file.
-			dexOutputFile = j.hiddenAPIEncodeDex(ctx, dexOutputFile)
-
-			j.dexJarFile = makeDexJarPathFromPath(dexOutputFile)
-			j.dexJarInstallFile = android.PathForModuleInstall(ctx, "framework", jarName)
+	if ctx.Device() && Bool(j.dexProperties.Compile_dex) {
+		sdkDep := decodeSdkDep(ctx, android.SdkContext(j))
+		if sdkDep.invalidVersion {
+			ctx.AddMissingDependencies(sdkDep.bootclasspath)
+			ctx.AddMissingDependencies(sdkDep.java9Classpath)
+		} else if sdkDep.useFiles {
+			// sdkDep.jar is actually equivalent to turbine header.jar.
+			flags.classpath = append(flags.classpath, sdkDep.jars...)
 		}
+
+		// Dex compilation
+
+		j.dexpreopter.installPath = j.dexpreopter.getInstallPath(
+			ctx, android.RemoveOptionalPrebuiltPrefix(ctx.ModuleName()), android.PathForModuleInstall(ctx, "framework", jarName))
+		setUncompressDex(ctx, &j.dexpreopter, &j.dexer)
+		j.dexpreopter.uncompressedDex = *j.dexProperties.Uncompress_dex
+
+		var dexOutputFile android.Path
+		dexParams := &compileDexParams{
+			flags:         flags,
+			sdkVersion:    j.SdkVersion(ctx),
+			minSdkVersion: j.MinSdkVersion(ctx),
+			classesJar:    outputFile,
+			jarName:       jarName,
+		}
+
+		dexOutputFile, _ = j.dexer.compileDex(ctx, dexParams)
+		if ctx.Failed() {
+			return
+		}
+		ctx.CheckbuildFile(dexOutputFile)
+
+		// Initialize the hiddenapi structure.
+		j.initHiddenAPI(ctx, makeDexJarPathFromPath(dexOutputFile), outputFile, j.dexProperties.Uncompress_dex)
+
+		// Encode hidden API flags in dex file.
+		dexOutputFile = j.hiddenAPIEncodeDex(ctx, dexOutputFile)
+
+		j.dexJarFile = makeDexJarPathFromPath(dexOutputFile)
+		j.dexJarInstallFile = android.PathForModuleInstall(ctx, "framework", jarName)
 	}
 
 	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
