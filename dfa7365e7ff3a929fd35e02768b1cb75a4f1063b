@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "093cfeb0_d12da02c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-19T21:23:56Z",
+      "side": 1,
+      "message": "There\u0027s some issues with this cl, notably that if modules are created after the mutator is run, they won\u0027t have the base configuration provider and won\u0027t work. There\u0027s some prebuilt apex modules that do that that Spandan is looking into, and the aidl modules also do that, which I\u0027m looking into now.",
+      "revId": "dfa7365e7ff3a929fd35e02768b1cb75a4f1063b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
