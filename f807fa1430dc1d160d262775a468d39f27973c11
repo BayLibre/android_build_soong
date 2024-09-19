@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b3aaf22_55ae1bb7",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1864,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-19T01:07:19Z",
+      "side": 1,
+      "message": "Just pass `ctx`. You only need to do `m.ConfigurableEvaluator(ctx)` if it\u0027s a more limited context like a `SingletonContext`.",
+      "range": {
+        "startLine": 1864,
+        "startChar": 85,
+        "endLine": 1864,
+        "endChar": 113
+      },
+      "revId": "f807fa1430dc1d160d262775a468d39f27973c11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
