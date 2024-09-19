@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "594695d0_d85faf1e",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-19T21:12:31Z",
+      "side": 1,
+      "message": "I think this can be confusing if there is a skew between the api scopes of a java_sdk_library at HEAD and the available scopes of that library in a previous version\n\ne.g. \n- framework-foo contributes to public at 29\n- framework-foo contributes to public at 30\n...\n- framework-foo contributes to public,system at ToT\n\nIIUC, the error message will recommend `sdk_framework-foo_public_29` (which exists) and `sdk_framework-foo_system_30` (which does not exist).",
+      "range": {
+        "startLine": 1312,
+        "startChar": 1,
+        "endLine": 1312,
+        "endChar": 57
+      },
+      "revId": "a84e1f2825f73353e18862bcd196e64ba39a90ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
