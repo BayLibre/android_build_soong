@@ -3685,7 +3685,7 @@ func ensureExactContents(t *testing.T, ctx *android.TestContext, moduleName, var
 }
 
 func ensureExactDeapexedContents(t *testing.T, ctx *android.TestContext, moduleName string, variant string, files []string) {
-	deapexer := ctx.ModuleForTests(moduleName+".deapexer", variant).Description("deapex")
+	deapexer := ctx.ModuleForTests(moduleName, variant).Description("deapex")
 	outputs := make([]string, 0, len(deapexer.ImplicitOutputs)+1)
 	if deapexer.Output != nil {
 		outputs = append(outputs, deapexer.Output.String())
@@ -4959,12 +4959,14 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 			},
 		}
 
-		java_import {
+		java_sdk_library_import {
 			name: "libfoo",
-			jars: ["libfoo.jar"],
+			public: {
+				jars: ["libfoo.jar"],
+			},
 			apex_available: ["myapex"],
+			shared_library: false,
 			permitted_packages: ["foo"],
-			sdk_version: "core_current",
 		}
 
 		java_sdk_library_import {
@@ -5018,12 +5020,16 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 			apex_available: ["myapex"],
 		}
 
-		java_import {
+		java_sdk_library_import {
 			name: "libfoo",
-			jars: ["libfoo.jar"],
+			public: {
+				jars: ["libfoo.jar"],
+			},
 			apex_available: ["myapex"],
-			permitted_packages: ["foo"],
+			shared_library: false,
+			permitted_packages: ["libfoo"],
 		}
+
 
 		java_sdk_library_import {
 			name: "libbar",
@@ -5200,13 +5206,15 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 			},
 		}
 
-		java_import {
+		java_sdk_library_import {
 			name: "libfoo",
 			prefer: true,
-			jars: ["libfoo.jar"],
+			public: {
+				jars: ["libfoo.jar"],
+			},
 			apex_available: ["myapex"],
-			permitted_packages: ["foo"],
-			sdk_version: "core_current",
+			shared_library: false,
+			permitted_packages: ["libfoo"],
 		}
 
 		java_library {
@@ -8057,12 +8065,16 @@ func TestDexpreoptAccessDexFilesFromPrebuiltApex(t *testing.T) {
 				},
 			}
 
-			java_import {
-				name: "libfoo",
+		java_sdk_library_import {
+			name: "libfoo",
+			prefer: true,
+			public: {
 				jars: ["libfoo.jar"],
-				apex_available: ["myapex"],
-				permitted_packages: ["libfoo"],
-			}
+			},
+			apex_available: ["myapex"],
+			shared_library: false,
+			permitted_packages: ["libfoo"],
+		}
 		`, "", preparer, fragment)
 	})
 }
@@ -10749,12 +10761,12 @@ func TestBootDexJarsMultipleApexPrebuilts(t *testing.T) {
 		{
 			desc:                      "Prebuilt apex prebuilt_com.android.foo is selected, profile should come from .prof deapexed from the prebuilt",
 			selectedApexContributions: "foo.prebuilt.contributions",
-			expectedBootJar:           "out/soong/.intermediates/prebuilt_com.android.foo.deapexer/android_common/deapexer/javalib/framework-foo.jar",
+			expectedBootJar:           "out/soong/.intermediates/prebuilt_com.android.foo/android_common_com.android.foo/deapexer/javalib/framework-foo.jar",
 		},
 		{
 			desc:                      "Prebuilt apex prebuilt_com.android.foo.v2 is selected, profile should come from .prof deapexed from the prebuilt",
 			selectedApexContributions: "foo.prebuilt.v2.contributions",
-			expectedBootJar:           "out/soong/.intermediates/prebuilt_com.android.foo.v2.deapexer/android_common/deapexer/javalib/framework-foo.jar",
+			expectedBootJar:           "out/soong/.intermediates/com.android.foo.v2/android_common_com.android.foo/deapexer/javalib/framework-foo.jar",
 		},
 	}
 
