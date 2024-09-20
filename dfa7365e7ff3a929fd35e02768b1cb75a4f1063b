@@ -16,6 +16,47 @@
       "message": "There\u0027s some issues with this cl, notably that if modules are created after the mutator is run, they won\u0027t have the base configuration provider and won\u0027t work. There\u0027s some prebuilt apex modules that do that that Spandan is looking into, and the aidl modules also do that, which I\u0027m looking into now.",
       "revId": "dfa7365e7ff3a929fd35e02768b1cb75a4f1063b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8bdebf5_d502064a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-20T00:43:25Z",
+      "side": 1,
+      "message": "That\u0027s a bummer. What is your plan? Run this mutator again as one of the last mutators?",
+      "parentUuid": "093cfeb0_d12da02c",
+      "revId": "dfa7365e7ff3a929fd35e02768b1cb75a4f1063b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e8657f_bbaa4217",
+        "filename": "android/base_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-20T00:43:25Z",
+      "side": 1,
+      "message": "nit: `m.getBaseConfigModule() !\u003d \"\"`",
+      "range": {
+        "startLine": 267,
+        "startChar": 5,
+        "endLine": 267,
+        "endChar": 42
+      },
+      "revId": "dfa7365e7ff3a929fd35e02768b1cb75a4f1063b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

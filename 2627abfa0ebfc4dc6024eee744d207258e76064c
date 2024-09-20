@@ -93,6 +93,30 @@
       },
       "revId": "2627abfa0ebfc4dc6024eee744d207258e76064c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b154f54a_7ac694e7",
+        "filename": "android/base_config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-20T00:43:25Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "0d295e7a_67684eda",
+      "range": {
+        "startLine": 284,
+        "startChar": 6,
+        "endLine": 284,
+        "endChar": 71
+      },
+      "revId": "2627abfa0ebfc4dc6024eee744d207258e76064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
