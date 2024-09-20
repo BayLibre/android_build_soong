@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b87af4_7b9ef1cd",
+        "filename": "apex/deapexer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-20T17:55:41Z",
+      "side": 0,
+      "message": "It looks like you\u0027re not setting the `DeapexerProvider` anymore. It also appears this was the only place it was set before. If it wasn\u0027t necessary, than can we also remove `DeapexerProvider` and `FindDeapexerProviderForModule`?",
+      "revId": "fef0a08323397a101e606355be3ea0f21ae98854",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
