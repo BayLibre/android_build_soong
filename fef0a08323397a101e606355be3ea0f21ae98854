@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12b4104e_5a9a43b7",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2832,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-20T17:58:52Z",
+      "side": 1,
+      "message": "Please use a more descriptive name like `intentionally_no_longer_supported`",
+      "range": {
+        "startLine": 2832,
+        "startChar": 81,
+        "endLine": 2832,
+        "endChar": 85
+      },
+      "revId": "fef0a08323397a101e606355be3ea0f21ae98854",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
