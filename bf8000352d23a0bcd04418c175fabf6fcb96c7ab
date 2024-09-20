@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c298cca_23fbbae3",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-20T20:03:10Z",
+      "side": 1,
+      "message": "Could you add a test, probably not a soong test but something more like `get_clang_version_test`, that diffs the results of listing all files in the sandboxes of two generules, one with ninja and one with sbox?\n\nWe want to ensure all the added files are in the same paths relative to the sandbox roots.\n\nThe genrules should add a couple different types of dependencies, like source files, tools, tool_files, and output files.",
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70e913f4_7a4a5672",
         "filename": "genrule/genrule.go",
         "patchSetId": 1
@@ -136,6 +153,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc421069_38bd0d21",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-20T20:03:10Z",
+      "side": 1,
+      "message": "We should not have a `prebuilt_tools` property, instead, add `prebuilt_build_tool` modules for the tools you want to use, and use them in the `tools` property like any other tool.\n\nWe\u0027ve done this before, examples:\nhttps://cs.android.com/android/platform/superproject/main/+/main:prebuilts/build-tools/Android.bp;l\u003d141?q\u003df:%5C.bp%20prebuilt_build_tool\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:vendor/imgtec/powervr/Android.bp;l\u003d162;drc\u003ddcf6c5e27ebc6c2e59e764da1cb5ab03ea2d2de0\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:prebuilts/jdk/jdk21/Android.bp;l\u003d16;drc\u003d870613009ddc56f520a6e804b172a92a360de46c\nhttps://cs.android.com/android/platform/superproject/main/+/main:external/cronet/Android.bp;l\u003d767;drc\u003d113120aed8e09221a431bf45d220bf6b70011f53",
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2205bf1_e7d96a87",
         "filename": "genrule/genrule.go",
         "patchSetId": 1
@@ -153,6 +187,40 @@
         "endLine": 496,
         "endChar": 89
       },
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e22b1209_93f73af4",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-20T20:03:10Z",
+      "side": 1,
+      "message": "`py3-cmd` should come from `prebuilts/build-tools/linux-x86/bin/py3-cmd`. Genrules previously always had some core build tools on the path, partially from `prebuilts/build-tools/linux-x86` and partially from `prebuilts/build-tools/path/linux-x86`, but I don\u0027t know all the details. Please recreate that behavior and make sure we default to using python and other tools from the source tree instead of from the host.",
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea7e0045_ba499a9b",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-20T20:03:10Z",
+      "side": 1,
+      "message": "`$(genDir)` is not the root of the sandbox in sbox-sandboxed genrules, it\u0027s `\u003csbox_root\u003e/out`. You should still be using `task.genDir` here to maintain that path heirarchy.",
       "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
