@@ -34,3 +34,30 @@ bootstrap_go_package {
     ],
     pluginFor: ["soong_build"],
 }
+
+test_module_tag {
+    name: "suite-ron",
+}
+
+test_suite {
+    name: "the-suite-life",
+    tags: ["suite-ron"],
+    tests: [
+        "CtsDevicePolicyManagerTestCases_Permissions_NoFlakes",
+        "FrameworksServicesTests_om",
+        "FrameworksServicesTests",
+        "DevCodelabTest",
+        "HelloWorldHostTest",
+        "HelloWorldTests",
+        "CtsDevicePolicyManagerTestCases",
+    ],
+    config: "clever-config",
+}
+
+tradefed_xml_config {
+    name: "clever-config",
+    // TODO(ron): list the included xml files too or report that there are includes
+    // and we don't catch them.
+    srcs: ["clever.xml"],
+    deps: ["CtsBackupHostTestCases"],
+}

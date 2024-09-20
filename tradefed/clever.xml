@@ -1,0 +1,10 @@
+<configuration description="Runs CTS from a pre-existing CTS installation">
+
+    <include name="cts-common" />
+    <include name="cts-exclude" />
+    <include name="cts-exclude-instant" />
+    <include name="cts-exclude-mcts" />
+
+    <option name="plan" value="cts" />
+
+</configuration>
