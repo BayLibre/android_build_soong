@@ -1058,6 +1058,10 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 		"safety-center-annotations", // apex [com.android.permission, test_com.android.permission] -> system
 	},
 
+	"service-ranging-pre-jarjar": {
+		"framework-ranging-pre-jarjar", // apex [com.android.uwb] -> system
+	},
+
 	"service-remoteauth-pre-jarjar": {
 		"framework-connectivity-pre-jarjar",   // apex [com.android.tethering] -> system
 		"framework-connectivity-t-pre-jarjar", // apex [com.android.tethering] -> system
