@@ -16,6 +16,24 @@
       "message": "I always wanted to get rid of the ART boot image and replace it with a genrule that simply calls `generate-boot-image` (something like [this](https://cs.android.com/android/platform/superproject/main/+/main:art/tools/compiler-explorer/compiler-explorer.md;l\u003d100-110;drc\u003dbda11bd68212f6a03381a849b0ee44bebf3ca5ba)), because it brings too much complexity and it\u0027s bringing even more complexity now with this CL, but I didn\u0027t get a chance to do it, unfortunately.\n\nAnyway, thanks for the CL. I regard this as a temporary solution, to unblock you from the migration to Soong. I\u0027m okay with this change as long as it generates artifacts that are bit-identical to what the Make rules generate. I\u0027ll do a cleanup later, and you are very welcome to help if you wish.",
       "revId": "2683e0086f375b633b05bfb28335516ee9ed29bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53bbfb4c_28aba1c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-20T21:43:35Z",
+      "side": 1,
+      "message": "Thanks! I prefer the genrule route as well.\n\nMy understanding is that art tests currently expect the boot image files to be a installed in a well known location (determined using [GetHostBootClasspathInstallRoot](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:art/libartbase/base/common_art_test.h;l\u003d241-245;drc\u003d2c9de53108d55b261ee18258a2c7ffce0e4560a7;bpv\u003d1;bpt\u003d1)). We would need to find a solution to make the genrule built locations known to the tests. Or make the genrules install their outputs in the staging directory.\n\n(Happy to assist in such cleanup)",
+      "parentUuid": "a92afaf3_e4c4954b",
+      "revId": "2683e0086f375b633b05bfb28335516ee9ed29bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
