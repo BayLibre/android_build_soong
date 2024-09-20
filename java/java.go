@@ -1492,6 +1492,13 @@ func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
 		}
 	}
 
+	for _, suiteName := range j.testProperties.Test_suites {
+		// Not all suite-names will be valid test_module_tags
+		if ctx.OtherModuleExists(suiteName) {
+			ctx.AddReverseDependency(ctx.Module(), tradefed.TestSuiteTag{}, suiteName)
+		}
+	}
+
 	j.addDataDeviceBinsDeps(ctx)
 	j.deps(ctx)
 }
@@ -1547,6 +1554,8 @@ func (j *TestHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		IsHost:              true,
 		LocalSdkVersion:     j.sdkVersion.String(),
 		IsUnitTest:          Bool(j.testProperties.Test_options.Unit_test),
+		TestcaseDir:         android.PathForModuleInstall(ctx, "testcases", ctx.ModuleName()),
+		TestcaseArchDir:     android.PathForModuleInstall(ctx, "testcases", ctx.ModuleName(), ctx.DeviceConfig().DeviceArch()),
 	})
 }
 
