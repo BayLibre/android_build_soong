@@ -61,6 +61,81 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8048c0b3_e416aaac",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-20T10:04:17Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "70e913f4_7a4a5672",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc9f3e3_d2928dff",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-20T10:04:17Z",
+      "side": 1,
+      "message": "I don\u0027t think you support this. PrebuiltBuildTool just accepts strings",
+      "range": {
+        "startLine": 139,
+        "startChar": 25,
+        "endLine": 139,
+        "endChar": 41
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "358b1910_cf8f627f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "genrule/genrule.go",
+              "range": {
+                "startLine": 138,
+                "startChar": 0,
+                "endLine": 141,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "genrule/genrule.go",
+              "range": {
+                "startLine": 406,
+                "startChar": 0,
+                "endLine": 411,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2205bf1_e7d96a87",
         "filename": "genrule/genrule.go",
         "patchSetId": 1
