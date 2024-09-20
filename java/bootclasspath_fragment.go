@@ -414,6 +414,12 @@ func (b *BootclasspathFragmentModule) DepIsInSameApex(ctx android.BaseModuleCont
 		// Cross-cutting metadata dependencies are metadata.
 		return false
 	}
+	// Dependency to the bootclasspath fragment of another apex
+	// e.g. concsrypt-bootclasspath-fragment --> art-bootclasspath-fragment
+	if tag == bootclasspathFragmentDepTag {
+		return false
+
+	}
 	panic(fmt.Errorf("boot_image module %q should not have a dependency on %q via tag %s", b, dep, android.PrettyPrintTag(tag)))
 }
 

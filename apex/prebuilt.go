@@ -199,9 +199,8 @@ func (p *prebuiltCommon) initApexFilesForAndroidMk(ctx android.ModuleContext) {
 }
 
 // If this prebuilt has system server jar, create the rules to dexpreopt it and install it alongside the prebuilt apex
-func (p *prebuiltCommon) dexpreoptSystemServerJars(ctx android.ModuleContext) {
-	// If this apex does not export anything, return
-	if !p.hasExportedDeps() {
+func (p *prebuiltCommon) dexpreoptSystemServerJars(ctx android.ModuleContext, di *android.DeapexerInfo) {
+	if di == nil {
 		return
 	}
 	// If this prebuilt apex has not been selected, return
@@ -210,10 +209,7 @@ func (p *prebuiltCommon) dexpreoptSystemServerJars(ctx android.ModuleContext) {
 	}
 	// Use apex_name to determine the api domain of this prebuilt apex
 	apexName := p.ApexVariationName()
-	di, err := android.FindDeapexerProviderForModule(ctx)
-	if err != nil {
-		ctx.ModuleErrorf(err.Error())
-	}
+	// TODO: do not compute twice
 	dc := dexpreopt.GetGlobalConfig(ctx)
 	systemServerJarList := dc.AllApexSystemServerJars(ctx)
 
@@ -556,17 +552,13 @@ func createApexSelectorModule(ctx android.TopDownMutatorContext, name string, ap
 	)
 }
 
+// TODO
 // createDeapexerModuleIfNeeded will create a deapexer module if it is needed.
 //
 // A deapexer module is only needed when the prebuilt apex specifies one or more modules in either
 // the `exported_java_libs` or `exported_bootclasspath_fragments` properties as that indicates that
 // the listed modules need access to files from within the prebuilt .apex file.
-func (p *prebuiltCommon) createDeapexerModuleIfNeeded(ctx android.TopDownMutatorContext, deapexerName string, apexFileSource string) {
-	// Only create the deapexer module if it is needed.
-	if !p.hasExportedDeps() {
-		return
-	}
-
+func (p *prebuiltCommon) getDeapexerPropertiesIfNeeded(ctx android.ModuleContext) DeapexerProperties {
 	// Compute the deapexer properties from the transitive dependencies of this module.
 	commonModules := []string{}
 	dexpreoptProfileGuidedModules := []string{}
@@ -600,7 +592,7 @@ func (p *prebuiltCommon) createDeapexerModuleIfNeeded(ctx android.TopDownMutator
 	})
 
 	// Create properties for deapexer module.
-	deapexerProperties := &DeapexerProperties{
+	deapexerProperties := DeapexerProperties{
 		// Remove any duplicates from the common modules lists as a module may be included via a direct
 		// dependency as well as transitive ones.
 		CommonModules:                 android.SortedUniqueStrings(commonModules),
@@ -609,18 +601,7 @@ func (p *prebuiltCommon) createDeapexerModuleIfNeeded(ctx android.TopDownMutator
 
 	// Populate the exported files property in a fixed order.
 	deapexerProperties.ExportedFiles = android.SortedUniqueStrings(exportedFiles)
-
-	props := struct {
-		Name          *string
-		Selected_apex *string
-	}{
-		Name:          proptools.StringPtr(deapexerName),
-		Selected_apex: proptools.StringPtr(apexFileSource),
-	}
-	ctx.CreateModule(privateDeapexerFactory,
-		&props,
-		deapexerProperties,
-	)
+	return deapexerProperties
 }
 
 func apexSelectorModuleName(baseModuleName string) string {
@@ -673,6 +654,7 @@ var (
 
 var _ prebuiltApexModuleCreator = (*Prebuilt)(nil)
 
+// DEPRECATED: This dependency graph is being removed.
 // createPrebuiltApexModules creates modules necessary to export files from the prebuilt apex to the
 // build.
 //
@@ -708,7 +690,6 @@ func (p *Prebuilt) createPrebuiltApexModules(ctx android.TopDownMutatorContext) 
 	createApexSelectorModule(ctx, apexSelectorModuleName, &p.properties.ApexFileProperties)
 
 	apexFileSource := ":" + apexSelectorModuleName
-	p.createDeapexerModuleIfNeeded(ctx, deapexerModuleName(p.Name()), apexFileSource)
 
 	// Add a source reference to retrieve the selected apex from the selector module.
 	p.prebuiltCommonProperties.Selected_apex = proptools.StringPtr(apexFileSource)
@@ -718,45 +699,43 @@ func (p *Prebuilt) ComponentDepsMutator(ctx android.BottomUpMutatorContext) {
 	p.prebuiltApexContentsDeps(ctx)
 }
 
-func (p *prebuiltCommon) DepsMutator(ctx android.BottomUpMutatorContext) {
-	if p.hasExportedDeps() {
-		// Create a dependency from the prebuilt apex (prebuilt_apex/apex_set) to the internal deapexer module
-		// The deapexer will return a provider which will be used to determine the exported artfifacts from this prebuilt.
-		ctx.AddDependency(ctx.Module(), android.DeapexerTag, deapexerModuleName(p.Name()))
-	}
-}
-
 var _ ApexInfoMutator = (*Prebuilt)(nil)
 
 func (p *Prebuilt) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 	p.apexInfoMutator(mctx)
 }
 
+// creates the build rules to deapex the prebuilt, and returns a deapexerInfo
+func (p *prebuiltCommon) getDeapexerInfo(ctx android.ModuleContext) *android.DeapexerInfo {
+	if !p.hasExportedDeps() {
+		// nothing to do
+		return nil
+	}
+	apexFile := android.OptionalPathForModuleSrc(ctx, p.prebuiltCommonProperties.Selected_apex).Path()
+	deapexerProps := p.getDeapexerPropertiesIfNeeded(ctx)
+	return deapex(ctx, apexFile, deapexerProps)
+}
+
 // Set a provider containing information about the jars and .prof provided by the apex
 // Apexes built from prebuilts retrieve this information by visiting its internal deapexer module
 // Used by dex_bootjars to generate the boot image
-func (p *prebuiltCommon) provideApexExportsInfo(ctx android.ModuleContext) {
-	if !p.hasExportedDeps() {
-		// nothing to do
+func (p *prebuiltCommon) provideApexExportsInfo(ctx android.ModuleContext, di *android.DeapexerInfo) {
+	if di == nil {
 		return
 	}
-	if di, err := android.FindDeapexerProviderForModule(ctx); err == nil {
-		javaModuleToDexPath := map[string]android.Path{}
-		for _, commonModule := range di.GetExportedModuleNames() {
-			if dex := di.PrebuiltExportPath(java.ApexRootRelativePathToJavaLib(commonModule)); dex != nil {
-				javaModuleToDexPath[commonModule] = dex
-			}
+	javaModuleToDexPath := map[string]android.Path{}
+	for _, commonModule := range di.GetExportedModuleNames() {
+		if dex := di.PrebuiltExportPath(java.ApexRootRelativePathToJavaLib(commonModule)); dex != nil {
+			javaModuleToDexPath[commonModule] = dex
 		}
-
-		exports := android.ApexExportsInfo{
-			ApexName:                      p.ApexVariationName(),
-			ProfilePathOnHost:             di.PrebuiltExportPath(java.ProfileInstallPathInApex),
-			LibraryNameToDexJarPathOnHost: javaModuleToDexPath,
-		}
-		android.SetProvider(ctx, android.ApexExportsInfoProvider, exports)
-	} else {
-		ctx.ModuleErrorf(err.Error())
 	}
+
+	exports := android.ApexExportsInfo{
+		ApexName:                      p.ApexVariationName(),
+		ProfilePathOnHost:             di.PrebuiltExportPath(java.ProfileInstallPathInApex),
+		LibraryNameToDexJarPathOnHost: javaModuleToDexPath,
+	}
+	android.SetProvider(ctx, android.ApexExportsInfoProvider, exports)
 }
 
 // Set prebuiltInfoProvider. This will be used by `apex_prebuiltinfo_singleton` to print out a metadata file
@@ -810,11 +789,13 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		return
 	}
 
+	deapexerInfo := p.getDeapexerInfo(ctx)
+
 	// dexpreopt any system server jars if present
-	p.dexpreoptSystemServerJars(ctx)
+	p.dexpreoptSystemServerJars(ctx, deapexerInfo)
 
 	// provide info used for generating the boot image
-	p.provideApexExportsInfo(ctx)
+	p.provideApexExportsInfo(ctx, deapexerInfo)
 
 	p.providePrebuiltInfo(ctx)
 
@@ -989,7 +970,6 @@ func (a *ApexSet) createPrebuiltApexModules(ctx android.TopDownMutatorContext) {
 	createApexExtractorModule(ctx, apexExtractorModuleName, &a.properties.ApexExtractorProperties)
 
 	apexFileSource := ":" + apexExtractorModuleName
-	a.createDeapexerModuleIfNeeded(ctx, deapexerModuleName(a.Name()), apexFileSource)
 
 	// After passing the arch specific src properties to the creating the apex selector module
 	a.prebuiltCommonProperties.Selected_apex = proptools.StringPtr(apexFileSource)
@@ -1036,11 +1016,13 @@ func (a *ApexSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		return
 	}
 
+	deapexerInfo := a.getDeapexerInfo(ctx)
+
 	// dexpreopt any system server jars if present
-	a.dexpreoptSystemServerJars(ctx)
+	a.dexpreoptSystemServerJars(ctx, deapexerInfo)
 
 	// provide info used for generating the boot image
-	a.provideApexExportsInfo(ctx)
+	a.provideApexExportsInfo(ctx, deapexerInfo)
 
 	a.providePrebuiltInfo(ctx)
 
