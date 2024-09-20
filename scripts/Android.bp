@@ -310,3 +310,9 @@ python_binary_host {
     main: "extra_install_zips_file_list.py",
     srcs: ["extra_install_zips_file_list.py"],
 }
+
+python_binary_host {
+    name: "suite_manifest",
+    main: "suite_manifest.py",
+    srcs: ["suite_manifest.py"],
+}
