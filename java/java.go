@@ -1547,6 +1547,8 @@ func (j *TestHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		IsHost:              true,
 		LocalSdkVersion:     j.sdkVersion.String(),
 		IsUnitTest:          Bool(j.testProperties.Test_options.Unit_test),
+		TestcaseDir:         android.PathForModuleInstall(ctx, "testcases", ctx.ModuleName()),
+		TestcaseArchDir:     android.PathForModuleInstall(ctx, "testcases", ctx.ModuleName(), ctx.DeviceConfig().DeviceArch()),
 	})
 }
 
