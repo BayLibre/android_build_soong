@@ -253,6 +253,8 @@ func (p *prebuiltCommon) AndroidMkEntries() []android.AndroidMkEntries {
 	return entriesList
 }
 
+// DEPRECATED. // TODO (spandandas): Remove this interface.
+
 // prebuiltApexModuleCreator defines the methods that need to be implemented by prebuilt_apex and
 // apex_set in order to create the modules needed to provide access to the prebuilt .apex file.
 type prebuiltApexModuleCreator interface {
@@ -731,26 +733,11 @@ type prebuiltApexExtractorModule struct {
 	extractedApex android.WritablePath
 }
 
-func privateApexExtractorModuleFactory() android.Module {
-	module := &prebuiltApexExtractorModule{}
-	module.AddProperties(
-		&module.properties,
-	)
-	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
-	return module
-}
-
-func (p *prebuiltApexExtractorModule) Srcs() android.Paths {
-	return android.Paths{p.extractedApex}
-}
-
-func (p *prebuiltApexExtractorModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	srcsSupplier := func(ctx android.BaseModuleContext, prebuilt android.Module) []string {
-		return p.properties.prebuiltSrcs(ctx)
-	}
+// extract registers the build actions to extract an apex from .apks file
+// returns the path of the extracted apex
+func extract(ctx android.ModuleContext, apexSet android.Path, prerelease *bool) android.Path {
 	defaultAllowPrerelease := ctx.Config().IsEnvTrue("SOONG_ALLOW_PRERELEASE_APEXES")
-	apexSet := android.SingleSourcePathFromSupplier(ctx, srcsSupplier, "set")
-	p.extractedApex = android.PathForModuleOut(ctx, "extracted", apexSet.Base())
+	extractedApex := android.PathForModuleOut(ctx, "extracted", apexSet.Base())
 	// Filter out NativeBridge archs (b/260115309)
 	abis := java.SupportedAbis(ctx, true)
 	ctx.Build(pctx,
@@ -758,14 +745,16 @@ func (p *prebuiltApexExtractorModule) GenerateAndroidBuildActions(ctx android.Mo
 			Rule:        extractMatchingApex,
 			Description: "Extract an apex from an apex set",
 			Inputs:      android.Paths{apexSet},
-			Output:      p.extractedApex,
+			Output:      extractedApex,
 			Args: map[string]string{
 				"abis":              strings.Join(abis, ","),
-				"allow-prereleased": strconv.FormatBool(proptools.BoolDefault(p.properties.Prerelease, defaultAllowPrerelease)),
+				"allow-prereleased": strconv.FormatBool(proptools.BoolDefault(prerelease, defaultAllowPrerelease)),
 				"sdk-version":       ctx.Config().PlatformSdkVersion().String(),
 				"skip-sdk-check":    strconv.FormatBool(ctx.Config().IsEnvTrue("SOONG_SKIP_APPSET_SDK_CHECK")),
 			},
-		})
+		},
+	)
+	return extractedApex
 }
 
 type ApexSet struct {
@@ -839,42 +828,6 @@ func apexSetFactory() android.Module {
 	return module
 }
 
-func createApexExtractorModule(ctx android.BottomUpMutatorContext, name string, apexExtractorProperties *ApexExtractorProperties) {
-	props := struct {
-		Name *string
-	}{
-		Name: proptools.StringPtr(name),
-	}
-
-	ctx.CreateModule(privateApexExtractorModuleFactory,
-		&props,
-		apexExtractorProperties,
-	)
-}
-
-func apexExtractorModuleName(baseModuleName string) string {
-	return baseModuleName + ".apex.extractor"
-}
-
-var _ prebuiltApexModuleCreator = (*ApexSet)(nil)
-
-// createPrebuiltApexModules creates modules necessary to export files from the apex set to other
-// modules.
-//
-// This effectively does for apex_set what Prebuilt.createPrebuiltApexModules does for a
-// prebuilt_apex except that instead of creating a selector module which selects one .apex file
-// from those provided this creates an extractor module which extracts the appropriate .apex file
-// from the zip file containing them.
-func (a *ApexSet) createPrebuiltApexModules(ctx android.BottomUpMutatorContext) {
-	apexExtractorModuleName := apexExtractorModuleName(a.Name())
-	createApexExtractorModule(ctx, apexExtractorModuleName, &a.properties.ApexExtractorProperties)
-
-	apexFileSource := ":" + apexExtractorModuleName
-
-	// After passing the arch specific src properties to the creating the apex selector module
-	a.prebuiltCommonProperties.Selected_apex = proptools.StringPtr(apexFileSource)
-}
-
 func (a *ApexSet) ComponentDepsMutator(ctx android.BottomUpMutatorContext) {
 	a.prebuiltApexContentsDeps(ctx)
 }
@@ -897,7 +850,9 @@ func (a *ApexSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		ctx.ModuleErrorf("filename should end in %s or %s for apex_set", imageApexSuffix, imageCapexSuffix)
 	}
 
-	inputApex := android.OptionalPathForModuleSrc(ctx, a.prebuiltCommonProperties.Selected_apex).Path()
+	apexSet := android.PathForModuleSrc(ctx, a.properties.prebuiltSrcs(ctx)[0])
+	extractedApex := extract(ctx, apexSet, a.properties.Prerelease)
+
 	a.outputApex = android.PathForModuleOut(ctx, a.installFilename)
 
 	// Build the output APEX. If compression is not enabled, make sure the output is not compressed even if the input is compressed
@@ -907,7 +862,7 @@ func (a *ApexSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:   buildRule,
-		Input:  inputApex,
+		Input:  extractedApex,
 		Output: a.outputApex,
 	})
 
@@ -916,7 +871,7 @@ func (a *ApexSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		return
 	}
 
-	deapexerInfo := a.getDeapexerInfo(ctx, inputApex)
+	deapexerInfo := a.getDeapexerInfo(ctx, extractedApex)
 
 	// dexpreopt any system server jars if present
 	a.dexpreoptSystemServerJars(ctx, deapexerInfo)
