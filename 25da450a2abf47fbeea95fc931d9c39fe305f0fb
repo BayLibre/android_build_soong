@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "410905aa_cf2c4476",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2789,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2024-09-23T21:18:31Z",
+      "side": 1,
+      "message": "Hi Jihoon, the TODO style is updated.\nI\u0027m using b/352818241 in TODO but not ag/29155892 because I think the latter only helps with `min_sdv_version` but not `apex_available`. Am I missing something?\n(Using b/352818241 because according to @jooyung@google.com the apex availability enforcement for **all** APEXes is tracked by that ticket. Here I\u0027m not trying to make it looser for our project but am trying to solve the inconsistency between different lunch targets caused by `ctx.Config().EnforceProductPartitionInterface()`)",
+      "parentUuid": "2caa189a_8620275c",
+      "range": {
+        "startLine": 2789,
+        "startChar": 1,
+        "endLine": 2789,
+        "endChar": 134
+      },
+      "revId": "25da450a2abf47fbeea95fc931d9c39fe305f0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad11e8da_840f79f9",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2024-09-23T17:38:08Z",
       "side": 1,
       "message": "Can you add a todo here as well to remove the two test cases below when ag/29155892 is merged?",
+      "revId": "25da450a2abf47fbeea95fc931d9c39fe305f0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0210670_882f7670",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6220,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2024-09-23T21:18:31Z",
+      "side": 1,
+      "message": "TODO style updated. Let\u0027s discuss ag/29155892 in the other comment thread.",
+      "parentUuid": "ad11e8da_840f79f9",
       "revId": "25da450a2abf47fbeea95fc931d9c39fe305f0fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
