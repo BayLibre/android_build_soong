@@ -300,6 +300,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86b9e39a_7d1e9718",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-09-23T08:08:13Z",
+      "side": 1,
+      "message": "It does come from `prebuilts/build-tools/linux-x86/bin/py3-cmd`, are you saying that we should set `PATH` appropriately?",
+      "parentUuid": "e22b1209_93f73af4",
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea7e0045_ba499a9b",
         "filename": "genrule/genrule.go",
         "patchSetId": 1
