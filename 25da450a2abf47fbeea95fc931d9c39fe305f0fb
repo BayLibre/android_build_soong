@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6428345_d6fd41ca",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2789,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-23T21:22:29Z",
+      "side": 1,
+      "message": "You are right in that ag/29155892 does not cover the apex availability check. Thanks for the correction. Ack re `ctx.Config().EnforceProductPartitionInterface()`.",
+      "parentUuid": "410905aa_cf2c4476",
+      "range": {
+        "startLine": 2789,
+        "startChar": 1,
+        "endLine": 2789,
+        "endChar": 134
+      },
+      "revId": "25da450a2abf47fbeea95fc931d9c39fe305f0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad11e8da_840f79f9",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "TODO style updated. Let\u0027s discuss ag/29155892 in the other comment thread.",
       "parentUuid": "ad11e8da_840f79f9",
+      "revId": "25da450a2abf47fbeea95fc931d9c39fe305f0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4689fe_c9bbda28",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6220,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-23T21:22:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b0210670_882f7670",
       "revId": "25da450a2abf47fbeea95fc931d9c39fe305f0fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
