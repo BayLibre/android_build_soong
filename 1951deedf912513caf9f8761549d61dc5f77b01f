@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce86e78_d5c0320f",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-23T18:33:22Z",
+      "side": 1,
+      "message": "Previously we were using `SingleSourcePathFromSupplier`, which would error out if the number of prebuilt sources was `!\u003d 1`. Could we add that check here too?",
+      "revId": "1951deedf912513caf9f8761549d61dc5f77b01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
