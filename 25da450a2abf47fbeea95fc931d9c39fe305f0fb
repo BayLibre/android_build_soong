@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2caa189a_8620275c",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2789,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-23T17:38:08Z",
+      "side": 1,
+      "message": "I don\u0027t think this can be removed when the condition above is removed; in fact, removing the above condition means making the apex availability check stricter. I think this condition can be removed once ag/29155892 is merged. Do you mind correcting this while adhering to the go/todo-style?",
+      "range": {
+        "startLine": 2789,
+        "startChar": 1,
+        "endLine": 2789,
+        "endChar": 134
+      },
+      "revId": "25da450a2abf47fbeea95fc931d9c39fe305f0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad11e8da_840f79f9",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6220,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-23T17:38:08Z",
+      "side": 1,
+      "message": "Can you add a todo here as well to remove the two test cases below when ag/29155892 is merged?",
+      "revId": "25da450a2abf47fbeea95fc931d9c39fe305f0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
