@@ -2785,6 +2785,12 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 		return
 	}
 
+	// Temporarily bypass /product APEXes with a specific prefix.
+	// Will be removed when the above condition of `(a.ProductSpecific() && ctx.Config().EnforceProductPartitionInterface())` is removed.
+	if a.ProductSpecific() && strings.HasPrefix(a.ApexVariationName(), "com.sdv.") {
+		return
+	}
+
 	// Coverage build adds additional dependencies for the coverage-only runtime libraries.
 	// Requiring them and their transitive depencies with apex_available is not right
 	// because they just add noise.

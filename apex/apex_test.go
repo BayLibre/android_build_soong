@@ -6216,6 +6216,86 @@ func TestApexAvailable_DirectDep(t *testing.T) {
 		system_shared_libs: [],
 		apex_available: ["otherapex"],
 	}`)
+
+	// 'apex_available' check is bypassed for /product apex with a specific prefix.
+	testApex(t, `
+	apex {
+		name: "com.sdv.myapex",
+		key: "myapex.key",
+		native_shared_libs: ["libfoo"],
+		updatable: false,
+		product_specific: true,
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	apex {
+		name: "com.any.otherapex",
+		key: "otherapex.key",
+		native_shared_libs: ["libfoo"],
+		updatable: false,
+	}
+
+	apex_key {
+		name: "otherapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	cc_library {
+		name: "libfoo",
+		stl: "none",
+		system_shared_libs: [],
+		apex_available: ["com.any.otherapex"],
+		product_specific: true,
+	}`,
+		android.FixtureMergeMockFs(android.MockFS{
+			"system/sepolicy/apex/com.sdv.myapex-file_contexts":    nil,
+			"system/sepolicy/apex/com.any.otherapex-file_contexts": nil,
+		}))
+
+	// 'apex_available' check is not bypassed for non-product apex with a specific prefix.
+	testApexError(t, "requires \"libfoo\" that doesn't list the APEX under 'apex_available'.", `
+	apex {
+		name: "com.sdv.myapex",
+		key: "myapex.key",
+		native_shared_libs: ["libfoo"],
+		updatable: false,
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	apex {
+		name: "com.any.otherapex",
+		key: "otherapex.key",
+		native_shared_libs: ["libfoo"],
+		updatable: false,
+	}
+
+	apex_key {
+		name: "otherapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	cc_library {
+		name: "libfoo",
+		stl: "none",
+		system_shared_libs: [],
+		apex_available: ["com.any.otherapex"],
+	}`,
+		android.FixtureMergeMockFs(android.MockFS{
+			"system/sepolicy/apex/com.sdv.myapex-file_contexts":    nil,
+			"system/sepolicy/apex/com.any.otherapex-file_contexts": nil,
+		}))
 }
 
 func TestApexAvailable_IndirectDep(t *testing.T) {
@@ -6261,6 +6341,90 @@ func TestApexAvailable_IndirectDep(t *testing.T) {
 		stl: "none",
 		system_shared_libs: [],
 	}`)
+
+	// 'apex_available' check is bypassed for /product apex with a specific prefix.
+	testApex(t, `
+		apex {
+			name: "com.sdv.myapex",
+			key: "myapex.key",
+			native_shared_libs: ["libfoo"],
+			updatable: false,
+			product_specific: true,
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "libfoo",
+			stl: "none",
+			shared_libs: ["libbar"],
+			system_shared_libs: [],
+			apex_available: ["com.sdv.myapex"],
+			product_specific: true,
+		}
+
+		cc_library {
+			name: "libbar",
+			stl: "none",
+			shared_libs: ["libbaz"],
+			system_shared_libs: [],
+			apex_available: ["com.sdv.myapex"],
+			product_specific: true,
+		}
+
+		cc_library {
+			name: "libbaz",
+			stl: "none",
+			system_shared_libs: [],
+			product_specific: true,
+		}`,
+		android.FixtureMergeMockFs(android.MockFS{
+			"system/sepolicy/apex/com.sdv.myapex-file_contexts": nil,
+		}))
+
+	// 'apex_available' check is not bypassed for non-product apex with a specific prefix.
+	testApexError(t, `requires "libbaz" that doesn't list the APEX under 'apex_available'.`, `
+		apex {
+			name: "com.sdv.myapex",
+			key: "myapex.key",
+			native_shared_libs: ["libfoo"],
+			updatable: false,
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "libfoo",
+			stl: "none",
+			shared_libs: ["libbar"],
+			system_shared_libs: [],
+			apex_available: ["com.sdv.myapex"],
+		}
+
+		cc_library {
+			name: "libbar",
+			stl: "none",
+			shared_libs: ["libbaz"],
+			system_shared_libs: [],
+			apex_available: ["com.sdv.myapex"],
+		}
+
+		cc_library {
+			name: "libbaz",
+			stl: "none",
+			system_shared_libs: [],
+		}`,
+		android.FixtureMergeMockFs(android.MockFS{
+			"system/sepolicy/apex/com.sdv.myapex-file_contexts": nil,
+		}))
 }
 
 func TestApexAvailable_IndirectStaticDep(t *testing.T) {
