@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "082c0e85_01fdc30d",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-23T08:14:21Z",
+      "side": 1,
+      "message": "nit: this looks a bit verbose. suggestions:\n\n1. rename `copyToolsCommand` to something simpler: `cmd`\n\n2. give `filepath.Dir(filepath.Join(r.nsjailBasePath.String(), nsjailPathForToolRel(r.ctx, tool))` a name.",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 547,
+        "endChar": 0
+      },
+      "revId": "02c8e2c19c7b73fae275b8e824c94355005eff67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
