@@ -100,6 +100,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eadc25f_19c06c4a",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-09-23T08:07:27Z",
+      "side": 1,
+      "message": "obsolete, removed.",
+      "parentUuid": "8048c0b3_e416aaac",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bc9f3e3_d2928dff",
@@ -151,6 +175,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5495102_7c6383af",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-09-23T08:07:27Z",
+      "side": 1,
+      "message": "obsolete, removed.",
+      "parentUuid": "6bc9f3e3_d2928dff",
+      "range": {
+        "startLine": 139,
+        "startChar": 25,
+        "endLine": 139,
+        "endChar": 41
+      },
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc421069_38bd0d21",
@@ -168,6 +216,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74256bb0_9f821e16",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-09-23T08:07:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc421069_38bd0d21",
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2205bf1_e7d96a87",
@@ -181,6 +247,30 @@
       "writtenOn": "2024-09-20T09:33:07Z",
       "side": 1,
       "message": "Question) can we just use the same directory structure as plain `genrule`? IIUC, it would simplify some if statements, here and L557-L575",
+      "range": {
+        "startLine": 496,
+        "startChar": 69,
+        "endLine": 496,
+        "endChar": 89
+      },
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d678568c_2285be04",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-09-23T08:07:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2205bf1_e7d96a87",
       "range": {
         "startLine": 496,
         "startChar": 69,
@@ -225,6 +315,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c3ab2ff_8ca8301b",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-09-23T08:07:27Z",
+      "side": 1,
+      "message": "I changed the path structure so that I can use `task.genDir` as-is.",
+      "parentUuid": "ea7e0045_ba499a9b",
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ddedeaf_25e7ea0f",
@@ -238,6 +346,30 @@
       "writtenOn": "2024-09-20T09:33:07Z",
       "side": 1,
       "message": "genrule with nsjail",
+      "range": {
+        "startLine": 639,
+        "startChar": 37,
+        "endLine": 639,
+        "endChar": 51
+      },
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d165de58_583adec6",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-09-23T08:07:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ddedeaf_25e7ea0f",
       "range": {
         "startLine": 639,
         "startChar": 37,
@@ -271,6 +403,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "011bf47c_11f4123f",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-09-23T08:07:27Z",
+      "side": 1,
+      "message": "there\u0027s no special meaning AFAIK. I just copied this from existing code.",
+      "parentUuid": "6e7561ff_a7cb3f84",
+      "range": {
+        "startLine": 640,
+        "startChar": 20,
+        "endLine": 640,
+        "endChar": 22
+      },
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6351d7e8_5570ed08",
@@ -284,6 +440,30 @@
       "writtenOn": "2024-09-20T09:33:07Z",
       "side": 1,
       "message": "Question: is it `useNsjail \u003d false` specific?",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 649,
+        "endChar": 43
+      },
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "556d3d75_193a842f",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-09-23T08:07:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6351d7e8_5570ed08",
       "range": {
         "startLine": 649,
         "startChar": 0,
