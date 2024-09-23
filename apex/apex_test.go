@@ -7101,7 +7101,7 @@ func TestJavaSDKLibrary_WithinApex(t *testing.T) {
 		java_library {
 			name: "bar",
 			srcs: ["a.java"],
-			libs: ["foo.impl"],
+			libs: ["foo"],
 			apex_available: ["myapex"],
 			sdk_version: "none",
 			system_modules: "none",
@@ -7154,7 +7154,7 @@ func TestJavaSDKLibrary_CrossBoundary(t *testing.T) {
 		java_library {
 			name: "bar",
 			srcs: ["a.java"],
-			libs: ["foo.stubs"],
+			libs: ["foo"],
 			sdk_version: "none",
 			system_modules: "none",
 		}
@@ -7208,7 +7208,7 @@ func TestJavaSDKLibrary_ImportPreferred(t *testing.T) {
 		java_library {
 			name: "bar",
 			srcs: ["a.java"],
-			libs: ["foo.impl"],
+			libs: ["foo"],
 			apex_available: ["myapex"],
 			sdk_version: "none",
 			system_modules: "none",

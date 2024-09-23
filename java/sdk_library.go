@@ -1285,34 +1285,7 @@ type SdkLibraryDependency interface {
 	// sharedLibrary returns true if this can be used as a shared library.
 	sharedLibrary() bool
 
-	// getImplLibraryModule returns the pointer to the implementation library submodule of this
-	// sdk library.
 	getImplLibraryModule() *Library
-}
-
-type SdkLibraryInfo struct {
-	// GeneratingLibs is the names of the library modules that this sdk library
-	// generates. Note that this only includes the name of the modules that other modules can
-	// depend on, and is not a holistic list of generated modules.
-	GeneratingLibs []string
-}
-
-var SdkLibraryInfoProvider = blueprint.NewProvider[SdkLibraryInfo]()
-
-func getGeneratingLibs(ctx android.ModuleContext, sdkVersion android.SdkSpec, sdkLibraryModuleName string, sdkInfo SdkLibraryInfo) []string {
-	apiLevel := sdkVersion.ApiLevel
-	if apiLevel.IsPreview() {
-		return sdkInfo.GeneratingLibs
-	}
-
-	generatingPrebuilts := []string{}
-	for _, apiScope := range AllApiScopes {
-		scopePrebuiltModuleName := prebuiltApiModuleName("sdk", sdkLibraryModuleName, apiScope.name, apiLevel.String())
-		if ctx.OtherModuleExists(scopePrebuiltModuleName) {
-			generatingPrebuilts = append(generatingPrebuilts, scopePrebuiltModuleName)
-		}
-	}
-	return generatingPrebuilts
 }
 
 type SdkLibrary struct {
@@ -1637,22 +1610,9 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	}
 	android.SetProvider(ctx, android.AdditionalSdkInfoProvider, android.AdditionalSdkInfo{additionalSdkInfo})
 	module.setOutputFiles(ctx)
-
-	var generatingLibs []string
-	for _, apiScope := range AllApiScopes {
-		if _, ok := module.scopePaths[apiScope]; ok {
-			generatingLibs = append(generatingLibs, module.stubsLibraryModuleName(apiScope))
-		}
-	}
-
 	if module.requiresRuntimeImplementationLibrary() && module.implLibraryModule != nil {
-		generatingLibs = append(generatingLibs, module.implLibraryModuleName())
 		setOutputFiles(ctx, module.implLibraryModule.Module)
 	}
-
-	android.SetProvider(ctx, SdkLibraryInfoProvider, SdkLibraryInfo{
-		GeneratingLibs: generatingLibs,
-	})
 }
 
 func (module *SdkLibrary) BuiltInstalledForApex() []dexpreopterInstall {
@@ -2900,25 +2860,10 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 		}
 	}
 
-	var generatingLibs []string
-	for _, apiScope := range AllApiScopes {
-		if scopeProperties, ok := module.scopeProperties[apiScope]; ok {
-			if len(scopeProperties.Jars) == 0 {
-				continue
-			}
-			generatingLibs = append(generatingLibs, module.stubsLibraryModuleName(apiScope))
-		}
-	}
-
 	module.setOutputFiles(ctx)
 	if module.implLibraryModule != nil {
-		generatingLibs = append(generatingLibs, module.implLibraryModuleName())
 		setOutputFiles(ctx, module.implLibraryModule.Module)
 	}
-
-	android.SetProvider(ctx, SdkLibraryInfoProvider, SdkLibraryInfo{
-		GeneratingLibs: generatingLibs,
-	})
 }
 
 func (module *SdkLibraryImport) sdkJars(ctx android.BaseModuleContext, sdkVersion android.SdkSpec, headerJars bool) android.Paths {
