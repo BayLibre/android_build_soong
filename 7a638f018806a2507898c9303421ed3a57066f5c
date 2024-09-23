@@ -22,6 +22,30 @@
       },
       "revId": "7a638f018806a2507898c9303421ed3a57066f5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "790f9835_25fe7cc2",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-23T18:26:17Z",
+      "side": 1,
+      "message": "We could, though I\u0027m not really sure what the advantage of having the prebuilt infrastructure handle the property is.",
+      "parentUuid": "8fd24ef8_35f61e57",
+      "range": {
+        "startLine": 500,
+        "startChar": 4,
+        "endLine": 500,
+        "endChar": 75
+      },
+      "revId": "7a638f018806a2507898c9303421ed3a57066f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

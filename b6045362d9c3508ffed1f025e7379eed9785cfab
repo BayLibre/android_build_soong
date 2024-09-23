@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f7955a_a2b69729",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-23T18:26:17Z",
+      "side": 1,
+      "message": "Could we change `prebuiltApexSelector` to just return a single string?",
+      "range": {
+        "startLine": 674,
+        "startChar": 58,
+        "endLine": 674,
+        "endChar": 78
+      },
+      "revId": "b6045362d9c3508ffed1f025e7379eed9785cfab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
