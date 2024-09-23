@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b5c6a7_110a9a8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1959970
+      },
+      "writtenOn": "2024-09-23T07:15:38Z",
+      "side": 1,
+      "message": "Hi Wei Li,\n\nCould you help review this change to add new arch variant?\n\nI must add the cc and rust config as well otherwise if I try using the arch.x86_64.alderlake it will fail some validations.\n\nThank you",
+      "revId": "f5f6f5ba4f5b9cf85c772c7e2a233ba4fa730ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
