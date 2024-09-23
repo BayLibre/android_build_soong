@@ -16,6 +16,24 @@
       "message": "Should this be `Id12816206a16b17c23e3a53832d268f1600107b3` instead?",
       "revId": "af1c06ddb2cbe57e1c2015c7d06ab79475d35371",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22fb3495_41fb68ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1944425
+      },
+      "writtenOn": "2024-09-23T19:29:57Z",
+      "side": 1,
+      "message": "oh that\u0027s right let me update that",
+      "parentUuid": "452bd8d5_d7d9b1ba",
+      "revId": "af1c06ddb2cbe57e1c2015c7d06ab79475d35371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
