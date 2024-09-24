@@ -457,6 +457,8 @@ type Module struct {
 	overridableProperties OverridableProperties
 	sourceProperties      android.SourceProperties
 
+	hooks JavaModuleHooks
+
 	// jar file containing header classes including static library dependencies, suitable for
 	// inserting into the bootclasspath/classpath of another compile
 	headerJarFile android.Path
@@ -830,7 +832,11 @@ func (j *Module) AvailableFor(what string) bool {
 }
 
 func (j *Module) staticLibs(ctx android.BaseModuleContext) []string {
-	return android.RemoveListFromList(j.properties.Static_libs.GetOrDefault(ctx, nil), j.properties.Exclude_static_libs)
+	libs := android.RemoveListFromList(j.properties.Static_libs.GetOrDefault(ctx, nil), j.properties.Exclude_static_libs)
+	if j.hooks != nil {
+		libs = append(libs, j.hooks.StaticLibs(ctx)...)
+	}
+	return libs
 }
 
 func (j *Module) deps(ctx android.BottomUpMutatorContext) {
@@ -2985,3 +2991,8 @@ func (j *Module) UsesLibrary() *usesLibrary {
 }
 
 var _ ModuleWithUsesLibrary = (*Module)(nil)
+
+type JavaModuleHooks interface {
+	JavaHookProps() []interface{}
+	StaticLibs(ctx android.BaseModuleContext) []string
+}

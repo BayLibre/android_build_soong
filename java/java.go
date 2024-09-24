@@ -1230,6 +1230,13 @@ func LibraryFactory() android.Module {
 	return module
 }
 
+func HookedLibraryFactory(hooks JavaModuleHooks) android.Module {
+	module := LibraryFactory().(*Library)
+	module.hooks = hooks
+	module.AddProperties(hooks.JavaHookProps()...)
+	return module
+}
+
 // java_library_static is an obsolete alias for java_library.
 func LibraryStaticFactory() android.Module {
 	return LibraryFactory()
