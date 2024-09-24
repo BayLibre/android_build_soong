@@ -137,6 +137,11 @@ func addDependenciesOntoBootImageModules(ctx android.BottomUpMutatorContext, mod
 		apex := modules.Apex(i)
 		name := modules.Jar(i)
 
+		// Add a dependency on the impl lib of java_sdk_library instead as java_sdk_library
+		// does not provide JavaInfoProvider
+		if ctx.OtherModuleExists(name + implLibSuffix) {
+			name = name + implLibSuffix
+		}
 		addDependencyOntoApexModulePair(ctx, apex, name, tag)
 	}
 }

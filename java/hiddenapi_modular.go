@@ -929,7 +929,7 @@ type bootDexJarByModule map[string]android.Path
 
 // addPath adds the path for a module to the map.
 func (b bootDexJarByModule) addPath(module android.Module, path android.Path) {
-	b[android.RemoveOptionalPrebuiltPrefix(module.Name())] = path
+	b[RemoveOptionalImplLibSuffix(android.RemoveOptionalPrebuiltPrefix(module.Name()))] = path
 }
 
 // bootDexJars returns the boot dex jar paths sorted by their keys.

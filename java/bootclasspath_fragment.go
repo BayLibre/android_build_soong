@@ -378,7 +378,7 @@ type BootclasspathFragmentApexContentInfo struct {
 func (i BootclasspathFragmentApexContentInfo) DexBootJarPathForContentModule(module android.Module) (android.Path, error) {
 	// A bootclasspath_fragment cannot use a prebuilt library so Name() will return the base name
 	// without a prebuilt_ prefix so is safe to use as the key for the contentModuleDexJarPaths.
-	name := module.Name()
+	name := RemoveOptionalImplLibSuffix(module.Name())
 	if dexJar, ok := i.contentModuleDexJarPaths[name]; ok {
 		return dexJar, nil
 	} else {

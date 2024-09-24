@@ -33,6 +33,10 @@ const (
 	implLibSuffix    = ".impl"
 )
 
+func RemoveOptionalImplLibSuffix(name string) string {
+	return strings.TrimSuffix(name, implLibSuffix)
+}
+
 // Module name of the runtime implementation library
 func (c *commonToSdkLibraryAndImport) implLibraryModuleName() string {
 	return c.module.RootLibraryName() + implLibSuffix

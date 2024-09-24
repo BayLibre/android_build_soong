@@ -690,6 +690,7 @@ func getModulesForImage(ctx android.ModuleContext, imageConfig *bootImageConfig)
 		found := false
 		for _, module := range gatherApexModulePairDepsWithTag(ctx, dexpreoptBootJarDepTag) {
 			name := android.RemoveOptionalPrebuiltPrefix(module.Name())
+			name = RemoveOptionalImplLibSuffix(name)
 			if name == imageConfig.modules.Jar(i) {
 				modules = append(modules, apexJarModulePair{
 					apex:      imageConfig.modules.Apex(i),
