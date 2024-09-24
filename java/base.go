@@ -1735,8 +1735,12 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		return
 	}
 
+	completeStaticLibsImplementationJarsToCombine := completeStaticLibsImplementationJars
+
 	if j.shouldInstrument(ctx) {
-		outputFile = j.instrument(ctx, flags, outputFile, jarName, specs)
+		instrumentedOutputFile := j.instrument(ctx, flags, outputFile, jarName, specs)
+		completeStaticLibsImplementationJarsToCombine = android.NewDepSet(android.PREORDER, android.Paths{instrumentedOutputFile}, nil)
+		outputFile = instrumentedOutputFile
 	}
 
 	// merge implementation jar with resources if necessary
@@ -1744,7 +1748,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 	if ctx.Config().UseTransitiveJarsInClasspath() {
 		resourceJars := completeStaticLibsResourceJars.ToList()
 		if len(resourceJars) > 0 {
-			implementationAndResourcesJarsToCombine = append(resourceJars, completeStaticLibsImplementationJars.ToList()...)
+			implementationAndResourcesJarsToCombine = append(resourceJars, completeStaticLibsImplementationJarsToCombine.ToList()...)
 			implementationAndResourcesJarsToCombine = append(implementationAndResourcesJarsToCombine, extraDepCombinedJars...)
 		}
 	} else {
@@ -1909,7 +1913,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		ctx.CheckbuildFile(j.headerJarFile)
 	}
 
-	android.SetProvider(ctx, JavaInfoProvider, &JavaInfo{
+	provider := &JavaInfo{
 		HeaderJars:           android.PathsIfNonNil(j.headerJarFile),
 		RepackagedHeaderJars: android.PathsIfNonNil(repackagedHeaderJarFile),
 
@@ -1933,7 +1937,13 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		JacocoReportClassesFile:             j.jacocoReportClassesFile,
 		StubsLinkType:                       j.stubsLinkType,
 		AconfigIntermediateCacheOutputPaths: j.aconfigCacheFiles,
-	})
+	}
+
+	if ctx.ModuleName() == "android.car" {
+		fmt.Printf("%s: %#v\n", ctx.Module(), *provider)
+	}
+
+	android.SetProvider(ctx, JavaInfoProvider, provider)
 
 	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource
 	j.outputFile = outputFile.WithoutRel()
