@@ -16,6 +16,23 @@
       "message": "Hi Wei Li,\n\nCould you help review this change to add new arch variant?\n\nI must add the cc and rust config as well otherwise if I try using the arch.x86_64.alderlake it will fail some validations.\n\nThank you",
       "revId": "f5f6f5ba4f5b9cf85c772c7e2a233ba4fa730ddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a945f16_e493196c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1959970
+      },
+      "writtenOn": "2024-09-24T05:04:42Z",
+      "side": 1,
+      "message": "Hi team,\n\nIs there any other test I need to run to verify? At least `m` works, and after that, I can have an Android.bp like this:\n```\ncc_prebuilt_library_shared {\n    name: \"libprebuilt\",\n    vendor: true,\n    compile_multilib: \"64\",\n    check_elf_files: false,\n    arch: {\n        x86_64: {\n            alderlake: {\n                srcs: [\"alderlake/libprebuilt.so\"],\n            },\n        }\n    }\n}\n```\nand then I can successfully do `m libprebuilt`.\n\nAs for the cc and rust config, I verified in gcc and rustc that they support alderlake as the target cpu.",
+      "revId": "f5f6f5ba4f5b9cf85c772c7e2a233ba4fa730ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
