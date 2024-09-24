@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c4570c_ee276ca5",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1374,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-24T01:49:20Z",
+      "side": 1,
+      "message": "nit: Can we keep the existing `stubsLibraryModuleName` function name? `topLevel` can be an overloaded term in the context of `SdkLibrary`, and _could_ imply the top-level java_sdk_library name (e.g. `framework-foo`)",
+      "range": {
+        "startLine": 1374,
+        "startChar": 27,
+        "endLine": 1374,
+        "endChar": 57
+      },
+      "revId": "6289b33df6662ef4d42a94513d65b21c857982d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
