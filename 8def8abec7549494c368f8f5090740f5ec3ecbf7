@@ -39,6 +39,29 @@
       },
       "revId": "8def8abec7549494c368f8f5090740f5ec3ecbf7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e934240_b5a4c356",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1190,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-24T13:48:23Z",
+      "side": 1,
+      "message": "When ART is a prebuilt, primarily in `next` release configs, this will still use the profile from source, so it may not correspond to the BCP jars in the prebuilt APEX. I\u0027m not sure if that\u0027s a problem or not - it depends on how this profile is generated and updated (and in any case it\u0027s not a regression from how it worked before this CL).\n\nIn any case, it\u0027s worth pointing out in a comment.",
+      "range": {
+        "startLine": 1190,
+        "startChar": 16,
+        "endLine": 1190,
+        "endChar": 53
+      },
+      "revId": "8def8abec7549494c368f8f5090740f5ec3ecbf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
