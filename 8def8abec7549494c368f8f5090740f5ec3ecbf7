@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0cab4cf_1cb0c71b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-24T13:31:32Z",
+      "side": 1,
+      "message": "Nit: Please break long line.",
+      "revId": "8def8abec7549494c368f8f5090740f5ec3ecbf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7968e23c_cccc378d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-24T13:31:32Z",
+      "side": 1,
+      "message": "Most of this work was done in b/186455808, and I wonder why this last step to wrap it up wasn\u0027t done there. Cc @paulduffin@google.com in case he remembers.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "8def8abec7549494c368f8f5090740f5ec3ecbf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
