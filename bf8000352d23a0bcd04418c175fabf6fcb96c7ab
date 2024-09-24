@@ -334,6 +334,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09b60caf_b4ba46f8",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-24T21:21:33Z",
+      "side": 1,
+      "message": "I was thinking that `which python3` would be different between the nsjail/non-nsjail sandboxes. And it appears they are, or would be, except that you\u0027ve cleared the `PATH` environment variable so it can\u0027t find the host python3 in the nsjail sandbox, which is kindof a good thing. Nevermind.",
+      "parentUuid": "86b9e39a_7d1e9718",
+      "revId": "bf8000352d23a0bcd04418c175fabf6fcb96c7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea7e0045_ba499a9b",

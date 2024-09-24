@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0a36cce_627b901f",
+        "filename": "Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-24T21:21:33Z",
+      "side": 1,
+      "message": "use `\u0026\u0026` instead of semicolons",
+      "range": {
+        "startLine": 134,
+        "startChar": 56,
+        "endLine": 134,
+        "endChar": 57
+      },
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e87c660_4f66712b",
+        "filename": "Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-24T21:21:33Z",
+      "side": 1,
+      "message": "These commands have to be redirected to `$(out)`, currently they\u0027re not being tested.\n\nAlso please remove the `$(realpath --relative-to)` commands. The paths should already be relative paths to the sandbox root.",
+      "range": {
+        "startLine": 135,
+        "startChar": 14,
+        "endLine": 135,
+        "endChar": 58
+      },
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27157c5b_980c3b01",
+        "filename": "Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-24T21:21:33Z",
+      "side": 1,
+      "message": "Please move this test into `genrule/Android.bp`.",
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d319dadd_e25c31f9",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-24T21:21:33Z",
+      "side": 1,
+      "message": "`Nsjail()`. Also could you add checks that you don\u0027t use both `Sbox()` and `Nsjail()` at the same time?",
+      "range": {
+        "startLine": 181,
+        "startChar": 9,
+        "endLine": 181,
+        "endChar": 13
+      },
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27fc09db_7a8386a5",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-24T21:21:33Z",
+      "side": 1,
+      "message": "We should use `-R` flags to bind-mount the tools into the sandbox instead of copying them. This may require moving all of the nsjail command building into the rule builder, but that would be consistent with how sbox commands work.",
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae7128b_d041343e",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-24T21:21:33Z",
+      "side": 1,
+      "message": "use `cmd.Input(nsjailPath)`.",
+      "range": {
+        "startLine": 497,
+        "startChar": 3,
+        "endLine": 497,
+        "endChar": 53
+      },
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce9332c_2d60939e",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-24T21:21:33Z",
+      "side": 1,
+      "message": "use `-T /tmp` to mount a tmpfs filesystem.",
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "538b493a_04b6d5d0",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-24T21:21:33Z",
+      "side": 1,
+      "message": "Don\u0027t redirect the stdout/stderr to a log, non-nsjail genrule output goes to the terminal / build.log normally. We should maintain that behavior with nsjail genrules. But pass `-q` to nsjail so that it doesn\u0027t print a bunch of debug information.",
+      "range": {
+        "startLine": 623,
+        "startChar": 3,
+        "endLine": 628,
+        "endChar": 25
+      },
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ae2f56_c721d849",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-24T21:21:33Z",
+      "side": 1,
+      "message": "Why is this necessary? You can\u0027t list a directory in `srcs`. (It errors with `module \"nsjail_genrule_test_gen_with_nsjail\": module source path \"build/soong/genrule\" is a directory`)",
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
