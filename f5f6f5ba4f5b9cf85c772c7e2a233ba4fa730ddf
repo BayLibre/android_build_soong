@@ -33,6 +33,24 @@
       "message": "Hi team,\n\nIs there any other test I need to run to verify? At least `m` works, and after that, I can have an Android.bp like this:\n```\ncc_prebuilt_library_shared {\n    name: \"libprebuilt\",\n    vendor: true,\n    compile_multilib: \"64\",\n    check_elf_files: false,\n    arch: {\n        x86_64: {\n            alderlake: {\n                srcs: [\"alderlake/libprebuilt.so\"],\n            },\n        }\n    }\n}\n```\nand then I can successfully do `m libprebuilt`.\n\nAs for the cc and rust config, I verified in gcc and rustc that they support alderlake as the target cpu.",
       "revId": "f5f6f5ba4f5b9cf85c772c7e2a233ba4fa730ddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3935c444_4e36df67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-24T17:19:27Z",
+      "side": 1,
+      "message": "`m --no-skip-soong-tests` to run the soong unit tests.\n\nThe CL LGTM overall, but preferably Colin would take a look too.",
+      "parentUuid": "8a945f16_e493196c",
+      "revId": "f5f6f5ba4f5b9cf85c772c7e2a233ba4fa730ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
