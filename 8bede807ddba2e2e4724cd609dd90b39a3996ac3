@@ -34,6 +34,24 @@
       "parentUuid": "628bd71c_bdcd162a",
       "revId": "8bede807ddba2e2e4724cd609dd90b39a3996ac3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8faa029_b35477e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-25T17:02:39Z",
+      "side": 1,
+      "message": "Yes, I am aware of the discussion. We can use this as a opportunity to remove one entry from the allowlist😊",
+      "parentUuid": "2b56a66d_e52319f8",
+      "revId": "8bede807ddba2e2e4724cd609dd90b39a3996ac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
