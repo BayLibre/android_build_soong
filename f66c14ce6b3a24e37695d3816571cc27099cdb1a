@@ -33,6 +33,24 @@
       "message": "I don\u0027t think we should be adding new entries to the allowlist. @michaelwr@google.com WDYT?\n\nI think some options are:\n- Statically include `framework-ranging-pre-jarjar in the uwb apex\n- Do not apply jarjar rule in `framework-ranging`, and create `framework-ranging-post-jarjar` target and make `service-ranging-pre-jarjar` depend on `framework-ranging.impl`",
       "revId": "f66c14ce6b3a24e37695d3816571cc27099cdb1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49c90280_4d6210f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2024-09-25T15:32:49Z",
+      "side": 1,
+      "message": "Agreed. Cross-container dependencies are unsafe unless they\u0027re done through a stable and tracked API surface.",
+      "parentUuid": "e1585eb5_6a323a75",
+      "revId": "f66c14ce6b3a24e37695d3816571cc27099cdb1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
