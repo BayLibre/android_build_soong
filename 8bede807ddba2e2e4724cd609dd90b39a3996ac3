@@ -16,6 +16,24 @@
       "message": "As the error message suggests, this error can be resolved by the module specifying the appropriate `sdk_version`. We should not be adding new entries to the allowlist.\nCC @joeo@google.com @michaelwr@google.com",
       "revId": "8bede807ddba2e2e4724cd609dd90b39a3996ac3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b56a66d_e52319f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-09-25T17:01:32Z",
+      "side": 1,
+      "message": "But its not a \"new\" test.  Please see https://googleplex-android-review.git.corp.google.com/c/platform/cts/+/27551039 and the discussion that I tagged you in in android-eng-prod space.",
+      "parentUuid": "628bd71c_bdcd162a",
+      "revId": "8bede807ddba2e2e4724cd609dd90b39a3996ac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
