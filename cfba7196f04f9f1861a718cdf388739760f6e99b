@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a96932_e0adcab9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-09-25T23:36:56Z",
+      "side": 1,
+      "message": "waiting on https://android-review.git.corp.google.com/c/platform/prebuilts/clang/host/linux-x86/+/3283740",
+      "revId": "cfba7196f04f9f1861a718cdf388739760f6e99b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
