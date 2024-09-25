@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-"""Unit tests for lint_project_xml.py."""
+"""Unit tests for lint_strict_updatability_checks.py."""
 
 import unittest
 from xml.dom import minidom
