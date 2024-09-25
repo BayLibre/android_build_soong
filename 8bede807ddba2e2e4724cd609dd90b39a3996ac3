@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "628bd71c_bdcd162a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-25T16:56:04Z",
+      "side": 1,
+      "message": "As the error message suggests, this error can be resolved by the module specifying the appropriate `sdk_version`. We should not be adding new entries to the allowlist.\nCC @joeo@google.com @michaelwr@google.com",
+      "revId": "8bede807ddba2e2e4724cd609dd90b39a3996ac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
