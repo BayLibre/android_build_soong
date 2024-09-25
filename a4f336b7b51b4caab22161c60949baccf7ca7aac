@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f828234d_cb7a8188",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-25T20:18:35Z",
+      "side": 1,
+      "message": "Does it make sense to have these in Soong at all any more?  The only use is in art.go, which could hardcode the value closer to where it is used, and to export it to the `LIBART_IMG_HOST_BASE_ADDRESS` Make variable, which seems to be unused after aosp/1277567.",
+      "revId": "a4f336b7b51b4caab22161c60949baccf7ca7aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
