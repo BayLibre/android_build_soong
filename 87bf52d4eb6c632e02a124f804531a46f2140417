@@ -164,6 +164,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e27bb1d_03ceb534",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-09-25T05:31:24Z",
+      "side": 1,
+      "message": "I think the size can be arbitrarily big as it\u0027s just the upper bound.",
+      "parentUuid": "56168dc0_18a70b57",
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "538b493a_04b6d5d0",
         "filename": "genrule/genrule.go",
         "patchSetId": 4
