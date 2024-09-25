@@ -146,6 +146,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56168dc0_18a70b57",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-09-25T01:26:46Z",
+      "side": 1,
+      "message": "I once tried to mount a tmpfs with a random size 128MB, but I changed it to use a real directory instead, because we can\u0027t predict how much tmpfs we\u0027ll need.\n\nIf we must use tmpfs, I think we can add a property to control the size of tmpfs. WDYT?",
+      "parentUuid": "3ce9332c_2d60939e",
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "538b493a_04b6d5d0",
         "filename": "genrule/genrule.go",
         "patchSetId": 4
@@ -180,6 +198,24 @@
       "writtenOn": "2024-09-24T21:21:33Z",
       "side": 1,
       "message": "Why is this necessary? You can\u0027t list a directory in `srcs`. (It errors with `module \"nsjail_genrule_test_gen_with_nsjail\": module source path \"build/soong/genrule\" is a directory`)",
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2db86be4_66c697e6",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-09-25T01:26:46Z",
+      "side": 1,
+      "message": "I can\u0027t list a directory in `srcs`, but I can **indirectly** add a directory with a `filegroup`. Something like:\n\n```\n// in system/core/Android.bp\nfilegroup {\n    name: \"trusty_filegroup_system_core\",\n    srcs: [\".\"],\n}\n```\n\n```\n// in trusty/vendor/google/aosp/scripts/Android.bp\ngenrule {\n    name: \"lk.elf\",\n    srcs: [\":trusty_filegroup_system_core\"],\n    use_nsjail: true,\n    ...\n}\n```\n\nShould I add a separate property just for directories?",
+      "parentUuid": "c9ae2f56_c721d849",
       "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
