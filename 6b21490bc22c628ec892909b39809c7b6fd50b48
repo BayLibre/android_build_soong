@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b5ad20e_26639dc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-25T23:56:30Z",
+      "side": 1,
+      "message": "Would you need to specify the merged-in tag? Maybe this is not necessary given that presubmit did not detect any merge conflicts",
+      "revId": "6b21490bc22c628ec892909b39809c7b6fd50b48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
