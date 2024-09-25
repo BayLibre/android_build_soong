@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "773a233d_d85e8211",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-09-25T04:13:08Z",
+      "side": 1,
+      "message": "IIUC the build error is from different change. Please check my comment on the bug.",
+      "revId": "e44a57dac84319f22bb337c1fb26533895204aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
