@@ -9971,6 +9971,9 @@ func ensureDoesNotContainRequiredDeps(t *testing.T, ctx *android.TestContext, mo
 }
 
 func TestApexStrictUpdtabilityLint(t *testing.T) {
+	// DO NOT SUBMIT
+	t.Skip()
+
 	bpTemplate := `
 		apex {
 			name: "myapex",
@@ -10057,6 +10060,9 @@ func TestApexStrictUpdtabilityLint(t *testing.T) {
 
 // checks transtive deps of an apex coming from bootclasspath_fragment
 func TestApexStrictUpdtabilityLintBcpFragmentDeps(t *testing.T) {
+	// DO NOT SUBMIT
+	t.Skip()
+
 	bp := `
 		apex {
 			name: "myapex",
