@@ -277,6 +277,10 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 		"framework", // cts -> unstable
 	},
 
+	"CtsDevicePolicyTestCasesAllTests": {
+		"framework", // cts -> unstable
+	},
+
 	"CtsDocumentContentTestCases": {
 		"framework", // cts -> unstable
 	},
