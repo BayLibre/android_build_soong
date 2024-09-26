@@ -556,6 +556,10 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, libName string, dexJa
 	if isApexSystemServerJar {
 		dexpreoptPartition = "system"
 	}
+	// TEST: DO NOT SUBMIT
+	if libName == "service-compos" {
+		dexpreoptPartition = "system_ext"
+	}
 	for _, install := range dexpreoptRule.Installs() {
 		// Remove the "/" prefix because the path should be relative to $ANDROID_PRODUCT_OUT.
 		installDir := strings.TrimPrefix(filepath.Dir(install.To), "/")
