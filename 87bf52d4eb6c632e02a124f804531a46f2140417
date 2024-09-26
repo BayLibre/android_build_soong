@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e3990f_497af731",
+        "filename": "Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-26T23:41:36Z",
+      "side": 1,
+      "message": "ah. Yeah stripping the `./` with sed is fine.",
+      "parentUuid": "90a8c01b_88686d69",
+      "range": {
+        "startLine": 135,
+        "startChar": 14,
+        "endLine": 135,
+        "endChar": 58
+      },
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27157c5b_980c3b01",
@@ -336,6 +360,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5b7769_30dc9855",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-26T23:41:36Z",
+      "side": 1,
+      "message": "ah, nevermind then.",
+      "parentUuid": "9e27bb1d_03ceb534",
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "538b493a_04b6d5d0",
@@ -414,6 +456,24 @@
       "side": 1,
       "message": "I can\u0027t list a directory in `srcs`, but I can **indirectly** add a directory with a `filegroup`. Something like:\n\n```\n// in system/core/Android.bp\nfilegroup {\n    name: \"trusty_filegroup_system_core\",\n    srcs: [\".\"],\n}\n```\n\n```\n// in trusty/vendor/google/aosp/scripts/Android.bp\ngenrule {\n    name: \"lk.elf\",\n    srcs: [\":trusty_filegroup_system_core\"],\n    use_nsjail: true,\n    ...\n}\n```\n\nShould I add a separate property just for directories?",
       "parentUuid": "c9ae2f56_c721d849",
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2f30dc3_b70ccb6f",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-26T23:41:36Z",
+      "side": 1,
+      "message": "This is kindof suspicious, I imagine it would be buggy for filegroups to allow directories and every user of filegroups has to remember to do something like this glob in order to get correct dependencies. But I guess it\u0027s not directly related to this cl. We should probably do more thinking about how directory dependencies should work.",
+      "parentUuid": "2db86be4_66c697e6",
       "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

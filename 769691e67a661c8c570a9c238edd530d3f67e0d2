@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e79ca94f_234463d6",
+        "filename": "genrule/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-26T23:41:36Z",
+      "side": 1,
+      "message": "nit: you can use any character as the sed delimiters, so `s@\\\\./@@g` is a little clearer.",
+      "range": {
+        "startLine": 45,
+        "startChar": 35,
+        "endLine": 45,
+        "endChar": 46
+      },
+      "revId": "769691e67a661c8c570a9c238edd530d3f67e0d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
