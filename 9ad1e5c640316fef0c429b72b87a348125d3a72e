@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03206eef_4a5fbe88",
+        "filename": "java/java_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3081,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-26T00:19:36Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tPrepareForTestWithJacocoInstrumentation,\n\t\tPrepareForTestWithTransitiveClasspathEnabled,\n\t).RunTestWithBp(t, `\n```",
+      "range": {
+        "startLine": 3071,
+        "startChar": 0,
+        "endLine": 3081,
+        "endChar": 3
+      },
+      "revId": "9ad1e5c640316fef0c429b72b87a348125d3a72e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
