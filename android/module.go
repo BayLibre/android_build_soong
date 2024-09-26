@@ -1005,6 +1005,20 @@ func addRequiredDeps(ctx BottomUpMutatorContext) {
 			return
 		}
 
+		// Modules with `common_first` as `compile_multilib` should get the matching arch variant.
+		if multilib, _ := decodeMultilib(ctx, ctx.Module().base()); multilib == string(MultilibCommonFirst) {
+			// Skip the `common` variant of java_binary. These will be handled later.
+			if target.Arch.ArchType != ctx.Config().AndroidCommonTarget.Arch.ArchType {
+				// An arch target is requested.
+				// Always use the arch variations of the java_binary.
+				// e.g. for 64-bit devices, create a dependency to 64-bit native library.
+				if ctx.OtherModuleFarDependencyVariantExists(ctx.Target().Variations(), depName) {
+					ctx.AddFarVariationDependencies(ctx.Target().Variations(), RequiredDepTag, depName)
+				}
+				return
+			}
+		}
+
 		variation := target.Variations()
 		if ctx.OtherModuleFarDependencyVariantExists(variation, depName) {
 			ctx.AddFarVariationDependencies(variation, RequiredDepTag, depName)
