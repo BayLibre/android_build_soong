@@ -16,6 +16,24 @@
       "message": "Would you need to specify the merged-in tag? Maybe this is not necessary given that presubmit did not detect any merge conflicts",
       "revId": "6b21490bc22c628ec892909b39809c7b6fd50b48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fcec0c8_f2412453",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1944425
+      },
+      "writtenOn": "2024-09-26T02:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b5ad20e_26639dc0",
+      "revId": "6b21490bc22c628ec892909b39809c7b6fd50b48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
