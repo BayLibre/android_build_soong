@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af9da97a_57b8e487",
+        "filename": "Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-09-26T01:25:12Z",
+      "side": 1,
+      "message": "In Sbox, the paths start with `./` contrast to nsjail. That\u0027s why I added `$(realpath --relative-to)`. It seems more reasonable than appending `./` when using nsjail.",
+      "parentUuid": "1e87c660_4f66712b",
+      "range": {
+        "startLine": 135,
+        "startChar": 14,
+        "endLine": 135,
+        "endChar": 58
+      },
+      "revId": "87bf52d4eb6c632e02a124f804531a46f2140417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27157c5b_980c3b01",
         "filename": "Android.bp",
         "patchSetId": 4
