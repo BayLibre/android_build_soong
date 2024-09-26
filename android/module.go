@@ -995,6 +995,7 @@ func addRequiredDeps(ctx BottomUpMutatorContext) {
 		nativeArch := InList(ctx.Arch().ArchType.Multilib, []string{"lib32", "lib64"}) &&
 			InList(target.Arch.ArchType.Multilib, []string{"lib32", "lib64"})
 		sameBitness := ctx.Arch().ArchType.Multilib == target.Arch.ArchType.Multilib
+
 		if bothInAndroid && nativeArch && !sameBitness {
 			return
 		}
@@ -1002,6 +1003,13 @@ func addRequiredDeps(ctx BottomUpMutatorContext) {
 		// ... also don't make a dependency between native bridge arch and non-native bridge
 		// arches. b/342945184
 		if ctx.Target().NativeBridge != target.NativeBridge {
+			return
+		}
+
+		// Modules with `common_first` as `compile_multilib` should get the first supported variant.
+		// Use `AddDependency` to find the appropriate variant.
+		if multilib, _ := decodeMultilib(ctx, ctx.Module().base()); multilib == string(MultilibCommonFirst) {
+			ctx.AddDependency(ctx.Module(), RequiredDepTag, depName)
 			return
 		}
 
