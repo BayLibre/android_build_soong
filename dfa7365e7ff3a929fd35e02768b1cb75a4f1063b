@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba40857a_8f24acaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-26T00:57:21Z",
+      "side": 1,
+      "message": "Spandan has fixed the prebuilt apex modules, and I have a cl out to fix the aidl modules now.\n\nAfter fixing those, a new problem came up: soong will add a dependency on a module regardless of its variations if there\u0027s only 1 variant. But if you\u0027re using the base configuration changing, now there\u0027s two variants of every module, or at least every dependency of the system image, which causes the AddDependency call to fail. I\u0027m still looking into this.",
+      "parentUuid": "c8bdebf5_d502064a",
+      "revId": "dfa7365e7ff3a929fd35e02768b1cb75a4f1063b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6e8657f_bbaa4217",
         "filename": "android/base_config.go",
         "patchSetId": 7
