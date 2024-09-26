@@ -89,7 +89,8 @@ type binaryDecorator struct {
 
 	Properties BinaryLinkerProperties
 
-	toolPath android.OptionalPath
+	toolPath     android.OptionalPath
+	realToolPath android.OptionalPath
 
 	// Location of the linked, unstripped binary
 	unstrippedOutputFile android.Path
@@ -535,11 +536,12 @@ func (binary *binaryDecorator) install(ctx ModuleContext, file android.Path) {
 		} else {
 			binary.toolPath = android.OptionalPathForPath(binary.baseInstaller.path)
 		}
+		binary.realToolPath = android.OptionalPathForPath(binary.baseInstaller.path)
 	}
 }
 
 func (binary *binaryDecorator) hostToolPath() android.OptionalPath {
-	return binary.toolPath
+	return binary.realToolPath
 }
 
 func (binary *binaryDecorator) overriddenModules() []string {
