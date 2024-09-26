@@ -1005,6 +1005,12 @@ func addRequiredDeps(ctx BottomUpMutatorContext) {
 			return
 		}
 
+		// Modules with `common_first` as `compile_multilib` should get the first supported variant.
+		if multilib, _ := decodeMultilib(ctx, ctx.Module().base()); multilib == string(MultilibCommonFirst) {
+			ctx.AddFarVariationDependencies(nil, RequiredDepTag, depName)
+			return
+		}
+
 		variation := target.Variations()
 		if ctx.OtherModuleFarDependencyVariantExists(variation, depName) {
 			ctx.AddFarVariationDependencies(variation, RequiredDepTag, depName)
