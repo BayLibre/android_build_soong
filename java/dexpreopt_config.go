@@ -86,7 +86,7 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 			stem:                 bootImageStem,
 			installDir:           frameworkSubdir,
 			modules:              frameworkModules,
-			preloadedClassesFile: "frameworks/base/config/preloaded-classes",
+			preloadedClassesFile: "frameworks/base/boot/preloaded-classes",
 			compilerFilter:       "speed-profile",
 			singleImage:          false,
 			profileImports:       profileImports,
