@@ -183,6 +183,7 @@ type variableProperties struct {
 			Src          *string  `android:"arch_variant"`
 			Srcs         []string `android:"arch_variant"`
 			Exclude_srcs []string `android:"arch_variant"`
+			Installable  *bool    `android:"arch_variant"`
 		} `android:"arch_variant"`
 
 		// release_aidl_use_unfrozen is "true" when a device can
