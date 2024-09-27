@@ -1367,6 +1367,10 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 			kotlincFlags = append(kotlincFlags, "-no-jdk")
 		}
 
+		kotlincFlags = append(kotlincFlags, "-Xno-call-assertions")
+		kotlincFlags = append(kotlincFlags, "-Xno-param-assertions")
+		kotlincFlags = append(kotlincFlags, "-Xno-receiver-assertions")
+
 		for _, plugin := range deps.kotlinPlugins {
 			kotlincFlags = append(kotlincFlags, "-Xplugin="+plugin.String())
 		}
