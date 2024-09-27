@@ -274,10 +274,6 @@ func (b *baseModuleContext) setProvider(provider blueprint.AnyProviderKey, value
 	b.bp.SetProvider(provider, value)
 }
 
-func (b *baseModuleContext) HasMutatorFinished(mutatorName string) bool {
-	return b.bp.HasMutatorFinished(mutatorName)
-}
-
 func (b *baseModuleContext) GetDirectDepWithTag(name string, tag blueprint.DependencyTag) blueprint.Module {
 	return b.bp.GetDirectDepWithTag(name, tag)
 }

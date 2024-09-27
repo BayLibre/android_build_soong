@@ -175,3 +175,7 @@ func (e *earlyModuleContext) Namespace() *Namespace {
 func (e *earlyModuleContext) OtherModulePropertyErrorf(module Module, property string, fmt string, args ...interface{}) {
 	e.EarlyModuleContext.OtherModulePropertyErrorf(module, property, fmt, args...)
 }
+
+func (e *earlyModuleContext) HasMutatorFinished(mutatorName string) bool {
+	return e.EarlyModuleContext.HasMutatorFinished(mutatorName)
+}
