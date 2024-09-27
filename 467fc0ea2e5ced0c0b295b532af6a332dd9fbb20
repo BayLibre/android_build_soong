@@ -33,6 +33,23 @@
       "message": "(still waiting for the skia fix to make it to AOSP ... try again next month.)",
       "revId": "467fc0ea2e5ced0c0b295b532af6a332dd9fbb20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431a8526_569d4187",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-09-27T14:14:55Z",
+      "side": 1,
+      "message": "ccross: any idea what this is about?\n```\n--- FAIL: TestFirstUniqueBazelLabelListAttribute (0.00s)\npanic: Unknown arch: arm [recovered]\n    panic: Unknown arch: arm\n```\n(#include \"shouldn\u0027t the bazel stuff have been removed by now?\")",
+      "revId": "467fc0ea2e5ced0c0b295b532af6a332dd9fbb20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
