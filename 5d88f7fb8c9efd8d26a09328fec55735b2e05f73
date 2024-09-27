@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d3cdd84_51c6b0d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-27T21:02:00Z",
+      "side": 1,
+      "message": "Putting it in the intermediates directory makes finding the files complicated unless you\u0027re also going to do the work to collect and package them.",
+      "parentUuid": "fee37b60_18c21e8f",
+      "revId": "5d88f7fb8c9efd8d26a09328fec55735b2e05f73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dabe4381_c3281fe3",
