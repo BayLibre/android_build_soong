@@ -16,6 +16,23 @@
       "message": "This is probably the root cause of the bug, I have created https://android-build.corp.google.com/builds/abtd/run/L45700030006705155 to verify",
       "revId": "fd1c4fb045dfdcf587d0e1188414e7e49e6f3cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ae1eae_98a75c6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1971940
+      },
+      "writtenOn": "2024-09-27T17:25:51Z",
+      "side": 1,
+      "message": "Build breakage b/370031090",
+      "revId": "fd1c4fb045dfdcf587d0e1188414e7e49e6f3cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
