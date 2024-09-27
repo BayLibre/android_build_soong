@@ -39,6 +39,24 @@
       "message": "I think you need an empty set here",
       "revId": "af64ca93220b96cabd94a8b62b7aa5a83e698321",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5237196c_f9424384",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-09-27T21:46:13Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "4f30283f_54f32c6f",
+      "revId": "af64ca93220b96cabd94a8b62b7aa5a83e698321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
