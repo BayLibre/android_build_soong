@@ -21,6 +21,7 @@ package genrule
 import (
 	"fmt"
 	"io"
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -130,6 +131,8 @@ type generatorProperties struct {
 	// name of the modules (if any) that produces the host executable.   Leave empty for
 	// prebuilts or scripts that do not need a module to build them.
 	Tools []string
+
+	Use_real_tool_paths *bool
 
 	// Local files that are used by the tool
 	Tool_files []string `android:"path"`
@@ -341,6 +344,13 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 						ctx.ModuleErrorf("host tool %q missing output file", tool)
 						return
 					}
+
+					if g.properties.Use_real_tool_paths != nil && *g.properties.Use_real_tool_paths {
+						// Check if the path is a symbolic link, and if it is, resolve it to the real path.
+						realPath, _ := filepath.EvalSymlinks(path.Path().String())
+						path = android.OptionalPathForPath(android.PathForSource(ctx, realPath)) // 使用 real path
+					}
+
 					if specs := android.OtherModuleProviderOrDefault(
 						ctx, t, android.InstallFilesProvider).TransitivePackagingSpecs.ToList(); specs != nil {
 						// If the HostToolProvider has PackgingSpecs, which are definitions of the
