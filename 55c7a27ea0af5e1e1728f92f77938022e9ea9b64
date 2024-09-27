@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e5aba2e_c63c1e5f",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-27T18:05:53Z",
+      "side": 1,
+      "message": "It seems weird to use AddFarVariationDependencies with a `nil` variations argument. You\u0027re basically asking for a truly empty variant, though maybe the incoming transitions will give you back some variations? Potentially nothing to be done here, but if you have a better understanding of the logic for why this means \"mutlib-first\" maybe leave a comment?",
+      "range": {
+        "startLine": 1010,
+        "startChar": 35,
+        "endLine": 1010,
+        "endChar": 38
+      },
+      "revId": "55c7a27ea0af5e1e1728f92f77938022e9ea9b64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
