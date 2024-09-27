@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d78e30_3a22c251",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2024-09-27T06:01:59Z",
+      "side": 1,
+      "message": "I initially tried just reading the environment variable in the R8 wrapper, but that did not seem to work so I assume these are not set by the soong invocation.",
+      "revId": "5d88f7fb8c9efd8d26a09328fec55735b2e05f73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
