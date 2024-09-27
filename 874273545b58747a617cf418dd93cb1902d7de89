@@ -22,6 +22,30 @@
       },
       "revId": "874273545b58747a617cf418dd93cb1902d7de89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a2e7443_7db2e3c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-27T16:44:36Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the use case for manually setting `strict_updatability_linting: true` on a `java_library` is, but it seems odd to have it not handle dependencies.  In practice there are very few baselines in the transitive dependencies of strict modules (only 8 in AOSP), and the check is a trivial python script, so I don\u0027t think a few extra checks are a problem.",
+      "parentUuid": "e4074108_babe6060",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "874273545b58747a617cf418dd93cb1902d7de89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
