@@ -22,6 +22,30 @@
       },
       "revId": "b1ccc2f8912da9f816cc28ffd9d4b8a6f4e84338",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ee644e_54890ccb",
+        "filename": "android/hooks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-27T18:42:16Z",
+      "side": 1,
+      "message": "I think in this case the panic is more helpful. `ModuleErrorf` will show you the module in the bp file, but the bp file isn\u0027t the cause of this type of error; the module implementation is. And panic will show the backtrace of where exactly the module was created.",
+      "parentUuid": "c947e925_1bb0469c",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 7
+      },
+      "revId": "b1ccc2f8912da9f816cc28ffd9d4b8a6f4e84338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
