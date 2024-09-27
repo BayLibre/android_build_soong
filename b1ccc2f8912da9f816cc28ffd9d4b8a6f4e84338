@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c947e925_1bb0469c",
+        "filename": "android/hooks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-27T18:39:41Z",
+      "side": 1,
+      "message": "nit: Add `ModuleErrorf` to `createModuleContext` and replace the panic. It will print out a more descriptive error message.",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 7
+      },
+      "revId": "b1ccc2f8912da9f816cc28ffd9d4b8a6f4e84338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
