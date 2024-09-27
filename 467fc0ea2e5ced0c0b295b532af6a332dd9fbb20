@@ -50,6 +50,24 @@
       "message": "ccross: any idea what this is about?\n```\n--- FAIL: TestFirstUniqueBazelLabelListAttribute (0.00s)\npanic: Unknown arch: arm [recovered]\n    panic: Unknown arch: arm\n```\n(#include \"shouldn\u0027t the bazel stuff have been removed by now?\")",
       "revId": "467fc0ea2e5ced0c0b295b532af6a332dd9fbb20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca7d34f_8272e08b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-27T15:24:37Z",
+      "side": 1,
+      "message": "I commented yesterday here on how to fix this: https://android-review.git.corp.google.com/c/platform/build/soong/+/3145821/comment/4f30283f_54f32c6f/\n\n\nMost of the bazel stuff has been removed, but I was trying to leave go/queryview working.  According to the comments on the doc it doesn\u0027t work though, in which case there\u0027s more that can be removed.",
+      "parentUuid": "431a8526_569d4187",
+      "revId": "467fc0ea2e5ced0c0b295b532af6a332dd9fbb20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
