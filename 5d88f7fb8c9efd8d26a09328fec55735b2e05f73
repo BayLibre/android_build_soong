@@ -16,6 +16,46 @@
       "message": "I initially tried just reading the environment variable in the R8 wrapper, but that did not seem to work so I assume these are not set by the soong invocation.",
       "revId": "5d88f7fb8c9efd8d26a09328fec55735b2e05f73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee37b60_18c21e8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-09-27T16:42:46Z",
+      "side": 1,
+      "message": "@ccross@android.com any thoughts on this kind of global output dir versus a `R8_ENABLE_DUMP\u003dtrue` type var that would generate an optional intermediate dump output per module (a la https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/dex.go;drc\u003dd32e85f6309ecc0be5699f475a4ee98f97933d93;l\u003d476)? We can prepend the `-JD` flag similar to how it\u0027s done in https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/dex.go;drc\u003dd32e85f6309ecc0be5699f475a4ee98f97933d93;l\u003d268.\n\nI don\u0027t feel strongly either way.",
+      "revId": "5d88f7fb8c9efd8d26a09328fec55735b2e05f73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dabe4381_c3281fe3",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-09-27T16:42:46Z",
+      "side": 1,
+      "message": "What is the naming scheme for the dump artifact(s)? If you build everything via `m`, would there be collisions?",
+      "range": {
+        "startLine": 108,
+        "startChar": 54,
+        "endLine": 108,
+        "endChar": 74
+      },
+      "revId": "5d88f7fb8c9efd8d26a09328fec55735b2e05f73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
