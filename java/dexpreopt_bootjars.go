@@ -1341,7 +1341,18 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 	}
 
 	image := d.defaultBootImage
-	if image != nil && !SkipDexpreoptBootJars(ctx) {
+	if image != nil {
+		if profileInstallInfo, ok := android.OtherModuleProvider(ctx, d, profileInstallInfoProvider); ok {
+			ctx.Strict("DEXPREOPT_IMAGE_PROFILE_BUILT_INSTALLED", profileInstallInfo.profileInstalls.String())
+			if profileInstallInfo.profileLicenseMetadataFile.Valid() {
+				ctx.Strict("DEXPREOPT_IMAGE_PROFILE_LICENSE_METADATA", profileInstallInfo.profileLicenseMetadataFile.String())
+			}
+		}
+
+		if SkipDexpreoptBootJars(ctx) {
+			return
+		}
+
 		global := dexpreopt.GetGlobalConfig(ctx)
 		dexPaths, dexLocations := bcpForDexpreopt(ctx, global.PreoptWithUpdatableBcp)
 		ctx.Strict("DEXPREOPT_BOOTCLASSPATH_DEX_FILES", strings.Join(dexPaths.Strings(), " "))
