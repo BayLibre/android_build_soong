@@ -74,6 +74,30 @@
       },
       "revId": "5d88f7fb8c9efd8d26a09328fec55735b2e05f73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41eea80a_b451bbb0",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2024-09-28T07:01:47Z",
+      "side": 1,
+      "message": "naming convention is milliseconds since epoch, when you build e.g.,traceur as my example in the cl description you get:\n$ lsl /tmp/dumps\ntotal 174144\n-rw-r--r-- 1 ricow primarygroup   5366798 Sep 26 15:38 dump1578893888890022.zip\n-rw-r--r-- 1 ricow primarygroup   2338645 Sep 26 15:38 dump1578893956251320.zip\n-rw-r--r-- 1 ricow primarygroup  10269421 Sep 26 15:38 dump1578894081797360.zip\n-rw-r--r-- 1 ricow primarygroup  57216465 Sep 26 15:38 dump1578894204603540.zip\n-rw-r--r-- 1 ricow primarygroup 103114480 Sep 26 15:38 dump1578894639747520.zip\n\nThis includes all R8 compilations done to get to that target\nWhen you build a specific target, the last one would be your target dump.",
+      "parentUuid": "dabe4381_c3281fe3",
+      "range": {
+        "startLine": 108,
+        "startChar": 54,
+        "endLine": 108,
+        "endChar": 74
+      },
+      "revId": "5d88f7fb8c9efd8d26a09328fec55735b2e05f73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
