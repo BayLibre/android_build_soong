@@ -22,6 +22,30 @@
       },
       "revId": "55c7a27ea0af5e1e1728f92f77938022e9ea9b64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b69d458c_0b995f30",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-28T01:13:54Z",
+      "side": 1,
+      "message": "I think my previous implementation was incorrect. IIUC, `AddFarVariationDependencies(nil)` returns the first _available_ variant that matches that matches the `compile_multilib` value of the rdep. For dependencies that only support 32-bit, rdeps would get the 32-bit variant even for 64-bit devices.\n\nI have updated the implementation to raise an exception in such cases and match the behavior of the make implementation.",
+      "parentUuid": "0e5aba2e_c63c1e5f",
+      "range": {
+        "startLine": 1010,
+        "startChar": 35,
+        "endLine": 1010,
+        "endChar": 38
+      },
+      "revId": "55c7a27ea0af5e1e1728f92f77938022e9ea9b64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
