@@ -1,0 +1,5 @@
+python_binary {
+    name: "test_bpfmt_analyzer",
+    main: "test.py",
+    srcs: ["test.py"],
+}
