@@ -16,6 +16,24 @@
       "message": "Apologies if this is a little bit out of left field. I\u0027m working to try to improve how stuff in the upstream `linux-firmware` works with Android and ended up not being able to express everything. There are a bunch of different ways to skin the problem but this seemed like the most general. PTAL and let me know if I\u0027m on the right track and if this looks OK. Thanks! :-)",
       "revId": "3395f0202bab036df67ee243bb3da08910da51ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eba4dd9_03c57fb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-09-30T16:49:45Z",
+      "side": 1,
+      "message": "Would using multiple `prebuilt_etc` modules work instead?",
+      "parentUuid": "498c7609_b5438951",
+      "revId": "3395f0202bab036df67ee243bb3da08910da51ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
