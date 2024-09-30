@@ -262,7 +262,7 @@ func isModuleInBuildNumberAllowlist(ctx android.ModuleContext) bool {
 			// go/keep-sorted start
 			"build/soong/tests:gen",
 			"hardware/google/camera/common/hal/aidl_service:aidl_camera_build_version",
-			"tools/tradefederation/core:tradefed_zip",
+			"tools/tradefederation/prebuilts/test_harness:tradefed_zip",
 			"vendor/google/services/LyricCameraHAL/src/apex:com.google.pixel.camera.hal.manifest",
 			// go/keep-sorted end
 		}
