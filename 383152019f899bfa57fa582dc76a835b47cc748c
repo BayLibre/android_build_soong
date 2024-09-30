@@ -16,6 +16,46 @@
       "message": "@colefaust@google.com This is to support the use case in ag/29641013",
       "revId": "383152019f899bfa57fa582dc76a835b47cc748c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1065c7ab_1126193c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-30T21:01:03Z",
+      "side": 1,
+      "message": "I would just inline this function.",
+      "revId": "383152019f899bfa57fa582dc76a835b47cc748c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f94efc34_270ad61e",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1492,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-09-30T21:01:03Z",
+      "side": 1,
+      "message": "Pull this out to a local variable to dedup the 2 calls. Same in fuzz.go",
+      "range": {
+        "startLine": 1492,
+        "startChar": 8,
+        "endLine": 1492,
+        "endChar": 22
+      },
+      "revId": "383152019f899bfa57fa582dc76a835b47cc748c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
