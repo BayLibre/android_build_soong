@@ -1301,7 +1301,7 @@ type testProperties struct {
 	Test_options TestOptions
 
 	// Names of modules containing JNI libraries that should be installed alongside the test.
-	Jni_libs []string
+	Jni_libs proptools.Configurable[[]string]
 
 	// Install the test into a folder named for the module in all test suites.
 	Per_testcase_directory *bool
@@ -1381,6 +1381,10 @@ type JavaTestImport struct {
 
 	testConfig android.Path
 	dexJarFile android.Path
+}
+
+func (j *Test) JniLibs(ctx android.BaseModuleContext) []string {
+	return j.testProperties.Jni_libs.GetOrDefault(ctx, nil)
 }
 
 func (j *Test) InstallInTestcases() bool {
@@ -1485,10 +1489,10 @@ func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
 		}
 	}
 
-	if len(j.testProperties.Jni_libs) > 0 {
+	if len(j.JniLibs(ctx)) > 0 {
 		for _, target := range ctx.MultiTargets() {
 			sharedLibVariations := append(target.Variations(), blueprint.Variation{Mutator: "link", Variation: "shared"})
-			ctx.AddFarVariationDependencies(sharedLibVariations, jniLibTag, j.testProperties.Jni_libs...)
+			ctx.AddFarVariationDependencies(sharedLibVariations, jniLibTag, j.JniLibs(ctx)...)
 		}
 	}
 

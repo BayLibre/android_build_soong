@@ -85,10 +85,10 @@ func JavaFuzzFactory() android.Module {
 
 func (j *JavaFuzzTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if j.Os().Class.String() == deviceString {
-		j.testProperties.Jni_libs = append(j.testProperties.Jni_libs, artDeps...)
+		j.testProperties.Jni_libs.AppendSimpleValue(artDeps)
 	}
 
-	if len(j.testProperties.Jni_libs) > 0 {
+	if len(j.JniLibs(ctx)) > 0 {
 		if j.fuzzPackagedModule.FuzzProperties.Fuzz_config == nil {
 			config := &fuzz.FuzzConfig{}
 			j.fuzzPackagedModule.FuzzProperties.Fuzz_config = config
@@ -98,7 +98,7 @@ func (j *JavaFuzzTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 		j.fuzzPackagedModule.FuzzProperties.Fuzz_config.IsJni = proptools.BoolPtr(true)
 		for _, target := range ctx.MultiTargets() {
 			sharedLibVariations := append(target.Variations(), blueprint.Variation{Mutator: "link", Variation: "shared"})
-			ctx.AddFarVariationDependencies(sharedLibVariations, jniLibTag, j.testProperties.Jni_libs...)
+			ctx.AddFarVariationDependencies(sharedLibVariations, jniLibTag, j.JniLibs(ctx)...)
 		}
 	}
 
