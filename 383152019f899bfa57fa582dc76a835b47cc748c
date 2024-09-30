@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88ca94b6_90283dbb",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-30T21:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1065c7ab_1126193c",
+      "revId": "383152019f899bfa57fa582dc76a835b47cc748c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f94efc34_270ad61e",
@@ -48,6 +66,30 @@
       "writtenOn": "2024-09-30T21:01:03Z",
       "side": 1,
       "message": "Pull this out to a local variable to dedup the 2 calls. Same in fuzz.go",
+      "range": {
+        "startLine": 1492,
+        "startChar": 8,
+        "endLine": 1492,
+        "endChar": 22
+      },
+      "revId": "383152019f899bfa57fa582dc76a835b47cc748c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a07ddee_852d5c71",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1492,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-30T21:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f94efc34_270ad61e",
       "range": {
         "startLine": 1492,
         "startChar": 8,
