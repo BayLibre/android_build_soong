@@ -22,6 +22,30 @@
       },
       "revId": "3a6eced43169aa0386bd761a1ab0f3d49b5c3fcd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a49bd63_99fd8a8f",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1951966
+      },
+      "writtenOn": "2024-09-30T21:37:24Z",
+      "side": 1,
+      "message": "Hey Spandan. From https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/cmd/release_config/release_config_proto/build_flags_src.proto;l\u003d57-86, can I assume that we only support 2 types of flag value (string_value \u0026 bool_value) and therefore we might not be able to specify int type directly?",
+      "parentUuid": "12101d5a_c333e239",
+      "range": {
+        "startLine": 366,
+        "startChar": 21,
+        "endLine": 366,
+        "endChar": 95
+      },
+      "revId": "3a6eced43169aa0386bd761a1ab0f3d49b5c3fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
