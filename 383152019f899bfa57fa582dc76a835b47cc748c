@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33fa83e5_390f4455",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-09-30T20:56:38Z",
+      "side": 1,
+      "message": "@colefaust@google.com This is to support the use case in ag/29641013",
+      "revId": "383152019f899bfa57fa582dc76a835b47cc748c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
