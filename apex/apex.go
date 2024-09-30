@@ -29,6 +29,7 @@ import (
 	"android/soong/android"
 	"android/soong/bpf"
 	"android/soong/cc"
+	"android/soong/dexpreopt"
 	prebuilt_etc "android/soong/etc"
 	"android/soong/filesystem"
 	"android/soong/java"
@@ -1935,6 +1936,23 @@ func (vctx *visitorContext) normalizeFileInfo(mctx android.ModuleContext) {
 	})
 }
 
+// enforcePartitionTagOnApexSystemServerJar checks that the partition tags of an apex system server jar  matches
+// the partition tags of the top-level apex.
+// e.g. if the top-level apex sets system_ext_specific to true, the javalib should this property to true as well.
+// This check ensures that the dexpreopt artifacts of the apex system server jar is installed in the same partition
+// as the apex.
+func enforcePartitionTagOnApexSystemServerJar(ctx android.ModuleContext, javalib android.Module) {
+	global := dexpreopt.GetGlobalConfig(ctx)
+	if !global.AllApexSystemServerJars(ctx).ContainsJar(javalib.Name()) {
+		return // not an apex system server jar
+	}
+	partitionOfApex := ctx.Module().PartitionTag(ctx.DeviceConfig())
+	partitionOfJavalib := javalib.PartitionTag(ctx.DeviceConfig())
+	if partitionOfApex != partitionOfJavalib {
+		ctx.ModuleErrorf("%s is an apex system server jar, but its partition does not match the partition of its containing apex. Expected %s, Got %s", javalib.Name(), partitionOfApex, partitionOfJavalib)
+	}
+}
+
 func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext, child, parent android.Module) bool {
 	depTag := ctx.OtherModuleDependencyTag(child)
 	if _, ok := depTag.(android.ExcludeFromApexContentsTag); ok {
@@ -2234,6 +2252,7 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 			if profileAf := apexFileForJavaModuleProfile(ctx, child.(javaModule)); profileAf != nil {
 				vctx.filesInfo = append(vctx.filesInfo, *profileAf)
 			}
+			enforcePartitionTagOnApexSystemServerJar(ctx, child)
 			return true // track transitive dependencies
 		default:
 			ctx.PropertyErrorf("systemserverclasspath_fragments",
