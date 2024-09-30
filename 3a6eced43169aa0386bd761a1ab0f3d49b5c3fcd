@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12101d5a_c333e239",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-09-30T17:45:21Z",
+      "side": 1,
+      "message": "nit: Can we change this build flag to an int? In this alternative, we would not need to do such checks here.",
+      "range": {
+        "startLine": 366,
+        "startChar": 21,
+        "endLine": 366,
+        "endChar": 95
+      },
+      "revId": "3a6eced43169aa0386bd761a1ab0f3d49b5c3fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
