@@ -22,6 +22,23 @@
       },
       "revId": "5fb2b1fe3b29b2b82a93026d36009d0c4d5f01b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f33817e5_0ca3235e",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-01T23:57:35Z",
+      "side": 1,
+      "message": "Nit: Could you put this after the \"Globs changed\" message?",
+      "revId": "5fb2b1fe3b29b2b82a93026d36009d0c4d5f01b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
