@@ -26,6 +26,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d893f82d_e30d30c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-01T23:58:15Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/cc.go;l\u003d2047;drc\u003dc980c1e4dfb7d43ded26f09831eec35f0699cb6d",
+      "parentUuid": "4b0f4548_4c9c173b",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 54
+      },
+      "revId": "5fb2b1fe3b29b2b82a93026d36009d0c4d5f01b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "262233e8_960f4e8b",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-01T23:58:15Z",
+      "side": 1,
+      "message": "I\u0027d suggest pushing this through a channel and handling it in a separate goroutine similar to `errorsChan`.",
+      "revId": "5fb2b1fe3b29b2b82a93026d36009d0c4d5f01b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f33817e5_0ca3235e",
         "filename": "ui/build/soong.go",
         "patchSetId": 1
@@ -37,6 +78,29 @@
       "writtenOn": "2024-10-01T23:57:35Z",
       "side": 1,
       "message": "Nit: Could you put this after the \"Globs changed\" message?",
+      "revId": "5fb2b1fe3b29b2b82a93026d36009d0c4d5f01b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e48f781_dc6a557e",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-01T23:58:15Z",
+      "side": 1,
+      "message": "nit: globs aren\u0027t ordered, so \"first\" doesn\u0027t make much sense.",
+      "range": {
+        "startLine": 868,
+        "startChar": 26,
+        "endLine": 868,
+        "endChar": 31
+      },
       "revId": "5fb2b1fe3b29b2b82a93026d36009d0c4d5f01b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
