@@ -42,12 +42,14 @@ func testModuleConfig(ctx android.PathContext, name, partition string) *ModuleCo
 }
 
 func testApexModuleConfig(ctx android.PathContext, name, apexName string) *ModuleConfig {
-	return createTestModuleConfig(
+	ret := createTestModuleConfig(
 		name,
 		fmt.Sprintf("/apex/%s/javalib/%s.jar", apexName, name),
 		android.PathForOutput(ctx, fmt.Sprintf("%s/dexpreopt/%s.jar", name, name)),
 		android.PathForOutput(ctx, fmt.Sprintf("%s/aligned/%s.jar", name, name)),
 		android.PathForOutput(ctx, fmt.Sprintf("%s/enforce_uses_libraries.status", name)))
+	ret.ApexPartition = "/system"
+	return ret
 }
 
 func testPlatformSystemServerModuleConfig(ctx android.PathContext, name string) *ModuleConfig {

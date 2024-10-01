@@ -494,6 +494,12 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, libName string, dexJa
 		PresignedPrebuilt: d.isPresignedPrebuilt,
 	}
 
+	if installApexSystemServerDexpreoptSamePartition(ctx.Config()) {
+		dexpreoptConfig.ApexPartition = android.PathForModuleInstall(ctx).Partition()
+	} else {
+		dexpreoptConfig.ApexPartition = "/system"
+	}
+
 	d.configPath = android.PathForModuleOut(ctx, "dexpreopt", dexJarStem, "dexpreopt.config")
 	dexpreopt.WriteModuleConfig(ctx, dexpreoptConfig, d.configPath)
 	ctx.CheckbuildFile(d.configPath)
@@ -608,6 +614,14 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, libName string, dexJa
 	if !isApexSystemServerJar {
 		d.builtInstalled = dexpreoptRule.Installs().String()
 	}
+}
+
+// Returns true if RELEASE_INSTALL_APEX_SYSTEMSERVER_DEXPREOPT_SAME_PARTITION is set to true.
+// If true, dexpreopt files of apex system server jars will be installed in the same partition as the parent apex.
+// If false, all these files will be installed in /system partition.
+func installApexSystemServerDexpreoptSamePartition(config android.Config) bool {
+	val, ok := config.GetBuildFlag("RELEASE_INSTALL_APEX_SYSTEMSERVER_DEXPREOPT_SAME_PARTITION")
+	return ok && val == "true"
 }
 
 func getModuleInstallPathInfo(ctx android.ModuleContext, fullInstallPath string) (android.InstallPath, string, string) {

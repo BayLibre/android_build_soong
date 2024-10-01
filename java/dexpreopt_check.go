@@ -15,6 +15,7 @@
 package java
 
 import (
+	"fmt"
 	"strings"
 
 	"android/soong/android"
@@ -75,7 +76,10 @@ func (m *dexpreoptSystemserverCheck) GenerateAndroidBuildActions(ctx android.Mod
 	systemServerJars := global.AllSystemServerJars(ctx)
 	for _, jar := range systemServerJars.CopyOfJars() {
 		dexLocation := dexpreopt.GetSystemServerDexLocation(ctx, global, jar)
-		odexLocation := dexpreopt.ToOdexPath(dexLocation, targets[0].Arch.ArchType)
+		// Set the partition to "system" for now.
+		// This will be overwritten with "system_ext" in GenerateSingletonBuildActions if necessary.
+		// The paths are constructed here since `SingletonContext` does not have an existing api for creating paths.
+		odexLocation := dexpreopt.ToOdexPath(dexLocation, targets[0].Arch.ArchType, "system")
 		odexPath := getInstallPath(ctx, odexLocation)
 		vdexPath := getInstallPath(ctx, pathtools.ReplaceExtension(odexLocation, "vdex"))
 		m.artifactsByModuleName[jar] = []string{odexPath.String(), vdexPath.String()}
@@ -83,10 +87,27 @@ func (m *dexpreoptSystemserverCheck) GenerateAndroidBuildActions(ctx android.Mod
 }
 
 func (m *dexpreoptSystemserverCheck) GenerateSingletonBuildActions(ctx android.SingletonContext) {
+	replaceSystemWithSystemExt := func(paths []string) []string {
+		if !installApexSystemServerDexpreoptSamePartition(ctx.Config()) {
+			// apex system server jars will be installed in /system, no replacement necessary.
+			return paths
+		}
+		var ret []string
+		for _, path := range paths {
+			ret = append(ret, strings.Replace(path, "/system/", fmt.Sprintf("/%s/", ctx.DeviceConfig().SystemExtPath()), 1))
+		}
+		return ret
+
+	}
 	// Only keep modules defined in Soong.
 	ctx.VisitAllModules(func(module android.Module) {
 		if artifacts, ok := m.artifactsByModuleName[module.Name()]; ok {
-			m.artifacts = append(m.artifacts, artifacts...)
+			// If the module is system_ext specific, replace /system/ with /system_ext/
+			if module.InstallInSystemExt() {
+				m.artifacts = append(m.artifacts, replaceSystemWithSystemExt(artifacts)...)
+			} else {
+				m.artifacts = append(m.artifacts, artifacts...)
+			}
 		}
 	})
 }
