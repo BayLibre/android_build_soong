@@ -75,7 +75,11 @@ func (m *dexpreoptSystemserverCheck) GenerateAndroidBuildActions(ctx android.Mod
 	systemServerJars := global.AllSystemServerJars(ctx)
 	for _, jar := range systemServerJars.CopyOfJars() {
 		dexLocation := dexpreopt.GetSystemServerDexLocation(ctx, global, jar)
-		odexLocation := dexpreopt.ToOdexPath(dexLocation, targets[0].Arch.ArchType)
+		partition := "system"
+		if jar == "service-compos" {
+			partition = ctx.DeviceConfig().SystemExtPath() // TODO: Get the partition information from the module
+		}
+		odexLocation := dexpreopt.ToOdexPath(dexLocation, targets[0].Arch.ArchType, partition)
 		odexPath := getInstallPath(ctx, odexLocation)
 		vdexPath := getInstallPath(ctx, pathtools.ReplaceExtension(odexLocation, "vdex"))
 		m.artifactsByModuleName[jar] = []string{odexPath.String(), vdexPath.String()}

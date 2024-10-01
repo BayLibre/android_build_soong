@@ -191,6 +191,8 @@ type ModuleConfig struct {
 	ForceCreateAppImage bool
 
 	PresignedPrebuilt bool
+
+	Partition string // TODO: add desc
 }
 
 type globalSoongConfigSingleton struct{}
