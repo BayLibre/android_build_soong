@@ -352,6 +352,23 @@ func InvalidOptionalPath(reason string) OptionalPath {
 	return OptionalPath{invalidReason: reason}
 }
 
+func (o OptionalPath) GobEncode() ([]byte, error) {
+	w := new(bytes.Buffer)
+	encoder := gob.NewEncoder(w)
+	err := joinGobErrors[OptionalPath](encodeValue(encoder, o.path), encodeValue(encoder, o.invalidReason))
+	if err != nil {
+		return nil, err
+	}
+
+	return w.Bytes(), nil
+}
+
+func (o *OptionalPath) GobDecode(data []byte) error {
+	r := bytes.NewBuffer(data)
+	decoder := gob.NewDecoder(r)
+	return joinGobErrors[OptionalPath](decodeValue(decoder, &o.path), decodeValue(decoder, &o.invalidReason))
+}
+
 // Valid returns whether there is a valid path
 func (p OptionalPath) Valid() bool {
 	return p.path != nil
