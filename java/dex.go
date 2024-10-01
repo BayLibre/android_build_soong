@@ -220,14 +220,8 @@ func (d *dexer) dexCommonFlags(ctx android.ModuleContext,
 		deps = append(deps, f)
 	}
 
-	if ctx.Config().Getenv("NO_OPTIMIZE_DX") != "" {
+	if ctx.Config().Getenv("NO_OPTIMIZE_DX") != "" || ctx.Config().Getenv("GENERATE_DEX_DEBUG") != "" {
 		flags = append(flags, "--debug")
-	}
-
-	if ctx.Config().Getenv("GENERATE_DEX_DEBUG") != "" {
-		flags = append(flags,
-			"--debug",
-			"--verbose")
 	}
 
 	// Supplying the platform build flag disables various features like API modeling and desugaring.
