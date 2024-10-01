@@ -492,6 +492,8 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, libName string, dexJa
 		ForceCreateAppImage: appImage.GetOrDefault(false),
 
 		PresignedPrebuilt: d.isPresignedPrebuilt,
+
+		Partition: android.PathForModuleInstall(ctx).Partition(),
 	}
 
 	d.configPath = android.PathForModuleOut(ctx, "dexpreopt", dexJarStem, "dexpreopt.config")
