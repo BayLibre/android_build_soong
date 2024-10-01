@@ -220,14 +220,29 @@ func (d *dexer) dexCommonFlags(ctx android.ModuleContext,
 		deps = append(deps, f)
 	}
 
+<<<<<<< PATCH SET (87789c There is no verbose flag in d8)
+	if ctx.Config().Getenv("NO_OPTIMIZE_DX") != "" || ctx.Config().Getenv("GENERATE_DEX_DEBUG") != "" {
+||||||| BASE
+	if ctx.Config().Getenv("NO_OPTIMIZE_DX") != "" {
+=======
 	var requestReleaseMode bool
 	requestReleaseMode, flags = android.RemoveFromList("--release", flags)
 
 	if ctx.Config().Getenv("NO_OPTIMIZE_DX") != "" {
+>>>>>>> BASE      (130da8 Merge "Set version code of apex and apk based on RELEASE_DEF)
 		flags = append(flags, "--debug")
 		requestReleaseMode = false
 	}
 
+<<<<<<< PATCH SET (87789c There is no verbose flag in d8)
+||||||| BASE
+	if ctx.Config().Getenv("GENERATE_DEX_DEBUG") != "" {
+		flags = append(flags,
+			"--debug",
+			"--verbose")
+	}
+
+=======
 	if ctx.Config().Getenv("GENERATE_DEX_DEBUG") != "" {
 		flags = append(flags,
 			"--debug",
@@ -244,6 +259,7 @@ func (d *dexer) dexCommonFlags(ctx android.ModuleContext,
 		flags = append(flags, "--debug")
 	}
 
+>>>>>>> BASE      (130da8 Merge "Set version code of apex and apk based on RELEASE_DEF)
 	// Supplying the platform build flag disables various features like API modeling and desugaring.
 	// For targets with a stable min SDK version (i.e., when the min SDK is both explicitly specified
 	// and managed+versioned), we suppress this flag to ensure portability.
