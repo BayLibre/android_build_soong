@@ -34,6 +34,24 @@
       "parentUuid": "498c7609_b5438951",
       "revId": "3395f0202bab036df67ee243bb3da08910da51ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e8fa5e7_e0ac02b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004907
+      },
+      "writtenOn": "2024-10-01T00:09:07Z",
+      "side": 1,
+      "message": "Maybe?\n\nLet me try to explain what I\u0027m trying to do and maybe you can give suggestions. To give context, I\u0027m trying to make copybara able to import groups of files from the upstream linux-firmware repository. You can see my WIP at \u003chttp://ag/29641854\u003e.\n\nIn general we do want to encourage breaking things up into small groups of files and that _tends_ to put them in the in the same directory, but I don\u0027t think it\u0027s a guarantee. Before I was using `copybara` and I was writing `Android.bp` by hand and all the example firmware I wanted to install worked fine but I always had the worry that I\u0027d run into something where things would break. When I was automating it it seemed better to just make it robust.\n\nTrying to be more specific and looking at the [upstream WHENCE](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/WHENCE), I think we\u0027d break any time someone used directory nesting at least. I see that some NVidia firmware does this:\n```\nFile: nvidia/tu116/acr/bl.bin\nFile: nvidia/tu116/acr/ucode_ahesasc.bin\nFile: nvidia/tu116/acr/ucode_asb.bin\nFile: nvidia/tu116/acr/ucode_unload.bin\nFile: nvidia/tu116/acr/unload_bl.bin\nFile: nvidia/tu116/gr/fecs_bl.bin\nFile: nvidia/tu116/gr/fecs_data.bin\nFile: nvidia/tu116/gr/fecs_inst.bin\nFile: nvidia/tu116/gr/fecs_sig.bin\nFile: nvidia/tu116/gr/gpccs_bl.bin\nFile: nvidia/tu116/gr/gpccs_data.bin\nFile: nvidia/tu116/gr/gpccs_inst.bin\nFile: nvidia/tu116/gr/gpccs_sig.bin\nFile: nvidia/tu116/gr/sw_bundle_init.bin\nFile: nvidia/tu116/gr/sw_ctx.bin\nFile: nvidia/tu116/gr/sw_method_init.bin\nFile: nvidia/tu116/gr/sw_nonctx.bin\nFile: nvidia/tu116/gr/sw_veid_bundle_init.bin\nFile: nvidia/tu116/nvdec/scrubber.bin\nFile: nvidia/tu116/sec2/desc.bin\nFile: nvidia/tu116/sec2/image.bin\nFile: nvidia/tu116/sec2/sig.bin\n```\n\nI don\u0027t know a ton about NVidia firmware, but my assumption is that \"tu116\" is a model of GPU and it wouldn\u0027t make sense for boards including this firmware to have to include \"tu116_acr_files\", \"tu116_gr_files\", \"tu116_nvdec_files\", and \"tu116\"sec2\" files. \n\nWe might be able to solve this by adding some generic upper level bogus entry and then adding dependencies, but I don\u0027t think we\u0027d want this in most cases so we\u0027d need to detect this and add a different code path to handle it. ...or just error out for now and handle it if/when someone wants to include this firmware.\n\nAnother problem that seems more common in the upstream WHENCE is cases where firmware moved and we want to install symlinks to the old location. My plan was to just have the copybara script create the symlinks and land them in git and then `dsts` would be able to get them installed. There are other options there if need be. I guess we could also force people to include \u0027my_firmware\u0027 and \u0027my_firmware_symlinks\u0027.\n\nAnyway, happy to chat/brainstorm on this. Using `dsts` seemed like a nice extension and made the automation easy but I can certainly put more hackiness in my `Android.bp` if need be.",
+      "parentUuid": "4eba4dd9_03c57fb7",
+      "revId": "3395f0202bab036df67ee243bb3da08910da51ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
