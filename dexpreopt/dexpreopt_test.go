@@ -202,8 +202,8 @@ func TestDexPreoptApexSystemServerJars(t *testing.T) {
 	}
 
 	wantInstalls := android.RuleBuilderInstalls{
-		{android.PathForOutput(ctx, "service-A/dexpreopt/oat/arm/javalib.odex"), "/system/framework/oat/arm/apex@com.android.apex1@javalib@service-A.jar@classes.odex"},
-		{android.PathForOutput(ctx, "service-A/dexpreopt/oat/arm/javalib.vdex"), "/system/framework/oat/arm/apex@com.android.apex1@javalib@service-A.jar@classes.vdex"},
+		{android.PathForOutput(ctx, "service-A/dexpreopt/oat/arm/javalib.odex"), "framework/oat/arm/apex@com.android.apex1@javalib@service-A.jar@classes.odex"},
+		{android.PathForOutput(ctx, "service-A/dexpreopt/oat/arm/javalib.vdex"), "framework/oat/arm/apex@com.android.apex1@javalib@service-A.jar@classes.vdex"},
 	}
 
 	android.AssertStringEquals(t, "installs", wantInstalls.String(), rule.Installs().String())
@@ -286,8 +286,8 @@ func TestDexPreoptApexStandaloneSystemServerJars(t *testing.T) {
 	}
 
 	wantInstalls := android.RuleBuilderInstalls{
-		{android.PathForOutput(ctx, "service-A/dexpreopt/oat/arm/javalib.odex"), "/system/framework/oat/arm/apex@com.android.apex1@javalib@service-A.jar@classes.odex"},
-		{android.PathForOutput(ctx, "service-A/dexpreopt/oat/arm/javalib.vdex"), "/system/framework/oat/arm/apex@com.android.apex1@javalib@service-A.jar@classes.vdex"},
+		{android.PathForOutput(ctx, "service-A/dexpreopt/oat/arm/javalib.odex"), "framework/oat/arm/apex@com.android.apex1@javalib@service-A.jar@classes.odex"},
+		{android.PathForOutput(ctx, "service-A/dexpreopt/oat/arm/javalib.vdex"), "framework/oat/arm/apex@com.android.apex1@javalib@service-A.jar@classes.vdex"},
 	}
 
 	android.AssertStringEquals(t, "installs", wantInstalls.String(), rule.Installs().String())

@@ -191,6 +191,10 @@ type ModuleConfig struct {
 	ForceCreateAppImage bool
 
 	PresignedPrebuilt bool
+
+	// Partition in which the dexpreopt files are installed.
+	// This is a noop unless the module is apex system server jar.
+	Partition string
 }
 
 type globalSoongConfigSingleton struct{}
