@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a0d277_2a447076",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-02T21:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b25588e2_d2222ab6",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 10
+      },
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d6092f0_f17d1c77",
@@ -88,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b73bece_b43ca89b",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-02T21:43:45Z",
+      "side": 1,
+      "message": "Good catch, the partition should be part of the path here. I have updated the test configs to set `ApexPartition` to `/system` explicitly so that the test config is equivalent to the real config.",
+      "parentUuid": "ab1928f5_3a491a93",
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "283366b7_f730363b",
@@ -111,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7305377a_ae153316",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-02T21:43:45Z",
+      "side": 1,
+      "message": "Good point, I think we need an enforcement that these properties do not diverge. I have a WIP CL (https://r.android.com/3289228, next CL in this stack) to enforce that.\n\nGetting this information from the partition of the apex would be ideal, but I think that would require a top down mutator, which is not very friendly with partial analysis (b/367784740). Alternatively, maybe we can move these build rules from the context of the the apex system server jar to the context of the top-level apex?\n\nUsing the `system_ext_specific` property of the javalib and creating an enforcement that it matches the `system_ext_specific` property of the top-level apex seemed like the simpler solution.",
+      "parentUuid": "283366b7_f730363b",
+      "range": {
+        "startLine": 496,
+        "startChar": 13,
+        "endLine": 496,
+        "endChar": 58
+      },
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "432e7dae_ccbbc3b0",
@@ -124,6 +190,24 @@
       "writtenOn": "2024-10-02T20:54:17Z",
       "side": 1,
       "message": "Maybe it\u0027s better to construct the paths in `GenerateSingletonBuildActions` instead of constructing them here and then rewriting them.",
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f2e170_0ea4d52f",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-02T21:43:45Z",
+      "side": 1,
+      "message": "I agree, but unfortunately `SingletonContext` does not have support for creating install paths today, since it does not implement `ModuleInstallPathContext`.\n\nI have left a comment describing why the rewrite hack is necessary.",
+      "parentUuid": "432e7dae_ccbbc3b0",
       "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
