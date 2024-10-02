@@ -32,7 +32,7 @@ type fsverityProperties struct {
 	Libs []string `android:"path"`
 }
 
-func (f *filesystem) writeManifestGeneratorListFile(ctx android.ModuleContext, outputPath android.OutputPath, matchedSpecs []android.PackagingSpec, rebasedDir android.OutputPath) {
+func (f *Filesystem) writeManifestGeneratorListFile(ctx android.ModuleContext, outputPath android.OutputPath, matchedSpecs []android.PackagingSpec, rebasedDir android.OutputPath) {
 	var buf strings.Builder
 	for _, spec := range matchedSpecs {
 		buf.WriteString(rebasedDir.Join(ctx, spec.RelPathInPackage()).String())
@@ -41,7 +41,7 @@ func (f *filesystem) writeManifestGeneratorListFile(ctx android.ModuleContext, o
 	android.WriteFileRuleVerbatim(ctx, outputPath, buf.String())
 }
 
-func (f *filesystem) buildFsverityMetadataFiles(ctx android.ModuleContext, builder *android.RuleBuilder, specs map[string]android.PackagingSpec, rootDir android.OutputPath, rebasedDir android.OutputPath) {
+func (f *Filesystem) buildFsverityMetadataFiles(ctx android.ModuleContext, builder *android.RuleBuilder, specs map[string]android.PackagingSpec, rootDir android.OutputPath, rebasedDir android.OutputPath) {
 	match := func(path string) bool {
 		for _, pattern := range f.properties.Fsverity.Inputs {
 			if matched, err := filepath.Match(pattern, path); matched {

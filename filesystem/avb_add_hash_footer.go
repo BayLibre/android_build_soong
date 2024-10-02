@@ -191,7 +191,7 @@ func (a *avbAddHashFooter) AndroidMkEntries() []android.AndroidMkEntries {
 	}}
 }
 
-var _ Filesystem = (*avbAddHashFooter)(nil)
+var _ FilesystemModule = (*avbAddHashFooter)(nil)
 
 func (a *avbAddHashFooter) OutputPath() android.Path {
 	return a.output

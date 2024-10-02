@@ -1759,7 +1759,7 @@ func apexFileForBpfProgram(ctx android.BaseModuleContext, builtFile android.Path
 	return newApexFile(ctx, builtFile, builtFile.Base(), dirInApex, etc, bpfProgram)
 }
 
-func apexFileForFilesystem(ctx android.BaseModuleContext, buildFile android.Path, fs filesystem.Filesystem) apexFile {
+func apexFileForFilesystem(ctx android.BaseModuleContext, buildFile android.Path, fs filesystem.FilesystemModule) apexFile {
 	dirInApex := filepath.Join("etc", "fs")
 	return newApexFile(ctx, buildFile, buildFile.Base(), dirInApex, etc, fs)
 }
@@ -2067,7 +2067,7 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 				ctx.PropertyErrorf("bpfs", "%q is not a bpf module", depName)
 			}
 		case fsTag:
-			if fs, ok := child.(filesystem.Filesystem); ok {
+			if fs, ok := child.(filesystem.FilesystemModule); ok {
 				vctx.filesInfo = append(vctx.filesInfo, apexFileForFilesystem(ctx, fs.OutputPath(), fs))
 			} else {
 				ctx.PropertyErrorf("filesystems", "%q is not a filesystem module", depName)

@@ -180,7 +180,7 @@ func (b *bootimg) buildBootImage(ctx android.ModuleContext, vendor bool) android
 	ramdiskName := proptools.String(b.properties.Ramdisk_module)
 	if ramdiskName != "" {
 		ramdisk := ctx.GetDirectDepWithTag(ramdiskName, bootimgRamdiskDep)
-		if filesystem, ok := ramdisk.(*filesystem); ok {
+		if filesystem, ok := ramdisk.(*Filesystem); ok {
 			flag := "--ramdisk "
 			if vendor {
 				flag = "--vendor_ramdisk "
@@ -282,7 +282,7 @@ func (b *bootimg) AndroidMkEntries() []android.AndroidMkEntries {
 	}}
 }
 
-var _ Filesystem = (*bootimg)(nil)
+var _ FilesystemModule = (*bootimg)(nil)
 
 func (b *bootimg) OutputPath() android.Path {
 	return b.output

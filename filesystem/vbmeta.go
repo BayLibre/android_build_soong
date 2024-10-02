@@ -161,7 +161,7 @@ func (v *vbmeta) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	for _, p := range ctx.GetDirectDepsWithTag(vbmetaPartitionDep) {
-		f, ok := p.(Filesystem)
+		f, ok := p.(FilesystemModule)
 		if !ok {
 			ctx.PropertyErrorf("partitions", "%q(type: %s) is not supported",
 				p.Name(), ctx.OtherModuleType(p))
@@ -279,7 +279,7 @@ func (v *vbmeta) prepareAndroidMKProviderInfo() *android.AndroidMkProviderInfo {
 	return &providerData
 }
 
-var _ Filesystem = (*vbmeta)(nil)
+var _ FilesystemModule = (*vbmeta)(nil)
 
 func (v *vbmeta) OutputPath() android.Path {
 	return v.output
