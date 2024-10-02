@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab1928f5_3a491a93",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-02T17:44:53Z",
+      "side": 1,
+      "message": "Do you mind explaining why this is `framework/oat/...`, not `/system_server/framework/oat/...`? Doesn\u0027t `ToOdexPath(...)` now prepend the partition name to the path?",
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
