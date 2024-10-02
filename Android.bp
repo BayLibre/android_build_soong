@@ -142,6 +142,15 @@ all_apex_contributions {
     visibility: ["//visibility:public"],
 }
 
+//
+// Defaults to share configs for baremetal Soong modules
+//
+
+cc_defaults {
+    name: "cc_baremetal_defaults",
+    defaults_visibility: ["//visibility:public"],
+}
+
 // TODO(b/365670526): remove the cuttlefish visibility once it is fully removed
 product_config {
     name: "product_config",
