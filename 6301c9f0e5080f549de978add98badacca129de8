@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22929c8d_70004954",
+        "filename": "filesystem/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-02T21:11:09Z",
+      "side": 1,
+      "message": "Done. I did not move `product_config_to_bp.go` into the new package at the moment.",
+      "parentUuid": "23cfe6ef_e5080e11",
+      "revId": "6301c9f0e5080f549de978add98badacca129de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acb49bea_b4403c5e",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2039bc9e_2c4f07a3",
+        "filename": "filesystem/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-02T21:11:09Z",
+      "side": 1,
+      "message": "`filesystemCreatorProperties` do not contain any product-specific properties, as seen in its definition in L32. It just allows the name of each partitions to be specified individually instead of it being determined based on the name of the parent module, and allows enabling/disabling of the generation of the module.\n\nPTAL the test case added in this change to see how the module definition looks like.",
+      "parentUuid": "acb49bea_b4403c5e",
+      "revId": "6301c9f0e5080f549de978add98badacca129de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aae5380a_086b3e80",
         "filename": "filesystem/filesystem_creator.go",
         "patchSetId": 2
@@ -48,6 +84,24 @@
       "writtenOn": "2024-10-02T20:41:42Z",
       "side": 1,
       "message": "This should just be `InitAndroidModule`, we don\u0027t need multiple variants of it.",
+      "revId": "6301c9f0e5080f549de978add98badacca129de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f0c53b2_515ed379",
+        "filename": "filesystem/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-02T21:11:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae5380a_086b3e80",
       "revId": "6301c9f0e5080f549de978add98badacca129de8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
