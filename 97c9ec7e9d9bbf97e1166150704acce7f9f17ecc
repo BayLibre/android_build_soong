@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0583e216_d56ab83a",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-02T19:19:48Z",
+      "side": 1,
+      "message": "Do we need set this provider for `AndroidTest` as well?",
+      "range": {
+        "startLine": 398,
+        "startChar": 1,
+        "endLine": 401,
+        "endChar": 3
+      },
+      "revId": "97c9ec7e9d9bbf97e1166150704acce7f9f17ecc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
