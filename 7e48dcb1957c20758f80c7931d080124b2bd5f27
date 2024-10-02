@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ce2367_83020015",
+        "filename": "fsgen/filesystem_creator_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-02T21:22:24Z",
+      "side": 1,
+      "message": "This style of tests is requiring you to expose a lot of things. Could you factor it out to be more like a unit test, where there\u0027s a function that accepts the result of `ctx.Config().ProductVariables()`, and returns the properties of the system image to create? Then you can test that one function instead of having to deal with extracting the properties out of the real module.",
+      "revId": "7e48dcb1957c20758f80c7931d080124b2bd5f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
