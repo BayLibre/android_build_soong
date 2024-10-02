@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abec431b_a1e6c6f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-10-02T00:01:07Z",
+      "side": 1,
+      "message": "-\u003e b/370837589 thanks!",
+      "parentUuid": "d893f82d_e30d30c7",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 54
+      },
+      "revId": "5fb2b1fe3b29b2b82a93026d36009d0c4d5f01b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "262233e8_960f4e8b",
@@ -61,6 +85,24 @@
       "writtenOn": "2024-10-01T23:58:15Z",
       "side": 1,
       "message": "I\u0027d suggest pushing this through a channel and handling it in a separate goroutine similar to `errorsChan`.",
+      "revId": "5fb2b1fe3b29b2b82a93026d36009d0c4d5f01b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ce4c072_eebc5225",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-10-02T00:01:07Z",
+      "side": 1,
+      "message": "If you\u0027re okay with this as-is would appreciate it. I don\u0027t know go so well.",
+      "parentUuid": "262233e8_960f4e8b",
       "revId": "5fb2b1fe3b29b2b82a93026d36009d0c4d5f01b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -101,6 +143,48 @@
         "endLine": 868,
         "endChar": 31
       },
+      "revId": "5fb2b1fe3b29b2b82a93026d36009d0c4d5f01b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72486719_98d7e987",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-10-02T00:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e48f781_dc6a557e",
+      "range": {
+        "startLine": 868,
+        "startChar": 26,
+        "endLine": 868,
+        "endChar": 31
+      },
+      "revId": "5fb2b1fe3b29b2b82a93026d36009d0c4d5f01b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdb4f1be_089c473e",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-10-02T00:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f33817e5_0ca3235e",
       "revId": "5fb2b1fe3b29b2b82a93026d36009d0c4d5f01b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
