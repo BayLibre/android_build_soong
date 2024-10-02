@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06d2b954_494b9caf",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-02T23:23:51Z",
+      "side": 1,
+      "message": "This is breaking the abstraction barriers around the sanitizers.\n\nAs a simpler solution, how about setting `-O2` always?  `-O0` for host tests was added in 2010, and it may not make sense any more, especially since we run every host gtest in presubmit.",
+      "revId": "f73c9de53ebaa7a05a36dcf9746a5b5c362f65b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
