@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23cfe6ef_e5080e11",
+        "filename": "filesystem/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-02T20:41:42Z",
+      "side": 1,
+      "message": "Please create a new go package for this stuff. It\u0027s all temporary/migration code, so we shouldn\u0027t mix it with the production-ready code. We can export `filesystemProperties` though.\n\nThere\u0027s also Zi\u0027s `product_config_to_bp.go` that should maybe be moved into the same package, depending on how much stuff it relies on from the android package.",
+      "revId": "6301c9f0e5080f549de978add98badacca129de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acb49bea_b4403c5e",
+        "filename": "filesystem/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-02T20:41:42Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to add properties to this module, I imagine we will control whether or not soong-build partitions are created/used via product variables, not properties, so that they can vary per product.",
+      "revId": "6301c9f0e5080f549de978add98badacca129de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae5380a_086b3e80",
+        "filename": "filesystem/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-02T20:41:42Z",
+      "side": 1,
+      "message": "This should just be `InitAndroidModule`, we don\u0027t need multiple variants of it.",
+      "revId": "6301c9f0e5080f549de978add98badacca129de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
