@@ -16,6 +16,24 @@
       "message": "This style of tests is requiring you to expose a lot of things. Could you factor it out to be more like a unit test, where there\u0027s a function that accepts the result of `ctx.Config().ProductVariables()`, and returns the properties of the system image to create? Then you can test that one function instead of having to deal with extracting the properties out of the real module.",
       "revId": "7e48dcb1957c20758f80c7931d080124b2bd5f27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a1f85ce_1d400b35",
+        "filename": "fsgen/filesystem_creator_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-02T21:42:18Z",
+      "side": 1,
+      "message": "I think writing a function that constructs a system image property from product variables to compare it with the actual module property is basically repeating the logic of the code (in `filesystemCreator.createSystemImage(...)`) for testing.\n\nIIUC your concern is about exposing too many types for testing. I\u0027ve modified this to not expose any types in filesystem package only for testing; The only two types that are exported now are `SystemImageFactory` and `FilesystemProperties`, which are both used in `filesystem_creator.go`.",
+      "parentUuid": "f7ce2367_83020015",
+      "revId": "7e48dcb1957c20758f80c7931d080124b2bd5f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
