@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7aaa0d3_ceec13ec",
+        "filename": "filesystem/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-02T22:07:32Z",
+      "side": 1,
+      "message": "Resolved from offline discussion: The name of the generated system image should be determined by `TARGET_PRODUCT` and should not be defined in the module definition. I\u0027ve removed the property structs.",
+      "parentUuid": "2039bc9e_2c4f07a3",
+      "revId": "6301c9f0e5080f549de978add98badacca129de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aae5380a_086b3e80",
