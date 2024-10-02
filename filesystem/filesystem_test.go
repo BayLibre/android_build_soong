@@ -120,7 +120,7 @@ func TestFileSystemDeps(t *testing.T) {
 	// produces "myfilesystem.img"
 	result.ModuleForTests("myfilesystem", "android_common").Output("myfilesystem.img")
 
-	fs := result.ModuleForTests("myfilesystem", "android_common").Module().(*filesystem)
+	fs := result.ModuleForTests("myfilesystem", "android_common").Module().(*Filesystem)
 	expected := []string{
 		"app/myapp/myapp.apk",
 		"bin/foo",
@@ -231,7 +231,7 @@ func TestFileSystemGathersItemsOnlyInSystemPartition(t *testing.T) {
 		}
 	`)
 
-	module := result.ModuleForTests("myfilesystem", "android_common").Module().(*systemImage)
+	module := result.ModuleForTests("myfilesystem", "android_common").Module().(*SystemImage)
 	android.AssertDeepEquals(t, "entries should have foo only", []string{"components/foo"}, module.entries)
 }
 
@@ -407,7 +407,7 @@ func TestSystemImageDefaults(t *testing.T) {
 		}
 	`)
 
-	fs := result.ModuleForTests("system", "android_common").Module().(*systemImage)
+	fs := result.ModuleForTests("system", "android_common").Module().(*SystemImage)
 	expected := []string{
 		"bin/foo",
 		"lib/libbar.so",
@@ -487,7 +487,7 @@ func TestTrackPhonyAsRequiredDep(t *testing.T) {
 		}
 	`)
 
-	fs := result.ModuleForTests("fs", "android_common").Module().(*filesystem)
+	fs := result.ModuleForTests("fs", "android_common").Module().(*Filesystem)
 	expected := []string{
 		"bin/foo",
 		"lib64/libbar.so",
@@ -550,7 +550,7 @@ func TestFilterOutUnsupportedArches(t *testing.T) {
 		},
 	}
 	for _, c := range testcases {
-		fs := result.ModuleForTests(c.fsName, "android_common").Module().(*filesystem)
+		fs := result.ModuleForTests(c.fsName, "android_common").Module().(*Filesystem)
 		for _, e := range c.expected {
 			android.AssertStringListContains(t, "missing entry", fs.entries, e)
 		}

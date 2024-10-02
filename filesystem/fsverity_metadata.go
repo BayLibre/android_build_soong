@@ -32,7 +32,7 @@ type fsverityProperties struct {
 	Libs []string `android:"path"`
 }
 
-func (f *filesystem) writeManifestGeneratorListFile(ctx android.ModuleContext, outputPath android.OutputPath, matchedSpecs []android.PackagingSpec, rebasedDir android.OutputPath) {
+func (f *Filesystem) writeManifestGeneratorListFile(ctx android.ModuleContext, outputPath android.OutputPath, matchedSpecs []android.PackagingSpec, rebasedDir android.OutputPath) {
 	var buf strings.Builder
 	for _, spec := range matchedSpecs {
 		buf.WriteString(rebasedDir.Join(ctx, spec.RelPathInPackage()).String())
@@ -41,9 +41,9 @@ func (f *filesystem) writeManifestGeneratorListFile(ctx android.ModuleContext, o
 	android.WriteFileRuleVerbatim(ctx, outputPath, buf.String())
 }
 
-func (f *filesystem) buildFsverityMetadataFiles(ctx android.ModuleContext, builder *android.RuleBuilder, specs map[string]android.PackagingSpec, rootDir android.OutputPath, rebasedDir android.OutputPath) {
+func (f *Filesystem) buildFsverityMetadataFiles(ctx android.ModuleContext, builder *android.RuleBuilder, specs map[string]android.PackagingSpec, rootDir android.OutputPath, rebasedDir android.OutputPath) {
 	match := func(path string) bool {
-		for _, pattern := range f.properties.Fsverity.Inputs {
+		for _, pattern := range f.Properties.Fsverity.Inputs {
 			if matched, err := filepath.Match(pattern, path); matched {
 				return true
 			} else if err != nil {
@@ -124,7 +124,7 @@ func (f *filesystem) buildFsverityMetadataFiles(ctx android.ModuleContext, build
 	apkPath := rebasedDir.Join(ctx, "etc", "security", "fsverity", "BuildManifest.apk")
 	idsigPath := rebasedDir.Join(ctx, "etc", "security", "fsverity", "BuildManifest.apk.idsig")
 	manifestTemplatePath := android.PathForSource(ctx, "system/security/fsverity/AndroidManifest.xml")
-	libs := android.PathsForModuleSrc(ctx, f.properties.Fsverity.Libs)
+	libs := android.PathsForModuleSrc(ctx, f.Properties.Fsverity.Libs)
 	cmd.Implicit(aapt2Path)
 	cmd.Implicit(manifestTemplatePath)
 	cmd.Implicits(libs)

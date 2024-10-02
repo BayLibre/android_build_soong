@@ -100,7 +100,7 @@ func (r *rawBinary) AndroidMkEntries() []android.AndroidMkEntries {
 	}}
 }
 
-var _ Filesystem = (*rawBinary)(nil)
+var _ FilesystemModule = (*rawBinary)(nil)
 
 func (r *rawBinary) OutputPath() android.Path {
 	return r.output

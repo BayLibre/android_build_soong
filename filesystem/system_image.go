@@ -19,10 +19,10 @@ import (
 	"android/soong/linkerconfig"
 )
 
-type systemImage struct {
-	filesystem
+type SystemImage struct {
+	Filesystem
 
-	properties systemImageProperties
+	Properties systemImageProperties
 }
 
 type systemImageProperties struct {
@@ -33,17 +33,17 @@ type systemImageProperties struct {
 // android_system_image is a specialization of android_filesystem for the 'system' partition.
 // Currently, the only difference is the inclusion of linker.config.pb file which specifies
 // the provided and the required libraries to and from APEXes.
-func systemImageFactory() android.Module {
-	module := &systemImage{}
-	module.AddProperties(&module.properties)
-	module.filesystem.buildExtraFiles = module.buildExtraFiles
-	module.filesystem.filterPackagingSpec = module.filterPackagingSpec
-	initFilesystemModule(module, &module.filesystem)
+func SystemImageFactory() android.Module {
+	module := &SystemImage{}
+	module.AddProperties(&module.Properties)
+	module.Filesystem.buildExtraFiles = module.buildExtraFiles
+	module.Filesystem.filterPackagingSpec = module.filterPackagingSpec
+	initFilesystemModule(module, &module.Filesystem)
 	return module
 }
 
-func (s *systemImage) buildExtraFiles(ctx android.ModuleContext, root android.OutputPath) android.OutputPaths {
-	if s.filesystem.properties.Partition_type != nil {
+func (s *SystemImage) buildExtraFiles(ctx android.ModuleContext, root android.OutputPath) android.OutputPaths {
+	if s.Filesystem.Properties.Partition_type != nil {
 		ctx.PropertyErrorf("partition_type", "partition_type must be unset on an android_system_image module. It is assumed to be 'system'.")
 	}
 	lc := s.buildLinkerConfigFile(ctx, root)
@@ -51,8 +51,8 @@ func (s *systemImage) buildExtraFiles(ctx android.ModuleContext, root android.Ou
 	return []android.OutputPath{lc}
 }
 
-func (s *systemImage) buildLinkerConfigFile(ctx android.ModuleContext, root android.OutputPath) android.OutputPath {
-	input := android.PathForModuleSrc(ctx, android.String(s.properties.Linker_config_src))
+func (s *SystemImage) buildLinkerConfigFile(ctx android.ModuleContext, root android.OutputPath) android.OutputPath {
+	input := android.PathForModuleSrc(ctx, android.String(s.Properties.Linker_config_src))
 	output := root.Join(ctx, "system", "etc", "linker.config.pb")
 
 	// we need "Module"s for packaging items
@@ -98,7 +98,7 @@ func (s *systemImage) buildLinkerConfigFile(ctx android.ModuleContext, root andr
 // Filter the result of GatherPackagingSpecs to discard items targeting outside "system" / "root"
 // partition.  Note that "apex" module installs its contents to "apex"(fake partition) as well
 // for symbol lookup by imitating "activated" paths.
-func (s *systemImage) filterPackagingSpec(ps android.PackagingSpec) bool {
-	return s.filesystem.filterInstallablePackagingSpec(ps) &&
+func (s *SystemImage) filterPackagingSpec(ps android.PackagingSpec) bool {
+	return s.Filesystem.filterInstallablePackagingSpec(ps) &&
 		(ps.Partition() == "system" || ps.Partition() == "root")
 }

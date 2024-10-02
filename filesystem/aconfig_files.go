@@ -21,8 +21,8 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
-func (f *filesystem) buildAconfigFlagsFiles(ctx android.ModuleContext, builder *android.RuleBuilder, specs map[string]android.PackagingSpec, dir android.OutputPath) {
-	if !proptools.Bool(f.properties.Gen_aconfig_flags_pb) {
+func (f *Filesystem) buildAconfigFlagsFiles(ctx android.ModuleContext, builder *android.RuleBuilder, specs map[string]android.PackagingSpec, dir android.OutputPath) {
+	if !proptools.Bool(f.Properties.Gen_aconfig_flags_pb) {
 		return
 	}
 

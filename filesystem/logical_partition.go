@@ -234,7 +234,7 @@ func (l *logicalPartition) AndroidMkEntries() []android.AndroidMkEntries {
 	}}
 }
 
-var _ Filesystem = (*logicalPartition)(nil)
+var _ FilesystemModule = (*logicalPartition)(nil)
 
 func (l *logicalPartition) OutputPath() android.Path {
 	return l.output
