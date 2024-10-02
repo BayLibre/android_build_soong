@@ -22,6 +22,30 @@
       },
       "revId": "97c9ec7e9d9bbf97e1166150704acce7f9f17ecc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "464fc991_f423b963",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-02T21:05:02Z",
+      "side": 1,
+      "message": "We could, but this matches the behavior of the existing enforcement, which explicitly checked for `*AndroidApp`.",
+      "parentUuid": "0583e216_d56ab83a",
+      "range": {
+        "startLine": 398,
+        "startChar": 1,
+        "endLine": 401,
+        "endChar": 3
+      },
+      "revId": "97c9ec7e9d9bbf97e1166150704acce7f9f17ecc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
