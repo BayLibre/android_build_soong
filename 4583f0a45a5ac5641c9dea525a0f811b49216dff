@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cb4e2ab_fd85d1a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-02T21:55:32Z",
+      "side": 1,
+      "message": "Can you give an example of when the default `gob.Encode` doesn\u0027t work?",
+      "revId": "4583f0a45a5ac5641c9dea525a0f811b49216dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
