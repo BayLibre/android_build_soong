@@ -148,6 +148,14 @@ all_apex_contributions {
 
 cc_defaults {
     name: "cc_baremetal_defaults",
+    arch: {
+        arm64: {
+            cflags: [
+                "-Xclang -target-feature",
+                "-Xclang -sve",
+            ],
+        },
+    },
     defaults_visibility: ["//visibility:public"],
 }
 
