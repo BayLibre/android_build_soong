@@ -40,6 +40,30 @@
       ],
       "revId": "5d3d23195c41ef7fe9c3f927533c7c881de85d24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19f42b56_8c9b83bb",
+        "filename": "cmd/release_config/release_config_lib/release_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-10-02T17:59:23Z",
+      "side": 1,
+      "message": "tl;dr: guardrail file is not relevant here.\n\nAt this point in the code, we have collected each of the contributions to the release config, and are simply assembling them into the release config.\n\n- Lack of `release_configs/foo.textproto` means that we do not look at `{flag_values,aconfig}/foo`.\n- The guardrail is a file because the check looks to see if such a *directory* exists without the release_configs file, and having the file means that there are merge conflicts if a flag change is happening in parallel with the flag move.",
+      "parentUuid": "fafbb5c4_5e1fe036",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 21
+      },
+      "revId": "5d3d23195c41ef7fe9c3f927533c7c881de85d24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
