@@ -16,7 +16,6 @@ package android
 
 import (
 	"cmp"
-	"encoding/gob"
 	"errors"
 	"fmt"
 	"path/filepath"
@@ -661,30 +660,6 @@ func (m *SyncMap[K, V]) Store(key K, value V) {
 func (m *SyncMap[K, V]) LoadOrStore(key K, value V) (actual V, loaded bool) {
 	v, loaded := m.Map.LoadOrStore(key, value)
 	return v.(V), loaded
-}
-
-func encodeValue[T any](enc *gob.Encoder, value T) error {
-	val := reflect.ValueOf(value)
-	if !val.IsValid() || val.IsZero() {
-		return enc.Encode(false) // Encode false to indicate nil
-	}
-	if err := enc.Encode(true); err != nil { // Encode true to indicate non-nil
-		return err
-	}
-	// Encode the pointer in order to handle the case where value is an interface,
-	// otherwise gob encodes it as the concrete type and then tries to decode as
-	// an interface
-	return enc.Encode(&value)
-}
-
-func decodeValue[T any](dec *gob.Decoder, ptr *T) error {
-	var isNotNil bool
-	err := dec.Decode(&isNotNil)
-	if err != nil || !isNotNil {
-		return err
-	}
-
-	return dec.Decode(ptr)
 }
 
 // Wrap around errors.Join() with some checks to ensure all fields of the struct

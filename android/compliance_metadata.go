@@ -135,7 +135,7 @@ func NewComplianceMetadataInfo() *ComplianceMetadataInfo {
 func (c *ComplianceMetadataInfo) GobEncode() ([]byte, error) {
 	w := new(bytes.Buffer)
 	encoder := gob.NewEncoder(w)
-	err := joinGobErrors[ComplianceMetadataInfo](encodeValue(encoder, c.properties))
+	err := joinGobErrors[ComplianceMetadataInfo](encoder.Encode(&c.properties))
 	if err != nil {
 		return nil, err
 	}
@@ -146,7 +146,7 @@ func (c *ComplianceMetadataInfo) GobEncode() ([]byte, error) {
 func (c *ComplianceMetadataInfo) GobDecode(data []byte) error {
 	r := bytes.NewBuffer(data)
 	decoder := gob.NewDecoder(r)
-	return joinGobErrors[ComplianceMetadataInfo](decodeValue(decoder, &c.properties))
+	return joinGobErrors[ComplianceMetadataInfo](decoder.Decode(&c.properties))
 }
 
 func (c *ComplianceMetadataInfo) SetStringValue(propertyName string, value string) {

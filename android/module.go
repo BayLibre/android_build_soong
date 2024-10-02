@@ -1800,6 +1800,26 @@ type FinalModuleBuildTargetsInfo struct {
 
 var FinalModuleBuildTargetsProvider = blueprint.NewProvider[FinalModuleBuildTargetsInfo]()
 
+type CommonPropertiesProviderData struct {
+	Enabled bool
+	// Whether the module has been replaced by a prebuilt
+	ReplacedByPrebuilt bool
+}
+
+var CommonPropertiesProviderKey = blueprint.NewProvider[CommonPropertiesProviderData]()
+
+type PrebuiltModuleProviderData struct {
+	// Empty for now
+}
+
+var PrebuiltModuleProviderKey = blueprint.NewProvider[PrebuiltModuleProviderData]()
+
+type HostToolProviderData struct {
+	HostToolPath OptionalPath
+}
+
+var HostToolProviderKey = blueprint.NewProvider[HostToolProviderData]()
+
 func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) {
 	ctx := &moduleContext{
 		module:            m.module,
@@ -2045,6 +2065,23 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		})
 	}
 	buildComplianceMetadataProvider(ctx, m)
+
+	commonData := CommonPropertiesProviderData{
+		ReplacedByPrebuilt: m.commonProperties.ReplacedByPrebuilt,
+	}
+	if m.commonProperties.ForcedDisabled {
+		commonData.Enabled = false
+	} else {
+		commonData.Enabled = m.commonProperties.Enabled.GetOrDefault(m.ConfigurableEvaluator(ctx), !m.Os().DefaultDisabled)
+	}
+	SetProvider(ctx, CommonPropertiesProviderKey, commonData)
+	if p, ok := m.module.(PrebuiltInterface); ok && p.Prebuilt() != nil {
+		SetProvider(ctx, PrebuiltModuleProviderKey, PrebuiltModuleProviderData{})
+	}
+	if h, ok := m.module.(HostToolProvider); ok {
+		SetProvider(ctx, HostToolProviderKey, HostToolProviderData{
+			HostToolPath: h.HostToolPath()})
+	}
 }
 
 func SetJarJarPrefixHandler(handler func(ModuleContext)) {
@@ -2131,10 +2168,10 @@ type katiInstall struct {
 func (p *katiInstall) GobEncode() ([]byte, error) {
 	w := new(bytes.Buffer)
 	encoder := gob.NewEncoder(w)
-	err := joinGobErrors[katiInstall](encodeValue(encoder, p.from), encodeValue(encoder, p.to),
-		encodeValue(encoder, p.implicitDeps), encodeValue(encoder, p.orderOnlyDeps),
-		encodeValue(encoder, p.executable), encodeValue(encoder, p.extraFiles),
-		encodeValue(encoder, p.absFrom))
+	err := joinGobErrors[katiInstall](encoder.Encode(&p.from), encoder.Encode(&p.to),
+		encoder.Encode(&p.implicitDeps), encoder.Encode(&p.orderOnlyDeps),
+		encoder.Encode(&p.executable), encoder.Encode(&p.extraFiles),
+		encoder.Encode(&p.absFrom))
 	if err != nil {
 		return nil, err
 	}
@@ -2145,10 +2182,10 @@ func (p *katiInstall) GobEncode() ([]byte, error) {
 func (p *katiInstall) GobDecode(data []byte) error {
 	r := bytes.NewBuffer(data)
 	decoder := gob.NewDecoder(r)
-	return joinGobErrors[katiInstall](decodeValue(decoder, &p.from), decodeValue(decoder, &p.to),
-		decodeValue(decoder, &p.implicitDeps), decodeValue(decoder, &p.orderOnlyDeps),
-		decodeValue(decoder, &p.executable), decodeValue(decoder, &p.extraFiles),
-		decodeValue(decoder, &p.absFrom))
+	return joinGobErrors[katiInstall](decoder.Decode(&p.from), decoder.Decode(&p.to),
+		decoder.Decode(&p.implicitDeps), decoder.Decode(&p.orderOnlyDeps),
+		decoder.Decode(&p.executable), decoder.Decode(&p.extraFiles),
+		decoder.Decode(&p.absFrom))
 }
 
 type extraFilesZip struct {
@@ -2159,7 +2196,7 @@ type extraFilesZip struct {
 func (p *extraFilesZip) GobEncode() ([]byte, error) {
 	w := new(bytes.Buffer)
 	encoder := gob.NewEncoder(w)
-	err := joinGobErrors[extraFilesZip](encodeValue(encoder, p.zip), encodeValue(encoder, p.dir))
+	err := joinGobErrors[extraFilesZip](encoder.Encode(&p.zip), encoder.Encode(&p.dir))
 	if err != nil {
 		return nil, err
 	}
@@ -2170,7 +2207,7 @@ func (p *extraFilesZip) GobEncode() ([]byte, error) {
 func (p *extraFilesZip) GobDecode(data []byte) error {
 	r := bytes.NewBuffer(data)
 	decoder := gob.NewDecoder(r)
-	return joinGobErrors[extraFilesZip](decodeValue(decoder, &p.zip), decodeValue(decoder, &p.dir))
+	return joinGobErrors[extraFilesZip](decoder.Decode(&p.zip), decoder.Decode(&p.dir))
 }
 
 type katiInstalls []katiInstall
