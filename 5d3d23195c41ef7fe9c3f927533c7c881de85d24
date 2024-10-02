@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fafbb5c4_5e1fe036",
+        "filename": "cmd/release_config/release_config_lib/release_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1307230
+      },
+      "writtenOn": "2024-10-02T15:59:28Z",
+      "side": 1,
+      "message": "Do we have to worry about the guardrail file (I think no as this looks like it\u0027s specifically looking for directories) but just confirming.",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d351a4e2_4503eab0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cmd/release_config/release_config_lib/release_config.go",
+              "range": {
+                "startLine": 287,
+                "startChar": 0,
+                "endLine": 287,
+                "endChar": 0
+              },
+              "replacement": "\t\t\"build/make/target/product/vendor_affects_release\",\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5d3d23195c41ef7fe9c3f927533c7c881de85d24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
