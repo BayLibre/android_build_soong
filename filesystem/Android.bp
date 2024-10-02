@@ -20,6 +20,7 @@ bootstrap_go_package {
         "avb_gen_vbmeta_image.go",
         "bootimg.go",
         "filesystem.go",
+        "filesystem_creator.go",
         "fsverity_metadata.go",
         "logical_partition.go",
         "raw_binary.go",
@@ -28,6 +29,7 @@ bootstrap_go_package {
         "testing.go",
     ],
     testSrcs: [
+        "filesystem_creator_test.go",
         "filesystem_test.go",
     ],
     pluginFor: ["soong_build"],
