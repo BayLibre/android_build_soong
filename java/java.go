@@ -1809,6 +1809,8 @@ type Binary struct {
 
 	wrapperFile android.Path
 	binaryFile  android.InstallPath
+
+	jniLibs []android.Module
 }
 
 func (j *Binary) HostToolPath() android.OptionalPath {
@@ -1880,6 +1882,19 @@ func (j *Binary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			ctx.ModuleName()+ext, j.wrapperFile)
 
 		setOutputFiles(ctx, j.Library.Module)
+
+		// Set the jniLibs of this binary.
+		// These will be added to `LOCAL_REQUIRED_MODULES`, and the kati packaging system will
+		// install these alongside the java binary.
+		ctx.VisitDirectDepsWithTag(jniInstallTag, func(jni android.Module) {
+			j.jniLibs = append(j.jniLibs, jni)
+		})
+		// Check that native libraries are not listed in `required`. Prompt users to use `jni_libs` instead.
+		ctx.VisitDirectDepsWithTag(android.RequiredDepTag, func(dep android.Module) {
+			if _, hasSharedLibraryInfo := android.OtherModuleProvider(ctx, dep, cc.SharedLibraryInfoProvider); hasSharedLibraryInfo {
+				ctx.ModuleErrorf("cc_library %s is no longer supported in `required` of java_binary modules. Please use jni_libs instead.", dep.Name())
+			}
+		})
 	}
 }
 
@@ -1889,10 +1904,8 @@ func (j *Binary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	}
 	// These dependencies ensure the installation rules will install the jar file when the
 	// wrapper is installed, and the jni libraries on host when the wrapper is installed.
-	if ctx.Arch().ArchType != android.Common && ctx.Os().Class == android.Host {
-		ctx.AddVariationDependencies(nil, jniInstallTag, j.binaryProperties.Jni_libs...)
-	}
 	if ctx.Arch().ArchType != android.Common {
+		ctx.AddVariationDependencies(nil, jniInstallTag, j.binaryProperties.Jni_libs...)
 		ctx.AddVariationDependencies(
 			[]blueprint.Variation{{Mutator: "arch", Variation: android.CommonArch.String()}},
 			binaryInstallTag, ctx.ModuleName())
