@@ -522,6 +522,8 @@ type ProductVariables struct {
 	DeviceProductCompatibilityMatrixFile   []string `json:",omitempty"`
 
 	PartitionVarsForSoongMigrationOnlyDoNotUse PartitionVariables
+
+  	AdbKeys *string `json:",omitempty"`
 }
 
 type PartitionQualifiedVariablesType struct {
@@ -580,6 +582,7 @@ type PartitionVariables struct {
 
 	ProductPackages      []string `json:",omitempty"`
 	ProductPackagesDebug []string `json:",omitempty"`
+
 }
 
 func boolPtr(v bool) *bool {
