@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ce7be11_5aa6d2a5",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-03T22:38:30Z",
+      "side": 1,
+      "message": "Should we change this to `FilesystemFactory` given that you are making this generic?",
+      "revId": "f36d054956a2320e15ba7f5317f509cbb0b28fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
