@@ -521,7 +521,12 @@ type ProductVariables struct {
 	DeviceFrameworkCompatibilityMatrixFile []string `json:",omitempty"`
 	DeviceProductCompatibilityMatrixFile   []string `json:",omitempty"`
 
+<<<<<<< PATCH SET (9c3fb6 Add new module type for adb_keys.)
+  	AdbKeys *string `json:",omitempty"`
+||||||| BASE
+=======
 	PartitionVarsForSoongMigrationOnlyDoNotUse PartitionVariables
+>>>>>>> BASE      (12c41d Merge "Make the rust features property configurable" into ma)
 }
 
 type PartitionQualifiedVariablesType struct {
@@ -578,8 +583,15 @@ type PartitionVariables struct {
 
 	BoardAvbEnable bool `json:",omitempty"`
 
+<<<<<<< PATCH SET (9c3fb6 Add new module type for adb_keys.)
+	ProductPackages []string `json:",omitempty"`
+
+||||||| BASE
+	ProductPackages []string `json:",omitempty"`
+=======
 	ProductPackages      []string `json:",omitempty"`
 	ProductPackagesDebug []string `json:",omitempty"`
+>>>>>>> BASE      (12c41d Merge "Make the rust features property configurable" into ma)
 }
 
 func boolPtr(v bool) *bool {
