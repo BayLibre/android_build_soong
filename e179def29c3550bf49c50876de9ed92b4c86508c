@@ -16,6 +16,24 @@
       "message": "This is sending false for any zero value, even if T is a non-pointer struct, but maybe that\u0027s a useful feature?  If so, worth updating the comment.\n\nWeirdly gob.Encode is happy to encode nil pointers inside a struct, as long as the value you pass directly to Encode is not nil.\n\nI think you suggested this before, but maybe rather than manually encoding all the fields, which requires these workarounds, you should create a temporary struct that has exported fields, copy the values into it, and gob.Encode that?",
       "revId": "e179def29c3550bf49c50876de9ed92b4c86508c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab3576d7_d17d14fa",
+        "filename": "android/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-10-03T22:14:52Z",
+      "side": 1,
+      "message": "I guess when you pass nil directly to it it doesn\u0027t know any type info, reflect.TypeOf(v) will just show nil.\n\nSure, I can do that.",
+      "parentUuid": "051c5957_02c64b21",
+      "revId": "e179def29c3550bf49c50876de9ed92b4c86508c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
