@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe57c4fb_ec2f7ebd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-10-03T17:38:20Z",
+      "side": 1,
+      "message": "Because of https://android-review.git.corp.google.com/c/platform/hardware/interfaces/+/2720955 i think -O2 is a better choice; it is more tested compared to -O1.",
+      "revId": "09249b83c3d5c70eba090329c2afdb9da969986f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
