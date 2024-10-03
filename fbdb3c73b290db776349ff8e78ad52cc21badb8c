@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d4186c0_dc807d50",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-03T10:00:02Z",
+      "side": 1,
+      "message": "I see. We already have a mutator that sets `ApexInfoProvider`. Is it possible to propagate `system_ext_specific` from there?",
+      "parentUuid": "7305377a_ae153316",
+      "range": {
+        "startLine": 496,
+        "startChar": 13,
+        "endLine": 496,
+        "endChar": 58
+      },
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "432e7dae_ccbbc3b0",
         "filename": "java/dexpreopt_check.go",
         "patchSetId": 5
@@ -208,6 +232,24 @@
       "side": 1,
       "message": "I agree, but unfortunately `SingletonContext` does not have support for creating install paths today, since it does not implement `ModuleInstallPathContext`.\n\nI have left a comment describing why the rewrite hack is necessary.",
       "parentUuid": "432e7dae_ccbbc3b0",
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28df2e02_86ce1755",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-03T10:00:02Z",
+      "side": 1,
+      "message": "I see. Thanks for the explanation. Another idea is to add a bottom up mutator to add system server jars as dependencies of this singleton module and access them in `GenerateAndroidBuildActions` through `ctx.WalkDeps`. WDYT?",
+      "parentUuid": "a9f2e170_0ea4d52f",
       "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
