@@ -20,8 +20,11 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
+
+var pctx = android.NewPackageContext("android/soong/fsgen")
 
 func init() {
 	registerBuildComponents(android.InitRegistrationContext)
@@ -31,8 +34,14 @@ func registerBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("soong_filesystem_creator", filesystemCreatorFactory)
 }
 
+type filesystemCreatorProps struct {
+	Generated_image_module_names map[string]string `blueprint:"mutated"`
+}
+
 type filesystemCreator struct {
 	android.ModuleBase
+
+	properties filesystemCreatorProps
 }
 
 func filesystemCreatorFactory() android.Module {
@@ -47,36 +56,40 @@ func filesystemCreatorFactory() android.Module {
 }
 
 func (f *filesystemCreator) createInternalModules(ctx android.LoadHookContext) {
-	f.createSystemImage(ctx)
+	f.createPartition(ctx, "system")
 }
 
-func (f *filesystemCreator) createSystemImage(ctx android.LoadHookContext) {
+func (f *filesystemCreator) generatedModuleNameForPartition(cfg android.Config, partitionType string) string {
+	return fmt.Sprintf("%s_generated_%s_image", cfg.DeviceProduct(), partitionType)
+}
+
+func (f *filesystemCreator) createPartition(ctx android.LoadHookContext, partitionType string) {
 	baseProps := &struct {
 		Name *string
 	}{
-		Name: proptools.StringPtr(fmt.Sprintf("%s_generated_system_image", ctx.Config().DeviceProduct())),
+		Name: proptools.StringPtr(f.generatedModuleNameForPartition(ctx.Config(), partitionType)),
 	}
 
 	fsProps := &(filesystem.FilesystemProperties{})
 	partitionVars := ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse
-	systemPartitionVars := partitionVars.PartitionQualifiedVariables["system"]
+	specificPartitionVars := partitionVars.PartitionQualifiedVariables[partitionType]
 
 	// BOARD_AVB_ENABLE
 	fsProps.Use_avb = proptools.BoolPtr(partitionVars.BoardAvbEnable)
 	// BOARD_AVB_KEY_PATH
-	fsProps.Avb_private_key = proptools.StringPtr(systemPartitionVars.BoardAvbKeyPath)
+	fsProps.Avb_private_key = proptools.StringPtr(specificPartitionVars.BoardAvbKeyPath)
 	// BOARD_AVB_ALGORITHM
-	fsProps.Avb_algorithm = proptools.StringPtr(systemPartitionVars.BoardAvbAlgorithm)
+	fsProps.Avb_algorithm = proptools.StringPtr(specificPartitionVars.BoardAvbAlgorithm)
 	// BOARD_AVB_SYSTEM_ROLLBACK_INDEX
-	if rollbackIndex, err := strconv.ParseInt(systemPartitionVars.BoardAvbRollbackIndex, 10, 64); err == nil {
+	if rollbackIndex, err := strconv.ParseInt(specificPartitionVars.BoardAvbRollbackIndex, 10, 64); err == nil {
 		fsProps.Rollback_index = proptools.Int64Ptr(rollbackIndex)
 	}
 
-	fsProps.Partition_name = proptools.StringPtr("system")
+	fsProps.Partition_name = proptools.StringPtr(partitionType)
 	// BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE
-	fsProps.Type = proptools.StringPtr(systemPartitionVars.BoardFileSystemType)
+	fsProps.Type = proptools.StringPtr(specificPartitionVars.BoardFileSystemType)
 
-	fsProps.Base_dir = proptools.StringPtr("system")
+	fsProps.Base_dir = proptools.StringPtr(partitionType)
 
 	fsProps.Gen_aconfig_flags_pb = proptools.BoolPtr(true)
 
@@ -106,6 +119,48 @@ func (f *filesystemCreator) createSystemImage(ctx android.LoadHookContext) {
 	ctx.CreateModule(filesystem.SystemImageFactory, baseProps, fsProps)
 }
 
-func (f *filesystemCreator) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+func (f *filesystemCreator) createDiffTest(ctx android.ModuleContext, partitionType string) android.Path {
+	partitionModuleName := f.generatedModuleNameForPartition(ctx.Config(), partitionType)
+	systemImage := ctx.GetDirectDepWithTag(partitionModuleName, generatedFilesystemDepTag)
+	filesystemInfo, ok := android.OtherModuleProvider(ctx, systemImage, filesystem.FilesystemProvider)
+	if !ok {
+		ctx.ModuleErrorf("Expected module %s to provide FileysystemInfo", partitionModuleName)
+	}
+	makeFileList := android.PathForArbitraryOutput(ctx, fmt.Sprintf("target/product/%s/obj/PACKAGING/%s_intermediates/file_list.txt", ctx.Config().DeviceName(), partitionType))
+	// For now, don't allowlist anything. The test will fail, but that's fine in the current
+	// early stages where we're just figuring out what we need
+	emptyAllowlistFile := android.PathForModuleOut(ctx, "allowlist_%s.txt", partitionModuleName)
+	android.WriteFileRule(ctx, emptyAllowlistFile, "")
+	diffTestResultFile := android.PathForModuleOut(ctx, "diff_test_%s.txt", partitionModuleName)
 
+	builder := android.NewRuleBuilder(pctx, ctx)
+	builder.Command().BuiltTool("file_list_diff").
+		Input(makeFileList).
+		Input(filesystemInfo.FileListFile).
+		Input(emptyAllowlistFile).
+		Text(partitionModuleName)
+	builder.Command().Text("touch").Output(diffTestResultFile)
+	builder.Build(partitionModuleName+" diff test", partitionModuleName+" diff test")
+	return diffTestResultFile
+}
+
+type systemImageDepTagType struct {
+	blueprint.BaseDependencyTag
+}
+
+var generatedFilesystemDepTag systemImageDepTagType
+
+func (f *filesystemCreator) DepsMutator(ctx android.BottomUpMutatorContext) {
+	ctx.AddDependency(ctx.Module(), generatedFilesystemDepTag, f.generatedModuleNameForPartition(ctx.Config(), "system"))
+}
+
+func (f *filesystemCreator) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if ctx.ModuleDir() != "build/soong/fsgen" {
+		ctx.ModuleErrorf("There can only be one soong_filesystem_creator in build/soong/fsgen")
+	}
+	f.HideFromMake()
+
+	var diffTestFiles []android.Path
+	diffTestFiles = append(diffTestFiles, f.createDiffTest(ctx, "system"))
+	ctx.Phony("soong_generated_filesystem_tests", diffTestFiles...)
 }

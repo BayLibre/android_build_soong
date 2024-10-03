@@ -177,6 +177,13 @@ const (
 	unknown
 )
 
+type FilesystemInfo struct {
+	// A text file containing the list of paths installed on the partition.
+	FileListFile android.Path
+}
+
+var FilesystemProvider = blueprint.NewProvider[FilesystemInfo]()
+
 func (f *filesystem) fsType(ctx android.ModuleContext) fsType {
 	typeStr := proptools.StringDefault(f.properties.Type, "ext4")
 	switch typeStr {
@@ -227,6 +234,10 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	f.fileListFile = android.PathForModuleOut(ctx, "fileList").OutputPath
 	android.WriteFileRule(ctx, f.fileListFile, f.installedFilesList())
+
+	android.SetProvider(ctx, FilesystemProvider, FilesystemInfo{
+		FileListFile: f.fileListFile,
+	})
 }
 
 func (f *filesystem) appendToEntry(ctx android.ModuleContext, installedFile android.OutputPath) {
