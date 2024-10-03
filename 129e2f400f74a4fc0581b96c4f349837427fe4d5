@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "288028ae_d5db8066",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-03T00:23:23Z",
+      "side": 1,
+      "message": "Should we add a test case with `testSystemExtApexModuleConfig` that sets `ret.ApexPartition \u003d \"/system_ext\"`?",
+      "revId": "129e2f400f74a4fc0581b96c4f349837427fe4d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f86350_23e1f357",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-03T00:23:23Z",
+      "side": 1,
+      "message": "I _think_ `InstallPath.Partition` value does not have directory separator (`/`) at the beginning; IIUC [here](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/paths.go;drc\u003d648daea67d55b7e0996923880f45b4923289a26e;l\u003d1970) is where the value of `partition` is returned. I\u0027m not sure if this would matter in `filepath.Join` in `ToOdexPath`, but can we make the behavior consistent within this if/else branch?",
+      "revId": "129e2f400f74a4fc0581b96c4f349837427fe4d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac832f4_8d609310",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-03T00:23:23Z",
+      "side": 1,
+      "message": "nit: Define the flag value getter method in `android/config.go` using `config.productVariabled.GetBuildFlagBool()`. [examples](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/config.go?q\u003d%22GetBuildFlagBool%22%20f:android%2Fconfig.go)",
+      "revId": "129e2f400f74a4fc0581b96c4f349837427fe4d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
