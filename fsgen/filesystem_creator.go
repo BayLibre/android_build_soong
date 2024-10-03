@@ -15,11 +15,15 @@
 package fsgen
 
 import (
-	"android/soong/android"
-	"android/soong/filesystem"
 	"crypto/sha256"
 	"fmt"
+	"slices"
 	"strconv"
+	"strings"
+
+	"android/soong/android"
+	"android/soong/filesystem"
+	"github.com/google/blueprint/parser"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -33,6 +37,47 @@ func init() {
 
 func registerBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("soong_filesystem_creator", filesystemCreatorFactory)
+	ctx.PreDepsMutators(RegisterCollectFileSystemDepsMutators)
+}
+
+func RegisterCollectFileSystemDepsMutators(ctx android.RegisterMutatorsContext) {
+	ctx.BottomUp("fs_collect_deps", collectDepsMutator).Parallel()
+}
+
+var depCandidates []string
+
+// These deps are added according to the cuttlefish system image bp.
+var fsDeps = []string{
+	"android_vintf_manifest",
+	"com.android.apex.cts.shim.v1_prebuilt",
+	"dex_bootjars",
+	"framework_compatibility_matrix.device.xml",
+	"idc_data",
+	"init.environ.rc-soong",
+	"keychars_data",
+	"keylayout_data",
+	"libclang_rt.asan",
+	"libcompiler_rt",
+	"libdmabufheap",
+	"libgsi",
+	"llndk.libraries.txt",
+	"logpersist.start",
+	"preloaded-classes",
+	"public.libraries.android.txt",
+	"update_engine_sideload",
+}
+
+func collectDepsMutator(mctx android.BottomUpMutatorContext) {
+	if len(depCandidates) == 0 {
+		partitionVars := mctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse
+		depCandidates = slices.Concat(partitionVars.ProductPackages, partitionVars.ProductPackagesDebug)
+	}
+	m := mctx.Module()
+	if slices.Contains(depCandidates, m.Name()) {
+		if !installInSystem(mctx, m) {
+			fsDeps = append(fsDeps, m.Name())
+		}
+	}
 }
 
 type filesystemCreatorProps struct {
@@ -228,6 +273,11 @@ func (f *filesystemCreator) GenerateAndroidBuildActions(ctx android.ModuleContex
 	}
 	f.HideFromMake()
 
+	content := generateBpContent("system")
+	generatedBp := android.PathForOutput(ctx, "soong_generated_product_config.bp")
+	android.WriteFileRule(ctx, generatedBp, content)
+	ctx.Phony("product_config_to_bp", generatedBp)
+
 	var diffTestFiles []android.Path
 	for _, partitionType := range f.properties.Generated_partition_types {
 		diffTestFiles = append(diffTestFiles, f.createDiffTest(ctx, partitionType))
@@ -236,4 +286,33 @@ func (f *filesystemCreator) GenerateAndroidBuildActions(ctx android.ModuleContex
 		diffTestFiles = append(diffTestFiles, createFailingCommand(ctx, fmt.Sprintf("Couldn't build %s partition", partitionType)))
 	}
 	ctx.Phony("soong_generated_filesystem_tests", diffTestFiles...)
+}
+
+func installInSystem(ctx android.BottomUpMutatorContext, m android.Module) bool {
+	return m.PartitionTag(ctx.DeviceConfig()) == "system" && !m.InstallInData() &&
+		!m.InstallInTestcases() && !m.InstallInSanitizerDir() && !m.InstallInVendorRamdisk() &&
+		!m.InstallInDebugRamdisk() && !m.InstallInRecovery() && !m.InstallInOdm() &&
+		!m.InstallInVendor()
+}
+
+// TODO: assemble baseProps and fsProps here
+func generateBpContent(partition string) string {
+	// Currently only system partition is supported
+	if partition != "system" {
+		return ""
+	}
+	depProps := &android.PackagingProperties{
+		Deps: android.NewSimpleConfigurable(android.SortedUniqueStrings(fsDeps)),
+	}
+	result, _ := proptools.RepackProperties([]interface{}{depProps})
+	file := &parser.File{
+		Defs: []parser.Definition{
+			&parser.Module{
+				Type: "module",
+				Map:  *result,
+			},
+		},
+	}
+	bytes, _ := parser.Print(file)
+	return strings.TrimSpace(string(bytes))
 }
