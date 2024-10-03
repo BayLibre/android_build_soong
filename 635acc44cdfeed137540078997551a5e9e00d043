@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a20ef5b_1432ddfd",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-03T22:51:55Z",
+      "side": 1,
+      "message": "nit: WDYT about creating a phony target per partition? Although this would be a no-op for now..",
+      "revId": "635acc44cdfeed137540078997551a5e9e00d043",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
