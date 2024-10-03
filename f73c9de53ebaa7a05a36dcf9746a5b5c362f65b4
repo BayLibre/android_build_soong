@@ -34,6 +34,24 @@
       "parentUuid": "06d2b954_494b9caf",
       "revId": "f73c9de53ebaa7a05a36dcf9746a5b5c362f65b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e7328ca_92a88a43",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2024-10-03T00:07:16Z",
+      "side": 1,
+      "message": "I had a change to switch the host tests to `-Og`, but it got reverted: https://r.android.com/2695387. There are some tests that relies on `-O0`. We should try to re-land this change.",
+      "parentUuid": "3a164f3e_59fff1cb",
+      "revId": "f73c9de53ebaa7a05a36dcf9746a5b5c362f65b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
