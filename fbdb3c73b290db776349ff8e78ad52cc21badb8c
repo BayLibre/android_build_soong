@@ -201,6 +201,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87627bba_643b992a",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-03T17:57:13Z",
+      "side": 1,
+      "message": "I think `ApexInfoProvider` relies on `AllApexInfoProvider`, which is currently set using the topDown `apexInfo` mutator. top down mutators are currently in a state of flux and are being migrated to transition mutators.\n\nWhen `apexInfo` mutator becomes a transition mutator, I think we can propagate this information using a configuration transition. But configuration transitions have some complexity, and propagating the information up from the java library and doing the check on the top-level apex seems like the simpler solution.\n\nIt does require more effort from module authors to set `system_ext_specific` to true on the java library, (and soong will raise an error if they dont), but I think it is worth the additional effort.",
+      "parentUuid": "5d4186c0_dc807d50",
+      "range": {
+        "startLine": 496,
+        "startChar": 13,
+        "endLine": 496,
+        "endChar": 58
+      },
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "432e7dae_ccbbc3b0",
@@ -250,6 +274,24 @@
       "side": 1,
       "message": "I see. Thanks for the explanation. Another idea is to add a bottom up mutator to add system server jars as dependencies of this singleton module and access them in `GenerateAndroidBuildActions` through `ctx.WalkDeps`. WDYT?",
       "parentUuid": "a9f2e170_0ea4d52f",
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2733d53e_67d88381",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-03T17:57:13Z",
+      "side": 1,
+      "message": "I think that is a great idea! But it looks like creating the dependency requires us to add this module to the visibility of the system server jars. I am running into build errors like such\n```\nFAILED: out/soong/build.aosp_cf_x86_64_phone.ninja                                                                                                                                                                                                                              \ncd \"$(dirname \"out/host/linux-x86/bin/soong_build\")\" \u0026\u0026 BUILDER\u003d\"$PWD/$(basename \"out/host/linux-x86/bin/soong_build\")\" \u0026\u0026 cd / \u0026\u0026 env -i  \"$BUILDER\"     --top \"$TOP\"     --soong_out \"out/soong\"     --out \"out\"     --soong_variables out/soong/soong.aosp_cf_x86_64_phone.variables -o out/soong/build.aosp_cf_x86_64_phone.ninja -l out/.module_paths/Android.bp.list --available_env out/soong/soong.environment.available --used_env out/soong/soong.environment.used.aosp_cf_x86_64_phone.build Android.bp\nerror: build/soong/Android.bp:135:1: module \"dexpreopt_systemserver_check\" variant \"android_common\": depends on //packages/modules/Bluetooth/service:service-bluetooth which is not visible to this module                                                                      \nYou may need to add \"//build/soong\" to its visibility                                                                                                                                                                                                                           \nerror: build/soong/Android.bp:135:1: module \"dexpreopt_systemserver_check\" variant \"android_common\": depends on //packages/modules/Uwb/service:service-uwb which is not visible to this module                                                                                  \nYou may need to add \"//build/soong\" to its visibility                                                                                                                                                                                                                           \nerror: build/soong/Android.bp:135:1: module \"dexpreopt_systemserver_check\" variant \"android_common\": depends on //packages/modules/Wifi/service:service-wifi which is not visible to this module                                                                                \nYou may need to add \"//build/soong\" to its visibility                                                                                                                                                                                                                           \nerror: build/soong/Android.bp:135:1: module \"dexpreopt_systemserver_check\" variant \"android_common\": depends on //packages/modules/Uwb/ranging/service:service-ranging which is not visible to this module                                                                      \nYou may need to add \"//build/soong\" to its visibility\n\n```\n\nWould it be ok if we defer this option to a followup cleanup?",
+      "parentUuid": "28df2e02_86ce1755",
       "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
