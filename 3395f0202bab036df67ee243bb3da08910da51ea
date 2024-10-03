@@ -52,6 +52,23 @@
       "parentUuid": "4eba4dd9_03c57fb7",
       "revId": "3395f0202bab036df67ee243bb3da08910da51ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "080d0651_f8b9e0aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004907
+      },
+      "writtenOn": "2024-10-03T15:24:28Z",
+      "side": 1,
+      "message": "Colin: what did you think about my explanation? If we really don\u0027t want to introduce something like `dsts` I can rework my copybara script to do its best and throw an error if it finds something it can\u0027t express and then we can figure out how to deal with it later. \n\nLet me know.",
+      "revId": "3395f0202bab036df67ee243bb3da08910da51ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
