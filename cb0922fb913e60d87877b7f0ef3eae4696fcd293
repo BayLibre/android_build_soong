@@ -16,6 +16,24 @@
       "message": "EqualModules doesn\u0027t seem necessary here, you control both walkPath and parentAndroidModule, can\u0027t you ensure that they are both proxies?",
       "revId": "cb0922fb913e60d87877b7f0ef3eae4696fcd293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a09a17b2_738ecd9d",
+        "filename": "android/base_module_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-10-03T21:48:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d893463_9d7b47a3",
+      "revId": "cb0922fb913e60d87877b7f0ef3eae4696fcd293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
