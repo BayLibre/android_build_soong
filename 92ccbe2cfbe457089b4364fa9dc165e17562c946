@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ccda8e7_74385fb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-04T18:20:02Z",
+      "side": 1,
+      "message": "This is a resubmission with the addition of calling `HideFromMake()` and `UncheckableModule()` on the created filesystem modules, so that they aren\u0027t built unless explicitly requested. \n\nI\u0027m also doing an abtd run on the build that failed last time: https://android-build.corp.google.com/builds/abtd/run/L20100030006888942",
+      "revId": "92ccbe2cfbe457089b4364fa9dc165e17562c946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
