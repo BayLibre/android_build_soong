@@ -225,6 +225,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f7b603b_be70b3bf",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-04T09:23:17Z",
+      "side": 1,
+      "message": "Alright, sounds reasonable.",
+      "parentUuid": "87627bba_643b992a",
+      "range": {
+        "startLine": 496,
+        "startChar": 13,
+        "endLine": 496,
+        "endChar": 58
+      },
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "432e7dae_ccbbc3b0",
@@ -292,6 +316,24 @@
       "side": 1,
       "message": "I think that is a great idea! But it looks like creating the dependency requires us to add this module to the visibility of the system server jars. I am running into build errors like such\n```\nFAILED: out/soong/build.aosp_cf_x86_64_phone.ninja                                                                                                                                                                                                                              \ncd \"$(dirname \"out/host/linux-x86/bin/soong_build\")\" \u0026\u0026 BUILDER\u003d\"$PWD/$(basename \"out/host/linux-x86/bin/soong_build\")\" \u0026\u0026 cd / \u0026\u0026 env -i  \"$BUILDER\"     --top \"$TOP\"     --soong_out \"out/soong\"     --out \"out\"     --soong_variables out/soong/soong.aosp_cf_x86_64_phone.variables -o out/soong/build.aosp_cf_x86_64_phone.ninja -l out/.module_paths/Android.bp.list --available_env out/soong/soong.environment.available --used_env out/soong/soong.environment.used.aosp_cf_x86_64_phone.build Android.bp\nerror: build/soong/Android.bp:135:1: module \"dexpreopt_systemserver_check\" variant \"android_common\": depends on //packages/modules/Bluetooth/service:service-bluetooth which is not visible to this module                                                                      \nYou may need to add \"//build/soong\" to its visibility                                                                                                                                                                                                                           \nerror: build/soong/Android.bp:135:1: module \"dexpreopt_systemserver_check\" variant \"android_common\": depends on //packages/modules/Uwb/service:service-uwb which is not visible to this module                                                                                  \nYou may need to add \"//build/soong\" to its visibility                                                                                                                                                                                                                           \nerror: build/soong/Android.bp:135:1: module \"dexpreopt_systemserver_check\" variant \"android_common\": depends on //packages/modules/Wifi/service:service-wifi which is not visible to this module                                                                                \nYou may need to add \"//build/soong\" to its visibility                                                                                                                                                                                                                           \nerror: build/soong/Android.bp:135:1: module \"dexpreopt_systemserver_check\" variant \"android_common\": depends on //packages/modules/Uwb/ranging/service:service-ranging which is not visible to this module                                                                      \nYou may need to add \"//build/soong\" to its visibility\n\n```\n\nWould it be ok if we defer this option to a followup cleanup?",
       "parentUuid": "28df2e02_86ce1755",
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19565db0_9ccff4a6",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-04T09:23:17Z",
+      "side": 1,
+      "message": "Thanks for trying this! The need for visibility looks weird. [`dex_bootjars`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/Android.bp;l\u003d116;drc\u003dda7ba6e88410c98b4fbbf917bef5bfb81e4a9cc3) is also defined in `//build/soong` and it can [add dependencies on boot jars and apexes](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/dexpreopt_bootjars.go;l\u003d523-532;drc\u003d5351cf28d28cac5a585ab93a63f17c59a2d80ba4) without a problem. Do you know how is that achieved?",
+      "parentUuid": "2733d53e_67d88381",
       "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
