@@ -1431,6 +1431,8 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		IsHost:                  false,
 		LocalCertificate:        a.certificate.AndroidMkString(),
 		IsUnitTest:              Bool(a.testProperties.Test_options.Unit_test),
+		TestcaseDir:             android.PathForModuleInstall(ctx, a.installApkName),
+		TestcaseArchDir:         android.PathForModuleInstall(ctx, a.installApkName, ctx.DeviceConfig().DeviceArch()),
 	})
 	android.SetProvider(ctx, android.TestOnlyProviderKey, android.TestModuleInformation{
 		TestOnly:       true,
@@ -1491,6 +1493,21 @@ func (a *AndroidTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 		a.setApiMapper(true)
 	}
 	a.AndroidApp.DepsMutator(ctx)
+
+	for _, suiteName := range a.testProperties.Test_suites {
+		// Not all suite-names will be valid test_module_tags
+		if ctx.OtherModuleExists(suiteName) {
+			// androidx.test.rules is an existing name for a suite and a module (android_library_import).
+			// If we add ReverseDep, we get a loop :(
+			// Probably a typo on: module CtsNetTestCasesLegacyPermission22
+			if suiteName == "androidx.test.rules" {
+				continue
+			}
+
+			ctx.AddReverseDependency(ctx.Module(), tradefed.TestSuiteTag{}, suiteName)
+		}
+	}
+
 }
 
 func (a *AndroidTest) OverridablePropertiesDepsMutator(ctx android.BottomUpMutatorContext) {
