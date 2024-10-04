@@ -336,6 +336,24 @@
       "parentUuid": "2733d53e_67d88381",
       "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12b4b823_c2c86bfb",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-04T16:23:22Z",
+      "side": 1,
+      "message": "I believe `dex_bootjars` creates a dependency on the boot jars and not the system server jars. For bluetooth as an example,\n- `framework-bluetooth` has public visiblity. `framework-bluetooth.impl` has more [restricted visibility](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:packages/modules/Bluetooth/framework/Android.bp;l\u003d70-80;bpv\u003d1), but that is not an issue for `dex_bootjars` since it creates a dependency on the top-level java_sdk_library.\n- `service-bluetooth` is visible only to [packages/modules/Bluetooth/apex](https://source.corp.google.com/h/googleplex-android/platform/packages/modules/Bluetooth/+/b7aac22e127858325267accb21779db31707b519:service/Android.bp;l\u003d116;drc\u003d2256094a11f3be95b05719eb943cd83ecb6f086c;bpv\u003d1;bpt\u003d0)",
+      "parentUuid": "19565db0_9ccff4a6",
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
