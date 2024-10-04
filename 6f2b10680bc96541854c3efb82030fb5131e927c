@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d2d8650_b736445e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-04T05:09:39Z",
+      "side": 1,
+      "message": "The presubmit errors seem to be flaky. I ran one of the tests without this CL stack, and they run into the same error https://android-build.corp.google.com/builds/abtd/run/L68000030006848303",
+      "revId": "6f2b10680bc96541854c3efb82030fb5131e927c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
