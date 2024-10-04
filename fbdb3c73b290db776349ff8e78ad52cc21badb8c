@@ -372,6 +372,24 @@
       "parentUuid": "12b4b823_c2c86bfb",
       "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01e6a29a_b15af68a",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-04T16:33:20Z",
+      "side": 1,
+      "message": "Thanks! I have created b/371569094 to track this cleanup.",
+      "parentUuid": "550e1a5d_1f1d9d80",
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
