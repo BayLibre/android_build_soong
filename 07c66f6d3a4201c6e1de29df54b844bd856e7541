@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1b6946b_b6460ed1",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-04T17:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93b4d998_3de6b32d",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "07c66f6d3a4201c6e1de29df54b844bd856e7541",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1bf1962_ffc3b43f",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9e0318_f4c95df4",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-04T17:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1bf1962_ffc3b43f",
+      "range": {
+        "startLine": 160,
+        "startChar": 15,
+        "endLine": 160,
+        "endChar": 30
+      },
+      "revId": "07c66f6d3a4201c6e1de29df54b844bd856e7541",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20a5fdf0_5c4981f9",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-10-04T08:17:31Z",
       "side": 1,
       "message": "Need to skip this if SKIP_ABI_CHECKS\u003dtrue.\n\nCommands to test:\n\n```\nlunch aosp_arm64-trunk_staging-userdebug\nSKIP_ABI_CHECKS\u003dtrue make out/target/product/generic_arm64/lsdump_paths.txt\n# lsdump_paths.txt should be empty\n```",
+      "range": {
+        "startLine": 285,
+        "startChar": 21,
+        "endLine": 285,
+        "endChar": 46
+      },
+      "revId": "07c66f6d3a4201c6e1de29df54b844bd856e7541",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f769b5_6feef754",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-04T17:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20a5fdf0_5c4981f9",
       "range": {
         "startLine": 285,
         "startChar": 21,
