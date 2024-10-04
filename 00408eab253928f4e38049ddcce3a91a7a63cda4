@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3de47f0_6cdb866d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2024-10-04T23:46:40Z",
+      "side": 1,
+      "message": "Interesting, maybe I never implemented fat binaries for Golang binaries -- all of the C++ tools under prebuilts/build-tools/darwin-x86 are fat, but the Go tools are only x86_64. It looks like rust doesn\u0027t have fat binaries either.\n\nWhether that\u0027s super important likely depends on how the x86_64 deprecation actually goes. If the compatibility layers exist beyond the point we can remove x86_64 support, then we\u0027re probably fine without it. It helps that none of the externally shipping tools are written in Go.",
+      "range": {
+        "startLine": 13,
+        "startChar": 56,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "00408eab253928f4e38049ddcce3a91a7a63cda4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
