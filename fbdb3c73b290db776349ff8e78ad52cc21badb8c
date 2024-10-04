@@ -390,6 +390,24 @@
       "parentUuid": "550e1a5d_1f1d9d80",
       "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e74f21c_13a926e8",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-04T19:00:27Z",
+      "side": 1,
+      "message": "Colin pointed out that visibility can be excluded using `ExcludeFromVisibilityEnforcementTag` on the dep tag. Since this is a singleton module used purely for validation, I think it qualifies for skipping visibility.",
+      "parentUuid": "01e6a29a_b15af68a",
+      "revId": "fbdb3c73b290db776349ff8e78ad52cc21badb8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
