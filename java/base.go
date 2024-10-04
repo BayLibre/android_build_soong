@@ -1626,19 +1626,6 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		return
 	}
 
-	if j.ravenizer.enabled {
-		ravenizerInput := outputFile
-		ravenizerOutput := android.PathForModuleOut(ctx, "ravenizer", jarName)
-		ravenizerArgs := ""
-		if proptools.Bool(j.properties.Ravenizer.Strip_mockito) {
-			ravenizerArgs = "--strip-mockito"
-		}
-		TransformRavenizer(ctx, ravenizerOutput, ravenizerInput, ravenizerArgs)
-		outputFile = ravenizerOutput
-		localImplementationJars = android.Paths{ravenizerOutput}
-		completeStaticLibsImplementationJars = android.NewDepSet(android.PREORDER, localImplementationJars, nil)
-	}
-
 	if j.shouldApiMapper() {
 		inputFile := outputFile
 		apiMapperFile := android.PathForModuleOut(ctx, "apimapper", jarName)
@@ -1734,6 +1721,19 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		TransformJarsToJar(ctx, combinedJar, "for resources", implementationAndResourcesJarsToCombine, manifest,
 			false, nil, nil)
 		outputFile = combinedJar
+	}
+
+	if j.ravenizer.enabled {
+		ravenizerInput := outputFile
+		ravenizerOutput := android.PathForModuleOut(ctx, "ravenizer", jarName)
+		ravenizerArgs := ""
+		if proptools.Bool(j.properties.Ravenizer.Strip_mockito) {
+			ravenizerArgs = "--strip-mockito"
+		}
+		TransformRavenizer(ctx, ravenizerOutput, ravenizerInput, ravenizerArgs)
+		outputFile = ravenizerOutput
+		localImplementationJars = android.Paths{ravenizerOutput}
+		completeStaticLibsImplementationJars = android.NewDepSet(android.PREORDER, localImplementationJars, nil)
 	}
 
 	j.implementationAndResourcesJar = outputFile
