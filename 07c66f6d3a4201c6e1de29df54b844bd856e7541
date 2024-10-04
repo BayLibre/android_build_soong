@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b4d998_3de6b32d",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-10-04T08:17:31Z",
+      "side": 1,
+      "message": "```suggestion\n\t// Set by `sabiTransitionMutator` if this module is a shared library that needs ABI check, or a static\n```",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "07c66f6d3a4201c6e1de29df54b844bd856e7541",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1bf1962_ffc3b43f",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-10-04T08:17:31Z",
+      "side": 1,
+      "message": "```suggestion\n// Called from sabiTransitionMutator to check whether ABI dumps should be created for this module.\n```",
+      "range": {
+        "startLine": 160,
+        "startChar": 15,
+        "endLine": 160,
+        "endChar": 30
+      },
+      "revId": "07c66f6d3a4201c6e1de29df54b844bd856e7541",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a5fdf0_5c4981f9",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-10-04T08:17:31Z",
+      "side": 1,
+      "message": "Need to skip this if SKIP_ABI_CHECKS\u003dtrue.\n\nCommands to test:\n\n```\nlunch aosp_arm64-trunk_staging-userdebug\nSKIP_ABI_CHECKS\u003dtrue make out/target/product/generic_arm64/lsdump_paths.txt\n# lsdump_paths.txt should be empty\n```",
+      "range": {
+        "startLine": 285,
+        "startChar": 21,
+        "endLine": 285,
+        "endChar": 46
+      },
+      "revId": "07c66f6d3a4201c6e1de29df54b844bd856e7541",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
