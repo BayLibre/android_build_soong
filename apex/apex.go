@@ -54,7 +54,7 @@ func registerApexBuildComponents(ctx android.RegistrationContext) {
 }
 
 func RegisterPreDepsMutators(ctx android.RegisterMutatorsContext) {
-	ctx.BottomUp("apex_vndk_deps", apexVndkDepsMutator).Parallel()
+	ctx.BottomUp("apex_vndk_deps", apexVndkDepsMutator).Parallel().UsesReverseDependencies()
 }
 
 func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
@@ -66,7 +66,7 @@ func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 	// it should create a platform variant.
 	ctx.BottomUp("mark_platform_availability", markPlatformAvailability).Parallel()
 	ctx.Transition("apex", &apexTransitionMutator{})
-	ctx.BottomUp("apex_directly_in_any", apexDirectlyInAnyMutator).Parallel()
+	ctx.BottomUp("apex_directly_in_any", apexDirectlyInAnyMutator).Parallel().MutatesDependencies()
 	ctx.BottomUp("apex_dcla_deps", apexDCLADepsMutator).Parallel()
 }
 
