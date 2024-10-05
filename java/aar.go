@@ -483,7 +483,7 @@ func (a *aapt) buildActions(ctx android.ModuleContext, opts aaptBuildActionOptio
 	}
 
 	linkFlags = append(linkFlags, "--no-static-lib-packages")
-	if a.isLibrary && a.useResourceProcessorBusyBox(ctx) {
+	if a.isLibrary {
 		// When building an android_library using ResourceProcessorBusyBox pass --merge-only to skip resource
 		// references validation until the final app link step when all static libraries are present.
 		linkFlags = append(linkFlags, "--merge-only")
