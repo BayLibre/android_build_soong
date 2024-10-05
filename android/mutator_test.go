@@ -137,7 +137,7 @@ func TestModuleString(t *testing.T) {
 				ctx.TopDown("rename_top_down", func(ctx TopDownMutatorContext) {
 					moduleStrings = append(moduleStrings, ctx.Module().String())
 					ctx.Rename(ctx.Module().base().Name() + "_renamed1")
-				})
+				}).UsesRename()
 			})
 
 			ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
@@ -162,7 +162,7 @@ func TestModuleString(t *testing.T) {
 				ctx.BottomUp("rename_bottom_up", func(ctx BottomUpMutatorContext) {
 					moduleStrings = append(moduleStrings, ctx.Module().String())
 					ctx.Rename(ctx.Module().base().Name() + "_renamed2")
-				})
+				}).UsesRename()
 				ctx.BottomUp("final", func(ctx BottomUpMutatorContext) {
 					moduleStrings = append(moduleStrings, ctx.Module().String())
 				})
