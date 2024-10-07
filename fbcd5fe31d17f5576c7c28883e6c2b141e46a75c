@@ -16,6 +16,24 @@
       "message": "Can we make the error message to expose the name of the apex? I think it may be a bit confusing to the user if the javalib module belongs to multiple apexes and not all of them are installed in the same partition.",
       "revId": "fbcd5fe31d17f5576c7c28883e6c2b141e46a75c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b7cbfd_beb3ebe6",
+        "filename": "apex/apex.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1942,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-07T21:51:33Z",
+      "side": 1,
+      "message": "Since the error is raised using `ctx.ModuleErrorf`, I think the apex name will be included in the error message.\n\n(btw, I think apex system server jars have a 1:1 relationship with apexes. These special jars cannot be included in multiple apexes)",
+      "parentUuid": "596b23d2_b2c14067",
+      "revId": "fbcd5fe31d17f5576c7c28883e6c2b141e46a75c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
