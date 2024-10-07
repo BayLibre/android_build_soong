@@ -388,6 +388,7 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 		if pi, ok := ctx.OtherModuleDependencyTag(child).(PackagingItem); !ok || !pi.IsPackagingItem() {
 			return
 		}
+		var psToAdd []PackagingSpec
 		for _, ps := range OtherModuleProviderOrDefault(
 			ctx, child, InstallFilesProvider).TransitivePackagingSpecs.ToList() {
 			if !filterArch(ps) {
@@ -399,11 +400,15 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 					continue
 				}
 			}
-			all = append(all, ps)
+			psToAdd = append(psToAdd, ps)
 			if ps.overrides != nil {
 				overridden = append(overridden, *ps.overrides...)
 			}
 		}
+		if psToAdd == nil {
+			ctx.ModuleErrorf("%q does not have files to install to %s image.", child, ctx.ModuleName())
+		}
+		all = append(all, psToAdd...)
 	})
 
 	// all minus packaging specs that are overridden
