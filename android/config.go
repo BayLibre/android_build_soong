@@ -2105,3 +2105,19 @@ func (c *config) BoardAvbEnable() bool {
 func (c *config) BoardAvbSystemAddHashtreeFooterArgs() []string {
 	return c.productVariables.BoardAvbSystemAddHashtreeFooterArgs
 }
+
+func (c *config) DeviceMatrixFile() []string {
+	return c.productVariables.DeviceMatrixFile
+}
+
+func (c *config) ProductManifestFiles() []string {
+	return c.productVariables.ProductManifestFiles
+}
+
+func (c *config) SystemManifestFile() []string {
+	return c.productVariables.SystemManifestFile
+}
+
+func (c *config) SystemExtManifestFiles() []string {
+	return c.productVariables.SystemExtManifestFiles
+}

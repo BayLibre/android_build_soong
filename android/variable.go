@@ -522,6 +522,11 @@ type ProductVariables struct {
 	DeviceProductCompatibilityMatrixFile   []string `json:",omitempty"`
 
 	PartitionVarsForSoongMigrationOnlyDoNotUse PartitionVariables
+
+	DeviceMatrixFile       []string `json:",omitempty"`
+	ProductManifestFiles   []string `json:",omitempty"`
+	SystemManifestFile     []string `json:",omitempty"`
+	SystemExtManifestFiles []string `json:",omitempty"`
 }
 
 type PartitionQualifiedVariablesType struct {
