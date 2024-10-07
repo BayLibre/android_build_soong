@@ -16,6 +16,24 @@
       "message": "This isn\u0027t right, the implementation jars have already been combined into the implementationAndResourceJars, so this is going to put resources into the exported implementation jars.\n\nIs it possible to run ravenizer separately on the resources, similar to the way jarjar works on lines 1607-1623?",
       "revId": "6aec4123e18bcdbe4fc69127a50de4ec3c1a4e2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7abe298d_f4f432dc",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1735,
+      "author": {
+        "id": 1891746
+      },
+      "writtenOn": "2024-10-07T18:03:59Z",
+      "side": 1,
+      "message": "Is it OK to just remove line 1735 and 1736? By doing so, we are only modifying the exported implementationAndResourcesJar in line 1739. WDYT?",
+      "parentUuid": "6a1198ca_9bd561ed",
+      "revId": "6aec4123e18bcdbe4fc69127a50de4ec3c1a4e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
