@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596b23d2_b2c14067",
+        "filename": "apex/apex.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1942,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-07T21:46:51Z",
+      "side": 1,
+      "message": "Can we make the error message to expose the name of the apex? I think it may be a bit confusing to the user if the javalib module belongs to multiple apexes and not all of them are installed in the same partition.",
+      "revId": "fbcd5fe31d17f5576c7c28883e6c2b141e46a75c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
