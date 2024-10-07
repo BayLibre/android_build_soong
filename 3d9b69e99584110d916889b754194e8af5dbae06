@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe153a9d_a8169962",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-07T21:53:59Z",
+      "side": 1,
+      "message": "The presubmit errors look unrelated. I dont think we run boot tests on soong system images today.",
+      "revId": "3d9b69e99584110d916889b754194e8af5dbae06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
