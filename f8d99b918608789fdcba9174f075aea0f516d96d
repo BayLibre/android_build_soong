@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1606292f_6dfc8014",
+        "filename": "cc/sabi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-10-07T04:22:45Z",
+      "side": 1,
+      "message": "this can just be `m`, right?",
+      "range": {
+        "startLine": 230,
+        "startChar": 34,
+        "endLine": 230,
+        "endChar": 56
+      },
+      "revId": "f8d99b918608789fdcba9174f075aea0f516d96d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c496b8_835c7c4a",
+        "filename": "cc/sabi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-10-07T04:22:45Z",
+      "side": 1,
+      "message": "QQ, I\u0027m not familiar with the new \"Transition\" mutator interfaces. Does an empty (\"\") variant here means to skip the mutator?",
+      "range": {
+        "startLine": 238,
+        "startChar": 17,
+        "endLine": 238,
+        "endChar": 19
+      },
+      "revId": "f8d99b918608789fdcba9174f075aea0f516d96d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
