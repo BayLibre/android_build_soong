@@ -70,6 +70,24 @@
       "parentUuid": "cea2bbce_82503c90",
       "revId": "6aec4123e18bcdbe4fc69127a50de4ec3c1a4e2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e88b686_6b8ed2be",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1735,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-07T20:30:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e00b4a2d_6e826a31",
+      "revId": "6aec4123e18bcdbe4fc69127a50de4ec3c1a4e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
