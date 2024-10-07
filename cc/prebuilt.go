@@ -115,10 +115,10 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 
 	// TODO(ccross): verify shared library dependencies
 	srcs := p.prebuiltSrcs(ctx)
-	stubInfo := addStubDependencyProviders(ctx)
+	stubInfo := AddStubDependencyProviders(ctx)
 
 	// Stub variants will create a stub .so file from stub .c files
-	if p.buildStubs() && objs.objFiles != nil {
+	if p.BuildStubs() && objs.objFiles != nil {
 		// TODO (b/275273834): Make objs.objFiles == nil a hard error when the symbol files have been added to module sdk.
 
 		// The map.txt files of libclang_rt.* contain version information, but the checked in .so files do not.
@@ -283,7 +283,7 @@ func (p *prebuiltLibraryLinker) disablePrebuilt() {
 }
 
 // Implements versionedInterface
-func (p *prebuiltLibraryLinker) implementationModuleName(name string) string {
+func (p *prebuiltLibraryLinker) ImplementationModuleName(name string) string {
 	return android.RemoveOptionalPrebuiltPrefix(name)
 }
 
@@ -313,8 +313,8 @@ func NewPrebuiltLibrary(hod android.HostOrDeviceSupported, srcsProperty string) 
 }
 
 func (p *prebuiltLibraryLinker) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
-	if p.buildStubs() && p.stubsVersion() != "" {
-		return p.compileModuleLibApiStubs(ctx, flags, deps)
+	if p.BuildStubs() && p.StubsVersion() != "" {
+		return CompileModuleLibApiStubs(ctx, flags, deps)
 	}
 	return Objects{}
 }
