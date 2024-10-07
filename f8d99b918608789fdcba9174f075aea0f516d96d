@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3799aeab_14983d94",
+        "filename": "cc/sabi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-07T04:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1606292f_6dfc8014",
+      "range": {
+        "startLine": 230,
+        "startChar": 34,
+        "endLine": 230,
+        "endChar": 56
+      },
+      "revId": "f8d99b918608789fdcba9174f075aea0f516d96d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1c496b8_835c7c4a",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-07T04:22:45Z",
       "side": 1,
       "message": "QQ, I\u0027m not familiar with the new \"Transition\" mutator interfaces. Does an empty (\"\") variant here means to skip the mutator?",
+      "range": {
+        "startLine": 238,
+        "startChar": 17,
+        "endLine": 238,
+        "endChar": 19
+      },
+      "revId": "f8d99b918608789fdcba9174f075aea0f516d96d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "629a01d0_b9f35147",
+        "filename": "cc/sabi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-07T04:31:32Z",
+      "side": 1,
+      "message": "See https://cs.android.com/android/platform/superproject/main/+/main:build/blueprint/transition.go;l\u003d23;drc\u003d04ca6dc70ff1d021796faa7db90b05f54295d58c for how transition mutators work.  `Split` implements the variants that should be created for the module based solely on its own properties, and then additional variants can be created from incoming dependencies via the `OutgoingTransition` and `IncomingTransition` methods.\n\nIn this case, no modules get any variations based on their own properties, because we only use the `\"sabi\"` variation for static dependencies, the top level shared library that enables sabi still uses the `\"\"` variation.\n\n`\"\"` doesn\u0027t skip anything, it still calls `OutgoingTransition` for outgoing dependencies, and it still calls `Mutate` with `\"\"` as the variation.",
+      "parentUuid": "a1c496b8_835c7c4a",
       "range": {
         "startLine": 238,
         "startChar": 17,
