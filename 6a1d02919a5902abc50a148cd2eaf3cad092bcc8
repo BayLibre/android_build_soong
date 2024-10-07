@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2d8591_c34ab135",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-07T21:18:35Z",
+      "side": 1,
+      "message": "@spandandas@google.com\n\nDiff between `out/soong/module_bp_java_deps.json`: [gpaste](https://paste.googleplex.com/6606354845532160)\n\nAll shown diffs (that are being removed) are sdk_lib -\u003e impl submodule dependencies. I believe that this would not matter given that modules do not depend on the top level sdk_library anymore.\n\nThe presubmit error seems to be unrelated to this change; the same build failures are observed in go/ab in the ToT.",
+      "revId": "6a1d02919a5902abc50a148cd2eaf3cad092bcc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
