@@ -53,6 +53,9 @@ type PlatformSanitizeable interface {
 
 	// SanitizableDepTagChecker returns a SantizableDependencyTagChecker function type.
 	SanitizableDepTagChecker() SantizableDependencyTagChecker
+
+	// ForceDisableSanitizers sets the ForceDisable sanitize property
+	ForceDisableSanitizers()
 }
 
 // SantizableDependencyTagChecker functions check whether or not a dependency
@@ -153,6 +156,27 @@ type LinkableInterface interface {
 	//StubsVersion returns the stubs version for this module.
 	StubsVersion() string
 
+	//
+	SetAllStubsVersions(versions []string)
+	StubsVersions(ctx android.BaseModuleContext) []string
+	AllStubsVersions() []string
+	SetStubsVersion(version string)
+	SetBuildStubs(isLatest bool)
+	BuildStubs() bool
+	IsStubsImplementationRequired() bool
+	ImplementationModuleNameForMake(ctx android.BaseModuleContext) string
+	HasStubsVariants() bool
+	SymbolsFile() *string
+	Multilib() string
+	GetAPIListCoverageXMLPath() android.ModuleOutPath
+	SetAPIListCoverageXMLPath(out android.ModuleOutPath)
+	SetVersionScriptPath(path android.OptionalPath)
+	SetSymbolFilePath(path android.Path)
+	GetSharedFlags() *SharedFlags
+
+	// SetStl sets the stl property. Only makes sense for CC modules. Does not panic if no STL is available.
+	SetStl(string)
+
 	// UseVndk returns true if the module is using VNDK libraries instead of the libraries in /system/lib or /system/lib64.
 	// "product" and "vendor" variant modules return true for this function.
 	// When BOARD_VNDK_VERSION is set, vendor variants of "vendor_available: true", "vendor: true",
@@ -181,7 +205,8 @@ type LinkableInterface interface {
 	MinSdkVersion() string
 	AlwaysSdk() bool
 	IsSdkVariant() bool
-
+	SetSdkVersion(string)
+	SetMinSdkVersion(version string)
 	SplitPerApiLevel() bool
 
 	// SetPreventInstall sets the PreventInstall property to 'true' for this module.
@@ -249,6 +274,9 @@ type LinkableInterface interface {
 
 	// FuzzModule returns the fuzz.FuzzModule associated with the module.
 	FuzzModuleStruct() fuzz.FuzzModule
+
+	ApexSdkVersion() android.ApiLevel
+	IsCrt() bool
 }
 
 var (

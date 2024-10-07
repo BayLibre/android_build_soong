@@ -133,8 +133,35 @@ type BaseProperties struct {
 	// Make this module available when building for recovery
 	Recovery_available *bool
 
-	// Minimum sdk version that the artifact should support when it runs as part of mainline modules(APEX).
+	// The API level that this module is built against. The APIs of this API level will be
+	// visible at build time, but use of any APIs newer than min_sdk_version will render the
+	// module unloadable on older devices.  In the future it will be possible to weakly-link new
+	// APIs, making the behavior match Java: such modules will load on older devices, but
+	// calling new APIs on devices that do not support them will result in a crash.
+	//
+	// This property has the same behavior as sdk_version does for Java modules. For those
+	// familiar with Android Gradle, the property behaves similarly to how compileSdkVersion
+	// does for Java code.
+	//
+	// In addition, setting this property causes two variants to be built, one for the platform
+	// and one for apps.
+	Sdk_version *string
+
+	// Minimum OS API level supported by this C or C++ module. This property becomes the value
+	// of the __ANDROID_API__ macro. When the C or C++ module is included in an APEX or an APK,
+	// this property is also used to ensure that the min_sdk_version of the containing module is
+	// not older (i.e. less) than this module's min_sdk_version. When not set, this property
+	// defaults to the value of sdk_version.  When this is set to "apex_inherit", this tracks
+	// min_sdk_version of the containing APEX. When the module
+	// is not built for an APEX, "apex_inherit" defaults to sdk_version.
 	Min_sdk_version *string
+
+	// Variant is an SDK variant created by sdkMutator
+	IsSdkVariant bool `blueprint:"mutated"`
+
+	// Set by factories of module types that can only be referenced from variants compiled against
+	// the SDK.
+	AlwaysSdk bool `blueprint:"mutated"`
 
 	HideFromMake   bool `blueprint:"mutated"`
 	PreventInstall bool `blueprint:"mutated"`
@@ -180,6 +207,9 @@ type Module struct {
 	apexSdkVersion android.ApiLevel
 
 	transitiveAndroidMkSharedLibs depset.DepSet[string]
+
+	// Shared flags among stubs build rules of this module
+	sharedFlags cc.SharedFlags
 }
 
 func (mod *Module) Header() bool {
@@ -345,7 +375,8 @@ func (mod *Module) IsVndkPrebuiltLibrary() bool {
 }
 
 func (mod *Module) IsVendorPublicLibrary() bool {
-	return mod.VendorProperties.IsVendorPublicLibrary
+	// Rust modules do not currently support vendor_public_library
+	return false
 }
 
 func (mod *Module) SdkAndPlatformVariantVisibleToMake() bool {
@@ -354,10 +385,12 @@ func (mod *Module) SdkAndPlatformVariantVisibleToMake() bool {
 }
 
 func (c *Module) IsVndkPrivate() bool {
+	// Rust modules do not currently support VNDK variants
 	return false
 }
 
 func (c *Module) IsLlndk() bool {
+	// Rust modules do not currently support LLNDK variants
 	return false
 }
 
@@ -366,35 +399,38 @@ func (mod *Module) KernelHeadersDecorator() bool {
 }
 
 func (m *Module) NeedsLlndkVariants() bool {
+	// Rust modules do not currently support LLNDK variants
 	return false
 }
 
 func (m *Module) NeedsVendorPublicLibraryVariants() bool {
+	// Rust modules do not currently support vendor_public_library
 	return false
 }
 
 func (mod *Module) HasLlndkStubs() bool {
+	// Rust modules do not currently support LLNDK stubs
 	return false
 }
 
 func (mod *Module) StubsVersion() string {
+	if lib, ok := mod.compiler.(libraryInterface); ok {
+		return lib.StubsVersion()
+	}
 	panic(fmt.Errorf("StubsVersion called on non-versioned module: %q", mod.BaseModuleName()))
+
 }
 
 func (mod *Module) SdkVersion() string {
-	return ""
+	return String(mod.Properties.Sdk_version)
 }
 
 func (mod *Module) AlwaysSdk() bool {
-	return false
+	return mod.Properties.AlwaysSdk
 }
 
 func (mod *Module) IsSdkVariant() bool {
-	return false
-}
-
-func (mod *Module) SplitPerApiLevel() bool {
-	return false
+	return mod.Properties.IsSdkVariant
 }
 
 func (mod *Module) XrefRustFiles() android.Paths {
@@ -527,6 +563,9 @@ func (mod *Module) ExportedCrateLinkDirs() []string {
 
 func (mod *Module) PreventInstall() bool {
 	return mod.Properties.PreventInstall
+}
+func (c *Module) ForceDisableSanitizers() {
+	c.sanitize.Properties.ForceDisable = true
 }
 
 func (mod *Module) MarkAsCoverageVariant(coverage bool) {
@@ -720,6 +759,95 @@ func (mod *Module) IsNdk(config android.Config) bool {
 }
 
 func (mod *Module) IsStubs() bool {
+	if lib, ok := mod.compiler.(libraryInterface); ok {
+		return lib.BuildStubs()
+	}
+	return false
+}
+
+func (mod *Module) HasStubsVariants() bool {
+	if lib, ok := mod.compiler.(libraryInterface); ok {
+		return lib.HasStubsVariants()
+	}
+	return false
+}
+
+func (mod *Module) IsStubsImplementationRequired() bool {
+	if lib, ok := mod.compiler.(libraryInterface); ok {
+		return lib.IsStubsImplementationRequired()
+	}
+	return false
+}
+
+func (mod *Module) ImplementationModuleNameForMake(ctx android.BaseModuleContext) string {
+	name := mod.BaseModuleName()
+	if versioned, ok := mod.compiler.(cc.VersionedInterface); ok {
+		name = versioned.ImplementationModuleName(name)
+	}
+	return name
+}
+
+func (mod *Module) Multilib() string {
+	return mod.Arch().ArchType.Multilib
+}
+
+func (mod *Module) GetAPIListCoverageXMLPath() android.ModuleOutPath {
+	if mod.compiler != nil {
+		if library, ok := mod.compiler.(libraryInterface); ok {
+			return library.getAPIListCoverageXMLPath()
+		}
+	}
+	panic(fmt.Errorf("GetAPIListCoverageXMLPath called on non-library module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SetAPIListCoverageXMLPath(out android.ModuleOutPath) {
+	if mod.compiler != nil {
+		if library, ok := mod.compiler.(libraryInterface); ok {
+			library.setAPIListCoverageXMLPath(out)
+			return
+		}
+	}
+	panic(fmt.Errorf("GetAPIListCoverageXMLPath called on non-library module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SetSymbolFilePath(path android.Path) {
+	if library, ok := mod.compiler.(*libraryDecorator); ok {
+		library.stubsSymbolFilePath = path
+		return
+	}
+	panic(fmt.Errorf("SetSymbolFilePath called on non-library module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SetVersionScriptPath(path android.OptionalPath) {
+	if library, ok := mod.compiler.(*libraryDecorator); ok {
+		library.versionScriptPath = path
+		return
+	}
+	panic(fmt.Errorf("SetVersionScriptPath called on non-library module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SymbolsFile() *string {
+	if library, ok := mod.compiler.(*libraryDecorator); ok {
+		return library.Properties.Stubs.Symbol_file
+	}
+	panic(fmt.Errorf("SymbolsFile called on non-library module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) GetSharedFlags() *cc.SharedFlags {
+	shared := &mod.sharedFlags
+	if shared.FlagsMap == nil {
+		shared.NumSharedFlags = 0
+		shared.FlagsMap = make(map[string]string)
+	}
+	return shared
+}
+
+func (mod *Module) ApexSdkVersion() android.ApiLevel {
+	return mod.apexSdkVersion
+}
+
+func (mod *Module) IsCrt() bool {
+	// Rust does not currently provide any crt modules.
 	return false
 }
 
@@ -851,6 +979,64 @@ func (mod *Module) nativeCoverage() bool {
 		return false
 	}
 	return mod.compiler != nil && mod.compiler.nativeCoverage()
+}
+
+func (mod *Module) SetStl(s string) {
+	// STL is a CC concept; do nothing for Rust
+}
+
+func (mod *Module) SetAllStubsVersions(versions []string) {
+	b, ok := mod.compiler.(libraryInterface)
+	if !ok {
+		panic("Called SetAllStubsVersions on Rust non-LibraryInterface")
+	}
+	b.SetAllStubsVersions(versions)
+}
+
+func (mod *Module) SetStubsVersion(version string) {
+	b, ok := mod.compiler.(libraryInterface)
+	if !ok {
+		panic("Called SetStubsVersion on Rust non-LibraryInterface")
+	}
+	b.SetStubsVersion(version)
+}
+
+func (mod *Module) canUseSdk() bool {
+	return mod.Os() == android.Android && mod.Target().NativeBridge == android.NativeBridgeDisabled &&
+		!mod.InVendorOrProduct() && !mod.InRamdisk() && !mod.InRecovery() && !mod.InVendorRamdisk()
+}
+
+func (mod *Module) SplitPerApiLevel() bool {
+	return mod.canUseSdk() && mod.IsCrt()
+}
+
+func (mod *Module) SetBuildStubs(isLatest bool) {
+	b, ok := mod.compiler.(libraryInterface)
+	if !ok {
+		panic("Called SetBuildStubs on Rust non-LibraryInterface")
+	}
+	b.SetBuildStubs(isLatest)
+}
+
+func (mod *Module) BuildStubs() bool {
+	if b, ok := mod.compiler.(libraryInterface); ok {
+		return b.BuildStubs()
+	}
+	panic("Called BuildStubs on Rust non-LibraryInterface")
+}
+
+func (mod *Module) AllStubsVersions() []string {
+	if b, ok := mod.compiler.(libraryInterface); ok {
+		return b.AllStubsVersions()
+	}
+	panic("Called AllStubsVersions on Rust non-LibraryInterface")
+}
+
+func (mod *Module) StubsVersions(ctx android.BaseModuleContext) []string {
+	if b, ok := mod.compiler.(libraryInterface); ok {
+		return b.StubsVersions(ctx)
+	}
+	panic("Called StubsVersions on Rust non-LibraryInterface")
 }
 
 func (mod *Module) EverInstallable() bool {
@@ -1154,6 +1340,21 @@ func (mod *Module) begin(ctx BaseModuleContext) {
 	if mod.sanitize != nil {
 		mod.sanitize.begin(ctx)
 	}
+
+	if mod.UseSdk() && mod.IsSdkVariant() {
+		sdkVersion := ""
+		if ctx.Device() {
+			sdkVersion = mod.SdkVersion()
+		}
+		version, err := cc.NativeApiLevelFromUser(ctx, sdkVersion)
+		if err != nil {
+			ctx.PropertyErrorf("sdk_version", err.Error())
+			mod.Properties.Sdk_version = nil
+		} else {
+			mod.Properties.Sdk_version = StringPtr(version.String())
+		}
+	}
+
 }
 
 func (mod *Module) Prebuilt() *android.Prebuilt {
@@ -1754,7 +1955,7 @@ func (mod *Module) HostToolPath() android.OptionalPath {
 var _ android.ApexModule = (*Module)(nil)
 
 // If a module is marked for exclusion from apexes, don't provide apex variants.
-// TODO(b/362509506): remove this once stubs are properly supported by rust_ffi targets.
+// TODO(b/362509506): remove this once all apex_exclude usages are removed.
 func (m *Module) CanHaveApexVariants() bool {
 	if m.ApexExclude() {
 		return false
@@ -1765,6 +1966,14 @@ func (m *Module) CanHaveApexVariants() bool {
 
 func (mod *Module) MinSdkVersion() string {
 	return String(mod.Properties.Min_sdk_version)
+}
+
+func (mod *Module) SetSdkVersion(s string) {
+	mod.Properties.Sdk_version = StringPtr(s)
+}
+
+func (mod *Module) SetMinSdkVersion(s string) {
+	mod.Properties.Min_sdk_version = StringPtr(s)
 }
 
 // Implements android.ApexModule
@@ -1791,10 +2000,16 @@ func (mod *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVer
 }
 
 // Implements android.ApexModule
+func (mod *Module) AlwaysRequiresPlatformApexVariant() bool {
+	// stub libraries and native bridge libraries are always available to platform
+	return mod.IsStubs() || mod.Target().NativeBridge == android.NativeBridgeEnabled
+}
+
+// Implements android.ApexModule
 func (mod *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
 	depTag := ctx.OtherModuleDependencyTag(dep)
 
-	if ccm, ok := dep.(*cc.Module); ok {
+	if ccm, ok := dep.(cc.LinkableInterface); ok {
 		if ccm.HasStubsVariants() {
 			if cc.IsSharedDepTag(depTag) {
 				// dynamic dep to a stubs lib crosses APEX boundary
@@ -1821,7 +2036,13 @@ func (mod *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Mo
 		return false
 	}
 
+	// TODO(203478530) Remove this when apex_exclude is removed.
 	if rustDep, ok := dep.(*Module); ok && rustDep.ApexExclude() {
+		return false
+	}
+
+	if depTag == cc.StubImplDepTag {
+		// We don't track from an implementation library to its stubs.
 		return false
 	}
 
