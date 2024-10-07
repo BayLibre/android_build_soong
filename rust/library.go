@@ -72,9 +72,13 @@ type LibraryCompilerProperties struct {
 	// Whether this library is part of the Rust toolchain sysroot.
 	Sysroot *bool
 
-	// Exclude this rust_ffi target from being included in APEXes.
-	// TODO(b/362509506): remove this once stubs are properly supported by rust_ffi targets.
+	// Deprecated - exclude this rust_ffi target from being included in APEXes.
+	// TODO(b/362509506): remove this once all apex_exclude uses are switched to stubs.
 	Apex_exclude *bool
+
+	// Generate stubs to make this library accessible to APEXes.
+	// Can only be set for modules producing shared libraries.
+	Stubs cc.StubsProperties `android:"arch_variant"`
 }
 
 type LibraryMutatedProperties struct {
@@ -102,6 +106,15 @@ type LibraryMutatedProperties struct {
 
 	// Whether this library variant should be link libstd via rlibs
 	VariantIsStaticStd bool `blueprint:"mutated"`
+
+	// This variant is a stubs lib
+	BuildStubs bool `blueprint:"mutated"`
+	// This variant is the latest version
+	IsLatestVersion bool `blueprint:"mutated"`
+	// Version of the stubs lib
+	StubsVersion string `blueprint:"mutated"`
+	// List of all stubs versions associated with an implementation lib
+	AllStubsVersions []string `blueprint:"mutated"`
 }
 
 type libraryDecorator struct {
@@ -118,9 +131,111 @@ type libraryDecorator struct {
 
 	// table-of-contents file for cdylib crates to optimize out relinking when possible
 	tocFile android.OptionalPath
+
+	// Path to the file containing the APIs exported by this library
+	stubsSymbolFilePath    android.Path
+	apiListCoverageXmlPath android.ModuleOutPath
+	versionScriptPath      android.OptionalPath
+}
+
+// allStubsVersions implements cc.VersionedInterface.
+func (library *libraryDecorator) AllStubsVersions() []string {
+	return library.MutatedProperties.AllStubsVersions
+}
+
+// buildStubs implements cc.VersionedInterface.
+func (library *libraryDecorator) BuildStubs() bool {
+	return library.MutatedProperties.BuildStubs
+}
+
+func (library *libraryDecorator) stubs() bool {
+	return library.MutatedProperties.BuildStubs
+}
+
+// hasLLNDKHeaders implements cc.VersionedInterface.
+func (library *libraryDecorator) HasLLNDKHeaders() bool {
+	// Rust LLNDK is currently unsupported
+	return false
+}
+
+// hasLLNDKStubs implements cc.VersionedInterface.
+func (library *libraryDecorator) HasLLNDKStubs() bool {
+	// Rust LLNDK is currently unsupported
+	return false
+}
+
+// hasStubsVariants implements cc.VersionedInterface.
+func (library *libraryDecorator) HasStubsVariants() bool {
+	// Just having stubs.symbol_file is enough to create a stub variant. In that case
+	// the stub for the future API level is created.
+	return library.Properties.Stubs.Symbol_file != nil ||
+		len(library.Properties.Stubs.Versions) > 0
+}
+
+// hasVendorPublicLibrary implements cc.VersionedInterface.
+func (library *libraryDecorator) HasVendorPublicLibrary() bool {
+	// Rust does not support vendor_public_library yet.
+	return false
+}
+
+// implementationModuleName implements cc.VersionedInterface.
+func (library *libraryDecorator) ImplementationModuleName(name string) string {
+	return name
+}
+
+// isStubsImplementationRequired implements cc.VersionedInterface.
+func (library *libraryDecorator) IsStubsImplementationRequired() bool {
+	return BoolDefault(library.Properties.Stubs.Implementation_installable, true)
+}
+
+// setAllStubsVersions implements cc.VersionedInterface.
+func (library *libraryDecorator) SetAllStubsVersions(versions []string) {
+	library.MutatedProperties.AllStubsVersions = versions
+}
+
+// setBuildStubs implements cc.VersionedInterface.
+func (library *libraryDecorator) SetBuildStubs(isLatest bool) {
+	library.MutatedProperties.BuildStubs = true
+	library.MutatedProperties.IsLatestVersion = isLatest
+}
+
+// setStubsVersion implements cc.VersionedInterface.
+func (library *libraryDecorator) SetStubsVersion(version string) {
+	library.MutatedProperties.StubsVersion = version
+}
+
+// stubsVersion implements cc.VersionedInterface.
+func (library *libraryDecorator) StubsVersion() string {
+	return library.MutatedProperties.StubsVersion
+}
+
+// stubsVersions implements cc.VersionedInterface.
+func (library *libraryDecorator) StubsVersions(ctx android.BaseModuleContext) []string {
+	if !library.HasStubsVariants() {
+		return nil
+	}
+
+	// Future API level is implicitly added if there isn't
+	versions := cc.AddCurrentVersionIfNotPresent(library.Properties.Stubs.Versions)
+	cc.NormalizeVersions(ctx, versions)
+	return versions
+}
+
+func (library *libraryDecorator) getAPIListCoverageXMLPath() android.ModuleOutPath {
+	return library.apiListCoverageXmlPath
+}
+
+func (library *libraryDecorator) setAPIListCoverageXMLPath(xml android.ModuleOutPath) {
+	library.apiListCoverageXmlPath = xml
+}
+
+func (library *libraryDecorator) libraryProperties() LibraryCompilerProperties {
+	return library.Properties
 }
 
 type libraryInterface interface {
+	cc.VersionedInterface
+
 	rlib() bool
 	dylib() bool
 	static() bool
@@ -158,6 +273,12 @@ type libraryInterface interface {
 	toc() android.OptionalPath
 
 	isFFILibrary() bool
+
+	IsStubsImplementationRequired() bool
+	getAPIListCoverageXMLPath() android.ModuleOutPath
+	setAPIListCoverageXMLPath(out android.ModuleOutPath)
+
+	libraryProperties() LibraryCompilerProperties
 }
 
 func (library *libraryDecorator) nativeCoverage() bool {
@@ -273,6 +394,7 @@ func (library *libraryDecorator) stdLinkage(ctx *depsContext) RustLinkage {
 
 var _ compiler = (*libraryDecorator)(nil)
 var _ libraryInterface = (*libraryDecorator)(nil)
+var _ cc.VersionedInterface = (*libraryDecorator)(nil)
 var _ exportedFlagsProducer = (*libraryDecorator)(nil)
 
 // rust_library produces all Rust variants (rust_library_dylib and
@@ -363,6 +485,18 @@ func RustFFIRlibHostFactory() android.Module {
 	return module.Init()
 }
 
+func CheckRustLibraryProperties(mctx android.DefaultableHookContext) {
+	lib := mctx.Module().(*Module).compiler.(libraryInterface)
+	if !lib.buildShared() {
+		if lib.libraryProperties().Stubs.Symbol_file != nil ||
+			lib.libraryProperties().Stubs.Implementation_installable != nil ||
+			len(lib.libraryProperties().Stubs.Versions) > 0 {
+
+			mctx.PropertyErrorf("stubs", "stubs properties can only be set for rust_ffi or rust_ffi_shared modules")
+		}
+	}
+}
+
 // rust_ffi_rlib produces an rlib (Rust crate type "rlib").
 func RustFFIRlibFactory() android.Module {
 	module, library := NewRustLibrary(android.HostAndDeviceSupported)
@@ -441,6 +575,7 @@ func NewRustLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorat
 
 	module.compiler = library
 
+	module.SetDefaultableHook(CheckRustLibraryProperties)
 	return module, library
 }
 
@@ -561,6 +696,11 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		fileName = library.sharedLibFilename(ctx)
 		outputFile = android.PathForModuleOut(ctx, fileName)
 		ret.outputFile = outputFile
+	} else if library.stubs() {
+		fileName = library.sharedLibFilename(ctx)
+		outputFile = cc.BuildRustStubs(ctx, fileName, library.getStem(ctx), flags.LinkFlags, deps.SharedLibs, deps.StaticLibs, deps.CrtBegin, deps.CrtEnd)
+		ret.outputFile = outputFile
+
 	}
 
 	if !library.rlib() && !library.static() && library.stripper.NeedsStrip(ctx) {
@@ -600,13 +740,13 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 	}
 
 	// Since we have FFI rlibs, we need to collect their includes as well
-	if library.static() || library.shared() || library.rlib() {
+	if library.static() || library.shared() || library.rlib() || library.stubs() {
 		android.SetProvider(ctx, cc.FlagExporterInfoProvider, cc.FlagExporterInfo{
 			IncludeDirs: android.FirstUniquePaths(library.includeDirs),
 		})
 	}
 
-	if library.shared() {
+	if library.shared() || library.stubs() {
 		// Optimize out relinking against shared libraries whose interface hasn't changed by
 		// depending on a table of contents file instead of the library itself.
 		tocFile := outputFile.ReplaceExtension(ctx, flags.Toolchain.SharedLibSuffix()[1:]+".toc")
@@ -628,6 +768,7 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 			TransitiveStaticLibrariesForOrdering: depSet,
 		})
 	}
+	cc.AddStubDependencyProviders(ctx)
 
 	library.flagExporter.setProvider(ctx)
 

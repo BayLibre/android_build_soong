@@ -441,3 +441,348 @@ func TestRustFFIExportedIncludes(t *testing.T) {
 	libfooStatic := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_static").Rule("cc")
 	android.AssertStringDoesContain(t, "cFlags for lib module", libfooStatic.Args["cFlags"], " -Irust_includes ")
 }
+
+func TestStubsVersions(t *testing.T) {
+	t.Parallel()
+	bp := `
+		rust_ffi {
+			name: "libfoo",
+			crate_name: "foo",
+			srcs: ["foo.rs"],
+			stubs: {
+				versions: ["29", "R", "current"],
+			},
+		}
+	`
+	ctx := android.GroupFixturePreparers(
+		prepareForRustTest,
+		android.PrepareForTestWithVisibility,
+		rustMockedFiles.AddToFixture(),
+		android.FixtureModifyConfigAndContext(func(config android.Config, ctx *android.TestContext) {
+			config.TestProductVariables.Platform_version_active_codenames = []string{"R"}
+		})).RunTestWithBp(t, bp)
+
+	variants := ctx.ModuleVariantsForTests("libfoo")
+	for _, expectedVer := range []string{"29", "R", "current"} {
+		expectedVariant := "android_arm_armv7-a-neon_shared_" + expectedVer
+		if !android.InList(expectedVariant, variants) {
+			t.Errorf("missing expected variant: %q", expectedVariant)
+		}
+	}
+}
+
+func TestStubsVersions_NotSorted(t *testing.T) {
+	t.Parallel()
+	bp := `
+	rust_ffi_shared {
+		name: "libfoo",
+		crate_name: "foo",
+		srcs: ["foo.rs"],
+		stubs: {
+				versions: ["29", "current", "R"],
+			},
+		}
+	`
+	fixture := android.GroupFixturePreparers(
+		prepareForRustTest,
+		android.PrepareForTestWithVisibility,
+		rustMockedFiles.AddToFixture(),
+
+		android.FixtureModifyConfigAndContext(func(config android.Config, ctx *android.TestContext) {
+			config.TestProductVariables.Platform_version_active_codenames = []string{"R"}
+		}))
+
+	fixture.ExtendWithErrorHandler(android.FixtureExpectsOneErrorPattern(`"libfoo" .*: versions: not sorted`)).RunTestWithBp(t, bp)
+}
+
+func TestStubsVersions_ParseError(t *testing.T) {
+	t.Parallel()
+	bp := `
+	rust_ffi_shared {
+		name: "libfoo",
+		crate_name: "foo",
+		srcs: ["foo.rs"],
+			stubs: {
+				versions: ["29", "current", "X"],
+			},
+		}
+	`
+	fixture := android.GroupFixturePreparers(
+		prepareForRustTest,
+		android.PrepareForTestWithVisibility,
+		rustMockedFiles.AddToFixture(),
+
+		android.FixtureModifyConfigAndContext(func(config android.Config, ctx *android.TestContext) {
+			config.TestProductVariables.Platform_version_active_codenames = []string{"R"}
+		}))
+
+	fixture.ExtendWithErrorHandler(android.FixtureExpectsOneErrorPattern(`"libfoo" .*: versions: "X" could not be parsed as an integer and is not a recognized codename`)).RunTestWithBp(t, bp)
+}
+
+func TestVersionedStubs(t *testing.T) {
+	t.Parallel()
+	bp := `
+	rust_ffi_shared {
+		name: "libFoo",
+		crate_name: "Foo",
+		srcs: ["foo.rs"],
+			stubs: {
+				symbol_file: "foo.map.txt",
+				versions: ["1", "2", "3"],
+			},
+		}
+
+		cc_library_shared {
+			name: "libBar",
+			srcs: ["bar.c"],
+			shared_libs: ["libFoo#1"],
+		}`
+	ctx := android.GroupFixturePreparers(
+		prepareForRustTest,
+		android.PrepareForTestWithVisibility,
+		rustMockedFiles.AddToFixture()).RunTestWithBp(t, bp)
+
+	variants := ctx.ModuleVariantsForTests("libFoo")
+	expectedVariants := []string{
+		"android_arm64_armv8-a_shared",
+		"android_arm64_armv8-a_shared_1",
+		"android_arm64_armv8-a_shared_2",
+		"android_arm64_armv8-a_shared_3",
+		"android_arm64_armv8-a_shared_current",
+		"android_arm_armv7-a-neon_shared",
+		"android_arm_armv7-a-neon_shared_1",
+		"android_arm_armv7-a-neon_shared_2",
+		"android_arm_armv7-a-neon_shared_3",
+		"android_arm_armv7-a-neon_shared_current",
+	}
+	variantsMismatch := false
+	if len(variants) != len(expectedVariants) {
+		variantsMismatch = true
+	} else {
+		for _, v := range expectedVariants {
+			if !android.InList(v, variants) {
+				variantsMismatch = false
+			}
+		}
+	}
+	if variantsMismatch {
+		t.Errorf("variants of libFoo expected:\n")
+		for _, v := range expectedVariants {
+			t.Errorf("%q\n", v)
+		}
+		t.Errorf(", but got:\n")
+		for _, v := range variants {
+			t.Errorf("%q\n", v)
+		}
+	}
+
+	libBarLinkRule := ctx.ModuleForTests("libBar", "android_arm64_armv8-a_shared").Rule("ld")
+	libFlags := libBarLinkRule.Args["libFlags"]
+	libFoo1StubPath := "libFoo/android_arm64_armv8-a_shared_1/unstripped/libFoo.so"
+	if !strings.Contains(libFlags, libFoo1StubPath) {
+		t.Errorf("%q is not found in %q", libFoo1StubPath, libFlags)
+	}
+}
+
+func TestStubsForLibraryInMultipleApexes(t *testing.T) {
+	t.Parallel()
+	bp := `
+		rust_ffi {
+			name: "libFoo",
+			crate_name: "Foo",
+			srcs: ["foo.rs"],
+			stubs: {
+				symbol_file: "foo.map.txt",
+				versions: ["current"],
+			},
+			apex_available: ["bar", "a1"],
+		}
+
+		cc_library_shared {
+			name: "libBar",
+			srcs: ["bar.c"],
+			shared_libs: ["libFoo"],
+			apex_available: ["a1"],
+		}
+
+		cc_library_shared {
+			name: "libA1",
+			srcs: ["a1.c"],
+			shared_libs: ["libFoo"],
+			apex_available: ["a1"],
+		}
+
+		cc_library_shared {
+			name: "libBarA1",
+			srcs: ["bara1.c"],
+			shared_libs: ["libFoo"],
+			apex_available: ["bar", "a1"],
+		}
+
+		cc_library_shared {
+			name: "libAnyApex",
+			srcs: ["anyApex.c"],
+			shared_libs: ["libFoo"],
+			apex_available: ["//apex_available:anyapex"],
+		}
+
+		cc_library_shared {
+			name: "libBaz",
+			srcs: ["baz.c"],
+			shared_libs: ["libFoo"],
+			apex_available: ["baz"],
+		}
+
+		cc_library_shared {
+			name: "libQux",
+			srcs: ["qux.c"],
+			shared_libs: ["libFoo"],
+			apex_available: ["qux", "bar"],
+		}`
+
+	ctx := android.GroupFixturePreparers(
+		prepareForRustTest,
+		android.PrepareForTestWithVisibility,
+		rustMockedFiles.AddToFixture()).RunTestWithBp(t, bp)
+
+	variants := ctx.ModuleVariantsForTests("libFoo")
+	expectedVariants := []string{
+		"android_arm64_armv8-a_shared",
+		"android_arm64_armv8-a_shared_current",
+		"android_arm64_armv8-a_rlib_rlib-std",
+		"android_arm_armv7-a-neon_shared",
+		"android_arm_armv7-a-neon_shared_current",
+		"android_arm_armv7-a-neon_rlib_rlib-std",
+	}
+	variantsMismatch := false
+	if len(variants) != len(expectedVariants) {
+		variantsMismatch = true
+	} else {
+		for _, v := range expectedVariants {
+			if !android.InList(v, variants) {
+				variantsMismatch = false
+			}
+		}
+	}
+	if variantsMismatch {
+		t.Errorf("variants of libFoo expected:\n")
+		for _, v := range expectedVariants {
+			t.Errorf("%q\n", v)
+		}
+		t.Errorf(", but got:\n")
+		for _, v := range variants {
+			t.Errorf("%q\n", v)
+		}
+	}
+
+	linkAgainstFoo := []string{"libBarA1"}
+	linkAgainstFooStubs := []string{"libBar", "libA1", "libBaz", "libQux", "libAnyApex"}
+
+	libFooPath := "libFoo/android_arm64_armv8-a_shared/unstripped/libFoo.so"
+	for _, lib := range linkAgainstFoo {
+		libLinkRule := ctx.ModuleForTests(lib, "android_arm64_armv8-a_shared").Rule("ld")
+		libFlags := libLinkRule.Args["libFlags"]
+		if !strings.Contains(libFlags, libFooPath) {
+			t.Errorf("%q: %q is not found in %q", lib, libFooPath, libFlags)
+		}
+	}
+
+	libFooStubPath := "libFoo/android_arm64_armv8-a_shared_current/unstripped/libFoo.so"
+	for _, lib := range linkAgainstFooStubs {
+		libLinkRule := ctx.ModuleForTests(lib, "android_arm64_armv8-a_shared").Rule("ld")
+		libFlags := libLinkRule.Args["libFlags"]
+		if !strings.Contains(libFlags, libFooStubPath) {
+			t.Errorf("%q: %q is not found in %q", lib, libFooStubPath, libFlags)
+		}
+	}
+}
+
+func TestAddnoOverride64GlobalCflags(t *testing.T) {
+	t.Parallel()
+	bp := `
+		cc_library_shared {
+			name: "libclient",
+			srcs: ["foo.c"],
+			shared_libs: ["libfoo#1"],
+		}
+
+		rust_ffi_shared {
+			name: "libfoo",
+			crate_name: "foo",
+			srcs: ["foo.c"],
+			shared_libs: ["libbar"],
+			stubs: {
+				symbol_file: "foo.map.txt",
+				versions: ["1", "2", "3"],
+			},
+		}
+
+		cc_library_shared {
+			name: "libbar",
+			export_include_dirs: ["include/libbar"],
+			srcs: ["foo.c"],
+		}`
+	ctx := android.GroupFixturePreparers(
+		prepareForRustTest,
+		android.PrepareForTestWithVisibility,
+		rustMockedFiles.AddToFixture()).RunTestWithBp(t, bp)
+
+	cFlags := ctx.ModuleForTests("libclient", "android_arm64_armv8-a_shared").Rule("cc").Args["cFlags"]
+
+	if !strings.Contains(cFlags, "${config.NoOverride64GlobalCflags}") {
+		t.Errorf("expected %q in cflags, got %q", "${config.NoOverride64GlobalCflags}", cFlags)
+	}
+}
+
+// Make sure the stubs properties can only be used in modules producing shared libs
+func TestRustStubsFFIOnly(t *testing.T) {
+	testRustError(t, "stubs properties", `
+		rust_library {
+			name: "libfoo",
+			crate_name: "foo",
+			srcs: ["foo.c"],
+			shared_libs: ["libbar"],
+			stubs: {
+				symbol_file: "foo.map.txt",
+			},
+		}
+	`)
+
+	testRustError(t, "stubs properties", `
+		rust_library {
+			name: "libfoo",
+			crate_name: "foo",
+			srcs: ["foo.c"],
+			shared_libs: ["libbar"],
+			stubs: {
+				versions: ["1"],
+			},
+		}
+	`)
+
+	testRustError(t, "stubs properties", `
+		rust_ffi_static {
+			name: "libfoo",
+			crate_name: "foo",
+			srcs: ["foo.c"],
+			shared_libs: ["libbar"],
+			stubs: {
+				symbol_file: "foo.map.txt",
+			},
+		}
+	`)
+	testRustError(t, "stubs properties", `
+		rust_ffi_static {
+			name: "libfoo",
+			crate_name: "foo",
+			srcs: ["foo.c"],
+			shared_libs: ["libbar"],
+			stubs: {
+				versions: ["1"],
+			},
+		}
+	`)
+}
+
+// TODO: When rust_ffi libraries support export_*_lib_headers,
+// add a test similar to cc.TestStubsLibReexportsHeaders

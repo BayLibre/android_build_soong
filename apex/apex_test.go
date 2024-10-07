@@ -1123,7 +1123,10 @@ func TestApexCanUsePrivateApis(t *testing.T) {
 		cc_library {
 			name: "mylib",
 			srcs: ["mylib.cpp"],
-			shared_libs: ["mylib2"],
+			shared_libs: [
+				"mylib2",
+				"libmylib_rust"
+			],
 			system_shared_libs: [],
 			stl: "none",
 			apex_available: [ "myapex" ],
@@ -1140,10 +1143,22 @@ func TestApexCanUsePrivateApis(t *testing.T) {
 			},
 		}
 
+		rust_ffi {
+			name: "libmylib_rust",
+			crate_name: "mylib_rust",
+			srcs: ["mylib.rs"],
+			stubs: {
+				versions: ["1", "2", "3"],
+			},
+		}
+
 		rust_binary {
 			name: "foo.rust",
 			srcs: ["foo.rs"],
-			shared_libs: ["libfoo.shared_from_rust"],
+			shared_libs: [
+				"libfoo.shared_from_rust",
+				"libmylib_rust.shared_from_rust"
+			],
 			prefer_rlib: true,
 			apex_available: ["myapex"],
 		}
@@ -1157,6 +1172,15 @@ func TestApexCanUsePrivateApis(t *testing.T) {
 				versions: ["10", "11", "12"],
 			},
 		}
+		rust_ffi {
+			name: "libmylib_rust.shared_from_rust",
+			crate_name: "mylib_rust",
+			srcs: ["mylib.rs"],
+			stubs: {
+				versions: ["1", "2", "3"],
+			},
+		}
+
 	`)
 
 	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
@@ -1164,6 +1188,8 @@ func TestApexCanUsePrivateApis(t *testing.T) {
 
 	// Ensure that indirect stubs dep is not included
 	ensureNotContains(t, copyCmds, "image.apex/lib64/mylib2.so")
+	ensureNotContains(t, copyCmds, "image.apex/lib64/libmylib_rust.so")
+	ensureNotContains(t, copyCmds, "image.apex/lib64/libmylib_rust.shared_from_rust.so")
 	ensureNotContains(t, copyCmds, "image.apex/lib64/libfoo.shared_from_rust.so")
 
 	// Ensure that we are using non-stub variants of mylib2 and libfoo.shared_from_rust (because
@@ -1171,9 +1197,13 @@ func TestApexCanUsePrivateApis(t *testing.T) {
 	mylibLdFlags := ctx.ModuleForTests("mylib", "android_arm64_armv8-a_shared_apex10000").Rule("ld").Args["libFlags"]
 	ensureNotContains(t, mylibLdFlags, "mylib2/android_arm64_armv8-a_shared_current/mylib2.so")
 	ensureContains(t, mylibLdFlags, "mylib2/android_arm64_armv8-a_shared/mylib2.so")
+	ensureNotContains(t, mylibLdFlags, "libmylib_rust/android_arm64_armv8-a_shared_current/unstripped/libmylib_rust.so")
+	ensureContains(t, mylibLdFlags, "libmylib_rust/android_arm64_armv8-a_shared/unstripped/libmylib_rust.so")
 	rustDeps := ctx.ModuleForTests("foo.rust", "android_arm64_armv8-a_apex10000").Rule("rustc").Args["linkFlags"]
 	ensureNotContains(t, rustDeps, "libfoo.shared_from_rust/android_arm64_armv8-a_shared_current/libfoo.shared_from_rust.so")
 	ensureContains(t, rustDeps, "libfoo.shared_from_rust/android_arm64_armv8-a_shared/libfoo.shared_from_rust.so")
+	ensureNotContains(t, rustDeps, "libmylib_rust.shared_from_rust/android_arm64_armv8-a_shared_current/unstripped/libmylib_rust.shared_from_rust.so")
+	ensureContains(t, rustDeps, "libmylib_rust.shared_from_rust/android_arm64_armv8-a_shared/unstripped/libmylib_rust.shared_from_rust.so")
 }
 
 func TestApexWithStubsWithMinSdkVersion(t *testing.T) {

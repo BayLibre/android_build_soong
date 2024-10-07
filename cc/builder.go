@@ -472,7 +472,7 @@ func (a Objects) Append(b Objects) Objects {
 }
 
 // Generate rules for compiling multiple .c, .cpp, or .S files to individual .o files
-func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs, timeoutTidySrcs android.Paths,
+func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles, noTidySrcs, timeoutTidySrcs android.Paths,
 	flags builderFlags, pathDeps android.Paths, cFlagsDeps android.Paths) Objects {
 	// Source files are one-to-one with tidy, coverage, or kythe files, if enabled.
 	objFiles := make(android.Paths, len(srcFiles))
@@ -554,7 +554,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 	// Multiple source files have build rules usually share the same cFlags or tidyFlags.
 	// Define only one version in this module and share it in multiple build rules.
 	// To simplify the code, the shared variables are all named as $flags<nnn>.
-	shared := ctx.getSharedFlags()
+	shared := ctx.Module().(LinkableInterface).GetSharedFlags()
 
 	// Share flags only when there are multiple files or tidy rules.
 	var hasMultipleRules = len(srcFiles) > 1 || flags.tidy
@@ -566,11 +566,11 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 			return flags
 		}
 		mapKey := kind + flags
-		n, ok := shared.flagsMap[mapKey]
+		n, ok := shared.FlagsMap[mapKey]
 		if !ok {
-			shared.numSharedFlags += 1
-			n = strconv.Itoa(shared.numSharedFlags)
-			shared.flagsMap[mapKey] = n
+			shared.NumSharedFlags += 1
+			n = strconv.Itoa(shared.NumSharedFlags)
+			shared.FlagsMap[mapKey] = n
 			ctx.Variable(pctx, kind+n, flags)
 		}
 		return "$" + kind + n
@@ -851,6 +851,41 @@ func genRustStaticlibSrcFile(crateNames []string) string {
 		lines = append(lines, fmt.Sprintf("extern crate %s;", crate))
 	}
 	return strings.Join(lines, "\n")
+}
+
+func BuildRustStubs(ctx android.ModuleContext, fileName string, libName string,
+	linkFlags []string, sharedLibs, staticLibs, crtBegin, crtEnd android.Paths) android.ModuleOutPath {
+	ccFlags := Flags{}
+	toolchain := config.FindToolchain(ctx.Os(), ctx.Arch())
+
+	// Collect common CC compilation flags
+	ccFlags = commonLinkerFlags(ctx, ccFlags, true, toolchain, false)
+	ccFlags = commonLibraryLinkerFlags(ctx, ccFlags, toolchain, libName)
+	ccFlags = addStubLibraryCompilerFlags(ccFlags)
+	ccFlags = addTargetFlags(ctx, ccFlags, toolchain, CtxMinSdkVersion(ctx), false)
+
+	ccDeps := PathDeps{}
+	ccDeps.CrtBegin = crtBegin
+	ccDeps.CrtEnd = crtBegin
+	ccDeps.SharedLibs = sharedLibs
+	ccDeps.StaticLibs = staticLibs
+
+	outputFile := android.PathForModuleOut(ctx, fileName)
+	lateStaticLibs := android.Paths{}
+	wholeStaticLibs := android.Paths{}
+	deps := android.Paths{}
+	groupLate := false
+	implicitOutputs := android.WritablePaths{}
+	validations := android.Paths{}
+
+	stubObjs := CompileModuleLibApiStubs(ctx, ccFlags, ccDeps)
+
+	builderFlags := flagsToBuilderFlags(ccFlags)
+	transformObjToDynamicBinary(ctx, stubObjs.objFiles, sharedLibs, staticLibs,
+		lateStaticLibs, wholeStaticLibs, deps, crtBegin, crtEnd,
+		groupLate, builderFlags, outputFile, implicitOutputs, validations)
+
+	return outputFile
 }
 
 // Generate a rule for compiling multiple .o files, plus static libraries, whole static libraries,

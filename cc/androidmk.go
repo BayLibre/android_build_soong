@@ -220,7 +220,7 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 		entries.Class = "SHARED_LIBRARIES"
 		entries.ExtraEntries = append(entries.ExtraEntries, func(_ android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			entries.SetString("LOCAL_SOONG_TOC", library.toc().String())
-			if !library.buildStubs() && library.unstrippedOutputFile != nil {
+			if !library.BuildStubs() && library.unstrippedOutputFile != nil {
 				entries.SetString("LOCAL_SOONG_UNSTRIPPED_BINARY", library.unstrippedOutputFile.String())
 			}
 			if len(library.Properties.Overrides) > 0 {
@@ -252,17 +252,17 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 		}
 	})
 
-	if library.shared() && !library.buildStubs() {
+	if library.shared() && !library.BuildStubs() {
 		ctx.subAndroidMk(entries, library.baseInstaller)
 	} else {
-		if library.buildStubs() && library.stubsVersion() != "" {
-			entries.SubName = "." + library.stubsVersion()
+		if library.BuildStubs() && library.StubsVersion() != "" {
+			entries.SubName = "." + library.StubsVersion()
 		}
 		entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			// library.makeUninstallable() depends on this to bypass HideFromMake() for
 			// static libraries.
 			entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", true)
-			if library.buildStubs() {
+			if library.BuildStubs() {
 				entries.SetBool("LOCAL_NO_NOTICE_FILE", true)
 			}
 		})
@@ -275,10 +275,10 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 	// very early stage in the boot process).
 	if len(library.Properties.Stubs.Versions) > 0 && !ctx.Host() && ctx.NotInPlatform() &&
 		!ctx.InRamdisk() && !ctx.InVendorRamdisk() && !ctx.InRecovery() && !ctx.InVendorOrProduct() && !ctx.static() {
-		if library.buildStubs() && library.isLatestStubVersion() {
+		if library.BuildStubs() && library.isLatestStubVersion() {
 			entries.SubName = ""
 		}
-		if !library.buildStubs() {
+		if !library.BuildStubs() {
 			entries.SubName = ".bootstrap"
 		}
 	}
@@ -405,7 +405,7 @@ func (c *stubDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 	entries.SubName = ndkLibrarySuffix + "." + c.apiLevel.String()
 	entries.Class = "SHARED_LIBRARIES"
 
-	if !c.buildStubs() {
+	if !c.BuildStubs() {
 		entries.Disabled = true
 		return
 	}
