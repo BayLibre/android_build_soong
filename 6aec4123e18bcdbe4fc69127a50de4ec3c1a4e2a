@@ -52,6 +52,24 @@
       "parentUuid": "7abe298d_f4f432dc",
       "revId": "6aec4123e18bcdbe4fc69127a50de4ec3c1a4e2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e00b4a2d_6e826a31",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1735,
+      "author": {
+        "id": 1891746
+      },
+      "writtenOn": "2024-10-07T18:37:35Z",
+      "side": 1,
+      "message": "I followed your suggestion, PTAL, thank you!",
+      "parentUuid": "cea2bbce_82503c90",
+      "revId": "6aec4123e18bcdbe4fc69127a50de4ec3c1a4e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
