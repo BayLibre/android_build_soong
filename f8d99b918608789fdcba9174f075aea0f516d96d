@@ -117,6 +117,30 @@
       },
       "revId": "f8d99b918608789fdcba9174f075aea0f516d96d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8952e3dd_61a49640",
+        "filename": "cc/sabi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-07T16:13:36Z",
+      "side": 1,
+      "message": "Correct.",
+      "parentUuid": "5a7a7419_34a01134",
+      "range": {
+        "startLine": 238,
+        "startChar": 17,
+        "endLine": 238,
+        "endChar": 19
+      },
+      "revId": "f8d99b918608789fdcba9174f075aea0f516d96d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
