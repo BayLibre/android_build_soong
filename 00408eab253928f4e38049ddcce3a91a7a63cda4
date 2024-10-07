@@ -22,6 +22,30 @@
       },
       "revId": "00408eab253928f4e38049ddcce3a91a7a63cda4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad5d7f4_38d4b64a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-07T17:25:08Z",
+      "side": 1,
+      "message": "Yeah I don\u0027t think golang binaries have fat arch support. Also, they didn\u0027t have arch variants at all until recently, when Colin wrapped the bootstrap modules in soong modules.",
+      "parentUuid": "d3de47f0_6cdb866d",
+      "range": {
+        "startLine": 13,
+        "startChar": 56,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "00408eab253928f4e38049ddcce3a91a7a63cda4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
