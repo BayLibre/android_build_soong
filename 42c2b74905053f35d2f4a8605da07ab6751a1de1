@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f06e8d15_5e00c284",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2024-10-07T12:56:19Z",
+      "side": 1,
+      "message": "This builds now without disabling SVE.",
+      "revId": "42c2b74905053f35d2f4a8605da07ab6751a1de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
