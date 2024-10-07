@@ -16,6 +16,29 @@
       "message": "Thanks Ivan!",
       "revId": "24cf036b51ab29df4417ee3e26d8261a7b82346d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f393e514_7d93fc85",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1760,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-10-07T00:53:27Z",
+      "side": 1,
+      "message": "yes please!",
+      "range": {
+        "startLine": 1760,
+        "startChar": 0,
+        "endLine": 1760,
+        "endChar": 88
+      },
+      "revId": "24cf036b51ab29df4417ee3e26d8261a7b82346d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
