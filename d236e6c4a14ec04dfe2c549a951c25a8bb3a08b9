@@ -34,6 +34,24 @@
       "parentUuid": "4963b5b0_e20f67f7",
       "revId": "d236e6c4a14ec04dfe2c549a951c25a8bb3a08b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b38d624_2d7ff2ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-10-08T11:14:08Z",
+      "side": 1,
+      "message": "Can you add a bug to the commit message?",
+      "parentUuid": "636859a2_a62b3896",
+      "revId": "d236e6c4a14ec04dfe2c549a951c25a8bb3a08b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
