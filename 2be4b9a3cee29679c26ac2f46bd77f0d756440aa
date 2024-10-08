@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a5bd949_0105977e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-08T23:47:53Z",
+      "side": 1,
+      "message": "IIRC the outcome of the [previous discussion]( https://android-review.git.corp.google.com/c/platform/build/soong/+/3214336/comment/268a8ddf_e1ae8ab2/) regarding this was to not include the repackaged jars. Has there been any changes in the build since then that now requires the inclusion of the repackaged jars?",
+      "revId": "2be4b9a3cee29679c26ac2f46bd77f0d756440aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
