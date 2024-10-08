@@ -35,8 +35,10 @@ var manifestFixerRule = pctx.AndroidStaticRule("manifestFixer",
 
 var manifestMergerRule = pctx.AndroidStaticRule("manifestMerger",
 	blueprint.RuleParams{
-		Command:     `${config.ManifestMergerCmd} $args --main $in $libs --out $out`,
-		CommandDeps: []string{"${config.ManifestMergerCmd}"},
+		Command:        `${config.ManifestMergerCmd} $args --main $in @${out}.rsp --out $out`,
+		CommandDeps:    []string{"${config.ManifestMergerCmd}"},
+		Rspfile:        "${out}.rsp",
+		RspfileContent: "$libs",
 	},
 	"args", "libs")
 
