@@ -22,6 +22,30 @@
       },
       "revId": "a043a1bd9f1ee3cb7bffd18e1ae1514289d5b4e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02b19ca5_d2033b74",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-08T23:33:45Z",
+      "side": 1,
+      "message": "Not quite sure if it\u0027s worth the effort... it requires quite a big change given that `dist` is a base module prop. [changes required](https://android-review.git.corp.google.com/q/topic:%22configurable_dist%22)",
+      "parentUuid": "202cea46_e305c967",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 24
+      },
+      "revId": "a043a1bd9f1ee3cb7bffd18e1ae1514289d5b4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
