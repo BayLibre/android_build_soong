@@ -87,6 +87,30 @@
       },
       "revId": "5d3d23195c41ef7fe9c3f927533c7c881de85d24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "519ef239_0a106ae9",
+        "filename": "cmd/release_config/release_config_lib/release_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-10-08T14:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17e75ee5_8481aa3c",
+      "range": {
+        "startLine": 299,
+        "startChar": 6,
+        "endLine": 299,
+        "endChar": 58
+      },
+      "revId": "5d3d23195c41ef7fe9c3f927533c7c881de85d24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
