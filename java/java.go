@@ -450,7 +450,6 @@ var (
 	javaApiContributionTag  = dependencyTag{name: "java-api-contribution"}
 	aconfigDeclarationTag   = dependencyTag{name: "aconfig-declaration"}
 	jniInstallTag           = dependencyTag{name: "jni install", runtimeLinked: true, installable: true}
-	binaryInstallTag        = dependencyTag{name: "binary install", runtimeLinked: true, installable: true}
 	usesLibReqTag           = makeUsesLibraryDependencyTag(dexpreopt.AnySdkVersion, false)
 	usesLibOptTag           = makeUsesLibraryDependencyTag(dexpreopt.AnySdkVersion, true)
 	usesLibCompat28OptTag   = makeUsesLibraryDependencyTag(28, true)
@@ -1819,97 +1818,95 @@ func (j *Binary) HostToolPath() android.OptionalPath {
 func (j *Binary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.stem = proptools.StringDefault(j.overridableProperties.Stem, ctx.ModuleName())
 
-	if ctx.Arch().ArchType == android.Common {
-		// Compile the jar
-		if j.binaryProperties.Main_class != nil {
-			if j.properties.Manifest != nil {
-				ctx.PropertyErrorf("main_class", "main_class cannot be used when manifest is set")
-			}
-			manifestFile := android.PathForModuleOut(ctx, "manifest.txt")
-			GenerateMainClassManifest(ctx, manifestFile, String(j.binaryProperties.Main_class))
-			j.overrideManifest = android.OptionalPathForPath(manifestFile)
-		}
+	// Handle the binary wrapper. This comes before compiling the jar so that the wrapper
+	// is the first PackagingSpec
+	j.isWrapperVariant = true
 
-		j.Library.GenerateAndroidBuildActions(ctx)
+	if j.binaryProperties.Wrapper != nil {
+		j.wrapperFile = android.PathForModuleSrc(ctx, *j.binaryProperties.Wrapper)
 	} else {
-		// Handle the binary wrapper
-		j.isWrapperVariant = true
-
-		if j.binaryProperties.Wrapper != nil {
-			j.wrapperFile = android.PathForModuleSrc(ctx, *j.binaryProperties.Wrapper)
-		} else {
-			if ctx.Windows() {
-				ctx.PropertyErrorf("wrapper", "wrapper is required for Windows")
-			}
-
-			if ctx.Device() {
-				// device binary should have a main_class property if it does not
-				// have a specific wrapper, so that a default wrapper can
-				// be generated for it.
-				if j.binaryProperties.Main_class == nil {
-					ctx.PropertyErrorf("main_class", "main_class property "+
-						"is required for device binary if no default wrapper is assigned")
-				} else {
-					wrapper := android.PathForModuleOut(ctx, ctx.ModuleName()+".sh")
-					jarName := j.Stem() + ".jar"
-					partition := j.PartitionTag(ctx.DeviceConfig())
-					ctx.Build(pctx, android.BuildParams{
-						Rule:   deviceBinaryWrapper,
-						Output: wrapper,
-						Args: map[string]string{
-							"jar_name":   jarName,
-							"partition":  partition,
-							"main_class": String(j.binaryProperties.Main_class),
-						},
-					})
-					j.wrapperFile = wrapper
-				}
-			} else {
-				j.wrapperFile = android.PathForSource(ctx, "build/soong/scripts/jar-wrapper.sh")
-			}
-		}
-
-		ext := ""
 		if ctx.Windows() {
-			ext = ".bat"
+			ctx.PropertyErrorf("wrapper", "wrapper is required for Windows")
 		}
 
-		// The host installation rules make the installed wrapper depend on all the dependencies
-		// of the wrapper variant, which will include the common variant's jar file and any JNI
-		// libraries.  This is verified by TestBinary.
-		j.binaryFile = ctx.InstallExecutable(android.PathForModuleInstall(ctx, "bin"),
-			ctx.ModuleName()+ext, j.wrapperFile)
-
-		setOutputFiles(ctx, j.Library.Module)
-
-		// Set the jniLibs of this binary.
-		// These will be added to `LOCAL_REQUIRED_MODULES`, and the kati packaging system will
-		// install these alongside the java binary.
-		ctx.VisitDirectDepsWithTag(jniInstallTag, func(jni android.Module) {
-			// Use the BaseModuleName of the dependency (without any prebuilt_ prefix)
-			bmn, _ := jni.(interface{ BaseModuleName() string })
-			j.androidMkNamesOfJniLibs = append(j.androidMkNamesOfJniLibs, bmn.BaseModuleName()+":"+jni.Target().Arch.ArchType.Bitness())
-		})
-		// Check that native libraries are not listed in `required`. Prompt users to use `jni_libs` instead.
-		ctx.VisitDirectDepsWithTag(android.RequiredDepTag, func(dep android.Module) {
-			if _, hasSharedLibraryInfo := android.OtherModuleProvider(ctx, dep, cc.SharedLibraryInfoProvider); hasSharedLibraryInfo {
-				ctx.ModuleErrorf("cc_library %s is no longer supported in `required` of java_binary modules. Please use jni_libs instead.", dep.Name())
+		if ctx.Device() {
+			// device binary should have a main_class property if it does not
+			// have a specific wrapper, so that a default wrapper can
+			// be generated for it.
+			if j.binaryProperties.Main_class == nil {
+				ctx.PropertyErrorf("main_class", "main_class property "+
+					"is required for device binary if no default wrapper is assigned")
+			} else {
+				wrapper := android.PathForModuleOut(ctx, ctx.ModuleName()+".sh")
+				jarName := j.Stem() + ".jar"
+				partition := j.PartitionTag(ctx.DeviceConfig())
+				ctx.Build(pctx, android.BuildParams{
+					Rule:   deviceBinaryWrapper,
+					Output: wrapper,
+					Args: map[string]string{
+						"jar_name":   jarName,
+						"partition":  partition,
+						"main_class": String(j.binaryProperties.Main_class),
+					},
+				})
+				j.wrapperFile = wrapper
 			}
-		})
+		} else {
+			j.wrapperFile = android.PathForSource(ctx, "build/soong/scripts/jar-wrapper.sh")
+		}
 	}
+
+	ext := ""
+	if ctx.Windows() {
+		ext = ".bat"
+	}
+
+	// The host installation rules make the installed wrapper depend on all the dependencies
+	// of the wrapper variant, which will include the common variant's jar file and any JNI
+	// libraries.  This is verified by TestBinary.
+	j.binaryFile = ctx.InstallExecutable(android.PathForModuleInstall(ctx, "bin"),
+		ctx.ModuleName()+ext, j.wrapperFile)
+
+	//setOutputFiles(ctx, j.Library.Module)
+
+	// Set the jniLibs of this binary.
+	// These will be added to `LOCAL_REQUIRED_MODULES`, and the kati packaging system will
+	// install these alongside the java binary.
+	ctx.VisitDirectDepsWithTag(jniInstallTag, func(jni android.Module) {
+		// Use the BaseModuleName of the dependency (without any prebuilt_ prefix)
+		bmn, _ := jni.(interface{ BaseModuleName() string })
+		j.androidMkNamesOfJniLibs = append(j.androidMkNamesOfJniLibs, bmn.BaseModuleName()+":"+jni.Target().Arch.ArchType.Bitness())
+	})
+	// Check that native libraries are not listed in `required`. Prompt users to use `jni_libs` instead.
+	ctx.VisitDirectDepsWithTag(android.RequiredDepTag, func(dep android.Module) {
+		if _, hasSharedLibraryInfo := android.OtherModuleProvider(ctx, dep, cc.SharedLibraryInfoProvider); hasSharedLibraryInfo {
+			ctx.ModuleErrorf("cc_library %s is no longer supported in `required` of java_binary modules. Please use jni_libs instead.", dep.Name())
+		}
+	})
+
+	// Compile the jar
+	if j.binaryProperties.Main_class != nil {
+		if j.properties.Manifest != nil {
+			ctx.PropertyErrorf("main_class", "main_class cannot be used when manifest is set")
+		}
+		manifestFile := android.PathForModuleOut(ctx, "manifest.txt")
+		GenerateMainClassManifest(ctx, manifestFile, String(j.binaryProperties.Main_class))
+		j.overrideManifest = android.OptionalPathForPath(manifestFile)
+	}
+
+	j.Library.GenerateAndroidBuildActions(ctx)
 }
 
 func (j *Binary) DepsMutator(ctx android.BottomUpMutatorContext) {
-	if ctx.Arch().ArchType == android.Common {
-		j.deps(ctx)
-	}
+	j.deps(ctx)
 	// These dependencies ensure the installation rules will install the jar file when the
 	// wrapper is installed, and the jni libraries when the wrapper is installed.
-	if ctx.Arch().ArchType != android.Common {
-		ctx.AddVariationDependencies(nil, jniInstallTag, j.binaryProperties.Jni_libs...)
-		ctx.AddVariationDependencies(
-			[]blueprint.Variation{{Mutator: "arch", Variation: android.CommonArch.String()}},
-			binaryInstallTag, ctx.ModuleName())
+	if ctx.Os().Class == android.Host {
+		ctx.AddVariationDependencies(ctx.Config().BuildOSTarget.Variations(), jniInstallTag, j.binaryProperties.Jni_libs...)
+	} else if ctx.Os().Class == android.Device {
+		ctx.AddVariationDependencies(ctx.Config().AndroidFirstDeviceTarget.Variations(), jniInstallTag, j.binaryProperties.Jni_libs...)
+	} else {
+		ctx.ModuleErrorf("Unknown os class")
 	}
 }
 
@@ -1929,7 +1926,7 @@ func BinaryFactory() android.Module {
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 
-	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommonFirst)
+	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 
 	return module
@@ -1947,7 +1944,7 @@ func BinaryHostFactory() android.Module {
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 
-	android.InitAndroidArchModule(module, android.HostSupported, android.MultilibCommonFirst)
+	android.InitAndroidArchModule(module, android.HostSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	return module
 }
