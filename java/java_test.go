@@ -569,15 +569,25 @@ func TestBinary(t *testing.T) {
 
 	bar := ctx.ModuleForTests("bar", buildOS+"_common")
 	barJar := bar.Output("bar.jar").Output.String()
-	barWrapper := ctx.ModuleForTests("bar", buildOS+"_x86_64")
-	barWrapperDeps := barWrapper.Output("bar").Implicits.Strings()
+	barWrapper := bar.Output("bar").Output.String()
+	barWrapperDeps := bar.Output("bar").Implicits.Strings()
 
 	libjni := ctx.ModuleForTests("libjni", buildOS+"_x86_64_shared")
 	libjniSO := libjni.Rule("Cp").Output.String()
 
-	// Test that the install binary wrapper depends on the installed jar file
-	if g, w := barWrapperDeps, barJar; !android.InList(w, g) {
-		t.Errorf("expected binary wrapper implicits to contain %q, got %q", w, g)
+	installFilesInfo, ok := android.OtherModuleProvider(ctx, bar.Module(), android.InstallFilesProvider)
+	if !ok {
+		t.Fatalf("Expected an InstallFilesProvider")
+	}
+
+	installFiles := android.PathsRelativeToTop(installFilesInfo.InstallFiles.Paths())
+
+	// Test that the installed files contain the wrapper and the jar file
+	if g, w := installFiles, barJar; !android.InList(w, g) {
+		t.Errorf("expected installed files to contain %q, got %q", w, g)
+	}
+	if g, w := installFiles, barWrapper; !android.InList(w, g) {
+		t.Errorf("expected installed files to contain %q, got %q", w, g)
 	}
 
 	// Test that the install binary wrapper depends on the installed JNI libraries
@@ -1931,7 +1941,7 @@ func TestDeviceBinaryWrapperGeneration(t *testing.T) {
 			main_class: "foo.bar.jb",
 		}
 	`)
-	wrapperPath := fmt.Sprint(ctx.ModuleForTests("foo", "android_arm64_armv8-a").AllOutputs())
+	wrapperPath := fmt.Sprint(ctx.ModuleForTests("foo", "android_common").AllOutputs())
 	if !strings.Contains(wrapperPath, "foo.sh") {
 		t.Errorf("wrapper file foo.sh is not generated")
 	}
@@ -3126,7 +3136,7 @@ cc_library_shared {
 `
 	res, _ := testJava(t, bp)
 	// The first variant installs the native library via the common variant, so check the deps of both variants.
-	nativeVariantDepsWithDups := findDepsOfModule(res, res.ModuleForTests("myjavabin", "android_arm64_armv8-a").Module(), "mynativelib")
+	nativeVariantDepsWithDups := findDepsOfModule(res, res.ModuleForTests("myjavabin", "android_common").Module(), "mynativelib")
 	nativeVariantDepsWithDups = append(nativeVariantDepsWithDups, findDepsOfModule(res, res.ModuleForTests("myjavabin", "android_common").Module(), "mynativelib")...)
 
 	nativeVariantDepsUnique := map[blueprint.Module]bool{}
