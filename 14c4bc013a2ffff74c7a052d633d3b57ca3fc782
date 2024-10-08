@@ -34,6 +34,24 @@
       "parentUuid": "e5831e16_7d08aac8",
       "revId": "14c4bc013a2ffff74c7a052d633d3b57ca3fc782",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "873235f8_ea3a9e0b",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1882526
+      },
+      "writtenOn": "2024-10-08T19:28:07Z",
+      "side": 1,
+      "message": "\u003e I think this should live closer to your code.\n\nOur code is spread across multiple libraries (Soong targets), across Android. I\u0027m using `build/soong` as a central \"neutral\" place to have this single `cc_defaults` so that I can DRY the other libraries (see how many CLs I need in this topic), instead of having to patch every single library individually.\n\nI am happy to define this in `package/modules/Virtualization` but then using it in `platform/bionic` doesn\u0027t seem right; WDYT?\n\n\u003e I believe the correct target feature to disable SVE is `+nosve`\n\nDone using `-sve`, as discussed offline. Thanks",
+      "parentUuid": "b4942383_04817dfb",
+      "revId": "14c4bc013a2ffff74c7a052d633d3b57ca3fc782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
