@@ -52,6 +52,24 @@
       "parentUuid": "b4942383_04817dfb",
       "revId": "14c4bc013a2ffff74c7a052d633d3b57ca3fc782",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42d2530a_ecb02dd2",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-08T20:32:15Z",
+      "side": 1,
+      "message": "I still don\u0027t understand why this would be \"baremetal\".  \"baremetal\" to me means \"no OS\", but doesn\u0027t say anything about which hardware it is running on.  At the very least this needs a detailed comment explaining why it exists and when it should be used.\n\nAlternatively, define it in `package/modules/Virtualization` and name it something more specific to your product, and then manually add the cflags to the bionic module with a detailed comment there if you don\u0027t want to reference your `package/modules/Virtualization` defaults.",
+      "parentUuid": "873235f8_ea3a9e0b",
+      "revId": "14c4bc013a2ffff74c7a052d633d3b57ca3fc782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
