@@ -64,6 +64,29 @@
       },
       "revId": "5d3d23195c41ef7fe9c3f927533c7c881de85d24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e75ee5_8481aa3c",
+        "filename": "cmd/release_config/release_config_lib/release_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1307230
+      },
+      "writtenOn": "2024-10-08T13:47:56Z",
+      "side": 1,
+      "message": "Can this output specifically where (verbose list is probably ideal) it is finding the same config in both projects for easier root causing.",
+      "range": {
+        "startLine": 299,
+        "startChar": 6,
+        "endLine": 299,
+        "endChar": 58
+      },
+      "revId": "5d3d23195c41ef7fe9c3f927533c7c881de85d24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
