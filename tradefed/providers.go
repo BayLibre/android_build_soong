@@ -6,6 +6,11 @@ import (
 	"github.com/google/blueprint"
 )
 
+type TestSuiteTag struct {
+	blueprint.BaseDependencyTag
+	// name string
+}
+
 // Data that test_module_config[_host] modules types will need from
 // their dependencies to write out build rules and AndroidMkEntries.
 type BaseTestProviderData struct {
@@ -28,6 +33,10 @@ type BaseTestProviderData struct {
 	LocalCertificate string
 	// Indicates if the base module was a unit test.
 	IsUnitTest bool
+	// Relative path to this modules testcase dir.
+	// TODO(rbraunstein): Only needed because I can't figure out how to get from singleton context.
+	TestcaseDir     android.InstallPath
+	TestcaseArchDir android.InstallPath
 }
 
 var BaseTestProviderKey = blueprint.NewProvider[BaseTestProviderData]()
