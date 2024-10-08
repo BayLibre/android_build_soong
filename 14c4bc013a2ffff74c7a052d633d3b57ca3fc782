@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5831e16_7d08aac8",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-08T17:42:33Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like generic baremetal defaults, it seems much more specific to your ARVM9 + EL1 case.  Somebody else\u0027s \"baremetal\" could be armv8.1.  I think this should live closer to your code.\n\nAlso, don\u0027t set `-march` in Android.bp files, that has caused problems like b/362860355.  Can you set `-Xclang -target-feature -Xclang -sve` instead?",
+      "revId": "14c4bc013a2ffff74c7a052d633d3b57ca3fc782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
