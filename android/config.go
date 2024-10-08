@@ -1692,6 +1692,10 @@ func (c *config) SoongDefinedSystemImage() string {
 	return ""
 }
 
+func (c *config) UseSoongGeneratedSystemImage() bool {
+	return Bool(c.productVariables.UseSoongGeneratedSystemImage)
+}
+
 func (c *config) EnforceSystemCertificate() bool {
 	return Bool(c.productVariables.EnforceSystemCertificate)
 }

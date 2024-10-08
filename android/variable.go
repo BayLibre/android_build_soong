@@ -426,6 +426,8 @@ type ProductVariables struct {
 	UseSoongSystemImage            *bool   `json:",omitempty"`
 	ProductSoongDefinedSystemImage *string `json:",omitempty"`
 
+	UseSoongGeneratedSystemImage *bool `json:",omitempty"`
+
 	EnforceProductPartitionInterface *bool `json:",omitempty"`
 
 	BoardUsesRecoveryAsBoot *bool `json:",omitempty"`

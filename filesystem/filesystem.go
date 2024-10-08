@@ -145,6 +145,14 @@ type FilesystemProperties struct {
 	Unchecked_module *bool `blueprint:"mutated"`
 }
 
+func GeneratedFilesystemModuleNameForPartition(cfg android.Config, partitionType string) string {
+	prefix := "soong"
+	if cfg.HasDeviceProduct() {
+		prefix = cfg.DeviceProduct()
+	}
+	return fmt.Sprintf("%s_generated_%s_image", prefix, partitionType)
+}
+
 // android_filesystem packages a set of modules and their transitive dependencies into a filesystem
 // image. The filesystem images are expected to be mounted in the target device, which means the
 // modules in the filesystem image are built for the target device (i.e. Android, not Linux host).
@@ -353,7 +361,10 @@ func (f *filesystem) copyPackagingSpecs(ctx android.ModuleContext, builder *andr
 }
 
 func (f *filesystem) copyFilesToProductOut(ctx android.ModuleContext, builder *android.RuleBuilder, rebasedDir android.OutputPath) {
-	if f.Name() != ctx.Config().SoongDefinedSystemImage() {
+	isSoongDefinedSystemImage := f.Name() == ctx.Config().SoongDefinedSystemImage()
+	isSoongGeneratedSystemImage := ctx.Config().UseSoongGeneratedSystemImage() &&
+		f.Name() == GeneratedFilesystemModuleNameForPartition(ctx.Config(), "system")
+	if !(isSoongDefinedSystemImage || isSoongGeneratedSystemImage) {
 		return
 	}
 	installPath := android.PathForModuleInPartitionInstall(ctx, f.partitionName())

@@ -68,21 +68,13 @@ func (f *filesystemCreator) createInternalModules(ctx android.LoadHookContext) {
 	}
 }
 
-func (f *filesystemCreator) generatedModuleNameForPartition(cfg android.Config, partitionType string) string {
-	prefix := "soong"
-	if cfg.HasDeviceProduct() {
-		prefix = cfg.DeviceProduct()
-	}
-	return fmt.Sprintf("%s_generated_%s_image", prefix, partitionType)
-}
-
 // Creates a soong module to build the given partition. Returns false if we can't support building
 // it.
 func (f *filesystemCreator) createPartition(ctx android.LoadHookContext, partitionType string) bool {
 	baseProps := &struct {
 		Name *string
 	}{
-		Name: proptools.StringPtr(f.generatedModuleNameForPartition(ctx.Config(), partitionType)),
+		Name: proptools.StringPtr(filesystem.GeneratedFilesystemModuleNameForPartition(ctx.Config(), partitionType)),
 	}
 
 	fsProps := &filesystem.FilesystemProperties{}
@@ -141,18 +133,16 @@ func (f *filesystemCreator) createPartition(ctx android.LoadHookContext, partiti
 	// - filesystemProperties.Build_logtags
 	// - filesystemProperties.Fsverity.Libs
 	// - systemImageProperties.Linker_config_src
-	var module android.Module
 	if partitionType == "system" {
-		module = ctx.CreateModule(filesystem.SystemImageFactory, baseProps, fsProps)
+		ctx.CreateModule(filesystem.SystemImageFactory, baseProps, fsProps)
 	} else {
-		module = ctx.CreateModule(filesystem.FilesystemFactory, baseProps, fsProps)
+		ctx.CreateModule(filesystem.FilesystemFactory, baseProps, fsProps)
 	}
-	module.HideFromMake()
 	return true
 }
 
 func (f *filesystemCreator) createDiffTest(ctx android.ModuleContext, partitionType string) android.Path {
-	partitionModuleName := f.generatedModuleNameForPartition(ctx.Config(), partitionType)
+	partitionModuleName := filesystem.GeneratedFilesystemModuleNameForPartition(ctx.Config(), partitionType)
 	systemImage := ctx.GetDirectDepWithTag(partitionModuleName, generatedFilesystemDepTag)
 	filesystemInfo, ok := android.OtherModuleProvider(ctx, systemImage, filesystem.FilesystemProvider)
 	if !ok {
@@ -196,7 +186,7 @@ var generatedFilesystemDepTag systemImageDepTagType
 
 func (f *filesystemCreator) DepsMutator(ctx android.BottomUpMutatorContext) {
 	for _, partitionType := range f.properties.Generated_partition_types {
-		ctx.AddDependency(ctx.Module(), generatedFilesystemDepTag, f.generatedModuleNameForPartition(ctx.Config(), partitionType))
+		ctx.AddDependency(ctx.Module(), generatedFilesystemDepTag, filesystem.GeneratedFilesystemModuleNameForPartition(ctx.Config(), partitionType))
 	}
 }
 
