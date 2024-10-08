@@ -141,13 +141,11 @@ func (f *filesystemCreator) createPartition(ctx android.LoadHookContext, partiti
 	// - filesystemProperties.Build_logtags
 	// - filesystemProperties.Fsverity.Libs
 	// - systemImageProperties.Linker_config_src
-	var module android.Module
 	if partitionType == "system" {
-		module = ctx.CreateModule(filesystem.SystemImageFactory, baseProps, fsProps)
+		ctx.CreateModule(filesystem.SystemImageFactory, baseProps, fsProps)
 	} else {
-		module = ctx.CreateModule(filesystem.FilesystemFactory, baseProps, fsProps)
+		ctx.CreateModule(filesystem.FilesystemFactory, baseProps, fsProps)
 	}
-	module.HideFromMake()
 	return true
 }
 
