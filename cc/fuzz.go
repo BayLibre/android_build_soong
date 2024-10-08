@@ -57,6 +57,77 @@ func (fuzzer *fuzzer) props() []interface{} {
 	return []interface{}{&fuzzer.Properties}
 }
 
+type fuzzTransitionMutator struct{}
+
+func (f *fuzzTransitionMutator) Split(ctx android.BaseModuleContext) []string {
+	return []string{""}
+}
+
+func (f *fuzzTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
+	m, ok := ctx.Module().(*Module)
+	if !ok {
+		return ""
+	}
+
+	if m.fuzzer == nil {
+		return ""
+	}
+
+	if m.sanitize == nil {
+		return ""
+	}
+
+	isFuzzerPointer := m.sanitize.getSanitizerBoolPtr(Fuzzer)
+	if isFuzzerPointer == nil || !*isFuzzerPointer {
+		return ""
+	}
+
+	if m.fuzzer.Properties.FuzzFramework != "" {
+		return m.fuzzer.Properties.FuzzFramework.Variant()
+	}
+
+	return sourceVariation
+}
+
+func (f *fuzzTransitionMutator) IncomingTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	m, ok := ctx.Module().(*Module)
+	if !ok {
+		return ""
+	}
+
+	if m.fuzzer == nil {
+		return ""
+	}
+
+	if m.sanitize == nil {
+		return ""
+	}
+
+	isFuzzerPointer := m.sanitize.getSanitizerBoolPtr(Fuzzer)
+	if isFuzzerPointer == nil || !*isFuzzerPointer {
+		return ""
+	}
+
+	return incomingVariation
+}
+
+func (f *fuzzTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, variation string) {
+	m, ok := ctx.Module().(*Module)
+	if !ok {
+		return
+	}
+
+	if m.fuzzer == nil {
+		return
+	}
+
+	if variation != "" {
+		m.fuzzer.Properties.FuzzFramework = fuzz.FrameworkFromVariant(variation)
+		m.SetHideFromMake()
+		m.SetPreventInstall()
+	}
+}
+
 func fuzzMutatorDeps(mctx android.BottomUpMutatorContext) {
 	currentModule, ok := mctx.Module().(*Module)
 	if !ok {
