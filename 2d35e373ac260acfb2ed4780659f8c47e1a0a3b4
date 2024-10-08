@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03694fde_e4fc358d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2024-10-08T18:25:49Z",
+      "side": 1,
+      "message": "Temporary -2 because there\u0027s an effort to fix the problematic code.",
+      "revId": "2d35e373ac260acfb2ed4780659f8c47e1a0a3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
