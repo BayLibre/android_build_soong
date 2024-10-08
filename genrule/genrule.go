@@ -667,7 +667,7 @@ func (g *Module) IDEInfo(ctx android.BaseModuleContext, dpInfo *android.IdeInfo)
 	}
 }
 
-func (g *Module) AndroidMk() android.AndroidMkData {
+func (g *Module) AndroidMk(ctx android.ConfigurableEvaluatorContext) android.AndroidMkData {
 	return android.AndroidMkData{
 		Class:      "ETC",
 		OutputFile: android.OptionalPathForPath(g.outputFiles[0]),

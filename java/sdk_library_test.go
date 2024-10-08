@@ -1180,14 +1180,15 @@ func TestJavaSdkLibraryDist(t *testing.T) {
 	for _, tt := range testCases {
 		t.Run(tt.module, func(t *testing.T) {
 			m := result.ModuleForTests(apiScopePublic.exportableStubsLibraryModuleName(tt.module), "android_common").Module().(*Library)
-			dists := m.Dists()
+			eval := m.ConfigurableEvaluator(android.PanickingConfigAndErrorContext(result.TestContext))
+			dists := m.Dists(eval)
 			if len(dists) != 1 {
 				t.Fatalf("expected exactly 1 dist entry, got %d", len(dists))
 			}
 			if g, w := String(dists[0].Dir), tt.distDir; g != w {
 				t.Errorf("expected dist dir %q, got %q", w, g)
 			}
-			if g, w := String(dists[0].Dest), tt.distStem; g != w {
+			if g, w := dists[0].GetDest(eval), tt.distStem; g != w {
 				t.Errorf("expected dist stem %q, got %q", w, g)
 			}
 		})

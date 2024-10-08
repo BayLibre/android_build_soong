@@ -101,7 +101,7 @@ func (m *customModule) setOutputFiles(ctx ModuleContext, defaultDistPaths Paths)
 	}
 }
 
-func (m *customModule) AndroidMk() AndroidMkData {
+func (m *customModule) AndroidMk(ctx ConfigurableEvaluatorContext) AndroidMkData {
 	return AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data AndroidMkData) {
 			m.data = data
@@ -264,7 +264,7 @@ func TestGetDistForGoals(t *testing.T) {
 	if len(entries) != 1 {
 		t.Errorf("Expected a single AndroidMk entry, got %d", len(entries))
 	}
-	androidMkLines := entries[0].GetDistForGoals(module)
+	androidMkLines := entries[0].GetDistForGoals(PanickingConfigAndErrorContext(ctx), module)
 
 	if len(androidMkLines) != len(expectedAndroidMkLines) {
 		t.Errorf(
@@ -355,7 +355,7 @@ func TestGetDistContributions(t *testing.T) {
 			if len(entries) != 1 {
 				t.Errorf("Expected a single AndroidMk entry, got %d", len(entries))
 			}
-			distContributions := entries[0].getDistContributions(module)
+			distContributions := entries[0].getDistContributions(PanickingConfigAndErrorContext(ctx), module)
 
 			if err := compareContributions(expectedContributions, distContributions); err != nil {
 				t.Errorf("%s\nExpected Contributions\n%sActualContributions\n%s",
