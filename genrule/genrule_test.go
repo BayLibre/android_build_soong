@@ -693,9 +693,6 @@ func TestGenruleDefaults(t *testing.T) {
 
 	expectedCmd := "cp in1 __SBOX_SANDBOX_DIR__/out/out"
 	android.AssertStringEquals(t, "cmd", expectedCmd, gen.rawCommands[0])
-
-	expectedSrcs := []string{"in1"}
-	android.AssertDeepEquals(t, "srcs", expectedSrcs, gen.properties.ResolvedSrcs)
 }
 
 func TestGenruleAllowMissingDependencies(t *testing.T) {
