@@ -281,8 +281,8 @@ type bootImageConfig struct {
 	// Target-dependent fields.
 	variants []*bootImageVariant
 
-	// Path of the preloaded classes file.
-	preloadedClassesFile string
+	// Paths of the preloaded classes files.
+	preloadedClassesFiles []string
 
 	// The "--compiler-filter" argument.
 	compilerFilter string
@@ -1096,12 +1096,14 @@ func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, p
 		cmd.FlagWithArg("--base=", ctx.Config().LibartImgDeviceBaseAddress())
 	}
 
-	if len(image.preloadedClassesFile) > 0 {
-		// We always expect a preloaded classes file to be available. However, if we cannot find it, it's
-		// OK to not pass the flag to dex2oat.
-		preloadedClassesPath := android.ExistentPathForSource(ctx, image.preloadedClassesFile)
-		if preloadedClassesPath.Valid() {
-			cmd.FlagWithInput("--preloaded-classes=", preloadedClassesPath.Path())
+	for _, preloadedClassesFile := range image.preloadedClassesFiles {
+		if len(preloadedClassesFile) > 0 {
+			// We always expect a preloaded classes file to be available. However, if we cannot find it, it's
+			// OK to not pass the flag to dex2oat.
+			preloadedClassesPath := android.ExistentPathForSource(ctx, preloadedClassesFile)
+			if preloadedClassesPath.Valid() {
+				cmd.FlagWithInput("--preloaded-classes=", preloadedClassesPath.Path())
+			}
 		}
 	}
 
