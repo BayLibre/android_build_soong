@@ -26,13 +26,13 @@ import (
 	"android/soong/rust"
 )
 
-func (a *apexBundle) AndroidMk() android.AndroidMkData {
+func (a *apexBundle) AndroidMk(ctx android.ConfigurableEvaluatorContext) android.AndroidMkData {
 	if a.properties.HideFromMake {
 		return android.AndroidMkData{
 			Disabled: true,
 		}
 	}
-	return a.androidMkForType()
+	return a.androidMkForType(ctx)
 }
 
 // nameInMake converts apexFileClass into the corresponding class name in Make.
@@ -236,7 +236,7 @@ func (a *apexBundle) writeRequiredModules(w io.Writer, moduleNames []string) {
 	android.AndroidMkEmitAssignList(w, "LOCAL_HOST_REQUIRED_MODULES", hostRequired)
 }
 
-func (a *apexBundle) androidMkForType() android.AndroidMkData {
+func (a *apexBundle) androidMkForType(ctx android.ConfigurableEvaluatorContext) android.AndroidMkData {
 	return android.AndroidMkData{
 		// While we do not provide a value for `Extra`, AconfigUpdateAndroidMkData may add some, which we must honor.
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
@@ -296,7 +296,7 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 					goal, a.installedFilesFile.String(), distFile)
 				fmt.Fprintf(w, "$(call declare-0p-target,%s)\n", a.installedFilesFile.String())
 			}
-			for _, dist := range data.Entries.GetDistForGoals(a) {
+			for _, dist := range data.Entries.GetDistForGoals(ctx, a) {
 				fmt.Fprintf(w, dist)
 			}
 

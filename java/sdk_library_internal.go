@@ -333,9 +333,9 @@ func (module *SdkLibrary) createDroidstubs(mctx android.DefaultableHookContext, 
 			{tag: "%s.removed-api.txt", pattern: "%s-removed.txt"},
 		} {
 			props.Dists = append(props.Dists, android.Dist{
-				Targets: []string{"sdk", "win_sdk"},
+				Targets: proptools.NewSimpleConfigurable([]string{"sdk", "win_sdk"}),
 				Dir:     distDir,
-				Dest:    proptools.StringPtr(fmt.Sprintf(p.pattern, module.distStem())),
+				Dest:    proptools.NewSimpleConfigurable(fmt.Sprintf(p.pattern, module.distStem())),
 				Tag:     proptools.StringPtr(fmt.Sprintf(p.tag, stubsTypeTagPrefix)),
 			})
 		}

@@ -1145,7 +1145,7 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 
 	// Generate an output file for dist as if strip: "all" is set on the module.
 	// Currently this is for layoutlib release process only.
-	for _, dist := range ctx.Module().(*Module).Dists() {
+	for _, dist := range ctx.Module().(*Module).Dists(ctx) {
 		if dist.Tag != nil && *dist.Tag == "stripped_all" {
 			strippedAllOutputFile := android.PathForModuleOut(ctx, "stripped_all", fileName)
 			transformStrip(ctx, outputFile, strippedAllOutputFile, StripFlags{Toolchain: flags.Toolchain})

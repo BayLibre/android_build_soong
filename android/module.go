@@ -162,11 +162,11 @@ type Dist struct {
 	// Copy the output of this module to the $DIST_DIR when `dist` is specified on the
 	// command line and any of these targets are also on the command line, or otherwise
 	// built
-	Targets []string `android:"arch_variant"`
+	Targets proptools.Configurable[[]string] `android:"arch_variant"`
 
 	// The name of the output artifact. This defaults to the basename of the output of
 	// the module.
-	Dest *string `android:"arch_variant"`
+	Dest proptools.Configurable[string] `android:"arch_variant,replace_instead_of_append"`
 
 	// The directory within the dist directory to store the artifact. Defaults to the
 	// top level directory ("").
@@ -188,6 +188,14 @@ type Dist struct {
 	// default output files provided by the modules, i.e. the result of calling
 	// OutputFiles("").
 	Tag *string `android:"arch_variant"`
+}
+
+func (d *Dist) GetDest(evaluator proptools.ConfigurableEvaluator) string {
+	return d.Dest.GetOrDefault(evaluator, "")
+}
+
+func (d *Dist) GetTargets(evaluator proptools.ConfigurableEvaluator) []string {
+	return d.Targets.GetOrDefault(evaluator, nil)
 }
 
 // NamedPath associates a path with a name. e.g. a license text path with a package name
@@ -1173,8 +1181,8 @@ func (m *ModuleBase) visibilityProperties() []visibilityProperty {
 	return m.visibilityPropertyInfo
 }
 
-func (m *ModuleBase) Dists() []Dist {
-	if len(m.distProperties.Dist.Targets) > 0 {
+func (m *ModuleBase) Dists(eval proptools.ConfigurableEvaluator) []Dist {
+	if len(m.distProperties.Dist.GetTargets(eval)) > 0 {
 		// Make a copy of the underlying Dists slice to protect against
 		// backing array modifications with repeated calls to this method.
 		distsCopy := append([]Dist(nil), m.distProperties.Dists...)
@@ -1186,7 +1194,7 @@ func (m *ModuleBase) Dists() []Dist {
 
 func (m *ModuleBase) GenerateTaggedDistFiles(ctx BaseModuleContext) TaggedDistFiles {
 	var distFiles TaggedDistFiles
-	for _, dist := range m.Dists() {
+	for _, dist := range m.Dists(ctx) {
 		// If no tag is specified then it means to use the default dist paths so use
 		// the special tag name which represents that.
 		tag := proptools.StringDefault(dist.Tag, DefaultDistTag)
@@ -2099,8 +2107,8 @@ func (m *ModuleBase) moduleInfoVariant(ctx ModuleContext) string {
 // name of the nested property to produce the full property, e.g. dist.dest or
 // dists[1].dir.
 func checkDistProperties(ctx *moduleContext, property string, dist *Dist) {
-	if dist.Dest != nil {
-		_, err := validateSafePath(*dist.Dest)
+	if dist.GetDest(ctx) != "" {
+		_, err := validateSafePath(dist.GetDest(ctx))
 		if err != nil {
 			ctx.PropertyErrorf(property+".dest", "%s", err.Error())
 		}

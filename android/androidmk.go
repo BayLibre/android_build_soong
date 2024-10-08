@@ -57,7 +57,7 @@ var PrepareForTestWithAndroidMk = GroupFixturePreparers(
 // Deprecated: Use AndroidMkEntriesProvider instead, especially if you're not going to use the
 // Custom function. It's easier to use and test.
 type AndroidMkDataProvider interface {
-	AndroidMk() AndroidMkData
+	AndroidMk(ctx ConfigurableEvaluatorContext) AndroidMkData
 	BaseModuleName() string
 }
 
@@ -334,7 +334,7 @@ type distCopy struct {
 }
 
 // Compute the contributions that the module makes to the dist.
-func (a *AndroidMkEntries) getDistContributions(mod blueprint.Module) *distContributions {
+func (a *AndroidMkEntries) getDistContributions(ctx ConfigurableEvaluatorContext, mod blueprint.Module) *distContributions {
 	amod := mod.(Module).base()
 	name := amod.BaseModuleName()
 
@@ -376,10 +376,12 @@ func (a *AndroidMkEntries) getDistContributions(mod blueprint.Module) *distContr
 		distContributions.licenseMetadataFile = info.LicenseMetadataFile
 	}
 
+	eval := amod.ConfigurableEvaluator(ctx)
+
 	// Iterate over this module's dist structs, merged from the dist and dists properties.
-	for _, dist := range amod.Dists() {
+	for _, dist := range amod.Dists(eval) {
 		// Get the list of goals this dist should be enabled for. e.g. sdk, droidcore
-		goals := strings.Join(dist.Targets, " ")
+		goals := strings.Join(dist.GetTargets(eval), " ")
 
 		// Get the tag representing the output files to be dist'd. e.g. ".jar", ".proguard_map"
 		var tag string
@@ -398,7 +400,7 @@ func (a *AndroidMkEntries) getDistContributions(mod blueprint.Module) *distContr
 			continue
 		}
 
-		if len(tagPaths) > 1 && (dist.Dest != nil || dist.Suffix != nil) {
+		if len(tagPaths) > 1 && (dist.GetDest(eval) != "" || dist.Suffix != nil) {
 			errorMessage := "%s: Cannot apply dest/suffix for more than one dist " +
 				"file for %q goals tag %q in module %s. The list of dist files, " +
 				"which should have a single element, is:\n%s"
@@ -420,9 +422,9 @@ func (a *AndroidMkEntries) getDistContributions(mod blueprint.Module) *distContr
 
 			dest := filepath.Base(path.String())
 
-			if dist.Dest != nil {
+			if dist.GetDest(eval) != "" {
 				var err error
-				if dest, err = validateSafePath(*dist.Dest); err != nil {
+				if dest, err = validateSafePath(dist.GetDest(eval)); err != nil {
 					// This was checked in ModuleBase.GenerateBuildActions
 					panic(err)
 				}
@@ -483,8 +485,8 @@ func generateDistContributionsForMake(distContributions *distContributions) []st
 
 // Compute the list of Make strings to declare phony goals and dist-for-goals
 // calls from the module's dist and dists properties.
-func (a *AndroidMkEntries) GetDistForGoals(mod blueprint.Module) []string {
-	distContributions := a.getDistContributions(mod)
+func (a *AndroidMkEntries) GetDistForGoals(ctx ConfigurableEvaluatorContext, mod blueprint.Module) []string {
+	distContributions := a.getDistContributions(ctx, mod)
 	if distContributions == nil {
 		return nil
 	}
@@ -522,7 +524,7 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 	a.Host_required = append(a.Host_required, amod.HostRequiredModuleNames()...)
 	a.Target_required = append(a.Target_required, amod.TargetRequiredModuleNames()...)
 
-	for _, distString := range a.GetDistForGoals(mod) {
+	for _, distString := range a.GetDistForGoals(ctx, mod) {
 		fmt.Fprintf(&a.header, distString)
 	}
 
@@ -859,7 +861,7 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, moduleInfoJSONs *
 		return nil
 	}
 
-	data := provider.AndroidMk()
+	data := provider.AndroidMk(ctx)
 
 	if data.Include == "" {
 		data.Include = "$(BUILD_PREBUILT)"
@@ -1486,10 +1488,12 @@ func (a *AndroidMkInfo) getDistContributions(ctx fillInEntriesContext, mod bluep
 		distContributions.licenseMetadataFile = info.LicenseMetadataFile
 	}
 
+	eval := amod.ConfigurableEvaluator(ctx)
+
 	// Iterate over this module's dist structs, merged from the dist and dists properties.
-	for _, dist := range amod.Dists() {
+	for _, dist := range amod.Dists(eval) {
 		// Get the list of goals this dist should be enabled for. e.g. sdk, droidcore
-		goals := strings.Join(dist.Targets, " ")
+		goals := strings.Join(dist.GetTargets(eval), " ")
 
 		// Get the tag representing the output files to be dist'd. e.g. ".jar", ".proguard_map"
 		var tag string
@@ -1508,7 +1512,7 @@ func (a *AndroidMkInfo) getDistContributions(ctx fillInEntriesContext, mod bluep
 			continue
 		}
 
-		if len(tagPaths) > 1 && (dist.Dest != nil || dist.Suffix != nil) {
+		if len(tagPaths) > 1 && (dist.GetDest(eval) != "" || dist.Suffix != nil) {
 			errorMessage := "%s: Cannot apply dest/suffix for more than one dist " +
 				"file for %q goals tag %q in module %s. The list of dist files, " +
 				"which should have a single element, is:\n%s"
@@ -1530,9 +1534,9 @@ func (a *AndroidMkInfo) getDistContributions(ctx fillInEntriesContext, mod bluep
 
 			dest := filepath.Base(path.String())
 
-			if dist.Dest != nil {
+			if dist.GetDest(eval) != "" {
 				var err error
-				if dest, err = validateSafePath(*dist.Dest); err != nil {
+				if dest, err = validateSafePath(dist.GetDest(eval)); err != nil {
 					// This was checked in ModuleBase.GenerateBuildActions
 					panic(err)
 				}

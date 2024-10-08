@@ -243,7 +243,7 @@ func (libbpf *libbpfProg) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	ctx.SetOutputFiles(libbpf.objs, "")
 }
 
-func (libbpf *libbpfProg) AndroidMk() android.AndroidMkData {
+func (libbpf *libbpfProg) AndroidMk(ctx android.ConfigurableEvaluatorContext) android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			var names []string
