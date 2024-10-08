@@ -116,7 +116,7 @@ func (d *dexer) effectiveOptimizeEnabled() bool {
 }
 
 func (d *DexProperties) resourceShrinkingEnabled(ctx android.ModuleContext) bool {
-	return !ctx.Config().Eng() && BoolDefault(d.Optimize.Optimized_shrink_resources, Bool(d.Optimize.Shrink_resources))
+	return false
 }
 
 func (d *DexProperties) optimizedResourceShrinkingEnabled(ctx android.ModuleContext) bool {
