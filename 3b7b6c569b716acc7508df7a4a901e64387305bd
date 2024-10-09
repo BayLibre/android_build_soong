@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b86742_3ef04722",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-09T23:27:33Z",
+      "side": 1,
+      "message": "Resolved with an offline discussion: these properties should be either specified in the product image filesystem module or the \"configuration\" module.",
+      "parentUuid": "3740e6c7_4413f5d8",
+      "revId": "3b7b6c569b716acc7508df7a4a901e64387305bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "513c2d46_e278b7ab",
