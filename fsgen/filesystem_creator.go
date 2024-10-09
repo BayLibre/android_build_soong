@@ -66,14 +66,45 @@ func (f *filesystemCreator) createInternalModules(ctx android.LoadHookContext) {
 			f.properties.Unsupported_partition_types = append(f.properties.Unsupported_partition_types, partitionType)
 		}
 	}
+	f.createDeviceModule(ctx)
 }
 
-func (f *filesystemCreator) generatedModuleNameForPartition(cfg android.Config, partitionType string) string {
+func (f *filesystemCreator) generatedModuleName(cfg android.Config, suffix string) string {
 	prefix := "soong"
 	if cfg.HasDeviceProduct() {
 		prefix = cfg.DeviceProduct()
 	}
-	return fmt.Sprintf("%s_generated_%s_image", prefix, partitionType)
+	return fmt.Sprintf("%s_generated_%s", prefix, suffix)
+}
+
+func (f *filesystemCreator) generatedModuleNameForPartition(cfg android.Config, partitionType string) string {
+	return f.generatedModuleName(cfg, fmt.Sprintf("%s_image", partitionType))
+}
+
+func (f *filesystemCreator) createDeviceModule(ctx android.LoadHookContext) {
+	baseProps := &struct {
+		Name *string
+	}{
+		Name: proptools.StringPtr(f.generatedModuleName(ctx.Config(), "device")),
+	}
+
+	deviceProps := &filesystem.AndroidDeviceProperties{}
+
+	productVars := ctx.Config().ProductVariables()
+
+	deviceProps.Brand = proptools.StringPtr(productVars.ProductBrand)
+	deviceProps.Device = proptools.StringPtr(productVars.ProductDevice)
+	deviceProps.Locales = productVars.ProductLocales
+	deviceProps.Manufacturer = proptools.StringPtr(productVars.ProductManufacturer)
+	deviceProps.Model = proptools.StringPtr(productVars.ProductModel)
+
+	// Currently, only the system partition module is created.
+	partitionProps := &filesystem.PartitionNameProperties{}
+	if android.InList("system", f.properties.Generated_partition_types) {
+		partitionProps.System_partition_name = proptools.StringPtr(f.generatedModuleNameForPartition(ctx.Config(), "system"))
+	}
+
+	ctx.CreateModule(filesystem.AndroidDeviceFactory, baseProps, deviceProps, partitionProps)
 }
 
 // Creates a soong module to build the given partition. Returns false if we can't support building
