@@ -70,6 +70,24 @@
       "parentUuid": "873235f8_ea3a9e0b",
       "revId": "14c4bc013a2ffff74c7a052d633d3b57ca3fc782",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19997675_4ab7f66f",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1882526
+      },
+      "writtenOn": "2024-10-09T10:31:03Z",
+      "side": 1,
+      "message": "\u003e \"baremetal\" to me means \"no OS\", but doesn\u0027t say anything about which hardware it is running on.\n\nAvailability of the hardware feature is secondary, here. The main issue is the compiler assuming that the feature has been properly set up and is ready to be used (which is a valid assumption in userspace/EL0). For example, SVE instructions will raise exceptions (even if the CPU supports them!) until `CPACR_EL1.ZEN` is set (caused b/369477948) so the \"baremetal\" software would be required to set it up, before entering any compiled code. In the case of libraries (which don\u0027t have an asm preamble), this assumption is even harder to make.\n\nRegarding \"`_baremetal`\", note that I\u0027m using this suffix to remain consistent will all the other already-existing libraries (see the related changes).\n\n\u003e At the very least this needs a detailed comment explaining why it exists and when it should be used.\n\nGood point; I\u0027ve added a comment.",
+      "parentUuid": "42d2530a_ecb02dd2",
+      "revId": "14c4bc013a2ffff74c7a052d633d3b57ca3fc782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
