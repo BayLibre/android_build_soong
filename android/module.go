@@ -2195,7 +2195,7 @@ func (k *katiInstall) FromGob(data *katiInstallGob) {
 	k.implicitDeps = data.ImplicitDeps
 	k.orderOnlyDeps = data.OrderOnlyDeps
 	k.executable = data.Executable
-	k.extraFiles = data.ExtraFiles
+	blueprint.ConvertPointerFromGob(&k.extraFiles, data.ExtraFiles)
 	k.absFrom = data.AbsFrom
 }
 

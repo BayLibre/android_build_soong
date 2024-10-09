@@ -65,30 +65,32 @@ type PackagingSpec struct {
 }
 
 type packagingSpecGob struct {
-	RelPathInPackage string
-	SrcPath          Path
-	SymlinkTarget    string
-	Executable       bool
-	Partition        string
-	SkipInstall      bool
-	AconfigPaths     *Paths
-	ArchType         ArchType
-	Overrides        *[]string
-	Owner            string
+	RelPathInPackage      string
+	SrcPath               Path
+	SymlinkTarget         string
+	Executable            bool
+	EffectiveLicenseFiles *Paths
+	Partition             string
+	SkipInstall           bool
+	AconfigPaths          *Paths
+	ArchType              ArchType
+	Overrides             *[]string
+	Owner                 string
 }
 
 func (p *PackagingSpec) ToGob() *packagingSpecGob {
 	return &packagingSpecGob{
-		RelPathInPackage: p.relPathInPackage,
-		SrcPath:          p.srcPath,
-		SymlinkTarget:    p.symlinkTarget,
-		Executable:       p.executable,
-		Partition:        p.partition,
-		SkipInstall:      p.skipInstall,
-		AconfigPaths:     p.aconfigPaths,
-		ArchType:         p.archType,
-		Overrides:        p.overrides,
-		Owner:            p.owner,
+		RelPathInPackage:      p.relPathInPackage,
+		SrcPath:               p.srcPath,
+		SymlinkTarget:         p.symlinkTarget,
+		Executable:            p.executable,
+		EffectiveLicenseFiles: p.effectiveLicenseFiles,
+		Partition:             p.partition,
+		SkipInstall:           p.skipInstall,
+		AconfigPaths:          p.aconfigPaths,
+		ArchType:              p.archType,
+		Overrides:             p.overrides,
+		Owner:                 p.owner,
 	}
 }
 
@@ -97,11 +99,12 @@ func (p *PackagingSpec) FromGob(data *packagingSpecGob) {
 	p.srcPath = data.SrcPath
 	p.symlinkTarget = data.SymlinkTarget
 	p.executable = data.Executable
+	blueprint.ConvertPointerFromGob(&p.effectiveLicenseFiles, data.EffectiveLicenseFiles)
 	p.partition = data.Partition
 	p.skipInstall = data.SkipInstall
-	p.aconfigPaths = data.AconfigPaths
+	blueprint.ConvertPointerFromGob(&p.aconfigPaths, data.AconfigPaths)
 	p.archType = data.ArchType
-	p.overrides = data.Overrides
+	blueprint.ConvertPointerFromGob(&p.overrides, data.Overrides)
 	p.owner = data.Owner
 }
 
