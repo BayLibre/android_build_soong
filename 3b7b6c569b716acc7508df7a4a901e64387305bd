@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3740e6c7_4413f5d8",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-09T22:05:45Z",
+      "side": 1,
+      "message": "I don\u0027t think having these properties defined in `android_device` would lead to variation creation of the partitions. IIUC these properties are either:\n- used to create `build.prop`\n- [propagated](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/product_config.mk;drc\u003dc4baa3aa7240e1b0cb013f853669aa419e55ee1e;l\u003d391) to the partitions and [used to create `build.prop`](https://cs.android.com/android/platform/superproject/+/android14-qpr3-release:build/make/core/sysprop.mk;drc\u003d53dd895407cf3d09c559f31240a1985005d8085d;l\u003d39) -- So in Soong, we would not need to propagate this to the partition modules and let `build_prop` module handle the values.",
+      "parentUuid": "c43d752d_bc61cad8",
+      "revId": "3b7b6c569b716acc7508df7a4a901e64387305bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "513c2d46_e278b7ab",
         "filename": "filesystem/android_device.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-09T21:41:45Z",
       "side": 1,
       "message": "What\u0027s wrong with just letting ctx.AddDependency give its usual error?",
+      "revId": "3b7b6c569b716acc7508df7a4a901e64387305bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc37a357_8f5eaec6",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-09T22:05:45Z",
+      "side": 1,
+      "message": "Simplified to just use `AddDependency(...)`",
+      "parentUuid": "513c2d46_e278b7ab",
       "revId": "3b7b6c569b716acc7508df7a4a901e64387305bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
