@@ -16,6 +16,24 @@
       "message": "Could you explain the motivation in the commit message and attach a bug?",
       "revId": "5ba76ede0279eda77501ca5ad554810fbf067d79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d5aee6b_e4d25e80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-09T00:15:16Z",
+      "side": 1,
+      "message": "Sorry, the motivation is [this comment thread](https://android-review.git.corp.google.com/c/platform/build/soong/+/3008132/comment/202cea46_e305c967/). I\u0027ve submitted the change without the select statement, but I thought it won\u0027t hurt to add the support given that I\u0027ve implemented it anyways, and this would be required if any of the properties read in `AndroidMK()` becomes configurable in the future. There is no associated bug filed as it was suggested from the comment, but I can file one if you\u0027d prefer this change to have a tracking bug.",
+      "parentUuid": "b925c79c_8c004fe6",
+      "revId": "5ba76ede0279eda77501ca5ad554810fbf067d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
