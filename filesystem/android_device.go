@@ -1,0 +1,94 @@
+// Copyright (C) 2024 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package filesystem
+
+import (
+	"android/soong/android"
+
+	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
+)
+
+type AndroidDeviceProperties struct {
+	// The Brand (for example, carrier) the software is customized for.
+	Brand *string
+	// Name of the industrial design. This is also the board name.
+	Device *string
+	// List of two-letter language code, two-letter country code pairs that
+	// describe several settings for the user, such as the UI language and time, date, and
+	// currency formatting.
+	Locales []string
+	// Name of the Manufacturer.
+	Manufacturer *string
+	// End-user-visible name for the end product.
+	Model *string
+}
+
+type PartitionNameProperties struct {
+	// Name of the Boot_partition_name partition filesystem module
+	Boot_partition_name *string
+	// Name of the System partition filesystem module
+	System_partition_name *string
+	// Name of the System_ext partition filesystem module
+	System_ext_partition_name *string
+	// Name of the Product partition filesystem module
+	Product_partition_name *string
+	// Name of the Vendor partition filesystem module
+	Vendor_partition_name *string
+}
+
+type androidDevice struct {
+	android.ModuleBase
+
+	deviceProps    AndroidDeviceProperties
+	partitionProps PartitionNameProperties
+}
+
+func AndroidDeviceFactory() android.Module {
+	module := &androidDevice{}
+	module.AddProperties(&module.deviceProps, &module.partitionProps)
+	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
+
+	return module
+}
+
+type partitionDepTagType struct {
+	blueprint.BaseDependencyTag
+}
+
+var filesystemDepTag partitionDepTagType
+
+func (a *androidDevice) DepsMutator(ctx android.BottomUpMutatorContext) {
+	addDependencyIfExists := func(dep *string) {
+		if dep != nil {
+			depStr := proptools.String(dep)
+			if ctx.OtherModuleExists(depStr) {
+				ctx.AddDependency(ctx.Module(), filesystemDepTag, depStr)
+			} else {
+				ctx.ModuleErrorf("%s added as a partition dependency but the module does not exist", depStr)
+			}
+		}
+	}
+
+	addDependencyIfExists(a.partitionProps.Boot_partition_name)
+	addDependencyIfExists(a.partitionProps.System_partition_name)
+	addDependencyIfExists(a.partitionProps.System_ext_partition_name)
+	addDependencyIfExists(a.partitionProps.Product_partition_name)
+	addDependencyIfExists(a.partitionProps.Vendor_partition_name)
+}
+
+func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+
+}
