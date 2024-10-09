@@ -920,6 +920,10 @@ func (x *classpath) FormRepeatedClassPath(optName string) []string {
 	return flags
 }
 
+func (x *classpath) FirstUniquePaths() classpath {
+	return append(classpath(nil), android.FirstUniquePaths(x.Paths())...)
+}
+
 // Convert a classpath to an android.Paths
 func (x *classpath) Paths() android.Paths {
 	return append(android.Paths(nil), (*x)...)
