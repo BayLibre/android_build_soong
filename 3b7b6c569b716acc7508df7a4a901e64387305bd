@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c43d752d_bc61cad8",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-09T21:41:45Z",
+      "side": 1,
+      "message": "Lets not add these properties yet. If these properties have any effect on the partitions, they should probably be properties of the relevant partitions instead. If they were on the android_device, the android_device would have to create new variants of its dependency partitions in order to get them to be built differently to include this information. Communicating this via variants is more complicated and potentially more computationally expensive.",
+      "revId": "3b7b6c569b716acc7508df7a4a901e64387305bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "513c2d46_e278b7ab",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-09T21:41:45Z",
+      "side": 1,
+      "message": "What\u0027s wrong with just letting ctx.AddDependency give its usual error?",
+      "revId": "3b7b6c569b716acc7508df7a4a901e64387305bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
