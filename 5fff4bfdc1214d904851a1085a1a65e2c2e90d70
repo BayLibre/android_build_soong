@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a950906_6fa2907b",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-09T18:40:28Z",
+      "side": 1,
+      "message": "Do we need to tolerate empty strings in the list?",
+      "range": {
+        "startLine": 1100,
+        "startChar": 2,
+        "endLine": 1100,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ef987f7e_7900e3b6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dexpreopt_bootjars.go",
+              "range": {
+                "startLine": 1100,
+                "startChar": 0,
+                "endLine": 1107,
+                "endChar": 0
+              },
+              "replacement": "\t\t// We always expect a preloaded classes file to be available. However, if we cannot find it, it\u0027s\n\t\t// OK to not pass the flag to dex2oat.\n\t\tpreloadedClassesPath :\u003d android.ExistentPathForSource(ctx, preloadedClassesFile)\n\t\tif preloadedClassesPath.Valid() {\n\t\t\tcmd.FlagWithInput(\"--preloaded-classes\u003d\", preloadedClassesPath.Path())\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5fff4bfdc1214d904851a1085a1a65e2c2e90d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
