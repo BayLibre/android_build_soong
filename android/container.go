@@ -335,21 +335,6 @@ func initializeApexContainer() *container {
 	apexContainer := &container{
 		name: "apex",
 		restricted: []restriction{
-			{
-				dependency: SystemContainer,
-				errorMessage: "Module belonging to Apex(es) is not allowed to depend on the " +
-					"modules belonging to the system partition. Either statically depend on the " +
-					"module or convert the depending module to java_sdk_library and depend on " +
-					"the stubs.",
-				allowedExceptions: []exceptionHandleFuncLabel{
-					checkStubs,
-					checkApexModule,
-					checkInCommonApexes,
-					checkApexIsNonUpdatable,
-					checkNotStaticOrDynamicDepTag,
-					checkGlobalAllowlistedDep,
-				},
-			},
 		},
 	}
 
