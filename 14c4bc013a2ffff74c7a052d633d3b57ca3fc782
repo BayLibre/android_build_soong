@@ -88,6 +88,24 @@
       "parentUuid": "42d2530a_ecb02dd2",
       "revId": "14c4bc013a2ffff74c7a052d633d3b57ca3fc782",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d7e1654_20b1fe74",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-09T20:01:48Z",
+      "side": 1,
+      "message": "I\u0027d like to see a top level comment on cc_baremetal_defaults that explains why it exists and when it should be used, with the target audience being developers who are using `build/soong` but are not familiar with your specific project/use case.",
+      "parentUuid": "19997675_4ab7f66f",
+      "revId": "14c4bc013a2ffff74c7a052d633d3b57ca3fc782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
