@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce85bf43_e3801d03",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-09T20:49:24Z",
+      "side": 1,
+      "message": "Could you also update the `TODO(jiyong)` at the linked location?",
+      "revId": "9de3e8d63d8c039f928be5e039d1f5248890ba59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
