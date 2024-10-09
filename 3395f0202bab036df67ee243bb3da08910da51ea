@@ -122,6 +122,24 @@
       "message": "Unused? Remove if so. I also think that `InstallDirPath()` is unused except for a test, could you change that test to be in terms of the files from the `InstallFilesProvider`?",
       "revId": "3395f0202bab036df67ee243bb3da08910da51ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36fb9c1d_b1ad5101",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1004907
+      },
+      "writtenOn": "2024-10-09T19:13:31Z",
+      "side": 1,
+      "message": "\u003e Unused? \n\nAck. I can remove the new `InstallDirPaths()` \n\n\u003e I also think that `InstallDirPath()` is unused except for a test\n\nThe old `InstallDirPath()` is used in some vendor code under `vendor/arm/mali/valhall`. I assume that means I should keep it? ...or do I need to figure out how to change the vendor code so it doesn\u0027t use it?\n\n\u003e could you change that test to be in terms of the files from the `InstallFilesProvider`?\n\nIf we end up keeping `InstallDirPath()` because some vendor build code needs it, do you still want me to do this? If so, can I get a bit of a hint about what you mean?",
+      "parentUuid": "ff77934d_5f207a01",
+      "revId": "3395f0202bab036df67ee243bb3da08910da51ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
