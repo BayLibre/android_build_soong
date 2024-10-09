@@ -87,6 +87,41 @@
       "parentUuid": "2e8fa5e7_e0ac02b1",
       "revId": "3395f0202bab036df67ee243bb3da08910da51ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13ee47d_d7f32bc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-09T01:10:54Z",
+      "side": 1,
+      "message": "I don\u0027t really have a problem with this, other than the ever-increasing complexity of prebuilt_etc. I like that it still keeps all the files under a single base folder.",
+      "parentUuid": "72a1df6b_a817a323",
+      "revId": "3395f0202bab036df67ee243bb3da08910da51ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff77934d_5f207a01",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-09T01:10:54Z",
+      "side": 1,
+      "message": "Unused? Remove if so. I also think that `InstallDirPath()` is unused except for a test, could you change that test to be in terms of the files from the `InstallFilesProvider`?",
+      "revId": "3395f0202bab036df67ee243bb3da08910da51ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
