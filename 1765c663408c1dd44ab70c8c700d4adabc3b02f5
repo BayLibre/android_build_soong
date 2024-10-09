@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79114933_460c09e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-09T23:24:03Z",
+      "side": 1,
+      "message": "@colefaust@google.com The use case of these variables are removed with https://android-review.git.corp.google.com/c/platform/build/soong/+/3302875/3..4 but I believe that we\u0027d need to export these in the future anyways.",
+      "revId": "1765c663408c1dd44ab70c8c700d4adabc3b02f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
