@@ -85,6 +85,10 @@ type filesystemCreatorProps struct {
 	Unsupported_partition_types []string `blueprint:"mutated"`
 }
 
+type basePropType struct {
+	Name *string
+}
+
 type filesystemCreator struct {
 	android.ModuleBase
 
@@ -127,11 +131,7 @@ func (f *filesystemCreator) generatedModuleNameForPartition(cfg android.Config, 
 }
 
 func (f *filesystemCreator) createDeviceModule(ctx android.LoadHookContext) {
-	baseProps := &struct {
-		Name *string
-	}{
-		Name: proptools.StringPtr(f.generatedModuleName(ctx.Config(), "device")),
-	}
+	baseProps := generateBaseProps(proptools.StringPtr(f.generatedModuleName(ctx.Config(), "device")))
 
 	// Currently, only the system partition module is created.
 	partitionProps := &filesystem.PartitionNameProperties{}
@@ -145,12 +145,30 @@ func (f *filesystemCreator) createDeviceModule(ctx android.LoadHookContext) {
 // Creates a soong module to build the given partition. Returns false if we can't support building
 // it.
 func (f *filesystemCreator) createPartition(ctx android.LoadHookContext, partitionType string) bool {
-	baseProps := &struct {
-		Name *string
-	}{
-		Name: proptools.StringPtr(f.generatedModuleNameForPartition(ctx.Config(), partitionType)),
+	baseProps := generateBaseProps(proptools.StringPtr(f.generatedModuleNameForPartition(ctx.Config(), partitionType)))
+
+	fsProps, supported := generateFsProps(ctx, partitionType)
+	if !supported {
+		return false
 	}
 
+	var module android.Module
+	if partitionType == "system" {
+		module = ctx.CreateModule(filesystem.SystemImageFactory, baseProps, fsProps)
+	} else {
+		module = ctx.CreateModule(filesystem.FilesystemFactory, baseProps, fsProps)
+	}
+	module.HideFromMake()
+	return true
+}
+
+func generateBaseProps(nameStringPtr *string) *basePropType {
+	return &basePropType{
+		Name: nameStringPtr,
+	}
+}
+
+func generateFsProps(ctx android.EarlyModuleContext, partitionType string) (*filesystem.FilesystemProperties, bool) {
 	fsProps := &filesystem.FilesystemProperties{}
 
 	// Don't build this module on checkbuilds, the soong-built partitions are still in-progress
@@ -178,7 +196,7 @@ func (f *filesystemCreator) createPartition(ctx android.LoadHookContext, partiti
 		// TODO(b/372522486): Support other FS types.
 		// Currently the android_filesystem module type only supports ext4:
 		// https://cs.android.com/android/platform/superproject/main/+/main:build/soong/filesystem/filesystem.go;l=416;drc=98047cfd07944b297a12d173453bc984806760d2
-		return false
+		return &filesystem.FilesystemProperties{}, false
 	}
 
 	fsProps.Base_dir = proptools.StringPtr(partitionType)
@@ -208,14 +226,8 @@ func (f *filesystemCreator) createPartition(ctx android.LoadHookContext, partiti
 	// - filesystemProperties.Build_logtags
 	// - filesystemProperties.Fsverity.Libs
 	// - systemImageProperties.Linker_config_src
-	var module android.Module
-	if partitionType == "system" {
-		module = ctx.CreateModule(filesystem.SystemImageFactory, baseProps, fsProps)
-	} else {
-		module = ctx.CreateModule(filesystem.FilesystemFactory, baseProps, fsProps)
-	}
-	module.HideFromMake()
-	return true
+
+	return fsProps, true
 }
 
 func (f *filesystemCreator) createDiffTest(ctx android.ModuleContext, partitionType string) android.Path {
@@ -273,7 +285,7 @@ func (f *filesystemCreator) GenerateAndroidBuildActions(ctx android.ModuleContex
 	}
 	f.HideFromMake()
 
-	content := generateBpContent(ctx, "system")
+	content := f.generateBpContent(ctx, "system")
 	generatedBp := android.PathForOutput(ctx, "soong_generated_product_config.bp")
 	android.WriteFileRule(ctx, generatedBp, content)
 	ctx.Phony("product_config_to_bp", generatedBp)
@@ -295,18 +307,19 @@ func installInSystem(ctx android.BottomUpMutatorContext, m android.Module) bool 
 		!m.InstallInVendor()
 }
 
-// TODO: assemble baseProps and fsProps here
-func generateBpContent(ctx android.EarlyModuleContext, partitionType string) string {
+func (f *filesystemCreator) generateBpContent(ctx android.EarlyModuleContext, partitionType string) string {
 	// Currently only system partition is supported
 	if partitionType != "system" {
 		return ""
 	}
 
+	baseProps := generateBaseProps(proptools.StringPtr(f.generatedModuleNameForPartition(ctx.Config(), partitionType)))
+	fsProps, _ := generateFsProps(ctx, partitionType)
 	depProps := &android.PackagingProperties{
 		Deps: android.NewSimpleConfigurable(android.SortedUniqueStrings(fsDeps)),
 	}
 
-	result, err := proptools.RepackProperties([]interface{}{depProps})
+	result, err := proptools.RepackProperties([]interface{}{baseProps, fsProps, depProps})
 	if err != nil {
 		ctx.ModuleErrorf(err.Error())
 	}
