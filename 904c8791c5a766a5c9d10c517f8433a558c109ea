@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75745fa9_afb28936",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-10T17:48:56Z",
+      "side": 1,
+      "message": "I think `!m.InstallInProduct()` is missing?",
+      "revId": "904c8791c5a766a5c9d10c517f8433a558c109ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
