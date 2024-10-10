@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f62ea57d_3b9d7337",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2024-10-10T18:31:35Z",
+      "side": 1,
+      "message": "So because release configs aren\u0027t contained within a single \u003c...\u003e/release directory -- instead multiple \u003c...\u003e/release directories contribute to a release config -- does this CL still make sense?",
+      "revId": "ab24e042665c1a94841c3b3b61e3a0647a2c74c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
