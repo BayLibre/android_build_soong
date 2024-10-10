@@ -16,6 +16,24 @@
       "message": "I think `!m.InstallInProduct()` is missing?",
       "revId": "904c8791c5a766a5c9d10c517f8433a558c109ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bf73830_0b803052",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-10-10T17:53:35Z",
+      "side": 1,
+      "message": "Actually it\u0027s not. There are some deps in cuttlefish bp that has `InstallInProduct()` return true. The logic combo here produces the closest output to the cuttlefish deps.",
+      "parentUuid": "75745fa9_afb28936",
+      "revId": "904c8791c5a766a5c9d10c517f8433a558c109ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
