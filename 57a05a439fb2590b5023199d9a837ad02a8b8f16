@@ -16,6 +16,24 @@
       "message": "This should be between the blueprint and blueprint/proptools line.",
       "revId": "57a05a439fb2590b5023199d9a837ad02a8b8f16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0706c1f_c35581e7",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-10-10T17:43:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f36c9e6_6c850f0e",
+      "revId": "57a05a439fb2590b5023199d9a837ad02a8b8f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
