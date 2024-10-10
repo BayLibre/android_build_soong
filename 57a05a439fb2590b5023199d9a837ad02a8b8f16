@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f36c9e6_6c850f0e",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-10T17:32:33Z",
+      "side": 1,
+      "message": "This should be between the blueprint and blueprint/proptools line.",
+      "revId": "57a05a439fb2590b5023199d9a837ad02a8b8f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
