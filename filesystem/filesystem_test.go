@@ -559,3 +559,29 @@ func TestFilterOutUnsupportedArches(t *testing.T) {
 		}
 	}
 }
+
+func TestErofsPartition(t *testing.T) {
+	result := fixture.RunTestWithBp(t, `
+		android_filesystem {
+			name: "erofs_partition",
+			type: "erofs",
+			erofs: {
+				compressor: "lz4hc,9",
+				compress_hints: "compress_hints.txt",
+				sparse: false,
+			},
+			deps: ["binfoo"],
+		}
+
+		cc_binary {
+			name: "binfoo",
+		}
+	`)
+
+	partition := result.ModuleForTests("erofs_partition", "android_common")
+	buildImageConfig := android.ContentFromFileRuleForTests(t, result.TestContext, partition.Output("prop"))
+	android.AssertStringDoesContain(t, "erofs fs type", buildImageConfig, "fs_type=erofs")
+	android.AssertStringDoesContain(t, "erofs fs type compress algorithm", buildImageConfig, "erofs_default_compressor=lz4hc,9")
+	android.AssertStringDoesContain(t, "erofs fs type compress hint", buildImageConfig, "erofs_default_compress_hints=compress_hints.txt")
+	android.AssertStringDoesContain(t, "erofs fs type sparse disabled", buildImageConfig, "erofs_sparse_flag=-s")
+}
