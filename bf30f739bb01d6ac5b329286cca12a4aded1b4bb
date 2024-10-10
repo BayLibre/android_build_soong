@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b67a1513_c4d2dfbe",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-10T06:11:34Z",
+      "side": 1,
+      "message": "This is how it worked before, so I\u0027d like to keep it that way for now. I can check if it\u0027s necessary and remove it in a followup. `installModuleName` is not used outside of the if block.",
+      "parentUuid": "c821b5f9_b912f6d3",
+      "range": {
+        "startLine": 1026,
+        "startChar": 2,
+        "endLine": 1028,
+        "endChar": 3
+      },
+      "revId": "bf30f739bb01d6ac5b329286cca12a4aded1b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bb716a8_35538b68",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-10T05:17:19Z",
       "side": 1,
       "message": "nit: Since we have one variant, this line can be dropped now",
+      "range": {
+        "startLine": 3129,
+        "startChar": 1,
+        "endLine": 3129,
+        "endChar": 163
+      },
+      "revId": "bf30f739bb01d6ac5b329286cca12a4aded1b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebf5de2e_61b4e924",
+        "filename": "java/java_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 3129,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-10T06:11:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bb716a8_35538b68",
       "range": {
         "startLine": 3129,
         "startChar": 1,
