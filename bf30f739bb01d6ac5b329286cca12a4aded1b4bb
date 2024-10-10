@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c821b5f9_b912f6d3",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-10T05:17:19Z",
+      "side": 1,
+      "message": "`InstallInTestCases` and java sdk library I think are mutually exclusive. Should this be outside this if block?",
+      "range": {
+        "startLine": 1026,
+        "startChar": 2,
+        "endLine": 1028,
+        "endChar": 3
+      },
+      "revId": "bf30f739bb01d6ac5b329286cca12a4aded1b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb716a8_35538b68",
+        "filename": "java/java_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 3129,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-10T05:17:19Z",
+      "side": 1,
+      "message": "nit: Since we have one variant, this line can be dropped now",
+      "range": {
+        "startLine": 3129,
+        "startChar": 1,
+        "endLine": 3129,
+        "endChar": 163
+      },
+      "revId": "bf30f739bb01d6ac5b329286cca12a4aded1b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
