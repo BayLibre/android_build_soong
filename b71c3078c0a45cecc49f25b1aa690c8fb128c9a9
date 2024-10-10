@@ -33,6 +33,40 @@
       "message": "As we talked in the email thread, I\u0027ll upload changes to add DirectoryPath as a follow-up change.",
       "revId": "b71c3078c0a45cecc49f25b1aa690c8fb128c9a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be9c8026_d31372c2",
+        "filename": "android/dirgroup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-10T21:33:48Z",
+      "side": 1,
+      "message": "Please don\u0027t use `SetOutputFiles`, but instead create your own provider.",
+      "revId": "b71c3078c0a45cecc49f25b1aa690c8fb128c9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea28aad2_1801bb39",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-10T21:33:48Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be an implicit. The globs will rerun and update the file list if the directory changed.",
+      "revId": "b71c3078c0a45cecc49f25b1aa690c8fb128c9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
