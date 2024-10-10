@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84643203_e71d148c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-10T20:04:37Z",
+      "side": 1,
+      "message": "Changing the `type` to `erofs` builds fine locally for `generic_system_image`, but I have not verified whether it boots fine.\n\nI am planning to change `generic_system_image` to use `erofs` today/tomorrow, and will do more thorough testing during that.",
+      "parentUuid": "772c7205_9facc189",
+      "revId": "2a1e4ab07113937bb17d1ea3270ea5608cdbdfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79dfa234_ffcebe7f",
@@ -65,6 +83,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7df1c488_e164384c",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-10T20:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26ce83b5_8514efc4",
+      "range": {
+        "startLine": 148,
+        "startChar": 45,
+        "endLine": 149,
+        "endChar": 27
+      },
+      "revId": "2a1e4ab07113937bb17d1ea3270ea5608cdbdfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80cc6d3f_9745550d",
@@ -78,6 +120,24 @@
       "writtenOn": "2024-10-10T18:27:07Z",
       "side": 1,
       "message": "Please make the property affirmative, `Sparse` instead of `SparseDisabled`. It can still default to `true` though.",
+      "revId": "2a1e4ab07113937bb17d1ea3270ea5608cdbdfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e5fafd9_3936e134",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-10T20:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80cc6d3f_9745550d",
       "revId": "2a1e4ab07113937bb17d1ea3270ea5608cdbdfd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
