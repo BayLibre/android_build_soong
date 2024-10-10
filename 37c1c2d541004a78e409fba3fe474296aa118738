@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34c14ae9_aee5acf7",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-10T22:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5523a49d_4803d372",
+      "revId": "37c1c2d541004a78e409fba3fe474296aa118738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0d8956c_babc7e11",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-10T22:12:10Z",
       "side": 1,
       "message": "Doesn\u0027t adding the -s flag make it sparse? in the linked make code, the -s comes in the else part of the `$(if)`",
+      "revId": "37c1c2d541004a78e409fba3fe474296aa118738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48359b19_7ee22b38",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-10T22:36:08Z",
+      "side": 1,
+      "message": "Good catch, fixed.",
+      "parentUuid": "e0d8956c_babc7e11",
       "revId": "37c1c2d541004a78e409fba3fe474296aa118738",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

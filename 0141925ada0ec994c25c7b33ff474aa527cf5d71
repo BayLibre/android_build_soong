@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a6579c_89b2508a",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-10T22:36:08Z",
+      "side": 1,
+      "message": "My knowledge on these technologies is limited, so I have added a note to consult `external/erofs-utils/README` for better documentation.",
+      "parentUuid": "37b2f720_5088d13e",
+      "revId": "0141925ada0ec994c25c7b33ff474aa527cf5d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b855d02_b90bbeda",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-10T22:08:53Z",
       "side": 1,
       "message": "Could you error out if any of the erofs properties are set and the fsType is not erofs?",
+      "revId": "0141925ada0ec994c25c7b33ff474aa527cf5d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "559da016_35c81d9c",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-10T22:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b855d02_b90bbeda",
       "revId": "0141925ada0ec994c25c7b33ff474aa527cf5d71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
