@@ -105,6 +105,24 @@
       "parentUuid": "6179e02b_cf520920",
       "revId": "08348d29049061a90dd4da8bb4ed6638acf84c98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f98a3e_eb45ec6e",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2024-10-10T18:54:05Z",
+      "side": 1,
+      "message": "Yeah, reverting the source language back to how it previously looked would be fine with me.\n\nBut If you\u0027d prefer to avoid doing anything until we\u0027re more certain what the future looks like that\u0027s fine with me (that\u0027s probably the preferred choice for me just to reduce churn, but I think the folks I\u0027m arguing on behalf of want the old syntax back ASAP). It sounds like the end-state will be something like:\n\n```\nfoo # ndk\u003d2026Q4 llndk\u003d2026Q4 ...\n```\n\nbut I don\u0027t think we know enough yet to predict it accurately. I\u0027m okay waiting until we\u0027ve got a better idea of what we need.",
+      "parentUuid": "9f5fe681_e490b377",
+      "revId": "08348d29049061a90dd4da8bb4ed6638acf84c98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
