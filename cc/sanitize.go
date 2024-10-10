@@ -1830,13 +1830,8 @@ func sanitizerLibrariesTxtFactory() android.Module {
 
 type sanitizerLibraryDependencyTag struct {
 	blueprint.BaseDependencyTag
+	android.AlwaysAllowDisabledModuleDependencyTag
 }
-
-func (t sanitizerLibraryDependencyTag) AllowDisabledModuleDependency(target android.Module) bool {
-	return true
-}
-
-var _ android.AllowDisabledModuleDependency = (*sanitizerLibraryDependencyTag)(nil)
 
 func (txt *sanitizerLibrariesTxtModule) DepsMutator(actx android.BottomUpMutatorContext) {
 	targets := actx.Config().Targets[android.Android]
