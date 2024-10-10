@@ -158,6 +158,24 @@
       "parentUuid": "36fb9c1d_b1ad5101",
       "revId": "3395f0202bab036df67ee243bb3da08910da51ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d9e955_ae63c919",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1004907
+      },
+      "writtenOn": "2024-10-10T01:26:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9470b0da_fc80ae24",
+      "revId": "3395f0202bab036df67ee243bb3da08910da51ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
