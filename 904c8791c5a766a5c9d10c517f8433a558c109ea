@@ -52,6 +52,24 @@
       "parentUuid": "0bf73830_0b803052",
       "revId": "904c8791c5a766a5c9d10c517f8433a558c109ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06995d5a_04410a7f",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-10T18:05:14Z",
+      "side": 1,
+      "message": "Alternatively, do you think that the `installInSystem(...)` method can be replaced with [`ModuleBase.Platform()`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/module.go;drc\u003d527f3ad099cbe1cf9a25fa1bb901b16f0d2d2d9b;l\u003d1293)?",
+      "parentUuid": "8a88ec1d_dc4d11cf",
+      "revId": "904c8791c5a766a5c9d10c517f8433a558c109ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
