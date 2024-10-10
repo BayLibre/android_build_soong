@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5523a49d_4803d372",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-10T22:12:10Z",
+      "side": 1,
+      "message": "Use `proptools.BoolDefault`",
+      "revId": "37c1c2d541004a78e409fba3fe474296aa118738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d8956c_babc7e11",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-10T22:12:10Z",
+      "side": 1,
+      "message": "Doesn\u0027t adding the -s flag make it sparse? in the linked make code, the -s comes in the else part of the `$(if)`",
+      "revId": "37c1c2d541004a78e409fba3fe474296aa118738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
