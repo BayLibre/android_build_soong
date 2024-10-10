@@ -2629,9 +2629,8 @@ func outputFilesForModule(ctx PathContext, module blueprint.Module, tag string) 
 		}
 		paths := sourceFileProducer.Srcs()
 		return paths, nil
-	} else {
-		return nil, fmt.Errorf("module %q is not a SourceFileProducer or having valid output file for tag %q", pathContextName(ctx, module), tag)
 	}
+	return nil, fmt.Errorf("module %q is not a SourceFileProducer or having valid output file for tag %q", pathContextName(ctx, module), tag)
 }
 
 // This method uses OutputFilesProvider for output files

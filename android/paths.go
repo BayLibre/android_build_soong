@@ -591,9 +591,14 @@ func getPathsFromModuleDep(ctx ModuleWithDepsPathContext, path, moduleName, tag 
 	outputFiles, err := outputFilesForModule(ctx, module, tag)
 	if outputFiles != nil && err == nil {
 		return outputFiles, nil
-	} else {
-		return nil, err
 	}
+	// TODO(b/358302178): Remove this after DirectoryPaths support is implemented.
+	if mctx, ok := ctx.(OtherModuleProviderContext); ok {
+		if dirProvider, ok := OtherModuleProvider(mctx, module, DirProvider); ok {
+			return dirProvider.Dirs, nil
+		}
+	}
+	return nil, err
 }
 
 // GetModuleFromPathDep will return the module that was added as a dependency automatically for
