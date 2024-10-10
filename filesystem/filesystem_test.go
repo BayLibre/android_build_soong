@@ -559,3 +559,21 @@ func TestFilterOutUnsupportedArches(t *testing.T) {
 		}
 	}
 }
+
+func TestErofsPartition(t *testing.T) {
+	result := fixture.RunTestWithBp(t, `
+		android_filesystem {
+			name: "erofs_partition",
+			type: "erofs",
+			deps: ["binfoo"],
+		}
+
+		cc_binary {
+			name: "binfoo",
+		}
+	`)
+
+	partition := result.ModuleForTests("erofs_partition", "android_common")
+	buildImageConfig := android.ContentFromFileRuleForTests(t, result.TestContext, partition.Output("prop"))
+	android.AssertStringDoesContain(t, "erofs fs type", buildImageConfig, "fs_type=erofs")
+}
