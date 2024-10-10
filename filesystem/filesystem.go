@@ -192,7 +192,7 @@ const (
 	erofsType
 	compressedCpioType
 	cpioType // uncompressed
-	unknown
+	Unknown
 )
 
 type FilesystemInfo struct {
@@ -202,8 +202,7 @@ type FilesystemInfo struct {
 
 var FilesystemProvider = blueprint.NewProvider[FilesystemInfo]()
 
-func (f *filesystem) fsType(ctx android.ModuleContext) fsType {
-	typeStr := proptools.StringDefault(f.properties.Type, "ext4")
+func GetFsTypeFromString(ctx android.EarlyModuleContext, typeStr string) fsType {
 	switch typeStr {
 	case "ext4":
 		return ext4Type
@@ -215,8 +214,13 @@ func (f *filesystem) fsType(ctx android.ModuleContext) fsType {
 		return cpioType
 	default:
 		ctx.PropertyErrorf("type", "%q not supported", typeStr)
-		return unknown
+		return Unknown
 	}
+
+}
+
+func (f *filesystem) fsType(ctx android.ModuleContext) fsType {
+	return GetFsTypeFromString(ctx, proptools.StringDefault(f.properties.Type, "ext4"))
 }
 
 func (f *filesystem) installFileName() string {
