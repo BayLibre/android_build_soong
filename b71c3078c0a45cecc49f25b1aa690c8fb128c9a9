@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf9e615_4f6b5fe1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-10T17:14:39Z",
+      "side": 1,
+      "message": "Can you add a lot more information on why this is necessary?  In particular, why is a filegroup with a glob not sufficient?",
+      "revId": "b71c3078c0a45cecc49f25b1aa690c8fb128c9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bd3d29f1_c27d92ab",
