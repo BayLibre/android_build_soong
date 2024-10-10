@@ -106,6 +106,24 @@
       "parentUuid": "8a88ec1d_dc4d11cf",
       "revId": "904c8791c5a766a5c9d10c517f8433a558c109ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af077f94_e08df96a",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-10T18:41:11Z",
+      "side": 1,
+      "message": "Acknowledged. I don\u0027t think the source of truth is the bp defined generic system image though. It should be the make-generated system image and the partition-specific properties in the bp files. Happy to discuss more in the followup changes.",
+      "parentUuid": "6ae37a68_63efb23c",
+      "revId": "904c8791c5a766a5c9d10c517f8433a558c109ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
