@@ -88,6 +88,24 @@
       "parentUuid": "06995d5a_04410a7f",
       "revId": "904c8791c5a766a5c9d10c517f8433a558c109ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ae37a68_63efb23c",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-10-10T18:07:04Z",
+      "side": 1,
+      "message": "Cuttlefish system image has a checked-in bp file which is used as a reference for our auto-generated system image. Let\u0027s say we use the logic here to generate an cuttlefish system image bp, it should be as close to the checked-in bp file as possible (the checked-in bp is like a source of truth here, because it has been proved to be working). Plus if this logic produces more discrepancy than the other combos, we can always update it.",
+      "parentUuid": "8a88ec1d_dc4d11cf",
+      "revId": "904c8791c5a766a5c9d10c517f8433a558c109ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
