@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "772c7205_9facc189",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-10T18:27:07Z",
+      "side": 1,
+      "message": "Have you tested that an erofs image actually builds correctly? potentially by changing the generic_system_image to erofs locally?",
+      "revId": "2a1e4ab07113937bb17d1ea3270ea5608cdbdfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79dfa234_ffcebe7f",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 1
@@ -20,6 +37,47 @@
         "endLine": 149,
         "endChar": 27
       },
+      "revId": "2a1e4ab07113937bb17d1ea3270ea5608cdbdfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ce83b5_8514efc4",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-10T18:27:07Z",
+      "side": 1,
+      "message": "No, I think we should set them as properties directly on the partition module. The board config properties are just used to control the filesystem and nothing else. Could you drop the mutated tags and the reference to board config in the comment?",
+      "parentUuid": "79dfa234_ffcebe7f",
+      "range": {
+        "startLine": 148,
+        "startChar": 45,
+        "endLine": 149,
+        "endChar": 27
+      },
+      "revId": "2a1e4ab07113937bb17d1ea3270ea5608cdbdfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80cc6d3f_9745550d",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-10T18:27:07Z",
+      "side": 1,
+      "message": "Please make the property affirmative, `Sparse` instead of `SparseDisabled`. It can still default to `true` though.",
       "revId": "2a1e4ab07113937bb17d1ea3270ea5608cdbdfd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
