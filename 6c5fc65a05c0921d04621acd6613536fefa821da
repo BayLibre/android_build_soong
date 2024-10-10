@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "852637ec_cd160a3c",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-10T22:48:01Z",
+      "side": 1,
+      "message": "oh sorry, one more thing -- do you mind setting `System_ext_partition_name` as well here? This can be done in a follow up change.",
+      "revId": "6c5fc65a05c0921d04621acd6613536fefa821da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
