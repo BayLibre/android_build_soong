@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c5d85bc_c72f361c",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-10T20:00:11Z",
+      "side": 1,
+      "message": "Can you leave a comment describing why AddDependency returns nil entries in this scenario?",
+      "range": {
+        "startLine": 1069,
+        "startChar": 5,
+        "endLine": 1069,
+        "endChar": 19
+      },
+      "revId": "6978879d29533cd9d39c836c4410bd5acbdd0353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
