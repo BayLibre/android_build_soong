@@ -40,6 +40,30 @@
       ],
       "revId": "5fff4bfdc1214d904851a1085a1a65e2c2e90d70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3061350_7f3b85b1",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-10-10T10:42:31Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "3a950906_6fa2907b",
+      "range": {
+        "startLine": 1100,
+        "startChar": 2,
+        "endLine": 1100,
+        "endChar": 36
+      },
+      "revId": "5fff4bfdc1214d904851a1085a1a65e2c2e90d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
