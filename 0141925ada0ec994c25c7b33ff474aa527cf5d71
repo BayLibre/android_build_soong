@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b2f720_5088d13e",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-10T22:08:53Z",
+      "side": 1,
+      "message": "If you could add documentation to these methods that would be good, but if you don\u0027t feel like you understand them well enough then it\u0027s fine.",
+      "revId": "0141925ada0ec994c25c7b33ff474aa527cf5d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b855d02_b90bbeda",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-10T22:08:53Z",
+      "side": 1,
+      "message": "Could you error out if any of the erofs properties are set and the fsType is not erofs?",
+      "revId": "0141925ada0ec994c25c7b33ff474aa527cf5d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
