@@ -61,6 +61,7 @@ var commandMap map[string]CommandFunc = map[string]CommandFunc{
 	"get":   GetCommand,
 	"set":   SetCommand,
 	"trace": GetCommand, // Also handled by GetCommand
+	"root":  RootCommand,
 }
 
 // Find the top of the release config contribution directory.
@@ -330,6 +331,28 @@ func SetCommand(configs *rc_lib.ReleaseConfigs, commonFlags Flags, cmd string, a
 	}
 	updatedFiles = append(updatedFiles, flagPath)
 	fmt.Printf("Added/Updated: %s\n", strings.Join(updatedFiles, " "))
+	return nil
+}
+
+func RootCommand(configs *rc_lib.ReleaseConfigs, commonFlags Flags, cmd string, args []string) error {
+	targetRelease := commonFlags.targetReleases[0]
+	release, err := configs.GetReleaseConfig(targetRelease)
+	if err != nil {
+		return err
+	}
+
+	name := "RELEASE_PLATFORM_VERSION" // use a build flag that is guaranteed to always exist
+	flagArtifact, ok := release.FlagArtifacts[name]
+	if !ok {
+		return fmt.Errorf("Unknown build flag %s", name)
+	}
+
+	mapDir, err := configs.GetFlagValueDirectory(release, flagArtifact)
+	if err != nil {
+		return err
+	}
+	fmt.Printf("%s\n", mapDir)
+
 	return nil
 }
 
