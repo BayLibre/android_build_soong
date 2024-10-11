@@ -312,7 +312,8 @@ type ProductVariables struct {
 	MinimizeJavaDebugInfo        *bool    `json:",omitempty"`
 	Build_from_text_stub         *bool    `json:",omitempty"`
 
-	BuildType *string `json:",omitempty"`
+	BuildType    *string `json:",omitempty"`
+	BuildVariant *string `json:",omitempty"`
 
 	Check_elf_files *bool `json:",omitempty"`
 

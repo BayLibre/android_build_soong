@@ -25,16 +25,8 @@ import sys
 
 TEST_KEY_DIR = "build/make/target/product/security"
 
-def get_build_variant(product_config):
-  if product_config["Eng"]:
-    return "eng"
-  elif product_config["Debuggable"]:
-    return "userdebug"
-  else:
-    return "user"
-
 def get_build_flavor(product_config):
-  build_flavor = product_config["DeviceProduct"] + "-" + get_build_variant(product_config)
+  build_flavor = product_config["DeviceProduct"] + "-" + product_config["BuildVariant"]
   if "address" in product_config.get("SanitizeDevice", []) and "_asan" not in build_flavor:
     build_flavor += "_asan"
   return build_flavor
@@ -70,7 +62,6 @@ def parse_args():
 
   config["BuildFlavor"] = get_build_flavor(config)
   config["BuildKeys"] = get_build_keys(config)
-  config["BuildVariant"] = get_build_variant(config)
 
   config["BuildFingerprint"] = args.build_fingerprint_file.read().strip()
   config["BuildHostname"] = args.build_hostname_file.read().strip()

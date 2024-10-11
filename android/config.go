@@ -1240,6 +1240,10 @@ func (c *config) BuildType() string {
 	return String(c.productVariables.BuildType)
 }
 
+func (c *config) BuildVariant() string {
+	return String(c.productVariables.BuildVariant)
+}
+
 // DevicePrimaryArchType returns the ArchType for the first configured device architecture, or
 // Common if there are no device architectures.
 func (c *config) DevicePrimaryArchType() ArchType {
