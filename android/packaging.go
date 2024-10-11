@@ -244,6 +244,10 @@ func (p *PackagingBase) packagingBase() *PackagingBase {
 	return p
 }
 
+func (p *PackagingBase) PackagingBaseProperties() PackagingProperties {
+	return p.properties
+}
+
 // From deps and multilib.*.deps, select the dependencies that are for the given arch deps is for
 // the current archicture when this module is not configured for multi target. When configured for
 // multi target, deps is selected for each of the targets and is NOT selected for the current
