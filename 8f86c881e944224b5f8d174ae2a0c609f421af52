@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5b0d5bc_a63a1d40",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-11T02:10:24Z",
+      "side": 1,
+      "message": "driveby comment: Can we change this to map[partition][product_packages] in a followup CL? The use case for this will be to determine the deps of other partitions like `system_ext`",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "8f86c881e944224b5f8d174ae2a0c609f421af52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
