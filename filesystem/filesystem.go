@@ -517,9 +517,9 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (propFile android.
 			// https://source.corp.google.com/h/googleplex-android/platform/build/+/88b1c67239ca545b11580237242774b411f2fed9:core/Makefile;l=2292;bpv=1;bpt=0;drc=ea8f34bc1d6e63656b4ec32f2391e9d54b3ebb6b
 			addStr("erofs_sparse_flag", "-s")
 		}
-	}
-	// Raise an exception if the propfile contains erofs properties, but the fstype is not erofs
-	if fs := fsTypeStr(f.fsType(ctx)); fs != "erofs" && (f.properties.Erofs.Compressor != nil || f.properties.Erofs.Compress_hints != nil || f.properties.Erofs.Sparse != nil) {
+	} else if f.properties.Erofs.Compressor != nil || f.properties.Erofs.Compress_hints != nil || f.properties.Erofs.Sparse != nil {
+		// Raise an exception if the propfile contains erofs properties, but the fstype is not erofs
+		fs := fsTypeStr(f.fsType(ctx))
 		ctx.PropertyErrorf("erofs", "erofs is non-empty, but FS type is %s\n. Please delete erofs properties if this partition should use %s\n", fs, fs)
 	}
 
