@@ -244,6 +244,10 @@ func (p *PackagingBase) packagingBase() *PackagingBase {
 	return p
 }
 
+func (p *PackagingBase) PackagingBaseProperties() PackagingProperties {
+	return p.properties
+}
+
 // From deps and multilib.*.deps, select the dependencies that are for the given arch deps is for
 // the current archicture when this module is not configured for multi target. When configured for
 // multi target, deps is selected for each of the targets and is NOT selected for the current
@@ -318,7 +322,7 @@ func (p *PackagingBase) getDepsForArch(ctx BaseModuleContext, arch ArchType) []s
 	return FirstUniqueStrings(ret)
 }
 
-func getSupportedTargets(ctx BaseModuleContext) []Target {
+func GetSupportedTargets(ctx BaseModuleContext) []Target {
 	var ret []Target
 	// The current and the common OS targets are always supported
 	ret = append(ret, ctx.Target())
@@ -333,7 +337,7 @@ func getSupportedTargets(ctx BaseModuleContext) []Target {
 // getLib32Target returns the 32-bit target from the list of targets this module supports. If this
 // module doesn't support 32-bit target, nil is returned.
 func getLib32Target(ctx BaseModuleContext) *Target {
-	for _, t := range getSupportedTargets(ctx) {
+	for _, t := range GetSupportedTargets(ctx) {
 		if t.Arch.ArchType.Multilib == "lib32" {
 			return &t
 		}
@@ -372,7 +376,7 @@ func (PackagingItemAlwaysDepTag) IsPackagingItem() bool {
 
 // See PackageModule.AddDeps
 func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.DependencyTag) {
-	for _, t := range getSupportedTargets(ctx) {
+	for _, t := range GetSupportedTargets(ctx) {
 		for _, dep := range p.getDepsForArch(ctx, t.Arch.ArchType) {
 			if p.IgnoreMissingDependencies && !ctx.OtherModuleExists(dep) {
 				continue
@@ -389,7 +393,7 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 	var overridden []string
 
 	var arches []ArchType
-	for _, target := range getSupportedTargets(ctx) {
+	for _, target := range GetSupportedTargets(ctx) {
 		arches = append(arches, target.Arch.ArchType)
 	}
 
