@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "409671e0_a6c794aa",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-11T20:58:19Z",
+      "side": 1,
+      "message": "Can the setting of `Deps` property that `setDepsMutator` does be moved to `DepsMuatator`, and before `AddDependency`?",
+      "parentUuid": "ecd150d7_0d208b8f",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 43
+      },
+      "revId": "0c14b55145f7d01c77def2fabf43ccad0f769484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b116594_9bf165c5",
         "filename": "fsgen/filesystem_creator.go",
         "patchSetId": 2
