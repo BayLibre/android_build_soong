@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9c254e_500154a0",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-11T20:54:54Z",
+      "side": 1,
+      "message": "I\u0027ve created a neverallow rule to disallow setting `is_auto_generated` outside of `build/soong/fsgen`",
+      "parentUuid": "15302363_381ab1cc",
+      "range": {
+        "startLine": 204,
+        "startChar": 4,
+        "endLine": 204,
+        "endChar": 50
+      },
+      "revId": "0c14b55145f7d01c77def2fabf43ccad0f769484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77342c11_8c5a31e7",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-11T19:08:29Z",
       "side": 1,
       "message": "Do we need this additional mutator? `fs_collect_deps` would have collected the deps in the preDeps stage, so I think we can add the dependencies in `DepsMutator` of the filesystem modules",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 43
+      },
+      "revId": "0c14b55145f7d01c77def2fabf43ccad0f769484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd150d7_0d208b8f",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-11T20:54:54Z",
+      "side": 1,
+      "message": "I think this is still necessary.\n- `collectDepsMutator` (pre-deps): Visits all modules and determine which modules are installed in which partition\n- `setDepsMutator` (pre-deps, after `collectDepsMutator` is run): set the `Deps` property (does not \"add dependency\") of the generated partition filesystem modules based on the info collected from `collectDepsMutator`.",
+      "parentUuid": "77342c11_8c5a31e7",
       "range": {
         "startLine": 46,
         "startChar": 29,
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdda36ad_ee8fb540",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-11T20:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b116594_9bf165c5",
+      "revId": "0c14b55145f7d01c77def2fabf43ccad0f769484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99c2ccbb_aae4dd2d",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-10-11T19:00:26Z",
       "side": 1,
       "message": "nit: unnecessary parenthesis",
+      "range": {
+        "startLine": 122,
+        "startChar": 66,
+        "endLine": 122,
+        "endChar": 91
+      },
+      "revId": "0c14b55145f7d01c77def2fabf43ccad0f769484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "212276ac_a0dce9b1",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-11T20:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99c2ccbb_aae4dd2d",
       "range": {
         "startLine": 122,
         "startChar": 66,
