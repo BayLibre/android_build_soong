@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60bab6b8_a8245258",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-11T19:00:26Z",
+      "side": 1,
+      "message": "If we\u0027re going to remove `blueprint:\"mutated\"`, could you add a neverallow rule that makes sure `Is_auto_generated` is not set outside of `build/soong/fsgen`?",
+      "parentUuid": "c90894c3_3aedc5b4",
+      "revId": "86192088b43fbc99f5a2011dced3efae550c60ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0b8580f_7dbda0ca",
         "filename": "fsgen/filesystem_creator.go",
         "patchSetId": 1
