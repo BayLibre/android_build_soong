@@ -223,6 +223,7 @@ var pctx = android.NewPackageContext("android/soong/filesystem")
 
 func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	validatePartitionType(ctx, f)
+	f.validateVintfFragments(ctx)
 	switch f.fsType(ctx) {
 	case ext4Type:
 		f.output = f.buildImageUsingBuildImage(ctx)
@@ -248,6 +249,43 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if proptools.Bool(f.properties.Unchecked_module) {
 		ctx.UncheckedModule()
 	}
+}
+
+func (f *filesystem) validateVintfFragments(ctx android.ModuleContext) {
+	visitedModule := map[string]bool{}
+	packagingSpecs := f.gatherFilteredPackagingSpecs(ctx)
+
+	moduleInFileSystem := func(mod android.Module) bool {
+		for _, ps := range android.OtherModuleProviderOrDefault(
+			ctx, mod, android.InstallFilesProvider).PackagingSpecs {
+			if _, ok := packagingSpecs[ps.RelPathInPackage()]; ok {
+				return true
+			}
+		}
+		return false
+	}
+
+	ctx.WalkDeps(func(child, parent android.Module) bool {
+		if visitedModule[child.Name()] {
+			return false
+		}
+		if !moduleInFileSystem(child) {
+			visitedModule[child.Name()] = true
+			return true
+		}
+		if vintfFragments := child.VintfFragments(ctx); vintfFragments != nil {
+			ctx.PropertyErrorf(
+				"vintf_fragments",
+				"Module %s is referenced by soong-defined filesystem %s with property vintf_fragments(%s) in use."+
+					" Use vintf_fragment_modules property instead.",
+				child.Name(),
+				f.BaseModuleName(),
+				strings.Join(vintfFragments, ", "),
+			)
+		}
+		visitedModule[child.Name()] = true
+		return true
+	})
 }
 
 func (f *filesystem) appendToEntry(ctx android.ModuleContext, installedFile android.OutputPath) {
