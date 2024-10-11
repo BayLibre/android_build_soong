@@ -106,3 +106,9 @@ func (s *systemImage) filterPackagingSpec(ps android.PackagingSpec) bool {
 	return s.filesystem.filterInstallablePackagingSpec(ps) &&
 		(ps.Partition() == "system" || ps.Partition() == "root")
 }
+
+// var _ android.ExcludeFromNamespaceEnforcement = (*filesystem)(nil)
+
+// func (f *systemImage) ModuleIsExemptFromNamespaceEnforcement() bool {
+//     return proptools.Bool(f.filesystem.properties.Is_auto_generated)
+// }
