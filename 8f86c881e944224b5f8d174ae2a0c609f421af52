@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "04211609_0f3420e7",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-11T03:59:25Z",
+      "side": 1,
+      "message": "This mutex is local, so it can\u0027t protect the global state.  Each time this method is called it will be using its own mutex.  You\u0027ll need a global mutex.",
+      "revId": "8f86c881e944224b5f8d174ae2a0c609f421af52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e5b0d5bc_a63a1d40",
