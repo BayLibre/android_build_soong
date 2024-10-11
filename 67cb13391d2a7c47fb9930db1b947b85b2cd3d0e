@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc323090_80f011f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2024-10-11T00:49:33Z",
+      "side": 1,
+      "message": "Looks like we can\u0027t do this at the arch level per https://reviews.llvm.org/D109517 but as far as I can tell, we can at the CPU variant level.",
+      "revId": "67cb13391d2a7c47fb9930db1b947b85b2cd3d0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
