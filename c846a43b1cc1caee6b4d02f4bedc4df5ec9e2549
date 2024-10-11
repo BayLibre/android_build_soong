@@ -34,6 +34,24 @@
       "parentUuid": "c42374b7_b2decf10",
       "revId": "c846a43b1cc1caee6b4d02f4bedc4df5ec9e2549",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16cdee41_f1f43a70",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-11T22:16:45Z",
+      "side": 0,
+      "message": "Understood, thanks for the clarification!",
+      "parentUuid": "555e10e8_18f6fd3b",
+      "revId": "c846a43b1cc1caee6b4d02f4bedc4df5ec9e2549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
