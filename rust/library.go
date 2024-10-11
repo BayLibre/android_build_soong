@@ -617,6 +617,7 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 			TableOfContents: android.OptionalPathForPath(tocFile),
 			SharedLibrary:   outputFile,
 			Target:          ctx.Target(),
+			IsStubs:         false,
 		})
 	}
 
