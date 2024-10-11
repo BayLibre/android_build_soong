@@ -16,6 +16,23 @@
       "message": "So because release configs aren\u0027t contained within a single \u003c...\u003e/release directory -- instead multiple \u003c...\u003e/release directories contribute to a release config -- does this CL still make sense?",
       "revId": "ab24e042665c1a94841c3b3b61e3a0647a2c74c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a593ed7_ba469647",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-10-11T21:28:52Z",
+      "side": 1,
+      "message": "What do you mean by \"root of the release config directory structure\"?\n\nIf a product specifc map directory assigns a value to the flag for this TARGET_PRODUCT, then you will get that directory. There are definitely places where this code would name a product-specific directory for `trunk`, rather than vgsbr like you would expect.\n\nLet\u0027s chat about what your goal is.",
+      "revId": "ab24e042665c1a94841c3b3b61e3a0647a2c74c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
