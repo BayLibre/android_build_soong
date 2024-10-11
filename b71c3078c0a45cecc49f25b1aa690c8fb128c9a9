@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9399dca_41a1fa41",
+        "filename": "android/dirgroup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-11T17:53:57Z",
+      "side": 1,
+      "message": "Yes, please add a dedicated method. The point of using a separate provider is specifically so that it doesn\u0027t work with `PathsForModuleSrc`, so that existing module types don\u0027t start \"supporting\" directories, but not adding the globs.",
+      "parentUuid": "c75fc653_367b9d2b",
+      "revId": "b71c3078c0a45cecc49f25b1aa690c8fb128c9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea28aad2_1801bb39",
         "filename": "genrule/genrule.go",
         "patchSetId": 1
@@ -173,6 +191,24 @@
       "side": 1,
       "message": "But we still need this as rule_builder needs to bind-mounts inputs including these directories.",
       "parentUuid": "ea28aad2_1801bb39",
+      "revId": "b71c3078c0a45cecc49f25b1aa690c8fb128c9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3f19d3a_a49bcc91",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-11T17:53:57Z",
+      "side": 1,
+      "message": "Ah I see, nevermind.",
+      "parentUuid": "cac1947a_e2422a7c",
       "revId": "b71c3078c0a45cecc49f25b1aa690c8fb128c9a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
