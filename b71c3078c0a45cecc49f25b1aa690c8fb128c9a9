@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a4c04ef_9e360466",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-10-11T01:10:06Z",
+      "side": 1,
+      "message": "Trusty build requires a lot of files, and using filegroups with globs will easily bloat the nsjail command (I\u0027m not even sure if bind-mounting more than 10000 files will work or not).\n\nI\u0027ll update the commit message when resolving Cole\u0027s comment above",
+      "parentUuid": "ecf9e615_4f6b5fe1",
+      "revId": "b71c3078c0a45cecc49f25b1aa690c8fb128c9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bd3d29f1_c27d92ab",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca042072_77917b71",
+        "filename": "android/dirgroup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-10-11T01:10:06Z",
+      "side": 1,
+      "message": "That was",
+      "parentUuid": "be9c8026_d31372c2",
+      "revId": "b71c3078c0a45cecc49f25b1aa690c8fb128c9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea28aad2_1801bb39",
         "filename": "genrule/genrule.go",
         "patchSetId": 1
@@ -65,6 +101,24 @@
       "writtenOn": "2024-10-10T21:33:48Z",
       "side": 1,
       "message": "This doesn\u0027t need to be an implicit. The globs will rerun and update the file list if the directory changed.",
+      "revId": "b71c3078c0a45cecc49f25b1aa690c8fb128c9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cac1947a_e2422a7c",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-10-11T01:10:06Z",
+      "side": 1,
+      "message": "But we still need this as rule_builder needs to bind-mounts inputs including these directories.",
+      "parentUuid": "ea28aad2_1801bb39",
       "revId": "b71c3078c0a45cecc49f25b1aa690c8fb128c9a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
