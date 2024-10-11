@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebe86c9e_7af4c6b5",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-11T20:59:41Z",
+      "side": 1,
+      "message": "I like this way because it doesn\u0027t require changing the implementation of filesystem modules. This whole implementation should be temporary, so I don\u0027t think a new mutator is a big deal. But we can revisit later if necessary.",
+      "parentUuid": "409671e0_a6c794aa",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 43
+      },
+      "revId": "0c14b55145f7d01c77def2fabf43ccad0f769484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b116594_9bf165c5",
         "filename": "fsgen/filesystem_creator.go",
         "patchSetId": 2
