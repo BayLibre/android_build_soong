@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c90894c3_3aedc5b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-11T18:47:55Z",
+      "side": 1,
+      "message": "Removing the `blueprint:\"mutated\"` solved the issue! Thanks so much :)",
+      "parentUuid": "d5edfc1d_8c3d7015",
+      "revId": "86192088b43fbc99f5a2011dced3efae550c60ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0b8580f_7dbda0ca",
@@ -67,6 +85,30 @@
       "writtenOn": "2024-10-11T18:28:10Z",
       "side": 1,
       "message": "Remove `.Parallel()`: aosp/3302958",
+      "range": {
+        "startLine": 47,
+        "startChar": 45,
+        "endLine": 47,
+        "endChar": 53
+      },
+      "revId": "86192088b43fbc99f5a2011dced3efae550c60ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0b6bd2_11aa8312",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-11T18:47:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0b8580f_7dbda0ca",
       "range": {
         "startLine": 47,
         "startChar": 45,
@@ -94,6 +136,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af5788ba_8bfda879",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-11T18:47:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d70d849d_10e5fc95",
+      "revId": "86192088b43fbc99f5a2011dced3efae550c60ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32d95966_e3a45dca",
@@ -107,6 +167,24 @@
       "writtenOn": "2024-10-11T18:28:10Z",
       "side": 1,
       "message": "Use `proptools.AppendMatchingProperties(m.GetProperties(), []interface{myPropStruct})` instead of making a new method.",
+      "revId": "86192088b43fbc99f5a2011dced3efae550c60ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ca0b67e_0d3d7d03",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-11T18:47:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32d95966_e3a45dca",
       "revId": "86192088b43fbc99f5a2011dced3efae550c60ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
