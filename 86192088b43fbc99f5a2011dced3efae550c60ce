@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5edfc1d_8c3d7015",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-11T18:29:02Z",
+      "side": 1,
+      "message": "mutated properties are skipped in `CreateModule` https://source.corp.google.com/h/googleplex-android/platform/build/blueprint/+/a4f330e69a649a6bc2b5e787c4f11bd637f43b54:proptools/extend.go;l\u003d65;bpv\u003d1;bpt\u003d0;drc\u003d38077fe894d85a783754ebabed3ff9f8008eae34",
+      "parentUuid": "daf0a675_ad4cdd4d",
+      "revId": "86192088b43fbc99f5a2011dced3efae550c60ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0b8580f_7dbda0ca",
         "filename": "fsgen/filesystem_creator.go",
         "patchSetId": 1
