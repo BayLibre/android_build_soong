@@ -123,6 +123,24 @@
       "parentUuid": "9f5fe681_e490b377",
       "revId": "08348d29049061a90dd4da8bb4ed6638acf84c98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcdda9ea_14f111d1",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-10-11T02:31:50Z",
+      "side": 1,
+      "message": "Thanks for the update. Of course, I prefer to work once everything is certain. I submitted this CL because I can see some new LLNDK symbols for 202504 are submitted for now. But they are less than 5, so we may wait for the conclusion.",
+      "parentUuid": "d0f98a3e_eb45ec6e",
+      "revId": "08348d29049061a90dd4da8bb4ed6638acf84c98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
