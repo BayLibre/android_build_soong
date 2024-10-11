@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd39e788_33215fb2",
+        "filename": "android/neverallow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-11T20:57:26Z",
+      "side": 1,
+      "message": "It\u0027s `android_system_image`.",
+      "range": {
+        "startLine": 282,
+        "startChar": 28,
+        "endLine": 282,
+        "endChar": 40
+      },
+      "revId": "d0c95f6c169e704386818b364a2bbcbee17fbc31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
