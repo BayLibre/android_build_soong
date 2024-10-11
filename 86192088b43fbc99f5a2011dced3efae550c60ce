@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf0a675_ad4cdd4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-11T18:10:37Z",
+      "side": 1,
+      "message": "The presubmit error is super weird, and I could repro this locally (for this product; this works as expected in other products e.g. `aosp_arm`). I\u0027m setting `fsProps.Is_auto_generated \u003d proptools.BooPtr(true)` when generating the module, but it resolves to \"false\" when I print it in the deps mutator of the filesystem module. @colefaust@google.com @spandandas@google.com Any thoughts?",
+      "revId": "86192088b43fbc99f5a2011dced3efae550c60ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
