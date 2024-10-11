@@ -124,6 +124,24 @@
       "parentUuid": "4d7e1654_20b1fe74",
       "revId": "14c4bc013a2ffff74c7a052d633d3b57ca3fc782",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f38815d_2a6c4d2b",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2024-10-11T22:07:13Z",
+      "side": 1,
+      "message": "That CL is merged so resolving the comment.",
+      "parentUuid": "42df076a_432ef931",
+      "revId": "14c4bc013a2ffff74c7a052d633d3b57ca3fc782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
