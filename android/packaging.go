@@ -382,6 +382,12 @@ func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.Dep
 	}
 }
 
+// AppendDepsEntries allows additional modules to be added to `deps` modules. This must be
+// called before AddDeps().
+func (p *PackagingBase) AppendDepsEntries(deps []string) {
+	p.properties.Deps.AppendSimpleValue(deps)
+}
+
 func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter func(PackagingSpec) bool) map[string]PackagingSpec {
 	// all packaging specs gathered from the dep.
 	var all []PackagingSpec
