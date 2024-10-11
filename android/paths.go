@@ -1936,6 +1936,10 @@ func osAndArch(ctx ModuleInstallPathContext) (OsType, ArchType) {
 	return os, arch
 }
 
+func PathForSuiteInstall(ctx PathContext, suite string, pathComponents ...string) InstallPath {
+	return pathForPartitionInstallDir(ctx, "suites", "suites", false).Join(ctx, suite).Join(ctx, pathComponents...)
+}
+
 func pathForPartitionInstallDir(ctx PathContext, partition, partitionPath string, makePath bool) InstallPath {
 	fullPath := ctx.Config().SoongOutDir()
 	if makePath {

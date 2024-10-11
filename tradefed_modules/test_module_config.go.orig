@@ -96,13 +96,6 @@ func (m *testModuleConfigModule) DepsMutator(ctx android.BottomUpMutatorContext)
 		return
 	}
 	ctx.AddDependency(ctx.Module(), testModuleConfigTag, *m.Base)
-	for _, suiteName := range m.Test_suites {
-		// Not all suite-names will be valid test_module_tags
-		if ctx.OtherModuleExists(suiteName) {
-			ctx.AddReverseDependency(ctx.Module(), &tradefed.TestSuiteTag{}, suiteName)
-		}
-	}
-
 }
 
 // Takes base's Tradefed Config xml file and generates a new one with the test properties
@@ -293,13 +286,6 @@ func (m *testModuleConfigHostModule) DepsMutator(ctx android.BottomUpMutatorCont
 		return
 	}
 	ctx.AddVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(), testModuleConfigHostTag, *m.Base)
-	for _, suiteName := range m.Test_suites {
-		// Not all suite-names will be valid test_module_tags
-		// TODO(ron): fix to be variation reverse dep?
-		if ctx.OtherModuleExists(suiteName) {
-			ctx.AddReverseDependency(ctx.Module(), &tradefed.TestSuiteTag{}, suiteName)
-		}
-	}
 }
 
 // File to write:
@@ -397,26 +383,6 @@ func (m *testModuleConfigModule) generateManifestAndConfig(ctx android.ModuleCon
 
 	// 4) Module.config / AndroidTest.xml
 	m.testConfig = m.fixTestConfig(ctx, m.provider.TestConfig)
-
-	// We provide so we can be listed in test_suites.
-	android.SetProvider(ctx, tradefed.BaseTestProviderKey, tradefed.BaseTestProviderData{
-		InstalledFiles: m.supportFiles.Paths(),
-		// TODO(rbraunstein): fix Output files, it conflicts with InstalledFiles. Remove one.
-		// OutputFile:     baseApk,
-		// TODO(rbraunstein): testconfig isn't quite right
-		TestConfig:              m.testConfig,
-		HostRequiredModuleNames: m.provider.HostRequiredModuleNames,
-		RequiredModuleNames:     m.provider.RequiredModuleNames,
-		TestSuites:              m.tradefedProperties.Test_suites,
-		IsHost:                  m.provider.IsHost,
-		/*
-			LocalCertificate: a.certificate.AndroidMkString(),
-			IsUnitTest:       Bool(a.testProperties.Test_options.Unit_test),
-		*/
-		TestcaseDir:     installDir,
-		TestcaseArchDir: android.PathForModuleInstall(ctx, ctx.ModuleName(), ctx.DeviceConfig().DeviceArch()),
-	})
-
 }
 
 var _ android.AndroidMkEntriesProvider = (*testModuleConfigHostModule)(nil)

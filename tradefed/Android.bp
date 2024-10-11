@@ -34,3 +34,52 @@ bootstrap_go_package {
     ],
     pluginFor: ["soong_build"],
 }
+
+test_module_tag {
+    name: "suite-ron",
+}
+
+// test_suite {
+//     name: "the-suite-life",
+//     tags: ["suite-ron"],
+//     tests: [
+//         "CtsDevicePolicyManagerTestCases_Permissions_NoFlakes",
+//         "FrameworksServicesTests_om",
+//         "FrameworksServicesTests",
+//         "DevCodelabTest",
+//         "HelloWorldHostTest",
+//         "HelloWorldTests",
+//         "CtsDevicePolicyManagerTestCases",
+//     ],
+// }
+
+// test_suite {
+//     name: "display-manager-tests",
+//     tests: [
+//         "DisplayServiceTests",
+//         // "CtsDisplayTestCases",
+//         // "CtsStatsdAtomHostTestCases_statsdatom_display",
+//         // "CtsStatsdAtomHostTestCases_statsdatom_screen_brightness",
+//     ]
+// }
+
+// test_suite {
+//     name: "flicker-platinum-tests",
+//     tests: [
+//         "FlickerTestsIme",
+//         "FlickerTestsRotation",
+//         "WMShellFlickerServicePlatinumTests",
+//     ],
+// }
+
+test_suite {
+    name: "rb_cts_root_ui-tests",
+    tests: [
+      "AdServicesGaUxAlreadyEnrolledChannelTest",
+      "AdServicesGaUxDebugChannelCtsRootTest",
+      "AdServicesGaUxGraduationChannelTest",
+      "AdServicesU18UxDebugChannelCtsRootTest",
+      "AdServicesU18UxDetentionChannelCtsRootTest",
+      "AdServicesCommonStatesServicesTest",
+    ],
+}
