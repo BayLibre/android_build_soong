@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7da2d2f_55c87673",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-12T00:09:19Z",
+      "side": 1,
+      "message": "nit: ctx.Os() \u003d\u003d android.Windows",
+      "range": {
+        "startLine": 649,
+        "startChar": 4,
+        "endLine": 649,
+        "endChar": 31
+      },
+      "revId": "e5223f5ea934c7f9e686e2b2b277d86729b6885f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
