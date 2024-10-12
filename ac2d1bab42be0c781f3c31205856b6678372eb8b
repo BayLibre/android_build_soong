@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3666a7b7_aef32158",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-12T01:46:05Z",
+      "side": 1,
+      "message": "Postsubmit targets breaking with the following error:\n```\nerror: build/soong/fsgen/Android.bp:23:1: \"yukawa_generated_system_image\" depends on undefined module \"libGLES_mali\".\nModule \"yukawa_generated_system_image\" is defined in namespace \".\" which can read these 1 namespaces: [\".\"]\nModule \"libGLES_mali\" can be found in these namespaces: [\"device/linaro/poplar/proprietary\" \"vendor/arm/mali/valhall\"]\nOr did you mean [\"libGLES_meow\"]?\nerror: build/soong/fsgen/Android.bp:23:1: dependency \"drmserver\" of \"yukawa_generated_system_image\" missing variant:\n  os:android,arch:arm64_armv8-a_cortex-a53\navailable variants:\n  os:android,arch:arm_armv8-a_cortex-a53\nerror: build/soong/fsgen/Android.bp:23:1: dependency \"mediaserver\" of \"yukawa_generated_system_image\" missing variant:\n  os:android,arch:arm64_armv8-a_cortex-a53\navailable variants:\n  os:android,arch:arm_armv8-a_cortex-a53\nerror: build/soong/fsgen/Android.bp:23:1: \"yukawa_generated_system_image\" depends on undefined module \"YukawaHotwordMicToggleProvider\".\nModule \"yukawa_generated_system_image\" is defined in namespace \".\" which can read these 1 namespaces: [\".\"]\nModule \"YukawaHotwordMicToggleProvider\" can be found in these namespaces: [\"device/amlogic/yukawa\"]\nOr did you mean [\"CarHotwordDetectionServiceOne\" \"CtsHardwareTestCases_cts_tests\" \"HotwordEnrollmentXGoogleFUSION\" \"HotwordEnrollmentXGoogleRT5514\" \"PackageManagerServiceHostTests\" \"PackageManagerServiceUnitTests\" \"PackageManagerStatsTestsHelper\" \"PackageManagerTestOverlayActor\" \"PtsHardwareInfoDeviceTestCases\" \"libhardware_legacy.vndk.29.arm\" \"libhardware_legacy.vndk.29.x86\" \"libhardware_legacy.vndk.30.arm\" \"libhardware_legacy.vndk.30.x86\" \"libhardware_legacy.vndk.31.arm\" \"libhardware_legacy.vndk.31.x86\" \"libhardware_legacy.vndk.32.arm\" \"libhardware_legacy.vndk.32.x86\" \"libhardware_legacy.vndk.33.arm\" \"libhardware_legacy.vndk.33.x86\" \"libhardware_legacy.vndk.34.arm\" \"libhardware_legacy.vndk.34.x86\" \"nullaway_fake_contract_annotation\" \"packagemanager_aidl-cpp-source\" \"packagemanager_aidl-ndk-source\" \"shusky_assignable_devices.xml\" \"uiautomator-last-released-api\"]?\n```",
+      "revId": "ac2d1bab42be0c781f3c31205856b6678372eb8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
