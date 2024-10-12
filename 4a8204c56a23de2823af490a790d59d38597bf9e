@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdad91c0_472b508e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2024-10-12T16:28:15Z",
+      "side": 1,
+      "message": "This seems to be enough to get a working support for plugins\n\nAlthough there are mismatches between the compiler and kotlinx serialization works (there is a specific annotation that lets you have continue)\n\nerror: your current kotlinx.serialization core version is too low, while current Kotlin compiler plugin 1.9.23 requires at least 1.0-M1-SNAPSHOT. Please update your kotlinx.serialization runtime dependency",
+      "revId": "4a8204c56a23de2823af490a790d59d38597bf9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
