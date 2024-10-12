@@ -542,3 +542,50 @@ func TestKotlinCompose(t *testing.T) {
 	android.AssertStringDoesNotContain(t, "unexpected compose compiler plugin",
 		noCompose.VariablesForTestsRelativeToTop()["kotlincFlags"], "-Xplugin="+composeCompiler.String())
 }
+
+func TestKotlinPlugin(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		PrepareForTestWithJavaDefaultModules,
+	).RunTestWithBp(t, `
+		java_library_host {
+			name: "plugin",
+		}
+
+		java_library {
+			name: "with_kotlin_plugin",
+			srcs: ["a.kt"],
+			plugins: ["plugin"],
+			kotlin_plugins: ["plugin"],
+		}
+
+		java_library {
+			name: "no_kotlin_plugin",
+			srcs: ["a.kt"],
+		}
+
+		java_plugin {
+			name: "plugin",
+		}
+	`)
+
+	buildOS := result.Config.BuildOS.String()
+
+	plugin := result.ModuleForTests("plugin", buildOS+"_common").Rule("combineJar").Output
+	withKotlinPlugin := result.ModuleForTests("with_kotlin_plugin", "android_common")
+	noKotlinPlugin := result.ModuleForTests("no_kotlin_plugin", "android_common")
+
+	android.AssertStringListContains(t, "missing plugin compiler dependency",
+		withKotlinPlugin.Rule("kotlinc").Implicits.Strings(), plugin.String())
+
+	android.AssertStringDoesContain(t, "missing kotlin plugin",
+		withKotlinPlugin.VariablesForTestsRelativeToTop()["kotlincFlags"], "-Xplugin="+plugin.String())
+
+	android.AssertStringListContains(t, "missing kapt kotlin plugin dependency",
+		withKotlinPlugin.Rule("kapt").Implicits.Strings(), plugin.String())
+
+	android.AssertStringListDoesNotContain(t, "unexpected kotlin plugin dependency",
+		noKotlinPlugin.Rule("kotlinc").Implicits.Strings(), plugin.String())
+
+	android.AssertStringDoesNotContain(t, "unexpected kotlin plugin",
+		noKotlinPlugin.VariablesForTestsRelativeToTop()["kotlincFlags"], "-Xplugin="+plugin.String())
+}
