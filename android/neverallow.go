@@ -61,6 +61,7 @@ func init() {
 	AddNeverAllowRules(createProhibitHeaderOnlyRule())
 	AddNeverAllowRules(createLimitNdkExportRule()...)
 	AddNeverAllowRules(createLimitDirgroupRule()...)
+	AddNeverAllowRules(createKotlinPluginRule()...)
 }
 
 // Add a NeverAllow rule to the set of rules to apply.
@@ -290,6 +291,21 @@ func createLimitDirgroupRule() []Rule {
 			Without("name", "lk.elf.arm64").
 			Without("name", "lk.elf.x86_64").
 			WithMatcher("dir_srcs", isSetMatcherInstance).Because(reason),
+	}
+}
+
+func createKotlinPluginRule() []Rule {
+	kotlinPluginProjectsAllowedList := []string{
+		// TODO: Migrate to bundled compiler plugin
+		"prebuilts/sdk/current/androidx/m2repository/androidx/compose/compiler/compiler-hosted",
+		"external/kotlinc",
+	}
+
+	return []Rule{
+		NeverAllow().
+			NotIn(kotlinPluginProjectsAllowedList...).
+			ModuleType("kotlin_plugin").
+			Because("kotlin_plugin can only be used in allowed projects"),
 	}
 }
 
