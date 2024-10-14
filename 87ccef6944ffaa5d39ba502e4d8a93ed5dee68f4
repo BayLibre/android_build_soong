@@ -22,6 +22,30 @@
       },
       "revId": "87ccef6944ffaa5d39ba502e4d8a93ed5dee68f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f5d26a_ff2e2003",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-10-14T01:38:55Z",
+      "side": 1,
+      "message": "From the internal discussion, michaelwr@ said NDK will run the freezing process for the LLNDK version if needed. So an NDK version that corresponds to future LLNDK versions must be always exist as before.",
+      "parentUuid": "b6415dfa_18a9a6c3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "87ccef6944ffaa5d39ba502e4d8a93ed5dee68f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
