@@ -39,6 +39,24 @@
       "message": "Please readd the PropertyErrorf here.",
       "revId": "7ddee0192dd92f81951c76a9dce982151f42af77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73f26b6c_7b6bb560",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-14T20:01:15Z",
+      "side": 1,
+      "message": "oh nevermind I see fsType does it.",
+      "parentUuid": "9aca1fb9_06cc2303",
+      "revId": "7ddee0192dd92f81951c76a9dce982151f42af77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
