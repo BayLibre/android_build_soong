@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "971647eb_a1775195",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-10-14T06:59:52Z",
+      "side": 1,
+      "message": "can\u0027t this be implemented using neverallow.go?",
+      "revId": "21c96b2f6bd8cfa23945a695ac74a35d07deada2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
