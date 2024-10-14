@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c54c86da_8d076845",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-14T17:47:13Z",
+      "side": 1,
+      "message": "you may want to take this out of the topic with all the directory additions and submit it first.",
+      "revId": "55f912aab088d9c38e606fc12d04df2897d4d619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78794387_25c68169",
+        "filename": "android/dirgroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-14T17:47:13Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 58
+      },
+      "revId": "55f912aab088d9c38e606fc12d04df2897d4d619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10cec34_9aa4e732",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-14T17:47:13Z",
+      "side": 1,
+      "message": "Please implement this duplicate check, because this is new code there should be no blockers.",
+      "revId": "55f912aab088d9c38e606fc12d04df2897d4d619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
