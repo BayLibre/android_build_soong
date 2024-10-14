@@ -518,8 +518,9 @@ func (binary *binaryDecorator) install(ctx ModuleContext, file android.Path) {
 
 	var preferredArchSymlinkPath android.OptionalPath
 	for _, symlink := range binary.symlinks {
-		installedSymlink := ctx.InstallSymlink(binary.baseInstaller.installDir(ctx), symlink,
+		installedSymlink := ctx.InstallFile(binary.baseInstaller.installDir(ctx), symlink,
 			binary.baseInstaller.path)
+
 		if symlink == binary.preferredArchSymlink {
 			// If this is the preferred arch symlink, save the installed path for use as the
 			// tool path.
