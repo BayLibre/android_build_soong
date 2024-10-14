@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bcad58b_cabedd19",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-14T21:16:44Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this property just be set to false (or unset) for system_ext?",
+      "revId": "951ac6dd31cea7d1fb5c1e9db301101cdd6cfebd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
