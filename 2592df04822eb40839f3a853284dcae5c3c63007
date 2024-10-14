@@ -16,6 +16,24 @@
       "message": "```suggestion\n\t\tpanic(fmt.Errorf(\"%s must not be nil\", propertyName))\n```",
       "revId": "2592df04822eb40839f3a853284dcae5c3c63007",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57575bae_d56b449a",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-14T20:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5042c610_97797f17",
+      "revId": "2592df04822eb40839f3a853284dcae5c3c63007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
