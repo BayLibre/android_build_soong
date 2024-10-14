@@ -21,7 +21,16 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
+var (
+	// https://source.corp.google.com/h/googleplex-android/platform/build/+/639d79f5012a6542ab1f733b0697db45761ab0f3:core/packaging/flags.mk;l=21;drc=5ba8a8b77507f93aa48cc61c5ba3f31a4d0cbf37;bpv=1;bpt=0
+	partitionsWithAconfig = []string{"system", "product", "vendor"}
+)
+
 func (f *filesystem) buildAconfigFlagsFiles(ctx android.ModuleContext, builder *android.RuleBuilder, specs map[string]android.PackagingSpec, dir android.OutputPath) {
+	if !android.InList(f.PartitionType(), partitionsWithAconfig) {
+		return
+	}
+
 	if !proptools.Bool(f.properties.Gen_aconfig_flags_pb) {
 		return
 	}
