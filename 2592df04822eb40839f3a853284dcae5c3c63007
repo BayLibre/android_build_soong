@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5042c610_97797f17",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-14T20:09:50Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tpanic(fmt.Errorf(\"%s must not be nil\", propertyName))\n```",
+      "revId": "2592df04822eb40839f3a853284dcae5c3c63007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
