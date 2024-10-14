@@ -16,6 +16,23 @@
       "message": "can\u0027t this be implemented using neverallow.go?",
       "revId": "21c96b2f6bd8cfa23945a695ac74a35d07deada2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d8ecc07_9bbd8e3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-14T17:51:46Z",
+      "side": 1,
+      "message": "Since our team is working on converting all partitions to soong, I think we\u0027d rather add support for the vintf_fragments property in soong-built partitions instead of requiring all usages to be changed to vintf_fragement modules.",
+      "revId": "21c96b2f6bd8cfa23945a695ac74a35d07deada2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
