@@ -160,6 +160,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de9a6f94_11641245",
+        "filename": "android/dirgroup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-10-14T06:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9399dca_41a1fa41",
+      "revId": "b71c3078c0a45cecc49f25b1aa690c8fb128c9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea28aad2_1801bb39",
