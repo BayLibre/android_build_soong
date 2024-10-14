@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "755f5818_f3fea86b",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-14T23:47:52Z",
+      "side": 1,
+      "message": "This seems undesirable to me. Eventually we\u0027d like to get to a world where individual modules know nothing about what partition they\u0027re installed on. Is there any way we can make the applied properties more specific so that this isn\u0027t necessary?\n\nThis also allows random dependencies to be added to deps, and they\u0027ll be silently ignored if they\u0027re not for the right partition.",
+      "revId": "3175e0f5de1a82c91e7831dfcfdd657b7a3509a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
