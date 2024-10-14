@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c309e46_edf92247",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3664825
+      },
+      "writtenOn": "2024-10-14T15:36:32Z",
+      "side": 1,
+      "message": "Android",
+      "revId": "8ea25038bb1621d1c09e51c2fb70c3847c6bb50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
