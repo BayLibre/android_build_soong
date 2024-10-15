@@ -16,6 +16,24 @@
       "message": "This seems undesirable to me. Eventually we\u0027d like to get to a world where individual modules know nothing about what partition they\u0027re installed on. Is there any way we can make the applied properties more specific so that this isn\u0027t necessary?\n\nThis also allows random dependencies to be added to deps, and they\u0027ll be silently ignored if they\u0027re not for the right partition.",
       "revId": "3175e0f5de1a82c91e7831dfcfdd657b7a3509a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1704bb8_42b3b289",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-15T00:22:39Z",
+      "side": 1,
+      "message": "For artifacts (libs/bins/apps) that are included inside the apex, the respective `partition` property of the packaging spec is set to `apex`. I would like to elide them from the packaging of the top-level filesystem.\n\nIIUC, would you prefer that that we do so by using a new property in `PackagingSpec` named `apexArtifactDoNotIncludeInFilesystem`?\n\nAs an alternative, WDYT about replacing\n```\n(ps.Partition() \u003d\u003d f.PartitionType())\n```\nwith\n```\n(ps.Partition() !\u003d \"apex\")\n```\n?",
+      "parentUuid": "755f5818_f3fea86b",
+      "revId": "3175e0f5de1a82c91e7831dfcfdd657b7a3509a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
