@@ -51,6 +51,24 @@
       "parentUuid": "bafa99e7_dd0624ef",
       "revId": "9e0062b5c4c4a014bb6f3bbb847799bb218af050",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa47509_222aeef8",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-10-15T22:04:41Z",
+      "side": 1,
+      "message": "Is ravenwood going to be able to support per-product variations, or is it going to be just the one generic one?  I\u0027ll go ahead and +2 this, but feel free to follow up with more CLs as needed.",
+      "parentUuid": "4239ce2e_29a4c33a",
+      "revId": "9e0062b5c4c4a014bb6f3bbb847799bb218af050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
