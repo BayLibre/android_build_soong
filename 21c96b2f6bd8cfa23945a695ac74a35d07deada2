@@ -51,6 +51,24 @@
       "parentUuid": "2d8ecc07_9bbd8e3c",
       "revId": "21c96b2f6bd8cfa23945a695ac74a35d07deada2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c46dfe2_5cf377bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-15T04:27:05Z",
+      "side": 1,
+      "message": "I don\u0027t think we discussed this. My understanding from the last meeting was that we\u0027d have to keep supporting vintf_fragments as-is until they\u0027d all been converted to modules instead of trying to add a vintf_fragment module during soong analysis. I don\u0027t remember discussing preventing the usage of vintf_fragment modules in soong-built filesystems.\n\nIt should be straightforward to support the vintf_fragments property in soong-built filesystems, so I\u0027m not sure why you\u0027d want to switch to modules or prevent the property in filesystems other than for idealistic design goals.",
+      "parentUuid": "c4ca9bb0_9dd4e949",
+      "revId": "21c96b2f6bd8cfa23945a695ac74a35d07deada2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
