@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bddc5674_d5e35c06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2024-10-15T15:54:31Z",
+      "side": 1,
+      "message": "@Joeo, we want to use the \"real\" sys props on ravenwood. This is the right one to use, right?",
+      "revId": "9e0062b5c4c4a014bb6f3bbb847799bb218af050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
