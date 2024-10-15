@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3559bc9_cf83b163",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-15T22:55:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b1e2fde_7e79cc7e",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 51
+      },
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "474ba4a0_3fbf9a68",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23441840_fe4c7731",
+        "filename": "android/packaging.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-15T22:55:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "474ba4a0_3fbf9a68",
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea1e4cb4_cb7b033c",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-10-15T22:06:10Z",
       "side": 1,
       "message": "You don\u0027t appear to be using this in the fsgen code, do we need to export it?",
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69926c40_b0acecc9",
+        "filename": "android/packaging.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-15T22:55:54Z",
+      "side": 1,
+      "message": "Sorry, this is needed in the fsgen code. Updated in the latest patchset.",
+      "parentUuid": "ea1e4cb4_cb7b033c",
       "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -95,6 +155,30 @@
           ]
         }
       ],
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b92352_02d9e279",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-15T22:55:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "832a5f64_b1f5ad31",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 3
+      },
       "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -163,6 +247,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeb4e53d_4275b6bb",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-15T22:55:54Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I thought that both `multilib.first.deps` and `multilib.both.deps` are [not supported](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/packaging.go;drc\u003d5246a7efb3226bdebeada9c6989824291a9879ef;l\u003d293), but it seems like that\u0027s dependent on the `DepsCollectFirstTargetOnly` property, which is set to `true` for filesystem modules. \n\nI\u0027ve modified this to split out `MultilibBoth`.",
+      "parentUuid": "33b65454_da3b2942",
+      "range": {
+        "startLine": 157,
+        "startChar": 47,
+        "endLine": 157,
+        "endChar": 67
+      },
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af527d19_51422bc8",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-15T22:55:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bca45e0_dc6c4cbf",
+      "range": {
+        "startLine": 157,
+        "startChar": 101,
+        "endLine": 157,
+        "endChar": 115
+      },
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94d11f78_ee8c9e19",
@@ -204,6 +336,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc436a72_9d6c98ab",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-15T22:55:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94d11f78_ee8c9e19",
+      "range": {
+        "startLine": 161,
+        "startChar": 51,
+        "endLine": 161,
+        "endChar": 64
+      },
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01990511_f11a8f3a",
@@ -241,6 +397,30 @@
           ]
         }
       ],
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a45a85d_815e0d3a",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-15T22:55:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01990511_f11a8f3a",
+      "range": {
+        "startLine": 464,
+        "startChar": 5,
+        "endLine": 464,
+        "endChar": 24
+      },
       "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
