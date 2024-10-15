@@ -34,6 +34,24 @@
       "parentUuid": "755f5818_f3fea86b",
       "revId": "3175e0f5de1a82c91e7831dfcfdd657b7a3509a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6578fda8_dc51154c",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-15T00:30:54Z",
+      "side": 1,
+      "message": "How are we getting these apex-specific PackagingSpecs? There shouldn\u0027t be any apex variants of apps in the `deps` property.\n\nIf `collectPackagingSpecs` is traversing through apexes and also getting the packagingSpecs of things that were already packaged into the apex, that\u0027s a problem.",
+      "parentUuid": "c1704bb8_42b3b289",
+      "revId": "3175e0f5de1a82c91e7831dfcfdd657b7a3509a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
