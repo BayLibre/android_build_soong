@@ -1152,6 +1152,26 @@ func AndroidMkEntriesForTest(t *testing.T, ctx *TestContext, mod blueprint.Modul
 	return entriesList
 }
 
+func AndroidMkInfoForTest(t *testing.T, ctx *TestContext, mod blueprint.Module) *AndroidMkProviderInfo {
+	t.Helper()
+	var ok bool
+	var producer AndroidMkProviderInfoProducer
+	if producer, ok = mod.(AndroidMkProviderInfoProducer); !ok {
+		t.Errorf("module does not implement AndroidMkProviderInfoProducer: " + mod.Name())
+	}
+
+	info := producer.PrepareAndroidMKProviderInfo(ctx.config)
+	aconfigUpdateAndroidMkInfos(ctx, mod.(Module), info)
+	info.PrimaryInfo.fillInEntries(ctx, mod)
+	if len(info.ExtraInfo) > 0 {
+		for _, ei := range info.ExtraInfo {
+			ei.fillInEntries(ctx, mod)
+		}
+	}
+
+	return info
+}
+
 func AndroidMkDataForTest(t *testing.T, ctx *TestContext, mod blueprint.Module) AndroidMkData {
 	t.Helper()
 	var p AndroidMkDataProvider
