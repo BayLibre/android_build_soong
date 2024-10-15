@@ -33,6 +33,24 @@
       "message": "Actually, should we use them too? \n\nWe seem to have other prop files under $OUT too, and not all of them are defined here. e.g. the vendor one.\n\n```\n$ find $OUT -name \u0027build.prop\u0027\n/android/aosp-main-with-phones/out/target/product/vsoc_x86_64/system_ext/etc/build.prop\n/android/aosp-main-with-phones/out/target/product/vsoc_x86_64/system/build.prop\n/android/aosp-main-with-phones/out/target/product/vsoc_x86_64/vendor/build.prop\n/android/aosp-main-with-phones/out/target/product/vsoc_x86_64/odm_dlkm/etc/build.prop\n/android/aosp-main-with-phones/out/target/product/vsoc_x86_64/odm/etc/build.prop\n/android/aosp-main-with-phones/out/target/product/vsoc_x86_64/vendor_dlkm/etc/build.prop\n/android/aosp-main-with-phones/out/target/product/vsoc_x86_64/ramdisk/system/etc/ramdisk/build.prop\n/android/aosp-main-with-phones/out/target/product/vsoc_x86_64/product/etc/build.prop\n/android/aosp-main-with-phones/out/target/product/vsoc_x86_64/system_dlkm/etc/build.prop\n```",
       "revId": "9e0062b5c4c4a014bb6f3bbb847799bb218af050",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4239ce2e_29a4c33a",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1891746
+      },
+      "writtenOn": "2024-10-15T19:26:01Z",
+      "side": 1,
+      "message": "I don\u0027t think we need them. The system one is part of the platform, and it should be enough for Ravenwood.",
+      "parentUuid": "bafa99e7_dd0624ef",
+      "revId": "9e0062b5c4c4a014bb6f3bbb847799bb218af050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
