@@ -124,6 +124,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33b65454_da3b2942",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-10-15T22:26:43Z",
+      "side": 1,
+      "message": "Is `android.MultilibBoth` corresponding to the multilib/both in generic system bp? If so, could you split this case and add another entry in `multilibDeps`?",
+      "range": {
+        "startLine": 157,
+        "startChar": 47,
+        "endLine": 157,
+        "endChar": 67
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a88bf706_d74176fc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fsgen/filesystem_creator.go",
+              "range": {
+                "startLine": 157,
+                "startChar": 0,
+                "endLine": 158,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tcase string(android.MultilibCommon), string(android.MultilibBoth), string(android.MultilibFirst), \"common_first\", \"darwin_universal_common_first\":\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94d11f78_ee8c9e19",
         "filename": "fsgen/filesystem_creator.go",
         "patchSetId": 10
