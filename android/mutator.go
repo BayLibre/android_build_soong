@@ -151,6 +151,7 @@ var preArch = []RegisterMutatorFunc{
 
 func registerArchMutator(ctx RegisterMutatorsContext) {
 	ctx.Transition("os", &osTransitionMutator{})
+	ctx.BottomUp("image_begin", imageBeginMutator)
 	ctx.Transition("image", &imageTransitionMutator{})
 	ctx.Transition("arch", &archTransitionMutator{})
 }
@@ -355,6 +356,22 @@ type IncomingTransitionContext interface {
 	// mutator is running.  This should be used sparingly, all uses will have to be removed in order
 	// to support creating variants on demand.
 	IsAddingDependency() bool
+
+	// IsForFarVariationDep() returns true if this incoming edge is evaluated for the purposes of
+	// adding a far variation dependency. This is used to recreate legacy behavior where we would
+	// always choose the only variant if there was only 1 varaint, except during far variation
+	// depdencies. Far variation dependencies would either match precisely or get the missing
+	// variant error.
+	IsForFarVariationDep() bool
+}
+
+type ModuleAndConfigContext interface {
+	// Module returns the target of the dependency edge for which the transition
+	// is being computed
+	Module() Module
+
+	// Config returns the configuration for the build.
+	Config() Config
 }
 
 type OutgoingTransitionContext interface {
@@ -546,6 +563,10 @@ func (c *incomingTransitionContextImpl) ModuleErrorf(fmt string, args ...interfa
 
 func (c *incomingTransitionContextImpl) PropertyErrorf(property, fmt string, args ...interface{}) {
 	c.bp.PropertyErrorf(property, fmt, args)
+}
+
+func (c *incomingTransitionContextImpl) IsForFarVariationDep() bool {
+	return c.bp.IsForFarVariationDep()
 }
 
 func (a *androidTransitionMutator) IncomingTransition(bpctx blueprint.IncomingTransitionContext, incomingVariation string) string {

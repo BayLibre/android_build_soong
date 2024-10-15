@@ -71,6 +71,33 @@ type ImageInterface interface {
 	SetImageVariation(ctx ImageInterfaceContext, variation string)
 }
 
+type imageInterfaceContextAdapter struct {
+	IncomingTransitionContext
+	kind moduleKind
+}
+
+var _ ImageInterfaceContext = (*imageInterfaceContextAdapter)(nil)
+
+func (e *imageInterfaceContextAdapter) Platform() bool {
+	return e.kind == platformModule
+}
+
+func (e *imageInterfaceContextAdapter) DeviceSpecific() bool {
+	return e.kind == deviceSpecificModule
+}
+
+func (e *imageInterfaceContextAdapter) SocSpecific() bool {
+	return e.kind == socSpecificModule
+}
+
+func (e *imageInterfaceContextAdapter) ProductSpecific() bool {
+	return e.kind == productSpecificModule
+}
+
+func (e *imageInterfaceContextAdapter) SystemExtSpecific() bool {
+	return e.kind == systemExtSpecificModule
+}
+
 const (
 	// VendorVariation is the variant name used for /vendor code that does not
 	// compile against the VNDK.
@@ -98,16 +125,10 @@ const (
 	DebugRamdiskVariation string = "debug_ramdisk"
 )
 
-// imageTransitionMutator creates variants for modules that implement the ImageInterface that
-// allow them to build differently for each partition (recovery, core, vendor, etc.).
-type imageTransitionMutator struct{}
-
-func (imageTransitionMutator) Split(ctx BaseModuleContext) []string {
+func getImageVariations(ctx ImageInterfaceContext) []string {
 	var variations []string
 
 	if m, ok := ctx.Module().(ImageInterface); ctx.Os() == Android && ok {
-		m.ImageMutatorBegin(ctx)
-
 		if m.CoreVariantNeeded(ctx) {
 			variations = append(variations, CoreVariation)
 		}
@@ -141,6 +162,23 @@ func (imageTransitionMutator) Split(ctx BaseModuleContext) []string {
 	return variations
 }
 
+// imageBeginMutator runs just before imageTransitionMutator. It calls ImageMutatorBegin(),
+// and the implementation of that modifies modules. Because most of the transition mutators methods
+// are not supposed to mutate modules, they can't call that method.
+func imageBeginMutator(ctx BottomUpMutatorContext) {
+	if m, ok := ctx.Module().(ImageInterface); ctx.Os() == Android && ok {
+		m.ImageMutatorBegin(ctx)
+	}
+}
+
+// imageTransitionMutator creates variants for modules that implement the ImageInterface that
+// allow them to build differently for each partition (recovery, core, vendor, etc.).
+type imageTransitionMutator struct{}
+
+func (imageTransitionMutator) Split(ctx BaseModuleContext) []string {
+	return getImageVariations(ctx)
+}
+
 func (imageTransitionMutator) OutgoingTransition(ctx OutgoingTransitionContext, sourceVariation string) string {
 	return sourceVariation
 }
@@ -149,6 +187,20 @@ func (imageTransitionMutator) IncomingTransition(ctx IncomingTransitionContext, 
 	if _, ok := ctx.Module().(ImageInterface); ctx.Os() != Android || !ok {
 		return CoreVariation
 	}
+
+	// The "1-variant fallback". If there's only 1 possible image variation, use it, except
+	// for far variation deps. Ideally this would be removed, and dependencies would properly
+	// specify their variants. But it's legacy soong behavior.
+	if !ctx.IsForFarVariationDep() {
+		variations := getImageVariations(&imageInterfaceContextAdapter{
+			IncomingTransitionContext: ctx,
+			kind:                      determineModuleKind(ctx.Module().base(), ctx),
+		})
+		if len(variations) == 1 {
+			return variations[0]
+		}
+	}
+
 	return incomingVariation
 }
 

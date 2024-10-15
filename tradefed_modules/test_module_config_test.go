@@ -320,28 +320,28 @@ func TestModuleConfigHostBasics(t *testing.T) {
 
 }
 
-// When you pass an 'android_test' as base, the warning message is a bit obscure,
-// talking about variants, but it is something.  Ideally we could do better.
 func TestModuleConfigHostBadBaseShouldFailWithVariantWarning(t *testing.T) {
 	badBp := `
-		android_test {
-			name: "base",
-			sdk_version: "current",
-                        srcs: ["a.java"],
-		}
+        android_test {
+            name: "base",
+            sdk_version: "current",
+            srcs: ["a.java"],
+            test_suites: ["general-tests"],
+        }
 
-                test_module_config_host {
-                        name: "derived_test",
-                        base: "base",
-                        exclude_filters: ["android.test.example.devcodelab.DevCodelabTest#testHelloFail"],
-                        include_annotations: ["android.platform.test.annotations.LargeTest"],
-                }`
+        test_module_config_host {
+            name: "derived_test",
+            base: "base",
+            exclude_filters: ["android.test.example.devcodelab.DevCodelabTest#testHelloFail"],
+            include_annotations: ["android.platform.test.annotations.LargeTest"],
+            test_suites: ["general-tests"],
+        }`
 
 	android.GroupFixturePreparers(
 		java.PrepareForTestWithJavaDefaultModules,
 		android.FixtureRegisterWithContext(RegisterTestModuleConfigBuildComponents),
 	).ExtendWithErrorHandler(
-		android.FixtureExpectsAtLeastOneErrorMatchingPattern("missing variant")).
+		android.FixtureExpectsAtLeastOneErrorMatchingPattern("'android_test' module used as base, but 'java_test_host' expected.")).
 		RunTestWithBp(t, badBp)
 }
 

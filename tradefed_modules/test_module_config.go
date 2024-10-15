@@ -160,6 +160,9 @@ func (m *testModuleConfigModule) composeOptions() []tradefed.Option {
 // If we change to symlinks, this all needs to change.
 func (m *testModuleConfigModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	m.validateBase(ctx, &testModuleConfigTag, "android_test", false)
+	if ctx.Failed() {
+		return
+	}
 	m.generateManifestAndConfig(ctx)
 
 }
@@ -298,6 +301,9 @@ func (m *testModuleConfigHostModule) DepsMutator(ctx android.BottomUpMutatorCont
 //   - written via our InstallSymlink
 func (m *testModuleConfigHostModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	m.validateBase(ctx, &testModuleConfigHostTag, "java_test_host", true)
+	if ctx.Failed() {
+		return
+	}
 	m.generateManifestAndConfig(ctx)
 }
 
