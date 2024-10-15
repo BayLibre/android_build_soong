@@ -485,6 +485,16 @@ func (o *osTransitionMutator) IncomingTransition(ctx IncomingTransitionContext, 
 		return ""
 	}
 
+	// The "1-variant fallback". If there's only 1 possible os variation, use it, except
+	// for far variation deps. Ideally this would be removed, and dependencies would properly
+	// specify their variants. But it's legacy soong behavior.
+	if !ctx.IsForFarVariationDep() {
+		moduleOSList := moduleOSList(ctx, base)
+		if len(moduleOSList) == 1 {
+			return moduleOSList[0].String()
+		}
+	}
+
 	return incomingVariation
 }
 
@@ -575,6 +585,7 @@ var DarwinUniversalVariantTag = archDepTag{name: "darwin universal binary"}
 type archTransitionMutator struct{}
 
 type allArchInfo struct {
+	TargetNames  []string
 	Targets      map[string]Target
 	MultiTargets []Target
 	Primary      string
@@ -583,18 +594,21 @@ type allArchInfo struct {
 
 var allArchProvider = blueprint.NewMutatorProvider[*allArchInfo]("arch_propagate")
 
-func (a *archTransitionMutator) Split(ctx BaseModuleContext) []string {
+// If this is an arch-specific module, returns an allArchInfo, otherwise returns nil.
+// It also returns a boolean that indicates if this module should be disabled or not.
+// Returning nil is not an error.
+func maybeCreateAllArchInfo(ctx ModuleErrorAndConfigContext) (*allArchInfo, bool) {
 	module := ctx.Module()
 	base := module.base()
 
 	if !base.ArchSpecific() {
-		return []string{""}
+		return nil, false
 	}
 
 	os := base.commonProperties.CompileOS
 	if os == CommonOS {
 		// Do not create arch specific variants for the CommonOS variant.
-		return []string{""}
+		return nil, false
 	}
 
 	osTargets := ctx.Config().Targets[os]
@@ -634,8 +648,7 @@ func (a *archTransitionMutator) Split(ctx BaseModuleContext) []string {
 
 	// If there are no supported targets disable the module.
 	if len(targets) == 0 {
-		base.Disable()
-		return []string{""}
+		return nil, true
 	}
 
 	// If the module is using extraMultilib, decode the extraMultilib selection into
@@ -659,8 +672,7 @@ func (a *archTransitionMutator) Split(ctx BaseModuleContext) []string {
 
 	// If there are no supported targets disable the module.
 	if len(targets) == 0 {
-		base.Disable()
-		return []string{""}
+		return nil, true
 	}
 
 	// Convert the targets into a list of arch variation names.
@@ -671,13 +683,27 @@ func (a *archTransitionMutator) Split(ctx BaseModuleContext) []string {
 		targetMapping[targetNames[i]] = targets[i]
 	}
 
-	SetProvider(ctx, allArchProvider, &allArchInfo{
+	return &allArchInfo{
+		TargetNames:  targetNames,
 		Targets:      targetMapping,
 		MultiTargets: multiTargets,
 		Primary:      targetNames[0],
 		Multilib:     multilib,
-	})
-	return targetNames
+	}, false
+}
+
+func (a *archTransitionMutator) Split(ctx BaseModuleContext) []string {
+	info, shouldDisable := maybeCreateAllArchInfo(ctx)
+	if shouldDisable {
+		ctx.Module().Disable()
+		return []string{""}
+	}
+	if info == nil {
+		return []string{""}
+	}
+
+	SetProvider(ctx, allArchProvider, info)
+	return info.TargetNames
 }
 
 func (a *archTransitionMutator) OutgoingTransition(ctx OutgoingTransitionContext, sourceVariation string) string {
@@ -698,10 +724,22 @@ func (a *archTransitionMutator) IncomingTransition(ctx IncomingTransitionContext
 		return ""
 	}
 
+	// If the dep is a common module, always use common, it doesn't have any other arch.
 	multilib, _ := decodeMultilib(ctx, base)
 	if multilib == "common" {
 		return "common"
 	}
+
+	// The "1-variant fallback". If there's only 1 possible arch and os variation, use it, except
+	// for far variation deps. Ideally this would be removed, and dependencies would properly
+	// specify their variants. But it's legacy soong behavior.
+	if !ctx.IsForFarVariationDep() && len(moduleOSList(ctx, base)) <= 1 {
+		info, _ := maybeCreateAllArchInfo(ctx)
+		if info != nil && len(info.TargetNames) == 1 {
+			return info.TargetNames[0]
+		}
+	}
+
 	return incomingVariation
 }
 
