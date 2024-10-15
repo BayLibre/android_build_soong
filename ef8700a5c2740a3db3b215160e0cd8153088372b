@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b1e2fde_7e79cc7e",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-15T22:19:32Z",
+      "side": 1,
+      "message": "nit: Add a warning that its usage is experimental and should not be used outside `build/soong/fsgen`",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 51
+      },
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "474ba4a0_3fbf9a68",
         "filename": "android/packaging.go",
         "patchSetId": 10
@@ -31,6 +54,152 @@
       "writtenOn": "2024-10-15T22:06:10Z",
       "side": 1,
       "message": "You don\u0027t appear to be using this in the fsgen code, do we need to export it?",
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832a5f64_b1f5ad31",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-15T22:19:32Z",
+      "side": 1,
+      "message": "nit: Instead of creating this dynamically, I would initialize it in `collectDepsMutator` based on non `soongGeneratedPartitions`",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9d26c8ca_16f06a91",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fsgen/filesystem_creator.go",
+              "range": {
+                "startLine": 141,
+                "startChar": 0,
+                "endLine": 142,
+                "endChar": 0
+              },
+              "replacement": "\t\tif _, n :\u003d (*fsDeps)[installPartition]; !n {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bca45e0_dc6c4cbf",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-15T22:19:32Z",
+      "side": 1,
+      "message": "`common_first` is no longer supported. This can be removed.",
+      "range": {
+        "startLine": 157,
+        "startChar": 101,
+        "endLine": 157,
+        "endChar": 115
+      },
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d11f78_ee8c9e19",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-15T22:19:32Z",
+      "side": 1,
+      "message": "`common_first` can be removed",
+      "range": {
+        "startLine": 161,
+        "startChar": 51,
+        "endLine": 161,
+        "endChar": 64
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f4a62f1a_23f5fc6f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fsgen/filesystem_creator.go",
+              "range": {
+                "startLine": 161,
+                "startChar": 0,
+                "endLine": 162,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tcase \"64\", \"darwin_universal\", \"darwin_universal_common_first\", \"darwin_universal_prefer32\":\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01990511_f11a8f3a",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-15T22:19:32Z",
+      "side": 1,
+      "message": "nit: I would remove this function altogether and replace with `m.PartitionTag(config)`",
+      "range": {
+        "startLine": 464,
+        "startChar": 5,
+        "endLine": 464,
+        "endChar": 24
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9a254fd8_2e63dd3e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fsgen/filesystem_creator.go",
+              "range": {
+                "startLine": 464,
+                "startChar": 0,
+                "endLine": 465,
+                "endChar": 0
+              },
+              "replacement": "func installPartition(m android.Module, config android.DeviceConfig) string {\n"
+            }
+          ]
+        }
+      ],
       "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
