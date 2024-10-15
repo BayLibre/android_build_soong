@@ -88,6 +88,24 @@
       "parentUuid": "2162807a_55d836b6",
       "revId": "3175e0f5de1a82c91e7831dfcfdd657b7a3509a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd09d59_c9c66d92",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-15T17:43:38Z",
+      "side": 1,
+      "message": "My previous understanding was incorrect. Here is my updated understanding\n\n- In `GenerateAndroidBuildActions` of `apexBundle`, we do a graph walk in [depVisitor](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/apex/apex.go;l\u003d1937?q\u003ddepVisitor%20f:build%2Fsoong\u0026ct\u003dos\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main) to collect the list of files that need to be installed. This gets stored in [apexBundle.filesInfo](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/apex/apex.go;l\u003d458;drc\u003d91ea5d950db4007671738d983928091928e359e7;bpv\u003d1;bpt\u003d1)\n- Subsequently in `GenerateAndroidBuildActions` of `apexBundle`, all the files are installed using [ctx.Install*](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/apex/builder.go;l\u003d611-634;drc\u003d91ea5d950db4007671738d983928091928e359e7;bpv\u003d0;bpt\u003d1). This means that all the libs/bins/apps are added to ctx.packagingSpecs of the top-level apex.\n- `TransitivePackagingSpecs` for apex evaluates to its internal files [here](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/android/module.go;l\u003d2003?q\u003df:module.go\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main)\n\nCould you elaborate on how replacing `InstallDepNeeded` with `IsPackagingItem` would resolve this? And where should this replacement happen?",
+      "parentUuid": "b0155125_afacd32e",
+      "revId": "3175e0f5de1a82c91e7831dfcfdd657b7a3509a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
