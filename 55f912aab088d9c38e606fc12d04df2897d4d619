@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb337d7b_688909b8",
+        "filename": "android/dirgroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-10-15T02:25:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78794387_25c68169",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 58
+      },
+      "revId": "55f912aab088d9c38e606fc12d04df2897d4d619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b10cec34_9aa4e732",
@@ -54,6 +78,24 @@
       "writtenOn": "2024-10-14T17:47:13Z",
       "side": 1,
       "message": "Please implement this duplicate check, because this is new code there should be no blockers.",
+      "revId": "55f912aab088d9c38e606fc12d04df2897d4d619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f0ec395_5b00b5d8",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-10-15T02:25:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b10cec34_9aa4e732",
       "revId": "55f912aab088d9c38e606fc12d04df2897d4d619",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
