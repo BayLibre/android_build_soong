@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "474ba4a0_3fbf9a68",
+        "filename": "android/packaging.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-15T22:06:10Z",
+      "side": 1,
+      "message": "Don\u0027t export a function like this. For tests, you can loop over the result of `.GetProperties()` and try to downcast them to `PackagingProperties`.",
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea1e4cb4_cb7b033c",
+        "filename": "android/packaging.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-15T22:06:10Z",
+      "side": 1,
+      "message": "You don\u0027t appear to be using this in the fsgen code, do we need to export it?",
+      "revId": "ef8700a5c2740a3db3b215160e0cd8153088372b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
