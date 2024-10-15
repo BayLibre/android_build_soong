@@ -33,6 +33,24 @@
       "message": "What do you mean by \"root of the release config directory structure\"?\n\nIf a product specifc map directory assigns a value to the flag for this TARGET_PRODUCT, then you will get that directory. There are definitely places where this code would name a product-specific directory for `trunk`, rather than vgsbr like you would expect.\n\nLet\u0027s chat about what your goal is.",
       "revId": "ab24e042665c1a94841c3b3b61e3a0647a2c74c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0906d0b2_97f56553",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2024-10-15T10:21:37Z",
+      "side": 1,
+      "message": "This CL was written when I was still under the impression that a release config lives in a single release/ directory. Now that I know things are more complex I don\u0027t have the bandwidth to work on this. Abandoning for now, we can resurrect this in the future if we want to.",
+      "parentUuid": "1a593ed7_ba469647",
+      "revId": "ab24e042665c1a94841c3b3b61e3a0647a2c74c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
