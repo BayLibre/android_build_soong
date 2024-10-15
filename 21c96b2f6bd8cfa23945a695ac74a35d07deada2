@@ -33,6 +33,24 @@
       "message": "Since our team is working on converting all partitions to soong, I think we\u0027d rather add support for the vintf_fragments property in soong-built partitions instead of requiring all usages to be changed to vintf_fragement modules.",
       "revId": "21c96b2f6bd8cfa23945a695ac74a35d07deada2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ca9bb0_9dd4e949",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-10-15T01:56:14Z",
+      "side": 1,
+      "message": "I thought this is what we discussed from the last meeting. Do you expect this kind of filter only for the system image?",
+      "parentUuid": "2d8ecc07_9bbd8e3c",
+      "revId": "21c96b2f6bd8cfa23945a695ac74a35d07deada2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
