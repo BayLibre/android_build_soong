@@ -70,6 +70,24 @@
       "parentUuid": "6578fda8_dc51154c",
       "revId": "3175e0f5de1a82c91e7831dfcfdd657b7a3509a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0155125_afacd32e",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-15T01:28:24Z",
+      "side": 1,
+      "message": "I think apexes should use `IsPackagingItem()` / `PackagingItemAlwaysDepTag` instead of `InstallDepNeeded()`.",
+      "parentUuid": "2162807a_55d836b6",
+      "revId": "3175e0f5de1a82c91e7831dfcfdd657b7a3509a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
