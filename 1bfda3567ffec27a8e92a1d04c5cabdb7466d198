@@ -16,6 +16,24 @@
       "message": "Elliott, I\u0027m not sure if you guys want to go this route.  If you do, we may need to confirm naming conventions with Qualcomm.  They stopped numbering Kryo CPUs publicly, so the naming here is because 8 Gen 3 is A520 minus SVE.",
       "revId": "1bfda3567ffec27a8e92a1d04c5cabdb7466d198",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d17130_942c848f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-10-16T18:36:33Z",
+      "side": 1,
+      "message": "yeah, i doubt we\u0027d add any qcom cpus here without qcom asking us to do so.",
+      "parentUuid": "11e18413_aae3277e",
+      "revId": "1bfda3567ffec27a8e92a1d04c5cabdb7466d198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
