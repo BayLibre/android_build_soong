@@ -106,6 +106,7 @@ var cpuVariants = map[ArchType][]string{
 		"kryo",
 		"kryo385",
 		"kryo785",
+		"kryo8g3",
 		"exynos-m1",
 		"exynos-m2",
 		"oryon",
