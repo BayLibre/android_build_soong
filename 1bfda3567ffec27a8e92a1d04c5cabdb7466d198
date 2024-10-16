@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e18413_aae3277e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2024-10-16T05:05:59Z",
+      "side": 1,
+      "message": "Elliott, I\u0027m not sure if you guys want to go this route.  If you do, we may need to confirm naming conventions with Qualcomm.  They stopped numbering Kryo CPUs publicly, so the naming here is because 8 Gen 3 is A520 minus SVE.",
+      "revId": "1bfda3567ffec27a8e92a1d04c5cabdb7466d198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
