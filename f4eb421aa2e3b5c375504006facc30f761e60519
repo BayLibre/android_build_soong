@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0d5861_eb450da6",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-16T20:07:42Z",
+      "side": 1,
+      "message": "This mutator doesn\u0027t actually mutate dependencies, it just mutates properties.",
+      "range": {
+        "startLine": 46,
+        "startChar": 45,
+        "endLine": 46,
+        "endChar": 64
+      },
+      "revId": "f4eb421aa2e3b5c375504006facc30f761e60519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2bafe32_445b106b",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-16T20:07:42Z",
+      "side": 1,
+      "message": "Move the sort/unique from the usage into this function, so that other new usages don\u0027t need to remember to sort.",
+      "revId": "f4eb421aa2e3b5c375504006facc30f761e60519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8071b125_45d576b3",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-16T20:07:42Z",
+      "side": 1,
+      "message": "Is it possible for multilib to be \"32\" but for both \"32\" and \"64\" to be in `bitness`? How is `bitness` different from `depProps.Multilib`?",
+      "revId": "f4eb421aa2e3b5c375504006facc30f761e60519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb8801e2_976ab41e",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-16T20:07:42Z",
+      "side": 1,
+      "message": "Could you create a new struct, called `FsGenState` or something, that holds `fsDeps` as well as `soongGeneratedPartitions` and potentially any other information we need to track, and store it in the config Once system? Also put the `fsDepsMutex` in this struct. The struct can be put into the config object via a pointer so that you can have a non-pointer `fsDeps` field and don\u0027t need to do `(*fsDeps)` everywhere.\n\nWith this change, `soongGeneratedPartitions` is a mutable global value, which is bad for testing.",
+      "revId": "f4eb421aa2e3b5c375504006facc30f761e60519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "395cb058_c89f64e3",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-16T20:07:42Z",
+      "side": 1,
+      "message": "If the partition type was unsupported, it should also not being in `soongGeneratedPartitions`.",
+      "revId": "f4eb421aa2e3b5c375504006facc30f761e60519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
