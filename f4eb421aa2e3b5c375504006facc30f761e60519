@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e21d56d0_927e3933",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-16T21:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a0d5861_eb450da6",
+      "range": {
+        "startLine": 46,
+        "startChar": 45,
+        "endLine": 46,
+        "endChar": 64
+      },
+      "revId": "f4eb421aa2e3b5c375504006facc30f761e60519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2bafe32_445b106b",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-10-16T20:07:42Z",
       "side": 1,
       "message": "Move the sort/unique from the usage into this function, so that other new usages don\u0027t need to remember to sort.",
+      "revId": "f4eb421aa2e3b5c375504006facc30f761e60519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7626e386_23a1db06",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-16T21:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2bafe32_445b106b",
       "revId": "f4eb421aa2e3b5c375504006facc30f761e60519",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e64a29a6_cdf8d003",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-16T21:12:24Z",
+      "side": 1,
+      "message": "`bitness` is basically an [alias of `ArchType.Multilib`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/arch.go;drc\u003db9c67e21ac0b240af8219d881f95860969a695c8;l\u003d141). \n\n\u003e Is it possible for multilib to be \"32\" but for both \"32\" and \"64\" to be in `bitness`?\n\nI\u0027m not sure if this scenario is possible, but I think the opposite can be possible (e.g. multilib is \"both\", but `bitness` contains either \"32\" or \"64\", not both).",
+      "parentUuid": "8071b125_45d576b3",
+      "revId": "f4eb421aa2e3b5c375504006facc30f761e60519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb8801e2_976ab41e",
         "filename": "fsgen/filesystem_creator.go",
         "patchSetId": 14
@@ -71,6 +131,24 @@
       "writtenOn": "2024-10-16T20:07:42Z",
       "side": 1,
       "message": "Could you create a new struct, called `FsGenState` or something, that holds `fsDeps` as well as `soongGeneratedPartitions` and potentially any other information we need to track, and store it in the config Once system? Also put the `fsDepsMutex` in this struct. The struct can be put into the config object via a pointer so that you can have a non-pointer `fsDeps` field and don\u0027t need to do `(*fsDeps)` everywhere.\n\nWith this change, `soongGeneratedPartitions` is a mutable global value, which is bad for testing.",
+      "revId": "f4eb421aa2e3b5c375504006facc30f761e60519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fc6ac6b_06deebd8",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-16T21:12:24Z",
+      "side": 1,
+      "message": "Done. Also moved `depCandidates` into `FsGenState` and moved the Once generation into the load hook.",
+      "parentUuid": "bb8801e2_976ab41e",
       "revId": "f4eb421aa2e3b5c375504006facc30f761e60519",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -88,6 +166,24 @@
       "writtenOn": "2024-10-16T20:07:42Z",
       "side": 1,
       "message": "If the partition type was unsupported, it should also not being in `soongGeneratedPartitions`.",
+      "revId": "f4eb421aa2e3b5c375504006facc30f761e60519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a0b4b19_cc45cc10",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-16T21:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "395cb058_c89f64e3",
       "revId": "f4eb421aa2e3b5c375504006facc30f761e60519",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
