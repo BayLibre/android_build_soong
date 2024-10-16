@@ -34,6 +34,24 @@
       "parentUuid": "11e18413_aae3277e",
       "revId": "1bfda3567ffec27a8e92a1d04c5cabdb7466d198",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1d94914_52625a0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2024-10-16T23:27:23Z",
+      "side": 1,
+      "message": "Understood, is there a need for march variants with SVE disabled (or TARGET_ARCH_FEATURES as Krzysztof suggested?  See here https://android-review.googlesource.com/c/platform/build/soong/+/3297517\n\nhttps://issuetracker.google.com/issues/369477948 isn\u0027t public, so I am not sure what is in it.  I did build with -march\u003darmv9-a -mcpu\u003dcortex-a510 on Pixel 9 and it boots and seems to work ok, so the compiler bugs from a few years ago appear to be resolved.  Non-Qualcomm Armv9 SoCs from 2023 and 2024 support SVE as far as I can tell.  With that in mind, if this is irrelevant, I can abandon.  Otherwise, I can rework if needed.",
+      "parentUuid": "b6d17130_942c848f",
+      "revId": "1bfda3567ffec27a8e92a1d04c5cabdb7466d198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
