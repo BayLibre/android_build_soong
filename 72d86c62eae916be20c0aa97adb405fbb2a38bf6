@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a03e864e_4b33fdc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-16T03:24:37Z",
+      "side": 1,
+      "message": "There seem to be some unrelated changes. Not sure where these are coming from\nhttps://paste.googleplex.com/5980503491739648 (LHS is without this CL)",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "72d86c62eae916be20c0aa97adb405fbb2a38bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b24915f_cccadf9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-16T03:24:37Z",
+      "side": 1,
+      "message": "I have also verified that `cf_x86_64_phone-symbols-mapping-P82743401.textproto` remains the same before and after the CL.\n\nBase build: https://android-build.corp.google.com/builds/abtd/run/L95900030007142540\nBase build + CL: https://android-build.corp.google.com/builds/abtd/run/L53000030007149691",
+      "revId": "72d86c62eae916be20c0aa97adb405fbb2a38bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
