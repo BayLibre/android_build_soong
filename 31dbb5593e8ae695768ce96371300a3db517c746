@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b60bfd07_fb8da7c0",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-10-17T22:44:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6cb7a68f_399a27c2",
+      "range": {
+        "startLine": 477,
+        "startChar": 12,
+        "endLine": 477,
+        "endChar": 16
+      },
+      "revId": "31dbb5593e8ae695768ce96371300a3db517c746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3990849_6a38e456",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Comment expanded.",
       "parentUuid": "f3990849_6a38e456",
+      "range": {
+        "startLine": 186,
+        "startChar": 56,
+        "endLine": 186,
+        "endChar": 88
+      },
+      "revId": "31dbb5593e8ae695768ce96371300a3db517c746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9ba7bbe_f5300511",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-10-17T22:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81f67e2b_c2844ed3",
       "range": {
         "startLine": 186,
         "startChar": 56,
