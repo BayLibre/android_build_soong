@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d2f9b3_6d736fd0",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-10-17T22:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3db5e0ee_da9cec79",
+      "range": {
+        "startLine": 463,
+        "startChar": 7,
+        "endLine": 463,
+        "endChar": 27
+      },
+      "revId": "31dbb5593e8ae695768ce96371300a3db517c746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50ae578d_ef756242",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cb7a68f_399a27c2",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-10-17T22:06:42Z",
+      "side": 1,
+      "message": "If someone is adding a new feature (such as \"use_d8\", but it isn\u0027t in this switch statement yet), then they will get an error when they say `SOONG_PARTIAL_COMPILE\u003dtrue,use_d8` (turn on the current default-enabled features, and also turn on `use_d8`), rather than silently ignoring the unrecognized user input.\n\nUser documented values are \"true\" and \"false\", but the actual value space is larger.",
+      "parentUuid": "50ae578d_ef756242",
+      "range": {
+        "startLine": 477,
+        "startChar": 12,
+        "endLine": 477,
+        "endChar": 16
+      },
+      "revId": "31dbb5593e8ae695768ce96371300a3db517c746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3990849_6a38e456",
         "filename": "ui/build/kati.go",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2024-10-17T21:25:11Z",
       "side": 1,
       "message": "I don\u0027t understand this comment.",
+      "range": {
+        "startLine": 186,
+        "startChar": 56,
+        "endLine": 186,
+        "endChar": 88
+      },
+      "revId": "31dbb5593e8ae695768ce96371300a3db517c746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f67e2b_c2844ed3",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-10-17T22:06:42Z",
+      "side": 1,
+      "message": "Comment expanded.",
+      "parentUuid": "f3990849_6a38e456",
       "range": {
         "startLine": 186,
         "startChar": 56,
