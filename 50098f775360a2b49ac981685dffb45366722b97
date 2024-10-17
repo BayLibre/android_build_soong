@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b382bca_b4f1afa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2024-10-17T19:10:09Z",
+      "side": 1,
+      "message": "Only renamed the compose compiler to ${old}-plugin and added a more verbose todo (maybe you want a bug id to track it on your side?)\nTests and sample app are good.\nThanks!",
+      "revId": "50098f775360a2b49ac981685dffb45366722b97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
