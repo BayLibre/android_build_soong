@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4b88746_b6d4538e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2024-10-17T18:52:48Z",
+      "side": 1,
+      "message": "Seems to work, I\u0027m not entirely happy about having to fix the androidx import script, I\u0027ll go over that now.\n\nAlso not sure if the tests are enough for you, feel free to add more ^^",
+      "revId": "efc9af0c785c1df883cbf3a159f877a1f618f674",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
