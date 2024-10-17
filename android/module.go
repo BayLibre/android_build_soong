@@ -1441,6 +1441,11 @@ func (m *ModuleBase) computeInstallDeps(ctx ModuleContext) ([]*DepSet[InstallPat
 	var installDeps []*DepSet[InstallPath]
 	var packagingSpecs []*DepSet[PackagingSpec]
 	ctx.VisitDirectDeps(func(dep Module) {
+		if ctx.Device() && m.PartitionTag(ctx.DeviceConfig()) != dep.PartitionTag(ctx.DeviceConfig()) {
+			// Skip if the dependency is in a different partition.
+			// The dependency will need to be explicitly listed in the deps of the other partition.
+			return
+		}
 		if isInstallDepNeeded(dep, ctx.OtherModuleDependencyTag(dep)) {
 			// Installation is still handled by Make, so anything hidden from Make is not
 			// installable.
