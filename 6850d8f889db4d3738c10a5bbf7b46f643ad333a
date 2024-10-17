@@ -46,6 +46,30 @@
       },
       "revId": "6850d8f889db4d3738c10a5bbf7b46f643ad333a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56bf9489_ac67ebb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-17T21:20:04Z",
+      "side": 1,
+      "message": "I know it is out of scope for this CL, but does this implementation align with the kati-built event-log-tags?",
+      "parentUuid": "80fa6bb7_b2072486",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "6850d8f889db4d3738c10a5bbf7b46f643ad333a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
