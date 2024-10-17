@@ -33,6 +33,24 @@
       "message": "Thanks for the patch.  We\u0027ve had internal discussions on whether to support arbitrary kotlin plugins, and the consensus is that due to instability of the kotlin plugin API we should only support the plugins that are distributed alongside the kotlinc compiler.  Currently that includes the kotlin-serialize-compiler at `external/kotlinc/kotlin-serialization-compiler-plugin.jar`, and once we land a kotlinc update will include the compose compiler too.\n\nI think to enable this we would need a few more pieces:\n\n- A new kotlin_plugin module type, and enforcement that kotlinPluginTag dependencies are kotlin_plugins\n- A rule in android/neverallow.go that restricts use of the kotlin_plugin module type to external/kotlinc (and to the compose compiler if the kotlinc update  that includes it in external/kotlinc hasn\u0027t been landed)\n\nTogether that will let us restrict the use of kotlin plugins to ones that won\u0027t block future kotlinc updates.",
       "revId": "4a8204c56a23de2823af490a790d59d38597bf9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58551bfb_4835c02b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2024-10-17T18:16:36Z",
+      "side": 1,
+      "message": "Sounds good, I already had kotlin_plugin module before but it didn\u0027t make much sense at the moment so I dropped it, I\u0027ll gladly add it back given the requirement of stricter checks.\n\nIf you any any quick link/point on how to enforce the tag check mind linking it?\n\nI assume I\u0027ll have to migrate the compose compiler as well to that module or shall I add an allowlist until it gets upgraded alongside kt?",
+      "parentUuid": "d751f9b1_e4c99eec",
+      "revId": "4a8204c56a23de2823af490a790d59d38597bf9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
