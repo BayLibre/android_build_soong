@@ -22,6 +22,30 @@
       },
       "revId": "a077b94016fde1af7761394b1f4b664741a48a14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a180a0fb_5490f672",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-10-17T17:42:32Z",
+      "side": 1,
+      "message": "`fsProps` is a `FilesystemProperties` (https://source.corp.google.com/h/android/platform/superproject/main/+/main:build/soong/filesystem/filesystem.go;drc\u003d00face6199cf2f1c9fa4c3d2e2c0b1cc769bff6c;l\u003d74). Dep is not part of it.",
+      "parentUuid": "59c19ed3_d8b5f7b0",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 2
+      },
+      "revId": "a077b94016fde1af7761394b1f4b664741a48a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
