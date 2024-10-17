@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103fab05_b7d58a3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-17T21:09:55Z",
+      "side": 1,
+      "message": "As an aside: What does this file do? Does generating this require info from all installed modules (including modules in vendor/, product/, system_ext/)?",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "6850d8f889db4d3738c10a5bbf7b46f643ad333a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
