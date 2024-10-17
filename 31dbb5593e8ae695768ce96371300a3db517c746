@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db5e0ee_da9cec79",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-10-17T21:25:11Z",
+      "side": 1,
+      "message": "Can we just pick \"true\"?",
+      "range": {
+        "startLine": 463,
+        "startChar": 7,
+        "endLine": 463,
+        "endChar": 27
+      },
+      "revId": "31dbb5593e8ae695768ce96371300a3db517c746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50ae578d_ef756242",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-10-17T21:25:11Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like we can return an error. Are there any you\u0027re thinking of?",
+      "range": {
+        "startLine": 477,
+        "startChar": 12,
+        "endLine": 477,
+        "endChar": 16
+      },
+      "revId": "31dbb5593e8ae695768ce96371300a3db517c746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3990849_6a38e456",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-10-17T21:25:11Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment.",
+      "range": {
+        "startLine": 186,
+        "startChar": 56,
+        "endLine": 186,
+        "endChar": 88
+      },
+      "revId": "31dbb5593e8ae695768ce96371300a3db517c746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
