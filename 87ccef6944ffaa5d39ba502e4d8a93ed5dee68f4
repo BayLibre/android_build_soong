@@ -46,6 +46,30 @@
       },
       "revId": "87ccef6944ffaa5d39ba502e4d8a93ed5dee68f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c8f97d2_6df448a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-10-17T23:49:09Z",
+      "side": 1,
+      "message": "I think this depends on negotiations with partners, but if we want to ignore it for now, I guess that\u0027s okay :)",
+      "parentUuid": "37f5d26a_ff2e2003",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "87ccef6944ffaa5d39ba502e4d8a93ed5dee68f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
