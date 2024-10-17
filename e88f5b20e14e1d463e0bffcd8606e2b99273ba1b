@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "904b9a4b_0e95cfa0",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-17T23:56:13Z",
+      "side": 1,
+      "message": "Return `nil` here. But in `generateBpContent`, if `generateFsProps` returns false, you shouldn\u0027t try to output it to the bp file.",
+      "range": {
+        "startLine": 387,
+        "startChar": 9,
+        "endLine": 387,
+        "endChar": 43
+      },
+      "revId": "e88f5b20e14e1d463e0bffcd8606e2b99273ba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
