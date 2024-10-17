@@ -107,6 +107,8 @@ func createFsGenState(ctx android.LoadHookContext) *FsGenState {
 			fsDeps: map[string]multilibDeps{
 				// These additional deps are added according to the cuttlefish system image bp.
 				"system": &map[string]*depCandidateProps{
+					"android.system.virtualizationcommon-ndk":   defaultDepCandidateProps(ctx.Config()),
+					"android.system.virtualizationservice-ndk":  defaultDepCandidateProps(ctx.Config()),
 					"com.android.apex.cts.shim.v1_prebuilt":     defaultDepCandidateProps(ctx.Config()),
 					"dex_bootjars":                              defaultDepCandidateProps(ctx.Config()),
 					"framework_compatibility_matrix.device.xml": defaultDepCandidateProps(ctx.Config()),
@@ -118,11 +120,13 @@ func createFsGenState(ctx android.LoadHookContext) *FsGenState {
 					"libcompiler_rt":               defaultDepCandidateProps(ctx.Config()),
 					"libdmabufheap":                defaultDepCandidateProps(ctx.Config()),
 					"libgsi":                       defaultDepCandidateProps(ctx.Config()),
+					"libvendorsupport":             defaultDepCandidateProps(ctx.Config()),
 					"llndk.libraries.txt":          defaultDepCandidateProps(ctx.Config()),
-					"logpersist.start":             defaultDepCandidateProps(ctx.Config()),
+					"notice_xml_system":            defaultDepCandidateProps(ctx.Config()),
+					"prebuilt_vintf_manifest":      defaultDepCandidateProps(ctx.Config()),
 					"preloaded-classes":            defaultDepCandidateProps(ctx.Config()),
 					"public.libraries.android.txt": defaultDepCandidateProps(ctx.Config()),
-					"update_engine_sideload":       defaultDepCandidateProps(ctx.Config()),
+					"selinux_policy_system_soong":  defaultDepCandidateProps(ctx.Config()),
 				},
 				"vendor":     newMultilibDeps(),
 				"odm":        newMultilibDeps(),
