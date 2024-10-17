@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a258dcd_48a7724e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-17T02:26:16Z",
+      "side": 1,
+      "message": "Configured an [ABTD run](https://android-build.corp.google.com/builds/abtd/run/L76200030007180236) on the previously failing target(`eos-trunk_staging-userdebug`) with patchset 3",
+      "revId": "0d545b8242b06ad745b6745a83da952093889b88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
