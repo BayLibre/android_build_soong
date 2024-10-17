@@ -16,6 +16,24 @@
       "message": "nit: I _think_ `.c++` extension is also [used](https://source.corp.google.com/search?q\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main%20f:%5C.c%5C%2B%5C%2B\u0026sq\u003d)?",
       "revId": "c98856816d10a3a031b9efca1ef0b94a7cd4b021",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fd1d44b_8ff302c4",
+        "filename": "cc/cc_preprocess_no_configuration.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-17T17:01:04Z",
+      "side": 1,
+      "message": "I think regular soong cc modules don\u0027t allow `.c++`, I copied from [this code](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/builder.go;l\u003d632;drc\u003daa8020ac132f3d115c6caf955481f91be08b5474).",
+      "parentUuid": "c339d10a_25fa150c",
+      "revId": "c98856816d10a3a031b9efca1ef0b94a7cd4b021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
