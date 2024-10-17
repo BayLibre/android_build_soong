@@ -183,6 +183,9 @@ func runKati(ctx Context, config Config, extraSuffix string, args []string, envF
 		username = usernameFromEnv
 	}
 
+	// SOONG_USE_PARTIAL_COMPILE may be used in makefiles, but both cases must be supported.
+	cmd.Environment.Unset("SOONG_USE_PARTIAL_COMPILE")
+
 	hostname, ok := cmd.Environment.Get("BUILD_HOSTNAME")
 	// Unset BUILD_HOSTNAME during kati run to avoid kati rerun, kati will use BUILD_HOSTNAME from a file.
 	cmd.Environment.Unset("BUILD_HOSTNAME")
