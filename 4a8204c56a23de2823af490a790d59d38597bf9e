@@ -51,6 +51,24 @@
       "parentUuid": "d751f9b1_e4c99eec",
       "revId": "4a8204c56a23de2823af490a790d59d38597bf9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80b07b07_81817698",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-17T18:18:36Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/neverallow.go;l\u003d158-176;drc\u003d0d545b8242b06ad745b6745a83da952093889b88 is an example of a neverallow rule that enforces a module type is only used in a list of directories.\n\nConverting the compose plugin would be ideal, but allowlisting is OK too.",
+      "parentUuid": "58551bfb_4835c02b",
+      "revId": "4a8204c56a23de2823af490a790d59d38597bf9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
