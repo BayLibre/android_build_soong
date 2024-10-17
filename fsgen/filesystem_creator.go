@@ -124,10 +124,19 @@ func createFsGenState(ctx android.LoadHookContext) *FsGenState {
 					"public.libraries.android.txt": defaultDepCandidateProps(ctx.Config()),
 					"update_engine_sideload":       defaultDepCandidateProps(ctx.Config()),
 				},
-				"vendor":     newMultilibDeps(),
-				"odm":        newMultilibDeps(),
-				"product":    newMultilibDeps(),
-				"system_ext": newMultilibDeps(),
+				"vendor":  newMultilibDeps(),
+				"odm":     newMultilibDeps(),
+				"product": newMultilibDeps(),
+				"system_ext": &map[string]*depCandidateProps{
+					// VNDK apexes are automatically included.
+					// This hardcoded list will need to be updated if `PRODUCT_EXTRA_VNDK_VERSIONS` is updated.
+					// https://source.corp.google.com/h/googleplex-android/platform/build/+/e392d2b486c2d4187b20a72b1c67cc737ecbcca5:core/main.mk;l=984;drc=174db7b179592cf07cbfd2adb0119486fda911e7;bpv=1;bpt=0
+					"com.android.vndk.v30": defaultDepCandidateProps(ctx.Config()),
+					"com.android.vndk.v31": defaultDepCandidateProps(ctx.Config()),
+					"com.android.vndk.v32": defaultDepCandidateProps(ctx.Config()),
+					"com.android.vndk.v33": defaultDepCandidateProps(ctx.Config()),
+					"com.android.vndk.v34": defaultDepCandidateProps(ctx.Config()),
+				},
 			},
 			soongGeneratedPartitions: generatedPartitions,
 			fsDepsMutex:              sync.Mutex{},
