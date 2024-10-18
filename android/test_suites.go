@@ -30,6 +30,7 @@ func testSuiteFilesFactory() Singleton {
 type testSuiteFiles struct {
 	robolectric []Path
 	ravenwood   []Path
+	suiteManifests map[string]Path
 }
 
 type TestSuiteModule interface {
@@ -58,11 +59,24 @@ func (t *testSuiteFiles) GenerateBuildActions(ctx SingletonContext) {
 
 	t.ravenwood = ravenwoodTestSuite(ctx, files["ravenwood-tests"])
 	ctx.Phony("ravenwood-tests", t.ravenwood...)
+
+	suites := []string{
+		"rb_cts_root_ui-tests",
+	}
+
+	t.suiteManifests = make(map[string]Path)
+	for _, s := range suites {
+		t.suiteManifests[s] = PathForSuiteInstall(ctx, s, s+".json")
+		ctx.Phony(s, t.suiteManifests[s])
+	}
 }
 
 func (t *testSuiteFiles) MakeVars(ctx MakeVarsContext) {
 	ctx.DistForGoal("robolectric-tests", t.robolectric...)
 	ctx.DistForGoal("ravenwood-tests", t.ravenwood...)
+	for suite, manifest := range t.suiteManifests {
+		ctx.DistForGoal(suite, manifest)
+	}
 }
 
 func robolectricTestSuite(ctx SingletonContext, files map[string]InstallPaths) []Path {

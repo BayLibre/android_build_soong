@@ -34,3 +34,15 @@ bootstrap_go_package {
     ],
     pluginFor: ["soong_build"],
 }
+
+test_suite {
+    name: "rb_cts_root_ui-tests",
+    tests: [
+      "AdServicesGaUxAlreadyEnrolledChannelTest",
+      "AdServicesGaUxDebugChannelCtsRootTest",
+      "AdServicesGaUxGraduationChannelTest",
+      "AdServicesU18UxDebugChannelCtsRootTest",
+      "AdServicesU18UxDetentionChannelCtsRootTest",
+      "AdServicesCommonStatesServicesTest",
+    ],
+}

@@ -39,4 +39,4 @@ soong_build_go rbcrun rbcrun/rbcrun
 soong_build_go release-config android/soong/cmd/release_config/release_config
 
 cd ${TOP}
-exec "$(getoutdir)/soong_ui" "$@"
+exec "$(getoutdir)/soong_ui" "$@" rb_cts_root_ui-tests
