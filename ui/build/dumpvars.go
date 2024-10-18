@@ -175,6 +175,9 @@ func Banner(make_vars map[string]string) string {
 			fmt.Fprintf(b, "%s=%s\n", name, make_vars[name])
 		}
 	}
+
+	// cleared from make vars, removed from getenv in kati
+	fmt.Fprintf(b, "TARGET_RELEASE=%s\n", os.Getenv("TARGET_RELEASE"))
 	fmt.Fprint(b, "============================================")
 
 	return b.String()
