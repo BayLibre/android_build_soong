@@ -175,6 +175,10 @@ func Banner(make_vars map[string]string) string {
 			fmt.Fprintf(b, "%s=%s\n", name, make_vars[name])
 		}
 	}
+	for name, val := range make_vars {
+		fmt.Fprintf(b, "MAKE %s=%s\n", name, val)
+	}
+	fmt.Fprintf(b, "ENV TARGET_RELESAE=%s\n", os.Getenv("TARGET_RELEASE"))
 	fmt.Fprint(b, "============================================")
 
 	return b.String()
