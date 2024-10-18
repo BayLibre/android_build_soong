@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f3cb13_3a320d56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-18T08:27:10Z",
+      "side": 1,
+      "message": "Per go/trunk-stable-side-branches, \"breakages in side branches must be chased and fixed by the team owning the branch, and should not be passed on to CL authors\". I will look into the breakage and try to forward fix it during the business hours today, but this change cannot be reverted because of breakages specific to a side branch (`git_main-swcar-dev`).",
+      "revId": "d57f4e21b6130acd211406366d603627e2fac843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
