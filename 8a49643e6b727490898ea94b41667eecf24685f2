@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f1660c5_f1e171fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-18T18:42:15Z",
+      "side": 1,
+      "message": "As an alternative, I also tried to implement this in `computeInstallDeps` (https://r.android.com/3313497). It fixes (1), but unfortunately does not fix (2)",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "8a49643e6b727490898ea94b41667eecf24685f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf0e303b_a1af1c59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-18T18:42:15Z",
+      "side": 1,
+      "message": "I a",
+      "revId": "8a49643e6b727490898ea94b41667eecf24685f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
