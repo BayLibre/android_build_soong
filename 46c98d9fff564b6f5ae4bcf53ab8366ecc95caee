@@ -16,6 +16,24 @@
       "message": "```suggestion\n\t// Currently, only a select set of partitions like system, system_ext, and vendor is created.\n```",
       "revId": "46c98d9fff564b6f5ae4bcf53ab8366ecc95caee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "593d6eea_fdd93a1f",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-18T22:17:29Z",
+      "side": 1,
+      "message": "I reworded this to `select set` and omitted `vendor` by design so that we dont have to keep updating this comment every time we add a new partition.",
+      "parentUuid": "0bcf89be_2445e899",
+      "revId": "46c98d9fff564b6f5ae4bcf53ab8366ecc95caee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
