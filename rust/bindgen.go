@@ -227,6 +227,9 @@ func (b *bindgenDecorator) GenerateSource(ctx ModuleContext, deps PathDeps) andr
 	}
 
 	// Dependency clang flags and include paths
+	if ctx.Device() {
+		cflags = append(cflags, "-nostdlibinc")
+	}
 	cflags = append(cflags, deps.depClangFlags...)
 	for _, include := range deps.depIncludePaths {
 		cflags = append(cflags, "-I"+include.String())
