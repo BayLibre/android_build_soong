@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e48d5dd_f44e5649",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-19T03:32:56Z",
+      "side": 1,
+      "message": "I have aosp/3313317 for this, does that version work for you?",
+      "revId": "2e4ee1bd457bbfca2dd7c90385ac56f018b81d4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
