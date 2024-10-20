@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd0e960_74506220",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3694691
+      },
+      "writtenOn": "2024-10-20T15:24:20Z",
+      "side": 1,
+      "message": "3314248: Revert \"Use a partition packaging spec filter for android_filesystem\" | https://android-review.googlesource.com/c/platform/build/soong/+/3314248",
+      "revId": "c72bdb7447e781ae9342b701e2a0fa709e9a3ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
