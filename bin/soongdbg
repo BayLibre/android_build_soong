@@ -446,7 +446,8 @@ if not OUT_DIR:
     OUT_DIR = "out"
 if OUT_DIR[0] != "/":
     OUT_DIR = pathlib.Path(ANDROID_BUILD_TOP).joinpath(OUT_DIR)
-SOONG_DEBUG_DATA_FILENAME = pathlib.Path(OUT_DIR).joinpath("soong/soong-debug-info.json")
+#SOONG_DEBUG_DATA_FILENAME = pathlib.Path(OUT_DIR).joinpath("soong/soong-debug-info.json")
+SOONG_DEBUG_DATA_FILENAME = pathlib.Path(OUT_DIR).joinpath("bootstrap-module-debug.json")
 
 
 def main():

@@ -379,6 +379,10 @@ func bootstrapBlueprint(ctx Context, config Config) {
 		EmptyNinjaFile: false,
 	}
 
+	if os.Getenv("GENERATE_SOONG_DEBUG") == "true" {
+		blueprintArgs.ModuleDebugFile = shared.JoinPath(config.OutDir(), "bootstrap-module-debug.json")
+	}
+
 	blueprintCtx := blueprint.NewContext()
 	blueprintCtx.AddSourceRootDirs(config.GetSourceRootDirs()...)
 	blueprintCtx.SetIgnoreUnknownModuleTypes(true)
