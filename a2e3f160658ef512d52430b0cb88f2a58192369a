@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4746bdf7_50c87d4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1900272
+      },
+      "writtenOn": "2024-10-21T18:05:28Z",
+      "side": 1,
+      "message": "As a note, this implementation will require the build script to first call soong, then read in the proto that it outputs and edit it to fill in the optimized build metrics. Hopefully this is what you had in mind with your comments, but let me know if there\u0027s anything you would like to be done differently.",
+      "revId": "a2e3f160658ef512d52430b0cb88f2a58192369a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
