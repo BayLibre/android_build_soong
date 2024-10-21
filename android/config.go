@@ -368,6 +368,9 @@ type config struct {
 	// modules that aren't mixed-built for at least one variant will cause a build
 	// failure
 	ensureAllowlistIntegrity bool
+
+	// Is this an engineering build?
+	isEngBuild bool
 }
 
 type partialCompileFlags struct {
@@ -413,18 +416,21 @@ type jsonConfigurable interface {
 // To add a new feature to the list, add the field in the struct
 // `partialCompileFlags` above, and then add the name of the field in the
 // switch statement below.
+var defaultPartialCompileFlags = partialCompileFlags{
+	// Set any opt-out flags here.  Opt-in flags are off by default.
+	enabled: false,
+}
+
 func (c *config) parsePartialCompileFlags() (partialCompileFlags, error) {
-	defaultFlags := partialCompileFlags{
-		// Set any opt-out flags here.  Opt-in flags are off by default.
-		enabled: false,
-	}
 	value := c.Getenv("SOONG_PARTIAL_COMPILE")
-
+	if !c.isEngBuild {
+		return partialCompileFlags{}, nil
+	}
 	if value == "" {
-		return defaultFlags, nil
+		return defaultPartialCompileFlags, nil
 	}
 
-	ret := defaultFlags
+	ret := defaultPartialCompileFlags
 	tokens := strings.Split(strings.ToLower(value), ",")
 	makeVal := func(state string, defaultValue bool) bool {
 		switch state {
@@ -455,17 +461,17 @@ func (c *config) parsePartialCompileFlags() (partialCompileFlags, error) {
 		}
 		switch tok {
 		case "true":
-			ret = defaultFlags
+			ret = defaultPartialCompileFlags
 			ret.enabled = true
 		case "false":
 			// Set everything to false.
 			ret = partialCompileFlags{}
 		case "enabled":
-			ret.enabled = makeVal(state, defaultFlags.enabled)
+			ret.enabled = makeVal(state, defaultPartialCompileFlags.enabled)
 		case "use_d8":
-			ret.use_d8 = makeVal(state, defaultFlags.use_d8)
+			ret.use_d8 = makeVal(state, defaultPartialCompileFlags.use_d8)
 		default:
-			return partialCompileFlags{}, fmt.Errorf("Unknown SOONG_PARTIAL_COMPILE value: %v", value)
+			return partialCompileFlags{}, fmt.Errorf("Unknown SOONG_PARTIAL_COMPILE value: %v", tok)
 		}
 	}
 	return ret, nil
@@ -615,6 +621,14 @@ func NewConfig(cmdArgs CmdArgs, availableEnv map[string]string) (Config, error) 
 		fs:             pathtools.NewOsFs(absSrcDir),
 
 		buildFromSourceStub: cmdArgs.BuildFromSourceStub,
+	}
+	variant, ok := os.LookupEnv("TARGET_BUILD_VARIANT")
+	config.isEngBuild = !ok || variant == "eng"
+
+	if !config.isEngBuild {
+		// Partial Compile is only supported on eng builds.
+		config.env["SOONG_PARTIAL_COMPILE"] = "false"
+		config.env["SOONG_USE_PARTIAL_COMPILE"] = ""
 	}
 
 	config.deviceConfig = &deviceConfig{
@@ -859,6 +873,11 @@ func (c *config) IsEnvTrue(key string) bool {
 func (c *config) IsEnvFalse(key string) bool {
 	value := strings.ToLower(c.Getenv(key))
 	return value == "0" || value == "n" || value == "no" || value == "off" || value == "false"
+}
+
+// IsEngBuild returns whether this is an "eng" build.
+func (c *config) IsEngBuild() bool {
+	return c.isEngBuild
 }
 
 func (c *config) TargetsJava21() bool {
