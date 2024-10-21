@@ -298,7 +298,14 @@ func NewConfig(ctx Context, args ...string) Config {
 	}
 
 	// If SOONG_USE_PARTIAL_COMPILE is set, make it one of "true" or the empty string.
-	// This simplifies the generated Ninja rules, so that they only need to check for the empty string.
+	// This simplifies the generated Ninja rules, so that they only need to check for
+	// the empty string.
+	//
+	// These environment variables are only honored for eng builds.
+	if ret.TargetBuildVariant() != "eng" {
+		os.Setenv("SOONG_PARTIAL_COMPILE", "false")
+		os.Setenv("SOONG_USE_PARTIAL_COMPILE", "false")
+	}
 	if value, ok := os.LookupEnv("SOONG_USE_PARTIAL_COMPILE"); ok {
 		if value == "true" || value == "1" || value == "y" || value == "yes" {
 			value = "true"
