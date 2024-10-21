@@ -119,6 +119,12 @@ func TestBootJarsMarshaling(t *testing.T) {
 	verifyProductVariableMarshaling(t, v)
 }
 
+func assertBoolEquals(t *testing.T, expected, actual bool) {
+	if actual != expected {
+		t.Errorf("expected %q found %q", expected, actual)
+	}
+}
+
 func assertStringEquals(t *testing.T, expected, actual string) {
 	if actual != expected {
 		t.Errorf("expected %q found %q", expected, actual)
@@ -210,5 +216,50 @@ func TestConfiguredJarList(t *testing.T) {
 	t.Run("remove", func(t *testing.T) {
 		assertStringEquals(t, "apex3:jarC", list4.String())
 		assertStringEquals(t, "apex1:jarA", list5.String())
+	})
+}
+
+func TestPartialCompile(t *testing.T) {
+	t.Run("empty", func(t *testing.T) {
+		flags, _ := parsePartialCompileFlags("", true)
+		expected := defaultPartialCompileFlags
+		if flags != expected {
+			t.Errorf("expected %q found %q", expected, flags)
+		}
+	})
+
+	t.Run("false", func(t *testing.T) {
+		flags, _ := parsePartialCompileFlags("false", true)
+		expected := partialCompileFlags{}
+		if flags != expected {
+			t.Errorf("expected %q found %q", expected, flags)
+		}
+	})
+
+	t.Run("true", func(t *testing.T) {
+		flags, _ := parsePartialCompileFlags("true", true)
+		expected := defaultPartialCompileFlags
+		expected.enabled = true
+		if flags != expected {
+			t.Errorf("expected %q found %q", expected, flags)
+		}
+	})
+
+	t.Run("true non-eng", func(t *testing.T) {
+		flags, _ := parsePartialCompileFlags("true", false)
+		expected := partialCompileFlags{}
+		if flags != expected {
+			t.Errorf("expected %q found %q", expected, flags)
+		}
+	})
+
+	t.Run("true,use_d8", func(t *testing.T) {
+		flags, _ := parsePartialCompileFlags("true,use_d8", true)
+		expected := defaultPartialCompileFlags
+		expected.enabled = true
+		expected.use_d8 = true
+		if flags != expected {
+			t.Errorf("expected %q found %q", expected, flags)
+		}
 	})
 }
