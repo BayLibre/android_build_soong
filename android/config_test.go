@@ -119,6 +119,12 @@ func TestBootJarsMarshaling(t *testing.T) {
 	verifyProductVariableMarshaling(t, v)
 }
 
+func assertBoolEquals(t *testing.T, expected, actual bool) {
+	if actual != expected {
+		t.Errorf("expected %q found %q", expected, actual)
+	}
+}
+
 func assertStringEquals(t *testing.T, expected, actual string) {
 	if actual != expected {
 		t.Errorf("expected %q found %q", expected, actual)
@@ -210,5 +216,48 @@ func TestConfiguredJarList(t *testing.T) {
 	t.Run("remove", func(t *testing.T) {
 		assertStringEquals(t, "apex3:jarC", list4.String())
 		assertStringEquals(t, "apex1:jarA", list5.String())
+	})
+}
+
+func TestConfigVariables(t *testing.T) {
+	testConfig := func(envOverride map[string]string) (Config, error) {
+		baseEnv := map[string]string{
+			"TARGET_PRODUCT":       "aosp_cheetah",
+			"TARGET_RELEASE":       "trunk_staging",
+			"TARGET_BUILD_VARIANT": "eng",
+		}
+		for k, v := range envOverride {
+			baseEnv[k] = v
+		}
+		return NewConfig(CmdArgs{}, baseEnv)
+	}
+	t.Run("user", func(t *testing.T) {
+		config, err := testConfig(map[string]string{"TARGET_BUILD_VARIANT": "user"})
+		if err != nil {
+			t.Errorf("expected no error found %q", err)
+		}
+		assertBoolEquals(t, false, config.IsEngBuild())
+		assertStringEquals(t, "false", config.env["SOONG_PARTIAL_COMPILE"])
+		assertStringEquals(t, "", config.env["SOONG_USE_PARTIAL_COMPILE"])
+	})
+
+	t.Run("user with SOONG_PARTIAL_COMPILE", func(t *testing.T) {
+		config, err := testConfig(map[string]string{"TARGET_BUILD_VARIANT": "user", "SOONG_PARTIAL_COMPILE": "true"})
+		if err != nil {
+			t.Errorf("expected no error found %q", err)
+		}
+		assertBoolEquals(t, false, config.IsEngBuild())
+		assertStringEquals(t, "false", config.env["SOONG_PARTIAL_COMPILE"])
+		assertStringEquals(t, "", config.env["SOONG_USE_PARTIAL_COMPILE"])
+	})
+
+	t.Run("eng with SOONG_PARTIAL_COMPILE", func(t *testing.T) {
+		config, err := testConfig(map[string]string{"TARGET_BUILD_VARIANT": "eng", "SOONG_PARTIAL_COMPILE": "true"})
+		if err != nil {
+			t.Errorf("expected no error found %q", err)
+		}
+		assertBoolEquals(t, false, config.IsEngBuild())
+		assertStringEquals(t, "true", config.env["SOONG_PARTIAL_COMPILE"])
+		assertStringEquals(t, "", config.env["SOONG_USE_PARTIAL_COMPILE"])
 	})
 }

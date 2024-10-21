@@ -374,6 +374,9 @@ type config struct {
 	// modules that aren't mixed-built for at least one variant will cause a build
 	// failure
 	ensureAllowlistIntegrity bool
+
+	// Is this an engineering build?
+	isEngBuild bool
 }
 
 type partialCompileFlags struct {
@@ -622,6 +625,14 @@ func NewConfig(cmdArgs CmdArgs, availableEnv map[string]string) (Config, error) 
 
 		buildFromSourceStub: cmdArgs.BuildFromSourceStub,
 	}
+	variant, ok := os.LookupEnv("TARGET_BUILD_VARIANT")
+	config.isEngBuild = !ok || variant == "eng"
+
+	if !config.isEngBuild {
+		// Partial Compile is only supported on eng builds.
+		config.env["SOONG_PARTIAL_COMPILE"] = "false"
+		config.env["SOONG_USE_PARTIAL_COMPILE"] = ""
+	}
 
 	config.deviceConfig = &deviceConfig{
 		config: config,
@@ -866,6 +877,11 @@ func (c *config) IsEnvTrue(key string) bool {
 func (c *config) IsEnvFalse(key string) bool {
 	value := strings.ToLower(c.Getenv(key))
 	return value == "0" || value == "n" || value == "no" || value == "off" || value == "false"
+}
+
+// IsEngBuild returns whether this is an "eng" build.
+func (c *config) IsEngBuild() bool {
+	return c.isEngBuild
 }
 
 func (c *config) TargetsJava21() bool {
