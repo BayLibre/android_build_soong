@@ -119,6 +119,12 @@ func TestBootJarsMarshaling(t *testing.T) {
 	verifyProductVariableMarshaling(t, v)
 }
 
+func assertBoolEquals(t *testing.T, expected, actual bool) {
+	if actual != expected {
+		t.Errorf("expected %q found %q", expected, actual)
+	}
+}
+
 func assertStringEquals(t *testing.T, expected, actual string) {
 	if actual != expected {
 		t.Errorf("expected %q found %q", expected, actual)
@@ -211,4 +217,50 @@ func TestConfiguredJarList(t *testing.T) {
 		assertStringEquals(t, "apex3:jarC", list4.String())
 		assertStringEquals(t, "apex1:jarA", list5.String())
 	})
+}
+
+func (p partialCompileFlags) updateEnabled(value bool) partialCompileFlags {
+	p.enabled = value
+	return p
+}
+
+func (p partialCompileFlags) updateUseD8(value bool) partialCompileFlags {
+	p.use_d8 = value
+	return p
+}
+
+func TestPartialCompile(t *testing.T) {
+	mockConfig := func(value string, isEngBuild bool) *config {
+		c := &config{
+			env: map[string]string{
+				"SOONG_PARTIAL_COMPILE": value,
+			},
+			isEngBuild: isEngBuild,
+		}
+		return c
+	}
+	tests := []struct {
+		value      string
+		isEngBuild bool
+		expected   partialCompileFlags
+	}{
+		{"", true, defaultPartialCompileFlags},
+		{"false", true, partialCompileFlags{}},
+		{"true", true, defaultPartialCompileFlags.updateEnabled(true)},
+		{"true", false, partialCompileFlags{}},
+		{"true,use_d8", true, defaultPartialCompileFlags.updateEnabled(true).updateUseD8(true)},
+		{"true,-use_d8", true, defaultPartialCompileFlags.updateEnabled(true).updateUseD8(false)},
+		{"use_d8,false", true, partialCompileFlags{}},
+		{"false,+use_d8", true, partialCompileFlags{}.updateUseD8(true)},
+	}
+
+	for _, test := range tests {
+		t.Run(test.value, func(t *testing.T) {
+			config := mockConfig(test.value, test.isEngBuild)
+			flags, _ := config.parsePartialCompileFlags()
+			if flags != test.expected {
+				t.Errorf("expected %q found %q", test.expected, flags)
+			}
+		})
+	}
 }
