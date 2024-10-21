@@ -38,6 +38,9 @@ type BinaryLinkerProperties struct {
 	// if set, install a symlink to the preferred architecture
 	Symlink_preferred_arch *bool `android:"arch_variant"`
 
+	// If set, install a copy of the binary for the preferred architecture.
+	Copy_preferred_arch *bool `android:"arch_variant"`
+
 	// install symlinks to the binary.  Symlink names will have the suffix and the binary
 	// extension (if any) appended
 	Symlinks []string `android:"arch_variant"`
@@ -100,6 +103,10 @@ type binaryDecorator struct {
 	// If the module has symlink_preferred_arch set, the name of the symlink to the
 	// binary for the preferred arch.
 	preferredArchSymlink string
+
+	// If the module has copy_preferred_arch set, the name of the copy of the
+	// binary for the preferred arch.
+	preferredArchCopy string
 
 	// Output archive of gcno coverage information
 	coverageOutputFile android.OptionalPath
@@ -469,6 +476,10 @@ func (binary *binaryDecorator) setSymlinkList(ctx ModuleContext) {
 			symlinkName := binary.getStemWithoutSuffix(ctx)
 			binary.symlinks = append(binary.symlinks, symlinkName)
 			binary.preferredArchSymlink = symlinkName
+
+			if Bool(binary.Properties.Symlink_preferred_arch) {
+				binary.preferredArchCopy = symlinkName
+			}
 		}
 	}
 }
@@ -517,9 +528,15 @@ func (binary *binaryDecorator) install(ctx ModuleContext, file android.Path) {
 	binary.baseInstaller.install(ctx, file)
 
 	var preferredArchSymlinkPath android.OptionalPath
+	var installedSymlink android.Path
 	for _, symlink := range binary.symlinks {
-		installedSymlink := ctx.InstallSymlink(binary.baseInstaller.installDir(ctx), symlink,
-			binary.baseInstaller.path)
+		if Bool(binary.Properties.Symlink_preferred_arch) {
+			installedSymlink = ctx.InstallFile(binary.baseInstaller.installDir(ctx), symlink,
+				binary.baseInstaller.path)
+		} else {
+			installedSymlink = ctx.InstallSymlink(binary.baseInstaller.installDir(ctx), symlink,
+				binary.baseInstaller.path)
+		}
 		if symlink == binary.preferredArchSymlink {
 			// If this is the preferred arch symlink, save the installed path for use as the
 			// tool path.
