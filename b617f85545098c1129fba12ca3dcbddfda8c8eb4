@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0ccfb47_03436027",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-21T17:31:58Z",
+      "side": 1,
+      "message": "This change would require calling `MutatesGlobalState()` on this mutator now.\n\nThough is there a reason we want to avoid recalculating it? I think it would be better to minimize the information in the global state object.",
+      "revId": "b617f85545098c1129fba12ca3dcbddfda8c8eb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
