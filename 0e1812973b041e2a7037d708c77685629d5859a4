@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54b05c51_bc14dc2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-10-22T17:27:46Z",
+      "side": 1,
+      "message": "What about the SDK that ends up in Google? I think it will need the \"everything\" module.",
+      "revId": "0e1812973b041e2a7037d708c77685629d5859a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
