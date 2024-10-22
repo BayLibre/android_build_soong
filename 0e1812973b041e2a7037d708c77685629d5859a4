@@ -16,6 +16,24 @@
       "message": "What about the SDK that ends up in Google? I think it will need the \"everything\" module.",
       "revId": "0e1812973b041e2a7037d708c77685629d5859a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dcafd34_0a6278c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-22T17:30:50Z",
+      "side": 1,
+      "message": "I think those will need the \"runtime\" stubs, which actually the [exportable module will generate](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/droidstubs.go;l\u003d795) based on the [product configuration](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/make/target/product/sdk_with_runtime_apis.mk;l\u003d22).",
+      "parentUuid": "54b05c51_bc14dc2b",
+      "revId": "0e1812973b041e2a7037d708c77685629d5859a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
