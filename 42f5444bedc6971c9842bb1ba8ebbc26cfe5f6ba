@@ -16,6 +16,24 @@
       "message": "this method has moved to [`sdk_library_internal.go`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/sdk_library_internal.go) and has been renamed to `createDroidstubs` with https://android-review.googlesource.com/c/platform/build/soong/+/3276618. You\u0027ll have to rebase this change to resolve the merge conflict.",
       "revId": "42f5444bedc6971c9842bb1ba8ebbc26cfe5f6ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be47869_6e04fc94",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1848,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-10-22T02:35:23Z",
+      "side": 1,
+      "message": "Thank you for the clear guidance.",
+      "parentUuid": "cef62328_22c5ae30",
+      "revId": "42f5444bedc6971c9842bb1ba8ebbc26cfe5f6ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
