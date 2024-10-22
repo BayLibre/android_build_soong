@@ -62,6 +62,10 @@ type PackagingSpec struct {
 
 	// Name of the module where this packaging spec is output of
 	owner string
+
+	// Name of the module where this packaging spec is transitively included.
+	// Will be used to filter out transtive deps of overridden modules.
+	transitiveOwner string
 }
 
 type packagingSpecGob struct {
@@ -428,6 +432,9 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 					continue
 				}
 			}
+			// Store the dep as the transitiveOwner of the packaging spec. This will be used to filter out the packaging spec
+			// if the dep is overridden.
+			ps.transitiveOwner = child.Name()
 			all = append(all, ps)
 			if ps.overrides != nil {
 				overridden = append(overridden, *ps.overrides...)
@@ -439,6 +446,9 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 	var filtered []PackagingSpec
 	for _, ps := range all {
 		if ps.owner != "" && InList(ps.owner, overridden) {
+			continue
+		}
+		if ps.transitiveOwner != "" && InList(ps.transitiveOwner, overridden) {
 			continue
 		}
 		filtered = append(filtered, ps)
