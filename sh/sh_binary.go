@@ -15,6 +15,7 @@
 package sh
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 
@@ -508,6 +509,26 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	installedData := ctx.InstallTestData(s.installDir, s.data)
 	s.installedFile = ctx.InstallExecutable(s.installDir, s.outputFilePath.Base(), s.outputFilePath, installedData...)
+
+	android.SetProvider(ctx, tradefed.BaseTestProviderKey, tradefed.BaseTestProviderData{
+		TestcaseRelData: addArch(ctx.Arch().ArchType.String(), installedData.Paths()),
+		OutputFile:      s.outputFilePath,
+		TestConfig:      s.testConfig,
+		TestSuites:      s.testProperties.Test_suites,
+		IsHost:          false,
+		IsUnitTest:      Bool(s.testProperties.Test_options.Unit_test),
+		MkInclude:       "$(BUILD_SYSTEM)/soong_cc_rust_prebuilt.mk",
+		MkAppClass:      "NATIVE_TESTS",
+		InstallDir:      s.installDir,
+	})
+}
+
+func addArch(archType string, paths android.Paths) []string {
+	archRelPaths := []string{}
+	for _, p := range paths {
+		archRelPaths = append(archRelPaths, fmt.Sprintf("%s/%s", archType, p.Rel()))
+	}
+	return archRelPaths
 }
 
 func (s *ShTest) InstallInData() bool {
