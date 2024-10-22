@@ -16,6 +16,7 @@ package tradefed_modules
 import (
 	"android/soong/android"
 	"android/soong/java"
+	"android/soong/sh"
 	"fmt"
 	"strconv"
 	"strings"
@@ -103,6 +104,40 @@ func TestModuleConfigAndroidTest(t *testing.T) {
 		"/target/product/test_device/testcases/derived_test/data/testfile: /target/product/test_device/testcases/base/data/testfile",
 		"",
 	})
+}
+
+func TestModuleConfigShTest(t *testing.T) {
+
+	result := android.GroupFixturePreparers(
+		sh.PrepareForTestWithShBuildComponents,
+		android.FixtureMergeMockFs(android.MockFS{
+			"test.sh":            nil,
+			"testdata/data1":     nil,
+			"testdata/sub/data2": nil,
+		}),
+		android.FixtureRegisterWithContext(RegisterTestModuleConfigBuildComponents),
+	).RunTestWithBp(t, `
+		sh_test {
+			name: "foo",
+			src: "test.sh",
+			filename: "test.sh",
+                        test_suites: ["general-tests"],
+			data: [
+				"testdata/data1",
+				"testdata/sub/data2",
+			],
+		}
+                test_module_config {
+                        name: "conch",
+                        base: "foo",
+                        test_suites: ["general-tests"],
+                        options: [{name: "SomeName", value: "OptionValue"}],
+                }
+         `)
+	mod := result.ModuleForTests("foo", "").Module().(*sh.ShTest)
+	fmt.Printf("%v\n", mod)
+	tmc := result.ModuleForTests("conch", "").Module().(*testModuleConfigModule)
+	fmt.Printf("%v\n", tmc)
 }
 
 // Make sure we call test-config-fixer with the right args.

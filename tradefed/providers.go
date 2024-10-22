@@ -28,6 +28,13 @@ type BaseTestProviderData struct {
 	LocalCertificate string
 	// Indicates if the base module was a unit test.
 	IsUnitTest bool
+	// The .mk file is used AndroidMkEntries for base (soong_java_prebuilt, etc.)
+	MkInclude string
+	// The AppClass to use for the AndroidMkEntries for the base.
+	MkAppClass string
+	ArchType   string
+	// value for LOCAL_MODULE_PATH.  The directory where the module is installed.
+	InstallDir android.InstallPath
 }
 
 var BaseTestProviderKey = blueprint.NewProvider[BaseTestProviderData]()
