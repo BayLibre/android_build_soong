@@ -16,6 +16,24 @@
       "message": "Be sure to double check that the goal isn\u0027t listed in any builds.\nIt was for a while.  I had another CL to remove this as well, but I think there were two blockers.  1) A build.  2) Someone using the proto, maybe from google3.\nIt should have been converted over to use the new proto I added for owners, but just good to double check.",
       "revId": "711dcca16ff6e095f118aa2d60629cc666dfdbdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc2f1e19_b644ff2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-10-22T00:01:53Z",
+      "side": 1,
+      "message": "Ok, I don\u0027t see \"all_test_specs\" or \"all_code_metadata\" in wireless gcl anymore.\nSo should be good.",
+      "parentUuid": "83a0fde5_8b5bd9b2",
+      "revId": "711dcca16ff6e095f118aa2d60629cc666dfdbdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
