@@ -1558,15 +1558,18 @@ func (j *TestHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	j.Test.generateAndroidBuildActionsWithConfig(ctx, configs)
+	mkEntries := j.AndroidMkEntries()[0]
 	android.SetProvider(ctx, tradefed.BaseTestProviderKey, tradefed.BaseTestProviderData{
-		InstalledFiles:      j.data,
-		OutputFile:          j.outputFile,
-		TestConfig:          j.testConfig,
-		RequiredModuleNames: j.RequiredModuleNames(ctx),
-		TestSuites:          j.testProperties.Test_suites,
-		IsHost:              true,
-		LocalSdkVersion:     j.sdkVersion.String(),
-		IsUnitTest:          Bool(j.testProperties.Test_options.Unit_test),
+		TestcaseRelDataFiles: testcaseRel(j.data),
+		OutputFile:           j.outputFile,
+		TestConfig:           j.testConfig,
+		RequiredModuleNames:  j.RequiredModuleNames(ctx),
+		TestSuites:           j.testProperties.Test_suites,
+		IsHost:               true,
+		LocalSdkVersion:      j.sdkVersion.String(),
+		IsUnitTest:           Bool(j.testProperties.Test_options.Unit_test),
+		MkInclude:            mkEntries.Include,
+		MkAppClass:           mkEntries.Class,
 	})
 }
 
