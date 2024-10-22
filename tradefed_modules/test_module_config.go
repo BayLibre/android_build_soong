@@ -217,12 +217,8 @@ func TestModuleConfigHostFactory() android.Module {
 var _ android.AndroidMkEntriesProvider = (*testModuleConfigModule)(nil)
 
 func (m *testModuleConfigModule) AndroidMkEntries() []android.AndroidMkEntries {
-	appClass := "APPS"
-	include := "$(BUILD_SYSTEM)/soong_app_prebuilt.mk"
-	if m.isHost {
-		appClass = "JAVA_LIBRARIES"
-		include = "$(BUILD_SYSTEM)/soong_java_prebuilt.mk"
-	}
+	appClass := m.provider.MkAppClass
+	include := m.provider.MkInclude
 	return []android.AndroidMkEntries{{
 		Class:      appClass,
 		OutputFile: android.OptionalPathForPath(m.manifest),
@@ -231,7 +227,6 @@ func (m *testModuleConfigModule) AndroidMkEntries() []android.AndroidMkEntries {
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 				entries.SetPath("LOCAL_FULL_TEST_CONFIG", m.testConfig)
-				entries.SetString("LOCAL_MODULE_TAGS", "tests")
 				entries.SetString("LOCAL_TEST_MODULE_CONFIG_BASE", *m.Base)
 				if m.provider.LocalSdkVersion != "" {
 					entries.SetString("LOCAL_SDK_VERSION", m.provider.LocalSdkVersion)
@@ -250,7 +245,15 @@ func (m *testModuleConfigModule) AndroidMkEntries() []android.AndroidMkEntries {
 				// link to, we set the STEM here to a bogus name and we set OutputFile to a small file (our manifest).
 				// We do this so we don't have to add more conditionals to base_rules.mk
 				// soong_java_prebult has the same issue for .jars so use this in both module types.
-				entries.SetString("LOCAL_MODULE_STEM", fmt.Sprintf("UNUSED-%s", *m.Base))
+				if *m.Base != "vts_ltp_test_x86_64" {
+					entries.SetString("LOCAL_MODULE_STEM", fmt.Sprintf("UNUSED-%s", *m.Base))
+					entries.SetString("LOCAL_MODULE_TAGS", "tests")
+				} else {
+					entries.SetString("LOCAL_MODULE_STEM", m.provider.OutputFile.Rel())
+					// TODO(ron) provider for this and STEM
+					entries.SetString("LOCAL_MODULE_SUFFIX", "")
+					entries.SetString("LOCAL_MODULE_TARGET_ARCH", m.provider.ArchType)
+				}
 
 				// In normal java/app modules, the module writes LOCAL_COMPATIBILITY_SUPPORT_FILES
 				// and then base_rules.mk ends up copying each of those dependencies from .intermediates to the install directory.
@@ -364,21 +367,29 @@ func (m *testModuleConfigModule) generateManifestAndConfig(ctx android.ModuleCon
 		// ├── CtsDevicePolicyManagerTestCases.jar
 		symlinkName = baseApk.Base()
 	}
-	target := installedBaseRelativeToHere(symlinkName, *m.tradefedProperties.Base)
-	installedApk := ctx.InstallAbsoluteSymlink(installDir, symlinkName, target)
-	m.supportFiles = append(m.supportFiles, installedApk)
 
-	// 3) Symlink for all data deps
-	// And like this for data files and required modules
-	// FrameworksServicesTests
-	// ├── data
-	// │   └── broken_shortcut.xml
-	// ├── JobTestApp.apk
-	for _, f := range m.provider.InstalledFiles {
-		symlinkName := f.Rel()
+	if m.provider.MkAppClass != "NATIVE_TESTS" {
 		target := installedBaseRelativeToHere(symlinkName, *m.tradefedProperties.Base)
-		installedPath := ctx.InstallAbsoluteSymlink(installDir, symlinkName, target)
-		m.supportFiles = append(m.supportFiles, installedPath)
+		installedApk := ctx.InstallAbsoluteSymlink(installDir, symlinkName, target)
+		m.supportFiles = append(m.supportFiles, installedApk)
+
+		// 3) Symlink for all data deps
+		// And like this for data files and required modules
+		// FrameworksServicesTests
+		// ├── data
+		// │   └── broken_shortcut.xml
+		// ├── JobTestApp.apk
+		for _, f := range m.provider.InstalledFiles {
+			symlinkName := f.Rel()
+			target := installedBaseRelativeToHere(symlinkName, *m.tradefedProperties.Base)
+			installedPath := ctx.InstallAbsoluteSymlink(installDir, symlinkName, target)
+			m.supportFiles = append(m.supportFiles, installedPath)
+		}
+	} else {
+		// Shell, cc, and rust use copies rather than symlinks for now.
+		// installedData := ctx.InstallTestData(installDir, installedData)
+		ctx.InstallExecutable(installDir, m.provider.OutputFile.Base(), m.provider.OutputFile) //, installedData)
+
 	}
 
 	// 4) Module.config / AndroidTest.xml

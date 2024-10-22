@@ -1551,6 +1551,8 @@ func (j *TestHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		IsHost:              true,
 		LocalSdkVersion:     j.sdkVersion.String(),
 		IsUnitTest:          Bool(j.testProperties.Test_options.Unit_test),
+		MkInclude:           "$(BUILD_SYSTEM)/soong_java_prebuilt.mk",
+		MkAppClass:          "JAVA_LIBRARIES",
 	})
 }
 

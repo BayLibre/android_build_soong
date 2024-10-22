@@ -500,6 +500,18 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	s.installedFile = ctx.InstallExecutable(s.installDir, s.outputFilePath.Base(), s.outputFilePath, installedData...)
 
 	android.SetProvider(ctx, testing.TestModuleProviderKey, testing.TestModuleProviderData{})
+
+	android.SetProvider(ctx, tradefed.BaseTestProviderKey, tradefed.BaseTestProviderData{
+		InstalledFiles: installedData.Paths(),
+		OutputFile:     s.outputFilePath,
+		TestConfig:     s.testConfig,
+		TestSuites:     s.testProperties.Test_suites,
+		IsHost:         false,
+		IsUnitTest:     Bool(s.testProperties.Test_options.Unit_test),
+		MkInclude:      "$(BUILD_SYSTEM)/soong_cc_rust_prebuilt.mk",
+		MkAppClass:     "NATIVE_TESTS",
+		ArchType:       ctx.Arch().ArchType.String(),
+	})
 }
 
 func (s *ShTest) InstallInData() bool {
