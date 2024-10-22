@@ -16,6 +16,24 @@
       "message": "Can you please add a unit test?",
       "revId": "8c67d5842e0135ec517045aa0cd2cf5b63b53e6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11028f59_387701c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-22T21:36:54Z",
+      "side": 1,
+      "message": "Added a test in aosp/3317334 to retain the presubmit vote.",
+      "parentUuid": "bf165af3_f804fdb2",
+      "revId": "8c67d5842e0135ec517045aa0cd2cf5b63b53e6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
