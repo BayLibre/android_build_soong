@@ -629,3 +629,27 @@ func TestUseSharedVariationOfNativeLib(t *testing.T) {
 	fileList := android.ContentFromFileRuleForTests(t, result.TestContext, partition.Output("fileList"))
 	android.AssertDeepEquals(t, "cc_library listed in deps", "lib64/libc++.so\nlib64/libc.so\nlib64/libdl.so\nlib64/libfoo.so\nlib64/libm.so\n", fileList)
 }
+
+func TestDoNotInstallTransitiveDepOfOverriddenModule(t *testing.T) {
+	result := fixture.RunTestWithBp(t, `
+android_filesystem {
+    name: "myfilesystem",
+    deps: ["binfoo1", "libfoo2"],
+}
+cc_binary {
+    name: "binfoo1",
+    shared_libs: ["libfoo"]
+}
+cc_library {
+    name: "libfoo",
+}
+cc_library {
+    name: "libfoo2",
+    overrides: ["libfoo"],
+}
+	`)
+
+	partition := result.ModuleForTests("myfilesystem", "android_common")
+	fileList := android.ContentFromFileRuleForTests(t, result.TestContext, partition.Output("fileList"))
+	android.AssertDeepEquals(t, "Shared library dep of overridden binary should not be installed", fileList, "bin/binfoo1\nlib64/libc++.so\nlib64/libc.so\nlib64/libdl.so\nlib64/libfoo2.so\nlib64/libm.so\n")
+}
