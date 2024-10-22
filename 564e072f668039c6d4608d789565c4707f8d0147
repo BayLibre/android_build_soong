@@ -16,6 +16,24 @@
       "message": "Dean, it looks as though you need to add some more libraries to the `stub_only_libs` for the affected `java_sdk_library`s. Similar to what I did in https://r.android.com/3299095.\n\nThe reason for that is the stubs contain imports to resolve unqualified classes in Javadoc, e.g. `BluetoothProperties` is referenced from https://cs.android.com/android/platform/superproject/main/+/main:packages/modules/Bluetooth/framework/java/android/bluetooth/BluetoothAdapter.java;l\u003d4913;drc\u003d9999a7d9f210dc7dd961dcba91c0c18928018c56.\n\nPreviously, the docs were not kept so the imports were discarded but this change enables the docs.",
       "revId": "564e072f668039c6d4608d789565c4707f8d0147",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b1fd76d_3f82772d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-22T17:34:29Z",
+      "side": 1,
+      "message": "I _think_ the presubmit results are not visible to non-Googlers. I\u0027ll work on adding the dependencies this week.",
+      "parentUuid": "9604dd12_502fab17",
+      "revId": "564e072f668039c6d4608d789565c4707f8d0147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
