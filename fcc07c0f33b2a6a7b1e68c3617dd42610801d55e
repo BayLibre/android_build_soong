@@ -16,6 +16,24 @@
       "message": "Did this lead to any new diffs when you run `m soong_generated_system_filesystem_test` or `m soong_generated_system_ext_filesystem_test`?",
       "revId": "fcc07c0f33b2a6a7b1e68c3617dd42610801d55e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "353833b9_4f3a1a1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-22T18:20:30Z",
+      "side": 1,
+      "message": "There are no new diffs for `system` or `system_ext`",
+      "parentUuid": "b05bfddb_7cb94f2e",
+      "revId": "fcc07c0f33b2a6a7b1e68c3617dd42610801d55e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
