@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26b85cb2_dc8a55f8",
+        "filename": "android/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-22T21:57:11Z",
+      "side": 1,
+      "message": "Why is this necessary vs. using the provider?  What are the cases where it is valid to call `PrepareAndroidMKProviderInfo`, but it wasn\u0027t already called to set `AndroidMkInfoProvider`",
+      "revId": "74695887e4e0a0e4284745e18db872faf364bf30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
