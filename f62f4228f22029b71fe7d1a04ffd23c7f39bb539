@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "641ec793_c53ab10b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2060520
+      },
+      "writtenOn": "2024-10-22T00:38:26Z",
+      "side": 1,
+      "message": "\u003c?xml version\u003d\"1.0\" encoding\u003d\"utf-8\"?\u003e\n\u003cconfig\u003e\n  \u003ccomponent-override package\u003d\"com.google.android.documentsui\" \u003e\n    \u003ccomponent class\u003d\"com.android.documentsui.LauncherActivity\" enabled\u003d\"false\" /\u003e\n  \u003c/component-override\u003e\n\u003c/config\u003e",
+      "revId": "f62f4228f22029b71fe7d1a04ffd23c7f39bb539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
