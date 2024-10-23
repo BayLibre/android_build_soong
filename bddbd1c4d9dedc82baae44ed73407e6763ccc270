@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b454e905_55f5f51c",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-23T21:30:13Z",
+      "side": 1,
+      "message": "nit: Did you mean `Audio`?",
+      "range": {
+        "startLine": 794,
+        "startChar": 18,
+        "endLine": 794,
+        "endChar": 22
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d214adc2_aa826f48",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "etc/prebuilt_etc.go",
+              "range": {
+                "startLine": 68,
+                "startChar": 0,
+                "endLine": 69,
+                "endChar": 0
+              },
+              "replacement": "\tctx.RegisterModuleType(\"prebuilt_media_audio\", PrebuiltMediaAudioFactory)\n"
+            },
+            {
+              "path": "etc/prebuilt_etc.go",
+              "range": {
+                "startLine": 794,
+                "startChar": 0,
+                "endLine": 795,
+                "endChar": 0
+              },
+              "replacement": "func PrebuiltMediaAudioFactory() android.Module {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bddbd1c4d9dedc82baae44ed73407e6763ccc270",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6308639_d53c90e2",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-23T21:30:13Z",
+      "side": 1,
+      "message": "Is this arch-specific? If not, should this be `MultilibCommon`?",
+      "range": {
+        "startLine": 798,
+        "startChar": 72,
+        "endLine": 798,
+        "endChar": 85
+      },
+      "revId": "bddbd1c4d9dedc82baae44ed73407e6763ccc270",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
