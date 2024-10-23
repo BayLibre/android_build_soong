@@ -52,6 +52,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e17b152c_220f9132",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-23T21:41:18Z",
+      "side": 1,
+      "message": "Done. Thanks for catching this😅",
+      "parentUuid": "b454e905_55f5f51c",
+      "range": {
+        "startLine": 794,
+        "startChar": 18,
+        "endLine": 794,
+        "endChar": 22
+      },
+      "revId": "bddbd1c4d9dedc82baae44ed73407e6763ccc270",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6308639_d53c90e2",
@@ -65,6 +89,30 @@
       "writtenOn": "2024-10-23T21:30:13Z",
       "side": 1,
       "message": "Is this arch-specific? If not, should this be `MultilibCommon`?",
+      "range": {
+        "startLine": 798,
+        "startChar": 72,
+        "endLine": 798,
+        "endChar": 85
+      },
+      "revId": "bddbd1c4d9dedc82baae44ed73407e6763ccc270",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2d0c92_3c50cee6",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-23T21:41:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6308639_d53c90e2",
       "range": {
         "startLine": 798,
         "startChar": 72,
