@@ -16,7 +16,6 @@ package cc
 
 import (
 	"android/soong/android"
-	"slices"
 	"strings"
 )
 
@@ -79,12 +78,6 @@ func (m *ccPreprocessNoConfiguration) GenerateAndroidBuildActions(ctx android.Mo
 		return
 	}
 
-	cflags := slices.Clone(m.properties.Cflags)
-
-	// Match behavior of other cc modules:
-	// https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/compiler.go;l=422;drc=7297f05ee8cda422ccb32c4af4d9d715d6bac10e
-	cflags = append(cflags, "-I"+ctx.ModuleDir())
-
 	var ccCmd string
 	switch src.Ext() {
 	case ".c":
@@ -106,7 +99,7 @@ func (m *ccPreprocessNoConfiguration) GenerateAndroidBuildActions(ctx android.Mo
 		Output:      outFile,
 		Input:       src,
 		Args: map[string]string{
-			"cFlags": strings.Join(cflags, " "),
+			"cFlags": strings.Join(m.properties.Cflags, " "),
 			"ccCmd":  ccCmd,
 		},
 	})
