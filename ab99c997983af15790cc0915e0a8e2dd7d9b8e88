@@ -16,6 +16,24 @@
       "message": "Could you take `transitiveOwner` out of the packagingspec? providers aren\u0027t supposed to be modified, which I don\u0027t think you\u0027re doing because you\u0027re copying `ps`, but it\u0027s confusing that that copy happens, and also that `transitivieOwner` exists in `PackagingSpec` but is never set to a value.\n\nA naive translation would be to make a local `map[PackagingSpec]string` for the transitive owners.",
       "revId": "ab99c997983af15790cc0915e0a8e2dd7d9b8e88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "290317a8_b7fc2623",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-23T19:12:31Z",
+      "side": 1,
+      "message": "I have updated the implementation to not use `transitiveOwner`.\n\nI think `map[PackagingSpec]string` might not handle cases where there are dup dependency paths\n```\ncc_binary {name: \"binfoo\", shared_libs: [\"libfoo\"]}\ncc_binary {name: \"binfoo_other\", shared_libs: [\"libfoo\"]}\n```\n\nif `binfoo` gets overriden, but `binfoo_other` does not, we would still need to install `libfoo`.\n\nTo handle cases like this, I have added a new `depNames` array.",
+      "parentUuid": "751c78dc_e41387cc",
+      "revId": "ab99c997983af15790cc0915e0a8e2dd7d9b8e88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
