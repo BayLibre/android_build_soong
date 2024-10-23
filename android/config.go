@@ -2219,6 +2219,10 @@ func (c *config) BoardAvbSystemAddHashtreeFooterArgs() []string {
 	return c.productVariables.BoardAvbSystemAddHashtreeFooterArgs
 }
 
+func (c *config) ProductCopyFiles() map[string]string {
+	return c.productVariables.ProductCopyFiles
+}
+
 // Returns true if RELEASE_INSTALL_APEX_SYSTEMSERVER_DEXPREOPT_SAME_PARTITION is set to true.
 // If true, dexpreopt files of apex system server jars will be installed in the same partition as the parent apex.
 // If false, all these files will be installed in /system partition.

@@ -533,6 +533,8 @@ type ProductVariables struct {
 	ExtraAllowedDepsTxt *string `json:",omitempty"`
 
 	AdbKeys *string `json:",omitempty"`
+
+	ProductCopyFiles map[string]string `json:",omitempty"`
 }
 
 type PartitionQualifiedVariablesType struct {
