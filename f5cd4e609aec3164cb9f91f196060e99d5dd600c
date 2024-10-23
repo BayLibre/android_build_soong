@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91a52e0d_82766447",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2222,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-23T22:12:27Z",
+      "side": 1,
+      "message": "Don\u0027t export this, it should be considered private for the mk -\u003e soong migration.",
+      "revId": "f5cd4e609aec3164cb9f91f196060e99d5dd600c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
