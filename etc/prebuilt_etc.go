@@ -65,6 +65,7 @@ func RegisterPrebuiltEtcBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("prebuilt_dsp", PrebuiltDSPFactory)
 	ctx.RegisterModuleType("prebuilt_rfsa", PrebuiltRFSAFactory)
 	ctx.RegisterModuleType("prebuilt_renderscript_bitcode", PrebuiltRenderScriptBitcodeFactory)
+	ctx.RegisterModuleType("prebuilt_media_audio", PrebuiltMediaAutoFactory)
 
 	ctx.RegisterModuleType("prebuilt_defaults", defaultsFactory)
 
@@ -783,6 +784,16 @@ func PrebuiltRFSAFactory() android.Module {
 	// many places outside of the application processor.  They could be moved to /vendor/dsp once
 	// that is cleaned up.
 	InitPrebuiltEtcModule(module, "lib/rfsa")
+	// This module is device-only
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
+	android.InitDefaultableModule(module)
+	return module
+}
+
+// prebuilt_media_audio installs audio files in <partition>/media/audio directory.
+func PrebuiltMediaAutoFactory() android.Module {
+	module := &PrebuiltEtc{}
+	InitPrebuiltEtcModule(module, "media/audio")
 	// This module is device-only
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	android.InitDefaultableModule(module)
