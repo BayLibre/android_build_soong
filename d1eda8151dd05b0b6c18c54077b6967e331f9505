@@ -16,6 +16,24 @@
       "message": "Could you move this into `PartitionVariables`?",
       "revId": "d1eda8151dd05b0b6c18c54077b6967e331f9505",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15668adc_01ce5c55",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-23T22:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c37bcd53_37ade562",
+      "revId": "d1eda8151dd05b0b6c18c54077b6967e331f9505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
