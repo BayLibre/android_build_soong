@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6ce5b60_83fa517c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-23T05:42:21Z",
+      "side": 1,
+      "message": "Thanks for fixing this!",
+      "revId": "03e762ed32b8ab2bf78e37127c6ab1f912fd19b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d75d77_72d080d6",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-23T05:42:21Z",
+      "side": 1,
+      "message": "nit: remove this line",
+      "revId": "03e762ed32b8ab2bf78e37127c6ab1f912fd19b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
