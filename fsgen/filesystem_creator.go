@@ -17,12 +17,14 @@ package fsgen
 import (
 	"crypto/sha256"
 	"fmt"
+	"path/filepath"
 	"slices"
 	"strconv"
 	"strings"
 	"sync"
 
 	"android/soong/android"
+	"android/soong/etc"
 	"android/soong/filesystem"
 
 	"github.com/google/blueprint"
@@ -90,6 +92,59 @@ func defaultDepCandidateProps(config android.Config) *depCandidateProps {
 		Namespace: ".",
 		Arch:      []android.ArchType{config.BuildArch},
 	}
+}
+
+var (
+	etcInstallPathToFactoryMap = map[string]func() android.Module{
+		"":                etc.PrebuiltRootFactory,
+		"avb":             etc.PrebuiltAvbFactory,
+		"cacerts":         etc.PrebuiltEtcCaCertsFactory,
+		"dsp":             etc.PrebuiltDSPFactory,
+		"etc":             etc.PrebuiltEtcFactory,
+		"etc/dsp":         etc.PrebuiltDSPFactory,
+		"etc/firmware":    etc.PrebuiltFirmwareFactory,
+		"firmware":        etc.PrebuiltFirmwareFactory,
+		"fonts":           etc.PrebuiltFontFactory,
+		"lib":             etc.PrebuiltRenderScriptBitcodeFactory,
+		"lib64":           etc.PrebuiltRenderScriptBitcodeFactory,
+		"lib/rfsa":        etc.PrebuiltRFSAFactory,
+		"overlay":         etc.PrebuiltOverlayFactory,
+		"usr/share":       etc.PrebuiltUserShareFactory,
+		"usr/hyphen-data": etc.PrebuiltUserHyphenDataFactory,
+		"usr/keylayout":   etc.PrebuiltUserKeyLayoutFactory,
+		"usr/keychars":    etc.PrebuiltUserKeyCharsFactory,
+		"usr/idc":         etc.PrebuiltUserIdcFactory,
+	}
+)
+
+type prebuiltModuleProperties struct {
+	Name *string
+
+	// partition specific properties
+	Soc_specific        *bool
+	Product_specific    *bool
+	System_ext_specific *bool
+
+	// prebuilt_* specific properties
+	Srcs                  []string
+	Relative_install_path *string
+}
+
+// Creates prebuilt_* modules based on the install paths and returns the list of generated
+// module names
+func createPrebuiltEtcModules(ctx android.LoadHookContext) []string {
+	productCopyFileMap := ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.ProductCopyFiles
+
+	groupedSources := map[string]prebuiltModuleProperties{}
+	for _, src := range android.SortedKeys(productCopyFileMap) {
+		dest := productCopyFileMap[src]
+		if _, ok := groupedSources[filepath.Dir(dest)]; !ok {
+			groupedSources[filepath.Dir(dest)] = prebuiltModuleProperties{}
+		}
+	}
+
+	generatedModules := []string{}
+	return generatedModules
 }
 
 func createFsGenState(ctx android.LoadHookContext) *FsGenState {
@@ -302,6 +357,8 @@ func filesystemCreatorFactory() android.Module {
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	module.AddProperties(&module.properties)
 	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
+		fmt.Printf("copy files: %s, %v\n", ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.ProductCopyFiles, len(ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.ProductCopyFiles))
+		// createPrebuiltEtcModules(ctx)
 		createFsGenState(ctx)
 		module.createInternalModules(ctx)
 	})
