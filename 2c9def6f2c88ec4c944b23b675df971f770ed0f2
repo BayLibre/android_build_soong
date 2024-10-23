@@ -51,6 +51,24 @@
       "parentUuid": "f340e688_145d4e10",
       "revId": "2c9def6f2c88ec4c944b23b675df971f770ed0f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f691a351_504af007",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-23T18:45:28Z",
+      "side": 1,
+      "message": "Yeah that\u0027s the behavior I\u0027d expect. I guess it does work and I misread. And I guess we don\u0027t need example 2 right now?",
+      "parentUuid": "2d803e71_031dcff7",
+      "revId": "2c9def6f2c88ec4c944b23b675df971f770ed0f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
