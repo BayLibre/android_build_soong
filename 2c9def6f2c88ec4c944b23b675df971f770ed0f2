@@ -33,6 +33,24 @@
       "message": "I don\u0027t think this fix handles this case:\n\n```\nandroid_filesystem {\n\tname: \"myfilesystem\",\n\tdeps: [\"binfoo1\", \"libfoo2\"],\n}\ncc_binary {\n\tname: \"binfoo1\",\n\tshared_libs: [\"libfoo\"]\n}\ncc_library {\n\tname: \"libfoo\",\n}\ncc_library {\n\tname: \"libfoo2\",\n\toverrides: \"libfoo\",\n}\n```\n\nOr this case:\n\n```\nandroid_filesystem {\n\tname: \"myfilesystem\",\n\tdeps: [\"binfoo1\"],\n}\ncc_binary {\n\tname: \"binfoo1\",\n\tshared_libs: [\"libfoo\", \"libbar\"]\n}\ncc_library {\n\tname: \"libfoo\",\n\toverrides: \"libbar2\",\n}\ncc_library {\n\tname: \"libbar\",\n\tshared_libs: [\"libbar2\"],\n}\n```\n\nCould we make a more comprehensive fix that also covers these cases?",
       "revId": "2c9def6f2c88ec4c944b23b675df971f770ed0f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d803e71_031dcff7",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-23T00:54:05Z",
+      "side": 1,
+      "message": "Could I please know what the expected behavior for example 1 should be? I have uploaded a new patchset which replaces the unit test with example 1. For this example,\n- binfoo1 is installed\n- libfoo2 is installed\n- libfoo1 is _not_ installed",
+      "parentUuid": "f340e688_145d4e10",
+      "revId": "2c9def6f2c88ec4c944b23b675df971f770ed0f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
