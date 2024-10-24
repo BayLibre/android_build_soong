@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e84001af_6e076bc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-24T23:17:34Z",
+      "side": 1,
+      "message": "This unfortunately does not handle more complicated cases like this\n```\ncc_binary {\n  name: \"binfoo\",\n  shared_libs: [\"libfoo\"]\n}\ncc_library {\n  name:\"libfoo\",\n}\ncc_library {\n  name: \"libbar\",\n  overrides: [\"libfoo\"],\n}\n\nPRODUCT_PACKAGES +\u003d binfoo libbar\n\n\n# expected: binfoo, libbar are installed\n# actual:binfoo, libfoo, libbar will be installed\n```",
+      "revId": "c52e94bdd104180dc43d4449612b6fa43beac143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
