@@ -16,6 +16,24 @@
       "message": "how about making use of the \"?\u003d\" syntax?\n\n```\nro.board.api_level ?\u003d 202404   // set by the build system\n...\nro.board.api_level \u003d 34        // added by a partner explicitly using PRODUCT_VENDOR_PROPERTIES\n```",
       "revId": "1a804093e04b3a4f140cabfafcaea4d4da45cd6c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06053fe_09b1f9b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-10-24T05:47:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24c832cd_3ef63aa7",
+      "revId": "1a804093e04b3a4f140cabfafcaea4d4da45cd6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
