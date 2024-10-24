@@ -22,6 +22,30 @@
       },
       "revId": "3f84f6ea6f522efc23945598ad5bb71eecd59bc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e936bf84_e7c0ff3d",
+        "filename": "scripts/gen_build_prop.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-10-24T08:56:36Z",
+      "side": 1,
+      "message": "As `PRODUCT_VENDOR_PROPERTIES` will be deprecated with the soong based build props, there\u0027s no other way to define build props directly from mk files.",
+      "parentUuid": "c6f96ee0_b862416b",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 434,
+        "endChar": 80
+      },
+      "revId": "3f84f6ea6f522efc23945598ad5bb71eecd59bc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
