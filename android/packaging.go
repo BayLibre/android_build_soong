@@ -109,11 +109,11 @@ func (p *PackagingSpec) FromGob(data *packagingSpecGob) {
 }
 
 func (p *PackagingSpec) GobEncode() ([]byte, error) {
-	return blueprint.CustomGobEncode[packagingSpecGob](p)
+	return proptools.CustomGobEncode[packagingSpecGob](p)
 }
 
 func (p *PackagingSpec) GobDecode(data []byte) error {
-	return blueprint.CustomGobDecode[packagingSpecGob](data, p)
+	return proptools.CustomGobDecode[packagingSpecGob](data, p)
 }
 
 func (p *PackagingSpec) Equals(other *PackagingSpec) bool {

@@ -25,6 +25,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
+	"github.com/google/blueprint/proptools"
 )
 
 var absSrcDir string
@@ -368,11 +369,11 @@ func (p *OptionalPath) FromGob(data *optionalPathGob) {
 }
 
 func (p OptionalPath) GobEncode() ([]byte, error) {
-	return blueprint.CustomGobEncode[optionalPathGob](&p)
+	return proptools.CustomGobEncode[optionalPathGob](&p)
 }
 
 func (p *OptionalPath) GobDecode(data []byte) error {
-	return blueprint.CustomGobDecode[optionalPathGob](data, p)
+	return proptools.CustomGobDecode[optionalPathGob](data, p)
 }
 
 // Valid returns whether there is a valid path
@@ -1157,11 +1158,11 @@ func (p *basePath) FromGob(data *basePathGob) {
 }
 
 func (p basePath) GobEncode() ([]byte, error) {
-	return blueprint.CustomGobEncode[basePathGob](&p)
+	return proptools.CustomGobEncode[basePathGob](&p)
 }
 
 func (p *basePath) GobDecode(data []byte) error {
-	return blueprint.CustomGobDecode[basePathGob](data, p)
+	return proptools.CustomGobDecode[basePathGob](data, p)
 }
 
 func (p basePath) Ext() string {
@@ -1435,11 +1436,11 @@ func (p *OutputPath) FromGob(data *outputPathGob) {
 }
 
 func (p OutputPath) GobEncode() ([]byte, error) {
-	return blueprint.CustomGobEncode[outputPathGob](&p)
+	return proptools.CustomGobEncode[outputPathGob](&p)
 }
 
 func (p *OutputPath) GobDecode(data []byte) error {
-	return blueprint.CustomGobDecode[outputPathGob](data, p)
+	return proptools.CustomGobDecode[outputPathGob](data, p)
 }
 
 func (p OutputPath) withRel(rel string) OutputPath {
@@ -1869,11 +1870,11 @@ func (p *InstallPath) FromGob(data *installPathGob) {
 }
 
 func (p InstallPath) GobEncode() ([]byte, error) {
-	return blueprint.CustomGobEncode[installPathGob](&p)
+	return proptools.CustomGobEncode[installPathGob](&p)
 }
 
 func (p *InstallPath) GobDecode(data []byte) error {
-	return blueprint.CustomGobDecode[installPathGob](data, p)
+	return proptools.CustomGobDecode[installPathGob](data, p)
 }
 
 // Will panic if called from outside a test environment.

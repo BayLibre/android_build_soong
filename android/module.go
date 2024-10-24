@@ -2200,11 +2200,11 @@ func (k *katiInstall) FromGob(data *katiInstallGob) {
 }
 
 func (k *katiInstall) GobEncode() ([]byte, error) {
-	return blueprint.CustomGobEncode[katiInstallGob](k)
+	return proptools.CustomGobEncode[katiInstallGob](k)
 }
 
 func (k *katiInstall) GobDecode(data []byte) error {
-	return blueprint.CustomGobDecode[katiInstallGob](data, k)
+	return proptools.CustomGobDecode[katiInstallGob](data, k)
 }
 
 type extraFilesZip struct {
@@ -2230,11 +2230,11 @@ func (e *extraFilesZip) FromGob(data *extraFilesZipGob) {
 }
 
 func (e *extraFilesZip) GobEncode() ([]byte, error) {
-	return blueprint.CustomGobEncode[extraFilesZipGob](e)
+	return proptools.CustomGobEncode[extraFilesZipGob](e)
 }
 
 func (e *extraFilesZip) GobDecode(data []byte) error {
-	return blueprint.CustomGobDecode[extraFilesZipGob](data, e)
+	return proptools.CustomGobDecode[extraFilesZipGob](data, e)
 }
 
 type katiInstalls []katiInstall
