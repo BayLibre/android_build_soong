@@ -94,6 +94,95 @@ func defaultDepCandidateProps(config android.Config) *depCandidateProps {
 	}
 }
 
+type srcBaseFileInstallBaseFileTuple struct {
+	srcBaseFile     string
+	installBaseFile string
+}
+
+// prebuilt src files grouped by the install partitions.
+// Each groups are a mapping of the relative install path to the name of the files
+type prebuiltSrcGroupByInstallPartition struct {
+	system     map[string][]srcBaseFileInstallBaseFileTuple
+	system_ext map[string][]srcBaseFileInstallBaseFileTuple
+	product    map[string][]srcBaseFileInstallBaseFileTuple
+	vendor     map[string][]srcBaseFileInstallBaseFileTuple
+}
+
+func newPrebuiltSrcGroupByInstallPartition() *prebuiltSrcGroupByInstallPartition {
+	return &prebuiltSrcGroupByInstallPartition{
+		system:     map[string][]srcBaseFileInstallBaseFileTuple{},
+		system_ext: map[string][]srcBaseFileInstallBaseFileTuple{},
+		product:    map[string][]srcBaseFileInstallBaseFileTuple{},
+		vendor:     map[string][]srcBaseFileInstallBaseFileTuple{},
+	}
+}
+
+func isSubdirectory(parent, child string) bool {
+	rel, err := filepath.Rel(parent, child)
+	if err != nil {
+		return false
+	}
+	return !strings.HasPrefix(rel, "..")
+}
+
+func appendIfCorrectInstallPartition(partition, destPath, srcPath string, srcMap map[string][]srcBaseFileInstallBaseFileTuple) {
+	if isSubdirectory(partition, destPath) {
+		relativeInstallPath, _ := filepath.Rel(partition, destPath)
+		relativeInstallDir := filepath.Dir(relativeInstallPath)
+		srcMap[relativeInstallDir] = append(srcMap[relativeInstallDir], srcBaseFileInstallBaseFileTuple{
+			srcBaseFile:     filepath.Base(srcPath),
+			installBaseFile: filepath.Base(destPath),
+		})
+	}
+}
+
+func processProductCopyFiles(ctx android.LoadHookContext) map[string]*prebuiltSrcGroupByInstallPartition {
+	productCopyFileMap := ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.ProductCopyFiles
+	generatedPartitions := generatedPartitions(ctx)
+
+	groupedSources := map[string]*prebuiltSrcGroupByInstallPartition{}
+	for _, src := range android.SortedKeys(productCopyFileMap) {
+		dest := productCopyFileMap[src]
+		srcFileDir := filepath.Dir(src)
+		if _, ok := groupedSources[srcFileDir]; !ok {
+			groupedSources[srcFileDir] = newPrebuiltSrcGroupByInstallPartition()
+		}
+		for _, partition := range generatedPartitions {
+			switch partition {
+			case "system":
+				appendIfCorrectInstallPartition(partition, dest, filepath.Base(src), groupedSources[srcFileDir].system)
+			case "system_ext":
+				appendIfCorrectInstallPartition(partition, dest, filepath.Base(src), groupedSources[srcFileDir].system_ext)
+			case "product":
+				appendIfCorrectInstallPartition(partition, dest, filepath.Base(src), groupedSources[srcFileDir].product)
+			case "vendor":
+				appendIfCorrectInstallPartition(partition, dest, filepath.Base(src), groupedSources[srcFileDir].vendor)
+			}
+		}
+	}
+
+	return groupedSources
+}
+
+type prebuiltModuleProperties struct {
+	Name *string
+
+	Soc_specific        *bool
+	Product_specific    *bool
+	System_ext_specific *bool
+
+	Srcs []string
+	Dsts []string
+}
+
+// Split relative_install_path to a separate struct, because it is not supported for every
+// modules listed in [etcInstallPathToFactoryMap]
+type prebuiltSubdirProperties struct {
+	// If the base file name of the src and dst all match, dsts property does not need to be
+	// set, and only relative_install_path can be set.
+	Relative_install_path *string
+}
+
 var (
 	etcInstallPathToFactoryMap = map[string]func() android.Module{
 		"":                etc.PrebuiltRootFactory,
@@ -108,6 +197,7 @@ var (
 		"lib":             etc.PrebuiltRenderScriptBitcodeFactory,
 		"lib64":           etc.PrebuiltRenderScriptBitcodeFactory,
 		"lib/rfsa":        etc.PrebuiltRFSAFactory,
+		"media/audio":     etc.PrebuiltMediaAudioFactory,
 		"overlay":         etc.PrebuiltOverlayFactory,
 		"usr/share":       etc.PrebuiltUserShareFactory,
 		"usr/hyphen-data": etc.PrebuiltUserHyphenDataFactory,
@@ -117,51 +207,125 @@ var (
 	}
 )
 
-type prebuiltModuleProperties struct {
-	Name *string
+func createPrebuiltEtcModule(ctx android.LoadHookContext, partition, srcDir, destDir string, destFiles []srcBaseFileInstallBaseFileTuple) string {
+	moduleProps := &prebuiltModuleProperties{}
+	propsList := []interface{}{moduleProps}
 
-	// partition specific properties
-	Soc_specific        *bool
-	Product_specific    *bool
-	System_ext_specific *bool
+	// generated module name follows the pattern:
+	// <install partition>-<src file path>-<relative install path from partition root>-<install file extension>
+	// Note that all path separators are replaced with "_" in the name
+	moduleName := partition
+	if srcDir != "" {
+		moduleName += fmt.Sprintf("-%s", strings.ReplaceAll(srcDir, string(filepath.Separator), "_"))
+	}
+	if destDir != "" {
+		moduleName += fmt.Sprintf("-%s", strings.ReplaceAll(destDir, string(filepath.Separator), "_"))
+	}
+	if len(destFiles) > 0 {
+		if ext := filepath.Ext(destFiles[0].srcBaseFile); ext != "" {
+			moduleName += fmt.Sprintf("-%s", strings.TrimPrefix(ext, "."))
+		}
+	}
+	moduleProps.Name = proptools.StringPtr(moduleName)
 
-	// prebuilt_* specific properties
-	Srcs                  []string
-	Relative_install_path *string
+	allCopyFileNamesUnchanged := true
+	var srcBaseFiles, installBaseFiles []string
+	for _, tuple := range destFiles {
+		if tuple.srcBaseFile != tuple.installBaseFile {
+			allCopyFileNamesUnchanged = false
+		}
+		srcBaseFiles = append(srcBaseFiles, tuple.srcBaseFile)
+		installBaseFiles = append(installBaseFiles, tuple.installBaseFile)
+	}
+
+	// Find out the most appropriate module type to generate
+	var etcInstallPathKey string
+	for _, etcInstallPath := range android.SortedKeys(etcInstallPathToFactoryMap) {
+		// Do not break when found but iterate until the end to find a module with more
+		// specific install path
+		if strings.HasPrefix(destDir, etcInstallPath) {
+			etcInstallPathKey = etcInstallPath
+		}
+	}
+	destDir, _ = filepath.Rel(etcInstallPathKey, destDir)
+
+	// Set partition specific properties
+	switch partition {
+	case "system_ext":
+		moduleProps.System_ext_specific = proptools.BoolPtr(true)
+	case "product":
+		moduleProps.Product_specific = proptools.BoolPtr(true)
+	case "vendor":
+		moduleProps.Soc_specific = proptools.BoolPtr(true)
+	}
+
+	// Set appropriate srcs, dsts, and releative_install_path based on
+	// the source and install file names
+	if allCopyFileNamesUnchanged {
+		moduleProps.Srcs = srcBaseFiles
+
+		// Specify relative_install_path if it is not installed in the root directory of the
+		// partition
+		if !android.InList(destDir, []string{"", "."}) {
+			propsList = append(propsList, &prebuiltSubdirProperties{
+				Relative_install_path: proptools.StringPtr(destDir),
+			})
+		}
+	} else {
+		moduleProps.Srcs = srcBaseFiles
+		dsts := []string{}
+		for _, installBaseFile := range installBaseFiles {
+			dsts = append(dsts, filepath.Join(destDir, installBaseFile))
+		}
+		moduleProps.Dsts = dsts
+	}
+
+	ctx.CreateModuleInDirectory(etcInstallPathToFactoryMap[etcInstallPathKey], srcDir, propsList...)
+
+	return moduleName
+}
+
+func getCreatedPrebuiltEtcModuleNames(ctx android.LoadHookContext, partition, srcDir string, destDirFilesMap map[string][]srcBaseFileInstallBaseFileTuple) (ret []string) {
+	for _, destDir := range android.SortedKeys(destDirFilesMap) {
+		ret = append(ret, createPrebuiltEtcModule(ctx, partition, srcDir, destDir, destDirFilesMap[destDir]))
+	}
+	return ret
 }
 
 // Creates prebuilt_* modules based on the install paths and returns the list of generated
 // module names
-func createPrebuiltEtcModules(ctx android.LoadHookContext) []string {
-	productCopyFileMap := ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.ProductCopyFiles
-
-	groupedSources := map[string]prebuiltModuleProperties{}
-	for _, src := range android.SortedKeys(productCopyFileMap) {
-		dest := productCopyFileMap[src]
-		if _, ok := groupedSources[filepath.Dir(dest)]; !ok {
-			groupedSources[filepath.Dir(dest)] = prebuiltModuleProperties{}
-		}
+func createPrebuiltEtcModules(ctx android.LoadHookContext) (ret []string) {
+	groupedSources := processProductCopyFiles(ctx)
+	for _, srcDir := range android.SortedKeys(groupedSources) {
+		groupedSource := groupedSources[srcDir]
+		ret = append(ret, getCreatedPrebuiltEtcModuleNames(ctx, "system", srcDir, groupedSource.system)...)
+		ret = append(ret, getCreatedPrebuiltEtcModuleNames(ctx, "system_ext", srcDir, groupedSource.system_ext)...)
+		ret = append(ret, getCreatedPrebuiltEtcModuleNames(ctx, "product", srcDir, groupedSource.product)...)
+		ret = append(ret, getCreatedPrebuiltEtcModuleNames(ctx, "vendor", srcDir, groupedSource.vendor)...)
 	}
 
-	generatedModules := []string{}
-	return generatedModules
+	return ret
 }
 
-func createFsGenState(ctx android.LoadHookContext) *FsGenState {
+func generatedPartitions(ctx android.LoadHookContext) []string {
+	generatedPartitions := []string{"system"}
+	if ctx.DeviceConfig().SystemExtPath() == "system_ext" {
+		generatedPartitions = append(generatedPartitions, "system_ext")
+	}
+	if ctx.DeviceConfig().BuildingVendorImage() && ctx.DeviceConfig().VendorPath() == "vendor" {
+		generatedPartitions = append(generatedPartitions, "vendor")
+	}
+	if ctx.DeviceConfig().BuildingProductImage() && ctx.DeviceConfig().ProductPath() == "product" {
+		generatedPartitions = append(generatedPartitions, "product")
+	}
+	return generatedPartitions
+}
+
+func createFsGenState(ctx android.LoadHookContext, generatedPrebuiltEtcModuleNames []string) *FsGenState {
 	return ctx.Config().Once(fsGenStateOnceKey, func() interface{} {
 		partitionVars := ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse
 		candidates := android.FirstUniqueStrings(android.Concat(partitionVars.ProductPackages, partitionVars.ProductPackagesDebug))
-
-		generatedPartitions := []string{"system"}
-		if ctx.DeviceConfig().SystemExtPath() == "system_ext" {
-			generatedPartitions = append(generatedPartitions, "system_ext")
-		}
-		if ctx.DeviceConfig().BuildingVendorImage() && ctx.DeviceConfig().VendorPath() == "vendor" {
-			generatedPartitions = append(generatedPartitions, "vendor")
-		}
-		if ctx.DeviceConfig().BuildingProductImage() && ctx.DeviceConfig().ProductPath() == "product" {
-			generatedPartitions = append(generatedPartitions, "product")
-		}
+		candidates = android.FirstUniqueStrings(android.Concat(candidates, generatedPrebuiltEtcModuleNames))
 
 		return &FsGenState{
 			depCandidates: candidates,
@@ -171,19 +335,14 @@ func createFsGenState(ctx android.LoadHookContext) *FsGenState {
 					"com.android.apex.cts.shim.v1_prebuilt":     defaultDepCandidateProps(ctx.Config()),
 					"dex_bootjars":                              defaultDepCandidateProps(ctx.Config()),
 					"framework_compatibility_matrix.device.xml": defaultDepCandidateProps(ctx.Config()),
-					"idc_data":                     defaultDepCandidateProps(ctx.Config()),
-					"init.environ.rc-soong":        defaultDepCandidateProps(ctx.Config()),
-					"keychars_data":                defaultDepCandidateProps(ctx.Config()),
-					"keylayout_data":               defaultDepCandidateProps(ctx.Config()),
-					"libclang_rt.asan":             defaultDepCandidateProps(ctx.Config()),
-					"libcompiler_rt":               defaultDepCandidateProps(ctx.Config()),
-					"libdmabufheap":                defaultDepCandidateProps(ctx.Config()),
-					"libgsi":                       defaultDepCandidateProps(ctx.Config()),
-					"llndk.libraries.txt":          defaultDepCandidateProps(ctx.Config()),
-					"logpersist.start":             defaultDepCandidateProps(ctx.Config()),
-					"preloaded-classes":            defaultDepCandidateProps(ctx.Config()),
-					"public.libraries.android.txt": defaultDepCandidateProps(ctx.Config()),
-					"update_engine_sideload":       defaultDepCandidateProps(ctx.Config()),
+					"init.environ.rc-soong":                     defaultDepCandidateProps(ctx.Config()),
+					"libclang_rt.asan":                          defaultDepCandidateProps(ctx.Config()),
+					"libcompiler_rt":                            defaultDepCandidateProps(ctx.Config()),
+					"libdmabufheap":                             defaultDepCandidateProps(ctx.Config()),
+					"libgsi":                                    defaultDepCandidateProps(ctx.Config()),
+					"llndk.libraries.txt":                       defaultDepCandidateProps(ctx.Config()),
+					"logpersist.start":                          defaultDepCandidateProps(ctx.Config()),
+					"update_engine_sideload":                    defaultDepCandidateProps(ctx.Config()),
 				},
 				"vendor": &map[string]*depCandidateProps{
 					"fs_config_files_vendor": defaultDepCandidateProps(ctx.Config()),
@@ -202,7 +361,7 @@ func createFsGenState(ctx android.LoadHookContext) *FsGenState {
 					"com.android.vndk.v34": defaultDepCandidateProps(ctx.Config()),
 				},
 			},
-			soongGeneratedPartitions: generatedPartitions,
+			soongGeneratedPartitions: generatedPartitions(ctx),
 			fsDepsMutex:              sync.Mutex{},
 		}
 	}).(*FsGenState)
@@ -357,9 +516,8 @@ func filesystemCreatorFactory() android.Module {
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	module.AddProperties(&module.properties)
 	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
-		fmt.Printf("copy files: %s, %v\n", ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.ProductCopyFiles, len(ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.ProductCopyFiles))
-		// createPrebuiltEtcModules(ctx)
-		createFsGenState(ctx)
+		generatedPrebuiltEtcModuleNames := createPrebuiltEtcModules(ctx)
+		createFsGenState(ctx, generatedPrebuiltEtcModuleNames)
 		module.createInternalModules(ctx)
 	})
 
