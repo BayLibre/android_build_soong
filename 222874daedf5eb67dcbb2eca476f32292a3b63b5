@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dea2aa8_b839a068",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-24T00:20:15Z",
+      "side": 1,
+      "message": "Wish we had rust enums....",
+      "revId": "222874daedf5eb67dcbb2eca476f32292a3b63b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
