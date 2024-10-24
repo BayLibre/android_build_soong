@@ -16,7 +16,6 @@ package android
 
 import (
 	"fmt"
-	"github.com/google/blueprint/depset"
 	"net/url"
 	"path/filepath"
 	"reflect"
@@ -24,8 +23,11 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/google/blueprint"
+	"github.com/google/blueprint/depset"
 	"github.com/google/blueprint/proptools"
+
+	"github.com/google/blueprint"
+	"github.com/google/blueprint/gobtools"
 )
 
 var (
@@ -2201,11 +2203,11 @@ func (k *katiInstall) FromGob(data *katiInstallGob) {
 }
 
 func (k *katiInstall) GobEncode() ([]byte, error) {
-	return blueprint.CustomGobEncode[katiInstallGob](k)
+	return gobtools.CustomGobEncode[katiInstallGob](k)
 }
 
 func (k *katiInstall) GobDecode(data []byte) error {
-	return blueprint.CustomGobDecode[katiInstallGob](data, k)
+	return gobtools.CustomGobDecode[katiInstallGob](data, k)
 }
 
 type extraFilesZip struct {
@@ -2231,11 +2233,11 @@ func (e *extraFilesZip) FromGob(data *extraFilesZipGob) {
 }
 
 func (e *extraFilesZip) GobEncode() ([]byte, error) {
-	return blueprint.CustomGobEncode[extraFilesZipGob](e)
+	return gobtools.CustomGobEncode[extraFilesZipGob](e)
 }
 
 func (e *extraFilesZip) GobDecode(data []byte) error {
-	return blueprint.CustomGobDecode[extraFilesZipGob](data, e)
+	return gobtools.CustomGobDecode[extraFilesZipGob](data, e)
 }
 
 type katiInstalls []katiInstall
