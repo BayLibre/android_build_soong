@@ -11900,3 +11900,40 @@ func TestFilesystemWithApexDeps(t *testing.T) {
 	fileList := android.ContentFromFileRuleForTests(t, result, partition.Output("fileList"))
 	android.AssertDeepEquals(t, "filesystem with apex", "apex/myapex.apex\n", fileList)
 }
+
+func TestFilesystemWithTransitiveRequiredDepsOfApex(t *testing.T) {
+	t.Parallel()
+	result := testApex(t, `
+		android_filesystem {
+			name: "myfilesystem",
+			deps: ["myapex"],
+		}
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			binaries: ["binfoo"],
+			updatable: false,
+		}
+		apex_key {
+			name: "myapex.key",
+		}
+		cc_binary {
+			name: "binfoo",
+			apex_available: ["myapex"],
+			shared_libs: ["libfoo"],
+		}
+		cc_library {
+			name: "libfoo",
+			apex_available: ["myapex"],
+			required: ["my_prebuilt_etc"]
+		}
+		prebuilt_etc {
+			name: "my_prebuilt_etc",
+			src: "my_prebuilt_etc",
+		}
+	`, filesystem.PrepareForTestWithFilesystemBuildComponents)
+
+	partition := result.ModuleForTests("myfilesystem", "android_common")
+	fileList := android.ContentFromFileRuleForTests(t, result, partition.Output("fileList"))
+	android.AssertDeepEquals(t, "filesystem with apex", "apex/myapex.apex\netc/my_prebuilt_etc\n", fileList)
+}

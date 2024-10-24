@@ -2131,7 +2131,8 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 
 	// indirect dependencies
 	am, ok := child.(android.ApexModule)
-	if !ok {
+	if !ok && depTag != android.RequiredDepTag {
+		// Non ApexModules might be installed in platform via `required`.
 		return false
 	}
 	// We cannot use a switch statement on `depTag` here as the checked
@@ -2255,7 +2256,12 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 	} else if depTag == android.DarwinUniversalVariantTag {
 		// nothing
 	} else if depTag == android.RequiredDepTag {
-		// nothing
+		// Append the packaging dep of any transitive required deps.
+		// If the apex is installed in `android_filesystem`, the transitive required deps will be installed as well.
+		for _, ps := range android.OtherModuleProviderOrDefault(
+			ctx, child, android.InstallFilesProvider).TransitivePackagingSpecs.ToList() {
+			ctx.AppendPackagingSpec(ps)
+		}
 	} else if am.CanHaveApexVariants() && am.IsInstallableToApex() {
 		ctx.ModuleErrorf("unexpected tag %s for indirect dependency %q", android.PrettyPrintTag(depTag), depName)
 	}

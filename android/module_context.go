@@ -181,6 +181,9 @@ type ModuleContext interface {
 	// dependency tags for which IsInstallDepNeeded returns true.
 	PackageFile(installPath InstallPath, name string, srcPath Path) PackagingSpec
 
+	// AppendPackagingSpec adds the packagingSpec to the list of packaging specs of the current module.
+	AppendPackagingSpec(ps PackagingSpec)
+
 	CheckbuildFile(srcPaths ...Path)
 	UncheckedModule()
 
@@ -552,6 +555,10 @@ func (m *moduleContext) InstallFileWithExtraFilesZip(installPath InstallPath, na
 func (m *moduleContext) PackageFile(installPath InstallPath, name string, srcPath Path) PackagingSpec {
 	fullInstallPath := installPath.Join(m, name)
 	return m.packageFile(fullInstallPath, srcPath, false)
+}
+
+func (m *moduleContext) AppendPackagingSpec(ps PackagingSpec) {
+	m.packagingSpecs = append(m.packagingSpecs, ps)
 }
 
 func (m *moduleContext) getAconfigPaths() *Paths {
