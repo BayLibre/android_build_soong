@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6f96ee0_b862416b",
+        "filename": "scripts/gen_build_prop.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-10-24T08:54:02Z",
+      "side": 1,
+      "message": "I actually meant dropping this part, but it\u0027s okay.",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 434,
+        "endChar": 80
+      },
+      "revId": "3f84f6ea6f522efc23945598ad5bb71eecd59bc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
