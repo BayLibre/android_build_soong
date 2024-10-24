@@ -845,6 +845,11 @@ func checkGlobs(ctx Context, finalOutFile string) error {
 	}
 
 	if hasChangedGlobs {
+		if len(changedGlobName) > 100 {
+			// The list of excluded files can be huge, so truncate the message so we don't
+			// get a huge wall of text when running benign builds
+			changedGlobName = changedGlobName[:100] + " (truncated)"
+		}
 		fmt.Fprintf(os.Stdout, "Globs changed, rerunning soong...\n")
 		fmt.Fprintf(os.Stdout, "One culprit glob (may be more): %s\n", changedGlobName)
 		// Write the current time to the glob_results file. We just need
