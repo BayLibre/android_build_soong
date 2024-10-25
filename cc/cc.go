@@ -3331,18 +3331,6 @@ func ShouldUseStubForApex(ctx android.ModuleContext, dep android.Module) bool {
 		useStubs = isNotInPlatform && !bootstrap
 
 		if useStubs {
-			// Another exception: if this module is a test for an APEX, then
-			// it is linked with the non-stub variant of a module in the APEX
-			// as if this is part of the APEX.
-			testFor, _ := android.ModuleProvider(ctx, android.ApexTestForInfoProvider)
-			for _, apexContents := range testFor.ApexContents {
-				if apexContents.DirectlyInApex(depName) {
-					useStubs = false
-					break
-				}
-			}
-		}
-		if useStubs {
 			// Yet another exception: If this module and the dependency are
 			// available to the same APEXes then skip stubs between their
 			// platform variants. This complements the test_for case above,

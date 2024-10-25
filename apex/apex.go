@@ -2932,10 +2932,6 @@ func rBcpPackages() map[string][]string {
 	}
 }
 
-func (a *apexBundle) IsTestApex() bool {
-	return a.testApex
-}
-
 // verifyNativeImplementationLibs compares the list of transitive implementation libraries used to link native
 // libraries in the apex against the list of implementation libraries in the apex, ensuring that none of the
 // libraries in the apex have references to private APIs from outside the apex.
