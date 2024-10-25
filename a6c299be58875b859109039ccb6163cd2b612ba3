@@ -16,6 +16,24 @@
       "message": "Would this approach run into duplicate installation issues if a checked-in `prebuilt_etc` exists with the same destination path? I downloaded this CL to repro, and run into the following errs for `aosp_cf_x86_64_phone`\n```\n[394/394] writing legacy Make module rules ...\nFAILED: \nESC[1mbuild/make/core/Makefile:161: ESC[31merror: ESC[0mESC[1moverriding commands for target `out/target/product/vsoc_x86_64/system/etc/preloaded-classes\u0027, previously defined at out/soong/installs-aosp_cf_x86_64_phone.mk:368364\n\n```\n\nMaybe it is missing `no_full_install`?",
       "revId": "a6c299be58875b859109039ccb6163cd2b612ba3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d617dd49_a146dace",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-25T18:11:39Z",
+      "side": 1,
+      "message": "You are right, thanks for catching this. You should be able to run the diff test and observe reduced diffs with the latest patchset.",
+      "parentUuid": "50922df9_89d5871d",
+      "revId": "a6c299be58875b859109039ccb6163cd2b612ba3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
