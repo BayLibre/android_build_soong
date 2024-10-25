@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06d6010f_fe146c62",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2263,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-25T00:34:56Z",
+      "side": 1,
+      "message": "Could we implement this instead as a post-deps mutator that walks the transitive deps of apexes, and if it sees a RequiredDepTag, it also adds the modules as a required dependency on the actual apex?",
+      "revId": "bd0af89c872b2ba119be1508608f8f96e9c18878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
