@@ -34,6 +34,24 @@
       "parentUuid": "26b85cb2_dc8a55f8",
       "revId": "74695887e4e0a0e4284745e18db872faf364bf30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c873c858_15348700",
+        "filename": "android/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-25T22:14:54Z",
+      "side": 1,
+      "message": "I think we should maintain the expectation that PrepareAndroidMKProviderInfo is only called once.  Disabling the tests on mac for now seems fine, but I don\u0027t understand why anything would be specific to macs, and not something we could hit in another situation.",
+      "parentUuid": "588ebbba_eca7f705",
+      "revId": "74695887e4e0a0e4284745e18db872faf364bf30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
