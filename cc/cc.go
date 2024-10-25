@@ -845,9 +845,10 @@ type Module struct {
 	sourceProperties android.SourceProperties
 
 	// initialize before calling Init
-	hod        android.HostOrDeviceSupported
-	multilib   android.Multilib
-	testModule bool
+	hod         android.HostOrDeviceSupported
+	multilib    android.Multilib
+	testModule  bool
+	incremental bool
 
 	// Allowable SdkMemberTypes of this module type.
 	sdkMemberTypes []android.SdkMemberType
@@ -914,6 +915,12 @@ type Module struct {
 	hasWinMsg       bool
 	hasYacc         bool
 }
+
+func (c *Module) IncrementalSupported() bool {
+	return c.incremental
+}
+
+var _ blueprint.Incremental = (*Module)(nil)
 
 func (c *Module) AddJSONData(d *map[string]interface{}) {
 	c.AndroidModuleBase().AddJSONData(d)
