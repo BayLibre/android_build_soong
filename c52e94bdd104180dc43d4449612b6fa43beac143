@@ -34,6 +34,24 @@
       "parentUuid": "e84001af_6e076bc7",
       "revId": "c52e94bdd104180dc43d4449612b6fa43beac143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11733c52_ee9a9c35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-25T01:38:03Z",
+      "side": 1,
+      "message": "`collectDepsMutator` and `setDepsMutator` currently run in `PreDeps` phase, so `ctx.VisitDirectDeps` will return incomplete results. Maybe we should move them to postDeps instead? This might also require postponing the deps mutator of `android_filesystem`",
+      "parentUuid": "5caefdc9_6756f94a",
+      "revId": "c52e94bdd104180dc43d4449612b6fa43beac143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
