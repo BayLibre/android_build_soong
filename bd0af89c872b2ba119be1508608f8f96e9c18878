@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5dee5cc_00268f2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-10-25T04:41:21Z",
+      "side": 1,
+      "message": "thanks for the reminder, Justin. Spandan, I think it\u0027s fine to ask the author of vendor APEXes to be explicit about their dependencies. WDYT?",
+      "parentUuid": "05aac867_e5e44198",
+      "revId": "bd0af89c872b2ba119be1508608f8f96e9c18878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06d6010f_fe146c62",
         "filename": "apex/apex.go",
         "patchSetId": 2
