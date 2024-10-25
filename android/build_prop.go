@@ -65,6 +65,8 @@ func (p *buildPropModule) propFiles(ctx ModuleContext) Paths {
 		return ctx.Config().ProductPropFiles(ctx)
 	} else if partition == "odm" {
 		return ctx.Config().OdmPropFiles(ctx)
+	} else if partition == "vendor" {
+		return ctx.Config().VendorPropFiles(ctx)
 	}
 	return nil
 }
@@ -104,6 +106,7 @@ var validPartitions = []string{
 	"system_ext",
 	"product",
 	"odm",
+	"vendor",
 }
 
 func (p *buildPropModule) GenerateAndroidBuildActions(ctx ModuleContext) {

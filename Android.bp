@@ -205,3 +205,11 @@ build_prop {
     relative_install_path: "etc", // odm/etc/build.prop
     visibility: ["//visibility:private"],
 }
+
+build_prop {
+    name: "vendor-build.prop",
+    stem: "build.prop",
+    vendor: true,
+    product_config: ":product_config",
+    visibility: ["//visibility:private"],
+}
