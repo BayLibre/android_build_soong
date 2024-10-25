@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f7ee499_0b4aac73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-10-25T00:48:05Z",
+      "side": 1,
+      "message": "I think we hit this issue in the Soong-built system image. Not sure how we worked around that. cc: Justin.\n\ncc: Jooyung as this is about vendor APEX.",
+      "revId": "bd0af89c872b2ba119be1508608f8f96e9c18878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06d6010f_fe146c62",
         "filename": "apex/apex.go",
         "patchSetId": 2
