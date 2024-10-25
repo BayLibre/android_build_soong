@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "067caf00_d08799ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-25T17:26:37Z",
+      "side": 1,
+      "message": "Thanks! That would be my preference as well. I have created https://r.android.com/3320675 for `com.android.hardware.audio` use case.\n\nIIUC, would you recommend that we remove this behavior when building the image files with kati as well? Specifically, remove the [required of apexfies](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/fbcf07b0e70f8bde5964658f7d4904c04a66933a:apex/androidmk.go;l\u003d281;bpv\u003d1;bpt\u003d0;drc\u003d37e6794ad44926e64c1f733dbe32bbf5a40efe77) from the top-level apex.",
+      "parentUuid": "e5dee5cc_00268f2d",
+      "revId": "bd0af89c872b2ba119be1508608f8f96e9c18878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06d6010f_fe146c62",
         "filename": "apex/apex.go",
         "patchSetId": 2
