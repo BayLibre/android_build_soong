@@ -1062,12 +1062,6 @@ func MinSdkVersionFromValue(ctx EarlyModuleContext, value string) ApiLevel {
 	return apiLevel
 }
 
-// Implemented by apexBundle.
-type ApexTestInterface interface {
-	// Return true if the apex bundle is an apex_test
-	IsTestApex() bool
-}
-
 var ApexExportsInfoProvider = blueprint.NewProvider[ApexExportsInfo]()
 
 // ApexExportsInfo contains information about the artifacts provided by apexes to dexpreopt and hiddenapi
