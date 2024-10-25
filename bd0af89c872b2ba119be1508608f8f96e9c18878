@@ -33,6 +33,24 @@
       "message": "Could we implement this instead as a post-deps mutator that walks the transitive deps of apexes, and if it sees a RequiredDepTag, it also adds the modules as a required dependency on the actual apex?",
       "revId": "bd0af89c872b2ba119be1508608f8f96e9c18878",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09f37a8b_a34378c2",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2263,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-10-25T00:50:40Z",
+      "side": 1,
+      "message": "I actually have wanted to re-implement this apex rule completely from scratch using the PackagingBase where this required dep is correctly handled. But that would be too big change to make.\n\nGiven that this is an issue that is specific to this apex module, I personally feel fine with this approach, but I\u0027d defer the decision to Cole.",
+      "parentUuid": "06d6010f_fe146c62",
+      "revId": "bd0af89c872b2ba119be1508608f8f96e9c18878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
