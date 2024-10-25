@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05aac867_e5e44198",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-10-25T02:40:37Z",
+      "side": 1,
+      "message": "We have solved the case by adding the required module directly to the APEX. (aosp/3146879) In this case, the file is installed in the APEX package instead of the partition directory.",
+      "parentUuid": "1f7ee499_0b4aac73",
+      "revId": "bd0af89c872b2ba119be1508608f8f96e9c18878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06d6010f_fe146c62",
         "filename": "apex/apex.go",
         "patchSetId": 2
