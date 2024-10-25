@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7d04a1d_c4f3d74b",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-25T21:07:35Z",
+      "side": 1,
+      "message": "I\u0027m surprised you didn\u0027t have to add `//visibility:public` or similar to these modules, given that they could be in a directory with `default_visibility`.",
+      "revId": "038451fd3fa33772c3bed5060edf4a4d08843d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d5e7d82_fe910a81",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-25T21:07:35Z",
+      "side": 1,
+      "message": "Please call this `createPrebuiltEtcModulesForOnePartition` or something else that makes it clear that this is actually creating modules, and is not just a simple getter.",
+      "revId": "038451fd3fa33772c3bed5060edf4a4d08843d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfe80054_c36b0425",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-25T21:07:35Z",
+      "side": 1,
+      "message": "Are there any cases where this will do deduplicating? The generated prebuilt module names are pretty unique, and if they weren\u0027t, soong would probably complain about duplicate modules.",
+      "range": {
+        "startLine": 332,
+        "startChar": 23,
+        "endLine": 332,
+        "endChar": 41
+      },
+      "revId": "038451fd3fa33772c3bed5060edf4a4d08843d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
