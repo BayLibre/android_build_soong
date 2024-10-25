@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "811fb131_2a120e56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-25T23:16:25Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "145927e1b4bbec90b3cd4102092d77531ec9e619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "946d2363_a8393fdf",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-25T23:16:25Z",
+      "side": 1,
+      "message": "Could you add a test that `directoryPath` does not implement `Path`?",
+      "revId": "145927e1b4bbec90b3cd4102092d77531ec9e619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
