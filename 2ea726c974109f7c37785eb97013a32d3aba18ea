@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6eab088_88423baf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2024-10-27T11:31:38Z",
+      "side": 1,
+      "message": "That seems to work and more or less I now get the same behavior in soong as I see on AS.\nIt creates stub/empty rules for every import module and I don\u0027t know/think we want that?\nLet me know if I can improve anything, I think the case of rules with the same name can be \"safely\" ignored given no one ever faced this issue :)",
+      "revId": "2ea726c974109f7c37785eb97013a32d3aba18ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
