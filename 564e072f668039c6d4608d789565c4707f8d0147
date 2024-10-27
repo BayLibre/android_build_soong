@@ -34,6 +34,24 @@
       "parentUuid": "9604dd12_502fab17",
       "revId": "564e072f668039c6d4608d789565c4707f8d0147",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3bf72f3_1d2d442e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-10-27T23:19:27Z",
+      "side": 1,
+      "message": "Hi, can you clarify what are the next steps? I\u0027m unclear what command will reproduce the problem blocking merge.",
+      "parentUuid": "4b1fd76d_3f82772d",
+      "revId": "564e072f668039c6d4608d789565c4707f8d0147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
