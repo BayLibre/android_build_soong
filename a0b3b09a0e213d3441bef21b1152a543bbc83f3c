@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7334dfe0_553d7777",
+        "filename": "scripts/gen_build_prop.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-10-27T04:11:14Z",
+      "side": 1,
+      "message": "These should depend on the property split enabled flag.",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 534,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "56361822_7d07fd67",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "scripts/gen_build_prop.py",
+              "range": {
+                "startLine": 533,
+                "startChar": 0,
+                "endLine": 535,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "a0b3b09a0e213d3441bef21b1152a543bbc83f3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
