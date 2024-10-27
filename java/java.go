@@ -2683,6 +2683,14 @@ func (j *Import) commonBuildActions(ctx android.ModuleContext) {
 	}
 }
 
+// Unzip a JAR and extract the proguard rules.
+var unzipProguardFlags = pctx.AndroidStaticRule("unzipProguardFlags",
+	blueprint.RuleParams{
+		Command: `if (zipinfo -1 $in 2>/dev/null | grep '^META-INF/proguard/' >/dev/null) ; then ` +
+			`unzip -qoDD -p $in 'META-INF/proguard/*' > $out` +
+			`; else touch $out; fi`,
+	})
+
 func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.commonBuildActions(ctx)
 
@@ -2821,6 +2829,28 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			false, nil, nil)
 		outputFile = combinedJar
 	}
+
+	proguardFlags := android.PathForModuleOut(ctx, "proguard_flags")
+	transitiveProguardFlags, transitiveUnconditionalExportedFlags := collectDepProguardSpecInfo(ctx)
+	android.SetProvider(ctx, ProguardSpecInfoProvider, ProguardSpecInfo{
+		ProguardFlagsFiles: depset.New[android.Path](
+			depset.POSTORDER,
+			android.Paths{proguardFlags},
+			transitiveProguardFlags,
+		),
+		UnconditionallyExportedProguardFlags: depset.New[android.Path](
+			depset.POSTORDER,
+			nil,
+			transitiveUnconditionalExportedFlags,
+		),
+	})
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        unzipProguardFlags,
+		Input:       outputFile,
+		Output:      proguardFlags,
+		Description: "unzip JAR proguard flags",
+	})
 
 	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource.
 	// Also strip the relative path from the header output file so that the reuseImplementationJarAsHeaderJar check
