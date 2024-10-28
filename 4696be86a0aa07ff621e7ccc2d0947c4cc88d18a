@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae5e7e6c_ae8b0054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-28T20:14:19Z",
+      "side": 1,
+      "message": "Inseob, would it be possible to revive this CL? I am currently looking at autogenerating a soong `android_filesystem` module to build vendor.img (b/374371755). The `android_info` implementation here would allow me to automatically generate an `android_info` module and use it as an input to build `vendor/build.prop`",
+      "revId": "4696be86a0aa07ff621e7ccc2d0947c4cc88d18a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
