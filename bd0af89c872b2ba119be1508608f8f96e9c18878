@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "313eb5be_c8365063",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-28T21:12:34Z",
+      "side": 1,
+      "message": "I think this has been the case for a while. I was looking at `U`, and observed that\n- `newApexFile` for dep modules (including native libs) returns the [required](https://source.corp.google.com/h/googleplex-android/platform/superproject/udc/+/udc-dev:build/soong/apex/apex.go;l\u003d582?q\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fudc%20branch:udc-dev%20func.*newApexFile) of the dep modules\n- Each [required](https://source.corp.google.com/h/googleplex-android/platform/superproject/udc/+/udc-dev:build/soong/apex/androidmk.go;l\u003d305) of `a.filesInfo` is added to the required of the top-level apex",
+      "parentUuid": "08c47b65_0c292d14",
+      "range": {
+        "startLine": 24,
+        "startChar": 55,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "bd0af89c872b2ba119be1508608f8f96e9c18878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f7ee499_0b4aac73",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -109,6 +133,24 @@
       "side": 1,
       "message": "Yeah, I think so, but with a prior notice.",
       "parentUuid": "067caf00_d08799ef",
+      "revId": "bd0af89c872b2ba119be1508608f8f96e9c18878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7611d7f2_2170c020",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-28T21:12:34Z",
+      "side": 1,
+      "message": "Thanks for confirming! I have created b/376110962 to track this.",
+      "parentUuid": "93af6d18_e144e828",
       "revId": "bd0af89c872b2ba119be1508608f8f96e9c18878",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
