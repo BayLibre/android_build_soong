@@ -21,7 +21,7 @@ type CoreModuleInfoJSON struct {
 }
 
 type ModuleInfoJSON struct {
-	core                CoreModuleInfoJSON
+	Core                CoreModuleInfoJSON
 	SubName             string   `json:"-"`
 	Uninstallable       bool     `json:"-"`
 	Class               []string `json:"class,omitempty"`                 // $(sort $(ALL_MODULES.$(m).CLASS))
@@ -72,13 +72,13 @@ func encodeModuleInfoJSON(w io.Writer, moduleInfoJSON *ModuleInfoJSON) error {
 		*s = slices.Compact(*s)
 	}
 
-	sortAndUnique(&moduleInfoJSONCopy.core.Path)
-	sortAndUnique(&moduleInfoJSONCopy.core.Installed)
-	sortAndUnique(&moduleInfoJSONCopy.core.SupportedVariants)
-	sortAndUnique(&moduleInfoJSONCopy.core.HostDependencies)
-	sortAndUnique(&moduleInfoJSONCopy.core.TargetDependencies)
-	sortAndUnique(&moduleInfoJSONCopy.core.Data)
-	sortAndUnique(&moduleInfoJSONCopy.core.Required)
+	sortAndUnique(&moduleInfoJSONCopy.Core.Path)
+	sortAndUnique(&moduleInfoJSONCopy.Core.Installed)
+	sortAndUnique(&moduleInfoJSONCopy.Core.SupportedVariants)
+	sortAndUnique(&moduleInfoJSONCopy.Core.HostDependencies)
+	sortAndUnique(&moduleInfoJSONCopy.Core.TargetDependencies)
+	sortAndUnique(&moduleInfoJSONCopy.Core.Data)
+	sortAndUnique(&moduleInfoJSONCopy.Core.Required)
 
 	sortAndUnique(&moduleInfoJSONCopy.Class)
 	sortAndUnique(&moduleInfoJSONCopy.Tags)
@@ -99,7 +99,7 @@ func encodeModuleInfoJSON(w io.Writer, moduleInfoJSON *ModuleInfoJSON) error {
 	sortAndUnique(&moduleInfoJSONCopy.TestConfig)
 
 	encoder := json.NewEncoder(w)
-	return encoder.Encode(combinedModuleInfoJSON{&moduleInfoJSONCopy.core, &moduleInfoJSONCopy})
+	return encoder.Encode(combinedModuleInfoJSON{&moduleInfoJSONCopy.Core, &moduleInfoJSONCopy})
 }
 
 var ModuleInfoJSONProvider = blueprint.NewProvider[*ModuleInfoJSON]()
