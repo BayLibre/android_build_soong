@@ -40,6 +40,30 @@
       ],
       "revId": "a0b3b09a0e213d3441bef21b1152a543bbc83f3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0365c6f7_3f6416b5",
+        "filename": "scripts/gen_build_prop.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-28T20:04:34Z",
+      "side": 1,
+      "message": "I think line 531 adds this conditionally using `PropertySplitEnabled`",
+      "parentUuid": "7334dfe0_553d7777",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 534,
+        "endChar": 34
+      },
+      "revId": "a0b3b09a0e213d3441bef21b1152a543bbc83f3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
