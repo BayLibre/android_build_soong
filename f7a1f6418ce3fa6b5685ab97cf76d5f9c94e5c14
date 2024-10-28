@@ -22,6 +22,30 @@
       },
       "revId": "f7a1f6418ce3fa6b5685ab97cf76d5f9c94e5c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "090fdfac_c009073b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-28T19:08:33Z",
+      "side": 1,
+      "message": "In the instances I saw, the cross compile variant was for linux_musl instead of linux_glibc. Using a mix of musl and glibc tools shouldn\u0027t cause an issue. And like you said, this still matches behavior at TOT.",
+      "parentUuid": "af1d44c8_9a170e1d",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 70
+      },
+      "revId": "f7a1f6418ce3fa6b5685ab97cf76d5f9c94e5c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
