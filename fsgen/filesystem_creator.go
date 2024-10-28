@@ -130,10 +130,7 @@ func createFsGenState(ctx android.LoadHookContext) *FsGenState {
 					"public.libraries.android.txt": defaultDepCandidateProps(ctx.Config()),
 					"update_engine_sideload":       defaultDepCandidateProps(ctx.Config()),
 				},
-				"vendor": &map[string]*depCandidateProps{
-					"fs_config_files_vendor": defaultDepCandidateProps(ctx.Config()),
-					"fs_config_dirs_vendor":  defaultDepCandidateProps(ctx.Config()),
-				},
+				"vendor":  newMultilibDeps(),
 				"odm":     newMultilibDeps(),
 				"product": newMultilibDeps(),
 				"system_ext": &map[string]*depCandidateProps{
