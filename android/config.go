@@ -1785,10 +1785,6 @@ func (c *config) ApexCompressionEnabled() bool {
 	return Bool(c.productVariables.CompressedApex) && !c.UnbundledBuildApps()
 }
 
-func (c *config) ApexTrimEnabled() bool {
-	return Bool(c.productVariables.TrimmedApex)
-}
-
 func (c *config) UseSoongSystemImage() bool {
 	return Bool(c.productVariables.UseSoongSystemImage)
 }
