@@ -51,13 +51,11 @@ func addPathDepsForProps(ctx BottomUpMutatorContext, props []interface{}) {
 	// tagged with `android:"path"` or one of the variant-specifying tags.
 	var pathProperties []string
 	var pathDeviceFirstProperties []string
-	var pathDeviceFirstPrefer32Properties []string
 	var pathDeviceCommonProperties []string
 	var pathCommonOsProperties []string
 	for _, ps := range props {
 		pathProperties = append(pathProperties, taggedPropertiesForPropertyStruct(ctx, ps, "path")...)
 		pathDeviceFirstProperties = append(pathDeviceFirstProperties, taggedPropertiesForPropertyStruct(ctx, ps, "path_device_first")...)
-		pathDeviceFirstPrefer32Properties = append(pathDeviceFirstPrefer32Properties, taggedPropertiesForPropertyStruct(ctx, ps, "path_device_first_prefer32")...)
 		pathDeviceCommonProperties = append(pathDeviceCommonProperties, taggedPropertiesForPropertyStruct(ctx, ps, "path_device_common")...)
 		pathCommonOsProperties = append(pathCommonOsProperties, taggedPropertiesForPropertyStruct(ctx, ps, "path_common_os")...)
 	}
@@ -65,7 +63,6 @@ func addPathDepsForProps(ctx BottomUpMutatorContext, props []interface{}) {
 	// Remove duplicates to avoid multiple dependencies.
 	pathProperties = FirstUniqueStrings(pathProperties)
 	pathDeviceFirstProperties = FirstUniqueStrings(pathDeviceFirstProperties)
-	pathDeviceFirstPrefer32Properties = FirstUniqueStrings(pathDeviceFirstPrefer32Properties)
 	pathDeviceCommonProperties = FirstUniqueStrings(pathDeviceCommonProperties)
 	pathCommonOsProperties = FirstUniqueStrings(pathCommonOsProperties)
 
@@ -83,27 +80,13 @@ func addPathDepsForProps(ctx BottomUpMutatorContext, props []interface{}) {
 			ctx.AddVariationDependencies(ctx.Config().AndroidFirstDeviceTarget.Variations(), sourceOrOutputDepTag(m, t), m)
 		}
 	}
-	// properties tagged path_device_first_prefer32 get the first 32 bit target if one is available,
-	// otherwise they use the first 64 bit target
-	if len(pathDeviceFirstPrefer32Properties) > 0 {
-		firstPrefer32Target := FirstTarget(ctx.Config().Targets[Android], "lib32", "lib64")
-		if len(firstPrefer32Target) == 0 {
-			ctx.ModuleErrorf("Could not find a first_prefer32 target")
-		} else {
-			for _, s := range pathDeviceFirstPrefer32Properties {
-				if m, t := SrcIsModuleWithTag(s); m != "" {
-					ctx.AddVariationDependencies(firstPrefer32Target[0].Variations(), sourceOrOutputDepTag(m, t), m)
-				}
-			}
-		}
-	}
 	// properties tagged "path_device_common" get the device common variant
 	for _, s := range pathDeviceCommonProperties {
 		if m, t := SrcIsModuleWithTag(s); m != "" {
 			ctx.AddVariationDependencies(ctx.Config().AndroidCommonTarget.Variations(), sourceOrOutputDepTag(m, t), m)
 		}
 	}
-	// properties tagged "path_common_os" get the CommonOs variant
+	// properties tagged "path_device_common" get the device common variant
 	for _, s := range pathCommonOsProperties {
 		if m, t := SrcIsModuleWithTag(s); m != "" {
 			ctx.AddVariationDependencies([]blueprint.Variation{
