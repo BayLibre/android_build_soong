@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1d44c8_9a170e1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-28T19:05:06Z",
+      "side": 1,
+      "message": "Would it be possible to disable `cross compile` on such host tools instead? Returning the host variant of the dep to the cross host variant of the rdep might cause issues during ninja execution. But I guess this matches the behavior at ToT due to the single variant fallback.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 70
+      },
+      "revId": "f7a1f6418ce3fa6b5685ab97cf76d5f9c94e5c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
