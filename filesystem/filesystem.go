@@ -146,6 +146,10 @@ type FilesystemProperties struct {
 
 	Erofs ErofsProperties
 
+	// List of files (in .json format) that will be converted to a linker config file (in .pb format).
+	// The linker config file be installed in the filesystem at /etc/linker.config.pb
+	Linker_config_srcs []string `android:"path"`
+
 	// Determines if the module is auto-generated from Soong or not. If the module is
 	// auto-generated, its deps are exempted from visibility enforcement.
 	Is_auto_generated *bool
@@ -288,6 +292,8 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	f.installDir = android.PathForModuleInstall(ctx, "etc")
 	ctx.InstallFile(f.installDir, f.installFileName(), f.output)
 	ctx.SetOutputFiles([]android.Path{f.output}, "")
+
+	f.buildLinkerConfigFile(ctx)
 
 	f.fileListFile = android.PathForModuleOut(ctx, "fileList").OutputPath
 	android.WriteFileRule(ctx, f.fileListFile, f.installedFilesList())
@@ -680,6 +686,66 @@ func (f *filesystem) buildEventLogtagsFile(ctx android.ModuleContext, builder *a
 	}
 
 	f.appendToEntry(ctx, eventLogtagsPath)
+}
+
+func (f *filesystem) buildLinkerConfigFile(ctx android.ModuleContext) {
+	getCStubLibs := func() []string {
+		// Determine the list of C stub libraries that are part of this filesystem.
+		// These will be added to `provideLibs`.
+		// The current implementation assumes that stub libraries are listed explicitly in `deps`
+		// (direct deps). If this is not true, ctx.VisitDeps will need to be replaced by ctx.WalkDeps.
+		stubLibs := map[string]bool{}
+		ctx.VisitDirectDeps(func(child android.Module) {
+			if c, ok := child.(*cc.Module); ok && c.HasStubsVariants() {
+				stubLibs[c.Name()+".so"] = true
+			}
+		})
+		return android.SortedStringKeys(stubLibs)
+	}
+
+	if len(f.properties.Linker_config_srcs) == 0 {
+		return
+	}
+
+	// Convert the input json files to protobuf
+	builder := android.NewRuleBuilder(pctx, ctx)
+	interimOutput := android.PathForModuleOut(ctx, "temp.pb")
+	cmd := builder.Command().
+		BuiltTool("conv_linker_config").
+		Flag("proto").
+		Flag("--force")
+	for _, c := range android.PathsForModuleSrc(ctx, f.properties.Linker_config_srcs) {
+		cmd.FlagWithInput("-s ", c)
+	}
+	cmd.FlagWithOutput("-o ", interimOutput)
+	builder.Temporary(interimOutput)
+
+	// If this filesystem contains stub libraries, add them to `provideLibs`
+	sortedProvideLibs := getCStubLibs()
+	if len(sortedProvideLibs) > 0 {
+		prevOutput := interimOutput
+		interimOutput = android.PathForModuleOut(ctx, "temp_provideLibs.pb")
+		builder.Command().
+			BuiltTool("conv_linker_config").
+			Flag("append").
+			FlagWithInput("-s ", prevOutput).
+			FlagWithOutput("-o ", interimOutput).
+			FlagWithArg("--key ", "provideLibs").
+			FlagWithArg("--value ", proptools.ShellEscapeIncludingSpaces(strings.Join(sortedProvideLibs, " ")))
+		builder.Temporary(interimOutput)
+	}
+
+	// cp to the final output
+	output := android.PathForModuleOut(ctx, "linker.config.pb")
+	builder.Command().Text("cp").Input(interimOutput).Output(output)
+	builder.DeleteTemporaryFiles()
+	builder.Build("conv_linker_config", "Generate linker config protobuf "+output.String())
+
+	// install the file
+	installDir := android.PathForModuleInstall(ctx, "etc")
+	ctx.PackageFile(installDir, output.Base(), output)
+
+	f.entries = append(f.entries, filepath.Join("etc", "linker.config.pb"))
 }
 
 type partition interface {
