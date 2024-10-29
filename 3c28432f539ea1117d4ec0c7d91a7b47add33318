@@ -87,6 +87,23 @@
       "parentUuid": "e02448e5_07e6c456",
       "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eccaa36b_678c6ba9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2024-10-29T19:17:27Z",
+      "side": 1,
+      "message": "As a side note, it seems like on aosp/main there are currently 51 non-empty proguard rules in imported jars (being ignored)\n\nWith this change:\n`find out/soong/.intermediates -name proguard_flags -size +0 -print | wc -l\n50`\n\nMost of them likely derive from androidx.annotation getting combined into other libraries (androidx.annotation.Keep)\n\nI searched for those rules and it seems like there has been already cases where those rules have been manually added in specific projects proguard flags (https://cs.android.com/android/platform/superproject/main/+/main:packages/apps/TvSettings/Settings/proguard.flags;l\u003d48;drc\u003d10a568cf67e3e504345659dd4e0a32ad4ff5f6cc)\n\nThe other new rules are from kotlin-reflect, couldn\u0027t find any usage.\n\nI can\u0027t see the treehugger failures (or flakes), but this could shake things up for sure.",
+      "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
