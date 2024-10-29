@@ -16,6 +16,24 @@
       "message": "This seems like a bug with `HideFromMake` to me. Could we move the check on `HideFromMake` from `moduleContext.skipInstall` to `moduleContext.requiresFullInstall` so that non-skipped packagingSpecs are still created for hidden from make modules?",
       "revId": "6c04504cf90f38f85e6ee2cd46a85cd35f6cfe77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67835bdb_824b5b10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-29T23:31:35Z",
+      "side": 1,
+      "message": "I think `moduleContext.requiresFullInstall` itself uses [module.skipInstall](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/4decad65e932a3c8c3b01cafd1f601535826c0c1:android/module_context.go;l\u003d519-521;drc\u003ddb901f84d8fc7716d9fccfb09fdaca20750025fe;bpv\u003d0;bpt\u003d0). IIUC, are you suggesting that we replace\n```\nfunc (m *moduleContext) requiresFullInstall() bool {\n\tif m.skipInstall() {\n\t\treturn false\n\t}\n\t...\n```\nwith\n```\nfunc (m *moduleContext) requiresFullInstall() bool {\n\t// START: This is a modification of skipInstall function without hideFromMake\n\tif m.module.base().commonProperties.SkipInstall {\n\t\treturn true\n\t}\n\n\tif !m.module.base().commonProperties.NamespaceExportedToMake {\n\t\treturn true\n\t}\n\n\treturn false\n\t// END\n\t\n\t// REST of requiresFullInstall\n```",
+      "parentUuid": "7c57a98f_cb3258ea",
+      "revId": "6c04504cf90f38f85e6ee2cd46a85cd35f6cfe77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
