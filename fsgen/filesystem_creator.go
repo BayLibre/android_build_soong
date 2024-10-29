@@ -485,21 +485,22 @@ func (f *filesystemCreator) createPartition(ctx android.LoadHookContext, partiti
 	if partitionType == "vendor" {
 		// Create a build prop for vendor
 		vendorBuildProps := &struct {
-			Name           *string
-			Vendor         *bool
-			Stem           *string
-			Product_config *string
+			Name            *string
+			Vendor          *bool
+			Stem            *string
+			Product_config  *string
+			No_full_install *bool
 		}{
-			Name:           proptools.StringPtr(generatedModuleName(ctx.Config(), "vendor-build.prop")),
-			Vendor:         proptools.BoolPtr(true),
-			Stem:           proptools.StringPtr("build.prop"),
-			Product_config: proptools.StringPtr(":product_config"),
+			Name:            proptools.StringPtr(generatedModuleName(ctx.Config(), "vendor-build.prop")),
+			Vendor:          proptools.BoolPtr(true),
+			Stem:            proptools.StringPtr("build.prop"),
+			Product_config:  proptools.StringPtr(":product_config"),
+			No_full_install: proptools.BoolPtr(true),
 		}
-		vendorBuildProp := ctx.CreateModule(
+		ctx.CreateModule(
 			android.BuildPropFactory,
 			vendorBuildProps,
 		)
-		vendorBuildProp.HideFromMake()
 	}
 	return true
 }
