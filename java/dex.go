@@ -112,11 +112,11 @@ type dexer struct {
 }
 
 func (d *dexer) effectiveOptimizeEnabled() bool {
-	return BoolDefault(d.dexProperties.Optimize.Enabled, d.dexProperties.Optimize.EnabledByDefault)
+	return false && BoolDefault(d.dexProperties.Optimize.Enabled, d.dexProperties.Optimize.EnabledByDefault)
 }
 
 func (d *DexProperties) resourceShrinkingEnabled(ctx android.ModuleContext) bool {
-	return !ctx.Config().Eng() && BoolDefault(d.Optimize.Optimized_shrink_resources, Bool(d.Optimize.Shrink_resources))
+	return false && !ctx.Config().Eng() && BoolDefault(d.Optimize.Optimized_shrink_resources, Bool(d.Optimize.Shrink_resources))
 }
 
 func (d *DexProperties) optimizedResourceShrinkingEnabled(ctx android.ModuleContext) bool {
