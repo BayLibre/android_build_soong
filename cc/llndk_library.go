@@ -64,9 +64,9 @@ func makeLlndkVars(ctx android.MakeVarsContext) {
 	// they been moved to an apex.
 	movedToApexLlndkLibraries := make(map[string]bool)
 	ctx.VisitAllModules(func(module android.Module) {
-		if library := moduleLibraryInterface(module); library != nil && library.hasLLNDKStubs() {
+		if library := moduleLibraryInterface(module); library != nil && library.HasLLNDKStubs() {
 			// Skip bionic libs, they are handled in different manner
-			name := library.implementationModuleName(module.(*Module).BaseModuleName())
+			name := library.ImplementationModuleName(module.(*Module).BaseModuleName())
 			if module.(android.ApexModule).DirectlyInAnyApex() && !isBionic(name) {
 				movedToApexLlndkLibraries[name] = true
 			}
@@ -193,10 +193,10 @@ func llndkMutator(mctx android.BottomUpMutatorContext) {
 	lib, isLib := m.linker.(*libraryDecorator)
 	prebuiltLib, isPrebuiltLib := m.linker.(*prebuiltLibraryLinker)
 
-	if m.InVendorOrProduct() && isLib && lib.hasLLNDKStubs() {
+	if m.InVendorOrProduct() && isLib && lib.HasLLNDKStubs() {
 		m.VendorProperties.IsLLNDK = true
 	}
-	if m.InVendorOrProduct() && isPrebuiltLib && prebuiltLib.hasLLNDKStubs() {
+	if m.InVendorOrProduct() && isPrebuiltLib && prebuiltLib.HasLLNDKStubs() {
 		m.VendorProperties.IsLLNDK = true
 	}
 

@@ -41,7 +41,7 @@ func MinApiForArch(ctx android.EarlyModuleContext,
 	}
 }
 
-func nativeApiLevelFromUser(ctx android.BaseModuleContext,
+func NativeApiLevelFromUser(ctx android.BaseModuleContext,
 	raw string) (android.ApiLevel, error) {
 
 	min := MinApiForArch(ctx, ctx.Arch().ArchType)
@@ -63,7 +63,7 @@ func nativeApiLevelFromUser(ctx android.BaseModuleContext,
 
 func nativeApiLevelOrPanic(ctx android.BaseModuleContext,
 	raw string) android.ApiLevel {
-	value, err := nativeApiLevelFromUser(ctx, raw)
+	value, err := NativeApiLevelFromUser(ctx, raw)
 	if err != nil {
 		panic(err.Error())
 	}
