@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0c18473_d83fb963",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-29T20:56:32Z",
+      "side": 1,
+      "message": "`output` will not be built when the filesystem is built, as it\u0027s not a dependency of it. The other `build*` functions get around this by passing in one common RuleBuilder that they all use, so that all their commands are always run together, but here, you\u0027re using a separate RuleBuilder. Also the main rulebuilder clears the staging directory, so even if you add the output file as a dep, the copying into the staging directory has to happen in the main rulebuilder.",
+      "range": {
+        "startLine": 739,
+        "startChar": 1,
+        "endLine": 739,
+        "endChar": 7
+      },
+      "revId": "12bd94394c50d9aafe50613f2af6f8ab92e5b103",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
