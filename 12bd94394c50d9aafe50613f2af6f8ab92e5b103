@@ -22,6 +22,30 @@
       },
       "revId": "12bd94394c50d9aafe50613f2af6f8ab92e5b103",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72bb13c8_66b0856d",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-29T21:05:55Z",
+      "side": 1,
+      "message": "Ah you are right. I have updated the implementation to add the cmd to the common builder.",
+      "parentUuid": "c0c18473_d83fb963",
+      "range": {
+        "startLine": 739,
+        "startChar": 1,
+        "endLine": 739,
+        "endChar": 7
+      },
+      "revId": "12bd94394c50d9aafe50613f2af6f8ab92e5b103",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
