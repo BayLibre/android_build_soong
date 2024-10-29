@@ -34,6 +34,23 @@
       "parentUuid": "c5309e21_46d9dee7",
       "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc07df4b_aa64b0ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-10-29T17:24:45Z",
+      "side": 1,
+      "message": "Which build target is manifesting these issues? Could you share a paste that has the R8 command/invocation for that target (from the verbose build log)?\n\nThere is an issue with (non-static) library jar refs where the Proguard rules weren\u0027t propagating (see https://b.corp.google.com/issues/289087274#comment22 and aosp/3292381). For static library jars that get repackaged into the final program, I thought this was already working?",
+      "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
