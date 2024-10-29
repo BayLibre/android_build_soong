@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c57a98f_cb3258ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-29T22:49:33Z",
+      "side": 1,
+      "message": "This seems like a bug with `HideFromMake` to me. Could we move the check on `HideFromMake` from `moduleContext.skipInstall` to `moduleContext.requiresFullInstall` so that non-skipped packagingSpecs are still created for hidden from make modules?",
+      "revId": "6c04504cf90f38f85e6ee2cd46a85cd35f6cfe77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
