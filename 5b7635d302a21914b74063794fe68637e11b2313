@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d1007b5_696a0c90",
+        "filename": "android/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-29T17:53:57Z",
+      "side": 1,
+      "message": "Will send a followup cl.",
+      "parentUuid": "888c8e5d_a223b773",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 128,
+        "endChar": 29
+      },
+      "revId": "5b7635d302a21914b74063794fe68637e11b2313",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cd0757e_2213a5e1",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-29T16:53:16Z",
       "side": 1,
       "message": "Is this adaptor necessary? Can you use `IncomingTransitionContext` instead? It contains a `Module` function",
+      "range": {
+        "startLine": 138,
+        "startChar": 28,
+        "endLine": 138,
+        "endChar": 49
+      },
+      "revId": "5b7635d302a21914b74063794fe68637e11b2313",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc85c5a2_0abbeda3",
+        "filename": "android/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-29T17:53:57Z",
+      "side": 1,
+      "message": "`IncomingTransitionContext` on its own doesn\u0027t implement the `Platform()`, `DeviceSpecific()`, etc functions. Those are used by the various implementations of the `ImageInterface` methods called in this function.",
+      "parentUuid": "0cd0757e_2213a5e1",
       "range": {
         "startLine": 138,
         "startChar": 28,
