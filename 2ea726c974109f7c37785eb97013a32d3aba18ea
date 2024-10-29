@@ -16,6 +16,29 @@
       "message": "That seems to work and more or less I now get the same behavior in soong as I see on AS.\nIt creates stub/empty rules for every import module and I don\u0027t know/think we want that?\nLet me know if I can improve anything, I think the case of rules with the same name can be \"safely\" ignored given no one ever faced this issue :)",
       "revId": "2ea726c974109f7c37785eb97013a32d3aba18ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "815dd762_a67bf7e8",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2690,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-29T16:28:14Z",
+      "side": 1,
+      "message": "I don\u0027t think any of these options do anything when combined with `-p`.",
+      "range": {
+        "startLine": 2690,
+        "startChar": 10,
+        "endLine": 2690,
+        "endChar": 15
+      },
+      "revId": "2ea726c974109f7c37785eb97013a32d3aba18ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
