@@ -137,6 +137,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd38275d_853570cc",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-29T21:41:06Z",
+      "side": 1,
+      "message": "I see what you mean. You are right, there is some divergence here. I will do the cleanup in a followup CL. (At ToT, we currently do not generate Android.bp for [vendor](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/a7ccff9edeaf92068d9b786ebb8b386cd4396d0d:fsgen/filesystem_creator.go;l\u003d658-660;drc\u003d168098c392712032db53fcac84140de4685af431;bpv\u003d1;bpt\u003d0) anyways due to missing support for structs)",
+      "parentUuid": "5eb22e25_705dc5e4",
+      "range": {
+        "startLine": 477,
+        "startChar": 1,
+        "endLine": 479,
+        "endChar": 2
+      },
+      "revId": "a19aa241fa642f1875b236e9e19b94a4fd5ba8bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff54ccdb_3a4ca657",
