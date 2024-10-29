@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5309e21_46d9dee7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-29T17:16:49Z",
+      "side": 1,
+      "message": "R8 supports loading proguard rules directly out of the jar: https://r8-review.googlesource.com/c/r8/+/21121\n\nIs the problem here that we are stripping proguard rules out of the jars when we strip META-INF?",
+      "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
