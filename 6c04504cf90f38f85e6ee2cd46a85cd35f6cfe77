@@ -34,6 +34,24 @@
       "parentUuid": "7c57a98f_cb3258ea",
       "revId": "6c04504cf90f38f85e6ee2cd46a85cd35f6cfe77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa5d602_f14a5db6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-29T23:34:49Z",
+      "side": 1,
+      "message": "Not exactly, I\u0027m saying make `requiresFullInstall` look like this:\n\n```\nfunc (m *moduleContext) requiresFullInstall() bool {\n\tif m.skipInstall() {\n\t\treturn false\n\t}\n\tif m.module.base().commonProperties.HideFromMake {\n\t\treturn false\n\t}\n\tif proptools.Bool(m.module.base().commonProperties.No_full_install) {\n\t\treturn false\n\t}\n\n\treturn true\n}\n```\nAnd then remove the `if m.module.base().commonProperties.HideFromMake { return true }` from `skipInstall`.",
+      "parentUuid": "67835bdb_824b5b10",
+      "revId": "6c04504cf90f38f85e6ee2cd46a85cd35f6cfe77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
