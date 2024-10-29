@@ -69,6 +69,24 @@
       "parentUuid": "bc07df4b_aa64b0ca",
       "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b131df7_d1efa1ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2024-10-29T19:03:22Z",
+      "side": 1,
+      "message": "Here\u0027s the command WITH this change https://zifb.in/kyqF7Ytu8N (see the extra -include **/proguard_flags\n\nIt seems like R8 uses a single combined JAR (-injars out/soong/.intermediates/packages/apps/Twelve/app/Twelve/android_common/withres/Twelve.jar) and META-INF/proguard rules are present there.\n\nI\u0027ll add logs around .getProgramResourceProviders() call in the wrapper to see what\u0027s up there",
+      "parentUuid": "e02448e5_07e6c456",
+      "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
