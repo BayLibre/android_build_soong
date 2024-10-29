@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e09c36_3f61cce3",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-29T16:32:09Z",
+      "side": 1,
+      "message": "Why are we also adding variant_prepend?",
+      "range": {
+        "startLine": 88,
+        "startChar": 83,
+        "endLine": 88,
+        "endChar": 98
+      },
+      "revId": "95ef8f647902ca570020ed8839c8e9550ae266d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
