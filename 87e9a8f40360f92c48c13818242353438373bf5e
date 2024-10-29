@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52137a9f_65f45904",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-29T20:28:25Z",
+      "side": 1,
+      "message": "This needs to come before `buildImageUsingBuildImage` / `buildCpioImage` in order to actually be installed on the build filesystem. It should probably be next to the existing `buildEventLogtagsFile` / `buildAconfigFlagsFiles`, etc functions.",
+      "revId": "87e9a8f40360f92c48c13818242353438373bf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b00f07_9833ca37",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-29T20:28:25Z",
+      "side": 1,
+      "message": "We don\u0027t want to call ctx.PackageFile or ctx.InstallFile for this, it should just be placed in the staging directory that is being built.",
+      "revId": "87e9a8f40360f92c48c13818242353438373bf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
