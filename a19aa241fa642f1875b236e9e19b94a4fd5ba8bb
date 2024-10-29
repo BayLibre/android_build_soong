@@ -104,6 +104,23 @@
       "message": "Is it guaranteed that `dir` is always unique within `linkerConfigSrcs`? If not wouldn\u0027t this be creating multiple `filegroup` modules within the same directory?",
       "revId": "a19aa241fa642f1875b236e9e19b94a4fd5ba8bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06cf708b_0aa56ac5",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-29T20:35:40Z",
+      "side": 1,
+      "message": "Since you\u0027re making a new struct, you can just make `Srcs` a regular `[]string` instead of a configurable, and blueprint will know to turn it into a configurable to match the filegroup\u0027s property struct.\n\nThere\u0027s also `proptools.CreateSimpleConfigurable` to simplify lines 530-535 if you were going to do it this way.",
+      "revId": "a19aa241fa642f1875b236e9e19b94a4fd5ba8bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
