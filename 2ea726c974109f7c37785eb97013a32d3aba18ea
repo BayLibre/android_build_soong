@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e0daa20_c7520bc1",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2690,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2024-10-29T16:39:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "815dd762_a67bf7e8",
+      "range": {
+        "startLine": 2690,
+        "startChar": 10,
+        "endLine": 2690,
+        "endChar": 15
+      },
+      "revId": "2ea726c974109f7c37785eb97013a32d3aba18ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03a1bf42_123928c5",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-10-29T16:30:18Z",
       "side": 1,
       "message": "Do `rm -f $out \u0026\u0026 touch $out`. If the jar used to have proguard files, but then was updated to no longer have them, this would not get rid of the extracted proguard files from before.",
+      "range": {
+        "startLine": 2691,
+        "startChar": 11,
+        "endLine": 2691,
+        "endChar": 21
+      },
+      "revId": "2ea726c974109f7c37785eb97013a32d3aba18ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b3d743_07f48c77",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2691,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2024-10-29T16:39:32Z",
+      "side": 1,
+      "message": "Ah yes, I didn\u0027t think about that case, done",
+      "parentUuid": "03a1bf42_123928c5",
       "range": {
         "startLine": 2691,
         "startChar": 11,
