@@ -46,6 +46,30 @@
       },
       "revId": "95ef8f647902ca570020ed8839c8e9550ae266d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77fb46c9_98f02665",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-29T16:37:55Z",
+      "side": 1,
+      "message": "I guess the order of the libraries likely doesn\u0027t matter in the majority of cases.",
+      "parentUuid": "b35a75f1_4296f7ac",
+      "range": {
+        "startLine": 88,
+        "startChar": 83,
+        "endLine": 88,
+        "endChar": 98
+      },
+      "revId": "95ef8f647902ca570020ed8839c8e9550ae266d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
