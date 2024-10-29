@@ -16,6 +16,94 @@
       "message": "This contains some hardcoding for `vendor` which will need to be updated for `product`\u0027s /etc/linker.config.pb",
       "revId": "a19aa241fa642f1875b236e9e19b94a4fd5ba8bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19efbcfc_d26d23d2",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-29T20:33:32Z",
+      "side": 1,
+      "message": "nit: Can you pass `ctx` to `partitionSpecificProps`  and move this into it?",
+      "range": {
+        "startLine": 477,
+        "startChar": 1,
+        "endLine": 479,
+        "endChar": 2
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7fd52656_9e516748",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fsgen/filesystem_creator.go",
+              "range": {
+                "startLine": 425,
+                "startChar": 0,
+                "endLine": 426,
+                "endChar": 0
+              },
+              "replacement": "func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesystem.FilesystemProperties, partitionType string) {\n"
+            },
+            {
+              "path": "fsgen/filesystem_creator.go",
+              "range": {
+                "startLine": 464,
+                "startChar": 0,
+                "endLine": 464,
+                "endChar": 0
+              },
+              "replacement": "\t\tfsProps.Linker_config_srcs \u003d f.createLinkerConfigSourceFilegroups(ctx)\n"
+            },
+            {
+              "path": "fsgen/filesystem_creator.go",
+              "range": {
+                "startLine": 476,
+                "startChar": 0,
+                "endLine": 481,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "fsgen/filesystem_creator.go",
+              "range": {
+                "startLine": 598,
+                "startChar": 0,
+                "endLine": 599,
+                "endChar": 0
+              },
+              "replacement": "\tpartitionSpecificFsProps(ctx, fsProps, partitionType)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a19aa241fa642f1875b236e9e19b94a4fd5ba8bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff54ccdb_3a4ca657",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-29T20:33:32Z",
+      "side": 1,
+      "message": "Is it guaranteed that `dir` is always unique within `linkerConfigSrcs`? If not wouldn\u0027t this be creating multiple `filegroup` modules within the same directory?",
+      "revId": "a19aa241fa642f1875b236e9e19b94a4fd5ba8bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
