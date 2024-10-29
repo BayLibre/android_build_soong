@@ -783,7 +783,7 @@ func writeModuleInfoJSON(ctx SingletonContext, moduleInfoJSONs []*ModuleInfoJSON
 			moduleInfoJSONBuf.WriteString(",\n")
 		}
 		moduleInfoJSONBuf.WriteString("{")
-		moduleInfoJSONBuf.WriteString(strconv.Quote(moduleInfoJSON.core.RegisterName))
+		moduleInfoJSONBuf.WriteString(strconv.Quote(moduleInfoJSON.Core.RegisterName))
 		moduleInfoJSONBuf.WriteString(":")
 		err := encodeModuleInfoJSON(moduleInfoJSONBuf, moduleInfoJSON)
 		moduleInfoJSONBuf.WriteString("}")

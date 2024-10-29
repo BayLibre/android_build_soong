@@ -2052,7 +2052,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 			}
 		}
 
-		ctx.moduleInfoJSON.core = CoreModuleInfoJSON{
+		ctx.moduleInfoJSON.Core = CoreModuleInfoJSON{
 			RegisterName:       m.moduleInfoRegisterName(ctx, ctx.moduleInfoJSON.SubName),
 			Path:               []string{ctx.ModuleDir()},
 			Installed:          installedStrings,
