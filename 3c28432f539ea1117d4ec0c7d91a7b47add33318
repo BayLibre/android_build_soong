@@ -16,6 +16,24 @@
       "message": "R8 supports loading proguard rules directly out of the jar: https://r8-review.googlesource.com/c/r8/+/21121\n\nIs the problem here that we are stripping proguard rules out of the jars when we strip META-INF?",
       "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27eaf953_616f7865",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2024-10-29T17:24:33Z",
+      "side": 1,
+      "message": "I checked the possible paths where META-INF gets stripped and it seems the only place I can think of is by calling TransformJarsToJar, in the \"combined\" JAR this clearly isn\u0027t happening since I\u0027m using it to extract the rules (and by manual inspection), maybe there\u0027s other steps after that that remove it?\n\nManually adding the flag does the job tho",
+      "parentUuid": "c5309e21_46d9dee7",
+      "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
