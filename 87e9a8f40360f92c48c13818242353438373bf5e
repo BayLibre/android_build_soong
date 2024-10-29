@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe5763f_ee4400a7",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-29T20:48:25Z",
+      "side": 1,
+      "message": "Good catch, done.",
+      "parentUuid": "52137a9f_65f45904",
+      "revId": "87e9a8f40360f92c48c13818242353438373bf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7b00f07_9833ca37",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-29T20:28:25Z",
       "side": 1,
       "message": "We don\u0027t want to call ctx.PackageFile or ctx.InstallFile for this, it should just be placed in the staging directory that is being built.",
+      "revId": "87e9a8f40360f92c48c13818242353438373bf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaafdba0_9b4cea93",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-29T20:48:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7b00f07_9833ca37",
       "revId": "87e9a8f40360f92c48c13818242353438373bf5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
