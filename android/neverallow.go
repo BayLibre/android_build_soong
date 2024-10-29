@@ -289,10 +289,8 @@ func createLimitDirgroupRule() []Rule {
 			Without("visibility", "//trusty/vendor/google/aosp/scripts").Because(reason),
 		NeverAllow().
 			ModuleType("genrule").
-			Without("name", "trusty-arm64.lk.elf.gen").
-			Without("name", "trusty-arm64-test.lk.elf.gen").
-			Without("name", "trusty-x86_64.lk.elf.gen").
-			Without("name", "trusty-x86_64-test.lk.elf.gen").
+			Without("name", "lk.elf.arm64").
+			Without("name", "lk.elf.x86_64").
 			WithMatcher("dir_srcs", isSetMatcherInstance).Because(reason),
 	}
 }
