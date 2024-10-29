@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f6619d7_b39883c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-10-29T18:15:15Z",
+      "side": 1,
+      "message": "Edward was asking about test_module_config for sh_tests, but I don\u0027t think it was the right solution and was trying to help with some alternatives.",
+      "revId": "9820408a86c252fc8ea86772aefacc2b179a1034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
