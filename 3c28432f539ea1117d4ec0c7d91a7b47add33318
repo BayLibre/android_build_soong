@@ -51,6 +51,24 @@
       "message": "Which build target is manifesting these issues? Could you share a paste that has the R8 command/invocation for that target (from the verbose build log)?\n\nThere is an issue with (non-static) library jar refs where the Proguard rules weren\u0027t propagating (see https://b.corp.google.com/issues/289087274#comment22 and aosp/3292381). For static library jars that get repackaged into the final program, I thought this was already working?",
       "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02448e5_07e6c456",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2024-10-29T17:37:30Z",
+      "side": 1,
+      "message": "No build targets, and not something at google either, https://github.com/lineage-next/android_packages_apps_Twelve\nThis app includes okhttp as a prebuilt and includes it statically as can be seen here https://github.com/lineage-next/android_packages_apps_Twelve/blob/lineage-22.0/app/libs/Android.bp#L529\nMaybe the java_import -\u003e java_library_static dance causes the problem?\n\nI see the following warnings\n```\nMissing class org.bouncycastle.jsse.BCSSLParameters (referenced from: void okhttp3.internal.platform.BouncyCastlePlatform.configureTlsExtensions(javax.net.ssl.SSLSocket, java.lang.String, java.util.List) and 1 other context)\nMissing class org.bouncycastle.jsse.BCSSLSocket (referenced from: void okhttp3.internal.platform.BouncyCastlePlatform.configureTlsExtensions(javax.net.ssl.SSLSocket, java.lang.String, java.util.List) and 5 other contexts)\nMissing class org.bouncycastle.jsse.provider.BouncyCastleJsseProvider (referenced from: void okhttp3.internal.platform.BouncyCastlePlatform.\u003cinit\u003e())\nMissing class org.conscrypt.Conscrypt$Version (referenced from: boolean okhttp3.internal.platform.ConscryptPlatform$Companion.atLeastVersion(int, int, int))\nMissing class org.conscrypt.Conscrypt (referenced from: boolean okhttp3.internal.platform.ConscryptPlatform$Companion.atLeastVersion(int, int, int) and 9 other contexts)\nMissing class org.conscrypt.ConscryptHostnameVerifier (referenced from: javax.net.ssl.X509TrustManager okhttp3.internal.platform.ConscryptPlatform.platformTrustManager() and 1 other context)\nMissing class org.openjsse.javax.net.ssl.SSLParameters (referenced from: void okhttp3.internal.platform.OpenJSSEPlatform.configureTlsExtensions(javax.net.ssl.SSLSocket, java.lang.String, java.util.List))\nMissing class org.openjsse.javax.net.ssl.SSLSocket (referenced from: void okhttp3.internal.platform.OpenJSSEPlatform.configureTlsExtensions(javax.net.ssl.SSLSocket, java.lang.String, java.util.List) and 1 other context)\nMissing class org.openjsse.net.ssl.OpenJSSE (referenced from: void okhttp3.internal.platform.OpenJSSEPlatform.\u003cinit\u003e())```\n\nManually propagating the rules via this change makes them go away (it\u0027s just dontwarn rules)\n\nIf you want to try building it just remove https://github.com/lineage-next/android_packages_apps_Twelve/blob/lineage-22.0/app/Android.bp#L13, that\u0027s hopefully a workaround I\u0027ll kill sooner than later\n\nAfter that I still have one warning caused by coil3\n`Warning: Missing class coil3.core.R$id (referenced from: coil3.request.ViewTargetRequestManager coil3.request.ViewTargetRequestManagerKt.getRequestManager(android.view.View))\n)`\nbut this is likely yet another difference in the way id resources are handled and I\u0027m not ready yet to figure that one out :)",
+      "parentUuid": "bc07df4b_aa64b0ca",
+      "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
