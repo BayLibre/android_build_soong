@@ -33,7 +33,7 @@ bootstrap_go_package {
 
 //
 // Defaults to enable various configurations of host bionic
-//
+// no-op
 
 cc_defaults {
     name: "linux_bionic_supported",
