@@ -363,7 +363,7 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, dexParams *compileDexParams) 
 
 	r8Flags = append(r8Flags, opt.Proguard_flags...)
 
-	if BoolDefault(opt.Proguard_compatibility, true) {
+	if true || BoolDefault(opt.Proguard_compatibility, true) {
 		r8Flags = append(r8Flags, "--force-proguard-compatibility")
 	}
 
