@@ -146,6 +146,8 @@ type variableProperties struct {
 			Cmd          *string
 
 			Deps []string
+
+			Aaptflags []string
 		}
 
 		// eng is true for -eng builds, and can be used to turn on additional heavyweight debugging
@@ -162,6 +164,7 @@ type variableProperties struct {
 			Optimize struct {
 				Enabled *bool
 			}
+			Aaptflags []string
 		}
 
 		Uml struct {
