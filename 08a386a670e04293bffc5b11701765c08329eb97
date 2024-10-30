@@ -40,6 +40,30 @@
       ],
       "revId": "08a386a670e04293bffc5b11701765c08329eb97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ff3d1d_2dff915e",
+        "filename": "android/apex_contributions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-30T17:30:00Z",
+      "side": 1,
+      "message": "I also did the directory check to make sure there isn\u0027t another module with the same name in a different soong namespace. Do you not think that\u0027s necessary?",
+      "parentUuid": "17b8a4a7_09d32bcb",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 2
+      },
+      "revId": "08a386a670e04293bffc5b11701765c08329eb97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
