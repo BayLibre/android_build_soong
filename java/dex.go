@@ -116,11 +116,11 @@ func (d *dexer) effectiveOptimizeEnabled() bool {
 }
 
 func (d *DexProperties) resourceShrinkingEnabled(ctx android.ModuleContext) bool {
-	return !ctx.Config().Eng() && BoolDefault(d.Optimize.Optimized_shrink_resources, Bool(d.Optimize.Shrink_resources))
+	return false && !ctx.Config().Eng() && BoolDefault(d.Optimize.Optimized_shrink_resources, Bool(d.Optimize.Shrink_resources))
 }
 
 func (d *DexProperties) optimizedResourceShrinkingEnabled(ctx android.ModuleContext) bool {
-	return d.resourceShrinkingEnabled(ctx) && BoolDefault(d.Optimize.Optimized_shrink_resources, ctx.Config().UseOptimizedResourceShrinkingByDefault())
+	return false && d.resourceShrinkingEnabled(ctx) && BoolDefault(d.Optimize.Optimized_shrink_resources, ctx.Config().UseOptimizedResourceShrinkingByDefault())
 }
 
 func (d *dexer) optimizeOrObfuscateEnabled() bool {
@@ -233,7 +233,7 @@ func (d *dexer) dexCommonFlags(ctx android.ModuleContext,
 	// test targets to remain optimized as part of eng test_suites builds.
 	if requestReleaseMode {
 		flags = append(flags, "--release")
-	} else if ctx.Config().Eng() {
+	} else {
 		flags = append(flags, "--debug")
 	}
 
@@ -363,7 +363,7 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, dexParams *compileDexParams) 
 
 	r8Flags = append(r8Flags, opt.Proguard_flags...)
 
-	if BoolDefault(opt.Proguard_compatibility, true) {
+	if true || BoolDefault(opt.Proguard_compatibility, true) {
 		r8Flags = append(r8Flags, "--force-proguard-compatibility")
 	}
 
@@ -376,16 +376,16 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, dexParams *compileDexParams) 
 	}
 
 	// TODO(ccross): Don't shrink app instrumentation tests by default.
-	if !Bool(opt.Shrink) {
+	if true || !Bool(opt.Shrink) {
 		r8Flags = append(r8Flags, "-dontshrink")
 	}
 
-	if !Bool(opt.Optimize) {
+	if true || !Bool(opt.Optimize) {
 		r8Flags = append(r8Flags, "-dontoptimize")
 	}
 
 	// TODO(ccross): error if obufscation + app instrumentation test.
-	if !Bool(opt.Obfuscate) {
+	if true || !Bool(opt.Obfuscate) {
 		r8Flags = append(r8Flags, "-dontobfuscate")
 	}
 	// TODO(ccross): if this is an instrumentation test of an obfuscated app, use the
