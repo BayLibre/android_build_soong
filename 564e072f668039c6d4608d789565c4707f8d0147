@@ -52,6 +52,24 @@
       "parentUuid": "4b1fd76d_3f82772d",
       "revId": "564e072f668039c6d4608d789565c4707f8d0147",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "824197d4_a27c6a63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-10-30T11:23:35Z",
+      "side": 1,
+      "message": "Dean, if you can see the presubmit results then clicking on a failure will show you the command to run. The build basically stops at the first failure so fixing one issue is likely to reveal others. So, you have to fix then test, fix then test, etc. until it works. If you cannot see the presubmit failures then it\u0027s a little tricky to find out what is broken.\n\nYou could try running `tools/metalava/cripts/gather-android-metalava-artifacts.py dir` which builds a lot of the files that would be affected by your changes.\n\nMy understanding was that Jihoon was going to try and fix the issues that are blocking you but he may not have had time.",
+      "parentUuid": "a3bf72f3_1d2d442e",
+      "revId": "564e072f668039c6d4608d789565c4707f8d0147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
