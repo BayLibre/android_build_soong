@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ce5eb5_73da264a",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-30T21:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ebb4383_bb30214e",
+      "revId": "565e3fea2dcf0a8920c6dba32aa86aed21fd94e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2675936_ab30c91e",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-30T19:22:22Z",
       "side": 1,
       "message": "I think we should try to keep the regular and high priority deps separated throughout the whole process, instead of merging them and then reseparating them here.\n\nI think you can most easily do that by removing the ability to pass a deptag to `AddDeps`, and adding the regular/high priority dependencies under two separate deptags.",
+      "revId": "565e3fea2dcf0a8920c6dba32aa86aed21fd94e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fea644ae_f316f6a9",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-30T21:39:13Z",
+      "side": 1,
+      "message": "Done. But given that there is a [plugin](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:device/google/cuttlefish/build/cvd-host-package.go;l\u003d64) that embeds `PackagingBase`, I\u0027d have to submit this change in internal first.",
+      "parentUuid": "f2675936_ab30c91e",
       "revId": "565e3fea2dcf0a8920c6dba32aa86aed21fd94e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
