@@ -2318,10 +2318,6 @@ func moduleLibraryInterface(module blueprint.Module) libraryInterface {
 
 // setStubsVersions normalizes the versions in the Stubs.Versions property into MutatedProperties.AllStubsVersions.
 func setStubsVersions(mctx android.BaseModuleContext, module LinkableInterface) {
-	// TODO(ivanlozano) remove this when Rust supports stubs
-	if module.RustLibraryInterface() {
-		return
-	}
 	if !module.BuildSharedVariant() || !canBeVersionVariant(module) {
 		return
 	}
@@ -2343,10 +2339,6 @@ func (versionTransitionMutator) Split(ctx android.BaseModuleContext) []string {
 		return []string{""}
 	}
 	if m, ok := ctx.Module().(LinkableInterface); ok {
-		// TODO(ivanlozano) remove this when Rust supports stubs
-		if m.RustLibraryInterface() {
-			return []string{""}
-		}
 		if m.CcLibraryInterface() && canBeVersionVariant(m) {
 			setStubsVersions(ctx, m)
 			return append(slices.Clone(m.AllStubsVersions()), "")
@@ -2396,11 +2388,6 @@ func (versionTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, varia
 
 	m, ok := ctx.Module().(LinkableInterface)
 	if library := moduleLinkableLibraryInterface(ctx.Module()); library != nil && canBeVersionVariant(m) {
-		// TODO(ivanlozano) remove this when Rust supports stubs
-		if m.RustLibraryInterface() {
-			return
-		}
-
 		isLLNDK := m.IsLlndk()
 		isVendorPublicLibrary := m.IsVendorPublicLibrary()
 
