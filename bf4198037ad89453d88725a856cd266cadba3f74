@@ -16,6 +16,29 @@
       "message": "Someone just send me a log, I have to ask them what TARGET_RELEASE they are using.",
       "revId": "bf4198037ad89453d88725a856cd266cadba3f74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "542f6ca6_06ad69b1",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-30T23:54:33Z",
+      "side": 1,
+      "message": "This doesn\u0027t work when running `./build/soong/soong_ui.bash --make-mode TARGET_PRODUCT\u003dsdk_phone64_x86_64 TARGET_RELEASE\u003dtrunk_staging TARGET_BUILD_VARIANT\u003duserdebug nothing` from an unlunched terminal, which is what the CI builds do. Is there a solution that works for that as well?",
+      "range": {
+        "startLine": 180,
+        "startChar": 42,
+        "endLine": 180,
+        "endChar": 48
+      },
+      "revId": "bf4198037ad89453d88725a856cd266cadba3f74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
