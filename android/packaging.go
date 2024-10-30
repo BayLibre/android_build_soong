@@ -179,9 +179,9 @@ type PackageModule interface {
 	packagingBase() *PackagingBase
 
 	// AddDeps adds dependencies to the `deps` modules. This should be called in DepsMutator.
-	// When adding the dependencies, depTag is used as the tag. If `deps` modules are meant to
-	// be copied to a zip in CopyDepsToZip, `depTag` should implement PackagingItem marker interface.
-	AddDeps(ctx BottomUpMutatorContext, depTag blueprint.DependencyTag)
+	// When adding the dependencies, excludeFromVisibilityRequirement is used to determine whether
+	// the dependency is allowed to bypass the visibility requirement.
+	AddDeps(ctx BottomUpMutatorContext, excludeFromVisibilityRequirement bool)
 
 	// GatherPackagingSpecs gathers PackagingSpecs of transitive dependencies.
 	GatherPackagingSpecs(ctx ModuleContext) map[string]PackagingSpec
@@ -210,6 +210,12 @@ type PackagingBase struct {
 }
 
 type depsProperty struct {
+	// Deps that have higher priority in packaging when there is a packaging conflict.
+	// For example, if multiple files are being installed to same filepath, the install file
+	// of the module listed in this property will have a higher priority over those in other
+	// deps properties.
+	High_priority_deps []string `android:"arch_variant"`
+
 	// Modules to include in this package
 	Deps proptools.Configurable[[]string] `android:"arch_variant"`
 }
@@ -231,8 +237,8 @@ type packagingArchProperties struct {
 }
 
 type PackagingProperties struct {
-	Deps     proptools.Configurable[[]string] `android:"arch_variant"`
-	Multilib packagingMultilibProperties      `android:"arch_variant"`
+	depsProperty
+	Multilib packagingMultilibProperties `android:"arch_variant"`
 	Arch     packagingArchProperties
 }
 
@@ -257,6 +263,7 @@ func (p *PackagingBase) getDepsForArch(ctx BaseModuleContext, arch ArchType) []s
 	var ret []string
 	if arch == ctx.Target().Arch.ArchType && len(ctx.MultiTargets()) == 0 {
 		ret = append(ret, get(p.properties.Deps)...)
+		ret = append(ret, p.properties.High_priority_deps...)
 	} else if arch.Multilib == "lib32" {
 		ret = append(ret, get(p.properties.Multilib.Lib32.Deps)...)
 		// multilib.prefer32.deps are added for lib32 only when they support 32-bit arch
@@ -286,6 +293,7 @@ func (p *PackagingBase) getDepsForArch(ctx BaseModuleContext, arch ArchType) []s
 				ret = append(ret, get(p.properties.Multilib.Both.Deps)...)
 				if i == 0 {
 					ret = append(ret, get(p.properties.Deps)...)
+					ret = append(ret, p.properties.High_priority_deps...)
 				}
 			}
 		}
@@ -296,6 +304,7 @@ func (p *PackagingBase) getDepsForArch(ctx BaseModuleContext, arch ArchType) []s
 		for i, t := range ctx.MultiTargets() {
 			if t.Arch.ArchType == arch {
 				ret = append(ret, get(p.properties.Deps)...)
+				ret = append(ret, p.properties.High_priority_deps...)
 				if i == 0 {
 					ret = append(ret, get(p.properties.Multilib.First.Deps)...)
 				}
@@ -358,12 +367,18 @@ func checkIfOtherModuleSupportsLib32(ctx BaseModuleContext, dep string) bool {
 type PackagingItem interface {
 	// IsPackagingItem returns true if the dep is to be packaged
 	IsPackagingItem() bool
+
+	// IsHighPriority returns true if the dep has higher install priority
+	IsHighPriority() bool
 }
+
+var _ PackagingItem = (*PackagingItemAlwaysDepTag)(nil)
 
 // DepTag provides default implementation of PackagingItem interface.
 // PackagingBase-derived modules can define their own dependency tag by embedding this, which
 // can be passed to AddDeps() or AddDependencies().
 type PackagingItemAlwaysDepTag struct {
+	isHighPriority bool
 }
 
 // IsPackagingItem returns true if the dep is to be packaged
@@ -371,8 +386,41 @@ func (PackagingItemAlwaysDepTag) IsPackagingItem() bool {
 	return true
 }
 
+// IsPackagingItem returns true if the dep is to be packaged
+func (p *PackagingItemAlwaysDepTag) IsHighPriority() bool {
+	return p.isHighPriority
+}
+
+type depTag struct {
+	blueprint.BaseDependencyTag
+	PackagingItemAlwaysDepTag
+}
+
+type depTagWithVisibilityEnforcementBypass struct {
+	depTag
+}
+
+var _ ExcludeFromVisibilityEnforcementTag = (*depTagWithVisibilityEnforcementBypass)(nil)
+
+func (t depTagWithVisibilityEnforcementBypass) ExcludeFromVisibilityEnforcement() {}
+
+var (
+	packagingDependencyTag             = depTag{}
+	packagingHighPriorityDependencyTag = depTag{
+		PackagingItemAlwaysDepTag: PackagingItemAlwaysDepTag{isHighPriority: true},
+	}
+	packagingDependencyTagWithVisibilityEnforcementBypass             = depTagWithVisibilityEnforcementBypass{}
+	packagingHighPriorityDependencyTagWithVisibilityEnforcementBypass = depTagWithVisibilityEnforcementBypass{
+		depTag: depTag{
+			PackagingItemAlwaysDepTag: PackagingItemAlwaysDepTag{isHighPriority: true},
+		},
+	}
+)
+
+var dependencyTagWithVisibilityEnforcementBypass = depTagWithVisibilityEnforcementBypass{}
+
 // See PackageModule.AddDeps
-func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.DependencyTag) {
+func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, excludeFromVisibilityRequirement bool) {
 	for _, t := range getSupportedTargets(ctx) {
 		for _, dep := range p.getDepsForArch(ctx, t.Arch.ArchType) {
 			if p.IgnoreMissingDependencies && !ctx.OtherModuleExists(dep) {
@@ -388,14 +436,32 @@ func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.Dep
 			if ctx.OtherModuleFarDependencyVariantExists([]blueprint.Variation{sharedVariation}, dep) {
 				targetVariation = append(targetVariation, sharedVariation)
 			}
-			ctx.AddFarVariationDependencies(targetVariation, depTag, dep)
+
+			if excludeFromVisibilityRequirement {
+				if InList(dep, p.properties.High_priority_deps) {
+					ctx.AddFarVariationDependencies(targetVariation, packagingHighPriorityDependencyTagWithVisibilityEnforcementBypass, dep)
+				} else {
+					ctx.AddFarVariationDependencies(targetVariation, packagingDependencyTagWithVisibilityEnforcementBypass, dep)
+				}
+			} else {
+				if InList(dep, p.properties.High_priority_deps) {
+					ctx.AddFarVariationDependencies(targetVariation, packagingHighPriorityDependencyTag, dep)
+				} else {
+					ctx.AddFarVariationDependencies(targetVariation, packagingDependencyTag, dep)
+				}
+			}
+
 		}
 	}
 }
 
 func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter func(PackagingSpec) bool) map[string]PackagingSpec {
-	// all packaging specs gathered from the dep.
+	// all packaging specs gathered from the dep that are not high priorities.
 	var all []PackagingSpec
+
+	// all packaging specs gathered from the high priority deps
+	var highPriorities []PackagingSpec
+
 	// Name of the dependency which requested the packaging spec.
 	// If this dep is overridden, the packaging spec will not be installed via this dependency chain.
 	// (the packaging spec might still be installed if there are some other deps which depend on it).
@@ -420,7 +486,8 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 	}
 
 	ctx.VisitDirectDeps(func(child Module) {
-		if pi, ok := ctx.OtherModuleDependencyTag(child).(PackagingItem); !ok || !pi.IsPackagingItem() {
+		pi, ok := ctx.OtherModuleDependencyTag(child).(PackagingItem)
+		if !ok || !pi.IsPackagingItem() {
 			return
 		}
 		for _, ps := range OtherModuleProviderOrDefault(
@@ -434,7 +501,11 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 					continue
 				}
 			}
-			all = append(all, ps)
+			if !pi.IsHighPriority() {
+				all = append(all, ps)
+			} else {
+				highPriorities = append(highPriorities, ps)
+			}
 			depNames = append(depNames, child.Name())
 			if ps.overrides != nil {
 				overridden = append(overridden, *ps.overrides...)
@@ -442,21 +513,26 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 		}
 	})
 
-	// all minus packaging specs that are overridden
-	var filtered []PackagingSpec
-	for index, ps := range all {
-		if ps.owner != "" && InList(ps.owner, overridden) {
-			continue
+	filterOverridden := func(input []PackagingSpec) []PackagingSpec {
+		// input minus packaging specs that are overridden
+		var filtered []PackagingSpec
+		for index, ps := range input {
+			if ps.owner != "" && InList(ps.owner, overridden) {
+				continue
+			}
+			// The dependency which requested this packaging spec has been overridden.
+			if InList(depNames[index], overridden) {
+				continue
+			}
+			filtered = append(filtered, ps)
 		}
-		// The dependency which requested this packaging spec has been overridden.
-		if InList(depNames[index], overridden) {
-			continue
-		}
-		filtered = append(filtered, ps)
+		return filtered
 	}
 
+	filteredAll := filterOverridden(all)
+
 	m := make(map[string]PackagingSpec)
-	for _, ps := range filtered {
+	for _, ps := range filteredAll {
 		dstPath := ps.relPathInPackage
 		if existingPs, ok := m[dstPath]; ok {
 			if !existingPs.Equals(&ps) {
@@ -466,6 +542,13 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 		}
 		m[dstPath] = ps
 	}
+
+	filteredHighPriority := filterOverridden(highPriorities)
+	for _, ps := range filteredHighPriority {
+		dstPath := ps.relPathInPackage
+		m[dstPath] = ps
+	}
+
 	return m
 }
 

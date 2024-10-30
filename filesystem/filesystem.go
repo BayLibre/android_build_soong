@@ -183,28 +183,11 @@ func initFilesystemModule(module android.DefaultableModule, filesystemModule *fi
 	android.InitDefaultableModule(module)
 }
 
-type depTag struct {
-	blueprint.BaseDependencyTag
-	android.PackagingItemAlwaysDepTag
-}
-
-var dependencyTag = depTag{}
-
-type depTagWithVisibilityEnforcementBypass struct {
-	depTag
-}
-
-var _ android.ExcludeFromVisibilityEnforcementTag = (*depTagWithVisibilityEnforcementBypass)(nil)
-
-func (t depTagWithVisibilityEnforcementBypass) ExcludeFromVisibilityEnforcement() {}
-
-var dependencyTagWithVisibilityEnforcementBypass = depTagWithVisibilityEnforcementBypass{}
-
 func (f *filesystem) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if proptools.Bool(f.properties.Is_auto_generated) {
-		f.AddDeps(ctx, dependencyTagWithVisibilityEnforcementBypass)
+		f.AddDeps(ctx, true)
 	} else {
-		f.AddDeps(ctx, dependencyTag)
+		f.AddDeps(ctx, false)
 	}
 }
 

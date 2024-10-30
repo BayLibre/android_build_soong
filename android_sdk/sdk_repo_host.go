@@ -105,7 +105,7 @@ func (d dependencyTag) PropagateLicenses() bool {
 var depTag = dependencyTag{}
 
 func (s *sdkRepoHost) DepsMutator(ctx android.BottomUpMutatorContext) {
-	s.AddDeps(ctx, depTag)
+	s.AddDeps(ctx, false)
 }
 
 func (s *sdkRepoHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
