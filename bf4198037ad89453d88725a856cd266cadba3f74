@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd8e95be_b7200034",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-10-30T23:18:30Z",
+      "side": 1,
+      "message": "Someone just send me a log, I have to ask them what TARGET_RELEASE they are using.",
+      "revId": "bf4198037ad89453d88725a856cd266cadba3f74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
