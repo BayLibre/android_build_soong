@@ -209,36 +209,43 @@ type PackagingBase struct {
 	DepsCollectFirstTargetOnly bool
 }
 
-type depsProperty struct {
+type DepsProperty struct {
+	// Deps that have higher priority in packaging when there is a packaging conflict.
+	// For example, if multiple files are being installed to same filepath, the install file
+	// of the module listed in this property will have a higher priority over those in other
+	// deps properties.
+	High_priority_deps []string `android:"arch_variant"`
+
 	// Modules to include in this package
 	Deps proptools.Configurable[[]string] `android:"arch_variant"`
 }
 
 type packagingMultilibProperties struct {
-	First    depsProperty `android:"arch_variant"`
-	Common   depsProperty `android:"arch_variant"`
-	Lib32    depsProperty `android:"arch_variant"`
-	Lib64    depsProperty `android:"arch_variant"`
-	Both     depsProperty `android:"arch_variant"`
-	Prefer32 depsProperty `android:"arch_variant"`
+	First    DepsProperty `android:"arch_variant"`
+	Common   DepsProperty `android:"arch_variant"`
+	Lib32    DepsProperty `android:"arch_variant"`
+	Lib64    DepsProperty `android:"arch_variant"`
+	Both     DepsProperty `android:"arch_variant"`
+	Prefer32 DepsProperty `android:"arch_variant"`
 }
 
 type packagingArchProperties struct {
-	Arm64  depsProperty
-	Arm    depsProperty
-	X86_64 depsProperty
-	X86    depsProperty
+	Arm64  DepsProperty
+	Arm    DepsProperty
+	X86_64 DepsProperty
+	X86    DepsProperty
 }
 
 type PackagingProperties struct {
-	Deps     proptools.Configurable[[]string] `android:"arch_variant"`
-	Multilib packagingMultilibProperties      `android:"arch_variant"`
+	DepsProperty
+
+	Multilib packagingMultilibProperties `android:"arch_variant"`
 	Arch     packagingArchProperties
 }
 
 func InitPackageModule(p PackageModule) {
 	base := p.packagingBase()
-	p.AddProperties(&base.properties)
+	p.AddProperties(&base.properties, &base.properties.DepsProperty)
 }
 
 func (p *PackagingBase) packagingBase() *PackagingBase {
@@ -257,6 +264,7 @@ func (p *PackagingBase) getDepsForArch(ctx BaseModuleContext, arch ArchType) []s
 	var ret []string
 	if arch == ctx.Target().Arch.ArchType && len(ctx.MultiTargets()) == 0 {
 		ret = append(ret, get(p.properties.Deps)...)
+		ret = append(ret, p.properties.High_priority_deps...)
 	} else if arch.Multilib == "lib32" {
 		ret = append(ret, get(p.properties.Multilib.Lib32.Deps)...)
 		// multilib.prefer32.deps are added for lib32 only when they support 32-bit arch
@@ -286,6 +294,7 @@ func (p *PackagingBase) getDepsForArch(ctx BaseModuleContext, arch ArchType) []s
 				ret = append(ret, get(p.properties.Multilib.Both.Deps)...)
 				if i == 0 {
 					ret = append(ret, get(p.properties.Deps)...)
+					ret = append(ret, p.properties.High_priority_deps...)
 				}
 			}
 		}
@@ -296,6 +305,7 @@ func (p *PackagingBase) getDepsForArch(ctx BaseModuleContext, arch ArchType) []s
 		for i, t := range ctx.MultiTargets() {
 			if t.Arch.ArchType == arch {
 				ret = append(ret, get(p.properties.Deps)...)
+				ret = append(ret, p.properties.High_priority_deps...)
 				if i == 0 {
 					ret = append(ret, get(p.properties.Multilib.First.Deps)...)
 				}
@@ -360,6 +370,8 @@ type PackagingItem interface {
 	IsPackagingItem() bool
 }
 
+var _ PackagingItem = (*PackagingItemAlwaysDepTag)(nil)
+
 // DepTag provides default implementation of PackagingItem interface.
 // PackagingBase-derived modules can define their own dependency tag by embedding this, which
 // can be passed to AddDeps() or AddDependencies().
@@ -394,8 +406,12 @@ func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.Dep
 }
 
 func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter func(PackagingSpec) bool) map[string]PackagingSpec {
-	// all packaging specs gathered from the dep.
+	// all packaging specs gathered from the dep that are not high priorities.
 	var all []PackagingSpec
+
+	// all packaging specs gathered from the high priority deps.
+	var highPriorities []PackagingSpec
+
 	// Name of the dependency which requested the packaging spec.
 	// If this dep is overridden, the packaging spec will not be installed via this dependency chain.
 	// (the packaging spec might still be installed if there are some other deps which depend on it).
@@ -434,7 +450,13 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 					continue
 				}
 			}
-			all = append(all, ps)
+
+			if InList(child.Name(), p.properties.High_priority_deps) {
+				highPriorities = append(highPriorities, ps)
+			} else {
+				all = append(all, ps)
+			}
+
 			depNames = append(depNames, child.Name())
 			if ps.overrides != nil {
 				overridden = append(overridden, *ps.overrides...)
@@ -442,21 +464,26 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 		}
 	})
 
-	// all minus packaging specs that are overridden
-	var filtered []PackagingSpec
-	for index, ps := range all {
-		if ps.owner != "" && InList(ps.owner, overridden) {
-			continue
+	filterOverridden := func(input []PackagingSpec) []PackagingSpec {
+		// input minus packaging specs that are overridden
+		var filtered []PackagingSpec
+		for index, ps := range input {
+			if ps.owner != "" && InList(ps.owner, overridden) {
+				continue
+			}
+			// The dependency which requested this packaging spec has been overridden.
+			if InList(depNames[index], overridden) {
+				continue
+			}
+			filtered = append(filtered, ps)
 		}
-		// The dependency which requested this packaging spec has been overridden.
-		if InList(depNames[index], overridden) {
-			continue
-		}
-		filtered = append(filtered, ps)
+		return filtered
 	}
 
+	filteredAll := filterOverridden(all)
+
 	m := make(map[string]PackagingSpec)
-	for _, ps := range filtered {
+	for _, ps := range filteredAll {
 		dstPath := ps.relPathInPackage
 		if existingPs, ok := m[dstPath]; ok {
 			if !existingPs.Equals(&ps) {
@@ -466,6 +493,24 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 		}
 		m[dstPath] = ps
 	}
+
+	filteredHighPriority := filterOverridden(highPriorities)
+	highPriorityPs := make(map[string]PackagingSpec)
+	for _, ps := range filteredHighPriority {
+		dstPath := ps.relPathInPackage
+		if existingPs, ok := highPriorityPs[dstPath]; ok {
+			if !existingPs.Equals(&ps) {
+				ctx.ModuleErrorf("packaging conflict at %v:\n%v\n%v", dstPath, existingPs, ps)
+			}
+			continue
+		}
+		highPriorityPs[dstPath] = ps
+	}
+
+	for _, dstPath := range SortedKeys(highPriorityPs) {
+		m[dstPath] = highPriorityPs[dstPath]
+	}
+
 	return m
 }
 
