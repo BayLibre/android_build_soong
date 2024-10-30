@@ -15,3 +15,7 @@ fi
 if ! aprotoc --go_out=paths=source_relative:. metrics.proto; then
   die "build failed. ${error_msg}"
 fi
+
+if ! aprotoc --python_out=. metrics.proto; then
+  die "build failed. ${error_msg}"
+fi
