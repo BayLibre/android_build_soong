@@ -53,6 +53,9 @@ type PlatformSanitizeable interface {
 
 	// SanitizableDepTagChecker returns a SantizableDependencyTagChecker function type.
 	SanitizableDepTagChecker() SantizableDependencyTagChecker
+
+	// ForceDisableSanitizers sets the ForceDisable sanitize property
+	ForceDisableSanitizers()
 }
 
 // SantizableDependencyTagChecker functions check whether or not a dependency
@@ -66,6 +69,7 @@ type SantizableDependencyTagChecker func(tag blueprint.DependencyTag) bool
 // LinkableInterface is an interface for a type of module that is linkable in a C++ library.
 type LinkableInterface interface {
 	android.Module
+	VersionedInterface
 
 	Module() android.Module
 	CcLibrary() bool
@@ -141,17 +145,14 @@ type LinkableInterface interface {
 	// IsLlndk returns true for both LLNDK (public) and LLNDK-private libs.
 	IsLlndk() bool
 
-	// HasLlndkStubs returns true if this library has a variant that will build LLNDK stubs.
-	HasLlndkStubs() bool
-
 	// NeedsLlndkVariants returns true if this module has LLNDK stubs or provides LLNDK headers.
 	NeedsLlndkVariants() bool
 
 	// NeedsVendorPublicLibraryVariants returns true if this module has vendor public library stubs.
 	NeedsVendorPublicLibraryVariants() bool
 
-	//StubsVersion returns the stubs version for this module.
-	StubsVersion() string
+	// SetStl sets the stl property. Only makes sense for CC modules. Does not panic if no STL is available.
+	SetStl(string)
 
 	// UseVndk returns true if the module is using VNDK libraries instead of the libraries in /system/lib or /system/lib64.
 	// "product" and "vendor" variant modules return true for this function.
@@ -177,12 +178,25 @@ type LinkableInterface interface {
 	// SubName returns the modules SubName, used for image and NDK/SDK variations.
 	SubName() string
 
+	ApexSdkVersion() android.ApiLevel
 	SdkVersion() string
 	MinSdkVersion() string
 	AlwaysSdk() bool
 	IsSdkVariant() bool
+	SetSdkVersion(string)
+	SetMinSdkVersion(version string)
+	Multilib() string
+	SetSymbolFilePath(path android.Path)
 
 	SplitPerApiLevel() bool
+	SetVersionScriptPath(path android.OptionalPath)
+	GetAPIListCoverageXMLPath() android.ModuleOutPath
+	SetAPIListCoverageXMLPath(out android.ModuleOutPath)
+	SymbolsFile() *string
+	ImplementationModuleNameForMake(ctx android.BaseModuleContext) string
+
+	// GetSharedFlags return a pointer to the modules SharedFlags
+	GetSharedFlags() *SharedFlags
 
 	// SetPreventInstall sets the PreventInstall property to 'true' for this module.
 	SetPreventInstall()
@@ -249,6 +263,7 @@ type LinkableInterface interface {
 
 	// FuzzModule returns the fuzz.FuzzModule associated with the module.
 	FuzzModuleStruct() fuzz.FuzzModule
+	IsCrt() bool
 }
 
 var (

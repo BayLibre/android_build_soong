@@ -118,7 +118,7 @@ func BuildLinkerConfig(ctx android.ModuleContext, builder *android.RuleBuilder,
 	var requireLibs []string
 	for _, m := range requireModules {
 		if c, ok := m.(*cc.Module); ok && c.HasStubsVariants() && !c.Host() {
-			requireLibs = append(requireLibs, c.ImplementationModuleName(ctx)+".so")
+			requireLibs = append(requireLibs, c.ImplementationModuleNameByCtx(ctx)+".so")
 		}
 	}
 

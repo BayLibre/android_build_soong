@@ -1492,12 +1492,12 @@ func (a *apexBundle) AddSanitizerDependencies(ctx android.BottomUpMutatorContext
 // apexFileFor<Type> functions below create an apexFile struct for a given Soong module. The
 // returned apexFile saves information about the Soong module that will be used for creating the
 // build rules.
-func apexFileForNativeLibrary(ctx android.BaseModuleContext, ccMod *cc.Module, handleSpecialLibs bool) apexFile {
+func apexFileForNativeLibrary(ctx android.BaseModuleContext, ccMod cc.LinkableInterface, handleSpecialLibs bool) apexFile {
 	// Decide the APEX-local directory by the multilib of the library In the future, we may
 	// query this to the module.
 	// TODO(jiyong): use the new PackagingSpec
 	var dirInApex string
-	switch ccMod.Arch().ArchType.Multilib {
+	switch ccMod.Multilib() {
 	case "lib32":
 		dirInApex = "lib"
 	case "lib64":
@@ -1524,7 +1524,7 @@ func apexFileForNativeLibrary(ctx android.BaseModuleContext, ccMod *cc.Module, h
 	dirInApex = filepath.Join(dirInApex, ccMod.RelativeInstallPath())
 
 	fileToCopy := android.OutputFileForModule(ctx, ccMod, "")
-	androidMkModuleName := ccMod.BaseModuleName() + ccMod.Properties.SubName
+	androidMkModuleName := ccMod.BaseModuleName() + ccMod.SubName()
 	return newApexFile(ctx, fileToCopy, androidMkModuleName, dirInApex, nativeSharedLib, ccMod)
 }
 
@@ -1552,25 +1552,6 @@ func apexFileForRustExecutable(ctx android.BaseModuleContext, rustm *rust.Module
 	androidMkModuleName := rustm.BaseModuleName() + rustm.Properties.SubName
 	af := newApexFile(ctx, fileToCopy, androidMkModuleName, dirInApex, nativeExecutable, rustm)
 	return af
-}
-
-func apexFileForRustLibrary(ctx android.BaseModuleContext, rustm *rust.Module) apexFile {
-	// Decide the APEX-local directory by the multilib of the library
-	// In the future, we may query this to the module.
-	var dirInApex string
-	switch rustm.Arch().ArchType.Multilib {
-	case "lib32":
-		dirInApex = "lib"
-	case "lib64":
-		dirInApex = "lib64"
-	}
-	if rustm.Target().NativeBridge == android.NativeBridgeEnabled {
-		dirInApex = filepath.Join(dirInApex, rustm.Target().NativeBridgeRelativePath)
-	}
-	dirInApex = filepath.Join(dirInApex, rustm.RelativeInstallPath())
-	fileToCopy := android.OutputFileForModule(ctx, rustm, "")
-	androidMkModuleName := rustm.BaseModuleName() + rustm.Properties.SubName
-	return newApexFile(ctx, fileToCopy, androidMkModuleName, dirInApex, nativeSharedLib, rustm)
 }
 
 func apexFileForShBinary(ctx android.BaseModuleContext, sh *sh.ShBinary) apexFile {
@@ -1961,8 +1942,8 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 			if isJniLib {
 				propertyName = "jni_libs"
 			}
-			switch ch := child.(type) {
-			case *cc.Module:
+
+			handleDeps := func(ch cc.LinkableInterface) {
 				if ch.IsStubs() {
 					ctx.PropertyErrorf(propertyName, "%q is a stub. Remove it from the list.", depName)
 				}
@@ -1975,14 +1956,18 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 				if ch.HasStubsVariants() && !a.vndkApex && !cc.InstallToBootstrap(ch.BaseModuleName(), ctx.Config()) {
 					vctx.provideNativeLibs = append(vctx.provideNativeLibs, fi.stem())
 				}
-				return true // track transitive dependencies
+			}
+
+			switch ch := child.(type) {
+			case *cc.Module:
+				handleDeps(ch)
+				return true
 			case *rust.Module:
-				fi := apexFileForRustLibrary(ctx, ch)
-				fi.isJniLib = isJniLib
-				vctx.filesInfo = append(vctx.filesInfo, fi)
-				return true // track transitive dependencies
+				handleDeps(ch)
+				return true
 			default:
-				ctx.PropertyErrorf(propertyName, "%q is not a cc_library or cc_library_shared module", depName)
+				ctx.PropertyErrorf(propertyName,
+					"%q is not a cc_library, cc_library_shared, rust_ffi, or rust_ffi_shared module", depName)
 			}
 		case executableTag:
 			switch ch := child.(type) {
@@ -2135,7 +2120,7 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 	// We cannot use a switch statement on `depTag` here as the checked
 	// tags used below are private (e.g. `cc.sharedDepTag`).
 	if cc.IsSharedDepTag(depTag) || cc.IsRuntimeDepTag(depTag) {
-		if ch, ok := child.(*cc.Module); ok {
+		if ch, ok := child.(cc.LinkableInterface); ok {
 			af := apexFileForNativeLibrary(ctx, ch, vctx.handleSpecialLibs)
 			af.transitiveDep = true
 
@@ -2153,7 +2138,7 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 				// being built.
 				if ch.IsStubsImplementationRequired() && !am.DirectlyInAnyApex() && !ctx.Config().UnbundledBuild() {
 					// we need a module name for Make
-					name := ch.ImplementationModuleNameForMake(ctx) + ch.Properties.SubName
+					name := ch.ImplementationModuleNameForMake(ctx) + ch.SubName()
 					if !android.InList(name, a.makeModulesToInstall) {
 						a.makeModulesToInstall = append(a.makeModulesToInstall, name)
 					}
@@ -2181,15 +2166,6 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 
 			vctx.filesInfo = append(vctx.filesInfo, af)
 			return true // track transitive dependencies
-		} else if rm, ok := child.(*rust.Module); ok {
-			if !android.IsDepInSameApex(ctx, am, am) {
-				return false
-			}
-
-			af := apexFileForRustLibrary(ctx, rm)
-			af.transitiveDep = true
-			vctx.filesInfo = append(vctx.filesInfo, af)
-			return true // track transitive dependencies
 		}
 	} else if cc.IsHeaderDepTag(depTag) {
 		// nothing
@@ -2207,10 +2183,11 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 			if !android.IsDepInSameApex(ctx, am, am) {
 				return false
 			}
-
-			af := apexFileForRustLibrary(ctx, rustm)
+			rustIntf, _ := child.(cc.LinkableInterface)
+			af := apexFileForNativeLibrary(ctx, rustIntf, vctx.handleSpecialLibs)
 			af.transitiveDep = true
 			vctx.filesInfo = append(vctx.filesInfo, af)
+
 			return true // track transitive dependencies
 		}
 	} else if rust.IsRlibDepTag(depTag) {
@@ -2643,7 +2620,7 @@ func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext
 	abInfo, _ := android.ModuleProvider(ctx, android.ApexBundleInfoProvider)
 
 	a.WalkPayloadDeps(ctx, func(ctx android.BaseModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
-		if ccm, ok := to.(*cc.Module); ok {
+		if ccm, ok := to.(cc.LinkableInterface); ok {
 			apexName := ctx.ModuleName()
 			fromName := ctx.OtherModuleName(from)
 			toName := ctx.OtherModuleName(to)

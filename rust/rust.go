@@ -528,6 +528,9 @@ func (mod *Module) ExportedCrateLinkDirs() []string {
 func (mod *Module) PreventInstall() bool {
 	return mod.Properties.PreventInstall
 }
+func (c *Module) ForceDisableSanitizers() {
+	c.sanitize.Properties.ForceDisable = true
+}
 
 func (mod *Module) MarkAsCoverageVariant(coverage bool) {
 	mod.coverage.Properties.IsCoverageVariant = coverage
@@ -719,7 +722,75 @@ func (mod *Module) IsNdk(config android.Config) bool {
 	return false
 }
 
+func (mod *Module) HasLLNDKHeaders() bool {
+	// Rust does not support LLNDK yet.
+	return false
+}
+
+func (mod *Module) HasLLNDKStubs() bool {
+	// Rust does not support LLNDK yet.
+	return false
+}
+
+func (mod *Module) HasVendorPublicLibrary() bool {
+	// Rust does not support vendor public library.
+	return false
+}
+
+func (mod *Module) ImplementationModuleName(name string) string {
+	panic(fmt.Errorf("ImplementationModuleName called on unsupported Rust module: %s", mod.BaseModuleName()))
+}
+
 func (mod *Module) IsStubs() bool {
+	return false
+}
+
+func (mod *Module) HasStubsVariants() bool {
+	return false
+}
+
+func (mod *Module) IsStubsImplementationRequired() bool {
+	return false
+}
+
+func (mod *Module) ImplementationModuleNameForMake(ctx android.BaseModuleContext) string {
+	return mod.Name()
+}
+
+func (mod *Module) Multilib() string {
+	return mod.Arch().ArchType.Multilib
+}
+
+func (mod *Module) GetAPIListCoverageXMLPath() android.ModuleOutPath {
+	panic(fmt.Errorf("GetAPIListCoverageXMLPath called on unsupported Rust module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SetAPIListCoverageXMLPath(out android.ModuleOutPath) {
+	panic(fmt.Errorf("SetAPIListCoverageXMLPath called on unsupported Rust module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SetSymbolFilePath(path android.Path) {
+	panic(fmt.Errorf("SetSymbolFilePath called on unsupported Rust module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SetVersionScriptPath(path android.OptionalPath) {
+	panic(fmt.Errorf("SetVersionScriptPath called on unsupported Rust module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SymbolsFile() *string {
+	panic(fmt.Errorf("SymbolsFile called on unsupported Rust module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) GetSharedFlags() *cc.SharedFlags {
+	panic(fmt.Errorf("GetSharedFlags called on unsupported Rust module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) ApexSdkVersion() android.ApiLevel {
+	panic(fmt.Errorf("ApexSdkVersion called on unsupported Rust module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) IsCrt() bool {
+	// Rust does not currently provide any crt modules.
 	return false
 }
 
@@ -851,6 +922,39 @@ func (mod *Module) nativeCoverage() bool {
 		return false
 	}
 	return mod.compiler != nil && mod.compiler.nativeCoverage()
+}
+
+func (mod *Module) SetStl(s string) {
+	// STL is a CC concept; do nothing for Rust
+}
+
+func (mod *Module) SetAllStubsVersions(versions []string) {
+	panic(fmt.Errorf("ApexSdkVersion called on unsupported Rust module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SetStubsVersion(version string) {
+	panic(fmt.Errorf("SetStubsVersion called on unsupported Rust module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) canUseSdk() bool {
+	return mod.Os() == android.Android && mod.Target().NativeBridge == android.NativeBridgeDisabled &&
+		!mod.InVendorOrProduct() && !mod.InRamdisk() && !mod.InRecovery() && !mod.InVendorRamdisk()
+}
+
+func (mod *Module) SetBuildStubs(isLatest bool) {
+	panic(fmt.Errorf("SetBuildStubs called on unsupported Rust module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) BuildStubs() bool {
+	return false
+}
+
+func (mod *Module) AllStubsVersions() []string {
+	panic(fmt.Errorf("AllStubsVersions called on unsupported Rust module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) StubsVersions(ctx android.BaseModuleContext) []string {
+	panic(fmt.Errorf("StubsVersions called on unsupported Rust module: %q", mod.BaseModuleName()))
 }
 
 func (mod *Module) EverInstallable() bool {
@@ -1765,6 +1869,14 @@ func (m *Module) CanHaveApexVariants() bool {
 
 func (mod *Module) MinSdkVersion() string {
 	return String(mod.Properties.Min_sdk_version)
+}
+
+func (mod *Module) SetSdkVersion(s string) {
+	panic(fmt.Errorf("SetSdkVersion called on unsupported Rust module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SetMinSdkVersion(s string) {
+	mod.Properties.Min_sdk_version = StringPtr(s)
 }
 
 // Implements android.ApexModule
