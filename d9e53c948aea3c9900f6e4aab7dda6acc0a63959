@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f59a87_8fd8d3d5",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-10-30T04:29:37Z",
+      "side": 1,
+      "message": "I see most of this function is quite similar to code in linkerconfig.go. Can we dedup?",
+      "range": {
+        "startLine": 691,
+        "startChar": 21,
+        "endLine": 691,
+        "endChar": 42
+      },
+      "revId": "d9e53c948aea3c9900f6e4aab7dda6acc0a63959",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a55221_715610df",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-10-30T04:29:37Z",
+      "side": 1,
+      "message": "I think this can conflict with `linker_config` module with `vendor:true`. +cc kiyoungkim",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 58
+      },
+      "revId": "d9e53c948aea3c9900f6e4aab7dda6acc0a63959",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
