@@ -133,13 +133,13 @@ type stubDecorator struct {
 	unversionedUntil android.ApiLevel
 }
 
-var _ versionedInterface = (*stubDecorator)(nil)
+var _ VersionedInterface = (*stubDecorator)(nil)
 
 func shouldUseVersionScript(ctx BaseModuleContext, stub *stubDecorator) bool {
 	return stub.apiLevel.GreaterThanOrEqualTo(stub.unversionedUntil)
 }
 
-func (stub *stubDecorator) implementationModuleName(name string) string {
+func (stub *stubDecorator) ImplementationModuleName(name string) string {
 	return strings.TrimSuffix(name, ndkLibrarySuffix)
 }
 
@@ -157,7 +157,7 @@ func ndkLibraryVersions(ctx android.BaseModuleContext, from android.ApiLevel) []
 	return versionStrs
 }
 
-func (this *stubDecorator) stubsVersions(ctx android.BaseModuleContext) []string {
+func (this *stubDecorator) StubsVersions(ctx android.BaseModuleContext) []string {
 	if !ctx.Module().Enabled(ctx) {
 		return nil
 	}
@@ -165,7 +165,7 @@ func (this *stubDecorator) stubsVersions(ctx android.BaseModuleContext) []string
 		ctx.Module().Disable()
 		return nil
 	}
-	firstVersion, err := nativeApiLevelFromUser(ctx,
+	firstVersion, err := NativeApiLevelFromUser(ctx,
 		String(this.properties.First_version))
 	if err != nil {
 		ctx.PropertyErrorf("first_version", err.Error())
@@ -175,10 +175,10 @@ func (this *stubDecorator) stubsVersions(ctx android.BaseModuleContext) []string
 }
 
 func (this *stubDecorator) initializeProperties(ctx BaseModuleContext) bool {
-	this.apiLevel = nativeApiLevelOrPanic(ctx, this.stubsVersion())
+	this.apiLevel = nativeApiLevelOrPanic(ctx, this.StubsVersion())
 
 	var err error
-	this.firstVersion, err = nativeApiLevelFromUser(ctx,
+	this.firstVersion, err = NativeApiLevelFromUser(ctx,
 		String(this.properties.First_version))
 	if err != nil {
 		ctx.PropertyErrorf("first_version", err.Error())
@@ -186,7 +186,7 @@ func (this *stubDecorator) initializeProperties(ctx BaseModuleContext) bool {
 	}
 
 	str := proptools.StringDefault(this.properties.Unversioned_until, "minimum")
-	this.unversionedUntil, err = nativeApiLevelFromUser(ctx, str)
+	this.unversionedUntil, err = NativeApiLevelFromUser(ctx, str)
 	if err != nil {
 		ctx.PropertyErrorf("unversioned_until", err.Error())
 		return false
@@ -258,7 +258,7 @@ type ndkApiOutputs struct {
 	symbolList    android.ModuleGenPath
 }
 
-func parseNativeAbiDefinition(ctx ModuleContext, symbolFile string,
+func parseNativeAbiDefinition(ctx android.ModuleContext, symbolFile string,
 	apiLevel android.ApiLevel, genstubFlags string) ndkApiOutputs {
 
 	stubSrcPath := android.PathForModuleGen(ctx, "stub.c")
@@ -288,7 +288,7 @@ func parseNativeAbiDefinition(ctx ModuleContext, symbolFile string,
 	}
 }
 
-func compileStubLibrary(ctx ModuleContext, flags Flags, src android.Path) Objects {
+func compileStubLibrary(ctx android.ModuleContext, flags Flags, src android.Path) Objects {
 	// libc/libm stubs libraries end up mismatching with clang's internal definition of these
 	// functions (which have noreturn attributes and other things). Because we just want to create a
 	// stub with symbol definitions, and types aren't important in C, ignore the mismatch.
@@ -476,7 +476,7 @@ func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) O
 		ctx.PropertyErrorf("symbol_file", "must end with .map.txt")
 	}
 
-	if !c.buildStubs() {
+	if !c.BuildStubs() {
 		// NDK libraries have no implementation variant, nothing to do
 		return Objects{}
 	}
@@ -528,7 +528,7 @@ func (stub *stubDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 func (stub *stubDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps,
 	objs Objects) android.Path {
 
-	if !stub.buildStubs() {
+	if !stub.BuildStubs() {
 		// NDK libraries have no implementation variant, nothing to do
 		return nil
 	}

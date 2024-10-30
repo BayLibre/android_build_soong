@@ -472,7 +472,7 @@ func (a Objects) Append(b Objects) Objects {
 }
 
 // Generate rules for compiling multiple .c, .cpp, or .S files to individual .o files
-func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs, timeoutTidySrcs android.Paths,
+func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles, noTidySrcs, timeoutTidySrcs android.Paths,
 	flags builderFlags, pathDeps android.Paths, cFlagsDeps android.Paths) Objects {
 	// Source files are one-to-one with tidy, coverage, or kythe files, if enabled.
 	objFiles := make(android.Paths, len(srcFiles))
@@ -554,7 +554,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 	// Multiple source files have build rules usually share the same cFlags or tidyFlags.
 	// Define only one version in this module and share it in multiple build rules.
 	// To simplify the code, the shared variables are all named as $flags<nnn>.
-	shared := ctx.getSharedFlags()
+	shared := ctx.Module().(*Module).GetSharedFlags()
 
 	// Share flags only when there are multiple files or tidy rules.
 	var hasMultipleRules = len(srcFiles) > 1 || flags.tidy
@@ -566,11 +566,11 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 			return flags
 		}
 		mapKey := kind + flags
-		n, ok := shared.flagsMap[mapKey]
+		n, ok := shared.FlagsMap[mapKey]
 		if !ok {
-			shared.numSharedFlags += 1
-			n = strconv.Itoa(shared.numSharedFlags)
-			shared.flagsMap[mapKey] = n
+			shared.NumSharedFlags += 1
+			n = strconv.Itoa(shared.NumSharedFlags)
+			shared.FlagsMap[mapKey] = n
 			ctx.Variable(pctx, kind+n, flags)
 		}
 		return "$" + kind + n
