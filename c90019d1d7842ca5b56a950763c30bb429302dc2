@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c025166_609e9e50",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-10-30T19:25:07Z",
+      "side": 1,
+      "message": "Whoops, I think this comment got detached from the code handling -fPIC above. I\u0027ll fix this.",
+      "range": {
+        "startLine": 509,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 0
+      },
+      "revId": "c90019d1d7842ca5b56a950763c30bb429302dc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
