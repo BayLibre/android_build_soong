@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f063d0_e33619f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-10-30T20:11:41Z",
+      "side": 1,
+      "message": "There\u0027s an early presubmit failure which looks unrelated, see b/376489729",
+      "revId": "e764f750ec788e2f509b520d75de5e2e3c25fdf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
