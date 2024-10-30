@@ -231,9 +231,10 @@ type packagingArchProperties struct {
 }
 
 type PackagingProperties struct {
-	Deps     proptools.Configurable[[]string] `android:"arch_variant"`
-	Multilib packagingMultilibProperties      `android:"arch_variant"`
-	Arch     packagingArchProperties
+	High_priority_deps []string                         `android:"arch_variant"`
+	Deps               proptools.Configurable[[]string] `android:"arch_variant"`
+	Multilib           packagingMultilibProperties      `android:"arch_variant"`
+	Arch               packagingArchProperties
 }
 
 func InitPackageModule(p PackageModule) {
@@ -257,6 +258,7 @@ func (p *PackagingBase) getDepsForArch(ctx BaseModuleContext, arch ArchType) []s
 	var ret []string
 	if arch == ctx.Target().Arch.ArchType && len(ctx.MultiTargets()) == 0 {
 		ret = append(ret, get(p.properties.Deps)...)
+		ret = append(ret, p.properties.High_priority_deps...)
 	} else if arch.Multilib == "lib32" {
 		ret = append(ret, get(p.properties.Multilib.Lib32.Deps)...)
 		// multilib.prefer32.deps are added for lib32 only when they support 32-bit arch
@@ -286,6 +288,7 @@ func (p *PackagingBase) getDepsForArch(ctx BaseModuleContext, arch ArchType) []s
 				ret = append(ret, get(p.properties.Multilib.Both.Deps)...)
 				if i == 0 {
 					ret = append(ret, get(p.properties.Deps)...)
+					ret = append(ret, p.properties.High_priority_deps...)
 				}
 			}
 		}
@@ -296,6 +299,7 @@ func (p *PackagingBase) getDepsForArch(ctx BaseModuleContext, arch ArchType) []s
 		for i, t := range ctx.MultiTargets() {
 			if t.Arch.ArchType == arch {
 				ret = append(ret, get(p.properties.Deps)...)
+				ret = append(ret, p.properties.High_priority_deps...)
 				if i == 0 {
 					ret = append(ret, get(p.properties.Multilib.First.Deps)...)
 				}
@@ -359,6 +363,8 @@ type PackagingItem interface {
 	// IsPackagingItem returns true if the dep is to be packaged
 	IsPackagingItem() bool
 }
+
+var _ PackagingItem = (*PackagingItemAlwaysDepTag)(nil)
 
 // DepTag provides default implementation of PackagingItem interface.
 // PackagingBase-derived modules can define their own dependency tag by embedding this, which
@@ -460,7 +466,11 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 		dstPath := ps.relPathInPackage
 		if existingPs, ok := m[dstPath]; ok {
 			if !existingPs.Equals(&ps) {
-				ctx.ModuleErrorf("packaging conflict at %v:\n%v\n%v", dstPath, existingPs, ps)
+				if InList(ps.owner, p.properties.High_priority_deps) && !InList(existingPs.owner, p.properties.High_priority_deps) {
+					m[dstPath] = ps
+				} else {
+					ctx.ModuleErrorf("packaging conflict at %v:\n%v\n%v", dstPath, existingPs, ps)
+				}
 			}
 			continue
 		}
