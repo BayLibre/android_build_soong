@@ -52,6 +52,24 @@
       "parentUuid": "67835bdb_824b5b10",
       "revId": "6c04504cf90f38f85e6ee2cd46a85cd35f6cfe77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "086a34f5_8f2f80a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-30T21:56:34Z",
+      "side": 1,
+      "message": "Thanks for clarification. I guess making a module implicitly `uninstallable` when it is `hiddenFromMake` was a safe assumption since the packaging system was also in make. As you pointed out, this might no longer be safe since we have two packaging systems today.\n\nI have created https://r.android.com/3327295 for this change.",
+      "parentUuid": "5fa5d602_f14a5db6",
+      "revId": "6c04504cf90f38f85e6ee2cd46a85cd35f6cfe77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
