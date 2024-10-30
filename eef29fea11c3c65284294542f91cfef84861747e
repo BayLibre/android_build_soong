@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55bd0f59_7becd652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-30T02:34:08Z",
+      "side": 1,
+      "message": "The presubmit errors are a parallelism flake in soong unit tests, and is unrelated to this CL",
+      "revId": "eef29fea11c3c65284294542f91cfef84861747e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
