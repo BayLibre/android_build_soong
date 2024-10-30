@@ -33,6 +33,23 @@
       "message": "FYI, it looks like we might need `test_module_config` for sh rules to deal with large shared data dependencies, but adding defaults to `sh` still seems like a good idea too.",
       "revId": "9820408a86c252fc8ea86772aefacc2b179a1034",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8cf8a01_844b8ab2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-30T20:41:23Z",
+      "side": 1,
+      "message": "Thanks for working on this!",
+      "revId": "9820408a86c252fc8ea86772aefacc2b179a1034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
