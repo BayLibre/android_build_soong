@@ -32,3 +32,18 @@ python_test_host {
         ":tool_event_logger",
     ],
 }
+
+python_test_host {
+    name: "enable_feature_based_on_rollout_percentage_test",
+    main: "enable_feature_based_on_rollout_percentage_test.py",
+    pkg_path: "testdata",
+    srcs: [
+        "enable_feature_based_on_rollout_percentage_test.py",
+    ],
+    test_options: {
+        unit_test: true,
+    },
+    data: [
+        ":enable_feature_based_on_rollout_percentage_script",
+    ],
+}

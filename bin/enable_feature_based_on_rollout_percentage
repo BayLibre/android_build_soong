@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Copyright (C) 2024 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+feature_name="$1"
+rollout_percentage="$2"
+user_name="${USER}"
+
+if ! [[ "$rollout_percentage" =~ ^[0-9]+$ ]]; then
+    echo "${rollout_percentage} is not a valid number. Disable feature ${feature_name}" >&2
+    echo "error"
+    exit 1
+fi
+
+if (( rollout_percentage < 0 || rollout_percentage > 100 )); then
+    echo "${rollout_percentage} is not between 0 and 100. Disable feature ${feature_name}" >&2
+    echo "error"
+    exit 1
+fi
+
+# Disable the feature if $USER is not set.
+if [[ -z "${user_name}" ]]; then
+    echo "Does not know the user name. Disable feature ${feature_name}" >&2
+    echo "error"
+    exit 1
+fi
+
+# Generate a consistent hash for the user ID.
+user_hash=$(echo -n "${user_name}" + "${feature_name}" | md5sum | awk '{print $1}')
+
+# Convert the hash to a number between 0 and 99.
+hash_number=$((0x${user_hash:0:15} % 100))
+
+# Check if the hash number is within the rollout percentage range.
+if (( hash_number < rollout_percentage )); then
+    echo "true"  # Enable the feature for the user.
+else
+    echo "false"  # Disable the feature for the user.
+fi

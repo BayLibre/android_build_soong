@@ -24,3 +24,11 @@ filegroup {
     ],
     srcs: ["run_tool_with_logging"],
 }
+
+filegroup {
+    name: "enable_feature_based_on_rollout_percentage_script",
+    visibility: [
+        "//build/soong/tests:__subpackages__",
+    ],
+    srcs: ["enable_feature_based_on_rollout_percentage"],
+}
