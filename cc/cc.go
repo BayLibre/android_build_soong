@@ -1911,6 +1911,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	apexInfo, _ := android.ModuleProvider(actx, android.ApexInfoProvider)
 	if !apexInfo.IsForPlatform() {
 		c.hideApexVariantFromMake = true
+		c.SkipInstall()
 	}
 
 	c.makeLinkType = GetMakeLinkType(actx, c)
@@ -2166,6 +2167,7 @@ func (c *Module) maybeInstall(ctx ModuleContext, apexInfo android.ApexInfo) {
 		// modules can be hidden from make as some are needed for resolving make side
 		// dependencies.
 		c.HideFromMake()
+		c.SkipInstall()
 	} else if !installable(c, apexInfo) {
 		c.SkipInstall()
 	}
