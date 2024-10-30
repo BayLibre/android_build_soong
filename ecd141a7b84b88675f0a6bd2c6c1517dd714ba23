@@ -135,6 +135,30 @@
       },
       "revId": "ecd141a7b84b88675f0a6bd2c6c1517dd714ba23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ac555c_dfed8076",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-30T17:01:49Z",
+      "side": 1,
+      "message": "Are `java_import` modules allowed to specify the install path? I can\u0027t seem to find any applicable property from go/Android.bp, but please let me know if you are aware of a way to do so.\n\nPersonally I\u0027d prefer introducing this module type, as utilizing `java_import` would require maintaining an additional property struct type and introducing a new dimension (file extension) in determining the module type to generate, making the logic more complex in aosp/3317057.",
+      "parentUuid": "f1d580d4_e3061d82",
+      "range": {
+        "startLine": 874,
+        "startChar": 5,
+        "endLine": 874,
+        "endChar": 29
+      },
+      "revId": "ecd141a7b84b88675f0a6bd2c6c1517dd714ba23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
