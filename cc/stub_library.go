@@ -53,10 +53,6 @@ func (s *stubLibraries) GenerateBuildActions(ctx android.SingletonContext) {
 	// Visit all generated soong modules and store stub library file names.
 	ctx.VisitAllModules(func(module android.Module) {
 		if m, ok := module.(LinkableInterface); ok {
-			// TODO(ivanlozano) remove this when Rust supports stubs
-			if m.RustLibraryInterface() {
-				return
-			}
 			if IsStubTarget(m) {
 				if name := getInstalledFileName(ctx, m); name != "" {
 					s.stubLibraryMap[name] = true
