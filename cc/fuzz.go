@@ -233,7 +233,8 @@ func IsValidSharedDependency(dependency android.Module) bool {
 		return false
 	}
 
-	if lib := moduleLibraryInterface(dependency); lib != nil && lib.buildStubs() && linkable.CcLibrary() {
+	if lib := moduleVersionedInterface(dependency); lib != nil &&
+		lib.BuildStubs() && linkable.CcLibrary() {
 		// Discard stubs libs (only CCLibrary variants). Prebuilt libraries should not
 		// be excluded on the basis of they're not CCLibrary()'s.
 		return false
