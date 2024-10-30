@@ -15,6 +15,8 @@
 package tradefed_modules
 
 import (
+	"fmt"
+
 	"android/soong/android"
 )
 
@@ -46,7 +48,10 @@ type testSuiteModule struct {
 }
 
 func (t *testSuiteModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	// TODO(hwj): Implement this.
+	suiteName := ctx.ModuleName()
+	manifestPath := pathForSuite(ctx, suiteName, suiteName+".json")
+	android.WriteFileRule(ctx, manifestPath, fmt.Sprintf(`{"name": %q}`, suiteName))
+	ctx.Phony(suiteName, manifestPath)
 }
 
 func TestSuiteFactory() android.Module {
@@ -57,4 +62,8 @@ func TestSuiteFactory() android.Module {
 	android.InitDefaultableModule(module)
 
 	return module
+}
+
+func pathForSuite(ctx android.ModuleContext, suite string, pathComponents ...string) android.OutputPath {
+	return android.PathForOutput(ctx, "packaging", suite).Join(ctx, pathComponents...)
 }
