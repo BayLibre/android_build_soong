@@ -34,12 +34,12 @@ type stubLibraries struct {
 }
 
 // Check if the module defines stub, or itself is stub
-func IsStubTarget(m *Module) bool {
+func IsStubTarget(m LinkableInterface) bool {
 	return m.IsStubs() || m.HasStubsVariants()
 }
 
 // Get target file name to be installed from this module
-func getInstalledFileName(ctx android.SingletonContext, m *Module) string {
+func getInstalledFileName(ctx android.SingletonContext, m LinkableInterface) string {
 	for _, ps := range android.OtherModuleProviderOrDefault(
 		ctx, m.Module(), android.InstallFilesProvider).PackagingSpecs {
 		if name := ps.FileName(); name != "" {
@@ -52,7 +52,11 @@ func getInstalledFileName(ctx android.SingletonContext, m *Module) string {
 func (s *stubLibraries) GenerateBuildActions(ctx android.SingletonContext) {
 	// Visit all generated soong modules and store stub library file names.
 	ctx.VisitAllModules(func(module android.Module) {
-		if m, ok := module.(*Module); ok {
+		if m, ok := module.(LinkableInterface); ok {
+			// TODO(ivanlozano) remove this when Rust supports stubs
+			if m.RustLibraryInterface() {
+				return
+			}
 			if IsStubTarget(m) {
 				if name := getInstalledFileName(ctx, m); name != "" {
 					s.stubLibraryMap[name] = true
@@ -61,8 +65,8 @@ func (s *stubLibraries) GenerateBuildActions(ctx android.SingletonContext) {
 					}
 				}
 			}
-			if m.library != nil && android.IsModulePreferred(m) {
-				if p := m.library.getAPIListCoverageXMLPath().String(); p != "" {
+			if m.CcLibraryInterface() && android.IsModulePreferred(m) {
+				if p := m.GetAPIListCoverageXMLPath().String(); p != "" {
 					s.apiListCoverageXmlPaths = append(s.apiListCoverageXmlPaths, p)
 				}
 			}
