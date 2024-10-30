@@ -88,6 +88,10 @@ type VersionedLinkableInterface interface {
 	SetStl(string)
 	SetSdkVersion(string)
 	SetMinSdkVersion(version string)
+
+	// RustApexExclude returns ApexExclude() for Rust modules; always returns false for all non-Rust modules.
+	// TODO(b/362509506): remove this once all apex_exclude uses are switched to stubs.
+	RustApexExclude() bool
 }
 
 // LinkableInterface is an interface for a type of module that is linkable in a C++ library.
