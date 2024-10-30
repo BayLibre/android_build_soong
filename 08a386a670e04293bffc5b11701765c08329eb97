@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b8a4a7_09d32bcb",
+        "filename": "android/apex_contributions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-30T17:21:07Z",
+      "side": 1,
+      "message": "Can this be replaced with\n```\nif ctx.ModuleName() !\u003d \"all_apex_contributions\" {\n```\n\nIf there are other `allApexContributions` modules, it would be a name collison",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 2
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5e530a47_0b643750",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/apex_contributions.go",
+              "range": {
+                "startLine": 194,
+                "startChar": 0,
+                "endLine": 195,
+                "endChar": 0
+              },
+              "replacement": "\tif !ctx.Config().RunningInsideUnitTest() \u0026\u0026 ctx.ModuleName() !\u003d \"all_apex_contributions\" {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "08a386a670e04293bffc5b11701765c08329eb97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
