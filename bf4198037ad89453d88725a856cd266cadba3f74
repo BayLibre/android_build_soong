@@ -39,6 +39,30 @@
       },
       "revId": "bf4198037ad89453d88725a856cd266cadba3f74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f330a952_bcaf05aa",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-10-30T23:58:46Z",
+      "side": 1,
+      "message": "I asked Joe and he thought it would, but I haven\u0027t checked. Honestly, I would take it just here, but if you have a specific idea, I\u0027m all ears. We could set the env vars in soong_ui.bash.",
+      "parentUuid": "542f6ca6_06ad69b1",
+      "range": {
+        "startLine": 180,
+        "startChar": 42,
+        "endLine": 180,
+        "endChar": 48
+      },
+      "revId": "bf4198037ad89453d88725a856cd266cadba3f74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
