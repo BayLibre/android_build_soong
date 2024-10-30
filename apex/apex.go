@@ -2044,7 +2044,11 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 	}
 	// We cannot use a switch statement on `depTag` here as the checked
 	// tags used below are private (e.g. `cc.sharedDepTag`).
-	if cc.IsSharedDepTag(depTag) || cc.IsRuntimeDepTag(depTag) {
+	// The stub implementation is expected to be a shared library as well; this
+	// check insures that Rust ffi shared libraries with stubs which are declared
+	// as direct native_shared_libraries dependencies can resolve the indirect
+	// dependency on the implementation.
+	if cc.IsSharedDepTag(depTag) || cc.IsRuntimeDepTag(depTag) || depTag == cc.StubImplDepTag {
 		if ch, ok := child.(cc.VersionedLinkableInterface); ok {
 			af := apexFileForNativeLibrary(ctx, ch, vctx.handleSpecialLibs)
 			af.transitiveDep = true

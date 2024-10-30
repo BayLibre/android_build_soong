@@ -845,6 +845,11 @@ func IsRuntimeDepTag(depTag blueprint.DependencyTag) bool {
 	return depTag == runtimeDepTag
 }
 
+func ExcludeInApexDepTag(depTag blueprint.DependencyTag) bool {
+	ccLibDepTag, ok := depTag.(libraryDependencyTag)
+	return ok && ccLibDepTag.excludeInApex
+}
+
 // Module contains the properties and members used by all C/C++ module types, and implements
 // the blueprint.Module interface.  It delegates to compiler, linker, and installer interfaces
 // to construct the output file.  Behavior can be customized with a Customizer, or "decorator",
@@ -1575,7 +1580,7 @@ func (ctx *moduleContextImpl) sdkVersion() string {
 	return ""
 }
 
-func ctxMinSdkVersion(ctx android.BaseModuleContext) string {
+func CtxMinSdkVersion(ctx android.BaseModuleContext) string {
 	mod, ok := ctx.Module().(VersionedLinkableInterface)
 
 	if !ok {
@@ -1633,7 +1638,7 @@ func ctxMinSdkVersion(ctx android.BaseModuleContext) string {
 }
 
 func (ctx *moduleContextImpl) minSdkVersion() string {
-	return ctxMinSdkVersion(ctx.ctx)
+	return CtxMinSdkVersion(ctx.ctx)
 }
 
 func (ctx *moduleContextImpl) isSdkVariant() bool {
