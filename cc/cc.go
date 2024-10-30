@@ -903,6 +903,11 @@ func IsRuntimeDepTag(depTag blueprint.DependencyTag) bool {
 	return depTag == runtimeDepTag
 }
 
+func ExcludeInApexDepTag(depTag blueprint.DependencyTag) bool {
+	ccLibDepTag, ok := depTag.(libraryDependencyTag)
+	return ok && ccLibDepTag.excludeInApex
+}
+
 // Module contains the properties and members used by all C/C++ module types, and implements
 // the blueprint.Module interface.  It delegates to compiler, linker, and installer interfaces
 // to construct the output file.  Behavior can be customized with a Customizer, or "decorator",
@@ -1486,6 +1491,10 @@ func (c *Module) HasStubsVariants() bool {
 	if lib := c.library; lib != nil {
 		return lib.HasStubsVariants()
 	}
+	return false
+}
+
+func (c *Module) RustApexExclude() bool {
 	return false
 }
 
@@ -3259,9 +3268,13 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				depFile = sharedLibraryInfo.TableOfContents
 
 				if !sharedLibraryInfo.IsStubs {
-					depPaths.directImplementationDeps = append(depPaths.directImplementationDeps, android.OutputFileForModule(ctx, dep, ""))
-					if info, ok := android.OtherModuleProvider(ctx, dep, ImplementationDepInfoProvider); ok {
-						depPaths.transitiveImplementationDeps = append(depPaths.transitiveImplementationDeps, info.ImplementationDeps)
+					// TODO(b/362509506): remove this additional check once all apex_exclude uses are switched to stubs.
+					if vintf, ok := ccDep.(VersionedLinkableInterface); !ok || ok && !vintf.RustApexExclude() {
+
+						depPaths.directImplementationDeps = append(depPaths.directImplementationDeps, android.OutputFileForModule(ctx, dep, ""))
+						if info, ok := android.OtherModuleProvider(ctx, dep, ImplementationDepInfoProvider); ok {
+							depPaths.transitiveImplementationDeps = append(depPaths.transitiveImplementationDeps, info.ImplementationDeps)
+						}
 					}
 				}
 
