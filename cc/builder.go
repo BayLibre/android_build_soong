@@ -554,7 +554,7 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles, no
 	// Multiple source files have build rules usually share the same cFlags or tidyFlags.
 	// Define only one version in this module and share it in multiple build rules.
 	// To simplify the code, the shared variables are all named as $flags<nnn>.
-	shared := ctx.Module().(*Module).GetSharedFlags()
+	shared := ctx.Module().(LinkableInterface).GetSharedFlags()
 
 	// Share flags only when there are multiple files or tidy rules.
 	var hasMultipleRules = len(srcFiles) > 1 || flags.tidy
