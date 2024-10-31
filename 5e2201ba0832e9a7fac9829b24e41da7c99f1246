@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3416458_bf215981",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T22:44:34Z",
+      "side": 1,
+      "message": "This won\u0027t work if the dep comes from one of the multilib high_priority_deps properties. I think it would just be better to keep them separated from the start and return two separate lists from `getDepsForArch`.",
+      "revId": "5e2201ba0832e9a7fac9829b24e41da7c99f1246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "825a46e5_035b17f5",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T22:44:34Z",
+      "side": 1,
+      "message": "Could we rename this to `normalPriorities` or something? Same with `filteredAll`.",
+      "range": {
+        "startLine": 450,
+        "startChar": 5,
+        "endLine": 450,
+        "endChar": 8
+      },
+      "revId": "5e2201ba0832e9a7fac9829b24e41da7c99f1246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa0d12ce_54e85822",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T22:44:34Z",
+      "side": 1,
+      "message": "I would just see if you can cast it to `HighPriorityDepTag` instead of making an interface. We should keep the high-priority stuff as a non-extensible implementation detail. To that end, also unexport `HighPriorityDepTag`.",
+      "revId": "5e2201ba0832e9a7fac9829b24e41da7c99f1246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65a07baa_42fc5b2c",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T22:44:34Z",
+      "side": 1,
+      "message": "This can be included in the previous for loop.",
+      "revId": "5e2201ba0832e9a7fac9829b24e41da7c99f1246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
