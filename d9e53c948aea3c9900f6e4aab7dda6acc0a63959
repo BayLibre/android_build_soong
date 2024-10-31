@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a75bb52d_988bbb68",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T00:19:23Z",
+      "side": 1,
+      "message": "oh I didn\u0027t realize we had a linker_config module. Spandan, do you think we could change our code to automatically generate linker_config modules add add those to the filesystem deps instead of adding linker config support directly to the filesystem?",
+      "parentUuid": "aea46a07_f8f67bcf",
+      "range": {
+        "startLine": 691,
+        "startChar": 21,
+        "endLine": 691,
+        "endChar": 42
+      },
+      "revId": "d9e53c948aea3c9900f6e4aab7dda6acc0a63959",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58a55221_715610df",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 5
