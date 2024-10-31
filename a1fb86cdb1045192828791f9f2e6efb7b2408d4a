@@ -40,6 +40,30 @@
       ],
       "revId": "a1fb86cdb1045192828791f9f2e6efb7b2408d4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ab82e0_4d8e9116",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-10-31T18:19:40Z",
+      "side": 1,
+      "message": "Bool is aliased to proptools.Bool in cc.go, so these are equivalent -- I\u0027m not sure if there\u0027s a preference to use one or the other, though Bool seems more common throughout the rest of `cc`.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/cc.go;l\u003d3970\n\nccross@ to reopen if there\u0027s any stylistic preference.",
+      "parentUuid": "a26db34c_c17c62ce",
+      "range": {
+        "startLine": 539,
+        "startChar": 61,
+        "endLine": 539,
+        "endChar": 65
+      },
+      "revId": "a1fb86cdb1045192828791f9f2e6efb7b2408d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
