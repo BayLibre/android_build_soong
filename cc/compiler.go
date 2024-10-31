@@ -685,10 +685,10 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	if len(srcs) > 0 {
 		module := ctx.ModuleDir() + "/Android.bp:" + ctx.ModuleName()
 		if inList("-Wno-error", flags.Local.CFlags) || inList("-Wno-error", flags.Local.CppFlags) {
-			addToModuleList(ctx, modulesUsingWnoErrorKey, module)
+			ctx.getMakeVarsInfoOrUpdate(true).UsingWnoError = module
 		} else if !inList("-Werror", flags.Local.CFlags) && !inList("-Werror", flags.Local.CppFlags) {
 			if warningsAreAllowed(ctx.ModuleDir()) {
-				addToModuleList(ctx, modulesWarningsAllowedKey, module)
+				ctx.getMakeVarsInfoOrUpdate(true).WarningsAllowed = module
 			} else {
 				flags.Local.CFlags = append([]string{"-Werror"}, flags.Local.CFlags...)
 			}
