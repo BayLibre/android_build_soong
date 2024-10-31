@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd3c2b09_ff21cb81",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-10-31T18:33:18Z",
+      "side": 1,
+      "message": "I\u0027d leave the call on this to Colin, but IMO this should be one of:\n\nA. Factored out into a function that takes a ctx/vctx etc.\nB. Kept as a block, by doing\n```\nif (child.(*rust.Module) || child.(*cc.Module)) {\n```\nrather than the switch\nC. If there are no linkable interfaces this shouldn\u0027t be done on, instead check `child.(LinkableInterface)`?",
+      "range": {
+        "startLine": 1946,
+        "startChar": 0,
+        "endLine": 1959,
+        "endChar": 4
+      },
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c0e419_f81d39f2",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-10-31T18:33:18Z",
+      "side": 1,
+      "message": "I don\u0027t know a better solution, and maybe it\u0027s just a go-ism, but doing dynamic typechecks inside a lot of these functions seems wrong - I would ideally like to have some way to make sure that if someone is calling `CtxMinSdkVersion` it\u0027s on a module which `LinkableInterface` is implemented. Maybe it\u0027s just fallout from a limited type system?",
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
