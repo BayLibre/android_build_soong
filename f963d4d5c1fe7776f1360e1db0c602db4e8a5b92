@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cc91bbc_27678a3f",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T23:32:29Z",
+      "side": 1,
+      "message": "Error out if partitionType isn\u0027t vendor or product.",
+      "revId": "f963d4d5c1fe7776f1360e1db0c602db4e8a5b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
