@@ -213,6 +213,30 @@
       },
       "revId": "d9e53c948aea3c9900f6e4aab7dda6acc0a63959",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc969770_f5471d7e",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-10-31T00:49:16Z",
+      "side": 1,
+      "message": "Right. And it was our (+kiyoungkim) guideline to partners when they needed /vendor/etc/linker.config.pb. \n\n_FRAGMENTS was added later to support easier configuration. I don\u0027t remember whether we deprecated `linker_config { vendor:true }` or not. If yes, then everything\u0027s okay. But if not, there might be usage in partner repo.",
+      "parentUuid": "e76cc699_a98cecd9",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 58
+      },
+      "revId": "d9e53c948aea3c9900f6e4aab7dda6acc0a63959",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
