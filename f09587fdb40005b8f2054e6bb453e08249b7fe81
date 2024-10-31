@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f312d2d_271d3321",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-31T16:49:14Z",
+      "side": 1,
+      "message": "LGTM, but I think Cole or Joe should +2",
+      "revId": "f09587fdb40005b8f2054e6bb453e08249b7fe81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

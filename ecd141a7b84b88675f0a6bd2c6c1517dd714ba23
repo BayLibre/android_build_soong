@@ -207,6 +207,30 @@
       },
       "revId": "ecd141a7b84b88675f0a6bd2c6c1517dd714ba23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9abef9af_14160447",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-31T16:49:14Z",
+      "side": 1,
+      "message": "The entries in the above example seem to be vdex files. Those prebuilts were generated in 2019, and are almost certain to be rejected on device and require dexopt. \n\n\u003e Is your proposal that these entries should not exist in PRODUCT_COPY_FILES in the first place and installed as PRODUCT_PACKAGES?\n\nI wish we do. I do not see why we should not [generate provenance metadata](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/java/app_import.go;l\u003d433;drc\u003dea147927ac3a674ea61c1b05698a0d7131052d0b?q\u003dandroid_app_import\u0026ct\u003dos\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main) for these apps/jars\n\nIntroducing these module types would introduce new ways to bypass this",
+      "parentUuid": "c093bb64_fa93105b",
+      "range": {
+        "startLine": 874,
+        "startChar": 5,
+        "endLine": 874,
+        "endChar": 29
+      },
+      "revId": "ecd141a7b84b88675f0a6bd2c6c1517dd714ba23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
