@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc16ae1c_ccf4544b",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-10-31T17:44:38Z",
+      "side": 1,
+      "message": "Are we guaranteed to always reference `librustlibs.a` by a fully qualified path? Previously, we might have done something like:\n\n```\n-L my_mod_alpha/generated_rust_staticlib\n-L my_mod_beta/generated_rust_staticlib\n-l my_mod_alpha_rust_staticlib\n-l my_mod_beta_rust_staticlib\n```\n\nNow, if that kind of thing were generated, we\u0027d get\n```\n-L my_mod_alpha/generated_rust_staticlib\n-L my_mod_beta/generated_rust_staticlib\n-l rustlibs\n-l rustlibs\n```\nwhich would just end up pulling in `my_mod_alpha` only.\n\nI know that we try to merge all rust ffi modules into a single staticlib, so we *should* only have one, but if we ever got two, this would fall apart.\n\n(Still approving despite this, just want to make sure that you\u0027ve thought this through, and would recognize what was wrong if this error does bite us in the future.)",
+      "revId": "872e8463db9846335cc7c7a8d5ffdb463af9d73e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
