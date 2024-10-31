@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62040f0b_823cab6c",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-10-31T00:30:24Z",
+      "side": 1,
+      "message": "Well, when I worked on this, I couldn\u0027t because linker config requires the module list of the filesystem.",
+      "parentUuid": "a75bb52d_988bbb68",
+      "range": {
+        "startLine": 691,
+        "startChar": 21,
+        "endLine": 691,
+        "endChar": 42
+      },
+      "revId": "d9e53c948aea3c9900f6e4aab7dda6acc0a63959",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58a55221_715610df",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 5
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Jooyung could you please elaborate on how to identify potential conflicts?\n\nI believe there should _not_ be any installation path conflicts. If there were, then kati/soong packaging systems will raise an analysis error, and it should surface in presubmits.\n\nIf there potential conflicts at runtime, is there a command/build I can run to verify that this change is compatible?",
       "parentUuid": "58a55221_715610df",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 58
+      },
+      "revId": "d9e53c948aea3c9900f6e4aab7dda6acc0a63959",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e42f870_a19da7d0",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-10-31T00:30:24Z",
+      "side": 1,
+      "message": "Well, I haven\u0027t tested it yet. But there can be a `linker_config` module with `vendor: true` (in any of downstream branches), which installs `/vendor/etc/linker.config.pb` as well.",
+      "parentUuid": "1d7214de_da4b7a3c",
       "range": {
         "startLine": 738,
         "startChar": 0,
