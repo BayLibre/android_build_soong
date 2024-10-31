@@ -69,6 +69,24 @@
       "parentUuid": "f2675936_ab30c91e",
       "revId": "565e3fea2dcf0a8920c6dba32aa86aed21fd94e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a0e39fc_a1e1ad33",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-31T06:06:59Z",
+      "side": 1,
+      "message": "Actually, I believe that not passing depTag to `AddDeps` may lead to other issues as not all usages of `AddDeps` are passing the same dependency tag. I\u0027ve reverted back to using the `depTag`, but achieve the same effect of differentiating the high priority deps from the others by matching the name.\n\nIIUC differentiating the depTag between regular priority deps and high priority deps is not a requirement for separating the process between the two; the latest patchset achieves this by separately processing the two and merging them later. Please let me know if this suffices the requirement.",
+      "parentUuid": "fea644ae_f316f6a9",
+      "revId": "565e3fea2dcf0a8920c6dba32aa86aed21fd94e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

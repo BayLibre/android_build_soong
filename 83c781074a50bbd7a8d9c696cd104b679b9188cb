@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae5d2933_bda75c2e",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-31T06:06:59Z",
+      "side": 1,
+      "message": "Although I understand your concern that you would like to restrict the usages of this property, I don\u0027t fully agree with the practicality of having such property. For example, defining a non-empty `High_priority_deps` without specifying the boolean property would lead to the property being a no-op, which may be confusing to the users. We could raise an error when `High_priority_deps` is non-empty and the boolean property is not specified to true, but the purpose of the property is uncertain at that point.",
+      "parentUuid": "117cc885_f215be19",
+      "revId": "83c781074a50bbd7a8d9c696cd104b679b9188cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78b97380_27b92d1a",
         "filename": "android/packaging.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-30T21:52:50Z",
       "side": 1,
       "message": "We shouldn\u0027t need the `PackagingItem` interface or `PackagingItemAlwaysDepTag` now that the tags are known.",
+      "revId": "83c781074a50bbd7a8d9c696cd104b679b9188cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bb06544_7c1692f0",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-31T06:06:59Z",
+      "side": 1,
+      "message": "Needed with the latest patchset implementation",
+      "parentUuid": "78b97380_27b92d1a",
       "revId": "83c781074a50bbd7a8d9c696cd104b679b9188cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2024-10-30T21:52:50Z",
       "side": 1,
       "message": "You should also check for conflicts within the high-priority deps.",
+      "revId": "83c781074a50bbd7a8d9c696cd104b679b9188cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e50a5385_74aef537",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-31T06:06:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2700cbc3_1954c10c",
       "revId": "83c781074a50bbd7a8d9c696cd104b679b9188cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
