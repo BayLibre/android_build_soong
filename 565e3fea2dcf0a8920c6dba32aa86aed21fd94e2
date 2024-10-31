@@ -87,6 +87,24 @@
       "parentUuid": "fea644ae_f316f6a9",
       "revId": "565e3fea2dcf0a8920c6dba32aa86aed21fd94e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65025487_b1382d38",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T17:56:07Z",
+      "side": 1,
+      "message": "Ah, the usages in AOSP all passed different, but unused depTags so I thought it wasn\u0027t a problem. But I see the internal plugin adds more deps under the same depTag.\n\nThe `InList(child.Name(), p.properties.High_priority_deps)` is not accurate in the presence of namespaced deps using the `//namespace:name` syntax.\n\nCould we go for a middle-ground solution where we keep the passed-in deptag, but add the high-priority deps under a custom deptag local to packagingBase?",
+      "parentUuid": "1a0e39fc_a1e1ad33",
+      "revId": "565e3fea2dcf0a8920c6dba32aa86aed21fd94e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

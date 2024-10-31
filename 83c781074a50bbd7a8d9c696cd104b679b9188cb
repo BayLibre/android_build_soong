@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57fbdeb7_2cf84bd5",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T17:56:07Z",
+      "side": 1,
+      "message": "Yes, we would want to raise an error when `High_priority_deps` is not enabled and non-empty. The purpose of the property would be to make it so we\u0027re not adding `High_priority_deps` to `cvd_host_package` and `sdk_repo_host`.",
+      "parentUuid": "ae5d2933_bda75c2e",
+      "revId": "83c781074a50bbd7a8d9c696cd104b679b9188cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78b97380_27b92d1a",
         "filename": "android/packaging.go",
         "patchSetId": 2
