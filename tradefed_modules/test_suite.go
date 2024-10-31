@@ -15,10 +15,18 @@
 package tradefed_modules
 
 import (
-	"fmt"
+	"encoding/json"
+	"path"
+	"path/filepath"
 
 	"android/soong/android"
+	"android/soong/tradefed"
+	"github.com/google/blueprint"
 )
+
+type testSuiteTag struct{
+	blueprint.BaseDependencyTag
+}
 
 func init() {
 	RegisterTestSuiteBuildComponents(android.InitRegistrationContext)
@@ -43,10 +51,50 @@ type testSuiteModule struct {
 	testSuiteProperties
 }
 
+func (t *testSuiteModule) DepsMutator(ctx android.BottomUpMutatorContext) {
+	for _, test := range t.Tests {
+		if ctx.OtherModuleDependencyVariantExists(ctx.Config().BuildOSCommonTarget.Variations(), test) {
+			// Host tests.
+			ctx.AddVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(), testSuiteTag{}, test)
+		} else {
+			// Target tests.
+			ctx.AddDependency(ctx.Module(), testSuiteTag{}, test)
+		}
+	}
+}
+
 func (t *testSuiteModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	suiteName := ctx.ModuleName()
-	manifestPath := pathForSuite(ctx, suiteName, suiteName+".json")
-	android.WriteFileRule(ctx, manifestPath, fmt.Sprintf(`{"name": %q}`, suiteName))
+	var files []string
+	ctx.WalkDeps(func(child, parent android.Module) bool {
+		// Only write out top level test suite dependencies here.
+		if _, ok := ctx.OtherModuleDependencyTag(child).(testSuiteTag); !ok {
+			return false
+		}
+
+		// Get the test provider data from the child.
+		tp, ok := android.OtherModuleProvider(ctx, child, tradefed.BaseTestProviderKey)
+		if !ok {
+			ctx.ModuleErrorf("Dep: %+v, of %s is not a test provider. (%+v):", child, ctx.OtherModuleType(child), parent)
+			return false
+		}
+
+		files = append(files, packageModuleFiles(ctx, suiteName, child, tp)...)
+		ctx.Phony(suiteName, android.PathForPhony(ctx, child.Name()))
+		return false
+	})
+
+	manifestPath := android.PathForSuiteInstall(ctx, suiteName, suiteName+".json")
+	b, err := json.Marshal(struct {
+		Name string `json:"name"`
+		Files []string `json:"files"`
+	}{Name: suiteName, Files: files})
+	if err != nil {
+		ctx.ModuleErrorf("Failed to marshal manifest: %v", err)
+		return
+	}
+	android.WriteFileRule(ctx, manifestPath, string(b))
+
 	ctx.Phony(suiteName, manifestPath)
 }
 
@@ -60,6 +108,45 @@ func TestSuiteFactory() android.Module {
 	return module
 }
 
-func pathForSuite(ctx android.ModuleContext, suite string, pathComponents ...string) android.OutputPath {
-	return android.PathForOutput(ctx, "packaging", suite).Join(ctx, pathComponents...)
+func packageModuleFiles(ctx android.ModuleContext, suiteName string, module android.Module, tp tradefed.BaseTestProviderData) []string {
+	var manifestEntries []string
+
+	hostOrTarget := "target"
+	if tp.IsHost {
+		hostOrTarget = "host"
+	}
+
+	// suiteRoot at out/soong/packaging/<suiteName>.
+	suiteRoot := android.PathForSuiteInstall(ctx, suiteName)
+
+	// Install links to installed files from the module.
+	if installFilesInfo, ok := android.OtherModuleProvider(ctx, module, android.InstallFilesProvider); ok {
+		for _, f := range installFilesInfo.InstallFiles {
+			// rel is anything under .../<partition>, normally under .../testcases.
+			rel := android.Rel(ctx, f.PartitionDir(), f.String())
+
+			// Install the file under <suiteRoot>/<host|target>/<partition>.
+			installDir := suiteRoot.Join(ctx, hostOrTarget, f.Partition(), path.Dir(rel))
+			linkTo, err := filepath.Rel(installDir.String(), f.String())
+			if err != nil {
+				ctx.ModuleErrorf("Failed to get relative path from %s to %s: %v", installDir.String(), f.String(), err)
+				continue
+			}
+			installed := ctx.InstallAbsoluteSymlink(installDir, path.Base(rel), linkTo)
+
+			// Add to manifest, manifestpaths are relative to suiteRoot.
+			manifestEntries = append(manifestEntries, android.Rel(ctx, suiteRoot.String(), installed.String()))
+			ctx.Phony(suiteName, installed)
+		}
+	}
+
+	// Install config file.
+	if tp.TestConfig != nil {
+		moduleRoot := suiteRoot.Join(ctx, hostOrTarget, "testcases", module.Name())
+		installed := ctx.InstallFile(moduleRoot, module.Name() + ".config", tp.TestConfig)
+		manifestEntries = append(manifestEntries, android.Rel(ctx, suiteRoot.String(), installed.String()))
+		ctx.Phony(suiteName, installed)
+	}
+
+	return manifestEntries
 }

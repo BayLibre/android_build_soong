@@ -52,8 +52,18 @@ func TestTestSuites(t *testing.T) {
 	`)
 	manifestPath := ctx.ModuleForTests("my-suite", "").Output("out/soong/packaging/my-suite/my-suite.json")
 	got := android.ContentFromFileRuleForTests(t, ctx.TestContext, manifestPath)
-	want := `{"name": "my-suite"}` + "\n"
+	want := `{
+		"name": "my-suite",
+		"files": [
+			"target/testcases/TestModule1/arm64/TestModule1.apk",
+			"target/testcases/TestModule1/TestModule1.config",
+			"target/testcases/TestModule2/arm64/TestModule2.apk",
+			"target/testcases/TestModule2/TestModule2.config",
+			"host/framework/SomeHostTest.jar",
+			"host/testcases/SomeHostTest/SomeHostTest.config"
+		]
+	}`
 	if got != want {
-		t.Errorf("my-suite.json content was %q, want %q", got, want)
+		t.Errorf("my-suite.json content was %s, want %s", got, want)
 	}
 }
