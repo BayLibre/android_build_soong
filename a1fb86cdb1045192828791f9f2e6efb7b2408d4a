@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a26db34c_c17c62ce",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-10-31T18:13:22Z",
+      "side": 1,
+      "message": "Is this accidentally a different bool? Previously we had proptools.Bool, is this accessing a global `Bool`?",
+      "range": {
+        "startLine": 539,
+        "startChar": 61,
+        "endLine": 539,
+        "endChar": 65
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d8b84529_5310e3a8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/compiler.go",
+              "range": {
+                "startLine": 539,
+                "startChar": 0,
+                "endLine": 540,
+                "endChar": 0
+              },
+              "replacement": "\tflags \u003d addTargetFlags(ctx, flags, tc, ctx.minSdkVersion(), proptools.Bool(compiler.Properties.Bpf_target))\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a1fb86cdb1045192828791f9f2e6efb7b2408d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
