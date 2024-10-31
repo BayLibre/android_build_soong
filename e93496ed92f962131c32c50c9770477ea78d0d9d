@@ -39,6 +39,40 @@
       "message": "I don\u0027t know a better solution, and maybe it\u0027s just a go-ism, but doing dynamic typechecks inside a lot of these functions seems wrong - I would ideally like to have some way to make sure that if someone is calling `CtxMinSdkVersion` it\u0027s on a module which `LinkableInterface` is implemented. Maybe it\u0027s just fallout from a limited type system?",
       "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "512b12fb_a5271237",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-31T21:10:41Z",
+      "side": 1,
+      "message": "This CL is piping a ton of complexity through `LinkableInterface`, and the end result seems to be sharing a relatively small amount of code.  I think the goal here should be to reuse code that is in functions like the ones in `builder.go`, and not the ones that are part of `libraryDecorator`.  If you want to reuse this code, make it take everything it needs as inputs and return what it produces rather than calling back through the `ctx` via `LinkableInterface`.",
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33cae226_02a69c17",
+        "filename": "cc/linkable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-31T21:10:41Z",
+      "side": 1,
+      "message": "`LinkableInterface` has gotten very complex because it is conflating two usages.  I believe the original use case was to share the the data needed by a parent module in order to link against a child module (mostly accessed in `c.depsToPaths()`).  It is increasingly being used for a module to communicate with other parts of itself.  Long term, all of the first usage needs to move to Providers in order to support incremental analysis, and that gets hard when it is mixed with the second.\n\nBefore this CL, the interface is almost entirely getters except for `SetPreventInstall` and `SetHideFromMake`, but this is adding a bunch of new setters.  If we end up needing these, I think they should go in a separate interface that is only used within the module, and not mixed with the one that is used in `depsToPaths`.",
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
