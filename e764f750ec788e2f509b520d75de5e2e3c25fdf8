@@ -51,6 +51,23 @@
       "parentUuid": "b37935e6_37534d12",
       "revId": "e764f750ec788e2f509b520d75de5e2e3c25fdf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5ec4305_12c7516f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-10-31T18:04:40Z",
+      "side": 1,
+      "message": "Makes sense rust-side as far as I can tell, but I think one of Jiyong or Colin should approve before it goes in b/c I am not as familiar with the intended processing of stubs in the build system.",
+      "revId": "e764f750ec788e2f509b520d75de5e2e3c25fdf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
