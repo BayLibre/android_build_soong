@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c64902e_e8383e2b",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-10-31T00:55:26Z",
+      "side": 1,
+      "message": "We already have similar logic from system_image.go. Should we refactor in overall, so basic logic to fetch stubs can be used in common, and image specific logic can be appended from each image\u0027s specific impl (like system_image)?",
+      "range": {
+        "startLine": 692,
+        "startChar": 21,
+        "endLine": 692,
+        "endChar": 42
+      },
+      "revId": "00887fb0382a7f2924bb76281026a90e3eddba68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
