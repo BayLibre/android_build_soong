@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b057a449_babd5bdd",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-10-31T20:10:38Z",
+      "side": 1,
+      "message": "This shouldn\u0027t get used in userdebug, that would violate go/android-userdebug-policy",
+      "revId": "959ce1c5028567de86f20b662453d13f45e3fb30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
