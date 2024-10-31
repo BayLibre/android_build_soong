@@ -16,6 +16,23 @@
       "message": "There\u0027s an early presubmit failure which looks unrelated, see b/376489729",
       "revId": "e764f750ec788e2f509b520d75de5e2e3c25fdf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37935e6_37534d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-10-31T01:19:26Z",
+      "side": 1,
+      "message": "Hi Ivan,\n\nThis (and other two changes below) are very big. It will take quite some time for me just to read those. In addition, I am working on a thing whose deadline is Nov 6th, and I have a biz trip scheduled next week as well. So, please expect a non-conventional delay from me.\n\nIf this passes Colin\u0027s review, you don\u0027t have to wait for me of course.",
+      "revId": "e764f750ec788e2f509b520d75de5e2e3c25fdf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
