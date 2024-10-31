@@ -374,13 +374,13 @@ func FirstUniqueStrings(list []string) []string {
 func firstUnique[T comparable](slice []T) []T {
 	// Do not modify the input in-place, operate on a copy instead.
 	slice = CopyOf(slice)
-	return firstUniqueInPlace(slice)
+	return FirstUniqueInPlace(slice)
 }
 
-// firstUniqueInPlace returns all unique elements of a slice, keeping the first copy of
+// FirstUniqueInPlace returns all unique elements of a slice, keeping the first copy of
 // each.  It modifies the slice contents in place, and returns a subslice of the original
 // slice.
-func firstUniqueInPlace[T comparable](slice []T) []T {
+func FirstUniqueInPlace[T comparable](slice []T) []T {
 	// 128 was chosen based on BenchmarkFirstUniqueStrings results.
 	if len(slice) > 128 {
 		return firstUniqueMap(slice)
@@ -659,4 +659,12 @@ func (m *SyncMap[K, V]) Store(key K, value V) {
 func (m *SyncMap[K, V]) LoadOrStore(key K, value V) (actual V, loaded bool) {
 	v, loaded := m.Map.LoadOrStore(key, value)
 	return v.(V), loaded
+}
+
+func AppendIfNonDefault[T comparable](slice []T, value T) []T {
+	var defaultValue T // Get the zero value of the type T
+	if value != defaultValue {
+		return append(slice, value)
+	}
+	return slice
 }
