@@ -63,6 +63,30 @@
       },
       "revId": "bf4198037ad89453d88725a856cd266cadba3f74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500da654_6a037818",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T22:19:15Z",
+      "side": 1,
+      "message": "I don\u0027t have a specific idea, but it should be possible to plumb it through.",
+      "parentUuid": "f330a952_bcaf05aa",
+      "range": {
+        "startLine": 180,
+        "startChar": 42,
+        "endLine": 180,
+        "endChar": 48
+      },
+      "revId": "bf4198037ad89453d88725a856cd266cadba3f74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
