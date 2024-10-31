@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e296849_8d0b038a",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-31T18:38:02Z",
+      "side": 1,
+      "message": "Good idea, I think we should prevent this duplication. I have created https://r.android.com/3328373 for this.",
+      "parentUuid": "8c64902e_e8383e2b",
+      "range": {
+        "startLine": 692,
+        "startChar": 21,
+        "endLine": 692,
+        "endChar": 42
+      },
+      "revId": "00887fb0382a7f2924bb76281026a90e3eddba68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d912e32_3884ed68",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-31T01:00:52Z",
       "side": 1,
       "message": "I guess this can miss some libraries which are being installed with indirect dependency, like A (direct dep) -\u003e A\u0027 -\u003e B (has stub).",
+      "range": {
+        "startLine": 698,
+        "startChar": 2,
+        "endLine": 703,
+        "endChar": 4
+      },
+      "revId": "00887fb0382a7f2924bb76281026a90e3eddba68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebdc19e5_f863bb78",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-31T18:38:02Z",
+      "side": 1,
+      "message": "You are right, I think systemImage\u0027s implementation does it correctly by doing `ctx.WalkDeps` instead of `ctx.VisitDirectDeps`. It would be nice if we can enforce that stub libraries need to be explicitly in the top-level `deps` property so that we can avoid the expensive(?) `ctx.WalkDeps` computation, but I have deferred that for now.\n\nWith https://r.android.com/3328373, we will be switching to `ctx.WalkDeps`.",
+      "parentUuid": "8d912e32_3884ed68",
       "range": {
         "startLine": 698,
         "startChar": 2,
