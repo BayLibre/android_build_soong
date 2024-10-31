@@ -105,6 +105,24 @@
       "parentUuid": "1a0e39fc_a1e1ad33",
       "revId": "565e3fea2dcf0a8920c6dba32aa86aed21fd94e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "207e33eb_5491d148",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-10-31T21:28:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65025487_b1382d38",
+      "revId": "565e3fea2dcf0a8920c6dba32aa86aed21fd94e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
