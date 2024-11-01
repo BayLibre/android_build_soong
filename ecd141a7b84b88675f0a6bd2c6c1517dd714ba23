@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db34f170_2349fb79",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-01T21:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2b242c2_2029abf6",
+      "range": {
+        "startLine": 854,
+        "startChar": 5,
+        "endLine": 854,
+        "endChar": 27
+      },
+      "revId": "ecd141a7b84b88675f0a6bd2c6c1517dd714ba23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36924588_15f27ea8",
@@ -223,6 +247,30 @@
       "side": 1,
       "message": "The entries in the above example seem to be vdex files. Those prebuilts were generated in 2019, and are almost certain to be rejected on device and require dexopt. \n\n\u003e Is your proposal that these entries should not exist in PRODUCT_COPY_FILES in the first place and installed as PRODUCT_PACKAGES?\n\nI wish we do. I do not see why we should not [generate provenance metadata](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/java/app_import.go;l\u003d433;drc\u003dea147927ac3a674ea61c1b05698a0d7131052d0b?q\u003dandroid_app_import\u0026ct\u003dos\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main) for these apps/jars\n\nIntroducing these module types would introduce new ways to bypass this",
       "parentUuid": "c093bb64_fa93105b",
+      "range": {
+        "startLine": 874,
+        "startChar": 5,
+        "endLine": 874,
+        "endChar": 29
+      },
+      "revId": "ecd141a7b84b88675f0a6bd2c6c1517dd714ba23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27b13ee1_64a99efc",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-01T21:44:16Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. IIUC your concern is mainly two points:\n\n1. Installing jar files via PRODUCT_COPY_FILES\n2. Introducing prebuilt_* module types to support 1.\n\nRegarding 1.: I agree with you in that this is problematic. However given that the purpose of this changes stack is converting `PRODUCT_COPY_FILES` and is not about evaluating the validity of the entries in `PRODUCT_COPY_FILES`, I believe that this concern is out of scope of this change. However, I\u0027d be happy to discuss more about how to rectify this in other changes.\n\nRegarding 2.: I have created [this topic](https://android-review.git.corp.google.com/q/topic:%22auto_generated_neverallow%22) to prevent this module type from being defined in Android.bp files.",
+      "parentUuid": "9abef9af_14160447",
       "range": {
         "startLine": 874,
         "startChar": 5,
