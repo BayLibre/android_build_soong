@@ -141,11 +141,13 @@ func createFsGenState(ctx android.LoadHookContext) *FsGenState {
 					"preloaded-classes":            defaultDepCandidateProps(ctx.Config()),
 					"public.libraries.android.txt": defaultDepCandidateProps(ctx.Config()),
 					"update_engine_sideload":       defaultDepCandidateProps(ctx.Config()),
+					"system_manifest.xml":          defaultDepCandidateProps(ctx.Config()),
 				},
 				"vendor": &map[string]*depCandidateProps{
 					"fs_config_files_vendor":                               defaultDepCandidateProps(ctx.Config()),
 					"fs_config_dirs_vendor":                                defaultDepCandidateProps(ctx.Config()),
 					generatedModuleName(ctx.Config(), "vendor-build.prop"): defaultDepCandidateProps(ctx.Config()),
+					"vendor_compatibility_matrix.xml":                      defaultDepCandidateProps(ctx.Config()),
 				},
 				"odm": &map[string]*depCandidateProps{
 					// fs_config_* files are automatically installed for all products with odm partitions.
@@ -153,16 +155,19 @@ func createFsGenState(ctx android.LoadHookContext) *FsGenState {
 					"fs_config_files_odm": defaultDepCandidateProps(ctx.Config()),
 					"fs_config_dirs_odm":  defaultDepCandidateProps(ctx.Config()),
 				},
-				"product": newMultilibDeps(),
+				"product": &map[string]*depCandidateProps{
+					"product_manifest.xml": defaultDepCandidateProps(ctx.Config()),
+				},
 				"system_ext": &map[string]*depCandidateProps{
 					// VNDK apexes are automatically included.
 					// This hardcoded list will need to be updated if `PRODUCT_EXTRA_VNDK_VERSIONS` is updated.
 					// https://cs.android.com/android/_/android/platform/build/+/adba533072b00c53ac0f198c550a3cbd7a00e4cd:core/main.mk;l=984;bpv=1;bpt=0;drc=174db7b179592cf07cbfd2adb0119486fda911e7
-					"com.android.vndk.v30": defaultDepCandidateProps(ctx.Config()),
-					"com.android.vndk.v31": defaultDepCandidateProps(ctx.Config()),
-					"com.android.vndk.v32": defaultDepCandidateProps(ctx.Config()),
-					"com.android.vndk.v33": defaultDepCandidateProps(ctx.Config()),
-					"com.android.vndk.v34": defaultDepCandidateProps(ctx.Config()),
+					"com.android.vndk.v30":    defaultDepCandidateProps(ctx.Config()),
+					"com.android.vndk.v31":    defaultDepCandidateProps(ctx.Config()),
+					"com.android.vndk.v32":    defaultDepCandidateProps(ctx.Config()),
+					"com.android.vndk.v33":    defaultDepCandidateProps(ctx.Config()),
+					"com.android.vndk.v34":    defaultDepCandidateProps(ctx.Config()),
+					"system_ext_manifest.xml": defaultDepCandidateProps(ctx.Config()),
 				},
 			},
 			soongGeneratedPartitions:  generatedPartitions,
