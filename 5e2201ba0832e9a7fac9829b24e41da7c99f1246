@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c1c419_4f6be4c4",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-01T04:52:57Z",
+      "side": 1,
+      "message": "Thanks for catching this. I\u0027d rather prefer the current implementation of checking if the name is in the list of high priority deps for readability and conciseness. Please feel free to unresolve if you have other thoughts.",
+      "parentUuid": "c3416458_bf215981",
+      "revId": "5e2201ba0832e9a7fac9829b24e41da7c99f1246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "825a46e5_035b17f5",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-10-31T22:44:34Z",
       "side": 1,
       "message": "Could we rename this to `normalPriorities` or something? Same with `filteredAll`.",
+      "range": {
+        "startLine": 450,
+        "startChar": 5,
+        "endLine": 450,
+        "endChar": 8
+      },
+      "revId": "5e2201ba0832e9a7fac9829b24e41da7c99f1246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d00c2105_73edfbdb",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-01T04:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "825a46e5_035b17f5",
       "range": {
         "startLine": 450,
         "startChar": 5,
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f45d690f_ba45ce06",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-01T04:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa0d12ce_54e85822",
+      "revId": "5e2201ba0832e9a7fac9829b24e41da7c99f1246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65a07baa_42fc5b2c",
@@ -71,6 +131,24 @@
       "writtenOn": "2024-10-31T22:44:34Z",
       "side": 1,
       "message": "This can be included in the previous for loop.",
+      "revId": "5e2201ba0832e9a7fac9829b24e41da7c99f1246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8028202c_1597039d",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-01T04:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65a07baa_42fc5b2c",
       "revId": "5e2201ba0832e9a7fac9829b24e41da7c99f1246",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
