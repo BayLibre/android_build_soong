@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6db0bdf7_cb58de97",
+        "filename": "android/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-01T22:53:43Z",
+      "side": 1,
+      "message": "`Zero` would be more accurate here.\n\nCan you add some godoc to this function?",
+      "range": {
+        "startLine": 664,
+        "startChar": 16,
+        "endLine": 664,
+        "endChar": 23
+      },
+      "revId": "061d35c7e489b39e8e86fa7041817fc4d10f27c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "162516ce_c72ab569",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1721,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-01T22:53:43Z",
+      "side": 1,
+      "message": "What does \"ForUpdate\" mean in this context?  Maybe `getOrCreateMakeVarsInfo()`?",
+      "range": {
+        "startLine": 1721,
+        "startChar": 45,
+        "endLine": 1721,
+        "endChar": 54
+      },
+      "revId": "061d35c7e489b39e8e86fa7041817fc4d10f27c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a857805d_f2c45a0c",
+        "filename": "cc/makevars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-01T22:53:43Z",
+      "side": 1,
+      "message": "Use `android.SortedUniqueStrings`",
+      "revId": "061d35c7e489b39e8e86fa7041817fc4d10f27c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
