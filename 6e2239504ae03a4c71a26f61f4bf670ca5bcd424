@@ -40,6 +40,30 @@
       ],
       "revId": "6e2239504ae03a4c71a26f61f4bf670ca5bcd424",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a48d101_f5c3e28f",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-01T23:19:28Z",
+      "side": 1,
+      "message": "Yeah I see lots of places these modules are potentially added to PRODUCT_PACKAGES:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/make/target/product/base_system.mk;l\u003d355;drc\u003d946e129151cc9ba65f3515081e18d5daf711671b\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:device/generic/trusty/qemu_trusty_base.mk;l\u003d80;drc\u003d8fe9251e9d0719815fa006a494d75b953f7a88a8\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/make/target/product/base_product.mk;l\u003d26;drc\u003dff517c615118b622195ee4accab0f0489f9c2ebe",
+      "parentUuid": "77acbf69_f1fce797",
+      "range": {
+        "startLine": 174,
+        "startChar": 5,
+        "endLine": 174,
+        "endChar": 30
+      },
+      "revId": "6e2239504ae03a4c71a26f61f4bf670ca5bcd424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
