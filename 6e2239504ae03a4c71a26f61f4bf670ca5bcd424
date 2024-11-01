@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77acbf69_f1fce797",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-01T23:18:38Z",
+      "side": 1,
+      "message": "I think we specify this in `base_system_ext.mk` [1]\n\nAre you noticing this is on aosp CF?\n\n[1] https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/make/target/product/base_system_ext.mk;l\u003d26",
+      "range": {
+        "startLine": 174,
+        "startChar": 5,
+        "endLine": 174,
+        "endChar": 30
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "48b4d2c4_8c62830c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fsgen/filesystem_creator.go",
+              "range": {
+                "startLine": 173,
+                "startChar": 0,
+                "endLine": 175,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "6e2239504ae03a4c71a26f61f4bf670ca5bcd424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
