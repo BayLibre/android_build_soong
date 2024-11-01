@@ -34,6 +34,47 @@
       "parentUuid": "8e915a0b_eeb1e06c",
       "revId": "499c92ea143e8b1c29a5a2282069127ccbb3a258",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3dc712_727c0c44",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2024-11-01T13:43:51Z",
+      "side": 1,
+      "message": "s/recording/recorded ?",
+      "range": {
+        "startLine": 442,
+        "startChar": 32,
+        "endLine": 442,
+        "endChar": 41
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b2692914_6f196c3e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cc/ndk_library.go",
+              "range": {
+                "startLine": 442,
+                "startChar": 0,
+                "endLine": 443,
+                "endChar": 0
+              },
+              "replacement": "\t\t// Preview ABI levels are not recorded in prebuilts. ABI compatibility\n"
+            }
+          ]
+        }
+      ],
+      "revId": "499c92ea143e8b1c29a5a2282069127ccbb3a258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
