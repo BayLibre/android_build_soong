@@ -141,11 +141,15 @@ func createFsGenState(ctx android.LoadHookContext) *FsGenState {
 					"preloaded-classes":            defaultDepCandidateProps(ctx.Config()),
 					"public.libraries.android.txt": defaultDepCandidateProps(ctx.Config()),
 					"update_engine_sideload":       defaultDepCandidateProps(ctx.Config()),
+					// Installs system/etc/vintf/manifest.xml
+					"system_manifest.xml": defaultDepCandidateProps(ctx.Config()),
 				},
 				"vendor": &map[string]*depCandidateProps{
 					"fs_config_files_vendor":                               defaultDepCandidateProps(ctx.Config()),
 					"fs_config_dirs_vendor":                                defaultDepCandidateProps(ctx.Config()),
 					generatedModuleName(ctx.Config(), "vendor-build.prop"): defaultDepCandidateProps(ctx.Config()),
+					// Installs vendor/etc/vintf/compatibility_matrix.xml
+					"vendor_compatibility_matrix.xml": defaultDepCandidateProps(ctx.Config()),
 				},
 				"odm": &map[string]*depCandidateProps{
 					// fs_config_* files are automatically installed for all products with odm partitions.
@@ -153,7 +157,10 @@ func createFsGenState(ctx android.LoadHookContext) *FsGenState {
 					"fs_config_files_odm": defaultDepCandidateProps(ctx.Config()),
 					"fs_config_dirs_odm":  defaultDepCandidateProps(ctx.Config()),
 				},
-				"product": newMultilibDeps(),
+				"product": &map[string]*depCandidateProps{
+					// Installs product/etc/vintf/manifest.xml
+					"product_manifest.xml": defaultDepCandidateProps(ctx.Config()),
+				},
 				"system_ext": &map[string]*depCandidateProps{
 					// VNDK apexes are automatically included.
 					// This hardcoded list will need to be updated if `PRODUCT_EXTRA_VNDK_VERSIONS` is updated.
@@ -163,6 +170,8 @@ func createFsGenState(ctx android.LoadHookContext) *FsGenState {
 					"com.android.vndk.v32": defaultDepCandidateProps(ctx.Config()),
 					"com.android.vndk.v33": defaultDepCandidateProps(ctx.Config()),
 					"com.android.vndk.v34": defaultDepCandidateProps(ctx.Config()),
+					// Installs system_ext/etc/vintf/manifest.xml
+					"system_ext_manifest.xml": defaultDepCandidateProps(ctx.Config()),
 				},
 			},
 			soongGeneratedPartitions:  generatedPartitions,
