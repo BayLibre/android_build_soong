@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "141b9d83_e25e018f",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-01T19:49:13Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a separate odm_partition_name property?",
+      "range": {
+        "startLine": 430,
+        "startChar": 17,
+        "endLine": 430,
+        "endChar": 39
+      },
+      "revId": "ff1eb7c8a488fb001e2cb10ce31a04c6bea9528f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
