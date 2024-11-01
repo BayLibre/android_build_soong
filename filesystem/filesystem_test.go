@@ -685,3 +685,27 @@ cc_library {
 	android.AssertStringDoesContain(t, "", linkerConfigCmd, "conv_linker_config proto --force -s linker.config.json")
 	android.AssertStringDoesContain(t, "", linkerConfigCmd, "--key provideLibs --value libfoo_has_stubs.so")
 }
+
+// override_android_* modules implicitly override their base module.
+// If both of these are listed in `deps`, the base module should not be installed.
+func TestOverrideModulesInDeps(t *testing.T) {
+	result := fixture.RunTestWithBp(t, `
+		android_filesystem {
+			name: "myfilesystem",
+			deps: ["myapp", "myoverrideapp"],
+		}
+
+		android_app {
+			name: "myapp",
+			platform_apis: true,
+		}
+		override_android_app {
+			name: "myoverrideapp",
+			base: "myapp",
+		}
+	`)
+
+	partition := result.ModuleForTests("myfilesystem", "android_common")
+	fileList := android.ContentFromFileRuleForTests(t, result.TestContext, partition.Output("fileList"))
+	android.AssertDeepEquals(t, "filesystem with override app", "app/myoverrideapp/myoverrideapp.apk\n", fileList)
+}
