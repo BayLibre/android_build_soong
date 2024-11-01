@@ -279,6 +279,30 @@
       },
       "revId": "ecd141a7b84b88675f0a6bd2c6c1517dd714ba23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeaddfba_ad57b9ac",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-01T21:51:32Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "27b13ee1_64a99efc",
+      "range": {
+        "startLine": 874,
+        "startChar": 5,
+        "endLine": 874,
+        "endChar": 29
+      },
+      "revId": "ecd141a7b84b88675f0a6bd2c6c1517dd714ba23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
