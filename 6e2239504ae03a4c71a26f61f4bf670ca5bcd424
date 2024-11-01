@@ -64,6 +64,30 @@
       },
       "revId": "6e2239504ae03a4c71a26f61f4bf670ca5bcd424",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "515f5ea4_b4f2db45",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-01T23:42:19Z",
+      "side": 1,
+      "message": "Ah you are right, given that the existing Android.mk module was converted to Android.bp module with the same name, there\u0027s no need for this to be specified. I will abandon this change.",
+      "parentUuid": "0a48d101_f5c3e28f",
+      "range": {
+        "startLine": 174,
+        "startChar": 5,
+        "endLine": 174,
+        "endChar": 30
+      },
+      "revId": "6e2239504ae03a4c71a26f61f4bf670ca5bcd424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
