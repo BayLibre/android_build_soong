@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7d6fb86_c1f4c5d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-01T23:24:07Z",
+      "side": 1,
+      "message": "If this looks acceptable, I can do the same for vendor and odm dlkm partitions in a followup CL",
+      "revId": "9d1c1105e20f0ab6c6111e7ded5e701db0028b61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
