@@ -52,6 +52,24 @@
       "parentUuid": "cf813b0f_ac131bd9",
       "revId": "923cc23680b53acf788fe412030cf3e105d0afff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a23fb4b7_f4289fa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-04T22:13:03Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. The commit message shares my thought regarding the edge case that you have mentioned. Please let me know if this resolves your concern.\n\n\u003e As an alternative, I have been adding product:true or vendor:true on the phony targets\n\nThe motivation of this change was due to the vulnerability (in my opinion) of this approach. I think this approach would not work if there is a phony target that depends on modules that do not share the same install partition.",
+      "parentUuid": "4ad164bb_23dabed7",
+      "revId": "923cc23680b53acf788fe412030cf3e105d0afff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
