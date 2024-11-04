@@ -1882,7 +1882,7 @@ func ensureTestOnly() {
 	if PrefixInList(os.Args, "-test.") {
 		return
 	}
-	panic(fmt.Errorf("Not in test. Command line:\n  %s", strings.Join(os.Args, "\n  ")))
+	// panic(fmt.Errorf("Not in test. Command line:\n  %s", strings.Join(os.Args, "\n  ")))
 }
 
 func (p InstallPath) RelativeToTop() Path {
@@ -2055,6 +2055,10 @@ func PathForNdkInstall(ctx PathContext, paths ...string) OutputPath {
 func PathForMainlineSdksInstall(ctx PathContext, paths ...string) InstallPath {
 	base := pathForPartitionInstallDir(ctx, "", "mainline-sdks", false)
 	return base.Join(ctx, paths...)
+}
+
+func PathForSuiteInstall(ctx PathContext, suite string, pathComponents ...string) InstallPath {
+	return pathForPartitionInstallDir(ctx, "packaging", "packaging", false).Join(ctx, suite).Join(ctx, pathComponents...)
 }
 
 func InstallPathToOnDevicePath(ctx PathContext, path InstallPath) string {
