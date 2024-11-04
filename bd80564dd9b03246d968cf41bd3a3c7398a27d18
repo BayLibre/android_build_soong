@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f552b7e_3443d605",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-04T18:52:19Z",
+      "side": 1,
+      "message": "nit: you should be able to run this test with `m soong_generated_system_dlkm_filesystem_test`",
+      "revId": "bd80564dd9b03246d968cf41bd3a3c7398a27d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d6bb82_4fe68fdb",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-04T18:52:19Z",
+      "side": 1,
+      "message": "Do you believe that setting [`kernel_version`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/kernel/prebuilt_kernel_modules.go;bpv\u003d1;bpt\u003d0) property is not necessary at the moment?",
+      "revId": "bd80564dd9b03246d968cf41bd3a3c7398a27d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
