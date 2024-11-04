@@ -88,6 +88,24 @@
       "parentUuid": "4ad164bb_23dabed7",
       "revId": "923cc23680b53acf788fe412030cf3e105d0afff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b6dc46_66491f4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-04T22:18:09Z",
+      "side": 1,
+      "message": "\u003e I think this approach would not work if there is a phony target that depends on modules that do not share the same install partition.\n\nAgreed, and I think this is the motivation of https://r.andrdoid.com/3326423. It refactors `selinux_policy_nonsystem` (multiple partitions) to `selinux_policy_vendor` and `selinux_policy_odm`. Are you concerned that such cleanups are not scalable?",
+      "parentUuid": "1d3912ab_732c8dae",
+      "revId": "923cc23680b53acf788fe412030cf3e105d0afff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
