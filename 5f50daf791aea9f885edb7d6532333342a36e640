@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ee1fd4_697f993e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-04T22:33:08Z",
+      "side": 1,
+      "message": "`prebuilt_kernel_modules` is currently missing options to build `modules.options` and `modules.blocklist`. These are not used in aosp CF, but I think we will need these when building pixel products with Soong. I have filed b/377362016 to track this.",
+      "revId": "5f50daf791aea9f885edb7d6532333342a36e640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

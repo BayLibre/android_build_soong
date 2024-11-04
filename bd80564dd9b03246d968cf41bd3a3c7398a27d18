@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "872b9b2e_29dfc6fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-04T22:33:08Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2f552b7e_3443d605",
+      "revId": "bd80564dd9b03246d968cf41bd3a3c7398a27d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b657bcc1_3a7e6f9b",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f008613d_42593a00",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-04T22:33:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b657bcc1_3a7e6f9b",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 3
+      },
+      "revId": "bd80564dd9b03246d968cf41bd3a3c7398a27d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9d6bb82_4fe68fdb",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-11-04T18:52:19Z",
       "side": 1,
       "message": "Do you believe that setting [`kernel_version`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/kernel/prebuilt_kernel_modules.go;bpv\u003d1;bpt\u003d0) property is not necessary at the moment?",
+      "revId": "bd80564dd9b03246d968cf41bd3a3c7398a27d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9a1d913_b8374c96",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-04T22:33:08Z",
+      "side": 1,
+      "message": "I have not done extensive testing yet, but I believe it is unused. \n\nkati-packging system builds the *_dlkm image files using [build-image-kernel-moduels-dir](https://source.corp.google.com/h/googleplex-android/platform/build/+/ef2802f4b49f05284fd37efcc957b29c9b4d4e09:core/Makefile;l\u003d560;bpv\u003d1;bpt\u003d0;drc\u003d19aae52cc2e51bdcd8a9e5701a6c4ca053e0528c) function. The version directory passed to the helper function is [always empty])https://source.corp.google.com/h/googleplex-android/platform/build/+/ef2802f4b49f05284fd37efcc957b29c9b4d4e09:core/Makefile;l\u003d561-563;drc\u003d19aae52cc2e51bdcd8a9e5701a6c4ca053e0528c;bpv\u003d1;bpt\u003d0)",
+      "parentUuid": "d9d6bb82_4fe68fdb",
       "revId": "bd80564dd9b03246d968cf41bd3a3c7398a27d18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
