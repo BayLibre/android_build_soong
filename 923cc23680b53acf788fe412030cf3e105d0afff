@@ -106,6 +106,24 @@
       "parentUuid": "1d3912ab_732c8dae",
       "revId": "923cc23680b53acf788fe412030cf3e105d0afff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1b5734c_6cdf804f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-04T22:23:06Z",
+      "side": 1,
+      "message": "I don\u0027t believe that such cleanups are not scalable. Bit off topic, but I would prefer to restrict inter-partition *_required dependencies once those cleanups are complete.",
+      "parentUuid": "57b6dc46_66491f4f",
+      "revId": "923cc23680b53acf788fe412030cf3e105d0afff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
