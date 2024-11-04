@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "370a4a5e_b723a9e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-11-04T23:42:00Z",
+      "side": 1,
+      "message": "This implements \"test_module_config\" for sh_test and paves the way for cc_test (which isn\u0027t planned).  I move a couple more things to the provider.\nWe will need some changes to base.mk for compatibility.mk in order to use this vts.zip 😞  It can\u0027t use the same changes that I made for general-tests/device-tests .mk since they were forked.",
+      "revId": "704a7a7bedb2398db077a40d0c56a4e3dfa3c40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
