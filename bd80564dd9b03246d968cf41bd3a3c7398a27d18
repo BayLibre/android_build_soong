@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b657bcc1_3a7e6f9b",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-04T19:04:15Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to check for existence here, I think you can just do\n```\ndirToFiles[dir] \u003d append(dirToFiles[dir], base)\n```",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 3
+      },
+      "revId": "bd80564dd9b03246d968cf41bd3a3c7398a27d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9d6bb82_4fe68fdb",
         "filename": "fsgen/filesystem_creator.go",
         "patchSetId": 2
