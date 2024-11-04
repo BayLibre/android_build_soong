@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac39f47b_bfec084f",
+        "filename": "rust/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-11-04T14:08:18Z",
+      "side": 1,
+      "message": "nit: This should go above \"strings\"",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "86f3b949_2600c4c5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "rust/config/global.go",
+              "range": {
+                "startLine": 18,
+                "startChar": 0,
+                "endLine": 18,
+                "endChar": 0
+              },
+              "replacement": "\t\"fmt\"\n"
+            },
+            {
+              "path": "rust/config/global.go",
+              "range": {
+                "startLine": 22,
+                "startChar": 0,
+                "endLine": 24,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "8fabda772f56b100f967b836709ef046484f753a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
