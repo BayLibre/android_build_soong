@@ -36,7 +36,7 @@ func registerPhonyModuleTypes(ctx android.RegistrationContext) {
 
 var PrepareForTestWithPhony = android.FixtureRegisterWithContext(registerPhonyModuleTypes)
 
-type phony struct {
+type Phony struct {
 	android.ModuleBase
 	requiredModuleNames       []string
 	hostRequiredModuleNames   []string
@@ -44,19 +44,19 @@ type phony struct {
 }
 
 func PhonyFactory() android.Module {
-	module := &phony{}
+	module := &Phony{}
 
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
 	return module
 }
 
-func (p *phony) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+func (p *Phony) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	p.requiredModuleNames = ctx.RequiredModuleNames(ctx)
 	p.hostRequiredModuleNames = ctx.HostRequiredModuleNames()
 	p.targetRequiredModuleNames = ctx.TargetRequiredModuleNames()
 }
 
-func (p *phony) AndroidMk() android.AndroidMkData {
+func (p *Phony) AndroidMk() android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)", " # phony.phony")

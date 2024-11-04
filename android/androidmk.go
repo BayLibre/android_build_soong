@@ -903,7 +903,7 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, moduleInfoJSONs *
 		case "*genrule.Module": // writes non-custom before adding .phony
 		case "*java.SystemModules": // doesn't go through base_rules
 		case "*java.systemModulesImport": // doesn't go through base_rules
-		case "*phony.phony": // license properties written
+		case "*phony.Phony": // license properties written
 		case "*phony.PhonyRule": // writes phony deps and acts like `.PHONY`
 		case "*selinux.selinuxContextsModule": // license properties written
 		case "*sysprop.syspropLibrary": // license properties written

@@ -25,6 +25,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/filesystem"
+	"android/soong/phony"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/parser"
@@ -43,6 +44,7 @@ func registerBuildComponents(ctx android.RegistrationContext) {
 }
 
 func RegisterCollectFileSystemDepsMutators(ctx android.RegisterMutatorsContext) {
+	ctx.TopDown("fs_phony_deps", processPhonyDepsMutator).MutatesGlobalState()
 	ctx.BottomUp("fs_collect_deps", collectDepsMutator).MutatesGlobalState()
 	ctx.BottomUp("fs_set_deps", setDepsMutator)
 }
@@ -189,6 +191,20 @@ func appendDepIfAppropriate(mctx android.BottomUpMutatorContext, deps *multilibD
 			Namespace: mctx.Namespace().Path,
 			Multilib:  multilib,
 			Arch:      []android.ArchType{mctx.Module().Target().Arch.ArchType},
+		}
+	}
+}
+
+func processPhonyDepsMutator(mctx android.TopDownMutatorContext) {
+	fsGenState := mctx.Config().Get(fsGenStateOnceKey).(*FsGenState)
+
+	m := mctx.Module()
+	if m.Target().Os.Class == android.Device && slices.Contains(fsGenState.depCandidates, m.Name()) {
+		if _, ok := m.(*phony.Phony); ok {
+			_, fsGenState.depCandidates = android.RemoveFromList(m.Name(), fsGenState.depCandidates)
+			fsGenState.depCandidates = append(fsGenState.depCandidates, mctx.Module().RequiredModuleNames(mctx)...)
+			fsGenState.depCandidates = append(fsGenState.depCandidates, mctx.Module().HostRequiredModuleNames()...)
+			fsGenState.depCandidates = append(fsGenState.depCandidates, mctx.Module().HostRequiredModuleNames()...)
 		}
 	}
 }
