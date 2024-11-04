@@ -1522,6 +1522,13 @@ func (c *deviceConfig) VendorPath() string {
 	return "vendor"
 }
 
+func (c *deviceConfig) VendorDlkmPath() string {
+	if c.config.productVariables.VendorDlkmPath != nil {
+		return *c.config.productVariables.VendorDlkmPath
+	}
+	return "vendor_dlkm"
+}
+
 func (c *deviceConfig) BuildingVendorImage() bool {
 	return proptools.Bool(c.config.productVariables.BuildingVendorImage)
 }
@@ -1549,6 +1556,13 @@ func (c *deviceConfig) OdmPath() string {
 	return "odm"
 }
 
+func (c *deviceConfig) OdmDlkmPath() string {
+	if c.config.productVariables.OdmDlkmPath != nil {
+		return *c.config.productVariables.OdmDlkmPath
+	}
+	return "odm_dlkm"
+}
+
 func (c *deviceConfig) ProductPath() string {
 	if c.config.productVariables.ProductPath != nil {
 		return *c.config.productVariables.ProductPath
@@ -1565,6 +1579,20 @@ func (c *deviceConfig) SystemExtPath() string {
 		return *c.config.productVariables.SystemExtPath
 	}
 	return "system_ext"
+}
+
+func (c *deviceConfig) SystemDlkmPath() string {
+	if c.config.productVariables.SystemDlkmPath != nil {
+		return *c.config.productVariables.SystemDlkmPath
+	}
+	return "system_dlkm"
+}
+
+func (c *deviceConfig) OemPath() string {
+	if c.config.productVariables.OemPath != nil {
+		return *c.config.productVariables.OemPath
+	}
+	return "oem"
 }
 
 func (c *deviceConfig) BtConfigIncludeDir() string {
