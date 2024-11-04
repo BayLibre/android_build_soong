@@ -70,6 +70,24 @@
       "parentUuid": "4ad164bb_23dabed7",
       "revId": "923cc23680b53acf788fe412030cf3e105d0afff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d3912ab_732c8dae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-04T22:13:05Z",
+      "side": 1,
+      "message": "There\u0027s also cases where actual modules use `required` on a module in a different partition, this issue isn\u0027t exclusive to phonies.\n\nRight now we don\u0027t have a good solution for cross-partition `required`/`overrides` dependencies. I am kindof of the opinion that we should continue doing manual tweaks to checked-in bp files to make these cases simpler rather than attempting something like this.\n\nI think we should discuss this in person tomorrow.",
+      "parentUuid": "4ad164bb_23dabed7",
+      "revId": "923cc23680b53acf788fe412030cf3e105d0afff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
