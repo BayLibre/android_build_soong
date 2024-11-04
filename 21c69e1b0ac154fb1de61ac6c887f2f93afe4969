@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdb513b2_62e9ea0a",
+        "filename": "docs/selects.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-04T18:41:04Z",
+      "side": 1,
+      "message": "by \"variable\", are you referring to the `Android.bp` variable, or the variable used in the select statement? If it is the former, do you mind defining `my_var` before `my_module_type` definition in the above example? If latter, do you mind replacing `my_var` with `my_variable` for clarity?",
+      "revId": "21c69e1b0ac154fb1de61ac6c887f2f93afe4969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5129bac3_ec7a0557",
+        "filename": "docs/selects.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-04T18:41:04Z",
+      "side": 1,
+      "message": "```suggestion\nTo make a property support selects, it must be of type [proptools.Configurable[T]](https://cs.android.com/android/platform/superproject/main/+/main:build/blueprint/proptools/configurable.go;l\u003d341;drc\u003da52b058cccd2caa778d0f97077adcd4ef7ffb68a). T is the old type of the property. Currently we support bool, string, and []string. Configurable has a `Get(evaluator)` method to get the value of the property. The evaluator can be a ModuleContext, or if you’re in a situation where you only have a very limited context and a module, (such as in a singleton) you can use [ModuleBase.ConfigurableEvaluator](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/module.go;l\u003d2133;drc\u003de19f741052cce097da940d9083d3f29e668de5cb).\n```",
+      "range": {
+        "startLine": 142,
+        "startChar": 276,
+        "endLine": 142,
+        "endChar": 279
+      },
+      "revId": "21c69e1b0ac154fb1de61ac6c887f2f93afe4969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5a39052_187f87e2",
+        "filename": "docs/selects.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-04T18:41:04Z",
+      "side": 1,
+      "message": "nit: change to public link\n```suggestion\nThe enabled property underwent this migration in https://r.android.com/3066188\n\n```",
+      "revId": "21c69e1b0ac154fb1de61ac6c887f2f93afe4969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
