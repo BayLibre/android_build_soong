@@ -173,7 +173,7 @@ func collectDepsMutator(mctx android.BottomUpMutatorContext) {
 	fsGenState := mctx.Config().Get(fsGenStateOnceKey).(*FsGenState)
 
 	m := mctx.Module()
-	if m.Target().Os.Class == android.Device && slices.Contains(fsGenState.depCandidates, m.Name()) {
+	if slices.Contains(fsGenState.depCandidates, m.Name()) {
 		installPartition := m.PartitionTag(mctx.DeviceConfig())
 		fsGenState.fsDepsMutex.Lock()
 		// Only add the module as dependency when:
