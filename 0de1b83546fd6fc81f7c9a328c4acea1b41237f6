@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c74f894_1e46ed3b",
+        "filename": "android/module_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-04T18:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f337f2a3_44784460",
+      "range": {
+        "startLine": 567,
+        "startChar": 14,
+        "endLine": 567,
+        "endChar": 20
+      },
+      "revId": "0de1b83546fd6fc81f7c9a328c4acea1b41237f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b7f23cc_1562aacf",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3404e71e_02c1ba2b",
+        "filename": "android/module_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-04T18:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b7f23cc_1562aacf",
+      "revId": "0de1b83546fd6fc81f7c9a328c4acea1b41237f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04b46f59_70e491f4",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-11-04T18:30:18Z",
       "side": 1,
       "message": "Use `AssertStringEquals`.",
+      "range": {
+        "startLine": 710,
+        "startChar": 9,
+        "endLine": 710,
+        "endChar": 25
+      },
+      "revId": "0de1b83546fd6fc81f7c9a328c4acea1b41237f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23bc6479_58f5ca98",
+        "filename": "filesystem/filesystem_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-04T18:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04b46f59_70e491f4",
       "range": {
         "startLine": 710,
         "startChar": 9,
