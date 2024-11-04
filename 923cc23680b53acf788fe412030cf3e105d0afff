@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf813b0f_ac131bd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-04T22:02:58Z",
+      "side": 1,
+      "message": "@colefaust@google.com @spandandas@google.com WDYT about this approach? I think an alternative is to enforce that `phony` targets cannot depend on modules of different install partitions.",
+      "revId": "923cc23680b53acf788fe412030cf3e105d0afff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
