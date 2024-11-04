@@ -60,6 +60,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d659f351_a109a9a0",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-11-04T17:09:04Z",
+      "side": 1,
+      "message": "Ack -- this is good feedback, thanks! I\u0027ll rework these CLs to try to be less reliant on LinkableInterface.",
+      "parentUuid": "512b12fb_a5271237",
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33cae226_02a69c17",
         "filename": "cc/linkable.go",
         "patchSetId": 3
@@ -71,6 +89,24 @@
       "writtenOn": "2024-10-31T21:10:41Z",
       "side": 1,
       "message": "`LinkableInterface` has gotten very complex because it is conflating two usages.  I believe the original use case was to share the the data needed by a parent module in order to link against a child module (mostly accessed in `c.depsToPaths()`).  It is increasingly being used for a module to communicate with other parts of itself.  Long term, all of the first usage needs to move to Providers in order to support incremental analysis, and that gets hard when it is mixed with the second.\n\nBefore this CL, the interface is almost entirely getters except for `SetPreventInstall` and `SetHideFromMake`, but this is adding a bunch of new setters.  If we end up needing these, I think they should go in a separate interface that is only used within the module, and not mixed with the one that is used in `depsToPaths`.",
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e30ac3e2_d6fad67b",
+        "filename": "cc/linkable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-11-04T17:09:04Z",
+      "side": 1,
+      "message": "Ack -- see my other comment, I\u0027ll rework this a bit, thanks!",
+      "parentUuid": "33cae226_02a69c17",
       "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
