@@ -104,6 +104,24 @@
       "message": "As a side note, it seems like on aosp/main there are currently 51 non-empty proguard rules in imported jars (being ignored)\n\nWith this change:\n`find out/soong/.intermediates -name proguard_flags -size +0 -print | wc -l\n50`\n\nMost of them likely derive from androidx.annotation getting combined into other libraries (androidx.annotation.Keep)\n\nI searched for those rules and it seems like there has been already cases where those rules have been manually added in specific projects proguard flags (https://cs.android.com/android/platform/superproject/main/+/main:packages/apps/TvSettings/Settings/proguard.flags;l\u003d48;drc\u003d10a568cf67e3e504345659dd4e0a32ad4ff5f6cc)\n\nThe other new rules are from kotlin-reflect, couldn\u0027t find any usage.\n\nI can\u0027t see the treehugger failures (or flakes), but this could shake things up for sure.",
       "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a7c21db_4cb1f3d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2024-11-04T15:38:43Z",
+      "side": 1,
+      "message": "I found the issue in r8\nhttps://gist.github.com/luca020400/c3be6aae1cf8f62072de96a5866ca89c fixes it\n\nI tried to upload to r8 gerrit but it\u0027s giving me a lovely `PERMISSION_DENIED: The caller does not have permission`",
+      "parentUuid": "2b131df7_d1efa1ad",
+      "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
