@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e1d428_e536a98e",
+        "filename": "android/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-11-04T18:00:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6db0bdf7_cb58de97",
+      "range": {
+        "startLine": 664,
+        "startChar": 16,
+        "endLine": 664,
+        "endChar": 23
+      },
+      "revId": "061d35c7e489b39e8e86fa7041817fc4d10f27c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "162516ce_c72ab569",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf411ea_877ffe6c",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1721,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-11-04T18:00:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "162516ce_c72ab569",
+      "range": {
+        "startLine": 1721,
+        "startChar": 45,
+        "endLine": 1721,
+        "endChar": 54
+      },
+      "revId": "061d35c7e489b39e8e86fa7041817fc4d10f27c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a857805d_f2c45a0c",
@@ -60,6 +108,24 @@
       "writtenOn": "2024-11-01T22:53:43Z",
       "side": 1,
       "message": "Use `android.SortedUniqueStrings`",
+      "revId": "061d35c7e489b39e8e86fa7041817fc4d10f27c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea14da41_6a24c669",
+        "filename": "cc/makevars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-11-04T18:00:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a857805d_f2c45a0c",
       "revId": "061d35c7e489b39e8e86fa7041817fc4d10f27c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
