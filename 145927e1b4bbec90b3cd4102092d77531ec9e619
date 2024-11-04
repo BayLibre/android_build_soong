@@ -33,6 +33,24 @@
       "message": "Could you add a test that `directoryPath` does not implement `Path`?",
       "revId": "145927e1b4bbec90b3cd4102092d77531ec9e619",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca811619_7378e3c5",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-11-04T01:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "946d2363_a8393fdf",
+      "revId": "145927e1b4bbec90b3cd4102092d77531ec9e619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
