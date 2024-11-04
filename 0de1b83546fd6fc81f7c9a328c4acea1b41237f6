@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f337f2a3_44784460",
+        "filename": "android/module_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-04T18:30:18Z",
+      "side": 1,
+      "message": "nit: use `slices.Clone`",
+      "range": {
+        "startLine": 567,
+        "startChar": 14,
+        "endLine": 567,
+        "endChar": 20
+      },
+      "revId": "0de1b83546fd6fc81f7c9a328c4acea1b41237f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b46f59_70e491f4",
+        "filename": "filesystem/filesystem_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-04T18:30:18Z",
+      "side": 1,
+      "message": "Use `AssertStringEquals`.",
+      "range": {
+        "startLine": 710,
+        "startChar": 9,
+        "endLine": 710,
+        "endChar": 25
+      },
+      "revId": "0de1b83546fd6fc81f7c9a328c4acea1b41237f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
