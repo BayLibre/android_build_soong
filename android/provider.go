@@ -85,6 +85,13 @@ func SetProvider[K any](ctx SetProviderContext, provider blueprint.ProviderKey[K
 	ctx.setProvider(provider, value)
 }
 
+func SetProviderIfNotZero[K comparable](ctx SetProviderContext, provider blueprint.ProviderKey[K], value K) {
+	var zero K
+	if value != zero {
+		ctx.setProvider(provider, value)
+	}
+}
+
 var _ OtherModuleProviderContext = (*otherModuleProviderAdaptor)(nil)
 
 // An OtherModuleProviderFunc can be passed to NewOtherModuleProviderAdaptor to create an OtherModuleProviderContext
