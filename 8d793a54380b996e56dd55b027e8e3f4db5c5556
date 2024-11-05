@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27759786_a0cef3ab",
+        "filename": "cmd/symbols_map/symbols_map_proto/symbols_map.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-05T18:48:33Z",
+      "side": 1,
+      "message": "This is confusing, as the ZIP is also in the artifacts.  The difference is whether it\u0027s in the zip or not in the zip, but everything is fetched from ab/ artifacts.",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 76
+      },
+      "revId": "8d793a54380b996e56dd55b027e8e3f4db5c5556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29445112_1e220717",
+        "filename": "cmd/symbols_map/symbols_map_proto/symbols_map.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-05T18:48:33Z",
+      "side": 1,
+      "message": "Maybe mention that ZIP is assumed if this is not present?",
+      "revId": "8d793a54380b996e56dd55b027e8e3f4db5c5556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
