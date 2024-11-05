@@ -26,7 +26,18 @@ import (
 
 func init() {
 	android.RegisterModuleType("vbmeta", vbmetaFactory)
+	pctx.HostBinToolVariable("avbtool", "avbtool")
 }
+
+var (
+	extractPublicKeyRule = pctx.AndroidStaticRule("avb_extract_public_key",
+		blueprint.RuleParams{
+			Command: `${avbtool} extract_public_key --key $in --output $out`,
+			CommandDeps: []string{
+				"${avbtool}",
+			},
+		})
+)
 
 type vbmeta struct {
 	android.ModuleBase
@@ -61,8 +72,9 @@ type vbmetaProperties struct {
 	// have to be signed (use_avb: true).
 	Partitions proptools.Configurable[[]string]
 
-	// List of chained partitions that this vbmeta deletages the verification.
-	Chained_partitions []chainedPartitionProperties
+	// List of chained partitions that this vbmeta deletages the verification. They are the
+	// names of other vbmeta modules.
+	Chained_partitions []string
 
 	// List of key-value pair of avb properties
 	Avb_properties []avbProperty
@@ -76,23 +88,19 @@ type avbProperty struct {
 	Value *string
 }
 
-type chainedPartitionProperties struct {
-	// Name of the chained partition
-	Name *string
+type vbmetaPartitionInfo struct {
+	// Name of the partition
+	Name string
 
-	// Rollback index location of the chained partition. Must be 0, 1, 2, etc. Default is the
-	// index of this partition in the list + 1.
-	Rollback_index_location *int64
+	// Rollback index location, non-negative int
+	RollbackIndexLocation int
 
-	// Path to the public key that the chained partition is signed with. If this is specified,
-	// private_key is ignored.
-	Public_key *string `android:"path"`
-
-	// Path to the private key that the chained partition is signed with. If this is specified,
-	// and public_key is not specified, a public key is extracted from this private key and
-	// the extracted public key is embedded in the vbmeta image.
-	Private_key *string `android:"path"`
+	// The path to the public key of the private key used to sign this partition. Derived from
+	// the private key.
+	PublicKey android.Path
 }
+
+var vbmetaPartitionProvider = blueprint.NewProvider[vbmetaPartitionInfo]()
 
 // vbmeta is the partition image that has the verification information for other partitions.
 func vbmetaFactory() android.Module {
@@ -104,13 +112,18 @@ func vbmetaFactory() android.Module {
 
 type vbmetaDep struct {
 	blueprint.BaseDependencyTag
-	kind string
 }
 
-var vbmetaPartitionDep = vbmetaDep{kind: "partition"}
+type chainedPartitionDep struct {
+	blueprint.BaseDependencyTag
+}
+
+var vbmetaPartitionDep = vbmetaDep{}
+var vbmetaChainedPartitionDep = chainedPartitionDep{}
 
 func (v *vbmeta) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddDependency(ctx.Module(), vbmetaPartitionDep, v.properties.Partitions.GetOrDefault(ctx, nil)...)
+	ctx.AddDependency(ctx.Module(), vbmetaChainedPartitionDep, v.properties.Chained_partitions...)
 }
 
 func (v *vbmeta) installFileName() string {
@@ -125,8 +138,6 @@ func (v *vbmeta) partitionName() string {
 const vbmetaMaxSize = 64 * 1024
 
 func (v *vbmeta) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	extractedPublicKeys := v.extractPublicKeys(ctx)
-
 	v.output = android.PathForModuleOut(ctx, v.installFileName()).OutputPath
 
 	builder := android.NewRuleBuilder(pctx, ctx)
@@ -176,26 +187,30 @@ func (v *vbmeta) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		cmd.FlagWithInput("--include_descriptors_from_image ", signedImage)
 	}
 
-	for i, cp := range v.properties.Chained_partitions {
-		name := proptools.String(cp.Name)
-		if name == "" {
+	seenRils := make(map[int]bool)
+	for _, cp := range ctx.GetDirectDepsWithTag(vbmetaChainedPartitionDep) {
+		info, ok := android.OtherModuleProvider(ctx, cp, vbmetaPartitionProvider)
+		if !ok {
+			ctx.PropertyErrorf("chained_partitions", "Expected all modules in chained_partitions to provide vbmetaPartitionProvider, but %s did not", cp.Name())
+			continue
+		}
+		if info.Name == "" {
 			ctx.PropertyErrorf("chained_partitions", "name must be specified")
 			continue
 		}
 
-		ril := proptools.IntDefault(cp.Rollback_index_location, i+1)
+		ril := info.RollbackIndexLocation
 		if ril < 0 {
 			ctx.PropertyErrorf("chained_partitions", "must be 0, 1, 2, ...")
 			continue
+		} else if seenRils[ril] {
+			ctx.PropertyErrorf("chained_partitions", "Multiple chained partitions with the same rollback index location %d", ril)
+			continue
 		}
+		seenRils[ril] = true
 
-		var publicKey android.Path
-		if cp.Public_key != nil {
-			publicKey = android.PathForModuleSrc(ctx, proptools.String(cp.Public_key))
-		} else {
-			publicKey = extractedPublicKeys[name]
-		}
-		cmd.FlagWithArg("--chain_partition ", fmt.Sprintf("%s:%d:%s", name, ril, publicKey.String()))
+		publicKey := info.PublicKey
+		cmd.FlagWithArg("--chain_partition ", fmt.Sprintf("%s:%d:%s", info.Name, ril, publicKey.String()))
 		cmd.Implicit(publicKey)
 	}
 
@@ -212,6 +227,19 @@ func (v *vbmeta) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	v.installDir = android.PathForModuleInstall(ctx, "etc")
 	ctx.InstallFile(v.installDir, v.installFileName(), v.output)
 
+	extractedPublicKey := android.PathForModuleOut(ctx, v.partitionName()+".avbpubkey")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   extractPublicKeyRule,
+		Input:  key,
+		Output: extractedPublicKey,
+	})
+
+	android.SetProvider(ctx, vbmetaPartitionProvider, vbmetaPartitionInfo{
+		Name:                  v.partitionName(),
+		RollbackIndexLocation: ril,
+		PublicKey:             extractedPublicKey,
+	})
+
 	ctx.SetOutputFiles([]android.Path{v.output}, "")
 }
 
@@ -226,43 +254,6 @@ func (v *vbmeta) rollbackIndexCommand(ctx android.ModuleContext) string {
 	}
 	// Take the first line and remove the newline char
 	return "$(" + cmd + " | head -1 | tr -d '\n'" + ")"
-}
-
-// Extract public keys from chained_partitions.private_key. The keys are indexed with the partition
-// name.
-func (v *vbmeta) extractPublicKeys(ctx android.ModuleContext) map[string]android.OutputPath {
-	result := make(map[string]android.OutputPath)
-
-	builder := android.NewRuleBuilder(pctx, ctx)
-	for _, cp := range v.properties.Chained_partitions {
-		if cp.Private_key == nil {
-			continue
-		}
-
-		name := proptools.String(cp.Name)
-		if name == "" {
-			ctx.PropertyErrorf("chained_partitions", "name must be specified")
-			continue
-		}
-
-		if _, ok := result[name]; ok {
-			ctx.PropertyErrorf("chained_partitions", "name %q is duplicated", name)
-			continue
-		}
-
-		privateKeyFile := android.PathForModuleSrc(ctx, proptools.String(cp.Private_key))
-		publicKeyFile := android.PathForModuleOut(ctx, name+".avbpubkey").OutputPath
-
-		builder.Command().
-			BuiltTool("avbtool").
-			Text("extract_public_key").
-			FlagWithInput("--key ", privateKeyFile).
-			FlagWithOutput("--output ", publicKeyFile)
-
-		result[name] = publicKeyFile
-	}
-	builder.Build("vbmeta_extract_public_key", fmt.Sprintf("Extract public keys for %s", ctx.ModuleName()))
-	return result
 }
 
 var _ android.AndroidMkProviderInfoProducer = (*vbmeta)(nil)
