@@ -1567,12 +1567,9 @@ func (ctx *moduleContextImpl) minSdkVersion() string {
 	}
 
 	if ctx.ctx.Device() {
-		config := ctx.ctx.Config()
-		if ctx.inVendor() {
-			// If building for vendor with final API, then use the latest _stable_ API as "current".
-			if config.VendorApiLevelFrozen() && (ver == "" || ver == "current") {
-				ver = config.PlatformSdkVersion().String()
-			}
+		// When building for vendor/product, use the latest _stable_ API as "current".
+		if (ctx.inVendor() || ctx.inProduct()) && (ver == "" || ver == "current") {
+			ver = ctx.ctx.Config().PlatformSdkVersion().String()
 		}
 	}
 
