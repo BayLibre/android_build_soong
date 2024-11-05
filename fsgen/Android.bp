@@ -14,6 +14,7 @@ bootstrap_go_package {
     ],
     srcs: [
         "filesystem_creator.go",
+        "filesystem_creator_internal.go",
     ],
     testSrcs: [
         "filesystem_creator_test.go",
