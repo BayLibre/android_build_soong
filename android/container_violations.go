@@ -827,6 +827,11 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 		"framework-connectivity-pre-jarjar", // apex [com.android.tethering] -> system
 	},
 
+	"framework-connectivity-b.impl": {
+		"app-compat-annotations",            // apex [com.android.tethering] -> system
+		"framework-connectivity-pre-jarjar", // apex [com.android.tethering] -> system
+	},
+
 	"framework-connectivity.impl": {
 		"app-compat-annotations", // apex [com.android.tethering] -> system
 	},
@@ -1026,6 +1031,12 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 
 	"service-connectivity-tiramisu-pre-jarjar": {
 		"framework-connectivity-pre-jarjar",   // apex [com.android.tethering] -> system
+		"framework-connectivity-t-pre-jarjar", // apex [com.android.tethering] -> system
+	},
+
+	"service-connectivity-b-pre-jarjar": {
+		"framework-connectivity-pre-jarjar",   // apex [com.android.tethering] -> system
+		"framework-connectivity-b-pre-jarjar", // apex [com.android.tethering] -> system
 		"framework-connectivity-t-pre-jarjar", // apex [com.android.tethering] -> system
 	},
 
