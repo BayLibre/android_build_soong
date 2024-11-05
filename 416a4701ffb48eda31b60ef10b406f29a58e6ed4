@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90ab37c1_82f69fbc",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-05T18:44:39Z",
+      "side": 1,
+      "message": "I don\u0027t think this should happen during `PackagingBase.GatherPackagingSpecsWithFilter`, it\u0027s essentially becoming a filterMap operation.\n\nCould you instead make a separate `modifyPackagingSpec` callback that\u0027s called in `gatherFilteredPackagingSpecs`, to at least create some level of separation of concerns?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "416a4701ffb48eda31b60ef10b406f29a58e6ed4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
