@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ed6d5f7_001e6183",
+        "filename": "docs/selects.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-05T00:11:24Z",
+      "side": 1,
+      "message": "I was using variable to refer to both here, changed one of them to \"select conditions\".",
+      "parentUuid": "bdb513b2_62e9ea0a",
+      "revId": "21c69e1b0ac154fb1de61ac6c887f2f93afe4969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5129bac3_ec7a0557",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b38bf52_d705c4da",
+        "filename": "docs/selects.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-05T00:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5129bac3_ec7a0557",
+      "range": {
+        "startLine": 142,
+        "startChar": 276,
+        "endLine": 142,
+        "endChar": 279
+      },
+      "revId": "21c69e1b0ac154fb1de61ac6c887f2f93afe4969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5a39052_187f87e2",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-11-04T18:41:04Z",
       "side": 1,
       "message": "nit: change to public link\n```suggestion\nThe enabled property underwent this migration in https://r.android.com/3066188\n\n```",
+      "revId": "21c69e1b0ac154fb1de61ac6c887f2f93afe4969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d7e0d61_e71391da",
+        "filename": "docs/selects.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-05T00:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5a39052_187f87e2",
       "revId": "21c69e1b0ac154fb1de61ac6c887f2f93afe4969",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
