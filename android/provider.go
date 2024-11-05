@@ -1,6 +1,8 @@
 package android
 
 import (
+	"reflect"
+
 	"github.com/google/blueprint"
 )
 
@@ -83,6 +85,12 @@ var _ SetProviderContext = TopDownMutatorContext(nil)
 // TopDownMutatorContext.
 func SetProvider[K any](ctx SetProviderContext, provider blueprint.ProviderKey[K], value K) {
 	ctx.setProvider(provider, value)
+}
+
+func SetProviderIfNotZero[K any](ctx SetProviderContext, provider blueprint.ProviderKey[K], value K) {
+	if !reflect.ValueOf(value).IsZero() {
+		ctx.setProvider(provider, value)
+	}
 }
 
 var _ OtherModuleProviderContext = (*otherModuleProviderAdaptor)(nil)
