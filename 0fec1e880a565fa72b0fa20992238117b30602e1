@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10916fc3_e5e3ec8c",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-05T21:56:15Z",
+      "side": 1,
+      "message": "These can be const",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "0fec1e880a565fa72b0fa20992238117b30602e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "444d710a_957610b3",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-05T21:56:15Z",
+      "side": 1,
+      "message": "use camel case",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 16
+      },
+      "revId": "0fec1e880a565fa72b0fa20992238117b30602e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e09dd4_50a81e18",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2107,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-05T21:56:15Z",
+      "side": 1,
+      "message": "I don\u0027t have any strong objection to exporting the files this way, but it does mean that the files are now accessible through Android.bp files using the `\"module:{tag}` syntax, which could lock this in permanently.",
+      "revId": "0fec1e880a565fa72b0fa20992238117b30602e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
