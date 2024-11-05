@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61d935bd_243b63ee",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-05T18:20:53Z",
+      "side": 1,
+      "message": "Please add this logic to `modulePartition` in `paths.go` instead so that it\u0027s common to all module types, not just prebuilt_etc.",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 2
+      },
+      "revId": "cb2b03b158932175789970733d4f665fbe291136",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
