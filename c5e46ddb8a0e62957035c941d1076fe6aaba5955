@@ -87,6 +87,30 @@
       },
       "revId": "c5e46ddb8a0e62957035c941d1076fe6aaba5955",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb321665_ed69b82c",
+        "filename": "fsgen/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-05T23:41:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0ad67c9_f3efc3b9",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "c5e46ddb8a0e62957035c941d1076fe6aaba5955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
