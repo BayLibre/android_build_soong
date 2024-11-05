@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd267101_dae3bb13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-05T23:55:12Z",
+      "side": 1,
+      "message": "I\u0027m assuming there\u0027s not a need to override this this information at the level of the parent module, but let me know if that\u0027s not the case.",
+      "revId": "311bf49f4494d9d4f6f4dce150eb1836acce51be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
