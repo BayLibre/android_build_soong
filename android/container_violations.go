@@ -831,6 +831,11 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 		"app-compat-annotations", // apex [com.android.tethering] -> system
 	},
 
+	"framework-connectivity-b.impl": {
+		"app-compat-annotations",            // apex [com.android.tethering] -> system
+		"framework-connectivity-pre-jarjar", // apex [com.android.tethering] -> system
+	},
+
 	"framework-ondevicepersonalization.impl": {
 		"ondevicepersonalization_flags_lib", // apex [com.android.ondevicepersonalization] -> system
 	},
@@ -1014,6 +1019,12 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 
 	"service-connectivity": {
 		"libprotobuf-java-nano", // apex [com.android.tethering] -> apex [com.android.wifi, test_com.android.wifi]
+	},
+
+	"service-connectivity-b-module-pre-jarjar": {
+		"framework-connectivity-pre-jarjar",   // apex [com.android.tethering] -> system
+		"framework-connectivity-b-pre-jarjar", // apex [com.android.tethering] -> system
+		"framework-connectivity-t-pre-jarjar", // apex [com.android.tethering] -> system
 	},
 
 	"service-connectivity-pre-jarjar": {
