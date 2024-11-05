@@ -17,6 +17,8 @@ package filesystem
 import (
 	"android/soong/android"
 	"android/soong/linkerconfig"
+	"path/filepath"
+	"strings"
 )
 
 type systemImage struct {
@@ -38,6 +40,7 @@ func SystemImageFactory() android.Module {
 	module.AddProperties(&module.properties)
 	module.filesystem.buildExtraFiles = module.buildExtraFiles
 	module.filesystem.filterPackagingSpec = module.filterPackagingSpec
+	module.filesystem.modifyPackagingSpec = module.modifyPackagingSpec
 	initFilesystemModule(module, &module.filesystem)
 	return module
 }
@@ -71,5 +74,14 @@ func (s *systemImage) buildLinkerConfigFile(ctx android.ModuleContext, root andr
 // for symbol lookup by imitating "activated" paths.
 func (s *systemImage) filterPackagingSpec(ps android.PackagingSpec) bool {
 	return !ps.SkipInstall() &&
-		(ps.Partition() == "system" || ps.Partition() == "root")
+		(ps.Partition() == "system" || ps.Partition() == "root" ||
+			strings.HasPrefix(ps.Partition(), "system/"))
+}
+
+func (s *systemImage) modifyPackagingSpec(ps *android.PackagingSpec) {
+	if strings.HasPrefix(ps.Partition(), "system/") {
+		subPartition := strings.TrimPrefix(ps.Partition(), "system/")
+		ps.SetPartition("system")
+		ps.SetRelPathInPackage(filepath.Join(subPartition, ps.RelPathInPackage()))
+	}
 }

@@ -58,6 +58,11 @@ type filesystem struct {
 	// Function that filters PackagingSpec in PackagingBase.GatherPackagingSpecs()
 	filterPackagingSpec func(spec android.PackagingSpec) bool
 
+	// Function that modifies PackagingSpec in PackagingBase.GatherPackagingSpecs() to customize.
+	// For example, GSI system.img contains system_ext and product artifacts and their
+	// relPathInPackage need to be rebased to system/system_ext and system/system_product.
+	modifyPackagingSpec func(spec *android.PackagingSpec)
+
 	output     android.OutputPath
 	installDir android.InstallPath
 
@@ -765,7 +770,7 @@ func (f *filesystem) SignedOutputPath() android.Path {
 // Note that "apex" module installs its contents to "apex"(fake partition) as well
 // for symbol lookup by imitating "activated" paths.
 func (f *filesystem) gatherFilteredPackagingSpecs(ctx android.ModuleContext) map[string]android.PackagingSpec {
-	specs := f.PackagingBase.GatherPackagingSpecsWithFilter(ctx, f.filterPackagingSpec)
+	specs := f.PackagingBase.GatherPackagingSpecsWithFilterAndModifier(ctx, f.filterPackagingSpec, f.modifyPackagingSpec)
 	return specs
 }
 
@@ -791,19 +796,15 @@ type filesystemDefaults struct {
 	android.ModuleBase
 	android.DefaultsModuleBase
 
-	properties filesystemDefaultsProperties
-}
-
-type filesystemDefaultsProperties struct {
-	// Identifies which partition this is for //visibility:any_system_image (and others) visibility
-	// checks, and will be used in the future for API surface checks.
-	Partition_type *string
+	properties       FilesystemProperties
+	systemProperties systemImageProperties
 }
 
 // android_filesystem_defaults is a default module for android_filesystem and android_system_image
 func filesystemDefaultsFactory() android.Module {
 	module := &filesystemDefaults{}
 	module.AddProperties(&module.properties)
+	module.AddProperties(&module.systemProperties)
 	module.AddProperties(&android.PackagingProperties{})
 	android.InitDefaultsModule(module)
 	return module
