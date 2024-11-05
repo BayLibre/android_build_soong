@@ -39,6 +39,30 @@
       },
       "revId": "c5e46ddb8a0e62957035c941d1076fe6aaba5955",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b24da2_ec77378e",
+        "filename": "fsgen/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-05T23:35:27Z",
+      "side": 1,
+      "message": "does `fsgen_mutators_and_module_gen.go` sounds good?",
+      "parentUuid": "849bc2af_e6f64856",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "c5e46ddb8a0e62957035c941d1076fe6aaba5955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
