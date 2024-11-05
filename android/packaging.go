@@ -165,6 +165,10 @@ func (p *PackagingSpec) Partition() string {
 	return p.partition
 }
 
+func (p *PackagingSpec) SetPartition(partition string) {
+	p.partition = partition
+}
+
 func (p *PackagingSpec) SkipInstall() bool {
 	return p.skipInstall
 }
@@ -185,7 +189,7 @@ type PackageModule interface {
 
 	// GatherPackagingSpecs gathers PackagingSpecs of transitive dependencies.
 	GatherPackagingSpecs(ctx ModuleContext) map[string]PackagingSpec
-	GatherPackagingSpecsWithFilter(ctx ModuleContext, filter func(PackagingSpec) bool) map[string]PackagingSpec
+	GatherPackagingSpecsWithFilter(ctx ModuleContext, filter func(*PackagingSpec) bool) map[string]PackagingSpec
 
 	// CopyDepsToZip zips the built artifacts of the dependencies into the given zip file and
 	// returns zip entries in it. This is expected to be called in GenerateAndroidBuildActions,
@@ -444,7 +448,7 @@ func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.Dep
 	}
 }
 
-func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter func(PackagingSpec) bool) map[string]PackagingSpec {
+func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter func(*PackagingSpec) bool) map[string]PackagingSpec {
 	// packaging specs gathered from the dep that are not high priorities.
 	var regularPriorities []PackagingSpec
 
@@ -486,7 +490,7 @@ func (p *PackagingBase) GatherPackagingSpecsWithFilter(ctx ModuleContext, filter
 			}
 
 			if filter != nil {
-				if !filter(ps) {
+				if !filter(&ps) {
 					continue
 				}
 			}

@@ -17,6 +17,8 @@ package filesystem
 import (
 	"android/soong/android"
 	"android/soong/linkerconfig"
+	"path/filepath"
+	"strings"
 )
 
 type systemImage struct {
@@ -69,7 +71,17 @@ func (s *systemImage) buildLinkerConfigFile(ctx android.ModuleContext, root andr
 // Filter the result of GatherPackagingSpecs to discard items targeting outside "system" / "root"
 // partition.  Note that "apex" module installs its contents to "apex"(fake partition) as well
 // for symbol lookup by imitating "activated" paths.
-func (s *systemImage) filterPackagingSpec(ps android.PackagingSpec) bool {
+func (s *systemImage) filterPackagingSpec(ps *android.PackagingSpec) bool {
+	if ps.SkipInstall() {
+		return false
+	}
+
+	if strings.HasPrefix(ps.Partition(), "system/") {
+		subPartition := strings.TrimPrefix(ps.Partition(), "system/")
+		ps.SetPartition("system")
+		ps.SetRelPathInPackage(filepath.Join(subPartition, ps.RelPathInPackage()))
+	}
+
 	return !ps.SkipInstall() &&
 		(ps.Partition() == "system" || ps.Partition() == "root")
 }

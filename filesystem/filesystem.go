@@ -56,7 +56,7 @@ type filesystem struct {
 	buildExtraFiles func(ctx android.ModuleContext, root android.OutputPath) android.OutputPaths
 
 	// Function that filters PackagingSpec in PackagingBase.GatherPackagingSpecs()
-	filterPackagingSpec func(spec android.PackagingSpec) bool
+	filterPackagingSpec func(spec *android.PackagingSpec) bool
 
 	output     android.OutputPath
 	installDir android.InstallPath
@@ -275,7 +275,7 @@ func (f *filesystem) partitionName() string {
 	return proptools.StringDefault(f.properties.Partition_name, f.Name())
 }
 
-func (f *filesystem) filterInstallablePackagingSpec(ps android.PackagingSpec) bool {
+func (f *filesystem) filterInstallablePackagingSpec(ps *android.PackagingSpec) bool {
 	// Filesystem module respects the installation semantic. A PackagingSpec from a module with
 	// IsSkipInstall() is skipped.
 	if proptools.Bool(f.properties.Is_auto_generated) { // TODO (spandandas): Remove this.
@@ -791,19 +791,15 @@ type filesystemDefaults struct {
 	android.ModuleBase
 	android.DefaultsModuleBase
 
-	properties filesystemDefaultsProperties
-}
-
-type filesystemDefaultsProperties struct {
-	// Identifies which partition this is for //visibility:any_system_image (and others) visibility
-	// checks, and will be used in the future for API surface checks.
-	Partition_type *string
+	properties       FilesystemProperties
+	systemProperties systemImageProperties
 }
 
 // android_filesystem_defaults is a default module for android_filesystem and android_system_image
 func filesystemDefaultsFactory() android.Module {
 	module := &filesystemDefaults{}
 	module.AddProperties(&module.properties)
+	module.AddProperties(&module.systemProperties)
 	module.AddProperties(&android.PackagingProperties{})
 	android.InitDefaultsModule(module)
 	return module
