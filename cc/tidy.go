@@ -219,14 +219,14 @@ func collectTidyObjModuleTargets(ctx android.SingletonContext, module android.Mo
 	subsetTidyFileGroups := make(map[string]android.Paths) // subset group name => tidy file Paths
 
 	// (1) Collect all obj/tidy files into OS-specific groups.
-	ctx.VisitAllModuleVariants(module, func(variant android.Module) {
-		if ctx.Config().KatiEnabled() && android.ShouldSkipAndroidMkProcessing(ctx, variant) {
-			return
+	ctx.VisitAllModuleVariantProxies(module, func(variant android.ModuleProxy) {
+		osName := android.OtherModuleProviderOrDefault(ctx, variant, android.CommonPropertiesProviderKey).CompileTarget.Os.Name
+		tagged := android.OtherModuleProviderOrDefault(ctx, variant, android.OutputFilesProvider).TaggedOutputFiles
+		if files, ok := tagged[obj_files_tag]; ok {
+			addToOSGroup(osName, files, allObjFileGroups, subsetObjFileGroups)
 		}
-		if m, ok := variant.(*Module); ok {
-			osName := variant.Target().Os.Name
-			addToOSGroup(osName, m.objFiles, allObjFileGroups, subsetObjFileGroups)
-			addToOSGroup(osName, m.tidyFiles, allTidyFileGroups, subsetTidyFileGroups)
+		if files, ok := tagged[tidy_files_tag]; ok {
+			addToOSGroup(osName, files, allTidyFileGroups, subsetTidyFileGroups)
 		}
 	})
 
