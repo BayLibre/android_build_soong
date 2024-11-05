@@ -22,6 +22,30 @@
       },
       "revId": "cb2b03b158932175789970733d4f665fbe291136",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75d13ed1_2280cbcd",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-11-05T19:37:00Z",
+      "side": 1,
+      "message": "The solution in the CLs of this topic is a special handling for fs_config artifacts in dlkm_partitions, which should not be applied to other module types, we will keep it here for now and will review this once packaging is completed. There are also soong config variables that are added to indicate if a _dlkm partition is built for a product, which should also be refactored to be part of packaging logic.\n\nUpdated the bug to have these details for later refactor/cleanup.",
+      "parentUuid": "61d935bd_243b63ee",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 2
+      },
+      "revId": "cb2b03b158932175789970733d4f665fbe291136",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
