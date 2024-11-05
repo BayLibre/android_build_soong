@@ -63,6 +63,30 @@
       },
       "revId": "c5e46ddb8a0e62957035c941d1076fe6aaba5955",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0ad67c9_f3efc3b9",
+        "filename": "fsgen/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-05T23:36:12Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "e3b24da2_ec77378e",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "c5e46ddb8a0e62957035c941d1076fe6aaba5955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
