@@ -24,6 +24,8 @@ import (
 	"github.com/google/blueprint"
 )
 
+const testSuiteModuleType = "test_suite"
+
 type testSuiteTag struct{
 	blueprint.BaseDependencyTag
 }
@@ -38,7 +40,7 @@ func init() {
 }
 
 func RegisterTestSuiteBuildComponents(ctx android.RegistrationContext) {
-	ctx.RegisterModuleType("test_suite", TestSuiteFactory)
+	ctx.RegisterModuleType(testSuiteModuleType, TestSuiteFactory)
 }
 
 var PrepareForTestWithTestSuiteBuildComponents = android.GroupFixturePreparers(
@@ -71,6 +73,12 @@ func (t *testSuiteModule) DepsMutator(ctx android.BottomUpMutatorContext) {
 func (t *testSuiteModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	modulesByName := make(map[string]android.Module)
 	ctx.WalkDeps(func(child, parent android.Module) bool {
+		// Recurse into test_suite dependencies.
+		if ctx.OtherModuleType(child) == testSuiteModuleType {
+			ctx.Phony(suiteName, android.PathForPhony(ctx, child.Name()))
+			return true
+		}
+
 		// Only write out top level test suite dependencies here.
 		if _, ok := ctx.OtherModuleDependencyTag(child).(testSuiteTag); !ok {
 			return false
