@@ -16,6 +16,29 @@
       "message": "Apologies for the merge conflicts this change would create😅",
       "revId": "c5e46ddb8a0e62957035c941d1076fe6aaba5955",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849bc2af_e6f64856",
+        "filename": "fsgen/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-05T23:33:33Z",
+      "side": 1,
+      "message": "Could you give this a name that reflects what stuff should go in it?",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "c5e46ddb8a0e62957035c941d1076fe6aaba5955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
