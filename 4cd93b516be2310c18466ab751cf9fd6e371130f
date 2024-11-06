@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda7fa6b_33a5ced1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-06T04:19:49Z",
+      "side": 1,
+      "message": "Actually I noticed a diff upon further inspection. ag/30270305 should fix it.",
+      "range": {
+        "startLine": 21,
+        "startChar": 20,
+        "endLine": 21,
+        "endChar": 64
+      },
+      "revId": "4cd93b516be2310c18466ab751cf9fd6e371130f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
