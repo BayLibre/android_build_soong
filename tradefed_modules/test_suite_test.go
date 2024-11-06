@@ -16,6 +16,8 @@ package tradefed_modules
 import (
 	"android/soong/android"
 	"android/soong/java"
+	"encoding/json"
+	"slices"
 	"testing"
 )
 
@@ -50,4 +52,44 @@ func TestTestSuites(t *testing.T) {
 	if got != want {
 		t.Errorf("my-suite.json content was %q, want %q", got, want)
 	}
+	manifestPath := ctx.ModuleForTests("my-suite", "").Output("out/soong/packaging/my-suite/my-suite.json")
+	var actual testSuiteManifest
+	if err := json.Unmarshal([]byte(android.ContentFromFileRuleForTests(t, ctx.TestContext, manifestPath)), &actual); err != nil {
+		t.Errorf("failed to unmarshal manifest: %v", err)
+	}
+	slices.Sort(actual.Files)
+
+	expected := testSuiteManifest{
+		Name: "my-suite",
+		Files: []string{
+			"target/testcases/TestModule1/TestModule1.config",
+			"target/testcases/TestModule1/arm64/TestModule1.apk",
+			"target/testcases/TestModule2/TestModule2.config",
+			"target/testcases/TestModule2/arm64/TestModule2.apk",
+		},
+	}
+
+	android.AssertDeepEquals(t, "manifests differ", expected, actual)
+}
+
+func TestTestSuitesNotInstalledInTestcases(t *testing.T) {
+	t.Parallel()
+	android.GroupFixturePreparers(
+		java.PrepareForTestWithJavaDefaultModules,
+		android.FixtureRegisterWithContext(RegisterTestSuiteBuildComponents),
+	).ExtendWithErrorHandler(android.FixtureExpectsAllErrorsToMatchAPattern([]string{
+		`"SomeHostTest" is not installed in testcases`,
+	})).RunTestWithBp(t, `
+			java_test_host {
+				name: "SomeHostTest",
+				srcs: ["a.java"],
+			}
+			test_suite {
+				name: "my-suite",
+				description: "a test suite",
+				tests: [
+					"SomeHostTest",
+				]
+			}
+	`)
 }
