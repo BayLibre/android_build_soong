@@ -280,7 +280,11 @@ func (library *libraryDecorator) prepareAndroidMKProviderInfo(config android.Con
 	// they can be exceptionally used directly when APEXes are not available (e.g. during the
 	// very early stage in the boot process).
 	if len(library.Properties.Stubs.Versions) > 0 && !ctx.Host() && ctx.NotInPlatform() &&
-		!ctx.InRamdisk() && !ctx.InVendorRamdisk() && !ctx.InRecovery() && !ctx.InVendorOrProduct() && !ctx.static() {
+		!ctx.InRamdisk() && !ctx.InVendorRamdisk() && !ctx.InRecovery() && !ctx.InVendorOrProduct() && !ctx.static() &&
+		// libclang_rt.* are prebuilts that provide "stubs" (which are actually just the implementation), but are
+		// not in an apex.  Special case them for now so that the installable implementation file does not get
+		// a .bootstrap suffix.
+		!strings.HasPrefix(ctx.BaseModuleName(), "libclang_rt.") {
 		if library.buildStubs() && library.isLatestStubVersion() {
 			entries.SubName = ""
 		}

@@ -662,7 +662,7 @@ func (library *libraryDecorator) compileModuleLibApiStubs(ctx ModuleContext, fla
 	// However, having this distinction helps guard accidental
 	// promotion or demotion of API and also helps the API review process b/191371676
 	var flag string
-	if ctx.Module().(android.ApexModule).NotInPlatform() {
+	if ctx.notInPlatform() {
 		flag = "--apex"
 	} else {
 		flag = "--systemapi"
