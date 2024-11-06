@@ -34,6 +34,24 @@
       "parentUuid": "5da502a5_b0055458",
       "revId": "04d1111e5cad5117c7eddab89066d843e15be43b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51818bc5_b6ee5860",
+        "filename": "android/provider.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-11-06T00:14:29Z",
+      "side": 1,
+      "message": "oh, I then need to change the paths inside CcObjectInfo to pointers, do we want to go down this path?",
+      "parentUuid": "7ec742fd_39452eab",
+      "revId": "04d1111e5cad5117c7eddab89066d843e15be43b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
