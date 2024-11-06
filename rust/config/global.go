@@ -53,7 +53,6 @@ var (
 		"-C symbol-mangling-version=v0",
 		"--color=always",
 		"-Z dylib-lto",
-		"-Z link-native-libraries=no",
 
 		// cfg flag to indicate that we are building in AOSP with Soong
 		"--cfg soong",
