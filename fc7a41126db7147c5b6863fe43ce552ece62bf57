@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70cf7101_43a7343a",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-06T21:33:13Z",
+      "side": 1,
+      "message": "nit: Is there a reason why you\u0027d create a new interface for this? Can this just be included in `MutatorHandle` interface?",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 695,
+        "endChar": 1
+      },
+      "revId": "fc7a41126db7147c5b6863fe43ce552ece62bf57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
