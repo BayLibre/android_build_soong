@@ -16,6 +16,23 @@
       "message": "I\u0027m assuming there\u0027s not a need to override this this information at the level of the parent module, but let me know if that\u0027s not the case.",
       "revId": "311bf49f4494d9d4f6f4dce150eb1836acce51be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7154b98_d57bebac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-11-06T01:55:20Z",
+      "side": 1,
+      "message": "As I understand it, chained partition is to allow you to build the vbmeta without having to build the target partitions. So it was intentional to have these information stands alone.",
+      "revId": "311bf49f4494d9d4f6f4dce150eb1836acce51be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
