@@ -22,6 +22,30 @@
       },
       "revId": "fc7a41126db7147c5b6863fe43ce552ece62bf57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f6e0aa_8a669a56",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T21:59:30Z",
+      "side": 1,
+      "message": "It could, but I didn\u0027t want to allow calling it for non-transition mutators, nor allow transition mutators to call the other MutatorHandle methods, as they don\u0027t apply.",
+      "parentUuid": "70cf7101_43a7343a",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 695,
+        "endChar": 1
+      },
+      "revId": "fc7a41126db7147c5b6863fe43ce552ece62bf57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
