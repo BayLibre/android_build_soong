@@ -16,6 +16,24 @@
       "message": "Generated files like this shouldn\u0027t be checked in, as the python interface to protobuf is not a static surface, so proto updates may break this, and shouldn\u0027t. (Go is intentionally more compatible and does have crosschecks on generation versions)",
       "revId": "686ffc77bd3617ed913c640e34935f9a72b4ce98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ed300d_10ae9354",
+        "filename": "ui/metrics/metrics_proto/metrics_pb2.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1900272
+      },
+      "writtenOn": "2024-11-06T22:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "710680bf_a39cdb85",
+      "revId": "686ffc77bd3617ed913c640e34935f9a72b4ce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
