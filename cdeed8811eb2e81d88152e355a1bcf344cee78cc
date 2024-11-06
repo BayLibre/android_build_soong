@@ -22,6 +22,30 @@
       },
       "revId": "cdeed8811eb2e81d88152e355a1bcf344cee78cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e91ce2c1_58bc6696",
+        "filename": "etc/adb_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-06T00:48:56Z",
+      "side": 1,
+      "message": "I believe so. Replaced with `PathForModuleInstall` as suggested.",
+      "parentUuid": "b7a807f4_d92720b4",
+      "range": {
+        "startLine": 56,
+        "startChar": 25,
+        "endLine": 56,
+        "endChar": 56
+      },
+      "revId": "cdeed8811eb2e81d88152e355a1bcf344cee78cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
