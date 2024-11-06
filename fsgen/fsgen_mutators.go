@@ -143,7 +143,13 @@ func createFsGenState(ctx android.LoadHookContext, generatedPrebuiltEtcModuleNam
 					"com.android.vndk.v33": defaultDepCandidateProps(ctx.Config()),
 					"com.android.vndk.v34": defaultDepCandidateProps(ctx.Config()),
 				},
-				"system_dlkm": {},
+				"system_dlkm": {
+					// these are phony required deps of the phony fs_config_dirs_nonsystem
+					"fs_config_dirs_system_dlkm":  defaultDepCandidateProps(ctx.Config()),
+					"fs_config_files_system_dlkm": defaultDepCandidateProps(ctx.Config()),
+					// build props are automatically added to `ALL_DEFAULT_INSTALLED_MODULES`
+					"system_dlkm-build.prop": defaultDepCandidateProps(ctx.Config()),
+				},
 			},
 			soongGeneratedPartitions:  generatedPartitions(ctx),
 			fsDepsMutex:               sync.Mutex{},
