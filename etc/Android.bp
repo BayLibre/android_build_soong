@@ -12,6 +12,7 @@ bootstrap_go_package {
     ],
     srcs: [
         "adb_keys.go",
+        "avbpubkey.go",
         "install_symlink.go",
         "otacerts_zip.go",
         "prebuilt_etc.go",
@@ -23,4 +24,9 @@ bootstrap_go_package {
     pluginFor: ["soong_build"],
     // Used by plugins
     visibility: ["//visibility:public"],
+}
+
+avbpubkey {
+    name: "system_other_avbpubkey",
+    product_specific: true,
 }

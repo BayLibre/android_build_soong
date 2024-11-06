@@ -615,6 +615,8 @@ type PartitionVariables struct {
 
 	BuildingSystemDlkmImage bool     `json:",omitempty"`
 	SystemKernelModules     []string `json:",omitempty"`
+
+	BuildingSystemOtherImage bool `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
