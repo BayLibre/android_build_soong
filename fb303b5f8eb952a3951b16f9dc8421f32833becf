@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a6bd26_7eedd5cb",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T00:41:13Z",
+      "side": 1,
+      "message": "These are going to be full paths from the root of the source tree. We\u0027re probably going to have to make filegroups for them so be able to reference them in a different folder.",
+      "revId": "fb303b5f8eb952a3951b16f9dc8421f32833becf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f0e433c9_47a09b93",
