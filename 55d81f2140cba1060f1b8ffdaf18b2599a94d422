@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e409cdb_2f809787",
+        "filename": "android/android_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-06T18:39:58Z",
+      "side": 1,
+      "message": "Should this be `mergeAndRemoveComments`?",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b9e3ad1c_df0e7f52",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/android_info.go",
+              "range": {
+                "startLine": 64,
+                "startChar": 0,
+                "endLine": 65,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tRule:   mergeAndRemoveComments,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "55d81f2140cba1060f1b8ffdaf18b2599a94d422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
