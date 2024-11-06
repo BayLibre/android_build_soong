@@ -357,6 +357,24 @@
       "parentUuid": "7d83c217_9366dbba",
       "revId": "e4e7c2383e1c0d8e3bdf2916b016064374f333fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e406788a_6f5a6325",
+        "filename": "android/android_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-06T01:14:07Z",
+      "side": 1,
+      "message": "Good catch, I forgot to upload my local changes. Should be fixed now.",
+      "parentUuid": "c896d177_34030f22",
+      "revId": "e4e7c2383e1c0d8e3bdf2916b016064374f333fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
