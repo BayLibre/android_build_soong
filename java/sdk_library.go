@@ -1762,7 +1762,7 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 	}
 
 	// Add the impl_only_libs and impl_only_static_libs *after* we're done using them in submodules.
-	module.properties.Libs = append(module.properties.Libs, module.sdkLibraryProperties.Impl_only_libs...)
+	module.properties.Libs.AppendSimpleValue(module.sdkLibraryProperties.Impl_only_libs)
 	module.properties.Static_libs.AppendSimpleValue(module.sdkLibraryProperties.Impl_only_static_libs)
 }
 

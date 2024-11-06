@@ -136,11 +136,13 @@ func (module *SdkLibrary) createImplLibrary(mctx android.DefaultableHookContext)
 
 	staticLibs := module.properties.Static_libs.Clone()
 	staticLibs.AppendSimpleValue(module.sdkLibraryProperties.Impl_only_static_libs)
+	libs := module.properties.Libs.Clone()
+	libs.AppendSimpleValue(module.sdkLibraryProperties.Impl_only_libs)
 	props := struct {
 		Name           *string
 		Enabled        proptools.Configurable[bool]
 		Visibility     []string
-		Libs           []string
+		Libs           proptools.Configurable[[]string]
 		Static_libs    proptools.Configurable[[]string]
 		Apex_available []string
 		Stem           *string
@@ -149,7 +151,7 @@ func (module *SdkLibrary) createImplLibrary(mctx android.DefaultableHookContext)
 		Enabled:    module.EnabledProperty(),
 		Visibility: visibility,
 
-		Libs: append(module.properties.Libs, module.sdkLibraryProperties.Impl_only_libs...),
+		Libs: libs,
 
 		Static_libs: staticLibs,
 		// Pass the apex_available settings down so that the impl library can be statically
@@ -231,8 +233,7 @@ func (module *SdkLibrary) createDroidstubs(mctx android.DefaultableHookContext, 
 	props.Installable = proptools.BoolPtr(false)
 	// A droiddoc module has only one Libs property and doesn't distinguish between
 	// shared libs and static libs. So we need to add both of these libs to Libs property.
-	props.Libs = proptools.NewConfigurable[[]string](nil, nil)
-	props.Libs.AppendSimpleValue(module.properties.Libs)
+	props.Libs = module.properties.Libs.Clone()
 	props.Libs.Append(module.properties.Static_libs)
 	props.Libs.AppendSimpleValue(module.sdkLibraryProperties.Stub_only_libs)
 	props.Libs.AppendSimpleValue(module.scopeToProperties[apiScope].Libs)
@@ -462,7 +463,7 @@ func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, 
 	// Ensure that stub-annotations is added to the classpath before any other libs
 	props.Libs = proptools.NewConfigurable[[]string](nil, nil)
 	props.Libs.AppendSimpleValue([]string{"stub-annotations"})
-	props.Libs.AppendSimpleValue(module.properties.Libs)
+	props.Libs.Append(module.properties.Libs)
 	props.Libs.Append(module.properties.Static_libs)
 	props.Libs.AppendSimpleValue(module.sdkLibraryProperties.Stub_only_libs)
 	props.Libs.AppendSimpleValue(module.scopeToProperties[apiScope].Libs)
