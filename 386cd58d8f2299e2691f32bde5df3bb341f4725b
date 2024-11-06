@@ -16,6 +16,29 @@
       "message": "I may need to rebase on the splitting `filesystem_creator.go` change from Jihoon.",
       "revId": "386cd58d8f2299e2691f32bde5df3bb341f4725b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e277c11_3c29ce94",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T01:10:50Z",
+      "side": 1,
+      "message": "Please add this to `PRODUCT_PACKAGES` and remove it from `auto-included-modules` instead of listing it here.",
+      "range": {
+        "startLine": 414,
+        "startChar": 6,
+        "endLine": 414,
+        "endChar": 16
+      },
+      "revId": "386cd58d8f2299e2691f32bde5df3bb341f4725b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
