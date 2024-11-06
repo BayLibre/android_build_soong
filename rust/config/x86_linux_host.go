@@ -27,7 +27,6 @@ var (
 		"-C link_self_contained=no",
 		// force rustc to use a dynamic musl libc
 		"-C target-feature=-crt-static",
-		"-Z link-native-libraries=no",
 	}
 	LinuxRustLinkFlags = []string{
 		"-B${cc_config.ClangBin}",

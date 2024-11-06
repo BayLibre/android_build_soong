@@ -595,8 +595,10 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 	}
 
 	if library.rlib() || library.dylib() {
-		library.flagExporter.exportLinkDirs(deps.linkDirs...)
-		library.flagExporter.exportLinkObjects(deps.linkObjects...)
+		library.exportLinkDirs(deps.linkDirs...)
+	}
+	if library.rlib() {
+		library.exportLinkObjects(deps.linkObjects...)
 	}
 
 	// Since we have FFI rlibs, we need to collect their includes as well
