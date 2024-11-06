@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda5c2c9_f9f14e8e",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T20:27:52Z",
+      "side": 1,
+      "message": "Could you add a TODO to only generate the symlinks if the relevant partitions exist?",
+      "revId": "7632aea6dffc0a89adbc6bb40036ff581b9568b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
