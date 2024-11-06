@@ -16,6 +16,24 @@
       "message": "This logic is also duplicated in Make here: https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/java_common.mk;l\u003d35;drc\u003d73ba79702ef72167e683998c2a9dc2ea0934833c",
       "revId": "37cc2714c9150692f73153d5a92697d087acb4c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92647e44_f641a771",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-06T16:49:57Z",
+      "side": 1,
+      "message": "Thanks! I\u0027m going to follow up with the make update.",
+      "parentUuid": "c943e3d5_e519868a",
+      "revId": "37cc2714c9150692f73153d5a92697d087acb4c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
