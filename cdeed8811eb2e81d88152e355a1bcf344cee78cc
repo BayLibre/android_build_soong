@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a807f4_d92720b4",
+        "filename": "etc/adb_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T00:43:01Z",
+      "side": 1,
+      "message": "Can we change this to just `PathForModuleInstall` now?",
+      "range": {
+        "startLine": 56,
+        "startChar": 25,
+        "endLine": 56,
+        "endChar": 56
+      },
+      "revId": "cdeed8811eb2e81d88152e355a1bcf344cee78cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
