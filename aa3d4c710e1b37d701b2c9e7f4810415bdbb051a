@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1088c67a_9b9cbc8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-11-06T03:58:48Z",
+      "side": 1,
+      "message": "Only cosmetic stuff.",
+      "revId": "aa3d4c710e1b37d701b2c9e7f4810415bdbb051a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710658ff_02446588",
+        "filename": "tradefed_modules/test_suite.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-11-06T03:58:48Z",
+      "side": 1,
+      "message": "This error would be better as \"%q is not a test module.\" Better UX. Provider is a soong implementation detail.  \n\nAlso, can you add a TODO to print out the list of possible module types. Soong doesn\u0027t have a function to query \"which modules could have this provider\" but it\u0027d be a better UX if we someday could do that.",
+      "range": {
+        "startLine": 94,
+        "startChar": 21,
+        "endLine": 94,
+        "endChar": 66
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "81277513_cd589747",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tradefed_modules/test_suite.go",
+              "range": {
+                "startLine": 94,
+                "startChar": 0,
+                "endLine": 95,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t// TODO(b/271151111): Print out the list of possible module types.\n\t\t\tctx.ModuleErrorf(\"%q is not a test module.\", name)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "aa3d4c710e1b37d701b2c9e7f4810415bdbb051a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
