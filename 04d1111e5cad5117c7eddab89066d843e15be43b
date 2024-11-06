@@ -52,6 +52,24 @@
       "parentUuid": "7ec742fd_39452eab",
       "revId": "04d1111e5cad5117c7eddab89066d843e15be43b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c2b1db_3c7a9be1",
+        "filename": "android/provider.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-11-06T01:07:33Z",
+      "side": 1,
+      "message": "I changed it to check this particular provider before calling SetProvider.",
+      "parentUuid": "51818bc5_b6ee5860",
+      "revId": "04d1111e5cad5117c7eddab89066d843e15be43b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
