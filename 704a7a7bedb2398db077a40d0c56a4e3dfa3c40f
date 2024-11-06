@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19dce9eb_07633149",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-11-06T19:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10b069a6_3da35f93",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 34
+      },
+      "revId": "704a7a7bedb2398db077a40d0c56a4e3dfa3c40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "066bdb6c_3c2fed0a",
@@ -58,6 +82,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1b20b4e_b5a0b36b",
+        "filename": "tradefed/providers.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-11-06T19:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "066bdb6c_3c2fed0a",
+      "revId": "704a7a7bedb2398db077a40d0c56a4e3dfa3c40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7edb3c2d_acc9bd5d",
@@ -71,6 +113,24 @@
       "writtenOn": "2024-11-05T18:58:58Z",
       "side": 1,
       "message": "Can this be replaced with [`filepath.Rel()`](https://pkg.go.dev/path/filepath#Rel)?",
+      "revId": "704a7a7bedb2398db077a40d0c56a4e3dfa3c40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f97a70_e012bbe2",
+        "filename": "tradefed_modules/test_module_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-11-06T19:11:26Z",
+      "side": 1,
+      "message": "No, this is a target for a relative symlink to base\u0027s dir.  We our computing the path between the Rel() dir our module and base, with intervening subdirs for the testdata.\n[feels ugly, but needed for the symlinks]",
+      "parentUuid": "7edb3c2d_acc9bd5d",
       "revId": "704a7a7bedb2398db077a40d0c56a4e3dfa3c40f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -98,6 +158,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c6e10e_f5df0f41",
+        "filename": "tradefed_modules/test_module_config_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-11-06T19:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aa04e4e_0750f637",
+      "range": {
+        "startLine": 194,
+        "startChar": 56,
+        "endLine": 194,
+        "endChar": 75
+      },
+      "revId": "704a7a7bedb2398db077a40d0c56a4e3dfa3c40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80e17eb2_2191fa55",
@@ -111,6 +195,24 @@
       "writtenOn": "2024-11-05T18:58:58Z",
       "side": 1,
       "message": "Can you clean this up?",
+      "revId": "704a7a7bedb2398db077a40d0c56a4e3dfa3c40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "429f5fba_72767a1a",
+        "filename": "tradefed_modules/test_module_config_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-11-06T19:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80e17eb2_2191fa55",
       "revId": "704a7a7bedb2398db077a40d0c56a4e3dfa3c40f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

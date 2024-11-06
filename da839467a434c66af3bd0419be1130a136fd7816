@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eb5dab6_f67a498b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-11-06T19:11:26Z",
+      "side": 1,
+      "message": "I added in more property for \"extra_test_configs\" on sh_binary to match java as an option the user wants to try too.",
+      "revId": "da839467a434c66af3bd0419be1130a136fd7816",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
