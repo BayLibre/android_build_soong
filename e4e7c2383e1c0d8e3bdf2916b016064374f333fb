@@ -339,6 +339,24 @@
       "parentUuid": "3c51824f_8bd4c7be",
       "revId": "e4e7c2383e1c0d8e3bdf2916b016064374f333fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c896d177_34030f22",
+        "filename": "android/android_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T01:06:52Z",
+      "side": 1,
+      "message": "All the mkdirs are still here though",
+      "parentUuid": "7d83c217_9366dbba",
+      "revId": "e4e7c2383e1c0d8e3bdf2916b016064374f333fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

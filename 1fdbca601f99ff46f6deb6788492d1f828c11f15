@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0a6ef8d_ef22af38",
+        "filename": "android/android_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T01:06:52Z",
+      "side": 1,
+      "message": "This needs to be part of the same command as the cat command.",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "1fdbca601f99ff46f6deb6788492d1f828c11f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
