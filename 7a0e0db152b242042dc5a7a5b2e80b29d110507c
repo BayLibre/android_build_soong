@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "735d9a43_a5775ed2",
+        "filename": "android/paths.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2061,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-11-06T03:58:53Z",
+      "side": 1,
+      "message": "I think \"packaging\" is too generic. Could this be \"test_suites\". \"testcases\" is the legacy one.",
+      "range": {
+        "startLine": 2061,
+        "startChar": 41,
+        "endLine": 2061,
+        "endChar": 50
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1daa65d7_f7140c15",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/paths.go",
+              "range": {
+                "startLine": 2061,
+                "startChar": 0,
+                "endLine": 2062,
+                "endChar": 0
+              },
+              "replacement": "\treturn pathForPartitionInstallDir(ctx, \"test_suites\", \"test_suites\", false).Join(ctx, suite).Join(ctx, pathComponents...)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7a0e0db152b242042dc5a7a5b2e80b29d110507c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
