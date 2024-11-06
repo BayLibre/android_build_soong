@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "40239d7f_a98675c1",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T01:13:51Z",
+      "side": 1,
+      "message": "Oh I see, I missed the fact that you created the module in the root directory. That\u0027s fine for now, we can revise it later.",
+      "parentUuid": "2eb50f0d_e9ea9d47",
+      "revId": "fb303b5f8eb952a3951b16f9dc8421f32833becf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f0e433c9_47a09b93",
         "filename": "fsgen/filesystem_creator.go",
         "patchSetId": 1
