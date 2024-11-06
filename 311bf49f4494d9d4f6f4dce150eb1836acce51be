@@ -33,6 +33,24 @@
       "message": "As I understand it, chained partition is to allow you to build the vbmeta without having to build the target partitions. So it was intentional to have these information stands alone.",
       "revId": "311bf49f4494d9d4f6f4dce150eb1836acce51be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5249d03_4860f0b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T21:16:44Z",
+      "side": 1,
+      "message": "Does that actually happen in practice though? I don\u0027t know of any builds that are set up to only build some of the vbmeta partitions and not others.\n\nAlso according to [this piece of documentation](https://cs.android.com/android/platform/superproject/main/+/main:external/avb/README.md;l\u003d678;drc\u003d1bbcd661f0afe4ab56c7031f57d518a19015805e), it sounds like the chained partitions are more to enable updating partitions independently, rather than building independantly.",
+      "parentUuid": "b7154b98_d57bebac",
+      "revId": "311bf49f4494d9d4f6f4dce150eb1836acce51be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
