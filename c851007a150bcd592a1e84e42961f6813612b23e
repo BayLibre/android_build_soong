@@ -16,6 +16,24 @@
       "message": "There seems to be some other [remaining](https://source.corp.google.com/search?q\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main%20%22Libs%20%5B%5Dstring%22%20case:yes%20f:build%2Fsoong%2Fjava) unconverted `Libs` properties. Are these out of scope?",
       "revId": "c851007a150bcd592a1e84e42961f6813612b23e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d31ff9_bc2c110f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T21:19:06Z",
+      "side": 1,
+      "message": "Yeah I just wanted to do the minimum. Some of those are not really the same kind of libs too.",
+      "parentUuid": "f33b12f2_308ded2a",
+      "revId": "c851007a150bcd592a1e84e42961f6813612b23e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
