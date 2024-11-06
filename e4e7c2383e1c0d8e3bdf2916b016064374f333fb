@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e0bb31_d9e91cd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T00:32:57Z",
+      "side": 1,
+      "message": "add bug",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "e4e7c2383e1c0d8e3bdf2916b016064374f333fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9abb6502_22998d3a",
+        "filename": "android/android_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T00:32:57Z",
+      "side": 1,
+      "message": "Make it an error to specify both `board_info_files` and `bootloader_board_name`.",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 67
+      },
+      "revId": "e4e7c2383e1c0d8e3bdf2916b016064374f333fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ac3ef32_955ca2aa",
+        "filename": "android/android_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T00:32:57Z",
+      "side": 1,
+      "message": "Remove these two fields, they\u0027re unused.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "e4e7c2383e1c0d8e3bdf2916b016064374f333fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de4c774e_27716f0c",
+        "filename": "android/android_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T00:32:57Z",
+      "side": 1,
+      "message": "Remove unused function",
+      "revId": "e4e7c2383e1c0d8e3bdf2916b016064374f333fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc1a246b_329f67d0",
+        "filename": "android/android_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T00:32:57Z",
+      "side": 1,
+      "message": "Pipe this output to grep instead of writing it out to a temporary file.",
+      "revId": "e4e7c2383e1c0d8e3bdf2916b016064374f333fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c51824f_8bd4c7be",
+        "filename": "android/android_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-06T00:32:57Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be necessary, ninja will create folders leading up to output files. Same for `androidInfoTxt`.",
+      "revId": "e4e7c2383e1c0d8e3bdf2916b016064374f333fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
