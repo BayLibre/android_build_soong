@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fce931f_804612a1",
+        "filename": "fsgen/vbmeta_partitions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-07T22:47:23Z",
+      "side": 1,
+      "message": "Should we also check if `len(props.RollbackIndexLocation) \u003e 0`?",
+      "revId": "3552eb6ef611eb8839521adbf8d2095de2080044",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
