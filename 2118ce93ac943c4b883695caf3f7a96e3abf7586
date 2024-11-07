@@ -22,6 +22,30 @@
       },
       "revId": "2118ce93ac943c4b883695caf3f7a96e3abf7586",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b9b9802_e5b99127",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1991362
+      },
+      "writtenOn": "2024-11-07T15:32:12Z",
+      "side": 1,
+      "message": "I followed the pattern in this file, sanitizers are disabled silently if certain conditions are met.\nStill, we can go with your suggestion, and flag an error if both are set. Can you suggest a good place to do this check?\nAlso, since XOM is now the default behavior, should we disable these sanitizers for each module individually in the bp files where they are enabled in the current code?",
+      "parentUuid": "7b6eb23f_510a7d65",
+      "range": {
+        "startLine": 980,
+        "startChar": 0,
+        "endLine": 980,
+        "endChar": 98
+      },
+      "revId": "2118ce93ac943c4b883695caf3f7a96e3abf7586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
