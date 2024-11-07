@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2ffb55_264271d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-07T23:57:08Z",
+      "side": 1,
+      "message": "Still to be done:\n- make the tool available on $PATH\n- Add FileList to a metrics pipeline.",
+      "revId": "38d99f563be2d79d004ea4be50ad75a6c18a723d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
