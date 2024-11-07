@@ -86,6 +86,24 @@
       "parentUuid": "9da18ac3_72224e00",
       "revId": "45dca5c8cc538392edbde4ee1077fc86509b2e38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cddd52eb_f255beab",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-07T22:18:30Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a4487e9e_3b372258",
+      "revId": "45dca5c8cc538392edbde4ee1077fc86509b2e38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
