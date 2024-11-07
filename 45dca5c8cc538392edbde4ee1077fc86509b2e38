@@ -16,6 +16,41 @@
       "message": "Hi, I had to undo one the suggested code changes after the coverage builds broke in presubmit.",
       "revId": "45dca5c8cc538392edbde4ee1077fc86509b2e38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da18ac3_72224e00",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-07T22:00:12Z",
+      "side": 1,
+      "message": "Is this just an extension of `Test_config`? Is there a use case where a sh_test module requires to specify more than one test configuration files?",
+      "fixSuggestions": [
+        {
+          "fixId": "c7733e41_1bee6236",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "sh/sh_binary.go",
+              "range": {
+                "startLine": 169,
+                "startChar": 0,
+                "endLine": 170,
+                "endChar": 0
+              },
+              "replacement": "\t// a list of extra test configuration files that should be installed with the module. This is\n\t// different from Test_config, which is the main test configuration file.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "45dca5c8cc538392edbde4ee1077fc86509b2e38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
