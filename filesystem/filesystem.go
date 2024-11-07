@@ -65,7 +65,15 @@ type filesystem struct {
 
 	// Keeps the entries installed from this filesystem
 	entries []string
+
+	filesystemBuilder filesystemBuilder
 }
+
+type filesystemBuilder interface {
+	BuildLinkerConfigFile(ctx android.ModuleContext, builder *android.RuleBuilder, rebasedDir android.OutputPath)
+}
+
+var _ filesystemBuilder = (*filesystem)(nil)
 
 type SymlinkDefinition struct {
 	Target *string
@@ -184,6 +192,7 @@ type LinkerConfigProperties struct {
 func FilesystemFactory() android.Module {
 	module := &filesystem{}
 	module.filterPackagingSpec = module.filterInstallablePackagingSpec
+	module.filesystemBuilder = module
 	initFilesystemModule(module, module)
 	return module
 }
@@ -442,7 +451,7 @@ func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) androi
 	f.buildFsverityMetadataFiles(ctx, builder, specs, rootDir, rebasedDir)
 	f.buildEventLogtagsFile(ctx, builder, rebasedDir)
 	f.buildAconfigFlagsFiles(ctx, builder, specs, rebasedDir)
-	f.buildLinkerConfigFile(ctx, builder, rebasedDir)
+	f.filesystemBuilder.BuildLinkerConfigFile(ctx, builder, rebasedDir)
 	f.copyFilesToProductOut(ctx, builder, rebasedDir)
 
 	// run host_init_verifier
@@ -606,7 +615,7 @@ func (f *filesystem) buildCpioImage(ctx android.ModuleContext, compressed bool) 
 	f.buildFsverityMetadataFiles(ctx, builder, specs, rootDir, rebasedDir)
 	f.buildEventLogtagsFile(ctx, builder, rebasedDir)
 	f.buildAconfigFlagsFiles(ctx, builder, specs, rebasedDir)
-	f.buildLinkerConfigFile(ctx, builder, rebasedDir)
+	f.filesystemBuilder.BuildLinkerConfigFile(ctx, builder, rebasedDir)
 	f.copyFilesToProductOut(ctx, builder, rebasedDir)
 
 	output := android.PathForModuleOut(ctx, f.installFileName()).OutputPath
@@ -698,7 +707,7 @@ func (f *filesystem) buildEventLogtagsFile(ctx android.ModuleContext, builder *a
 	f.appendToEntry(ctx, eventLogtagsPath)
 }
 
-func (f *filesystem) buildLinkerConfigFile(ctx android.ModuleContext, builder *android.RuleBuilder, rebasedDir android.OutputPath) {
+func (f *filesystem) BuildLinkerConfigFile(ctx android.ModuleContext, builder *android.RuleBuilder, rebasedDir android.OutputPath) {
 	if !proptools.Bool(f.properties.Linkerconfig.Gen_linker_config) {
 		return
 	}

@@ -17,6 +17,8 @@ package filesystem
 import (
 	"android/soong/android"
 	"android/soong/linkerconfig"
+
+	"github.com/google/blueprint/proptools"
 )
 
 type systemImage struct {
@@ -24,6 +26,8 @@ type systemImage struct {
 
 	properties systemImageProperties
 }
+
+var _ filesystemBuilder = (*systemImage)(nil)
 
 type systemImageProperties struct {
 	// Path to the input linker config json file.
@@ -36,8 +40,8 @@ type systemImageProperties struct {
 func SystemImageFactory() android.Module {
 	module := &systemImage{}
 	module.AddProperties(&module.properties)
-	module.filesystem.buildExtraFiles = module.buildExtraFiles
 	module.filesystem.filterPackagingSpec = module.filterPackagingSpec
+	module.filesystemBuilder = module
 	initFilesystemModule(module, &module.filesystem)
 	return module
 }
@@ -46,24 +50,16 @@ func (s systemImage) FsProps() FilesystemProperties {
 	return s.filesystem.properties
 }
 
-func (s *systemImage) buildExtraFiles(ctx android.ModuleContext, root android.OutputPath) android.OutputPaths {
-	if s.filesystem.properties.Partition_type != nil {
-		ctx.PropertyErrorf("partition_type", "partition_type must be unset on an android_system_image module. It is assumed to be 'system'.")
+func (s *systemImage) BuildLinkerConfigFile(ctx android.ModuleContext, builder *android.RuleBuilder, rebasedDir android.OutputPath) {
+	if !proptools.Bool(s.filesystem.properties.Linkerconfig.Gen_linker_config) {
+		return
 	}
-	lc := s.buildLinkerConfigFile(ctx, root)
-	// Add more files if needed
-	return []android.OutputPath{lc}
-}
-
-func (s *systemImage) buildLinkerConfigFile(ctx android.ModuleContext, root android.OutputPath) android.OutputPath {
-	input := android.PathForModuleSrc(ctx, android.String(s.properties.Linker_config_src))
-	output := root.Join(ctx, "system", "etc", "linker.config.pb")
 
 	provideModules, requireModules := s.getLibsForLinkerConfig(ctx)
-	builder := android.NewRuleBuilder(pctx, ctx)
-	linkerconfig.BuildLinkerConfig(ctx, builder, android.Paths{input}, provideModules, requireModules, output)
-	builder.Build("conv_linker_config", "Generate linker config protobuf "+output.String())
-	return output
+	output := rebasedDir.Join(ctx, "etc", "linker.config.pb")
+	linkerconfig.BuildLinkerConfig(ctx, builder, android.PathsForModuleSrc(ctx, s.filesystem.properties.Linkerconfig.Linker_config_srcs), provideModules, requireModules, output)
+
+	s.appendToEntry(ctx, output)
 }
 
 // Filter the result of GatherPackagingSpecs to discard items targeting outside "system" / "root"
