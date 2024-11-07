@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c975c4_aaa1001c",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-07T19:17:20Z",
+      "side": 1,
+      "message": "Please explain briefly _why_ we\u0027re doing this in the comment, and give a much more detailed explanation in the commit message.",
+      "revId": "4c684d7cf15f88dd9112284b04727310a2c90192",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
