@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e492b8b_2cdc549c",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-07T18:36:13Z",
+      "side": 1,
+      "message": "Could you also move `filterPackagingSpec` into `filesystemBuilder`? It doesn\u0027t really make sense to have both ways of allowing overriding functions.",
+      "revId": "752bb60f829afac627f73ca98b8039832b54c965",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
