@@ -824,20 +824,16 @@ func UpdateDirectlyInAnyApex(mctx BottomUpMutatorContext, am ApexModule) {
 		return false
 	})
 
-	if base.ApexProperties.DirectlyInAnyApex {
-		// Variants of a module are always visited sequentially in order, so it is safe to
-		// write to another variant of this module. For a BottomUpMutator the
-		// PrimaryModule() is visited first and FinalModule() is visited last.
-		mctx.FinalModule().(ApexModule).apexModuleBase().ApexProperties.AnyVariantDirectlyInAnyApex = true
-	}
-
-	// If this is the FinalModule (last visited module) copy
+	// If this is the final module (last visited module) copy
 	// AnyVariantDirectlyInAnyApex to all the other variants
-	if am == mctx.FinalModule().(ApexModule) {
+	if mctx.IsFinalModule(am) {
+		variantInApex := false
 		mctx.VisitAllModuleVariants(func(variant Module) {
-			variant.(ApexModule).apexModuleBase().ApexProperties.AnyVariantDirectlyInAnyApex =
-				base.ApexProperties.AnyVariantDirectlyInAnyApex
+			apexProps := variant.(ApexModule).apexModuleBase().ApexProperties
+			apexProps.AnyVariantDirectlyInAnyApex = base.ApexProperties.AnyVariantDirectlyInAnyApex
+			variantInApex = variantInApex || apexProps.DirectlyInAnyApex
 		})
+		base.ApexProperties.AnyVariantDirectlyInAnyApex = variantInApex
 	}
 }
 
