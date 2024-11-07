@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b6eb23f_510a7d65",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-11-07T02:31:43Z",
+      "side": 1,
+      "message": "Instead of silently disabling these perhaps this should error out if both XOM is enabled and one of these other flags are present. This allows the developer to understand what\u0027s actually enabled and also have a choice about which to enable.",
+      "range": {
+        "startLine": 980,
+        "startChar": 0,
+        "endLine": 980,
+        "endChar": 98
+      },
+      "revId": "2118ce93ac943c4b883695caf3f7a96e3abf7586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
