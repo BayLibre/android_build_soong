@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "568cb54c_4944c7bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-07T21:54:33Z",
+      "side": 1,
+      "message": "This would be submitted once aosp/3341515 is relanded.",
+      "revId": "e4629b25e2945445edccbd757232398015ad09f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
