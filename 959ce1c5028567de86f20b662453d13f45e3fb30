@@ -16,6 +16,24 @@
       "message": "This shouldn\u0027t get used in userdebug, that would violate go/android-userdebug-policy",
       "revId": "959ce1c5028567de86f20b662453d13f45e3fb30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "818e3f4a_ca69f680",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2024-11-07T05:49:34Z",
+      "side": 1,
+      "message": "We already have Cflags and Cppflags here, and having a compression level 6 vs 9 in userdebug would make almost no difference in resources size while saving tons of time for dev builds. I was planning to make it 5 in eng, 6 in userdebug (this makes framework resources 90kb larger for the resources size of 16mb)",
+      "parentUuid": "b057a449_babd5bdd",
+      "revId": "959ce1c5028567de86f20b662453d13f45e3fb30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
