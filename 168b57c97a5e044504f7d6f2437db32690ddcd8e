@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "366e9586_6b26a24d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-08T19:10:00Z",
+      "side": 1,
+      "message": "Sounds good, I have updated the autogeneration CL (next CL in this stack), and removed this logic from this CL.",
+      "parentUuid": "ccdc0d95_3b08f4bb",
+      "revId": "168b57c97a5e044504f7d6f2437db32690ddcd8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d93ff9e_62363e09",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-11-08T18:53:17Z",
       "side": 1,
       "message": "Could you link to the equivalent make code for this behavior?",
+      "revId": "168b57c97a5e044504f7d6f2437db32690ddcd8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d3dd12_2980680d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-08T19:10:00Z",
+      "side": 1,
+      "message": "The modules to be written to modules.load are determined [here](https://source.corp.google.com/h/googleplex-android/platform/build/+/6b57cbfde97a565cb011da109e1b1abd72e7bea6:core/Makefile;l\u003d567-571;drc\u003d549fe2a5162548bd8b47867d35f907eb22332023;bpv\u003d1;bpt\u003d0)\n\nMy understanding of this make code is that\n1. If `BOARD_$partition_MODULES_LOAD` is empty, use `BOARD_$partition_KERNEL_MODULES`\n2. If `BOARD_$partition_MODULES_LOAD` is false, use empty\n3. Otherwise use `BOARD_$partition_MODULES_LOAD`\n\nSystem, in particular [defaults](https://source.corp.google.com/h/googleplex-android/platform/build/+/ef55daac9954896161b26db4f3ef1781b5a5694c:core/Makefile;l\u003d695-700;drc\u003d549fe2a5162548bd8b47867d35f907eb22332023;bpv\u003d1;bpt\u003d0) to (2)\n\nThis also means that we might need to add an explicit `Load_srcs` to `prebuilt_kernel_modules` in the future.",
+      "parentUuid": "2d93ff9e_62363e09",
       "revId": "168b57c97a5e044504f7d6f2437db32690ddcd8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

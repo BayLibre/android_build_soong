@@ -22,6 +22,30 @@
       },
       "revId": "db7336be67619e1438670fea1a04f48b88f6a5a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13bff689_f811e2c3",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-08T19:10:00Z",
+      "side": 1,
+      "message": "I believe `modulesLoad` is orthogonal to the other files like modules.dep. For AOSP CF, we have empty modules.load, but non-empty modules.dep for system_dlkm.img",
+      "parentUuid": "2aec8eb3_3a747e79",
+      "range": {
+        "startLine": 148,
+        "startChar": 71,
+        "endLine": 148,
+        "endChar": 78
+      },
+      "revId": "db7336be67619e1438670fea1a04f48b88f6a5a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
