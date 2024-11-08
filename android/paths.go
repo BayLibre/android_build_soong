@@ -91,6 +91,8 @@ type ModuleWithDepsPathContext interface {
 	EarlyModulePathContext
 	OtherModuleProviderContext
 	VisitDirectDeps(visit func(Module))
+	VisitDirectDepsProxy(visit func(ModuleProxy))
+	VisitDirectDepsProxyWithTag(tag blueprint.DependencyTag, visit func(ModuleProxy))
 	OtherModuleDependencyTag(m blueprint.Module) blueprint.DependencyTag
 	HasMutatorFinished(mutatorName string) bool
 }
@@ -611,7 +613,7 @@ func DirectoryPathsForModuleSrc(ctx ModuleMissingDepsPathContext, paths []string
 			if !ok {
 				panic(fmt.Errorf("%s is not an OtherModuleProviderContext", ctx))
 			}
-			if dirProvider, ok := OtherModuleProvider(mctx, module, DirProvider); ok {
+			if dirProvider, ok := OtherModuleProvider(mctx, *module, DirProvider); ok {
 				ret = append(ret, dirProvider.Dirs...)
 			} else {
 				ReportPathErrorf(ctx, "module %q does not implement DirProvider", module)
@@ -673,10 +675,11 @@ func getPathsFromModuleDep(ctx ModuleWithDepsPathContext, path, moduleName, tag 
 	if module == nil {
 		return nil, missingDependencyError{[]string{moduleName}}
 	}
-	if aModule, ok := module.(Module); ok && !aModule.Enabled(ctx) {
+	if !OtherModuleProviderOrDefault(ctx, *module, CommonPropertiesProviderKey).Enabled {
 		return nil, missingDependencyError{[]string{moduleName}}
 	}
-	outputFiles, err := outputFilesForModule(ctx, module, tag)
+
+	outputFiles, err := outputFilesForModule(ctx, *module, tag)
 	if outputFiles != nil && err == nil {
 		return outputFiles, nil
 	} else {
@@ -694,8 +697,8 @@ func getPathsFromModuleDep(ctx ModuleWithDepsPathContext, path, moduleName, tag 
 //
 // If tag is "" then the returned module will be the dependency that was added for ":moduleName".
 // Otherwise, it is the dependency that was added for ":moduleName{tag}".
-func GetModuleFromPathDep(ctx ModuleWithDepsPathContext, moduleName, tag string) blueprint.Module {
-	var found blueprint.Module
+func GetModuleFromPathDep(ctx ModuleWithDepsPathContext, moduleName, tag string) *ModuleProxy {
+	var found *ModuleProxy
 	// The sourceOrOutputDepTag uniquely identifies the module dependency as it contains both the
 	// module name and the tag. Dependencies added automatically for properties tagged with
 	// `android:"path"` are deduped so are guaranteed to be unique. It is possible for duplicate
@@ -708,11 +711,8 @@ func GetModuleFromPathDep(ctx ModuleWithDepsPathContext, moduleName, tag string)
 	// create the tag here as was supplied to create the tag when the dependency was added so that
 	// this finds the matching dependency module.
 	expectedTag := sourceOrOutputDepTag(moduleName, tag)
-	ctx.VisitDirectDeps(func(module Module) {
-		depTag := ctx.OtherModuleDependencyTag(module)
-		if depTag == expectedTag {
-			found = module
-		}
+	ctx.VisitDirectDepsProxyWithTag(expectedTag, func(module ModuleProxy) {
+		found = &module
 	})
 	return found
 }
