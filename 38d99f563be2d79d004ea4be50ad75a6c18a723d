@@ -281,6 +281,24 @@
       ],
       "revId": "38d99f563be2d79d004ea4be50ad75a6c18a723d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb15b5da_62cc831e",
+        "filename": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-08T17:44:21Z",
+      "side": 1,
+      "message": "Agreed.  And it made this file considerably shorter to make the complete switch.",
+      "parentUuid": "15c9d1bb_652b816d",
+      "revId": "38d99f563be2d79d004ea4be50ad75a6c18a723d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
