@@ -87,6 +87,24 @@
       "parentUuid": "11d3dd12_2980680d",
       "revId": "168b57c97a5e044504f7d6f2437db32690ddcd8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f8203d_923c1bc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-08T19:30:02Z",
+      "side": 1,
+      "message": "I see. Could we rename the property to be more about the intent than the implementation detail then? Like calling it `load_by_default` with a default value of `true`. Setting `load_by_default: false` means the `module.load` file will be empty.",
+      "parentUuid": "11d3dd12_2980680d",
+      "revId": "168b57c97a5e044504f7d6f2437db32690ddcd8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
