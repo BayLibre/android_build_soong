@@ -204,7 +204,7 @@ func TestDepsTracking(t *testing.T) {
 		t.Errorf("Static library dependency not detected (dependency missing from AndroidMkStaticLibs)")
 	}
 
-	if !strings.Contains(rustc.Args["rustcFlags"], "-lstatic=wholestatic") {
+	if !strings.Contains(rustc.Args["rustcFlags"], "-lstatic:+whole-archive=wholestatic") {
 		t.Errorf("-lstatic flag not being passed to rustc for static library %#v", rustc.Args["rustcFlags"])
 	}
 
