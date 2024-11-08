@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95c0c2d1_052d4cb5",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-08T22:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f85b5966_cb308c19",
+      "range": {
+        "startLine": 162,
+        "startChar": 13,
+        "endLine": 162,
+        "endChar": 20
+      },
+      "revId": "b53e527d3be0ec8b0233b05a1a81db8f9f46f1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb1357d8_8ee039dc",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-11-08T19:09:18Z",
       "side": 1,
       "message": "The final output file shouldn\u0027t end in `.tmp`, right? I assume you got this from [this line](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l\u003d486;drc\u003d549fe2a5162548bd8b47867d35f907eb22332023), but `sed -i.tmp` makes a backup of the original file to the `.tmp` file, it does its modifications to the input file.",
+      "revId": "b53e527d3be0ec8b0233b05a1a81db8f9f46f1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6ce2a4c_8281abcf",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-08T22:38:01Z",
+      "side": 1,
+      "message": "I think the `.tmp` extension here is not significant. `runDepMod` returns a [struct of artifacts](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/kernel/prebuilt_kernel_modules.go;l\u003d179?q\u003drunDepMod\u0026ct\u003dos\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main), and the filenames of the installed files are [hardcoded](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/kernel/prebuilt_kernel_modules.go;l\u003d97-100?q\u003drunDepMod\u0026ct\u003dos\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main).\n\nI used `dep.tmp` primarily because I could not come up with a better name. I have updated the extension to `.intermediates`.",
+      "parentUuid": "fb1357d8_8ee039dc",
       "revId": "b53e527d3be0ec8b0233b05a1a81db8f9f46f1af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

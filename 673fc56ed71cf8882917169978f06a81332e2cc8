@@ -22,6 +22,30 @@
       },
       "revId": "673fc56ed71cf8882917169978f06a81332e2cc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd0aab8c_0238aa61",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-08T22:38:01Z",
+      "side": 1,
+      "message": "Good point, I have added a `.modules` tag.",
+      "parentUuid": "11f0449b_b6aec637",
+      "range": {
+        "startLine": 113,
+        "startChar": 29,
+        "endLine": 113,
+        "endChar": 31
+      },
+      "revId": "673fc56ed71cf8882917169978f06a81332e2cc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
