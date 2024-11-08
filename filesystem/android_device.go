@@ -34,8 +34,14 @@ type PartitionNameProperties struct {
 	Vendor_partition_name *string
 	// Name of the Odm partition filesystem module
 	Odm_partition_name *string
+<<<<<<< PATCH SET (881cb0 Auto generate userdata.img)
+	// Name of the Userdata partition filesystem module
+	Userdata_partition_name *string
+||||||| BASE
+=======
 	// The vbmeta partition and its "chained" partitions
 	Vbmeta_partitions []string
+>>>>>>> BASE      (e130f4 Merge "Remove --allowlists" into main)
 }
 
 type androidDevice struct {
@@ -70,9 +76,14 @@ func (a *androidDevice) DepsMutator(ctx android.BottomUpMutatorContext) {
 	addDependencyIfDefined(a.partitionProps.Product_partition_name)
 	addDependencyIfDefined(a.partitionProps.Vendor_partition_name)
 	addDependencyIfDefined(a.partitionProps.Odm_partition_name)
+<<<<<<< PATCH SET (881cb0 Auto generate userdata.img)
+	addDependencyIfDefined(a.partitionProps.Userdata_partition_name)
+||||||| BASE
+=======
 	for _, vbmetaPartition := range a.partitionProps.Vbmeta_partitions {
 		ctx.AddDependency(ctx.Module(), filesystemDepTag, vbmetaPartition)
 	}
+>>>>>>> BASE      (e130f4 Merge "Remove --allowlists" into main)
 }
 
 func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {

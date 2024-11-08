@@ -130,7 +130,14 @@ func (f *filesystemCreator) createDeviceModule(
 	if android.InList("odm", generatedPartitionTypes) {
 		partitionProps.Odm_partition_name = proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "odm"))
 	}
+<<<<<<< PATCH SET (881cb0 Auto generate userdata.img)
+	if android.InList("userdata", f.properties.Generated_partition_types) {
+		partitionProps.Userdata_partition_name = proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "userdata"))
+	}
+||||||| BASE
+=======
 	partitionProps.Vbmeta_partitions = vbmetaPartitions
+>>>>>>> BASE      (e130f4 Merge "Remove --allowlists" into main)
 
 	ctx.CreateModule(filesystem.AndroidDeviceFactory, baseProps, partitionProps)
 }
@@ -202,6 +209,8 @@ func partitionSpecificFsProps(fsProps *filesystem.FilesystemProperties, partitio
 			},
 		}
 		fsProps.Base_dir = proptools.StringPtr("odm")
+	case "userdata":
+		fsProps.Base_dir = proptools.StringPtr("data")
 
 	}
 }
