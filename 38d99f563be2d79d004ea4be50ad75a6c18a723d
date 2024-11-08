@@ -16,6 +16,271 @@
       "message": "Still to be done:\n- make the tool available on $PATH\n- Add FileList to a metrics pipeline.",
       "revId": "38d99f563be2d79d004ea4be50ad75a6c18a723d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c9d1bb_652b816d",
+        "filename": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-11-08T00:04:20Z",
+      "side": 1,
+      "message": "Is it better to have a standalone struct in-memory, or just use the proto object directly?",
+      "fixSuggestions": [
+        {
+          "fixId": "ce80a418_efa04a60",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": "type FileStates []*fid_proto.PartialCompileInput\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 33,
+                "startChar": 0,
+                "endLine": 47,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 59,
+                "startChar": 0,
+                "endLine": 64,
+                "endChar": 0
+              },
+              "replacement": "\t\tret.Files \u003d append(ret.Files, pci)\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 67,
+                "startChar": 0,
+                "endLine": 84,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 90,
+                "startChar": 0,
+                "endLine": 91,
+                "endChar": 0
+              },
+              "replacement": "func (pci *fid_proto.PartialCompileInput) InspectContents(name string) (FileStates, error) {\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 104,
+                "startChar": 0,
+                "endLine": 107,
+                "endChar": 0
+              },
+              "replacement": "\t\tpci :\u003d \u0026fid_proto.PartialCompileInput{\n\t\t\tName:      proto.String(input),\n\t\t\tMtimeNsec: proto.Int64(stat.ModTime().UnixNano()),\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 108,
+                "startChar": 0,
+                "endLine": 108,
+                "endChar": 0
+              },
+              "replacement": "\t\tfileState :\u003d pci\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 114,
+                "startChar": 0,
+                "endLine": 115,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\tpci.Contents \u003d contents\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 117,
+                "startChar": 0,
+                "endLine": 118,
+                "endChar": 0
+              },
+              "replacement": "\t\tret.Files \u003d append(ret.Files, pci)\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 121,
+                "startChar": 0,
+                "endLine": 139,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 141,
+                "startChar": 0,
+                "endLine": 143,
+                "endChar": 0
+              },
+              "replacement": "\tslices.SortFunc(s.Files, func(a, b *fid_proto.PartialCompileInput) int {\n\t\tif a.GetName() \u003c b.GetName() {\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 144,
+                "startChar": 0,
+                "endLine": 145,
+                "endChar": 0
+              },
+              "replacement": "\t\t} else if a.GetName() \u003d\u003d b.GetName() {\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 153,
+                "startChar": 0,
+                "endLine": 158,
+                "endChar": 0
+              },
+              "replacement": "\t\tret.InputFiles \u003d append(ret.InputFiles, fs)\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 186,
+                "startChar": 0,
+                "endLine": 188,
+                "endChar": 0
+              },
+              "replacement": "func (pci *fid_proto.PartialCompileInput) Equal(other *fid_proto.PartialCompileInput) bool {\n\tif pci.GetName() !\u003d other.GetName() || pci.GetMtimeNsec() !\u003d other.GetMtimeNsec() {\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 190,
+                "startChar": 0,
+                "endLine": 191,
+                "endChar": 0
+              },
+              "replacement": "\tif pci.GetHash() !\u003d other.GetHash() {\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 193,
+                "startChar": 0,
+                "endLine": 194,
+                "endChar": 0
+              },
+              "replacement": "\treturn pci.Contents.Equal(other.Contents)\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 205,
+                "startChar": 0,
+                "endLine": 206,
+                "endChar": 0
+              },
+              "replacement": "\tPriorMap :\u003d make(map[string]*fid_proto.PartialCompileInput, len(prior))\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 208,
+                "startChar": 0,
+                "endLine": 209,
+                "endChar": 0
+              },
+              "replacement": "\t\tPriorMap[v.GetName()] \u003d v\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 210,
+                "startChar": 0,
+                "endLine": 211,
+                "endChar": 0
+              },
+              "replacement": "\totherMap :\u003d make(map[string]*fid_proto.PartialCompileInput, len(other))\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 212,
+                "startChar": 0,
+                "endLine": 214,
+                "endChar": 0
+              },
+              "replacement": "\t\totherMap[v.GetName()] \u003d v\n\t\tif _, ok :\u003d PriorMap[v.GetName()]; !ok {\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 215,
+                "startChar": 0,
+                "endLine": 217,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tret.Additions \u003d append(ret.Additions, v.GetName())\n\t\t} else if !PriorMap[v.GetName()].Equal(v) {\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 218,
+                "startChar": 0,
+                "endLine": 219,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tret.Changes \u003d append(ret.Changes, *PriorMap[v.GetName()].Contents.Compare(v.Contents, v.GetName()))\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 222,
+                "startChar": 0,
+                "endLine": 223,
+                "endChar": 0
+              },
+              "replacement": "\t\tif _, ok :\u003d otherMap[v.GetName()]; !ok {\n"
+            },
+            {
+              "path": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+              "range": {
+                "startLine": 224,
+                "startChar": 0,
+                "endLine": 225,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tret.Deletions \u003d append(ret.Deletions, v.GetName())\n"
+            }
+          ]
+        }
+      ],
+      "revId": "38d99f563be2d79d004ea4be50ad75a6c18a723d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
