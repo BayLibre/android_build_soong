@@ -69,6 +69,24 @@
       "parentUuid": "f5249d03_4860f0b3",
       "revId": "311bf49f4494d9d4f6f4dce150eb1836acce51be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41df18a4_ad522a0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-08T20:49:52Z",
+      "side": 1,
+      "message": "Updated the cl to support both ways.",
+      "parentUuid": "a8b4ee85_4c2058bd",
+      "revId": "311bf49f4494d9d4f6f4dce150eb1836acce51be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
