@@ -16,6 +16,17 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
+blueprint_go_binary {
+    name: "find_input_delta-proto_internal",
+    deps: [
+        "golang-protobuf-reflect-protoreflect",
+        "golang-protobuf-runtime-protoimpl",
+    ],
+    srcs: [
+        "internal_state.pb.go",
+    ],
+}
+
 bootstrap_go_package {
     name: "soong-cmd-find_input_delta-proto_internal",
     pkgPath: "android/soong/cmd/find_input_delta/find_input_delta_proto_internal",
