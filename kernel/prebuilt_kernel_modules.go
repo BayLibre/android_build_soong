@@ -47,6 +47,10 @@ type prebuiltKernelModulesProperties struct {
 	// List or filegroup of prebuilt kernel module files. Should have .ko suffix.
 	Srcs []string `android:"path,arch_variant"`
 
+	// If true, then srcs will not be included in modules.load.
+	// This feature is used by system_dlkm
+	Create_empty_load_file *bool
+
 	// Kernel version that these modules are for. Kernel modules are installed to
 	// /lib/modules/<kernel_version> directory in the corresponding partition. Default is "".
 	Kernel_version *string
@@ -81,9 +85,13 @@ func (pkm *prebuiltKernelModules) GenerateAndroidBuildActions(ctx android.Module
 	if !pkm.installable() {
 		pkm.SkipInstall()
 	}
+	if len(pkm.properties.Srcs) == 0 {
+		return // nothing to do
+	}
+
 	modules := android.PathsForModuleSrc(ctx, pkm.properties.Srcs)
 
-	depmodOut := runDepmod(ctx, modules)
+	depmodOut := pkm.runDepmod(ctx, modules)
 	strippedModules := stripDebugSymbols(ctx, modules)
 
 	installDir := android.PathForModuleInstall(ctx, "lib", "modules")
@@ -137,7 +145,7 @@ type depmodOutputs struct {
 	modulesAlias   android.OutputPath
 }
 
-func runDepmod(ctx android.ModuleContext, modules android.Paths) depmodOutputs {
+func (pkm *prebuiltKernelModules) runDepmod(ctx android.ModuleContext, modules android.Paths) depmodOutputs {
 	baseDir := android.PathForModuleOut(ctx, "depmod").OutputPath
 	fakeVer := "0.0" // depmod demands this anyway
 	modulesDir := baseDir.Join(ctx, "lib", "modules", fakeVer)
@@ -153,14 +161,19 @@ func runDepmod(ctx android.ModuleContext, modules android.Paths) depmodOutputs {
 
 	// Enumerate modules to load
 	modulesLoad := modulesDir.Join(ctx, "modules.load")
-	var basenames []string
-	for _, m := range modules {
-		basenames = append(basenames, filepath.Base(m.String()))
+	if proptools.Bool(pkm.properties.Create_empty_load_file) {
+		builder.Command().Text("rm").Flag("-rf").Text(modulesLoad.String())
+		builder.Command().Text("touch").Output(modulesLoad)
+	} else {
+		var basenames []string
+		for _, m := range modules {
+			basenames = append(basenames, filepath.Base(m.String()))
+		}
+		builder.Command().
+			Text("echo").Flag("\"" + strings.Join(basenames, " ") + "\"").
+			Text("|").Text("tr").Flag("\" \"").Flag("\"\\n\"").
+			Text(">").Output(modulesLoad)
 	}
-	builder.Command().
-		Text("echo").Flag("\"" + strings.Join(basenames, " ") + "\"").
-		Text("|").Text("tr").Flag("\" \"").Flag("\"\\n\"").
-		Text(">").Output(modulesLoad)
 
 	// Run depmod to build modules.dep/softdep/alias files
 	modulesDep := modulesDir.Join(ctx, "modules.dep")
