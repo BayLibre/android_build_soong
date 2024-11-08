@@ -574,7 +574,9 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 
 	flags.RustFlags = append(flags.RustFlags, deps.depFlags...)
 	flags.LinkFlags = append(flags.LinkFlags, deps.depLinkFlags...)
-	flags.LinkFlags = append(flags.LinkFlags, deps.linkObjects...)
+	flags.LinkFlags = append(flags.LinkFlags, deps.rustLibObjects...)
+	flags.LinkFlags = append(flags.LinkFlags, deps.sharedLibPaths...)
+	flags.LinkFlags = append(flags.LinkFlags, deps.staticLibPaths...)
 
 	if library.dylib() {
 		// We need prefer-dynamic for now to avoid linking in the static stdlib. See:
@@ -594,9 +596,16 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		ret.kytheFile = TransformSrctoShared(ctx, crateRootPath, deps, flags, outputFile).kytheFile
 	}
 
+	// rlibs and dylibs propagate their shared and rustlib dependencies
 	if library.rlib() || library.dylib() {
 		library.flagExporter.exportLinkDirs(deps.linkDirs...)
-		library.flagExporter.exportLinkObjects(deps.linkObjects...)
+		library.flagExporter.exportRustLibs(deps.rustLibObjects...)
+		library.flagExporter.exportSharedLibs(deps.sharedLibPaths...)
+	}
+
+	// rlibs also propagate their staticlibs dependencies
+	if library.rlib() {
+		library.flagExporter.exportStaticLibs(deps.staticLibPaths...)
 	}
 
 	// Since we have FFI rlibs, we need to collect their includes as well
