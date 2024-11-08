@@ -34,6 +34,8 @@ type PartitionNameProperties struct {
 	Vendor_partition_name *string
 	// Name of the Odm partition filesystem module
 	Odm_partition_name *string
+	// Name of the Userdata partition filesystem module
+	Userdata_partition_name *string
 }
 
 type androidDevice struct {
@@ -69,6 +71,7 @@ func (a *androidDevice) DepsMutator(ctx android.BottomUpMutatorContext) {
 	addDependencyIfDefined(a.partitionProps.Product_partition_name)
 	addDependencyIfDefined(a.partitionProps.Vendor_partition_name)
 	addDependencyIfDefined(a.partitionProps.Odm_partition_name)
+	addDependencyIfDefined(a.partitionProps.Userdata_partition_name)
 }
 
 func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
