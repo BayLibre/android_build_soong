@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aec8eb3_3a747e79",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-08T18:53:17Z",
+      "side": 1,
+      "message": "`modules` is only used as an input to `modulesLoad`. Could we skip `runDepmod` entirely if `Create_empty_load_file` is true? Are the output files all empty files in that case?",
+      "range": {
+        "startLine": 148,
+        "startChar": 71,
+        "endLine": 148,
+        "endChar": 78
+      },
+      "revId": "db7336be67619e1438670fea1a04f48b88f6a5a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

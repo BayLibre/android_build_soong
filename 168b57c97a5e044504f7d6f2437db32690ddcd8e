@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccdc0d95_3b08f4bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-08T18:53:17Z",
+      "side": 1,
+      "message": "Could we just not generate a `prebuilt_kernel_modules` module in that case instead?",
+      "revId": "168b57c97a5e044504f7d6f2437db32690ddcd8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d93ff9e_62363e09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-08T18:53:17Z",
+      "side": 1,
+      "message": "Could you link to the equivalent make code for this behavior?",
+      "revId": "168b57c97a5e044504f7d6f2437db32690ddcd8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
