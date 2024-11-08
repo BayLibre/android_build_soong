@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f85b5966_cb308c19",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-08T19:09:18Z",
+      "side": 1,
+      "message": "nit: pass `$in` directly to `sed` instead of catting + piping.",
+      "range": {
+        "startLine": 162,
+        "startChar": 13,
+        "endLine": 162,
+        "endChar": 20
+      },
+      "revId": "b53e527d3be0ec8b0233b05a1a81db8f9f46f1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb1357d8_8ee039dc",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-08T19:09:18Z",
+      "side": 1,
+      "message": "The final output file shouldn\u0027t end in `.tmp`, right? I assume you got this from [this line](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l\u003d486;drc\u003d549fe2a5162548bd8b47867d35f907eb22332023), but `sed -i.tmp` makes a backup of the original file to the `.tmp` file, it does its modifications to the input file.",
+      "revId": "b53e527d3be0ec8b0233b05a1a81db8f9f46f1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
