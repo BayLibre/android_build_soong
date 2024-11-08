@@ -434,8 +434,11 @@ type PathDeps struct {
 
 	// linkDirs are link paths passed via -L to rustc. linkObjects are objects passed directly to the linker
 	// Both of these are exported and propagate to dependencies.
-	linkDirs    []string
-	linkObjects []string
+	linkDirs              []string
+	rustLibObjects        []string
+	staticLibObjects      []string
+	wholeStaticLibObjects []string
+	sharedLibObjects      []string
 
 	// exportedLinkDirs are exported linkDirs for direct rlib dependencies to
 	// cc_library_static dependants of rlibs.
@@ -468,7 +471,9 @@ type RustLibrary struct {
 
 type exportedFlagsProducer interface {
 	exportLinkDirs(...string)
-	exportLinkObjects(...string)
+	exportRustLibs(...string)
+	exportStaticLibs(...string)
+	exportSharedLibs(...string)
 }
 
 type xref interface {
@@ -476,23 +481,41 @@ type xref interface {
 }
 
 type flagExporter struct {
-	linkDirs    []string
-	ccLinkDirs  []string
-	linkObjects []string
+	linkDirs              []string
+	ccLinkDirs            []string
+	rustLibPaths          []string
+	staticLibObjects      []string
+	sharedLibObjects      []string
+	wholeStaticLibObjects []string
 }
 
 func (flagExporter *flagExporter) exportLinkDirs(dirs ...string) {
 	flagExporter.linkDirs = android.FirstUniqueStrings(append(flagExporter.linkDirs, dirs...))
 }
 
-func (flagExporter *flagExporter) exportLinkObjects(flags ...string) {
-	flagExporter.linkObjects = android.FirstUniqueStrings(append(flagExporter.linkObjects, flags...))
+func (flagExporter *flagExporter) exportRustLibs(flags ...string) {
+	flagExporter.rustLibPaths = android.FirstUniqueStrings(append(flagExporter.rustLibPaths, flags...))
+}
+
+func (flagExporter *flagExporter) exportStaticLibs(flags ...string) {
+	flagExporter.staticLibObjects = android.FirstUniqueStrings(append(flagExporter.staticLibObjects, flags...))
+}
+
+func (flagExporter *flagExporter) exportSharedLibs(flags ...string) {
+	flagExporter.sharedLibObjects = android.FirstUniqueStrings(append(flagExporter.sharedLibObjects, flags...))
+}
+
+func (flagExporter *flagExporter) exportWholeStaticLibs(flags ...string) {
+	flagExporter.wholeStaticLibObjects = android.FirstUniqueStrings(append(flagExporter.wholeStaticLibObjects, flags...))
 }
 
 func (flagExporter *flagExporter) setProvider(ctx ModuleContext) {
 	android.SetProvider(ctx, FlagExporterInfoProvider, FlagExporterInfo{
-		LinkDirs:    flagExporter.linkDirs,
-		LinkObjects: flagExporter.linkObjects,
+		LinkDirs:              flagExporter.linkDirs,
+		RustLibObjects:        flagExporter.rustLibPaths,
+		StaticLibObjects:      flagExporter.staticLibObjects,
+		WholeStaticLibObjects: flagExporter.wholeStaticLibObjects,
+		SharedLibPaths:        flagExporter.sharedLibObjects,
 	})
 }
 
@@ -503,9 +526,12 @@ func NewFlagExporter() *flagExporter {
 }
 
 type FlagExporterInfo struct {
-	Flags       []string
-	LinkDirs    []string // TODO: this should be android.Paths
-	LinkObjects []string // TODO: this should be android.Paths
+	Flags                 []string
+	LinkDirs              []string
+	RustLibObjects        []string
+	StaticLibObjects      []string
+	WholeStaticLibObjects []string
+	SharedLibPaths        []string
 }
 
 var FlagExporterInfoProvider = blueprint.NewProvider[FlagExporterInfo]()
@@ -1324,10 +1350,14 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			}
 
 			exportedInfo, _ := android.OtherModuleProvider(ctx, dep, FlagExporterInfoProvider)
+
 			//Append the dependencies exportedDirs, except for proc-macros which target a different arch/OS
 			if depTag != procMacroDepTag {
 				depPaths.depFlags = append(depPaths.depFlags, exportedInfo.Flags...)
-				depPaths.linkObjects = append(depPaths.linkObjects, exportedInfo.LinkObjects...)
+				depPaths.rustLibObjects = append(depPaths.rustLibObjects, exportedInfo.RustLibObjects...)
+				depPaths.sharedLibObjects = append(depPaths.sharedLibObjects, exportedInfo.SharedLibPaths...)
+				depPaths.staticLibObjects = append(depPaths.staticLibObjects, exportedInfo.StaticLibObjects...)
+				depPaths.wholeStaticLibObjects = append(depPaths.wholeStaticLibObjects, exportedInfo.WholeStaticLibObjects...)
 				depPaths.linkDirs = append(depPaths.linkDirs, exportedInfo.LinkDirs...)
 			}
 
@@ -1360,8 +1390,8 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					return
 				}
 			}
-			linkObject := ccDep.OutputFile()
-			if !linkObject.Valid() {
+			ccLibPath := ccDep.OutputFile()
+			if !ccLibPath.Valid() {
 				if !ctx.Config().AllowMissingDependencies() {
 					ctx.ModuleErrorf("Invalid output file when adding dep %q to %q", depName, ctx.ModuleName())
 				} else {
@@ -1370,21 +1400,25 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				return
 			}
 
-			linkPath := linkPathFromFilePath(linkObject.Path())
+			linkPath := linkPathFromFilePath(ccLibPath.Path())
 
 			exportDep := false
 			switch {
 			case cc.IsStaticDepTag(depTag):
 				if cc.IsWholeStaticLib(depTag) {
+					// We propagate staticlibs by default for non-Rust FFI
+
 					// rustc will bundle static libraries when they're passed with "-lstatic=<lib>". This will fail
 					// if the library is not prefixed by "lib".
 					if mod.Binary() {
 						// Binaries may sometimes need to link whole static libraries that don't start with 'lib'.
 						// Since binaries don't need to 'rebundle' these like libraries and only use these for the
 						// final linkage, pass the args directly to the linker to handle these cases.
-						depPaths.depLinkFlags = append(depPaths.depLinkFlags, []string{"-Wl,--whole-archive", linkObject.Path().String(), "-Wl,--no-whole-archive"}...)
-					} else if libName, ok := libNameFromFilePath(linkObject.Path()); ok {
+						depPaths.depLinkFlags = append(depPaths.depLinkFlags, []string{"-Wl,--whole-archive", ccLibPath.Path().String(), "-Wl,--no-whole-archive"}...)
+					} else if libName, ok := libNameFromFilePath(ccLibPath.Path()); ok {
+						//depPaths.depFlags = append(depPaths.depFlags, "-lstatic:+whole-archive="+libName)
 						depPaths.depFlags = append(depPaths.depFlags, "-lstatic="+libName)
+						depPaths.depLinkFlags = append(depPaths.depLinkFlags, ccLibPath.String())
 					} else {
 						ctx.ModuleErrorf("'%q' cannot be listed as a whole_static_library in Rust modules unless the output is prefixed by 'lib'", depName, ctx.ModuleName())
 					}
@@ -1392,7 +1426,12 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 				// Add this to linkObjects to pass the library directly to the linker as well. This propagates
 				// to dependencies to avoid having to redeclare static libraries for dependents of the dylib variant.
-				depPaths.linkObjects = append(depPaths.linkObjects, linkObject.String())
+				if cc.IsWholeStaticLib(depTag) {
+					depPaths.wholeStaticLibObjects = append(depPaths.wholeStaticLibObjects, ccLibPath.String())
+				} else {
+					depPaths.staticLibObjects = append(depPaths.staticLibObjects, ccLibPath.String())
+
+				}
 				depPaths.linkDirs = append(depPaths.linkDirs, linkPath)
 
 				exportedInfo, _ := android.OtherModuleProvider(ctx, dep, cc.FlagExporterInfoProvider)
@@ -1421,8 +1460,8 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 				// Re-get linkObject as ChooseStubOrImpl actually tells us which
 				// object (either from stub or non-stub) to use.
-				linkObject = android.OptionalPathForPath(sharedLibraryInfo.SharedLibrary)
-				if !linkObject.Valid() {
+				ccLibPath = android.OptionalPathForPath(sharedLibraryInfo.SharedLibrary)
+				if !ccLibPath.Valid() {
 					if !ctx.Config().AllowMissingDependencies() {
 						ctx.ModuleErrorf("Invalid output file when adding dep %q to %q", depName, ctx.ModuleName())
 					} else {
@@ -1430,10 +1469,10 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					}
 					return
 				}
-				linkPath = linkPathFromFilePath(linkObject.Path())
+				linkPath = linkPathFromFilePath(ccLibPath.Path())
 
 				depPaths.linkDirs = append(depPaths.linkDirs, linkPath)
-				depPaths.linkObjects = append(depPaths.linkObjects, linkObject.String())
+				depPaths.sharedLibObjects = append(depPaths.sharedLibObjects, ccLibPath.String())
 				depPaths.depIncludePaths = append(depPaths.depIncludePaths, exportedInfo.IncludeDirs...)
 				depPaths.depSystemIncludePaths = append(depPaths.depSystemIncludePaths, exportedInfo.SystemIncludeDirs...)
 				depPaths.depClangFlags = append(depPaths.depClangFlags, exportedInfo.Flags...)
@@ -1452,15 +1491,15 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				depPaths.depGeneratedHeaders = append(depPaths.depGeneratedHeaders, exportedInfo.GeneratedHeaders...)
 				mod.Properties.AndroidMkHeaderLibs = append(mod.Properties.AndroidMkHeaderLibs, makeLibName)
 			case depTag == cc.CrtBeginDepTag:
-				depPaths.CrtBegin = append(depPaths.CrtBegin, linkObject.Path())
+				depPaths.CrtBegin = append(depPaths.CrtBegin, ccLibPath.Path())
 			case depTag == cc.CrtEndDepTag:
-				depPaths.CrtEnd = append(depPaths.CrtEnd, linkObject.Path())
+				depPaths.CrtEnd = append(depPaths.CrtEnd, ccLibPath.Path())
 			}
 
-			// Make sure these dependencies are propagated
+			// Make sure shared dependencies are propagated
 			if lib, ok := mod.compiler.(exportedFlagsProducer); ok && exportDep {
 				lib.exportLinkDirs(linkPath)
-				lib.exportLinkObjects(linkObject.String())
+				lib.exportSharedLibs(ccLibPath.String())
 			}
 		} else {
 			switch {
@@ -1543,7 +1582,10 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 	// Dedup exported flags from dependencies
 	depPaths.linkDirs = android.FirstUniqueStrings(depPaths.linkDirs)
-	depPaths.linkObjects = android.FirstUniqueStrings(depPaths.linkObjects)
+	depPaths.rustLibObjects = android.FirstUniqueStrings(depPaths.rustLibObjects)
+	depPaths.staticLibObjects = android.FirstUniqueStrings(depPaths.staticLibObjects)
+	depPaths.wholeStaticLibObjects = android.FirstUniqueStrings(depPaths.wholeStaticLibObjects)
+	depPaths.sharedLibObjects = android.FirstUniqueStrings(depPaths.sharedLibObjects)
 	depPaths.depFlags = android.FirstUniqueStrings(depPaths.depFlags)
 	depPaths.depClangFlags = android.FirstUniqueStrings(depPaths.depClangFlags)
 	depPaths.depIncludePaths = android.FirstUniquePaths(depPaths.depIncludePaths)
