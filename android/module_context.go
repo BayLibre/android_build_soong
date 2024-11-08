@@ -16,11 +16,12 @@ package android
 
 import (
 	"fmt"
-	"github.com/google/blueprint/depset"
 	"path"
 	"path/filepath"
 	"slices"
 	"strings"
+
+	"github.com/google/blueprint/depset"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -439,9 +440,9 @@ func (m *moduleContext) GetMissingDependencies() []string {
 	return missingDeps
 }
 
-func (m *moduleContext) GetDirectDepWithTag(name string, tag blueprint.DependencyTag) blueprint.Module {
+func (m *moduleContext) GetDirectDepWithTag(name string, tag blueprint.DependencyTag) Module {
 	module, _ := m.getDirectDepInternal(name, tag)
-	return module
+	return module.(Module)
 }
 
 func (m *moduleContext) ModuleSubDir() string {
