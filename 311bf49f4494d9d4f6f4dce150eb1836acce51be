@@ -51,6 +51,24 @@
       "parentUuid": "b7154b98_d57bebac",
       "revId": "311bf49f4494d9d4f6f4dce150eb1836acce51be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b4ee85_4c2058bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-11-08T10:08:49Z",
+      "side": 1,
+      "message": "in practice, no; you are right. \n\nbut conceptually, the whole point is that you don\u0027t need to know anything about the chained partition other than its name and pubkey.\n\nat runtime, you are not guaranteed to be coupled with the chained partition you were built with. the chained partition may have built a few years later, in a completely new repository. (think about 3 year old vendor partition + tot system partition)\n\nfurthermore, with this change, the chained partition should be in Soong, which is good of course, but prevents us from making incremental evolution.\n\nwhat about supporting both then?",
+      "parentUuid": "f5249d03_4860f0b3",
+      "revId": "311bf49f4494d9d4f6f4dce150eb1836acce51be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
