@@ -15,21 +15,7 @@
 package android
 
 import (
-	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
-)
-
-var (
-	mergeAndRemoveComments = pctx.AndroidStaticRule("merge_and_remove_comments",
-		blueprint.RuleParams{
-			Command: "cat $in | grep -v '#' > $out",
-		},
-	)
-	androidInfoTxtToProp = pctx.AndroidStaticRule("android_info_txt_to_prop",
-		blueprint.RuleParams{
-			Command: "grep 'require version-' $in | sed -e 's/require version-/ro.build.expect./g' > $out",
-		},
-	)
 )
 
 type androidInfoProperties struct {
@@ -55,28 +41,28 @@ func (p *androidInfoModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 		ctx.ModuleErrorf("Either Board_info_files or Bootloader_board_name should be set. Please remove one of them\n")
 		return
 	}
-	androidInfoTxtName := proptools.StringDefault(p.properties.Stem, ctx.ModuleName()+".txt")
-	androidInfoTxt := PathForModuleOut(ctx, androidInfoTxtName)
+	outName := proptools.StringDefault(p.properties.Stem, ctx.ModuleName()+".txt")
+	androidInfoTxt := PathForModuleOut(ctx, outName).OutputPath
 	androidInfoProp := androidInfoTxt.ReplaceExtension(ctx, "prop")
 
+	rule := NewRuleBuilder(pctx, ctx)
+
 	if boardInfoFiles := PathsForModuleSrc(ctx, p.properties.Board_info_files); len(boardInfoFiles) > 0 {
-		ctx.Build(pctx, BuildParams{
-			Rule:   mergeAndRemoveComments,
-			Inputs: boardInfoFiles,
-			Output: androidInfoTxt,
-		})
+		rule.Command().Text("cat").Inputs(boardInfoFiles).
+			Text(" | grep").FlagWithArg("-v ", "'#'").FlagWithOutput("> ", androidInfoTxt)
 	} else if bootloaderBoardName := proptools.String(p.properties.Bootloader_board_name); bootloaderBoardName != "" {
-		WriteFileRule(ctx, androidInfoTxt, "board="+bootloaderBoardName)
+		rule.Command().Text("echo").Text("'board="+bootloaderBoardName+"'").FlagWithOutput("> ", androidInfoTxt)
 	} else {
-		WriteFileRule(ctx, androidInfoTxt, "")
+		rule.Command().Text("echo").Text("''").FlagWithOutput("> ", androidInfoTxt)
 	}
 
+	rule.Build(ctx.ModuleName(), "generating android-info.prop")
+
 	// Create android_info.prop
-	ctx.Build(pctx, BuildParams{
-		Rule:   androidInfoTxtToProp,
-		Input:  androidInfoTxt,
-		Output: androidInfoProp,
-	})
+	rule = NewRuleBuilder(pctx, ctx)
+	rule.Command().Text("cat").Input(androidInfoTxt).
+		Text(" | grep 'require version-' | sed -e 's/require version-/ro.build.expect./g' >").Output(androidInfoProp)
+	rule.Build(ctx.ModuleName()+"prop", "generating android-info.prop")
 
 	ctx.SetOutputFiles(Paths{androidInfoProp}, "")
 }
