@@ -14,6 +14,8 @@
 package java
 
 import (
+	"strconv"
+
 	"android/soong/android"
 	"android/soong/tradefed"
 
@@ -35,6 +37,12 @@ var ravenwoodUtilsTag = dependencyTag{name: "ravenwoodutils"}
 var ravenwoodRuntimeTag = dependencyTag{name: "ravenwoodruntime"}
 var ravenwoodTestResourceApkTag = dependencyTag{name: "ravenwoodtestresapk"}
 var ravenwoodTestInstResourceApkTag = dependencyTag{name: "ravenwoodtest-inst-res-apk"}
+
+var genManifestProperties = pctx.AndroidStaticRule("genManifestProperties",
+	blueprint.RuleParams{
+		Command: "echo targetSdkVersion=$targetSdkVersion > $out && " +
+			"echo packageName=$packageName >> $out",
+	}, "targetSdkVersion", "packageName")
 
 const ravenwoodUtilsName = "ravenwood-utils"
 const ravenwoodRuntimeName = "ravenwood-runtime"
@@ -68,6 +76,9 @@ type ravenwoodTestProperties struct {
 	// the ravenwood test can access it. This APK will be loaded as resources of the test
 	// instrumentation app itself.
 	Inst_resource_apk *string
+
+	// Specify the package name of this test module.
+	Package_name *string
 }
 
 type ravenwoodTest struct {
@@ -215,6 +226,23 @@ func (r *ravenwoodTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	copyResApk(ravenwoodTestResourceApkTag, "ravenwood-res.apk")
 	copyResApk(ravenwoodTestInstResourceApkTag, "ravenwood-inst-res.apk")
+
+	// Generate manifest properties
+	propertiesOutputPath := android.PathForModuleGen(ctx, "manifest.properties")
+	targetSdkString := strconv.Itoa(r.TargetSdkVersion(ctx).FinalOrFutureInt())
+	packageName := proptools.StringDefault(r.ravenwoodTestProperties.Package_name,
+		"com.android.ravenwood.test")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        genManifestProperties,
+		Description: "genManifestProperties",
+		Output:      propertiesOutputPath,
+		Args: map[string]string{
+			"targetSdkVersion": targetSdkString,
+			"packageName": packageName,
+		},
+	})
+	installProps := ctx.InstallFile(installPath, "manifest.properties", propertiesOutputPath)
+	installDeps = append(installDeps, installProps)
 
 	// Install our JAR with all dependencies
 	ctx.InstallFile(installPath, ctx.ModuleName()+".jar", r.outputFile, installDeps...)
