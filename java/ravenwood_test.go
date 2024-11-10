@@ -177,6 +177,9 @@ func TestRavenwoodTest(t *testing.T) {
 			resource_apk: "app2",
 			inst_resource_apk: "app3",
 			sdk_version: "test_current",
+			target_sdk_version: "34",
+			package_name: "a.b.c",
+			target_package_name: "x.y.z",
 		}
 	`)
 
@@ -199,6 +202,7 @@ func TestRavenwoodTest(t *testing.T) {
 	// Verify that we've emitted test artifacts in expected location
 	outputJar := module.Output(installPathPrefix + "/ravenwood-test/ravenwood-test.jar")
 	module.Output(installPathPrefix + "/ravenwood-test/ravenwood-test.config")
+	module.Output(installPathPrefix + "/ravenwood-test/manifest.properties")
 	module.Output(installPathPrefix + "/ravenwood-test/lib64/jni-lib1.so")
 	module.Output(installPathPrefix + "/ravenwood-test/lib64/libblue.so")
 	module.Output(installPathPrefix + "/ravenwood-test/lib64/libpink.so")
