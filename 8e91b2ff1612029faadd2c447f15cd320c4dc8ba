@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c47db342_aa5652ce",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-11T23:03:53Z",
+      "side": 1,
+      "message": "Don\u0027t make it arch_variant",
+      "range": {
+        "startLine": 108,
+        "startChar": 58,
+        "endLine": 108,
+        "endChar": 82
+      },
+      "revId": "8e91b2ff1612029faadd2c447f15cd320c4dc8ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
