@@ -24,6 +24,53 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cb33298_006cb0fe",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-11-11T03:45:41Z",
+      "side": 1,
+      "message": "B looks better to me.",
+      "parentUuid": "fd3c2b09_ff21cb81",
+      "range": {
+        "startLine": 1946,
+        "startChar": 0,
+        "endLine": 1959,
+        "endChar": 4
+      },
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c7711ff_c6afea3e",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1584,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-11-11T03:45:41Z",
+      "side": 1,
+      "message": "This doesn\u0027t appear to be used outside of the cc package. (I\u0027ve looked into two of your other CLs as well)",
+      "range": {
+        "startLine": 1584,
+        "startChar": 5,
+        "endLine": 1584,
+        "endChar": 6
+      },
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "41c0e419_f81d39f2",
@@ -37,6 +84,47 @@
       "writtenOn": "2024-10-31T18:33:18Z",
       "side": 1,
       "message": "I don\u0027t know a better solution, and maybe it\u0027s just a go-ism, but doing dynamic typechecks inside a lot of these functions seems wrong - I would ideally like to have some way to make sure that if someone is calling `CtxMinSdkVersion` it\u0027s on a module which `LinkableInterface` is implemented. Maybe it\u0027s just fallout from a limited type system?",
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "343d5660_8e957caa",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-11-11T03:45:41Z",
+      "side": 1,
+      "message": "I guess this `!ok` case should `panic`? This is not a user error.",
+      "parentUuid": "41c0e419_f81d39f2",
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b30bee22_59ab37b5",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-11-11T03:45:41Z",
+      "side": 1,
+      "message": "nit: please place functions by their arguments. For example methods for `Module` are placed in the below.",
+      "range": {
+        "startLine": 1745,
+        "startChar": 5,
+        "endLine": 1745,
+        "endChar": 18
+      },
       "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -72,6 +160,24 @@
       "side": 1,
       "message": "Ack -- this is good feedback, thanks! I\u0027ll rework these CLs to try to be less reliant on LinkableInterface.",
       "parentUuid": "512b12fb_a5271237",
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4642a7aa_d0635dc4",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-11-11T03:45:41Z",
+      "side": 1,
+      "message": "Oh, I will wait until this comment is resolved. Please ignore my prior comments.",
+      "parentUuid": "d659f351_a109a9a0",
       "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
