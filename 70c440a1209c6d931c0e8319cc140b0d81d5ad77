@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a447cb_3a820351",
+        "filename": "fsgen/prebuilt_etc_modules_gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-11T22:02:23Z",
+      "side": 1,
+      "message": "I believe this is not necessary. If the key does not exist, `filtered[src]` will be nil. Appending to `nil` is allowed in go",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 5
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b327a830_79b43d41",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fsgen/prebuilt_etc_modules_gen.go",
+              "range": {
+                "startLine": 106,
+                "startChar": 0,
+                "endLine": 109,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "70c440a1209c6d931c0e8319cc140b0d81d5ad77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
