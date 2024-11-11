@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6906b2bc_887958e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-11-11T22:21:50Z",
+      "side": 1,
+      "message": "this depends on another cl, but I mistakenly rebased it on the tip",
+      "revId": "b51cd7100365dad2e27366402e7aab55bae09a7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
