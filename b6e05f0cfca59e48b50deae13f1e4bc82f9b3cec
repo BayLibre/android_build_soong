@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de388133_9f0b5480",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-11T18:56:36Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 180,
+        "startChar": 48,
+        "endLine": 180,
+        "endChar": 69
+      },
+      "revId": "b6e05f0cfca59e48b50deae13f1e4bc82f9b3cec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a7138e4_16182deb",
         "filename": "kernel/prebuilt_kernel_modules.go",
         "patchSetId": 2
