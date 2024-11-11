@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef2cc132_b4316fd2",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-11-11T08:06:17Z",
+      "side": 1,
+      "message": "Using 999999 as pseudo vendor api level for \"future\" (or \"current\"). Since we\u0027re migrating to INTRODUCED_IN/__builtin_available(), stubs may have all symbols. Clang\u0027s target sdk version (`-target *-android\u003cver\u003e`) and runtime check should do the job.\n\nNote that this is just an interim solution until Justin\u0027s solution would fix ndkstubgen.",
+      "range": {
+        "startLine": 569,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 64
+      },
+      "revId": "748c57d24b89f901eb22b5d93c8e9d277c568dd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
