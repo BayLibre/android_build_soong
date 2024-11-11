@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df68a04a_3900059e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2066782
+      },
+      "writtenOn": "2024-11-11T23:40:39Z",
+      "side": 1,
+      "message": "Thanks! - Does this also cover `systemserverclasspath_fragments`?",
+      "revId": "0b1b008a3573da288b021d2b6037b6aba59cb2d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
