@@ -20,6 +20,7 @@ import (
 
 var androidmk_denylist []string = []string{
 	"bionic/",
+	"build/",
 	"chained_build_config/",
 	"cts/",
 	"dalvik/",
@@ -29,6 +30,9 @@ var androidmk_denylist []string = []string{
 	"device/google_car/",
 	"device/sample/",
 	"frameworks/",
+	"hardware/libhardware/",
+	"hardware/libhardware_legacy/",
+	"hardware/ril/",
 	// Do not block other directories in kernel/, see b/319658303.
 	"kernel/configs/",
 	"kernel/prebuilts/",
@@ -37,8 +41,10 @@ var androidmk_denylist []string = []string{
 	"libnativehelper/",
 	"packages/",
 	"pdk/",
+	"platform_testing/",
 	"prebuilts/",
 	"sdk/",
+	"system/",
 	"test/",
 	"trusty/",
 	// Add back toolchain/ once defensive Android.mk files are removed
