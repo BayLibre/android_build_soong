@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6f61802_8231c31e",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-11T18:55:48Z",
+      "side": 1,
+      "message": "I assume this should be `processBlocklistFile`?",
+      "range": {
+        "startLine": 126,
+        "startChar": 10,
+        "endLine": 126,
+        "endChar": 32
+      },
+      "revId": "b6e05f0cfca59e48b50deae13f1e4bc82f9b3cec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a7138e4_16182deb",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-11T18:55:48Z",
+      "side": 1,
+      "message": "Should these be `$out` instead of `$in`?",
+      "range": {
+        "startLine": 182,
+        "startChar": 13,
+        "endLine": 182,
+        "endChar": 46
+      },
+      "revId": "b6e05f0cfca59e48b50deae13f1e4bc82f9b3cec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
