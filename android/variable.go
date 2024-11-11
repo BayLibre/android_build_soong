@@ -192,6 +192,7 @@ type variableProperties struct {
 			Cmd                    *string
 			Required               []string
 			Vintf_fragment_modules []string
+			Features               []string
 		}
 		SelinuxIgnoreNeverallows struct {
 			Required []string
