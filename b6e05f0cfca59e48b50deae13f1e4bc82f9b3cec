@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5207a3d4_2092d156",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-11T19:48:23Z",
+      "side": 1,
+      "message": "Thanks for catching this. It also uncovered that my command string was improperly formatted.",
+      "parentUuid": "c6f61802_8231c31e",
+      "range": {
+        "startLine": 126,
+        "startChar": 10,
+        "endLine": 126,
+        "endChar": 32
+      },
+      "revId": "b6e05f0cfca59e48b50deae13f1e4bc82f9b3cec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de388133_9f0b5480",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d3b7723_15dbd081",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-11T19:48:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de388133_9f0b5480",
+      "range": {
+        "startLine": 180,
+        "startChar": 48,
+        "endLine": 180,
+        "endChar": 69
+      },
+      "revId": "b6e05f0cfca59e48b50deae13f1e4bc82f9b3cec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a7138e4_16182deb",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-11-11T18:55:48Z",
       "side": 1,
       "message": "Should these be `$out` instead of `$in`?",
+      "range": {
+        "startLine": 182,
+        "startChar": 13,
+        "endLine": 182,
+        "endChar": 46
+      },
+      "revId": "b6e05f0cfca59e48b50deae13f1e4bc82f9b3cec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44758f3e_c08128e9",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-11T19:48:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a7138e4_16182deb",
       "range": {
         "startLine": 182,
         "startChar": 13,
