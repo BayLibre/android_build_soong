@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93534dd8_48b5f4ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-11-11T08:13:24Z",
+      "side": 1,
+      "message": "Hye Justin and Cole, this includes a fix to the build error (which caused the revert). Diff between P1 and P2 shows the fix. Please take a look.",
+      "revId": "aa2d3f57744db82e5171b6605eecd44738a42021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
