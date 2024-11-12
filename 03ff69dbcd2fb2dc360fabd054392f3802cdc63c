@@ -70,6 +70,53 @@
       },
       "revId": "03ff69dbcd2fb2dc360fabd054392f3802cdc63c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da98caef_4c766852",
+        "filename": "android/build_prop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-12T21:57:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c7dcdb3f_81189b38",
+      "range": {
+        "startLine": 189,
+        "startChar": 24,
+        "endLine": 189,
+        "endChar": 49
+      },
+      "revId": "03ff69dbcd2fb2dc360fabd054392f3802cdc63c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2569f7ac_443f9c55",
+        "filename": "android/build_prop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-12T21:57:51Z",
+      "side": 1,
+      "message": "nit: In the current implementation, we are adding the echo and cat commands directly to the command line. This is likely fine since we have only a single footer file for now, but this can eventually cause the command line to overflow the [MAX_ARG_STRLEN](https://mail.google.com/mail/u/0/?source\u003dsync\u0026tf\u003d1\u0026view\u003dpt\u0026th\u003d189038bdc9a8d524\u0026search\u003dall\u0026msg)\n\nTo prevent this, we can consider using a [WriteFuleRule](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/android/raw_files.go;l\u003d35?q\u003dbuild%2Fsoong%2Fandroid%2Fraw_files.go\u0026ct\u003dos\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main) to create the contents of the footers and adding it to the command line using `@footer_contents` syntax.",
+      "range": {
+        "startLine": 191,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 98
+      },
+      "revId": "03ff69dbcd2fb2dc360fabd054392f3802cdc63c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
