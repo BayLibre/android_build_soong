@@ -22,6 +22,30 @@
       },
       "revId": "60a97ab9dcda9ee462ea4fdd477556ed2b05c24d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "675b0c09_ee9822dc",
+        "filename": "fsgen/prebuilt_etc_modules_gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-12T21:51:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35f9d350_7640fe28",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 0
+      },
+      "revId": "60a97ab9dcda9ee462ea4fdd477556ed2b05c24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
