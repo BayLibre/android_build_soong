@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a176ed_f6ee19a5",
+        "filename": "fsgen/filesystem_creator_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-12T17:35:44Z",
+      "side": 1,
+      "message": "This seems to be unused",
+      "range": {
+        "startLine": 309,
+        "startChar": 6,
+        "endLine": 309,
+        "endChar": 26
+      },
+      "revId": "97b19add7e343c12a66effbea486f9e0cd7675e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f0f2c8e_615f6d9b",
+        "filename": "fsgen/filesystem_creator_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-12T17:35:44Z",
+      "side": 1,
+      "message": "WDYT about keeping this struct private and replacing this with [p.SubDir()](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/etc/prebuilt_etc.go;l\u003d326-331;drc\u003da4e7e0113226fab235b0bb6a81f4d2c21efd6e21;bpv\u003d1;bpt\u003d1?q\u003dbuild%2Fsoong%2Fetc%2Fprebuilt_etc.go\u0026ct\u003dos\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main)",
+      "range": {
+        "startLine": 340,
+        "startChar": 28,
+        "endLine": 340,
+        "endChar": 52
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d02f4783_dd931f84",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fsgen/filesystem_creator_test.go",
+              "range": {
+                "startLine": 308,
+                "startChar": 0,
+                "endLine": 314,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "fsgen/filesystem_creator_test.go",
+              "range": {
+                "startLine": 340,
+                "startChar": 0,
+                "endLine": 342,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tif p, ok :\u003d actual.(*etc.PrebuiltEtc); ok {\n\t\t\t\treturn p.SubDir() \u003d\u003d \"subdir\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "97b19add7e343c12a66effbea486f9e0cd7675e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
