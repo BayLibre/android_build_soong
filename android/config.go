@@ -1466,23 +1466,38 @@ func (c *config) VendorApiLevel() string {
 	return String(c.productVariables.VendorApiLevel)
 }
 
-func (c *config) PrevVendorApiLevel() string {
-	vendorApiLevel, err := strconv.Atoi(c.VendorApiLevel())
+func parseVendorApiLevelInt(level string) int {
+	levelInt, err := strconv.Atoi(level)
 	if err != nil {
 		panic(fmt.Errorf("Cannot parse vendor API level %s to an integer: %s",
-			c.VendorApiLevel(), err))
+			level, err))
 	}
+	// Valid values are 33, 34, 202404, 202504...
+	if (levelInt >= 1 && levelInt <= 34) || (levelInt >= 202404 && levelInt%100 == 4) {
+		return levelInt
+	}
+	panic("Unknown vendor API level " + level)
+}
+
+func (c *config) PrevVendorApiLevel() string {
+	vendorApiLevel := parseVendorApiLevelInt(c.VendorApiLevel())
 	// The version before trunk stable is 34.
 	if vendorApiLevel == 202404 {
 		return "34"
 	}
-	if vendorApiLevel >= 1 && vendorApiLevel <= 34 {
-		return strconv.Itoa(vendorApiLevel - 1)
+	if vendorApiLevel > 202404 {
+		return strconv.Itoa(vendorApiLevel - 100)
 	}
-	if vendorApiLevel < 202404 || vendorApiLevel%100 != 4 {
-		panic("Unknown vendor API level " + c.VendorApiLevel())
+	return strconv.Itoa(vendorApiLevel - 1)
+}
+
+func MapVendorApiLevelToSdkVersion(level string) string {
+	levelInt := parseVendorApiLevelInt(level)
+	if levelInt >= 202404 {
+		// 202404 -> 35, 202504 -> 36
+		return strconv.Itoa(levelInt/100 - 2024 + 35)
 	}
-	return strconv.Itoa(vendorApiLevel - 100)
+	return strconv.Itoa(levelInt)
 }
 
 func IsTrunkStableVendorApiLevel(level string) bool {
