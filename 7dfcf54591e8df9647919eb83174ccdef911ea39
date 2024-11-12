@@ -16,6 +16,24 @@
       "message": "Can you add godoc for this?",
       "revId": "7dfcf54591e8df9647919eb83174ccdef911ea39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f10372_b69f4fdb",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2593,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-12T22:07:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eac49b53_8c9d191e",
+      "revId": "7dfcf54591e8df9647919eb83174ccdef911ea39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
