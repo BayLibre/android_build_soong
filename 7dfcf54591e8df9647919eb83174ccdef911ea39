@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac49b53_8c9d191e",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2593,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-12T21:53:12Z",
+      "side": 1,
+      "message": "Can you add godoc for this?",
+      "revId": "7dfcf54591e8df9647919eb83174ccdef911ea39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
