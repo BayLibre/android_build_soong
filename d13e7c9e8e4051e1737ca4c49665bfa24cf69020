@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "addbc7cf_143aedd8",
+        "filename": "android/build_prop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-12T23:32:20Z",
+      "side": 1,
+      "message": "nit: it seems like this is the only usage of `validPartitions`. Can we just add `bootimage` to `validPartitions`?",
+      "revId": "d13e7c9e8e4051e1737ca4c49665bfa24cf69020",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
