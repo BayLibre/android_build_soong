@@ -46,6 +46,30 @@
       },
       "revId": "03ff69dbcd2fb2dc360fabd054392f3802cdc63c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7dcdb3f_81189b38",
+        "filename": "android/build_prop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2024-11-12T20:14:35Z",
+      "side": 1,
+      "message": "This generates a file like\n\n```\n# from variable PRODUCT_SYSTEM_DEFAULT_PROPERTIES\n####################################\n# Auto-added by post_process_props.py\npersist.sys.usb.config\u003dadb\n####################################\n# Adding footer from [:applied_backported_fixes]\n# with path [out/soong/.intermediates/build/release/backported_fixes/applied_backported_fixes/gen/applied_backported_fixes.prop]\n####################################\nro.build.backported_fixes.alias_bitset.long_list\u003d123456\n# end of file\n```",
+      "parentUuid": "305279bb_fee12eda",
+      "range": {
+        "startLine": 189,
+        "startChar": 24,
+        "endLine": 189,
+        "endChar": 49
+      },
+      "revId": "03ff69dbcd2fb2dc360fabd054392f3802cdc63c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
