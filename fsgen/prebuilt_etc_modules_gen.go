@@ -85,25 +85,15 @@ func appendIfCorrectInstallPartition(partitionToInstallPathList []partitionToIns
 	}
 }
 
-// Create a map of source files to the list of destination files from PRODUCT_COPY_FILES entries.
-// Note that the value of the map is a list of string, given that a single source file can be
-// copied to multiple files.
-// This function also checks the existence of the source files, and validates that there is no
-// multiple source files copying to the same dest file.
-func uniqueExistingProductCopyFileMap(ctx android.LoadHookContext) map[string][]string {
+func uniqueExistingProductCopyFileMap(ctx android.LoadHookContext) map[string]string {
 	seen := make(map[string]bool)
-	filtered := make(map[string][]string)
+	filtered := make(map[string]string)
 
-	for _, copyFilePair := range ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.ProductCopyFiles {
-		srcDestList := strings.Split(copyFilePair, ":")
-		if len(srcDestList) < 2 {
-			ctx.ModuleErrorf("PRODUCT_COPY_FILES must follow the format \"src:dest\", got: %s", copyFilePair)
-		}
-		src, dest := srcDestList[0], srcDestList[1]
+	for src, dest := range ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.ProductCopyFiles {
 		if _, ok := seen[dest]; !ok {
 			if optionalPath := android.ExistentPathForSource(ctx, src); optionalPath.Valid() {
 				seen[dest] = true
-				filtered[src] = append(filtered[src], dest)
+				filtered[src] = dest
 			}
 		}
 	}
@@ -131,14 +121,12 @@ func processProductCopyFiles(ctx android.LoadHookContext) map[string]*prebuiltSr
 
 	groupedSources := map[string]*prebuiltSrcGroupByInstallPartition{}
 	for _, src := range android.SortedKeys(productCopyFileMap) {
-		destFiles := productCopyFileMap[src]
+		dest := productCopyFileMap[src]
 		srcFileDir := filepath.Dir(src)
 		if _, ok := groupedSources[srcFileDir]; !ok {
 			groupedSources[srcFileDir] = newPrebuiltSrcGroupByInstallPartition()
 		}
-		for _, dest := range destFiles {
-			appendIfCorrectInstallPartition(partitionToInstallPathList, dest, filepath.Base(src), groupedSources[srcFileDir])
-		}
+		appendIfCorrectInstallPartition(partitionToInstallPathList, dest, filepath.Base(src), groupedSources[srcFileDir])
 	}
 
 	return groupedSources
@@ -205,9 +193,12 @@ var (
 	}
 )
 
-func generatedPrebuiltEtcModuleName(partition, srcDir, destDir string, count int) string {
+func createPrebuiltEtcModule(ctx android.LoadHookContext, partition, srcDir, destDir string, destFiles []srcBaseFileInstallBaseFileTuple) string {
+	moduleProps := &prebuiltModuleProperties{}
+	propsList := []interface{}{moduleProps}
+
 	// generated module name follows the pattern:
-	// <install partition>-<src file path>-<relative install path from partition root>-<number>
+	// <install partition>-<src file path>-<relative install path from partition root>-<install file extension>
 	// Note that all path separators are replaced with "_" in the name
 	moduleName := partition
 	if !android.InList(srcDir, []string{"", "."}) {
@@ -216,27 +207,33 @@ func generatedPrebuiltEtcModuleName(partition, srcDir, destDir string, count int
 	if !android.InList(destDir, []string{"", "."}) {
 		moduleName += fmt.Sprintf("-%s", strings.ReplaceAll(destDir, string(filepath.Separator), "_"))
 	}
-	moduleName += fmt.Sprintf("-%d", count)
-
-	return moduleName
-}
-
-func groupDestFilesBySrc(destFiles []srcBaseFileInstallBaseFileTuple) (ret map[string][]srcBaseFileInstallBaseFileTuple, maxLen int) {
-	ret = map[string][]srcBaseFileInstallBaseFileTuple{}
-	maxLen = 0
-	for _, tuple := range destFiles {
-		if _, ok := ret[tuple.srcBaseFile]; !ok {
-			ret[tuple.srcBaseFile] = []srcBaseFileInstallBaseFileTuple{}
+	if len(destFiles) > 0 {
+		if ext := filepath.Ext(destFiles[0].srcBaseFile); ext != "" {
+			moduleName += fmt.Sprintf("-%s", strings.TrimPrefix(ext, "."))
 		}
-		ret[tuple.srcBaseFile] = append(ret[tuple.srcBaseFile], tuple)
-		maxLen = max(maxLen, len(ret[tuple.srcBaseFile]))
 	}
-	return ret, maxLen
-}
-
-func prebuiltEtcModuleProps(moduleName, partition string) prebuiltModuleProperties {
-	moduleProps := prebuiltModuleProperties{}
 	moduleProps.Name = proptools.StringPtr(moduleName)
+
+	allCopyFileNamesUnchanged := true
+	var srcBaseFiles, installBaseFiles []string
+	for _, tuple := range destFiles {
+		if tuple.srcBaseFile != tuple.installBaseFile {
+			allCopyFileNamesUnchanged = false
+		}
+		srcBaseFiles = append(srcBaseFiles, tuple.srcBaseFile)
+		installBaseFiles = append(installBaseFiles, tuple.installBaseFile)
+	}
+
+	// Find out the most appropriate module type to generate
+	var etcInstallPathKey string
+	for _, etcInstallPath := range android.SortedKeys(etcInstallPathToFactoryList) {
+		// Do not break when found but iterate until the end to find a module with more
+		// specific install path
+		if strings.HasPrefix(destDir, etcInstallPath) {
+			etcInstallPathKey = etcInstallPath
+		}
+	}
+	destDir, _ = filepath.Rel(etcInstallPathKey, destDir)
 
 	// Set partition specific properties
 	switch partition {
@@ -248,81 +245,39 @@ func prebuiltEtcModuleProps(moduleName, partition string) prebuiltModuleProperti
 		moduleProps.Soc_specific = proptools.BoolPtr(true)
 	}
 
+	// Set appropriate srcs, dsts, and releative_install_path based on
+	// the source and install file names
+	if allCopyFileNamesUnchanged {
+		moduleProps.Srcs = srcBaseFiles
+
+		// Specify relative_install_path if it is not installed in the root directory of the
+		// partition
+		if !android.InList(destDir, []string{"", "."}) {
+			propsList = append(propsList, &prebuiltSubdirProperties{
+				Relative_install_path: proptools.StringPtr(destDir),
+			})
+		}
+	} else {
+		moduleProps.Srcs = srcBaseFiles
+		dsts := []string{}
+		for _, installBaseFile := range installBaseFiles {
+			dsts = append(dsts, filepath.Join(destDir, installBaseFile))
+		}
+		moduleProps.Dsts = dsts
+	}
+
 	moduleProps.No_full_install = proptools.BoolPtr(true)
 	moduleProps.NamespaceExportedToMake = true
 	moduleProps.Visibility = []string{"//visibility:public"}
 
-	return moduleProps
-}
+	ctx.CreateModuleInDirectory(etcInstallPathToFactoryList[etcInstallPathKey], srcDir, propsList...)
 
-func createPrebuiltEtcModulesInDirectory(ctx android.LoadHookContext, partition, srcDir, destDir string, destFiles []srcBaseFileInstallBaseFileTuple) (moduleNames []string) {
-	groupedDestFiles, maxLen := groupDestFilesBySrc(destFiles)
-
-	// Find out the most appropriate module type to generate
-	var etcInstallPathKey string
-	for _, etcInstallPath := range android.SortedKeys(etcInstallPathToFactoryList) {
-		// Do not break when found but iterate until the end to find a module with more
-		// specific install path
-		if strings.HasPrefix(destDir, etcInstallPath) {
-			etcInstallPathKey = etcInstallPath
-		}
-	}
-	relDestDirFromInstallDirBase, _ := filepath.Rel(etcInstallPathKey, destDir)
-
-	for fileIndex := range maxLen {
-		srcTuple := []srcBaseFileInstallBaseFileTuple{}
-		for _, groupedDestFile := range groupedDestFiles {
-			if len(groupedDestFile) > fileIndex {
-				srcTuple = append(srcTuple, groupedDestFile[fileIndex])
-			}
-		}
-
-		moduleName := generatedPrebuiltEtcModuleName(partition, srcDir, destDir, fileIndex)
-		moduleProps := prebuiltEtcModuleProps(moduleName, partition)
-		modulePropsPtr := &moduleProps
-		propsList := []interface{}{modulePropsPtr}
-
-		allCopyFileNamesUnchanged := true
-		var srcBaseFiles, installBaseFiles []string
-		for _, tuple := range srcTuple {
-			if tuple.srcBaseFile != tuple.installBaseFile {
-				allCopyFileNamesUnchanged = false
-			}
-			srcBaseFiles = append(srcBaseFiles, tuple.srcBaseFile)
-			installBaseFiles = append(installBaseFiles, tuple.installBaseFile)
-		}
-
-		// Set appropriate srcs, dsts, and releative_install_path based on
-		// the source and install file names
-		if allCopyFileNamesUnchanged {
-			modulePropsPtr.Srcs = srcBaseFiles
-
-			// Specify relative_install_path if it is not installed in the root directory of the
-			// partition
-			if !android.InList(relDestDirFromInstallDirBase, []string{"", "."}) {
-				propsList = append(propsList, &prebuiltSubdirProperties{
-					Relative_install_path: proptools.StringPtr(relDestDirFromInstallDirBase),
-				})
-			}
-		} else {
-			modulePropsPtr.Srcs = srcBaseFiles
-			dsts := []string{}
-			for _, installBaseFile := range installBaseFiles {
-				dsts = append(dsts, filepath.Join(relDestDirFromInstallDirBase, installBaseFile))
-			}
-			modulePropsPtr.Dsts = dsts
-		}
-
-		ctx.CreateModuleInDirectory(etcInstallPathToFactoryList[etcInstallPathKey], srcDir, propsList...)
-		moduleNames = append(moduleNames, moduleName)
-	}
-
-	return moduleNames
+	return moduleName
 }
 
 func createPrebuiltEtcModulesForPartition(ctx android.LoadHookContext, partition, srcDir string, destDirFilesMap map[string][]srcBaseFileInstallBaseFileTuple) (ret []string) {
 	for _, destDir := range android.SortedKeys(destDirFilesMap) {
-		ret = append(ret, createPrebuiltEtcModulesInDirectory(ctx, partition, srcDir, destDir, destDirFilesMap[destDir])...)
+		ret = append(ret, createPrebuiltEtcModule(ctx, partition, srcDir, destDir, destDirFilesMap[destDir]))
 	}
 	return ret
 }
