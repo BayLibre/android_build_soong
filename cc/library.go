@@ -1289,7 +1289,7 @@ func (library *libraryDecorator) llndkIncludeDirsForAbiCheck(ctx ModuleContext, 
 func (library *libraryDecorator) linkLlndkSAbiDumpFiles(ctx ModuleContext,
 	deps PathDeps, sAbiDumpFiles android.Paths, soFile android.Path, libFileName string,
 	excludeSymbolVersions, excludeSymbolTags []string,
-	vendorApiLevel string) android.Path {
+	sdkVersion string) android.Path {
 	// NDK symbols in version 34 are LLNDK symbols. Those in version 35 are not.
 	return transformDumpToLinkedDump(ctx,
 		sAbiDumpFiles, soFile, libFileName+".llndk",
@@ -1297,7 +1297,7 @@ func (library *libraryDecorator) linkLlndkSAbiDumpFiles(ctx ModuleContext,
 		android.OptionalPathForModuleSrc(ctx, library.Properties.Llndk.Symbol_file),
 		append([]string{"*_PLATFORM", "*_PRIVATE"}, excludeSymbolVersions...),
 		append([]string{"platform-only"}, excludeSymbolTags...),
-		[]string{"llndk=" + vendorApiLevel}, "34", true /* isLlndk */)
+		[]string{"llndk"}, sdkVersion)
 }
 
 func (library *libraryDecorator) linkApexSAbiDumpFiles(ctx ModuleContext,
@@ -1310,7 +1310,7 @@ func (library *libraryDecorator) linkApexSAbiDumpFiles(ctx ModuleContext,
 		android.OptionalPathForModuleSrc(ctx, library.Properties.Stubs.Symbol_file),
 		append([]string{"*_PLATFORM", "*_PRIVATE"}, excludeSymbolVersions...),
 		append([]string{"platform-only"}, excludeSymbolTags...),
-		[]string{"apex", "systemapi"}, sdkVersion, false /* isLlndk */)
+		[]string{"apex", "systemapi"}, sdkVersion)
 }
 
 func getRefAbiDumpFile(ctx android.ModuleInstallPathContext,
@@ -1448,7 +1448,7 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, deps PathD
 			android.OptionalPathForModuleSrc(ctx, library.symbolFileForAbiCheck(ctx)),
 			headerAbiChecker.Exclude_symbol_versions,
 			headerAbiChecker.Exclude_symbol_tags,
-			[]string{} /* includeSymbolTags */, currSdkVersion, false /* isLlndk */)
+			[]string{} /* includeSymbolTags */, currSdkVersion)
 
 		var llndkDump, apexVariantDump android.Path
 		tags := classifySourceAbiDump(ctx.Module().(*Module))
