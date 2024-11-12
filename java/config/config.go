@@ -93,6 +93,7 @@ func init() {
 	pctx.StaticVariable("D8Flags", strings.Join(append([]string{
 		"-JXmx4096M",
 		"-JXX:+TieredCompilation",
+		"-Jea:com.android.tools.r8.ir.regalloc...",
 		"-JXX:TieredStopAtLevel=1",
 		"-JDcom.android.tools.r8.emitRecordAnnotationsInDex",
 		"-JDcom.android.tools.r8.emitPermittedSubclassesAnnotationsInDex",
@@ -101,6 +102,7 @@ func init() {
 	pctx.VariableFunc("R8Flags", func(ctx android.PackageVarContext) string {
 		r8flags := append([]string{
 			"-JXmx4096M",
+			"-Jea:com.android.tools.r8.ir.regalloc...",
 			"-JDcom.android.tools.r8.emitRecordAnnotationsInDex",
 			"-JDcom.android.tools.r8.emitPermittedSubclassesAnnotationsInDex",
 		}, dexerJavaVmFlagsList...)
