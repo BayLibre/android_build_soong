@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "460d8b83_c665c1c5",
+        "filename": "android/build_prop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-12T19:22:16Z",
+      "side": 1,
+      "message": "Can this be appended to `p.propFiles` in line 172 using `PathsForModuleSrc(ctx, footers)` instead of the custom handling here?",
+      "range": {
+        "startLine": 189,
+        "startChar": 24,
+        "endLine": 189,
+        "endChar": 49
+      },
+      "revId": "03ff69dbcd2fb2dc360fabd054392f3802cdc63c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
