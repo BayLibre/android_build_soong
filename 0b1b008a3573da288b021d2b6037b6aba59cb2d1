@@ -16,6 +16,24 @@
       "message": "Thanks! - Does this also cover `systemserverclasspath_fragments`?",
       "revId": "0b1b008a3573da288b021d2b6037b6aba59cb2d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f41526b0_f06a0927",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-12T00:25:54Z",
+      "side": 1,
+      "message": "`systemserverclasspath_fragments` is already supported via https://r.android.com/3189224",
+      "parentUuid": "df68a04a_3900059e",
+      "revId": "0b1b008a3573da288b021d2b6037b6aba59cb2d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
