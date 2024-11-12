@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ab043a_92617bb5",
+        "filename": "cc/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-11-12T08:11:05Z",
+      "side": 1,
+      "message": "Can we move this to L373?\n\n```\n} else if productSpecific {\n    productVariantNeeded \u003d true\n} else {\n```",
+      "range": {
+        "startLine": 380,
+        "startChar": 22,
+        "endLine": 380,
+        "endChar": 40
+      },
+      "revId": "69c65106def6a86cfd6913cb5ac791411e6210f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
