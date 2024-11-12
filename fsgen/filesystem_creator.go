@@ -421,20 +421,13 @@ func generateFsProps(ctx android.EarlyModuleContext, partitionType string) (*fil
 	fsProps := &filesystem.FilesystemProperties{}
 
 	partitionVars := ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse
-	var specificPartitionVars android.PartitionQualifiedVariablesType
-	var boardAvbEnable bool
-	var fsType string
-	if strings.Contains(partitionType, "ramdisk") {
-		fsType = "compressed_cpio"
-	} else {
-		specificPartitionVars = partitionVars.PartitionQualifiedVariables[partitionType]
-		boardAvbEnable = partitionVars.BoardAvbEnable
-		fsType = specificPartitionVars.BoardFileSystemType
-	}
+	specificPartitionVars := partitionVars.PartitionQualifiedVariables[partitionType]
+
+	// BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE
+	fsType := specificPartitionVars.BoardFileSystemType
 	if fsType == "" {
 		fsType = "ext4" //default
 	}
-
 	fsProps.Type = proptools.StringPtr(fsType)
 	if filesystem.GetFsTypeFromString(ctx, *fsProps.Type).IsUnknown() {
 		// Currently the android_filesystem module type only supports a handful of FS types like ext4, erofs
@@ -446,7 +439,7 @@ func generateFsProps(ctx android.EarlyModuleContext, partitionType string) (*fil
 	fsProps.Unchecked_module = proptools.BoolPtr(true)
 
 	// BOARD_AVB_ENABLE
-	fsProps.Use_avb = proptools.BoolPtr(boardAvbEnable)
+	fsProps.Use_avb = proptools.BoolPtr(partitionVars.BoardAvbEnable)
 	// BOARD_AVB_KEY_PATH
 	fsProps.Avb_private_key = proptools.StringPtr(specificPartitionVars.BoardAvbKeyPath)
 	// BOARD_AVB_ALGORITHM
