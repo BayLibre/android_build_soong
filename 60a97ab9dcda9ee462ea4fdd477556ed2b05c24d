@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f9d350_7640fe28",
+        "filename": "fsgen/prebuilt_etc_modules_gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-12T21:37:10Z",
+      "side": 1,
+      "message": "Can you put this code in a function in the android package to avoid adding more uses of `AbsSrcDirForExistingUseCases`?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 0
+      },
+      "revId": "60a97ab9dcda9ee462ea4fdd477556ed2b05c24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
