@@ -2589,3 +2589,15 @@ func IsThirdPartyPath(path string) bool {
 	}
 	return false
 }
+
+func ToRelativeSourcePath(ctx PathContext, path string) string {
+	ret := path
+	if filepath.IsAbs(path) {
+		relPath, err := filepath.Rel(absSrcDir, path)
+		if err != nil || strings.HasPrefix(relPath, "..") {
+			ReportPathErrorf(ctx, "%s is outside of the source root", path)
+		}
+		ret = relPath
+	}
+	return ret
+}
