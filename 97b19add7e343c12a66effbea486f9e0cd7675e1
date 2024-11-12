@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d91f563e_1625fe93",
+        "filename": "fsgen/filesystem_creator_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-12T18:05:34Z",
+      "side": 1,
+      "message": "Done, thanks for catching this.",
+      "parentUuid": "68a176ed_f6ee19a5",
+      "range": {
+        "startLine": 309,
+        "startChar": 6,
+        "endLine": 309,
+        "endChar": 26
+      },
+      "revId": "97b19add7e343c12a66effbea486f9e0cd7675e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f0f2c8e_615f6d9b",
@@ -71,6 +95,30 @@
           ]
         }
       ],
+      "revId": "97b19add7e343c12a66effbea486f9e0cd7675e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f824eb41_742c56bc",
+        "filename": "fsgen/filesystem_creator_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-12T18:05:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f0f2c8e_615f6d9b",
+      "range": {
+        "startLine": 340,
+        "startChar": 28,
+        "endLine": 340,
+        "endChar": 52
+      },
       "revId": "97b19add7e343c12a66effbea486f9e0cd7675e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
