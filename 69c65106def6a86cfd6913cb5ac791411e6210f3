@@ -22,6 +22,30 @@
       },
       "revId": "69c65106def6a86cfd6913cb5ac791411e6210f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cde48b90_4692aac3",
+        "filename": "cc/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-11-12T08:16:33Z",
+      "side": 1,
+      "message": "This looks good but it seems to cause soong test failures. I think we may want to refactor these as a follow-up task, but here I\u0027d like to keep this as-is to minimize regression.",
+      "parentUuid": "c1ab043a_92617bb5",
+      "range": {
+        "startLine": 380,
+        "startChar": 22,
+        "endLine": 380,
+        "endChar": 40
+      },
+      "revId": "69c65106def6a86cfd6913cb5ac791411e6210f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
