@@ -18,7 +18,6 @@ import (
 	"android/soong/android"
 	"android/soong/linkerconfig"
 
-	"path/filepath"
 	"strings"
 
 	"github.com/google/blueprint/proptools"
@@ -66,9 +65,5 @@ func (s *systemImage) FilterPackagingSpec(ps android.PackagingSpec) bool {
 }
 
 func (s *systemImage) ModifyPackagingSpec(ps *android.PackagingSpec) {
-	if strings.HasPrefix(ps.Partition(), "system/") {
-		subPartition := strings.TrimPrefix(ps.Partition(), "system/")
-		ps.SetPartition("system")
-		ps.SetRelPathInPackage(filepath.Join(subPartition, ps.RelPathInPackage()))
-	}
+	s.filesystem.ModifyPackagingSpec(ps)
 }
