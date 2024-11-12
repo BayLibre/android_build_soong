@@ -226,7 +226,7 @@ func TestCompareInternalState(t *testing.T) {
 	for _, tc := range testCases {
 		actual := CompareInternalState(tc.Prior, tc.New, tc.Target)
 		if !tc.Expected.Equal(actual) {
-			t.Errorf("%s: expected %q, actual %q", tc.Name, tc.Expected, actual)
+			t.Errorf("%s: expected %v, actual %v", tc.Name, tc.Expected, actual)
 		}
 	}
 }
