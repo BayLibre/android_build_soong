@@ -16,6 +16,24 @@
       "message": "nit: it seems like this is the only usage of `validPartitions`. Can we just add `bootimage` to `validPartitions`?",
       "revId": "d13e7c9e8e4051e1737ca4c49665bfa24cf69020",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3559dcb4_f4f4b21c",
+        "filename": "android/build_prop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-12T23:34:46Z",
+      "side": 1,
+      "message": "oh I thought this was the same `validPartitions` as used in filesystems, but it\u0027s not. This check doesn\u0027t seem necessary because the partition isn\u0027t user-supplied here, I removed it.",
+      "parentUuid": "addbc7cf_143aedd8",
+      "revId": "d13e7c9e8e4051e1737ca4c49665bfa24cf69020",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
