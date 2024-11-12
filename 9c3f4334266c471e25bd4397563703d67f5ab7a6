@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d915c41_660107f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1937551
+      },
+      "writtenOn": "2024-11-12T07:43:56Z",
+      "side": 1,
+      "message": "\"Hello, I would like to ask why the support for PGO was removed? Did you encounter any issues?\"",
+      "revId": "9c3f4334266c471e25bd4397563703d67f5ab7a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
