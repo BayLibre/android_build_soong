@@ -117,6 +117,30 @@
       },
       "revId": "03ff69dbcd2fb2dc360fabd054392f3802cdc63c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d64004a_e33c757a",
+        "filename": "android/build_prop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2024-11-13T18:18:33Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2569f7ac_443f9c55",
+      "range": {
+        "startLine": 191,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 98
+      },
+      "revId": "03ff69dbcd2fb2dc360fabd054392f3802cdc63c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
