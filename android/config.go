@@ -1280,7 +1280,7 @@ func (c *config) DisableScudo() bool {
 
 func (c *config) EnableXOM() bool {
 	if c.productVariables.EnableXOM == nil {
-		return true
+		return false
 	} else {
 		return Bool(c.productVariables.EnableXOM)
 	}
