@@ -19,10 +19,8 @@ package cc
 // is handled in builder.go
 
 import (
-	"errors"
 	"fmt"
 	"io"
-	"slices"
 	"strconv"
 	"strings"
 
@@ -2263,10 +2261,6 @@ func (c *Module) deps(ctx DepsContext) Deps {
 	deps.RuntimeLibs = android.LastUniqueStrings(deps.RuntimeLibs)
 	deps.LlndkHeaderLibs = android.LastUniqueStrings(deps.LlndkHeaderLibs)
 
-	if err := checkConflictingExplicitVersions(deps.SharedLibs); err != nil {
-		ctx.PropertyErrorf("shared_libs", "%s", err.Error())
-	}
-
 	for _, lib := range deps.ReexportSharedLibHeaders {
 		if !inList(lib, deps.SharedLibs) {
 			ctx.PropertyErrorf("export_shared_lib_headers", "Shared library not in shared_libs: '%s'", lib)
@@ -2292,26 +2286,6 @@ func (c *Module) deps(ctx DepsContext) Deps {
 	}
 
 	return deps
-}
-
-func checkConflictingExplicitVersions(libs []string) error {
-	withoutVersion := func(s string) string {
-		name, _ := StubsLibNameAndVersion(s)
-		return name
-	}
-	var errs []error
-	for i, lib := range libs {
-		libName := withoutVersion(lib)
-		libsToCompare := libs[i+1:]
-		j := slices.IndexFunc(libsToCompare, func(s string) bool {
-			return withoutVersion(s) == libName
-		})
-		if j >= 0 {
-			errs = append(errs, fmt.Errorf("duplicate shared libraries with different explicit versions: %q and %q",
-				lib, libsToCompare[j]))
-		}
-	}
-	return errors.Join(errs...)
 }
 
 func (c *Module) beginMutator(actx android.BottomUpMutatorContext) {
