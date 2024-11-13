@@ -608,9 +608,6 @@ type PartitionVariables struct {
 	VendorLinkerConfigSrcs  []string `json:",omitempty"`
 	ProductLinkerConfigSrcs []string `json:",omitempty"`
 
-	BoardInfoFiles      []string `json:",omitempty"`
-	BootLoaderBoardName string   `json:",omitempty"`
-
 	ProductCopyFiles map[string]string `json:",omitempty"`
 
 	BuildingSystemDlkmImage bool     `json:",omitempty"`
