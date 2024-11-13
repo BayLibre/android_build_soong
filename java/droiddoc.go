@@ -427,7 +427,7 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 	// Find the corresponding aconfig_declarations module name for such case.
 	for _, src := range j.properties.Srcs {
 		if moduleName, tag := android.SrcIsModuleWithTag(src); moduleName != "" {
-			otherModule := android.GetModuleProxyFromPathDep(ctx, moduleName, tag)
+			otherModule := android.GetModuleFromPathDep(ctx, moduleName, tag)
 			if otherModule != nil {
 				if dep, ok := android.OtherModuleProvider(ctx, *otherModule, android.CodegenInfoProvider); ok {
 					deps.aconfigProtoFiles = append(deps.aconfigProtoFiles, dep.IntermediateCacheOutputPaths...)

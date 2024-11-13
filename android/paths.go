@@ -600,7 +600,7 @@ func DirectoryPathsForModuleSrc(ctx ModuleMissingDepsPathContext, paths []string
 
 	for _, path := range paths {
 		if m, t := SrcIsModuleWithTag(path); m != "" {
-			module := GetModuleProxyFromPathDep(ctx, m, t)
+			module := GetModuleFromPathDep(ctx, m, t)
 			if module == nil {
 				ctx.ModuleErrorf(`missing dependency on %q, is the property annotated with android:"path"?`, m)
 				continue
@@ -671,7 +671,7 @@ func (p OutputPaths) Strings() []string {
 // If the dependency is not found, a missingErrorDependency is returned.
 // If the module dependency is not a SourceFileProducer or OutputFileProducer, appropriate errors will be returned.
 func getPathsFromModuleDep(ctx ModuleWithDepsPathContext, path, moduleName, tag string) (Paths, error) {
-	module := GetModuleProxyFromPathDep(ctx, moduleName, tag)
+	module := GetModuleFromPathDep(ctx, moduleName, tag)
 	if module == nil {
 		return nil, missingDependencyError{[]string{moduleName}}
 	}
@@ -687,7 +687,7 @@ func getPathsFromModuleDep(ctx ModuleWithDepsPathContext, path, moduleName, tag 
 	}
 }
 
-// GetModuleProxyFromPathDep will return the module that was added as a dependency automatically for
+// GetModuleFromPathDep will return the module that was added as a dependency automatically for
 // properties tagged with `android:"path"` or manually using ExtractSourceDeps or
 // ExtractSourcesDeps.
 //
@@ -697,7 +697,7 @@ func getPathsFromModuleDep(ctx ModuleWithDepsPathContext, path, moduleName, tag 
 //
 // If tag is "" then the returned module will be the dependency that was added for ":moduleName".
 // Otherwise, it is the dependency that was added for ":moduleName{tag}".
-func GetModuleProxyFromPathDep(ctx ModuleWithDepsPathContext, moduleName, tag string) *ModuleProxy {
+func GetModuleFromPathDep(ctx ModuleWithDepsPathContext, moduleName, tag string) *ModuleProxy {
 	var found *ModuleProxy
 	// The sourceOrOutputDepTag uniquely identifies the module dependency as it contains both the
 	// module name and the tag. Dependencies added automatically for properties tagged with
@@ -713,30 +713,6 @@ func GetModuleProxyFromPathDep(ctx ModuleWithDepsPathContext, moduleName, tag st
 	expectedTag := sourceOrOutputDepTag(moduleName, tag)
 	ctx.VisitDirectDepsProxyWithTag(expectedTag, func(module ModuleProxy) {
 		found = &module
-	})
-	return found
-}
-
-// Deprecated: use GetModuleProxyFromPathDep
-func GetModuleFromPathDep(ctx ModuleWithDepsPathContext, moduleName, tag string) blueprint.Module {
-	var found blueprint.Module
-	// The sourceOrOutputDepTag uniquely identifies the module dependency as it contains both the
-	// module name and the tag. Dependencies added automatically for properties tagged with
-	// `android:"path"` are deduped so are guaranteed to be unique. It is possible for duplicate
-	// dependencies to be added manually using ExtractSourcesDeps or ExtractSourceDeps but even then
-	// it will always be the case that the dependencies will be identical, i.e. the same tag and same
-	// moduleName referring to the same dependency module.
-	//
-	// It does not matter whether the moduleName is a fully qualified name or if the module
-	// dependency is a prebuilt module. All that matters is the same information is supplied to
-	// create the tag here as was supplied to create the tag when the dependency was added so that
-	// this finds the matching dependency module.
-	expectedTag := sourceOrOutputDepTag(moduleName, tag)
-	ctx.VisitDirectDeps(func(module Module) {
-		depTag := ctx.OtherModuleDependencyTag(module)
-		if depTag == expectedTag {
-			found = module
-		}
 	})
 	return found
 }

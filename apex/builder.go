@@ -397,7 +397,7 @@ func (a *apexBundle) buildFileContexts(ctx android.ModuleContext) android.Output
 	} else {
 		if m, t := android.SrcIsModuleWithTag(*a.properties.File_contexts); m != "" {
 			isFileContextsModule = true
-			otherModule := android.GetModuleProxyFromPathDep(ctx, m, t)
+			otherModule := android.GetModuleFromPathDep(ctx, m, t)
 			if otherModule != nil {
 				fileContextsDir = ctx.OtherModuleDir(*otherModule)
 			}
