@@ -34,6 +34,24 @@
       "parentUuid": "b666142b_509f0977",
       "revId": "5524b5b7e9b166196901e2faa3e3dfc71849b05d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6965db71_0ca49d4b",
+        "filename": "rust/project_json.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2024-11-13T21:03:09Z",
+      "side": 1,
+      "message": "Ah, that\u0027s right. I was looking at https://gn-review.googlesource.com/c/gn/+/17680 which referenced the RfL commit but did something slightly different.",
+      "parentUuid": "452c5ddc_f0996bc3",
+      "revId": "5524b5b7e9b166196901e2faa3e3dfc71849b05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
