@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b666142b_509f0977",
+        "filename": "rust/project_json.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2024-11-13T20:22:10Z",
+      "side": 1,
+      "message": "I think sysroot_src has also recently become required, see [here](https://github.com/Rust-for-Linux/linux/commit/fe992163575b187405899c5abaad8ef6fb828ff6).\n\nThanks for working on this!",
+      "revId": "5524b5b7e9b166196901e2faa3e3dfc71849b05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
