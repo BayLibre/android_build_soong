@@ -16,6 +16,24 @@
       "message": "I think sysroot_src has also recently become required, see [here](https://github.com/Rust-for-Linux/linux/commit/fe992163575b187405899c5abaad8ef6fb828ff6).\n\nThanks for working on this!",
       "revId": "5524b5b7e9b166196901e2faa3e3dfc71849b05d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "452c5ddc_f0996bc3",
+        "filename": "rust/project_json.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-11-13T20:49:32Z",
+      "side": 1,
+      "message": "My reading of that commit is that `sysroot` is no longer detected from `sysroot_src`, instead `sysroot_src` is guessed from `sysroot`.\n\nThe change you linked *removes* `sysroot_src`.",
+      "parentUuid": "b666142b_509f0977",
+      "revId": "5524b5b7e9b166196901e2faa3e3dfc71849b05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
