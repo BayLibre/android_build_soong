@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a5d985_bd92d35b",
+        "filename": "cmd/find_input_delta/find_input_delta_proto/file_list.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-11-13T17:57:24Z",
+      "side": 1,
+      "message": "I can\u0027t tell if the diff here is wrong, or are there two \"changes\" declarations.",
+      "fixSuggestions": [
+        {
+          "fixId": "c3b463a6_f0a722e2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cmd/find_input_delta/find_input_delta_proto/file_list.proto",
+              "range": {
+                "startLine": 35,
+                "startChar": 0,
+                "endLine": 36,
+                "endChar": 0
+              },
+              "replacement": "  repeated FileList changes \u003d 7;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6890a004d2c0ca4e358e25e501f82b0437d637e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
