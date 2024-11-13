@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2b01cb7_464bd6c1",
+        "filename": "fsgen/fsgen_mutators.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-13T20:47:23Z",
+      "side": 1,
+      "message": "This will be removed after this change is submitted and the allowlist is removed.",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 1
+      },
+      "revId": "0d7b0117b35ee08b9758f450959d77ab58b74673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
