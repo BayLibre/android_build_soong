@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc88a9c6_fda17bad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-13T00:33:51Z",
+      "side": 1,
+      "message": "I plan to add the soong_ui code that sets `SOONG_METRICS_AGGREGATION_FILE` in a future CL.",
+      "revId": "ae41a11295440de1529bce216b6d1acaad7be1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
