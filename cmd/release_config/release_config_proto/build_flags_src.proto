@@ -117,6 +117,9 @@ message ReleaseConfig {
   // Prior stage(s) for flag advancement (during development).
   // Once a flag has met criteria in a prior stage, it can advance to this one.
   repeated string prior_stages = 5;
+
+  // True if this is a build variant release config.
+  optional bool build_variant = 6;
 }
 
 // Any aliases.  These are used for continuous integration builder config.

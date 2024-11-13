@@ -365,6 +365,9 @@ func (configs *ReleaseConfigs) LoadReleaseConfigMap(path string, ConfigDirIndex 
 			configs.ReleaseConfigs[name] = ReleaseConfigFactory(name, ConfigDirIndex)
 		}
 		config := configs.ReleaseConfigs[name]
+		if releaseConfigContribution.proto.GetBuildVariant() {
+			config.BuildVariant = true
+		}
 		config.FilesUsedMap[path] = true
 		inheritNames := make(map[string]bool)
 		for _, inh := range config.InheritNames {
