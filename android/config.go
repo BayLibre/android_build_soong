@@ -285,6 +285,21 @@ func (c Config) ReleaseCreateAconfigStorageFile() bool {
 	return c.config.productVariables.GetBuildFlagBool("RELEASE_CREATE_ACONFIG_STORAGE_FILE")
 }
 
+func (c Config) ReleaseUseSystemFeatureBuildFlags() bool {
+	return c.config.productVariables.GetBuildFlagBool("RELEASE_USE_SYSTEM_FEATURE_BUILD_FLAGS")
+}
+
+// Collection of all system feature build flags and their associated values.
+func (c Config) ReleaseSystemFeaturesSet() map[string]string {
+	systemFeatures := make(map[string]string)
+	for k, v := range c.productVariables.BuildFlags {
+		if strings.HasPrefix(k, "RELEASE_SYSTEM_FEATURE_") {
+			systemFeatures[k] = v
+		}
+	}
+	return systemFeatures
+}
+
 // A DeviceConfig object represents the configuration for a particular device
 // being built. For now there will only be one of these, but in the future there
 // may be multiple devices being built.

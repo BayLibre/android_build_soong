@@ -257,3 +257,17 @@ func TestPartialCompile(t *testing.T) {
 		})
 	}
 }
+
+func TestReleaseSystemFeaturesSet(t *testing.T) {
+	fixture := GroupFixturePreparers(
+		PrepareForTestWithBuildFlag("RELEASE_SYSTEM_FEATURE_FOO", ""),
+		PrepareForTestWithBuildFlag("RELEASE_SYSTEM_FEATURE_BAR", "0"),
+		PrepareForTestWithBuildFlag("RELEASE_NOT_SYSTEM_FEATURE", "ignored"),
+	)
+	actual := fixture.RunTest(t).Config.ReleaseSystemFeaturesSet()
+	expected := map[string]string{
+		"RELEASE_SYSTEM_FEATURE_FOO": "",
+		"RELEASE_SYSTEM_FEATURE_BAR": "0",
+	}
+	AssertDeepEquals(t, "Compare feature sets", expected, actual)
+}
