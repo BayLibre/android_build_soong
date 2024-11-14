@@ -1912,6 +1912,9 @@ func (c *Module) stubLibraryMultipleApexViolation(ctx android.ModuleContext) boo
 }
 
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
+	if actx.ModuleName() == "libunwindstack_unit_test" {
+		fmt.Println("yifengzeng@cc.go GenerateAndroidBuildActions()")
+	}
 	ctx := moduleContextFromAndroidModuleContext(actx, c)
 
 	c.logtagsPaths = android.PathsForModuleSrc(actx, c.Properties.Logtags)
@@ -2209,6 +2212,9 @@ func (c *Module) maybeUnhideFromMake() {
 // maybeInstall is called at the end of both GenerateAndroidBuildActions to run the
 // install hooks for installable modules, like binaries and tests.
 func (c *Module) maybeInstall(ctx ModuleContext, apexInfo android.ApexInfo) {
+	if ctx.ModuleName() == "libunwindstack_unit_test" {
+		fmt.Println("yifengzeng@cc.go maybeInstall()")
+	}
 	if !proptools.BoolDefault(c.Installable(), true) {
 		// If the module has been specifically configure to not be installed then
 		// hide from make as otherwise it will break when running inside make
