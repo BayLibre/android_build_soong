@@ -34,6 +34,24 @@
       "parentUuid": "5620dfd5_5f4d735f",
       "revId": "3a30d69ce08a364acc8e958ee93e4be335fb1930",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb341cb_a83e1285",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-14T22:30:57Z",
+      "side": 1,
+      "message": "Actually, `highPriorityDepTagWithVisibilityBypass` won\u0027t cast to `highPriorityDepTag` in L520..",
+      "parentUuid": "38c1be9b_be62058a",
+      "revId": "3a30d69ce08a364acc8e958ee93e4be335fb1930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
