@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e2379c_50da2b9a",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-14T23:28:58Z",
+      "side": 1,
+      "message": "`files` should already be deterministic, we don\u0027t need to sort here.",
+      "parentUuid": "82743667_8ebb3f76",
+      "revId": "953476f26e0cf21af707c8c1a3d4b31841110b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0107973a_fca84fbf",
@@ -43,6 +61,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "684fa8d5_44c85cf5",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-14T23:28:58Z",
+      "side": 1,
+      "message": "Well I wanted to use the existing one because that\u0027s what we\u0027d want to use when checking in the generated modules to bp files. If someone renames the filegroup, the usage here will cause builds to start failing so they\u0027ll know they need to update this too.",
+      "parentUuid": "0107973a_fca84fbf",
+      "range": {
+        "startLine": 279,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 91
+      },
+      "revId": "953476f26e0cf21af707c8c1a3d4b31841110b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5270fbb1_33ea63bd",
         "filename": "fsgen/filesystem_creator.go",
         "patchSetId": 3
@@ -54,6 +96,24 @@
       "writtenOn": "2024-11-14T23:23:44Z",
       "side": 1,
       "message": "I wonder if this would affect the keystone qcom branch again",
+      "revId": "953476f26e0cf21af707c8c1a3d4b31841110b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eab92dd9_60012f0b",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-14T23:28:58Z",
+      "side": 1,
+      "message": "Because of absolute paths? I guess we\u0027ll find out. I\u0027d like to raise that with the abfs team if it\u0027s a problem.",
+      "parentUuid": "5270fbb1_33ea63bd",
       "revId": "953476f26e0cf21af707c8c1a3d4b31841110b79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
