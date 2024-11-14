@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c552cc4_d5a35d73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-11-14T03:41:54Z",
+      "side": 1,
+      "message": "This CL is ready to submit with aosp/3341464\nCould you PTAL?",
+      "revId": "bdd02f20a3b0403dc145ad3d73148b644eec8ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

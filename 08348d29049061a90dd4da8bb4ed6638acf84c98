@@ -141,6 +141,24 @@
       "parentUuid": "d0f98a3e_eb45ec6e",
       "revId": "08348d29049061a90dd4da8bb4ed6638acf84c98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66416403_e35fcef4",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-11-14T03:41:54Z",
+      "side": 1,
+      "message": "As announced, I removed vendor API level values from the map.txt file (aosp/3341464) and updated the ndkstubgen for this. Soong will find the corresponding SDK version to build the LLNDK stubs. We only use the SDK version to generate stub files.",
+      "parentUuid": "bcdda9ea_14f111d1",
+      "revId": "08348d29049061a90dd4da8bb4ed6638acf84c98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
