@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9373c5c9_88cbe4e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-14T18:18:59Z",
+      "side": 1,
+      "message": "Is this really what we want? It seems like this is going to make ndk/llndk harder to understand, with new magic about what symbols go where. I think explicitly annotating them would be better.\n\nHowever, I don\u0027t know much about ndk/llndk so I won\u0027t block this cl.",
+      "revId": "bdd02f20a3b0403dc145ad3d73148b644eec8ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67110599_4838d156",
         "filename": "android/vendor_api_levels.go",
         "patchSetId": 7
@@ -37,6 +54,23 @@
         "endLine": 22,
         "endChar": 49
       },
+      "revId": "bdd02f20a3b0403dc145ad3d73148b644eec8ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f9f79f_1117cc2d",
+        "filename": "android/vendor_api_levels.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-14T18:18:59Z",
+      "side": 1,
+      "message": "Preferably this would accept the vendor api level as input and return the sdk version + presence bool, so you could use a switch statement and not allocate a map.",
       "revId": "bdd02f20a3b0403dc145ad3d73148b644eec8ef5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
