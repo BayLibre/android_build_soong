@@ -410,9 +410,9 @@ func (PackagingItemAlwaysDepTag) IsPackagingItem() bool {
 	return true
 }
 
-// highPriorityDepTag provides default implementation of HighPriorityPackagingItem interface.
 type highPriorityDepTag struct {
 	blueprint.DependencyTag
+	PackagingItemAlwaysDepTag
 }
 
 // See PackageModule.AddDeps
@@ -433,7 +433,10 @@ func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.Dep
 		}
 		depTagToUse := depTag
 		if highPriority {
-			depTagToUse = highPriorityDepTag{depTag}
+			depTagToUse = highPriorityDepTag{
+				DependencyTag:             depTag,
+				PackagingItemAlwaysDepTag: PackagingItemAlwaysDepTag{},
+			}
 		}
 
 		ctx.AddFarVariationDependencies(targetVariation, depTagToUse, dep)
