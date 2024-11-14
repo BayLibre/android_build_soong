@@ -57,6 +57,24 @@
       ],
       "revId": "e2b516298cf2d8b20aeed47bcca37d910c157af2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7df4f6d0_58dcc936",
+        "filename": "cmd/release_config/release_config_proto/build_flags_src.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-14T19:20:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "113c9df7_b189cc4d",
+      "revId": "e2b516298cf2d8b20aeed47bcca37d910c157af2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
