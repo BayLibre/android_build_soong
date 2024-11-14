@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee602f8_2171df6d",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-14T23:37:47Z",
+      "side": 1,
+      "message": "Ah. That should be handled by the `if _, ok :\u003d fsGenState.avbKeyFilegroups[file]; ok { continue }` inside the loop.",
+      "parentUuid": "b92d037d_7ec661e9",
+      "revId": "953476f26e0cf21af707c8c1a3d4b31841110b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0107973a_fca84fbf",
