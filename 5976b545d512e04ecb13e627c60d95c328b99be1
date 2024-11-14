@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc1c05c_1d5ee73b",
+        "filename": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-14T23:14:26Z",
+      "side": 1,
+      "message": "Make it `\\\\.(jar|apex|apk)[0-9]*$` and remove the `filepath.Ext` call",
+      "range": {
+        "startLine": 78,
+        "startChar": 47,
+        "endLine": 78,
+        "endChar": 65
+      },
+      "revId": "5976b545d512e04ecb13e627c60d95c328b99be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
