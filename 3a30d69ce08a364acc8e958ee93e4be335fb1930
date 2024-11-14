@@ -52,6 +52,24 @@
       "parentUuid": "38c1be9b_be62058a",
       "revId": "3a30d69ce08a364acc8e958ee93e4be335fb1930",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26aa05f3_5dd3b5c5",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-14T22:32:12Z",
+      "side": 1,
+      "message": "It looks good, though is the visiblity exclusion needed? We autogenerate all the modules we put into high_priority_deps so we can just generate them with `//visibility:public` if they aren\u0027t already.",
+      "parentUuid": "38c1be9b_be62058a",
+      "revId": "3a30d69ce08a364acc8e958ee93e4be335fb1930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

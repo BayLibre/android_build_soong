@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf40355_28c9810a",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-14T22:32:12Z",
+      "side": 1,
+      "message": "Just inline this into `highPriorityDepTag`.",
+      "revId": "70bb4eccce83f3180cfda8cc513d6c0d59218ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
