@@ -16,6 +16,75 @@
       "message": "This CL is ready to submit with aosp/3341464\nCould you PTAL?",
       "revId": "bdd02f20a3b0403dc145ad3d73148b644eec8ef5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67110599_4838d156",
+        "filename": "android/vendor_api_levels.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-11-14T07:48:00Z",
+      "side": 1,
+      "message": "nit: why not int?",
+      "range": {
+        "startLine": 22,
+        "startChar": 43,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "bdd02f20a3b0403dc145ad3d73148b644eec8ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea7412c5_b2ba7147",
+        "filename": "cc/api_level.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-11-14T07:48:00Z",
+      "side": 1,
+      "message": "This is a newly introduced concept here. Can you add a documentation for this?",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "bdd02f20a3b0403dc145ad3d73148b644eec8ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb8a08a9_53111fe6",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-11-14T07:48:00Z",
+      "side": 1,
+      "message": "nit: just `version`",
+      "range": {
+        "startLine": 570,
+        "startChar": 2,
+        "endLine": 570,
+        "endChar": 29
+      },
+      "revId": "bdd02f20a3b0403dc145ad3d73148b644eec8ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
