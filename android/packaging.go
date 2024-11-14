@@ -410,10 +410,22 @@ func (PackagingItemAlwaysDepTag) IsPackagingItem() bool {
 	return true
 }
 
-// highPriorityDepTag provides default implementation of HighPriorityPackagingItem interface.
-type highPriorityDepTag struct {
-	blueprint.DependencyTag
+type BasePackagingItemDepTag struct {
+	blueprint.BaseDependencyTag
+	PackagingItemAlwaysDepTag
 }
+
+type highPriorityDepTag struct {
+	BasePackagingItemDepTag
+}
+
+type highPriorityDepTagWithVisibilityBypass struct {
+	highPriorityDepTag
+}
+
+var _ ExcludeFromVisibilityEnforcementTag = (*highPriorityDepTagWithVisibilityBypass)(nil)
+
+func (highPriorityDepTagWithVisibilityBypass) ExcludeFromVisibilityEnforcement() {}
 
 // See PackageModule.AddDeps
 func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.DependencyTag) {
@@ -433,7 +445,11 @@ func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.Dep
 		}
 		depTagToUse := depTag
 		if highPriority {
-			depTagToUse = highPriorityDepTag{depTag}
+			if _, ok := depTag.(ExcludeFromVisibilityEnforcementTag); ok {
+				depTagToUse = highPriorityDepTagWithVisibilityBypass{}
+			} else {
+				depTagToUse = highPriorityDepTag{}
+			}
 		}
 
 		ctx.AddFarVariationDependencies(targetVariation, depTagToUse, dep)

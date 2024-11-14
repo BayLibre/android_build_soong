@@ -212,15 +212,10 @@ func initFilesystemModule(module android.DefaultableModule, filesystemModule *fi
 	android.InitDefaultableModule(module)
 }
 
-type depTag struct {
-	blueprint.BaseDependencyTag
-	android.PackagingItemAlwaysDepTag
-}
-
-var dependencyTag = depTag{}
+var dependencyTag = android.BasePackagingItemDepTag{}
 
 type depTagWithVisibilityEnforcementBypass struct {
-	depTag
+	android.BasePackagingItemDepTag
 }
 
 var _ android.ExcludeFromVisibilityEnforcementTag = (*depTagWithVisibilityEnforcementBypass)(nil)
