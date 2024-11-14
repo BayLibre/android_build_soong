@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d97e220a_79424dad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-11-14T07:57:26Z",
+      "side": 1,
+      "message": "Right. If there\u0027s a module that is not available to platform, where would it be other than an APEX? :)",
+      "range": {
+        "startLine": 11,
+        "startChar": 46,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "0c19b699d334be976fef9a6d3a393fcf08a80345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
