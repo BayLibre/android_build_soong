@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8298bad7_46f2792a",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-14T23:31:57Z",
+      "side": 1,
+      "message": "If the return value from this function will be iterated over and show up in the ninja file, it\u0027s likely that user will need to sort the results by key, since go pretty much randomizes them when iterating over the map.",
+      "revId": "8ccf5fc0edd83a1c913e9cdf5429482e9c0a92df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
