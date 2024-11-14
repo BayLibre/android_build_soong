@@ -16,6 +16,23 @@
       "message": "Hey,\n\nI ended up writing a semaphore, since my concern with `GOMAXPROCS` goroutines reading from (/writing to) a central channel would be the channel becoming full \u0026 said goroutines becoming deadlocked on writing to the channel.\n\nIf you\u0027d prefer this to be phrased as `GOMAXPROCS` goroutines reading from a thing, should be easy to hack together something like `type unboundedChannel[T any] struct { []T; sync.Mutex; sync.Cond; closed bool; }`. :)",
       "revId": "1f46a91b5a9978b5d624082de44f189ad6d22a6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec864c5_05e9b270",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2024-11-14T19:40:32Z",
+      "side": 1,
+      "message": "thanks for the quick review!",
+      "revId": "1f46a91b5a9978b5d624082de44f189ad6d22a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
