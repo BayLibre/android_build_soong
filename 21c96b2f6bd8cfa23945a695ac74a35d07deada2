@@ -87,6 +87,24 @@
       "parentUuid": "6c46dfe2_5cf377bc",
       "revId": "21c96b2f6bd8cfa23945a695ac74a35d07deada2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b26e867_e427c35f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-11-14T07:07:07Z",
+      "side": 1,
+      "message": "As discussed offline, this may not fit to be implemented as neverallow, because it should check if the module is descendant of soong-defined images.",
+      "parentUuid": "971647eb_a1775195",
+      "revId": "21c96b2f6bd8cfa23945a695ac74a35d07deada2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
