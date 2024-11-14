@@ -184,7 +184,7 @@ type PrebuiltEtc struct {
 	subdirProperties prebuiltSubdirProperties
 
 	sourceFilePaths android.Paths
-	outputFilePaths android.OutputPaths
+	outputFilePaths android.WritablePaths
 	// The base install location, e.g. "etc" for prebuilt_etc, "usr/share" for prebuilt_usr_share.
 	installDirBase               string
 	installDirBase64             string
@@ -317,13 +317,6 @@ func (p *PrebuiltEtc) SetAdditionalDependencies(paths android.Paths) {
 	p.additionalDependencies = &paths
 }
 
-func (p *PrebuiltEtc) OutputFile() android.OutputPath {
-	if p.usedSrcsProperty {
-		panic(fmt.Errorf("OutputFile not available on multi-source prebuilt %q", p.Name()))
-	}
-	return p.outputFilePaths[0]
-}
-
 func (p *PrebuiltEtc) SubDir() string {
 	if subDir := proptools.String(p.subdirProperties.Sub_dir); subDir != "" {
 		return subDir
@@ -410,7 +403,7 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			ctx.PropertyErrorf("filename", "filename cannot contain separator '/'")
 			return
 		}
-		p.outputFilePaths = android.OutputPaths{android.PathForModuleOut(ctx, filename).OutputPath}
+		p.outputFilePaths = android.WritablePaths{android.PathForModuleOut(ctx, filename)}
 
 		ip := installProperties{
 			filename:       filename,
@@ -453,7 +446,7 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				filename = src.Base()
 				installDirPath = baseInstallDirPath
 			}
-			output := android.PathForModuleOut(ctx, filename).OutputPath
+			output := android.PathForModuleOut(ctx, filename)
 			ip := installProperties{
 				filename:       filename,
 				sourceFilePath: src,
@@ -473,7 +466,7 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		if filename == "" {
 			filename = ctx.ModuleName()
 		}
-		p.outputFilePaths = android.OutputPaths{android.PathForModuleOut(ctx, filename).OutputPath}
+		p.outputFilePaths = android.WritablePaths{android.PathForModuleOut(ctx, filename)}
 		ip := installProperties{
 			filename:       filename,
 			sourceFilePath: p.sourceFilePaths[0],
@@ -501,7 +494,7 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 type installProperties struct {
 	filename       string
 	sourceFilePath android.Path
-	outputFilePath android.OutputPath
+	outputFilePath android.WritablePath
 	installDirPath android.InstallPath
 	symlinks       []string
 }
