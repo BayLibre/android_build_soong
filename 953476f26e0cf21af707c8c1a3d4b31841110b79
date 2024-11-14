@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0107973a_fca84fbf",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-14T23:22:39Z",
+      "side": 1,
+      "message": "nit: WDYT about creating a module regardless with `no_full_install: true`? This makes the fsgen logic resilient to name changes of the checked-in filegroup",
+      "range": {
+        "startLine": 279,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 91
+      },
+      "revId": "953476f26e0cf21af707c8c1a3d4b31841110b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
