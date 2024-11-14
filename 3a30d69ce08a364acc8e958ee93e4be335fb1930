@@ -16,6 +16,24 @@
       "message": "I thought the main point of embedding the origional tag in the high priority tag was so that it would reexport the functions like `IsPackagingItem` and  `ExcludeFromVisibilityEnforcement`. If it doesn\u0027t do that due to the interface, there doesn\u0027t seem to be any reason to nest the tags. Can we remove the nesting?",
       "revId": "3a30d69ce08a364acc8e958ee93e4be335fb1930",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38c1be9b_be62058a",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-14T22:23:43Z",
+      "side": 1,
+      "message": "WDYT about the implementation in the latest patchset?",
+      "parentUuid": "5620dfd5_5f4d735f",
+      "revId": "3a30d69ce08a364acc8e958ee93e4be335fb1930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
