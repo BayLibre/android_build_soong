@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2bc5ec_69a608df",
+        "filename": "cmd/release_config/release_config_lib/release_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-11-14T01:52:41Z",
+      "side": 1,
+      "message": "Side thought: If we end up adding another one, let\u0027s make it an enum.  I actually do think we are going to want to add more dimensions to this.  I\u0027ve been thinking about how to better do some of the lunch targets, for stuff like HWASAN and HPA, where we want most products to be able to use them, and I think we could turn this into a generic mechanism, where you could pass these dimensions to lunch and not have to create lots of products.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 18
+      },
+      "revId": "e2b516298cf2d8b20aeed47bcca37d910c157af2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "113c9df7_b189cc4d",
+        "filename": "cmd/release_config/release_config_proto/build_flags_src.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-11-14T01:52:41Z",
+      "side": 1,
+      "message": "But here, because this is the public part, could you make it an enum { RELEASE_CONFIG \u003d 0, BUILD_VARIANT \u003d 1}, and we just default to RELEASE_CONFIG.  Since this is the API.",
+      "fixSuggestions": [
+        {
+          "fixId": "2c3b7352_3322b31f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cmd/release_config/release_config_proto/build_flags_src.proto",
+              "range": {
+                "startLine": 121,
+                "startChar": 0,
+                "endLine": 123,
+                "endChar": 0
+              },
+              "replacement": "  // The type of release config.\n  enum ReleaseConfigType {\n    RELEASE_CONFIG \u003d 0;\n    BUILD_VARIANT \u003d 1;\n  }\n  optional ReleaseConfigType type \u003d 6;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e2b516298cf2d8b20aeed47bcca37d910c157af2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
