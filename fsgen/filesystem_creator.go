@@ -47,6 +47,8 @@ type filesystemCreatorProps struct {
 
 	Vbmeta_module_names    []string `blueprint:"mutated"`
 	Vbmeta_partition_names []string `blueprint:"mutated"`
+
+	Boot_image_module_name string `blueprint:"mutated"`
 }
 
 type filesystemCreator struct {
@@ -71,6 +73,38 @@ func filesystemCreatorFactory() android.Module {
 	return module
 }
 
+func generatedPartitions(ctx android.LoadHookContext) []string {
+	generatedPartitions := []string{"system"}
+	if ctx.DeviceConfig().SystemExtPath() == "system_ext" {
+		generatedPartitions = append(generatedPartitions, "system_ext")
+	}
+	if ctx.DeviceConfig().BuildingVendorImage() && ctx.DeviceConfig().VendorPath() == "vendor" {
+		generatedPartitions = append(generatedPartitions, "vendor")
+	}
+	if ctx.DeviceConfig().BuildingProductImage() && ctx.DeviceConfig().ProductPath() == "product" {
+		generatedPartitions = append(generatedPartitions, "product")
+	}
+	if ctx.DeviceConfig().BuildingOdmImage() && ctx.DeviceConfig().OdmPath() == "odm" {
+		generatedPartitions = append(generatedPartitions, "odm")
+	}
+	if ctx.DeviceConfig().BuildingUserdataImage() && ctx.DeviceConfig().UserdataPath() == "data" {
+		generatedPartitions = append(generatedPartitions, "userdata")
+	}
+	if ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.BuildingSystemDlkmImage {
+		generatedPartitions = append(generatedPartitions, "system_dlkm")
+	}
+	if ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.BuildingVendorDlkmImage {
+		generatedPartitions = append(generatedPartitions, "vendor_dlkm")
+	}
+	if ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.BuildingOdmDlkmImage {
+		generatedPartitions = append(generatedPartitions, "odm_dlkm")
+	}
+	if ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.BuildingRamdiskImage {
+		generatedPartitions = append(generatedPartitions, "ramdisk")
+	}
+	return generatedPartitions
+}
+
 func (f *filesystemCreator) createInternalModules(ctx android.LoadHookContext) {
 	soongGeneratedPartitions := generatedPartitions(ctx)
 	finalSoongGeneratedPartitions := make([]string, 0, len(soongGeneratedPartitions))
@@ -80,6 +114,14 @@ func (f *filesystemCreator) createInternalModules(ctx android.LoadHookContext) {
 			finalSoongGeneratedPartitions = append(finalSoongGeneratedPartitions, partitionType)
 		} else {
 			f.properties.Unsupported_partition_types = append(f.properties.Unsupported_partition_types, partitionType)
+		}
+	}
+
+	if buildingBootImage(ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse) {
+		if createBootImage(ctx) {
+			f.properties.Boot_image_module_name = generatedModuleNameForPartition(ctx.Config(), "boot")
+		} else {
+			f.properties.Unsupported_partition_types = append(f.properties.Unsupported_partition_types, "boot")
 		}
 	}
 
@@ -546,7 +588,7 @@ func generateFsProps(ctx android.EarlyModuleContext, partitionType string) (*fil
 	return fsProps, true
 }
 
-func (f *filesystemCreator) createDiffTest(ctx android.ModuleContext, partitionType string) android.Path {
+func (f *filesystemCreator) createFileListDiffTest(ctx android.ModuleContext, partitionType string) android.Path {
 	partitionModuleName := generatedModuleNameForPartition(ctx.Config(), partitionType)
 	systemImage := ctx.GetDirectDepWithTag(partitionModuleName, generatedFilesystemDepTag)
 	filesystemInfo, ok := android.OtherModuleProvider(ctx, systemImage, filesystem.FilesystemProvider)
@@ -578,26 +620,36 @@ func createFailingCommand(ctx android.ModuleContext, message string) android.Pat
 	return file
 }
 
-func createVbmetaDiff(ctx android.ModuleContext, vbmetaModuleName string, vbmetaPartitionName string) android.Path {
-	vbmetaModule := ctx.GetDirectDepWithTag(vbmetaModuleName, generatedVbmetaPartitionDepTag)
-	outputFilesProvider, ok := android.OtherModuleProvider(ctx, vbmetaModule, android.OutputFilesProvider)
+func getOutputFileOfDep(ctx android.ModuleContext, name string, tag blueprint.DependencyTag) android.Path {
+	m := ctx.GetDirectDepWithTag(name, tag)
+	outputFilesProvider, ok := android.OtherModuleProvider(ctx, m, android.OutputFilesProvider)
 	if !ok {
-		ctx.ModuleErrorf("Expected module %s to provide OutputFiles", vbmetaModule)
+		ctx.ModuleErrorf("Expected module %s to provide OutputFiles", m)
+		return nil
 	}
 	if len(outputFilesProvider.DefaultOutputFiles) != 1 {
-		ctx.ModuleErrorf("Expected 1 output file from module %s", vbmetaModule)
+		ctx.ModuleErrorf("Expected 1 output file from module %s", m)
+		return nil
 	}
-	soongVbMetaFile := outputFilesProvider.DefaultOutputFiles[0]
+	return outputFilesProvider.DefaultOutputFiles[0]
+}
+
+func createVbmetaDiff(ctx android.ModuleContext, vbmetaModuleName string, vbmetaPartitionName string) android.Path {
+	soongVbMetaFile := getOutputFileOfDep(ctx, vbmetaModuleName, generatedVbmetaPartitionDepTag)
 	makeVbmetaFile := android.PathForArbitraryOutput(ctx, fmt.Sprintf("target/product/%s/%s.img", ctx.Config().DeviceName(), vbmetaPartitionName))
 
 	diffTestResultFile := android.PathForModuleOut(ctx, fmt.Sprintf("diff_test_%s.txt", vbmetaModuleName))
+	createDiffTest(ctx, diffTestResultFile, soongVbMetaFile, makeVbmetaFile)
+	return diffTestResultFile
+}
+
+func createDiffTest(ctx android.ModuleContext, diffTestResultFile android.WritablePath, file1 android.Path, file2 android.Path) {
 	builder := android.NewRuleBuilder(pctx, ctx)
 	builder.Command().Text("diff").
-		Input(soongVbMetaFile).
-		Input(makeVbmetaFile)
+		Input(file1).
+		Input(file2)
 	builder.Command().Text("touch").Output(diffTestResultFile)
-	builder.Build(vbmetaModuleName+" diff test", vbmetaModuleName+" diff test")
-	return diffTestResultFile
+	builder.Build("diff test "+diffTestResultFile.String(), "diff test")
 }
 
 type systemImageDepTagType struct {
@@ -606,6 +658,7 @@ type systemImageDepTagType struct {
 
 var generatedFilesystemDepTag systemImageDepTagType
 var generatedVbmetaPartitionDepTag systemImageDepTagType
+var generatedBootImageDepTag systemImageDepTagType
 
 func (f *filesystemCreator) DepsMutator(ctx android.BottomUpMutatorContext) {
 	for _, partitionType := range f.properties.Generated_partition_types {
@@ -613,6 +666,9 @@ func (f *filesystemCreator) DepsMutator(ctx android.BottomUpMutatorContext) {
 	}
 	for _, vbmetaModule := range f.properties.Vbmeta_module_names {
 		ctx.AddDependency(ctx.Module(), generatedVbmetaPartitionDepTag, vbmetaModule)
+	}
+	if f.properties.Boot_image_module_name != "" {
+		ctx.AddVariationDependencies(ctx.Config().AndroidFirstDeviceTarget.Variations(), generatedBootImageDepTag, f.properties.Boot_image_module_name)
 	}
 }
 
@@ -634,7 +690,7 @@ func (f *filesystemCreator) GenerateAndroidBuildActions(ctx android.ModuleContex
 
 	var diffTestFiles []android.Path
 	for _, partitionType := range f.properties.Generated_partition_types {
-		diffTestFile := f.createDiffTest(ctx, partitionType)
+		diffTestFile := f.createFileListDiffTest(ctx, partitionType)
 		diffTestFiles = append(diffTestFiles, diffTestFile)
 		ctx.Phony(fmt.Sprintf("soong_generated_%s_filesystem_test", partitionType), diffTestFile)
 	}
@@ -647,6 +703,14 @@ func (f *filesystemCreator) GenerateAndroidBuildActions(ctx android.ModuleContex
 		diffTestFile := createVbmetaDiff(ctx, vbmetaModule, f.properties.Vbmeta_partition_names[i])
 		diffTestFiles = append(diffTestFiles, diffTestFile)
 		ctx.Phony(fmt.Sprintf("soong_generated_%s_filesystem_test", f.properties.Vbmeta_partition_names[i]), diffTestFile)
+	}
+	if f.properties.Boot_image_module_name != "" {
+		diffTestFile := android.PathForModuleOut(ctx, "boot_diff_test.txt")
+		soongBootImg := getOutputFileOfDep(ctx, f.properties.Boot_image_module_name, generatedBootImageDepTag)
+		makeBootImage := android.PathForArbitraryOutput(ctx, fmt.Sprintf("target/product/%s/boot.img", ctx.Config().DeviceName()))
+		createDiffTest(ctx, diffTestFile, soongBootImg, makeBootImage)
+		diffTestFiles = append(diffTestFiles, diffTestFile)
+		ctx.Phony("soong_generated_boot_filesystem_test", diffTestFile)
 	}
 	ctx.Phony("soong_generated_filesystem_tests", diffTestFiles...)
 }
