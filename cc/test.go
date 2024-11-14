@@ -128,6 +128,9 @@ type TestBinaryProperties struct {
 
 	// Install the test into a folder named for the module in all test suites.
 	Per_testcase_directory *bool
+
+	// TODO(yifengzeng): add comment
+	Standalone_test *bool
 }
 
 func init() {
@@ -380,6 +383,7 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 		TestInstallBase:        testInstallBase,
 		DeviceTemplate:         "${NativeTestConfigTemplate}",
 		HostTemplate:           "${NativeHostTestConfigTemplate}",
+		StandaloneTest:         test.Properties.Standalone_test,
 	})
 
 	test.extraTestConfigs = android.PathsForModuleSrc(ctx, test.Properties.Test_options.Extra_test_configs)
