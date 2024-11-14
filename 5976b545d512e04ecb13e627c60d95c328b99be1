@@ -22,6 +22,30 @@
       },
       "revId": "5976b545d512e04ecb13e627c60d95c328b99be1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e7e256e_fa0a6087",
+        "filename": "cmd/find_input_delta/find_input_delta_lib/internal_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-14T23:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc1c05c_1d5ee73b",
+      "range": {
+        "startLine": 78,
+        "startChar": 47,
+        "endLine": 78,
+        "endChar": 65
+      },
+      "revId": "5976b545d512e04ecb13e627c60d95c328b99be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
