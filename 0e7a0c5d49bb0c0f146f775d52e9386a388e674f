@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9547fe54_34521fcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-11-14T15:53:21Z",
+      "side": 1,
+      "message": "LGTM with the understanding this is switched to default disabled by the submitted together follow-on CL.",
+      "revId": "0e7a0c5d49bb0c0f146f775d52e9386a388e674f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
