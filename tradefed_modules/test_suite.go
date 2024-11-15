@@ -94,7 +94,8 @@ func (t *testSuiteModule) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		return false
 	})
 
-	var files []string
+	manifestFiles := []string{}
+	packagedFiles := make(map[string]android.InstallPath)
 	for name, module := range modulesByName {
 		// Get the test provider data from the child.
 		tp, ok := android.OtherModuleProvider(ctx, module, tradefed.BaseTestProviderKey)
@@ -104,33 +105,39 @@ func (t *testSuiteModule) GenerateAndroidBuildActions(ctx android.ModuleContext)
 			continue
 		}
 
-		files = append(files, packageModuleFiles(ctx, suiteName, module, tp)...)
+		p := packageModuleFiles(ctx, suiteName, module, tp)
+		for k, v := range p {
+			manifestFiles = append(manifestFiles, k)
+			packagedFiles[k] = v
+		}
 		ctx.Phony(suiteName, android.PathForPhony(ctx, name))
 	}
 
 	manifestPath := android.PathForSuiteInstall(ctx, suiteName, suiteName+".json")
-	b, err := json.Marshal(testSuiteManifest{Name: suiteName, Files: files})
+	b, err := json.Marshal(testSuiteManifest{Name: suiteName, Files: manifestFiles})
 	if err != nil {
 		ctx.ModuleErrorf("Failed to marshal manifest: %v", err)
 		return
 	}
 	android.WriteFileRule(ctx, manifestPath, string(b))
-
 	ctx.Phony(suiteName, manifestPath)
+
+	suiteZip := suiteName + ".zip"
+	ctx.Phony(suiteZip, android.PathForPhony(ctx, suiteName))
+	ctx.Phony(suiteZip, packageZipFile(ctx, suiteName, packagedFiles))
 }
 
 func TestSuiteFactory() android.Module {
 	module := &testSuiteModule{}
 	module.AddProperties(&module.testSuiteProperties)
 
-	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
+	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibFirst)
 	android.InitDefaultableModule(module)
 
 	return module
 }
 
-func packageModuleFiles(ctx android.ModuleContext, suiteName string, module android.Module, tp tradefed.BaseTestProviderData) []string {
-
+func packageModuleFiles(ctx android.ModuleContext, suiteName string, module android.Module, tp tradefed.BaseTestProviderData) map[string]android.InstallPath {
 	hostOrTarget := "target"
 	if tp.IsHost {
 		hostOrTarget = "host"
@@ -139,7 +146,11 @@ func packageModuleFiles(ctx android.ModuleContext, suiteName string, module andr
 	// suiteRoot at out/soong/packaging/<suiteName>.
 	suiteRoot := android.PathForSuiteInstall(ctx, suiteName)
 
-	var installed android.InstallPaths
+	// Add to phony and manifest.
+	// packagedFiles are indexed by path relative to suiteRoot,
+	// mapping to the original installed file in the module being packaged.
+	packagedFiles := make(map[string]android.InstallPath)
+
 	// Install links to installed files from the module.
 	if installFilesInfo, ok := android.OtherModuleProvider(ctx, module, android.InstallFilesProvider); ok {
 		for _, f := range installFilesInfo.InstallFiles {
@@ -153,21 +164,37 @@ func packageModuleFiles(ctx android.ModuleContext, suiteName string, module andr
 				ctx.ModuleErrorf("Failed to get relative path from %s to %s: %v", installDir.String(), f.String(), err)
 				continue
 			}
-			installed = append(installed, ctx.InstallAbsoluteSymlink(installDir, path.Base(rel), linkTo))
+
+			installed := ctx.InstallAbsoluteSymlink(installDir, path.Base(rel), linkTo)
+			packagedFiles[android.Rel(ctx, suiteRoot.String(), installed.String())] = f
+			ctx.Phony(suiteName, installed)
 		}
 	}
 
 	// Install config file.
 	if tp.TestConfig != nil {
 		moduleRoot := suiteRoot.Join(ctx, hostOrTarget, "testcases", module.Name())
-		installed = append(installed, ctx.InstallFile(moduleRoot, module.Name() + ".config", tp.TestConfig))
+		installed := ctx.InstallFile(moduleRoot, module.Name() + ".config", tp.TestConfig)
+		packagedFiles[android.Rel(ctx, suiteRoot.String(), installed.String())] = installed
+		ctx.Phony(suiteName, installed)
 	}
 
-	// Add to phony and manifest, manifestpaths are relative to suiteRoot.
-	var manifestEntries []string
-	for _, f := range installed {
-		manifestEntries = append(manifestEntries, android.Rel(ctx, suiteRoot.String(), f.String()))
-		ctx.Phony(suiteName, f)
+	return packagedFiles
+}
+
+func packageZipFile(ctx android.ModuleContext, suiteName string, packagedFiles map[string]android.InstallPath) android.InstallPath {
+	zipFile := android.PathForSuiteInstall(ctx, suiteName, suiteName+".zip")
+	r := android.NewRuleBuilder(pctx, ctx)
+	cmd := r.Command().BuiltTool("soong_zip").
+		FlagWithOutput("-o ", zipFile).
+		Flag("-sha256")
+	for k, v := range packagedFiles {
+		addZipEntry(cmd, k, v)
 	}
-	return manifestEntries
+	r.Build(suiteName+".zip", "zip file for "+suiteName)
+	return zipFile
+}
+
+func addZipEntry(cmd *android.RuleBuilderCommand, explicitPath string, originalPath android.InstallPath) {
+	cmd.FlagWithArg("-e ", explicitPath).FlagWithInput("-f ", originalPath)
 }
