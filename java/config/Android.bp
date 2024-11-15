@@ -16,6 +16,7 @@ bootstrap_go_package {
         "error_prone.go",
         "kotlin.go",
         "makevars.go",
+        "scip.go",
     ],
     visibility: [
         "//build/soong:__subpackages__",
