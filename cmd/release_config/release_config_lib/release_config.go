@@ -376,6 +376,7 @@ func (config *ReleaseConfig) WriteMakefile(outFile, targetRelease string, config
 		}
 		myFlagArtifacts["RELEASE_ACONFIG_VALUE_SETS_"+rcName] = rc.FlagArtifacts["RELEASE_ACONFIG_VALUE_SETS"]
 		myFlagArtifacts["RELEASE_ACONFIG_FLAG_DEFAULT_PERMISSION_"+rcName] = rc.FlagArtifacts["RELEASE_ACONFIG_FLAG_DEFAULT_PERMISSION"]
+		// TODO(opg): Set RELEASE_ACONFIG_ALLOW_READ_WRITE to the AND of all the values.
 	}
 
 	// Sort the flags by name first.
