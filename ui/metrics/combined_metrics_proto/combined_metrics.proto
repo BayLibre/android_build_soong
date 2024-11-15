@@ -1,4 +1,4 @@
-// Copyright 2018 Google Inc. All Rights Reserved.
+// Copyright 2024 Google Inc. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 syntax = "proto2";
 
 package soong_build_metrics;
-option go_package = "android/soong/ui/metrics/metrics_proto";
+option go_package = "android/soong/ui/metrics/combined_metrics_proto";
 
 import "cmd/find_input_delta/find_input_delta_proto/file_list.proto";
 
