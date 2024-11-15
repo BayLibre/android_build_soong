@@ -88,6 +88,9 @@ type BpfProperties struct {
 	// list of directories relative to the Blueprint file that will be
 	// added to the include path using -I.
 	Local_include_dirs []string
+
+	Header_libs []string
+
 	// optional subdirectory under which this module is installed into.
 	Sub_dir string
 
@@ -147,6 +150,10 @@ func (bpf *bpf) SetImageVariation(ctx android.ImageInterfaceContext, variation s
 	bpf.properties.VendorInternal = variation == "vendor"
 }
 
+func (bpf *bpf) DepsMutator(ctx android.BottomUpMutatorContext) {
+	ctx.AddDependency(ctx.Module(), cc.HeaderDepTag(), bpf.properties.Header_libs...)
+}
+
 func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	cflags := []string{
 		"-nostdlibinc",
@@ -170,6 +177,15 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		"-I " + ctx.ModuleDir(),
 	}
 
+	ctx.VisitDirectDeps(func(dep android.Module) {
+		depTag := ctx.OtherModuleDependencyTag(dep)
+		if depTag == cc.HeaderDepTag() {
+			depExporterInfo, _ := android.OtherModuleProvider(ctx, dep, cc.FlagExporterInfoProvider)
+			for _, dir := range depExporterInfo.IncludeDirs {
+				cflags = append(cflags, "-I "+dir.String())
+			}
+		}
+	})
 	for _, dir := range android.PathsForModuleSrc(ctx, bpf.properties.Local_include_dirs) {
 		cflags = append(cflags, "-I "+dir.String())
 	}
@@ -303,7 +319,6 @@ func BpfFactory() android.Module {
 	module := &bpf{}
 
 	module.AddProperties(&module.properties)
-
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 
