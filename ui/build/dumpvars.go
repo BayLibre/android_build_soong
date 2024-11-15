@@ -273,6 +273,7 @@ func runMakeProductConfig(ctx Context, config Config) {
 		"BUILD_BROKEN_USES_BUILD_SHARED_LIBRARY",
 		"BUILD_BROKEN_USES_BUILD_STATIC_JAVA_LIBRARY",
 		"BUILD_BROKEN_USES_BUILD_STATIC_LIBRARY",
+		"RELEASE_BUILD_COMBINED_METRICS",
 	}, exportEnvVars...), BannerVars...)
 
 	makeVars, err := dumpMakeVars(ctx, config, config.Arguments(), allVars, true, "")
@@ -297,6 +298,7 @@ func runMakeProductConfig(ctx Context, config Config) {
 
 	config.SetKatiArgs(strings.Fields(makeVars["KATI_GOALS"]))
 	config.SetNinjaArgs(strings.Fields(makeVars["NINJA_GOALS"]))
+	config.SetReleaseBuildCombinedMetrics(makeVars["RELEASE_BUILD_COMBINED_METRICS"] == "true")
 	config.SetTargetDevice(makeVars["TARGET_DEVICE"])
 	config.SetTargetDeviceDir(makeVars["TARGET_DEVICE_DIR"])
 	config.sandboxConfig.SetSrcDirIsRO(makeVars["BUILD_BROKEN_SRC_DIR_IS_WRITABLE"] == "false")

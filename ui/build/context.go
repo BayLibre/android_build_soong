@@ -18,6 +18,7 @@ import (
 	"context"
 	"io"
 
+	"android/soong/ui/combined_metrics"
 	"android/soong/ui/logger"
 	"android/soong/ui/metrics"
 	soong_metrics_proto "android/soong/ui/metrics/metrics_proto"
@@ -33,7 +34,8 @@ type ContextImpl struct {
 	context.Context
 	logger.Logger
 
-	Metrics *metrics.Metrics
+	Metrics         *metrics.Metrics
+	CombinedMetrics *combined_metrics.CombinedMetrics
 
 	Writer io.Writer
 	Status *status.Status

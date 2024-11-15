@@ -244,6 +244,9 @@ func runNinjaForBuild(ctx Context, config Config) {
 
 			// SOONG_USE_PARTIAL_COMPILE only determines which half of the rule we execute.
 			"SOONG_USE_PARTIAL_COMPILE",
+
+			// Directory for CombinedMetrics
+			"SOONG_METRICS_AGGREGATION_DIR",
 		}, config.BuildBrokenNinjaUsesEnvVars()...)...)
 	}
 
@@ -254,6 +257,13 @@ func runNinjaForBuild(ctx Context, config Config) {
 		cmd.Environment.Set("RUST_BACKTRACE", "1")
 	default:
 		// Only set RUST_BACKTRACE for n2.
+	}
+
+	// Set up the metrics aggregation directory.
+	if ctx.CombinedMetrics != nil {
+		cmd.Environment.Set("SOONG_METRICS_AGGREGATION_DIR", ctx.CombinedMetrics.MetricsAggregationDir)
+	} else {
+		cmd.Environment.Unset("SOONG_METRICS_AGGREGATION_DIR")
 	}
 
 	// Print the environment variables that Ninja is operating in.
@@ -300,8 +310,10 @@ func runNinjaForBuild(ctx Context, config Config) {
 		}
 	}()
 
+	ctx.CombinedMetrics.Start()
 	ctx.Status.Status("Starting ninja...")
 	cmd.RunAndStreamOrFatal()
+	ctx.CombinedMetrics.Finish()
 }
 
 // A simple struct for checking if Ninja gets stuck, using timestamps.

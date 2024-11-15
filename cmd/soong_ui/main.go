@@ -27,6 +27,7 @@ import (
 
 	"android/soong/shared"
 	"android/soong/ui/build"
+	"android/soong/ui/combined_metrics"
 	"android/soong/ui/logger"
 	"android/soong/ui/metrics"
 	"android/soong/ui/signal"
@@ -187,6 +188,7 @@ func main() {
 	}
 	config := freshConfig()
 	logsDir := config.LogsDir()
+	releaseBuildCombinedMetrics := config.ReleaseBuildCombinedMetrics()
 	buildStarted = config.BuildStartedTimeOrDefault(buildStarted)
 
 	buildErrorFile := filepath.Join(logsDir, c.logsPrefix+"build_error")
@@ -194,6 +196,7 @@ func main() {
 	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics.pb")
 	soongBuildMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_build_metrics.pb")
 	buildTraceFile := filepath.Join(logsDir, c.logsPrefix+"build.trace.gz")
+	combinedMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_combined_metrics.pb")
 
 	metricsFiles := []string{
 		buildErrorFile,        // build error strings
@@ -202,11 +205,19 @@ func main() {
 		soongBuildMetricsFile, // high level metrics related to soong build
 		buildTraceFile,
 	}
+	if releaseBuildCombinedMetrics {
+		buildCtx.CombinedMetrics = combined_metrics.NewCombinedMetrics(log)
+		buildCtx.CombinedMetrics.SetDir(filepath.Join(config.OutDir(), "soong", "metrics_aggregation"))
+		// TODO: Upload the metrics file.
+		// metricsFiles = append(metricsFiles, combinedMetricsFile)
+	}
 
 	defer func() {
+		buildCtx.CombinedMetrics.Finish()
 		stat.Finish()
 		criticalPath.WriteToMetrics(met)
 		met.Dump(soongMetricsFile)
+		buildCtx.CombinedMetrics.Dump(combinedMetricsFile, args)
 		if !config.SkipMetricsUpload() {
 			build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, metricsFiles...)
 		}

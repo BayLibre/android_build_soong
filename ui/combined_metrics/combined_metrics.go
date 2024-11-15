@@ -1,0 +1,310 @@
+// Copyright 2024 Google Inc. All rights reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// Package combined_metrics represents the metrics system for Android Platform Build Systems.
+package combined_metrics
+
+// This is the main heart of the metrics system for Android Platform Build Systems.
+// The starting of the soong_ui (cmd/soong_ui/main.go), the metrics system is
+// initialized by the invocation of New and is then stored in the context
+// (ui/build/context.go) to be used throughout the system. During the build
+// initialization phase, several functions in this file are invoked to store
+// information such as the environment, build configuration and build metadata.
+// There are several scoped code that has Begin() and defer End() functions
+// that captures the metrics and is them added as a perfInfo into the set
+// of the collected metrics. Finally, when soong_ui has finished the build,
+// the defer Dump function is invoked to store the collected metrics to the
+// raw protobuf file in the $OUT directory and this raw protobuf file will be
+// uploaded to the destination. See ui/build/upload.go for more details. The
+// filename of the raw protobuf file and the list of files to be uploaded is
+// defined in cmd/soong_ui/main.go. See ui/metrics/event.go for the explanation
+// of what an event is and how the metrics system is a stack based system.
+
+import (
+	"io/fs"
+	"os"
+	"path/filepath"
+	"slices"
+
+	"android/soong/ui/logger"
+
+	fid_proto "android/soong/cmd/find_input_delta/find_input_delta_proto"
+	soong_combined_proto "android/soong/ui/metrics/combined_metrics_proto"
+	soong_metrics_proto "android/soong/ui/metrics/metrics_proto"
+	"google.golang.org/protobuf/encoding/protowire"
+	"google.golang.org/protobuf/proto"
+)
+
+type CombinedMetrics struct {
+	MetricsAggregationDir string
+	logger                logger.Logger
+	started               bool
+	start                 chan error
+	done                  chan bool
+	forceClose            chan bool
+	fileList              *fileList
+}
+
+type fileList struct {
+	totalChanges uint32
+	changes      fileChanges
+	seenFiles    map[string]bool
+}
+
+type fileChanges struct {
+	additions     changeInfo
+	deletions     changeInfo
+	modifications changeInfo
+}
+
+type fileChangeCounts struct {
+	additions     uint32
+	deletions     uint32
+	modifications uint32
+}
+
+type changeInfo struct {
+	total       uint32
+	list        []string
+	byExtension map[string]uint32
+}
+
+var MAXIMUM_FILES uint32 = 50
+
+// Setup the handler for SoongCombinedMetrics.
+func NewCombinedMetrics(log logger.Logger) *CombinedMetrics {
+	return &CombinedMetrics{
+		logger:   log,
+		fileList: &fileList{seenFiles: make(map[string]bool)},
+	}
+}
+
+// Save the path for CombinedMetrics communications.
+func (c *CombinedMetrics) SetDir(path string) {
+	c.MetricsAggregationDir = path
+	os.Remove(c.MetricsAggregationDir)
+}
+
+// Start collecting SoongCombinedMetrics.
+func (c *CombinedMetrics) Start() {
+	if c == nil {
+		return
+	}
+	c.start = make(chan error)
+	c.forceClose = make(chan bool)
+	c.done = make(chan bool)
+	go c.run()
+	select {
+	case err := <-c.start:
+		if err != nil {
+			c.logger.Fatalf("Failed to start CombinedMetrics: %v", err)
+		}
+		c.started = true
+		c.logger.Verbosef("CombinedMetrics running\n")
+	}
+}
+
+// Close the socket.
+func (c *CombinedMetrics) Finish() {
+	// We are done if not started.
+	if c == nil || !c.started {
+		return
+	}
+	// Shut down the reader
+	c.forceClose <- true
+
+	// Wait for it to finish.
+	select {
+	case <-c.done:
+		c.started = false
+	}
+
+	// Find and process all of the metrics files.
+	aggFs := os.DirFS(c.MetricsAggregationDir)
+	fs.WalkDir(aggFs, ".", func(path string, d fs.DirEntry, err error) error {
+		if d.IsDir() {
+			return nil
+		}
+		if err != nil {
+			c.logger.Fatalf("CombinedMetrics.Finish: Error walking %s: %v", c.MetricsAggregationDir, err)
+		}
+		path = filepath.Join(c.MetricsAggregationDir, path)
+		r, err := os.ReadFile(path)
+		if err != nil {
+			c.logger.Fatalf("CombinedMetrics.Finish: Failed to read %s: %v", path, err)
+		}
+		msg := &soong_combined_proto.SoongCombinedMetrics{}
+		err = proto.Unmarshal(r, msg)
+		if err != nil {
+			c.logger.Verbosef("CombinedMetrics.Finish: Error unmarshalling SoongCombinedMetrics message: %v\n", err)
+			return nil
+		}
+		switch {
+		case msg.GetFileList() != nil:
+			if err := c.fileList.aggregateFileList(msg.GetFileList()); err != nil {
+				c.logger.Verbosef("CombinedMetrics.Finish: Error parsing SoongCombinedMetrics message: %v\n", err)
+			}
+		// Status update for all others.
+		default:
+			tag, _ := protowire.ConsumeVarint(r)
+			id, _ := protowire.DecodeTag(tag)
+			c.logger.Verbosef("CombinedMetrics.Finish: Unexpected SoongCombinedMetrics submessage id=%d\n", id)
+		}
+		return nil
+	})
+}
+
+// Rename any prior metrics aggregation dir out of the way and then remove it
+// in the background.
+func (c *CombinedMetrics) run() {
+	tmpDir := c.MetricsAggregationDir + ".rm"
+	if _, err := fs.Stat(os.DirFS("."), c.MetricsAggregationDir); err == nil {
+		if err = os.RemoveAll(tmpDir); err != nil {
+			c.start <- err
+			return
+		}
+		if err = os.Rename(c.MetricsAggregationDir, tmpDir); err != nil {
+			c.start <- err
+			return
+		}
+	}
+	if err := os.MkdirAll(c.MetricsAggregationDir, 0777); err != nil {
+		c.start <- err
+		return
+	}
+	c.start <- nil
+	// Writers can now add files.
+	os.RemoveAll(tmpDir)
+
+	select {
+	case <-c.forceClose:
+		c.logger.Verbosef("CombinedMetrics closing\n")
+		c.done <- true
+	}
+}
+
+func (fl *fileList) aggregateFileList(msg *fid_proto.FileList) error {
+	fl.updateChangeInfo(msg.GetAdditions(), &fl.changes.additions)
+	fl.updateChangeInfo(msg.GetDeletions(), &fl.changes.deletions)
+	fl.updateChangeInfo(msg.GetChanges(), &fl.changes.modifications)
+	return nil
+}
+
+func (fl *fileList) updateChangeInfo(list []string, info *changeInfo) {
+	for _, filename := range list {
+		if fl.seenFiles[filename] {
+			continue
+		}
+		fl.seenFiles[filename] = true
+		if info.total < MAXIMUM_FILES {
+			info.list = append(info.list, filename)
+		}
+		ext := filepath.Ext(filename)
+		if info.byExtension == nil {
+			info.byExtension = make(map[string]uint32)
+		}
+		info.byExtension[ext] += 1
+		info.total += 1
+		fl.totalChanges += 1
+	}
+}
+
+func (c *CombinedMetrics) Dump(path string, args []string) error {
+	if c == nil {
+		return nil
+	}
+	msg := c.GetMetrics()
+	msg.Names = args
+
+	if _, err := os.Stat(filepath.Dir(path)); err != nil {
+		if err = os.MkdirAll(filepath.Dir(path), 0775); err != nil {
+			return err
+		}
+	}
+	data, err := proto.Marshal(msg)
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(path, data, 0644)
+}
+
+func (c *CombinedMetrics) GetMetrics() *soong_metrics_proto.AggregatedFileList {
+	fl := c.fileList
+	if fl == nil {
+		return nil
+	}
+	var count uint32
+	fileCounts := make(map[string]*soong_metrics_proto.FileCount)
+	ret := &soong_metrics_proto.AggregatedFileList{TotalDelta: proto.Uint32(c.fileList.totalChanges)}
+
+	// MAXIMUM_FILES is the upper bound on total file names reported.
+	if limit := min(MAXIMUM_FILES-min(MAXIMUM_FILES, count), fl.changes.additions.total); limit > 0 {
+		ret.Additions = fl.changes.additions.list[:limit]
+		count += limit
+	}
+	if limit := min(MAXIMUM_FILES-min(MAXIMUM_FILES, count), fl.changes.modifications.total); limit > 0 {
+		ret.Changes = fl.changes.modifications.list[:limit]
+		count += limit
+	}
+	if limit := min(MAXIMUM_FILES-min(MAXIMUM_FILES, count), fl.changes.deletions.total); limit > 0 {
+		ret.Deletions = fl.changes.deletions.list[:limit]
+		count += limit
+	}
+
+	addExt := func(key string) *soong_metrics_proto.FileCount {
+		// Create the fileCounts map entry if needed, and return the address to the caller.
+		if _, ok := fileCounts[key]; !ok {
+			fileCounts[key] = &soong_metrics_proto.FileCount{Extension: proto.String(key)}
+		}
+		return fileCounts[key]
+	}
+	for k, v := range fl.changes.additions.byExtension {
+		if p := addExt(k); p.Additions == nil {
+			p.Additions = proto.Uint32(v)
+		} else {
+			p.Additions = proto.Uint32(*p.Additions + v)
+		}
+	}
+	for k, v := range fl.changes.modifications.byExtension {
+		if p := addExt(k); p.Modifications == nil {
+			p.Modifications = proto.Uint32(v)
+		} else {
+			p.Modifications = proto.Uint32(*p.Modifications + v)
+		}
+	}
+	for k, v := range fl.changes.deletions.byExtension {
+		if p := addExt(k); p.Deletions == nil {
+			p.Deletions = proto.Uint32(v)
+		} else {
+			p.Deletions = proto.Uint32(*p.Deletions + v)
+		}
+	}
+
+	keys := func() []string {
+		ret := []string{}
+		for k := range fileCounts {
+			ret = append(ret, k)
+		}
+		return ret
+	}()
+	slices.Sort(keys)
+	for _, k := range keys {
+		ret.Counts = append(ret.Counts, &soong_metrics_proto.FileCount{
+			Additions:     fileCounts[k].Additions,
+			Deletions:     fileCounts[k].Deletions,
+			Modifications: fileCounts[k].Modifications,
+		})
+	}
+	return ret
+}
