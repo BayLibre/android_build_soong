@@ -495,6 +495,8 @@ type ProductVariables struct {
 
 	ReleaseAconfigFlagDefaultPermission string `json:",omitempty"`
 
+	ReleaseAconfigAllowReadWrite bool `json:",omitempty"`
+
 	ReleaseDefaultModuleBuildFromSource *bool `json:",omitempty"`
 
 	CheckVendorSeappViolations *bool `json:",omitempty"`

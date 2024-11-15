@@ -198,6 +198,11 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 		if len(module.properties.Container) > 0 {
 			args["container"] = "--container " + module.properties.Container
 		}
+		if ctx.Config().ReleaseAconfigAllowReadWrite() {
+			args["allow-read-write"] = "--allow-read-write true"
+		} else {
+			args["allow-read-write"] = "--allow-read-write false"
+		}
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        aconfigRule,
 			Output:      intermediateCacheFilePath,
