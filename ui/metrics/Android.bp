@@ -72,7 +72,7 @@ bootstrap_go_package {
         "soong-cmd-find_input_delta-proto",
     ],
     srcs: [
-        "metrics_proto/metrics.pb.go",
+        "metrics_proto/combined_metrics.pb.go",
     ],
 }
 

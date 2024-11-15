@@ -27,6 +27,7 @@ import (
 
 	"android/soong/shared"
 	"android/soong/ui/build"
+	"android/soong/ui/combined_metrics"
 	"android/soong/ui/logger"
 	"android/soong/ui/metrics"
 	"android/soong/ui/signal"
@@ -149,6 +150,8 @@ func main() {
 	log := logger.NewWithMetrics(output, met)
 	defer log.Cleanup()
 
+	cmet := combined_metrics.NewCombinedMetrics(log)
+
 	// Create a context to simplify the program termination process.
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -171,13 +174,14 @@ func main() {
 	})
 	criticalPath := status.NewCriticalPath()
 	buildCtx := build.Context{ContextImpl: &build.ContextImpl{
-		Context:      ctx,
-		Logger:       log,
-		Metrics:      met,
-		Tracer:       trace,
-		Writer:       output,
-		Status:       stat,
-		CriticalPath: criticalPath,
+		Context:         ctx,
+		Logger:          log,
+		Metrics:         met,
+		CombinedMetrics: cmet,
+		Tracer:          trace,
+		Writer:          output,
+		Status:          stat,
+		CriticalPath:    criticalPath,
 	}}
 
 	freshConfig := func() build.Config {
@@ -188,12 +192,14 @@ func main() {
 	config := freshConfig()
 	logsDir := config.LogsDir()
 	buildStarted = config.BuildStartedTimeOrDefault(buildStarted)
+	buildCtx.CombinedMetrics.SetDir(filepath.Join(config.OutDir(), "soong", "metrics_aggregation"))
 
 	buildErrorFile := filepath.Join(logsDir, c.logsPrefix+"build_error")
 	soongMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_metrics")
 	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics.pb")
 	soongBuildMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_build_metrics.pb")
 	buildTraceFile := filepath.Join(logsDir, c.logsPrefix+"build.trace.gz")
+	combinedMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_combined_metrics.pb")
 
 	metricsFiles := []string{
 		buildErrorFile,        // build error strings
@@ -204,9 +210,11 @@ func main() {
 	}
 
 	defer func() {
+		cmet.Finish()
 		stat.Finish()
 		criticalPath.WriteToMetrics(met)
 		met.Dump(soongMetricsFile)
+		cmet.Dump(combinedMetricsFile, args)
 		if !config.SkipMetricsUpload() {
 			build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, metricsFiles...)
 		}
