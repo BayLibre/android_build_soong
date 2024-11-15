@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e222128_c0c5d076",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-11-15T04:37:10Z",
+      "side": 1,
+      "message": "LLNDK includes NDK symbols and more which have `#llndk`. This was the original rule of annotations. But we had to change the rule to explicitly annotate the llndk versions because NDK and LLNDK have different schedule of finalization in 2024.\nIn 2025, we don\u0027t need to worry about this. So we can go back to the original annotation rule.",
+      "parentUuid": "9373c5c9_88cbe4e9",
+      "revId": "bdd02f20a3b0403dc145ad3d73148b644eec8ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67110599_4838d156",
