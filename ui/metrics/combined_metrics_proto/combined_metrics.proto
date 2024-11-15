@@ -15,7 +15,7 @@
 syntax = "proto2";
 
 package soong_build_metrics;
-option go_package = "android/soong/ui/metrics/metrics_proto";
+option go_package = "android/soong/ui/metrics/combined_metrics_proto";
 
 import "cmd/find_input_delta/find_input_delta_proto/file_list.proto";
 

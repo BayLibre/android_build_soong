@@ -97,6 +97,7 @@ type configImpl struct {
 	buildFromSourceStub      bool
 	incrementalBuildActions  bool
 	ensureAllowlistIntegrity bool // For CI builds - make sure modules are mixed-built
+	buildFlagCombinedMetrics bool // RELEASE_USE_COMBINED_METRICS build flag value.
 
 	// From the product config
 	katiArgs        []string
@@ -1554,6 +1555,14 @@ func (c *configImpl) SetKatiArgs(args []string) {
 
 func (c *configImpl) SetNinjaArgs(args []string) {
 	c.ninjaArgs = args
+}
+
+func (c *configImpl) SetReleaseBuildCombinedMetrics(value bool) {
+	c.buildFlagCombinedMetrics = value
+}
+
+func (c *configImpl) ReleaseBuildCombinedMetrics() bool {
+	return c.buildFlagCombinedMetrics
 }
 
 func (c *configImpl) SetKatiSuffix(suffix string) {
