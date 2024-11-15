@@ -366,7 +366,7 @@ func (e *embeddableInModuleAndImport) initModuleAndImport(module android.Module)
 //
 // This cannot implement DepIsInSameApex(...) directly as that leads to ambiguity with
 // the one provided by ApexModuleBase.
-func (e *embeddableInModuleAndImport) depIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
+func depIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
 	// dependencies other than the static linkage are all considered crossing APEX boundary
 	if staticLibTag == ctx.OtherModuleDependencyTag(dep) {
 		return true
@@ -2208,7 +2208,11 @@ func (j *Module) hasCode(ctx android.ModuleContext) bool {
 
 // Implements android.ApexModule
 func (j *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
-	return j.depIsInSameApex(ctx, dep)
+	return DepIsInSameApex(ctx, dep)
+}
+
+func DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
+	return depIsInSameApex(ctx, dep)
 }
 
 // Implements android.ApexModule

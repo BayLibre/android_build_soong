@@ -29,6 +29,11 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
+type JavaAARImportInfo struct {
+}
+
+var JavaAARImportInfoKey = blueprint.NewProvider[JavaAARImportInfo]()
+
 type AndroidLibraryDependency interface {
 	ExportPackage() android.Path
 	ResourcesNodeDepSet() depset.DepSet[*resourcesNode]
@@ -1492,6 +1497,8 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		JniPackages: a.jniPackages,
 	})
 
+	android.SetProvider(ctx, JavaAARImportInfoKey, JavaAARImportInfo{})
+
 	ctx.SetOutputFiles([]android.Path{a.implementationAndResourcesJarFile}, "")
 	ctx.SetOutputFiles([]android.Path{a.aarPath}, ".aar")
 }
@@ -1522,7 +1529,11 @@ var _ android.ApexModule = (*AARImport)(nil)
 
 // Implements android.ApexModule
 func (a *AARImport) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
-	return a.depIsInSameApex(ctx, dep)
+	return DepIsInSameApexAARImport(ctx, dep)
+}
+
+func DepIsInSameApexAARImport(ctx android.BaseModuleContext, dep android.Module) bool {
+	return depIsInSameApex(ctx, dep)
 }
 
 // Implements android.ApexModule

@@ -1267,6 +1267,10 @@ var _ android.DepIsInSameApex = (*apexBundle)(nil)
 
 // Implements android.DepInInSameApex
 func (a *apexBundle) DepIsInSameApex(_ android.BaseModuleContext, _ android.Module) bool {
+	return DepIsInSameApex()
+}
+
+func DepIsInSameApex() bool {
 	// direct deps of an APEX bundle are all part of the APEX bundle
 	// TODO(jiyong): shouldn't we look into the payload field of the dependencyTag?
 	return true
@@ -1694,6 +1698,32 @@ func (a *apexBundle) WalkPayloadDeps(ctx android.BaseModuleContext, do android.P
 
 		// Visit actually
 		return do(ctx, parent, am, externalDep)
+	})
+}
+
+func (a *apexBundle) WalkPayloadDepsProxy(ctx android.BaseModuleContext,
+	do func(ctx android.BaseModuleContext, from, to android.ModuleProxy, externalDep bool) bool) {
+	ctx.WalkDepsProxy(func(child, parent android.ModuleProxy) bool {
+		if _, ok := android.OtherModuleProvider(ctx, child, android.ApexInfoProvider); !ok {
+			return false
+		}
+		// Filter-out unwanted depedendencies
+		depTag := ctx.OtherModuleDependencyTag(child)
+		if _, ok := depTag.(android.ExcludeFromApexContentsTag); ok {
+			return false
+		}
+		if dt, ok := depTag.(*dependencyTag); ok && !dt.payload {
+			return false
+		}
+		if depTag == android.RequiredDepTag {
+			return false
+		}
+
+		ai, _ := android.OtherModuleProvider(ctx, child, android.ApexInfoProvider)
+		externalDep := !android.InList(ctx.ModuleName(), ai.InApexVariants)
+
+		// Visit actually
+		return do(ctx, parent, child, externalDep)
 	})
 }
 
@@ -2568,6 +2598,39 @@ func (a *apexBundle) minSdkVersion(ctx android.EarlyModuleContext) android.ApiLe
 	return android.MinSdkVersionFromValue(ctx, a.minSdkVersionValue(ctx))
 }
 
+func DepsInSameApex(ctx android.BaseModuleContext, from, to android.ModuleProxy) bool {
+	inSameApex := false
+
+	if _, ok := android.OtherModuleProvider(ctx, from, android.ApexInfoProvider); ok {
+		inSameApex = android.DepIsInSameApexApexModule()
+	} else if _, ok := android.OtherModuleProvider(ctx, from, android.ApexBundleInfoProvider); ok {
+		inSameApex = DepIsInSameApex()
+	} else if _, ok := android.OtherModuleProvider(ctx, from, cc.CcInfoKey); ok {
+		inSameApex = cc.DepIsInSameApex(ctx, from, to)
+	} else if _, ok := android.OtherModuleProvider(ctx, from, java.JavaAARImportInfoKey); ok {
+		inSameApex = java.DepIsInSameApexAARImport(ctx, to)
+	} else if info, ok := android.OtherModuleProvider(ctx, from, java.AppInfoProvider); ok && !info.TestHelperApp {
+		inSameApex = java.DepIsInSameApexAndroidApp(ctx, to)
+	} else if _, ok := android.OtherModuleProvider(ctx, from, java.AndroidAppImportInfoKey); ok {
+		inSameApex = java.DepIsInSameApexAndroidAppImport()
+	} else if _, ok := android.OtherModuleProvider(ctx, from, java.BootclasspathFragmentModuleInfoKey); ok {
+		inSameApex = java.DepIsInSameApexBootclasspathFragmentModule(ctx, from, to)
+	} else if info, ok := android.OtherModuleProvider(ctx, from, java.SdkLibraryInfoProvider); ok {
+		if info.Import {
+			inSameApex = java.DepIsInSameApexSdkLibraryImport(ctx, to)
+		} else {
+			inSameApex = java.DepIsInSameApexSdkLibrary(ctx, from, to)
+		}
+	} else if _, ok := android.OtherModuleProvider(ctx, from, java.JavaInfoProvider); ok {
+		// This has to be the last for java modules
+		inSameApex = java.DepIsInSameApex(ctx, to)
+	} else if _, ok := android.OtherModuleProvider(ctx, from, rust.RustInfoKey); ok {
+		inSameApex = rust.DepIsInSameApex(ctx, from, to)
+	}
+
+	return inSameApex
+}
+
 // Ensures that a lib providing stub isn't statically linked
 func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext) {
 	// Practically, we only care about regular APEXes on the device.
@@ -2580,17 +2643,15 @@ func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext
 		librariesDirectlyInApex[ctx.OtherModuleName(dep)] = true
 	})
 
-	a.WalkPayloadDeps(ctx, func(ctx android.BaseModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
-		if ccm, ok := to.(*cc.Module); ok {
+	a.WalkPayloadDepsProxy(ctx, func(ctx android.BaseModuleContext, from, to android.ModuleProxy, externalDep bool) bool {
+		if ccInfo, ok := android.OtherModuleProvider(ctx, to, cc.CcInfoKey); ok {
 			apexName := ctx.ModuleName()
 			fromName := ctx.OtherModuleName(from)
 			toName := ctx.OtherModuleName(to)
 
 			// If `to` is not actually in the same APEX as `from` then it does not need
 			// apex_available and neither do any of its dependencies.
-			//
-			// It is ok to call DepIsInSameApex() directly from within WalkPayloadDeps().
-			if am, ok := from.(android.DepIsInSameApex); ok && !am.DepIsInSameApex(ctx, to) {
+			if !DepsInSameApex(ctx, from, to) {
 				// As soon as the dependency graph crosses the APEX boundary, don't go further.
 				return false
 			}
@@ -2604,12 +2665,11 @@ func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext
 				return false
 			}
 
-			isStubLibraryFromOtherApex := ccm.HasStubsVariants() && !librariesDirectlyInApex[toName]
+			isStubLibraryFromOtherApex := ccInfo.HasStubsVariants && !librariesDirectlyInApex[toName]
 			if isStubLibraryFromOtherApex && !externalDep {
 				ctx.ModuleErrorf("%q required by %q is a native library providing stub. "+
 					"It shouldn't be included in this APEX via static linking. Dependency path: %s", to.String(), fromName, ctx.GetPathString(false))
 			}
-
 		}
 		return true
 	})

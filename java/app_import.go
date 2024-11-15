@@ -28,6 +28,10 @@ import (
 	"android/soong/provenance"
 )
 
+type AndroidAppImportInfo struct{}
+
+var AndroidAppImportInfoKey = blueprint.NewProvider[AndroidAppImportInfo]()
+
 func init() {
 	RegisterAppImportBuildComponents(android.InitRegistrationContext)
 
@@ -294,6 +298,7 @@ func (a *AndroidAppImport) shouldUncompressDex(ctx android.ModuleContext) bool {
 
 func (a *AndroidAppImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.generateAndroidBuildActions(ctx)
+	android.SetProvider(ctx, AndroidAppImportInfoKey, AndroidAppImportInfo{})
 }
 
 func (a *AndroidAppImport) InstallApkName() string {
@@ -539,6 +544,10 @@ func (a *AndroidAppImport) Privileged() bool {
 }
 
 func (a *AndroidAppImport) DepIsInSameApex(_ android.BaseModuleContext, _ android.Module) bool {
+	return DepIsInSameApexAndroidAppImport()
+}
+
+func DepIsInSameApexAndroidAppImport() bool {
 	// android_app_import might have extra dependencies via uses_libs property.
 	// Don't track the dependency as we don't automatically add those libraries
 	// to the classpath. It should be explicitly added to java_libs property of APEX

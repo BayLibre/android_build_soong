@@ -1256,10 +1256,14 @@ func (a *AndroidApp) getCertString(ctx android.BaseModuleContext) string {
 }
 
 func (a *AndroidApp) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
+	return DepIsInSameApexAndroidApp(ctx, dep)
+}
+
+func DepIsInSameApexAndroidApp(ctx android.BaseModuleContext, dep android.Module) bool {
 	if IsJniDepTag(ctx.OtherModuleDependencyTag(dep)) {
 		return true
 	}
-	return a.Library.DepIsInSameApex(ctx, dep)
+	return depIsInSameApex(ctx, dep)
 }
 
 func (a *AndroidApp) Privileged() bool {
