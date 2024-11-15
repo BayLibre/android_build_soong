@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "211aeca3_5592668c",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-15T22:48:56Z",
+      "side": 1,
+      "message": "nit: this does not seems to be used? Also, it seems like `boot_image` is not being added as dependency in depsmutator",
+      "fixSuggestions": [
+        {
+          "fixId": "79d4f82d_ac942123",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "fsgen/filesystem_creator.go",
+              "range": {
+                "startLine": 655,
+                "startChar": 0,
+                "endLine": 656,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "8558a2de1de4ce61246dec76d3bd707e0379d6aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
