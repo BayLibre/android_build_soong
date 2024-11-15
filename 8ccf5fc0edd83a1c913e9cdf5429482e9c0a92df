@@ -16,6 +16,24 @@
       "message": "If the return value from this function will be iterated over and show up in the ninja file, it\u0027s likely that user will need to sort the results by key, since go pretty much randomizes them when iterating over the map.",
       "revId": "8ccf5fc0edd83a1c913e9cdf5429482e9c0a92df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fd75d2f_dfe7f90b",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-11-15T01:05:59Z",
+      "side": 1,
+      "message": "Ah good point. Maybe I\u0027ll just move this wrapper into the new module in aosp/3340863 to avoid accidental misuse. The alternative is an array of tuples or a helper struct but at this point I don\u0027t see broader usage so I\u0027ll just remove. I could probably move the boolean flag too, but having it as a global hint seems fine.",
+      "parentUuid": "8298bad7_46f2792a",
+      "revId": "8ccf5fc0edd83a1c913e9cdf5429482e9c0a92df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
