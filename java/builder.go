@@ -358,6 +358,9 @@ type javaBuilderFlags struct {
 	errorProneExtraJavacFlags string
 	errorProneProcessorPath   classpath
 
+	scipExtraJavacFlags string
+	scipPluginPath      classpath
+
 	kotlincFlags     string
 	kotlincClasspath classpath
 	kotlincDeps      android.Paths
@@ -381,6 +384,22 @@ func TransformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 	}
 
 	transformJavaToClasses(ctx, outputFile, shardIdx, srcFiles, srcJars, annoSrcJar, flags, deps, "javac", desc)
+}
+
+func RunScip(ctx android.ModuleContext, outputFile android.WritablePath,
+	srcFiles, srcJars android.Paths, flags javaBuilderFlags) {
+	flags.processorPath = append(flags.scipPluginPath, flags.processorPath...)
+
+	if len(flags.scipExtraJavacFlags) > 0 {
+		if len(flags.javacFlags) > 0 {
+			flags.javacFlags += " " + flags.scipExtraJavacFlags
+		} else {
+			flags.javacFlags = flags.scipExtraJavacFlags
+		}
+	}
+
+	transformJavaToClasses(ctx, outputFile, -1, srcFiles, srcJars, flags, nil,
+		"scip", "scip")
 }
 
 // Emits the rule to generate Xref input file (.kzip file) for the given set of source files and source jars

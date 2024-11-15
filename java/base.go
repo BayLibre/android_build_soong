@@ -1030,6 +1030,12 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 		flags.errorProneProcessorPath = classpath(android.PathsForSource(ctx, config.ErrorProneClasspath))
 	}
 
+	if ctx.Config().EnableScip() {
+		scipFlags := j.collectScipFlags(ctx, deps)
+		flags.scipPluginPath = classpath(android.PathsForSource(ctx, config.ScipClasspath))
+		flags.scipExtraJavacFlags = "'" + strings.Join(scipFlags, " ") + "'"
+	}
+
 	// classpath
 	flags.bootClasspath = append(flags.bootClasspath, deps.bootClasspath...)
 	flags.classpath = append(flags.classpath, deps.classpath...)
@@ -1069,6 +1075,15 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 	// systemModules
 	flags.systemModules = deps.systemModules
 
+	return flags
+}
+
+func (j *Module) collectScipFlags(ctx android.ModuleContext, deps deps) []string {
+	flags := []string{
+		"-Xplugin:semanticdb",
+		"-sourceroot:" + android.AbsSrcDirForExistingUseCases(),
+		"-targetroot:" + filepath.Join(ctx.Config().SoongOutDir(), "semanticdb-targetroot"),
+	}
 	return flags
 }
 
@@ -1443,6 +1458,12 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 				"errorprone", "errorprone")
 
 			extraJarDeps = append(extraJarDeps, errorprone)
+		}
+
+		if ctx.Config().EnableScip() {
+			scip := android.PathForModuleOut(ctx, "scip", jarName)
+			RunScip(ctx, scip, uniqueJavaFiles, srcJars, flags)
+			extraJarDeps = append(extraJarDeps, scip)
 		}
 
 		if enableSharding {

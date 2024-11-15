@@ -1316,6 +1316,10 @@ func (c *config) RunErrorProne() bool {
 	return c.IsEnvTrue("RUN_ERROR_PRONE")
 }
 
+func (c *config) EnableScip() bool {
+	return c.IsEnvTrue("SOONG_ENABLE_SCIP")
+}
+
 // XrefCorpusName returns the Kythe cross-reference corpus name.
 func (c *config) XrefCorpusName() string {
 	return c.Getenv("XREF_CORPUS")
