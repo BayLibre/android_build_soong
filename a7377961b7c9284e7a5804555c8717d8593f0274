@@ -22,6 +22,30 @@
       },
       "revId": "a7377961b7c9284e7a5804555c8717d8593f0274",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f0f6d0_12ba8738",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-15T21:45:09Z",
+      "side": 1,
+      "message": "Cool idea, done.",
+      "parentUuid": "b6c8d995_a37c37df",
+      "range": {
+        "startLine": 709,
+        "startChar": 18,
+        "endLine": 709,
+        "endChar": 104
+      },
+      "revId": "a7377961b7c9284e7a5804555c8717d8593f0274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
