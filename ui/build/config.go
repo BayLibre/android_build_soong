@@ -77,26 +77,27 @@ type configImpl struct {
 	logsPrefix    string
 
 	// From the arguments
-	parallel                 int
-	keepGoing                int
-	verbose                  bool
-	checkbuild               bool
-	dist                     bool
-	jsonModuleGraph          bool
-	reportMkMetrics          bool // Collect and report mk2bp migration progress metrics.
-	soongDocs                bool
-	skipConfig               bool
-	skipKati                 bool
-	skipKatiNinja            bool
-	skipSoong                bool
-	skipNinja                bool
-	skipSoongTests           bool
-	searchApiDir             bool // Scan the Android.bp files generated in out/api_surfaces
-	skipMetricsUpload        bool
-	buildStartedTime         int64 // For metrics-upload-only - manually specify a build-started time
-	buildFromSourceStub      bool
-	incrementalBuildActions  bool
-	ensureAllowlistIntegrity bool // For CI builds - make sure modules are mixed-built
+	parallel                  int
+	keepGoing                 int
+	verbose                   bool
+	checkbuild                bool
+	dist                      bool
+	jsonModuleGraph           bool
+	reportMkMetrics           bool // Collect and report mk2bp migration progress metrics.
+	soongDocs                 bool
+	skipConfig                bool
+	skipKati                  bool
+	skipKatiNinja             bool
+	skipSoong                 bool
+	skipNinja                 bool
+	skipSoongTests            bool
+	searchApiDir              bool // Scan the Android.bp files generated in out/api_surfaces
+	skipMetricsUpload         bool
+	buildStartedTime          int64 // For metrics-upload-only - manually specify a build-started time
+	buildFromSourceStub       bool
+	incrementalBuildActions   bool
+	ensureAllowlistIntegrity  bool // For CI builds - make sure modules are mixed-built
+	buildFlagExecutionMetrics bool // RELEASE_USE_EXECUTION_METRICS build flag value.
 
 	// From the product config
 	katiArgs        []string
@@ -1554,6 +1555,14 @@ func (c *configImpl) SetKatiArgs(args []string) {
 
 func (c *configImpl) SetNinjaArgs(args []string) {
 	c.ninjaArgs = args
+}
+
+func (c *configImpl) SetReleaseBuildExecutionMetrics(value bool) {
+	c.buildFlagExecutionMetrics = value
+}
+
+func (c *configImpl) ReleaseBuildExecutionMetrics() bool {
+	return c.buildFlagExecutionMetrics
 }
 
 func (c *configImpl) SetKatiSuffix(suffix string) {
