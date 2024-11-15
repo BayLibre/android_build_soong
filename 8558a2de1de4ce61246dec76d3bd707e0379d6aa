@@ -34,6 +34,24 @@
       ],
       "revId": "8558a2de1de4ce61246dec76d3bd707e0379d6aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a751ede9_047ec67f",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-15T22:52:27Z",
+      "side": 1,
+      "message": "Actually, IIUC that would be handled by the `pathDepsMutator`. Still would be better to remove the unused variable.",
+      "parentUuid": "211aeca3_5592668c",
+      "revId": "8558a2de1de4ce61246dec76d3bd707e0379d6aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
