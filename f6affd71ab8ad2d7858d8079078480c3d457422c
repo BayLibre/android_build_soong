@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0118bed8_01c8cc3b",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-15T23:17:45Z",
+      "side": 1,
+      "message": "This dispatcher is only needed because `DepIsInSameApex` is called from `WalkDeps`, where `from` may not be `ctx.Module()`.  What do you think if instead we make `DepIsInSameApex` only take a `ctx` and `to` as arguments, call it from `GenerateAndroidBuildActions` on each direct dep, and store a list of the dependencies that are in the same apex in a provider.  Then the `WalkDeps` use case can query the provider on `parent` to see if `child` is listed in it to decide if the child is in the same apex.",
+      "revId": "f6affd71ab8ad2d7858d8079078480c3d457422c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
