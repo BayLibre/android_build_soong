@@ -75,6 +75,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e411168b_9e08ad96",
+        "filename": "android/vendor_api_levels.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-11-15T04:27:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67110599_4838d156",
+      "range": {
+        "startLine": 22,
+        "startChar": 43,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "bdd02f20a3b0403dc145ad3d73148b644eec8ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96148e93_f9caf5c7",
+        "filename": "android/vendor_api_levels.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-11-15T04:27:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74f9f79f_1117cc2d",
+      "revId": "bdd02f20a3b0403dc145ad3d73148b644eec8ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea7412c5_b2ba7147",
@@ -98,6 +140,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e3f0af6_d87845b0",
+        "filename": "cc/api_level.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-11-15T04:27:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea7412c5_b2ba7147",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "bdd02f20a3b0403dc145ad3d73148b644eec8ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb8a08a9_53111fe6",
@@ -111,6 +177,30 @@
       "writtenOn": "2024-11-14T07:48:00Z",
       "side": 1,
       "message": "nit: just `version`",
+      "range": {
+        "startLine": 570,
+        "startChar": 2,
+        "endLine": 570,
+        "endChar": 29
+      },
+      "revId": "bdd02f20a3b0403dc145ad3d73148b644eec8ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01d0bc14_6ddb0056",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-11-15T04:27:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb8a08a9_53111fe6",
       "range": {
         "startLine": 570,
         "startChar": 2,
