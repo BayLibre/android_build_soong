@@ -27,6 +27,10 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
+type ApexPrebuiltInfo struct{}
+
+var ApexPrebuiltInfoKey = blueprint.NewProvider[ApexPrebuiltInfo]()
+
 var (
 	extractMatchingApex = pctx.StaticRule(
 		"extractMatchingApex",
@@ -273,8 +277,12 @@ func (p *prebuiltCommon) prebuiltApexContentsDeps(ctx android.BottomUpMutatorCon
 	}
 }
 
-// Implements android.DepInInSameApex
 func (p *prebuiltCommon) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
+	return DepIsInSameApexApexPrebuilt(ctx, dep)
+}
+
+// Implements android.DepInInSameApex
+func DepIsInSameApexApexPrebuilt(ctx android.BaseModuleContext, dep android.Module) bool {
 	tag := ctx.OtherModuleDependencyTag(dep)
 	_, ok := tag.(exportedDependencyTag)
 	return ok
@@ -630,6 +638,7 @@ func (p *prebuiltCommon) providePrebuiltInfo(ctx android.ModuleContext) {
 		info.Prebuilt_info_file_path = android.PathForModuleSrc(ctx, *p.prebuiltCommonProperties.Prebuilt_info).String()
 	}
 	android.SetProvider(ctx, android.PrebuiltInfoProvider, info)
+	android.SetProvider(ctx, ApexPrebuiltInfoKey, ApexPrebuiltInfo{})
 }
 
 // Uses an object provided by its deps to validate that the contents of bcpf have been added to the global

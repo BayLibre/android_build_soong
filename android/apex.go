@@ -193,6 +193,10 @@ func IsDepInSameApex(ctx BaseModuleContext, module, dep Module) bool {
 	return module.(DepIsInSameApex).DepIsInSameApex(ctx, dep)
 }
 
+func IsDepProxyInSameApex(ctx BaseModuleContext, module, dep ModuleProxy) bool {
+	return true
+}
+
 // ApexModule is the interface that a module type is expected to implement if the module has to be
 // built differently depending on whether the module is destined for an APEX or not (i.e., installed
 // to one of the regular partitions).
@@ -457,6 +461,10 @@ func (m *ApexModuleBase) UniqueApexVariations() bool {
 
 // Implements ApexModule
 func (m *ApexModuleBase) DepIsInSameApex(ctx BaseModuleContext, dep Module) bool {
+	return DepIsInSameApexApexModule()
+}
+
+func DepIsInSameApexApexModule() bool {
 	// By default, if there is a dependency from A to B, we try to include both in the same
 	// APEX, unless B is explicitly from outside of the APEX (i.e. a stubs lib). Thus, returning
 	// true. This is overridden by some module types like apex.ApexBundle, cc.Module,

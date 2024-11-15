@@ -1859,9 +1859,18 @@ type CommonModuleInfo struct {
 	// The Target of artifacts that this module variant is responsible for creating.
 	CompileTarget           Target
 	SkipAndroidMkProcessing bool
+	CanHaveApexVariants     bool
 }
 
 var CommonModuleInfoKey = blueprint.NewProvider[CommonModuleInfo]()
+
+// ApexVariantInfo provides info about a module's apex variant if it implements
+// the ApexModule interface.
+type ApexVariantInfo struct {
+	CanHaveApexVariants bool
+}
+
+var ApexVariantInfoKey = blueprint.NewProvider[ApexVariantInfo]()
 
 type PrebuiltModuleProviderData struct {
 	// Empty for now
@@ -2144,6 +2153,12 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 
 	if p, ok := m.module.(AndroidMkProviderInfoProducer); ok && !commonData.SkipAndroidMkProcessing {
 		SetProvider(ctx, AndroidMkInfoProvider, p.PrepareAndroidMKProviderInfo(ctx.Config()))
+	}
+
+	if am, ok := m.module.(ApexModule); ok {
+		SetProvider(ctx, ApexVariantInfoKey, ApexVariantInfo{
+			CanHaveApexVariants: am.CanHaveApexVariants(),
+		})
 	}
 }
 

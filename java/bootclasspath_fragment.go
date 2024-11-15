@@ -29,6 +29,10 @@ import (
 	"github.com/google/blueprint"
 )
 
+type BootclasspathFragmentModuleInfo struct{}
+
+var BootclasspathFragmentModuleInfoKey = blueprint.NewProvider[BootclasspathFragmentModuleInfo]()
+
 func init() {
 	registerBootclasspathFragmentBuildComponents(android.InitRegistrationContext)
 
@@ -399,10 +403,13 @@ func (i BootclasspathFragmentApexContentInfo) ProfileInstallPathInApex() string 
 }
 
 func (b *BootclasspathFragmentModule) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
+	return DepIsInSameApexBootclasspathFragmentModule(ctx, b, dep)
+}
+func DepIsInSameApexBootclasspathFragmentModule(ctx android.BaseModuleContext, module, dep android.Module) bool {
 	tag := ctx.OtherModuleDependencyTag(dep)
 
 	// If the module is a default module, do not check the tag
-	if _, ok := dep.(*Defaults); ok {
+	if ctx.OtherModuleType(dep) == "java_defaults" {
 		return true
 	}
 	if IsBootclasspathFragmentContentDepTag(tag) {
@@ -419,7 +426,7 @@ func (b *BootclasspathFragmentModule) DepIsInSameApex(ctx android.BaseModuleCont
 		return false
 
 	}
-	panic(fmt.Errorf("boot_image module %q should not have a dependency on %q via tag %s", b, dep, android.PrettyPrintTag(tag)))
+	panic(fmt.Errorf("boot_image module %q should not have a dependency on %q via tag %s", module, dep, android.PrettyPrintTag(tag)))
 }
 
 func (b *BootclasspathFragmentModule) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion android.ApiLevel) error {
@@ -523,6 +530,8 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 	if !ctx.IsFinalModule(ctx.Module()) {
 		b.HideFromMake()
 	}
+
+	android.SetProvider(ctx, BootclasspathFragmentModuleInfoKey, BootclasspathFragmentModuleInfo{})
 }
 
 // getProfileProviderApex returns the name of the apex that provides a boot image profile, or an

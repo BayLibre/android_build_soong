@@ -2955,7 +2955,7 @@ var _ android.ApexModule = (*Import)(nil)
 
 // Implements android.ApexModule
 func (j *Import) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
-	return j.depIsInSameApex(ctx, dep)
+	return depIsInSameApex(ctx, dep)
 }
 
 // Implements android.ApexModule

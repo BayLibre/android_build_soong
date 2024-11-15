@@ -969,6 +969,7 @@ func (c *commonToSdkLibraryAndImport) generateCommonBuildActions(ctx android.Mod
 		ExportableStubDexJarPaths: exportableStubPaths,
 		RemovedTxtFiles:           removedApiFilePaths,
 		SharedLibrary:             c.sharedLibrary(),
+		ImplLibraryModuleName:     c.implLibraryModuleName(),
 	}
 }
 
@@ -1170,6 +1171,12 @@ type SdkLibraryInfo struct {
 
 	// Whether if this can be used as a shared library.
 	SharedLibrary bool
+
+	// Whether this is an import
+	Import bool
+
+	// Module name of the runtime implementation library
+	ImplLibraryModuleName string
 }
 
 var SdkLibraryInfoProvider = blueprint.NewProvider[SdkLibraryInfo]()
@@ -1282,7 +1289,7 @@ func (module *SdkLibrary) CheckMinSdkVersion(ctx android.ModuleContext) {
 func CheckMinSdkVersion(ctx android.ModuleContext, module *Library) {
 	android.CheckMinSdkVersion(ctx, module.MinSdkVersion(ctx), func(c android.BaseModuleContext, do android.PayloadDepsCallback) {
 		ctx.WalkDeps(func(child android.Module, parent android.Module) bool {
-			isExternal := !module.depIsInSameApex(ctx, child)
+			isExternal := !depIsInSameApex(ctx, child)
 			if am, ok := child.(android.ApexModule); ok {
 				if !do(ctx, parent, am, isExternal) {
 					return false
@@ -1651,6 +1658,18 @@ func (module *SdkLibrary) DepIsInSameApex(mctx android.BaseModuleContext, dep an
 		return true
 	}
 	return module.Library.DepIsInSameApex(mctx, dep)
+}
+
+func DepIsInSameApexSdkLibrary(mctx android.BaseModuleContext, module, dep android.Module) bool {
+	depTag := mctx.OtherModuleDependencyTag(dep)
+	if depTag == xmlPermissionsFileTag {
+		return true
+	}
+	if dep.Name() == android.OtherModuleProviderOrDefault(
+		mctx, module, SdkLibraryInfoProvider).ImplLibraryModuleName {
+		return true
+	}
+	return DepIsInSameApex(mctx, dep)
 }
 
 // Implements android.ApexModule
@@ -2064,8 +2083,12 @@ func (module *SdkLibraryImport) DepsMutator(ctx android.BottomUpMutatorContext) 
 
 var _ android.ApexModule = (*SdkLibraryImport)(nil)
 
-// Implements android.ApexModule
 func (module *SdkLibraryImport) DepIsInSameApex(mctx android.BaseModuleContext, dep android.Module) bool {
+	return DepIsInSameApexSdkLibraryImport(mctx, dep)
+}
+
+// Implements android.ApexModule
+func DepIsInSameApexSdkLibraryImport(mctx android.BaseModuleContext, dep android.Module) bool {
 	depTag := mctx.OtherModuleDependencyTag(dep)
 	if depTag == xmlPermissionsFileTag {
 		return true
@@ -2168,6 +2191,7 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 	}
 
 	sdkLibInfo.GeneratingLibs = generatingLibs
+	sdkLibInfo.Import = true
 	android.SetProvider(ctx, SdkLibraryInfoProvider, sdkLibInfo)
 }
 

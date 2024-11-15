@@ -53,6 +53,15 @@ type CcObjectInfo struct {
 
 var CcObjectInfoProvider = blueprint.NewProvider[CcObjectInfo]()
 
+// Common info about the cc module.
+type CcInfo struct {
+	HasStubsVariants bool
+	IsLlndk          bool
+	Static           bool
+}
+
+var CcInfoKey = blueprint.NewProvider[CcInfo]()
+
 type LinkableInfo struct {
 	// StaticExecutable returns true if this is a binary module with "static_executable: true".
 	StaticExecutable bool
@@ -2130,6 +2139,12 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		StaticExecutable: c.StaticExecutable(),
 	})
 
+	android.SetProvider(ctx, CcInfoKey, CcInfo{
+		HasStubsVariants: c.HasStubsVariants(),
+		IsLlndk:          c.IsLlndk(),
+		Static:           c.CcLibraryInterface() && c.Static(),
+	})
+
 	c.setOutputFiles(ctx)
 
 	if c.makeVarsInfo != nil {
@@ -3745,7 +3760,6 @@ func (c *Module) AndroidMkWriteAdditionalDependenciesForSourceAbiDiff(w io.Write
 
 var _ android.ApexModule = (*Module)(nil)
 
-// Implements android.ApexModule
 func (c *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
 	depTag := ctx.OtherModuleDependencyTag(dep)
 	libDepTag, isLibDepTag := depTag.(libraryDependencyTag)
@@ -3765,6 +3779,49 @@ func (c *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 			return false
 		}
 		if isLibDepTag && c.static() && libDepTag.shared() {
+			// shared_lib dependency from a static lib is considered as crossing
+			// the APEX boundary because the dependency doesn't actually is
+			// linked; the dependency is used only during the compilation phase.
+			return false
+		}
+
+		if isLibDepTag && libDepTag.excludeInApex {
+			return false
+		}
+	}
+	if depTag == stubImplDepTag {
+		// We don't track from an implementation library to its stubs.
+		return false
+	}
+	if depTag == staticVariantTag {
+		// This dependency is for optimization (reuse *.o from the static lib). It doesn't
+		// actually mean that the static lib (and its dependencies) are copied into the
+		// APEX.
+		return false
+	}
+	return true
+}
+
+// Implements android.ApexModule
+func DepIsInSameApex(ctx android.BaseModuleContext, module, dep android.Module) bool {
+	depTag := ctx.OtherModuleDependencyTag(dep)
+	libDepTag, isLibDepTag := depTag.(libraryDependencyTag)
+
+	if depCcInfo, ok := android.OtherModuleProvider(ctx, dep, CcInfoKey); ok {
+		if depCcInfo.HasStubsVariants {
+			if isLibDepTag && libDepTag.shared() {
+				// dynamic dep to a stubs lib crosses APEX boundary
+				return false
+			}
+			if IsRuntimeDepTag(depTag) {
+				// runtime dep to a stubs lib also crosses APEX boundary
+				return false
+			}
+		}
+		if depCcInfo.IsLlndk {
+			return false
+		}
+		if isLibDepTag && android.OtherModuleProviderOrDefault(ctx, module, CcInfoKey).Static && libDepTag.shared() {
 			// shared_lib dependency from a static lib is considered as crossing
 			// the APEX boundary because the dependency doesn't actually is
 			// linked; the dependency is used only during the compilation phase.
