@@ -52,6 +52,24 @@
       "parentUuid": "211aeca3_5592668c",
       "revId": "8558a2de1de4ce61246dec76d3bd707e0379d6aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "359ce6ee_ea067bc8",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-15T22:53:20Z",
+      "side": 1,
+      "message": "oops this was leftover from before I switched to using `pathDepsMutator`. Removed.",
+      "parentUuid": "a751ede9_047ec67f",
+      "revId": "8558a2de1de4ce61246dec76d3bd707e0379d6aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
