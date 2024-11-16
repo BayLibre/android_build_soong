@@ -22,6 +22,30 @@
       },
       "revId": "54de178b76163b6909d2641709ae6d4d0aa4cb3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6abacd02_c3003fdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-16T00:54:24Z",
+      "side": 1,
+      "message": "Sorry, this was unclear: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/fsgen/filesystem_creator.go;l\u003d570",
+      "parentUuid": "f6ac2046_29d8bc96",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "54de178b76163b6909d2641709ae6d4d0aa4cb3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
