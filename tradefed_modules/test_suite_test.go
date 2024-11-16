@@ -46,7 +46,7 @@ func TestTestSuites(t *testing.T) {
 			]
 		}
 	`)
-	manifestPath := ctx.ModuleForTests("my-suite", "android_common").Output("out/soong/test_suites/my-suite/my-suite.json")
+	manifestPath := ctx.ModuleForTests("my-suite", variant).Output("out/soong/test_suites/my-suite/my-suite.json")
 	var actual testSuiteManifest
 	if err := json.Unmarshal([]byte(android.ContentFromFileRuleForTests(t, ctx.TestContext, manifestPath)), &actual); err != nil {
 		t.Errorf("failed to unmarshal manifest: %v", err)
@@ -64,6 +64,9 @@ func TestTestSuites(t *testing.T) {
 	}
 
 	android.AssertDeepEquals(t, "manifests differ", expected, actual)
+
+	// Also asserts the zip file exists.
+	ctx.ModuleForTests("my-suite", variant).Output("out/soong/test_suites/my-suite/my-suite.zip")
 }
 
 func TestTestSuitesWithNested(t *testing.T) {
@@ -106,7 +109,7 @@ func TestTestSuitesWithNested(t *testing.T) {
 			]
 		}
 	`)
-	manifestPath := ctx.ModuleForTests("my-all-tests-suite", "android_common").Output("out/soong/test_suites/my-all-tests-suite/my-all-tests-suite.json")
+	manifestPath := ctx.ModuleForTests("my-all-tests-suite", variant).Output("out/soong/test_suites/my-all-tests-suite/my-all-tests-suite.json")
 	var actual testSuiteManifest
 	if err := json.Unmarshal([]byte(android.ContentFromFileRuleForTests(t, ctx.TestContext, manifestPath)), &actual); err != nil {
 		t.Errorf("failed to unmarshal manifest: %v", err)
@@ -126,6 +129,9 @@ func TestTestSuitesWithNested(t *testing.T) {
 	}
 
 	android.AssertDeepEquals(t, "manifests differ", expected, actual)
+
+	// Also asserts the zip file exists.
+	ctx.ModuleForTests("my-all-tests-suite", variant).Output("out/soong/test_suites/my-all-tests-suite/my-all-tests-suite.zip")
 }
 
 func TestTestSuitesNotInstalledInTestcases(t *testing.T) {
