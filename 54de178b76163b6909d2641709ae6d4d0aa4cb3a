@@ -87,6 +87,24 @@
       "message": "This one too?",
       "revId": "54de178b76163b6909d2641709ae6d4d0aa4cb3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e27101c1_23f4901c",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-16T00:56:52Z",
+      "side": 1,
+      "message": "I\u0027ve intentionally left this one because `base_dir` is not equivalent to the partition name.",
+      "parentUuid": "01de8a64_4bd20072",
+      "revId": "54de178b76163b6909d2641709ae6d4d0aa4cb3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
