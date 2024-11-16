@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ac2046_29d8bc96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-16T00:52:46Z",
+      "side": 1,
+      "message": "What makes you say that? It doesn\u0027t look like it has such a default: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/filesystem/filesystem.go;l\u003d451;drc\u003d4e9f5923c0e7cf0d7f845b90c7da65c24e44bcee",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "54de178b76163b6909d2641709ae6d4d0aa4cb3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
