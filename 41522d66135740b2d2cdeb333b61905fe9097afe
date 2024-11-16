@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e133cb04_fdbcb425",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-16T00:49:36Z",
+      "side": 1,
+      "message": "I don\u0027t think this will do anything. Looking at the code for mkbootfs, it looks like it expects the `-d` flag to be the path to the `out/target/product/\u003cdevice\u003e` directory, and then it searches that directory for file_context files from other partitions. If we pass it a different directory that doesn\u0027t have that file, it will have no effect.\n\nAlso, I was unable to reproduce the issues you outlined in b/379190521. When I build the soong ramdisk on TOT and then extract it, I see the same contents as the make ramdisk. How\u0027d you get that different filesystem layout?",
+      "revId": "41522d66135740b2d2cdeb333b61905fe9097afe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
