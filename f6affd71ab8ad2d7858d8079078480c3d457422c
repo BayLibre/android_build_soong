@@ -16,6 +16,24 @@
       "message": "This dispatcher is only needed because `DepIsInSameApex` is called from `WalkDeps`, where `from` may not be `ctx.Module()`.  What do you think if instead we make `DepIsInSameApex` only take a `ctx` and `to` as arguments, call it from `GenerateAndroidBuildActions` on each direct dep, and store a list of the dependencies that are in the same apex in a provider.  Then the `WalkDeps` use case can query the provider on `parent` to see if `child` is listed in it to decide if the child is in the same apex.",
       "revId": "f6affd71ab8ad2d7858d8079078480c3d457422c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d85fac2_a6691406",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2024-11-16T01:42:16Z",
+      "side": 1,
+      "message": "One issue is that there potentially be a lot of data to cache, and they are only used in a few verification methods in apex, could those verifications be done differently? On this topic, I have notices that the gob cache had grown to about 116M with just two module types supported so far, this was even before I added all the new providers recently. I feel we probably have to revisit the cache stuff at some point. I will take another look when I am back.",
+      "parentUuid": "0118bed8_01c8cc3b",
+      "revId": "f6affd71ab8ad2d7858d8079078480c3d457422c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
