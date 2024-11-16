@@ -658,6 +658,7 @@ func (f *filesystem) buildCpioImage(ctx android.ModuleContext, compressed bool) 
 	output := android.PathForModuleOut(ctx, f.installFileName())
 	cmd := builder.Command().
 		BuiltTool("mkbootfs").
+		FlagWithArg("-d ", rebasedDir.String()).
 		Text(rootDir.String()) // input directory
 	if compressed {
 		cmd.Text("|").
