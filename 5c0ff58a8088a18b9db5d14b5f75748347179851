@@ -46,6 +46,30 @@
       },
       "revId": "5c0ff58a8088a18b9db5d14b5f75748347179851",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "893e599b_8f226c7f",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-18T21:56:27Z",
+      "side": 1,
+      "message": "I think this is already [explicitly set](https://cs.android.com/android/platform/superproject/main/+/main:system/core/rootdir/Android.bp;l\u003d201) for make generated ramdisk partitions. Do we have any ramdisk filesystem modules checked in to the Android.bp files?",
+      "parentUuid": "37614b61_44e045d7",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 3
+      },
+      "revId": "5c0ff58a8088a18b9db5d14b5f75748347179851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
