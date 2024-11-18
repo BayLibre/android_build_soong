@@ -16,6 +16,24 @@
       "message": "Could you add a comment that this is for abfs?",
       "revId": "f5411fac9a01ee0d94a5284bfe62f2b65e659522",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de052bc9_47ee4c8d",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1883870
+      },
+      "writtenOn": "2024-11-18T20:29:50Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d01acc14_73f9aedc",
+      "revId": "f5411fac9a01ee0d94a5284bfe62f2b65e659522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
