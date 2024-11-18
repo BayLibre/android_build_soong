@@ -106,7 +106,7 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext android.SdkContext)
 		return sdkDep{}
 	}
 
-	if ctx.DeviceSpecific() || ctx.SocSpecific() {
+	if ctx.DeviceSpecific() || ctx.SocSpecific() || ctx.Module().InstallInVendor() {
 		sdkVersion = sdkVersion.ForVendorPartition(ctx)
 	}
 
