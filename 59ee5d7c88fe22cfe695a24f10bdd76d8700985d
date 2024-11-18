@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c1e76a_da44c0c6",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-18T20:19:20Z",
+      "side": 1,
+      "message": "Could we skip creating the `prebuilt_kernel_modules` and the `*_dlkm` filesystem module entirely if this is the case? And have the execution time test throw an error.",
+      "revId": "59ee5d7c88fe22cfe695a24f10bdd76d8700985d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
