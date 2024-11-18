@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd000bc7_3231827c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-18T18:29:34Z",
+      "side": 1,
+      "message": "Please give a detailed explanation of why we need this change.\n\nIn the bug I see you\u0027ve written \"This will help to generate the partner ZIP for Mainline prebuilts in case they need artifacts for both types.\", but it still doesn\u0027t answer why partners would need different types of apex filesystems.",
+      "revId": "738bf512b612323bd861de99bbde1b1b395d1b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
