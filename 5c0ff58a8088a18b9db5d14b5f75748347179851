@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37614b61_44e045d7",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-18T21:46:47Z",
+      "side": 1,
+      "message": "WDYT about requiring owners of ramdisk filesystem modules to explicitly set this property instead of implicitly adding it via a load hook? If the file is not set, we can raise an exception during analysis.",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 3
+      },
+      "revId": "5c0ff58a8088a18b9db5d14b5f75748347179851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
