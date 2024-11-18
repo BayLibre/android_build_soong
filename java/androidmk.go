@@ -307,6 +307,12 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 			Disabled: true,
 		}}
 	}
+	if app.hideApexVariantFromMake || app.IsHideFromMake() || app.IsOverlayVariation() {
+		// TODO (b/375277835) Install the overlay variant built with Soong
+		return []android.AndroidMkEntries{android.AndroidMkEntries{
+			Disabled: true,
+		}}
+	}
 	var required []string
 	if proptools.Bool(app.appProperties.Generate_product_characteristics_rro) {
 		required = []string{app.productCharacteristicsRROPackageName()}
