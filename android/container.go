@@ -85,6 +85,18 @@ var depIsNotStaticOrDynamicDepTag exceptionHandleFunc = func(ctx ModuleContext, 
 	return !InList(depTag, append(mInstallable.StaticDependencyTags(), mInstallable.DynamicDependencyTags()...))
 }
 
+type OverlayVariationModule interface {
+	IsOverlayVariation() bool
+}
+
+// Returns true if this is an overlay variant of a system/ or system_ext/ app
+var moduleIsOverlayVariant exceptionHandleFunc = func(ctx ModuleContext, m, dep Module) bool {
+	if overlay, ok := m.(OverlayVariationModule); ok {
+		return overlay.IsOverlayVariation()
+	}
+	return false
+}
+
 var globallyAllowlistedDependencies = []string{
 	// Modules that provide annotations used within the platform and apexes.
 	"aconfig-annotations-lib",
@@ -122,6 +134,7 @@ const (
 	checkNotDynamicDepTag
 	checkNotStaticOrDynamicDepTag
 	checkGlobalAllowlistedDep
+	checkOverlayVariant
 )
 
 // Map of [exceptionHandleFuncLabel] to the [exceptionHandleFunc]
@@ -133,6 +146,7 @@ var exceptionHandleFunctionsTable = map[exceptionHandleFuncLabel]exceptionHandle
 	checkNotDynamicDepTag:         depIsNotDynamicDepTag,
 	checkNotStaticOrDynamicDepTag: depIsNotStaticOrDynamicDepTag,
 	checkGlobalAllowlistedDep:     depIsGloballyAllowlisted,
+	checkOverlayVariant:           moduleIsOverlayVariant,
 }
 
 // ----------------------------------------------------------------------------
@@ -289,6 +303,7 @@ var (
 					checkStubs,
 					checkNotDynamicDepTag,
 					checkGlobalAllowlistedDep,
+					checkOverlayVariant,
 				},
 			},
 		},
