@@ -225,6 +225,8 @@ type AndroidApp struct {
 	javaApiUsedByOutputFile android.ModuleOutPath
 
 	privAppAllowlist android.OptionalPath
+
+	requiredModuleNames []string
 }
 
 func (a *AndroidApp) IsInstallable() bool {
@@ -405,9 +407,83 @@ func (a *AndroidTestHelperApp) GenerateAndroidBuildActions(ctx android.ModuleCon
 	})
 }
 
+var (
+	generateOverlayManifestFile = pctx.AndroidStaticRule("generate_overlay_manifest",
+		blueprint.RuleParams{
+			Command: "build/make/tools/generate-enforce-rro-android-manifest.py " +
+				"--package-info $in " +
+				"--partition ${partition} " +
+				"--priority ${priority} -o $out",
+			CommandDeps: []string{"build/make/tools/generate-enforce-rro-android-manifest.py"},
+		}, "packageName", "partition", "priority",
+	)
+)
+
+func (a *AndroidApp) generateOverlayBuildActions(ctx android.ModuleContext) {
+	// Generate a manifest file
+	genManifest := android.PathForModuleGen(ctx, "AndroidManifest.xml")
+	partition := "vendor"
+	priority := "0"
+	rroFilterType := device
+	if ctx.InstallInProduct() {
+		partition = "product"
+		priority = "1"
+		rroFilterType = product
+	}
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   generateOverlayManifestFile,
+		Input:  android.PathForModuleSrc(ctx, proptools.StringDefault(a.aaptProperties.Manifest, "AndroidManifest.xml")),
+		Output: genManifest,
+		Args: map[string]string{
+			"packageName": a.overridableAppProperties.Package_name.GetOrDefault(ctx, ctx.ModuleName()),
+			"partition":   partition,
+			"priority":    priority,
+		},
+	})
+
+	// Compile and link resources into package-res.apk
+	a.aapt.hasNoCode = true
+	aaptLinkFlags := []string{"--auto-add-overlay", "--keep-raw-values"}
+	a.aapt.buildActions(ctx,
+		aaptBuildActionOptions{
+			sdkContext:         a,
+			extraLinkFlags:     aaptLinkFlags,
+			compileRro:         true,
+			rroFilterType:      rroFilterType,
+			manifestForAapt:    genManifest,
+			dontMergeManifests: true,
+		},
+	)
+
+	if a.exportPackage == nil {
+		return
+	}
+	// Sign the built package
+	_, certificates := processMainCert(a.ModuleBase, "", nil, ctx)
+	signed := android.PathForModuleOut(ctx, "signed", a.overlayApkName(ctx, partition))
+	SignAppPackage(ctx, signed, a.exportPackage, certificates, nil, nil, "")
+	a.outputFile = signed
+
+	// Install the signed apk
+	installDir := android.PathForModuleInstall(ctx, "overlay")
+	ctx.InstallFile(installDir, signed.Base(), signed)
+}
+
+func (a *AndroidApp) overlayApkName(ctx android.ModuleContext, partition string) string {
+	return fmt.Sprintf("%s__%s__auto_generated_rro_%s.apk", ctx.Module().Name(), ctx.Config().DeviceProduct(), partition)
+}
+
+func (a *AndroidApp) SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	if a.IsOverlayVariation() && a.Name() != "framework-res" {
+		return android.SdkSpecFrom(ctx, "current")
+	}
+	return a.Module.SdkVersion(ctx)
+}
+
 func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if a.IsOverlayVariation() {
-		return // TODO (b/375277835)
+		a.generateOverlayBuildActions(ctx)
+		return
 	}
 	a.checkAppSdkVersions(ctx)
 	a.checkEmbedJnis(ctx)
@@ -426,6 +502,24 @@ func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		TestHelperApp:   false,
 		EmbeddedJNILibs: embeddedJniLibs,
 	})
+
+	a.requiredModuleNames = a.getRequiredModuleNames(ctx)
+}
+
+func (a *AndroidApp) getRequiredModuleNames(ctx android.ModuleContext) []string {
+	var required []string
+	if proptools.Bool(a.appProperties.Generate_product_characteristics_rro) {
+		required = []string{a.productCharacteristicsRROPackageName()}
+	}
+	// Install the vendor overlay variant if this app is installed.
+	if len(a.filterRRO(device)) > 0 {
+		required = append(required, ctx.ModuleName()+".vendor")
+	}
+	// Install the product overlay variant if this app is installed.
+	if len(a.filterRRO(product)) > 0 {
+		required = append(required, ctx.ModuleName()+".product")
+	}
+	return required
 }
 
 func (a *AndroidApp) checkAppSdkVersions(ctx android.ModuleContext) {
@@ -1995,5 +2089,11 @@ func (_ *androidAppOverlayTransitionMutator) Mutate(ctx android.BottomUpMutatorC
 		app.appProperties.VendorOverlayVariation = proptools.BoolPtr(true)
 	} else if variation == "product" {
 		app.appProperties.ProductOverlayVariation = proptools.BoolPtr(true)
+	}
+	// The overlay variant of framework-res needs the non overlay variant for aapt2 link
+	if ctx.ModuleName() == "framework-res" && (variation == "vendor" || variation == "product") {
+		if ctx.OtherModuleDependencyVariantExists(nil, ctx.ModuleName()) {
+			ctx.AddVariationDependencies(nil, libTag, ctx.ModuleName())
+		}
 	}
 }
