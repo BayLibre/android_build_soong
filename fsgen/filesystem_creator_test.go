@@ -386,3 +386,35 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 		}),
 	)
 }
+
+func TestRamdiskPartitionSetsDevNodes(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		android.PrepareForIntegrationTestWithAndroid,
+		android.PrepareForTestWithAndroidBuildComponents,
+		android.PrepareForTestWithAllowMissingDependencies,
+		filesystem.PrepareForTestWithFilesystemBuildComponents,
+		prepareForTestWithFsgenBuildComponents,
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.TestProductVariables.PartitionVarsForSoongMigrationOnlyDoNotUse.BuildingRamdiskImage = true
+		}),
+		android.FixtureMergeMockFs(android.MockFS{
+			"build/soong/fsgen/ramdisk_node_list": nil,
+			"build/soong/fsgen/Android.bp": []byte(`
+			soong_filesystem_creator {
+				name: "foo",
+			}
+			filegroup {
+				name: "ramdisk_node_list",
+				srcs: ["ramdisk_node_list"],
+			}
+			`),
+		}),
+	).RunTest(t)
+
+	android.AssertBoolEquals(
+		t,
+		"Generated ramdisk image expected to depend on \"ramdisk_node_list\" module",
+		true,
+		java.CheckModuleHasDependency(t, result.TestContext, "test_product_generated_ramdisk_image", "android_common", "ramdisk_node_list"),
+	)
+}
