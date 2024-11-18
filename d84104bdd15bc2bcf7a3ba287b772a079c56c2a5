@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f87f0c_adbf7192",
+        "filename": "fsgen/filesystem_creator_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-18T21:48:59Z",
+      "side": 1,
+      "message": "Move this test to filesystem_test.go, it\u0027s not related to the partition generating code.",
+      "revId": "d84104bdd15bc2bcf7a3ba287b772a079c56c2a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
