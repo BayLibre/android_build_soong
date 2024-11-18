@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d01acc14_73f9aedc",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-18T20:22:54Z",
+      "side": 1,
+      "message": "Could you add a comment that this is for abfs?",
+      "revId": "f5411fac9a01ee0d94a5284bfe62f2b65e659522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
