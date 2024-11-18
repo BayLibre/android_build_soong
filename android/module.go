@@ -337,6 +337,7 @@ type commonProperties struct {
 		}
 		Android struct {
 			Compile_multilib *string
+			Enabled          *bool
 		}
 	}
 
