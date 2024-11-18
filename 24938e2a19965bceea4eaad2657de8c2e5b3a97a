@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "071f4f15_83ded574",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-18T22:40:41Z",
+      "side": 1,
+      "message": "nit: Isn\u0027t this unreachable given that `createVendorBootImage(ctx)` always return `true`?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "24938e2a19965bceea4eaad2657de8c2e5b3a97a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
