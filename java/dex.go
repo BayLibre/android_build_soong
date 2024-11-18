@@ -46,7 +46,7 @@ type DexProperties struct {
 		Ignore_warnings *bool
 
 		// If true, runs R8 in Proguard compatibility mode, otherwise runs R8 in full mode.
-		// Defaults to false for apps, true for libraries and tests.
+		// Defaults to true only for test-specific helper apps.
 		Proguard_compatibility *bool
 
 		// If true, optimize for size by removing unused code.  Defaults to true for apps,
@@ -359,7 +359,7 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, dexParams *compileDexParams) 
 
 	r8Flags = append(r8Flags, opt.Proguard_flags...)
 
-	if BoolDefault(opt.Proguard_compatibility, true) {
+	if BoolDefault(opt.Proguard_compatibility, false) {
 		r8Flags = append(r8Flags, "--force-proguard-compatibility")
 	}
 
