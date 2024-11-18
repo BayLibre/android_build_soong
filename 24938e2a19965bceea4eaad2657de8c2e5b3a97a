@@ -22,6 +22,30 @@
       },
       "revId": "24938e2a19965bceea4eaad2657de8c2e5b3a97a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49025530_7379d487",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-18T22:44:14Z",
+      "side": 1,
+      "message": "Technically yes, though I just wanted to follow the existing pattern. We need to add more things to vendor_boot still, we might encounter a situation where we need to return false when implementing those.",
+      "parentUuid": "071f4f15_83ded574",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "24938e2a19965bceea4eaad2657de8c2e5b3a97a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
