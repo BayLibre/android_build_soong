@@ -158,6 +158,8 @@ type appProperties struct {
 
 	ProductCharacteristicsRROPackageName        *string `blueprint:"mutated"`
 	ProductCharacteristicsRROManifestModuleName *string `blueprint:"mutated"`
+	VendorOverlayVariation                      *bool   `blueprint:"mutated"`
+	ProductOverlayVariation                     *bool   `blueprint:"mutated"`
 }
 
 // android_app properties that can be overridden by override_android_app
@@ -404,6 +406,9 @@ func (a *AndroidTestHelperApp) GenerateAndroidBuildActions(ctx android.ModuleCon
 }
 
 func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if a.IsOverlayVariation() {
+		return // TODO (b/375277835)
+	}
 	a.checkAppSdkVersions(ctx)
 	a.checkEmbedJnis(ctx)
 	a.generateAndroidBuildActions(ctx)
@@ -1942,4 +1947,53 @@ func (u *usesLibrary) verifyUsesLibrariesManifest(ctx android.ModuleContext, man
 func (u *usesLibrary) verifyUsesLibrariesAPK(ctx android.ModuleContext, apk android.Path,
 	classLoaderContexts *dexpreopt.ClassLoaderContextMap) {
 	u.verifyUsesLibraries(ctx, apk, nil, classLoaderContexts) // for APKs manifest_check does not write output file
+}
+
+// IsOverlayVariation returns true if this is a variant of a system or sytem_ext app
+// This variant will be installed in /vendor/overlay/$app.apk or /product/overlay/$app.apk
+func (a *AndroidApp) IsOverlayVariation() bool {
+	return proptools.Bool(a.appProperties.VendorOverlayVariation) || proptools.Bool(a.appProperties.ProductOverlayVariation)
+}
+
+// androidAppOverlayTransitionMutator splits a system or system_ext app into product and vendor variants
+// These variants will build a package-res.apk with product/device specific resources
+type androidAppOverlayTransitionMutator struct{}
+
+func (_ *androidAppOverlayTransitionMutator) Split(ctx android.BaseModuleContext) []string {
+	app, ok := ctx.Module().(*AndroidApp)
+	if !ok {
+		return []string{""} // not an android app
+	}
+	if app.InstallInProduct() || app.InstallInVendor() {
+		return []string{""} // skip variant creation if the app is product or device specific
+	}
+	return []string{"", "vendor", "product"}
+}
+
+func (_ *androidAppOverlayTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
+	return ""
+}
+
+func (_ *androidAppOverlayTransitionMutator) IncomingTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	return ""
+}
+
+func (a *AndroidApp) InstallInVendor() bool {
+	return a.ModuleBase.InstallInVendor() || proptools.Bool(a.appProperties.VendorOverlayVariation)
+}
+
+func (a *AndroidApp) InstallInProduct() bool {
+	return a.ModuleBase.InstallInProduct() || proptools.Bool(a.appProperties.ProductOverlayVariation)
+}
+
+func (_ *androidAppOverlayTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, variation string) {
+	app, ok := ctx.Module().(*AndroidApp)
+	if !ok {
+		return
+	}
+	if variation == "vendor" {
+		app.appProperties.VendorOverlayVariation = proptools.BoolPtr(true)
+	} else if variation == "product" {
+		app.appProperties.ProductOverlayVariation = proptools.BoolPtr(true)
+	}
 }
