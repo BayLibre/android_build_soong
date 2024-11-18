@@ -246,7 +246,7 @@ func (s SdkSpec) EffectiveVersion(ctx EarlyModuleContext) (ApiLevel, error) {
 		return s.ApiLevel, fmt.Errorf("invalid sdk version %q", s.Raw)
 	}
 
-	if ctx.DeviceSpecific() || ctx.SocSpecific() {
+	if ctx.DeviceSpecific() || ctx.SocSpecific() || ctx.Module().InstallInVendor() {
 		s = s.ForVendorPartition(ctx)
 	}
 	return s.ApiLevel.EffectiveVersion(ctx)
@@ -260,7 +260,7 @@ func (s SdkSpec) EffectiveVersionString(ctx EarlyModuleContext) (string, error) 
 		return s.ApiLevel.String(), fmt.Errorf("invalid sdk version %q", s.Raw)
 	}
 
-	if ctx.DeviceSpecific() || ctx.SocSpecific() {
+	if ctx.DeviceSpecific() || ctx.SocSpecific() || ctx.Module().InstallInVendor() {
 		s = s.ForVendorPartition(ctx)
 	}
 	return s.ApiLevel.EffectiveVersionString(ctx)
