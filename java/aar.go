@@ -47,6 +47,7 @@ func RegisterAARBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("android_library", AndroidLibraryFactory)
 	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.Transition("propagate_rro_enforcement", &propagateRROEnforcementTransitionMutator{})
+		ctx.Transition("android_app_overlay", &androidAppOverlayTransitionMutator{})
 	})
 }
 
