@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "703d6f8c_3ed4a17f",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-19T19:40:55Z",
+      "side": 1,
+      "message": "```suggestion\n        if !vendor {\n            cmd.FlagWithArg(\"--os_version\", ctx.Config().PlatformVersionLastStable())\n\t    cmd.FlagWithArg(\"--os_patch_level\", ctx.Config().PlatformSecurityPatch())\n        }\n```\nI think this is not passed for `vendor_boot.img` generation",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 74
+      },
+      "revId": "685357eb42dc93ca9345ab9a2a386638af8d0aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
