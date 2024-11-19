@@ -164,7 +164,7 @@ type appProperties struct {
 type overridableAppProperties struct {
 	// The name of a certificate in the default certificate directory, blank to use the default product certificate,
 	// or an android_app_certificate module name in the form ":module".
-	Certificate *string
+	Certificate proptools.Configurable[string] `android:"replace_instead_of_append"`
 
 	// Name of the signing certificate lineage file or filegroup module.
 	Lineage *string `android:"path"`
@@ -1252,7 +1252,7 @@ func (a *AndroidApp) getCertString(ctx android.BaseModuleContext) string {
 	if overridden {
 		return ":" + certificate
 	}
-	return String(a.overridableAppProperties.Certificate)
+	return a.overridableAppProperties.Certificate.GetOrDefault(ctx, "")
 }
 
 func (a *AndroidApp) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
@@ -1651,7 +1651,7 @@ type AndroidAppCertificate struct {
 
 type AndroidAppCertificateProperties struct {
 	// Name of the certificate files.  Extensions .x509.pem and .pk8 will be added to the name.
-	Certificate *string
+	Certificate proptools.Configurable[string] `android:"replace_instead_of_append"`
 }
 
 // android_app_certificate modules can be referenced by the certificates property of android_app modules to select
@@ -1664,7 +1664,7 @@ func AndroidAppCertificateFactory() android.Module {
 }
 
 func (c *AndroidAppCertificate) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	cert := String(c.properties.Certificate)
+	cert := c.properties.Certificate.GetOrDefault(ctx, "")
 	c.Certificate = Certificate{
 		Pem: android.PathForModuleSrc(ctx, cert+".x509.pem"),
 		Key: android.PathForModuleSrc(ctx, cert+".pk8"),
