@@ -46,6 +46,30 @@
       },
       "revId": "66876fb5d17af829cf708a0810563f96140f0e3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7a87fea_bdb941e8",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-19T22:06:51Z",
+      "side": 1,
+      "message": "That\u0027s fine with me.",
+      "parentUuid": "3727413f_78409e6d",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "66876fb5d17af829cf708a0810563f96140f0e3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
