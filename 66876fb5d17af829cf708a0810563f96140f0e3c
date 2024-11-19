@@ -22,6 +22,30 @@
       },
       "revId": "66876fb5d17af829cf708a0810563f96140f0e3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3727413f_78409e6d",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-19T22:05:27Z",
+      "side": 1,
+      "message": "I think there are some differences between init_boot and boot. For example, boot passes `--kernel` argument to `mkbootfs`, while init_boot passes `--ramdisk` instead.\n\n`boot_image_type` with a default value `\"boot\"` sgtm. I\u0027ll work on this in the follow up if that\u0027s fine with you.",
+      "parentUuid": "5cef8c87_b2f59d51",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "66876fb5d17af829cf708a0810563f96140f0e3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
