@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb5dba9_bf7edbed",
+        "filename": "tradefed_modules/test_suite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2024-11-19T16:55:04Z",
+      "side": 1,
+      "message": "just to double check.\n\nWould all shared_libs be properly gathered and installed with the modules ?",
+      "range": {
+        "startLine": 198,
+        "startChar": 5,
+        "endLine": 198,
+        "endChar": 16
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6cb3711c_58a3c23c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tradefed_modules/test_suite.go",
+              "range": {
+                "startLine": 204,
+                "startChar": 0,
+                "endLine": 204,
+                "endChar": 0
+              },
+              "replacement": "\n// TODO: Add a test to make sure shared_libs are properly gathered and installed with the modules.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "dba6f4b04cf77a786d9a10556bb92b4bef7dbd29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
