@@ -15,8 +15,6 @@
 package android
 
 import (
-	"fmt"
-
 	"github.com/google/blueprint/proptools"
 )
 
@@ -175,16 +173,7 @@ func (p *buildPropModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	postProcessCmd.Text(outputFilePath.String())
 	postProcessCmd.Flags(p.properties.Block_list)
 
-	for _, footer := range p.properties.Footer_files {
-		path := PathForModuleSrc(ctx, footer)
-		rule.appendText(outputFilePath, "####################################")
-		rule.appendTextf(outputFilePath, "# Adding footer from %v", footer)
-		rule.appendTextf(outputFilePath, "# with path %v", path)
-		rule.appendText(outputFilePath, "####################################")
-		rule.Command().Text("cat").FlagWithInput("", path).FlagWithArg(">> ", outputFilePath.String())
-	}
-
-	rule.appendText(outputFilePath, "# end of file")
+	rule.Command().Text("echo").Text(proptools.NinjaAndShellEscape("# end of file")).FlagWithArg(">> ", outputFilePath.String())
 
 	rule.Build(ctx.ModuleName(), "generating build.prop")
 
@@ -193,14 +182,6 @@ func (p *buildPropModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 
 	ctx.SetOutputFiles(Paths{outputFilePath}, "")
 	p.outputFilePath = outputFilePath
-}
-
-func (r *RuleBuilder) appendText(path ModuleOutPath, text string) {
-	r.Command().Text("echo").Text(proptools.NinjaAndShellEscape(text)).FlagWithArg(">> ", path.String())
-}
-
-func (r *RuleBuilder) appendTextf(path ModuleOutPath, format string, a ...any) {
-	r.appendText(path, fmt.Sprintf(format, a...))
 }
 
 func (p *buildPropModule) AndroidMkEntries() []AndroidMkEntries {
