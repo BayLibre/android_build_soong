@@ -689,7 +689,6 @@ var validPartitions = []string{
 	"odm_dlkm",
 	"system_dlkm",
 	"ramdisk",
-	"vendor_ramdisk",
 }
 
 func (f *filesystem) addMakeBuiltFiles(ctx android.ModuleContext, builder *android.RuleBuilder, rootDir android.Path) {
