@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cef8c87_b2f59d51",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-19T21:49:50Z",
+      "side": 1,
+      "message": "Could we combine these 2 into a `boot_image_type` property that can only be set to one of `boot`, `vendor_boot`, or `init_boot`? I don\u0027t see any usages of the `vendor_boot` property yet so that shouldn\u0027t be a blocker.\n\nAlternatively, currently there doesn\u0027t appear to be any difference between init_boot and boot. Do you think there will be some as we flesh out these rules more? If not, maybe we don\u0027t need the init_boot property at all.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "66876fb5d17af829cf708a0810563f96140f0e3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
