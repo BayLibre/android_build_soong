@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97c6871b_64167388",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-19T22:50:58Z",
+      "side": 1,
+      "message": "nah, it\u0027s assumed to be called with a non-nil image and will panic if not.",
+      "parentUuid": "d1ff75cf_6b8918d5",
+      "revId": "2f7ad34e25da6165459c9f04a911145ba084760d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62c370bf_9aec059e",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-11-19T22:46:19Z",
       "side": 1,
       "message": "nit: Can you define this as a constant instead with more description about how the value is derived?",
+      "revId": "2f7ad34e25da6165459c9f04a911145ba084760d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e18641d_0fa5cdad",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-19T22:50:58Z",
+      "side": 1,
+      "message": "I don\u0027t see much value in a constant here, but added a comment about how this value is derived.",
+      "parentUuid": "62c370bf_9aec059e",
       "revId": "2f7ad34e25da6165459c9f04a911145ba084760d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
