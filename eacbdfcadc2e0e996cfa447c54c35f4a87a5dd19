@@ -16,6 +16,23 @@
       "message": "OK, this should be ready for review per offline feedback to move the soong package into `build/soong`.",
       "revId": "eacbdfcadc2e0e996cfa447c54c35f4a87a5dd19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f26ceb_bf5071ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-11-19T18:25:10Z",
+      "side": 1,
+      "message": "We don\u0027t have a lot of non-team members in OWNERS files here, but I\u0027ll +2 this. Please don\u0027t go crazy.",
+      "revId": "eacbdfcadc2e0e996cfa447c54c35f4a87a5dd19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
