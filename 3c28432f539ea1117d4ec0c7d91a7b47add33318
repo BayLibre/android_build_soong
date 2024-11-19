@@ -140,6 +140,23 @@
       "parentUuid": "3a7c21db_4cb1f3d8",
       "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d21dff_5a93ae02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-11-19T00:21:29Z",
+      "side": 1,
+      "message": "I\u0027d actually be OK landing this for now as a temporary improvement, but only if we restrict this to the case where the `.jar` does *not* contain more complicated Proguard rules. This should fix a few of the existing Jetpack imports, but we\u0027d skip over more complicated cases like kotlin:\n\n```\n\u003e zipinfo -1 lib/kotlin-reflect.jar | grep \u0027^META-INF/.*\\.pro$\u0027\nMETA-INF/com.android.tools/proguard/kotlin-reflect.pro\nMETA-INF/com.android.tools/r8-from-1.6.0/kotlin-reflect.pro\nMETA-INF/com.android.tools/r8-upto-1.6.0/kotlin-reflect.pro\nMETA-INF/proguard/kotlin-reflect.pro\n\n\u003e zipinfo -1 datastore-preferences-core-jvm-1.2.0-alpha01.jar  | grep \u0027^META-INF/.*\\.pro$\u0027\nMETA-INF/proguard/androidx.datastore_datastore-preferences-core.pro\n```\n\n@sgjesse@google.com thoughts?",
+      "revId": "3c28432f539ea1117d4ec0c7d91a7b47add33318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
