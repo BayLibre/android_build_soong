@@ -146,6 +146,9 @@ func (b *bootimg) buildBootImage(ctx android.ModuleContext, vendor bool) android
 		cmd.FlagWithInput("--kernel ", android.PathForModuleSrc(ctx, kernel))
 	}
 
+	cmd.FlagWithArg("--os_version", ctx.Config().PlatformVersionLastStable())
+	cmd.FlagWithArg("--os_patch_level", ctx.Config().PlatformSecurityPatch())
+
 	dtbName := proptools.String(b.properties.Dtb_prebuilt)
 	if dtbName != "" {
 		dtb := android.PathForModuleSrc(ctx, dtbName)
