@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ff75cf_6b8918d5",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-19T22:46:19Z",
+      "side": 1,
+      "message": "should we nil check `image`?",
+      "revId": "2f7ad34e25da6165459c9f04a911145ba084760d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c370bf_9aec059e",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-19T22:46:19Z",
+      "side": 1,
+      "message": "nit: Can you define this as a constant instead with more description about how the value is derived?",
+      "revId": "2f7ad34e25da6165459c9f04a911145ba084760d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
