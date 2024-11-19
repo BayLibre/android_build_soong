@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf83592_9cbdec5f",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-19T22:33:15Z",
+      "side": 1,
+      "message": "use `proptools.StringDefault(b.properties.Boot_image_type, \"boot\")` and don\u0027t accept empty strings in `toBootImageType` so that setting `boot_image_type: \"\"` in an Android.bp file is an error.",
+      "revId": "9d22ace2aed5d3570c3e5b8fcaac9fb50bd18cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
