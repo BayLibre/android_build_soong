@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86c3890_71297f80",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-11-19T03:47:14Z",
+      "side": 1,
+      "message": "Whoops, this should be uncommented and the following line removed. I think they\u0027re functionally equivalent for our purposes but this one is more correct. I\u0027ll do that in a follow-on CL, but I\u0027d like to see if presubmit passes.",
+      "range": {
+        "startLine": 1419,
+        "startChar": 0,
+        "endLine": 1419,
+        "endChar": 89
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6b965f8b_6521011e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "rust/rust.go",
+              "range": {
+                "startLine": 1419,
+                "startChar": 0,
+                "endLine": 1421,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\t\t\tdepPaths.depFlags \u003d append(depPaths.depFlags, \"-lstatic:+whole-archive\u003d\"+libName)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cbd0a6637e70d85085dc68181f0a7d8ec0e65a95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
