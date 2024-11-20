@@ -443,7 +443,25 @@ func (a *AndroidApp) generateOverlayBuildActions(ctx android.ModuleContext) {
 
 	// Compile and link resources into package-res.apk
 	a.aapt.hasNoCode = true
+	a.aapt.dontIncludeAssets = true
 	aaptLinkFlags := []string{"--auto-add-overlay", "--keep-raw-values"}
+	characteristics := ctx.Config().ProductAAPTCharacteristics()
+	if len(characteristics) > 0 && characteristics != "default" {
+		aaptLinkFlags = append(aaptLinkFlags, "--product", characteristics)
+	}
+
+	if !Bool(a.aaptProperties.Aapt_include_all_resources) {
+		// Product AAPT config
+		for _, aaptConfig := range ctx.Config().ProductAAPTConfig() {
+			aaptLinkFlags = append(aaptLinkFlags, "-c", aaptConfig)
+		}
+
+		// Product AAPT preferred config
+		if len(ctx.Config().ProductAAPTPreferredConfig()) > 0 {
+			aaptLinkFlags = append(aaptLinkFlags, "--preferred-density", ctx.Config().ProductAAPTPreferredConfig())
+		}
+	}
+
 	a.aapt.buildActions(ctx,
 		aaptBuildActionOptions{
 			sdkContext:         a,

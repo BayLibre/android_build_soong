@@ -130,6 +130,7 @@ type aapt struct {
 	useEmbeddedDex                     bool
 	usesNonSdkApis                     bool
 	hasNoCode                          bool
+	dontIncludeAssets                  bool
 	LoggingParent                      string
 	resourceFiles                      android.Paths
 
@@ -276,6 +277,9 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 		IncludeDirs: false,
 	})
 	assetDirs := android.PathsWithOptionalDefaultForModuleSrc(ctx, a.aaptProperties.Asset_dirs, "assets")
+	if a.dontIncludeAssets {
+		assetDirs = nil
+	}
 	resourceDirs := android.PathsWithOptionalDefaultForModuleSrc(ctx, a.aaptProperties.Resource_dirs.GetOrDefault(ctx, nil), "res")
 	resourceZips := android.PathsForModuleSrc(ctx, a.aaptProperties.Resource_zips)
 
