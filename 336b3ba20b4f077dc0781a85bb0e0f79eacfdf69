@@ -16,6 +16,24 @@
       "message": "nit: this is not used",
       "revId": "336b3ba20b4f077dc0781a85bb0e0f79eacfdf69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44da46b1_72a5a406",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-20T20:58:14Z",
+      "side": 1,
+      "message": "yeah, I just left it because we\u0027re going to need it for the vendor image eventually.",
+      "parentUuid": "812035d2_95550de9",
+      "revId": "336b3ba20b4f077dc0781a85bb0e0f79eacfdf69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
