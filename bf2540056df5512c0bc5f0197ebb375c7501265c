@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d344830_bbe1c2df",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-11-20T08:15:54Z",
+      "side": 1,
+      "message": "I don\u0027t know what this is. I am guessing this is a legacy one? Then I\u0027d rather not keep supporting it in Soong.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 20
+      },
+      "revId": "bf2540056df5512c0bc5f0197ebb375c7501265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d709d85_f0a7afc7",
         "filename": "filesystem/bootimg.go",
         "patchSetId": 4
@@ -14,6 +37,24 @@
       "writtenOn": "2024-11-20T01:19:22Z",
       "side": 1,
       "message": "@jiyong@google.com Is it intentional for the soong boot images to have this other signing mode that\u0027s different from make? There is a user, the `pvmfw_img` module. Would it be possible to switch them to the existing footer-only style of boot image?",
+      "revId": "bf2540056df5512c0bc5f0197ebb375c7501265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7be60be2_2cf06df9",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-11-20T08:15:54Z",
+      "side": 1,
+      "message": "This mode is needed for the case when this partition has to be independently updatable.",
+      "parentUuid": "1d709d85_f0a7afc7",
       "revId": "bf2540056df5512c0bc5f0197ebb375c7501265c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
