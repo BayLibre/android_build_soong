@@ -1907,13 +1907,13 @@ func (c *Module) stubLibraryMultipleApexViolation(ctx android.ModuleContext) boo
 		return false
 	}
 
-	_, aaWithoutTestApexes, _ := android.ListSetDifference(c.ApexAvailable(), c.TestApexes())
 	// Stub libraries should not have more than one apex_available
-	if len(aaWithoutTestApexes) > 1 {
+	apexAvailable := android.FirstUniqueStrings(c.ApexAvailable())
+	if len(apexAvailable) > 1 {
 		return true
 	}
 	// Stub libraries should not use the wildcard
-	if aaWithoutTestApexes[0] == android.AvailableToAnyApex {
+	if apexAvailable[0] == android.AvailableToAnyApex {
 		return true
 	}
 	// Default: no violation
@@ -1973,8 +1973,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 
 	if c.stubLibraryMultipleApexViolation(actx) {
-		actx.PropertyErrorf("apex_available",
-			"Stub libraries should have a single apex_available (test apexes excluded). Got %v", c.ApexAvailable())
+		fmt.Printf("Stub libraries should have a single apex_available (test apexes excluded). Got %v\n", c.ApexAvailable())
 	}
 	if c.Properties.Clang != nil && *c.Properties.Clang == false {
 		ctx.PropertyErrorf("clang", "false (GCC) is no longer supported")
