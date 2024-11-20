@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "812035d2_95550de9",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-20T20:54:53Z",
+      "side": 1,
+      "message": "nit: this is not used",
+      "revId": "336b3ba20b4f077dc0781a85bb0e0f79eacfdf69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
