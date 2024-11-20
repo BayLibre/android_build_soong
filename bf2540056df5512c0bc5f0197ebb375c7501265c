@@ -123,6 +123,23 @@
       "parentUuid": "7be60be2_2cf06df9",
       "revId": "bf2540056df5512c0bc5f0197ebb375c7501265c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c4dead_ea1132e4",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-20T19:16:02Z",
+      "side": 1,
+      "message": "I think for `vendor` it\u0027s `com.android.build.vendor.os_version`, not `com.android.build.vendor_boot.os_version`: [makefile](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/make/core/Makefile;l\u003d4649)",
+      "revId": "bf2540056df5512c0bc5f0197ebb375c7501265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
