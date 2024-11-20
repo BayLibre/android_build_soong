@@ -107,9 +107,11 @@ func createFsGenState(ctx android.LoadHookContext, generatedPrebuiltEtcModuleNam
 					"update_engine_sideload":                    defaultDepCandidateProps(ctx.Config()),
 				},
 				"vendor": {
-					"fs_config_files_vendor":                               defaultDepCandidateProps(ctx.Config()),
-					"fs_config_dirs_vendor":                                defaultDepCandidateProps(ctx.Config()),
-					generatedModuleName(ctx.Config(), "vendor-build.prop"): defaultDepCandidateProps(ctx.Config()),
+					"fs_config_files_vendor":                                    defaultDepCandidateProps(ctx.Config()),
+					"fs_config_dirs_vendor":                                     defaultDepCandidateProps(ctx.Config()),
+					generatedModuleName(ctx.Config(), "vendor-build.prop"):      defaultDepCandidateProps(ctx.Config()),
+					generatedModuleNameForPartition(ctx.Config(), "system"):     defaultDepCandidateProps(ctx.Config()),
+					generatedModuleNameForPartition(ctx.Config(), "system_ext"): defaultDepCandidateProps(ctx.Config()),
 				},
 				"odm": {
 					// fs_config_* files are automatically installed for all products with odm partitions.
@@ -117,7 +119,10 @@ func createFsGenState(ctx android.LoadHookContext, generatedPrebuiltEtcModuleNam
 					"fs_config_files_odm": defaultDepCandidateProps(ctx.Config()),
 					"fs_config_dirs_odm":  defaultDepCandidateProps(ctx.Config()),
 				},
-				"product": {},
+				"product": {
+					generatedModuleNameForPartition(ctx.Config(), "system"):     defaultDepCandidateProps(ctx.Config()),
+					generatedModuleNameForPartition(ctx.Config(), "system_ext"): defaultDepCandidateProps(ctx.Config()),
+				},
 				"system_ext": {
 					// VNDK apexes are automatically included.
 					// This hardcoded list will need to be updated if `PRODUCT_EXTRA_VNDK_VERSIONS` is updated.
