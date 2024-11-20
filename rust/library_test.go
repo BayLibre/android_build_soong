@@ -441,3 +441,52 @@ func TestRustFFIExportedIncludes(t *testing.T) {
 	libfooStatic := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_static").Rule("cc")
 	android.AssertStringDoesContain(t, "cFlags for lib module", libfooStatic.Args["cFlags"], " -Irust_includes ")
 }
+
+func TestRustVersionScript(t *testing.T) {
+	ctx := testRust(t, `
+	rust_library {
+		name: "librs",
+		srcs: ["bar.rs"],
+		crate_name: "rs",
+		extra_exported_symbols: "libbar.map.txt",
+	}
+	rust_ffi {
+		name: "libffi",
+		srcs: ["foo.rs"],
+		crate_name: "ffi",
+		version_script: "libbar.map.txt",
+	}
+	`)
+
+	//linkFlags
+	librs := ctx.ModuleForTests("librs", "android_arm64_armv8-a_dylib").Rule("rustc")
+	libffi := ctx.ModuleForTests("libffi", "android_arm64_armv8-a_shared").Rule("rustc")
+
+	if !strings.Contains(librs.Args["linkFlags"], "-Wl,--version-script=") {
+		t.Errorf("missing expected -Wl,--version-script= linker flag for libextended shared lib, linkFlags: %#v",
+			librs.Args["linkFlags"])
+	}
+	if strings.Contains(librs.Args["linkFlags"], "-Wl,--android-version-script=") {
+		t.Errorf("unexpected -Wl,--android-version-script= linker flag for libextended shared lib, linkFlags: %#v",
+			librs.Args["linkFlags"])
+	}
+
+	if !strings.Contains(libffi.Args["linkFlags"], "-Wl,--android-version-script=") {
+		t.Errorf("missing -Wl,--android-version-script= linker flag for libreplaced shared lib, linkFlags: %#v",
+			libffi.Args["linkFlags"])
+	}
+	if strings.Contains(libffi.Args["linkFlags"], "-Wl,--version-script=") {
+		t.Errorf("unexpected -Wl,--version-script= linker flag for libextended shared lib, linkFlags: %#v",
+			libffi.Args["linkFlags"])
+	}
+}
+
+func TestRustVersionScriptPropertyErrors(t *testing.T) {
+	testRustError(t, ".*version_script: can only be set for rust_ffi modules", `
+		rust_library {
+			name: "librs",
+			srcs: ["bar.rs"],
+			crate_name: "rs",
+			version_script: "libbar.map.txt",
+		}`)
+}
