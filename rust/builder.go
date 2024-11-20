@@ -27,14 +27,15 @@ import (
 
 var (
 	_     = pctx.SourcePathVariable("rustcCmd", "${config.RustBin}/rustc")
+	_     = pctx.SourcePathVariable("rustcLinker", "build/soong/scripts/rustcLinker.py")
 	rustc = pctx.AndroidStaticRule("rustc",
 		blueprint.RuleParams{
 			Command: "$envVars $rustcCmd " +
-				"-C linker=${config.RustLinker} " +
+				"-C linker=$rustcLinker " +
 				"-C link-args=\"${crtBegin} ${earlyLinkFlags} ${linkFlags} ${crtEnd}\" " +
 				"--emit link -o $out --emit dep-info=$out.d.raw $in ${libFlags} $rustcFlags" +
 				" && grep ^$out: $out.d.raw > $out.d",
-			CommandDeps: []string{"$rustcCmd"},
+			CommandDeps: []string{"$rustcCmd", "$rustcLinker"},
 			// Rustc deps-info writes out make compatible dep files: https://github.com/rust-lang/rust/issues/7633
 			// Rustc emits unneeded dependency lines for the .d and input .rs files.
 			// Those extra lines cause ninja warning:
@@ -411,6 +412,7 @@ func transformSrctoCrate(ctx android.ModuleContext, main android.Path, deps Path
 	implicits = append(implicits, deps.SharedLibDeps...)
 	implicits = append(implicits, deps.srcProviderFiles...)
 	implicits = append(implicits, deps.AfdoProfiles...)
+	implicits = append(implicits, deps.LinkerDeps...)
 
 	implicits = append(implicits, deps.CrtBegin...)
 	implicits = append(implicits, deps.CrtEnd...)
