@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 	"strconv"
 
@@ -128,6 +129,9 @@ type TestBinaryProperties struct {
 
 	// Install the test into a folder named for the module in all test suites.
 	Per_testcase_directory *bool
+
+	// TODO(yifengzeng): add comment
+	Standalone_test *bool
 }
 
 func init() {
@@ -334,6 +338,9 @@ func (test *testBinary) installerProps() []interface{} {
 }
 
 func (test *testBinary) install(ctx ModuleContext, file android.Path) {
+	if ctx.ModuleName() == "libunwindstack_unit_test" {
+		fmt.Println("yifengzeng@test.go install()")
+	}
 	dataSrcPaths := android.PathsForModuleSrc(ctx, test.Properties.Data)
 	dataSrcPaths = append(dataSrcPaths, android.PathsForModuleSrc(ctx, test.Properties.Device_common_data)...)
 	dataSrcPaths = append(dataSrcPaths, android.PathsForModuleSrc(ctx, test.Properties.Device_first_data)...)
@@ -380,6 +387,7 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 		TestInstallBase:        testInstallBase,
 		DeviceTemplate:         "${NativeTestConfigTemplate}",
 		HostTemplate:           "${NativeHostTestConfigTemplate}",
+		StandaloneTest:         test.Properties.Standalone_test,
 	})
 
 	test.extraTestConfigs = android.PathsForModuleSrc(ctx, test.Properties.Test_options.Extra_test_configs)
@@ -399,6 +407,13 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 
 	test.binaryDecorator.baseInstaller.installTestData(ctx, test.data)
 	test.binaryDecorator.baseInstaller.install(ctx, file)
+	if ctx.ModuleName() == "libunwindstack_unit_test" /* && Bool(test.testConfig.StandaloneTest) */ {
+		ctx.VisitDirectDeps(func(dep android.Module) {
+			installFilesInfo := android.OtherModuleProviderOrDefault(ctx, dep, android.InstallFilesProvider)
+			fmt.Printf("yifengzeng@test.go test.install installFilesInfo: %+v\n", installFilesInfo)
+			test.binaryDecorator.baseInstaller.installStandaloneLibs(ctx, installFilesInfo)
+		})
+	}
 }
 
 func getTestInstallBase(useVendor bool) string {
