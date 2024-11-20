@@ -2084,10 +2084,25 @@ func (_ *androidAppOverlayTransitionMutator) Split(ctx android.BaseModuleContext
 }
 
 func (_ *androidAppOverlayTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
+	if filesystem, ok := ctx.Module().(android.PartitionTypeInterface); ok &&
+		android.InList(filesystem.PartitionType(), []string{"vendor", "product"}) {
+		// Vendor and Product partitions request the corresponding overlay variant.
+		// If an overlay variant does not exist (e.g. because the app is _not_ installed in /system or /system_ext),
+		// then the base variant will be returned by IncomingTransition
+		return filesystem.PartitionType()
+	}
+
 	return ""
 }
 
 func (_ *androidAppOverlayTransitionMutator) IncomingTransition(ctx android.IncomingTransitionContext, incomingVariation string) string {
+	if app, ok := ctx.Module().(*AndroidApp); ok {
+		if app.InstallInProduct() || app.InstallInVendor() {
+			// overlay variant does not exist
+			return ""
+		}
+		return incomingVariation
+	}
 	return ""
 }
 

@@ -235,6 +235,12 @@ func collectDepsMutator(mctx android.BottomUpMutatorContext) {
 		// - its namespace is included in PRODUCT_SOONG_NAMESPACES
 		if m.Enabled(mctx) && m.ExportedToMake() {
 			appendDepIfAppropriate(mctx, fsGenState.fsDeps[installPartition], installPartition)
+			if _, ok := m.(android.OverlayVariationModule); ok && (installPartition == "system" || installPartition == "system_ext") {
+				// The app may have an overlay variant.
+				// Automatically add the app to vendor and product for now.
+				appendDepIfAppropriate(mctx, fsGenState.fsDeps["vendor"], "vendor")
+				appendDepIfAppropriate(mctx, fsGenState.fsDeps["product"], "product")
+			}
 		}
 	}
 	// store the map of module to (required,overrides) even if the module is not in PRODUCT_PACKAGES.
