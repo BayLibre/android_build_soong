@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"strconv"
+	"strings"
 
 	"github.com/google/blueprint/proptools"
 )
@@ -75,14 +76,19 @@ func createVendorBootImage(ctx android.LoadHookContext) bool {
 
 	bootImageName := generatedModuleNameForPartition(ctx.Config(), "vendor_boot")
 
+	bootImgProps := &filesystem.BootimgProperties{
+		Boot_image_type: proptools.StringPtr("vendor_boot"),
+		Ramdisk_module:  proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "vendor_ramdisk")),
+		Header_version:  proptools.StringPtr(partitionVariables.BoardBootHeaderVersion),
+		Use_avb:         &partitionVariables.BoardAvbEnable,
+	}
+	if ok, dtbImgName := createDtbImgFilegroup(ctx); ok {
+		bootImgProps.Dtb_prebuilt = proptools.StringPtr(":" + dtbImgName)
+	}
+
 	ctx.CreateModule(
 		filesystem.BootimgFactory,
-		&filesystem.BootimgProperties{
-			Boot_image_type: proptools.StringPtr("vendor_boot"),
-			Ramdisk_module:  proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "vendor_ramdisk")),
-			Header_version:  proptools.StringPtr(partitionVariables.BoardBootHeaderVersion),
-			Use_avb:         &partitionVariables.BoardAvbEnable,
-		},
+		bootImgProps,
 		&struct {
 			Name *string
 		}{
@@ -186,4 +192,30 @@ func boardBootHeaderVersion(partitionVars android.PartitionVariables) (int, bool
 		panic(fmt.Sprintf("BOARD_BOOT_HEADER_VERSION must be an int, got: %q", partitionVars.BoardBootHeaderVersion))
 	}
 	return int(v), true
+}
+
+func createDtbImgFilegroup(ctx android.LoadHookContext) (bool, string) {
+	partitionVars := ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse
+	for _, copyFilePair := range partitionVars.ProductCopyFiles {
+		srcDestList := strings.Split(copyFilePair, ":")
+		if len(srcDestList) < 2 {
+			ctx.ModuleErrorf("PRODUCT_COPY_FILES must follow the format \"src:dest\", got: %s", copyFilePair)
+		}
+		if srcDestList[1] == "dtb.img" {
+			moduleName := generatedModuleName(ctx.Config(), "dtb_img_filegroup")
+			ctx.CreateModuleInDirectory(
+				android.FileGroupFactory,
+				filepath.Dir(srcDestList[0]),
+				&struct {
+					Name *string
+					Srcs []string
+				}{
+					Name: proptools.StringPtr(moduleName),
+					Srcs: []string{filepath.Base(srcDestList[1])},
+				},
+			)
+			return true, moduleName
+		}
+	}
+	return false, ""
 }
