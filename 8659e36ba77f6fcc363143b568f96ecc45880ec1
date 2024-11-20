@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55e71e5e_8d5d117c",
+        "filename": "android/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-20T22:41:53Z",
+      "side": 1,
+      "message": "Can you remove this TODO message?",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 80
+      },
+      "revId": "8659e36ba77f6fcc363143b568f96ecc45880ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
