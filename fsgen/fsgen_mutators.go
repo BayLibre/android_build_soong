@@ -170,8 +170,7 @@ func checkDepModuleInMultipleNamespaces(mctx android.BottomUpMutatorContext, fou
 	}
 }
 
-func appendDepIfAppropriate(mctx android.BottomUpMutatorContext, deps *multilibDeps, installPartition string) {
-	moduleName := mctx.ModuleName()
+func appendDepIfAppropriate(mctx android.BottomUpMutatorContext, moduleName string, deps *multilibDeps, installPartition string) {
 	checkDepModuleInMultipleNamespaces(mctx, *deps, moduleName, installPartition)
 	if _, ok := (*deps)[moduleName]; ok {
 		// Prefer the namespace-specific module over the platform module
@@ -205,7 +204,14 @@ func collectDepsMutator(mctx android.BottomUpMutatorContext) {
 		// - its enabled
 		// - its namespace is included in PRODUCT_SOONG_NAMESPACES
 		if m.Enabled(mctx) && m.ExportedToMake() {
-			appendDepIfAppropriate(mctx, fsGenState.fsDeps[installPartition], installPartition)
+			appendDepIfAppropriate(mctx, mctx.ModuleName(), fsGenState.fsDeps[installPartition], installPartition)
+			// This might be an app with an overlay variant.
+			if vendorOverlay := fmt.Sprintf("%s__%s__auto_generated_rro_%s", mctx.Module().Name(), mctx.Config().DeviceProduct(), "vendor"); mctx.OtherModuleExists(vendorOverlay) {
+				appendDepIfAppropriate(mctx, vendorOverlay, fsGenState.fsDeps["vendor"], "vendor")
+			}
+			if productOverlay := fmt.Sprintf("%s__%s__auto_generated_rro_%s", mctx.Module().Name(), mctx.Config().DeviceProduct(), "product"); mctx.OtherModuleExists(productOverlay) {
+				appendDepIfAppropriate(mctx, productOverlay, fsGenState.fsDeps["vendor"], "vendor")
+			}
 		}
 	}
 	// store the map of module to (required,overrides) even if the module is not in PRODUCT_PACKAGES.
