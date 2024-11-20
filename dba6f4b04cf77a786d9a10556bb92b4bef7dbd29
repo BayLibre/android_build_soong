@@ -64,6 +64,30 @@
       },
       "revId": "dba6f4b04cf77a786d9a10556bb92b4bef7dbd29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a97ad56_49d8519c",
+        "filename": "tradefed_modules/test_suite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2024-11-20T00:41:55Z",
+      "side": 1,
+      "message": "What does \"host tests\" mean?\n\nWe want shared_libs in all their respective modules that declare them.\n\nIt\u0027s important to avoid edge cases and some module that will just not work.",
+      "parentUuid": "ad1e518b_b83c2992",
+      "range": {
+        "startLine": 198,
+        "startChar": 5,
+        "endLine": 198,
+        "endChar": 16
+      },
+      "revId": "dba6f4b04cf77a786d9a10556bb92b4bef7dbd29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
