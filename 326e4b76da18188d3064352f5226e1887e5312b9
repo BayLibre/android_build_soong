@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61da7c59_2b41c650",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-20T19:20:47Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this, InstallInRoot() is implemented on *Module, and calls into installer.installInRoot().",
+      "revId": "326e4b76da18188d3064352f5226e1887e5312b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
