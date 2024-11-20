@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba0d2c74_3677cfeb",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-11-20T18:06:40Z",
+      "side": 1,
+      "message": "`init_boot.img` is where the generic ramdisk lives - it\u0027s no longer in `boot.img` which is now only the kernel image. https://source.android.com/docs/core/architecture/partitions/generic-boot\n\nIt needs to continue being supported.",
+      "parentUuid": "9880c73b_143e759b",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 20
+      },
+      "revId": "bf2540056df5512c0bc5f0197ebb375c7501265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d709d85_f0a7afc7",
