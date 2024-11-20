@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f78fac4_ef7df2c6",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-20T19:27:29Z",
+      "side": 1,
+      "message": "I think `VENDOR_SECURITY_PATCH` is used to sign the vendor image, not vendor boot image. I don\u0027t think vendor boot image gets `com.android.build.vendor_boot.security_patch` argument in avb signing",
+      "revId": "bf2540056df5512c0bc5f0197ebb375c7501265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d344830_bbe1c2df",
         "filename": "filesystem/bootimg.go",
         "patchSetId": 4
