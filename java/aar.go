@@ -130,6 +130,8 @@ type aapt struct {
 	useEmbeddedDex                     bool
 	usesNonSdkApis                     bool
 	hasNoCode                          bool
+	dontIncludeAssets                  bool
+	dontEnableCompactEntries           bool
 	LoggingParent                      string
 	resourceFiles                      android.Paths
 
@@ -267,7 +269,9 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 	// Flags specified in Android.bp
 	linkFlags = append(linkFlags, a.aaptProperties.Aaptflags...)
 
-	linkFlags = append(linkFlags, "--enable-compact-entries")
+	if !a.dontEnableCompactEntries {
+		linkFlags = append(linkFlags, "--enable-compact-entries")
+	}
 
 	// Find implicit or explicit asset and resource dirs
 	assets := android.PathsRelativeToModuleSourceDir(android.SourceInput{
@@ -276,6 +280,9 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 		IncludeDirs: false,
 	})
 	assetDirs := android.PathsWithOptionalDefaultForModuleSrc(ctx, a.aaptProperties.Asset_dirs, "assets")
+	if a.dontIncludeAssets {
+		assetDirs = nil
+	}
 	resourceDirs := android.PathsWithOptionalDefaultForModuleSrc(ctx, a.aaptProperties.Resource_dirs.GetOrDefault(ctx, nil), "res")
 	resourceZips := android.PathsForModuleSrc(ctx, a.aaptProperties.Resource_zips)
 
