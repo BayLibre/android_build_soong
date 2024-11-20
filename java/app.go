@@ -443,7 +443,26 @@ func (a *AndroidApp) generateOverlayBuildActions(ctx android.ModuleContext) {
 
 	// Compile and link resources into package-res.apk
 	a.aapt.hasNoCode = true
-	aaptLinkFlags := []string{"--auto-add-overlay", "--keep-raw-values"}
+	a.aapt.dontIncludeAssets = true
+	a.aapt.dontEnableCompactEntries = true
+	aaptLinkFlags := []string{"--auto-add-overlay", "--keep-raw-values", "--no-resource-deduping", "--no-resource-removal", "-z"}
+	characteristics := ctx.Config().ProductAAPTCharacteristics()
+	if len(characteristics) > 0 && characteristics != "default" {
+		aaptLinkFlags = append(aaptLinkFlags, "--product", characteristics)
+	}
+
+	if !Bool(a.aaptProperties.Aapt_include_all_resources) {
+		// Product AAPT config
+		for _, aaptConfig := range ctx.Config().ProductAAPTConfig() {
+			aaptLinkFlags = append(aaptLinkFlags, "-c", aaptConfig)
+		}
+
+		// Product AAPT preferred config
+		if len(ctx.Config().ProductAAPTPreferredConfig()) > 0 {
+			aaptLinkFlags = append(aaptLinkFlags, "--preferred-density", ctx.Config().ProductAAPTPreferredConfig())
+		}
+	}
+
 	a.aapt.buildActions(ctx,
 		aaptBuildActionOptions{
 			sdkContext:         a,
@@ -2090,8 +2109,8 @@ func (_ *androidAppOverlayTransitionMutator) Mutate(ctx android.BottomUpMutatorC
 	} else if variation == "product" {
 		app.appProperties.ProductOverlayVariation = proptools.BoolPtr(true)
 	}
-	// The overlay variant of framework-res needs the non overlay variant for aapt2 link
-	if ctx.ModuleName() == "framework-res" && (variation == "vendor" || variation == "product") {
+	// The overlay variant needs the non overlay variant for aapt2 link
+	if Bool(app.appProperties.Export_package_resources) && (variation == "vendor" || variation == "product") {
 		if ctx.OtherModuleDependencyVariantExists(nil, ctx.ModuleName()) {
 			ctx.AddVariationDependencies(nil, libTag, ctx.ModuleName())
 		}
