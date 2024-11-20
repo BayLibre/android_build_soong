@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d709d85_f0a7afc7",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-20T01:19:22Z",
+      "side": 1,
+      "message": "@jiyong@google.com Is it intentional for the soong boot images to have this other signing mode that\u0027s different from make? There is a user, the `pvmfw_img` module. Would it be possible to switch them to the existing footer-only style of boot image?",
+      "revId": "bf2540056df5512c0bc5f0197ebb375c7501265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
