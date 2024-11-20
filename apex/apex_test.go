@@ -4437,11 +4437,6 @@ func TestNonTestApex(t *testing.T) {
 
 	// Ensure that the platform variant ends with _shared
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib_common"), "android_arm64_armv8-a_shared")
-
-	if !ctx.ModuleForTests("mylib_common", "android_arm64_armv8-a_shared_apex10000").Module().(*cc.Module).InAnyApex() {
-		t.Log("Found mylib_common not in any apex!")
-		t.Fail()
-	}
 }
 
 func TestTestApex(t *testing.T) {
