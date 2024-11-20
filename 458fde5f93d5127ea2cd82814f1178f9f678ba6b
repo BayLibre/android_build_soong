@@ -22,6 +22,30 @@
       },
       "revId": "458fde5f93d5127ea2cd82814f1178f9f678ba6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b75cafbb_483c36e1",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2311,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-20T22:36:47Z",
+      "side": 1,
+      "message": "I think the collection of `aconfigProtoFiles` of `java_api_library` from deps should work similar to that of `droidstubs(docs)`, not java base module. `droidstubs(docs)` [collects](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/droiddoc.go;l\u003d383?q\u003df:droiddoc.go) the aconfig proto files from `libTag` and `sdkLibtag`, but this is because `droidstubs(docs)` does not have `static_libs` property, and `static_libs` of `java_sdk_library` are [passed as `libs`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/sdk_library_internal.go;l\u003d236) to the auto generated `droidstubs`.\n\nThe reason why java.Module only collect the aconfig files from static deps is because they collect the aconfig files to propagate them to the reverse dependencies, not to consume them. Ideally, we should split `aconfigProtoFiles` to `transitiveAconfigProtoFiles`(from transitive static deps, for use in provider) and `aconfigProtoFiles` (from direct deps, for consumption), but I don\u0027t think this is high priority at the moment given that the aconfig proto files are not consumed by java modules.",
+      "parentUuid": "0a34821e_e7bef8cc",
+      "range": {
+        "startLine": 2311,
+        "startChar": 7,
+        "endLine": 2311,
+        "endChar": 13
+      },
+      "revId": "458fde5f93d5127ea2cd82814f1178f9f678ba6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
