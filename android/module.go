@@ -1884,6 +1884,10 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		phonies:           make(map[string]Paths),
 	}
 
+	if ctx.ModuleName() == "libunwindstack_unit_test" {
+		fmt.Println("yifengzeng@module.go GenerateBuildActions()")
+	}
+
 	setContainerInfo(ctx)
 	if ctx.Config().Getenv("DISABLE_CONTAINER_CHECK") != "true" {
 		checkContainerViolations(ctx)
