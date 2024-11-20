@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9880c73b_143e759b",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-20T18:02:36Z",
+      "side": 1,
+      "message": "Cuttlefish uses it, and it was added in aosp/1882171. @devinmoore@google.com do you have anything else to add here?",
+      "parentUuid": "3d344830_bbe1c2df",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 20
+      },
+      "revId": "bf2540056df5512c0bc5f0197ebb375c7501265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d709d85_f0a7afc7",
         "filename": "filesystem/bootimg.go",
         "patchSetId": 4
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "This mode is needed for the case when this partition has to be independently updatable.",
       "parentUuid": "1d709d85_f0a7afc7",
+      "revId": "bf2540056df5512c0bc5f0197ebb375c7501265c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "188bc074_93c39957",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-20T18:02:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7be60be2_2cf06df9",
       "revId": "bf2540056df5512c0bc5f0197ebb375c7501265c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
