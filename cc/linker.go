@@ -110,6 +110,9 @@ type BaseLinkerProperties struct {
 	// list of runtime libs that should not be installed along with this module.
 	Exclude_runtime_libs []string `android:"arch_variant"`
 
+	// Install the file to the root of the partition. Default: false.
+	Install_in_root *bool
+
 	Target struct {
 		Vendor, Product struct {
 			// list of shared libs that only should be used to build vendor or
@@ -263,6 +266,10 @@ func (blp *BaseLinkerProperties) libCrt() bool {
 
 func (blp *BaseLinkerProperties) crtPadSegment() bool {
 	return blp.No_crt_pad_segment == nil || !*blp.No_crt_pad_segment
+}
+
+func (p *BaseLinkerProperties) InstallInRoot() bool {
+	return proptools.Bool(p.Install_in_root)
 }
 
 func NewBaseLinker(sanitize *sanitize) *baseLinker {
