@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82fe5a97_7502cb66",
+        "filename": "fsgen/boot_imgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-21T00:18:41Z",
+      "side": 1,
+      "message": "It looks like this dtb is only included if `BOARD_INCLUDE_DTB_IN_BOOTIMG` is true, and may be in the regular boot image or even the vendor_kernel_boot image in certain conditions. We don\u0027t have to get these all right away, but could you at least do the check on `BOARD_INCLUDE_DTB_IN_BOOTIMG` and put it in boot.img if vendor_boot doesn\u0027t exist?",
+      "revId": "8b9c6015c194a3470251584e538394cd781e564a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
