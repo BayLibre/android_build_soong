@@ -16,6 +16,24 @@
       "message": "Nit: we now have two ways of optionally adding properties: this way that you just added, or the method of making a pointer variable and conditionally assigning to it, and then unconditionally adding it to the prop struct like `partitionSize` above. I don\u0027t mind either way, but could you consolidate the two methods?",
       "revId": "9dfcfbc1cc0c4b2f8d60f6b769a4af9b82638cc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baf010bf_64d06610",
+        "filename": "fsgen/boot_imgs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-21T18:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6af7d482_bd0b33d8",
+      "revId": "9dfcfbc1cc0c4b2f8d60f6b769a4af9b82638cc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
