@@ -22,6 +22,30 @@
       },
       "revId": "5ef271f85ef16b4fea88c8225e75a2250c07250a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b616676_5ecd87e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 37
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2024-11-21T00:21:59Z",
+      "side": 1,
+      "message": "sg, let\u0027s wait for the final run and i\u0027ll update the comment accordingly.",
+      "parentUuid": "697068ce_2dd3a33d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 128
+      },
+      "revId": "5ef271f85ef16b4fea88c8225e75a2250c07250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
