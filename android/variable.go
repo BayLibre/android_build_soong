@@ -196,6 +196,9 @@ type variableProperties struct {
 		SelinuxIgnoreNeverallows struct {
 			Required []string
 		}
+		Internal_boot_config struct {
+			Cmd *string
+		}
 	} `android:"arch_variant"`
 }
 
@@ -549,6 +552,8 @@ type ProductVariables struct {
 	SystemExtManifestFiles []string `json:",omitempty"`
 	DeviceManifestFiles    []string `json:",omitempty"`
 	OdmManifestFiles       []string `json:",omitempty"`
+
+	Internal_boot_config *string `json:",omitempty"`
 }
 
 type PartitionQualifiedVariablesType struct {
@@ -629,6 +634,7 @@ type PartitionVariables struct {
 	InitBootSecurityPatch           string   `json:",omitempty"`
 	BoardIncludeDtbInBootimg        bool     `json:",omitempty"`
 	InternalKernelCmdline           []string `json:",omitempty"`
+	InternalBootconfigFile          string   `json:",omitempty"`
 
 	// Avb (android verified boot) stuff
 	BoardAvbEnable          bool                                `json:",omitempty"`
