@@ -3,6 +3,7 @@ package fsgen
 import (
 	"android/soong/android"
 	"android/soong/filesystem"
+	"android/soong/genrule"
 	"fmt"
 	"path/filepath"
 	"strconv"
@@ -104,6 +105,11 @@ func createVendorBootImage(ctx android.LoadHookContext, dtbImg dtbImg) bool {
 
 	cmdline := partitionVariables.InternalKernelCmdline
 
+	var vendorBootConfigImg *string
+	if ok, name := createVendorBootConfigImg(ctx); ok {
+		vendorBootConfigImg = proptools.StringPtr(":" + name)
+	}
+
 	ctx.CreateModule(
 		filesystem.BootimgFactory,
 		&filesystem.BootimgProperties{
@@ -117,6 +123,7 @@ func createVendorBootImage(ctx android.LoadHookContext, dtbImg dtbImg) bool {
 			Avb_algorithm:      avbInfo.avbAlgorithm,
 			Dtb_prebuilt:       dtbPrebuilt,
 			Cmdline:            cmdline,
+			Bootconfig:         vendorBootConfigImg,
 		},
 		&struct {
 			Name *string
@@ -282,4 +289,71 @@ func createDtbImgFilegroup(ctx android.LoadHookContext) dtbImg {
 		}
 	}
 	return dtbImg{include: false}
+}
+
+func createVendorBootConfigImg(ctx android.LoadHookContext) (bool, string) {
+	partitionVars := ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse
+	bootconfig := proptools.String(ctx.Config().ProductVariables().Internal_boot_config)
+	bootconfigFile := partitionVars.InternalBootconfigFile
+	if len(bootconfig) == 0 && len(bootconfigFile) == 0 {
+		return false, ""
+	}
+
+	var bootconfigFilegroupName string
+	if len(bootconfigFile) > 0 {
+		bootconfigFilegroupName = generatedModuleName(ctx.Config(), "bootconfig_file_filegroup")
+		ctx.CreateModuleInDirectory(
+			android.FileGroupFactory,
+			filepath.Dir(bootconfigFile),
+			&struct {
+				Name       *string
+				Srcs       []string
+				Visibility []string
+			}{
+				Name:       proptools.StringPtr(bootconfigFilegroupName),
+				Srcs:       []string{filepath.Base(bootconfigFile)},
+				Visibility: []string{"//visibility:public"},
+			},
+		)
+	}
+
+	var srcs []string
+	cmd := `
+		rm -f $(out);
+		for param in %s; do
+			echo $$param >> $(out);
+		done;
+	`
+	if len(bootconfigFilegroupName) > 0 {
+		srcs = append(srcs, ":"+bootconfigFilegroupName)
+		cmd += "cat $(in) >> $(out)"
+	}
+
+	type productVars struct {
+		Internal_boot_config struct {
+			Cmd *string
+		}
+	}
+
+	vendorBootconfigImgModuleName := generatedModuleName(ctx.Config(), "vendor_bootconfig_image")
+	ctx.CreateModule(
+		genrule.GenRuleFactory,
+		&struct {
+			Name              *string
+			Srcs              []string
+			Product_variables productVars
+			Out               []string
+		}{
+			Name: proptools.StringPtr(vendorBootconfigImgModuleName),
+			Srcs: srcs,
+			Product_variables: productVars{
+				Internal_boot_config: struct{ Cmd *string }{
+					proptools.StringPtr(cmd),
+				},
+			},
+			Out: []string{"vendor-bootconfig.img"},
+		},
+	)
+
+	return true, vendorBootconfigImgModuleName
 }
