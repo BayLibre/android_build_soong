@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "697068ce_2dd3a33d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 37
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-11-21T00:10:55Z",
+      "side": 1,
+      "message": "Latest presubmit result doesn\u0027t show a regression.  I guess the metric is noisy.  We can remove this (and even if we need it later, we can leave a Gerrit comment instead of in the commit message).",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 128
+      },
+      "revId": "5ef271f85ef16b4fea88c8225e75a2250c07250a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
