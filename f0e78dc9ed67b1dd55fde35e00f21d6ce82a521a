@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3571c607_e0c54e0a",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-21T19:28:54Z",
+      "side": 1,
+      "message": "I\u0027ve added support for `select()` with string lists in aosp/3367325, does that meet your needs?",
+      "revId": "f0e78dc9ed67b1dd55fde35e00f21d6ce82a521a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
