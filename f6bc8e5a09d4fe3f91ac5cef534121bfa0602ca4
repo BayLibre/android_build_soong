@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45796c20_78c9bd7e",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-21T18:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c59a37e_c5fa1374",
+      "revId": "f6bc8e5a09d4fe3f91ac5cef534121bfa0602ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60ae6afd_782096b9",
@@ -49,6 +67,24 @@
       "writtenOn": "2024-11-21T18:27:53Z",
       "side": 1,
       "message": "nit: can you add documentation?",
+      "revId": "f6bc8e5a09d4fe3f91ac5cef534121bfa0602ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca51bdcf_675c55be",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-21T18:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60ae6afd_782096b9",
       "revId": "f6bc8e5a09d4fe3f91ac5cef534121bfa0602ca4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
