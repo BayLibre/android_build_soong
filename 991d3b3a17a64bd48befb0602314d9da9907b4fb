@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4a3cc61_a1d32af4",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-21T18:39:47Z",
+      "side": 1,
+      "message": "You don\u0027t need this either,  nothing reads this property.  The property already exists in `InstallerProperties`.",
+      "revId": "991d3b3a17a64bd48befb0602314d9da9907b4fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
