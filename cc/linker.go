@@ -39,6 +39,14 @@ type BaseLinkerProperties struct {
 	// the dependency's .a file will be linked into this module using -Wl,--whole-archive.
 	Whole_static_libs proptools.Configurable[[]string] `android:"arch_variant,variant_prepend"`
 
+	// Whole_static_libs_list is equivalent to Whole_static_libs, but it is of type []string
+	// instead of configurable[[]string]. It cannot use the select syntax, but it can use
+	// soong_config_module_type to work around the current issue that Configurable types cannot
+	// use list variables.
+	// TODO(b/380192277): Remove Whole_static_libs_list once configurable properties support
+	// list variables.
+	Whole_static_libs_list []string `android:"arch_variant"`
+
 	// list of modules that should be statically linked into this module.
 	Static_libs proptools.Configurable[[]string] `android:"arch_variant,variant_prepend"`
 
@@ -296,6 +304,7 @@ func (linker *baseLinker) baseLinkerProps() BaseLinkerProperties {
 }
 
 func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
+	deps.WholeStaticLibs = append(deps.WholeStaticLibs, linker.Properties.Whole_static_libs_list...)
 	deps.WholeStaticLibs = append(deps.WholeStaticLibs, linker.Properties.Whole_static_libs.GetOrDefault(ctx, nil)...)
 	deps.HeaderLibs = append(deps.HeaderLibs, linker.Properties.Header_libs.GetOrDefault(ctx, nil)...)
 	deps.StaticLibs = append(deps.StaticLibs, linker.Properties.Static_libs.GetOrDefault(ctx, nil)...)
