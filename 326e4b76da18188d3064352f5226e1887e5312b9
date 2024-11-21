@@ -16,6 +16,24 @@
       "message": "I don\u0027t think you need this, InstallInRoot() is implemented on *Module, and calls into installer.installInRoot().",
       "revId": "326e4b76da18188d3064352f5226e1887e5312b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2585ba22_03b96b58",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-11-21T06:30:36Z",
+      "side": 1,
+      "message": "We still need it because it always return `false` in `module.go`.\n```\nfunc (m *ModuleBase) InstallInRoot() bool {\n\treturn false\n}\n```",
+      "parentUuid": "61da7c59_2b41c650",
+      "revId": "326e4b76da18188d3064352f5226e1887e5312b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
