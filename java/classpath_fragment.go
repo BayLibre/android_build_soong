@@ -105,6 +105,10 @@ func gatherPossibleApexModuleNamesAndStems(ctx android.ModuleContext, contents [
 	set := map[string]struct{}{}
 	for _, name := range contents {
 		dep := ctx.GetDirectDepWithTag(name, tag)
+		if dep == nil && ctx.Config().AllowMissingDependencies() {
+			// TODO(b/380331248): Remove this hack after the apex library definitions are moved next to the apex Android.bp
+			continue
+		}
 		set[ModuleStemForDeapexing(dep)] = struct{}{}
 		if m, ok := dep.(ModuleWithStem); ok {
 			set[m.Stem()] = struct{}{}
