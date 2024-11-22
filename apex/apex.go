@@ -19,6 +19,7 @@ package apex
 import (
 	"fmt"
 	"path/filepath"
+	"reflect"
 	"regexp"
 	"slices"
 	"sort"
@@ -434,6 +435,7 @@ type apexBundle struct {
 	archProperties        apexArchBundleProperties
 	overridableProperties overridableProperties
 	vndkProperties        apexVndkProperties // only for apex_vndk modules
+	testProperties        apexTestProperties // only for apex_test modules
 
 	///////////////////////////////////////////////////////////////////////////////////////////
 	// Inputs
@@ -1294,6 +1296,15 @@ func (a *apexBundle) FutureUpdatable() bool {
 
 func (a *apexBundle) UsePlatformApis() bool {
 	return proptools.BoolDefault(a.properties.Platform_apis, false)
+}
+
+func (a *apexBundle) skipValidation(name string) bool {
+	if !a.testApex {
+		return false
+	}
+	v := reflect.ValueOf(a.testProperties.Skip_validations)
+	f := v.FieldByName(proptools.FieldNameForProperty(name))
+	return !f.IsNil() && f.Elem().Bool()
 }
 
 // getCertString returns the name of the cert that should be used to sign this APEX. This is
@@ -2427,10 +2438,12 @@ func newApexBundle() *apexBundle {
 	return module
 }
 
-func ApexBundleFactory(testApex bool) android.Module {
-	bundle := newApexBundle()
-	bundle.testApex = testApex
-	return bundle
+type apexTestProperties struct {
+	// Boolean flags for validation checks. Test APEXes can turn on/off individual checks.
+	Skip_validations struct {
+		// Skips `Host_apex_verifier` check if true
+		Host_apex_verifier *bool
+	}
 }
 
 // apex_test is an APEX for testing. The difference from the ordinary apex module type is that
@@ -2438,6 +2451,7 @@ func ApexBundleFactory(testApex bool) android.Module {
 func TestApexBundleFactory() android.Module {
 	bundle := newApexBundle()
 	bundle.testApex = true
+	bundle.AddProperties(&bundle.testProperties)
 	return bundle
 }
 
