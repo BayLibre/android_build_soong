@@ -124,17 +124,15 @@ func (f *filesystemCreator) createInternalModules(ctx android.LoadHookContext) {
 	}
 
 	partitionVars := ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse
-	dtbImg := createDtbImgFilegroup(ctx)
-
 	if buildingBootImage(partitionVars) {
-		if createBootImage(ctx, dtbImg) {
+		if createBootImage(ctx) {
 			f.properties.Boot_image = ":" + generatedModuleNameForPartition(ctx.Config(), "boot")
 		} else {
 			f.properties.Unsupported_partition_types = append(f.properties.Unsupported_partition_types, "boot")
 		}
 	}
 	if buildingVendorBootImage(partitionVars) {
-		if createVendorBootImage(ctx, dtbImg) {
+		if createVendorBootImage(ctx) {
 			f.properties.Vendor_boot_image = ":" + generatedModuleNameForPartition(ctx.Config(), "vendor_boot")
 		} else {
 			f.properties.Unsupported_partition_types = append(f.properties.Unsupported_partition_types, "vendor_boot")
