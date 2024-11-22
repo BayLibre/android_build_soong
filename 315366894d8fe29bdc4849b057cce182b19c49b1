@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "626e6d36_c1b305aa",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-22T00:41:31Z",
+      "side": 1,
+      "message": "This is generally useful and should remain.  We would always like to continue in without panic in the AllowMissingDependencies case.  Soong will recognize the module has a missing dependency and replace all of its rules with one that prints an error and fails, preventing compiling against the module.",
+      "revId": "315366894d8fe29bdc4849b057cce182b19c49b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
