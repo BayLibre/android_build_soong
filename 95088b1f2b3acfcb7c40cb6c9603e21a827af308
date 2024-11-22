@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46081d4d_141a2742",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T20:19:16Z",
+      "side": 1,
+      "message": "No need for reflection here, or even this function. Could you make it so that at the beginning of `GenerateAndroidBuildActions`, if `a.testApex` is true, we throw an error if any of the `skip_validations` properties are set? And then after that you can just use them like regular properties.",
+      "revId": "95088b1f2b3acfcb7c40cb6c9603e21a827af308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
