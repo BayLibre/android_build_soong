@@ -16,6 +16,24 @@
       "message": "I\u0027ve added support for `select()` with string lists in aosp/3367325, does that meet your needs?",
       "revId": "f0e78dc9ed67b1dd55fde35e00f21d6ce82a521a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a28e2684_d0001ba3",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-11-22T09:13:18Z",
+      "side": 1,
+      "message": "I patched aosp/3367325 and trying to use the `select` syntax but I keep getting the following error, even though the syntax seems to be correct.\n\nag/30547909:\n```\nwhole_static_libs: select(soong_config_variable(\"recovery\", \"target_recovery_ui_lib\"), {\nany @ libs: libs,\ndefault: [\"librecovery_ui_default\"]\n}),\n```\nError Message:\n```\nFAILED: bootstrap blueprint\nerror: bootable/recovery/Android.bp:298:5: expected \",\", found \"}\"\n08:49:38 bootstrap failed\n```\n\nAnd if I don\u0027t use `select` and continue to use `soong_config_module_type`, I still get the same error as before:\n```\n    soong_config_variables: {\n        target_recovery_ui_lib: {\n            whole_static_libs: [\"%s\"],\n            conditions_default: {\n                whole_static_libs: [\"librecovery_ui_default\"],\n            },\n        },\n    },\n```\nError Message:\n```\nerror: bootable/recovery/Android.bp:273:1: module \"librecovery_ui_ext\": soong_config_variables.target_recovery_ui_lib.Whole_static_libs: list variables are not supported on configurable properties\n09:04:49 soong bootstrap failed with: exit status 1\n```\n\nAnd it works if I add `whole_static_libs_list`\n```\n    soong_config_variables: {\n        target_recovery_ui_lib: {\n            whole_static_libs_list: [\"%s\"],\n            conditions_default: {\n                whole_static_libs_list: [\"librecovery_ui_default\"],\n            },\n        },\n    },\n```",
+      "parentUuid": "3571c607_e0c54e0a",
+      "revId": "f0e78dc9ed67b1dd55fde35e00f21d6ce82a521a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
