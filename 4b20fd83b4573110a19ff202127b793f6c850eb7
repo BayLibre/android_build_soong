@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa087f94_1523b1d8",
+        "filename": "java/app.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T22:47:56Z",
+      "side": 1,
+      "message": "Use `a.EnabledProperty().Clone()`. Configurable properties have reference semantics, so we should Clone them to make sure they\u0027re independant when passing to new modules. Same below and in OverrideAndroidApp.",
+      "range": {
+        "startLine": 1434,
+        "startChar": 23,
+        "endLine": 1434,
+        "endChar": 42
+      },
+      "revId": "4b20fd83b4573110a19ff202127b793f6c850eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5eb1bb7_f6221dc6",
+        "filename": "java/app.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T22:47:56Z",
+      "side": 1,
+      "message": "Why is it necessary to re-export this manifest file but not all the other providers?",
+      "revId": "4b20fd83b4573110a19ff202127b793f6c850eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf3c55d2_5c5373aa",
+        "filename": "java/app.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T22:47:56Z",
+      "side": 1,
+      "message": "Does this one not need to be a defaultable hook as well? Also, can we dedup the regular and overlay version of this hook?",
+      "range": {
+        "startLine": 1776,
+        "startChar": 9,
+        "endLine": 1776,
+        "endChar": 20
+      },
+      "revId": "4b20fd83b4573110a19ff202127b793f6c850eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cd1bfff_64d46d0b",
+        "filename": "java/app_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 4772,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T22:47:56Z",
+      "side": 1,
+      "message": "Uncomment or remove",
+      "revId": "4b20fd83b4573110a19ff202127b793f6c850eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
