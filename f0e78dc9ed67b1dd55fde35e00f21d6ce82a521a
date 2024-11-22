@@ -34,6 +34,24 @@
       "parentUuid": "3571c607_e0c54e0a",
       "revId": "f0e78dc9ed67b1dd55fde35e00f21d6ce82a521a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e74cfb97_05da858d",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-11-22T09:17:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure, but I think the `select` syntax error is caused by `build/blueprint` (aosp/3367325).",
+      "parentUuid": "a28e2684_d0001ba3",
+      "revId": "f0e78dc9ed67b1dd55fde35e00f21d6ce82a521a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
