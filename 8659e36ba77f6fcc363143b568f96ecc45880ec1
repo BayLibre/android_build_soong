@@ -22,6 +22,30 @@
       },
       "revId": "8659e36ba77f6fcc363143b568f96ecc45880ec1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d150f7_3e43e119",
+        "filename": "android/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1944425
+      },
+      "writtenOn": "2024-11-22T00:14:05Z",
+      "side": 1,
+      "message": "Sure let me remove it in the following up cls. Thank you",
+      "parentUuid": "55e71e5e_8d5d117c",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 80
+      },
+      "revId": "8659e36ba77f6fcc363143b568f96ecc45880ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
