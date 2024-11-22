@@ -7101,6 +7101,96 @@ func TestApexAvailable_PrefixMatch(t *testing.T) {
 	`)
 }
 
+func TestApexValidation_UpdatableApexCantSkipValidation(t *testing.T) {
+	t.Parallel()
+	testApexError(t, `validations.apex_available`, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+
+			validations: {
+				apex_available: false,
+			},
+			min_sdk_version: "30",
+			updatable: true,
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+	`)
+}
+
+func TestApexValidation_NonUpdatableApexCanSkipApexAvailableCheck(t *testing.T) {
+	t.Parallel()
+	testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			
+			binaries: ["foo"],
+			validations: {
+				apex_available: false,
+			},
+			updatable: false,
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+		cc_binary {
+			name: "foo",
+		}
+	`)
+}
+
+func TestApexValidation_TestApexSkipsValidation(t *testing.T) {
+	t.Parallel()
+	testApex(t, `
+		apex_test {
+			name: "myapex",
+			key: "myapex.key",
+			
+			binaries: ["foo"],
+			updatable: false,
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+		cc_binary {
+			name: "foo",
+		}
+	`)
+}
+
+func TestApexValidation_TestApexCanEnableValidation(t *testing.T) {
+	t.Parallel()
+	testApexError(t, `"myapex" requires "foo"`, `
+		apex_test {
+			name: "myapex",
+			key: "myapex.key",
+			
+			binaries: ["foo"],
+			validations: {
+				apex_available: true,
+			},
+			updatable: false,
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+		cc_binary {
+			name: "foo",
+		}
+	`)
+}
+
 func TestOverrideApex(t *testing.T) {
 	t.Parallel()
 	ctx := testApex(t, `

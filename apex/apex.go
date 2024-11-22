@@ -19,6 +19,7 @@ package apex
 import (
 	"fmt"
 	"path/filepath"
+	"reflect"
 	"regexp"
 	"slices"
 	"sort"
@@ -198,6 +199,14 @@ type apexBundleProperties struct {
 
 	// Variant version of the mainline module. Must be an integer between 0-9
 	Variant_version *string
+
+	// Boolean flags for validation checks. Non-updatable APEXes can turn off individual checks
+	// by setting it as `false`.
+	Validations struct {
+		// `apex_available` property of all transitive dependencies are checked.
+		// true by default for `apex`, false for `apex_test`.
+		Apex_available *bool
+	}
 }
 
 type ApexNativeDependencies struct {
@@ -1294,6 +1303,27 @@ func (a *apexBundle) FutureUpdatable() bool {
 
 func (a *apexBundle) UsePlatformApis() bool {
 	return proptools.BoolDefault(a.properties.Platform_apis, false)
+}
+
+func (a *apexBundle) checkValidationsProperty(ctx android.ModuleContext) {
+	v := reflect.ValueOf(a.properties.Validations)
+	t := reflect.TypeOf(a.properties.Validations)
+	for i := 0; i < t.NumField(); i++ {
+		if !v.Field(i).IsNil() {
+			name := proptools.PropertyNameForField(t.Field(i).Name)
+			ctx.PropertyErrorf("validations."+name, "updatable APEXes should not set validations.")
+		}
+	}
+}
+
+func (a *apexBundle) skipValidation(name string) bool {
+	v := reflect.ValueOf(a.properties.Validations)
+	f := v.FieldByName(proptools.FieldNameForProperty(name))
+	if f.IsNil() {
+		// Test APEXes skip all validation checks unless it's turned on explicitly.
+		return a.testApex
+	}
+	return !f.Elem().Bool()
 }
 
 // getCertString returns the name of the cert that should be used to sign this APEX. This is
@@ -2600,6 +2630,7 @@ func (a *apexBundle) checkUpdatable(ctx android.ModuleContext) {
 		if a.FutureUpdatable() {
 			ctx.PropertyErrorf("future_updatable", "Already updatable. Remove `future_updatable: true:`")
 		}
+		a.checkValidationsProperty(ctx)
 		a.checkJavaStableSdkVersion(ctx)
 		a.checkClasspathFragments(ctx)
 	}
@@ -2638,8 +2669,7 @@ func (a *apexBundle) checkJavaStableSdkVersion(ctx android.ModuleContext) {
 
 // checkApexAvailability ensures that the all the dependencies are marked as available for this APEX.
 func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
-	// Let's be practical. Availability for test, host, and the VNDK apex isn't important
-	if a.testApex || a.vndkApex {
+	if a.skipValidation("apex_available") {
 		return
 	}
 
