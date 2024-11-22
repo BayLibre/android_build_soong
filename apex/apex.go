@@ -2441,6 +2441,8 @@ func newApexBundle() *apexBundle {
 type apexTestProperties struct {
 	// Boolean flags for validation checks. Test APEXes can turn on/off individual checks.
 	Skip_validations struct {
+		// Skips `Apex_sepolicy_tests` check if true
+		Apex_sepolicy_tests *bool
 		// Skips `Host_apex_verifier` check if true
 		Host_apex_verifier *bool
 	}
