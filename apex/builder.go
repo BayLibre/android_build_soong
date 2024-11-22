@@ -931,7 +931,7 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 		validations = append(validations,
 			runApexElfCheckerUnwanted(ctx, unsignedOutputFile, a.properties.Unwanted_transitive_deps))
 	}
-	if !a.testApex && android.InList(a.payloadFsType, []fsType{ext4, erofs}) {
+	if !a.skipValidation("host_apex_verifier") && android.InList(a.payloadFsType, []fsType{ext4, erofs}) {
 		validations = append(validations, runApexHostVerifier(ctx, a, unsignedOutputFile))
 	}
 	ctx.Build(pctx, android.BuildParams{
