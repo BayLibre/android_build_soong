@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33d1cd07_d4422f14",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T22:39:15Z",
+      "side": 1,
+      "message": "Are we really saving that much duplicated code by reusing `aapt.buildActions`? It seems like the vast majority of it doesn\u0027t apply to the auto generated rros. It seems like you just need an aapt compile + link action, and you\u0027ve already rewritten the compile action and the link action is separated out into its own function already.",
+      "revId": "c35ae90438375624ee276a0e6a3f6f40066669ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "133541f1_b9d36ebb",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T22:39:15Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 704,
+        "startChar": 72,
+        "endLine": 704,
+        "endChar": 80
+      },
+      "revId": "c35ae90438375624ee276a0e6a3f6f40066669ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40db5ef5_7fd7fdf8",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T22:39:15Z",
+      "side": 1,
+      "message": "use `androidResourceGlob`.",
+      "range": {
+        "startLine": 710,
+        "startChar": 16,
+        "endLine": 710,
+        "endChar": 101
+      },
+      "revId": "c35ae90438375624ee276a0e6a3f6f40066669ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc709ef_984d3896",
+        "filename": "java/rro.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T22:39:15Z",
+      "side": 1,
+      "message": "Could you add enforcement that `autogen_runtime_resource_overlay` is never created in build files? Similar to what Jihoon did for the PRODUCT_COPY_FILES modules in aosp/3311476",
+      "revId": "c35ae90438375624ee276a0e6a3f6f40066669ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09addb0e_15a98f3f",
+        "filename": "java/rro.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T22:39:15Z",
+      "side": 1,
+      "message": "Can this just be `InitAndroidArchModule` given that we aren\u0027t embedding any native dependencies into the rro?",
+      "range": {
+        "startLine": 305,
+        "startChar": 9,
+        "endLine": 305,
+        "endChar": 42
+      },
+      "revId": "c35ae90438375624ee276a0e6a3f6f40066669ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
