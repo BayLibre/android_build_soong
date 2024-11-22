@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d03a62c_46d0858b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-22T20:53:32Z",
+      "side": 1,
+      "message": "I have added some unit tests in https://r.android.com/3362490",
+      "revId": "52e4317b0b620325e6b62676c7f6dcf8f6c9f3d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
