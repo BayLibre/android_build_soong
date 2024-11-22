@@ -16,6 +16,24 @@
       "message": "You don\u0027t need this either,  nothing reads this property.  The property already exists in `InstallerProperties`.",
       "revId": "991d3b3a17a64bd48befb0602314d9da9907b4fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f3d1c4_40af2923",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-11-22T06:42:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4a3cc61_a1d32af4",
+      "revId": "991d3b3a17a64bd48befb0602314d9da9907b4fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
