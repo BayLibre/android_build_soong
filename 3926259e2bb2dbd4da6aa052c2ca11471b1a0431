@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "999b342e_cedf988e",
+        "filename": "fsgen/fsgen_mutators.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T22:51:07Z",
+      "side": 1,
+      "message": "outdated terminology?",
+      "range": {
+        "startLine": 208,
+        "startChar": 35,
+        "endLine": 208,
+        "endChar": 50
+      },
+      "revId": "3926259e2bb2dbd4da6aa052c2ca11471b1a0431",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4923f1e4_476ab5ed",
+        "filename": "fsgen/fsgen_mutators.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T22:51:07Z",
+      "side": 1,
+      "message": "This would work for when we\u0027re auto-generating partition modules, but when we check them into bp files, we don\u0027t want to have to list the auto generated rros. Is there anything we can do to get them automatically picked up?",
+      "revId": "3926259e2bb2dbd4da6aa052c2ca11471b1a0431",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
