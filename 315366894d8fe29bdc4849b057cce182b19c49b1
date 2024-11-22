@@ -16,6 +16,24 @@
       "message": "This is generally useful and should remain.  We would always like to continue in without panic in the AllowMissingDependencies case.  Soong will recognize the module has a missing dependency and replace all of its rules with one that prints an error and fails, preventing compiling against the module.",
       "revId": "315366894d8fe29bdc4849b057cce182b19c49b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f06357b_bf45bb35",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-22T00:51:38Z",
+      "side": 1,
+      "message": "I see, I think moving the panics out of soong analysis SGTM. I have removed the TODO.",
+      "parentUuid": "626e6d36_c1b305aa",
+      "revId": "315366894d8fe29bdc4849b057cce182b19c49b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
