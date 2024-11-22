@@ -16,6 +16,24 @@
       "message": "No need for reflection here, or even this function. Could you make it so that at the beginning of `GenerateAndroidBuildActions`, if `a.testApex` is true, we throw an error if any of the `skip_validations` properties are set? And then after that you can just use them like regular properties.",
       "revId": "95088b1f2b3acfcb7c40cb6c9603e21a827af308",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30b8d21f_32256496",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-11-22T23:41:51Z",
+      "side": 1,
+      "message": "Thank you Cole. \n\nI was thinking adding more (like aosp/3367942) and wanted to make this work with new properties without extending ;-)\n\nRegarding `a.testApex` I think the current implementation (adding the prop structure to `apex_test` module only) works nice.\n\nHow about moving away from `reflect`, but keeping the prop structure?\n\n```\nfunc (a *apexBundle) skipValidation(name string) bool {\n\tif !a.testApex {\n\t\treturn false\n\t}\n\tswitch name {\n\tcase \"host_apex_verifier\":\n\t\treturn proptools.BoolDefault(a.testProperties.Skip_validations.Host_apex_verifier, false)\n\tdefault:\n\t\tpanic(\"unknown property: apex.skip_validations.\" + name)\n\t}\n}\n```",
+      "parentUuid": "46081d4d_141a2742",
+      "revId": "95088b1f2b3acfcb7c40cb6c9603e21a827af308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
