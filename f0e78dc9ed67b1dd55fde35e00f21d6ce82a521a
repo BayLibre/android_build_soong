@@ -52,6 +52,24 @@
       "parentUuid": "a28e2684_d0001ba3",
       "revId": "f0e78dc9ed67b1dd55fde35e00f21d6ce82a521a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f827f7b_7f0124c7",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T18:42:16Z",
+      "side": 1,
+      "message": "You need to add a trailing comma:\n\n```\nwhole_static_libs: select(soong_config_variable(\"recovery\", \"target_recovery_ui_lib\"), {\n  any @ libs: libs,\n  default: [\"librecovery_ui_default\"], // \u003c--- Add this comma\n}),\n```\n\nI\u0027ve updated aosp/3367325 to also be less strict about this comma, but bpfmt will still want you to add it.",
+      "parentUuid": "e74cfb97_05da858d",
+      "revId": "f0e78dc9ed67b1dd55fde35e00f21d6ce82a521a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
