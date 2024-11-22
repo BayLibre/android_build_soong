@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af89359f_08c35e43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-22T21:36:45Z",
+      "side": 1,
+      "message": "This is a similar change to https://android-review.git.corp.google.com/c/platform/build/soong/+/3371200",
+      "revId": "3b4c111fa57cdc6824f8b34fed92b6119ee2285e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
