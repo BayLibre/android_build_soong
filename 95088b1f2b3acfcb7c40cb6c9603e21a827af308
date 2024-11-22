@@ -34,6 +34,24 @@
       "parentUuid": "46081d4d_141a2742",
       "revId": "95088b1f2b3acfcb7c40cb6c9603e21a827af308",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba10a329_0f09f339",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-22T23:52:12Z",
+      "side": 1,
+      "message": "\u003e I think the current implementation (adding the prop structure to apex_test module only) works nice.\n\nOh I suppose that is true. In that case it seems like there\u0027s even less reason for this function. If it\u0027s not a test apex we know that the properties weren\u0027t be set, so we could just access them directly, right?",
+      "parentUuid": "30b8d21f_32256496",
+      "revId": "95088b1f2b3acfcb7c40cb6c9603e21a827af308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
