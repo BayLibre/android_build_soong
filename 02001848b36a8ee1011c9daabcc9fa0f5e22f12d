@@ -86,6 +86,24 @@
       "parentUuid": "fe641db9_f989a0eb",
       "revId": "02001848b36a8ee1011c9daabcc9fa0f5e22f12d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d80a485_a25d5b43",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1022354
+      },
+      "writtenOn": "2024-11-25T21:22:50Z",
+      "side": 1,
+      "message": "Do you know how predictable the number of builds are between releases?",
+      "parentUuid": "bbe53a28_f93018e0",
+      "revId": "02001848b36a8ee1011c9daabcc9fa0f5e22f12d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
