@@ -88,6 +88,24 @@
       "parentUuid": "8f827f7b_7f0124c7",
       "revId": "f0e78dc9ed67b1dd55fde35e00f21d6ce82a521a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c26170f_9c3b0c6f",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-11-25T06:48:14Z",
+      "side": 1,
+      "message": "Sorry, I setup something wrong and it works now.",
+      "parentUuid": "3166e4d7_325f144b",
+      "revId": "f0e78dc9ed67b1dd55fde35e00f21d6ce82a521a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
