@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a11841a_65adb2d5",
+        "filename": "java/app.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-25T19:17:00Z",
+      "side": 1,
+      "message": "\u003e In my current implementation, I am using the output file tags to get the manifest, and I think such redirection does not happen for output files.\n\nCould we dig into this a little more? The dependency edge is redirected, and dependencies are a module-level thing, not a provider-level thing, so I don\u0027t understand why you\u0027d see the redirect on all providers except OutputFiles.",
+      "parentUuid": "f0e70445_2619b0f6",
+      "revId": "4b20fd83b4573110a19ff202127b793f6c850eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf3c55d2_5c5373aa",
         "filename": "java/app.go",
         "patchSetId": 11
