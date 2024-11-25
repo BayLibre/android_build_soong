@@ -140,6 +140,24 @@
       "parentUuid": "3fd250fb_ddca8926",
       "revId": "02001848b36a8ee1011c9daabcc9fa0f5e22f12d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596068a3_c024add2",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-25T22:51:23Z",
+      "side": 1,
+      "message": "Done. Although one thing I still don\u0027t understand is that since it appears [the salt is stored separately on device](https://cs.android.com/android/platform/superproject/main/+/main:external/avb/avbtool.py;l\u003d3521;drc\u003d8e2eb4cf6ab0efbbe227caca6f02ff2b6e922d89) doesn\u0027t that mean the attacker knows the salt anyways and can proceed with the attack regardless of how random it is? Is the idea just that it makes it so the attacker can\u0027t start a hash collision search until the release is actually out?",
+      "parentUuid": "1c992717_080c57a2",
+      "revId": "02001848b36a8ee1011c9daabcc9fa0f5e22f12d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
