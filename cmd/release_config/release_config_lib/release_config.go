@@ -91,6 +91,23 @@ type ReleaseConfig struct {
 	ReleaseConfigType rc_proto.ReleaseConfigType
 }
 
+// If true, this is a regular ReleaseConfig that can be used in "lunch".
+// Currently all release configs with the exception of the build variant type
+// are listable.
+func (config *ReleaseConfig) isConfigListable() bool {
+	switch config.ReleaseConfigType {
+	case rc_proto.ReleaseConfigType_BUILD_VARIANT:
+		return false
+	case rc_proto.ReleaseConfigType_CONFIG_TYPE_UNSPECIFIED:
+	case rc_proto.ReleaseConfigType_RELEASE_CONFIG:
+	case rc_proto.ReleaseConfigType_EXPLICIT_INHERITANCE_CONFIG:
+	default:
+		return true
+	}
+
+	return true
+}
+
 // If true, this ReleaseConfigType may only inherit from a ReleaseConfig of the
 // same ReleaseConfigType.
 var ReleaseConfigInheritanceDenyMap = map[rc_proto.ReleaseConfigType]bool{
