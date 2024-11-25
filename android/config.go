@@ -232,6 +232,12 @@ func (c Config) ReleaseAconfigFlagDefaultPermission() string {
 	return c.config.productVariables.ReleaseAconfigFlagDefaultPermission
 }
 
+// Whether to allow read-write flags, passed to aconfig
+// derived from RELEASE_ACONFIG_ALLOW_READ_WRITE
+func (c Config) ReleaseAconfigAllowReadWrite() bool {
+	return Bool(c.config.productVariables.ReleaseAconfigAllowReadWrite)
+}
+
 // Enable object size sanitizer
 func (c Config) ReleaseBuildObjectSizeSanitizer() bool {
 	return c.config.productVariables.GetBuildFlagBool("RELEASE_BUILD_OBJECT_SIZE_SANITIZER")
