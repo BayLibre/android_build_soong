@@ -1082,7 +1082,7 @@ func collectAppDeps(ctx android.ModuleContext, app appDepsInterface,
 			app.SdkVersion(ctx).Kind != android.SdkCorePlatform && !app.RequiresStableAPIs(ctx)
 	}
 	jniLib, prebuiltJniPackages := collectJniDeps(ctx, shouldCollectRecursiveNativeDeps,
-		checkNativeSdkVersion, func(dep cc.LinkableInterface) bool { return !dep.IsNdk(ctx.Config()) && !dep.IsStubs() })
+		checkNativeSdkVersion, func(dep cc.LinkableInterface) bool { return !dep.IsNdk(ctx.Config()) && !dep.HasStubsVariants() })
 
 	var certificates []Certificate
 
