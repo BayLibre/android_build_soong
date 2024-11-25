@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "534f023c_dce02ef9",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-25T07:07:01Z",
+      "side": 1,
+      "message": "`aapt.buildActions` does some additional work like\n1. Adding min_sdk_version, target_sdk_version values to the final manifest using `manifest_fixer`\n2. Computing the list of common flags for aapt2 compile and aapt2 link. e.g. it visits all its shared library /sdk deps and add their resources to `-I` for linking\n\nWould you recommend that these be done separately for the auto generated rros?",
+      "parentUuid": "33d1cd07_d4422f14",
+      "revId": "c35ae90438375624ee276a0e6a3f6f40066669ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "133541f1_b9d36ebb",
         "filename": "java/aar.go",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2024-11-22T22:39:15Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 704,
+        "startChar": 72,
+        "endLine": 704,
+        "endChar": 80
+      },
+      "revId": "c35ae90438375624ee276a0e6a3f6f40066669ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b97dc883_0a11ad39",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-25T07:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "133541f1_b9d36ebb",
       "range": {
         "startLine": 704,
         "startChar": 72,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "280bb3f9_d8996ba3",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-25T07:07:01Z",
+      "side": 1,
+      "message": "`androidResourceGlob` uses `ctx.GlobFiles` but then adds [current module directory](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/41f379309a6a2a22e4feb36d69b7376f66aed9a1:android/paths.go;l\u003d78;drc\u003db5275328b5cd895159fb31e1b72df46438adaf99;bpv\u003d1;bpt\u003d0). Since the RRO directories are relative to the workspace root (e.g. $top/device/$company/...), I think we need to call `GlobFiles` or `GlobWithDeps` directly here.",
+      "parentUuid": "40db5ef5_7fd7fdf8",
+      "range": {
+        "startLine": 710,
+        "startChar": 16,
+        "endLine": 710,
+        "endChar": 101
+      },
+      "revId": "c35ae90438375624ee276a0e6a3f6f40066669ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cc709ef_984d3896",
@@ -81,6 +147,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5dbbfdb_1bd9a695",
+        "filename": "java/rro.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-25T07:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cc709ef_984d3896",
+      "revId": "c35ae90438375624ee276a0e6a3f6f40066669ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09addb0e_15a98f3f",
@@ -94,6 +178,30 @@
       "writtenOn": "2024-11-22T22:39:15Z",
       "side": 1,
       "message": "Can this just be `InitAndroidArchModule` given that we aren\u0027t embedding any native dependencies into the rro?",
+      "range": {
+        "startLine": 305,
+        "startChar": 9,
+        "endLine": 305,
+        "endChar": 42
+      },
+      "revId": "c35ae90438375624ee276a0e6a3f6f40066669ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33653e77_731775d1",
+        "filename": "java/rro.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-25T07:07:01Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "09addb0e_15a98f3f",
       "range": {
         "startLine": 305,
         "startChar": 9,
