@@ -158,6 +158,24 @@
       "parentUuid": "1c992717_080c57a2",
       "revId": "02001848b36a8ee1011c9daabcc9fa0f5e22f12d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfab8081_971dc345",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1022354
+      },
+      "writtenOn": "2024-11-25T23:01:26Z",
+      "side": 1,
+      "message": "Exactly! (We have to be able to compute the integrity measurements for verification on the device, so the attacker can do the same thing.  With modern hashing algorithms and some randomness from the salt, it should be expensive in terms of time and compute for the attacker to find collisions in the time they have available.)",
+      "parentUuid": "596068a3_c024add2",
+      "revId": "02001848b36a8ee1011c9daabcc9fa0f5e22f12d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
