@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f403a3a_2024bafa",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1022354
+      },
+      "writtenOn": "2024-11-25T23:02:15Z",
+      "side": 1,
+      "message": "nit: release",
+      "range": {
+        "startLine": 337,
+        "startChar": 39,
+        "endLine": 337,
+        "endChar": 45
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "03a24ec3_a564afd1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "filesystem/bootimg.go",
+              "range": {
+                "startLine": 337,
+                "startChar": 0,
+                "endLine": 338,
+                "endChar": 0
+              },
+              "replacement": "\t// to find a new hash collision every release, because the salt changed.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b51b50e62547acc70f382eafd8612d1d094944e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
