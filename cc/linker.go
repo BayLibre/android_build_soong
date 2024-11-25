@@ -235,13 +235,13 @@ type BaseLinkerProperties struct {
 	// Generate compact dynamic relocation table, default true.
 	Pack_relocations *bool `android:"arch_variant"`
 
-	// local file name to pass to the linker as --version-script
+	// local file name to pass to the linker as --version-script.  Ignored for Darwin variants.
 	Version_script *string `android:"path,arch_variant"`
 
-	// local file name to pass to the linker as --dynamic-list
+	// local file name to pass to the linker as --dynamic-list.  Ignored for Darwin variants.
 	Dynamic_list *string `android:"path,arch_variant"`
 
-	// local files to pass to the linker as --script
+	// local files to pass to the linker as --script.  Ignored for Windows and Darwin variants.
 	Linker_scripts []string `android:"path,arch_variant"`
 
 	// list of static libs that should not be used to build this module
@@ -559,9 +559,7 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 		}
 
 		if versionScript.Valid() {
-			if ctx.Darwin() {
-				ctx.PropertyErrorf("version_script", "Not supported on Darwin")
-			} else {
+			if !ctx.Darwin() {
 				flags.Local.LdFlags = append(flags.Local.LdFlags,
 					config.VersionScriptFlagPrefix+versionScript.String())
 				flags.LdFlagsDeps = append(flags.LdFlagsDeps, versionScript.Path())
@@ -577,9 +575,7 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 
 		dynamicList := android.OptionalPathForModuleSrc(ctx, linker.Properties.Dynamic_list)
 		if dynamicList.Valid() {
-			if ctx.Darwin() {
-				ctx.PropertyErrorf("dynamic_list", "Not supported on Darwin")
-			} else {
+			if !ctx.Darwin() {
 				flags.Local.LdFlags = append(flags.Local.LdFlags,
 					"-Wl,--dynamic-list,"+dynamicList.String())
 				flags.LdFlagsDeps = append(flags.LdFlagsDeps, dynamicList.Path())
@@ -587,9 +583,7 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 		}
 
 		linkerScriptPaths := android.PathsForModuleSrc(ctx, linker.Properties.Linker_scripts)
-		if len(linkerScriptPaths) > 0 && (ctx.Darwin() || ctx.Windows()) {
-			ctx.PropertyErrorf("linker_scripts", "Only supported for ELF files")
-		} else {
+		if !ctx.Darwin() && !ctx.Windows() {
 			for _, linkerScriptPath := range linkerScriptPaths {
 				flags.Local.LdFlags = append(flags.Local.LdFlags,
 					"-Wl,--script,"+linkerScriptPath.String())
