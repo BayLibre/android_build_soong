@@ -6002,7 +6002,7 @@ func TestApexWithApps(t *testing.T) {
 		cc_library_shared {
 			name: "libjni",
 			srcs: ["mylib.cpp"],
-			shared_libs: ["libfoo"],
+			shared_libs: ["libfoo#impl"],
 			stl: "none",
 			system_shared_libs: [],
 			apex_available: [ "myapex" ],
@@ -12137,34 +12137,32 @@ func TestApexVerifyNativeImplementationLibs(t *testing.T) {
 			},
 			dependencyPath: []string{"myapex", "libjni", "libbar", "libplatform"},
 		},
-		// TODO: embedded JNI in apps should be checked too, but Soong currently just packages the transitive
-		//  JNI libraries even if they came from another apex.
-		//{
-		//	name:           "app jni library dependency in other apex",
-		//	bpModifier:     addToSharedLibs("libembeddedjni", "libotherapex#impl"),
-		//	dependencyPath: []string{"myapex", "myapp", "libembeddedjni", "libotherapex"},
-		//},
-		//{
-		//	name: "transitive app jni library dependency in other apex",
-		//	bpModifier: func(bp *bpmodify.Blueprint) {
-		//		addToSharedLibs("libembeddedjni", "libbar")(bp)
-		//		addToSharedLibs("libbar", "libotherapex#impl")(bp)
-		//	},
-		//	dependencyPath: []string{"myapex", "myapp", "libembeddedjni", "libbar", "libotherapex"},
-		//},
-		//{
-		//	name:           "app jni library dependency in platform",
-		//	bpModifier:     addToSharedLibs("libembeddedjni", "libplatform#impl"),
-		//	dependencyPath: []string{"myapex", "myapp", "libembeddedjni", "libplatform"},
-		//},
-		//{
-		//	name: "transitive app jni library dependency in platform",
-		//	bpModifier: func(bp *bpmodify.Blueprint) {
-		//		addToSharedLibs("libembeddedjni", "libbar")(bp)
-		//		addToSharedLibs("libbar", "libplatform#impl")(bp)
-		//	},
-		//	dependencyPath: []string{"myapex", "myapp", "libembeddedjni", "libbar", "libplatform"},
-		//},
+		{
+			name:           "app jni library dependency in other apex",
+			bpModifier:     addToSharedLibs("libembeddedjni", "libotherapex#impl"),
+			dependencyPath: []string{"myapex", "myapp", "libembeddedjni", "libotherapex"},
+		},
+		{
+			name: "transitive app jni library dependency in other apex",
+			bpModifier: func(bp *bpmodify.Blueprint) {
+				addToSharedLibs("libembeddedjni", "libbar")(bp)
+				addToSharedLibs("libbar", "libotherapex#impl")(bp)
+			},
+			dependencyPath: []string{"myapex", "myapp", "libembeddedjni", "libbar", "libotherapex"},
+		},
+		{
+			name:           "app jni library dependency in platform",
+			bpModifier:     addToSharedLibs("libembeddedjni", "libplatform#impl"),
+			dependencyPath: []string{"myapex", "myapp", "libembeddedjni", "libplatform"},
+		},
+		{
+			name: "transitive app jni library dependency in platform",
+			bpModifier: func(bp *bpmodify.Blueprint) {
+				addToSharedLibs("libembeddedjni", "libbar")(bp)
+				addToSharedLibs("libbar", "libplatform#impl")(bp)
+			},
+			dependencyPath: []string{"myapex", "myapp", "libembeddedjni", "libbar", "libplatform"},
+		},
 		{
 			name:           "binary dependency in other apex",
 			bpModifier:     addToSharedLibs("mybin", "libotherapex#impl"),
