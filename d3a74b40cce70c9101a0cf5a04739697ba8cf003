@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94ed612c_be50629e",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-25T19:03:43Z",
+      "side": 1,
+      "message": "I think we definitely want it to be a property on a module instead of a configuration variable. I agree that having it be hardcoded in a genrule command is ugly, so maybe we should create a new module type that has `boot_config_file` and `boot_configs` properties explicitly.",
+      "parentUuid": "774033b7_348dd274",
+      "revId": "d3a74b40cce70c9101a0cf5a04739697ba8cf003",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec6e92f5_662a3849",
         "filename": "fsgen/boot_imgs.go",
         "patchSetId": 2
