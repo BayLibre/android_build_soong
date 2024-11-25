@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ead18a_ebadbaa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2024-11-25T20:04:26Z",
+      "side": 1,
+      "message": "LGTM and I think it\u0027s probably fine to not use salt at all since the only thing it prevents is an attacker constructing a rainbow table to quickly determine the image/partition in question, given the hash/root-hash. I asked Cole to CC Will to check my logic and maybe also provide some color of why we added salt to dm-verity in the first place.",
+      "revId": "02001848b36a8ee1011c9daabcc9fa0f5e22f12d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
