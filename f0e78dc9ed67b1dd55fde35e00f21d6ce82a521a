@@ -70,6 +70,24 @@
       "parentUuid": "e74cfb97_05da858d",
       "revId": "f0e78dc9ed67b1dd55fde35e00f21d6ce82a521a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3166e4d7_325f144b",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-11-25T06:25:00Z",
+      "side": 1,
+      "message": "Thanks, it fixed the syntax error, but it still causes the same error as with soong_config_module_type:\n```\nerror: bootable/recovery/Android.bp:273:1: module \"librecovery_ui_ext\": \nsoong_config_variables.target_recovery_ui_lib.Whole_static_libs: list variables are not supported on configurable properties\n06:16:49 soong bootstrap failed with: exit status 1\n```\nEven after removing the check in `build/soong/android/soongconfig/modules.go`:\n```\n//return fmt.Errorf(\"soong_config_variables.%s.%s: list variables are not supported on configurable properties\", s.variable, strings.Join(fieldName, \".\")) \n```\nIt still results in the following error:\n```\nFAILED: out/soong/.intermediates/bootable/recovery/librecovery_ui_ext/android_recovery_arm_armv8-a_cortex-a53_shared/librecovery_ui_ext.so.toc\necho \"module librecovery_ui_ext missing dependencies: %s\" \u0026\u0026 false\nmodule librecovery_ui_ext missing dependencies: %s\n06:21:36 ninja failed with: exit status 1\n```",
+      "parentUuid": "8f827f7b_7f0124c7",
+      "revId": "f0e78dc9ed67b1dd55fde35e00f21d6ce82a521a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
