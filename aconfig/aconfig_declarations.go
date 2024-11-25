@@ -17,8 +17,8 @@ package aconfig
 import (
 	"path/filepath"
 	"slices"
+	"strconv"
 	"strings"
-
 	"android/soong/android"
 
 	"github.com/google/blueprint"
@@ -194,6 +194,7 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 			"declarations":       android.JoinPathsWithPrefix(declarationFiles, "--declarations "),
 			"values":             joinAndPrefix(" --values ", values[config]),
 			"default-permission": optionalVariable(" --default-permission ", defaultPermission),
+			"allow-read-write":   "--allow-read-write " + strconv.FormatBool(ctx.Config().ReleaseAconfigAllowReadWrite()),
 		}
 		if len(module.properties.Container) > 0 {
 			args["container"] = "--container " + module.properties.Container
