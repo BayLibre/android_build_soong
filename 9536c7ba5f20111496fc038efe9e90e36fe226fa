@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "903444fe_850261d4",
+        "filename": "cmd/release_config/release_config_lib/release_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-25T19:56:26Z",
+      "side": 1,
+      "message": "these lines are (effectively) ignored, since Go doesn\u0027t fall through to the following case.\n\nThis function should only return true for rc_proto.ReleaseConfigType_RELEASE_CONFIG.  (unspecified gets converted to that when we read the file.)",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 61
+      },
+      "revId": "9536c7ba5f20111496fc038efe9e90e36fe226fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
