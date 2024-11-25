@@ -40,6 +40,30 @@
       ],
       "revId": "b51b50e62547acc70f382eafd8612d1d094944e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69936c3_df4134e9",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-25T23:03:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f403a3a_2024bafa",
+      "range": {
+        "startLine": 337,
+        "startChar": 39,
+        "endLine": 337,
+        "endChar": 45
+      },
+      "revId": "b51b50e62547acc70f382eafd8612d1d094944e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
