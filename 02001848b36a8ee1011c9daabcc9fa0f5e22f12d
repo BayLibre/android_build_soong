@@ -104,6 +104,24 @@
       "parentUuid": "bbe53a28_f93018e0",
       "revId": "02001848b36a8ee1011c9daabcc9fa0f5e22f12d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd250fb_ddca8926",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-25T21:36:16Z",
+      "side": 1,
+      "message": "It\u0027s an 8-digit number that always increments, but I don\u0027t think it\u0027s possible to know how much it increments by each release. I guess I could also add in the build time, which would be a 10-digit number that also increments by an unknown amount every build.\n\nAlso I believe this code technically doesn\u0027t matter, because the images should be resigned with a release key outside of the build system. But I don\u0027t fully know how that works.",
+      "parentUuid": "8d80a485_a25d5b43",
+      "revId": "02001848b36a8ee1011c9daabcc9fa0f5e22f12d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
