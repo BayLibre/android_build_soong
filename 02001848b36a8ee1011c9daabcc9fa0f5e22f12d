@@ -122,6 +122,24 @@
       "parentUuid": "8d80a485_a25d5b43",
       "revId": "02001848b36a8ee1011c9daabcc9fa0f5e22f12d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c992717_080c57a2",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1022354
+      },
+      "writtenOn": "2024-11-25T22:16:07Z",
+      "side": 1,
+      "message": "Adding build timestamp seems reasonable.  I still doubt the entropy is super high, but it should at least drive up the cost significantly.\n\nI think the most similar to the current function would just be adding an extra build artifact file that you could just collect from BuildSaltFile() here.",
+      "parentUuid": "3fd250fb_ddca8926",
+      "revId": "02001848b36a8ee1011c9daabcc9fa0f5e22f12d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
