@@ -16,6 +16,24 @@
       "message": "Please take a look at https://buganizer.corp.google.com/issues/380955784#comment10 before submitting this revert. A fix-forward is likely cheaper.",
       "revId": "f083d4c7bcce9e9cd03ef9a2a082a479bb532663",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1629e7a7_3b2915a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-11-26T09:58:42Z",
+      "side": 1,
+      "message": "This is actually fixed with a different internal commit already. Please check the bug comments.",
+      "parentUuid": "724825cd_68729219",
+      "revId": "f083d4c7bcce9e9cd03ef9a2a082a479bb532663",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
