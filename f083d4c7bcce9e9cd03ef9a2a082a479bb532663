@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "724825cd_68729219",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-11-26T09:28:59Z",
+      "side": 1,
+      "message": "Please take a look at https://buganizer.corp.google.com/issues/380955784#comment10 before submitting this revert. A fix-forward is likely cheaper.",
+      "revId": "f083d4c7bcce9e9cd03ef9a2a082a479bb532663",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
