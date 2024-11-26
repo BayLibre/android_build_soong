@@ -115,11 +115,11 @@ func (d *dexer) effectiveOptimizeEnabled() bool {
 	return BoolDefault(d.dexProperties.Optimize.Enabled, d.dexProperties.Optimize.EnabledByDefault)
 }
 
-func (d *DexProperties) resourceShrinkingEnabled(ctx android.ModuleContext) bool {
-	return !ctx.Config().Eng() && BoolDefault(d.Optimize.Optimized_shrink_resources, Bool(d.Optimize.Shrink_resources))
+func (d *dexer) resourceShrinkingEnabled(ctx android.ModuleContext) bool {
+	return !ctx.Config().Eng() && d.effectiveOptimizeEnabled()
 }
 
-func (d *DexProperties) optimizedResourceShrinkingEnabled(ctx android.ModuleContext) bool {
+func (d *dexer) optimizedResourceShrinkingEnabled(ctx android.ModuleContext) bool {
 	return d.resourceShrinkingEnabled(ctx) && BoolDefault(d.Optimize.Optimized_shrink_resources, ctx.Config().UseOptimizedResourceShrinkingByDefault())
 }
 
@@ -400,7 +400,7 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, dexParams *compileDexParams, 
 		r8Flags = append(r8Flags, "--resource-input", d.resourcesInput.Path().String())
 		r8Deps = append(r8Deps, d.resourcesInput.Path())
 		r8Flags = append(r8Flags, "--resource-output", d.resourcesOutput.Path().String())
-		if d.dexProperties.optimizedResourceShrinkingEnabled(ctx) {
+		if d.optimizedResourceShrinkingEnabled(ctx) {
 			r8Flags = append(r8Flags, "--optimized-resource-shrinking")
 			if Bool(d.dexProperties.Optimize.Optimized_shrink_resources) {
 				// Explicitly opted into optimized shrinking, no need for keeping R$id entries
