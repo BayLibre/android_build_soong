@@ -38,8 +38,7 @@ func createBootImage(ctx android.LoadHookContext) bool {
 
 	var partitionSize *int64
 	if partitionVariables.BoardBootimagePartitionSize != "" {
-		// Base of zero will allow base 10 or base 16 if starting with 0x
-		parsed, err := strconv.ParseInt(partitionVariables.BoardBootimagePartitionSize, 0, 64)
+		parsed, err := strconv.ParseInt(partitionVariables.BoardBootimagePartitionSize, 10, 64)
 		if err != nil {
 			panic(fmt.Sprintf("BOARD_BOOTIMAGE_PARTITION_SIZE must be an int, got %s", partitionVariables.BoardBootimagePartitionSize))
 		}
@@ -51,22 +50,16 @@ func createBootImage(ctx android.LoadHookContext) bool {
 		securityPatch = &partitionVariables.BootSecurityPatch
 	}
 
-	avbInfo := getAvbInfo(ctx.Config(), "boot")
-
 	bootImageName := generatedModuleNameForPartition(ctx.Config(), "boot")
 
 	ctx.CreateModule(
 		filesystem.BootimgFactory,
 		&filesystem.BootimgProperties{
-			Kernel_prebuilt:    proptools.StringPtr(":" + kernelFilegroupName),
-			Header_version:     proptools.StringPtr(partitionVariables.BoardBootHeaderVersion),
-			Partition_size:     partitionSize,
-			Use_avb:            avbInfo.avbEnable,
-			Avb_mode:           avbInfo.avbMode,
-			Avb_private_key:    avbInfo.avbkeyFilegroup,
-			Avb_rollback_index: avbInfo.avbRollbackIndex,
-			Avb_algorithm:      avbInfo.avbAlgorithm,
-			Security_patch:     securityPatch,
+			Kernel_prebuilt: proptools.StringPtr(":" + kernelFilegroupName),
+			Header_version:  proptools.StringPtr(partitionVariables.BoardBootHeaderVersion),
+			Partition_size:  partitionSize,
+			Use_avb:         &partitionVariables.BoardAvbEnable,
+			Security_patch:  securityPatch,
 		},
 		&struct {
 			Name *string
@@ -82,19 +75,13 @@ func createVendorBootImage(ctx android.LoadHookContext) bool {
 
 	bootImageName := generatedModuleNameForPartition(ctx.Config(), "vendor_boot")
 
-	avbInfo := getAvbInfo(ctx.Config(), "vendor_boot")
-
 	ctx.CreateModule(
 		filesystem.BootimgFactory,
 		&filesystem.BootimgProperties{
-			Boot_image_type:    proptools.StringPtr("vendor_boot"),
-			Ramdisk_module:     proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "vendor_ramdisk")),
-			Header_version:     proptools.StringPtr(partitionVariables.BoardBootHeaderVersion),
-			Use_avb:            avbInfo.avbEnable,
-			Avb_mode:           avbInfo.avbMode,
-			Avb_private_key:    avbInfo.avbkeyFilegroup,
-			Avb_rollback_index: avbInfo.avbRollbackIndex,
-			Avb_algorithm:      avbInfo.avbAlgorithm,
+			Boot_image_type: proptools.StringPtr("vendor_boot"),
+			Ramdisk_module:  proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "vendor_ramdisk")),
+			Header_version:  proptools.StringPtr(partitionVariables.BoardBootHeaderVersion),
+			Use_avb:         &partitionVariables.BoardAvbEnable,
 		},
 		&struct {
 			Name *string
@@ -117,31 +104,14 @@ func createInitBootImage(ctx android.LoadHookContext) bool {
 		securityPatch = &partitionVariables.BootSecurityPatch
 	}
 
-	var partitionSize *int64
-	if partitionVariables.BoardInitBootimagePartitionSize != "" {
-		// Base of zero will allow base 10 or base 16 if starting with 0x
-		parsed, err := strconv.ParseInt(partitionVariables.BoardInitBootimagePartitionSize, 0, 64)
-		if err != nil {
-			panic(fmt.Sprintf("BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE must be an int, got %s", partitionVariables.BoardInitBootimagePartitionSize))
-		}
-		partitionSize = &parsed
-	}
-
-	avbInfo := getAvbInfo(ctx.Config(), "init_boot")
-
 	ctx.CreateModule(
 		filesystem.BootimgFactory,
 		&filesystem.BootimgProperties{
-			Boot_image_type:    proptools.StringPtr("init_boot"),
-			Ramdisk_module:     proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "ramdisk")),
-			Header_version:     proptools.StringPtr(partitionVariables.BoardBootHeaderVersion),
-			Security_patch:     securityPatch,
-			Partition_size:     partitionSize,
-			Use_avb:            avbInfo.avbEnable,
-			Avb_mode:           avbInfo.avbMode,
-			Avb_private_key:    avbInfo.avbkeyFilegroup,
-			Avb_rollback_index: avbInfo.avbRollbackIndex,
-			Avb_algorithm:      avbInfo.avbAlgorithm,
+			Boot_image_type: proptools.StringPtr("init_boot"),
+			Ramdisk_module:  proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "ramdisk")),
+			Header_version:  proptools.StringPtr(partitionVariables.BoardBootHeaderVersion),
+			Use_avb:         &partitionVariables.BoardAvbEnable,
+			Security_patch:  securityPatch,
 		},
 		&struct {
 			Name *string
