@@ -158,8 +158,7 @@ func (libbpf *libbpfProg) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		"-Wall",
 		"-Werror",
 		"-Wextra",
-		// Flag to assist with the transition to libbpf
-		"-DENABLE_LIBBPF",
+
 		"-isystem bionic/libc/include",
 		"-isystem bionic/libc/kernel/uapi",
 		// The architecture doesn't matter here, but asm/types.h is included by linux/types.h.
