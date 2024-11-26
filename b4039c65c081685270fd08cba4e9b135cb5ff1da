@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d62a85fb_e2a1396a",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-26T00:42:17Z",
+      "side": 1,
+      "message": "Double comment markers, same thing below.",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 6
+      },
+      "revId": "b4039c65c081685270fd08cba4e9b135cb5ff1da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
