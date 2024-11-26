@@ -94,6 +94,30 @@
       },
       "revId": "de5dc9a32aee73aa334e0d7c824841e3dedba137",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f104379d_2bbb28c9",
+        "filename": "filesystem/bootconfig.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-26T19:20:55Z",
+      "side": 1,
+      "message": "Oh, looks like I misunderstood it a little. It looks like `\\n` is emitted into the ninja file as a newline, but soong recognizes it and inserts a `$` before it to escape it from ninja. So you get a ninja file like:\n\n\n```\nrule m.cole_test_android_common.bootconfig.txt\n    command \u003d rm -f out/soong/.intermediates/build/soong/cole_test/android_common/cole_test/bootconfig.txt \u0026\u0026 echo  foo$\n  \u003e\u003e  out/soong/.intermediates/build/soong/cole_test/android_common/cole_test/bootconfig.txt \u0026\u0026 echo  bar$\n  \u003e\u003e  out/soong/.intermediates/build/soong/cole_test/android_common/cole_test/bootconfig.txt \u0026\u0026 echo  baz$\n  \u003e\u003e  out/soong/.intermediates/build/soong/cole_test/android_common/cole_test/bootconfig.txt # hash of input list: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n```\n\nSo I guess the `\\n` wasn\u0027t doing any harm, but also wasn\u0027t necessary.",
+      "parentUuid": "b645fa6f_377c8eee",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 50
+      },
+      "revId": "de5dc9a32aee73aa334e0d7c824841e3dedba137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
