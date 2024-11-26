@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a51fbb82_65a5d082",
+        "filename": "etc/bootconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-26T00:39:38Z",
+      "side": 1,
+      "message": "Would this be better suited in the `filesystem` package, next to `bootimg.go`?",
+      "revId": "b92e8906c5109506e649d573175d4b3895e83df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67eac8ca_a6ddfc31",
+        "filename": "etc/bootconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-26T00:39:38Z",
+      "side": 1,
+      "message": "Add doc comments for the properties.",
+      "revId": "b92e8906c5109506e649d573175d4b3895e83df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d5df819_3d819da0",
+        "filename": "etc/bootconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-26T00:39:38Z",
+      "side": 1,
+      "message": "Remove this unused field.",
+      "revId": "b92e8906c5109506e649d573175d4b3895e83df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d8bbd9_9189d0d0",
+        "filename": "etc/bootconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-26T00:39:38Z",
+      "side": 1,
+      "message": "Add a doc comment.",
+      "revId": "b92e8906c5109506e649d573175d4b3895e83df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d47c3fc7_937a2201",
+        "filename": "etc/bootconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-26T00:39:38Z",
+      "side": 1,
+      "message": "Nit: I\u0027d recommend writing the `boot_config` property to its own file with `android.WriteFileRule` and then concatenating that and the `boot_config_file` with the [cat rule](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/defs.go;l\u003d99;drc\u003d6265120cd269ba08be46d42bd5e8d88a67c804a6).",
+      "revId": "b92e8906c5109506e649d573175d4b3895e83df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
