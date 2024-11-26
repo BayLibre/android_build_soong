@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6207d001_b45735a8",
+        "filename": "cmd/release_config/release_config_lib/release_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 3438683
+      },
+      "writtenOn": "2024-11-26T16:42:40Z",
+      "side": 1,
+      "message": "I don\u0027t think this comment is accurate for describing the field",
+      "revId": "9a49b34ed169d18c6e3b2738b44c7e36181face0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

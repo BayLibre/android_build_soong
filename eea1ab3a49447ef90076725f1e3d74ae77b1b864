@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da2e626a_ea2f8c29",
+        "filename": "cmd/release_config/release_config_proto/regen.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3438683
+      },
+      "writtenOn": "2024-11-26T16:42:40Z",
+      "side": 0,
+      "message": "Changing permission bits here looks like an accidental change",
+      "revId": "eea1ab3a49447ef90076725f1e3d74ae77b1b864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
