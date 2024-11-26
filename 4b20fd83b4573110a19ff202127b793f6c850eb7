@@ -121,6 +121,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ad46c26_c3f795e3",
+        "filename": "java/app.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-26T17:33:55Z",
+      "side": 1,
+      "message": "It still seems to be present in patchset 14",
+      "parentUuid": "dfaac476_3c54dd6d",
+      "revId": "4b20fd83b4573110a19ff202127b793f6c850eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf3c55d2_5c5373aa",
         "filename": "java/app.go",
         "patchSetId": 11
