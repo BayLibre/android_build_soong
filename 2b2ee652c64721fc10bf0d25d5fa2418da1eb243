@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e1b2db_3b0350ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-26T11:07:05Z",
+      "side": 1,
+      "message": "I did some additional testing on internal, and have made the following tweaks\n1. Autogenerate RROs even for apps installed in vendor or product partitions. This matches the current behavior in make\n2. Set `compile_multilib: first` explicitly so that we do not get two variants if the original that creates the RRO has `compile_multilib: both`",
+      "revId": "2b2ee652c64721fc10bf0d25d5fa2418da1eb243",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

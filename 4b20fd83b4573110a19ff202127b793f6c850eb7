@@ -101,6 +101,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfaac476_3c54dd6d",
+        "filename": "java/app.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-26T11:07:05Z",
+      "side": 1,
+      "message": "Ohh you are right, OutputFilesProvider does not need to be set. I have removed this from GenerateAndroidBuildActions of the override app.",
+      "parentUuid": "2a11841a_65adb2d5",
+      "revId": "4b20fd83b4573110a19ff202127b793f6c850eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf3c55d2_5c5373aa",
