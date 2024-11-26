@@ -99,6 +99,24 @@
       "parentUuid": "883a3543_a57a9f7e",
       "revId": "55b46b009bc15d6f8aabbe12f4e5268e3324cdd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7df2425_0f21c1f9",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1605569
+      },
+      "writtenOn": "2024-11-26T22:20:32Z",
+      "side": 1,
+      "message": "Might want to confirm why that was introduced originally. It was added in a \"Revert^12\" and was not present in the revert^0, 2, 4, 6, 8, or 10, so it might be important. https://android.googlesource.com/platform/build/soong/+/5bb46810a5b6921caff30e2c33519a8dd6671b08%5E%21/#F0",
+      "parentUuid": "e8f96cf1_28125674",
+      "revId": "55b46b009bc15d6f8aabbe12f4e5268e3324cdd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
