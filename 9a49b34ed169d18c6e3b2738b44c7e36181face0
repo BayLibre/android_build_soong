@@ -16,6 +16,24 @@
       "message": "I don\u0027t think this comment is accurate for describing the field",
       "revId": "9a49b34ed169d18c6e3b2738b44c7e36181face0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c79a96_2c590885",
+        "filename": "cmd/release_config/release_config_lib/release_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-26T17:01:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6207d001_b45735a8",
+      "revId": "9a49b34ed169d18c6e3b2738b44c7e36181face0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

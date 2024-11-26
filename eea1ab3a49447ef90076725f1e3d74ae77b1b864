@@ -16,6 +16,24 @@
       "message": "Changing permission bits here looks like an accidental change",
       "revId": "eea1ab3a49447ef90076725f1e3d74ae77b1b864",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "663b8f06_d9d004d7",
+        "filename": "cmd/release_config/release_config_proto/regen.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-26T17:01:36Z",
+      "side": 0,
+      "message": "It\u0027s intentional, and matches the other `regen.sh` files in this project.",
+      "parentUuid": "da2e626a_ea2f8c29",
+      "revId": "eea1ab3a49447ef90076725f1e3d74ae77b1b864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
