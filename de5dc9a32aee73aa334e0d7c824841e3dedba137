@@ -22,6 +22,30 @@
       },
       "revId": "de5dc9a32aee73aa334e0d7c824841e3dedba137",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f56bca34_e6b5ff5e",
+        "filename": "filesystem/bootconfig.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-26T18:20:12Z",
+      "side": 1,
+      "message": "The generated output file is line separated as expected. Changed to using `android.WriteFileRule` regardless.",
+      "parentUuid": "e0d3efc8_5b233018",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 50
+      },
+      "revId": "de5dc9a32aee73aa334e0d7c824841e3dedba137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
