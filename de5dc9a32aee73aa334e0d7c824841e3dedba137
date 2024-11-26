@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d3efc8_5b233018",
+        "filename": "filesystem/bootconfig.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-26T17:48:28Z",
+      "side": 1,
+      "message": "Use `android.WriteFileRule` for this. As is, I think it\u0027s buggy (`echo foo\\n \u003e\u003e bar` puts `foon` into bar)",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 50
+      },
+      "revId": "de5dc9a32aee73aa334e0d7c824841e3dedba137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
