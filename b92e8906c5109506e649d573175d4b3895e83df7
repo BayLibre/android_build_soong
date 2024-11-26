@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99488e4d_9ccfe429",
+        "filename": "etc/bootconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-26T02:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a51fbb82_65a5d082",
+      "revId": "b92e8906c5109506e649d573175d4b3895e83df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67eac8ca_a6ddfc31",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-11-26T00:39:38Z",
       "side": 1,
       "message": "Add doc comments for the properties.",
+      "revId": "b92e8906c5109506e649d573175d4b3895e83df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63d115dd_8b498e58",
+        "filename": "etc/bootconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-26T02:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67eac8ca_a6ddfc31",
       "revId": "b92e8906c5109506e649d573175d4b3895e83df7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d1c2cdb_cf0b1e2b",
+        "filename": "etc/bootconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-26T02:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d5df819_3d819da0",
+      "revId": "b92e8906c5109506e649d573175d4b3895e83df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19d8bbd9_9189d0d0",
@@ -69,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "374fc95a_01460844",
+        "filename": "etc/bootconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-26T02:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19d8bbd9_9189d0d0",
+      "revId": "b92e8906c5109506e649d573175d4b3895e83df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d47c3fc7_937a2201",
@@ -82,6 +154,24 @@
       "writtenOn": "2024-11-26T00:39:38Z",
       "side": 1,
       "message": "Nit: I\u0027d recommend writing the `boot_config` property to its own file with `android.WriteFileRule` and then concatenating that and the `boot_config_file` with the [cat rule](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/defs.go;l\u003d99;drc\u003d6265120cd269ba08be46d42bd5e8d88a67c804a6).",
+      "revId": "b92e8906c5109506e649d573175d4b3895e83df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e86b131_d184f231",
+        "filename": "etc/bootconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-26T02:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d47c3fc7_937a2201",
       "revId": "b92e8906c5109506e649d573175d4b3895e83df7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
