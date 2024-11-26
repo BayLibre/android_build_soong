@@ -104,6 +104,7 @@ func createFsGenState(ctx android.LoadHookContext, generatedPrebuiltEtcModuleNam
 					"llndk.libraries.txt":                       defaultDepCandidateProps(ctx.Config()),
 					"logpersist.start":                          defaultDepCandidateProps(ctx.Config()),
 					"update_engine_sideload":                    defaultDepCandidateProps(ctx.Config()),
+					"init.environ.rc-soong":                     defaultDepCandidateProps(ctx.Config()),
 				},
 				"vendor": {
 					"fs_config_files_vendor":                               defaultDepCandidateProps(ctx.Config()),
