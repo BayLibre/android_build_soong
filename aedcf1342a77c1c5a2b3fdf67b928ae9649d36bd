@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c9cac67_8606a6a4",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-26T00:12:23Z",
+      "side": 1,
+      "message": "Could we add an execution-time error? Maybe as simple as adding an invalid flag to `ldFlags` like `--version-script-unsupported-on-darwin`.",
+      "revId": "aedcf1342a77c1c5a2b3fdf67b928ae9649d36bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
