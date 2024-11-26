@@ -70,6 +70,30 @@
       },
       "revId": "de5dc9a32aee73aa334e0d7c824841e3dedba137",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b645fa6f_377c8eee",
+        "filename": "filesystem/bootconfig.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-26T19:05:54Z",
+      "side": 1,
+      "message": "This is not important, but why do you believe that the lines would end with `n`? I could observe this from the generated ninja command, nor infer this from the implementation of [`RuleBuilderCommand.Text()`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/rule_builder.go;l\u003d1145;drc\u003d2f3791f8cc68aebc79751c37d1cd659ea31b76f1).",
+      "parentUuid": "68b8b7ec_b3d2ab36",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 50
+      },
+      "revId": "de5dc9a32aee73aa334e0d7c824841e3dedba137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
