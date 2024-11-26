@@ -46,6 +46,30 @@
       },
       "revId": "de5dc9a32aee73aa334e0d7c824841e3dedba137",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b8b7ec_b3d2ab36",
+        "filename": "filesystem/bootconfig.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-26T18:56:29Z",
+      "side": 1,
+      "message": "It would still be line separated due to the `\u003e\u003e`, but I think all the lines would also end in `n`.",
+      "parentUuid": "f56bca34_e6b5ff5e",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 50
+      },
+      "revId": "de5dc9a32aee73aa334e0d7c824841e3dedba137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
