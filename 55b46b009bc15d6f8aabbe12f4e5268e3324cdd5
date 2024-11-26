@@ -63,6 +63,24 @@
       "message": "This appears to have an immediate effect on any release config where `RELEASE_PLATFORM_VERSION_CODENAME\u003dWear`.  Have you confirmed that no such release config exists that is (potentially) downstream from aosp/main?  (I didn\u0027t immediately find one.)",
       "revId": "55b46b009bc15d6f8aabbe12f4e5268e3324cdd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "883a3543_a57a9f7e",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-11-26T21:46:39Z",
+      "side": 1,
+      "message": "I think it is just oversight (i.e. it is reasonable to expect we should have has Android W after V, \"Wear\" is common keyword - i.e. watches)",
+      "parentUuid": "d80fc5ab_34724bd4",
+      "revId": "55b46b009bc15d6f8aabbe12f4e5268e3324cdd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
