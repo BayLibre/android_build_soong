@@ -16,6 +16,24 @@
       "message": "nit: keep the entries sorted.",
       "revId": "3aaa05d8b8374fa1c69a507da83e7c83c6af9971",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be264b28_650543df",
+        "filename": "fsgen/fsgen_mutators.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-26T22:35:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5f658f4_d07ee918",
+      "revId": "3aaa05d8b8374fa1c69a507da83e7c83c6af9971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
