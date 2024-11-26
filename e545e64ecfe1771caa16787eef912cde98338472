@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c2aaa6a_c377dc65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-26T14:55:00Z",
+      "side": 1,
+      "message": "This was discussed in https://r.android.com/3318915, but we decided to remove this feature from kati packaging.",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "e545e64ecfe1771caa16787eef912cde98338472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
