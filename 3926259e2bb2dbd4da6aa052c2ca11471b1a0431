@@ -99,6 +99,24 @@
       "parentUuid": "bd6afc60_f8c8073e",
       "revId": "3926259e2bb2dbd4da6aa052c2ca11471b1a0431",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf734275_5481e7a2",
+        "filename": "fsgen/fsgen_mutators.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-26T12:12:54Z",
+      "side": 1,
+      "message": "I have added separate properties for these inter partition deps. `WalkDeps` will be confined to the transitive closure of system and system_ext image.",
+      "parentUuid": "24f6be91_0762992c",
+      "revId": "3926259e2bb2dbd4da6aa052c2ca11471b1a0431",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
