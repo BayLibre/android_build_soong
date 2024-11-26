@@ -16,6 +16,24 @@
       "message": "Could we add an execution-time error? Maybe as simple as adding an invalid flag to `ldFlags` like `--version-script-unsupported-on-darwin`.",
       "revId": "aedcf1342a77c1c5a2b3fdf67b928ae9649d36bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ce0300_05c21574",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-26T00:39:13Z",
+      "side": 1,
+      "message": "Done using missing dependencies instead.",
+      "parentUuid": "8c9cac67_8606a6a4",
+      "revId": "aedcf1342a77c1c5a2b3fdf67b928ae9649d36bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
