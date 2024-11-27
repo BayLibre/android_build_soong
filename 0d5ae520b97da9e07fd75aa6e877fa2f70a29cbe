@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0755240_101b1ca8",
+        "filename": "cmd/find_input_delta/find_input_delta_lib/file_list.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-27T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "012cb7dc_45631b6e",
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbac4694_ae4bc5c8",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-11-27T03:41:53Z",
       "side": 1,
       "message": "The use of \"combined\" throughout this CL is confusing, since there is also \"soongMetricsFile\", and that\u0027s not combined.  This seems to be specifically aggregated file metrics, but doesn\u0027t combine any other Soong metrics.",
+      "range": {
+        "startLine": 216,
+        "startChar": 18,
+        "endLine": 216,
+        "endChar": 26
+      },
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "538a9b42_5979f073",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-27T18:07:33Z",
+      "side": 1,
+      "message": "As I understand it, the intent is to migrate some of the other metrics in this direction (soong ui has a proto that includes the \"located-elsewhere, more specific\" protobuf, instead of the other place needing to depend on the proto definition in ui/metrics.)\n\nOne outstanding question (waiting to hear from @joeo@google.com) is whether to add the combined metrics into `soongMetricsFile`, or leave them as a separate file.",
+      "parentUuid": "dbac4694_ae4bc5c8",
       "range": {
         "startLine": 216,
         "startChar": 18,
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcdc4814_6d10556d",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-27T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5c2fac3_bc23f08b",
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bf945fa_cb21777f",
@@ -71,6 +131,30 @@
       "writtenOn": "2024-11-27T03:41:53Z",
       "side": 1,
       "message": "What\u0027s the purpose of keeping this goroutine waiting here?",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 2
+      },
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ce7ca4_3e792553",
+        "filename": "ui/combined_metrics/combined_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-27T18:07:33Z",
+      "side": 1,
+      "message": "Intent: make sure that line 187 finishes before we exit the build.  Is there a better way to achieve that?",
+      "parentUuid": "9bf945fa_cb21777f",
       "range": {
         "startLine": 189,
         "startChar": 0,
@@ -104,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5f130b9_7f53f616",
+        "filename": "ui/combined_metrics/combined_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-27T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0af6e6fe_44e0d5fe",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 3
+      },
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd48ba88_b199bc5f",
@@ -127,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6563111e_8591fb58",
+        "filename": "ui/combined_metrics/combined_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-27T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd48ba88_b199bc5f",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 18
+      },
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99d1234e_7377fe48",
@@ -140,6 +272,30 @@
       "writtenOn": "2024-11-27T03:41:53Z",
       "side": 1,
       "message": "A map is not addressable, so you can\u0027t use`\u0026fileCounts[k]` directly here, but why not:\n```\nf :\u003d fileCounts[k]\nret.Counts \u003d append(ret.Counts, \u0026f)\n```",
+      "range": {
+        "startLine": 302,
+        "startChar": 34,
+        "endLine": 306,
+        "endChar": 3
+      },
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4943bc58_782ef974",
+        "filename": "ui/combined_metrics/combined_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-27T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99d1234e_7377fe48",
       "range": {
         "startLine": 302,
         "startChar": 34,
