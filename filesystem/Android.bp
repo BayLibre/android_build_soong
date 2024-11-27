@@ -20,7 +20,6 @@ bootstrap_go_package {
         "avb_add_hash_footer.go",
         "avb_gen_vbmeta_image.go",
         "bootimg.go",
-        "bootconfig.go",
         "filesystem.go",
         "fsverity_metadata.go",
         "logical_partition.go",
