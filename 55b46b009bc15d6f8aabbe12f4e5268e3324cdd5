@@ -117,6 +117,24 @@
       "parentUuid": "e8f96cf1_28125674",
       "revId": "55b46b009bc15d6f8aabbe12f4e5268e3324cdd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "542964a7_370cbe8f",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-11-27T08:18:44Z",
+      "side": 1,
+      "message": "I was the one who originally introduced the code for 35+VanillaIceCream,\nUlya just bumped it in the most recent revert pass to 36+Wear\n(which sounds reasonable, but it was supposed to be 36+Baklava)",
+      "parentUuid": "b7df2425_0f21c1f9",
+      "revId": "55b46b009bc15d6f8aabbe12f4e5268e3324cdd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
