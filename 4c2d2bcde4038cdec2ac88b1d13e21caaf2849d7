@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "104781d7_f8f6c14b",
+        "filename": "ui/combined_metrics/combined_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-27T19:03:43Z",
+      "side": 1,
+      "message": "AFAICT nothing reads this.",
+      "revId": "4c2d2bcde4038cdec2ac88b1d13e21caaf2849d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53c2e95d_f3a41862",
+        "filename": "ui/combined_metrics/combined_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-27T19:03:43Z",
+      "side": 1,
+      "message": "You don\u0027t need a select unless you have multiple channels.  This can be:\n```\n\u003c-c.done\nc.started \u003d false\n```",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "4c2d2bcde4038cdec2ac88b1d13e21caaf2849d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
