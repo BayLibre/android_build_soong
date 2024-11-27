@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59fbb8dc_b5987b89",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-27T22:11:38Z",
+      "side": 1,
+      "message": "Before I submit this, I\u0027ll file a bug and add some comments indicating at least some of the metrics that we plan to migrate to this new approach.",
+      "parentUuid": "538a9b42_5979f073",
+      "range": {
+        "startLine": 216,
+        "startChar": 18,
+        "endLine": 216,
+        "endChar": 26
+      },
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5c2fac3_bc23f08b",
         "filename": "ui/build/ninja.go",
         "patchSetId": 4
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "The caller immediately waits on the start channel, so everything in this function except for `os.RemoveAll` is synchronous.  It would be significantly simpler to make `run()` synchronous.  Is the `os.RemoveAll()` particularly slow?  If not, you could just leave it synchronous too.  If it is, you could move just that to a goroutine.  It may also be simpler to add waitgroup to CombinedMetrics and use that to signal done from the goroutine, and then anything else you want to do in the background could also use that waitgroup later.",
       "parentUuid": "76ce7ca4_3e792553",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 2
+      },
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e5a04f_4fcbdc40",
+        "filename": "ui/combined_metrics/combined_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-27T22:11:38Z",
+      "side": 1,
+      "message": "I went with the waitGroup.",
+      "parentUuid": "213cbc72_2815d361",
       "range": {
         "startLine": 189,
         "startChar": 0,
