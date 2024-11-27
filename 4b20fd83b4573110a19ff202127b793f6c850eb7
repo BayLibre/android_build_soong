@@ -137,6 +137,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2085ad8_f69b3757",
+        "filename": "java/app.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-11-27T05:37:53Z",
+      "side": 1,
+      "message": "Oops, I missed to push my changes previously. I have removed this in the latest patchset.",
+      "parentUuid": "3ad46c26_c3f795e3",
+      "revId": "4b20fd83b4573110a19ff202127b793f6c850eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf3c55d2_5c5373aa",
