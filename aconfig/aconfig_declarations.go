@@ -15,10 +15,11 @@
 package aconfig
 
 import (
+	"fmt"
 	"path/filepath"
 	"slices"
+	"strconv"
 	"strings"
-
 	"android/soong/android"
 
 	"github.com/google/blueprint"
@@ -185,6 +186,10 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 				defaultPermission = confPerm
 			}
 		}
+		var allowReadWrite bool
+		if confAllowReadWrite, ok := ctx.Config().GetBuildFlag("RELEASE_ACONFIG_ALLOW_READ_WRITE"); ok {
+			allowReadWrite = confAllowReadWrite == "true"
+		}
 		inputFiles := make([]android.Path, len(declarationFiles))
 		copy(inputFiles, declarationFiles)
 		inputFiles = append(inputFiles, valuesFiles[config]...)
@@ -194,6 +199,7 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 			"declarations":       android.JoinPathsWithPrefix(declarationFiles, "--declarations "),
 			"values":             joinAndPrefix(" --values ", values[config]),
 			"default-permission": optionalVariable(" --default-permission ", defaultPermission),
+			"allow-read-write":   optionalVariable(" --allow-read-write ", strconv.FormatBool(allowReadWrite)),
 		}
 		if len(module.properties.Container) > 0 {
 			args["container"] = "--container " + module.properties.Container
