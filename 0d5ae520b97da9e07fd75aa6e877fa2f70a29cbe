@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "012cb7dc_45631b6e",
+        "filename": "cmd/find_input_delta/find_input_delta_lib/file_list.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-27T03:41:53Z",
+      "side": 1,
+      "message": "sha256 is a cryptographic hash, which is overkill here.  Use a faster hash like [hash/fnv](https://pkg.go.dev/hash/fnv).",
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbac4694_ae4bc5c8",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-27T03:41:53Z",
+      "side": 1,
+      "message": "The use of \"combined\" throughout this CL is confusing, since there is also \"soongMetricsFile\", and that\u0027s not combined.  This seems to be specifically aggregated file metrics, but doesn\u0027t combine any other Soong metrics.",
+      "range": {
+        "startLine": 216,
+        "startChar": 18,
+        "endLine": 216,
+        "endChar": 26
+      },
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c2fac3_bc23f08b",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-27T03:41:53Z",
+      "side": 1,
+      "message": "Do you want to use `defer` for this so that it runs even if RunAndStreamOrFatal panics?",
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf945fa_cb21777f",
+        "filename": "ui/combined_metrics/combined_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-27T03:41:53Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of keeping this goroutine waiting here?",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 2
+      },
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0af6e6fe_44e0d5fe",
+        "filename": "ui/combined_metrics/combined_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-27T03:41:53Z",
+      "side": 1,
+      "message": "You could extract all of this into a helper that took a `**uint32` (or a generic version if you need to handle more than uint32) and did the allocation or addition as needed.",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 3
+      },
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd48ba88_b199bc5f",
+        "filename": "ui/combined_metrics/combined_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-27T03:41:53Z",
+      "side": 1,
+      "message": "`keys :\u003d slices.Sorted(maps.Keys(fileCounts))`",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 18
+      },
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99d1234e_7377fe48",
+        "filename": "ui/combined_metrics/combined_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-11-27T03:41:53Z",
+      "side": 1,
+      "message": "A map is not addressable, so you can\u0027t use`\u0026fileCounts[k]` directly here, but why not:\n```\nf :\u003d fileCounts[k]\nret.Counts \u003d append(ret.Counts, \u0026f)\n```",
+      "range": {
+        "startLine": 302,
+        "startChar": 34,
+        "endLine": 306,
+        "endChar": 3
+      },
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
