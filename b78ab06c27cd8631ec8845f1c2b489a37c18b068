@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1fa84f1_5fda5607",
+        "filename": "aconfig/aconfig_declarations.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-11-27T19:25:11Z",
+      "side": 1,
+      "message": "minor nit: other places that check build flags for true use `!\u003d \"\"`.\n\nGiven the nature of \"string variables representing a boolean\", maybe it would be better to add an accessor function that returns a `bool` instead. (contrary to my initial recommendation...)  I\u0027ll leave that up to you.",
+      "range": {
+        "startLine": 190,
+        "startChar": 39,
+        "endLine": 190,
+        "endChar": 48
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "bdecaadb_dfb036fa",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "aconfig/aconfig_declarations.go",
+              "range": {
+                "startLine": 190,
+                "startChar": 0,
+                "endLine": 191,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tallowReadWrite \u003d confAllowReadWrite !\u003d \"\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b78ab06c27cd8631ec8845f1c2b489a37c18b068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
