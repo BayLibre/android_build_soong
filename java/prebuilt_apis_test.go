@@ -122,3 +122,50 @@ func TestPrebuiltApis_WithIncrementalApi(t *testing.T) {
 	android.AssertStringEquals(t, "Expected latest bar = api level 33.2", "prebuilts/sdk/33.2/public/api/bar.txt", bar_input)
 	android.AssertStringEquals(t, "Expected latest baz = api level 33.1", "prebuilts/sdk/33.1/public/api/baz.txt", baz_input)
 }
+
+func TestPrebuiltApiDefaultScopes(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		FixtureWithPrebuiltApis(map[string][]string{
+			"1": {"foo"},
+			"2": {"foo", "bar"},
+		}),
+	).RunTest(t)
+
+	// check for the existence of internal modules
+	for _, scope := range []string{"public", "system", "test", "module-lib", "system-server"} {
+		result.ModuleForTests("foo.api."+scope+".1", "")
+		result.ModuleForTests("foo.api."+scope+".2", "")
+		result.ModuleForTests("bar.api."+scope+".2", "")
+	}
+}
+
+func TestPrebuiltApiDefinedScopes(t *testing.T) {
+	var scopes = []string{"scopeA", "scopeB", "scopeC"}
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		FixtureWithPrebuiltApisDefinedScopes(map[string][]string{
+			"1": {"foo"},
+			"2": {"foo", "bar"},
+		}, scopes),
+	).RunTest(t)
+
+	// check for the existence of internal modules
+	for _, scope := range scopes {
+		result.ModuleForTests("foo.api."+scope+".1", "")
+		result.ModuleForTests("foo.api."+scope+".2", "")
+		result.ModuleForTests("bar.api."+scope+".2", "")
+	}
+}
+
+func TestPrebuiltApiNoScopes(t *testing.T) {
+	var scopes = []string{}
+	android.GroupFixturePreparers(
+		prepareForJavaTest,
+		FixtureWithPrebuiltApisDefinedScopes(map[string][]string{
+			"1": {"foo"},
+			"2": {"foo", "bar"},
+		}, scopes),
+	).ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+		"api_scopes cannot be empty")).RunTest(t)
+}
