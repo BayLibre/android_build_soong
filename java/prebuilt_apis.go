@@ -56,6 +56,10 @@ type prebuiltApisProperties struct {
 	// If set to true, compile dex for java_import modules. Defaults to false.
 	Imports_compile_dex *bool
 
+	// The list of valid scopes for this api module. Defaults to public,
+	// system, test, core, module-lib & system-server
+	Api_scopes []string
+
 	// If set to true, allow incremental platform API of the form MM.m where MM is the major release
 	// version corresponding to the API level/SDK_INT and m is an incremental release version
 	// (e.g. API changes associated with QPR). Defaults to false.
@@ -78,7 +82,7 @@ func (module *prebuiltApis) GenerateAndroidBuildActions(ctx android.ModuleContex
 // API level and m is an incremental release, otherwise <version> is a single integer corresponding to the API level only.
 // extensions/<version>/<scope>/<module>.jar
 // extensions/<version>/<scope>/api/<module>.txt
-func parsePrebuiltPath(ctx android.LoadHookContext, p string) (module string, version string, scope string) {
+func parsePrebuiltPath(ctx android.LoadHookContext, p string, pa* prebuiltApis) (module string, version string, scope string) {
 	elements := strings.Split(p, "/")
 
 	scopeIdx := len(elements) - 2
@@ -86,7 +90,15 @@ func parsePrebuiltPath(ctx android.LoadHookContext, p string) (module string, ve
 		scopeIdx--
 	}
 	scope = elements[scopeIdx]
-	if scope != "core" && scope != "public" && scope != "system" && scope != "test" && scope != "module-lib" && scope != "system-server" {
+
+  var validScope = false
+	for _, api_scope := range getApiScopes(ctx, pa) {
+		if scope == api_scope {
+			validScope = true
+			break
+		}
+	}
+	if !validScope {
 		ctx.ModuleErrorf("invalid scope %q found in path: %q", scope, p)
 		return
 	}
@@ -97,8 +109,8 @@ func parsePrebuiltPath(ctx android.LoadHookContext, p string) (module string, ve
 }
 
 // parseFinalizedPrebuiltPath is like parsePrebuiltPath, but verifies the version is numeric (a finalized version).
-func parseFinalizedPrebuiltPath(ctx android.LoadHookContext, p string, allowIncremental bool) (module string, version int, release int, scope string) {
-	module, v, scope := parsePrebuiltPath(ctx, p)
+func parseFinalizedPrebuiltPath(ctx android.LoadHookContext, p string, allowIncremental bool, pa* prebuiltApis) (module string, version int, release int, scope string) {
+	module, v, scope := parsePrebuiltPath(ctx, p, pa)
 	if allowIncremental {
 		parts := strings.Split(v, ".")
 		if len(parts) != 2 {
@@ -198,12 +210,22 @@ func createEmptyFile(mctx android.LoadHookContext, name string) {
 	mctx.CreateModule(genrule.GenRuleFactory, &props)
 }
 
+func getApiScopes(mctx android.LoadHookContext, p *prebuiltApis) []string {
+	if p.properties.Api_scopes == nil {
+		return []string{"public", "system", "test", "core", "module-lib", "system-server"}
+	} else if len(p.properties.Api_scopes) == 0 {
+		mctx.ModuleErrorf("api_scopes cannot be empty")
+	}
+	return p.properties.Api_scopes
+}
+
+
 // globApiDirs collects all the files in all api_dirs and all scopes that match the given glob, e.g. '*.jar' or 'api/*.txt'.
 // <api-dir>/<scope>/<glob> for all api-dir and scope.
 func globApiDirs(mctx android.LoadHookContext, p *prebuiltApis, api_dir_glob string) []string {
 	var files []string
 	for _, apiver := range p.properties.Api_dirs {
-		files = append(files, globScopeDir(mctx, apiver, api_dir_glob)...)
+		files = append(files, globScopeDir(mctx, apiver, api_dir_glob, getApiScopes(mctx, p))...)
 	}
 	return files
 }
@@ -212,15 +234,15 @@ func globApiDirs(mctx android.LoadHookContext, p *prebuiltApis, api_dir_glob str
 // <extension-dir>/<version>/<scope>/<glob> for all version and scope.
 func globExtensionDirs(mctx android.LoadHookContext, p *prebuiltApis, extension_dir_glob string) []string {
 	// <extensions-dir>/<num>/<extension-dir-glob>
-	return globScopeDir(mctx, *p.properties.Extensions_dir+"/*", extension_dir_glob)
+	return globScopeDir(mctx, *p.properties.Extensions_dir+"/*", extension_dir_glob, getApiScopes(mctx, p))
 }
 
 // globScopeDir collects all the files in the given subdir across all scopes that match the given glob, e.g. '*.jar' or 'api/*.txt'.
 // <subdir>/<scope>/<glob> for all scope.
-func globScopeDir(mctx android.LoadHookContext, subdir string, subdir_glob string) []string {
+func globScopeDir(mctx android.LoadHookContext, subdir string, subdir_glob string, scopes []string) []string {
 	var files []string
 	dir := mctx.ModuleDir() + "/" + subdir
-	for _, scope := range []string{"public", "system", "test", "core", "module-lib", "system-server"} {
+	for _, scope := range scopes {
 		glob := fmt.Sprintf("%s/%s/%s", dir, scope, subdir_glob)
 		vfiles, err := mctx.GlobWithDeps(glob, nil)
 		if err != nil {
@@ -243,7 +265,7 @@ func prebuiltSdkStubs(mctx android.LoadHookContext, p *prebuiltApis) {
 
 	for _, f := range files {
 		// create a Import module for each jar file
-		module, version, scope := parsePrebuiltPath(mctx, f)
+		module, version, scope := parsePrebuiltPath(mctx, f, p)
 		createImport(mctx, module, scope, version, f, sdkVersion, compileDex)
 
 		if module == "core-for-system-modules" {
@@ -281,7 +303,7 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 	// Create modules for all (<module>, <scope, <version>) triplets,
 	allowIncremental := proptools.BoolDefault(p.properties.Allow_incremental_platform_api, false)
 	for _, f := range apiLevelFiles {
-		module, version, release, scope := parseFinalizedPrebuiltPath(mctx, f, allowIncremental)
+		module, version, release, scope := parseFinalizedPrebuiltPath(mctx, f, allowIncremental, p)
 		if allowIncremental {
 			incrementalVersion := strconv.Itoa(version) + "." + strconv.Itoa(release)
 			createApiModule(mctx, PrebuiltApiModuleName(module, scope, incrementalVersion), f)
@@ -300,7 +322,7 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 	getLatest := func(files []string, isExtensionApiFile bool) map[string]latestApiInfo {
 		m := make(map[string]latestApiInfo)
 		for _, f := range files {
-			module, version, release, scope := parseFinalizedPrebuiltPath(mctx, f, allowIncremental)
+			module, version, release, scope := parseFinalizedPrebuiltPath(mctx, f, allowIncremental, p)
 			if strings.HasSuffix(module, "incompatibilities") {
 				continue
 			}
@@ -343,9 +365,9 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 	// Create incompatibilities tracking files for all modules, if we have a "next" api.
 	incompatibilities := make(map[string]bool)
 	if nextApiDir := String(p.properties.Next_api_dir); nextApiDir != "" {
-		files := globScopeDir(mctx, nextApiDir, "api/*incompatibilities.txt")
+		files := globScopeDir(mctx, nextApiDir, "api/*incompatibilities.txt", getApiScopes(mctx, p))
 		for _, f := range files {
-			filename, _, scope := parsePrebuiltPath(mctx, f)
+			filename, _, scope := parsePrebuiltPath(mctx, f, p)
 			referencedModule := strings.TrimSuffix(filename, "-incompatibilities")
 
 			createApiModule(mctx, PrebuiltApiModuleName(referencedModule+"-incompatibilities", scope, "latest"), f)
