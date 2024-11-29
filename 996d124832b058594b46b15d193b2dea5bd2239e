@@ -16,6 +16,40 @@
       "message": "Upstream from Meta 😊",
       "revId": "996d124832b058594b46b15d193b2dea5bd2239e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a5ce126_aabb5026",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-29T17:29:52Z",
+      "side": 1,
+      "message": "Thanks for working on this. Btw, what is the motivation of this change? Are you planning to define a new api scope other than the ones defined? I think that would require a lot of work across the entire Soong codebase, given that api scopes are mostly hard coded in a lot of places (e.g. `java_sdk_library`).",
+      "revId": "996d124832b058594b46b15d193b2dea5bd2239e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa263812_b9bd364a",
+        "filename": "java/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-11-29T17:29:52Z",
+      "side": 1,
+      "message": "Do you mind using this in `prebuiltApisFilesForModules`?",
+      "revId": "996d124832b058594b46b15d193b2dea5bd2239e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
