@@ -16,6 +16,24 @@
       "message": "Doesn\u0027t this break Soong\u0027s incremental build safety goals? They would now depend on the incremental safety of any module using this flag.",
       "revId": "c9d00aa2cdb74d048f7a11b8a518c8e655035ca4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01ce07f_7edab559",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-12-02T16:54:35Z",
+      "side": 1,
+      "message": "You\u0027re correct. That\u0027s why nobody likes this feature. But at least it\u0027s a flag. The normal behavior will be to sandbox. We can turn it on for the places where we know the inner rule is behaving corectly.\n\nAlso, I really hate that we\u0027re calling another build system in a genrule.  This is not a pattern to follow.",
+      "parentUuid": "4feab829_1caffbc2",
+      "revId": "c9d00aa2cdb74d048f7a11b8a518c8e655035ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
