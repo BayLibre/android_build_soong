@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c702772_bac23d53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-02T18:15:07Z",
+      "side": 1,
+      "message": "The parent change (aosp/3362490) had some presubmit errors last week. I will fix them today, but I would like to submit this change independently.",
+      "revId": "6cc56c952f96a7e08bbc6b4aac3f7ec000fe9ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
