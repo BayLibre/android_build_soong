@@ -15,6 +15,7 @@
 package android
 
 import (
+	"crypto/md5"
 	"crypto/sha256"
 	"fmt"
 	"path/filepath"
@@ -851,6 +852,17 @@ func (r *RuleBuilder) build(name string, desc string) {
 		pool = highmemPool
 	} else if r.ctx.Config().UseRemoteBuild() {
 		pool = localPool
+	}
+
+	// If the command length is getting close to linux's maximum, dump it to a file, which allows
+	// for longer commands.
+	if len(commandString) > 100000 {
+		hasher := md5.New()
+		script := PathForOutput(r.ctx, "rule_builder_scripts", fmt.Sprintf("%x.sh", hasher.Sum([]byte(output.String()))))
+		commandString = "set -eu\n\n" + commandString + "\n"
+		WriteExecutableFileRuleVerbatim(r.ctx, script, commandString)
+		inputs = append(inputs, script)
+		commandString = script.String()
 	}
 
 	commandString = proptools.NinjaEscape(commandString)
