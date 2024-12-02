@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3acac98_ba23723a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-02T17:55:53Z",
+      "side": 1,
+      "message": "It seems like the test cases you have added do not pass. Please ensure that the tests pass successfully with `m nothing --no-skip-soong-tests` or `cd build/soong \u0026\u0026 go test ./...`.",
+      "revId": "996d124832b058594b46b15d193b2dea5bd2239e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa263812_b9bd364a",
