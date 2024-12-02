@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd422c4_3d0b5c0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-02T21:10:24Z",
+      "side": 1,
+      "message": "As the name suggests, this dependencies are \"violations\", and we should not be adding extra entries to the allowlist. Please include the modules statically to the updatable apex or depend on the stubs instead of creating updatable apex to system dependencies.\n@michaelwr@google.com, would you be able to take a look at this change?",
+      "revId": "ce544f725b16ec51e849fabb333cbf55ee186d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
