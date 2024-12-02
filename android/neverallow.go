@@ -243,6 +243,7 @@ func createInstallInRootAllowingRules() []Rule {
 			Without("name", "init_first_stage").
 			Without("name", "init_first_stage.microdroid").
 			Without("name", "librecovery_ui_ext").
+			DefinedInBpFile().
 			With("install_in_root", "true").
 			NotModuleType("prebuilt_root").
 			Because("install_in_root is only for init_first_stage or librecovery_ui_ext."),
