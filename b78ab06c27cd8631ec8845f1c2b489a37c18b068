@@ -40,6 +40,30 @@
       ],
       "revId": "b78ab06c27cd8631ec8845f1c2b489a37c18b068",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a54d2106_caaa8b9a",
+        "filename": "aconfig/aconfig_declarations.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1890055
+      },
+      "writtenOn": "2024-12-02T22:45:21Z",
+      "side": 1,
+      "message": "Done, along with flipping the semantics (and name) of the build flag.",
+      "parentUuid": "a1fa84f1_5fda5607",
+      "range": {
+        "startLine": 190,
+        "startChar": 39,
+        "endLine": 190,
+        "endChar": 48
+      },
+      "revId": "b78ab06c27cd8631ec8845f1c2b489a37c18b068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
