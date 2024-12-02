@@ -81,6 +81,7 @@ func RegisterPrebuiltEtcBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("prebuilt_tvservice", PrebuiltTvServiceFactory)
 	ctx.RegisterModuleType("prebuilt_optee", PrebuiltOpteeFactory)
 	ctx.RegisterModuleType("prebuilt_tvconfig", PrebuiltTvConfigFactory)
+	ctx.RegisterModuleType("prebuilt_rootdir", PrebuiltRootdirFactory)
 
 	ctx.RegisterModuleType("prebuilt_defaults", defaultsFactory)
 
@@ -967,6 +968,16 @@ func PrebuiltOpteeFactory() android.Module {
 func PrebuiltTvConfigFactory() android.Module {
 	module := &PrebuiltEtc{}
 	InitPrebuiltEtcModule(module, "tvconfig")
+	// This module is device-only
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	android.InitDefaultableModule(module)
+	return module
+}
+
+// prebuilt_rootdir installs files in <partition>/rootdir directory.
+func PrebuiltRootdirFactory() android.Module {
+	module := &PrebuiltEtc{}
+	InitPrebuiltEtcModule(module, "root")
 	// This module is device-only
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)

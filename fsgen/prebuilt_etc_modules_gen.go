@@ -198,6 +198,7 @@ var (
 		"priv-app":        etc.PrebuiltPrivAppFactory,
 		"res":             etc.PrebuiltResFactory,
 		"rfs":             etc.PrebuiltRfsFactory,
+		"root":            etc.PrebuiltRootdirFactory,
 		"tts":             etc.PrebuiltVoicepackFactory,
 		"tvconfig":        etc.PrebuiltTvConfigFactory,
 		"tvservice":       etc.PrebuiltTvServiceFactory,
