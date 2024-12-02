@@ -36,6 +36,7 @@ type prebuiltSrcGroupByInstallPartition struct {
 	system_ext map[string][]srcBaseFileInstallBaseFileTuple
 	product    map[string][]srcBaseFileInstallBaseFileTuple
 	vendor     map[string][]srcBaseFileInstallBaseFileTuple
+	recovery   map[string][]srcBaseFileInstallBaseFileTuple
 }
 
 func newPrebuiltSrcGroupByInstallPartition() *prebuiltSrcGroupByInstallPartition {
@@ -44,6 +45,7 @@ func newPrebuiltSrcGroupByInstallPartition() *prebuiltSrcGroupByInstallPartition
 		system_ext: map[string][]srcBaseFileInstallBaseFileTuple{},
 		product:    map[string][]srcBaseFileInstallBaseFileTuple{},
 		vendor:     map[string][]srcBaseFileInstallBaseFileTuple{},
+		recovery:   map[string][]srcBaseFileInstallBaseFileTuple{},
 	}
 }
 
@@ -73,6 +75,8 @@ func appendIfCorrectInstallPartition(partitionToInstallPathList []partitionToIns
 				srcMap = srcGroup.product
 			case "vendor":
 				srcMap = srcGroup.vendor
+			case "recovery":
+				srcMap = srcGroup.recovery
 			}
 			if srcMap != nil {
 				srcMap[relativeInstallDir] = append(srcMap[relativeInstallDir], srcBaseFileInstallBaseFileTuple{
@@ -128,6 +132,7 @@ func processProductCopyFiles(ctx android.LoadHookContext) map[string]*prebuiltSr
 	// System is intentionally added at the last to consider the scenarios where
 	// non-system partitions are installed as part of the system partition
 	partitionToInstallPathList := []partitionToInstallPath{
+		{name: "recovery", installPath: ctx.DeviceConfig().RecoveryPath()},
 		{name: "vendor", installPath: ctx.DeviceConfig().VendorPath()},
 		{name: "product", installPath: ctx.DeviceConfig().ProductPath()},
 		{name: "system_ext", installPath: ctx.DeviceConfig().SystemExtPath()},
@@ -155,6 +160,7 @@ type prebuiltModuleProperties struct {
 	Soc_specific        *bool
 	Product_specific    *bool
 	System_ext_specific *bool
+	Recovery            *bool
 
 	Srcs []string
 	Dsts []string
@@ -255,6 +261,8 @@ func prebuiltEtcModuleProps(moduleName, partition string) prebuiltModuleProperti
 		moduleProps.Product_specific = proptools.BoolPtr(true)
 	case "vendor":
 		moduleProps.Soc_specific = proptools.BoolPtr(true)
+	case "recovery":
+		moduleProps.Recovery = proptools.BoolPtr(true)
 	}
 
 	moduleProps.No_full_install = proptools.BoolPtr(true)
@@ -347,6 +355,7 @@ func createPrebuiltEtcModules(ctx android.LoadHookContext) (ret []string) {
 		ret = append(ret, createPrebuiltEtcModulesForPartition(ctx, "system_ext", srcDir, groupedSource.system_ext)...)
 		ret = append(ret, createPrebuiltEtcModulesForPartition(ctx, "product", srcDir, groupedSource.product)...)
 		ret = append(ret, createPrebuiltEtcModulesForPartition(ctx, "vendor", srcDir, groupedSource.vendor)...)
+		ret = append(ret, createPrebuiltEtcModulesForPartition(ctx, "recovery", srcDir, groupedSource.recovery)...)
 	}
 
 	return ret
