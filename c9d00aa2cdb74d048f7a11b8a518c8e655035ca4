@@ -34,6 +34,24 @@
       "parentUuid": "4feab829_1caffbc2",
       "revId": "c9d00aa2cdb74d048f7a11b8a518c8e655035ca4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fdd35fa_e43aa416",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2024-12-02T17:06:34Z",
+      "side": 1,
+      "message": "With this implementation, anyone can turn it on anywhere.",
+      "parentUuid": "f01ce07f_7edab559",
+      "revId": "c9d00aa2cdb74d048f7a11b8a518c8e655035ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
