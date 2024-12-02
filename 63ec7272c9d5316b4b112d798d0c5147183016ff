@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a962edb_a3d39390",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-02T23:57:48Z",
+      "side": 1,
+      "message": "Could we generate a prebuilt_root instead of a different prebuilt type with install_in_root?",
+      "revId": "63ec7272c9d5316b4b112d798d0c5147183016ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
