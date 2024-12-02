@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa48a4ec_07cc9957",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3352,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-02T18:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d0892cb_cf936fb1",
+      "range": {
+        "startLine": 3352,
+        "startChar": 48,
+        "endLine": 3352,
+        "endChar": 64
+      },
+      "revId": "fb7830dd49a1c0edc3ba3da2dd0c3c5361862f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a620e43_ee889f35",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-27T19:20:42Z",
       "side": 1,
       "message": "Should this be `android.OtherModuleProvider(ctx, parent, ...)`?  Otherwise this will sometimes use the parent and sometimes use the app.  I\u0027d expect those to be the same info, but it could be confusing later if they are not the same.",
+      "range": {
+        "startLine": 3358,
+        "startChar": 16,
+        "endLine": 3358,
+        "endChar": 38
+      },
+      "revId": "fb7830dd49a1c0edc3ba3da2dd0c3c5361862f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be6d90f7_654e9789",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3358,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-02T18:05:11Z",
+      "side": 1,
+      "message": "Good point, I have switched this to `OtherModuleProvider(ctx, parent, ...)`.",
+      "parentUuid": "7a620e43_ee889f35",
       "range": {
         "startLine": 3358,
         "startChar": 16,
