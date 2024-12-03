@@ -344,7 +344,6 @@ func createPrebuiltEtcBpDefineRule() Rule {
 			"prebuilt_priv_app",
 			"prebuilt_rfs",
 			"prebuilt_framework",
-			"prebuilt_res",
 			"prebuilt_wlc_upt",
 			"prebuilt_odm",
 			"prebuilt_vendor_dlkm",
