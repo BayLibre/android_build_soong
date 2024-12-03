@@ -176,6 +176,24 @@
       "parentUuid": "596068a3_c024add2",
       "revId": "02001848b36a8ee1011c9daabcc9fa0f5e22f12d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e0c4d31_c22b3c74",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-03T23:22:51Z",
+      "side": 1,
+      "message": "I talked with @supercclank@google.com from the signing team and he confirmed that they don\u0027t use the build system to sign the production images, so this change shouldn\u0027t matter either way.",
+      "parentUuid": "dfab8081_971dc345",
+      "revId": "02001848b36a8ee1011c9daabcc9fa0f5e22f12d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
