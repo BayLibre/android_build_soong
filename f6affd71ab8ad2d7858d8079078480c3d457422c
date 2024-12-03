@@ -34,6 +34,24 @@
       "parentUuid": "0118bed8_01c8cc3b",
       "revId": "f6affd71ab8ad2d7858d8079078480c3d457422c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "754809b7_d098f8d4",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-12-03T21:47:13Z",
+      "side": 1,
+      "message": "If the provider is only stored on apex variants, and only lists the dependencies for which the dependency is in the apex, then I don\u0027t expect it to be very large.  The memory cost will be minimal, as the strings will all be references to strings that already exist.  The gob cache may be larger since it will have copies of the strings, but if necessary we could add compression which should mitigate the cost of the duplicates.",
+      "parentUuid": "4d85fac2_a6691406",
+      "revId": "f6affd71ab8ad2d7858d8079078480c3d457422c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
