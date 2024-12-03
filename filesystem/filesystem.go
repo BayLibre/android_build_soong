@@ -564,6 +564,7 @@ func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) androi
 
 	propFile, toolDeps := f.buildPropFile(ctx)
 	output := android.PathForModuleOut(ctx, f.installFileName())
+	fmt.Println(f.Name(), output)
 	builder.Command().BuiltTool("build_image").
 		Text(rootDir.String()). // input directory
 		Input(propFile).
