@@ -156,6 +156,10 @@ func (f *filesystemCreator) createInternalModules(ctx android.LoadHookContext) {
 		f.properties.Vbmeta_partition_names = append(f.properties.Vbmeta_partition_names, x.partitionName)
 	}
 
+	if buildingSuperImage(partitionVars) {
+		createSuperImage(ctx, finalSoongGeneratedPartitions, partitionVars)
+	}
+
 	ctx.Config().Get(fsGenStateOnceKey).(*FsGenState).soongGeneratedPartitions = finalSoongGeneratedPartitions
 	f.createDeviceModule(ctx, finalSoongGeneratedPartitions, f.properties.Vbmeta_module_names)
 }
