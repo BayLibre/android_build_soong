@@ -52,6 +52,24 @@
       "parentUuid": "d936f519_a2e815c5",
       "revId": "63ec7272c9d5316b4b112d798d0c5147183016ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "386eaced_9038bf8d",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-03T00:10:32Z",
+      "side": 1,
+      "message": "Ah sorry, I believe more suitable example would be this: `device/google/cuttlefish/shared/config/cgroups.json:recovery/root/vendor/etc/cgroups.json`. Wdyt about adding `prebuilt_vendor` to the allowed module type for this neverallow rule?",
+      "parentUuid": "3aaf1852_f812be85",
+      "revId": "63ec7272c9d5316b4b112d798d0c5147183016ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
