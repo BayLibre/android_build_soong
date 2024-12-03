@@ -40,6 +40,30 @@
       ],
       "revId": "fb490e2b555e6ec0cadde5a630a2c25bbc53e341",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "137a0597_8e38ca33",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-03T21:23:37Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "5b4c09f2_9ac52086",
+      "range": {
+        "startLine": 681,
+        "startChar": 38,
+        "endLine": 683,
+        "endChar": 48
+      },
+      "revId": "fb490e2b555e6ec0cadde5a630a2c25bbc53e341",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
