@@ -16,6 +16,23 @@
       "message": "As the name suggests, this dependencies are \"violations\", and we should not be adding extra entries to the allowlist. Please include the modules statically to the updatable apex or depend on the stubs instead of creating updatable apex to system dependencies.\n@michaelwr@google.com, would you be able to take a look at this change?",
       "revId": "ce544f725b16ec51e849fabb333cbf55ee186d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "107bb0f9_b7ea860a",
+        "filename": "android/container_violations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2024-12-03T01:41:54Z",
+      "side": 1,
+      "message": "Why is this seen as a violation with a dependency on system ? both framework-connectivity-t and framework-connectivity-pre-jarjar are apex_available for \"com.android.tethering\" only, they should only be used for the APEX and not part of the non-updatable system.\n\nIs there a bug/limitation in the checker ?",
+      "revId": "ce544f725b16ec51e849fabb333cbf55ee186d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
