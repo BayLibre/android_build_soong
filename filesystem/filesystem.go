@@ -762,7 +762,6 @@ var validPartitions = []string{
 	"system_dlkm",
 	"ramdisk",
 	"vendor_ramdisk",
-	"recovery",
 }
 
 func (f *filesystem) addMakeBuiltFiles(ctx android.ModuleContext, builder *android.RuleBuilder, rootDir android.Path) {
