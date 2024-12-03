@@ -92,6 +92,30 @@
       ],
       "revId": "ce544f725b16ec51e849fabb333cbf55ee186d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d932c34f_9a2974b8",
+        "filename": "android/container_violations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2024-12-03T19:21:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18d1d10d_4d4a3ad5",
+      "range": {
+        "startLine": 1038,
+        "startChar": 3,
+        "endLine": 1038,
+        "endChar": 42
+      },
+      "revId": "ce544f725b16ec51e849fabb333cbf55ee186d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
