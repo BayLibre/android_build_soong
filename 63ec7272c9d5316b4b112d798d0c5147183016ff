@@ -16,6 +16,24 @@
       "message": "Could we generate a prebuilt_root instead of a different prebuilt type with install_in_root?",
       "revId": "63ec7272c9d5316b4b112d798d0c5147183016ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d936f519_a2e815c5",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-03T00:03:06Z",
+      "side": 1,
+      "message": "I\u0027m unsure what prebuilt type should be used if not using `prebuilt_root` -- e.g. for an `PRODUCT_COPY_FILES` entry `device/google/cuttlefish/shared/config/init.recovery.rc:recovery/root/init.recovery.cutf_cvm.rc`, what `prebuilt_*` module type should be selected given that modules that set `recovery: true` are installed to `recovery/root/system` [by default](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/paths.go;l\u003d2165) (and `recovery/root` if `InstallInRoot()` is `true`)?",
+      "parentUuid": "2a962edb_a3d39390",
+      "revId": "63ec7272c9d5316b4b112d798d0c5147183016ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
