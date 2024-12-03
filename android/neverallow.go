@@ -341,7 +341,6 @@ func createPrebuiltEtcBpDefineRule() Rule {
 			"prebuilt_tvservice",
 			"prebuilt_optee",
 			"prebuilt_tvconfig",
-			"prebuilt_vendor",
 		).
 		DefinedInBpFile().
 		Because("module type not allowed to be defined in bp file")
