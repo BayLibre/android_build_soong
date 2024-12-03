@@ -196,6 +196,7 @@ var (
 		"optee":           etc.PrebuiltOpteeFactory,
 		"overlay":         etc.PrebuiltOverlayFactory,
 		"priv-app":        etc.PrebuiltPrivAppFactory,
+		"sbin":            etc.PrebuiltSbinFactory,
 		"res":             etc.PrebuiltResFactory,
 		"rfs":             etc.PrebuiltRfsFactory,
 		"tts":             etc.PrebuiltVoicepackFactory,

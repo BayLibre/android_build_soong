@@ -82,6 +82,7 @@ func RegisterPrebuiltEtcBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("prebuilt_optee", PrebuiltOpteeFactory)
 	ctx.RegisterModuleType("prebuilt_tvconfig", PrebuiltTvConfigFactory)
 	ctx.RegisterModuleType("prebuilt_vendor", PrebuiltVendorFactory)
+	ctx.RegisterModuleType("prebuilt_sbin", PrebuiltSbinFactory)
 
 	ctx.RegisterModuleType("prebuilt_defaults", defaultsFactory)
 
@@ -978,6 +979,16 @@ func PrebuiltTvConfigFactory() android.Module {
 func PrebuiltVendorFactory() android.Module {
 	module := &PrebuiltEtc{}
 	InitPrebuiltEtcModule(module, "vendor")
+	// This module is device-only
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	android.InitDefaultableModule(module)
+	return module
+}
+
+// prebuilt_sbin installs files in <partition>/sbin directory.
+func PrebuiltSbinFactory() android.Module {
+	module := &PrebuiltEtc{}
+	InitPrebuiltEtcModule(module, "sbin")
 	// This module is device-only
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
