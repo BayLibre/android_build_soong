@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b4c09f2_9ac52086",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-03T21:17:52Z",
+      "side": 1,
+      "message": "nit: replace this if-else with `StringDefault`",
+      "range": {
+        "startLine": 681,
+        "startChar": 38,
+        "endLine": 683,
+        "endChar": 48
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "557d2ed5_89f2abfe",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "filesystem/filesystem.go",
+              "range": {
+                "startLine": 680,
+                "startChar": 0,
+                "endLine": 685,
+                "endChar": 0
+              },
+              "replacement": "\t\taddStr(\"erofs_default_compressor\", proptools.StringDefault(f.properties.Erofs.Compressor, \"lz4hc,9\"))\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fb490e2b555e6ec0cadde5a630a2c25bbc53e341",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
