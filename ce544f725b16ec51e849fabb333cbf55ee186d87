@@ -51,6 +51,47 @@
       "parentUuid": "107bb0f9_b7ea860a",
       "revId": "ce544f725b16ec51e849fabb333cbf55ee186d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d1d10d_4d4a3ad5",
+        "filename": "android/container_violations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2024-12-03T02:10:20Z",
+      "side": 1,
+      "message": "As discussed, we can remove this by including service-connectivity-pre-jarjar when VCN is in mainline. When VCN in platform, we can include this jar.",
+      "range": {
+        "startLine": 1038,
+        "startChar": 3,
+        "endLine": 1038,
+        "endChar": 42
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f65bcd33_b0100846",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/container_violations.go",
+              "range": {
+                "startLine": 1038,
+                "startChar": 0,
+                "endLine": 1042,
+                "endChar": 0
+              },
+              "replacement": "\t\t\"framework-connectivity-pre-jarjar\",   // apex [com.android.tethering] -\u003e system\n\t\t\"framework-connectivity-b-pre-jarjar\", // apex [com.android.tethering] -\u003e system\n\t\t\"framework-connectivity-t-pre-jarjar\", // apex [com.android.tethering] -\u003e system\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ce544f725b16ec51e849fabb333cbf55ee186d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
