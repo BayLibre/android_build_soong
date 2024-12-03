@@ -70,6 +70,24 @@
       "parentUuid": "3aaf1852_f812be85",
       "revId": "63ec7272c9d5316b4b112d798d0c5147183016ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eabb3a30_298c87eb",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-03T00:12:20Z",
+      "side": 1,
+      "message": "Ah, I see. Yeah, adding `prebuilt_vendor` to the module types that are allowed to use `install_in_root` SGTM.",
+      "parentUuid": "386eaced_9038bf8d",
+      "revId": "63ec7272c9d5316b4b112d798d0c5147183016ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
