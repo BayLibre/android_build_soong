@@ -16,6 +16,74 @@
       "message": "Upstream from Meta 😊",
       "revId": "fa0350740fde1f288a2e7b627db36d63a545aaf7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db7c620f_6de9f66a",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-03T22:14:14Z",
+      "side": 1,
+      "message": "This may lead to abusing the system by defining new api scopes that are not defined or supported. Can you check that the inputs are one of the supported ones?",
+      "revId": "fa0350740fde1f288a2e7b627db36d63a545aaf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e92b9b_698ab5f2",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-03T22:14:14Z",
+      "side": 1,
+      "message": "Merge this into one. length of a nil slice is `0`. See [this example](https://go.dev/play/p/31wJYGYaCwb).",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 2
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5c4dbd7c_575055b0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/prebuilt_apis.go",
+              "range": {
+                "startLine": 214,
+                "startChar": 0,
+                "endLine": 215,
+                "endChar": 0
+              },
+              "replacement": "\tif len(p.properties.Api_scopes) \u003d\u003d 0 {\n"
+            },
+            {
+              "path": "java/prebuilt_apis.go",
+              "range": {
+                "startLine": 216,
+                "startChar": 0,
+                "endLine": 218,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "fa0350740fde1f288a2e7b627db36d63a545aaf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
