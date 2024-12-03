@@ -34,6 +34,24 @@
       "parentUuid": "2a962edb_a3d39390",
       "revId": "63ec7272c9d5316b4b112d798d0c5147183016ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aaf1852_f812be85",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-03T00:07:39Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that example be a `prebuilt_root` module with `install_in_root: true`? And then that would pass the neverallow rule as-is.\n\nIt is confusing that there\u0027s both `prebuilt_root` and `install_in_root`.",
+      "parentUuid": "d936f519_a2e815c5",
+      "revId": "63ec7272c9d5316b4b112d798d0c5147183016ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
