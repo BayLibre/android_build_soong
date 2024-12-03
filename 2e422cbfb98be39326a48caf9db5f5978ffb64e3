@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c31a3d7_fd74ed6c",
+        "filename": "fsgen/prebuilt_etc_modules_gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-03T21:16:14Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 275,
+        "startChar": 18,
+        "endLine": 275,
+        "endChar": 23
+      },
+      "revId": "2e422cbfb98be39326a48caf9db5f5978ffb64e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
