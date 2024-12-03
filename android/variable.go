@@ -579,6 +579,11 @@ type PartitionQualifiedVariablesType struct {
 	BoardAvbRollbackIndexLocation string `json:",omitempty"`
 }
 
+type BoardSuperPartitionGroupProps struct {
+	GroupSize     string   `json:",omitempty"`
+	PartitionList []string `json:",omitempty"`
+}
+
 type ChainedAvbPartitionProps struct {
 	Partitions            []string `json:",omitempty"`
 	Key                   string   `json:",omitempty"`
@@ -627,6 +632,19 @@ type PartitionVariables struct {
 	BoardUsesGenericKernelImage     bool   `json:",omitempty"`
 	BootSecurityPatch               string `json:",omitempty"`
 	InitBootSecurityPatch           string `json:",omitempty"`
+
+	// Super image stuff
+	ProductBuildSuperPartition        bool                                     `json:",omitempty"`
+	BoardSuperPartitionPartitionList  []string                                 `json:",omitempty"`
+	BoardSuperPartitionSize           string                                   `json:",omitempty"`
+	BoardSuperPartitionMetadataDevice string                                   `json:",omitempty"`
+	AbOtaUpdater                      bool                                     `json:",omitempty"`
+	ProductRetrofitDynamicPartitions  bool                                     `json:",omitempty"`
+	ProductVirtualAbOta               bool                                     `json:",omitempty"`
+	ProductVirtualAbOtaRetrofit       bool                                     `json:",omitempty"`
+	BuildingSystemOtherImage          bool                                     `json:",omitempty"`
+	BoardSuperPartitionBlockDevices   []string                                 `json:",omitempty"`
+	BoardSuperPartitionGroups         map[string]BoardSuperPartitionGroupProps `json:",omitempty"`
 
 	// Avb (android verified boot) stuff
 	BoardAvbEnable          bool                                `json:",omitempty"`
