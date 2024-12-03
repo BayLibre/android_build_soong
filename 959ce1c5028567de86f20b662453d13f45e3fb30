@@ -52,6 +52,24 @@
       "parentUuid": "818e3f4a_ca69f680",
       "revId": "959ce1c5028567de86f20b662453d13f45e3fb30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "171b6aee_6f6ed498",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2024-12-03T22:48:23Z",
+      "side": 1,
+      "message": "Sorry, got distracted by other tasks.\n\n@timmurray@google.com what do you think about this idea in general? This change actually would allow setting a different compression level for -eng builds as well\nI will get it for the actual .bp project change that sets the compression level - it still needs to be done per-project instead of once and for all.\n\nSpeaking of the user builds, IMO we can spend all the time in the world for those as SWEs aren\u0027t rebuilding them daily as a part of their regular workflow",
+      "parentUuid": "ecd84c3d_487d2814",
+      "revId": "959ce1c5028567de86f20b662453d13f45e3fb30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
