@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "761441b0_def26edf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3754263
+      },
+      "writtenOn": "2024-12-03T21:23:34Z",
+      "side": 1,
+      "message": "  [access \"refs/heads/stable*\"]\n    label-Release-Process \u003d block -1..+1 group Anonymous Users\n    label-Release-Process \u003d -1..+1 group Release Engineers",
+      "revId": "3e73097269424658308cc717b2f0b7172197b42c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
