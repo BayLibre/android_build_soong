@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33cea7b1_29239527",
+        "filename": "android/container_violations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2024-12-03T19:30:38Z",
+      "side": 1,
+      "message": "Actually if you do not add the module to the `apex_available`, you will fail the build and hit following errors:\n\nHere is an example if I remove tethering from `framework-connectivity-b`\u0027s  `apex_available`\n```\nerror: packages/modules/Connectivity/Tethering/apex/Android.bp:59:1: module \"com.android.tethering\" variant \"android_common_scs_cfi_com.android.tethering\": \"com.android.tethering-bootclasspath-fragment\" requires \"framework-connectivity-b\" that doesn\u0027t list the APEX under \u0027apex_available\u0027.\n\nDependency path:\n           via tag apex.dependencyTag{\"bootclasspathFragment\"}\n    -\u003e com.android.tethering-bootclasspath-fragment{os:android,arch:common,apex:apex30}\n           via tag java.bootclasspathFragmentContentDependencyTag: {}\n    -\u003e framework-connectivity-b{os:android,arch:common,apex:apex30}\n\nConsider adding \"com.android.tethering\" to \u0027apex_available\u0027 property of \"framework-connectivity-b\"\n```\n-----------------------------------\nAnother thing that is confusing is the build error message about the violation. Why the checker thinks that `framework-connectivity-pre-jarjar` belongs to the system partition?\n\n```\nerror: frameworks/base/packages/Vcn/framework-b/Android.bp:119:1: module \"framework-connectivity-b.impl\" variant \"android_common\" (created by module \"framework-connectivity-b\" variant \"android_common\"): framework-connectivity-b.impl cannot depend on framework-connectivity-pre-jarjar. Module belonging to Apex(es) is not allowed to depend on the modules belonging to the system partition. Either statically depend on the module or convert the depending module to java_sdk_library and depend on the stubs.\n```\n\nI will ping Michael to provide some inputs.",
+      "parentUuid": "a4fd8716_01bd47e1",
+      "revId": "ce544f725b16ec51e849fabb333cbf55ee186d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18d1d10d_4d4a3ad5",
         "filename": "android/container_violations.go",
         "patchSetId": 5
