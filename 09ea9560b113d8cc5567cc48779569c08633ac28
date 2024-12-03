@@ -34,6 +34,24 @@
       "parentUuid": "19b95cf6_28c412c5",
       "revId": "09ea9560b113d8cc5567cc48779569c08633ac28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50b240a7_b1e407b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-03T21:26:47Z",
+      "side": 1,
+      "message": "ABTD run completed successfully.",
+      "parentUuid": "33002757_c37625c1",
+      "revId": "09ea9560b113d8cc5567cc48779569c08633ac28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
