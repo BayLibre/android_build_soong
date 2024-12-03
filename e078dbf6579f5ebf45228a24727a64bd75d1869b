@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca711c0_5a78df1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2024-12-03T22:50:28Z",
+      "side": 1,
+      "message": "We shouldn\u0027t be adding any more violations to this list; every violation is a potential for a major incident since this is an unsafe and untracked dependency.\n\nI suspect this will need some build flagging to put the JAR in the right place, or multiple copies of the JAR of both the platform and APEX need in either of the before or after states. Please work with Jihoon (or someone on the build team) to figure out how to make this happen without a violation though.",
+      "revId": "e078dbf6579f5ebf45228a24727a64bd75d1869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
