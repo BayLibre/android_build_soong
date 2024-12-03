@@ -33,6 +33,24 @@
       "message": "Why is this seen as a violation with a dependency on system ? both framework-connectivity-t and framework-connectivity-pre-jarjar are apex_available for \"com.android.tethering\" only, they should only be used for the APEX and not part of the non-updatable system.\n\nIs there a bug/limitation in the checker ?",
       "revId": "ce544f725b16ec51e849fabb333cbf55ee186d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4fd8716_01bd47e1",
+        "filename": "android/container_violations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-03T01:46:57Z",
+      "side": 1,
+      "message": "`apex_available` is not an authoritative factor that determines whether the module is included in the apex. The authoritative factor is the dependency type; In other words, the module will be included in the apex if it is a transitive/direct static dependency (i.e. `static_libs`) of an apex. However, `framework-connectivity-pre-jarjar` is only included as a dynamic dependency (i.e. `libs`) of modules included in the apex. This means that the module is not actually included in the apex. Thus, `apex_available` property set for `framework-connectivity-pre-jarjar` is a no-op from what I can tell. You would be able to observe that the build passes successfully even when you remove `apex_available` property from `framework-connectivity-pre-jarjar`.",
+      "parentUuid": "107bb0f9_b7ea860a",
+      "revId": "ce544f725b16ec51e849fabb333cbf55ee186d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
