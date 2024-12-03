@@ -245,6 +245,9 @@ func createInstallInRootAllowingRules() []Rule {
 			Without("name", "librecovery_ui_ext").
 			With("install_in_root", "true").
 			NotModuleType("prebuilt_root").
+			NotModuleType("prebuilt_vendor").
+			NotModuleType("prebuilt_sbin").
+			NotModuleType("prebuilt_system").
 			Because("install_in_root is only for init_first_stage or librecovery_ui_ext."),
 	}
 }
@@ -342,6 +345,8 @@ func createPrebuiltEtcBpDefineRule() Rule {
 			"prebuilt_optee",
 			"prebuilt_tvconfig",
 			"prebuilt_vendor",
+			"prebuilt_sbin",
+			"prebuilt_system",
 		).
 		DefinedInBpFile().
 		Because("module type not allowed to be defined in bp file")
