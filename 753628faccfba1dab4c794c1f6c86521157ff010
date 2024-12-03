@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05a40555_75c20b9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-12-03T13:38:06Z",
+      "side": 1,
+      "message": "\"globally by default\" is more intention-revealing? soong is in golang, after all.",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "753628faccfba1dab4c794c1f6c86521157ff010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54986aaa_75919c6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-12-03T13:38:06Z",
+      "side": 1,
+      "message": "spell it like the #define so anyone searching will be able to find this change.",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "753628faccfba1dab4c794c1f6c86521157ff010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
