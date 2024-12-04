@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae7d755c_38ee30bf",
+        "filename": "android/container_violations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1556717
+      },
+      "writtenOn": "2024-12-04T10:27:27Z",
+      "side": 1,
+      "message": "I\u0027m currently struggling with a similar issue",
+      "parentUuid": "9bc2e498_08d49464",
+      "revId": "ce544f725b16ec51e849fabb333cbf55ee186d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18d1d10d_4d4a3ad5",
         "filename": "android/container_violations.go",
         "patchSetId": 5
