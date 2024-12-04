@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d83dd6_ab299b87",
+        "filename": "root.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-04T23:56:16Z",
+      "side": 1,
+      "message": "A couple of nits:\n\n- Can this variable be created in internal instead, since it will likely never be used in aosp?\n- How many modules need to disable the new check? If there are not many, can we create this variable next to those modules instead of in Soong?",
+      "range": {
+        "startLine": 8,
+        "startChar": 37,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "86fe1dcff196b8b78d584c8d4a609a299a6e1730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
