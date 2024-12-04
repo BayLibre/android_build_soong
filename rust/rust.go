@@ -2079,13 +2079,16 @@ func (mod *Module) OutgoingDepIsInSameApex(depTag blueprint.DependencyTag) bool 
 }
 
 func (mod *Module) IncomingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
+	if mod.Host() {
+		return false
+	}
 	// TODO(b/362509506): remove once all apex_exclude uses are switched to stubs.
 	if mod.ApexExclude() {
 		return false
 	}
 
 	if mod.HasStubsVariants() {
-		if cc.IsSharedDepTag(depTag) {
+		if cc.IsSharedDepTag(depTag) && !cc.IsExplicitImplSharedDepTag(depTag) {
 			// dynamic dep to a stubs lib crosses APEX boundary
 			return false
 		}
