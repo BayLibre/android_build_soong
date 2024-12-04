@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad46200_b3b8d95e",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-04T02:00:48Z",
+      "side": 1,
+      "message": "Make partitions seem to have different values of `os_version` per partition https://source.corp.google.com/search?q\u003dcom.android.build.*os_version%20f:build%2Fmake\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main. e.g. vendor uses `VENDOR_OS_VERSION` and not `SYSTEM_OS_VERSION`.\n\nDitto for `security_patch`.\n\nDo we need to export these additional variables to Soong as well?",
+      "range": {
+        "startLine": 659,
+        "startChar": 124,
+        "endLine": 659,
+        "endChar": 151
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8d36f515_30a75ccf",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "filesystem/filesystem.go",
+              "range": {
+                "startLine": 659,
+                "startChar": 0,
+                "endLine": 660,
+                "endChar": 0
+              },
+              "replacement": "\t\tavb_add_hashtree_footer_args +\u003d fmt.Sprintf(\" --prop com.android.build.%s.os_version:%s\", f.partitionName(), ctx.Config().PlatformVersion(ctx))\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a6f472e71eb0d80434b1aadc60c98645ca4670f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
