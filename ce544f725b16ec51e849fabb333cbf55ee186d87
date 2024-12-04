@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9bc2e498_08d49464",
+        "filename": "android/container_violations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2024-12-04T07:32:14Z",
+      "side": 1,
+      "message": "It seems the part where \"framework-connectivity-pre-jarjar is considered to be included in the system partition because it does not belong to any apexes\" is wrong - framework-connectivity-pre-jarjar is only used to build the apex, and isn\u0027t placed on the system partition. It\u0027s basically used as a stubs library, to provide the bootclasspath symbols that systemserverclasspath jars in the same module can depend on, before the bootclasspath and systemserverclasspath jars both get jarjared.\n\nI think we could have java_sdk_library support outputting a pre-jarjar artifact (for example framework-connectivity would output framework-connectivity.stubs.[SDK], framework-connectivity.impl, and framework-connectivity.pre-jarjar-impl), and have every module migrate to the auto-generated pre-jarjar-impl one to make manually maintained pre-jarjar libraries unnecessary. But right now I don\u0027t think there is an alternative.\n\nSo immediately it seems the checker is flagging current usage that is working and doesn\u0027t have any alternative as incorrect. So I think either the check needs to be relaxed, or the wrongly flagged violations should be added to the allowlist until build rules can be structured better.",
+      "parentUuid": "343bd2b0_14317fb5",
+      "revId": "ce544f725b16ec51e849fabb333cbf55ee186d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18d1d10d_4d4a3ad5",
         "filename": "android/container_violations.go",
         "patchSetId": 5

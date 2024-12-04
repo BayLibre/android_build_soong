@@ -88,6 +88,24 @@
       "parentUuid": "0a063d49_4acbc34f",
       "revId": "e078dbf6579f5ebf45228a24727a64bd75d1869b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5dc780f_dccb4770",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2024-12-04T07:32:14Z",
+      "side": 1,
+      "message": "framework-X-pre-jarjar is basically framework-X.impl, but before the jarjar step. It\u0027s generated separately via common java_defaults.\n\nIt is not possible to use framework-X-pre-jarjar to generate framework-X.impl, because a java_sdk_library needs sources to generate stubs, so it can\u0027t include it as a static_lib.\nAnd it shouldn\u0027t be included as-is in the APEX: the jarjared version of it (framework-X.impl) needs to be included instead.\n\nThe design is a bit complicated but I don\u0027t think we have an alternative right now; it would probably be best to avoid back-and-forth.\n\nIf we mark the dependency as \"installable: false\", would that fix the problem ?\nIdeally as I mentioned in the other comment, the java_sdk_library would take care of generating the pre-jarjar version by itself so it\u0027s not a separate build rule. But the checker shouldn\u0027t block development if it doesn\u0027t support a use-case that doesn\u0027t have supported alternatives today.",
+      "parentUuid": "e2f9915c_52020572",
+      "revId": "e078dbf6579f5ebf45228a24727a64bd75d1869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
