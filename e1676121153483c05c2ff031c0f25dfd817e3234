@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed63badf_80fda3d0",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-04T22:48:16Z",
+      "side": 1,
+      "message": "nit: inline as `filepath.Dir(fec.String())` and remove `pathToolDirs`",
+      "range": {
+        "startLine": 584,
+        "startChar": 25,
+        "endLine": 584,
+        "endChar": 56
+      },
+      "revId": "e1676121153483c05c2ff031c0f25dfd817e3234",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
