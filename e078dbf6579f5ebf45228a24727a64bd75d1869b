@@ -16,6 +16,24 @@
       "message": "We shouldn\u0027t be adding any more violations to this list; every violation is a potential for a major incident since this is an unsafe and untracked dependency.\n\nI suspect this will need some build flagging to put the JAR in the right place, or multiple copies of the JAR of both the platform and APEX need in either of the before or after states. Please work with Jihoon (or someone on the build team) to figure out how to make this happen without a violation though.",
       "revId": "e078dbf6579f5ebf45228a24727a64bd75d1869b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a26b53_c6f2f3d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2024-12-04T02:10:53Z",
+      "side": 1,
+      "message": "Is it possible to re-evaluate the decision on disallowing these dependencies?\n\nThere is a very useful pattern (in Connectivity, Wifi, Bluetooth) to create two versions of the framework code in the same apex: `framework-*` and `framework-*-pre-jarjar`. The `framework-*-pre-jarjar` allows the service code in the same apex to reference the framework classes with their original names. `framework-*-pre-jarjar` is never installed on the device but its corresponding `framework-*` is always installed on the device.\n\nAt the same time, we cannot static include `framework-*-pre-jarjar` to build `framework-*`. It will form a [dependency cycle](https://paste.googleplex.com/5966725334695936)\n\nCurrently the violation checker disallows depending on `framework-*-pre-jarjar`, making it difficult for jars within the same apex to reference each other. It will also force modules to introduce duplicate utility classes and thus bring safety concerns.\n\nI feel the current checker has some limitations. Performing the check only based on \"static dependency\" would fail to support many important use cases. If the checker concerns about the \"cross-container dependencies\", maybe we should add new properties to specify the container?",
+      "parentUuid": "aca711c0_5a78df1c",
+      "revId": "e078dbf6579f5ebf45228a24727a64bd75d1869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
