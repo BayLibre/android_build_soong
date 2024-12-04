@@ -423,13 +423,16 @@ func (b *BootclasspathFragmentModule) OutgoingDepIsInSameApex(tag blueprint.Depe
 		// Cross-cutting metadata dependencies are metadata.
 		return false
 	}
+	if tag == moduleInFragmentDepTag {
+		return true
+	}
 	// Dependency to the bootclasspath fragment of another apex
 	// e.g. concsrypt-bootclasspath-fragment --> art-bootclasspath-fragment
 	if bcpTag, ok := tag.(bootclasspathDependencyTag); ok && bcpTag.typ == fragment {
 		return false
 	}
-	return false
 	//panic(fmt.Errorf("boot_image module %q should not have a dependency tag %s", b, android.PrettyPrintTag(tag)))
+	return false
 }
 
 func (b *BootclasspathFragmentModule) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion android.ApiLevel) error {
@@ -511,7 +514,7 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 		}
 	})
 
-	fragments := gatherApexModulePairDepsWithTag(ctx, fragment)
+	fragments, _ := gatherFragments(ctx)
 
 	// Perform hidden API processing.
 	hiddenAPIOutput := b.generateHiddenAPIBuildActions(ctx, contents, fragments)
