@@ -129,6 +129,12 @@ type IncomingTransitionContext interface {
 	// is being computed
 	Module() Module
 
+	ModuleName() string
+
+	// DepTag() Returns the dependency tag through which this dependency is
+	// reached
+	DepTag() blueprint.DependencyTag
+
 	// Config returns the configuration for the build.
 	Config() Config
 
@@ -148,6 +154,8 @@ type OutgoingTransitionContext interface {
 	// Module returns the target of the dependency edge for which the transition
 	// is being computed
 	Module() Module
+
+	ModuleName() string
 
 	// DepTag() Returns the dependency tag through which this dependency is
 	// reached
@@ -320,6 +328,14 @@ func (c *incomingTransitionContextImpl) Module() Module {
 	return c.bp.Module().(Module)
 }
 
+func (c *incomingTransitionContextImpl) ModuleName() string {
+	return c.bp.ModuleName()
+}
+
+func (c *incomingTransitionContextImpl) DepTag() blueprint.DependencyTag {
+	return c.bp.DepTag()
+}
+
 func (c *incomingTransitionContextImpl) Config() Config {
 	return c.bp.Config().(Config)
 }
@@ -353,6 +369,10 @@ type outgoingTransitionContextImpl struct {
 
 func (c *outgoingTransitionContextImpl) Module() Module {
 	return c.bp.Module().(Module)
+}
+
+func (c *outgoingTransitionContextImpl) ModuleName() string {
+	return c.bp.ModuleName()
 }
 
 func (c *outgoingTransitionContextImpl) DepTag() blueprint.DependencyTag {
