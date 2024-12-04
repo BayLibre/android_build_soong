@@ -70,6 +70,24 @@
       "parentUuid": "5361267d_38ce44e5",
       "revId": "e078dbf6579f5ebf45228a24727a64bd75d1869b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2f9915c_52020572",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-04T02:52:10Z",
+      "side": 1,
+      "message": "\u003e At the same time, we cannot static include `framework-*-pre-jarjar` to build `framework-*`. It will form a dependency cycle\n\nI don\u0027t think this dependency cycle is a result of statically including `framework-*-pre-jarjar` in the apex. If this was the case the name `framework-*-pre-jarjar` would have been shown in the dependency cycle, but it is not:\n```\nerror: frameworks/base/api/Android.bp:65:1: encountered dependency cycle:\nerror: frameworks/base/api/StubLibraries.bp:719:1:     module \"android_stubs_current\" variant \"android_common\" depends on module \"all-modules-public-stubs\" variant \"android_common\" (created by module \"frameworks-base-api\" variant \"android_common\")\nerror: frameworks/base/api/Android.bp:65:1:     module \"all-modules-public-stubs\" variant \"android_common\" (created by module \"frameworks-base-api\" variant \"android_common\") depends on module \"framework-connectivity-b.stubs\" variant \"android_common\" (created by module \"framework-connectivity-b\" variant \"android_common\")\nerror: frameworks/base/packages/Vcn/framework-b/Android.bp:127:1:     module \"framework-connectivity-b.stubs\" variant \"android_common\" (created by module \"framework-connectivity-b\" variant \"android_common\") depends on module \"android_stubs_current\" variant \"android_common\"\n```\nFrom the error message, it seems like you have modified the `sdk_version` of `framework-connectivity-b`?\n\n\u003e The `framework-*-pre-jarjar` allows the service code in the same apex to reference the framework classes with their original names.\n\nThinking about it again, I strongly believe that `framework-*-pre-jarjar` should be statically included in the apex if it is used for intra-apex service codes communication. It does not need to be a static lib of `framework-connectivity-b`, but it should be statically included in the apex (i.e. via `java_libs`).",
+      "parentUuid": "0a063d49_4acbc34f",
+      "revId": "e078dbf6579f5ebf45228a24727a64bd75d1869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
