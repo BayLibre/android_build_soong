@@ -53,6 +53,12 @@ func registerMutators(ctx android.RegistrationContext) {
 	})
 }
 
+// Remember to add referenced files to implicits!
+var textFileProcessorRule = pctx.AndroidStaticRule("text_file_processing", blueprint.RuleParams{
+	Command:     "build/soong/scripts/text_file_processor.py $in $out",
+	CommandDeps: []string{"build/soong/scripts/text_file_processor.py"},
+})
+
 type filesystem struct {
 	android.ModuleBase
 	android.PackagingBase
@@ -634,10 +640,12 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (android.Path, and
 		addPath("avb_avbtool", ctx.Config().HostToolPath(ctx, "avbtool"))
 		algorithm := proptools.StringDefault(f.properties.Avb_algorithm, "SHA256_RSA4096")
 		addStr("avb_algorithm", algorithm)
-		key := android.PathForModuleSrc(ctx, proptools.String(f.properties.Avb_private_key))
-		addPath("avb_key_path", key)
+		if f.properties.Avb_private_key != nil {
+			key := android.PathForModuleSrc(ctx, *f.properties.Avb_private_key)
+			addPath("avb_key_path", key)
+		}
 		addStr("partition_name", f.partitionName())
-		avb_add_hashtree_footer_args := "--do_not_generate_fec"
+		avb_add_hashtree_footer_args := ""
 		if hashAlgorithm := proptools.String(f.properties.Avb_hash_algorithm); hashAlgorithm != "" {
 			avb_add_hashtree_footer_args += " --hash_algorithm " + hashAlgorithm
 		}
@@ -648,9 +656,9 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (android.Path, and
 			}
 			avb_add_hashtree_footer_args += " --rollback_index " + strconv.Itoa(rollbackIndex)
 		}
-		securityPatchKey := "com.android.build." + f.partitionName() + ".security_patch"
-		securityPatchValue := ctx.Config().PlatformSecurityPatch()
-		avb_add_hashtree_footer_args += " --prop " + securityPatchKey + ":" + securityPatchValue
+		avb_add_hashtree_footer_args += fmt.Sprintf(" --prop com.android.build.%s.os_version:%s", f.partitionName(), ctx.Config().PlatformVersionLastStable())
+		avb_add_hashtree_footer_args += fmt.Sprintf(" --prop com.android.build.%s.fingerprint:{CONTENTS_OF:%s}", f.partitionName(), ctx.Config().BuildFingerprintFile(ctx))
+		avb_add_hashtree_footer_args += fmt.Sprintf(" --prop com.android.build.%s.security_patch:%s", f.partitionName(), ctx.Config().PlatformSecurityPatch())
 		addStr("avb_add_hashtree_footer_args", avb_add_hashtree_footer_args)
 		addStr("avb_salt", f.salt())
 	}
@@ -694,8 +702,15 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (android.Path, and
 	}
 	f.checkFsTypePropertyError(ctx, fst, fsTypeStr(fst))
 
+	propFilePreProcessing := android.PathForModuleOut(ctx, "prop_pre_processing")
+	android.WriteFileRuleVerbatim(ctx, propFilePreProcessing, propFileString.String())
 	propFile := android.PathForModuleOut(ctx, "prop")
-	android.WriteFileRuleVerbatim(ctx, propFile, propFileString.String())
+	ctx.Build(pctx, android.BuildParams{
+		Rule:     textFileProcessorRule,
+		Input:    propFilePreProcessing,
+		Output:   propFile,
+		Implicit: ctx.Config().BuildFingerprintFile(ctx),
+	})
 	return propFile, deps
 }
 
