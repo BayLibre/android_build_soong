@@ -73,7 +73,7 @@ var (
 
 	CreateStorageRule = pctx.AndroidStaticRule("aconfig_create_storage",
 		blueprint.RuleParams{
-			Command: `${aconfig} create-storage --container ${container} --file ${file_type} --out ${out} ${cache_files}`,
+			Command: `${aconfig} create-storage --container ${container} --file ${file_type} --out ${out} ${cache_files} --version ${version}`,
 			CommandDeps: []string{
 				"${aconfig}",
 			},

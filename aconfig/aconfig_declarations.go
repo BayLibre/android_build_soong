@@ -192,6 +192,17 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 			// Bool build flags are always "" for false, and generally "true" for true.
 			allowReadWrite = requireAllReadOnly == ""
 		}
+
+		// Build flag to control the version for the storage files. The default version is 1.
+		storageFilesVersion := 1
+		if enableFingerprint, ok := ctx.Config().GetBuildFlag("RELEASE_FINGERPRINT_ACONFIG_PACKAGES"); ok {
+			// Bool build flags are always "" for false, and generally "true" for true.
+			// To enable fingerprint, we need to have v2 storage files.
+			if enableFingerprint == "true" {
+				storageFilesVersion = 2
+			}
+		}
+
 		inputFiles := make([]android.Path, len(declarationFiles))
 		copy(inputFiles, declarationFiles)
 		inputFiles = append(inputFiles, valuesFiles[config]...)
@@ -202,6 +213,7 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 			"values":             joinAndPrefix(" --values ", values[config]),
 			"default-permission": optionalVariable(" --default-permission ", defaultPermission),
 			"allow-read-write":   optionalVariable(" --allow-read-write ", strconv.FormatBool(allowReadWrite)),
+			"version":            optionalVariable(" --version ", strconv.Itoa(storageFilesVersion)),
 		}
 		if len(module.properties.Container) > 0 {
 			args["container"] = "--container " + module.properties.Container
