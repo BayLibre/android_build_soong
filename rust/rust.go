@@ -32,6 +32,12 @@ import (
 	"android/soong/rust/config"
 )
 
+type RustInfo struct {
+	ApexExclude bool
+}
+
+var RustInfoKey = blueprint.NewProvider[RustInfo]()
+
 var pctx = android.NewPackageContext("android/soong/rust")
 
 func init() {
@@ -1009,6 +1015,10 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		StaticExecutable: mod.StaticExecutable(),
 	})
 
+	android.SetProvider(ctx, RustInfoKey, RustInfo{
+		ApexExclude: mod.ApexExclude(),
+	})
+
 	mod.setOutputFiles(ctx)
 
 	buildComplianceMetadataInfo(ctx, mod, deps)
@@ -1855,6 +1865,45 @@ func (mod *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Mo
 	}
 
 	if rustDep, ok := dep.(*Module); ok && rustDep.ApexExclude() {
+		return false
+	}
+
+	return true
+}
+
+// DepIsInSameApexProvider has similar logic as DepIsInSameApex, but it uses
+// build action providers to get the data needed.
+func (mod *Module) DepIsInSameApexProvider(ctx android.BaseModuleContext, dep android.Module) bool {
+	depTag := ctx.OtherModuleDependencyTag(dep)
+
+	if depCcInfo, ok := android.OtherModuleProvider(ctx, dep, cc.CcInfoKey); ok {
+		if depCcInfo.HasStubsVariants {
+			if cc.IsSharedDepTag(depTag) {
+				// dynamic dep to a stubs lib crosses APEX boundary
+				return false
+			}
+			if cc.IsRuntimeDepTag(depTag) {
+				// runtime dep to a stubs lib also crosses APEX boundary
+				return false
+			}
+
+			if cc.IsHeaderDepTag(depTag) {
+				return false
+			}
+		}
+		if mod.Static() && cc.IsSharedDepTag(depTag) {
+			// shared_lib dependency from a static lib is considered as crossing
+			// the APEX boundary because the dependency doesn't actually is
+			// linked; the dependency is used only during the compilation phase.
+			return false
+		}
+	}
+
+	if depTag == procMacroDepTag || depTag == customBindgenDepTag {
+		return false
+	}
+
+	if android.OtherModuleProviderOrDefault(ctx, dep, RustInfoKey).ApexExclude {
 		return false
 	}
 

@@ -1885,6 +1885,12 @@ type HostToolProviderData struct {
 
 var HostToolProviderKey = blueprint.NewProvider[HostToolProviderData]()
 
+type ApexCheckInfo struct {
+	DepsInSameApex []string
+}
+
+var ApexCheckInfoKey = blueprint.NewProvider[ApexCheckInfo]()
+
 func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) {
 	ctx := &moduleContext{
 		module:            m.module,
@@ -2155,6 +2161,19 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 
 	if p, ok := m.module.(AndroidMkProviderInfoProducer); ok && !commonData.SkipAndroidMkProcessing {
 		SetProvider(ctx, AndroidMkInfoProvider, p.PrepareAndroidMKProviderInfo(ctx.Config()))
+	}
+
+	// Only set this for apex variant
+	if _, ok := ModuleProvider(ctx, ApexInfoProvider); ok {
+		if _, ok := m.module.(DepIsInSameApex); ok {
+			var deps []string
+			ctx.VisitDirectDepsProxy(func(dep ModuleProxy) {
+				if IsDepInSameApexProvider(ctx, m.module, dep) {
+					deps = append(deps, dep.Name())
+				}
+			})
+			SetProvider(ctx, ApexCheckInfoKey, ApexCheckInfo{DepsInSameApex: deps})
+		}
 	}
 }
 
