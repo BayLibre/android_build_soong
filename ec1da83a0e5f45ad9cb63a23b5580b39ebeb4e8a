@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af43b8d9_098db37d",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-04T23:23:51Z",
+      "side": 1,
+      "message": "Make this an int",
+      "range": {
+        "startLine": 43,
+        "startChar": 7,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "ec1da83a0e5f45ad9cb63a23b5580b39ebeb4e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04a46dec_8fce7ab7",
         "filename": "filesystem/super_image.go",
         "patchSetId": 16
