@@ -14,7 +14,6 @@
 # limitations under the License.
 #
 """Parser for Android's version script information."""
-from __future__ import annotations
 
 from dataclasses import dataclass, field
 import logging
