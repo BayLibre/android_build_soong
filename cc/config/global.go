@@ -296,7 +296,6 @@ var (
 
 		// Allow using VLA CXX extension.
 		"-Wno-vla-cxx-extension",
-		"-Wno-cast-function-type-mismatch",
 	}
 
 	noOverride64GlobalCflags = []string{}
@@ -385,7 +384,7 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r536225"
+	ClangDefaultVersion      = "clang-r530567"
 	ClangDefaultShortVersion = "19"
 
 	// Directories with warnings from Android.bp files.
