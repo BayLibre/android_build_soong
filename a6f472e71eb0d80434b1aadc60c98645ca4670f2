@@ -40,6 +40,30 @@
       ],
       "revId": "a6f472e71eb0d80434b1aadc60c98645ca4670f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "167deb4e_9b951679",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-04T02:12:02Z",
+      "side": 1,
+      "message": "I didn\u0027t see any usages of the partition-specific variables, so I decided not to support it for now.",
+      "parentUuid": "0ad46200_b3b8d95e",
+      "range": {
+        "startLine": 659,
+        "startChar": 124,
+        "endLine": 659,
+        "endChar": 151
+      },
+      "revId": "a6f472e71eb0d80434b1aadc60c98645ca4670f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
