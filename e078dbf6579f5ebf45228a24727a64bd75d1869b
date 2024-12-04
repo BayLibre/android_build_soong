@@ -52,6 +52,24 @@
       "parentUuid": "82a26b53_c6f2f3d7",
       "revId": "e078dbf6579f5ebf45228a24727a64bd75d1869b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a063d49_4acbc34f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-04T02:30:08Z",
+      "side": 1,
+      "message": "\u003e If the checker concerns about the \"cross-container dependencies\", maybe we should add new properties to specify the container?\n\ncontainer is not something that\u0027s configurable based on properties of the module. It is determined based on which partition the module is installed into.\n\n\u003e `framework-*-pre-jarjar` is never installed on the device but its corresponding framework-* is always installed on the device.\n\nHow do you guarantee that `framework-*-pre-jarjar` is never installed? I cannot see this from the module\u0027s definition (i.e. the module is not setting `installable: false`). If the module is (intentionally or unintentionally) added as a static dependency of a module that\u0027s installed to system partition, then we are shipping `framework-*-pre-jarjar` as part of system partition, which is non updatable, while we ship its reverse dependency `framework-connectivity-b` as part of the updatable apex.\n\n\u003e I feel the current checker has some limitations. Performing the check only based on \"static dependency\" would fail to support many important use cases. \n\nWhich checker are you referring to here? Is it the `apex_available` checker or the \"container violation\" checker? If it is the former, the design decision to enforce`apex_available` was made years before I joined the team, and I do not have clear knowledge about why the check is not enforced to shared dependencies. If you are referring to the latter, I do not quite understand why you believe that the check is only based on \"static dependency\", because the check is clearly being performed to shared dependencies, thus has caught this violation.",
+      "parentUuid": "5361267d_38ce44e5",
+      "revId": "e078dbf6579f5ebf45228a24727a64bd75d1869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
