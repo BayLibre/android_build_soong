@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a0f5c7_f127b8ac",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-04T21:09:19Z",
+      "side": 1,
+      "message": "Use snake_case for all properties.",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "683e986d_f20f17aa",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-04T21:09:19Z",
+      "side": 1,
+      "message": "unused?",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98c01f9e_11d39b20",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-04T21:09:19Z",
+      "side": 1,
+      "message": "Just use the presence of the `system_other_partition_name` property for this.",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2662ae11_198327e2",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-04T21:09:19Z",
+      "side": 1,
+      "message": "unused?",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c77d4d53_c21387dd",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-04T21:09:19Z",
+      "side": 1,
+      "message": "Can we not infer this from the union of all the `PartitionList` properties in all the groups?",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d4ddc4b_9d5957a2",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-04T21:09:19Z",
+      "side": 1,
+      "message": "nit: I would remove the `_name` part from all of these, because it\u0027s not just the name, you are going to add real dependencies on them.",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a66324c_3ce53eb6",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-04T21:09:19Z",
+      "side": 1,
+      "message": "Could you add a diff test for the super image? It\u0027s ok if it fails for now.",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "303892b2_98bdc5ba",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-04T21:09:19Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need to pass this in, the super_image module type should pick it up automatically. Similiar to what I did for fec in filesystem: https://android-review.git.corp.google.com/c/platform/build/soong/+/3390960/3/filesystem/filesystem.go#576",
+      "revId": "5a9984198e70d63218936536da5b781e381972a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
