@@ -310,6 +310,27 @@ func (p *prebuiltCommon) IncomingDepIsInSameApex(tag blueprint.DependencyTag) bo
 	return true
 }
 
+func (p *prebuiltCommon) checkExportedDependenciesArePrebuilts(ctx android.ModuleContext) {
+	ctx.VisitDirectDeps(func(dep android.Module) {
+		tag := ctx.OtherModuleDependencyTag(dep)
+		depName := ctx.OtherModuleName(dep)
+		if exportedTag, ok := tag.(exportedDependencyTag); ok {
+			propertyName := exportedTag.name
+
+			// It is an error if the other module is not a prebuilt.
+			if !android.IsModulePrebuilt(dep) {
+				ctx.PropertyErrorf(propertyName, "%q is not a prebuilt module", depName)
+			}
+
+			// It is an error if the other module is not an ApexModule.
+			if _, ok := dep.(android.ApexModule); !ok {
+				ctx.PropertyErrorf(propertyName, "%q is not usable within an apex", depName)
+			}
+		}
+
+	})
+}
+
 // apexInfoMutator marks any modules for which this apex exports a file as requiring an apex
 // specific variant and checks that they are supported.
 //
@@ -335,63 +356,11 @@ func (p *prebuiltCommon) IncomingDepIsInSameApex(tag blueprint.DependencyTag) bo
 //   - The build cost of a prebuilt_apex variant is generally low as at worst it will involve some
 //     extra copying of files. Contrast that with source apex modules that has to build each variant
 //     from source.
-func (p *prebuiltCommon) apexInfoMutator(mctx android.TopDownMutatorContext) {
-	// Collect the list of dependencies.
-	var dependencies []android.ApexModule
-	mctx.WalkDeps(func(child, parent android.Module) bool {
-		// If the child is not in the same apex as the parent then exit immediately and do not visit
-		// any of the child's dependencies.
-		if !android.IsDepInSameApex(mctx, parent, child) {
-			return false
-		}
-
-		tag := mctx.OtherModuleDependencyTag(child)
-		depName := mctx.OtherModuleName(child)
-		if exportedTag, ok := tag.(exportedDependencyTag); ok {
-			propertyName := exportedTag.name
-
-			// It is an error if the other module is not a prebuilt.
-			if !android.IsModulePrebuilt(child) {
-				mctx.PropertyErrorf(propertyName, "%q is not a prebuilt module", depName)
-				return false
-			}
-
-			// It is an error if the other module is not an ApexModule.
-			if _, ok := child.(android.ApexModule); !ok {
-				mctx.PropertyErrorf(propertyName, "%q is not usable within an apex", depName)
-				return false
-			}
-		}
-
-		// Ignore any modules that do not implement ApexModule as they cannot have an APEX specific
-		// variant.
-		if _, ok := child.(android.ApexModule); !ok {
-			return false
-		}
-
-		// Strip off the prebuilt_ prefix if present before storing content to ensure consistent
-		// behavior whether there is a corresponding source module present or not.
-		depName = android.RemoveOptionalPrebuiltPrefix(depName)
-
-		// Add the module to the list of dependencies that need to have an APEX variant.
-		dependencies = append(dependencies, child.(android.ApexModule))
-
-		return true
-	})
-
-	android.SetProvider(mctx, android.ApexBundleInfoProvider, android.ApexBundleInfo{})
-
-	// Create an ApexInfo for the prebuilt_apex.
-	apexVariationName := p.ApexVariationName()
-	apexInfo := android.ApexInfo{
-		ApexVariationName: apexVariationName,
-		InApexVariants:    []string{apexVariationName},
+func (p *prebuiltCommon) generateApexInfo(ctx generateApexInfoContext) android.ApexInfo {
+	return android.ApexInfo{
+		ApexVariationName: "prebuilt_" + p.ApexVariationName(),
+		BaseApexName:      p.ApexVariationName(),
 		ForPrebuiltApex:   true,
-	}
-
-	// Mark the dependencies of this module as requiring a variant for this module.
-	for _, am := range dependencies {
-		am.BuildForApex(apexInfo)
 	}
 }
 
@@ -596,10 +565,22 @@ func (p *Prebuilt) ComponentDepsMutator(ctx android.BottomUpMutatorContext) {
 	p.prebuiltApexContentsDeps(ctx)
 }
 
-var _ ApexInfoMutator = (*Prebuilt)(nil)
+var _ ApexTransitionMutator = (*Prebuilt)(nil)
 
-func (p *Prebuilt) ApexInfoMutator(mctx android.TopDownMutatorContext) {
-	p.apexInfoMutator(mctx)
+func (p *Prebuilt) ApexTransitionMutatorSplit(ctx android.BaseModuleContext) []android.ApexInfo {
+	return []android.ApexInfo{p.generateApexInfo(ctx)}
+}
+
+func (p *Prebuilt) ApexTransitionMutatorOutgoing(ctx android.OutgoingTransitionContext, sourceInfo android.ApexInfo) android.ApexInfo {
+	return sourceInfo
+}
+
+func (p *Prebuilt) ApexTransitionMutatorIncoming(ctx android.IncomingTransitionContext, outgoingInfo android.ApexInfo) android.ApexInfo {
+	return p.generateApexInfo(ctx)
+}
+
+func (p *Prebuilt) ApexTransitionMutatorMutate(ctx android.BottomUpMutatorContext, info android.ApexInfo) {
+	android.SetProvider(ctx, android.ApexBundleInfoProvider, android.ApexBundleInfo{})
 }
 
 // creates the build rules to deapex the prebuilt, and returns a deapexerInfo
@@ -664,6 +645,8 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if !p.IsHideFromMake() {
 		validateApexClasspathFragments(ctx)
 	}
+
+	p.checkExportedDependenciesArePrebuilts(ctx)
 
 	p.apexKeysPath = writeApexKeys(ctx, p)
 	// TODO(jungjw): Check the key validity.
@@ -825,10 +808,22 @@ func (a *ApexSet) ComponentDepsMutator(ctx android.BottomUpMutatorContext) {
 	a.prebuiltApexContentsDeps(ctx)
 }
 
-var _ ApexInfoMutator = (*ApexSet)(nil)
+var _ ApexTransitionMutator = (*ApexSet)(nil)
 
-func (a *ApexSet) ApexInfoMutator(mctx android.TopDownMutatorContext) {
-	a.apexInfoMutator(mctx)
+func (a *ApexSet) ApexTransitionMutatorSplit(ctx android.BaseModuleContext) []android.ApexInfo {
+	return []android.ApexInfo{a.generateApexInfo(ctx)}
+}
+
+func (a *ApexSet) ApexTransitionMutatorOutgoing(ctx android.OutgoingTransitionContext, sourceInfo android.ApexInfo) android.ApexInfo {
+	return sourceInfo
+}
+
+func (a *ApexSet) ApexTransitionMutatorIncoming(ctx android.IncomingTransitionContext, outgoingInfo android.ApexInfo) android.ApexInfo {
+	return a.generateApexInfo(ctx)
+}
+
+func (a *ApexSet) ApexTransitionMutatorMutate(ctx android.BottomUpMutatorContext, info android.ApexInfo) {
+	android.SetProvider(ctx, android.ApexBundleInfoProvider, android.ApexBundleInfo{})
 }
 
 func (a *ApexSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
