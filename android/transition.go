@@ -98,6 +98,12 @@ type TransitionMutator[T any] interface {
 	// allowed to mutate the module.
 	Mutate(ctx BottomUpMutatorContext, transitionInfo T)
 
+	// TransitionInfoFromVariation is called when adding dependencies with an explicit variation after the
+	// TransitionMutator has already run.  It takes a variation name and returns a TransitionInfo for that
+	// variation.  It may not be possible for some TransitionMutators to generate an appropriate TransitionInfo
+	// if the variation does not contain all the information from the TransitionInfo, in which case the
+	// TransitionMutator can panic in TransitionInfoFromVariation, and adding dependencies with explicit variations
+	// for this TransitionMutator is not supported.
 	TransitionInfoFromVariation(variation string) T
 }
 
