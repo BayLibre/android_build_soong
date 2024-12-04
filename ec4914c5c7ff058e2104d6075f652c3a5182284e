@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee9d5eb7_56b8a442",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-12-04T23:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a0f5c7_f127b8ac",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "683e986d_f20f17aa",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-12-04T21:09:19Z",
       "side": 1,
       "message": "unused?",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "404c61b2_9c9e5485",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-12-04T23:05:30Z",
+      "side": 1,
+      "message": "My bad. It should be used to add the line \"ab_update\" in misc_info.txt.",
+      "parentUuid": "683e986d_f20f17aa",
       "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dd08414_8d0db117",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-12-04T23:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98c01f9e_11d39b20",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2662ae11_198327e2",
@@ -65,6 +119,24 @@
       "writtenOn": "2024-12-04T21:09:19Z",
       "side": 1,
       "message": "unused?",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94312b45_6dbc5d18",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-12-04T23:05:30Z",
+      "side": 1,
+      "message": "Done. It\u0027s now used to add line \"build_non_sparse_super_partition\" in misc_info.txt.",
+      "parentUuid": "2662ae11_198327e2",
       "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +158,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd26108_b9c12eee",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-12-04T23:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c77d4d53_c21387dd",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d4ddc4b_9d5957a2",
@@ -103,6 +193,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1d578b_5c64a90f",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-12-04T23:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d4ddc4b_9d5957a2",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a66324c_3ce53eb6",
@@ -116,6 +224,24 @@
       "writtenOn": "2024-12-04T21:09:19Z",
       "side": 1,
       "message": "Could you add a diff test for the super image? It\u0027s ok if it fails for now.",
+      "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f22bc83_25504764",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-12-04T23:05:30Z",
+      "side": 1,
+      "message": "Added the test. It\u0027s running now.",
+      "parentUuid": "9a66324c_3ce53eb6",
       "revId": "ec4914c5c7ff058e2104d6075f652c3a5182284e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
