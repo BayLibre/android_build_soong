@@ -192,6 +192,7 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 			// Bool build flags are always "" for false, and generally "true" for true.
 			allowReadWrite = requireAllReadOnly == ""
 		}
+
 		inputFiles := make([]android.Path, len(declarationFiles))
 		copy(inputFiles, declarationFiles)
 		inputFiles = append(inputFiles, valuesFiles[config]...)
