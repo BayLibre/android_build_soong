@@ -43,16 +43,32 @@ func (f *filesystem) buildAconfigFlagsFiles(ctx android.ModuleContext, builder *
 	f.appendToEntry(ctx, installAconfigFlagsPath)
 
 	installAconfigStorageDir := dir.Join(ctx, "etc", "aconfig")
-	builder.Command().Text("mkdir -p").Text(installAconfigStorageDir.String())
+	sb.WriteString("mkdir -p ")
+	sb.WriteString(installAconfigStorageDir.String())
+	sb.WriteRune('\n')
+
+	val, ok := ctx.Config().GetBuildFlag("RELEASE_FINGERPRINT_ACONFIG_PACKAGES")
+	var version string
+	if ok && val == "true" {
+		version = "2"
+	} else {
+		version = "1"
+	}
 
 	generatePartitionAconfigStorageFile := func(fileType, fileName string) {
 		outputPath := installAconfigStorageDir.Join(ctx, fileName)
-		builder.Command().
-			BuiltTool("aconfig").
-			FlagWithArg("create-storage --container ", f.PartitionType()).
-			FlagWithArg("--file ", fileType).
-			FlagWithOutput("--out ", outputPath).
-			FlagWithArg("--cache ", installAconfigFlagsPath.String())
+		sb.WriteString(aconfigToolPath.String())
+		sb.WriteString(" create-storage --container ")
+		sb.WriteString(f.PartitionType())
+		sb.WriteString(" --file ")
+		sb.WriteString(fileType)
+		sb.WriteString(" --out ")
+		sb.WriteString(outputPath.String())
+		sb.WriteString(" --version ")
+		sb.WriteString(version)
+		sb.WriteString(" \\\n")
+		sb.WriteString(sbCaches.String())
+		cmd.ImplicitOutput(outputPath)
 		f.appendToEntry(ctx, outputPath)
 	}
 
