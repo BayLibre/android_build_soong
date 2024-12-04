@@ -167,6 +167,22 @@ func IsDepInSameApex(ctx BaseModuleContext, module, dep Module) bool {
 	return module.(DepIsInSameApex).DepIsInSameApex(ctx, dep)
 }
 
+func IsDepInSameApexProvider(ctx BaseModuleContext, module, dep Module) bool {
+	depTag := ctx.OtherModuleDependencyTag(dep)
+	if _, ok := depTag.(ExcludeFromApexContentsTag); ok {
+		// The tag defines a dependency that never requires the child module to be part of the same
+		// apex as the parent.
+		return false
+	}
+	if m, ok := module.(interface {
+		DepIsInSameApexProvider(BaseModuleContext, Module) bool
+	}); ok {
+		return m.DepIsInSameApexProvider(ctx, dep)
+	} else {
+		return module.(DepIsInSameApex).DepIsInSameApex(ctx, dep)
+	}
+}
+
 // ApexModule is the interface that a module type is expected to implement if the module has to be
 // built differently depending on whether the module is destined for an APEX or not (i.e., installed
 // to one of the regular partitions).
