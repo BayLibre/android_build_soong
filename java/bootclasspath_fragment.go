@@ -397,7 +397,7 @@ func (b *BootclasspathFragmentModule) DepIsInSameApex(ctx android.BaseModuleCont
 	tag := ctx.OtherModuleDependencyTag(dep)
 
 	// If the module is a default module, do not check the tag
-	if _, ok := dep.(*Defaults); ok {
+	if ctx.OtherModuleType(dep) == "java_defaults" {
 		return true
 	}
 	if IsBootclasspathFragmentContentDepTag(tag) {

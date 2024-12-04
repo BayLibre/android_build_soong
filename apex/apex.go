@@ -1683,6 +1683,32 @@ func (a *apexBundle) WalkPayloadDeps(ctx android.BaseModuleContext, do android.P
 	})
 }
 
+func (a *apexBundle) WalkPayloadDepsProxy(ctx android.BaseModuleContext,
+	do func(ctx android.BaseModuleContext, from, to android.ModuleProxy, externalDep bool) bool) {
+	ctx.WalkDepsProxy(func(child, parent android.ModuleProxy) bool {
+		if _, ok := android.OtherModuleProvider(ctx, child, android.ApexInfoProvider); !ok {
+			return false
+		}
+		// Filter-out unwanted depedendencies
+		depTag := ctx.OtherModuleDependencyTag(child)
+		if _, ok := depTag.(android.ExcludeFromApexContentsTag); ok {
+			return false
+		}
+		if dt, ok := depTag.(*dependencyTag); ok && !dt.payload {
+			return false
+		}
+		if depTag == android.RequiredDepTag {
+			return false
+		}
+
+		ai, _ := android.OtherModuleProvider(ctx, child, android.ApexInfoProvider)
+		externalDep := !android.InList(ctx.ModuleName(), ai.InApexVariants)
+
+		// Visit actually
+		return do(ctx, parent, child, externalDep)
+	})
+}
+
 // filesystem type of the apex_payload.img inside the APEX. Currently, ext4 and f2fs are supported.
 type fsType int
 
@@ -2564,6 +2590,14 @@ func (a *apexBundle) minSdkVersion(ctx android.EarlyModuleContext) android.ApiLe
 	return android.MinSdkVersionFromValue(ctx, a.minSdkVersionValue(ctx))
 }
 
+func DepsInSameApex(ctx android.BaseModuleContext, from, to android.ModuleProxy) bool {
+	if info, ok := android.OtherModuleProvider(ctx, from, android.ApexCheckInfoKey); ok {
+		return android.InList(to.Name(), info.DepsInSameApex)
+	}
+
+	return true
+}
+
 // Ensures that a lib providing stub isn't statically linked
 func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext) {
 	// Practically, we only care about regular APEXes on the device.
@@ -2576,17 +2610,20 @@ func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext
 		librariesDirectlyInApex[ctx.OtherModuleName(dep)] = true
 	})
 
-	a.WalkPayloadDeps(ctx, func(ctx android.BaseModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
-		if ccm, ok := to.(*cc.Module); ok {
+	a.WalkPayloadDepsProxy(ctx, func(ctx android.BaseModuleContext, from, to android.ModuleProxy, externalDep bool) bool {
+		if ccInfo, ok := android.OtherModuleProvider(ctx, to, cc.CcInfoKey); ok {
 			apexName := ctx.ModuleName()
 			fromName := ctx.OtherModuleName(from)
 			toName := ctx.OtherModuleName(to)
 
 			// If `to` is not actually in the same APEX as `from` then it does not need
-			// apex_available and neither do any of its dependencies.
-			//
-			// It is ok to call DepIsInSameApex() directly from within WalkPayloadDeps().
-			if am, ok := from.(android.DepIsInSameApex); ok && !am.DepIsInSameApex(ctx, to) {
+			// apex_available and neither do any of its dependencies. We only call
+			// DepsInSameApex if the from module is not the current one because
+			// DepsInSameApex needs to check a provider that is only available after the
+			// GenerateBuildActions is finished. Also for apexBundle DepsIsInSameApex
+			// always returns true, so ignoring current module shouldn't affect the
+			// check result.
+			if !ctx.EqualModules(ctx.Module(), from) && !DepsInSameApex(ctx, from, to) {
 				// As soon as the dependency graph crosses the APEX boundary, don't go further.
 				return false
 			}
@@ -2600,12 +2637,11 @@ func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext
 				return false
 			}
 
-			isStubLibraryFromOtherApex := ccm.HasStubsVariants() && !librariesDirectlyInApex[toName]
+			isStubLibraryFromOtherApex := ccInfo.HasStubsVariants && !librariesDirectlyInApex[toName]
 			if isStubLibraryFromOtherApex && !externalDep {
 				ctx.ModuleErrorf("%q required by %q is a native library providing stub. "+
 					"It shouldn't be included in this APEX via static linking. Dependency path: %s", to.String(), fromName, ctx.GetPathString(false))
 			}
-
 		}
 		return true
 	})
