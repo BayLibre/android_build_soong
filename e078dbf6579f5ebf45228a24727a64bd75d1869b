@@ -34,6 +34,24 @@
       "parentUuid": "aca711c0_5a78df1c",
       "revId": "e078dbf6579f5ebf45228a24727a64bd75d1869b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5361267d_38ce44e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2024-12-04T02:16:21Z",
+      "side": 1,
+      "message": "\u003e Is it possible to re-evaluate the decision on disallowing these dependencies?\n\nNo. If there is an issue with the checker then we can look at improvements to it, but until we at least have an agreed upon path forward to remove the exceptions then I don\u0027t think we should reconsider whether to add them to the list.\n\nI recommend working with someone on the build team to come up with a proposal that we can verify is safe at build time. This needs to be a real guard rail, not just annotations on the build module that don\u0027t actually enforce where a dependency can be installed.",
+      "parentUuid": "82a26b53_c6f2f3d7",
+      "revId": "e078dbf6579f5ebf45228a24727a64bd75d1869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
