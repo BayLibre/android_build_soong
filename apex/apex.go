@@ -2563,7 +2563,7 @@ func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext
 		librariesDirectlyInApex[ctx.OtherModuleName(dep)] = true
 	})
 
-	a.WalkPayloadDeps(ctx, func(ctx android.BaseModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
+	a.WalkPayloadDeps(ctx, func(ctx android.BaseModuleContext, from android.Module, to android.ApexModule, externalDep bool) bool {
 		if ccm, ok := to.(*cc.Module); ok {
 			apexName := ctx.ModuleName()
 			fromName := ctx.OtherModuleName(from)
@@ -2671,7 +2671,7 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 		return
 	}
 
-	a.WalkPayloadDeps(ctx, func(ctx android.BaseModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
+	a.WalkPayloadDeps(ctx, func(ctx android.BaseModuleContext, from android.Module, to android.ApexModule, externalDep bool) bool {
 		// As soon as the dependency graph crosses the APEX boundary, don't go further.
 		if externalDep {
 			return false
