@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c1967c_d703ca05",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 3524514
+      },
+      "writtenOn": "2024-12-05T12:16:26Z",
+      "side": 1,
+      "message": "Good point. Validated Api Scores in the getApiScores function.",
+      "parentUuid": "db7c620f_6de9f66a",
+      "revId": "fa0350740fde1f288a2e7b627db36d63a545aaf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5e92b9b_698ab5f2",
@@ -82,6 +100,30 @@
           ]
         }
       ],
+      "revId": "fa0350740fde1f288a2e7b627db36d63a545aaf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "964c8d58_267e18d1",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 3524514
+      },
+      "writtenOn": "2024-12-05T12:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5e92b9b_698ab5f2",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 2
+      },
       "revId": "fa0350740fde1f288a2e7b627db36d63a545aaf7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
