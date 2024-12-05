@@ -1222,7 +1222,13 @@ const (
 var _ android.DepIsInSameApex = (*apexBundle)(nil)
 
 // Implements android.DepInInSameApex
-func (a *apexBundle) DepIsInSameApex(_ android.BaseModuleContext, _ android.Module) bool {
+func (a *apexBundle) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) bool {
+	// direct deps of an APEX bundle are all part of the APEX bundle
+	// TODO(jiyong): shouldn't we look into the payload field of the dependencyTag?
+	return true
+}
+
+func (a *apexBundle) IncomingDepIsInSameApex(tag blueprint.DependencyTag) bool {
 	// direct deps of an APEX bundle are all part of the APEX bundle
 	// TODO(jiyong): shouldn't we look into the payload field of the dependencyTag?
 	return true
@@ -2561,19 +2567,14 @@ func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext
 	})
 
 	a.WalkPayloadDeps(ctx, func(ctx android.BaseModuleContext, from android.Module, to android.ApexModule, externalDep bool) bool {
+		if externalDep {
+			return false
+		}
+
 		if ccm, ok := to.(*cc.Module); ok {
 			apexName := ctx.ModuleName()
 			fromName := ctx.OtherModuleName(from)
 			toName := ctx.OtherModuleName(to)
-
-			// If `to` is not actually in the same APEX as `from` then it does not need
-			// apex_available and neither do any of its dependencies.
-			//
-			// It is ok to call DepIsInSameApex() directly from within WalkPayloadDeps().
-			if am, ok := from.(android.DepIsInSameApex); ok && !am.DepIsInSameApex(ctx, to) {
-				// As soon as the dependency graph crosses the APEX boundary, don't go further.
-				return false
-			}
 
 			// The dynamic linker and crash_dump tool in the runtime APEX is the only
 			// exception to this rule. It can't make the static dependencies dynamic
@@ -2687,9 +2688,7 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 
 		// If `to` is not actually in the same APEX as `from` then it does not need
 		// apex_available and neither do any of its dependencies.
-		//
-		// It is ok to call DepIsInSameApex() directly from within WalkPayloadDeps().
-		if am, ok := from.(android.DepIsInSameApex); ok && !am.DepIsInSameApex(ctx, to) {
+		if !android.IsDepInSameApex(ctx, from, to) {
 			// As soon as the dependency graph crosses the APEX boundary, don't go
 			// further.
 			return false
