@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aebe781c_18fdfc87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-05T19:11:47Z",
+      "side": 1,
+      "message": "This change is basically allowing `framework-connectivity-pre-jarjar-without-cronet` to be used for all cross-container dependencies. Blindly allowlisting this module for all reverse dependencies is a source of potential errors.\n\nAlso, note that the ongoing discussion is regarding `framework-connectivity-pre-jarjar`, not `framework-connectivity-pre-jarjar-without-cronet`. Even when b/382299968 is implemented it would not be able to replace `*-without-cronet` module as it contains cronet. The connectivity team would have to figure out how to statically include cronet in the apex and figure out how to use it for intra-apex communication purpose.",
+      "revId": "796e09eefdd6a62fae0d47ccba951929b7d80ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
