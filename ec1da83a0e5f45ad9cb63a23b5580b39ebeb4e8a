@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "831e1c58_fe6923ef",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-12-05T06:43:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af43b8d9_098db37d",
+      "range": {
+        "startLine": 43,
+        "startChar": 7,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "ec1da83a0e5f45ad9cb63a23b5580b39ebeb4e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04a46dec_8fce7ab7",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-12-04T23:23:06Z",
       "side": 1,
       "message": "You need to add lpmake as an implicit dep of the rule so that it\u0027s built.",
+      "revId": "ec1da83a0e5f45ad9cb63a23b5580b39ebeb4e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3643fe1_044fe237",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2024-12-05T06:43:26Z",
+      "side": 1,
+      "message": "Thanks Cole. Also added all the partition images to implicit deps.",
+      "parentUuid": "04a46dec_8fce7ab7",
       "revId": "ec1da83a0e5f45ad9cb63a23b5580b39ebeb4e8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
