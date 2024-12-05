@@ -301,6 +301,10 @@ func createLimitDirgroupRule() []Rule {
 			Without("name", "trusty-arm64-virt-test-debug.lk.elf.gen").
 			Without("name", "trusty-x86_64.lk.elf.gen").
 			Without("name", "trusty-x86_64-test.lk.elf.gen").
+			Without("name", "trusty-desktop-arm64.lk.elf.gen").
+			Without("name", "trusty-desktop-arm64-test.lk.elf.gen").
+			Without("name", "trusty-desktop-x86_64.lk.elf.gen").
+			Without("name", "trusty-desktop-x86_64-test.lk.elf.gen").
 			WithMatcher("dir_srcs", isSetMatcherInstance).Because(reason),
 		NeverAllow().
 			ModuleType("genrule").
@@ -308,6 +312,10 @@ func createLimitDirgroupRule() []Rule {
 			Without("name", "trusty-arm64-virt-test-debug.lk.elf.gen").
 			Without("name", "trusty-x86_64.lk.elf.gen").
 			Without("name", "trusty-x86_64-test.lk.elf.gen").
+			Without("name", "trusty-desktop-arm64.lk.elf.gen").
+			Without("name", "trusty-desktop-arm64-test.lk.elf.gen").
+			Without("name", "trusty-desktop-x86_64.lk.elf.gen").
+			Without("name", "trusty-desktop-x86_64-test.lk.elf.gen").
 			With("keep_gendir", "true").Because(reason),
 	}
 }
