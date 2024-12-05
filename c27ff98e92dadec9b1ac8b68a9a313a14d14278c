@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "599a74b3_9d548168",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-05T01:29:12Z",
+      "side": 1,
+      "message": "Since a separate module does the compiling for partitions, can we remove `File_contexts`?",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c27ff98e92dadec9b1ac8b68a9a313a14d14278c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
