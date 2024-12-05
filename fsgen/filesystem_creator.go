@@ -322,6 +322,7 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 				Name:   proptools.StringPtr("cache"),
 			},
 		}
+		fsProps.Base_dir = proptools.StringPtr("system")
 		fsProps.Dirs = proptools.NewSimpleConfigurable([]string{
 			// From generic_rootdirs in build/make/target/product/generic/Android.bp
 			"acct",
@@ -373,11 +374,11 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 		fsProps.Symlinks = []filesystem.SymlinkDefinition{
 			filesystem.SymlinkDefinition{
 				Target: proptools.StringPtr("/odm"),
-				Name:   proptools.StringPtr("vendor/odm"),
+				Name:   proptools.StringPtr("odm"),
 			},
 			filesystem.SymlinkDefinition{
 				Target: proptools.StringPtr("/vendor_dlkm/lib/modules"),
-				Name:   proptools.StringPtr("vendor/lib/modules"),
+				Name:   proptools.StringPtr("lib/modules"),
 			},
 		}
 		fsProps.Android_filesystem_deps.System = proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "system"))
@@ -388,7 +389,7 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 		fsProps.Symlinks = []filesystem.SymlinkDefinition{
 			filesystem.SymlinkDefinition{
 				Target: proptools.StringPtr("/odm_dlkm/lib/modules"),
-				Name:   proptools.StringPtr("odm/lib/modules"),
+				Name:   proptools.StringPtr("lib/modules"),
 			},
 		}
 	case "userdata":
@@ -431,6 +432,7 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 				Name:   proptools.StringPtr("default.prop"),
 			},
 		}
+		fsProps.Base_dir = proptools.StringPtr("recovery")
 	}
 }
 
@@ -768,10 +770,6 @@ func generateFsProps(ctx android.EarlyModuleContext, partitionType string) (*fil
 	fsProps.Rollback_index = avbInfo.avbRollbackIndex
 
 	fsProps.Partition_name = proptools.StringPtr(partitionType)
-
-	if !strings.Contains(partitionType, "ramdisk") {
-		fsProps.Base_dir = proptools.StringPtr(partitionType)
-	}
 
 	fsProps.Is_auto_generated = proptools.BoolPtr(true)
 
