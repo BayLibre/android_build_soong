@@ -22,6 +22,30 @@
       },
       "revId": "c27ff98e92dadec9b1ac8b68a9a313a14d14278c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df00902_c8df74e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-05T18:12:43Z",
+      "side": 1,
+      "message": "Microdroid and aosp_shared_system_image use uncompiled file_contexts, and also apexes have a similar `file_contexts` property that is widely used. So I kept it. I think if anything we want to remove `precompiled_file_contexts` and use `file_contexts` always, but `file_contexts_bin_gen` currently depends on some precompiled file contexts.",
+      "parentUuid": "599a74b3_9d548168",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c27ff98e92dadec9b1ac8b68a9a313a14d14278c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
