@@ -55,70 +55,15 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 	},
 
 	"cronet_aml_base_base_java": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
 		"jsr305", // apex [com.android.tethering] -> apex [com.android.adservices, com.android.devicelock, com.android.extservices, com.android.healthfitness, com.android.media, com.android.mediaprovider, test_com.android.media, test_com.android.mediaprovider]
-	},
-
-	"cronet_aml_build_android_build_java": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
-	},
-
-	"cronet_aml_components_cronet_android_base_feature_overrides_java_proto": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
-	},
-
-	"cronet_aml_components_cronet_android_cronet_api_java": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
-	},
-
-	"cronet_aml_components_cronet_android_cronet_impl_common_java": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
 	},
 
 	"cronet_aml_components_cronet_android_cronet_impl_native_java": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
 		"jsr305", // apex [com.android.tethering] -> apex [com.android.adservices, com.android.devicelock, com.android.extservices, com.android.healthfitness, com.android.media, com.android.mediaprovider, test_com.android.media, test_com.android.mediaprovider]
-	},
-
-	"cronet_aml_components_cronet_android_cronet_jni_registration_java": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
-	},
-
-	"cronet_aml_components_cronet_android_cronet_shared_java": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
-	},
-
-	"cronet_aml_components_cronet_android_cronet_stats_log_java": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
-	},
-
-	"cronet_aml_components_cronet_android_cronet_urlconnection_impl_java": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
-	},
-
-	"cronet_aml_components_cronet_android_flags_java_proto": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
-	},
-
-	"cronet_aml_components_cronet_android_request_context_config_java_proto": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
 	},
 
 	"cronet_aml_net_android_net_java": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
 		"jsr305", // apex [com.android.tethering] -> apex [com.android.adservices, com.android.devicelock, com.android.extservices, com.android.healthfitness, com.android.media, com.android.mediaprovider, test_com.android.media, test_com.android.mediaprovider]
-	},
-
-	"cronet_aml_net_android_net_thread_stats_uid_java": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
-	},
-
-	"cronet_aml_third_party_jni_zero_jni_zero_java": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
-	},
-
-	"cronet_aml_url_url_java": {
-		"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system
 	},
 
 	"CtsAdservicesHostTestApp": {
@@ -1120,4 +1065,9 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 		"framework-wifi-pre-jarjar", // apex [com.android.wifi, test_com.android.wifi] -> system
 		"jsr305",                    // apex [com.android.wifi, test_com.android.wifi] -> apex [com.android.adservices, com.android.devicelock, com.android.extservices, com.android.healthfitness, com.android.media, com.android.mediaprovider, test_com.android.media, test_com.android.mediaprovider]
 	},
+}
+
+// Dependencies listed here are always allowed regardless of which module depends on them.
+var ContainerDependencyViolationDepAllowlist = []string{
+	"framework-connectivity-pre-jarjar-without-cronet", // apex [com.android.tethering] -> system; see b/382299968
 }
