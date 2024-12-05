@@ -1209,7 +1209,7 @@ func collectJniDeps(ctx android.ModuleContext,
 
 func (a *AndroidApp) WalkPayloadDeps(ctx android.BaseModuleContext, do android.PayloadDepsCallback) {
 	ctx.WalkDeps(func(child, parent android.Module) bool {
-		isExternal := !a.DepIsInSameApex(ctx, child)
+		isExternal := !android.IsDepInSameApex(ctx, parent, child)
 		if am, ok := child.(android.ApexModule); ok {
 			if !do(ctx, parent, am, isExternal) {
 				return false
@@ -1286,11 +1286,11 @@ func (a *AndroidApp) getCertString(ctx android.BaseModuleContext) string {
 	return a.overridableAppProperties.Certificate.GetOrDefault(ctx, "")
 }
 
-func (a *AndroidApp) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
-	if IsJniDepTag(ctx.OtherModuleDependencyTag(dep)) {
+func (a *AndroidApp) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) bool {
+	if IsJniDepTag(tag) {
 		return true
 	}
-	return a.Library.DepIsInSameApex(ctx, dep)
+	return a.Library.OutgoingDepIsInSameApex(tag)
 }
 
 func (a *AndroidApp) Privileged() bool {
