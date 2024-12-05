@@ -107,6 +107,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4040d3eb_f3ff1efd",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-12-05T00:03:04Z",
+      "side": 1,
+      "message": "After discussion, I\u0027ve renamed it to \"ExecutionMetrics\" (metrics gathered during the execution of ninja, or whatever replaces it), rather than \"CombinedMetrics\".  We expect to *add* more metrics to this proto, but none of the existing metrics fit the model of \"metrics about individual build action execution gathered during the execution.\"",
+      "parentUuid": "59fbb8dc_b5987b89",
+      "range": {
+        "startLine": 216,
+        "startChar": 18,
+        "endLine": 216,
+        "endChar": 26
+      },
+      "revId": "0d5ae520b97da9e07fd75aa6e877fa2f70a29cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5c2fac3_bc23f08b",
