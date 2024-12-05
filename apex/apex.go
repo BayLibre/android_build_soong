@@ -1222,7 +1222,13 @@ const (
 var _ android.DepIsInSameApex = (*apexBundle)(nil)
 
 // Implements android.DepInInSameApex
-func (a *apexBundle) DepIsInSameApex(_ android.BaseModuleContext, _ android.Module) bool {
+func (a *apexBundle) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) bool {
+	// direct deps of an APEX bundle are all part of the APEX bundle
+	// TODO(jiyong): shouldn't we look into the payload field of the dependencyTag?
+	return true
+}
+
+func (a *apexBundle) IncomingDepIsInSameApex(tag blueprint.DependencyTag) bool {
 	// direct deps of an APEX bundle are all part of the APEX bundle
 	// TODO(jiyong): shouldn't we look into the payload field of the dependencyTag?
 	return true
@@ -2710,9 +2716,7 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 
 		// If `to` is not actually in the same APEX as `from` then it does not need
 		// apex_available and neither do any of its dependencies.
-		//
-		// It is ok to call DepIsInSameApex() directly from within WalkPayloadDeps().
-		if am, ok := from.(android.DepIsInSameApex); ok && !am.DepIsInSameApex(ctx, to) {
+		if !android.IsDepInSameApex(ctx, from, to) {
 			// As soon as the dependency graph crosses the APEX boundary, don't go
 			// further.
 			return false
