@@ -22,6 +22,30 @@
       },
       "revId": "86fe1dcff196b8b78d584c8d4a609a299a6e1730",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "813f5874_ee7f7609",
+        "filename": "root.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-05T00:00:02Z",
+      "side": 1,
+      "message": "This variable will be used in aosp, because when I fill it out it needs to be in a topic with the aosp errorprone update. \"fill out in internal\" was maybe poor wording.\n\nThere\u0027s only 1 module that needs this, but the variable can\u0027t be next to it because it\u0027s a vendor/ project, and a vendor/ project can\u0027t be in an AOSP topic with the errorprone update.",
+      "parentUuid": "e6d83dd6_ab299b87",
+      "range": {
+        "startLine": 8,
+        "startChar": 37,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "86fe1dcff196b8b78d584c8d4a609a299a6e1730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
