@@ -490,7 +490,9 @@ func checkContainerViolations(ctx ModuleContext) {
 			// satisfies any exception functions, which allows bypassing the
 			// restriction. If all of the exceptions are not satisfied, throw an error.
 			if depContainersInfo, ok := getContainerModuleInfo(ctx, dep); ok {
-				if allowedViolations, ok := ContainerDependencyViolationAllowlist[ctx.ModuleName()]; ok && InList(dep.Name(), allowedViolations) {
+				if InList(dep.Name(), ContainerDependencyViolationDepAllowlist) {
+					return
+				} else if allowedViolations, ok := ContainerDependencyViolationAllowlist[ctx.ModuleName()]; ok && InList(dep.Name(), allowedViolations) {
 					return
 				} else {
 					violations := containersInfo.GetViolations(ctx, ctx.Module(), dep, depContainersInfo)
