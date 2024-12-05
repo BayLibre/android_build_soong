@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c26fda_ab967491",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-05T21:55:31Z",
+      "side": 1,
+      "message": "This feature addition looks good to me, but I\u0027m slightly worried about this due to the fact that api scopes have subset/superset relationships. (i.e. public ⊂ system ⊂ modue lib ⊂ system server). For example would `api_scopes: [\"test\", \"module_lib\"]` (without `\"public\", \"system\"`) be a valid value?\n\n@paulduffin@google.com Do you mind taking a look at this change?",
+      "revId": "be5dca2f63b19fdad9828d6860d84a6f4979ce65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
