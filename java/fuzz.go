@@ -113,9 +113,10 @@ func (j *JavaFuzzTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if j.fuzzPackagedModule.FuzzProperties.Device_common_corpus != nil {
 		j.fuzzPackagedModule.Corpus = append(j.fuzzPackagedModule.Corpus, android.PathsForModuleSrc(ctx, j.fuzzPackagedModule.FuzzProperties.Device_common_corpus)...)
 	}
-	if j.fuzzPackagedModule.FuzzProperties.Data != nil {
-		j.fuzzPackagedModule.Data = android.PathsForModuleSrc(ctx, j.fuzzPackagedModule.FuzzProperties.Data)
-	}
+	j.fuzzPackagedModule.Data = android.PathsForModuleSrc(ctx, j.fuzzPackagedModule.FuzzProperties.Data)
+	j.fuzzPackagedModule.Data = append(j.fuzzPackagedModule.Data, android.PathsForModuleSrc(ctx, j.fuzzPackagedModule.FuzzProperties.Device_common_data)...)
+	j.fuzzPackagedModule.Data = append(j.fuzzPackagedModule.Data, android.PathsForModuleSrc(ctx, j.fuzzPackagedModule.FuzzProperties.Device_first_data)...)
+
 	if j.fuzzPackagedModule.FuzzProperties.Dictionary != nil {
 		j.fuzzPackagedModule.Dictionary = android.PathForModuleSrc(ctx, *j.fuzzPackagedModule.FuzzProperties.Dictionary)
 	}
