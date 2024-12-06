@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f78ad3d0_24e5d9a5",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-06T02:19:37Z",
+      "side": 1,
+      "message": "Could you make setting `forceRemoveAssets` cause this line to not use the default assets dir instead? I don\u0027t think anything else should be contributing asset directories.",
+      "revId": "88849aaad50487f353beb5f67a932fe6f82c92c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
