@@ -34,6 +34,24 @@
       "parentUuid": "aebe781c_18fdfc87",
       "revId": "796e09eefdd6a62fae0d47ccba951929b7d80ad3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d739a5b_2d54def1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1556717
+      },
+      "writtenOn": "2024-12-06T10:26:00Z",
+      "side": 1,
+      "message": "I\u0027m confused - why you are you saying that `framework-connectivity-pre-jarjar-without-cronet` \"contains cronet\"? My understanding is it does not, hence the name?\n\nThis is blocking the next Cronet import (http://b/381421702) which is a top priority for our team. I\u0027m honestly a bit confused as to why this seems so controversial, given this is simply going back to the pre-checker status quo (for this particular module only), and this is only meant as a temporary stopgap until we collectively figure out a clean solution. How do we move this forward?",
+      "parentUuid": "facacc5b_e51af4b5",
+      "revId": "796e09eefdd6a62fae0d47ccba951929b7d80ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
