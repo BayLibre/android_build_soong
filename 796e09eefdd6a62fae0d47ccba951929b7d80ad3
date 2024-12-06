@@ -52,6 +52,24 @@
       "parentUuid": "facacc5b_e51af4b5",
       "revId": "796e09eefdd6a62fae0d47ccba951929b7d80ad3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b558b71_a2a48c66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1556717
+      },
+      "writtenOn": "2024-12-06T10:45:04Z",
+      "side": 1,
+      "message": "Also, just to provide some additional context:\n\nIt\u0027s highly unlikely that `framework-connectivity-pre-jarjar-without-cronet` would end up being depended on from outside the Connectivity module. Not only is this module an obscure implementation detail that other modules would not want to depend on in the first place, but also it has `visibility: [\"//external/cronet:__subpackages__\"]` which makes it pretty hard to make this mistake (Cronet only ships in the Connectivity module). So I would suggest that the risk of blanket-allowing this particular module is very small.",
+      "parentUuid": "5d739a5b_2d54def1",
+      "revId": "796e09eefdd6a62fae0d47ccba951929b7d80ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
