@@ -869,10 +869,32 @@ func (f *filesystem) buildEventLogtagsFile(ctx android.ModuleContext, builder *a
 	}
 
 	logtagsFilePaths := make(map[string]bool)
-	ctx.WalkDeps(func(child, parent android.Module) bool {
+	ctx.WalkDepsProxy(func(child, parent android.ModuleProxy) bool {
+		depTag := ctx.OtherModuleDependencyTag(child)
+		if strings.Contains(ctx.OtherModuleName(child), "SystemUI") {
+			fmt.Printf("systemui in partition: %s\n", ctx.OtherModuleName(child))
+		}
+		if ctx.OtherModuleName(parent) == ctx.ModuleName() {
+			if pi, ok := depTag.(android.PackagingItem); !ok || !pi.IsPackagingItem() {
+				if strings.Contains(ctx.OtherModuleName(child), "SystemUI") {
+					fmt.Printf("not a packagingitem: %s\n", ctx.OtherModuleName(child))
+				}
+				return false
+			}
+		} else {
+			if !android.IsInstallDepNeededTag(depTag) {
+				return false
+			}
+		}
+		if strings.Contains(ctx.OtherModuleName(child), "SystemUI") {
+			fmt.Printf("systemui in partition: %s\n", ctx.OtherModuleName(child))
+		}
 		if logtagsInfo, ok := android.OtherModuleProvider(ctx, child, android.LogtagsProviderKey); ok {
-			for _, path := range logtagsInfo.Logtags {
+			for _, path := range logtagsInfo.Logtags.ToList() {
 				logtagsFilePaths[path.String()] = true
+			}
+			if ctx.OtherModuleName(child) == "SystemUI" {
+				fmt.Printf("SystemUI logtags: %s\n", logtagsInfo.Logtags.ToList())
 			}
 		}
 		return true

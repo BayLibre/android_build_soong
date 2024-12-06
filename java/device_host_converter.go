@@ -155,7 +155,6 @@ func (d *DeviceHostConverter) GenerateAndroidBuildActions(ctx android.ModuleCont
 		// TODO: Not sure if aconfig flags that have been moved between device and host variants
 		// make sense.
 	})
-
 }
 
 func (d *DeviceHostConverter) HeaderJars() android.Paths {

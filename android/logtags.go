@@ -14,10 +14,34 @@
 
 package android
 
-import "github.com/google/blueprint"
+import (
+	"github.com/google/blueprint"
+	"github.com/google/blueprint/depset"
+)
 
 type LogtagsInfo struct {
-	Logtags Paths
+	Logtags depset.DepSet[Path]
 }
 
 var LogtagsProviderKey = blueprint.NewProvider[*LogtagsInfo]()
+
+// CreateLogtagsDepset creates a depset of the given logtags + the logtags of any direct deps
+// whose dependency tag matches the predicate.
+func CreateLogtagsDepset(ctx ModuleContext, logtags Paths, tagPredicate func(blueprint.DependencyTag) bool) depset.DepSet[Path] {
+	var allDepLogtags []depset.DepSet[Path]
+	ctx.VisitDirectDeps(func(m Module) {
+		tag := ctx.OtherModuleDependencyTag(m)
+		if tagPredicate(tag) {
+			depLogTags, ok := OtherModuleProvider(ctx, m, LogtagsProviderKey)
+			if ok {
+				allDepLogtags = append(allDepLogtags, depLogTags.Logtags)
+			}
+		}
+	})
+
+	return depset.New(
+		depset.PREORDER,
+		logtags,
+		allDepLogtags,
+	)
+}

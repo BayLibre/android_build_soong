@@ -135,13 +135,14 @@ func (j *Module) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 	outSrcFiles := make(android.Paths, 0, len(srcFiles))
 	var protoSrcs android.Paths
 	var aidlSrcs android.Paths
+	var directLogtags android.Paths
 
 	for _, srcFile := range srcFiles {
 		switch srcFile.Ext() {
 		case ".aidl":
 			aidlSrcs = append(aidlSrcs, srcFile)
 		case ".logtags":
-			j.logtagsSrcs = append(j.logtagsSrcs, srcFile)
+			directLogtags = append(directLogtags, srcFile)
 			javaFile := genLogtags(ctx, srcFile)
 			outSrcFiles = append(outSrcFiles, javaFile)
 		case ".proto":
@@ -170,8 +171,12 @@ func (j *Module) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 		outSrcFiles = append(outSrcFiles, srcJarFiles...)
 	}
 
+	logtags := android.CreateLogtagsDepset(ctx, directLogtags, func(tag blueprint.DependencyTag) bool {
+		return tag == staticLibTag
+	})
+	j.logtagsSrcs = logtags.ToList()
 	android.SetProvider(ctx, android.LogtagsProviderKey, &android.LogtagsInfo{
-		Logtags: j.logtagsSrcs,
+		Logtags: logtags,
 	})
 
 	return outSrcFiles

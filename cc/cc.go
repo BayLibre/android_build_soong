@@ -1923,9 +1923,16 @@ func (c *Module) stubLibraryMultipleApexViolation(ctx android.ModuleContext) boo
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	ctx := moduleContextFromAndroidModuleContext(actx, c)
 
-	c.logtagsPaths = android.PathsForModuleSrc(actx, c.Properties.Logtags)
+	directLogtags := android.PathsForModuleSrc(actx, c.Properties.Logtags)
+	logtags := android.CreateLogtagsDepset(ctx, directLogtags, func(tag blueprint.DependencyTag) bool {
+		if libTag, ok := tag.(libraryDependencyTag); ok {
+			return libTag.static()
+		}
+		return false
+	})
+	c.logtagsPaths = logtags.ToList()
 	android.SetProvider(ctx, android.LogtagsProviderKey, &android.LogtagsInfo{
-		Logtags: c.logtagsPaths,
+		Logtags: logtags,
 	})
 
 	// If Test_only is set on a module in bp file, respect the setting, otherwise
