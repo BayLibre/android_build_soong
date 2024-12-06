@@ -16,6 +16,40 @@
       "message": "This feature addition looks good to me, but I\u0027m slightly worried about this due to the fact that api scopes have subset/superset relationships. (i.e. public ⊂ system ⊂ modue lib ⊂ system server). For example would `api_scopes: [\"test\", \"module_lib\"]` (without `\"public\", \"system\"`) be a valid value?\n\n@paulduffin@google.com Do you mind taking a look at this change?",
       "revId": "be5dca2f63b19fdad9828d6860d84a6f4979ce65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63532ef_c5efb892",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-12-06T12:57:51Z",
+      "side": 1,
+      "message": "Please add tests to show how this would be used and please update the commit message with an explanation as to why you need to change the set of scopes at all? Are you adding new ones (if so then that probably won\u0027t work as there are lots of places in the build that would need to be changed to do that)? Are you restricting existing ones? If so why?",
+      "revId": "be5dca2f63b19fdad9828d6860d84a6f4979ce65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d741761_1b529f85",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-12-06T12:57:51Z",
+      "side": 1,
+      "message": "Please run `gofmt -w java/prebuilt_apis.go` to ensure correct formatting.",
+      "revId": "be5dca2f63b19fdad9828d6860d84a6f4979ce65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
