@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d92bc54e_5da5d163",
+        "filename": "java/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-06T21:21:12Z",
+      "side": 1,
+      "message": "nit: Can this be replaced with\n```\nj.fuzzPackagedModule \u003d cc.PackageFuzzModule(ctx, j.fuzzPackagedModule, pctx)\n```",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "f555b23cf4afc0ce1a2bf7f563a0a90bc28f3818",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
