@@ -890,12 +890,22 @@ func (f *filesystemCreator) createFileListDiffTest(ctx android.ModuleContext, pa
 	}
 	makeFileList := android.PathForArbitraryOutput(ctx, fmt.Sprintf("target/product/%s/obj/PACKAGING/%s_intermediates/file_list.txt", ctx.Config().DeviceName(), partitionType))
 	diffTestResultFile := android.PathForModuleOut(ctx, fmt.Sprintf("diff_test_%s.txt", partitionModuleName))
+	allowlistFiles := ""
+	if partitionType == "system" {
+		allowlistFiles = "init.environ.rc"
+	} else if !strings.Contains(partitionType, "ramdisk") {
+		allowlistFiles = "etc/NOTICE.xml.gz"
+	}
+	allowlistForDiffTest := android.PathForModuleOut(ctx, "allowlists", partitionType)
+	android.WriteFileRuleVerbatim(ctx, allowlistForDiffTest, allowlistFiles)
 
 	builder := android.NewRuleBuilder(pctx, ctx)
 	builder.Command().BuiltTool("file_list_diff").
 		Input(makeFileList).
 		Input(filesystemInfo.FileListFile).
-		Text(partitionModuleName)
+		Text(partitionModuleName).
+		FlagWithInput("--allowlists ", allowlistForDiffTest)
+
 	builder.Command().Text("touch").Output(diffTestResultFile)
 	builder.Build(partitionModuleName+" diff test", partitionModuleName+" diff test")
 	return diffTestResultFile
@@ -972,9 +982,14 @@ func (f *filesystemCreator) GenerateAndroidBuildActions(ctx android.ModuleContex
 	ctx.Phony("product_config_to_bp", generatedBp)
 
 	var diffTestFiles []android.Path
+	// partitions which have been converted (with some known diffs like NOTICE files)
+	var convertedDiffTestFiles []android.Path
 	for _, partitionType := range f.properties.Generated_partition_types {
 		diffTestFile := f.createFileListDiffTest(ctx, partitionType)
 		diffTestFiles = append(diffTestFiles, diffTestFile)
+		if partitionType != "recovery" { // TODO(b/381888358)
+			convertedDiffTestFiles = append(convertedDiffTestFiles, diffTestFile)
+		}
 		ctx.Phony(fmt.Sprintf("soong_generated_%s_filesystem_test", partitionType), diffTestFile)
 	}
 	for _, partitionType := range f.properties.Unsupported_partition_types {
@@ -1020,6 +1035,10 @@ func (f *filesystemCreator) GenerateAndroidBuildActions(ctx android.ModuleContex
 		ctx.Phony("soong_generated_super_filesystem_test", diffTestFile)
 	}
 	ctx.Phony("soong_generated_filesystem_tests", diffTestFiles...)
+	if ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.ProductEnforceNoFilesystemDiffs && ctx.Config().KatiEnabled() {
+		// kati needs to be enabled to get the reference files to compare against.
+		ctx.Phony("droid", convertedDiffTestFiles...)
+	}
 }
 
 func generateBpContent(ctx android.EarlyModuleContext, partitionType string) string {
