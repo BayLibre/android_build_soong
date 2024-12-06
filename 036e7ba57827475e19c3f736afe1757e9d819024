@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f83e1b2f_afccd7f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-06T01:49:40Z",
+      "side": 1,
+      "message": "Acknowledged. Thanks for the explanation.",
+      "parentUuid": "7c123307_3032a358",
+      "revId": "036e7ba57827475e19c3f736afe1757e9d819024",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "465dbda3_6260c3da",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
