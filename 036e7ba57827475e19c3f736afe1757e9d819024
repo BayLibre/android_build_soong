@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "465dbda3_6260c3da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-06T01:17:51Z",
+      "side": 1,
+      "message": "A side effect of this CL is that `droid` exists even with `m --soong-only`",
+      "revId": "036e7ba57827475e19c3f736afe1757e9d819024",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
