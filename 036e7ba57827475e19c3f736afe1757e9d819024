@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7c123307_3032a358",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-06T01:48:03Z",
+      "side": 1,
+      "message": "Sorry for the incorrect wording. I meant that these `diff` commands should eventually become a validation action when building img files.",
+      "parentUuid": "ab267c7d_d4559f2f",
+      "revId": "036e7ba57827475e19c3f736afe1757e9d819024",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "465dbda3_6260c3da",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
