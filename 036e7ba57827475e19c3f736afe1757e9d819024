@@ -105,6 +105,29 @@
       "parentUuid": "465dbda3_6260c3da",
       "revId": "036e7ba57827475e19c3f736afe1757e9d819024",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "819ce3cd_ee2ff4ea",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-06T19:26:41Z",
+      "side": 1,
+      "message": "Such inlining is not supported by /bin/sh, so I have updated the implementation to create an intermediate allowlist file.",
+      "range": {
+        "startLine": 901,
+        "startChar": 30,
+        "endLine": 901,
+        "endChar": 53
+      },
+      "revId": "036e7ba57827475e19c3f736afe1757e9d819024",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
