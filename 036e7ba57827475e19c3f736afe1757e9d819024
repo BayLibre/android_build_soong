@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab267c7d_d4559f2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-06T01:45:47Z",
+      "side": 1,
+      "message": "nit: `diff` (bit identicalness) test is [already being run](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/fsgen/filesystem_creator.go;l\u003d935;drc\u003dd2505873e521984f6d4732d4acd9f87fe338d159) as `soong_generated_*_boot_filesystem_test`",
+      "revId": "036e7ba57827475e19c3f736afe1757e9d819024",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "465dbda3_6260c3da",
