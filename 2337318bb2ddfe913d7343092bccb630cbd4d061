@@ -16,6 +16,24 @@
       "message": "This would add the .recovery to both image variants of the module. In a couple of other places I see `p.InRecovery() \u0026\u0026 !p.onlyInRecovery()` being used instead, should we use that?",
       "revId": "2337318bb2ddfe913d7343092bccb630cbd4d061",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5129152_ba297083",
+        "filename": "etc/otacerts_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-07T00:40:32Z",
+      "side": 1,
+      "message": "Agreed. I saw that `onlyInRecovery()` is just a [wrapper for `ModuleBase.InstallInRecovery()`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/etc/prebuilt_etc.go;l\u003d252;drc\u003d320ca7c7d3f5aa118a73199fa0b2c70977adbb20), thus I just used `ModuleBase.InstallInRecovery()` instead (Note that `InstallInRecovery()` is overridden).",
+      "parentUuid": "310ea178_ce256b4d",
+      "revId": "2337318bb2ddfe913d7343092bccb630cbd4d061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
