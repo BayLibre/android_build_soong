@@ -109,6 +109,10 @@ type CommonProperties struct {
 	// if not blank, used as prefix to generate repackage rule
 	Jarjar_prefix *string
 
+	// Number of shards for jarjar. It needs to be an integer represented as a string.
+	// TODO(b/383559945) change it to int, once Configurable supports the type.
+	Jarjar_shards proptools.Configurable[string]
+
 	// If not blank, set the java version passed to javac as -source and -target
 	Java_version *string
 
@@ -2946,7 +2950,13 @@ func (j *Module) jarjarIfNecessary(ctx android.ModuleContext, infile android.Pat
 		return infile, false
 	}
 	jarjarFile := android.PathForModuleOut(ctx, "jarjar", info, jarName)
-	TransformJarJar(ctx, jarjarFile, infile, j.expandJarjarRules)
+
+	totalShardsStr := j.properties.Jarjar_shards.GetOrDefault(ctx, "1")
+	totalShards, err := strconv.Atoi(totalShardsStr)
+	if err != nil {
+		ctx.PropertyErrorf("jarjar_shards", "jarjar_shards must be an integer represented as a string")
+	}
+	TransformJarJarWithShards(ctx, jarjarFile, infile, j.expandJarjarRules, totalShards)
 	return jarjarFile, true
 
 }
