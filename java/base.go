@@ -109,6 +109,9 @@ type CommonProperties struct {
 	// if not blank, used as prefix to generate repackage rule
 	Jarjar_prefix *string
 
+	// Number of shards for jarjar
+	Jarjar_shards *int64
+
 	// If not blank, set the java version passed to javac as -source and -target
 	Java_version *string
 
@@ -2946,7 +2949,9 @@ func (j *Module) jarjarIfNecessary(ctx android.ModuleContext, infile android.Pat
 		return infile, false
 	}
 	jarjarFile := android.PathForModuleOut(ctx, "jarjar", info, jarName)
-	TransformJarJar(ctx, jarjarFile, infile, j.expandJarjarRules)
+
+	totalShards := proptools.IntDefault(j.properties.Jarjar_shards, 1)
+	TransformJarJarWithShards(ctx, jarjarFile, infile, j.expandJarjarRules, totalShards)
 	return jarjarFile, true
 
 }
