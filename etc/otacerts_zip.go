@@ -136,7 +136,7 @@ func (m *otacertsZipModule) GenerateAndroidBuildActions(ctx android.ModuleContex
 
 func (m *otacertsZipModule) AndroidMkEntries() []android.AndroidMkEntries {
 	nameSuffix := ""
-	if m.InRecovery() {
+	if m.InRecovery() && !m.ModuleBase.InstallInRecovery() {
 		nameSuffix = ".recovery"
 	}
 	return []android.AndroidMkEntries{android.AndroidMkEntries{
