@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "310ea178_ce256b4d",
+        "filename": "etc/otacerts_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-07T00:32:56Z",
+      "side": 1,
+      "message": "This would add the .recovery to both image variants of the module. In a couple of other places I see `p.InRecovery() \u0026\u0026 !p.onlyInRecovery()` being used instead, should we use that?",
+      "revId": "2337318bb2ddfe913d7343092bccb630cbd4d061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
