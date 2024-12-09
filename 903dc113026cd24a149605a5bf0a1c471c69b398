@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dae5272_e553fc88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-09T23:52:06Z",
+      "side": 1,
+      "message": "Cole, WDYT about this CL? Is there a better alternative to fix the diffs in https://diff.googleplex.com/#key\u003d9xuSx7nvP251? (LHS is make, RHS is soong at Tot)",
+      "revId": "903dc113026cd24a149605a5bf0a1c471c69b398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
