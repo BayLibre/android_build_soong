@@ -22,6 +22,30 @@
       },
       "revId": "ddcc8b5df1ac33021492d21704b95aaa8cad8571",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1c65ac_4b76114c",
+        "filename": "etc/otacerts_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-09T18:03:31Z",
+      "side": 1,
+      "message": "There were no specific problems regarding the image mutation itself; the issue is that `otacerts.recovery` is being installed in the recovery partition via `PRODUCT_PACKAGES`, and given that `otacerts.recovery` is a Soong-generated Androidmk module it is not possible for the Soong generated filesystem module to depend on `otacerts.recovery`. This is not an issue specific to `otacerts.recovery`, but for multiple modules that are installing to recovery partition via `recovery_available` property instead of defining a dedicated module for recovery partition.\n\nGiven that there is no use cases of image mutation for `otacerts_zip` module, I will remove this in the follow up change.",
+      "parentUuid": "e96f6be4_07e5e922",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 55
+      },
+      "revId": "ddcc8b5df1ac33021492d21704b95aaa8cad8571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
