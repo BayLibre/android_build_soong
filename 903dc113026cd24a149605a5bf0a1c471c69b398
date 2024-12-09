@@ -16,6 +16,23 @@
       "message": "Cole, WDYT about this CL? Is there a better alternative to fix the diffs in https://diff.googleplex.com/#key\u003d9xuSx7nvP251? (LHS is make, RHS is soong at Tot)",
       "revId": "903dc113026cd24a149605a5bf0a1c471c69b398",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d116c5bd_a6e763ca",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-09T23:59:05Z",
+      "side": 1,
+      "message": "nit: return an OutputPath from this function, as all usages just immediately use it as a path.",
+      "revId": "903dc113026cd24a149605a5bf0a1c471c69b398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
