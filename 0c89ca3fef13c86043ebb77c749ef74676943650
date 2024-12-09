@@ -46,6 +46,29 @@
       },
       "revId": "0c89ca3fef13c86043ebb77c749ef74676943650",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a790df0_ac8ad954",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-09T19:37:50Z",
+      "side": 1,
+      "message": "With this CL topic, IIUC the version codes of all apexes (including non mainline) will end with 9 by default. \n\nIs the proposed version scheme of  go/aml-default-version-code restricted to mainline modules? If not, can we remove `defaultVersionInt%10 !\u003d 0` check?",
+      "range": {
+        "startLine": 340,
+        "startChar": 5,
+        "endLine": 340,
+        "endChar": 30
+      },
+      "revId": "0c89ca3fef13c86043ebb77c749ef74676943650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
