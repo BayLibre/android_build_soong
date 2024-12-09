@@ -33,6 +33,24 @@
       "message": "Where is this used?",
       "revId": "63e15b5679a65ab873d9eacc6dbb7cacb3043fce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68e918ed_76f4877d",
+        "filename": "cmd/release_config/release_config_lib/release_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-12-09T19:48:38Z",
+      "side": 1,
+      "message": "`build/core/release_config.mk` checks it as of aosp/3396884.",
+      "parentUuid": "f6f1b58b_0c8b71dd",
+      "revId": "63e15b5679a65ab873d9eacc6dbb7cacb3043fce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
