@@ -34,6 +34,24 @@
       "parentUuid": "310ea178_ce256b4d",
       "revId": "2337318bb2ddfe913d7343092bccb630cbd4d061",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac0714a_0e0a5f84",
+        "filename": "etc/otacerts_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-09T18:19:07Z",
+      "side": 1,
+      "message": "I would keep using `onlyInRecovery()` so it matches [the other cases](https://cs.android.com/search?q\u003d%5C.InRecovery%5C(%5C)%5C%20%26%26%5C%20!.%5C.onlyInRecovery%5C(%5C)\u0026sq\u003d\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain), but either way.",
+      "parentUuid": "e5129152_ba297083",
+      "revId": "2337318bb2ddfe913d7343092bccb630cbd4d061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
