@@ -440,21 +440,69 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 	case "recovery":
 		// Following https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l=2826;drc=ad7cfb56010cb22c3aa0e70cf71c804352553526
 		fsProps.Dirs = android.NewSimpleConfigurable([]string{
-			"sdcard",
-			"tmp",
+			"root/sdcard",
+			"root/tmp",
 		})
 		fsProps.Symlinks = []filesystem.SymlinkDefinition{
 			{
 				Target: proptools.StringPtr("/system/bin/init"),
-				Name:   proptools.StringPtr("init"),
+				Name:   proptools.StringPtr("root/init"),
 			},
 			{
 				Target: proptools.StringPtr("prop.default"),
-				Name:   proptools.StringPtr("default.prop"),
+				Name:   proptools.StringPtr("root/default.prop"),
+			},
+			{
+				Target: proptools.StringPtr("/vendor/odm/app"),
+				Name:   proptools.StringPtr("root/odm/app"),
+			},
+			{
+				Target: proptools.StringPtr("/vendor/odm/bin"),
+				Name:   proptools.StringPtr("root/odm/bin"),
+			},
+			{
+				Target: proptools.StringPtr("/vendor/odm/etc"),
+				Name:   proptools.StringPtr("root/odm/etc"),
+			},
+			{
+				Target: proptools.StringPtr("/vendor/odm/firmware"),
+				Name:   proptools.StringPtr("root/odm/firmware"),
+			},
+			{
+				Target: proptools.StringPtr("/vendor/odm/framework"),
+				Name:   proptools.StringPtr("root/odm/framework"),
+			},
+			{
+				Target: proptools.StringPtr("/vendor/odm/lib"),
+				Name:   proptools.StringPtr("root/odm/lib"),
+			},
+			{
+				Target: proptools.StringPtr("/vendor/odm/lib64"),
+				Name:   proptools.StringPtr("root/odm/lib64"),
+			},
+			{
+				Target: proptools.StringPtr("/vendor/odm/overlay"),
+				Name:   proptools.StringPtr("root/odm/overlay"),
+			},
+			{
+				Target: proptools.StringPtr("/vendor/odm/priv-app"),
+				Name:   proptools.StringPtr("root/odm/priv-app"),
+			},
+			{
+				Target: proptools.StringPtr("/vendor/odm/usr"),
+				Name:   proptools.StringPtr("root/odm/usr"),
+			},
+			{
+				Target: proptools.StringPtr("/vendor/odm_dlkm/etc"),
+				Name:   proptools.StringPtr("root/odm_dlkm/etc"),
+			},
+			{
+				Target: proptools.StringPtr("/vendor/vendor_dlkm/etc"),
+				Name:   proptools.StringPtr("root/vendor_dlkm/etc"),
 			},
 		}
-		fsProps.Base_dir = proptools.StringPtr("recovery")
 	}
+
 }
 
 var (
