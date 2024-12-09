@@ -96,7 +96,9 @@ func (f *filesystem) buildFsverityMetadataFiles(ctx android.ModuleContext, build
 	builder.Command().
 		BuiltTool("fsverity_manifest_generator").
 		FlagWithInput("--fsverity-path ", fsverityPath).
-		FlagWithArg("--base-dir ", rootDir.String()).
+		// Although base-dir is outside the rootdir provided for packaging, this action
+		// is hermetic since it uses `manifestGeneratorListPath` to filter the files to be written to build_manifest.pb
+		FlagWithArg("--base-dir ", filepath.Dir(rootDir.String())).
 		FlagWithArg("--output ", manifestPbPath.String()).
 		FlagWithInput("@", manifestGeneratorListPath)
 
