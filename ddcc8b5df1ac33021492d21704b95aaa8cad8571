@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e96f6be4_07e5e922",
+        "filename": "etc/otacerts_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-12-09T02:44:07Z",
+      "side": 1,
+      "message": "As I wanted to use `otacerts_zip` with `recovery_available: true,` but not with `recovery: true,`, I didn\u0027t check the case for `recovery: true,`.\nThis is a correct change for a recovery variant of `recovery_available: true,` module to have `.recovery` suffix; while `recovery: true,` module doesn\u0027t.\nHowever, if you don\u0027t allow image mutation with `recovery_available`, you may remove `ImageInterface` from the `otacertsZipModule` with the `Recovery_available` property. And then, this if-clause can be removed.\nBut were there any problem on using the image mutation in `otacerts_zip` module?",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 55
+      },
+      "revId": "ddcc8b5df1ac33021492d21704b95aaa8cad8571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
