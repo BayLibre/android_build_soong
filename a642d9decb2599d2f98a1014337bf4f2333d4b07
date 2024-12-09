@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "621d035d_72793bb3",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-12-09T17:32:08Z",
+      "side": 1,
+      "message": "tl;dr: overabundance of caution\n\nI\u0027ll re-upload without it shortly.",
+      "parentUuid": "cf2522a3_0cae78eb",
+      "revId": "a642d9decb2599d2f98a1014337bf4f2333d4b07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c511430f_f9d8f1fb",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-12-06T19:25:51Z",
       "side": 1,
       "message": "Can you add a call to\n\n```\nctx.BeginTrace(metrics.RunSoong, \"execution_metrics.Finish\")\ndefer ctx.EndTrace()\n```\n\nhere so we can easily measure how long this takes. Same with Dump below.",
+      "revId": "a642d9decb2599d2f98a1014337bf4f2333d4b07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27dcf160_5968c532",
+        "filename": "ui/execution_metrics/execution_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-12-09T17:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c511430f_f9d8f1fb",
       "revId": "a642d9decb2599d2f98a1014337bf4f2333d4b07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
