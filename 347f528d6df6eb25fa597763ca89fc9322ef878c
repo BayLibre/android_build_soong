@@ -22,6 +22,30 @@
       },
       "revId": "347f528d6df6eb25fa597763ca89fc9322ef878c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7358658e_057d32d6",
+        "filename": "aconfig/codegen/init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1944425
+      },
+      "writtenOn": "2024-12-09T21:52:55Z",
+      "side": 1,
+      "message": "Thank you! when this is set to true it will generate new version of exported code. if it is false, then it will generate old version of exported code. We will remove it once the build flag is release with true.",
+      "parentUuid": "ab48bc06_49c209b7",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "347f528d6df6eb25fa597763ca89fc9322ef878c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
