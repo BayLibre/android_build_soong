@@ -22,6 +22,30 @@
       },
       "revId": "0c89ca3fef13c86043ebb77c749ef74676943650",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "474d7b28_cccb39f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-09T18:59:24Z",
+      "side": 1,
+      "message": "oh nvm, it\u0027s the comma messing up the linking.",
+      "parentUuid": "187c0e87_4a62871e",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "0c89ca3fef13c86043ebb77c749ef74676943650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
