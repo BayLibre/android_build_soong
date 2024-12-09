@@ -16,6 +16,23 @@
       "message": "Before this can be submitted, aosp/3399733 needs to be fully rolled out.",
       "revId": "63e15b5679a65ab873d9eacc6dbb7cacb3043fce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f1b58b_0c8b71dd",
+        "filename": "cmd/release_config/release_config_lib/release_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-12-09T17:56:28Z",
+      "side": 1,
+      "message": "Where is this used?",
+      "revId": "63e15b5679a65ab873d9eacc6dbb7cacb3043fce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
