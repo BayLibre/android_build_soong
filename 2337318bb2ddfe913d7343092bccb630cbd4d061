@@ -52,6 +52,24 @@
       "parentUuid": "e5129152_ba297083",
       "revId": "2337318bb2ddfe913d7343092bccb630cbd4d061",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dc673e6_b1a24872",
+        "filename": "etc/otacerts_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-09T21:58:32Z",
+      "side": 1,
+      "message": "Defined `onlyInRecovery()` and utilized it as suggested.",
+      "parentUuid": "4ac0714a_0e0a5f84",
+      "revId": "2337318bb2ddfe913d7343092bccb630cbd4d061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
