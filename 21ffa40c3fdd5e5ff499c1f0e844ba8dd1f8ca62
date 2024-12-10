@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3dbbe00_b632bca2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-12-10T20:55:32Z",
+      "side": 1,
+      "message": "This gets us baseline metrics for kotlin builds.",
+      "revId": "21ffa40c3fdd5e5ff499c1f0e844ba8dd1f8ca62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
