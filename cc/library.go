@@ -725,6 +725,8 @@ type libraryInterface interface {
 
 	availableFor(string) bool
 
+	apexAvailable() []string
+
 	getAPIListCoverageXMLPath() android.ModuleOutPath
 
 	installable() *bool
@@ -1955,16 +1957,18 @@ func (library *libraryDecorator) isLatestStubVersion() bool {
 }
 
 func (library *libraryDecorator) availableFor(what string) bool {
+	return android.CheckAvailableForApex(what, library.apexAvailable())
+}
+
+func (library *libraryDecorator) apexAvailable() []string {
 	var list []string
 	if library.static() {
 		list = library.StaticProperties.Static.Apex_available
 	} else if library.shared() {
 		list = library.SharedProperties.Shared.Apex_available
 	}
-	if len(list) == 0 {
-		return false
-	}
-	return android.CheckAvailableForApex(what, list)
+
+	return list
 }
 
 func (library *libraryDecorator) installable() *bool {
