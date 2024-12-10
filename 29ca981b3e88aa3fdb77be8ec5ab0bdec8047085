@@ -34,6 +34,24 @@
       "parentUuid": "06788346_b4d5277a",
       "revId": "29ca981b3e88aa3fdb77be8ec5ab0bdec8047085",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f13b0632_67f1dc12",
+        "filename": "fsgen/fsgen_mutators.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-10T21:18:42Z",
+      "side": 1,
+      "message": "ah that\u0027s right. We should probably do that eventually, but it doesn\u0027t need to be now.",
+      "parentUuid": "a2366193_8b9b7ac7",
+      "revId": "29ca981b3e88aa3fdb77be8ec5ab0bdec8047085",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
