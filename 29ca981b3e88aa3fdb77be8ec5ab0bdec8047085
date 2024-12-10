@@ -16,6 +16,24 @@
       "message": "Could we add the new prebuilt modules to `PRODUCT_PACKAGES` based on `TARGET_SCREEN_DENSITY` / `PRODUCT_AAPT_PREF_CONFIG` instead of this? And then also remove the make cp command.",
       "revId": "29ca981b3e88aa3fdb77be8ec5ab0bdec8047085",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2366193_8b9b7ac7",
+        "filename": "fsgen/fsgen_mutators.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-10T18:55:04Z",
+      "side": 1,
+      "message": "I believe that would require additional work in `select` as discussed previously, as the two `prebuilt_res` modules being introduced in https://r.android.com/3398614 both install to the same directory. Currently this is being workarounded with `no_full_install: true`, which IIUC leads to the module not being installed even if listed in `PRODUCT_PACKAGES` for make generated partitions.",
+      "parentUuid": "06788346_b4d5277a",
+      "revId": "29ca981b3e88aa3fdb77be8ec5ab0bdec8047085",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
