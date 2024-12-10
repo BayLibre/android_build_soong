@@ -34,6 +34,24 @@
       "parentUuid": "41e58ce6_7378b511",
       "revId": "b8218ec7d059f028d80ee0685e8151e53b6fec7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad905f59_40fde05e",
+        "filename": "java/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-12-10T07:11:27Z",
+      "side": 1,
+      "message": "Actually, changing this results in a bunch of errors during the build, e.g.:\n```\nerror: system/logging/liblog/Android.bp:201:1: module \"liblog.ndk\" variant \"android_arm64_armv8-2a_cortex-a55_sdk_shared_21\": should support min_sdk_version(30) for \"NetworkStackNext\": newer SDK(current).\n\nDependency path: NetworkStackNext{os:android,arch:common}\n           via tag java.dependencyTag: { name:jnilib runtimeLinked:true toolchain:false static:false installable:false}\n    -\u003e libnativehelper_compat_libc++{os:android,arch:arm64_armv8-2a_cortex-a55,sdk:sdk,link:shared}\n           via tag cc.libraryDependencyTag: { Kind:sharedLibraryDependency Order:normalLibraryDependency fromStatic:false wholeStatic:false reexportFlags:false explicitlyVersioned:false dataLib:false ndk:true staticUnwinder:false makeSuffix:.21 skipApexAllowedDependenciesCheck:false excludeInApex:false excludeInNonApex:false unexportedSymbols:false}\n    -\u003e liblog.ndk{os:android,arch:arm64_armv8-2a_cortex-a55,sdk:sdk,link:shared,version:21}\n\nConsider adding \u0027min_sdk_version: \"30\"\u0027 to \"liblog.ndk\"\n```\n\nI\u0027ve changed this back to the previous version, which since `AndroidApp` doesn\u0027t implement `IncomingDepIsInSameApex` maintains the previous behavior, and left a TODO to come back to it.",
+      "parentUuid": "57c81580_486d3538",
+      "revId": "b8218ec7d059f028d80ee0685e8151e53b6fec7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
