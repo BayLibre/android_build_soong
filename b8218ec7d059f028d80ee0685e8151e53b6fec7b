@@ -16,6 +16,24 @@
       "message": "Should we be using `IsDepInSameApex` in cases like these to also take into account the incoming edge?",
       "revId": "b8218ec7d059f028d80ee0685e8151e53b6fec7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c81580_486d3538",
+        "filename": "java/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-12-10T07:04:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41e58ce6_7378b511",
+      "revId": "b8218ec7d059f028d80ee0685e8151e53b6fec7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
