@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6028e346_3059d5ec",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-10T02:40:23Z",
+      "side": 1,
+      "message": "Don\u0027t use a PostProcessor for this. Just change `commonPartitionDirs` so it can give you dirs with the correct path built-in. If `commonPartitionDirs` just returned a list of strings instead of a Configurable it would be eaiser. Same with `commonSymlinksFromRoot` and `symlinksWithNamePrefix`.",
+      "revId": "0f27a0b10b38b799c5a1ae3b47b5e2b975963eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
