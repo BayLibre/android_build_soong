@@ -106,6 +106,24 @@
       "parentUuid": "e2f9915c_52020572",
       "revId": "e078dbf6579f5ebf45228a24727a64bd75d1869b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f795e91_5e3e7f16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2024-12-10T02:36:56Z",
+      "side": 1,
+      "message": "This comment can be closed. Please see https://android-review.git.corp.google.com/c/platform/build/soong/+/3370013/comment/107bb0f9_b7ea860a/",
+      "parentUuid": "c5dc780f_dccb4770",
+      "revId": "e078dbf6579f5ebf45228a24727a64bd75d1869b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

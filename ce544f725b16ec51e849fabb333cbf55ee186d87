@@ -143,6 +143,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b41ed89_7ebec30f",
+        "filename": "android/container_violations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2024-12-10T02:36:56Z",
+      "side": 1,
+      "message": "We reached an agreement to temporarily allow these violations with TODOs added. Relevant discussions can be found in https://groups.google.com/a/google.com/g/cronet-team/c/I3dalgWXpZQ",
+      "parentUuid": "4ac8a9b5_f5799f27",
+      "revId": "ce544f725b16ec51e849fabb333cbf55ee186d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18d1d10d_4d4a3ad5",
