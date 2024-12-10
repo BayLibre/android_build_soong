@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "655cf0d8_cd75e287",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1810,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-10T00:22:19Z",
+      "side": 1,
+      "message": "potentially just call `static()`",
+      "range": {
+        "startLine": 1810,
+        "startChar": 8,
+        "endLine": 1810,
+        "endChar": 49
+      },
+      "revId": "bb62ff4188d02be4e561e9817e25625902e41e15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
