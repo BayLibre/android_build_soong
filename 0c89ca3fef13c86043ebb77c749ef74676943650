@@ -69,6 +69,30 @@
       },
       "revId": "0c89ca3fef13c86043ebb77c749ef74676943650",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89875352_4e8e16a2",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1951966
+      },
+      "writtenOn": "2024-12-10T03:32:36Z",
+      "side": 1,
+      "message": "\u003e Is the proposed version scheme of go/aml-default-version-code restricted to mainline modules? If not, can we remove defaultVersionInt%10 !\u003d 0 check?\n\nFrom my understanding, the default version for updatable module is designed for mainline and we can eventually remove `defaultVersionInt%10 !\u003d 0` after all the flag value changes are in. (at this stage, it seems like some release config is still using default flag value)\n\nThough, I was also wondering if this part of code on variant_version is necessary at all (I created b/382980373) and if not, I planned to remove the whole thing.",
+      "parentUuid": "7a790df0_ac8ad954",
+      "range": {
+        "startLine": 340,
+        "startChar": 5,
+        "endLine": 340,
+        "endChar": 30
+      },
+      "revId": "0c89ca3fef13c86043ebb77c749ef74676943650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
