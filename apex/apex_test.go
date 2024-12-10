@@ -6352,11 +6352,17 @@ func TestApexAvailable_IndirectDep(t *testing.T) {
 	// libbbaz is an indirect dep
 	testApexError(t, `requires "libbaz" that doesn't list the APEX under 'apex_available'.\n\nDependency path:
 .*via tag apex\.dependencyTag\{"sharedLib"\}
-.*-> libfoo.*link:shared.*
+.*-> libfoo.*
+.*via tag cc\.dependencyTag.*
+.*-> libfoo.*
 .*via tag cc\.libraryDependencyTag.*Kind:sharedLibraryDependency.*
-.*-> libbar.*link:shared.*
+.*-> libbar.*
+.*via tag cc\.dependencyTag.*
+.*-> libbar.*
 .*via tag cc\.libraryDependencyTag.*Kind:sharedLibraryDependency.*
-.*-> libbaz.*link:shared.*`, `
+.*-> libbaz.*
+.*via tag cc\.dependencyTag.*
+.*-> libbaz.*`, `
 	apex {
 		name: "myapex",
 		key: "myapex.key",
