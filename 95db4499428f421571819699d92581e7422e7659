@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8922742_da87ced9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-10T18:47:03Z",
+      "side": 1,
+      "message": "I have upload a new patchset to use `filepath.Dir(rootDir)` as base dir for fsverity gen _only_ for `system_ext`. This ensures that the paths in build_manifest.pb of `system` does not become something like this\n```\nsystem/system/framework/javalib.jar\n```",
+      "revId": "95db4499428f421571819699d92581e7422e7659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
