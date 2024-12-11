@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d282f28e_fd5059ff",
+        "filename": "android/recovery_build_prop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-11T01:19:44Z",
+      "side": 1,
+      "message": "Given that the make build rule for the recovery build.prop also [appends to the same file](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l\u003d2747;drc\u003d0585bb1bcf4c89065adaf709f48acc8b869fd3ce), I\u0027d prefer to keep it as is.",
+      "parentUuid": "d17c7d4f_e61c65a7",
+      "range": {
+        "startLine": 63,
+        "startChar": 34,
+        "endLine": 63,
+        "endChar": 60
+      },
+      "revId": "c9806706d9c058a9d302898ddf8e1100ded7d633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8ae2452f_6b799f84",
         "filename": "android/recovery_build_prop.go",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2024-12-11T01:06:13Z",
       "side": 1,
       "message": "nit: cat supports multiple input files, can we combine these into a single cat command?",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 146
+      },
+      "revId": "c9806706d9c058a9d302898ddf8e1100ded7d633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb33ebff_e2aaf57e",
+        "filename": "android/recovery_build_prop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-11T01:19:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "112573c4_acbec57b",
       "range": {
         "startLine": 86,
         "startChar": 1,
@@ -101,6 +149,30 @@
           ]
         }
       ],
+      "revId": "c9806706d9c058a9d302898ddf8e1100ded7d633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73702639_472962c1",
+        "filename": "android/recovery_build_prop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-11T01:19:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "762d72a8_f29567f7",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 48
+      },
       "revId": "c9806706d9c058a9d302898ddf8e1100ded7d633",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
