@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2bac933_082f72bf",
+        "filename": "android/logtags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-11T22:24:37Z",
+      "side": 1,
+      "message": "Do we need to create a `logtags` module in an Android.bp file?",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 39
+      },
+      "revId": "e4506afe9850164b561f4d6e0edc0a34b502cdd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d000d1c8_caa4c3df",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-11T22:24:37Z",
+      "side": 1,
+      "message": "In this implementation, the dependency will be created in the ninja build graph, but not in Soong\u0027s module graph.\n\nWDYT about updating filesystem\u0027s DepsMutator to depend on the singleton module, and getting the output path via a provider?",
+      "range": {
+        "startLine": 874,
+        "startChar": 36,
+        "endLine": 874,
+        "endChar": 66
+      },
+      "revId": "e4506afe9850164b561f4d6e0edc0a34b502cdd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
