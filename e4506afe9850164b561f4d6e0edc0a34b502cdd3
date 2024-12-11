@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "480b3c8a_2cf19293",
+        "filename": "android/logtags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-11T22:27:29Z",
+      "side": 1,
+      "message": "This is a singleton, not a singleton module, s no.",
+      "parentUuid": "e2bac933_082f72bf",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 39
+      },
+      "revId": "e4506afe9850164b561f4d6e0edc0a34b502cdd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d000d1c8_caa4c3df",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-12-11T22:24:37Z",
       "side": 1,
       "message": "In this implementation, the dependency will be created in the ninja build graph, but not in Soong\u0027s module graph.\n\nWDYT about updating filesystem\u0027s DepsMutator to depend on the singleton module, and getting the output path via a provider?",
+      "range": {
+        "startLine": 874,
+        "startChar": 36,
+        "endLine": 874,
+        "endChar": 66
+      },
+      "revId": "e4506afe9850164b561f4d6e0edc0a34b502cdd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c68986_62f347f4",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-11T22:27:29Z",
+      "side": 1,
+      "message": "This is a singleton, not a singleton module. There isn\u0027t much of a difference between the two, but one slight advantage of the singleton is that you can\u0027t add more dependencies to it via blueprint code, so I went with that.",
+      "parentUuid": "d000d1c8_caa4c3df",
       "range": {
         "startLine": 874,
         "startChar": 36,
