@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae2452f_6b799f84",
+        "filename": "android/recovery_build_prop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-11T00:59:04Z",
+      "side": 1,
+      "message": "These should probably be properties on the module eventually, but all the prop files are not set up very well for that atm.",
+      "revId": "c9806706d9c058a9d302898ddf8e1100ded7d633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
