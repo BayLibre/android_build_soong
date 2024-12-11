@@ -594,7 +594,7 @@ func (mod *Module) CcLibraryInterface() bool {
 	if mod.compiler != nil {
 		// use build{Static,Shared}() instead of {static,shared}() here because this might be called before
 		// VariantIs{Static,Shared} is set.
-		if lib, ok := mod.compiler.(libraryInterface); ok && (lib.buildShared() || lib.buildStatic()) {
+		if lib, ok := mod.compiler.(libraryInterface); ok && (lib.buildShared() || lib.buildStatic() || lib.buildRlib()) {
 			return true
 		}
 	}
@@ -678,15 +678,6 @@ func (mod *Module) BuildRlibVariant() bool {
 		}
 	}
 	panic(fmt.Errorf("BuildRlibVariant called on non-library module: %q", mod.BaseModuleName()))
-}
-
-func (mod *Module) IsRustFFI() bool {
-	if mod.compiler != nil {
-		if library, ok := mod.compiler.(libraryInterface); ok {
-			return library.isFFILibrary()
-		}
-	}
-	return false
 }
 
 func (mod *Module) BuildSharedVariant() bool {
