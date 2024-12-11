@@ -2885,7 +2885,7 @@ func (a *apexBundle) verifyNativeImplementationLibs(ctx android.ModuleContext) {
 	}
 
 	var appEmbeddedJNILibs android.Paths
-	ctx.VisitDirectDepsProxy(func(dep android.ModuleProxy) {
+	ctx.VisitDirectDeps(func(dep android.Module) {
 		tag := ctx.OtherModuleDependencyTag(dep)
 		if !checkApexTag(tag) {
 			return
