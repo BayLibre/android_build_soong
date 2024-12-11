@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6e9ebc9_071ae860",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1929498
+      },
+      "writtenOn": "2024-12-11T21:32:23Z",
+      "side": 1,
+      "message": "compatible with halyard functionality",
+      "revId": "63e15b5679a65ab873d9eacc6dbb7cacb3043fce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6f1b58b_0c8b71dd",
