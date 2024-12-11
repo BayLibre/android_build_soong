@@ -16,6 +16,24 @@
       "message": "Can you add more info on why this is useful?",
       "revId": "60645fc50b02e8b2850aeae93c44c2abade6849f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "839a0d3b_e4fe483b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1064724
+      },
+      "writtenOn": "2024-12-11T17:21:26Z",
+      "side": 1,
+      "message": "I want to restrict which symbols are exported in the host build of libandroid_runtime and layoutlib_jni. For linux, I can use `version_script`, but for Darwin, I currently have to write it as an `ldflag` (see ag/30691568). Since there are precedents for having similar properties directly supported (like `unexported_symbols_list`), I thought it would be nicer to also have `exported_symbols_list` handled in the same way. Since one can do this as I did in ag/30691568, this change is more for cosmetic/consistency with `unexported_symbols_list`.",
+      "parentUuid": "339ff085_7229b033",
+      "revId": "60645fc50b02e8b2850aeae93c44c2abade6849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
