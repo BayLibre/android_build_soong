@@ -34,6 +34,24 @@
       "parentUuid": "339ff085_7229b033",
       "revId": "60645fc50b02e8b2850aeae93c44c2abade6849f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8724ce13_2482daef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-12-11T18:28:00Z",
+      "side": 1,
+      "message": "Can you add this info to the commit message?\n\nag/30691568 doesn\u0027t handle the dependency on the file, so this change is necessary to handle the flag correctly.",
+      "parentUuid": "839a0d3b_e4fe483b",
+      "revId": "60645fc50b02e8b2850aeae93c44c2abade6849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
