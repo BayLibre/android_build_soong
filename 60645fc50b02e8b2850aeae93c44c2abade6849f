@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "339ff085_7229b033",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-12-11T16:59:19Z",
+      "side": 1,
+      "message": "Can you add more info on why this is useful?",
+      "revId": "60645fc50b02e8b2850aeae93c44c2abade6849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
