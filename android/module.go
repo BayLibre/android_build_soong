@@ -1867,15 +1867,27 @@ type CommonModuleInfo struct {
 	// Whether the module has been replaced by a prebuilt
 	ReplacedByPrebuilt bool
 	// The Target of artifacts that this module variant is responsible for creating.
-	CompileTarget           Target
-	SkipAndroidMkProcessing bool
-	BaseModuleName          string
-	CanHaveApexVariants     bool
-	MinSdkVersion           string
-	NotAvailableForPlatform bool
+	CompileTarget                Target
+	SkipAndroidMkProcessing      bool
+	BaseModuleName               string
+	CanHaveApexVariants          bool
+	MinSdkVersion                ApiLevel
+	MinSdkVersionStr             string
+	MinSdkVersionSupported       ApiLevel
+	ApexModule                   bool
+	ModuleWithMinSdkVersionCheck bool
+	NotAvailableForPlatform      bool
 }
 
 var CommonModuleInfoKey = blueprint.NewProvider[CommonModuleInfo]()
+
+// Common info about the cc module.
+type CcInfo struct {
+	HasStubsVariants bool
+	MinApiForArch    ApiLevel
+}
+
+var CcInfoProvider = blueprint.NewProvider[CcInfo]()
 
 type PrebuiltModuleProviderData struct {
 	// Empty for now
@@ -2146,12 +2158,12 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	if mm, ok := m.module.(interface {
 		MinSdkVersion(ctx EarlyModuleContext) ApiLevel
 	}); ok {
-		ver := mm.MinSdkVersion(ctx)
-		if !ver.IsNone() {
-			commonData.MinSdkVersion = ver.String()
+		commonData.MinSdkVersion = mm.MinSdkVersion(ctx)
+	} else {
+		commonData.MinSdkVersion = NoneApiLevel
+		if mm, ok := m.module.(interface{ MinSdkVersion() string }); ok {
+			commonData.MinSdkVersionStr = mm.MinSdkVersion()
 		}
-	} else if mm, ok := m.module.(interface{ MinSdkVersion() string }); ok {
-		commonData.MinSdkVersion = mm.MinSdkVersion()
 	}
 
 	if m.commonProperties.ForcedDisabled {
@@ -2162,6 +2174,19 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	if am, ok := m.module.(ApexModule); ok {
 		commonData.CanHaveApexVariants = am.CanHaveApexVariants()
 		commonData.NotAvailableForPlatform = am.NotAvailableForPlatform()
+		commonData.MinSdkVersionSupported = am.MinSdkVersionSupported(ctx)
+		commonData.ApexModule = true
+	} else {
+		commonData.MinSdkVersionSupported = NoneApiLevel
+	}
+	if strings.Contains(m.Name(), "framework-nfc") {
+		fmt.Println("DDD: ", m.Name())
+	}
+	if _, ok := m.module.(ModuleWithMinSdkVersionCheck); ok {
+		commonData.ModuleWithMinSdkVersionCheck = true
+		if strings.Contains(m.Name(), "framework-nfc") {
+			fmt.Println("AAA: ", m.Name())
+		}
 	}
 	SetProvider(ctx, CommonModuleInfoKey, commonData)
 	if p, ok := m.module.(PrebuiltInterface); ok && p.Prebuilt() != nil {

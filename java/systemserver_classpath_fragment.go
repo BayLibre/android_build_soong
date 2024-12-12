@@ -91,10 +91,6 @@ type SystemServerClasspathModule struct {
 	properties systemServerClasspathFragmentProperties
 }
 
-func (s *SystemServerClasspathModule) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion android.ApiLevel) error {
-	return nil
-}
-
 type systemServerClasspathFragmentProperties struct {
 	// List of system_server classpath jars, could be either java_library, or java_sdk_library.
 	//

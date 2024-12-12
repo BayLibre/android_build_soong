@@ -252,6 +252,9 @@ var NoneApiLevel = ApiLevel{
 	isPreview: true,
 }
 
+// A speical ApiLevel that matches all the valid ApiLevels
+var AllApiLevel = ApiLevel{value: "all"}
+
 // Sentinel ApiLevel to validate that an apiLevel is either an int or a recognized codename.
 var InvalidApiLevel = NewInvalidApiLevel("invalid")
 
@@ -334,16 +337,23 @@ func ApiLevelFrom(ctx PathContext, raw string) ApiLevel {
 // Inputs that are not "current", known previews, or convertible to an integer
 // will return an error.
 func ApiLevelFromUser(ctx PathContext, raw string) (ApiLevel, error) {
-	return ApiLevelFromUserWithConfig(ctx.Config(), raw)
+	return ApiLevelFromUserWithConfigPanic(ctx.Config(), raw)
 }
 
-// ApiLevelFromUserWithConfig implements ApiLevelFromUser, see comments for
+// ApiLevelFromUserWithConfigPanic implements ApiLevelFromUser, see comments for
 // ApiLevelFromUser for more details.
-func ApiLevelFromUserWithConfig(config Config, raw string) (ApiLevel, error) {
+func ApiLevelFromUserWithConfigPanic(config Config, raw string) (ApiLevel, error) {
+	return ApiLevelFromUserWithConfig(config, raw, true)
+}
+
+func ApiLevelFromUserWithConfig(config Config, raw string, emptyPanic bool) (ApiLevel, error) {
 	// This logic is replicated in starlark, if changing logic here update starlark code too
 	// https://cs.android.com/android/platform/superproject/+/main:build/bazel/rules/common/api.bzl;l=42;drc=231c7e8c8038fd478a79eb68aa5b9f5c64e0e061
 	if raw == "" {
-		panic("API level string must be non-empty")
+		if emptyPanic {
+			panic("API level string must be non-empty")
+		}
+		return NoneApiLevel, fmt.Errorf("API level string must be non-empty")
 	}
 
 	if raw == "current" {

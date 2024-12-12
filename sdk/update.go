@@ -488,7 +488,7 @@ be unnecessary as every module in the sdk already has its own licenses property.
 		module = transformModule(module, snapshotTransformer)
 		module = transformModule(module, emptyClasspathContentsTransformation{})
 
-		targetApiLevel, err := android.ApiLevelFromUserWithConfig(ctx.Config(), s.targetBuildRelease(ctx).name)
+		targetApiLevel, err := android.ApiLevelFromUserWithConfigPanic(ctx.Config(), s.targetBuildRelease(ctx).name)
 		if err == nil && targetApiLevel.LessThan(android.ApiLevelVanillaIceCream) {
 			module = transformModule(module, replaceExportablePropertiesTransformer{})
 		}
