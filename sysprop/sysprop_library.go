@@ -680,7 +680,7 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 		Sysprop_srcs: m.properties.Srcs,
 		Scope:        scope,
 		Check_api:    proptools.StringPtr(ctx.ModuleName()),
-		Installable:  proptools.BoolPtr(false),
+		Installable:  proptools.BoolPtr(true),
 		Crate_name:   m.rustCrateName(),
 		Rustlibs: []string{
 			"liblog_rust",
