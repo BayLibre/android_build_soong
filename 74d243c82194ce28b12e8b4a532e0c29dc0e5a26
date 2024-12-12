@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "955d2bd2_5adfe789",
+        "filename": "android/module_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-12T17:50:15Z",
+      "side": 1,
+      "message": "IIRC vint fragments were being migrated to soong modules. Do vintf fragments need to be skipped as well?",
+      "range": {
+        "startLine": 628,
+        "startChar": 25,
+        "endLine": 628,
+        "endChar": 57
+      },
+      "revId": "74d243c82194ce28b12e8b4a532e0c29dc0e5a26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
