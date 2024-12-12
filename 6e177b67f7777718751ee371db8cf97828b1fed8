@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c573b59e_67245a1c",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-12T18:04:06Z",
+      "side": 1,
+      "message": "Make a `python_binary_host` module for your script and use `HostBinToolVariable` instead. As is, this doesn\u0027t track the dependency on `get_clang_version.py`.",
+      "revId": "6e177b67f7777718751ee371db8cf97828b1fed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "939c3a7e_a046799d",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-12T18:04:06Z",
+      "side": 1,
+      "message": "Does this also need to be changed?",
+      "revId": "6e177b67f7777718751ee371db8cf97828b1fed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c85ab552_19def10b",
+        "filename": "rust/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-12T18:04:06Z",
+      "side": 1,
+      "message": "Please add a check that `version_script` and `extra_exported_symbols` are not both set at the same time.",
+      "revId": "6e177b67f7777718751ee371db8cf97828b1fed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23c82c1f_14690134",
+        "filename": "scripts/rustcLinker.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-12T18:04:06Z",
+      "side": 1,
+      "message": "I would pass in the linker as a dedicated flag to the script, so that we can reuse the same logic we already have in soong for locating it. (The `RustLinker` variable)\n\nI recommend using argparse with `parse_known_args` to parse that dedicated flag and get all the remaining flags for clang.",
+      "revId": "6e177b67f7777718751ee371db8cf97828b1fed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
