@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 
 	"android/soong/android"
@@ -105,6 +106,39 @@ func (installer *baseInstaller) install(ctx ModuleContext, file android.Path) {
 func (installer *baseInstaller) installTestData(ctx ModuleContext, data []android.DataPath) {
 	installedData := ctx.InstallTestData(installer.installDir(ctx), data)
 	installer.installDeps = append(installer.installDeps, installedData...)
+}
+
+func (installer *baseInstaller) installStandaloneLibs(ctx ModuleContext, info android.InstallFilesInfo, standaloneTestDeps map[string]bool) {
+	fmt.Println("yifengzeng@installer.go installStandaloneDeps()")
+	relative := installer.relative
+	installer.relative = relative + "/standalone_libs"
+
+	// for _, tif := range info.TransitiveInstallFiles.ToList() {
+	// 	// fmt.Printf("yifengzeng@installer.go installStandaloneDeps() tif: %+v\n", tif)
+	// 	gob := tif.ToGob()
+	// 	fmt.Printf("yifengzeng@installer.go installStandaloneDeps() tif.ToGob(): %+v\n", gob)
+
+	// 	_ = ctx.InstallFile(installer.installDir(ctx), gob.FullPath, tif)
+	// 	// _ = ctx.InstallFileWithoutCheckbuild(installer.installDir(ctx), gob.FullPath, tif)
+	// 	// _ = ctx.InstallSymlink(installer.installDir(ctx), gob.FullPath, tif)
+	// }
+
+	for _, tps := range info.TransitivePackagingSpecs.ToList() {
+		fmt.Printf("yifengzeng@installer.go installStandaloneDeps() tps: %+v\n", tps)
+		tpsGob := tps.ToGob()
+		fmt.Printf("yifengzeng@installer.go installStandaloneDeps() tpsGob: %+v\n", tpsGob)
+		if tpsGob.SrcPath == nil {
+			continue
+		}
+		if standaloneTestDeps[tpsGob.SrcPath.Base()] {
+			continue
+		}
+		standaloneTestDeps[tpsGob.SrcPath.Base()] = true
+
+		_ = ctx.InstallFile(installer.installDir(ctx), tpsGob.SrcPath.Base(), tpsGob.SrcPath)
+	}
+
+	installer.relative = relative
 }
 
 func (installer *baseInstaller) everInstallable() bool {
