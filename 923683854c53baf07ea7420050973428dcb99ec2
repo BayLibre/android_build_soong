@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dbadd0f_165b80a1",
+        "filename": "java/base.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2957,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-12-12T23:52:40Z",
+      "side": 1,
+      "message": "Use ctx.ModuleErrorf() rather than panic.  See line 2900 above for an example.",
+      "revId": "923683854c53baf07ea7420050973428dcb99ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
