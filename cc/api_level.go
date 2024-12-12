@@ -15,38 +15,15 @@
 package cc
 
 import (
-	"fmt"
-
 	"android/soong/android"
 )
-
-// MinApiLevelForArch returns the ApiLevel for the Android version that
-// first supported the architecture.
-func MinApiForArch(ctx android.EarlyModuleContext,
-	arch android.ArchType) android.ApiLevel {
-
-	switch arch {
-	case android.Arm, android.X86:
-		return ctx.Config().MinSupportedSdkVersion()
-	case android.Arm64, android.X86_64:
-		return android.FirstLp64Version
-	case android.Riscv64:
-		apiLevel, err := android.ApiLevelFromUser(ctx, "VanillaIceCream")
-		if err != nil {
-			panic(err)
-		}
-		return apiLevel
-	default:
-		panic(fmt.Errorf("Unknown arch %q", arch))
-	}
-}
 
 // Native API levels cannot be less than the MinApiLevelForArch. This function
 // sets the lower bound of the API level with the MinApiLevelForArch.
 func nativeClampedApiLevel(ctx android.BaseModuleContext,
 	apiLevel android.ApiLevel) android.ApiLevel {
 
-	min := MinApiForArch(ctx, ctx.Arch().ArchType)
+	min := android.MinApiForArch(ctx, ctx.Arch().ArchType)
 
 	if apiLevel.LessThan(min) {
 		return min
@@ -59,7 +36,7 @@ func nativeApiLevelFromUser(ctx android.BaseModuleContext,
 	raw string) (android.ApiLevel, error) {
 
 	if raw == "minimum" {
-		return MinApiForArch(ctx, ctx.Arch().ArchType), nil
+		return android.MinApiForArch(ctx, ctx.Arch().ArchType), nil
 	}
 
 	value, err := android.ApiLevelFromUser(ctx, raw)

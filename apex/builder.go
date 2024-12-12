@@ -1077,8 +1077,10 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 		} else {
 			toMinSdkVersion := "(no version)"
 			if info, ok := android.OtherModuleProvider(ctx, to, android.CommonModuleInfoKey); ok {
-				if v := info.MinSdkVersion; v != "" {
-					toMinSdkVersion = v
+				if info.MinSdkVersion != android.NoneApiLevel {
+					toMinSdkVersion = info.MinSdkVersion.String()
+				} else if info.MinSdkVersionStr != "" {
+					toMinSdkVersion = info.MinSdkVersionStr
 				}
 			}
 			depInfos[to.Name()] = android.ApexModuleDepInfo{

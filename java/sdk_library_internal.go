@@ -792,13 +792,6 @@ func (module *sdkLibraryXml) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 var _ android.ApexModule = (*sdkLibraryXml)(nil)
 
-// Implements android.ApexModule
-func (module *sdkLibraryXml) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
-	sdkVersion android.ApiLevel) error {
-	// sdkLibraryXml doesn't need to be checked separately because java_sdk_library is checked
-	return nil
-}
-
 // File path to the runtime implementation library
 func (module *sdkLibraryXml) implPath(ctx android.ModuleContext) string {
 	implName := proptools.String(module.properties.Lib_name)

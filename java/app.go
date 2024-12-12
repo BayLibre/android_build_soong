@@ -1207,14 +1207,14 @@ func collectJniDeps(ctx android.ModuleContext,
 	return jniLibs, prebuiltJniPackages
 }
 
-func (a *AndroidApp) WalkPayloadDeps(ctx android.BaseModuleContext, do android.PayloadDepsCallback) {
-	ctx.WalkDeps(func(child, parent android.Module) bool {
+func (a *AndroidApp) WalkPayloadDeps(ctx android.BaseModuleContext, do android.PayloadDepsProxyCallback) {
+	ctx.WalkDepsProxy(func(child, parent android.ModuleProxy) bool {
 		// TODO(ccross): Should this use android.DepIsInSameApex?  Right now it is applying the android app
 		// heuristics to every transitive dependency, when it should probably be using the heuristics of the
 		// immediate parent.
 		isExternal := !a.OutgoingDepIsInSameApex(ctx.OtherModuleDependencyTag(child))
-		if am, ok := child.(android.ApexModule); ok {
-			if !do(ctx, parent, am, isExternal) {
+		if android.OtherModuleProviderOrDefault(ctx, child, android.CommonModuleInfoKey).ApexModule {
+			if !do(ctx, parent, child, isExternal) {
 				return false
 			}
 		}
@@ -1228,12 +1228,12 @@ func (a *AndroidApp) buildAppDependencyInfo(ctx android.ModuleContext) {
 	}
 
 	depsInfo := android.DepNameToDepInfoMap{}
-	a.WalkPayloadDeps(ctx, func(ctx android.BaseModuleContext, from android.Module, to android.ApexModule, externalDep bool) bool {
+	a.WalkPayloadDeps(ctx, func(ctx android.BaseModuleContext, from, to android.ModuleProxy, externalDep bool) bool {
 		depName := to.Name()
 
 		// Skip dependencies that are only available to APEXes; they are developed with updatability
 		// in mind and don't need manual approval.
-		if to.(android.ApexModule).NotAvailableForPlatform() {
+		if android.OtherModuleProviderOrDefault(ctx, to, android.CommonModuleInfoKey).NotAvailableForPlatform {
 			return true
 		}
 
@@ -1243,17 +1243,11 @@ func (a *AndroidApp) buildAppDependencyInfo(ctx android.ModuleContext) {
 			depsInfo[depName] = info
 		} else {
 			toMinSdkVersion := "(no version)"
-			if m, ok := to.(interface {
-				MinSdkVersion(ctx android.EarlyModuleContext) android.ApiLevel
-			}); ok {
-				if v := m.MinSdkVersion(ctx); !v.IsNone() {
-					toMinSdkVersion = v.String()
-				}
-			} else if m, ok := to.(interface{ MinSdkVersion() string }); ok {
-				// TODO(b/175678607) eliminate the use of MinSdkVersion returning
-				// string
-				if v := m.MinSdkVersion(); v != "" {
-					toMinSdkVersion = v
+			if info, ok := android.OtherModuleProvider(ctx, to, android.CommonModuleInfoKey); ok {
+				if info.MinSdkVersion != android.NoneApiLevel {
+					toMinSdkVersion = info.MinSdkVersion.String()
+				} else if info.MinSdkVersionStr != "" {
+					toMinSdkVersion = info.MinSdkVersionStr
 				}
 			}
 			depsInfo[depName] = android.ApexModuleDepInfo{

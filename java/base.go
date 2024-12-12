@@ -2226,20 +2226,16 @@ func (j *Module) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) bool {
 }
 
 // Implements android.ApexModule
-func (j *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion android.ApiLevel) error {
+func (j *Module) MinSdkVersionSupported(ctx android.BaseModuleContext) android.ApiLevel {
 	sdkVersionSpec := j.SdkVersion(ctx)
 	minSdkVersion := j.MinSdkVersion(ctx)
-	if !minSdkVersion.Specified() {
-		return fmt.Errorf("min_sdk_version is not specified")
-	}
+
 	// If the module is compiling against core (via sdk_version), skip comparison check.
 	if sdkVersionSpec.Kind == android.SdkCore {
-		return nil
+		return android.AllApiLevel
 	}
-	if minSdkVersion.GreaterThan(sdkVersion) {
-		return fmt.Errorf("newer SDK(%v)", minSdkVersion)
-	}
-	return nil
+
+	return minSdkVersion
 }
 
 func (j *Module) Stem() string {

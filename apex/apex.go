@@ -1676,8 +1676,7 @@ func (a *apexBundle) WalkPayloadDeps(ctx android.BaseModuleContext, do android.P
 	})
 }
 
-func (a *apexBundle) WalkPayloadDepsProxy(ctx android.BaseModuleContext,
-	do func(ctx android.BaseModuleContext, from, to android.ModuleProxy, externalDep bool) bool) {
+func (a *apexBundle) WalkPayloadDepsProxy(ctx android.BaseModuleContext, do android.PayloadDepsProxyCallback) {
 	ctx.WalkDepsProxy(func(child, parent android.ModuleProxy) bool {
 		if !android.OtherModuleProviderOrDefault(ctx, child, android.CommonModuleInfoKey).CanHaveApexVariants {
 			return false
@@ -2548,7 +2547,7 @@ func (a *apexBundle) CheckMinSdkVersion(ctx android.ModuleContext) {
 	}
 	// apexBundle::minSdkVersion reports its own errors.
 	minSdkVersion := a.minSdkVersion(ctx)
-	android.CheckMinSdkVersion(ctx, minSdkVersion, a.WalkPayloadDeps)
+	android.CheckMinSdkVersion(ctx, minSdkVersion, a.WalkPayloadDepsProxy)
 }
 
 // Returns apex's min_sdk_version string value, honoring overrides
@@ -2593,7 +2592,7 @@ func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext
 	})
 
 	a.WalkPayloadDepsProxy(ctx, func(ctx android.BaseModuleContext, from, to android.ModuleProxy, externalDep bool) bool {
-		if ccInfo, ok := android.OtherModuleProvider(ctx, to, cc.CcInfoProvider); ok {
+		if ccInfo, ok := android.OtherModuleProvider(ctx, to, android.CcInfoProvider); ok {
 			// If `to` is not actually in the same APEX as `from` then it does not need
 			// apex_available and neither do any of its dependencies.
 			if externalDep {

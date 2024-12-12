@@ -1280,11 +1280,11 @@ func (module *SdkLibrary) CheckMinSdkVersion(ctx android.ModuleContext) {
 }
 
 func CheckMinSdkVersion(ctx android.ModuleContext, module *Library) {
-	android.CheckMinSdkVersion(ctx, module.MinSdkVersion(ctx), func(c android.BaseModuleContext, do android.PayloadDepsCallback) {
-		ctx.WalkDeps(func(child android.Module, parent android.Module) bool {
+	android.CheckMinSdkVersion(ctx, module.MinSdkVersion(ctx), func(c android.BaseModuleContext, do android.PayloadDepsProxyCallback) {
+		ctx.WalkDepsProxy(func(child, parent android.ModuleProxy) bool {
 			isExternal := !android.IsDepInSameApex(ctx, module, child)
-			if am, ok := child.(android.ApexModule); ok {
-				if !do(ctx, parent, am, isExternal) {
+			if android.OtherModuleProviderOrDefault(ctx, child, android.CommonModuleInfoKey).ApexModule {
+				if !do(ctx, parent, child, isExternal) {
 					return false
 				}
 			}
@@ -2066,13 +2066,6 @@ func (module *SdkLibraryImport) OutgoingDepIsInSameApex(depTag blueprint.Depende
 	// None of the other dependencies of the java_sdk_library_import are in the same apex
 	// as the one that references this module.
 	return false
-}
-
-// Implements android.ApexModule
-func (module *SdkLibraryImport) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
-	sdkVersion android.ApiLevel) error {
-	// we don't check prebuilt modules for sdk_version
-	return nil
 }
 
 // Implements android.ApexModule

@@ -254,11 +254,8 @@ type ApexModule interface {
 	// check-platform-availability mutator in the apex package.
 	SetNotAvailableForPlatform()
 
-	// Returns nil (success) if this module should support the given sdk version. Returns an
-	// error if not. No default implementation is provided for this method. A module type
-	// implementing this interface should provide an implementation. A module supports an sdk
-	// version when the module's min_sdk_version is equal to or less than the given sdk version.
-	ShouldSupportSdkVersion(ctx BaseModuleContext, sdkVersion ApiLevel) error
+	// Returns the min sdk version that the module supports, .
+	MinSdkVersionSupported(ctx BaseModuleContext) ApiLevel
 
 	// Returns true if this module needs a unique variation per apex, effectively disabling the
 	// deduping. This is turned on when, for example if use_apex_name_macro is set so that each
@@ -474,6 +471,10 @@ func (m *ApexModuleBase) NotAvailableForPlatform() bool {
 // Implements ApexModule
 func (m *ApexModuleBase) SetNotAvailableForPlatform() {
 	m.ApexProperties.NotAvailableForPlatform = true
+}
+
+func (m *ApexModuleBase) MinSdkVersionSupported(ctx BaseModuleContext) ApiLevel {
+	return AllApiLevel
 }
 
 // This function makes sure that the apex_available property is valid
@@ -804,7 +805,9 @@ func (d *ApexBundleDepsInfo) BuildDepsInfoLists(ctx ModuleContext, minSdkVersion
 //
 // Return true if the `to` module should be visited, false otherwise.
 type PayloadDepsCallback func(ctx BaseModuleContext, from Module, to ApexModule, externalDep bool) bool
+type PayloadDepsProxyCallback func(ctx BaseModuleContext, from ModuleProxy, to ModuleProxy, externalDep bool) bool
 type WalkPayloadDepsFunc func(ctx BaseModuleContext, do PayloadDepsCallback)
+type WalkPayloadDepsProxyFunc func(ctx BaseModuleContext, do PayloadDepsProxyCallback)
 
 // ModuleWithMinSdkVersionCheck represents a module that implements min_sdk_version checks
 type ModuleWithMinSdkVersionCheck interface {
@@ -815,7 +818,7 @@ type ModuleWithMinSdkVersionCheck interface {
 
 // CheckMinSdkVersion checks if every dependency of an updatable module sets min_sdk_version
 // accordingly
-func CheckMinSdkVersion(ctx ModuleContext, minSdkVersion ApiLevel, walk WalkPayloadDepsFunc) {
+func CheckMinSdkVersion(ctx ModuleContext, minSdkVersion ApiLevel, walk WalkPayloadDepsProxyFunc) {
 	// do not enforce min_sdk_version for host
 	if ctx.Host() {
 		return
@@ -831,7 +834,13 @@ func CheckMinSdkVersion(ctx ModuleContext, minSdkVersion ApiLevel, walk WalkPayl
 		return
 	}
 
-	walk(ctx, func(ctx BaseModuleContext, from Module, to ApexModule, externalDep bool) bool {
+	walk(ctx, func(ctx BaseModuleContext, from, to ModuleProxy, externalDep bool) bool {
+		toName := ctx.OtherModuleName(to)
+		fromName := ctx.OtherModuleName(from)
+		if toName == "bar" && strings.Contains(fromName, "foo") {
+			fmt.Println(toName, fromName, externalDep)
+		}
+
 		if externalDep {
 			// external deps are outside the payload boundary, which is "stable"
 			// interface. We don't have to check min_sdk_version for external
@@ -841,16 +850,21 @@ func CheckMinSdkVersion(ctx ModuleContext, minSdkVersion ApiLevel, walk WalkPayl
 		if !IsDepInSameApex(ctx, from, to) {
 			return false
 		}
-		if m, ok := to.(ModuleWithMinSdkVersionCheck); ok {
-			// This dependency performs its own min_sdk_version check, just make sure it sets min_sdk_version
-			// to trigger the check.
-			if !m.MinSdkVersion(ctx).Specified() {
-				ctx.OtherModuleErrorf(m, "must set min_sdk_version")
+		if strings.Contains(to.Name(), "framework-nfc") {
+			fmt.Println("BBB: ", to.Name())
+		}
+		if info, ok := OtherModuleProvider(ctx, to, CommonModuleInfoKey); ok && info.ModuleWithMinSdkVersionCheck {
+			if info.MinSdkVersion != NoneApiLevel && !info.MinSdkVersion.Specified() {
+				// This dependency performs its own min_sdk_version check, just make sure it sets min_sdk_version
+				// to trigger the check.
+				ctx.OtherModuleErrorf(to, "must set min_sdk_version")
+			}
+			if strings.Contains(to.Name(), "framework-nfc") {
+				fmt.Println("CCC: ", to.Name())
 			}
 			return false
 		}
-		if err := to.ShouldSupportSdkVersion(ctx, minSdkVersion); err != nil {
-			toName := ctx.OtherModuleName(to)
+		if err := ShouldSupportSdkVersion(ctx, to, minSdkVersion); err != nil {
 			ctx.OtherModuleErrorf(to, "should support min_sdk_version(%v) for %q: %v."+
 				"\n\nDependency path: %s\n\n"+
 				"Consider adding 'min_sdk_version: %q' to %q",
@@ -861,6 +875,35 @@ func CheckMinSdkVersion(ctx ModuleContext, minSdkVersion ApiLevel, walk WalkPayl
 		}
 		return true
 	})
+}
+
+// Returns nil (success) if this module should support the given sdk version. Returns an
+// error if not. No default implementation is provided for this method. A module type
+// implementing this interface should provide an implementation. A module supports an sdk
+// version when the module's min_sdk_version is equal to or less than the given sdk version.
+func ShouldSupportSdkVersion(ctx BaseModuleContext, module ModuleProxy, sdkVersion ApiLevel) error {
+	info, ok := OtherModuleProvider(ctx, module, CommonModuleInfoKey)
+	minVer := info.MinSdkVersionSupported
+	if !ok || minVer.IsNone() {
+		return fmt.Errorf("min_sdk_version is not specificed")
+	}
+
+	if minVer == AllApiLevel {
+		return nil
+	}
+
+	if _, ok := OtherModuleProvider(ctx, module, CcInfoProvider); ok {
+		minApiForArch := MinApiForArch(ctx, OtherModuleProviderOrDefault(ctx, module, CommonModuleInfoKey).CompileTarget.Arch.ArchType)
+		if sdkVersion.LessThan(minApiForArch) {
+			sdkVersion = minApiForArch
+		}
+	}
+
+	if minVer.GreaterThan(sdkVersion) {
+		return fmt.Errorf("newer SDK(%v)", minVer)
+	}
+
+	return nil
 }
 
 // Construct ApiLevel object from min_sdk_version string value

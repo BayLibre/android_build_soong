@@ -53,13 +53,6 @@ type CcObjectInfo struct {
 
 var CcObjectInfoProvider = blueprint.NewProvider[CcObjectInfo]()
 
-// Common info about the cc module.
-type CcInfo struct {
-	HasStubsVariants bool
-}
-
-var CcInfoProvider = blueprint.NewProvider[CcInfo]()
-
 type LinkableInfo struct {
 	// StaticExecutable returns true if this is a binary module with "static_executable: true".
 	StaticExecutable bool
@@ -2139,7 +2132,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		StaticExecutable: c.StaticExecutable(),
 	})
 
-	android.SetProvider(ctx, CcInfoProvider, CcInfo{
+	android.SetProvider(ctx, android.CcInfoProvider, android.CcInfo{
 		HasStubsVariants: c.HasStubsVariants(),
 	})
 
@@ -2408,7 +2401,7 @@ func GetCrtVariations(ctx android.BottomUpMutatorContext,
 		}
 
 		// Raise the minSdkVersion to the minimum supported for the architecture.
-		minApiForArch := MinApiForArch(ctx, m.Target().Arch.ArchType)
+		minApiForArch := android.MinApiForArch(ctx, m.Target().Arch.ArchType)
 		if apiLevel.LessThan(minApiForArch) {
 			apiLevel = minApiForArch
 		}
@@ -2828,13 +2821,13 @@ func checkLinkType(ctx android.BaseModuleContext, from LinkableInterface, to Lin
 			ctx.ModuleErrorf("links %q built against newer API version %q",
 				ctx.OtherModuleName(to.Module()), "current")
 		} else {
-			fromApi, err := android.ApiLevelFromUserWithConfig(ctx.Config(), from.SdkVersion())
+			fromApi, err := android.ApiLevelFromUserWithConfigPanic(ctx.Config(), from.SdkVersion())
 			if err != nil {
 				ctx.PropertyErrorf("sdk_version",
 					"Invalid sdk_version value (must be int, preview or current): %q",
 					from.SdkVersion())
 			}
-			toApi, err := android.ApiLevelFromUserWithConfig(ctx.Config(), to.SdkVersion())
+			toApi, err := android.ApiLevelFromUserWithConfigPanic(ctx.Config(), to.SdkVersion())
 			if err != nil {
 				ctx.PropertyErrorf("sdk_version",
 					"Invalid sdk_version value (must be int, preview or current): %q",
@@ -3809,20 +3802,19 @@ func (c *Module) IncomingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
 }
 
 // Implements android.ApexModule
-func (c *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
-	sdkVersion android.ApiLevel) error {
+func (c *Module) MinSdkVersionSupported(ctx android.BaseModuleContext) android.ApiLevel {
 	// We ignore libclang_rt.* prebuilt libs since they declare sdk_version: 14(b/121358700)
 	if strings.HasPrefix(ctx.OtherModuleName(c), "libclang_rt") {
-		return nil
+		return android.AllApiLevel
 	}
 	// We don't check for prebuilt modules
 	if _, ok := c.linker.(prebuiltLinkerInterface); ok {
-		return nil
+		return android.AllApiLevel
 	}
 
 	minSdkVersion := c.MinSdkVersion()
 	if minSdkVersion == "apex_inherit" {
-		return nil
+		return android.AllApiLevel
 	}
 	if minSdkVersion == "" {
 		// JNI libs within APK-in-APEX fall into here
@@ -3831,30 +3823,15 @@ func (c *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
 		// non-SDK variant resets sdk_version, which works too.
 		minSdkVersion = c.SdkVersion()
 	}
-	if minSdkVersion == "" {
-		return fmt.Errorf("neither min_sdk_version nor sdk_version specificed")
-	}
+
 	// Not using nativeApiLevelFromUser because the context here is not
 	// necessarily a native context.
-	ver, err := android.ApiLevelFromUser(ctx, minSdkVersion)
+	ver, err := android.ApiLevelFromUserWithConfig(ctx.Config(), minSdkVersion, false)
 	if err != nil {
-		return err
+		return android.NoneApiLevel
 	}
 
-	// A dependency only needs to support a min_sdk_version at least
-	// as high as  the api level that the architecture was introduced in.
-	// This allows introducing new architectures in the platform that
-	// need to be included in apexes that normally require an older
-	// min_sdk_version.
-	minApiForArch := MinApiForArch(ctx, c.Target().Arch.ArchType)
-	if sdkVersion.LessThan(minApiForArch) {
-		sdkVersion = minApiForArch
-	}
-
-	if ver.GreaterThan(sdkVersion) {
-		return fmt.Errorf("newer SDK(%v)", ver)
-	}
-	return nil
+	return ver
 }
 
 // Implements android.ApexModule

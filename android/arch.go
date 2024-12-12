@@ -1973,3 +1973,23 @@ type ArchVariantContext interface {
 	ModuleErrorf(fmt string, args ...interface{})
 	PropertyErrorf(property, fmt string, args ...interface{})
 }
+
+// MinApiLevelForArch returns the ApiLevel for the Android version that
+// first supported the architecture.
+func MinApiForArch(ctx EarlyModuleContext, arch ArchType) ApiLevel {
+
+	switch arch {
+	case Arm, X86:
+		return ctx.Config().MinSupportedSdkVersion()
+	case Arm64, X86_64:
+		return FirstLp64Version
+	case Riscv64:
+		apiLevel, err := ApiLevelFromUser(ctx, "VanillaIceCream")
+		if err != nil {
+			panic(err)
+		}
+		return apiLevel
+	default:
+		panic(fmt.Errorf("Unknown arch %q", arch))
+	}
+}
