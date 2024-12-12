@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e38de8f_88688a49",
+        "filename": "aconfig/aconfig_declarations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 3599662
+      },
+      "writtenOn": "2024-12-12T22:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91800b24_d3100cb3",
+      "revId": "ba0bd7ba4e46059257f443ea462f9bcca274a8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84d4ab7d_85d291c4",
@@ -49,6 +67,30 @@
       "writtenOn": "2024-12-12T21:28:14Z",
       "side": 1,
       "message": "nit: I believe that the recommend truthness check for boolean build flags is:\n\nif enableFingerprint !\u003d \"\" {\n\n(because of the implementation quirk described in your comment 😊)\n\n```suggestion\n\t\t\tif enableFingerprint !\u003d \"\" {\n```",
+      "range": {
+        "startLine": 283,
+        "startChar": 24,
+        "endLine": 283,
+        "endChar": 33
+      },
+      "revId": "ba0bd7ba4e46059257f443ea462f9bcca274a8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d64705b0_89336ab6",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 3599662
+      },
+      "writtenOn": "2024-12-12T22:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84d4ab7d_85d291c4",
       "range": {
         "startLine": 283,
         "startChar": 24,
