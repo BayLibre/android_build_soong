@@ -34,6 +34,24 @@
       "parentUuid": "6b209fe2_0937a9fc",
       "revId": "6aef512f3e814cfedcb451f0738a2cb0a08e30f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb11626_afa531f2",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-12T23:10:24Z",
+      "side": 1,
+      "message": "Ah if we\u0027re not passing the build.prop file I would say don\u0027t start passing it just for this, just pass a separate `fixed_timestamp\u003d\u003cvalue\u003e` or something dedicated.\n\nI don\u0027t think we need to worry about users that set `BUILD_DATETIME`. I think they\u0027re rare, and if they care about that, they\u0027re probably happier that the build is more hermetic. Even then, the `adb sync` issue is not a huge deal.",
+      "parentUuid": "3ef3f61c_de97706e",
+      "revId": "6aef512f3e814cfedcb451f0738a2cb0a08e30f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
