@@ -108,7 +108,7 @@ def parse_args():
 
 def generate_common_build_props(args):
   print("####################################")
-  print("# from generate_common_build_props")
+  print("# from generate-common-build-props")
   print("# These properties identify this partition image.")
   print("####################################")
 
@@ -243,9 +243,16 @@ def generate_build_info(args):
   print(f"# end build properties")
 
 def write_properties_from_file(file):
+  # Make and Soong use different intermediate android_info.prop files to build
+  # vendor/build.prop
+  # Although the sysprop contents are same, the absolute paths of
+  # android_info.prop are different.
+  # Remove the absolute path for android_info.prop. This helps with validating
+  # mk->soong migration of android partitions.
+  filename = file.name if "android-info.prop" not in file.name else "android_info.prop"
   print()
   print("####################################")
-  print(f"# from {file.name}")
+  print(f"# from {filename}")
   print("####################################")
   print(file.read(), end="")
 
