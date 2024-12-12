@@ -22,6 +22,30 @@
       },
       "revId": "e20c56cdf024018574458af4586ab7416845b250",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76152995_141d72d8",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-12T17:58:46Z",
+      "side": 1,
+      "message": "Hey Martin, apologies for this new requirement on the prebuilt drop CL. The mainline team has also reported this issue (b/365888529), but it is still unresolved.\n\nSince presumably the source version of these .map.txt files have gone through NDK-API review, imo we should not require another round of NDK-API vote on their prebuilt counterparts. Changing this to `.map` to achieve that SGTM, let me post this on b/365888529",
+      "parentUuid": "6d83f4c6_c835c68a",
+      "range": {
+        "startLine": 411,
+        "startChar": 54,
+        "endLine": 411,
+        "endChar": 88
+      },
+      "revId": "e20c56cdf024018574458af4586ab7416845b250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
