@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d83f4c6_c835c68a",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-12-12T17:24:23Z",
+      "side": 1,
+      "message": "This makes the stub in the prebuilt SDK get the same extension, which is probably `.map.txt`. The effect of that is that CLs with prebuilt drops may get the NDK-API-Review requirement, like in https://r.android.com/c/3392445/1. @spandandas@google.com, WDYT about changing the extension to something else (e.g. `.map`) to avoid that?",
+      "range": {
+        "startLine": 411,
+        "startChar": 54,
+        "endLine": 411,
+        "endChar": 88
+      },
+      "revId": "e20c56cdf024018574458af4586ab7416845b250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
