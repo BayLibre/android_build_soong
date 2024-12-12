@@ -34,6 +34,24 @@
       ],
       "revId": "2094d18b393540401353778be830fca0b10e31e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "130575cd_e009f447",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-12-12T17:13:25Z",
+      "side": 1,
+      "message": "Ah good catch, thanks!",
+      "parentUuid": "d3cfa258_4910580c",
+      "revId": "2094d18b393540401353778be830fca0b10e31e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
