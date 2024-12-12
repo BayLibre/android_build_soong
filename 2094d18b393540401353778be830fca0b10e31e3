@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3cfa258_4910580c",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-12-12T17:06:44Z",
+      "side": 1,
+      "message": "Should this be `m.properties.Installable`, the same as the Java library above?",
+      "fixSuggestions": [
+        {
+          "fixId": "15c279c0_81a8d581",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "sysprop/sysprop_library.go",
+              "range": {
+                "startLine": 683,
+                "startChar": 0,
+                "endLine": 684,
+                "endChar": 0
+              },
+              "replacement": "\t\tInstallable:  m.properties.Installable,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2094d18b393540401353778be830fca0b10e31e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
