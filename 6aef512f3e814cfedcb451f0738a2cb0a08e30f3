@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b209fe2_0937a9fc",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-12T20:32:48Z",
+      "side": 1,
+      "message": "Is this variable ever set? I couldn\u0027t find any places: https://source.corp.google.com/search?q\u003dCOPY_IMAGES_FOR_TARGET_FILES_ZIP%20-f:build%2Fmake%2Fcore%2FMakefile%20-f:build%2Fmake%2Fcore%2Fsoong_config.mk%20-f:src%2Faosp%2Fbuild%2Fcore%2FMakefile%20-f:src%2Faosp%2Fbuild%2Fcore%2Fsoong_config.mk\n\nMaybe we should consider removing it.\n\nI think for the diff-test purposes, making `build_image.py` use `BUILD_DATETIME_FILE` / `ro.build.date` as the mtime is a better solution.",
+      "revId": "6aef512f3e814cfedcb451f0738a2cb0a08e30f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
