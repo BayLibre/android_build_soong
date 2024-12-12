@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c02cd8d_d5c656f7",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-12T22:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1821f2d9_05531d29",
+      "range": {
+        "startLine": 125,
+        "startChar": 38,
+        "endLine": 125,
+        "endChar": 86
+      },
+      "revId": "9b4b739de6dcf8fa9ba28908c72f8ba54ff8dd6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab82b08c_dea2c467",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-12-12T19:52:13Z",
       "side": 1,
       "message": "Should we make it default to `ctx.Config().PlatformSecurityPatch()` if one isn\u0027t provided?",
+      "revId": "9b4b739de6dcf8fa9ba28908c72f8ba54ff8dd6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7854d6f_0d44f33f",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-12T22:32:34Z",
+      "side": 1,
+      "message": "I think that might cause issues for `vendor, odm...` For aosp CF, their `$partition_security_patch` values are currently empty while the `PlatformSecurityPatch` is not. If we default to the platform security patch, then vendor, odm, ... will get that value in their img files.",
+      "parentUuid": "ab82b08c_dea2c467",
       "revId": "9b4b739de6dcf8fa9ba28908c72f8ba54ff8dd6c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
