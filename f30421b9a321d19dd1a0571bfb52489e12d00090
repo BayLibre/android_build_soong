@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa5b231_32b1157e",
+        "filename": "java/base.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-12-12T23:46:23Z",
+      "side": 1,
+      "message": "`*string`, with the appropriate changes where we use it.",
+      "range": {
+        "startLine": 113,
+        "startChar": 15,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "f30421b9a321d19dd1a0571bfb52489e12d00090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
