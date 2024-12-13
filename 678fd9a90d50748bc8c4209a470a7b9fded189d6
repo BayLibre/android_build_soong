@@ -51,6 +51,24 @@
       ],
       "revId": "678fd9a90d50748bc8c4209a470a7b9fded189d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b790f172_7d12ce43",
+        "filename": "java/base.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2957,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2024-12-13T00:26:55Z",
+      "side": 1,
+      "message": "- Okay now it reutrns properly. (but maybe it doesn\u0027t matter because if there\u0027s an error, we don\u0027t start ninja anyway?)\n- Now we only enable sharding on the imple jar.",
+      "parentUuid": "e789d3eb_ce6d9411",
+      "revId": "678fd9a90d50748bc8c4209a470a7b9fded189d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
