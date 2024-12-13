@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a18e21b_7ab3ec32",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-13T22:20:22Z",
+      "side": 1,
+      "message": "nit: utilize [`CpIfChanged`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/defs.go;l\u003d63;drc\u003d6265120cd269ba08be46d42bd5e8d88a67c804a6)?",
+      "revId": "f880be154989c498a4a5b7761908ee1aa7ae5f87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
