@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd9534c_cfc6c824",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-12-13T18:32:05Z",
+      "side": 1,
+      "message": "Thanks! This is the first time I\u0027ve added a script to Soong.",
+      "parentUuid": "c573b59e_67245a1c",
+      "revId": "6e177b67f7777718751ee371db8cf97828b1fed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "939c3a7e_a046799d",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-12-12T18:04:06Z",
       "side": 1,
       "message": "Does this also need to be changed?",
+      "revId": "6e177b67f7777718751ee371db8cf97828b1fed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09f63fe_ead160ed",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-12-13T18:32:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "939c3a7e_a046799d",
       "revId": "6e177b67f7777718751ee371db8cf97828b1fed8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "affd79b6_8da238d3",
+        "filename": "rust/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-12-13T18:32:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c85ab552_19def10b",
+      "revId": "6e177b67f7777718751ee371db8cf97828b1fed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23c82c1f_14690134",
@@ -65,6 +119,24 @@
       "writtenOn": "2024-12-12T18:04:06Z",
       "side": 1,
       "message": "I would pass in the linker as a dedicated flag to the script, so that we can reuse the same logic we already have in soong for locating it. (The `RustLinker` variable)\n\nI recommend using argparse with `parse_known_args` to parse that dedicated flag and get all the remaining flags for clang.",
+      "revId": "6e177b67f7777718751ee371db8cf97828b1fed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e514116_c8b69a59",
+        "filename": "scripts/rustcLinker.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-12-13T18:32:05Z",
+      "side": 1,
+      "message": "Ah yea that\u0027s cleaner! Thanks!",
+      "parentUuid": "23c82c1f_14690134",
       "revId": "6e177b67f7777718751ee371db8cf97828b1fed8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
