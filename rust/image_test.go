@@ -22,7 +22,7 @@ import (
 	"android/soong/cc"
 )
 
-// Test that cc modules can depend on vendor_available rust_ffi_rlib/rust_ffi_static libraries.
+// Test that cc modules can depend on vendor_available rust_ffi_static libraries.
 func TestVendorLinkage(t *testing.T) {
 	ctx := testRust(t, `
 			cc_binary {
@@ -38,7 +38,7 @@ func TestVendorLinkage(t *testing.T) {
 				static_libs: ["libfoo_vendor"],
 				soc_specific: true,
 			}
-			rust_ffi_rlib {
+			rust_ffi_static {
 				name: "libfoo_vendor",
 				crate_name: "foo",
 				srcs: ["foo.rs"],
@@ -107,7 +107,7 @@ func TestImageCfgFlag(t *testing.T) {
 
 }
 
-// Test that cc modules can link against vendor_ramdisk_available rust_ffi_rlib and rust_ffi_static libraries.
+// Test that cc modules can link against vendor_ramdisk_available rust_ffi_static libraries.
 func TestVendorRamdiskLinkage(t *testing.T) {
 	ctx := testRust(t, `
 			cc_library_shared {
@@ -119,7 +119,7 @@ func TestVendorRamdiskLinkage(t *testing.T) {
 				system_shared_libs: [],
 				vendor_ramdisk_available: true,
 			}
-			rust_ffi_rlib {
+			rust_ffi_static {
 				name: "libfoo_vendor_ramdisk",
 				crate_name: "foo",
 				srcs: ["foo.rs"],
