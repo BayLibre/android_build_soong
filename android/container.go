@@ -56,7 +56,10 @@ var belongsToCommonApexes exceptionHandleFunc = func(mctx ModuleContext, m, dep 
 	mContainersInfo, _ := getContainerModuleInfo(mctx, m)
 	depContainersInfo, _ := getContainerModuleInfo(mctx, dep)
 
-	return HasIntersection(mContainersInfo.ApexNames(), depContainersInfo.ApexNames())
+	mApexes := mContainersInfo.ApexNames()
+	depApexes := depContainersInfo.ApexNames()
+
+	return HasIntersection(mApexes, depApexes)
 }
 
 // Returns true when all apexes that the module belongs to are non updatable.
@@ -145,12 +148,20 @@ var exceptionHandleFunctionsTable = map[exceptionHandleFuncLabel]exceptionHandle
 type containerBoundaryFunc func(mctx ModuleContext) bool
 
 var vendorContainerBoundaryFunc containerBoundaryFunc = func(mctx ModuleContext) bool {
-	m, ok := mctx.Module().(ImageInterface)
-	return mctx.Module().InstallInVendor() || (ok && m.VendorVariantNeeded(mctx))
+	vendorVariation := true
+	if _, ok := mctx.Module().(ImageInterface); ok {
+		vendorVariation = mctx.Module().ImageVariation().Variation == VendorVariation
+	}
+	return mctx.Module().InstallInVendor() && vendorVariation
 }
 
 var systemContainerBoundaryFunc containerBoundaryFunc = func(mctx ModuleContext) bool {
 	module := mctx.Module()
+
+	platformVariation := true
+	if _, ok := mctx.Module().(ImageInterface); ok {
+		platformVariation = mctx.Module().ImageVariation().Variation == CoreVariation
+	}
 
 	return !module.InstallInTestcases() &&
 		!module.InstallInData() &&
@@ -161,16 +172,20 @@ var systemContainerBoundaryFunc containerBoundaryFunc = func(mctx ModuleContext)
 		!module.InstallInVendor() &&
 		!module.InstallInOdm() &&
 		!module.InstallInProduct() &&
-		determineModuleKind(module.base(), mctx.blueprintBaseModuleContext()) == platformModule
+		determineModuleKind(module.base(), mctx.blueprintBaseModuleContext()) == platformModule &&
+		platformVariation
 }
 
 var productContainerBoundaryFunc containerBoundaryFunc = func(mctx ModuleContext) bool {
-	m, ok := mctx.Module().(ImageInterface)
-	return mctx.Module().InstallInProduct() || (ok && m.ProductVariantNeeded(mctx))
+	productVariation := true
+	if _, ok := mctx.Module().(ImageInterface); ok {
+		productVariation = mctx.Module().ImageVariation().Variation == ProductVariation
+	}
+	return mctx.Module().InstallInProduct() && productVariation
 }
 
 var apexContainerBoundaryFunc containerBoundaryFunc = func(mctx ModuleContext) bool {
-	_, ok := ModuleProvider(mctx, AllApexInfoProvider)
+	_, ok := ModuleProvider(mctx, ApexInfoProvider)
 	return ok
 }
 
@@ -251,6 +266,10 @@ type container struct {
 
 	// Map of dependency restricted containers.
 	restricted []restriction
+}
+
+func (c container) String() string {
+	return c.name
 }
 
 var (
@@ -370,32 +389,28 @@ func initializeApexContainer() *container {
 	return apexContainer
 }
 
+type containerApexInfo struct {
+	apexNames []string
+	updatable bool
+}
+
 type ContainersInfo struct {
 	belongingContainers []*container
 
-	belongingApexes []ApexInfo
+	belongingApexes containerApexInfo
 }
 
 func (c *ContainersInfo) BelongingContainers() []*container {
 	return c.belongingContainers
 }
 
-func (c *ContainersInfo) ApexNames() (ret []string) {
-	for _, apex := range c.belongingApexes {
-		ret = append(ret, apex.InApexVariants...)
-	}
-	slices.Sort(ret)
-	return ret
+func (c *ContainersInfo) ApexNames() []string {
+	return c.belongingApexes.apexNames
 }
 
 // Returns true if any of the apex the module belongs to is updatable.
 func (c *ContainersInfo) UpdatableApex() bool {
-	for _, apex := range c.belongingApexes {
-		if apex.Updatable {
-			return true
-		}
-	}
-	return false
+	return c.belongingApexes.updatable
 }
 
 var ContainersInfoProvider = blueprint.NewProvider[ContainersInfo]()
@@ -443,14 +458,20 @@ func generateContainerInfo(ctx ModuleContext) ContainersInfo {
 		}
 	}
 
-	var belongingApexes []ApexInfo
-	if apexInfo, ok := ModuleProvider(ctx, AllApexInfoProvider); ok {
-		belongingApexes = apexInfo.ApexInfos
+	var apexNames []string
+	var updatable bool
+	if apexInfo, ok := ModuleProvider(ctx, ApexInfoProvider); ok {
+		apexNames = apexInfo.InApexVariants
+		slices.Sort(apexNames)
+		updatable = apexInfo.Updatable
 	}
 
 	return ContainersInfo{
 		belongingContainers: containers,
-		belongingApexes:     belongingApexes,
+		belongingApexes: containerApexInfo{
+			apexNames: apexNames,
+			updatable: updatable,
+		},
 	}
 }
 
