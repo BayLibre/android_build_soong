@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85942ab7_35b6c3e4",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-13T01:56:52Z",
+      "side": 1,
+      "message": "`BUILD_DATETIME_FILE` already contains the `out/`, so you\u0027re getting the wrong path from `PathForArbitraryOutput`. Maybe just skip adding the order-only dependency entirely for now, as the file will always be there.",
+      "revId": "c5d8b48853978dfb021e944e1c654b9e520f35ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
