@@ -64,6 +64,30 @@
       },
       "revId": "dbc8d2bba0a37da5c5eec7e4dde8c3be7c20e09a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa08116_7545dfff",
+        "filename": "scripts/gen_build_prop.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-13T21:23:40Z",
+      "side": 1,
+      "message": "I have updated a CL to use filenames for all generated files, instead of special casing android info. Since we are no longer special casing, I have updated the naming in this current CL.",
+      "parentUuid": "ab5ea388_760992d8",
+      "range": {
+        "startLine": 252,
+        "startChar": 27,
+        "endLine": 252,
+        "endChar": 44
+      },
+      "revId": "dbc8d2bba0a37da5c5eec7e4dde8c3be7c20e09a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
