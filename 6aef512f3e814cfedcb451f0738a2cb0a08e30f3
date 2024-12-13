@@ -52,6 +52,24 @@
       "parentUuid": "3ef3f61c_de97706e",
       "revId": "6aef512f3e814cfedcb451f0738a2cb0a08e30f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d26ddcf_f8f6378a",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-13T01:15:22Z",
+      "side": 1,
+      "message": "I discussed this with Cole offline, and I have replaced this with https://android-review.git.corp.google.com/q/topic:%22build_datetime_build_image%22. It uses the timestamp in `build_date.txt` in `build_image.py`",
+      "parentUuid": "8eb11626_afa531f2",
+      "revId": "6aef512f3e814cfedcb451f0738a2cb0a08e30f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
