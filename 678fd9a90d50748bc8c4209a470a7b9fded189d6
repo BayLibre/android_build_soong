@@ -16,6 +16,41 @@
       "message": "Thanks! Fixed... PTAL?",
       "revId": "678fd9a90d50748bc8c4209a470a7b9fded189d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e789d3eb_ce6d9411",
+        "filename": "java/base.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2957,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2024-12-13T00:04:57Z",
+      "side": 1,
+      "message": "- Actually, I think I should return here.\n\n- Also, we actually call jarjarIfNecessary twice, one for the impl jar, second for the resources jar. Framework-minus-apex doesn\u0027t have resouces jar, but even if it did, it\u0027d be overkill to use sharding. I think I should enable sharding only on the impl jar.",
+      "fixSuggestions": [
+        {
+          "fixId": "fc2a130f_377aa9bc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/base.go",
+              "range": {
+                "startLine": 2958,
+                "startChar": 0,
+                "endLine": 2958,
+                "endChar": 0
+              },
+              "replacement": "\t\treturn infile, false\n"
+            }
+          ]
+        }
+      ],
+      "revId": "678fd9a90d50748bc8c4209a470a7b9fded189d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
