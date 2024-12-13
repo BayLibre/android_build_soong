@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81b79919_ec6cb6de",
+        "filename": "scripts/gen_build_prop.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-13T19:35:09Z",
+      "side": 1,
+      "message": "Is this a typo? Should this be `android_info.prop` instead?",
+      "range": {
+        "startLine": 252,
+        "startChar": 27,
+        "endLine": 252,
+        "endChar": 44
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f788c733_1336c23a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "scripts/gen_build_prop.py",
+              "range": {
+                "startLine": 252,
+                "startChar": 0,
+                "endLine": 253,
+                "endChar": 0
+              },
+              "replacement": "  filename \u003d file.name if \"android_info.prop\" not in file.name else \"android_info.prop\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "dbc8d2bba0a37da5c5eec7e4dde8c3be7c20e09a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
