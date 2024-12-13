@@ -168,7 +168,7 @@ var (
 				"${config.JavaCmd}",
 			},
 			Rspfile:        "$out.rsp",
-			RspfileContent: "$in",
+			RspfileContent: "$in_newline",
 			Restat:         true,
 		},
 		&remoteexec.REParams{Labels: map[string]string{"type": "tool", "name": "turbine"},
