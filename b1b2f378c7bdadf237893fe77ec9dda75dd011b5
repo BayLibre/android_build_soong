@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea0d8348_51e73d83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-12-13T20:39:51Z",
+      "side": 1,
+      "message": "Approve in general, it may be worth (possibly in a follow-up change) cleaning up the tests to not have duplicate entries now that `rust_ffi_rlib` and `rust_ffi_static` are the same",
+      "revId": "b1b2f378c7bdadf237893fe77ec9dda75dd011b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a97d81c6_86110c8b",
+        "filename": "rust/image_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-12-13T20:39:51Z",
+      "side": 1,
+      "message": "Should we drop one ofthese two from the vendor linkage test? This now looks like it\u0027s duplicated.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "b1b2f378c7bdadf237893fe77ec9dda75dd011b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14b72ce5_969df78f",
+        "filename": "rust/image_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-12-13T20:39:51Z",
+      "side": 1,
+      "message": "Same - do we want two copies?",
+      "revId": "b1b2f378c7bdadf237893fe77ec9dda75dd011b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
