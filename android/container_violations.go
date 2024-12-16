@@ -981,7 +981,9 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 	},
 
 	"NfcNciApex": {
+		"android.nfc.flags-aconfig-java", // apex [com.android.nfcservices] -> system
 		"android.permission.flags-aconfig-java", // apex [com.android.nfcservices] -> apex [com.android.permission, test_com.android.permission]
+		"framework-nfc.impl",             // apex [com.android.nfcservices] -> system
 	},
 
 	"okhttp-norepackage": {
