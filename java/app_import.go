@@ -17,6 +17,7 @@ package java
 // This file contains the module implementations for android_app_import and android_test_import.
 
 import (
+	"fmt"
 	"reflect"
 	"strings"
 
@@ -56,6 +57,13 @@ var (
 		CommandDeps: []string{"build/soong/scripts/check_prebuilt_presigned_apk.py", "${config.Aapt2Cmd}", "${config.ZipAlign}"},
 		Description: "Check presigned apk",
 	}, "extraArgs")
+
+	extractApkRule = pctx.AndroidStaticRule("extract-apk", blueprint.RuleParams{
+		Command: "unzip -p $in $extraArgs > $out",
+		// CommandDeps: []string{"${unzip}"},
+		Description: "Extract specific sub apk",
+	}, "extraArgs")
+	_ = pctx.HostBinToolVariable("unzip", "unzip")
 )
 
 func RegisterAppImportBuildComponents(ctx android.RegistrationContext) {
@@ -154,6 +162,8 @@ type AndroidAppImportProperties struct {
 	// In case of mainline modules, the .prebuilt_info file contains the build_id that was used
 	// to generate the prebuilt.
 	Prebuilt_info *string `android:"path"`
+
+	Extract_apk *string `android:"path"`
 }
 
 func (a *AndroidAppImport) IsInstallable() bool {
@@ -278,6 +288,23 @@ func (a *AndroidAppImport) uncompressEmbeddedJniLibs(
 	})
 }
 
+func (a *AndroidAppImport) extractSubApk(
+	ctx android.ModuleContext, inputPath android.Path, outputPath android.WritablePath) {
+	// Unzip sub apk
+	extractApkPath := *a.properties.Extract_apk
+	fmt.Println("Check output path ", extractApkPath)
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   extractApkRule,
+		Input:  inputPath,
+		Output: outputPath,
+		Args: map[string]string{
+			"extraArgs": extractApkPath,
+		},
+	})
+	fmt.Println("Extract success!")
+}
+
 // Returns whether this module should have the dex file stored uncompressed in the APK.
 func (a *AndroidAppImport) shouldUncompressDex(ctx android.ModuleContext) bool {
 	if ctx.Config().UnbundledBuild() || proptools.Bool(a.properties.Preprocessed) {
@@ -340,6 +367,15 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 	// TODO: LOCAL_PACKAGE_SPLITS
 
 	srcApk := a.prebuilt.SingleSourcePath(ctx)
+	if a.properties.Extract_apk != nil {
+		fmt.Println("Check srcApk path ", srcApk)
+		fmt.Println("Check Extract_apk path ", *a.properties.Extract_apk)
+		extract_apk := android.PathForModuleOut(ctx, "extract-apk", ctx.ModuleName()+".apk")
+		fmt.Println("Check output path ", extract_apk)
+		a.extractSubApk(ctx, srcApk, extract_apk)
+		srcApk = extract_apk
+		fmt.Println("replace output path ", extract_apk)
+	}
 
 	// TODO: Install or embed JNI libraries
 
