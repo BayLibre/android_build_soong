@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74d01de3_9bab9986",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-16T19:05:42Z",
+      "side": 1,
+      "message": "Please run `gofmt -w build/soong/android/container_violations.go` to format the comments.",
+      "revId": "90257dcf7551207a0590a82db8f932b2cd021b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e03dad9_4f25177c",
+        "filename": "android/container_violations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-16T19:05:42Z",
+      "side": 1,
+      "message": "I\u0027d appreciate if you can add the comment above this entry to distinguish it from L986.",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 987,
+        "endChar": 79
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "11325a5a_f768ba5d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/container_violations.go",
+              "range": {
+                "startLine": 987,
+                "startChar": 0,
+                "endLine": 988,
+                "endChar": 0
+              },
+              "replacement": "\t\t// TODO(b/382301972): Remove the violations and use jarjar_rename or jarjar_prefix\n\t\t\"framework-nfc.impl\", // apex [com.android.nfcservices] -\u003e system\n"
+            }
+          ]
+        }
+      ],
+      "revId": "90257dcf7551207a0590a82db8f932b2cd021b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
