@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "116580df_357449f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2024-12-16T19:10:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74d01de3_9bab9986",
+      "revId": "90257dcf7551207a0590a82db8f932b2cd021b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e03dad9_4f25177c",
@@ -55,6 +73,30 @@
           ]
         }
       ],
+      "revId": "90257dcf7551207a0590a82db8f932b2cd021b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace97d0d_c0e45d2e",
+        "filename": "android/container_violations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2024-12-16T19:10:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e03dad9_4f25177c",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 987,
+        "endChar": 79
+      },
       "revId": "90257dcf7551207a0590a82db8f932b2cd021b16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
