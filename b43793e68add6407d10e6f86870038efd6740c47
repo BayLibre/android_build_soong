@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a91a108_ac798b95",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-16T19:25:48Z",
+      "side": 1,
+      "message": "nit: instead of hardcoding this file here, WDYT about explicitly specifying it in `Linker_config.Linker_config_srcs` of the systemimage soong module?",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 98
+      },
+      "revId": "b43793e68add6407d10e6f86870038efd6740c47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
