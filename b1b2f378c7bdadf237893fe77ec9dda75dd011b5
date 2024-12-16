@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c408635d_00e38e26",
+        "filename": "rust/image_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-12-16T18:54:51Z",
+      "side": 1,
+      "message": "Good catch, thanks -- removed.",
+      "parentUuid": "a97d81c6_86110c8b",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "b1b2f378c7bdadf237893fe77ec9dda75dd011b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14b72ce5_969df78f",
@@ -54,6 +78,24 @@
       "writtenOn": "2024-12-13T20:39:51Z",
       "side": 1,
       "message": "Same - do we want two copies?",
+      "revId": "b1b2f378c7bdadf237893fe77ec9dda75dd011b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9902ab2a_38f939c2",
+        "filename": "rust/image_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-12-16T18:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14b72ce5_969df78f",
       "revId": "b1b2f378c7bdadf237893fe77ec9dda75dd011b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
