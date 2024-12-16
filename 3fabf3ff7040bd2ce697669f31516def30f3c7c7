@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85bac886_b6f316bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-16T19:00:29Z",
+      "side": 1,
+      "message": "Do you mind adding TODOs to remove the entries once the bug is resolved?",
+      "revId": "3fabf3ff7040bd2ce697669f31516def30f3c7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
