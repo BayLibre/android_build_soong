@@ -1156,4 +1156,9 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 		"framework-wifi-pre-jarjar", // apex [com.android.wifi, test_com.android.wifi] -> system
 		"jsr305",                    // apex [com.android.wifi, test_com.android.wifi] -> apex [com.android.adservices, com.android.devicelock, com.android.extservices, com.android.healthfitness, com.android.media, com.android.mediaprovider, test_com.android.media, test_com.android.mediaprovider]
 	},
+
+	"NfcNciApex": {
+		"android.nfc.flags-aconfig-java", // apex [com.android.nfcservices] -> system
+		"framework-nfc.impl",             // apex [com.android.nfcservices] -> system
+	},
 }
