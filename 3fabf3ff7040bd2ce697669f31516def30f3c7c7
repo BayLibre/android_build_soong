@@ -16,6 +16,41 @@
       "message": "Do you mind adding TODOs to remove the entries once the bug is resolved?",
       "revId": "3fabf3ff7040bd2ce697669f31516def30f3c7c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7e800cf_8b6eb690",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2024-12-16T19:02:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85bac886_b6f316bc",
+      "revId": "3fabf3ff7040bd2ce697669f31516def30f3c7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a823fa16_01daa3c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2024-12-16T19:02:06Z",
+      "side": 1,
+      "message": "Addressed the comments. PTAL, thanks!",
+      "revId": "3fabf3ff7040bd2ce697669f31516def30f3c7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
