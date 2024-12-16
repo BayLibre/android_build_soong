@@ -886,10 +886,8 @@ func (f *filesystem) BuildLinkerConfigFile(ctx android.ModuleContext, builder *a
 	}
 
 	provideModules, _ := f.getLibsForLinkerConfig(ctx)
-	intermediateOutput := android.PathForModuleOut(ctx, "linker.config.pb")
-	linkerconfig.BuildLinkerConfig(ctx, android.PathsForModuleSrc(ctx, f.properties.Linker_config.Linker_config_srcs), provideModules, nil, intermediateOutput)
 	output := rebasedDir.Join(ctx, "etc", "linker.config.pb")
-	builder.Command().Text("cp").Input(intermediateOutput).Output(output)
+	linkerconfig.BuildLinkerConfig(ctx, builder, android.PathsForModuleSrc(ctx, f.properties.Linker_config.Linker_config_srcs), provideModules, nil, output)
 
 	f.appendToEntry(ctx, output)
 }

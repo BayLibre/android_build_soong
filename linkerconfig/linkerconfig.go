@@ -76,7 +76,9 @@ func (l *linkerConfig) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	input := android.PathForModuleSrc(ctx, android.String(l.properties.Src))
 	output := android.PathForModuleOut(ctx, "linker.config.pb").OutputPath
 
-	BuildLinkerConfig(ctx, android.Paths{input}, nil, nil, output)
+	builder := android.NewRuleBuilder(pctx, ctx)
+	BuildLinkerConfig(ctx, builder, android.Paths{input}, nil, nil, output)
+	builder.Build("conv_linker_config", "Generate linker config protobuf "+output.String())
 
 	l.outputFilePath = output
 	l.installDirPath = android.PathForModuleInstall(ctx, "etc")
@@ -88,15 +90,10 @@ func (l *linkerConfig) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.SetOutputFiles(android.Paths{l.outputFilePath}, "")
 }
 
-func BuildLinkerConfig(
-	ctx android.ModuleContext,
-	inputs android.Paths,
-	provideModules []android.Module,
-	requireModules []android.Module,
-	output android.WritablePath,
-) {
+func BuildLinkerConfig(ctx android.ModuleContext, builder *android.RuleBuilder,
+	inputs android.Paths, provideModules []android.Module, requireModules []android.Module, output android.OutputPath) {
+
 	// First, convert the input json to protobuf format
-	builder := android.NewRuleBuilder(pctx, ctx)
 	interimOutput := android.PathForModuleOut(ctx, "temp.pb")
 	cmd := builder.Command().
 		BuiltTool("conv_linker_config").
@@ -160,7 +157,6 @@ func BuildLinkerConfig(
 
 	builder.Temporary(interimOutput)
 	builder.DeleteTemporaryFiles()
-	builder.Build("conv_linker_config_"+output.String(), "Generate linker config protobuf "+output.String())
 }
 
 // linker_config generates protobuf file from json file. This protobuf file will be used from
