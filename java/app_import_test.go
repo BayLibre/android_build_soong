@@ -685,6 +685,25 @@ func TestAndroidAppImport_relativeInstallPath(t *testing.T) {
 	}
 }
 
+func TestAndroidAppImport_ExtractApk(t *testing.T) {
+	ctx, _ := testJava(t, `
+		android_app_import {
+			name: "foo",
+			apk: "prebuilts/apk/app.apk",
+			certificate: "platform",
+			extract_apk: "extract_path/sub_app.apk"
+		}
+		`)
+
+	variant := ctx.ModuleForTests("foo", "android_common")
+	extractRuleCommand := variant.Output("extract-apk/foo.apk").RuleParams.Command
+	if !strings.HasPrefix(extractRuleCommand, "unzip -p") {
+		t.Errorf("Unexpected extract apk rule command: " + extractRuleCommand)
+	}
+	if !strings.Contains(extractRuleCommand, "extract_path/sub_app.apk") {
+		t.Errorf("Unexpected extract apk rule command: " + extractRuleCommand)
+	}
+}
 func TestAndroidTestImport(t *testing.T) {
 	ctx, _ := testJava(t, `
 		android_test_import {
