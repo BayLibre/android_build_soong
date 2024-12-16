@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66c349d4_86b414b4",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-16T19:18:44Z",
+      "side": 1,
+      "message": "Is the build fingerprint file guaranteed to exist before this cmd runs?",
+      "range": {
+        "startLine": 699,
+        "startChar": 5,
+        "endLine": 699,
+        "endChar": 57
+      },
+      "revId": "efeb5c4f29c85319db1c965afc39ecec4bc975b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
