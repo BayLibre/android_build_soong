@@ -23,8 +23,7 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
-// TestConfig returns a Config object for testing.
-func TestConfig(buildDir string, env map[string]string, bp string, fs map[string][]byte) Config {
+func initTestConfig(buildDir string, env map[string]string) *config {
 	envCopy := make(map[string]string)
 	for k, v := range env {
 		envCopy[k] = v
@@ -70,9 +69,19 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 	}
 	config.TestProductVariables = &config.productVariables
 
+	determineBuildOS(config)
+
+	return config
+}
+
+// TestConfig returns a Config object for testing.
+func TestConfig(buildDir string, env map[string]string, bp string, fs map[string][]byte) Config {
+	config := initTestConfig(buildDir, env)
+
 	config.mockFileSystem(bp, fs)
 
-	determineBuildOS(config)
+	config.genericConfig = initTestConfig(buildDir, env)
+	overrideGenericConfig(config.genericConfig)
 
 	return Config{config}
 }
