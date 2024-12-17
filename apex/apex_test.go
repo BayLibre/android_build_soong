@@ -11084,7 +11084,7 @@ func TestInstallationRulesForMultipleApexPrebuilts(t *testing.T) {
 		variation := func(moduleName string) string {
 			ret := "android_common_com.android.foo"
 			if moduleName == "com.google.android.foo" {
-				ret = "android_common_com.google.android.foo_com.google.android.foo"
+				ret = "android_common_com.google.android.foo"
 			}
 			return ret
 		}
@@ -11599,7 +11599,7 @@ func TestOverrideApexWithPrebuiltApexPreferred(t *testing.T) {
 		}
 	`)
 
-	java.CheckModuleHasDependency(t, res.TestContext, "myoverrideapex", "android_common_myoverrideapex_myoverrideapex", "foo")
+	java.CheckModuleHasDependency(t, res.TestContext, "myoverrideapex", "android_common_myoverrideapex", "foo")
 }
 
 func TestUpdatableApexMinSdkVersionCurrent(t *testing.T) {
