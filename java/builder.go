@@ -226,6 +226,12 @@ var (
 		},
 		"jarArgs")
 
+	combineR8Rules = pctx.AndroidStaticRule("combineR8Rules",
+		blueprint.RuleParams{
+			Command:     `${config.R8ExtractRulesCmd} --rules-output $out --include-origin-comments $in`,
+			CommandDeps: []string{"${config.R8ExtractRulesCmd}"},
+		})
+
 	jarjar = pctx.AndroidStaticRule("jarjar",
 		blueprint.RuleParams{
 			Command: "" +
@@ -736,6 +742,16 @@ func TransformJarsToJar(ctx android.ModuleContext, outputFile android.WritablePa
 		Args: map[string]string{
 			"jarArgs": strings.Join(jarArgs, " "),
 		},
+	})
+}
+
+func TransformJarsToRules(ctx android.ModuleContext, outputFile android.WritablePath,
+	jars android.Paths) {
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        combineR8Rules,
+		Output:      outputFile,
+		Inputs:      jars,
 	})
 }
 

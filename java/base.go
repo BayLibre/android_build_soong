@@ -1799,6 +1799,12 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 				j.dexer.extraProguardFlagsFiles = append(j.dexer.extraProguardFlagsFiles,
 					android.PathForSource(ctx, "build/make/core/proguard.jacoco.flags"))
 			}
+
+			combinedProguardFlags := android.PathForModuleOut(ctx, "combined_proguard_flags")
+			TransformJarsToRules(ctx, combinedProguardFlags, jars)
+			j.dexer.extraProguardFlagsFiles = append(j.dexer.extraProguardFlagsFiles,
+				combinedProguardFlags)
+
 			// Dex compilation
 			var dexOutputFile android.Path
 			params := &compileDexParams{
