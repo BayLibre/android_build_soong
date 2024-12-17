@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f97af8e_b31e8a9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-12-17T22:47:01Z",
+      "side": 1,
+      "message": "I seriously doubt that this will fix the bug.  (The `execution metrics` mentioned here are a build artifact that is generated after ninja completes, and has nothing to do with actually linking anything.)",
+      "revId": "2ceed40073d2b798cad27a128a35be0a531bd331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
