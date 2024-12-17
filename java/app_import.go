@@ -43,6 +43,12 @@ var (
 		Description: "Uncompress embedded JNI libs",
 	})
 
+	removeUnwantedEmbeddedJniLibsRule = pctx.AndroidStaticRule("remove-unwanted-embedded-jni-libs", blueprint.RuleParams{
+		Command:     `${config.Zip2ZipCmd} -i $in -o $out -x 'lib/**/*.so' $extraArgs`,
+		CommandDeps: []string{"${config.Zip2ZipCmd}"},
+		Description: "Remove unwanted JNI libs and embed specified ones",
+	}, "extraArgs")
+
 	uncompressDexRule = pctx.AndroidStaticRule("uncompress-dex", blueprint.RuleParams{
 		Command: `if (zipinfo $in '*.dex' 2>/dev/null | grep -v ' stor ' >/dev/null) ; then ` +
 			`${config.Zip2ZipCmd} -i $in -o $out -0 'classes*.dex'` +
@@ -101,6 +107,12 @@ type AndroidAppImportProperties struct {
 
 	// Names of extra android_app_certificate modules to sign the apk with in the form ":module".
 	Additional_certificates []string
+
+	// Embed_jni_libs specifies a list of JNI libraries to be embedded into the APK.
+	// By default, Soong includes all prebuilt JNI libraries. This property allows
+	// for a reduction in APK size by selectively embedding only the necessary libraries. This is
+	// equivalent to setting LOCAL_PREBUILT_JNI_LIBS += @lib/<arch>/<lib>.so in an Android.mk file.
+	Embed_jni_libs []string `android:"path"`
 
 	// Set this flag to true if the prebuilt apk is already signed. The certificate property must not
 	// be set for presigned modules.
@@ -278,6 +290,24 @@ func (a *AndroidAppImport) uncompressEmbeddedJniLibs(
 	})
 }
 
+func (a *AndroidAppImport) removeUnwantedEmbeddedJniLibs(
+	ctx android.ModuleContext, inputPath android.Path, outputPath android.WritablePath) {
+
+	var embedJniLibSlice []string
+	for _, lib := range a.properties.Embed_jni_libs {
+		embedJniLibSlice = append(embedJniLibSlice, " -X lib/"+ctx.DeviceConfig().DeviceArch()+"/"+lib)
+	}
+	embedJniLibString := strings.Join(embedJniLibSlice, " ")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   removeUnwantedEmbeddedJniLibsRule,
+		Input:  inputPath,
+		Output: outputPath,
+		Args: map[string]string{
+			"extraArgs": embedJniLibString,
+		},
+	})
+}
+
 // Returns whether this module should have the dex file stored uncompressed in the APK.
 func (a *AndroidAppImport) shouldUncompressDex(ctx android.ModuleContext) bool {
 	if ctx.Config().UnbundledBuild() || proptools.Bool(a.properties.Preprocessed) {
@@ -346,6 +376,13 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 	// Uncompress JNI libraries in the apk
 	jnisUncompressed := android.PathForModuleOut(ctx, "jnis-uncompressed", ctx.ModuleName()+".apk")
 	a.uncompressEmbeddedJniLibs(ctx, srcApk, jnisUncompressed)
+
+	// Removes unwanted JNI libs and embeds the specified ones into the APK
+	if len(a.properties.Embed_jni_libs) > 0 {
+		jnisEmbedded := android.PathForModuleOut(ctx, "jnis-wanted", ctx.ModuleName()+".apk")
+		a.removeUnwantedEmbeddedJniLibs(ctx, jnisUncompressed, jnisEmbedded)
+		jnisUncompressed = jnisEmbedded
+	}
 
 	var pathFragments []string
 	relInstallPath := String(a.properties.Relative_install_path)
@@ -538,7 +575,7 @@ func (a *AndroidAppImport) Privileged() bool {
 	return Bool(a.properties.Privileged)
 }
 
-func (a *AndroidAppImport) DepIsInSameApex(_ android.BaseModuleContext, _ android.Module) bool {
+func (a *AndroidAppImport) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) bool {
 	// android_app_import might have extra dependencies via uses_libs property.
 	// Don't track the dependency as we don't automatically add those libraries
 	// to the classpath. It should be explicitly added to java_libs property of APEX
