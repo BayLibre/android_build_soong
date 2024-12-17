@@ -106,8 +106,6 @@ var (
 	}
 
 	windowsAvailableLibraries = addPrefix([]string{
-		"bcrypt",
-		"dbghelp",
 		"gdi32",
 		"imagehlp",
 		"iphlpapi",
