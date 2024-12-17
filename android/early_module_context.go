@@ -146,6 +146,10 @@ func (e *earlyModuleContext) Module() Module {
 }
 
 func (e *earlyModuleContext) Config() Config {
+	if e.Module().base().UseGenericConfig() {
+		// Modules that set use_generic_config, read the generic configuration.
+		return e.EarlyModuleContext.Config().(Config).genericConfig()
+	}
 	return e.EarlyModuleContext.Config().(Config)
 }
 
