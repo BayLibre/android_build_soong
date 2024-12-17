@@ -1320,10 +1320,6 @@ func (c *config) RunErrorProne() bool {
 	return c.IsEnvTrue("RUN_ERROR_PRONE")
 }
 
-func (c *config) RunErrorProneInline() bool {
-	return c.IsEnvTrue("RUN_ERROR_PRONE_INLINE")
-}
-
 // XrefCorpusName returns the Kythe cross-reference corpus name.
 func (c *config) XrefCorpusName() string {
 	return c.Getenv("XREF_CORPUS")
