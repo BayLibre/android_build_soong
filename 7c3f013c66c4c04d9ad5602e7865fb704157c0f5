@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d9420cb_b972e9d3",
+        "filename": "java/app_import.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-12-18T02:52:11Z",
+      "side": 1,
+      "message": "May I know why modify this?",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 86
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ed8729ce_49060090",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/app_import.go",
+              "range": {
+                "startLine": 578,
+                "startChar": 0,
+                "endLine": 578,
+                "endChar": 0
+              },
+              "replacement": "// android_app_import might have extra dependencies via uses_libs property.\n// Don\u0027t track the dependency as we don\u0027t automatically add those libraries\n// to the classpath. It should be explicitly added to java_libs property of APEX\n"
+            },
+            {
+              "path": "java/app_import.go",
+              "range": {
+                "startLine": 579,
+                "startChar": 0,
+                "endLine": 582,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "7c3f013c66c4c04d9ad5602e7865fb704157c0f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
