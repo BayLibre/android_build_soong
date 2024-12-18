@@ -1321,11 +1321,13 @@ func (c *config) UseRemoteBuild() bool {
 }
 
 func (c *config) RunErrorProne() bool {
-	return c.IsEnvTrue("RUN_ERROR_PRONE")
+	value := strings.ToLower(c.Getenv("RUN_ERROR_PRONE"))
+	return c.IsEnvTrue("RUN_ERROR_PRONE") || value == "inline"
 }
 
 func (c *config) RunErrorProneInline() bool {
-	return c.IsEnvTrue("RUN_ERROR_PRONE_INLINE")
+	value := strings.ToLower(c.Getenv("RUN_ERROR_PRONE"))
+	return c.IsEnvTrue("RUN_ERROR_PRONE_INLINE") || value == "inline"
 }
 
 // XrefCorpusName returns the Kythe cross-reference corpus name.
