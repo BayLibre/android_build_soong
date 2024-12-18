@@ -40,6 +40,30 @@
       ],
       "revId": "114423d61029d3440d9402bf55153ef74109b3d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df6e74ce_ed62e195",
+        "filename": "java/app_import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1311067
+      },
+      "writtenOn": "2024-12-18T04:11:58Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "3c94093e_aa78f154",
+      "range": {
+        "startLine": 374,
+        "startChar": 18,
+        "endLine": 374,
+        "endChar": 40
+      },
+      "revId": "114423d61029d3440d9402bf55153ef74109b3d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
