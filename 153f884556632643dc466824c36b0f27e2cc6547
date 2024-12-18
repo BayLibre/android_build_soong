@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b5a3458_7c869f50",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-18T21:44:44Z",
+      "side": 1,
+      "message": "nit: Can this be replaced with `|| c.RunErrorProneInline()`",
+      "range": {
+        "startLine": 1325,
+        "startChar": 39,
+        "endLine": 1325,
+        "endChar": 59
+      },
+      "revId": "153f884556632643dc466824c36b0f27e2cc6547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4121d50_c7d39541",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-12-18T21:44:44Z",
+      "side": 1,
+      "message": "nit: Can you add godocs for this?",
+      "range": {
+        "startLine": 1328,
+        "startChar": 17,
+        "endLine": 1328,
+        "endChar": 36
+      },
+      "revId": "153f884556632643dc466824c36b0f27e2cc6547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
