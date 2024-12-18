@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c94093e_aa78f154",
+        "filename": "java/app_import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2024-12-18T02:58:45Z",
+      "side": 1,
+      "message": "nit: I think your CL already support embed JNI libraries :P",
+      "range": {
+        "startLine": 374,
+        "startChar": 18,
+        "endLine": 374,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8379d48e_5f7fc5f9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/app_import.go",
+              "range": {
+                "startLine": 374,
+                "startChar": 0,
+                "endLine": 376,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "114423d61029d3440d9402bf55153ef74109b3d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
