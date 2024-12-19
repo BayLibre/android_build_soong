@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "524b8c82_9f3192f9",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T22:20:53Z",
+      "side": 1,
+      "message": "Duplicate of comment in prior cl, but we can\u0027t add a directory as a ninja dep, the hash file will have to be created in the same rulebuilder as the directory.",
+      "revId": "40cfc90f933ca035fa5e2e2bd40c71df36f3b92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
