@@ -102,6 +102,19 @@ var (
 			Description: "concatenate files to $out",
 		})
 
+	// Calculates the hash of a directory and writes to a file. The following information is
+	// used to calculate the hash:
+	// %n: file name
+	// %i: inode number
+	// %F: file type
+	// %s: file size
+	// %a: permission bits in octal
+	WriteHash = pctx.AndroidStaticRule("DirHash",
+		blueprint.RuleParams{
+			Command:     "rm -f $out && find $in -depth -print0 | xargs -0 stat -c '%%n %%i %%F %%s %%a' | sort | sha1sum > $out",
+			Description: "Calculates the hash of a directory and writes to $out",
+		})
+
 	// Used only when USE_GOMA=true is set, to restrict non-goma jobs to the local parallelism value
 	localPool = blueprint.NewBuiltinPool("local_pool")
 
