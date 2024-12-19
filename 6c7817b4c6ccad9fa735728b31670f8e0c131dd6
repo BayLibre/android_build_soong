@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5013fe6f_d6e2751b",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-12-19T08:06:08Z",
+      "side": 1,
+      "message": "Yeah, I like this approach.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 85
+      },
+      "revId": "6c7817b4c6ccad9fa735728b31670f8e0c131dd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
