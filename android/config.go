@@ -1321,16 +1321,11 @@ func (c *config) UseRemoteBuild() bool {
 }
 
 func (c *config) RunErrorProne() bool {
-	return c.IsEnvTrue("RUN_ERROR_PRONE") || c.RunErrorProneInline()
+	return c.IsEnvTrue("RUN_ERROR_PRONE")
 }
 
-// Returns if the errorprone build should be run "inline", that is, using errorprone as part
-// of the main javac compilation instead of its own separate compilation. This is good for CI
-// but bad for local development, because if you toggle errorprone+inline on/off it will repeatedly
-// clobber java files from the old configuration.
 func (c *config) RunErrorProneInline() bool {
-	value := strings.ToLower(c.Getenv("RUN_ERROR_PRONE"))
-	return c.IsEnvTrue("RUN_ERROR_PRONE_INLINE") || value == "inline"
+	return c.IsEnvTrue("RUN_ERROR_PRONE_INLINE")
 }
 
 // XrefCorpusName returns the Kythe cross-reference corpus name.
