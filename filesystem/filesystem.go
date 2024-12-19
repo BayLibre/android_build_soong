@@ -155,6 +155,10 @@ type FilesystemProperties struct {
 	// Directories to be created under root. e.g. /dev, /proc, etc.
 	Dirs proptools.Configurable[[]string]
 
+	// Directories that contain files and directories that are additionally installed to this partition.
+	// These files/directories are not listed in the generated fileList
+	Install_dirs []string `android:"path"`
+
 	// Symbolic links to be created under root with "ln -sf <target> <name>".
 	Symlinks []SymlinkDefinition
 
@@ -410,13 +414,19 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if f.filesystemBuilder.ShouldUseVintfFragmentModuleOnly() {
 		f.validateVintfFragments(ctx)
 	}
+
+	if len(f.properties.Install_dirs) > 0 && !android.InList(f.fsType(ctx), []fsType{compressedCpioType, cpioType}) {
+		ctx.PropertyErrorf("install_dirs", "install_dirs is only supported for cpio and compressed cpio filesystem types.")
+	}
+
+	var rootDir android.OutputPath
 	switch f.fsType(ctx) {
 	case ext4Type, erofsType, f2fsType:
-		f.output = f.buildImageUsingBuildImage(ctx)
+		f.output, rootDir = f.buildImageUsingBuildImage(ctx)
 	case compressedCpioType:
-		f.output = f.buildCpioImage(ctx, true)
+		f.output, rootDir = f.buildCpioImage(ctx, true)
 	case cpioType:
-		f.output = f.buildCpioImage(ctx, false)
+		f.output, rootDir = f.buildCpioImage(ctx, false)
 	default:
 		return
 	}
@@ -424,6 +434,18 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	f.installDir = android.PathForModuleInstall(ctx, "etc")
 	ctx.InstallFile(f.installDir, f.installFileName(), f.output)
 	ctx.SetOutputFiles([]android.Path{f.output}, "")
+
+	if f.partitionName() == "recovery" {
+		rootDir = rootDir.Join(ctx, "root")
+	}
+	rootDirTimestamp := android.PathForModuleOut(ctx, "rootdir.timestamp")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:           android.Touch,
+		Output:         rootDirTimestamp,
+		Input:          f.output,
+		ImplicitOutput: rootDir,
+	})
+	ctx.SetOutputFiles(android.Paths{rootDir}, ".rootdir")
 
 	fileListFile := android.PathForModuleOut(ctx, "fileList")
 	android.WriteFileRule(ctx, fileListFile, f.installedFilesList())
@@ -576,7 +598,7 @@ func (f *filesystem) rootDirString() string {
 	return f.partitionName()
 }
 
-func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) android.Path {
+func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) (android.Path, android.OutputPath) {
 	rootDir := android.PathForModuleOut(ctx, f.rootDirString()).OutputPath
 	rebasedDir := rootDir
 	if f.properties.Base_dir != nil {
@@ -627,7 +649,7 @@ func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) androi
 	// rootDir is not deleted. Might be useful for quick inspection.
 	builder.Build("build_filesystem_image", fmt.Sprintf("Creating filesystem %s", f.BaseModuleName()))
 
-	return output
+	return output, rootDir
 }
 
 func (f *filesystem) buildFileContexts(ctx android.ModuleContext) android.Path {
@@ -789,7 +811,7 @@ func (f *filesystem) checkFsTypePropertyError(ctx android.ModuleContext, t fsTyp
 	}
 }
 
-func (f *filesystem) buildCpioImage(ctx android.ModuleContext, compressed bool) android.Path {
+func (f *filesystem) buildCpioImage(ctx android.ModuleContext, compressed bool) (android.Path, android.OutputPath) {
 	if proptools.Bool(f.properties.Use_avb) {
 		ctx.PropertyErrorf("use_avb", "signing compresed cpio image using avbtool is not supported."+
 			"Consider adding this to bootimg module and signing the entire boot image.")
@@ -824,7 +846,9 @@ func (f *filesystem) buildCpioImage(ctx android.ModuleContext, compressed bool) 
 	output := android.PathForModuleOut(ctx, f.installFileName())
 	cmd := builder.Command().
 		BuiltTool("mkbootfs").
-		Text(rootDir.String()) // input directory
+		Text(rootDir.String()). // input directory
+		Inputs(android.PathsForModuleSrc(ctx, f.properties.Install_dirs))
+
 	if nodeList := f.properties.Dev_nodes_description_file; nodeList != nil {
 		cmd.FlagWithInput("-n ", android.PathForModuleSrc(ctx, proptools.String(nodeList)))
 	}
@@ -842,7 +866,7 @@ func (f *filesystem) buildCpioImage(ctx android.ModuleContext, compressed bool) 
 	// rootDir is not deleted. Might be useful for quick inspection.
 	builder.Build("build_cpio_image", fmt.Sprintf("Creating filesystem %s", f.BaseModuleName()))
 
-	return output
+	return output, rootDir
 }
 
 var validPartitions = []string{
