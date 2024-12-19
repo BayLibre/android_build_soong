@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5eaf15a_b88017ae",
+        "filename": "android/defs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T22:08:49Z",
+      "side": 1,
+      "message": "Don\u0027t use a directory as a ninja dependency. You will likely have to run this command in the same rulebuilder that creates the directory, instead of in a separate action like this.",
+      "range": {
+        "startLine": 108,
+        "startChar": 58,
+        "endLine": 108,
+        "endChar": 60
+      },
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19082574_28d19171",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T22:08:49Z",
+      "side": 1,
+      "message": "Why `topdown\u003dFalse`? Also, the documentation for `os.walk` says: `Whether or not the lists are sorted depends on the file system`, so I think we need to intoduce some sorting to make this deterministic. Also we need `followlinks\u003dFalse`.",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea5c213_a8cb4ab2",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T22:08:49Z",
+      "side": 1,
+      "message": "Use lstat instead of stat. Also, we only really need to record the filepath, mode, and contents. Why are there two different ways of accessing the mode in stat_info?",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4b90b09_884884f9",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T22:08:49Z",
+      "side": 1,
+      "message": "We also need to include directories, in case they\u0027re empty, and symlinks. `isfile` follows symlinks, so be careful about that.",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f17571_ba5198f7",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T22:08:49Z",
+      "side": 1,
+      "message": "Don\u0027t suppress errors, we want errors to cause failures.",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a38ea50b_b1ef043d",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T22:08:49Z",
+      "side": 1,
+      "message": "You should be able to make a sha object at the start and just add to it while traversing, instead of saving a bunch of separate strings and combinding them at the end.",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "715d4530_be400a08",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T22:08:49Z",
+      "side": 1,
+      "message": "Use argparse",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6158d0f_b22c87ca",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T22:08:49Z",
+      "side": 1,
+      "message": "Don\u0027t catch broad exceptions, just let them throw so we get a line number. If this program and the surrounding build system is bug-free, we shouldn\u0027t have any exceptions anyways.",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
