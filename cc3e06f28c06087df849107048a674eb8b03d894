@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2432a685_e4745c13",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T01:31:32Z",
+      "side": 1,
+      "message": "Directory dependencies are problematic. The mtime of a directory is the last time a direct child of it was added/removed. But if a file\u0027s content changed, or a file in a sub-directory is added, the mtime isn\u0027t updated.\n\nOne way to work around the issues caused by this would be to generate the timestamp in the same action (rulebuilder) as the directory, so that you don\u0027t involve any directories in the ninja dependencies.\n\nI\u0027d also recommend not making this a timestamp, but instead generate a file with a hash of the directory\u0027s contents. If we switch to a hash-based ninja, the empty timestamp file would cause reverse dependencies would not be rebuilt because the file didn\u0027t change.\n\nInstead of `install_dirs`, lets add an `include_files_of` property that points to another filesystem. Then you can use a dedicated provider to communicate the directory and its timestamp/hash file. This way we don\u0027t expose the ability to use directories to blueprint, because if the user used a source directory or passed the `.rootdir` output to another module type that wasn\u0027t prepared for directories, they would run into incremental build issues.",
+      "revId": "cc3e06f28c06087df849107048a674eb8b03d894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
