@@ -102,6 +102,15 @@ var (
 			Description: "concatenate files to $out",
 		})
 
+	// Calculates the hash of a directory and writes to a file.
+	WriteDirectoryHash = pctx.AndroidStaticRule("WriteDirectoryHash",
+		blueprint.RuleParams{
+			Command:     "rm -f $out && ${calculateDirectoryHash} $dir $out",
+			CommandDeps: []string{"${calculateDirectoryHash}"},
+			Description: "Calculates the hash of a directory and writes to $out",
+		}, "dir",
+	)
+
 	// Used only when USE_GOMA=true is set, to restrict non-goma jobs to the local parallelism value
 	localPool = blueprint.NewBuiltinPool("local_pool")
 
@@ -118,4 +127,6 @@ func init() {
 	pctx.VariableFunc("RBEWrapper", func(ctx PackageVarContext) string {
 		return ctx.Config().RBEWrapper()
 	})
+
+	pctx.HostBinToolVariable("calculateDirectoryHash", "calculate_directory_hash")
 }
