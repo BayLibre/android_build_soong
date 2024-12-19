@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61fd5b1f_45789521",
+        "filename": "android/removed_package.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T01:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1751f642_2906147f",
+      "revId": "8ab38742890d1d5078d8671794e7a1992d66639d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3e8662d_50d2e2f2",
@@ -55,6 +73,30 @@
           ]
         }
       ],
+      "revId": "8ab38742890d1d5078d8671794e7a1992d66639d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc9cb0c_ec1301ba",
+        "filename": "android/removed_package.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T01:00:49Z",
+      "side": 1,
+      "message": "I think the `ctx.UncheckedModule()` above should cover it.",
+      "parentUuid": "c3e8662d_50d2e2f2",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 16
+      },
       "revId": "8ab38742890d1d5078d8671794e7a1992d66639d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
