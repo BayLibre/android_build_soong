@@ -16,6 +16,24 @@
       "message": "Duplicate of comment in prior cl, but we can\u0027t add a directory as a ninja dep, the hash file will have to be created in the same rulebuilder as the directory.",
       "revId": "40cfc90f933ca035fa5e2e2bd40c71df36f3b92f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed6b68d6_e59e132b",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-19T23:21:08Z",
+      "side": 1,
+      "message": "Moved input directory to an argument to prevent adding directory as a dep.",
+      "parentUuid": "524b8c82_9f3192f9",
+      "revId": "40cfc90f933ca035fa5e2e2bd40c71df36f3b92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
