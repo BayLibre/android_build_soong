@@ -16,6 +16,24 @@
       "message": "This also needs to include the contents of the files. Updating the contents of a file should cause reverse deps of the directory to rebuild.\n\nAlso, don\u0027t include `%i`, that\u0027s dependent on the host filesystem and would be nondeterministic.",
       "revId": "ec798853a6a8954130311c641819fa73322bf45b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82861643_cb4ca88b",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-19T19:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a29ac1bb_5c61b38f",
+      "revId": "ec798853a6a8954130311c641819fa73322bf45b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
