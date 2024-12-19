@@ -99,6 +99,30 @@
       },
       "revId": "8ab38742890d1d5078d8671794e7a1992d66639d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4801e6_de904ef2",
+        "filename": "android/removed_package.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2024-12-19T01:29:35Z",
+      "side": 1,
+      "message": "Yep, I missed that 😊",
+      "parentUuid": "1bc9cb0c_ec1301ba",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "8ab38742890d1d5078d8671794e7a1992d66639d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
