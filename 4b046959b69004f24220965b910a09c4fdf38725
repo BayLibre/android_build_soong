@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d57949ec_36e4d5a7",
+        "filename": "android/defs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T23:38:26Z",
+      "side": 1,
+      "message": "Yeah I guess using the filesystem image as the dep works. Please add a comment pointing out that you need some other concrete file to track the dep though.",
+      "parentUuid": "052c5737_db5f7d3f",
+      "range": {
+        "startLine": 108,
+        "startChar": 58,
+        "endLine": 108,
+        "endChar": 60
+      },
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19082574_28d19171",
         "filename": "scripts/calculate_directory_hash.py",
         "patchSetId": 5
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "\u003e Why `topdown\u003dFalse`?\n\nFor some reason I thought the output of `os.stat()` of a directory would not correctly reflect that of the subdirectories if the walk is done top-down, but this does not seem to be the case. Modified back to the default `topdown\u003dTrue`.\n\n\u003e so I think we need to intoduce some sorting to make this deterministic\n\nWouldn\u0027t sorting `output` in L54 (return statement) make this deterministic?\n\n\u003e Also we need `followlinks\u003dFalse`\n\nGood point, I believe `followlinks` is `False` by default though.",
       "parentUuid": "19082574_28d19171",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae2c128_1bc07c7c",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T23:38:26Z",
+      "side": 1,
+      "message": "Ah you\u0027re right about the followlinks and sorting.",
+      "parentUuid": "fc572eae_43ad1d72",
       "revId": "4b046959b69004f24220965b910a09c4fdf38725",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -237,6 +279,24 @@
       "side": 1,
       "message": "Tracking the list as described in the other comment for determinism",
       "parentUuid": "a38ea50b_b1ef043d",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea161e9_687fd734",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T23:38:26Z",
+      "side": 1,
+      "message": "ah ok.",
+      "parentUuid": "a306a4d9_435f3d8d",
       "revId": "4b046959b69004f24220965b910a09c4fdf38725",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
