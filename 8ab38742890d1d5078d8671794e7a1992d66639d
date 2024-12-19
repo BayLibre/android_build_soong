@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1751f642_2906147f",
+        "filename": "android/removed_package.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2024-12-19T00:38:49Z",
+      "side": 1,
+      "message": "it would probably be nice if the default message included the module name",
+      "revId": "8ab38742890d1d5078d8671794e7a1992d66639d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3e8662d_50d2e2f2",
+        "filename": "android/removed_package.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2024-12-19T00:38:49Z",
+      "side": 1,
+      "message": "This probably needs to be `InstallFileWithoutCheckbuild`",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "19c3e9e4_1a12b2c6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/removed_package.go",
+              "range": {
+                "startLine": 43,
+                "startChar": 0,
+                "endLine": 44,
+                "endChar": 0
+              },
+              "replacement": "\tctx.InstallFileWithoutCheckbuild(PathForModuleInstall(ctx, \"removed_module\"), m.Name(), out)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8ab38742890d1d5078d8671794e7a1992d66639d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
