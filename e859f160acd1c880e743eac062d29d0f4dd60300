@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a98c94d_21f67e2d",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2406,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-19T18:43:27Z",
+      "side": 1,
+      "message": "What is the plan for modules that need to be split?",
+      "revId": "e859f160acd1c880e743eac062d29d0f4dd60300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
