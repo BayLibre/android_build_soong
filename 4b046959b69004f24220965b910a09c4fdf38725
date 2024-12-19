@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "052c5737_db5f7d3f",
+        "filename": "android/defs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-19T23:20:09Z",
+      "side": 1,
+      "message": "Ah, I wanted to add this for more general use cases. Would the change in the latest patchset satisfy this?",
+      "parentUuid": "a5eaf15a_b88017ae",
+      "range": {
+        "startLine": 108,
+        "startChar": 58,
+        "endLine": 108,
+        "endChar": 60
+      },
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19082574_28d19171",
         "filename": "scripts/calculate_directory_hash.py",
         "patchSetId": 5
@@ -37,6 +61,24 @@
       "writtenOn": "2024-12-19T22:08:49Z",
       "side": 1,
       "message": "Why `topdown\u003dFalse`? Also, the documentation for `os.walk` says: `Whether or not the lists are sorted depends on the file system`, so I think we need to intoduce some sorting to make this deterministic. Also we need `followlinks\u003dFalse`.",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc572eae_43ad1d72",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-19T23:20:09Z",
+      "side": 1,
+      "message": "\u003e Why `topdown\u003dFalse`?\n\nFor some reason I thought the output of `os.stat()` of a directory would not correctly reflect that of the subdirectories if the walk is done top-down, but this does not seem to be the case. Modified back to the default `topdown\u003dTrue`.\n\n\u003e so I think we need to intoduce some sorting to make this deterministic\n\nWouldn\u0027t sorting `output` in L54 (return statement) make this deterministic?\n\n\u003e Also we need `followlinks\u003dFalse`\n\nGood point, I believe `followlinks` is `False` by default though.",
+      "parentUuid": "19082574_28d19171",
       "revId": "4b046959b69004f24220965b910a09c4fdf38725",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -60,6 +102,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c4fabef_b865ea8c",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-19T23:20:09Z",
+      "side": 1,
+      "message": "The former",
+      "parentUuid": "5ea5c213_a8cb4ab2",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8e66dc_b53e73c9",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-19T23:20:09Z",
+      "side": 1,
+      "message": "Sorry I\u0027ve moved from the bitmask to `stat.filemode` and forgot to remove the former.",
+      "parentUuid": "5ea5c213_a8cb4ab2",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4b90b09_884884f9",
         "filename": "scripts/calculate_directory_hash.py",
         "patchSetId": 5
@@ -71,6 +149,24 @@
       "writtenOn": "2024-12-19T22:08:49Z",
       "side": 1,
       "message": "We also need to include directories, in case they\u0027re empty, and symlinks. `isfile` follows symlinks, so be careful about that.",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22ef495_fa0a0cf2",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-19T23:20:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4b90b09_884884f9",
       "revId": "4b046959b69004f24220965b910a09c4fdf38725",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -88,6 +184,24 @@
       "writtenOn": "2024-12-19T22:08:49Z",
       "side": 1,
       "message": "Don\u0027t suppress errors, we want errors to cause failures.",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86926a8f_49257768",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-19T23:20:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1f17571_ba5198f7",
       "revId": "4b046959b69004f24220965b910a09c4fdf38725",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -111,6 +225,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a306a4d9_435f3d8d",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-19T23:20:09Z",
+      "side": 1,
+      "message": "Tracking the list as described in the other comment for determinism",
+      "parentUuid": "a38ea50b_b1ef043d",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "715d4530_be400a08",
         "filename": "scripts/calculate_directory_hash.py",
         "patchSetId": 5
@@ -122,6 +254,24 @@
       "writtenOn": "2024-12-19T22:08:49Z",
       "side": 1,
       "message": "Use argparse",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfdb259f_95a9c320",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-19T23:20:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "715d4530_be400a08",
       "revId": "4b046959b69004f24220965b910a09c4fdf38725",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -139,6 +289,24 @@
       "writtenOn": "2024-12-19T22:08:49Z",
       "side": 1,
       "message": "Don\u0027t catch broad exceptions, just let them throw so we get a line number. If this program and the surrounding build system is bug-free, we shouldn\u0027t have any exceptions anyways.",
+      "revId": "4b046959b69004f24220965b910a09c4fdf38725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a88d07eb_28e12b51",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-19T23:20:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6158d0f_b22c87ca",
       "revId": "4b046959b69004f24220965b910a09c4fdf38725",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
