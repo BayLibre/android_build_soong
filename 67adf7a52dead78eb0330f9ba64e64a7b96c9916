@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d93445bf_5c7024ec",
+        "filename": "java/app_import.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-12-19T03:45:02Z",
+      "side": 1,
+      "message": "This seems to be mixing two features, stripping all libraries from unused architectures, and stripping unused libraries from all architectures.  The former seems useful, but the latter seems like it\u0027s being used to cover up a mistake in the creation of the prebuilt - why put those libraries into the APK if they are going to always be removed?  That means that whoever is building the APK will get different results when they `adb install` it for testing vs. install it through the build system, or ship it to the play store.  It might be worth checking with the owners whether those extra libraries are intentional, or if we should just fix that upstream and simplify this feature to just strip unused architectures.",
+      "revId": "67adf7a52dead78eb0330f9ba64e64a7b96c9916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e4d955_7a2fe576",
+        "filename": "java/app_import.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2024-12-19T03:45:02Z",
+      "side": 1,
+      "message": "This should iterate through `ctx.MultiTargets()` to determine which architecture(s) are supported by the module\u0027s `compile_multilib`.",
+      "revId": "67adf7a52dead78eb0330f9ba64e64a7b96c9916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
