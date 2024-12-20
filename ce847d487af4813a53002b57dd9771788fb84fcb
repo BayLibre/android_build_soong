@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5791c83_09b91c49",
+        "filename": "android/removed_package.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-20T22:16:52Z",
+      "side": 1,
+      "message": "nit: add description of the property",
+      "revId": "ce847d487af4813a53002b57dd9771788fb84fcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
