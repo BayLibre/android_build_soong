@@ -88,6 +88,24 @@
       "parentUuid": "171b6aee_6f6ed498",
       "revId": "959ce1c5028567de86f20b662453d13f45e3fb30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "733b9128_5c12b73e",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1170070
+      },
+      "writtenOn": "2024-12-20T17:16:17Z",
+      "side": 1,
+      "message": "I agree with Colin here - userdebug builds should have the same configuration as user builds so that we\u0027re testing and dogfooding the same thing that we\u0027re shipping. \n\nI don\u0027t see any evidence in this CL that this should be an exception to that... plus, this seems like it could affect both performance and the visual representation of resources, so I think that\u0027s strong evidence that we should not make an exception in this case.\n\nIf we want to set a different compression level for -eng builds so they build faster, I think that\u0027s totally fine though!",
+      "parentUuid": "4e11a8d5_258c534b",
+      "revId": "959ce1c5028567de86f20b662453d13f45e3fb30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
