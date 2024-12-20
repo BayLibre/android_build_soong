@@ -16,6 +16,23 @@
       "message": "We should probably associate this with b/384930536.\n\nThanks for putting this together; testing is on-going.",
       "revId": "1cc2e0b799702f631d1318d3df09278425700c0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95630e81_4a28cb08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2024-12-20T03:28:00Z",
+      "side": 1,
+      "message": "It looks like this still triggers in a checkbuild?  See the presubmit results for patch set 1 of go/ag/31020520, where the checkbuild triggered this warning (assuming the other CL in that topic is correctly using this).",
+      "revId": "1cc2e0b799702f631d1318d3df09278425700c0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
