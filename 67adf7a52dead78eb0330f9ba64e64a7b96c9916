@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9cba872_33fd9c50",
+        "filename": "java/app_import.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1311067
+      },
+      "writtenOn": "2024-12-20T08:05:09Z",
+      "side": 1,
+      "message": "Thanks for this helpful comment! I have pinged one of the owners asking whether preserving libgmm-jni.so only, and in my side I redesigned the property `strip_unused_jni_arch`, making the implementation more reasonable.",
+      "parentUuid": "d93445bf_5c7024ec",
+      "revId": "67adf7a52dead78eb0330f9ba64e64a7b96c9916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68e4d955_7a2fe576",
         "filename": "java/app_import.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2024-12-19T03:45:02Z",
       "side": 1,
       "message": "This should iterate through `ctx.MultiTargets()` to determine which architecture(s) are supported by the module\u0027s `compile_multilib`.",
+      "revId": "67adf7a52dead78eb0330f9ba64e64a7b96c9916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dbbddb6_bd47b238",
+        "filename": "java/app_import.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1311067
+      },
+      "writtenOn": "2024-12-20T08:05:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68e4d955_7a2fe576",
       "revId": "67adf7a52dead78eb0330f9ba64e64a7b96c9916",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
