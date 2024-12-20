@@ -33,6 +33,24 @@
       "message": "It looks like this still triggers in a checkbuild?  See the presubmit results for patch set 1 of go/ag/31020520, where the checkbuild triggered this warning (assuming the other CL in that topic is correctly using this).",
       "revId": "1cc2e0b799702f631d1318d3df09278425700c0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d71dac_69df87e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2024-12-20T21:49:45Z",
+      "side": 1,
+      "message": "Testing with patchset 4, this triggers an error when we expect, and let\u0027s things pass (including in \"checkbuild\") when we expect.  Thanks!",
+      "parentUuid": "95630e81_4a28cb08",
+      "revId": "1cc2e0b799702f631d1318d3df09278425700c0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
