@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a9c32c1_57f98332",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-20T19:02:22Z",
+      "side": 1,
+      "message": "Please add more detail to this message, saying that we need to convert more stuff from make-\u003esoong and link to it: https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l\u003d5382;drc\u003d66783fca85911af9da48d9b4f35a61b3873023e9",
+      "range": {
+        "startLine": 725,
+        "startChar": 11,
+        "endLine": 725,
+        "endChar": 43
+      },
+      "revId": "b1b6a730a4b9df16042644a00c7252abf02b5091",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
