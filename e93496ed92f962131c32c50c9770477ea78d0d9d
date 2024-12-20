@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdb035b2_50368415",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-12-20T21:11:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cb33298_006cb0fe",
+      "range": {
+        "startLine": 1946,
+        "startChar": 0,
+        "endLine": 1959,
+        "endChar": 4
+      },
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c7711ff_c6afea3e",
@@ -61,6 +85,30 @@
       "writtenOn": "2024-11-11T03:45:41Z",
       "side": 1,
       "message": "This doesn\u0027t appear to be used outside of the cc package. (I\u0027ve looked into two of your other CLs as well)",
+      "range": {
+        "startLine": 1584,
+        "startChar": 5,
+        "endLine": 1584,
+        "endChar": 6
+      },
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7e0759d_168a2d81",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1584,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-12-20T21:11:22Z",
+      "side": 1,
+      "message": "Oops, good catch thanks!",
+      "parentUuid": "9c7711ff_c6afea3e",
       "range": {
         "startLine": 1584,
         "startChar": 5,
@@ -106,6 +154,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eebf6e9_673896c5",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-12-20T21:11:22Z",
+      "side": 1,
+      "message": "Done -- I\u0027ve removed this refactor as it\u0027s not necessary.",
+      "parentUuid": "343d5660_8e957caa",
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b30bee22_59ab37b5",
@@ -119,6 +185,30 @@
       "writtenOn": "2024-11-11T03:45:41Z",
       "side": 1,
       "message": "nit: please place functions by their arguments. For example methods for `Module` are placed in the below.",
+      "range": {
+        "startLine": 1745,
+        "startChar": 5,
+        "endLine": 1745,
+        "endChar": 18
+      },
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca7b9076_7752868c",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-12-20T21:11:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b30bee22_59ab37b5",
       "range": {
         "startLine": 1745,
         "startChar": 5,
@@ -182,6 +272,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58da1f5d_cd2504ef",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-12-20T21:11:22Z",
+      "side": 1,
+      "message": "I took a crack at this, PTAL.\n\nI created a new `VersionedLinkableInterface` with stubs-related functions as well as a getter for the `VersionedInterface` provided by the module\u0027s library. This also reduces the number of `cc.Module` level functions considerably, as many of those simply called into the `libraryInterface` equivalent.\n\n`setAPIListCoverageXMLPath`, `setSymbolFilePath`, and `setVersionScriptPath` are no longer part of any `LinkableInterface`, as the `compileModuleLibApiStubs()` function will be reproduced for `rust.libraryDecorator`. I\u0027ve pulled the logic out for calculating the genstubFlags into a separate function `GetApiStubsFlags` that `rust` can call into.",
+      "parentUuid": "4642a7aa_d0635dc4",
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33cae226_02a69c17",
@@ -213,6 +321,24 @@
       "side": 1,
       "message": "Ack -- see my other comment, I\u0027ll rework this a bit, thanks!",
       "parentUuid": "33cae226_02a69c17",
+      "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b06c96e_b271f12b",
+        "filename": "cc/linkable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-12-20T21:11:22Z",
+      "side": 1,
+      "message": "I created a new `VersionedLinkableInterface` to collect functionality related to Stubs. I\u0027ve reduced the number of new setters introduced and moved the new ones to the new interface as well.",
+      "parentUuid": "e30ac3e2_d6fad67b",
       "revId": "e93496ed92f962131c32c50c9770477ea78d0d9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
