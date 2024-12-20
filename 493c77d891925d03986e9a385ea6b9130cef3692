@@ -22,6 +22,30 @@
       },
       "revId": "493c77d891925d03986e9a385ea6b9130cef3692",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3358eaa_0b5e22c1",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-20T00:13:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b74dcd25_fd51f1e4",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "493c77d891925d03986e9a385ea6b9130cef3692",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
