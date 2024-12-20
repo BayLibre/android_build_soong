@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b74dcd25_fd51f1e4",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-20T00:05:37Z",
+      "side": 1,
+      "message": "```suggestion\n            if os.path.islink(filepath):\n                stat_info +\u003d os.readlink(filepath)\n            elif os.path.isfile(filepath):\n                with open(filepath, \"rb\") as f:\n                    file_hash \u003d hashlib.sha1(f.read()).hexdigest()\n                stat_info +\u003d f\" {file_hash}\"\n```",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "493c77d891925d03986e9a385ea6b9130cef3692",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
