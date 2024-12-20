@@ -16,6 +16,24 @@
       "message": "nit: add description of the property",
       "revId": "ce847d487af4813a53002b57dd9771788fb84fcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a28dd4dd_0502d5c3",
+        "filename": "android/removed_package.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-20T22:29:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5791c83_09b91c49",
+      "revId": "ce847d487af4813a53002b57dd9771788fb84fcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
