@@ -16,6 +16,24 @@
       "message": "What is the plan for modules that need to be split?",
       "revId": "e859f160acd1c880e743eac062d29d0f4dd60300",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea3f1d7_1ff92d30",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2406,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-12-20T05:17:30Z",
+      "side": 1,
+      "message": "`Config()` returns generic config only if `UseGenericConfig() \u0026\u0026 m.commonProperties.ImageVariation \u003d\u003d \"\"`. That means only the core variants can be generic.\nBefore we turn this switch on for some modules, let me compare the images with and without generic config to find any unexpected changes.",
+      "parentUuid": "2a98c94d_21f67e2d",
+      "revId": "e859f160acd1c880e743eac062d29d0f4dd60300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
