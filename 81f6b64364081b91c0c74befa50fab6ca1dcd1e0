@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f306fe3_a0691593",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-12-20T00:54:59Z",
+      "side": 1,
+      "message": "Could we factor it out of all the branches of the switch to here?",
+      "revId": "81f6b64364081b91c0c74befa50fab6ca1dcd1e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
