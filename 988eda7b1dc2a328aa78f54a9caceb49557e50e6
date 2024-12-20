@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c39575_11d67778",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-20T00:00:29Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "e55fa745_24be5cb5",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 59
+      },
+      "revId": "988eda7b1dc2a328aa78f54a9caceb49557e50e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02baa981_7f106aaf",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-12-19T23:38:26Z",
       "side": 1,
       "message": "You should include the target of the symlink in the hash if it is a symlink.\n\nAlso I\u0027m assuming including the mode covers telling if it\u0027s a file/directory/symlink, right?",
+      "revId": "988eda7b1dc2a328aa78f54a9caceb49557e50e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c3566b5_1ba0fead",
+        "filename": "scripts/calculate_directory_hash.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2024-12-20T00:00:29Z",
+      "side": 1,
+      "message": "Done. And yes, `stat.filemode` contains the information about the file type.",
+      "parentUuid": "02baa981_7f106aaf",
       "revId": "988eda7b1dc2a328aa78f54a9caceb49557e50e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
