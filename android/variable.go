@@ -688,8 +688,6 @@ type PartitionVariables struct {
 	ProductFsverityGenerateMetadata bool `json:",omitempty"`
 
 	TargetScreenDensity string `json:",omitempty"`
-
-	PrivateRecoveryUiProperties map[string]string `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
