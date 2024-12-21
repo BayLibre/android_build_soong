@@ -158,6 +158,7 @@ func registerArchMutator(ctx RegisterMutatorsContext) {
 
 var preDeps = []RegisterMutatorFunc{
 	registerArchMutator,
+	RegisterPrebuiltsPreDepsMutators,
 }
 
 var postDeps = []RegisterMutatorFunc{

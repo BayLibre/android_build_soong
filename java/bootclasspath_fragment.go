@@ -412,9 +412,8 @@ func (b *BootclasspathFragmentModule) OutgoingDepIsInSameApex(tag blueprint.Depe
 	}
 	// Dependency to the bootclasspath fragment of another apex
 	// e.g. concsrypt-bootclasspath-fragment --> art-bootclasspath-fragment
-	if tag == bootclasspathFragmentDepTag {
+	if bcpTag, ok := tag.(bootclasspathDependencyTag); ok && bcpTag.typ == fragment {
 		return false
-
 	}
 	panic(fmt.Errorf("boot_image module %q should not have a dependency tag %s", b, android.PrettyPrintTag(tag)))
 }
@@ -471,9 +470,7 @@ func (b *BootclasspathFragmentModule) DepsMutator(ctx android.BottomUpMutatorCon
 	if _, isPrebuiltModule := ctx.Module().(*PrebuiltBootclasspathFragmentModule); !isPrebuiltModule {
 		ctx.AddDependency(b, android.AcDepTag, "all_apex_contributions")
 	}
-}
 
-func (b *BootclasspathFragmentModule) BootclasspathDepsMutator(ctx android.BottomUpMutatorContext) {
 	// Add dependencies on all the fragments.
 	b.properties.BootclasspathFragmentsDepsProperties.addDependenciesOntoFragments(ctx)
 }
@@ -498,7 +495,7 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 		}
 	})
 
-	fragments := gatherApexModulePairDepsWithTag(ctx, bootclasspathFragmentDepTag)
+	fragments := gatherApexModulePairDepsWithTag(ctx, fragment)
 
 	// Perform hidden API processing.
 	hiddenAPIOutput := b.generateHiddenAPIBuildActions(ctx, contents, fragments)
@@ -1143,6 +1140,13 @@ func prebuiltBootclasspathFragmentFactory() android.Module {
 	android.InitPrebuiltModule(m, &[]string{"placeholder"})
 	android.InitApexModule(m)
 	android.InitAndroidArchModule(m, android.HostAndDeviceSupported, android.MultilibCommon)
+	android.InitDefaultableModule(m)
+
+	m.SetDefaultableHook(func(mctx android.DefaultableHookContext) {
+		if mctx.Config().AlwaysUsePrebuiltSdks() {
+			m.prebuilt.ForcePrefer()
+		}
+	})
 
 	return m
 }

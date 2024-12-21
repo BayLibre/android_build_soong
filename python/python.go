@@ -286,6 +286,9 @@ func (versionSplitTransitionMutator) Split(ctx android.BaseModuleContext) []stri
 }
 
 func (versionSplitTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
+	if ctx.DepTag() == android.PrebuiltDepTag {
+		return sourceVariation
+	}
 	return ""
 }
 
