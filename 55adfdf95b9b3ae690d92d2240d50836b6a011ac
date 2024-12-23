@@ -46,6 +46,98 @@
       },
       "revId": "55adfdf95b9b3ae690d92d2240d50836b6a011ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd655d84_8ac463b5",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2072,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-12-23T08:14:50Z",
+      "side": 1,
+      "message": "Why can\u0027t this be with other cases starting from L2087?\n\nIs it because VintfFragment is not ApexModule? Then can we make it ApexModule?\n\nI\u0027m asking this because this function has two parts: a) direct dep cases and b) indirect dep cases, while you\u0027re adding a new case which doesn\u0027t belong to either.",
+      "range": {
+        "startLine": 2072,
+        "startChar": 1,
+        "endLine": 2072,
+        "endChar": 35
+      },
+      "revId": "55adfdf95b9b3ae690d92d2240d50836b6a011ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f080b3_6d1e8ab7",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2462,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-12-23T08:14:50Z",
+      "side": 1,
+      "message": "Well, I don\u0027t think vintfFragmentFromModule needs to be special like this.",
+      "range": {
+        "startLine": 2460,
+        "startChar": 22,
+        "endLine": 2462,
+        "endChar": 2
+      },
+      "revId": "55adfdf95b9b3ae690d92d2240d50836b6a011ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c981fdc_8f6a3069",
+        "filename": "apex/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-12-23T08:14:50Z",
+      "side": 1,
+      "message": "We can check if `fi` is from VintfFragment module by checking apexFile.module.",
+      "range": {
+        "startLine": 530,
+        "startChar": 8,
+        "endLine": 530,
+        "endChar": 23
+      },
+      "revId": "55adfdf95b9b3ae690d92d2240d50836b6a011ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c83f833e_814a8537",
+        "filename": "apex/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-12-23T08:14:50Z",
+      "side": 1,
+      "message": "Can this be moved into isVintfFragment? We can rename isVintfFragment as needsToRunAssembleVintf().",
+      "range": {
+        "startLine": 581,
+        "startChar": 41,
+        "endLine": 581,
+        "endChar": 77
+      },
+      "revId": "55adfdf95b9b3ae690d92d2240d50836b6a011ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
