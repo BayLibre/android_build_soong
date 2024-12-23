@@ -110,6 +110,8 @@ func (afdo *afdo) flags(ctx ModuleContext, flags Flags) Flags {
 		pathForSrc := android.PathForSource(ctx, fdoProfilePath)
 		flags.CFlagsDeps = append(flags.CFlagsDeps, pathForSrc)
 		flags.LdFlagsDeps = append(flags.LdFlagsDeps, pathForSrc)
+	} else {
+		recordMissingProfileFile(ctx)
 	}
 
 	return flags
@@ -216,4 +218,8 @@ func decodeTarget(variation string) string {
 		return ""
 	}
 	return strings.TrimPrefix(variation, "afdo-")
+}
+
+func recordMissingProfileFile(ctx BaseModuleContext) {
+	ctx.getOrCreateMakeVarsInfo().MissingProfile = ctx.ModuleName()
 }

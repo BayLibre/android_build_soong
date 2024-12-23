@@ -125,7 +125,7 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("ANDROID_WARNING_ALLOWED_PROJECTS", makeStringOfWarningAllowedProjects())
 	ctx.Strict("SOONG_MODULES_WARNINGS_ALLOWED", makeVarsString(warningsAllowed))
 	ctx.Strict("SOONG_MODULES_USING_WNO_ERROR", makeVarsString(usingWnoErrors))
-	ctx.Strict("SOONG_MODULES_MISSING_PGO_PROFILE_FILE", makeVarsString(missingProfiles))
+	ctx.Strict("SOONG_MODULES_MISSING_AFDO_PROFILE_FILE", makeVarsString(missingProfiles))
 
 	ctx.Strict("CLANG_COVERAGE_CONFIG_CFLAGS", strings.Join(clangCoverageCFlags, " "))
 	ctx.Strict("CLANG_COVERAGE_CONFIG_COMMFLAGS", strings.Join(clangCoverageCommonFlags, " "))
