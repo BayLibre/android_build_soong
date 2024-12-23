@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c68f2cd_5b30f6df",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1489,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-12-23T08:17:20Z",
+      "side": 1,
+      "message": "I think we need to make it clear:\n- apex.vintf_fragment_modules is to install vintf fragments along with apexes (in the same partition)\n- while, cc_binary(for example).vintf_fragment_modules are bundled in the apex when the binary is bundled in the apex.",
+      "range": {
+        "startLine": 1489,
+        "startChar": 5,
+        "endLine": 1489,
+        "endChar": 29
+      },
+      "revId": "0e6ca2b5215870a1ea1dec02b17825720ef35898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
