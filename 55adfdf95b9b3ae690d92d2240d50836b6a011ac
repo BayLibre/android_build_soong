@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f25b3722_43224cd9",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2024-12-23T08:00:34Z",
+      "side": 1,
+      "message": "why not []string? membership check can be done using InList.",
+      "range": {
+        "startLine": 529,
+        "startChar": 25,
+        "endLine": 529,
+        "endChar": 40
+      },
+      "revId": "55adfdf95b9b3ae690d92d2240d50836b6a011ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
