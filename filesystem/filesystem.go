@@ -569,7 +569,7 @@ func (f *filesystem) copyFilesToProductOut(ctx android.ModuleContext, builder *a
 		return
 	}
 	installPath := android.PathForModuleInPartitionInstall(ctx, f.partitionName())
-	builder.Command().Textf("cp -prf %s/* %s", rebasedDir, installPath)
+	builder.Command().Textf("mkdir -p %[2]s && cp -prf %[1]s/* %[2]s", rebasedDir, installPath)
 }
 
 func (f *filesystem) rootDirString() string {

@@ -382,6 +382,9 @@ type config struct {
 	// failure
 	ensureAllowlistIntegrity bool
 
+	// If isGeneric is true, this config is the generic config.
+	isGeneric bool
+
 	// Copy of this config struct but some product-specific variables are
 	// replaced with the generic configuration values.
 	genericConfig *config
@@ -744,6 +747,7 @@ func initConfig(cmdArgs CmdArgs, availableEnv map[string]string) (*config, error
 // A generic tag may have a string or an int value for the generic configuration.
 // If the value is "unset", generic configuration will unset the variable.
 func overrideGenericConfig(config *config) {
+	config.isGeneric = true
 	type_pv := reflect.TypeOf(config.productVariables)
 	value_pv := reflect.ValueOf(&config.productVariables)
 	for i := range type_pv.NumField() {
@@ -989,6 +993,9 @@ func (c *config) DisplayBuildNumber() bool {
 // require them to run and get the current build fingerprint. This ensures they
 // don't rebuild on every incremental build when the build number changes.
 func (c *config) BuildFingerprintFile(ctx PathContext) Path {
+	if c.isGeneric {
+		return c.BuildThumbprintFile(ctx)
+	}
 	return PathForArbitraryOutput(ctx, "target", "product", c.DeviceName(), String(c.productVariables.BuildFingerprintFile))
 }
 
@@ -1017,7 +1024,7 @@ func (c *config) BuildHostnameFile(ctx PathContext) Path {
 // require them to run and get the current build thumbprint. This ensures they
 // don't rebuild on every incremental build when the build thumbprint changes.
 func (c *config) BuildThumbprintFile(ctx PathContext) Path {
-	return PathForArbitraryOutput(ctx, "target", "product", c.DeviceName(), String(c.productVariables.BuildThumbprintFile))
+	return PathForArbitraryOutput(ctx, "target", "product", "generic", String(c.productVariables.BuildThumbprintFile))
 }
 
 // DeviceName returns the name of the current device target.
