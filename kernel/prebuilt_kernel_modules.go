@@ -247,6 +247,8 @@ func modulesDirForAndroidDlkm(ctx android.ModuleContext, modulesDir android.Outp
 		return modulesDir.Join(ctx, "vendor", "lib", "modules")
 	} else if ctx.InstallInOdmDlkm() {
 		return modulesDir.Join(ctx, "odm", "lib", "modules")
+	} else if ctx.InstallInVendorRamdisk() {
+		return modulesDir.Join(ctx, "lib", "modules")
 	} else {
 		// not an android dlkm module.
 		return modulesDir
@@ -305,6 +307,15 @@ func (pkm *prebuiltKernelModules) runDepmod(ctx android.ModuleContext, modules a
 		ImplicitOutput(modulesDep).
 		ImplicitOutput(modulesSoftdep).
 		ImplicitOutput(modulesAlias)
+
+	// Add a leading slash
+	// https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l=514;drc=66783fca85911af9da48d9b4f35a61b3873023e9
+	builder.Command().
+		Text("sed").
+		Flag("-i.tmp").
+		Flag("-e").
+		Text("'s|\\([^: ]*lib/modules/[^: ]*\\)|/\\1|g'").
+		Output(modulesDep)
 
 	builder.Build("depmod", fmt.Sprintf("depmod %s", ctx.ModuleName()))
 
