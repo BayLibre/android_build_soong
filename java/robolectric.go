@@ -65,10 +65,6 @@ type robolectricProperties struct {
 		Shards *int64
 	}
 
-	// The version number of a robolectric prebuilt to use from prebuilts/misc/common/robolectric
-	// instead of the one built from source in external/robolectric-shadows.
-	Robolectric_prebuilt_version *string
-
 	// Use /external/robolectric rather than /external/robolectric-shadows as the version of robolectric
 	// to use.  /external/robolectric closely tracks github's master, and will fully replace /external/robolectric-shadows
 	Upstream *bool
@@ -107,21 +103,12 @@ func (r *robolectricTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 		ctx.PropertyErrorf("instrumentation_for", "missing required instrumented module")
 	}
 
-	ctx.AddVariationDependencies(nil, staticLibTag, clearcutJunitLib)
-
-	if v := String(r.robolectricProperties.Robolectric_prebuilt_version); v != "" {
-		ctx.AddVariationDependencies(nil, staticLibTag, fmt.Sprintf(robolectricPrebuiltLibPattern, v))
-	} else if !proptools.BoolDefault(r.robolectricProperties.Strict_mode, true) {
-		if proptools.Bool(r.robolectricProperties.Upstream) {
-			ctx.AddVariationDependencies(nil, staticLibTag, robolectricCurrentLib+"_upstream")
-		} else {
-			ctx.AddVariationDependencies(nil, staticLibTag, robolectricCurrentLib)
-		}
-	}
-
+	ctx.AddVariationDependencies(nil, roboRuntimeOnlyTag, clearcutJunitLib)
+	
 	if proptools.BoolDefault(r.robolectricProperties.Strict_mode, true) {
-		ctx.AddVariationDependencies(nil, roboRuntimeOnlyTag, robolectricCurrentLib+"_upstream")
+		ctx.AddVariationDependencies(nil, roboRuntimeOnlyTag, robolectricCurrentLib)
 	} else {
+		ctx.AddVariationDependencies(nil, staticLibTag, robolectricCurrentLib)
 		// opting out from strict mode, robolectric_non_strict_mode_permission lib should be added
 		ctx.AddVariationDependencies(nil, staticLibTag, "robolectric_non_strict_mode_permission")
 	}
