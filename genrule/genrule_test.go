@@ -15,7 +15,6 @@
 package genrule
 
 import (
-	"fmt"
 	"os"
 	"regexp"
 	"strconv"

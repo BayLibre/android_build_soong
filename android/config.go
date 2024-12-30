@@ -2046,6 +2046,13 @@ func (c *deviceConfig) BuildBrokenInputDir(name string) bool {
 	return InList(name, c.config.productVariables.BuildBrokenInputDirModules)
 }
 
+<<<<<<< PATCH SET (321b0d )
+||||||| BASE
+func (c *deviceConfig) BuildBrokenDepfile() bool {
+	return Bool(c.config.productVariables.BuildBrokenDepfile)
+}
+
+=======
 func (c *deviceConfig) BuildBrokenDontCheckSystemSdk() bool {
 	return c.config.productVariables.BuildBrokenDontCheckSystemSdk
 }
@@ -2062,6 +2069,7 @@ func (c *deviceConfig) GenruleSandboxing() bool {
 	return Bool(c.config.productVariables.GenruleSandboxing)
 }
 
+>>>>>>> BASE      (3eab96 Merge "Do not define Avb_algorithm for autogen vendor boot p)
 func (c *deviceConfig) RequiresInsecureExecmemForSwiftshader() bool {
 	return c.config.productVariables.RequiresInsecureExecmemForSwiftshader
 }

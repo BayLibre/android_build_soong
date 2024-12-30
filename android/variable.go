@@ -454,6 +454,18 @@ type ProductVariables struct {
 
 	Shipping_api_level *string `json:",omitempty"`
 
+<<<<<<< PATCH SET (321b0d )
+	BuildBrokenEnforceSyspropOwner     bool     `json:",omitempty"`
+	BuildBrokenTrebleSyspropNeverallow bool     `json:",omitempty"`
+	BuildBrokenVendorPropertyNamespace bool     `json:",omitempty"`
+	BuildBrokenInputDirModules         []string `json:",omitempty"`
+||||||| BASE
+	BuildBrokenDepfile                 *bool    `json:",omitempty"`
+	BuildBrokenEnforceSyspropOwner     bool     `json:",omitempty"`
+	BuildBrokenTrebleSyspropNeverallow bool     `json:",omitempty"`
+	BuildBrokenVendorPropertyNamespace bool     `json:",omitempty"`
+	BuildBrokenInputDirModules         []string `json:",omitempty"`
+=======
 	BuildBrokenPluginValidation         []string `json:",omitempty"`
 	BuildBrokenClangAsFlags             bool     `json:",omitempty"`
 	BuildBrokenClangCFlags              bool     `json:",omitempty"`
@@ -468,6 +480,7 @@ type ProductVariables struct {
 	BuildBrokenDupSysprop               bool     `json:",omitempty"`
 
 	BuildWarningBadOptionalUsesLibsAllowlist []string `json:",omitempty"`
+>>>>>>> BASE      (3eab96 Merge "Do not define Avb_algorithm for autogen vendor boot p)
 
 	BuildDebugfsRestrictionsEnabled bool `json:",omitempty"`
 
