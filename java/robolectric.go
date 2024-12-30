@@ -16,7 +16,6 @@ package java
 
 import (
 	"fmt"
-
 	"android/soong/android"
 	"android/soong/java/config"
 	"android/soong/tradefed"
@@ -53,7 +52,6 @@ var robolectricDefaultLibs = []string{
 
 const robolectricCurrentLib = "Robolectric_all-target"
 const clearcutJunitLib = "ClearcutJunitListenerAar"
-const robolectricPrebuiltLibPattern = "platform-robolectric-%s-prebuilt"
 
 var (
 	roboCoverageLibsTag = dependencyTag{name: "roboCoverageLibs"}
@@ -180,11 +178,21 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	generateSameDirRoboTestConfigJar(ctx, roboTestConfigJar)
 
 	extraCombinedJars := android.Paths{roboTestConfigJar}
+	runtimeLibJars := android.Paths{roboTestConfigJar}
 
+<<<<<<< HEAD
 	handleLibDeps := func(dep android.Module) {
+=======
+    // It is critical to only add some deps as runtime dependencies to prevent very bad forms of code rot.
+	handleLibDeps := func(dep android.Module, runtimeOnly bool) {
+>>>>>>> 463c4229e (Attempt to re-enable runtime only dependencies for strict_mode, and Clearcut.)
 		if !android.InList(ctx.OtherModuleName(dep), config.FrameworkLibraries) {
 			if m, ok := android.OtherModuleProvider(ctx, dep, JavaInfoProvider); ok {
-				extraCombinedJars = append(extraCombinedJars, m.ImplementationAndResourcesJars...)
+			    if runtimeOnly {
+			       runtimeLibJars = append(runtimeLibJars, m.ImplementationAndResourcesJars...)
+			    } else {
+				   extraCombinedJars = append(extraCombinedJars, m.ImplementationAndResourcesJars...)
+				}
 			}
 		}
 	}
@@ -212,6 +220,16 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	installPath := android.PathForModuleInstall(ctx, r.BaseModuleName())
 	var installDeps android.InstallPaths
 
+    for _, jarData := range runtimeLibJars {
+    	installedData := ctx.InstallFile(installPath, jarData.Rel(), jarData)
+		installDeps = append(installDeps, installedData)
+    }
+
+	for _, data := range r.data {
+		installedData := ctx.InstallFile(installPath, data.Rel(), data)
+		installDeps = append(installDeps, installedData)
+	}
+
 	for _, data := range r.data {
 		installedData := ctx.InstallFile(installPath, data.Rel(), data)
 		installDeps = append(installDeps, installedData)
@@ -227,11 +245,6 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		r.data = append(r.data, resourceApk)
 		installedResourceApk := ctx.InstallFile(installPath, ctx.ModuleName()+".apk", resourceApk)
 		installDeps = append(installDeps, installedResourceApk)
-	}
-
-	runtimes := ctx.GetDirectDepWithTag("robolectric-android-all-prebuilts", roboRuntimesTag)
-	for _, runtime := range runtimes.(*robolectricRuntimes).runtimes {
-		installDeps = append(installDeps, runtime)
 	}
 
 	installedConfig := ctx.InstallFile(installPath, ctx.ModuleName()+".config", r.testConfig)
