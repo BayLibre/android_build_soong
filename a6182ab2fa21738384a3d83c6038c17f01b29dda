@@ -3,6 +3,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dff350a5_37c46203",
+        "filename": "java/robolectric.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2024-12-30T01:02:32Z",
+      "side": 0,
+      "message": "I just discovered this change -- missed it before.   It breaks constraints we are trying to enforce with strict_mode, and I can\u0027t revert these lines.   Is there a different way to support this @ccross@android.com?",
+      "fixSuggestions": [
+        {
+          "fixId": "6927ef36_391e4d55",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/robolectric.go",
+              "range": {
+                "startLine": 218,
+                "startChar": 0,
+                "endLine": 221,
+                "endChar": 0
+              },
+              "replacement": "\t\tif proptools.BoolDefault(r.robolectricProperties.Strict_mode, true) {\n\t\t\tr.data \u003d append(r.data, resourceApk)\n\t\t\tinstalledResourceApk :\u003d ctx.InstallFile(installPath, ctx.ModuleName()+\".apk\", resourceApk)\n\t\t\tinstallDeps \u003d append(installDeps, installedResourceApk)\n\t\t} else {\n\t\t\t// opting out from strict mode, resource apk should be added to the test jar\n\t\t\tr.data \u003d append(r.data, resourceApk)\n\t\t\tr.outputFile \u003d r.outputFile.Join(ctx, resourceApk.Base())\n\t\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a6182ab2fa21738384a3d83c6038c17f01b29dda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "922248c2_95d545e0",
         "filename": "java/robolectric.go",
         "patchSetId": 5
