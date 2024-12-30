@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a57772_b5a446c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1937551
+      },
+      "writtenOn": "2024-12-30T07:24:02Z",
+      "side": 1,
+      "message": "Hi, hello,\n\nWe encountered the following compilation issue when upgrading to the latest baseline, and we suspect it is related to your recent change. We found that when depending on a cc_object target within a genrule target, a dependency issue arises. How can we resolve this problem?\n\nError message:\nFAILED: out/soong/.intermediates/miui/frameworks/base/native/mifslog/watch_file.skel.h/gen/watch_file.skel.h\necho \"module watch_file.skel.h missing dependencies: watch_file.bpf.o\" \u0026\u0026 false\nmodule watch_file.skel.h missing dependencies: watch_file.bpf.o\n\nOur relevant code:\ncc_object {\n    name: \"watch_file.bpf.o\",\n    srcs: [\"watch_file.bpf.c\"],\n    defaults: [\"fslog_bpf_defaults\"],\n}\ngenrule {\n    name: \"watch_file.skel.h\",\n    srcs: [\":watch_file.bpf.o\"],\n    out: [\"watch_file.skel.h\"],\n    tools: [\"bpftool\"],\n    cmd: \"$(location bpftool) gen skeleton $(in) \u003e $(out)\",\n    visibility: [\"//visibility:private\"],\n}\n\nNote: The cc_object target named watch_file.bpf.o can be normally recognized when depended on by targets such as cc_binary, but it cannot be normally recognized within genrule.",
+      "revId": "d3228acdc8658e7bd9ef9662c425822ae55fdebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
