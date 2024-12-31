@@ -29,8 +29,8 @@ var (
 	// Flags used by lots of devices.  Putting them in package static variables
 	// will save bytes in build.ninja so they aren't repeated for every file
 	commonGlobalCflags = []string{
-		// Enable some optimization by default.
-		"-O2",
+		// Enable -O3 optimization by default.
+		"-O3",
 
 		// Warnings enabled by default. Reference:
 		// https://clang.llvm.org/docs/DiagnosticsReference.html
