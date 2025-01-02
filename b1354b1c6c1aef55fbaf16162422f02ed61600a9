@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3762447b_875c7082",
+        "filename": "java/robolectric.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2025-01-02T14:18:06Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "3c48db29_a0c76b6e",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "b1354b1c6c1aef55fbaf16162422f02ed61600a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0d104d8_ecc9db54",
         "filename": "java/robolectric.go",
         "patchSetId": 5
@@ -95,6 +119,30 @@
       "writtenOn": "2024-12-30T20:34:44Z",
       "side": 1,
       "message": "should all of this just be moved to your next change, since this is a no-op here?",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 26
+      },
+      "revId": "b1354b1c6c1aef55fbaf16162422f02ed61600a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5f5311_1edbdad0",
+        "filename": "java/robolectric.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2025-01-02T14:18:06Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "f0d104d8_ecc9db54",
       "range": {
         "startLine": 184,
         "startChar": 0,
