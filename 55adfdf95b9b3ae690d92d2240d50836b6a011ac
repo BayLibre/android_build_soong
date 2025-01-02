@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6413709_d2bda752",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2072,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2025-01-02T06:42:04Z",
+      "side": 1,
+      "message": "Updated to be as ApexModule. Not sure if we have any use case for direct dep. Let\u0027s discuss this from other thread.",
+      "parentUuid": "bd655d84_8ac463b5",
+      "range": {
+        "startLine": 2072,
+        "startChar": 1,
+        "endLine": 2072,
+        "endChar": 35
+      },
+      "revId": "55adfdf95b9b3ae690d92d2240d50836b6a011ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f080b3_6d1e8ab7",
         "filename": "apex/apex.go",
         "patchSetId": 5
@@ -84,6 +108,30 @@
       "writtenOn": "2024-12-23T08:14:50Z",
       "side": 1,
       "message": "Well, I don\u0027t think vintfFragmentFromModule needs to be special like this.",
+      "range": {
+        "startLine": 2460,
+        "startChar": 22,
+        "endLine": 2462,
+        "endChar": 2
+      },
+      "revId": "55adfdf95b9b3ae690d92d2240d50836b6a011ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b11a5a_7e27c8f9",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2462,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2025-01-02T06:42:04Z",
+      "side": 1,
+      "message": "Removed. Thx.",
+      "parentUuid": "59f080b3_6d1e8ab7",
       "range": {
         "startLine": 2460,
         "startChar": 22,
@@ -117,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92f94ab_bd2108a0",
+        "filename": "apex/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2025-01-02T06:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c981fdc_8f6a3069",
+      "range": {
+        "startLine": 530,
+        "startChar": 8,
+        "endLine": 530,
+        "endChar": 23
+      },
+      "revId": "55adfdf95b9b3ae690d92d2240d50836b6a011ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c83f833e_814a8537",
@@ -130,6 +202,30 @@
       "writtenOn": "2024-12-23T08:14:50Z",
       "side": 1,
       "message": "Can this be moved into isVintfFragment? We can rename isVintfFragment as needsToRunAssembleVintf().",
+      "range": {
+        "startLine": 581,
+        "startChar": 41,
+        "endLine": 581,
+        "endChar": 77
+      },
+      "revId": "55adfdf95b9b3ae690d92d2240d50836b6a011ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d267008_6db322ca",
+        "filename": "apex/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2025-01-02T06:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c83f833e_814a8537",
       "range": {
         "startLine": 581,
         "startChar": 41,

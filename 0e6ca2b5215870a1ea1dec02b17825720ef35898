@@ -22,6 +22,30 @@
       },
       "revId": "0e6ca2b5215870a1ea1dec02b17825720ef35898",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ebd2e8_da66ce03",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1489,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2025-01-02T06:42:04Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure if we actually have the first use case. Do we have any such example?",
+      "parentUuid": "0c68f2cd_5b30f6df",
+      "range": {
+        "startLine": 1489,
+        "startChar": 5,
+        "endLine": 1489,
+        "endChar": 29
+      },
+      "revId": "0e6ca2b5215870a1ea1dec02b17825720ef35898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
