@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cff1c12c_0fe0fc2f",
+        "filename": "java/base.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2025-01-02T21:42:39Z",
+      "side": 1,
+      "message": "@ccross@android.com wondering if we should just do this implicitly in `TransformJarsToJar`, and embed the rules directly in the generated jar? Or alternatively, do it in GenerateAndroidBuildActions for the Import prebuilt targets (similar to what we do now with aars where we use aapt2 to extract the proguard rules) and append to the extra flags as is done here?",
+      "parentUuid": "5bd348bd_9cc63b7b",
+      "revId": "e70cf7b2aebb612c69cfff35ae9abf72a1ede4fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c674d67_c71237f5",
         "filename": "java/builder.go",
         "patchSetId": 4
