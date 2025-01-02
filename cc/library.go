@@ -1387,6 +1387,10 @@ func (library *libraryDecorator) sourceAbiDiff(ctx android.ModuleContext,
 		extraFlags = append(extraFlags,
 			"-allow-unreferenced-changes",
 			"-allow-unreferenced-elf-symbol-changes")
+		// The functions in runtime libraries are not always declared in the headers.
+		if isBionic(ctx.ModuleName()) {
+			extraFlags = append(extraFlags, "-allow-adding-removing-referenced-apis")
+		}
 	}
 	if isLlndk {
 		extraFlags = append(extraFlags, "-consider-opaque-types-different")
