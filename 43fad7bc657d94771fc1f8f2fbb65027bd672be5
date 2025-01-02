@@ -46,6 +46,30 @@
       },
       "revId": "43fad7bc657d94771fc1f8f2fbb65027bd672be5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62374ccf_9af68d4c",
+        "filename": "fsgen/boot_imgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-02T20:55:59Z",
+      "side": 1,
+      "message": "Since `filesystem_creator` uses product config variables to create the different filesystem modules, using `ModuleErrorf` seems like a reasonable choice imo. The error happens in the context of the creator module. (But not a blocking comment)",
+      "parentUuid": "7d6c4b4f_46909626",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 8
+      },
+      "revId": "43fad7bc657d94771fc1f8f2fbb65027bd672be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
