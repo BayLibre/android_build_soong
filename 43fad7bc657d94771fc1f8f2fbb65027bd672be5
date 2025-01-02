@@ -22,6 +22,30 @@
       },
       "revId": "43fad7bc657d94771fc1f8f2fbb65027bd672be5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d6c4b4f_46909626",
+        "filename": "fsgen/boot_imgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-02T20:02:43Z",
+      "side": 1,
+      "message": "I do not have a strong opinion about this, but would it make sense to convert this into a module error given that this is an error in product configuration, not specifically an error in the setting of `filesystem_creator` module?",
+      "parentUuid": "2bb42a67_2ff32c3b",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 8
+      },
+      "revId": "43fad7bc657d94771fc1f8f2fbb65027bd672be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
