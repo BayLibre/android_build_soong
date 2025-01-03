@@ -69,6 +69,24 @@
       "parentUuid": "49c90280_4d6210f2",
       "revId": "f66c14ce6b3a24e37695d3816571cc27099cdb1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa507a92_24a9f34d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2025-01-03T17:36:52Z",
+      "side": 1,
+      "message": "Why is this a cross-container violation? Both `framework-ranging` and `service-ranging` are the part of the same ranging apex. Without this, we have to statically include yet another copy of `framework-ranging` inside of `service-ranging`.",
+      "parentUuid": "27ea10bf_860c5f0b",
+      "revId": "f66c14ce6b3a24e37695d3816571cc27099cdb1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
