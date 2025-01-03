@@ -22,6 +22,30 @@
       },
       "revId": "7701d5fe1221a7c653385ea52cae2d3580b2c6b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa6db4f8_a35c7d37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-03T16:53:01Z",
+      "side": 1,
+      "message": "I think a similar approach for app certs would have a limitation - it would be limited to apps defined in `Android.bp`. Apps defined in `Android.mk` will be missing from the results. Depending on the use case, it might produce incorrect results.\n\nCould I please know the use case for collecting android app certs? Is it also for use in CTS tests? (like `CtsSecurityTestCases`)\n\n(Marking this as resolved for now so that I can submit this CL, but we can continue the discussion in b/329299639 or soong-discuss@)",
+      "parentUuid": "3d55afe2_25045f58",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "7701d5fe1221a7c653385ea52cae2d3580b2c6b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
