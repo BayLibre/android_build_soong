@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d55afe2_25045f58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2025-01-03T15:08:03Z",
+      "side": 1,
+      "message": "(outside of the scope of this patch). Will it be possible to extend this to also collect all android_app_certs?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "7701d5fe1221a7c653385ea52cae2d3580b2c6b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
