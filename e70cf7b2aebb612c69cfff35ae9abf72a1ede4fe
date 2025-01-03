@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed9af7e5_d6c78377",
+        "filename": "java/base.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-01-03T11:19:37Z",
+      "side": 1,
+      "message": "I moved the rules extraction to the Import target, this way I also avoid the need for RSP support since there will only be a single input jar.",
+      "parentUuid": "cff1c12c_0fe0fc2f",
+      "revId": "e70cf7b2aebb612c69cfff35ae9abf72a1ede4fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c674d67_c71237f5",
         "filename": "java/builder.go",
         "patchSetId": 4
@@ -66,6 +84,24 @@
       "writtenOn": "2024-12-17T13:36:06Z",
       "side": 1,
       "message": "This may cause issues just like TransformJarsToJar if the input list is too long, probably needs to use rsp in that case, I don\u0027t know if R8 support those?\n\nCurrently in AOSP no module hits the limit but that\u0027s something that needs to be fixed",
+      "revId": "e70cf7b2aebb612c69cfff35ae9abf72a1ede4fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10794787_f88962fc",
+        "filename": "java/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-01-03T11:19:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8c674d67_c71237f5",
       "revId": "e70cf7b2aebb612c69cfff35ae9abf72a1ede4fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
