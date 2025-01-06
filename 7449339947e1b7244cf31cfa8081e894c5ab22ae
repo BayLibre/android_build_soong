@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70ba777b_5553b2f5",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-06T22:30:13Z",
+      "side": 1,
+      "message": "Might be worth mentioning in the comment that this isn\u0027t actually the CARGO_MANIFEST_DIR, it\u0027s the directory where the Android.bp file lives. No real docs for end users to read, so maybe it\u0027s not critical.",
+      "revId": "7449339947e1b7244cf31cfa8081e894c5ab22ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
