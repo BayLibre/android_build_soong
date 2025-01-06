@@ -315,6 +315,14 @@ func rustEnvVars(ctx android.ModuleContext, deps PathDeps, crateName string, car
 		}
 		envVars = append(envVars, "CARGO_CRATE_NAME="+crateName)
 		envVars = append(envVars, "CARGO_PKG_NAME="+crateName)
+
+		// Pass CARGO_MANIFEST_DIR to rust_test modules. We don't pass this to
+		// other module types to ensure reproducibility isn't accidentally broken
+		// if this string makes it into the final binary.
+		if _, ok := rustMod.compiler.(*testDecorator); ok {
+			envVars = append(envVars, "CARGO_MANIFEST_DIR="+ctx.ModuleDir())
+		}
+
 		pkgVersion := rustMod.compiler.cargoPkgVersion()
 		if pkgVersion != "" {
 			envVars = append(envVars, "CARGO_PKG_VERSION="+pkgVersion)
