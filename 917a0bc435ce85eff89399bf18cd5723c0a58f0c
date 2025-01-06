@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d49b4c79_ec6e43f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-06T13:53:29Z",
+      "side": 1,
+      "message": "why can\u0027t we have /system/system_ext/etc/aconfig_flags.pb and access it via the symlink (/system_ext -\u003e /system/system_ext)?",
+      "revId": "917a0bc435ce85eff89399bf18cd5723c0a58f0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
