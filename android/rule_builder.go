@@ -60,6 +60,7 @@ type RuleBuilder struct {
 	sboxTools        bool
 	sboxInputs       bool
 	sboxManifestPath WritablePath
+	sboxKeepOutDir   bool
 	missingDeps      []string
 	args             map[string]string
 	nsjail           bool
@@ -132,6 +133,15 @@ func (r *RuleBuilder) MissingDeps(missingDeps []string) {
 // Restat marks the rule as a restat rule, which will be passed to ModuleContext.Rule in BuildParams.Restat.
 func (r *RuleBuilder) Restat() *RuleBuilder {
 	r.restat = true
+	return r
+}
+
+// KeepSboxOutDir makes it so the sbox directory is not deleted after the rule runs. Useful
+// for debugging and sharing reproductions of issues, as it allows you to copy the sbox folder
+// outside of the android build and rerun the command in it later. Only works with sbox-style
+// sandboxes, not nsjail sandboxes.
+func (r *RuleBuilder) KeepSboxOutDir() *RuleBuilder {
+	r.sboxKeepOutDir = true
 	return r
 }
 
@@ -795,6 +805,10 @@ func (r *RuleBuilder) build(name string, desc string) {
 			FlagWithArg("--sandbox-path ", shared.TempDirForOutDir(PathForOutput(r.ctx).String())).
 			FlagWithArg("--output-dir ", r.outDir.String()).
 			FlagWithInput("--manifest ", r.sboxManifestPath)
+
+		if r.sboxKeepOutDir {
+			sboxCmd.Flag("--keep-out-dir")
+		}
 
 		if r.restat {
 			sboxCmd.Flag("--write-if-changed")
