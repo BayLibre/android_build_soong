@@ -141,6 +141,30 @@
       },
       "revId": "7701d5fe1221a7c653385ea52cae2d3580b2c6b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1d17960_7009350c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-06T22:03:09Z",
+      "side": 1,
+      "message": "Yes, you\u0027ll have to call `SetOutputFiles` in `GenerateAndroidBuildActions`, but you\u0027ll set a path that has no rule to build it. Then in `SingletonBuildActions`, you create the rule to build it.",
+      "parentUuid": "c0945cfd_d1763d8c",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "7701d5fe1221a7c653385ea52cae2d3580b2c6b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
