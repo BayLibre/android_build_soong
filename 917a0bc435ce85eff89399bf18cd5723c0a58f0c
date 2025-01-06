@@ -16,6 +16,29 @@
       "message": "why can\u0027t we have /system/system_ext/etc/aconfig_flags.pb and access it via the symlink (/system_ext -\u003e /system/system_ext)?",
       "revId": "917a0bc435ce85eff89399bf18cd5723c0a58f0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49cb640a_4bd40d44",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1560,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-06T18:37:39Z",
+      "side": 1,
+      "message": "Do not use this.\n\nWhat partitions are created is not something that the build should know in general, only the individual partition modules should know this. These variables only exist to create the modules in the `fsgen` package.",
+      "range": {
+        "startLine": 1560,
+        "startChar": 86,
+        "endLine": 1560,
+        "endChar": 94
+      },
+      "revId": "917a0bc435ce85eff89399bf18cd5723c0a58f0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
