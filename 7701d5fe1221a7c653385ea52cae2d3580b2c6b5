@@ -117,6 +117,30 @@
       },
       "revId": "7701d5fe1221a7c653385ea52cae2d3580b2c6b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0945cfd_d1763d8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-06T22:01:14Z",
+      "side": 1,
+      "message": "I think I may be expressing the issue incorrectly. There are _no_ circular dependencies between soong modules, but there are some analysis errors.\n\nAs an alternative, I replaced the reverse dep implementation with the following changes\n- Remove the `ctx.AddReverseDependency` in apex/apex.go\n- Replace the `ctx.VisitDirectDeps` in `GenerateAndroidBuildActions` to `ctx.VisitAllModules` in `GenerateSingletonBuildActions`\n```\n\n[full git diff](https://paste.googleplex.com/6439257842122752)\n\nThis implementation does not compile since SingletonContext does not allow setting output files\n```\n$ go build ./apex\n...\napex/key.go:217:6: ctx.SetOutputFiles undefined (type android.SingletonContext has no field or method SetOutputFiles)                                                                                                                                                           \napex/key.go:218:6: ctx.SetOutputFiles undefined (type android.SingletonContext has no field or method SetOutputFiles)                                                                                                                                                           \napex/key.go:219:6: ctx.SetOutputFiles undefined (type android.SingletonContext has no field or method SetOutputFiles)\n```\n\nI think this missing `ctx.SetOutputFiles` is by design. `SingletonBuildActions` run after `GenerateAndroidBuildActions` of [all modules](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/cc1e74000e0e1ac34cf2877d71373b0da70bacc2:android/singleton_module.go;l\u003d30;drc\u003dca9ccec822b26a2dbb9437b209e27240b4bafeb3;bpv\u003d1;bpt\u003d0). Any output files set here will not be available to any rdeps. For the use case in https://r.android.com/3422700, it means that the android test will always see an empty list of apex certs/keys.",
+      "parentUuid": "39313ee1_5bc4b25f",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "7701d5fe1221a7c653385ea52cae2d3580b2c6b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
