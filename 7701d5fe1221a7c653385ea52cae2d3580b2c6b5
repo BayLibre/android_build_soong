@@ -46,6 +46,29 @@
       },
       "revId": "7701d5fe1221a7c653385ea52cae2d3580b2c6b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de7b2bda_fb5bd03f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-06T20:01:29Z",
+      "side": 1,
+      "message": "Generally if using a singleton module you\u0027d using VisitAllModules in GenerateSingletonBuildActions. As implemented, it could be a regular module. However, visiting all modules in the singleton build actions is probably better than reverse dependencies for incremental soong.",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "7701d5fe1221a7c653385ea52cae2d3580b2c6b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
