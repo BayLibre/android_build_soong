@@ -1553,6 +1553,16 @@ func (c *deviceConfig) VendorDlkmPath() string {
 	return "vendor_dlkm"
 }
 
+// Returns BOARD_USES_{partition}IMAGE value.
+// True if the partition is created.
+// False if the partition is installed under the other partition (ex. system/system_ext).
+func (c *deviceConfig) UsesImage(partition string) bool {
+	if partition_info, ok := c.config.productVariables.PartitionVarsForSoongMigrationOnlyDoNotUse.PartitionQualifiedVariables[partition]; ok {
+		return partition_info.BoardUsesImage
+	}
+	panic(fmt.Errorf("Cannot read UsesImage for %s partition: Unknown partition name.", partition))
+}
+
 func (c *deviceConfig) BuildingVendorImage() bool {
 	return proptools.Bool(c.config.productVariables.BuildingVendorImage)
 }

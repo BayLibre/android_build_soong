@@ -571,6 +571,7 @@ type PartitionQualifiedVariablesType struct {
 	BoardSquashfsCompressor     string `json:",omitempty"`
 	BoardSquashfsCompressorOpt  string `json:",omitempty"`
 	BoardSquashfsDisable4kAlign string `json:",omitempty"`
+	BoardUsesImage              bool   `json:",omitempty"`
 	ProductBaseFsPath           string `json:",omitempty"`
 	ProductHeadroom             string `json:",omitempty"`
 	ProductVerityPartition      string `json:",omitempty"`

@@ -67,6 +67,15 @@ func (f *filesystem) buildAconfigFlagsFiles(ctx android.ModuleContext, builder *
 		Output(installAconfigFlagsPath).
 		Textf("--filter container:%s+state:ENABLED", container).
 		Textf("--filter container:%s+permission:READ_WRITE", container)
+	if container == "system" {
+		// system partition may include other partitions if they are not created.
+		for _, subcontainder := range []string{"system_ext", "product", "vendor"} {
+			if !ctx.DeviceConfig().UsesImage(subcontainder) {
+				cmd.Textf("--filter container:%s+state:ENABLED", subcontainder).
+					Textf("--filter container:%s+permission:READ_WRITE", subcontainder)
+			}
+		}
+	}
 	for _, cache := range caches {
 		cmd.FlagWithInput("--cache ", cache)
 	}
