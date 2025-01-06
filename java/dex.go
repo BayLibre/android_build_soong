@@ -42,6 +42,9 @@ type DexProperties struct {
 		// True if the module containing this has it set by default.
 		EnabledByDefault bool `blueprint:"mutated"`
 
+		// Whether to allow that library classes inherit from program classes. Defaults to false.
+		Ignore_library_extends_program *bool
+
 		// Whether to continue building even if warnings are emitted.  Defaults to true.
 		Ignore_warnings *bool
 
@@ -355,6 +358,10 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, dexParams *compileDexParams, 
 		"build/make/core/proguard_basic_keeps.flags"))
 
 	r8Flags = append(r8Flags, opt.Proguard_flags...)
+
+	if BoolDefault(opt.Ignore_library_extends_program, false) {
+		r8Flags = append(r8Flags, "--ignore-library-extends-program")
+	}
 
 	if BoolDefault(opt.Proguard_compatibility, true) {
 		r8Flags = append(r8Flags, "--force-proguard-compatibility")
