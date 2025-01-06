@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb72661d_6a637b88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2025-01-06T06:38:12Z",
+      "side": 1,
+      "message": "This requires updating prebuilts.\nVerified with ag/31117667.",
+      "revId": "32805e950d32702811fc24f97d5fbdcf74a2c01e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
