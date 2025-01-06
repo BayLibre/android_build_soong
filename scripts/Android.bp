@@ -327,3 +327,11 @@ python_binary_host {
         "rustc_linker.py",
     ],
 }
+
+python_binary_host {
+    name: "generate_jarjar_rename_rules",
+    main: "generate_jarjar_rename_rules.py",
+    srcs: [
+        "generate_jarjar_rename_rules.py",
+    ],
+}
