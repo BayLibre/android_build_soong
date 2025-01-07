@@ -16,6 +16,24 @@
       "message": "Wish it could use the one found in external/kotlinc rather than external/kotlin-compose-compiler, but the former seems to be not compatible... shouldn\u0027t it be bundled with the kotlin release?",
       "revId": "e137a40ef9cb43720d9e09d8b6ba0b67ab9c2a1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5780901e_f191bc2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-07T19:15:00Z",
+      "side": 1,
+      "message": "I think that\u0027s coming in a future kotlinc release.",
+      "parentUuid": "8fb273fb_0e9febb4",
+      "revId": "e137a40ef9cb43720d9e09d8b6ba0b67ab9c2a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
