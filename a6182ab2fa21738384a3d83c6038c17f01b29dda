@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "871d5195_94341d31",
+        "filename": "java/robolectric.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-07T17:38:28Z",
+      "side": 0,
+      "message": "If I understand your email thread correctly this isn\u0027t actually a problem.  This `runtimeOnly` flag was only used to populate `r.libs`, and that was only passed to the Make runner, which has been deleted.  The runtime only libraries are handled by using the `roboRuntimeOnlyTag` instead of `staticLibTag`.  `staticLibTag` is handled in `java/base.go` to add the libraries to the classpath, `roboRuntimeOnlyTag` is not.",
+      "parentUuid": "dff350a5_37c46203",
+      "revId": "a6182ab2fa21738384a3d83c6038c17f01b29dda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "922248c2_95d545e0",
