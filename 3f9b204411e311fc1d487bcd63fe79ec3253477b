@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3017681d_7d94a874",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-07T17:04:36Z",
+      "side": 1,
+      "message": "If this allows us to remove the `-L` flag for direct dependencies, we should do that in a follow-on CL.",
+      "revId": "3f9b204411e311fc1d487bcd63fe79ec3253477b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
