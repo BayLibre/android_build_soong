@@ -85,6 +85,22 @@ var depIsNotStaticOrDynamicDepTag exceptionHandleFunc = func(ctx ModuleContext, 
 	return !InList(depTag, append(mInstallable.StaticDependencyTags(), mInstallable.DynamicDependencyTags()...))
 }
 
+// Returns true if the dependency is an aconfig_library where mode is set to "exported".
+var depIsExportedAconfigLibrary exceptionHandleFunc = func(_ ModuleContext, _, dep Module) bool {
+	depProps := dep.GetProperties()
+	for _, prop := range depProps {
+		val := reflect.ValueOf(prop).Elem()
+		if val.Kind() == reflect.Struct {
+			mode := val.FieldByName("Mode")
+			if mode.IsValid() && mode.Kind() == reflect.Pointer {
+				v := reflect.ValueOf(mode)
+				return !v.IsNil() && v.Elem().String() == "exported"
+			}
+		}
+	}
+	return false
+}
+
 var globallyAllowlistedDependencies = []string{
 	// Modules that provide annotations used within the platform and apexes.
 	"aconfig-annotations-lib",
@@ -122,17 +138,19 @@ const (
 	checkNotDynamicDepTag
 	checkNotStaticOrDynamicDepTag
 	checkGlobalAllowlistedDep
+	checkExportedAconfigLibraryDep
 )
 
 // Map of [exceptionHandleFuncLabel] to the [exceptionHandleFunc]
 var exceptionHandleFunctionsTable = map[exceptionHandleFuncLabel]exceptionHandleFunc{
-	checkStubs:                    depIsStubsModule,
-	checkApexModule:               depIsApexModule,
-	checkInCommonApexes:           belongsToCommonApexes,
-	checkApexIsNonUpdatable:       belongsToNonUpdatableApex,
-	checkNotDynamicDepTag:         depIsNotDynamicDepTag,
-	checkNotStaticOrDynamicDepTag: depIsNotStaticOrDynamicDepTag,
-	checkGlobalAllowlistedDep:     depIsGloballyAllowlisted,
+	checkStubs:                     depIsStubsModule,
+	checkApexModule:                depIsApexModule,
+	checkInCommonApexes:            belongsToCommonApexes,
+	checkApexIsNonUpdatable:        belongsToNonUpdatableApex,
+	checkNotDynamicDepTag:          depIsNotDynamicDepTag,
+	checkNotStaticOrDynamicDepTag:  depIsNotStaticOrDynamicDepTag,
+	checkGlobalAllowlistedDep:      depIsGloballyAllowlisted,
+	checkExportedAconfigLibraryDep: depIsExportedAconfigLibrary,
 }
 
 // ----------------------------------------------------------------------------
@@ -275,6 +293,7 @@ var (
 					checkStubs,
 					checkNotDynamicDepTag,
 					checkGlobalAllowlistedDep,
+					checkExportedAconfigLibraryDep,
 				},
 			},
 		},
@@ -292,6 +311,7 @@ var (
 					checkStubs,
 					checkNotDynamicDepTag,
 					checkGlobalAllowlistedDep,
+					checkExportedAconfigLibraryDep,
 				},
 			},
 		},
@@ -351,6 +371,7 @@ func initializeApexContainer() *container {
 					checkApexIsNonUpdatable,
 					checkNotStaticOrDynamicDepTag,
 					checkGlobalAllowlistedDep,
+					checkExportedAconfigLibraryDep,
 				},
 			},
 		},
@@ -367,6 +388,7 @@ func initializeApexContainer() *container {
 			checkInCommonApexes,
 			checkNotStaticOrDynamicDepTag,
 			checkGlobalAllowlistedDep,
+			checkExportedAconfigLibraryDep,
 		},
 	})
 
