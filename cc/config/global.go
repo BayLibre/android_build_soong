@@ -294,7 +294,6 @@ var (
 		"-Wno-deprecated-dynamic-exception-spec",
 		// New warnings to be fixed after clang-r522817
 		"-Wno-error=invalid-offsetof",
-		"-Wno-error=thread-safety-reference-return",
 
 		// Allow using VLA CXX extension.
 		"-Wno-vla-cxx-extension",
