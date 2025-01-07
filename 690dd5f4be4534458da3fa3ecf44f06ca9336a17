@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13c3d06e_810fcbc9",
+        "filename": "java/app_import.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-01-07T21:30:14Z",
+      "side": 1,
+      "message": "please add more details so it will look better in go/android.bp.",
+      "revId": "690dd5f4be4534458da3fa3ecf44f06ca9336a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7346ab_670b5e05",
+        "filename": "java/app_import.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-01-07T21:30:14Z",
+      "side": 1,
+      "message": "is this necessary? extract_apk is relative path in source apk file.",
+      "range": {
+        "startLine": 164,
+        "startChar": 21,
+        "endLine": 164,
+        "endChar": 37
+      },
+      "revId": "690dd5f4be4534458da3fa3ecf44f06ca9336a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
