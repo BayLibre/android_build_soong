@@ -41,6 +41,7 @@ var (
 		// This is already the driver's Android default, but duplicated here (and
 		// above) for ease of experimentation with additional extensions.
 		"-march=rv64gcv_zba_zbb_zbs",
+		"-Wl,--no-relax", // Linker relaxation causes build failures b/386842159
 		// TODO: remove when clang default changed (https://github.com/google/android-riscv64/issues/124)
 		"-Wl,-mllvm -Wl,-jump-is-expensive=false",
 	}
