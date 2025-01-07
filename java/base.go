@@ -574,9 +574,9 @@ type Module struct {
 	// or the module should override Stem().
 	stem string
 
-	// Values that will be set in the JarJarProvider data for jarjar repackaging,
+	// List of class names that will be set in the JarJarProvider data for jarjar repackaging,
 	// and merged with our dependencies' rules.
-	jarjarRenameRules map[string]string
+	jarjarRenameClasses []string
 
 	stubsLinkType StubsLinkType
 
@@ -1155,16 +1155,16 @@ func (j *Module) addGeneratedSrcJars(path android.Path) {
 
 func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspathJars, extraCombinedJars, extraDepCombinedJars android.Paths) {
 	// Auto-propagating jarjar rules
-	jarjarProviderData := j.collectJarJarRules(ctx)
-	if jarjarProviderData != nil {
-		android.SetProvider(ctx, JarJarProvider, *jarjarProviderData)
-		text := getJarJarRuleText(jarjarProviderData)
-		if text != "" {
-			ruleTextFile := android.PathForModuleOut(ctx, "repackaged-jarjar", "repackaging.txt")
-			android.WriteFileRule(ctx, ruleTextFile, text)
-			j.repackageJarjarRules = ruleTextFile
-		}
+	jarjarProviderData, jarjarPrefix := j.collectJarJarRules(ctx)
+	if len(jarjarProviderData.RenameRulesFiles) > 0 || jarjarPrefix != "" {
+		ruleTextFile := android.PathForModuleOut(ctx, "repackaged-jarjar", "repackaging.txt")
+		getJarJarRuleText(ctx, jarjarProviderData, jarjarPrefix, ruleTextFile)
+		j.repackageJarjarRules = ruleTextFile
+
+		jarjarProviderData.NonRenamedClasses = []string{}
+		jarjarProviderData.RenameRulesFiles = android.Paths{ruleTextFile}
 	}
+	android.SetProvider(ctx, JarJarProvider, *jarjarProviderData)
 
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.deviceProperties.Aidl.Export_include_dirs)
 
@@ -2644,26 +2644,17 @@ const (
 )
 
 type JarJarProviderData struct {
-	// Mapping of class names: original --> renamed.  If the value is "", the class will be
-	// renamed by the next rdep that has the jarjar_prefix attribute (or this module if it has
-	// attribute). Rdeps of that module will inherit the renaming.
-	Rename map[string]string
-}
+	// Paths to the files that contain the jarjar rename rules of the transitive dependencies.
+	// These files contain the class names that have already been renamed.
+	RenameRulesFiles android.Paths
 
-func (this JarJarProviderData) GetDebugString() string {
-	result := ""
-	for _, k := range android.SortedKeys(this.Rename) {
-		v := this.Rename[k]
-		if strings.Contains(k, "android.companion.virtual.flags.FakeFeatureFlagsImpl") {
-			result += k + "--&gt;" + v + ";"
-		}
-	}
-	return result
+	// List of class names from dependencies that have not been renamed yet. This list will be
+	// emptied up at a module that provides a jarjar_prefix attribute. If not, the list will be
+	// appended with the module's class names and rolled over to the rdep.
+	NonRenamedClasses []string
 }
 
 var JarJarProvider = blueprint.NewProvider[JarJarProviderData]()
-
-var overridableJarJarPrefix = "com.android.internal.hidden_from_bootclasspath"
 
 func init() {
 	android.SetJarJarPrefixHandler(mergeJarJarPrefixes)
@@ -2675,10 +2666,6 @@ func init() {
 // whether they are java modules or not.
 type BaseJarJarProviderData struct {
 	JarJarProviderData JarJarProviderData
-}
-
-func (this BaseJarJarProviderData) GetDebugString() string {
-	return this.JarJarProviderData.GetDebugString()
 }
 
 var BaseJarJarProvider = blueprint.NewProvider[BaseJarJarProviderData]()
@@ -2704,19 +2691,21 @@ func mergeJarJarPrefixes(ctx android.ModuleContext) {
 }
 
 // Add a jarjar renaming rule to this module, to be inherited to all dependent modules.
-func (module *Module) addJarJarRenameRule(original string, renamed string) {
-	if module.jarjarRenameRules == nil {
-		module.jarjarRenameRules = make(map[string]string)
-	}
-	module.jarjarRenameRules[original] = renamed
+func (module *Module) addJarJarRenameClass(className string) {
+	module.jarjarRenameClasses = append(module.jarjarRenameClasses, className)
 }
 
-func collectDirectDepsProviders(ctx android.ModuleContext) (result *JarJarProviderData) {
+func collectDirectDepsProviders(ctx android.ModuleContext) *JarJarProviderData {
 	// Gather repackage information from deps
 	// If the dep jas a JarJarProvider, it is used.  Otherwise, any BaseJarJarProvider is used.
 
 	module := ctx.Module()
 	moduleName := module.Name()
+
+	result := &JarJarProviderData{
+		RenameRulesFiles:  android.Paths{},
+		NonRenamedClasses: make([]string, 0),
+	}
 
 	ctx.VisitDirectDeps(func(m android.Module) {
 		tag := ctx.OtherModuleDependencyTag(m)
@@ -2805,11 +2794,6 @@ func collectDirectDepsProviders(ctx android.ModuleContext) (result *JarJarProvid
 			return RenameUseExclude
 		}
 
-		if result == nil {
-			result = &JarJarProviderData{
-				Rename: make(map[string]string),
-			}
-		}
 		how := shouldIncludeRenames()
 		if how != RenameUseInclude {
 			// Nothing to merge.
@@ -2817,18 +2801,9 @@ func collectDirectDepsProviders(ctx android.ModuleContext) (result *JarJarProvid
 		}
 
 		merge := func(theirs *JarJarProviderData) {
-			for orig, renamed := range theirs.Rename {
-				if preexisting, exists := (*result).Rename[orig]; !exists || preexisting == "" {
-					result.Rename[orig] = renamed
-				} else if preexisting != "" && renamed != "" && preexisting != renamed {
-					if strings.HasPrefix(preexisting, overridableJarJarPrefix) {
-						result.Rename[orig] = renamed
-					} else if !strings.HasPrefix(renamed, overridableJarJarPrefix) {
-						ctx.ModuleErrorf("1. Conflicting jarjar rules inherited for class: %s (%s and %s)", orig, renamed, preexisting, ctx.ModuleName(), m.Name())
-						continue
-					}
-				}
-			}
+			// Conflicting rename rules are checked in generate_jarjar_rename_rules script.
+			result.RenameRulesFiles = android.FirstUniquePaths(append(result.RenameRulesFiles, theirs.RenameRulesFiles...))
+			result.NonRenamedClasses = android.SortedUniqueStrings(append(result.NonRenamedClasses, theirs.NonRenamedClasses...))
 		}
 		if theirs, ok := android.OtherModuleProvider(ctx, m, JarJarProvider); ok {
 			merge(&theirs)
@@ -2839,7 +2814,7 @@ func collectDirectDepsProviders(ctx android.ModuleContext) (result *JarJarProvid
 			merge(&theirs.JarJarProviderData)
 		}
 	})
-	return
+	return result
 }
 
 func (this Module) GetDebugString() string {
@@ -2848,38 +2823,22 @@ func (this Module) GetDebugString() string {
 
 // Merge the jarjar rules we inherit from our dependencies, any that have been added directly to
 // us, and if it's been set, apply the jarjar_prefix property to rename them.
-func (module *Module) collectJarJarRules(ctx android.ModuleContext) *JarJarProviderData {
+func (module *Module) collectJarJarRules(ctx android.ModuleContext) (*JarJarProviderData, string) {
 	// Gather repackage information from deps
 	result := collectDirectDepsProviders(ctx)
 
-	add := func(orig string, renamed string) {
-		if result == nil {
-			result = &JarJarProviderData{
-				Rename: make(map[string]string),
-			}
-		}
-		if renamed != "" {
-			if preexisting, exists := (*result).Rename[orig]; exists && preexisting != renamed {
-				ctx.ModuleErrorf("Conflicting jarjar rules inherited for class: %s (%s and %s)", orig, renamed, preexisting)
-				return
-			}
-		}
-		(*result).Rename[orig] = renamed
+	add := func(className string) {
+		(*result).NonRenamedClasses = append((*result).NonRenamedClasses, className)
 	}
 
 	// Update that with entries we've stored for ourself
-	for orig, renamed := range module.jarjarRenameRules {
-		add(orig, renamed)
+	for _, className := range module.jarjarRenameClasses {
+		add(className)
 	}
 
 	// Update that with entries given in the jarjar_rename property.
-	for _, orig := range module.properties.Jarjar_rename {
-		add(orig, "")
-	}
-
-	// If there are no renamings, then jarjar_prefix does nothing, so skip the extra work.
-	if result == nil {
-		return nil
+	for _, className := range module.properties.Jarjar_rename {
+		add(className)
 	}
 
 	// If they've given us a jarjar_prefix property, then we will use that to rename any classes
@@ -2888,41 +2847,36 @@ func (module *Module) collectJarJarRules(ctx android.ModuleContext) *JarJarProvi
 	if prefix != "" {
 		if prefix[0] == '.' {
 			ctx.PropertyErrorf("jarjar_prefix", "jarjar_prefix can not start with '.'")
-			return nil
 		}
 		if prefix[len(prefix)-1] == '.' {
 			ctx.PropertyErrorf("jarjar_prefix", "jarjar_prefix can not end with '.'")
-			return nil
-		}
-
-		var updated map[string]string
-		for orig, renamed := range (*result).Rename {
-			if renamed == "" {
-				if updated == nil {
-					updated = make(map[string]string)
-				}
-				updated[orig] = prefix + "." + orig
-			}
-		}
-		for orig, renamed := range updated {
-			(*result).Rename[orig] = renamed
 		}
 	}
 
-	return result
+	return result, prefix
 }
 
 // Get the jarjar rule text for a given provider for the fully resolved rules. Classes that map
 // to "" won't be in this list because they shouldn't be renamed yet.
-func getJarJarRuleText(provider *JarJarProviderData) string {
-	result := ""
-	for _, orig := range android.SortedKeys(provider.Rename) {
-		renamed := provider.Rename[orig]
-		if renamed != "" {
-			result += "rule " + orig + " " + renamed + "\n"
-		}
+func getJarJarRuleText(ctx android.ModuleContext, provider *JarJarProviderData, prefix string, output android.WritablePath) {
+	rule := android.NewRuleBuilder(pctx, ctx)
+	cmd := rule.Command()
+
+	cmd.BuiltTool("generate_jarjar_rename_rules")
+
+	if len(provider.NonRenamedClasses) > 0 {
+		cmd.Text(strings.Join(provider.NonRenamedClasses, " "))
 	}
-	return result
+
+	if len(provider.RenameRulesFiles) > 0 {
+		cmd.FlagWithInputList("--existing-rules", provider.RenameRulesFiles, " ")
+	}
+
+	cmd.Flag("--prefix").Text(prefix)
+
+	cmd.FlagWithOutput("--output ", output)
+
+	rule.Build("jarjar_rename_rules", "Generate jarjar rename rules")
 }
 
 // Repackage the flags if the jarjar rule txt for the flags is generated

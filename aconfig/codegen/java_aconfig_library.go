@@ -18,9 +18,10 @@ import (
 	"android/soong/android"
 	"android/soong/java"
 
+	"strconv"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
-	"strconv"
 )
 
 type declarationsTagType struct {
@@ -122,11 +123,11 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 		// Mark our generated code as possibly needing jarjar repackaging
 		// The repackaging only happens when the corresponding aconfig_declaration
 		// has property exportable true
-		module.AddJarJarRenameRule(declarations.Package+".Flags", "")
-		module.AddJarJarRenameRule(declarations.Package+".FeatureFlags", "")
-		module.AddJarJarRenameRule(declarations.Package+".FeatureFlagsImpl", "")
-		module.AddJarJarRenameRule(declarations.Package+".CustomFeatureFlags", "")
-		module.AddJarJarRenameRule(declarations.Package+".FakeFeatureFlagsImpl", "")
+		module.AddJarJarRenameRule(declarations.Package + ".Flags")
+		module.AddJarJarRenameRule(declarations.Package + ".FeatureFlags")
+		module.AddJarJarRenameRule(declarations.Package + ".FeatureFlagsImpl")
+		module.AddJarJarRenameRule(declarations.Package + ".CustomFeatureFlags")
+		module.AddJarJarRenameRule(declarations.Package + ".FakeFeatureFlagsImpl")
 	}
 
 	android.SetProvider(ctx, android.CodegenInfoProvider, android.CodegenInfo{

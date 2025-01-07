@@ -103,6 +103,6 @@ func (module *GeneratedJavaLibraryModule) GenerateAndroidBuildActions(ctx androi
 }
 
 // Add a rule to the jarjar renaming rules.  See RepackageProviderData.
-func (module *GeneratedJavaLibraryModule) AddJarJarRenameRule(original string, renamed string) {
-	module.addJarJarRenameRule(original, renamed)
+func (module *GeneratedJavaLibraryModule) AddJarJarRenameRule(className string) {
+	module.addJarJarRenameClass(className)
 }
