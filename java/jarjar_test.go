@@ -82,3 +82,32 @@ func TestJarJarRenameSameModule(t *testing.T) {
 	AssertJarJarRename(t, result, "their_lib", original, renamed)
 	AssertJarJarRename(t, result, "my_lib", original, renamed)
 }
+
+func TestJarJarRenameFile(t *testing.T) {
+	t.Parallel()
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		android.FixtureMergeMockFs(android.MockFS{
+			"their_lib/rename_classes.txt": nil,
+		}),
+	).RunTestWithBp(t, `
+		java_library {
+			name: "their_lib",
+			jarjar_rename_file: "their_lib/rename_classes.txt",
+		}
+		java_library {
+			name: "my_lib",
+			jarjar_prefix: "RENAME",
+			static_libs: ["their_lib"],
+		}
+	`)
+
+	myLib := result.ModuleForTests("my_lib", "android_common")
+	myLibRuleTextFileCommand := myLib.Output("repackaged-jarjar/repackaging.txt").RuleParams.Command
+	android.AssertStringDoesContain(
+		t,
+		"jarjar rule command expected to contain dependencies' jarjar_rename_file",
+		myLibRuleTextFileCommand,
+		"--classnames-files their_lib/rename_classes.txt",
+	)
+}

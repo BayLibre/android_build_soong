@@ -106,6 +106,10 @@ type CommonProperties struct {
 	// property.
 	Jarjar_rename []string
 
+	// Path to the file that lists the java class names to rename with jarjar when a reverse
+	// dependency has a jarjar_prefix property.
+	Jarjar_rename_file *string
+
 	// if not blank, used as prefix to generate repackage rule
 	Jarjar_prefix *string
 
@@ -1166,9 +1170,10 @@ func (j *Module) generateJarJarRenameRules(ctx android.ModuleContext) {
 		j.repackageJarjarRules = ruleTextFile
 
 		// If jarjar prefix is non-empty, the non renamed classes are renamed and included in
-		// rule text file. Therefore empty up the list.
+		// rule text file. Therefore empty up the lists.
 		if jarjarPrefix != "" {
 			jarjarProviderData.NonRenamedClasses = []string{}
+			jarjarProviderData.NonRenamedClassesFiles = android.Paths{}
 		}
 		jarjarProviderData.RenameRulesFiles = android.Paths{ruleTextFile}
 	}
@@ -2663,6 +2668,10 @@ type JarJarProviderData struct {
 	// emptied up at a module that provides a jarjar_prefix attribute. If not, the list will be
 	// appended with the module's class names and rolled over to the rdep.
 	NonRenamedClasses []string
+
+	// Similar to NonRenamedClasses, but these are paths to files that list the classes that
+	// would be renamed once jarjar_prefix is provided.
+	NonRenamedClassesFiles android.Paths
 }
 
 var JarJarProvider = blueprint.NewProvider[JarJarProviderData]()
@@ -2714,8 +2723,9 @@ func collectDirectDepsProviders(ctx android.ModuleContext) *JarJarProviderData {
 	moduleName := module.Name()
 
 	result := &JarJarProviderData{
-		RenameRulesFiles:  android.Paths{},
-		NonRenamedClasses: []string{},
+		RenameRulesFiles:       android.Paths{},
+		NonRenamedClasses:      []string{},
+		NonRenamedClassesFiles: android.Paths{},
 	}
 
 	ctx.VisitDirectDeps(func(m android.Module) {
@@ -2815,6 +2825,7 @@ func collectDirectDepsProviders(ctx android.ModuleContext) *JarJarProviderData {
 			// Conflicting rename rules are checked in generate_jarjar_rename_rules script.
 			result.RenameRulesFiles = android.FirstUniquePaths(append(result.RenameRulesFiles, theirs.RenameRulesFiles...))
 			result.NonRenamedClasses = android.SortedUniqueStrings(append(result.NonRenamedClasses, theirs.NonRenamedClasses...))
+			result.NonRenamedClassesFiles = android.FirstUniquePaths(append(result.NonRenamedClassesFiles, theirs.NonRenamedClassesFiles...))
 		}
 		if theirs, ok := android.OtherModuleProvider(ctx, m, JarJarProvider); ok {
 			merge(&theirs)
@@ -2852,6 +2863,10 @@ func (module *Module) collectJarJarRules(ctx android.ModuleContext) (*JarJarProv
 		add(className)
 	}
 
+	if module.properties.Jarjar_rename_file != nil {
+		(*result).NonRenamedClassesFiles = append((*result).NonRenamedClassesFiles, android.PathForModuleSrc(ctx, proptools.String(module.properties.Jarjar_rename_file)))
+	}
+
 	// If they've given us a jarjar_prefix property, then we will use that to rename any classes
 	// that have not yet been renamed.
 	prefix := proptools.String(module.properties.Jarjar_prefix)
@@ -2876,9 +2891,12 @@ func generateJarJarRuleFile(ctx android.ModuleContext, provider *JarJarProviderD
 
 	cmd.BuiltTool("generate_jarjar_rename_rules")
 
-	// Only pass non renamed classes when prefix is non-empty
+	// Only pass non renamed classes and classes files when prefix is non-empty
 	if len(prefix) > 0 {
 		cmd.Text(strings.Join(provider.NonRenamedClasses, " "))
+		if len(provider.NonRenamedClassesFiles) > 0 {
+			cmd.FlagWithInputList("--classnames-files ", provider.NonRenamedClassesFiles, " ")
+		}
 		cmd.Flag("--prefix").Text(prefix)
 	}
 
