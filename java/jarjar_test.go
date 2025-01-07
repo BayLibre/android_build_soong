@@ -16,10 +16,20 @@ package java
 
 import (
 	"fmt"
+	"os"
 	"testing"
 
 	"android/soong/android"
 )
+
+func getFileContent(t *testing.T, file android.Path) string {
+	content, err := os.ReadFile(file.String())
+	if err != nil {
+		t.Errorf("Error reading generated file: %v", err)
+		return ""
+	}
+	return string(content)
+}
 
 func AssertJarJarRename(t *testing.T, result *android.TestResult, libName, original, expectedRename string) {
 	module := result.ModuleForTests(libName, "android_common")
@@ -27,9 +37,8 @@ func AssertJarJarRename(t *testing.T, result *android.TestResult, libName, origi
 	provider, found := android.OtherModuleProvider(result.OtherModuleProviderAdaptor(), module.Module(), JarJarProvider)
 	android.AssertBoolEquals(t, fmt.Sprintf("found provider (%s)", libName), true, found)
 
-	renamed, found := provider.Rename[original]
-	android.AssertBoolEquals(t, fmt.Sprintf("found rename (%s)", libName), true, found)
-	android.AssertStringEquals(t, fmt.Sprintf("renamed (%s)", libName), expectedRename, renamed)
+	rename := !android.InList(original, provider.NonRenamedClasses)
+	android.AssertBoolEquals(t, fmt.Sprintf("%s has been renamed", libName), original != expectedRename, rename)
 }
 
 func TestJarJarRenameDifferentModules(t *testing.T) {
@@ -56,7 +65,7 @@ func TestJarJarRenameDifferentModules(t *testing.T) {
 
 	original := "com.example.a"
 	renamed := "RENAME.com.example.a"
-	AssertJarJarRename(t, result, "their_lib", original, "")
+	AssertJarJarRename(t, result, "their_lib", original, original)
 	AssertJarJarRename(t, result, "boundary_lib", original, renamed)
 	AssertJarJarRename(t, result, "my_lib", original, renamed)
 }
