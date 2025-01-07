@@ -1733,8 +1733,7 @@ func (a *AndroidTestHelperApp) InstallInTestcases() bool {
 func AndroidTestHelperAppFactory() android.Module {
 	module := &AndroidTestHelperApp{}
 
-	// TODO(b/192032291): Disable by default after auditing downstream usage.
-	module.Module.dexProperties.Optimize.EnabledByDefault = true
+	module.Module.dexProperties.Optimize.EnabledByDefault = false
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 	module.appProperties.Use_embedded_native_libs = proptools.BoolPtr(true)
