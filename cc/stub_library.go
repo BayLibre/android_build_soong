@@ -38,6 +38,10 @@ type stubLibraries struct {
 }
 
 // Check if the module defines stub, or itself is stub
+func IsStubTargetProxy(info *LinkableInfo) bool {
+	return info != nil && (info.IsStubs || info.HasStubsVariants)
+}
+
 func IsStubTarget(m *Module) bool {
 	return m.IsStubs() || m.HasStubsVariants()
 }
