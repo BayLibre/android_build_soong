@@ -150,17 +150,25 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 			Implicit(fsInfo.Output) // so that the staging dir is built
 
 	}
-	// Copy cmdline files of boot images
+	// Copy cmdline, kernel etc. files of boot images
 	if a.partitionProps.Vendor_boot_partition_name != nil {
 		bootImg := ctx.GetDirectDepWithTag(proptools.String(a.partitionProps.Vendor_boot_partition_name), filesystemDepTag)
 		bootImgInfo, _ := android.OtherModuleProvider(ctx, bootImg, BootimgInfoProvider)
 		builder.Command().Textf("echo %s > %s/%s/cmdline", proptools.ShellEscape(strings.Join(bootImgInfo.Cmdline, " ")), targetFilesDir, "VENDOR_BOOT")
 		builder.Command().Textf("echo %s > %s/%s/vendor_cmdline", proptools.ShellEscape(strings.Join(bootImgInfo.Cmdline, " ")), targetFilesDir, "VENDOR_BOOT")
+		if bootImgInfo.Dtb != nil {
+			builder.Command().Textf("cp %s %s/%s/dtb", bootImgInfo.Dtb, targetFilesDir, "VENDOR_BOOT")
+		}
+		builder.Command().Textf("cp %s %s/%s/kernel", ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.TargetKernelPath, targetFilesDir, "VENDOR_BOOT")
 	}
 	if a.partitionProps.Boot_partition_name != nil {
 		bootImg := ctx.GetDirectDepWithTag(proptools.String(a.partitionProps.Boot_partition_name), filesystemDepTag)
 		bootImgInfo, _ := android.OtherModuleProvider(ctx, bootImg, BootimgInfoProvider)
 		builder.Command().Textf("echo %s > %s/%s/cmdline", proptools.ShellEscape(strings.Join(bootImgInfo.Cmdline, " ")), targetFilesDir, "BOOT")
+		if bootImgInfo.Dtb != nil {
+			builder.Command().Textf("cp %s %s/%s/dtb", bootImgInfo.Dtb, targetFilesDir, "BOOT")
+		}
+		builder.Command().Textf("cp %s %s/%s/kernel", ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.TargetKernelPath, targetFilesDir, "BOOT")
 	}
 
 	builder.Command().
