@@ -33,6 +33,23 @@
       "message": "(i\u0027ve sent out https://android-review.git.corp.google.com/c/platform/external/icu/+/3443261 for the icu one.)",
       "revId": "3de1b2fe86bd9b0102563bc31b5364ef8dd65f41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39aa7ebb_82ae403c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-08T22:08:33Z",
+      "side": 1,
+      "message": "(https://android-review.git.corp.google.com/c/platform/system/core/+/3442426 for property_service.)",
+      "revId": "3de1b2fe86bd9b0102563bc31b5364ef8dd65f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
