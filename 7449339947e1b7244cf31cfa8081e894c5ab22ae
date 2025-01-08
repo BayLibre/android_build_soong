@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f9f39e0_8bbc4a17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-08T22:00:27Z",
+      "side": 1,
+      "message": "This was resolved offline in the bug, but to reiterate here -- this shouldn\u0027t be an issue for running tests as the intended usage here is for inclusion at compile time.",
+      "parentUuid": "1b27846e_e109a218",
+      "revId": "7449339947e1b7244cf31cfa8081e894c5ab22ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70ba777b_5553b2f5",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-01-06T22:30:13Z",
       "side": 1,
       "message": "Might be worth mentioning in the comment that this isn\u0027t actually the CARGO_MANIFEST_DIR, it\u0027s the directory where the Android.bp file lives. No real docs for end users to read, so maybe it\u0027s not critical.",
+      "revId": "7449339947e1b7244cf31cfa8081e894c5ab22ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce3c4090_c00995a2",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-08T22:00:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70ba777b_5553b2f5",
       "revId": "7449339947e1b7244cf31cfa8081e894c5ab22ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
