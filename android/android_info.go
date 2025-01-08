@@ -79,6 +79,19 @@ func (p *androidInfoModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	})
 
 	ctx.SetOutputFiles(Paths{androidInfoProp}, "")
+
+	if !ctx.Config().KatiEnabled() {
+		timestamp := PathForModuleOut(ctx, "timestamp")
+		cpPath := PathForModuleInPartitionInstall(ctx, "").Join(ctx, androidInfoTxtName)
+		builder := NewRuleBuilder(pctx, ctx)
+		builder.Command().
+			Text("rsync").
+			Flag("-a").
+			Input(androidInfoTxt).
+			Text(cpPath.String())
+		builder.Command().Text("touch").Output(timestamp)
+		builder.Build("copy_android_info", "Copy android-info.txt")
+	}
 }
 
 // android_info module generate a file named android-info.txt that contains various information
@@ -86,6 +99,6 @@ func (p *androidInfoModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 func AndroidInfoFactory() Module {
 	module := &androidInfoModule{}
 	module.AddProperties(&module.properties)
-	InitAndroidModule(module)
+	InitAndroidArchModule(module, DeviceSupported, MultilibCommon)
 	return module
 }
