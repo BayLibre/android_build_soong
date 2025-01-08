@@ -490,6 +490,12 @@ func (p *PythonLibraryModule) GenerateAndroidBuildActions(ctx android.ModuleCont
 
 	// generate the zipfile of all source and data files
 	p.srcsZip = p.createSrcsZip(ctx, pkgPath)
+<<<<<<< PATCH SET (4196f0 Temporarily disable python precompilation for py3.13)
+	// TODO(b/388344853): precompilation temporarily disabled for python3.13 upgrade
+	p.precompiledSrcsZip = p.srcsZip //p.precompileSrcs(ctx)
+||||||| BASE
+	p.precompiledSrcsZip = p.precompileSrcs(ctx)
+=======
 	p.precompiledSrcsZip = p.precompileSrcs(ctx)
 
 	android.SetProvider(ctx, PythonLibraryInfoProvider, PythonLibraryInfo{
@@ -499,6 +505,7 @@ func (p *PythonLibraryModule) GenerateAndroidBuildActions(ctx android.ModuleCont
 		PkgPath:            p.getPkgPath(),
 		PrecompiledSrcsZip: p.getPrecompiledSrcsZip(),
 	})
+>>>>>>> BASE      (52dc1a Merge "Install apex symbol file" into main)
 }
 
 func isValidPythonPath(path string) error {
