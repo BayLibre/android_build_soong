@@ -52,6 +52,24 @@
       "parentUuid": "c1badd44_bc434ebf",
       "revId": "76fbef6da33f3235c15477df0ce9a1b1600dc7be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "befada40_f15dea55",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-08T22:12:44Z",
+      "side": 1,
+      "message": "Oops you are right, my conditional was incorrect. I have dropped the conditional altogether for now. \n\nWe can do additional testing for other products in the future, and add the conditionals if necessary. WDYT?",
+      "parentUuid": "8a99835a_cb32626f",
+      "revId": "76fbef6da33f3235c15477df0ce9a1b1600dc7be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
