@@ -223,6 +223,12 @@ func (f *filesystemCreator) createDeviceModule(
 	if android.InList("odm_dlkm", f.properties.Generated_partition_types) {
 		partitionProps.Odm_dlkm_partition_name = proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "odm_dlkm"))
 	}
+	if android.InList("ramdisk", f.properties.Generated_partition_types) {
+		partitionProps.Init_boot_ramdisk_partition_name = proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "ramdisk"))
+	}
+	if android.InList("vendor_ramdisk", f.properties.Generated_partition_types) {
+		partitionProps.Vendor_boot_ramdisk_partition_name = proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "vendor_ramdisk"))
+	}
 	if f.properties.Boot_image != "" {
 		partitionProps.Boot_partition_name = proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "boot"))
 	}
