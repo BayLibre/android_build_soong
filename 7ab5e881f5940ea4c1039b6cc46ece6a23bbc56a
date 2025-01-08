@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebd4debf_5b91440e",
+        "filename": "apex/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2058,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-08T22:03:30Z",
+      "side": 1,
+      "message": "Why wasn\u0027t the cc.StubImplDepTag requried for C++ stubs?",
+      "revId": "7ab5e881f5940ea4c1039b6cc46ece6a23bbc56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
