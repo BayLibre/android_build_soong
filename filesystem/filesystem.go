@@ -347,6 +347,8 @@ func (fs fsType) IsUnknown() bool {
 type FilesystemInfo struct {
 	// The built filesystem image
 	Output android.Path
+	// The partition name
+	Name string
 	// A text file containing the list of paths installed on the partition.
 	FileListFile android.Path
 	// The root staging directory used to build the output filesystem. If consuming this, make sure
@@ -456,6 +458,7 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	android.SetProvider(ctx, FilesystemProvider, FilesystemInfo{
 		Output:       f.output,
+		Name:         f.partitionName(),
 		FileListFile: fileListFile,
 		RootDir:      rootDir,
 	})

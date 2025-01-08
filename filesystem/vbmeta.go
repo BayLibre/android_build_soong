@@ -121,6 +121,9 @@ type vbmetaPartitionInfo struct {
 	// The path to the public key of the private key used to sign this partition. Derived from
 	// the private key.
 	PublicKey android.Path
+
+	// The built vbmeta partition image
+	Output android.Path
 }
 
 var vbmetaPartitionProvider = blueprint.NewProvider[vbmetaPartitionInfo]()

@@ -16,6 +16,9 @@ package filesystem
 
 import (
 	"android/soong/android"
+	"fmt"
+	"maps"
+	"slices"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -93,8 +96,46 @@ func (a *androidDevice) DepsMutator(ctx android.BottomUpMutatorContext) {
 	}
 }
 
+func collectDepImages(ctx android.ModuleContext) map[string]android.Path {
+	ret := make(map[string]android.Path)
+	ctx.VisitDirectDepsWithTag(filesystemDepTag, func(m android.Module) {
+		if p, ok := android.OtherModuleProvider(ctx, m, FilesystemProvider); ok {
+			if p.Output != nil {
+				ret[p.Name] = p.Output
+			}
+		} else if p, ok := android.OtherModuleProvider(ctx, m, BootImageProvider); ok {
+			if p.Output != nil {
+				ret[p.Name] = p.Output
+			}
+		} else if p, ok := android.OtherModuleProvider(ctx, m, vbmetaPartitionProvider); ok {
+			if p.Output != nil {
+				ret[p.Name] = p.Output
+			}
+		}
+	})
+	return ret
+}
+
+func copyImagesToProductOut(ctx android.ModuleContext, depImagesMap map[string]android.Path) {
+	root := android.PathForRootInstall(ctx)
+	for _, partition := range android.SortedKeys(depImagesMap) {
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   android.Cp,
+			Input:  depImagesMap[partition],
+			Output: root.Join(ctx, fmt.Sprintf("%s.img", partition)),
+		})
+	}
+}
+
 func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.buildTargetFilesZip(ctx)
+	depImagesMap := collectDepImages(ctx)
+
+	// Only copy the images to product out in soong only builds
+	if !ctx.Config().KatiEnabled() {
+		copyImagesToProductOut(ctx, depImagesMap)
+	}
+	ctx.Phony(a.Name(), android.SortedUniquePaths(slices.Collect(maps.Values(depImagesMap)))...)
 }
 
 func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {

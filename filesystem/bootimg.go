@@ -152,6 +152,15 @@ func (b bootImageType) isInitBoot() bool {
 	return b == initBoot
 }
 
+type BootImageInfo struct {
+	// The built boot image
+	Output android.Path
+	// The boot partition name
+	Name string
+}
+
+var BootImageProvider = blueprint.NewProvider[BootImageInfo]()
+
 // bootimg is the image for the boot partition. It consists of header, kernel, ramdisk, and dtb.
 func BootimgFactory() android.Module {
 	module := &bootimg{}
@@ -224,6 +233,11 @@ func (b *bootimg) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	ctx.SetOutputFiles([]android.Path{output}, "")
 	b.output = output
+
+	android.SetProvider(ctx, BootImageProvider, BootImageInfo{
+		Output: b.output,
+		Name:   b.partitionName(),
+	})
 }
 
 func (b *bootimg) buildBootImage(ctx android.ModuleContext, kernel android.Path) android.Path {
