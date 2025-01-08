@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4246f92_8c97f4f8",
+        "filename": "apex/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2025-01-08T04:31:37Z",
+      "side": 1,
+      "message": "vintfFragment?",
+      "range": {
+        "startLine": 737,
+        "startChar": 42,
+        "endLine": 737,
+        "endChar": 46
+      },
+      "revId": "da7edc148ed4813e8daf7456c2b7e2905445ba3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc97d030_8e020d0c",
+        "filename": "apex/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2025-01-08T04:31:37Z",
+      "side": 1,
+      "message": "is this used? can\u0027t see references.",
+      "range": {
+        "startLine": 737,
+        "startChar": 1,
+        "endLine": 737,
+        "endChar": 17
+      },
+      "revId": "da7edc148ed4813e8daf7456c2b7e2905445ba3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17cbc5be_16223a82",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2025-01-08T04:31:37Z",
+      "side": 1,
+      "message": "Do we have a plan to disallow `prebuilt_etc`-type vintf fragments? I think we\u0027d better have a single way for packaging vintf fragments (using `vintf_fragment`) but not sure if we can (it will break downstream cases..)",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 51
+      },
+      "revId": "da7edc148ed4813e8daf7456c2b7e2905445ba3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

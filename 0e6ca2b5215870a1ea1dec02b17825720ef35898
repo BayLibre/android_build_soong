@@ -46,6 +46,30 @@
       },
       "revId": "0e6ca2b5215870a1ea1dec02b17825720ef35898",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a7e41f4_0395c2e6",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1489,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2025-01-08T04:31:37Z",
+      "side": 1,
+      "message": "Probably, no.. ?\n\nI think it\u0027s a common behavior to all module types: `\u003cmodule\u003e.vintf_fragment_modules` will install the vintf fragments along with the \u003cmodule\u003e. Hence `apex` should be no different. Btw, it would be confusing, so someone might think `apex.vintf_fragment_modules` could \"bundle\" vintf fragments in the apex.\n\nTo avoid confusing, we could reject apex.vintf_fragment_modules i think.",
+      "parentUuid": "72ebd2e8_da66ce03",
+      "range": {
+        "startLine": 1489,
+        "startChar": 5,
+        "endLine": 1489,
+        "endChar": 29
+      },
+      "revId": "0e6ca2b5215870a1ea1dec02b17825720ef35898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
