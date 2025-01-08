@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebd97a89_47cf5185",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-08T22:02:31Z",
+      "side": 1,
+      "message": "actually, this isn\u0027t an art failure i remember, and it\u0027s one i\u0027d have expected to be a failure with c++20 too, not a c++23 change?\n```\nIn file included from art/disassembler/disassembler_arm.cc:17:\nIn file included from art/disassembler/disassembler_arm.h:20:\nIn file included from prebuilts/clang/host/linux-x86/clang-r536225/include/c++/v1/memory:937:\nIn file included from prebuilts/clang/host/linux-x86/clang-r536225/include/c++/v1/__memory/shared_ptr.h:32:\nprebuilts/clang/host/linux-x86/clang-r536225/include/c++/v1/__memory/unique_ptr.h:65:19: error: invalid application of \u0027sizeof\u0027 to an incomplete type \u0027art::arm::DisassemblerArm::CustomDisassembler\u0027\n   65 |     static_assert(sizeof(_Tp) \u003e\u003d 0, \"cannot delete an incomplete type\");\n      |                   ^~~~~~~~~~~\n...-x86/clang-r536225/include/c++/v1/__memory/unique_ptr.h:278:7: note: in instantiation of member function \u0027std::default_delete\u003cart::arm::DisassemblerArm::CustomDisassembler\u003e::operator()\u0027 requested here\n  278 |       __ptr_.second()(__tmp);\n      |       ^\n...st/linux-x86/clang-r536225/include/c++/v1/__memory/unique_ptr.h:248:71: note: in instantiation of member function \u0027std::unique_ptr\u003cart::arm::DisassemblerArm::CustomDisassembler\u003e::reset\u0027 requested here\n  248 |   _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR_SINCE_CXX23 ~unique_ptr() { reset(); }\n      |                                                                       ^\nart/disassembler/disassembler_arm.h:29:7: note: in instantiation of member function \u0027std::unique_ptr\u003cart::arm::DisassemblerArm::CustomDisassembler\u003e::~unique_ptr\u0027 requested here\n   29 | class DisassemblerArm final : public Disassembler {\n      |       ^\nart/disassembler/disassembler_arm.h:29:7: note: in implicit destructor for \u0027art::arm::DisassemblerArm\u0027 first required here\nart/disassembler/disassembler_arm.h:30:9: note: forward declaration of \u0027art::arm::DisassemblerArm::CustomDisassembler\u0027\n   30 |   class CustomDisassembler;\n      |         ^\n```",
+      "revId": "3de1b2fe86bd9b0102563bc31b5364ef8dd65f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
