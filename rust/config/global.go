@@ -42,8 +42,6 @@ var (
 	}
 
 	GlobalRustFlags = []string{
-		// Allow `--extern force:foo` for dylib support
-		"-Z unstable-options",
 		"-Z stack-protector=strong",
 		"-Z remap-cwd-prefix=.",
 		"-C debuginfo=2",
