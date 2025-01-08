@@ -50,6 +50,23 @@
       "message": "(https://android-review.git.corp.google.com/c/platform/system/core/+/3442426 for property_service.)",
       "revId": "3de1b2fe86bd9b0102563bc31b5364ef8dd65f41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcde10c6_a76feb13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-08T22:12:04Z",
+      "side": 1,
+      "message": "(and https://android-review.git.corp.google.com/c/platform/external/icu/+/3443020 for the _other_ icu one :-) )",
+      "revId": "3de1b2fe86bd9b0102563bc31b5364ef8dd65f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
