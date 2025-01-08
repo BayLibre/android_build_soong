@@ -2008,6 +2008,12 @@ func PathForModuleInPartitionInstall(ctx ModuleInstallPathContext, partition str
 	return pathForInstall(ctx, os, arch, partition, pathComponents...)
 }
 
+// PathForRootInstall returns an InstallPath representing the root, i.e. PRODUCT_OUT
+func PathForRootInstall(ctx ModuleInstallPathContext) InstallPath {
+	os, arch := osAndArch(ctx)
+	return pathForInstall(ctx, os, arch, "", "")
+}
+
 func osAndArch(ctx ModuleInstallPathContext) (OsType, ArchType) {
 	os := ctx.Os()
 	arch := ctx.Arch().ArchType
