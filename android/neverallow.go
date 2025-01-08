@@ -291,16 +291,14 @@ func createLimitDirgroupRule() []Rule {
 	return []Rule{
 		NeverAllow().
 			ModuleType("dirgroup").
-			WithMatcher("visibility", NotInList([]string{"//trusty/vendor/google/aosp/scripts"})).Because(reason),
-		NeverAllow().
-			ModuleType("dirgroup").
-			Without("visibility", "//trusty/vendor/google/aosp/scripts").Because(reason),
+			WithMatcher("visibility", NotInList([]string{"//trusty/vendor/google/aosp/scripts", "//trusty/vendor/google/proprietary/scripts"})).Because(reason),
 		NeverAllow().
 			ModuleType("genrule").
 			Without("name", "trusty-arm64.lk.elf.gen").
 			Without("name", "trusty-arm64-virt-test-debug.lk.elf.gen").
 			Without("name", "trusty-x86_64.lk.elf.gen").
 			Without("name", "trusty-x86_64-test.lk.elf.gen").
+			Without("name", "trusty-x86_64-test.wv.lk.elf.gen").
 			WithMatcher("dir_srcs", isSetMatcherInstance).Because(reason),
 		NeverAllow().
 			ModuleType("genrule").
@@ -308,6 +306,7 @@ func createLimitDirgroupRule() []Rule {
 			Without("name", "trusty-arm64-virt-test-debug.lk.elf.gen").
 			Without("name", "trusty-x86_64.lk.elf.gen").
 			Without("name", "trusty-x86_64-test.lk.elf.gen").
+			Without("name", "trusty-x86_64-test.wv.lk.elf.gen").
 			With("keep_gendir", "true").Because(reason),
 	}
 }
