@@ -33,6 +33,29 @@
       "message": "Might be worth mentioning in the comment that this isn\u0027t actually the CARGO_MANIFEST_DIR, it\u0027s the directory where the Android.bp file lives. No real docs for end users to read, so maybe it\u0027s not critical.",
       "revId": "7449339947e1b7244cf31cfa8081e894c5ab22ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f43236_6ef4a3d7",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2025-01-08T21:37:02Z",
+      "side": 1,
+      "message": "I tested this CL locally and it looks like it expects an absolute path. http://b/171011485#comment16\n\nThis worked for me:\n```\n\"CARGO_MANIFEST_DIR\u003d\"+filepath.Join(\"$$PWD/\", ctx.ModuleDir())\n```",
+      "range": {
+        "startLine": 323,
+        "startChar": 13,
+        "endLine": 323,
+        "endChar": 67
+      },
+      "revId": "7449339947e1b7244cf31cfa8081e894c5ab22ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
