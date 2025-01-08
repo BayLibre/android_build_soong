@@ -1592,6 +1592,10 @@ func (c *configImpl) KatiPackageNinjaFile() string {
 	return filepath.Join(c.OutDir(), "build"+c.KatiSuffix()+katiPackageSuffix+".ninja")
 }
 
+func (c *configImpl) KatiSoongOnlyPackageNinjaFile() string {
+	return filepath.Join(c.OutDir(), "build"+c.KatiSuffix()+katiSoongOnlyPackageSuffix+".ninja")
+}
+
 func (c *configImpl) SoongVarsFile() string {
 	targetProduct, err := c.TargetProductOrErr()
 	if err != nil {
