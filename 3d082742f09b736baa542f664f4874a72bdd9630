@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1db4e1d_c7f75b94",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2025-01-08T20:33:23Z",
+      "side": 1,
+      "message": "Does this need to be changed to `!ctx.Config().KatiEnabled()` so that `m android_device` won\u0027t build it?",
+      "range": {
+        "startLine": 105,
+        "startChar": 13,
+        "endLine": 105,
+        "endChar": 17
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fb7896e8_69c09c75",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "filesystem/android_device.go",
+              "range": {
+                "startLine": 105,
+                "startChar": 0,
+                "endLine": 106,
+                "endChar": 0
+              },
+              "replacement": "\t\tDefault:   !ctx.Config().KatiEnabled(),\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3d082742f09b736baa542f664f4874a72bdd9630",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
