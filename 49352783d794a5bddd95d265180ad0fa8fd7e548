@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "193c9f13_1aed673d",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-08T22:47:44Z",
+      "side": 1,
+      "message": "I think you meant `\u0026\u0026` here.",
+      "range": {
+        "startLine": 596,
+        "startChar": 55,
+        "endLine": 596,
+        "endChar": 57
+      },
+      "revId": "49352783d794a5bddd95d265180ad0fa8fd7e548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
