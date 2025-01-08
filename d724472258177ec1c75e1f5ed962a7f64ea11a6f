@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa08b76_16525810",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-08T21:50:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bf2490c_ac85b98e",
+      "revId": "d724472258177ec1c75e1f5ed962a7f64ea11a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f42fed2f_c64cee87",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-01-08T20:32:12Z",
       "side": 1,
       "message": "We shouldn\u0027t use a rule to copy the file, as this will conflict with other paritions if there are multiple defined in the build. Just use a cp as part of the command to build it without declaring the output.",
+      "revId": "d724472258177ec1c75e1f5ed962a7f64ea11a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "498e5113_7d02b546",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-08T21:50:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f42fed2f_c64cee87",
       "revId": "d724472258177ec1c75e1f5ed962a7f64ea11a6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

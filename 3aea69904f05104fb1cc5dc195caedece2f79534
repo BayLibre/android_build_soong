@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e2dcd31_537bb975",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-08T21:50:52Z",
+      "side": 1,
+      "message": "This is not available in the latest patchset as I saw that @mrziwang@google.com was working on the similar change thus I removed the android_device phony target implementation in this change. However I could verify this with the local (unuploaded) change.",
+      "revId": "3aea69904f05104fb1cc5dc195caedece2f79534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
