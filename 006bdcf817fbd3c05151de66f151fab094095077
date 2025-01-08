@@ -46,6 +46,30 @@
       },
       "revId": "006bdcf817fbd3c05151de66f151fab094095077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad7ba2c_f426a88d",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-08T23:07:14Z",
+      "side": 1,
+      "message": "Nothing immediately comes to mind. Why are there diffs if the bootimg module is just re-exporting the recovery module\u0027s FilesystemInfo?",
+      "parentUuid": "7ea5b725_b0e185aa",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "006bdcf817fbd3c05151de66f151fab094095077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
