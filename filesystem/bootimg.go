@@ -236,6 +236,7 @@ func (b *bootimg) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// Set BootimgInfo for building target_files.zip
 	android.SetProvider(ctx, BootimgInfoProvider, BootimgInfo{
 		Cmdline: b.properties.Cmdline,
+		Dtb:     b.getDtbPath(ctx),
 	})
 }
 
@@ -243,6 +244,16 @@ var BootimgInfoProvider = blueprint.NewProvider[BootimgInfo]()
 
 type BootimgInfo struct {
 	Cmdline []string
+	Dtb     android.Path
+}
+
+func (b *bootimg) getDtbPath(ctx android.ModuleContext) android.Path {
+	var dtbPath android.Path
+	dtbName := proptools.String(b.properties.Dtb_prebuilt)
+	if dtbName != "" {
+		dtbPath = android.PathForModuleSrc(ctx, dtbName)
+	}
+	return dtbPath
 }
 
 func (b *bootimg) buildBootImage(ctx android.ModuleContext, kernel android.Path) android.Path {
@@ -261,10 +272,8 @@ func (b *bootimg) buildBootImage(ctx android.ModuleContext, kernel android.Path)
 		cmd.FlagWithArg("--os_patch_level ", ctx.Config().PlatformSecurityPatch())
 	}
 
-	dtbName := proptools.String(b.properties.Dtb_prebuilt)
-	if dtbName != "" {
-		dtb := android.PathForModuleSrc(ctx, dtbName)
-		cmd.FlagWithInput("--dtb ", dtb)
+	if b.getDtbPath(ctx) != nil {
+		cmd.FlagWithInput("--dtb ", b.getDtbPath(ctx))
 	}
 
 	cmdline := strings.Join(b.properties.Cmdline, " ")
