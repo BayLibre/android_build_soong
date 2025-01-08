@@ -15,6 +15,8 @@
 package filesystem
 
 import (
+	"strings"
+
 	"android/soong/android"
 
 	"github.com/google/blueprint"
@@ -148,6 +150,19 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 			Implicit(fsInfo.Output) // so that the staging dir is built
 
 	}
+	// Copy cmdline files of boot images
+	if a.partitionProps.Vendor_boot_partition_name != nil {
+		bootImg := ctx.GetDirectDepWithTag(proptools.String(a.partitionProps.Vendor_boot_partition_name), filesystemDepTag)
+		bootImgInfo, _ := android.OtherModuleProvider(ctx, bootImg, BootimgInfoProvider)
+		builder.Command().Textf("echo %s >", strings.Join(bootImgInfo.Cmdline, " ")).Textf(" %s/%s/cmdline", targetFilesDir, "VENDOR_BOOT")
+		builder.Command().Textf("echo %s >", strings.Join(bootImgInfo.Cmdline, " ")).Textf(" %s/%s/vendor_cmdline", targetFilesDir, "VENDOR_BOOT")
+	}
+	if a.partitionProps.Boot_partition_name != nil {
+		bootImg := ctx.GetDirectDepWithTag(proptools.String(a.partitionProps.Boot_partition_name), filesystemDepTag)
+		bootImgInfo, _ := android.OtherModuleProvider(ctx, bootImg, BootimgInfoProvider)
+		builder.Command().Textf("echo %s >", strings.Join(bootImgInfo.Cmdline, " ")).Textf(" %s/%s/cmdline", targetFilesDir, "BOOT")
+	}
+
 	builder.Command().
 		BuiltTool("soong_zip").
 		Text("-d").
