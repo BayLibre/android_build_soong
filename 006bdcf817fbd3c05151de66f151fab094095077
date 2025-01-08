@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44839889_b439b18f",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-08T22:46:38Z",
+      "side": 1,
+      "message": "Can we remove this? It should already be covered by the `targetFilesZipCopy{a.partitionProps.Vendor_boot_partition_name, \"VENDOR_BOOT/RAMDISK\"},` above.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "006bdcf817fbd3c05151de66f151fab094095077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
