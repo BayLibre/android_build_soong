@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "826c2e2e_41c3e2d6",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2012,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-08T21:55:19Z",
+      "side": 1,
+      "message": "I beleive you can do this with `PathForModuleInPartitionInstall` and passing an empty string for the partition.",
+      "range": {
+        "startLine": 2012,
+        "startChar": 5,
+        "endLine": 2012,
+        "endChar": 23
+      },
+      "revId": "773991b2bb2f3ca201dffcec043cda2ca35d221a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
