@@ -34,6 +34,24 @@
       "parentUuid": "8c91b5a6_785e49ce",
       "revId": "76fbef6da33f3235c15477df0ce9a1b1600dc7be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a99835a_cb32626f",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-08T21:40:46Z",
+      "side": 1,
+      "message": "You\u0027d definetly need to still do the copy, but I don\u0027t think you need to check `BoardUsesRecoveryAsBoot`. `fsgen/boot_imgs.go` already checks that and only generates the appropriate modules.\n\nAlso, In the code you linked, it checks if `BOARD_USES_RECOVERY_AS_BOOT !\u003d true` but here you\u0027re checking `\u003d\u003d true`, is that correct?",
+      "parentUuid": "c1badd44_bc434ebf",
+      "revId": "76fbef6da33f3235c15477df0ce9a1b1600dc7be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
