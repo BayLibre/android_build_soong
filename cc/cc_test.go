@@ -2690,7 +2690,7 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 
 	cflags := []string{"-Werror", "-std=candcpp"}
 	cstd := []string{"-std=gnu17", "-std=conly"}
-	cppstd := []string{"-std=gnu++20", "-std=cpp", "-fno-rtti"}
+	cppstd := []string{"-std=gnu++23", "-std=cpp", "-fno-rtti"}
 
 	lastNDKFlags := []string{
 		"--sysroot",

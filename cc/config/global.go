@@ -381,7 +381,7 @@ var (
 	}
 
 	CStdVersion               = "gnu17"
-	CppStdVersion             = "gnu++20"
+	CppStdVersion             = "gnu++23"
 	ExperimentalCStdVersion   = "gnu2x"
 	ExperimentalCppStdVersion = "gnu++2b"
 
