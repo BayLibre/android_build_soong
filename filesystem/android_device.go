@@ -160,6 +160,9 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 			builder.Command().Textf("cp %s %s/%s/dtb", bootImgInfo.Dtb, targetFilesDir, "VENDOR_BOOT")
 		}
 		builder.Command().Textf("cp %s %s/%s/kernel", ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.TargetKernelPath, targetFilesDir, "VENDOR_BOOT")
+		if bootImgInfo.Bootconfig != nil {
+			builder.Command().Textf("cp %s %s/%s/vendor_bootconfig", bootImgInfo.Bootconfig, targetFilesDir, "VENDOR_BOOT")
+		}
 	}
 	if a.partitionProps.Boot_partition_name != nil {
 		bootImg := ctx.GetDirectDepWithTag(proptools.String(a.partitionProps.Boot_partition_name), filesystemDepTag)
@@ -169,6 +172,9 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 			builder.Command().Textf("cp %s %s/%s/dtb", bootImgInfo.Dtb, targetFilesDir, "BOOT")
 		}
 		builder.Command().Textf("cp %s %s/%s/kernel", ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.TargetKernelPath, targetFilesDir, "BOOT")
+		if bootImgInfo.Bootconfig != nil {
+			builder.Command().Textf("cp %s %s/%s/bootconfig", bootImgInfo.Bootconfig, targetFilesDir, "BOOT")
+		}
 	}
 
 	builder.Command().
