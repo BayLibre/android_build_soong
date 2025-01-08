@@ -40,6 +40,30 @@
       ],
       "revId": "3d082742f09b736baa542f664f4874a72bdd9630",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3eec85c_c49d5b34",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2025-01-08T22:27:39Z",
+      "side": 1,
+      "message": "Yes, so that all the partitions are only build in --soong-only mode",
+      "parentUuid": "f1db4e1d_c7f75b94",
+      "range": {
+        "startLine": 105,
+        "startChar": 13,
+        "endLine": 105,
+        "endChar": 17
+      },
+      "revId": "3d082742f09b736baa542f664f4874a72bdd9630",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
