@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf2490c_ac85b98e",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-08T20:32:12Z",
+      "side": 1,
+      "message": "Could we do these copies as part of the individual partition rules, instead of the android_device, so that if you\u0027re building only 1 partition they\u0027re still copied?",
+      "revId": "d724472258177ec1c75e1f5ed962a7f64ea11a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f42fed2f_c64cee87",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-08T20:32:12Z",
+      "side": 1,
+      "message": "We shouldn\u0027t use a rule to copy the file, as this will conflict with other paritions if there are multiple defined in the build. Just use a cp as part of the command to build it without declaring the output.",
+      "revId": "d724472258177ec1c75e1f5ed962a7f64ea11a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
