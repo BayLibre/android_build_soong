@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c91b5a6_785e49ce",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-08T01:54:48Z",
+      "side": 1,
+      "message": "Could we have the vendor / init boot partitions re-export information about the ramdisk, so that we don\u0027t have to list more than necessary on the module?\n\nWe\u0027ll eventually need the android_device to consume super.img as well, and it would be good to do the same for super and its subimages.\n\nIf we did that I think these checks for product variables should not be as necessary, as we wouldn\u0027t have the recovery partition wouldn\u0027t be added as an explicit dep of the android_device in builds that move the recovery partition to vendor boot.",
+      "revId": "76fbef6da33f3235c15477df0ce9a1b1600dc7be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
