@@ -60,6 +60,7 @@ var (
 
 func RegisterAppImportBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("android_app_import", AndroidAppImportFactory)
+	ctx.RegisterModuleType("android_app_import_defaults", AndroidAppImportDefaultsFactory)
 	ctx.RegisterModuleType("android_test_import", AndroidTestImportFactory)
 	ctx.PreArchMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.BottomUp("disable_prebuilts_without_apk", disablePrebuiltsWithoutApkMutator)
@@ -656,6 +657,19 @@ func AndroidAppImportFactory() android.Module {
 	android.InitConfigurablePrebuiltModuleString(module, &module.properties.Apk, "Apk")
 
 	module.usesLibrary.enforce = true
+
+	return module
+}
+
+type AndroidAppImportDefaults struct {
+	android.ModuleBase
+	android.DefaultsModuleBase
+}
+
+func AndroidAppImportDefaultsFactory() android.Module {
+	module := &AndroidAppImportDefaults{}
+	module.AddProperties(&AndroidAppImportProperties{}, &UsesLibraryProperties{})
+	android.InitDefaultsModule(module)
 
 	return module
 }
