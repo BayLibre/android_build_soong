@@ -58,11 +58,18 @@ type androidDevice struct {
 	android.ModuleBase
 
 	partitionProps PartitionNameProperties
+
+	props AndroidDeviceProperties
+}
+
+type AndroidDeviceProperties struct {
+	// Path to android-info.txt file containing board specific info.
+	Android_info *string `android:"path"`
 }
 
 func AndroidDeviceFactory() android.Module {
 	module := &androidDevice{}
-	module.AddProperties(&module.partitionProps)
+	module.AddProperties(&module.partitionProps, &module.props)
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	return module
 }
@@ -197,6 +204,11 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 		if bootImgInfo.Bootconfig != nil {
 			builder.Command().Textf("cp %s %s/BOOT/bootconfig", bootImgInfo.Bootconfig, targetFilesDir)
 		}
+	}
+
+	if a.props.Android_info != nil {
+		builder.Command().Textf("mkdir -p %s/OTA", targetFilesDir)
+		builder.Command().Textf("cp %s %s/OTA/android-info.txt", android.PathForModuleSrc(ctx, proptools.String(a.props.Android_info)), targetFilesDir)
 	}
 
 	builder.Command().
