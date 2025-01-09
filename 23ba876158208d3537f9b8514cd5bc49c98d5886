@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1342076_eecb6484",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-09T22:55:30Z",
+      "side": 1,
+      "message": "It seems like `UserdataPath` and `BuildingUserdataImage` were never exported from make to Soong. @mrziwang@google.com is this intended? Also, Does the logic of checking `UserdataPath` applicable for userdata partition? It seems like `TARGET_COPY_OUT_USERDATA` does not exist.",
+      "revId": "23ba876158208d3537f9b8514cd5bc49c98d5886",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
