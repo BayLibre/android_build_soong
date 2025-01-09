@@ -191,7 +191,7 @@ type FilesystemProperties struct {
 	// those are considered one "container": aosp/3261300
 	Import_aconfig_flags_from []string
 
-	Fsverity fsverityProperties
+	Fsverity fsverityProperties `android:"arch_variant"`
 
 	// If this property is set to true, the filesystem will call ctx.UncheckedModule(), causing
 	// it to not be built on checkbuilds. Used for the automatic migration from make to soong

@@ -27,10 +27,10 @@ type fsverityProperties struct {
 	// will be generated and included to the filesystem image.
 	// etc/security/fsverity/BuildManifest.apk will also be generated which contains information
 	// about generated .fsv_meta files.
-	Inputs []string
+	Inputs []string `android:"arch_variant"`
 
 	// APK libraries to link against, for etc/security/fsverity/BuildManifest.apk
-	Libs []string `android:"path"`
+	Libs []string `android:"path,arch_variant"`
 }
 
 func (f *filesystem) writeManifestGeneratorListFile(ctx android.ModuleContext, outputPath android.WritablePath, matchedSpecs []android.PackagingSpec, rebasedDir android.OutputPath) {
