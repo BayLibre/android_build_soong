@@ -45,6 +45,30 @@
       },
       "revId": "1b34cbb280fd8045e60e8889673963cacfbae76d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81fd00f_82311921",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-09T02:01:09Z",
+      "side": 1,
+      "message": "That was my original idea as well, but\n- vendor bootimg has an empty `kernel` prop\n- we copy `TARGET_KERNEL_PATH` to VENDOR_BOOT/ in the make built target_files.zip, which I think comes from [here](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/make/core/Makefile;l\u003d6549?q\u003dzip_root.*kernel%20f:build%2Fmake%20case:yes\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main)\n\nMaybe `VENDOR_BOOT/kernel` should not exist in make built target_files.zip?",
+      "parentUuid": "e97ee72a_4bf83609",
+      "range": {
+        "startLine": 171,
+        "startChar": 48,
+        "endLine": 171,
+        "endChar": 139
+      },
+      "revId": "1b34cbb280fd8045e60e8889673963cacfbae76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
