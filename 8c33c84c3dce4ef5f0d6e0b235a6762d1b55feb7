@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81a5a6e0_bd3d08f3",
+        "filename": "cc/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-09T21:45:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "011f5e90_482127de",
+      "revId": "8c33c84c3dce4ef5f0d6e0b235a6762d1b55feb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8a94037_6d941854",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-01-08T21:56:19Z",
       "side": 1,
       "message": "This is an unfortunate mismatch between needing info available through ctx and info available through VersionedLinkableInterface.  It\u0027s probably overkill to create a single `VersionedLinkableModuleContext` to wrap it though.",
+      "revId": "8c33c84c3dce4ef5f0d6e0b235a6762d1b55feb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42148ecf_7b8ae02a",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-09T21:45:25Z",
+      "side": 1,
+      "message": "Ack. As an alternative we could pass the info in as parameters -- the VersionLinkableInterface and whatever info we need from the ctx (ctxIsForPlatform bool, device bool, platformSdkVersion string).",
+      "parentUuid": "d8a94037_6d941854",
       "revId": "8c33c84c3dce4ef5f0d6e0b235a6762d1b55feb7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
