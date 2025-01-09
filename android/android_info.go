@@ -79,6 +79,7 @@ func (p *androidInfoModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	})
 
 	ctx.SetOutputFiles(Paths{androidInfoProp}, "")
+	ctx.SetOutputFiles(Paths{androidInfoTxt}, ".txt")
 }
 
 // android_info module generate a file named android-info.txt that contains various information
