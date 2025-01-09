@@ -93,6 +93,30 @@
       },
       "revId": "1b34cbb280fd8045e60e8889673963cacfbae76d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c38507ba_d5080ae8",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-09T04:44:01Z",
+      "side": 1,
+      "message": "I guess it is weird that we\u0027re putting the kernel from boot.img into VENDOR_BOOT, but I think that\u0027s what the make logic is doing.",
+      "parentUuid": "c6311689_92f6229c",
+      "range": {
+        "startLine": 171,
+        "startChar": 48,
+        "endLine": 171,
+        "endChar": 139
+      },
+      "revId": "1b34cbb280fd8045e60e8889673963cacfbae76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
