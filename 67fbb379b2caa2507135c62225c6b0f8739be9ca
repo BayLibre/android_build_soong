@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd62e72_51fb8309",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-09T04:39:49Z",
+      "side": 1,
+      "message": "These can be inlined into the format string.",
+      "range": {
+        "startLine": 176,
+        "startChar": 93,
+        "endLine": 176,
+        "endChar": 99
+      },
+      "revId": "67fbb379b2caa2507135c62225c6b0f8739be9ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
