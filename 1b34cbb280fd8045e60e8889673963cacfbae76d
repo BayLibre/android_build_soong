@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18266aa5_68077fde",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-09T18:03:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bc06177_b19055c6",
+      "range": {
+        "startLine": 162,
+        "startChar": 157,
+        "endLine": 162,
+        "endChar": 170
+      },
+      "revId": "1b34cbb280fd8045e60e8889673963cacfbae76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e97ee72a_4bf83609",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "I guess it is weird that we\u0027re putting the kernel from boot.img into VENDOR_BOOT, but I think that\u0027s what the make logic is doing.",
       "parentUuid": "c6311689_92f6229c",
+      "range": {
+        "startLine": 171,
+        "startChar": 48,
+        "endLine": 171,
+        "endChar": 139
+      },
+      "revId": "1b34cbb280fd8045e60e8889673963cacfbae76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cbc3ea6_922bcaa8",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-09T18:03:56Z",
+      "side": 1,
+      "message": "I have updated a new patchset which gets the kernel file via a provider.\n\nbootimg\u0027s kernel will be copied to VENDOR_BOOT/kernel to match the make packaging behavior.",
+      "parentUuid": "c38507ba_d5080ae8",
       "range": {
         "startLine": 171,
         "startChar": 48,
