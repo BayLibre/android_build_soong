@@ -34,6 +34,24 @@
       "parentUuid": "7a7a412a_c0a8852d",
       "revId": "5de54988f0f954a6680e5d873e8a265fc9805923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "026ffb9d_0f43a905",
+        "filename": "android/android_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-09T01:30:48Z",
+      "side": 1,
+      "message": "Discussed offline:\n\u003e - the timesteamp file needs to be depended on by something\n\nAddressed in the latest patchset.\n\n\n\u003e - If we\u0027re going to start adding a bunch of these rules for random files...\n\nGiven that we do not have an agreed path forward regarding this at the moment and there are not many files that are copied to `PRODUCT_OUT`, this is fine as is at the moment.",
+      "parentUuid": "b6cd2354_c5e34c33",
+      "revId": "5de54988f0f954a6680e5d873e8a265fc9805923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
