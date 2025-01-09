@@ -353,6 +353,10 @@ type FilesystemInfo struct {
 	// to add a dependency on the Output file, as you cannot add dependencies on directories
 	// in ninja.
 	RootDir android.Path
+	// Dirs and symlinks to be created under ROOT in target_files.zip
+	Dirs         []string
+	Symlinks     []SymlinkDefinition
+	SpecsForRoot map[string]android.PackagingSpec
 }
 
 var FilesystemProvider = blueprint.NewProvider[FilesystemInfo]()
@@ -454,11 +458,19 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	fileListFile := android.PathForModuleOut(ctx, "fileList")
 	android.WriteFileRule(ctx, fileListFile, f.installedFilesList())
 
+	specsForRoot := f.PackagingBase.GatherPackagingSpecsWithFilter(ctx, func(spec android.PackagingSpec) bool {
+		return spec.Partition() == "root"
+	})
+
 	android.SetProvider(ctx, FilesystemProvider, FilesystemInfo{
 		Output:       f.output,
 		FileListFile: fileListFile,
 		RootDir:      rootDir,
+		Dirs:         f.properties.Dirs.GetOrDefault(ctx, nil),
+		Symlinks:     f.properties.Symlinks,
+		SpecsForRoot: specsForRoot,
 	})
+
 	f.fileListFile = fileListFile
 
 	if proptools.Bool(f.properties.Unchecked_module) {

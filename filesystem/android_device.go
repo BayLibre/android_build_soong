@@ -15,6 +15,7 @@
 package filesystem
 
 import (
+	"path/filepath"
 	"strings"
 
 	"android/soong/android"
@@ -56,6 +57,7 @@ type PartitionNameProperties struct {
 
 type androidDevice struct {
 	android.ModuleBase
+	android.PackagingBase
 
 	partitionProps PartitionNameProperties
 
@@ -175,6 +177,23 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 			Textf("-rd %s/. %s/%s", rootDirString, targetFilesDir, subdir).
 			Implicit(fsInfo.Output) // so that the staging dir is built
 
+		if subdir == "SYSTEM" {
+			// Create the ROOT partition in target_files.zip
+			for _, dir := range fsInfo.Dirs {
+				builder.Command().Textf("mkdir -p %s/ROOT/%s", targetFilesDir.String(), dir)
+			}
+			for _, symlink := range fsInfo.Symlinks {
+				name := strings.TrimSpace(proptools.String(symlink.Name))
+				if strings.HasPrefix(name, "system") {
+					// This symlink will be SYSTEM/ subdir of target_files.zip
+					continue
+				}
+				target := strings.TrimSpace(proptools.String(symlink.Target))
+				builder.Command().Textf("mkdir -p %s/ROOT/%s", targetFilesDir.String(), filepath.Dir(name))
+				builder.Command().Textf("ln -sf %s %s/ROOT/%s", proptools.ShellEscape(target), targetFilesDir.String(), name)
+			}
+			a.CopySpecsToDir(ctx, builder, fsInfo.SpecsForRoot, targetFilesDir.Join(ctx, "ROOT"))
+		}
 	}
 	// Copy cmdline, kernel etc. files of boot images
 	if a.partitionProps.Vendor_boot_partition_name != nil {
