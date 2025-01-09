@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a80550_f9dd2bb1",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1856745
+      },
+      "writtenOn": "2025-01-09T21:15:45Z",
+      "side": 1,
+      "message": "let\u0027s complete the wv with the 4 necessary flavors, x86 \u0026 arm64 + test * non-test.",
+      "fixSuggestions": [
+        {
+          "fixId": "a7886d20_72d215ec",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/neverallow.go",
+              "range": {
+                "startLine": 301,
+                "startChar": 0,
+                "endLine": 301,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tWithout(\"name\", \"trusty-arm64-virt.lk.elf.gen\").\n"
+            },
+            {
+              "path": "android/neverallow.go",
+              "range": {
+                "startLine": 302,
+                "startChar": 0,
+                "endLine": 302,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tWithout(\"name\", \"trusty-arm64-virt-test.lk.elf.gen\").\n"
+            },
+            {
+              "path": "android/neverallow.go",
+              "range": {
+                "startLine": 303,
+                "startChar": 0,
+                "endLine": 303,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tWithout(\"name\", \"trusty-x86_64-virt.lk.elf.gen\").\n"
+            },
+            {
+              "path": "android/neverallow.go",
+              "range": {
+                "startLine": 304,
+                "startChar": 0,
+                "endLine": 304,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tWithout(\"name\", \"trusty-x86_64-virt-test-debug.lk.elf.gen\").\n\t\t\tWithout(\"name\", \"trusty-x86_64-virt-test.lk.elf.gen\").\n"
+            },
+            {
+              "path": "android/neverallow.go",
+              "range": {
+                "startLine": 305,
+                "startChar": 0,
+                "endLine": 305,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tWithout(\"name\", \"trusty-x86_64-virt-test.wv.lk.elf.gen\").\n"
+            },
+            {
+              "path": "android/neverallow.go",
+              "range": {
+                "startLine": 309,
+                "startChar": 0,
+                "endLine": 309,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tWithout(\"name\", \"trusty-arm64-virt.lk.elf.gen\").\n"
+            },
+            {
+              "path": "android/neverallow.go",
+              "range": {
+                "startLine": 310,
+                "startChar": 0,
+                "endLine": 310,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tWithout(\"name\", \"trusty-arm64-virt-test.lk.elf.gen\").\n"
+            },
+            {
+              "path": "android/neverallow.go",
+              "range": {
+                "startLine": 311,
+                "startChar": 0,
+                "endLine": 311,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tWithout(\"name\", \"trusty-x86_64-virt.lk.elf.gen\").\n"
+            },
+            {
+              "path": "android/neverallow.go",
+              "range": {
+                "startLine": 312,
+                "startChar": 0,
+                "endLine": 312,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tWithout(\"name\", \"trusty-x86_64-virt-test-debug.lk.elf.gen\").\n\t\t\tWithout(\"name\", \"trusty-x86_64-virt-test.lk.elf.gen\").\n"
+            },
+            {
+              "path": "android/neverallow.go",
+              "range": {
+                "startLine": 313,
+                "startChar": 0,
+                "endLine": 313,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tWithout(\"name\", \"trusty-x86_64-virt-test.wv.lk.elf.gen\").\n"
+            }
+          ]
+        }
+      ],
+      "revId": "82d45f63bac52051ba205f8d8086782b02c4e46a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
