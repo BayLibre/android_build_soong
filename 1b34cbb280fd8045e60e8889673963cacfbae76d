@@ -69,6 +69,30 @@
       },
       "revId": "1b34cbb280fd8045e60e8889673963cacfbae76d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6311689_92f6229c",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-09T04:42:42Z",
+      "side": 1,
+      "message": "The vendor bootimg doesn\u0027t have a kernel, but the regular boot.img should have one.",
+      "parentUuid": "d81fd00f_82311921",
+      "range": {
+        "startLine": 171,
+        "startChar": 48,
+        "endLine": 171,
+        "endChar": 139
+      },
+      "revId": "1b34cbb280fd8045e60e8889673963cacfbae76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
