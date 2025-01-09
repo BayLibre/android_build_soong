@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce4736e3_d7e29e60",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1321491
+      },
+      "writtenOn": "2025-01-09T21:45:42Z",
+      "side": 1,
+      "message": "should we just pass the string through directly for consistency with `java_version`? (I think that\u0027s how java_version does it)",
+      "range": {
+        "startLine": 1339,
+        "startChar": 29,
+        "endLine": 1339,
+        "endChar": 32
+      },
+      "revId": "1a7705d96ddaee5fc829c11bca0c43543b9b4155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
