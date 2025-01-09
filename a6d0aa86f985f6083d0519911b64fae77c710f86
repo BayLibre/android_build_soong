@@ -22,6 +22,30 @@
       },
       "revId": "a6d0aa86f985f6083d0519911b64fae77c710f86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29c4949_f8c6ba9e",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-09T08:02:16Z",
+      "side": 1,
+      "message": "Hi Colin, thanks for pointing this out. And yes, this is a regression and should have been `platformBootclasspathImplLibDepTag` instead. I\u0027ve created https://r.android.com/3442823 to correct this.",
+      "parentUuid": "50bc7865_75da1712",
+      "range": {
+        "startLine": 187,
+        "startChar": 28,
+        "endLine": 187,
+        "endChar": 42
+      },
+      "revId": "a6d0aa86f985f6083d0519911b64fae77c710f86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
