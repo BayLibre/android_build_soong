@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8201ab55_62d8a3a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-09T23:43:12Z",
+      "side": 1,
+      "message": "Bypassing presubmit because I\u0027m about to send a cl that depends on this",
+      "revId": "1259effb5f09d55eb1422cdefade72a32fd36210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
