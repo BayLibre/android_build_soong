@@ -16,6 +16,24 @@
       "message": "What happens if you always strip unused architectures (unless Presigned is set, since we must not modify presigned APks)?  go/compare-target-files should be able to tell you which APKs get changed.",
       "revId": "6c4ecd0ac3458f1a6e241e1450046bc1c35c801b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6147d937_25884bb6",
+        "filename": "java/app_import.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1311067
+      },
+      "writtenOn": "2025-01-09T10:36:05Z",
+      "side": 1,
+      "message": "I will find them out! I can make the property always true when presigned is not set in the next change!\n\nthank you very much!",
+      "parentUuid": "00b16794_40327973",
+      "revId": "6c4ecd0ac3458f1a6e241e1450046bc1c35c801b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
