@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc06177_b19055c6",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-09T01:52:29Z",
+      "side": 1,
+      "message": "You can inline these string literals into the format string.",
+      "range": {
+        "startLine": 162,
+        "startChar": 157,
+        "endLine": 162,
+        "endChar": 170
+      },
+      "revId": "1b34cbb280fd8045e60e8889673963cacfbae76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e97ee72a_4bf83609",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-09T01:52:29Z",
+      "side": 1,
+      "message": "Let\u0027s get the kernel via the BootImageInfo like you do the dtb. There can be multiple android_device\u0027s in the tree, so using the product variables would apply the same kernel to all of them.",
+      "range": {
+        "startLine": 171,
+        "startChar": 48,
+        "endLine": 171,
+        "endChar": 139
+      },
+      "revId": "1b34cbb280fd8045e60e8889673963cacfbae76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
