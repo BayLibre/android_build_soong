@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50bc7865_75da1712",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-09T05:33:13Z",
+      "side": 1,
+      "message": "The dependencies added above on line 145 use the new `platformBootclasspathImplLibDepTag` dependency tag, but this uses `implLibraryTag`.  Was this supposed to be `platformBootclasspathImplLibDepTag`?  Nothing else checks for dependencies with `platformBootclasspathImplLibDepTag`.",
+      "range": {
+        "startLine": 187,
+        "startChar": 28,
+        "endLine": 187,
+        "endChar": 42
+      },
+      "revId": "a6d0aa86f985f6083d0519911b64fae77c710f86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
