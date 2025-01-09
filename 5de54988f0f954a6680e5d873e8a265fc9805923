@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a7a412a_c0a8852d",
+        "filename": "android/android_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-09T00:09:21Z",
+      "side": 1,
+      "message": "- the timesteamp file needs to be depended on by something\n\n- If we\u0027re going to start adding a bunch of these rules for random files, could we standardize it a bit more? One way to do that I can think of would be to make a CopyToTargetOutProvider, that lists pairs of files and their paths that they should have relative to TARGET_OUT. Then core soong code could get all the modules with those providers, find their BuildParams that produced the files, and attach extra validation actions to them that do the copy.",
+      "revId": "5de54988f0f954a6680e5d873e8a265fc9805923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
