@@ -22,6 +22,23 @@
       },
       "revId": "756d7377ded6b38d3eab983441cc9833d5d7a192",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d283b1e5_e570b5e6",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-09T23:02:41Z",
+      "side": 1,
+      "message": "Aren\u0027t all these things also included in the RootDir? Could we copy everything from the rootdir except the RebasedDir to the ROOT folder?",
+      "revId": "756d7377ded6b38d3eab983441cc9833d5d7a192",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
