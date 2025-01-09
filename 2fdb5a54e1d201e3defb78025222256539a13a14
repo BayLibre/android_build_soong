@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92f8a2d2_ff88ce46",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-09T21:44:44Z",
+      "side": 1,
+      "message": "Could you call this `copyToProductOutStamp` or something else simiarly descriptive?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "2fdb5a54e1d201e3defb78025222256539a13a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dd0f18c_1efb78f8",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-09T21:44:44Z",
+      "side": 1,
+      "message": "```suggestion\n\tbuilder.Command().Text(\"rsync\").Flag(\"-a\").Flag(\"--checksum\").Input(src).Text(destPath.String())\n```",
+      "range": {
+        "startLine": 113,
+        "startChar": 62,
+        "endLine": 113,
+        "endChar": 101
+      },
+      "revId": "2fdb5a54e1d201e3defb78025222256539a13a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94df6cd0_d4197a28",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-09T21:44:44Z",
+      "side": 1,
+      "message": "nit: reverse the order of these to match convention.",
+      "range": {
+        "startLine": 183,
+        "startChar": 84,
+        "endLine": 183,
+        "endChar": 96
+      },
+      "revId": "2fdb5a54e1d201e3defb78025222256539a13a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b844eaea_bdefbe43",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-09T21:44:44Z",
+      "side": 1,
+      "message": "nit: you can just make a `deviceProps` field outside the if, and set its `Bootloader` property in the if. Then pass all 3 property structs directly to CreateModule.",
+      "revId": "2fdb5a54e1d201e3defb78025222256539a13a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
