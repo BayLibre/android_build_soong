@@ -186,9 +186,11 @@ func (f *filesystemCreator) createDeviceModule(
 	vbmetaPartitions []string,
 ) {
 	baseProps := &struct {
-		Name *string
+		Name         *string
+		Android_info *string
 	}{
-		Name: proptools.StringPtr(generatedModuleName(ctx.Config(), "device")),
+		Name:         proptools.StringPtr(generatedModuleName(ctx.Config(), "device")),
+		Android_info: proptools.StringPtr(":" + generatedModuleName(ctx.Config(), "android_info.prop{.txt}")),
 	}
 
 	// Currently, only the system and system_ext partition module is created.
