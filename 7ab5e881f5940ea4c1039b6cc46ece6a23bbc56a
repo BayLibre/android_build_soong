@@ -16,6 +16,24 @@
       "message": "Why wasn\u0027t the cc.StubImplDepTag requried for C++ stubs?",
       "revId": "7ab5e881f5940ea4c1039b6cc46ece6a23bbc56a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f35320_b65922a9",
+        "filename": "apex/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2058,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-09T21:45:36Z",
+      "side": 1,
+      "message": "Good catch! This addition needs to be removed. rust.IsInstallableToApex needed to be updated to indicate stubs should not be installed. (I had thought that cc stubs were returning true for IsSharedDepTag, but that\u0027s not the case).",
+      "parentUuid": "ebd4debf_5b91440e",
+      "revId": "7ab5e881f5940ea4c1039b6cc46ece6a23bbc56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
