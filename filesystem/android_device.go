@@ -104,21 +104,22 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 	builder := android.NewRuleBuilder(pctx, ctx)
 	builder.Command().Textf("rm -rf %s", targetFilesDir.String())
 	builder.Command().Textf("mkdir -p %s", targetFilesDir.String())
-	partitionToSubdir := map[*string]string{
-		a.partitionProps.System_partition_name:      "SYSTEM",
-		a.partitionProps.System_ext_partition_name:  "SYSTEM_EXT",
-		a.partitionProps.Product_partition_name:     "PRODUCT",
-		a.partitionProps.Vendor_partition_name:      "VENDOR",
-		a.partitionProps.Odm_partition_name:         "ODM",
-		a.partitionProps.System_dlkm_partition_name: "SYSTEM_DLKM",
-		a.partitionProps.Vendor_dlkm_partition_name: "VENDOR_DLKM",
-		a.partitionProps.Odm_dlkm_partition_name:    "ODM_DLKM",
+	partitionToSubdir := map[string]string{
+		proptools.StringDefault(a.partitionProps.System_partition_name, ""):      "SYSTEM",
+		proptools.StringDefault(a.partitionProps.System_ext_partition_name, ""):  "SYSTEM_EXT",
+		proptools.StringDefault(a.partitionProps.Product_partition_name, ""):     "PRODUCT",
+		proptools.StringDefault(a.partitionProps.Vendor_partition_name, ""):      "VENDOR",
+		proptools.StringDefault(a.partitionProps.Odm_partition_name, ""):         "ODM",
+		proptools.StringDefault(a.partitionProps.System_dlkm_partition_name, ""): "SYSTEM_DLKM",
+		proptools.StringDefault(a.partitionProps.Vendor_dlkm_partition_name, ""): "VENDOR_DLKM",
+		proptools.StringDefault(a.partitionProps.Odm_dlkm_partition_name, ""):    "ODM_DLKM",
 	}
-	for partition, subdir := range partitionToSubdir {
-		if partition == nil {
+	for _, partition := range android.SortedKeys(partitionToSubdir) {
+		if len(partition) == 0 {
 			continue
 		}
-		fsInfo := a.getFilesystemInfo(ctx, *partition)
+		fsInfo := a.getFilesystemInfo(ctx, partition)
+		subdir := partitionToSubdir[partition]
 		builder.Command().Textf("mkdir -p %s/%s", targetFilesDir.String(), subdir)
 		builder.Command().
 			BuiltTool("acp").
