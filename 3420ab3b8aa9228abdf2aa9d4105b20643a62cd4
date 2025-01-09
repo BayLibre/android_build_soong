@@ -16,6 +16,24 @@
       "message": "Cole pointed this out to me as well. I have a fix for this in aosp/3441204, it is currently in presubmits.",
       "revId": "3420ab3b8aa9228abdf2aa9d4105b20643a62cd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a28a4931_cf1890a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-09T03:51:00Z",
+      "side": 1,
+      "message": "Understood, thanks for the info! I\u0027ll abandon this change given that you have the fix.",
+      "parentUuid": "96c83250_d46ebc26",
+      "revId": "3420ab3b8aa9228abdf2aa9d4105b20643a62cd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
