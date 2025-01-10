@@ -22,6 +22,30 @@
       },
       "revId": "1a7705d96ddaee5fc829c11bca0c43543b9b4155",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d805cca0_03c08b24",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1387509
+      },
+      "writtenOn": "2025-01-10T14:42:55Z",
+      "side": 1,
+      "message": "tldr: I think we should if the choice of available values grows beyond two, though my goal is to shrink it back down to one in practice.\n\nAndroid as a whole will be happier the more version-aligned we keep all our work. Right now, I expect to land changes with a few 1.9 flags, and everything else on 2.0. Moreover, those are really the only two versions of Kotlin available after this lands - no one uses \u003c1.9, and \u003e2.0 isn\u0027t checked in.\n\nHopefully we can remove the 1.9 references, and - when we upgrade to 2.1, - we can upgrade whatever code needs it to match.\n\nI am going to add a comment with a link to where Kotlin checks this version info for future reference.",
+      "parentUuid": "ce4736e3_d7e29e60",
+      "range": {
+        "startLine": 1339,
+        "startChar": 29,
+        "endLine": 1339,
+        "endChar": 32
+      },
+      "revId": "1a7705d96ddaee5fc829c11bca0c43543b9b4155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
