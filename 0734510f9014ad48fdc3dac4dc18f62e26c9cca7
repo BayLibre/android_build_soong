@@ -16,6 +16,24 @@
       "message": "This is going to conflict with aosp/3428224, which is rewriting cc and rust to use providers.  I think we should land aosp/3428224 first, and then rebase this on top.",
       "revId": "0734510f9014ad48fdc3dac4dc18f62e26c9cca7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0545ea_58f6a294",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-10T18:49:00Z",
+      "side": 1,
+      "message": "Sounds good, thanks for the heads up -- that makes my decision about whether to wait till Monday or not a bit easier 😊",
+      "parentUuid": "f240d354_2b0afac8",
+      "revId": "0734510f9014ad48fdc3dac4dc18f62e26c9cca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
