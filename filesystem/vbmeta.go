@@ -121,6 +121,9 @@ type vbmetaPartitionInfo struct {
 	// The path to the public key of the private key used to sign this partition. Derived from
 	// the private key.
 	PublicKey android.Path
+
+	// The output of the vbmeta module and all its transitive chained partition dependencies.
+	Outputs android.Paths
 }
 
 var vbmetaPartitionProvider = blueprint.NewProvider[vbmetaPartitionInfo]()
@@ -209,6 +212,7 @@ func (v *vbmeta) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	seenRils := make(map[int]bool)
+	var chainedPartitionOutputs android.Paths
 	for _, cp := range ctx.GetDirectDepsWithTag(vbmetaChainedPartitionDep) {
 		info, ok := android.OtherModuleProvider(ctx, cp, vbmetaPartitionProvider)
 		if !ok {
@@ -233,6 +237,7 @@ func (v *vbmeta) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		publicKey := info.PublicKey
 		cmd.FlagWithArg("--chain_partition ", fmt.Sprintf("%s:%d:%s", info.Name, ril, publicKey.String()))
 		cmd.Implicit(publicKey)
+		chainedPartitionOutputs = append(chainedPartitionOutputs, info.Outputs...)
 	}
 	for _, cpm := range v.properties.Chained_partition_metadata {
 		name := proptools.String(cpm.Name)
@@ -297,10 +302,17 @@ func (v *vbmeta) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		Output: extractedPublicKey,
 	})
 
+	allOutputs := android.SortedUniquePaths(
+		append(
+			[]android.Path{output},
+			chainedPartitionOutputs...,
+		),
+	)
 	android.SetProvider(ctx, vbmetaPartitionProvider, vbmetaPartitionInfo{
 		Name:                  v.partitionName(),
 		RollbackIndexLocation: ril,
 		PublicKey:             extractedPublicKey,
+		Outputs:               allOutputs,
 	})
 
 	ctx.SetOutputFiles([]android.Path{output}, "")
