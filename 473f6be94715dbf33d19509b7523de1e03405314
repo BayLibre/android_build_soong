@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34f8d734_8372b651",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2025-01-10T18:46:45Z",
+      "side": 1,
+      "message": "The Presubmit failure is expected and reveals an existing bug. The fix has been made in internal branch because the issue targets are only in internal branch.",
+      "revId": "473f6be94715dbf33d19509b7523de1e03405314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
