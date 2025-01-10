@@ -22,6 +22,30 @@
       },
       "revId": "b55a41c70da076b970f695a0cf8a379bbd16a103",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c532a1_6fc7703c",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-10T01:06:07Z",
+      "side": 1,
+      "message": "yeah that\u0027s another option, but `generatedModuleName` is unexported and in another namespace. And I kindof like it that way, to keep the module indepdenant of its name.\n\nI think in the long term, we\u0027ll have a product variable that points soong at a particular checked-in android_device module that will be the default. But for now, I think this is fine.",
+      "parentUuid": "9105cf38_12be3b49",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 46
+      },
+      "revId": "b55a41c70da076b970f695a0cf8a379bbd16a103",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
