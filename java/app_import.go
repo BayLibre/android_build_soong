@@ -62,6 +62,13 @@ var (
 		CommandDeps: []string{"build/soong/scripts/check_prebuilt_presigned_apk.py", "${config.Aapt2Cmd}", "${config.ZipAlign}"},
 		Description: "Check presigned apk",
 	}, "extraArgs")
+
+	gzipRule = pctx.AndroidStaticRule("gzip",
+		blueprint.RuleParams{
+			Command:     "prebuilts/build-tools/path/linux-x86/gzip -9 -c $in > $out",
+			CommandDeps: []string{"prebuilts/build-tools/path/linux-x86/gzip"},
+			Description: "gzip $out",
+		})
 )
 
 func RegisterAppImportBuildComponents(ctx android.RegistrationContext) {
@@ -163,6 +170,9 @@ type AndroidAppImportProperties struct {
 	// In case of mainline modules, the .prebuilt_info file contains the build_id that was used
 	// to generate the prebuilt.
 	Prebuilt_info *string `android:"path"`
+
+	// Compress the output APK using gzip. Defaults to false.
+	Compress_apk *bool
 }
 
 func (a *AndroidAppImport) IsInstallable() bool {
@@ -461,7 +471,17 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 		a.certificate = PresignedCertificate
 	}
 
-	// TODO: Optionally compress the output apk.
+	if Bool(a.properties.Compress_apk) {
+		outputFile := android.PathForModuleOut(ctx, proptools.StringDefault(a.properties.Filename, a.BaseModuleName())+".apk.gz")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        gzipRule,
+			Input:       a.outputFile,
+			Output:      outputFile,
+			Description: "Compressing " + a.outputFile.Base(),
+		})
+		a.outputFile = outputFile
+		apkFilename = proptools.StringDefault(a.properties.Filename, a.BaseModuleName()) + ".apk.gz"
+	}
 
 	if apexInfo.IsForPlatform() {
 		a.installPath = ctx.InstallFile(installDir, apkFilename, a.outputFile)
