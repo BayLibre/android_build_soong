@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34cfd400_a8c09e60",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1909,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-10T18:39:57Z",
+      "side": 1,
+      "message": "As Wei pointed out it would be useful to be able to see all providers and their info structs as generated documentation.  That\u0027s going to require putting comments on all of these structs and fields that can then become the docs, similar to what we do for property structs.",
+      "revId": "8024b92aa2edf9a2c0dcab4dc40a081b002146da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
