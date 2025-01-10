@@ -188,6 +188,9 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 
 	// Create an IMAGES/ subdirectory
 	builder.Command().Textf("mkdir -p %s/IMAGES/", targetFilesDir.String())
+	if a.deviceProps.Bootloader != nil {
+		builder.Command().Textf("cp %s %s/IMAGES/", android.PathForModuleSrc(ctx, proptools.String(a.deviceProps.Bootloader)), targetFilesDir.String())
+	}
 
 	for _, zipCopy := range toCopy {
 		if zipCopy.srcModule == nil {
