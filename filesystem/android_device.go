@@ -208,19 +208,6 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 		toCopy = append(toCopy, targetFilesZipCopy{a.partitionProps.Recovery_partition_name, "VENDOR_BOOT/RAMDISK"})
 	}
 
-	// Create an IMAGES/ subdirectory
-	builder.Command().Textf("mkdir -p %s/IMAGES/", targetFilesDir.String())
-	if a.deviceProps.Bootloader != nil {
-		builder.Command().Textf("cp ").Input(android.PathForModuleSrc(ctx, proptools.String(a.deviceProps.Bootloader))).Textf(" %s/IMAGES/bootloader", targetFilesDir.String())
-	}
-	// Copy the vbmeta img files to IMAGES/
-	for _, vbmetaPartition := range a.partitionProps.Vbmeta_partitions {
-		vbmetaInfo, _ := android.OtherModuleProvider(ctx, ctx.GetDirectDepWithTag(vbmetaPartition, filesystemDepTag), vbmetaPartitionProvider)
-		for _, vbmetaOutput := range vbmetaInfo.Outputs {
-			builder.Command().Textf("cp ").Input(vbmetaOutput).Textf(" %s/IMAGES/", targetFilesDir.String())
-		}
-	}
-
 	for _, zipCopy := range toCopy {
 		if zipCopy.srcModule == nil {
 			continue
@@ -278,6 +265,8 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 		builder.Command().Textf("cp %s %s/OTA/android-info.txt", android.PathForModuleSrc(ctx, proptools.String(a.deviceProps.Android_info)), targetFilesDir)
 	}
 
+	a.copyImagesToTargetZip(ctx, builder, targetFilesDir)
+
 	builder.Command().
 		BuiltTool("soong_zip").
 		Text("-d").
@@ -286,6 +275,30 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 		FlagWithArg("-D ", targetFilesDir.String()).
 		Text("-sha256")
 	builder.Build("target_files_"+ctx.ModuleName(), "Build target_files.zip")
+}
+
+func (a *androidDevice) copyImagesToTargetZip(ctx android.ModuleContext, builder *android.RuleBuilder, targetFilesDir android.WritablePath) {
+	// Create an IMAGES/ subdirectory
+	builder.Command().Textf("mkdir -p %s/IMAGES/", targetFilesDir.String())
+	if a.deviceProps.Bootloader != nil {
+		builder.Command().Textf("cp ").Input(android.PathForModuleSrc(ctx, proptools.String(a.deviceProps.Bootloader))).Textf(" %s/IMAGES/bootloader", targetFilesDir.String())
+	}
+	// Copy the vbmeta img files to IMAGES/
+	for _, vbmetaPartition := range a.partitionProps.Vbmeta_partitions {
+		vbmetaInfo, _ := android.OtherModuleProvider(ctx, ctx.GetDirectDepWithTag(vbmetaPartition, filesystemDepTag), vbmetaPartitionProvider)
+		for _, vbmetaOutput := range vbmetaInfo.Outputs {
+			builder.Command().Textf("cp ").Input(vbmetaOutput).Textf(" %s/IMAGES/", targetFilesDir.String())
+		}
+	}
+	// Copy the filesystem and boot img files to IMAGES/
+	ctx.VisitDirectDepsProxyWithTag(filesystemDepTag, func(child android.ModuleProxy) {
+		if info, ok := android.OtherModuleProvider(ctx, child, FilesystemProvider); ok && info.Output != nil {
+			builder.Command().Textf("cp ").Input(info.Output).Textf(" %s/IMAGES/", targetFilesDir.String())
+		}
+		if info, ok := android.OtherModuleProvider(ctx, child, BootimgInfoProvider); ok && info.Output != nil {
+			builder.Command().Textf("cp ").Input(info.Output).Textf(" %s/IMAGES/", targetFilesDir.String())
+		}
+	})
 }
 
 func (a *androidDevice) getFilesystemInfo(ctx android.ModuleContext, depName string) FilesystemInfo {
