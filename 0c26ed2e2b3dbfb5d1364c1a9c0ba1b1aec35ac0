@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c60070f_f8299573",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-10T00:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0910da21_bda0b4a9",
+      "revId": "0c26ed2e2b3dbfb5d1364c1a9c0ba1b1aec35ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12f66988_f87b6177",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-01-10T00:08:22Z",
       "side": 1,
       "message": "nit: userdata and recovery are not listed in `SuperImagePartitionNameProperties`.",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 2
+      },
+      "revId": "0c26ed2e2b3dbfb5d1364c1a9c0ba1b1aec35ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "610578d4_5556ea3a",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-10T00:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12f66988_f87b6177",
       "range": {
         "startLine": 236,
         "startChar": 1,
