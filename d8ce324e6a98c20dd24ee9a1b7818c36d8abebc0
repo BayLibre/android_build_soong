@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e97b9b6_58ddbec1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-10T20:58:22Z",
+      "side": 1,
+      "message": "Voting Bypass-presubmit. The timed out test seems like an infra issue, and unrelated to this CL.",
+      "revId": "d8ce324e6a98c20dd24ee9a1b7818c36d8abebc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
