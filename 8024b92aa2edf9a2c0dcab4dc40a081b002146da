@@ -16,6 +16,24 @@
       "message": "As Wei pointed out it would be useful to be able to see all providers and their info structs as generated documentation.  That\u0027s going to require putting comments on all of these structs and fields that can then become the docs, similar to what we do for property structs.",
       "revId": "8024b92aa2edf9a2c0dcab4dc40a081b002146da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c238ab_dbfb3fdf",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1909,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-01-10T19:14:41Z",
+      "side": 1,
+      "message": "Agreed, we will probably have to move/re-org the providers once we convert most of the interfaces to providers and have a clearer picture of how they look like, right now the naming/places of my changes are not very consistent.",
+      "parentUuid": "34cfd400_a8c09e60",
+      "revId": "8024b92aa2edf9a2c0dcab4dc40a081b002146da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
