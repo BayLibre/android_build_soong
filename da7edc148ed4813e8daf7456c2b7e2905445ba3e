@@ -68,6 +68,30 @@
       },
       "revId": "da7edc148ed4813e8daf7456c2b7e2905445ba3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e14171_9f818800",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2025-01-10T05:27:52Z",
+      "side": 1,
+      "message": "For now, there is no plan to enforce `vintf_fragment` only usage. Let\u0027s keep it as a far future plan.",
+      "parentUuid": "17cbc5be_16223a82",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 51
+      },
+      "revId": "da7edc148ed4813e8daf7456c2b7e2905445ba3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
