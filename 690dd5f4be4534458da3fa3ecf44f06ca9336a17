@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b53b3f_795b860f",
+        "filename": "java/app_import.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2025-01-10T08:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13c3d06e_810fcbc9",
+      "revId": "690dd5f4be4534458da3fa3ecf44f06ca9336a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb7346ab_670b5e05",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-01-07T21:30:14Z",
       "side": 1,
       "message": "is this necessary? extract_apk is relative path in source apk file.",
+      "range": {
+        "startLine": 164,
+        "startChar": 21,
+        "endLine": 164,
+        "endChar": 37
+      },
+      "revId": "690dd5f4be4534458da3fa3ecf44f06ca9336a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e61c8151_8a7b212c",
+        "filename": "java/app_import.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2025-01-10T08:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb7346ab_670b5e05",
       "range": {
         "startLine": 164,
         "startChar": 21,
