@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0af445e8_83124d04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2025-01-10T19:18:25Z",
+      "side": 1,
+      "message": "Toybox doesn\u0027t build on aosp-build-tools with 15, but I don\u0027t think that\u0027s actually a new failure, as I\u0027ve seen it before.",
+      "revId": "eae41f880290096bac9aa7330db328cb767928bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
