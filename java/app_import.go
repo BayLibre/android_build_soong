@@ -62,6 +62,13 @@ var (
 		CommandDeps: []string{"build/soong/scripts/check_prebuilt_presigned_apk.py", "${config.Aapt2Cmd}", "${config.ZipAlign}"},
 		Description: "Check presigned apk",
 	}, "extraArgs")
+
+	gzipRule = pctx.AndroidStaticRule("gzip",
+		blueprint.RuleParams{
+			Command:     "prebuilts/build-tools/path/linux-x86/gzip -9 -c $in > $out",
+			CommandDeps: []string{"prebuilts/build-tools/path/linux-x86/gzip"},
+			Description: "gzip $out",
+		})
 )
 
 func RegisterAppImportBuildComponents(ctx android.RegistrationContext) {
@@ -163,6 +170,9 @@ type AndroidAppImportProperties struct {
 	// In case of mainline modules, the .prebuilt_info file contains the build_id that was used
 	// to generate the prebuilt.
 	Prebuilt_info *string `android:"path"`
+
+	// Compress the output APK using gzip. Defaults to false.
+	Compress_apk *bool
 }
 
 func (a *AndroidAppImport) IsInstallable() bool {
@@ -334,6 +344,7 @@ func (a *AndroidAppImport) BaseModuleName() string {
 }
 
 func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext) {
+
 	if a.Name() == "prebuilt_framework-res" {
 		ctx.ModuleErrorf("prebuilt_framework-res found. This used to have special handling in soong, but was removed due to prebuilt_framework-res no longer existing. This check is to ensure it doesn't come back without readding the special handling.")
 	}
@@ -402,7 +413,9 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 
 	a.dexpreopter.enforceUsesLibs = a.usesLibrary.enforceUsesLibraries(ctx)
 	a.dexpreopter.classLoaderContexts = a.usesLibrary.classLoaderContextForUsesLibDeps(ctx)
-	if a.usesLibrary.shouldDisableDexpreopt {
+
+	// Disable Dexpreopt if  Compress_apk is true. It follows the build/make/core/app_prebuilt_internal.mk
+	if a.usesLibrary.shouldDisableDexpreopt || Bool(a.properties.Compress_apk) {
 		a.dexpreopter.disableDexpreopt()
 	}
 
@@ -461,7 +474,17 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 		a.certificate = PresignedCertificate
 	}
 
-	// TODO: Optionally compress the output apk.
+	if Bool(a.properties.Compress_apk) {
+		outputFile := android.PathForModuleOut(ctx, proptools.StringDefault(a.properties.Filename, a.BaseModuleName())+".apk.gz")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        gzipRule,
+			Input:       a.outputFile,
+			Output:      outputFile,
+			Description: "Compressing " + a.outputFile.Base(),
+		})
+		a.outputFile = outputFile
+		apkFilename = proptools.StringDefault(a.properties.Filename, a.BaseModuleName()) + ".apk.gz"
+	}
 
 	if apexInfo.IsForPlatform() {
 		a.installPath = ctx.InstallFile(installDir, apkFilename, a.outputFile)
