@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8490407_10eeb461",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387509
+      },
+      "writtenOn": "2025-01-10T14:54:07Z",
+      "side": 1,
+      "message": "Previous cl autosubmitted before I could amend in a comment",
+      "revId": "20b0ce599ccec66e5f28390eeaa6ed39ab721100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
