@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6612f7f_e1a6bdb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-10T20:59:30Z",
+      "side": 1,
+      "message": "This CL has PV+1 via aosp/3446091",
+      "revId": "c49b85e5d8eb338601e1d96a06ba4c39076fdd72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60d099ec_f254d4da",
