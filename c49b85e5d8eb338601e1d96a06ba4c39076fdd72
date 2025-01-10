@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d099ec_f254d4da",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-10T01:43:54Z",
+      "side": 1,
+      "message": "I was thinking we should just change this to be the fstype.img by default, I don\u0027t think there\u0027s much reason to use the module name, and people are more used to simple system.img, product.img, etc. names.\n\nIf we do that we\u0027ll also have to update this line: https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l\u003d3603;drc\u003df0febe6ef8c564354c78f09b2b5ebe960b54029b",
+      "revId": "c49b85e5d8eb338601e1d96a06ba4c39076fdd72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
