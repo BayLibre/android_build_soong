@@ -16,6 +16,23 @@
       "message": "This requires updating prebuilts.\nVerified with ag/31117667.",
       "revId": "32805e950d32702811fc24f97d5fbdcf74a2c01e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "267fce6d_ca781c3d",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2025-01-10T09:49:05Z",
+      "side": 1,
+      "message": "DO you mean functions _are_ declared in headers, but _not_ defined in .c/.cpp ?",
+      "revId": "32805e950d32702811fc24f97d5fbdcf74a2c01e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
