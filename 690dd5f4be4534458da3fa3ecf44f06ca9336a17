@@ -81,6 +81,30 @@
       },
       "revId": "690dd5f4be4534458da3fa3ecf44f06ca9336a17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a51d938_215eaa13",
+        "filename": "java/app_import.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2025-01-10T08:52:05Z",
+      "side": 1,
+      "message": "It\u0027s not necessary. Remove it.",
+      "parentUuid": "e61c8151_8a7b212c",
+      "range": {
+        "startLine": 164,
+        "startChar": 21,
+        "endLine": 164,
+        "endChar": 37
+      },
+      "revId": "690dd5f4be4534458da3fa3ecf44f06ca9336a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
