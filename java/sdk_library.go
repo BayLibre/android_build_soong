@@ -964,6 +964,10 @@ func (c *commonToSdkLibraryAndImport) generateCommonBuildActions(ctx android.Mod
 		removedApiFilePaths[kind] = removedApiFilePath
 	}
 
+	javaInfo := &JavaInfo{}
+	setCommonJavaInfo(ctx, ctx.Module(), javaInfo)
+	android.SetProvider(ctx, JavaInfoProvider, javaInfo)
+
 	return SdkLibraryInfo{
 		EverythingStubDexJarPaths: everythingStubPaths,
 		ExportableStubDexJarPaths: exportableStubPaths,
