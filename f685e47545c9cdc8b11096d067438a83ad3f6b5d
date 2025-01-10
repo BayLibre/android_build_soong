@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc63f974_7f1e7e19",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-10T18:37:00Z",
+      "side": 1,
+      "message": "nit: is the command intentionally not specifying input and output to not create a ninja dependency?",
+      "revId": "f685e47545c9cdc8b11096d067438a83ad3f6b5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
