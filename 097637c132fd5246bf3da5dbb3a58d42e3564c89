@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fcc4195_becfcefe",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-11T00:42:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69e9bc3e_0072e8c9",
+      "range": {
+        "startLine": 288,
+        "startChar": 14,
+        "endLine": 288,
+        "endChar": 15
+      },
+      "revId": "097637c132fd5246bf3da5dbb3a58d42e3564c89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8f7ed5a_50a8118b",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-01-11T00:04:37Z",
       "side": 1,
       "message": "Could you:\n - Drop the `Output !\u003d nil` checks, these providers should always have the output file checked\n - Move the BootimgInfoProvider into an `else if`, and then add an `else` that reports an error about it not having the correct provider.",
+      "range": {
+        "startLine": 298,
+        "startChar": 85,
+        "endLine": 298,
+        "endChar": 103
+      },
+      "revId": "097637c132fd5246bf3da5dbb3a58d42e3564c89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b906060_f9829586",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-11T00:42:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f7ed5a_50a8118b",
       "range": {
         "startLine": 298,
         "startChar": 85,
