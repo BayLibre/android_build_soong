@@ -22,6 +22,30 @@
       },
       "revId": "c7315286bb3abf2a7706400211dccd5e1eaa90ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af6b20f8_f051e2b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-11T00:21:59Z",
+      "side": 1,
+      "message": "The properties are \"appended\" with proptool\u0027s property extending helper methods. And they\u0027re set up so that the defaults properties are supposed to come before the actual modules properties, so in lists you get a result of `[\"from_default_1\", \"from_default_2\", \"from_main_module\"]`. But for bool pointers, the [later elements replace the earlier elements](https://cs.android.com/android/platform/superproject/main/+/main:build/blueprint/proptools/extend.go;l\u003d564;drc\u003db4d6320e2ae398b36f0aaafb2ecd83609d2d99af), so the main module\u0027s value takes effect.\n\nIf Test were a regular bool instead of a bool pointer, the logic is even weirder, it would take [the boolean OR](https://cs.android.com/android/platform/superproject/main/+/main:build/blueprint/proptools/extend.go;l\u003d496;drc\u003db4d6320e2ae398b36f0aaafb2ecd83609d2d99af) of the two values.",
+      "parentUuid": "863b9f8b_3e549152",
+      "range": {
+        "startLine": 11,
+        "startChar": 64,
+        "endLine": 13,
+        "endChar": 56
+      },
+      "revId": "c7315286bb3abf2a7706400211dccd5e1eaa90ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
