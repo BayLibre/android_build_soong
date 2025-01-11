@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c23970_911f8b00",
+        "filename": "android/neverallow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-11T00:12:37Z",
+      "side": 1,
+      "message": "Can\u0027t you just use `WithMatcher` and `NotInList` instead of making a new `InAllowedList` matcher?",
+      "revId": "47afbddc1776954fb42f110e45afc9c5be24af09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
