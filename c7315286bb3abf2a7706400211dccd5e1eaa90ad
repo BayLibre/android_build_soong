@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "863b9f8b_3e549152",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-11T00:17:13Z",
+      "side": 1,
+      "message": "The defaults mutator is run after the Factory code (where module types curently set `Lint.Test`). Shouldnt the defaults one take precedence?",
+      "range": {
+        "startLine": 11,
+        "startChar": 64,
+        "endLine": 13,
+        "endChar": 56
+      },
+      "revId": "c7315286bb3abf2a7706400211dccd5e1eaa90ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
