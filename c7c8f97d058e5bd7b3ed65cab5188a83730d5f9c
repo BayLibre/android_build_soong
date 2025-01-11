@@ -50,6 +50,30 @@
       ],
       "revId": "c7c8f97d058e5bd7b3ed65cab5188a83730d5f9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c377fbb_0367ccf9",
+        "filename": "java/app_import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2025-01-11T02:07:22Z",
+      "side": 1,
+      "message": "No, it\u0027s not related the feature we want.\n\nWe only want to implement the LOCAL_COMPRESSED_MODULE feature.\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/make/core/app_prebuilt_internal.mk;l\u003d25?q\u003dLOCAL_COMPRESSED_MODULE\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20branch:main",
+      "parentUuid": "20952b8f_f3019320",
+      "range": {
+        "startLine": 474,
+        "startChar": 1,
+        "endLine": 474,
+        "endChar": 37
+      },
+      "revId": "c7c8f97d058e5bd7b3ed65cab5188a83730d5f9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
