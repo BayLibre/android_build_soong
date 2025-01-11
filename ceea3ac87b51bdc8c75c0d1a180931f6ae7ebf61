@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe0dcc9_b54aeaea",
+        "filename": "filesystem/vbmeta.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-11T00:06:54Z",
+      "side": 1,
+      "message": "I think the android_device currently has both the primary and chained images as deps already. If we re-export the chained partition outputs here, we should probably remove the chained images from the android_device.\n\nAlso please, use a different field for the primary vbmeta image output vs the chained images.",
+      "revId": "ceea3ac87b51bdc8c75c0d1a180931f6ae7ebf61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
