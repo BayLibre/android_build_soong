@@ -321,7 +321,6 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 		if ctx.DeviceConfig().SystemExtPath() == "system_ext" {
 			fsProps.Import_aconfig_flags_from = []string{generatedModuleNameForPartition(ctx.Config(), "system_ext")}
 		}
-		fsProps.Stem = proptools.StringPtr("system.img")
 	case "system_ext":
 		if partitionVars.ProductFsverityGenerateMetadata {
 			fsProps.Fsverity.Inputs = []string{
@@ -332,7 +331,6 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 			fsProps.Fsverity.Libs = []string{":framework-res{.export-package.apk}"}
 		}
 		fsProps.Security_patch = proptools.StringPtr(ctx.Config().PlatformSecurityPatch())
-		fsProps.Stem = proptools.StringPtr("system_ext.img")
 	case "product":
 		fsProps.Gen_aconfig_flags_pb = proptools.BoolPtr(true)
 		fsProps.Android_filesystem_deps.System = proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "system"))
@@ -340,7 +338,6 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 			fsProps.Android_filesystem_deps.System_ext = proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "system_ext"))
 		}
 		fsProps.Security_patch = proptools.StringPtr(ctx.Config().PlatformSecurityPatch())
-		fsProps.Stem = proptools.StringPtr("product.img")
 	case "vendor":
 		fsProps.Gen_aconfig_flags_pb = proptools.BoolPtr(true)
 		fsProps.Symlinks = []filesystem.SymlinkDefinition{
@@ -358,7 +355,6 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 			fsProps.Android_filesystem_deps.System_ext = proptools.StringPtr(generatedModuleNameForPartition(ctx.Config(), "system_ext"))
 		}
 		fsProps.Security_patch = proptools.StringPtr(partitionVars.VendorSecurityPatch)
-		fsProps.Stem = proptools.StringPtr("vendor.img")
 	case "odm":
 		fsProps.Symlinks = []filesystem.SymlinkDefinition{
 			filesystem.SymlinkDefinition{
@@ -367,10 +363,8 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 			},
 		}
 		fsProps.Security_patch = proptools.StringPtr(partitionVars.OdmSecurityPatch)
-		fsProps.Stem = proptools.StringPtr("odm.img")
 	case "userdata":
 		fsProps.Base_dir = proptools.StringPtr("data")
-		fsProps.Stem = proptools.StringPtr("userdata.img")
 	case "ramdisk":
 		// Following the logic in https://cs.android.com/android/platform/superproject/main/+/c3c5063df32748a8806ce5da5dd0db158eab9ad9:build/make/core/Makefile;l=1307
 		fsProps.Dirs = android.NewSimpleConfigurable([]string{
@@ -393,7 +387,6 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 				"first_stage_ramdisk/sys",
 			})
 		}
-		fsProps.Stem = proptools.StringPtr("ramdisk.img")
 	case "recovery":
 		dirs := append(commonPartitionDirs, []string{
 			"sdcard",
@@ -409,21 +402,16 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 			Target: proptools.StringPtr("prop.default"),
 			Name:   proptools.StringPtr("default.prop"),
 		}), "root")
-		fsProps.Stem = proptools.StringPtr("recovery.img")
 	case "system_dlkm":
 		fsProps.Security_patch = proptools.StringPtr(partitionVars.SystemDlkmSecurityPatch)
-		fsProps.Stem = proptools.StringPtr("system_dlkm.img")
 	case "vendor_dlkm":
 		fsProps.Security_patch = proptools.StringPtr(partitionVars.VendorDlkmSecurityPatch)
-		fsProps.Stem = proptools.StringPtr("vendor_dlkm.img")
 	case "odm_dlkm":
 		fsProps.Security_patch = proptools.StringPtr(partitionVars.OdmDlkmSecurityPatch)
-		fsProps.Stem = proptools.StringPtr("odm_dlkm.img")
 	case "vendor_ramdisk":
 		if android.InList("recovery", generatedPartitions(ctx)) {
 			fsProps.Include_files_of = []string{generatedModuleNameForPartition(ctx.Config(), "recovery")}
 		}
-		fsProps.Stem = proptools.StringPtr("vendor_ramdisk.img")
 	}
 }
 

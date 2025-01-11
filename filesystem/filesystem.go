@@ -215,9 +215,6 @@ type FilesystemProperties struct {
 
 	// Additional dependencies used for building android products
 	Android_filesystem_deps AndroidFilesystemDeps
-
-	// Name of the output. Default is $(module_name).img
-	Stem *string
 }
 
 type AndroidFilesystemDeps struct {
@@ -387,7 +384,7 @@ func (f *filesystem) fsType(ctx android.ModuleContext) fsType {
 }
 
 func (f *filesystem) installFileName() string {
-	return proptools.StringDefault(f.properties.Stem, f.BaseModuleName()+".img")
+	return f.BaseModuleName() + ".img"
 }
 
 func (f *filesystem) partitionName() string {
