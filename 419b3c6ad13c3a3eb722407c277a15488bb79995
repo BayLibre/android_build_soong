@@ -16,6 +16,24 @@
       "message": "There seems to be other existing usages of `PrebuiltExportPath`. WDYT about passing module context as an argument to `PrebuiltExportPath` and nil checking the return value there?",
       "revId": "419b3c6ad13c3a3eb722407c277a15488bb79995",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eec8879_176c3086",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-13T22:07:18Z",
+      "side": 1,
+      "message": "I think we could, but I would prefer to keep `DeapexerInfo` separate from `ModuleContext` if the only use case for this is for error handling.\n\nKeeping nil-handling a responsibility of the caller also helps with providing more context specific error messages, e.g. missing jar vs [missing .prof file](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/c57b5467925e0c8d8c70ed7e7e1ac129a5e93c32:java/dexpreopt.go;l\u003d354-355;drc\u003daf4c8562a29e152cd473f64e938638b44d57078b;bpv\u003d1;bpt\u003d0).",
+      "parentUuid": "5299ef0c_1eb13bc0",
+      "revId": "419b3c6ad13c3a3eb722407c277a15488bb79995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
