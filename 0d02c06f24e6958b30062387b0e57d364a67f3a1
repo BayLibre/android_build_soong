@@ -16,6 +16,24 @@
       "message": "The breakage is caused by auto-merging from AOSP to internal failed for aosp/3446212 and aosp/3444766 while the child CL (aosp/3445142) in the same topic was successfully merged into internal. Manual cherry-picks have been created in internal branch",
       "revId": "0d02c06f24e6958b30062387b0e57d364a67f3a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa9da88_f3219235",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2025-01-13T17:44:13Z",
+      "side": 1,
+      "message": "There is another weird problem with the manual cherry-pick. Let\u0027s just do the reverts for now and investigate the cause of the auto-merge failures later.",
+      "parentUuid": "a4506394_d323078b",
+      "revId": "0d02c06f24e6958b30062387b0e57d364a67f3a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
