@@ -197,6 +197,23 @@
       },
       "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7dbb98f_d1806db9",
+        "filename": "java/app_import.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-13T18:48:14Z",
+      "side": 1,
+      "message": "move this up and then use apkFilename in the PathForModuleOut. Also you may want to consider doing `apkFilename +\u003d \".gz\"` instead. Also, it appears the origional code allows the filename property to control the extension as well, but this version doesn\u0027t, shouldn\u0027t we keep that behavior?",
+      "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
