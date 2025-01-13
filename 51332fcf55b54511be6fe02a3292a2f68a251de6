@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3e3b62_c87e5d26",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2025-01-13T23:44:57Z",
+      "side": 1,
+      "message": "Needs two tabs?",
+      "revId": "51332fcf55b54511be6fe02a3292a2f68a251de6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
