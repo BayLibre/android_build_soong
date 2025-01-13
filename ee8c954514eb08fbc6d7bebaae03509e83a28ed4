@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba5214f_7c177b9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2025-01-13T17:12:16Z",
+      "side": 1,
+      "message": "This topic affects windows host tools and unlikely to cause the device boot failure in b/389169775.  Please check with us if you conclude otherwise.",
+      "revId": "ee8c954514eb08fbc6d7bebaae03509e83a28ed4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
