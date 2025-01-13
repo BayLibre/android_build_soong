@@ -33,6 +33,24 @@
       "message": "nit: new line at the end?",
       "revId": "2bdc5e5f3428364fb8f88333fa3d3253f4b67ab8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b262166_224924bc",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-13T21:29:13Z",
+      "side": 1,
+      "message": "I\u0027m being kindof lazy with this, but the reason I didn\u0027t add a newline was because `android.ErrorRule` already has quotes around the message, which means I can\u0027t property escape the message with `proptools.ShellEscape`, which is what ideally should be used if the message were to have special characters.",
+      "parentUuid": "e02271fc_b85b0183",
+      "revId": "2bdc5e5f3428364fb8f88333fa3d3253f4b67ab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
