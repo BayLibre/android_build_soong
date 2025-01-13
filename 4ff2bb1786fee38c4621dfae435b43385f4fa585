@@ -16,6 +16,24 @@
       "message": "Let\u0027s implement this properly instead of jumping to hardcoded hacks like this.",
       "revId": "4ff2bb1786fee38c4621dfae435b43385f4fa585",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e59721d_75533ced",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-13T23:31:19Z",
+      "side": 1,
+      "message": "I agree that this should be properly implemented, but I thought the error mentioned in the team chat was blocking others. If that is not the case I can spend some more time to implement this properly.",
+      "parentUuid": "f4b677b8_360138ab",
+      "revId": "4ff2bb1786fee38c4621dfae435b43385f4fa585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
