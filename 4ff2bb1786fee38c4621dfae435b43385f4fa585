@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b677b8_360138ab",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-13T23:26:25Z",
+      "side": 1,
+      "message": "Let\u0027s implement this properly instead of jumping to hardcoded hacks like this.",
+      "revId": "4ff2bb1786fee38c4621dfae435b43385f4fa585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

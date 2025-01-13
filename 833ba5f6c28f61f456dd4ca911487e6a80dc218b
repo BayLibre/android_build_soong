@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09eb9dbf_fa96ba10",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-13T23:26:25Z",
+      "side": 1,
+      "message": "Remove this line instead of adding the `mkdir -p` in filesystem.go",
+      "revId": "833ba5f6c28f61f456dd4ca911487e6a80dc218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3661bcf_5b75db65",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-13T23:26:25Z",
+      "side": 1,
+      "message": "make this f2fs instead of using `addStr(\"userdata_fs_type\", \"f2fs\")`",
+      "range": {
+        "startLine": 339,
+        "startChar": 38,
+        "endLine": 339,
+        "endChar": 42
+      },
+      "revId": "833ba5f6c28f61f456dd4ca911487e6a80dc218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
