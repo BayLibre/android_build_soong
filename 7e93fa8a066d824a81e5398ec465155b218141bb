@@ -64,6 +64,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b3c74b8_734353b3",
+        "filename": "java/app_import.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2025-01-13T08:15:08Z",
+      "side": 1,
+      "message": "`apkFilename` is not correct, it has to be `.apk.gz.`",
+      "parentUuid": "c9fd0496_6eadf389",
+      "range": {
+        "startLine": 477,
+        "startChar": 2,
+        "endLine": 477,
+        "endChar": 123
+      },
+      "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "904dd180_15374e70",
         "filename": "java/app_import.go",
         "patchSetId": 6
