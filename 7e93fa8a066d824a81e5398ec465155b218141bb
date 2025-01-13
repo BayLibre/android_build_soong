@@ -86,6 +86,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f518a60_4da71afa",
+        "filename": "java/app_import.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2025-01-13T08:20:33Z",
+      "side": 1,
+      "message": "I see, it reflect below logic.\n\n```\n  LOCAL_BUILT_MODULE_STEM :\u003d package.apk.gz\n  ifndef LOCAL_INSTALLED_MODULE_STEM\n    PACKAGES.$(LOCAL_MODULE).COMPRESSED :\u003d gz\n    LOCAL_INSTALLED_MODULE_STEM :\u003d $(LOCAL_MODULE).apk.gz\n  endif\n```",
+      "parentUuid": "2b3c74b8_734353b3",
+      "range": {
+        "startLine": 477,
+        "startChar": 2,
+        "endLine": 477,
+        "endChar": 123
+      },
+      "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "904dd180_15374e70",
@@ -141,6 +165,30 @@
       "side": 1,
       "message": "It will installed as `.apk.gz`.\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/make/core/package_internal.mk;l\u003d246?q\u003d%22apk.gz%22\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20branch:main\n\ne.g. \nFor `cf_x86_64_desktop:`\n```\n./out/target/product/vsoc_x86_64/product/app/TrichromeLibrary/TrichromeLibrary.apk\n```\nFor `tangorpro:`\n```\n./out/target/product/tangorpro/product/app/TrichromeLibrary/TrichromeLibrary.apk.gz\n```",
       "parentUuid": "904dd180_15374e70",
+      "range": {
+        "startLine": 485,
+        "startChar": 2,
+        "endLine": 485,
+        "endChar": 94
+      },
+      "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a511e78b_b6d85ce8",
+        "filename": "java/app_import.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2025-01-13T08:20:33Z",
+      "side": 1,
+      "message": "I see, it reflect below logic.\n```\n  LOCAL_BUILT_MODULE_STEM :\u003d package.apk.gz\n  ifndef LOCAL_INSTALLED_MODULE_STEM\n    PACKAGES.$(LOCAL_MODULE).COMPRESSED :\u003d gz\n    LOCAL_INSTALLED_MODULE_STEM :\u003d $(LOCAL_MODULE).apk.gz\n  endif\n```",
+      "parentUuid": "c1222171_d1b2fa6e",
       "range": {
         "startLine": 485,
         "startChar": 2,
