@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a116045d_19f6d7d0",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-13T23:42:20Z",
+      "side": 1,
+      "message": "I see, so just to make sure with [this change](https://android-review.git.corp.google.com/c/platform/build/soong/+/3451348/2/fsgen/filesystem_creator.go#835) specifying `base_dir` property for userdata partition and the `mkdir` logic in filesystem are both not needed?",
+      "parentUuid": "bccb9ee8_aaf110b8",
+      "revId": "833ba5f6c28f61f456dd4ca911487e6a80dc218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3661bcf_5b75db65",
         "filename": "fsgen/filesystem_creator.go",
         "patchSetId": 1
@@ -115,6 +133,30 @@
       "side": 1,
       "message": "build_image.py has logic to accept either some property directly, or via a different property called `\u003cimage\u003e_prop_name`. It only picks the image-specific ones if `building_\u003cimage\u003e_image` is true. But we don\u0027t actually need to use these, we can use the non-qualified props always and not supply the `building_\u003cimage\u003e_image` property.",
       "parentUuid": "2be6cb8c_fac2eda8",
+      "range": {
+        "startLine": 339,
+        "startChar": 38,
+        "endLine": 339,
+        "endChar": 42
+      },
+      "revId": "833ba5f6c28f61f456dd4ca911487e6a80dc218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e5cfa17_59db18b5",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-13T23:42:20Z",
+      "side": 1,
+      "message": "Understood, thanks for the explanation. Will update this change accordingly with this info.",
+      "parentUuid": "22878927_0ee47bd6",
       "range": {
         "startLine": 339,
         "startChar": 38,
