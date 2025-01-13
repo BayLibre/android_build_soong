@@ -101,6 +101,30 @@
       ],
       "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1222171_d1b2fa6e",
+        "filename": "java/app_import.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2025-01-13T08:10:44Z",
+      "side": 1,
+      "message": "It will installed as `.apk.gz`.\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/make/core/package_internal.mk;l\u003d246?q\u003d%22apk.gz%22\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20branch:main\n\ne.g. \nFor `cf_x86_64_desktop:`\n```\n./out/target/product/vsoc_x86_64/product/app/TrichromeLibrary/TrichromeLibrary.apk\n```\nFor `tangorpro:`\n```\n./out/target/product/tangorpro/product/app/TrichromeLibrary/TrichromeLibrary.apk.gz\n```",
+      "parentUuid": "904dd180_15374e70",
+      "range": {
+        "startLine": 485,
+        "startChar": 2,
+        "endLine": 485,
+        "endChar": 94
+      },
+      "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
