@@ -16,6 +16,24 @@
       "message": "Hi, the error message in the linked ticket shows that two tests failed, but the two tests were deleted in the exact original change of this one.",
       "revId": "9873d74e7e99dcdf1351d9ea331613eb5cb14af1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c6ff5f8_9fdd9f6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2025-01-13T11:27:02Z",
+      "side": 1,
+      "message": "The breakage is caused by auto-merging from AOSP to internal failed for aosp/3446212 and aosp/3444766 while the child CL (aosp/3445142) in the same topic was successfully merged into internal. Manual cherry-picks have been created in internal branch",
+      "parentUuid": "99eb41c8_f3128def",
+      "revId": "9873d74e7e99dcdf1351d9ea331613eb5cb14af1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
