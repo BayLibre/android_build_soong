@@ -215,6 +215,10 @@ type FilesystemProperties struct {
 
 	// Additional dependencies used for building android products
 	Android_filesystem_deps AndroidFilesystemDeps
+
+	// The size of the partition on the device. It will be a build error if this built partition
+	// image exceeds this size.
+	Partition_size *int64
 }
 
 type AndroidFilesystemDeps struct {
@@ -611,13 +615,14 @@ func (f *filesystem) rootDirString() string {
 
 func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) (android.Path, android.OutputPath) {
 	rootDir := android.PathForModuleOut(ctx, f.rootDirString()).OutputPath
-	rebasedDir := rootDir
-	if f.properties.Base_dir != nil {
-		rebasedDir = rootDir.Join(ctx, *f.properties.Base_dir)
-	}
 	builder := android.NewRuleBuilder(pctx, ctx)
 	// Wipe the root dir to get rid of leftover files from prior builds
 	builder.Command().Textf("rm -rf %s && mkdir -p %s", rootDir, rootDir)
+	rebasedDir := rootDir
+	if f.properties.Base_dir != nil {
+		rebasedDir = rootDir.Join(ctx, *f.properties.Base_dir)
+		builder.Command().Textf("mkdir -p %s", rebasedDir)
+	}
 	specs := f.gatherFilteredPackagingSpecs(ctx)
 	f.entries = f.copyPackagingSpecs(ctx, builder, specs, rootDir, rebasedDir)
 
@@ -658,6 +663,10 @@ func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) (andro
 
 	if !ctx.Config().KatiEnabled() {
 		copyImageFileToProductOut(ctx, builder, f.partitionName(), output)
+	}
+
+	if f.properties.Partition_size != nil {
+		assertMaxImageSize(builder, output, *f.properties.Partition_size, proptools.Bool(f.properties.Use_avb))
 	}
 
 	// rootDir is not deleted. Might be useful for quick inspection.
@@ -774,7 +783,21 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (android.Path, and
 	// https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l=2262;drc=39cd33701c9278db0e7e481a090605f428d5b12d
 	// Make uses system_disable_sparse but disable_sparse has the same effect, and we shouldn't need
 	// to qualify it because each partition gets its own property file built.
-	addStr("disable_sparse", "true")
+	if f.partitionName() != "userdata" {
+		addStr("disable_sparse", "true")
+	}
+
+	if f.partitionName() == "userdata" {
+		addStr("userdata_fs_type", "f2fs")
+		addStr("building_userdata_image", "true")
+		addStr("erofs_sparse_flag", "-s")
+		addStr("ext4_share_dup_blocks", "true")
+		addStr("ext_mkuserimg", "mkuserimg_mke2fs")
+		addStr("extfs_sparse_flag", "-s")
+		addStr("f2fs_sparse_flag", "-S")
+		addStr("skip_fsck", "true")
+		addStr("squashfs_sparse_flag", "-s")
+	}
 
 	fst := f.fsType(ctx)
 	switch fst {
@@ -796,6 +819,10 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (android.Path, and
 		}
 	}
 	f.checkFsTypePropertyError(ctx, fst, fsTypeStr(fst))
+
+	if f.properties.Partition_size != nil {
+		addStr(fmt.Sprintf("%s_size", f.partitionName()), strconv.FormatInt(*f.properties.Partition_size, 10))
+	}
 
 	propFilePreProcessing := android.PathForModuleOut(ctx, "prop_pre_processing")
 	android.WriteFileRuleVerbatim(ctx, propFilePreProcessing, propFileString.String())
@@ -856,13 +883,14 @@ func (f *filesystem) buildCpioImage(ctx android.ModuleContext, compressed bool) 
 	}
 
 	rootDir := android.PathForModuleOut(ctx, f.rootDirString()).OutputPath
-	rebasedDir := rootDir
-	if f.properties.Base_dir != nil {
-		rebasedDir = rootDir.Join(ctx, *f.properties.Base_dir)
-	}
 	builder := android.NewRuleBuilder(pctx, ctx)
 	// Wipe the root dir to get rid of leftover files from prior builds
 	builder.Command().Textf("rm -rf %s && mkdir -p %s", rootDir, rootDir)
+	rebasedDir := rootDir
+	if f.properties.Base_dir != nil {
+		rebasedDir = rootDir.Join(ctx, *f.properties.Base_dir)
+		builder.Command().Textf("mkdir -p %s", rebasedDir)
+	}
 	specs := f.gatherFilteredPackagingSpecs(ctx)
 	f.entries = f.copyPackagingSpecs(ctx, builder, specs, rootDir, rebasedDir)
 
