@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5299ef0c_1eb13bc0",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-13T21:54:20Z",
+      "side": 1,
+      "message": "There seems to be other existing usages of `PrebuiltExportPath`. WDYT about passing module context as an argument to `PrebuiltExportPath` and nil checking the return value there?",
+      "revId": "419b3c6ad13c3a3eb722407c277a15488bb79995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
