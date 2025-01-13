@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bccb9ee8_aaf110b8",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-13T23:34:42Z",
+      "side": 1,
+      "message": "The rsync command will still create that folder. (though right now it might be `$PRODUCT_OUT/userdata`) It will rsync the `rebasedDir` still, but if you don\u0027t set `Base_dir`, `rebasedDir` will be the same as `rootDir`, which is already mkdir\u0027d.",
+      "parentUuid": "82994ace_8042b69f",
+      "revId": "833ba5f6c28f61f456dd4ca911487e6a80dc218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3661bcf_5b75db65",
         "filename": "fsgen/filesystem_creator.go",
         "patchSetId": 1
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "I am not sure of the difference between `fs_type` and `userdata_fs_type` at the moment. In the make-generated `userdata_image_info.txt` it lists both `fs_type` and `userdata_fs_type`.",
       "parentUuid": "e3661bcf_5b75db65",
+      "range": {
+        "startLine": 339,
+        "startChar": 38,
+        "endLine": 339,
+        "endChar": 42
+      },
+      "revId": "833ba5f6c28f61f456dd4ca911487e6a80dc218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22878927_0ee47bd6",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-13T23:34:42Z",
+      "side": 1,
+      "message": "build_image.py has logic to accept either some property directly, or via a different property called `\u003cimage\u003e_prop_name`. It only picks the image-specific ones if `building_\u003cimage\u003e_image` is true. But we don\u0027t actually need to use these, we can use the non-qualified props always and not supply the `building_\u003cimage\u003e_image` property.",
+      "parentUuid": "2be6cb8c_fac2eda8",
       "range": {
         "startLine": 339,
         "startChar": 38,
