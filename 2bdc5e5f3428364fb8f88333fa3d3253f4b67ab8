@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce560e0_86c9f4f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-13T21:17:44Z",
+      "side": 1,
+      "message": "ABTD run for build that failed before: https://android-build.corp.google.com/builds/abtd/run/L53000030008868830",
+      "revId": "2bdc5e5f3428364fb8f88333fa3d3253f4b67ab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
