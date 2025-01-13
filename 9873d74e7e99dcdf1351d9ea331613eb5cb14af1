@@ -34,6 +34,24 @@
       "parentUuid": "99eb41c8_f3128def",
       "revId": "9873d74e7e99dcdf1351d9ea331613eb5cb14af1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ee2f91b_dde89c71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2025-01-13T17:43:57Z",
+      "side": 1,
+      "message": "There is another weird problem with the manual cherry-pick. Let\u0027s just do the reverts for now and investigate the cause of the auto-merge failures later.",
+      "parentUuid": "5c6ff5f8_9fdd9f6c",
+      "revId": "9873d74e7e99dcdf1351d9ea331613eb5cb14af1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
