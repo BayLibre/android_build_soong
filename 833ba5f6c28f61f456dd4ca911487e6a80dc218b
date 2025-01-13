@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82994ace_8042b69f",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-13T23:29:22Z",
+      "side": 1,
+      "message": "But do we not need `$PRODUCT_OUT/data` even if it is an empty directory?",
+      "parentUuid": "09eb9dbf_fa96ba10",
+      "revId": "833ba5f6c28f61f456dd4ca911487e6a80dc218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3661bcf_5b75db65",
         "filename": "fsgen/filesystem_creator.go",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2025-01-13T23:26:25Z",
       "side": 1,
       "message": "make this f2fs instead of using `addStr(\"userdata_fs_type\", \"f2fs\")`",
+      "range": {
+        "startLine": 339,
+        "startChar": 38,
+        "endLine": 339,
+        "endChar": 42
+      },
+      "revId": "833ba5f6c28f61f456dd4ca911487e6a80dc218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be6cb8c_fac2eda8",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-13T23:29:22Z",
+      "side": 1,
+      "message": "I am not sure of the difference between `fs_type` and `userdata_fs_type` at the moment. In the make-generated `userdata_image_info.txt` it lists both `fs_type` and `userdata_fs_type`.",
+      "parentUuid": "e3661bcf_5b75db65",
       "range": {
         "startLine": 339,
         "startChar": 38,
