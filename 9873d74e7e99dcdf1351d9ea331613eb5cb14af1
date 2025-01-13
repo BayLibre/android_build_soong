@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99eb41c8_f3128def",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2025-01-13T09:36:08Z",
+      "side": 1,
+      "message": "Hi, the error message in the linked ticket shows that two tests failed, but the two tests were deleted in the exact original change of this one.",
+      "revId": "9873d74e7e99dcdf1351d9ea331613eb5cb14af1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
