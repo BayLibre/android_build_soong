@@ -70,6 +70,7 @@ type filesystem struct {
 	installDir android.InstallPath
 
 	fileListFile android.Path
+	mapFile      android.WritablePath
 
 	// Keeps the entries installed from this filesystem
 	entries []string
@@ -356,6 +357,9 @@ type FilesystemInfo struct {
 	// to add a dependency on the Output file, as you cannot add dependencies on directories
 	// in ninja.
 	RootDir android.Path
+	// A text file with block data of the .img file
+	// This is an implicit output of `build_image`
+	MapFile android.Path
 }
 
 var FilesystemProvider = blueprint.NewProvider[FilesystemInfo]()
@@ -442,6 +446,8 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		ctx.PropertyErrorf("include_files_of", "include_files_of is only supported for cpio and compressed cpio filesystem types.")
 	}
 
+	f.mapFile = f.getMapFile(ctx)
+
 	var rootDir android.OutputPath
 	switch f.fsType(ctx) {
 	case ext4Type, erofsType, f2fsType:
@@ -469,6 +475,7 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		Output:       f.output,
 		FileListFile: fileListFile,
 		RootDir:      rootDir,
+		MapFile:      f.mapFile,
 	})
 
 	f.fileListFile = fileListFile
@@ -476,6 +483,11 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if proptools.Bool(f.properties.Unchecked_module) {
 		ctx.UncheckedModule()
 	}
+}
+
+func (f *filesystem) getMapFile(ctx android.ModuleContext) android.WritablePath {
+	// create the filepath by replacing the extension of the corresponding img file
+	return android.PathForModuleOut(ctx, f.installFileName()).ReplaceExtension(ctx, "map")
 }
 
 func (f *filesystem) validateVintfFragments(ctx android.ModuleContext) {
@@ -658,6 +670,7 @@ func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) (andro
 	pathToolDirs := []string{filepath.Dir(fec.String())}
 
 	output := android.PathForModuleOut(ctx, f.installFileName())
+	builder.Command().Text("touch").Output(f.mapFile)
 	builder.Command().
 		Textf("PATH=%s:$PATH", strings.Join(pathToolDirs, ":")).
 		BuiltTool("build_image").
@@ -715,6 +728,7 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (android.Path, and
 		}
 		panic(fmt.Errorf("unsupported fs type %v", t))
 	}
+	addStr("block_list", f.mapFile.String()) // This will be an implcit output
 
 	addStr("fs_type", fsTypeStr(f.fsType(ctx)))
 	addStr("mount_point", proptools.StringDefault(f.properties.Mount_point, "/"))
