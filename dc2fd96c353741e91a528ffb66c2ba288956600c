@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ff5e922_3c60a85f",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-14T21:10:26Z",
+      "side": 1,
+      "message": "This should not be necessary. superImage will never be nil. (at least in non-ALLOW_MISSING_DEPENDENCIES builds)\n\nWhy can\u0027t `GetDirectDepProxyWithTag` return the a module with the same level of indirection as `GetDirectDepWithTag`?",
+      "revId": "dc2fd96c353741e91a528ffb66c2ba288956600c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
