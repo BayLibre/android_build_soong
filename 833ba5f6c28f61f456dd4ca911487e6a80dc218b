@@ -90,6 +90,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a378213_abab75df",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-14T00:31:34Z",
+      "side": 1,
+      "message": "\u003e I see, so just to make sure with this change specifying base_dir property for userdata partition and the mkdir logic in filesystem are both not needed?\n\nYeah. the `base_dir` / `rebasedDir` is a directory inside the actual filesystem, whereas `mount_point` is where it\u0027s mounted, which is external to the filesystem itself. They\u0027re different things.",
+      "parentUuid": "0e9a9c39_44e3050a",
+      "revId": "833ba5f6c28f61f456dd4ca911487e6a80dc218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3661bcf_5b75db65",
