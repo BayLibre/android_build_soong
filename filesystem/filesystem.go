@@ -688,6 +688,19 @@ func (f *filesystem) buildFileContexts(ctx android.ModuleContext) android.Path {
 	return fcBin
 }
 
+// https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l=2332;drc=7f50a123045520f2c5e18e9eb4e83f92244a1459
+var avbEnabledPartitions = []string{
+	"system",
+	"system_other",
+	"vendor",
+	"product",
+	"system_ext",
+	"odm",
+	"vendor_dlkm",
+	"odm_dlkm",
+	"system_dlkm",
+}
+
 func (f *filesystem) buildPropFile(ctx android.ModuleContext) (android.Path, android.Paths) {
 	var deps android.Paths
 	var propFileString strings.Builder
@@ -725,39 +738,41 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (android.Path, and
 		deps = append(deps, ctx.Config().HostToolPath(ctx, t))
 	}
 
+	addStr("partition_name", f.partitionName())
 	if proptools.Bool(f.properties.Use_avb) {
 		addStr("avb_hashtree_enable", "true")
-		addPath("avb_avbtool", ctx.Config().HostToolPath(ctx, "avbtool"))
-		algorithm := proptools.StringDefault(f.properties.Avb_algorithm, "SHA256_RSA4096")
-		addStr("avb_algorithm", algorithm)
-		if f.properties.Avb_private_key != nil {
-			key := android.PathForModuleSrc(ctx, *f.properties.Avb_private_key)
-			addPath("avb_key_path", key)
-		}
-		addStr("partition_name", f.partitionName())
-		avb_add_hashtree_footer_args := ""
-		if !proptools.BoolDefault(f.properties.Use_fec, true) {
-			avb_add_hashtree_footer_args += " --do_not_generate_fec"
-		}
-		if hashAlgorithm := proptools.String(f.properties.Avb_hash_algorithm); hashAlgorithm != "" {
-			avb_add_hashtree_footer_args += " --hash_algorithm " + hashAlgorithm
-		}
-		if f.properties.Rollback_index != nil {
-			rollbackIndex := proptools.Int(f.properties.Rollback_index)
-			if rollbackIndex < 0 {
-				ctx.PropertyErrorf("rollback_index", "Rollback index must be non-negative")
+		if android.InList(f.partitionName(), avbEnabledPartitions) {
+			addPath("avb_avbtool", ctx.Config().HostToolPath(ctx, "avbtool"))
+			algorithm := proptools.StringDefault(f.properties.Avb_algorithm, "SHA256_RSA4096")
+			addStr("avb_algorithm", algorithm)
+			if f.properties.Avb_private_key != nil {
+				key := android.PathForModuleSrc(ctx, *f.properties.Avb_private_key)
+				addPath("avb_key_path", key)
 			}
-			avb_add_hashtree_footer_args += " --rollback_index " + strconv.Itoa(rollbackIndex)
+			avb_add_hashtree_footer_args := ""
+			if !proptools.BoolDefault(f.properties.Use_fec, true) {
+				avb_add_hashtree_footer_args += " --do_not_generate_fec"
+			}
+			if hashAlgorithm := proptools.String(f.properties.Avb_hash_algorithm); hashAlgorithm != "" {
+				avb_add_hashtree_footer_args += " --hash_algorithm " + hashAlgorithm
+			}
+			if f.properties.Rollback_index != nil {
+				rollbackIndex := proptools.Int(f.properties.Rollback_index)
+				if rollbackIndex < 0 {
+					ctx.PropertyErrorf("rollback_index", "Rollback index must be non-negative")
+				}
+				avb_add_hashtree_footer_args += " --rollback_index " + strconv.Itoa(rollbackIndex)
+			}
+			avb_add_hashtree_footer_args += fmt.Sprintf(" --prop com.android.build.%s.os_version:%s", f.partitionName(), ctx.Config().PlatformVersionLastStable())
+			// We're not going to add BuildFingerPrintFile as a dep. If it changed, it's likely because
+			// the build number changed, and we don't want to trigger rebuilds solely based on the build
+			// number.
+			avb_add_hashtree_footer_args += fmt.Sprintf(" --prop com.android.build.%s.fingerprint:{CONTENTS_OF:%s}", f.partitionName(), ctx.Config().BuildFingerprintFile(ctx))
+			if f.properties.Security_patch != nil && proptools.String(f.properties.Security_patch) != "" {
+				avb_add_hashtree_footer_args += fmt.Sprintf(" --prop com.android.build.%s.security_patch:%s", f.partitionName(), proptools.String(f.properties.Security_patch))
+			}
+			addStr("avb_add_hashtree_footer_args", avb_add_hashtree_footer_args)
 		}
-		avb_add_hashtree_footer_args += fmt.Sprintf(" --prop com.android.build.%s.os_version:%s", f.partitionName(), ctx.Config().PlatformVersionLastStable())
-		// We're not going to add BuildFingerPrintFile as a dep. If it changed, it's likely because
-		// the build number changed, and we don't want to trigger rebuilds solely based on the build
-		// number.
-		avb_add_hashtree_footer_args += fmt.Sprintf(" --prop com.android.build.%s.fingerprint:{CONTENTS_OF:%s}", f.partitionName(), ctx.Config().BuildFingerprintFile(ctx))
-		if f.properties.Security_patch != nil && proptools.String(f.properties.Security_patch) != "" {
-			avb_add_hashtree_footer_args += fmt.Sprintf(" --prop com.android.build.%s.security_patch:%s", f.partitionName(), proptools.String(f.properties.Security_patch))
-		}
-		addStr("avb_add_hashtree_footer_args", avb_add_hashtree_footer_args)
 	}
 
 	if f.properties.File_contexts != nil && f.properties.Precompiled_file_contexts != nil {
