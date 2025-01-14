@@ -222,6 +222,11 @@ type FilesystemProperties struct {
 	// The size of the partition on the device. It will be a build error if this built partition
 	// image exceeds this size.
 	Partition_size *int64
+
+	// List of additional props that will be added in the generated prop file and used as
+	// an input to build_image. Must be a list of `key=value` pair strings. Specifying value
+	// as a path is not supported at the moment.
+	Additional_props []string
 }
 
 type AndroidFilesystemDeps struct {
@@ -696,6 +701,16 @@ func (f *filesystem) buildFileContexts(ctx android.ModuleContext) android.Path {
 	return fcBin
 }
 
+func (f *filesystem) validateAdditionalProps(ctx android.ModuleContext) {
+	for _, prop := range f.properties.Additional_props {
+		containsSingleSep := strings.Count(prop, "=") == 1
+		nonEmptyKeyAndVal := len(strings.Split(prop, "=")) == 2
+		if !(containsSingleSep && nonEmptyKeyAndVal) {
+			ctx.PropertyErrorf("additional_props", "All entries must be in `key=value` format, but got %s", prop)
+		}
+	}
+}
+
 func (f *filesystem) buildPropFile(ctx android.ModuleContext) (android.Path, android.Paths) {
 	var deps android.Paths
 	var propFileString strings.Builder
@@ -819,6 +834,13 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (android.Path, and
 
 	if f.properties.Partition_size != nil {
 		addStr("partition_size", strconv.FormatInt(*f.properties.Partition_size, 10))
+	}
+
+	f.validateAdditionalProps(ctx)
+	for _, prop := range f.properties.Additional_props {
+		key := strings.Split(prop, "=")[0]
+		val := strings.Split(prop, "=")[1]
+		addStr(key, val)
 	}
 
 	propFilePreProcessing := android.PathForModuleOut(ctx, "prop_pre_processing")

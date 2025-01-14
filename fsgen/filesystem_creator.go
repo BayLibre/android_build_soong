@@ -382,6 +382,19 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 			}
 			fsProps.Partition_size = &parsed
 		}
+		var additionalProps []string
+		// https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l=2265;drc=7f50a123045520f2c5e18e9eb4e83f92244a1459
+		if len(partitionVars.ProductFsCasefold) > 0 {
+			additionalProps = append(additionalProps, fmt.Sprintf("needs_casefold=%s", partitionVars.ProductFsCasefold))
+		}
+		if len(partitionVars.ProductQuotaProjid) > 0 {
+			additionalProps = append(additionalProps, fmt.Sprintf("needs_projid=%s", partitionVars.ProductQuotaProjid))
+		}
+		if len(partitionVars.ProductFsCompression) > 0 {
+			additionalProps = append(additionalProps, fmt.Sprintf("needs_compress=%s", partitionVars.ProductFsCompression))
+		}
+		fsProps.Additional_props = additionalProps
+
 	case "ramdisk":
 		// Following the logic in https://cs.android.com/android/platform/superproject/main/+/c3c5063df32748a8806ce5da5dd0db158eab9ad9:build/make/core/Makefile;l=1307
 		fsProps.Dirs = android.NewSimpleConfigurable([]string{
