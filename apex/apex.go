@@ -1171,10 +1171,6 @@ func markPlatformAvailability(mctx android.BottomUpMutatorContext) {
 	}
 }
 
-type apexTransitionTag interface {
-	ApexTransition() string
-}
-
 type apexTransitionMutator struct{}
 
 func (a *apexTransitionMutator) Split(ctx android.BaseModuleContext) []string {
@@ -1189,9 +1185,6 @@ func (a *apexTransitionMutator) Split(ctx android.BaseModuleContext) []string {
 }
 
 func (a *apexTransitionMutator) OutgoingTransition(ctx android.OutgoingTransitionContext, sourceVariation string) string {
-	if tag, ok := ctx.DepTag().(apexTransitionTag); ok {
-		return tag.ApexTransition()
-	}
 	return sourceVariation
 }
 
