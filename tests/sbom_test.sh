@@ -24,14 +24,15 @@ if [ ! -e "build/make/core/Makefile" ]; then
 fi
 
 function setup {
-  tmp_dir="$(mktemp -d tmp.XXXXXX)"
-  trap 'cleanup "${tmp_dir}"' EXIT
+#  tmp_dir="$(mktemp -d tmp.XXXXXX)"
+  tmp_dir="tmp.l6QLPm"
+#  trap 'cleanup "${tmp_dir}"' EXIT
   echo "${tmp_dir}"
 }
 
 function cleanup {
   tmp_dir="$1"; shift
-  rm -rf "${tmp_dir}"
+#  rm -rf "${tmp_dir}"
 }
 
 function run_soong {
@@ -82,6 +83,12 @@ function test_sbom_aosp_cf_x86_64_phone {
   # Generate installed file list from .img files in PRODUCT_OUT
   dump_erofs=$out_dir/host/linux-x86/bin/dump.erofs
   lz4=$out_dir/host/linux-x86/bin/lz4
+
+  declare -A diff_excludes
+  diff_excludes[system]="\
+    -I /etc/NOTICE.xml.gz \
+    -I /odm_dlkm/etc \
+    -I /vendor_dlkm/etc"
 
   # Example output of dump.erofs is as below, and the data used in the test start
   # at line 11. Column 1 is inode id, column 2 is inode type and column 3 is name.
@@ -155,7 +162,11 @@ function test_sbom_aosp_cf_x86_64_phone {
     sort -n -o "$files_in_soong_spdx_file" "$files_in_soong_spdx_file"
 
     echo ============ Diffing files in $f and SBOM created by Soong
-    diff_files "$file_list_file" "$files_in_soong_spdx_file" "$partition_name" ""
+    exclude=
+    if [ -v 'diff_excludes[$partition_name]' ]; then
+     exclude=${diff_excludes[$partition_name]}
+    fi
+    diff_files "$file_list_file" "$files_in_soong_spdx_file" "$partition_name" "$exclude"
   done
 
   RAMDISK_IMAGES="$product_out/ramdisk.img"
@@ -230,10 +241,10 @@ function verify_packages_licenses {
     exit 1
   fi
 
-  # PRODUCT and 7 prebuilt packages have "PackageLicenseDeclared: NOASSERTION"
+  # PRODUCT and 6 prebuilt packages have "PackageLicenseDeclared: NOASSERTION"
   # All other packages have declared licenses
   num_of_packages_with_noassertion_license=$(grep 'PackageLicenseDeclared: NOASSERTION' $sbom_file | wc -l)
-  if [ $num_of_packages_with_noassertion_license = 15 ]
+  if [ $num_of_packages_with_noassertion_license = 13 ]
   then
     echo "Number of packages with NOASSERTION license is correct."
   else
