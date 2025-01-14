@@ -34,6 +34,24 @@
       "parentUuid": "20c88e7e_45f6071c",
       "revId": "242e590b2d76f5b0997c04e0045891b752e7cbbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6368464b_578b4bb6",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-14T18:25:59Z",
+      "side": 1,
+      "message": "yeah I also ran into this and reported it to Yu before.",
+      "parentUuid": "8749150a_51fa3ce3",
+      "revId": "242e590b2d76f5b0997c04e0045891b752e7cbbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
