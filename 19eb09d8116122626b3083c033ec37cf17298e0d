@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cfe86ec_edde1c5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-01-14T22:15:05Z",
+      "side": 1,
+      "message": "Eventually ModuleProxy will replace Module in all these visiting methods and expose a very limited interfaces to the caller, it currently implements Module is to make the transition period easier.",
+      "revId": "19eb09d8116122626b3083c033ec37cf17298e0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
