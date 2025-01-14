@@ -16,6 +16,24 @@
       "message": "Let\u0027s make 3 individual boolean properties for these. Allowing the user to specify any property is scary.",
       "revId": "bdd8248f9f797c06c675947f90518f2602bdedd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b7c6742_48e7a8cc",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-14T22:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69c50f89_d2362cb8",
+      "revId": "bdd8248f9f797c06c675947f90518f2602bdedd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
