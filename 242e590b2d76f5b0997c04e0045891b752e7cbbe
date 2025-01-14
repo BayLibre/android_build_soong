@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c88e7e_45f6071c",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-14T02:58:46Z",
+      "side": 1,
+      "message": "You can use `ctx.GetDirectDepWithTag()` because there\u0027s only 1 super image. Same below.",
+      "revId": "242e590b2d76f5b0997c04e0045891b752e7cbbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
