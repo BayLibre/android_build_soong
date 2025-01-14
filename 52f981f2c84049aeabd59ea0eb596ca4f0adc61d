@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ef95025_fd4f6d51",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-14T18:57:34Z",
+      "side": 1,
+      "message": "Lets just drop this partition type check entirely. And make fsgen not set `use_avb` on the partitions that shouldn\u0027t have it.",
+      "parentUuid": "d7f37468_e0280bee",
+      "revId": "52f981f2c84049aeabd59ea0eb596ca4f0adc61d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d927f76_bd87dca0",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 1
