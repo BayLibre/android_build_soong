@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "497e55a3_e07d6aeb",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-14T22:31:39Z",
+      "side": 1,
+      "message": "Use nil instead of false as use_avb is false by default.",
+      "revId": "86bbb140e8b5f0f879b2994849ff1a215e7fde9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
