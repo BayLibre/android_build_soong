@@ -16,6 +16,24 @@
       "message": "You can use `ctx.GetDirectDepWithTag()` because there\u0027s only 1 super image. Same below.",
       "revId": "242e590b2d76f5b0997c04e0045891b752e7cbbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8749150a_51fa3ce3",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-14T05:03:01Z",
+      "side": 1,
+      "message": "Done.\n\nBtw, I tried using `ctx.GetDirectDepProxyWithTag` but ran into a [nil pointer exception](https://paste.googleplex.com/5846722929229824). @yudiliu@google.com would you know if this is expected?",
+      "parentUuid": "20c88e7e_45f6071c",
+      "revId": "242e590b2d76f5b0997c04e0045891b752e7cbbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
