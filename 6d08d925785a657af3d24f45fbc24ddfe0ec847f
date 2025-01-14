@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cd1e079_be71786b",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-14T22:38:35Z",
+      "side": 1,
+      "message": "I think specifying `BoolDefault` with `false` gives more clarity thus I would like to keep it as is.",
+      "parentUuid": "4846e379_563d689e",
+      "revId": "6d08d925785a657af3d24f45fbc24ddfe0ec847f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18937bac_da5103a1",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-01-14T22:35:23Z",
       "side": 1,
       "message": "Won\u0027t this error out on empty strings? And they\u0027re often empty in make, right?",
+      "revId": "6d08d925785a657af3d24f45fbc24ddfe0ec847f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca4c16e9_0fda56a4",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-14T22:38:35Z",
+      "side": 1,
+      "message": "Yes, thus error is only thrown when the variable is a non-empty string in L388.",
+      "parentUuid": "18937bac_da5103a1",
       "revId": "6d08d925785a657af3d24f45fbc24ddfe0ec847f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
