@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7f37468_e0280bee",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-14T18:51:51Z",
+      "side": 1,
+      "message": "\u003e Why is this one not also included in the if?\n\nAh, thanks for catching this. The intention was to always add `avb_avbtool` entry, based on [this](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l\u003d2332;drc\u003d7f50a123045520f2c5e18e9eb4e83f92244a1459). Fixed in the latest patchset to behave correctly.\n\n\u003e Also it seems from the presubmit errors that if we stil need this we\u0027ll also still need avbtool.\n\nI think the presubmit error is caused from [this](https://cs.android.com/android/platform/superproject/main/+/main:packages/modules/Virtualization/tests/vendor_images/Android.bp;l\u003d7;drc\u003d316e6428ed8239dc1c403057c1fc01e52f672b84) module, which specifies `partition_name` as `microdroid-vendor` instead of `vendor`. I think we can resolve this by either:\n- Adding `microdroid-vendor` to the allowed partitions list\n- Making `partition_type` a required property of `android_filesystem` and determine the partition based on this property\n\nWDYT?",
+      "parentUuid": "bc3031bf_7246599c",
+      "revId": "52f981f2c84049aeabd59ea0eb596ca4f0adc61d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d927f76_bd87dca0",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2025-01-14T03:03:37Z",
       "side": 1,
       "message": "Could you make it it an error for `Use_avb` to be enabled on not one of the supported partition types? And then fsgen shouldn\u0027t enable Use_avb on e.g. userdata.",
+      "revId": "52f981f2c84049aeabd59ea0eb596ca4f0adc61d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e092fe_ec93cb65",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-14T18:51:51Z",
+      "side": 1,
+      "message": "I think that would lead to divergence between the soong and make generated prop file. In make all partitions\u0027 prop files write `avb_avbtool` if `BOARD_AVB_ENABLE` is `true`. I also do not see a huge benefit in turning this into an error, given that make handles this implicitly.",
+      "parentUuid": "5d927f76_bd87dca0",
       "revId": "52f981f2c84049aeabd59ea0eb596ca4f0adc61d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
