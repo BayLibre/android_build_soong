@@ -401,17 +401,17 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 		// Needed for generating the boot image.
 		`platform:dex2oatd`,
 
-		// The configured contents of BootJars.
-		`com.android.art:baz`,
-		`com.android.art:quuz`,
+		// The configured contents of BootJars, via their apexes if necessary.
+		`platform:com.android.art`,
+		`platform:com.android.art`,
 		`platform:foo`,
 
-		// The configured contents of ApexBootJars.
-		`myapex:bar`,
+		// The configured contents of ApexBootJars, via their apex.
+		`platform:myapex`,
 
-		// The fragments.
-		`com.android.art:art-bootclasspath-fragment`,
-		`myapex:my-bootclasspath-fragment`,
+		// The fragments via their apexes.
+		`platform:com.android.art`,
+		`platform:myapex`,
 
 		// Impl lib of sdk_library for transitive srcjar generation
 		`platform:foo.impl`,
@@ -662,7 +662,7 @@ func TestBootJarNotInApex(t *testing.T) {
 		prepareForTestWithMyapex,
 		java.FixtureConfigureApexBootJars("myapex:foo"),
 	).ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
-		`module "myplatform-bootclasspath" variant ".*": module "foo" from platform is not allowed in the apex boot jars list`)).
+		`module "myplatform-bootclasspath" variant ".*": failed to find module "foo" in apex "myapex"`)).
 		RunTestWithBp(t, `
 			apex {
 				name: "myapex",
