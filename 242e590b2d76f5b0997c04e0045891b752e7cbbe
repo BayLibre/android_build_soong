@@ -52,6 +52,24 @@
       "parentUuid": "8749150a_51fa3ce3",
       "revId": "242e590b2d76f5b0997c04e0045891b752e7cbbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ba0ab6_941f6fe3",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-01-14T18:29:17Z",
+      "side": 1,
+      "message": "GetDirectDepProxyWithTag returns a pointer to ModuleProxy, so you would need to do a nil check since it might not able to find the moedule.",
+      "parentUuid": "6368464b_578b4bb6",
+      "revId": "242e590b2d76f5b0997c04e0045891b752e7cbbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
