@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4846e379_563d689e",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-14T22:35:23Z",
+      "side": 1,
+      "message": "nit: `proptools.Bool` will default to false.",
+      "revId": "6d08d925785a657af3d24f45fbc24ddfe0ec847f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18937bac_da5103a1",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-14T22:35:23Z",
+      "side": 1,
+      "message": "Won\u0027t this error out on empty strings? And they\u0027re often empty in make, right?",
+      "revId": "6d08d925785a657af3d24f45fbc24ddfe0ec847f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
