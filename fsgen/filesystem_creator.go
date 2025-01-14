@@ -381,6 +381,7 @@ func partitionSpecificFsProps(ctx android.EarlyModuleContext, fsProps *filesyste
 				panic(fmt.Sprintf("Partition size must be an int, got %s", vars.BoardPartitionSize))
 			}
 			fsProps.Partition_size = &parsed
+			fsProps.Use_avb = proptools.BoolPtr(false)
 		}
 		// https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l=2265;drc=7f50a123045520f2c5e18e9eb4e83f92244a1459
 		if s, err := strconv.ParseBool(partitionVars.ProductFsCasefold); err == nil {
