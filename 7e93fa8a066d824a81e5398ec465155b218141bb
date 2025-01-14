@@ -232,6 +232,24 @@
       "parentUuid": "b7dbb98f_d1806db9",
       "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "921045d8_9789eb1e",
+        "filename": "java/app_import.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-14T18:49:07Z",
+      "side": 1,
+      "message": "I just meant up within this if block. As it is now, won\u0027t it fail because there are multiple rules that generate apkFilename?\n\nCould you add a test?",
+      "parentUuid": "58a2c682_926f4f0d",
+      "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
