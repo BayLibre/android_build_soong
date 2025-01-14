@@ -15,6 +15,8 @@
 package java
 
 import (
+	"fmt"
+
 	"android/soong/android"
 
 	"github.com/google/blueprint"
@@ -52,25 +54,72 @@ func addDependencyOntoApexModulePair(ctx android.BottomUpMutatorContext, apex st
 	tag := bootclasspathDependencyTag{
 		typ: tagType,
 	}
-	if !android.IsConfiguredJarForPlatform(apex) {
-		tag.apex = apex
+	target := ctx.Module().Target()
+	if android.IsConfiguredJarForPlatform(apex) {
+		ctx.AddFarVariationDependencies(target.Variations(), tag, name)
+	} else {
+		tag.moduleInApex = name
+		ctx.AddFarVariationDependencies(target.Variations(), tag, apex)
 	}
 
-	target := ctx.Module().Target()
-
-	ctx.AddFarVariationDependencies(target.Variations(), tag, name)
 }
 
 // gatherApexModulePairDepsWithTag returns the list of dependencies with the supplied tag that was
 // added by addDependencyOntoApexModulePair.
 func gatherApexModulePairDepsWithTag(ctx android.BaseModuleContext, tagType bootclasspathDependencyTagType) []android.Module {
 	var modules []android.Module
+
+	type moduleInApex struct {
+		module string
+		apex   string
+	}
+
+	var modulesInApexes []moduleInApex
+
 	ctx.VisitDirectDeps(func(module android.Module) {
 		t := ctx.OtherModuleDependencyTag(module)
 		if bcpTag, ok := t.(bootclasspathDependencyTag); ok && bcpTag.typ == tagType {
-			modules = append(modules, module)
+			if bcpTag.moduleInApex != "" {
+				modulesInApexes = append(modulesInApexes, moduleInApex{bcpTag.moduleInApex, ctx.OtherModuleName(module)})
+			} else {
+				modules = append(modules, module)
+			}
 		}
 	})
+
+	for _, moduleInApex := range modulesInApexes {
+		var found android.Module
+		ctx.WalkDeps(func(child, parent android.Module) bool {
+			t := ctx.OtherModuleDependencyTag(child)
+			if parent == ctx.Module() {
+				if bcpTag, ok := t.(bootclasspathDependencyTag); ok && bcpTag.typ == tagType && ctx.OtherModuleName(child) == moduleInApex.apex {
+					// recurse into the apex
+					return true
+				}
+			} else if tagType != fragment && android.IsFragmentInApexTag(t) {
+				return true
+			} else if android.IsDontReplaceSourceWithPrebuiltTag(t) {
+				return false
+			} else if t == android.PrebuiltDepTag {
+				return false
+			} else if IsBootclasspathFragmentContentDepTag(t) {
+				return false
+			} else if android.RemoveOptionalPrebuiltPrefix(ctx.OtherModuleName(child)) == moduleInApex.module {
+				if found != nil && child != found {
+					panic(fmt.Errorf("found two conflicting modules %q in apex %q: %s and %s",
+						moduleInApex.module, moduleInApex.apex, found, child))
+				}
+				found = child
+			}
+			return false
+		})
+		if found != nil {
+			modules = append(modules, found)
+		} else if !ctx.Config().AllowMissingDependencies() {
+			ctx.ModuleErrorf("failed to find module %q in apex %q\n",
+				moduleInApex.module, moduleInApex.apex)
+		}
+	}
 	return modules
 }
 
@@ -111,7 +160,7 @@ type bootclasspathDependencyTag struct {
 
 	typ bootclasspathDependencyTagType
 
-	apex string
+	moduleInApex string
 }
 
 type bootclasspathDependencyTagType int
@@ -130,8 +179,8 @@ const (
 func (t bootclasspathDependencyTag) ExcludeFromVisibilityEnforcement() {
 }
 
-func (t bootclasspathDependencyTag) ApexTransition() string {
-	return t.apex
+func (t bootclasspathDependencyTag) LicenseAnnotations() []android.LicenseAnnotation {
+	return []android.LicenseAnnotation{android.LicenseAnnotationSharedDependency}
 }
 
 // Dependencies that use the bootclasspathDependencyTag instances are only added after all the
