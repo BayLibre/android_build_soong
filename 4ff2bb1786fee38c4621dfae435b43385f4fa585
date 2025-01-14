@@ -34,6 +34,24 @@
       "parentUuid": "f4b677b8_360138ab",
       "revId": "4ff2bb1786fee38c4621dfae435b43385f4fa585",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aa8f3f6_c9f5cec6",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-14T00:27:37Z",
+      "side": 1,
+      "message": "Will add these variables in the follow up changes and remove them for now as they are not essential in building the image (although needed for bit identicalness).",
+      "parentUuid": "3e59721d_75533ced",
+      "revId": "4ff2bb1786fee38c4621dfae435b43385f4fa585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
