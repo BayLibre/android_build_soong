@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c50f89_d2362cb8",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-14T21:46:27Z",
+      "side": 1,
+      "message": "Let\u0027s make 3 individual boolean properties for these. Allowing the user to specify any property is scary.",
+      "revId": "bdd8248f9f797c06c675947f90518f2602bdedd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
