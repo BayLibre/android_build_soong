@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec38ee41_eb857a50",
+        "filename": "ui/build/androidmk_denylist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2025-01-15T09:57:18Z",
+      "side": 1,
+      "message": "This could be stricter, but I can assure you that we won\u0027t be using this exemption to add new .mk files anyway, so nvm. ;)",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 8
+      },
+      "revId": "11e3b4095984ff85ab6f7c4a92bc4af7ec5c9cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
