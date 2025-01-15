@@ -91,9 +91,13 @@ type partitionDepTagType struct {
 type superPartitionDepTagType struct {
 	blueprint.BaseDependencyTag
 }
+type targetFilesMetadataDepTagType struct {
+	blueprint.BaseDependencyTag
+}
 
 var superPartitionDepTag superPartitionDepTagType
 var filesystemDepTag partitionDepTagType
+var targetFilesMetadataDepTag targetFilesMetadataDepTagType
 
 func (a *androidDevice) DepsMutator(ctx android.BottomUpMutatorContext) {
 	addDependencyIfDefined := func(dep *string) {
@@ -121,6 +125,12 @@ func (a *androidDevice) DepsMutator(ctx android.BottomUpMutatorContext) {
 	for _, vbmetaPartition := range a.partitionProps.Vbmeta_partitions {
 		ctx.AddDependency(ctx.Module(), filesystemDepTag, vbmetaPartition)
 	}
+	a.addDepsForTargetFilesMetadata(ctx)
+}
+
+func (a *androidDevice) addDepsForTargetFilesMetadata(ctx android.BottomUpMutatorContext) {
+	ctx.AddDependency(ctx.Module(), targetFilesMetadataDepTag, "zucchini_files_for_target_files")
+	ctx.AddDependency(ctx.Module(), targetFilesMetadataDepTag, "update_engine_files_for_target_files")
 }
 
 func (a *androidDevice) copyToProductOut(ctx android.ModuleContext, builder *android.RuleBuilder, src android.Path, dest string) {
@@ -339,6 +349,7 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 	}
 
 	a.copyImagesToTargetZip(ctx, builder, targetFilesDir)
+	a.copyMetadataToTargetZip(ctx, builder, targetFilesDir)
 
 	builder.Command().
 		BuiltTool("soong_zip").
@@ -383,6 +394,17 @@ func (a *androidDevice) copyImagesToTargetZip(ctx android.ModuleContext, builder
 		} else {
 			ctx.ModuleErrorf("Super partition %s does set SuperImageProvider\n", superPartition.Name())
 		}
+	}
+}
+
+func (a *androidDevice) copyMetadataToTargetZip(ctx android.ModuleContext, builder *android.RuleBuilder, targetFilesDir android.WritablePath) {
+	// Create a META/ subdirectory
+	builder.Command().Textf("mkdir -p %s/META", targetFilesDir.String())
+	if ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.AbOtaUpdater {
+		ctx.VisitDirectDepsProxyWithTag(targetFilesMetadataDepTag, func(child android.ModuleProxy) {
+			info, _ := android.OtherModuleProvider(ctx, child, android.OutputFilesProvider)
+			builder.Command().Textf("cp ").Inputs(info.DefaultOutputFiles).Textf(" %s/META/", targetFilesDir.String())
+		})
 	}
 }
 
