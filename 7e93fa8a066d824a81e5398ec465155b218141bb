@@ -250,6 +250,24 @@
       "parentUuid": "58a2c682_926f4f0d",
       "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "883a92be_2a4ed7e8",
+        "filename": "java/app_import.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2025-01-15T02:21:21Z",
+      "side": 1,
+      "message": "I moved the modification of `apkname` to the previous location where apkFilename is set:\nFrom:\n```\napkFilename :\u003d proptools.StringDefault(a.properties.Filename, a.BaseModuleName()+\".apk\")\n```\nTo:\n```\n\tdefaultApkFilename :\u003d a.BaseModuleName()\n\tif a.properties.Compress_apk.GetOrDefault(ctx, false) {\n\t\tdefaultApkFilename +\u003d \".apk.gz\"\n\t} else {\n\t\tdefaultApkFilename +\u003d \".apk\"\n\t}\n\tapkFilename :\u003d proptools.StringDefault(a.properties.Filename, defaultApkFilename)\n```\nWe don\u0027t modify the `apkFilename` in this if block now.\n\nTherefore, apkFilename should be correctly synchronized.\n\nAnd I just added tests for this, thank you.",
+      "parentUuid": "921045d8_9789eb1e",
+      "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
