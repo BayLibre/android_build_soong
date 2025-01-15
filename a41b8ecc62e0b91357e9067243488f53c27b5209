@@ -67,6 +67,23 @@
       "message": "https://android-review.googlesource.com/q/I3259a9b88c6a22f94e41ef43e2c42d9ea56c2afb",
       "revId": "a41b8ecc62e0b91357e9067243488f53c27b5209",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec3ebd48_1028bba9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3838607
+      },
+      "writtenOn": "2025-01-15T01:23:13Z",
+      "side": 1,
+      "message": "Stop code",
+      "revId": "a41b8ecc62e0b91357e9067243488f53c27b5209",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
