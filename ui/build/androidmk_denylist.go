@@ -15,6 +15,7 @@
 package build
 
 import (
+	"fmt"
 	"strings"
 )
 
@@ -86,7 +87,7 @@ var external_ndk_androidmks []string = []string{
 }
 
 var art_androidmks = []string{
-	//"art/",
+	"art/",
 }
 
 func shouldIgnore(androidmk string) bool {
@@ -102,6 +103,7 @@ func shouldIgnore(androidmk string) bool {
 }
 
 func ignoreSomeAndroidMks(androidMks []string) (filtered []string) {
+	fmt.Println("WARNING: Android.mk files in art/ and subdirectories are ignored on purpose for cleanup. Please check out the details in b/388015096 if your cases are impacted.")
 	for _, l := range androidMks {
 		if !shouldIgnore(l) {
 			filtered = append(filtered, l)
