@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9bc474b_5f635f73",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-15T21:33:13Z",
+      "side": 1,
+      "message": "I think we would need these in the end state to match the make packaging behavior. WDYT about adding it to the main `ProductVariables`?",
+      "parentUuid": "d75a797f_9bc2aec3",
+      "range": {
+        "startLine": 403,
+        "startChar": 36,
+        "endLine": 403,
+        "endChar": 78
+      },
+      "revId": "d334ff9828b6363f70d1aa5fa285693a4832030a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba50f7b6_c7bd87cd",
         "filename": "filesystem/android_device.go",
         "patchSetId": 1
