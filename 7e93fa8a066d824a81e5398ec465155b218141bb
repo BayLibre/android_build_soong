@@ -286,6 +286,24 @@
       "parentUuid": "883a92be_2a4ed7e8",
       "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57504372_20b00bdb",
+        "filename": "java/app_import.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2025-01-15T13:13:35Z",
+      "side": 1,
+      "message": "Add `ctx.Arch().ArchType.Name` to the `output path` can solve this problem.\n```\noutputFile :\u003d android.PathForModuleOut(ctx, ctx.Arch().ArchType.Name, apkFilename)\n```",
+      "parentUuid": "68e2616e_8436fad5",
+      "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
