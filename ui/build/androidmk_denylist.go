@@ -85,21 +85,27 @@ var external_ndk_androidmks []string = []string{
 	"external/webp/",
 }
 
-func ignoreNdkAndroidMks(androidMks []string) (filtered []string) {
-	filter := func(s string) bool {
-		for _, d := range external_ndk_androidmks {
-			if strings.HasPrefix(s, d) {
-				return false
-			}
-		}
-		return true
-	}
+var art_androidmks = []string{
+	//"art/",
+}
 
+func shouldIgnore(androidmk string) bool {
+	ignore_androidmks := make([]string, 0, len(external_ndk_androidmks)+len(art_androidmks))
+	ignore_androidmks = append(ignore_androidmks, external_ndk_androidmks...)
+	ignore_androidmks = append(ignore_androidmks, art_androidmks...)
+	for _, prefix := range ignore_androidmks {
+		if strings.HasPrefix(androidmk, prefix) {
+			return true
+		}
+	}
+	return false
+}
+
+func ignoreNdkAndroidMks(androidMks []string) (filtered []string) {
 	for _, l := range androidMks {
-		if filter(l) {
+		if !shouldIgnore(l) {
 			filtered = append(filtered, l)
 		}
 	}
-
 	return
 }
