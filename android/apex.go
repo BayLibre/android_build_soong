@@ -891,3 +891,16 @@ type PrebuiltInfo struct {
 	// to generate the mainline module prebuilt.
 	Prebuilt_info_file_path string `json:",omitempty"`
 }
+
+type FragmentInApexTag struct{}
+
+func (FragmentInApexTag) isFragmentInApexTag() {}
+
+type isFragmentInApexTagIntf interface {
+	isFragmentInApexTag()
+}
+
+func IsFragmentInApexTag(tag blueprint.DependencyTag) bool {
+	_, ok := tag.(isFragmentInApexTagIntf)
+	return ok
+}
