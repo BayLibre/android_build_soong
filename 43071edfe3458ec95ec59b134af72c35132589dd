@@ -22,6 +22,30 @@
       },
       "revId": "43071edfe3458ec95ec59b134af72c35132589dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b15954_215efa45",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-01-15T20:49:01Z",
+      "side": 1,
+      "message": "ModuleProxy is a Module so this is working, but I changed the parent to ModuleProxy and cast using ctx.Module() instead of parent.",
+      "parentUuid": "82c24b82_af8d7076",
+      "range": {
+        "startLine": 1179,
+        "startChar": 32,
+        "endLine": 1179,
+        "endChar": 38
+      },
+      "revId": "43071edfe3458ec95ec59b134af72c35132589dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
