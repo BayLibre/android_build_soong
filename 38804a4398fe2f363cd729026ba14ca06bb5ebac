@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6990a71e_bc555301",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-15T00:00:50Z",
+      "side": 1,
+      "message": "This can be a local variable",
+      "revId": "38804a4398fe2f363cd729026ba14ca06bb5ebac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c685cd21_62ca00f4",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-15T00:00:50Z",
+      "side": 1,
+      "message": "Don\u0027t set MapFile in FilesystemInfo if building a cpio image, it won\u0027t be generated then.",
+      "revId": "38804a4398fe2f363cd729026ba14ca06bb5ebac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ba54a01_68583f68",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-15T00:00:50Z",
+      "side": 1,
+      "message": "Do we need to touch it? Can we just list it as an implicit output?",
+      "revId": "38804a4398fe2f363cd729026ba14ca06bb5ebac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94276b6c_76be4791",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-15T00:00:50Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 731,
+        "startChar": 61,
+        "endLine": 731,
+        "endChar": 68
+      },
+      "revId": "38804a4398fe2f363cd729026ba14ca06bb5ebac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
