@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9680575a_ab3ddc0b",
+        "filename": "java/base.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2784,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-15T18:51:25Z",
+      "side": 1,
+      "message": "You can probably remove this TODO",
+      "revId": "00d006199c81d499d917c7e225467162ce756cd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
