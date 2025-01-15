@@ -322,6 +322,7 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 
 		java.CheckModuleDependencies(t, result.TestContext, "com.android.art", "android_common_com.android.art", []string{
 			`art-bootclasspath-fragment`,
+			`art-bootclasspath-fragment`,
 			`com.android.art.key`,
 			`dex2oatd`,
 		})
@@ -429,6 +430,7 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 			`art-bootclasspath-fragment`,
 			`com.android.art.key`,
 			`dex2oatd`,
+			`prebuilt_art-bootclasspath-fragment`,
 			`prebuilt_com.android.art`,
 		})
 
@@ -591,6 +593,7 @@ func TestBootclasspathFragmentInPrebuiltArtApex(t *testing.T) {
 			`all_apex_contributions`,
 			`dex2oatd`,
 			`prebuilt_art-bootclasspath-fragment`,
+			`prebuilt_art-bootclasspath-fragment`,
 		})
 
 		java.CheckModuleDependencies(t, result.TestContext, "art-bootclasspath-fragment", "android_common_com.android.art", []string{
@@ -701,6 +704,7 @@ func TestBootclasspathFragmentContentsNoName(t *testing.T) {
 	java.CheckModuleDependencies(t, result.TestContext, "myapex", "android_common_myapex", []string{
 		`dex2oatd`,
 		`myapex.key`,
+		`mybootclasspathfragment`,
 		`mybootclasspathfragment`,
 	})
 
