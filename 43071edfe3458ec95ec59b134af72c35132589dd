@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82c24b82_af8d7076",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-15T18:55:23Z",
+      "side": 1,
+      "message": "I\u0027m confused how this is working, `parent` is an `android.ModuleProxy` here, but `filter` takes an `android.Module`?",
+      "range": {
+        "startLine": 1179,
+        "startChar": 32,
+        "endLine": 1179,
+        "endChar": 38
+      },
+      "revId": "43071edfe3458ec95ec59b134af72c35132589dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
