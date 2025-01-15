@@ -60,7 +60,7 @@ func TestParseBuildReleaseSet(t *testing.T) {
 	t.Run("closed range", func(t *testing.T) {
 		set, err := parseBuildReleaseSet("S-F1")
 		android.AssertDeepEquals(t, "errors", nil, err)
-		android.AssertStringEquals(t, "set", "[S,Tiramisu,UpsideDownCake,F1]", set.String())
+		android.AssertStringEquals(t, "set", "[S,Tiramisu,UpsideDownCake,VanillaIceCream,Baklava,F1]", set.String())
 	})
 	invalidAReleaseMessage := `unknown release "A", expected one of ` + allBuildReleaseSet.String()
 	t.Run("invalid release", func(t *testing.T) {
