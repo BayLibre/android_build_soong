@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b61f2617_4825f974",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-15T22:41:45Z",
+      "side": 1,
+      "message": "Makes sense, I have added an `Ab_ota_updater` property on `android_device` to control this behavior.",
+      "parentUuid": "88c3f76a_ffeaedd6",
+      "range": {
+        "startLine": 403,
+        "startChar": 36,
+        "endLine": 403,
+        "endChar": 78
+      },
+      "revId": "d334ff9828b6363f70d1aa5fa285693a4832030a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba50f7b6_c7bd87cd",
@@ -181,6 +205,30 @@
       "side": 1,
       "message": "Fair, I guess if we were to expose the ability to add more files to META/ via properties on the module this pattern would be useful.",
       "parentUuid": "2cb564da_24801026",
+      "range": {
+        "startLine": 406,
+        "startChar": 74,
+        "endLine": 406,
+        "endChar": 82
+      },
+      "revId": "d334ff9828b6363f70d1aa5fa285693a4832030a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efd55a18_414fc632",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-15T22:41:45Z",
+      "side": 1,
+      "message": "I changed my implementation to this idea.",
+      "parentUuid": "e3e90659_c0fc21a9",
       "range": {
         "startLine": 406,
         "startChar": 74,
