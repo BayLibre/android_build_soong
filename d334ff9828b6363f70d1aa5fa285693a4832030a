@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d75a797f_9bc2aec3",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-15T21:29:48Z",
+      "side": 1,
+      "message": "These variables should only be used from fsgen, not from modules. If you need them, you can make a property on the module that fsgen sets.",
+      "range": {
+        "startLine": 403,
+        "startChar": 36,
+        "endLine": 403,
+        "endChar": 78
+      },
+      "revId": "d334ff9828b6363f70d1aa5fa285693a4832030a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba50f7b6_c7bd87cd",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-15T21:29:48Z",
+      "side": 1,
+      "message": "I think we can do the renaming as part of this command, instead of creating renaming genrules.",
+      "range": {
+        "startLine": 406,
+        "startChar": 74,
+        "endLine": 406,
+        "endChar": 82
+      },
+      "revId": "d334ff9828b6363f70d1aa5fa285693a4832030a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
