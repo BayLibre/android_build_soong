@@ -263,7 +263,9 @@ func (f *filesystemCreator) createDeviceModule(
 	}
 	partitionProps.Vbmeta_partitions = vbmetaPartitions
 
-	deviceProps := &filesystem.DeviceProperties{}
+	deviceProps := &filesystem.DeviceProperties{
+		Ab_ota_updater: proptools.BoolPtr(ctx.Config().ProductVariables().PartitionVarsForSoongMigrationOnlyDoNotUse.AbOtaUpdater),
+	}
 	if bootloader, ok := f.createBootloaderFilegroup(ctx); ok {
 		deviceProps.Bootloader = proptools.StringPtr(":" + bootloader)
 	}
