@@ -15,6 +15,7 @@
 package build
 
 import (
+	"fmt"
 	"strings"
 )
 
@@ -86,7 +87,7 @@ var external_ndk_androidmks []string = []string{
 }
 
 var art_androidmks = []string{
-	//"art/",
+	"art/",
 }
 
 func ignoreSomeAndroidMks(androidMks []string) (filtered []string) {
@@ -94,6 +95,12 @@ func ignoreSomeAndroidMks(androidMks []string) (filtered []string) {
 	ignore_androidmks = append(ignore_androidmks, external_ndk_androidmks...)
 	ignore_androidmks = append(ignore_androidmks, art_androidmks...)
 
+<<<<<<< PATCH SET (11e3b4 Ignore Android.mk files in art/ and subdirectories)
+func ignoreSomeAndroidMks(androidMks []string) (filtered []string) {
+	fmt.Println("WARNING: Android.mk files in art/ and subdirectories are ignored on purpose for cleanup. Please check out the details in b/388015096 if your cases are impacted.")
+||||||| BASE
+func ignoreSomeAndroidMks(androidMks []string) (filtered []string) {
+=======
 	shouldKeep := func(androidmk string) bool {
 		for _, prefix := range ignore_androidmks {
 			if strings.HasPrefix(androidmk, prefix) {
@@ -103,6 +110,7 @@ func ignoreSomeAndroidMks(androidMks []string) (filtered []string) {
 		return true
 	}
 
+>>>>>>> BASE      (bd6200 Prepare for ignoring Android.mk files in art/)
 	for _, l := range androidMks {
 		if shouldKepp(l) {
 			filtered = append(filtered, l)
