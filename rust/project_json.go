@@ -34,6 +34,21 @@ const (
 	// Environment variables used to control the behavior of this singleton.
 	envVariableCollectRustDeps = "SOONG_GEN_RUST_PROJECT"
 	rustProjectJsonFileName    = "rust-project.json"
+
+	// This file is used by check_rust/main.rs to find build targets that
+	// need to be built when a file is updated. This concept comes from Fuchsia
+	// (another non-cargo project) where they use a mapping file [0] to map
+	// each source file to the various ninja build targets. That mapping file
+	// is then ingested when a Rust source file is saved to figure out which
+	// ninja targets need to be built [1] in order to provide accurate Rust
+	// diagnostics. The concept here is very similar except we do not list
+	// each of the Rust source files in Android.bp, just the crate root. So
+	// instead we will use the source directory to figure out if the source
+	// path of our saved file is relative to each of our crates.
+	//
+	// [0]: https://cs.opensource.google/fuchsia/fuchsia/+/main:build/rust/rust_auxiliary.gni;l=483-507;drc=d2b04ae4cba95adfc2b65a70785a26d989b797a8
+	// [1]: https://cs.opensource.google/fuchsia/fuchsia/+/main:tools/devshell/contrib/lib/rust/clippy.py;drc=f397c8981b73c38de7ab957ee295f767472fc346
+	rustTargetMappingFileName = "rust-target-mapping.json"
 )
 
 // The format of rust-project.json is not yet finalized. A current description is available at:
@@ -60,6 +75,15 @@ type rustProjectJson struct {
 	Crates  []rustProjectCrate `json:"crates"`
 }
 
+type rustTargetMappingsJson []rustTargetMappingJson
+
+type rustTargetMappingJson struct {
+	Name        string `json:"name"`
+	BuildTarget string `json:"build_target"`
+	CheckTarget string `json:"check_target"`
+	SourceDir   string `json:"source_dir"`
+}
+
 // crateInfo is used during the processing to keep track of the known crates.
 type crateInfo struct {
 	Idx    int            // Index of the crate in rustProjectJson.Crates slice.
@@ -68,8 +92,9 @@ type crateInfo struct {
 }
 
 type projectGeneratorSingleton struct {
-	project     rustProjectJson
-	knownCrates map[string]crateInfo // Keys are module names.
+	project        rustProjectJson
+	targetMappings rustTargetMappingsJson
+	knownCrates    map[string]crateInfo // Keys are module names.
 }
 
 func rustProjectGeneratorSingleton() android.Singleton {
@@ -174,6 +199,18 @@ func (singleton *projectGeneratorSingleton) addCrate(ctx android.SingletonContex
 		singleton.project.Crates = append(singleton.project.Crates, crate)
 	}
 	singleton.knownCrates[rModule.Name()] = crateInfo{Idx: idx, Deps: deps, Device: rModule.Device()}
+
+	if rModule.OutputFile().Valid() {
+		mapping := rustTargetMappingJson{
+			Name:        rModule.Name(),
+			BuildTarget: rModule.OutputFile().String(),
+			CheckTarget: rModule.OutputFile().String() + ".checkJson",
+			SourceDir:   ctx.ModuleDir(rModule),
+		}
+
+		singleton.targetMappings = append(singleton.targetMappings, mapping)
+	}
+
 	return idx, true
 }
 
@@ -212,21 +249,25 @@ func (singleton *projectGeneratorSingleton) GenerateBuildActions(ctx android.Sin
 		singleton.appendCrateAndDependencies(ctx, module)
 	})
 
-	path := android.PathForOutput(ctx, rustProjectJsonFileName)
-	err := createJsonFile(singleton.project, path)
-	if err != nil {
+	rustProjectJsonPath := android.PathForOutput(ctx, rustProjectJsonFileName)
+	if err := createJsonFile(singleton.project, rustProjectJsonPath); err != nil {
+		ctx.Errorf(err.Error())
+	}
+
+	rustTargetMappingPath := android.PathForOutput(ctx, rustTargetMappingFileName)
+	if err := createJsonFile(singleton.targetMappings, rustTargetMappingPath); err != nil {
 		ctx.Errorf(err.Error())
 	}
 }
 
-func createJsonFile(project rustProjectJson, rustProjectPath android.WritablePath) error {
-	buf, err := json.MarshalIndent(project, "", "  ")
+func createJsonFile(serializable any, jsonFilePath android.WritablePath) error {
+	buf, err := json.MarshalIndent(serializable, "", "  ")
 	if err != nil {
-		return fmt.Errorf("JSON marshal of rustProjectJson failed: %s", err)
+		return fmt.Errorf("JSON marshal failed: %s", err)
 	}
-	err = android.WriteFileToOutputDir(rustProjectPath, buf, 0666)
-	if err != nil {
-		return fmt.Errorf("Writing rust-project to %s failed: %s", rustProjectPath.String(), err)
+
+	if err := android.WriteFileToOutputDir(jsonFilePath, buf, 0666); err != nil {
+		return fmt.Errorf("Writing serialized json to %s failed: %s", jsonFilePath.String(), err)
 	}
 	return nil
 }
