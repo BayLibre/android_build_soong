@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db0b4aec_1dbd4f6b",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-15T00:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6990a71e_bc555301",
+      "revId": "38804a4398fe2f363cd729026ba14ca06bb5ebac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c685cd21_62ca00f4",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-01-15T00:00:50Z",
       "side": 1,
       "message": "Don\u0027t set MapFile in FilesystemInfo if building a cpio image, it won\u0027t be generated then.",
+      "revId": "38804a4398fe2f363cd729026ba14ca06bb5ebac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d30ea26d_f2e9d540",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-15T00:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c685cd21_62ca00f4",
       "revId": "38804a4398fe2f363cd729026ba14ca06bb5ebac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b98013_36169be5",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-15T00:45:44Z",
+      "side": 1,
+      "message": "Declaring it as an `ImplicitOutput` causes a failure during ninja exceution for \"empty\" partitions like `userdata`. \n\nWe could change `build_image.py` to create this file, but prepending `touch` to the build command seemed like the easier option.",
+      "parentUuid": "1ba54a01_68583f68",
+      "revId": "38804a4398fe2f363cd729026ba14ca06bb5ebac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94276b6c_76be4791",
@@ -65,6 +119,30 @@
       "writtenOn": "2025-01-15T00:00:50Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 731,
+        "startChar": 61,
+        "endLine": 731,
+        "endChar": 68
+      },
+      "revId": "38804a4398fe2f363cd729026ba14ca06bb5ebac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64d9f67f_e8a97fb7",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-15T00:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94276b6c_76be4791",
       "range": {
         "startLine": 731,
         "startChar": 61,
