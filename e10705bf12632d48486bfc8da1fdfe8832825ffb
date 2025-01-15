@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1d471a7_249a1af3",
+        "filename": "filesystem/android_device_product_out.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-15T18:56:32Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\tctx.ModuleErrorf(\"Partition %s does not set FilesystemProvider\\n\", partition.Name())\n```",
+      "revId": "e10705bf12632d48486bfc8da1fdfe8832825ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c241cd8d_9b30ff99",
+        "filename": "filesystem/android_device_product_out.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-15T18:56:32Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\tctx.ModuleErrorf(\"Super partition %s does not set SuperImageProvider\\n\", superPartition.Name())\n```",
+      "revId": "e10705bf12632d48486bfc8da1fdfe8832825ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

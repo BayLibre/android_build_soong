@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ff2b4a_725da6a8",
+        "filename": "filesystem/android_device_product_out.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-15T18:56:32Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\tctx.ModuleErrorf(\"%s does not set BootimgInfo\\n\", *prop)\n```",
+      "revId": "1eb5aea0ea059085b8c6e7c2bd0ed741986d49b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ca16a2_2f645e20",
+        "filename": "filesystem/android_device_product_out.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-15T18:56:32Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\tctx.ModuleErrorf(\"%s does set SuperImageProvider\\n\", *a.partitionProps.Super_partition_name)\n```",
+      "revId": "1eb5aea0ea059085b8c6e7c2bd0ed741986d49b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe9cad38_9c1be3ba",
+        "filename": "filesystem/android_device_product_out.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-15T18:56:32Z",
+      "side": 1,
+      "message": "recovery is missing? I just noticed that it\u0027s missing in `buildMiscInfo` as well. Is this intended?",
+      "revId": "1eb5aea0ea059085b8c6e7c2bd0ed741986d49b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
