@@ -131,6 +131,7 @@ func (a *androidDevice) DepsMutator(ctx android.BottomUpMutatorContext) {
 func (a *androidDevice) addDepsForTargetFilesMetadata(ctx android.BottomUpMutatorContext) {
 	ctx.AddDependency(ctx.Module(), targetFilesMetadataDepTag, "zucchini_files_for_target_files")
 	ctx.AddDependency(ctx.Module(), targetFilesMetadataDepTag, "update_engine_files_for_target_files")
+	ctx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), targetFilesMetadataDepTag, "liblz4") // host variant
 }
 
 func (a *androidDevice) copyToProductOut(ctx android.ModuleContext, builder *android.RuleBuilder, src android.Path, dest string) {
