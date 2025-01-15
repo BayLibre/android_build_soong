@@ -268,6 +268,24 @@
       "parentUuid": "921045d8_9789eb1e",
       "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e2616e_8436fad5",
+        "filename": "java/app_import.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2025-01-15T08:52:47Z",
+      "side": 1,
+      "message": "Sorry, I think I finally understand now. If there are multiple architectures, it might lead to the following error:\n```\nmultiple rules generate \nout/soong/.intermediates/vendor/unbundled_google/packages/Chrome/TrichromeLibrary/android_common/TrichromeLibrary.apk.gz\n```\nHowever, I\u0027m currently not quite sure why this change would have that effect.",
+      "parentUuid": "883a92be_2a4ed7e8",
+      "revId": "7e93fa8a066d824a81e5398ec465155b218141bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
