@@ -104,6 +104,24 @@
       "parentUuid": "fe9cad38_9c1be3ba",
       "revId": "1eb5aea0ea059085b8c6e7c2bd0ed741986d49b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3f451c_0e3a304a",
+        "filename": "filesystem/android_device_product_out.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-15T19:18:08Z",
+      "side": 1,
+      "message": "Oh my bad, I was confused with the super image provider right below.",
+      "parentUuid": "4d60ee95_a21d0ad2",
+      "revId": "1eb5aea0ea059085b8c6e7c2bd0ed741986d49b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
