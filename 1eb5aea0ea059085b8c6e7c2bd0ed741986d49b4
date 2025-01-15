@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55509ea9_64af9a17",
+        "filename": "filesystem/android_device_product_out.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-15T19:12:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92ff2b4a_725da6a8",
+      "revId": "1eb5aea0ea059085b8c6e7c2bd0ed741986d49b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18ca16a2_2f645e20",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4e820f1_fa45df17",
+        "filename": "filesystem/android_device_product_out.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-15T19:12:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18ca16a2_2f645e20",
+      "revId": "1eb5aea0ea059085b8c6e7c2bd0ed741986d49b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe9cad38_9c1be3ba",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-01-15T18:56:32Z",
       "side": 1,
       "message": "recovery is missing? I just noticed that it\u0027s missing in `buildMiscInfo` as well. Is this intended?",
+      "revId": "1eb5aea0ea059085b8c6e7c2bd0ed741986d49b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d60ee95_a21d0ad2",
+        "filename": "filesystem/android_device_product_out.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-15T19:12:48Z",
+      "side": 1,
+      "message": "Added recovery here, good catch. But recovery doesn\u0027t appear in `get_build_var BOARD_SUPER_PARTITION_PARTITION_LIST`, is there any reason you think it should be included in `buildMiscInfo`?",
+      "parentUuid": "fe9cad38_9c1be3ba",
       "revId": "1eb5aea0ea059085b8c6e7c2bd0ed741986d49b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
