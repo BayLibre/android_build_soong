@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f76e75_11bbbe5c",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-15T01:37:46Z",
+      "side": 1,
+      "message": "It\u0027s unfortunate that these have to be in the same rulebuilder, it essentially doubles the image build time. We should probably consider rewriting the staging dir logic so it can be shared between different commands in a followup.",
+      "revId": "1fecfae69a57f84dcc35056ab818ab49e6e77dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
