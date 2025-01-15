@@ -429,6 +429,7 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 			`art-bootclasspath-fragment`,
 			`com.android.art.key`,
 			`dex2oatd`,
+			`prebuilt_art-bootclasspath-fragment`,
 			`prebuilt_com.android.art`,
 		})
 
