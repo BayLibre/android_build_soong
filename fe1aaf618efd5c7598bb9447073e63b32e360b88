@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41534359_63f96ef4",
+        "filename": "ui/build/androidmk_denylist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2025-01-15T11:44:32Z",
+      "side": 1,
+      "message": "I don\u0027t see that, but this works too afterall.",
+      "parentUuid": "0f085ff8_c3cf9513",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 65
+      },
+      "revId": "fe1aaf618efd5c7598bb9447073e63b32e360b88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa2a1b79_db69936d",
