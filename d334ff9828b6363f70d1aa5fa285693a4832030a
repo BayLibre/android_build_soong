@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88c3f76a_ffeaedd6",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-15T21:42:47Z",
+      "side": 1,
+      "message": "Right, which is why there would be a property on this module. In the true \"end state\", both fsgen and product config would be deleted, so we have to have a property on this module to define it. It wouldn\u0027t be floating around in some global configuration.",
+      "parentUuid": "1eb2ad61_e44a3a52",
+      "range": {
+        "startLine": 403,
+        "startChar": 36,
+        "endLine": 403,
+        "endChar": 78
+      },
+      "revId": "d334ff9828b6363f70d1aa5fa285693a4832030a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba50f7b6_c7bd87cd",
         "filename": "filesystem/android_device.go",
         "patchSetId": 1
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "We could, but I think extracting out that logic into genrules means that we do not have to do special handling for other components of `META` subdir, like https://r.android.com/3453795",
       "parentUuid": "ba50f7b6_c7bd87cd",
+      "range": {
+        "startLine": 406,
+        "startChar": 74,
+        "endLine": 406,
+        "endChar": 82
+      },
+      "revId": "d334ff9828b6363f70d1aa5fa285693a4832030a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e90659_c0fc21a9",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-15T21:42:47Z",
+      "side": 1,
+      "message": "Fair, I guess if we were to expose the ability to add more files to META/ via properties on the module this pattern would be useful.",
+      "parentUuid": "2cb564da_24801026",
       "range": {
         "startLine": 406,
         "startChar": 74,
