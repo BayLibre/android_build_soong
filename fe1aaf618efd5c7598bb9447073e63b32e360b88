@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f085ff8_c3cf9513",
+        "filename": "ui/build/androidmk_denylist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-01-15T10:10:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f76d7a84_fcdc7ca0",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 65
+      },
+      "revId": "fe1aaf618efd5c7598bb9447073e63b32e360b88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa2a1b79_db69936d",
@@ -101,6 +125,30 @@
           ]
         }
       ],
+      "revId": "fe1aaf618efd5c7598bb9447073e63b32e360b88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "460910c7_183436a2",
+        "filename": "ui/build/androidmk_denylist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-01-15T10:10:40Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "fa2a1b79_db69936d",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 25
+      },
       "revId": "fe1aaf618efd5c7598bb9447073e63b32e360b88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
