@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12ba786d_27518cc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-01-16T19:00:22Z",
+      "side": 1,
+      "message": "@mmaurer@google.com we put it here in soong because it is rather tightly coupled with soong. The coupling is not unlike an ABI. Moving it out to another repository will complicate future changes.",
+      "parentUuid": "3ec3c5f3_b2720278",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fa86d0e_15cc8664",
         "filename": "rust/builder.go",
         "patchSetId": 1
