@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eafbf3fb_e8dde1cf",
+        "filename": "aconfig/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T20:52:02Z",
+      "side": 1,
+      "message": "I do not fully understand the requirement of this tool but if the requirement is that it should encompass all apis, I agree that wear apis should be added. However I believe that it should be done conditionally so that we don\u0027t end up building the wear sdk in platform sdk builds.",
+      "parentUuid": "6edc8728_0fed203e",
+      "revId": "6543483382da72963d4660e47cef91dd4c80349e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4caa7098_c41746bf",
         "filename": "aconfig/all_aconfig_declarations.go",
         "patchSetId": 3
