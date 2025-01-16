@@ -22,6 +22,30 @@
       },
       "revId": "11e3b4095984ff85ab6f7c4a92bc4af7ec5c9cab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5df25b8_a2474d9e",
+        "filename": "ui/build/androidmk_denylist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-01-16T10:50:35Z",
+      "side": 1,
+      "message": "Yes, it is a little stricter and there are some presumbit errors I could not quickly resolve, so aosp/3453229 is created to ignore ahat/Android.mk first, and it passes all presubmits.",
+      "parentUuid": "ec38ee41_eb857a50",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 8
+      },
+      "revId": "11e3b4095984ff85ab6f7c4a92bc4af7ec5c9cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
