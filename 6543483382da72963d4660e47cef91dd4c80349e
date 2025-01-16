@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07679238_1c58ea7a",
+        "filename": "aconfig/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T21:42:33Z",
+      "side": 1,
+      "message": "Unfortunately we cannot define another `all_aconfig_declarations` module type, because the module is a singleton module (i.e. only one module of the type is allowed to be defined in the bp files). I believe the wear api files should be conditionally added in the same module via soong config vars or go/soong-selects.",
+      "parentUuid": "2b6bba80_c3cbe996",
+      "revId": "6543483382da72963d4660e47cef91dd4c80349e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4caa7098_c41746bf",
         "filename": "aconfig/all_aconfig_declarations.go",
         "patchSetId": 3
