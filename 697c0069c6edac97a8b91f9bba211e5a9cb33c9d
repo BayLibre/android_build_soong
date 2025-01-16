@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7012f94f_181dcfe0",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2025-01-16T19:16:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1930a1b_cb916360",
+      "revId": "697c0069c6edac97a8b91f9bba211e5a9cb33c9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a773ab9_f7591b26",
