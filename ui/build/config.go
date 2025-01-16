@@ -1592,10 +1592,6 @@ func (c *configImpl) KatiPackageNinjaFile() string {
 	return filepath.Join(c.OutDir(), "build"+c.KatiSuffix()+katiPackageSuffix+".ninja")
 }
 
-func (c *configImpl) KatiSoongOnlyPackageNinjaFile() string {
-	return filepath.Join(c.OutDir(), "build"+c.KatiSuffix()+katiSoongOnlyPackageSuffix+".ninja")
-}
-
 func (c *configImpl) SoongVarsFile() string {
 	targetProduct, err := c.TargetProductOrErr()
 	if err != nil {
@@ -1651,7 +1647,7 @@ func (c *configImpl) DevicePreviousProductConfig() string {
 }
 
 func (c *configImpl) KatiPackageMkDir() string {
-	return filepath.Join(c.SoongOutDir(), "kati_packaging"+c.KatiSuffix())
+	return filepath.Join(c.ProductOut(), "obj", "CONFIG", "kati_packaging")
 }
 
 func (c *configImpl) hostOutRoot() string {
