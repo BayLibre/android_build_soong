@@ -31,7 +31,6 @@ var spaceSlashReplacer = strings.NewReplacer("/", "_", " ", "_")
 const katiBuildSuffix = ""
 const katiCleanspecSuffix = "-cleanspec"
 const katiPackageSuffix = "-package"
-const katiSoongOnlyPackageSuffix = "-soong-only-package"
 
 // genKatiSuffix creates a filename suffix for kati-generated files so that we
 // can cache them based on their inputs. Such files include the generated Ninja
@@ -41,12 +40,8 @@ const katiSoongOnlyPackageSuffix = "-soong-only-package"
 // Currently that includes the TARGET_PRODUCT and kati-processed command line
 // arguments.
 func genKatiSuffix(ctx Context, config Config) {
-	targetProduct := "unknown"
-	if p, err := config.TargetProductOrErr(); err == nil {
-		targetProduct = p
-	}
 	// Construct the base suffix.
-	katiSuffix := "-" + targetProduct + config.CoverageSuffix()
+	katiSuffix := "-" + config.TargetProduct() + config.CoverageSuffix()
 
 	// Append kati arguments to the suffix.
 	if args := config.KatiArgs(); len(args) > 0 {
@@ -73,13 +68,13 @@ func genKatiSuffix(ctx Context, config Config) {
 func writeValueIfChanged(ctx Context, config Config, dir string, filename string, value string) {
 	filePath := filepath.Join(dir, filename)
 	previousValue := ""
-	rawPreviousValue, err := os.ReadFile(filePath)
+	rawPreviousValue, err := ioutil.ReadFile(filePath)
 	if err == nil {
 		previousValue = string(rawPreviousValue)
 	}
 
 	if previousValue != value {
-		if err = os.WriteFile(filePath, []byte(value), 0666); err != nil {
+		if err = ioutil.WriteFile(filePath, []byte(value), 0666); err != nil {
 			ctx.Fatalf("Failed to write: %v", err)
 		}
 	}
@@ -339,18 +334,9 @@ func cleanOldInstalledFiles(ctx Context, config Config) {
 
 // Generate the Ninja file containing the packaging command lines for the dist
 // dir.
-func runKatiPackage(ctx Context, config Config, soongOnly bool) {
+func runKatiPackage(ctx Context, config Config) {
 	ctx.BeginTrace(metrics.RunKati, "kati package")
 	defer ctx.EndTrace()
-
-	entryPoint := "build/make/packaging/main.mk"
-	suffix := katiPackageSuffix
-	ninjaFile := config.KatiPackageNinjaFile()
-	if soongOnly {
-		entryPoint = "build/make/packaging/main_soong_only.mk"
-		suffix = katiSoongOnlyPackageSuffix
-		ninjaFile = config.KatiSoongOnlyPackageNinjaFile()
-	}
 
 	args := []string{
 		// Mark the dist dir as writable.
@@ -360,14 +346,14 @@ func runKatiPackage(ctx Context, config Config, soongOnly bool) {
 		// Fail when redefining / duplicating a target.
 		"--werror_overriding_commands",
 		// Entry point.
-		"-f", entryPoint,
+		"-f", "build/make/packaging/main.mk",
 		// Directory containing .mk files for packaging purposes, such as
 		// the dist.mk file, containing dist-for-goals data.
 		"KATI_PACKAGE_MK_DIR=" + config.KatiPackageMkDir(),
 	}
 
 	// Run Kati against a restricted set of environment variables.
-	runKati(ctx, config, suffix, args, func(env *Environment) {
+	runKati(ctx, config, katiPackageSuffix, args, func(env *Environment) {
 		env.Allow([]string{
 			// Some generic basics
 			"LANG",
@@ -395,7 +381,7 @@ func runKatiPackage(ctx Context, config Config, soongOnly bool) {
 	})
 
 	// Compress and dist the packaging Ninja file.
-	distGzipFile(ctx, config, ninjaFile)
+	distGzipFile(ctx, config, config.KatiPackageNinjaFile())
 }
 
 // Run Kati on the cleanspec files to clean the build.
