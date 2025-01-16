@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed2e0971_ae4622f5",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T19:29:31Z",
+      "side": 1,
+      "message": "I think the reason why the build errors are only appearing in art branches is because `frameworks/base` does not exist in art branches, thus `PathForModuleSrc` will resolve to `nil` as `frameworks-base-api-*current.txt` modules are not defined in art branches. I think nil-checking before appending here will resolve the issue.",
+      "revId": "0c20328b7fa9dcc23a5525d55d5c5f2917cff4a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
