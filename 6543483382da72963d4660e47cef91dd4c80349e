@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4caa7098_c41746bf",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T20:47:37Z",
+      "side": 1,
+      "message": "nit: use camel case per [Go style guide](go/go-style/guide#mixed-caps)\n```suggestion\n\tapiFiles :\u003d android.Paths{}\n```",
+      "revId": "6543483382da72963d4660e47cef91dd4c80349e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82515773_a5aa9460",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T20:47:37Z",
+      "side": 1,
+      "message": "nit: use camel case per [Go style guide](go/go-style/guide#mixed-caps)\n```suggestion\n\tfor _, apiFile :\u003d range this.properties.Api_files {\n```",
+      "revId": "6543483382da72963d4660e47cef91dd4c80349e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe758f8_e91f7ef8",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T20:47:37Z",
+      "side": 1,
+      "message": "nit: use camel case per [Go style guide](go/go-style/guide#mixed-caps)\n```suggestion\n\tflagFile :\u003d android.PathForIntermediates(ctx, \"all_aconfig_declarations.pb\")\n```",
+      "revId": "6543483382da72963d4660e47cef91dd4c80349e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
