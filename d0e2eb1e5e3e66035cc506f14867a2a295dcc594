@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1530f433_44f9f6ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-16T16:42:41Z",
+      "side": 1,
+      "message": "We may end up moving it to development/scripts (outside the soong repo) now that I see its size and the fact that it\u0027s not invoked via Soong, but I can review it in place once I get in.",
+      "parentUuid": "bab49d6e_ad62fdb7",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fa86d0e_15cc8664",
         "filename": "rust/builder.go",
         "patchSetId": 1
@@ -258,6 +276,48 @@
         "endLine": 94,
         "endChar": 67
       },
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96f0e4d1_f23d2664",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-16T16:42:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3026e8a0_826f75d5",
+      "range": {
+        "startLine": 94,
+        "startChar": 57,
+        "endLine": 94,
+        "endChar": 67
+      },
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d25eee2_2fd5c45c",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-16T16:42:41Z",
+      "side": 1,
+      "message": "Sure, I wasn\u0027t objecting to having two rules there, just trying to make sure I understood what was going on with `-Zno-codegen`. If it *did* do something useful, I figured we could make our normal clippy checks faster.",
+      "parentUuid": "6c621bbe_70c0ae75",
       "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
