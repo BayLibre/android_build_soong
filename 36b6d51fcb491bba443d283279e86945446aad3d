@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c7e6d13_bd4a04ee",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T23:42:52Z",
+      "side": 1,
+      "message": "nit: maybe define as fields in filesystem struct instead?",
+      "range": {
+        "startLine": 492,
+        "startChar": 1,
+        "endLine": 496,
+        "endChar": 135
+      },
+      "revId": "36b6d51fcb491bba443d283279e86945446aad3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56c5b7db_7a2a554d",
+        "filename": "filesystem/system_other.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T23:42:52Z",
+      "side": 1,
+      "message": "nit: enforce that this property is always defined?",
+      "revId": "36b6d51fcb491bba443d283279e86945446aad3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d672aede_85973f6e",
+        "filename": "filesystem/system_other.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T23:42:52Z",
+      "side": 1,
+      "message": "```suggestion\n\tctx.AddDependency(ctx.Module(), dexpreoptDependencyTag, m.properties.Preinstall_dexpreopt_files_from...)\n```",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "36b6d51fcb491bba443d283279e86945446aad3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
