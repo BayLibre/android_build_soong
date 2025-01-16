@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8660c427_cb382294",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T18:22:12Z",
+      "side": 1,
+      "message": "This is appending the same `all_aconfig_declarations.pb` file multiple times to `inputs`. Is this intended?",
+      "revId": "697c0069c6edac97a8b91f9bba211e5a9cb33c9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a773ab9_f7591b26",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T18:22:12Z",
+      "side": 1,
+      "message": "I _think_ you meant `append(api_files, flag_file)` here.",
+      "revId": "697c0069c6edac97a8b91f9bba211e5a9cb33c9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
