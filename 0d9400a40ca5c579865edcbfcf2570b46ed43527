@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6f9d841_172c7a20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-16T21:50:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "575cc62c_5ddf3f98",
+      "revId": "0d9400a40ca5c579865edcbfcf2570b46ed43527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba928a24_b3b45227",
@@ -97,6 +115,30 @@
       "side": 1,
       "message": "I\u0027d drop it unless you think having isolated on the device but not on the host would be useful sometimes.  Keep the comment update though.",
       "parentUuid": "18310562_d35c1b90",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 1
+      },
+      "revId": "0d9400a40ca5c579865edcbfcf2570b46ed43527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "181ecb2a_3473b08b",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-16T21:50:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba928a24_b3b45227",
       "range": {
         "startLine": 201,
         "startChar": 0,
