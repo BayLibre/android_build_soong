@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b95140_273ba167",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2025-01-16T20:28:40Z",
+      "side": 1,
+      "message": "Thanks for the suggestion; added an if check.",
+      "parentUuid": "ed2e0971_ae4622f5",
+      "revId": "0c20328b7fa9dcc23a5525d55d5c5f2917cff4a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cac493d3_2089aead",
