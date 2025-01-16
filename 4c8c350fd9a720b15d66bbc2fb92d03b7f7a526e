@@ -16,6 +16,24 @@
       "message": "does this want to be `clippyArgMap`?",
       "revId": "4c8c350fd9a720b15d66bbc2fb92d03b7f7a526e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce1e6c4_e59b4d83",
+        "filename": "rust/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-16T18:29:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f55a2c95_c0e7ffd5",
+      "revId": "4c8c350fd9a720b15d66bbc2fb92d03b7f7a526e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

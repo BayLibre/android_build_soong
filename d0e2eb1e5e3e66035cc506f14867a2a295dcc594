@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ec3c5f3_b2720278",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-16T18:29:45Z",
+      "side": 1,
+      "message": "Ok sounds good. Let me know what additional steps you would like me to take.",
+      "parentUuid": "1530f433_44f9f6ee",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fa86d0e_15cc8664",
         "filename": "rust/builder.go",
         "patchSetId": 1
@@ -101,6 +119,24 @@
       "writtenOn": "2025-01-16T15:08:53Z",
       "side": 1,
       "message": "Looks like I reintroduced the `\\\"` around `^$out:`. Will remove in the next patchset.",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c179c6e_f3171d41",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-16T18:29:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fa86d0e_15cc8664",
       "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
