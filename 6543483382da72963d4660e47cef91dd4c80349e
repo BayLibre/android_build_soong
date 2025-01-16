@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b6bba80_c3cbe996",
+        "filename": "aconfig/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1137303
+      },
+      "writtenOn": "2025-01-16T21:00:55Z",
+      "side": 1,
+      "message": "ack - that makes sense.\n\nIf it makes more sense to let this handle platform/verticals independently i.e.\n\nplatform input:\n```\n    api_files: [\n        \":frameworks-base-api-current.txt\",\n        \":frameworks-base-api-system-current.txt\",\n        \":frameworks-base-api-system-server-current.txt\",\n        \":frameworks-base-api-module-lib-current.txt\",\n    ],\n```\nplatform output: `prebuilts/sdk/\u003cversion\u003e`\n\nvs\n\nwear input (separate module defined in vendor branch - i.e. `all_wear_aconfig_declarations`)\n\n```\n    api_files: [\n        \":wear-sdk-api-current.txt\",\n        \":wear-sdk-api-system-current.txt\",\n    ],\n```\n\nwear output: `prebuilts/sdk/opt/wear/\u003cversion\u003e`\n\nThen I\u0027m fine with that, as long as we\u0027re using the same process (and presumably that also takes care of the build separation of concerns). I\u0027m just not sure if this is intended as a general-purpose process though, or if there are implicit assumptions about android platform?",
+      "parentUuid": "eafbf3fb_e8dde1cf",
+      "revId": "6543483382da72963d4660e47cef91dd4c80349e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4caa7098_c41746bf",
         "filename": "aconfig/all_aconfig_declarations.go",
         "patchSetId": 3
