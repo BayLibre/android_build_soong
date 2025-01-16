@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30cdc31c_92c2795a",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-16T00:50:26Z",
+      "side": 1,
+      "message": "Will address in a followup.",
+      "parentUuid": "09af51b5_809f3433",
+      "range": {
+        "startLine": 235,
+        "startChar": 34,
+        "endLine": 235,
+        "endChar": 42
+      },
+      "revId": "498ffc1b486a3accb6651ef44a0e1b112fa7fd4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "466d4294_7dd812ee",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-01-16T00:34:27Z",
       "side": 1,
       "message": "```suggestion\n\t\t\t\tctx.ModuleErrorf(\"COW version must be an int, got %q\", partitionVars.ProductVirtualAbCowVersion)\n```",
+      "revId": "498ffc1b486a3accb6651ef44a0e1b112fa7fd4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b05601_223d7ddb",
+        "filename": "fsgen/super_img.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-16T00:50:26Z",
+      "side": 1,
+      "message": "Will address in a followup.",
+      "parentUuid": "466d4294_7dd812ee",
       "revId": "498ffc1b486a3accb6651ef44a0e1b112fa7fd4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
