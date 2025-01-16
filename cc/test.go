@@ -29,9 +29,9 @@ type TestLinkerProperties struct {
 	// if set, build against the gtest library. Defaults to true.
 	Gtest *bool
 
-	// if set, use the isolated gtest runner. Defaults to true if gtest is also true and the arch is Windows, false
-	// otherwise.
-	Isolated *bool
+	// if set, use the isolated gtest runner. Defaults to false.
+	// Isolation is not supported on Windows.
+	Isolated *bool `android:"arch_variant"`
 }
 
 // TestInstallerProperties properties to be registered via the installer
