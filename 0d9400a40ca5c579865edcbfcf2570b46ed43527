@@ -16,6 +16,24 @@
       "message": "Seems fine, but if it makes sense we could also disable isolated automatically for windows variants.",
       "revId": "0d9400a40ca5c579865edcbfcf2570b46ed43527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575cc62c_5ddf3f98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-16T21:10:43Z",
+      "side": 1,
+      "message": "yeah, that would be even better. what would that look like --- it is easy?",
+      "parentUuid": "a71cc65d_ecf6ee07",
+      "revId": "0d9400a40ca5c579865edcbfcf2570b46ed43527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
