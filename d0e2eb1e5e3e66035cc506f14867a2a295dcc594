@@ -16,6 +16,132 @@
       "message": "Added Googlers from email chain",
       "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25264590_44be52ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-16T03:07:13Z",
+      "side": 1,
+      "message": "I\u0027ll finish reviewing this / checking things tomorrow, but re: the broken tests, I\u0027m seeing a breakage on `android.hardware.tests.msgq@1.0-rust-service-test64.clippy` (haven\u0027t investigated) and it looks like you may not have adjusted some things in `blueprint_tests` based on the failing targets.",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "362d92e9_5069387f",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-16T03:07:13Z",
+      "side": 1,
+      "message": "Nit: clippy",
+      "range": {
+        "startLine": 92,
+        "startChar": 81,
+        "endLine": 92,
+        "endChar": 88
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d6d366c4_465c1a58",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "rust/builder.go",
+              "range": {
+                "startLine": 92,
+                "startChar": 0,
+                "endLine": 93,
+                "endChar": 0
+              },
+              "replacement": "\t// to a $out.error file. This file will then be parsed by rust_check to provide clippy-driver\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e728ba_a6d0fbaf",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-16T03:07:13Z",
+      "side": 1,
+      "message": "Nit: I think the canonical name of this option is no-codegen, I was surprised that no_codegen is accepted.",
+      "range": {
+        "startLine": 94,
+        "startChar": 57,
+        "endLine": 94,
+        "endChar": 67
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e614f89d_2d9048a6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "rust/builder.go",
+              "range": {
+                "startLine": 55,
+                "startChar": 0,
+                "endLine": 56,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\t\"-Zno-codegen --error-format\u003djson 2\u003e $out.error \" +\n"
+            },
+            {
+              "path": "rust/builder.go",
+              "range": {
+                "startLine": 94,
+                "startChar": 0,
+                "endLine": 95,
+                "endChar": 0
+              },
+              "replacement": "\tclippyJsonDriver \u003d generateClippyRule(\"clippyJson\", \" -Zno-codegen --error-format\u003djson 2\u003e $out.error\")\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777eabaf_f2ae835c",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-16T03:07:13Z",
+      "side": 1,
+      "message": "Does `-Zno_codegen` add anything useful given that we\u0027re already only emitting metadata? There\u0027s no object file being produced. If it does, we might want to add it to the other clippy build rule too, but I think it\u0027s not actually helpful here.",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
