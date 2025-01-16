@@ -34,6 +34,29 @@
       "parentUuid": "a71cc65d_ecf6ee07",
       "revId": "0d9400a40ca5c579865edcbfcf2570b46ed43527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba928a24_b3b45227",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-16T21:13:29Z",
+      "side": 1,
+      "message": "This should work:\n\n```suggestion\nfunc (test *testDecorator) isolated(ctx android.BaseModuleContext) bool {\n\treturn BoolDefault(test.LinkerProperties.Isolated, false) \u0026\u0026 !ctx.Windows()\n}\n```",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 1
+      },
+      "revId": "0d9400a40ca5c579865edcbfcf2570b46ed43527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
