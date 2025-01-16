@@ -81,6 +81,30 @@
       },
       "revId": "0d9400a40ca5c579865edcbfcf2570b46ed43527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e721b2_3c159c07",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-16T21:47:30Z",
+      "side": 1,
+      "message": "I\u0027d drop it unless you think having isolated on the device but not on the host would be useful sometimes.  Keep the comment update though.",
+      "parentUuid": "18310562_d35c1b90",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 1
+      },
+      "revId": "0d9400a40ca5c579865edcbfcf2570b46ed43527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
