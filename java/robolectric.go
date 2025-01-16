@@ -20,24 +20,13 @@ import (
 	"android/soong/android"
 	"android/soong/java/config"
 	"android/soong/tradefed"
-	"github.com/google/blueprint"
+
 	"github.com/google/blueprint/proptools"
 )
 
 func init() {
 	RegisterRobolectricBuildComponents(android.InitRegistrationContext)
 }
-
-type roboRuntimeOnlyDependencyTag struct {
-	blueprint.BaseDependencyTag
-}
-
-var roboRuntimeOnlyDepTag roboRuntimeOnlyDependencyTag
-
-// Mark this tag so dependencies that use it are excluded from visibility enforcement.
-func (t roboRuntimeOnlyDependencyTag) ExcludeFromVisibilityEnforcement() {}
-
-var _ android.ExcludeFromVisibilityEnforcementTag = roboRuntimeOnlyDepTag
 
 func RegisterRobolectricBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("android_robolectric_test", RobolectricTestFactory)
@@ -58,6 +47,7 @@ const robolectricPrebuiltLibPattern = "platform-robolectric-%s-prebuilt"
 var (
 	roboCoverageLibsTag = dependencyTag{name: "roboCoverageLibs"}
 	roboRuntimesTag     = dependencyTag{name: "roboRuntimes"}
+	roboRuntimeOnlyTag  = dependencyTag{name: "roboRuntimeOnlyTag"}
 )
 
 type robolectricProperties struct {
@@ -74,6 +64,10 @@ type robolectricProperties struct {
 		// Number of shards to use when running the tests.
 		Shards *int64
 	}
+
+	// The version number of a robolectric prebuilt to use from prebuilts/misc/common/robolectric
+	// instead of the one built from source in external/robolectric-shadows.
+	Robolectric_prebuilt_version *string
 
 	// Use /external/robolectric rather than /external/robolectric-shadows as the version of robolectric
 	// to use.  /external/robolectric closely tracks github's master, and will fully replace /external/robolectric-shadows
@@ -104,8 +98,6 @@ func (r *robolectricTest) TestSuites() []string {
 
 var _ android.TestSuiteModule = (*robolectricTest)(nil)
 
-
-
 func (r *robolectricTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 	r.Library.DepsMutator(ctx)
 
@@ -115,12 +107,21 @@ func (r *robolectricTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 		ctx.PropertyErrorf("instrumentation_for", "missing required instrumented module")
 	}
 
-	ctx.AddVariationDependencies(nil, roboRuntimeOnlyDepTag, clearcutJunitLib)
+	ctx.AddVariationDependencies(nil, staticLibTag, clearcutJunitLib)
+
+	if v := String(r.robolectricProperties.Robolectric_prebuilt_version); v != "" {
+		ctx.AddVariationDependencies(nil, staticLibTag, fmt.Sprintf(robolectricPrebuiltLibPattern, v))
+	} else if !proptools.BoolDefault(r.robolectricProperties.Strict_mode, true) {
+		if proptools.Bool(r.robolectricProperties.Upstream) {
+			ctx.AddVariationDependencies(nil, staticLibTag, robolectricCurrentLib+"_upstream")
+		} else {
+			ctx.AddVariationDependencies(nil, staticLibTag, robolectricCurrentLib)
+		}
+	}
 
 	if proptools.BoolDefault(r.robolectricProperties.Strict_mode, true) {
-		ctx.AddVariationDependencies(nil, roboRuntimeOnlyDepTag, robolectricCurrentLib)
+		ctx.AddVariationDependencies(nil, roboRuntimeOnlyTag, robolectricCurrentLib+"_upstream")
 	} else {
-		ctx.AddVariationDependencies(nil, staticLibTag, robolectricCurrentLib)
 		// opting out from strict mode, robolectric_non_strict_mode_permission lib should be added
 		ctx.AddVariationDependencies(nil, staticLibTag, "robolectric_non_strict_mode_permission")
 	}
@@ -196,7 +197,7 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		handleLibDeps(dep)
 	}
 	// handle the runtimeOnly tag for strict_mode
-	for _, dep := range ctx.GetDirectDepsWithTag(roboRuntimeOnlyDepTag) {
+	for _, dep := range ctx.GetDirectDepsWithTag(roboRuntimeOnlyTag) {
 		handleLibDeps(dep)
 	}
 

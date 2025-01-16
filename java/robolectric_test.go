@@ -32,11 +32,6 @@ var prepareRobolectricRuntime = android.GroupFixturePreparers(
 	}
 
 	java_library {
-		name: "Robolectric_all-target",
-		srcs: ["Robo.java"]
-	}
-
-	java_library {
 		name: "mockito-robolectric-prebuilt",
 		srcs: ["Mockito.java"]
 	}
