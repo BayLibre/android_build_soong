@@ -16,6 +16,24 @@
       "message": "This will not work until the Metalava change has been merged across.",
       "revId": "251cedede5e2375eb75a7de0d66205a3ee3aecb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060fc9b1_df67d46a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2025-01-16T14:59:47Z",
+      "side": 1,
+      "message": "It has been tested locally.",
+      "parentUuid": "96446208_3f9888c3",
+      "revId": "251cedede5e2375eb75a7de0d66205a3ee3aecb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
