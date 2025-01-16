@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09af51b5_809f3433",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T00:34:27Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\tctx.PropertyErrorf(\"virtual_ab.retrofit\", \"This property cannot be set when virtual_ab is disabled\")\n```",
+      "range": {
+        "startLine": 235,
+        "startChar": 34,
+        "endLine": 235,
+        "endChar": 42
+      },
+      "revId": "498ffc1b486a3accb6651ef44a0e1b112fa7fd4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466d4294_7dd812ee",
+        "filename": "fsgen/super_img.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T00:34:27Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\tctx.ModuleErrorf(\"COW version must be an int, got %q\", partitionVars.ProductVirtualAbCowVersion)\n```",
+      "revId": "498ffc1b486a3accb6651ef44a0e1b112fa7fd4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
