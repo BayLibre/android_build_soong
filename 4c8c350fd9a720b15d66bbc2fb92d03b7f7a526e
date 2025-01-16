@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f55a2c95_c0e7ffd5",
+        "filename": "rust/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-01-16T16:09:52Z",
+      "side": 1,
+      "message": "does this want to be `clippyArgMap`?",
+      "revId": "4c8c350fd9a720b15d66bbc2fb92d03b7f7a526e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
