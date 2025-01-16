@@ -2151,7 +2151,7 @@ func (j *providesTransitiveHeaderJarsForR8) collectTransitiveHeaderJarsForR8(ctx
 	directStaticLibs := android.Paths{}
 	transitiveLibs := []depset.DepSet[android.Path]{}
 	transitiveStaticLibs := []depset.DepSet[android.Path]{}
-	ctx.VisitDirectDepsProxy(func(module android.ModuleProxy) {
+	ctx.VisitDirectDeps(func(module android.Module) {
 		// don't add deps of the prebuilt version of the same library
 		if ctx.ModuleName() == android.RemoveOptionalPrebuiltPrefix(module.Name()) {
 			return
@@ -2433,7 +2433,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 	var transitiveStaticJarsImplementationLibs []depset.DepSet[android.Path]
 	var transitiveStaticJarsResourceLibs []depset.DepSet[android.Path]
 
-	ctx.VisitDirectDepsProxy(func(module android.ModuleProxy) {
+	ctx.VisitDirectDeps(func(module android.Module) {
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)
 
@@ -2467,7 +2467,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				deps.bootClasspath = append(deps.bootClasspath, dep.HeaderJars...)
 				transitiveBootClasspathHeaderJars = append(transitiveBootClasspathHeaderJars, dep.TransitiveStaticLibsHeaderJars)
 			case sdkLibTag, libTag, instrumentationForTag:
-				if _, ok := android.OtherModuleProvider(ctx, module, JavaPluginInfoProvider); ok {
+				if _, ok := module.(*Plugin); ok {
 					ctx.ModuleErrorf("a java_plugin (%s) cannot be used as a libs dependency", otherName)
 				}
 				deps.classpath = append(deps.classpath, dep.HeaderJars...)
@@ -2485,7 +2485,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				deps.java9Classpath = append(deps.java9Classpath, dep.HeaderJars...)
 				transitiveJava9ClasspathHeaderJars = append(transitiveJava9ClasspathHeaderJars, dep.TransitiveStaticLibsHeaderJars)
 			case staticLibTag:
-				if _, ok := android.OtherModuleProvider(ctx, module, JavaPluginInfoProvider); ok {
+				if _, ok := module.(*Plugin); ok {
 					ctx.ModuleErrorf("a java_plugin (%s) cannot be used as a static_libs dependency", otherName)
 				}
 				deps.classpath = append(deps.classpath, dep.HeaderJars...)
@@ -2505,40 +2505,40 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				transitiveStaticJarsImplementationLibs = append(transitiveStaticJarsImplementationLibs, dep.TransitiveStaticLibsImplementationJars)
 				transitiveStaticJarsResourceLibs = append(transitiveStaticJarsResourceLibs, dep.TransitiveStaticLibsResourceJars)
 			case pluginTag:
-				if plugin, ok := android.OtherModuleProvider(ctx, module, JavaPluginInfoProvider); ok {
-					if plugin.ProcessorClass != nil {
-						addPlugins(&deps, dep.ImplementationAndResourcesJars, *plugin.ProcessorClass)
+				if plugin, ok := module.(*Plugin); ok {
+					if plugin.pluginProperties.Processor_class != nil {
+						addPlugins(&deps, dep.ImplementationAndResourcesJars, *plugin.pluginProperties.Processor_class)
 					} else {
 						addPlugins(&deps, dep.ImplementationAndResourcesJars)
 					}
 					// Turbine doesn't run annotation processors, so any module that uses an
 					// annotation processor that generates API is incompatible with the turbine
 					// optimization.
-					deps.disableTurbine = deps.disableTurbine || plugin.GeneratesApi
+					deps.disableTurbine = deps.disableTurbine || Bool(plugin.pluginProperties.Generates_api)
 				} else {
 					ctx.PropertyErrorf("plugins", "%q is not a java_plugin module", otherName)
 				}
 			case errorpronePluginTag:
-				if _, ok := android.OtherModuleProvider(ctx, module, JavaPluginInfoProvider); ok {
+				if _, ok := module.(*Plugin); ok {
 					deps.errorProneProcessorPath = append(deps.errorProneProcessorPath, dep.ImplementationAndResourcesJars...)
 				} else {
 					ctx.PropertyErrorf("plugins", "%q is not a java_plugin module", otherName)
 				}
 			case exportedPluginTag:
-				if plugin, ok := android.OtherModuleProvider(ctx, module, JavaPluginInfoProvider); ok {
+				if plugin, ok := module.(*Plugin); ok {
 					j.exportedPluginJars = append(j.exportedPluginJars, dep.ImplementationAndResourcesJars...)
-					if plugin.ProcessorClass != nil {
-						j.exportedPluginClasses = append(j.exportedPluginClasses, *plugin.ProcessorClass)
+					if plugin.pluginProperties.Processor_class != nil {
+						j.exportedPluginClasses = append(j.exportedPluginClasses, *plugin.pluginProperties.Processor_class)
 					}
 					// Turbine doesn't run annotation processors, so any module that uses an
 					// annotation processor that generates API is incompatible with the turbine
 					// optimization.
-					j.exportedDisableTurbine = plugin.GeneratesApi
+					j.exportedDisableTurbine = Bool(plugin.pluginProperties.Generates_api)
 				} else {
 					ctx.PropertyErrorf("exported_plugins", "%q is not a java_plugin module", otherName)
 				}
 			case kotlinPluginTag:
-				if _, ok := android.OtherModuleProvider(ctx, module, KotlinPluginInfoProvider); ok {
+				if _, ok := module.(*KotlinPlugin); ok {
 					deps.kotlinPlugins = append(deps.kotlinPlugins, dep.ImplementationAndResourcesJars...)
 				} else {
 					ctx.PropertyErrorf("kotlin_plugins", "%q is not a kotlin_plugin module", otherName)
@@ -2550,21 +2550,21 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 					JavaInfo: dep,
 				})
 			}
-		} else if dep, ok := android.OtherModuleProvider(ctx, module, android.SourceFilesInfoKey); ok {
+		} else if dep, ok := module.(android.SourceFileProducer); ok {
 			switch tag {
 			case sdkLibTag, libTag:
-				checkProducesJars(ctx, dep, module)
-				deps.classpath = append(deps.classpath, dep.Srcs...)
-				deps.dexClasspath = append(deps.classpath, dep.Srcs...)
+				checkProducesJars(ctx, dep)
+				deps.classpath = append(deps.classpath, dep.Srcs()...)
+				deps.dexClasspath = append(deps.classpath, dep.Srcs()...)
 				transitiveClasspathHeaderJars = append(transitiveClasspathHeaderJars,
-					depset.New(depset.PREORDER, dep.Srcs, nil))
+					depset.New(depset.PREORDER, dep.Srcs(), nil))
 			case staticLibTag:
-				checkProducesJars(ctx, dep, module)
-				deps.classpath = append(deps.classpath, dep.Srcs...)
-				deps.staticJars = append(deps.staticJars, dep.Srcs...)
-				deps.staticHeaderJars = append(deps.staticHeaderJars, dep.Srcs...)
+				checkProducesJars(ctx, dep)
+				deps.classpath = append(deps.classpath, dep.Srcs()...)
+				deps.staticJars = append(deps.staticJars, dep.Srcs()...)
+				deps.staticHeaderJars = append(deps.staticHeaderJars, dep.Srcs()...)
 
-				depHeaderJars := depset.New(depset.PREORDER, dep.Srcs, nil)
+				depHeaderJars := depset.New(depset.PREORDER, dep.Srcs(), nil)
 				transitiveClasspathHeaderJars = append(transitiveClasspathHeaderJars, depHeaderJars)
 				transitiveStaticJarsHeaderLibs = append(transitiveStaticJarsHeaderLibs, depHeaderJars)
 				transitiveStaticJarsImplementationLibs = append(transitiveStaticJarsImplementationLibs, depHeaderJars)

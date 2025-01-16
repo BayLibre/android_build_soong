@@ -1455,7 +1455,7 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var transitiveStaticLibsImplementationJars []depset.DepSet[android.Path]
 	var transitiveStaticLibsResourceJars []depset.DepSet[android.Path]
 
-	ctx.VisitDirectDepsProxy(func(module android.ModuleProxy) {
+	ctx.VisitDirectDeps(func(module android.Module) {
 		if dep, ok := android.OtherModuleProvider(ctx, module, JavaInfoProvider); ok {
 			tag := ctx.OtherModuleDependencyTag(module)
 			switch tag {
