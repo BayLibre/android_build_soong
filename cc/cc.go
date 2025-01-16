@@ -136,11 +136,7 @@ type LinkableInfo struct {
 	UnstrippedOutputFile android.Path
 	OutputFile           android.OptionalPath
 	CoverageFiles        android.Paths
-	// CoverageOutputFile returns the output archive of gcno coverage information files.
-	CoverageOutputFile android.OptionalPath
-	SAbiDumpFiles      android.Paths
-	// Partition returns the partition string for this module.
-	Partition            string
+	SAbiDumpFiles        android.Paths
 	CcLibrary            bool
 	CcLibraryInterface   bool
 	RustLibraryInterface bool
@@ -152,9 +148,7 @@ type LinkableInfo struct {
 	BaseModuleName       string
 	HasNonSystemVariants bool
 	IsLlndk              bool
-	// True if the library is in the configs known NDK list.
-	IsNdk             bool
-	InVendorOrProduct bool
+	InVendorOrProduct    bool
 	// SubName returns the modules SubName, used for image and NDK/SDK variations.
 	SubName             string
 	InRamdisk           bool
@@ -168,8 +162,6 @@ type LinkableInfo struct {
 	RelativeInstallPath string
 	// TODO(b/362509506): remove this once all apex_exclude uses are switched to stubs.
 	RustApexExclude bool
-	// Bootstrap tests if this module is allowed to use non-APEX version of libraries.
-	Bootstrap bool
 }
 
 var LinkableInfoProvider = blueprint.NewProvider[*LinkableInfo]()
@@ -2269,7 +2261,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		android.SetProvider(ctx, CcObjectInfoProvider, ccObjectInfo)
 	}
 
-	linkableInfo := CreateCommonLinkableInfo(ctx, c)
+	linkableInfo := CreateCommonLinkableInfo(c)
 	if lib, ok := c.linker.(VersionedInterface); ok {
 		linkableInfo.StubsVersion = lib.StubsVersion()
 	}
@@ -2356,21 +2348,18 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 }
 
-func CreateCommonLinkableInfo(ctx android.ModuleContext, mod VersionedLinkableInterface) *LinkableInfo {
+func CreateCommonLinkableInfo(mod VersionedLinkableInterface) *LinkableInfo {
 	return &LinkableInfo{
 		StaticExecutable:     mod.StaticExecutable(),
 		HasStubsVariants:     mod.HasStubsVariants(),
 		OutputFile:           mod.OutputFile(),
 		UnstrippedOutputFile: mod.UnstrippedOutputFile(),
-		CoverageOutputFile:   mod.CoverageOutputFile(),
-		Partition:            mod.Partition(),
 		IsStubs:              mod.IsStubs(),
 		CcLibrary:            mod.CcLibrary(),
 		CcLibraryInterface:   mod.CcLibraryInterface(),
 		RustLibraryInterface: mod.RustLibraryInterface(),
 		BaseModuleName:       mod.BaseModuleName(),
 		IsLlndk:              mod.IsLlndk(),
-		IsNdk:                mod.IsNdk(ctx.Config()),
 		HasNonSystemVariants: mod.HasNonSystemVariants(),
 		SubName:              mod.SubName(),
 		InVendorOrProduct:    mod.InVendorOrProduct(),
@@ -2384,7 +2373,6 @@ func CreateCommonLinkableInfo(ctx android.ModuleContext, mod VersionedLinkableIn
 		RelativeInstallPath:  mod.RelativeInstallPath(),
 		// TODO(b/362509506): remove this once all apex_exclude uses are switched to stubs.
 		RustApexExclude: mod.RustApexExclude(),
-		Bootstrap:            mod.Bootstrap(),
 	}
 }
 
@@ -3613,23 +3601,14 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	return depPaths
 }
 
-func ShouldUseStubForApex(ctx android.ModuleContext, parent android.Module, dep android.ModuleProxy) bool {
+func ShouldUseStubForApex(ctx android.ModuleContext, parent, dep android.Module) bool {
 	inVendorOrProduct := false
 	bootstrap := false
-	if ctx.EqualModules(ctx.Module(), parent) {
-		if linkable, ok := parent.(LinkableInterface); !ok {
-			ctx.ModuleErrorf("Not a Linkable module: %q", ctx.ModuleName())
-		} else {
-			inVendorOrProduct = linkable.InVendorOrProduct()
-			bootstrap = linkable.Bootstrap()
-		}
+	if linkable, ok := parent.(LinkableInterface); !ok {
+		ctx.ModuleErrorf("Not a Linkable module: %q", ctx.ModuleName())
 	} else {
-		if linkable, ok := android.OtherModuleProvider(ctx, parent, LinkableInfoProvider); !ok {
-			ctx.ModuleErrorf("Not a Linkable module: %q", ctx.ModuleName())
-		} else {
-			inVendorOrProduct = linkable.InVendorOrProduct
-			bootstrap = linkable.Bootstrap
-		}
+		inVendorOrProduct = linkable.InVendorOrProduct()
+		bootstrap = linkable.Bootstrap()
 	}
 
 	apexInfo, _ := android.OtherModuleProvider(ctx, parent, android.ApexInfoProvider)
@@ -3666,7 +3645,7 @@ func ShouldUseStubForApex(ctx android.ModuleContext, parent android.Module, dep 
 // library bar which provides stable interface and exists in the platform, foo uses the stub variant
 // of bar. If bar doesn't provide a stable interface (i.e. buildStubs() == false) or is in the
 // same APEX as foo, the non-stub variant of bar is used.
-func ChooseStubOrImpl(ctx android.ModuleContext, dep android.ModuleProxy) (SharedLibraryInfo, FlagExporterInfo) {
+func ChooseStubOrImpl(ctx android.ModuleContext, dep android.Module) (SharedLibraryInfo, FlagExporterInfo) {
 	depTag := ctx.OtherModuleDependencyTag(dep)
 	libDepTag, ok := depTag.(libraryDependencyTag)
 	if !ok || !libDepTag.shared() {
