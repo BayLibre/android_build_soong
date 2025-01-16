@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f17d227d_75bc9e07",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2025-01-16T19:16:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d41cc3d4_a539a5de",
+      "revId": "697c0069c6edac97a8b91f9bba211e5a9cb33c9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8660c427_cb382294",
@@ -55,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1930a1b_cb916360",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2025-01-16T19:16:24Z",
+      "side": 1,
+      "message": "oops, I meant to add the same thing to both api_files and inputs\n\nI\u0027ll try removing inputs and change the Inputs: line below to\n\n```\nInputs: append(api_files, flag_file)\n```",
+      "parentUuid": "8660c427_cb382294",
+      "revId": "697c0069c6edac97a8b91f9bba211e5a9cb33c9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a773ab9_f7591b26",
         "filename": "aconfig/all_aconfig_declarations.go",
         "patchSetId": 1
@@ -66,6 +102,24 @@
       "writtenOn": "2025-01-16T18:22:12Z",
       "side": 1,
       "message": "I _think_ you meant `append(api_files, flag_file)` here.",
+      "revId": "697c0069c6edac97a8b91f9bba211e5a9cb33c9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0187d8e_377c977e",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2025-01-16T19:16:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a773ab9_f7591b26",
       "revId": "697c0069c6edac97a8b91f9bba211e5a9cb33c9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
