@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6edc8728_0fed203e",
+        "filename": "aconfig/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1137303
+      },
+      "writtenOn": "2025-01-16T20:47:46Z",
+      "side": 1,
+      "message": "Just checking here - if the intention os that this should be *all* aconfig declarations (similar to how we have one monolithic android flags jar shared for unbundled development) should it *also* include all aconfigs/API files from verticals? - i.e.\n\n```\n    api_files: [\n        \":frameworks-base-api-current.txt\",\n        \":frameworks-base-api-system-current.txt\",\n        \":frameworks-base-api-system-server-current.txt\",\n        \":frameworks-base-api-module-lib-current.txt\",\n        \":wear-sdk-api-current.txt\",\n        \":wear-sdk-api-system-current.txt\",\n        // and automotive etc...\n    ],\n```\n\nOnly caveat with that would be the output - would it still make sense to put finalized flag output in /prebuits/sdk/\u003cversion\u003e given that verticals have prebuilts in /prebuilts/sdk/opt/\u003cwear\u003e/\u003cversion\u003e etc?\n\nWould there be a way to filter/direct output based on namespace etc?\n\nNot looking to overcomplicate this, so sorry for piping up here, but very interested in ensuring that this is a tool that is useable across all developers of flagged api.",
+      "revId": "6543483382da72963d4660e47cef91dd4c80349e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4caa7098_c41746bf",
         "filename": "aconfig/all_aconfig_declarations.go",
         "patchSetId": 3
