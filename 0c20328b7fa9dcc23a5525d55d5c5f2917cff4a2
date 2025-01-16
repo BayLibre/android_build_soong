@@ -16,6 +16,47 @@
       "message": "I think the reason why the build errors are only appearing in art branches is because `frameworks/base` does not exist in art branches, thus `PathForModuleSrc` will resolve to `nil` as `frameworks-base-api-*current.txt` modules are not defined in art branches. I think nil-checking before appending here will resolve the issue.",
       "revId": "0c20328b7fa9dcc23a5525d55d5c5f2917cff4a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cac493d3_2089aead",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-16T19:33:13Z",
+      "side": 1,
+      "message": "nit: this can be combined into a single line.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 77
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0f091175_260f2b62",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "aconfig/all_aconfig_declarations.go",
+              "range": {
+                "startLine": 68,
+                "startChar": 0,
+                "endLine": 70,
+                "endChar": 0
+              },
+              "replacement": "\tflag_file :\u003d android.PathForIntermediates(ctx, \"all_aconfig_declarations.pb\")\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0c20328b7fa9dcc23a5525d55d5c5f2917cff4a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
