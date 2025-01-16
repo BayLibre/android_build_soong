@@ -37,6 +37,58 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bab49d6e_ad62fdb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-16T15:08:53Z",
+      "side": 1,
+      "message": "Made the changes @mmaurer@google.com suggested. There is one outstanding issue that I wanted to get Googlers take on. The `check_rust` script is written in Rust and obviously will need to be compiled to be used. I know that the `m` script does some bootstrapping (like compile soong from source). I was not sure if there was a better place to put the action to compile `check_rust`. Is there like `host_binaries` or `dev_tools` action?",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20262a4e_13e9dba5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-16T15:08:53Z",
+      "side": 1,
+      "message": "Looks like soong tests are no longer run be default. Fixed the issues and added `m nothing --no-skip-soong-tests` to Test commit message",
+      "parentUuid": "25264590_44be52ce",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa86d0e_15cc8664",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-16T15:08:53Z",
+      "side": 1,
+      "message": "Looks like I reintroduced the `\\\"` around `^$out:`. Will remove in the next patchset.",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "362d92e9_5069387f",
         "filename": "rust/builder.go",
         "patchSetId": 1
@@ -72,6 +124,30 @@
           ]
         }
       ],
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2168d56_2b030092",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-16T15:08:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "362d92e9_5069387f",
+      "range": {
+        "startLine": 92,
+        "startChar": 81,
+        "endLine": 92,
+        "endChar": 88
+      },
       "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -140,6 +216,48 @@
       "writtenOn": "2025-01-16T03:07:13Z",
       "side": 1,
       "message": "Does `-Zno_codegen` add anything useful given that we\u0027re already only emitting metadata? There\u0027s no object file being produced. If it does, we might want to add it to the other clippy build rule too, but I think it\u0027s not actually helpful here.",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c621bbe_70c0ae75",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-16T15:08:53Z",
+      "side": 1,
+      "message": "After reading https://doc.rust-lang.org/rustc/command-line-arguments.html#--emit-specifies-the-types-of-output-files-to-generate and doing some local testing, it seems that the `-Zno_codgen` does that do anything useful. I removed it. I still think we should have should have seperate `clippy` and `clippJson` rules. Since the `clippy` will be added as an implict dependancy on the crate and `clippJson` will not. Also when we specify `--error-format\u003djson` there is no human readable format printed out, meaning if that clippy rule fails, ninja just complains about a node failing without giving the user any context of what failed.",
+      "parentUuid": "777eabaf_f2ae835c",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3026e8a0_826f75d5",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-16T15:08:53Z",
+      "side": 1,
+      "message": "Removed as discussed [here](https://android-review.googlesource.com/c/platform/build/soong/+/3454760/comment/777eabaf_f2ae835c/)",
+      "parentUuid": "f6e728ba_a6d0fbaf",
+      "range": {
+        "startLine": 94,
+        "startChar": 57,
+        "endLine": 94,
+        "endChar": 67
+      },
       "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
