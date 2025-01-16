@@ -57,6 +57,30 @@
       },
       "revId": "0d9400a40ca5c579865edcbfcf2570b46ed43527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18310562_d35c1b90",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-16T21:35:28Z",
+      "side": 1,
+      "message": "should i keep the `arch_variant` thing, or drop it?",
+      "parentUuid": "ba928a24_b3b45227",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 1
+      },
+      "revId": "0d9400a40ca5c579865edcbfcf2570b46ed43527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
