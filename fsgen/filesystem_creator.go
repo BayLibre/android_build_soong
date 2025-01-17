@@ -865,13 +865,14 @@ func generateFsProps(ctx android.EarlyModuleContext, partitionType string) (*fil
 }
 
 type avbInfo struct {
-	avbEnable        *bool
-	avbKeyPath       *string
-	avbkeyFilegroup  *string
-	avbAlgorithm     *string
-	avbRollbackIndex *int64
-	avbMode          *string
-	avbHashAlgorithm *string
+	avbEnable                *bool
+	avbKeyPath               *string
+	avbkeyFilegroup          *string
+	avbAlgorithm             *string
+	avbRollbackIndex         *int64
+	avbRollbackIndexLocation *int64
+	avbMode                  *string
+	avbHashAlgorithm         *string
 }
 
 func getAvbInfo(config android.Config, partitionType string) avbInfo {
@@ -917,6 +918,13 @@ func getAvbInfo(config android.Config, partitionType string) avbInfo {
 				panic(fmt.Sprintf("Rollback index must be an int, got %s", specificPartitionVars.BoardAvbRollbackIndex))
 			}
 			result.avbRollbackIndex = &parsed
+		}
+		if specificPartitionVars.BoardAvbRollbackIndexLocation != "" {
+			parsed, err := strconv.ParseInt(specificPartitionVars.BoardAvbRollbackIndexLocation, 10, 64)
+			if err != nil {
+				panic(fmt.Sprintf("Rollback index location must be an int, got %s", specificPartitionVars.BoardAvbRollbackIndexLocation))
+			}
+			result.avbRollbackIndexLocation = &parsed
 		}
 
 		// Make allows you to pass arbitrary arguments to avbtool via this variable, but in practice
