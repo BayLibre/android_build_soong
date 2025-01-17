@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db7805e4_571c017d",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-17T23:04:17Z",
+      "side": 1,
+      "message": "Don\u0027t we have to set this property on the generated modules in fsgen?",
+      "revId": "9438c0beefc1716abbd5e54bca7f9690a04627d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
