@@ -16,6 +16,24 @@
       "message": "```suggestion\n\t\tfor k :\u003d range android.SortedKeys(fsInfo.SpecsForSystemOther) {\n```",
       "revId": "b8e280f886c1095c8a7e35cf88c4265c2b55f173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "607cc879_b6be9075",
+        "filename": "filesystem/system_other.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-17T01:33:25Z",
+      "side": 1,
+      "message": "I initially had this, but removed it for performance. In this case it doesn\u0027t matter what order we loop over, because we\u0027re just dumping them into another map.",
+      "parentUuid": "e44ac488_6b4e0645",
+      "revId": "b8e280f886c1095c8a7e35cf88c4265c2b55f173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
