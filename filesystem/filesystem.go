@@ -383,8 +383,6 @@ type FilesystemInfo struct {
 	BuildImagePropFile android.Path
 	// Paths to all the tools referenced inside of the build image property file.
 	BuildImagePropFileDeps android.Paths
-	// Packaging specs to be installed on the system_other image, for the initial boot's dexpreopt.
-	SpecsForSystemOther map[string]android.PackagingSpec
 }
 
 var FilesystemProvider = blueprint.NewProvider[FilesystemInfo]()
@@ -526,7 +524,6 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		ModuleName:             ctx.ModuleName(),
 		BuildImagePropFile:     buildImagePropFile,
 		BuildImagePropFileDeps: buildImagePropFileDeps,
-		SpecsForSystemOther:    f.systemOtherFiles(ctx),
 	}
 
 	android.SetProvider(ctx, FilesystemProvider, fsInfo)
@@ -1073,21 +1070,8 @@ func (f *filesystem) SignedOutputPath() android.Path {
 // Note that "apex" module installs its contents to "apex"(fake partition) as well
 // for symbol lookup by imitating "activated" paths.
 func (f *filesystem) gatherFilteredPackagingSpecs(ctx android.ModuleContext) map[string]android.PackagingSpec {
-	return f.PackagingBase.GatherPackagingSpecsWithFilterAndModifier(ctx, f.filesystemBuilder.FilterPackagingSpec, f.filesystemBuilder.ModifyPackagingSpec)
-}
-
-// Dexpreopt files are installed to system_other. Collect the packaingSpecs for the dexpreopt files
-// from this partition to export to the system_other partition later.
-func (f *filesystem) systemOtherFiles(ctx android.ModuleContext) map[string]android.PackagingSpec {
-	filter := func(spec android.PackagingSpec) bool {
-		// For some reason system_other packaging specs don't set the partition field.
-		return strings.HasPrefix(spec.RelPathInPackage(), "system_other/")
-	}
-	modifier := func(spec *android.PackagingSpec) {
-		spec.SetRelPathInPackage(strings.TrimPrefix(spec.RelPathInPackage(), "system_other/"))
-		spec.SetPartition("system_other")
-	}
-	return f.PackagingBase.GatherPackagingSpecsWithFilterAndModifier(ctx, filter, modifier)
+	specs := f.PackagingBase.GatherPackagingSpecsWithFilterAndModifier(ctx, f.filesystemBuilder.FilterPackagingSpec, f.filesystemBuilder.ModifyPackagingSpec)
+	return specs
 }
 
 func sha1sum(values []string) string {
