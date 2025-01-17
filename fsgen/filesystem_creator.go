@@ -128,6 +128,10 @@ func (f *filesystemCreator) createInternalModules(ctx android.LoadHookContext) {
 			f.properties.Unsupported_partition_types = append(f.properties.Unsupported_partition_types, partitionType)
 		}
 	}
+	finalSoongGeneratedParitionNames := make([]string, 0, len(finalSoongGeneratedPartitions))
+	for _, partitionType := range finalSoongGeneratedPartitions {
+		finalSoongGeneratedParitionNames = append(finalSoongGeneratedParitionNames, generatedModuleNameForPartition(ctx.Config(), partitionType))
+	}
 	// Create android_info.prop
 	f.createAndroidInfo(ctx)
 
@@ -163,7 +167,8 @@ func (f *filesystemCreator) createInternalModules(ctx android.LoadHookContext) {
 		ctx.CreateModule(
 			filesystem.SystemOtherImageFactory,
 			&filesystem.SystemOtherImageProperties{
-				System_image: &systemModule,
+				System_image:                    &systemModule,
+				Preinstall_dexpreopt_files_from: finalSoongGeneratedParitionNames,
 			},
 			&struct {
 				Name *string
