@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67facb72_6234cfb1",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-17T20:22:28Z",
+      "side": 1,
+      "message": "Don\u0027t you need the pipe to the prop file?",
+      "range": {
+        "startLine": 706,
+        "startChar": 30,
+        "endLine": 706,
+        "endChar": 31
+      },
+      "revId": "3678b95eea1d984c2e665734b4c833991ff5d25a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
