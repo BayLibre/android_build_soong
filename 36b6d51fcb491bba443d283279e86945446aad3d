@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c2e0904_1a364c2d",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-17T00:21:59Z",
+      "side": 1,
+      "message": "I don\u0027t like fields in the module, I think they\u0027re harder to trace and they run the risk of being cleared when creating variants. Let\u0027s stick with this but maybe in a followup we should clean this up by returning a struct or something.",
+      "parentUuid": "1c7e6d13_bd4a04ee",
+      "range": {
+        "startLine": 492,
+        "startChar": 1,
+        "endLine": 496,
+        "endChar": 135
+      },
+      "revId": "36b6d51fcb491bba443d283279e86945446aad3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56c5b7db_7a2a554d",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4898999_c3e0f6d4",
+        "filename": "filesystem/system_other.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-17T00:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56c5b7db_7a2a554d",
+      "revId": "36b6d51fcb491bba443d283279e86945446aad3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d672aede_85973f6e",
@@ -54,6 +96,30 @@
       "writtenOn": "2025-01-16T23:42:52Z",
       "side": 1,
       "message": "```suggestion\n\tctx.AddDependency(ctx.Module(), dexpreoptDependencyTag, m.properties.Preinstall_dexpreopt_files_from...)\n```",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "36b6d51fcb491bba443d283279e86945446aad3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "177b2e1d_e8757377",
+        "filename": "filesystem/system_other.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-17T00:21:59Z",
+      "side": 1,
+      "message": "oh yeah, forgot you could do this.",
+      "parentUuid": "d672aede_85973f6e",
       "range": {
         "startLine": 70,
         "startChar": 1,
