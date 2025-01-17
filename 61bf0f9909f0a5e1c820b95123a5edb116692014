@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46c74860_3d256f5c",
+        "filename": "fsgen/vbmeta_partitions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-17T22:55:12Z",
+      "side": 1,
+      "message": "There are no exact counterparts, but these are breakdowns of [`check-and-set-avb-args`](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l\u003d4821;drc\u003d62e20f0d218f60bae563b4ee742d88cca1fc1901) and its subfunction [`_check-and-set-avb-chain-args`](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l\u003d4782;drc\u003d62e20f0d218f60bae563b4ee742d88cca1fc1901). I\u0027ve added more description to each functions.",
+      "parentUuid": "8c3548ea_98213606",
+      "revId": "61bf0f9909f0a5e1c820b95123a5edb116692014",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30ed51a3_3a091d0e",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b80986d6_6235d95c",
+        "filename": "fsgen/vbmeta_partitions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-17T22:55:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ed51a3_3a091d0e",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 26
+      },
+      "revId": "61bf0f9909f0a5e1c820b95123a5edb116692014",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6ef1cc2_f6e2942b",
@@ -54,6 +96,24 @@
       "writtenOn": "2025-01-17T20:21:10Z",
       "side": 1,
       "message": "Does this linked if statement have any effect? The only difference is that it wraps the result of `images-for-partitions` in `firstword`, but `images-for-partitions` always returns only 1 word if you only pass it 1 argument.",
+      "revId": "61bf0f9909f0a5e1c820b95123a5edb116692014",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b29e11a_79d2fe4a",
+        "filename": "fsgen/vbmeta_partitions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-17T22:55:12Z",
+      "side": 1,
+      "message": "You are right, this is a red herring. I\u0027ve modified this to follow the same logic as other partitions. However this does not affect the argument as boot is already included in chained partitions.",
+      "parentUuid": "e6ef1cc2_f6e2942b",
       "revId": "61bf0f9909f0a5e1c820b95123a5edb116692014",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
