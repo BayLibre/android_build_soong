@@ -16,6 +16,52 @@
       "message": "Addressed nits and comments",
       "revId": "b9a5f78dad331383636cb6f4ba29076eed9af746",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a15ebd_cf113631",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-17T00:24:24Z",
+      "side": 1,
+      "message": "nit: Should this be \"use the clippyJsonDriver\" instead?",
+      "range": {
+        "startLine": 486,
+        "startChar": 50,
+        "endLine": 486,
+        "endChar": 63
+      },
+      "revId": "b9a5f78dad331383636cb6f4ba29076eed9af746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df8cc29_ea4021b9",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-17T00:24:24Z",
+      "side": 1,
+      "message": "nit: I think this isn\u0027t quite that the Android.bp didn\u0027t provide clippy_flags as much as clippy is disabled for this module (and thus there\u0027s no clippy flags defined), is that right?",
+      "range": {
+        "startLine": 511,
+        "startChar": 6,
+        "endLine": 511,
+        "endChar": 46
+      },
+      "revId": "b9a5f78dad331383636cb6f4ba29076eed9af746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
