@@ -34,6 +34,29 @@
       "parentUuid": "96446208_3f9888c3",
       "revId": "251cedede5e2375eb75a7de0d66205a3ee3aecb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b301d9c_c501a143",
+        "filename": "java/droidstubs_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-17T17:45:35Z",
+      "side": 1,
+      "message": "nit:\n```suggestion\n\tandroid.AssertStringDoesContain(t, \"android-jar-pattern present\", cmdline, \"--android-jar-pattern sdk/extensions/{version:extension}/public/{module}.jar\")\n```\n?",
+      "range": {
+        "startLine": 306,
+        "startChar": 37,
+        "endLine": 306,
+        "endChar": 59
+      },
+      "revId": "251cedede5e2375eb75a7de0d66205a3ee3aecb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
