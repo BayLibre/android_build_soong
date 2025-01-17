@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "043d7e8b_be6086c5",
+        "filename": "java/app_import.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-17T01:43:58Z",
+      "side": 1,
+      "message": "You could just add the android app import properties to java_defaults. java_defaults already has a lot of properties from many different module types, including AARImportProperties which is similar.",
+      "revId": "c2e0df99991259e137f93e5349975f2b8b7ece45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2422cd05_e82fe848",
         "filename": "java/app_import.go",
         "patchSetId": 4
