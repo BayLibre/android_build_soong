@@ -57,6 +57,30 @@
       },
       "revId": "251cedede5e2375eb75a7de0d66205a3ee3aecb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95d7f831_9390d9b9",
+        "filename": "java/droidstubs_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2025-01-17T20:39:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b301d9c_c501a143",
+      "range": {
+        "startLine": 306,
+        "startChar": 37,
+        "endLine": 306,
+        "endChar": 59
+      },
+      "revId": "251cedede5e2375eb75a7de0d66205a3ee3aecb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
