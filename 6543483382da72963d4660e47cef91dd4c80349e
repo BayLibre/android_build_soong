@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccceae17_06385854",
+        "filename": "aconfig/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2025-01-17T07:54:28Z",
+      "side": 1,
+      "message": "My goal is to create a file in prebuilts/sdk/\u003cversion\u003e/ that includes all the flags that have been used with @FlaggedApi. Eventually this will be used to enforce that we never re-use a flag if it has already been part of an API finalization.\n\nI don\u0027t think adding Wear or other non-platform vertical flags to that file makes much sense because other verticals will have their own prebuilts/sdk/opt/\u003cvertical\u003e directories.\n\nHappy to continue this conversation but over mail/chat/gvc, not in Gerrit. :)",
+      "parentUuid": "07679238_1c58ea7a",
+      "revId": "6543483382da72963d4660e47cef91dd4c80349e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4caa7098_c41746bf",
@@ -85,6 +103,24 @@
       "writtenOn": "2025-01-16T20:47:37Z",
       "side": 1,
       "message": "nit: use camel case per [Go style guide](go/go-style/guide#mixed-caps)\n```suggestion\n\tapiFiles :\u003d android.Paths{}\n```",
+      "revId": "6543483382da72963d4660e47cef91dd4c80349e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "919dec9b_757f2c5f",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2025-01-17T07:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4caa7098_c41746bf",
       "revId": "6543483382da72963d4660e47cef91dd4c80349e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -106,6 +142,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30a3d1a8_07684376",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2025-01-17T07:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82515773_a5aa9460",
+      "revId": "6543483382da72963d4660e47cef91dd4c80349e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fe758f8_e91f7ef8",
@@ -119,6 +173,24 @@
       "writtenOn": "2025-01-16T20:47:37Z",
       "side": 1,
       "message": "nit: use camel case per [Go style guide](go/go-style/guide#mixed-caps)\n```suggestion\n\tflagFile :\u003d android.PathForIntermediates(ctx, \"all_aconfig_declarations.pb\")\n```",
+      "revId": "6543483382da72963d4660e47cef91dd4c80349e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3934daec_6e6b6df5",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2025-01-17T07:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fe758f8_e91f7ef8",
       "revId": "6543483382da72963d4660e47cef91dd4c80349e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
