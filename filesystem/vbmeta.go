@@ -148,8 +148,8 @@ var vbmetaPartitionDep = vbmetaDep{}
 var vbmetaChainedPartitionDep = chainedPartitionDep{}
 
 func (v *vbmeta) DepsMutator(ctx android.BottomUpMutatorContext) {
-	ctx.AddDependency(ctx.Module(), vbmetaPartitionDep, v.properties.Partitions.GetOrDefault(ctx, nil)...)
-	ctx.AddDependency(ctx.Module(), vbmetaChainedPartitionDep, v.properties.Chained_partitions...)
+	ctx.AddFarVariationDependencies(nil, vbmetaPartitionDep, v.properties.Partitions.GetOrDefault(ctx, nil)...)
+	ctx.AddFarVariationDependencies(nil, vbmetaChainedPartitionDep, v.properties.Chained_partitions...)
 }
 
 func (v *vbmeta) installFileName() string {
