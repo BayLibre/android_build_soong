@@ -22,6 +22,30 @@
       },
       "revId": "3678b95eea1d984c2e665734b4c833991ff5d25a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b25aad85_6401ba16",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-17T20:29:23Z",
+      "side": 1,
+      "message": "Thanks for catching, fixed.",
+      "parentUuid": "67facb72_6234cfb1",
+      "range": {
+        "startLine": 706,
+        "startChar": 30,
+        "endLine": 706,
+        "endChar": 31
+      },
+      "revId": "3678b95eea1d984c2e665734b4c833991ff5d25a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
