@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1df6e663_3cdfc3b2",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2585,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-01-17T16:21:02Z",
+      "side": 1,
+      "message": "\"allow\", yes. can\u0027t argue with that ... i just wish there was some way to make sure folks really think hard about their choice here. (whereas in reality i think people mainly choose between static/shared based on either \"where i\u0027m copying from\" or \"where i\u0027m pasting to\" :-( )",
+      "range": {
+        "startLine": 2585,
+        "startChar": 39,
+        "endLine": 2585,
+        "endChar": 44
+      },
+      "revId": "b88801620ab7dfca27cf0fc8547ba10de15f5769",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
