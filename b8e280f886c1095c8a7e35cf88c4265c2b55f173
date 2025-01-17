@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e44ac488_6b4e0645",
+        "filename": "filesystem/system_other.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-17T01:32:04Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tfor k :\u003d range android.SortedKeys(fsInfo.SpecsForSystemOther) {\n```",
+      "revId": "b8e280f886c1095c8a7e35cf88c4265c2b55f173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
