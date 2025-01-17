@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11980aac_ebec3828",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-17T16:32:54Z",
+      "side": 1,
+      "message": "\u003eSorry I don\u0027t quite understand what you mean -- do you mean you want to ensure it\u0027s built as part of any build invocation, so the shell script can assume the binary has been built?\n\nI want to make sure that it is not up to the developer to manually run `m check_rust` (as it is currently implemented). If any updates are made to `check_rust/main.rs` we should handle that automatically (much like any updates to soong\u0027s source code trigger a rebuild) in the `check_rust.sh` hook or other mechanism.\n\n\u003eI\u0027m not aware of whether we have a module type which provides something like that for modules which aren\u0027t required to build Soong etc.... Would it be reasonable to have the shell script check whether the binary exists, and if it doesn\u0027t ask the user to run m check_rust?\n\nI think that is reasonable, in-fact I did attempt this but the snag is that the call to `check_rust.sh` will be an IDE hook. Generally (unless the developer launches the IDE in a shell that has been \"lunch-ed\") we will not have access to `m` and even if we did we might be competing for `out/.lock` if the developer has a build running while modifying any Rust code. I don\u0027t really have a good solution to this currently. It seems like every implementation I have tried has significant downsides.",
+      "parentUuid": "8d982187_e2acb86f",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fa86d0e_15cc8664",
         "filename": "rust/builder.go",
         "patchSetId": 1

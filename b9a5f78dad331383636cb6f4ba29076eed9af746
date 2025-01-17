@@ -158,6 +158,30 @@
       },
       "revId": "b9a5f78dad331383636cb6f4ba29076eed9af746",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "612ad807_ff7557ae",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-17T16:32:54Z",
+      "side": 1,
+      "message": "Ah I see, updated the comments to read:\n\n```\n// The module did not provide clippy_flags, therefore use rustc with the\n// provided compilation flags for check output.\n```\n\nand \n\n```\n// Since the module provided clippy_flags, use clippy-driver with the provided\n// lints for check output.\n```",
+      "parentUuid": "c5a46287_207450c0",
+      "range": {
+        "startLine": 511,
+        "startChar": 6,
+        "endLine": 511,
+        "endChar": 46
+      },
+      "revId": "b9a5f78dad331383636cb6f4ba29076eed9af746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
