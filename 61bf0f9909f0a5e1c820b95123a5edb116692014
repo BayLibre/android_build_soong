@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c3548ea_98213606",
+        "filename": "fsgen/vbmeta_partitions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-17T20:21:10Z",
+      "side": 1,
+      "message": "Do these two functions have some corellary in make? Could you link them?",
+      "revId": "61bf0f9909f0a5e1c820b95123a5edb116692014",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ed51a3_3a091d0e",
+        "filename": "fsgen/vbmeta_partitions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-17T20:21:10Z",
+      "side": 1,
+      "message": "This determines if the partition is included in the main vbmeta.img, right? Could we rename it to just `includeInVbmetaPartition`? (non-plural)",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 26
+      },
+      "revId": "61bf0f9909f0a5e1c820b95123a5edb116692014",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ef1cc2_f6e2942b",
+        "filename": "fsgen/vbmeta_partitions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-17T20:21:10Z",
+      "side": 1,
+      "message": "Does this linked if statement have any effect? The only difference is that it wraps the result of `images-for-partitions` in `firstword`, but `images-for-partitions` always returns only 1 word if you only pass it 1 argument.",
+      "revId": "61bf0f9909f0a5e1c820b95123a5edb116692014",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
