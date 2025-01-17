@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b0a5068_35391cea",
+        "filename": "android/license.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-17T21:32:32Z",
+      "side": 1,
+      "message": "This may be an opportunity for a depset to avoid storing the ever-increasing merged lists in each provider.",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "ddccb2a4cbf64ea3b0a4a34073ea3c7a6f926aec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
