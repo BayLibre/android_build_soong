@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b9657df_bf131a8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-17T00:50:03Z",
+      "side": 1,
+      "message": "I don\u0027t mind either way but the problem that I mentioned before still exists. We need to hook the building of the `check_rust` module into some sort of host_prebuilts action.",
+      "parentUuid": "b56c48ce_b81c15fb",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fa86d0e_15cc8664",
         "filename": "rust/builder.go",
         "patchSetId": 1

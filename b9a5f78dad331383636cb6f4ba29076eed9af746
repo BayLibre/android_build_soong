@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba471d4d_cf46c8c3",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-17T00:50:03Z",
+      "side": 1,
+      "message": "`clippyJsonDriver` will call the `clippy-driver` prebuilt.\n \n```\n_ \u003d pctx.SourcePathVariable(\"clippyCmd\", \"${config.RustBin}/clippy-driver\")\n```\n\nThe comment is to differentiate between when we call `rustc` (`rustcCheck` rule) vs `clippy-driver` (`clippyJsonDriver` rule).\n\nI can update the comment to switch `clippy-driver` for `clippyJsonDriver` but I should do the same for mentions of `rustc` and swap them out for `rustcCheck` to ensure we are comparing apples to apples.",
+      "parentUuid": "b2a15ebd_cf113631",
+      "range": {
+        "startLine": 486,
+        "startChar": 50,
+        "endLine": 486,
+        "endChar": 63
+      },
+      "revId": "b9a5f78dad331383636cb6f4ba29076eed9af746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5df8cc29_ea4021b9",
         "filename": "rust/builder.go",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2025-01-17T00:24:24Z",
       "side": 1,
       "message": "nit: I think this isn\u0027t quite that the Android.bp didn\u0027t provide clippy_flags as much as clippy is disabled for this module (and thus there\u0027s no clippy flags defined), is that right?",
+      "range": {
+        "startLine": 511,
+        "startChar": 6,
+        "endLine": 511,
+        "endChar": 46
+      },
+      "revId": "b9a5f78dad331383636cb6f4ba29076eed9af746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "910b6aa8_21c24e9c",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-17T00:50:03Z",
+      "side": 1,
+      "message": "Yeah I think the default is to run clippy, so by \"not providing\" `clippy_flags` the module will have a clippy rule. Inorder to disable clippy, you have to set `clippy_flag: \"none\"`. I can update the comment to say:\n\n```\n// Android.bp disabled clippy_flags,\n```\n\nI think that better expresses the meaning, correct?",
+      "parentUuid": "5df8cc29_ea4021b9",
       "range": {
         "startLine": 511,
         "startChar": 6,
