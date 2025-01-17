@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d982187_e2acb86f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-17T15:55:34Z",
+      "side": 1,
+      "message": "Sorry I don\u0027t quite understand what you mean -- do you mean you want to ensure it\u0027s built as part of any build invocation, so the shell script can assume the binary has been built?\n\nI\u0027m not aware of whether we have a module type which provides something like that for modules which aren\u0027t required to build Soong etc.... Would it be reasonable to have the shell script check whether the binary exists, and if it doesn\u0027t ask the user to run `m check_rust`?",
+      "parentUuid": "5b9657df_bf131a8c",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fa86d0e_15cc8664",
         "filename": "rust/builder.go",
         "patchSetId": 1

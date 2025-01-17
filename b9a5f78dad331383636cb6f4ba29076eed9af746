@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f4b380_b524fcf6",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-17T15:55:34Z",
+      "side": 1,
+      "message": "Ahh I see, that makes sense -- thanks for the explanation!",
+      "parentUuid": "ba471d4d_cf46c8c3",
+      "range": {
+        "startLine": 486,
+        "startChar": 50,
+        "endLine": 486,
+        "endChar": 63
+      },
+      "revId": "b9a5f78dad331383636cb6f4ba29076eed9af746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5df8cc29_ea4021b9",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Yeah I think the default is to run clippy, so by \"not providing\" `clippy_flags` the module will have a clippy rule. Inorder to disable clippy, you have to set `clippy_flag: \"none\"`. I can update the comment to say:\n\n```\n// Android.bp disabled clippy_flags,\n```\n\nI think that better expresses the meaning, correct?",
       "parentUuid": "5df8cc29_ea4021b9",
+      "range": {
+        "startLine": 511,
+        "startChar": 6,
+        "endLine": 511,
+        "endChar": 46
+      },
+      "revId": "b9a5f78dad331383636cb6f4ba29076eed9af746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5a46287_207450c0",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-17T15:55:34Z",
+      "side": 1,
+      "message": "Ah sorry, I could have been more clear. This would be more accurate if it read \"The module did not provide...\". (The Android.bp defines modules, and an individual module is what is being worked on here. An Android.bp doesn\u0027t set top-level properties for the modules defined in it.)",
+      "parentUuid": "910b6aa8_21c24e9c",
       "range": {
         "startLine": 511,
         "startChar": 6,
