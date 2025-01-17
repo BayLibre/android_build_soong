@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd03c71a_2c2138b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-17T01:40:17Z",
+      "side": 1,
+      "message": "Actually this diff was due to my testing; this file contains the paths to files in the out/ directory, and I was testing with 2 different out directories. It should be identical.",
+      "revId": "b8e280f886c1095c8a7e35cf88c4265c2b55f173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e44ac488_6b4e0645",
