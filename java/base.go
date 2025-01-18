@@ -1336,7 +1336,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		kotlincFlags := j.properties.Kotlincflags
 		CheckKotlincFlags(ctx, kotlincFlags)
 
-		kotlin_lang_version := proptools.StringDefault(j.properties.Kotlin_lang_version, "1.9")
+		kotlin_lang_version := proptools.StringDefault(j.properties.Kotlin_lang_version, "2")
 		if kotlin_lang_version == "1.9" {
 			kotlincFlags = append(kotlincFlags, "-language-version 1.9")
 		} else if kotlin_lang_version == "2" {
