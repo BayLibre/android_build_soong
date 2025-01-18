@@ -22,6 +22,30 @@
       },
       "revId": "b88801620ab7dfca27cf0fc8547ba10de15f5769",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d7f0c29_96c2421a",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2585,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-01-18T02:38:40Z",
+      "side": 1,
+      "message": "yeah, people don\u0027t seem to be serious about static/shared; the decision is often blindly copied from elsewhere.\n\nI personally think we have too many shared libraries and it\u0027s too easy to use them. I wish static linking is the default linkage and we (basically) allow shared libraries only across platform and apps.\n\nanyway, this must be off topic here. so, let me close this.",
+      "parentUuid": "1df6e663_3cdfc3b2",
+      "range": {
+        "startLine": 2585,
+        "startChar": 39,
+        "endLine": 2585,
+        "endChar": 44
+      },
+      "revId": "b88801620ab7dfca27cf0fc8547ba10de15f5769",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
