@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207cee87_14db5f81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2025-01-19T14:48:10Z",
+      "side": 1,
+      "message": "not a problem caused by you, but this smells like ODR bugs :/",
+      "range": {
+        "startLine": 11,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "c49486f747c3bfb143a33cecf4cfa6af8f8813d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9da6fd6_c7c6cf68",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2025-01-19T14:48:10Z",
+      "side": 1,
+      "message": "opt-in libraries would use this branch right? but not all opt-in libs can use apex, so this is not correct?",
+      "range": {
+        "startLine": 1471,
+        "startChar": 53,
+        "endLine": 1471,
+        "endChar": 74
+      },
+      "revId": "c49486f747c3bfb143a33cecf4cfa6af8f8813d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
