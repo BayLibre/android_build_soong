@@ -382,6 +382,10 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, dexParams *compileDexParams, 
 		r8Flags = append(r8Flags, "--force-proguard-compatibility")
 	}
 
+	if opt.Proguard_compatibility == nil {
+		r8Flags = append(r8Flags, "--force-proguard-compatibility-default")
+	}
+
 	// Avoid unnecessary stack frame noise by only injecting source map ids for non-debug
 	// optimized or obfuscated targets.
 	if (Bool(opt.Optimize) || Bool(opt.Obfuscate)) && !debugMode {
