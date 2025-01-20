@@ -1,0 +1,58 @@
+rust_binary {
+    name: "bindgen_test",
+    srcs: ["main.rs"],
+    whole_static_libs: [
+        "bindgen_test_lib",
+        "bindgen_test_static_inline",
+    ],
+    crate_name: "bindgen_test",
+    crate_root: "main.rs",
+    rustlibs: [
+        "libbindgen_test_rust",
+        "libbindgen_test_bindings",
+    ],
+    flags: ["-Amissing-docs"],
+}
+
+cc_library_static {
+    name: "bindgen_test_lib",
+    srcs: ["lib.c"],
+}
+
+cc_library_static {
+    name: "bindgen_test_static_inline",
+    srcs: [":libbindgen_test_bindgen"],
+    include_dirs: ["."],
+}
+
+rust_ffi_static {
+    name: "libbindgen_test_rust",
+    srcs: ["lib.rs"],
+    crate_name: "bindgen_test_rust",
+    crate_root: "lib.rs",
+    rustlibs: ["libbindgen_test_bindings"],
+    flags: [
+        "-Aclippy::undocumented-unsafe-blocks",
+        "-Amissing-docs",
+    ],
+}
+
+rust_bindgen {
+    name: "libbindgen_test_bindgen",
+    crate_name: "bindgen_test_bindgen",
+    source_stem: "bindings",
+    wrapper_src: "lib.h",
+    handle_static_inline: true,
+    static_inline_library: "bindgen_test_static_inline",
+}
+
+rust_ffi_static {
+    name: "libbindgen_test_bindings",
+    srcs: [
+        ":libbindgen_test_bindgen",
+        "bindings.rs",
+    ],
+    crate_name: "bindgen_test_bindings",
+    crate_root: "bindings.rs",
+    flags: ["-Amissing-docs"],
+}
