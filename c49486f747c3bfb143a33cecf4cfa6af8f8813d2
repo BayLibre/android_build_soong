@@ -117,6 +117,30 @@
       },
       "revId": "c49486f747c3bfb143a33cecf4cfa6af8f8813d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b71a2487_61b4d3ef",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2025-01-20T08:29:19Z",
+      "side": 1,
+      "message": "I think we should still call `useSdk` to check, just to be safe and pedantic. Even though it does nothing right now, it can stop future users from accidentally adding use-SDK librariries into the opt-in list. \n\nIn fact I think we shouldn\u0027t copy the same checks from compiler.go here and hope they would always look the same. Can we just move compiler.go:455 into a helper function, and call that helper function here. This helps ensure the logic here and there stays synchronized. (And also stop me from asking the same \"why are we checking these?\" questions in the future....)",
+      "parentUuid": "009dd1b0_47d1e51a",
+      "range": {
+        "startLine": 1471,
+        "startChar": 53,
+        "endLine": 1471,
+        "endChar": 74
+      },
+      "revId": "c49486f747c3bfb143a33cecf4cfa6af8f8813d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
