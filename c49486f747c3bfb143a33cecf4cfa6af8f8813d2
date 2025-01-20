@@ -69,6 +69,30 @@
       },
       "revId": "c49486f747c3bfb143a33cecf4cfa6af8f8813d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c94604_2ebb03c8",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2025-01-20T05:12:46Z",
+      "side": 1,
+      "message": "why doesn\u0027t here check `useSdk` too?",
+      "parentUuid": "82c7fe52_5e155d3a",
+      "range": {
+        "startLine": 1471,
+        "startChar": 53,
+        "endLine": 1471,
+        "endChar": 74
+      },
+      "revId": "c49486f747c3bfb143a33cecf4cfa6af8f8813d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
