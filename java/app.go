@@ -1693,6 +1693,7 @@ func AndroidTestFactory() android.Module {
 	module := &AndroidTest{}
 
 	module.Module.dexProperties.Optimize.EnabledByDefault = false
+	module.Module.dexProperties.Optimize.Proguard_compatibility = proptools.BoolPtr(false)
 
 	module.Module.properties.Instrument = true
 	module.Module.properties.Supports_static_instrumentation = true

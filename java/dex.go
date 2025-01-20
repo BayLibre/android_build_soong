@@ -379,6 +379,9 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, dexParams *compileDexParams, 
 	}
 
 	if BoolDefault(opt.Proguard_compatibility, !ctx.Config().UseR8FullModeByDefault()) {
+		if opt.Proguard_compatibility == nil {
+			panic(fmt.Errorf("Must explicitly set proguard_compatibility to true"))
+		}
 		r8Flags = append(r8Flags, "--force-proguard-compatibility")
 	}
 

@@ -1813,6 +1813,7 @@ func TestHelperLibraryFactory() android.Module {
 	module.Module.dexpreopter.isTest = true
 	module.Module.linter.properties.Lint.Test_module_type = proptools.BoolPtr(true)
 	module.Module.sourceProperties.Test_only = proptools.BoolPtr(true)
+	module.Module.dexProperties.Optimize.Proguard_compatibility = proptools.BoolPtr(false)
 
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	return module
