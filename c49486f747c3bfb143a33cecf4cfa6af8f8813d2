@@ -45,6 +45,30 @@
       },
       "revId": "c49486f747c3bfb143a33cecf4cfa6af8f8813d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82c7fe52_5e155d3a",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2025-01-20T03:36:46Z",
+      "side": 1,
+      "message": "It was incorrect.\nI changed it according to\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/compiler.go;l\u003d455",
+      "parentUuid": "d9da6fd6_c7c6cf68",
+      "range": {
+        "startLine": 1471,
+        "startChar": 53,
+        "endLine": 1471,
+        "endChar": 74
+      },
+      "revId": "c49486f747c3bfb143a33cecf4cfa6af8f8813d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
