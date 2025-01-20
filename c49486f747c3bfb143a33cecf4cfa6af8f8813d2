@@ -93,6 +93,30 @@
       },
       "revId": "c49486f747c3bfb143a33cecf4cfa6af8f8813d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "009dd1b0_47d1e51a",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2025-01-20T08:17:13Z",
+      "side": 1,
+      "message": "Because no existing opt-in library uses SDK.\nThis build rule does not fully support it. The correct rule should include all NDK headers like line 467 in compiler.go.",
+      "parentUuid": "f2c94604_2ebb03c8",
+      "range": {
+        "startLine": 1471,
+        "startChar": 53,
+        "endLine": 1471,
+        "endChar": 74
+      },
+      "revId": "c49486f747c3bfb143a33cecf4cfa6af8f8813d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
