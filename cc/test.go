@@ -128,6 +128,13 @@ type TestBinaryProperties struct {
 
 	// Install the test into a folder named for the module in all test suites.
 	Per_testcase_directory *bool
+
+	// Install the test's dependencies into a folder named standalone-libs relative to the
+	// test's installation path. ld-library-path will be set to this path in the test's
+	// auto-generated config. This way the dependencies can be used by the test without having
+	// to manually install them to the device. See more details in
+	// go/standalone-native-device-tests.
+	Standalone_test *bool
 }
 
 func init() {
@@ -380,6 +387,7 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 		TestInstallBase:        testInstallBase,
 		DeviceTemplate:         "${NativeTestConfigTemplate}",
 		HostTemplate:           "${NativeHostTestConfigTemplate}",
+		StandaloneTest:         test.Properties.Standalone_test,
 	})
 
 	test.extraTestConfigs = android.PathsForModuleSrc(ctx, test.Properties.Test_options.Extra_test_configs)
@@ -399,6 +407,13 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 
 	test.binaryDecorator.baseInstaller.installTestData(ctx, test.data)
 	test.binaryDecorator.baseInstaller.install(ctx, file)
+	if Bool(test.Properties.Standalone_test) {
+		standaloneTestDeps := map[string]bool{}
+		ctx.VisitDirectDeps(func(dep android.Module) {
+			standaloneTestDep := android.OtherModuleProviderOrDefault(ctx, dep, android.InstallFilesProvider)
+			test.binaryDecorator.baseInstaller.installStandaloneTestDeps(ctx, standaloneTestDep, standaloneTestDeps)
+		})
+	}
 }
 
 func getTestInstallBase(useVendor bool) string {
