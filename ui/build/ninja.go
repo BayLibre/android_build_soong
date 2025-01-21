@@ -356,7 +356,7 @@ func (c *ninjaStucknessChecker) check(ctx Context, config Config) {
 // to use the dep file iff ninja was the executor. For other executors, the
 // results will be wrong.
 func runNinjaInputs(ctx Context, config Config, goal string) ([]string, error) {
-	executable := config.PrebuiltBuildTool("ninja")
+	executable := config.NinjaBin()
 
 	args := []string{
 		"-f",
