@@ -82,6 +82,22 @@ type TestProperties struct {
 	// list of device binary modules that should be installed alongside the test
 	// This property adds 64bit AND 32bit variants of the dependency
 	Data_device_bins_both []string `android:"arch_variant"`
+
+	// list of device binary modules that should be installed alongside the test
+	// This property only adds the first variant of the dependency
+	Data_device_bins_first []string `android:"arch_variant"`
+
+	// list of device binary modules that should be installed alongside the test
+	// This property adds the 32bit variant of the dependency if it exists, otherwise 64bit variant of the dependency
+	Data_device_bins_prefer32 []string `android:"arch_variant"`
+
+	// list of device binary modules that should be installed alongside the test
+	// This property adds the 32bit variant of the dependency
+	Data_device_bins_32 []string `android:"arch_variant"`
+
+	// list of device binary modules that should be installed alongside the test
+	// This property adds the 64bit variant of the dependency
+	Data_device_bins_64 []string `android:"arch_variant"`
 }
 
 type TestOptions struct {
@@ -125,33 +141,91 @@ func (p *PythonTestModule) isTestHost() bool {
 
 var dataDeviceBinsTag = dependencyTag{name: "dataDeviceBins"}
 
-// python_test_host DepsMutator uses this method to add multilib dependencies of
-// data_device_bin_both
-func (p *PythonTestModule) addDataDeviceBinsDeps(ctx android.BottomUpMutatorContext, filter string) {
-	if len(p.testProperties.Data_device_bins_both) < 1 {
-		return
-	}
-
-	var maybeAndroidTarget *android.Target
-	androidTargetList := android.FirstTarget(ctx.Config().Targets[android.Android], filter)
-	if len(androidTargetList) > 0 {
-		maybeAndroidTarget = &androidTargetList[0]
-	}
-
-	if maybeAndroidTarget != nil {
+// python_test_host DepsMutator uses this method to add dependencies of
+// data_device_bin_*
+func (p *PythonTestModule) addDataDeviceBinsDeps(ctx android.BottomUpMutatorContext) {
+	if len(p.testProperties.Data_device_bins_first) > 0 {
+		deviceVariations := ctx.Config().AndroidFirstDeviceTarget.Variations()
 		ctx.AddFarVariationDependencies(
-			maybeAndroidTarget.Variations(),
+			deviceVariations,
 			dataDeviceBinsTag,
-			p.testProperties.Data_device_bins_both...,
+			p.testProperties.Data_device_bins_first...,
 		)
+	}
+
+	var maybeAndroid32Target *android.Target
+	var maybeAndroid64Target *android.Target
+	android32TargetList := android.FirstTarget(ctx.Config().Targets[android.Android], "lib32")
+	android64TargetList := android.FirstTarget(ctx.Config().Targets[android.Android], "lib64")
+	if len(android32TargetList) > 0 {
+		maybeAndroid32Target = &android32TargetList[0]
+	}
+	if len(android64TargetList) > 0 {
+		maybeAndroid64Target = &android64TargetList[0]
+	}
+
+	if len(p.testProperties.Data_device_bins_both) > 0 {
+		if maybeAndroid32Target == nil && maybeAndroid64Target == nil {
+			ctx.PropertyErrorf("data_device_bins_both", "no device targets available. Targets: %q", ctx.Config().Targets)
+			return
+		}
+		if maybeAndroid32Target != nil {
+			ctx.AddFarVariationDependencies(
+				maybeAndroid32Target.Variations(),
+				dataDeviceBinsTag,
+				p.testProperties.Data_device_bins_both...,
+			)
+		}
+		if maybeAndroid64Target != nil {
+			ctx.AddFarVariationDependencies(
+				maybeAndroid64Target.Variations(),
+				dataDeviceBinsTag,
+				p.testProperties.Data_device_bins_both...,
+			)
+		}
+	}
+
+	if len(p.testProperties.Data_device_bins_prefer32) > 0 {
+		if maybeAndroid32Target != nil {
+			ctx.AddFarVariationDependencies(
+				maybeAndroid32Target.Variations(),
+				dataDeviceBinsTag,
+				p.testProperties.Data_device_bins_prefer32...,
+			)
+		} else {
+			if maybeAndroid64Target == nil {
+				ctx.PropertyErrorf("data_device_bins_prefer32", "no device targets available. Targets: %q", ctx.Config().Targets)
+				return
+			}
+			ctx.AddFarVariationDependencies(
+				maybeAndroid64Target.Variations(),
+				dataDeviceBinsTag,
+				p.testProperties.Data_device_bins_prefer32...,
+			)
+		}
+	}
+
+	if len(p.testProperties.Data_device_bins_32) > 0 {
+		if maybeAndroid32Target == nil {
+			ctx.PropertyErrorf("data_device_bins_32", "cannot find 32bit device target. Targets: %q", ctx.Config().Targets)
+			return
+		}
+		ctx.AddFarVariationDependencies(maybeAndroid32Target.Variations(), dataDeviceBinsTag, p.testProperties.Data_device_bins_32...)
+	}
+
+	if len(p.testProperties.Data_device_bins_64) > 0 {
+		if maybeAndroid64Target == nil {
+			ctx.PropertyErrorf("data_device_bins_64", "cannot find 64bit device target. Targets: %q", ctx.Config().Targets)
+			return
+		}
+		ctx.AddFarVariationDependencies(maybeAndroid64Target.Variations(), dataDeviceBinsTag, p.testProperties.Data_device_bins_64...)
 	}
 }
 
 func (p *PythonTestModule) DepsMutator(ctx android.BottomUpMutatorContext) {
 	p.PythonBinaryModule.DepsMutator(ctx)
 	if p.isTestHost() {
-		p.addDataDeviceBinsDeps(ctx, "lib32")
-		p.addDataDeviceBinsDeps(ctx, "lib64")
+		p.addDataDeviceBinsDeps(ctx)
 	}
 }
 
@@ -198,7 +272,7 @@ func (p *PythonTestModule) GenerateAndroidBuildActions(ctx android.ModuleContext
 		p.data = append(p.data, android.DataPath{SrcPath: dataSrcPath})
 	}
 
-	if p.isTestHost() && len(p.testProperties.Data_device_bins_both) > 0 {
+	if p.isTestHost() {
 		ctx.VisitDirectDepsWithTag(dataDeviceBinsTag, func(dep android.Module) {
 			p.data = append(p.data, android.DataPath{SrcPath: android.OutputFileForModule(ctx, dep, "")})
 		})
