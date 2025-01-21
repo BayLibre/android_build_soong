@@ -263,9 +263,7 @@ func (f *filesystemCreator) createDeviceModule(
 	}
 	partitionProps.Vbmeta_partitions = vbmetaPartitions
 
-	deviceProps := &filesystem.DeviceProperties{
-		Main_device: proptools.BoolPtr(true),
-	}
+	deviceProps := &filesystem.DeviceProperties{}
 	if bootloader, ok := f.createBootloaderFilegroup(ctx); ok {
 		deviceProps.Bootloader = proptools.StringPtr(":" + bootloader)
 	}
