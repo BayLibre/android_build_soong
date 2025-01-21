@@ -34,6 +34,24 @@
       "parentUuid": "2a98c94d_21f67e2d",
       "revId": "e859f160acd1c880e743eac062d29d0f4dd60300",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea2c52a_88d9e61d",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2406,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2025-01-21T05:27:10Z",
+      "side": 1,
+      "message": "For now, nothing differs when `use_generic_config` is set to true for the system image.",
+      "parentUuid": "2ea3f1d7_1ff92d30",
+      "revId": "e859f160acd1c880e743eac062d29d0f4dd60300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
