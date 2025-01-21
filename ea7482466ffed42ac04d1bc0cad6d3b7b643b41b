@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa9a3fd3_f3458d8c",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1956160
+      },
+      "writtenOn": "2025-01-21T12:56:40Z",
+      "side": 1,
+      "message": "Why common includes should depend on non-empty `dirs` (`library.exportedIncludeDirsForAbiCheck(ctx)`? If library doesn\u0027t have exported includes, it still can provide symbols visible through global includes, no?",
+      "revId": "ea7482466ffed42ac04d1bc0cad6d3b7b643b41b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
