@@ -43,7 +43,8 @@ type allAconfigReleaseDeclarationsSingleton struct {
 }
 
 type allAconfigReleaseDeclarationsProperties struct {
-	Api_files proptools.Configurable[[]string] `android:"arch_variant,path"`
+	Api_files            proptools.Configurable[[]string] `android:"arch_variant,path"`
+	Finalized_flag_files proptools.Configurable[[]string] `android:"arch_variant,path"`
 }
 
 type allAconfigDeclarationsSingleton struct {
@@ -69,6 +70,12 @@ func (this *allAconfigDeclarationsSingleton) GenerateAndroidBuildActions(ctx and
 			apiFiles = append(apiFiles, path)
 		}
 	}
+	finalizedFlagFiles := android.Paths{}
+	for _, finalizedFlagFile := range this.properties.Finalized_flag_files.GetOrDefault(ctx, nil) {
+		if path := android.PathForModuleSrc(ctx, finalizedFlagFile); path != nil {
+			finalizedFlagFiles = append(finalizedFlagFiles, path)
+		}
+	}
 	flagFile := android.PathForIntermediates(ctx, "all_aconfig_declarations.pb")
 
 	output := android.PathForIntermediates(ctx, "finalized-flags.txt")
@@ -78,8 +85,9 @@ func (this *allAconfigDeclarationsSingleton) GenerateAndroidBuildActions(ctx and
 		Inputs: append(apiFiles, flagFile),
 		Output: output,
 		Args: map[string]string{
-			"api_files": android.JoinPathsWithPrefix(apiFiles, "--api-file "),
-			"flag_file": "--flag-file " + flagFile.String(),
+			"api_files":            android.JoinPathsWithPrefix(apiFiles, "--api-file "),
+			"finalized_flag_files": android.JoinPathsWithPrefix(finalizedFlagFiles, "--finalized-flag-file "),
+			"flag_file":            "--flag-file " + flagFile.String(),
 		},
 	})
 	ctx.Phony("all_aconfig_declarations", output)
