@@ -115,6 +115,7 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuild
 			"mode":         mode,
 			"debug":        strconv.FormatBool(ctx.Config().ReleaseReadFromNewStorage()),
 			"new_exported": strconv.FormatBool(newExported),
+			"sdk_check":    strconv.FormatBool(ctx.Config().ReleaseAconfigSdkCheck()),
 		},
 	})
 

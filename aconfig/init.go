@@ -95,6 +95,7 @@ var (
 		// exported flags (only). Finally collect all generated code
 		// into the ${out} JAR file.
 		blueprint.RuleParams{
+			// LINT.IfChange
 			Command: `rm -rf ${out}.tmp` +
 				`&& for cache in ${cache_files}; do ` +
 				`  if [ -n "$$(${aconfig} dump-cache --dedup --cache $$cache --filter=is_exported:true --format='{fully_qualified_name}')" ]; then ` +
@@ -103,16 +104,18 @@ var (
 				`        --mode=exported` +
 				`        --allow-instrumentation ${use_new_storage}` +
 				`        --new-exported ${use_new_exported}` +
+				`        --sdk-check ${use_sdk_check}` +
 				`        --out ${out}.tmp; ` +
 				`  fi ` +
 				`done` +
 				`&& $soong_zip -write_if_changed -jar -o ${out} -C ${out}.tmp -D ${out}.tmp` +
 				`&& rm -rf ${out}.tmp`,
+			// LINT.ThenChange(/aconfig/codegen/init.go)
 			CommandDeps: []string{
 				"$aconfig",
 				"$soong_zip",
 			},
-		}, "cache_files", "use_new_storage", "use_new_exported")
+		}, "cache_files", "use_new_storage", "use_new_exported", "use_sdk_check")
 )
 
 func init() {
