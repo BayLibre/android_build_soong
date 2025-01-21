@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28034491_1973bd71",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-21T18:45:09Z",
+      "side": 1,
+      "message": "This should be flagged with go/android-build-flags",
+      "revId": "e9ad19c571899ffaf552e09111c4b76533255993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
