@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df90a55d_5e8194e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2025-01-21T01:27:54Z",
+      "side": 1,
+      "message": "It would be better to have a new condition, for example, `product_variable_arg` to have the api_level `34` as an arg.\nAnyway, this is the one that blocks sharing the system image between different target generations.",
+      "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
