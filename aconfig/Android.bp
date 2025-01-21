@@ -37,4 +37,7 @@ all_aconfig_declarations {
         ":frameworks-base-api-system-server-current.txt",
         ":frameworks-base-api-module-lib-current.txt",
     ],
+    finalized_flag_files: [
+        ":finalized-flags",
+    ],
 }
