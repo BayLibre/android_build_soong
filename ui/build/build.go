@@ -38,10 +38,8 @@ func SetupOutDir(ctx Context, config Config) {
 	// Note that the absence of the  file does not not preclude running Kati for product
 	// configuration purposes.
 	katiEnabledMarker := filepath.Join(config.SoongOutDir(), ".soong.kati_enabled")
-	if config.SkipKatiNinja() {
+	if config.SkipKati() || config.SkipKatiNinja() {
 		os.Remove(katiEnabledMarker)
-		// Note that we can not remove the file for SkipKati builds yet -- some continuous builds
-		// --skip-make builds rely on kati targets being defined.
 	} else if !config.SkipKati() {
 		ensureEmptyFileExists(ctx, katiEnabledMarker)
 	}
