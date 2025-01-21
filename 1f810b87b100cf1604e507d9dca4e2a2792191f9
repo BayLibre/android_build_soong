@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750d0beb_d60888b1",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2025-01-21T17:28:35Z",
+      "side": 1,
+      "message": "This seems to contradict the comment in lines 354-357.  I see that lines 369-371 below check for ABFS, but we should avoid breaking the build when n2 or siso is in use.",
+      "revId": "1f810b87b100cf1604e507d9dca4e2a2792191f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
