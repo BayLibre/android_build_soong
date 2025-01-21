@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6736a10a_5667a3b1",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2025-01-21T05:02:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aa55852_ac98ac61",
+      "revId": "e2171621228c07fbc13c4721de896cb822d28a27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fcb2e67_d01d2da0",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "318d1cf5_95555ef7",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1320,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2025-01-21T05:02:54Z",
+      "side": 1,
+      "message": "requiresGlobalIncludes means whether the implementation of this library includes CommonGlobalIncludes.\nIt does not mean whether the library exports CommonGlobalIncludes.\n\nLLNDK dumps are generated from the implemetation libraries and filtered by LLNDK headers. requiresGlobalIncludes returns true here.",
+      "parentUuid": "3fcb2e67_d01d2da0",
+      "range": {
+        "startLine": 1320,
+        "startChar": 50,
+        "endLine": 1320,
+        "endChar": 55
+      },
+      "revId": "e2171621228c07fbc13c4721de896cb822d28a27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ece2243_78de6fca",
@@ -54,6 +96,30 @@
       "writtenOn": "2025-01-20T09:57:01Z",
       "side": 1,
       "message": "I think this can just call `requiresGlobalIncludes` too?",
+      "range": {
+        "startLine": 1333,
+        "startChar": 45,
+        "endLine": 1333,
+        "endChar": 76
+      },
+      "revId": "e2171621228c07fbc13c4721de896cb822d28a27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce474982_f35bc36a",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2025-01-21T05:02:54Z",
+      "side": 1,
+      "message": "requiresGlobalIncludes returns false if the APEX is implemented InVendorOrProduct. I have not seen that case. It may be okay to call requiresGlobalIncludes for the same reason as line 625.",
+      "parentUuid": "9ece2243_78de6fca",
       "range": {
         "startLine": 1333,
         "startChar": 45,
