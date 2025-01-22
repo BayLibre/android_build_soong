@@ -46,6 +46,30 @@
       },
       "revId": "2ad8f85cecb0aa27946bf0a11d8ee3aec66f97fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc22807_27a8419a",
+        "filename": "python/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2025-01-22T18:11:45Z",
+      "side": 1,
+      "message": "`device_first_data` works like a charm for accessing apex file on CI host!!! Thanks for introducing me to it!!!\n\nI\u0027ll abandon this CL.",
+      "parentUuid": "579e200d_7b438fbd",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 57
+      },
+      "revId": "2ad8f85cecb0aa27946bf0a11d8ee3aec66f97fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
