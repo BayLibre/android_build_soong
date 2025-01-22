@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "587132a3_e9386dd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-22T20:37:49Z",
+      "side": 1,
+      "message": "The `InstallSymlink` logic also has an affect on NOTICE.html.gz file of apexes. This CL removes this discrepancy between `m` and `m --soong-only` builds.",
+      "revId": "61755e8ea86600e17f4501d188ab816240ccce7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
