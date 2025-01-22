@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acb46ff3_8d0885ff",
+        "filename": "aconfig/codegen/init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2025-01-22T15:31:39Z",
+      "side": 1,
+      "message": "why this is needed here? Does linter complain?",
+      "fixSuggestions": [
+        {
+          "fixId": "42d05b12_2bdc2458",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "aconfig/codegen/init.go",
+              "range": {
+                "startLine": 29,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "aconfig/codegen/init.go",
+              "range": {
+                "startLine": 41,
+                "startChar": 0,
+                "endLine": 42,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "8d82880cfe2d54a07d821d5b2e08028b2f0ebde1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
