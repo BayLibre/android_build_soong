@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef53a764_93738475",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-22T23:44:47Z",
+      "side": 1,
+      "message": "Are we already seeing effects after this cl? I thought the make install rules were still different due to things [like this](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/definitions.mk;l\u003d3363;drc\u003d0585bb1bcf4c89065adaf709f48acc8b869fd3ce).",
+      "revId": "66f0bbb33059ae1970807e02e51d17679893c4be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
