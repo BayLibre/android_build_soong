@@ -22,6 +22,30 @@
       },
       "revId": "ddccb2a4cbf64ea3b0a4a34073ea3c7a6f926aec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f724e75_7ccd9878",
+        "filename": "android/license.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-01-22T18:58:08Z",
+      "side": 1,
+      "message": "I will do some cleanup work right after this to remove those fields from commonProperties.",
+      "parentUuid": "0b0a5068_35391cea",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "ddccb2a4cbf64ea3b0a4a34073ea3c7a6f926aec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
