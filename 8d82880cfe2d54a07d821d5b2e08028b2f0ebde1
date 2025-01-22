@@ -44,6 +44,24 @@
       ],
       "revId": "8d82880cfe2d54a07d821d5b2e08028b2f0ebde1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9290b38e_8f8b1b9f",
+        "filename": "aconfig/codegen/init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3599662
+      },
+      "writtenOn": "2025-01-22T17:20:45Z",
+      "side": 1,
+      "message": "no, i am adding the linter bc i spent like an hour trying to debug why connecting the build flag wasn\u0027t working before i realized we call the aconfig binary for exported mode in two places. thinking with this check we can enforce that these calls are kept in sync",
+      "parentUuid": "acb46ff3_8d0885ff",
+      "revId": "8d82880cfe2d54a07d821d5b2e08028b2f0ebde1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
