@@ -16,6 +16,24 @@
       "message": "This should be flagged with go/android-build-flags",
       "revId": "e9ad19c571899ffaf552e09111c4b76533255993",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "117120bf_863abd6f",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1387509
+      },
+      "writtenOn": "2025-01-22T16:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28034491_1973bd71",
+      "revId": "e9ad19c571899ffaf552e09111c4b76533255993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
