@@ -216,6 +216,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ad262d6_404b5f68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-22T19:07:15Z",
+      "side": 1,
+      "message": "You can add the module to https://cs.android.com/android/platform/superproject/main/+/main:build/make/target/product/base_system.mk;l\u003d433;drc\u003d7a4131f949b28539117c041a91f53bdd577cdf0c to have it built on any full build.",
+      "parentUuid": "2c69bc14_d110ed6b",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fa86d0e_15cc8664",
         "filename": "rust/builder.go",
         "patchSetId": 1
