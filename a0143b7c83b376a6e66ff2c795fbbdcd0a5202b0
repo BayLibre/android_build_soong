@@ -1,0 +1,59 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb0f9e73_96a83661",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1350,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2025-01-22T18:40:11Z",
+      "side": 1,
+      "message": "Maybe use a switch statement?",
+      "fixSuggestions": [
+        {
+          "fixId": "d3a0c65d_3e3fd4d5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/base.go",
+              "range": {
+                "startLine": 1350,
+                "startChar": 0,
+                "endLine": 1351,
+                "endChar": 0
+              },
+              "replacement": "\t\tswitch kotlin_lang_version {\n\t\tcase \"1.9\":\n"
+            },
+            {
+              "path": "java/base.go",
+              "range": {
+                "startLine": 1352,
+                "startChar": 0,
+                "endLine": 1353,
+                "endChar": 0
+              },
+              "replacement": "\t\tcase \"2\":\n"
+            },
+            {
+              "path": "java/base.go",
+              "range": {
+                "startLine": 1354,
+                "startChar": 0,
+                "endLine": 1355,
+                "endChar": 0
+              },
+              "replacement": "\t\tdefault:\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a0143b7c83b376a6e66ff2c795fbbdcd0a5202b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
