@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f2bc26_ad341881",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1733763
+      },
+      "writtenOn": "2025-01-22T18:47:05Z",
+      "side": 1,
+      "message": "next step is to check this boolean and add `ld-library-path` to point to the `standalone-libs` location when it\u0027s `true` for the auto generated test xml",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 15
+      },
+      "revId": "0d02dfce51ab86280408ccb5409606413217e93e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
