@@ -342,6 +342,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d9bbafd_3312d61f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-22T20:06:10Z",
+      "side": 1,
+      "message": "Done. Moved script to `development/scripts` and added `check_rust` to `PRODUCT_HOST_PACKAGES`.",
+      "parentUuid": "e8517306_c8ca398d",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fa86d0e_15cc8664",
         "filename": "rust/builder.go",
         "patchSetId": 1
