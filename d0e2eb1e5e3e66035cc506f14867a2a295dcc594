@@ -198,6 +198,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c69bc14_d110ed6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-22T18:43:52Z",
+      "side": 1,
+      "message": "+ccross for thoughts on whether there\u0027s some mechanism in Soong to ensure a host tool is built on every build invocation. We could add it as an item under the new rules `CommandDeps`, but since it\u0027s not actually used in that build step that doesn\u0027t seem like the right approach to me.\n\nIf the concern is not asking the developer to manually rebuild after e.g. `repo sync`, they would still need to rebuild `rust-project.json` after updating in case any platform Rust code has changed, so a manual build step seems unavoidable after the repository has been updated?",
+      "parentUuid": "11980aac_ebec3828",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fa86d0e_15cc8664",
         "filename": "rust/builder.go",
         "patchSetId": 1
