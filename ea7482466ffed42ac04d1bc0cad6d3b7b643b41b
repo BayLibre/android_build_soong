@@ -16,6 +16,24 @@
       "message": "Why common includes should depend on non-empty `dirs` (`library.exportedIncludeDirsForAbiCheck(ctx)`? If library doesn\u0027t have exported includes, it still can provide symbols visible through global includes, no?",
       "revId": "ea7482466ffed42ac04d1bc0cad6d3b7b643b41b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4cf812_d2082fe4",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2025-01-22T04:07:52Z",
+      "side": 1,
+      "message": "No exported include directory is a special case for the ABI tool. It dumps everything without filtering.",
+      "parentUuid": "aa9a3fd3_f3458d8c",
+      "revId": "ea7482466ffed42ac04d1bc0cad6d3b7b643b41b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
