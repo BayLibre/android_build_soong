@@ -306,6 +306,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57b7855e_7e813b9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-22T19:43:08Z",
+      "side": 1,
+      "message": "No, I agreed that this should move to `development/scripts`",
+      "parentUuid": "f12ea069_43c33181",
+      "revId": "d0e2eb1e5e3e66035cc506f14867a2a295dcc594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fa86d0e_15cc8664",
         "filename": "rust/builder.go",
         "patchSetId": 1
