@@ -22,6 +22,30 @@
       },
       "revId": "2ad8f85cecb0aa27946bf0a11d8ee3aec66f97fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "579e200d_7b438fbd",
+        "filename": "python/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 3096390
+      },
+      "writtenOn": "2025-01-22T00:08:02Z",
+      "side": 1,
+      "message": "Yes, I\u0027ve just given it a quick try and it seems working locally. I\u0027ll try running the test on CI tomorrow! Thanks!",
+      "parentUuid": "452798d0_d741ec81",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 57
+      },
+      "revId": "2ad8f85cecb0aa27946bf0a11d8ee3aec66f97fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
