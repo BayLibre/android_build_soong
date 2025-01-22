@@ -16,6 +16,24 @@
       "message": "```suggestion\n\t\tmoduleInfoJSONPath :\u003d pathForInstall(ctx, ctx.Config().BuildOS, ctx.Config().BuildArch, \"\", \"module-info.json\")\n```\n?",
       "revId": "601da063f50fa4ec54fe96f7b3ea742ee86cd215",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "677bf53d_cbfa71fa",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-22T21:25:22Z",
+      "side": 1,
+      "message": "The os/arch don\u0027t matter in this path, as long as it\u0027s a device os. This should be revisited when we work to remove `out/target/product/\u003cdevice\u003e`",
+      "parentUuid": "31a8acd9_325341ce",
+      "revId": "601da063f50fa4ec54fe96f7b3ea742ee86cd215",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
