@@ -54,6 +54,24 @@
       ],
       "revId": "a0143b7c83b376a6e66ff2c795fbbdcd0a5202b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06a6c731_06db3dfd",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1350,
+      "author": {
+        "id": 1387509
+      },
+      "writtenOn": "2025-01-22T18:44:23Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "eb0f9e73_96a83661",
+      "revId": "a0143b7c83b376a6e66ff2c795fbbdcd0a5202b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
