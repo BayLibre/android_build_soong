@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f418f02b_d27aafb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-23T00:25:32Z",
+      "side": 1,
+      "message": "This could go in or next to `prebuilts/rust/soong/rustprebuilts.go`",
+      "revId": "64da8a3e4dc4fda7a501fc7fae4e7fec788020fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e92f9560_2a77f9c4",
+        "filename": "rust/toolchain_filegroup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-23T00:25:32Z",
+      "side": 1,
+      "message": "Remove the printf",
+      "revId": "64da8a3e4dc4fda7a501fc7fae4e7fec788020fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
