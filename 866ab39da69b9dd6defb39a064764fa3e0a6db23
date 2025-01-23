@@ -16,6 +16,24 @@
       "message": "I do see some noteworthy diffs, like below:\n```\n\u003c     \"installed\": [\n\u003c       \"out_make/target/product/vsoc_x86_64/system/app/AliasActivity/AliasActivity.apk\"\n\u003c     ],\n```\n```\n\u003c       \"CarDistantDisplaySystemUI__aosp_cf_x86_64_phone__auto_generated_rro_vendor\",\n```\n```\n\u003c       \"platform_testing/tests/example/instrumentation/configs/hello-world.xml\",\n\u003c       \"platform_testing/tests/example/instrumentation/configs/hallo-welt.xml\"\n---\n\u003e       \"platform_testing/tests/example/instrumentation/configs/hallo-welt.xml\",\n\u003e       \"platform_testing/tests/example/instrumentation/configs/hello-world.xml\"\n\n```\n\nI wonder if these should be fixed as well.",
       "revId": "866ab39da69b9dd6defb39a064764fa3e0a6db23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9941a72d_9fff8591",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-23T23:09:24Z",
+      "side": 1,
+      "message": "- `AliasActivity` is marked `installable: false` in the Android.bp file, so that seems to make sense to me. \n- The `hallo-welt/world.xml` files I think are just swapped order due to the sorting that soong does, I don\u0027t think that\u0027s a big deal.\n- The auto_generated_rros are maybe an issue, but because module-info.json is just consumed by other tools, I\u0027m not sure how useful including them would be. They should be an implementation detail of the build, and didn\u0027t even exist as soong modules until recently with Spandan\u0027s change.",
+      "parentUuid": "b6363450_af27c0a0",
+      "revId": "866ab39da69b9dd6defb39a064764fa3e0a6db23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
