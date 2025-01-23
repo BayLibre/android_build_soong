@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6363450_af27c0a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-23T22:50:52Z",
+      "side": 1,
+      "message": "I do see some noteworthy diffs, like below:\n```\n\u003c     \"installed\": [\n\u003c       \"out_make/target/product/vsoc_x86_64/system/app/AliasActivity/AliasActivity.apk\"\n\u003c     ],\n```\n```\n\u003c       \"CarDistantDisplaySystemUI__aosp_cf_x86_64_phone__auto_generated_rro_vendor\",\n```\n```\n\u003c       \"platform_testing/tests/example/instrumentation/configs/hello-world.xml\",\n\u003c       \"platform_testing/tests/example/instrumentation/configs/hallo-welt.xml\"\n---\n\u003e       \"platform_testing/tests/example/instrumentation/configs/hallo-welt.xml\",\n\u003e       \"platform_testing/tests/example/instrumentation/configs/hello-world.xml\"\n\n```\n\nI wonder if these should be fixed as well.",
+      "revId": "866ab39da69b9dd6defb39a064764fa3e0a6db23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
