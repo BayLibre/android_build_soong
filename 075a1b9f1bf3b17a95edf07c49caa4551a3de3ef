@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e1254e3_7937e6db",
+        "filename": "rust/project_json.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-01-23T20:34:42Z",
+      "side": 1,
+      "message": "Don\u0027t we need to implement creating this link as is done for compile_commands.json?\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/compdb.go;l\u003d107-113;drc\u003df80e786d308318894be30d54b93f38034496fc66",
+      "revId": "075a1b9f1bf3b17a95edf07c49caa4551a3de3ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
