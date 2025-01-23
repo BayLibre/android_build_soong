@@ -53,7 +53,7 @@ func (a *androidDevice) copyFilesToProductOutForSoongOnly(ctx android.ModuleCont
 		info := filesystemInfos[partition]
 		imgInstallPath := android.PathForModuleInPartitionInstall(ctx, "", partition+".img")
 		ctx.Build(pctx, android.BuildParams{
-			Rule:   android.Cp,
+			Rule:   android.CpIfChanged,
 			Input:  info.Output,
 			Output: imgInstallPath,
 		})
@@ -84,7 +84,7 @@ func (a *androidDevice) copyFilesToProductOutForSoongOnly(ctx android.ModuleCont
 	if a.deviceProps.Bootloader != nil {
 		bootloaderInstallPath := android.PathForModuleInPartitionInstall(ctx, "", "bootloader")
 		ctx.Build(pctx, android.BuildParams{
-			Rule:   android.Cp,
+			Rule:   android.CpIfChanged,
 			Input:  android.PathForModuleSrc(ctx, *a.deviceProps.Bootloader),
 			Output: bootloaderInstallPath,
 		})
