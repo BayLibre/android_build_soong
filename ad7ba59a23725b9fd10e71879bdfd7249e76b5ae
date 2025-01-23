@@ -16,6 +16,24 @@
       "message": "Is this correct? What happens with `--whole-archive foo.a --no-whole-archive bar.a --whole-archive baz.a --no-whole-archive`? This should link foo and baz whole-static, but bar.a normally. I *think* that your change will make it so that baz.a will now be linked normally.",
       "revId": "ad7ba59a23725b9fd10e71879bdfd7249e76b5ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e6f585_d798fff6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-01-23T18:28:41Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be an issue, \"--whole-archive foo.a --no-whole-archive\" is treated as a single \"flag\".\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/rust/rust.go;l\u003d1601",
+      "parentUuid": "1a13d958_31e6f32e",
+      "revId": "ad7ba59a23725b9fd10e71879bdfd7249e76b5ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
