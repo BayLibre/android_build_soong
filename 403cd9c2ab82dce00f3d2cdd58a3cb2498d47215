@@ -70,6 +70,24 @@
       "parentUuid": "4fa1d8a2_5b57c387",
       "revId": "403cd9c2ab82dce00f3d2cdd58a3cb2498d47215",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edbf715e_fb06cc73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-23T19:04:16Z",
+      "side": 1,
+      "message": "I think removing the select statment entirely can lead to merge conflicts and make modifying the definition of the `all_aconfig_declarations` module harder. For example, https://r.android.com/c/3459707/2 is getting a merge conflict from `aconfig/Android.bp` as the change is trying to [modify](https://android-review.git.corp.google.com/c/platform/build/soong/+/3459707/2/aconfig/Android.bp) the definition of `all_aconfig_delcarations`. Can we cherry pick only the select statment like below?:\n```\nall_aconfig_declarations {\n    name: \"all_aconfig_declarations\",\n    api_files: select(soong_config_variable(\"android_aconfig\", \"opt_platform_api_srcs\"), {\n        default: [\n            \":frameworks-base-api-current.txt\",\n            \":frameworks-base-api-system-current.txt\",\n            \":frameworks-base-api-system-server-current.txt\",\n            \":frameworks-base-api-module-lib-current.txt\",\n        ],\n    }),\n}\n```\n(I think patchset 2 was doing this, but it got overwritten in the latest patchset for some reason)",
+      "parentUuid": "0bf160c9_4ebd2c69",
+      "revId": "403cd9c2ab82dce00f3d2cdd58a3cb2498d47215",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
