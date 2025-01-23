@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a13d958_31e6f32e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-23T18:25:45Z",
+      "side": 1,
+      "message": "Is this correct? What happens with `--whole-archive foo.a --no-whole-archive bar.a --whole-archive baz.a --no-whole-archive`? This should link foo and baz whole-static, but bar.a normally. I *think* that your change will make it so that baz.a will now be linked normally.",
+      "revId": "ad7ba59a23725b9fd10e71879bdfd7249e76b5ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
