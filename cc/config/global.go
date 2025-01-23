@@ -369,6 +369,9 @@ var (
 	llvmNextExtraCommonGlobalCflags = []string{
 		// Do not report warnings when testing with the top of trunk LLVM.
 		"-Wno-everything",
+		// FIXME: Workaround LLVM MLGO hang
+		// http://b/389543884
+		"-mllvm -mlregalloc-max-cascade=999999",
 	}
 
 	// Flags that must not appear in any command line.
