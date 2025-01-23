@@ -34,6 +34,24 @@
       "parentUuid": "8e1254e3_7937e6db",
       "revId": "075a1b9f1bf3b17a95edf07c49caa4551a3de3ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae0307a_10a206aa",
+        "filename": "rust/project_json.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-01-23T20:56:18Z",
+      "side": 1,
+      "message": "Ah yep, missed it. Thanks.\n\nWeird that `build/soong/cc/compdb.go` uses `log.Fatal` instead of `ctx.Error`.",
+      "parentUuid": "89daf659_3156a3f2",
+      "revId": "075a1b9f1bf3b17a95edf07c49caa4551a3de3ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
