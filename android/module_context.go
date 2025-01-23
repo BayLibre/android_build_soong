@@ -611,7 +611,10 @@ func (m *moduleContext) getOwnerAndOverrides() (string, []string) {
 }
 
 func (m *moduleContext) packageFile(fullInstallPath InstallPath, srcPath Path, executable bool) PackagingSpec {
-	licenseFiles := m.Module().EffectiveLicenseFiles()
+	licenseFiles := make(Paths, 0, len(m.Module().base().commonProperties.Effective_license_text))
+	for _, p := range m.Module().base().commonProperties.Effective_license_text {
+		licenseFiles = append(licenseFiles, p.Path)
+	}
 	owner, overrides := m.getOwnerAndOverrides()
 	spec := PackagingSpec{
 		relPathInPackage:      Rel(m, fullInstallPath.PartitionDir(), fullInstallPath.String()),

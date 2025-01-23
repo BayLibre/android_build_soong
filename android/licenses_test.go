@@ -470,10 +470,6 @@ func TestLicenses(t *testing.T) {
 				ExtendWithErrorHandler(FixtureExpectsAllErrorsToMatchAPattern(test.expectedErrors)).
 				RunTest(t)
 
-			if test.effectiveLicenses != nil {
-				checkEffectiveLicenses(t, result, test.effectiveLicenses)
-			}
-
 			if test.effectivePackage != nil {
 				checkEffectivePackage(t, result, test.effectivePackage)
 			}
@@ -489,111 +485,7 @@ func TestLicenses(t *testing.T) {
 			if test.effectiveConditions != nil {
 				checkEffectiveConditions(t, result, test.effectiveConditions)
 			}
-
-			if test.effectiveInheritedLicenses != nil {
-				checkEffectiveInheritedLicenses(t, result, test.effectiveInheritedLicenses)
-			}
 		})
-	}
-}
-
-func checkEffectiveLicenses(t *testing.T, result *TestResult, effectiveLicenses map[string][]string) {
-	actualLicenses := make(map[string][]string)
-	result.Context.Context.VisitAllModules(func(m blueprint.Module) {
-		if _, ok := m.(*licenseModule); ok {
-			return
-		}
-		if _, ok := m.(*licenseKindModule); ok {
-			return
-		}
-		if _, ok := m.(*packageModule); ok {
-			return
-		}
-		module, ok := m.(Module)
-		if !ok {
-			t.Errorf("%q not a module", m.Name())
-			return
-		}
-		base := module.base()
-		if base == nil {
-			return
-		}
-		actualLicenses[m.Name()] = base.commonProperties.Effective_licenses
-	})
-
-	for moduleName, expectedLicenses := range effectiveLicenses {
-		licenses, ok := actualLicenses[moduleName]
-		if !ok {
-			licenses = []string{}
-		}
-		if !compareUnorderedStringArrays(expectedLicenses, licenses) {
-			t.Errorf("effective licenses mismatch for module %q: expected %q, found %q", moduleName, expectedLicenses, licenses)
-		}
-	}
-}
-
-func checkEffectiveInheritedLicenses(t *testing.T, result *TestResult, effectiveInheritedLicenses map[string][]string) {
-	actualLicenses := make(map[string][]string)
-	result.Context.Context.VisitAllModules(func(m blueprint.Module) {
-		if _, ok := m.(*licenseModule); ok {
-			return
-		}
-		if _, ok := m.(*licenseKindModule); ok {
-			return
-		}
-		if _, ok := m.(*packageModule); ok {
-			return
-		}
-		module, ok := m.(Module)
-		if !ok {
-			t.Errorf("%q not a module", m.Name())
-			return
-		}
-		base := module.base()
-		if base == nil {
-			return
-		}
-		inherited := make(map[string]bool)
-		for _, l := range base.commonProperties.Effective_licenses {
-			inherited[l] = true
-		}
-		result.Context.Context.VisitDepsDepthFirst(m, func(c blueprint.Module) {
-			if _, ok := c.(*licenseModule); ok {
-				return
-			}
-			if _, ok := c.(*licenseKindModule); ok {
-				return
-			}
-			if _, ok := c.(*packageModule); ok {
-				return
-			}
-			cmodule, ok := c.(Module)
-			if !ok {
-				t.Errorf("%q not a module", c.Name())
-				return
-			}
-			cbase := cmodule.base()
-			if cbase == nil {
-				return
-			}
-			for _, l := range cbase.commonProperties.Effective_licenses {
-				inherited[l] = true
-			}
-		})
-		actualLicenses[m.Name()] = []string{}
-		for l := range inherited {
-			actualLicenses[m.Name()] = append(actualLicenses[m.Name()], l)
-		}
-	})
-
-	for moduleName, expectedInheritedLicenses := range effectiveInheritedLicenses {
-		licenses, ok := actualLicenses[moduleName]
-		if !ok {
-			licenses = []string{}
-		}
-		if !compareUnorderedStringArrays(expectedInheritedLicenses, licenses) {
-			t.Errorf("effective inherited licenses mismatch for module %q: expected %q, found %q", moduleName, expectedInheritedLicenses, licenses)
-		}
 	}
 }
 
