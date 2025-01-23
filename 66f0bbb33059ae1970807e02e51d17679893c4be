@@ -16,6 +16,24 @@
       "message": "Are we already seeing effects after this cl? I thought the make install rules were still different due to things [like this](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/definitions.mk;l\u003d3363;drc\u003d0585bb1bcf4c89065adaf709f48acc8b869fd3ce).",
       "revId": "66f0bbb33059ae1970807e02e51d17679893c4be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a4bda4_1258a60b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-23T00:59:51Z",
+      "side": 1,
+      "message": "Some actions are still getting run when switching between builds https://paste.googleplex.com/5767085435912192. A lot of them are now `cmp` operations, but there are still install rules which get rerun.\n\nI will investigate and fix them in followup CLs.",
+      "parentUuid": "ef53a764_93738475",
+      "revId": "66f0bbb33059ae1970807e02e51d17679893c4be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
