@@ -24,6 +24,7 @@ import (
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/depset"
 	"github.com/google/blueprint/proptools"
+	"github.com/google/blueprint/uniquelist"
 )
 
 // BuildParameters describes the set of potential parameters to build a Ninja rule.
@@ -589,8 +590,8 @@ func (m *moduleContext) PackageFile(installPath InstallPath, name string, srcPat
 	return m.packageFile(fullInstallPath, srcPath, false)
 }
 
-func (m *moduleContext) getAconfigPaths() *Paths {
-	return &m.aconfigFilePaths
+func (m *moduleContext) getAconfigPaths() Paths {
+	return m.aconfigFilePaths
 }
 
 func (m *moduleContext) setAconfigPaths(paths Paths) {
@@ -618,13 +619,21 @@ func (m *moduleContext) packageFile(fullInstallPath InstallPath, srcPath Path, e
 		srcPath:               srcPath,
 		symlinkTarget:         "",
 		executable:            executable,
-		effectiveLicenseFiles: &licenseFiles,
+		effectiveLicenseFiles: uniquelist.Make(licenseFiles),
 		partition:             fullInstallPath.partition,
 		skipInstall:           m.skipInstall(),
-		aconfigPaths:          m.getAconfigPaths(),
+		aconfigPaths:          uniquelist.Make(m.getAconfigPaths()),
 		archType:              m.target.Arch.ArchType,
+<<<<<<< PATCH SET (752bfa Revert "Revert "Use Unique lists instead of pointers in Pack)
+		overrides:             uniquelist.Make(overrides),
+		owner:                 m.ModuleName(),
+||||||| BASE
+		overrides:             &overrides,
+		owner:                 m.ModuleName(),
+=======
 		overrides:             &overrides,
 		owner:                 owner,
+>>>>>>> BASE      (a10866 Merge "Create soong config to support other apis for aconfig)
 	}
 	m.packagingSpecs = append(m.packagingSpecs, spec)
 	return spec
@@ -752,10 +761,18 @@ func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, src
 		executable:       false,
 		partition:        fullInstallPath.partition,
 		skipInstall:      m.skipInstall(),
-		aconfigPaths:     m.getAconfigPaths(),
+		aconfigPaths:     uniquelist.Make(m.getAconfigPaths()),
 		archType:         m.target.Arch.ArchType,
+<<<<<<< PATCH SET (752bfa Revert "Revert "Use Unique lists instead of pointers in Pack)
+		overrides:        uniquelist.Make(overrides),
+		owner:            m.ModuleName(),
+||||||| BASE
+		overrides:        &overrides,
+		owner:            m.ModuleName(),
+=======
 		overrides:        &overrides,
 		owner:            owner,
+>>>>>>> BASE      (a10866 Merge "Create soong config to support other apis for aconfig)
 	})
 
 	return fullInstallPath
@@ -798,10 +815,18 @@ func (m *moduleContext) InstallAbsoluteSymlink(installPath InstallPath, name str
 		executable:       false,
 		partition:        fullInstallPath.partition,
 		skipInstall:      m.skipInstall(),
-		aconfigPaths:     m.getAconfigPaths(),
+		aconfigPaths:     uniquelist.Make(m.getAconfigPaths()),
 		archType:         m.target.Arch.ArchType,
+<<<<<<< PATCH SET (752bfa Revert "Revert "Use Unique lists instead of pointers in Pack)
+		overrides:        uniquelist.Make(overrides),
+		owner:            m.ModuleName(),
+||||||| BASE
+		overrides:        &overrides,
+		owner:            m.ModuleName(),
+=======
 		overrides:        &overrides,
 		owner:            owner,
+>>>>>>> BASE      (a10866 Merge "Create soong config to support other apis for aconfig)
 	})
 
 	return fullInstallPath
