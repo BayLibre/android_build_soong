@@ -16,6 +16,24 @@
       "message": "Does this change need to be cherry picked to aosp given that `wear-sdk-api-current.txt` module does not exist in aosp?",
       "revId": "403cd9c2ab82dce00f3d2cdd58a3cb2498d47215",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c01d15_0bb326a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-23T18:35:35Z",
+      "side": 1,
+      "message": "Maybe we can omit L38~41 and keep the select statment to minimize the merge conflicts in the future.",
+      "parentUuid": "2af578ae_73d82eb8",
+      "revId": "403cd9c2ab82dce00f3d2cdd58a3cb2498d47215",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
