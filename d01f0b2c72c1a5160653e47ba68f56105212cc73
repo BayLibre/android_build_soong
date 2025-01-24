@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a5eb084_2ce03943",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2320,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-24T22:33:53Z",
+      "side": 1,
+      "message": "LGTM assuming that this is the order of the api signature files that metalava expects (e.g. `core` after `system-server`).",
+      "range": {
+        "startLine": 2317,
+        "startChar": 0,
+        "endLine": 2320,
+        "endChar": 55
+      },
+      "revId": "d01f0b2c72c1a5160653e47ba68f56105212cc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
