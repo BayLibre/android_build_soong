@@ -2310,6 +2310,14 @@ func (al *ApiLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 var scopeOrderMap = AllApiScopes.MapToIndex(
 	func(s *apiScope) string { return s.name })
 
+// Add some extra entries into scopeOrderMap for some special api surface names needed by libcore,
+// external/conscrypt and external/icu.
+func init() {
+	count := len(scopeOrderMap)
+	scopeOrderMap["core-platform"] = count + 1
+	scopeOrderMap["intra-core"] = count + 2
+}
+
 func (al *ApiLibrary) sortApiFilesByApiScope(ctx android.ModuleContext, srcFilesInfo []JavaApiImportInfo) []JavaApiImportInfo {
 	for _, srcFileInfo := range srcFilesInfo {
 		if srcFileInfo.ApiSurface == "" {
