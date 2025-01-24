@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e46845_8152823e",
+        "filename": "java/metalava/main-config.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-24T22:35:11Z",
+      "side": 1,
+      "message": "nit: the order here does not match that of `scopeOrderMap`. Would that matter?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 53
+      },
+      "revId": "56af410c9bed6fb19ecc5a5d0ae5adde1766aa98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
