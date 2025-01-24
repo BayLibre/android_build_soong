@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af998152_a4bb14fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-24T18:50:09Z",
+      "side": 1,
+      "message": "I\u0027m bit worried about the divergence between the module name and the actual api contribution of the module that this change would introduce. Should we expand `api_surface` to the naming of the generated modules as well?",
+      "revId": "7de8109cf64390f91f794a19a2ad35f546e40beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
