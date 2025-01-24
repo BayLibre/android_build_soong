@@ -16,6 +16,24 @@
       "message": "It\u0027s also possible for this to be [host-cross](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/base_rules.mk;l\u003d1265;drc\u003d6a8fff595ba4cbb87b7e124fd630f548c5c4e2cb). And I think that\u0027s ultimately decided [here](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/soong_cc_rust_prebuilt.mk;l\u003d13;drc\u003d988bcf6dc2594dfe0178bbbfb4de0871495fdc1b). Could we do something similar in soong, maybe by checking `ctx.Target().HostCross`?",
       "revId": "b95750177ed895ab66b0a76455547563ab8da778",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5984a6b7_f16c8a51",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1727,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-24T22:49:26Z",
+      "side": 1,
+      "message": "Good point, done.\n\nWe might also need to generate phony targets for specific bitness (32/64) of device variants. I will do some additional testing on some cc_tests and add those in a followup CL.",
+      "parentUuid": "cf01e982_65a2ecc4",
+      "revId": "b95750177ed895ab66b0a76455547563ab8da778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
