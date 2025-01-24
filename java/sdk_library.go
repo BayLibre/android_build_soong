@@ -690,9 +690,9 @@ func (paths *scopePaths) extractStubsLibraryInfoFromDependency(ctx android.Modul
 		paths.stubsHeaderPath = lib.HeaderJars
 		paths.stubsImplPath = lib.ImplementationJars
 
-		libDep := dep.(UsesLibraryDependency)
-		paths.stubsDexJarPath = libDep.DexJarBuildPath(ctx)
-		paths.exportableStubsDexJarPath = libDep.DexJarBuildPath(ctx)
+		libDep := android.OtherModuleProviderOrDefault(ctx, dep, JavaInfoProvider).UsesLibraryDependencyInfo
+		paths.stubsDexJarPath = libDep.DexJarBuildPath
+		paths.exportableStubsDexJarPath = libDep.DexJarBuildPath
 		return nil
 	} else {
 		return fmt.Errorf("expected module that has JavaInfoProvider, e.g. java_library")
@@ -706,8 +706,8 @@ func (paths *scopePaths) extractEverythingStubsLibraryInfoFromDependency(ctx and
 			paths.stubsImplPath = lib.ImplementationJars
 		}
 
-		libDep := dep.(UsesLibraryDependency)
-		paths.stubsDexJarPath = libDep.DexJarBuildPath(ctx)
+		libDep := android.OtherModuleProviderOrDefault(ctx, dep, JavaInfoProvider).UsesLibraryDependencyInfo
+		paths.stubsDexJarPath = libDep.DexJarBuildPath
 		return nil
 	} else {
 		return fmt.Errorf("expected module that has JavaInfoProvider, e.g. java_library")
@@ -720,58 +720,67 @@ func (paths *scopePaths) extractExportableStubsLibraryInfoFromDependency(ctx and
 			paths.stubsImplPath = lib.ImplementationJars
 		}
 
-		libDep := dep.(UsesLibraryDependency)
-		paths.exportableStubsDexJarPath = libDep.DexJarBuildPath(ctx)
+		libDep := android.OtherModuleProviderOrDefault(ctx, dep, JavaInfoProvider).UsesLibraryDependencyInfo
+		paths.exportableStubsDexJarPath = libDep.DexJarBuildPath
 		return nil
 	} else {
 		return fmt.Errorf("expected module that has JavaInfoProvider, e.g. java_library")
 	}
 }
 
-func (paths *scopePaths) treatDepAsApiStubsProvider(dep android.Module, action func(provider ApiStubsProvider) error) error {
-	if apiStubsProvider, ok := dep.(ApiStubsProvider); ok {
-		err := action(apiStubsProvider)
+func (paths *scopePaths) treatDepAsApiStubsProvider(ctx android.ModuleContext, dep android.Module,
+	action func(*DroidStubsInfo, *StubsSrcInfo) error) error {
+	apiStubsProvider, ok := android.OtherModuleProvider(ctx, dep, DroidStubsInfoProvider)
+	if !ok {
+		return fmt.Errorf("expected module that provides DroidStubsInfo, e.g. droidstubs")
+	}
+
+	apiStubsSrcProvider, ok := android.OtherModuleProvider(ctx, dep, StubsSrcInfoProvider)
+	if !ok {
+		return fmt.Errorf("expected module that provides StubsSrcInfo, e.g. droidstubs")
+	}
+	return action(&apiStubsProvider, &apiStubsSrcProvider)
+}
+
+func (paths *scopePaths) treatDepAsApiStubsSrcProvider(
+	ctx android.ModuleContext, dep android.Module, action func(provider *StubsSrcInfo) error) error {
+	if apiStubsProvider, ok := android.OtherModuleProvider(ctx, dep, StubsSrcInfoProvider); ok {
+		err := action(&apiStubsProvider)
 		if err != nil {
 			return err
 		}
 		return nil
 	} else {
-		return fmt.Errorf("expected module that implements ExportableApiStubsSrcProvider, e.g. droidstubs")
+		return fmt.Errorf("expected module that provides DroidStubsInfo, e.g. droidstubs")
 	}
 }
 
-func (paths *scopePaths) treatDepAsApiStubsSrcProvider(dep android.Module, action func(provider ApiStubsSrcProvider) error) error {
-	if apiStubsProvider, ok := dep.(ApiStubsSrcProvider); ok {
-		err := action(apiStubsProvider)
-		if err != nil {
-			return err
-		}
-		return nil
-	} else {
-		return fmt.Errorf("expected module that implements ApiStubsSrcProvider, e.g. droidstubs")
+func (paths *scopePaths) extractApiInfoFromApiStubsProvider(provider *DroidStubsInfo, stubsType StubsType) error {
+	var currentApiFilePathErr, removedApiFilePathErr error
+	info, err := getStubsInfoForType(provider, stubsType)
+	if err != nil {
+		return err
 	}
-}
-
-func (paths *scopePaths) extractApiInfoFromApiStubsProvider(provider ApiStubsProvider, stubsType StubsType) error {
-	var annotationsZip, currentApiFilePath, removedApiFilePath android.Path
-	annotationsZip, annotationsZipErr := provider.AnnotationsZip(stubsType)
-	currentApiFilePath, currentApiFilePathErr := provider.ApiFilePath(stubsType)
-	removedApiFilePath, removedApiFilePathErr := provider.RemovedApiFilePath(stubsType)
-
-	combinedError := errors.Join(annotationsZipErr, currentApiFilePathErr, removedApiFilePathErr)
+	if info.ApiFile == nil {
+		currentApiFilePathErr = fmt.Errorf("expected module that provides ApiFile")
+	}
+	if info.RemovedApiFile == nil {
+		removedApiFilePathErr = fmt.Errorf("expected module that provides RemovedApiFile")
+	}
+	combinedError := errors.Join(currentApiFilePathErr, removedApiFilePathErr)
 
 	if combinedError == nil {
-		paths.annotationsZip = android.OptionalPathForPath(annotationsZip)
-		paths.currentApiFilePath = android.OptionalPathForPath(currentApiFilePath)
-		paths.removedApiFilePath = android.OptionalPathForPath(removedApiFilePath)
+		paths.annotationsZip = android.OptionalPathForPath(info.AnnotationsZip)
+		paths.currentApiFilePath = android.OptionalPathForPath(info.ApiFile)
+		paths.removedApiFilePath = android.OptionalPathForPath(info.RemovedApiFile)
 	}
 	return combinedError
 }
 
-func (paths *scopePaths) extractStubsSourceInfoFromApiStubsProviders(provider ApiStubsSrcProvider, stubsType StubsType) error {
-	stubsSrcJar, err := provider.StubsSrcJar(stubsType)
+func (paths *scopePaths) extractStubsSourceInfoFromApiStubsProviders(provider *StubsSrcInfo, stubsType StubsType) error {
+	path, err := getStubsSrcInfoForType(provider, stubsType)
 	if err == nil {
-		paths.stubsSrcJar = android.OptionalPathForPath(stubsSrcJar)
+		paths.stubsSrcJar = android.OptionalPathForPath(path)
 	}
 	return err
 }
@@ -781,7 +790,7 @@ func (paths *scopePaths) extractStubsSourceInfoFromDep(ctx android.ModuleContext
 	if ctx.Config().ReleaseHiddenApiExportableStubs() {
 		stubsType = Exportable
 	}
-	return paths.treatDepAsApiStubsSrcProvider(dep, func(provider ApiStubsSrcProvider) error {
+	return paths.treatDepAsApiStubsSrcProvider(ctx, dep, func(provider *StubsSrcInfo) error {
 		return paths.extractStubsSourceInfoFromApiStubsProviders(provider, stubsType)
 	})
 }
@@ -791,17 +800,17 @@ func (paths *scopePaths) extractStubsSourceAndApiInfoFromApiStubsProvider(ctx an
 	if ctx.Config().ReleaseHiddenApiExportableStubs() {
 		stubsType = Exportable
 	}
-	return paths.treatDepAsApiStubsProvider(dep, func(provider ApiStubsProvider) error {
-		extractApiInfoErr := paths.extractApiInfoFromApiStubsProvider(provider, stubsType)
-		extractStubsSourceInfoErr := paths.extractStubsSourceInfoFromApiStubsProviders(provider, stubsType)
+	return paths.treatDepAsApiStubsProvider(ctx, dep, func(apiStubsProvider *DroidStubsInfo, apiStubsSrcProvider *StubsSrcInfo) error {
+		extractApiInfoErr := paths.extractApiInfoFromApiStubsProvider(apiStubsProvider, stubsType)
+		extractStubsSourceInfoErr := paths.extractStubsSourceInfoFromApiStubsProviders(apiStubsSrcProvider, stubsType)
 		return errors.Join(extractApiInfoErr, extractStubsSourceInfoErr)
 	})
 }
 
-func extractOutputPaths(dep android.Module) (android.Paths, error) {
+func extractOutputPaths(ctx android.ModuleContext, dep android.Module) (android.Paths, error) {
 	var paths android.Paths
-	if sourceFileProducer, ok := dep.(android.SourceFileProducer); ok {
-		paths = sourceFileProducer.Srcs()
+	if sourceFileProducer, ok := android.OtherModuleProvider(ctx, dep, android.SourceFilesInfoProvider); ok {
+		paths = sourceFileProducer.Srcs
 		return paths, nil
 	} else {
 		return nil, fmt.Errorf("module %q does not produce source files", dep)
@@ -809,15 +818,45 @@ func extractOutputPaths(dep android.Module) (android.Paths, error) {
 }
 
 func (paths *scopePaths) extractLatestApiPath(ctx android.ModuleContext, dep android.Module) error {
-	outputPaths, err := extractOutputPaths(dep)
+	outputPaths, err := extractOutputPaths(ctx, dep)
 	paths.latestApiPaths = outputPaths
 	return err
 }
 
 func (paths *scopePaths) extractLatestRemovedApiPath(ctx android.ModuleContext, dep android.Module) error {
-	outputPaths, err := extractOutputPaths(dep)
+	outputPaths, err := extractOutputPaths(ctx, dep)
 	paths.latestRemovedApiPaths = outputPaths
 	return err
+}
+
+func getStubsInfoForType(info *DroidStubsInfo, stubsType StubsType) (ret *StubsInfo, err error) {
+	switch stubsType {
+	case Everything:
+		ret, err = &info.EverythingStubsInfo, nil
+	case Exportable:
+		ret, err = &info.ExportableStubsInfo, nil
+	default:
+		ret, err = nil, fmt.Errorf("stubs info not supported for the stub type %s", stubsType.String())
+	}
+	if ret == nil && err == nil {
+		err = fmt.Errorf("stubs info is null for the stub type %s", stubsType.String())
+	}
+	return ret, err
+}
+
+func getStubsSrcInfoForType(info *StubsSrcInfo, stubsType StubsType) (ret android.Path, err error) {
+	switch stubsType {
+	case Everything:
+		ret, err = info.EverythingStubsSrcJar, nil
+	case Exportable:
+		ret, err = info.ExportableStubsSrcJar, nil
+	default:
+		ret, err = nil, fmt.Errorf("stubs src info not supported for the stub type %s", stubsType.String())
+	}
+	if ret == nil && err == nil {
+		err = fmt.Errorf("stubs src info is null for the stub type %s", stubsType.String())
+	}
+	return ret, err
 }
 
 type commonToSdkLibraryAndImportProperties struct {
