@@ -22,6 +22,30 @@
       },
       "revId": "56af410c9bed6fb19ecc5a5d0ae5adde1766aa98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1616c16_91f53374",
+        "filename": "java/metalava/main-config.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2025-01-24T23:13:54Z",
+      "side": 1,
+      "message": "No, as long as the ones that extend `public` come after `public` in the `scopeOrderMap` it should be fine.",
+      "parentUuid": "a9e46845_8152823e",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 53
+      },
+      "revId": "56af410c9bed6fb19ecc5a5d0ae5adde1766aa98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
