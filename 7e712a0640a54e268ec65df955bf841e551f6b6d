@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02bf3ac0_96af113e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2025-01-24T20:34:25Z",
+      "side": 1,
+      "message": "PTAL - added the missing entries to `scopeOrderMap`.",
+      "revId": "7e712a0640a54e268ec65df955bf841e551f6b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
