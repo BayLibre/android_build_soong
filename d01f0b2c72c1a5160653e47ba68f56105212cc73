@@ -22,6 +22,41 @@
       },
       "revId": "d01f0b2c72c1a5160653e47ba68f56105212cc73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "070bc536_f89359fe",
+        "filename": "java/sdk_library_internal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-24T22:35:59Z",
+      "side": 1,
+      "message": "Do you mind updating this with `getApiSurfaceForScope` as well?",
+      "fixSuggestions": [
+        {
+          "fixId": "18bc5961_8720241e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/sdk_library_internal.go",
+              "range": {
+                "startLine": 680,
+                "startChar": 0,
+                "endLine": 681,
+                "endChar": 0
+              },
+              "replacement": "\tapi_surface :\u003d module.getApiSurfaceForScope(apiScope)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d01f0b2c72c1a5160653e47ba68f56105212cc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
