@@ -16,6 +16,24 @@
       "message": "I\u0027m bit worried about the divergence between the module name and the actual api contribution of the module that this change would introduce. Should we expand `api_surface` to the naming of the generated modules as well?",
       "revId": "7de8109cf64390f91f794a19a2ad35f546e40beb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "288fad32_967bff2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2025-01-24T18:58:41Z",
+      "side": 1,
+      "message": "This is my understanding of the behavior, correct me if I am wrong.\n\nSo, the `api_surface` passed to `java_sdk_library` gets passed to `droidstubs` which passes it to `java_api_contribution`. AFAICT that only gets used to sort stuff in the `scopeOrderMap`. Which will not contain the new surface names so I am not sure how it will sort them. The reason for sorting is so that they can be passed to Metalava in the correct order.\n\nThe purpose of adding the configuration to Metalava is partly to allow it to determine the correct order itself. So, longer term it should avoid the need for you to sort them in the scope order.\n\nIn the meantime I think that all I will need to do is add some extra entries to `scopeOrderMap` to ensure correct sorting. Longer term we can remove `scopeOrderMap` altogether.",
+      "parentUuid": "af998152_a4bb14fa",
+      "revId": "7de8109cf64390f91f794a19a2ad35f546e40beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
