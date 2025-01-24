@@ -329,6 +329,13 @@ func (test *testBinary) moduleInfoJSON(ctx ModuleContext, moduleInfoJSON *androi
 
 }
 
+func (c *Module) InstallInTestcases() bool {
+	if _, ok := c.compiler.(*testBinary); ok {
+		return true
+	}
+	return false
+}
+
 func (test *testBinary) installerProps() []interface{} {
 	return append(test.baseInstaller.installerProps(), test.testDecorator.installerProps()...)
 }
@@ -399,6 +406,14 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 
 	test.binaryDecorator.baseInstaller.installTestData(ctx, test.data)
 	test.binaryDecorator.baseInstaller.install(ctx, file)
+	if !ctx.Config().KatiEnabled() {
+		if test.testConfig != nil {
+			test.binaryDecorator.baseInstaller.install(ctx, test.testConfig)
+		}
+		for _, extraTestConfig := range test.extraTestConfigs {
+			test.binaryDecorator.baseInstaller.install(ctx, extraTestConfig)
+		}
+	}
 }
 
 func getTestInstallBase(useVendor bool) string {
