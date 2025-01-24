@@ -397,6 +397,17 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 		test.Properties.Test_options.Unit_test = proptools.BoolPtr(true)
 	}
 
+	if ctx.Module() == ctx.PrimaryModule() && !ctx.Config().KatiEnabled() { // TODO(spandandas): Remove the special case for kati
+		// Install the test config in testcases/ directory for atest
+		testCases := android.PathForModuleInPartitionInstall(ctx, "testcases", ctx.ModuleName())
+		if test.testConfig != nil {
+			ctx.InstallFile(testCases, test.testConfig.Base(), test.testConfig)
+		}
+		for _, extraTestConfig := range test.extraTestConfigs {
+			ctx.InstallFile(testCases, extraTestConfig.Base(), extraTestConfig)
+		}
+	}
+
 	test.binaryDecorator.baseInstaller.installTestData(ctx, test.data)
 	test.binaryDecorator.baseInstaller.install(ctx, file)
 }
