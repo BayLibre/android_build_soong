@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10e7d89_e5074d76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2025-01-24T19:43:36Z",
+      "side": 1,
+      "message": "Can you clarify what this affects?  Does this affect the actual Android images (system, vendor, etc.) i.e. set the default for `BOARD_AVB_*_ADD_HASHTREE_FOOTER_ARGS`, or does this have a more limited scope?",
+      "revId": "301307ff3f49c6897c28cf1c1437fc7cbfd4c1c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
