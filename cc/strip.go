@@ -52,7 +52,11 @@ type Stripper struct {
 // NeedsStrip determines if stripping is required for a module.
 func (stripper *Stripper) NeedsStrip(actx android.ModuleContext) bool {
 	forceDisable := Bool(stripper.StripProperties.Strip.None)
-	return !forceDisable
+	defaultEnable := (!actx.Config().KatiEnabled() || actx.Device())
+	forceEnable := Bool(stripper.StripProperties.Strip.All) ||
+		Bool(stripper.StripProperties.Strip.Keep_symbols) ||
+		Bool(stripper.StripProperties.Strip.Keep_symbols_and_debug_frame)
+	return !forceDisable && (forceEnable || defaultEnable)
 }
 
 func (stripper *Stripper) strip(actx android.ModuleContext, in android.Path, out android.ModuleOutPath,
