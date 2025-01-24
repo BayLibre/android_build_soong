@@ -70,6 +70,24 @@
       "parentUuid": "fc6252dc_5bc7d497",
       "revId": "7de8109cf64390f91f794a19a2ad35f546e40beb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6181607_b61a1fcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-24T19:19:14Z",
+      "side": 1,
+      "message": "Thanks for the explanation, and I agree with your analysis.\n\nGiven that `scopeOrderMap` is derived from `AllApiScopes`, WDYT about defining additional api scopes for `core`, `core-platform` and `intra-core`, and validate the newly introducing `api_surface` property in sdk library based on all api scopes names?",
+      "parentUuid": "ef1a51a4_b5cf2d77",
+      "revId": "7de8109cf64390f91f794a19a2ad35f546e40beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
