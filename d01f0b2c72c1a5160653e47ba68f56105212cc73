@@ -57,6 +57,24 @@
       ],
       "revId": "d01f0b2c72c1a5160653e47ba68f56105212cc73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6fe245a_8b6f488d",
+        "filename": "java/sdk_library_internal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2025-01-24T23:40:16Z",
+      "side": 1,
+      "message": "It won\u0027t work. Because this is an `SdkLibraryImport` and `getApiSurfaceForScope(apiScope)` is on `SdkLibrary`. It is also not needed because the choice of API surface will only affects annotations that are used to select the API surface from Java source files and `SdkLibraryImport` does not use them.",
+      "parentUuid": "070bc536_f89359fe",
+      "revId": "d01f0b2c72c1a5160653e47ba68f56105212cc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
