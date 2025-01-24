@@ -88,6 +88,24 @@
       "parentUuid": "ef1a51a4_b5cf2d77",
       "revId": "7de8109cf64390f91f794a19a2ad35f546e40beb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef9907d_8aae0434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2025-01-24T20:15:35Z",
+      "side": 1,
+      "message": "I think it will be better just to add the special cases to `scopeOrderMap`. Especially as they will be removed in future. Adding extra `apiScope`s could affect lots of other code.",
+      "parentUuid": "d6181607_b61a1fcc",
+      "revId": "7de8109cf64390f91f794a19a2ad35f546e40beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
