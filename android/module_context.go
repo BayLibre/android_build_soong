@@ -624,8 +624,8 @@ func (m *moduleContext) packageFile(fullInstallPath InstallPath, srcPath Path, e
 		skipInstall:           m.skipInstall(),
 		aconfigPaths:          uniquelist.Make(m.getAconfigPaths()),
 		archType:              m.target.Arch.ArchType,
-        overrides:             uniquelist.Make(overrides),
-        owner:                 owner,
+		overrides:             uniquelist.Make(overrides),
+		owner:                 owner,
 	}
 	m.packagingSpecs = append(m.packagingSpecs, spec)
 	return spec
@@ -759,8 +759,8 @@ func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, src
 		skipInstall:      m.skipInstall(),
 		aconfigPaths:     uniquelist.Make(m.getAconfigPaths()),
 		archType:         m.target.Arch.ArchType,
-        overrides:        uniquelist.Make(overrides),
-        owner:            owner,
+		overrides:        uniquelist.Make(overrides),
+		owner:            owner,
 	})
 
 	return fullInstallPath
@@ -807,8 +807,8 @@ func (m *moduleContext) InstallAbsoluteSymlink(installPath InstallPath, name str
 		skipInstall:      m.skipInstall(),
 		aconfigPaths:     uniquelist.Make(m.getAconfigPaths()),
 		archType:         m.target.Arch.ArchType,
-        overrides:        uniquelist.Make(overrides),
-        owner:            owner,
+		overrides:        uniquelist.Make(overrides),
+		owner:            owner,
 	})
 
 	return fullInstallPath

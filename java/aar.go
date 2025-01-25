@@ -1526,6 +1526,7 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	a.implementationJarFile = implementationJarFile
+	ctx.Phony("javac-check", a.implementationJarFile)
 	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource
 	a.implementationAndResourcesJarFile = implementationAndResourcesJar.WithoutRel()
 

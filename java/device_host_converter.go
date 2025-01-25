@@ -127,8 +127,10 @@ func (d *DeviceHostConverter) GenerateAndroidBuildActions(ctx android.ModuleCont
 		TransformJarsToJar(ctx, outputFile, "combine", d.implementationAndResourceJars,
 			android.OptionalPath{}, false, nil, nil)
 		d.combinedImplementationJar = outputFile
+		ctx.Phony("javac-check", d.combinedImplementationJar)
 	} else if len(d.implementationAndResourceJars) == 1 {
 		d.combinedImplementationJar = d.implementationAndResourceJars[0]
+		ctx.Phony("javac-check", d.combinedImplementationJar)
 	}
 
 	if len(d.headerJars) > 1 {

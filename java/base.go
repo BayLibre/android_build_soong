@@ -1816,6 +1816,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 	}
 
 	j.implementationAndResourcesJar = outputFile
+	ctx.Phony("javac-check", j.implementationAndResourcesJar)
 
 	if ctx.Device() && compileDex {
 		if j.hasCode(ctx) {
