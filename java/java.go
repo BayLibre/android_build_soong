@@ -2448,6 +2448,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	al.stubsSrcJar = android.PathForModuleOut(ctx, "metalava", ctx.ModuleName()+"-"+"stubs.srcjar")
 	al.stubsJarWithoutStaticLibs = android.PathForModuleOut(ctx, "metalava", "stubs.jar")
 	al.stubsJar = android.PathForModuleOut(ctx, ctx.ModuleName(), fmt.Sprintf("%s.jar", ctx.ModuleName()))
+	ctx.Phony("javac-check", al.stubsJar)
 
 	rule.Command().
 		BuiltTool("soong_zip").
@@ -2919,6 +2920,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// in a module that depends on this module considers them equal.
 	j.combinedHeaderFile = headerJar.WithoutRel()
 	j.combinedImplementationFile = outputFile.WithoutRel()
+	ctx.Phony("javac-check", j.combinedImplementationFile)
 
 	j.maybeInstall(ctx, jarName, outputFile)
 
