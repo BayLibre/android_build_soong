@@ -130,6 +130,7 @@ func (d *DeviceHostConverter) GenerateAndroidBuildActions(ctx android.ModuleCont
 	} else if len(d.implementationAndResourceJars) == 1 {
 		d.combinedImplementationJar = d.implementationAndResourceJars[0]
 	}
+	ctx.Phony("javac-check", d.combinedImplementationJar)
 
 	if len(d.headerJars) > 1 {
 		outputFile := android.PathForModuleOut(ctx, "turbine-combined", jarName)
