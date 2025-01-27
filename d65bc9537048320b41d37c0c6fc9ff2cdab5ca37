@@ -16,6 +16,24 @@
       "message": "Could we use installTestData for the testConfig as well? Would that cause it to be put in just the nativetest64 folder, without the need for InstallInTestcases?\n\nIt seems weird that the install paths for cc binaries are differing from python/rust test binaries.",
       "revId": "d65bc9537048320b41d37c0c6fc9ff2cdab5ca37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d64271_d081dcf8",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-27T19:01:55Z",
+      "side": 1,
+      "message": "I think `installTestData` uses `android.InstallTestData` which is just a wrapper around `android.installFile`. Using `install` creates the same installation paths, but avoids a type conversion from `Path` to `DataPath`\n\nI think `nativetest64` comes from [here](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/37d4d1bd5b4356d984586376189684b948d2e702:cc/test.go;l\u003d387-388;drc\u003d90e76f1b84b8843c2b9c8ca47a809630f74aa83c;bpv\u003d1;bpt\u003d0). Prior to this CL, the tests will be installed in a `nativetest` subdir relative to $PRODUCT_OUT in soong only mode. `InstallInTestCases` cause the \"partition\" to be evaluated as [testcases](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/37d4d1bd5b4356d984586376189684b948d2e702:android/paths.go;l\u003d2103-2106;drc\u003dd6a390014eb9b24cac72108d5619cb6bd9921e5f;bpv\u003d1;bpt\u003d0) for both host and device.\n\nThe asymmetric installation paths between cc and python/rust is WAI imo. Running python and rust tests in soong-only mode will likely require us to install those tests in the \"testcases\" partition of the staging directory.",
+      "parentUuid": "6eb0be29_29900962",
+      "revId": "d65bc9537048320b41d37c0c6fc9ff2cdab5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
