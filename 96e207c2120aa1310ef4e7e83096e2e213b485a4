@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f757220d_68eabe49",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-27T18:18:08Z",
+      "side": 1,
+      "message": "nit:\n```suggestion\n\tsrc :\u003d a.properties.Src.GetOrDefault(ctx, \"\")\n```",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 45
+      },
+      "revId": "96e207c2120aa1310ef4e7e83096e2e213b485a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
