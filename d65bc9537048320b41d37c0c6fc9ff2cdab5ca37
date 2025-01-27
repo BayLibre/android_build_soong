@@ -106,6 +106,24 @@
       "parentUuid": "1def382b_64bc9402",
       "revId": "d65bc9537048320b41d37c0c6fc9ff2cdab5ca37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "521ffaf3_31c33324",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-27T23:12:18Z",
+      "side": 1,
+      "message": "Regular `m` builds installs the tests in `data/`, but installs the test_config files in `testcases/`. In my original patchset, I inadvertently \"fixed\" this for pure soong builds by installing both the tests and config in `testcases`\n\nI have updated a new patchset that installs only the config files in `testcases`",
+      "parentUuid": "2fecac16_1022258c",
+      "revId": "d65bc9537048320b41d37c0c6fc9ff2cdab5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
