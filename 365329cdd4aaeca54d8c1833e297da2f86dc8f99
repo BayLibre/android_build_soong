@@ -46,6 +46,30 @@
       },
       "revId": "365329cdd4aaeca54d8c1833e297da2f86dc8f99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eead18b6_02b63455",
+        "filename": "cc/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-27T23:27:35Z",
+      "side": 1,
+      "message": "My current implementation is incorrect. We need to do it once per host and device. I am working on a fix.",
+      "parentUuid": "e06d0476_52b0a584",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 400,
+        "endChar": 39
+      },
+      "revId": "365329cdd4aaeca54d8c1833e297da2f86dc8f99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
