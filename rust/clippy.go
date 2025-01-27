@@ -47,5 +47,6 @@ func (c *clippy) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags, Pa
 
 	flags.Clippy = dirEnabled && !envDisable
 	flags.ClippyFlags = append(flags.ClippyFlags, lints)
+	flags.ClippyFlags = append(flags.ClippyFlags, "-A clippy::empty_line_after_doc_comments")
 	return flags, deps
 }
