@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eb0be29_29900962",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-27T18:15:10Z",
+      "side": 1,
+      "message": "Could we use installTestData for the testConfig as well? Would that cause it to be put in just the nativetest64 folder, without the need for InstallInTestcases?\n\nIt seems weird that the install paths for cc binaries are differing from python/rust test binaries.",
+      "revId": "d65bc9537048320b41d37c0c6fc9ff2cdab5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
