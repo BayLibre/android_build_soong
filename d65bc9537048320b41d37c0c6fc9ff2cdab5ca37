@@ -88,6 +88,24 @@
       "parentUuid": "f546e7f2_0ed17837",
       "revId": "d65bc9537048320b41d37c0c6fc9ff2cdab5ca37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fecac16_1022258c",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-27T20:46:28Z",
+      "side": 1,
+      "message": "Actually you are right, in regular `m` builds the native tests are installed in `data`, so this path change should not be necessary in soong only `m`. I am taking a look.",
+      "parentUuid": "1def382b_64bc9402",
+      "revId": "d65bc9537048320b41d37c0c6fc9ff2cdab5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
