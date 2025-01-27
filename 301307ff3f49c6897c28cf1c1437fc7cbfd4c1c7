@@ -34,6 +34,47 @@
       "parentUuid": "b10e7d89_e5074d76",
       "revId": "301307ff3f49c6897c28cf1c1437fc7cbfd4c1c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f4564dd_12ef717c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2025-01-27T17:48:53Z",
+      "side": 1,
+      "message": "Thanks!  Could you mention this in the commit message?",
+      "parentUuid": "05e034ea_9838db50",
+      "revId": "301307ff3f49c6897c28cf1c1437fc7cbfd4c1c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94837e41_e0a70788",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2025-01-27T17:48:53Z",
+      "side": 1,
+      "message": "sha256",
+      "range": {
+        "startLine": 122,
+        "startChar": 24,
+        "endLine": 122,
+        "endChar": 38
+      },
+      "revId": "301307ff3f49c6897c28cf1c1437fc7cbfd4c1c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
