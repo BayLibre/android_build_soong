@@ -52,6 +52,24 @@
       "parentUuid": "32d64271_d081dcf8",
       "revId": "d65bc9537048320b41d37c0c6fc9ff2cdab5ca37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f546e7f2_0ed17837",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-27T19:46:19Z",
+      "side": 1,
+      "message": "Why is this change to the \"testcases\" folder necessary? Why can\u0027t we keep installing them in the same `$PRODUCT_OUT/data/nativetest/` folder?",
+      "parentUuid": "852ecee2_8b7c1f19",
+      "revId": "d65bc9537048320b41d37c0c6fc9ff2cdab5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
