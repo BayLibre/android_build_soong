@@ -34,6 +34,24 @@
       "parentUuid": "6eb0be29_29900962",
       "revId": "d65bc9537048320b41d37c0c6fc9ff2cdab5ca37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "852ecee2_8b7c1f19",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-27T19:17:27Z",
+      "side": 1,
+      "message": "\u003e Prior to this CL, the tests will be installed in a nativetest subdir relative to $PRODUCT_OUT in soong only mode\n\nCorrection: Prior to this CL, they were installed in $PRODUCT_OUT/data/nativetest/ for device tests. \n\nAfter this CL, they will be installed in $PRODUCT_OUT/testcases/nativetest/ for device tests.",
+      "parentUuid": "32d64271_d081dcf8",
+      "revId": "d65bc9537048320b41d37c0c6fc9ff2cdab5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
