@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc1047f7_930e3868",
+        "filename": "cc/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-27T23:13:36Z",
+      "side": 1,
+      "message": "Could you add a comment explaining why we only do this for the primary variant?",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 400,
+        "endChar": 39
+      },
+      "revId": "365329cdd4aaeca54d8c1833e297da2f86dc8f99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
