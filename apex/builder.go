@@ -20,6 +20,7 @@ import (
 	"path"
 	"path/filepath"
 	"runtime"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -542,6 +543,29 @@ func runAssembleVintf(ctx android.ModuleContext, vintfFragment android.Path) and
 	return processed
 }
 
+// installDexpreoptFiles installs dexpreopt files for system server classpath entries provided by the apex.
+func (a *apexBundle) installDexpreoptFiles(ctx android.ModuleContext) {
+	performInstalls := a.GetOverriddenBy() == "" && !a.testApex && a.BaseModuleName() != "com.android.art.debug" && !a.properties.IsCoverageVariant
+	for _, fi := range a.filesInfo {
+		for _, install := range fi.dexpreoptInstalls {
+			var installedFile android.InstallPath
+			if performInstalls {
+				installedFile = ctx.InstallFile(install.InstallDirOnDevice, install.InstallFileOnDevice, install.OutputPathOnHost)
+			} else {
+				installedFile = install.InstallDirOnDevice.Join(ctx, install.InstallFileOnDevice)
+			}
+			a.extraInstalledFiles = append(a.extraInstalledFiles, installedFile)
+			a.extraInstalledPairs = append(a.extraInstalledPairs, installPair{install.OutputPathOnHost, installedFile})
+		}
+		if performInstalls {
+			for _, dexJar := range fi.dexJarsForApexSystemServer {
+				android.CopyFileRule(ctx, dexJar,
+					android.PathForOutput(ctx, "system_server_dexjars", dexJar.Base()))
+			}
+		}
+	}
+}
+
 // buildApex creates build rules to build an APEX using apexer.
 func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 	suffix := imageApexSuffix
@@ -985,9 +1009,9 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 		a.SkipInstall()
 	}
 
+	installDeps := slices.Concat(a.compatSymlinks, a.extraInstalledFiles)
 	// Install to $OUT/soong/{target,host}/.../apex.
-	a.installedFile = ctx.InstallFile(a.installDir, a.Name()+installSuffix, a.outputFile,
-		a.compatSymlinks...)
+	a.installedFile = ctx.InstallFile(a.installDir, a.Name()+installSuffix, a.outputFile, installDeps...)
 
 	// installed-files.txt is dist'ed
 	a.installedFilesFile = a.buildInstalledFilesFile(ctx, a.outputFile, imageDir)

@@ -1094,7 +1094,6 @@ func (j *Library) javaLibraryModuleInfoJSON(ctx android.ModuleContext) *android.
 
 	if j.hideApexVariantFromMake {
 		moduleInfoJSON.Disabled = true
-		j.dexpreopter.ModuleInfoJSONForApex(ctx)
 	}
 	return moduleInfoJSON
 }
