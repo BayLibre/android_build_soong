@@ -15,6 +15,7 @@
 package apex
 
 import (
+	"slices"
 	"strconv"
 	"strings"
 
@@ -59,10 +60,11 @@ type prebuiltCommon struct {
 	// Properties common to both prebuilt_apex and apex_set.
 	prebuiltCommonProperties *PrebuiltCommonProperties
 
-	installDir      android.InstallPath
-	installFilename string
-	installedFile   android.InstallPath
-	outputApex      android.WritablePath
+	installDir          android.InstallPath
+	installFilename     string
+	installedFile       android.InstallPath
+	extraInstalledFiles android.InstallPaths
+	outputApex          android.WritablePath
 
 	// fragment for this apex for apexkeys.txt
 	apexKeysPath android.WritablePath
@@ -70,8 +72,8 @@ type prebuiltCommon struct {
 	// Installed locations of symlinks for backward compatibility.
 	compatSymlinks android.InstallPaths
 
-	hostRequired        []string
-	requiredModuleNames []string
+	hostRequired      []string
+	dexpreoptInstalls []java.DexpreopterInstall
 }
 
 type sanitizedPrebuilt interface {
@@ -188,9 +190,7 @@ func (p *prebuiltCommon) IsInstallable() bool {
 // initApexFilesForAndroidMk initializes the prebuiltCommon.requiredModuleNames field with the install only deps of the prebuilt apex
 func (p *prebuiltCommon) initApexFilesForAndroidMk(ctx android.ModuleContext) {
 	// If this apex contains a system server jar, then the dexpreopt artifacts should be added as required
-	for _, install := range p.Dexpreopter.DexpreoptBuiltInstalledForApex() {
-		p.requiredModuleNames = append(p.requiredModuleNames, install.FullModuleName())
-	}
+	p.dexpreoptInstalls = append(p.dexpreoptInstalls, p.Dexpreopter.DexpreopterInstallForApex()...)
 }
 
 // If this prebuilt has system server jar, create the rules to dexpreopt it and install it alongside the prebuilt apex
@@ -218,10 +218,6 @@ func (p *prebuiltCommon) dexpreoptSystemServerJars(ctx android.ModuleContext, di
 	}
 }
 
-func (p *prebuiltCommon) addRequiredModules(entries *android.AndroidMkEntries) {
-	entries.AddStrings("LOCAL_REQUIRED_MODULES", p.requiredModuleNames...)
-}
-
 func (p *prebuiltCommon) AndroidMkEntries() []android.AndroidMkEntries {
 	entriesList := []android.AndroidMkEntries{
 		{
@@ -239,15 +235,9 @@ func (p *prebuiltCommon) AndroidMkEntries() []android.AndroidMkEntries {
 					entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", !p.installable())
 					entries.AddStrings("LOCAL_OVERRIDES_MODULES", p.prebuiltCommonProperties.Overrides...)
 					entries.SetString("LOCAL_APEX_KEY_PATH", p.apexKeysPath.String())
-					p.addRequiredModules(entries)
 				},
 			},
 		},
-	}
-
-	// Add the dexpreopt artifacts to androidmk
-	for _, install := range p.Dexpreopter.DexpreoptBuiltInstalledForApex() {
-		entriesList = append(entriesList, install.ToMakeEntries())
 	}
 
 	return entriesList
@@ -679,25 +669,25 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	if p.installable() {
-		p.installedFile = ctx.InstallFile(p.installDir, p.installFilename, p.inputApex, p.compatSymlinks...)
+		p.installDexpreoptFiles(ctx)
+		installDeps := slices.Concat(p.compatSymlinks, p.extraInstalledFiles)
+		p.installedFile = ctx.InstallFile(p.installDir, p.installFilename, p.inputApex, installDeps...)
 		p.provenanceMetaDataFile = provenance.GenerateArtifactProvenanceMetaData(ctx, p.inputApex, p.installedFile)
 	}
 
 	ctx.SetOutputFiles(android.Paths{p.outputApex}, "")
 }
 
-func (p *Prebuilt) ProvenanceMetaDataFile() android.Path {
-	return p.provenanceMetaDataFile
+func (p *Prebuilt) installDexpreoptFiles(ctx android.ModuleContext) {
+	for _, install := range p.dexpreoptInstalls {
+		var installedFile android.InstallPath
+		installedFile = ctx.InstallFile(install.InstallDirOnDevice, install.InstallFileOnDevice, install.OutputPathOnHost)
+		p.extraInstalledFiles = append(p.extraInstalledFiles, installedFile)
+	}
 }
 
-// prebuiltApexExtractorModule is a private module type that is only created by the prebuilt_apex
-// module. It extracts the correct apex to use and makes it available for use by apex_set.
-type prebuiltApexExtractorModule struct {
-	android.ModuleBase
-
-	properties ApexExtractorProperties
-
-	extractedApex android.WritablePath
+func (p *Prebuilt) ProvenanceMetaDataFile() android.Path {
+	return p.provenanceMetaDataFile
 }
 
 // extract registers the build actions to extract an apex from .apks file
@@ -877,12 +867,4 @@ func (a *ApexSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	ctx.SetOutputFiles(android.Paths{a.outputApex}, "")
-}
-
-type systemExtContext struct {
-	android.ModuleContext
-}
-
-func (*systemExtContext) SystemExtSpecific() bool {
-	return true
 }

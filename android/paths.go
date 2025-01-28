@@ -2002,6 +2002,12 @@ func PathForHostDexInstall(ctx ModuleInstallPathContext, pathComponents ...strin
 	return pathForInstall(ctx, ctx.Config().BuildOS, ctx.Config().BuildArch, "", pathComponents...)
 }
 
+// PathForSystemServerDexJarsDexpreoptInstall returns an InstallPath representing the install path for system server
+// dex jars for use during dexpreopt.
+func PathForSystemServerDexJarsDexpreoptInstall(ctx ModuleInstallPathContext, pathComponents ...string) InstallPath {
+	return pathForPartitionInstallDir(ctx, "system_server_dexjars", "system_server_dexjars", false).Join(ctx, pathComponents...)
+}
+
 // PathForModuleInPartitionInstall is similar to PathForModuleInstall but partition is provided by the caller
 func PathForModuleInPartitionInstall(ctx ModuleInstallPathContext, partition string, pathComponents ...string) InstallPath {
 	os, arch := osAndArch(ctx)
