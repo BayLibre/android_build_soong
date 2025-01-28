@@ -859,6 +859,10 @@ func (c *config) Getenv(key string) string {
 	return val
 }
 
+func (c *config) Getenvs() map[string]string {
+    return c.env
+}
+
 func (c *config) GetenvWithDefault(key string, defaultValue string) string {
 	ret := c.Getenv(key)
 	if ret == "" {
