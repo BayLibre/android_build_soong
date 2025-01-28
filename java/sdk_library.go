@@ -1200,7 +1200,7 @@ type SdkLibrary struct {
 
 	commonToSdkLibraryAndImport
 
-	builtInstalledForApex []dexpreopterInstall
+	builtInstalledForApex []DexpreopterInstall
 }
 
 func (module *SdkLibrary) generateTestAndSystemScopesByDefault() bool {
@@ -1526,7 +1526,7 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	android.SetProvider(ctx, SdkLibraryInfoProvider, sdkLibInfo)
 }
 
-func (module *SdkLibrary) BuiltInstalledForApex() []dexpreopterInstall {
+func (module *SdkLibrary) BuiltInstalledForApex() []DexpreopterInstall {
 	return module.builtInstalledForApex
 }
 
