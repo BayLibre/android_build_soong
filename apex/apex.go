@@ -415,6 +415,26 @@ type overridableProperties struct {
 	Min_sdk_version *string
 }
 
+type installPair struct {
+	from android.Path
+	to   android.InstallPath
+}
+
+type installPairs []installPair
+
+func (p installPairs) String() string {
+	sb := &strings.Builder{}
+	for i, pair := range p {
+		if i != 0 {
+			sb.WriteByte(' ')
+		}
+		sb.WriteString(pair.from.String())
+		sb.WriteByte(':')
+		sb.WriteString(pair.to.String())
+	}
+	return sb.String()
+}
+
 type apexBundle struct {
 	// Inherited structs
 	android.ModuleBase
@@ -496,6 +516,12 @@ type apexBundle struct {
 	// Path where this APEX was installed.
 	installedFile android.InstallPath
 
+	// Extra files that are installed alongside this APEX.
+	extraInstalledFiles android.InstallPaths
+
+	// The source and install locations for extraInstalledFiles for use in LOCAL_SOONG_INSTALL_PAIRS.
+	extraInstalledPairs installPairs
+
 	// fragment for this apex for apexkeys.txt
 	apexKeysPath android.WritablePath
 
@@ -570,13 +596,12 @@ type apexFile struct {
 	// Info for Android.mk Module name of `module` in AndroidMk. Note the generated AndroidMk
 	// module for apexFile is named something like <AndroidMk module name>.<apex name>[<apex
 	// suffix>]
-	androidMkModuleName       string             // becomes LOCAL_MODULE
-	class                     apexFileClass      // becomes LOCAL_MODULE_CLASS
-	moduleDir                 string             // becomes LOCAL_PATH
-	requiredModuleNames       []string           // becomes LOCAL_REQUIRED_MODULES
-	targetRequiredModuleNames []string           // becomes LOCAL_TARGET_REQUIRED_MODULES
-	hostRequiredModuleNames   []string           // becomes LOCAL_HOST_REQUIRED_MODULES
-	dataPaths                 []android.DataPath // becomes LOCAL_TEST_DATA
+	androidMkModuleName        string        // becomes LOCAL_MODULE
+	class                      apexFileClass // becomes LOCAL_MODULE_CLASS
+	moduleDir                  string        // becomes LOCAL_PATH
+	dexpreoptInstalls          []java.DexpreopterInstall
+	dexJarsForApexSystemServer android.Paths
+	dataPaths                  []android.DataPath // becomes LOCAL_TEST_DATA
 
 	jacocoReportClassesFile android.Path     // only for javalibs and apps
 	lintInfo                *java.LintInfo   // only for javalibs and apps
@@ -1504,13 +1529,10 @@ func apexFileForJavaModuleWithFile(ctx android.ModuleContext, module javaModule,
 	// TODO: b/338641779 - Remove special casing of sdkLibrary once bcpf and sscpf depends
 	// on the implementation library
 	if sdkLib, ok := module.(*java.SdkLibrary); ok {
-		for _, install := range sdkLib.BuiltInstalledForApex() {
-			af.requiredModuleNames = append(af.requiredModuleNames, install.FullModuleName())
-		}
+		af.dexpreoptInstalls = append(af.dexpreoptInstalls, sdkLib.BuiltInstalledForApex()...)
 	} else if dexpreopter, ok := module.(java.DexpreopterInterface); ok {
-		for _, install := range dexpreopter.DexpreoptBuiltInstalledForApex() {
-			af.requiredModuleNames = append(af.requiredModuleNames, install.FullModuleName())
-		}
+		af.dexpreoptInstalls = append(af.dexpreoptInstalls, dexpreopter.DexpreopterInstallForApex()...)
+		af.dexJarsForApexSystemServer = append(af.dexJarsForApexSystemServer, dexpreopter.DexJarsForApexSystemServer()...)
 	}
 	return af
 }
@@ -2258,6 +2280,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	////////////////////////////////////////////////////////////////////////////////////////////
 	// 4) generate the build rules to create the APEX. This is done in builder.go.
 	a.buildManifest(ctx, vctx.provideNativeLibs, vctx.requireNativeLibs)
+	a.installDexpreoptFiles(ctx)
 	a.buildApex(ctx)
 	a.buildApexDependencyInfo(ctx)
 	a.buildLintReports(ctx)
