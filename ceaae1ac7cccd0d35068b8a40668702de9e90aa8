@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f00f7927_661af077",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-28T22:23:01Z",
+      "side": 1,
+      "message": "nit: make `javaLibraryModuleInfoJSON(ctx)` return a `ModuleInfoJSON` struct pointer and reuse it in L266.",
+      "range": {
+        "startLine": 265,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 39
+      },
+      "revId": "ceaae1ac7cccd0d35068b8a40668702de9e90aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
