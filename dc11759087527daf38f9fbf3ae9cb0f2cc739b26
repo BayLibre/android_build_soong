@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44214943_d80bb1b7",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-28T19:43:50Z",
+      "side": 1,
+      "message": "Just pull this up and wrap all the code you\u0027re adding here in 1 katiEnabled check.",
+      "revId": "dc11759087527daf38f9fbf3ae9cb0f2cc739b26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
