@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05c906ff_4cabef2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2025-01-28T21:41:47Z",
+      "side": 1,
+      "message": "+@lamontjones -- FYI, fixing a bug in sharded-jarjar...",
+      "revId": "099b863512d6ca09caeff5d7e60a3a3ce2cf3d8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
