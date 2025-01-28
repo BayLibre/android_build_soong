@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be4c5abd_da770669",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-28T02:28:13Z",
+      "side": 1,
+      "message": "Ah good point, updated the commit message.",
+      "parentUuid": "aadd9511_87338814",
+      "range": {
+        "startLine": 16,
+        "startChar": 45,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "e4e6d956359f7c38edeb727300919c4556851d5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a06160d4_8e7b13e3",
