@@ -46,6 +46,30 @@
       },
       "revId": "11e3b4095984ff85ab6f7c4a92bc4af7ec5c9cab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee42fa35_77e2974a",
+        "filename": "ui/build/androidmk_denylist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2025-01-28T22:19:04Z",
+      "side": 1,
+      "message": "FTR, when I wrote that I thought Soong recursed to find both art/Android.mk and art/tools/ahat/Android.mk. Only later did I realise the latter is included by the former.",
+      "parentUuid": "d5df25b8_a2474d9e",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 8
+      },
+      "revId": "11e3b4095984ff85ab6f7c4a92bc4af7ec5c9cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
