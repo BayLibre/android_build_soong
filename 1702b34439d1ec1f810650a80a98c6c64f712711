@@ -16,6 +16,24 @@
       "message": "I\u0027m not seeing this indexing functionality used in this cl, do we need it?",
       "revId": "1702b34439d1ec1f810650a80a98c6c64f712711",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee404aef_9c1cfdf2",
+        "filename": "android/module_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-28T01:36:23Z",
+      "side": 1,
+      "message": "+1, if we dont need indexing, we can likely also keep the type as `ModuleInfoJson` instead of the proposed `[]ModuleInfoJson`?",
+      "parentUuid": "9961751a_081002d2",
+      "revId": "1702b34439d1ec1f810650a80a98c6c64f712711",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
