@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aadd9511_87338814",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-28T02:26:24Z",
+      "side": 1,
+      "message": "nit: I think the app would not be installed due to partion based filter, but the odex/vdex files get duplicated because they use `PathForModuleInPartitionIntall` with an [empty partition string](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/java/dexpreopt.go;l\u003d332?q\u003dPathForModuleInPartitionInstall%20f:build%2Fsoong%2Fjava\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main)",
+      "range": {
+        "startLine": 16,
+        "startChar": 45,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "e4e6d956359f7c38edeb727300919c4556851d5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a06160d4_8e7b13e3",
