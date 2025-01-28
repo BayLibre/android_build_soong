@@ -204,6 +204,9 @@ type Module struct {
 	rule        blueprint.Rule
 	rawCommands []string
 
+	// The Src files used in the module.  This is valid only after GenerateAndroidBuildActions is called.
+	SrcFiles android.Paths
+
 	exportedIncludeDirs android.Paths
 
 	outputFiles android.Paths
@@ -233,6 +236,10 @@ type generateTask struct {
 	keepGendir bool
 }
 
+func (g *Module) OutputFiles() android.Paths {
+	return append(android.Paths{}, g.outputFiles...)
+}
+
 func (g *Module) GeneratedSourceFiles() android.Paths {
 	return g.outputFiles
 }
@@ -253,13 +260,17 @@ var _ android.SourceFileProducer = (*Module)(nil)
 
 func toolDepsMutator(ctx android.BottomUpMutatorContext) {
 	if g, ok := ctx.Module().(*Module); ok {
-		for _, tool := range g.properties.Tools {
-			tag := hostToolDependencyTag{label: tool}
-			if m := android.SrcIsModule(tool); m != "" {
-				tool = m
-			}
-			ctx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), tag, tool)
+		g.AddToolDeps(ctx)
+	}
+}
+
+func (g *Module) AddToolDeps(ctx android.BottomUpMutatorContext) {
+	for _, tool := range g.properties.Tools {
+		tag := hostToolDependencyTag{label: tool}
+		if m := android.SrcIsModule(tool); m != "" {
+			tool = m
 		}
+		ctx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), tag, tool)
 	}
 }
 
@@ -453,6 +464,7 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 	srcFiles = append(srcFiles, addLabelsForInputs("device_first_srcs", g.properties.Device_first_srcs.GetOrDefault(ctx, nil), nil)...)
 	srcFiles = append(srcFiles, addLabelsForInputs("device_common_srcs", g.properties.Device_common_srcs.GetOrDefault(ctx, nil), nil)...)
 	srcFiles = append(srcFiles, addLabelsForInputs("common_os_srcs", g.properties.Common_os_srcs.GetOrDefault(ctx, nil), nil)...)
+	g.SrcFiles = srcFiles
 
 	var copyFrom android.Paths
 	var outputFiles android.WritablePaths

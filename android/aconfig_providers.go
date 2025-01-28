@@ -157,6 +157,7 @@ func aconfigUpdateAndroidMkData(ctx fillInEntriesContext, mod Module, data *Andr
 		case "*apex.apexBundle": // aconfig_file properties written
 		case "*bpf.bpf": // properties written (both for module and objs)
 		case "*genrule.Module": // writes non-custom before adding .phony
+		case "*java.JavaGenRuleModule": // writes non-custom before adding .phony
 		case "*java.SystemModules": // doesn't go through base_rules
 		case "*phony.phony": // properties written
 		case "*phony.PhonyRule": // writes phony deps and acts like `.PHONY`
