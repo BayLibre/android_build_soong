@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3933d95_c66bb384",
+        "filename": "java/robolectric.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2025-01-28T22:30:55Z",
+      "side": 1,
+      "message": "@ccross@android.com this is the line I\u0027m most interested in feedback on... is this the right way to get the android jdk.",
+      "fixSuggestions": [
+        {
+          "fixId": "e510e60e_243c2172",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/robolectric.go",
+              "range": {
+                "startLine": 148,
+                "startChar": 0,
+                "endLine": 149,
+                "endChar": 0
+              },
+              "replacement": "\textraTestRunnerOptions \u003d append(extraTestRunnerOptions, tradefed.Option{Name: \"java-flags\", Value: \"-Drobolectric\u003dtrue -Djava.home\u003d\" + ctx.Config().Getenv(\"ANDROID_JAVA_HOME\")})\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a8b1b6dc83a89e59f2f8006e0d6b4b143b1c363c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
