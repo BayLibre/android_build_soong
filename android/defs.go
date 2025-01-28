@@ -143,3 +143,15 @@ func init() {
 		return ctx.Config().RBEWrapper()
 	})
 }
+
+func CopyFileRule(ctx ModuleContext, path Path, outPath OutputPath) {
+	ctx.Build(pctx, BuildParams{
+		Rule:        Cp,
+		Input:       path,
+		Output:      outPath,
+		Description: "copy " + path.String() + " -> " + outPath.String(),
+		Args: map[string]string{
+			"cpFlags": "-L",
+		},
+	})
+}
