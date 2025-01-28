@@ -1070,6 +1070,10 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	setOutputFiles(ctx, j.Module)
 
+	j.javaLibraryModuleInfoJSON(ctx)
+}
+
+func (j *Library) javaLibraryModuleInfoJSON(ctx android.ModuleContext) {
 	moduleInfoJSON := ctx.ModuleInfoJSON()
 	moduleInfoJSON.Class = []string{"JAVA_LIBRARIES"}
 	if j.implementationAndResourcesJar != nil {
