@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5017d8f2_bbd15c87",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2025-01-28T19:27:57Z",
+      "side": 1,
+      "message": "maybe I should delete this, but soo useful for discovery.",
+      "fixSuggestions": [
+        {
+          "fixId": "32aab4ca_843c84f1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/config.go",
+              "range": {
+                "startLine": 862,
+                "startChar": 0,
+                "endLine": 862,
+                "endChar": 0
+              },
+              "replacement": "// Getenvs returns the environment variables this build depends on.\n"
+            },
+            {
+              "path": "android/config.go",
+              "range": {
+                "startLine": 863,
+                "startChar": 0,
+                "endLine": 864,
+                "endChar": 0
+              },
+              "replacement": "\treturn c.env\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5813ce785195d16cc48fa892677df2bbeb33643a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
