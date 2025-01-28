@@ -402,7 +402,9 @@ type JavaInfo struct {
 
 	BuiltInstalled string
 
-	BuiltInstalledForApex []dexpreopterInstall
+	BuiltInstalledForApex []DexpreopterInstall
+
+	DexJarsForApexSystemServer android.Paths
 
 	// The config is used for two purposes:
 	// - Passing dexpreopt information about libraries from Soong to Make. This is needed when
@@ -1130,6 +1132,7 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		javaInfo.UncompressDexState = j.uncompressDexState
 		javaInfo.Active = j.active
 		javaInfo.BuiltInstalledForApex = j.builtInstalledForApex
+		javaInfo.DexJarsForApexSystemServer = j.dexJarsForApexSystemServer
 		javaInfo.BuiltInstalled = j.builtInstalled
 		javaInfo.ConfigPath = j.configPath
 		javaInfo.OutputProfilePathOnHost = j.outputProfilePathOnHost
@@ -1170,7 +1173,6 @@ func (j *Library) javaLibraryModuleInfoJSON(ctx android.ModuleContext) *android.
 
 	if j.hideApexVariantFromMake {
 		moduleInfoJSON.Disabled = true
-		j.dexpreopter.ModuleInfoJSONForApex(ctx)
 	}
 	return moduleInfoJSON
 }

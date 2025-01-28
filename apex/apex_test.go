@@ -9772,40 +9772,6 @@ func TestProhibitStaticExecutable(t *testing.T) {
 	`)
 }
 
-func TestAndroidMk_DexpreoptBuiltInstalledForApex(t *testing.T) {
-	t.Parallel()
-	ctx := testApex(t, `
-		apex {
-			name: "myapex",
-			key: "myapex.key",
-			updatable: false,
-			java_libs: ["foo"],
-		}
-
-		apex_key {
-			name: "myapex.key",
-			public_key: "testkey.avbpubkey",
-			private_key: "testkey.pem",
-		}
-
-		java_library {
-			name: "foo",
-			srcs: ["foo.java"],
-			apex_available: ["myapex"],
-			installable: true,
-		}
-	`,
-		dexpreopt.FixtureSetApexSystemServerJars("myapex:foo"),
-	)
-
-	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex").Module().(*apexBundle)
-	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
-	var builder strings.Builder
-	data.Custom(&builder, apexBundle.BaseModuleName(), "TARGET_", "", data)
-	androidMk := builder.String()
-	ensureContains(t, androidMk, "LOCAL_REQUIRED_MODULES := foo.myapex foo-dexpreopt-arm64-apex@myapex@javalib@foo.jar@classes.odex foo-dexpreopt-arm64-apex@myapex@javalib@foo.jar@classes.vdex\n")
-}
-
 func TestAndroidMk_RequiredModules(t *testing.T) {
 	t.Parallel()
 	ctx := testApex(t, `
