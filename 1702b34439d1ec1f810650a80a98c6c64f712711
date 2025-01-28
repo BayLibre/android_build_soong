@@ -34,6 +34,24 @@
       "parentUuid": "9961751a_081002d2",
       "revId": "1702b34439d1ec1f810650a80a98c6c64f712711",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23c14135_84db91e8",
+        "filename": "android/module_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-28T06:23:00Z",
+      "side": 1,
+      "message": "\u003e I\u0027m not seeing this indexing functionality used in this cl, do we need it?\n\nI thought this would be useful in retrieving the `ModuleInfoJSON` of a specific index without creating a new entry, but I\u0027ll remove it as suggested as it is not used in this specific CL.\n\n\u003e we can likely also keep the type as `ModuleInfoJson` instead of the proposed `[]ModuleInfoJson`?\n\n`[]*ModuleInfoJson` is needed regardless of the indexing functionality. PTAL at the usages of the newly introduced `ExtraModuleInfoJSON()`.",
+      "parentUuid": "ee404aef_9c1cfdf2",
+      "revId": "1702b34439d1ec1f810650a80a98c6c64f712711",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
