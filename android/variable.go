@@ -439,6 +439,9 @@ type ProductVariables struct {
 
 	TargetFSConfigGen []string `json:",omitempty"`
 
+	BoardPerfsetupScript    *string  `json:",omitempty"`
+	WidevineTestMakeTargets []string `json:",omitempty"`
+
 	UseSoongSystemImage            *bool   `json:",omitempty"`
 	ProductSoongDefinedSystemImage *string `json:",omitempty"`
 
