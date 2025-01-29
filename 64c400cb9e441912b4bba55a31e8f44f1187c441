@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "187f9fef_6d9493d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-29T22:30:55Z",
+      "side": 1,
+      "message": "modulo stuff like `make_generated_module_info: true` in the make version of module-info.json",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "64c400cb9e441912b4bba55a31e8f44f1187c441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
