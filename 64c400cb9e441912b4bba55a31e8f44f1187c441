@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeffed92_0b72c110",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-29T22:31:16Z",
+      "side": 1,
+      "message": "Could you diff the whole module-info.json file before/after this cl? (both in soong+make mode)",
+      "revId": "64c400cb9e441912b4bba55a31e8f44f1187c441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "187f9fef_6d9493d3",
