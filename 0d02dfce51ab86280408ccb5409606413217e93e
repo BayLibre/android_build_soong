@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce47385a_bf60b968",
+        "filename": "cc/test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-29T21:39:40Z",
+      "side": 1,
+      "message": "If you collect the `standaloneTestDep.TransitivePackagingSpecs` here into a single depset object you can call `ToList()` on it to get the deduped list of transitive dependencies and avoid the `standaloneTestDeps` set.",
+      "revId": "0d02dfce51ab86280408ccb5409606413217e93e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "17f2bc26_ad341881",
