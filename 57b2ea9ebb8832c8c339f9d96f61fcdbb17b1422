@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bbe6076_69eca614",
+        "filename": "python/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-29T01:01:31Z",
+      "side": 1,
+      "message": "Should this be under `if p.isTestHost()`?",
+      "fixSuggestions": [
+        {
+          "fixId": "9e684b22_9d73f64a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "python/test.go",
+              "range": {
+                "startLine": 237,
+                "startChar": 0,
+                "endLine": 238,
+                "endChar": 0
+              },
+              "replacement": "\t\tif p.isTestHost() {\n\t\t\tmoduleInfoJSON.CompatibilitySuites \u003d append(moduleInfoJSON.CompatibilitySuites, \"host-unit-tests\")\n\t\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "57b2ea9ebb8832c8c339f9d96f61fcdbb17b1422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
