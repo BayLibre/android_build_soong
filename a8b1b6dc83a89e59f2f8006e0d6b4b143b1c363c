@@ -69,6 +69,24 @@
       "parentUuid": "a3933d95_c66bb384",
       "revId": "a8b1b6dc83a89e59f2f8006e0d6b4b143b1c363c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d167f3_9cc05e70",
+        "filename": "java/robolectric.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2025-01-29T20:19:18Z",
+      "side": 1,
+      "message": "Thanks for confirming.",
+      "parentUuid": "8bc1ff59_e9247d30",
+      "revId": "a8b1b6dc83a89e59f2f8006e0d6b4b143b1c363c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
