@@ -78,6 +78,24 @@ type compiler interface {
 	checkedCrateRootPath() (android.Path, error)
 
 	Aliases() map[string]string
+
+	moduleInfoJSON(ctx ModuleContext, moduleInfoJSON *android.ModuleInfoJSON)
+}
+
+// TODO(spandandas): Add missing entries
+func (t *binaryDecorator) moduleInfoJSON(ctx ModuleContext, moduleInfoJSON *android.ModuleInfoJSON) {
+	t.baseCompiler.moduleInfoJSON(ctx, moduleInfoJSON)
+}
+
+// TODO(spandandas): Add missing entries
+func (_ *baseCompiler) moduleInfoJSON(ctx ModuleContext, moduleInfoJSON *android.ModuleInfoJSON) {
+	mod := ctx.RustModule()
+	moduleInfoJSON.Dependencies = append(moduleInfoJSON.Dependencies, mod.Properties.AndroidMkRlibs...)
+	moduleInfoJSON.Dependencies = append(moduleInfoJSON.Dependencies, mod.Properties.AndroidMkDylibs...)
+	moduleInfoJSON.Dependencies = append(moduleInfoJSON.Dependencies, mod.Properties.AndroidMkProcMacroLibs...)
+	moduleInfoJSON.Dependencies = append(moduleInfoJSON.Dependencies, mod.transitiveAndroidMkSharedLibs.ToList()...)
+	moduleInfoJSON.Dependencies = append(moduleInfoJSON.Dependencies, mod.Properties.AndroidMkStaticLibs...)
+	moduleInfoJSON.Dependencies = append(moduleInfoJSON.Dependencies, mod.Properties.AndroidMkHeaderLibs...)
 }
 
 func (compiler *baseCompiler) edition() string {
