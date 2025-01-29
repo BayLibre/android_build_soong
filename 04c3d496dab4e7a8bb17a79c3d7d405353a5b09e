@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "046a5df8_eb9f0f1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2025-01-29T22:27:44Z",
+      "side": 1,
+      "message": "one minor nit",
+      "revId": "04c3d496dab4e7a8bb17a79c3d7d405353a5b09e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24b937aa_80d956e4",
+        "filename": "cmd/kotlinc_incremental/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2025-01-29T22:27:44Z",
+      "side": 1,
+      "message": "Can we have a comment explaining why this is commented out.  (Or uncomment or delete.)",
+      "revId": "04c3d496dab4e7a8bb17a79c3d7d405353a5b09e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
