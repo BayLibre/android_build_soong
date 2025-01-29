@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7943fb29_039b64f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1957215
+      },
+      "writtenOn": "2025-01-29T17:59:07Z",
+      "side": 1,
+      "message": "Hey Sorin, I\u0027m adding support to just have Soong pass the jdk info to atest via the AndroidTest.xml.   I think I\u0027ll be able to remove config from gcls to handle building these tests internally then.   Hopefully it should make the next jdk upgrade a bit easier, and our system a bit more consistent.   Let me know if you can think of any issues, or if you\u0027re familiar with env variables in soong targets, and you see a better way to grab the jdk version, please let me know.",
+      "revId": "a8b1b6dc83a89e59f2f8006e0d6b4b143b1c363c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3933d95_c66bb384",
