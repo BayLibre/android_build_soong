@@ -159,10 +159,6 @@ func getTransformProperties(ctx ModuleContext, crateType string) transformProper
 
 func TransformSrcToBinary(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath) buildOutput {
-	if ctx.RustModule().compiler.Thinlto() {
-		flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto=thin")
-	}
-
 	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, getTransformProperties(ctx, "bin"))
 }
 
@@ -209,7 +205,10 @@ func TransformRlibstoStaticlib(ctx android.ModuleContext, mainSrc android.Path, 
 
 	rustFlags = CommonDefaultFlags(ctx, toolchain, rustFlags)
 	rustFlags = CommonLibraryCompilerFlags(ctx, rustFlags)
-	rustFlags.GlobalRustFlags = append(rustFlags.GlobalRustFlags, "-C lto=thin")
+
+	if !ctx.Config().Eng() {
+		rustFlags.GlobalRustFlags = append(rustFlags.GlobalRustFlags, "-C lto=thin")
+	}
 
 	rustFlags.EmitXrefs = false
 
@@ -218,28 +217,16 @@ func TransformRlibstoStaticlib(ctx android.ModuleContext, mainSrc android.Path, 
 
 func TransformSrctoDylib(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath) buildOutput {
-	if ctx.RustModule().compiler.Thinlto() {
-		flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto=thin")
-	}
-
 	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, getTransformProperties(ctx, "dylib"))
 }
 
 func TransformSrctoStatic(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath) buildOutput {
-	if ctx.RustModule().compiler.Thinlto() {
-		flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto=thin")
-	}
-
 	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, getTransformProperties(ctx, "staticlib"))
 }
 
 func TransformSrctoShared(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath) buildOutput {
-	if ctx.RustModule().compiler.Thinlto() {
-		flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto=thin")
-	}
-
 	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, getTransformProperties(ctx, "cdylib"))
 }
 
@@ -369,15 +356,6 @@ func transformSrctoCrate(ctx android.ModuleContext, main android.Path, deps Path
 
 	// Suppress an implicit sysroot
 	rustcFlags = append(rustcFlags, "--sysroot=/dev/null")
-
-	// Enable incremental compilation if requested by user
-	if ctx.Config().IsEnvTrue("SOONG_RUSTC_INCREMENTAL") {
-		incrementalPath := android.PathForOutput(ctx, "rustc").String()
-
-		rustcFlags = append(rustcFlags, "-C incremental="+incrementalPath)
-	} else {
-		rustcFlags = append(rustcFlags, "-C codegen-units=1")
-	}
 
 	// Disallow experimental features
 	modulePath := ctx.ModuleDir()
