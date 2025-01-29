@@ -357,15 +357,6 @@ func transformSrctoCrate(ctx android.ModuleContext, main android.Path, deps Path
 	// Suppress an implicit sysroot
 	rustcFlags = append(rustcFlags, "--sysroot=/dev/null")
 
-	// Enable incremental compilation if requested by user
-	if ctx.Config().IsEnvTrue("SOONG_RUSTC_INCREMENTAL") {
-		incrementalPath := android.PathForOutput(ctx, "rustc").String()
-
-		rustcFlags = append(rustcFlags, "-C incremental="+incrementalPath)
-	} else {
-		rustcFlags = append(rustcFlags, "-C codegen-units=1")
-	}
-
 	// Disallow experimental features
 	modulePath := ctx.ModuleDir()
 	if !(android.IsThirdPartyPath(modulePath) || strings.HasPrefix(modulePath, "prebuilts")) {

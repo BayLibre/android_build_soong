@@ -450,6 +450,17 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 		}
 	}
 
+	// Enable incremental compilation if we are configuring an eng build or it
+	// has been requested by user
+	if ctx.Config().Eng() || ctx.Config().IsEnvTrue("SOONG_RUSTC_INCREMENTAL") {
+		// Per https://doc.rust-lang.org/rustc/codegen-options/index.html#codegen-units
+		// incremental building implies codegen-units=256
+		incrementalPath := android.PathForModuleOut(ctx, "rustc-incremental").String()
+		flags.RustFlags = append(flags.RustFlags, "-C incremental="+incrementalPath)
+	} else {
+		flags.RustFlags = append(flags.RustFlags, "-C codegen-units=1")
+	}
+
 	// Enable LTO for non-engineering builds if the module supports and requests it.
 	if !ctx.Config().Eng() && !(ctx.RustModule().Rlib() || ctx.RustModule().ProcMacro()) && ctx.RustModule().compiler.Thinlto() {
 		flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto=thin")
