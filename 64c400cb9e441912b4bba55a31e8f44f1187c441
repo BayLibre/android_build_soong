@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf6ce9c_3c4b7109",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-29T22:33:35Z",
+      "side": 1,
+      "message": "I expect there to be diffs for module types that are _not_ `rust_test` or `rust_test_host`. Are you interested in the diffs for these two module types or for all rust module types?",
+      "parentUuid": "eeffed92_0b72c110",
+      "revId": "64c400cb9e441912b4bba55a31e8f44f1187c441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "187f9fef_6d9493d3",
