@@ -1109,6 +1109,10 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 			if ctx.Failed() {
 				return
 			}
+			// Export to module-info.json
+			moduleInfoJSON := ctx.ModuleInfoJSON()
+			mod.compiler.moduleInfoJSON(ctx, moduleInfoJSON)
+
 			// Export your own directory as a linkDir
 			mod.exportedLinkDirs = append(mod.exportedLinkDirs, linkPathFromFilePath(mod.OutputFile().Path()))
 
