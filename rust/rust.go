@@ -1183,6 +1183,30 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	mod.setOutputFiles(ctx)
 
 	buildComplianceMetadataInfo(ctx, mod, deps)
+
+	moduleInfoJSON := ctx.ModuleInfoJSON()
+	if mod.compiler != nil {
+		mod.compiler.moduleInfoJSON(ctx, moduleInfoJSON)
+	}
+
+	moduleInfoJSON.SharedLibs = mod.transitiveAndroidMkSharedLibs.ToList()
+	moduleInfoJSON.Dependencies = append(moduleInfoJSON.Dependencies, mod.transitiveAndroidMkSharedLibs.ToList()...)
+	moduleInfoJSON.Dependencies = append(moduleInfoJSON.Dependencies, mod.Properties.AndroidMkDylibs...)
+	moduleInfoJSON.Dependencies = append(moduleInfoJSON.Dependencies, mod.Properties.AndroidMkHeaderLibs...)
+	moduleInfoJSON.Dependencies = append(moduleInfoJSON.Dependencies, mod.Properties.AndroidMkProcMacroLibs...)
+	moduleInfoJSON.Dependencies = append(moduleInfoJSON.Dependencies, mod.Properties.AndroidMkRlibs...)
+	moduleInfoJSON.Dependencies = append(moduleInfoJSON.Dependencies, mod.Properties.AndroidMkStaticLibs...)
+	moduleInfoJSON.SystemSharedLibs = []string{"none"}
+	moduleInfoJSON.StaticLibs = mod.Properties.AndroidMkStaticLibs
+
+	if mod.sourceProvider != nil {
+		moduleInfoJSON.SubName += mod.sourceProvider.getSubName()
+	}
+	moduleInfoJSON.SubName += mod.AndroidMkSuffix()
+
+	if mod.Properties.IsSdkVariant {
+		moduleInfoJSON.Uninstallable = true
+	}
 }
 
 func (mod *Module) setOutputFiles(ctx ModuleContext) {

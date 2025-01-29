@@ -78,6 +78,8 @@ type compiler interface {
 	checkedCrateRootPath() (android.Path, error)
 
 	Aliases() map[string]string
+
+	moduleInfoJSON(ctx ModuleContext, moduleInfoJSON *android.ModuleInfoJSON)
 }
 
 func (compiler *baseCompiler) edition() string {
@@ -325,6 +327,10 @@ func (compiler *baseCompiler) stdLinkage(device bool) RustLinkage {
 	} else {
 		return RlibLinkage
 	}
+}
+
+func (compiler *baseCompiler) moduleInfoJSON(ctx ModuleContext, moduleInfoJSON *android.ModuleInfoJSON) {
+	moduleInfoJSON.Class = []string{"ETC"}
 }
 
 var _ compiler = (*baseCompiler)(nil)
