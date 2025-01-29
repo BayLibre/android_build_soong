@@ -34,6 +34,24 @@
       ],
       "revId": "57b2ea9ebb8832c8c339f9d96f61fcdbb17b1422",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "612c49c0_5861c23c",
+        "filename": "python/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-29T18:23:10Z",
+      "side": 1,
+      "message": "The unit_test property was documented \"If the test is a hostside (no device required) unittest that shall be run during presubmit check\", so I thought that should maybe cover it already, but I did see [similar checks](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/base_rules.mk;l\u003d243;drc\u003d6a8fff595ba4cbb87b7e124fd630f548c5c4e2cb) on both unit test and host in make, so done. It doesn\u0027t cause a change to the module-info.json.",
+      "parentUuid": "7bbe6076_69eca614",
+      "revId": "57b2ea9ebb8832c8c339f9d96f61fcdbb17b1422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
