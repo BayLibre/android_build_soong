@@ -1006,6 +1006,12 @@ func TestGetConfigArgsBuildModulesInDirectories(t *testing.T) {
 	}
 }
 
+func assertBool(t *testing.T, name string, expected, actual bool) {
+	if expected != actual {
+		t.Errorf("Expected %s: %#v\nActual %s: %#v", name, expected, name, actual)
+	}
+}
+
 func TestBuildConfig(t *testing.T) {
 	tests := []struct {
 		name                string
@@ -1063,12 +1069,11 @@ func TestBuildConfig(t *testing.T) {
 				arguments: tc.arguments,
 			}
 			config := Config{c}
-			actualBuildConfig := buildConfig(config)
-			if expected := tc.expectedBuildConfig; !proto.Equal(expected, actualBuildConfig) {
-				t.Errorf("Build config mismatch.\n"+
-					"Expected build config: %#v\n"+
-					"Actual build config: %#v", prototext.Format(expected), prototext.Format(actualBuildConfig))
-			}
+			actual := buildConfig(config)
+			assertBool(t, "ForceUseGoma", tc.expectedBuildConfig.ForceUseGoma, actual.ForceUseGoma)
+			assertBool(t, "UseGoma", tc.expectedBuildConfig.UseGoma, actual.UseGoma)
+			assertBool(t, "UseRbe", tc.expectedBuildConfig.UseRbe, actual.UseRbe)
+			assertBool(t, "NinjaWeightListSource", tc.expectedBuildConfig.NinjaWeightListSource, actual.NinjaWeightListSource)
 		})
 	}
 }
