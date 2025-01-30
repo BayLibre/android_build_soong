@@ -16,6 +16,24 @@
       "message": "This cl seems ok to me, but I think it will conflict with adevice fixes I\u0027m working on. Give me a bit to work on that...",
       "revId": "f7a007a61a5204c7e4873da718d690f7e114d774",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec35395_00c0ab45",
+        "filename": "filesystem/android_device_product_out.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-30T18:47:42Z",
+      "side": 1,
+      "message": "Acknowledged, I will hold off on this for now.",
+      "parentUuid": "65b3cb64_624c0ee9",
+      "revId": "f7a007a61a5204c7e4873da718d690f7e114d774",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
