@@ -15,6 +15,7 @@
 package filesystem
 
 import (
+	"fmt"
 	"strings"
 	"sync/atomic"
 
@@ -221,6 +222,8 @@ func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	// Checkbuilding it causes soong to make a phony, so you can say `m <module name>`
 	ctx.CheckbuildFile(allImagesStamp)
+
+	a.setPhonyTargets(ctx)
 }
 
 // Helper structs for target_files.zip creation
@@ -405,4 +408,87 @@ func (a *androidDevice) getFilesystemInfo(ctx android.ModuleContext, depName str
 		ctx.ModuleErrorf("Expected dependency %s to be a filesystem", depName)
 	}
 	return fsInfo
+}
+
+func (a *androidDevice) setPhonyTargets(ctx android.ModuleContext) {
+	if !proptools.Bool(a.deviceProps.Main_device) {
+		return
+	}
+
+	if !ctx.Config().KatiEnabled() {
+		if a.partitionProps.Super_partition_name != nil {
+			superPartition := ctx.GetDirectDepProxyWithTag(*a.partitionProps.Super_partition_name, superPartitionDepTag)
+			if info, ok := android.OtherModuleProvider(ctx, superPartition, SuperImageProvider); ok {
+				for _, partition := range android.SortedKeys(info.SubImageInfo) {
+					ctx.Phony(fmt.Sprintf("%simage", partition), info.SubImageInfo[partition].Output)
+				}
+			}
+		}
+
+		createBootImagePhonyTarget := func(prop *string, partition string) {
+			img := ctx.GetDirectDepProxyWithTag(proptools.String(prop), filesystemDepTag)
+			if provider, ok := android.OtherModuleProvider(ctx, img, BootimgInfoProvider); ok {
+				ctx.Phony(fmt.Sprintf("%simage", partition), provider.Output)
+			}
+		}
+
+		createFilesystemImagePhonyTarget := func(prop *string, partition string) {
+			img := ctx.GetDirectDepProxyWithTag(proptools.String(prop), filesystemDepTag)
+			if provider, ok := android.OtherModuleProvider(ctx, img, FilesystemProvider); ok {
+				ctx.Phony(fmt.Sprintf("%simage", partition), provider.Output)
+			}
+		}
+
+		createVbmetaImagePhonyTarget := func(prop string) {
+			img := ctx.GetDirectDepProxyWithTag(prop, filesystemDepTag)
+			if provider, ok := android.OtherModuleProvider(ctx, img, vbmetaPartitionProvider); ok {
+				// make generates `vbmetasystemimage` phony target instead of `vbmeta_systemimage` phony target.
+				partitionName := strings.ReplaceAll(provider.Name, "_", "")
+				ctx.Phony(fmt.Sprintf("%simage", partitionName), provider.Output)
+			}
+		}
+
+		if a.partitionProps.Boot_partition_name != nil {
+			createBootImagePhonyTarget(a.partitionProps.Boot_partition_name, "boot")
+		}
+		if a.partitionProps.Vendor_boot_partition_name != nil {
+			createBootImagePhonyTarget(a.partitionProps.Vendor_boot_partition_name, "vendorboot")
+		}
+		if a.partitionProps.Init_boot_partition_name != nil {
+			createBootImagePhonyTarget(a.partitionProps.Init_boot_partition_name, "initboot")
+		}
+		if a.partitionProps.System_partition_name != nil {
+			createFilesystemImagePhonyTarget(a.partitionProps.System_partition_name, "system")
+		}
+		if a.partitionProps.System_ext_partition_name != nil {
+			createFilesystemImagePhonyTarget(a.partitionProps.System_ext_partition_name, "systemext")
+		}
+		if a.partitionProps.Product_partition_name != nil {
+			createFilesystemImagePhonyTarget(a.partitionProps.Product_partition_name, "product")
+		}
+		if a.partitionProps.Vendor_partition_name != nil {
+			createFilesystemImagePhonyTarget(a.partitionProps.Vendor_partition_name, "vendor")
+		}
+		if a.partitionProps.Odm_partition_name != nil {
+			createFilesystemImagePhonyTarget(a.partitionProps.Odm_partition_name, "odm")
+		}
+		if a.partitionProps.Recovery_partition_name != nil {
+			createFilesystemImagePhonyTarget(a.partitionProps.Recovery_partition_name, "recovery")
+		}
+		if a.partitionProps.Userdata_partition_name != nil {
+			createFilesystemImagePhonyTarget(a.partitionProps.Userdata_partition_name, "userdata")
+		}
+		if a.partitionProps.System_dlkm_partition_name != nil {
+			createFilesystemImagePhonyTarget(a.partitionProps.System_dlkm_partition_name, "system_dlkm")
+		}
+		if a.partitionProps.Vendor_dlkm_partition_name != nil {
+			createFilesystemImagePhonyTarget(a.partitionProps.Vendor_dlkm_partition_name, "vendor_dlkm")
+		}
+		if a.partitionProps.Odm_dlkm_partition_name != nil {
+			createFilesystemImagePhonyTarget(a.partitionProps.Odm_dlkm_partition_name, "odm_dlkm")
+		}
+		for _, vbmetaPartitionName := range a.partitionProps.Vbmeta_partitions {
+			createVbmetaImagePhonyTarget(vbmetaPartitionName)
+		}
+	}
 }
