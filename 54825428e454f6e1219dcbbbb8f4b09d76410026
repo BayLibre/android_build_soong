@@ -16,6 +16,24 @@
       "message": "It\u0027s weird to lose this part in this CL. I feel like that\u0027s just a mistake from rebasing, but maybe I\u0027m wrong. I would hate for someone to revert just the subsequent CL and get weird behavioral differences.",
       "revId": "54825428e454f6e1219dcbbbb8f4b09d76410026",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d43786be_a6e481a4",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2025-01-30T18:24:39Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "ad5a1b1f_201af16a",
+      "revId": "54825428e454f6e1219dcbbbb8f4b09d76410026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
