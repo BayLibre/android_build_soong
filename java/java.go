@@ -1069,6 +1069,32 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	setOutputFiles(ctx, j.Module)
+
+	buildComplianceMetadata(ctx)
+}
+
+func buildComplianceMetadata(ctx android.ModuleContext) {
+	// Dump metadata that can not be done in android/compliance-metadata.go
+	complianceMetadataInfo := ctx.ComplianceMetadataInfo()
+	builtFiles := ctx.GetOutputFiles().DefaultOutputFiles.Strings()
+	for _, paths := range ctx.GetOutputFiles().TaggedOutputFiles {
+		builtFiles = append(builtFiles, paths.Strings()...)
+	}
+	complianceMetadataInfo.SetListValue(android.ComplianceMetadataProp.BUILT_FILES, android.FirstUniqueStrings(builtFiles))
+
+	// Static deps
+	staticDepNames := make([]string, 0)
+	staticDepFiles := android.Paths{}
+	ctx.VisitDirectDepsWithTag(staticLibTag, func(module android.Module) {
+		if dep, ok := android.OtherModuleProvider(ctx, module, JavaInfoProvider); ok {
+			staticDepNames = append(staticDepNames, module.Name())
+			staticDepFiles = append(staticDepFiles, dep.ImplementationJars...)
+			staticDepFiles = append(staticDepFiles, dep.HeaderJars...)
+			staticDepFiles = append(staticDepFiles, dep.ResourceJars...)
+		}
+	})
+	complianceMetadataInfo.SetListValue(android.ComplianceMetadataProp.STATIC_DEPS, android.FirstUniqueStrings(staticDepNames))
+	complianceMetadataInfo.SetListValue(android.ComplianceMetadataProp.STATIC_DEP_FILES, android.FirstUniqueStrings(staticDepFiles.Strings()))
 }
 
 func (j *Library) getJarInstallDir(ctx android.ModuleContext) android.InstallPath {
@@ -3002,6 +3028,8 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	ctx.SetOutputFiles(android.Paths{j.combinedImplementationFile}, "")
 	ctx.SetOutputFiles(android.Paths{j.combinedImplementationFile}, ".jar")
+
+	buildComplianceMetadata(ctx)
 }
 
 func (j *Import) maybeInstall(ctx android.ModuleContext, jarName string, outputFile android.Path) {
