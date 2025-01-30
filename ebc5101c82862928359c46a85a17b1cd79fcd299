@@ -16,6 +16,24 @@
       "message": "Don\u0027t we already have these phony targets here? https://cs.android.com/android/platform/superproject/main/+/main:build/soong/filesystem/android_device_product_out.go;l\u003d78;drc\u003d11fda3358e506727e649bc3a671bd82da15634d0",
       "revId": "ebc5101c82862928359c46a85a17b1cd79fcd299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6632b58_76a940c4",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-01-30T01:40:48Z",
+      "side": 1,
+      "message": "No, `partition` is e.g. `system` not `systeimage`. Maybe creating a phony target for each partition name was a mistake in the first place? Currently in make there is no phony target called `system`. If so this change could just be replaced with fixing the linked line.",
+      "parentUuid": "33badd89_10e28760",
+      "revId": "ebc5101c82862928359c46a85a17b1cd79fcd299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
