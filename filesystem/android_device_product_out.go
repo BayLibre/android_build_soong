@@ -76,6 +76,9 @@ func (a *androidDevice) copyFilesToProductOutForSoongOnly(ctx android.ModuleCont
 		// PRODUCT_OUT
 		ctx.Phony(info.ModuleName, dirStamp, imgInstallPath)
 		ctx.Phony(partition, dirStamp, imgInstallPath)
+		if !ctx.Config().KatiEnabled() {
+			ctx.Phony("sync_"+partition, dirStamp, imgInstallPath)
+		}
 
 		deps = append(deps, imgInstallPath, dirStamp)
 	}
@@ -158,6 +161,10 @@ func (a *androidDevice) copyFilesToProductOutForSoongOnly(ctx android.ModuleCont
 		Output:    copyToProductOutTimestamp,
 		Implicits: deps,
 	})
+
+	if !ctx.Config().KatiEnabled() {
+		ctx.Phony("sync", deps...)
+	}
 
 	return copyToProductOutTimestamp
 }
