@@ -51,6 +51,7 @@ bootstrap_go_package {
         "gen.go",
         "generated_java_library.go",
         "genrule.go",
+        "genrule_combiner.go",
         "hiddenapi.go",
         "hiddenapi_modular.go",
         "hiddenapi_monolithic.go",
