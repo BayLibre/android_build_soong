@@ -235,9 +235,9 @@ func (f *filesystemCreator) createVbmetaPartitions(ctx android.LoadHookContext, 
 			continue
 		}
 		if includeAsChainedPartitionInVbmeta(partitionType) {
-			chainedPartitionModules = append(chainedPartitionModules, generatedModuleNameForPartition(ctx.Config(), partitionType))
+			chainedPartitionModules = append(chainedPartitionModules, partitions.nameForType(partitionType))
 		} else if includeAsIncludedPartitionInVbmeta(partitionType) {
-			includePartitionModules = append(includePartitionModules, generatedModuleNameForPartition(ctx.Config(), partitionType))
+			includePartitionModules = append(includePartitionModules, partitions.nameForType(partitionType))
 		}
 	}
 
