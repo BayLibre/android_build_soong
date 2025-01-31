@@ -1704,6 +1704,7 @@ func (m *ModuleBase) generateModuleTarget(ctx *moduleContext) {
 	if len(allCheckbuildTargets) > 0 {
 		name := namespacePrefix + ctx.ModuleName() + "-checkbuild"
 		ctx.Phony(name, allCheckbuildTargets...)
+		ctx.Phony("checkbuild", PathForPhony(ctx, name))
 		deps = append(deps, PathForPhony(ctx, name))
 	}
 

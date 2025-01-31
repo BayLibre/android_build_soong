@@ -753,6 +753,7 @@ func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, src
 		}
 
 		m.installFiles = append(m.installFiles, fullInstallPath)
+		m.checkbuildFiles = append(m.checkbuildFiles, fullInstallPath)
 	}
 
 	owner, overrides := m.getOwnerAndOverrides()
