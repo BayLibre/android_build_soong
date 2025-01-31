@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f32919c8_42ffa18f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-31T02:21:10Z",
+      "side": 1,
+      "message": "`prebuilts/build-tools/build-prebuilts.sh` seems to run into presubmit failures with this implementation, so I have uploaded a new patchset that keeps the conditional and appends `ninjaArgs` in skipKatiMode.",
+      "revId": "cba050e5a1ab52c9c5694be6ac04f95043aeb267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
