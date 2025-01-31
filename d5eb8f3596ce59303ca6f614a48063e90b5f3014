@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbcfd88a_d8e88359",
+        "filename": "android/transition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-31T22:10:25Z",
+      "side": 1,
+      "message": "Could we rename this to `VariationTransitionMutator` in a followup?",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 22
+      },
+      "revId": "d5eb8f3596ce59303ca6f614a48063e90b5f3014",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

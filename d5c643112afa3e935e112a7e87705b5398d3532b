@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95255e54_10b2fcb1",
+        "filename": "cc/coverage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-31T22:10:25Z",
+      "side": 0,
+      "message": "Why was this removed?",
+      "revId": "d5c643112afa3e935e112a7e87705b5398d3532b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
