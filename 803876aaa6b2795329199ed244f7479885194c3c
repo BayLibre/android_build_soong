@@ -34,6 +34,24 @@
       "parentUuid": "b2c0774c_4ebd6f20",
       "revId": "803876aaa6b2795329199ed244f7479885194c3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b45c5cf_5c06cb05",
+        "filename": "python/python_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-31T19:36:25Z",
+      "side": 1,
+      "message": "I\u0027m fixing it in aosp/3471435",
+      "parentUuid": "b27e1a17_60729163",
+      "revId": "803876aaa6b2795329199ed244f7479885194c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
