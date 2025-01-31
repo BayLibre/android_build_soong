@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c0774c_4ebd6f20",
+        "filename": "python/python_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-01-31T18:26:00Z",
+      "side": 1,
+      "message": "This has caused many python tests to not be run for the last 4 years.",
+      "revId": "803876aaa6b2795329199ed244f7479885194c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
