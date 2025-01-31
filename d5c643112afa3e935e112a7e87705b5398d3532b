@@ -16,6 +16,24 @@
       "message": "Why was this removed?",
       "revId": "d5c643112afa3e935e112a7e87705b5398d3532b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5996d0cd_42ea41b0",
+        "filename": "cc/coverage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-31T22:17:35Z",
+      "side": 0,
+      "message": "Static type assertions like generally useful when a concrete type is never directly converted to the interface at compile time, only at runtiem via a type assertion.  In this case coverageTranstiionMutator is passed to `ctx.Transition` [here](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/cc.go;l\u003d205;drc\u003d727204cbdf8295b93084db6b05d3f2beb4a661f6), so the compatibility with the `android.TransitionMutator` interface is already enforced.  Leaving it here caused churn when moving to `VariationTransitionMutator`, so I deleted it.",
+      "parentUuid": "95255e54_10b2fcb1",
+      "revId": "d5c643112afa3e935e112a7e87705b5398d3532b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
