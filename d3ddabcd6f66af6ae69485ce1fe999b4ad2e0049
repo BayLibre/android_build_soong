@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18de88a7_5e363ee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-01-31T22:22:48Z",
+      "side": 1,
+      "message": "I think this would be nice since it would have surfaced the error of b/393617060 during the presubmit run of aosp/3470453",
+      "revId": "d3ddabcd6f66af6ae69485ce1fe999b4ad2e0049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
