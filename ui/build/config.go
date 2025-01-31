@@ -1100,9 +1100,6 @@ func (c *configImpl) RealDistDir() string {
 }
 
 func (c *configImpl) NinjaArgs() []string {
-	if c.skipKati {
-		return c.arguments
-	}
 	return c.ninjaArgs
 }
 
