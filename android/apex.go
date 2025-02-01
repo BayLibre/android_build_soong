@@ -644,7 +644,6 @@ func MutateApexTransition(ctx BaseModuleContext, variation string) {
 			panic(fmt.Errorf("failed to find apexInfo for incoming variation %q", variation))
 		}
 		thisApexInfo.ApexAvailableFor = module.ApexAvailableFor()
-
 		SetProvider(ctx, ApexInfoProvider, thisApexInfo)
 	}
 }
