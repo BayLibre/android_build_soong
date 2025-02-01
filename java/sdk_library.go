@@ -693,7 +693,7 @@ func (paths *scopePaths) extractStubsLibraryInfoFromDependency(ctx android.Modul
 		paths.stubsHeaderPath = lib.HeaderJars
 		paths.stubsImplPath = lib.ImplementationJars
 
-		libDep := android.OtherModuleProviderOrDefault(ctx, dep, JavaInfoProvider).UsesLibraryDependencyInfo
+		libDep := android.OtherModuleProviderOrDefault(ctx, dep, JavaInfoProvider)
 		paths.stubsDexJarPath = libDep.DexJarBuildPath
 		paths.exportableStubsDexJarPath = libDep.DexJarBuildPath
 		return nil
@@ -709,7 +709,7 @@ func (paths *scopePaths) extractEverythingStubsLibraryInfoFromDependency(ctx and
 			paths.stubsImplPath = lib.ImplementationJars
 		}
 
-		libDep := android.OtherModuleProviderOrDefault(ctx, dep, JavaInfoProvider).UsesLibraryDependencyInfo
+		libDep := android.OtherModuleProviderOrDefault(ctx, dep, JavaInfoProvider)
 		paths.stubsDexJarPath = libDep.DexJarBuildPath
 		return nil
 	} else {
@@ -723,7 +723,7 @@ func (paths *scopePaths) extractExportableStubsLibraryInfoFromDependency(ctx and
 			paths.stubsImplPath = lib.ImplementationJars
 		}
 
-		libDep := android.OtherModuleProviderOrDefault(ctx, dep, JavaInfoProvider).UsesLibraryDependencyInfo
+		libDep := android.OtherModuleProviderOrDefault(ctx, dep, JavaInfoProvider)
 		paths.exportableStubsDexJarPath = libDep.DexJarBuildPath
 		return nil
 	} else {
@@ -1006,10 +1006,6 @@ func (c *commonToSdkLibraryAndImport) generateCommonBuildActions(ctx android.Mod
 		removedApiFilePaths[kind] = removedApiFilePath
 	}
 
-	javaInfo := &JavaInfo{}
-	setExtraJavaInfo(ctx, ctx.Module(), javaInfo)
-	android.SetProvider(ctx, JavaInfoProvider, javaInfo)
-
 	return SdkLibraryInfo{
 		EverythingStubDexJarPaths: everythingStubPaths,
 		ExportableStubDexJarPaths: exportableStubPaths,
@@ -1216,6 +1212,8 @@ type SdkLibraryInfo struct {
 
 	// Whether if this can be used as a shared library.
 	SharedLibrary bool
+
+	Prebuilt bool
 }
 
 var SdkLibraryInfoProvider = blueprint.NewProvider[SdkLibraryInfo]()
@@ -1502,10 +1500,10 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		module.dexJarFile = makeDexJarPathFromPath(module.implLibraryInfo.DexJarFile.Path())
 		module.headerJarFile = module.implLibraryInfo.HeaderJars[0]
 		module.implementationAndResourcesJar = module.implLibraryInfo.ImplementationAndResourcesJars[0]
-		module.apexSystemServerDexpreoptInstalls = module.implLibraryInfo.ApexSystemServerDexpreoptInstalls
-		module.apexSystemServerDexJars = module.implLibraryInfo.ApexSystemServerDexJars
+		module.apexSystemServerDexpreoptInstalls = module.implLibraryInfo.DexpreopterInfo.ApexSystemServerDexpreoptInstalls
+		module.apexSystemServerDexJars = module.implLibraryInfo.DexpreopterInfo.ApexSystemServerDexJars
 		module.dexpreopter.configPath = module.implLibraryInfo.ConfigPath
-		module.dexpreopter.outputProfilePathOnHost = module.implLibraryInfo.OutputProfilePathOnHost
+		module.dexpreopter.outputProfilePathOnHost = module.implLibraryInfo.DexpreopterInfo.OutputProfilePathOnHost
 
 		// Properties required for Library.AndroidMkEntries
 		module.logtagsSrcs = module.implLibraryInfo.LogtagsSrcs
@@ -1571,7 +1569,12 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		setOutputFilesFromJavaInfo(ctx, module.implLibraryInfo)
 	}
 
+	javaInfo := &JavaInfo{}
+	setExtraJavaInfo(ctx, ctx.Module(), javaInfo)
+	android.SetProvider(ctx, JavaInfoProvider, javaInfo)
+
 	sdkLibInfo.GeneratingLibs = generatingLibs
+	sdkLibInfo.Prebuilt = false
 	android.SetProvider(ctx, SdkLibraryInfoProvider, sdkLibInfo)
 }
 
@@ -2212,7 +2215,12 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 		setOutputFilesFromJavaInfo(ctx, module.implLibraryInfo)
 	}
 
+	javaInfo := &JavaInfo{}
+	setExtraJavaInfo(ctx, ctx.Module(), javaInfo)
+	android.SetProvider(ctx, JavaInfoProvider, javaInfo)
+
 	sdkLibInfo.GeneratingLibs = generatingLibs
+	sdkLibInfo.Prebuilt = true
 	android.SetProvider(ctx, SdkLibraryInfoProvider, sdkLibInfo)
 }
 
