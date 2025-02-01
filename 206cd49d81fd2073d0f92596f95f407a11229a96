@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b56a52_b2fe703a",
+        "filename": "android/defs.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-01T03:26:27Z",
+      "side": 1,
+      "message": "Probably, but I\u0027m not currently relying on it so probably better to leave it out for now.",
+      "parentUuid": "b00b466b_052b2ba2",
+      "range": {
+        "startLine": 155,
+        "startChar": 18,
+        "endLine": 155,
+        "endChar": 19
+      },
+      "revId": "206cd49d81fd2073d0f92596f95f407a11229a96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c823d5a_d773b037",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-02-01T00:15:53Z",
       "side": 1,
       "message": "nit: Can we use the existing `android.RuleBuilderInstall` for this?",
+      "range": {
+        "startLine": 421,
+        "startChar": 5,
+        "endLine": 421,
+        "endChar": 16
+      },
+      "revId": "206cd49d81fd2073d0f92596f95f407a11229a96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f504441_13cb3c65",
+        "filename": "apex/apex.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-01T03:26:27Z",
+      "side": 1,
+      "message": "Unfortunately no, `RuleBuilderInstall.To` is a `string`, not an `android.InstallPath`.",
+      "parentUuid": "8c823d5a_d773b037",
       "range": {
         "startLine": 421,
         "startChar": 5,
