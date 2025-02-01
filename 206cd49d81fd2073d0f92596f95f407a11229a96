@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5df85dd_3ab890d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-01T00:15:53Z",
+      "side": 1,
+      "message": "Thanks for the cleanup!",
+      "revId": "206cd49d81fd2073d0f92596f95f407a11229a96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b00b466b_052b2ba2",
+        "filename": "android/defs.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-01T00:15:53Z",
+      "side": 1,
+      "message": "Would this override the `-d` value in `cpPreserveSymlinks` of `android.Cp`?",
+      "range": {
+        "startLine": 155,
+        "startChar": 18,
+        "endLine": 155,
+        "endChar": 19
+      },
+      "revId": "206cd49d81fd2073d0f92596f95f407a11229a96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c823d5a_d773b037",
+        "filename": "apex/apex.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-01T00:15:53Z",
+      "side": 1,
+      "message": "nit: Can we use the existing `android.RuleBuilderInstall` for this?",
+      "range": {
+        "startLine": 421,
+        "startChar": 5,
+        "endLine": 421,
+        "endChar": 16
+      },
+      "revId": "206cd49d81fd2073d0f92596f95f407a11229a96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
