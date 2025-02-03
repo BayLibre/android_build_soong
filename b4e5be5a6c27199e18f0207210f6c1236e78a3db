@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a30255e7_b018804e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-03T19:16:08Z",
+      "side": 1,
+      "message": "(do not submit until Studio have bumped their OS requirements...)",
+      "revId": "b4e5be5a6c27199e18f0207210f6c1236e78a3db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
