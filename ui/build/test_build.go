@@ -78,6 +78,12 @@ func testForDanglingRules(ctx Context, config Config) {
 
 	// out/build_date.txt is considered a "source file"
 	buildDatetimeFilePath := filepath.Join(outDir, "build_date.txt")
+	if config.skipKati {
+		buildDatetimeFilePath = filepath.Join(outDir, "soong", "build_date.txt")
+	}
+
+	buildHostnameFilePath := filepath.Join(outDir, "soong", "build_hostname.txt")
+	buildNumberFilePath := filepath.Join(outDir, "soong", "build_number.txt")
 
 	// release-config files are generated from the initial lunch or Kati phase
 	// before running soong and ninja.
@@ -86,6 +92,8 @@ func testForDanglingRules(ctx Context, config Config) {
 	// out/target/product/<xxxxx>/build_fingerprint.txt is a source file created in sysprop.mk
 	// ^out/target/product/[^/]+/build_fingerprint.txt$
 	buildFingerPrintFilePattern := regexp.MustCompile("^" + filepath.Join(outDir, "target", "product") + "/[^/]+/build_fingerprint.txt$")
+
+	buildComplianceMetadataTimestampFilePattern := regexp.MustCompile("^" + filepath.Join(outDir, "soong", "compliance-metadata") + "/[^/]+/installed_files.stamp$")
 
 	danglingRules := make(map[string]bool)
 
@@ -102,7 +110,10 @@ func testForDanglingRules(ctx Context, config Config) {
 			line == extraVariablesFilePath ||
 			line == dexpreoptConfigFilePath ||
 			line == buildDatetimeFilePath ||
+			line == buildHostnameFilePath ||
+			line == buildNumberFilePath ||
 			strings.HasPrefix(line, releaseConfigDir) ||
+			buildComplianceMetadataTimestampFilePattern.MatchString(line) ||
 			buildFingerPrintFilePattern.MatchString(line) {
 			// Leaf node is in one of Soong's bootstrap directories, which do not have
 			// full build rules in the primary build.ninja file.
