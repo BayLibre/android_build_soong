@@ -1,0 +1,25 @@
+cc_library {
+    name: "libbuzz",
+    srcs: ["libbuzz.c"],
+    generated_headers: ["libbuzz_generated_header"],
+}
+
+cc_genrule {
+    name: "libbuzz_generated_header",
+    cmd: "echo '#include \"libbuzz.h\"' > $(out)",
+    out: ["libbuzz_generated_header.h"],
+}
+
+rust_bindgen {
+    name: "libbuzz_bindgen",
+    crate_name: "buzz_bindgen",
+    wrapper_src: "libbuzz_wrapper.h",
+    source_stem: "bindings",
+}
+
+rust_binary {
+    name: "hello_bindgen",
+    srcs: ["main.rs"],
+    rustlibs: ["libbuzz_bindgen"],
+    shared_libs: ["libbuzz"],
+}
