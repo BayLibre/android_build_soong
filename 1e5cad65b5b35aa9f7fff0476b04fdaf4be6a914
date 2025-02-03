@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77bb4b12_3ee36aa1",
+        "filename": "compliance/notice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-03T23:27:09Z",
+      "side": 1,
+      "message": "nit: Make this a local variable instead of a property on `NoticeXmlModule`.",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 5
+      },
+      "revId": "1e5cad65b5b35aa9f7fff0476b04fdaf4be6a914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
