@@ -1645,7 +1645,7 @@ func (m *ModuleBase) generateVariantTarget(ctx *moduleContext) {
 		namespacePrefix = namespacePrefix + "-"
 	}
 
-	if !ctx.uncheckedModule {
+	if !ctx.uncheckedModule && m.ExportedToMake() { // in root or exported soong namespace
 		name := namespacePrefix + ctx.ModuleName() + "-" + ctx.ModuleSubDir() + "-checkbuild"
 		ctx.Phony(name, ctx.checkbuildFiles...)
 		ctx.checkbuildTarget = PathForPhony(ctx, name)
@@ -3032,7 +3032,7 @@ func (c *buildTargetSingleton) GenerateBuildActions(ctx SingletonContext) {
 	}
 	osDeps := map[osAndCross]Paths{}
 	ctx.VisitAllModules(func(module Module) {
-		if module.Enabled(ctx) {
+		if module.Enabled(ctx) && module.ExportedToMake() { // enabled and in root or exported soong namespace
 			key := osAndCross{os: module.Target().Os, hostCross: module.Target().HostCross}
 			osDeps[key] = append(osDeps[key], OtherModuleProviderOrDefault(ctx, module, InstallFilesProvider).CheckbuildFiles...)
 		}
