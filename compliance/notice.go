@@ -63,7 +63,8 @@ type NoticeXmlModule struct {
 
 	props noticeXmlProperties
 
-	outputFile android.OutputPath
+	outputFile  android.OutputPath
+	installPath android.InstallPath
 }
 
 type noticeXmlProperties struct {
@@ -91,8 +92,10 @@ func (nx *NoticeXmlModule) GenerateAndroidBuildActions(ctx android.ModuleContext
 
 	nx.outputFile = output.OutputPath
 
-	installPath := android.PathForModuleInPartitionInstall(ctx, nx.props.Partition_name, "etc")
-	ctx.PackageFile(installPath, "NOTICE.xml.gz", nx.outputFile)
+	if android.Bool(ctx.Config().ProductVariables().UseSoongNoticeXML) {
+		nx.installPath = android.PathForModuleInPartitionInstall(ctx, nx.props.Partition_name, "etc")
+		ctx.InstallFile(nx.installPath, "NOTICE.xml.gz", nx.outputFile)
+	}
 }
 
 func (nx *NoticeXmlModule) AndroidMkEntries() []android.AndroidMkEntries {
