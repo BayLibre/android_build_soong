@@ -22,6 +22,30 @@
       },
       "revId": "96e207c2120aa1310ef4e7e83096e2e213b485a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1772032b_4955d3b1",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1856745
+      },
+      "writtenOn": "2025-02-03T15:28:18Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "f757220d_68eabe49",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 45
+      },
+      "revId": "96e207c2120aa1310ef4e7e83096e2e213b485a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
