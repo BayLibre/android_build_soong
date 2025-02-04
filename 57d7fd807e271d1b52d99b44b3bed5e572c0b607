@@ -124,6 +124,24 @@
       "parentUuid": "17a5ac2c_f9254db6",
       "revId": "57d7fd807e271d1b52d99b44b3bed5e572c0b607",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0260eb31_71f9b985",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-04T21:08:23Z",
+      "side": 1,
+      "message": "If there\u0027s only a few cases that are easy to replace, yeah, I think that would be good. If we could add an assertion to installFile that the source file is not an InstallPath, that would be even better.",
+      "parentUuid": "11b637a7_8992de21",
+      "revId": "57d7fd807e271d1b52d99b44b3bed5e572c0b607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
