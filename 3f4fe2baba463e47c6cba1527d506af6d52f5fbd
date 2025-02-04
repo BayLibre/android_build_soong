@@ -52,6 +52,24 @@
       "parentUuid": "474967c6_63eef7e5",
       "revId": "3f4fe2baba463e47c6cba1527d506af6d52f5fbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5edfa087_c09a54c8",
+        "filename": "scripts/gen_build_prop.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2025-02-04T15:38:57Z",
+      "side": 1,
+      "message": "Just for completeness, when I said \"no effect\", I was simplifying things. The system property is [used in a fallback mode](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/jni/AndroidRuntime.cpp;l\u003d1029;drc\u003df11a96283945ac895b31cb1085013bedb87f80ce) called \"JIT Zygote\", which is not supposed to be used in production in normal situations. It\u0027s mainly used on \"eng\" builds, and in production when we can\u0027t generate persisted a boot image (due to short of disk space, etc.). In the \"JIT Zygote\" mode, we [use `--compiler-filter\u003dverify`](https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/gc/space/image_space.cc;l\u003d2016;drc\u003d29c8fa62479d5321e0d7fb27490238b6e1ab604b), so deleting the system property is still a no-op, as \"extract\" is now just an alias of \"verify\".\n\nI think TH should be mostly sufficient for validation. In addtion, please build an \"eng\" build and verify that it boots. Thanks!",
+      "parentUuid": "95459762_fbc1b266",
+      "revId": "3f4fe2baba463e47c6cba1527d506af6d52f5fbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
