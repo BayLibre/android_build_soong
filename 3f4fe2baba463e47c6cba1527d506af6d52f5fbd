@@ -34,6 +34,24 @@
       "parentUuid": "757f90ff_47759bfb",
       "revId": "3f4fe2baba463e47c6cba1527d506af6d52f5fbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95459762_fbc1b266",
+        "filename": "scripts/gen_build_prop.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1139038
+      },
+      "writtenOn": "2025-02-04T14:54:54Z",
+      "side": 1,
+      "message": "Thanks for the info. I\u0027ve removed the setting of this property from the build script and attempted to reference what you descibed in the commit message but let me know if it doesn\u0027t make sense!\n\nI\u0027m running TH for general boot/test validation but let me know if there are more ART-specific validations that should be done.",
+      "parentUuid": "474967c6_63eef7e5",
+      "revId": "3f4fe2baba463e47c6cba1527d506af6d52f5fbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
