@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e92374_2e97e810",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2025-02-04T14:12:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f4564dd_12ef717c",
+      "revId": "301307ff3f49c6897c28cf1c1437fc7cbfd4c1c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94837e41_e0a70788",
@@ -67,6 +85,30 @@
       "writtenOn": "2025-01-27T17:48:53Z",
       "side": 1,
       "message": "sha256",
+      "range": {
+        "startLine": 122,
+        "startChar": 24,
+        "endLine": 122,
+        "endChar": 38
+      },
+      "revId": "301307ff3f49c6897c28cf1c1437fc7cbfd4c1c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "565f3276_11f6a5bd",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2025-02-04T14:12:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94837e41_e0a70788",
       "range": {
         "startLine": 122,
         "startChar": 24,
