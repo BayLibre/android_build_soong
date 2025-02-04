@@ -213,6 +213,8 @@ func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		deps = append(deps, a.copyFilesToProductOutForSoongOnly(ctx))
 	}
 
+	a.createComplianceMetadataTimestampForSoongOnly(ctx)
+
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        android.Touch,
 		Output:      allImagesStamp,
@@ -224,6 +226,38 @@ func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.CheckbuildFile(allImagesStamp)
 
 	a.setVbmetaPhonyTargets(ctx)
+}
+
+// createComplianceMetadataTimestampForSoongOnly creates a timestamp file in m --soong-only
+// this timestamp file depends on installed files of the main `android_device`.
+// Any changes to installed files of the main `android_device` will retrigger SBOM generation
+func (a *androidDevice) createComplianceMetadataTimestampForSoongOnly(ctx android.ModuleContext) {
+	if !ctx.Config().KatiEnabled() && proptools.Bool(a.deviceProps.Main_device) {
+		subImageInfo := a.getSubImageInfo(ctx)
+		var installedFiles android.Paths
+		for _, partition := range android.SortedKeys(subImageInfo) {
+			installedFiles = append(installedFiles, subImageInfo[partition].FileListFile)
+		}
+		ctx.Build(pctx, android.BuildParams{
+			Rule:      android.Touch,
+			Implicits: installedFiles,
+			Output:    android.PathForOutput(ctx, "compliance-metadata", ctx.Config().DeviceProduct(), "installed_files.stamp"),
+		})
+	}
+}
+
+// Returns FilesystemInfo of the partitions in super, if a super partition exists.
+func (a *androidDevice) getSubImageInfo(ctx android.ModuleContext) map[string]FilesystemInfo {
+	var ret map[string]FilesystemInfo
+	if proptools.String(a.partitionProps.Super_partition_name) != "" {
+		superImage := ctx.GetDirectDepProxyWithTag(*a.partitionProps.Super_partition_name, superPartitionDepTag)
+		if info, ok := android.OtherModuleProvider(ctx, superImage, SuperImageProvider); ok {
+			ret = info.SubImageInfo
+		} else {
+			ctx.ModuleErrorf("Expected super image dep to provide SuperImageProvider")
+		}
+	}
+	return ret
 }
 
 // Helper structs for target_files.zip creation
