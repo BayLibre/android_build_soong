@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40af1b92_5e65d152",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-04T18:54:03Z",
+      "side": 1,
+      "message": "Is there an earlier place that we could put this check that causes the files to not end up in `ctx.checkbuildFiles` in the first place?",
+      "revId": "57d7fd807e271d1b52d99b44b3bed5e572c0b607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
