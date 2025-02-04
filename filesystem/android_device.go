@@ -209,6 +209,7 @@ func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		// This is the analogue to this make code:
 		// https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/main.mk;l=1396;drc=6595459cdd8164a6008335f6372c9f97b9094060
 		ctx.Phony("droidcore-unbundled", allImagesStamp)
+		a.createComplianceMetadataTimestamp(ctx)
 
 		deps = append(deps, a.copyFilesToProductOutForSoongOnly(ctx))
 	}
@@ -224,6 +225,38 @@ func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.CheckbuildFile(allImagesStamp)
 
 	a.setVbmetaPhonyTargets(ctx)
+}
+
+// createComplianceMetadataTimestampForSoongOnly creates a timestamp file in m --soong-only
+// this timestamp file depends on installed files of the main `android_device`.
+// Any changes to installed files of the main `android_device` will retrigger SBOM generation
+func (a *androidDevice) createComplianceMetadataTimestamp(ctx android.ModuleContext) {
+	if !ctx.Config().KatiEnabled() && proptools.Bool(a.deviceProps.Main_device) {
+		subImageInfo := a.getSubImageInfo(ctx)
+		var syncDeps android.Paths
+		for _, partition := range android.SortedKeys(subImageInfo) {
+			syncDeps = append(syncDeps, android.PathForPhony(ctx, "sync_"+partition))
+		}
+		ctx.Build(pctx, android.BuildParams{
+			Rule:      android.Touch,
+			Implicits: syncDeps,
+			Output:    android.PathForOutput(ctx, "compliance-metadata", ctx.Config().DeviceProduct(), "installed_files.stamp"),
+		})
+	}
+}
+
+// Returns FilesystemInfo of the partitions in super, if a super partition exists.
+func (a *androidDevice) getSubImageInfo(ctx android.ModuleContext) map[string]FilesystemInfo {
+	var ret map[string]FilesystemInfo
+	if proptools.String(a.partitionProps.Super_partition_name) != "" {
+		superImage := ctx.GetDirectDepProxyWithTag(*a.partitionProps.Super_partition_name, superPartitionDepTag)
+		if info, ok := android.OtherModuleProvider(ctx, superImage, SuperImageProvider); ok {
+			ret = info.SubImageInfo
+		} else {
+			ctx.ModuleErrorf("Expected super image dep to provide SuperImageProvider")
+		}
+	}
+	return ret
 }
 
 // Helper structs for target_files.zip creation
