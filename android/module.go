@@ -2299,6 +2299,14 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 			GeneratedDeps:        s.GeneratedDeps(),
 		})
 	}
+
+	if d, ok := m.module.(interface {
+		GetDepIsInSameApexInfo() DepIsInSameApexCaculator
+	}); ok {
+		SetProvider(ctx, DepIsInSameApexInfoProvider, DepIsInSameApexInfo{
+			Caculator: d.GetDepIsInSameApexInfo(),
+		})
+	}
 }
 
 func SetJarJarPrefixHandler(handler func(ModuleContext)) {

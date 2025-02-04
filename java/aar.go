@@ -1626,7 +1626,21 @@ var _ android.ApexModule = (*AARImport)(nil)
 
 // Implements android.ApexModule
 func (a *AARImport) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) bool {
-	return a.depIsInSameApex(tag)
+	return depIsInSameApex(tag)
+}
+
+type AARImportDepIsInSameApexInfo struct{}
+
+func (m *AARImport) GetDepIsInSameApexInfo() android.DepIsInSameApexCaculator {
+	return AARImportDepIsInSameApexInfo{}
+}
+
+func (m AARImportDepIsInSameApexInfo) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
+	return depIsInSameApex(tag)
+}
+
+func (m AARImportDepIsInSameApexInfo) DepIsInSameApexIn(tag blueprint.DependencyTag) bool {
+	return true
 }
 
 // Implements android.ApexModule

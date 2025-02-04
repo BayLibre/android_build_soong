@@ -1235,6 +1235,10 @@ func (a *apexBundle) IncomingDepIsInSameApex(tag blueprint.DependencyTag) bool {
 	return true
 }
 
+func (m apexBundle) GetDepIsInSameApexInfo() android.DepIsInSameApexCaculator {
+	return android.BaseDepIsInSameApexInfo{}
+}
+
 func (a *apexBundle) Exportable() bool {
 	return true
 }

@@ -2105,6 +2105,71 @@ func (mod *Module) IncomingDepIsInSameApex(depTag blueprint.DependencyTag) bool 
 	return true
 }
 
+type RustDepIsInSameApexInfo struct {
+	Static           bool
+	HasStubsVariants bool
+	ApexExclude      bool
+}
+
+func (mod *Module) GetDepIsInSameApexInfo() android.DepIsInSameApexCaculator {
+	return RustDepIsInSameApexInfo{
+		Static:           mod.Static(),
+		HasStubsVariants: mod.HasStubsVariants(),
+		ApexExclude:      mod.ApexExclude(),
+	}
+}
+
+func (r RustDepIsInSameApexInfo) DepIsInSameApexOut(depTag blueprint.DependencyTag) bool {
+	if depTag == procMacroDepTag || depTag == customBindgenDepTag {
+		return false
+	}
+
+	if r.Static && cc.IsSharedDepTag(depTag) {
+		// shared_lib dependency from a static lib is considered as crossing
+		// the APEX boundary because the dependency doesn't actually is
+		// linked; the dependency is used only during the compilation phase.
+		return false
+	}
+
+	if depTag == cc.StubImplDepTag {
+		// We don't track from an implementation library to its stubs.
+		return false
+	}
+
+	if cc.ExcludeInApexDepTag(depTag) {
+		return false
+	}
+
+	// TODO(b/362509506): remove once all apex_exclude uses are switched to stubs.
+	if r.ApexExclude {
+		return false
+	}
+
+	return true
+}
+
+func (r RustDepIsInSameApexInfo) DepIsInSameApexIn(depTag blueprint.DependencyTag) bool {
+	// TODO(b/362509506): remove once all apex_exclude uses are switched to stubs.
+	if r.ApexExclude {
+		return false
+	}
+
+	if r.HasStubsVariants {
+		if cc.IsSharedDepTag(depTag) {
+			// dynamic dep to a stubs lib crosses APEX boundary
+			return false
+		}
+		if cc.IsRuntimeDepTag(depTag) {
+			// runtime dep to a stubs lib also crosses APEX boundary
+			return false
+		}
+		if cc.IsHeaderDepTag(depTag) {
+			return false
+		}
+	}
+	return true
+}
+
 // Overrides ApexModule.IsInstallabeToApex()
 func (mod *Module) IsInstallableToApex() bool {
 	// TODO(b/362509506): remove once all apex_exclude uses are switched to stubs.

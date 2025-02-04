@@ -167,6 +167,16 @@ type DepIsInSameApex interface {
 	IncomingDepIsInSameApex(tag blueprint.DependencyTag) bool
 }
 
+type DepIsInSameApexCaculator interface {
+	DepIsInSameApexOut(tag blueprint.DependencyTag) bool
+	DepIsInSameApexIn(tag blueprint.DependencyTag) bool
+}
+type DepIsInSameApexInfo struct {
+	Caculator DepIsInSameApexCaculator
+}
+
+var DepIsInSameApexInfoProvider = blueprint.NewProvider[DepIsInSameApexInfo]()
+
 func IsDepInSameApex(ctx BaseModuleContext, module, dep Module) bool {
 	depTag := ctx.OtherModuleDependencyTag(dep)
 	if _, ok := depTag.(ExcludeFromApexContentsTag); ok {
@@ -181,6 +191,34 @@ func IsDepInSameApex(ctx BaseModuleContext, module, dep Module) bool {
 	if d, ok := dep.(DepIsInSameApex); ok && !d.IncomingDepIsInSameApex(depTag) {
 		return false
 	}
+	return true
+}
+
+func IsDepInSameApexProxy(ctx BaseModuleContext, module, dep Module) bool {
+	depTag := ctx.OtherModuleDependencyTag(dep)
+	if _, ok := depTag.(ExcludeFromApexContentsTag); ok {
+		// The tag defines a dependency that never requires the child module to be part of the same
+		// apex as the parent.
+		return false
+	}
+
+	if !ctx.EqualModules(ctx.Module(), module) {
+		if moduleInfo, ok := OtherModuleProvider(ctx, module, DepIsInSameApexInfoProvider); ok {
+			if !moduleInfo.Caculator.DepIsInSameApexOut(depTag) {
+				return false
+			}
+		}
+	} else {
+		if m, ok := ctx.Module().(DepIsInSameApex); ok && !m.OutgoingDepIsInSameApex(depTag) {
+			return false
+		}
+	}
+	if depInfo, ok := OtherModuleProvider(ctx, dep, DepIsInSameApexInfoProvider); ok {
+		if !depInfo.Caculator.DepIsInSameApexIn(depTag) {
+			return false
+		}
+	}
+
 	return true
 }
 
@@ -312,6 +350,8 @@ type ApexModuleBase struct {
 	apexInfosLock sync.Mutex // protects apexInfos during parallel apexInfoMutator
 }
 
+type BaseDepIsInSameApexInfo struct{}
+
 // Initializes ApexModuleBase struct. Not calling this (even when inheriting from ApexModuleBase)
 // prevents the module from being mutated for apexBundle.
 func InitApexModule(m ApexModule) {
@@ -404,6 +444,18 @@ func (m *ApexModuleBase) IncomingDepIsInSameApex(tag blueprint.DependencyTag) bo
 	// APEX, unless B is explicitly from outside of the APEX (i.e. a stubs lib). Thus, returning
 	// true. This is overridden by some module types like apex.ApexBundle, cc.Module,
 	// java.Module, etc.
+	return true
+}
+
+func (m *ApexModuleBase) GetDepIsInSameApexInfo() DepIsInSameApexCaculator {
+	return BaseDepIsInSameApexInfo{}
+}
+
+func (m BaseDepIsInSameApexInfo) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
+	return true
+}
+
+func (m BaseDepIsInSameApexInfo) DepIsInSameApexIn(tag blueprint.DependencyTag) bool {
 	return true
 }
 
@@ -820,7 +872,7 @@ func CheckMinSdkVersion(ctx ModuleContext, minSdkVersion ApiLevel, walk WalkPayl
 			// dependencies.
 			return false
 		}
-		if !IsDepInSameApex(ctx, from, to) {
+		if !IsDepInSameApexProxy(ctx, from, to) {
 			return false
 		}
 		if m, ok := to.(ModuleWithMinSdkVersionCheck); ok {
