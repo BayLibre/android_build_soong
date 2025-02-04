@@ -34,6 +34,24 @@
       "parentUuid": "40af1b92_5e65d152",
       "revId": "57d7fd807e271d1b52d99b44b3bed5e572c0b607",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "313cc4bd_d7f352a4",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-04T19:18:26Z",
+      "side": 1,
+      "message": "Is there some place that causes unexported modules to not create installation rules? I was thinking if this check could be alongside that it would be best. Right now it\u0027s not clear why this check is being added, except via the commit message.",
+      "parentUuid": "f16bd2a7_3f9a745b",
+      "revId": "57d7fd807e271d1b52d99b44b3bed5e572c0b607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
