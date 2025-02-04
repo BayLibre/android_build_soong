@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5c4484d_94843c2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-04T19:33:26Z",
+      "side": 1,
+      "message": "`m` also generates the files outside of ninja, but then creates dummy rules to represent them: https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/main.mk;l\u003d48;drc\u003d16daa79cf73deda6e049b8571e689f1094995b4b\n\nCould you update this commit message, and remove those dummy rules?",
+      "revId": "d8b5957cb7383d6f92038489e752707ea8e0ab29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c442ea_ce8fb583",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-04T19:33:26Z",
+      "side": 1,
+      "message": "Could we stabilize the location of build_date.txt between soong-only and soong+make builds instead of adding a second exclusion?",
+      "revId": "d8b5957cb7383d6f92038489e752707ea8e0ab29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a970544_c2d2f949",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-04T19:33:26Z",
+      "side": 1,
+      "message": "For sbom to work, this file needs to exist. (Or we need to rewrite sbom to work on soong filesystem modules) Could you generate it in `android_device_product_out.go`?",
+      "revId": "d8b5957cb7383d6f92038489e752707ea8e0ab29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
