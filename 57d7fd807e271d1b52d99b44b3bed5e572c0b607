@@ -106,6 +106,24 @@
       "parentUuid": "9c0afdf4_65916916",
       "revId": "57d7fd807e271d1b52d99b44b3bed5e572c0b607",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11b637a7_8992de21",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-04T21:04:17Z",
+      "side": 1,
+      "message": "The source file could be another installed file. This seems to be the case for java_test_host, which installs the [main installfile in testcases](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/9a4424f86a69a2da3b0b6bf59ac8f833fa5c7e76:java/java.go;l\u003d1886-1888;drc\u003d986fe746007f8477c0df5b2c18dcc3ebc6d57b20;bpv\u003d1;bpt\u003d0)\n\nDo you think we should replace that with a path from the intermediates directory?",
+      "parentUuid": "17a5ac2c_f9254db6",
+      "revId": "57d7fd807e271d1b52d99b44b3bed5e572c0b607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
