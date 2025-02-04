@@ -142,6 +142,24 @@
       "parentUuid": "11b637a7_8992de21",
       "revId": "57d7fd807e271d1b52d99b44b3bed5e572c0b607",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6666c38_0ccd890b",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-04T21:53:09Z",
+      "side": 1,
+      "message": "Thanks, I have created aosp/3474721 for this.\n\nI have updated this CL to skip filesystem diff tests and installation for blueprint_go_binary in unexported namespaces.",
+      "parentUuid": "0260eb31_71f9b985",
+      "revId": "57d7fd807e271d1b52d99b44b3bed5e572c0b607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
