@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1211d918_c25eb1a1",
+        "filename": "android/transition.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-04T05:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67a38581_96c11086",
+      "range": {
+        "startLine": 76,
+        "startChar": 25,
+        "endLine": 76,
+        "endChar": 28
+      },
+      "revId": "12d04ddf39f2bf6ba35763e2c8ae3d52239eee40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9440f54_ce5e71ed",
@@ -60,6 +84,30 @@
       "writtenOn": "2025-02-04T01:11:44Z",
       "side": 1,
       "message": "Remove the `, _` on these 3 methods. Adding the `, _` will cause go to ignore downcasting errors, which would be a panic otherise.",
+      "range": {
+        "startLine": 322,
+        "startChar": 18,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "12d04ddf39f2bf6ba35763e2c8ae3d52239eee40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca2f5e31_81a153a5",
+        "filename": "android/transition.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-04T05:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9440f54_ce5e71ed",
       "range": {
         "startLine": 322,
         "startChar": 18,
