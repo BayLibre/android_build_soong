@@ -1680,7 +1680,7 @@ func (m *ModuleBase) generateModuleTarget(ctx *moduleContext) {
 		// not be created if the module is not exported to make.
 		// Those could depend on the build target and fail to compile
 		// for the current build target.
-		if (!ctx.Config().KatiEnabled() || !skipAndroidMkProcessing) && !uncheckedModule && checkbuildTarget != nil {
+		if !skipAndroidMkProcessing && !uncheckedModule && checkbuildTarget != nil {
 			allCheckbuildTargets = append(allCheckbuildTargets, checkbuildTarget)
 		}
 	})
@@ -1704,6 +1704,8 @@ func (m *ModuleBase) generateModuleTarget(ctx *moduleContext) {
 	if len(allCheckbuildTargets) > 0 {
 		name := namespacePrefix + ctx.ModuleName() + "-checkbuild"
 		ctx.Phony(name, allCheckbuildTargets...)
+		// Add to the global checkbuild target
+		ctx.Phony("checkbuild", allCheckbuildTargets...)
 		deps = append(deps, PathForPhony(ctx, name))
 	}
 
