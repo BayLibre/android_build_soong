@@ -16,6 +16,24 @@
       "message": "I don\u0027t understand what this comment is trying to say and the documentation for `image-dex2oat-filter` [1] suggests that this property has no effect since Android 12?\n\n[1] -- https://source.android.com/docs/core/runtime/configure",
       "revId": "3f4fe2baba463e47c6cba1527d506af6d52f5fbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "474967c6_63eef7e5",
+        "filename": "scripts/gen_build_prop.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2025-02-04T14:26:30Z",
+      "side": 1,
+      "message": "Thank you for bringing this into our attention!\n\nThe doc is more updated than this comment and the code below. This system property has no effect now. You can delete the comment and the code altogether.\n\nFor \"eng\" builds, we now use [a new way](https://cs.android.com/android/platform/superproject/main/+/main:build/make/target/product/runtime_libart.mk;l\u003d129-146;drc\u003df281230b2959d46f40290fdd39c3284034b0194c) to disable all dexpreopt and dexopt.",
+      "parentUuid": "757f90ff_47759bfb",
+      "revId": "3f4fe2baba463e47c6cba1527d506af6d52f5fbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
