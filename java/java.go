@@ -3262,7 +3262,21 @@ var _ android.ApexModule = (*Import)(nil)
 
 // Implements android.ApexModule
 func (j *Import) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) bool {
-	return j.depIsInSameApex(tag)
+	return depIsInSameApex(tag)
+}
+
+type JavaImportDepIsInSameApexInfo struct{}
+
+func (m *Import) GetDepIsInSameApexInfo() android.DepIsInSameApexCalculator {
+	return JavaImportDepIsInSameApexInfo{}
+}
+
+func (m JavaImportDepIsInSameApexInfo) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
+	return depIsInSameApex(tag)
+}
+
+func (m JavaImportDepIsInSameApexInfo) DepIsInSameApexIn(tag blueprint.DependencyTag) bool {
+	return true
 }
 
 // Implements android.ApexModule

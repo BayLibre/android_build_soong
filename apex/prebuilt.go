@@ -283,6 +283,21 @@ func (p *prebuiltCommon) IncomingDepIsInSameApex(tag blueprint.DependencyTag) bo
 	return true
 }
 
+type ApexPrebuiltDepIsInSameApexInfo struct{}
+
+func (m *prebuiltCommon) GetDepIsInSameApexInfo() android.DepIsInSameApexCalculator {
+	return ApexPrebuiltDepIsInSameApexInfo{}
+}
+
+func (m ApexPrebuiltDepIsInSameApexInfo) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
+	_, ok := tag.(exportedDependencyTag)
+	return ok
+}
+
+func (m ApexPrebuiltDepIsInSameApexInfo) DepIsInSameApexIn(tag blueprint.DependencyTag) bool {
+	return true
+}
+
 // apexInfoMutator marks any modules for which this apex exports a file as requiring an apex
 // specific variant and checks that they are supported.
 //

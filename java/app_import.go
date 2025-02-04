@@ -641,6 +641,20 @@ func (a *AndroidAppImport) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) 
 	return false
 }
 
+type AppImportDepIsInSameApexInfo struct{}
+
+func (m *AndroidAppImport) GetDepIsInSameApexInfo() android.DepIsInSameApexCalculator {
+	return AppImportDepIsInSameApexInfo{}
+}
+
+func (m AppImportDepIsInSameApexInfo) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
+	return false
+}
+
+func (m AppImportDepIsInSameApexInfo) DepIsInSameApexIn(tag blueprint.DependencyTag) bool {
+	return true
+}
+
 func (a *AndroidAppImport) SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
 	return android.SdkSpecPrivate
 }

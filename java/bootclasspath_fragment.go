@@ -419,6 +419,38 @@ func (b *BootclasspathFragmentModule) OutgoingDepIsInSameApex(tag blueprint.Depe
 	panic(fmt.Errorf("boot_image module %q should not have a dependency tag %s", b, android.PrettyPrintTag(tag)))
 }
 
+type BootclasspathFragmentDepIsInSameApexInfo struct{}
+
+func (m *BootclasspathFragmentModule) GetDepIsInSameApexInfo() android.DepIsInSameApexCalculator {
+	return BootclasspathFragmentDepIsInSameApexInfo{}
+}
+
+func (b BootclasspathFragmentDepIsInSameApexInfo) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
+	// If the module is a default module, do not check the tag
+	if tag == android.DefaultsDepTag {
+		return true
+	}
+	if IsBootclasspathFragmentContentDepTag(tag) {
+		// Boot image contents are automatically added to apex.
+		return true
+	}
+	if android.IsMetaDependencyTag(tag) {
+		// Cross-cutting metadata dependencies are metadata.
+		return false
+	}
+	// Dependency to the bootclasspath fragment of another apex
+	// e.g. concsrypt-bootclasspath-fragment --> art-bootclasspath-fragment
+	if tag == bootclasspathFragmentDepTag {
+		return false
+
+	}
+	panic(fmt.Errorf("boot_image module should not have a dependency tag %s", android.PrettyPrintTag(tag)))
+}
+
+func (b BootclasspathFragmentDepIsInSameApexInfo) DepIsInSameApexIn(tag blueprint.DependencyTag) bool {
+	return true
+}
+
 func (b *BootclasspathFragmentModule) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion android.ApiLevel) error {
 	return nil
 }

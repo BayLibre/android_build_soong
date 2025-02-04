@@ -978,6 +978,7 @@ func ExcludeInApexDepTag(depTag blueprint.DependencyTag) bool {
 // installer logic.
 type Module struct {
 	fuzz.FuzzModule
+	CcDepIsInSameApexInfo
 
 	VendorProperties VendorProperties
 	Properties       BaseProperties
@@ -4099,6 +4100,68 @@ func (c *Module) IncomingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
 		}
 	}
 	if c.IsLlndk() {
+		return false
+	}
+
+	return true
+}
+
+type CcDepIsInSameApexInfo struct {
+	Static           bool
+	HasStubsVariants bool
+	IsLlndk          bool
+}
+
+func (c *Module) GetDepIsInSameApexInfo() android.DepIsInSameApexCalculator {
+	return CcDepIsInSameApexInfo{
+		Static:           c.static(),
+		HasStubsVariants: c.HasStubsVariants(),
+		IsLlndk:          c.IsLlndk(),
+	}
+}
+
+func (c CcDepIsInSameApexInfo) DepIsInSameApexOut(depTag blueprint.DependencyTag) bool {
+	if depTag == StubImplDepTag {
+		// We don't track from an implementation library to its stubs.
+		return false
+	}
+	if depTag == staticVariantTag {
+		// This dependency is for optimization (reuse *.o from the static lib). It doesn't
+		// actually mean that the static lib (and its dependencies) are copied into the
+		// APEX.
+		return false
+	}
+
+	libDepTag, isLibDepTag := depTag.(libraryDependencyTag)
+	if isLibDepTag && c.Static && libDepTag.shared() {
+		// shared_lib dependency from a static lib is considered as crossing
+		// the APEX boundary because the dependency doesn't actually is
+		// linked; the dependency is used only during the compilation phase.
+		return false
+	}
+
+	if isLibDepTag && libDepTag.excludeInApex {
+		return false
+	}
+
+	return true
+}
+
+func (c CcDepIsInSameApexInfo) DepIsInSameApexIn(depTag blueprint.DependencyTag) bool {
+	if c.HasStubsVariants {
+		if IsSharedDepTag(depTag) {
+			// dynamic dep to a stubs lib crosses APEX boundary
+			return false
+		}
+		if IsRuntimeDepTag(depTag) {
+			// runtime dep to a stubs lib also crosses APEX boundary
+			return false
+		}
+		if IsHeaderDepTag(depTag) {
+			return false
+		}
+	}
+	if c.IsLlndk {
 		return false
 	}
 

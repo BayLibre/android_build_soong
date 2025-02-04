@@ -1356,6 +1356,20 @@ func (a *AndroidApp) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) bool {
 	return a.Library.OutgoingDepIsInSameApex(tag)
 }
 
+type AppDepIsInSameApexInfo struct{}
+
+func (m *AndroidApp) GetDepIsInSameApexInfo() android.DepIsInSameApexCalculator {
+	return AppDepIsInSameApexInfo{}
+}
+
+func (m AppDepIsInSameApexInfo) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
+	return depIsInSameApex(tag)
+}
+
+func (m AppDepIsInSameApexInfo) DepIsInSameApexIn(tag blueprint.DependencyTag) bool {
+	return true
+}
+
 func (a *AndroidApp) Privileged() bool {
 	return Bool(a.appProperties.Privileged)
 }

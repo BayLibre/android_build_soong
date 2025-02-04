@@ -1328,7 +1328,7 @@ func (module *SdkLibrary) CheckMinSdkVersion(ctx android.ModuleContext) {
 func CheckMinSdkVersion(ctx android.ModuleContext, module *Library) {
 	android.CheckMinSdkVersion(ctx, module.MinSdkVersion(ctx), func(c android.BaseModuleContext, do android.PayloadDepsCallback) {
 		ctx.WalkDeps(func(child android.Module, parent android.Module) bool {
-			isExternal := !android.IsDepInSameApex(ctx, module, child)
+			isExternal := !android.IsDepInSameApexProxy(ctx, module, child)
 			if am, ok := child.(android.ApexModule); ok {
 				if !do(ctx, parent, am, isExternal) {
 					return false
@@ -1707,6 +1707,26 @@ func (module *SdkLibrary) OutgoingDepIsInSameApex(depTag blueprint.DependencyTag
 		return true
 	}
 	return module.Library.OutgoingDepIsInSameApex(depTag)
+}
+
+type SdkLibraryDepIsInSameApexInfo struct{}
+
+func (m *SdkLibrary) GetDepIsInSameApexInfo() android.DepIsInSameApexCalculator {
+	return SdkLibraryDepIsInSameApexInfo{}
+}
+
+func (m SdkLibraryDepIsInSameApexInfo) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
+	if tag == xmlPermissionsFileTag {
+		return true
+	}
+	if tag == implLibraryTag {
+		return true
+	}
+	return depIsInSameApex(tag)
+}
+
+func (m SdkLibraryDepIsInSameApexInfo) DepIsInSameApexIn(tag blueprint.DependencyTag) bool {
+	return true
 }
 
 // Implements android.ApexModule
@@ -2125,6 +2145,26 @@ func (module *SdkLibraryImport) OutgoingDepIsInSameApex(depTag blueprint.Depende
 	// None of the other dependencies of the java_sdk_library_import are in the same apex
 	// as the one that references this module.
 	return false
+}
+
+type SdkLibraryImportDepIsInSameApexInfo struct{}
+
+func (m *SdkLibraryImport) GetDepIsInSameApexInfo() android.DepIsInSameApexCalculator {
+	return SdkLibraryImportDepIsInSameApexInfo{}
+}
+
+func (m SdkLibraryImportDepIsInSameApexInfo) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
+	if tag == xmlPermissionsFileTag {
+		return true
+	}
+
+	// None of the other dependencies of the java_sdk_library_import are in the same apex
+	// as the one that references this module.
+	return false
+}
+
+func (m SdkLibraryImportDepIsInSameApexInfo) DepIsInSameApexIn(tag blueprint.DependencyTag) bool {
+	return true
 }
 
 // Implements android.ApexModule
