@@ -88,6 +88,24 @@
       "parentUuid": "e959a7d3_86a56c71",
       "revId": "57d7fd807e271d1b52d99b44b3bed5e572c0b607",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17a5ac2c_f9254db6",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-04T19:39:38Z",
+      "side": 1,
+      "message": "Actually that line packages the source file, not the installed file. So where is the installed file getting added to the checkbuild files?",
+      "parentUuid": "9c0afdf4_65916916",
+      "revId": "57d7fd807e271d1b52d99b44b3bed5e572c0b607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
