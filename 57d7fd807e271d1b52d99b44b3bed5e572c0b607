@@ -16,6 +16,24 @@
       "message": "Is there an earlier place that we could put this check that causes the files to not end up in `ctx.checkbuildFiles` in the first place?",
       "revId": "57d7fd807e271d1b52d99b44b3bed5e572c0b607",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f16bd2a7_3f9a745b",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-04T19:15:33Z",
+      "side": 1,
+      "message": "WDYT about adding it to `GenerateBuildActions`, somewhere [here](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/6731682acad8fadc03ffdd5e87680da37235d546:android/module.go;l\u003d1950;drc\u003dac819fac61e01dfc305cbf315a5745169ebfa240;bpv\u003d1;bpt\u003d0)\n```\nif !m.ExportedToMake() {\n  ctx.uncheckedModule \u003d true\n}\n```",
+      "parentUuid": "40af1b92_5e65d152",
+      "revId": "57d7fd807e271d1b52d99b44b3bed5e572c0b607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
