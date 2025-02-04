@@ -1649,6 +1649,10 @@ func (m *ModuleBase) generateVariantTarget(ctx *moduleContext) {
 		name := namespacePrefix + ctx.ModuleName() + "-" + ctx.ModuleSubDir() + "-checkbuild"
 		ctx.Phony(name, ctx.checkbuildFiles...)
 		ctx.checkbuildTarget = PathForPhony(ctx, name)
+		if !ctx.Config().KatiEnabled() {
+			// Add to the global checkbuild target
+			ctx.Phony("checkbuild", PathForPhony(ctx, name))
+		}
 	}
 
 }
