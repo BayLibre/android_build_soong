@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40c1f61c_c3dc1f14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137303
+      },
+      "writtenOn": "2025-02-04T17:43:30Z",
+      "side": 1,
+      "message": "@joeo@google.com when you have a moment, PTAL as wear API/flag finalization requires this to proceed.",
+      "revId": "927d4008143b7bba9c8a9c069d2e241cec25eb25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
