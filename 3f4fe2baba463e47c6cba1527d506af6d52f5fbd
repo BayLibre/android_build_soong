@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757f90ff_47759bfb",
+        "filename": "scripts/gen_build_prop.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1139038
+      },
+      "writtenOn": "2025-02-04T11:51:20Z",
+      "side": 1,
+      "message": "I don\u0027t understand what this comment is trying to say and the documentation for `image-dex2oat-filter` [1] suggests that this property has no effect since Android 12?\n\n[1] -- https://source.android.com/docs/core/runtime/configure",
+      "revId": "3f4fe2baba463e47c6cba1527d506af6d52f5fbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
