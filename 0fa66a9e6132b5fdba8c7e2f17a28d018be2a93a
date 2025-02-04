@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eba33b4_364345a2",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-04T23:29:58Z",
+      "side": 1,
+      "message": "Move this into the if above, instead of copying the if inside the function.",
+      "revId": "0fa66a9e6132b5fdba8c7e2f17a28d018be2a93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab9dcb77_5cc65a38",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-04T23:29:58Z",
+      "side": 1,
+      "message": "`FileListFile` does not depend on the partition\u0027s installed files, this will not work.",
+      "range": {
+        "startLine": 239,
+        "startChar": 67,
+        "endLine": 239,
+        "endChar": 79
+      },
+      "revId": "0fa66a9e6132b5fdba8c7e2f17a28d018be2a93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
