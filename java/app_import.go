@@ -529,6 +529,9 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 		},
 	)
 
+	moduleInfoJSON := ctx.ModuleInfoJSON()
+	moduleInfoJSON.Class = []string{"APP"}
+
 	ctx.SetOutputFiles([]android.Path{a.outputFile}, "")
 
 	buildComplianceMetadata(ctx)
