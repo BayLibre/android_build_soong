@@ -28,7 +28,7 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 	},
 
 	"art-aconfig-flags-java-lib": {
-		"framework-api-annotations-lib", // apex [com.android.art, com.android.art.debug, com.android.art.testing, test_imgdiag_com.android.art, test_jitzygote_com.android.art] -> system
+		"framework-api-annotations-lib", // apex [com.android.art, com.android.art.debug, test_imgdiag_com.android.art, test_jitzygote_com.android.art] -> system
 	},
 
 	"Bluetooth": {
@@ -47,7 +47,7 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 	"CarServiceUpdatable": {
 		"modules-utils-os",                    // apex [com.android.car.framework] -> apex [com.android.permission, test_com.android.permission]
 		"modules-utils-preconditions",         // apex [com.android.car.framework] -> apex [com.android.adservices, com.android.appsearch, com.android.cellbroadcast, com.android.extservices, com.android.ondevicepersonalization, com.android.tethering, com.android.uwb, com.android.wifi, test_com.android.cellbroadcast, test_com.android.wifi]
-		"modules-utils-shell-command-handler", // apex [com.android.car.framework] -> apex [com.android.adservices, com.android.art, com.android.art.debug, com.android.art.testing, com.android.bt, com.android.configinfrastructure, com.android.mediaprovider, com.android.nfcservices, com.android.permission, com.android.scheduling, com.android.tethering, com.android.uwb, com.android.wifi, test_com.android.mediaprovider, test_com.android.permission, test_com.android.wifi, test_imgdiag_com.android.art, test_jitzygote_com.android.art]
+		"modules-utils-shell-command-handler", // apex [com.android.car.framework] -> apex [com.android.adservices, com.android.art, com.android.art.debug, com.android.bt, com.android.configinfrastructure, com.android.mediaprovider, com.android.nfcservices, com.android.permission, com.android.scheduling, com.android.tethering, com.android.uwb, com.android.wifi, test_com.android.mediaprovider, test_com.android.permission, test_com.android.wifi, test_imgdiag_com.android.art, test_jitzygote_com.android.art]
 	},
 
 	"cellbroadcastreceiver_aconfig_flags_lib": {
@@ -902,7 +902,7 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 	},
 
 	"libcore-aconfig-flags-lib": {
-		"framework-api-annotations-lib", // apex [com.android.art, com.android.art.debug, com.android.art.testing, test_imgdiag_com.android.art, test_jitzygote_com.android.art] -> system
+		"framework-api-annotations-lib", // apex [com.android.art, com.android.art.debug, test_imgdiag_com.android.art, test_jitzygote_com.android.art] -> system
 	},
 
 	"loadlibrarytest_product_app": {
@@ -1049,7 +1049,7 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 	},
 
 	"service-art.impl": {
-		"auto_value_annotations", // apex [com.android.art, com.android.art.debug, com.android.art.testing, test_imgdiag_com.android.art, test_jitzygote_com.android.art] -> apex [com.android.adservices, com.android.extservices, com.android.extservices_tplus]
+		"auto_value_annotations", // apex [com.android.art, com.android.art.debug, test_imgdiag_com.android.art, test_jitzygote_com.android.art] -> apex [com.android.adservices, com.android.extservices, com.android.extservices_tplus]
 	},
 
 	"service-bluetooth-pre-jarjar": {
