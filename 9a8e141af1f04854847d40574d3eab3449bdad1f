@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eaa2d67_7bd8b592",
+        "filename": "android/compliance_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-05T23:55:11Z",
+      "side": 1,
+      "message": "Use `android.WriteFileRule` instead of these custom rules.",
+      "revId": "9a8e141af1f04854847d40574d3eab3449bdad1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
