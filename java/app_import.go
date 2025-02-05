@@ -772,6 +772,9 @@ type AndroidTestImport struct {
 func (a *AndroidTestImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.generateAndroidBuildActions(ctx)
 
+	moduleInfoJSON := ctx.ModuleInfoJSON()
+	moduleInfoJSON.Class = []string{"APP"}
+
 	a.data = android.PathsForModuleSrc(ctx, a.testProperties.Data)
 }
 

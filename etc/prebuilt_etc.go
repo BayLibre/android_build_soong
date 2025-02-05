@@ -499,6 +499,9 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		ip.addInstallRules(ctx)
 	}
 
+	moduleInfoJSON := ctx.ModuleInfoJSON()
+	moduleInfoJSON.Class = []string{"ETC"}
+
 	ctx.SetOutputFiles(p.outputFilePaths.Paths(), "")
 }
 
