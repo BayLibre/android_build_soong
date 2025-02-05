@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b4e46d_28b263a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-05T22:41:41Z",
+      "side": 1,
+      "message": "Good catch. I have created https://android-review.git.corp.google.com/c/platform/build/+/3478831 to remove these dummy rules from make.",
+      "parentUuid": "a5c4484d_94843c2d",
+      "revId": "d8b5957cb7383d6f92038489e752707ea8e0ab29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35c442ea_ce8fb583",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b806715_39028a3a",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-05T22:41:41Z",
+      "side": 1,
+      "message": "I have not been able to repro this today, so I have just removed it.",
+      "parentUuid": "35c442ea_ce8fb583",
+      "revId": "d8b5957cb7383d6f92038489e752707ea8e0ab29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a970544_c2d2f949",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-02-04T19:33:26Z",
       "side": 1,
       "message": "For sbom to work, this file needs to exist. (Or we need to rewrite sbom to work on soong filesystem modules) Could you generate it in `android_device_product_out.go`?",
+      "revId": "d8b5957cb7383d6f92038489e752707ea8e0ab29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5521031d_6d45a0b6",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-05T22:41:41Z",
+      "side": 1,
+      "message": "I have implemented this in https://android-review.git.corp.google.com/c/platform/build/soong/+/3473696/4",
+      "parentUuid": "4a970544_c2d2f949",
       "revId": "d8b5957cb7383d6f92038489e752707ea8e0ab29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
