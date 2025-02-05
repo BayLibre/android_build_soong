@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1f74f9_8dcc56c5",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-05T00:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eba33b4_364345a2",
+      "revId": "0fa66a9e6132b5fdba8c7e2f17a28d018be2a93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab9dcb77_5cc65a38",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-02-04T23:29:58Z",
       "side": 1,
       "message": "`FileListFile` does not depend on the partition\u0027s installed files, this will not work.",
+      "range": {
+        "startLine": 239,
+        "startChar": 67,
+        "endLine": 239,
+        "endChar": 79
+      },
+      "revId": "0fa66a9e6132b5fdba8c7e2f17a28d018be2a93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e2b518b_bf68a7bd",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-05T00:04:48Z",
+      "side": 1,
+      "message": "Thanks for pointing out this error. I have uploaded a new patchset that depends on the actual installed files, and not just the list.",
+      "parentUuid": "ab9dcb77_5cc65a38",
       "range": {
         "startLine": 239,
         "startChar": 67,
