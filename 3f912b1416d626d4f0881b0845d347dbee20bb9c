@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a638331_9954538e",
+        "filename": "cc/test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1733763
+      },
+      "writtenOn": "2025-02-05T23:27:26Z",
+      "side": 1,
+      "message": "Per offline discussion, changed to use a depset here and use .ToList() when iterating.",
+      "range": {
+        "startLine": 442,
+        "startChar": 3,
+        "endLine": 442,
+        "endChar": 99
+      },
+      "revId": "3f912b1416d626d4f0881b0845d347dbee20bb9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
