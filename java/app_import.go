@@ -772,6 +772,14 @@ type AndroidTestImport struct {
 func (a *AndroidTestImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.generateAndroidBuildActions(ctx)
 
+	moduleInfoJSON := ctx.ModuleInfoJSON()
+	moduleInfoJSON.Class = []string{"APPS"}
+	moduleInfoJSON.CompatibilitySuites = []string{"null-suite"}
+	if len(a.testProperties.Test_suites) > 0 {
+		moduleInfoJSON.CompatibilitySuites = a.testProperties.Test_suites
+	}
+	moduleInfoJSON.SystemSharedLibs = []string{"none"}
+	moduleInfoJSON.Tags = []string{"tests"}
 	a.data = android.PathsForModuleSrc(ctx, a.testProperties.Data)
 }
 

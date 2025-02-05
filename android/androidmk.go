@@ -1179,8 +1179,9 @@ func translateAndroidMkEntriesModule(ctx SingletonContext, w io.Writer, moduleIn
 
 		if providesModuleInfoJSON && !entries.disabled() {
 			// append only the name matching moduleInfoJSON entry
+			// for name-not-match case, only append android_test_import module type for now.
 			for _, m := range moduleInfoJSON {
-				if m.RegisterNameOverride == entries.OverrideName && m.SubName == entries.SubName {
+				if (m.RegisterNameOverride == entries.OverrideName && m.SubName == entries.SubName) || ctx.ModuleType(mod) == "android_test_import" {
 					*moduleInfoJSONs = append(*moduleInfoJSONs, m)
 				}
 			}
