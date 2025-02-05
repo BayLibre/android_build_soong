@@ -319,7 +319,7 @@ func SdkSpecFromWithConfig(config Config, str string) SdkSpec {
 			return SdkSpec{SdkInvalid, NoneApiLevel, str}
 		}
 
-		apiLevel, err := ApiLevelFromUserWithConfig(config, versionString)
+		apiLevel, err := ApiLevelFromUserWithConfigPanic(config, versionString)
 		if err != nil {
 			return SdkSpec{SdkInvalid, NewInvalidApiLevel(versionString), str}
 		}

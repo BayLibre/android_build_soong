@@ -1909,6 +1909,10 @@ type CommonModuleInfo struct {
 	SkipInstall                      bool
 	IsStubsModule                    bool
 	Host                             bool
+	MinSdkVersionSupported           ApiLevel
+	MinApiForArch                    *ApiLevel
+	ApexModule                       bool
+	ModuleWithMinSdkVersionCheck     bool
 }
 
 var CommonModuleInfoKey = blueprint.NewProvider[CommonModuleInfo]()
@@ -1916,6 +1920,10 @@ var CommonModuleInfoKey = blueprint.NewProvider[CommonModuleInfo]()
 type PrebuiltModuleInfo struct {
 	SourceExists bool
 	UsePrebuilt  bool
+}
+
+type PrebuiltModuleProviderData struct {
+	// Empty for now
 }
 
 var PrebuiltModuleInfoProvider = blueprint.NewProvider[PrebuiltModuleInfo]()
@@ -2265,7 +2273,22 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		commonData.CanHaveApexVariants = am.CanHaveApexVariants()
 		commonData.NotAvailableForPlatform = am.NotAvailableForPlatform()
 		commonData.NotInPlatform = am.NotInPlatform()
+		commonData.MinSdkVersionSupported = am.MinSdkVersionSupported(ctx)
+		commonData.ApexModule = true
+		if ma, ok := m.module.(interface {
+			MinApiForArch(EarlyModuleContext, ArchType) ApiLevel
+		}); ok {
+			api := ma.MinApiForArch(ctx, m.Target().Arch.ArchType)
+			commonData.MinApiForArch = &api
+		}
+	} else {
+		commonData.MinSdkVersionSupported = NoneApiLevel
 	}
+
+	if _, ok := m.module.(ModuleWithMinSdkVersionCheck); ok {
+		commonData.ModuleWithMinSdkVersionCheck = true
+	}
+
 	if st, ok := m.module.(StubsAvailableModule); ok {
 		commonData.IsStubsModule = st.IsStubsModule()
 	}

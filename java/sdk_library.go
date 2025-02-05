@@ -2122,13 +2122,6 @@ func (module *SdkLibraryImport) OutgoingDepIsInSameApex(depTag blueprint.Depende
 }
 
 // Implements android.ApexModule
-func (module *SdkLibraryImport) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
-	sdkVersion android.ApiLevel) error {
-	// we don't check prebuilt modules for sdk_version
-	return nil
-}
-
-// Implements android.ApexModule
 func (module *SdkLibraryImport) UniqueApexVariations() bool {
 	return module.uniqueApexVariations()
 }
