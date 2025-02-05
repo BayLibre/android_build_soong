@@ -22,6 +22,30 @@
       },
       "revId": "5910b2a928e16e61b5823939ab7c2bb86ed22d96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "442c06c5_38096d7f",
+        "filename": "cc/strip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-05T23:37:48Z",
+      "side": 1,
+      "message": "Thanks for pointing out this discrepancy Martin. I have created https://r.android.com/3479650 to fix this.",
+      "parentUuid": "f3fa82d7_8b867a2b",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "5910b2a928e16e61b5823939ab7c2bb86ed22d96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
