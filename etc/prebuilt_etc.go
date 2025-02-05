@@ -499,6 +499,11 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		ip.addInstallRules(ctx)
 	}
 
+	moduleInfoJSON := ctx.ModuleInfoJSON()
+	moduleInfoJSON.Class = []string{"ETC"}
+	moduleInfoJSON.SystemSharedLibs = []string{"none"}
+	moduleInfoJSON.Tags = []string{"optional"}
+
 	ctx.SetOutputFiles(p.outputFilePaths.Paths(), "")
 }
 
