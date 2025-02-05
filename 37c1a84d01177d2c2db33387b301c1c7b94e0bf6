@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe5e4c8a_3dea5d31",
+        "filename": "filesystem/android_device_product_out.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-05T23:44:05Z",
+      "side": 1,
+      "message": "You don\u0027t nee this if, `copyFilesToProductOutForSoongOnly` is only called under this condition.",
+      "revId": "37c1a84d01177d2c2db33387b301c1c7b94e0bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
