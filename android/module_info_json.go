@@ -127,4 +127,12 @@ func (m *ModuleInfoJSON) GobDecode(data []byte) error {
 	return gobtools.CustomGobDecode[combinedModuleInfoJSON](data, m)
 }
 
+func (m *ModuleInfoJSON) GetInstalled() []string {
+	return m.core.Installed
+}
+
+func (m *ModuleInfoJSON) GetClass() []string {
+	return m.Class
+}
+
 var ModuleInfoJSONProvider = blueprint.NewProvider[*ModuleInfoJSON]()
