@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "85757e63_de6d5317",
+        "filename": "cc/test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1733763
+      },
+      "writtenOn": "2025-02-05T17:37:59Z",
+      "side": 1,
+      "message": "Changed to use a set to collect the dependencies to dedupe.\nPing-ed offline about the depset",
+      "parentUuid": "ce47385a_bf60b968",
+      "revId": "0d02dfce51ab86280408ccb5409606413217e93e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "17f2bc26_ad341881",
         "filename": "tradefed/autogen.go",
         "patchSetId": 6
