@@ -415,10 +415,6 @@ func (b *BootclasspathFragmentModule) OutgoingDepIsInSameApex(tag blueprint.Depe
 	panic(fmt.Errorf("boot_image module %q should not have a dependency tag %s", b, android.PrettyPrintTag(tag)))
 }
 
-func (b *BootclasspathFragmentModule) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion android.ApiLevel) error {
-	return nil
-}
-
 // ComponentDepsMutator adds dependencies onto modules before any prebuilt modules without a
 // corresponding source module are renamed. This means that adding a dependency using a name without
 // a prebuilt_ prefix will always resolve to a source module and when using a name with that prefix
