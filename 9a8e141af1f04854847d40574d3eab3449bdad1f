@@ -81,6 +81,30 @@
       },
       "revId": "9a8e141af1f04854847d40574d3eab3449bdad1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5be71b1_49b2a651",
+        "filename": "android/compliance_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-06T00:01:23Z",
+      "side": 1,
+      "message": "Oh you are right, I thought that the conditional in L330 is the other way around.",
+      "parentUuid": "53999326_171d1c43",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 18
+      },
+      "revId": "9a8e141af1f04854847d40574d3eab3449bdad1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
