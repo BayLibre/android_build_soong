@@ -1894,7 +1894,8 @@ type CommonModuleInfo struct {
 	SkipAndroidMkProcessing bool
 	BaseModuleName          string
 	CanHaveApexVariants     bool
-	MinSdkVersion           string
+	MinSdkVersion           *ApiLevel
+	MinSdkVersionStr        *string
 	SdkVersion              string
 	NotAvailableForPlatform bool
 	// There some subtle differences between this one and the one above.
@@ -2238,11 +2239,10 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		MinSdkVersion(ctx EarlyModuleContext) ApiLevel
 	}); ok {
 		ver := mm.MinSdkVersion(ctx)
-		if !ver.IsNone() {
-			commonData.MinSdkVersion = ver.String()
-		}
+		commonData.MinSdkVersion = &ver
 	} else if mm, ok := m.module.(interface{ MinSdkVersion() string }); ok {
-		commonData.MinSdkVersion = mm.MinSdkVersion()
+		ver := mm.MinSdkVersion()
+		commonData.MinSdkVersionStr = &ver
 	}
 
 	if mm, ok := m.module.(interface {
