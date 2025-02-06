@@ -1110,3 +1110,14 @@ func TestVintfFragmentModulesChecksPartition(t *testing.T) {
 			"Module .+ and Vintf_fragment .+ are installed to different partitions.")).
 		RunTestWithBp(t, bp)
 }
+
+func TestInvalidModuleName(t *testing.T) {
+	bp := `
+		deps {
+			name: "fo o",
+		}
+	`
+	prepareForModuleTests.
+		ExtendWithErrorHandler(FixtureExpectsAtLeastOneErrorMatchingPattern(`should use a valid name`)).
+		RunTestWithBp(t, bp)
+}
