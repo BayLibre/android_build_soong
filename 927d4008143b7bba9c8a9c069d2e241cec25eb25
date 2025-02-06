@@ -16,6 +16,23 @@
       "message": "@joeo@google.com when you have a moment, PTAL as wear API/flag finalization requires this to proceed.",
       "revId": "927d4008143b7bba9c8a9c069d2e241cec25eb25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e06d29fb_f29ed8a8",
+        "filename": "aconfig/all_aconfig_declarations_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2025-02-06T22:43:08Z",
+      "side": 1,
+      "message": "Can this be the regular dist property that\u0027s on [android.ModuleBase](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/android/module.go;l\u003d842)?",
+      "revId": "927d4008143b7bba9c8a9c069d2e241cec25eb25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
