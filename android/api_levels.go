@@ -252,6 +252,9 @@ var NoneApiLevel = ApiLevel{
 	isPreview: true,
 }
 
+// A special ApiLevel that matches all the valid ApiLevels
+var AllApiLevel = ApiLevel{value: "all"}
+
 // Sentinel ApiLevel to validate that an apiLevel is either an int or a recognized codename.
 var InvalidApiLevel = NewInvalidApiLevel("invalid")
 
