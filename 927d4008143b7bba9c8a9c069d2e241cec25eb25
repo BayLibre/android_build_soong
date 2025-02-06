@@ -33,6 +33,24 @@
       "message": "Can this be the regular dist property that\u0027s on [android.ModuleBase](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/android/module.go;l\u003d842)?",
       "revId": "927d4008143b7bba9c8a9c069d2e241cec25eb25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3851449f_e59df346",
+        "filename": "aconfig/all_aconfig_declarations_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-06T23:14:47Z",
+      "side": 1,
+      "message": "IIUC using the dist property in `android.ModuleBase` requires the module to call `ctx.SetOutputFile`, so that the module can specify the dist goal and target using the output file tag. However given that we deliberately want to prevent this module from setting `SetOutputFile` (so that this module cannot be accidentially depended by other modules), utilizing the regular dist property is a bit trickier for this module.",
+      "parentUuid": "e06d29fb_f29ed8a8",
+      "revId": "927d4008143b7bba9c8a9c069d2e241cec25eb25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
