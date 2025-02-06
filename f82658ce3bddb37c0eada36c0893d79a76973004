@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb91584_60b8fa7f",
+        "filename": "android/module_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-06T23:16:35Z",
+      "side": 1,
+      "message": "Use `FixtureExpectsOneErrorPattern` instead of the `AtLeast` verison.",
+      "range": {
+        "startLine": 1121,
+        "startChar": 0,
+        "endLine": 1121,
+        "endChar": 1
+      },
+      "revId": "f82658ce3bddb37c0eada36c0893d79a76973004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
