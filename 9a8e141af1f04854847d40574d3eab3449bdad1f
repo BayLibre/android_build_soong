@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "353d310e_ec220213",
+        "filename": "android/compliance_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-02-06T00:00:04Z",
+      "side": 1,
+      "message": "No need to optimize it, these rules will be changed to logic that pulls metadata from soong later.",
+      "parentUuid": "3eaa2d67_7bd8b592",
+      "revId": "9a8e141af1f04854847d40574d3eab3449bdad1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10c394de_a38553e5",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-02-05T23:55:20Z",
       "side": 1,
       "message": "wouldn\u0027t this fail with no known rule to build `makeMetadataCsv` and `makeModulesCsv` error in Soong only build?",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 18
+      },
+      "revId": "9a8e141af1f04854847d40574d3eab3449bdad1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53999326_171d1c43",
+        "filename": "android/compliance_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-02-06T00:00:04Z",
+      "side": 1,
+      "message": "line 330-338 is added to make sure they are also built in soong-only build.",
+      "parentUuid": "10c394de_a38553e5",
       "range": {
         "startLine": 347,
         "startChar": 0,
