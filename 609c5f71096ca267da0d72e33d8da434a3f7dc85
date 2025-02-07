@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eee3954_c429a813",
+        "filename": "java/genrule_combiner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-07T19:09:57Z",
+      "side": 1,
+      "message": "What happens if you remove `Far` here and pass `nil` for variations?  I\u0027d expect this to already be the common variation, and `Far` might make the device variant take a host module.",
+      "revId": "609c5f71096ca267da0d72e33d8da434a3f7dc85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
