@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3cedc6e3_b07359ae",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-07T23:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cefad2b_ed1821fc",
+      "range": {
+        "startLine": 137,
+        "startChar": 12,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "a8259fc603f3540e9c978e54d94fd17a9f81abd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3fbdc4fa_a754604a",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -77,6 +101,24 @@
       "writtenOn": "2025-02-07T23:26:56Z",
       "side": 1,
       "message": "I\u0027d recommend just accepting an `SdkKind` as an argument and returning its matching `apiScope`.",
+      "revId": "a8259fc603f3540e9c978e54d94fd17a9f81abd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6da009_1e59aabb",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-07T23:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7083f26_fbf2f637",
       "revId": "a8259fc603f3540e9c978e54d94fd17a9f81abd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

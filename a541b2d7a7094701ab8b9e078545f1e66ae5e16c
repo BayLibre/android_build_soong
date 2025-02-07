@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91dd79f5_0d4b20c0",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-07T23:51:25Z",
+      "side": 1,
+      "message": "@colefaust@google.com WDYT about this change? I believe this is needed to support [this](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/tasks/cts.mk;l\u003d122;drc\u003ddf6336b969dd6698085b31d528b8b19f1899f997) use case",
+      "revId": "a541b2d7a7094701ab8b9e078545f1e66ae5e16c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
