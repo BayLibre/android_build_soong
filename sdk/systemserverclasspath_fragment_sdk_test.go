@@ -91,7 +91,6 @@ func testSnapshotWithSystemServerClasspathFragment(t *testing.T, sdk string, tar
 }
 
 func TestSnapshotWithPartialSystemServerClasspathFragment(t *testing.T) {
-	t.Parallel()
 	commonSdk := `
 		apex {
 			name: "myapex",
@@ -186,7 +185,6 @@ prebuilt_systemserverclasspath_fragment {
 }
 
 func TestSnapshotWithEmptySystemServerClasspathFragment(t *testing.T) {
-	t.Parallel()
 	commonSdk := `
 		apex {
 			name: "myapex",
@@ -233,7 +231,6 @@ func TestSnapshotWithEmptySystemServerClasspathFragment(t *testing.T) {
 }
 
 func TestSnapshotWithSystemServerClasspathFragment(t *testing.T) {
-	t.Parallel()
 
 	commonSdk := `
 sdk {
@@ -301,7 +298,6 @@ prebuilt_systemserverclasspath_fragment {
 `
 
 	t.Run("target-s", func(t *testing.T) {
-		t.Parallel()
 		testSnapshotWithSystemServerClasspathFragment(t, commonSdk, "S", `
 // This is auto-generated. DO NOT EDIT.
 
@@ -323,7 +319,6 @@ java_sdk_library_import {
 	})
 
 	t.Run("target-t", func(t *testing.T) {
-		t.Parallel()
 		testSnapshotWithSystemServerClasspathFragment(t, commonSdk, "Tiramisu", `
 // This is auto-generated. DO NOT EDIT.
 
@@ -366,7 +361,6 @@ prebuilt_systemserverclasspath_fragment {
 	})
 
 	t.Run("target-u", func(t *testing.T) {
-		t.Parallel()
 		testSnapshotWithSystemServerClasspathFragment(t, commonSdk, "UpsideDownCake", `
 // This is auto-generated. DO NOT EDIT.
 
@@ -415,12 +409,10 @@ prebuilt_systemserverclasspath_fragment {
 	})
 
 	t.Run("added-directly", func(t *testing.T) {
-		t.Parallel()
 		testSnapshotWithSystemServerClasspathFragment(t, commonSdk, `latest`, expectedLatestSnapshot)
 	})
 
 	t.Run("added-via-apex", func(t *testing.T) {
-		t.Parallel()
 		testSnapshotWithSystemServerClasspathFragment(t, `
 			sdk {
 				name: "mysdk",

@@ -116,7 +116,6 @@ func init() {
 }
 
 func TestBasicTrait_WithoutTrait(t *testing.T) {
-	t.Parallel()
 	result := android.GroupFixturePreparers(
 		prepareForSdkTestWithJava,
 		android.FixtureWithRootAndroidBp(`
@@ -155,7 +154,6 @@ java_import {
 }
 
 func TestBasicTrait_MultipleTraits(t *testing.T) {
-	t.Parallel()
 	result := android.GroupFixturePreparers(
 		prepareForSdkTestWithJava,
 		android.FixtureWithRootAndroidBp(`
@@ -264,7 +262,6 @@ java_import {
 }
 
 func TestTraitUnsupportedByMemberType(t *testing.T) {
-	t.Parallel()
 	android.GroupFixturePreparers(
 		prepareForSdkTestWithJava,
 		android.FixtureWithRootAndroidBp(`

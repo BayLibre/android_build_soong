@@ -73,7 +73,6 @@ func checkPropertySetFixture(t *testing.T, val interface{}, hasTags bool) {
 }
 
 func TestAddPropertySimple(t *testing.T) {
-	t.Parallel()
 	set := newPropertySet()
 	for name, val := range map[string]interface{}{
 		"x":   "taxi",
@@ -92,17 +91,14 @@ func TestAddPropertySimple(t *testing.T) {
 }
 
 func TestAddPropertySubset(t *testing.T) {
-	t.Parallel()
 	getFixtureMap := map[string]func() interface{}{
 		"property set":    propertySetFixture,
 		"property struct": propertyStructFixture,
 	}
 
 	t.Run("add new subset", func(t *testing.T) {
-		t.Parallel()
 		for name, getFixture := range getFixtureMap {
 			t.Run(name, func(t *testing.T) {
-				t.Parallel()
 				set := propertySetFixture().(*bpPropertySet)
 				set.AddProperty("new", getFixture())
 				checkPropertySetFixture(t, set, true)
@@ -112,10 +108,8 @@ func TestAddPropertySubset(t *testing.T) {
 	})
 
 	t.Run("merge existing subset", func(t *testing.T) {
-		t.Parallel()
 		for name, getFixture := range getFixtureMap {
 			t.Run(name, func(t *testing.T) {
-				t.Parallel()
 				set := newPropertySet()
 				subset := set.AddPropertySet("sub")
 				subset.AddProperty("flag", false)
@@ -129,14 +123,12 @@ func TestAddPropertySubset(t *testing.T) {
 	})
 
 	t.Run("add conflicting subset", func(t *testing.T) {
-		t.Parallel()
 		set := propertySetFixture().(*bpPropertySet)
 		android.AssertPanicMessageContains(t, "adding x again should panic", `Property "x" already exists in property set`,
 			func() { set.AddProperty("x", propertySetFixture()) })
 	})
 
 	t.Run("add non-pointer struct", func(t *testing.T) {
-		t.Parallel()
 		set := propertySetFixture().(*bpPropertySet)
 		str := propertyStructFixture().(*propertyStruct)
 		android.AssertPanicMessageContains(t, "adding a non-pointer struct should panic", "Value is a struct, not a pointer to one:",
@@ -145,7 +137,6 @@ func TestAddPropertySubset(t *testing.T) {
 }
 
 func TestAddPropertySetNew(t *testing.T) {
-	t.Parallel()
 	set := newPropertySet()
 	subset := set.AddPropertySet("sub")
 	subset.AddProperty("new", "d^^b")
@@ -153,7 +144,6 @@ func TestAddPropertySetNew(t *testing.T) {
 }
 
 func TestAddPropertySetExisting(t *testing.T) {
-	t.Parallel()
 	set := propertySetFixture().(*bpPropertySet)
 	subset := set.AddPropertySet("sub")
 	subset.AddProperty("new", "d^^b")
@@ -186,7 +176,6 @@ func (t removeFredTransformation) transformPropertySetAfterContents(name string,
 }
 
 func TestTransformRemoveProperty(t *testing.T) {
-	t.Parallel()
 	set := newPropertySet()
 	set.AddProperty("name", "name")
 	set.AddProperty("fred", "12")
@@ -199,7 +188,6 @@ func TestTransformRemoveProperty(t *testing.T) {
 }
 
 func TestTransformRemovePropertySet(t *testing.T) {
-	t.Parallel()
 	set := newPropertySet()
 	set.AddProperty("name", "name")
 	set.AddPropertySet("fred")
