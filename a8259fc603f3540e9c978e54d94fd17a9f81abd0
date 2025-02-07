@@ -88,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c17964_aafd69f7",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-07T23:52:37Z",
+      "side": 1,
+      "message": "Yes. I\u0027ve added this support in [this](https://r.android.com/3476313) change.",
+      "parentUuid": "86127eea_21bf1171",
+      "range": {
+        "startLine": 1291,
+        "startChar": 2,
+        "endLine": 1291,
+        "endChar": 45
+      },
+      "revId": "a8259fc603f3540e9c978e54d94fd17a9f81abd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7083f26_fbf2f637",
