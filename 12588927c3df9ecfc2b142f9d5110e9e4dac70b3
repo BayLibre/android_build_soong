@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf067dea_8017c8ed",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-07T01:06:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3a517b5_5370f405",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "12588927c3df9ecfc2b142f9d5110e9e4dac70b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "919e8355_c3409b3e",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-07T00:49:35Z",
       "side": 1,
       "message": "nit: replace with `maps.Copy`",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "12588927c3df9ecfc2b142f9d5110e9e4dac70b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca16ef4e_6e058b92",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-07T01:06:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "919e8355_c3409b3e",
       "range": {
         "startLine": 179,
         "startChar": 1,

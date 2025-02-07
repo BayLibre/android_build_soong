@@ -22,6 +22,30 @@
       },
       "revId": "d2a9ef479389a66d3b4061cb3bbf5e7e53b0714a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ae76540_a00baa29",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-07T01:06:23Z",
+      "side": 1,
+      "message": "Currently these fragments are passed as modules into a pretty long chain of functions, any of which can read any provider from the fragment.  A provider can\u0027t hold an `android.Module`, so moving this to a provider would require gathering and reexporting all the relevant providers from the fragments.  That seemed too big and orthogonal to what I was trying to accomplish in this CL (paving the way to removing the last top down mutator), but may be reasonable as a future cleanup.",
+      "parentUuid": "3c090763_36fb6d6d",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 77
+      },
+      "revId": "d2a9ef479389a66d3b4061cb3bbf5e7e53b0714a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
