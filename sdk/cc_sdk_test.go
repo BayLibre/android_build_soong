@@ -58,7 +58,6 @@ func testSdkWithCc(t *testing.T, bp string) *android.TestResult {
 // Contains tests for SDK members provided by the cc package.
 
 func TestSingleDeviceOsAssumption(t *testing.T) {
-	t.Parallel()
 	// Mock a module with DeviceSupported() == true.
 	s := &sdk{}
 	android.InitAndroidArchModule(s, android.DeviceSupported, android.MultilibCommon)
@@ -73,7 +72,6 @@ func TestSingleDeviceOsAssumption(t *testing.T) {
 }
 
 func TestSdkIsCompileMultilibBoth(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -104,7 +102,6 @@ func TestSdkIsCompileMultilibBoth(t *testing.T) {
 }
 
 func TestSdkCompileMultilibOverride(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -164,7 +161,6 @@ cc_prebuilt_library_shared {
 
 // Make sure the sdk can use host specific cc libraries static/shared and both.
 func TestHostSdkWithCc(t *testing.T) {
-	t.Parallel()
 	testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -188,7 +184,6 @@ func TestHostSdkWithCc(t *testing.T) {
 
 // Make sure the sdk can use cc libraries static/shared and both.
 func TestSdkWithCc(t *testing.T) {
-	t.Parallel()
 	testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -219,7 +214,6 @@ func TestSdkWithCc(t *testing.T) {
 }
 
 func TestSnapshotWithObject(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -274,7 +268,6 @@ cc_prebuilt_object {
 }
 
 func TestSnapshotWithCcDuplicateHeaders(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -312,7 +305,6 @@ myinclude/Test.h -> include/myinclude/Test.h
 }
 
 func TestSnapshotWithCcExportGeneratedHeaders(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -401,7 +393,6 @@ myinclude/Test.h -> include/myinclude/Test.h
 // handling is tested with the sanitize clauses (but note there's a lot of
 // built-in logic in sanitize.go that can affect those flags).
 func TestSnapshotWithCcSharedLibraryCommonProperties(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -484,7 +475,6 @@ arm64/include/Arm64Test.h -> arm64/include/arm64/include/Arm64Test.h
 }
 
 func TestSnapshotWithCcBinary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		module_exports {
 			name: "mymodule_exports",
@@ -533,7 +523,6 @@ cc_prebuilt_binary {
 }
 
 func TestMultipleHostOsTypesSnapshotWithCcBinary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		module_exports {
 			name: "myexports",
@@ -615,7 +604,6 @@ cc_prebuilt_binary {
 }
 
 func TestSnapshotWithSingleHostOsType(t *testing.T) {
-	t.Parallel()
 	result := android.GroupFixturePreparers(
 		prepareForSdkTest,
 		ccTestFs.AddToFixture(),
@@ -733,7 +721,6 @@ cc_prebuilt_library_shared {
 // Test that we support the necessary flags for the linker binary, which is
 // special in several ways.
 func TestSnapshotWithCcStaticNocrtBinary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		module_exports {
 			name: "mymodule_exports",
@@ -798,7 +785,6 @@ cc_prebuilt_binary {
 }
 
 func TestSnapshotWithCcSharedLibrary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -870,7 +856,6 @@ myinclude/Test.h -> include/myinclude/Test.h
 }
 
 func TestSnapshotWithCcSharedLibrarySharedLibs(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -1020,7 +1005,6 @@ cc_prebuilt_library_shared {
 }
 
 func TestHostSnapshotWithCcSharedLibrary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -1101,7 +1085,6 @@ myinclude/Test.h -> include/myinclude/Test.h
 }
 
 func TestMultipleHostOsTypesSnapshotWithCcSharedLibrary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -1185,7 +1168,6 @@ cc_prebuilt_library_shared {
 }
 
 func TestSnapshotWithCcStaticLibrary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		module_exports {
 			name: "myexports",
@@ -1250,7 +1232,6 @@ myinclude/Test.h -> include/myinclude/Test.h
 }
 
 func TestHostSnapshotWithCcStaticLibrary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		module_exports {
 			name: "myexports",
@@ -1326,7 +1307,6 @@ myinclude/Test.h -> include/myinclude/Test.h
 }
 
 func TestSnapshotWithCcLibrary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		module_exports {
 			name: "myexports",
@@ -1396,7 +1376,6 @@ myinclude/Test.h -> include/myinclude/Test.h
 }
 
 func TestSnapshotSameLibraryWithNativeLibsAndNativeSharedLib(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		module_exports {
 			host_supported: true,
@@ -1498,7 +1477,6 @@ cc_prebuilt_library {
 }
 
 func TestSnapshotSameLibraryWithAndroidNativeLibsAndHostNativeSharedLib(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		module_exports {
 			host_supported: true,
@@ -1600,7 +1578,6 @@ cc_prebuilt_library {
 }
 
 func TestSnapshotSameLibraryWithNativeStaticLibsAndNativeSharedLib(t *testing.T) {
-	t.Parallel()
 	testSdkError(t, "Incompatible member types", `
 		module_exports {
 			host_supported: true,
@@ -1632,7 +1609,6 @@ func TestSnapshotSameLibraryWithNativeStaticLibsAndNativeSharedLib(t *testing.T)
 }
 
 func TestHostSnapshotWithMultiLib64(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		module_exports {
 			name: "myexports",
@@ -1706,7 +1682,6 @@ myinclude/Test.h -> include/myinclude/Test.h
 }
 
 func TestSnapshotWithCcHeadersLibrary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -1746,7 +1721,6 @@ myinclude/Test.h -> include/myinclude/Test.h
 }
 
 func TestSnapshotWithCcHeadersLibraryAndNativeBridgeSupport(t *testing.T) {
-	t.Parallel()
 	result := android.GroupFixturePreparers(
 		cc.PrepareForTestWithCcDefaultModules,
 		PrepareForTestWithSdkBuildComponents,
@@ -1804,7 +1778,6 @@ myinclude/Test.h -> include/myinclude/Test.h
 // module that has different output files for a native bridge target requests the native bridge
 // variants are copied into the sdk snapshot that it reports an error.
 func TestSnapshotWithCcHeadersLibrary_DetectsNativeBridgeSpecificProperties(t *testing.T) {
-	t.Parallel()
 	android.GroupFixturePreparers(
 		cc.PrepareForTestWithCcDefaultModules,
 		PrepareForTestWithSdkBuildComponents,
@@ -1841,7 +1814,6 @@ func TestSnapshotWithCcHeadersLibrary_DetectsNativeBridgeSpecificProperties(t *t
 }
 
 func TestSnapshotWithCcHeadersLibraryAndImageVariants(t *testing.T) {
-	t.Parallel()
 	testImageVariant := func(t *testing.T, property, trait string) {
 		result := android.GroupFixturePreparers(
 			cc.PrepareForTestWithCcDefaultModules,
@@ -1905,7 +1877,6 @@ myinclude/Test.h -> include/myinclude/Test.h
 }
 
 func TestHostSnapshotWithCcHeadersLibrary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -1962,7 +1933,6 @@ myinclude/Test.h -> include/myinclude/Test.h
 }
 
 func TestDeviceAndHostSnapshotWithCcHeadersLibrary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -2032,7 +2002,6 @@ myinclude-host/HostTest.h -> linux_glibc/include/myinclude-host/HostTest.h
 }
 
 func TestSystemSharedLibPropagation(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -2193,7 +2162,6 @@ cc_prebuilt_library_shared {
 }
 
 func TestStubsLibrary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -2255,7 +2223,6 @@ cc_prebuilt_library_shared {
 }
 
 func TestDeviceAndHostSnapshotWithStubsLibrary(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -2332,7 +2299,6 @@ cc_prebuilt_library_shared {
 }
 
 func TestUniqueHostSoname(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
@@ -2398,7 +2364,6 @@ cc_prebuilt_library_shared {
 }
 
 func TestNoSanitizerMembers(t *testing.T) {
-	t.Parallel()
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
