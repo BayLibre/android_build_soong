@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86127eea_21bf1171",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-07T23:50:36Z",
+      "side": 1,
+      "message": "This is wrapped in `MakeVars`. Will this file get dist\u0027d in soong-only builds?",
+      "range": {
+        "startLine": 1291,
+        "startChar": 2,
+        "endLine": 1291,
+        "endChar": 45
+      },
+      "revId": "a8259fc603f3540e9c978e54d94fd17a9f81abd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7083f26_fbf2f637",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
