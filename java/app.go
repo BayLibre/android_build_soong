@@ -1334,10 +1334,22 @@ func (a *AndroidApp) getCertString(ctx android.BaseModuleContext) string {
 }
 
 func (a *AndroidApp) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) bool {
+	return a.GetDepInSameApexInfo().DepIsInSameApexOut(tag)
+}
+
+func (m *AndroidApp) GetDepInSameApexInfo() android.DepInSameApexChecker {
+	return AppDepInSameApexInfo{}
+}
+
+type AppDepInSameApexInfo struct {
+	android.BaseDepInSameApexInfo
+}
+
+func (m AppDepInSameApexInfo) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
 	if IsJniDepTag(tag) {
 		return true
 	}
-	return a.Library.OutgoingDepIsInSameApex(tag)
+	return depIsInSameApex(tag)
 }
 
 func (a *AndroidApp) Privileged() bool {

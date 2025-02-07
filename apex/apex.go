@@ -1268,6 +1268,10 @@ func (a *apexBundle) IncomingDepIsInSameApex(tag blueprint.DependencyTag) bool {
 	return true
 }
 
+func (m apexBundle) GetDepInSameApexInfo() android.DepInSameApexChecker {
+	return android.BaseDepInSameApexInfo{}
+}
+
 func (a *apexBundle) Exportable() bool {
 	return true
 }

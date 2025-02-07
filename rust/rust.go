@@ -2097,11 +2097,33 @@ func (mod *Module) AlwaysRequiresPlatformApexVariant() bool {
 
 // Implements android.ApexModule
 func (mod *Module) OutgoingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
+	return mod.GetDepInSameApexInfo().DepIsInSameApexOut(depTag)
+}
+
+func (mod *Module) IncomingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
+	return mod.GetDepInSameApexInfo().DepIsInSameApexIn(depTag)
+}
+
+type RustDepInSameApexInfo struct {
+	Static           bool
+	HasStubsVariants bool
+	ApexExclude      bool
+}
+
+func (mod *Module) GetDepInSameApexInfo() android.DepInSameApexChecker {
+	return RustDepInSameApexInfo{
+		Static:           mod.Static(),
+		HasStubsVariants: mod.HasStubsVariants(),
+		ApexExclude:      mod.ApexExclude(),
+	}
+}
+
+func (r RustDepInSameApexInfo) DepIsInSameApexOut(depTag blueprint.DependencyTag) bool {
 	if depTag == procMacroDepTag || depTag == customBindgenDepTag {
 		return false
 	}
 
-	if mod.Static() && cc.IsSharedDepTag(depTag) {
+	if r.Static && cc.IsSharedDepTag(depTag) {
 		// shared_lib dependency from a static lib is considered as crossing
 		// the APEX boundary because the dependency doesn't actually is
 		// linked; the dependency is used only during the compilation phase.
@@ -2118,21 +2140,21 @@ func (mod *Module) OutgoingDepIsInSameApex(depTag blueprint.DependencyTag) bool 
 	}
 
 	// TODO(b/362509506): remove once all apex_exclude uses are switched to stubs.
-	if mod.ApexExclude() {
+	if r.ApexExclude {
 		return false
 	}
 
 	return true
 }
 
-func (mod *Module) IncomingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
+func (r RustDepInSameApexInfo) DepIsInSameApexIn(depTag blueprint.DependencyTag) bool {
 	// TODO(b/362509506): remove once all apex_exclude uses are switched to stubs.
-	if mod.ApexExclude() {
+	if r.ApexExclude {
 		return false
 	}
 
-	if mod.HasStubsVariants() {
-		if cc.IsSharedDepTag(depTag) && !cc.IsExplicitImplSharedDepTag(depTag) {
+	if r.HasStubsVariants {
+		if cc.IsSharedDepTag(depTag) {
 			// dynamic dep to a stubs lib crosses APEX boundary
 			return false
 		}
