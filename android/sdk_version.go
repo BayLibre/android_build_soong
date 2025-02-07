@@ -102,25 +102,60 @@ func ToSdkKind(s string) SdkKind {
 	return SdkInvalid
 }
 
+const (
+	publicDefaultLibraryName            = "android_stubs_current"
+	systemDefaultLibraryName            = "android_system_stubs_current"
+	testDefaultLibraryName              = "android_test_stubs_current"
+	testFrameworkCoreDefaultLibraryName = "android_test_frameworks_core_stubs_current"
+	coreDefaultLibraryName              = "core.current.stubs"
+	moduleLibDefaultLibraryName         = "android_module_lib_stubs_current"
+	systemServerDefaultLibraryName      = "android_system_server_stubs_current"
+)
+
 func (k SdkKind) DefaultJavaLibraryName() string {
 	switch k {
 	case SdkPublic:
-		return "android_stubs_current"
+		return publicDefaultLibraryName
 	case SdkSystem:
-		return "android_system_stubs_current"
+		return systemDefaultLibraryName
 	case SdkTest:
-		return "android_test_stubs_current"
+		return testDefaultLibraryName
 	case SdkTestFrameworksCore:
-		return "android_test_frameworks_core_stubs_current"
+		return testFrameworkCoreDefaultLibraryName
 	case SdkCore:
-		return "core.current.stubs"
+		return coreDefaultLibraryName
 	case SdkModule:
-		return "android_module_lib_stubs_current"
+		return moduleLibDefaultLibraryName
 	case SdkSystemServer:
-		return "android_system_server_stubs_current"
+		return systemServerDefaultLibraryName
 	default:
 		panic(fmt.Errorf("APIs of API surface %v cannot be provided by a single Soong module\n", k))
 	}
+}
+
+func JavaLibraryNameToSdkKind(name string) (SdkKind, bool) {
+	if name == publicDefaultLibraryName {
+		return SdkPublic, true
+	}
+	if name == systemDefaultLibraryName {
+		return SdkSystem, true
+	}
+	if name == testDefaultLibraryName {
+		return SdkTest, true
+	}
+	if name == testFrameworkCoreDefaultLibraryName {
+		return SdkTestFrameworksCore, true
+	}
+	if name == coreDefaultLibraryName {
+		return SdkCore, true
+	}
+	if name == moduleLibDefaultLibraryName {
+		return SdkModule, true
+	}
+	if name == systemServerDefaultLibraryName {
+		return SdkSystemServer, true
+	}
+	return SdkInvalid, false
 }
 
 func (k SdkKind) DefaultExportableJavaLibraryName() string {

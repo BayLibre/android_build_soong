@@ -316,6 +316,14 @@ func (scopes apiScopes) ConvertStubsLibraryExportableToEverything(name string) s
 	return name
 }
 
+func (scopes apiScopes) sdkKindToApiScopeMap() map[android.SdkKind]*apiScope {
+	ret := make(map[android.SdkKind]*apiScope)
+	for _, scope := range scopes {
+		ret[scope.kind] = scope
+	}
+	return ret
+}
+
 var (
 	scopeByName    = make(map[string]*apiScope)
 	allScopeNames  []string
