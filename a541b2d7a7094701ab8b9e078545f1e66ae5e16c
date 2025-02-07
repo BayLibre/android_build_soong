@@ -16,6 +16,24 @@
       "message": "@colefaust@google.com WDYT about this change? I believe this is needed to support [this](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/tasks/cts.mk;l\u003d122;drc\u003ddf6336b969dd6698085b31d528b8b19f1899f997) use case",
       "revId": "a541b2d7a7094701ab8b9e078545f1e66ae5e16c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f2a7ac_a1c52515",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-07T23:55:52Z",
+      "side": 1,
+      "message": "This is ok, though I might prefer just creating make variables in the `MakeVars()` function that point to the api file, and updating the make code to use those new variables.",
+      "parentUuid": "91dd79f5_0d4b20c0",
+      "revId": "a541b2d7a7094701ab8b9e078545f1e66ae5e16c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
