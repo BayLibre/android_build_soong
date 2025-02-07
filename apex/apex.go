@@ -1226,16 +1226,8 @@ const (
 var _ android.DepIsInSameApex = (*apexBundle)(nil)
 
 // Implements android.DepInInSameApex
-func (a *apexBundle) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) bool {
-	// direct deps of an APEX bundle are all part of the APEX bundle
-	// TODO(jiyong): shouldn't we look into the payload field of the dependencyTag?
-	return true
-}
-
-func (a *apexBundle) IncomingDepIsInSameApex(tag blueprint.DependencyTag) bool {
-	// direct deps of an APEX bundle are all part of the APEX bundle
-	// TODO(jiyong): shouldn't we look into the payload field of the dependencyTag?
-	return true
+func (m apexBundle) GetDepInSameApexChecker() android.DepInSameApexChecker {
+	return android.BaseDepInSameApexChecker{}
 }
 
 func (a *apexBundle) Exportable() bool {
