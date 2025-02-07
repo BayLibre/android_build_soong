@@ -52,6 +52,24 @@
       "parentUuid": "28f2a7ac_a1c52515",
       "revId": "a541b2d7a7094701ab8b9e078545f1e66ae5e16c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2955de96_ee8d8aec",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-07T23:59:33Z",
+      "side": 1,
+      "message": "Sure, this is fine.",
+      "parentUuid": "8310d9bf_34d186d4",
+      "revId": "a541b2d7a7094701ab8b9e078545f1e66ae5e16c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
