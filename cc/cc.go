@@ -4055,6 +4055,28 @@ var _ android.ApexModule = (*Module)(nil)
 
 // Implements android.ApexModule
 func (c *Module) OutgoingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
+	return c.GetDepInSameApexChecker().DepIsInSameApexOut(depTag)
+}
+
+func (c *Module) IncomingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
+	return c.GetDepInSameApexChecker().DepIsInSameApexIn(depTag)
+}
+
+func (c *Module) GetDepInSameApexChecker() android.DepInSameApexChecker {
+	return CcDepInSameApexChecker{
+		Static:           c.static(),
+		HasStubsVariants: c.HasStubsVariants(),
+		IsLlndk:          c.IsLlndk(),
+	}
+}
+
+type CcDepInSameApexChecker struct {
+	Static           bool
+	HasStubsVariants bool
+	IsLlndk          bool
+}
+
+func (c CcDepInSameApexChecker) DepIsInSameApexOut(depTag blueprint.DependencyTag) bool {
 	if depTag == StubImplDepTag {
 		// We don't track from an implementation library to its stubs.
 		return false
@@ -4067,7 +4089,7 @@ func (c *Module) OutgoingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
 	}
 
 	libDepTag, isLibDepTag := depTag.(libraryDependencyTag)
-	if isLibDepTag && c.static() && libDepTag.shared() {
+	if isLibDepTag && c.Static && libDepTag.shared() {
 		// shared_lib dependency from a static lib is considered as crossing
 		// the APEX boundary because the dependency doesn't actually is
 		// linked; the dependency is used only during the compilation phase.
@@ -4081,9 +4103,9 @@ func (c *Module) OutgoingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
 	return true
 }
 
-func (c *Module) IncomingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
-	if c.HasStubsVariants() {
-		if IsSharedDepTag(depTag) && !IsExplicitImplSharedDepTag(depTag) {
+func (c CcDepInSameApexChecker) DepIsInSameApexIn(depTag blueprint.DependencyTag) bool {
+	if c.HasStubsVariants {
+		if IsSharedDepTag(depTag) {
 			// dynamic dep to a stubs lib crosses APEX boundary
 			return false
 		}
@@ -4095,7 +4117,7 @@ func (c *Module) IncomingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
 			return false
 		}
 	}
-	if c.IsLlndk() {
+	if c.IsLlndk {
 		return false
 	}
 

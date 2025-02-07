@@ -629,6 +629,18 @@ func (a *AndroidAppImport) Privileged() bool {
 }
 
 func (a *AndroidAppImport) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) bool {
+	return a.GetDepInSameApexChecker().DepIsInSameApexOut(tag)
+}
+
+func (m *AndroidAppImport) GetDepInSameApexChecker() android.DepInSameApexChecker {
+	return AppImportDepInSameApexChecker{}
+}
+
+type AppImportDepInSameApexChecker struct {
+	android.BaseDepInSameApexChecker
+}
+
+func (m AppImportDepInSameApexChecker) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
 	// android_app_import might have extra dependencies via uses_libs property.
 	// Don't track the dependency as we don't automatically add those libraries
 	// to the classpath. It should be explicitly added to java_libs property of APEX

@@ -1329,7 +1329,7 @@ func (module *SdkLibrary) CheckMinSdkVersion(ctx android.ModuleContext) {
 func CheckMinSdkVersion(ctx android.ModuleContext, module *Library) {
 	android.CheckMinSdkVersion(ctx, module.MinSdkVersion(ctx), func(c android.BaseModuleContext, do android.PayloadDepsCallback) {
 		ctx.WalkDeps(func(child android.Module, parent android.Module) bool {
-			isExternal := !android.IsDepInSameApex(ctx, module, child)
+			isExternal := !android.IsDepInSameApexForBuildActions(ctx, module, child)
 			if am, ok := child.(android.ApexModule); ok {
 				if !do(ctx, parent, am, isExternal) {
 					return false
@@ -1700,13 +1700,25 @@ func (module *SdkLibrary) compareAgainstLatestApi(apiScope *apiScope) bool {
 
 // Implements android.ApexModule
 func (module *SdkLibrary) OutgoingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
-	if depTag == xmlPermissionsFileTag {
+	return module.GetDepInSameApexChecker().DepIsInSameApexOut(depTag)
+}
+
+func (m *SdkLibrary) GetDepInSameApexChecker() android.DepInSameApexChecker {
+	return SdkLibraryDepInSameApexChecker{}
+}
+
+type SdkLibraryDepInSameApexChecker struct {
+	android.BaseDepInSameApexChecker
+}
+
+func (m SdkLibraryDepInSameApexChecker) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
+	if tag == xmlPermissionsFileTag {
 		return true
 	}
-	if depTag == implLibraryTag {
+	if tag == implLibraryTag {
 		return true
 	}
-	return module.Library.OutgoingDepIsInSameApex(depTag)
+	return depIsInSameApex(tag)
 }
 
 // Implements android.ApexModule
@@ -2118,7 +2130,19 @@ var _ android.ApexModule = (*SdkLibraryImport)(nil)
 
 // Implements android.ApexModule
 func (module *SdkLibraryImport) OutgoingDepIsInSameApex(depTag blueprint.DependencyTag) bool {
-	if depTag == xmlPermissionsFileTag {
+	return module.GetDepInSameApexChecker().DepIsInSameApexOut(depTag)
+}
+
+func (m *SdkLibraryImport) GetDepInSameApexChecker() android.DepInSameApexChecker {
+	return SdkLibraryImportDepIsInSameApexChecker{}
+}
+
+type SdkLibraryImportDepIsInSameApexChecker struct {
+	android.BaseDepInSameApexChecker
+}
+
+func (m SdkLibraryImportDepIsInSameApexChecker) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
+	if tag == xmlPermissionsFileTag {
 		return true
 	}
 

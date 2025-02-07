@@ -398,6 +398,18 @@ func (i BootclasspathFragmentApexContentInfo) ProfileInstallPathInApex() string 
 }
 
 func (b *BootclasspathFragmentModule) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) bool {
+	return b.GetDepInSameApexChecker().DepIsInSameApexOut(tag)
+}
+
+func (m *BootclasspathFragmentModule) GetDepInSameApexChecker() android.DepInSameApexChecker {
+	return BootclasspathFragmentDepInSameApexChecker{}
+}
+
+type BootclasspathFragmentDepInSameApexChecker struct {
+	android.BaseDepInSameApexChecker
+}
+
+func (b BootclasspathFragmentDepInSameApexChecker) DepIsInSameApexOut(tag blueprint.DependencyTag) bool {
 	// If the module is a default module, do not check the tag
 	if tag == android.DefaultsDepTag {
 		return true
@@ -416,7 +428,7 @@ func (b *BootclasspathFragmentModule) OutgoingDepIsInSameApex(tag blueprint.Depe
 		return false
 
 	}
-	panic(fmt.Errorf("boot_image module %q should not have a dependency tag %s", b, android.PrettyPrintTag(tag)))
+	panic(fmt.Errorf("boot_image module should not have a dependency tag %s", android.PrettyPrintTag(tag)))
 }
 
 func (b *BootclasspathFragmentModule) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion android.ApiLevel) error {
