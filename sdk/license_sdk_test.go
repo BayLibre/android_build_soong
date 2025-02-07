@@ -21,7 +21,6 @@ import (
 )
 
 func TestSnapshotWithPackageDefaultLicense(t *testing.T) {
-	t.Parallel()
 	result := android.GroupFixturePreparers(
 		prepareForSdkTestWithJava,
 		android.PrepareForTestWithLicenses,
