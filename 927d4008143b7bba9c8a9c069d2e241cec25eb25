@@ -51,6 +51,24 @@
       "parentUuid": "e06d29fb_f29ed8a8",
       "revId": "927d4008143b7bba9c8a9c069d2e241cec25eb25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e4284f_730a2f12",
+        "filename": "aconfig/all_aconfig_declarations_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1137303
+      },
+      "writtenOn": "2025-02-07T15:01:39Z",
+      "side": 1,
+      "message": "Ideally it would be great if we can support dropping this in the existing dist group for clockwork artifacts  - i.e. /apistubs/clockwork\n\nNo objection to doing this via string if that\u0027s the best way to manage.",
+      "parentUuid": "3851449f_e59df346",
+      "revId": "927d4008143b7bba9c8a9c069d2e241cec25eb25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
