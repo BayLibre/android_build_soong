@@ -63,6 +63,13 @@ type DexProperties struct {
 		// Defaults to false for apps and tests, true for libraries.
 		Proguard_compatibility *bool
 
+		// If true, R8 will not add public or protected methods to the API surface
+		// of the compilation unit, i.e., classes that are kept of have a kept
+		// subclass.
+		// This should only be used for building targets that go on the bootclasspath.
+		// Defaults to false.
+		Protect_api_surface *bool
+
 		// If true, optimize for size by removing unused code.  Defaults to true for apps,
 		// false for libraries and tests.
 		Shrink *bool
@@ -388,6 +395,10 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, dexParams *compileDexParams, 
 
 	if BoolDefault(opt.Proguard_compatibility, !ctx.Config().UseR8FullModeByDefault()) {
 		r8Flags = append(r8Flags, "--force-proguard-compatibility")
+	}
+
+	if BoolDefault(opt.Protect_api_surface, false) {
+		r8Flags = append(r8Flags, "--protect-api-surface")
 	}
 
 	// Avoid unnecessary stack frame noise by only injecting source map ids for non-debug
