@@ -34,6 +34,24 @@
       "parentUuid": "91dd79f5_0d4b20c0",
       "revId": "a541b2d7a7094701ab8b9e078545f1e66ae5e16c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8310d9bf_34d186d4",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-07T23:58:45Z",
+      "side": 1,
+      "message": "Ah yeah that sounds like a better option. However I would not want to bother touching the `cts.mk` file at the moment given that those rules would have to be converted to Soong in the near future regardless. Does this sound good to you?",
+      "parentUuid": "28f2a7ac_a1c52515",
+      "revId": "a541b2d7a7094701ab8b9e078545f1e66ae5e16c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
