@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8522d4c3_8ae5d10c",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2025-02-07T20:45:35Z",
+      "side": 1,
+      "message": "Iirc the need for this option stemmed from that R8 may add its own generated methods to classes as public or protected, which would allow external parties to find them through reflection, which we do not want in the boot classpath. Is that correct?\n\nThe way I read this is that it roughly corresponds to the inverse of `-keep class * { public *; protected *; }`, which I suspect isn\u0027t what it actually does.\n\nCan you please make it more clear?",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 76
+      },
+      "revId": "3fba1834d4b30b017aef4c7a5d93b2f1e427a01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ff3fcd_836dce82",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2025-02-07T20:45:35Z",
+      "side": 1,
+      "message": "If my understanding above is correct, I think this option is applicable to any jar in the boot classpath (whereof libcore is just a subset).",
+      "range": {
+        "startLine": 67,
+        "startChar": 68,
+        "endLine": 67,
+        "endChar": 75
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "04b30eb9_c84782e3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 67,
+                "startChar": 0,
+                "endLine": 68,
+                "endChar": 0
+              },
+              "replacement": "\t\t// of the compilation unit. This should only be used for building jars in the\n\t\t// boot classpath.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3fba1834d4b30b017aef4c7a5d93b2f1e427a01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
