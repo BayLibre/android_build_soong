@@ -112,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11fb351f_81cc7232",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-08T00:01:56Z",
+      "side": 1,
+      "message": "+1. `DistForGoal` using a \"MakeVars\" context is confusing imo.",
+      "parentUuid": "3fbdc4fa_a754604a",
+      "revId": "a8259fc603f3540e9c978e54d94fd17a9f81abd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7083f26_fbf2f637",
