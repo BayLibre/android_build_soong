@@ -255,6 +255,15 @@ type ModuleContext interface {
 	setContainersInfo(info ContainersInfo)
 
 	setAconfigPaths(paths Paths)
+
+	// DistForGoals creates a rule to copy one or more Paths to the artifacts
+	// directory on the build server when any of the specified goals are built.
+	DistForGoal(goal string, paths ...Path)
+
+	// DistForGoalsWithFilename creates a rule to copy a Path to the artifacts
+	// directory on the build server with the given filename when any of the
+	// specified goals are built.
+	DistForGoalsWithFilename(goals []string, path Path, filename string)
 }
 
 type moduleContext struct {
@@ -312,6 +321,8 @@ type moduleContext struct {
 	// complianceMetadataInfo is for different module types to dump metadata.
 	// See android.ModuleContext interface.
 	complianceMetadataInfo *ComplianceMetadataInfo
+
+	dists []dist
 }
 
 var _ ModuleContext = &moduleContext{}
@@ -958,4 +969,25 @@ func (m *moduleContext) getContainersInfo() ContainersInfo {
 
 func (m *moduleContext) setContainersInfo(info ContainersInfo) {
 	m.containersInfo = info
+}
+
+func (c *moduleContext) DistForGoal(goal string, paths ...Path) {
+	var copies distCopies
+	for _, path := range paths {
+		copies = append(copies, distCopy{
+			from: path,
+			dest: path.Base(),
+		})
+	}
+	c.dists = append(c.dists, dist{
+		goals: []string{goal},
+		paths: copies,
+	})
+}
+
+func (c *moduleContext) DistForGoalsWithFilename(goals []string, path Path, filename string) {
+	c.dists = append(c.dists, dist{
+		goals: slices.Clone(goals),
+		paths: distCopies{{from: path, dest: filename}},
+	})
 }
