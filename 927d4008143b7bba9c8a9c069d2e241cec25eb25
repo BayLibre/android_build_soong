@@ -69,6 +69,24 @@
       "parentUuid": "3851449f_e59df346",
       "revId": "927d4008143b7bba9c8a9c069d2e241cec25eb25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57411d9e_51eafdf8",
+        "filename": "aconfig/all_aconfig_declarations_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-08T00:34:40Z",
+      "side": 1,
+      "message": "Yes this can support specifying the directory within `dist` path. i.e. specifying `dist_dir: \"apistubs/clockwork/\"` will make `out/dist/apistubs/clockwork/finalized-flags.txt` file to be dist\u0027ed. Please let me know if this is not the requirement or if I had misunderstood anything.",
+      "parentUuid": "21e4284f_730a2f12",
+      "revId": "927d4008143b7bba9c8a9c069d2e241cec25eb25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
