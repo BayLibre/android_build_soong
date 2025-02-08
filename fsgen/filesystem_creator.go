@@ -1036,11 +1036,10 @@ func getAvbInfo(config android.Config, partitionType string) avbInfo {
 				panic(fmt.Sprintf("Rollback index must be an int, got %s", specificPartitionVars.BoardAvbRollbackIndex))
 			}
 			result.avbRollbackIndex = &parsed
-		}
-		if specificPartitionVars.BoardAvbRollbackIndex != "" {
-			parsed, err := strconv.ParseInt(specificPartitionVars.BoardAvbRollbackIndex, 10, 64)
+		} else if partitionVars.BoardAvbRollbackIndex != "" {
+			parsed, err := strconv.ParseInt(partitionVars.BoardAvbRollbackIndex, 10, 64)
 			if err != nil {
-				panic(fmt.Sprintf("Rollback index must be an int, got %s", specificPartitionVars.BoardAvbRollbackIndex))
+				panic(fmt.Sprintf("Rollback index must be an int, got %s", partitionVars.BoardAvbRollbackIndex))
 			}
 			result.avbRollbackIndex = &parsed
 		}
