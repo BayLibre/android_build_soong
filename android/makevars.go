@@ -285,6 +285,10 @@ func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 			katiVintfManifestInstalls = append(katiVintfManifestInstalls, info.KatiVintfInstalls...)
 			katiSymlinks = append(katiSymlinks, info.KatiSymlinks...)
 		}
+
+		if distInfo, ok := OtherModuleProvider(ctx, m, DistProvider); ok {
+			dists = append(dists, distInfo.Dists...)
+		}
 	})
 
 	compareKatiInstalls := func(a, b katiInstall) int {
