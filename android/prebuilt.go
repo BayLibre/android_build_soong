@@ -381,7 +381,7 @@ func GetEmbeddedPrebuilt(module Module) *Prebuilt {
 // the right module. This function is only safe to call after all TransitionMutators
 // have run, e.g. in GenerateAndroidBuildActions.
 func PrebuiltGetPreferred(ctx BaseModuleContext, module Module) Module {
-	if !OtherModuleProviderOrDefault(ctx, module, CommonModuleInfoKey).ReplacedByPrebuilt {
+	if !OtherModuleProviderOrDefault(ctx, module, CommonModuleInfoProvider).ReplacedByPrebuilt {
 		return module
 	}
 	if _, ok := OtherModuleProvider(ctx, module, PrebuiltModuleInfoProvider); ok {

@@ -675,7 +675,7 @@ func getPathsFromModuleDep(ctx ModuleWithDepsPathContext, path, moduleName, tag 
 	if module == nil {
 		return nil, missingDependencyError{[]string{moduleName}}
 	}
-	if !OtherModuleProviderOrDefault(ctx, *module, CommonModuleInfoKey).Enabled {
+	if !OtherModuleProviderOrDefault(ctx, *module, CommonModuleInfoProvider).Enabled {
 		return nil, missingDependencyError{[]string{moduleName}}
 	}
 

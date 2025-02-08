@@ -1692,7 +1692,7 @@ func (a *apexBundle) WalkPayloadDeps(ctx android.BaseModuleContext, do android.P
 func (a *apexBundle) WalkPayloadDepsProxy(ctx android.BaseModuleContext,
 	do func(ctx android.BaseModuleContext, from, to android.ModuleProxy, externalDep bool) bool) {
 	ctx.WalkDepsProxy(func(child, parent android.ModuleProxy) bool {
-		if !android.OtherModuleProviderOrDefault(ctx, child, android.CommonModuleInfoKey).CanHaveApexVariants {
+		if !android.OtherModuleProviderOrDefault(ctx, child, android.CommonModuleInfoProvider).CanHaveApexVariants {
 			return false
 		}
 		// Filter-out unwanted depedendencies

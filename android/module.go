@@ -1482,7 +1482,7 @@ func (m *ModuleBase) computeInstallDeps(ctx ModuleContext) ([]depset.DepSet[Inst
 			// Installation is still handled by Make, so anything hidden from Make is not
 			// installable.
 			info := OtherModuleProviderOrDefault(ctx, dep, InstallFilesProvider)
-			commonInfo := OtherModuleProviderOrDefault(ctx, dep, CommonModuleInfoKey)
+			commonInfo := OtherModuleProviderOrDefault(ctx, dep, CommonModuleInfoProvider)
 			if !commonInfo.HideFromMake && !commonInfo.SkipInstall {
 				installDeps = append(installDeps, info.TransitiveInstallFiles)
 			}
@@ -1499,7 +1499,7 @@ func (m *ModuleBase) computeInstallDeps(ctx ModuleContext) ([]depset.DepSet[Inst
 // should also install the output files of the given dependency and dependency tag.
 func isInstallDepNeeded(ctx ModuleContext, dep ModuleProxy) bool {
 	// Don't add a dependency from the platform to a library provided by an apex.
-	if OtherModuleProviderOrDefault(ctx, dep, CommonModuleInfoKey).UninstallableApexPlatformVariant {
+	if OtherModuleProviderOrDefault(ctx, dep, CommonModuleInfoProvider).UninstallableApexPlatformVariant {
 		return false
 	}
 	// Only install modules if the dependency tag is an InstallDepNeeded tag.
@@ -1671,7 +1671,7 @@ func (m *ModuleBase) generateModuleTarget(ctx *moduleContext) {
 			allInstalledFiles = append(allInstalledFiles, info.InstallFiles...)
 			checkbuildTarget = info.CheckbuildTarget
 			uncheckedModule = info.UncheckedModule
-			skipAndroidMkProcessing = OtherModuleProviderOrDefault(ctx, module, CommonModuleInfoKey).SkipAndroidMkProcessing
+			skipAndroidMkProcessing = OtherModuleProviderOrDefault(ctx, module, CommonModuleInfoProvider).SkipAndroidMkProcessing
 		}
 		if outputFiles, err := outputFilesForModule(ctx, module, ""); err == nil {
 			alloutputFiles = append(alloutputFiles, outputFiles...)
@@ -1910,7 +1910,7 @@ type CommonModuleInfo struct {
 	Host                             bool
 }
 
-var CommonModuleInfoKey = blueprint.NewProvider[CommonModuleInfo]()
+var CommonModuleInfoProvider = blueprint.NewProvider[CommonModuleInfo]()
 
 type PrebuiltModuleInfo struct {
 	SourceExists bool
@@ -2269,7 +2269,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	if st, ok := m.module.(StubsAvailableModule); ok {
 		commonData.IsStubsModule = st.IsStubsModule()
 	}
-	SetProvider(ctx, CommonModuleInfoKey, commonData)
+	SetProvider(ctx, CommonModuleInfoProvider, commonData)
 	if p, ok := m.module.(PrebuiltInterface); ok && p.Prebuilt() != nil {
 		SetProvider(ctx, PrebuiltModuleInfoProvider, PrebuiltModuleInfo{
 			SourceExists: p.Prebuilt().SourceExists(),
