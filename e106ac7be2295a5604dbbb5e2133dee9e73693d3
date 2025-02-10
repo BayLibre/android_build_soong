@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1df19932_93bad74c",
+        "filename": "android/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T23:13:33Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "e106ac7be2295a5604dbbb5e2133dee9e73693d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ae8a50_762f9fb6",
+        "filename": "android/register.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T23:13:33Z",
+      "side": 1,
+      "message": "Could you break out `androidMkSingleton.soongOnlyBuildActions` into its own singleton and register that here?",
+      "revId": "e106ac7be2295a5604dbbb5e2133dee9e73693d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
