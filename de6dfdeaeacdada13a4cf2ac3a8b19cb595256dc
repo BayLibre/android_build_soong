@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f79556fb_1db2a3ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T22:18:38Z",
+      "side": 1,
+      "message": "Could you explain how it worked in make then?",
+      "revId": "de6dfdeaeacdada13a4cf2ac3a8b19cb595256dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
