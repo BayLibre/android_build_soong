@@ -16,7 +16,6 @@ package aconfig
 
 import (
 	"fmt"
-	"slices"
 
 	"android/soong/android"
 
@@ -31,7 +30,7 @@ import (
 // ones that are relevant to the product currently being built, so that that infra
 // doesn't need to pull from multiple builds and merge them.
 func AllAconfigDeclarationsFactory() android.SingletonModule {
-	module := &allAconfigDeclarationsSingleton{releaseMap: make(map[string]allAconfigReleaseDeclarationsSingleton)}
+	module := &allAconfigDeclarationsSingleton{}
 	module.AddProperties(&module.properties)
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	return module
@@ -55,12 +54,7 @@ type allAconfigDeclarationsSingleton struct {
 }
 
 func (this *allAconfigDeclarationsSingleton) sortedConfigNames() []string {
-	var names []string
-	for k := range this.releaseMap {
-		names = append(names, k)
-	}
-	slices.Sort(names)
-	return names
+	return android.SortedKeys(this.releaseMap)
 }
 
 func (this *allAconfigDeclarationsSingleton) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -86,10 +80,19 @@ func (this *allAconfigDeclarationsSingleton) GenerateAndroidBuildActions(ctx and
 		},
 	})
 	ctx.Phony("all_aconfig_declarations", output)
+
+	this.releaseMap = make(map[string]allAconfigReleaseDeclarationsSingleton)
+	for _, rcName := range append([]string{""}, ctx.Config().ReleaseAconfigExtraReleaseConfigs()...) {
+		paths := allAconfigReleaseDeclarationsSingleton{
+			intermediateBinaryProtoPath: android.PathForIntermediates(ctx, assembleFileName(rcName, "all_aconfig_declarations.pb")),
+			intermediateTextProtoPath:   android.PathForIntermediates(ctx, assembleFileName(rcName, "all_aconfig_declarations.textproto")),
+		}
+		this.releaseMap[rcName] = paths
+	}
 }
 
 func (this *allAconfigDeclarationsSingleton) GenerateSingletonBuildActions(ctx android.SingletonContext) {
-	for _, rcName := range append([]string{""}, ctx.Config().ReleaseAconfigExtraReleaseConfigs()...) {
+	for _, rcName := range this.sortedConfigNames() {
 		// Find all of the aconfig_declarations modules
 		var packages = make(map[string]int)
 		var cacheFiles android.Paths
@@ -115,12 +118,6 @@ func (this *allAconfigDeclarationsSingleton) GenerateSingletonBuildActions(ctx a
 			panic("Only one aconfig_declarations allowed for each package.\n" + offendingPkgsMessage)
 		}
 
-		// Generate build action for aconfig (binary proto output)
-		paths := allAconfigReleaseDeclarationsSingleton{
-			intermediateBinaryProtoPath: android.PathForIntermediates(ctx, assembleFileName(rcName, "all_aconfig_declarations.pb")),
-			intermediateTextProtoPath:   android.PathForIntermediates(ctx, assembleFileName(rcName, "all_aconfig_declarations.textproto")),
-		}
-		this.releaseMap[rcName] = paths
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        AllDeclarationsRule,
 			Inputs:      cacheFiles,
