@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d00257cd_74796c6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-10T23:09:49Z",
+      "side": 1,
+      "message": "There are actually quite a few, with some examples being the followings: [`allBuildFlagDeclarationsSingleton`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/aconfig/build_flags/build_flags_singleton.go;l\u003d116;drc\u003d1639ab5d69edf212ad42cb782548bc9a73a4dd0f), [`allTeamsSingleton`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/all_teams.go;l\u003d140;drc\u003d4a2f368b46f1da33a7bcfdd2a68bf0124971fe3d), [`lintSingleton`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/lint.go;l\u003d711;drc\u003d80b68c44cac5bead6f247f9026238338ee62302f), [`platformCompatConfigSingleton`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/platform_compat_config.go;l\u003d285;drc\u003d4715f9aed7b5522a7aeab1726fcdf187090cb8f9), ...etc.\n\nI have https://r.android.com/3487512 ready to late-register androidmk singleton. If this change looks good to you I\u0027ll submit this one instead and abandon the current change.",
+      "parentUuid": "573af02e_a183a0f5",
+      "revId": "de6dfdeaeacdada13a4cf2ac3a8b19cb595256dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6856b302_64c5cf0f",
         "filename": "aconfig/all_aconfig_declarations.go",
         "patchSetId": 1
