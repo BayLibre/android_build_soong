@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7258418a_6e042194",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-10T22:58:08Z",
+      "side": 1,
+      "message": "Can you add more info on what gets lost?  Could we always store it as an ApiLevel?",
+      "revId": "ae6e5c51d5782118ff559f2322bea6d378ebbcb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
