@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01e05c17_ab08916a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-10T22:51:46Z",
+      "side": 1,
+      "message": "\u003e However, we could just treat this project as \"migrate all ctx.Dist calls to GenerateAndroidBuildActions\" in which case we wouldn\u0027t need to worry about when the singleton runs.\n\nThis means that all **singletons** that call `ctx.Dist*` should be converted to **singleton modules** (and likewise for all singletons that will be added in the future). TBH I think it\u0027s logical for `androidMkSingleton` to run later than other singletons given that it depends on other singletons (more specifically their dist contributions). WDYT?",
+      "parentUuid": "6b962e98_00b2954f",
+      "revId": "de6dfdeaeacdada13a4cf2ac3a8b19cb595256dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6856b302_64c5cf0f",
         "filename": "aconfig/all_aconfig_declarations.go",
         "patchSetId": 1
