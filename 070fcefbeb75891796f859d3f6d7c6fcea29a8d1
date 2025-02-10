@@ -16,6 +16,24 @@
       "message": "I think this is a copy-paste fail?",
       "revId": "070fcefbeb75891796f859d3f6d7c6fcea29a8d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b028d6a6_c6c4f16f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T21:30:49Z",
+      "side": 1,
+      "message": "oh looks like I messed this up in aosp/3390960. However I think it might be necessary to not apply the global rollback index in the case we\u0027re testing, aosp_cf_x86_64_phone. I tested this cl and it does change the build command line.\n\nThanks for pointing the fix, but I think I need to dig in a little more to see if we want this fix, or just to delete the duplicated block, or something in between.",
+      "parentUuid": "09ecb6c4_b52e2500",
+      "revId": "070fcefbeb75891796f859d3f6d7c6fcea29a8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
