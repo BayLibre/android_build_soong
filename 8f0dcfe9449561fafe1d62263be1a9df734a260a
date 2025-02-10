@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ffc56c64_e5e27a82",
+        "filename": "phony/phony.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-10T17:51:27Z",
+      "side": 1,
+      "message": "In the current implementation, I _think_ these additional deps will not be packaged into rdeps of this phony (e.g. `android_filesystem`). If this is by design, can you please add this as a comment here?",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "8f0dcfe9449561fafe1d62263be1a9df734a260a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7856e20e_985d478c",
         "filename": "phony/phony.go",
         "patchSetId": 1
