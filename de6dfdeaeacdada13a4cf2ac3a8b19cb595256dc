@@ -16,6 +16,24 @@
       "message": "Could you explain how it worked in make then?",
       "revId": "de6dfdeaeacdada13a4cf2ac3a8b19cb595256dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94202341_21f1d932",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-10T22:24:36Z",
+      "side": 1,
+      "message": "Oh, just figured out why. `makeVarsSingleton` (which collects all `MakeVars` contributions) is [registered later than other singletons](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/register.go;l\u003d199;drc\u003dfc7a41126db7147c5b6863fe43ce552ece62bf57), so it\u0027s guaranteed that its `GenerateBuildActions` is run later than those of other singletons. So maybe we should do the same for `androidMkSingleton`? WDYT?",
+      "parentUuid": "f79556fb_1db2a3ab",
+      "revId": "de6dfdeaeacdada13a4cf2ac3a8b19cb595256dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
