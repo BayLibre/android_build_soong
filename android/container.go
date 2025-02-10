@@ -475,6 +475,8 @@ func setContainerInfo(ctx ModuleContext) {
 }
 
 func checkContainerViolations(ctx ModuleContext) {
+
+	ctx.Host()
 	if _, ok := ctx.Module().(InstallableModule); ok {
 		containersInfo, _ := getContainerModuleInfo(ctx, ctx.Module())
 		ctx.VisitDirectDepsProxy(func(dep ModuleProxy) {

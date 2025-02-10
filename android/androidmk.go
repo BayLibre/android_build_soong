@@ -38,19 +38,13 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
-func init() {
-	RegisterAndroidMkBuildComponents(InitRegistrationContext)
-}
-
-func RegisterAndroidMkBuildComponents(ctx RegistrationContext) {
-	ctx.RegisterParallelSingletonType("androidmk", AndroidMkSingleton)
-}
-
 // Enable androidmk support.
 // * Register the singleton
 // * Configure that we are inside make
 var PrepareForTestWithAndroidMk = GroupFixturePreparers(
-	FixtureRegisterWithContext(RegisterAndroidMkBuildComponents),
+	FixtureRegisterWithContext(func(ctx RegistrationContext) {
+		ctx.RegisterSingletonType("androidmk", androidMkSingletonFactory)
+	}),
 	FixtureModifyConfig(SetKatiEnabledForTests),
 )
 
@@ -711,9 +705,9 @@ func (a *AndroidMkEntries) FooterLinesForTests() []string {
 	return strings.Split(string(a.footer.Bytes()), "\n")
 }
 
-// AndroidMkSingleton is a singleton to collect Android.mk data from all modules and dump them into
+// androidMkSingleton is a singleton to collect Android.mk data from all modules and dump them into
 // the final Android-<product_name>.mk file output.
-func AndroidMkSingleton() Singleton {
+func androidMkSingletonFactory() Singleton {
 	return &androidMkSingleton{}
 }
 
