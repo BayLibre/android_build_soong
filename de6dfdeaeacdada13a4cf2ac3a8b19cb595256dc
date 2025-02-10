@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "573af02e_a183a0f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T22:55:24Z",
+      "side": 1,
+      "message": "Are there singletons that dist files? Our collection code only supports dists from modules, and then also the globally registered make vars providers, which I suppose could dist files that come from singletons, but I hoped that the pattern was rare enough that it wasn\u0027t an issue.\n\nIf there are, we should definetly move our singleton later rather than making those into singletonModules.",
+      "parentUuid": "01e05c17_ab08916a",
+      "revId": "de6dfdeaeacdada13a4cf2ac3a8b19cb595256dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6856b302_64c5cf0f",
         "filename": "aconfig/all_aconfig_declarations.go",
         "patchSetId": 1
