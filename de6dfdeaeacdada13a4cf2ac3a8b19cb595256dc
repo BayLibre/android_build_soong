@@ -34,6 +34,47 @@
       "parentUuid": "f79556fb_1db2a3ab",
       "revId": "de6dfdeaeacdada13a4cf2ac3a8b19cb595256dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b962e98_00b2954f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T22:45:14Z",
+      "side": 1,
+      "message": "Ah. I wouldn\u0027t want to move `androidMkSingleton` later, as it gives more opportunites to generate make code, but maybe it\u0027s time to split the soong-only portion of it out into its own singleton that is run late.\n\nHowever, we could just treat this project as \"migrate all ctx.Dist calls to GenerateAndroidBuildActions\" in which case we wouldn\u0027t need to worry about when the singleton runs.\n\nIf there is something that can\u0027t be moved into GenerateAndroidBuildActions we would have to do it though.",
+      "parentUuid": "94202341_21f1d932",
+      "revId": "de6dfdeaeacdada13a4cf2ac3a8b19cb595256dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6856b302_64c5cf0f",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T22:45:14Z",
+      "side": 1,
+      "message": "Could you move these to GenerateAndroidBuildActions?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 116
+      },
+      "revId": "de6dfdeaeacdada13a4cf2ac3a8b19cb595256dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
