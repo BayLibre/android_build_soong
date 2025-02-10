@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4944d60_96af3840",
+        "filename": "android/register.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T23:41:46Z",
+      "side": 1,
+      "message": "This has nothing to do with phonies, update.",
+      "range": {
+        "startLine": 195,
+        "startChar": 60,
+        "endLine": 195,
+        "endChar": 65
+      },
+      "revId": "7f9334ae8086151f6f48d030d1a53203e18c1f0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

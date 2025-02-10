@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f28af267_ddaf449e",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T23:41:46Z",
+      "side": 0,
+      "message": "Let\u0027s keep this sort in the soong-only version",
+      "revId": "d5a846331c73817b78abdf8e3a7f3b5b857ee42f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25531239_77fdaf77",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T23:41:46Z",
+      "side": 0,
+      "message": "We need to keep the `if !ctx.Config().KatiEnabled() { return }`. Move it up to the top of this function now too.",
+      "revId": "d5a846331c73817b78abdf8e3a7f3b5b857ee42f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
