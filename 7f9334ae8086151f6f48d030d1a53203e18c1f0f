@@ -46,6 +46,30 @@
       },
       "revId": "7f9334ae8086151f6f48d030d1a53203e18c1f0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f3dcc0c_b6f407ab",
+        "filename": "android/register.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T23:51:05Z",
+      "side": 1,
+      "message": "Oh I see. Though you\u0027re documenting why it\u0027s before phony, but not documenting why it\u0027s in this list of late singletons in the first place, could you also expand on that?",
+      "parentUuid": "f0c2aa17_42944470",
+      "range": {
+        "startLine": 195,
+        "startChar": 60,
+        "endLine": 195,
+        "endChar": 65
+      },
+      "revId": "7f9334ae8086151f6f48d030d1a53203e18c1f0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
