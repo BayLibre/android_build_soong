@@ -16,6 +16,24 @@
       "message": "Can we add support for `DistForGoals` as well, similar to that in `BaseMakeVarsContext`? `BaseMakeVarsContext` also supports `DistForGoalWithFilename`, but that may not be too necessary with `DistForGoalsWithFilename` being supported.",
       "revId": "2eaa6af3df365a90ac2f1de4350358051b39c22e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fef8d41e_b9180c34",
+        "filename": "android/module_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T19:45:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a049aa1a_6cb09988",
+      "revId": "2eaa6af3df365a90ac2f1de4350358051b39c22e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
