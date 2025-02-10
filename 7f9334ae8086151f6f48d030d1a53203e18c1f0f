@@ -22,6 +22,30 @@
       },
       "revId": "7f9334ae8086151f6f48d030d1a53203e18c1f0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c2aa17_42944470",
+        "filename": "android/register.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-10T23:48:10Z",
+      "side": 1,
+      "message": "Don\u0027t `soongOnlyBuildActions` [call](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/androidmk.go;l\u003d790;drc\u003dd62a4896b99fb3dc842190a49ea22f18872d1855) `Phony`? (hence this is listed right before `phony` in L199)",
+      "parentUuid": "f4944d60_96af3840",
+      "range": {
+        "startLine": 195,
+        "startChar": 60,
+        "endLine": 195,
+        "endChar": 65
+      },
+      "revId": "7f9334ae8086151f6f48d030d1a53203e18c1f0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
