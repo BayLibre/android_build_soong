@@ -26,6 +26,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45994814_d125de4e",
+        "filename": "phony/phony.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T18:39:27Z",
+      "side": 1,
+      "message": "I think this is for running build-time tests, like `m selinux_policy_system`. But +1 it would be good to see this clarified.",
+      "parentUuid": "ffc56c64_e5e27a82",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "8f0dcfe9449561fafe1d62263be1a9df734a260a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27e32c80_82dee3fa",
+        "filename": "phony/phony.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-10T18:39:27Z",
+      "side": 1,
+      "message": "Rather than adding a new property, could we loop over the required dependencies and get their output files?",
+      "revId": "8f0dcfe9449561fafe1d62263be1a9df734a260a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7856e20e_985d478c",
         "filename": "phony/phony.go",
         "patchSetId": 1
