@@ -38,14 +38,23 @@ var PrepareForTestWithPhony = android.FixtureRegisterWithContext(registerPhonyMo
 
 type phony struct {
 	android.ModuleBase
+
+	properties                phonyProperties
 	requiredModuleNames       []string
 	hostRequiredModuleNames   []string
 	targetRequiredModuleNames []string
+	additionalDeps            android.Paths
+}
+
+type phonyProperties struct {
+	// Paths to additional dependencies. Useful when dependencies can't be handled by required, like
+	// genrule modules.
+	Additional_deps proptools.Configurable[[]string] `android:"path"`
 }
 
 func PhonyFactory() android.Module {
 	module := &phony{}
-
+	module.AddProperties(&module.properties)
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
 	return module
 }
@@ -54,6 +63,8 @@ func (p *phony) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	p.requiredModuleNames = ctx.RequiredModuleNames(ctx)
 	p.hostRequiredModuleNames = ctx.HostRequiredModuleNames()
 	p.targetRequiredModuleNames = ctx.TargetRequiredModuleNames()
+
+	p.additionalDeps = android.PathsForModuleSrc(ctx, p.properties.Additional_deps.GetOrDefault(ctx, nil))
 }
 
 func (p *phony) AndroidMk() android.AndroidMkData {
@@ -76,6 +87,10 @@ func (p *phony) AndroidMk() android.AndroidMkData {
 			if len(p.targetRequiredModuleNames) > 0 {
 				fmt.Fprintln(w, "LOCAL_TARGET_REQUIRED_MODULES :=",
 					strings.Join(p.targetRequiredModuleNames, " "))
+			}
+			if len(p.additionalDeps) > 0 {
+				fmt.Fprintln(w, "LOCAL_ADDITIONAL_DEPENDENCIES :=",
+					strings.Join(p.additionalDeps.Strings(), " "))
 			}
 			// AconfigUpdateAndroidMkData may have added elements to Extra.  Process them here.
 			for _, extra := range data.Extra {
