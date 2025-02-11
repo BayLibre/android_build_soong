@@ -22,6 +22,30 @@
       },
       "revId": "5cb2c5f517727cf5e8034c3f63834e234d4c83d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97fd3836_58a70c0c",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-11T00:59:37Z",
+      "side": 1,
+      "message": "Good point. I changed `super_image` to just always generate a file called `super.img` instead.",
+      "parentUuid": "91123555_f959155e",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 3
+      },
+      "revId": "5cb2c5f517727cf5e8034c3f63834e234d4c83d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
