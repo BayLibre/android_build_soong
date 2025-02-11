@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b41a1a6_dabb97f0",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-11T21:50:15Z",
+      "side": 1,
+      "message": "Yes, Jihoon did that in aosp/3487512.",
+      "parentUuid": "f7c79d7e_bcd2d3f9",
+      "range": {
+        "startLine": 780,
+        "startChar": 10,
+        "endLine": 780,
+        "endChar": 37
+      },
+      "revId": "f2aab5e73fd046dac104144b23d21b566a18cae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "776136a3_2c1401a2",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d398af0_2cc5b3e4",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-11T21:50:15Z",
+      "side": 1,
+      "message": "The dists are sorted later on:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/androidmk.go;l\u003d839;drc\u003d2420aed8ec7ec228c5f857e6d47f5cde390663bb\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/makevars.go;l\u003d337;drc\u003dd62a4896b99fb3dc842190a49ea22f18872d1855",
+      "parentUuid": "776136a3_2c1401a2",
+      "range": {
+        "startLine": 796,
+        "startChar": 45,
+        "endLine": 796,
+        "endChar": 66
+      },
+      "revId": "f2aab5e73fd046dac104144b23d21b566a18cae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b84f26b5_36ef0a37",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-02-11T21:46:05Z",
       "side": 1,
       "message": "Is this necessary with https://r.android.com/3489312?",
+      "range": {
+        "startLine": 796,
+        "startChar": 0,
+        "endLine": 798,
+        "endChar": 2
+      },
+      "revId": "f2aab5e73fd046dac104144b23d21b566a18cae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56c9c320_d28419b8",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-11T21:50:15Z",
+      "side": 1,
+      "message": "That cl added support for using dists defined in MakeVars() in soong-only builds. This cl is about removing the need for the MakeVars() function. Technically no, this cl is not necessary, it\u0027s more about cleanup and removing the word \"make\" from the codebase.",
+      "parentUuid": "b84f26b5_36ef0a37",
       "range": {
         "startLine": 796,
         "startChar": 0,
