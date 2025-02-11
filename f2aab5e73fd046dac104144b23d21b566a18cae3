@@ -164,6 +164,30 @@
       },
       "revId": "f2aab5e73fd046dac104144b23d21b566a18cae3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8826dfc_2f76b398",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-11T21:54:41Z",
+      "side": 1,
+      "message": "`getSingletonDists` is a new global list I added in this cl. aosp/3489312 is adding the results of `getSingletonMakevarsProviders`. They\u0027re different, no?",
+      "parentUuid": "827593b4_2aeb23c1",
+      "range": {
+        "startLine": 796,
+        "startChar": 0,
+        "endLine": 798,
+        "endChar": 2
+      },
+      "revId": "f2aab5e73fd046dac104144b23d21b566a18cae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
