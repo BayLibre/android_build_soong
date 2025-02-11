@@ -122,6 +122,24 @@
       "parentUuid": "21e4284f_730a2f12",
       "revId": "927d4008143b7bba9c8a9c069d2e241cec25eb25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c2b52e_8b475a7d",
+        "filename": "aconfig/all_aconfig_declarations_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1137303
+      },
+      "writtenOn": "2025-02-11T18:42:37Z",
+      "side": 1,
+      "message": "Can we call this resolved? This looks good from the Wear perspective - marking resolved but feel free to open if the build side still has open questions/discussion topics.",
+      "parentUuid": "57411d9e_51eafdf8",
+      "revId": "927d4008143b7bba9c8a9c069d2e241cec25eb25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
