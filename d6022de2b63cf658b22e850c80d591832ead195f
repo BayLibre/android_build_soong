@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49c2c839_6e5fffb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-02-11T21:25:36Z",
+      "side": 1,
+      "message": "Looks right, just highlighted the one edge case not currently covered in the test suite.",
+      "revId": "d6022de2b63cf658b22e850c80d591832ead195f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ca62aac_1048614e",
+        "filename": "rust/rust_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-02-11T21:25:36Z",
+      "side": 1,
+      "message": "Is there a potential edge case around a `rust_library` or `rust_binary` that whole-statics in a cc-library that whole statics an rlib?\n\nSpecifically, if I put `libcc_static_from_rlib` into `whole_static_libs`, I would expect `librs` (the dynamic variant) to have any exported functions from that exported on it as well. I think they are, because we fixed that for boringssl in another change, but it seems like it\u0027s the one arm missing from this test.",
+      "revId": "d6022de2b63cf658b22e850c80d591832ead195f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
