@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b791e4bb_bb5f5e7d",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-11T18:39:31Z",
+      "side": 1,
+      "message": "Just to clarify, there are no usages of these new code paths currently, right? We don\u0027t currently have any soong-built partitions that contain other partitions in this way.",
+      "revId": "a67d541b6384def71b7836c4b08f55c77a2be43d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
