@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f4f6b0_3f707e5b",
+        "filename": "android/apex.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-11T03:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8544708e_ca189083",
+      "range": {
+        "startLine": 99,
+        "startChar": 21,
+        "endLine": 99,
+        "endChar": 35
+      },
+      "revId": "6f9d397870363e9ede6aececd863b3a581edf477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a7df002_29e1514a",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd8d169_549442e1",
+        "filename": "android/apex_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-11T03:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a7df002_29e1514a",
+      "revId": "6f9d397870363e9ede6aececd863b3a581edf477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74e9e27d_6d9d2638",
@@ -54,6 +96,24 @@
       "writtenOn": "2025-02-11T00:49:53Z",
       "side": 1,
       "message": "unused?",
+      "revId": "6f9d397870363e9ede6aececd863b3a581edf477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "748856cd_73eefeb3",
+        "filename": "apex/apex.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-11T03:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74e9e27d_6d9d2638",
       "revId": "6f9d397870363e9ede6aececd863b3a581edf477",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
