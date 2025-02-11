@@ -52,6 +52,24 @@
       "parentUuid": "6bb21b03_3b4bd1ce",
       "revId": "736c6c2555000f21f19c892b2e65018327dfaf41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecca0d70_2c2ab391",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-02-11T21:40:37Z",
+      "side": 1,
+      "message": "The hash value is the hash of content of raw files written by soong, it is used in the path so raw files can be placed in multiple directories. So if the hash value is different that means the raw file\u0027s content is different, which can only be caused by order of some fields\u0027 values or order of some records in the case of csv files.",
+      "parentUuid": "687a431c_b60b91c3",
+      "revId": "736c6c2555000f21f19c892b2e65018327dfaf41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
