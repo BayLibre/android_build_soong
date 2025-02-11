@@ -551,8 +551,6 @@ type ProductVariables struct {
 	SystemExtManifestFiles []string `json:",omitempty"`
 	DeviceManifestFiles    []string `json:",omitempty"`
 	OdmManifestFiles       []string `json:",omitempty"`
-
-	UseSoongNoticeXML *bool `json:",omitempty"`
 }
 
 type PartitionQualifiedVariablesType struct {
