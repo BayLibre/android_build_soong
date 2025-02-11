@@ -956,7 +956,7 @@ func (c *config) DeviceName() string {
 //
 // NOTE: Do not base conditional logic on this value. It may break product inheritance.
 func (c *config) DeviceProduct() string {
-	return *c.productVariables.DeviceProduct
+	return proptools.StringDefault(c.productVariables.DeviceProduct, "")
 }
 
 // HasDeviceProduct returns if the build has a product. A build will not
