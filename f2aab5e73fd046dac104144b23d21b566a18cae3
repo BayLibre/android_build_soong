@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7c79d7e_bcd2d3f9",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-11T21:45:13Z",
+      "side": 1,
+      "message": "Does this singleton run after all other singletons?",
+      "range": {
+        "startLine": 780,
+        "startChar": 10,
+        "endLine": 780,
+        "endChar": 37
+      },
+      "revId": "f2aab5e73fd046dac104144b23d21b566a18cae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "776136a3_2c1401a2",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-11T21:45:13Z",
+      "side": 1,
+      "message": "Do we need to sort this to create consistent dist order?",
+      "range": {
+        "startLine": 796,
+        "startChar": 45,
+        "endLine": 796,
+        "endChar": 66
+      },
+      "revId": "f2aab5e73fd046dac104144b23d21b566a18cae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
