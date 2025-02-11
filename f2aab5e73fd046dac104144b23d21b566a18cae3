@@ -188,6 +188,30 @@
       },
       "revId": "f2aab5e73fd046dac104144b23d21b566a18cae3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6796039_84d2e213",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-11T21:55:14Z",
+      "side": 1,
+      "message": "Ah sorry I was confused between `getSingletonDists` and `getSingletonMakevarsProviders`. I agree that this is needed.",
+      "parentUuid": "827593b4_2aeb23c1",
+      "range": {
+        "startLine": 796,
+        "startChar": 0,
+        "endLine": 798,
+        "endChar": 2
+      },
+      "revId": "f2aab5e73fd046dac104144b23d21b566a18cae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
