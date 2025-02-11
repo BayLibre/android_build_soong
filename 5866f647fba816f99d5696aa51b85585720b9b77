@@ -16,6 +16,24 @@
       "message": "I was trying to get aosp_arm64 working only with soong, but there are some clear issues with AVB.\n\nThe chained partition system gets assigned the location 0 and avbtool won\u0027t allow that.\n\nThe main problem I see is that even if the location is set to 1 (checked variables json) the value isn\u0027t used.\nI started adding random panis/prints and noticed that vbmeta GenerateAndroidBuildActions is run before generateFsProps is called for the partition (with correct values)\nThus all fsProps are nil and the module provider will always use the default 0.\n\nWithout this changes I get avbtool make_vbmeta_image ... --chain_partition system:0:out/soong/.intermediates/build/make/target/product/gsi/aosp_system_image/android_common/system.avbpubkey\n\n0 is clearly wrong\n\nWith my changes I failed the \u003c 1 check as it doesn\u0027t use the correct value 😞\n\nI think this change is _correct_ per se... if the values were properly propagated that is",
       "revId": "5866f647fba816f99d5696aa51b85585720b9b77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f28f5696_a5662468",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-11T18:18:40Z",
+      "side": 1,
+      "message": "\u003e I started adding random panis/prints and noticed that vbmeta GenerateAndroidBuildActions is run before generateFsProps is called for the partition\n\nThis definetly shouldn\u0027t be the case, `generateFsProps` is run during a load hook, which happens before any mutators are run, much less `GenerateAndroidBuildActions`.",
+      "parentUuid": "fd5f08f3_da666799",
+      "revId": "5866f647fba816f99d5696aa51b85585720b9b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
