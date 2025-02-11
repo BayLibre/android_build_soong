@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dad412a9_104ef2f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-11T18:56:37Z",
+      "side": 1,
+      "message": "This has presubmit failures with errors like: `\"aosp_x86_64_generated_vbmeta_image\" variant \"android_common\" (created by module \"soong_filesystem_creator\" variant \"android_common\"): chained_partitions: rollback index location must be 1, 2, 3, ...`",
+      "revId": "9235f4c4c3268e45082574b4f7c6835fcff7ec61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
