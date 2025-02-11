@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc55c169_b4dc9475",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-02-11T18:15:22Z",
+      "side": 1,
+      "message": "Removed it from the chain, but please also check the enforcement for location ≥ 1",
+      "revId": "fc3f859bfb467868691612e46d3537f0643ad160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
