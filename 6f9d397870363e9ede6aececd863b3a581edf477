@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8544708e_ca189083",
+        "filename": "android/apex.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-11T00:49:53Z",
+      "side": 1,
+      "message": "Optional: It might be better to call mergedName on the resulting ApexInfo instead of the origional, to ensure it\u0027s not based on any information that\u0027s not in the new ApexInfo. It would align better with the comment that says the new name is \"computed from the *remaining* properties\"",
+      "range": {
+        "startLine": 99,
+        "startChar": 21,
+        "endLine": 99,
+        "endChar": 35
+      },
+      "revId": "6f9d397870363e9ede6aececd863b3a581edf477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a7df002_29e1514a",
+        "filename": "android/apex_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-11T00:49:53Z",
+      "side": 1,
+      "message": "Delete this file",
+      "revId": "6f9d397870363e9ede6aececd863b3a581edf477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e9e27d_6d9d2638",
+        "filename": "apex/apex.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-11T00:49:53Z",
+      "side": 1,
+      "message": "unused?",
+      "revId": "6f9d397870363e9ede6aececd863b3a581edf477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
