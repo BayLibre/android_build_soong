@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91123555_f959155e",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-11T00:21:09Z",
+      "side": 1,
+      "message": "nit: this is fsgen specific so we might not want this here. Can we replace all existing `generatedModuleNameForPartition(ctx.Config(), \"super\")` calls in fsgen to `generatedModuleName(ctx.Config(), \"super\")` instead?",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 3
+      },
+      "revId": "5cb2c5f517727cf5e8034c3f63834e234d4c83d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
