@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb21b03_3b4bd1ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-11T21:12:04Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the cause of the non determinism. As seen in the description of the bug, the non determinism is being caused from the hash, not the order:\n```\n  # Factory:\n  # android/soong/android.singleton.register.SingletonFactoryAdaptor.func1\n  \n  build out/soong/compliance-metadata/aosp_cf_x86_64_phone/soong-modules.csv: $\n          g.android.rawFileCopy $\n!         out/soong/raw-aosp_cf_x86_64_phone/c3/c3cdfdcab397ce11fc62a143626d594d06622e7e\n      description \u003d raw soong-modules.csv\n      tags \u003d module_name\u003dcompliance_metadata_singleton;module_type\u003dsingleton;rule_name\u003drawFileCopy\n  \n  build $\n          out/soong/compliance-metadata/aosp_cf_x86_64_phone/compliance-metadata.db: $\n--- 2269096,2269106 ----\n  # Factory:\n  # android/soong/android.singleton.register.SingletonFactoryAdaptor.func1\n  \n  build out/soong/compliance-metadata/aosp_cf_x86_64_phone/soong-modules.csv: $\n          g.android.rawFileCopy $\n!         out/soong/raw-aosp_cf_x86_64_phone/52/52434e14a01fd2eb7d66049f7fb4460fbab5cbef\n      description \u003d raw soong-modules.csv\n      tags \u003d module_name\u003dcompliance_metadata_singleton;module_type\u003dsingleton;rule_name\u003drawFileCopy\n  \n  build $\n          out/soong/compliance-metadata/aosp_cf_x86_64_phone/compliance-metadata.db: $\n```\n\nMore specifically, the non determinism is caused from [this line](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/compliance_metadata.go;l\u003d312;drc\u003d9d1636c29b52981033555fa21937f41f03aa55e1) (note that `WriteFileRuleVerbatim` calls `rawFileCopy `)",
+      "revId": "736c6c2555000f21f19c892b2e65018327dfaf41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
