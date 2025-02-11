@@ -34,6 +34,24 @@
       "parentUuid": "fd5f08f3_da666799",
       "revId": "5866f647fba816f99d5696aa51b85585720b9b77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc59d25_3b56b9bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-02-11T18:46:15Z",
+      "side": 1,
+      "message": "I don\u0027t know if treehugger will hit this issue so here the steps just in case.\n\nTarget aosp_arm64, m --soong-only the invocation.\nI had to manually remove the panic for the uffd flag, setting it to kernelVersion \u003d \"\u003cunknown-kernel\u003e\" is enough to get past it.\n\nI also changed a bit the errors to print the offending module name.\n\nWith this change picked I\u0027m hitting the following failure\nerror: build/soong/fsgen/Android.bp:32:1: module \"aosp_arm64_generated_vbmeta_image\" variant \"android_common\" (created by module \"soong_filesystem_creator\" variant \"android_common\"): chained_partitions: rollback index location of aosp_system_image must be 1, 2, 3, ...\n\naosp_system_image should pick up the entry PartitionVarsForSoongMigrationOnlyDoNotUse -\u003e PartitionQualifiedVariables -\u003e system -\u003e BoardAvbRollbackIndexLocation, which is correctly set to 1\n\nThe correct flow to set those props seems to be generateFsProps -\u003e getAvbInfo.\nBut it seems like I\u0027m never getting called in generateFsProps with partitionType \u003d \"system\", and now I can clearly see why:\ncreatePartition has specific checks to skip this chain for partition.partitionType \u003d\u003d \"system\" (and soong declared system image, which is the case for this target)\n\nMaybe more stuff stuff needs to be called in this case to propagate more information from the product?\n\nMaybe I got a bit ahead of myself when testing this soong-only stuff :)",
+      "parentUuid": "f28f5696_a5662468",
+      "revId": "5866f647fba816f99d5696aa51b85585720b9b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
