@@ -449,8 +449,22 @@ func TestRustFFIRlibs(t *testing.T) {
 		}
 
 		rust_ffi_static {
+			name: "libfoo_from_rlib",
+			crate_name: "foo_from_rlib",
+			srcs: ["src/lib.rs"],
+			export_include_dirs: ["foo_includes"]
+		}
+
+		rust_ffi_static {
 			name: "libbuzz",
 			crate_name: "buzz",
+			srcs: ["src/lib.rs"],
+			export_include_dirs: ["buzz_includes"]
+		}
+
+		rust_ffi_static {
+			name: "libbuzz_from_rlib",
+			crate_name: "buzz_from_rlib",
 			srcs: ["src/lib.rs"],
 			export_include_dirs: ["buzz_includes"]
 		}
@@ -468,10 +482,32 @@ func TestRustFFIRlibs(t *testing.T) {
 			whole_static_libs: ["libfoo"],
 		}
 
+		cc_library_static {
+			name: "libcc_static_from_rlib",
+			srcs:["foo.c"],
+			static_libs: ["libbuzz_from_rlib"],
+			whole_static_libs: ["libfoo_from_rlib"],
+		}
+
 		cc_binary {
 			name: "ccBin",
 			srcs:["foo.c"],
 			static_libs: ["libcc_static", "libbar"],
+		}
+
+		rust_library {
+			name: "librs",
+			srcs:["src/foo.rs"],
+			crate_name: "rs",
+			static_libs: ["libcc_static_from_rlib"],
+		}
+
+		rust_binary {
+			name: "rsBin",
+			srcs:["src/foo.rs"],
+			crate_name: "rsBin",
+			rlibs: ["librs", "libbar"],
+			static_libs: ["libcc_static"],
 		}
 		`)
 
@@ -482,6 +518,8 @@ func TestRustFFIRlibs(t *testing.T) {
 	ccbin_rustc := ctx.ModuleForTests("ccBin", "android_arm64_armv8-a").Rule("rustc")
 	ccbin_ld := ctx.ModuleForTests("ccBin", "android_arm64_armv8-a").Rule("ld")
 	ccbin_cc := ctx.ModuleForTests("ccBin", "android_arm64_armv8-a").Rule("cc")
+	rustbin_genlib := ctx.ModuleForTests("rsBin", "android_arm64_armv8-a").Output("generated_rust_staticlib/librustlibs.a")
+	rustbin := ctx.ModuleForTests("rsBin", "android_arm64_armv8-a").Output("unstripped/rsBin")
 
 	if !strings.Contains(libbar.Args["rustcFlags"], "crate-type=rlib") {
 		t.Errorf("missing crate-type for static variant, expecting %#v, rustcFlags: %#v", "rlib", libbar.Args["rustcFlags"])
@@ -513,7 +551,7 @@ func TestRustFFIRlibs(t *testing.T) {
 	// Make sure the static lib is included in the cc command
 	if !strings.Contains(ccbin_ld.Args["libFlags"], "generated_rust_staticlib/librustlibs.a") {
 		t.Errorf("missing generated static library in linker step libFlags, expecting %#v, libFlags: %#v",
-			"ccBin.generated_rust_staticlib.a", ccbin_ld.Args["libFlags"])
+			"generated_rust_staticlib/librustlibs.a", ccbin_ld.Args["libFlags"])
 	}
 
 	// Make sure the static lib includes are in the ld command
@@ -532,6 +570,33 @@ func TestRustFFIRlibs(t *testing.T) {
 	}
 	if !strings.Contains(ccbin_rustc.Args["libFlags"], "--extern bar=") {
 		t.Errorf("Missing direct dependency libbar when writing generated Rust staticlib: %#v", ccbin_rustc.Args["libFlags"])
+	}
+
+	// Make sure the static lib is included in the rustc command
+	if !strings.Contains(rustbin.Args["linkFlags"], "generated_rust_staticlib/librustlibs.a") {
+		t.Errorf("missing generated static library in linker step libFlags in Rust module, expecting %#v, libFlags: %#v",
+			"generated_rust_staticlib/librustlibs.a", rustbin.Args["libFlags"])
+	}
+
+	// Make sure that direct dependencies and indirect whole static dependencies are
+	// propagating correctly for the rlib -> cc_library_static -> rust_* generated library example.
+	if !strings.Contains(rustbin_genlib.Args["libFlags"], "--extern foo=") {
+		t.Errorf("Missing indirect whole_static_lib dependency libfoo from cc static_lib when writing generated Rust staticlib: %#v", rustbin_genlib.Args["libFlags"])
+	}
+	if strings.Contains(rustbin_genlib.Args["libFlags"], "--extern buzz=") {
+		t.Errorf("Indirect rlib dependency libbuzz from cc static_lib found when writing generated Rust staticlib: %#v", rustbin_genlib.Args["libFlags"])
+	}
+	if strings.Contains(rustbin_genlib.Args["libFlags"], "--extern bar=") {
+		t.Errorf("Direct rlib dependency libbar getting included in the generated Rust staticlib: %#v", rustbin_genlib.Args["libFlags"])
+	}
+	if !strings.Contains(rustbin_genlib.Args["libFlags"], "--extern foo_from_rlib=") {
+		t.Errorf("Missing indirect whole_static_lib dependency libfoo_from_rlib from cc static_lib when writing generated Rust staticlib: %#v", rustbin_genlib.Args["libFlags"])
+	}
+	if strings.Contains(rustbin_genlib.Args["libFlags"], "--extern buzz_from_rlib=") {
+		// While static-libs propagate for rust modules, this is not the
+		// expected behavior for cc modules. Thus, libbuzz_from_rlib would
+		// be expected to have to be re-declared as a direct rlib dependency.
+		t.Errorf("Indirect rlib dependency libbuzz_from_rlib from cc static_lib found when writing generated Rust staticlib: %#v", rustbin_genlib.Args["libFlags"])
 	}
 
 	// Test indirect includes propagation

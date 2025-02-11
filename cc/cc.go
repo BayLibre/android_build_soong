@@ -283,9 +283,10 @@ type Deps struct {
 
 // A struct which to collect flags for rlib dependencies
 type RustRlibDep struct {
-	LibPath   android.Path // path to the rlib
-	LinkDirs  []string     // flags required for dependency (e.g. -L flags)
-	CrateName string       // crateNames associated with rlibDeps
+	LibPath      android.Path // path to the rlib
+	LinkDirs     []string     // flags required for dependency (e.g. -L flags)
+	DepRlibPaths []string     // path to rlib deps
+	CrateName    string       // crateNames associated with rlibDeps
 }
 
 func EqRustRlibDeps(a RustRlibDep, b RustRlibDep) bool {
