@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08c8853a_dd97a556",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-11T21:55:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f30b86c_92e0ff44",
+      "revId": "2b7c4b466c94d2b8307d86aefdb906e6ef4d0000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34891d03_0991910e",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-02-11T18:30:28Z",
       "side": 1,
       "message": "This isn\u0027t correct for advanced cases like the system partition. For the system partition, you\u0027re passing the SYSTEM/ subdirectory, but build_image should really run on the \"root\" files with the \"system\" files as a subdirectory of the root.\n\nI think it\u0027s complicated and errorprone to try and rebuild the partitions in a different module type. I liked the previous architecture of having the filesystem module output both a hermetic and non-hermetic image, could we keep that? We just need to do the build_image command in a separate RuleBuilder from the staging directory so that both build_image commands can reuse the same staging directory.",
+      "revId": "2b7c4b466c94d2b8307d86aefdb906e6ef4d0000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba22218_4e61d7c8",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-11T21:55:38Z",
+      "side": 1,
+      "message": "We discussed this offline, and the updated implementation moves this back to filesystem.go. The monolithic rulebuilder cmd has been split to allow each of the .img files to be built independently.",
+      "parentUuid": "34891d03_0991910e",
       "revId": "2b7c4b466c94d2b8307d86aefdb906e6ef4d0000",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
