@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74ac5977_e1948d77",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-11T22:19:58Z",
+      "side": 1,
+      "message": "I would prefer to not use the struct and just have the extra 3 parameters.",
+      "revId": "8869d34971fcd71c923bab1024107881437af028",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e543efe_559ed455",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-11T22:19:58Z",
+      "side": 1,
+      "message": "Just use `.ImplicitOutput()` instead of touching the file. So if build_image doesn\u0027t output the file for whatever reason, we get a ninja failure.",
+      "range": {
+        "startLine": 854,
+        "startChar": 19,
+        "endLine": 854,
+        "endChar": 58
+      },
+      "revId": "8869d34971fcd71c923bab1024107881437af028",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
