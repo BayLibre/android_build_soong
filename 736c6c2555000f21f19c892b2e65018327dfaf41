@@ -34,6 +34,24 @@
       "parentUuid": "6bb21b03_3b4bd1ce",
       "revId": "736c6c2555000f21f19c892b2e65018327dfaf41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "687a431c_b60b91c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-02-11T21:32:05Z",
+      "side": 1,
+      "message": "soong-modules.csv is generated from modules\u0027 ComplianceMetadataProvider built by function buildComplianceMetadata(), the data collection logic is here: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/compliance_metadata.go;drc\u003d9d1636c29b52981033555fa21937f41f03aa55e1;l\u003d278-307, which prepares the csv file content that is written to file by WriteFileRuleVerbatim.",
+      "parentUuid": "6bb21b03_3b4bd1ce",
+      "revId": "736c6c2555000f21f19c892b2e65018327dfaf41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
