@@ -70,6 +70,30 @@
       },
       "revId": "7f9334ae8086151f6f48d030d1a53203e18c1f0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c70fc0e7_fb95fb50",
+        "filename": "android/register.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-11T00:01:22Z",
+      "side": 1,
+      "message": "Ah I see, updated as recommended.",
+      "parentUuid": "7f3dcc0c_b6f407ab",
+      "range": {
+        "startLine": 195,
+        "startChar": 60,
+        "endLine": 195,
+        "endChar": 65
+      },
+      "revId": "7f9334ae8086151f6f48d030d1a53203e18c1f0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
