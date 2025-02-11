@@ -16,6 +16,24 @@
       "message": "Use `HasDeviceProduct` instead of making a default value.",
       "revId": "60c044b7267e850681f3b0013ba4b6fd19d9dd0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5db6984_158c0f4e",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-11T23:53:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77f6e9f4_f7d016b2",
+      "revId": "60c044b7267e850681f3b0013ba4b6fd19d9dd0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
