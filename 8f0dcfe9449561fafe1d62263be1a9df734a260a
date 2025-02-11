@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9087975c_43ea1dc5",
+        "filename": "phony/phony.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2025-02-11T03:37:17Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "45994814_d125de4e",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "8f0dcfe9449561fafe1d62263be1a9df734a260a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27e32c80_82dee3fa",
@@ -65,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24eee4d_7f4b7d67",
+        "filename": "phony/phony.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2025-02-11T03:37:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27e32c80_82dee3fa",
+      "revId": "8f0dcfe9449561fafe1d62263be1a9df734a260a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7856e20e_985d478c",
@@ -78,6 +120,30 @@
       "writtenOn": "2025-02-10T17:41:24Z",
       "side": 1,
       "message": "`LOCAL_ADDITIONAL_DEPENDENCIES` will be unavailable when building with soong-only mode (m --soong-only). As an alternative to this, can we add the additional deps as a dep of the phony module in `GenerateAndroidBuildActions`\n\n```\ne.g.\nctx.Phony(p.Name(), p.additionalDeps...)\n```",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 4
+      },
+      "revId": "8f0dcfe9449561fafe1d62263be1a9df734a260a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b59b07_19fb7315",
+        "filename": "phony/phony.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2025-02-11T03:37:17Z",
+      "side": 1,
+      "message": "Done. I needed both.",
+      "parentUuid": "7856e20e_985d478c",
       "range": {
         "startLine": 91,
         "startChar": 3,
