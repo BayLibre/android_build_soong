@@ -16,6 +16,7 @@ package build_flags
 
 import (
 	"android/soong/android"
+	"fmt"
 )
 
 // A singleton module that collects all of the build flags declared in the
@@ -120,4 +121,24 @@ func (this *allBuildFlagDeclarationsSingleton) MakeVars(ctx android.MakeVarsCont
 		ctx.DistForGoalWithFilename(goal, this.configsBinaryProtoPath, "build_flags/all_release_config_contributions.pb")
 		ctx.DistForGoalWithFilename(goal, this.configsTextProtoPath, "build_flags/all_release_config_contributions.textproto")
 	}
+
+	flagsDir := android.PathForOutput(ctx, "release-config")
+	baseAllRelease := fmt.Sprintf("all_release_configs-%s", ctx.Config().DeviceProduct())
+
+	distAllReleaseConfigsArtifact := func(ext string) {
+		ctx.DistForGoalWithFilename(
+			"droid",
+			flagsDir.Join(ctx, fmt.Sprintf("%s.%s", baseAllRelease, ext)),
+			fmt.Sprintf("build_flags/all_release_configs.%s", ext),
+		)
+	}
+
+	distAllReleaseConfigsArtifact("pb")
+	distAllReleaseConfigsArtifact("textproto")
+	distAllReleaseConfigsArtifact("json")
+	ctx.DistForGoalWithFilename(
+		"droid",
+		flagsDir.Join(ctx, fmt.Sprintf("inheritance_graph-%s.dot", ctx.Config().DeviceProduct())),
+		fmt.Sprintf("build_flags/inheritance_graph-%s.dot", ctx.Config().DeviceProduct()),
+	)
 }
