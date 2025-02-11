@@ -34,6 +34,24 @@
       "parentUuid": "09ecb6c4_b52e2500",
       "revId": "070fcefbeb75891796f859d3f6d7c6fcea29a8d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8961f475_7d6751f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-02-11T10:11:06Z",
+      "side": 1,
+      "message": "Ah I see, I skipped over the partitionType \u003d\u003d \"vbmeta\" block, after a quick glance I\u0027d say removal is probably better?\nWon\u0027t fix anything sadly...",
+      "parentUuid": "b028d6a6_c6c4f16f",
+      "revId": "070fcefbeb75891796f859d3f6d7c6fcea29a8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
