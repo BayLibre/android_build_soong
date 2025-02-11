@@ -361,10 +361,6 @@ func (fs fsType) IsUnknown() bool {
 type FilesystemInfo struct {
 	// The built filesystem image
 	Output android.Path
-	// An additional hermetic filesystem image.
-	// e.g. this will contain inodes with pinned timestamps.
-	// This will be copied to target_files.zip
-	OutputHermetic android.Path
 	// A text file containing the list of paths installed on the partition.
 	FileListFile android.Path
 	// The root staging directory used to build the output filesystem. If consuming this, make sure
@@ -376,9 +372,6 @@ type FilesystemInfo struct {
 	// in ninja. In many cases this is the same as RootDir, only in the system partition is it
 	// different. There, it points to the "system" sub-directory of RootDir.
 	RebasedDir android.Path
-	// A text file with block data of the .img file
-	// This is an implicit output of `build_image`
-	MapFile android.Path
 	// Name of the module that produced this FilesystemInfo origionally. (though it may be
 	// re-exported by super images or boot images)
 	ModuleName string
@@ -538,14 +531,11 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	f.buildAconfigFlagsFiles(ctx, builder, specs, rebasedDir, &fullInstallPaths)
 	f.filesystemBuilder.BuildLinkerConfigFile(ctx, builder, rebasedDir, &fullInstallPaths)
 
-	var mapFile android.Path
-	var outputHermetic android.Path
 	var buildImagePropFile android.Path
 	var buildImagePropFileDeps android.Paths
 	switch f.fsType(ctx) {
 	case ext4Type, erofsType, f2fsType:
-		f.output, outputHermetic, buildImagePropFile, buildImagePropFileDeps = f.buildImageUsingBuildImage(ctx, builder, rootDir, rebasedDir)
-		mapFile = f.getMapFile(ctx)
+		f.output, buildImagePropFile, buildImagePropFileDeps = f.buildImageUsingBuildImage(ctx, builder, rootDir, rebasedDir)
 	case compressedCpioType:
 		f.output = f.buildCpioImage(ctx, builder, rootDir, true)
 	case cpioType:
@@ -567,11 +557,9 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	fsInfo := FilesystemInfo{
 		Output:                 f.output,
-		OutputHermetic:         outputHermetic,
 		FileListFile:           fileListFile,
 		RootDir:                rootDir,
 		RebasedDir:             rebasedDir,
-		MapFile:                mapFile,
 		ModuleName:             ctx.ModuleName(),
 		BuildImagePropFile:     buildImagePropFile,
 		BuildImagePropFileDeps: buildImagePropFileDeps,
@@ -613,11 +601,6 @@ func (f *filesystem) setVbmetaPartitionProvider(ctx android.ModuleContext) {
 		PublicKey:             extractedPublicKey,
 		Output:                f.output,
 	})
-}
-
-func (f *filesystem) getMapFile(ctx android.ModuleContext) android.WritablePath {
-	// create the filepath by replacing the extension of the corresponding img file
-	return android.PathForModuleOut(ctx, f.installFileName()).ReplaceExtension(ctx, "map")
 }
 
 func (f *filesystem) validateVintfFragments(ctx android.ModuleContext) {
@@ -788,7 +771,28 @@ func (f *filesystem) buildImageUsingBuildImage(
 	builder *android.RuleBuilder,
 	rootDir android.OutputPath,
 	rebasedDir android.OutputPath,
-) (android.Path, android.Path, android.Path, android.Paths) {
+) (android.Path, android.Path, android.Paths) {
+	output := android.PathForModuleOut(ctx, f.installFileName())
+	propFile, toolDeps := f.buildPropFile(ctx)
+	addBuildImageToRuleBuilder(ctx, builder, rootDir, output, propFile, toolDeps)
+	if f.properties.Partition_size != nil {
+		assertMaxImageSize(builder, output, *f.properties.Partition_size, false)
+	}
+
+	// rootDir is not deleted. Might be useful for quick inspection.
+	builder.Build("build_filesystem_image", fmt.Sprintf("Creating filesystem %s", f.BaseModuleName()))
+
+	return output, propFile, toolDeps
+}
+
+func addBuildImageToRuleBuilder(
+	ctx android.ModuleContext,
+	builder *android.RuleBuilder,
+	rootDir android.Path,
+	output android.WritablePath,
+	propFile android.Path,
+	toolDeps android.Paths,
+) {
 	// run host_init_verifier
 	// Ideally we should have a concept of pluggable linters that verify the generated image.
 	// While such concept is not implement this will do.
@@ -797,16 +801,12 @@ func (f *filesystem) buildImageUsingBuildImage(
 		BuiltTool("host_init_verifier").
 		FlagWithArg("--out_system=", rootDir.String()+"/system")
 
-	propFile, toolDeps := f.buildPropFile(ctx)
-
 	// Most of the time, if build_image were to call a host tool, it accepts the path to the
 	// host tool in a field in the prop file. However, it doesn't have that option for fec, which
 	// it expects to just be on the PATH. Add fec to the PATH.
 	fec := ctx.Config().HostToolPath(ctx, "fec")
 	pathToolDirs := []string{filepath.Dir(fec.String())}
 
-	output := android.PathForModuleOut(ctx, f.installFileName())
-	builder.Command().Text("touch").Output(f.getMapFile(ctx))
 	builder.Command().
 		Textf("PATH=%s:$PATH", strings.Join(pathToolDirs, ":")).
 		BuiltTool("build_image").
@@ -816,33 +816,6 @@ func (f *filesystem) buildImageUsingBuildImage(
 		Implicit(fec).
 		Output(output).
 		Text(rootDir.String()) // directory where to find fs_config_files|dirs
-
-	// TODO (b/393203512): Re-enable hermetic img file creation for target_files.zip
-	// Add an additional cmd to create a hermetic img file. This will contain pinned timestamps e.g.
-	//propFilePinnedTimestamp := android.PathForModuleOut(ctx, "for_target_files", "prop")
-	//builder.Command().Textf("cat").Input(propFile).Flag(">").Output(propFilePinnedTimestamp).
-	//	Textf(" && echo use_fixed_timestamp=true >> %s", propFilePinnedTimestamp).
-	//	Textf(" && echo block_list=%s >> %s", f.getMapFile(ctx).String(), propFilePinnedTimestamp) // mapfile will be an implicit output
-
-	//outputHermetic := android.PathForModuleOut(ctx, "for_target_files", f.installFileName())
-	//builder.Command().
-	//	Textf("PATH=%s:$PATH", strings.Join(pathToolDirs, ":")).
-	//	BuiltTool("build_image").
-	//	Text(rootDir.String()). // input directory
-	//	Flag(propFilePinnedTimestamp.String()).
-	//	Implicits(toolDeps).
-	//	Implicit(fec).
-	//	Output(outputHermetic).
-	//	Text(rootDir.String()) // directory where to find fs_config_files|dirs
-
-	if f.properties.Partition_size != nil {
-		assertMaxImageSize(builder, output, *f.properties.Partition_size, false)
-	}
-
-	// rootDir is not deleted. Might be useful for quick inspection.
-	builder.Build("build_filesystem_image", fmt.Sprintf("Creating filesystem %s", f.BaseModuleName()))
-
-	return output, nil, propFile, toolDeps
 }
 
 func (f *filesystem) buildFileContexts(ctx android.ModuleContext) android.Path {

@@ -151,7 +151,7 @@ func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 	}
 
-	//a.buildTargetFilesZip(ctx) TODO(b/393203512): re-enable target_files.zip
+	a.buildTargetFilesZip(ctx)
 	var deps []android.Path
 	if proptools.String(a.partitionProps.Super_partition_name) != "" {
 		superImage := ctx.GetDirectDepProxyWithTag(*a.partitionProps.Super_partition_name, superPartitionDepTag)
@@ -288,6 +288,7 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 		}
 	}
 
+	var imgFilesForTargetFiles android.Paths
 	for _, toCopy := range filesystemsToCopy {
 		rootDirString := toCopy.fsInfo.RootDir.String()
 		if toCopy.destSubdir == "SYSTEM" {
@@ -303,7 +304,9 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 			// Create the ROOT partition in target_files.zip
 			builder.Command().Textf("rsync --links --exclude=system/* %s/ -r %s/ROOT", toCopy.fsInfo.RootDir, targetFilesDir.String())
 		}
+		a.hermeticImageCopiesForTargetZip(ctx, builder, toCopy.fsInfo, targetFilesDir.Join(ctx, toCopy.destSubdir))
 	}
+
 	// Copy cmdline, kernel etc. files of boot images
 	if a.partitionProps.Vendor_boot_partition_name != nil {
 		bootImg := ctx.GetDirectDepProxyWithTag(proptools.String(a.partitionProps.Vendor_boot_partition_name), filesystemDepTag)
@@ -339,7 +342,7 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 		builder.Command().Textf("cp ").Input(android.PathForModuleSrc(ctx, *a.deviceProps.Android_info)).Textf(" %s/OTA/android-info.txt", targetFilesDir)
 	}
 
-	a.copyImagesToTargetZip(ctx, builder, targetFilesDir)
+	a.copyImagesToTargetZip(ctx, builder, targetFilesDir, imgFilesForTargetFiles)
 	a.copyMetadataToTargetZip(ctx, builder, targetFilesDir)
 
 	builder.Command().
@@ -352,11 +355,39 @@ func (a *androidDevice) buildTargetFilesZip(ctx android.ModuleContext) {
 	builder.Build("target_files_"+ctx.ModuleName(), "Build target_files.zip")
 }
 
-func (a *androidDevice) copyImagesToTargetZip(ctx android.ModuleContext, builder *android.RuleBuilder, targetFilesDir android.WritablePath) {
+func (a *androidDevice) hermeticImageCopiesForTargetZip(ctx android.ModuleContext, builder *android.RuleBuilder, fsInfo FilesystemInfo, rootDir android.Path) android.Paths {
+	if fsInfo.BuildImagePropFile == nil {
+		return nil
+	}
+	// Declare a mapFile. This will be an implicit output of build_image.
+	mapFile := android.PathForModuleOut(ctx, "for_target_files", fsInfo.Output.Base()).ReplaceExtension(ctx, "map")
+	propFilePinnedTimestamp := android.PathForModuleOut(ctx, "for_target_files", fsInfo.Output.Base()).ReplaceExtension(ctx, "prop")
+	// Use the build.prop of the primary build_image invocation, but append a use_fixed_timestamp=true
+	builder.Command().
+		Textf("cat").Input(fsInfo.BuildImagePropFile).Flag(">").Output(propFilePinnedTimestamp).
+		Textf(" && echo use_fixed_timestamp=true >> %s", propFilePinnedTimestamp).
+		Textf(" && echo block_list=%s >> %s", mapFile, propFilePinnedTimestamp).
+		ImplicitOutput(mapFile) // mapfile will be an implicit output of the build_image invocation
+	hermeticImage := android.PathForModuleOut(ctx, fsInfo.Output.Base())
+	addBuildImageToRuleBuilder(
+		ctx,
+		builder,
+		rootDir,
+		hermeticImage,
+		propFilePinnedTimestamp,
+		fsInfo.BuildImagePropFileDeps,
+	)
+	return []android.Path{hermeticImage, mapFile}
+}
+
+func (a *androidDevice) copyImagesToTargetZip(ctx android.ModuleContext, builder *android.RuleBuilder, targetFilesDir android.WritablePath, imgFilesForTargetFiles android.Paths) {
 	// Create an IMAGES/ subdirectory
 	builder.Command().Textf("mkdir -p %s/IMAGES", targetFilesDir.String())
 	if a.deviceProps.Bootloader != nil {
 		builder.Command().Textf("cp ").Input(android.PathForModuleSrc(ctx, proptools.String(a.deviceProps.Bootloader))).Textf(" %s/IMAGES/bootloader", targetFilesDir.String())
+	}
+	for _, f := range imgFilesForTargetFiles {
+		builder.Command().Textf("cp ").Input(f).Textf(" %s/IMAGES/", targetFilesDir.String())
 	}
 	// Copy the filesystem ,boot and vbmeta img files to IMAGES/
 	ctx.VisitDirectDepsProxyWithTag(filesystemDepTag, func(child android.ModuleProxy) {
@@ -374,18 +405,6 @@ func (a *androidDevice) copyImagesToTargetZip(ctx android.ModuleContext, builder
 			ctx.ModuleErrorf("Module %s does not provide an .img file output for target_files.zip", child.Name())
 		}
 	})
-
-	if a.partitionProps.Super_partition_name != nil {
-		superPartition := ctx.GetDirectDepProxyWithTag(*a.partitionProps.Super_partition_name, superPartitionDepTag)
-		if info, ok := android.OtherModuleProvider(ctx, superPartition, SuperImageProvider); ok {
-			for _, partition := range android.SortedKeys(info.SubImageInfo) {
-				builder.Command().Textf("cp ").Input(info.SubImageInfo[partition].OutputHermetic).Textf(" %s/IMAGES/", targetFilesDir.String())
-				builder.Command().Textf("cp ").Input(info.SubImageInfo[partition].MapFile).Textf(" %s/IMAGES/", targetFilesDir.String())
-			}
-		} else {
-			ctx.ModuleErrorf("Super partition %s does set SuperImageProvider\n", superPartition.Name())
-		}
-	}
 }
 
 func (a *androidDevice) copyMetadataToTargetZip(ctx android.ModuleContext, builder *android.RuleBuilder, targetFilesDir android.WritablePath) {
