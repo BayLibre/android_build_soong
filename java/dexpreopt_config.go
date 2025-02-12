@@ -67,16 +67,15 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 
 		// ART boot image for testing only. Do not rely on it to make any build-time decision.
 		artCfg := bootImageConfig{
-			name:                  artBootImageName,
-			enabledIfExists:       "art-bootclasspath-fragment",
-			stem:                  bootImageStem,
-			installDir:            "apex/art_boot_images/javalib",
-			modules:               global.TestOnlyArtBootImageJars,
-			preloadedClassesFile:  "art/build/boot/preloaded-classes",
-			compilerFilter:        "speed-profile",
-			singleImage:           false,
-			profileImports:        profileImports,
-			profileProviderModule: "art-bootclasspath-fragment",
+			name:                 artBootImageName,
+			enabledIfExists:      "art-bootclasspath-fragment",
+			stem:                 bootImageStem,
+			installDir:           "apex/art_boot_images/javalib",
+			modules:              global.TestOnlyArtBootImageJars,
+			preloadedClassesFile: "art/build/boot/preloaded-classes",
+			compilerFilter:       "speed-profile",
+			singleImage:          false,
+			profileImports:       profileImports,
 		}
 
 		// Framework config for the boot image extension.
