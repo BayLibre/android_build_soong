@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a15160b_b48a6d37",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-02-12T16:27:14Z",
+      "side": 1,
+      "message": "Whoops, this got added by mistake but is unused. I\u0027ll make a note to clean this up in a follow-on CL.",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 288,
+        "endChar": 22
+      },
+      "revId": "0c625477110dd61c9ec3146e9c28d1e44a8ab8ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
