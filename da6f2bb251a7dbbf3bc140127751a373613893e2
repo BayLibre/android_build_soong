@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b00ee0_b187390f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-12T18:14:45Z",
+      "side": 1,
+      "message": "There are still some [diffs](https://diff.googleplex.com/#key\u003dNdcCgCSDo82d) in the entries. I\u0027ll work on resolving these in a follow up.",
+      "revId": "da6f2bb251a7dbbf3bc140127751a373613893e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
