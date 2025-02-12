@@ -34,6 +34,24 @@
       "parentUuid": "923fb69b_7b250b87",
       "revId": "ca4f669d8e9ff19da973d23deee0583404e78a76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e53eaa_c063daa4",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-12T21:11:54Z",
+      "side": 1,
+      "message": "Good catch. I moved this inside the `if proptools.Bool(a.deviceProps.Ab_ota_updater)` block",
+      "parentUuid": "ea0f76bd_71185a8f",
+      "revId": "ca4f669d8e9ff19da973d23deee0583404e78a76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
