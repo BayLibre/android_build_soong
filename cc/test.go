@@ -442,6 +442,9 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 			if standaloneTestDep.ToGob().SrcPath == nil {
 				continue
 			}
+			if standaloneTestDep.ToGob().SkipInstall {
+				continue
+			}
 			test.binaryDecorator.baseInstaller.installStandaloneTestDep(ctx, standaloneTestDep)
 		}
 	}
