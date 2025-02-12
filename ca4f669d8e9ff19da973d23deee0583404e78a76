@@ -16,6 +16,24 @@
       "message": "nit: should we [check](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l\u003d6812;drc\u003d9ea8ad9232cef4d0a24d70133b1b9d2ce2defe5f) `AB_OTA_UPDATER`?",
       "revId": "ca4f669d8e9ff19da973d23deee0583404e78a76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea0f76bd_71185a8f",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-12T20:46:24Z",
+      "side": 1,
+      "message": "Yeah, this should probably be moved to the if on line 418.",
+      "parentUuid": "923fb69b_7b250b87",
+      "revId": "ca4f669d8e9ff19da973d23deee0583404e78a76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
