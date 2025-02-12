@@ -16,6 +16,46 @@
       "message": "There are still some [diffs](https://diff.googleplex.com/#key\u003dNdcCgCSDo82d) in the entries. I\u0027ll work on resolving these in a follow up.",
       "revId": "da6f2bb251a7dbbf3bc140127751a373613893e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e3cd08_80217170",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-12T18:35:08Z",
+      "side": 1,
+      "message": "Spandan is making system_other also export a FilesystemInfo in aosp/3489333, so I think you\u0027ll have to nil-check these variables.",
+      "revId": "da6f2bb251a7dbbf3bc140127751a373613893e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8700e37b_9624e464",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-12T18:35:08Z",
+      "side": 1,
+      "message": "In aosp/3489814, spandan is breaking up the staging dir and the image build rules, so you can depend on a staging dir timestamp instead of the final image. Could you rebase and depend on that?",
+      "range": {
+        "startLine": 622,
+        "startChar": 91,
+        "endLine": 622,
+        "endChar": 97
+      },
+      "revId": "da6f2bb251a7dbbf3bc140127751a373613893e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
