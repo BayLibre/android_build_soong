@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6922ebe_f5b596b8",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2025-02-12T10:46:06Z",
+      "side": 1,
+      "message": "\u003e Iirc the need for this option stemmed from that R8 may add its own generated methods to classes as public or protected\n\nThis does not need to be R8 own generated public/protected methods. For example, if a class `T extends S` is kept, then this does not prohibit class merging of `S`. If `S` is merged with other classes that have public/protected methods then they would effetively be added to `S`.\n\nSetting this option prohibits this kind of class merging.\n\n\u003e which would allow external parties to find them through reflection, which we do not want in the boot classpath. Is that correct?\n\nI think the problem is broader than just reflection. If public/protected methods are accidentally added to bootclasspath classes, then apps that inherit from such bootclasspath classes now get these extra virtual methods.\n\nThis could have some subtle side effects. For example, if a virtual method `foo` is added to a bootclasspath class `S` and an app implements a class `T extends S`, which itself declares a method `foo`, then `T.foo` now overrides `S.foo`, which may change the semantics of dynamic dispatch.\n\n\u003e Can you please make it more clear?\n\nIt is not quite clear to me what you mean by the inverse of `-keep ...`.\n\nSetting this option ensures that a class `T` won\u0027t have other public/protected methods than `T` had in the input to R8 (transitively, i.e., including all methods on `T`s supertypes). I find that \"R8 will not add public or protected methods to the API surface\" is a synonym for this. Can you clarify what you think would help make this more clear?",
+      "parentUuid": "8522d4c3_8ae5d10c",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 76
+      },
+      "revId": "3fba1834d4b30b017aef4c7a5d93b2f1e427a01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7ff3fcd_836dce82",
         "filename": "java/dex.go",
         "patchSetId": 1
@@ -61,6 +85,30 @@
           ]
         }
       ],
+      "revId": "3fba1834d4b30b017aef4c7a5d93b2f1e427a01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "701982a4_64480f83",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2025-02-12T10:46:06Z",
+      "side": 1,
+      "message": "I agree. Updated the comment.",
+      "parentUuid": "f7ff3fcd_836dce82",
+      "range": {
+        "startLine": 67,
+        "startChar": 68,
+        "endLine": 67,
+        "endChar": 75
+      },
       "revId": "3fba1834d4b30b017aef4c7a5d93b2f1e427a01f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
