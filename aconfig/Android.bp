@@ -33,12 +33,24 @@ bootstrap_go_package {
 
 // All FlaggedApi flags associated with platform API.
 // By default this uses the platform APIs associated with android.jar
+<<<<<<< HEAD
 // but other verticals/platforms can override via soong config setting.
 all_aconfig_declarations {
     name: "all_aconfig_declarations",
     api_signature_files: select(soong_config_variable("android_aconfig", "opt_platform_api_srcs"), {
         default: [
             ":frameworks-base-api-current.txt",
+=======
+// but other verticals/platforms can override via soong config setting.
+all_aconfig_declarations {
+    name: "all_aconfig_declarations",
+    visibility: [
+        "//vendor:__subpackages__", // for vendor extensions
+    ],
+    api_signature_files: select(soong_config_variable("android_aconfig", "opt_platform_api_srcs"), {
+        "wear_sdk_api_srcs": [
+            ":wear-sdk-api-current.txt",
+>>>>>>> PATCH
             ":frameworks-base-api-system-current.txt",
             ":frameworks-base-api-system-server-current.txt",
             ":frameworks-base-api-module-lib-current.txt",
