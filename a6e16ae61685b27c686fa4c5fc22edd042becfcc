@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b111150c_01aa89ef",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-12T18:28:21Z",
+      "side": 1,
+      "message": "This should come from the properties on the modules, not the config.\n\nThe filesystems already know the compress hints, could you add it to FilesystemInfo and then get the compress hints from the system image here?",
+      "range": {
+        "startLine": 425,
+        "startChar": 50,
+        "endLine": 425,
+        "endChar": 92
+      },
+      "revId": "a6e16ae61685b27c686fa4c5fc22edd042becfcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
