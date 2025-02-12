@@ -34,6 +34,24 @@
       "parentUuid": "b791e4bb_bb5f5e7d",
       "revId": "a67d541b6384def71b7836c4b08f55c77a2be43d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5cbb9b2_142c13ca",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-12T19:12:23Z",
+      "side": 1,
+      "message": "I see. Why are we using `ctx.DeviceConfig().ProductPath()`? The filesystem module should stand on its own and not depend on the configuration. It seems like you\u0027re using it as an \"if the product partition is on the system partition\". Could we instead check for the precense of these sub-folders in the staging directory to decide to build the aconfig flags?",
+      "parentUuid": "9424e1d0_a9e21360",
+      "revId": "a67d541b6384def71b7836c4b08f55c77a2be43d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
