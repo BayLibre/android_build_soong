@@ -3291,21 +3291,16 @@ func (j *Import) OutgoingDepIsInSameApex(tag blueprint.DependencyTag) bool {
 }
 
 // Implements android.ApexModule
-func (j *Import) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
-	sdkVersion android.ApiLevel) error {
+func (j *Import) MinSdkVersionSupported(ctx android.BaseModuleContext) android.ApiLevel {
 	sdkVersionSpec := j.SdkVersion(ctx)
 	minSdkVersion := j.MinSdkVersion(ctx)
-	if !minSdkVersion.Specified() {
-		return fmt.Errorf("min_sdk_version is not specified")
-	}
+
 	// If the module is compiling against core (via sdk_version), skip comparison check.
 	if sdkVersionSpec.Kind == android.SdkCore {
-		return nil
+		return android.AllApiLevel
 	}
-	if minSdkVersion.GreaterThan(sdkVersion) {
-		return fmt.Errorf("newer SDK(%v)", minSdkVersion)
-	}
-	return nil
+
+	return minSdkVersion
 }
 
 // requiredFilesFromPrebuiltApexForImport returns information about the files that a java_import or
@@ -3521,10 +3516,8 @@ func (j *DexImport) DexJarBuildPath(ctx android.ModuleErrorfContext) OptionalDex
 var _ android.ApexModule = (*DexImport)(nil)
 
 // Implements android.ApexModule
-func (j *DexImport) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
-	sdkVersion android.ApiLevel) error {
-	// we don't check prebuilt modules for sdk_version
-	return nil
+func (m *DexImport) MinSdkVersionSupported(ctx android.BaseModuleContext) android.ApiLevel {
+	return android.AllApiLevel
 }
 
 // dex_import imports a `.jar` file containing classes.dex files.
