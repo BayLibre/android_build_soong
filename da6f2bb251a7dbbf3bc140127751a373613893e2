@@ -146,6 +146,30 @@
       },
       "revId": "da6f2bb251a7dbbf3bc140127751a373613893e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9400bdaf_a27d4235",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-12T18:51:01Z",
+      "side": 1,
+      "message": "Given that https://r.android.com/3489333 is still going through presubmits and would take some time to auto merge into downstream branches, I\u0027ll submit this as is and switch to using timestamps in a follow up.",
+      "parentUuid": "fe17f3cf_83cb60b9",
+      "range": {
+        "startLine": 622,
+        "startChar": 91,
+        "endLine": 622,
+        "endChar": 97
+      },
+      "revId": "da6f2bb251a7dbbf3bc140127751a373613893e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
