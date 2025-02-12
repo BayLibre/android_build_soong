@@ -140,6 +140,24 @@
       "parentUuid": "57411d9e_51eafdf8",
       "revId": "927d4008143b7bba9c8a9c069d2e241cec25eb25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd22159_582d7d2d",
+        "filename": "aconfig/all_aconfig_declarations_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2025-02-12T17:37:09Z",
+      "side": 1,
+      "message": "Yeah. This is fine with me.  I don\u0027t love it, but let\u0027s move on.",
+      "parentUuid": "99c2b52e_8b475a7d",
+      "revId": "927d4008143b7bba9c8a9c069d2e241cec25eb25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
