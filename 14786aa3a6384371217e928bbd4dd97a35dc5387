@@ -16,6 +16,24 @@
       "message": "You could\u0027ve relied on the built in `dists {}` property to do this, if you were going to require the user specify a dists_dir property anyways.",
       "revId": "14786aa3a6384371217e928bbd4dd97a35dc5387",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d3459f0_8c6f11d6",
+        "filename": "aconfig/all_aconfig_declarations_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-12T23:43:45Z",
+      "side": 1,
+      "message": "PTAL at [this discussion](https://r.android.com/c/platform/build/soong/+/3473459/2/aconfig/all_aconfig_declarations_extension.go#38). Unfortunately I believe this was unavoidable. But please let me know if there is an alternative available.",
+      "parentUuid": "b3c86478_6e37418f",
+      "revId": "14786aa3a6384371217e928bbd4dd97a35dc5387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
