@@ -16,6 +16,24 @@
       "message": "Just to clarify, there are no usages of these new code paths currently, right? We don\u0027t currently have any soong-built partitions that contain other partitions in this way.",
       "revId": "a67d541b6384def71b7836c4b08f55c77a2be43d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9424e1d0_a9e21360",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2025-02-12T00:58:42Z",
+      "side": 1,
+      "message": "gsi-* targets are using this path. They include system_ext and product partitions in the system partition that is defined in Android.bp.",
+      "parentUuid": "b791e4bb_bb5f5e7d",
+      "revId": "a67d541b6384def71b7836c4b08f55c77a2be43d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
