@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c6a0ac_935d642b",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-02-12T23:36:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ace690c4_53f3a0bf",
+      "revId": "eaf488ba79dc86aa0cef7f2b528b8669fa575031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0be28e54_4ca239f4",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e709e752_0383bd85",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-02-12T23:36:40Z",
+      "side": 1,
+      "message": "done, previously I couldn\u0027t figure out a mutator to set the provider since IsDepInSameApex is called very early, now I set it in apex_unqiue.",
+      "parentUuid": "0be28e54_4ca239f4",
+      "revId": "eaf488ba79dc86aa0cef7f2b528b8669fa575031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73897bef_3de38dee",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-02-12T21:45:28Z",
       "side": 1,
       "message": "Can this be done in `ApexModuleBase.ApexTransitionMutatorMutate`?  Then it would be available much earlier.",
+      "revId": "eaf488ba79dc86aa0cef7f2b528b8669fa575031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4510a92_faefe85a",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2314,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-02-12T23:36:40Z",
+      "side": 1,
+      "message": "Done. I had to move it to apex_unique since IsDepInSameApex is called ealier than apex_mutate.",
+      "parentUuid": "73897bef_3de38dee",
       "revId": "eaf488ba79dc86aa0cef7f2b528b8669fa575031",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
