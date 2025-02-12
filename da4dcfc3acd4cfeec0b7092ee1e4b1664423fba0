@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7734b8_0fcedd64",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-12T19:04:24Z",
+      "side": 1,
+      "message": "I\u0027d recommend using `getFsInfos()[\"system\"]` to get the system filesysteminfo regardless of if there\u0027s a super image or not. And then you don\u0027t need to make the super image re-export it explicitly.",
+      "revId": "da4dcfc3acd4cfeec0b7092ee1e4b1664423fba0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
