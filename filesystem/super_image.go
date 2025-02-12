@@ -114,6 +114,10 @@ type SuperImageInfo struct {
 	// Mapping from the sub-partition type to its re-exported FileSystemInfo providers from the
 	// sub-partitions.
 	SubImageInfo map[string]FilesystemInfo
+
+	// Path to compress hints file for erofs filesystems
+	// This will be nil for other fileystems like ext4
+	ErofsCompressHints android.Path
 }
 
 var SuperImageProvider = blueprint.NewProvider[SuperImageInfo]()
@@ -159,7 +163,7 @@ func (s *superImage) DepsMutator(ctx android.BottomUpMutatorContext) {
 }
 
 func (s *superImage) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	miscInfo, deps, subImageInfos := s.buildMiscInfo(ctx)
+	miscInfo, deps, subImageInfos, erofsCompressHints := s.buildMiscInfo(ctx)
 	builder := android.NewRuleBuilder(pctx, ctx)
 	output := android.PathForModuleOut(ctx, s.installFileName())
 	lpMake := ctx.Config().HostToolPath(ctx, "lpmake")
@@ -173,8 +177,9 @@ func (s *superImage) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		Output(output)
 	builder.Build("build_super_image", fmt.Sprintf("Creating super image %s", s.BaseModuleName()))
 	android.SetProvider(ctx, SuperImageProvider, SuperImageInfo{
-		SuperImage:   output,
-		SubImageInfo: subImageInfos,
+		SuperImage:         output,
+		SubImageInfo:       subImageInfos,
+		ErofsCompressHints: erofsCompressHints,
 	})
 	ctx.SetOutputFiles([]android.Path{output}, "")
 	ctx.CheckbuildFile(output)
@@ -184,8 +189,9 @@ func (s *superImage) installFileName() string {
 	return "super.img"
 }
 
-func (s *superImage) buildMiscInfo(ctx android.ModuleContext) (android.Path, android.Paths, map[string]FilesystemInfo) {
+func (s *superImage) buildMiscInfo(ctx android.ModuleContext) (android.Path, android.Paths, map[string]FilesystemInfo, android.Path) {
 	var miscInfoString strings.Builder
+	var erofsCompressHints android.Path
 	addStr := func(name string, value string) {
 		miscInfoString.WriteString(name)
 		miscInfoString.WriteRune('=')
@@ -283,6 +289,9 @@ func (s *superImage) buildMiscInfo(ctx android.ModuleContext) (android.Path, and
 			ctx.ModuleErrorf("Already set subimageInfo for %q", partitionType)
 		}
 		subImageInfo[partitionType] = info
+		if partitionType == "system" {
+			erofsCompressHints = info.ErofsCompressHints
+		}
 	}
 
 	// Build partitionToImagePath, because system partition may need system_other
@@ -344,5 +353,5 @@ func (s *superImage) buildMiscInfo(ctx android.ModuleContext) (android.Path, and
 
 	miscInfo := android.PathForModuleOut(ctx, "misc_info.txt")
 	android.WriteFileRule(ctx, miscInfo, miscInfoString.String(), missingPartitionErrorMessageFile)
-	return miscInfo, deps, subImageInfo
+	return miscInfo, deps, subImageInfo, erofsCompressHints
 }
