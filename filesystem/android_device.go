@@ -237,6 +237,20 @@ func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.CheckbuildFile(allImagesStamp)
 
 	a.setVbmetaPhonyTargets(ctx)
+
+	if !ctx.Config().KatiEnabled() {
+		if proptools.Bool(a.deviceProps.Main_device) {
+			a.distFiles(ctx)
+		}
+	}
+}
+
+func (a *androidDevice) distFiles(ctx android.ModuleContext) {
+	fsInfoMap := a.getFsInfos(ctx)
+	for _, partition := range android.SortedKeys(fsInfoMap) {
+		fsInfo := fsInfoMap[partition]
+		ctx.DistForGoal("droidcore-unbundled", fsInfo.InstalledFiles.Json, fsInfo.InstalledFiles.Txt)
+	}
 }
 
 func (a *androidDevice) MakeVars(ctx android.MakeVarsModuleContext) {
