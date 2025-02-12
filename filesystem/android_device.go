@@ -70,7 +70,8 @@ type DeviceProperties struct {
 	// blueprint:"mutated" and still set it from filesystem_creator
 	Main_device *bool
 
-	Ab_ota_updater *bool
+	Ab_ota_updater    *bool
+	Ab_ota_partitions []string
 }
 
 type androidDevice struct {
@@ -430,6 +431,10 @@ func (a *androidDevice) copyMetadataToTargetZip(ctx android.ModuleContext, build
 			ctx.ModuleErrorf("Super partition %s does set SuperImageProvider\n", superPartition.Name())
 		}
 	}
+	// ab_partitions.txt
+	abPartitionsSorted := android.SortedUniqueStrings(a.deviceProps.Ab_ota_partitions)
+	abPartitionsSortedString := proptools.ShellEscape(strings.Join(abPartitionsSorted, "\\n"))
+	builder.Command().Textf("echo -e").Flag(abPartitionsSortedString).Textf(" > %s/META/ab_partitions.txt", targetFilesDir.String())
 }
 
 func (a *androidDevice) getFilesystemInfo(ctx android.ModuleContext, depName string) FilesystemInfo {
