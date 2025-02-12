@@ -16,6 +16,29 @@
       "message": "When --experimental-coverage is enabled, there are: \n\nout/soong/.intermediates/bionic/libc/libc/android_x86_64_silvermont_shared/libc.so\n(skipInstall:true)\n\nand\n\nout/soong/.intermediates/bionic/libc/libc/android_x86_64_silvermont_shared_cov/libc.so\n(skipInstall:false)\n\nonly the latter should be installed as a standalone test dependency.",
       "revId": "037260f713f867e9ea1711c35d07b3c76e1d4eeb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "776b7fa0_979ee948",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-12T20:41:49Z",
+      "side": 1,
+      "message": "Use `.SkipInstall()` instead of `.ToGob().SkipInstall`.",
+      "range": {
+        "startLine": 445,
+        "startChar": 23,
+        "endLine": 445,
+        "endChar": 43
+      },
+      "revId": "037260f713f867e9ea1711c35d07b3c76e1d4eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
