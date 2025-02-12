@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92e66981_32b744c0",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-12T18:43:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3e3cd08_80217170",
+      "revId": "da6f2bb251a7dbbf3bc140127751a373613893e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8700e37b_9624e464",
@@ -48,6 +66,30 @@
       "writtenOn": "2025-02-12T18:35:08Z",
       "side": 1,
       "message": "In aosp/3489814, spandan is breaking up the staging dir and the image build rules, so you can depend on a staging dir timestamp instead of the final image. Could you rebase and depend on that?",
+      "range": {
+        "startLine": 622,
+        "startChar": 91,
+        "endLine": 622,
+        "endChar": 97
+      },
+      "revId": "da6f2bb251a7dbbf3bc140127751a373613893e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6fc4236_1f54e079",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-12T18:43:17Z",
+      "side": 1,
+      "message": "I\u0027ll probably have to call `buildInstalledFiles` in `system_other` module type as well in a follow up change, and `system_other` IIUC does not have an equivalent timestamp. Thus I\u0027d prefer to keep it as is.",
+      "parentUuid": "8700e37b_9624e464",
       "range": {
         "startLine": 622,
         "startChar": 91,
