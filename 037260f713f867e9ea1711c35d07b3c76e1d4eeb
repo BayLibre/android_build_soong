@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "188a32b4_39394ffb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1733763
+      },
+      "writtenOn": "2025-02-12T18:41:09Z",
+      "side": 1,
+      "message": "When --experimental-coverage is enabled, there are: \n\nout/soong/.intermediates/bionic/libc/libc/android_x86_64_silvermont_shared/libc.so\n(skipInstall:true)\n\nand\n\nout/soong/.intermediates/bionic/libc/libc/android_x86_64_silvermont_shared_cov/libc.so\n(skipInstall:false)\n\nonly the latter should be installed as a standalone test dependency.",
+      "revId": "037260f713f867e9ea1711c35d07b3c76e1d4eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
