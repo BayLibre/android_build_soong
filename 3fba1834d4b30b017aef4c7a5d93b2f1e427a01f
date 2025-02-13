@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c760b090_ed33d0ce",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2025-02-13T09:51:53Z",
+      "side": 1,
+      "message": "This option restricts the optimizations that may be made to all classes that are kept (because R8 conservatively needs to treat these as API classes).\n\nFor all API classes in the bootclasspath (i.e., everything that goes into android.jar), I would expect it should be the case that we keep all of these classes and all of their protected and public methods. If not, that seems like a bug to me.\n\nIf all API classes and their public and protected methods are kept, then \"public or protected methods get renamed by not matching any keep rule\" does not happen for any classes in android.jar.\n\nFor all other classes it is fine to rename/obfuscate a public or protected method (for example, methods on an internal helper class or an anonymous inner class).",
+      "parentUuid": "20703543_cbb7c04f",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 76
+      },
+      "revId": "3fba1834d4b30b017aef4c7a5d93b2f1e427a01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7ff3fcd_836dce82",
         "filename": "java/dex.go",
         "patchSetId": 1
