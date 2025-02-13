@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aac5253c_9c77acc1",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2025-02-13T19:39:55Z",
+      "side": 1,
+      "message": "Aha. I wonder if we have to be _that_ strict, but sure, it\u0027s the safest approach. Another variant could be to allow such identifiers to be exposed but with an \"internal\" prefix akin to `__` in C and C++. That\u0027s a different topic, though.\n\nBack to the subject at hand, I got the wrong idea of what \"add\" means here - I thought it meant any addition to the API, including the methods in the input classes. I suggest extending the description to clarify:\n\n\"..., i.e., classes that are kept or have kept subclasses will not expose any methods added by R8 for internal use. That includes renamed methods if obfuscation is enabled.\"\n\nBtw, is it only methods that may come in question - never fields?",
+      "parentUuid": "c760b090_ed33d0ce",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 76
+      },
+      "revId": "3fba1834d4b30b017aef4c7a5d93b2f1e427a01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7ff3fcd_836dce82",
         "filename": "java/dex.go",
         "patchSetId": 1
