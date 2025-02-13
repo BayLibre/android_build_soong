@@ -70,6 +70,24 @@
       "parentUuid": "b5cbb9b2_142c13ca",
       "revId": "a67d541b6384def71b7836c4b08f55c77a2be43d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35ded817_44c5981a",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-13T18:01:00Z",
+      "side": 1,
+      "message": "We you can check if any of the PackagingSpecs will be installed under the other partition\u0027s subdirectories.",
+      "parentUuid": "d0a7ce06_73d581cd",
+      "revId": "a67d541b6384def71b7836c4b08f55c77a2be43d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
