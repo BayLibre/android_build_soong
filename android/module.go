@@ -127,6 +127,8 @@ type Module interface {
 	// WARNING: This should not be used outside build/soong/fsgen
 	// Overrides returns the list of modules which should not be installed if this module is installed.
 	Overrides() []string
+
+	NoFullInstall() bool
 }
 
 // Qualified id for a module
@@ -1270,6 +1272,10 @@ func (m *ModuleBase) ArchSpecific() bool {
 // True if the current variant is a CommonOS variant, false otherwise.
 func (m *ModuleBase) IsCommonOSVariant() bool {
 	return m.commonProperties.CompileOS == CommonOS
+}
+
+func (m *ModuleBase) NoFullInstall() bool {
+	return proptools.Bool(m.commonProperties.No_full_install)
 }
 
 // supportsTarget returns true if the given Target is supported by the current module.
