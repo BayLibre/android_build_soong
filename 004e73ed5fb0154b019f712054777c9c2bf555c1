@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9b6e17c_faa3246d",
+        "filename": "android/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-13T00:01:28Z",
+      "side": 1,
+      "message": "This can be removed now?",
+      "revId": "004e73ed5fb0154b019f712054777c9c2bf555c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
