@@ -36,16 +36,10 @@ const (
 	ninjaWeightListFileName = ".ninja_weight_list"
 )
 
-// Runs ninja with the arguments from the command line, as found in
-// config.NinjaArgs().
-func runNinjaForBuild(ctx Context, config Config) {
-	runNinja(ctx, config, config.NinjaArgs())
-}
-
 // Constructs and runs the Ninja command line with a restricted set of
 // environment variables. It's important to restrict the environment Ninja runs
 // for hermeticity reasons, and to avoid spurious rebuilds.
-func runNinja(ctx Context, config Config, ninjaArgs []string) {
+func runNinjaForBuild(ctx Context, config Config) {
 	ctx.BeginTrace(metrics.PrimaryNinja, "ninja")
 	defer ctx.EndTrace()
 
@@ -94,7 +88,7 @@ func runNinja(ctx Context, config Config, ninjaArgs []string) {
 			"-w", "missingdepfile=err",
 		}
 	}
-	args = append(args, ninjaArgs...)
+	args = append(args, config.NinjaArgs()...)
 
 	var parallel int
 	if config.UseRemoteBuild() {
@@ -250,8 +244,6 @@ func runNinja(ctx Context, config Config, ninjaArgs []string) {
 			"RUST_LOG",
 
 			// SOONG_USE_PARTIAL_COMPILE only determines which half of the rule we execute.
-			// When it transitions true => false, we build phony target "partialcompileclean",
-			// which removes all files that could have been created while it was true.
 			"SOONG_USE_PARTIAL_COMPILE",
 
 			// Directory for ExecutionMetrics
