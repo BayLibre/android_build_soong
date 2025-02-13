@@ -214,12 +214,12 @@ func TestConfiguredJarList(t *testing.T) {
 }
 
 func (p partialCompileFlags) updateEnabled(value bool) partialCompileFlags {
-	p.Enabled = value
+	p.enabled = value
 	return p
 }
 
 func (p partialCompileFlags) updateUseD8(value bool) partialCompileFlags {
-	p.Use_d8 = value
+	p.use_d8 = value
 	return p
 }
 
