@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c11eb8e4_a3b39823",
+        "filename": "android/api_levels.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-13T19:17:27Z",
+      "side": 1,
+      "message": "Can this be `MinApiLevel` instead, and set the number to 1 (at least for now)?  I expect in the future we may raise it to something higher that is the minimum we want to support in the platform, and then raise any parsed `ApiLevel` up to at least `MinApiLevel`.",
+      "revId": "c07364cb4042aa8b8445cc065078d306659210cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
