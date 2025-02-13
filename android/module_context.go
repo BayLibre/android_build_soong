@@ -652,6 +652,7 @@ func (m *moduleContext) packageFile(fullInstallPath InstallPath, srcPath Path, e
 		owner:                 owner,
 		requiresFullInstall:   requiresFullInstall,
 		fullInstallPath:       fullInstallPath,
+		variation:             m.ModuleSubDir(),
 	}
 	m.packagingSpecs = append(m.packagingSpecs, spec)
 	return spec
@@ -792,6 +793,7 @@ func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, src
 		owner:               owner,
 		requiresFullInstall: m.requiresFullInstall(),
 		fullInstallPath:     fullInstallPath,
+		variation:           m.ModuleSubDir(),
 	})
 
 	return fullInstallPath
@@ -842,6 +844,7 @@ func (m *moduleContext) InstallAbsoluteSymlink(installPath InstallPath, name str
 		owner:               owner,
 		requiresFullInstall: m.requiresFullInstall(),
 		fullInstallPath:     fullInstallPath,
+		variation:           m.ModuleSubDir(),
 	})
 
 	return fullInstallPath

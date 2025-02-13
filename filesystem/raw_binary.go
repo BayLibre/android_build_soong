@@ -35,6 +35,8 @@ func init() {
 	pctx.Import("android/soong/cc/config")
 
 	android.RegisterModuleType("raw_binary", rawBinaryFactory)
+
+	pctx.HostBinToolVariable("SoongZipCmd", "soong_zip")
 }
 
 type rawBinary struct {
