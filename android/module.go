@@ -1908,10 +1908,15 @@ type CommonModuleInfo struct {
 	// is used to avoid adding install or packaging dependencies into libraries provided
 	// by apexes.
 	UninstallableApexPlatformVariant bool
-	HideFromMake                     bool
-	SkipInstall                      bool
-	IsStubsModule                    bool
-	Host                             bool
+	// Tests if this module can be installed to APEX as a file. For example, this would return
+	// true for shared libs while return false for static libs because static libs are not
+	// installable module (but it can still be mutated for APEX)
+	IsInstallableToApex bool
+	HideFromMake        bool
+	SkipInstall         bool
+	IsStubsModule       bool
+	Host                bool
+	IsApexModule        bool
 }
 
 var CommonModuleInfoKey = blueprint.NewProvider[CommonModuleInfo]()
@@ -2245,7 +2250,6 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		ReplacedByPrebuilt:               m.commonProperties.ReplacedByPrebuilt,
 		Target:                           m.commonProperties.CompileTarget,
 		SkipAndroidMkProcessing:          shouldSkipAndroidMkProcessing(ctx, m),
-		BaseModuleName:                   m.BaseModuleName(),
 		UninstallableApexPlatformVariant: m.commonProperties.UninstallableApexPlatformVariant,
 		HideFromMake:                     m.commonProperties.HideFromMake,
 		SkipInstall:                      m.commonProperties.SkipInstall,
@@ -2282,9 +2286,14 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		commonData.CanHaveApexVariants = am.CanHaveApexVariants()
 		commonData.NotAvailableForPlatform = am.NotAvailableForPlatform()
 		commonData.NotInPlatform = am.NotInPlatform()
+		commonData.IsInstallableToApex = am.IsInstallableToApex()
+		commonData.IsApexModule = true
 	}
 	if st, ok := m.module.(StubsAvailableModule); ok {
 		commonData.IsStubsModule = st.IsStubsModule()
+	}
+	if mm, ok := m.module.(interface{ BaseModuleName() string }); ok {
+		commonData.BaseModuleName = mm.BaseModuleName()
 	}
 	SetProvider(ctx, CommonModuleInfoKey, commonData)
 	if p, ok := m.module.(PrebuiltInterface); ok && p.Prebuilt() != nil {
