@@ -52,6 +52,24 @@
       "parentUuid": "9424e1d0_a9e21360",
       "revId": "a67d541b6384def71b7836c4b08f55c77a2be43d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a7ce06_73d581cd",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2025-02-13T10:30:31Z",
+      "side": 1,
+      "message": "Yes. This is to see if the partitions are under the `system` partition. But, this is run from `GenerateBuildActions`. Do we have any flags to see in this stage?",
+      "parentUuid": "b5cbb9b2_142c13ca",
+      "revId": "a67d541b6384def71b7836c4b08f55c77a2be43d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
