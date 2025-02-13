@@ -34,6 +34,24 @@
       "parentUuid": "b3c86478_6e37418f",
       "revId": "14786aa3a6384371217e928bbd4dd97a35dc5387",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33946855_3b63b69a",
+        "filename": "aconfig/all_aconfig_declarations_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-13T00:46:05Z",
+      "side": 1,
+      "message": "Technically modules can provide a non-outputfile default dist file. The code for this is tied to AndroidMkEntries but we\u0027d want to separate it from AndroidMkEntries eventually anyways. Example:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/sdk/sdk.go;l\u003d196;drc\u003dcebc5db94652020b62c1d8bee3c6633ab39773bc",
+      "parentUuid": "1d3459f0_8c6f11d6",
+      "revId": "14786aa3a6384371217e928bbd4dd97a35dc5387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
