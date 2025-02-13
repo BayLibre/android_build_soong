@@ -22,6 +22,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"path/filepath"
 	"slices"
 	"strconv"
 	"strings"
@@ -915,6 +916,22 @@ type installDependencyTag struct {
 	android.InstallAlwaysNeededDependencyTag
 	name string
 }
+
+type SymbolInfo struct {
+	Name                 string
+	ModuleDir            string
+	Uninstallable        bool
+	UnstrippedBinaryPath android.Path
+	InstalledStem        string
+	Stem                 string
+	Suffix               string
+}
+type SymbolInfos struct {
+	Symbols []*SymbolInfo
+}
+
+// SymbolInfosProvider provides necessary information to generate the symbols.zip
+var SymbolInfosProvider = blueprint.NewProvider[*SymbolInfos]()
 
 var (
 	genSourceDepTag       = dependencyTag{name: "gen source"}
@@ -2033,6 +2050,56 @@ var (
 	}
 )
 
+func (c *Module) getSymbolInfo(ctx android.ModuleContext, t any, baseInfo *SymbolInfo) *SymbolInfo {
+	if bi, ok := t.(*baseInstaller); ok {
+		if bi.path != (android.InstallPath{}) {
+			path, file := filepath.Split(bi.path.String())
+			stem, suffix, _ := android.SplitFileExt(file)
+			baseInfo.ModuleDir = path
+			baseInfo.Stem = stem
+			baseInfo.Suffix = suffix
+		}
+	} else if ld, ok := t.(*libraryDecorator); ok {
+		if ld.shared() && !ld.BuildStubs() {
+			if ld.unstrippedOutputFile != nil {
+				baseInfo.Uninstallable = !ld.shared()
+				baseInfo.UnstrippedBinaryPath = ld.unstrippedOutputFile
+			}
+			c.getSymbolInfo(ctx, ld.baseInstaller, baseInfo)
+		}
+
+	} else if bd, ok := t.(*binaryDecorator); ok {
+		c.getSymbolInfo(ctx, bd.baseInstaller, baseInfo)
+		baseInfo.Uninstallable = c.IsSkipInstall()
+		baseInfo.UnstrippedBinaryPath = bd.unstrippedOutputFile
+	}
+	return baseInfo
+}
+
+func (c *Module) baseSymbolInfo(ctx android.ModuleContext) *SymbolInfo {
+	return &SymbolInfo{
+		Name:      c.BaseModuleName() + c.Properties.SubName,
+		ModuleDir: ctx.ModuleDir(),
+	}
+}
+
+func (c *Module) setSymbolsInfoProvider(ctx android.ModuleContext) {
+	if !c.IsSkipInstall() {
+		infos := &SymbolInfos{}
+		for _, feature := range c.features {
+			infos.Symbols = append(infos.Symbols, c.getSymbolInfo(ctx, feature, c.baseSymbolInfo(ctx)))
+		}
+		infos.Symbols = append(infos.Symbols, c.getSymbolInfo(ctx, c.compiler, c.baseSymbolInfo(ctx)))
+		infos.Symbols = append(infos.Symbols, c.getSymbolInfo(ctx, c.linker, c.baseSymbolInfo(ctx)))
+		if c.sanitize != nil {
+			infos.Symbols = append(infos.Symbols, c.getSymbolInfo(ctx, c.sanitize, c.baseSymbolInfo(ctx)))
+		}
+		infos.Symbols = append(infos.Symbols, c.getSymbolInfo(ctx, c.installer, c.baseSymbolInfo(ctx)))
+
+		android.SetProvider(ctx, SymbolInfosProvider, infos)
+	}
+}
+
 // Returns true if a stub library could be installed in multiple apexes
 func (c *Module) stubLibraryMultipleApexViolation(ctx android.ModuleContext) bool {
 	// If this is not an apex variant, no check necessary
@@ -2361,6 +2428,10 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 
 	if c.makeVarsInfo != nil {
 		android.SetProvider(ctx, CcMakeVarsInfoProvider, c.makeVarsInfo)
+	}
+
+	if !c.hideApexVariantFromMake && !c.Properties.HideFromMake {
+		c.setSymbolsInfoProvider(ctx)
 	}
 }
 

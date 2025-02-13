@@ -17,11 +17,13 @@ package filesystem
 import (
 	"cmp"
 	"fmt"
+	"maps"
 	"slices"
 	"strings"
 	"sync/atomic"
 
 	"android/soong/android"
+	"android/soong/cc"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -269,10 +271,86 @@ func (a *androidDevice) allInstalledModules(ctx android.ModuleContext) []android
 		return true
 	})
 
+	// Remove duplicates
+	ret = android.FirstUniqueFunc(ret, func(a, b android.Module) bool {
+		return a.String() == b.String()
+	})
+
+	// Sort the modules by their names and variants
 	slices.SortFunc(ret, func(a, b android.Module) int {
 		return cmp.Compare(a.String(), b.String())
 	})
 	return ret
+}
+
+type symbolicOutputInfo struct {
+	unstrippedOutputFile android.Path
+	symbolicOutputPath   android.InstallPath
+}
+
+func (a *androidDevice) distSymbolsZip(ctx android.ModuleContext) {
+	targetOutUnstripped := android.PathForModuleInPartitionInstall(ctx, "").Join(ctx, "symbols")
+
+	// To convert the symbols info retrieved via a provider to the rule to copy the symbols file
+	// into $PRODUCT_OUT/symbols directory
+	getSymbolicOutputInfo := func(info *cc.SymbolInfo) *symbolicOutputInfo {
+		if info.Uninstallable || info.UnstrippedBinaryPath == nil {
+			return nil
+		}
+
+		mySymbolPath := info.ModuleDir
+
+		myUnstrippedPath := targetOutUnstripped.Join(ctx, strings.TrimPrefix(mySymbolPath, android.PathForModuleInPartitionInstall(ctx, "").String()+"/"))
+
+		myInstalledModuleStem := info.InstalledStem
+		if len(myInstalledModuleStem) == 0 {
+			myModuleStem := info.Stem
+			if len(myModuleStem) == 0 {
+				myModuleStem = info.Name
+			}
+			myInstalledModuleStem = myModuleStem + info.Suffix
+		}
+
+		symbolicOutput := myUnstrippedPath.Join(ctx, myInstalledModuleStem)
+
+		return &symbolicOutputInfo{
+			unstrippedOutputFile: info.UnstrippedBinaryPath,
+			symbolicOutputPath:   symbolicOutput,
+		}
+	}
+
+	var symbolicOutputInfos []*symbolicOutputInfo
+	for _, mod := range a.allInstalledModules(ctx) {
+		if symbolInfos, ok := android.OtherModuleProvider(ctx, mod, cc.SymbolInfosProvider); ok {
+			for _, info := range symbolInfos.Symbols {
+				if so := getSymbolicOutputInfo(info); so != nil {
+					symbolicOutputInfos = append(symbolicOutputInfos, so)
+				}
+			}
+		}
+	}
+
+	allSymbolicOutputPaths := map[android.InstallPath]android.Path{}
+	for _, info := range symbolicOutputInfos {
+		if src, ok := allSymbolicOutputPaths[info.symbolicOutputPath]; ok && src != info.unstrippedOutputFile {
+			ctx.ModuleErrorf("Multiple source files %s and %s copy to %s when generating symbols.zip", src, info.unstrippedOutputFile, info.symbolicOutputPath)
+		}
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   android.Cp,
+			Input:  info.unstrippedOutputFile,
+			Output: info.symbolicOutputPath,
+		})
+		allSymbolicOutputPaths[info.symbolicOutputPath] = info.unstrippedOutputFile
+	}
+
+	symbolsZipFile := android.PathForModuleOut(ctx, fmt.Sprintf("%s-symbols.zip", a.Name()))
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   zipFiles,
+		Inputs: android.SortedUniquePaths(android.InstallPaths(slices.Collect(maps.Keys(allSymbolicOutputPaths))).Paths()),
+		Output: symbolsZipFile,
+	})
+
+	ctx.DistForGoalWithFilename("droidcore-unbundled", symbolsZipFile, fmt.Sprintf("%s-symbols-FILE_NAME_TAG_PLACEHOLDER.zip", ctx.Config().DeviceProduct()))
 }
 
 func (a *androidDevice) distFiles(ctx android.ModuleContext) {
@@ -288,6 +366,8 @@ func (a *androidDevice) distFiles(ctx android.ModuleContext) {
 					ctx.DistForGoal("droidcore-unbundled", fsInfo.InstalledFiles.Txt)
 				}
 			}
+
+			a.distSymbolsZip(ctx)
 		}
 	}
 
