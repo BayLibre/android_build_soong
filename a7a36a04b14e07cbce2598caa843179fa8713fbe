@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97aad14b_2beb783e",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-13T22:40:54Z",
+      "side": 1,
+      "message": "Nondeterministic map loop",
+      "revId": "a7a36a04b14e07cbce2598caa843179fa8713fbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
