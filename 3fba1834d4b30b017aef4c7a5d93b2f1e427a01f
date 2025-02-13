@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20703543_cbb7c04f",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2025-02-13T00:13:55Z",
+      "side": 1,
+      "message": "Thanks for the explanation, but it raises more questions:\n\nIf public or protected methods get renamed by not matching any keep rule in `-obfuscate` mode, are they exempt from the restrictions this option adds?\n\n- If yes, then I presume we don\u0027t care that renamed methods are visible in the ways you describe. Then any new methods added through merging would be fine too, as long as we make sure to rename them?\n\n- If no, then doesn\u0027t the same concerns apply to them too, and thus this option needs to restrict renaming as well? (And presumably pretty significantly too.)",
+      "parentUuid": "f6922ebe_f5b596b8",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 76
+      },
+      "revId": "3fba1834d4b30b017aef4c7a5d93b2f1e427a01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7ff3fcd_836dce82",
         "filename": "java/dex.go",
         "patchSetId": 1
