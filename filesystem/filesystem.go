@@ -38,6 +38,7 @@ func init() {
 	registerMutators(android.InitRegistrationContext)
 	pctx.HostBinToolVariable("fileslist", "fileslist")
 	pctx.HostBinToolVariable("fs_config", "fs_config")
+	pctx.HostBinToolVariable("SoongZipCmd", "soong_zip")
 }
 
 func registerBuildComponents(ctx android.RegistrationContext) {
@@ -77,6 +78,13 @@ var (
 		Command:     `(cd ${rootDir}; find . -type d | sed 's,$$,/,'; find . \! -type d) | cut -c 3- | sort | sed 's,^,${prefix},' | ${fs_config} -C -D ${rootDir} -R "${prefix}" > ${out}`,
 		CommandDeps: []string{"${fs_config}"},
 	}, "rootDir", "prefix")
+
+	zipFiles = pctx.AndroidStaticRule("SnapshotZipFiles", blueprint.RuleParams{
+		Command:        `${SoongZipCmd}  -r $out.rsp -o $out`,
+		CommandDeps:    []string{"${SoongZipCmd}"},
+		Rspfile:        "$out.rsp",
+		RspfileContent: "$in",
+	})
 )
 
 type filesystem struct {
