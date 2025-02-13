@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e6aa88e_9b8d13ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-13T05:55:01Z",
+      "side": 1,
+      "message": "Temporarily blocking submit because this will break the tests build when combined with aosp/3490133.  The new calls to ModuleForTests in rust_test.go will need `t` passed as the first parameter.",
+      "revId": "e49c7f651b209e83593fed2617c247bf4af1815a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
