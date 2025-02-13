@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ede9ae0_60f01da0",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-13T22:34:19Z",
+      "side": 1,
+      "message": "Given that the `ramdisk_node_list` module name is hardcoded in make, can we make this a property with a default value and not specify it in fsgen?",
+      "revId": "65d8b66309c64a999ec6708c24fc4b5ca10594f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
