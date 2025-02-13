@@ -110,6 +110,7 @@ bootstrap_go_package {
         "singleton.go",
         "singleton_module.go",
         "soong_config_modules.go",
+        "symbols_zip.go",
         "team.go",
         "test_asserts.go",
         "test_mapping_zip.go",
@@ -170,3 +171,7 @@ bootstrap_go_package {
     // Used by plugins
     visibility: ["//visibility:public"],
 }
+
+build = [
+    "SingletonModules.bp",
+]
