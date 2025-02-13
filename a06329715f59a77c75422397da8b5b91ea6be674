@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d744e116_a445495f",
+        "filename": "android/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-13T17:01:34Z",
+      "side": 1,
+      "message": "nit: Should this be updated to `unique elements` to match the expected behavior?",
+      "range": {
+        "startLine": 216,
+        "startChar": 78,
+        "endLine": 216,
+        "endChar": 79
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "412f389a_4958049a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/util.go",
+              "range": {
+                "startLine": 216,
+                "startChar": 0,
+                "endLine": 217,
+                "endChar": 0
+              },
+              "replacement": "// a boolean which is true if there is a difference, and then returns lists of unique elements\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a06329715f59a77c75422397da8b5b91ea6be674",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
