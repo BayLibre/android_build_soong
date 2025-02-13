@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a05dde7b_9dc173dd",
+        "filename": "android/module_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-13T21:15:12Z",
+      "side": 1,
+      "message": "For followup CL, WDYT about adding `-f` to the make installation rule as well so that we can drop this special case? I think that should not regress switching between (make+soong) and (soong) times.",
+      "range": {
+        "startLine": 723,
+        "startChar": 3,
+        "endLine": 726,
+        "endChar": 0
+      },
+      "revId": "e3845057836c42e197c117815088dfac0fe38d2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
