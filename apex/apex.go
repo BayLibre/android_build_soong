@@ -2276,6 +2276,8 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.enforcePartitionTagOnApexSystemServerJar(ctx)
 
 	a.verifyNativeImplementationLibs(ctx)
+
+	a.setSymbolInfosProvider(ctx)
 }
 
 // Set prebuiltInfoProvider. This will be used by `apex_prebuiltinfo_singleton` to print out a metadata file
@@ -2926,5 +2928,37 @@ func (a *apexBundle) verifyNativeImplementationLibs(ctx android.ModuleContext) {
 				return
 			}
 		}
+	}
+}
+
+func (a *apexBundle) setSymbolInfosProvider(ctx android.ModuleContext) {
+	if !a.properties.HideFromMake && a.installable() {
+		infos := &cc.SymbolInfos{}
+		for _, fi := range a.filesInfo {
+			linkToSystemLib := a.linkToSystemLib && fi.transitiveDep && fi.availableToPlatform()
+			moduleDir := android.PathForModuleInPartitionInstall(ctx, "", "apex", a.BaseModuleName(), fi.installDir)
+			info := &cc.SymbolInfo{
+				Name:          a.fullModuleName(a.BaseModuleName(), linkToSystemLib, &fi),
+				ModuleDir:     moduleDir.String(),
+				Uninstallable: !a.installable(),
+			}
+			if android.InList(fi.class, []apexFileClass{nativeSharedLib, nativeExecutable, nativeTest}) {
+				info.Stem = fi.stem()
+				if ccMod, ok := fi.module.(*cc.Module); ok {
+					if ccMod.UnstrippedOutputFile() != nil {
+						info.UnstrippedBinaryPath = ccMod.UnstrippedOutputFile()
+					}
+				} else if rustMod, ok := fi.module.(*rust.Module); ok {
+					if rustMod.UnstrippedOutputFile() != nil {
+						info.UnstrippedBinaryPath = rustMod.UnstrippedOutputFile()
+					}
+				}
+			}
+			if info.UnstrippedBinaryPath != nil {
+				infos.Symbols = append(infos.Symbols, info)
+			}
+		}
+
+		android.SetProvider(ctx, cc.SymbolInfosProvider, infos)
 	}
 }
