@@ -40,6 +40,30 @@
       ],
       "revId": "a06329715f59a77c75422397da8b5b91ea6be674",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eb88dc2_5419a6bc",
+        "filename": "android/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-13T19:28:47Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "d744e116_a445495f",
+      "range": {
+        "startLine": 216,
+        "startChar": 78,
+        "endLine": 216,
+        "endChar": 79
+      },
+      "revId": "a06329715f59a77c75422397da8b5b91ea6be674",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
