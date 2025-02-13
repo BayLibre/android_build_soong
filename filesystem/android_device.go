@@ -241,6 +241,95 @@ func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.distFiles(ctx)
 }
 
+func (a *androidDevice) distSymbolsZip(ctx android.ModuleContext, fsInfoMap map[string]FilesystemInfo) {
+	// map of module names to a list of variations of all installed modules
+	allOwners := make(map[string][]string)
+	for _, partition := range android.SortedKeys(fsInfoMap) {
+		fsInfo := fsInfoMap[partition]
+		for _, owner := range fsInfo.Owners {
+			allOwners[owner.Name] = append(allOwners[owner.Name], owner.Variation)
+		}
+	}
+
+	type symbolicOutputInfo struct {
+		unstrippedOutputFile android.OutputPath
+		symbolicOutputPath   android.InstallPath
+	}
+
+	targetOutUnstripped := android.PathForModuleInPartitionInstall(ctx, "").Join(ctx, "symbols")
+
+	getSymbolicOutputInfo := func(name string, info android.AndroidMkInfo) *symbolicOutputInfo {
+		getFirstEntry := func(key string) string {
+			if vals, ok := info.EntryMap[key]; ok && len(vals) > 0 {
+				return vals[0]
+			}
+			return ""
+		}
+
+		unstrippedOutputFileString := getFirstEntry("LOCAL_SOONG_UNSTRIPPED_BINARY")
+		if unstrippedOutputFileString == "" {
+			return nil
+		}
+
+		if strings.HasPrefix(unstrippedOutputFileString, ctx.Config().SoongOutDir()) {
+			unstrippedOutputFileString = strings.TrimPrefix(unstrippedOutputFileString, ctx.Config().SoongOutDir())
+		}
+		unstrippedOutputFile := android.PathForOutput(ctx, unstrippedOutputFileString)
+
+		unstrippedPath := getFirstEntry("LOCAL_MODULE_PATH")
+		myInstalledModuleStem := getFirstEntry("LOCAL_INSTALLED_MODULE_STEM")
+		if len(myInstalledModuleStem) == 0 {
+			myModuleStem := getFirstEntry("LOCAL_MODULE_STEM")
+			if len(myModuleStem) == 0 {
+				myModuleStem = name + info.SubName
+			}
+			myInstalledModuleStem = myModuleStem + getFirstEntry("LOCAL_MODULE_SUFFIX")
+		}
+
+		myUnstrippedPath := targetOutUnstripped.Join(ctx, unstrippedPath)
+
+		return &symbolicOutputInfo{
+			unstrippedOutputFile: unstrippedOutputFile,
+			symbolicOutputPath:   myUnstrippedPath.Join(ctx, myInstalledModuleStem),
+		}
+	}
+
+	var symbolicOutputInfos []*symbolicOutputInfo
+	ctx.WalkDeps(func(_, mod android.Module) bool {
+		if _, ok := allOwners[mod.Name()]; ok {
+			if androidMkInfo, ok := android.OtherModuleProvider(ctx, mod, android.AndroidMkInfoProvider); ok {
+				if so := getSymbolicOutputInfo(mod.Name(), androidMkInfo.PrimaryInfo); so != nil {
+					symbolicOutputInfos = append(symbolicOutputInfos, so)
+				}
+			}
+			return true
+		}
+		// If the module is not listed in installed modules, its dependency cannot be installed.
+		return false
+	})
+
+	for _, info := range symbolicOutputInfos {
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   android.Cp,
+			Input:  info.unstrippedOutputFile,
+			Output: info.symbolicOutputPath,
+		})
+	}
+
+	symbolsZipFile := android.PathForModuleOut(ctx, fmt.Sprintf("%s-symbols.zip", a.Name()))
+	rule := android.NewRuleBuilder(pctx, ctx)
+	cmd := rule.Command().BuiltTool("soong_zip").
+		FlagWithOutput("-o ", symbolsZipFile)
+
+	for _, info := range symbolicOutputInfos {
+		cmd.FlagWithInput("-f ", info.symbolicOutputPath)
+	}
+
+	rule.Build("build_symbols_zip", "Build symbols.zip")
+
+	ctx.DistForGoalWithFilename("droidcore-unbundled", symbolsZipFile, fmt.Sprintf("%s-symbols-FILE_NAME_TAG_PLACEHOLDER.zip", ctx.Config().DeviceProduct()))
+}
+
 func (a *androidDevice) distFiles(ctx android.ModuleContext) {
 	if !ctx.Config().KatiEnabled() {
 		if proptools.Bool(a.deviceProps.Main_device) {
@@ -254,6 +343,8 @@ func (a *androidDevice) distFiles(ctx android.ModuleContext) {
 					ctx.DistForGoal("droidcore-unbundled", fsInfo.InstalledFiles.Txt)
 				}
 			}
+
+			a.distSymbolsZip(ctx, fsInfoMap)
 		}
 	}
 
