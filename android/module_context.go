@@ -81,8 +81,6 @@ type BuildParams struct {
 	Default bool
 	// Args is a key value mapping for replacements of variables within the Rule
 	Args map[string]string
-	// PhonyOutput marks this build as `phony_output = true`
-	PhonyOutput bool
 }
 
 type ModuleBuildParams BuildParams
@@ -371,7 +369,6 @@ func convertBuildParams(params BuildParams) blueprint.BuildParams {
 		Validations:     params.Validations.Strings(),
 		Args:            params.Args,
 		Default:         params.Default,
-		PhonyOutput:     params.PhonyOutput,
 	}
 
 	if params.Depfile != nil {
