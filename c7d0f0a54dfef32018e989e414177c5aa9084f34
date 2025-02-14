@@ -16,6 +16,23 @@
       "message": "FYI: This is for aosp/3492213",
       "revId": "c7d0f0a54dfef32018e989e414177c5aa9084f34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b6f9d61_aa56686a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1965132
+      },
+      "writtenOn": "2025-02-14T02:27:35Z",
+      "side": 1,
+      "message": "FYI: aosp/1736434 is the similar CL.",
+      "revId": "c7d0f0a54dfef32018e989e414177c5aa9084f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
