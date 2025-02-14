@@ -221,6 +221,9 @@ java_import {
         linux_glibc: {
             jars: ["java/linux_glibc/myjavalib.jar"],
         },
+        musl: {
+            jars: ["java/linux_glibc/myjavalib.jar"],
+        },
     },
 }
 `),
@@ -1004,6 +1007,9 @@ java_import {
             jars: ["java/android/myjavalib.jar"],
         },
         linux_glibc: {
+            jars: ["java/linux_glibc/myjavalib.jar"],
+        },
+        musl: {
             jars: ["java/linux_glibc/myjavalib.jar"],
         },
     },
