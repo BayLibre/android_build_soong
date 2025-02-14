@@ -105,6 +105,9 @@ type BaseProperties struct {
 	// list of the Python libraries compatible both with Python2 and Python3.
 	Libs []string `android:"arch_variant"`
 
+	// list of shared libraries that should be packaged with the python code for this module.
+	Shared_libs []string `android:"arch_variant"`
+
 	Version struct {
 		// Python2-specific properties, including whether Python2 is supported for this module
 		// and version-specific sources, exclusions and dependencies.
@@ -224,6 +227,7 @@ type installDependencyTag struct {
 var (
 	pythonLibTag = dependencyTag{name: "pythonLib"}
 	javaDataTag  = dependencyTag{name: "javaData"}
+	sharedLibTag = dependencyTag{name: "sharedLib"}
 	// The python interpreter, with soong module name "py3-launcher" or "py3-launcher-autorun".
 	launcherTag          = dependencyTag{name: "launcher"}
 	launcherSharedLibTag = installDependencyTag{name: "launcherSharedLib"}
@@ -288,6 +292,8 @@ func (p *PythonLibraryModule) DepsMutator(ctx android.BottomUpMutatorContext) {
 	javaDataVariation := []blueprint.Variation{{"arch", android.Common.String()}}
 	ctx.AddVariationDependencies(javaDataVariation, javaDataTag, p.properties.Java_data...)
 
+	ctx.AddVariationDependencies(ctx.Config().BuildOSTarget.Variations(), sharedLibTag, p.properties.Shared_libs...)
+
 	p.AddDepsOnPythonLauncherAndStdlib(ctx, hostStdLibTag, hostLauncherTag, hostlauncherSharedLibTag, false, ctx.Config().BuildOSTarget)
 }
 
@@ -309,6 +315,7 @@ func (p *PythonLibraryModule) AddDepsOnPythonLauncherAndStdlib(ctx android.Botto
 	// of ctx.AddFarVariationDependencies()
 	launcherSharedLibDeps := []string{
 		"libsqlite",
+		"libgrpc++",
 	}
 	// Add launcher-specific dependencies for bionic
 	if targetForDeps.Os.Bionic() {
@@ -377,6 +384,11 @@ func (p *PythonLibraryModule) GenerateAndroidBuildActions(ctx android.ModuleCont
 		expandedData = append(expandedData, android.OutputFilesForModule(ctx, javaData, "")...)
 	}
 
+	// expand files from "shared_libs" property.
+	for _, sharedLib := range ctx.GetDirectDepsWithTag(sharedLibTag) {
+		expandedData = append(expandedData, android.OutputFilesForModule(ctx, sharedLib, "")...)
+	}
+
 	// Validate pkg_path property
 	pkgPath := String(p.properties.Pkg_path)
 	if pkgPath != "" {
@@ -400,8 +412,7 @@ func (p *PythonLibraryModule) GenerateAndroidBuildActions(ctx android.ModuleCont
 
 	// generate the zipfile of all source and data files
 	p.srcsZip = p.createSrcsZip(ctx, pkgPath)
-	// TODO(b/388344853): precompilation temporarily disabled for python3.13 upgrade
-	p.precompiledSrcsZip = p.srcsZip //p.precompileSrcs(ctx)
+	p.precompiledSrcsZip = p.precompileSrcs(ctx)
 
 	android.SetProvider(ctx, PythonLibraryInfoProvider, PythonLibraryInfo{
 		SrcsPathMappings:   p.getSrcsPathMappings(),
