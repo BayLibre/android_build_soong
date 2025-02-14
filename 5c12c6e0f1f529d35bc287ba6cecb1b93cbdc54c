@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c59d9b0_05455225",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-14T00:43:59Z",
+      "side": 1,
+      "message": "nit: do we have to nil check the property? Ditto for L481",
+      "revId": "5c12c6e0f1f529d35bc287ba6cecb1b93cbdc54c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
