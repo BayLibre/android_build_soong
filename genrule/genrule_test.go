@@ -515,7 +515,7 @@ func TestGenruleHashInputs(t *testing.T) {
 
 	for _, test := range testcases {
 		t.Run(test.name, func(t *testing.T) {
-			gen := result.ModuleForTests(t, test.name, "")
+			gen := result.ModuleForTests(test.name, "")
 			manifest := android.RuleBuilderSboxProtoForTests(t, result.TestContext, gen.Output("genrule.sbox.textproto"))
 			hash := manifest.Commands[0].GetInputHash()
 
@@ -643,7 +643,7 @@ func TestGenSrcs(t *testing.T) {
 				ExtendWithErrorHandler(android.FixtureExpectsAllErrorsToMatchAPattern(expectedErrors)).
 				RunTestWithBp(t, testGenruleBp()+bp)
 
-			mod := result.ModuleForTests(t, "gen", "")
+			mod := result.ModuleForTests("gen", "")
 			if expectedErrors != nil {
 				return
 			}
@@ -719,7 +719,7 @@ func TestGenruleAllowMissingDependencies(t *testing.T) {
 				ctx.SetAllowMissingDependencies(true)
 			})).RunTestWithBp(t, bp)
 
-	gen := result.ModuleForTests(t, "gen", "").Output("out")
+	gen := result.ModuleForTests("gen", "").Output("out")
 	if gen.Rule != android.ErrorRule {
 		t.Errorf("Expected missing dependency error rule for gen, got %q", gen.Rule.String())
 	}
@@ -750,15 +750,15 @@ func TestGenruleOutputFiles(t *testing.T) {
 	android.AssertPathsRelativeToTopEquals(t,
 		"genrule.tag with output",
 		[]string{"out/soong/.intermediates/gen/gen/foo"},
-		result.ModuleForTests(t, "gen_foo", "").Module().(*useSource).srcs)
+		result.ModuleForTests("gen_foo", "").Module().(*useSource).srcs)
 	android.AssertPathsRelativeToTopEquals(t,
 		"genrule.tag with output in subdir",
 		[]string{"out/soong/.intermediates/gen/gen/sub/bar"},
-		result.ModuleForTests(t, "gen_bar", "").Module().(*useSource).srcs)
+		result.ModuleForTests("gen_bar", "").Module().(*useSource).srcs)
 	android.AssertPathsRelativeToTopEquals(t,
 		"genrule.tag with all",
 		[]string{"out/soong/.intermediates/gen/gen/foo", "out/soong/.intermediates/gen/gen/sub/bar"},
-		result.ModuleForTests(t, "gen_all", "").Module().(*useSource).srcs)
+		result.ModuleForTests("gen_all", "").Module().(*useSource).srcs)
 }
 
 func TestGenruleInterface(t *testing.T) {

@@ -61,9 +61,9 @@ func TestTeam(t *testing.T) {
 	`)
 
 	// Assert the rule from GenerateAndroidBuildActions exists.
-	m := ctx.ModuleForTests(t, "main_test", "")
+	m := ctx.ModuleForTests("main_test", "")
 	AssertStringEquals(t, "msg", m.Module().base().Team(), "someteam")
-	m = ctx.ModuleForTests(t, "tool", "")
+	m = ctx.ModuleForTests("tool", "")
 	AssertStringEquals(t, "msg", m.Module().base().Team(), "team2")
 }
 
