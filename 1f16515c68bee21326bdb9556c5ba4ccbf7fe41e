@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d38d9b88_4dd3ba08",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-14T21:46:34Z",
+      "side": 1,
+      "message": "This should have a more specific name like `tests_if_exist`.",
+      "revId": "1f16515c68bee21326bdb9556c5ba4ccbf7fe41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02e9adb3_74939024",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-14T21:46:34Z",
+      "side": 1,
+      "message": "no need for these local variables",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "1f16515c68bee21326bdb9556c5ba4ccbf7fe41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da1e8698_f590aeae",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-14T21:46:34Z",
+      "side": 1,
+      "message": "We should not hardcode this. Please instead create a soong config variable for this variable and use `select()` or a soong config module to conditionally add it to `device_first_tests`.",
+      "revId": "1f16515c68bee21326bdb9556c5ba4ccbf7fe41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8405a0e5_d97c98fb",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-14T21:46:34Z",
+      "side": 1,
+      "message": "Same here, these should not be hardcoded. I\u0027d see if we can just always add them to the zip regardless of the target product.",
+      "revId": "1f16515c68bee21326bdb9556c5ba4ccbf7fe41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e331e9_75501e13",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-14T21:46:34Z",
+      "side": 1,
+      "message": "Same here. In this case this code actually won\u0027t work at all, because `WIDEVINE_TEST_MAKE_TARGETS` is only set in an Android.mk file, which is read after soong runs.\n\nAgain, I\u0027d make a soong config variable to control adding them, and you can set that variable based on the values of `$(TARGET_ARCH) $(TARGET_2ND_ARCH) $(TARGET_ENABLE_MEDIADRM_64)` in make.",
+      "revId": "1f16515c68bee21326bdb9556c5ba4ccbf7fe41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d64a3b34_e951fbe7",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-14T21:46:34Z",
+      "side": 1,
+      "message": "Is there a simpler / more consistent way we could do the path transformation? Like maybe using `installedFile.Rel()`?",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 72
+      },
+      "revId": "1f16515c68bee21326bdb9556c5ba4ccbf7fe41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
