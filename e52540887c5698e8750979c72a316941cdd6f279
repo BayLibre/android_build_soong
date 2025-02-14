@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26bc24f4_115ca395",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-14T00:17:22Z",
+      "side": 1,
+      "message": "@colefaust@google.com This is roughly how the change looks like. It needs some additional work to make the entries identical to the make generated one though",
+      "revId": "e52540887c5698e8750979c72a316941cdd6f279",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
