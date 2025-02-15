@@ -530,8 +530,7 @@ func (ctx *TestContext) RegisterParallelSingletonType(name string, factory Singl
 // both have the same value. Both the module and the map are allowed to have
 // extra variations that the other doesn't have. Panics if not exactly one
 // module variant matches.
-func (ctx *TestContext) ModuleVariantForTests(t *testing.T, name string, matchVariations map[string]string) TestingModule {
-	t.Helper()
+func (ctx *TestContext) ModuleVariantForTests(name string, matchVariations map[string]string) TestingModule {
 	modules := []Module{}
 	ctx.VisitAllModules(func(m blueprint.Module) {
 		if ctx.ModuleName(m) == name {
@@ -563,12 +562,12 @@ func (ctx *TestContext) ModuleVariantForTests(t *testing.T, name string, matchVa
 		})
 
 		if len(allVariants) == 0 {
-			t.Fatalf("failed to find module %q. All modules:\n  %s",
-				name, strings.Join(SortedUniqueStrings(allModuleNames), "\n  "))
+			panic(fmt.Errorf("failed to find module %q. All modules:\n  %s",
+				name, strings.Join(SortedUniqueStrings(allModuleNames), "\n  ")))
 		} else {
 			sort.Strings(allVariants)
-			t.Fatalf("failed to find module %q matching %v. All variants:\n  %s",
-				name, matchVariations, strings.Join(allVariants, "\n  "))
+			panic(fmt.Errorf("failed to find module %q matching %v. All variants:\n  %s",
+				name, matchVariations, strings.Join(allVariants, "\n  ")))
 		}
 	}
 
@@ -578,15 +577,14 @@ func (ctx *TestContext) ModuleVariantForTests(t *testing.T, name string, matchVa
 			moduleStrings = append(moduleStrings, m.String())
 		}
 		sort.Strings(moduleStrings)
-		t.Fatalf("module %q has more than one variant that match %v:\n  %s",
-			name, matchVariations, strings.Join(moduleStrings, "\n  "))
+		panic(fmt.Errorf("module %q has more than one variant that match %v:\n  %s",
+			name, matchVariations, strings.Join(moduleStrings, "\n  ")))
 	}
 
-	return newTestingModule(t, ctx.config, modules[0])
+	return newTestingModule(ctx.config, modules[0])
 }
 
-func (ctx *TestContext) ModuleForTests(t *testing.T, name, variant string) TestingModule {
-	t.Helper()
+func (ctx *TestContext) ModuleForTests(name, variant string) TestingModule {
 	var module Module
 	ctx.VisitAllModules(func(m blueprint.Module) {
 		if ctx.ModuleName(m) == name && ctx.ModuleSubDir(m) == variant {
@@ -607,15 +605,15 @@ func (ctx *TestContext) ModuleForTests(t *testing.T, name, variant string) Testi
 		sort.Strings(allVariants)
 
 		if len(allVariants) == 0 {
-			t.Fatalf("failed to find module %q. All modules:\n  %s",
-				name, strings.Join(SortedUniqueStrings(allModuleNames), "\n  "))
+			panic(fmt.Errorf("failed to find module %q. All modules:\n  %s",
+				name, strings.Join(SortedUniqueStrings(allModuleNames), "\n  ")))
 		} else {
-			t.Fatalf("failed to find module %q variant %q. All variants:\n  %s",
-				name, variant, strings.Join(allVariants, "\n  "))
+			panic(fmt.Errorf("failed to find module %q variant %q. All variants:\n  %s",
+				name, variant, strings.Join(allVariants, "\n  ")))
 		}
 	}
 
-	return newTestingModule(t, ctx.config, module)
+	return newTestingModule(ctx.config, module)
 }
 
 func (ctx *TestContext) ModuleVariantsForTests(name string) []string {
@@ -629,24 +627,21 @@ func (ctx *TestContext) ModuleVariantsForTests(name string) []string {
 }
 
 // SingletonForTests returns a TestingSingleton for the singleton registered with the given name.
-func (ctx *TestContext) SingletonForTests(t *testing.T, name string) TestingSingleton {
-	t.Helper()
+func (ctx *TestContext) SingletonForTests(name string) TestingSingleton {
 	allSingletonNames := []string{}
 	for _, s := range ctx.Singletons() {
 		n := ctx.SingletonName(s)
 		if n == name {
 			return TestingSingleton{
-				baseTestingComponent: newBaseTestingComponent(t, ctx.config, s.(testBuildProvider)),
+				baseTestingComponent: newBaseTestingComponent(ctx.config, s.(testBuildProvider)),
 				singleton:            s.(*singletonAdaptor).Singleton,
 			}
 		}
 		allSingletonNames = append(allSingletonNames, n)
 	}
 
-	t.Fatalf("failed to find singleton %q."+
-		"\nall singletons: %v", name, allSingletonNames)
-
-	return TestingSingleton{}
+	panic(fmt.Errorf("failed to find singleton %q."+
+		"\nall singletons: %v", name, allSingletonNames))
 }
 
 type InstallMakeRule struct {
@@ -656,7 +651,6 @@ type InstallMakeRule struct {
 }
 
 func parseMkRules(t *testing.T, config Config, nodes []mkparser.Node) []InstallMakeRule {
-	t.Helper()
 	var rules []InstallMakeRule
 	for _, node := range nodes {
 		if mkParserRule, ok := node.(*mkparser.Rule); ok {
@@ -694,8 +688,7 @@ func parseMkRules(t *testing.T, config Config, nodes []mkparser.Node) []InstallM
 }
 
 func (ctx *TestContext) InstallMakeRulesForTesting(t *testing.T) []InstallMakeRule {
-	t.Helper()
-	installs := ctx.SingletonForTests(t, "makevars").Singleton().(*makeVarsSingleton).installsForTesting
+	installs := ctx.SingletonForTests("makevars").Singleton().(*makeVarsSingleton).installsForTesting
 	buf := bytes.NewBuffer(append([]byte(nil), installs...))
 	parser := mkparser.NewParser("makevars", buf)
 
@@ -735,9 +728,8 @@ var PrepareForTestAccessingMakeVars = GroupFixturePreparers(
 //
 // It is necessary to use PrepareForTestAccessingMakeVars in tests that want to call this function.
 // Along with any other preparers needed to add the make vars.
-func (ctx *TestContext) MakeVarsForTesting(t *testing.T, filter func(variable MakeVarVariable) bool) []MakeVarVariable {
-	t.Helper()
-	vars := ctx.SingletonForTests(t, "makevars").Singleton().(*makeVarsSingleton).varsForTesting
+func (ctx *TestContext) MakeVarsForTesting(filter func(variable MakeVarVariable) bool) []MakeVarVariable {
+	vars := ctx.SingletonForTests("makevars").Singleton().(*makeVarsSingleton).varsForTesting
 	result := make([]MakeVarVariable, 0, len(vars))
 	for _, v := range vars {
 		if filter(v) {
@@ -854,13 +846,12 @@ func (p TestingBuildParams) AllOutputs() []string {
 
 // baseTestingComponent provides functionality common to both TestingModule and TestingSingleton.
 type baseTestingComponent struct {
-	t        *testing.T
 	config   Config
 	provider testBuildProvider
 }
 
-func newBaseTestingComponent(t *testing.T, config Config, provider testBuildProvider) baseTestingComponent {
-	return baseTestingComponent{t, config, provider}
+func newBaseTestingComponent(config Config, provider testBuildProvider) baseTestingComponent {
+	return baseTestingComponent{config, provider}
 }
 
 // A function that will normalize a string containing paths, e.g. ninja command, by replacing
@@ -933,7 +924,7 @@ func (b baseTestingComponent) maybeBuildParamsFromRule(rule string) (TestingBuil
 func (b baseTestingComponent) buildParamsFromRule(rule string) TestingBuildParams {
 	p, searchRules := b.maybeBuildParamsFromRule(rule)
 	if p.Rule == nil {
-		b.t.Fatalf("couldn't find rule %q.\nall rules:\n%s", rule, strings.Join(searchRules, "\n"))
+		panic(fmt.Errorf("couldn't find rule %q.\nall rules:\n%s", rule, strings.Join(searchRules, "\n")))
 	}
 	return p
 }
@@ -952,7 +943,7 @@ func (b baseTestingComponent) maybeBuildParamsFromDescription(desc string) (Test
 func (b baseTestingComponent) buildParamsFromDescription(desc string) TestingBuildParams {
 	p, searchedDescriptions := b.maybeBuildParamsFromDescription(desc)
 	if p.Rule == nil {
-		b.t.Fatalf("couldn't find description %q\nall descriptions:\n%s", desc, strings.Join(searchedDescriptions, "\n"))
+		panic(fmt.Errorf("couldn't find description %q\nall descriptions:\n%s", desc, strings.Join(searchedDescriptions, "\n")))
 	}
 	return p
 }
@@ -985,8 +976,8 @@ func (b baseTestingComponent) maybeBuildParamsFromOutput(file string) (TestingBu
 func (b baseTestingComponent) buildParamsFromOutput(file string) TestingBuildParams {
 	p, searchedOutputs := b.maybeBuildParamsFromOutput(file)
 	if p.Rule == nil {
-		b.t.Fatalf("couldn't find output %q.\nall outputs:\n    %s\n",
-			file, strings.Join(searchedOutputs, "\n    "))
+		panic(fmt.Errorf("couldn't find output %q.\nall outputs:\n    %s\n",
+			file, strings.Join(searchedOutputs, "\n    ")))
 	}
 	return p
 }
@@ -1049,9 +1040,9 @@ type TestingModule struct {
 	module Module
 }
 
-func newTestingModule(t *testing.T, config Config, module Module) TestingModule {
+func newTestingModule(config Config, module Module) TestingModule {
 	return TestingModule{
-		newBaseTestingComponent(t, config, module),
+		newBaseTestingComponent(config, module),
 		module,
 	}
 }

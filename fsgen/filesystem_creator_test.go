@@ -15,13 +15,11 @@
 package fsgen
 
 import (
-	"strings"
-	"testing"
-
 	"android/soong/android"
 	"android/soong/etc"
 	"android/soong/filesystem"
 	"android/soong/java"
+	"testing"
 
 	"github.com/google/blueprint/proptools"
 )
@@ -63,7 +61,7 @@ func TestFileSystemCreatorSystemImageProps(t *testing.T) {
 		}),
 	).RunTest(t)
 
-	fooSystem := result.ModuleForTests(t, "test_product_generated_system_image", "android_common").Module().(interface {
+	fooSystem := result.ModuleForTests("test_product_generated_system_image", "android_common").Module().(interface {
 		FsProps() filesystem.FilesystemProperties
 	})
 	android.AssertBoolEquals(
@@ -200,14 +198,14 @@ func TestFileSystemCreatorDepsWithNamespace(t *testing.T) {
 	).RunTest(t)
 
 	var packagingProps android.PackagingProperties
-	for _, prop := range result.ModuleForTests(t, "test_product_generated_system_image", "android_common").Module().GetProperties() {
+	for _, prop := range result.ModuleForTests("test_product_generated_system_image", "android_common").Module().GetProperties() {
 		if packagingPropStruct, ok := prop.(*android.PackagingProperties); ok {
 			packagingProps = *packagingPropStruct
 		}
 	}
 	moduleDeps := packagingProps.Multilib.Lib64.Deps
 
-	eval := result.ModuleForTests(t, "test_product_generated_system_image", "android_common").Module().ConfigurableEvaluator(android.PanickingConfigAndErrorContext(result.TestContext))
+	eval := result.ModuleForTests("test_product_generated_system_image", "android_common").Module().ConfigurableEvaluator(android.PanickingConfigAndErrorContext(result.TestContext))
 	android.AssertStringListContains(
 		t,
 		"Generated system image expected to depend on \"bar\" defined in \"a/b\" namespace",
@@ -306,7 +304,7 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 	}
 
 	// check generated prebuilt_* module type install path and install partition
-	generatedModule := result.ModuleForTests(t, "system-frameworks_base_config-etc-0", "android_arm64_armv8-a").Module()
+	generatedModule := result.ModuleForTests("system-frameworks_base_config-etc-0", "android_arm64_armv8-a").Module()
 	etcModule, _ := generatedModule.(*etc.PrebuiltEtc)
 	android.AssertStringEquals(
 		t,
@@ -324,7 +322,7 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 	)
 
 	// check generated prebuilt_* module specifies correct relative_install_path property
-	generatedModule = result.ModuleForTests(t, "system-frameworks_base_data_keyboards-usr_keylayout_subdir-0", "android_arm64_armv8-a").Module()
+	generatedModule = result.ModuleForTests("system-frameworks_base_data_keyboards-usr_keylayout_subdir-0", "android_arm64_armv8-a").Module()
 	etcModule, _ = generatedModule.(*etc.PrebuiltEtc)
 	android.AssertStringEquals(
 		t,
@@ -334,16 +332,16 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 	)
 
 	// check that prebuilt_* module is not generated for non existing source file
-	android.AssertStringEquals(
+	android.AssertPanicMessageContains(
 		t,
 		"prebuilt_* module not generated for non existing source file",
-		"",
-		strings.Join(result.ModuleVariantsForTests("system-some_non_existing-etc-0"), ","),
+		"failed to find module \"system-some_non_existing-etc-0\"",
+		func() { result.ModuleForTests("system-some_non_existing-etc-0", "android_arm64_armv8-a") },
 	)
 
 	// check that duplicate src file can exist in PRODUCT_COPY_FILES and generates separate modules
-	generatedModule0 := result.ModuleForTests(t, "product-device_sample_etc-etc-0", "android_arm64_armv8-a").Module()
-	generatedModule1 := result.ModuleForTests(t, "product-device_sample_etc-etc-1", "android_arm64_armv8-a").Module()
+	generatedModule0 := result.ModuleForTests("product-device_sample_etc-etc-0", "android_arm64_armv8-a").Module()
+	generatedModule1 := result.ModuleForTests("product-device_sample_etc-etc-1", "android_arm64_armv8-a").Module()
 
 	// check that generated prebuilt_* module sets correct srcs and dsts property
 	eval := generatedModule0.ConfigurableEvaluator(android.PanickingConfigAndErrorContext(result.TestContext))

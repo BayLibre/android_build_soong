@@ -144,7 +144,7 @@ func buildContextAndCustomModuleFoo(t *testing.T, bp string) (*TestContext, *cus
 		FixtureWithRootAndroidBp(bp),
 	).RunTest(t)
 
-	module := result.ModuleForTests(t, "foo", "").Module().(*customModule)
+	module := result.ModuleForTests("foo", "").Module().(*customModule)
 	return result.TestContext, module
 }
 
