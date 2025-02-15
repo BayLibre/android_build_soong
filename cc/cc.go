@@ -163,13 +163,15 @@ type LinkableInfo struct {
 	OnlyInVendorRamdisk bool
 	InRecovery          bool
 	OnlyInRecovery      bool
+	InVendor            bool
 	Installable         *bool
 	// RelativeInstallPath returns the relative install path for this module.
 	RelativeInstallPath string
 	// TODO(b/362509506): remove this once all apex_exclude uses are switched to stubs.
 	RustApexExclude bool
 	// Bootstrap tests if this module is allowed to use non-APEX version of libraries.
-	Bootstrap bool
+	Bootstrap              bool
+	APIListCoverageXMLPath *android.ModuleOutPath
 }
 
 var LinkableInfoProvider = blueprint.NewProvider[*LinkableInfo]()
@@ -2365,7 +2367,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 }
 
 func CreateCommonLinkableInfo(ctx android.ModuleContext, mod VersionedLinkableInterface) *LinkableInfo {
-	return &LinkableInfo{
+	linkableInfo := &LinkableInfo{
 		StaticExecutable:     mod.StaticExecutable(),
 		HasStubsVariants:     mod.HasStubsVariants(),
 		OutputFile:           mod.OutputFile(),
@@ -2388,18 +2390,20 @@ func CreateCommonLinkableInfo(ctx android.ModuleContext, mod VersionedLinkableIn
 		OnlyInVendorRamdisk:  mod.OnlyInVendorRamdisk(),
 		InRecovery:           mod.InRecovery(),
 		OnlyInRecovery:       mod.OnlyInRecovery(),
+		InVendor:             mod.InVendor(),
 		Installable:          mod.Installable(),
 		RelativeInstallPath:  mod.RelativeInstallPath(),
 		// TODO(b/362509506): remove this once all apex_exclude uses are switched to stubs.
 		RustApexExclude: mod.RustApexExclude(),
 		Bootstrap:       mod.Bootstrap(),
 	}
-}
 
-func setOutputFilesIfNotEmpty(ctx ModuleContext, files android.Paths, tag string) {
-	if len(files) > 0 {
-		ctx.SetOutputFiles(files, tag)
+	vi := mod.VersionedInterface()
+	if vi != nil {
+		path := vi.GetAPIListCoverageXMLPath()
+		linkableInfo.APIListCoverageXMLPath = &path
 	}
+	return linkableInfo
 }
 
 func (c *Module) setOutputFiles(ctx ModuleContext) {
