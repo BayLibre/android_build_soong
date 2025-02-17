@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d53eae8e_412b155d",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2025-02-17T10:04:40Z",
+      "side": 1,
+      "message": "Updated the comment.\n\nI fully agree that adding an internal prefix to names could also work.\n\nThis addresses both fields and methods. Consider the below example. `B` is kept, but nothing is keeping `A` or `A.f`. Therefore, normally R8 would change `A.f` from being private to being public, which means that `f` now becomes part of the public API surface of the library via `B`.\n\nWhen `Protect_api_surface` is enabled, `A.f` won\u0027t be made public when `B` is kept.\n\n```\nclass A {\n  private int f;\n}\n\npublic class B extends A {}\n\n-keep public class * {\n  public protected \u003cfields\u003e;\n  public protected \u003cmethods\u003e;\n}\n```",
+      "parentUuid": "aac5253c_9c77acc1",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 76
+      },
+      "revId": "3fba1834d4b30b017aef4c7a5d93b2f1e427a01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7ff3fcd_836dce82",
