@@ -409,8 +409,10 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, dexParams *compileDexParams, 
 		r8Flags = append(r8Flags, "-dontoptimize")
 	}
 
-	// TODO(ccross): error if obufscation + app instrumentation test.
-	if !Bool(opt.Obfuscate) {
+	// TODO(ccross): error if obfuscation + app instrumentation test.
+	if Bool(opt.Obfuscate) {
+		r8Flags = append(r8Flags, "-repackageclasses")
+	} else {
 		r8Flags = append(r8Flags, "-dontobfuscate")
 	}
 	// TODO(ccross): if this is an instrumentation test of an obfuscated app, use the
