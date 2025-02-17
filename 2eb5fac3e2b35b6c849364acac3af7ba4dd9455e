@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78891f86_59e654a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2025-02-17T18:50:00Z",
+      "side": 1,
+      "message": "(+1 - I don\u0027t have ownership here.)",
+      "revId": "2eb5fac3e2b35b6c849364acac3af7ba4dd9455e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46741283_360de75d",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2025-02-17T18:50:00Z",
+      "side": 1,
+      "message": "\"or\"?",
+      "range": {
+        "startLine": 67,
+        "startChar": 58,
+        "endLine": 67,
+        "endChar": 60
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b922bfb0_25231575",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 67,
+                "startChar": 0,
+                "endLine": 68,
+                "endChar": 0
+              },
+              "replacement": "\t\t// of the compilation unit, i.e., classes that are kept or have kept\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2eb5fac3e2b35b6c849364acac3af7ba4dd9455e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba7bd1e_8c940762",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2025-02-17T18:50:00Z",
+      "side": 1,
+      "message": "So it\u0027s \"methods or fields\" then?",
+      "range": {
+        "startLine": 68,
+        "startChar": 36,
+        "endLine": 68,
+        "endChar": 43
+      },
+      "revId": "2eb5fac3e2b35b6c849364acac3af7ba4dd9455e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

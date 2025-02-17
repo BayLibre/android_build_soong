@@ -144,6 +144,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33acd51e_6ff4137c",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2025-02-17T18:50:00Z",
+      "side": 1,
+      "message": "Got it, thanks.",
+      "parentUuid": "d53eae8e_412b155d",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 76
+      },
+      "revId": "3fba1834d4b30b017aef4c7a5d93b2f1e427a01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7ff3fcd_836dce82",
