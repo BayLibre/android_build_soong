@@ -945,6 +945,11 @@ func (c *config) BuildThumbprintFile(ctx PathContext) Path {
 	return PathForArbitraryOutput(ctx, "target", "product", c.DeviceName(), String(c.productVariables.BuildThumbprintFile))
 }
 
+// ProductDevice returns PRODUCT_DEVICE variable
+func (c *config) ProductDevice() string {
+	return c.productVariables.ProductDevice
+}
+
 // DeviceName returns the name of the current device target.
 // TODO: take an AndroidModuleContext to select the device name for multi-device builds
 func (c *config) DeviceName() string {
