@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d4a05be_338c10d6",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2025-02-18T22:06:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d38d9b88_4dd3ba08",
+      "revId": "1f16515c68bee21326bdb9556c5ba4ccbf7fe41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02e9adb3_74939024",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-02-14T21:46:34Z",
       "side": 1,
       "message": "no need for these local variables",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "1f16515c68bee21326bdb9556c5ba4ccbf7fe41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c4492b_1a12839a",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2025-02-18T22:06:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02e9adb3_74939024",
       "range": {
         "startLine": 86,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b805edd_23dda7bb",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2025-02-18T22:06:31Z",
+      "side": 1,
+      "message": "Thanks Cole for the suggestion. Done.",
+      "parentUuid": "da1e8698_f590aeae",
+      "revId": "1f16515c68bee21326bdb9556c5ba4ccbf7fe41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8405a0e5_d97c98fb",
@@ -71,6 +131,24 @@
       "writtenOn": "2025-02-14T21:46:34Z",
       "side": 1,
       "message": "Same here, these should not be hardcoded. I\u0027d see if we can just always add them to the zip regardless of the target product.",
+      "revId": "1f16515c68bee21326bdb9556c5ba4ccbf7fe41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf37ce5a_99679fd1",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2025-02-18T22:06:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8405a0e5_d97c98fb",
       "revId": "1f16515c68bee21326bdb9556c5ba4ccbf7fe41e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -92,6 +170,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e79aa05_e91783db",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2025-02-18T22:06:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86e331e9_75501e13",
+      "revId": "1f16515c68bee21326bdb9556c5ba4ccbf7fe41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d64a3b34_e951fbe7",
@@ -105,6 +201,30 @@
       "writtenOn": "2025-02-14T21:46:34Z",
       "side": 1,
       "message": "Is there a simpler / more consistent way we could do the path transformation? Like maybe using `installedFile.Rel()`?",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 72
+      },
+      "revId": "1f16515c68bee21326bdb9556c5ba4ccbf7fe41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d19bda1f_8739c706",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2025-02-18T22:06:31Z",
+      "side": 1,
+      "message": "I agree that the logic here does not look good. I created the clean up tracking bug b/397496149, which is to be addressed after `continuous_native_tests` and `continuous_instrumentation_tests`. Since the 2 unconverted tests may introduce more `ReplaceAll` scenarios based on their internal structures.",
+      "parentUuid": "d64a3b34_e951fbe7",
       "range": {
         "startLine": 201,
         "startChar": 0,
