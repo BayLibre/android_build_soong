@@ -218,7 +218,7 @@ java_import {
         android: {
             jars: ["java/android/myjavalib.jar"],
         },
-        linux_glibc: {
+        host_linux: {
             jars: ["java/linux_glibc/myjavalib.jar"],
         },
     },
@@ -1003,7 +1003,7 @@ java_import {
         android: {
             jars: ["java/android/myjavalib.jar"],
         },
-        linux_glibc: {
+        host_linux: {
             jars: ["java/linux_glibc/myjavalib.jar"],
         },
     },
