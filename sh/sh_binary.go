@@ -518,6 +518,34 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	installedData := ctx.InstallTestData(s.installDir, s.data)
 	s.installedFile = ctx.InstallExecutable(s.installDir, s.outputFilePath.Base(), s.outputFilePath, installedData...)
 
+	moduleInfoJSON := ctx.ModuleInfoJSON()
+	moduleInfoJSON.Class = []string{"NATIVE_TESTS"}
+	moduleInfoJSON.SystemSharedLibs = []string{"none"}
+	if s.testConfig != nil {
+		moduleInfoJSON.TestConfig = append(moduleInfoJSON.TestConfig, s.testConfig.String())
+	}
+	if s.extraTestConfigs != nil {
+		moduleInfoJSON.TestConfig = append(moduleInfoJSON.TestConfig, s.extraTestConfigs.Strings()...)
+	}
+	if s.testProperties.Test_config == nil && proptools.BoolDefault(s.testProperties.Auto_gen_config, true) && !android.ExistentPathForSource(ctx, ctx.ModuleDir(), "AndroidTest.xml").Valid() {
+		moduleInfoJSON.AutoTestConfig = []string{"true"}
+	}
+	moduleInfoJSON.CompatibilitySuites = []string{"null-suite"}
+	if len(s.testProperties.Test_suites) > 0 {
+		moduleInfoJSON.CompatibilitySuites = s.testProperties.Test_suites
+	}
+	if Bool(s.testProperties.Test_options.Unit_test) {
+		moduleInfoJSON.IsUnitTest = "true"
+		//if s.HostSupported() && !s.DeviceSupported() {
+		//	moduleInfoJSON.CompatibilitySuites = append(moduleInfoJSON.CompatibilitySuites, "host-unit-tests")
+		//}
+	}
+	if s.Name() == "ltp_testcases_data_mc_member_ManyGroups" {
+		fmt.Println("111111111", s.testConfig, s.extraTestConfigs)
+	}
+	moduleInfoJSON.DataDependencies = append(moduleInfoJSON.DataDependencies, s.testProperties.Data_bins...)
+	moduleInfoJSON.DataDependencies = append(moduleInfoJSON.DataDependencies, s.testProperties.Data_device_libs...)
+
 	mkEntries := s.AndroidMkEntries()[0]
 	android.SetProvider(ctx, tradefed.BaseTestProviderKey, tradefed.BaseTestProviderData{
 		TestcaseRelDataFiles: addArch(ctx.Arch().ArchType.String(), installedData.Paths()),
