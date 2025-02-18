@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed02a138_295f2806",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2025-02-18T04:53:20Z",
+      "side": 1,
+      "message": "From what I can tell (llvm-project/llvm/lib/ObjCopy/ConfigManager.cpp), it is `--keep-section` that is not supported.  Can we mention it in the comment?",
+      "range": {
+        "startLine": 107,
+        "startChar": 10,
+        "endLine": 107,
+        "endChar": 13
+      },
+      "revId": "91f136eae91a51b50a1c6f97a315f74d59cff5bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
