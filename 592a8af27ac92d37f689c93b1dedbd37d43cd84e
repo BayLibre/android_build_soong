@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04606c92_3c26d413",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-18T19:01:33Z",
+      "side": 1,
+      "message": "This path will be the same for all containers, I think you should prepend the container to `etc/aconfig_flags.pb` if it\u0027s not equal to the `PartitionType()`. Same below for the storage files.\n\nThis `FullInstallPath` determines where the file will be copied to during soong-only builds, so it\u0027s important for things like `adb sync`.",
+      "revId": "592a8af27ac92d37f689c93b1dedbd37d43cd84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f097aeed_bbf12688",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-18T19:01:33Z",
+      "side": 1,
+      "message": "This loop needs to be deterministic so that the ninja file is deterministic.",
+      "revId": "592a8af27ac92d37f689c93b1dedbd37d43cd84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
