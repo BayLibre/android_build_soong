@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0367b698_82fe1d35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2025-02-18T23:00:39Z",
+      "side": 1,
+      "message": "@christofferqa@google.com One thing I noticed is that this seems to override the `-assumenosideeffects` rules that SystemUI has for some null checks. Are the rules applied in order based on how they\u0027re fed into R8? Or are the rules applied based on the optimization pass ordering? I would think that `-assumenosideeffects` rules would be applied first, but want to get your thoughts before I try to tweak ordering or application.",
+      "revId": "b3a566b4a9c4b8ec36e6d3ccda4abf765c3eb8e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
