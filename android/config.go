@@ -1237,6 +1237,10 @@ func (c *config) MinimizeJavaDebugInfo() bool {
 	return Bool(c.productVariables.MinimizeJavaDebugInfo) && !Bool(c.productVariables.Eng)
 }
 
+func (c *config) Fuchsia() bool {
+	return Bool(c.productVariables.Fuchsia)
+}
+
 func (c *config) Debuggable() bool {
 	return Bool(c.productVariables.Debuggable)
 }

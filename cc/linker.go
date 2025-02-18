@@ -534,7 +534,7 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	flags = CommonLinkerFlags(ctx, flags, linker.useClangLld(ctx), toolchain,
 		allow_undefined_symbols)
 
-	if !toolchain.Bionic() && ctx.Os() != android.LinuxMusl {
+	if !toolchain.Bionic() && ctx.Os() != android.LinuxMusl && ctx.Os() != android.Fuchsia {
 		CheckBadHostLdlibs(ctx, "host_ldlibs", linker.Properties.Host_ldlibs)
 		flags.Local.LdFlags = append(flags.Local.LdFlags, linker.Properties.Host_ldlibs...)
 	}

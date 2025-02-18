@@ -150,3 +150,16 @@ phony {
         "libvulkan",
     ],
 }
+
+cc_library {
+    name: "hello_world_fuchsia",
+
+    srcs: [
+        "HelloWorldFuchsia.cpp",
+    ],
+    target: {
+        fuchsia: {
+            enabled: true,
+        },
+    },
+}

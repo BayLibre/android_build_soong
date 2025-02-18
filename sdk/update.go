@@ -2091,7 +2091,7 @@ func (s *sdk) getPossibleOsTypes() []android.OsType {
 	var osTypes []android.OsType
 	for _, osType := range android.OsTypeList() {
 		if s.DeviceSupported() {
-			if osType.Class == android.Device {
+			if osType.Class == android.Device && osType != android.Fuchsia {
 				osTypes = append(osTypes, osType)
 			}
 		}

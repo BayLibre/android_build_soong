@@ -31,6 +31,8 @@ bootstrap_go_package {
         "x86_windows_host.go",
 
         "arm64_linux_host.go",
+
+        "arm64_fuchsia_device.go",
     ],
     testSrcs: [
         "tidy_test.go",

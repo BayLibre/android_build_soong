@@ -339,6 +339,9 @@ type commonProperties struct {
 			Compile_multilib *string
 			Enabled          *bool
 		}
+		Fuchsia struct {
+			Enabled *bool
+		}
 	}
 
 	// If set to true then the archMutator will create variants for each arch specific target

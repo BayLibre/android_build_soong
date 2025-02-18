@@ -327,6 +327,10 @@ var (
 	// and the Bionic libc runtime.
 	Android = newOsType("android", Device, false, Arm, Arm64, Riscv64, X86, X86_64)
 
+	// Fuchsia is the OS for target devices that run all of Fuchsia. In the prototyping we use
+	// Arm64, as most of current Fuchsia devices are Arm64.
+	Fuchsia = newOsType("fuchsia", Device, false, Arm64)
+
 	// CommonOS is a pseudo OSType for a common OS variant, which is OsType agnostic and which
 	// has dependencies on all the OS variants.
 	CommonOS = newOsType("common_os", Generic, false)
@@ -1686,9 +1690,19 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 
 	// Optional device targets
 	if variables.DeviceArch != nil && *variables.DeviceArch != "" {
-		// The primary device target.
+		// Hack fuchsia as the primary device target.
 		addTarget(targetConfig{
 			os:                  Android,
+			archName:            *variables.DeviceArch,
+			archVariant:         variables.DeviceArchVariant,
+			cpuVariant:          variables.DeviceCpuVariant,
+			abi:                 variables.DeviceAbi,
+			nativeBridgeEnabled: NativeBridgeDisabled,
+		})
+
+		// Hack fuchsia as the primary device target.
+		addTarget(targetConfig{
+			os:                  Fuchsia,
 			archName:            *variables.DeviceArch,
 			archVariant:         variables.DeviceArchVariant,
 			cpuVariant:          variables.DeviceCpuVariant,

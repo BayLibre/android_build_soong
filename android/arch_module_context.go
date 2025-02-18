@@ -29,6 +29,7 @@ type ArchModuleContext interface {
 	Device() bool
 	Darwin() bool
 	Windows() bool
+	Fuchsia() bool
 	PrimaryArch() bool
 }
 
@@ -82,10 +83,14 @@ func (a *archModuleContext) Darwin() bool {
 	return a.os == Darwin
 }
 
+func (a *archModuleContext) Fuchsia() bool {
+	return a.os == Fuchsia
+}
+
 func (a *archModuleContext) Windows() bool {
 	return a.os == Windows
 }
 
-func (b *archModuleContext) PrimaryArch() bool {
-	return b.primaryArch
+func (a *archModuleContext) PrimaryArch() bool {
+	return a.primaryArch
 }

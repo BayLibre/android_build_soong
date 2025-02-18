@@ -473,6 +473,11 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		s.Never = BoolPtr(true)
 	}
 
+	// Sanitizers do not work on Fuchsia yet.
+	if ctx.Fuchsia() {
+		s.Never = BoolPtr(true)
+	}
+
 	// Never always wins.
 	if Bool(s.Never) {
 		return
