@@ -149,6 +149,7 @@ func filesystemCreatorFactory() android.Module {
 		createFsGenState(ctx, generatedPrebuiltEtcModuleNames, avbpubkeyGenerated)
 		module.createAvbKeyFilegroups(ctx)
 		module.createMiscFilegroups(ctx)
+		module.createOTAToolZipfilegroup(ctx)
 		module.createInternalModules(ctx)
 	})
 
@@ -307,6 +308,7 @@ func (f *filesystemCreator) createBootloaderFilegroup(ctx android.LoadHookContex
 	}
 
 	bootloaderFilegroupName := generatedModuleName(ctx.Config(), "bootloader")
+	fmt.Println("bootloaderFilegroupName: ", bootloaderFilegroupName)
 	filegroupProps := &struct {
 		Name       *string
 		Srcs       []string
@@ -316,6 +318,7 @@ func (f *filesystemCreator) createBootloaderFilegroup(ctx android.LoadHookContex
 		Srcs:       []string{bootloaderPath},
 		Visibility: []string{"//visibility:public"},
 	}
+	fmt.Println("bootloaderPath: ", bootloaderPath)
 	ctx.CreateModuleInDirectory(android.FileGroupFactory, ".", filegroupProps)
 	return bootloaderFilegroupName, true
 }
@@ -327,6 +330,7 @@ func (f *filesystemCreator) createReleaseToolsFilegroup(ctx android.LoadHookCont
 	}
 
 	releaseToolsFilegroupName := generatedModuleName(ctx.Config(), "releasetools")
+	fmt.Println("releaseToolsFilegroupName: ", releaseToolsFilegroupName)
 	filegroupProps := &struct {
 		Name       *string
 		Srcs       []string
@@ -336,6 +340,7 @@ func (f *filesystemCreator) createReleaseToolsFilegroup(ctx android.LoadHookCont
 		Srcs:       []string{"releasetools.py"},
 		Visibility: []string{"//visibility:public"},
 	}
+	fmt.Println("releaseToolsDir: ", releaseToolsDir)
 	ctx.CreateModuleInDirectory(android.FileGroupFactory, releaseToolsDir, filegroupProps)
 	return releaseToolsFilegroupName, true
 }
@@ -720,6 +725,24 @@ func (f *filesystemCreator) createMiscFilegroups(ctx android.LoadHookContext) {
 			},
 		)
 	}
+}
+
+// Creates filegroups for OTATool.zip other files
+func (f *filesystemCreator) createOTAToolZipfilegroup(ctx android.LoadHookContext) {
+	fmt.Println("Start to process group: soong_generated_otatool_package_filegroup")
+	ctx.CreateModuleInDirectory(
+		android.FileGroupFactory,
+		".",
+		&struct {
+			Name       *string
+			Srcs       []string
+			Visibility []string
+		}{
+			Name:       proptools.StringPtr("soong_generated_otatool_package_filegroup"),
+			Srcs:       []string{"system/tools/aidl/build/tests_1/some_package/*.aidl"},
+			Visibility: []string{"//visibility:public"},
+		},
+	)
 }
 
 // createPrebuiltKernelModules creates `prebuilt_kernel_modules`. These modules will be added to deps of the

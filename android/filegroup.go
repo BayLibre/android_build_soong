@@ -15,6 +15,7 @@
 package android
 
 import (
+	"fmt"
 	"maps"
 	"strings"
 
@@ -32,6 +33,7 @@ var PrepareForTestWithFilegroup = FixtureRegisterWithContext(func(ctx Registrati
 
 func RegisterFilegroupBuildComponents(ctx RegistrationContext) {
 	ctx.RegisterModuleType("filegroup", FileGroupFactory)
+	ctx.RegisterModuleType("filegroup_from_root", FileGroupRootFactory)
 	ctx.RegisterModuleType("filegroup_defaults", FileGroupDefaultsFactory)
 }
 
@@ -104,6 +106,9 @@ func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
 	if fg.properties.Path != nil {
 		srcs = PathsWithModuleSrcSubDir(ctx, srcs, String(fg.properties.Path))
 	}
+	if ctx.ModuleName() == "aidl-test-filegroup__" {
+		fmt.Println("Get filegroup srcs: ", srcs)
+	}
 
 	var aconfigDeclarations []string
 	var intermediateCacheOutputPaths Paths
@@ -161,4 +166,43 @@ func (fg *fileGroup) IDEInfo(ctx BaseModuleContext, dpInfo *IdeInfo) {
 			dpInfo.Deps = append(dpInfo.Deps, mod)
 		}
 	}
+}
+
+type fileGroupRootProperties struct {
+	// srcs lists files that will be included in this filegroup
+	Srcs proptools.Configurable[[]string] `android:"path"`
+
+	Exclude_srcs proptools.Configurable[[]string] `android:"path"`
+}
+
+type fileGroupRoot struct {
+	ModuleBase
+	DefaultableModuleBase
+	properties fileGroupRootProperties
+	srcs       Paths
+}
+
+func (fg *fileGroupRoot) Srcs() Paths {
+	return append(Paths{}, fg.srcs...)
+}
+
+func FileGroupRootFactory() Module {
+	module := &fileGroupRoot{}
+	module.AddProperties(&module.properties)
+	InitAndroidModule(module)
+	InitDefaultableModule(module)
+	return module
+}
+
+func (fg *fileGroupRoot) GenerateAndroidBuildActions(ctx ModuleContext) {
+	srcs := PathsForModuleSrcExcludesRoot(ctx, fg.properties.Srcs.GetOrDefault(ctx, nil), fg.properties.Exclude_srcs.GetOrDefault(ctx, nil))
+	if ctx.ModuleName() == "aidl-test-filegroup-root" {
+		fmt.Println("Root Get source property:", fg.properties.Srcs.GetOrDefault(ctx, nil))
+		fmt.Println("Root Get filegroup srcs: ", srcs)
+	}
+	fmt.Println("Processed srcs in file group root: ", srcs)
+	//if fg.properties.Path != nil {
+	//	srcs = PathsWithModuleSrcSubDir(ctx, srcs, String(fg.properties.Path))
+	//}
+	fg.srcs = srcs
 }
