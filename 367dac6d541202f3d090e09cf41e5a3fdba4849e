@@ -70,6 +70,24 @@
       "parentUuid": "b6afd0bf_14c3cfc4",
       "revId": "367dac6d541202f3d090e09cf41e5a3fdba4849e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "230019db_95a4f44a",
+        "filename": "android/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-18T19:39:14Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "b12cf375_8d817df8",
+      "revId": "367dac6d541202f3d090e09cf41e5a3fdba4849e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
