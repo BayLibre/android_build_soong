@@ -2196,6 +2196,10 @@ func (c *config) UseR8StoreStoreFenceConstructorInlining() bool {
 	return c.productVariables.GetBuildFlagBool("RELEASE_R8_STORE_STORE_FENCE_CONSTRUCTOR_INLINING")
 }
 
+func (c *config) UseR8GlobalCheckNotNullFlags() bool {
+	return c.productVariables.GetBuildFlagBool("RELEASE_R8_GLOBAL_CHECK_NOT_NULL_FLAGS")
+}
+
 func (c *config) UseDexV41() bool {
 	return c.productVariables.GetBuildFlagBool("RELEASE_USE_DEX_V41")
 }
