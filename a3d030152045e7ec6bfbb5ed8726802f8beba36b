@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9343798c_e9e9e502",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2025-02-18T18:08:56Z",
+      "side": 1,
+      "message": "Waiting for aosp/3499371 to land",
+      "revId": "a3d030152045e7ec6bfbb5ed8726802f8beba36b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
