@@ -295,7 +295,6 @@ var (
 
 		// Allow using VLA CXX extension.
 		"-Wno-vla-cxx-extension",
-		"-Wno-cast-function-type-mismatch",
 	}
 
 	noOverride64GlobalCflags = []string{}
