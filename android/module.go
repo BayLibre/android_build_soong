@@ -417,6 +417,8 @@ type commonProperties struct {
 	// CompileMultiTargets, and CompilePrimary
 	ArchReady bool `blueprint:"mutated"`
 
+	SkipArchReadyCheck bool `blueprint:"mutated"`
+
 	// The Target of artifacts that this module variant is responsible for creating.
 	//
 	// Set by archMutator
@@ -2649,10 +2651,27 @@ func (e configurationEvalutor) EvaluateConfiguration(condition proptools.Configu
 			return proptools.ConfigurableValueUndefined()
 		}
 		if !m.base().ArchReady() {
+			if ctx.Config().AndroidFirstDeviceTarget.Arch.ArchType.Name != "" {
+				fmt.Println("The module name:", m.base().Name())
+				return proptools.ConfigurableValueString(ctx.Config().AndroidFirstDeviceTarget.Arch.ArchType.Name)
+			}
+
 			ctx.OtherModulePropertyErrorf(m, property, "A select on arch was attempted before the arch mutator ran")
 			return proptools.ConfigurableValueUndefined()
 		}
 		return proptools.ConfigurableValueString(m.base().Arch().ArchType.Name)
+	case "dpi":
+		if condition.NumArgs() != 0 {
+			ctx.OtherModulePropertyErrorf(m, property, "dpi requires no arguments, found %d", condition.NumArgs())
+			return proptools.ConfigurableValueUndefined()
+		}
+		fmt.Println("Get dpi:", ctx.Config().GetDpiValue())
+		fmt.Println("function name:", condition.FunctionName())
+		fmt.Println("condition string:", condition.String())
+		fmt.Println("Get DPI variants:", ctx.Config().GetDpiValue())
+		// proptools.ConfigurableValueStringList()
+		return proptools.ConfigurableValueString(ctx.Config().GetDpiValue())
+		// return proptools.ConfigurableValueStringList(ctx.Config().GetDpiVariants())
 	case "os":
 		if condition.NumArgs() != 0 {
 			ctx.OtherModulePropertyErrorf(m, property, "os requires no arguments, found %d", condition.NumArgs())

@@ -197,11 +197,8 @@ func (a *AndroidAppImport) processVariants(ctx android.DefaultableHookContext) {
 	// Try DPI variant matches in the reverse-priority order so that the highest priority match
 	// overwrites everything else.
 	// TODO(jungjw): Can we optimize this by making it priority order?
-	for i := len(config.ProductAAPTPrebuiltDPI()) - 1; i >= 0; i-- {
-		MergePropertiesFromVariant(ctx, &a.properties, dpiProps, config.ProductAAPTPrebuiltDPI()[i])
-	}
-	if config.ProductAAPTPreferredConfig() != "" {
-		MergePropertiesFromVariant(ctx, &a.properties, dpiProps, config.ProductAAPTPreferredConfig())
+	if config.GetDpiValue() != "" {
+		MergePropertiesFromVariant(ctx, &a.properties, dpiProps, config.GetDpiValue())
 	}
 	archProps := reflect.ValueOf(a.archVariants).Elem().FieldByName(ArchGroupName)
 	archType := ctx.Config().AndroidFirstDeviceTarget.Arch.ArchType
@@ -214,11 +211,8 @@ func (a *AndroidAppImport) processVariants(ctx android.DefaultableHookContext) {
 		if archPartProps := archPartPropsPtr.Elem(); archPartProps.IsValid() {
 			archDpiPropsPtr := archPartProps.FieldByName(DpiGroupName)
 			if archDpiProps := archDpiPropsPtr.Elem(); archDpiProps.IsValid() {
-				for i := len(config.ProductAAPTPrebuiltDPI()) - 1; i >= 0; i-- {
-					MergePropertiesFromVariant(ctx, &a.properties, archDpiProps, config.ProductAAPTPrebuiltDPI()[i])
-				}
-				if config.ProductAAPTPreferredConfig() != "" {
-					MergePropertiesFromVariant(ctx, &a.properties, archDpiProps, config.ProductAAPTPreferredConfig())
+				if config.GetDpiValue() != "" {
+					MergePropertiesFromVariant(ctx, &a.properties, archDpiProps, config.GetDpiValue())
 				}
 			}
 		}
@@ -741,6 +735,8 @@ func AndroidAppImportFactory() android.Module {
 	module.AddProperties(&module.properties)
 	module.AddProperties(&module.dexpreoptProperties)
 	module.AddProperties(&module.usesLibrary.usesLibraryProperties)
+
+	// android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	module.populateAllVariantStructs()
 	module.SetDefaultableHook(func(ctx android.DefaultableHookContext) {
 		module.processVariants(ctx)

@@ -556,6 +556,15 @@ func PathsForModuleSrcExcludes(ctx ModuleMissingDepsPathContext, paths, excludes
 	})
 }
 
+func PathsForModuleSrcExcludesRoot(ctx ModuleMissingDepsPathContext, paths, excludes []string) Paths {
+	return PathsRelativeToModuleSourceDirRoot(SourceInput{
+		Context:      ctx,
+		Paths:        paths,
+		ExcludePaths: excludes,
+		IncludeDirs:  true,
+	})
+}
+
 func PathsRelativeToModuleSourceDir(input SourceInput) Paths {
 	ret, missingDeps := PathsAndMissingDepsRelativeToModuleSourceDir(input)
 	if input.Context.Config().AllowMissingDependencies() {
@@ -566,6 +575,77 @@ func PathsRelativeToModuleSourceDir(input SourceInput) Paths {
 		}
 	}
 	return ret
+}
+
+func PathsRelativeToModuleSourceDirRoot(input SourceInput) Paths {
+	ret, missingDeps := PathsAndMissingDepsRelativeToModuleSourceDirRoot(input)
+	// fmt.Println("input path: ", input)
+	// fmt.Println("relative path: ", ret)
+	if input.Context.Config().AllowMissingDependencies() {
+		input.Context.AddMissingDependencies(missingDeps)
+	} else {
+		for _, m := range missingDeps {
+			input.Context.ModuleErrorf(`missing dependency on %q, is the property annotated with android:"path"?`, m)
+		}
+	}
+	return ret
+}
+
+func PathsAndMissingDepsRelativeToModuleSourceDirRoot(input SourceInput) (Paths, []string) {
+	prefix := pathForModuleSrc(input.Context).String()
+	fmt.Println("prefix path: ", prefix)
+
+	var expandedExcludes []string
+	if input.ExcludePaths != nil {
+		expandedExcludes = make([]string, 0, len(input.ExcludePaths))
+	}
+
+	var missingExcludeDeps []string
+	for _, e := range input.ExcludePaths {
+		if m, t := SrcIsModuleWithTag(e); m != "" {
+			modulePaths, err := getPathsFromModuleDep(input.Context, e, m, t)
+			if m, ok := err.(missingDependencyError); ok {
+				missingExcludeDeps = append(missingExcludeDeps, m.missingDeps...)
+			} else if err != nil {
+				reportPathError(input.Context, err)
+			} else {
+				expandedExcludes = append(expandedExcludes, modulePaths.Strings()...)
+			}
+		} else {
+			expandedExcludes = append(expandedExcludes, filepath.Join(prefix, e))
+		}
+	}
+
+	if input.Paths == nil {
+		return nil, missingExcludeDeps
+	}
+
+	var missingDeps []string
+
+	expandedSrcFiles := make(Paths, 0, len(input.Paths))
+	fmt.Println("expandedSrcFiles: ", expandedSrcFiles)
+	for _, s := range input.Paths {
+		srcFiles, err := expandOneSrcPath(sourcePathInput{
+			context:          input.Context,
+			path:             s,
+			expandedExcludes: expandedExcludes,
+			includeDirs:      input.IncludeDirs,
+		})
+		fmt.Println("srcFiles from expandOneSrcPath for test: ", srcFiles)
+		if err != nil {
+			fmt.Println("There is one error in expandOneSrcPath: ")
+		}
+		if depErr, ok := err.(missingDependencyError); ok {
+			missingDeps = append(missingDeps, depErr.missingDeps...)
+		} else if err != nil {
+			reportPathError(input.Context, err)
+		}
+		expandedSrcFiles = append(expandedSrcFiles, srcFiles...)
+	}
+	fmt.Println("Processed expandedSrcFiles: ", expandedSrcFiles)
+
+	// TODO: b/334169722 - Replace with an error instead of implicitly removing duplicates.
+	return FirstUniquePaths(expandedSrcFiles), append(missingDeps, missingExcludeDeps...)
 }
 
 type directoryPath struct {
@@ -894,10 +974,10 @@ func pathsForModuleSrcFromFullPath(ctx EarlyModulePathContext, paths []string, i
 			continue
 		}
 		path := filepath.Clean(p)
-		if !strings.HasPrefix(path, prefix) {
-			ReportPathErrorf(ctx, "Path %q is not in module source directory %q", p, prefix)
-			continue
-		}
+		//if !strings.HasPrefix(path, prefix) {
+		//	ReportPathErrorf(ctx, "Path %q is not in module source directory %q", p, prefix)
+		//	continue
+		//}
 
 		srcPath, err := safePathForSource(ctx, ctx.ModuleDir(), path[len(prefix):])
 		if err != nil {
@@ -2199,10 +2279,10 @@ func validatePathInternal(allowNinjaVariables bool, pathComponents ...string) (s
 			return "", fmt.Errorf("Path contains invalid character($): %s", path)
 		}
 
-		path := filepath.Clean(path)
-		if path == ".." || strings.HasPrefix(path, "../") || strings.HasPrefix(path, "/") {
-			return "", fmt.Errorf("Path is outside directory: %s", path)
-		}
+		// path := filepath.Clean(path)
+		// if path == ".." || strings.HasPrefix(path, "../") || strings.HasPrefix(path, "/") {
+		//	return "", fmt.Errorf("Path is outside directory: %s", path)
+		//}
 
 		if i == initialEmpty && pathComponents[i] == "" {
 			initialEmpty++

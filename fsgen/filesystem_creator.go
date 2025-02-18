@@ -149,6 +149,7 @@ func filesystemCreatorFactory() android.Module {
 		createFsGenState(ctx, generatedPrebuiltEtcModuleNames, avbpubkeyGenerated)
 		module.createAvbKeyFilegroups(ctx)
 		module.createMiscFilegroups(ctx)
+		module.createOTAToolZipfilegroup(ctx)
 		module.createInternalModules(ctx)
 	})
 
@@ -307,6 +308,7 @@ func (f *filesystemCreator) createBootloaderFilegroup(ctx android.LoadHookContex
 	}
 
 	bootloaderFilegroupName := generatedModuleName(ctx.Config(), "bootloader")
+	fmt.Println("bootloaderFilegroupName: ", bootloaderFilegroupName)
 	filegroupProps := &struct {
 		Name       *string
 		Srcs       []string
@@ -316,6 +318,7 @@ func (f *filesystemCreator) createBootloaderFilegroup(ctx android.LoadHookContex
 		Srcs:       []string{bootloaderPath},
 		Visibility: []string{"//visibility:public"},
 	}
+	fmt.Println("bootloaderPath: ", bootloaderPath)
 	ctx.CreateModuleInDirectory(android.FileGroupFactory, ".", filegroupProps)
 	return bootloaderFilegroupName, true
 }
@@ -327,6 +330,7 @@ func (f *filesystemCreator) createReleaseToolsFilegroup(ctx android.LoadHookCont
 	}
 
 	releaseToolsFilegroupName := generatedModuleName(ctx.Config(), "releasetools")
+	fmt.Println("releaseToolsFilegroupName: ", releaseToolsFilegroupName)
 	filegroupProps := &struct {
 		Name       *string
 		Srcs       []string
@@ -336,6 +340,7 @@ func (f *filesystemCreator) createReleaseToolsFilegroup(ctx android.LoadHookCont
 		Srcs:       []string{"releasetools.py"},
 		Visibility: []string{"//visibility:public"},
 	}
+	fmt.Println("releaseToolsDir: ", releaseToolsDir)
 	ctx.CreateModuleInDirectory(android.FileGroupFactory, releaseToolsDir, filegroupProps)
 	return releaseToolsFilegroupName, true
 }
@@ -720,6 +725,42 @@ func (f *filesystemCreator) createMiscFilegroups(ctx android.LoadHookContext) {
 			},
 		)
 	}
+}
+
+// Creates filegroups for OTATool.zip other files
+func (f *filesystemCreator) createOTAToolZipfilegroup(ctx android.LoadHookContext) {
+	fmt.Println("Start to process group: soong_generated_otatool_package_filegroup")
+	ctx.CreateModuleInDirectory(
+		android.FileGroupFactory,
+		".",
+		&struct {
+			Name       *string
+			Srcs       []string
+			Visibility []string
+		}{
+			Name: proptools.StringPtr("soong_generated_otatool_package_filegroup"),
+			Srcs: []string{
+				"build/make/target/product/security/**/*.x509.pem",
+				"build/make/target/product/security/**/*.pk8",
+				"device/**/*.pk8",
+				"device/**/verifiedboot*",
+				"device/**/*.pem",
+				"device/**/oem*.prop",
+				"device/**/*.avbpubkey",
+				"external/avb/test/data/**/testkey_*.pem",
+				"external/avb/test/data/**/atx_metadata.bin",
+				"packages/modules/**/*.x509.pem",
+				"packages/modules/**/*.pk8",
+				"packages/modules/**/*.key.pem",
+				"vendor/**/*.pk8",
+				"vendor/**/verifiedboot*",
+				"vendor/**/*.pem",
+				"vendor/**/oem*.prop",
+				"vendor/**/*.avbpubkey",
+			},
+			Visibility: []string{"//visibility:public"},
+		},
+	)
 }
 
 // createPrebuiltKernelModules creates `prebuilt_kernel_modules`. These modules will be added to deps of the

@@ -740,6 +740,9 @@ func (a *archTransitionMutator) Mutate(ctx BottomUpMutatorContext, variation str
 	// Annotate the new variant with which Target it was created for, and
 	// squash the appropriate arch-specific properties into the top level properties.
 	addTargetProperties(ctx.Module(), target, multiTargets, primary)
+	if ctx.ModuleName() == "Videos" {
+		fmt.Println("Set Arch ready")
+	}
 	base.setArchProperties(ctx)
 
 	// Install support doesn't understand Darwin+Arm64

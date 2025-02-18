@@ -1134,6 +1134,34 @@ func (c *config) ProductAAPTPreferredConfig() string {
 	return String(c.productVariables.AAPTPreferredConfig)
 }
 
+func (c *config) GetDpiVariants() []string {
+	dpi_variants := []string{}
+	// fmt.Println("c.ProductAAPTPrebuiltDPI():", c.ProductAAPTPrebuiltDPI())
+	for i := len(c.ProductAAPTPrebuiltDPI()) - 1; i >= 0; i-- {
+		dpi_variants = append(dpi_variants, c.ProductAAPTPrebuiltDPI()[i])
+	}
+	// fmt.Println("c.ProductAAPTPreferredConfig():", c.ProductAAPTPreferredConfig())
+	if c.ProductAAPTPreferredConfig() != "" {
+		dpi_variants = append(dpi_variants, c.ProductAAPTPreferredConfig())
+	}
+	// Get the lastest dpi and check if it has value
+	// fmt.Println("Get dpi:", dpi_variants)
+	return dpi_variants
+}
+
+func (c *config) GetDpiValue() string {
+	dpi := ""
+	for i := len(c.ProductAAPTPrebuiltDPI()) - 1; i >= 0; i-- {
+		dpi = c.ProductAAPTPrebuiltDPI()[i]
+	}
+	if c.ProductAAPTPreferredConfig() != "" {
+		dpi = c.ProductAAPTPreferredConfig()
+	}
+
+	//fmt.Println("Get dpi:", dpi)
+	return dpi
+}
+
 func (c *config) ProductAAPTCharacteristics() string {
 	return String(c.productVariables.AAPTCharacteristics)
 }
