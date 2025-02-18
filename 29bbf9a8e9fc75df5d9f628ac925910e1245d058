@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f9873f_a6a01317",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-18T18:06:43Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nPlease remove the trailing whitespace.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 1
+      },
+      "revId": "29bbf9a8e9fc75df5d9f628ac925910e1245d058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e4881b_1e40b1c0",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-18T18:06:43Z",
+      "side": 1,
+      "message": "This should be `SharedLibs`.",
+      "range": {
+        "startLine": 121,
+        "startChar": 51,
+        "endLine": 121,
+        "endChar": 63
+      },
+      "revId": "29bbf9a8e9fc75df5d9f628ac925910e1245d058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
