@@ -16,6 +16,24 @@
       "message": "This clang version seems to cause deadlocks while linking libart-disassembler for arm (arm64 seems to behave properly), the deadlock itself doesn\u0027t seem to be deterministic, but when you hit it once you won\u0027t ever get past it (eg. by running m again)\n\nI\u0027m not exactly sure why that would happen, but maybe the build sometimes outputs stuff just in the _right_ way to not trigger it (or to trigger it?)\n\nI tried to trim down the lld options to no avail, the .so and .o are enough.\n\nI checked strace/gdb trying to understand what happens, it gets stuck on a futex() syscall, and that seems to come from a cond_wait, but it\u0027s all optimized out so I don\u0027t have any other symbol to help me with...\n\nOne of the threads is clearly not blocked but without symbols I can\u0027t really see where it\u0027s stuck.\n\nI know this isn\u0027t really helpful, but I wanted to at least make you aware of the issue.",
       "revId": "1bc6f89357dc9616966ce37c99531eb123b52c5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3833bdff_532881f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2025-02-18T05:15:03Z",
+      "side": 1,
+      "message": "We are aware of this issue, although the build does finish after 25 minutes or so. https://github.com/llvm/llvm-project/issues/127477 is the upstream bug report.",
+      "parentUuid": "a1b129e8_52813f3d",
+      "revId": "1bc6f89357dc9616966ce37c99531eb123b52c5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
