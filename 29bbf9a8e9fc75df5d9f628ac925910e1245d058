@@ -45,6 +45,29 @@
       },
       "revId": "29bbf9a8e9fc75df5d9f628ac925910e1245d058",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5f6574_13599264",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-18T18:12:08Z",
+      "side": 1,
+      "message": "I beleive you can remove these 3 lines from the `PythonTestModule` now, as it inherits from the binary module.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "29bbf9a8e9fc75df5d9f628ac925910e1245d058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
