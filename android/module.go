@@ -1912,8 +1912,6 @@ type CommonModuleInfo struct {
 	SkipInstall                      bool
 	IsStubsModule                    bool
 	Host                             bool
-	MinSdkVersionSupported           ApiLevel
-	ModuleWithMinSdkVersionCheck     bool
 }
 
 type ApiLevelOrPlatform struct {
@@ -2294,13 +2292,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		commonData.CanHaveApexVariants = am.CanHaveApexVariants()
 		commonData.NotAvailableForPlatform = am.NotAvailableForPlatform()
 		commonData.NotInPlatform = am.NotInPlatform()
-		commonData.MinSdkVersionSupported = am.MinSdkVersionSupported(ctx)
 	}
-
-	if _, ok := m.module.(ModuleWithMinSdkVersionCheck); ok {
-		commonData.ModuleWithMinSdkVersionCheck = true
-	}
-
 	if st, ok := m.module.(StubsAvailableModule); ok {
 		commonData.IsStubsModule = st.IsStubsModule()
 	}

@@ -252,8 +252,6 @@ type BootclasspathFragmentModule struct {
 	profilePathErr error
 }
 
-var _ android.ApexModule = (*BootclasspathFragmentModule)(nil)
-
 // commonBootclasspathFragment defines the methods that are implemented by both source and prebuilt
 // bootclasspath fragment modules.
 type commonBootclasspathFragment interface {
@@ -456,8 +454,8 @@ func (b BootclasspathFragmentDepInSameApexChecker) OutgoingDepIsInSameApex(tag b
 	panic(fmt.Errorf("boot_image module should not have a dependency tag %s", android.PrettyPrintTag(tag)))
 }
 
-func (m *BootclasspathFragmentModule) MinSdkVersionSupported(ctx android.BaseModuleContext) android.ApiLevel {
-	return android.MinApiLevel
+func (b *BootclasspathFragmentModule) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion android.ApiLevel) error {
+	return nil
 }
 
 // ComponentDepsMutator adds dependencies onto modules before any prebuilt modules without a

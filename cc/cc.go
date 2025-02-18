@@ -4124,19 +4124,20 @@ func (c CcDepInSameApexChecker) IncomingDepIsInSameApex(depTag blueprint.Depende
 }
 
 // Implements android.ApexModule
-func (c *Module) MinSdkVersionSupported(ctx android.BaseModuleContext) android.ApiLevel {
+func (c *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
+	sdkVersion android.ApiLevel) error {
 	// We ignore libclang_rt.* prebuilt libs since they declare sdk_version: 14(b/121358700)
 	if strings.HasPrefix(ctx.OtherModuleName(c), "libclang_rt") {
-		return android.MinApiLevel
+		return nil
 	}
 	// We don't check for prebuilt modules
 	if _, ok := c.linker.(prebuiltLinkerInterface); ok {
-		return android.MinApiLevel
+		return nil
 	}
 
 	minSdkVersion := c.MinSdkVersion()
 	if minSdkVersion == "apex_inherit" {
-		return android.MinApiLevel
+		return nil
 	}
 	if minSdkVersion == "" {
 		// JNI libs within APK-in-APEX fall into here
@@ -4145,16 +4146,14 @@ func (c *Module) MinSdkVersionSupported(ctx android.BaseModuleContext) android.A
 		// non-SDK variant resets sdk_version, which works too.
 		minSdkVersion = c.SdkVersion()
 	}
-
 	if minSdkVersion == "" {
-		return android.NoneApiLevel
+		return fmt.Errorf("neither min_sdk_version nor sdk_version specificed")
 	}
-
 	// Not using nativeApiLevelFromUser because the context here is not
 	// necessarily a native context.
-	ver, err := android.ApiLevelFromUserWithConfig(ctx.Config(), minSdkVersion)
+	ver, err := android.ApiLevelFromUser(ctx, minSdkVersion)
 	if err != nil {
-		return android.NoneApiLevel
+		return err
 	}
 
 	// A dependency only needs to support a min_sdk_version at least
@@ -4162,14 +4161,15 @@ func (c *Module) MinSdkVersionSupported(ctx android.BaseModuleContext) android.A
 	// This allows introducing new architectures in the platform that
 	// need to be included in apexes that normally require an older
 	// min_sdk_version.
-	if c.Enabled(ctx) {
-		minApiForArch := MinApiForArch(ctx, c.Target().Arch.ArchType)
-		if ver.LessThanOrEqualTo(minApiForArch) {
-			ver = android.MinApiLevel
-		}
+	minApiForArch := MinApiForArch(ctx, c.Target().Arch.ArchType)
+	if sdkVersion.LessThan(minApiForArch) {
+		sdkVersion = minApiForArch
 	}
 
-	return ver
+	if ver.GreaterThan(sdkVersion) {
+		return fmt.Errorf("newer SDK(%v)", ver)
+	}
+	return nil
 }
 
 // Implements android.ApexModule

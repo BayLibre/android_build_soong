@@ -95,10 +95,8 @@ type SystemServerClasspathModule struct {
 	properties systemServerClasspathFragmentProperties
 }
 
-var _ android.ApexModule = (*SystemServerClasspathModule)(nil)
-
-func (m *SystemServerClasspathModule) MinSdkVersionSupported(ctx android.BaseModuleContext) android.ApiLevel {
-	return android.MinApiLevel
+func (s *SystemServerClasspathModule) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion android.ApiLevel) error {
+	return nil
 }
 
 type systemServerClasspathFragmentProperties struct {

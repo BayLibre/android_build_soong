@@ -807,8 +807,10 @@ func (module *sdkLibraryXml) DepsMutator(ctx android.BottomUpMutatorContext) {
 var _ android.ApexModule = (*sdkLibraryXml)(nil)
 
 // Implements android.ApexModule
-func (m *sdkLibraryXml) MinSdkVersionSupported(ctx android.BaseModuleContext) android.ApiLevel {
-	return android.MinApiLevel
+func (module *sdkLibraryXml) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
+	sdkVersion android.ApiLevel) error {
+	// sdkLibraryXml doesn't need to be checked separately because java_sdk_library is checked
+	return nil
 }
 
 // File path to the runtime implementation library
