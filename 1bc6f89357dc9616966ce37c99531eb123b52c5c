@@ -34,6 +34,24 @@
       "parentUuid": "a1b129e8_52813f3d",
       "revId": "1bc6f89357dc9616966ce37c99531eb123b52c5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05af49af_192a2d4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-02-18T06:39:19Z",
+      "side": 1,
+      "message": "Oh, I\u0027ve seen it reach 35 minutes and assumed it would never finish.\nThanks for the upstream report.",
+      "parentUuid": "3833bdff_532881f2",
+      "revId": "1bc6f89357dc9616966ce37c99531eb123b52c5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
