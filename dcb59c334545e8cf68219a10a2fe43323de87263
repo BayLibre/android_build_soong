@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bff720b_6d267ae2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2025-02-18T19:39:44Z",
+      "side": 1,
+      "message": "Can you point to the variables we can skip with this?  There are very few features that are for a single device.  This is the kind of logic we don\u0027t want:\n\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:device/amlogic/common/Android.mk;l\u003d18?q\u003df:Android.mk%20TARGET_DEVICE%20repo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main",
+      "revId": "dcb59c334545e8cf68219a10a2fe43323de87263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
