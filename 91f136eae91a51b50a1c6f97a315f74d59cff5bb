@@ -22,6 +22,30 @@
       },
       "revId": "91f136eae91a51b50a1c6f97a315f74d59cff5bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3636c300_281dccf3",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2025-02-18T05:12:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed02a138_295f2806",
+      "range": {
+        "startLine": 107,
+        "startChar": 10,
+        "endLine": 107,
+        "endChar": 13
+      },
+      "revId": "91f136eae91a51b50a1c6f97a315f74d59cff5bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
