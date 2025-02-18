@@ -52,6 +52,24 @@
       "parentUuid": "d5547d6b_e83ac046",
       "revId": "367dac6d541202f3d090e09cf41e5a3fdba4849e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12cf375_8d817df8",
+        "filename": "android/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-18T19:32:22Z",
+      "side": 0,
+      "message": "We\u0027re only removing collecting dist contributuions from MakeVars functions. We still collect dists from singletons in both soong-only and soong+make builds. In soong-only we collect singleton dists in androidmk.go line 795, in soong+make we collect them in makevars.go line 269.",
+      "parentUuid": "b6afd0bf_14c3cfc4",
+      "revId": "367dac6d541202f3d090e09cf41e5a3fdba4849e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
