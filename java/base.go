@@ -1372,6 +1372,10 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		}
 		flags.kotlincDeps = append(flags.kotlincDeps, deps.kotlinPlugins...)
 
+		if !ctx.Config().Eng() {
+			kotlincFlags = append(kotlincFlags, "-Xno-call-assertions", "-Xno-param-assertions", "-Xno-receiver-assertions")
+		}
+
 		if len(kotlincFlags) > 0 {
 			// optimization.
 			ctx.Variable(pctx, "kotlincFlags", strings.Join(kotlincFlags, " "))
