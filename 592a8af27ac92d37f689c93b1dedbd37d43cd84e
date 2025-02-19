@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4543d6b8_f53af4cd",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-19T18:36:48Z",
+      "side": 1,
+      "message": "yeah, we\u0027ll need to refactor this in the future. Starting by moving it to the android_device module, and later by removing the need for those staging directories entirely.",
+      "parentUuid": "bee9327e_4a04ef15",
+      "revId": "592a8af27ac92d37f689c93b1dedbd37d43cd84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f097aeed_bbf12688",
