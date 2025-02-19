@@ -295,7 +295,6 @@ var (
 
 		// Allow using VLA CXX extension.
 		"-Wno-vla-cxx-extension",
-		"-Wno-cast-function-type-mismatch",
 	}
 
 	noOverride64GlobalCflags = []string{}
@@ -355,7 +354,7 @@ var (
 		// Triggered by old LLVM code in external/llvm. Likely not worth
 		// enabling since it's a cosmetic issue.
 		"-Wno-bitwise-instead-of-logical",
-
+		"-Wno-cast-function-type-mismatch",
 		"-Wno-unused",
 		"-Wno-unused-parameter",
 		"-Wno-unused-but-set-parameter",
