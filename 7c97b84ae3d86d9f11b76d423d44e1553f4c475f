@@ -16,6 +16,24 @@
       "message": "Remove or uncomment",
       "revId": "7c97b84ae3d86d9f11b76d423d44e1553f4c475f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dacceef_aff37dca",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2025-02-19T03:13:02Z",
+      "side": 1,
+      "message": "Thanks, I forgot to remove it, it is not needed the module-info will have data without this.",
+      "parentUuid": "e2015e52_5d32c4f0",
+      "revId": "7c97b84ae3d86d9f11b76d423d44e1553f4c475f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
