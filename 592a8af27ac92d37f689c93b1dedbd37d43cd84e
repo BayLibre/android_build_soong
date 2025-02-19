@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bee9327e_4a04ef15",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2025-02-19T06:18:16Z",
+      "side": 1,
+      "message": "Done.\nBut using `PathForModuleInPartitionInstall` brings the dependency on the device name.",
+      "parentUuid": "04606c92_3c26d413",
+      "revId": "592a8af27ac92d37f689c93b1dedbd37d43cd84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f097aeed_bbf12688",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-02-18T19:01:33Z",
       "side": 1,
       "message": "This loop needs to be deterministic so that the ninja file is deterministic.",
+      "revId": "592a8af27ac92d37f689c93b1dedbd37d43cd84e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1dbea0b_1cdd384c",
+        "filename": "filesystem/aconfig_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2025-02-19T06:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f097aeed_bbf12688",
       "revId": "592a8af27ac92d37f689c93b1dedbd37d43cd84e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
