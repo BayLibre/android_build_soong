@@ -247,6 +247,20 @@ func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.distFiles(ctx)
 }
 
+// Returns a map of all installed module names to their variants, which are collected from the
+// dependency filesystem and super_image modules.
+func (a *androidDevice) allInstalledModuleNamesAndVariants(ctx android.ModuleContext) map[string][]string {
+	fsInfoMap := a.getFsInfos(ctx)
+	allOwners := make(map[string][]string)
+	for _, partition := range android.SortedKeys(fsInfoMap) {
+		fsInfo := fsInfoMap[partition]
+		for _, owner := range fsInfo.Owners {
+			allOwners[owner.Name] = append(allOwners[owner.Name], owner.Variation)
+		}
+	}
+	return allOwners
+}
+
 func (a *androidDevice) distFiles(ctx android.ModuleContext) {
 	if !ctx.Config().KatiEnabled() {
 		if proptools.Bool(a.deviceProps.Main_device) {
