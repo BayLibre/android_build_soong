@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a8c5c0c_8f3d5f94",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2025-02-19T03:54:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6f9873f_a6a01317",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 1
+      },
+      "revId": "29bbf9a8e9fc75df5d9f628ac925910e1245d058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6e4881b_1e40b1c0",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73d49988_f807ff11",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2025-02-19T03:54:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6e4881b_1e40b1c0",
+      "range": {
+        "startLine": 121,
+        "startChar": 51,
+        "endLine": 121,
+        "endChar": 63
+      },
+      "revId": "29bbf9a8e9fc75df5d9f628ac925910e1245d058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f5f6574_13599264",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-02-18T18:12:08Z",
       "side": 1,
       "message": "I beleive you can remove these 3 lines from the `PythonTestModule` now, as it inherits from the binary module.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "29bbf9a8e9fc75df5d9f628ac925910e1245d058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dacb356_cf21a7ab",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2025-02-19T03:54:53Z",
+      "side": 1,
+      "message": "It\u0027s strange that I still need to keep this in `python/test.go` to make the module-info has this three field for `python_test_host`. I just keep them both exist first.",
+      "parentUuid": "0f5f6574_13599264",
       "range": {
         "startLine": 120,
         "startChar": 0,
