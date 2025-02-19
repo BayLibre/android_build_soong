@@ -34,6 +34,24 @@
       "parentUuid": "0e6aa88e_9b8d13ca",
       "revId": "e49c7f651b209e83593fed2617c247bf4af1815a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6beb318b_e9306420",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-02-19T19:09:03Z",
+      "side": 1,
+      "message": "ModuleForTests has been updated, PTAL and thanks!",
+      "parentUuid": "a76f00ae_040c0375",
+      "revId": "e49c7f651b209e83593fed2617c247bf4af1815a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
