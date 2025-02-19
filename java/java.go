@@ -3062,12 +3062,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// file of the module to be named jarName.
 	var outputFile android.Path
 	combinedImplementationJar := android.PathForModuleOut(ctx, "combined", jarName)
-	var implementationJars android.Paths
-	if ctx.Config().UseTransitiveJarsInClasspath() {
-		implementationJars = completeStaticLibsImplementationJars.ToList()
-	} else {
-		implementationJars = append(slices.Clone(localJars), staticJars...)
-	}
+	implementationJars := completeStaticLibsImplementationJars.ToList()
 	TransformJarsToJar(ctx, combinedImplementationJar, "combine prebuilt implementation jars", implementationJars, android.OptionalPath{},
 		false, j.properties.Exclude_files, j.properties.Exclude_dirs)
 	outputFile = combinedImplementationJar
@@ -3090,12 +3085,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if reuseImplementationJarAsHeaderJar {
 		headerJar = outputFile
 	} else {
-		var headerJars android.Paths
-		if ctx.Config().UseTransitiveJarsInClasspath() {
-			headerJars = completeStaticLibsHeaderJars.ToList()
-		} else {
-			headerJars = append(slices.Clone(localJars), staticHeaderJars...)
-		}
+		headerJars := completeStaticLibsHeaderJars.ToList()
 		headerOutputFile := android.PathForModuleOut(ctx, "turbine-combined", jarName)
 		TransformJarsToJar(ctx, headerOutputFile, "combine prebuilt header jars", headerJars, android.OptionalPath{},
 			false, j.properties.Exclude_files, j.properties.Exclude_dirs)
@@ -3159,11 +3149,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.properties.Aidl.Export_include_dirs)
 
-	if ctx.Config().UseTransitiveJarsInClasspath() {
-		ctx.CheckbuildFile(localJars...)
-	} else {
-		ctx.CheckbuildFile(outputFile)
-	}
+	ctx.CheckbuildFile(localJars...)
 
 	if ctx.Device() {
 		// Shared libraries deapexed from prebuilt apexes are no longer supported.
