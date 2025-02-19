@@ -59,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe4162c_10d8eb06",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2025-02-19T07:20:59Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "46741283_360de75d",
+      "range": {
+        "startLine": 67,
+        "startChar": 58,
+        "endLine": 67,
+        "endChar": 60
+      },
+      "revId": "2eb5fac3e2b35b6c849364acac3af7ba4dd9455e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fba7bd1e_8c940762",
@@ -72,6 +96,30 @@
       "writtenOn": "2025-02-17T18:50:00Z",
       "side": 1,
       "message": "So it\u0027s \"methods or fields\" then?",
+      "range": {
+        "startLine": 68,
+        "startChar": 36,
+        "endLine": 68,
+        "endChar": 43
+      },
+      "revId": "2eb5fac3e2b35b6c849364acac3af7ba4dd9455e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "467025f9_8d26a123",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2025-02-19T07:20:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fba7bd1e_8c940762",
       "range": {
         "startLine": 68,
         "startChar": 36,
