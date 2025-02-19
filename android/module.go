@@ -1919,6 +1919,26 @@ type CommonModuleInfo struct {
 	IsStubsModule       bool
 	Host                bool
 	IsApexModule        bool
+	// The primary licenses property, may be nil, records license metadata for the module.
+	PrimaryLicensesProperty applicableLicensesProperty
+	Owner                   string
+	Vendor                  bool
+	Proprietary             bool
+	SocSpecific             bool
+	ProductSpecific         bool
+	SystemExtSpecific       bool
+	DeviceSpecific          bool
+	// When set to true, this module is not installed to the full install path (ex: under
+	// out/target/product/<name>/<partition>). It can be installed only to the packaging
+	// modules like android_filesystem.
+	NoFullInstall                                bool
+	InVendorRamdisk                              bool
+	ExemptFromRequiredApplicableLicensesProperty bool
+	RequiredModuleNames                          []string
+	HostRequiredModuleNames                      []string
+	TargetRequiredModuleNames                    []string
+	VintfFragmentModuleNames                     []string
+	Dists                                        []Dist
 }
 
 type ApiLevelOrPlatform struct {
@@ -2261,6 +2281,22 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		HideFromMake:                     m.commonProperties.HideFromMake,
 		SkipInstall:                      m.commonProperties.SkipInstall,
 		Host:                             m.Host(),
+		PrimaryLicensesProperty:          m.primaryLicensesProperty,
+		Owner:                            m.module.Owner(),
+		SocSpecific:                      Bool(m.commonProperties.Soc_specific),
+		Vendor:                           Bool(m.commonProperties.Vendor),
+		Proprietary:                      Bool(m.commonProperties.Proprietary),
+		ProductSpecific:                  Bool(m.commonProperties.Product_specific),
+		SystemExtSpecific:                Bool(m.commonProperties.System_ext_specific),
+		DeviceSpecific:                   Bool(m.commonProperties.Device_specific),
+		NoFullInstall:                    proptools.Bool(m.commonProperties.No_full_install),
+		InVendorRamdisk:                  m.InVendorRamdisk(),
+		ExemptFromRequiredApplicableLicensesProperty: exemptFromRequiredApplicableLicensesProperty(m.module),
+		RequiredModuleNames:                          m.module.RequiredModuleNames(ctx),
+		HostRequiredModuleNames:                      m.module.HostRequiredModuleNames(),
+		TargetRequiredModuleNames:                    m.module.TargetRequiredModuleNames(),
+		VintfFragmentModuleNames:                     m.module.VintfFragmentModuleNames(ctx),
+		Dists:                                        m.Dists(),
 	}
 	if mm, ok := m.module.(interface {
 		MinSdkVersion(ctx EarlyModuleContext) ApiLevel

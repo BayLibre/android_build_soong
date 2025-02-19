@@ -1335,7 +1335,7 @@ var AndroidMkInfoProvider = blueprint.NewProvider[*AndroidMkProviderInfo]()
 
 func translateAndroidMkEntriesInfoModule(ctx SingletonContext, w io.Writer, moduleInfoJSONs *[]*ModuleInfoJSON,
 	mod Module, providerInfo *AndroidMkProviderInfo) error {
-	if shouldSkipAndroidMkProcessing(ctx, mod.base()) {
+	if OtherModuleProviderOrDefault(ctx, mod, CommonModuleInfoKey).SkipAndroidMkProcessing {
 		return nil
 	}
 
@@ -1478,13 +1478,15 @@ func (a *AndroidMkInfo) AddCompatibilityTestSuites(suites ...string) {
 	a.AddStrings("LOCAL_COMPATIBILITY_SUITE", suites...)
 }
 
+// TODO(b/397766191): Change the signature to take ModuleProxy
+// Please only access the module's internal data through providers.
 func (a *AndroidMkInfo) fillInEntries(ctx fillInEntriesContext, mod Module) {
 	helperInfo := AndroidMkInfo{
 		EntryMap: make(map[string][]string),
 	}
 
-	base := mod.base()
-	name := base.BaseModuleName()
+	commonInfo, _ := OtherModuleProvider(ctx, mod, CommonModuleInfoKey)
+	name := commonInfo.BaseModuleName
 	if a.OverrideName != "" {
 		name = a.OverrideName
 	}
@@ -1492,16 +1494,16 @@ func (a *AndroidMkInfo) fillInEntries(ctx fillInEntriesContext, mod Module) {
 	if a.Include == "" {
 		a.Include = "$(BUILD_PREBUILT)"
 	}
-	a.Required = append(a.Required, mod.RequiredModuleNames(ctx)...)
-	a.Required = append(a.Required, mod.VintfFragmentModuleNames(ctx)...)
-	a.Host_required = append(a.Host_required, mod.HostRequiredModuleNames()...)
-	a.Target_required = append(a.Target_required, mod.TargetRequiredModuleNames()...)
+	a.Required = append(a.Required, commonInfo.RequiredModuleNames...)
+	a.Required = append(a.Required, commonInfo.VintfFragmentModuleNames...)
+	a.Host_required = append(a.Host_required, commonInfo.HostRequiredModuleNames...)
+	a.Target_required = append(a.Target_required, commonInfo.TargetRequiredModuleNames...)
 
 	for _, distString := range a.GetDistForGoals(ctx, mod) {
 		a.HeaderStrings = append(a.HeaderStrings, distString)
 	}
 
-	a.HeaderStrings = append(a.HeaderStrings, fmt.Sprintf("\ninclude $(CLEAR_VARS)  # type: %s, name: %s, variant: %s", ctx.ModuleType(mod), base.BaseModuleName(), ctx.ModuleSubDir(mod)))
+	a.HeaderStrings = append(a.HeaderStrings, fmt.Sprintf("\ninclude $(CLEAR_VARS)  # type: %s, name: %s, variant: %s", ctx.ModuleType(mod), commonInfo.BaseModuleName, ctx.ModuleSubDir(mod)))
 
 	// Collect make variable assignment entries.
 	helperInfo.SetString("LOCAL_PATH", ctx.ModuleDir(mod))
@@ -1526,7 +1528,7 @@ func (a *AndroidMkInfo) fillInEntries(ctx fillInEntriesContext, mod Module) {
 		// Soong may not have generated the install rule also when `no_full_install: true`.
 		// Mark this module as uninstallable in order to prevent Make from creating an
 		// install rule there.
-		helperInfo.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", proptools.Bool(base.commonProperties.No_full_install))
+		helperInfo.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", commonInfo.NoFullInstall)
 	}
 
 	if info.UncheckedModule {
@@ -1541,31 +1543,31 @@ func (a *AndroidMkInfo) fillInEntries(ctx fillInEntriesContext, mod Module) {
 		helperInfo.AddStrings("LOCAL_TEST_DATA", androidMkDataPaths(info.TestData)...)
 	}
 
-	if am, ok := mod.(ApexModule); ok {
-		helperInfo.SetBoolIfTrue("LOCAL_NOT_AVAILABLE_FOR_PLATFORM", am.NotAvailableForPlatform())
+	if commonInfo.IsApexModule {
+		helperInfo.SetBoolIfTrue("LOCAL_NOT_AVAILABLE_FOR_PLATFORM", commonInfo.NotAvailableForPlatform)
 	}
 
-	archStr := base.Arch().ArchType.String()
+	archStr := commonInfo.Target.Arch.ArchType.String()
 	host := false
-	switch base.Os().Class {
+	switch commonInfo.Target.Os.Class {
 	case Host:
-		if base.Target().HostCross {
+		if commonInfo.Target.HostCross {
 			// Make cannot identify LOCAL_MODULE_HOST_CROSS_ARCH:= common.
-			if base.Arch().ArchType != Common {
+			if commonInfo.Target.Arch.ArchType != Common {
 				helperInfo.SetString("LOCAL_MODULE_HOST_CROSS_ARCH", archStr)
 			}
 		} else {
 			// Make cannot identify LOCAL_MODULE_HOST_ARCH:= common.
-			if base.Arch().ArchType != Common {
+			if commonInfo.Target.Arch.ArchType != Common {
 				helperInfo.SetString("LOCAL_MODULE_HOST_ARCH", archStr)
 			}
 		}
 		host = true
 	case Device:
 		// Make cannot identify LOCAL_MODULE_TARGET_ARCH:= common.
-		if base.Arch().ArchType != Common {
-			if base.Target().NativeBridge {
-				hostArchStr := base.Target().NativeBridgeHostArchName
+		if commonInfo.Target.Arch.ArchType != Common {
+			if commonInfo.Target.NativeBridge {
+				hostArchStr := commonInfo.Target.NativeBridgeHostArchName
 				if hostArchStr != "" {
 					helperInfo.SetString("LOCAL_MODULE_TARGET_ARCH", hostArchStr)
 				}
@@ -1574,27 +1576,28 @@ func (a *AndroidMkInfo) fillInEntries(ctx fillInEntriesContext, mod Module) {
 			}
 		}
 
-		if !base.InVendorRamdisk() {
+		if !commonInfo.InVendorRamdisk {
 			helperInfo.AddPaths("LOCAL_FULL_INIT_RC", info.InitRcPaths)
 		}
 		if len(info.VintfFragmentsPaths) > 0 {
 			helperInfo.AddPaths("LOCAL_FULL_VINTF_FRAGMENTS", info.VintfFragmentsPaths)
 		}
-		helperInfo.SetBoolIfTrue("LOCAL_PROPRIETARY_MODULE", Bool(base.commonProperties.Proprietary))
-		if Bool(base.commonProperties.Vendor) || Bool(base.commonProperties.Soc_specific) {
+		helperInfo.SetBoolIfTrue("LOCAL_PROPRIETARY_MODULE", commonInfo.Proprietary)
+		if commonInfo.Vendor || commonInfo.SocSpecific {
 			helperInfo.SetString("LOCAL_VENDOR_MODULE", "true")
 		}
-		helperInfo.SetBoolIfTrue("LOCAL_ODM_MODULE", Bool(base.commonProperties.Device_specific))
-		helperInfo.SetBoolIfTrue("LOCAL_PRODUCT_MODULE", Bool(base.commonProperties.Product_specific))
-		helperInfo.SetBoolIfTrue("LOCAL_SYSTEM_EXT_MODULE", Bool(base.commonProperties.System_ext_specific))
-		if base.commonProperties.Owner != nil {
-			helperInfo.SetString("LOCAL_MODULE_OWNER", *base.commonProperties.Owner)
+		helperInfo.SetBoolIfTrue("LOCAL_ODM_MODULE", commonInfo.DeviceSpecific)
+		helperInfo.SetBoolIfTrue("LOCAL_PRODUCT_MODULE", commonInfo.ProductSpecific)
+		helperInfo.SetBoolIfTrue("LOCAL_SYSTEM_EXT_MODULE", commonInfo.SystemExtSpecific)
+		if commonInfo.Owner != "" {
+			helperInfo.SetString("LOCAL_MODULE_OWNER", commonInfo.Owner)
 		}
 	}
 
 	if host {
-		makeOs := base.Os().String()
-		if base.Os() == Linux || base.Os() == LinuxBionic || base.Os() == LinuxMusl {
+		os := commonInfo.Target.Os
+		makeOs := os.String()
+		if os == Linux || os == LinuxBionic || os == LinuxMusl {
 			makeOs = "linux"
 		}
 		helperInfo.SetString("LOCAL_MODULE_HOST_OS", makeOs)
@@ -1652,6 +1655,8 @@ func (a *AndroidMkInfo) write(w io.Writer) {
 
 // Compute the list of Make strings to declare phony goals and dist-for-goals
 // calls from the module's dist and dists properties.
+// TODO(b/397766191): Change the signature to take ModuleProxy
+// Please only access the module's internal data through providers.
 func (a *AndroidMkInfo) GetDistForGoals(ctx fillInEntriesContext, mod Module) []string {
 	distContributions := a.getDistContributions(ctx, mod)
 	if distContributions == nil {
@@ -1662,9 +1667,11 @@ func (a *AndroidMkInfo) GetDistForGoals(ctx fillInEntriesContext, mod Module) []
 }
 
 // Compute the contributions that the module makes to the dist.
+// TODO(b/397766191): Change the signature to take ModuleProxy
+// Please only access the module's internal data through providers.
 func (a *AndroidMkInfo) getDistContributions(ctx fillInEntriesContext, mod Module) *distContributions {
-	amod := mod.base()
-	name := amod.BaseModuleName()
+	commonInfo, _ := OtherModuleProvider(ctx, mod, CommonModuleInfoKey)
+	name := commonInfo.BaseModuleName
 
 	// Collate the set of associated tag/paths available for copying to the dist.
 	// Start with an empty (nil) set.
@@ -1700,12 +1707,12 @@ func (a *AndroidMkInfo) getDistContributions(ctx fillInEntriesContext, mod Modul
 	// Collate the contributions this module makes to the dist.
 	distContributions := &distContributions{}
 
-	if !exemptFromRequiredApplicableLicensesProperty(mod) {
+	if !commonInfo.ExemptFromRequiredApplicableLicensesProperty {
 		distContributions.licenseMetadataFile = info.LicenseMetadataFile
 	}
 
 	// Iterate over this module's dist structs, merged from the dist and dists properties.
-	for _, dist := range amod.Dists() {
+	for _, dist := range commonInfo.Dists {
 		// Get the list of goals this dist should be enabled for. e.g. sdk, droidcore
 		goals := strings.Join(dist.Targets, " ")
 
