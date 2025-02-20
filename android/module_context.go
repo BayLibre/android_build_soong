@@ -655,21 +655,19 @@ func (m *moduleContext) installFile(installPath InstallPath, name string, srcPat
 			orderOnlyDeps = InstallPaths(deps).Paths()
 		}
 
-		// When creating the install rule in Soong but embedding in Make, write the rule to a
-		// makefile instead of directly to the ninja file so that main.mk can add the
-		// dependencies from the `required` property that are hard to resolve in Soong.
-		// In soong-only builds, the katiInstall will still be created for semi-legacy code paths
-		// such as module-info.json or compliance, but it will not be used for actually installing
-		// the file.
-		m.katiInstalls = append(m.katiInstalls, katiInstall{
-			from:          srcPath,
-			to:            fullInstallPath,
-			implicitDeps:  implicitDeps,
-			orderOnlyDeps: orderOnlyDeps,
-			executable:    executable,
-			extraFiles:    extraZip,
-		})
-		if !m.Config().KatiEnabled() {
+		if m.Config().KatiEnabled() {
+			// When creating the install rule in Soong but embedding in Make, write the rule to a
+			// makefile instead of directly to the ninja file so that main.mk can add the
+			// dependencies from the `required` property that are hard to resolve in Soong.
+			m.katiInstalls = append(m.katiInstalls, katiInstall{
+				from:          srcPath,
+				to:            fullInstallPath,
+				implicitDeps:  implicitDeps,
+				orderOnlyDeps: orderOnlyDeps,
+				executable:    executable,
+				extraFiles:    extraZip,
+			})
+		} else {
 			rule := CpWithBash
 			if executable {
 				rule = CpExecutableWithBash
@@ -719,17 +717,15 @@ func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, src
 	}
 	if m.requiresFullInstall() {
 
-		// When creating the symlink rule in Soong but embedding in Make, write the rule to a
-		// makefile instead of directly to the ninja file so that main.mk can add the
-		// dependencies from the `required` property that are hard to resolve in Soong.
-		// In soong-only builds, the katiInstall will still be created for semi-legacy code paths
-		// such as module-info.json or compliance, but it will not be used for actually installing
-		// the file.
-		m.katiSymlinks = append(m.katiSymlinks, katiInstall{
-			from: srcPath,
-			to:   fullInstallPath,
-		})
-		if !m.Config().KatiEnabled() {
+		if m.Config().KatiEnabled() {
+			// When creating the symlink rule in Soong but embedding in Make, write the rule to a
+			// makefile instead of directly to the ninja file so that main.mk can add the
+			// dependencies from the `required` property that are hard to resolve in Soong.
+			m.katiSymlinks = append(m.katiSymlinks, katiInstall{
+				from: srcPath,
+				to:   fullInstallPath,
+			})
+		} else {
 			// The symlink doesn't need updating when the target is modified, but we sometimes
 			// have a dependency on a symlink to a binary instead of to the binary directly, and
 			// the mtime of the symlink must be updated when the binary is modified, so use a
@@ -772,17 +768,15 @@ func (m *moduleContext) InstallAbsoluteSymlink(installPath InstallPath, name str
 	m.module.base().hooks.runInstallHooks(m, nil, fullInstallPath, true)
 
 	if m.requiresFullInstall() {
-		// When creating the symlink rule in Soong but embedding in Make, write the rule to a
-		// makefile instead of directly to the ninja file so that main.mk can add the
-		// dependencies from the `required` property that are hard to resolve in Soong.
-		// In soong-only builds, the katiInstall will still be created for semi-legacy code paths
-		// such as module-info.json or compliance, but it will not be used for actually installing
-		// the file.
-		m.katiSymlinks = append(m.katiSymlinks, katiInstall{
-			absFrom: absPath,
-			to:      fullInstallPath,
-		})
-		if !m.Config().KatiEnabled() {
+		if m.Config().KatiEnabled() {
+			// When creating the symlink rule in Soong but embedding in Make, write the rule to a
+			// makefile instead of directly to the ninja file so that main.mk can add the
+			// dependencies from the `required` property that are hard to resolve in Soong.
+			m.katiSymlinks = append(m.katiSymlinks, katiInstall{
+				absFrom: absPath,
+				to:      fullInstallPath,
+			})
+		} else {
 			m.Build(pctx, BuildParams{
 				Rule:        Symlink,
 				Description: "install symlink " + fullInstallPath.Base() + " -> " + absPath,
