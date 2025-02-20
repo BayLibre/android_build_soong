@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d78b5fd_c385a441",
+        "filename": "java/dex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-20T00:13:42Z",
+      "side": 1,
+      "message": "The result of this append is never used, is this intentional?",
+      "revId": "ed6f2b2921c5b7901f674094a50f18794b9e10c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
