@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f90d17b5_ae1b1b7a",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2025-02-20T17:31:03Z",
+      "side": 1,
+      "message": "IIUC, SVE is just one symptom.  Building baremetal targets with the same `-march` as the application processor can use any other unsupported CPU instruction.  The comment and the commit message should mention something like `Override the user-space -march and explicitly set a baseline -march for baremetal targets`.",
+      "range": {
+        "startLine": 153,
+        "startChar": 16,
+        "endLine": 156,
+        "endChar": 73
+      },
+      "revId": "a4acd88840d07616093844a90e35d01c49926c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
