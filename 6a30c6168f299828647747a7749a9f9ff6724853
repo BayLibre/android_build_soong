@@ -16,6 +16,24 @@
       "message": "Using `-march` in Android.bp files has cuased problems before, see https://buganizer.corp.google.com/issues/362860355#comment12, but maybe that\u0027s less of an issue here since we\u0027re trying to replace the default Soong configuration?\n\nAnything you do here is going to be hack, because Soong thinks it\u0027s building code targeting the AP in userspace, and you\u0027re trying to layer on top of that.",
       "revId": "6a30c6168f299828647747a7749a9f9ff6724853",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0944718_eb7f82ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2025-02-20T20:00:04Z",
+      "side": 1,
+      "message": "`cc_baremetal_defaults` is only used in a few targets, so I\u0027m hoping any issues this causes will be isolated.\n\nI assume the 100% correct solution would be to add a new variant to Soong?",
+      "parentUuid": "868d6da1_d6558250",
+      "revId": "6a30c6168f299828647747a7749a9f9ff6724853",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
