@@ -2306,6 +2306,14 @@ func (c *config) VendorPropFiles(ctx PathContext) Paths {
 	return PathsForSource(ctx, c.productVariables.VendorPropFiles)
 }
 
+func (c *config) RecoveryUpdaterLibs() []string {
+	return c.productVariables.RecoveryUpdaterLibs
+}
+
+func (c *config) RecoveryUpdaterExtraLibs() []string {
+	return c.productVariables.RecoveryUpdaterExtraLibs
+}
+
 func (c *config) EnableUffdGc() string {
 	return String(c.productVariables.EnableUffdGc)
 }
