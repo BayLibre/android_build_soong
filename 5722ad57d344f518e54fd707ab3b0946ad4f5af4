@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8390af6a_84c1ff12",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2025-02-20T21:05:15Z",
+      "side": 1,
+      "message": "Rather than adding to the complexity of `-eng` builds, please follow the example of `RELEASE_BUILD_PURGE_PRODUCT_ADB_KEYS` to add a build flag that uses the build-variant release configs.\n\nIt may be as simple as forcing `RELEASE_R8_GLOBAL_CHECK_NOT_NULL_FLAGS` to false in non-eng builds.  Note that build-variant flags need to be `workflow: MANUAL`, and advanced manually.",
+      "range": {
+        "startLine": 440,
+        "startChar": 52,
+        "endLine": 440,
+        "endChar": 70
+      },
+      "revId": "5722ad57d344f518e54fd707ab3b0946ad4f5af4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
