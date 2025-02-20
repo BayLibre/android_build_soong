@@ -33,7 +33,10 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
+var pctx = android.NewPackageContext("android/soong/filesystem")
+
 func init() {
+	pctx.Import("android/soong/java")
 	registerBuildComponents(android.InitRegistrationContext)
 	registerMutators(android.InitRegistrationContext)
 	pctx.HostBinToolVariable("fileslist", "fileslist")
@@ -575,8 +578,6 @@ func buildInstalledFiles(ctx android.ModuleContext, partition string, rootDir an
 
 	return txt, json
 }
-
-var pctx = android.NewPackageContext("android/soong/filesystem")
 
 func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	validatePartitionType(ctx, f)

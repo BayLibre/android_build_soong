@@ -293,6 +293,12 @@ var r8, r8RE = pctx.MultiCommandRemoteStaticRules("r8",
 	}, []string{"outDir", "outDict", "outConfig", "outUsage", "outUsageZip", "outUsageDir",
 		"r8Flags", "zipFlags", "mergeZipsFlags", "resourcesOutput", "outR8ArtProfile"}, []string{"implicits"})
 
+var ProguardDictToProto = pctx.AndroidStaticRule("proguard_dict_to_proto", blueprint.RuleParams{
+	Command:     `${config.SymbolsMap} -r8 $in -location $location -write_if_changed $out`,
+	Restat:      true,
+	CommandDeps: []string{"${config.SymbolsMap}"},
+}, "location")
+
 func (d *dexer) dexCommonFlags(ctx android.ModuleContext,
 	dexParams *compileDexParams) (flags []string, deps android.Paths) {
 
@@ -697,3 +703,13 @@ func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParam
 
 	return javalibJar, artProfileOutputPath
 }
+
+type ProguardInfo struct {
+	ModuleName         string
+	Class              string
+	ProguardDictionary android.Path
+	ProguardUsageZip   android.Path
+	ClassesJar         android.Path
+}
+
+var ProguardProvider = blueprint.NewProvider[ProguardInfo]()

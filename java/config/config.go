@@ -195,6 +195,7 @@ func init() {
 
 	pctx.HostBinToolVariable("SoongJavacWrapper", "soong_javac_wrapper")
 	pctx.HostBinToolVariable("DexpreoptGen", "dexpreopt_gen")
+	pctx.HostBinToolVariable("SymbolsMap", "symbols_map")
 
 	pctx.StaticVariableWithEnvOverride("REJavaPool", "RBE_JAVA_POOL", "java16")
 	pctx.StaticVariableWithEnvOverride("REJavacExecStrategy", "RBE_JAVAC_EXEC_STRATEGY", remoteexec.RemoteLocalFallbackExecStrategy)
