@@ -22,6 +22,30 @@
       },
       "revId": "5722ad57d344f518e54fd707ab3b0946ad4f5af4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce2a8c70_71ca22cc",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2025-02-20T22:18:03Z",
+      "side": 1,
+      "message": "Per offline discussion, removed the `Eng()` check here. It was overly defensive. A follow-up optimization will be more aggressive, and we\u0027ll likely want the `Eng()` carveout there, so we\u0027ll follow the manual build guidance.",
+      "parentUuid": "8390af6a_84c1ff12",
+      "range": {
+        "startLine": 440,
+        "startChar": 52,
+        "endLine": 440,
+        "endChar": 70
+      },
+      "revId": "5722ad57d344f518e54fd707ab3b0946ad4f5af4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
