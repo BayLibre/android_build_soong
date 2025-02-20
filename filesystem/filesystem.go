@@ -33,7 +33,10 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
+var pctx = android.NewPackageContext("android/soong/filesystem")
+
 func init() {
+	pctx.Import("android/soong/java")
 	registerBuildComponents(android.InitRegistrationContext)
 	registerMutators(android.InitRegistrationContext)
 	pctx.HostBinToolVariable("fileslist", "fileslist")
@@ -426,6 +429,8 @@ type FilesystemInfo struct {
 	BuildImagePropFileDeps android.Paths
 	// Packaging specs to be installed on the system_other image, for the initial boot's dexpreopt.
 	SpecsForSystemOther map[string]android.PackagingSpec
+	// Re-exported Proguard info from all installed dependencies
+	AllProguardInfo []java.ProguardInfo
 
 	FullInstallPaths []FullInstallPathInfo
 
@@ -575,8 +580,6 @@ func buildInstalledFiles(ctx android.ModuleContext, partition string, rootDir an
 
 	return txt, json
 }
-
-var pctx = android.NewPackageContext("android/soong/filesystem")
 
 func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	validatePartitionType(ctx, f)
