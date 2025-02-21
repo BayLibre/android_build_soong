@@ -299,10 +299,11 @@ func (a *androidDevice) distFiles(ctx android.ModuleContext) {
 
 }
 
-func (a *androidDevice) MakeVars(ctx android.MakeVarsModuleContext) {
+func (a *androidDevice) MakeVars(_ android.Config) (string, string) {
 	if proptools.Bool(a.deviceProps.Main_device) {
-		ctx.StrictRaw("SOONG_ONLY_ALL_IMAGES_ZIP", a.allImagesZip.String())
+		return "SOONG_ONLY_ALL_IMAGES_ZIP", a.allImagesZip.String()
 	}
+	return "", ""
 }
 
 // Helper structs for target_files.zip creation

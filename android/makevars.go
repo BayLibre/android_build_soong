@@ -84,6 +84,7 @@ type MakeVarsContext interface {
 	Errorf(format string, args ...interface{})
 
 	VisitAllModules(visit func(Module))
+	VisitAllModuleProxies(visit func(proxy ModuleProxy))
 	VisitAllModulesIf(pred func(Module) bool, visit func(Module))
 
 	// Verify the make variable matches the Soong version, fail the build
@@ -155,8 +156,15 @@ type ModuleMakeVarsProvider interface {
 	Module
 
 	// MakeVars uses a MakeVarsModuleContext to provide extra values to be exported to Make.
-	MakeVars(ctx MakeVarsModuleContext)
+	MakeVars(config Config) (string, string)
 }
+
+type ModuleMakeVarsInfo struct {
+	Name  string
+	Value string
+}
+
+var ModuleMakeVarsInfoProvider = blueprint.NewProvider[ModuleMakeVarsInfo]()
 
 // /////////////////////////////////////////////////////////////////////////////
 
@@ -204,6 +212,8 @@ type dist struct {
 	paths distCopies
 }
 
+var cnt = 0
+
 func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 	if !ctx.Config().KatiEnabled() {
 		return
@@ -250,19 +260,21 @@ func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 	dists = append(dists, singletonDists.dists...)
 	singletonDists.lock.Unlock()
 
-	ctx.VisitAllModules(func(m Module) {
-		if provider, ok := m.(ModuleMakeVarsProvider); ok && m.Enabled(ctx) {
+	ctx.VisitAllModuleProxies(func(m ModuleProxy) {
+		commonInfo, _ := OtherModuleProvider(ctx, m, CommonModuleInfoKey)
+		if provider, ok := OtherModuleProvider(ctx, m, ModuleMakeVarsInfoProvider); ok &&
+			commonInfo.Enabled && provider.Name != "" {
 			mctx := &makeVarsContext{
 				SingletonContext: ctx,
 			}
 
-			provider.MakeVars(mctx)
+			mctx.StrictRaw(provider.Name, provider.Value)
 
 			vars = append(vars, mctx.vars...)
 			phonies = append(phonies, mctx.phonies...)
 		}
 
-		if m.ExportedToMake() {
+		if commonInfo.ExportedToMake {
 			info := OtherModuleProviderOrDefault(ctx, m, InstallFilesProvider)
 			katiInstalls = append(katiInstalls, info.KatiInstalls...)
 			katiInitRcInstalls = append(katiInitRcInstalls, info.KatiInitRcInstalls...)
