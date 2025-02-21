@@ -222,6 +222,7 @@ var (
 		"usr/keylayout":       etc.PrebuiltUserKeyLayoutFactory,
 		"usr/keychars":        etc.PrebuiltUserKeyCharsFactory,
 		"usr/srec":            etc.PrebuiltUserSrecFactory,
+		"usr/odml":            etc.PrebuiltUserOdmlFactory,
 		"usr/idc":             etc.PrebuiltUserIdcFactory,
 		"vendor":              etc.PrebuiltVendorFactory,
 		"vendor_dlkm":         etc.PrebuiltVendorDlkmFactory,
