@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a0eb90_a5da30e4",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-21T01:42:28Z",
+      "side": 1,
+      "message": "nit: `ProguardDictToProto` is not used within the java package, so maybe we can move the rule definition to the filesystem package and remove this package context import. Ditto for `SymbolsMap`.",
+      "revId": "0266513b43f46a3f5645813973488ee675c7a131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
