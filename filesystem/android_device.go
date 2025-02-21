@@ -361,6 +361,21 @@ func (a *androidDevice) buildProguardZips(ctx android.ModuleContext, allInstalle
 	dictZipBuilder.Build("proguard_dict_zip", "Building proguard dictionary zip")
 	dictMappingBuilder.Build("proguard_dict_mapping_proto", "Building proguard mapping proto")
 	usageZipBuilder.Build("proguard_usage_zip", "Building proguard usage zip")
+
+	if !ctx.Config().KatiEnabled() && proptools.Bool(a.deviceProps.Main_device) {
+		namePrefix := ""
+		if ctx.Config().HasDeviceProduct() {
+			namePrefix = ctx.Config().DeviceProduct() + "-"
+		}
+		ctx.DistForGoalWithFilename("droidcore-unbundled", dictZip, namePrefix+insertBeforeExtension(dictZip.Base(), "-FILE_NAME_TAG_PLACEHOLDER"))
+		ctx.DistForGoalWithFilename("droidcore-unbundled", dictMapping, namePrefix+insertBeforeExtension(dictMapping.Base(), "-FILE_NAME_TAG_PLACEHOLDER"))
+		ctx.DistForGoalWithFilename("droidcore-unbundled", usageZip, namePrefix+insertBeforeExtension(usageZip.Base(), "-FILE_NAME_TAG_PLACEHOLDER"))
+	}
+}
+
+func insertBeforeExtension(file, insertion string) string {
+	ext := filepath.Ext(file)
+	return strings.TrimSuffix(file, ext) + insertion + ext
 }
 
 // Helper structs for target_files.zip creation
