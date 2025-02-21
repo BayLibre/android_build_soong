@@ -148,7 +148,7 @@ func (p *testPackageZip) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	ctx.SetOutputFiles(android.Paths{p.output}, "")
 
 	// dist the test output
-	if ctx.ModuleName() == "platform_tests_soong" {
+	if ctx.ModuleName() == "platform_tests" {
 		distedName := ctx.Config().Getenv("TARGET_PRODUCT") + "-tests-" + ctx.Config().BuildId() + ".zip"
 		ctx.DistForGoalsWithFilename([]string{"droid", "platform_tests"}, p.output, distedName)
 	}
