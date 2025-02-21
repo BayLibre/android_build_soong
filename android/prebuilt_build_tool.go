@@ -84,13 +84,14 @@ func (t *prebuiltBuildTool) GenerateAndroidBuildActions(ctx ModuleContext) {
 	t.toolPath = OptionalPathForPath(installedPath)
 }
 
-func (t *prebuiltBuildTool) MakeVars(ctx MakeVarsModuleContext) {
+func (t *prebuiltBuildTool) MakeVars(config Config) (string, string) {
 	if makeVar := String(t.properties.Export_to_make_var); makeVar != "" {
-		if t.Target().Os != ctx.Config().BuildOS {
-			return
+		if t.Target().Os != config.BuildOS {
+			return "", ""
 		}
-		ctx.StrictRaw(makeVar, t.toolPath.String())
+		return makeVar, t.toolPath.String()
 	}
+	return "", ""
 }
 
 func (t *prebuiltBuildTool) HostToolPath() OptionalPath {

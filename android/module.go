@@ -1939,6 +1939,7 @@ type CommonModuleInfo struct {
 	TargetRequiredModuleNames                    []string
 	VintfFragmentModuleNames                     []string
 	Dists                                        []Dist
+	ExportedToMake                               bool
 }
 
 type ApiLevelOrPlatform struct {
@@ -2298,6 +2299,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		TargetRequiredModuleNames:                    m.module.TargetRequiredModuleNames(),
 		VintfFragmentModuleNames:                     m.module.VintfFragmentModuleNames(ctx),
 		Dists:                                        m.Dists(),
+		ExportedToMake:                               m.ExportedToMake(),
 	}
 	if mm, ok := m.module.(interface {
 		MinSdkVersion(ctx EarlyModuleContext) ApiLevel
@@ -2367,6 +2369,16 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 			GeneratedHeaderDirs:  s.GeneratedHeaderDirs(),
 			GeneratedDeps:        s.GeneratedDeps(),
 		})
+	}
+
+	if v, ok := m.module.(ModuleMakeVarsProvider); m.Enabled(ctx) && ok {
+		name, value := v.MakeVars(ctx.Config())
+		if name != "" {
+			SetProvider(ctx, ModuleMakeVarsInfoProvider, ModuleMakeVarsInfo{
+				Name:  name,
+				Value: value,
+			})
+		}
 	}
 }
 
@@ -2884,6 +2896,8 @@ func OutputFilesForModule(ctx PathContext, module Module, tag string) Paths {
 
 // OutputFileForModule returns the output file paths with the given tag.  On error, including if the
 // module produced zero or multiple paths, it reports errors to the ctx and returns nil.
+// TODO(b/397766191): Change the signature to take ModuleProxy
+// Please only access the module's internal data through providers.
 func OutputFileForModule(ctx PathContext, module Module, tag string) Path {
 	paths, err := outputFilesForModule(ctx, module, tag)
 	if err != nil {
@@ -2924,6 +2938,8 @@ type OutputFilesProviderModuleContext interface {
 	EqualModules(m1, m2 Module) bool
 }
 
+// TODO(b/397766191): Change the signature to take ModuleProxy
+// Please only access the module's internal data through providers.
 func outputFilesForModule(ctx PathContext, module Module, tag string) (Paths, error) {
 	outputFilesFromProvider, err := outputFilesForModuleFromProvider(ctx, module, tag)
 	if outputFilesFromProvider != nil || err != OutputFilesProviderNotSet {
@@ -3069,7 +3085,7 @@ func (c *buildTargetSingleton) GenerateBuildActions(ctx SingletonContext) {
 
 	modulesInDir := make(map[string]Paths)
 
-	ctx.VisitAllModules(func(module Module) {
+	ctx.VisitAllModuleProxies(func(module ModuleProxy) {
 		info := OtherModuleProviderOrDefault(ctx, module, FinalModuleBuildTargetsProvider)
 
 		if info.CheckbuildTarget != nil {
