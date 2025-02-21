@@ -16,6 +16,24 @@
       "message": "Is this file needed? It does not seem to be disted nor used by any other files.",
       "revId": "8597dfd50b683bd441c8a4970c3d7e29d1c7e27c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ae5e81f_3f3fb407",
+        "filename": "android/test_mapping_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-21T18:28:59Z",
+      "side": 1,
+      "message": "It\u0027s a depfile. It causes the zip command to rerun when any of the TEST_MAPPING files are changed, because they\u0027re not added as explicit inputs.",
+      "parentUuid": "ffc4d42e_3af49700",
+      "revId": "8597dfd50b683bd441c8a4970c3d7e29d1c7e27c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
