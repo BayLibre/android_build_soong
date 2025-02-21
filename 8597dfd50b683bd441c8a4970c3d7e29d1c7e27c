@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffc4d42e_3af49700",
+        "filename": "android/test_mapping_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-21T18:27:36Z",
+      "side": 1,
+      "message": "Is this file needed? It does not seem to be disted nor used by any other files.",
+      "revId": "8597dfd50b683bd441c8a4970c3d7e29d1c7e27c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
