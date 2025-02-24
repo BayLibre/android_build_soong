@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fac1dc5_02e52907",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-02-24T23:38:46Z",
+      "side": 1,
+      "message": "Why are the wide libs attached whole? Shouldn\u0027t providing them normally be enough?",
+      "range": {
+        "startLine": 1081,
+        "startChar": 8,
+        "endLine": 1081,
+        "endChar": 19
+      },
+      "revId": "0cb9945bf41661c95f41aaea80a1d2e3ab38acfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
