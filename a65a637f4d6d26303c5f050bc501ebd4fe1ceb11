@@ -16,6 +16,24 @@
       "message": "Missing from this change?",
       "revId": "a65a637f4d6d26303c5f050bc501ebd4fe1ceb11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94421c6a_4bad27df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-24T18:45:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fc9ddcc_e3a483e4",
+      "revId": "a65a637f4d6d26303c5f050bc501ebd4fe1ceb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
