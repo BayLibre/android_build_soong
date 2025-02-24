@@ -68,6 +68,24 @@
       "message": "I think you no longer need this, right?",
       "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb4b648_50e71e59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-24T18:13:46Z",
+      "side": 1,
+      "message": "I was going to say make product_variable() just return an integer, and add ranged-based matchers to the select syntax. So you could do:\n\n```\nselect(product_variable(\"shipping_api_level\"), {\n  ..\u003d34: \"foo\",\n  default: \"bar\",\n})\n```",
+      "parentUuid": "ad4fcfe6_b01e8cc9",
+      "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
