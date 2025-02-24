@@ -52,6 +52,23 @@
       "parentUuid": "1dc36ff6_cf88883c",
       "revId": "917e4df92e93754984d66089968d8a00a842197f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ea3053_9a68668d",
+        "filename": "fsgen/prebuilt_etc_modules_gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-24T23:38:58Z",
+      "side": 1,
+      "message": "nit: If you are planning to define an `prebuilt_user_odml` Android.bp module then adding this entry is not necessary. All these mappings are here to support converting the `PRODUCT_COPY_FILES` entries to dynamically generated soong modules.\n\nHowever if you are planning to install the on-device model via `PRODUCT_COPY_FILES` then this line is needed, and you\u0027d also have to list `prebuilt_usr_odml` in neverallow rules as @colefaust@google.com pointed out.",
+      "revId": "917e4df92e93754984d66089968d8a00a842197f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
