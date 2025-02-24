@@ -34,6 +34,24 @@
       "parentUuid": "38b88670_3b73f719",
       "revId": "917e4df92e93754984d66089968d8a00a842197f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9571ca3a_a96d4e89",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-24T21:32:08Z",
+      "side": 1,
+      "message": "Oh, if you\u0027re planning on using it as an actual soong module and not via `PRODUCT_COPY_FILES` then I guess we can allow that. Most of these other module types are to facilitate automatic conversion of `PRODUCT_COPY_FILES` to soong modules, and we didn\u0027t want to start getting real soong users before we were ready.",
+      "parentUuid": "1dc36ff6_cf88883c",
+      "revId": "917e4df92e93754984d66089968d8a00a842197f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
