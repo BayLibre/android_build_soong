@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b88670_3b73f719",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-24T21:17:52Z",
+      "side": 1,
+      "message": "Also add it to this list: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/neverallow.go;l\u003d366;drc\u003d93a9c7341c217406c2f6db53e14ee7fb39d8e6fa",
+      "revId": "917e4df92e93754984d66089968d8a00a842197f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
