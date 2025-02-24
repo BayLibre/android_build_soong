@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62a466ef_ec3a871c",
+        "filename": "android/neverallow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-24T18:28:06Z",
+      "side": 1,
+      "message": "There\u0027s no need to use a `trusty_vm_genrule` module type, you appear to be using `select()` syntax in all of your modules instead of the soong config variable syntax.",
+      "range": {
+        "startLine": 300,
+        "startChar": 26,
+        "endLine": 300,
+        "endChar": 43
+      },
+      "revId": "7019f198a61b6b204145dcd9e593e530091cc42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
