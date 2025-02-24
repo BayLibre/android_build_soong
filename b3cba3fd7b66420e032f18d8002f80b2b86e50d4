@@ -16,6 +16,24 @@
       "message": "The flag should always exist (it\u0027s declared in `build/release`), so I think we need more of a check here.\n\n- If not defined (`!ok`), we should assume source.\n- If the value is empty (`\"\"`), then we are building from source.\n- If the value is non-empty (`art.google.contributions.prebuilt` for at least ap3a), then we are using a prebuilt.",
       "revId": "b3cba3fd7b66420e032f18d8002f80b2b86e50d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01cb3c68_02a45f1e",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2285,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-24T21:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea944eb9_71af3e9a",
+      "revId": "b3cba3fd7b66420e032f18d8002f80b2b86e50d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
