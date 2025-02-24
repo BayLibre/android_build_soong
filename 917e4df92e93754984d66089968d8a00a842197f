@@ -16,6 +16,24 @@
       "message": "Also add it to this list: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/neverallow.go;l\u003d366;drc\u003d93a9c7341c217406c2f6db53e14ee7fb39d8e6fa",
       "revId": "917e4df92e93754984d66089968d8a00a842197f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc36ff6_cf88883c",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1964540
+      },
+      "writtenOn": "2025-02-24T21:29:51Z",
+      "side": 1,
+      "message": "for my own understanding, what\u0027s the rationale in adding it in here? it would make our code easier if we were able to call this directly.",
+      "parentUuid": "38b88670_3b73f719",
+      "revId": "917e4df92e93754984d66089968d8a00a842197f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -16,6 +16,24 @@
       "message": "```suggestion\n// prebuilt_usr_odml is for a prebuilt artifact that is installed in\n```",
       "revId": "a1348f424794360252c53e140adedd61f0848c4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c26c17a4_f9b25993",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1964540
+      },
+      "writtenOn": "2025-02-24T21:29:51Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "2cba4cda_4f8f0080",
+      "revId": "a1348f424794360252c53e140adedd61f0848c4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
