@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cba4cda_4f8f0080",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-24T21:06:38Z",
+      "side": 1,
+      "message": "```suggestion\n// prebuilt_usr_odml is for a prebuilt artifact that is installed in\n```",
+      "revId": "a1348f424794360252c53e140adedd61f0848c4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
