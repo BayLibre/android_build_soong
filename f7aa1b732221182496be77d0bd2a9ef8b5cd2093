@@ -122,6 +122,24 @@
       "parentUuid": "fc19926c_22432088",
       "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffae9670_c5b26b94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2025-02-25T06:16:58Z",
+      "side": 1,
+      "message": "Oh that\u0027s correct 😞 Let me abandon these changes.",
+      "parentUuid": "23cb08ee_d582a0d9",
+      "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
