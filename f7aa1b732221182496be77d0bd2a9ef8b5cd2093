@@ -158,6 +158,24 @@
       "parentUuid": "ffae9670_c5b26b94",
       "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1515861f_a35bac83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-02-25T06:24:51Z",
+      "side": 1,
+      "message": "what will happen if we just drop the line today, and let device makers to add it back if they need it?",
+      "parentUuid": "4be33298_253cc82e",
+      "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
