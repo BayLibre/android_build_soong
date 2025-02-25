@@ -86,7 +86,7 @@ var external_ndk_androidmks []string = []string{
 }
 
 var art_androidmks = []string{
-	//"art/",
+	"art/",
 }
 
 func ignoreSomeAndroidMks(androidMks []string) (filtered []string) {
