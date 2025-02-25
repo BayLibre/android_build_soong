@@ -22,6 +22,30 @@
       },
       "revId": "7019f198a61b6b204145dcd9e593e530091cc42e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "530ed076_88958638",
+        "filename": "android/neverallow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2025-02-25T01:29:14Z",
+      "side": 1,
+      "message": "@armellel@google.com said that we can workaround this Soong neverallow rules by adding an inherited soong config module named differently. We may want to move this check to Module\u0027s `GenerateAndroidBuildActions`.",
+      "parentUuid": "62a466ef_ec3a871c",
+      "range": {
+        "startLine": 300,
+        "startChar": 26,
+        "endLine": 300,
+        "endChar": 43
+      },
+      "revId": "7019f198a61b6b204145dcd9e593e530091cc42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
