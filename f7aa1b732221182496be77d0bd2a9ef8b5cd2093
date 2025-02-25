@@ -104,6 +104,24 @@
       "parentUuid": "f8e3a034_f0056e83",
       "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23cb08ee_d582a0d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-02-25T06:15:27Z",
+      "side": 1,
+      "message": "why is it in the system image? I thought it\u0027s only for GSI?",
+      "parentUuid": "fc19926c_22432088",
+      "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
