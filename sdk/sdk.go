@@ -178,14 +178,19 @@ func (s *sdk) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		s.buildSnapshot(ctx, sdkVariants)
 	}
 
+	if s.snapshotFile.Valid() != s.infoFile.Valid() {
+		panic(fmt.Sprintf("Snapshot (%q) and info file (%q) should both be set or neither should be set.", s.snapshotFile, s.infoFile))
+	}
+
 	if s.snapshotFile.Valid() {
 		ctx.SetOutputFiles([]android.Path{s.snapshotFile.Path()}, "")
+		ctx.SetOutputFiles([]android.Path{s.snapshotFile.Path(), s.infoFile.Path()}, android.DefaultDistTag)
 	}
 }
 
 func (s *sdk) AndroidMkEntries() []android.AndroidMkEntries {
-	if !s.snapshotFile.Valid() != !s.infoFile.Valid() {
-		panic("Snapshot (%q) and info file (%q) should both be set or neither should be set.")
+	if s.snapshotFile.Valid() != s.infoFile.Valid() {
+		panic(fmt.Sprintf("Snapshot (%q) and info file (%q) should both be set or neither should be set.", s.snapshotFile, s.infoFile))
 	} else if !s.snapshotFile.Valid() {
 		return []android.AndroidMkEntries{}
 	}
@@ -193,7 +198,6 @@ func (s *sdk) AndroidMkEntries() []android.AndroidMkEntries {
 	return []android.AndroidMkEntries{android.AndroidMkEntries{
 		Class:      "FAKE",
 		OutputFile: s.snapshotFile,
-		DistFiles:  android.MakeDefaultDistFiles(s.snapshotFile.Path(), s.infoFile.Path()),
 		Include:    "$(BUILD_PHONY_PACKAGE)",
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
