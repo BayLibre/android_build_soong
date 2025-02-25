@@ -70,6 +70,30 @@
       },
       "revId": "7019f198a61b6b204145dcd9e593e530091cc42e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "315f91c9_9ebc9f04",
+        "filename": "android/neverallow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-25T18:52:12Z",
+      "side": 1,
+      "message": "Ah that\u0027s a good point Inseob, we should maybe update neverallow to recognize soong config variable module types and treat them the same as the underlying module type.",
+      "parentUuid": "5c0a3b1b_e534bbf8",
+      "range": {
+        "startLine": 300,
+        "startChar": 26,
+        "endLine": 300,
+        "endChar": 43
+      },
+      "revId": "7019f198a61b6b204145dcd9e593e530091cc42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
