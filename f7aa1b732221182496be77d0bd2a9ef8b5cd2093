@@ -86,6 +86,24 @@
       "parentUuid": "ad4fcfe6_b01e8cc9",
       "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc19926c_22432088",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2025-02-25T05:18:04Z",
+      "side": 1,
+      "message": "`android.hidl.memory@1.0-impl` is still in the system image. It seems like somewhat this work (to move to system_ext) is not tracked.",
+      "parentUuid": "f8e3a034_f0056e83",
+      "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
