@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f38315d_5a4bab4d",
+        "filename": "android/makevars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-02-25T19:06:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a90a7d93_03e93ab2",
+      "revId": "8be0b40752a4b69ca96c019641d6886cf5fc7a60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87a3a388_f53c1399",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-02-25T01:01:43Z",
       "side": 1,
       "message": "I\u0027m surprised we don\u0027t have any MakeVars that set multiple variables.  I think it would be safer to return a slice of structs that each contain a name/value pair.",
+      "revId": "8be0b40752a4b69ca96c019641d6886cf5fc7a60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72828e9_d455c41b",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2375,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-02-25T19:06:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a3a388_f53c1399",
       "revId": "8be0b40752a4b69ca96c019641d6886cf5fc7a60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
