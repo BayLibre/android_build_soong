@@ -46,6 +46,30 @@
       },
       "revId": "7019f198a61b6b204145dcd9e593e530091cc42e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0a3b1b_e534bbf8",
+        "filename": "android/neverallow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1856745
+      },
+      "writtenOn": "2025-02-25T07:30:37Z",
+      "side": 1,
+      "message": "Cole is correct, we don\u0027t need the trusty_vm_genrule, the select feature does not mandate a custom module type. I am removing these!\nThanks for catching this!",
+      "parentUuid": "62a466ef_ec3a871c",
+      "range": {
+        "startLine": 300,
+        "startChar": 26,
+        "endLine": 300,
+        "endChar": 43
+      },
+      "revId": "7019f198a61b6b204145dcd9e593e530091cc42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
