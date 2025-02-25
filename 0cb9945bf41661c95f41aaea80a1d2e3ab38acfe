@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46b51f5d_f067aec2",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-02-25T14:31:08Z",
+      "side": 1,
+      "message": "Including them whole will bundle the generated Rust staticlib into the cc staticlib Soong produces. (`cc_rustlibs_for_make` is just a `cc_library_static` that actually produces the generated Rust staticlib)\n\nWe could alternatively use generatedLib directly as the output of the \"linkStatic\" step, but this seemed like the most straight forward approach that will be easiest to remove later. cc_library_static can already bundle libraries using `whole_static_libs` without providing any source, so this is effectively reusing that capability for the generated Rust staticlib.\n\nAdditional clarification just in case the above isn\u0027t what you meant -- they\u0027re not being linked whole in Make; in Make the resulting cc staticlib from this  (which includes the rustlibs whole) is linked normally as a staticlib.\n\nLeaving this open but resolve if this answers your question?",
+      "parentUuid": "2fac1dc5_02e52907",
+      "range": {
+        "startLine": 1081,
+        "startChar": 8,
+        "endLine": 1081,
+        "endChar": 19
+      },
+      "revId": "0cb9945bf41661c95f41aaea80a1d2e3ab38acfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6a6f9d6_25c099c5",
         "filename": "rust/library_test.go",
         "patchSetId": 3
