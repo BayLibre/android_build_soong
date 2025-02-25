@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90a7d93_03e93ab2",
+        "filename": "android/makevars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-25T01:01:43Z",
+      "side": 1,
+      "message": "This doesn\u0027t take a MakeVarsModuleContext any more, and needs to document the strings it returns.\n\nIt may help future maintainability to keep passing a stripped down `MakeVarsModuleContext` here, even if it only has a `Config()` method on it, that way you can add additional methods in the future without having to change the signature of every implementation.",
+      "revId": "8be0b40752a4b69ca96c019641d6886cf5fc7a60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a3a388_f53c1399",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2375,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-25T01:01:43Z",
+      "side": 1,
+      "message": "I\u0027m surprised we don\u0027t have any MakeVars that set multiple variables.  I think it would be safer to return a slice of structs that each contain a name/value pair.",
+      "revId": "8be0b40752a4b69ca96c019641d6886cf5fc7a60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
