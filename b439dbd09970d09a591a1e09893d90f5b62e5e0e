@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c71d1fed_316d431a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951966
+      },
+      "writtenOn": "2025-02-25T13:35:54Z",
+      "side": 1,
+      "message": "I don\u0027t think there is any dependency on primary lib in AOSP, so this change should be good. Though, I will pass this to Spandan to confirm this and also to get code-ownder review.",
+      "revId": "b439dbd09970d09a591a1e09893d90f5b62e5e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
