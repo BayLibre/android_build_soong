@@ -193,6 +193,11 @@ type LinkableInfo struct {
 	// Symlinks returns a list of symlinks that should be created for this module.
 	Symlinks               []string
 	APIListCoverageXMLPath android.ModuleOutPath
+	// PreventInstall returns true if this module is prevented from installation.
+	PreventInstall bool
+	// FuzzSharedLibraries returns the shared library dependencies for this module.
+	// Expects that IsFuzzModule returns true.
+	FuzzSharedLibraries android.RuleBuilderInstalls
 }
 
 var LinkableInfoProvider = blueprint.NewProvider[*LinkableInfo]()
@@ -2434,12 +2439,19 @@ func CreateCommonLinkableInfo(ctx android.ModuleContext, mod VersionedLinkableIn
 		Multilib:                        mod.Multilib(),
 		ImplementationModuleNameForMake: mod.ImplementationModuleNameForMake(),
 		Symlinks:                        mod.Symlinks(),
+		PreventInstall:                  mod.PreventInstall(),
 	}
 
 	vi := mod.VersionedInterface()
 	if vi != nil {
 		info.IsStubsImplementationRequired = vi.IsStubsImplementationRequired()
 		info.APIListCoverageXMLPath = vi.GetAPIListCoverageXMLPath()
+	}
+
+	if !mod.PreventInstall() && fuzz.IsValid(ctx, mod.FuzzModuleStruct()) && mod.IsFuzzModule() {
+		info.FuzzSharedLibraries = mod.FuzzSharedLibraries()
+		fm := mod.FuzzPackagedModule()
+		fuzz.SetFuzzPackagedModuleInfo(ctx, &fm)
 	}
 
 	return info
