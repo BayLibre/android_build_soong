@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e885d50_6e808c21",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-25T01:25:21Z",
+      "side": 1,
+      "message": "nit: use `ctx.ModuleErrorf` instead.",
+      "revId": "c5b59f05df047500a6fe7d9f986b416e04fe0c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37125f77_6ac5fb39",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-25T01:25:21Z",
+      "side": 1,
+      "message": "I think this can now be removed with L181~184 addition.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 129
+      },
+      "revId": "c5b59f05df047500a6fe7d9f986b416e04fe0c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
