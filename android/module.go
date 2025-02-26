@@ -2373,8 +2373,16 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		})
 	}
 
-	if v, ok := m.module.(ModuleMakeVarsProvider); m.Enabled(ctx) && ok {
-		SetProvider(ctx, ModuleMakeVarsInfoProvider, v.MakeVars(ctx))
+	if m.Enabled(ctx) {
+		if v, ok := m.module.(ModuleMakeVarsProvider); ok {
+			SetProvider(ctx, ModuleMakeVarsInfoProvider, v.MakeVars(ctx))
+		}
+
+		if am, ok := m.module.(AndroidMkDataProvider); ok {
+			SetProvider(ctx, AndroidMkDataInfoProvider, AndroidMkDataInfo{
+				Class: am.AndroidMk().Class,
+			})
+		}
 	}
 }
 
