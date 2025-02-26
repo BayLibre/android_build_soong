@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8102286_ea830d14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885365
+      },
+      "writtenOn": "2025-02-26T19:39:14Z",
+      "side": 1,
+      "message": "This should not need to be reverted, only the bionic change should be reverted",
+      "revId": "1fe91a79985a01d65d3a51d3f44e11b02c4aa60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
