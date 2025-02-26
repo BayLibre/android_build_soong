@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "332826b9_2c66388e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-26T18:08:26Z",
+      "side": 1,
+      "message": "This seems wrong. Could you please explain more why they would both be built to the same location? Especially if they\u0027re built \"one after the other\", in that case, wouldn\u0027t the second build just clobber the first?",
+      "revId": "96e15fec430a140652221a11bcd006b5a42c2e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59aa09ad_b5f66cd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-26T18:08:26Z",
+      "side": 1,
+      "message": "Where is this file? I don\u0027t see it in the android main branches or google3.",
+      "range": {
+        "startLine": 15,
+        "startChar": 29,
+        "endLine": 15,
+        "endChar": 48
+      },
+      "revId": "96e15fec430a140652221a11bcd006b5a42c2e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c2b89b6a_b6959e9d",
