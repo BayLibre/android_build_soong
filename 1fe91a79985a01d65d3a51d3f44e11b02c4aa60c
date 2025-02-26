@@ -16,6 +16,23 @@
       "message": "This should not need to be reverted, only the bionic change should be reverted",
       "revId": "1fe91a79985a01d65d3a51d3f44e11b02c4aa60c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "735babbe_eb30db19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-02-26T19:56:08Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need to revert this CL to fix the breakage, but I\u0027m not opposed to re-landing it either when we\u0027ve resolved the issue.",
+      "revId": "1fe91a79985a01d65d3a51d3f44e11b02c4aa60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
