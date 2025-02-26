@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f31cc47_bc182e58",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-26T18:36:09Z",
+      "side": 1,
+      "message": "Could we use `ctx.OtherModuleName(mod)` instead? So that we handle other renamings besides just prebuilts.",
+      "revId": "e1ae9f753c8784bab388dee4807927633226f111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
