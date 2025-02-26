@@ -3,6 +3,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86abd293_4dd928b7",
+        "filename": "android/filegroup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2025-02-26T09:13:19Z",
+      "side": 1,
+      "message": "One possible way maybe change the path to root.",
+      "range": {
+        "startLine": 198,
+        "startChar": 39,
+        "endLine": 198,
+        "endChar": 42
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "73354809_0c3ea03b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/filegroup.go",
+              "range": {
+                "startLine": 109,
+                "startChar": 0,
+                "endLine": 112,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "android/filegroup.go",
+              "range": {
+                "startLine": 199,
+                "startChar": 0,
+                "endLine": 207,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "100e21b77de5a71e6fc4aeb92d407966b2e93b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db78a9aa_7c552739",
         "filename": "android/paths.go",
         "patchSetId": 1
