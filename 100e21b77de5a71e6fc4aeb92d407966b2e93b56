@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db78a9aa_7c552739",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2025-02-26T09:11:30Z",
+      "side": 1,
+      "message": "filegroup has limit about \"../\" path.",
+      "range": {
+        "startLine": 977,
+        "startChar": 0,
+        "endLine": 980,
+        "endChar": 5
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "84c4d9d7_dc8ad721",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/paths.go",
+              "range": {
+                "startLine": 977,
+                "startChar": 0,
+                "endLine": 981,
+                "endChar": 0
+              },
+              "replacement": "\t\tif !strings.HasPrefix(path, prefix) {\n\t\t\tReportPathErrorf(ctx, \"Path %q is not in module source directory %q\", p, prefix)\n\t\t\tcontinue\n\t\t}\n"
+            },
+            {
+              "path": "android/paths.go",
+              "range": {
+                "startLine": 2282,
+                "startChar": 0,
+                "endLine": 2286,
+                "endChar": 0
+              },
+              "replacement": "\t\tpath :\u003d filepath.Clean(path)\n\t\tif path \u003d\u003d \"..\" || strings.HasPrefix(path, \"../\") || strings.HasPrefix(path, \"/\") {\n\t\t\treturn \"\", fmt.Errorf(\"Path is outside directory: %s\", path)\n\t\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "100e21b77de5a71e6fc4aeb92d407966b2e93b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc6447c1_797795fa",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2284,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2025-02-26T09:11:30Z",
+      "side": 1,
+      "message": "filegroup has double check if the path is outside directory.",
+      "range": {
+        "startLine": 2284,
+        "startChar": 28,
+        "endLine": 2284,
+        "endChar": 53
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "22bd9600_ae49256b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/paths.go",
+              "range": {
+                "startLine": 2281,
+                "startChar": 0,
+                "endLine": 2286,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "100e21b77de5a71e6fc4aeb92d407966b2e93b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
