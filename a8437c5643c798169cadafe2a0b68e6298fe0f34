@@ -16,6 +16,24 @@
       "message": "There are modules that intentionally set the dist file different between `\"\"` and `DefaultDistTag`. Not quite sure if it would be an expected behavior to redirect for those modules.",
       "revId": "a8437c5643c798169cadafe2a0b68e6298fe0f34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d687ea_39352fe1",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1226,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-26T00:58:17Z",
+      "side": 1,
+      "message": "In that case it won\u0027t do the redirecting, because `err` will be nil. It will take the sepcified defaults.",
+      "parentUuid": "856fc5ac_118015b7",
+      "revId": "a8437c5643c798169cadafe2a0b68e6298fe0f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
