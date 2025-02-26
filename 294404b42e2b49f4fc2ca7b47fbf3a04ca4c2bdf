@@ -16,6 +16,23 @@
       "message": "@colefaust@google.com the change has gotten quite large; let me know if you\u0027d like me to break this down into smaller pieces and I\u0027d be happy to do so.",
       "revId": "294404b42e2b49f4fc2ca7b47fbf3a04ca4c2bdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7145e2d7_432f7c3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-02-26T01:12:45Z",
+      "side": 1,
+      "message": "Diff between make generated one (with https://r.android.com/3500527) and this change: [diff](https://paste.googleplex.com/6382767502524416)\n\nNotably the ones installed in recovery partition is missing, and there are a few missing in system and vendor for soong generated ones.",
+      "revId": "294404b42e2b49f4fc2ca7b47fbf3a04ca4c2bdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
