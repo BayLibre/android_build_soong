@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93343d75_c0f984e8",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-02-26T19:04:28Z",
+      "side": 1,
+      "message": "Got it, I misunderstood which stage was being whole-static\u0027d",
+      "parentUuid": "46b51f5d_f067aec2",
+      "range": {
+        "startLine": 1081,
+        "startChar": 8,
+        "endLine": 1081,
+        "endChar": 19
+      },
+      "revId": "0cb9945bf41661c95f41aaea80a1d2e3ab38acfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6a6f9d6_25c099c5",
