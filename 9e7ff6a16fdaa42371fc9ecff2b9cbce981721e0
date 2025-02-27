@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b2723f_a5b4cc4a",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2025-02-27T18:00:09Z",
+      "side": 1,
+      "message": "Can you mention what happens to them instead? Iiuc they\u0027re handled by the D8 implementation inside the R8 binary.",
+      "revId": "9e7ff6a16fdaa42371fc9ecff2b9cbce981721e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
