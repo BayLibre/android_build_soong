@@ -33,13 +33,6 @@ func registerApexKeyBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterParallelSingletonModuleType("all_apex_certs", allApexCertsFactory)
 }
 
-type ApexKeyInfo struct {
-	PublicKeyFile  android.Path
-	PrivateKeyFile android.Path
-}
-
-var ApexKeyInfoProvider = blueprint.NewProvider[ApexKeyInfo]()
-
 type apexKey struct {
 	android.ModuleBase
 
@@ -102,11 +95,6 @@ func (m *apexKey) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			m.publicKeyFile.String(), pubKeyName, m.privateKeyFile, privKeyName)
 		return
 	}
-
-	android.SetProvider(ctx, ApexKeyInfoProvider, ApexKeyInfo{
-		PublicKeyFile:  m.publicKeyFile,
-		PrivateKeyFile: m.privateKeyFile,
-	})
 }
 
 type apexKeyEntry struct {

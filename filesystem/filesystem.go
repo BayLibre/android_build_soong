@@ -387,9 +387,6 @@ type InstalledFilesStruct struct {
 type FilesystemInfo struct {
 	// The built filesystem image
 	Output android.Path
-	// Returns the output file that is signed by avbtool. If this module is not signed, returns
-	// nil.
-	SignedOutputPath android.Path
 	// An additional hermetic filesystem image.
 	// e.g. this will contain inodes with pinned timestamps.
 	// This will be copied to target_files.zip
@@ -658,8 +655,7 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	fsInfo := FilesystemInfo{
-		Output:                 f.OutputPath(),
-		SignedOutputPath:       f.SignedOutputPath(),
+		Output:                 f.output,
 		OutputHermetic:         outputHermetic,
 		FileListFile:           fileListFile,
 		RootDir:                rootDir,
@@ -1502,11 +1498,4 @@ func (f *filesystem) MakeVars(ctx android.MakeVarsModuleContext) {
 	if f.Name() == ctx.Config().SoongDefinedSystemImage() {
 		ctx.StrictRaw("SOONG_DEFINED_SYSTEM_IMAGE_PATH", f.output.String())
 	}
-}
-
-func setCommonFilesystemInfo(ctx android.ModuleContext, m Filesystem) {
-	android.SetProvider(ctx, FilesystemProvider, FilesystemInfo{
-		Output:           m.OutputPath(),
-		SignedOutputPath: m.SignedOutputPath(),
-	})
 }

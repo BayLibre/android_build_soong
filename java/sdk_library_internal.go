@@ -936,8 +936,6 @@ func (module *sdkLibraryXml) GenerateAndroidBuildActions(ctx android.ModuleConte
 	ctx.PackageFile(module.installDirPath, libName+".xml", module.outputFilePath)
 
 	ctx.SetOutputFiles(android.OutputPaths{module.outputFilePath}.Paths(), "")
-
-	etc.SetCommonPrebuiltEtcInfo(ctx, module)
 }
 
 func (module *sdkLibraryXml) AndroidMkEntries() []android.AndroidMkEntries {

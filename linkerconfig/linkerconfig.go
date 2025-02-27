@@ -86,8 +86,6 @@ func (l *linkerConfig) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.InstallFile(l.installDirPath, l.outputFilePath.Base(), l.outputFilePath)
 
 	ctx.SetOutputFiles(android.Paths{l.outputFilePath}, "")
-
-	etc.SetCommonPrebuiltEtcInfo(ctx, l)
 }
 
 func BuildLinkerConfig(
