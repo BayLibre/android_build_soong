@@ -69,6 +69,12 @@ func (mod *Module) AndroidMkEntries() []android.AndroidMkEntries {
 				} else if mod.InProduct() {
 					entries.SetBool("LOCAL_IN_PRODUCT", true)
 				}
+				if mod.Properties.SdkAndPlatformVariantVisibleToMake {
+					// Add the unsuffixed name to SOONG_SDK_VARIANT_MODULES so that Make can rewrite
+					// dependencies to the .sdk suffix when building a module that uses the SDK.
+					entries.SetString("SOONG_SDK_VARIANT_MODULES",
+						"$(SOONG_SDK_VARIANT_MODULES) $(patsubst %.sdk,%,$(LOCAL_MODULE))")
+				}
 			},
 		},
 	}

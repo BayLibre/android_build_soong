@@ -2454,7 +2454,7 @@ func (versionTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, varia
 	}
 
 	m, ok := ctx.Module().(VersionedLinkableInterface)
-	if library := moduleVersionedInterface(ctx.Module()); library != nil && canBeVersionVariant(m) {
+	if library := moduleVersionedInterface(ctx.Module()); ok && library != nil && canBeVersionVariant(m) {
 		isLLNDK := m.IsLlndk()
 		isVendorPublicLibrary := m.IsVendorPublicLibrary()
 
@@ -2483,9 +2483,9 @@ func (versionTransitionMutator) Mutate(ctx android.BottomUpMutatorContext, varia
 					StubImplDepTag, ctx.ModuleName())
 			}
 		}
-	} else if ok && m.SplitPerApiLevel() && m.IsSdkVariant() {
-		m.SetSdkVersion(variation)
-		m.SetMinSdkVersion(variation)
+	} else if sdkIntf, ok := ctx.Module().(SdkLinkableInterface); ok && sdkIntf.SplitPerApiLevel() && sdkIntf.IsSdkVariant() {
+		sdkIntf.SetSdkVersion(StringPtr(variation))
+		sdkIntf.SetMinSdkVersion(variation)
 	}
 }
 

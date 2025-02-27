@@ -23,6 +23,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/cc"
 	"android/soong/genrule"
 )
 
@@ -880,4 +881,83 @@ func TestRustLinkPropagation(t *testing.T) {
 		t.Errorf("indirect dependency whole static lib not propagating from dylib to dylib: linkFlags %#v",
 			libdylib3.Args["linkFlags"])
 	}
+}
+
+func TestRustSdk(t *testing.T) {
+	// Test SDK variants of rust_ffi static modules.
+
+	ctx := testRust(t, `
+		cc_library {
+			name: "libsdk",
+			static_libs: ["libsdkdep_rs"],
+			sdk_version: "current",
+			stl: "c++_shared",
+		}
+
+		cc_library {
+			name: "libsdkdep",
+			sdk_version: "current",
+			stl: "c++_shared",
+		}
+
+		rust_ffi_static {
+			name: "libsdk_rs",
+			crate_name: "sdk_rs",
+			srcs: ["main.rs"],
+			shared_libs: ["libsdkdep"],
+			sdk_version: "current",
+			no_stdlibs: true,
+		}
+
+		rust_ffi_static {
+			name: "libsdkdep_rs",
+			crate_name: "sdkdep_rs",
+			srcs: ["main.rs"],
+			sdk_version: "current",
+			no_stdlibs: true,
+		}
+
+	`)
+
+	assertDep := func(t *testing.T, from, to android.TestingModule) {
+		t.Helper()
+		found := false
+
+		var toFile android.Path
+		m := to.Module().(cc.LinkableInterface)
+		if toc := m.Toc(); toc.Valid() {
+			toFile = toc.Path()
+		} else {
+			toFile = m.OutputFile().Path()
+		}
+		toFile = toFile.RelativeToTop()
+		var rule android.TestingBuildParams
+		if from.Module().(cc.LinkableInterface).RustLibraryInterface() {
+			rule = from.Description("rustc")
+		} else {
+			rule = from.Description("rustc")
+		}
+		for _, dep := range rule.Implicits {
+			if dep.String() == toFile.String() {
+				found = true
+			}
+		}
+		if !found {
+			t.Errorf("expected %q in %q", toFile.String(), rule.Implicits.Strings())
+		}
+	}
+
+	libsdkNDK := ctx.ModuleForTests(t, "libsdk", "android_arm64_armv8-a_sdk_shared")
+	libsdkPlatform := ctx.ModuleForTests(t, "libsdk", "android_arm64_armv8-a_shared")
+	libsdkdepNDK := ctx.ModuleForTests(t, "libsdkdep", "android_arm64_armv8-a_sdk_shared")
+	libsdkdepPlatform := ctx.ModuleForTests(t, "libsdkdep", "android_arm64_armv8-a_shared")
+	libsdkRsNDK := ctx.ModuleForTests(t, "libsdk_rs", "android_arm64_armv8-a_sdk_rlib_rlib-std")
+	libsdkRsPlatform := ctx.ModuleForTests(t, "libsdk_rs", "android_arm64_armv8-a_rlib_rlib-std")
+	libsdkdepRsNDK := ctx.ModuleForTests(t, "libsdkdep_rs", "android_arm64_armv8-a_sdk_rlib_rlib-std")
+	libsdkdepRsPlatform := ctx.ModuleForTests(t, "libsdkdep_rs", "android_arm64_armv8-a_rlib_rlib-std")
+
+	assertDep(t, libsdkNDK, libsdkdepRsNDK)
+	assertDep(t, libsdkRsNDK, libsdkdepNDK)
+	assertDep(t, libsdkPlatform, libsdkdepRsPlatform)
+	assertDep(t, libsdkRsPlatform, libsdkdepPlatform)
 }

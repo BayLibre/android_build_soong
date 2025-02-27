@@ -1217,8 +1217,8 @@ func (c *Module) MinSdkVersion() string {
 	return String(c.Properties.Min_sdk_version)
 }
 
-func (c *Module) SetSdkVersion(s string) {
-	c.Properties.Sdk_version = StringPtr(s)
+func (c *Module) SetSdkVersion(s *string) {
+	c.Properties.Sdk_version = s
 }
 
 func (c *Module) SetMinSdkVersion(s string) {
@@ -1371,6 +1371,8 @@ func (c *Module) CoverageFiles() android.Paths {
 }
 
 var _ LinkableInterface = (*Module)(nil)
+var _ VersionedLinkableInterface = (*Module)(nil)
+var _ SdkLinkableInterface = (*Module)(nil)
 
 func (c *Module) VersionedInterface() VersionedInterface {
 	if c.library != nil {
@@ -1728,7 +1730,7 @@ func (ctx *moduleContextImpl) sdkVersion() string {
 	return ""
 }
 
-func MinSdkVersion(mod VersionedLinkableInterface, ctxIsForPlatform bool, device bool,
+func MinSdkVersion(mod SdkLinkableInterface, ctxIsForPlatform bool, device bool,
 	platformSdkVersion string) string {
 
 	ver := mod.MinSdkVersion()
@@ -4349,6 +4351,14 @@ func DefaultsFactory(props ...interface{}) android.Module {
 
 func (c *Module) IsSdkVariant() bool {
 	return c.Properties.IsSdkVariant
+}
+
+func (c *Module) SetSdkVariant() {
+	c.Properties.IsSdkVariant = true
+}
+
+func (c *Module) SetSdkAndPlatformVariantVisibleToMake() {
+	c.Properties.SdkAndPlatformVariantVisibleToMake = true
 }
 
 func kytheExtractAllFactory() android.Singleton {

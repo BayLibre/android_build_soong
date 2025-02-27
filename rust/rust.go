@@ -198,6 +198,10 @@ type BaseProperties struct {
 	PreventInstall bool `blueprint:"mutated"`
 
 	Installable *bool
+
+	// Set when both SDK and platform variants are exported to Make to trigger renaming the SDK
+	// variant to have a ".sdk" suffix.
+	SdkAndPlatformVariantVisibleToMake bool `blueprint:"mutated"`
 }
 
 type Module struct {
@@ -378,6 +382,11 @@ func (mod *Module) Toc() android.OptionalPath {
 }
 
 func (mod *Module) UseSdk() bool {
+	// Only rust_ffi_static variants support SDK variants (rust_ffi_static is currently an rlib).
+	// Use the build*() functions as this might be called before the library mutator.
+	if lib, ok := mod.compiler.(libraryInterface); ok && (lib.buildRlib()) && !lib.buildDylib() && cc.CanUseSdk(mod) {
+		return String(mod.Properties.Sdk_version) != ""
+	}
 	return false
 }
 
@@ -454,6 +463,14 @@ func (mod *Module) AlwaysSdk() bool {
 
 func (mod *Module) IsSdkVariant() bool {
 	return mod.Properties.IsSdkVariant
+}
+
+func (mod *Module) SetSdkVariant() {
+	mod.Properties.IsSdkVariant = true
+}
+
+func (mod *Module) SetSdkAndPlatformVariantVisibleToMake() {
+	mod.Properties.SdkAndPlatformVariantVisibleToMake = true
 }
 
 func (mod *Module) SplitPerApiLevel() bool {
@@ -884,6 +901,7 @@ func (ctx moduleContext) apexVariationName() string {
 
 var _ cc.LinkableInterface = (*Module)(nil)
 var _ cc.VersionedLinkableInterface = (*Module)(nil)
+var _ cc.SdkLinkableInterface = (*Module)(nil)
 
 func (mod *Module) Init() android.Module {
 	mod.AddProperties(&mod.Properties)
@@ -998,8 +1016,8 @@ func (mod *Module) SetStl(s string) {
 	// STL is a CC concept; do nothing for Rust
 }
 
-func (mod *Module) SetSdkVersion(s string) {
-	mod.Properties.Sdk_version = StringPtr(s)
+func (mod *Module) SetSdkVersion(s *string) {
+	mod.Properties.Sdk_version = s
 }
 
 func (mod *Module) SetMinSdkVersion(s string) {

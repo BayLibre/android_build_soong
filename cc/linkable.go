@@ -80,14 +80,21 @@ type VersionedLinkableInterface interface {
 
 	// SetStl sets the stl property for CC modules. Does not panic if for other module types.
 	SetStl(string)
-	SetSdkVersion(string)
-	SetMinSdkVersion(version string)
-	ApexSdkVersion() android.ApiLevel
 	ImplementationModuleNameForMake() string
 
 	// RustApexExclude returns ApexExclude() for Rust modules; always returns false for all non-Rust modules.
 	// TODO(b/362509506): remove this once all apex_exclude uses are switched to stubs.
 	RustApexExclude() bool
+}
+
+type SdkLinkableInterface interface {
+	LinkableInterface
+
+	ApexSdkVersion() android.ApiLevel
+	SetSdkVersion(version *string)
+	SetSdkVariant()
+	SetMinSdkVersion(version string)
+	SetSdkAndPlatformVariantVisibleToMake()
 }
 
 // LinkableInterface is an interface for a type of module that is linkable in a C++ library.

@@ -94,6 +94,11 @@ func GatherRequiredDepsForTest() string {
 					"30",
 				],
 			},
+			target: {
+				android: {
+					version_script: "liblog.map.txt",
+				},
+			},
 		}
 		cc_library {
 			name: "libprotobuf-cpp-full",
