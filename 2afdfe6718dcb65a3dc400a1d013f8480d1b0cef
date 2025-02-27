@@ -16,6 +16,23 @@
       "message": "Presubmit builds are timing out, trying again.",
       "revId": "2afdfe6718dcb65a3dc400a1d013f8480d1b0cef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63ac9828_d4e5fd9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-02-27T16:27:41Z",
+      "side": 1,
+      "message": "See b/399641462 for the presubmit build timeouts, seems related.",
+      "revId": "2afdfe6718dcb65a3dc400a1d013f8480d1b0cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
