@@ -40,6 +40,30 @@
       ],
       "revId": "483b9f54c31166a443d8037251ccdd1116424c15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c6fe154_18a9d647",
+        "filename": "java/dex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2025-02-27T19:37:13Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "66f4d3f3_ca05f43b",
+      "range": {
+        "startLine": 108,
+        "startChar": 78,
+        "endLine": 108,
+        "endChar": 86
+      },
+      "revId": "483b9f54c31166a443d8037251ccdd1116424c15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
