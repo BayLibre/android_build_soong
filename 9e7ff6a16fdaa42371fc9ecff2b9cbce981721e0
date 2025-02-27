@@ -16,6 +16,24 @@
       "message": "Can you mention what happens to them instead? Iiuc they\u0027re handled by the D8 implementation inside the R8 binary.",
       "revId": "9e7ff6a16fdaa42371fc9ecff2b9cbce981721e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd16c83_90b15502",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2025-02-27T19:21:42Z",
+      "side": 1,
+      "message": "Yes these are indeed compiled using D8. Added a comment about this.",
+      "parentUuid": "f1b2723f_a5b4cc4a",
+      "revId": "9e7ff6a16fdaa42371fc9ecff2b9cbce981721e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
