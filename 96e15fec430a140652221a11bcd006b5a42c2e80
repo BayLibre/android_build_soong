@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b59f194_29708d05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-02-27T10:03:53Z",
+      "side": 1,
+      "message": "For the ART simulator, we intentionally want to reuse as much of the standard ART testing code as possible and to that end we build both the host and target using [`art/tools/buildbot-build.sh --target --host`](https://cs.android.com/android/platform/superproject/main/+/main:art/tools/buildbot-build.sh;drc\u003d4ea9dbdd63aa1baeac3003e6e9db6a254ac3ca8d;l\u003d1) (there is some additional context here: https://android-review.googlesource.com/c/platform/art/+/2680025/comments/5ac1d608_bdb56f77). Essentially we want to build the following:\n- Arm64 target tests, boot image and ART entrypoints (in `out/target/...`).\n- x86_64 host runtime, GC (in `out/host/...) and simulator.\n\nWe then use the host runtime and simulator to simulate all quick (Arm64) code such as the target tests, boot image and entrypoints.\n\nIn this setup we don\u0027t have a device so when we build the target we want to ensure that the host device paths are used instead.",
+      "parentUuid": "332826b9_2c66388e",
+      "revId": "96e15fec430a140652221a11bcd006b5a42c2e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59aa09ad_b5f66cd5",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-02-26T18:08:26Z",
       "side": 1,
       "message": "Where is this file? I don\u0027t see it in the android main branches or google3.",
+      "range": {
+        "startLine": 15,
+        "startChar": 29,
+        "endLine": 15,
+        "endChar": 48
+      },
+      "revId": "96e15fec430a140652221a11bcd006b5a42c2e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc14f2a8_2cd9028d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-02-27T10:03:53Z",
+      "side": 1,
+      "message": "Sorry I should have clarified, [README.simulator.md](https://android-review.googlesource.com/c/platform/art/+/2680028/7/test/README.simulator.md#132) comes from the [stage 1 simulator setup patch for ART](https://android-review.googlesource.com/c/platform/art/+/2680028/7) which is in the process of being upstreamed. I\u0027d be happy to have this patch merged at the same time as the stage 1 patch but as this change is very small I thought it would be okay to land a bit earlier.",
+      "parentUuid": "59aa09ad_b5f66cd5",
       "range": {
         "startLine": 15,
         "startChar": 29,
