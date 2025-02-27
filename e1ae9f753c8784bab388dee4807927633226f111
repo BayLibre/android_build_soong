@@ -34,6 +34,24 @@
       "parentUuid": "8f31cc47_bc182e58",
       "revId": "e1ae9f753c8784bab388dee4807927633226f111",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b07c27c_d557259e",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-27T05:18:16Z",
+      "side": 1,
+      "message": "Good point, `ctx.OtherModuleName` is the better implementation. Updated.",
+      "parentUuid": "17906fb5_66d54c96",
+      "revId": "e1ae9f753c8784bab388dee4807927633226f111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
