@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f4d3f3_ca05f43b",
+        "filename": "java/dex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2025-02-27T19:36:17Z",
+      "side": 1,
+      "message": "Nit: \"false\" reads a bit better here.",
+      "range": {
+        "startLine": 108,
+        "startChar": 78,
+        "endLine": 108,
+        "endChar": 86
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "261e8203_e806ab8f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 108,
+                "startChar": 0,
+                "endLine": 109,
+                "endChar": 0
+              },
+              "replacement": "\t\t// These classes will be compiled by D8 similar to when Optimize.Enabled is false.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "483b9f54c31166a443d8037251ccdd1116424c15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
