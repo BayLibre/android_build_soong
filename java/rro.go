@@ -34,15 +34,6 @@ func RegisterRuntimeResourceOverlayBuildComponents(ctx android.RegistrationConte
 	ctx.RegisterModuleType("override_runtime_resource_overlay", OverrideRuntimeResourceOverlayModuleFactory)
 }
 
-type RuntimeResourceOverlayInfo struct {
-	OutputFile                    android.Path
-	Certificate                   Certificate
-	Theme                         string
-	OverriddenManifestPackageName string
-}
-
-var RuntimeResourceOverlayInfoProvider = blueprint.NewProvider[RuntimeResourceOverlayInfo]()
-
 type RuntimeResourceOverlay struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
@@ -214,12 +205,6 @@ func (r *RuntimeResourceOverlay) GenerateAndroidBuildActions(ctx android.ModuleC
 
 	android.SetProvider(ctx, FlagsPackagesProvider, FlagsPackages{
 		AconfigTextFiles: aconfigTextFilePaths,
-	})
-
-	android.SetProvider(ctx, RuntimeResourceOverlayInfoProvider, RuntimeResourceOverlayInfo{
-		OutputFile:  r.OutputFile(),
-		Certificate: r.Certificate(),
-		Theme:       r.Theme(),
 	})
 
 	buildComplianceMetadata(ctx)

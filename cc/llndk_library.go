@@ -147,8 +147,6 @@ func (txt *llndkLibrariesTxtModule) GenerateAndroidBuildActions(ctx android.Modu
 	ctx.InstallFile(installPath, filename, txt.outputFile)
 
 	ctx.SetOutputFiles(android.Paths{txt.outputFile}, "")
-
-	etc.SetCommonPrebuiltEtcInfo(ctx, txt)
 }
 
 func getVndkFileName(m *Module) (string, error) {
