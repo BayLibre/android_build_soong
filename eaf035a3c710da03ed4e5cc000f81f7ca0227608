@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c265d14b_a213301a",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1571,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-27T20:00:11Z",
+      "side": 1,
+      "message": "It shouldn\u0027t, if we hit this case now then it would have hit the panic below previously.  I think this is based on the version of Go that is running, so as long as we use the darwin-x86 Go prebuilts this will be \"amd64\".  I\u0027ve made that explicit here.",
+      "parentUuid": "5dff1314_c1abaae8",
+      "revId": "eaf035a3c710da03ed4e5cc000f81f7ca0227608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa9ec6fb_39517509",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-02-27T19:46:14Z",
       "side": 1,
       "message": "Is this related?",
+      "revId": "eaf035a3c710da03ed4e5cc000f81f7ca0227608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f26a401f_62119253",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-02-27T20:00:11Z",
+      "side": 1,
+      "message": "Yeah, we\u0027re missing some prebuilts, etc., in `srcs` properties.  This handles those errors correctly when ALLOW_MISSING_DEPENDENCIES\u003dtrue is set.  I can split it out to a separate CL if you want.",
+      "parentUuid": "fa9ec6fb_39517509",
       "revId": "eaf035a3c710da03ed4e5cc000f81f7ca0227608",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
