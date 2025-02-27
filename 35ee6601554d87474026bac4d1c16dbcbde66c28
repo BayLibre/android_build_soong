@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca05f9d_bde6cd6a",
+        "filename": "apex/.apex.go.swo",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-27T05:18:47Z",
+      "side": 1,
+      "message": "Oops, fixed.",
+      "parentUuid": "f4b946b2_65d33934",
+      "revId": "35ee6601554d87474026bac4d1c16dbcbde66c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7263a5a_e035ecd5",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-02-26T18:39:52Z",
       "side": 1,
       "message": "Use `android.SortedUniquePaths()`",
+      "range": {
+        "startLine": 607,
+        "startChar": 0,
+        "endLine": 609,
+        "endChar": 3
+      },
+      "revId": "35ee6601554d87474026bac4d1c16dbcbde66c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e498b0_48eab7ce",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-02-27T05:18:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7263a5a_e035ecd5",
       "range": {
         "startLine": 607,
         "startChar": 0,
