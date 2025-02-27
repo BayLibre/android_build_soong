@@ -306,8 +306,6 @@ func (v *vbmeta) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	ctx.SetOutputFiles([]android.Path{output}, "")
 	v.output = output
-
-	setCommonFilesystemInfo(ctx, v)
 }
 
 // Returns the embedded shell command that prints the rollback index
