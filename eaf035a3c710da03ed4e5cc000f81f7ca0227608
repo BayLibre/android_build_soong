@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dff1314_c1abaae8",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1571,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2025-02-27T19:46:14Z",
+      "side": 1,
+      "message": "Is this going to do something weird on darwin-arm64?",
+      "revId": "eaf035a3c710da03ed4e5cc000f81f7ca0227608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9ec6fb_39517509",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2025-02-27T19:46:14Z",
+      "side": 1,
+      "message": "Is this related?",
+      "revId": "eaf035a3c710da03ed4e5cc000f81f7ca0227608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
