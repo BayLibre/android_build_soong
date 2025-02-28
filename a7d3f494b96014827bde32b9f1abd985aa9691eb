@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d10e789_60c39811",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-02-28T01:50:29Z",
+      "side": 1,
+      "message": "Please do the comparisons individually instead of with `InList`, `InList` and allocating a slice is slower. Don\u0027t be afraid to use temporary variables too.\n\nSame comment below, though that one probably doesn\u0027t need temporary variables.",
+      "revId": "a7d3f494b96014827bde32b9f1abd985aa9691eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
