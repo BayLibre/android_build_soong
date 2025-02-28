@@ -260,6 +260,8 @@ func loadEnvConfig(ctx Context, config *configImpl, bc string) error {
 		return nil
 	}
 
+	// Just add a comment here, so it will not affect the android build at all,
+	// but will invalidate some RBE cache.
 	configDirs := []string{
 		config.OutDir(),
 		os.Getenv("ANDROID_BUILD_ENVIRONMENT_CONFIG_DIR"),
