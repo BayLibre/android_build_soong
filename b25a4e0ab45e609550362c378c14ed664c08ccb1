@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "b25a4e0ab45e609550362c378c14ed664c08ccb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f929e6f9_835ab4ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2025-02-28T19:27:25Z",
+      "side": 1,
+      "message": "Soong plugins are deprecated.",
+      "revId": "b25a4e0ab45e609550362c378c14ed664c08ccb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
