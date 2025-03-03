@@ -456,6 +456,11 @@ func (m *moduleContext) Build(pctx PackageContext, params BuildParams) {
 }
 
 func (m *moduleContext) Phony(name string, deps ...Path) {
+	for _, dep := range deps {
+		if dep == nil {
+			panic("Phony dep cannot be nil")
+		}
+	}
 	m.phonies[name] = append(m.phonies[name], deps...)
 }
 
@@ -665,6 +670,9 @@ func (m *moduleContext) installFile(installPath InstallPath, name string, srcPat
 	executable bool, hooks bool, checkbuild bool, extraZip *extraFilesZip) InstallPath {
 	if _, ok := srcPath.(InstallPath); ok {
 		m.ModuleErrorf("Src path cannot be another installed file. Please use a path from source or intermediates instead.")
+	}
+	if srcPath == nil {
+		panic("srcPath cannot be nil")
 	}
 
 	fullInstallPath := installPath.Join(m, name)
@@ -879,6 +887,11 @@ func (m *moduleContext) InstallTestData(installPath InstallPath, data []DataPath
 
 // CheckbuildFile specifies the output files that should be built by checkbuild.
 func (m *moduleContext) CheckbuildFile(srcPaths ...Path) {
+	for _, srcPath := range srcPaths {
+		if srcPath == nil {
+			panic("CheckbuildFile() files cannot be nil")
+		}
+	}
 	m.checkbuildFiles = append(m.checkbuildFiles, srcPaths...)
 }
 
