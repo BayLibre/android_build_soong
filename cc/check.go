@@ -51,7 +51,9 @@ func CheckBadCompilerFlags(ctx BaseModuleContext, prop string, flags []string) {
 			}
 		} else if strings.HasPrefix(flag, "-target ") || strings.HasPrefix(flag, "--target ") ||
 			strings.HasPrefix(flag, "-target=") || strings.HasPrefix(flag, "--target=") {
-			ctx.PropertyErrorf(prop, "Bad flag: `%s`, use the correct target soong rule.", flag)
+			if !ctx.Config().IsEnvTrue("ART_USE_SIMULATOR") {
+				ctx.PropertyErrorf(prop, "Bad flag: `%s`, use the correct target soong rule.", flag)
+			}
 		} else if strings.Contains(flag, " ") {
 			args := strings.Split(flag, " ")
 			if args[0] == "-include" {
