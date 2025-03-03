@@ -460,7 +460,7 @@ func TestReleaseExportRuntimeApis(t *testing.T) {
 
 	m := result.ModuleForTests(t, "foo", "android_common")
 
-	rule := m.Output("released-flagged-apis-exportable.txt")
+	rule := m.Output("released-flags-exportable.pb")
 	exposeWritableApisFilter := "--filter='state:ENABLED+permission:READ_ONLY' --filter='permission:READ_WRITE'"
 	android.AssertStringEquals(t, "Filter argument expected to contain READ_WRITE permissions", exposeWritableApisFilter, rule.Args["filter_args"])
 }
