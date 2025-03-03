@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83b1b43d_a09250d7",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-03T22:08:28Z",
+      "side": 1,
+      "message": "Oh this is neat. I forgot that the `android_app` module itself is a `FlagsPackagesProvider`.",
+      "revId": "1319389781303252ae675dc96779c6c39c80e0af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
