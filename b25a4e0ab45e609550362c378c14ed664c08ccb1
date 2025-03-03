@@ -51,6 +51,23 @@
       "parentUuid": "f929e6f9_835ab4ac",
       "revId": "b25a4e0ab45e609550362c378c14ed664c08ccb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e70863_a8aa654e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2025-03-03T17:46:39Z",
+      "side": 1,
+      "message": "Looking at the other CL, you should be able to do that with a genrule.",
+      "revId": "b25a4e0ab45e609550362c378c14ed664c08ccb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
