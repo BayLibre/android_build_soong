@@ -456,6 +456,11 @@ func (m *moduleContext) Build(pctx PackageContext, params BuildParams) {
 }
 
 func (m *moduleContext) Phony(name string, deps ...Path) {
+	for _, dep := range deps {
+		if dep == nil {
+			panic("Phony dep cannot be nil")
+		}
+	}
 	m.phonies[name] = append(m.phonies[name], deps...)
 }
 
