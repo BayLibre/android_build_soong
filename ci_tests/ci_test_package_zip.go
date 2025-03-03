@@ -55,6 +55,9 @@ type CITestPackageProperties struct {
 	Tests_if_exist_common proptools.Configurable[[]string] `android:"arch_variant"`
 	// git-main only test modules. Will only be added as dependencies based on both 32bit and 64bit arch variant and the device os variant if exists.
 	Tests_if_exist_device_both proptools.Configurable[[]string] `android:"arch_variant"`
+	// Set to true if need the output name to be $(TARGET_PRODUCT)-$(Stem)-$(FILE_NAME_TAG_PLACEHOLDER).zip
+	Stem                                          *string
+	Stem_with_product_prefix_and_file_name_suffix *bool
 }
 
 type testPackageZipDepTagType struct {
@@ -143,18 +146,22 @@ func (p *testPackageZip) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 		ctx.ModuleErrorf("%s is not allowed to use module type test_package")
 	}
 
-	p.output = createOutput(ctx, pctx)
+	baseName := ctx.ModuleName()
+	baseName = proptools.StringDefault(p.properties.Stem, ctx.ModuleName())
+	outputFileName := baseName + ".zip"
+	if proptools.Bool(p.properties.Stem_with_product_prefix_and_file_name_suffix) {
+		outputFileName = fmt.Sprintf("%s-%s-%s.zip",
+			ctx.Config().Getenv("TARGET_PRODUCT"),
+			baseName,
+			"FILE_NAME_TAG_PLACEHOLDER")
+	}
+
+	p.output = createOutput(ctx, pctx, outputFileName)
 
 	ctx.SetOutputFiles(android.Paths{p.output}, "")
-
-	// dist the test output
-	if ctx.ModuleName() == "platform_tests" {
-		distedName := ctx.Config().Getenv("TARGET_PRODUCT") + "-tests-" + ctx.Config().BuildId() + ".zip"
-		ctx.DistForGoalWithFilename("platform_tests", p.output, distedName)
-	}
 }
 
-func createOutput(ctx android.ModuleContext, pctx android.PackageContext) android.ModuleOutPath {
+func createOutput(ctx android.ModuleContext, pctx android.PackageContext, outputFileName string) android.ModuleOutPath {
 	productOut := filepath.Join(ctx.Config().OutDir(), "target", "product", ctx.Config().DeviceName())
 	stagingDir := android.PathForModuleOut(ctx, "STAGING")
 	productVariables := ctx.Config().ProductVariables()
@@ -179,7 +186,7 @@ func createOutput(ctx android.ModuleContext, pctx android.PackageContext) androi
 		}
 	})
 
-	output := android.PathForModuleOut(ctx, ctx.ModuleName()+".zip")
+	output := android.PathForModuleOut(ctx, outputFileName)
 	builder.Command().
 		BuiltTool("soong_zip").
 		Flag("-o").Output(output).
