@@ -421,6 +421,9 @@ type FilesystemInfo struct {
 	BuildImagePropFileDeps android.Paths
 	// Packaging specs to be installed on the system_other image, for the initial boot's dexpreopt.
 	SpecsForSystemOther map[string]android.PackagingSpec
+	// The build.prop files in this partition. Keyed by their partition type in case this filesystem
+	// contains multiple android partitions (ex: product-on-system). Normally there will only be 1.
+	BuildProps map[string]android.Path
 
 	FullInstallPaths []FullInstallPathInfo
 
@@ -588,9 +591,20 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	builder.Command().Textf("rm -rf %s && mkdir -p %s", rootDir, rootDir)
 	specs := f.gatherFilteredPackagingSpecs(ctx)
 
+	var buildProps map[string]android.Path
 	var fullInstallPaths []FullInstallPathInfo
 	for _, specRel := range android.SortedKeys(specs) {
 		spec := specs[specRel]
+		if filepath.Base(spec.RelPathInPackage()) == "build.prop" {
+			if buildProps == nil {
+				buildProps = make(map[string]android.Path)
+			}
+			if _, ok := buildProps[spec.Partition()]; ok {
+				ctx.ModuleErrorf("Multiple build.prop files found for partition %s", spec.Partition())
+			} else {
+				buildProps[spec.Partition()] = spec.SrcPath()
+			}
+		}
 		fullInstallPaths = append(fullInstallPaths, FullInstallPathInfo{
 			FullInstallPath:     spec.FullInstallPath(),
 			RequiresFullInstall: spec.RequiresFullInstall(),
@@ -672,6 +686,7 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		BuildImagePropFileDeps: buildImagePropFileDeps,
 		SpecsForSystemOther:    f.systemOtherFiles(ctx),
 		FullInstallPaths:       fullInstallPaths,
+		BuildProps:             buildProps,
 		InstalledFiles: InstalledFilesStruct{
 			Txt:  installedFileTxt,
 			Json: installedFileJson,

@@ -324,6 +324,14 @@ func (a *androidDevice) distFiles(ctx android.ModuleContext) {
 			if fsInfo.InstalledFiles.Txt != nil {
 				ctx.DistForGoal("droidcore-unbundled", fsInfo.InstalledFiles.Txt)
 			}
+			for _, subPartition := range android.SortedKeys(fsInfo.BuildProps) {
+				switch subPartition {
+				case "system":
+					ctx.DistForGoalWithFilename("droidcore-unbundled", fsInfo.BuildProps[subPartition], "build.prop")
+				case "vendor", "product", "odm", "system_ext", "ramdisk":
+					ctx.DistForGoalWithFilename("droidcore-unbundled", fsInfo.BuildProps[subPartition], "build.prop-"+subPartition)
+				}
+			}
 		}
 
 		namePrefix := ""
