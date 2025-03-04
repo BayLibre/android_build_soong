@@ -16,6 +16,24 @@
       "message": "Could we keep this call out of the target files stuff? It\u0027s needed for dexpreopt, so I\u0027d like to avoid a scenario where dexpreopt breaks because someone changed the target files zip rules. We can put the kernel config/version files into fields of the androidDevice if you want to avoid passing them around.",
       "revId": "871d9c4b81c8c2294876a53b778444a99e0655a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "315d6305_81014ade",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-04T00:36:02Z",
+      "side": 1,
+      "message": "Done using two new fields in androidDevice.",
+      "parentUuid": "b2a34e11_74afee09",
+      "revId": "871d9c4b81c8c2294876a53b778444a99e0655a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
