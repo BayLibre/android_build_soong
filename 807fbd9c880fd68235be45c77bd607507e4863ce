@@ -16,6 +16,24 @@
       "message": "IIRC, the build.prop files of all partitions except `vendor` have been migrated to [Android.bp files](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/f20e41667c426bbcddf423ab9a97bbcce7fd2090:Android.bp;l\u003d172-255;drc\u003d6a30c6168f299828647747a7749a9f9ff6724853;bpv\u003d0;bpt\u003d0). Can we define the dist rules there?",
       "revId": "807fbd9c880fd68235be45c77bd607507e4863ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7f2b996_f866a4f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-04T22:10:39Z",
+      "side": 1,
+      "message": "I think I prefer this way. The make code wraps the dists in an `$(if $(BUILDING_PRODUCT_IMAGE)`, which is difficult to do if just using the dist property on a module that\u0027s always present.\n\nAlso, I don\u0027t really like how the build.prop modules are currently set up. They\u0027re like how the partitions used to be in make: one centralized module that\u0027s customized with a bunch of configuration variables. I thnk they should be 1 module per device type, or included into the filesystem rule.",
+      "parentUuid": "c9614639_05a0f971",
+      "revId": "807fbd9c880fd68235be45c77bd607507e4863ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
