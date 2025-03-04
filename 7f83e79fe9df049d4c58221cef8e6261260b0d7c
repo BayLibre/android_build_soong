@@ -40,6 +40,30 @@
       ],
       "revId": "7f83e79fe9df049d4c58221cef8e6261260b0d7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6eda3b3_e8a15fe4",
+        "filename": "scripts/aconfig-to-metalava-flags.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2025-03-04T12:38:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "595f577c_9935e459",
+      "range": {
+        "startLine": 36,
+        "startChar": 43,
+        "endLine": 36,
+        "endChar": 44
+      },
+      "revId": "7f83e79fe9df049d4c58221cef8e6261260b0d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
