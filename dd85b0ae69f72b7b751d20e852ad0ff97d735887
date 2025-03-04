@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66a2532_19240871",
+        "filename": "dexpreopt/dexpreopt_tools_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-04T23:44:49Z",
+      "side": 1,
+      "message": "nit: this is not necessarily identical to `ifneq ($(DEX2OAT),)`. Should we check `config.Dex2oat \u003d\u003d nil` instead?",
+      "revId": "dd85b0ae69f72b7b751d20e852ad0ff97d735887",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
