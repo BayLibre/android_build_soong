@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb1ea96_56255040",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-04T23:29:53Z",
+      "side": 1,
+      "message": "misc_info.txt needs to be disted as well (b/398036609), so could you build it in a separate rule and only do the copying to the staging dir in the target-files rulebuilder?",
+      "revId": "e526f1a199a845af6ff22d4b6524f287cf6c79ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
