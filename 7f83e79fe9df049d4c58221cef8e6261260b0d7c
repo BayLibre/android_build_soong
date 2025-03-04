@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "595f577c_9935e459",
+        "filename": "scripts/aconfig-to-metalava-flags.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2025-03-04T12:34:31Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 36,
+        "startChar": 43,
+        "endLine": 36,
+        "endChar": 44
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d1c3a9d7_3c986ec2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "scripts/aconfig-to-metalava-flags.py",
+              "range": {
+                "startLine": 36,
+                "startChar": 0,
+                "endLine": 37,
+                "endChar": 0
+              },
+              "replacement": "  \"\"\"Create a QName in the config namespace.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7f83e79fe9df049d4c58221cef8e6261260b0d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
