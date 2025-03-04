@@ -185,7 +185,6 @@ func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	a.buildTargetFilesZip(ctx, allInstalledModules)
 	a.buildProguardZips(ctx, allInstalledModules)
-	a.extractKernelVersionAndConfigs(ctx)
 
 	var deps []android.Path
 	if proptools.String(a.partitionProps.Super_partition_name) != "" {
@@ -635,6 +634,15 @@ func (a *androidDevice) copyMetadataToTargetZip(ctx android.ModuleContext, build
 		// TODO (b/399788523): Autogenerate fastboot-info.txt if there is no source fastboot-info.txt
 		// https://cs.android.com/android/_/android/platform/build/+/80b9546f8f69e78b8fe1870e0e745d70fc18dfcd:core/Makefile;l=5831-5893;drc=077490384423dff9eac954da5c001c6f0be3fa6e;bpv=0;bpt=0
 		builder.Command().Textf("cp").Input(fastbootInfo).Textf(" %s/META/fastboot-info.txt", targetFilesDir.String())
+	}
+
+	// kernel_configs.txt and kernel_version.txt
+	kernelConfig, kernelVersion := a.extractKernelVersionAndConfigs(ctx)
+	if kernelConfig != nil {
+		builder.Command().Textf("cp").Input(kernelConfig).Textf(" %s/META/", targetFilesDir.String())
+	}
+	if kernelVersion != nil {
+		builder.Command().Textf("cp").Input(kernelVersion).Textf(" %s/META/", targetFilesDir.String())
 	}
 
 	if a.partitionProps.Super_partition_name != nil {
