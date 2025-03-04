@@ -16,6 +16,24 @@
       "message": "nit: this is not necessarily identical to `ifneq ($(DEX2OAT),)`. Should we check `config.Dex2oat \u003d\u003d nil` instead?",
       "revId": "dd85b0ae69f72b7b751d20e852ad0ff97d735887",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca4b311_6fbf9035",
+        "filename": "dexpreopt/dexpreopt_tools_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-04T23:47:06Z",
+      "side": 1,
+      "message": "I think DEX2OAT would only be empty if `GetGlobalConfig(ctx).DisablePreopt || GetCachedGlobalSoongConfig(ctx) \u003d\u003d nil`, as per [here](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/dexpreopt/config.go;l\u003d699;drc\u003d21c11463ea0456f0592415bc381095347b84ed0e). And I have those conditions covered.",
+      "parentUuid": "c66a2532_19240871",
+      "revId": "dd85b0ae69f72b7b751d20e852ad0ff97d735887",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
