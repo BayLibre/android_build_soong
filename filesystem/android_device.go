@@ -646,6 +646,7 @@ func (a *androidDevice) copyMetadataToTargetZip(ctx android.ModuleContext, build
 	if a.kernelVersion != nil {
 		builder.Command().Textf("cp").Input(a.kernelVersion).Textf(" %s/META/", targetFilesDir.String())
 	}
+	a.addMiscInfo(ctx, builder, targetFilesDir.String())
 
 	if a.partitionProps.Super_partition_name != nil {
 		superPartition := ctx.GetDirectDepProxyWithTag(*a.partitionProps.Super_partition_name, superPartitionDepTag)
@@ -658,6 +659,35 @@ func (a *androidDevice) copyMetadataToTargetZip(ctx android.ModuleContext, build
 		}
 	}
 
+}
+
+// A partial implementation of make's $PRODUCT_OUT/misc_info.txt
+// https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l=5894?q=misc_info.txt%20f:build%2Fmake%2Fcore%2FMakefile&ss=android%2Fplatform%2Fsuperproject%2Fmain
+// This file is subsequently used by add_img_to_target_files to create additioanl metadata files like apex_info.pb
+// TODO (b/399788119): Complete the migration of misc_info.txt
+func (a *androidDevice) addMiscInfo(ctx android.ModuleContext, builder *android.RuleBuilder, targetFilesDir string) {
+	builder.Command().
+		Textf("rm -f %s/META/misc_info.txt", targetFilesDir).
+		Textf("&& echo recovery_api_version=%s >> %s/META/misc_info.txt", ctx.Config().VendorConfig("recovery").String("recovery_api_version"), targetFilesDir).
+		Textf("&& echo fstab_version=%s >> %s/META/misc_info.txt", ctx.Config().VendorConfig("recovery").String("recovery_fstab_version"), targetFilesDir)
+	if a.partitionProps.Recovery_partition_name == nil {
+		builder.Command().Textf("echo no_recovery=true >> %s/META/misc_info.txt", targetFilesDir)
+	}
+	fsInfos := a.getFsInfos(ctx)
+	for _, partition := range android.SortedKeys(fsInfos) {
+		if fsInfos[partition].UseAvb {
+			builder.Command().Textf("echo 'avb_%s_hashtree_enable=true' >> %s/META/misc_info.txt", partition, targetFilesDir)
+		}
+	}
+	if len(a.partitionProps.Vbmeta_partitions) > 0 {
+		builder.Command().
+			Textf("echo avb_enable=true >> %s/META/misc_info.txt", targetFilesDir).
+			Textf("&& echo avb_building_vbmeta_image=true >> %s/META/misc_info.txt", targetFilesDir).
+			Textf("&& echo avb_avbtool=avbtool >> %s/META/misc_info.txt", targetFilesDir)
+	}
+	if a.partitionProps.Boot_partition_name != nil {
+		builder.Command().Textf("echo boot_images=boot.img >> %s/META/misc_info.txt", targetFilesDir)
+	}
 }
 
 type ApexKeyPathInfo struct {
