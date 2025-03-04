@@ -171,7 +171,7 @@ func parseCompilerCCParameters(ctx android.SingletonContext, params []string) cc
 
 func generateCLionProjectData(ctx android.SingletonContext, module android.ModuleProxy, srcs android.Paths,
 	ccModule *CcInfo, bestVariantFound map[string]bool, moduleInfos map[string]ccIdeInfo) {
-	commonInfo := android.OtherModuleProviderOrDefault(ctx, module, android.CommonModuleInfoKey)
+	commonInfo := android.OtherModuleProviderOrDefault(ctx, module, android.CommonModuleInfoProvider)
 	moduleName := commonInfo.BaseModuleName
 	target := commonInfo.Target
 	// Skip if best variant has already been found.
