@@ -1671,7 +1671,7 @@ func (m *ModuleBase) generateModuleTarget(ctx *moduleContext) {
 		name := namespacePrefix + ctx.ModuleName() + "-install"
 		ctx.Phony(name, ctx.installFiles.Paths()...)
 		info.InstallTarget = PathForPhony(ctx, name)
-		deps = append(deps, info.InstallTarget)
+		deps = append(deps, ctx.installFiles.Paths()...)
 	}
 
 	// A module's -checkbuild phony targets should
@@ -1681,13 +1681,13 @@ func (m *ModuleBase) generateModuleTarget(ctx *moduleContext) {
 	if (!ctx.Config().KatiEnabled() || !shouldSkipAndroidMkProcessing(ctx, m)) && !ctx.uncheckedModule && ctx.checkbuildTarget != nil {
 		name := namespacePrefix + ctx.ModuleName() + "-checkbuild"
 		ctx.Phony(name, ctx.checkbuildTarget)
-		deps = append(deps, PathForPhony(ctx, name))
+		deps = append(deps, ctx.checkbuildTarget)
 	}
 
 	if outputFiles, err := outputFilesForModule(ctx, ctx.Module(), ""); err == nil && len(outputFiles) > 0 {
 		name := namespacePrefix + ctx.ModuleName() + "-outputs"
 		ctx.Phony(name, outputFiles...)
-		deps = append(deps, PathForPhony(ctx, name))
+		deps = append(deps, outputFiles...)
 	}
 
 	if len(deps) > 0 {
