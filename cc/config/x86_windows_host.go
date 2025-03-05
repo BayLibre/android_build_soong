@@ -111,6 +111,7 @@ var (
 		"gdi32",
 		"imagehlp",
 		"iphlpapi",
+		"mswsock",
 		"netapi32",
 		"ntdll",
 		"oleaut32",
