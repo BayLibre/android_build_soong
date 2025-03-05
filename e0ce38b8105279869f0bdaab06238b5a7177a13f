@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a8518e9_8803e210",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2025-03-05T18:46:35Z",
+      "side": 0,
+      "message": "Will the removal of the part affect the final output? Because there additional files installed for some module and we don\u0027t want to include them. e.g. aosp/3467607.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 3
+      },
+      "revId": "e0ce38b8105279869f0bdaab06238b5a7177a13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
