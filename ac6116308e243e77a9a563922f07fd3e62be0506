@@ -52,6 +52,24 @@
       "parentUuid": "0677d501_12c11b5d",
       "revId": "ac6116308e243e77a9a563922f07fd3e62be0506",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "615dd3a7_8e322b2e",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-05T18:24:28Z",
+      "side": 1,
+      "message": "Can this be mitigated by using a separate directory? i.e. instead of `out/soong/.intermediates/build/soong/fsgen/aosp_cf_x86_64_phone_generated_device/android_x86_64_silvermont/target_files_dir/ROOT` (used by target_files.zip), copy it to a separate isolated intermediates directory?",
+      "parentUuid": "f0fadbb2_921b6489",
+      "revId": "ac6116308e243e77a9a563922f07fd3e62be0506",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
