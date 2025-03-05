@@ -82,6 +82,7 @@ type AppInfo struct {
 	Certificate                   Certificate
 	PrivAppAllowlist              android.OptionalPath
 	OverriddenManifestPackageName *string
+	Partition                     string
 }
 
 var AppInfoProvider = blueprint.NewProvider[*AppInfo]()
@@ -415,7 +416,7 @@ func (a *AndroidTestHelperApp) GenerateAndroidBuildActions(ctx android.ModuleCon
 		Updatable:     Bool(a.appProperties.Updatable),
 		TestHelperApp: true,
 	}
-	setCommonAppInfo(appInfo, a)
+	setCommonAppInfo(ctx, appInfo, a)
 	android.SetProvider(ctx, AppInfoProvider, appInfo)
 
 	moduleInfoJSON := ctx.ModuleInfoJSON()
@@ -448,7 +449,7 @@ func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		MergedManifestFile:            a.mergedManifest,
 		OverriddenManifestPackageName: &overriddenName,
 	}
-	setCommonAppInfo(appInfo, a)
+	setCommonAppInfo(ctx, appInfo, a)
 	android.SetProvider(ctx, AppInfoProvider, appInfo)
 
 	a.requiredModuleNames = a.getRequiredModuleNames(ctx)
@@ -2201,11 +2202,12 @@ var _ androidApp = (*AndroidApp)(nil)
 var _ androidApp = (*AndroidAppImport)(nil)
 var _ androidApp = (*AndroidTestHelperApp)(nil)
 
-func setCommonAppInfo(appInfo *AppInfo, m androidApp) {
+func setCommonAppInfo(ctx android.ModuleContext, appInfo *AppInfo, m androidApp) {
 	appInfo.Privileged = m.Privileged()
 	appInfo.OutputFile = m.OutputFile()
 	appInfo.InstallApkName = m.InstallApkName()
 	appInfo.JacocoReportClassesFile = m.JacocoReportClassesFile()
 	appInfo.Certificate = m.Certificate()
 	appInfo.PrivAppAllowlist = m.PrivAppAllowlist()
+	appInfo.Partition = m.PartitionTag(ctx.DeviceConfig())
 }

@@ -39,6 +39,7 @@ type RuntimeResourceOverlayInfo struct {
 	Certificate                   Certificate
 	Theme                         string
 	OverriddenManifestPackageName string
+	Partition                     string
 }
 
 var RuntimeResourceOverlayInfoProvider = blueprint.NewProvider[RuntimeResourceOverlayInfo]()
@@ -220,6 +221,7 @@ func (r *RuntimeResourceOverlay) GenerateAndroidBuildActions(ctx android.ModuleC
 		OutputFile:  r.OutputFile(),
 		Certificate: r.Certificate(),
 		Theme:       r.Theme(),
+		Partition:   r.PartitionTag(ctx.DeviceConfig()),
 	})
 
 	buildComplianceMetadata(ctx)
@@ -427,6 +429,12 @@ func (a *AutogenRuntimeResourceOverlay) GenerateAndroidBuildActions(ctx android.
 	// Install the signed apk
 	installDir := android.PathForModuleInstall(ctx, "overlay")
 	ctx.InstallFile(installDir, signed.Base(), signed)
+
+	android.SetProvider(ctx, RuntimeResourceOverlayInfoProvider, RuntimeResourceOverlayInfo{
+		OutputFile:  signed,
+		Certificate: a.certificate,
+		Partition:   a.PartitionTag(ctx.DeviceConfig()),
+	})
 }
 
 func (a *AutogenRuntimeResourceOverlay) SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
