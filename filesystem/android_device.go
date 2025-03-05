@@ -114,6 +114,7 @@ type androidDevice struct {
 	miscInfo                    android.Path
 	rootDirForFsConfig          string
 	rootDirForFsConfigTimestamp android.Path
+	apkCertsInfo                android.Path
 }
 
 func AndroidDeviceFactory() android.Module {
@@ -188,6 +189,7 @@ func (a *androidDevice) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	allInstalledModules := a.allInstalledModules(ctx)
 
+	a.apkCertsInfo = a.buildApkCertsInfo(ctx, allInstalledModules)
 	a.kernelConfig, a.kernelVersion = a.extractKernelVersionAndConfigs(ctx)
 	a.miscInfo = a.addMiscInfo(ctx)
 	a.buildTargetFilesZip(ctx, allInstalledModules)
@@ -651,6 +653,9 @@ func (a *androidDevice) copyMetadataToTargetZip(ctx android.ModuleContext, build
 	}
 	installedApexKeys = android.SortedUniquePaths(installedApexKeys) // Sort by keypath to match make
 	builder.Command().Text("cat").Inputs(installedApexKeys).Textf(" >> %s/META/apexkeys.txt", targetFilesDir.String())
+	// apkcerts.txt
+	builder.Command().Textf("cp").Input(a.apkCertsInfo).Textf(" %s/META/", targetFilesDir.String())
+
 	// Copy fastboot-info.txt
 	if fastbootInfo := android.PathForModuleSrc(ctx, proptools.String(a.deviceProps.FastbootInfo)); fastbootInfo != nil {
 		// TODO (b/399788523): Autogenerate fastboot-info.txt if there is no source fastboot-info.txt
@@ -863,4 +868,34 @@ func (a *androidDevice) extractKernelVersionAndConfigs(ctx android.ModuleContext
 	}
 
 	return extractedVersionFile, extractedConfigsFile
+}
+
+func (a *androidDevice) buildApkCertsInfo(ctx android.ModuleContext, allInstalledModules []android.Module) android.Path {
+	// TODO (spandandas): Add compressed
+	formatLine := func(name, pem, key, partition string) string {
+		return fmt.Sprintf(`name="%s" certificate="%s" private_key="%s" partition="%s"`, name, pem, key, partition)
+	}
+
+	apkCerts := []string{}
+	for _, installedModule := range allInstalledModules {
+		if info, ok := android.OtherModuleProvider(ctx, installedModule, java.AppInfoProvider); ok {
+			apkCerts = append(apkCerts, formatLine(info.InstallApkName+".apk", info.Certificate.Pem.String(), info.Certificate.Key.String(), info.Partition))
+		} else if info, ok := android.OtherModuleProvider(ctx, installedModule, java.AppInfosProvider); ok {
+			for _, certInfo := range info {
+				apkCerts = append(apkCerts, formatLine(certInfo.InstallApkName+".apk", certInfo.Certificate.Pem.String(), certInfo.Certificate.Key.String(), certInfo.Partition))
+			}
+		} else if info, ok := android.OtherModuleProvider(ctx, installedModule, java.RuntimeResourceOverlayInfoProvider); ok {
+			apkCerts = append(apkCerts, formatLine(info.OutputFile.Base(), info.Certificate.Pem.String(), info.Certificate.Key.String(), info.Partition))
+		}
+	}
+	slices.Sort(apkCerts) // sort by name
+	defaultPem, defaultKey := ctx.Config().DefaultAppCertificate(ctx)
+	apkCerts = append(apkCerts, formatLine("BuildManifest.apk", defaultPem.String(), defaultKey.String(), "system"))
+	if _, ok := a.getFsInfos(ctx)["system_ext"]; ok {
+		apkCerts = append(apkCerts, formatLine("BuildManifestSystemExt.apk", defaultPem.String(), defaultKey.String(), "system_ext"))
+	}
+
+	apkCertsInfo := android.PathForModuleOut(ctx, "apkcerts.txt")
+	android.WriteFileRuleVerbatim(ctx, apkCertsInfo, strings.Join(apkCerts, "\n")+"\n")
+	return apkCertsInfo
 }
