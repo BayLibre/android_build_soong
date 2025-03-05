@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29fcdc1_7ab275c7",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-03-05T00:34:22Z",
+      "side": 1,
+      "message": "currently this is called on the current module during GenerateAndroidBuildActions, so using provider won\u0027t work because CommonModuleInfo is not yet set for the current module, so if you need to call this method during dependency visiting you can just use that provider directly instead of changing this one.",
+      "range": {
+        "startLine": 1176,
+        "startChar": 5,
+        "endLine": 1176,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5dc300da_05171a73",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/androidmk.go",
+              "range": {
+                "startLine": 1175,
+                "startChar": 0,
+                "endLine": 1180,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "ab319a9cb6ce7f47c031de05355c6acb426c6277",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
