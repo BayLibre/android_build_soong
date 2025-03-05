@@ -176,6 +176,9 @@ build_prop {
     footer_files: [
         ":applied_backported_fixes",
     ],
+    dist: {
+        targets: ["droidcore"],
+    },
     // Currently, only microdroid, Ravenwood, and cf system image can refer to system-build.prop
     visibility: [
         "//build/soong/fsgen",
@@ -191,6 +194,10 @@ build_prop {
     system_ext_specific: true,
     product_config: ":product_config",
     relative_install_path: "etc", // system_ext/etc/build.prop
+    dist: {
+        targets: ["droidcore"],
+        dest: "build.prop-system_ext",
+    },
     visibility: [
         "//build/make/target/product/gsi",
         "//build/soong/fsgen",
@@ -203,6 +210,10 @@ build_prop {
     product_specific: true,
     product_config: ":product_config",
     relative_install_path: "etc", // product/etc/build.prop
+    dist: {
+        targets: ["droidcore"],
+        dest: "build.prop-product",
+    },
     visibility: [
         "//build/make/target/product/gsi",
         "//build/soong/fsgen",
@@ -215,6 +226,10 @@ build_prop {
     device_specific: true,
     product_config: ":product_config",
     relative_install_path: "etc", // odm/etc/build.prop
+    dist: {
+        targets: ["droidcore"],
+        dest: "build.prop-odm",
+    },
     visibility: ["//build/soong/fsgen"],
 }
 
@@ -251,6 +266,10 @@ build_prop {
     ramdisk: true,
     product_config: ":product_config",
     relative_install_path: "etc/ramdisk", // ramdisk/system/etc/ramdisk/build.prop
+    dist: {
+        targets: ["droidcore"],
+        dest: "build.prop-ramdisk",
+    },
     visibility: ["//visibility:private"],
 }
 
