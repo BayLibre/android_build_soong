@@ -358,7 +358,7 @@ func (a *AndroidAppImport) GenerateAndroidBuildActions(ctx android.ModuleContext
 	appInfo := &AppInfo{
 		Prebuilt: true,
 	}
-	setCommonAppInfo(appInfo, a)
+	setCommonAppInfo(ctx, appInfo, a)
 	android.SetProvider(ctx, AppInfoProvider, appInfo)
 }
 
