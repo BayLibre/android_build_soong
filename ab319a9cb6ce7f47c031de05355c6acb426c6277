@@ -40,6 +40,30 @@
       ],
       "revId": "ab319a9cb6ce7f47c031de05355c6acb426c6277",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e8d16dd_e5238b31",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-05T00:37:26Z",
+      "side": 1,
+      "message": "You are right, it seems like there are cases where this is called before the provider is set. I\u0027ll abandon this CL as this is not feasible. Apologies for the noise!",
+      "parentUuid": "e29fcdc1_7ab275c7",
+      "range": {
+        "startLine": 1176,
+        "startChar": 5,
+        "endLine": 1176,
+        "endChar": 34
+      },
+      "revId": "ab319a9cb6ce7f47c031de05355c6acb426c6277",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
