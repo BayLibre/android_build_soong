@@ -1174,7 +1174,8 @@ func translateAndroidMkEntriesModule(ctx SingletonContext, w io.Writer, moduleIn
 }
 
 func ShouldSkipAndroidMkProcessing(ctx ConfigurableEvaluatorContext, module Module) bool {
-	return shouldSkipAndroidMkProcessing(ctx, module.base())
+	commonInfo, _ := OtherModuleProvider(ctx, module, CommonModuleInfoKey)
+	return commonInfo.SkipAndroidMkProcessing
 }
 
 func shouldSkipAndroidMkProcessing(ctx ConfigurableEvaluatorContext, module *ModuleBase) bool {
