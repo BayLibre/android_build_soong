@@ -2211,3 +2211,7 @@ func setCommonAppInfo(ctx android.ModuleContext, appInfo *AppInfo, m androidApp)
 	appInfo.PrivAppAllowlist = m.PrivAppAllowlist()
 	appInfo.Partition = m.PartitionTag(ctx.DeviceConfig())
 }
+
+type AppInfos []AppInfo
+
+var AppInfosProvider = blueprint.NewProvider[AppInfos]()
