@@ -16,6 +16,24 @@
       "message": "Instead of the duplicate rule, could we run this fsConfig command as part of the target files rulebuilder? So that it\u0027s run after the root dir was created.",
       "revId": "ac6116308e243e77a9a563922f07fd3e62be0506",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0677d501_12c11b5d",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-05T18:19:35Z",
+      "side": 1,
+      "message": "I believe that would require copying the contents of this [command](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/filesystem/filesystem.go;l\u003d80?q\u003dfsConfigRule\u0026ct\u003dos\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main) to the ruleBuilder of target_files.zip. I find that command hard to read/follow.\n\nOf the two options, imo having the duplicate rsync rule is better than having the duplicate fs config cmd. The cmd is more readable, but comes at the cost of a wasteful build action.\n\nHowever, I can make that change if you feel strongly about it.",
+      "parentUuid": "4ba77080_6b9edbeb",
+      "revId": "ac6116308e243e77a9a563922f07fd3e62be0506",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
