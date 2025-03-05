@@ -16,6 +16,24 @@
       "message": "misc_info.txt needs to be disted as well (b/398036609), so could you build it in a separate rule and only do the copying to the staging dir in the target-files rulebuilder?",
       "revId": "e526f1a199a845af6ff22d4b6524f287cf6c79ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64fca76c_6764805a",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-05T00:24:55Z",
+      "side": 1,
+      "message": "misc_info.txt is now built separately, similar to kernel_configs.txt and kernel_version.txt.",
+      "parentUuid": "8cb1ea96_56255040",
+      "revId": "e526f1a199a845af6ff22d4b6524f287cf6c79ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
