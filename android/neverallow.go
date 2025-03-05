@@ -310,6 +310,9 @@ func createLimitDirgroupRule() []Rule {
 			Without("name", "trusty_security_vm_x86_64.elf").
 			Without("name", "trusty_widevine_vm_arm64.bin").
 			Without("name", "trusty_widevine_vm_x86_64.elf").
+			// Trusty generic target names
+			Without("name", "trusty_generic_arm64_virt_test_debug.elf").
+			Without("name", "trusty_generic_x86_64_test.elf").
 			WithMatcher("dir_srcs", isSetMatcherInstance).Because(reason),
 		NeverAllow().
 			ModuleType("genrule").
@@ -325,6 +328,9 @@ func createLimitDirgroupRule() []Rule {
 			Without("name", "trusty_security_vm_x86_64.elf").
 			Without("name", "trusty_widevine_vm_arm64.bin").
 			Without("name", "trusty_widevine_vm_x86_64.elf").
+			// Trusty generic target names
+			Without("name", "trusty_generic_arm64_virt_test_debug.elf").
+			Without("name", "trusty_generic_x86_64_test.elf").
 			With("keep_gendir", "true").Because(reason),
 	}
 }
