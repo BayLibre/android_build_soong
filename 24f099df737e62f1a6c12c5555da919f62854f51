@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e98951_089a49e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-05T19:07:05Z",
+      "side": 1,
+      "message": "+2 but it looks like that cl might be reverted, so maybe hold off until that\u0027s resolved.",
+      "revId": "24f099df737e62f1a6c12c5555da919f62854f51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
