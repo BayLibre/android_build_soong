@@ -967,6 +967,10 @@ var ContainerDependencyViolationAllowlist = map[string][]string{
 		"framework", // cts -> unstable
 	},
 
+	"MctsVideoTestCases": {
+		"framework", // cts -> unstable
+	},
+
 	"MediaProvider": {
 		"app-compat-annotations", // apex [com.android.mediaprovider, test_com.android.mediaprovider] -> system
 	},
