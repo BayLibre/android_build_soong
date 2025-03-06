@@ -70,6 +70,30 @@
       },
       "revId": "e0ce38b8105279869f0bdaab06238b5a7177a13f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b364f08b_32d89518",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2025-03-06T17:49:03Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "21b8f567_d1bbb711",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 3
+      },
+      "revId": "e0ce38b8105279869f0bdaab06238b5a7177a13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
