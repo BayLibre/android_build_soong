@@ -22,6 +22,30 @@
       },
       "revId": "da44bf1aeb840c31570b884a71b9cd4998cf60ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c66c303_d99521ba",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-06T00:33:34Z",
+      "side": 1,
+      "message": "Good catch, I have updated the CL to generate these lines only for devices that have fsverity",
+      "parentUuid": "f45f2146_365f652b",
+      "range": {
+        "startLine": 893,
+        "startChar": 0,
+        "endLine": 896,
+        "endChar": 2
+      },
+      "revId": "da44bf1aeb840c31570b884a71b9cd4998cf60ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
