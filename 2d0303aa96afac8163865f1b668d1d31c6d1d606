@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b0a52d_3fad2925",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-06T01:07:08Z",
+      "side": 1,
+      "message": "My understanding was that this entry was configured per device (via `PRODUCT_FSVERITY_GENERATE_METADATA`) and not per partition. Nevertheless, I have added this additional conditional.",
+      "parentUuid": "732587b5_bf95cac7",
+      "range": {
+        "startLine": 896,
+        "startChar": 2,
+        "endLine": 896,
+        "endChar": 41
+      },
+      "revId": "2d0303aa96afac8163865f1b668d1d31c6d1d606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "342a652e_f0d9dacc",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-06T00:49:12Z",
       "side": 1,
       "message": "It\u0027s possible for this property to be set, but not match any files, in which case we won\u0027t generate the apk. Please determine the value of HasFsverity inside of `buildFsverityMetadataFiles` next to actually building the apk.",
+      "range": {
+        "startLine": 688,
+        "startChar": 22,
+        "endLine": 688,
+        "endChar": 81
+      },
+      "revId": "2d0303aa96afac8163865f1b668d1d31c6d1d606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a74edee5_0e24f508",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-06T01:07:08Z",
+      "side": 1,
+      "message": "Agreed, but I think the make `apkcerts.txt` [uncoditionally](https://source.corp.google.com/h/googleplex-android/platform/build/+/c7fd42fc3c78c8022ec744b066ceb71ab9efa495:core/Makefile;l\u003d792-793;drc\u003d7dfa904532a999e82763756958bed1c6ca5e1980;bpv\u003d1;bpt\u003d0) generates this apk file. The implementation you propose is likely the more correct one, but I would prefer to keep the implementation similar to make for now.",
+      "parentUuid": "342a652e_f0d9dacc",
       "range": {
         "startLine": 688,
         "startChar": 22,
