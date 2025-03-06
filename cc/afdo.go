@@ -110,6 +110,11 @@ func (afdo *afdo) flags(ctx ModuleContext, flags Flags) Flags {
 		flags.Local.CFlags = append([]string{"-mllvm", "--salvage-stale-profile-max-callsites=2000"}, flags.Local.CFlags...)
 		// Salvage stale profile by fuzzy matching renamed functions.
 		flags.Local.CFlags = append([]string{"-mllvm", "--salvage-unused-profile=true"}, flags.Local.CFlags...)
+		// Enable ext-tsp optimization. This is only validated on ARM64.
+		// TODO: Evaluate X86-64.
+		if ctx.Arch().ArchType == android.Arm64 {
+			flags.Local.CFlags = append([]string{"-mllvm", "-enable-ext-tsp-block-placement=true"}, flags.Local.CFlags...)
+		}
 		flags.Local.LdFlags = append([]string{profileUseFlag, "-Wl,-mllvm,-no-warn-sample-unused=true"}, flags.Local.LdFlags...)
 
 		// Update CFlagsDeps and LdFlagsDeps so the module is rebuilt
