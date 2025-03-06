@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f45f2146_365f652b",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-06T00:13:56Z",
+      "side": 1,
+      "message": "We only build these if there are some fsverity files. Could you include whether it was built or not in FilesystemInfo and check that here?",
+      "range": {
+        "startLine": 893,
+        "startChar": 0,
+        "endLine": 896,
+        "endChar": 2
+      },
+      "revId": "da44bf1aeb840c31570b884a71b9cd4998cf60ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
