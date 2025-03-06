@@ -52,6 +52,24 @@
       "parentUuid": "fead7b07_149bf295",
       "revId": "aff3402e3b0f45b78e589937e1e4bbd5256135cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb931a4c_867bc61e",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-06T01:08:02Z",
+      "side": 1,
+      "message": "Thanks! I have created https://r.android.com/3527758 to add this to `CommonModuleInfo`.",
+      "parentUuid": "d4d61dcb_032ee818",
+      "revId": "aff3402e3b0f45b78e589937e1e4bbd5256135cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
