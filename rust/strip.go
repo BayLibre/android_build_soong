@@ -31,3 +31,19 @@ func (s *Stripper) StripExecutableOrSharedLib(ctx ModuleContext, in android.Path
 	ccFlags := cc.StripFlags{Toolchain: ctx.RustModule().ccToolchain(ctx)}
 	s.Stripper.StripExecutableOrSharedLib(ctx, in, out, ccFlags)
 }
+
+// NeedsStrip determines if stripping is required for a module.
+func (stripper *Stripper) NeedsStrip(actx android.ModuleContext) bool {
+	forceDisable := Bool(stripper.StripProperties.Strip.None)
+	rustTest := false
+	if binary, ok := actx.Module().(*Module).compiler.(binaryInterface); ok && binary.testBinary() {
+		rustTest = true
+	}
+	// Strip is enabled by default for device variants.
+	// Strip is disabled by default for tests.
+	defaultEnable := (!rustTest || actx.Device())
+	forceEnable := Bool(stripper.StripProperties.Strip.All) ||
+		Bool(stripper.StripProperties.Strip.Keep_symbols) ||
+		Bool(stripper.StripProperties.Strip.Keep_symbols_and_debug_frame)
+	return !forceDisable && (forceEnable || defaultEnable)
+}

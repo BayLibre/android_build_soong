@@ -23,7 +23,7 @@ import (
 // StripProperties defines the type of stripping applied to the module.
 type StripProperties struct {
 	Strip struct {
-		// Device and host modules default to stripping enabled leaving mini debuginfo.
+		// Device and host modules (except tests) default to stripping enabled leaving mini debuginfo.
 		// This can be disabled by setting none to true.
 		None *bool `android:"arch_variant"`
 
@@ -50,7 +50,17 @@ type Stripper struct {
 // NeedsStrip determines if stripping is required for a module.
 func (stripper *Stripper) NeedsStrip(actx android.ModuleContext) bool {
 	forceDisable := Bool(stripper.StripProperties.Strip.None)
-	return !forceDisable
+	cTest := false
+	if cMod, ok := actx.Module().(*Module); ok {
+		cTest = cMod.testBinary()
+	}
+	// Strip is enabled by default for device variants.
+	// Strip is disabled by default for tests.
+	defaultEnable := (!cTest || actx.Device())
+	forceEnable := Bool(stripper.StripProperties.Strip.All) ||
+		Bool(stripper.StripProperties.Strip.Keep_symbols) ||
+		Bool(stripper.StripProperties.Strip.Keep_symbols_and_debug_frame)
+	return !forceDisable && (forceEnable || defaultEnable)
 }
 
 func (stripper *Stripper) strip(actx android.ModuleContext, in android.Path, out android.ModuleOutPath,
