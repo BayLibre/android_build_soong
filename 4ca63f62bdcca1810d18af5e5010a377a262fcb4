@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6754e95d_14fdfedd",
+        "filename": "java/dex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-03-06T23:35:15Z",
+      "side": 1,
+      "message": "You also need to add `*opt.Exclude` to `r8Deps`.",
+      "revId": "4ca63f62bdcca1810d18af5e5010a377a262fcb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
