@@ -263,6 +263,18 @@ func (b *bootimg) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		PublicKey:             extractedPublicKey,
 		Output:                output,
 	})
+
+	// Dump compliance metadata
+	if ramdisk := proptools.String(b.properties.Ramdisk_module); ramdisk != "" {
+		ramdiskModule := ctx.GetDirectDepWithTag(ramdisk, bootimgRamdiskDep)
+		fsInfo, _ := android.OtherModuleProvider(ctx, ramdiskModule, FilesystemProvider)
+		filesContained := make([]string, 0, len(fsInfo.FullInstallPaths))
+		for _, p := range fsInfo.FullInstallPaths {
+			filesContained = append(filesContained, p.FullInstallPath.String())
+		}
+		complianceMetadataInfo := ctx.ComplianceMetadataInfo()
+		complianceMetadataInfo.SetFilesContained(filesContained)
+	}
 }
 
 var BootimgInfoProvider = blueprint.NewProvider[BootimgInfo]()

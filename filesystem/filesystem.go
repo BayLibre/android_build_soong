@@ -695,6 +695,14 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	f.setVbmetaPartitionProvider(ctx)
+
+	// Dump metadata that can not be done in android/compliance-metadata.go
+	complianceMetadataInfo := ctx.ComplianceMetadataInfo()
+	filesContained := make([]string, 0, len(fullInstallPaths))
+	for _, file := range fullInstallPaths {
+		filesContained = append(filesContained, file.FullInstallPath.String())
+	}
+	complianceMetadataInfo.SetFilesContained(filesContained)
 }
 
 func (f *filesystem) fileystemStagingDirTimestamp(ctx android.ModuleContext) android.WritablePath {
@@ -881,11 +889,22 @@ func (f *filesystem) buildNonDepsFiles(
 		f.appendToEntry(ctx, dst)
 		// Only add the fullInstallPath logic for files in the rebased dir. The root dir
 		// is harder to install to.
-		if strings.HasPrefix(name, rebasedPrefix) {
+		if f.PartitionType() == "system" {
+			installPath := android.PathForModuleInPartitionInstall(ctx, f.PartitionType(), strings.TrimPrefix(name, rebasedPrefix))
+			if !strings.HasPrefix(name, rebasedPrefix) {
+				installPath = android.PathForModuleInPartitionInstall(ctx, "root", name)
+			}
 			*fullInstallPaths = append(*fullInstallPaths, FullInstallPathInfo{
-				FullInstallPath: android.PathForModuleInPartitionInstall(ctx, f.PartitionType(), strings.TrimPrefix(name, rebasedPrefix)),
+				FullInstallPath: installPath,
 				SymlinkTarget:   target,
 			})
+		} else {
+			if strings.HasPrefix(name, rebasedPrefix) {
+				*fullInstallPaths = append(*fullInstallPaths, FullInstallPathInfo{
+					FullInstallPath: android.PathForModuleInPartitionInstall(ctx, f.PartitionType(), strings.TrimPrefix(name, rebasedPrefix)),
+					SymlinkTarget:   target,
+				})
+			}
 		}
 	}
 
