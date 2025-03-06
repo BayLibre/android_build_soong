@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "482d44ab_6e6683e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2025-03-06T10:53:45Z",
+      "side": 1,
+      "message": "The presbumit fails on an app that explictly adds `android.net.ipsec.ike` as \u003cuses-library\u003e ([code](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:vendor/google/services/Iwlan/AndroidManifest.xml;l\u003d46;drc\u003d8599d1396d5e4f28e370559a9f40f269be93c651)). I suggest to fix it by removing the \u003cuses-library\u003e from the manifest.\n\nThe code looks fine to me, but please check with the partner whether it really fixes their issue before submitting it.",
+      "revId": "08193fdc3803dbdc01408cee419499d727a3334f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "309b3bb5_754b77e1",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3237,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2025-03-06T10:53:45Z",
+      "side": 1,
+      "message": "Nit: I suggest to swap \"myothersdklibrary.stubs\" and \"mysdklibrary.stubs\", just to make sure \"mysdklibrary\" is dropped intentionally, not due to bugs in propagation.",
+      "revId": "08193fdc3803dbdc01408cee419499d727a3334f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
