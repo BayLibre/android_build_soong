@@ -22,6 +22,30 @@
       },
       "revId": "552678cfb1c21047a565d2ab8ac282b9fa1a9ced",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dff2954_1bcba5cf",
+        "filename": "rust/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2025-03-06T21:50:28Z",
+      "side": 1,
+      "message": "Ah thanks, that\u0027s right -- they get installed to either lib or lib64, so I\u0027ve added both.",
+      "parentUuid": "4250aa46_1070e7f3",
+      "range": {
+        "startLine": 248,
+        "startChar": 68,
+        "endLine": 248,
+        "endChar": 77
+      },
+      "revId": "552678cfb1c21047a565d2ab8ac282b9fa1a9ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
