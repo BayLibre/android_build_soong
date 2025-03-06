@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732587b5_bf95cac7",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-06T00:49:12Z",
+      "side": 1,
+      "message": "This should also check `.HasFsVerity`.",
+      "range": {
+        "startLine": 896,
+        "startChar": 2,
+        "endLine": 896,
+        "endChar": 41
+      },
+      "revId": "2d0303aa96afac8163865f1b668d1d31c6d1d606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "342a652e_f0d9dacc",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-06T00:49:12Z",
+      "side": 1,
+      "message": "It\u0027s possible for this property to be set, but not match any files, in which case we won\u0027t generate the apk. Please determine the value of HasFsverity inside of `buildFsverityMetadataFiles` next to actually building the apk.",
+      "range": {
+        "startLine": 688,
+        "startChar": 22,
+        "endLine": 688,
+        "endChar": 81
+      },
+      "revId": "2d0303aa96afac8163865f1b668d1d31c6d1d606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
