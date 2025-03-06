@@ -22,6 +22,30 @@
       },
       "revId": "e0ce38b8105279869f0bdaab06238b5a7177a13f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d37b152_adc07609",
+        "filename": "ci_tests/ci_test_package_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2025-03-06T00:57:48Z",
+      "side": 0,
+      "message": "I diff the ouput for platform_tests they are the same with my changes.",
+      "parentUuid": "3a8518e9_8803e210",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 3
+      },
+      "revId": "e0ce38b8105279869f0bdaab06238b5a7177a13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
