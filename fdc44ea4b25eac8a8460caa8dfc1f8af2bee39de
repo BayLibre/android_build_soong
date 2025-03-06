@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ce4af9_25530e39",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-06T18:03:21Z",
+      "side": 1,
+      "message": "Should these be [droidcore-unbundled](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/main.mk;l\u003d1582;drc\u003dc0d44d45d83e1bcfec51f61c93ebfde8dbfc64d0)?",
+      "range": {
+        "startLine": 201,
+        "startChar": 19,
+        "endLine": 201,
+        "endChar": 28
+      },
+      "revId": "fdc44ea4b25eac8a8460caa8dfc1f8af2bee39de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
