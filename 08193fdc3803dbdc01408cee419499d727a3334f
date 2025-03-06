@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7022a188_462c5e37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-06T19:56:30Z",
+      "side": 1,
+      "message": "Agreed, I\u0027ve filed b/401285904 to track removing all existing cases of listing `android.net.ipsec.ike` with uses library tag in the manifest.\n\nI\u0027ll share the change with the partner to check if it resolves the issue.",
+      "parentUuid": "482d44ab_6e6683e4",
+      "revId": "08193fdc3803dbdc01408cee419499d727a3334f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "309b3bb5_754b77e1",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-03-06T10:53:45Z",
       "side": 1,
       "message": "Nit: I suggest to swap \"myothersdklibrary.stubs\" and \"mysdklibrary.stubs\", just to make sure \"mysdklibrary\" is dropped intentionally, not due to bugs in propagation.",
+      "revId": "08193fdc3803dbdc01408cee419499d727a3334f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d935d9ec_c0aff449",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3237,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-06T19:56:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309b3bb5_754b77e1",
       "revId": "08193fdc3803dbdc01408cee419499d727a3334f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
