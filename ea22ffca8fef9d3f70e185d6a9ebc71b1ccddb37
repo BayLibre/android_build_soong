@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "609cfe05_1f771e84",
+        "filename": "cc/strip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-03-06T23:55:42Z",
+      "side": 1,
+      "message": "There is some logic [here](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/cc.go;l\u003d2103-2108;drc\u003d58047e846963c84c2784a685d4c2644bd7c80ff6) that determines if a module is a test module.  I\u0027d suggest extracting that to a method, forwarding it through `cc.ModuleContext`, and making this method take a `cc.ModuleContext` instead of an `android.ModuleContext`.",
+      "revId": "ea22ffca8fef9d3f70e185d6a9ebc71b1ccddb37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
