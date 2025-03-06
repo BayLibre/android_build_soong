@@ -22,6 +22,30 @@
       },
       "revId": "47f6d40d2b3c5d4ec96daf957543d9a64d55aa25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ae8e8c_76e554df",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2025-03-06T10:59:44Z",
+      "side": 1,
+      "message": "Thanks for catching. It must be a simple compare.\nDone",
+      "parentUuid": "02a6846c_ca9ff781",
+      "range": {
+        "startLine": 610,
+        "startChar": 13,
+        "endLine": 610,
+        "endChar": 22
+      },
+      "revId": "47f6d40d2b3c5d4ec96daf957543d9a64d55aa25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
