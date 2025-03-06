@@ -242,6 +242,12 @@ func (test *testDecorator) compilerFlags(ctx ModuleContext, flags Flags) Flags {
 		flags.RustFlags = append(flags.RustFlags, "-Z panic_abort_tests")
 	}
 
+	// Add a default rpath to allow tests to dlopen libraries specified in data_libs.
+	// Host modules already get an rpath specified in linker.go.
+	if !ctx.Host() {
+		flags.GlobalLinkFlags = append(flags.GlobalLinkFlags, `-Wl,-rpath,\$$ORIGIN/lib64`)
+		flags.GlobalLinkFlags = append(flags.GlobalLinkFlags, `-Wl,-rpath,\$$ORIGIN/lib`)
+	}
 	return flags
 }
 
