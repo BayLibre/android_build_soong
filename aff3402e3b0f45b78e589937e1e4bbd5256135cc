@@ -16,6 +16,24 @@
       "message": "Could we get the partition just by calling PartitionTag on the modules from the android_device? I\u0027m wary about adding a bunch of references to partitions in otherwise unrelated providers.",
       "revId": "aff3402e3b0f45b78e589937e1e4bbd5256135cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fead7b07_149bf295",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-06T00:38:17Z",
+      "side": 1,
+      "message": "The modules collated in `android_device` are actually `android.ModuleProxy`. Calling `PartitionTag` on them in androidDevice\u0027s context raises the following exception\n```\nWarning: Module \u0027PrebuiltBugle\u0027 depends on non-existing optional_uses_libs \u0027android.telephony.satellite\u0027\nESC[31minternal error:ESC[0m panic in GenerateBuildActions for module \"aosp_cf_x86_64_phone_generated_device\" variant \"android_x86_64_silvermont\" (created by module \"soong_filesystem_creator\" variant \"android_common\")\nmethod is not implemented on ModuleProxy\ngoroutine 25763557 [running]:\ngithub.com/google/blueprint.newPanicErrorf({0x12c4e00, 0x179ec10}, {0xc8ea4923c0, 0xb3}, {0x0, 0x0, 0x0})\n        /usr/local/google/home/spandandas/code/aosp-main-with-phones/build/blueprint/context.go:5100 +0x72\n...\n...\n```\n\nI think we likely need to provide this info via a provider. Do you think we should provide this from [CommonModuleInfo](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/android/module.go;drc\u003dd19499d37dde54640a6ce39517015772649a3dfe;l\u003d1889?q\u003df:module.go%20Common.*Provider\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main) instead of these arbitrary providers?",
+      "parentUuid": "ec1d6199_2f8f7742",
+      "revId": "aff3402e3b0f45b78e589937e1e4bbd5256135cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
