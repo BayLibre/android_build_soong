@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1aeea3_ad4bdac0",
+        "filename": "android/compliance_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-06T01:08:38Z",
+      "side": 1,
+      "message": "There can be multiple android_device modules in the tree. However only one of them will be the \"main\" device, as given by the `Main_device` property. Could you export that property as a provider and check it here?\n\nYou could also consider writing out this file in the android_device module itself instead of in this singleton to avoid a `VisitAllModules` call.",
+      "range": {
+        "startLine": 336,
+        "startChar": 29,
+        "endLine": 336,
+        "endChar": 89
+      },
+      "revId": "ac934180efb3f842e585549fd912a0ef9c879c12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49b3ab15_6900130b",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-06T01:08:38Z",
+      "side": 1,
+      "message": "Can we use `buildComplianceMetadata(ctx, bootimgRamdiskDep)` here?",
+      "range": {
+        "startLine": 269,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 58
+      },
+      "revId": "ac934180efb3f842e585549fd912a0ef9c879c12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba7f42b9_9c79f6c4",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-06T01:08:38Z",
+      "side": 1,
+      "message": "Update this comment",
+      "range": {
+        "startLine": 890,
+        "startChar": 4,
+        "endLine": 891,
+        "endChar": 29
+      },
+      "revId": "ac934180efb3f842e585549fd912a0ef9c879c12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
