@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1d6199_2f8f7742",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-06T00:05:55Z",
+      "side": 1,
+      "message": "Could we get the partition just by calling PartitionTag on the modules from the android_device? I\u0027m wary about adding a bunch of references to partitions in otherwise unrelated providers.",
+      "revId": "aff3402e3b0f45b78e589937e1e4bbd5256135cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
