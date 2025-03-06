@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4250aa46_1070e7f3",
+        "filename": "rust/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1982430
+      },
+      "writtenOn": "2025-03-06T21:43:24Z",
+      "side": 1,
+      "message": "I observed that data_libs of rust_test gets placed into a lib64 directory.",
+      "range": {
+        "startLine": 248,
+        "startChar": 68,
+        "endLine": 248,
+        "endChar": 77
+      },
+      "revId": "552678cfb1c21047a565d2ab8ac282b9fa1a9ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
