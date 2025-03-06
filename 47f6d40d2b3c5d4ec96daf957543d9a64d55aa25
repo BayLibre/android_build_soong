@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a6846c_ca9ff781",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-03-06T08:58:47Z",
+      "side": 1,
+      "message": "why don\u0027t you compare the entire string?",
+      "range": {
+        "startLine": 610,
+        "startChar": 13,
+        "endLine": 610,
+        "endChar": 22
+      },
+      "revId": "47f6d40d2b3c5d4ec96daf957543d9a64d55aa25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
