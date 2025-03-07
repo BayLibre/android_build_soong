@@ -201,6 +201,30 @@
       },
       "revId": "ecac6dcd0acff46228361c7c4ba991c2e767c517",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67098a96_63fea659",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-07T18:39:06Z",
+      "side": 1,
+      "message": "I see, I would tend to agree, elsewhere the function is used with CopyOfJars that seems to provide stem/path like information, and it was like that before the system_ext specific handling was introduced.\n\nI\u0027ll change it back to stem (+proper cast) if Spandan is okey with that :)",
+      "parentUuid": "40d3b32e_c8733515",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 3
+      },
+      "revId": "ecac6dcd0acff46228361c7c4ba991c2e767c517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
