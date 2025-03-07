@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1455a7f4_79923575",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 3285260
+      },
+      "writtenOn": "2025-03-07T20:16:54Z",
+      "side": 1,
+      "message": "Good catch.  I had only tested with one but technically it could be more than 1, updated to be consistent and use `OutputFilesForModule` in both spots.",
+      "parentUuid": "37198e87_1359f871",
+      "range": {
+        "startLine": 406,
+        "startChar": 47,
+        "endLine": 406,
+        "endChar": 67
+      },
+      "revId": "14effba9f6e6844970fb7a6f81b093dfe64d2d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a4c1ddd_0007ffa4",
@@ -79,6 +103,30 @@
           ]
         }
       ],
+      "revId": "14effba9f6e6844970fb7a6f81b093dfe64d2d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98290c1c_8b5c849c",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 3285260
+      },
+      "writtenOn": "2025-03-07T20:16:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a4c1ddd_0007ffa4",
+      "range": {
+        "startLine": 411,
+        "startChar": 49,
+        "endLine": 411,
+        "endChar": 55
+      },
       "revId": "14effba9f6e6844970fb7a6f81b093dfe64d2d60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
