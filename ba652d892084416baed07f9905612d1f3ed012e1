@@ -16,6 +16,24 @@
       "message": "I was trying to see if it was possible to get rid of this quirk, but gen_build_prop and construct_uffd_gc_flag really wants it.\nBy default this turns uffd ON as it assumes those targets will be used on \"new enough\" kernels, and it matches make behavior.\n\nThe custom handling could be removed if we stop using construct_uffd_gc_flag if no kernel is found and uffd is default and have a verbatim \"true\" rule.\nIt would be similar for gen_build_prop, pass empty argument if none found (may work?, didn\u0027t check)\n\n-1 for obvious reasons, but at least this unbreaks aosp_* target",
       "revId": "ba652d892084416baed07f9905612d1f3ed012e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b13667_36095270",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-07T21:36:08Z",
+      "side": 1,
+      "message": "I don\u0027t really understand why an android device would not have a kernel.\n\nTo my knowledge, the aosp_\u003carch\u003e targets cannot really be built/flashed as a real device anymore. I assume you\u0027re either:\n - Inheriting from these in your own product, in which case your product should be adding a kernel.\n - Using them to build apps instead of a whole device.\n\nI think our story for building apps is not really well defined. We need an \"unbundled\" lunch product or something, and in that product we wouldn\u0027t create an android_device module or the filesystem modules at all. In an unbundled build the dexpreopt rules wouldn\u0027t look up the kernel version. Running `m` on an unbundled build would probably need to be an error, requiring you to specify `m MyApp`.",
+      "parentUuid": "5bf51a1e_fe528cbe",
+      "revId": "ba652d892084416baed07f9905612d1f3ed012e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
