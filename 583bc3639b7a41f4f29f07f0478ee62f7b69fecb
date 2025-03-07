@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e46652b4_74befd19",
+        "filename": "android/compliance_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-07T23:07:40Z",
+      "side": 1,
+      "message": "I think this if statement was better as it was before. go/tott/733",
+      "revId": "583bc3639b7a41f4f29f07f0478ee62f7b69fecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
