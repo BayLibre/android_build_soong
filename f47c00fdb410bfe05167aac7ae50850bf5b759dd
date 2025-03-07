@@ -20,6 +20,88 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee6ae49d_24b7d978",
+        "filename": "java/tracereferences.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2025-03-07T05:17:25Z",
+      "side": 1,
+      "message": "shouldn\u0027t these be added with --lib",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "437feed0_c2ac836d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/tracereferences.go",
+              "range": {
+                "startLine": 32,
+                "startChar": 0,
+                "endLine": 34,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t`${sources} ${libs}`,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f47c00fdb410bfe05167aac7ae50850bf5b759dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb41c1a4_62751ed8",
+        "filename": "java/tracereferences.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2025-03-07T05:17:25Z",
+      "side": 1,
+      "message": "target?",
+      "range": {
+        "startLine": 38,
+        "startChar": 55,
+        "endLine": 38,
+        "endChar": 61
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3a61e766_c56b9926",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/tracereferences.go",
+              "range": {
+                "startLine": 38,
+                "startChar": 0,
+                "endLine": 39,
+                "endChar": 0
+              },
+              "replacement": "// (a list of source jars) onto target (the referenced target jar) that are not\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f47c00fdb410bfe05167aac7ae50850bf5b759dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "731be362_eb3767b8",
         "filename": "java/tracereferences.go",
         "patchSetId": 3
