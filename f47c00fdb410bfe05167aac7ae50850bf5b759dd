@@ -16,6 +16,29 @@
       "message": "Will add some basic tests if this looks OK",
       "revId": "f47c00fdb410bfe05167aac7ae50850bf5b759dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "731be362_eb3767b8",
+        "filename": "java/tracereferences.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-07T01:15:06Z",
+      "side": 1,
+      "message": "`sources` and `libs` are used in `traceReferencesCmd`, but are currently not declared as deps of this command. I think this might cause subtle incrementality issues, and might also prevent us from enabling sandboxing on this command.\n\nShould these be declared as either Implicit or OrderOnly deps of this command?",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "f47c00fdb410bfe05167aac7ae50850bf5b759dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
