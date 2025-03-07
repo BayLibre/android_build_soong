@@ -34,6 +34,24 @@
       "parentUuid": "9ffd8d27_2aa73249",
       "revId": "ecac6dcd0acff46228361c7c4ba991c2e767c517",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d96c8574_a4c9c7b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-07T17:23:22Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/java.go;l\u003d3456?q\u003ddex_import\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain\nIt should come from here\n\nfyi this is the error\nbuild/make/core/tasks/dex_preopt_check.mk:13: warning:  Missing compilation artifacts. Dexpreopting is not working for some system server jars. See https://cs.android.com/android/platform/superproject/+/master:bui\nld/make/core/tasks/README.dex_preopt_check.md\nOffending entries:\nsystem/framework/oat/arm64/prebuilt_felix-services.odex\nsystem/framework/oat/arm64/prebuilt_felix-services.vdex\n\nas you can see it fails the system_ext probe and then tries to use the wrongly prefixed prebuilt_ entry in /system/",
+      "parentUuid": "e0e74229_81c9cf21",
+      "revId": "ecac6dcd0acff46228361c7c4ba991c2e767c517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
