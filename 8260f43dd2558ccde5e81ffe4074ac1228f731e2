@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b0e37c3_1ae32a8d",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-07T01:44:55Z",
+      "side": 1,
+      "message": "Consider using a `DepSet[InstalledFilesStruct]`",
+      "range": {
+        "startLine": 428,
+        "startChar": 0,
+        "endLine": 431,
+        "endChar": 50
+      },
+      "revId": "8260f43dd2558ccde5e81ffe4074ac1228f731e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
