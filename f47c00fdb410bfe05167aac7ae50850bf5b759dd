@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42680cb2_f0b69d95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2025-03-07T07:47:17Z",
+      "side": 1,
+      "message": "Overall this LGTM, but I just wanted to check if we should consider introducing a TraceReferencesWrapper in prebuilts/r8?\n\nThe TraceReferences CLI is somewhat limited in what it can do, since it is not possible to pass a custom consumer. If we want to make it easy to use TraceReferences for other things I could see an advantage to having the wrapper, since that would allow implementing custom consumers, which could be used to implement various checks on the generated dex, such as no `jspecify` references (in the context of b/398249876), or more generally, no references outside a given allowlist for builds that go on the bootclasspath.",
+      "revId": "f47c00fdb410bfe05167aac7ae50850bf5b759dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee6ae49d_24b7d978",
