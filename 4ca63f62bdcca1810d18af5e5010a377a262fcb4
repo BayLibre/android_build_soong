@@ -16,6 +16,24 @@
       "message": "You also need to add `*opt.Exclude` to `r8Deps`.",
       "revId": "4ca63f62bdcca1810d18af5e5010a377a262fcb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f82286a_73282ca0",
+        "filename": "java/dex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2025-03-07T08:28:58Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "6754e95d_14fdfedd",
+      "revId": "4ca63f62bdcca1810d18af5e5010a377a262fcb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
