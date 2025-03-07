@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37198e87_1359f871",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-03-07T17:36:30Z",
+      "side": 1,
+      "message": "Do you expect one or multiple output files? From the next line it seems only one is expected?",
+      "range": {
+        "startLine": 406,
+        "startChar": 47,
+        "endLine": 406,
+        "endChar": 67
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "bd789875_960c33b0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "python/python.go",
+              "range": {
+                "startLine": 406,
+                "startChar": 0,
+                "endLine": 407,
+                "endChar": 0
+              },
+              "replacement": "\t\t\texpandedData \u003d append(expandedData, android.OutputFileForModule(ctx, dep, \"\"))\n"
+            }
+          ]
+        }
+      ],
+      "revId": "14effba9f6e6844970fb7a6f81b093dfe64d2d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a4c1ddd_0007ffa4",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-03-07T17:36:30Z",
+      "side": 1,
+      "message": "You can append directly.",
+      "range": {
+        "startLine": 411,
+        "startChar": 49,
+        "endLine": 411,
+        "endChar": 55
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "652d55f9_d78d5efb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "python/python.go",
+              "range": {
+                "startLine": 411,
+                "startChar": 0,
+                "endLine": 414,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\tp.bundleSharedLibs \u003d append(p.bundleSharedLibs, info.ImplementationDeps.ToList()...)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "14effba9f6e6844970fb7a6f81b093dfe64d2d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
