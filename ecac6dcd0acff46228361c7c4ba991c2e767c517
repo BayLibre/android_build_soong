@@ -177,6 +177,30 @@
       },
       "revId": "ecac6dcd0acff46228361c7c4ba991c2e767c517",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40d3b32e_c8733515",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2025-03-07T18:29:46Z",
+      "side": 1,
+      "message": "Maybe Spandan has a different idea. Since `dexpreopt.GetSystemServerDexLocation` is supposed to take a stem and construct a path from it, I think it makes more sense to pass `Stem()` to it. `ctx.OtherModuleName(...)` happens to do the job, but the assumption that the module name equals to the stem may not necessarily be true in the future.\n\nCould you please try casting to [`ModuleWithStem`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/base.go;l\u003d2974;drc\u003d2a1b1365d3e90ef4cdc486576d17177f15591314)? It\u0027s in soong/java, so it should work.",
+      "parentUuid": "1cc0cd7a_fef5c2c5",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 3
+      },
+      "revId": "ecac6dcd0acff46228361c7c4ba991c2e767c517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
