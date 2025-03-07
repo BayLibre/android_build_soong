@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e12ce04_abaa0282",
+        "filename": "android/compliance_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-03-07T00:46:22Z",
+      "side": 1,
+      "message": "AndroidDeviceInfoProvider is added. \n\nI planned to let compliance functionalities depend on providers completely instead of mixing its logic into module types, and there will be more logic here to support notice/sbom generation. So let\u0027s keep it here for now and we can evaluate it later after I migrate other compliance related functions to soong.",
+      "parentUuid": "bf1aeea3_ad4bdac0",
+      "range": {
+        "startLine": 336,
+        "startChar": 29,
+        "endLine": 336,
+        "endChar": 89
+      },
+      "revId": "ac934180efb3f842e585549fd912a0ef9c879c12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49b3ab15_6900130b",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d30f764_18c7d910",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-03-07T00:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49b3ab15_6900130b",
+      "range": {
+        "startLine": 269,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 58
+      },
+      "revId": "ac934180efb3f842e585549fd912a0ef9c879c12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba7f42b9_9c79f6c4",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-03-06T01:08:38Z",
       "side": 1,
       "message": "Update this comment",
+      "range": {
+        "startLine": 890,
+        "startChar": 4,
+        "endLine": 891,
+        "endChar": 29
+      },
+      "revId": "ac934180efb3f842e585549fd912a0ef9c879c12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f183ca_20d2d610",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-03-07T00:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba7f42b9_9c79f6c4",
       "range": {
         "startLine": 890,
         "startChar": 4,
