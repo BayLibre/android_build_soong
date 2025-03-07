@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf51a1e_fe528cbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-07T21:09:32Z",
+      "side": 1,
+      "message": "I was trying to see if it was possible to get rid of this quirk, but gen_build_prop and construct_uffd_gc_flag really wants it.\nBy default this turns uffd ON as it assumes those targets will be used on \"new enough\" kernels, and it matches make behavior.\n\nThe custom handling could be removed if we stop using construct_uffd_gc_flag if no kernel is found and uffd is default and have a verbatim \"true\" rule.\nIt would be similar for gen_build_prop, pass empty argument if none found (may work?, didn\u0027t check)\n\n-1 for obvious reasons, but at least this unbreaks aosp_* target",
+      "revId": "ba652d892084416baed07f9905612d1f3ed012e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
