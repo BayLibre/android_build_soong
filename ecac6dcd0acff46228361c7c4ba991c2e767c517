@@ -153,6 +153,30 @@
       },
       "revId": "ecac6dcd0acff46228361c7c4ba991c2e767c517",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc0cd7a_fef5c2c5",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-07T18:23:44Z",
+      "side": 1,
+      "message": "I don\u0027t think javaModule can be used since it\u0027s defined in soong-apex that depends on soong-java so we\u0027d get circular deps.\n\n`ctx.OtherModuleName(...)` does the job, switched to that.",
+      "parentUuid": "c694f716_656a0389",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 3
+      },
+      "revId": "ecac6dcd0acff46228361c7c4ba991c2e767c517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
