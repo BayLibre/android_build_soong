@@ -100,7 +100,7 @@ func (m *dexpreoptSystemserverCheck) GenerateAndroidBuildActions(ctx android.Mod
 		if systemServerJar.InstallInSystemExt() && ctx.Config().InstallApexSystemServerDexpreoptSamePartition() {
 			partition = ctx.DeviceConfig().SystemExtPath() // system_ext
 		}
-		dexLocation := dexpreopt.GetSystemServerDexLocation(ctx, global, systemServerJar.Name())
+		dexLocation := dexpreopt.GetSystemServerDexLocation(ctx, global, ctx.OtherModuleName(systemServerJar))
 		odexLocation := dexpreopt.ToOdexPath(dexLocation, targets[0].Arch.ArchType, partition)
 		odexPath := getInstallPath(ctx, odexLocation)
 		vdexPath := getInstallPath(ctx, pathtools.ReplaceExtension(odexLocation, "vdex"))
