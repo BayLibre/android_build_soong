@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7452a03d_ce060f44",
+        "filename": "android/compliance_metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-07T00:52:34Z",
+      "side": 1,
+      "message": "If you make this `!ok ||` you can remove the `if !commonInfo.Enabled || !strings.HasPrefix(ctx.ModuleType(module), \"android_device\")` check above.",
+      "range": {
+        "startLine": 339,
+        "startChar": 92,
+        "endLine": 339,
+        "endChar": 97
+      },
+      "revId": "195fcea4dec38f1c38057f7fa601c5c5cb789b29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
