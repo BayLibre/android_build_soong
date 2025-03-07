@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6783628_020a4b1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020839
+      },
+      "writtenOn": "2025-03-07T20:16:12Z",
+      "side": 1,
+      "message": "Works with prebuilt felix-services and comet-services jars",
+      "revId": "0e1a748d4b96519ed46f9f193be047fd12cfe027",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
