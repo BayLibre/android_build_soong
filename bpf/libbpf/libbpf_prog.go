@@ -44,16 +44,15 @@ var (
 		blueprint.RuleParams{
 			Depfile:     "${out}.d",
 			Deps:        blueprint.DepsGCC,
-			Command:     "$relPwd $ccCmd --target=bpf -c $cFlags -MD -MF ${out}.d -o $out $in",
+			Command:     "$relPwd $ccCmd -g -O2 --target=bpf -c $cFlags -MD -MF ${out}.d -o $out $in",
 			CommandDeps: []string{"$ccCmd"},
 		},
 		"ccCmd", "cFlags")
 
 	libbpfProgStripRule = pctx.AndroidStaticRule("libbpfProgStripRule",
 		blueprint.RuleParams{
-			Command: `$stripCmd --strip-unneeded --remove-section=.rel.BTF ` +
-				`--remove-section=.rel.BTF.ext --remove-section=.BTF.ext $in -o $out`,
-			CommandDeps: []string{"$stripCmd"},
+			Command: `cp $in $out`, // No-op, just copy the input to output
+			CommandDeps: []string{}, // no dependencies as it does nothing now.
 		},
 		"stripCmd")
 
