@@ -52,6 +52,47 @@
       "parentUuid": "e0e74229_81c9cf21",
       "revId": "ecac6dcd0acff46228361c7c4ba991c2e767c517",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d23e4488_8bdf8995",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2025-03-07T17:31:46Z",
+      "side": 1,
+      "message": "I see. We didn\u0027t see this issue because we don\u0027t have any dex_import. Thanks for pointing it",
+      "parentUuid": "d96c8574_a4c9c7b1",
+      "revId": "ecac6dcd0acff46228361c7c4ba991c2e767c517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbf142c3_6d475903",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2025-03-07T17:31:46Z",
+      "side": 1,
+      "message": "What about casting `systemServerJar` to [`javaModule`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/apex/apex.go;l\u003d1479;drc\u003d2a1b1365d3e90ef4cdc486576d17177f15591314) and always using `Stem()`, instead of having to branches?",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 3
+      },
+      "revId": "ecac6dcd0acff46228361c7c4ba991c2e767c517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
