@@ -34,6 +34,24 @@
       "parentUuid": "5bf51a1e_fe528cbe",
       "revId": "ba652d892084416baed07f9905612d1f3ed012e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "720de916_03d66309",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-07T21:50:09Z",
+      "side": 1,
+      "message": "I\u0027m using the aosp_\u003carch\u003e targets to quickly iterate misc AOSP fix-ups and to ensure our external apps keep building in main, and sometimes also flash them as system-only images.\n\nafaik those targets can be used without any real problem as GSI images, developer.android.com seems to use aosp_\u003carch\u003e targets for non GMS images, and those are provided as DSU images, so they definitely work.\nI don\u0027t remember what the GSI images for certification use as baseline, but the process to build them would be very similar, if not the same, to aosp_\u003carch\u003e\n\nWith that said, I agree that not having a kernel is a degenerate case, but that\u0027s the expectation for GSI...\n\nI\u0027ve never looked into unbundled builds, as I always either worked with a specific device or GSI/aosp_\u003carch\u003e targets (on real devices or emulator), that would help with external apps, but not much else if I want to use main to verify platform changes.\n\nAnyways, thanks for taking some time to check this out! Hope I\u0027m not a bother :)",
+      "parentUuid": "d9b13667_36095270",
+      "revId": "ba652d892084416baed07f9905612d1f3ed012e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
