@@ -16,6 +16,24 @@
       "message": "I think this if statement was better as it was before. go/tott/733",
       "revId": "583bc3639b7a41f4f29f07f0478ee62f7b69fecb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd1e3b9_c2b071f7",
+        "filename": "android/compliance_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-03-07T23:34:35Z",
+      "side": 1,
+      "message": "Yes, agree. Actually there are some code changes that are not about kernel and dtb.img have been removed from this CL which made it look like this. Will adjust it later with other changes.",
+      "parentUuid": "e46652b4_74befd19",
+      "revId": "583bc3639b7a41f4f29f07f0478ee62f7b69fecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
