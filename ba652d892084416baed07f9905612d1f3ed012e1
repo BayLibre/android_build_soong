@@ -52,6 +52,24 @@
       "parentUuid": "d9b13667_36095270",
       "revId": "ba652d892084416baed07f9905612d1f3ed012e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8f5867_fa069f5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-07T23:24:08Z",
+      "side": 1,
+      "message": "Could you link me to the developer.android.com documentation that says to use aosp_\u003carch\u003e for GSI?\n\nGSI should probably be a similar build process to unbundled apps, i.e. on an unbundled lunch product that doesn\u0027t have other partitions. I might bring this up with the treble team to see if they have a recommended method for building the GSI image.\n\n\u003e Hope I\u0027m not a bother :)\n\nNot at all! I\u0027m interested to hear about external workflows, and glad there\u0027s voluntary users of soong-only builds.",
+      "parentUuid": "720de916_03d66309",
+      "revId": "ba652d892084416baed07f9905612d1f3ed012e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
