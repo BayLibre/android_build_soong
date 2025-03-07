@@ -16,6 +16,24 @@
       "message": "All the flags for all the modules is going to be huge.  I think these are only necessary for generating `out/soong/module_bp_cc_deps.json`, and those fields were probably only used by aidegen, which is deprecated.  Maybe we should investigate removing them first?",
       "revId": "37fad18706ed10d660e48dc98b227d9db6f36ca2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a55271_bfe771a0",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-03-07T22:32:17Z",
+      "side": 1,
+      "message": "I reverted that part of the change and will deal with ccdeps later.",
+      "parentUuid": "c3ac1b09_cb60fcd3",
+      "revId": "37fad18706ed10d660e48dc98b227d9db6f36ca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
