@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef496201_a8e6b5c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-07T23:16:58Z",
+      "side": 1,
+      "message": "I have adopted the implementation suggested in https://android-review.git.corp.google.com/c/platform/build/soong/+/3524966/comment/4ba77080_6b9edbeb/",
+      "range": {
+        "startLine": 14,
+        "startChar": 22,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "0e80e251d969cde9468736b6a57fe24ded4c64a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
