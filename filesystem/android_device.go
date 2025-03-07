@@ -858,17 +858,19 @@ func (a *androidDevice) getKernel(ctx android.ModuleContext) android.Path {
 //     in the BootimgInfo. We don't currently support prebuilt boot images, but even if we add that
 //     in the future, it can be done in a prebuilt_bootimage module type that still exports the same
 //     BootimgInfo.
-//   - We don't print a warning and output '<unknown-kernel>' to kernel_version_for_uffd_gc.txt
-//     because we expect the kernel to always be present. If it's not, we will get an error that
-//     kernel_version_for_uffd_gc.txt doesn't exist. This may require later tweaking to the
-//     dexpreopt rules so that they don't attempt to access that file in builds that don't have
-//     a kernel.
 func (a *androidDevice) extractKernelVersionAndConfigs(ctx android.ModuleContext) (android.Path, android.Path) {
 	kernel := a.getKernel(ctx)
 	// If there's no kernel, don't create kernel version / kernel config files. Reverse dependencies
 	// on those files have to account for this, for example by disabling dexpreopt in unbundled
 	// builds.
 	if kernel == nil {
+		// We still need to create a dummy kernel_version_for_uffd_gc.txt.
+		// Specifically AOSP/GSI targets don't specify any UFFD flag and won't provide a prebuilt kernel.
+		if ctx.Config().EnableUffdGc() == "default" {
+			fmt.Printf("Unable to determine UFFD GC flag because the kernel version is not available and PRODUCT_ENABLE_UFFD_GC is \"default\"\n")
+			kernelVersionFile := android.PathForOutput(ctx, "dexpreopt/kernel_version_for_uffd_gc.txt")
+			android.WriteFileRuleVerbatim(ctx, kernelVersionFile, "<unknown-kernel>")
+		}
 		return nil, nil
 	}
 
