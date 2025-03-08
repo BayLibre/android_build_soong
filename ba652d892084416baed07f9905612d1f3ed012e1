@@ -70,6 +70,24 @@
       "parentUuid": "720de916_03d66309",
       "revId": "ba652d892084416baed07f9905612d1f3ed012e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3396dd8a_3dc7496a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-08T09:03:13Z",
+      "side": 1,
+      "message": "https://source.android.com/docs/core/tests/vts/gsi#gsi-build-targets\nPoints for gsi_\u003carch\u003e targets, but I don\u0027t know if it has been updated in a while, since 15 the -gsi branch is dead.\n\nhttps://developer.android.com/topic/generic-system-image/releases#android-gsi-16, here they use aosp_\u003carch\u003e for the non-GMS builds, but I don\u0027t if that\u0027s an artifact of the build system, given gsi_\u003carch\u003e specific build targets do exist.\n\nBoth those families of targets moved to soong defined system here https://android-review.googlesource.com/c/device/generic/common/+/3438342 and here https://android-review.googlesource.com/c/platform/build/+/3486295\n\nOfc kati enabled builds still work as core/Makefile generates it for us, but if you ever switch to soong-only you\u0027ll have to deal with that weird targets :)",
+      "parentUuid": "2a8f5867_fa069f5e",
+      "revId": "ba652d892084416baed07f9905612d1f3ed012e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
