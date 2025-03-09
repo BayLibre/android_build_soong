@@ -363,22 +363,22 @@ func createKotlinPluginRule() []Rule {
 func createPrebuiltEtcBpDefineRule() Rule {
 	return NeverAllow().
 		ModuleType(
-			"prebuilt_usr_srec",
-			"prebuilt_priv_app",
-			"prebuilt_rfs",
-			"prebuilt_framework",
-			"prebuilt_wlc_upt",
-			"prebuilt_odm",
-			"prebuilt_vendor_dlkm",
 			"prebuilt_bt_firmware",
-			"prebuilt_tvservice",
+			"prebuilt_first_stage_ramdisk",
+			"prebuilt_framework",
+			"prebuilt_odm",
 			"prebuilt_optee",
-			"prebuilt_tvconfig",
-			"prebuilt_vendor",
+			"prebuilt_priv_app",
+			"prebuilt_radio",
+			"prebuilt_rfs",
 			"prebuilt_sbin",
 			"prebuilt_system",
-			"prebuilt_first_stage_ramdisk",
-			"prebuilt_radio",
+			"prebuilt_tvconfig",
+			"prebuilt_tvservice",
+			"prebuilt_usr_srec",
+			"prebuilt_vendor",
+			"prebuilt_vendor_dlkm",
+			"prebuilt_wlc_upt",
 		).
 		DefinedInBpFile().
 		Because("module type not allowed to be defined in bp file")
