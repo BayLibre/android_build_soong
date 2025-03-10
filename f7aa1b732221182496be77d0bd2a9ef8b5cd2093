@@ -248,6 +248,24 @@
       "parentUuid": "d8a8bcdc_34e94891",
       "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d0a360_4ac90fb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2025-03-10T07:10:01Z",
+      "side": 1,
+      "message": "I agree. Let me abandon this CL and find other approach.",
+      "parentUuid": "965e480f_3e578078",
+      "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
