@@ -409,7 +409,13 @@ func neverallowMutator(ctx BottomUpMutatorContext) {
 			continue
 		}
 
-		if !n.appliesToModuleType(ctx.ModuleType()) {
+		modType := ctx.ModuleType()
+		fmt.Printf("Modtype was origionally: %s\n", modType)
+		if m.base().baseProperties.Soong_config_base_module_type != nil {
+			modType = *m.base().baseProperties.Soong_config_base_module_type
+			fmt.Printf("Changed module type to: %s\n", modType)
+		}
+		if !n.appliesToModuleType(modType) {
 			continue
 		}
 
