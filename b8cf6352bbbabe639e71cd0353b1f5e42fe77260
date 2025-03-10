@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "886976f5_fdfd71b5",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-10T23:49:04Z",
+      "side": 1,
+      "message": "Could you assert that at least `deps` is empty so that we don\u0027t accidentally add a dep to the misc info but then run a command without that dep?",
+      "range": {
+        "startLine": 187,
+        "startChar": 22,
+        "endLine": 187,
+        "endChar": 26
+      },
+      "revId": "b8cf6352bbbabe639e71cd0353b1f5e42fe77260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdcfeb83_c8d235ec",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-10T23:49:04Z",
+      "side": 1,
+      "message": "If `lpMake` is necessary it needs to be added as an implicit dep.",
+      "range": {
+        "startLine": 188,
+        "startChar": 60,
+        "endLine": 188,
+        "endChar": 69
+      },
+      "revId": "b8cf6352bbbabe639e71cd0353b1f5e42fe77260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22067024_dcdfc36a",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-10T23:49:04Z",
+      "side": 1,
+      "message": "Should this be added only to the misc info call with superEmpty\u003dtrue?",
+      "revId": "b8cf6352bbbabe639e71cd0353b1f5e42fe77260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
