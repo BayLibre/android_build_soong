@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3648c09f_be4a09c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020839
+      },
+      "writtenOn": "2025-03-10T18:30:00Z",
+      "side": 1,
+      "message": "Works on Fairphone 4",
+      "revId": "137fab4a317a4919e81beba9bb702f48d8fd96bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
