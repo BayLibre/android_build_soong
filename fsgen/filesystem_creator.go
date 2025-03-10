@@ -149,6 +149,7 @@ func filesystemCreatorFactory() android.Module {
 		createFsGenState(ctx, generatedPrebuiltEtcModuleNames, avbpubkeyGenerated)
 		module.createAvbKeyFilegroups(ctx)
 		module.createMiscFilegroups(ctx)
+		module.createOTAToolsPackagefilegroup(ctx)
 		module.createInternalModules(ctx)
 	})
 
@@ -740,6 +741,41 @@ func (f *filesystemCreator) createMiscFilegroups(ctx android.LoadHookContext) {
 			},
 		)
 	}
+}
+
+// Create the filegroup to collect cert files for otatools.zip.
+func (f *filesystemCreator) createOTAToolsPackagefilegroup(ctx android.LoadHookContext) {
+	ctx.CreateModuleInDirectory(
+		android.FileGroupFactory,
+		".",
+		&struct {
+			Name       *string
+			Srcs       []string
+			Visibility []string
+		}{
+			Name: proptools.StringPtr("soong_generated_otatools_package_filegroup"),
+			Srcs: []string{
+				"build/make/target/product/security/**/*.x509.pem",
+				"build/make/target/product/security/**/*.pk8",
+				"device/**/*.pk8",
+				"device/**/verifiedboot*",
+				"device/**/*.pem",
+				"device/**/oem*.prop",
+				"device/**/*.avbpubkey",
+				"external/avb/test/data/**/testkey_*.pem",
+				"external/avb/test/data/**/atx_metadata.bin",
+				"packages/modules/**/*.x509.pem",
+				"packages/modules/**/*.pk8",
+				"packages/modules/**/*.key.pem",
+				"vendor/**/*.pk8",
+				"vendor/**/verifiedboot*",
+				"vendor/**/*.pem",
+				"vendor/**/oem*.prop",
+				"vendor/**/*.avbpubkey",
+			},
+			Visibility: []string{"//visibility:public"},
+		},
+	)
 }
 
 // createPrebuiltKernelModules creates `prebuilt_kernel_modules`. These modules will be added to deps of the
