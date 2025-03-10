@@ -162,7 +162,6 @@ type LinkableInfo struct {
 	OnlyInVendorRamdisk bool
 	InRecovery          bool
 	OnlyInRecovery      bool
-	InVendor            bool
 	Installable         *bool
 	// RelativeInstallPath returns the relative install path for this module.
 	RelativeInstallPath string
@@ -174,8 +173,7 @@ type LinkableInfo struct {
 	ImplementationModuleNameForMake string
 	IsStubsImplementationRequired   bool
 	// Symlinks returns a list of symlinks that should be created for this module.
-	Symlinks               []string
-	APIListCoverageXMLPath android.ModuleOutPath
+	Symlinks []string
 }
 
 var LinkableInfoProvider = blueprint.NewProvider[*LinkableInfo]()
@@ -2394,7 +2392,6 @@ func CreateCommonLinkableInfo(ctx android.ModuleContext, mod VersionedLinkableIn
 		OnlyInVendorRamdisk:  mod.OnlyInVendorRamdisk(),
 		InRecovery:           mod.InRecovery(),
 		OnlyInRecovery:       mod.OnlyInRecovery(),
-		InVendor:             mod.InVendor(),
 		Installable:          mod.Installable(),
 		RelativeInstallPath:  mod.RelativeInstallPath(),
 		// TODO(b/362509506): remove this once all apex_exclude uses are switched to stubs.
@@ -2404,14 +2401,16 @@ func CreateCommonLinkableInfo(ctx android.ModuleContext, mod VersionedLinkableIn
 		ImplementationModuleNameForMake: mod.ImplementationModuleNameForMake(),
 		Symlinks:                        mod.Symlinks(),
 	}
-
-	vi := mod.VersionedInterface()
-	if vi != nil {
-		info.IsStubsImplementationRequired = vi.IsStubsImplementationRequired()
-		info.APIListCoverageXMLPath = vi.GetAPIListCoverageXMLPath()
+	if mod.VersionedInterface() != nil {
+		info.IsStubsImplementationRequired = mod.VersionedInterface().IsStubsImplementationRequired()
 	}
-
 	return info
+}
+
+func setOutputFilesIfNotEmpty(ctx ModuleContext, files android.Paths, tag string) {
+	if len(files) > 0 {
+		ctx.SetOutputFiles(files, tag)
+	}
 }
 
 func (c *Module) setOutputFiles(ctx ModuleContext) {

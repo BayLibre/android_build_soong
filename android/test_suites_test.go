@@ -110,10 +110,6 @@ func (f *fake_module) GenerateAndroidBuildActions(ctx ModuleContext) {
 	for _, output := range f.props.Outputs {
 		ctx.InstallFile(pathForTestCases(ctx), output, nil)
 	}
-
-	SetProvider(ctx, TestSuiteInfoProvider, TestSuiteInfo{
-		TestSuites: f.TestSuites(),
-	})
 }
 
 func (f *fake_module) TestSuites() []string {

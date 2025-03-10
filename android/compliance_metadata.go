@@ -275,18 +275,16 @@ func (c *complianceMetadataSingleton) GenerateBuildActions(ctx SingletonContext)
 	writerToCsv(csvWriter, columnNames)
 
 	rowId := -1
-	ctx.VisitAllModuleProxies(func(module ModuleProxy) {
-		commonInfo, _ := OtherModuleProvider(ctx, module, CommonModuleInfoKey)
-		if !commonInfo.Enabled {
+	ctx.VisitAllModules(func(module Module) {
+		if !module.Enabled(ctx) {
 			return
 		}
-
 		moduleType := ctx.ModuleType(module)
 		if moduleType == "package" {
 			metadataMap := map[string]string{
 				ComplianceMetadataProp.NAME:                            ctx.ModuleName(module),
 				ComplianceMetadataProp.MODULE_TYPE:                     ctx.ModuleType(module),
-				ComplianceMetadataProp.PKG_DEFAULT_APPLICABLE_LICENSES: strings.Join(commonInfo.PrimaryLicensesProperty.getStrings(), " "),
+				ComplianceMetadataProp.PKG_DEFAULT_APPLICABLE_LICENSES: strings.Join(module.base().primaryLicensesProperty.getStrings(), " "),
 			}
 			rowId = rowId + 1
 			metadata := []string{strconv.Itoa(rowId)}
@@ -296,7 +294,8 @@ func (c *complianceMetadataSingleton) GenerateBuildActions(ctx SingletonContext)
 			writerToCsv(csvWriter, metadata)
 			return
 		}
-		if metadataInfo, ok := OtherModuleProvider(ctx, module, ComplianceMetadataProvider); ok {
+		if provider, ok := ctx.otherModuleProvider(module, ComplianceMetadataProvider); ok {
+			metadataInfo := provider.(*ComplianceMetadataInfo)
 			rowId = rowId + 1
 			metadata := []string{strconv.Itoa(rowId)}
 			for _, propertyName := range COMPLIANCE_METADATA_PROPS {
