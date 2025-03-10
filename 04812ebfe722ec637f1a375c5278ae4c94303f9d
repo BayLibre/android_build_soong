@@ -16,6 +16,23 @@
       "message": "One more!\nShould be fine given the rule above, but I\u0027ll wait for mike to +1 before +autosubmit if you don\u0027t mind.",
       "revId": "04812ebfe722ec637f1a375c5278ae4c94303f9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea3ba0d_a21ad1ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020839
+      },
+      "writtenOn": "2025-03-10T17:38:31Z",
+      "side": 1,
+      "message": "Works on Fairphone 5",
+      "revId": "04812ebfe722ec637f1a375c5278ae4c94303f9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
