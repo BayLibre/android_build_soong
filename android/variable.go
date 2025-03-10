@@ -716,8 +716,6 @@ type PartitionVariables struct {
 	ProductFsCompression string `json:",omitempty"`
 
 	ReleaseToolsExtensionDir string `json:",omitempty"`
-
-	BoardFastbootInfoFile string `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
