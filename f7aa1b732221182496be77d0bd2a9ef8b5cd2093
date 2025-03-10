@@ -194,6 +194,24 @@
       "parentUuid": "1515861f_a35bac83",
       "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c34baf7_bfcde03f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-03-10T04:52:13Z",
+      "side": 1,
+      "message": "there can be much targets, but we don\u0027t force them to move to this Soong-based system image, right?",
+      "parentUuid": "0fc86145_fbf90354",
+      "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
