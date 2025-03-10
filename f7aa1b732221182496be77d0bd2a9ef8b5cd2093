@@ -230,6 +230,24 @@
       "parentUuid": "0c34baf7_bfcde03f",
       "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965e480f_3e578078",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-03-10T05:05:32Z",
+      "side": 1,
+      "message": "what is \"current\" target?\n\nlatest pixels don\u0027t set this to 34.\n\n--------\n\nI think this CL has been in pending state too long.\n\nI think the next step is to abandon this CL, and instead fix the targets who have been relying on PRODUCT_PACKAGES_SHIPPING_API_LEVEL_34.",
+      "parentUuid": "d8a8bcdc_34e94891",
+      "revId": "f7aa1b732221182496be77d0bd2a9ef8b5cd2093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
