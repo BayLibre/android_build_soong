@@ -46,6 +46,30 @@
       },
       "revId": "8b2e14f17c805f29a5ac20f66baa372de2a5bf7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a25d4863_98e3041e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2025-03-11T22:26:16Z",
+      "side": 1,
+      "message": "I don\u0027t know how to run this test automatically, but I was able to run the test manually and verify that there\u0027s no regressions. Click on the \"Checks\" tab in this commit and look for \"Heavy Presubmit\", or visit the following URL: https://android-build.googleplex.com/builds/build-details/P92247895/targets/llvm_rbe_live_panther-next\n\nllvm_rbe_live_panther-next passed.",
+      "parentUuid": "73ef585f_b7384f33",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 74
+      },
+      "revId": "8b2e14f17c805f29a5ac20f66baa372de2a5bf7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
