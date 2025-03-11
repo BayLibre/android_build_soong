@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fc0a04c_8941881e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2025-03-11T00:02:39Z",
+      "side": 1,
+      "message": "@Spandan this is an initial pass at supporting this capability that requires manual deps surgery to break the cycle. Feel free to shut it down completely, there\u0027s probably a better way...\n\nI\u0027m looking at some automated and more elegant/general solutions in https://b.corp.google.com/issues/212737576#comment11, but in the meantime this should let us resolve issue with system-server jars and related deps. We had also discussed having a test which requires checking in the generated proguard rules and just doing a post-build step to validate and update.",
+      "revId": "99042c9c38a3e89bf2c54ddd2bb440fe6ee5c124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
