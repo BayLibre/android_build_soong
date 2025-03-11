@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8734a5f4_166e8325",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 2013700
+      },
+      "writtenOn": "2025-03-11T15:14:01Z",
+      "side": 1,
+      "message": "Would you be able to enable this build target `llvm_rbe_live_panther-next` as soong\ns presubmit test? This target has already been approved to be used as a presubmit test, but active it for your branch as presubmit is self-service, see: b/399927446#comment3\n\n\nThis target will fail to build if any cpp actions cannot remotely build on RBE. Active this presubmit test will proivde you more confidence that clang flag change in soong will not break entire android CI builds.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 74
+      },
+      "revId": "8b2e14f17c805f29a5ac20f66baa372de2a5bf7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
