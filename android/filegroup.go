@@ -32,6 +32,7 @@ var PrepareForTestWithFilegroup = FixtureRegisterWithContext(func(ctx Registrati
 
 func RegisterFilegroupBuildComponents(ctx RegistrationContext) {
 	ctx.RegisterModuleType("filegroup", FileGroupFactory)
+	ctx.RegisterModuleType("otatools_package_filegroup", OtatoolsFileGroupFactory)
 	ctx.RegisterModuleType("filegroup_defaults", FileGroupDefaultsFactory)
 }
 
@@ -78,6 +79,51 @@ func FileGroupFactory() Module {
 	InitAndroidModule(module)
 	InitDefaultableModule(module)
 	return module
+}
+
+func OtatoolsFileGroupFactory() Module {
+	module := &fileGroup{}
+	module.AddProperties(&module.properties)
+	InitAndroidModule(module)
+	AddLoadHook(module, func(ctx LoadHookContext) {
+		module.createOTAToolsPackagefilegroup(ctx)
+	})
+	return module
+}
+
+// Create the filegroup to collect cert files for otatools.zip.
+func (fg *fileGroup) createOTAToolsPackagefilegroup(ctx LoadHookContext) {
+	ctx.CreateModuleInDirectory(
+		FileGroupFactory,
+		".",
+		&struct {
+			Name       *string
+			Srcs       []string
+			Visibility []string
+		}{
+			Name: proptools.StringPtr("soong_generated_otatools_package_filegroup"),
+			Srcs: []string{
+				"build/make/target/product/security/**/*.x509.pem",
+				"build/make/target/product/security/**/*.pk8",
+				"device/**/*.pk8",
+				"device/**/verifiedboot*",
+				"device/**/*.pem",
+				"device/**/oem*.prop",
+				"device/**/*.avbpubkey",
+				"external/avb/test/data/**/testkey_*.pem",
+				"external/avb/test/data/**/atx_metadata.bin",
+				"packages/modules/**/*.x509.pem",
+				"packages/modules/**/*.pk8",
+				"packages/modules/**/*.key.pem",
+				"vendor/**/*.pk8",
+				"vendor/**/verifiedboot*",
+				"vendor/**/*.pem",
+				"vendor/**/oem*.prop",
+				"vendor/**/*.avbpubkey",
+			},
+			Visibility: []string{"//visibility:public"},
+		},
+	)
 }
 
 var _ blueprint.JSONActionSupplier = (*fileGroup)(nil)
