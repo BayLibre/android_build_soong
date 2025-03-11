@@ -16,6 +16,106 @@
       "message": "@Spandan this is an initial pass at supporting this capability that requires manual deps surgery to break the cycle. Feel free to shut it down completely, there\u0027s probably a better way...\n\nI\u0027m looking at some automated and more elegant/general solutions in https://b.corp.google.com/issues/212737576#comment11, but in the meantime this should let us resolve issue with system-server jars and related deps. We had also discussed having a test which requires checking in the generated proguard rules and just doing a post-build step to validate and update.",
       "revId": "99042c9c38a3e89bf2c54ddd2bb440fe6ee5c124",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "993cbfcd_63c6864c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-11T03:13:38Z",
+      "side": 1,
+      "message": "I left some nits, but the explicit implementation LGTM.\n\nLet us use b/212737576 to discuss the automated solutions.",
+      "parentUuid": "3fc0a04c_8941881e",
+      "revId": "99042c9c38a3e89bf2c54ddd2bb440fe6ee5c124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e0f3c1_5af6c55a",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-11T03:13:38Z",
+      "side": 1,
+      "message": "nit: Can this be just `ctx`?",
+      "range": {
+        "startLine": 893,
+        "startChar": 74,
+        "endLine": 893,
+        "endChar": 78
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ebf959c7_812b75f2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/base.go",
+              "range": {
+                "startLine": 892,
+                "startChar": 0,
+                "endLine": 894,
+                "endChar": 0
+              },
+              "replacement": "\ttraceRefs :\u003d j.dexProperties.Optimize.Trace_references_from.GetOrDefault(j.ConfigurableEvaluator(ctx), []string{})\n"
+            }
+          ]
+        }
+      ],
+      "revId": "99042c9c38a3e89bf2c54ddd2bb440fe6ee5c124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a078dc_b94091b9",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-11T03:13:38Z",
+      "side": 1,
+      "message": "Replace with [ctx.VisitDirectDepsProxyWithTag](https://source.corp.google.com/h/googleplex-android/platform/build/soong/+/c1d09635ead9f72c9d993852f04a32fa2f8be8f8:android/base_module_context.go;l\u003d156;bpv\u003d1;bpt\u003d0;drc\u003def9e63e775493bd73cb28917ad59e6b10e5506b5)\n\nThe *Proxy visit functions provide a much restricted scope. These new functions are the recommended pattern to help move towards incremental Soong.",
+      "range": {
+        "startLine": 477,
+        "startChar": 1,
+        "endLine": 477,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f42c350a_a5d5809e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 477,
+                "startChar": 0,
+                "endLine": 478,
+                "endChar": 0
+              },
+              "replacement": "\tctx.VisitDirectDepsProxyWithTag(traceReferencesTag, func(m android.ModuleProxy) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "99042c9c38a3e89bf2c54ddd2bb440fe6ee5c124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
