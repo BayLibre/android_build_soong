@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b328ad_025d93c3",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-11T17:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "886976f5_fdfd71b5",
+      "range": {
+        "startLine": 187,
+        "startChar": 22,
+        "endLine": 187,
+        "endChar": 26
+      },
+      "revId": "b8cf6352bbbabe639e71cd0353b1f5e42fe77260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdcfeb83_c8d235ec",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee354c9e_b7504735",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-11T17:40:51Z",
+      "side": 1,
+      "message": "Good catch, done.",
+      "parentUuid": "bdcfeb83_c8d235ec",
+      "range": {
+        "startLine": 188,
+        "startChar": 60,
+        "endLine": 188,
+        "endChar": 69
+      },
+      "revId": "b8cf6352bbbabe639e71cd0353b1f5e42fe77260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22067024_dcdfc36a",
@@ -60,6 +108,24 @@
       "writtenOn": "2025-03-10T23:49:04Z",
       "side": 1,
       "message": "Should this be added only to the misc info call with superEmpty\u003dtrue?",
+      "revId": "b8cf6352bbbabe639e71cd0353b1f5e42fe77260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f93993a_8b1c4f27",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-11T17:40:51Z",
+      "side": 1,
+      "message": "I belive so. Equivalent [make logic](https://cs.android.com/android/_/android/platform/build/+/47f65b9b9f4546496f9ee5ed345d0932a66cd26b:core/Makefile;l\u003d6272-6273;drc\u003de902b9d1bbbc9ec08e0a9b7cbe28818e2bf6a4f6;bpv\u003d1;bpt\u003d0)\n\n`dump-dynamic-partitions-info` is used to create misc_info.txt for both `super.img` and `super_empty.img`, so this entry is added to both these misc files.",
+      "parentUuid": "22067024_dcdfc36a",
       "revId": "b8cf6352bbbabe639e71cd0353b1f5e42fe77260",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
