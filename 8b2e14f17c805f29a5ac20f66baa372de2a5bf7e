@@ -22,6 +22,30 @@
       },
       "revId": "8b2e14f17c805f29a5ac20f66baa372de2a5bf7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ef585f_b7384f33",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2025-03-11T15:39:00Z",
+      "side": 1,
+      "message": "I don\u0027t know how to do this. I\u0027ll dig into this, but if someone is already familiar with the correct procedure, I\u0027d apperciate help.",
+      "parentUuid": "8734a5f4_166e8325",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 74
+      },
+      "revId": "8b2e14f17c805f29a5ac20f66baa372de2a5bf7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
