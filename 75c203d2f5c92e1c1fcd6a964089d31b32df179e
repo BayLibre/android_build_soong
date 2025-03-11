@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "133d2478_bf343b0e",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-11T17:30:34Z",
+      "side": 1,
+      "message": "Create a new module struct instead of reusing filegroup.",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 41
+      },
+      "revId": "75c203d2f5c92e1c1fcd6a964089d31b32df179e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
