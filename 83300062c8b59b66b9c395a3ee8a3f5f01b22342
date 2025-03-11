@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11fcf371_ddfe9224",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2025-03-11T09:40:45Z",
+      "side": 1,
+      "message": "Create the new module type in filegroup.go.",
+      "parentUuid": "0d5095cd_3cdd1a23",
+      "revId": "83300062c8b59b66b9c395a3ee8a3f5f01b22342",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75609478_0005b471",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-03-10T17:59:22Z",
       "side": 1,
       "message": "Limit the visibility to at least `//build/make`.",
+      "revId": "83300062c8b59b66b9c395a3ee8a3f5f01b22342",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b43b46a_2b762b6e",
+        "filename": "fsgen/filesystem_creator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2025-03-11T09:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75609478_0005b471",
       "revId": "83300062c8b59b66b9c395a3ee8a3f5f01b22342",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
