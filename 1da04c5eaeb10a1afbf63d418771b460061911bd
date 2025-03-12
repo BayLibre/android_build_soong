@@ -16,6 +16,24 @@
       "message": "This shouldn\u0027t affect memory usage at all, as only 1 copy of every string literal is created.",
       "revId": "1da04c5eaeb10a1afbf63d418771b460061911bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d185f9d8_289e2873",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-12T22:47:43Z",
+      "side": 1,
+      "message": "Thanks for helping discard this hypothesis. Abandoning.",
+      "parentUuid": "4d77e7f6_09d195b9",
+      "revId": "1da04c5eaeb10a1afbf63d418771b460061911bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
