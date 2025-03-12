@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d77e7f6_09d195b9",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-12T18:50:42Z",
+      "side": 1,
+      "message": "This shouldn\u0027t affect memory usage at all, as only 1 copy of every string literal is created.",
+      "revId": "1da04c5eaeb10a1afbf63d418771b460061911bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
