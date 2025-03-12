@@ -108,7 +108,6 @@ func TestSystemserverclasspathFragmentContents(t *testing.T) {
 	})
 
 	java.CheckModuleDependencies(t, ctx, "myapex", "android_common_myapex", []string{
-		`all_apex_contributions`,
 		`dex2oatd`,
 		`myapex.key`,
 		`mysystemserverclasspathfragment`,
@@ -167,7 +166,6 @@ func TestSystemserverclasspathFragmentNoGeneratedProto(t *testing.T) {
 	})
 
 	java.CheckModuleDependencies(t, result.TestContext, "myapex", "android_common_myapex", []string{
-		`all_apex_contributions`,
 		`dex2oatd`,
 		`myapex.key`,
 		`mysystemserverclasspathfragment`,

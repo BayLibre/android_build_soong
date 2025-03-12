@@ -1246,8 +1246,7 @@ type SdkLibrary struct {
 
 	commonToSdkLibraryAndImport
 
-	apexSystemServerDexpreoptInstalls []DexpreopterInstall
-	apexSystemServerDexJars           android.Paths
+	builtInstalledForApex []dexpreopterInstall
 }
 
 func (module *SdkLibrary) generateTestAndSystemScopesByDefault() bool {
@@ -1502,8 +1501,7 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		module.dexJarFile = makeDexJarPathFromPath(module.implLibraryInfo.DexJarFile.Path())
 		module.headerJarFile = module.implLibraryInfo.HeaderJars[0]
 		module.implementationAndResourcesJar = module.implLibraryInfo.ImplementationAndResourcesJars[0]
-		module.apexSystemServerDexpreoptInstalls = module.implLibraryInfo.ApexSystemServerDexpreoptInstalls
-		module.apexSystemServerDexJars = module.implLibraryInfo.ApexSystemServerDexJars
+		module.builtInstalledForApex = module.implLibraryInfo.BuiltInstalledForApex
 		module.dexpreopter.configPath = module.implLibraryInfo.ConfigPath
 		module.dexpreopter.outputProfilePathOnHost = module.implLibraryInfo.OutputProfilePathOnHost
 
@@ -1586,12 +1584,8 @@ func setOutputFilesFromJavaInfo(ctx android.ModuleContext, info *JavaInfo) {
 	ctx.SetOutputFiles(info.GeneratedSrcjars, ".generated_srcjars")
 }
 
-func (module *SdkLibrary) ApexSystemServerDexpreoptInstalls() []DexpreopterInstall {
-	return module.apexSystemServerDexpreoptInstalls
-}
-
-func (module *SdkLibrary) ApexSystemServerDexJars() android.Paths {
-	return module.apexSystemServerDexJars
+func (module *SdkLibrary) BuiltInstalledForApex() []dexpreopterInstall {
+	return module.builtInstalledForApex
 }
 
 func (module *SdkLibrary) AndroidMkEntries() []android.AndroidMkEntries {
