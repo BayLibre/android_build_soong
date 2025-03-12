@@ -40,6 +40,30 @@
       ],
       "revId": "898d3f93ef803f74a2cba400e5b73b1f475c68af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd339e38_afc08b10",
+        "filename": "java/rro.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-12T18:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cffa81a9_d485f7e4",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 26
+      },
+      "revId": "898d3f93ef803f74a2cba400e5b73b1f475c68af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
