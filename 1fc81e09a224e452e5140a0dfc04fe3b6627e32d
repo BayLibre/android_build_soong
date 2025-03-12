@@ -16,6 +16,24 @@
       "message": "Could anyone tell me what exactly failed? I don\u0027t have access to the logs and checks tab is empty.",
       "revId": "1fc81e09a224e452e5140a0dfc04fe3b6627e32d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8afd5b2_65d67e5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-12T17:05:05Z",
+      "side": 1,
+      "message": "Seem to have failed with some infra errors. I\u0027ve just retriggered a presubmit run.",
+      "parentUuid": "86a2c9ba_b7fa3db8",
+      "revId": "1fc81e09a224e452e5140a0dfc04fe3b6627e32d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
