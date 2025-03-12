@@ -363,6 +363,7 @@ func createKotlinPluginRule() []Rule {
 func createPrebuiltEtcBpDefineRule() Rule {
 	return NeverAllow().
 		ModuleType(
+			"prebuilt_any",
 			"prebuilt_usr_srec",
 			"prebuilt_priv_app",
 			"prebuilt_rfs",
