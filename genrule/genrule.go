@@ -536,6 +536,24 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 						firstLabel, firstLabel)
 				}
 				return proptools.ShellEscape(paths[0]), nil
+			case "tools":
+				if len(g.properties.Tools) == 0 {
+					return reportError("at least one `tools` is required if $(tools) is used")
+				}
+				tool_paths := []string{}
+				for _, tool := range g.properties.Tools {
+					if loc, ok := locationLabels[tool]; ok {
+						paths := loc.Paths(cmd)
+						if len(paths) == 0 {
+							return reportError("tool %q has no files", tool)
+						} else if len(paths) > 1 {
+							return reportError("tool %q has multiple files, use $(locations %s) to reference it",
+								tool, tool)
+						}
+						tool_paths = append(tool_paths, paths[0])
+					}
+				}
+				return strings.Join(proptools.ShellEscapeList(tool_paths), " "), nil
 			case "in":
 				return strings.Join(proptools.ShellEscapeList(cmd.PathsForInputs(srcFiles)), " "), nil
 			case "out":
