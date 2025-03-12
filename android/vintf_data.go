@@ -162,7 +162,10 @@ func (m *vintfDataRule) GenerateAndroidBuildActions(ctx ModuleContext) {
 // Make this module visible to AndroidMK so it can be referenced from modules defined from Android.mk files
 func (m *vintfDataRule) AndroidMkEntries() []AndroidMkEntries {
 	if m.noAction {
-		return []AndroidMkEntries{}
+		return []AndroidMkEntries{{
+			Class:      "ETC",
+			OutputFile: OptionalPath{},
+		}}
 	}
 
 	return []AndroidMkEntries{{
