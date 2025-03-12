@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc61a568_9b165e6d",
+        "filename": "android/filegroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1315724
+      },
+      "writtenOn": "2025-03-12T02:49:40Z",
+      "side": 1,
+      "message": "nit: sort the list alphabetically.",
+      "range": {
+        "startLine": 35,
+        "startChar": 25,
+        "endLine": 35,
+        "endChar": 51
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "23a8e1be_b9fcc2dd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/filegroup.go",
+              "range": {
+                "startLine": 35,
+                "startChar": 0,
+                "endLine": 36,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "android/filegroup.go",
+              "range": {
+                "startLine": 37,
+                "startChar": 0,
+                "endLine": 37,
+                "endChar": 0
+              },
+              "replacement": "\tctx.RegisterModuleType(\"otatools_package_filegroup\", OtatoolsFileGroupFactory)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0f42785c8c880c3e1faafc5171a608928b0b344c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
