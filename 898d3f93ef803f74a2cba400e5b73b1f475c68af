@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cffa81a9_d485f7e4",
+        "filename": "java/rro.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2025-03-12T17:14:37Z",
+      "side": 1,
+      "message": "Should we delete this(or the whole `RuntimeResourceOverlayModule` interface) as well? It seems no other code is casting to this interface.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 26
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4f38bb34_f7abcc5d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/rro.go",
+              "range": {
+                "startLine": 101,
+                "startChar": 0,
+                "endLine": 110,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "898d3f93ef803f74a2cba400e5b73b1f475c68af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
