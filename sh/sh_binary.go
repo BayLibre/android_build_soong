@@ -540,6 +540,30 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	installedData := ctx.InstallTestData(s.installDir, s.data)
 	s.installedFile = ctx.InstallExecutable(s.installDir, s.outputFilePath.Base(), s.outputFilePath, installedData...)
 
+	ctx.SetTestSuiteInfo(android.TestSuiteInfo{
+		TestSuites:      s.testProperties.Test_suites,
+		MainFile:        s.outputFilePath,
+		ConfigFile:      s.testConfig,
+		ExtraConfigs:    s.extraTestConfigs,
+		Data:            s.data,
+		NeedsArchFolder: true,
+	})
+	// Only install the test output file for the primary arch for device builds, because
+	// the device testcases directory is not qualified by arch unlike the host directory
+	// (out/target/product/<device>/testcases vs out/host/linux-x86/testcases)
+	// if ctx.Host() || ctx.PrimaryArch() {
+	// 	testCasesInstallDir := android.PathForModuleInPartitionInstall(ctx, "testcases", ctx.ModuleName())
+	// 	testCasesBinInstallDir := testCasesInstallDir.Join(ctx, ctx.DeviceConfig().DeviceArch())
+	// 	ctx.InstallExecutable(testCasesBinInstallDir, s.outputFilePath.Base(), s.outputFilePath)
+	// 	if s.testConfig != nil {
+	// 		ctx.InstallFile(testCasesInstallDir, ctx.ModuleName()+".config", s.testConfig)
+	// 	}
+	// 	for _, extraTestConfig := range s.extraTestConfigs {
+	// 		ctx.InstallFile(testCasesInstallDir, pathtools.ReplaceExtension(extraTestConfig.Base(), "config"), extraTestConfig)
+	// 	}
+	// 	ctx.InstallTestData(testCasesBinInstallDir, s.data)
+	// }
+
 	mkEntries := s.AndroidMkEntries()[0]
 	android.SetProvider(ctx, tradefed.BaseTestProviderKey, tradefed.BaseTestProviderData{
 		TestcaseRelDataFiles: addArch(ctx.Arch().ArchType.String(), installedData.Paths()),
@@ -574,10 +598,6 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		moduleInfoJSON.TestConfig = append(moduleInfoJSON.TestConfig, s.testConfig.String())
 	}
 	moduleInfoJSON.TestConfig = append(moduleInfoJSON.TestConfig, s.extraTestConfigs.Strings()...)
-
-	android.SetProvider(ctx, android.TestSuiteInfoProvider, android.TestSuiteInfo{
-		TestSuites: s.testProperties.Test_suites,
-	})
 }
 
 func addArch(archType string, paths android.Paths) []string {

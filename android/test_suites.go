@@ -15,7 +15,10 @@
 package android
 
 import (
+	"fmt"
 	"path/filepath"
+	"slices"
+	"sort"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -37,13 +40,45 @@ type TestSuiteModule interface {
 }
 
 type TestSuiteInfo struct {
+	// The name to use for the installed files. Will default to ctx.ModuleName() if not provided.
+	// Useful because historically different variants of soong modules became differently-named
+	// make modules, like "my_test.vendor" for the vendor variant.
+	Name string
+
 	TestSuites []string
+
+	NeedsArchFolder bool
+
+	MainFile Path
+
+	ConfigFile Path
+
+	ExtraConfigs Paths
+
+	PerTestcaseDirectory bool
+
+	Data []DataPath
+
+	NonArchData []DataPath
 }
 
 var TestSuiteInfoProvider = blueprint.NewProvider[TestSuiteInfo]()
 
+type filePair struct {
+	src Path
+	dst WritablePath
+}
+
+type testSuiteInstallsInfo struct {
+	Files []filePair
+}
+
+var testSuiteInstallsInfoProvider = blueprint.NewProvider[testSuiteInstallsInfo]()
+
 func (t *testSuiteFiles) GenerateBuildActions(ctx SingletonContext) {
 	files := make(map[string]map[string]InstallPaths)
+	var toInstall []filePair
+	dstToModule := make(map[WritablePath][]ModuleProxy)
 
 	ctx.VisitAllModuleProxies(func(m ModuleProxy) {
 		if tsm, ok := OtherModuleProvider(ctx, m, TestSuiteInfoProvider); ok {
@@ -56,7 +91,52 @@ func (t *testSuiteFiles) GenerateBuildActions(ctx SingletonContext) {
 					OtherModuleProviderOrDefault(ctx, m, InstallFilesProvider).InstallFiles...)
 			}
 		}
+		if installs, ok := OtherModuleProvider(ctx, m, testSuiteInstallsInfoProvider); ok {
+			toInstall = append(toInstall, installs.Files...)
+			for _, i := range installs.Files {
+				dstToModule[i.dst] = append(dstToModule[i.dst], m)
+			}
+		}
 	})
+
+	sort.Slice(toInstall, func(i, j int) bool {
+		c := strings.Compare(toInstall[i].src.String(), toInstall[j].src.String())
+		if c < 0 {
+			return true
+		} else if c > 0 {
+			return false
+		}
+		return toInstall[i].dst.String() < toInstall[j].dst.String()
+	})
+	// Dedup, as multiple tests may install the same test data to the same folder
+	toInstall = slices.Compact(toInstall)
+
+	hasConflicts := false
+	for i, a := range toInstall {
+		for _, b := range toInstall[i+1:] {
+			if a.dst == b.dst {
+				var mods []string
+				for _, m := range dstToModule[a.dst] {
+					mods = append(mods, fmt.Sprintf("%s(%s)", ctx.ModuleName(m), ctx.ModuleSubDir(m)))
+				}
+				if a.dst.String() == "out/host/linux-x86/cts_root/android-cts_root/testcases/bionic-loader-test-libs/cfi_test_helper" {
+					fmt.Printf("Conflicting dst file %s from modules %s\n", a.dst, strings.Join(mods, ","))
+					hasConflicts = true
+				}
+			}
+		}
+	}
+	if hasConflicts {
+		ctx.Errorf("Conflicting test suite files")
+	}
+
+	for _, install := range toInstall {
+		ctx.Build(pctx, BuildParams{
+			Rule:   Cp,
+			Input:  install.src,
+			Output: install.dst,
+		})
+	}
 
 	robolectricZip, robolectrictListZip := buildTestSuite(ctx, "robolectric-tests", files["robolectric-tests"])
 	ctx.Phony("robolectric-tests", robolectricZip, robolectrictListZip)

@@ -413,6 +413,16 @@ func (m *testModuleConfigModule) generateManifestAndConfig(ctx android.ModuleCon
 
 	// 4) Module.config / AndroidTest.xml
 	m.testConfig = m.fixTestConfig(ctx, m.provider.TestConfig)
+	ctx.InstallFile(android.PathForModuleInstall(ctx, ctx.ModuleName()), ctx.ModuleName()+".config", m.testConfig)
+
+	// Install the UNUSED- file to match what make would do in soong-only
+	if m.provider.MkAppClass == "APPS" {
+		installDir2 := android.PathForModuleInstall(ctx, ctx.ModuleName(), ctx.DeviceConfig().DeviceArch())
+		ctx.InstallFile(installDir2, fmt.Sprintf("UNUSED-%s.apk", *m.Base), m.manifest)
+	} else if m.provider.MkAppClass == "JAVA_LIBRARIES" {
+		installDir2 := android.PathForModuleInstall(ctx, ctx.ModuleName())
+		ctx.InstallFile(installDir2, fmt.Sprintf("UNUSED-%s.jar", *m.Base), m.manifest)
+	}
 
 	// 5) We provide so we can be listed in test_suites.
 	android.SetProvider(ctx, tradefed.BaseTestProviderKey, tradefed.BaseTestProviderData{
