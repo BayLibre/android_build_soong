@@ -797,8 +797,6 @@ type linker interface {
 	defaultDistFiles() []android.Path
 
 	moduleInfoJSON(ctx ModuleContext, moduleInfoJSON *android.ModuleInfoJSON)
-
-	testSuiteInfo(ctx ModuleContext)
 }
 
 // specifiedDeps is a tuple struct representing dependencies of a linked binary owned by the linker.
@@ -2410,8 +2408,6 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 			name := v.ImplementationModuleName(ctx.OtherModuleName(c))
 			ccInfo.LinkerInfo.ImplementationModuleName = &name
 		}
-
-		c.linker.testSuiteInfo(ctx)
 	}
 	if c.library != nil {
 		ccInfo.LibraryInfo = &LibraryInfo{
@@ -2619,6 +2615,10 @@ func (c *Module) maybeInstall(ctx ModuleContext, apexInfo android.ApexInfo) {
 	} else if !installable(c, apexInfo) {
 		c.SkipInstall()
 	}
+
+	// if ctx.ModuleName() == "libcpu_features-all_libraries" {
+	// 	fmt.Printf("libcpu_features-all_libraries(%s) c.installer not nil? %t, outputfile valid? %t\n", ctx.ModuleSubDir(), c.installer != nil, c.outputFile.Valid())
+	// }
 
 	// Still call c.installer.install though, the installs will be stored as PackageSpecs
 	// to allow using the outputs in a genrule.
