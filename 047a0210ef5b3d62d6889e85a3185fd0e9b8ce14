@@ -16,6 +16,24 @@
       "message": "NOTE: robolectric needs to call SetProvider while ravenwood doesn\u0027t because ravenwood calls Library.GenerateBuildActions which calls the provider for us.  I didn\u0027t want to add that call to the `superclass` here.",
       "revId": "047a0210ef5b3d62d6889e85a3185fd0e9b8ce14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7559e031_c92a9fdf",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-13T23:16:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ed931f29_4b41a58e",
+      "revId": "047a0210ef5b3d62d6889e85a3185fd0e9b8ce14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
