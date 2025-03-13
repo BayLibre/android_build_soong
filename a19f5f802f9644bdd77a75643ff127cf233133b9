@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e50bf98_19e4c7f6",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-13T17:38:15Z",
+      "side": 1,
+      "message": "The folder has to be named the partition name due to some very complicated tooling requirements. I think we should move the `aconfig_merged.pb` file to be under an `aconfig_merged` folder instead.",
+      "revId": "a19f5f802f9644bdd77a75643ff127cf233133b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
