@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3612883a_2d127fab",
+        "filename": "android/provider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-13T20:58:17Z",
+      "side": 1,
+      "message": "Can this be just `return nil`?",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 12
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ce25fda0_5b780a06",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/provider.go",
+              "range": {
+                "startLine": 48,
+                "startChar": 0,
+                "endLine": 50,
+                "endChar": 0
+              },
+              "replacement": "\treturn nil\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f22120fb1da7f75a571966124bb0da6a57fd4f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
