@@ -1658,20 +1658,18 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.data = append(a.data, android.PathsForModuleSrc(ctx, a.testProperties.Host_common_data)...)
 
 	// Install test deps
-	if !ctx.Config().KatiEnabled() {
-		pathInTestCases := android.PathForModuleInstall(ctx, ctx.Module().Name())
-		if a.testConfig != nil {
-			ctx.InstallFile(pathInTestCases, ctx.Module().Name()+".config", a.testConfig)
-		}
-		dynamicConfig := android.ExistentPathForSource(ctx, ctx.ModuleDir(), "DynamicConfig.xml")
-		if dynamicConfig.Valid() {
-			ctx.InstallFile(pathInTestCases, ctx.Module().Name()+".dynamic", dynamicConfig.Path())
-		}
-		testDeps := append(a.data, a.extraTestConfigs...)
-		for _, data := range android.SortedUniquePaths(testDeps) {
-			dataPath := android.DataPath{SrcPath: data}
-			ctx.InstallTestData(pathInTestCases, []android.DataPath{dataPath})
-		}
+	pathInTestCases := android.PathForModuleInstall(ctx, ctx.Module().Name())
+	if a.testConfig != nil {
+		ctx.InstallFile(pathInTestCases, ctx.Module().Name()+".config", a.testConfig)
+	}
+	dynamicConfig := android.ExistentPathForSource(ctx, ctx.ModuleDir(), "DynamicConfig.xml")
+	if dynamicConfig.Valid() {
+		ctx.InstallFile(pathInTestCases, ctx.Module().Name()+".dynamic", dynamicConfig.Path())
+	}
+	testDeps := append(a.data, a.extraTestConfigs...)
+	for _, data := range android.SortedUniquePaths(testDeps) {
+		dataPath := android.DataPath{SrcPath: data}
+		ctx.InstallTestData(pathInTestCases, []android.DataPath{dataPath})
 	}
 
 	android.SetProvider(ctx, tradefed.BaseTestProviderKey, tradefed.BaseTestProviderData{
