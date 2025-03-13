@@ -233,6 +233,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14d82d46_531ef04a",
+        "filename": "python/scripts/main.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2025-03-13T03:49:08Z",
+      "side": 1,
+      "message": "Ah, so they\u0027re doing something reasonable, but we end up shadowing the package because it shows up in two different sections of the path. I took a look and there doesn\u0027t seem to be any way to split a namespace between two paths for different types of importlib loaders.\n\nSomething similar to the fwork pointers would work for us, but that\u0027s not supported on our platforms.\n\nThis seems like the best choice 👍",
+      "parentUuid": "89e54862_3f5f3983",
+      "range": {
+        "startLine": 20,
+        "startChar": 56,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "0823f7f824fce2c6599f6716d236da25a81e77e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4207f62_298c86e4",

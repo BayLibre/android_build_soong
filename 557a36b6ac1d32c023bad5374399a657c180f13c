@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83fc84c_825ab1cc",
+        "filename": "python/scripts/main.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2025-03-13T03:49:08Z",
+      "side": 1,
+      "message": "turns out this isn\u0027t necessary, and python extensions must be called `.so` on MacOS anyway. But that would require us to rename our `.dylib`s to `.so` at some point here, and that\u0027s probably not that import to figure out until we actually need to.",
+      "range": {
+        "startLine": 32,
+        "startChar": 38,
+        "endLine": 32,
+        "endChar": 76
+      },
+      "revId": "557a36b6ac1d32c023bad5374399a657c180f13c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
