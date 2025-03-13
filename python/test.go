@@ -215,25 +215,22 @@ func (p *PythonTestModule) GenerateAndroidBuildActions(ctx android.ModuleContext
 	installedData := ctx.InstallTestData(installDir, p.data)
 	p.installedDest = ctx.InstallFile(installDir, p.installSource.Base(), p.installSource, installedData...)
 
-	// TODO: Remove the special case for kati
-	if !ctx.Config().KatiEnabled() {
-		// Install the test config in testcases/ directory for atest.
-		// Install configs in the root of $PRODUCT_OUT/testcases/$module
-		testCases := android.PathForModuleInPartitionInstall(ctx, "testcases", ctx.ModuleName())
-		if ctx.PrimaryArch() {
-			if p.testConfig != nil {
-				ctx.InstallFile(testCases, ctx.ModuleName()+".config", p.testConfig)
-			}
-			dynamicConfig := android.ExistentPathForSource(ctx, ctx.ModuleDir(), "DynamicConfig.xml")
-			if dynamicConfig.Valid() {
-				ctx.InstallFile(testCases, ctx.ModuleName()+".dynamic", dynamicConfig.Path())
-			}
+	// Install the test config in testcases/ directory for atest.
+	// Install configs in the root of $PRODUCT_OUT/testcases/$module
+	testCases := android.PathForModuleInPartitionInstall(ctx, "testcases", ctx.ModuleName())
+	if ctx.PrimaryArch() {
+		if p.testConfig != nil {
+			ctx.InstallFile(testCases, ctx.ModuleName()+".config", p.testConfig)
 		}
-		// Install tests and data in arch specific subdir $PRODUCT_OUT/testcases/$module/$arch
-		testCases = testCases.Join(ctx, ctx.Target().Arch.ArchType.String())
-		installedData := ctx.InstallTestData(testCases, p.data)
-		ctx.InstallFile(testCases, p.installSource.Base(), p.installSource, installedData...)
+		dynamicConfig := android.ExistentPathForSource(ctx, ctx.ModuleDir(), "DynamicConfig.xml")
+		if dynamicConfig.Valid() {
+			ctx.InstallFile(testCases, ctx.ModuleName()+".dynamic", dynamicConfig.Path())
+		}
 	}
+	// Install tests and data in arch specific subdir $PRODUCT_OUT/testcases/$module/$arch
+	testCases = testCases.Join(ctx, ctx.Target().Arch.ArchType.String())
+	installedData2 := ctx.InstallTestData(testCases, p.data)
+	ctx.InstallFile(testCases, p.installSource.Base(), p.installSource, installedData2...)
 
 	moduleInfoJSON := ctx.ModuleInfoJSON()
 	moduleInfoJSON.Class = []string{"NATIVE_TESTS"}
