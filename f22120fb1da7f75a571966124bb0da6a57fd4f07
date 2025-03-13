@@ -40,6 +40,30 @@
       ],
       "revId": "f22120fb1da7f75a571966124bb0da6a57fd4f07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac07d49_ed8c585f",
+        "filename": "android/provider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2025-03-13T21:17:35Z",
+      "side": 1,
+      "message": "The other two methods above will return nil in this case, this one is to simplify the caller from checking nil, in many cases the caller just needs to check if a bool is set or not and by default the bool is false, so this makes it easier in these cases, for the cases where ok needs to be checked the other two methods can be used.",
+      "parentUuid": "3612883a_2d127fab",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 12
+      },
+      "revId": "f22120fb1da7f75a571966124bb0da6a57fd4f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
