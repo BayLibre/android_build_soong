@@ -20,6 +20,7 @@ import (
 	"strings"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -539,6 +540,22 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	installedData := ctx.InstallTestData(s.installDir, s.data)
 	s.installedFile = ctx.InstallExecutable(s.installDir, s.outputFilePath.Base(), s.outputFilePath, installedData...)
+
+	// Only install the test output file for the primary arch for device builds, because
+	// the device testcases directory is not qualified by arch unlike the host directory
+	// (out/target/product/<device>/testcases vs out/host/linux-x86/testcases)
+	if ctx.Host() || ctx.PrimaryArch() {
+		testCasesInstallDir := android.PathForTestcaseInstall(ctx)
+		testCasesBinInstallDir := android.PathForTestcaseInstall(ctx, ctx.DeviceConfig().DeviceArch())
+		ctx.InstallExecutable(testCasesBinInstallDir, s.outputFilePath.Base(), s.outputFilePath)
+		if s.testConfig != nil {
+			ctx.InstallFile(testCasesInstallDir, ctx.ModuleName()+".config", s.testConfig)
+		}
+		for _, extraTestConfig := range s.extraTestConfigs {
+			ctx.InstallFile(testCasesInstallDir, pathtools.ReplaceExtension(extraTestConfig.Base(), "config"), extraTestConfig)
+		}
+		ctx.InstallTestData(testCasesBinInstallDir, s.data)
+	}
 
 	mkEntries := s.AndroidMkEntries()[0]
 	android.SetProvider(ctx, tradefed.BaseTestProviderKey, tradefed.BaseTestProviderData{

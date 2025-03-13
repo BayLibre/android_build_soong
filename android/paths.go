@@ -1996,6 +1996,14 @@ func (p InstallPath) ToMakePath() InstallPath {
 	return p
 }
 
+// PathForTestcaseInstall returns the installpath for the current module in the "testcases" folder.
+// Most of the time you should not use this, but instead use ctx.PathForModuleInstall() with
+// the module returning true from its InstallInTestcases() method.
+func PathForTestcaseInstall(ctx ModuleInstallPathContext, pathComponents ...string) InstallPath {
+	os, arch := osAndArch(ctx)
+	return pathForInstall(ctx, os, arch, "testcases", append([]string{ctx.ModuleName()}, pathComponents...)...)
+}
+
 // PathForModuleInstall returns a Path representing the install path for the
 // module appended with paths...
 func PathForModuleInstall(ctx ModuleInstallPathContext, pathComponents ...string) InstallPath {

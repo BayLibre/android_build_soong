@@ -129,6 +129,16 @@ func (benchmark *benchmarkDecorator) install(ctx ModuleContext) {
 	}
 
 	benchmark.binaryDecorator.install(ctx)
+
+	if ctx.PrimaryArch() {
+		testCasesInstallDir := android.PathForTestcaseInstall(ctx)
+		if benchmark.testConfig != nil {
+			ctx.InstallFile(testCasesInstallDir, ctx.ModuleName()+".config", benchmark.testConfig)
+		}
+	}
+	path := ctx.RustModule().OutputFile().Path()
+	testCasesBinInstallDir := android.PathForTestcaseInstall(ctx, ctx.Arch().ArchType.Name)
+	ctx.InstallExecutable(testCasesBinInstallDir, path.Base(), path)
 }
 
 func (benchmark *benchmarkDecorator) moduleInfoJSON(ctx ModuleContext, moduleInfoJSON *android.ModuleInfoJSON) {

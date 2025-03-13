@@ -1816,14 +1816,27 @@ func (m *ModuleBase) archModuleContextFactory(ctx archModuleContextFactoryContex
 	} else {
 		primaryArch = target.Arch.ArchType == config.Targets[target.Os][0].Arch.ArchType
 	}
+	primaryNativeBridgeArch := false
+	if target.NativeBridge {
+		for _, t := range config.Targets[target.Os] {
+			if t.NativeBridge {
+				if target.Arch.ArchType == t.Arch.ArchType {
+					primaryNativeBridgeArch = true
+				}
+				// Don't consider firther nativebridge targets
+				break
+			}
+		}
+	}
 
 	return archModuleContext{
-		ready:         m.commonProperties.ArchReady,
-		os:            m.commonProperties.CompileOS,
-		target:        m.commonProperties.CompileTarget,
-		targetPrimary: m.commonProperties.CompilePrimary,
-		multiTargets:  m.commonProperties.CompileMultiTargets,
-		primaryArch:   primaryArch,
+		ready:                   m.commonProperties.ArchReady,
+		os:                      m.commonProperties.CompileOS,
+		target:                  m.commonProperties.CompileTarget,
+		targetPrimary:           m.commonProperties.CompilePrimary,
+		multiTargets:            m.commonProperties.CompileMultiTargets,
+		primaryArch:             primaryArch,
+		primaryNativeBridgeArch: primaryNativeBridgeArch,
 	}
 
 }
