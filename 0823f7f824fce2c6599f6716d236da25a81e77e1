@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d57460f_6367fccc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3285260
+      },
+      "writtenOn": "2025-03-13T02:55:59Z",
+      "side": 1,
+      "message": "r",
+      "revId": "0823f7f824fce2c6599f6716d236da25a81e77e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00d60c2e_2dcb4586",
@@ -38,6 +55,30 @@
           ]
         }
       ],
+      "revId": "0823f7f824fce2c6599f6716d236da25a81e77e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59025478_66d4b91e",
+        "filename": "python/python.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 3285260
+      },
+      "writtenOn": "2025-03-13T02:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00d60c2e_2dcb4586",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 55
+      },
       "revId": "0823f7f824fce2c6599f6716d236da25a81e77e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -103,6 +144,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9a53ad4_dbaf4782",
+        "filename": "python/scripts/main.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3285260
+      },
+      "writtenOn": "2025-03-13T02:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc862e0d_99b4b1dc",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "0823f7f824fce2c6599f6716d236da25a81e77e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0c08803_c77e2cca",
@@ -146,6 +211,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89e54862_3f5f3983",
+        "filename": "python/scripts/main.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3285260
+      },
+      "writtenOn": "2025-03-13T02:55:59Z",
+      "side": 1,
+      "message": "So I have a sample size of 2 on this:  cffi, just called `import _cffi_backend` -\u003e so and that allowed for just extracting the .so file.\n\nFor grpc it calls [from grpc._cython import cygrpc](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:external/grpc-grpc/src/python/grpcio/grpc/aio/_call.py;l\u003d26;drc\u003d90af0a115d64c95bb9e70c1296c4f308d9cbca52) which I wasn\u0027t able to find a way to get work if I extract the so to `grpc",
+      "parentUuid": "b0c08803_c77e2cca",
+      "range": {
+        "startLine": 20,
+        "startChar": 56,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "0823f7f824fce2c6599f6716d236da25a81e77e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4207f62_298c86e4",
         "filename": "python/scripts/main.py",
         "patchSetId": 13
@@ -181,6 +270,30 @@
           ]
         }
       ],
+      "revId": "0823f7f824fce2c6599f6716d236da25a81e77e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60c0d934_dfbe8db4",
+        "filename": "python/scripts/main.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3285260
+      },
+      "writtenOn": "2025-03-13T02:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4207f62_298c86e4",
+      "range": {
+        "startLine": 31,
+        "startChar": 34,
+        "endLine": 31,
+        "endChar": 36
+      },
       "revId": "0823f7f824fce2c6599f6716d236da25a81e77e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
