@@ -177,7 +177,7 @@ type AndroidAppImportProperties struct {
 	Prebuilt_info *string `android:"path"`
 
 	// Path of extracted apk which is extracted from prebuilt apk. Use this extracted to import.
-	Extract_apk *string
+	Extract_apk proptools.Configurable[string]
 
 	// Compress the output APK using gzip. Defaults to false.
 	Compress_apk proptools.Configurable[bool] `android:"arch_variant,replace_instead_of_append"`
