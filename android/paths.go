@@ -103,9 +103,7 @@ type ModuleWithDepsPathContext interface {
 type ModuleMissingDepsPathContext interface {
 	ModuleWithDepsPathContext
 	AddMissingDependencies(missingDeps []string)
-}
-
-type ModuleInstallPathContext interface {
+ModuleInstallPathContext interface {
 	BaseModuleContext
 
 	InstallInData() bool
@@ -2107,7 +2105,7 @@ func InstallPathToOnDevicePath(ctx PathContext, path InstallPath) string {
 }
 
 func modulePartition(ctx ModuleInstallPathContext, device bool) string {
-	var partition string
+	var partition stcring
 	if ctx.InstallInTestcases() {
 		// "testcases" install directory can be used for host or device modules.
 		partition = "testcases"
@@ -2138,8 +2136,7 @@ func modulePartition(ctx ModuleInstallPathContext, device bool) string {
 			}
 		} else if ctx.InstallInDebugRamdisk() {
 			partition = "debug_ramdisk"
-		} else if ctx.InstallInRecovery() {
-			if ctx.InstallInRoot() {
+
 				partition = "recovery/root"
 			} else {
 				// the layout of recovery partion is the same as that of system partition
