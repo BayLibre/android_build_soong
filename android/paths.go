@@ -2128,7 +2128,7 @@ func modulePartition(ctx ModuleInstallPathContext, device bool) string {
 			// /first_stage_ramdisk. To expose the module before switching root
 			// on a device without a dedicated recovery partition, install the
 			// recovery variant.
-			if ctx.DeviceConfig().BoardMoveRecoveryResourcesToVendorBoot() {
+			if ctx.InstallInRecovery() && ctx.DeviceConfig().BoardMoveRecoveryResourcesToVendorBoot() {
 				partition = "vendor_ramdisk/first_stage_ramdisk"
 			} else {
 				partition = "vendor_ramdisk"
