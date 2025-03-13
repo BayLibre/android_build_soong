@@ -253,6 +253,11 @@ func createInstallInRootAllowingRules() []Rule {
 			NotModuleType("prebuilt_first_stage_ramdisk").
 			NotModuleType("prebuilt_res").
 			NotModuleType("prebuilt_any").
+<<<<<<< PATCH SET (5139d7 Add a module type prebuilt_lib_firmware)
+			NotModuleType("prebuilt_lib_firmware").
+||||||| BASE
+=======
+>>>>>>> BASE      (b8c729 Merge "Move requiredDeps to OverridableDepsMutator" into mai)
 			Because("install_in_root is only for init_first_stage or librecovery_ui_ext."),
 	}
 }
