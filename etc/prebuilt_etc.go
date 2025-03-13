@@ -65,6 +65,7 @@ func RegisterPrebuiltEtcBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("prebuilt_font", PrebuiltFontFactory)
 	ctx.RegisterModuleType("prebuilt_overlay", PrebuiltOverlayFactory)
 	ctx.RegisterModuleType("prebuilt_firmware", PrebuiltFirmwareFactory)
+	ctx.RegisterModuleType("prebuilt_lib_firmware", PrebuiltLibFirmwareFactory)
 	ctx.RegisterModuleType("prebuilt_gpu", PrebuiltGPUFactory)
 	ctx.RegisterModuleType("prebuilt_dsp", PrebuiltDSPFactory)
 	ctx.RegisterModuleType("prebuilt_rfsa", PrebuiltRFSAFactory)
@@ -855,6 +856,20 @@ func PrebuiltFirmwareFactory() android.Module {
 	module := &PrebuiltEtc{}
 	module.socInstallDirBase = "firmware"
 	InitPrebuiltEtcModule(module, "etc/firmware")
+	// This module is device-only
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
+	android.InitDefaultableModule(module)
+	return module
+}
+
+// prebuilt_lib_firmware installs a firmware file to <partition>/lib/firmware directory for system
+// image.
+// If soc_specific property is set to true, the firmware file is installed to the
+// vendor <partition>/firmware directory for vendor image.
+func PrebuiltLibFirmwareFactory() android.Module {
+	module := &PrebuiltEtc{}
+	module.socInstallDirBase = "lib/firmware"
+	InitPrebuiltEtcModule(module, "lib/firmware")
 	// This module is device-only
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	android.InitDefaultableModule(module)
