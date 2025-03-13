@@ -16,6 +16,24 @@
       "message": "use the real `etc.PrebuiltDstsProperties` struct",
       "revId": "945a556ceac9e8edd195c1fb6dcd306d42af7a76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abfee17d_8605b47d",
+        "filename": "fsgen/prebuilt_etc_modules_gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-13T17:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c575e81_1b300bfe",
+      "revId": "945a556ceac9e8edd195c1fb6dcd306d42af7a76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
