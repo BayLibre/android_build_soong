@@ -24,6 +24,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/depset"
+	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -958,10 +959,10 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	if ctx.ModuleName() == "framework-res" {
 		// framework-res.apk is installed as system/framework/framework-res.apk
 		a.installDir = android.PathForModuleInstall(ctx, "framework")
-	} else if a.Privileged() {
-		a.installDir = android.PathForModuleInstall(ctx, "priv-app", a.installApkName)
 	} else if ctx.InstallInTestcases() {
 		a.installDir = android.PathForModuleInstall(ctx, a.installApkName, ctx.DeviceConfig().DeviceArch())
+	} else if a.Privileged() {
+		a.installDir = android.PathForModuleInstall(ctx, "priv-app", a.installApkName)
 	} else {
 		a.installDir = android.PathForModuleInstall(ctx, "app", a.installApkName)
 	}
@@ -1657,21 +1658,24 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.data = append(a.data, android.PathsForModuleSrc(ctx, a.testProperties.Device_first_prefer32_data)...)
 	a.data = append(a.data, android.PathsForModuleSrc(ctx, a.testProperties.Host_common_data)...)
 
+	a.data = android.SortedUniquePaths(a.data)
+	a.extraTestConfigs = android.SortedUniquePaths(a.extraTestConfigs)
+
 	// Install test deps
-	if !ctx.Config().KatiEnabled() {
-		pathInTestCases := android.PathForModuleInstall(ctx, ctx.Module().Name())
-		if a.testConfig != nil {
-			ctx.InstallFile(pathInTestCases, ctx.Module().Name()+".config", a.testConfig)
-		}
-		dynamicConfig := android.ExistentPathForSource(ctx, ctx.ModuleDir(), "DynamicConfig.xml")
-		if dynamicConfig.Valid() {
-			ctx.InstallFile(pathInTestCases, ctx.Module().Name()+".dynamic", dynamicConfig.Path())
-		}
-		testDeps := append(a.data, a.extraTestConfigs...)
-		for _, data := range android.SortedUniquePaths(testDeps) {
-			dataPath := android.DataPath{SrcPath: data}
-			ctx.InstallTestData(pathInTestCases, []android.DataPath{dataPath})
-		}
+	pathInTestCases := android.PathForModuleInstall(ctx, ctx.Module().Name())
+	if a.testConfig != nil {
+		ctx.InstallFile(pathInTestCases, ctx.Module().Name()+".config", a.testConfig)
+	}
+	dynamicConfig := android.ExistentPathForSource(ctx, ctx.ModuleDir(), "DynamicConfig.xml")
+	if dynamicConfig.Valid() {
+		ctx.InstallFile(pathInTestCases, ctx.Module().Name()+".dynamic", dynamicConfig.Path())
+	}
+	for _, testConfig := range a.extraTestConfigs {
+		ctx.InstallFile(pathInTestCases, pathtools.ReplaceExtension(testConfig.Base(), "config"), testConfig)
+	}
+	for _, data := range a.data {
+		dataPath := android.DataPath{SrcPath: data}
+		ctx.InstallTestData(pathInTestCases, []android.DataPath{dataPath})
 	}
 
 	android.SetProvider(ctx, tradefed.BaseTestProviderKey, tradefed.BaseTestProviderData{
