@@ -152,6 +152,11 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, moduleDir st
 		if fi.jacocoReportClassesFile != nil {
 			fmt.Fprintln(w, "LOCAL_SOONG_JACOCO_REPORT_CLASSES_JAR :=", fi.jacocoReportClassesFile.String())
 		}
+		// We don't set LOCAL_COMPATABILITY_SUITE on any of these modules, and don't really expect
+		// the full test suite installation process to take place for them. However it still does
+		// for certain modules because make would add a "null-suite" suite by default. Disable that
+		// so that we aren't responsible for installing the test-related files to the right spots.
+		fmt.Fprintln(w, "LOCAL_NO_AUTO_NULL_SUITE := true")
 		switch fi.class {
 		case javaSharedLib:
 			// soong_java_prebuilt.mk sets LOCAL_MODULE_SUFFIX := .jar  Therefore
