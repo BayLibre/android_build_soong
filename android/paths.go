@@ -134,7 +134,7 @@ type baseModuleContextToModuleInstallPathContext struct {
 func (ctx *baseModuleContextToModuleInstallPathContext) InstallInData() bool {
 	return ctx.Module().InstallInData()
 }
-
+git fetch https://android.googlesource.com/platform/build/soong refs/changes/00/3538900/7 && git cherry-pick FETCH_HEAD
 func (ctx *baseModuleContextToModuleInstallPathContext) InstallInTestcases() bool {
 	return ctx.Module().InstallInTestcases()
 }
