@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d60c2e_2dcb4586",
+        "filename": "python/python.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2025-03-13T01:06:05Z",
+      "side": 1,
+      "message": "Please remove this debugging print",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 55
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "952d3349_d7f001ad",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "python/python.go",
+              "range": {
+                "startLine": 403,
+                "startChar": 0,
+                "endLine": 404,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "0823f7f824fce2c6599f6716d236da25a81e77e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc862e0d_99b4b1dc",
+        "filename": "python/scripts/main.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2025-03-13T01:06:05Z",
+      "side": 1,
+      "message": "nit: it would be nice to alphabetize the imports, but it\u0027s not a big deal, we don\u0027t really have any linting set up.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b19b3f78_7ef381e7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "python/scripts/main.py",
+              "range": {
+                "startLine": 3,
+                "startChar": 0,
+                "endLine": 3,
+                "endChar": 0
+              },
+              "replacement": "from pathlib import PurePath\nimport shutil\n"
+            },
+            {
+              "path": "python/scripts/main.py",
+              "range": {
+                "startLine": 4,
+                "startChar": 0,
+                "endLine": 5,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "python/scripts/main.py",
+              "range": {
+                "startLine": 7,
+                "startChar": 0,
+                "endLine": 9,
+                "endChar": 0
+              },
+              "replacement": "import runpy\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0823f7f824fce2c6599f6716d236da25a81e77e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c08803_c77e2cca",
+        "filename": "python/scripts/main.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2025-03-13T01:06:05Z",
+      "side": 1,
+      "message": "😞 I assume it\u0027s infeasible to actually fix these to support looking up these libraries by name rather than with relative paths? We\u0027ve had to fix other libraries to properly support data files via the resource loading apis, vs just using the file APIs (this affects other use cases than just ours too). But this issue is less clear-cut than the resource loading APIs, since we\u0027re having to do this for the linker.\n\nI was going to say that I\u0027m a bit surprised, since my understanding is that python supports a number of other cases where things can be put in dramatically different locations. But after doing some more research, it seems like it\u0027s rather uncommon for many of those to change, and even if they do it\u0027s relatively easy to ignore. There aren\u0027t many cases such as ours where there\u0027s a strong split.",
+      "range": {
+        "startLine": 20,
+        "startChar": 56,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d6239523_dc37b953",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "python/scripts/main.py",
+              "range": {
+                "startLine": 24,
+                "startChar": 0,
+                "endLine": 24,
+                "endChar": 0
+              },
+              "replacement": "# TODO(b/230784044): Remove this workaround once the libraries are fixed.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0823f7f824fce2c6599f6716d236da25a81e77e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4207f62_298c86e4",
+        "filename": "python/scripts/main.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2025-03-13T01:06:05Z",
+      "side": 1,
+      "message": "Please check `.dylib` too, for Mac.",
+      "range": {
+        "startLine": 31,
+        "startChar": 34,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6f2d5e44_1ba81711",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "python/scripts/main.py",
+              "range": {
+                "startLine": 31,
+                "startChar": 0,
+                "endLine": 32,
+                "endChar": 0
+              },
+              "replacement": "    if member.filename.endswith(\u0027.so\u0027) or member.filename.endswith(\u0027.dylib\u0027):\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0823f7f824fce2c6599f6716d236da25a81e77e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
