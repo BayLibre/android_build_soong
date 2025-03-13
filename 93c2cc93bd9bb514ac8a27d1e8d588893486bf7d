@@ -16,6 +16,24 @@
       "message": "I would recommend just sorting the lines in both make and soong. We did a similar change for the regular partition info files: https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/Makefile;l\u003d2369;drc\u003de902b9d1bbbc9ec08e0a9b7cbe28818e2bf6a4f6\n\nThough this also works.",
       "revId": "93c2cc93bd9bb514ac8a27d1e8d588893486bf7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9a35cab_0ed986b3",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-13T01:00:27Z",
+      "side": 1,
+      "message": "Sort is probably the right approach here to get bit-identical text files. I will do so during the conversion of `misc_info.txt`.",
+      "parentUuid": "52a9f4a2_2f130858",
+      "revId": "93c2cc93bd9bb514ac8a27d1e8d588893486bf7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
