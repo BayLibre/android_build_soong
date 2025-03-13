@@ -2620,6 +2620,10 @@ func (c *Module) maybeInstall(ctx ModuleContext, apexInfo android.ApexInfo) {
 		c.SkipInstall()
 	}
 
+	// if ctx.ModuleName() == "libcpu_features-all_libraries" {
+	// 	fmt.Printf("libcpu_features-all_libraries(%s) c.installer not nil? %t, outputfile valid? %t\n", ctx.ModuleSubDir(), c.installer != nil, c.outputFile.Valid())
+	// }
+
 	// Still call c.installer.install though, the installs will be stored as PackageSpecs
 	// to allow using the outputs in a genrule.
 	if c.installer != nil && c.outputFile.Valid() {

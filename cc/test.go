@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 	"strconv"
 
@@ -275,9 +276,9 @@ func (test *testDecorator) moduleInfoJSON(ctx android.ModuleContext, moduleInfoJ
 }
 
 func (test *testDecorator) testSuiteInfo(ctx ModuleContext) {
-	android.SetProvider(ctx, android.TestSuiteInfoProvider, android.TestSuiteInfo{
-		TestSuites: test.InstallerProperties.Test_suites,
-	})
+	// android.SetProvider(ctx, android.TestSuiteInfoProvider, android.TestSuiteInfo{
+	// 	TestSuites: test.InstallerProperties.Test_suites,
+	// })
 }
 
 func NewTestInstaller() *baseInstaller {
@@ -357,6 +358,9 @@ func (test *testBinary) installerProps() []interface{} {
 }
 
 func (test *testBinary) install(ctx ModuleContext, file android.Path) {
+	if ctx.ModuleName() == "libcpu_features-all_libraries" {
+		fmt.Printf("libcpu_features-all_libraries start of install()\n")
+	}
 	dataSrcPaths := android.PathsForModuleSrc(ctx, test.Properties.Data)
 	dataSrcPaths = append(dataSrcPaths, android.PathsForModuleSrc(ctx, test.Properties.Device_common_data)...)
 	dataSrcPaths = append(dataSrcPaths, android.PathsForModuleSrc(ctx, test.Properties.Device_first_data)...)
@@ -422,31 +426,50 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 		test.Properties.Test_options.Unit_test = proptools.BoolPtr(true)
 	}
 
-	if !ctx.Config().KatiEnabled() { // TODO(spandandas): Remove the special case for kati
-		// Install the test config in testcases/ directory for atest.
-		c, ok := ctx.Module().(*Module)
-		if !ok {
-			ctx.ModuleErrorf("Not a cc_test module")
-		}
-		// Install configs in the root of $PRODUCT_OUT/testcases/$module
-		testCases := android.PathForModuleInPartitionInstall(ctx, "testcases", ctx.ModuleName()+c.SubName())
-		if ctx.PrimaryArch() {
-			if test.testConfig != nil {
-				ctx.InstallFile(testCases, ctx.ModuleName()+".config", test.testConfig)
-			}
-			dynamicConfig := android.ExistentPathForSource(ctx, ctx.ModuleDir(), "DynamicConfig.xml")
-			if dynamicConfig.Valid() {
-				ctx.InstallFile(testCases, ctx.ModuleName()+".dynamic", dynamicConfig.Path())
-			}
-			for _, extraTestConfig := range test.extraTestConfigs {
-				ctx.InstallFile(testCases, extraTestConfig.Base(), extraTestConfig)
-			}
-		}
-		// Install tests and data in arch specific subdir $PRODUCT_OUT/testcases/$module/$arch
-		testCases = testCases.Join(ctx, ctx.Target().Arch.ArchType.String())
-		ctx.InstallTestData(testCases, test.data)
-		ctx.InstallFile(testCases, file.Base(), file)
+	// Install the test config in testcases/ directory for atest.
+	c, ok := ctx.Module().(*Module)
+	if !ok {
+		ctx.ModuleErrorf("Not a cc_test module")
 	}
+	// Install configs in the root of $PRODUCT_OUT/testcases/$module. In the root of this folder
+	// will be the test configs, which are the same for all architectures of the test. The actual
+	// executable test binaries will be installed in arch-specific subdirs. This is why we only
+	// install the config file on the primary arch (or primary native bridge arch, as native bridge
+	// has a different .Subname())
+	if ctx.ModuleName() == "libcpu_features-all_libraries" {
+		fmt.Printf("libcpu_features-all_libraries test suites: %#v\n", test.InstallerProperties.Test_suites)
+	}
+	ctx.SetTestSuiteInfo(android.TestSuiteInfo{
+		Name:                 ctx.ModuleName() + c.SubName(),
+		TestSuites:           test.InstallerProperties.Test_suites,
+		MainFile:             file,
+		ConfigFile:           test.testConfig,
+		ExtraConfigs:         test.extraTestConfigs,
+		Data:                 test.data,
+		NeedsArchFolder:      true,
+		PerTestcaseDirectory: Bool(test.Properties.Per_testcase_directory),
+	})
+	// testCases := android.PathForModuleInPartitionInstall(ctx, "testcases", ctx.ModuleName()+c.SubName())
+	// if ctx.PrimaryArch() || ctx.PrimaryNativeBridgeArch() {
+	// 	if test.testConfig != nil {
+	// 		ctx.InstallFile(testCases, ctx.ModuleName()+c.SubName()+".config", test.testConfig)
+	// 	}
+	// 	dynamicConfig := android.ExistentPathForSource(ctx, ctx.ModuleDir(), "DynamicConfig.xml")
+	// 	if dynamicConfig.Valid() {
+	// 		ctx.InstallFile(testCases, ctx.ModuleName()+c.SubName()+".dynamic", dynamicConfig.Path())
+	// 	}
+	// 	for _, extraTestConfig := range test.extraTestConfigs {
+	// 		ctx.InstallFile(testCases, extraTestConfig.Base(), extraTestConfig)
+	// 	}
+	// }
+	// // Install tests and data in arch specific subdir $PRODUCT_OUT/testcases/$module/$arch
+	// if ctx.Target().NativeBridge {
+	// 	testCases = testCases.Join(ctx, ctx.Target().NativeBridgeHostArchName)
+	// } else {
+	// 	testCases = testCases.Join(ctx, ctx.Target().Arch.ArchType.String())
+	// }
+	// ctx.InstallTestData(testCases, test.data)
+	// ctx.InstallFile(testCases, file.Base(), file)
 
 	test.binaryDecorator.baseInstaller.installTestData(ctx, test.data)
 	test.binaryDecorator.baseInstaller.install(ctx, file)
@@ -588,6 +611,25 @@ func (test *testLibrary) moduleInfoJSON(ctx ModuleContext, moduleInfoJSON *andro
 	test.testDecorator.moduleInfoJSON(ctx, moduleInfoJSON)
 }
 
+func (test *testLibrary) install(ctx ModuleContext, file android.Path) {
+	test.libraryDecorator.install(ctx, file)
+
+	c, ok := ctx.Module().(*Module)
+	if !ok {
+		ctx.ModuleErrorf("Expected a cc module")
+	}
+	// host tests are not installed to testcases/ as per:
+	// https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/base_rules.mk;l=251;drc=45efec6797cbf812df34dac9d05e43a9fe7217e0
+	if test.shared() {
+		ctx.SetTestSuiteInfo(android.TestSuiteInfo{
+			Name:            ctx.ModuleName() + c.SubName(),
+			TestSuites:      test.InstallerProperties.Test_suites,
+			NeedsArchFolder: true,
+			MainFile:        file,
+		})
+	}
+}
+
 func (test *testLibrary) testSuiteInfo(ctx ModuleContext) {
 	test.testDecorator.testSuiteInfo(ctx)
 }
@@ -684,6 +726,39 @@ func (benchmark *benchmarkDecorator) install(ctx ModuleContext, file android.Pat
 	benchmark.binaryDecorator.baseInstaller.dir64 = filepath.Join("benchmarktest64", ctx.ModuleName())
 	benchmark.binaryDecorator.baseInstaller.installTestData(ctx, benchmark.data)
 	benchmark.binaryDecorator.baseInstaller.install(ctx, file)
+
+	c, ok := ctx.Module().(*Module)
+	if !ok {
+		ctx.ModuleErrorf("Not a cc module")
+	}
+
+	if ctx.ModuleName() == "libcpu_features-all_libraries" {
+		fmt.Printf("libcpu_features-all_libraries test suites: %#v\n", benchmark.Properties.Test_suites)
+	}
+
+	// Install configs in the root of $PRODUCT_OUT/testcases/$module
+	ctx.SetTestSuiteInfo(android.TestSuiteInfo{
+		Name:            ctx.ModuleName() + c.SubName(),
+		TestSuites:      benchmark.Properties.Test_suites,
+		MainFile:        file,
+		ConfigFile:      benchmark.testConfig,
+		Data:            benchmark.data,
+		NeedsArchFolder: true,
+	})
+	// testCases := android.PathForModuleInPartitionInstall(ctx, "testcases", ctx.ModuleName()+c.SubName())
+	// if ctx.PrimaryArch() {
+	// 	if benchmark.testConfig != nil {
+	// 		ctx.InstallFile(testCases, ctx.ModuleName()+c.SubName()+".config", benchmark.testConfig)
+	// 	}
+	// 	dynamicConfig := android.ExistentPathForSource(ctx, ctx.ModuleDir(), "DynamicConfig.xml")
+	// 	if dynamicConfig.Valid() {
+	// 		ctx.InstallFile(testCases, ctx.ModuleName()+c.SubName()+".dynamic", dynamicConfig.Path())
+	// 	}
+	// }
+	// // Install tests and data in arch specific subdir $PRODUCT_OUT/testcases/$module/$arch
+	// testCases = testCases.Join(ctx, ctx.Target().Arch.ArchType.String())
+	// ctx.InstallTestData(testCases, benchmark.data)
+	// ctx.InstallFile(testCases, file.Base(), file)
 }
 
 func (benchmark *benchmarkDecorator) moduleInfoJSON(ctx ModuleContext, moduleInfoJSON *android.ModuleInfoJSON) {
@@ -710,9 +785,9 @@ func (benchmark *benchmarkDecorator) moduleInfoJSON(ctx ModuleContext, moduleInf
 }
 
 func (benchmark *benchmarkDecorator) testSuiteInfo(ctx ModuleContext) {
-	android.SetProvider(ctx, android.TestSuiteInfoProvider, android.TestSuiteInfo{
-		TestSuites: benchmark.Properties.Test_suites,
-	})
+	// android.SetProvider(ctx, android.TestSuiteInfoProvider, android.TestSuiteInfo{
+	// 	TestSuites: benchmark.Properties.Test_suites,
+	// })
 }
 
 func NewBenchmark(hod android.HostOrDeviceSupported) *Module {
