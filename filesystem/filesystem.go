@@ -952,7 +952,7 @@ func (f *filesystem) copyPackagingSpecs(ctx android.ModuleContext, builder *andr
 }
 
 func (f *filesystem) rootDirString() string {
-	return f.partitionName()
+	return "system-target-" + f.partitionName()
 }
 
 type buildImageParams struct {
