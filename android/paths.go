@@ -134,7 +134,7 @@ type baseModuleContextToModuleInstallPathContext struct {
 func (ctx *baseModuleContextToModuleInstallPathContext) InstallInData() bool {
 	return ctx.Module().InstallInData()
 }
-
+git fetch https://android.googlesource.com/platform/build/soong refs/changes/00/3538900/7 && git cherry-pick FETCH_HEAD
 func (ctx *baseModuleContextToModuleInstallPathContext) InstallInTestcases() bool {
 	return ctx.Module().InstallInTestcases()
 }
@@ -683,7 +683,7 @@ func getPathsFromModuleDep(ctx ModuleWithDepsPathContext, path, moduleName, tag 
 	if module == nil {
 		return nil, missingDependencyError{[]string{moduleName}}
 	}
-	if !OtherModuleProviderOrDefault(ctx, *module, CommonModuleInfoProvider).Enabled {
+	if !OtherModulePointerProviderOrDefault(ctx, *module, CommonModuleInfoProvider).Enabled {
 		return nil, missingDependencyError{[]string{moduleName}}
 	}
 
