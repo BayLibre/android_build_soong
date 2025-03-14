@@ -34,6 +34,24 @@
       "parentUuid": "4d242b32_0cbbab9a",
       "revId": "af3bdffd6393a0ff372bca2c45f03d1f382b07f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e73c8012_1dd44660",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-14T18:30:34Z",
+      "side": 1,
+      "message": "We haven\u0027t decided if we actually want to have a bunch of different prebuilt_* modules or figure out some better design like prebuilt_any or something entirely different. The neverallow rules allow us to reserve the right to remove these modules later if we decide we don\u0027t need them.\n\nWe don\u0027t have any product 100% working in soong-only builds yet. Although the long term plan is to check the generated modules into Android.bp files, we don\u0027t want to do that yet so it\u0027s easy to make changes and just autogenerate different modules.\n\nI personally don\u0027t really mind this cl, if we need prebuilt_any for these random file locations that keep popping up we could replace all the other prebuilt_ module types with it. If it\u0027s neverallowed we can switch back to them later.",
+      "parentUuid": "f465931d_3606c8c1",
+      "revId": "af3bdffd6393a0ff372bca2c45f03d1f382b07f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
