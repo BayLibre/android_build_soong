@@ -322,6 +322,16 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 		return false
 	}
 
+	checkModuleString := func(m android.Module, matcher func(actual interface{}) string) string {
+		for _, prop := range m.GetProperties() {
+
+			if str := matcher(prop); str != "" {
+				return str
+			}
+		}
+		return ""
+	}
+
 	// check generated prebuilt_* module type install path and install partition
 	generatedModule := result.ModuleForTests(t, "system-frameworks_base_config-etc-0", "android_arm64_armv8-a").Module()
 	etcModule, _ := generatedModule.(*etc.PrebuiltEtc)
@@ -342,12 +352,18 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 
 	// check generated prebuilt_* module specifies correct relative_install_path property
 	generatedModule = result.ModuleForTests(t, "system-frameworks_base_data_keyboards-usr_keylayout_subdir-0", "android_arm64_armv8-a").Module()
-	etcModule, _ = generatedModule.(*etc.PrebuiltEtc)
+	eval := generatedModule.ConfigurableEvaluator(android.PanickingConfigAndErrorContext(result.TestContext))
 	android.AssertStringEquals(
 		t,
-		"module expected to set correct relative_install_path properties",
-		"subdir",
-		etcModule.SubDir(),
+		"module expected to set correct dstr property",
+		"subdir/Vendor_0079_Product_0011.kl",
+		checkModuleString(generatedModule, func(actual interface{}) string {
+			if p, ok := actual.(*etc.PrebuiltDstsProperties); ok {
+				dsts := p.Dsts.GetOrDefault(eval, nil)
+				return dsts[0];
+			}
+			return ""
+		}),
 	)
 
 	// check that prebuilt_* module is not generated for non existing source file
@@ -363,7 +379,7 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 	generatedModule1 := result.ModuleForTests(t, "product-device_sample_etc-etc-1", "android_arm64_armv8-a").Module()
 
 	// check that generated prebuilt_* module sets correct srcs and dsts property
-	eval := generatedModule0.ConfigurableEvaluator(android.PanickingConfigAndErrorContext(result.TestContext))
+	eval = generatedModule0.ConfigurableEvaluator(android.PanickingConfigAndErrorContext(result.TestContext))
 	android.AssertBoolEquals(
 		t,
 		"module expected to set correct srcs property",
@@ -415,6 +431,67 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 				dsts := p.Dsts.GetOrDefault(eval, nil)
 				return len(dsts) == 1 &&
 					dsts[0] == "apns-conf-2.xml"
+			}
+			return false
+		}),
+	)
+
+	generatedModule2 := result.ModuleForTests(t, "system-device_sample_etc-foo-0", "android_common").Module()
+	generatedModule3 := result.ModuleForTests(t, "system-device_sample_etc-foo-1", "android_common").Module()
+
+	// check that generated prebuilt_* module sets correct srcs and dsts property
+	eval = generatedModule2.ConfigurableEvaluator(android.PanickingConfigAndErrorContext(result.TestContext))
+	android.AssertBoolEquals(
+		t,
+		"module expected to set correct srcs property",
+		true,
+		checkModuleProp(generatedModule2, func(actual interface{}) bool {
+			if p, ok := actual.(*etc.PrebuiltEtcProperties); ok {
+				srcs := p.Srcs.GetOrDefault(eval, nil)
+				return len(srcs) == 1 &&
+					srcs[0] == "apns-full-conf.xml"
+			}
+			return false
+		}),
+	)
+	android.AssertBoolEquals(
+		t,
+		"module expected to set correct dsts property",
+		true,
+		checkModuleProp(generatedModule2, func(actual interface{}) bool {
+			if p, ok := actual.(*etc.PrebuiltDstsProperties); ok {
+				dsts := p.Dsts.GetOrDefault(eval, nil)
+				return len(dsts) == 1 &&
+					dsts[0] == "foo/file.txt"
+			}
+			return false
+		}),
+	)
+
+	// check that generated prebuilt_* module sets correct srcs and dsts property
+	eval = generatedModule3.ConfigurableEvaluator(android.PanickingConfigAndErrorContext(result.TestContext))
+	android.AssertBoolEquals(
+		t,
+		"module expected to set correct srcs property",
+		true,
+		checkModuleProp(generatedModule3, func(actual interface{}) bool {
+			if p, ok := actual.(*etc.PrebuiltEtcProperties); ok {
+				srcs := p.Srcs.GetOrDefault(eval, nil)
+				return len(srcs) == 1 &&
+					srcs[0] == "apns-full-conf.xml"
+			}
+			return false
+		}),
+	)
+	android.AssertBoolEquals(
+		t,
+		"module expected to set correct dsts property",
+		true,
+		checkModuleProp(generatedModule3, func(actual interface{}) bool {
+			if p, ok := actual.(*etc.PrebuiltDstsProperties); ok {
+				dsts := p.Dsts.GetOrDefault(eval, nil)
+				return len(dsts) == 1 &&
+					dsts[0] == "foo/apns-full-conf.xml"
 			}
 			return false
 		}),

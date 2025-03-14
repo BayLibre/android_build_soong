@@ -318,12 +318,8 @@ func createPrebuiltEtcModulesInDirectory(ctx android.LoadHookContext, partition,
 		modulePropsPtr := &moduleProps
 		propsList := []interface{}{modulePropsPtr}
 
-		allCopyFileNamesUnchanged := true
 		var srcBaseFiles, installBaseFiles []string
 		for _, tuple := range srcTuple {
-			if tuple.srcBaseFile != tuple.installBaseFile {
-				allCopyFileNamesUnchanged = false
-			}
 			srcBaseFiles = append(srcBaseFiles, tuple.srcBaseFile)
 			installBaseFiles = append(installBaseFiles, tuple.installBaseFile)
 		}
@@ -338,33 +334,18 @@ func createPrebuiltEtcModulesInDirectory(ctx android.LoadHookContext, partition,
 			})
 		}
 
-		// Set appropriate srcs, dsts, and releative_install_path based on
-		// the source and install file names
-		if allCopyFileNamesUnchanged {
-			modulePropsPtr.Srcs = srcBaseFiles
+		modulePropsPtr.Srcs = srcBaseFiles
+		dsts := proptools.NewConfigurable[[]string](nil, nil)
+		for _, installBaseFile := range installBaseFiles {
+			dsts.AppendSimpleValue([]string{filepath.Join(relDestDirFromInstallDirBase, installBaseFile)})
+		}
 
-			// Specify relative_install_path if it is not installed in the root directory of the
-			// partition
-			if !android.InList(relDestDirFromInstallDirBase, []string{"", "."}) {
-				propsList = append(propsList, &prebuiltSubdirProperties{
-					Relative_install_path: proptools.StringPtr(relDestDirFromInstallDirBase),
-				})
-			}
-		} else {
-			// If dsts property has to be set and the selected module type is prebuilt_root,
-			// use prebuilt_any instead.
-			if etcInstallPathKey == "" {
-				moduleFactory = etc.PrebuiltAnyFactory
-			}
-			modulePropsPtr.Srcs = srcBaseFiles
-			dsts := proptools.NewConfigurable[[]string](nil, nil)
-			for _, installBaseFile := range installBaseFiles {
-				dsts.AppendSimpleValue([]string{filepath.Join(relDestDirFromInstallDirBase, installBaseFile)})
-			}
+		propsList = append(propsList, &etc.PrebuiltDstsProperties{
+			Dsts: dsts,
+		})
 
-			propsList = append(propsList, &etc.PrebuiltDstsProperties{
-				Dsts: dsts,
-			})
+		if etcInstallPathKey == "" {
+			moduleFactory = etc.PrebuiltAnyFactory
 		}
 
 		ctx.CreateModuleInDirectory(moduleFactory, srcDir, propsList...)
