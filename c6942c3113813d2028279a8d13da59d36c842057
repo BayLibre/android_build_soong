@@ -16,6 +16,24 @@
       "message": "(fake +2 because treehugger won\u0027t run otherwise.)",
       "revId": "c6942c3113813d2028279a8d13da59d36c842057",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f93c68_e2783b35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2025-03-14T15:35:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa720838_309bddde",
+      "revId": "c6942c3113813d2028279a8d13da59d36c842057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
