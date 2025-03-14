@@ -34,6 +34,24 @@
       "parentUuid": "5d80486b_8931f711",
       "revId": "bafaabae2346a5ec93341836662288cc180a0bc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "806a89dd_7810d3bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-14T18:15:33Z",
+      "side": 1,
+      "message": "FYI it might make sense to add it to the product_variable function: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/module.go;l\u003d2639;drc\u003d55c03f03869351d6316bb41ecd1140e42df2dbec\n\nIf the followup cl is going to come so soon (later today) I really don\u0027t see the point in doing this interm cl.",
+      "parentUuid": "d92d078e_01509ef2",
+      "revId": "bafaabae2346a5ec93341836662288cc180a0bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
