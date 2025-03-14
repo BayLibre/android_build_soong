@@ -481,7 +481,7 @@ func PrebuiltSourceDepsMutator(ctx BottomUpMutatorContext) {
 		if ctx.OtherModuleExists("all_apex_contributions") {
 			ctx.AddDependency(m, AcDepTag, "all_apex_contributions")
 		}
-		if m.Enabled(ctx) && !p.properties.PrebuiltRenamedToSource {
+		if (m.Enabled(ctx) || ctx.Config().AlwaysUsePrebuiltSdks()) && !p.properties.PrebuiltRenamedToSource {
 			// If this module is a prebuilt, is enabled and has not been renamed to source then add a
 			// dependency onto the source if it is present.
 			bmn, _ := m.(baseModuleName)
