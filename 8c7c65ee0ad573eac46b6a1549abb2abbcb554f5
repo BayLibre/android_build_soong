@@ -16,6 +16,24 @@
       "message": "this file is just for `embedded_lancher: true` python binaries. We should make it an error to specify shared_libs when `embedded_launcher: false`.",
       "revId": "8c7c65ee0ad573eac46b6a1549abb2abbcb554f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a7e9953_ec58ffd2",
+        "filename": "python/scripts/main.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3285260
+      },
+      "writtenOn": "2025-03-14T14:09:07Z",
+      "side": 1,
+      "message": "Sounds good, I have a follow up to add unit tests, I\u0027ll make the fix when I add those added a note to the bug so I don\u0027t forget.",
+      "parentUuid": "7de324ce_3a5bb2ae",
+      "revId": "8c7c65ee0ad573eac46b6a1549abb2abbcb554f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
