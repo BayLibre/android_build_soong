@@ -52,6 +52,24 @@
       "parentUuid": "d92d078e_01509ef2",
       "revId": "bafaabae2346a5ec93341836662288cc180a0bc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf69d6c8_6de3f43d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-14T18:35:24Z",
+      "side": 1,
+      "message": "Sounds good, I have created https://android-review.git.corp.google.com/q/topic:%22aapt2_dup_install_rules%22 to use soong-selects and not have this special case",
+      "parentUuid": "806a89dd_7810d3bf",
+      "revId": "bafaabae2346a5ec93341836662288cc180a0bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
