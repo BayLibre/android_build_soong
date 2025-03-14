@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d80486b_8931f711",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-14T17:57:22Z",
+      "side": 1,
+      "message": "Why are we not doing that straight away? isn\u0027t it trivial in this case?",
+      "revId": "bafaabae2346a5ec93341836662288cc180a0bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
