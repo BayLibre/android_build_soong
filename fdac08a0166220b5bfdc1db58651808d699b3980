@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb436b89_dd45d0d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-14T15:27:22Z",
+      "side": 1,
+      "message": "generatedModule3 fails on main at the moment, removing the \"same basename\" handling solves the problem, but then prebuilt_any and prebuilt_root would be at odds which each other I think, and given prebuilt_root doesn\u0027t support Dsts I just decided to remove the whole logic and simply use prebuilt_any for everything.\n\nI don\u0027t really know if it makes sense to split this change into pieaces (if possible?), but let me know",
+      "revId": "fdac08a0166220b5bfdc1db58651808d699b3980",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
