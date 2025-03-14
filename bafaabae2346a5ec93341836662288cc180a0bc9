@@ -16,6 +16,24 @@
       "message": "Why are we not doing that straight away? isn\u0027t it trivial in this case?",
       "revId": "bafaabae2346a5ec93341836662288cc180a0bc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d92d078e_01509ef2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-14T18:05:04Z",
+      "side": 1,
+      "message": "It will likely require creation of a new soong config variable to select on. Although it is still trivial, I would like to defer that plumbing to a followup CL later today. I will also remove `Always_use_prebuilt_sdks.Enabled` property from `build/soong` as part of that cleanup.",
+      "parentUuid": "5d80486b_8931f711",
+      "revId": "bafaabae2346a5ec93341836662288cc180a0bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
