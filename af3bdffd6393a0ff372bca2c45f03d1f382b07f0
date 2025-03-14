@@ -52,6 +52,24 @@
       "parentUuid": "f465931d_3606c8c1",
       "revId": "af3bdffd6393a0ff372bca2c45f03d1f382b07f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19626280_95d3d75f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-14T18:41:47Z",
+      "side": 1,
+      "message": "I already have 3 more changes to add OEM/ODM/vendor specific modules in our downstream set of open changes, and rather then spamming you all with more of those useless changes I thought it would be easier to simply do that.\n\nAlso I didn\u0027t actually verify but I assume having all those module names reversed to hidden modules won\u0027t let me create them as simple soong extensions with sane names, prebuilt_lineage_gpu sounds rather cumbersome...\n\nprebuilt_any is anonymous enough, and still let you not expose those intrinsics to possible users, until you find a proper solution.\n\nI\u0027m not saying I want this merged, but with possibility of removal of all the current hidden modules (that I have locally in case that would be ok) would allow us to create at least some custom modules with sane-names to migrate to soong only our copy files, and that might be enough for us.\nOur biggest .mk at the moment are those endless list of copy rules of vendor files that aren\u0027t yet Soong modules (everything else is)",
+      "parentUuid": "e73c8012_1dd44660",
+      "revId": "af3bdffd6393a0ff372bca2c45f03d1f382b07f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
