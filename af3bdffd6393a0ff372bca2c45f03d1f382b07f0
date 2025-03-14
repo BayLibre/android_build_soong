@@ -16,6 +16,24 @@
       "message": "prebuilt etc gen is an interim solution for supporting soong only build until product configuration is fully migrated to Soong. In the long run, we will not be auto generating the prebuilt_* modules from `PRODUCT_COPY_FILES` but check in the modules in the Android.bp files to replace the functionality of `PRODUCT_COPY_FILES`.\n\nConverting all `PRODUCT_COPY_FILES` entries using `prebuilt_any` module type would lead to additional burden when checking in the modules in the Android.bp files, given that `prebuilt_any` module should not be used in Android.bp files. Thus, the auto generation using prebuilt_any should be restrictive and used as a \"fall-back\" behavior, not the default one.",
       "revId": "af3bdffd6393a0ff372bca2c45f03d1f382b07f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f465931d_3606c8c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-14T18:17:50Z",
+      "side": 1,
+      "message": "I\u0027m all for that, but currently not exposing these modules doesn\u0027t easily let me translate to .bp modules.\n\nWe generate the rules and can easily migrate them, but with the current neverallows in place we _can\u0027t_ do that.\n\nI don\u0027t know how not exposing them can help with the transition, it\u0027s not like we can even extract them directly to be imported in our trees, more so with neverallows.\n\nAlso what\u0027s up with the logic to use prebuilt_any only when base names match? Is there any advantage?",
+      "parentUuid": "4d242b32_0cbbab9a",
+      "revId": "af3bdffd6393a0ff372bca2c45f03d1f382b07f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
