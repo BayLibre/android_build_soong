@@ -333,12 +333,12 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 	}
 
 	// check generated prebuilt_* module type install path and install partition
-	generatedModule := result.ModuleForTests(t, "system-frameworks_base_config-etc-0", "android_arm64_armv8-a").Module()
+	generatedModule := result.ModuleForTests(t, "system-frameworks_base_config-etc-0", "android_common").Module()
 	etcModule, _ := generatedModule.(*etc.PrebuiltEtc)
 	android.AssertStringEquals(
 		t,
-		"module expected to have etc install path",
-		"etc",
+		"module expected to have . install path",
+		".",
 		etcModule.BaseDir(),
 	)
 	android.AssertBoolEquals(
@@ -351,12 +351,12 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 	)
 
 	// check generated prebuilt_* module specifies correct relative_install_path property
-	generatedModule = result.ModuleForTests(t, "system-frameworks_base_data_keyboards-usr_keylayout_subdir-0", "android_arm64_armv8-a").Module()
+	generatedModule = result.ModuleForTests(t, "system-frameworks_base_data_keyboards-usr_keylayout_subdir-0", "android_common").Module()
 	eval := generatedModule.ConfigurableEvaluator(android.PanickingConfigAndErrorContext(result.TestContext))
 	android.AssertStringEquals(
 		t,
 		"module expected to set correct dstr property",
-		"subdir/Vendor_0079_Product_0011.kl",
+		"usr/keylayout/subdir/Vendor_0079_Product_0011.kl",
 		checkModuleString(generatedModule, func(actual interface{}) string {
 			if p, ok := actual.(*etc.PrebuiltDstsProperties); ok {
 				dsts := p.Dsts.GetOrDefault(eval, nil)
@@ -375,8 +375,8 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 	)
 
 	// check that duplicate src file can exist in PRODUCT_COPY_FILES and generates separate modules
-	generatedModule0 := result.ModuleForTests(t, "product-device_sample_etc-etc-0", "android_arm64_armv8-a").Module()
-	generatedModule1 := result.ModuleForTests(t, "product-device_sample_etc-etc-1", "android_arm64_armv8-a").Module()
+	generatedModule0 := result.ModuleForTests(t, "product-device_sample_etc-etc-0", "android_common").Module()
+	generatedModule1 := result.ModuleForTests(t, "product-device_sample_etc-etc-1", "android_common").Module()
 
 	// check that generated prebuilt_* module sets correct srcs and dsts property
 	eval = generatedModule0.ConfigurableEvaluator(android.PanickingConfigAndErrorContext(result.TestContext))
@@ -401,7 +401,7 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 			if p, ok := actual.(*etc.PrebuiltDstsProperties); ok {
 				dsts := p.Dsts.GetOrDefault(eval, nil)
 				return len(dsts) == 1 &&
-					dsts[0] == "apns-conf.xml"
+					dsts[0] == "etc/apns-conf.xml"
 			}
 			return false
 		}),
@@ -430,7 +430,7 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 			if p, ok := actual.(*etc.PrebuiltDstsProperties); ok {
 				dsts := p.Dsts.GetOrDefault(eval, nil)
 				return len(dsts) == 1 &&
-					dsts[0] == "apns-conf-2.xml"
+					dsts[0] == "etc/apns-conf-2.xml"
 			}
 			return false
 		}),
