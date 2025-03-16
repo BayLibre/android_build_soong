@@ -69,7 +69,6 @@ func createBootImage(ctx android.LoadHookContext, dtbImg dtbImg) bool {
 	ctx.CreateModule(
 		filesystem.BootimgFactory,
 		&filesystem.BootimgProperties{
-			Boot_image_type:             proptools.StringPtr("boot"),
 			Kernel_prebuilt:             proptools.StringPtr(":" + kernelFilegroupName),
 			Header_version:              proptools.StringPtr(partitionVariables.BoardBootHeaderVersion),
 			Partition_size:              partitionSize,
