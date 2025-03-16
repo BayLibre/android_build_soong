@@ -554,8 +554,6 @@ type ProductVariables struct {
 	OdmManifestFiles       []string `json:",omitempty"`
 
 	UseSoongNoticeXML *bool `json:",omitempty"`
-
-	StripByDefault *bool `json:",omitempty"`
 }
 
 type PartitionQualifiedVariablesType struct {
