@@ -51,6 +51,24 @@
       "parentUuid": "52a4852d_f5c92d2d",
       "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c2ebb93_43375370",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2025-03-17T20:34:40Z",
+      "side": 1,
+      "message": "Chris, can you provide an example (perhaps a link to an unmerged CL) of how you intended to use this, so we can discuss how to implement it?\n\nColin, Pirama: note that ART_USE_SIMULATOR is not something we intend to use in production; this will only be used by ART/ARM developers. The usual host/target assumptions break here because we want to run simulator on x86_64 and simulate arm64 - the arch switch is not static and happens at runtime when the control flow goes to/from simulator, so different parts of ART have to be built for different arches.",
+      "parentUuid": "2cb8923e_08b7289b",
+      "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
