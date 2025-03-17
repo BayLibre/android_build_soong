@@ -33,6 +33,24 @@
       "message": "@pirama@google.com for whether we want to relax this requirement.\n\nAdding `-target` to the command line can easily cause incompatibilities with other flags, especially around clang updates.  This check was added because a clang update stopped accepting `-march\u003d` arguments when `-target\u003dbpf` was added to the comamnd line, but could easily also fail for your use case if Soong added x86-specific flags to the command line, or clang became stricter about existing nonsensical x86 flags.",
       "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb8923e_08b7289b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2025-03-17T20:03:27Z",
+      "side": 1,
+      "message": "Agree with ccross.  Relaxing this will create regressions for compiler updates or build system changes.",
+      "parentUuid": "52a4852d_f5c92d2d",
+      "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
