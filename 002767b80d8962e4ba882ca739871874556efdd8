@@ -16,6 +16,24 @@
       "message": "Why if allCopyFileNamesUnchanged is true we won\u0027t allow the use of prebuily_any?\n\nAnd why is it expected that only if the base file names are matching we are allowed to use prebuilt_root?\nCan\u0027t we copy files with different dest name with prebuilt_root?\n\nOn my end I removed all this custom handling and default \"\" to prebuilt_any and with a few more tests everything seems to behave as expected.\n\nhttps://android-review.googlesource.com/c/platform/build/soong/+/3542262 see for WIP/not cleaned up changes that seem to behave as expected on my end.",
       "revId": "002767b80d8962e4ba882ca739871874556efdd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc2d4cfd_f750ea33",
+        "filename": "fsgen/prebuilt_etc_modules_gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-18T20:32:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "64f56c7b_62e9d85f",
+      "revId": "002767b80d8962e4ba882ca739871874556efdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
