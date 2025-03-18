@@ -767,6 +767,7 @@ func TestDebugReleaseFlags(t *testing.T) {
 		name          string
 		envVar        string
 		isEng         bool
+		javaUseD8     string
 		useD8         bool
 		dxFlags       string
 		expectedFlags string
@@ -797,13 +798,17 @@ func TestDebugReleaseFlags(t *testing.T) {
 		},
 		{
 			name:          "app_eng",
+			useD8:         true,
 			isEng:         true,
+			javaUseD8:     "true",
 			expectedFlags: "--debug",
 		},
 		{
-			name:    "app_release_eng",
-			isEng:   true,
-			dxFlags: "--release",
+			name:      "app_release_eng",
+			isEng:     true,
+			javaUseD8: "true",
+			useD8:     true,
+			dxFlags:   "--release",
 			// Eng mode does *not* override explicit dxflags.
 			expectedFlags: "--release",
 		},
@@ -831,6 +836,7 @@ func TestDebugReleaseFlags(t *testing.T) {
 				android.FixtureModifyProductVariables(
 					func(variables android.FixtureProductVariables) {
 						variables.Eng = proptools.BoolPtr(tc.isEng)
+						variables.BuildFlags["RELEASE_JAVA_USE_D8"] = tc.javaUseD8
 					},
 				),
 			)
