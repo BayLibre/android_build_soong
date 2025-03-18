@@ -87,6 +87,24 @@
       "parentUuid": "2c2ebb93_43375370",
       "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd1d5a72_f50b8553",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-03-18T16:12:16Z",
+      "side": 1,
+      "message": "I think this would work better if you used the device variants compiled for arm64 to combine with the host code.  You can see how we do that for Java code [here](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/device_host_converter.go), and an example of its is usage [here](https://cs.android.com/android/platform/superproject/main/+/main:development/build/Android.bp;l\u003d161;drc\u003dd5b42c1f5bccdac42be2ae134b089bdd2814be78).  A similar approach should work for native code, especially if you can limit it to simple modules like cc_object or cc_genrule.",
+      "parentUuid": "0c558f67_66e69605",
+      "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
