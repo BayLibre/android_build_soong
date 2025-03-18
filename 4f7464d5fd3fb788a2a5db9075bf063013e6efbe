@@ -34,6 +34,24 @@
       "parentUuid": "cba3e479_15c1fabb",
       "revId": "4f7464d5fd3fb788a2a5db9075bf063013e6efbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aee3971_9b9b6b9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2025-03-18T04:00:55Z",
+      "side": 1,
+      "message": "That is absolutely right. Done.",
+      "parentUuid": "86ccbc18_855d1941",
+      "revId": "4f7464d5fd3fb788a2a5db9075bf063013e6efbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
