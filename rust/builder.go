@@ -376,7 +376,7 @@ func transformSrctoCrate(ctx android.ModuleContext, main android.Path, deps Path
 
 		rustcFlags = append(rustcFlags, "-C incremental="+incrementalPath)
 	} else {
-		rustcFlags = append(rustcFlags, "-C codegen-units=1")
+		rustcFlags = append(rustcFlags, "-C codegen-units=16")
 	}
 
 	// Disallow experimental features
