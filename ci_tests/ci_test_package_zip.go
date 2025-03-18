@@ -40,7 +40,8 @@ type testPackageZip struct {
 
 	properties CITestPackageProperties
 
-	output android.Path
+	output    android.Path
+	emptyFile android.Path
 }
 
 type CITestPackageProperties struct {
@@ -156,6 +157,8 @@ func (p *testPackageZip) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 		distedName := ctx.Config().Getenv("TARGET_PRODUCT") + "-tests-FILE_NAME_TAG_PLACEHOLDER.zip"
 		ctx.DistForGoalWithFilename("platform_tests", p.output, distedName)
 	}
+
+	p.emptyFile = android.PathForModuleOut(ctx, "empty_file")
 }
 
 func createOutput(ctx android.ModuleContext, pctx android.PackageContext) android.ModuleOutPath {
@@ -284,6 +287,10 @@ func (p *testPackageZip) AndroidMkEntries() []android.AndroidMkEntries {
 		android.AndroidMkEntries{
 			Class:      "ETC",
 			OutputFile: android.OptionalPathForPath(p.output),
+			ExtraEntries: []android.AndroidMkExtraEntriesFunc{
+				func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+					entries.SetPath("LOCAL_SOONG_INSTALLED_MODULE", p.emptyFile)
+				}},
 		},
 	}
 }
