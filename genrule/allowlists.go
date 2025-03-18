@@ -17,6 +17,7 @@ package genrule
 var (
 	SandboxingDenyModuleList = []string{
 		// go/keep-sorted start
+		"otatools_package_cert_files",
 		// go/keep-sorted end
 	}
 )
