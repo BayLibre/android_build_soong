@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0a8b50_8f8a404c",
+        "filename": "android/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-18T03:50:04Z",
+      "side": 1,
+      "message": "The thumbprint and fingerprint are different files (confusingly). This should just use deviceNameToInstall, right?",
+      "range": {
+        "startLine": 1006,
+        "startChar": 11,
+        "endLine": 1006,
+        "endChar": 30
+      },
+      "revId": "6f32805b58a1f7ccf388934138d4c1603519c5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e92bfb_afe313ba",
+        "filename": "android/early_module_context.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-18T03:50:04Z",
+      "side": 1,
+      "message": "Why are we checking ImageVariation here? At least leave a comment.",
+      "range": {
+        "startLine": 149,
+        "startChar": 44,
+        "endLine": 149,
+        "endChar": 99
+      },
+      "revId": "6f32805b58a1f7ccf388934138d4c1603519c5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
