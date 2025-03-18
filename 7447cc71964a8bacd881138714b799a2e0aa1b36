@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1386934e_967155f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-18T13:52:43Z",
+      "side": 1,
+      "message": "Seems to behave as expected on my side, uploaded augmented tests here https://android-review.googlesource.com/c/platform/build/soong/+/3549239",
+      "revId": "7447cc71964a8bacd881138714b799a2e0aa1b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8419e060_a84d8f57",
         "filename": "fsgen/prebuilt_etc_modules_gen.go",
         "patchSetId": 1
