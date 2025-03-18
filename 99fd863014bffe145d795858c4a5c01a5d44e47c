@@ -69,6 +69,24 @@
       "parentUuid": "2cb8923e_08b7289b",
       "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c558f67_66e69605",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-03-18T14:52:29Z",
+      "side": 1,
+      "message": "Sure, the motivation behind this patch is to enable us to build Arm64 assembly files when building for a host x86_64. The relevant patch is https://android-review.googlesource.com/c/platform/art/+/2680026/12 while the discussion [here](https://android-review.googlesource.com/c/platform/art/+/2680026/comment/853357e8_6c48f2ca/) should give some more detail as to why we need to do this.\n\nTo echo Ulya, this feature (the ART simulator) is only used in development and is a special mode that needs to be explicitly enabled by the ART developer. If a compiler update causes a regression, this will only break the simulator and not regular (debug or production) builds of ART.",
+      "parentUuid": "2c2ebb93_43375370",
+      "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
