@@ -83,6 +83,7 @@ bootstrap_go_package {
         "nothing.go",
         "notices.go",
         "onceper.go",
+        "otatools_package_cert_zip.go",
         "override_module.go",
         "package.go",
         "package_ctx.go",
@@ -169,5 +170,10 @@ bootstrap_go_package {
         "visibility_test.go",
     ],
     // Used by plugins
+    visibility: ["//visibility:public"],
+}
+
+otatools_package {
+    name: "otatools_package_cert_zip",
     visibility: ["//visibility:public"],
 }
