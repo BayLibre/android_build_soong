@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a5f13c_73c8a65e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-18T09:36:30Z",
+      "side": 1,
+      "message": "Thanks for the fix, I didn\u0027t get to test it yet but it looks solid. \n\nI\u0027ll probably end up adjusting the tests improvement of this change on top of it to ensure it matches my expectations, and to hopefully avoid future breakages, ty",
+      "parentUuid": "90b34ef0_4cf9ea3e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "af3bdffd6393a0ff372bca2c45f03d1f382b07f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4d242b32_0cbbab9a",
