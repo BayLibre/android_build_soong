@@ -16,6 +16,24 @@
       "message": "Move this local variable up and use it in your new if statements.",
       "revId": "56c8e89c3ce68021730a9ab8d997585b0295fa0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26859427_8c085e8e",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-18T16:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9334cab_82f558b6",
+      "revId": "56c8e89c3ce68021730a9ab8d997585b0295fa0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
