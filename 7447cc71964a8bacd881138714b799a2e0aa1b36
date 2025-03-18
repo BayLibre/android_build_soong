@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8419e060_a84d8f57",
+        "filename": "fsgen/prebuilt_etc_modules_gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-18T09:41:19Z",
+      "side": 1,
+      "message": "Also this is only true for prebuilt_any/root\nMaybe something along the lines of works better\n```suggestion\n\t\t\t// Specify relative_install_path if it is not installed in the base directory of the module.\n\t\t\t// In case of prebuilt_{root,any} this is equivalent to the root of the partition.\n```",
+      "revId": "7447cc71964a8bacd881138714b799a2e0aa1b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "754dd5cd_5c516a4d",
         "filename": "fsgen/prebuilt_etc_modules_gen.go",
         "patchSetId": 1
