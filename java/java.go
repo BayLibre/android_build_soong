@@ -1655,9 +1655,7 @@ type JavaTestImport struct {
 }
 
 func (j *Test) InstallInTestcases() bool {
-	// Host java tests install into $(HOST_OUT_JAVA_LIBRARIES), and then are copied into
-	// testcases by base_rules.mk.
-	return !j.Host()
+	return true
 }
 
 func (j *TestHelperLibrary) InstallInTestcases() bool {
