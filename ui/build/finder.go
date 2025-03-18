@@ -85,7 +85,12 @@ func NewSourceFinder(ctx Context, config Config) (f *finder.Finder) {
 			"METADATA",
 		},
 		// .mk files for product/board configuration.
-		IncludeSuffixes: []string{".mk"},
+		IncludeSuffixes: []string{
+			".mk",
+			// otatools cert files
+			".pk8",
+			".pem",
+		},
 	}
 	dumpDir := config.FileListDir()
 	f, err = finder.New(cacheParams, filesystem, logger.New(ioutil.Discard),
@@ -112,6 +117,18 @@ func findProductAndBoardConfigFiles(entries finder.DirEntries) (dirNames []strin
 			foundName != "AndroidProducts.mk" &&
 			foundName != "CleanSpec.mk" &&
 			strings.HasSuffix(foundName, ".mk") {
+			matches = append(matches, foundName)
+		}
+	}
+	return entries.DirNames, matches
+}
+
+func findOtaToolsCertFiles(entries finder.DirEntries) (dirNames []string, fileNames []string) {
+	matches := []string{}
+	for _, foundName := range entries.FileNames {
+		if strings.HasSuffix(foundName, ".pk8") ||
+			strings.HasSuffix(foundName, ".pem") ||
+			strings.HasSuffix(foundName, ".pem") {
 			matches = append(matches, foundName)
 		}
 	}
@@ -182,6 +199,14 @@ func FindSources(ctx Context, config Config, f *finder.Finder) {
 	err = dumpListToFile(ctx, config, testMappings, filepath.Join(dumpDir, "TEST_MAPPING.list"))
 	if err != nil {
 		ctx.Fatalf("Could not find TEST_MAPPING: %v", err)
+	}
+
+	// Recursively look for all otatools cert files.
+	otatools_cert_files := f.FindMatching("device", findOtaToolsCertFiles)
+	otatools_cert_files = append(otatools_cert_files, f.FindMatching("vendor", findOtaToolsCertFiles)...)
+	err = dumpListToFile(ctx, config, otatools_cert_files, filepath.Join(dumpDir, "OtaToolsCertFiles.list"))
+	if err != nil {
+		ctx.Fatalf("Could not find otatools cert files: %v", err)
 	}
 
 	// Recursively look for all Android.bp files
