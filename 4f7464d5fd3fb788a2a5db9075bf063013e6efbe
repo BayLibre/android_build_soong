@@ -16,6 +16,24 @@
       "message": "We need a `Path` other than the output file for `LOCAL_SOONG_INSTALLED_MODULE`, so that the we do not install the file [here](https://source.corp.google.com/h/android/platform/superproject/main/+/main:build/make/core/base_rules.mk;l\u003d510?q\u003dbuild%2Fmake%2Fcore%2Fbase_rules.mk\u0026ss\u003dh%2Fandroid%2Fplatform%2Fsuperproject%2Fmain%2F%2B%2Frefs%2Fheads%2Fmain)",
       "revId": "4f7464d5fd3fb788a2a5db9075bf063013e6efbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ccbc18_855d1941",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-18T03:54:23Z",
+      "side": 1,
+      "message": "Could we set LOCAL_UNINSTALLABLE_MODULE instead to be more explicit about the fact that we never want this installed?",
+      "parentUuid": "cba3e479_15c1fabb",
+      "revId": "4f7464d5fd3fb788a2a5db9075bf063013e6efbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
