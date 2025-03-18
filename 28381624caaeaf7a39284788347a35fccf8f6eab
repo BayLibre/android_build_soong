@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fedfdf89_710253d6",
+        "filename": "genrule/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-18T19:29:25Z",
+      "side": 1,
+      "message": "We should just do what Colin suggested in b/403277238#comment5 instead. Like he said, this has bugs in incremental builds.",
+      "revId": "28381624caaeaf7a39284788347a35fccf8f6eab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
