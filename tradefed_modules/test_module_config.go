@@ -1,13 +1,14 @@
 package tradefed_modules
 
 import (
-	"android/soong/android"
-	"android/soong/tradefed"
 	"encoding/json"
 	"fmt"
 	"io"
 	"slices"
 	"strings"
+
+	"android/soong/android"
+	"android/soong/tradefed"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -178,6 +179,19 @@ func (m *testModuleConfigModule) GenerateAndroidBuildActions(ctx android.ModuleC
 	moduleInfoJSON.TestConfig = []string{m.testConfig.String()}
 	moduleInfoJSON.AutoTestConfig = []string{"true"}
 	moduleInfoJSON.TestModuleConfigBase = proptools.String(m.Base)
+
+	m.setSupportFiles(ctx)
+}
+
+func (m *testModuleConfigModule) setSupportFiles(ctx android.ModuleContext) {
+	supportFiles := android.SupportFilesInfo{}
+	for _, suite := range m.Test_suites {
+		if supportFiles.TestSuitesToSupportFiles == nil {
+			supportFiles.TestSuitesToSupportFiles = make(map[string]android.InstallPaths)
+		}
+		supportFiles.TestSuitesToSupportFiles[suite] = m.supportFiles
+	}
+	android.SetProvider(ctx, android.SupportFilesInfoProvider, supportFiles)
 }
 
 // Ensure at least one test_suite is listed.  Ideally it should be general-tests
@@ -327,6 +341,7 @@ func (m *testModuleConfigHostModule) DepsMutator(ctx android.BottomUpMutatorCont
 func (m *testModuleConfigHostModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	m.validateBase(ctx, &testModuleConfigHostTag, "java_test_host", true)
 	m.generateManifestAndConfig(ctx)
+	m.setSupportFiles(ctx)
 }
 
 // Ensure the base listed is the right type by checking that we get the expected provider data.
