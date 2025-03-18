@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90353eae_ea07f19d",
+        "filename": "android/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2025-03-18T07:19:55Z",
+      "side": 1,
+      "message": "Thanks for catching this. Done",
+      "parentUuid": "df0a8b50_8f8a404c",
+      "range": {
+        "startLine": 1006,
+        "startChar": 11,
+        "endLine": 1006,
+        "endChar": 30
+      },
+      "revId": "6f32805b58a1f7ccf388934138d4c1603519c5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7e92bfb_afe313ba",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-18T03:50:04Z",
       "side": 1,
       "message": "Why are we checking ImageVariation here? At least leave a comment.",
+      "range": {
+        "startLine": 149,
+        "startChar": 44,
+        "endLine": 149,
+        "endChar": 99
+      },
+      "revId": "6f32805b58a1f7ccf388934138d4c1603519c5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7760431f_21d0fbf0",
+        "filename": "android/early_module_context.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2025-03-18T07:19:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7e92bfb_afe313ba",
       "range": {
         "startLine": 149,
         "startChar": 44,
