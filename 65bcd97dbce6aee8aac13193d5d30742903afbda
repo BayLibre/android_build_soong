@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76922da5_2af3bb1a",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-18T03:48:38Z",
+      "side": 1,
+      "message": "these should technically be properties on the android_device, but I guess we can revisit it later.",
+      "revId": "65bcd97dbce6aee8aac13193d5d30742903afbda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
