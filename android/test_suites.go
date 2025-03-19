@@ -65,6 +65,18 @@ func (t *testSuiteFiles) GenerateBuildActions(ctx SingletonContext) {
 	ravenwoodZip, ravenwoodListZip := buildTestSuite(ctx, "ravenwood-tests", files["ravenwood-tests"])
 	ctx.Phony("ravenwood-tests", ravenwoodZip, ravenwoodListZip)
 	ctx.DistForGoal("ravenwood-tests", ravenwoodZip, ravenwoodListZip)
+
+	moblyTests := make(map[string]InstallPaths)
+	for module, installedPaths := range files["mobly-tests"] {
+		for _, installedPath := range installedPaths {
+			if strings.HasPrefix(installedPath.String(), pathForTestCases(ctx).String()) {
+				moblyTests[module] = append(moblyTests[module], installedPath)
+			}
+		}
+	}
+	moblyZip, moblyListZip := buildTestSuite(ctx, "mobly-tests", moblyTests)
+	ctx.Phony("mobly-tests", moblyZip, moblyListZip)
+	ctx.DistForGoal("mobly-tests", moblyZip, moblyListZip)
 }
 
 func buildTestSuite(ctx SingletonContext, suiteName string, files map[string]InstallPaths) (Path, Path) {
