@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98c8b1b5_475846ec",
+        "filename": "android/neverallow.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-19T17:08:08Z",
+      "side": 1,
+      "message": "From the description the modules that would be utilizing this module type are installed in vendor_ramdisk partition. Is there a reason why this module type should set `install_in_root` property, which is used for installing files at root (i.e. outside of partition)?",
+      "fixSuggestions": [
+        {
+          "fixId": "fbb39432_cff302c7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/neverallow.go",
+              "range": {
+                "startLine": 256,
+                "startChar": 0,
+                "endLine": 257,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tNotModuleType(\"prebuilt_vendor_ramdisk\").\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6a3301ab1f810c59489349bba025b069b4053316",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
