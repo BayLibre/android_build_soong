@@ -34,6 +34,24 @@
       "parentUuid": "2feb91a5_563cb322",
       "revId": "077b52a82fec96226e17e3c87c287745c2e3ad25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f6aa30_d2355bfa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T23:12:44Z",
+      "side": 1,
+      "message": "I would at least take it out of this stack if it\u0027s not related.",
+      "parentUuid": "fa2c9cc3_8ebd3db4",
+      "revId": "077b52a82fec96226e17e3c87c287745c2e3ad25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
