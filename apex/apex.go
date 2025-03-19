@@ -2950,5 +2950,7 @@ func (a *apexBundle) setSymbolInfosProvider(ctx android.ModuleContext) {
 				}
 			}
 		}
+
+		cc.CopySymbolsAndSetSymbolsInfoProvider(ctx, infos)
 	}
 }
