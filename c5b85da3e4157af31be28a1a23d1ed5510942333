@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f77b74a9_499b7f01",
+        "filename": "rust/builder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T16:45:25Z",
+      "side": 1,
+      "message": "Ugh I thought I got all of these. Replaced.",
+      "parentUuid": "40b82e8d_e89944cf",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ebc1d35_57400c3b",
         "filename": "rust/builder.go",
         "patchSetId": 12
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8a6d56f_d203ec24",
+        "filename": "rust/builder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T16:45:25Z",
+      "side": 1,
+      "message": "Replaced",
+      "parentUuid": "5ebc1d35_57400c3b",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35dcd04a_3ce71738",
         "filename": "rust/builder.go",
         "patchSetId": 12
@@ -65,6 +101,30 @@
       "writtenOn": "2025-03-19T14:01:26Z",
       "side": 1,
       "message": "do we want to declare this map before the `if`?\n\n```\nargs :\u003d map[string]string{ .... }\nif flags.Clippy {\n  args[\"clippyFlags\"] \u003d ...;\n  \n  ...\n} else {\n  ...\n}\n```",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 46
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f7323a8_eb00708d",
+        "filename": "rust/builder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T16:45:25Z",
+      "side": 1,
+      "message": "Yeah I actually like the suggested way more as it reduces code duplication. Updated.",
+      "parentUuid": "35dcd04a_3ce71738",
       "range": {
         "startLine": 525,
         "startChar": 0,
@@ -100,6 +160,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb75b4b4_87746806",
+        "filename": "rust/project_json.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T16:45:25Z",
+      "side": 1,
+      "message": "Correct. In newish (at least past A14) versions of Android, the `src` parameter for Android.bp rust modules have been replace with `crate_root`. You only specify the root now and soong/ninja will figure out the depedancy to build.",
+      "parentUuid": "bd7747a0_72f55283",
+      "range": {
+        "startLine": 47,
+        "startChar": 50,
+        "endLine": 48,
+        "endChar": 69
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "434a3636_7be55db8",
         "filename": "scripts/check_rust.py",
         "patchSetId": 12
@@ -111,6 +195,30 @@
       "writtenOn": "2025-03-19T14:01:26Z",
       "side": 1,
       "message": "why catch these?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7995370_03417d91",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T16:45:25Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "434a3636_7be55db8",
       "range": {
         "startLine": 41,
         "startChar": 0,
@@ -140,6 +248,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b2ca7e3_6afe77fb",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T16:45:25Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "ffa0681d_ef9125bc",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6fd0509e_dcd69ba6",
         "filename": "scripts/check_rust.py",
         "patchSetId": 12
@@ -151,6 +277,30 @@
       "writtenOn": "2025-03-19T14:01:26Z",
       "side": 1,
       "message": "consider breaking this into a comment for each string below. that would make it easier to spot omissions. currently `--make-mode` is not described.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 148
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ff69de_5dca388b",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T16:45:25Z",
+      "side": 1,
+      "message": "Add documentation for `--make-mode` and refactored.",
+      "parentUuid": "6fd0509e_dcd69ba6",
       "range": {
         "startLine": 69,
         "startChar": 0,
@@ -180,6 +330,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2b893e5_85e9abb4",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T16:45:25Z",
+      "side": 1,
+      "message": "Replace with `ValueError`",
+      "parentUuid": "f740cebb_4950b1f2",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae4a2e47_a7ef1df5",
         "filename": "scripts/check_rust.py",
         "patchSetId": 12
@@ -197,6 +365,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "612cbe18_1fddaf82",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T16:45:25Z",
+      "side": 1,
+      "message": "Me doing a switcheroo. Fixed.",
+      "parentUuid": "ae4a2e47_a7ef1df5",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4474c7db_ad2b99eb",
         "filename": "scripts/check_rust.py",
         "patchSetId": 12
@@ -208,6 +394,30 @@
       "writtenOn": "2025-03-19T14:01:26Z",
       "side": 1,
       "message": "here too - why?",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 61
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2a3e96_3d0ef6fd",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T16:45:25Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "4474c7db_ad2b99eb",
       "range": {
         "startLine": 191,
         "startChar": 0,
