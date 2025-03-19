@@ -487,6 +487,14 @@ func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			ClassesJar:         a.implementationAndResourcesJar,
 		})
 	}
+
+	if !a.hideApexVariantFromMake && !a.IsHideFromMake() {
+		if a.embeddedJniLibs {
+			cc.CopySymbolsAndSetSymbolsInfoProvider(ctx, &cc.SymbolInfos{
+				Symbols: a.GetJniSymbolInfos(ctx, a.installPathForJNISymbols),
+			})
+		}
+	}
 }
 
 func (a *AndroidApp) getRequiredModuleNames(ctx android.ModuleContext) []string {
