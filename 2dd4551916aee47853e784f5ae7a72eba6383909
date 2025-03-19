@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04ad54e7_4d1ad35c",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2169,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T23:06:43Z",
+      "side": 1,
+      "message": "Preallocate these to the correct length.",
+      "revId": "2dd4551916aee47853e784f5ae7a72eba6383909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f916eee_0c14be8b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2185,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T23:06:43Z",
+      "side": 1,
+      "message": "This can be `android.PathForModuleInPartitionInstall(ctx, \"symbols\")`",
+      "range": {
+        "startLine": 2185,
+        "startChar": 8,
+        "endLine": 2185,
+        "endChar": 77
+      },
+      "revId": "2dd4551916aee47853e784f5ae7a72eba6383909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d14b90e2_822ba434",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2261,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T23:06:43Z",
+      "side": 1,
+      "message": "Are the symbols still copied when doing `m foo`? I think they might be in soong+make but not soong-only. We might also have to add the symbols as dependencies in `generateModuleTarget`.",
+      "revId": "2dd4551916aee47853e784f5ae7a72eba6383909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
