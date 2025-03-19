@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c10c3cc_c0d0ca85",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T18:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c38226b3_ca5f9619",
+      "revId": "69d41dbd545efcf6734aaf9f188301379829e0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2ef5514_248bf88a",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-03-19T17:52:15Z",
       "side": 1,
       "message": "we don\u0027t look at the output, so `text\u003dTrue` can be dropped.\n\nsame below\n\n(another reminder to mark comments resolved when you\u0027ve resolved them)",
+      "revId": "69d41dbd545efcf6734aaf9f188301379829e0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95d5bf64_4d5cfdde",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T18:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2ef5514_248bf88a",
       "revId": "69d41dbd545efcf6734aaf9f188301379829e0b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
