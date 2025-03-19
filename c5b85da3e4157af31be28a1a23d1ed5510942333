@@ -569,6 +569,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02ee0bac_566cb535",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T17:40:27Z",
+      "side": 1,
+      "message": "Updated verbage.",
+      "parentUuid": "09afc22f_0addd5d2",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4474c7db_ad2b99eb",
         "filename": "scripts/check_rust.py",
         "patchSetId": 12

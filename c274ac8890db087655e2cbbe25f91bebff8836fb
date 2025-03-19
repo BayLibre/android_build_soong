@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8adab9cb_3d700579",
+        "filename": "rust/builder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T17:40:27Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "3b394ee8_cd77e877",
+      "revId": "c274ac8890db087655e2cbbe25f91bebff8836fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c0c8496_73fcd8ab",
         "filename": "scripts/check_rust.py",
         "patchSetId": 13
@@ -31,6 +49,24 @@
       "writtenOn": "2025-03-19T17:18:29Z",
       "side": 1,
       "message": "nit: use the same style as the others \"This will ...\" or update the others to use this style.",
+      "revId": "c274ac8890db087655e2cbbe25f91bebff8836fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4534d50_736aae53",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T17:40:27Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "4c0c8496_73fcd8ab",
       "revId": "c274ac8890db087655e2cbbe25f91bebff8836fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c164a2b9_c8db9bac",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T17:40:27Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "65ce0f69_d269607d",
+      "revId": "c274ac8890db087655e2cbbe25f91bebff8836fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "972dbb1b_6020c6ae",
         "filename": "scripts/check_rust.py",
         "patchSetId": 13
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e56e6d69_7f032628",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T17:40:27Z",
+      "side": 1,
+      "message": "Agreed. Passing by value (instead of dict) now",
+      "parentUuid": "972dbb1b_6020c6ae",
+      "revId": "c274ac8890db087655e2cbbe25f91bebff8836fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7061c57_9400f011",
         "filename": "scripts/check_rust.py",
         "patchSetId": 13
@@ -82,6 +154,30 @@
       "writtenOn": "2025-03-19T17:18:29Z",
       "side": 1,
       "message": "these are only used in the `else` branch below, but this code is also pretty confusing. here you fetch these out of a dictionary, and then in `execute_soong_ui` you put them back into a dictionary. Can we avoid some of the back-and-forth?\n\npersonally I find the extraction of `execute_ninja` and `execute_soong_ui` to be more difficult to read than if these functions were just inline here, but I won\u0027t insist on this part.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 64
+      },
+      "revId": "c274ac8890db087655e2cbbe25f91bebff8836fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca3259e6_7b993b5d",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-19T17:40:27Z",
+      "side": 1,
+      "message": "\u003ethese are only used in the else branch below, but this code is also pretty confusing. here you fetch these out of a dictionary, and then in execute_soong_ui you put them back into a dictionary. Can we avoid some of the back-and-forth?\n\nThese are the \"new\" way of checking if a target was lunched see [`require_lunch`](https://cs.android.com/android/platform/superproject/+/android15-qpr1-release:build/make/shell_utils.sh;l\u003d58-64?q\u003dshell_utils). I removed the functions and have just inlined them.",
+      "parentUuid": "b7061c57_9400f011",
       "range": {
         "startLine": 160,
         "startChar": 0,
