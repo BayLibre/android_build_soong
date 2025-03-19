@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e051e75_1820e275",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1245,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T23:07:20Z",
+      "side": 1,
+      "message": "Same comments as cc",
+      "revId": "bb4a24e775130c3d6278dd598d5948b339f555b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
